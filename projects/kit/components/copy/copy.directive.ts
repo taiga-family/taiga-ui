@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {
@@ -46,7 +46,6 @@ export class TuiCopyDirective {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
     protected readonly copyTexts = inject(TUI_COPY_TEXTS);
-
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
         'content',
@@ -68,15 +67,12 @@ export class TuiCopyDirective {
         ),
     );
 
-    @Input()
-    public tuiCopy = '';
-
     protected get disabled(): boolean {
-        return !this.textfield.input?.nativeElement.value;
+        return !this.textfield.input()?.nativeElement.value;
     }
 
     protected copy(): void {
-        this.textfield.input?.nativeElement.select();
+        this.textfield.input()?.nativeElement.select();
         this.doc.execCommand('copy');
         this.copied$.next();
     }

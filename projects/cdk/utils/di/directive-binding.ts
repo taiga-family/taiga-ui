@@ -14,6 +14,7 @@ type SignalLikeTypeOf<T> = T extends Signal<infer R> ? R : T;
 
 type SignalLike<T> = Signal<T> | T;
 
+// TODO: Consider {} as default options instead
 export function tuiDirectiveBinding<
     T,
     G extends keyof T,

@@ -58,9 +58,8 @@ export class TuiPassword {
 
     protected toggle(): void {
         this.hidden.set(!this.hidden());
-        this.textfield.input?.nativeElement.setAttribute(
-            'type',
-            this.hidden() ? 'password' : 'text',
-        );
+        this.textfield
+            .input()
+            ?.nativeElement.setAttribute('type', this.hidden() ? 'password' : 'text');
     }
 }

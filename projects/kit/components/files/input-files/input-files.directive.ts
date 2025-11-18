@@ -44,7 +44,7 @@ export class TuiInputFilesDirective extends TuiControl<
     TuiFileLike | readonly TuiFileLike[]
 > {
     protected readonly host = inject(forwardRef(() => TuiInputFiles));
-    protected readonly m = tuiAppearanceMode(this.mode, {});
+    protected readonly m = tuiAppearanceMode(this.mode);
 
     @Output()
     public readonly reject = timer(0, tuiZonefreeScheduler()).pipe(

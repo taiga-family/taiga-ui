@@ -66,6 +66,6 @@ export class CustomListComponent<T> {
     }
 
     protected select(value: readonly T[]): void {
-        this.control?.control?.setValue(value);
+        this.control()?.control?.setValue(value);
     }
 }

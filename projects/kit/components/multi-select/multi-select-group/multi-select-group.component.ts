@@ -2,14 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChildren,
+    contentChildren,
     inject,
-    Input,
-    type QueryList,
-    signal,
+    input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -31,12 +28,13 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     },
 })
 export class TuiMultiSelectGroupComponent<T> {
+    private readonly options = contentChildren(TuiOptionWithValue<T>);
     private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly control =
-        inject(TuiTextfieldComponent, {optional: true})?.control ||
+        inject(TuiTextfieldComponent, {optional: true})?.control() ||
         inject(NgControl, {optional: true});
 
-    protected readonly values = signal<readonly T[]>([]);
+    protected readonly values = computed(() => this.options().map(({value}) => value()));
     protected readonly texts = inject(TUI_MULTI_SELECT_TEXTS);
     protected readonly value = tuiInjectValue<readonly T[] | null>();
     protected readonly checked = computed(() =>
@@ -45,18 +43,7 @@ export class TuiMultiSelectGroupComponent<T> {
         ),
     );
 
-    @Input()
-    public label = '';
-
-    @ContentChildren(TuiOptionWithValue)
-    protected set options(options: QueryList<TuiOptionWithValue<T>>) {
-        this.values.set(
-            options
-                .toArray()
-                .map(({value}) => value())
-                .filter(tuiIsPresent),
-        );
-    }
+    public readonly label = input('');
 
     protected toggle(): void {
         const values = this.values();

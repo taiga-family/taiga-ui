@@ -24,7 +24,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
             return null;
         }
 
-        const value = this.textfield.control?.value || [];
+        const value = this.textfield.control()?.value || [];
 
         return tuiIsFlat(items)
             ? this.filter(items, value, this.handlers.identityMatcher())

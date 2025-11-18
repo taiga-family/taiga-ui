@@ -1,17 +1,17 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
-    TuiTextfieldBase,
     TuiTextfieldMultiComponent,
+    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownDirective,
     TuiDropdownOpen,
@@ -25,10 +25,22 @@ import {filter} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 
-// TODO(v5): remove base component after angular update
+// TODO: Consider making input[tuiTextfieldMulti] to reuse here and in InputDateMulti
 @Directive({
+    selector: 'input[tuiInputChip]',
+    providers: [
+        tuiAsControl(TuiInputChipDirective),
+        tuiFallbackValueProvider([]),
+        tuiAsTextfieldAccessor(TuiInputChipDirective),
+        {
+            provide: TuiAppearance,
+            useFactory: () => inject(TuiAppearance, {skipSelf: true}),
+        },
+    ],
+    hostDirectives: [TuiWithTextfield],
     host: {
         enterkeyhint: 'enter',
+        '[style.outline]': '"none"',
         '[disabled]': 'disabled()',
         '(keydown.enter.prevent)': 'onEnter()',
         '(keydown.zoneless)': 'onBackspace($event.key)',
@@ -37,7 +49,7 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
         '(drop.prevent)': 'onPaste($event)',
     },
 })
-export class TuiInputChipBaseDirective<T>
+export class TuiInputChipDirective<T>
     extends TuiControl<T[]>
     implements TuiTextfieldAccessor<T[]>
 {
@@ -65,24 +77,21 @@ export class TuiInputChipBaseDirective<T>
             this.textfield.value.set('');
         });
 
-    @Input()
-    public separator = this.options.separator;
-
-    @Input()
-    public unique = this.options.unique;
+    public readonly separator = input(this.options.separator);
+    public readonly unique = input(this.options.unique);
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {
         this.textfield.value.set('');
         this.onChange(
-            this.unique ? Array.from(new Set(value.reverse())).reverse() : value,
+            this.unique() ? Array.from(new Set(value.reverse())).reverse() : value,
         );
     }
 
     protected onEnter(): void {
         const value = this.textfield.value().trim();
-        const items: any[] = this.separator ? value.split(this.separator) : [value];
+        const items: any[] = this.separator() ? value.split(this.separator()) : [value];
         const valid = items.filter(
             (item) => item && !this.handlers.disabledItemHandler()(item),
         );
@@ -98,7 +107,7 @@ export class TuiInputChipBaseDirective<T>
     protected onInput(): void {
         this.open.set(!!this.dropdown.content);
 
-        if (this.separator && this.textfield.value().match(this.separator)) {
+        if (this.separator() && this.textfield.value().match(this.separator())) {
             this.onEnter();
         } else {
             this.scrollTo();
@@ -143,20 +152,3 @@ export class TuiInputChipBaseDirective<T>
         });
     }
 }
-
-@Directive({
-    selector: 'input[tuiInputChip]',
-    providers: [
-        tuiAsControl(TuiInputChipDirective),
-        tuiFallbackValueProvider([]),
-        tuiAsTextfieldAccessor(TuiInputChipDirective),
-    ],
-    hostDirectives: [
-        TuiNativeValidator,
-        {
-            directive: TuiTextfieldBase,
-            inputs: ['invalid', 'focused', 'readOnly', 'state'],
-        },
-    ],
-})
-export class TuiInputChipDirective<T> extends TuiInputChipBaseDirective<T> {}
