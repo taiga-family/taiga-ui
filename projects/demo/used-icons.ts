@@ -110,6 +110,7 @@ export const TUI_USED_ICONS = [
     '@tui.terminal',
     '@tui.image',
     '@tui.credit-card',
+    '@tui.circle-x',
     '@tui.cloud',
     '@tui.grip-vertical',
     '@tui.circle-check',
