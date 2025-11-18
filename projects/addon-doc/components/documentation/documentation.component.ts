@@ -19,7 +19,6 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
-import {TuiToArrayPipe} from '@taiga-ui/cdk/pipes/to-array';
 import {type TuiMatcher} from '@taiga-ui/cdk/types';
 import {TuiNotification} from '@taiga-ui/core/components/notification';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
@@ -62,7 +61,6 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiSwitch,
         TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiToArrayPipe,
     ],
     templateUrl: './documentation.template.html',
     styleUrl: './documentation.style.less',
