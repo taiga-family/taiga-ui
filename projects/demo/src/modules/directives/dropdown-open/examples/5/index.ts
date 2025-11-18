@@ -1,4 +1,5 @@
 import {Component, Directive} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInjectElement} from '@taiga-ui/cdk';
@@ -10,6 +11,7 @@ import {
     type TuiPoint,
     TuiPositionAccessor,
 } from '@taiga-ui/core';
+import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Directive({
     standalone: true,
@@ -30,10 +32,20 @@ class TopRightDirective extends TuiPositionAccessor {
 
 @Component({
     standalone: true,
-    imports: [TopRightDirective, TuiButton, TuiDropdown, TuiDropdownOpen],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TopRightDirective,
+        TuiButton,
+        TuiCheckbox,
+        TuiDropdown,
+        TuiDropdownOpen,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected value = true;
+}
