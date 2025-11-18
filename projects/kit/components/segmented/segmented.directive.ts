@@ -32,10 +32,6 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
         descendants: true,
     });
 
-    private readonly active = computed(
-        () => this.elements()[this.links().findIndex(({isActive}) => isActive)],
-    );
-
     public ngAfterContentInit(): void {
         this.controls$
             .pipe(
@@ -48,8 +44,10 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     }
 
     public ngAfterContentChecked(): void {
-        if (this.links().length) {
-            this.update(this.active()?.nativeElement || null);
+        const index = this.links().findIndex(({isActive}) => isActive);
+
+        if (index !== -1) {
+            this.update(this.elements()[index]?.nativeElement || null);
         }
     }
 
