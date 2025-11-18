@@ -1,11 +1,5 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_ANIMATIONS_SPEED,
@@ -77,8 +71,7 @@ export class Sandbox {
 
     protected readonly control = new FormControl<string | null>(null);
 
-    @Output()
-    public readonly valueChanges = new EventEmitter();
+    public readonly valueChanges = output();
 
     constructor() {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
