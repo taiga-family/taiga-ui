@@ -57,7 +57,7 @@
         @if ($count > 1 || dots) {
             <div
                 class="t-column"
-                [class.t-column_hint_hovered]="drivers[$index] | async"
+                [class.t-column_hint_hovered]="drivers()[$index] | async"
                 [class.t-column_hovered]="hovered === $index"
                 [style.inset-inline-start.%]="getLeft(getX($index))"
                 [style.width.%]="getWidth($index)"
