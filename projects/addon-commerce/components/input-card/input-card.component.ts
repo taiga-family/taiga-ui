@@ -44,25 +44,25 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
     },
 })
 export class TuiInputCard implements OnInit {
-    private readonly icons = inject(TUI_PAYMENT_SYSTEM_ICONS);
-    private readonly control = inject(NgControl);
-    private readonly value = toSignal(
-        timer(0).pipe(switchMap(() => tuiControlValue<string>(this.control))),
+    readonly #icons = inject(TUI_PAYMENT_SYSTEM_ICONS);
+    readonly #control = inject(NgControl);
+    readonly #value = toSignal(
+        timer(0).pipe(switchMap(() => tuiControlValue<string>(this.#control))),
         {initialValue: ''},
     );
 
-    private readonly accessor = inject(DefaultValueAccessor, {
+    readonly #accessor = inject(DefaultValueAccessor, {
         self: true,
         optional: true,
     });
 
     protected readonly mask = tuiMaskito(TUI_MASK_CARD);
     protected readonly image = computed(
-        (s = tuiGetPaymentSystem(this.value())) => (s && this.icons[s]) || '',
+        (s = tuiGetPaymentSystem(this.#value())) => (s && this.#icons[s]) || '',
     );
 
     public readonly binChange = outputFromObservable(
-        toObservable(this.value).pipe(
+        toObservable(this.#value).pipe(
             map((v) => (v.length < 6 ? null : v.replace(' ', '').slice(0, 6))),
             startWith(null),
             distinctUntilChanged(),
@@ -71,13 +71,13 @@ export class TuiInputCard implements OnInit {
     );
 
     public ngOnInit(): void {
-        if (!this.accessor) {
+        if (!this.#accessor) {
             return;
         }
 
-        const onChanges = this.accessor.onChange.bind(this.accessor);
+        const onChanges = this.#accessor.onChange.bind(this.#accessor);
 
-        this.accessor.onChange = (value: string) =>
+        this.#accessor.onChange = (value: string) =>
             onChanges(value.replaceAll(CHAR_NO_BREAK_SPACE, ''));
     }
 }

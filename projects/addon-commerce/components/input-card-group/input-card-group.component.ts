@@ -119,10 +119,10 @@ export class TuiInputCardGroup
 
     private readonly inputCVC = viewChild<ElementRef<HTMLInputElement>>('inputCVC');
 
-    private readonly doc = inject(DOCUMENT);
-    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
-    private readonly focus$ = new Subject<void>();
-    private expirePrefilled = false;
+    readonly #doc = inject(DOCUMENT);
+    readonly #isServer = isPlatformServer(inject(PLATFORM_ID));
+    readonly #focus$ = new Subject<void>();
+    #expirePrefilled = false;
     private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
     private readonly el = tuiInjectElement();
@@ -148,7 +148,7 @@ export class TuiInputCardGroup
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
     protected readonly $ = this.isWebkit
-        ? this.focus$
+        ? this.#focus$
               .pipe(
                   switchMap(() => timer(100)),
                   takeUntilDestroyed(),
@@ -205,11 +205,11 @@ export class TuiInputCardGroup
 
     public override writeValue(value: TuiCard | null): void {
         const {bin} = this;
-        const {activeElement} = this.doc;
+        const {activeElement} = this.#doc;
 
         super.writeValue(value);
-        this.updateBin(bin);
-        this.expirePrefilled = !!this.expire && this.cardPrefilled;
+        this.#updateBin(bin);
+        this.#expirePrefilled = !!this.expire && this.cardPrefilled;
 
         // Programmatic setting of expire input value breaks autofill in Chrome
         const inputExpire = this.inputExpire();
@@ -218,7 +218,7 @@ export class TuiInputCardGroup
             !inputExpire ||
             this.isMobile ||
             this.isWebkit ||
-            this.isServer ||
+            this.#isServer ||
             inputExpire.nativeElement.value === this.expire
         ) {
             return;
@@ -226,7 +226,7 @@ export class TuiInputCardGroup
 
         inputExpire.nativeElement.focus({preventScroll: true});
         inputExpire.nativeElement.select();
-        this.doc.execCommand('insertText', false, this.expire);
+        this.#doc.execCommand('insertText', false, this.expire);
         inputExpire.nativeElement.blur();
         (activeElement as HTMLElement | null)?.focus({preventScroll: true});
     }
@@ -257,15 +257,15 @@ export class TuiInputCardGroup
             this.inputCVC()?.nativeElement;
 
         this.onChange({card, expire, cvc});
-        this.updateBin(bin);
+        this.#updateBin(bin);
         this.open.set(false);
-        this.expirePrefilled = !!expire;
+        this.#expirePrefilled = !!expire;
 
         element?.focus();
     }
 
     public clear(): void {
-        this.expirePrefilled = false;
+        this.#expirePrefilled = false;
 
         [this.inputCVC(), this.inputExpire(), this.inputCard()].forEach((e) => {
             e?.nativeElement.focus();
@@ -321,7 +321,7 @@ export class TuiInputCardGroup
     }
 
     protected get expireFocusable(): boolean {
-        return this.isFocusable(this.card) && !this.expirePrefilled;
+        return this.isFocusable(this.card) && !this.#expirePrefilled;
     }
 
     protected get cvcFocusable(): boolean {
@@ -341,12 +341,12 @@ export class TuiInputCardGroup
         }
 
         this.updateProperty(parsed, 'card');
-        this.updateBin(bin);
+        this.#updateBin(bin);
 
         if (this.cardValidator()(this.card) && !value()?.expire && this.inputExpire()) {
             this.focusExpire();
             // Safari autofill focus jerk workaround
-            this.focus$.next();
+            this.#focus$.next();
         }
     }
 
@@ -375,7 +375,7 @@ export class TuiInputCardGroup
         }
 
         event.preventDefault();
-        this.focusInput();
+        this.#focusInput();
     }
 
     protected toggle(): void {
@@ -392,7 +392,7 @@ export class TuiInputCardGroup
         return tuiGetPaymentSystem(value);
     }
 
-    private updateBin(oldBin: string | null): void {
+    #updateBin(oldBin: string | null): void {
         const {bin} = this;
 
         if (bin !== oldBin && !this.cardPrefilled) {
@@ -409,7 +409,7 @@ export class TuiInputCardGroup
         this.onChange(newValue.expire || newValue.cvc || newValue.card ? newValue : null);
     }
 
-    private focusInput(): void {
+    #focusInput(): void {
         const element =
             (this.cardFocusable && this.inputCard()?.nativeElement) ||
             (this.expireFocusable && this.inputExpire()?.nativeElement) ||
