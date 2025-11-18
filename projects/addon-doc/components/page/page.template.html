@@ -44,7 +44,7 @@
                         *tuiItem
                         routerLinkActive
                         tuiTab
-                        [routerLink]="$first ? './' : (tabName | tuiReplace: from : to)"
+                        [routerLink]="$first ? './' : tabName.replace(from, to)"
                         [routerLinkActiveOptions]="{exact: $first}"
                     >
                         {{ tabName }}

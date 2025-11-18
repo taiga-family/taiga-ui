@@ -27,6 +27,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     private readonly links = contentChildren(RouterLinkActive);
     private readonly elements = contentChildren(RouterLinkActive, {read: ElementRef});
     private readonly controls = contentChildren(NgControl, {descendants: true});
+    private readonly controls$ = toObservable(this.controls);
     private readonly radios = contentChildren(RadioControlValueAccessor, {
         descendants: true,
     });
@@ -36,7 +37,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     );
 
     public ngAfterContentInit(): void {
-        toObservable(this.controls)
+        this.controls$
             .pipe(
                 switchMap(([control]) => tuiControlValue(control)),
                 map((value) => this.radios().findIndex((c) => c.value === value)),

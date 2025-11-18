@@ -10,7 +10,7 @@ import {
     signal,
     viewChildren,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
@@ -72,6 +72,7 @@ export class TuiLineChart implements OnChanges {
     });
 
     public readonly drivers = viewChildren(TuiHintHover);
+    public readonly drivers$ = toObservable(this.drivers);
 
     @Input()
     public x = 0;

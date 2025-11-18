@@ -10,9 +10,8 @@ import {
     NgZone,
     type QueryList,
     Renderer2,
-    type Signal,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -97,11 +96,11 @@ export class TuiLineChartHint implements AfterViewInit {
 }
 
 export function tuiLineChartDrivers(
-    charts: ReadonlyArray<{drivers: Signal<ReadonlyArray<Observable<boolean>>>}>,
+    charts: ReadonlyArray<{drivers$: Observable<ReadonlyArray<Observable<boolean>>>}>,
 ): Observable<boolean> {
     return combineLatest(
-        charts.map(({drivers}) =>
-            toObservable(drivers).pipe(
+        charts.map(({drivers$}) =>
+            drivers$.pipe(
                 map((drivers) => drivers.map((driver) => driver.pipe(startWith(false)))),
             ),
         ),
