@@ -2576,7 +2576,10 @@ export default class Example {}
 ```html
 <tui-badged-content>
 <tui-badge-notification size="xs" tuiSlot="top" />
-<tui-input class="input">Input text</tui-input>
+<tui-textfield class="input">
+<input tuiTextfield />
+<label tuiLabel>Input text</label>
+</tui-textfield>
 </tui-badged-content>
 <tui-badged-content>
 <tui-icon appearance="accent" iconStart="@tui.check" size="s" tuiBadge tuiSlot="bottom" />
@@ -2588,18 +2591,11 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        TuiBadge,
-        TuiBadgedContent,
-        TuiBadgeNotification,
-        TuiButton,
-        TuiInputModule,
-    ],
+    imports: [TuiBadge, TuiBadgedContent, TuiBadgeNotification, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -5855,10 +5851,9 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiCalendarMonth} from '@taiga-ui/kit';
-import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [RouterModule, TuiCalendarMonth, TuiDemo, TuiInputMonthRangeModule, TuiLink],
+    imports: [RouterModule, TuiCalendarMonth, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -10914,8 +10909,10 @@ export default class Example {
 <button automation-id="tui-data-list-range-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownDirection="top" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="range" > ⌛ Range: {{ rangeValue }} </button>
 </tui-data-list>
 <ng-template #money>
-<tui-input automation-id="tui-data-money-input" [(ngModel)]="moneyValue" > RUB <input name="moneyValue" tuiTextfieldLegacy />
-</tui-input>
+<tui-textfield automation-id="tui-data-money-input">
+<input name="moneyValue" tuiTextfield [(ngModel)]="moneyValue" />
+<label tuiLabel>RUB</label>
+</tui-textfield>
 <tui-data-list tuiDataListDropdownManager>
 <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownDirection="bottom" tuiDropdownLimitWidth="auto" tuiDropdownSided tuiOption type="button" [tuiDropdown]="currency" [tuiDropdownManual]="true" > Exchange Rates: </button>
 </tui-data-list>
@@ -10924,14 +10921,22 @@ export default class Example {
 <tui-calendar [value]="dateValue" (dayClick)="onDayClick($event)" (mousedown.zoneless.prevent)="(0)" />
 </ng-template>
 <ng-template #input>
-<tui-input automation-id="tui-data-list-email-field" [(ngModel)]="emailValue" > Email <input name="emailValue" tuiTextfieldLegacy />
-</tui-input>
+<tui-textfield automation-id="tui-data-list-email-field">
+<input name="emailValue" tuiTextfield [(ngModel)]="emailValue" />
+<label tuiLabel>Email</label>
+</tui-textfield>
 </ng-template>
 <ng-template #currency>
 <div class="example">
 <div tuiGroup class="group" >
-<tui-input [(ngModel)]="dollar">1 Rub = (X) Dollars</tui-input>
-<tui-input [(ngModel)]="euro">1 Rub = (Y) Euros</tui-input>
+<tui-textfield>
+<input tuiTextfield [(ngModel)]="dollar" />
+<label tuiLabel>1 Rub = (X) Dollars</label>
+</tui-textfield>
+<tui-textfield>
+<input tuiTextfield [(ngModel)]="euro" />
+<label tuiLabel>1 Rub = (Y) Euros</label>
+</tui-textfield>
 </div>
 <ul class="exchange tui-list tui-list_large">
 <li class="tui-list__item">
@@ -10976,7 +10981,6 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -10990,7 +10994,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiDropdown,
         TuiGroup,
         TuiInputDateRange,
-        TuiInputModule,
         TuiTextfield,
     ],
     templateUrl: './index.html',
@@ -11026,12 +11029,9 @@ export default class Example {
 <ng-template #content>
 <tui-data-list> @for (group of groups; track group) { <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <button tuiOption type="button" class="option" (click)="open = false" > {{ item }} </button> } </tui-opt-group> } </tui-data-list>
 </ng-template>
-<tui-input [formControl]="control" [tuiDropdownOpen]="((control.valueChanges | async)?.length ?? 0) > 2" > Enter 3 characters <tui-data-list *tuiDataList />
-</tui-input>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11039,18 +11039,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiButton,
-        TuiChevron,
-        TuiDataList,
-        TuiDropdown,
-        TuiInputModule,
-    ],
+    imports: [ReactiveFormsModule, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
     styles: `
         .option {
@@ -11179,8 +11170,9 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-input [formControl]="control"> Account <tui-data-list-wrapper *tuiDataList emptyContent="No results found" size="s" [disabledItemHandler]="disabledItemHandler" [items]="items | tuiFilterByInput" />
-</tui-input>
+<tui-textfield>
+<input #input tuiTextfield [formControl]="control" />
+<label tuiLabel>Account</label> @if (items | tuiFilterByInput; as filtered) { @if (input.value) { <tui-data-list-wrapper *tuiDropdown emptyContent="No results found" size="s" [disabledItemHandler]="disabledItemHandler" [items]="filtered" /> } } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -11189,15 +11181,16 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         ReactiveFormsModule,
         TuiDataListWrapper,
+        TuiDropdown,
         TuiFilterByInputPipe,
-        TuiInputModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -11276,8 +11269,9 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-input [formControl]="control"> Menu <tui-data-list-wrapper *tuiDataList [items]="items" [labels]="labels" />
-</tui-input>
+<tui-textfield>
+<input #input tuiTextfield [formControl]="control" />
+<label tuiLabel>Menu</label> @if (input.value) { <tui-data-list-wrapper *tuiDropdown [items]="items" [labels]="labels" /> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -11285,11 +11279,11 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiDataListWrapper, TuiInputModule],
+    imports: [ReactiveFormsModule, TuiDataListWrapper, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -12277,7 +12271,10 @@ export default class Example {
 <button appearance="secondary" size="s" tuiIconButton type="button" class="tui-space_right-2" [style.border-radius.%]="100" [tuiChevron]="item.expanded" (click)="item.expanded = !item.expanded" > Expand </button> Nested form <button appearance="flat" iconStart="@tui.trash" size="s" tuiIconButton type="button" class="remove" [style.border-radius.%]="100" (click)="remove($index)" > Remove </button>
 </h3>
 <tui-expand [expanded]="item.expanded">
-<tui-input class="tui-space_top-4" [(ngModel)]="item.value" > Some input </tui-input>
+<tui-textfield class="tui-space_top-4">
+<input tuiTextfield [(ngModel)]="item.value" />
+<label tuiLabel>Some input</label>
+</tui-textfield>
 </tui-expand>
 </div> } </tui-elastic-container>
 ```
@@ -12288,9 +12285,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayRemove} from '@taiga-ui/cdk';
-import {TuiButton, TuiExpand} from '@taiga-ui/core';
+import {TuiButton, TuiExpand, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiElasticContainer} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -12299,7 +12295,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiChevron,
         TuiElasticContainer,
         TuiExpand,
-        TuiInputModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -14363,7 +14359,7 @@ import {
     TuiTooltip,
 } from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 class User {
     constructor(
@@ -14401,7 +14397,6 @@ class Account {
         TuiHeader,
         TuiIcon,
         TuiInputDate,
-        TuiInputModule,
         TuiInputNumber,
         TuiInputPhone,
         TuiInputSlider,
@@ -14683,8 +14678,11 @@ export class Example {}
 <form class="input-wrapper" [formGroup]="testForm" >
 <div tuiGroup class="group" >
 <div>
-<tui-input formControlName="testValue" tuiHintContent="Write a number" [style.border-radius]="'inherit'" > House <input placeholder="House" tuiTextfieldLegacy />
-</tui-input>
+<tui-textfield [style.border-radius]="'inherit'">
+<input formControlName="testValue" placeholder="House" tuiTextfield />
+<label tuiLabel>House</label>
+<tui-icon tuiTooltip="Write a number" />
+</tui-textfield>
 <tui-error formControlName="testValue" />
 </div>
 <div>
@@ -14697,8 +14695,11 @@ export class Example {}
 <tui-error formControlName="multiSelectControl" />
 </div>
 <div>
-<tui-input formControlName="testValue3" tuiHintContent="Write an apartment number only" [style.border-radius]="'inherit'" > Apartment <input placeholder="Apartment number" tuiTextfieldLegacy />
-</tui-input>
+<tui-textfield [style.border-radius]="'inherit'">
+<input formControlName="testValue3" placeholder="Apartment number" tuiTextfield />
+<label tuiLabel>Apartment</label>
+<tui-icon tuiTooltip="Write an apartment number only" />
+</tui-textfield>
 <tui-error formControlName="testValue3" />
 </div>
 </div>
@@ -14718,7 +14719,7 @@ import {
     TuiMultiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -14730,7 +14731,6 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiHint,
         TuiIcon,
         TuiInputChip,
-        TuiInputModule,
         TuiMultiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
@@ -33242,7 +33242,10 @@ A service that allows hiding and showing virtual keyboard programmatically on bo
 
 **Template:**
 ```html
-<tui-input [(ngModel)]="value">Type something</tui-input>
+<tui-textfield>
+<input tuiTextfield [(ngModel)]="value" />
+<label tuiLabel>Type something</label>
+</tui-textfield>
 <p>
 <button tuiButton type="button" (mousedown.prevent.zoneless)="keyboard.toggle()" > Toggle </button>
 </p>
@@ -33254,11 +33257,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiInputModule],
+    imports: [FormsModule, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -33503,7 +33505,10 @@ export default class Example {
 <button tuiButton type="button" (click)="toggle(true)" > Show/Hide </button>
 <ng-template [tuiSheetDialog]="open" [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, appearance: 'fullscreen'}" (tuiSheetDialogChange)="toggle($event)" >
 <header class="header">
-<tui-input tuiTextfieldIconLeft="@tui.search" [formControl]="search" > Find user </tui-input>
+<tui-textfield iconStart="@tui.search">
+<input tuiTextfield [formControl]="search" />
+<label tuiLabel>Find user</label>
+</tui-textfield>
 </header>
 <div class="container"> @for (user of users$ | async; track user) { <button type="button" class="item" (click)="toggle(false)" >
 <div size="s" [style.background]="user | tuiAutoColor" [tuiAvatar]="user | tuiInitials" ></div> {{ user }} </button> } </div>
@@ -33522,9 +33527,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
-import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -33555,8 +33560,8 @@ const USERS = [
         TuiButton,
         TuiFloatingContainer,
         TuiInitialsPipe,
-        TuiInputModule,
         TuiSheetDialog,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
@@ -37484,7 +37489,9 @@ export default class Example {
 </tui-textfield>
 </td>
 <td tuiTd>
-<tui-input tuiTextfieldPrefix="$" [(ngModel)]="item.balance" > Value </tui-input>
+<tui-textfield>
+<input placeholder="Value" prefix="$" tuiInputNumber [(ngModel)]="item.balance" />
+</tui-textfield>
 </td>
 <td tuiTd [style.white-space]="'nowrap'" > {{ item.description }} </td>
 </tr> } </tbody>
@@ -37498,15 +37505,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputChip} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiInputChip, TuiInputNumber} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
         ReactiveFormsModule,
         TuiInputChip,
-        TuiInputModule,
+        TuiInputNumber,
         TuiTable,
         TuiTextfield,
         TuiTextfieldControllerModule,
@@ -40169,11 +40176,17 @@ export default class Example {}
 **Template:**
 ```html
 <ng-template #tooltip>Allowed symbols: ♠ ♣ ♦ ♥</ng-template>
-<tui-input tuiTextfieldSize="m" class="input" [tuiTextfieldLabelOutside]="true" />
+<tui-textfield tuiTextfieldSize="m" class="input" >
+<input tuiTextfield />
+</tui-textfield>
 <tui-icon tuiHintDirection="bottom" [tuiTooltip]="tooltip" />
-<tui-input tuiTextfieldSize="m" class="input" [tuiTextfieldLabelOutside]="true" />
+<tui-textfield tuiTextfieldSize="m" class="input" >
+<input tuiTextfield />
+</tui-textfield>
 <tui-icon appearance="" tuiHintDirection="bottom" tuiTooltip="Set icon color with 'color' after resetting appearance" class="primary" />
-<tui-input tuiTextfieldSize="m" class="input" />
+<tui-textfield tuiTextfieldSize="m" class="input" >
+<input tuiTextfield />
+</tui-textfield>
 <tui-icon tuiHintDirection="right" [tuiTooltip]="tooltip" />
 ```
 **TypeScript:**
@@ -40183,16 +40196,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        TuiIcon,
-        TuiInputModule,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
-        TuiTooltip,
-    ],
+    imports: [TuiIcon, TuiTextfield, TuiTextfieldControllerModule, TuiTooltip],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -41130,10 +41137,22 @@ export default class Example {
 ```html
 '{{ formattedNumber }}' = tuiFormatNumber(value, precision, decimalSeparator, thousandSeparator); <form [formGroup]="parametersForm">
 <div class="parameters">
-<tui-input formControlName="value" class="tui-space_top-2" > value </tui-input>
-<tui-input formControlName="precision" class="tui-space_top-2" > precision </tui-input>
-<tui-input formControlName="decimalSeparator" class="tui-space_top-2" > decimalSeparator </tui-input>
-<tui-input formControlName="thousandSeparator" class="tui-space_top-2" > thousandSeparator </tui-input>
+<tui-textfield class="tui-space_top-2">
+<input formControlName="value" tuiTextfield />
+<label tuiLabel>value</label>
+</tui-textfield>
+<tui-textfield class="tui-space_top-2">
+<input formControlName="precision" tuiTextfield />
+<label tuiLabel>precision</label>
+</tui-textfield>
+<tui-textfield class="tui-space_top-2">
+<input formControlName="decimalSeparator" tuiTextfield />
+<label tuiLabel>decimalSeparator</label>
+</tui-textfield>
+<tui-textfield class="tui-space_top-2">
+<input formControlName="thousandSeparator" tuiTextfield />
+<label tuiLabel>thousandSeparator</label>
+</tui-textfield>
 </div>
 </form>
 ```
@@ -41143,11 +41162,10 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiDecimalSymbol, tuiFormatNumber} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {type TuiDecimalSymbol, tuiFormatNumber, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiInputModule],
+    imports: [ReactiveFormsModule, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -41627,20 +41645,32 @@ export default class Example {
 ```html
 <form [formGroup]="userDetailsForm">
 <p>
-<tui-input formControlName="name">Name</tui-input>
+<tui-textfield>
+<input formControlName="name" tuiTextfield />
+<label tuiLabel>Name</label>
+</tui-textfield>
 <tui-error formControlName="name" />
 </p>
 <div formGroupName="address">
 <p>
-<tui-input formControlName="street">Street</tui-input>
+<tui-textfield>
+<input formControlName="street" tuiTextfield />
+<label tuiLabel>Street</label>
+</tui-textfield>
 <tui-error formControlName="street" />
 </p>
 <p>
-<tui-input formControlName="zipCode">Zip code</tui-input>
+<tui-textfield>
+<input formControlName="zipCode" tuiTextfield />
+<label tuiLabel>Zip code</label>
+</tui-textfield>
 <tui-error formControlName="zipCode" />
 </p>
 <p>
-<tui-input formControlName="city">City</tui-input>
+<tui-textfield>
+<input formControlName="city" tuiTextfield />
+<label tuiLabel>City</label>
+</tui-textfield>
 <tui-error formControlName="city" />
 </p>
 </div>
@@ -41653,11 +41683,10 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiError} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiError, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiInputModule],
+    imports: [ReactiveFormsModule, TuiError, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -41740,7 +41769,10 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-input [(ngModel)]="text">Type a text to start computing</tui-input>
+<tui-textfield>
+<input tuiTextfield [(ngModel)]="text" />
+<label tuiLabel>Type a text to start computing</label>
+</tui-textfield>
 <div class="tui-space_top-2">Called times: {{ counter.count }}</div> @if (show) { <div class="tui-space_top-2">Result: {{ calculate(counter, text) | json }}</div> } <button tuiButton type="button" class="tui-space_top-2" (click)="show = !show" > Show/hide </button>
 ```
 **TypeScript:**
@@ -41750,11 +41782,10 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, JsonPipe, TuiButton, TuiInputModule],
+    imports: [FormsModule, JsonPipe, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -42162,7 +42193,10 @@ export class Example {
 </p>
 <div class="active-zone" [class.active-zone_active]="childActive" [tuiActiveZoneParent]="parent" (tuiActiveZoneChange)="onChildActiveZone($event)" >
 <h2>Child zone</h2>
-<tui-input #input [formControl]="control" > Input inside zone </tui-input>
+<tui-textfield>
+<label tuiLabel>Input inside zone</label>
+<input #input tuiTextfield [formControl]="control" />
+</tui-textfield>
 <p> You can bind different elements with <code>[tuiActiveZoneParent]</code> directive </p>
 </div>
 <p>
@@ -42178,11 +42212,10 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZone} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {type TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiActiveZone, TuiButton, TuiInputModule],
+    imports: [ReactiveFormsModule, TuiActiveZone, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -42205,10 +42238,8 @@ export default class Example {
         this.childActive = active;
     }
 
-    protected onClick({nativeFocusableElement}: TuiInputComponent): void {
-        if (nativeFocusableElement) {
-            nativeFocusableElement.focus();
-        }
+    protected onClick(el: HTMLInputElement): void {
+        el.focus();
     }
 }
 ```
@@ -42633,7 +42664,10 @@ export class Example {}
 
 **Template:**
 ```html
-<button tuiButton type="button" class="tui-space_bottom-5" (click)="onClick()" > Show input </button> @if (showInput) { <tui-input tuiAutoFocus [(ngModel)]="model" > Focusable tui-input </tui-input> }
+<button tuiButton type="button" class="tui-space_bottom-5" (click)="onClick()" > Show input </button> @if (showInput) { <tui-textfield [tuiTextfieldCleaner]="false">
+<input tuiAutoFocus tuiTextfield [(ngModel)]="model" />
+<label tuiLabel>Focusable input</label>
+</tui-textfield> }
 ```
 **TypeScript:**
 ```ts
@@ -42642,11 +42676,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiInputModule],
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -43171,12 +43204,18 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-input [(ngModel)]="value">Changes propagate both ways</tui-input>
+<tui-textfield>
+<label tuiLabel>Changes propagate both ways</label>
+<input tuiTextfield [(ngModel)]="value" />
+</tui-textfield>
 <label class="flex" [tuiDropdown]="dropdownContent" [tuiDropdownManual]="open" >
 <input size="s" tuiSwitch type="checkbox" [showIcons]="false" [(ngModel)]="open" /> Open dropdown </label>
 <ng-template #dropdownContent="polymorpheus" polymorpheus >
 <div class="dropdown">
-<tui-input [(ngModel)]="value">Changes propagate both ways</tui-input>
+<tui-textfield>
+<input tuiTextfield [(ngModel)]="value" />
+<label tuiLabel>Changes propagate both ways</label>
+</tui-textfield>
 <p> Use <code>polymorpheus</code> directive on the template to make changes propagate both ways </p> @if (showBigText$ | async) { <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab assumenda at corporis ea hic illo ipsa laboriosam laudantium nemo neque officiis pariatur quidem quos rerum sunt, temporibus tenetur ullam vitae? </p> } </div>
 </ng-template>
 ```
@@ -43187,9 +43226,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdown} from '@taiga-ui/core';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {interval, map} from 'rxjs';
 
@@ -43199,8 +43237,8 @@ import {interval, map} from 'rxjs';
         FormsModule,
         PolymorpheusTemplate,
         TuiDropdown,
-        TuiInputModule,
         TuiSwitch,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -43993,7 +44031,17 @@ export class Example {}
 ### Example
 
 ```html
-<tui-input class="input" [ngModel]="input" [tuiDropdown]="template ? dropdownContent : content" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownEnabled]="enabled" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownSided]="dropdown.dropdownSided" [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset" [(tuiDropdownOpen)]="open" (ngModelChange)="onInput($event)" > Start typing </tui-input>
+<tui-textfield class="input" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownEnabled]="enabled" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownSided]="dropdown.dropdownSided" [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset" [(open)]="open" >
+<label tuiLabel>Start typing</label>
+<input tuiTextfield [ngModel]="input" (ngModelChange)="onInput($event)" />
+<div *tuiDropdown> @if (template) { <div class="dropdown">
+<div>Do you like using Taiga UI?</div>
+<p class="buttons">
+<button appearance="primary" size="m" tuiButton type="button" class="button" (click)="onClick()" > Yes </button>
+<button appearance="secondary" size="m" tuiButton type="button" class="button" (click)="onClick()" > Yes </button>
+</p>
+</div> } @else { {{ content }} } </div>
+</tui-textfield>
 ```
 
 ### API
@@ -44288,20 +44336,12 @@ import {FormsModule} from '@angular/forms';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiButton,
-        TuiDemo,
-        TuiDocDropdown,
-        TuiDropdown,
-        TuiInputModule,
-    ],
+    imports: [FormsModule, TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -45280,7 +45320,9 @@ export default class Example {
 <tui-textfield>
 <input placeholder="Type in long value" tuiTextfield [tuiFluidTypography]="scale()" [(ngModel)]="value" />
 </tui-textfield>
-<tui-input-range class="tui-space_top-4" [max]="30" [min]="1" [ngModel]="range()" (ngModelChange)="range.set($event)" > Min/Max (converted to pixels) </tui-input-range>
+<tui-input-range [max]="30" [min]="1" [ngModel]="range()" [style.inset-block-start.rem]="0.5" (ngModelChange)="range.set($event)" >
+<label tuiLabel>Min/Max (converted to pixels)</label>
+</tui-input-range>
 ```
 **TypeScript:**
 ```ts
@@ -45289,11 +45331,14 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TUI_FLUID_TYPOGRAPHY_OPTIONS, TuiFluidTypography} from '@taiga-ui/kit';
-import {TuiInputRangeModule} from '@taiga-ui/legacy';
+import {
+    TUI_FLUID_TYPOGRAPHY_OPTIONS,
+    TuiFluidTypography,
+    TuiInputRange,
+} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiFluidTypography, TuiInputRangeModule, TuiTextfield],
+    imports: [FormsModule, TuiFluidTypography, TuiInputRange, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -45369,7 +45414,10 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-input tuiTextfieldIconLeft="@tui.search" [(ngModel)]="search" > Search </tui-input>
+<tui-textfield iconStart="@tui.search">
+<input tuiTextfield [(ngModel)]="search" />
+<label tuiLabel>Search</label>
+</tui-textfield>
 <table class="tui-space_top-4">
 <thead>
 <tr>
@@ -45387,11 +45435,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiHighlight} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [FormsModule, TuiHighlight, TuiInputModule, TuiTextfieldControllerModule],
+    imports: [FormsModule, TuiHighlight, TuiTextfield, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -45766,19 +45815,22 @@ export class Example {}
 <button id="button" appearance="secondary" iconStart="@tui.circle-help" tuiButton type="button" > Hint </button>
 <tui-icon tuiHintDirection="right" tuiTooltip="Or with external tooltip" tuiTooltipDescribe="button" class="tui-space_top-4 tui-space_left-4" />
 </p>
-<tui-input tuiHintContent="This is built-in with controls" [(ngModel)]="value" > Input with accessible hint </tui-input>
+<tui-textfield>
+<input tuiTextfield [(ngModel)]="value" />
+<label tuiLabel>Input with accessible hint</label>
+<tui-icon tuiTooltip="This is built-in with controls" />
+</tui-textfield>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiHint, TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiHint, TuiIcon, TuiInputModule, TuiTooltip],
+    imports: [FormsModule, TuiButton, TuiHint, TuiIcon, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -48197,7 +48249,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidator} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiInputPhone, TuiSelect} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -48205,7 +48256,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,
-        TuiInputModule,
         TuiInputPhone,
         TuiSelect,
         TuiTextfield,
@@ -48285,7 +48335,10 @@ export class Example {}
 **Template:**
 ```html
 <form [formGroup]="form">
-<tui-input formControlName="control" (tuiValueChanges)="onChanges($event)" > Value changes on blur </tui-input>
+<tui-textfield>
+<input formControlName="control" tuiTextfield (tuiValueChanges)="onChanges($event)" />
+<label tuiLabel>Value changes on blur</label>
+</tui-textfield>
 </form>
 ```
 **TypeScript:**
@@ -48295,11 +48348,10 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValueChanges} from '@taiga-ui/cdk';
-import {TuiNotificationService} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiLabel, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiInputModule, TuiValueChanges],
+    imports: [ReactiveFormsModule, TuiLabel, TuiTextfield, TuiValueChanges],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -48919,7 +48971,10 @@ export default class Page {
 **Template:**
 ```html
 <div appearance="floating" tuiCardLarge >
-<tui-input [(ngModel)]="value">Input example</tui-input>
+<tui-textfield>
+<input tuiTextfield [(ngModel)]="value" />
+<label tuiLabel>Input example</label>
+</tui-textfield>
 <label tuiLabel>
 <input tuiCheckbox type="checkbox" [(ngModel)]="checkbox" /> Checkbox example </label>
 </div>
@@ -48930,10 +48985,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiLabel} from '@taiga-ui/core';
+import {TuiAppearance, TuiLabel, TuiTextfield} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'tui-variables-example-1',
@@ -48942,8 +48996,8 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiAppearance,
         TuiCardLarge,
         TuiCheckbox,
-        TuiInputModule,
         TuiLabel,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -49582,26 +49636,29 @@ export class Example {}
 <p> @if (default | tuiEmails; as emails) { <tui-input [(ngModel)]="default"> Standard addresses @if (emails.length) { <ng-template tuiDataList>
 <tui-data-list-wrapper [items]="emails" />
 </ng-template> } </tui-input> } </p>
-<p> @if (custom | tuiEmails: emails; as emails) { <tui-input [(ngModel)]="custom"> Custom addresses @if (emails.length) { <ng-template tuiDataList>
+<p> @if (custom | tuiEmails: emails; as emails) { <tui-textfield>
+<input tuiTextfield [(ngModel)]="custom" />
+<label tuiLabel>Custom addresses</label> @if (emails.length) { <ng-template tuiDataList tuiDropdown >
 <tui-data-list-wrapper [items]="emails" />
-</ng-template> } </tui-input> } </p>
+</ng-template> } </tui-textfield> } </p>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataList, TuiLabel, TuiTextfield} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiEmailsPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
+        ReactiveFormsModule,
         TuiDataList,
         TuiDataListWrapper,
         TuiEmailsPipe,
-        TuiInputModule,
+        TuiLabel,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,
@@ -49798,8 +49855,9 @@ export class Example {}
 **Template:**
 ```html
 <form [formGroup]="form">
-<tui-input formControlName="user"> User <tui-data-list-wrapper *tuiDataList [items]="items | tuiFilterByInput" />
-</tui-input>
+<tui-textfield>
+<input #input formControlName="user" tuiTextfield />
+<label tuiLabel>User</label> @if (items | tuiFilterByInput; as filtered) { @if (input.value) { <tui-data-list-wrapper *tuiDropdown [items]="filtered" /> } } </tui-textfield>
 </form>
 ```
 **TypeScript:**
@@ -49808,15 +49866,16 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLabel, TuiTextfield} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         ReactiveFormsModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiInputModule,
+        TuiLabel,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -49969,8 +50028,9 @@ export default class Example {
 **Template:**
 ```html
 <form [formGroup]="form">
-<tui-input formControlName="user"> User <tui-data-list-wrapper *tuiDataList [items]="items$ | async | tuiFilterByInput" />
-</tui-input>
+<tui-textfield>
+<input #input formControlName="user" tuiTextfield />
+<label tuiLabel>User</label> @if (items$ | async | tuiFilterByInput; as filtered) { @if (input.value) { <tui-data-list-wrapper *tuiDropdown [items]="filtered" /> } } </tui-textfield>
 </form>
 ```
 **TypeScript:**
@@ -49980,8 +50040,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of, startWith} from 'rxjs';
 
 @Component({
@@ -49991,7 +50051,7 @@ import {delay, of, startWith} from 'rxjs';
         ReactiveFormsModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiInputModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

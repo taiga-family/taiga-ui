@@ -1,0 +1,34 @@
+import"./chunk-42JZD6NG.js";var i=`<p>
+    @if (default | tuiEmails; as emails) {
+        <tui-input [(ngModel)]="default">
+            Standard addresses
+            @if (emails.length) {
+                <ng-template tuiDataList>
+                    <tui-data-list-wrapper [items]="emails" />
+                </ng-template>
+            }
+        </tui-input>
+    }
+</p>
+<p>
+    @if (custom | tuiEmails: emails; as emails) {
+        <tui-textfield>
+            <input
+                tuiTextfield
+                [(ngModel)]="custom"
+            />
+
+            <label tuiLabel>Custom addresses</label>
+
+            @if (emails.length) {
+                <ng-template
+                    tuiDataList
+                    tuiDropdown
+                >
+                    <tui-data-list-wrapper [items]="emails" />
+                </ng-template>
+            }
+        </tui-textfield>
+    }
+</p>
+`;export{i as default};

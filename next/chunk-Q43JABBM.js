@@ -1,0 +1,40 @@
+import"./chunk-42JZD6NG.js";var i=`<button
+    size="m"
+    tuiButton
+    tuiHint="Some text"
+    tuiHintDirection="top"
+    type="button"
+    (click)="showDialog()"
+>
+    Show
+</button>
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{label: 'Declarative directive', size: 's'}"
+    [(tuiDialog)]="open"
+>
+    <form
+        [formGroup]="exampleForm"
+        (ngSubmit)="observer.complete()"
+    >
+        <p>This abstracts away service and subscription</p>
+        <tui-textfield>
+            <input
+                formControlName="exampleControl"
+                tuiAutoFocus
+                tuiTextfield
+            />
+            <label tuiLabel>Some value</label>
+        </tui-textfield>
+
+        <p>
+            <button
+                tuiButton
+                type="submit"
+            >
+                Ok
+            </button>
+        </p>
+    </form>
+</ng-template>
+`;export{i as default};

@@ -1,0 +1,22 @@
+import"./chunk-42JZD6NG.js";var t=`<div
+    appearance="floating"
+    tuiCardLarge
+>
+    <tui-textfield>
+        <input
+            tuiTextfield
+            [(ngModel)]="value"
+        />
+        <label tuiLabel>Input example</label>
+    </tui-textfield>
+
+    <label tuiLabel>
+        <input
+            tuiCheckbox
+            type="checkbox"
+            [(ngModel)]="checkbox"
+        />
+        Checkbox example
+    </label>
+</div>
+`;export{t as default};

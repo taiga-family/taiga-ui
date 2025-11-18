@@ -1,0 +1,18 @@
+import"./chunk-42JZD6NG.js";var l=`<tui-textfield>
+    <input
+        tuiTextfield
+        [(ngModel)]="value"
+    />
+    <label tuiLabel>Type something</label>
+</tui-textfield>
+
+<p>
+    <button
+        tuiButton
+        type="button"
+        (mousedown.prevent.zoneless)="keyboard.toggle()"
+    >
+        Toggle
+    </button>
+</p>
+`;export{l as default};

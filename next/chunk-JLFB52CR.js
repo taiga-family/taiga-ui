@@ -1,0 +1,27 @@
+import"./chunk-42JZD6NG.js";var i=`<tui-badged-content>
+    <tui-badge-notification
+        size="xs"
+        tuiSlot="top"
+    />
+    <tui-textfield class="input">
+        <input tuiTextfield />
+        <label tuiLabel>Input text</label>
+    </tui-textfield>
+</tui-badged-content>
+
+<tui-badged-content>
+    <tui-icon
+        appearance="accent"
+        iconStart="@tui.check"
+        size="s"
+        tuiBadge
+        tuiSlot="bottom"
+    />
+    <button
+        tuiButton
+        type="button"
+    >
+        Button
+    </button>
+</tui-badged-content>
+`;export{i as default};
