@@ -1,7 +1,6 @@
 import {
     type AfterContentChecked,
     type AfterContentInit,
-    computed,
     contentChildren,
     Directive,
     ElementRef,
