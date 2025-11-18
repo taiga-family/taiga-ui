@@ -60,7 +60,7 @@ export class TuiSearchHistory {
     }
 
     protected remove(item: string): void {
-        this.textfield.input?.nativeElement.focus();
+        this.textfield.input()?.nativeElement.focus();
         this.history = this.history.filter((v) => v !== item);
         this.storage?.setItem(
             this.options.key,
@@ -70,7 +70,7 @@ export class TuiSearchHistory {
 
     protected select(item: string): void {
         this.control.control?.setValue(item);
-        this.textfield.input?.nativeElement.focus();
+        this.textfield.input()?.nativeElement.focus();
     }
 
     private get items(): readonly string[] {

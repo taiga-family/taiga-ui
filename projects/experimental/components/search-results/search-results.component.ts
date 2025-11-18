@@ -71,7 +71,7 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
         const elements = Array.from(this.el.querySelectorAll<HTMLElement>('[tuiCell]'));
 
         if (elements[0] === current && step < 0) {
-            this.textfield.input?.nativeElement.focus();
+            this.textfield.input()?.nativeElement.focus();
         } else {
             tuiMoveFocus(elements.indexOf(current), elements, step);
         }
@@ -81,7 +81,7 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
         const max = Object.values(this.results || {}).filter((v) => v.length).length;
 
         this.active = tuiClamp(this.active + step, 0, max);
-        this.textfield.input?.nativeElement.focus();
+        this.textfield.input()?.nativeElement.focus();
     }
 
     protected notEmpty({value}: KeyValue<string, readonly T[]>): boolean {

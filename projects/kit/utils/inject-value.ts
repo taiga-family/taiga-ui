@@ -6,7 +6,7 @@ import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 
 export function tuiInjectValue<T>(): Signal<T> {
     const control =
-        inject(TuiTextfieldComponent, {optional: true})?.control ||
+        inject(TuiTextfieldComponent, {optional: true})?.control() ||
         inject(NgControl, {optional: true});
 
     return toSignal(tuiControlValue(control), {requireSync: true});

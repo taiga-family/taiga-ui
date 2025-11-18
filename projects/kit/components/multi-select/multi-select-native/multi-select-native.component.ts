@@ -8,7 +8,7 @@ import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-li
 import {
     TuiSelectLike,
     TuiTextfield,
-    TuiTextfieldComponent,
+    TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {
     TUI_ITEMS_HANDLERS,
@@ -35,7 +35,7 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
 })
 export class TuiMultiSelectNative<T> {
     private readonly control: TuiControl<readonly T[]> = inject(TuiControl);
-    private readonly textfield = inject(TuiTextfieldComponent);
+    private readonly textfield = inject(TuiTextfieldMultiComponent);
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -62,9 +62,9 @@ export class TuiMultiSelectNative<T> {
     }
 
     protected onInput(): void {
-        const items = this.items || [];
+        const items = this.items?.flat() || [];
         const options = Array.from(this.el.selectedOptions).map(({index}) => index);
 
-        this.textfield.cva?.onChange(items.flat().filter((_, i) => options.includes(i)));
+        this.textfield.cva()?.onChange(items.filter((_, i) => options.includes(i)));
     }
 }

@@ -12,9 +12,9 @@ import {TuiTextfieldComponent} from './textfield.component';
     selector: 'ng-template[tuiTextfieldContent]',
 })
 export class TuiTextfieldContent implements DoCheck, OnDestroy {
-    private readonly ref = inject(TuiTextfieldComponent).vcr?.createEmbeddedView(
-        inject(TemplateRef),
-    );
+    private readonly ref = inject(TuiTextfieldComponent)
+        .vcr()
+        ?.createEmbeddedView(inject(TemplateRef));
 
     public ngDoCheck(): void {
         this.ref?.detectChanges();
