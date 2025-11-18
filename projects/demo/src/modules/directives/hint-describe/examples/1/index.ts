@@ -5,7 +5,7 @@ import {TuiButton, TuiHint, TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiHint, TuiIcon, TuiTooltip, TuiTextfield],
+    imports: [FormsModule, TuiButton, TuiHint, TuiIcon, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     changeDetection,
 })

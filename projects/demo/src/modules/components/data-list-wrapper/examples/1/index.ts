@@ -3,16 +3,16 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [
         ReactiveFormsModule,
         TuiDataListWrapper,
-        TuiTextfield,
         TuiDropdown,
         TuiFilterByInputPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
