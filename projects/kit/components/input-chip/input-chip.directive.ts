@@ -40,7 +40,7 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
     hostDirectives: [TuiWithTextfield],
     host: {
         enterkeyhint: 'enter',
-        '[style.outline]': '"none"',
+        '[attr.tuiAppearance]': 'null',
         '[disabled]': 'disabled()',
         '(keydown.enter.prevent)': 'onEnter()',
         '(keydown.zoneless)': 'onBackspace($event.key)',
