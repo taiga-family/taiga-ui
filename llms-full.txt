@@ -9394,9 +9394,10 @@ import {Option} from './option';
     providers: [tuiAsOptionContent(Option)],
 })
 export default class Example {
-    protected readonly items = new Array(5)
-        .fill(null)
-        .map((_, index) => `Option ${index + 1}`);
+    protected readonly items = Array.from(
+        {length: 5},
+        (_, index) => `Option ${index + 1}`,
+    );
 
     protected readonly control = new FormControl<string | null>(this.items[2]!);
 }
@@ -13596,7 +13597,7 @@ export default class Example {
 
     protected search = '';
 
-    protected readonly items = new Array(15).fill(0).map((_, index) => ({
+    protected readonly items = Array.from({length: 15}, (_, index) => ({
         title: `Title ${index + 1}`,
         description: `Description ${index + 1}`,
     }));
@@ -23911,7 +23912,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-    private enabled = new Array(5).fill(true);
+    private enabled = Array.from<unknown, boolean>({length: 5}, () => true);
 
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
@@ -23922,7 +23923,7 @@ export default class Example {
     }
 
     protected isEnabled(index: number): boolean {
-        return this.enabled[index];
+        return this.enabled[index] ?? false;
     }
 
     protected toggle(index: number): void {
@@ -23944,7 +23945,7 @@ export default class Example {
     @tuiPure
     private getValue(
         data: readonly number[],
-        enabled: readonly number[],
+        enabled: readonly boolean[],
     ): readonly number[] {
         return data.map((value, index) => (enabled[index] ? value : 0));
     }
@@ -25111,7 +25112,7 @@ export default class Example {
         'Paradox',
     ];
 
-    protected readonly users = Array.from(new Array(10_000), (_, index) => {
+    protected readonly users = Array.from({length: 10_000}, (_, index) => {
         const firstName = this.names[Math.floor(Math.random() * this.names.length)] ?? '';
         const lastName =
             this.names[Math.floor((Math.random() * this.names.length) / 2)] ?? '';
@@ -25347,11 +25348,20 @@ export default class Example {
 
     @tuiPure
     private computeValue({from, to}: TuiDayRange): ReadonlyArray<[TuiDay, number]> {
-        return new Array(TuiDay.lengthBetween(from, to) + 1)
-            .fill(0)
-            .reduce<
-                ReadonlyArray<[TuiDay, number]>
-            >((array, _, i) => [...array, [from.append({day: i}), this.isE2E ? 100 : (i ? (array[i - 1]?.[1] ?? 0) : 100) + Math.random() * 10 - 5]], []);
+        const length = TuiDay.lengthBetween(from, to) + 1;
+
+        return Array.from({length}).reduce<ReadonlyArray<[TuiDay, number]>>(
+            (array, _, i) => [
+                ...array,
+                [
+                    from.append({day: i}),
+                    this.isE2E
+                        ? 100
+                        : (i ? (array[i - 1]?.[1] ?? 0) : 100) + Math.random() * 10 - 5,
+                ],
+            ],
+            [],
+        );
     }
 }
 ```
@@ -25544,8 +25554,7 @@ export default class Example {
         {from, to}: TuiDayRange,
         initial: number,
     ): ReadonlyArray<[TuiDay, number]> {
-        return new Array(TuiDay.lengthBetween(from, to) + 1)
-            .fill(0)
+        return Array.from({length: TuiDay.lengthBetween(from, to) + 1})
             .reduce<ReadonlyArray<[TuiDay, number]>>(
                 (array, _, i) => [
                     ...array,
@@ -25606,11 +25615,16 @@ export default class Page {
     protected readonly months = inject(TUI_MONTHS);
 
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
-        new Array(91)
-            .fill(0)
-            .reduce<
-                ReadonlyArray<[TuiDay, number]>
-            >((array, _, i) => [...array, [new TuiDay(2020, 0, 1).append({day: i}), (i ? (array[i - 1]?.[1] ?? 0) : 100) + Math.random() * 20 - 10]], []),
+        Array.from({length: 91}).reduce<ReadonlyArray<[TuiDay, number]>>(
+            (array, _, i) => [
+                ...array,
+                [
+                    new TuiDay(2020, 0, 1).append({day: i}),
+                    (i ? (array[i - 1]?.[1] ?? 0) : 100) + Math.random() * 20 - 10,
+                ],
+            ],
+            [],
+        ),
         [
             [new TuiDay(2020, 1, 10), 10],
             [new TuiDay(2020, 1, 15), 150],
@@ -30928,8 +30942,9 @@ export default class Example {
     protected readonly max = 100;
     protected readonly step = 25;
     protected readonly segments = 4;
-    protected readonly labels = [...new Array(this.segments + 1).keys()].map(
-        (i) => this.min + this.step * i,
+    protected readonly labels = Array.from(
+        {length: this.segments + 1},
+        (_, i) => this.min + this.step * i,
     );
 
     protected value = [0, 25];
@@ -46694,9 +46709,10 @@ export default class Page {
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-background-accent-1)'],
         ['#39b54a', '#ffd450', '#ffd450', '#fcc521', '#fab619', '#f8a34d', '#e01f19'],
-        new Array(20)
-            .fill('')
-            .map((_, index) => `var(--tui-chart-categorical-0${index + 1})`),
+        Array.from(
+            {length: 20},
+            (_, index) => `var(--tui-chart-categorical-0${index + 1})`,
+        ),
     ];
 
     protected colors: string[] = this.colorsVariants[0] ?? [];
