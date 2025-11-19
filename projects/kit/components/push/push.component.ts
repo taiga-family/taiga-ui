@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -14,7 +13,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-push',
-    imports: [AsyncPipe, TuiButton, TuiFormatDatePipe],
+    imports: [TuiButton, TuiFormatDatePipe],
     templateUrl: './push.template.html',
     styleUrl: './push.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

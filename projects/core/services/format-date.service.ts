@@ -1,5 +1,4 @@
-import {inject, Injectable, LOCALE_ID} from '@angular/core';
-import {type Observable, of} from 'rxjs';
+import {inject, Injectable, LOCALE_ID, type Signal, signal} from '@angular/core';
 
 @Injectable({
     providedIn: 'root',
@@ -7,8 +6,8 @@ import {type Observable, of} from 'rxjs';
 export class TuiFormatDateService {
     protected readonly locale = inject(LOCALE_ID);
 
-    public format(timestamp: number): Observable<string> {
-        return of(
+    public format(timestamp: number): Signal<string> {
+        return signal(
             new Date(timestamp).toLocaleTimeString(this.locale, {
                 hour: 'numeric',
                 minute: '2-digit',
