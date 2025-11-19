@@ -291,18 +291,18 @@ export default class Example {
 <tui-accordion class="accordion"> @for (group of operations | keyvalue: orderBy; track group) { <button appearance="" iconEnd="" tuiAccordion tuiCell >
 <span tuiTitle>
 <strong>{{ group.key }}</strong>
-<span tuiSubtitle> @if (group.value.length) { {{ group.value.length }} operations • Total: {{ sum(group.value) | tuiAmount: '$' : 'left' | async }} } @else { No operations so far } </span>
+<span tuiSubtitle> @if (group.value.length) { {{ group.value.length }} operations • Total: {{ sum(group.value) | tuiAmount: '$' : 'left' }} } @else { No operations so far } </span>
 </span>
 </button>
 <tui-expand [style.display]="group.value.length ? null : 'none'"> @for (operation of group.value; track operation) { <div tuiCell>
 <div [appearance]="operation.sum && operation.sum > 0 ? '' : 'negative'" [tuiAvatar]="getIcon(operation)" ></div>
 <span tuiTitle>
-<strong>{{ operation.title }}</strong> @if (operation.subtitle) { <span tuiSubtitle> {{ operation.subtitle }} </span> } </span> @if (operation.sum) { <span tuiTitle [style.color]="operation.sum > 0 ? 'var(--tui-text-positive)' : null" > {{ operation.sum | tuiAmount: '$' : 'left' | async }} <span tuiSubtitle>{{ operation.time }}</span>
+<strong>{{ operation.title }}</strong> @if (operation.subtitle) { <span tuiSubtitle> {{ operation.subtitle }} </span> } </span> @if (operation.sum) { <span tuiTitle [style.color]="operation.sum > 0 ? 'var(--tui-text-positive)' : null" > {{ operation.sum | tuiAmount: '$' : 'left' }} <span tuiSubtitle>{{ operation.time }}</span>
 </span> } @else { <button appearance="secondary" tuiButton type="button" > Retry </button> } </div> } </tui-expand> } </tui-accordion>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe, KeyValuePipe} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -319,7 +319,6 @@ interface Operation {
 
 @Component({
     imports: [
-        AsyncPipe,
         KeyValuePipe,
         TuiAccordion,
         TuiAmountPipe,
@@ -640,25 +639,17 @@ export class App {}
 <tui-icon icon="@tui.x" class="tui-space_right-3" /> Select none and close </span>
 </button>
 </tui-opt-group>
-<tui-opt-group>
-<button *tuiRepeatTimes="let index of 5" role="menuitem" tuiOption type="button" >
+<tui-opt-group> @for (_ of '-'.repeat(5); track $index) { <button role="menuitem" tuiOption type="button" >
 <span>
-<tui-icon icon="@tui.star" class="tui-space_right-3" /> Action {{ index + 1 }} </span>
-</button>
-</tui-opt-group>
+<tui-icon icon="@tui.star" class="tui-space_right-3" /> Action {{ $index + 1 }} </span>
+</button> } </tui-opt-group>
 </tui-data-list>
 <div>
 <strong>Selected: {{ selected }} of {{ items.length }}</strong> @if (!isMobile()) { <button tuiLink type="button" class="tui-space_left-3" (click)="toggleSelect()" > {{ selected < items.length ? 'Select all' : 'Select none' }} </button> } </div>
-<tui-items-with-more>
-<ng-container *tuiRepeatTimes="let index of 5">
-<button *tuiItem iconStart="@tui.star" tuiButton type="button" > Action {{ index + 1 }} </button>
-</ng-container>
-<ng-template let-lastIndex tuiMore >
+<tui-items-with-more> @for (_ of '-'.repeat(5); track $index) { <button *tuiItem iconStart="@tui.star" tuiButton type="button" > Action {{ $index + 1 }} </button> } <ng-template let-lastIndex tuiMore >
 <button iconStart="@tui.ellipsis" tuiButton tuiDropdownAlign="right" tuiDropdownOpen type="button" [tuiDropdown]="dropdown" > More </button>
 <ng-template #dropdown>
-<tui-data-list size="l">
-<ng-container *tuiRepeatTimes="let index of 5"> @if (index > lastIndex) { <button tuiOption type="button" > Action {{ index + 1 }} </button> } </ng-container>
-</tui-data-list>
+<tui-data-list size="l"> @for (_ of '-'.repeat(5); track $index) { @if ($index > lastIndex) { <button tuiOption type="button" > Action {{ $index + 1 }} </button> } } </tui-data-list>
 </ng-template>
 </ng-template>
 </tui-items-with-more> @if (!isMobile()) { <button iconStart="@tui.send" tuiButton type="button" > Send </button> } @if (!isMobile()) { <button iconStart="@tui.trash" tuiButton type="button" (click)="close()" > Delete </button> } @if (isMobile()) { <button iconStart="@tui.send" tuiIconButton type="button" > Send </button> } @if (isMobile()) { <button iconStart="@tui.ellipsis" tuiIconButton type="button" (click)="expanded = !expanded" > More </button> } @if (!isMobile()) { <button appearance="icon" iconStart="@tui.x" tuiIconButton type="button" (click)="close()" > Close </button> } </tui-action-bar>
@@ -670,7 +661,6 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiBreakpointService,
     TuiButton,
@@ -695,7 +685,6 @@ import {map} from 'rxjs';
         TuiItemsWithMore,
         TuiLink,
         TuiPopup,
-        TuiRepeatTimes,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -1112,29 +1101,23 @@ export default class Example {
 <div *tuiDynamicHeaderAnchor tuiHeader="h6" >
 <h6 tuiTitle> Title 1 <div tuiSubtitle>Subtitle</div>
 </h6>
-</div>
-<div *tuiRepeatTimes="let i of 7" tuiCell >
+</div> @for (_ of '-'.repeat(7); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-<div *tuiDynamicHeaderAnchor tuiHeader="h6" >
+</div> } <div *tuiDynamicHeaderAnchor tuiHeader="h6" >
 <h6 tuiTitle>Title 2</h6>
-</div>
-<div *tuiRepeatTimes="let i of 15" tuiCell >
+</div> @for (_ of '-'.repeat(15); track $index) { <div tuiCell>
 <div appearance="secondary" tuiAvatar="@tui.heart" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-<div *tuiDynamicHeaderAnchor tuiHeader="h6" >
+</div> } <div *tuiDynamicHeaderAnchor tuiHeader="h6" >
 <h6 tuiTitle>Title 3 Long title</h6>
-</div>
-<div *tuiRepeatTimes="let i of 15" tuiCell >
+</div> @for (_ of '-'.repeat(15); track $index) { <div tuiCell>
 <div appearance="secondary" tuiAvatar="@tui.heart" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-</div>
+</div> } </div>
 </div>
 ```
 **TypeScript:**
@@ -1142,7 +1125,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPlatform, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSegmented} from '@taiga-ui/kit';
 import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
@@ -1155,7 +1138,6 @@ import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
         TuiDynamicHeader,
         TuiHeader,
         TuiPlatform,
-        TuiRepeatTimes,
         TuiSegmented,
         TuiTitle,
     ],
@@ -1254,14 +1236,13 @@ export class Example {}
 <tui-arc-chart size="l" class="tui-space_right-4" [value]="value" [(activeItemIndex)]="activeItemIndex" > Total value <div>Label</div>
 </tui-arc-chart>
 <tui-arc-chart size="xl" class="tui-space_right-4" [value]="value" [(activeItemIndex)]="activeItemIndex" >
-<span>{{ 123456 | tuiAmount: 'RUB' | async }}</span>
+<span>{{ 123456 | tuiAmount: 'RUB' }}</span>
 <div>Not bad!</div>
 </tui-arc-chart>
 </div>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -1273,7 +1254,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiArcChart,
@@ -1835,12 +1815,11 @@ export default class Example {
 <ng-template #hint let-setIndex > @for (item of value; track item) { <p class="hint">
 <span class="dot" [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`" ></span>
 <span class="name">{{ getSetName($index) }}</span>
-<span>{{ (item[setIndex] || 0) * 1000 | tuiAmount: 'RUB' | async }}</span>
+<span>{{ (item[setIndex] || 0) * 1000 | tuiAmount: 'RUB' }}</span>
 </p> } </ng-template>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -1857,7 +1836,7 @@ import {TuiHint} from '@taiga-ui/core';
 const BENJI = 100;
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
+    imports: [TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -2086,9 +2065,7 @@ export class Example {}
 <tui-badge appearance="info">Info</tui-badge>
 <p>Custom status</p>
 <tui-badge tuiStatus="var(--tui-chart-categorical-09)" [style.background]="'var(--tui-chart-categorical-01)'" > Custom </tui-badge>
-<p>Use CSS for support colors</p>
-<tui-badge *tuiRepeatTimes="let index of 20" [style.background]="`var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`" > Taiga </tui-badge>
-<p>Sizes</p>
+<p>Use CSS for support colors</p> @for (_ of '-'.repeat(20); track $index) { <tui-badge [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"> Taiga </tui-badge> } <p>Sizes</p>
 <tui-badge appearance="positive" size="xl" tuiStatus > Success </tui-badge>
 <tui-badge appearance="positive" size="l" tuiStatus > Success </tui-badge>
 <tui-badge appearance="positive" size="m" tuiStatus > Success </tui-badge>
@@ -2099,11 +2076,10 @@ export class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiBadge, TuiStatus} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiBadge, TuiRepeatTimes, TuiStatus],
+    imports: [TuiBadge, TuiStatus],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -3574,7 +3550,7 @@ export class Example {}
 <div tuiAvatar="JW" [size]="isMobile ? 'xl' : 'xxl'" ></div>
 <h2 tuiTitle> John W <div tuiSubtitle>money transfers</div>
 </h2>
-<span>{{ -1050 | tuiAmount: 'USD' | async }}</span>
+<span>{{ -1050 | tuiAmount: 'USD' }}</span>
 <span tuiSubtitle>today</span>
 <span tuiSubtitle>extra subtitle</span>
 <span tuiComment>Birthday gift</span>
@@ -3588,7 +3564,6 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -3600,7 +3575,6 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiAvatar,
         TuiBadge,
@@ -3626,7 +3600,7 @@ export default class Example {
 <div tuiAvatar="@tui.gift" [size]="isMobile ? 'xl' : 'xxl'" ></div>
 <h2 tuiTitle> Auchan <div tuiSubtitle>grocery &#x2022; MMC 5350</div>
 </h2>
-<span [style.color]="'var(--tui-text-positive)'">{{ 0.5 | tuiAmount: 'USD' | async }}</span>
+<span [style.color]="'var(--tui-text-positive)'">{{ 0.5 | tuiAmount: 'USD' }}</span>
 <span tuiFade tuiSubtitle > promotion (long value with fade) </span>
 <tui-badge appearance="neutral">cashback</tui-badge>
 </div>
@@ -3634,12 +3608,11 @@ export default class Example {
 <div tuiAvatar="@tui.star" [size]="isMobile ? 'xl' : 'xxl'" ></div>
 <h2 tuiTitle> Uber <div tuiSubtitle>taxi &#x2022; MMC 5550</div>
 </h2>
-<span [style.color]="'var(--tui-text-negative)'">{{ -10.5 | tuiAmount: 'USD' | async }}</span>
+<span [style.color]="'var(--tui-text-negative)'">{{ -10.5 | tuiAmount: 'USD' }}</span>
 </div>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -3650,15 +3623,7 @@ import {TuiAvatar, TuiBadge, TuiFade} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        TuiAmountPipe,
-        TuiAvatar,
-        TuiBadge,
-        TuiBlockDetails,
-        TuiFade,
-        TuiTitle,
-    ],
+    imports: [TuiAmountPipe, TuiAvatar, TuiBadge, TuiBlockDetails, TuiFade, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -4232,9 +4197,7 @@ export default class Example {
 <input tuiCheckbox type="checkbox" [(ngModel)]="show" /> Show more content </label>
 <tui-bottom-sheet [stops]="['9.5rem', '18.5rem', '100%']">
 <header class="header"> Taiga UI <a href="https://github.com/taiga-family/taiga-ui" iconStart="@tui.star" rel="noopener noreferrer" size="m" target="_blank" tuiButton > Give us a Star </a>
-</header> @if (show) { <img alt="" src="assets/images/taiga-family.png" [style.inline-size.%]="100" [style.margin-block-start.rem]="2" />
-<p *tuiRepeatTimes="let index of 20">All work and no play makes Jack a dull boy</p>
-<tui-accordion>
+</header> @if (show) { <img alt="" src="assets/images/taiga-family.png" [style.inline-size.%]="100" [style.margin-block-start.rem]="2" /> @for (_ of '-'.repeat(20); track $index) { <p>All work and no play makes Jack a dull boy</p> } <tui-accordion>
 <button tuiAccordion>Show more</button>
 <tui-expand>All work and no play makes Jack a dull boy</tui-expand>
 </tui-accordion> } </tui-bottom-sheet>
@@ -4246,7 +4209,6 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiAccordion, TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
 
@@ -4258,7 +4220,6 @@ import {TuiAccordion, TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
         TuiBottomSheet,
         TuiButton,
         TuiCheckbox,
-        TuiRepeatTimes,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -6908,13 +6869,11 @@ export default class Example {}
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 </header>
-<section>
-<div *tuiRepeatTimes="let index of 3" appearance="neutral" tuiCardMedium >
+<section> @for (_ of '-'.repeat(3); track $index) { <div appearance="neutral" tuiCardMedium >
 <tui-icon icon="@tui.square-plus" class="plus" />
 <h2 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h2>
-</div>
-</section>
+</div> } </section>
 <footer>
 <button appearance="secondary" size="m" tuiButton type="button" > Label </button>
 </footer>
@@ -6925,20 +6884,11 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        TuiButton,
-        TuiCardLarge,
-        TuiCardMedium,
-        TuiHeader,
-        TuiIcon,
-        TuiRepeatTimes,
-        TuiTitle,
-    ],
+    imports: [TuiButton, TuiCardLarge, TuiCardMedium, TuiHeader, TuiIcon, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -6955,13 +6905,11 @@ export default class Example {}
 <header tuiHeader>
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
-</header>
-<div *tuiRepeatTimes="let index of 3" tuiCell="l" >
+</header> @for (_ of '-'.repeat(3); track $index) { <div tuiCell="l">
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-<footer>
+</div> } <footer>
 <button appearance="secondary" size="m" tuiButton type="button" > Label </button>
 </footer>
 </div>
@@ -6971,21 +6919,12 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        TuiAvatar,
-        TuiButton,
-        TuiCardLarge,
-        TuiCell,
-        TuiHeader,
-        TuiRepeatTimes,
-        TuiTitle,
-    ],
+    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -7002,13 +6941,11 @@ export default class Example {}
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 </header>
-<section class="actions">
-<div *tuiRepeatTimes="let index of 6" tuiCell="l" >
+<section class="actions"> @for (_ of '-'.repeat(6); track $index) { <div tuiCell="l">
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-</section>
+</div> } </section>
 <footer>
 <button appearance="secondary" size="m" tuiButton type="button" > Label </button>
 </footer>
@@ -7019,21 +6956,12 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        TuiAvatar,
-        TuiButton,
-        TuiCardLarge,
-        TuiCell,
-        TuiHeader,
-        TuiRepeatTimes,
-        TuiTitle,
-    ],
+    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -7050,14 +6978,12 @@ export default class Example {}
 <header tuiHeader>
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
-</header>
-<button *tuiRepeatTimes="let index of 3" tuiCell="l" tuiDropdownAlign="right" tuiDropdownOpen type="button" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" >
+</header> @for (_ of '-'.repeat(3); track $index) { <button tuiCell="l" tuiDropdownAlign="right" tuiDropdownOpen type="button" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" >
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
 <tui-icon icon="@tui.chevron-right" tuiAppearance="icon" />
-</button>
-<button tuiLink type="button" > Show all </button>
+</button> } <button tuiLink type="button" > Show all </button>
 </div>
 <ng-template #dropdown let-close >
 <tui-data-list>
@@ -7073,7 +6999,6 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiCell,
@@ -7097,7 +7022,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiIcon,
         TuiLink,
-        TuiRepeatTimes,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -7112,13 +7036,11 @@ export default class Example {}
 
 **Template:**
 ```html
-<div appearance="floating" tuiCardLarge >
-<div *tuiRepeatTimes="let index of 3" tuiCell="l" >
+<div appearance="floating" tuiCardLarge > @for (_ of '-'.repeat(3); track $index) { <div tuiCell="l">
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-</div>
+</div> } </div>
 <div appearance="floating" tuiCardLarge >
 <div tuiCell="l">
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
@@ -7133,13 +7055,12 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiRepeatTimes, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiTitle],
     templateUrl: './index.html',
     styles: ':host { display: flex; flex-direction: column; gap: 2rem}',
     encapsulation,
@@ -7613,12 +7534,8 @@ export class Example {}
 ### Example
 
 ```html
-<tui-carousel class="carousel" [draggable]="draggable" [duration]="duration" [itemsCount]="itemsCount" [style.--tui-carousel-padding]="itemPadding" [(index)]="index" (touchstart.passive.stop)="(0)" >
-<ng-container *tuiRepeatTimes="let item of 9">
-<div *tuiItem class="plate" > {{ item }} <button size="s" tuiButton type="button" class="button" > I'm focusable </button>
-</div>
-</ng-container>
-</tui-carousel>
+<tui-carousel class="carousel" [draggable]="draggable" [duration]="duration" [itemsCount]="itemsCount" [style.--tui-carousel-padding]="itemPadding" [(index)]="index" (touchstart.passive.stop)="(0)" > @for (_ of '-'.repeat(9); track $index) { <div *tuiItem class="plate" > {{ $index }} <button size="s" tuiButton type="button" class="button" > I'm focusable </button>
+</div> } </tui-carousel>
 ```
 
 ### API
@@ -7709,8 +7626,8 @@ export default class Example {
 <h2 class="title">Monty Python and the Holy Grail</h2>
 <p> King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering many, very silly obstacles. </p>
 <div>
-<button appearance="primary" tuiButton type="button" > Buy ${{ 12.99 | tuiAmount: 'RUB' | async }} </button>
-<button tuiButton type="button" class="tui-space_left-2" > Rent ${{ 4.99 | tuiAmount: 'RUB' | async }} </button>
+<button appearance="primary" tuiButton type="button" > Buy ${{ 12.99 | tuiAmount: 'RUB' }} </button>
+<button tuiButton type="button" class="tui-space_left-2" > Rent ${{ 4.99 | tuiAmount: 'RUB' }} </button>
 </div>
 </div>
 <div *tuiItem class="item" >
@@ -7728,7 +7645,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7737,7 +7653,7 @@ import {TuiButton, TuiLoader} from '@taiga-ui/core';
 import {TuiAvatar, TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiAvatar, TuiButton, TuiCarousel, TuiLoader],
+    imports: [TuiAmountPipe, TuiAvatar, TuiButton, TuiCarousel, TuiLoader],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -7881,12 +7797,11 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiDemo, TuiRepeatTimes],
+    imports: [TuiButton, TuiCarousel, TuiDemo],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -8989,38 +8904,24 @@ export default class Example {
 **Template:**
 ```html
 <h3>Checkbox</h3>
-<section>
-<label *tuiRepeatTimes="let i of checked.length" appearance="" tuiChip > Checkbox {{ i + 1 }} <input appearance="outline-grayscale" tuiChip type="checkbox" [(ngModel)]="checked[i]" />
-</label>
-</section>
+<section> @for (_ of '-'.repeat(checked.length); track $index) { <label appearance="" tuiChip > Checkbox {{ $index + 1 }} <input appearance="outline-grayscale" tuiChip type="checkbox" [(ngModel)]="checked[$index]" />
+</label> } </section>
 <h3>Radio</h3>
-<section>
-<label *tuiRepeatTimes="let i of 3" appearance="" tuiChip > Radio {{ i + 1 }} <input appearance="outline-grayscale" name="radio" tuiChip type="radio" [value]="i" />
-</label>
-</section>
+<section> @for (_ of '-'.repeat(3); track $index) { <label appearance="" tuiChip > Radio {{ $index + 1 }} <input appearance="outline-grayscale" name="radio" tuiChip type="radio" [value]="$index" />
+</label> } </section>
 <h3>Label outline</h3>
-<section>
-<label *tuiRepeatTimes="let i of checked.length" appearance="outline-grayscale" tuiChip >
-<input tuiCheckbox type="checkbox" [(ngModel)]="checked[i]" /> Label {{ i + 1 }} </label>
-</section>
+<section> @for (_ of '-'.repeat(checked.length); track $index) { <label appearance="outline-grayscale" tuiChip >
+<input tuiCheckbox type="checkbox" [(ngModel)]="checked[$index]" /> Label {{ $index + 1 }} </label> } </section>
 <h3>Label accent</h3>
-<section>
-<label *tuiRepeatTimes="let i of checked.length" tuiChip [appearance]="checked[i] ? 'accent' : 'neutral'" >
-<input hidden type="checkbox" [(ngModel)]="checked[i]" /> Label {{ i + 1 }} </label>
-</section>
+<section> @for (_ of '-'.repeat(checked.length); track $index) { <label tuiChip [appearance]="checked[$index] ? 'accent' : 'neutral'" >
+<input hidden type="checkbox" [(ngModel)]="checked[$index]" /> Label {{ $index + 1 }} </label> } </section>
 <h3>Button</h3>
-<section>
-<button *tuiRepeatTimes="let i of 3" tuiChip type="button" (click)="onChip(i)" > Button {{ i + 1 }} </button>
-</section>
-<section>
-<tui-chip *tuiRepeatTimes="let i of 3"> Close button {{ i + 1 }} <button iconStart="@tui.x" tuiIconButton type="button" (click.stop)="onX(i)" > Remove </button>
-</tui-chip>
-</section>
+<section> @for (_ of '-'.repeat(3); track $index) { <button tuiChip type="button" (click)="onChip($index)" > Button {{ $index + 1 }} </button> } </section>
+<section> @for (_ of '-'.repeat(3); track $index) { <tui-chip> Close button {{ $index + 1 }} <button iconStart="@tui.x" tuiIconButton type="button" (click.stop)="onX($index)" > Remove </button>
+</tui-chip> } </section>
 <h3>Input</h3>
-<section>
-<tui-chip *tuiRepeatTimes="let i of values.length" appearance="" [style.color]="'transparent'" > {{ values[i] }} <input tuiChip [(ngModel)]="values[i]" />
-</tui-chip>
-</section>
+<section> @for (_ of '-'.repeat(values.length); track $index) { <tui-chip appearance="" [style.color]="'transparent'" > {{ values[$index] }} <input tuiChip [(ngModel)]="values[$index]" />
+</tui-chip> } </section>
 ```
 **TypeScript:**
 ```ts
@@ -9028,12 +8929,11 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiCheckbox, TuiChip, TuiRepeatTimes],
+    imports: [FormsModule, TuiButton, TuiCheckbox, TuiChip],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -9063,7 +8963,7 @@ export default class Example {
 ```html
 <tui-chip appearance="primary" class="fade" >
 <div tuiFade>Very long value in chip</div>
-<div>{{ 123000 | tuiAmount: 'RUB' | async }}</div>
+<div>{{ 123000 | tuiAmount: 'RUB' }}</div>
 </tui-chip>
 <tui-chip appearance="accent" iconStart="@tui.box" >
 <div class="ellipsis">Very long value in chip</div>
@@ -9078,7 +8978,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -9088,7 +8987,6 @@ import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-u
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiBadgedContent,
         TuiBadgeNotification,
@@ -9159,14 +9057,14 @@ export default class Example {
 ```html
 <tui-chip appearance="accent" iconStart="@tui.shopping-cart" >
 <div tuiFade>Supermarkets</div>
-<div tuiFade>{{ 9000 | tuiAmount: 'USD' | async }}</div>
+<div tuiFade>{{ 9000 | tuiAmount: 'USD' }}</div>
 </tui-chip>
 <tui-chip appearance="accent">
 <span tuiAvatar="@tui.user">
 <img alt="" src="assets/images/avatar.jpg" />
 </span>
 <div tuiFade>AI</div>
-<div tuiFade>{{ 9870043000 | tuiAmount: 'USD' | async }}</div>
+<div tuiFade>{{ 9870043000 | tuiAmount: 'USD' }}</div>
 </tui-chip>
 <tui-chip appearance="accent" iconEnd="@tui.shower-head" >
 <div tuiFade>Long category name</div>
@@ -9174,12 +9072,11 @@ export default class Example {
 <p>Use CSS to set a custom priority for the fade:</p>
 <tui-chip appearance="primary" class="custom" >
 <div tuiFade>Miscellaneous goods</div>
-<div tuiFade>{{ 105000 | tuiAmount: 'USD' | async }}</div>
+<div tuiFade>{{ 105000 | tuiAmount: 'USD' }}</div>
 </tui-chip>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -9187,7 +9084,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAvatar, TuiChip, TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiAvatar, TuiChip, TuiFade],
+    imports: [TuiAmountPipe, TuiAvatar, TuiChip, TuiFade],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -10940,10 +10837,10 @@ export default class Example {
 </div>
 <ul class="exchange tui-list tui-list_large">
 <li class="tui-list__item">
-<span>{{ moneyValue / dollar | tuiAmount: 'USD' | async }}</span>
+<span>{{ moneyValue / dollar | tuiAmount: 'USD' }}</span>
 </li>
 <li class="tui-list__item">
-<span>{{ moneyValue / euro | tuiAmount: 'EUR' | async }}</span>
+<span>{{ moneyValue / euro | tuiAmount: 'EUR' }}</span>
 </li>
 </ul>
 </div>
@@ -10965,7 +10862,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -10984,7 +10880,6 @@ import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiButton,
@@ -11142,14 +11037,17 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-input [formControl]="control">
-  Account
-
+<tui-textfield>
+  <label tuiLabel>Account</label>
+  <input
+    [formControl]="control"
+    tuiTextfield
+  />
   <tui-data-list-wrapper
-    *tuiDataList
+    *tuiDropdown
     [items]="items"
-  ></tui-data-list-wrapper>
-</tui-input>
+  />
+</tui-textfield>
 ```
 
 ### API
@@ -11676,15 +11574,13 @@ export default class Example {
 <progress size="s" tuiProgressBar [max]="100" [style.width.rem]="10" [value]="35" ></progress>
 <button tuiButton tuiSlot="right" type="button" (click)="scrollable = false" > Action </button>
 </tui-app-bar>
-<section [style.margin]="'0 -1rem'">
-<div *tuiRepeatTimes="let _ of 50" tuiCell >
+<section [style.margin]="'0 -1rem'"> @for (_ of '-'.repeat(50); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
 <div tuiTitle> Secondary title <div tuiSubtitle>Another description</div>
 </div>
-</div>
-</section>
+</div> } </section>
 <footer tuiFloatingContainer>
 <button tuiButton type="button" (click)="scrollable = false" > Got it </button>
 <button appearance="flat" tuiButton type="button" (click)="scrollable = false" > Never mind </button>
@@ -11696,7 +11592,6 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiDialog, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
 import {TuiAppBar, TuiHeader} from '@taiga-ui/layout';
@@ -11711,7 +11606,6 @@ import {TuiAppBar, TuiHeader} from '@taiga-ui/layout';
         TuiFloatingContainer,
         TuiHeader,
         TuiProgress,
-        TuiRepeatTimes,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -11958,9 +11852,7 @@ export class Example {}
 <button size="xs" tuiButton type="button" > Primary </button>
 <button appearance="secondary" iconStart="@tui.ellipsis" size="xs" tuiIconButton type="button" > More </button>
 </nav>
-</header>
-<p *tuiRepeatTimes="let index of 15">Content</p>
-<footer>
+</header> @for (_ of '-'.repeat(15); track $index) { <p>Content</p> } <footer>
 <button size="m" tuiButton type="button" [style.margin-inline-end]="'auto'" > Tertiary action </button>
 <button size="m" tuiButton type="button" > Secondary action </button>
 <button appearance="primary" size="m" tuiButton type="button" > Primary action </button>
@@ -11972,7 +11864,6 @@ export class Example {}
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiPopup, TuiTitle} from '@taiga-ui/core';
 import {TuiBadge, TuiDrawer, TuiTabs} from '@taiga-ui/kit';
 import {TuiHeader, TuiNavigation} from '@taiga-ui/layout';
@@ -11986,7 +11877,6 @@ import {TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiLink,
         TuiNavigation,
         TuiPopup,
-        TuiRepeatTimes,
         TuiTabs,
         TuiTitle,
     ],
@@ -12016,9 +11906,7 @@ export default class Example {
 <tui-textfield>
 <label tuiLabel>Enter value</label>
 <input tuiTextfield [formControl]="control" />
-</tui-textfield>
-<p *tuiRepeatTimes="let index of 30">Content</p>
-</tui-drawer>
+</tui-textfield> @for (_ of '-'.repeat(30); track $index) { <p>Content</p> } </tui-drawer>
 ```
 **TypeScript:**
 ```ts
@@ -12026,7 +11914,6 @@ import {Component, inject, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDialogService,
@@ -12045,7 +11932,6 @@ import {filter} from 'rxjs';
         TuiDrawer,
         TuiHeader,
         TuiPopup,
-        TuiRepeatTimes,
         TuiTextfield,
         TuiTitle,
     ],
@@ -12226,9 +12112,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-elastic-container class="visible">
-<div *tuiRepeatTimes="let index of content" class="tui-space_bottom-4" > I'm content </div>
-<button size="s" tuiButton type="button" class="tui-space_right-2" (click)="add()" > Add content </button>
+<tui-elastic-container class="visible"> @for (_ of '-'.repeat(content); track $index) { <div class="tui-space_bottom-4">I'm content</div> } <button size="s" tuiButton type="button" class="tui-space_right-2" (click)="add()" > Add content </button>
 <button size="s" tuiButton type="button" (click)="remove()" > Remove content </button>
 </tui-elastic-container>
 ```
@@ -12237,12 +12121,11 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiElasticContainer} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiElasticContainer, TuiRepeatTimes],
+    imports: [TuiButton, TuiElasticContainer],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -12962,20 +12845,17 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="expanded = !expanded" > Show/Hide </button>
-<tui-expand [expanded]="expanded">
-<p *tuiRepeatTimes="let index of 3">I am eagerly loaded but hidden</p>
-</tui-expand>
+<tui-expand [expanded]="expanded"> @for (_ of '-'.repeat(3); track $index) { <p>I am eagerly loaded but hidden</p> } </tui-expand>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiExpand} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButton, TuiExpand, TuiRepeatTimes],
+    imports: [TuiButton, TuiExpand],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -13555,7 +13435,7 @@ export class Example {}
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="secondAction" /> Second action visibility </label>
 </p>
-<div class="content"> @for (i of 30 | tuiRepeatTimes; track i) { <div tuiCell>
+<div class="content"> @for (_ of '-'.repeat(30); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
@@ -13584,12 +13464,11 @@ export class Example {}
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="secondAction" /> Second action visibility </label>
 </p>
-<div #content class="content" (scroll)="onScroll(content)" >
-<div *tuiRepeatTimes="let i of 30" tuiCell >
+<div #content class="content" (scroll)="onScroll(content)" > @for (_ of '-'.repeat(30); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" >
+</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" >
 <button tuiButton type="button" > Main action </button> @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
 ```
 **TypeScript:**
@@ -13598,7 +13477,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -13617,7 +13495,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiCell,
         TuiFloatingContainer,
         TuiLabel,
-        TuiRepeatTimes,
         TuiSwitch,
         TuiTitle,
     ],
@@ -13743,7 +13620,7 @@ export default class Example {
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="additional" /> Additional content </label>
 </p>
-<div class="content"> @for (i of 30 | tuiRepeatTimes; track i) { <div tuiCell>
+<div class="content"> @for (_ of '-'.repeat(30); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
@@ -13759,7 +13636,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -13786,7 +13662,6 @@ import {
         TuiFloatingContainer,
         TuiIcon,
         TuiLabel,
-        TuiRepeatTimesPipe,
         TuiSwitch,
         TuiTitle,
     ],
@@ -13818,12 +13693,11 @@ export default class Example {
 <label tuiLabel>
 <input name="test" tuiRadio type="radio" value="actions" [(ngModel)]="value" /> Show actions </label>
 </p>
-<div class="content">
-<div *tuiRepeatTimes="let i of 30" tuiCell >
+<div class="content"> @for (_ of '-'.repeat(30); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> @if (value === 'primary') { <footer tuiFloatingContainer="transparent" @tuiSlideInTop >
+</div> } @if (value === 'primary') { <footer tuiFloatingContainer="transparent" @tuiSlideInTop >
 <button appearance="accent" tuiButton type="button" > Main action </button>
 </footer> } @if (value === 'card') { <footer tuiFloatingContainer="transparent" @tuiSlideInTop >
 <div appearance="floating" tuiCardLarge="compact" [style.margin-block-end.rem]="0.5" >
@@ -13846,7 +13720,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiLabel, tuiSlideInTop, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiRadio} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
@@ -13862,7 +13735,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiLabel,
         TuiRadio,
-        TuiRepeatTimes,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -13903,12 +13775,11 @@ export default class Example {
 <span>100%</span>
 </label>
 </p>
-<div class="content">
-<div *tuiRepeatTimes="let i of 30" tuiCell >
+<div class="content"> @for (_ of '-'.repeat(30); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="background ? color : 'transparent'" >
+</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="background ? color : 'transparent'" >
 <button tuiButton type="button" > Main action </button> @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
 ```
 **TypeScript:**
@@ -13917,7 +13788,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -13944,7 +13814,6 @@ import {
         TuiFloatingContainer,
         TuiInputColor,
         TuiLabel,
-        TuiRepeatTimes,
         TuiSwitch,
         TuiTextfield,
         TuiTitle,
@@ -13982,12 +13851,11 @@ export default class Example {
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="action" /> Primary action </label>
 </p>
-<div class="content">
-<div *tuiRepeatTimes="let i of 30" tuiCell >
+<div class="content"> @for (_ of '-'.repeat(30); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" > @if (!action) { <button tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Main action </button> } @if (action) { <button appearance="primary-grayscale" tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Add to Apple Wallet </button> } @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
+</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" > @if (!action) { <button tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Main action </button> } @if (action) { <button appearance="primary-grayscale" tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Add to Apple Wallet </button> } @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
 ```
 **TypeScript:**
 ```ts
@@ -13995,7 +13863,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -14015,7 +13882,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiCell,
         TuiFloatingContainer,
         TuiLabel,
-        TuiRepeatTimes,
         TuiSwitch,
         TuiTitle,
     ],
@@ -14041,7 +13907,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -14061,7 +13926,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiDemo,
         TuiFloatingContainer,
         TuiLabel,
-        TuiRepeatTimesPipe,
         TuiSwitch,
         TuiTitle,
     ],
@@ -14601,52 +14465,10 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<div
-  class="group"
-  tuiGroup
->
-  <div>
-    <tui-input
-      formControlName="testValue"
-      tuiHintContent="Write a number"
-      [style.border-radius]="'inherit'"
-    >
-      House
-      <input
-        tuiTextfieldLegacy
-        placeholder="House"
-      />
-    </tui-input>
-    <tui-error formControlName="testValue" />
-  </div>
-  <div>
-    <tui-input
-      formControlName="testValue2"
-      tuiHintContent="Write house building"
-      [style.border-radius]="'inherit'"
-    >
-      House building
-      <input
-        tuiTextfieldLegacy
-        placeholder="House building"
-      />
-    </tui-input>
-    <tui-error formControlName="testValue2" />
-  </div>
-  <div>
-    <tui-input
-      formControlName="testValue3"
-      tuiHintContent="Write an apartment number only"
-      [style.border-radius]="'inherit'"
-    >
-      Apartment
-      <input
-        tuiTextfieldLegacy
-        placeholder="Apartment number"
-      />
-    </tui-input>
-    <tui-error formControlName="testValue3" />
-  </div>
+<div tuiGroup>
+  <button tuiButton>Button 1</button>
+  <button tuiButton>Button 2</button>
+  <button tuiButton>Button 3</button>
 </div>
 ```
 
@@ -23978,7 +23800,7 @@ export class Example {}
 
 ```html
 <tui-legend-item [active]="active" [color]="color" [disabled]="disabled" [size]="size" [text]="text" >
-<span>{{ 123456 | tuiAmount: 'RUB' | async }}</span>
+<span>{{ 123456 | tuiAmount: 'RUB' }}</span>
 </tui-legend-item>
 <p>
 <code>tuiAmount</code> pipe is used to format currency and fraction </p>
@@ -24002,17 +23824,16 @@ export class Example {}
 ```html
 <div class="wrapper">
 <tui-ring-chart [value]="value" [(activeItemIndex)]="activeItemIndex" >
-<span>{{ sum | tuiAmount: 'RUB' | async }}</span>
+<span>{{ sum | tuiAmount: 'RUB' }}</span>
 <div>Total</div>
 </tui-ring-chart>
 <div class="legend"> @for (label of labels; track label) { <tui-legend-item size="s" class="item" [active]="isItemActive($index)" [color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`" [text]="label" (tuiHoveredChange)="onHover($index, $event)" >
-<span>{{ value[$index] || 0 | tuiAmount: 'RUB' | async }}</span>
+<span>{{ value[$index] || 0 | tuiAmount: 'RUB' }}</span>
 </tui-legend-item> } </div>
 </div>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -24021,7 +23842,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
+    imports: [TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -24053,14 +23874,13 @@ export default class Example {
 <tui-ring-chart size="s" class="chart" [value]="value" />
 <div class="legend"> @for (label of labels; track label) { <tui-legend-item #item class="item" [color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`" [disabled]="!isEnabled($index)" [text]="label" (click)="onClick($index)" (keydown.delete)="toggle($index)" >
 <input size="s" tuiCheckbox type="checkbox" [checked]="!item.disabled" />
-<span>{{ data[$index] || 0 | tuiAmount: 'RUB' | async }}</span>
+<span>{{ data[$index] || 0 | tuiAmount: 'RUB' }}</span>
 <tui-icon icon="@tui.x" class="disable" [class.disable_rotated]="item.disabled" (click.stop)="toggle($index)" />
 </tui-legend-item> } </div>
 </div>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -24077,7 +23897,6 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiCheckbox,
         TuiIcon,
@@ -27113,8 +26932,7 @@ export class Example {}
 <button appearance="secondary" tuiButton type="button" > Secondary </button>
 <button tuiButton type="button" > Primary </button>
 </nav>
-<ng-container *tuiRepeatTimes="let index of 10">
-<form appearance="floating" tuiCardLarge tuiForm="m" [style.grid-column]="'2 / span 7'" [style.margin-block-start.rem]="1" >
+<ng-container> @for (_ of '-'.repeat(10); track $index) { <form appearance="floating" tuiCardLarge tuiForm="m" [style.grid-column]="'2 / span 7'" [style.margin-block-start.rem]="1" >
 <header tuiHeader>
 <h2 tuiTitle> Registration form <span tuiSubtitle>Tell us about yourself</span>
 </h2>
@@ -27131,8 +26949,7 @@ export class Example {}
 <div appearance="outline-grayscale" tuiCardLarge [style.grid-column]="'span 3'" [style.margin-block-start.rem]="1" >
 <h2 tuiTitle> Sidebar content <span tuiSubtitle>Use CSS grid to position</span>
 </h2>
-</div>
-</ng-container>
+</div> } </ng-container>
 </main>
 </div>
 ```
@@ -27145,7 +26962,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiPortals, TuiPortalService, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -27201,7 +27018,6 @@ class Portal {}
         TuiIcon,
         TuiLink,
         TuiNavigation,
-        TuiRepeatTimes,
         TuiSwitch,
         TuiTabs,
         TuiTextfield,
@@ -27266,12 +27082,10 @@ export default class Example extends TuiPortals {
 </tui-data-list>
 </ng-template>
 </button>
-</nav>
-<div *tuiRepeatTimes="let index of 10" appearance="floating" tuiCardLarge tuiHeader [style.grid-column]="'span 6'" >
+</nav> @for (_ of '-'.repeat(10); track $index) { <div appearance="floating" tuiCardLarge tuiHeader [style.grid-column]="'span 6'" >
 <h2 tuiTitle> Some random content <span tuiSubtitle>A subtitle</span>
 </h2>
-</div>
-</main>
+</div> } </main>
 ```
 **TypeScript:**
 ```ts
@@ -27279,7 +27093,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes, TuiThemeColorService} from '@taiga-ui/cdk';
+import {TuiThemeColorService} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
@@ -27297,7 +27111,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiHeader,
         TuiLink,
         TuiNavigation,
-        TuiRepeatTimes,
         TuiSwitch,
         TuiTabs,
         TuiTitle,
@@ -27381,12 +27194,10 @@ export default class Example {
 <button tuiButton type="button" > Button </button>
 <button tuiButton type="button" > Button </button>
 </nav>
-</header>
-<div *tuiRepeatTimes="let index of 10" appearance="floating" tuiCardLarge="compact" tuiHeader [style.grid-column]="'span 6'" >
+</header> @for (_ of '-'.repeat(10); track $index) { <div appearance="floating" tuiCardLarge="compact" tuiHeader [style.grid-column]="'span 6'" >
 <h2 tuiTitle> Some random content <span tuiSubtitle>A subtitle</span>
 </h2>
-</div>
-</main>
+</div> } </main>
 ```
 **TypeScript:**
 ```ts
@@ -27394,7 +27205,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiGroup,
@@ -27420,7 +27230,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiIcon,
         TuiLink,
         TuiNavigation,
-        TuiRepeatTimes,
         TuiTabs,
         TuiTextfield,
         TuiTitle,
@@ -27476,12 +27285,10 @@ export default class Example {
 <button iconStart="@tui.star" tuiAsideItem type="button" > Favorites </button>
 </footer>
 </aside>
-<main tuiNavigationMain>
-<div *tuiRepeatTimes="let index of 10" appearance="floating" tuiCardLarge tuiHeader >
+<main tuiNavigationMain> @for (_ of '-'.repeat(10); track $index) { <div appearance="floating" tuiCardLarge tuiHeader >
 <h2 tuiTitle> Some random content <span tuiSubtitle>A subtitle</span>
 </h2>
-</div>
-</main>
+</div> } </main>
 </div>
 ```
 **TypeScript:**
@@ -27489,7 +27296,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPortals, TuiPortalService, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
 import {TuiButton, TuiPopupService, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron, TuiFade} from '@taiga-ui/kit';
 import {
@@ -27507,7 +27314,6 @@ import {
         TuiFade,
         TuiHeader,
         TuiNavigation,
-        TuiRepeatTimes,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -27775,7 +27581,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -27792,11 +27597,11 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton, TuiLink],
+    imports: [TuiAmountPipe, TuiButton, TuiLink],
     template: `
         <span tuiSubtitle>
             <em>Your balance:</em>
-            {{ value | tuiAmount: 'RUB' | async }}
+            {{ value | tuiAmount: 'RUB' }}
         </span>
         <div>
             <button
@@ -28859,13 +28664,12 @@ export default class Example {
 ```html
 <tui-pie-chart [tuiHintContent]="content" [value]="value" />
 <ng-template #content let-index >
-<span>{{ value[index] || 0 | tuiAmount: 'RUB' | async }}</span>
+<span>{{ value[index] || 0 | tuiAmount: 'RUB' }}</span>
 <div>{{ labels[index] }}</div>
 </ng-template>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -28874,7 +28678,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiHint, TuiPieChart],
+    imports: [TuiAmountPipe, TuiHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -30077,18 +29881,17 @@ Use css-variable --tui-thickness to customize width of the circle's stroke.
 
 **Template:**
 ```html
-<tui-progress-circle *tuiRepeatTimes="let _ of 4" size="l" [max]="100" [value]="60" />
+@for (_ of '-'.repeat(4); track $index) { <tui-progress-circle size="l" [max]="100" [value]="60" /> }
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiProgress, TuiRepeatTimes],
+    imports: [TuiProgress],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -31549,13 +31352,12 @@ export default class Example {
 **Template:**
 ```html
 <tui-ring-chart [value]="value" [(activeItemIndex)]="index" >
-<span>{{ sum | tuiAmount: 'RUB' | async }}</span>
+<span>{{ sum | tuiAmount: 'RUB' }}</span>
 <div>{{ label }}</div>
 </tui-ring-chart>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -31564,7 +31366,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiSum} from '@taiga-ui/cdk';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiRingChart],
+    imports: [TuiAmountPipe, TuiRingChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -33419,8 +33221,8 @@ export default class Example {
 </hgroup>
 </header>
 <p class="buttons">
-<button appearance="secondary" size="m" tuiButton type="button" > Buy {{ 12.99 | tuiAmount: 'USD' | async }} </button>
-<button appearance="secondary" size="m" tuiButton type="button" > Rent {{ 4.99 | tuiAmount: 'USD' | async }} </button>
+<button appearance="secondary" size="m" tuiButton type="button" > Buy {{ 12.99 | tuiAmount: 'USD' }} </button>
+<button appearance="secondary" size="m" tuiButton type="button" > Rent {{ 4.99 | tuiAmount: 'USD' }} </button>
 </p>
 <div>
 <h3>Cast:</h3>
@@ -33449,10 +33251,10 @@ export default class Example {
 <p>Terry Jones</p>
 <hr />
 <h3>Budget:</h3>
-<p>{{ 400000 | tuiAmount: 'USD' | async }}</p>
+<p>{{ 400000 | tuiAmount: 'USD' }}</p>
 <hr />
 <h3>Box office:</h3>
-<p>{{ 5000000 | tuiAmount: 'USD' | async }}</p>
+<p>{{ 5000000 | tuiAmount: 'USD' }}</p>
 <hr />
 <h3>Release date</h3>
 <p>April 3, 1975</p>
@@ -33468,7 +33270,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -33480,7 +33281,6 @@ import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiButton,
         TuiFloatingContainer,
@@ -34243,9 +34043,7 @@ export class Example {}
 <label tuiLabel>Current slide</label>
 <input tuiInputNumber [max]="0" [min]="2" [step]="1" [(ngModel)]="current" />
 </tui-textfield>
-<p [tuiSlides]="direction">
-<ng-container *tuiRepeatTimes="let index of 3"> @if (index === current) { <div>Slide #{{ index }}</div> } </ng-container>
-</p>
+<p [tuiSlides]="direction"> @for (_ of '-'.repeat(3); track $index) { @if ($index === current) { <div>Slide #{{ $index }}</div> } } </p>
 ```
 
 ### API
@@ -34444,13 +34242,11 @@ export default class Example {
 <p> These wrapping components will be animated upon navigating this modal dialog. This works well on both desktop and mobile. In your own layouts watch out for unwanted scrollbars. </p>
 </div> } @case (2) { <div>
 <header>Header is optional</header>
-<section [style.margin]="'0 -1rem'">
-<div *tuiRepeatTimes="let _ of 5" tuiCell >
+<section [style.margin]="'0 -1rem'"> @for (_ of '-'.repeat(5); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-</section>
+</div> } </section>
 </div> } @case (3) { <div appearance="floating" tuiCardLarge >
 <header tuiHeader>
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
@@ -34474,7 +34270,7 @@ import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
-import {TUI_IS_MOBILE, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCard, TuiHeader} from '@taiga-ui/layout';
@@ -34489,7 +34285,6 @@ import {TuiAppBar, TuiCard, TuiHeader} from '@taiga-ui/layout';
         TuiFloatingContainer,
         TuiHeader,
         TuiProgressBar,
-        TuiRepeatTimes,
         TuiSlides,
         TuiTitle,
     ],
@@ -34533,7 +34328,6 @@ import {Router, Scroll} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, TuiSlides} from '@taiga-ui/kit';
 import {filter, map} from 'rxjs';
@@ -34548,7 +34342,6 @@ import {Settings} from './examples/3/settings';
         ReactiveFormsModule,
         TuiDemo,
         TuiInputNumber,
-        TuiRepeatTimes,
         TuiSlides,
         TuiTextfield,
     ],
@@ -35045,9 +34838,9 @@ export default class Example {}
 
 **Template:**
 ```html
-<label *tuiRepeatTimes="let index of 4" tuiSurface [style.border-radius.rem]="0.75" [style.padding.rem]="1.25" > Item {{ index + 1 }} <input tuiSurfaceLayer type="radio" [value]="index" [(ngModel)]="value" />
+@for (_ of '-'.repeat(4); track $index) { <label tuiSurface [style.border-radius.rem]="0.75" [style.padding.rem]="1.25" > Item {{ $index + 1 }} <input tuiSurfaceLayer type="radio" [value]="$index" [(ngModel)]="value" />
 <div tuiRipple tuiSurfaceLayer [style.background-color]="'var(--tui-background-neutral-1)'" ></div>
-</label>
+</label> }
 ```
 **TypeScript:**
 ```ts
@@ -35056,11 +34849,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRipple} from '@taiga-ui/addon-mobile';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [FormsModule, TuiRepeatTimes, TuiRipple, TuiSurface],
+    imports: [FormsModule, TuiRipple, TuiSurface],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -35154,7 +34946,7 @@ export default class Example {}
 <div tuiSurface tuiTheme="dark" class="mask" >
 <h3 class="heading"> My bank account <button appearance="secondary" iconStart="@tui.pencil" size="s" tuiIconButton type="button" class="button" > Edit name </button>
 </h3>
-<span class="sum">{{ 23742 | tuiAmount: 'USD' : 'left' | async }}</span>
+<span class="sum">{{ 23742 | tuiAmount: 'USD' : 'left' }}</span>
 <footer class="footer">
 <tui-thumbnail-card paymentSystem="mastercard" [style.background]="'#337'" > 1234 </tui-thumbnail-card>
 <tui-thumbnail-card paymentSystem="visa" [style.background]="'#e33'" > 5678 </tui-thumbnail-card>
@@ -35164,7 +34956,6 @@ export default class Example {}
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -35182,7 +34973,6 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
@@ -35302,7 +35092,7 @@ export class Example {}
 <div appearance="floating" tuiCardLarge tuiCell >
 <div appearance="primary" tuiAvatar="@tui.dollar-sign" ></div>
 <div tuiTitle>
-<strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+<strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
 <div tuiSubtitle>Dollar account</div>
 </div>
 </div>
@@ -35314,7 +35104,7 @@ export class Example {}
 <div appearance="floating" tuiCardLarge tuiCell >
 <div appearance="primary" tuiAvatar="@tui.gift" ></div>
 <div tuiTitle>
-<strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
+<strong>{{ 23000 | tuiAmount: 'EUR' }}</strong>
 <div tuiSubtitle>Goal</div>
 </div>
 </div>
@@ -35324,7 +35114,7 @@ export class Example {}
 <div appearance="floating" tuiCardLarge tuiCell >
 <div appearance="primary" tuiAvatar="@tui.briefcase" ></div>
 <div tuiTitle>
-<strong>{{ 5000 | tuiAmount: 'EUR' | async }}</strong>
+<strong>{{ 5000 | tuiAmount: 'EUR' }}</strong>
 <div tuiSubtitle>Vacations</div>
 </div>
 </div>
@@ -35336,7 +35126,6 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -35348,7 +35137,6 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
@@ -35420,7 +35208,7 @@ export default class Example {
 <div appearance="floating" tuiCardLarge tuiCell >
 <div appearance="primary" tuiAvatar="@tui.dollar-sign" ></div>
 <div tuiTitle>
-<strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+<strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
 <div tuiSubtitle>Dollar account</div>
 </div>
 </div>
@@ -35432,7 +35220,7 @@ export default class Example {
 <div appearance="floating" tuiCardLarge tuiCell >
 <div appearance="primary" tuiAvatar="@tui.gift" ></div>
 <div tuiTitle>
-<strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
+<strong>{{ 23000 | tuiAmount: 'EUR' }}</strong>
 <div tuiSubtitle>Goal</div>
 </div>
 </div>
@@ -35443,7 +35231,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -35455,7 +35242,6 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
@@ -35481,7 +35267,7 @@ export default class Example {}
 <div appearance="floating" tuiCardLarge tuiCell >
 <div appearance="primary" tuiAvatar="@tui.dollar-sign" ></div>
 <div tuiTitle>
-<strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+<strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
 <div tuiSubtitle>Dollar account</div>
 </div>
 </div> @if (editButton) { <button iconStart="@tui.pencil-line" size="m" tuiIconButton tuiSwipeAction type="button" > Edit </button> } @if (shareButton) { <button appearance="secondary" iconStart="@tui.share" size="m" tuiIconButton tuiSwipeAction type="button" > Share </button> } </tui-swipe-actions>
@@ -35492,7 +35278,6 @@ export default class Example {}
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -35505,7 +35290,6 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiAvatar,
@@ -35535,7 +35319,7 @@ export default class Example {
 <div appearance="floating" tuiCardLarge tuiCell >
 <div appearance="primary" tuiAvatar="@tui.dollar-sign" ></div>
 <div tuiTitle>
-<strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+<strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
 <div tuiSubtitle>Dollar account</div>
 </div>
 </div>
@@ -35552,7 +35336,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -35564,7 +35347,6 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
@@ -42650,12 +42432,12 @@ export class Example {}
 ></div>
 
 <!-- Or focusable component of Taiga UI -->
-<tui-input
-  tuiAutoFocus
-  [(ngModel)]="model"
->
-  Input
-</tui-input>
+<tui-textfield>
+  <input
+    tuiAutoFocus
+    tuiTextfield
+  />
+</tui-textfield>
 ```
 
 ### Usage Examples
@@ -43313,14 +43095,13 @@ export default class Example {
 <div [tuiAvatar]="user.name | tuiInitials"> @if (user.url) { <img alt="" [src]="user.url" /> } </div>
 <span tuiTitle>
 <span tuiFade>{{ user.name }}</span>
-<span tuiSubtitle> {{ user.balance | tuiAmount: '$' : 'left' | async }} </span>
+<span tuiSubtitle> {{ user.balance | tuiAmount: '$' : 'left' }} </span>
 </span>
 </span>
 </ng-template>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -43359,7 +43140,6 @@ interface User {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiAvatar,
@@ -44718,7 +44498,7 @@ export class Example {
 <p>I never wanted to do this in the first place!</p>
 <header tuiElasticSticky class="header" >
 <div class="wrapper">
-<span class="money" [style.fontSize.em]="scale$ | async" > {{ 237000 | tuiAmount: 'RUB' | async }} </span>
+<span class="money" [style.fontSize.em]="scale$ | async" > {{ 237000 | tuiAmount: 'RUB' }} </span>
 </div>
 </header>
 <p>I always wanted to be... a lumberjack!</p>
@@ -46828,7 +46608,7 @@ export default class Example {
 <div class="description tui-space_top-2">
 <label tuiTitle>
 <span tuiSubtitle>Step</span>
-<span>{{ 100500 | tuiAmount: 'RUB' | async }}</span>
+<span>{{ 100500 | tuiAmount: 'RUB' }}</span>
 </label>
 <label tuiTitle>
 <span tuiSubtitle>New apartment</span> 2 times left </label>
@@ -46836,7 +46616,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -46845,7 +46624,7 @@ import {TuiTitle} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiProgress, TuiTitle],
+    imports: [TuiAmountPipe, TuiProgress, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -48211,10 +47990,13 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-input
-  formControlName="control"
-  [tuiValidator]="validator"
-></tui-input>
+<tui-textfield>
+  <input
+    formControlName="control"
+    tuiTextfield
+    [tuiValidator]="validator"
+  />
+</tui-textfield>
 ```
 
 ### Usage Examples
@@ -48224,12 +48006,18 @@ export class Example {}
 **Template:**
 ```html
 <form [formGroup]="group">
-<tui-input formControlName="name">Name</tui-input>
+<tui-textfield>
+<label tuiLabel>Name</label>
+<input formControlName="name" tuiTextfield />
+</tui-textfield>
 <tui-textfield tuiChevron class="tui-space_vertical-3" >
 <label tuiLabel>Connection</label>
 <input tuiSelect [ngModelOptions]="{standalone: true}" [(ngModel)]="type" />
 <tui-data-list-wrapper *tuiDropdown new [items]="items" />
-</tui-textfield> @if (type === items[0]!) { <tui-input formControlName="contact" [tuiValidator]="validator" > Contact </tui-input> } @else { <tui-textfield>
+</tui-textfield> @if (type === items[0]!) { <tui-textfield>
+<label tuiLabel>Contact</label>
+<input formControlName="contact" tuiTextfield [tuiValidator]="validator" />
+</tui-textfield> } @else { <tui-textfield>
 <label tuiLabel>Contact</label>
 <input autocomplete="tel" formControlName="contact" mask="+7 ### ###-##-##" tuiInputPhone />
 </tui-textfield> } </form>
@@ -49270,9 +49058,9 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<!-- {{ 100000 | tuiAmount : currency : align | async }} -->
-<p>{{ 100000 | tuiAmount : '978' : 'left' | async }}</p>
-<p>{{ 100000 | tuiAmount : 'EUR' : 'right' | async }}</p>
+{{ 100000 | tuiAmount : currency : align }}
+<p>{{ 100000 | tuiAmount : '978' : 'left' }}</p>
+<p>{{ 100000 | tuiAmount : 'EUR' : 'right' }}</p>
 ```
 
 ### Usage Examples
@@ -49282,28 +49070,27 @@ export class Example {}
 **Template:**
 ```html
 <ol>
-<li>{{ 10728.9 | tuiAmount | async }}</li>
-<li>{{ 10728.9 | tuiAmount: 'RUB' | async }}</li>
-<li>{{ 10728.9 | tuiAmount: 'EUR' | async }}</li>
-<li>{{ 10728.9 | tuiAmount: 'USD' | async }}</li>
-<li>{{ 10728.9 | tuiAmount: 'GBP' | async }}</li>
-<li>{{ -12345.1 | tuiAmount: 'USD' : 'left' | async }}</li>
-<li>{{ 100 | tuiAmount: '£' : 'left' | async }}</li>
-<li>{{ 200 | tuiAmount: 'AED' : 'left' | async }}</li>
+<li>{{ 10728.9 | tuiAmount }}</li>
+<li>{{ 10728.9 | tuiAmount: 'RUB' }}</li>
+<li>{{ 10728.9 | tuiAmount: 'EUR' }}</li>
+<li>{{ 10728.9 | tuiAmount: 'USD' }}</li>
+<li>{{ 10728.9 | tuiAmount: 'GBP' }}</li>
+<li>{{ -12345.1 | tuiAmount: 'USD' : 'left' }}</li>
+<li>{{ 100 | tuiAmount: '£' : 'left' }}</li>
+<li>{{ 200 | tuiAmount: 'AED' : 'left' }}</li>
 </ol>
 <hr class="tui-space_top-1 tui-space_bottom-1" />
-<span>Remaining {{ 10728.9 | tuiAmount | async }} of {{ 11000 | tuiAmount | async }}</span>
+<span>Remaining {{ 10728.9 | tuiAmount }} of {{ 11000 | tuiAmount }}</span>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe],
+    imports: [TuiAmountPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -49315,15 +49102,14 @@ export default class Example {}
 
 **Template:**
 ```html
-<div [tuiNumberFormat]="{rounding: 'round', thousandSeparator: ',', decimalSeparator: '.'}"> {{ -10000000.536 | tuiAmount: 'USD' : 'left' | async }} </div>
-<div>{{ 200.536 | tuiAmount: 'EUR' | async }}</div>
-<div [tuiNumberFormat]="{rounding: 'ceil', precision: 1}"> {{ 54000.643 | tuiAmount: 'USD' : 'left' | async }} </div>
-<div [tuiNumberFormat]="{decimalMode: 'always'}"> {{ 800 | tuiAmount: 'USD' : 'left' | async }} </div>
-<div [tuiNumberFormat]="{precision: 0}"> {{ -0.83 | tuiAmount: 'RUB' : 'right' | async }} </div>
+<div [tuiNumberFormat]="{rounding: 'round', thousandSeparator: ',', decimalSeparator: '.'}"> {{ -10000000.536 | tuiAmount: 'USD' : 'left' }} </div>
+<div>{{ 200.536 | tuiAmount: 'EUR' }}</div>
+<div [tuiNumberFormat]="{rounding: 'ceil', precision: 1}"> {{ 54000.643 | tuiAmount: 'USD' : 'left' }} </div>
+<div [tuiNumberFormat]="{decimalMode: 'always'}"> {{ 800 | tuiAmount: 'USD' : 'left' }} </div>
+<div [tuiNumberFormat]="{precision: 0}"> {{ -0.83 | tuiAmount: 'RUB' : 'right' }} </div>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -49331,7 +49117,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiNumberFormat} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiNumberFormat],
+    imports: [TuiAmountPipe, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -49343,19 +49129,18 @@ export default class Example {}
 
 **Template:**
 ```html
-<div>{{ -12.3 | tuiAmount | async }}</div>
-<div>{{ 3000 | tuiAmount | async }}</div>
+<div>{{ -12.3 | tuiAmount }}</div>
+<div>{{ 3000 | tuiAmount }}</div>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe],
+    imports: [TuiAmountPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -49375,21 +49160,20 @@ export default class Example {}
 **Template:**
 ```html
 <div>
-<span [tuiNumberFormat]="{precision: 0}">{{ 120.59 | tuiAmount | async }}</span>
-<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal | async }}</span>
+<span [tuiNumberFormat]="{precision: 0}">{{ 120.59 | tuiAmount }}</span>
+<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal }}</span>
 </div>
 <div>
-<span [tuiNumberFormat]="{precision: 0}">{{ 120.59 | tuiAmount: 'EUR' | async }}</span>
-<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal | async }}</span>
+<span [tuiNumberFormat]="{precision: 0}">{{ 120.59 | tuiAmount: 'EUR' }}</span>
+<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal }}</span>
 </div>
 <div>
-<span [tuiNumberFormat]="{precision: 0}">{{ 120.59 | tuiAmount: 'USD' | async }}</span>
-<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal | async }}</span>
+<span [tuiNumberFormat]="{precision: 0}">{{ 120.59 | tuiAmount: 'USD' }}</span>
+<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal }}</span>
 </div>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -49401,7 +49185,7 @@ import {
 import {TuiNumberFormat} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiDecimalPipe, TuiNumberFormat],
+    imports: [TuiAmountPipe, TuiDecimalPipe, TuiNumberFormat],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -49613,18 +49397,18 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-input
-  *ngIf="value | tuiEmails as emails"
-  [(ngModel)]="value"
->
-  Введите адрес
-  <ng-template
-    *ngIf="emails.length"
-    [tuiDataList]
-  >
-    <tui-data-list-wrapper [items]="emails"></tui-data-list-wrapper>
-  </ng-template>
-</tui-input>
+<tui-textfield>
+  <label tuiLabel>Email</label>
+  <input
+    tuiTextfield
+    [(ngModel)]="value"
+  />
+  <tui-data-list-wrapper
+    *tuiDropdown
+    [items]="value | tuiEmails"
+  />
+  } }
+</tui-textfield>
 ```
 
 ### Usage Examples
@@ -49633,14 +49417,12 @@ export class Example {}
 
 **Template:**
 ```html
-<p> @if (default | tuiEmails; as emails) { <tui-input [(ngModel)]="default"> Standard addresses @if (emails.length) { <ng-template tuiDataList>
-<tui-data-list-wrapper [items]="emails" />
-</ng-template> } </tui-input> } </p>
+<p> @if (default | tuiEmails; as emails) { <tui-textfield>
+<label tuiLabel>Standard addresses</label>
+<input tuiTextfield [(ngModel)]="default" /> @if (emails.length) { <tui-data-list-wrapper *tuiDropdown [items]="emails" /> } </tui-textfield> } </p>
 <p> @if (custom | tuiEmails: emails; as emails) { <tui-textfield>
-<input tuiTextfield [(ngModel)]="custom" />
-<label tuiLabel>Custom addresses</label> @if (emails.length) { <ng-template tuiDataList tuiDropdown >
-<tui-data-list-wrapper [items]="emails" />
-</ng-template> } </tui-textfield> } </p>
+<label tuiLabel>Custom addresses</label>
+<input tuiTextfield [(ngModel)]="custom" /> @if (emails.length) { <tui-data-list-wrapper *tuiDropdown [items]="emails" /> } </tui-textfield> } </p>
 ```
 **TypeScript:**
 ```ts
@@ -49839,13 +49621,17 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-input [formControl]="user">
-  User
+<tui-textfield>
+  <label tuiLabel>User</label>
+  <input
+    [formControl]="control"
+    tuiTextfield
+  />
   <tui-data-list-wrapper
-    *tuiDataList
+    *tuiDropdown
     [items]="items | tuiFilterByInput"
-  ></tui-data-list-wrapper>
-</tui-input>
+  />
+</tui-textfield>
 ```
 
 ### Usage Examples
@@ -50713,77 +50499,6 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic', 'Recipes', 'Custom default'];
 }
-```
-
----
-# pipes/RepeatTimes
-- **Package**: `CDK`
-- **Type**: pipes
-
-### How to Use (Import)
-
-```ts
-import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
-
-//...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiRepeatTimesPipe,
-  ],
-  //  ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-@for (index of 3 | tuiRepeatTimes; track index) {
-<div class="t-cell"></div>
-}
-```
-
-### Usage Examples
-
-#### Base
-
-**Template:**
-```html
-@for (index of 5 | tuiRepeatTimes; track index) { {{ index }} }
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
-
-@Component({
-    imports: [TuiRepeatTimesPipe],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {}
 ```
 
 ---

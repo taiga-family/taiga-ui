@@ -231,7 +231,6 @@
 - [Is Present](https://taiga-ui.dev/pipes/is-present) — Pipe wrapper for IsPresent function
 - [Mapper](https://taiga-ui.dev/pipes/mapper) — Pipe to transform a value with a function
 - [Obfuscate](https://taiga-ui.dev/pipes/obfuscate) — Pipe for obfuscating sensitive data
-- [Repeat Times](https://taiga-ui.dev/pipes/repeat-times)
 - [Stringify](https://taiga-ui.dev/pipes/stringify) — Pipe that creates TuiStringHandler by given key.
 - [Stringify Content](https://taiga-ui.dev/pipes/stringify-content) — Pipe that turns TuiStringHandler into content that works with $implicit .
 
