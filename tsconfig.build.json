@@ -39,9 +39,7 @@
     },
     "angularCompilerOptions": {
         "extendedDiagnostics": {
-            "checks": {
-                "unusedStandaloneImports": "error"
-            }
+            "defaultCategory": "error"
         }
     }
 }

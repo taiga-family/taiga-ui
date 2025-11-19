@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.app.json",
+    "angularCompilerOptions": {
+        "extendedDiagnostics": {
+            "checks": {
+                "unusedStandaloneImports": "error"
+            }
+        }
+    }
+}
