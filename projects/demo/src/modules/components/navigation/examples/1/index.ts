@@ -1,7 +1,7 @@
-import {KeyValuePipe, NgForOf, NgIf} from '@angular/common';
+import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
@@ -40,8 +40,8 @@ const ICON =
         KeyValuePipe,
         NgForOf,
         NgIf,
+        NgTemplateOutlet,
         RouterLink,
-        RouterLinkActive,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
