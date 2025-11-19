@@ -29598,8 +29598,12 @@ export class Example {}
 &lt;div [style.display]=&quot;&#039;flex&#039;&quot;&gt;
 &lt;aside [style.height.rem]=&quot;27&quot; [tuiNavigationAside]=&quot;expanded()&quot; &gt;
 &lt;header&gt;
-&lt;button iconStart=&quot;@tui.home&quot; tuiAsideItem type=&quot;button&quot; &gt;
+&lt;button iconStart=&quot;@tui.home&quot; type=&quot;button&quot; [tuiAsideItem]=&quot;hint&quot; &gt;
+&lt;ng-container [ngTemplateOutlet]=&quot;hint&quot; /&gt;
+&lt;ng-template #hint&gt;
 &lt;span tuiFade&gt;A very very long product name&lt;/span&gt;
+&lt;tui-badge appearance=&quot;accent&quot;&gt;Alpha&lt;/tui-badge&gt;
+&lt;/ng-template&gt;
 &lt;/button&gt;
 &lt;/header&gt;
 &lt;button iconStart=&quot;@tui.search&quot; tuiAsideItem type=&quot;button&quot; &gt; Search &lt;ng-container *ngIf=&quot;expanded()&quot;&gt;
@@ -29684,10 +29688,10 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {KeyValuePipe, NgForOf, NgIf} from &#039;@angular/common&#039;;
+import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from &#039;@angular/common&#039;;
 import {Component, signal} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
-import {RouterLink, RouterLinkActive} from &#039;@angular/router&#039;;
+import {RouterLink} from &#039;@angular/router&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
@@ -29726,8 +29730,8 @@ const ICON =
         KeyValuePipe,
         NgForOf,
         NgIf,
+        NgTemplateOutlet,
         RouterLink,
-        RouterLinkActive,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,

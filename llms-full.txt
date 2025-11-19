@@ -29588,8 +29588,12 @@ export class Example {}
 <div [style.display]="'flex'">
 <aside [style.height.rem]="27" [tuiNavigationAside]="expanded()" >
 <header>
-<button iconStart="@tui.home" tuiAsideItem type="button" >
+<button iconStart="@tui.home" type="button" [tuiAsideItem]="hint" >
+<ng-container [ngTemplateOutlet]="hint" />
+<ng-template #hint>
 <span tuiFade>A very very long product name</span>
+<tui-badge appearance="accent">Alpha</tui-badge>
+</ng-template>
 </button>
 </header>
 <button iconStart="@tui.search" tuiAsideItem type="button" > Search <ng-container *ngIf="expanded()">
@@ -29674,10 +29678,10 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {KeyValuePipe, NgForOf, NgIf} from '@angular/common';
+import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
@@ -29716,8 +29720,8 @@ const ICON =
         KeyValuePipe,
         NgForOf,
         NgIf,
+        NgTemplateOutlet,
         RouterLink,
-        RouterLinkActive,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
