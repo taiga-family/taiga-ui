@@ -107,7 +107,9 @@
             </button>
         </nav>
     </header>
-    <p *tuiRepeatTimes="let index of 15">Content</p>
+    @for (_ of '-'.repeat(15); track $index) {
+        <p>Content</p>
+    }
     <footer>
         <button
             size="m"

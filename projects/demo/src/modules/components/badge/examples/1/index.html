@@ -32,12 +32,11 @@
 </tui-badge>
 
 <p>Use CSS for support colors</p>
-<tui-badge
-    *tuiRepeatTimes="let index of 20"
-    [style.background]="`var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`"
->
-    Taiga
-</tui-badge>
+@for (_ of '-'.repeat(20); track $index) {
+    <tui-badge [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`">
+        Taiga
+    </tui-badge>
+}
 
 <p>Sizes</p>
 <tui-badge

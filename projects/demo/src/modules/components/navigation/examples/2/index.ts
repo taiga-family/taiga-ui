@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes, TuiThemeColorService} from '@taiga-ui/cdk';
+import {TuiThemeColorService} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
@@ -20,7 +20,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiHeader,
         TuiLink,
         TuiNavigation,
-        TuiRepeatTimes,
+
         TuiSwitch,
         TuiTabs,
         TuiTitle,

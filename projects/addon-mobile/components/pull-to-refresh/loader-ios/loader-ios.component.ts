@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
@@ -10,7 +9,6 @@ const ROTATE_X_STEP = 30;
 
 @Component({
     selector: 'tui-mobile-ios-loader',
-    imports: [TuiRepeatTimes],
     templateUrl: './loader-ios.template.html',
     styleUrl: './loader-ios.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

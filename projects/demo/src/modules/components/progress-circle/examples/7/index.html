@@ -1,6 +1,7 @@
-<tui-progress-circle
-    *tuiRepeatTimes="let _ of 4"
-    size="l"
-    [max]="100"
-    [value]="60"
-/>
+@for (_ of '-'.repeat(4); track $index) {
+    <tui-progress-circle
+        size="l"
+        [max]="100"
+        [value]="60"
+    />
+}

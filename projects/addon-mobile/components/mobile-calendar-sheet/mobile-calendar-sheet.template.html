@@ -1,30 +1,30 @@
 @let sheet = month | tuiCalendarSheet;
-<div
-    *tuiRepeatTimes="let rowIndex of sheet.length"
-    automation-id="tui-primitive-calendar-mobile__row"
-    class="t-row"
->
+@for (_ of '-'.repeat(sheet.length); track $index) {
+    @let rowIndex = $index;
     <div
-        *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
-        class="t-cell t-cell_empty"
-    ></div>
-    <ng-container *tuiRepeatTimes="let colIndex of sheet[rowIndex]?.length ?? 0">
-        @if (sheet[rowIndex]?.[colIndex]; as item) {
-            <div
-                automation-id="tui-primitive-calendar-mobile__cell"
-                tuiRipple
-                class="t-cell"
-                [attr.data-range]="getItemRange(item)"
-                [class.t-cell_disabled]="disabledItemHandler(item)"
-                [class.t-cell_today]="itemIsToday(item)"
-                (click)="onItemClick(item)"
-            >
-                {{ item.day }}
-            </div>
+        automation-id="tui-primitive-calendar-mobile__row"
+        class="t-row"
+    >
+        @for (_ of '-'.repeat(sheet[rowIndex]?.length ?? 0); track $index) {
+            <div class="t-cell t-cell_empty"></div>
         }
-    </ng-container>
-    <div
-        *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
-        class="t-cell t-cell_empty"
-    ></div>
-</div>
+        @for (_ of '-'.repeat(sheet[rowIndex]?.length ?? 0); track $index) {
+            @if (sheet[rowIndex]?.[$index]; as item) {
+                <div
+                    automation-id="tui-primitive-calendar-mobile__cell"
+                    tuiRipple
+                    class="t-cell"
+                    [attr.data-range]="getItemRange(item)"
+                    [class.t-cell_disabled]="disabledItemHandler(item)"
+                    [class.t-cell_today]="itemIsToday(item)"
+                    (click)="onItemClick(item)"
+                >
+                    {{ item.day }}
+                </div>
+            }
+        }
+        @for (_ of '-'.repeat(7 - (sheet[rowIndex]?.length ?? 0)); track $index) {
+            <div class="t-cell t-cell_empty"></div>
+        }
+    </div>
+}

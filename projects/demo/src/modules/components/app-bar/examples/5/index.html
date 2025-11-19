@@ -27,19 +27,18 @@
                 <div tuiSubtitle>Subtitle</div>
             </h6>
         </div>
-        <div
-            *tuiRepeatTimes="let i of 7"
-            tuiCell
-        >
-            <div
-                appearance="primary"
-                tuiAvatar="@tui.star"
-            ></div>
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
+        @for (_ of '-'.repeat(7); track $index) {
+            <div tuiCell>
+                <div
+                    appearance="primary"
+                    tuiAvatar="@tui.star"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
             </div>
-        </div>
+        }
 
         <div
             *tuiDynamicHeaderAnchor
@@ -47,19 +46,18 @@
         >
             <h6 tuiTitle>Title 2</h6>
         </div>
-        <div
-            *tuiRepeatTimes="let i of 15"
-            tuiCell
-        >
-            <div
-                appearance="secondary"
-                tuiAvatar="@tui.heart"
-            ></div>
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
+        @for (_ of '-'.repeat(15); track $index) {
+            <div tuiCell>
+                <div
+                    appearance="secondary"
+                    tuiAvatar="@tui.heart"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
             </div>
-        </div>
+        }
 
         <div
             *tuiDynamicHeaderAnchor
@@ -67,18 +65,17 @@
         >
             <h6 tuiTitle>Title 3 Long title</h6>
         </div>
-        <div
-            *tuiRepeatTimes="let i of 15"
-            tuiCell
-        >
-            <div
-                appearance="secondary"
-                tuiAvatar="@tui.heart"
-            ></div>
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
+        @for (_ of '-'.repeat(15); track $index) {
+            <div tuiCell>
+                <div
+                    appearance="secondary"
+                    tuiAvatar="@tui.heart"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>

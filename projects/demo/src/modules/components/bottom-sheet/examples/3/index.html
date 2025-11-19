@@ -30,7 +30,9 @@
             [style.inline-size.%]="100"
             [style.margin-block-start.rem]="2"
         />
-        <p *tuiRepeatTimes="let index of 20">All work and no play makes Jack a dull boy</p>
+        @for (_ of '-'.repeat(20); track $index) {
+            <p>All work and no play makes Jack a dull boy</p>
+        }
         <tui-accordion>
             <button tuiAccordion>Show more</button>
             <tui-expand>All work and no play makes Jack a dull boy</tui-expand>

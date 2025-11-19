@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -22,7 +21,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiDemo,
         TuiFloatingContainer,
         TuiLabel,
-        TuiRepeatTimesPipe,
         TuiSwitch,
         TuiTitle,
     ],

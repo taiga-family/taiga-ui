@@ -48,19 +48,18 @@
                 <div>
                     <header>Header is optional</header>
                     <section [style.margin]="'0 -1rem'">
-                        <div
-                            *tuiRepeatTimes="let _ of 5"
-                            tuiCell
-                        >
-                            <div
-                                appearance="primary"
-                                tuiAvatar="@tui.star"
-                            ></div>
-                            <div tuiTitle>
-                                Title
-                                <div tuiSubtitle>Description</div>
+                        @for (_ of '-'.repeat(5); track $index) {
+                            <div tuiCell>
+                                <div
+                                    appearance="primary"
+                                    tuiAvatar="@tui.star"
+                                ></div>
+                                <div tuiTitle>
+                                    Title
+                                    <div tuiSubtitle>Description</div>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </section>
                 </div>
             }

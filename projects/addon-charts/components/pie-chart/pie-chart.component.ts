@@ -7,7 +7,6 @@ import {
     Output,
 } from '@angular/core';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
@@ -39,7 +38,7 @@ const TRANSFORM = {
 
 @Component({
     selector: 'tui-pie-chart',
-    imports: [TuiHint, TuiHovered, TuiPieChartDirective, TuiRepeatTimes],
+    imports: [TuiHint, TuiHovered, TuiPieChartDirective],
     templateUrl: './pie-chart.template.html',
     styleUrl: './pie-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

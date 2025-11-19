@@ -1,11 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiRoot} from '@taiga-ui/core';
 
 describe('TuiSheetDialog', () => {
     @Component({
-        imports: [TuiButton, TuiRepeatTimes, TuiRoot, TuiSheetDialog],
+        imports: [TuiButton, TuiRoot, TuiSheetDialog],
         template: `
             <tui-root>
                 <button
@@ -20,7 +19,9 @@ describe('TuiSheetDialog', () => {
                     [tuiSheetDialogOptions]="options"
                     [(tuiSheetDialog)]="open"
                 >
-                    <p *tuiRepeatTimes="let i of 50">{{ i }}</p>
+                    @for (_ of '-'.repeat(50); track $index) {
+                        <p>{{ $index }}</p>
+                    }
                     <footer class="footer">
                         <button
                             size="m"

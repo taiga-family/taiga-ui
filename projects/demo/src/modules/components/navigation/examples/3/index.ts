@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiGroup,
@@ -28,7 +27,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiIcon,
         TuiLink,
         TuiNavigation,
-        TuiRepeatTimes,
+
         TuiTabs,
         TuiTextfield,
         TuiTitle,

@@ -6,9 +6,9 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns="http://www.w3.org/2000/svg"
 >
-    <ng-container *tuiRepeatTimes="let index of steps">
-        @if (isShown(index)) {
-            <g [attr.transform]="calculateTransform(index)">
+    @for (_ of '-'.repeat(steps); track $index) {
+        @if (isShown($index)) {
+            <g [attr.transform]="calculateTransform($index)">
                 <rect
                     fill="#c7c9cc"
                     height="16"
@@ -25,11 +25,11 @@
                             keyTimes="0;1"
                             repeatCount="indefinite"
                             values="1;0"
-                            [attr.begin]="calculateAnimationBegin(index)"
+                            [attr.begin]="calculateAnimationBegin($index)"
                         />
                     }
                 </rect>
             </g>
         }
-    </ng-container>
+    }
 </svg>

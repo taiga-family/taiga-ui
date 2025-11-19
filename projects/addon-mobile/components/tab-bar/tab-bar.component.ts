@@ -10,14 +10,12 @@ import {
     type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiTabBarItem} from './tab-bar-item.component';
 
 @Component({
     selector: 'nav[tuiTabBar]',
-    imports: [TuiRepeatTimes],
     templateUrl: './tab-bar.template.html',
     styleUrl: './tab-bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

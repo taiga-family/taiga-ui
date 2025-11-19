@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {type TuiLineHandler, type TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 
 export const TUI_ALWAYS_DASHED: TuiLineHandler = () => 'dashed';
 export const TUI_ALWAYS_DOTTED: TuiLineHandler = () => 'dotted';
@@ -10,7 +9,6 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 
 @Component({
     selector: 'tui-axes',
-    imports: [TuiRepeatTimes],
     templateUrl: './axes.template.html',
     styleUrl: './axes.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -14,8 +14,8 @@
         >
             {{ texts()[0] }}
         </button>
-        <ng-container *tuiRepeatTimes="let elementIndex of elementsLength">
-            @let index = getItemIndexByElementIndex(elementIndex);
+        @for (_ of '-'.repeat(elementsLength); track $index) {
+            @let index = getItemIndexByElementIndex($index);
             @if (index !== null) {
                 <button
                     #element
@@ -42,7 +42,7 @@
                     [class.t-dots_small]="size === 'm'"
                 ></div>
             }
-        </ng-container>
+        }
         <button
             tabIndex="-1"
             tuiIconButton
@@ -58,20 +58,21 @@
             {{ texts()[1] }}
         </button>
     } @else {
-        <button
-            *tuiRepeatTimes="let indexItem of length"
-            #element
-            tuiButton
-            type="button"
-            class="t-button t-button_small"
-            [appearance]="getElementMode(indexItem)"
-            [disabled]="disabled"
-            [tabIndex]="elementIsFocusable(indexItem) ? 0 : -1"
-            (click)="onElementClick(indexItem)"
-            (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
-            (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
-        >
-            {{ indexItem + 1 }}
-        </button>
+        @for (_ of '-'.repeat(length); track $index) {
+            <button
+                #element
+                tuiButton
+                type="button"
+                class="t-button t-button_small"
+                [appearance]="getElementMode($index)"
+                [disabled]="disabled"
+                [tabIndex]="elementIsFocusable($index) ? 0 : -1"
+                (click)="onElementClick($index)"
+                (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
+                (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
+            >
+                {{ $index + 1 }}
+            </button>
+        }
     }
 </div>

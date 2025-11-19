@@ -18,7 +18,6 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
@@ -31,7 +30,7 @@ const CURRENT_YEAR = TuiMonth.currentLocal().year;
 
 @Component({
     selector: 'tui-calendar-year',
-    imports: [TuiHovered, TuiRepeatTimes, TuiScrollIntoView],
+    imports: [TuiHovered, TuiScrollIntoView],
     templateUrl: './calendar-year.template.html',
     styleUrl: './calendar-year.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

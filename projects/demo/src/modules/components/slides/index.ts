@@ -6,7 +6,6 @@ import {Router, Scroll} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, TuiSlides} from '@taiga-ui/kit';
 import {filter, map} from 'rxjs';
@@ -21,7 +20,6 @@ import {Settings} from './examples/3/settings';
         ReactiveFormsModule,
         TuiDemo,
         TuiInputNumber,
-        TuiRepeatTimes,
         TuiSlides,
         TuiTextfield,
     ],

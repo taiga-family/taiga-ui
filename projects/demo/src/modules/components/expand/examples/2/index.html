@@ -6,5 +6,7 @@
     Show/Hide
 </button>
 <tui-expand [expanded]="expanded">
-    <p *tuiRepeatTimes="let index of 3">I am eagerly loaded but hidden</p>
+    @for (_ of '-'.repeat(3); track $index) {
+        <p>I am eagerly loaded but hidden</p>
+    }
 </tui-expand>

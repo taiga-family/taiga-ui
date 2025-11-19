@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiDemo, TuiRepeatTimes],
+    imports: [TuiButton, TuiCarousel, TuiDemo],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
