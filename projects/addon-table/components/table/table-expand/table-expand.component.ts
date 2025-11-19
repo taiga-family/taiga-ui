@@ -3,14 +3,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     type ElementRef,
-    EventEmitter,
     inject,
-    Input,
-    Output,
+    model,
     PLATFORM_ID,
     signal,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -36,14 +35,16 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     },
 })
 export class TuiTableExpand {
-    @ViewChild('content', {static: true})
-    private readonly content?: ElementRef<HTMLElement>;
+    private readonly content = viewChild<ElementRef<HTMLElement>>('content');
 
     private readonly el = tuiInjectElement();
     private readonly server = isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly transitioning = signal(false);
-    protected readonly contentHeight = computed((_ = this.expanded()) => this.update());
+    protected readonly contentHeight = computed((_ = this.expanded()) =>
+        this.update(this.content()),
+    );
+
     protected readonly visible$ = new Subject<boolean>();
     protected readonly sub = this.visible$
         .pipe(
@@ -52,29 +53,21 @@ export class TuiTableExpand {
         )
         .subscribe((visible) => this.el.classList.toggle('_visible', visible));
 
-    @Output()
-    public readonly expandedChange = new EventEmitter<boolean>();
-
-    public readonly expanded = signal(inject(TUI_TABLE_OPTIONS).open);
-
-    @Input('expanded')
-    public set expandedSetter(open: boolean) {
-        this.expanded.set(open);
-        this.transitioning.set(true);
-    }
+    public readonly expanded = model(inject(TUI_TABLE_OPTIONS).open);
+    protected readonly transitioningEffect = effect((_, __ = this.expanded()) =>
+        this.transitioning.set(true),
+    );
 
     public toggle(): void {
         this.expanded.set(!this.expanded());
-        this.transitioning.set(true);
-        this.expandedChange.emit(this.expanded());
     }
 
-    private update(): number {
-        if (!this.content || this.server) {
+    private update(content: ElementRef<HTMLElement> | undefined): number {
+        if (!content || this.server) {
             return 0;
         }
 
-        const el = this.content.nativeElement;
+        const el = content.nativeElement;
 
         el.style.setProperty('display', 'block');
 

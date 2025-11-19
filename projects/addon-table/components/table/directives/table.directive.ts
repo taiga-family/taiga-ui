@@ -4,18 +4,19 @@ import {
     ChangeDetectorRef,
     Component,
     Directive,
-    EventEmitter,
     inject,
     Input,
+    input,
     type OnChanges,
-    Output,
+    output,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {outputFromObservable, outputToObservable} from '@angular/core/rxjs-interop';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -72,11 +73,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
 
     protected readonly nothing = tuiWithStyles(Styles);
 
-    @Input()
-    public columns: ReadonlyArray<string | keyof T> = [];
+    public readonly columns = input<ReadonlyArray<string | keyof T>>([]);
 
-    @Input()
-    public direction = this.options.direction;
+    public readonly direction = input(this.options.direction);
 
     @Input()
     public sorter: TuiComparator<T> = EMPTY_COMPARATOR;
@@ -84,19 +83,23 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     /**
      * @deprecated: use sortChange
      */
-    @Output()
-    public readonly directionChange = new EventEmitter<TuiSortDirection>();
+    public readonly directionChange = output<TuiSortDirection>();
 
     /**
      * @deprecated: use sortChange
      */
-    @Output()
-    public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
+    public readonly directionChange$ = outputToObservable(this.directionChange);
 
-    @Output()
-    public readonly sortChange: Observable<TuiTableSortChange<T>> = combineLatest([
-        this.sorterChange,
-        this.directionChange,
+    /**
+     * @deprecated: use sortChange
+     */
+    public readonly sorterChange = output<TuiComparator<T> | null>();
+
+    public readonly sorterChange$ = outputToObservable(this.sorterChange);
+
+    protected readonly sortChange$: Observable<TuiTableSortChange<T>> = combineLatest([
+        this.sorterChange$,
+        this.directionChange$,
     ]).pipe(
         debounceTime(0),
         map(([sortComparator, sortDirection]) => ({
@@ -107,23 +110,20 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         })),
     );
 
+    public readonly sortChange = outputFromObservable(this.sortChange$);
+
     public readonly appearance = signal('table');
-    public readonly size = signal(this.options.size);
+    public readonly size = input<TuiSizeL | TuiSizeS>(this.options.size);
     public readonly cleaner = signal(false);
 
     // TODO: refactor to signal inputs after Angular update
     public readonly change$ = new Subject<void>();
 
-    @Input('size')
-    public set sizeSetter(size: TuiSizeL | TuiSizeS) {
-        this.size.set(size);
-    }
-
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
             this.updateSorter(
                 this.sorter,
-                this.direction === TuiSortDirection.Asc
+                this.direction() === TuiSortDirection.Asc
                     ? TuiSortDirection.Desc
                     : TuiSortDirection.Asc,
             );
@@ -145,9 +145,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
         this.sorter = sorter || EMPTY_COMPARATOR.bind({});
-        this.direction = direction;
+        tuiSetSignal(this.direction, direction);
         this.sorterChange.emit(sorter);
-        this.directionChange.emit(this.direction);
+        this.directionChange.emit(this.direction());
         this.change$.next();
     }
 }

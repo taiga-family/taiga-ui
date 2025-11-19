@@ -3,15 +3,13 @@ import {
     type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
+    contentChildren,
     forwardRef,
     inject,
-    type QueryList,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {distinctUntilChanged, map, ReplaySubject, switchMap} from 'rxjs';
 
 import {TuiTableCell} from '../directives/cell.directive';
@@ -33,12 +31,17 @@ import {TuiTableTd} from '../td/td.component';
 export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
     implements AfterContentInit
 {
-    @ContentChildren(forwardRef(() => TuiTableCell))
-    private readonly cells: QueryList<TuiTableCell> = EMPTY_QUERY;
+    private readonly cells = contentChildren<TuiTableCell>(
+        forwardRef(() => TuiTableCell),
+    );
 
     private readonly body = inject<TuiTableTbody<T>>(forwardRef(() => TuiTableTbody));
 
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
+
+    private readonly rows$ = toObservable(this.body.rows);
+
+    private readonly contentCells$ = toObservable(this.cells);
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -54,20 +57,20 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
     );
 
     protected readonly cells$ = this.contentReady$.pipe(
-        switchMap(() => tuiQueryListChanges(this.cells)),
+        switchMap(() => this.contentCells$),
         map((cells) =>
             cells.reduce(
-                (record, item) => ({...record, [item.tuiCell]: item}),
+                (record, item) => ({...record, [item.tuiCell()]: item}),
                 {} as Record<string | keyof T, TuiTableCell>,
             ),
         ),
     );
 
     protected readonly item$ = this.contentReady$.pipe(
-        switchMap(() => tuiQueryListChanges(this.body.rows)),
+        switchMap(() => this.rows$),
         map(
             (rows) =>
-                this.body.data[rows.findIndex((row) => row === this)] as Record<
+                this.body.data()[rows.findIndex((row) => row === this)] as Record<
                     string | keyof T,
                     unknown
                 >,

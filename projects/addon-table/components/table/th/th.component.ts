@@ -6,6 +6,8 @@ import {
     forwardRef,
     inject,
     Input,
+    input,
+    signal,
 } from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -23,10 +25,10 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.min-width.px]': 'width || minWidth',
-        '[style.width.px]': 'width || minWidth',
-        '[style.max-width.px]': 'width || maxWidth',
-        '[class._sticky]': 'sticky',
+        '[style.min-width.px]': 'width() || minWidth()',
+        '[style.width.px]': 'width() || minWidth()',
+        '[style.max-width.px]': 'width() || maxWidth()',
+        '[class._sticky]': 'sticky()',
     },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
@@ -36,39 +38,34 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
         optional: true,
     });
 
-    protected width: number | null = null;
+    protected readonly width = signal<number | null>(null);
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
         {optional: true},
     );
 
-    @Input()
-    public minWidth = -Infinity;
+    public readonly minWidth = input(-Infinity);
 
-    @Input()
-    public maxWidth = Infinity;
+    public readonly maxWidth = input(Infinity);
 
     @Input()
     public sorter: TuiComparator<T> | null = this.head
         ? (a, b) => tuiDefaultSort(a[this.key], b[this.key])
         : null;
 
-    @Input()
-    public resizable = this.options.resizable;
+    public readonly resizable = input(this.options.resizable);
 
-    @Input()
-    public sticky = this.options.sticky;
+    public readonly sticky = input(this.options.sticky);
 
-    @Input()
-    public requiredSort = this.options.requiredSort;
+    public readonly requiredSort = input(this.options.requiredSort);
 
     public get key(): keyof T {
         if (!this.head) {
             throw new TuiTableSortKeyException();
         }
 
-        return this.head.tuiHead as keyof T;
+        return this.head.tuiHead() as keyof T;
     }
 
     protected get isCurrent(): boolean {
@@ -77,7 +74,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     protected get icon(): string {
         if (this.isCurrent) {
-            return this.table?.direction === TuiSortDirection.Asc
+            return this.table?.direction() === TuiSortDirection.Asc
                 ? this.options.sortIcons.asc
                 : this.options.sortIcons.desc;
         }
@@ -86,7 +83,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected updateSorterAndDirection(): void {
-        const sorter = this.requiredSort ? this.sorter : null;
+        const sorter = this.requiredSort() ? this.sorter : null;
 
         this.table?.updateSorterAndDirection(
             this.isCurrentAndDescDirection ? sorter : this.sorter,
@@ -94,13 +91,13 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected onResized(width: number): void {
-        this.width = Math.min(Math.max(width, this.minWidth), this.maxWidth);
+        this.width.set(Math.min(Math.max(width, this.minWidth()), this.maxWidth()));
     }
 
     private get isCurrentAndDescDirection(): boolean {
         return (
             this.sorter === this.table?.sorter &&
-            this.table?.direction === TuiSortDirection.Desc
+            this.table?.direction() === TuiSortDirection.Desc
         );
     }
 }
