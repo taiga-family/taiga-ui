@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
@@ -40,7 +39,6 @@ interface User {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiAvatar,
@@ -135,7 +133,7 @@ interface User {
                     <span tuiTitle>
                         {{ user.name }}
                         <span tuiSubtitle>
-                            {{ user.balance | tuiAmount: '$' : 'left' | async }}
+                            {{ user.balance | tuiAmount: '$' : 'left' }}
                         </span>
                     </span>
                 </span>

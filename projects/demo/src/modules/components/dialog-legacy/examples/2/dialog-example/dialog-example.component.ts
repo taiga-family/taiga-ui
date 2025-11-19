@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject, type TemplateRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -15,7 +14,6 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiAutoFocus,

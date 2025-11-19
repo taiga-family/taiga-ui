@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -37,7 +36,6 @@ interface User {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiAvatar,

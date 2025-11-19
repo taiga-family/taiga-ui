@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -8,7 +7,7 @@ import {type TuiDialogContext, TuiDialogService} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton],
+    imports: [TuiAmountPipe, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
