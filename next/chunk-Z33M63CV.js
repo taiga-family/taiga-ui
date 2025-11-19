@@ -1,0 +1,1 @@
+import{Aa as t,Gb as e,Xb as c,_a as r}from"./chunk-WYMRBQQW.js";var i=class i{constructor(){this.iconGroup=r();this.template=t(e)}};i.\u0275fac=function(n){return new(n||i)},i.\u0275dir=c({type:i,selectors:[["","iconGroup",""]],inputs:{iconGroup:[1,"iconGroup"]}});var o=i;export{o as a};
