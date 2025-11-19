@@ -10,19 +10,18 @@
     </header>
 
     <section class="actions">
-        <div
-            *tuiRepeatTimes="let index of 6"
-            tuiCell="l"
-        >
-            <div
-                appearance="primary"
-                tuiAvatar="@tui.star"
-            ></div>
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
+        @for (_ of '-'.repeat(6); track $index) {
+            <div tuiCell="l">
+                <div
+                    appearance="primary"
+                    tuiAvatar="@tui.star"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
             </div>
-        </div>
+        }
     </section>
 
     <footer>

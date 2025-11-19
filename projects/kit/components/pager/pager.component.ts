@@ -13,19 +13,17 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
-import {FormsModule} from '@angular/forms';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 import {delay, map} from 'rxjs';
 
 @Component({
     selector: 'tui-pager',
-    imports: [FormsModule, NgTemplateOutlet, TuiRepeatTimes],
+    imports: [NgTemplateOutlet],
     templateUrl: './pager.component.html',
     styleUrl: './pager.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

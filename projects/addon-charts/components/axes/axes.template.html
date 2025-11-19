@@ -32,20 +32,22 @@
         [style.borderLeftStyle]="axisY"
     >
         <div class="t-vertical">
-            <div
-                *tuiRepeatTimes="let index of verticalLines"
-                automation-id="tui-axex__vertical-line"
-                class="t-line t-line_vertical"
-                [style.borderRightStyle]="verticalLinesHandler(index, verticalLines)"
-            ></div>
+            @for (_ of '-'.repeat(verticalLines); track $index) {
+                <div
+                    automation-id="tui-axex__vertical-line"
+                    class="t-line t-line_vertical"
+                    [style.border-right-style]="verticalLinesHandler($index, verticalLines)"
+                ></div>
+            }
         </div>
         <div class="t-horizontal">
-            <div
-                *tuiRepeatTimes="let index of horizontalLines"
-                automation-id="tui-axex__horizontal-line"
-                class="t-line"
-                [style.borderTopStyle]="horizontalLinesHandler(index, horizontalLines)"
-            ></div>
+            @for (_ of '-'.repeat(horizontalLines); track $index) {
+                <div
+                    automation-id="tui-axex__horizontal-line"
+                    class="t-line"
+                    [style.border-top-style]="horizontalLinesHandler($index, horizontalLines)"
+                ></div>
+            }
         </div>
         @if (axisYInset) {
             <div class="t-labels-y t-labels-y_inset">

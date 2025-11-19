@@ -10,21 +10,22 @@
     </header>
 
     <section>
-        <div
-            *tuiRepeatTimes="let index of 3"
-            appearance="neutral"
-            tuiCardMedium
-        >
-            <tui-icon
-                icon="@tui.square-plus"
-                class="plus"
-            />
+        @for (_ of '-'.repeat(3); track $index) {
+            <div
+                appearance="neutral"
+                tuiCardMedium
+            >
+                <tui-icon
+                    icon="@tui.square-plus"
+                    class="plus"
+                />
 
-            <h2 tuiTitle>
-                Title
-                <span tuiSubtitle>Subtitle</span>
-            </h2>
-        </div>
+                <h2 tuiTitle>
+                    Title
+                    <span tuiSubtitle>Subtitle</span>
+                </h2>
+            </div>
+        }
     </section>
 
     <footer>

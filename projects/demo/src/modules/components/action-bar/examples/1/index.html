@@ -69,20 +69,21 @@
             </button>
         </tui-opt-group>
         <tui-opt-group>
-            <button
-                *tuiRepeatTimes="let index of 5"
-                role="menuitem"
-                tuiOption
-                type="button"
-            >
-                <span>
-                    <tui-icon
-                        icon="@tui.star"
-                        class="tui-space_right-3"
-                    />
-                    Action {{ index + 1 }}
-                </span>
-            </button>
+            @for (_ of '-'.repeat(5); track $index) {
+                <button
+                    role="menuitem"
+                    tuiOption
+                    type="button"
+                >
+                    <span>
+                        <tui-icon
+                            icon="@tui.star"
+                            class="tui-space_right-3"
+                        />
+                        Action {{ $index + 1 }}
+                    </span>
+                </button>
+            }
         </tui-opt-group>
     </tui-data-list>
 
@@ -101,16 +102,16 @@
     </div>
 
     <tui-items-with-more>
-        <ng-container *tuiRepeatTimes="let index of 5">
+        @for (_ of '-'.repeat(5); track $index) {
             <button
                 *tuiItem
                 iconStart="@tui.star"
                 tuiButton
                 type="button"
             >
-                Action {{ index + 1 }}
+                Action {{ $index + 1 }}
             </button>
-        </ng-container>
+        }
         <ng-template
             let-lastIndex
             tuiMore
@@ -127,16 +128,16 @@
             </button>
             <ng-template #dropdown>
                 <tui-data-list size="l">
-                    <ng-container *tuiRepeatTimes="let index of 5">
-                        @if (index > lastIndex) {
+                    @for (_ of '-'.repeat(5); track $index) {
+                        @if ($index > lastIndex) {
                             <button
                                 tuiOption
                                 type="button"
                             >
-                                Action {{ index + 1 }}
+                                Action {{ $index + 1 }}
                             </button>
                         }
-                    </ng-container>
+                    }
                 </tui-data-list>
             </ng-template>
         </ng-template>

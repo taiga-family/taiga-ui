@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiCell,
@@ -25,7 +24,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiIcon,
         TuiLink,
-        TuiRepeatTimes,
         TuiTitle,
     ],
     templateUrl: './index.html',

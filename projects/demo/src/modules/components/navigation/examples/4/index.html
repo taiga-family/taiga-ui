@@ -112,16 +112,17 @@
         </footer>
     </aside>
     <main tuiNavigationMain>
-        <div
-            *tuiRepeatTimes="let index of 10"
-            appearance="floating"
-            tuiCardLarge
-            tuiHeader
-        >
-            <h2 tuiTitle>
-                Some random content
-                <span tuiSubtitle>A subtitle</span>
-            </h2>
-        </div>
+        @for (_ of '-'.repeat(10); track $index) {
+            <div
+                appearance="floating"
+                tuiCardLarge
+                tuiHeader
+            >
+                <h2 tuiTitle>
+                    Some random content
+                    <span tuiSubtitle>A subtitle</span>
+                </h2>
+            </div>
+        }
     </main>
 </div>

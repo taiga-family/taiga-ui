@@ -3,7 +3,6 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiBreakpointService,
     TuiButton,
@@ -28,7 +27,6 @@ import {map} from 'rxjs';
         TuiItemsWithMore,
         TuiLink,
         TuiPopup,
-        TuiRepeatTimes,
     ],
     templateUrl: './index.html',
     encapsulation,

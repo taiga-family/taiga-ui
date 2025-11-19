@@ -67,11 +67,11 @@
                 />
             </tui-textfield>
             <p [tuiSlides]="direction">
-                <ng-container *tuiRepeatTimes="let index of 3">
-                    @if (index === current) {
-                        <div>Slide #{{ index }}</div>
+                @for (_ of '-'.repeat(3); track $index) {
+                    @if ($index === current) {
+                        <div>Slide #{{ $index }}</div>
                     }
-                </ng-container>
+                }
             </p>
         </tui-doc-demo>
         <table tuiDocAPI>

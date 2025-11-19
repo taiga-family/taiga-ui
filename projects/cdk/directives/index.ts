@@ -14,7 +14,6 @@ export * from '@taiga-ui/cdk/directives/native-validator';
 export * from '@taiga-ui/cdk/directives/obscured';
 export * from '@taiga-ui/cdk/directives/pan';
 export * from '@taiga-ui/cdk/directives/platform';
-export * from '@taiga-ui/cdk/directives/repeat-times';
 export * from '@taiga-ui/cdk/directives/resizer';
 export * from '@taiga-ui/cdk/directives/swipe';
 export * from '@taiga-ui/cdk/directives/transitioned';

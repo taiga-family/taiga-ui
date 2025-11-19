@@ -43,7 +43,7 @@
             </p>
 
             <div class="content">
-                @for (i of 30 | tuiRepeatTimes; track i) {
+                @for (_ of '-'.repeat(30); track $index) {
                     <div tuiCell>
                         <div
                             appearance="primary"

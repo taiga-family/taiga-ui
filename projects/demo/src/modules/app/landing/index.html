@@ -160,15 +160,15 @@
         />
     </h1>
 </section>
-
-<div
-    *tuiRepeatTimes="let index of 3"
-    #block
-    waIntersectionObserver
-    waIntersectionThreshold="0.5"
-    class="screen"
-    (waIntersectionObservee)="$event[0] && onIntersection($event[0], index)"
-></div>
+@for (_ of '-'.repeat(3); track $index) {
+    <div
+        #block
+        waIntersectionObserver
+        waIntersectionThreshold="0.5"
+        class="screen"
+        (waIntersectionObservee)="$event[0] && onIntersection($event[0], $index)"
+    ></div>
+}
 
 <footer class="footer">
     <a

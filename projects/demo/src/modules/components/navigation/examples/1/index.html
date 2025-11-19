@@ -339,54 +339,56 @@
                 Primary
             </button>
         </nav>
-        <ng-container *tuiRepeatTimes="let index of 10">
-            <form
-                appearance="floating"
-                tuiCardLarge
-                tuiForm="m"
-                [style.grid-column]="'2 / span 7'"
-                [style.margin-block-start.rem]="1"
-            >
-                <header tuiHeader>
+        <ng-container>
+            @for (_ of '-'.repeat(10); track $index) {
+                <form
+                    appearance="floating"
+                    tuiCardLarge
+                    tuiForm="m"
+                    [style.grid-column]="'2 / span 7'"
+                    [style.margin-block-start.rem]="1"
+                >
+                    <header tuiHeader>
+                        <h2 tuiTitle>
+                            Registration form
+                            <span tuiSubtitle>Tell us about yourself</span>
+                        </h2>
+                    </header>
+                    <tui-textfield>
+                        <label tuiLabel>Name</label>
+                        <input
+                            placeholder="John Wick"
+                            tuiTextfield
+                        />
+                    </tui-textfield>
+                    <footer>
+                        <button
+                            appearance="secondary"
+                            tuiButton
+                            type="button"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            tuiButton
+                            type="submit"
+                        >
+                            Ok
+                        </button>
+                    </footer>
+                </form>
+                <div
+                    appearance="outline-grayscale"
+                    tuiCardLarge
+                    [style.grid-column]="'span 3'"
+                    [style.margin-block-start.rem]="1"
+                >
                     <h2 tuiTitle>
-                        Registration form
-                        <span tuiSubtitle>Tell us about yourself</span>
+                        Sidebar content
+                        <span tuiSubtitle>Use CSS grid to position</span>
                     </h2>
-                </header>
-                <tui-textfield>
-                    <label tuiLabel>Name</label>
-                    <input
-                        placeholder="John Wick"
-                        tuiTextfield
-                    />
-                </tui-textfield>
-                <footer>
-                    <button
-                        appearance="secondary"
-                        tuiButton
-                        type="button"
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        tuiButton
-                        type="submit"
-                    >
-                        Ok
-                    </button>
-                </footer>
-            </form>
-            <div
-                appearance="outline-grayscale"
-                tuiCardLarge
-                [style.grid-column]="'span 3'"
-                [style.margin-block-start.rem]="1"
-            >
-                <h2 tuiTitle>
-                    Sidebar content
-                    <span tuiSubtitle>Use CSS grid to position</span>
-                </h2>
-            </div>
+                </div>
+            }
         </ng-container>
     </main>
 </div>

@@ -2,7 +2,6 @@ import {Component, inject, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDialogService,
@@ -21,7 +20,6 @@ import {filter} from 'rxjs';
         TuiDrawer,
         TuiHeader,
         TuiPopup,
-        TuiRepeatTimes,
         TuiTextfield,
         TuiTitle,
     ],

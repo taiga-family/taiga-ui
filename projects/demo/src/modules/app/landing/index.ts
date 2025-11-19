@@ -14,24 +14,11 @@ import {
     WA_INTERSECTION_ROOT,
     WaIntersectionObserver,
 } from '@ng-web-apis/intersection-observer';
-import {
-    EMPTY_QUERY,
-    TuiAnimated,
-    TuiAutoFocus,
-    tuiProvide,
-    TuiRepeatTimes,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiAnimated, TuiAutoFocus, tuiProvide} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    imports: [
-        RouterLink,
-        TuiAnimated,
-        TuiAutoFocus,
-        TuiButton,
-        TuiRepeatTimes,
-        WaIntersectionObserver,
-    ],
+    imports: [RouterLink, TuiAnimated, TuiAutoFocus, TuiButton, WaIntersectionObserver],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

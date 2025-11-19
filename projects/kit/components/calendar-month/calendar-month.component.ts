@@ -18,7 +18,6 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
@@ -34,14 +33,7 @@ const TODAY = TuiDay.currentLocal();
 
 @Component({
     selector: 'tui-calendar-month',
-    imports: [
-        TuiCalendarYear,
-        TuiHovered,
-        TuiLink,
-        TuiRepeatTimes,
-        TuiScrollbar,
-        TuiSpinButton,
-    ],
+    imports: [TuiCalendarYear, TuiHovered, TuiLink, TuiScrollbar, TuiSpinButton],
     templateUrl: './calendar-month.template.html',
     styleUrl: './calendar-month.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

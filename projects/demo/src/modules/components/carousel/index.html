@@ -27,12 +27,12 @@
                 [(index)]="index"
                 (touchstart.passive.stop)="(0)"
             >
-                <ng-container *tuiRepeatTimes="let item of 9">
+                @for (_ of '-'.repeat(9); track $index) {
                     <div
                         *tuiItem
                         class="plate"
                     >
-                        {{ item }}
+                        {{ $index }}
                         <button
                             size="s"
                             tuiButton
@@ -42,7 +42,7 @@
                             I'm focusable
                         </button>
                     </div>
-                </ng-container>
+                }
             </tui-carousel>
         </tui-doc-demo>
         <table tuiDocAPI>

@@ -1546,12 +1546,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'RepeatTimes',
-                keywords: 'повторение, repeat, пайп, pipe',
-                route: DemoRoute.RepeatTimes,
-            },
-            {
-                section: 'Tools',
                 title: 'Stringify',
                 keywords: 'string, tostring, мап, преобразование, пайп, pipe',
                 route: DemoRoute.Stringify,

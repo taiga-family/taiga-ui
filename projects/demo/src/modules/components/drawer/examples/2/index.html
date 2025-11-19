@@ -34,5 +34,7 @@
             [formControl]="control"
         />
     </tui-textfield>
-    <p *tuiRepeatTimes="let index of 30">Content</p>
+    @for (_ of '-'.repeat(30); track $index) {
+        <p>Content</p>
+    }
 </tui-drawer>

@@ -9,30 +9,31 @@
         </h1>
     </header>
 
-    <button
-        *tuiRepeatTimes="let index of 3"
-        tuiCell="l"
-        tuiDropdownAlign="right"
-        tuiDropdownOpen
-        type="button"
-        [tuiDropdown]="dropdown"
-        [tuiDropdownSided]="true"
-    >
-        <div
-            appearance="primary"
-            tuiAvatar="@tui.star"
-        ></div>
+    @for (_ of '-'.repeat(3); track $index) {
+        <button
+            tuiCell="l"
+            tuiDropdownAlign="right"
+            tuiDropdownOpen
+            type="button"
+            [tuiDropdown]="dropdown"
+            [tuiDropdownSided]="true"
+        >
+            <div
+                appearance="primary"
+                tuiAvatar="@tui.star"
+            ></div>
 
-        <div tuiTitle>
-            Title
-            <div tuiSubtitle>Description</div>
-        </div>
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
 
-        <tui-icon
-            icon="@tui.chevron-right"
-            tuiAppearance="icon"
-        />
-    </button>
+            <tui-icon
+                icon="@tui.chevron-right"
+                tuiAppearance="icon"
+            />
+        </button>
+    }
 
     <button
         tuiLink

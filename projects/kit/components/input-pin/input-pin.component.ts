@@ -9,7 +9,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoMask} from '@maskito/core';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -22,7 +21,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Component({
     selector: 'input[tuiInputPin]',
-    imports: [TuiAppearance, TuiRepeatTimes, TuiTextfieldContent],
+    imports: [TuiAppearance, TuiTextfieldContent],
     templateUrl: './input-pin.template.html',
     styleUrl: './input-pin.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
