@@ -24,13 +24,13 @@
             [style.strokeDashoffset.em]="initialized() ? getOffset($index) : getLength($index)"
         />
     </svg>
-    <div class="t-content">
-        <div class="t-wrapper">
-            <ng-content />
-        </div>
-    </div>
-    <div class="t-percent">
-        <span>{{ minLabel }}</span>
-        <span>{{ maxLabel }}</span>
-    </div>
 }
+<div class="t-content">
+    <div class="t-wrapper">
+        <ng-content />
+    </div>
+</div>
+<div class="t-percent">
+    <span>{{ minLabel }}</span>
+    <span>{{ maxLabel }}</span>
+</div>
