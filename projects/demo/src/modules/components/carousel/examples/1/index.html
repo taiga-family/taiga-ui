@@ -18,9 +18,8 @@
         </div>
     }
 </tui-carousel>
-<tui-pagination
-    size="s"
-    class="pagination"
-    [length]="items.length"
-    [(index)]="index"
+
+<tui-pager
+    [count]="items.length"
+    [index]="index"
 />
