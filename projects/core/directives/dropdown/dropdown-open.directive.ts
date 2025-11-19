@@ -27,8 +27,8 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {
     tuiGetClosestFocusable,
-    tuiIsFocusedIn,
     tuiIsFocusable,
+    tuiIsFocusedIn,
 } from '@taiga-ui/cdk/utils/focus';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
