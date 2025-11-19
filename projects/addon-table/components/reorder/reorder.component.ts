@@ -118,9 +118,10 @@ export class TuiReorder<T> {
     }
 
     private getSortedItems(): T[] {
-        const items = new Array(this.unsortedItems().length);
+        const unsortedItems = this.unsortedItems();
+        const items = Array.from<T>({length: unsortedItems.length});
 
-        this.unsortedItems().forEach((item, index) => {
+        unsortedItems.forEach((item, index) => {
             items[this.order.get(index) ?? index] = item;
         });
 
