@@ -21,7 +21,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiCell,
         TuiFloatingContainer,
         TuiLabel,
-
         TuiSwitch,
         TuiTitle,
     ],

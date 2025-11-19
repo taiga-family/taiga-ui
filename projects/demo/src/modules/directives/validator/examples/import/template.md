@@ -1,6 +1,9 @@
 ```html
-<tui-input
-  formControlName="control"
-  [tuiValidator]="validator"
-></tui-input>
+<tui-textfield>
+  <input
+    formControlName="control"
+    tuiTextfield
+    [tuiValidator]="validator"
+  />
+</tui-textfield>
 ```

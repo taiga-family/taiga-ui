@@ -5,7 +5,7 @@
         automation-id="tui-primitive-calendar-mobile__row"
         class="t-row"
     >
-        @for (_ of '-'.repeat(sheet[rowIndex]?.length ?? 0); track $index) {
+        @for (_ of '-'.repeat(7 - (sheet[rowIndex]?.length ?? 0)); track $index) {
             <div class="t-cell t-cell_empty"></div>
         }
         @for (_ of '-'.repeat(sheet[rowIndex]?.length ?? 0); track $index) {

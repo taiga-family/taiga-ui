@@ -27,7 +27,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiIcon,
         TuiLink,
         TuiNavigation,
-
         TuiTabs,
         TuiTextfield,
         TuiTitle,

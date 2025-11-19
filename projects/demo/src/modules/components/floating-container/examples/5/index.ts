@@ -28,7 +28,6 @@ import {
         TuiFloatingContainer,
         TuiInputColor,
         TuiLabel,
-
         TuiSwitch,
         TuiTextfield,
         TuiTitle,

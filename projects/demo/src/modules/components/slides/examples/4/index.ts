@@ -17,7 +17,6 @@ import {TuiAppBar, TuiCard, TuiHeader} from '@taiga-ui/layout';
         TuiFloatingContainer,
         TuiHeader,
         TuiProgressBar,
-
         TuiSlides,
         TuiTitle,
     ],

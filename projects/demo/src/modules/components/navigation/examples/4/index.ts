@@ -19,7 +19,6 @@ import {
         TuiFade,
         TuiHeader,
         TuiNavigation,
-
         TuiTitle,
     ],
     templateUrl: './index.html',
