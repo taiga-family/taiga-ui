@@ -15,9 +15,8 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiHint,
     TuiHintHover,
@@ -47,7 +46,7 @@ export class TuiLineChart implements OnChanges {
     private readonly zone = inject(NgZone);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly hover$ = new Subject<number>();
-    private readonly autoId = tuiInjectId();
+    private readonly autoId = tuiGenerateId();
     private readonly resize = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
             map(([e]) => e?.contentRect.height || NaN),

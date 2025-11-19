@@ -33,11 +33,7 @@ import {
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
 import {TuiItemsHandlersValidator} from '@taiga-ui/core/directives/items-handlers';
-import {
-    TUI_DATE_ADAPTER,
-    TuiInputDateBase,
-    tuiWithDateFiller,
-} from '@taiga-ui/kit/components/input-date';
+import {TuiInputDateBase, tuiWithDateFiller} from '@taiga-ui/kit/components/input-date';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -93,7 +89,7 @@ export class TuiInputDateTimeDirective
     protected readonly mask = tuiMaskito(
         computed(() =>
             this.computeMask({
-                dateMode: TUI_DATE_ADAPTER[this.format().mode],
+                dateMode: this.format().mode,
                 timeMode: this.timeMode(),
                 min: this.toNativeDate([this.min(), this.minTime()]),
                 max: this.toNativeDate([this.max(), this.maxTime()]),

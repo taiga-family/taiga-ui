@@ -2,7 +2,7 @@ import {Component, inject, type OnDestroy} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
-import {TuiThemeColorService} from '@taiga-ui/cdk';
+import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 
 @Component({
     imports: [TuiDemo],

@@ -17,7 +17,6 @@ import {
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
-    TUI_DATE_ADAPTER,
     TUI_INPUT_DATE_OPTIONS_NEW,
     TuiInputDateBase,
     tuiWithDateFiller,
@@ -49,7 +48,7 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
         computed(() =>
             maskitoDateRangeOptionsGenerator({
                 dateSeparator: this.format().separator,
-                mode: TUI_DATE_ADAPTER[this.format().mode],
+                mode: this.format().mode,
                 min: this.min().toLocalNativeDate(),
                 max: this.max().toLocalNativeDate(),
                 minLength: this.minLength() || {},

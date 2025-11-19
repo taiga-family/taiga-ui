@@ -17,7 +17,6 @@ import {
     tuiControlValue,
     TuiDay,
     tuiDefaultSort,
-    tuiIsFalsy,
     tuiIsPresent,
     tuiToInt,
 } from '@taiga-ui/cdk';
@@ -167,7 +166,7 @@ export default class Example {
 
     protected search = '';
 
-    protected readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
+    protected readonly loading$ = this.request$.pipe(map((v) => !v));
 
     protected readonly total$ = this.request$.pipe(
         filter(tuiIsPresent),

@@ -11,7 +11,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'MDY', separator: '/'})],
+    providers: [tuiDateFormatProvider({mode: 'mm/dd/yyyy', separator: '/'})],
 })
 export default class Example {
     protected value: TuiDayRange | null = null;

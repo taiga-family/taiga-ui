@@ -1,4 +1,4 @@
-import {tuiGetFocused} from './get-native-focused';
+import {tuiGetFocused} from './get-focused';
 
 /**
  * Checks if element is focused.

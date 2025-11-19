@@ -12,10 +12,9 @@ import {
 import {TuiBarSet} from '@taiga-ui/addon-charts/components/bar-set';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiContext, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiHint,
     TuiHintHover,
@@ -36,7 +35,7 @@ import {type Observable} from 'rxjs';
 })
 export class TuiBarChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    private readonly autoId = tuiInjectId();
+    private readonly autoId = tuiGenerateId();
 
     @ViewChildren(TuiHintHover)
     protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;

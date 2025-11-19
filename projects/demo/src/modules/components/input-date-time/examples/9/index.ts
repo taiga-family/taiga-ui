@@ -26,7 +26,7 @@ export default class Example {
         Object.values(this.dates).at(-1) ?? null;
 
     protected toISOString([day, time]: readonly [TuiDay, TuiTime]): string {
-        return `${day.toString('YMD', '-')}T${time.toString()}`;
+        return `${day.toString('yyyy/mm/dd', '-')}T${time.toString()}`;
     }
 
     protected asIs(): number {

@@ -1,12 +1,18 @@
-import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input, type OnDestroy, ViewContainerRef} from '@angular/core';
+import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import {
+    Directive,
+    inject,
+    Input,
+    type OnDestroy,
+    PLATFORM_ID,
+    ViewContainerRef,
+} from '@angular/core';
 import {
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
     EMPTY_CLIENT_RECT,
     TUI_TRUE_HANDLER,
 } from '@taiga-ui/cdk/constants';
-import {TUI_RANGE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
     tuiInjectElement,
@@ -74,7 +80,9 @@ export class TuiDropdownSelection
         }),
     );
 
-    protected range = inject(TUI_RANGE);
+    protected range = isPlatformBrowser(inject(PLATFORM_ID))
+        ? new Range()
+        : ({} as unknown as Range);
 
     @Input('tuiDropdownSelectionPosition')
     public position: 'selection' | 'tag' | 'word' = 'selection';

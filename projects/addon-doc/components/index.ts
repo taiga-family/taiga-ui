@@ -8,7 +8,6 @@ export * from './doc-tab';
 export * from './documentation/documentation.component';
 export * from './documentation/documentation-property-connector.directive';
 export * from './documentation/pipes/cleaner.pipe';
-export * from './documentation/pipes/color.pipe';
 export * from './documentation/pipes/inspect.pipe';
 export * from './documentation/pipes/opacity.pipe';
 export * from './documentation/pipes/optional.pipe';

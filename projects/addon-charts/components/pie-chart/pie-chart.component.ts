@@ -7,10 +7,9 @@ import {
     Output,
 } from '@angular/core';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiHint,
     TuiHintOptionsDirective,
@@ -52,7 +51,7 @@ const TRANSFORM = {
 })
 export class TuiPieChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    private readonly autoId = tuiInjectId();
+    private readonly autoId = tuiGenerateId();
 
     @Input()
     public value: readonly number[] = [];

@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiThemeColorService} from '@taiga-ui/cdk';
+import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiDialogService} from '@taiga-ui/legacy';
 

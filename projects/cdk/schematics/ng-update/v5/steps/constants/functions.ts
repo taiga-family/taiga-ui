@@ -17,13 +17,8 @@ export const REPLACE_FUNCTIONS: readonly ReplacementType[] = [
         moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {
-        from: 'tuiIsNativeMouseFocusable',
-        to: 'tuiIsMouseFocusable',
-        moduleSpecifier: ['@taiga-ui/cdk'],
-    },
-    {
         from: 'tuiIsNativeKeyboardFocusable',
-        to: 'tuiIsKeyboardFocusable',
+        to: 'tuiIsFocusable',
         moduleSpecifier: ['@taiga-ui/cdk'],
     },
     {
