@@ -27,9 +27,10 @@ import {Option} from './option';
     providers: [tuiAsOptionContent(Option)],
 })
 export default class Example {
-    protected readonly items = new Array(5)
-        .fill(null)
-        .map((_, index) => `Option ${index + 1}`);
+    protected readonly items = Array.from(
+        {length: 5},
+        (_, index) => `Option ${index + 1}`,
+    );
 
     protected readonly control = new FormControl<string | null>(this.items[2]!);
 }

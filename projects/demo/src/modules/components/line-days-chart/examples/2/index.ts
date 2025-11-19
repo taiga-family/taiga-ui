@@ -155,8 +155,7 @@ export default class Example {
         {from, to}: TuiDayRange,
         initial: number,
     ): ReadonlyArray<[TuiDay, number]> {
-        return new Array(TuiDay.lengthBetween(from, to) + 1)
-            .fill(0)
+        return Array.from({length: TuiDay.lengthBetween(from, to) + 1})
             .reduce<ReadonlyArray<[TuiDay, number]>>(
                 (array, _, i) => [
                     ...array,

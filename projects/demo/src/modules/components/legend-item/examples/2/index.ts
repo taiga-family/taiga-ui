@@ -28,7 +28,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-    private enabled = new Array(5).fill(true);
+    private enabled = Array.from<unknown, boolean>({length: 5}, () => true);
 
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
@@ -39,7 +39,7 @@ export default class Example {
     }
 
     protected isEnabled(index: number): boolean {
-        return this.enabled[index];
+        return this.enabled[index] ?? false;
     }
 
     protected toggle(index: number): void {
@@ -61,7 +61,7 @@ export default class Example {
     @tuiPure
     private getValue(
         data: readonly number[],
-        enabled: readonly number[],
+        enabled: readonly boolean[],
     ): readonly number[] {
         return data.map((value, index) => (enabled[index] ? value : 0));
     }

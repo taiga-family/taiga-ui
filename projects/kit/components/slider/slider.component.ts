@@ -73,7 +73,7 @@ export class TuiSliderComponent {
     @Input({
         alias: 'segments',
         transform: (x: number[] | number) =>
-            Array.isArray(x) ? x : new Array(x).fill(null).map((_, i) => i / x),
+            Array.isArray(x) ? x : Array.from({length: x}, (_, i) => i / x),
     })
     public set segmentsSetter(segments: number[]) {
         this.segments.set(segments);

@@ -65,9 +65,10 @@ interface User {
     providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class Sandbox {
-    protected readonly options: User[] = new Array(5)
-        .fill(null)
-        .map((_, i) => ({name: `User${i}`, balance: i}));
+    protected readonly options: User[] = Array.from({length: 5}, (_, i) => ({
+        name: `User${i}`,
+        balance: i,
+    }));
 
     protected readonly control = new FormControl(this.options[0]!);
 

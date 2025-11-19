@@ -44,7 +44,7 @@ export default class Example {
 
     protected search = '';
 
-    protected readonly items = new Array(15).fill(0).map((_, index) => ({
+    protected readonly items = Array.from({length: 15}, (_, index) => ({
         title: `Title ${index + 1}`,
         description: `Description ${index + 1}`,
     }));
