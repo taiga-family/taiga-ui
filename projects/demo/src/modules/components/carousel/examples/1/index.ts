@@ -2,10 +2,10 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
+import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiPagination],
+    imports: [TuiButton, TuiCarousel, TuiPager],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

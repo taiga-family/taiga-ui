@@ -1,78 +1,60 @@
 <div class="t-content">
-    @if (size !== 's') {
-        <button
-            tabIndex="-1"
-            tuiIconButton
-            type="button"
-            class="t-button"
-            [appearance]="getElementMode()"
-            [disabled]="arrowIsDisabledLeft"
-            [iconStart]="icons.decrement"
-            [size]="buttonSize"
-            (click)="onArrowClick('left')"
-            (mousedown.zoneless.prevent)="(0)"
-        >
-            {{ texts()[0] }}
-        </button>
-        @for (_ of '-'.repeat(elementsLength); track $index) {
-            @let index = getItemIndexByElementIndex($index);
-            @if (index !== null) {
-                <button
-                    #element
-                    automation-id="tui-pagination__element"
-                    tuiButton
-                    type="button"
-                    class="t-button"
-                    [appearance]="getElementMode(index)"
-                    [disabled]="disabled"
-                    [size]="buttonSize"
-                    [tabIndex]="elementIsFocusable(index) ? 0 : -1"
-                    (click)="onElementClick(index)"
-                    (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
-                    (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
-                >
-                    <ng-container *polymorpheusOutlet="content || index + 1 as text; context: {$implicit: index}">
-                        {{ text }}
-                    </ng-container>
-                </button>
-            } @else {
-                <div
-                    automation-id="tui-pagination__element"
-                    class="t-dots"
-                    [class.t-dots_small]="size === 'm'"
-                ></div>
-            }
-        }
-        <button
-            tabIndex="-1"
-            tuiIconButton
-            type="button"
-            class="t-button"
-            [appearance]="getElementMode()"
-            [disabled]="arrowIsDisabledRight"
-            [iconStart]="icons.increment"
-            [size]="buttonSize"
-            (click)="onArrowClick('right')"
-            (mousedown.zoneless.prevent)="(0)"
-        >
-            {{ texts()[1] }}
-        </button>
-    } @else {
-        @for (_ of '-'.repeat(length); track $index) {
+    <button
+        tabIndex="-1"
+        tuiIconButton
+        type="button"
+        class="t-button"
+        [appearance]="getElementMode()"
+        [disabled]="arrowIsDisabledLeft()"
+        [iconStart]="icons.decrement"
+        [size]="buttonSize()"
+        (click)="onArrowClick('left')"
+        (mousedown.zoneless.prevent)="(0)"
+    >
+        {{ texts()[0] }}
+    </button>
+    @for (_ of '-'.repeat(elementsLength()); track $index) {
+        @let index = getItemIndexByElementIndex($index);
+        @if (index !== null) {
             <button
                 #element
+                automation-id="tui-pagination__element"
                 tuiButton
                 type="button"
-                class="t-button t-button_small"
-                [appearance]="getElementMode($index)"
-                [disabled]="disabled"
-                [tabIndex]="elementIsFocusable($index) ? 0 : -1"
-                (click)="onElementClick($index)"
+                class="t-button"
+                [appearance]="getElementMode(index)"
+                [disabled]="disabled()"
+                [size]="buttonSize()"
+                [tabIndex]="elementIsFocusable(index) ? 0 : -1"
+                (click)="onElementClick(index)"
                 (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
                 (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
             >
-                {{ $index + 1 }}
+                <ng-container *polymorpheusOutlet="content() || index + 1 as text; context: {$implicit: index}">
+                    {{ text }}
+                </ng-container>
             </button>
+        } @else {
+            <div
+                automation-id="tui-pagination__element"
+                class="t-ellipsis"
+                [class.t-ellipsis_small]="size() === 'm'"
+            ></div>
         }
     }
+
+    <button
+        tabIndex="-1"
+        tuiIconButton
+        type="button"
+        class="t-button"
+        [appearance]="getElementMode()"
+        [disabled]="arrowIsDisabledRight()"
+        [iconStart]="icons.increment"
+        [size]="buttonSize()"
+        (click)="onArrowClick('right')"
+        (mousedown.zoneless.prevent)="(0)"
+    >
+        {{ texts()[1] }}
+    </button>
 </div>

@@ -1,10 +1,11 @@
 <tui-pagination
-    [content]="test"
+    [content]="content"
     [length]="7"
-/>
-<ng-template
-    #test
-    let-index
 >
-    {{ days[index] }}
-</ng-template>
+    <ng-template
+        #content
+        let-index
+    >
+        {{ days[index] }}
+    </ng-template>
+</tui-pagination>
