@@ -2,8 +2,8 @@
 
 :host {
     position: fixed;
-    top: ~'max(3rem, env(safe-area-inset-top))';
-    bottom: 0;
+    inset-block-start: ~'max(3rem, env(safe-area-inset-top))';
+    inset-block-end: 0;
     inline-size: 36.25rem;
     max-inline-size: calc(100vw - 3rem);
     background: var(--tui-background-elevation-1);
@@ -17,7 +17,7 @@
     }
 
     &._overlay {
-        top: 0;
+        inset-block-start: 0;
         border-radius: 0;
 
         > .t-aside {
@@ -29,10 +29,10 @@
 
             content: '';
             position: fixed;
-            top: -100vh;
-            left: -100vw;
-            right: -100vw;
-            bottom: -100vh;
+            inset-block-start: -100vh;
+            inset-inline-start: -100vw;
+            inset-inline-end: -100vw;
+            inset-block-end: -100vh;
             background: var(--tui-service-backdrop);
             transition-timing-function: ease-out;
 
@@ -61,9 +61,9 @@
     overscroll-behavior: contain;
 
     ::ng-deep > .t-content > header {
-        top: 0;
         z-index: 1;
         display: flex;
+        inset-block-start: 0;
         flex-direction: column;
         gap: 0.75rem;
         padding: 1.5rem 1.5rem 0.75rem;

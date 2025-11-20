@@ -29,8 +29,8 @@
     &::before {
         content: '';
         position: absolute;
-        bottom: 100%;
-        left: 50%;
+        inset-block-end: 100%;
+        inset-inline-start: 50%;
         inline-size: 1.5625rem;
         block-size: 0.5625rem;
         background: inherit;
@@ -41,25 +41,25 @@
 
     &[data-direction='bottom'] {
         &::before {
-            top: 100%;
-            bottom: auto;
+            inset-block-start: 100%;
+            inset-block-end: auto;
             transform: translate(-50%) rotate(180deg);
         }
     }
 
     &[data-direction='left'] {
         &::before {
-            left: auto;
-            top: 50%;
-            right: 100%;
+            inset-inline-start: auto;
+            inset-block-start: 50%;
+            inset-inline-end: 100%;
             transform: translate(0.785rem, -50%) rotate(-90deg);
         }
     }
 
     &[data-direction='right'] {
         &::before {
-            top: 50%;
-            left: 100%;
+            inset-block-start: 50%;
+            inset-inline-start: 100%;
             transform: translate(-0.785rem, -50%) rotate(90deg);
         }
     }

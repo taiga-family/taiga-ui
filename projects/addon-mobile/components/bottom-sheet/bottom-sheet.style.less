@@ -4,10 +4,10 @@
     .scrollbar-hidden();
 
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     display: block;
+    inset-block-start: 100%;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     block-size: calc(100% - 1rem);
     max-inline-size: 40rem;
     margin: calc(-1 * var(--t-initial)) auto 0;
@@ -22,10 +22,10 @@
     &::before {
         content: '';
         position: sticky;
-        top: 0.625rem;
-        left: 50%;
         z-index: 1;
         display: block;
+        inset-block-start: 0.625rem;
+        inset-inline-start: 50%;
         inset-inline-start: 50%;
         inline-size: 2rem;
         block-size: 0.25rem;
@@ -42,7 +42,7 @@
     &::after {
         content: '';
         position: absolute;
-        top: calc(100% - var(--t-initial));
+        inset-block-start: calc(100% - var(--t-initial));
         inline-size: 1rem;
         block-size: calc(var(--t-height) - 100% + var(--t-initial));
         scroll-snap-align: start;
@@ -52,7 +52,7 @@
 
 .t-content {
     position: sticky;
-    top: 0;
+    inset-block-start: 0;
     padding: 2.25rem 1rem 1.5rem;
 }
 

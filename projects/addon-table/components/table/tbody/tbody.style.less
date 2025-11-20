@@ -35,11 +35,11 @@
     }
 
     &::before {
-        left: 0;
+        inset-inline-start: 0;
     }
 
     &::after {
-        right: 0;
+        inset-inline-end: 0;
     }
 }
 
@@ -65,16 +65,16 @@
 
 .t-name {
     position: sticky;
-    left: 0.75rem;
     display: inline-block;
+    inset-inline-start: 0.75rem;
 
     :host-context(table[data-size='l']) & {
-        left: 1rem;
+        inset-inline-start: 1rem;
     }
 }
 
 .t-chevron {
     position: sticky;
-    right: 0.75rem;
+    inset-inline-end: 0.75rem;
     margin: 0 0.6875rem 0 auto;
 }

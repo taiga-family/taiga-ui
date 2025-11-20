@@ -4,7 +4,7 @@
     .transition(box-shadow);
 
     position: relative;
-    top: 0;
+    inset-block-start: 0;
     block-size: var(--tui-height-m);
     font: var(--tui-font-text-s);
     text-align: start;
@@ -35,7 +35,7 @@
         z-index: 30;
 
         &:first-child {
-            left: 0;
+            inset-inline-start: 0;
         }
 
         &::after {
@@ -43,9 +43,9 @@
 
             content: '';
             position: absolute;
-            top: 0;
-            left: 100%;
-            bottom: 0;
+            inset-block-start: 0;
+            inset-inline-start: 100%;
+            inset-block-end: 0;
             inline-size: 0.3125rem;
             pointer-events: none;
             background: rgba(237, 237, 237, 0.7);
@@ -101,15 +101,15 @@
 }
 
 :host-context(table[data-size='l'] thead[tuiThead] tr:nth-child(2)) {
-    top: var(--tui-height-l);
+    inset-block-start: var(--tui-height-l);
 }
 
 :host-context(table[data-size='m'] thead[tuiThead] tr:nth-child(2)) {
-    top: var(--tui-height-m);
+    inset-block-start: var(--tui-height-m);
 }
 
 :host-context(table[data-size='s'] thead[tuiThead] tr:nth-child(2)) {
-    top: var(--tui-height-s);
+    inset-block-start: var(--tui-height-s);
 }
 
 .t-sort {
@@ -143,9 +143,9 @@
     .transition(opacity);
 
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -1px;
+    inset-block-start: 0;
+    inset-block-end: 0;
+    inset-inline-end: -1px;
     inline-size: 0.1875rem;
     justify-self: flex-end;
     border-inline-start: 2px solid transparent;

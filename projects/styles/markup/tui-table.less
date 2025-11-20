@@ -89,7 +89,7 @@
         &_last::before {
             content: '';
             position: absolute;
-            top: 0;
+            inset-block-start: 0;
             inline-size: 0.75rem;
             block-size: 100%;
             background: inherit;
@@ -103,7 +103,7 @@
             overflow: visible;
 
             &::before {
-                right: 100%;
+                inset-inline-end: 100%;
             }
         }
 
@@ -113,7 +113,7 @@
             overflow: visible;
 
             &::before {
-                left: 100%;
+                inset-inline-start: 100%;
                 transform: scaleX(-1);
             }
         }
@@ -163,7 +163,7 @@
     &__sort-icon {
         .center-top();
 
-        left: 100%;
+        inset-inline-start: 100%;
         margin-inline-start: 0.125rem;
         inline-size: 1rem;
         block-size: 1rem;

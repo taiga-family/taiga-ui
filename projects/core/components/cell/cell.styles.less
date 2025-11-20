@@ -46,8 +46,8 @@
     // Specificity artificially increased for disabled state
     [tuiCellActions][tuiCellActions] {
         position: absolute;
-        right: 0;
         z-index: 1;
+        inset-inline-end: 0;
         padding-inline-end: inherit;
 
         --t-group-mask: none;
@@ -98,7 +98,7 @@
     tui-badge-notification[data-size='xs'] {
         .center-top();
 
-        left: -0.625rem;
+        inset-inline-start: -0.625rem;
     }
 
     &[data-size='s'] {

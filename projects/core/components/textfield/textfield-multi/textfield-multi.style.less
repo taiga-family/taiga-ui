@@ -15,14 +15,14 @@ tui-textfield[multi][multi] {
     &::before,
     &::after {
         position: sticky;
-        top: 0;
-        left: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         inset-inline-start: 0;
         block-size: var(--t-height);
     }
 
     &[tuiChevron]::after {
-        top: 0.375rem;
+        inset-block-start: 0.375rem;
         block-size: calc(var(--t-height) - 0.75rem);
     }
 
@@ -39,8 +39,8 @@ tui-textfield[multi][multi] {
 
     > .t-items {
         position: sticky;
-        left: var(--t-start);
         display: flex;
+        inset-inline-start: var(--t-start);
         inset-inline-start: var(--t-start);
         min-inline-size: 0;
         min-block-size: fit-content;
@@ -75,7 +75,7 @@ tui-textfield[multi][multi] {
 
         > label[tuiLabel] {
             position: absolute;
-            top: 0;
+            inset-block-start: 0;
             inline-size: 100%;
         }
 
@@ -92,7 +92,7 @@ tui-textfield[multi][multi] {
 
             input {
                 position: absolute;
-                left: 0;
+                inset-inline-start: 0;
                 inset-inline-start: 0;
                 inline-size: 100%;
                 padding: 0;
@@ -108,7 +108,7 @@ tui-textfield[multi][multi] {
 
             .t-filler {
                 position: absolute;
-                left: 0;
+                inset-inline-start: 0;
                 inset-inline-start: 0;
                 color: var(--tui-text-tertiary);
                 pointer-events: none;
@@ -122,8 +122,8 @@ tui-textfield[multi][multi] {
 
     > .t-content {
         position: sticky;
-        top: 0;
-        left: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
+        inset-block-start: 0;
+        inset-inline-start: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
         inset-inline-start: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
         margin: 0;
         gap: 0.25rem;
@@ -191,7 +191,7 @@ tui-textfield[multi][multi] {
 
         &::after {
             // tuiChevron changes icon size to 1rem
-            left: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
+            inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
             inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
             margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
             margin-inline-start: -0.75rem;
@@ -211,13 +211,13 @@ tui-textfield[multi][multi] {
         --t-offset: calc(0.75rem + var(--t-end) / 14);
 
         &::before {
-            left: -0.125rem;
+            inset-inline-start: -0.125rem;
             inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
         &::after {
-            left: calc(100% - var(--t-end) - 0.25rem);
+            inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
             inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
             margin-inline-start: -0.125rem;
             border-width: 0.625rem;
@@ -243,13 +243,13 @@ tui-textfield[multi][multi] {
         --t-offset: calc(0.625rem + var(--t-end) / 10);
 
         &::before {
-            left: -0.125rem;
+            inset-inline-start: -0.125rem;
             inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
         &::after {
-            left: calc(100% - var(--t-end) - 0.125rem);
+            inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
             inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
             border-width: 0.5rem;
             margin-inline-end: calc(-1 * var(--t-padding));

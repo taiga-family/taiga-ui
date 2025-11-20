@@ -12,8 +12,8 @@
     .transition(opacity);
 
     position: absolute;
-    left: 3.125rem;
-    bottom: 1.875rem;
+    inset-inline-start: 3.125rem;
+    inset-block-end: 1.875rem;
     inline-size: 15.625rem;
     background: var(--tui-text-primary);
     color: var(--tui-background-base);
@@ -24,8 +24,8 @@
     &::after {
         content: '';
         position: absolute;
-        left: 50%;
-        bottom: -0.9375rem;
+        inset-inline-start: 50%;
+        inset-block-end: -0.9375rem;
         border-block-start: 0.9375rem solid var(--tui-text-primary);
         border-inline-start: 0.625rem solid transparent;
         border-inline-end: 0.625rem solid transparent;

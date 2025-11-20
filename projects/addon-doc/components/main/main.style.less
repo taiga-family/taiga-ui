@@ -32,7 +32,7 @@ body {
 }
 
 tui-root > tui-scroll-controls > .t-bar_vertical {
-    top: @sticky-header-height !important;
+    inset-block-start: @sticky-header-height !important;
 }
 
 tui-doc-main {
@@ -78,8 +78,8 @@ a:focus code {
 
 tui-doc-navigation.tui-doc-navigation {
     position: fixed;
-    top: 4rem;
-    bottom: 0;
+    inset-block-start: 4rem;
+    inset-block-end: 0;
     inline-size: @sidebar-width;
     border-inline-end: 1px solid var(--tui-border-normal);
 

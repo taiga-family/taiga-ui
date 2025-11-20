@@ -30,8 +30,8 @@ tui-compass {
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0.125rem;
+        inset-block-start: 0;
+        inset-inline-start: 0.125rem;
         mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 8.99993C4 8 8 8 12 8.99993C9.91509 5.73239 8.5 3 6 0C3.5 3 2 5.5 0 8.99993Z"/></svg>');
         transform: rotate(var(--t-degrees)) translateY(-0.625rem) translateZ(-1rem);
         inline-size: 0.75rem;

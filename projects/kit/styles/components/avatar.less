@@ -154,9 +154,9 @@
         &::after {
             content: '';
             position: absolute;
-            top: calc(100% - var(--t-corner-offset));
-            left: calc(100% - var(--t-corner-offset));
             display: block;
+            inset-block-start: calc(100% - var(--t-corner-offset));
+            inset-inline-start: calc(100% - var(--t-corner-offset));
             inline-size: 0.55rem;
             block-size: 0.55rem;
             border-radius: 100%;

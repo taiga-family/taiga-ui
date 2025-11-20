@@ -32,7 +32,7 @@ tui-dropdown-mobile {
         .scrollbar-hidden();
 
         position: sticky;
-        top: 0;
+        inset-block-start: 0;
         block-size: 100%;
         overflow: auto;
         margin: 0 0.75rem;
@@ -41,9 +41,9 @@ tui-dropdown-mobile {
 
     [tuiDropdownButton][tuiDropdownButton] {
         position: fixed;
-        right: 1rem;
-        bottom: ~'max(1rem, env(safe-area-inset-bottom))';
         display: inline-flex;
+        inset-inline-end: 1rem;
+        inset-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
     }
 }
 

@@ -4,9 +4,9 @@
     .transition(opacity);
 
     position: sticky;
-    top: 0;
     z-index: 1;
     display: block;
+    inset-block-start: 0;
     block-size: 0;
     opacity: 0;
 
@@ -23,9 +23,9 @@
 
 .t-wrapper {
     position: absolute;
-    top: -2.5rem;
-    left: 50%;
     display: flex;
+    inset-block-start: -2.5rem;
+    inset-inline-start: 50%;
     box-shadow: var(--tui-shadow-medium);
     block-size: 2.25rem;
     inline-size: 2.25rem;

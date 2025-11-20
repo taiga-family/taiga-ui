@@ -113,10 +113,10 @@ tui-segmented {
 
     & > label > input:not([tuiRadio]) {
         position: absolute;
-        top: -0.125rem;
-        left: -0.125rem;
-        right: -0.125rem;
-        bottom: -0.125rem;
+        inset-block-start: -0.125rem;
+        inset-inline-start: -0.125rem;
+        inset-inline-end: -0.125rem;
+        inset-block-end: -0.125rem;
         background: transparent !important;
     }
 
@@ -125,8 +125,8 @@ tui-segmented {
 
         content: '';
         position: absolute;
-        left: var(--t-left);
-        top: var(--t-top);
+        inset-inline-start: var(--t-left);
+        inset-block-start: var(--t-top);
         block-size: var(--t-height);
         inline-size: var(--t-width);
         border-radius: inherit;
