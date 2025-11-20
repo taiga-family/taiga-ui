@@ -3,7 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    Input,
+    input,
     PLATFORM_ID,
 } from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -18,15 +18,14 @@ import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
     providers: [tuiAsRectAccessor(TuiPulse)],
     hostDirectives: [TuiAnimated],
     host: {
-        '[class._playing]': 'playing',
+        '[class._playing]': 'playing()',
     },
 })
 export class TuiPulse extends TuiRectAccessor {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly el = tuiInjectElement();
 
-    @Input()
-    public playing = true;
+    public readonly playing = input(true);
 
     public readonly type = 'hint';
 
