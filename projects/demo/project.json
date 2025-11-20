@@ -98,6 +98,7 @@
                             "with": "{projectRoot}/src/environments/environment.prod.ts"
                         }
                     ],
+                    "tsConfig": "{projectRoot}/tsconfig.app.prod.json",
                     "outputHashing": "all"
                 },
                 "development": {
