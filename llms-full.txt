@@ -2872,7 +2872,7 @@ export default class Example {
 <tui-textfield tuiChevron class="select" >
 <label tuiLabel>Hint appearance</label>
 <input tuiSelect [(ngModel)]="appearance" />
-<tui-data-list-wrapper *tuiDropdown new [items]="appearances" />
+<tui-data-list-wrapper *tuiDropdown [items]="appearances" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -5128,7 +5128,7 @@ export class Example {}
 
 **Template:**
 ```html
-<button appearance="outline-grayscale" iconStart="@tui.star" size="m" tuiButton tuiButtonSelect type="button" [(ngModel)]="value" > {{ value }} <tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<button appearance="outline-grayscale" iconStart="@tui.star" size="m" tuiButton tuiButtonSelect type="button" [(ngModel)]="value" > {{ value }} <tui-data-list-wrapper *tuiDropdown [items]="items" />
 </button>
 ```
 **TypeScript:**
@@ -5158,7 +5158,7 @@ export default class Example {
 **Template:**
 ```html
 <button appearance="secondary-grayscale" iconStart="@tui.user" size="m" tuiButton tuiButtonSelect type="button" [(ngModel)]="value" > {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} <tui-data-list *tuiDropdown>
-<tui-opt-group label="Users" tuiMultiSelectGroup > @for (name of items; track name.id) { <button new tuiOption type="button" [value]="name" > {{ name.name }} </button> } </tui-opt-group>
+<tui-opt-group label="Users" tuiMultiSelectGroup > @for (name of items; track name.id) { <button tuiOption type="button" [value]="name" > {{ name.name }} </button> } </tui-opt-group>
 </tui-data-list>
 </button>
 ```
@@ -8297,7 +8297,7 @@ export default class Example {
 </button> } </div>
 <label> Inside a dropdown <tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
 <input tuiSelect [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="content" [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 <ng-template #content let-item >
 <span tuiCell>
 <div appearance="primary" [tuiAvatar]="item.icon" ></div>
@@ -9174,7 +9174,7 @@ export class Example {
 <ng-template>
 <tui-textfield #textfield tuiChevron [content]="!textfield.focused() && control.value ? textfieldContent : ''" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
 <input placeholder="Search country" tuiComboBox [formControl]="control" [invalid]="controlDoc.invalid" [matcher]="matcher" [readOnly]="controlDoc.readonly" [strict]="strict" [tuiDisabled]="controlDoc.disabled" />
-<tui-data-list-wrapper *tuiDropdown new [items]="countries() | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [items]="countries() | tuiFilterByInput" />
 </tui-textfield>
 </ng-template>
 ```
@@ -9198,7 +9198,7 @@ The main helper you’ll use with almost every ComboBox is the tuiFilterByInput 
 ```html
 <tui-textfield tuiChevron>
 <input tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -9255,7 +9255,7 @@ You can use ComboBox with virtual scrolling from &#64;angular/cdk/scrolling .
 <!-- 4 = margin between options -->
 <!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="scroll" [itemSize]="44" [maxBufferPx]="44 * 10" [minBufferPx]="44 * 5" [style.height.px]="(items?.length || 1) * (44 + 4) + 8" >
 <tui-data-list>
-<button *cdkVirtualFor="let item of items" new tuiOption type="button" [value]="item" > {{ item }} </button>
+<button *cdkVirtualFor="let item of items" tuiOption type="button" [value]="item" > {{ item }} </button>
 </tui-data-list>
 </cdk-virtual-scroll-viewport>
 </ng-container>
@@ -9307,7 +9307,7 @@ export default class Example {
 ```html
 <tui-textfield tuiChevron tuiDropdownMobile >
 <input placeholder="Select destination" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="countries() | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [items]="countries() | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -9357,7 +9357,7 @@ You can override default behavior and appearance of all options inside dropdown.
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="Select something" tuiComboBox [formControl]="control" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -9408,7 +9408,7 @@ By default, strict mode is enabled. This means the input value must match one of
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="Purpose loan" tuiComboBox [formControl]="control" [strict]="false" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
 </tui-textfield>
 <p>
 <strong>Form control:</strong>
@@ -9459,7 +9459,7 @@ You can configure any filtering logic by passing a custom matcher function as an
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="British monarchs" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items | tuiFilterByInput: matcher" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: matcher" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -9535,7 +9535,7 @@ Take full advantage of Textfield : add any number of Icons and Tooltips (with co
 <tui-textfield iconStart="@tui.search" tuiChevron tuiTextfieldSize="m" [tuiTextfieldCleaner]="false" >
 <label tuiLabel>I am a label</label>
 <input placeholder="I am placeholder" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="cities | tuiFilterByInput" /> @if (value) { <tui-icon icon="@tui.check" style="color: var(--tui-status-positive); pointer-events: none" /> } <tui-icon tuiTooltip="I am a hint" />
+<tui-data-list-wrapper *tuiDropdown [items]="cities | tuiFilterByInput" /> @if (value) { <tui-icon icon="@tui.check" style="color: var(--tui-status-positive); pointer-events: none" /> } <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -9590,7 +9590,7 @@ Pass null as argument to tui-data-list-wrapper[items] to show loader inside the 
 ```html
 @let items = items$ | async; <tui-textfield tuiChevron>
 <input #inputRef placeholder="Search country" tuiComboBox [(ngModel)]="value" (input)="search$.next($any($event.target).value)" />
-<tui-data-list-wrapper *tuiDropdown new [emptyContent]="inputRef.value.length < 2 ? 'Enter at least 2 characters' : 'Nothing found!'" [items]="inputRef.value.length < 2 ? [] : items" /> @if (items && showLoader()) { <tui-loader /> } </tui-textfield>
+<tui-data-list-wrapper *tuiDropdown [emptyContent]="inputRef.value.length < 2 ? 'Enter at least 2 characters' : 'Nothing found!'" [items]="inputRef.value.length < 2 ? [] : items" /> @if (items && showLoader()) { <tui-loader /> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -9646,7 +9646,7 @@ Use tuiItemsHandlersProvider to override the default behavior of all ComboBox -s
 ```html
 <tui-textfield tuiChevron>
 <input tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="users | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [items]="users | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -9722,7 +9722,7 @@ DataListWrapper lets you customize the appearance of options inside the dropdown
 ```html
 <tui-textfield #textfield tuiChevron [content]="value && !textfield.focused() ? content : ''" [stringify]="stringify" >
 <input placeholder="Choose a card" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="content" [items]="cards | tuiFilterByInput: matcher" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="cards | tuiFilterByInput: matcher" />
 </tui-textfield>
 <ng-template #content let-card >
 <div class="card">
@@ -9797,7 +9797,7 @@ DataListWrapper is just a helper to solve most popular use cases. Use DataList f
 <input placeholder="Select film" tuiComboBox [(ngModel)]="value" />
 <tui-data-list *tuiDropdown size="s" >
 <section class="filters"> @for (category of categories; track category) { <label tuiChip [appearance]="filters[category] ? 'accent' : 'neutral'" (pointerdown.prevent)="(0)" > {{ category }} <input hidden type="checkbox" [(ngModel)]="filters[category]" />
-</label> } </section> @for (group of filmDatabase | keyvalue; track group) { @if (filters[group.key]) { <tui-opt-group [label]="group.key"> @for (film of group.value | tuiFilterByInput; track film) { <button new tuiOption type="button" [value]="film" > {{ film }} </button> } </tui-opt-group> } } </tui-data-list>
+</label> } </section> @for (group of filmDatabase | keyvalue; track group) { @if (filters[group.key]) { <tui-opt-group [label]="group.key"> @for (film of group.value | tuiFilterByInput; track film) { <button tuiOption type="button" [value]="film" > {{ film }} </button> } </tui-opt-group> } } </tui-data-list>
 </tui-textfield>
 ```
 **TypeScript:**
@@ -9878,7 +9878,7 @@ DataList exposes Option -directives – it provides you with an opportunity to d
 ```html
 <tui-textfield tuiChevron [stringify]="stringify" >
 <input tuiComboBox [formControl]="control" [matcher]="matcher" />
-<tui-data-list *tuiDropdown> @for (item of items | tuiFilterByInput; track item) { <button new tuiOption type="button" [value]="item.id" > {{ item.name }} </button> } </tui-data-list>
+<tui-data-list *tuiDropdown> @for (item of items | tuiFilterByInput; track item) { <button tuiOption type="button" [value]="item.id" > {{ item.name }} </button> } </tui-data-list>
 </tui-textfield>
 <p>
 <strong>Form control:</strong>
@@ -10641,8 +10641,8 @@ export default class Example {
 <h3>Multi select control</h3>
 <button appearance="flat" tuiButtonSelect tuiChevron tuiIconButton type="button" [tuiAppearanceState]="open ? 'hover' : null" [(ngModel)]="value" [(open)]="open" > Open <tui-data-list *tuiDropdown size="l" [style.width.rem]="12" >
 <tui-opt-group tuiMultiSelectGroup>
-<tui-opt-group label="Main dishes menu with long label"> @for (burger of burgers; track burger) { <button new tuiOption type="button" [value]="burger" > {{ burger }} </button> } </tui-opt-group>
-<tui-opt-group label="Drinks"> @for (drink of drinks; track drink) { <button new tuiOption type="button" [value]="drink" > {{ drink }} </button> } </tui-opt-group>
+<tui-opt-group label="Main dishes menu with long label"> @for (burger of burgers; track burger) { <button tuiOption type="button" [value]="burger" > {{ burger }} </button> } </tui-opt-group>
+<tui-opt-group label="Drinks"> @for (drink of drinks; track drink) { <button tuiOption type="button" [value]="drink" > {{ drink }} </button> } </tui-opt-group>
 </tui-opt-group>
 </tui-data-list>
 </button>
@@ -11053,7 +11053,7 @@ export class Example {}
 | Property | Type | Description |
 |----------|-----|----------|
 | [items] | `readonly T[] | ReadonlyArray<readonly T[]> | null` | Items to select |
-| [itemContent] | `PolymorpheusContent<TuiValueContentContext<T>>` | Content of an item |
+| [itemContent] | `PolymorpheusContent<TuiContext<T>>` | Content of an item |
 | [emptyContent] | `PolymorpheusContent` | Content to display when there are no options inside |
 | [disabledItemHandler] | `TuiBooleanHandler<T>` |  |
 | [size] | `TuiSizeL | TuiSizeXS` | Size of items |
@@ -11066,9 +11066,9 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-textfield>
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
 <input #input tuiTextfield [formControl]="control" />
-<label tuiLabel>Account</label> @if (items | tuiFilterByInput; as filtered) { @if (input.value) { <tui-data-list-wrapper *tuiDropdown emptyContent="No results found" size="s" [disabledItemHandler]="disabledItemHandler" [items]="filtered" /> } } </tui-textfield>
+<label tuiLabel>Account</label> @if (items | tuiFilterByInput; as filtered) { @if (input.value) { <tui-data-list-wrapper *tuiDropdown emptyContent="No results found" size="s" [items]="filtered" /> } } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -11107,7 +11107,7 @@ export default class Example {
 ```html
 <label tuiLabel> Type a name: <tui-textfield tuiChevron [stringify]="stringify" [tuiTextfieldCleaner]="false" >
 <input placeholder="Account" tuiComboBox [formControl]="control" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="stringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="stringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
 </tui-textfield>
 </label>
 ```
@@ -14152,7 +14152,7 @@ export default class Example {
 <tui-textfield tuiChevron [tuiTextfieldCleaner]="false" >
 <label tuiLabel>Choose a person</label>
 <input formControlName="personValue" tuiSelect />
-<tui-data-list-wrapper *tuiDropdown new [items]="persons" />
+<tui-data-list-wrapper *tuiDropdown [items]="persons" />
 </tui-textfield>
 <tui-error formControlName="personValue" />
 </div>
@@ -14505,7 +14505,7 @@ export class Example {}
 <tui-textfield multi tuiChevron [rows]="1" [style.border-radius]="'inherit'" [tuiTextfieldCleaner]="false" >
 <input formControlName="multiSelectControl" placeholder="Building" tuiInputChip />
 <tui-input-chip *tuiItem />
-<tui-data-list-wrapper *tuiDropdown new tuiMultiSelectGroup [items]="items" />
+<tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 <tui-icon tuiTooltip="Write house building" />
 </tui-textfield>
 <tui-error formControlName="multiSelectControl" />
@@ -16000,8 +16000,8 @@ export default class Example {
 <input placeholder="Type to filter" tuiTextfield />
 </tui-textfield>
 <cdk-virtual-scroll-viewport tuiScrollable [itemSize]="48" [style.height.px]="filtered().length * 48 + 8" [style.max-height.px]="200" [style.min-height.px]="56" >
-<tui-data-list new tuiMultiSelectGroup >
-<button *cdkVirtualFor="let item of filtered()" new tuiOption [value]="item" > {{ item }} </button>
+<tui-data-list tuiMultiSelectGroup>
+<button *cdkVirtualFor="let item of filtered()" tuiOption [value]="item" > {{ item }} </button>
 </tui-data-list>
 </cdk-virtual-scroll-viewport>
 </ng-container>
@@ -16174,15 +16174,15 @@ export default class Example {
 <label tuiLabel> Using checkboxes in the dropdown and making the textfield non-writable <tui-textfield multi tuiChevron >
 <label tuiLabel>Multi Select</label>
 <input tuiInputChip tuiSelectLike [placeholder]="multi.length ? '' : 'Pick from the list'" [(ngModel)]="multi" />
-<tui-data-list-wrapper *tuiDropdown new tuiMultiSelectGroup [items]="items" />
+<tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 </tui-textfield>
 </label>
 <label tuiLabel> Working with objects <tui-textfield multi tuiChevron [disabledItemHandler]="strings" [stringify]="stringify" >
 <input tuiInputChip [placeholder]="objects.length ? '' : 'Picking objects'" [(ngModel)]="objects" />
 <tui-input-chip *tuiItem />
 <tui-data-list *tuiDropdown>
-<tui-opt-group label="Pythons" tuiMultiSelectGroup > @for (user of users | tuiFilterByInput; track user) { <button new tuiOption [value]="user" > {{ user.name }} </button> } </tui-opt-group>
-<tui-opt-group label="Collaborators" tuiMultiSelectGroup > @for (user of more | tuiFilterByInput; track user) { <button new tuiOption [value]="user" > {{ user.name }} </button> } </tui-opt-group>
+<tui-opt-group label="Pythons" tuiMultiSelectGroup > @for (user of users | tuiFilterByInput; track user) { <button tuiOption [value]="user" > {{ user.name }} </button> } </tui-opt-group>
+<tui-opt-group label="Collaborators" tuiMultiSelectGroup > @for (user of more | tuiFilterByInput; track user) { <button tuiOption [value]="user" > {{ user.name }} </button> } </tui-opt-group>
 </tui-data-list>
 </tui-textfield>
 </label>
@@ -16371,13 +16371,13 @@ export default class Example {
 ```html
 <label tuiLabel> Mobile dropdown with writable input <tui-textfield multi tuiChevron tuiDropdownMobile [disabledItemHandler]="disabled" >
 <input placeholder="Type something" tuiInputChip [(ngModel)]="writable" /> @if (items | tuiFilterByInput; as items) { <ng-template let-close tuiDropdown >
-<tui-data-list-wrapper new tuiMultiSelectGroup [items]="items" />
+<tui-data-list-wrapper tuiMultiSelectGroup [items]="items" />
 <button appearance="accent" size="m" tuiButton tuiDropdownButton type="button" (click)="close()" > Done </button>
 </ng-template> } </tui-textfield>
 </label>
 <label tuiLabel> Mobile sheet with options <tui-textfield multi tuiChevron tuiDropdownSheet >
 <input tuiInputChip tuiSelectLike [placeholder]="sheet.length ? '' : 'Select Pythons'" [(ngModel)]="sheet" />
-<tui-data-list-wrapper *tuiDropdown new tuiMultiSelectGroup [items]="[items]" [labels]="['Select Pythons']" />
+<tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="[items]" [labels]="['Select Pythons']" />
 </tui-textfield>
 </label>
 <label tuiLabel> Native MultiSelect <tui-textfield multi tuiChevron [identityMatcher]="identity" [stringify]="stringify" >
@@ -16456,7 +16456,7 @@ export default class Example {
 <tui-textfield multi tuiChevron >
 <label tuiLabel>Multi Select with dropdown</label>
 <input placeholder="Pick from the list" tuiInputChip tuiSelectLike [formControl]="multiControl" [style.width.rem]="5" />
-<tui-data-list-wrapper *tuiDropdown new tuiMultiSelectGroup [items]="items" />
+<tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 </tui-textfield>
 </td>
 </tr>
@@ -17122,7 +17122,7 @@ export default class Example {
 <datalist id="dates"> @for (date of dates | keyvalue: asIs; track date) { <option [value]="date.value.toJSON()"> {{ date.key }} </option> } </datalist>
 <section *tuiDropdown>
 <tui-calendar />
-<tui-data-list> @for (date of dates | keyvalue: asIs; track date) { <button new tuiOption [value]="date.value" > {{ date.key }} </button> } </tui-data-list>
+<tui-data-list> @for (date of dates | keyvalue: asIs; track date) { <button tuiOption [value]="date.value" > {{ date.key }} </button> } </tui-data-list>
 </section>
 </tui-textfield>
 ```
@@ -18388,7 +18388,7 @@ export default class Example {
 <datalist id="dates"> @for (date of dates | keyvalue: asIs; track date) { <option [value]="toISOString(date.value)"> {{ date.key }} </option> } </datalist>
 <section *tuiDropdown>
 <tui-calendar />
-<tui-data-list> @for (date of dates | keyvalue: asIs; track date) { <button new tuiOption [value]="date.value" > {{ date.key }} </button> } <button new tuiOption [disabled]="true" > v5 </button>
+<tui-data-list> @for (date of dates | keyvalue: asIs; track date) { <button tuiOption [value]="date.value" > {{ date.key }} </button> } <button tuiOption [disabled]="true" > v5 </button>
 </tui-data-list>
 </section>
 </tui-textfield>
@@ -20273,7 +20273,7 @@ export default class Example {
 ```html
 <tui-textfield>
 <label tuiLabel>{{ user() || 'Phone number or name' }}</label>
-<input #input mask="+1 (###)###-####" tuiInputPhone [allowText]="true" [ngModel]="value()" (input)="onInput(input.value)" (ngModelChange)="value.set($event)" /> @if (items | tuiFilterByInput: matcher; as filtered) { @if (!user() && input.value && filtered.length) { <tui-data-list-wrapper *tuiDropdown new [itemContent]="template" [items]="filtered" (itemClick)="selectUser($event)" /> } } </tui-textfield>
+<input #input mask="+1 (###)###-####" tuiInputPhone [allowText]="true" [ngModel]="value()" (input)="onInput(input.value)" (ngModelChange)="value.set($event)" /> @if (items | tuiFilterByInput: matcher; as filtered) { @if (!user() && input.value && filtered.length) { <tui-data-list-wrapper *tuiDropdown [itemContent]="template" [items]="filtered" (itemClick)="selectUser($event)" /> } } </tui-textfield>
 <ng-template #template let-user >
 <div tuiCell>
 <div tuiAvatar="@tui.user">
@@ -22467,7 +22467,7 @@ Use tuiItemsHandlersProvider to override the default behavior of all InputTime -
 ```html
 <tui-textfield [disabledItemHandler]="disabledItemHandler">
 <input placeholder="Click me to open dropdown" tuiInputTime [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items | tuiFilterByInput: matcher" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: matcher" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -23403,7 +23403,7 @@ export default class Page {
 ```html
 <tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
 <input tuiSelect [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="content" [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 <ng-template #content let-item >
 <span tuiCell>
 <span tuiAvatar="@tui.star"></span>
@@ -29492,7 +29492,7 @@ You can toggle off round corners of the progress bar by setting border-radius: 0
 
 **Template:**
 ```html
-<progress new tuiProgressBar [max]="100" [value]="50" ></progress>
+<progress tuiProgressBar [max]="100" [value]="50" ></progress>
 ```
 **TypeScript:**
 ```ts
@@ -31931,7 +31931,7 @@ export default class Example {
 </tui-textfield>
 <tui-textfield tuiChevron>
 <input formControlName="select" placeholder="User" tuiSelect />
-<tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
 </tui-textfield>
 <button size="s" tuiButton type="button" > Search </button>
 </fieldset>
@@ -32308,7 +32308,7 @@ export class Example {
 
 ```html
 <ng-template> @let showPlaceholder = textfieldDoc.size === 's' || !control.value; <tui-textfield tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-data-list-wrapper *tuiDropdown new [items]="countries()" />
+<tui-data-list-wrapper *tuiDropdown [items]="countries()" />
 </tui-textfield>
 </ng-template>
 ```
@@ -32329,7 +32329,7 @@ Use all powers of Textfield : put any number of Icons and Tooltips inside (and c
 ```html
 <label tuiLabel> I am a label <tui-textfield iconStart="@tui.user-round" tuiChevron tuiTextfieldSize="m" [tuiTextfieldCleaner]="false" >
 <input placeholder="I am placeholder" tuiSelect [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="users" /> @if (value) { <tui-icon icon="@tui.badge-check" style="color: var(--tui-status-info); pointer-events: none" /> } <tui-icon tuiTooltip="I am a hint" />
+<tui-data-list-wrapper *tuiDropdown [items]="users" /> @if (value) { <tui-icon icon="@tui.badge-check" style="color: var(--tui-status-info); pointer-events: none" /> } <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>
 </label>
 ```
@@ -32378,7 +32378,7 @@ You can override default behavior and appearance of all options inside dropdown.
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="Select something" tuiSelect [formControl]="control" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -32426,7 +32426,7 @@ Use tuiItemsHandlersProvider to override default behavior of all Select -s below
 ```html
 <tui-textfield tuiChevron>
 <input tuiSelect [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="users" />
+<tui-data-list-wrapper *tuiDropdown [items]="users" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -32489,7 +32489,7 @@ DataListWrapper provides an opportunity to customize appearance of options insid
 ```html
 <tui-textfield tuiChevron [content]="value && content" [stringify]="stringify" >
 <input placeholder="Choose a card" tuiSelect [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="content" [items]="cards" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="cards" />
 </tui-textfield>
 <ng-template #content let-card >
 <div class="card">
@@ -32548,8 +32548,8 @@ DataListWrapper is just a helper to solve most popular use cases. Use DataList f
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="Install library" tuiSelect [(ngModel)]="value" />
-<tui-data-list *tuiDropdown tuiDataListDropdownManager > @for (group of taigaFamilyLibs; track group) { <button iconEnd="@tui.chevron-right" new tuiDropdownAlign="right" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="options" > {{ group.name }} <ng-template #options>
-<tui-data-list> @for (lib of group.libraries; track lib) { <button new tuiOption type="button" [value]="lib" > {{ lib }} </button> } </tui-data-list>
+<tui-data-list *tuiDropdown tuiDataListDropdownManager > @for (group of taigaFamilyLibs; track group) { <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="options" > {{ group.name }} <ng-template #options>
+<tui-data-list> @for (lib of group.libraries; track lib) { <button tuiOption type="button" [value]="lib" > {{ lib }} </button> } </tui-data-list>
 </ng-template>
 </button> } </tui-data-list>
 </tui-textfield>
@@ -32631,7 +32631,7 @@ DataList exposes Option -directives – it provides you with an opportunity to d
 ```html
 <tui-textfield tuiChevron [stringify]="stringify" >
 <input tuiSelect [formControl]="control" />
-<tui-data-list *tuiDropdown> @for (item of items; track item) { <button new tuiOption type="button" [value]="item.id" > {{ item.name }} </button> } </tui-data-list>
+<tui-data-list *tuiDropdown> @for (item of items; track item) { <button tuiOption type="button" [value]="item.id" > {{ item.name }} </button> } </tui-data-list>
 </tui-textfield>
 <p>
 <strong>Form control:</strong>
@@ -32694,7 +32694,7 @@ You can use Select with virtual scrolling from &#64;angular/cdk/scrolling .
 <input placeholder="Country" tuiSelect [(ngModel)]="value" />
 <cdk-virtual-scroll-viewport *tuiDropdown tuiScrollable class="scroll" [itemSize]="44" >
 <tui-data-list>
-<button *cdkVirtualFor="let item of countries" new tuiOption type="button" [value]="item" > {{ item }} </button>
+<button *cdkVirtualFor="let item of countries" tuiOption type="button" [value]="item" > {{ item }} </button>
 </tui-data-list>
 </cdk-virtual-scroll-viewport>
 </tui-textfield>
@@ -32740,7 +32740,7 @@ export default class Example {
 <tui-textfield tuiChevron tuiDropdownSheet="Select platform" [disabledItemHandler]="disabledItemHandler" >
 <label tuiLabel>Platform</label>
 <input tuiSelect [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="platforms" [tuiPlatform]="value ?? 'ios'" />
+<tui-data-list-wrapper *tuiDropdown [items]="platforms" [tuiPlatform]="value ?? 'ios'" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -32782,7 +32782,7 @@ Put &lt;select tuiSelect/&gt; (instead of &lt;input tuiSelect/&gt; ) to enable n
 
 **Template:**
 ```html
-<tui-textfield tuiChevron [disabledItemHandler]="disabledItemHandler" [stringify]="stringify" > @if (isMobile) { <select aria-label="Choose your side" placeholder="Choose your side" tuiSelect [formControl]="control" [items]="items" ></select> } @if (!isMobile) { <input placeholder="Choose your side" tuiSelect [formControl]="control" /> } @if (!isMobile) { <tui-data-list-wrapper *tuiDropdown new [items]="items" /> } </tui-textfield>
+<tui-textfield tuiChevron [disabledItemHandler]="disabledItemHandler" [stringify]="stringify" > @if (isMobile) { <select aria-label="Choose your side" placeholder="Choose your side" tuiSelect [formControl]="control" [items]="items" ></select> } @if (!isMobile) { <input placeholder="Choose your side" tuiSelect [formControl]="control" /> } @if (!isMobile) { <tui-data-list-wrapper *tuiDropdown [items]="items" /> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -36520,7 +36520,7 @@ export default class Example {
 <td *tuiCell="'unit'" tuiTd >
 <tui-textfield tuiChevron class="select" >
 <input placeholder="Units" tuiSelect [ngModel]="item.unit" [ngModelOptions]="options" (ngModelChange)="onValueChange($event, 'unit', item, pythons)" />
-<tui-data-list-wrapper *tuiDropdown new [items]="units" />
+<tui-data-list-wrapper *tuiDropdown [items]="units" />
 </tui-textfield>
 </td>
 <td *tuiCell="'date'" tuiTd >
@@ -36549,7 +36549,7 @@ export default class Example {
 <td *tuiCell="'unit'" tuiTd >
 <tui-textfield tuiChevron class="select" >
 <input placeholder="Units" tuiSelect [ngModel]="item.unit" [ngModelOptions]="options" (ngModelChange)="onValueChange($event, 'unit', item, starwars)" />
-<tui-data-list-wrapper *tuiDropdown new [items]="units" />
+<tui-data-list-wrapper *tuiDropdown [items]="units" />
 </tui-textfield>
 </td>
 <td *tuiCell="'date'" tuiTd >
@@ -37159,7 +37159,7 @@ export default class Example {
 <table tuiTable [style.width.rem]="36" >
 <caption tuiCaption>
 <span>999 rows</span>
-<button appearance="flat" tuiButton tuiButtonSelect type="button" [(ngModel)]="size" > {{ index * size + 1 }}-{{ (index + 1) * size }} rows <tui-data-list-wrapper *tuiDropdown new [itemContent]="content" [items]="items" />
+<button appearance="flat" tuiButton tuiButtonSelect type="button" [(ngModel)]="size" > {{ index * size + 1 }}-{{ (index + 1) * size }} rows <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 </button>
 <tui-pagination [length]="length" [style.float]="'right'" [(index)]="index" />
 </caption>
@@ -40829,7 +40829,7 @@ export default class Example {
 <tui-textfield tuiChevron class="tui-space_top-2" >
 <label tuiLabel>currency</label>
 <input formControlName="currency" tuiSelect />
-<tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
 </tui-textfield>
 </div>
 </form>
@@ -41265,7 +41265,7 @@ export default class Example {
 '{{ paymentSystem }}' = getPaymentSystem(cardNumber); <form [formGroup]="parametersForm">
 <tui-textfield tuiChevron class="parameters" [tuiTextfieldCleaner]="false" >
 <input formControlName="cardNumber" placeholder="Choose card number" tuiSelect />
-<tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
 </tui-textfield>
 </form>
 ```
@@ -41320,7 +41320,7 @@ export default class Example {
 {{ isPresent }} = isPresent(value); <tui-textfield tuiChevron class="parameters" >
 <label tuiLabel>value</label>
 <input tuiSelect [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -43012,17 +43012,17 @@ export default class Example {
 ```html
 <tui-textfield tuiChevron tuiDropdownMobile >
 <input placeholder="Country" tuiComboBox [(ngModel)]="country" />
-<tui-data-list-wrapper *tuiDropdown new [items]="countries | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [items]="countries | tuiFilterByInput" />
 </tui-textfield>
 <tui-textfield tuiChevron tuiDropdownSheet="Select user" class="tui-space_vertical-4" [content]="template" >
 <input placeholder="Select user" tuiSelect [(ngModel)]="user" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="template" [items]="users" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="template" [items]="users" />
 </tui-textfield>
 <tui-textfield multi tuiChevron tuiDropdownMobile class="tui-space_vertical-4" [open]="open()" [stringify]="stringify" (openChange)="open.set($event)" >
 <input placeholder="Pick more users" tuiInputChip [(ngModel)]="selected" />
 <tui-input-chip *tuiItem />
 <ng-container *tuiDropdown>
-<tui-data-list-wrapper new tuiMultiSelectGroup [itemContent]="template" [items]="users | tuiFilterByInput" />
+<tui-data-list-wrapper tuiMultiSelectGroup [itemContent]="template" [items]="users | tuiFilterByInput" />
 <button appearance="accent" size="m" tuiButton tuiDropdownButton type="button" (click)="open.set(false)" > Done </button>
 </ng-container>
 </tui-textfield>
@@ -43277,8 +43277,7 @@ export default class Example {}
 <tr tuiThGroup> @for (column of tableColumns; track column) { <th tuiTh> {{ column }} </th> } </tr>
 </thead>
 <tbody tuiTbody> @for (rowInfo of tableData; track rowInfo) { <tr #dropdown="tuiDropdown" tuiDropdownContext [tuiDropdown]="contextMenu" > @for (value of getObjectValues(rowInfo); track value) { <td tuiTd> {{ value }} </td> } <ng-template #contextMenu>
-<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item) { <button tuiOption type="button" (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)" > {{ item.title }} <tui-icon class="icon" [icon]="item.iconName" />
-</button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
+<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
 </tui-data-list>
 <ng-template #nestedMenu>
 <tui-data-list> @for (option of moreOptions; track option) { <button tuiOption type="button" > {{ option }} </button> } </tui-data-list>
@@ -43293,11 +43292,11 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiDataList, TuiDialogService, TuiDropdown, TuiIcon} from '@taiga-ui/core';
+import {TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiIcon, TuiTable],
+    imports: [TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -43549,7 +43548,7 @@ export default class Example {
 <tui-textfield tuiChevron class="margin" [tuiTextfieldCleaner]="false" >
 <label tuiLabel>Nested select</label>
 <input tuiSelect [formControl]="selected" />
-<tui-data-list-wrapper *tuiDropdown new [items]="selectItems" />
+<tui-data-list-wrapper *tuiDropdown [items]="selectItems" />
 </tui-textfield>
 <p>
 <button size="s" tuiButton tuiDropdownHover tuiDropdownOpen type="button" [tuiDropdown]="content" > Nested dropdown hover </button>
@@ -43629,9 +43628,9 @@ export default class Example {}
 <button appearance="outline-grayscale" iconStart="@tui.ellipsis" tuiDropdownHover tuiDropdownSheet="Contact Us" tuiIconButton type="button" [tuiDropdown]="dropdown" > More </button>
 <ng-template #dropdown>
 <tui-data-list>
-<a href="https://github.com/taiga-family/taiga-ui" iconStart="assets/icons/github.svg" new rel="noreferrer" target="_blank" tuiOption > GitHub </a>
-<a href="https://t.me/taiga_ui" iconStart="assets/icons/telegram.svg" new rel="noreferrer" target="_blank" tuiOption > Telegram </a>
-<a href="https://discord.gg/zrB2EdJjEy" iconStart="assets/icons/discord.svg" new rel="noreferrer" target="_blank" tuiOption > Discord </a>
+<a href="https://github.com/taiga-family/taiga-ui" iconStart="assets/icons/github.svg" rel="noreferrer" target="_blank" tuiOption > GitHub </a>
+<a href="https://t.me/taiga_ui" iconStart="assets/icons/telegram.svg" rel="noreferrer" target="_blank" tuiOption > Telegram </a>
+<a href="https://discord.gg/zrB2EdJjEy" iconStart="assets/icons/discord.svg" rel="noreferrer" target="_blank" tuiOption > Discord </a>
 </tui-data-list>
 </ng-template>
 ```
@@ -43796,7 +43795,7 @@ export default class Example {
 <tui-textfield tuiChevron class="margin" >
 <label tuiLabel>Nested Select</label>
 <input tuiSelect [(ngModel)]="selected" />
-<tui-data-list-wrapper *tuiDropdown new [items]="selectItems" />
+<tui-data-list-wrapper *tuiDropdown [items]="selectItems" />
 </tui-textfield>
 <tui-data-list> @for (item of items; track item) { <button tuiOption type="button" (click)="onClick()" > {{ item }} </button> } </tui-data-list>
 </ng-template>
@@ -43911,7 +43910,7 @@ export default class Example {
 <form [formGroup]="form">
 <button appearance="outline-grayscale" formControlName="control" tuiButton tuiButtonSelect type="button" [tuiAppearanceMode]="length ? 'checked' : null" [(open)]="open" (keydown.delete)="form.reset()" > {{ text }} <button appearance="icon" size="xs" tabindex="-1" tuiChevron tuiIconButton type="reset" [iconStart]="length ? '@tui.x' : ''" (mousedown.zoneless.prevent)="(0)" > Reset </button>
 <tui-data-list *tuiDropdown tuiMultiSelectGroup >
-<tui-opt-group> @for (item of items; track item) { <button new tuiOption type="button" [value]="item" > {{ item }} </button> } </tui-opt-group>
+<tui-opt-group> @for (item of items; track item) { <button tuiOption type="button" [value]="item" > {{ item }} </button> } </tui-opt-group>
 </tui-data-list>
 </button>
 </form>
@@ -44181,7 +44180,7 @@ export default class Example {}
 <tui-textfield tuiDropdownLimitWidth="auto" tuiDropdownSelectionPosition="word" [tuiDropdownSelection]="predicate" >
 <label tuiLabel>Type a message</label>
 <textarea tuiTextarea [focused]="(driver | async) || null" [max]="4" [min]="4" [(ngModel)]="value" (keydown.stop.arrowDown)="onArrow($event, 'first')" (keydown.stop.arrowUp)="onArrow($event, 'last')" ></textarea>
-<tui-data-list *tuiDropdown> @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) { <button new tuiOption type="button" (click)="onClick(item.login)" >
+<tui-data-list *tuiDropdown> @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) { <button tuiOption type="button" (click)="onClick(item.login)" >
 <div size="s" tuiAvatar > {{ item.name | tuiInitials }} <img alt="" [src]="item.avatar" />
 </div> {{ item.name }} </button> } </tui-data-list>
 </tui-textfield>
@@ -44212,7 +44211,7 @@ import {
     TuiDropdown,
     tuiGetWordRange,
     TuiInitialsPipe,
-    TuiOptionNew,
+    TuiOption,
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
@@ -44241,7 +44240,7 @@ export interface User {
     changeDetection,
 })
 export default class Example {
-    @ViewChildren(TuiOptionNew, {read: ElementRef})
+    @ViewChildren(TuiOption, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @ViewChild(TuiTextarea, {read: ElementRef})
@@ -45330,7 +45329,7 @@ export default class Example {}
 <tui-textfield tuiChevron tuiTextfieldSize="m" [content]="stringify | tuiStringifyContent" >
 <label tuiLabel>Term</label>
 <input formControlName="period" tuiSelect />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="stringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="stringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
 <tui-icon tuiHintDirection="top-left" [tuiTooltip]="periodHint" />
 </tui-textfield>
 <ng-template #periodHint> You will pay in equal installments on a monthly basis You will pay in equal installments on a monthly basis </ng-template>
@@ -47888,7 +47887,7 @@ export class Example {}
 <tui-textfield tuiChevron class="tui-space_vertical-3" >
 <label tuiLabel>Connection</label>
 <input tuiSelect [ngModelOptions]="{standalone: true}" [(ngModel)]="type" />
-<tui-data-list-wrapper *tuiDropdown new [items]="items" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
 </tui-textfield> @if (type === items[0]!) { <tui-textfield>
 <label tuiLabel>Contact</label>
 <input formControlName="contact" tuiTextfield [tuiValidator]="validator" />
@@ -49558,12 +49557,12 @@ export default class Example {
 <tui-textfield tuiChevron [tuiTextfieldCleaner]="false" >
 <label tuiLabel>Search by last name</label>
 <input formControlName="user" tuiComboBox />
-<tui-data-list-wrapper *tuiDropdown new [items]="items | tuiFilterByInput: matcherString" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: matcherString" />
 </tui-textfield>
 <tui-textfield tuiChevron class="tui-space_top-5" [stringify]="stringify" [tuiTextfieldCleaner]="false" >
 <label tuiLabel>With ids</label>
 <input formControlName="user2" tuiComboBox />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="stringify | tuiStringifyContent" [items]="users | tuiFilterByInput: matcherUser" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="stringify | tuiStringifyContent" [items]="users | tuiFilterByInput: matcherUser" />
 </tui-textfield>
 </form>
 ```
@@ -49636,7 +49635,7 @@ export default class Example<T extends User = User> {
 <label tuiLabel>Star Wars persons</label>
 <input placeholder="Ignored text" tuiInputChip [formControl]="control" />
 <tui-input-chip *tuiItem />
-<tui-data-list-wrapper *tuiDropdown new tuiMultiSelectGroup [items]="items | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -50337,7 +50336,7 @@ export class Example {}
 <tui-textfield tuiChevron [stringify]="'name' | tuiStringify" [tuiTextfieldCleaner]="false" >
 <label tuiLabel>Pick your guy</label>
 <input tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="'name' | tuiStringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="'name' | tuiStringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -50460,7 +50459,7 @@ export class Example {}
 <tui-textfield tuiChevron [stringify]="stringify" [tuiTextfieldCleaner]="false" >
 <label tuiLabel>Pick your guy</label>
 <input tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown new [itemContent]="stringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="stringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
