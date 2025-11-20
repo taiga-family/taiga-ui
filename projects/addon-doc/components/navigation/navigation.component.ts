@@ -31,7 +31,6 @@ import {TuiTextfield, TuiTextfieldDirective} from '@taiga-ui/core/components/tex
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
 
@@ -74,7 +73,6 @@ function tuiUniqBy<T extends Record<string, any>>(
         TuiLink,
         TuiScrollbar,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './navigation.template.html',
     styleUrl: './navigation.style.less',

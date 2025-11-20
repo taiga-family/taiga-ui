@@ -7,7 +7,6 @@ import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -40,7 +39,6 @@ const USERS = [
         TuiInitialsPipe,
         TuiSheetDialog,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

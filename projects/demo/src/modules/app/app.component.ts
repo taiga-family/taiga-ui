@@ -21,7 +21,6 @@ import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgedContent} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
@@ -42,7 +41,6 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TuiDemo,
         TuiDropdown,
         TuiIcon,
-        TuiTextfieldControllerModule,
         VersionManager,
     ],
     templateUrl: './app.template.html',

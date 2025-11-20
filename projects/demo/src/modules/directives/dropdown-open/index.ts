@@ -1,23 +1,15 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-
 @Component({
     imports: [FormsModule, TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
-        },
-    ],
 })
 export default class PageComponent {
     protected open = false;

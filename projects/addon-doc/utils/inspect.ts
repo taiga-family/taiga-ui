@@ -13,7 +13,7 @@ function inspectArray(array: readonly unknown[], depth: number): string {
             result += ', ';
         }
 
-        result += index in array ? tuiInspectAny(array[index], depth - 1) : 'empty';
+        result += index in array ? tuiInspect(array[index], depth - 1) : 'empty';
     }
 
     return `[${result}]`;
@@ -39,7 +39,7 @@ function inspectObject(object: Record<string, unknown>, depth: number): string {
             result += ', ';
         }
 
-        result += `${key}: ${tuiInspectAny(object[key], depth - 1)}`;
+        result += `${key}: ${tuiInspect(object[key], depth - 1)}`;
     }
 
     return `{${result}}`;
@@ -51,7 +51,7 @@ function inspectObject(object: Record<string, unknown>, depth: number): string {
  * @param depth
  * @return readable JS entity
  */
-export function tuiInspectAny<T>(data: T, depth: number): string {
+export function tuiInspect<T>(data: T, depth: number): string {
     if (data === null) {
         return 'null';
     }

@@ -28,7 +28,7 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <ng-template #hint>
+            <ng-template #template>
                 To be accessible, hint should be set to a focusable element. See
                 <a
                     tuiLink
@@ -38,10 +38,10 @@
                 </a>
             </ng-template>
             <span
-                [tuiHint]="hint"
-                [tuiHintAppearance]="appearance"
+                [tuiHint]="template"
+                [tuiHintAppearance]="hint.appearance"
                 [tuiHintDescribe]="'qwerty'"
-                [tuiHintDirection]="direction"
+                [tuiHintDirection]="hint.direction"
                 [tuiHintHideDelay]="hideDelay"
                 [tuiHintShowDelay]="showDelay"
             >
@@ -73,8 +73,11 @@
             >
                 Hide delay (ms)
             </tr>
+            <tbody
+                #hint
+                tuiDocHint
+            ></tbody>
         </table>
-        <inherited-documentation />
     </ng-template>
 
     <tui-setup *pageTab />

@@ -10,7 +10,6 @@ import {
     TuiMultiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -24,7 +23,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiInputChip,
         TuiMultiSelect,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTooltip,
     ],
     templateUrl: './index.html',

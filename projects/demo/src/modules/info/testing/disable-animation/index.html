@@ -14,19 +14,7 @@
     <p>
         <code>&#64;taiga-ui/cdk</code>
         used
-        @for (ref of 'TUI_REDUCED_MOTION' | tuiDocTypeReference; track ref) {
-            <code>
-                <a
-                    rel="noreferrer"
-                    target="_blank"
-                    tuiLink
-                    [attr.href]="ref.reference"
-                >
-                    {{ ref.type }}
-                </a>
-            </code>
-        }
-
+        <code>TUI_REDUCED_MOTION</code>
         token which disables all animations for taiga-ui components. That token based on
         <code>prefers-reduced-motion</code>
         . The prefers-reduced-motion CSS media feature is used to detect if a user has enabled a setting on their device
