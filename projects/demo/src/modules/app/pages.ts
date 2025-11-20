@@ -1533,13 +1533,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'IsPresent',
-                keywords:
-                    'present, существует, ngif, if, пайп, pipe, null, undefined, nil',
-                route: DemoRoute.IsPresent,
-            },
-            {
-                section: 'Tools',
                 title: 'Mapper',
                 keywords: 'mapper, мап, преобразование, пайп, pipe',
                 route: DemoRoute.Mapper,

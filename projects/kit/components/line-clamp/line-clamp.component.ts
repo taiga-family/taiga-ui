@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {outputFromObservable, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
-import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_HINT_COMPONENT,
@@ -71,7 +71,7 @@ export class TuiLineClamp implements DoCheck {
                 next >= prev
                     ? of(next)
                     : fromEvent(this.el, 'transitionend').pipe(
-                          filter(tuiIsCurrentTarget),
+                          filter((e) => e.target === e.currentTarget),
                           map(() => next),
                       ),
             ),

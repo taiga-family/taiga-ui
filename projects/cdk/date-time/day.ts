@@ -115,7 +115,7 @@ export class TuiDay extends TuiMonth {
 
     public static parseRawDateString(
         date: string,
-        dateMode: TuiDateMode = 'DMY',
+        dateMode: TuiDateMode = 'dd/mm/yyyy',
     ): {day: number; month: number; year: number} {
         ngDevMode &&
             console.assert(
@@ -124,21 +124,21 @@ export class TuiDay extends TuiMonth {
             );
 
         switch (dateMode) {
-            case 'MDY':
+            case 'mm/dd/yyyy':
                 return {
                     day: parseInt(date.slice(3, 5), 10),
                     month: parseInt(date.slice(0, 2), 10) - 1,
                     year: parseInt(date.slice(6, 10), 10),
                 };
 
-            case 'YMD':
+            case 'yyyy/mm/dd':
                 return {
                     day: parseInt(date.slice(8, 10), 10),
                     month: parseInt(date.slice(5, 7), 10) - 1,
                     year: parseInt(date.slice(0, 4), 10),
                 };
 
-            case 'DMY':
+            case 'dd/mm/yyyy':
             default:
                 return {
                     day: parseInt(date.slice(0, 2), 10),
@@ -153,10 +153,13 @@ export class TuiDay extends TuiMonth {
      * Parsing a string with date with normalization
      *
      * @param rawDate date string
-     * @param dateMode date format of the date string (DMY | MDY | YMD)
+     * @param dateMode date format of the date string (dd/mm/yyyy | mm/dd/yyyy | yyyy/mm/dd)
      * @return normalized date
      */
-    public static normalizeParse(rawDate: string, dateMode: TuiDateMode = 'DMY'): TuiDay {
+    public static normalizeParse(
+        rawDate: string,
+        dateMode: TuiDateMode = 'dd/mm/yyyy',
+    ): TuiDay {
         const {day, month, year} = this.parseRawDateString(rawDate, dateMode);
 
         return TuiDay.normalizeOf(year, month, day);
@@ -164,12 +167,12 @@ export class TuiDay extends TuiMonth {
 
     /**
      * Parsing a date stringified in a toJSON format
-     * @param yearMonthDayString date string in format of YYYY-MM-DD
+     * @param ymdString date string in format of YYYY-MM-DD
      * @return date
      * @throws exceptions if any part of the date is invalid
      */
-    public static jsonParse(yearMonthDayString: string): TuiDay {
-        const {day, month, year} = this.parseRawDateString(yearMonthDayString, 'YMD');
+    public static jsonParse(ymdString: string): TuiDay {
+        const {day, month, year} = this.parseRawDateString(ymdString, 'yyyy/mm/dd');
 
         if (
             !TuiMonth.isValidMonth(year, month) ||
@@ -363,17 +366,20 @@ export class TuiDay extends TuiMonth {
         const yyyy = this.formattedYear;
 
         switch (dateFormat) {
-            case 'MDY':
+            case 'mm/dd/yyyy':
                 return `${mm}${separator}${dd}${separator}${yyyy}`;
-            case 'YMD':
+            case 'yyyy/mm/dd':
                 return `${yyyy}${separator}${mm}${separator}${dd}`;
-            case 'DMY':
+            case 'dd/mm/yyyy':
             default:
                 return `${dd}${separator}${mm}${separator}${yyyy}`;
         }
     }
 
-    public override toString(dateFormat: TuiDateMode = 'DMY', separator = '.'): string {
+    public override toString(
+        dateFormat: TuiDateMode = 'dd/mm/yyyy',
+        separator = '.',
+    ): string {
         return this.getFormattedDay(dateFormat, separator);
     }
 

@@ -15,7 +15,7 @@ import {
     tuiDefaultCardValidator,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {TUI_IS_IOS, TuiAutoFocus, type TuiValuesOf} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiFormatNumberPipe,
@@ -76,7 +76,7 @@ export class PayModal implements OnInit {
     protected readonly iOS = inject(TUI_IS_IOS);
 
     protected cards: AccountCard[] = [];
-    protected paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
+    protected paymentMode: 0 | 1 = PaymentMode.ByNewCard;
     protected loading$ = new BehaviorSubject(false);
     protected payProcessing$ = new BehaviorSubject(false);
     protected readonly paymentModeTypes = PaymentMode;

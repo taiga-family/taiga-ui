@@ -8,11 +8,10 @@ import {
     untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
+import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_FILLER_LENGTH,
-    type TuiDateMode,
     TuiDay,
     type TuiDayRange,
     type TuiTime,
@@ -50,12 +49,6 @@ import {
     TUI_INPUT_DATE_OPTIONS_NEW,
     type TuiInputDateOptionsNew,
 } from './input-date.options';
-
-export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
-    DMY: 'dd/mm/yyyy',
-    MDY: 'mm/dd/yyyy',
-    YMD: 'yyyy/mm/dd',
-};
 
 @Directive({
     host: {
@@ -195,7 +188,7 @@ export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
         computed(() =>
             maskitoDateOptionsGenerator({
                 separator: this.format().separator,
-                mode: TUI_DATE_ADAPTER[this.format().mode],
+                mode: this.format().mode,
                 min: this.min().toLocalNativeDate(),
                 max: this.max().toLocalNativeDate(),
             }),

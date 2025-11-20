@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    inject,
     Input,
     type QueryList,
     ViewChildren,
@@ -16,8 +15,8 @@ import {
     TUI_FALSE_HANDLER,
 } from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
-import {TuiIdService} from '@taiga-ui/cdk/services';
 import {type TuiBooleanHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeS, type TuiValueContentContext} from '@taiga-ui/core/types';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -41,7 +40,7 @@ export class TuiRadioList<T> extends TuiControl<T> {
     @ViewChildren(NgControl)
     private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
 
-    private readonly id = inject(TuiIdService).generate();
+    private readonly id = tuiGenerateId();
 
     protected validator = computed(() =>
         this.invalid() ? ERROR : Validators.nullValidator,

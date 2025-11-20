@@ -205,7 +205,6 @@ export const DemoRoute = {
     FloatingContainer: '/components/floating-container',
     FormatDate: '/pipes/format-date',
     FormatNumber: '/pipes/format-number',
-    IsPresent: '/pipes/is-present',
     Mapper: '/pipes/mapper',
     Stringify: '/pipes/stringify',
     StringifyContent: '/pipes/stringify-content',

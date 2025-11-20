@@ -29,12 +29,11 @@ import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE, TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
     type TuiDataListHost,
@@ -194,7 +193,7 @@ export class TuiInputCardGroup
 
     public readonly icon = input<PolymorpheusContent>('');
 
-    public readonly id = input(tuiInjectId());
+    public readonly id = input(tuiGenerateId());
 
     public readonly codeLength = input<3 | 4>();
 

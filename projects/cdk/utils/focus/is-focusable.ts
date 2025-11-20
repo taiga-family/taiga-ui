@@ -6,8 +6,8 @@ import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
  * be focused, for example element can have display: none applied to it or any other
  * circumstances could prevent actual focus.
  */
-export function tuiIsKeyboardFocusable(element: Element): boolean {
-    if (element.hasAttribute('disabled') || element.getAttribute('tabIndex') === '-1') {
+export function tuiIsFocusable(element: Element): boolean {
+    if (element.matches(':disabled') || element.getAttribute('tabIndex') === '-1') {
         return false;
     }
 

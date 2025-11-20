@@ -26,7 +26,7 @@ import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
@@ -111,7 +111,7 @@ export class TuiDocDemo implements AfterViewInit {
 
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
-    protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
+    protected sandboxWidth = parseInt(this.params.sandboxWidth, 10);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     public readonly control = input<AbstractControl | null>(null);

@@ -11,7 +11,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiInjectElement, tuiRetargetedBoundaryCrossing} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_TEXTFIELD_OPTIONS as OPTIONS} from '@taiga-ui/core/components/textfield';
@@ -296,12 +296,6 @@ export class TuiPrimitiveTextfieldComponent
 
     protected onAutofilled(autofilled: boolean): void {
         this.updateAutofilled(autofilled);
-    }
-
-    protected detectRetargetFromLabel(event: Event): void {
-        if (tuiRetargetedBoundaryCrossing(event)) {
-            event.stopImmediatePropagation();
-        }
     }
 
     private get iconPaddingLeft(): number {

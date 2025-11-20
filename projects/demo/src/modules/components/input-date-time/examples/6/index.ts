@@ -12,7 +12,7 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'YMD', separator: '-'})],
+    providers: [tuiDateFormatProvider({mode: 'yyyy/mm/dd', separator: '-'})],
 })
 export default class Example {
     protected value = [new TuiDay(2017, 0, 15)];
