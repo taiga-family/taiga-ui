@@ -2,9 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiLink, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
-import {type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core/types';
 
 @Component({
     imports: [RouterLink, TuiDemo, TuiLink, TuiProgress],
