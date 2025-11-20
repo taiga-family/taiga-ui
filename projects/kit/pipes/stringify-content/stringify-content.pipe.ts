@@ -1,14 +1,11 @@
 import {Pipe, type PipeTransform} from '@angular/core';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {type TuiValueContentContext} from '@taiga-ui/core/types';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk/types';
 
 @Pipe({
     name: 'tuiStringifyContent',
 })
 export class TuiStringifyContentPipe implements PipeTransform {
-    public transform<T>(
-        stringify: TuiStringHandler<T>,
-    ): TuiStringHandler<TuiValueContentContext<T>> {
+    public transform<T>(stringify: TuiStringHandler<T>): TuiStringHandler<TuiContext<T>> {
         return ({$implicit}) => stringify($implicit);
     }
 }

@@ -103,7 +103,7 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getOptions(): Promise<Locator[]> {
-        return this.page.locator('[automation-id="tui-data-list-wrapper__option"]').all();
+        return this.page.locator('tui-data-list-wrapper [tuiOption]').all();
     }
 
     public async focusOnBody(): Promise<void> {

@@ -20,10 +20,8 @@ import {TuiDataListComponent} from '../data-list.component';
 import {TUI_DATA_LIST_HOST, type TuiDataListHost} from '../data-list.tokens';
 import {TUI_OPTION_CONTENT} from './option-content';
 
-// TODO(v5): rename `TuiOptionNew` => `TuiOption` & remove [new] from selector
-// TODO: Consider all use cases for aria roles
 @Directive({
-    selector: 'button[tuiOption][new], a[tuiOption][new], label[tuiOption][new]',
+    selector: 'button[tuiOption], a[tuiOption], label[tuiOption]',
     hostDirectives: [TuiWithIcons],
     host: {
         type: 'button',
@@ -33,7 +31,7 @@ import {TUI_OPTION_CONTENT} from './option-content';
         '(mousemove.zoneless)': 'onMouseMove()',
     },
 })
-export class TuiOptionNew<T = unknown> implements OnDestroy {
+export class TuiOption<T = unknown> implements OnDestroy {
     private readonly vcr = inject(ViewContainerRef);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
@@ -85,10 +83,8 @@ export class TuiOptionNew<T = unknown> implements OnDestroy {
     }
 }
 
-// TODO(v5): remove [new] from selector
 @Directive({
-    selector:
-        'button[tuiOption][value][new], a[tuiOption][value][new], label[tuiOption][value][new]',
+    selector: 'button[tuiOption][value], a[tuiOption][value], label[tuiOption][value]',
     host: {
         '(click)': 'onClick()',
     },

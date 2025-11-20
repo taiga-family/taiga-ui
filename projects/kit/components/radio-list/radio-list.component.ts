@@ -15,9 +15,13 @@ import {
     TUI_FALSE_HANDLER,
 } from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
-import {type TuiBooleanHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {
+    type TuiBooleanHandler,
+    type TuiContext,
+    type TuiIdentityMatcher,
+} from '@taiga-ui/cdk/types';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
-import {type TuiSizeS, type TuiValueContentContext} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -59,8 +63,9 @@ export class TuiRadioList<T> extends TuiControl<T> {
     public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;
 
     @Input()
-    public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
-        String($implicit);
+    public itemContent: PolymorpheusContent<TuiContext<T> & {active: boolean}> = ({
+        $implicit,
+    }) => String($implicit);
 
     protected get name(): string {
         return `${this.control.name}-${this.id}`;

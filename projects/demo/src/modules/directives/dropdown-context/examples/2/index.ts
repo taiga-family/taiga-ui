@@ -2,11 +2,11 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiDataList, TuiDialogService, TuiDropdown, TuiIcon} from '@taiga-ui/core';
+import {TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiIcon, TuiTable],
+    imports: [TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

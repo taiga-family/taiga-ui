@@ -1,4 +1,4 @@
-<tui-textfield>
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
     <input
         #input
         tuiTextfield
@@ -12,7 +12,6 @@
                 *tuiDropdown
                 emptyContent="No results found"
                 size="s"
-                [disabledItemHandler]="disabledItemHandler"
                 [items]="filtered"
             />
         }
