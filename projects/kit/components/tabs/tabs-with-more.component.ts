@@ -215,6 +215,8 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 
+    // TODO drop comment after fix issue: https://github.com/typescript-eslint/typescript-eslint/issues/11771
+    // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private get margin(): number {
         return this.size === 'l' ? 24 : 16;
     }

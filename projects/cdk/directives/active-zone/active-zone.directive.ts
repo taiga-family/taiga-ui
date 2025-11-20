@@ -58,10 +58,14 @@ export class TuiActiveZone implements OnDestroy {
         this.tuiActiveZoneParent = zone;
     }
 
+    // issue: https://github.com/typescript-eslint/typescript-eslint/issues/11770
+    // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private addSubActiveZone(activeZone: TuiActiveZone): void {
         this.children = [...this.children, activeZone];
     }
 
+    // issue: https://github.com/typescript-eslint/typescript-eslint/issues/11770
+    // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private removeSubActiveZone(activeZone: TuiActiveZone): void {
         this.children = tuiArrayRemove(this.children, this.children.indexOf(activeZone));
     }
