@@ -12,8 +12,8 @@ interface Input {
 
 interface Output {
     component: string;
-    template?: string;
-    packageJson?: string;
+    template: string;
+    packageJson: string;
 }
 
 export async function runMigration(options: Input): Promise<Output> {
@@ -39,8 +39,8 @@ export async function runMigration(options: Input): Promise<Output> {
     saveActiveProject();
 
     return {
-        component: host.readContent('test/app/test.ts'),
-        template: host.readContent('test/app/test.html'),
-        packageJson: host.readContent('package.json'),
+        component: host.readContent('test/app/test.ts') ?? '',
+        template: host.readContent('test/app/test.html') ?? '',
+        packageJson: host.readContent('package.json') ?? '{}',
     };
 }
