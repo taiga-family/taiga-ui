@@ -11,7 +11,7 @@ import {
 import {type ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiDataList, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
@@ -58,7 +58,6 @@ interface Item {
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class Sandbox implements OnInit {
     protected readonly items = signal<readonly Item[]>([]);

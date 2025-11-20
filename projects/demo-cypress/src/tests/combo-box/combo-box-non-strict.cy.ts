@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
@@ -49,7 +49,6 @@ interface Country {
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestComboBox {
     protected readonly countries = Object.entries(inject(TUI_COUNTRIES)()).map(
