@@ -1,1 +1,0 @@
-import{Oc as a,Vb as o}from"./chunk-WYMRBQQW.js";var e=class e{};e.\u0275fac=function(t){return new(t||e)},e.\u0275cmp=o({type:e,selectors:[["eager-loaded-dialog"]],decls:1,vars:0,template:function(t,c){t&1&&a(0,"Eager loaded dialog content")},encapsulation:2,changeDetection:0});var n=e;export{n as a};

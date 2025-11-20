@@ -17017,7 +17017,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'MDY', separator: '/'})],
+    providers: [tuiDateFormatProvider({mode: 'mm/dd/yyyy', separator: '/'})],
 })
 export default class Example {
     protected value = new TuiDay(2017, 0, 15);
@@ -17411,7 +17411,7 @@ import {TuiInputDateMulti} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'MDY', separator: '/'})],
+    providers: [tuiDateFormatProvider({mode: 'mm/dd/yyyy', separator: '/'})],
 })
 export default class Example {
     protected value = [new TuiDay(2025, 6, 6)];
@@ -17778,7 +17778,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'MDY', separator: '/'})],
+    providers: [tuiDateFormatProvider({mode: 'mm/dd/yyyy', separator: '/'})],
 })
 export default class Example {
     protected value: TuiDayRange | null = null;
@@ -18272,7 +18272,7 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'YMD', separator: '-'})],
+    providers: [tuiDateFormatProvider({mode: 'yyyy/mm/dd', separator: '-'})],
 })
 export default class Example {
     protected value = [new TuiDay(2017, 0, 15)];
@@ -18432,7 +18432,7 @@ export default class Example {
         Object.values(this.dates).at(-1) ?? null;
 
     protected toISOString([day, time]: readonly [TuiDay, TuiTime]): string {
-        return `${day.toString('YMD', '-')}T${time.toString()}`;
+        return `${day.toString('yyyy/mm/dd', '-')}T${time.toString()}`;
     }
 
     protected asIs(): number {
@@ -26897,8 +26897,12 @@ export class Example {}
 <div [style.display]="'flex'">
 <aside [style.height.rem]="27" [tuiNavigationAside]="expanded()" >
 <header>
-<button iconStart="@tui.home" tuiAsideItem type="button" >
+<button iconStart="@tui.home" type="button" [tuiAsideItem]="hint" >
+<ng-container [ngTemplateOutlet]="hint" />
+<ng-template #hint>
 <span tuiFade>A very very long product name</span>
+<tui-badge appearance="accent">Alpha</tui-badge>
+</ng-template>
 </button>
 </header>
 <button iconStart="@tui.search" tuiAsideItem type="button" > Search @if (expanded()) { <tui-badge appearance="accent">12</tui-badge> } </button>
@@ -26969,7 +26973,7 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {KeyValuePipe} from '@angular/common';
+import {KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Directive, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
@@ -27014,6 +27018,7 @@ class Portal {}
     imports: [
         FormsModule,
         KeyValuePipe,
+        NgTemplateOutlet,
         Portal,
         RouterLink,
         TuiAvatar,
@@ -27107,7 +27112,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiThemeColorService} from '@taiga-ui/cdk';
+import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDataList, TuiDropdown, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
@@ -27354,7 +27359,7 @@ import {Component, inject, type OnDestroy} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
-import {TuiThemeColorService} from '@taiga-ui/cdk';
+import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 
 @Component({
     imports: [TuiDemo],
@@ -36826,7 +36831,6 @@ import {
     tuiControlValue,
     TuiDay,
     tuiDefaultSort,
-    tuiIsFalsy,
     tuiIsPresent,
     tuiToInt,
 } from '@taiga-ui/cdk';
@@ -36976,7 +36980,7 @@ export default class Example {
 
     protected search = '';
 
-    protected readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
+    protected readonly loading$ = this.request$.pipe(map((v) => !v));
 
     protected readonly total$ = this.request$.pipe(
         filter(tuiIsPresent),
@@ -41304,35 +41308,6 @@ export default class Example {
 }
 ```
 
-#### flatLength
-
-**Template:**
-```html
-<p>{{ flatted }} = flatLength([[1, 2], [3, 4], [5, 6]]);</p>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiFlatLength} from '@taiga-ui/cdk';
-
-@Component({
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected get flatted(): number {
-        return tuiFlatLength([
-            [1, 2],
-            [3, 4],
-            [5, 6],
-        ]);
-    }
-}
-```
-
 #### getPaymentSystem
 
 **Template:**
@@ -41783,7 +41758,7 @@ export default class Example {
 <dt>
 <code>mode</code>
 </dt>
-<dd class="tui-space_bottom-5"> active date format ( <code>'DMY' | 'MDY' | 'YMD'</code> ) </dd>
+<dd class="tui-space_bottom-5"> active date format ( <code>'dd/mm/yyyy' | 'mm/dd/yyyy' | 'yyyy/mm/dd'</code> ) </dd>
 <dt>
 <code>separator</code>
 </dt>
@@ -41793,7 +41768,7 @@ export default class Example {
 <section>
 <h3>Defaults:</h3>
 <ul class="tui-list tui-list_small">
-<li class="tui-list__item"> mode = <code>DMY</code>
+<li class="tui-list__item"> mode = <code>dd/mm/yyyy</code>
 </li>
 <li class="tui-list__item"> separator = <code>.</code>
 </li>
@@ -42759,7 +42734,7 @@ Also available through tuiDateFormatProvider
 **Template:**
 ```html
 <!-- Works in several levels-->
-<div class="wrapper tui-space_top-3" [tuiDateFormat]="{mode: 'YMD'}" >
+<div class="wrapper tui-space_top-3" [tuiDateFormat]="{mode: 'yyyy/mm/dd'}" >
 <!-- You can also put directive directly on input-date -->
 <tui-textfield>
 <label tuiLabel>Cool</label>
@@ -50167,92 +50142,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     public readonly control = new FormControl(100);
-}
-```
-
----
-# pipes/IsPresent
-- **Package**: `CDK`
-- **Type**: pipes
-Pipe wrapper for IsPresent function
-
-### How to Use (Import)
-
-```ts
-import {TuiIsPresentPipe} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiIsPresentPipe,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div *ngIf="item | tuiIsPresent">{{item}}</div>
-```
-
-### Usage Examples
-
-#### Usage
-
-**Template:**
-```html
-@let count = count$ | async; @if (count | tuiIsPresent) { <div> count is <code>{{ count | json }}</code>
-</div> } @else { <div> count is <code>{{ count | json }}</code> while it's loading </div> } <button size="m" tuiButton type="button" class="tui-space_top-4" (click)="loadCount()" > Load count </button>
-```
-**TypeScript:**
-```ts
-import {AsyncPipe, JsonPipe} from '@angular/common';
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIsPresentPipe} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {delayWhen, of, Subject} from 'rxjs';
-
-@Component({
-    imports: [AsyncPipe, JsonPipe, TuiButton, TuiIsPresentPipe],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    private readonly loadCountSubject = new Subject<void>();
-
-    protected readonly count$ = of(0).pipe(delayWhen(() => this.loadCountSubject));
-
-    protected loadCount(): void {
-        this.loadCountSubject.next();
-        this.loadCountSubject.complete();
-    }
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected readonly routes = DemoRoute;
 }
 ```
 

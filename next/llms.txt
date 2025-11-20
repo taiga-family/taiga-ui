@@ -228,7 +228,6 @@
 - [Flag](https://taiga-ui.dev/pipes/flag) — Pipe for getting source path to image with flag
 - [Format Date](https://taiga-ui.dev/pipes/format-date) — Pipe to format timestamps/dates dynamically Differs from built-in Angular date formatting pipe because it returns an Observable
 - [Format Number](https://taiga-ui.dev/pipes/format-number) — Pipe to format number values to separate thousands Number formatting can be customized by using TUI_NUMBER_FORMAT
-- [Is Present](https://taiga-ui.dev/pipes/is-present) — Pipe wrapper for IsPresent function
 - [Mapper](https://taiga-ui.dev/pipes/mapper) — Pipe to transform a value with a function
 - [Obfuscate](https://taiga-ui.dev/pipes/obfuscate) — Pipe for obfuscating sensitive data
 - [Stringify](https://taiga-ui.dev/pipes/stringify) — Pipe that creates TuiStringHandler by given key.

@@ -1,1 +1,0 @@
-import{c as e}from"./chunk-EC5O3YXV.js";import{gc as t}from"./chunk-RDXV7BUD.js";import{a as r}from"./chunk-U5AJQOYB.js";import{xa as o}from"./chunk-WYMRBQQW.js";var T=new o(""),M=[{provide:T,deps:[t,r],useFactory:(n,i)=>{let E=n.replace(i.location.origin,"");return e.get(E)??e.get("/")??null}}];export{T as a,M as b};

@@ -1,1 +1,0 @@
-import{lb as n}from"./chunk-RDXV7BUD.js";import{$a as t,Xb as r}from"./chunk-WYMRBQQW.js";var e=class e{constructor(){this.nativeElement=n();return new t(this.nativeElement)}};e.\u0275fac=function(m){return new(m||e)},e.\u0275dir=r({type:e,selectors:[["","tuiElement",""]],exportAs:["elementRef"]});var i=e;export{i as a};

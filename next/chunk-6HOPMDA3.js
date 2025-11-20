@@ -1,1 +1,0 @@
-import{D as t}from"./chunk-NEN4DTG5.js";function o(n){return n===t.TS||n.endsWith(".ts")}function s(n){return n===t.LESS||n.endsWith(".less")}function e(n){return Object.values(t).includes(n)}export{o as a,s as b,e as c};
