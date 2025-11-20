@@ -60,12 +60,11 @@ $track-inset: (
         --t-offset: calc(var(--tui-radius-l) / 2 + $thumb / 2);
     }
 
-    tui-input-range:not([new]) + &, /* TODO(v5): delete */
     tui-range + & {
         --t-offset: $thumb;
     }
 
-    tui-input-range[new] + & {
+    tui-input-range + & {
         --t-offset: calc(map-get($track-inset, $input-size) + $thumb);
     }
 }

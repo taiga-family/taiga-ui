@@ -25,7 +25,7 @@ tui-data-list {
         --tui-data-list-margin: ~'0rem';
 
         // TODO(v5): use `gap` in tuiCell and remove :not
-        [tuiOption][new]:not([tuiCell]) {
+        [tuiOption]:not([tuiCell]) {
             gap: 0.5rem;
         }
 
@@ -47,7 +47,7 @@ tui-data-list {
 
     &[data-size='m'] {
         // TODO(v5): use `gap` in tuiCell and remove :not
-        [tuiOption][new]:not([tuiCell]) {
+        [tuiOption]:not([tuiCell]) {
             gap: 0.75rem;
         }
 
@@ -68,7 +68,7 @@ tui-data-list {
         --tui-data-list-margin: 0.125rem;
 
         // TODO(v5): use `gap` in tuiCell and remove :not
-        [tuiOption][new]:not([tuiCell]) {
+        [tuiOption]:not([tuiCell]) {
             gap: 1rem;
         }
 
@@ -89,10 +89,6 @@ tui-data-list {
         align-items: center;
         box-sizing: border-box;
         margin: var(--tui-data-list-margin) 0;
-    }
-
-    [tuiOption]:not([new]) {
-        justify-content: space-between;
     }
 
     [tuiOption] {
@@ -126,10 +122,6 @@ tui-data-list {
         &:focus-within,
         &._with-dropdown {
             background-color: var(--tui-background-neutral-1);
-        }
-
-        &:not([new])::before {
-            margin-inline-end: 0.5rem;
         }
 
         &::after {

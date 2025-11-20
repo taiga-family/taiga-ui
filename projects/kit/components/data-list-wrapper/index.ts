@@ -1,3 +1,3 @@
 export * from './data-list-group-wrapper.component';
 export * from './data-list-wrapper.component';
-export * from './data-list-wrapper.module';
+export * from './data-list-wrapper';

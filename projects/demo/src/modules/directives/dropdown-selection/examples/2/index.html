@@ -17,7 +17,6 @@
     <tui-data-list *tuiDropdown>
         @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) {
             <button
-                new
                 tuiOption
                 type="button"
                 (click)="onClick(item.login)"

@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiElement} from '@taiga-ui/cdk/directives/element';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {tuiAsDataListAccessor, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {
@@ -12,13 +11,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
-    imports: [
-        PolymorpheusOutlet,
-        TuiDataList,
-        TuiElement,
-        TuiLoader,
-        TuiMultiSelectGroupComponent,
-    ],
+    imports: [PolymorpheusOutlet, TuiDataList, TuiLoader, TuiMultiSelectGroupComponent],
     templateUrl: './data-list-group-wrapper.template.html',
     styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,6 +23,5 @@ export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperCompo
 > {
     protected readonly multi = inject(TuiMultiSelectGroupDirective, {optional: true});
 
-    @Input()
-    public labels: readonly string[] = [];
+    public readonly labels = input<readonly string[]>([]);
 }

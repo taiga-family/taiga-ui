@@ -15,7 +15,6 @@
         @if (!user() && input.value && filtered.length) {
             <tui-data-list-wrapper
                 *tuiDropdown
-                new
                 [itemContent]="template"
                 [items]="filtered"
                 (itemClick)="selectUser($event)"

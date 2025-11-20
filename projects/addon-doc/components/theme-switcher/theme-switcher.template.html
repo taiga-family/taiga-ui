@@ -10,13 +10,9 @@
         [ngModel]="theme"
         (ngModelChange)="onTheme($event)"
     />
-    <tui-data-list
-        *tuiDropdown
-        new
-    >
+    <tui-data-list *tuiDropdown>
         @for (key of keys; track key) {
             <button
-                new
                 tuiOption
                 type="button"
                 [value]="key"
