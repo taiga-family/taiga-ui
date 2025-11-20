@@ -1,1 +1,0 @@
-var l=class{constructor(){this.pseudoVariants=[!1,!0];this.textAlignVariants=["left","right"];this.textAlign=this.textAlignVariants[0];this.focusable=!0;this.pseudoFocused=null;this.pseudoHovered=null;this.pseudoPressed=null}};export{l as a};

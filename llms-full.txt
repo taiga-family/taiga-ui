@@ -8417,7 +8417,6 @@ import {
     TuiSwitch,
 } from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
-import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -8429,9 +8428,7 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiCell,
         TuiConnected,
         TuiNotification,
-        TuiSelectModule,
         TuiSwitch,
-        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -11128,7 +11125,6 @@ import {
     TuiFilterByInputPipe,
     TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -11139,7 +11135,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -14224,7 +14219,6 @@ import {
     TuiTooltip,
 } from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 class User {
     constructor(
@@ -14270,7 +14264,6 @@ class Account {
         TuiRadio,
         TuiSelect,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTitle,
         TuiTooltip,
     ],
@@ -14542,7 +14535,6 @@ import {
     TuiMultiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -14556,7 +14548,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiInputChip,
         TuiMultiSelect,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTooltip,
     ],
     templateUrl: './index.html',
@@ -20497,13 +20488,8 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
-import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
     imports: [
@@ -20512,17 +20498,14 @@ import {AbstractExampleTuiControl} from '../abstract/control';
         TuiDocControl,
         TuiDocIcons,
         TuiDocTextfield,
-        TuiDropdown,
         TuiInputPhone,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class PageComponent {
     protected phoneMasks = [
         '+7 (###) ###-##-##',
         '+850 (####)-#############',
@@ -28242,16 +28225,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiInputSlider,
-        TuiPagination,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
-    ],
+    imports: [FormsModule, TuiInputSlider, TuiPagination, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -28288,16 +28264,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiInputSlider,
-        TuiPagination,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
-    ],
+    imports: [FormsModule, TuiInputSlider, TuiPagination, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -28327,16 +28296,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiInputSlider,
-        TuiPagination,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
-    ],
+    imports: [FormsModule, TuiInputSlider, TuiPagination, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -33349,7 +33311,6 @@ import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -33382,7 +33343,6 @@ const USERS = [
         TuiInitialsPipe,
         TuiSheetDialog,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -37307,7 +37267,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip, TuiInputNumber} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -37317,7 +37276,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiInputNumber,
         TuiTable,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -39997,10 +39955,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [TuiIcon, TuiTextfield, TuiTextfieldControllerModule, TuiTooltip],
+    imports: [TuiIcon, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -43120,7 +43077,6 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface User {
     readonly url?: string;
@@ -43149,7 +43105,6 @@ interface User {
         TuiMultiSelect,
         TuiSelect,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -43182,16 +43137,13 @@ export default class Example {
 ### TypeScript
 
 ```ts
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 
 @Component({
     imports: [
@@ -43204,14 +43156,8 @@ import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
-        },
-    ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Basic',
@@ -43443,24 +43389,16 @@ export default class Example {
 ### TypeScript
 
 ```ts
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiDropdown} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-
 @Component({
     imports: [TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
-        },
-    ],
 })
 export default class PageComponent {}
 ```
@@ -43725,24 +43663,16 @@ export default class Example {}
 ### TypeScript
 
 ```ts
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-
 @Component({
     imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
-        },
-    ],
 })
 export default class PageComponent {
     protected showDelay = 200;
@@ -44101,26 +44031,18 @@ export default class Example {}
 ### TypeScript
 
 ```ts
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-
 @Component({
     imports: [FormsModule, TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
-        },
-    ],
 })
 export default class PageComponent {
     protected open = false;
@@ -44399,25 +44321,17 @@ export default class Example {
 ### TypeScript
 
 ```ts
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
     imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
-        },
-    ],
 })
 export default class PageComponent {
     protected positionVariants = ['selection', 'word', 'tag'] as const;
@@ -45207,10 +45121,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiHighlight} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [FormsModule, TuiHighlight, TuiTextfield, TuiTextfieldControllerModule],
+    imports: [FormsModule, TuiHighlight, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -45293,11 +45206,11 @@ export class Example {}
 ### Example
 
 ```html
-<ng-template #hint> To be accessible, hint should be set to a focusable element. See <a tuiLink [routerLink]="routes.HintDescribe" >
+<ng-template #template> To be accessible, hint should be set to a focusable element. See <a tuiLink [routerLink]="routes.HintDescribe" >
 <code>HintDescribe</code>
 </a>
 </ng-template>
-<span [tuiHint]="hint" [tuiHintAppearance]="appearance" [tuiHintDescribe]="'qwerty'" [tuiHintDirection]="direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > Hover it! </span>
+<span [tuiHint]="template" [tuiHintAppearance]="hint.appearance" [tuiHintDescribe]="'qwerty'" [tuiHintDirection]="hint.direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > Hover it! </span>
 <input id="qwerty" />
 ```
 
@@ -45429,7 +45342,7 @@ export default class Example {}
 </tui-textfield>
 <ng-template #periodHint> You will pay in equal installments on a monthly basis You will pay in equal installments on a monthly basis </ng-template>
 </form>
-<button tuiHintAppearance="dark" tuiHintDirection="top-left" tuiLink type="button" class="tui-space_top-4" [pseudo]="true" [tuiHint]="howToBuyTooltip" > How to buy <ng-template #howToBuyTooltip>
+<button tuiHintAppearance="floating" tuiHintDirection="top-left" tuiLink type="button" class="tui-space_top-4" [pseudo]="true" [tuiHint]="howToBuyTooltip" > How to buy <ng-template #howToBuyTooltip>
 <ol class="tui-list tui-list_ordered tui-list_small">
 <li class="tui-list__item">Choose an installment plan</li>
 <li class="tui-list__item">Fill in the application</li>
@@ -45453,7 +45366,6 @@ import {
     TuiStringifyContentPipe,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -45467,7 +45379,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiSelect,
         TuiStringifyContentPipe,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTooltip,
     ],
     templateUrl: './index.html',
@@ -45498,23 +45409,18 @@ export default class Example {
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiHint} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
-
 @Component({
-    imports: [InheritedDocumentation, TuiDemo, TuiHint],
+    imports: [TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiHint {
+export default class PageComponent {
     protected readonly examples = ['Basic', 'Customizing', 'Nested', 'Auto', 'Form'];
 
     protected showDelay = 500;
@@ -45562,7 +45468,7 @@ export class Example {}
 ### Example
 
 ```html
-<input placeholder="My id is 'qwerty'" tuiHint="I will be visible upon keyboard focus" tuiHintDescribe="qwerty" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" />
+<input placeholder="My id is 'qwerty'" tuiHint="I will be visible upon keyboard focus" tuiHintDescribe="qwerty" [tuiHintAppearance]="hint.appearance" [tuiHintDirection]="hint.direction" />
 ```
 
 ### API
@@ -45614,22 +45520,17 @@ export default class Example {
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiHint} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
-
 @Component({
-    imports: [InheritedDocumentation, TuiDemo, TuiHint],
+    imports: [TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiHint {
+export default class PageComponent {
     protected id = '';
 }
 ```
@@ -45685,7 +45586,7 @@ export class Example {}
 ### Example
 
 ```html
-<button tuiButton tuiHint="It says 'Hi all!' into console" type="button" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" [tuiHintManual]="show" (click)="sayHi()" > A strange button </button>
+<button tuiButton tuiHint="It says 'Hi all!' into console" type="button" [tuiHintAppearance]="hint.appearance" [tuiHintDirection]="hint.direction" [tuiHintManual]="show" (click)="sayHi()" > A strange button </button>
 ```
 
 ### API
@@ -45732,22 +45633,17 @@ export default class Example {
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
-
 @Component({
-    imports: [InheritedDocumentation, TuiButton, TuiDemo, TuiHint],
+    imports: [TuiButton, TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiHint {
+export default class PageComponent {
     protected show = false;
 
     protected sayHi(): void {
@@ -45794,7 +45690,7 @@ export class Example {}
 ### Example
 
 ```html
-<div tuiHint="Some information" tuiHintPointer [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > It is followed inside the block </div>
+<div tuiHint="Some information" tuiHintPointer [tuiHintAppearance]="hint.appearance" [tuiHintDirection]="hint.direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > It is followed inside the block </div>
 ```
 
 ### API
@@ -45835,22 +45731,17 @@ export default class Example {}
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiHint} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
-
 @Component({
-    imports: [InheritedDocumentation, TuiDemo, TuiHint],
+    imports: [TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiHint {
+export default class PageComponent {
     protected showDelay = 0;
     protected hideDelay = 0;
 }
@@ -49769,7 +49660,6 @@ import {
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -49780,7 +49670,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiInputChip,
         TuiMultiSelect,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,
