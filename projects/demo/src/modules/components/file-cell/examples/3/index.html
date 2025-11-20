@@ -1,0 +1,60 @@
+@for (size of sizes; track size) {
+    <label [tuiFileCell]="size">
+        <button
+            appearance=""
+            iconStart="@tui.rotate-cw"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [style.border-radius.%]="100"
+            [style.color]="'var(--tui-background-accent-1)'"
+        >
+            Reload
+        </button>
+
+        <div tuiTitle>
+            filename.png
+            <div
+                tuiSubtitle
+                [style.color]="'var(--tui-text-negative)'"
+            >
+                Failed to upload
+            </div>
+        </div>
+
+        <button
+            appearance="close"
+            size="xs"
+            tuiButtonClose
+            type="button"
+        >
+            Remove
+        </button>
+    </label>
+
+    <label [tuiFileCell]="size">
+        <tui-icon
+            icon="@tui.file-exclamation-point"
+            [style.color]="'var(--tui-text-negative)'"
+        />
+
+        <div tuiTitle>
+            filename.png
+            <div
+                tuiSubtitle
+                [style.color]="'var(--tui-text-negative)'"
+            >
+                Failed to upload
+            </div>
+        </div>
+
+        <button
+            appearance="close"
+            size="xs"
+            tuiButtonClose
+            type="button"
+        >
+            Remove
+        </button>
+    </label>
+}

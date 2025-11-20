@@ -345,6 +345,11 @@ export const ROUTES: Routes = [
         title: 'InputFiles',
     }),
     route({
+        path: DemoRoute.FileCell,
+        loadComponent: async () => import('../components/file-cell'),
+        title: 'FileCell',
+    }),
+    route({
         path: DemoRoute.InputColor,
         loadComponent: async () => import('../components/input-color'),
         title: 'InputColor',

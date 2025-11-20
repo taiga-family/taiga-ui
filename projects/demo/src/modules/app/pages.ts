@@ -174,6 +174,18 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'FileUploader',
+        subPages: [
+            {
+                section: 'Components',
+                title: 'FileCell',
+                keywords: 'fill, cell',
+                route: DemoRoute.FileCell,
+            },
+        ],
+    },
+    {
+        section: 'Components',
         title: 'Avatar',
         keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: DemoRoute.Avatar,

@@ -67,6 +67,7 @@ export const DemoRoute = {
     ElasticContainer: '/components/elastic-container',
     Form: '/layout/form',
     InputFiles: '/components/input-files',
+    FileCell: '/components/file-cell',
     InputColor: '/components/input-color',
     InputColorLegacy: '/components/input-color-legacy',
     Group: '/components/group',
