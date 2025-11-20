@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip, TuiInputNumber} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -15,7 +14,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiInputNumber,
         TuiTable,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

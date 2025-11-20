@@ -37,7 +37,6 @@ import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {skip} from 'rxjs';
 
 const MIN_WIDTH = 160;
@@ -60,7 +59,6 @@ const MIN_WIDTH = 160;
         TuiSelect,
         TuiSwitch,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

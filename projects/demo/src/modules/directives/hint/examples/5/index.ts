@@ -11,7 +11,6 @@ import {
     TuiStringifyContentPipe,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -25,7 +24,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiSelect,
         TuiStringifyContentPipe,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTooltip,
     ],
     templateUrl: './index.html',

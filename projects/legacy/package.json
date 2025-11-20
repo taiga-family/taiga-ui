@@ -13,9 +13,6 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
-    "exports": {
-        "./styles/*": "./styles/*"
-    },
     "peerDependencies": {
         "@angular/core": ">=19.0.0",
         "tslib": ">=2.8.1"

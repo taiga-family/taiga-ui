@@ -1,0 +1,44 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <strong>Hint</strong>
+            <span tuiSubtitle>Common hint props</span>
+        </span>
+    </td>
+</tr>
+@if (!hiddenOptions().includes('appearance')) {
+    <tr
+        name="[tuiHintAppearance]"
+        tuiDocAPIItem
+        type="string"
+        [items]="appearances"
+        [(value)]="appearance"
+    >
+        Appearance of the hint bubble
+    </tr>
+}
+@if (!hiddenOptions().includes('direction')) {
+    <tr
+        name="[tuiHintDirection]"
+        tuiDocAPIItem
+        type="TuiHintDirection"
+        [items]="directions"
+        [(value)]="direction"
+    >
+        Preferred direction of the bubble or an array to define preferred priority
+    </tr>
+}
+<tr
+    name="(tuiHintDirectionChange)"
+    tuiDocAPIItem
+    type="TuiHintDirection"
+>
+    Event notifying of direction change due to limited space
+</tr>
+<tr
+    name="(tuiHintVisible)"
+    tuiDocAPIItem
+    type="boolean"
+>
+    Event notifying of bubble being shown or hidden
+</tr>

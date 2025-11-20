@@ -16,7 +16,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiAutoFocus, TuiFilterPipe} from '@taiga-ui/cdk';
 import {TuiHint, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
 
 import {IconsGroupTemplate} from './icons-group.directive';
@@ -33,7 +32,6 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiFilterPipe,
         TuiHint,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './icons-group.template.html',
     styleUrl: './icons-group.style.less',

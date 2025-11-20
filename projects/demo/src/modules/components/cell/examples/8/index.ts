@@ -11,7 +11,6 @@ import {
     TuiSwitch,
 } from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
-import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -23,9 +22,7 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiCell,
         TuiConnected,
         TuiNotification,
-        TuiSelectModule,
         TuiSwitch,
-        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './index.html',

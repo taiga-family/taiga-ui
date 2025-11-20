@@ -1,9 +1,9 @@
 import {inject, Pipe, type PipeTransform, TemplateRef} from '@angular/core';
-import {tuiInspectAny} from '@taiga-ui/addon-doc/utils';
+import {tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {TUI_IS_E2E} from '@taiga-ui/cdk/tokens';
 
 @Pipe({
-    name: 'tuiInspectAny',
+    name: 'tuiInspect',
 })
 export class TuiInspectPipe implements PipeTransform {
     private readonly isE2E = inject(TUI_IS_E2E);
@@ -20,6 +20,6 @@ export class TuiInspectPipe implements PipeTransform {
             return 'λ(x) => y';
         }
 
-        return value instanceof TemplateRef ? 'TemplateRef' : tuiInspectAny(value, depth);
+        return value instanceof TemplateRef ? 'TemplateRef' : tuiInspect(value, depth);
     }
 }

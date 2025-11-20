@@ -1,19 +1,14 @@
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiHint} from '@taiga-ui/core';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
-
 @Component({
-    imports: [InheritedDocumentation, TuiDemo, TuiHint],
+    imports: [TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiHint {
+export default class PageComponent {
     protected id = '';
 }

@@ -11,7 +11,7 @@
 </td>
 <td class="t-td">
     <code class="t-type">
-        @for (item of type() | tuiDocTypeReference; track item) {
+        @for (item of type() | tuiTypeReference; track item) {
             @if (item.reference) {
                 <a
                     target="_blank"
@@ -101,6 +101,6 @@
         #content
         let-data
     >
-        <code [style.margin]="0">{{ data | tuiInspectAny }}</code>
+        <code [style.margin]="0">{{ data | tuiInspect }}</code>
     </ng-template>
 </td>
