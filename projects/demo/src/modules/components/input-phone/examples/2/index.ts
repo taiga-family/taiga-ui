@@ -96,11 +96,4 @@ export default class Example {
         (search.startsWith('+') &&
             TUI_DEFAULT_MATCHER(item.phone, search.replaceAll(/\D/g, ''))) ||
         TUI_DEFAULT_MATCHER(item.toString(), search);
-
-    private isFullMatch(response: readonly User[], value: string): boolean {
-        return (
-            response.length === 1 &&
-            (String(response[0]) === value || response[0]?.phone === value)
-        );
-    }
 }
