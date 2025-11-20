@@ -4,6 +4,7 @@ import {
     Directive,
     inject,
     Input,
+    NgZone,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -12,7 +13,6 @@ import {
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -44,13 +44,13 @@ class TuiFadeStyles {}
             useValue: {characterData: true, subtree: true},
         },
     ],
-    hostDirectives: [TuiTransitioned],
     host: {
         '[style.line-height]': 'lineHeight',
         '[style.--t-line-height]': 'lineHeight',
         '[style.--t-fade-size]': 'size',
         '[style.--t-fade-offset]': 'offset',
         '[attr.data-orientation]': 'orientation',
+        '[style.transition]': '"none"',
     },
 })
 export class TuiFade {
@@ -69,6 +69,14 @@ export class TuiFade {
 
     constructor() {
         const el = tuiInjectElement();
+
+        // TODO: Replace with TuiTransitioned when fixed:
+        // https://github.com/angular/angular/issues/57846
+        inject(NgZone).runOutsideAngular(() => {
+            setTimeout(() => {
+                el.style.transition = '';
+            });
+        });
 
         tuiWithStyles(TuiFadeStyles);
         merge(
