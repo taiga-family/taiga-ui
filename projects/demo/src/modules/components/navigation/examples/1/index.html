@@ -133,10 +133,14 @@
         <header>
             <button
                 iconStart="@tui.home"
-                tuiAsideItem
                 type="button"
+                [tuiAsideItem]="hint"
             >
-                <span tuiFade>A very very long product name</span>
+                <ng-container [ngTemplateOutlet]="hint" />
+                <ng-template #hint>
+                    <span tuiFade>A very very long product name</span>
+                    <tui-badge appearance="accent">Alpha</tui-badge>
+                </ng-template>
             </button>
         </header>
         <button

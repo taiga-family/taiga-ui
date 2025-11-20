@@ -1,4 +1,4 @@
-import {KeyValuePipe} from '@angular/common';
+import {KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Directive, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
@@ -43,6 +43,7 @@ class Portal {}
     imports: [
         FormsModule,
         KeyValuePipe,
+        NgTemplateOutlet,
         Portal,
         RouterLink,
         TuiAvatar,
