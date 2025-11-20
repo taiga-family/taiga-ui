@@ -97,7 +97,7 @@
             padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
 
             .t-close {
-                top: ~'max(1rem, env(safe-area-inset-top))';
+                inset-block-start: ~'max(1rem, env(safe-area-inset-top))';
             }
         }
     }
@@ -160,13 +160,8 @@
     .transition(background);
 
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-
-    @supports (inset-inline-end: 0) {
-        right: unset;
-        inset-inline-end: 1rem;
-    }
+    inset-block-start: 1rem;
+    inset-inline-end: 1rem;
 }
 
 .t-buttons {

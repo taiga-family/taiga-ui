@@ -7,10 +7,10 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
     content: '';
     position: fixed;
     /* TODO: Use inset: -1px after Safari 14+ support */
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
+    inset-block-start: -1px;
+    inset-block-end: -1px;
+    inset-inline-start: -1px;
+    inset-inline-end: -1px;
     inline-size: auto;
     block-size: auto;
     border-radius: 0;

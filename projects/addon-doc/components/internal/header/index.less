@@ -2,12 +2,12 @@
 
 :host {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     // fix for Safari to prevent tabs underline above sidebar
     z-index: 1;
     display: flex;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     box-shadow: var(--tui-shadow-small);
     block-size: 4.125rem;
     align-items: center;
