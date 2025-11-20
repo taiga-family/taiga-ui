@@ -4,8 +4,7 @@
  * @param value string to convert
  * @return HSL color string
  */
-// @bad TODO: convert stringHashToHsl to stringHashToRgb
-export function tuiStringHashToHsl(value: string): string {
+export function tuiAutoColor(value: string): string {
     if (value === '') {
         return '';
     }

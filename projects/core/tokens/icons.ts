@@ -7,11 +7,6 @@ export const TUI_ICON_REGISTRY = new InjectionToken<Record<string, string>>(
     },
 );
 
-/**
- * @deprecated: use {@link TUI_ICON_REGISTRY}
- */
-export const TUI_ICON_STARTS = TUI_ICON_REGISTRY;
-
 export function tuiIconsProvider(icons: Record<string, string>): FactoryProvider {
     return {
         provide: TUI_ICON_REGISTRY,

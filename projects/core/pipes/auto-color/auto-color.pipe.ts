@@ -1,11 +1,12 @@
 import {Pipe, type PipeTransform} from '@angular/core';
-import {tuiStringHashToHsl} from '@taiga-ui/core/utils';
+
+import {tuiAutoColor} from './auto-color';
 
 @Pipe({
     name: 'tuiAutoColor',
 })
 export class TuiAutoColorPipe implements PipeTransform {
     public transform(text: string): string {
-        return tuiStringHashToHsl(text);
+        return tuiAutoColor(text);
     }
 }

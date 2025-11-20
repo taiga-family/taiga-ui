@@ -21,12 +21,7 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TUI_COMMON_ICONS,
-    TUI_ICON_END,
-} from '@taiga-ui/core/tokens';
-import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
+import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -47,7 +42,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 })
 class TuiDrawerComponent {
     protected readonly directive = inject(TuiDropdownDirective);
-    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top =
         tuiIsHTMLElement(this.directive.el.offsetParent) &&
         tuiIsHTMLElement(this.directive.el.offsetParent.offsetParent)
