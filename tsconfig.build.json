@@ -36,10 +36,5 @@
             "@taiga-ui/experimental": ["./dist/experimental"],
             "@taiga-ui/experimental/*": ["./dist/experimental/*"]
         }
-    },
-    "angularCompilerOptions": {
-        "extendedDiagnostics": {
-            "defaultCategory": "error"
-        }
     }
 }
