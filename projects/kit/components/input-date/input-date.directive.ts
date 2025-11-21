@@ -31,7 +31,7 @@ import {
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
@@ -69,10 +69,10 @@ export abstract class TuiInputDateBase<
     protected readonly textfield = inject(TuiTextfieldDirective);
     protected readonly filler = tuiWithDateFiller();
     protected readonly mobile = inject(TUI_IS_MOBILE);
-    protected readonly open = tuiDropdownOpen();
+    protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TuiItemsHandlersDirective);
-
+    protected readonly format = inject(TUI_DATE_FORMAT);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
@@ -80,8 +80,6 @@ export abstract class TuiInputDateBase<
     protected readonly options: Omit<TuiInputDateOptionsNew, 'valueTransformer'> = inject(
         TUI_INPUT_DATE_OPTIONS_NEW,
     );
-
-    protected readonly format = inject(TUI_DATE_FORMAT);
 
     protected readonly valueEffect = effect(() => {
         const value =
@@ -105,11 +103,10 @@ export abstract class TuiInputDateBase<
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly native =
-        !!inject(TuiWithNativePicker, {optional: true}) && this.mobile;
-
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
+    public readonly native =
+        !!inject(TuiWithNativePicker, {optional: true}) && this.mobile;
 
     protected abstract onValueChange(value: string): void;
 

@@ -3,7 +3,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsTextfieldAccessor,
@@ -14,8 +13,8 @@ import {
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownDirective,
+    tuiDropdownEnabled,
     TuiDropdownOpen,
-    tuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
@@ -58,15 +57,9 @@ export class TuiInputChipDirective<T>
     private readonly dropdown = inject(TuiDropdownDirective);
 
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
-    protected readonly open = tuiDropdownOpen();
+    protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-    protected readonly enabled = tuiDirectiveBinding(
-        TuiDropdownOpen,
-        'tuiDropdownEnabled',
-        this.interactive,
-        {},
-    );
-
+    protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly sub = inject(TuiActiveZone)
         .tuiActiveZoneChange.pipe(
             filter((active) => !active && !this.el.matches('select')),
@@ -79,7 +72,6 @@ export class TuiInputChipDirective<T>
 
     public readonly separator = input(this.options.separator);
     public readonly unique = input(this.options.unique);
-
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {

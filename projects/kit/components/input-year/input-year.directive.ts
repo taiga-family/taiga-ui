@@ -12,7 +12,7 @@ import {
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -36,20 +36,18 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
 export class TuiInputYearDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_YEAR_OPTIONS);
     private readonly textfield = inject(TuiTextfieldDirective);
-    private readonly open = tuiDropdownOpen();
-
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly initialItem = computed(
         () => this.value() ?? this.calendar()?.initialItem() ?? null,
-    );
-
-    protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
-        (x) => x instanceof TuiCalendarYear,
     );
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_YEAR_OPTIONS);
     protected readonly min = signal(this.options.min.year);
     protected readonly max = signal(this.options.max.year);
+    protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
+        (x) => x instanceof TuiCalendarYear,
+    );
 
     /**
      * TODO: move to [value]="value()" after update to Angular 17+

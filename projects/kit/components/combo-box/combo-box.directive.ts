@@ -26,7 +26,7 @@ import {
 import {
     TuiDropdownDirective,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
@@ -55,7 +55,7 @@ export class TuiComboBox<T>
 {
     private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
     private readonly textfield: TuiTextfieldDirective<T> = inject(TuiTextfieldDirective);
-    private readonly open = tuiDropdownOpen();
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);

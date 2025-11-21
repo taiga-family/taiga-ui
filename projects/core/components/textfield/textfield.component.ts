@@ -32,7 +32,6 @@ import {
     TuiDropdownDirective,
     TuiDropdownFixed,
     TuiDropdownOpen,
-    tuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
@@ -81,9 +80,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
 
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
-    protected readonly open = tuiDropdownOpen();
     protected readonly dropdown = inject(TuiDropdownDirective);
-    protected readonly dropdownOpen = inject(TuiDropdownOpen);
+    protected readonly open = inject(TuiDropdownOpen);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = inject(TUI_CLEAR_WORD);
     protected readonly label = contentChild(
@@ -112,7 +110,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly vcr = viewChild('vcr', {read: ViewContainerRef});
     public readonly control = contentChild(NgControl);
     public readonly auxiliaries = contentChildren(TUI_AUXILIARY, {descendants: true});
-    public readonly focused = computed(() => this.open() || this.focusedIn());
+    public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
     public readonly input: Signal<ElementRef<HTMLInputElement> | undefined> =
@@ -141,7 +139,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public handleOption(option: T): void {
         this.accessor()?.setValue(option);
-        this.open.set(false);
+        this.open.open.set(false);
     }
 
     protected get hasLabel(): boolean {
@@ -157,13 +155,13 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         this.input()?.nativeElement.focus();
 
         if (
-            !this.dropdownOpen.tuiDropdownEnabled() ||
+            !this.open.enabled() ||
             this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
         ) {
             return;
         }
 
-        this.open.update((open) => !open);
+        this.open.open.update((open) => !open);
 
         try {
             this.input()?.nativeElement.showPicker?.();

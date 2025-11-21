@@ -127,7 +127,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
             return;
         }
 
-        this.open.update((open) => !open);
+        this.open.open.update((open) => !open);
 
         try {
             this.input()?.nativeElement.showPicker?.();

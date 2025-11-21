@@ -24,7 +24,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#links');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('[tuiDropdownOpen]').click();
+        await example.locator('[tuiDropdownAuto]').click();
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
         await page.waitForTimeout(300);
 

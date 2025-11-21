@@ -6,7 +6,7 @@ import {
     ElementRef,
     inject,
     input,
-    output,
+    model,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -42,16 +42,17 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
     return (
         // @ts-ignore
         typeof CloseWatcher === 'undefined' &&
-        // ?. for auto fill events
+        // ?. for autofill events
         event.key?.toLowerCase() === 'escape' &&
-        this.tuiDropdownEnabled() &&
-        !!this.tuiDropdownOpen() &&
+        this.enabled() &&
+        this.open() &&
         !this['dropdown']()?.nextElementSibling
     );
 }
 
 @Directive({
-    selector: '[tuiDropdown][tuiDropdownOpen],[tuiDropdown][tuiDropdownOpenChange]',
+    selector:
+        '[tuiDropdown][tuiDropdownAuto],[tuiDropdown][tuiDropdownOpen],[tuiDropdown][tuiDropdownOpenChange]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
         TuiObscured,
@@ -81,20 +82,23 @@ export class TuiDropdownOpen {
     private readonly el = tuiInjectElement();
     private readonly obscured = inject(TuiObscured);
     private readonly activeZone = inject(TuiActiveZone);
-
+    private readonly driver = inject(TuiDropdownDriver);
     private readonly dropdown = computed(
         () => this.directive.ref()?.location.nativeElement,
     );
 
-    public readonly tuiDropdownEnabled = input(true);
+    public readonly enabled = input(true, {alias: 'tuiDropdownEnabled'});
+    public readonly open = model(false, {alias: 'tuiDropdownOpen'});
 
-    public readonly tuiDropdownOpen = input<boolean | ''>(false);
+    protected readonly driveEffect = effect(() => this.drive(this.open()));
+    protected readonly syncSub = this.driver
+        .pipe(
+            filter((open) => open !== this.open()),
+            takeUntilDestroyed(),
+        )
+        .subscribe((open) => this.update(open));
 
-    public readonly tuiDropdownOpenChange = output<boolean>();
-
-    // TODO: make it private when all legacy controls will be deleted from @taiga-ui/legacy (5.0)
-    public readonly driver = inject(TuiDropdownDriver);
-    public readonly sub = this.driver
+    protected readonly closeSub = this.driver
         .pipe(
             tuiIfMap(() =>
                 merge(
@@ -116,17 +120,6 @@ export class TuiDropdownOpen {
         )
         .subscribe(() => this.toggle(false));
 
-    public readonly sync = this.driver.pipe(takeUntilDestroyed()).subscribe((open) => {
-        if (open !== this.tuiDropdownOpen()) {
-            this.update(open);
-        }
-    });
-
-    protected readonly setDrive = effect(() => {
-        this.drive(!!this.tuiDropdownOpen());
-        this.tuiDropdownOpenChange.emit(!!this.tuiDropdownOpen());
-    });
-
     public toggle(open: boolean): void {
         if (this.focused && !open) {
             this.host.focus({preventScroll: true});
@@ -143,7 +136,7 @@ export class TuiDropdownOpen {
 
     protected onClick(target: HTMLElement): void {
         if (!this.editable && this.host.contains(target)) {
-            this.update(!this.tuiDropdownOpen());
+            this.update(!this.open());
         }
     }
 
@@ -151,7 +144,7 @@ export class TuiDropdownOpen {
         if (
             !tuiIsElement(event.target) ||
             !this.host.contains(event.target) ||
-            !this.tuiDropdownEnabled() ||
+            !this.enabled() ||
             !this.directive.content()
         ) {
             return;
@@ -194,16 +187,15 @@ export class TuiDropdownOpen {
     }
 
     private update(open: boolean): void {
-        if (open && !this.tuiDropdownEnabled()) {
+        if (open && !this.enabled()) {
             return this.drive();
         }
 
-        tuiSetSignal(this.tuiDropdownOpen, open);
-        this.tuiDropdownOpenChange.emit(open);
+        this.open.set(open);
         this.drive();
     }
 
-    private drive(open = !!this.tuiDropdownOpen() && this.tuiDropdownEnabled()): void {
+    private drive(open = this.open() && this.enabled()): void {
         tuiSetSignal(this.obscured.tuiObscuredEnabled, open);
         this.driver.next(open);
     }
