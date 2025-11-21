@@ -1,5 +1,6 @@
 import {TestBed} from '@angular/core/testing';
-import {TUI_ASSETS_PATH, TuiFlagPipe} from '@taiga-ui/core';
+import {TUI_ASSETS_PATH} from '@taiga-ui/core';
+import {TuiFlagPipe} from '@taiga-ui/kit';
 
 describe('tuiFlagPipe', () => {
     let pipe: TuiFlagPipe;
