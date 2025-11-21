@@ -18,9 +18,7 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private previous = this.options.direction || 'bottom';
 
     public readonly tuiDropdownSided = input<boolean | string>('');
-
     public readonly tuiDropdownSidedOffset = input(4);
-
     public readonly type = 'dropdown';
 
     public getPosition(rect: DOMRect): TuiPoint {

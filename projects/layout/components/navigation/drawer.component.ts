@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    type DoCheck,
+    computed,
     effect,
     inject,
     TemplateRef,
@@ -10,17 +10,16 @@ import {
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {
     TUI_DROPDOWN_COMPONENT,
     tuiDropdown,
     TuiDropdownDirective,
-    TuiDropdownOpen,
+    tuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -71,17 +70,12 @@ class TuiDrawerComponent {
     ],
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
-export class TuiDrawerDirective implements DoCheck {
+export class TuiDrawerDirective {
     private readonly x = inject(TUI_COMMON_ICONS).close;
-    private readonly icons = inject(TuiIcons);
     private readonly dropdown = tuiDropdown(null);
-    private readonly open = inject(TuiDropdownOpen);
+    private readonly open = tuiDropdownOpen();
 
     protected readonly template = viewChild(TemplateRef);
     protected readonly ef = effect(() => this.dropdown.set(this.template()));
-
-    public ngDoCheck(): void {
-        // TODO: Refactor to tuiDirectiveBinding
-        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen() ? this.x : '');
-    }
+    protected readonly icon = tuiIconEnd(computed(() => (this.open() ? this.x : '')));
 }

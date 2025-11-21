@@ -41,21 +41,19 @@ export class TuiDropdownHover extends TuiDriver {
         read: ElementRef,
     });
 
+    private hovered = false;
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
     private readonly activeZone = inject(TuiActiveZone);
     private readonly open = inject(TuiDropdownOpen, {optional: true});
-    /**
-     * Dropdown can be removed not only via click/touch –
-     * swipe on mobile devices removes dropdown sheet without triggering new mouseover / mouseout events.
-     */
-    private readonly dropdownExternalRemoval$ = toObservable(
-        inject(TuiDropdownDirective).ref,
-    ).pipe(filter((x) => !x && this.hovered));
-
     private readonly stream$ = merge(
-        this.dropdownExternalRemoval$.pipe(
+        /**
+         * Dropdown can be removed not only via click/touch –
+         * swipe on mobile devices removes dropdown sheet without triggering new mouseover / mouseout events.
+         */
+        toObservable(inject(TuiDropdownDirective).ref).pipe(
+            filter((x) => !x && this.hovered),
             switchMap(() =>
                 tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
                     map(tuiGetActualTarget),
@@ -84,11 +82,7 @@ export class TuiDropdownHover extends TuiDriver {
     );
 
     public readonly tuiDropdownShowDelay = input(this.options.showDelay);
-
     public readonly tuiDropdownHideDelay = input(this.options.hideDelay);
-
-    public hovered = false;
-
     public readonly type = 'dropdown';
 
     constructor() {

@@ -16,23 +16,18 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
-
     private previous?: TuiVerticalDirection;
 
-    public readonly directionChange = output<TuiVerticalDirection>({
-        alias: 'tuiDropdownDirectionChange',
-    });
-
+    public readonly tuiDropdownDirectionChange = output<TuiVerticalDirection>();
     public readonly type = 'dropdown';
-    public readonly accessor: TuiRectAccessor = tuiFallbackAccessor<TuiRectAccessor>(
-        'dropdown',
-    )(inject<any>(TuiRectAccessor, {optional: true}), {
-        getClientRect: () => this.el.getBoundingClientRect(),
-    });
+    public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
+        inject<any>(TuiRectAccessor, {optional: true}),
+        {getClientRect: () => this.el.getBoundingClientRect()},
+    );
 
     @tuiPure
     public emitDirection(direction: TuiVerticalDirection): void {
-        this.directionChange.emit(direction);
+        this.tuiDropdownDirectionChange.emit(direction);
     }
 
     public getPosition({width, height}: DOMRect): TuiPoint {

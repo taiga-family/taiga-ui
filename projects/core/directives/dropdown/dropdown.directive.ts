@@ -5,10 +5,10 @@ import {
     type ComponentRef,
     computed,
     Directive,
-    effect,
     inject,
     INJECTOR,
     input,
+    type OnChanges,
     type OnDestroy,
     signal,
     TemplateRef,
@@ -51,13 +51,11 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     },
 })
 export class TuiDropdownDirective
-    implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
+    implements AfterViewChecked, OnChanges, OnDestroy, TuiRectAccessor, TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
-
-    // TODO: think of a better solution later
     private readonly drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );
@@ -69,6 +67,7 @@ export class TuiDropdownDirective
             this.ref()?.changeDetectorRef.markForCheck();
         });
 
+    public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
     public readonly component = new PolymorpheusComponent(
@@ -76,7 +75,7 @@ export class TuiDropdownDirective
         inject(INJECTOR),
     );
 
-    public ref = signal<ComponentRef<unknown> | null>(null);
+    public readonly tuiDropdown = input<PolymorpheusContent<TuiContext<() => void>>>();
     public readonly content = computed<PolymorpheusContent<TuiContext<() => void>>>(
         (content = this.tuiDropdown()) => {
             return content instanceof TemplateRef
@@ -85,16 +84,14 @@ export class TuiDropdownDirective
         },
     );
 
-    public readonly tuiDropdown = input<PolymorpheusContent<TuiContext<() => void>>>();
+    public get position(): 'absolute' | 'fixed' {
+        return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
+    }
 
-    protected readonly setToggle = effect(() => {
+    public ngOnChanges(): void {
         if (!this.content()) {
             this.toggle(false);
         }
-    });
-
-    public get position(): 'absolute' | 'fixed' {
-        return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
     }
 
     public ngAfterViewChecked(): void {
@@ -119,9 +116,8 @@ export class TuiDropdownDirective
             ref.destroy();
         }
 
-        this.drivers.forEach((driver) => driver?.next(show));
-
         // TODO: Remove in v5, only needed in Angular 16
         this.cdr.markForCheck();
+        this.drivers.forEach((driver) => driver?.next(show));
     }
 }
