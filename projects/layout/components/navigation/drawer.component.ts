@@ -19,7 +19,7 @@ import {
     tuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
+import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -77,5 +77,5 @@ export class TuiDrawerDirective {
 
     protected readonly template = viewChild(TemplateRef);
     protected readonly ef = effect(() => this.dropdown.set(this.template()));
-    protected readonly icon = tuiIconEnd(computed(() => (this.open() ? this.x : '')));
+    protected readonly icon = tuiIconStart(computed(() => (this.open() ? this.x : '')));
 }
