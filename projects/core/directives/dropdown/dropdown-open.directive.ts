@@ -26,8 +26,8 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {
     tuiGetClosestFocusable,
+    tuiIsFocusable,
     tuiIsFocusedIn,
-    tuiIsKeyboardFocusable,
 } from '@taiga-ui/cdk/utils/focus';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
@@ -178,7 +178,7 @@ export class TuiDropdownOpen {
 
     private get host(): HTMLElement {
         const initial = this.dropdownHost()?.nativeElement || this.el;
-        const focusable = tuiIsKeyboardFocusable(initial)
+        const focusable = tuiIsFocusable(initial)
             ? initial
             : tuiGetClosestFocusable({initial, root: this.el});
 

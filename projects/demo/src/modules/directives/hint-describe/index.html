@@ -21,8 +21,8 @@
                 placeholder="My id is 'qwerty'"
                 tuiHint="I will be visible upon keyboard focus"
                 tuiHintDescribe="qwerty"
-                [tuiHintAppearance]="appearance"
-                [tuiHintDirection]="direction"
+                [tuiHintAppearance]="hint.appearance"
+                [tuiHintDirection]="hint.direction"
             />
         </tui-doc-demo>
         <table tuiDocAPI>
@@ -41,8 +41,11 @@
             >
                 Id of the element
             </tr>
+            <tbody
+                #hint
+                tuiDocHint
+            ></tbody>
         </table>
-        <inherited-documentation />
     </ng-template>
 
     <tui-setup *pageTab />

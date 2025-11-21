@@ -17,7 +17,6 @@
     @if (!value) {
         <tui-opt-group>
             <button
-                new
                 tuiOption
                 type="button"
                 [value]="all"
@@ -27,7 +26,6 @@
             </button>
             @for (item of items(); track item) {
                 <button
-                    new
                     tuiOption
                     type="button"
                     [value]="item.items"
@@ -47,7 +45,6 @@
                     <tui-opt-group>
                         @for (item of filtered; track item) {
                             <button
-                                new
                                 tuiOption
                                 type="button"
                                 [value]="item"

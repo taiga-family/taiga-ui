@@ -27,7 +27,6 @@ import {
     TuiTooltip,
 } from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 class User {
     constructor(
@@ -73,7 +72,6 @@ class Account {
         TuiRadio,
         TuiSelect,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTitle,
         TuiTooltip,
     ],

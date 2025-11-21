@@ -1,14 +1,10 @@
 import {TuiDataListComponent} from './data-list.component';
-import {TuiDataListDirective} from './data-list.directive';
 import {TuiOptGroup} from './opt-group.directive';
-import {TuiOptionNew, TuiOptionWithValue} from './option/option.directive';
-import {TuiOption} from './option/option-legacy.component';
+import {TuiOption, TuiOptionWithValue} from './option/option.directive';
 
 export const TuiDataList = [
     TuiDataListComponent,
-    TuiDataListDirective,
     TuiOption,
-    TuiOptionNew,
     TuiOptionWithValue,
     TuiOptGroup,
 ] as const;

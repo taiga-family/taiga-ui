@@ -43,7 +43,7 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 - Do NOT use `ngClass`; use `[class.foo]="…"`.
 - Do NOT use `ngStyle`; use `[style.prop]="…"`.
 - Avoid heavy logic in templates: keep templates simple, delegate to component class or service.
-- Leverage lazy‑loading of standalone components/routes to minimise bundle size.
+- Leverage lazy‑loading of standalone components/routes to minimize bundle size.
 
 ## Components
 

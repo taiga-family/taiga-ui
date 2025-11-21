@@ -1558,75 +1558,6 @@ export class PerformanceComparison {
         return `| ${testName} | ${formatCell(baseline?.layoutCount, current.layoutCount)} | ${formatCell(baseline?.layoutDuration, current.layoutDuration, 'ms')} | ${formatCell(baseline?.recalcStyleCount, current.recalcStyleCount)} | ${formatCell(baseline?.recalcStyleDuration, current.recalcStyleDuration, 'ms')} | ${formatCell(baselineLayoutMedian, currentLayoutMedian, 'ms')} | ${formatCell(baselineRecalcMedian, currentRecalcMedian, 'ms')} | ${netCell} | ${netPctCell} |`;
     }
 
-    private static classifyPattern(detail: MetricsComparison): string {
-        if (!detail.baseline) {
-            return 'new';
-        }
-
-        if (detail.pattern) {
-            return detail.pattern;
-        }
-
-        const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
-        const baselineTotal =
-            (detail.baseline.layoutDuration || 0) +
-            (detail.baseline.recalcStyleDuration || 0);
-        const netPct = baselineTotal > 0 ? (netMs / baselineTotal) * 100 : 0;
-
-        if (netMs <= 0) {
-            return 'improvement';
-        }
-
-        return netPct > 0 ? 'net-increase' : 'neutral';
-    }
-
-    private static generateNetIncreaseFallbackSection(
-        details: MetricsComparison[],
-    ): string {
-        const rows = details
-            .filter((d) => d.baseline)
-            .map((d) => {
-                const netMs = d.diff.layoutDuration + d.diff.recalcStyleDuration;
-                const baseNet =
-                    (d.baseline?.layoutDuration || 0) +
-                    (d.baseline?.recalcStyleDuration || 0);
-                const netPct = baseNet > 0 ? (netMs / baseNet) * 100 : 0;
-
-                return {d, netMs, netPct};
-            })
-            .filter((x) => x.netMs > 0)
-            .sort((a, b) => b.netPct - a.netPct);
-
-        if (!rows.length) {
-            return '';
-        }
-
-        const limit = Number(process.env.PERF_NET_FALLBACK_LIMIT || '10');
-        const slice = rows.slice(0, limit);
-        let section = '\n';
-
-        section += '<details open>\n';
-        section += `<summary>Net increase contributors (top ${slice.length} by percent)</summary>\n\n`;
-        section +=
-            '| Test Name | Pattern | Net Δ (ms) | Net Δ (%) | Layout Δ (ms) | Recalc Δ (ms) |\n';
-        section +=
-            '|-----------|---------|-----------:|----------:|--------------:|--------------:|\n';
-
-        for (const {d, netMs, netPct} of slice) {
-            const pattern = d.pattern || this.classifyPattern(d);
-            const layoutMs = d.diff.layoutDuration;
-            const recalcMs = d.diff.recalcStyleDuration;
-            const fmt = (v: number): string =>
-                v >= 0 ? `+${v.toFixed(2)}` : v.toFixed(2);
-
-            section += `| ${d.testName} | ${pattern} | ${fmt(netMs)} | ${fmt(netPct)}% | ${fmt(layoutMs)} | ${fmt(recalcMs)} |\n`;
-        }
-
-        section += '</details>\n\n';
-
-        return section;
-    }
-
     // Aggregate multiple run metrics into robust median with outlier filtering
     private static aggregateRuns(runs: PerformanceMetrics[]): PerformanceMetrics {
         const values = <K extends keyof PerformanceMetrics>(k: K): number[] =>
@@ -1816,7 +1747,8 @@ export class PerformanceReportAggregator {
         let emptyShardCount: number;
 
         try {
-            const result = await this.extractTableRowsAndEmptyShards(mdFiles);
+            const result =
+                await PerformanceReportAggregator.extractTableRowsAndEmptyShards(mdFiles);
 
             tableRows = result.tableRows;
             emptyShardCount = result.emptyShardCount;
@@ -1885,47 +1817,6 @@ export class PerformanceReportAggregator {
         }
 
         return walk(dir, 0);
-    }
-
-    /**
-     * Extracts table data rows from markdown files
-     */
-    private static async extractTableRows(files: string[]): Promise<Set<string>> {
-        const rowSet = new Set<string>();
-        let processedFiles = 0;
-        let skippedFiles = 0;
-
-        for (const file of files) {
-            try {
-                const content = await readFile(file, 'utf8');
-                const lines = content.split(/\r?\n/);
-                let rowsFromFile = 0;
-
-                for (const line of lines) {
-                    if (this.isTableDataRow(line)) {
-                        rowSet.add(line);
-                        rowsFromFile++;
-                    }
-                }
-
-                processedFiles++;
-
-                if (rowsFromFile > 0) {
-                    console.info(`Extracted ${rowsFromFile} table rows from ${file}`);
-                }
-            } catch (error) {
-                skippedFiles++;
-                console.warn(
-                    `Skipped unreadable file ${file}: ${error instanceof Error ? error.message : String(error)}`,
-                );
-            }
-        }
-
-        console.info(
-            `Processed ${processedFiles} files, skipped ${skippedFiles} files, found ${rowSet.size} unique table rows`,
-        );
-
-        return rowSet;
     }
 
     /**

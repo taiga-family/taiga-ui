@@ -22,7 +22,7 @@ import {
     TuiDropdown,
     tuiGetWordRange,
     TuiInitialsPipe,
-    TuiOptionNew,
+    TuiOption,
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
@@ -51,7 +51,7 @@ export interface User {
     changeDetection,
 })
 export default class Example {
-    @ViewChildren(TuiOptionNew, {read: ElementRef})
+    @ViewChildren(TuiOption, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @ViewChild(TuiTextarea, {read: ElementRef})

@@ -21,7 +21,7 @@ import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/t
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
-import {tuiPure, tuiUniqBy} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -31,7 +31,6 @@ import {TuiTextfield, TuiTextfieldDirective} from '@taiga-ui/core/components/tex
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
 
@@ -42,6 +41,20 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
+
+function tuiUniqBy<T extends Record<string, any>>(
+    array: readonly T[],
+    key: keyof T,
+): readonly T[] {
+    return Array.from(
+        array
+            .reduce(
+                (map, item) => (map.has(item[key]) ? map : map.set(item[key], item)),
+                new Map<T[keyof T], T>(),
+            )
+            .values(),
+    );
+}
 
 @Component({
     selector: 'tui-doc-navigation',
@@ -60,7 +73,6 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
         TuiLink,
         TuiScrollbar,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './navigation.template.html',
     styleUrl: './navigation.style.less',

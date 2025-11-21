@@ -26,7 +26,6 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface User {
     readonly url?: string;
@@ -55,7 +54,6 @@ interface User {
         TuiMultiSelect,
         TuiSelect,
         TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './index.html',

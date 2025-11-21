@@ -28,7 +28,10 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
         provideDropdown(),
     ],
     hostDirectives: [
-        TuiHintAsideDirective,
+        {
+            directive: TuiHintAsideDirective,
+            inputs: ['tuiHintAside:tuiAsideItem'],
+        },
         TuiDropdownManual,
         TuiDropdownPositionSided,
         TuiButton,
@@ -40,6 +43,7 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
     host: {
         tuiButton: '',
         tuiOption: '',
+        tuiAsideItem: '',
         '[class._link]': 'link',
         '[class._active]': 'active()',
         '[class._custom]': 'icon !== icons.iconEnd()',

@@ -4,7 +4,10 @@
     "include": ["src/**/*.ts"],
     "angularCompilerOptions": {
         "strictMetadataEmit": false,
-        "compilationMode": "full"
+        "compilationMode": "full",
+        "extendedDiagnostics": {
+            "defaultCategory": "warning"
+        }
     },
     "compilerOptions": {
         "target": "ES2022",

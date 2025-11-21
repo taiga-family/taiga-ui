@@ -6,5 +6,3 @@ export * from './round';
 export * from './round-with';
 export * from './sum';
 export * from './to-int';
-export * from './to-integer';
-export * from './to-radians';

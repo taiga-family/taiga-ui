@@ -17,11 +17,10 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     tuiAsDataListHost,
@@ -78,7 +77,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
-    private readonly autoId = tuiInjectId();
+    private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
 
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');

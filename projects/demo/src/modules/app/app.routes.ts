@@ -966,11 +966,6 @@ export const ROUTES: Routes = [
         title: 'FormatNumber',
     }),
     route({
-        path: DemoRoute.IsPresent,
-        loadComponent: async () => import('../pipes/is-present'),
-        title: 'IsPresent',
-    }),
-    route({
         path: DemoRoute.Mapper,
         loadComponent: async () => import('../pipes/mapper'),
         title: 'Mapper',

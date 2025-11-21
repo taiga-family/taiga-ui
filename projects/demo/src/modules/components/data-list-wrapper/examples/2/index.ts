@@ -10,7 +10,6 @@ import {
     TuiFilterByInputPipe,
     TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -21,7 +20,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

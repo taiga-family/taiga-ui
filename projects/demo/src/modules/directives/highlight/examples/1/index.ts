@@ -4,10 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiHighlight} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [FormsModule, TuiHighlight, TuiTextfield, TuiTextfieldControllerModule],
+    imports: [FormsModule, TuiHighlight, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

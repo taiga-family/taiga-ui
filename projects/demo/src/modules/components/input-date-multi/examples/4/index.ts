@@ -12,7 +12,7 @@ import {TuiInputDateMulti} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'MDY', separator: '/'})],
+    providers: [tuiDateFormatProvider({mode: 'mm/dd/yyyy', separator: '/'})],
 })
 export default class Example {
     protected value = [new TuiDay(2025, 6, 6)];

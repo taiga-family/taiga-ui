@@ -35,7 +35,7 @@ import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
-import {TuiDataList, TuiOptionNew} from '@taiga-ui/core/components/data-list';
+import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
@@ -94,7 +94,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     },
 })
 export class TuiInputPhoneInternational extends TuiControl<string> {
-    @ViewChildren(TuiOptionNew, {read: ElementRef})
+    @ViewChildren(TuiOption, {read: ElementRef})
     protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();

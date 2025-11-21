@@ -5,13 +5,8 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
-import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
     imports: [
@@ -20,17 +15,14 @@ import {AbstractExampleTuiControl} from '../abstract/control';
         TuiDocControl,
         TuiDocIcons,
         TuiDocTextfield,
-        TuiDropdown,
         TuiInputPhone,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class PageComponent {
     protected phoneMasks = [
         '+7 (###) ###-##-##',
         '+850 (####)-#############',

@@ -12,7 +12,6 @@
         />
         <tui-data-list-wrapper
             *tuiDropdown
-            new
             [itemContent]="stringify | tuiStringifyContent"
             [items]="items | tuiFilterByInput"
         />
@@ -28,7 +27,7 @@
 </form>
 
 <button
-    tuiHintAppearance="dark"
+    tuiHintAppearance="floating"
     tuiHintDirection="top-left"
     tuiLink
     type="button"

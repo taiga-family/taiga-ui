@@ -1,10 +1,11 @@
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {
     computed,
     Directive,
     inject,
     input,
     type OnDestroy,
+    PLATFORM_ID,
     ViewContainerRef,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
@@ -14,7 +15,6 @@ import {
     EMPTY_CLIENT_RECT,
     TUI_TRUE_HANDLER,
 } from '@taiga-ui/cdk/constants';
-import {TUI_RANGE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
     tuiInjectElement,
@@ -82,7 +82,9 @@ export class TuiDropdownSelection
         }),
     );
 
-    protected range = inject(TUI_RANGE);
+    protected range = isPlatformBrowser(inject(PLATFORM_ID))
+        ? new Range()
+        : ({} as unknown as Range);
 
     public readonly position = input<'selection' | 'tag' | 'word'>('selection', {
         alias: 'tuiDropdownSelectionPosition',

@@ -11,7 +11,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
+import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
@@ -22,9 +22,9 @@ import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
-import {TuiInspectPipe} from '../documentation/pipes/inspect.pipe';
-import {TuiDocTypeReferencePipe} from '../documentation/pipes/type-reference.pipe';
 import {TuiDocAPINumberItem} from './api-item-number.directive';
+import {TuiInspectPipe} from './inspect.pipe';
+import {TuiTypeReferencePipe} from './type-reference.pipe';
 
 const SERIALIZED_SUFFIX = '$';
 
@@ -34,13 +34,13 @@ const SERIALIZED_SUFFIX = '$';
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,
-        TuiDocTypeReferencePipe,
         TuiIcon,
         TuiInputNumber,
         TuiInspectPipe,
         TuiSelect,
         TuiSwitch,
         TuiTextfield,
+        TuiTypeReferencePipe,
     ],
     templateUrl: './api-item.template.html',
     styleUrl: './api-item.style.less',
@@ -87,7 +87,7 @@ export class TuiDocAPIItem<T> implements OnInit {
 
         const alert =
             !event || event?.toString() === '[object Object]'
-                ? tuiInspectAny(event, 2)
+                ? tuiInspect(event, 2)
                 : (event as string);
 
         this.alerts.open(alert, {label: this.name()}).subscribe();

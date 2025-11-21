@@ -9,7 +9,6 @@ import {
     forwardRef,
     inject,
     input,
-    isSignal,
     NgZone,
     signal,
     ViewEncapsulation,
@@ -30,7 +29,6 @@ import {
 } from './data-list.tokens';
 import {TuiOptionWithValue} from './option/option.directive';
 import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option/option-content';
-import {TuiOption} from './option/option-legacy.component';
 
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
@@ -53,12 +51,6 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
             provide: TUI_OPTION_CONTENT,
             useFactory: () =>
                 inject(TuiWithOptionContent, {optional: true})?.content ??
-                // TODO(v5): remove when all legacy controls are deleted
-                inject(TUI_OPTION_CONTENT, {
-                    host: true,
-                    skipSelf: true,
-                    optional: true,
-                }) ??
                 inject(TUI_OPTION_CONTENT, {skipSelf: true, optional: true}),
         },
     ],
@@ -78,36 +70,27 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 export class TuiDataListComponent<T>
     implements TuiDataListAccessor<T>, AfterContentChecked
 {
-    // TODO(v5): delete
-    private readonly legacyOptionsQuery = contentChildren<TuiOption<T>>(
-        forwardRef(() => TuiOption),
-        {descendants: true},
-    );
-
-    private readonly optionsQuery = contentChildren<TuiOptionWithValue<T>>(
-        forwardRef(() => TuiOptionWithValue),
-        {descendants: true},
-    );
-
     private origin?: HTMLElement;
     private readonly ngZone = inject(NgZone);
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
+    private readonly optionsQuery = contentChildren<TuiOptionWithValue<T>>(
+        forwardRef(() => TuiOptionWithValue),
+        {descendants: true},
+    );
 
     protected readonly fallback = inject(TUI_NOTHING_FOUND_MESSAGE);
     protected readonly empty = signal(false);
 
     public readonly emptyContent = input<PolymorpheusContent>();
-
     public readonly size = input(tuiInjectDataListSize());
 
-    public readonly options = computed(() => {
-        return [
-            ...this.legacyOptionsQuery().map(({value}) => value),
-            ...this.optionsQuery().map(({value}) => value()),
-        ].filter(tuiIsPresent);
-    });
+    public readonly options = computed(() =>
+        this.optionsQuery()
+            .map(({value}) => value())
+            .filter(tuiIsPresent),
+    );
 
     public onKeyDownArrow(current: HTMLElement, step: number): void {
         const {elements} = this;
@@ -129,20 +112,6 @@ export class TuiDataListComponent<T>
                 this.empty.set(!this.elements.length);
                 this.cdr.detectChanges();
             });
-    }
-
-    // TODO(v5): delete
-    public getOptions(includeDisabled = false): readonly T[] {
-        return [
-            ...this.legacyOptionsQuery(), // TODO(v5): delete
-            ...this.optionsQuery(),
-        ]
-            .filter(
-                ({disabled}) =>
-                    includeDisabled || !(isSignal(disabled) ? disabled() : disabled),
-            )
-            .map(({value}) => (isSignal(value) ? value() : value))
-            .filter(tuiIsPresent);
     }
 
     protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {

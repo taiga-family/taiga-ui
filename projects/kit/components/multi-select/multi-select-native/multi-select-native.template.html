@@ -13,7 +13,6 @@
                 >
                     @for (item of group; track $index) {
                         <button
-                            new
                             tuiOption
                             type="button"
                             [disabled]="handlers.disabledItemHandler()(item)"
@@ -32,7 +31,6 @@
         <tui-data-list *tuiDropdown>
             @for (item of items; track $index) {
                 <button
-                    new
                     tuiOption
                     type="button"
                     [disabled]="handlers.disabledItemHandler()(item)"

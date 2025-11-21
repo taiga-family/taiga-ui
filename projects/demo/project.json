@@ -98,12 +98,16 @@
                             "with": "{projectRoot}/src/environments/environment.prod.ts"
                         }
                     ],
+                    "tsConfig": "{projectRoot}/tsconfig.app.prod.json",
                     "outputHashing": "all"
                 },
                 "development": {
                     "optimization": false,
                     "extractLicenses": false,
-                    "sourceMap": true
+                    "sourceMap": true,
+                    "server": false,
+                    "ssr": false,
+                    "outputMode": "static"
                 },
                 "def": {
                     "fileReplacements": [

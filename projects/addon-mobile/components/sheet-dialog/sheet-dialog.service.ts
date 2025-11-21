@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiThemeColorService} from '@taiga-ui/cdk/services';
+import {TuiThemeColorService} from '@taiga-ui/addon-mobile/services';
 import {type TuiModalComponent, TuiModalService} from '@taiga-ui/core/components/modal';
 import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 

@@ -16,7 +16,6 @@ import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
 import {
-    TUI_DATE_ADAPTER,
     TUI_INPUT_DATE_OPTIONS_NEW,
     tuiWithDateFiller,
 } from '@taiga-ui/kit/components/input-date';
@@ -52,7 +51,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         computed(() =>
             maskitoDateOptionsGenerator({
                 separator: this.format().separator,
-                mode: TUI_DATE_ADAPTER[this.format().mode],
+                mode: this.format().mode,
                 min: (this.min() ?? this.dateOptions.min).toLocalNativeDate(),
                 max: (this.max() ?? this.dateOptions.max).toLocalNativeDate(),
             }),
