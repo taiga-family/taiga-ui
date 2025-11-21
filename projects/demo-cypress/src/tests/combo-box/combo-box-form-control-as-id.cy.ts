@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     input,
     type OnInit,
-    Output,
+    output,
     signal,
 } from '@angular/core';
 import {type ComponentFixture} from '@angular/core/testing';
@@ -80,11 +79,9 @@ export class Sandbox implements OnInit {
 
     public readonly control = input(new FormControl<number | null>(null));
 
-    @Output()
-    public readonly valueChanges = new EventEmitter();
+    public readonly valueChanges = output();
 
-    @Output()
-    public readonly inputEvent = new EventEmitter<string>();
+    public readonly inputEvent = output<string>();
 
     public ngOnInit(): void {
         this.control().valueChanges.subscribe((x) => this.valueChanges.emit(x));
