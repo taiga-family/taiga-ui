@@ -5,10 +5,10 @@ import {
     type ComponentRef,
     computed,
     Directive,
+    effect,
     inject,
     INJECTOR,
     input,
-    type OnChanges,
     type OnDestroy,
     signal,
     TemplateRef,
@@ -51,7 +51,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     },
 })
 export class TuiDropdownDirective
-    implements AfterViewChecked, OnChanges, OnDestroy, TuiRectAccessor, TuiVehicle
+    implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
@@ -66,6 +66,12 @@ export class TuiDropdownDirective
             this.ref()?.changeDetectorRef.detectChanges();
             this.ref()?.changeDetectorRef.markForCheck();
         });
+
+    protected readonly autoClose = effect(() => {
+        if (!this.content()) {
+            this.toggle(false);
+        }
+    });
 
     public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
@@ -86,12 +92,6 @@ export class TuiDropdownDirective
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
-    }
-
-    public ngOnChanges(): void {
-        if (!this.content()) {
-            this.toggle(false);
-        }
     }
 
     public ngAfterViewChecked(): void {
