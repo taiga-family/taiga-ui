@@ -1,5 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {type AfterViewInit, Component, ViewChild} from '@angular/core';
+import {outputToObservable} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
@@ -28,7 +29,7 @@ export default class Example implements AfterViewInit {
 
         // If we use it like that instead of (tuiElasticSticky)="onElasticSticky($event)"
         // we will not trigger unnecessary change detection when scale is less than 0.5
-        this.scale$ = this.elasticSticky.tuiElasticSticky.pipe(
+        this.scale$ = outputToObservable(this.elasticSticky.tuiElasticSticky).pipe(
             map((scale) => tuiClamp(scale, 0.5, 1)),
             startWith(1),
             distinctUntilChanged(),
