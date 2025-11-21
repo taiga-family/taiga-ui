@@ -6,8 +6,6 @@
         "outDir": "./dist",
         "typeRoots": ["node_modules/@types", "node_modules/@taiga-ui/tsconfig"],
         "types": ["node", "ng-dev-mode"],
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
         "paths": {
             "@demo-cypress/*": ["projects/demo-cypress/cypress/*"],
             "@demo-playwright/utils": ["projects/demo-playwright/utils/index"],

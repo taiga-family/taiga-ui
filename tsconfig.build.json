@@ -7,8 +7,6 @@
         "sourceMap": true,
         "inlineSourceMap": true,
         "inlineSources": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
         "paths": {
             "@taiga-ui/cdk/*": ["./dist/cdk/*"],
             "@taiga-ui/cdk": ["./dist/cdk/index"],

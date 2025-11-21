@@ -4,5 +4,9 @@
         "extendedDiagnostics": {
             "defaultCategory": "error"
         }
+    },
+    "compilerOptions": {
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
     }
 }
