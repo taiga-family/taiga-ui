@@ -19,6 +19,52 @@
         />
 
         <tui-doc-example
+            id="calendar-customizaiton"
+            heading="Calendar customization"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+            [description]="calendarCustomizationDescription"
+        >
+            <ng-template #calendarCustomizationDescription>
+                Feel free to configure
+                <code>Calendar</code>
+                specific properties: disable adjacent months days, adds circled colored markers to some days, control
+                initial opened month and etc. Explore
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Calendar"
+                >
+                    <strong>Calendar</strong>
+                </a>
+                documentation page for more customization options.
+
+                <tui-notification class="tui-space_top-2">
+                    <strong>
+                        Don't set
+                        <code>[min]</code>
+                        /
+                        <code>[max]</code>
+                        and
+                        <code>[disabledItemHandler]</code>
+                        properties for
+                        <code>&lt;tui-calendar /&gt;</code>
+                        !
+                    </strong>
+
+                    <div>
+                        <code>Calendar</code>
+                        automatically inherits these properties from
+                        <code>&lt;input tuiInputDateTime /&gt;</code>
+                        and
+                        <code>&lt;tui-textfield /&gt;</code>
+                        .
+                    </div>
+                </tui-notification>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
             id="custom-dropdown"
             description="You can customize dropdown content and change how particular dates display"
             heading="Custom dropdown"
