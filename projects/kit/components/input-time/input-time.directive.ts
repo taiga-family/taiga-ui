@@ -1,4 +1,4 @@
-import {computed, Directive, inject, input, untracked} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
@@ -112,11 +112,11 @@ export class TuiInputTimeDirective
 
     public override writeValue(value: TuiTime | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
-        const changed = untracked(() => value !== this.value());
+        const changed = value !== this.value();
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.textfield.value.set(this.stringify(this.value())));
+            this.textfield.value.set(this.stringify(this.value()));
         }
     }
 
