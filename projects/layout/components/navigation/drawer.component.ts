@@ -16,7 +16,7 @@ import {
     TUI_DROPDOWN_COMPONENT,
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
@@ -73,7 +73,7 @@ class TuiDrawerComponent {
 export class TuiDrawerDirective {
     private readonly x = inject(TUI_COMMON_ICONS).close;
     private readonly dropdown = tuiDropdown(null);
-    private readonly open = tuiDropdownOpen();
+    private readonly open = inject(TuiDropdownOpen).open;
 
     protected readonly template = viewChild(TemplateRef);
     protected readonly ef = effect(() => this.dropdown.set(this.template()));

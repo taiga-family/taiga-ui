@@ -16,7 +16,7 @@ import {
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
@@ -38,16 +38,14 @@ import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
 export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null> {
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
-    private readonly open = tuiDropdownOpen();
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly intermediateValue = signal<TuiMonth | null>(null);
-
     private readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
         (x) => x instanceof TuiCalendarMonth,
     );
 
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_RANGE_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-
     protected readonly valueEffect = effect(() => {
         const value = this.value();
         const format = this.formatter() || (() => '');

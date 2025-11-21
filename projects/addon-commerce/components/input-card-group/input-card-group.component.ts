@@ -49,7 +49,7 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownDirective,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
@@ -146,7 +146,7 @@ export class TuiInputCardGroup
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly textfield = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
-    protected readonly open = tuiDropdownOpen();
+    protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly $ = this.isWebkit
         ? this.focus$
               .pipe(

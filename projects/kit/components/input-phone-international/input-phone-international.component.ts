@@ -42,7 +42,7 @@ import {
     TuiTextfieldContent,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownOpen, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -106,19 +106,15 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly label = inject(TUI_INTERNATIONAL_SEARCH);
     protected readonly metadata = toSignal(from(this.options.metadata));
     protected readonly names = inject(TUI_COUNTRIES);
-    protected readonly open = tuiDropdownOpen();
+    protected readonly open = inject(TuiDropdownOpen).open;
+    protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
+    protected readonly change = effect(() => this.onChange(this.unmask(this.masked())));
     protected readonly search = signal<string>('');
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
-
+    protected readonly masked = tuiValue(this.el);
     protected readonly mask = tuiMaskito(
         computed(() => this.computeMask(this.code(), this.metadata())),
     );
-
-    protected readonly masked = tuiValue(this.el);
-
-    protected valueChangeEffect = effect(() => {
-        this.onChange(this.unmask(this.masked()));
-    });
 
     protected readonly filtered = computed(() =>
         this.countries()
@@ -128,13 +124,6 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
                 code: tuiGetCallingCode(iso, this.metadata()),
             }))
             .filter(({name, code}) => TUI_DEFAULT_MATCHER(name + code, this.search())),
-    );
-
-    protected readonly enabled = tuiDirectiveBinding(
-        TuiDropdownOpen,
-        'tuiDropdownEnabled',
-        this.interactive,
-        {},
     );
 
     protected readonly $ = inject(TuiActiveZone)

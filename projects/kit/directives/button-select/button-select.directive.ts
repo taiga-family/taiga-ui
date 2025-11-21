@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/core/components/data-list';
 import {
     TuiDropdownDirective,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
@@ -29,7 +29,7 @@ export class TuiButtonSelect<T>
     extends TuiControl<T | T[]>
     implements TuiDataListHost<T>
 {
-    private readonly open = tuiDropdownOpen();
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
 
     public readonly size = 's';

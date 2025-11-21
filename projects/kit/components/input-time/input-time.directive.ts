@@ -27,7 +27,7 @@ import {
 import {
     TuiDropdownDirective,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
@@ -60,7 +60,7 @@ export class TuiInputTimeDirective
 {
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly open = tuiDropdownOpen();
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = inject(TUI_TIME_TEXTS);
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_TIME_OPTIONS);
@@ -90,15 +90,11 @@ export class TuiInputTimeDirective
     );
 
     public readonly accept = input<readonly TuiTime[]>([]);
-
+    public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
+    public readonly prefix = input('');
+    public readonly postfix = input('');
     public readonly native =
         !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
-
-    public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
-
-    public readonly prefix = input('');
-
-    public readonly postfix = input('');
 
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
