@@ -13,7 +13,7 @@ import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
     TuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';

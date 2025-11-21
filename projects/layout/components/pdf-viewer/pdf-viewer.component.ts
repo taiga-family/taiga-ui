@@ -11,7 +11,7 @@ import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {type TuiDialogOptions} from '@taiga-ui/core/components/dialog';
+import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';

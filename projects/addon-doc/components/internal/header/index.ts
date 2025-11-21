@@ -3,7 +3,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiPopup} from '@taiga-ui/core/directives/popup';
+import {TuiPopup} from '@taiga-ui/core/portals/popup';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

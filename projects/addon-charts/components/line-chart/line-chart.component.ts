@@ -22,7 +22,7 @@ import {
     TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-} from '@taiga-ui/core/directives/hint';
+} from '@taiga-ui/core/portals/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, filter, map, type Observable, Subject} from 'rxjs';

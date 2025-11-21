@@ -13,7 +13,7 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TuiDataListComponent} from '../data-list.component';

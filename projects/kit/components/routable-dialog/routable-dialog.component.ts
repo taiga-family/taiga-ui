@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TuiDialogService} from '@taiga-ui/core/components/dialog';
+import {TuiDialogService} from '@taiga-ui/core/portals/dialog';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {delay, from, of, switchMap} from 'rxjs';
 

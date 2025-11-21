@@ -12,7 +12,7 @@ import {
     tuiTextfieldIcon,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
 import {

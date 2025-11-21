@@ -6,12 +6,12 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import {type TuiCountryIsoCode, type TuiLanguageName} from '@taiga-ui/i18n/types';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n/utils';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiBadgedContent} from '@taiga-ui/kit/components/badged-content';
 import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
+import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 
 @Component({
     selector: 'tui-doc-language-switcher',

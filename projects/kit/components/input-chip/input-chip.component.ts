@@ -21,7 +21,7 @@ import {
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/portals/hint';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,

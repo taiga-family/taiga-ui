@@ -1,7 +1,7 @@
 import {inject, InjectionToken} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {type TuiPositionOptions} from '@taiga-ui/core/directives/alert';
+import {type TuiPositionOptions} from '@taiga-ui/core/portals/alert';
 
 export interface TuiToastOptions<I> extends TuiPositionOptions {
     readonly autoClose: number;

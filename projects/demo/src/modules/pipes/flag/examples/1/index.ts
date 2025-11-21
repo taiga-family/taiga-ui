@@ -1,9 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFlagPipe} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_COUNTRIES} from '@taiga-ui/kit';
+import {TUI_COUNTRIES, TuiFlagPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiFlagPipe],

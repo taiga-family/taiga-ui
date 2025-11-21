@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {type SafeResourceUrl} from '@angular/platform-browser';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {TuiModalService} from '@taiga-ui/core/components/modal';
+import {TuiModalService} from '@taiga-ui/core/portals/modal';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 

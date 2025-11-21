@@ -31,7 +31,7 @@ import {
     type TuiTextfieldAccessor,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TuiItemsHandlersValidator} from '@taiga-ui/core/directives/items-handlers';
 import {TuiInputDateBase, tuiWithDateFiller} from '@taiga-ui/kit/components/input-date';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';

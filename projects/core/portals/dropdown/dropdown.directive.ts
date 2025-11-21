@@ -22,7 +22,7 @@ import {
     type TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
-import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {
     PolymorpheusComponent,

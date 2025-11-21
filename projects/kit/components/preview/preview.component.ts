@@ -16,7 +16,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
+import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 

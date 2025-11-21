@@ -1,3 +1,14 @@
+import {Pipe, type PipeTransform} from '@angular/core';
+
+@Pipe({
+    name: 'tuiAutoColor',
+})
+export class TuiAutoColorPipe implements PipeTransform {
+    public transform(text: string): string {
+        return tuiAutoColor(text);
+    }
+}
+
 /* eslint-disable no-bitwise */
 /**
  * Converts a string to an HSL color

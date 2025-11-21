@@ -32,7 +32,7 @@ import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
     TuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,

@@ -9,7 +9,7 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiTitle} from '@taiga-ui/core/directives/title';
+import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {

@@ -10,7 +10,7 @@ import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 

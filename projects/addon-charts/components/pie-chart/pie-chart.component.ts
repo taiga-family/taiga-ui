@@ -14,7 +14,7 @@ import {
     TuiHint,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-} from '@taiga-ui/core/directives/hint';
+} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 

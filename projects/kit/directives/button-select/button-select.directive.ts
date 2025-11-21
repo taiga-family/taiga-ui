@@ -12,7 +12,7 @@ import {
     TuiDropdownOpen,
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 

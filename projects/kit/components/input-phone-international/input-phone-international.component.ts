@@ -41,9 +41,9 @@ import {
     TuiTextfieldContent,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import {TuiTitle} from '@taiga-ui/core/directives/title';
-import {TuiFlagPipe} from '@taiga-ui/core/pipes';
+import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
+import {TuiTitle} from '@taiga-ui/core/components/title';
+import {TuiFlagPipe} from '@taiga-ui/kit/pipes';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';

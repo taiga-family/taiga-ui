@@ -20,7 +20,7 @@ import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {
     calculateDisabledItemHandler,
     TUI_DAY_CAPS_MAPPER,

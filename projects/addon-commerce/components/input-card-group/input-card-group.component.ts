@@ -52,7 +52,7 @@ import {
     TuiDropdownOpen,
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

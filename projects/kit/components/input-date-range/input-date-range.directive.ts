@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,

@@ -6,7 +6,7 @@ import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
+import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, map, startWith, switchMap, timer} from 'rxjs';

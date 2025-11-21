@@ -23,7 +23,7 @@ import {
     TuiDropdownHover,
     TuiDropdownOpen,
     TuiDropdownPositionSided,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

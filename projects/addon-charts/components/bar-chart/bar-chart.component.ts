@@ -20,7 +20,7 @@ import {
     TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-} from '@taiga-ui/core/directives/hint';
+} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';

@@ -12,7 +12,7 @@ import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const GAP = 16;

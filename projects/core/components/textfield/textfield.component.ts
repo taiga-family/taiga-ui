@@ -33,7 +33,7 @@ import {
     TuiDropdownFixed,
     TuiDropdownOpen,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';

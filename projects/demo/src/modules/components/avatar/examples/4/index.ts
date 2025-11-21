@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {
     TuiAutoColorPipe,
+    TuiAvatar,
+    TuiAvatarStack,
     TuiInitialsPipe,
-    type TuiSizeXS,
-    type TuiSizeXXL,
-} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
+} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiAvatarStack, TuiInitialsPipe],

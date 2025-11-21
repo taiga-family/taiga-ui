@@ -17,7 +17,7 @@ import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiPopups} from '@taiga-ui/core/directives/popup';
+import {TuiPopups} from '@taiga-ui/core/portals/popup';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
 import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';

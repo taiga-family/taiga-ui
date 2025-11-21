@@ -4,7 +4,7 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
+import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/portals/dialog';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {

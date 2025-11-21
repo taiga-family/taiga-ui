@@ -1,8 +1,8 @@
 import {computed, Directive, inject, input} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
+import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiAsideComponent} from './aside.component';

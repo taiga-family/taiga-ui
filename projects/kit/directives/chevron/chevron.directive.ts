@@ -11,7 +11,7 @@ import {
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {TUI_ICON_END} from '@taiga-ui/core/tokens';
 
 export const TUI_CHEVRON = new InjectionToken(ngDevMode ? 'TUI_CHEVRON' : '', {

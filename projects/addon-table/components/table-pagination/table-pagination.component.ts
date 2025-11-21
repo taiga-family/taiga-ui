@@ -12,7 +12,7 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

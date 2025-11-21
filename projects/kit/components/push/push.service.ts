@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiAlertService} from '@taiga-ui/core/directives/alert';
+import {TuiAlertService} from '@taiga-ui/core/portals/alert';
 
 import {
     TUI_PUSH_CONCURRENCY,

@@ -6,7 +6,7 @@ import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 

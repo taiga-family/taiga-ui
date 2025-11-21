@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {TuiCalendarSheet} from '@taiga-ui/core/components/calendar';
-import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes/calendar-sheet';
+import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
 
 @Component({
     selector: 'tui-mobile-calendar-sheet',

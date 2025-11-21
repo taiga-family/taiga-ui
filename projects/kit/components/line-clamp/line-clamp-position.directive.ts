@@ -4,7 +4,7 @@ import {
     TuiPositionAccessor,
     type TuiRectAccessor,
 } from '@taiga-ui/core/classes';
-import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
 @Directive({

@@ -18,7 +18,7 @@ import {
     TuiDropdownDirective,
     TuiDropdownOpen,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
