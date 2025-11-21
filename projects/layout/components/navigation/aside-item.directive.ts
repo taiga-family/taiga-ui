@@ -7,6 +7,7 @@ import {
     TuiDataListComponent,
     type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {
     TUI_DROPDOWN_OPTIONS,
     TuiDropdownDirective,
@@ -14,7 +15,6 @@ import {
     type TuiDropdownOptions,
     TuiDropdownPositionSided,
 } from '@taiga-ui/core/portals/dropdown';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_CHEVRON, TuiChevron} from '@taiga-ui/kit/directives/chevron';
 

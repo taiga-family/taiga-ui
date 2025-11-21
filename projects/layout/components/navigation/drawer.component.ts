@@ -12,6 +12,7 @@ import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {
     TUI_DROPDOWN_COMPONENT,
     tuiDropdown,
@@ -19,7 +20,6 @@ import {
     TuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

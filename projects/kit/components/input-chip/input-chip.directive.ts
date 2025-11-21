@@ -12,14 +12,14 @@ import {
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
+import {
     TuiDropdownDirective,
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {
-    TUI_ITEMS_HANDLERS,
-    type TuiItemsHandlers,
-} from '@taiga-ui/core/directives/items-handlers';
 import {filter} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';

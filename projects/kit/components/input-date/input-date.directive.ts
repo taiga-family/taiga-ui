@@ -29,16 +29,16 @@ import {
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
-    TuiDropdownAuto,
-    tuiDropdownEnabled,
-    TuiDropdownOpen,
-} from '@taiga-ui/core/portals/dropdown';
-import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
     TuiItemsHandlersDirective,
     TuiItemsHandlersValidator,
 } from '@taiga-ui/core/directives/items-handlers';
+import {
+    TuiDropdownAuto,
+    tuiDropdownEnabled,
+    TuiDropdownOpen,
+} from '@taiga-ui/core/portals/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
