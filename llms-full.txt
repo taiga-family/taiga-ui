@@ -647,7 +647,7 @@ export class App {}
 <div>
 <strong>Selected: {{ selected }} of {{ items.length }}</strong> @if (!isMobile()) { <button tuiLink type="button" class="tui-space_left-3" (click)="toggleSelect()" > {{ selected < items.length ? 'Select all' : 'Select none' }} </button> } </div>
 <tui-items-with-more> @for (_ of '-'.repeat(5); track $index) { <button *tuiItem iconStart="@tui.star" tuiButton type="button" > Action {{ $index + 1 }} </button> } <ng-template let-lastIndex tuiMore >
-<button iconStart="@tui.ellipsis" tuiButton tuiDropdownAlign="right" tuiDropdownOpen type="button" [tuiDropdown]="dropdown" > More </button>
+<button iconStart="@tui.ellipsis" tuiButton tuiDropdownAlign="right" tuiDropdownAuto type="button" [tuiDropdown]="dropdown" > More </button>
 <ng-template #dropdown>
 <tui-data-list size="l"> @for (_ of '-'.repeat(5); track $index) { @if ($index > lastIndex) { <button tuiOption type="button" > Action {{ $index + 1 }} </button> } } </tui-data-list>
 </ng-template>
@@ -6978,7 +6978,7 @@ export default class Example {}
 <header tuiHeader>
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
-</header> @for (_ of '-'.repeat(3); track $index) { <button tuiCell="l" tuiDropdownAlign="right" tuiDropdownOpen type="button" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" >
+</header> @for (_ of '-'.repeat(3); track $index) { <button tuiCell="l" tuiDropdownAlign="right" tuiDropdownAuto type="button" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" >
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
@@ -8237,7 +8237,7 @@ export default class Example {}
 <div tuiCell>
 <div tuiTitle> Multiple actions <div tuiSubtitle>With no content on the right</div>
 </div>
-<button appearance="icon" iconStart="@tui.ellipsis" tuiDropdownAlign="right" tuiDropdownOpen tuiIconButton type="button" [tuiDropdown]="dropdown" > Action </button>
+<button appearance="icon" iconStart="@tui.ellipsis" tuiDropdownAlign="right" tuiDropdownAuto tuiIconButton type="button" [tuiDropdown]="dropdown" > Action </button>
 <ng-template #dropdown let-close >
 <tui-data-list-wrapper [items]="items" (itemClick)="close()" />
 </ng-template>
@@ -10497,7 +10497,7 @@ export class Example {}
 
 **Template:**
 ```html
-<button tuiButton tuiChevron tuiDropdownOpen type="button" [tuiDropdown]="content" > Menu </button>
+<button tuiButton tuiChevron tuiDropdownAuto type="button" [tuiDropdown]="content" > Menu </button>
 <ng-template #content>
 <tui-data-list role="menu"> @for (group of groups; track group) { <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <a #rla="routerLinkActive" role="menuitemradio" routerLinkActive tuiOption [attr.aria-checked]="rla.isActive" [routerLink]="item.routerLink" > {{ item.label }} @if (rla.isActive) { <tui-icon icon="@tui.check" /> } </a> } </tui-opt-group> } </tui-data-list>
 </ng-template>
@@ -23270,7 +23270,7 @@ export default class Page {
 ```html
 <tui-items-with-more size="m" tuiGroup [collapsed]="true" > @for (item of items; track item) { <label *tuiItem appearance="" tuiBlock="m" [style.border-radius]="'inherit'" > {{ item }} <input tuiBlock type="checkbox" [(ngModel)]="value[$index]" />
 </label> } <ng-template let-lastIndex tuiMore >
-<button appearance="outline-grayscale" size="m" tuiButton tuiDropdownAlign="right" tuiDropdownOpen type="button" class="item" [tuiDropdown]="dropdown" > More <tui-badge>{{ items.length - lastIndex - 1 }}</tui-badge>
+<button appearance="outline-grayscale" size="m" tuiButton tuiDropdownAlign="right" tuiDropdownAuto type="button" class="item" [tuiDropdown]="dropdown" > More <tui-badge>{{ items.length - lastIndex - 1 }}</tui-badge>
 </button>
 <ng-template #dropdown>
 <tui-data-list size="l"> @for (item of items; track item) { @if ($index > lastIndex) { <button tuiOption type="button" (click)="value[$index] = !value[$index]" > {{ item }} <tui-icon icon="@tui.check" class="tui-space_left-2" [class._hidden]="!value[$index]" />
@@ -23320,7 +23320,7 @@ export default class Page {
 ```html
 <tui-items-with-more side="start" [itemsLimit]="3" > @for (item of items; track item) { <ng-container *tuiItem> @if (!$first) { <tui-icon icon="@tui.chevron-right" [style.font-size.rem]="1" [style.opacity]="0.25" [style.width.rem]="1.5" /> } <button appearance="flat" size="xs" tuiButton type="button" > {{ item }} </button>
 </ng-container> } <ng-template let-index tuiMore >
-<button appearance="flat" iconStart="@tui.ellipsis" size="xs" tuiDropdownOpen tuiIconButton type="button" [tuiDropdown]="dropdown" > More </button>
+<button appearance="flat" iconStart="@tui.ellipsis" size="xs" tuiDropdownAuto tuiIconButton type="button" [tuiDropdown]="dropdown" > More </button>
 <ng-template #dropdown>
 <tui-data-list size="s"> @for (item of items; track item) { @if ($index < index) { <button tuiOption type="button" > {{ item }} </button> } } </tui-data-list>
 </ng-template>
@@ -26852,7 +26852,7 @@ export class Example {}
 <span tuiNavigationSegments>
 <button appearance="secondary-grayscale" tuiButton type="button" > Link 1 </button>
 <button appearance="secondary-grayscale" tuiButton type="button" > Link 2 </button>
-<button appearance="secondary-grayscale" tuiButton tuiChevron tuiDropdownOpen type="button" [tuiDropdown]="products" >
+<button appearance="secondary-grayscale" tuiButton tuiChevron tuiDropdownAuto type="button" [tuiDropdown]="products" >
 <span [style.overflow]="'hidden'" [style.text-overflow]="'ellipsis'" > A very very long project </span>
 <ng-template #products>
 <tui-data-list size="s">
@@ -26894,7 +26894,7 @@ export class Example {}
 <button automation-id="hint" iconStart="@tui.heart" tuiAsideItem type="button" >
 <span tuiFade>By default ellipsis is used but you can use fade too</span>
 </button>
-<button iconEnd="@tui.chevron-right" iconStart="@tui.ellipsis" tuiAsideItem tuiDropdownHover tuiDropdownOpen type="button" [tuiDropdown]="more" > More <ng-template #more let-close >
+<button iconEnd="@tui.chevron-right" iconStart="@tui.ellipsis" tuiAsideItem tuiDropdownAuto tuiDropdownHover type="button" [tuiDropdown]="more" > More <ng-template #more let-close >
 <tui-data-list tuiDataListDropdownManager>
 <button iconStart="@tui.pencil" tuiAsideItem type="button" > Write </button>
 <button iconStart="@tui.pie-chart" tuiAsideItem type="button" [tuiDropdown]="submenu" > Categories <ng-template #submenu>
@@ -27056,7 +27056,7 @@ export default class Example extends TuiPortals {
 <header tuiNavigationHeader>
 <span tuiNavigationLogo> Custom color <input tuiSwitch type="checkbox" [ngModel]="color" (ngModelChange)="onColor($event)" />
 </span>
-<button tuiButton tuiChevron tuiDropdown="Use TuiThemeColorService to control color" tuiDropdownOpen type="button" > How to? </button>
+<button tuiButton tuiChevron tuiDropdown="Use TuiThemeColorService to control color" tuiDropdownAuto type="button" > How to? </button>
 </header>
 <main tuiNavigationMain>
 <nav compact tuiSubheader >
@@ -27069,7 +27069,7 @@ export default class Example extends TuiPortals {
 </tui-tabs>
 <button appearance="secondary" tuiButton type="button" > Button </button>
 <button tuiButton type="button" > Button </button>
-<button appearance="secondary" iconStart="@tui.ellipsis" tuiDropdownOpen tuiIconButton type="button" [tuiDropdown]="menu" > More <ng-template #menu>
+<button appearance="secondary" iconStart="@tui.ellipsis" tuiDropdownAuto tuiIconButton type="button" [tuiDropdown]="menu" > More <ng-template #menu>
 <tui-data-list>
 <button tuiOption type="button" > Button </button>
 <button tuiOption type="button" > Button </button>
@@ -35296,7 +35296,7 @@ export default class Example {
 <div tuiSubtitle>Dollar account</div>
 </div>
 </div>
-<button appearance="flat" iconStart="@tui.ellipsis-vertical" size="s" tuiDropdownOpen tuiIconButton type="button" class="fallback" [tuiDropdown]="content" > Actions </button>
+<button appearance="flat" iconStart="@tui.ellipsis-vertical" size="s" tuiDropdownAuto tuiIconButton type="button" class="fallback" [tuiDropdown]="content" > Actions </button>
 <ng-template #content>
 <tui-data-list>
 <button tuiOption type="button" > Hide </button>
@@ -36333,7 +36333,7 @@ export default class Example {
 </td>
 <td tuiTd>
 <tui-items-with-more [style.gap.rem]="0.25"> @for (chip of item.items; track chip) { <tui-badge *tuiItem>{{ chip }}</tui-badge> } <ng-template let-number tuiMore >
-<button appearance="action-grayscale" tuiDropdownAlign="right" tuiDropdownOpen tuiLink type="button" [pseudo]="true" [tuiDropdown]="dropdown" > + {{ item.items.length - number - 1 }} </button>
+<button appearance="action-grayscale" tuiDropdownAlign="right" tuiDropdownAuto tuiLink type="button" [pseudo]="true" [tuiDropdown]="dropdown" > + {{ item.items.length - number - 1 }} </button>
 <ng-template #dropdown>
 <div tuiStatus [style.padding.rem]="1" > @for (chip of item.items; track chip) { @if ($index > number) { <tui-badge>{{ chip }}</tui-badge> } } </div>
 </ng-template>
@@ -36735,7 +36735,7 @@ export default class Example {
 <p class="filters">
 <label tuiLabel>
 <input tuiCheckbox type="checkbox" [(ngModel)]="dob" /> Enable sorting by DOB </label>
-<button size="m" tuiButton tuiChevron tuiDropdownOpen type="button" [tuiDropdown]="dropdown" > Columns </button>
+<button size="m" tuiButton tuiChevron tuiDropdownAuto type="button" [tuiDropdown]="dropdown" > Columns </button>
 <ng-template #dropdown>
 <tui-reorder class="columns" [enabled]="enabled" [(items)]="initial" (enabledChange)="onEnabled($event)" />
 </ng-template>
@@ -38122,7 +38122,7 @@ export default class Example {
 ```html
 <div tuiTheme="dark" class="wrapper" >
 <h1 class="tui-text_h3 title">Monty Python</h1>
-<tui-tabs-with-more underline="#fff" class="tabs" [activeItemIndex]="activeItemIndex" [moreContent]="more" > @for (tab of tabs; track tab) { @if (isString(tab)) { <button *tuiItem tuiTab type="button" (click)="onClick(tab)" > {{ tab }} </button> } @else { <button *tuiItem tuiChevron tuiDropdownOpen tuiTab type="button" [tuiDropdown]="dropdown" (tui-tab-activate)="stop($event)" > Collaborators </button> } } </tui-tabs-with-more>
+<tui-tabs-with-more underline="#fff" class="tabs" [activeItemIndex]="activeItemIndex" [moreContent]="more" > @for (tab of tabs; track tab) { @if (isString(tab)) { <button *tuiItem tuiTab type="button" (click)="onClick(tab)" > {{ tab }} </button> } @else { <button *tuiItem tuiChevron tuiDropdownAuto tuiTab type="button" [tuiDropdown]="dropdown" (tui-tab-activate)="stop($event)" > Collaborators </button> } } </tui-tabs-with-more>
 </div>
 <section class="content">Currently active: {{ activeElement }}</section>
 <ng-template #dropdown let-close >
@@ -43551,7 +43551,7 @@ export default class Example {
 <tui-data-list-wrapper *tuiDropdown [items]="selectItems" />
 </tui-textfield>
 <p>
-<button size="s" tuiButton tuiDropdownHover tuiDropdownOpen type="button" [tuiDropdown]="content" > Nested dropdown hover </button>
+<button size="s" tuiButton tuiDropdownAuto tuiDropdownHover type="button" [tuiDropdown]="content" > Nested dropdown hover </button>
 <ng-template #content>
 <p class="tui-space_horizontal-2">Nested content!</p>
 </ng-template>
@@ -43600,7 +43600,7 @@ export default class Example {
 
 **Template:**
 ```html
-<div tuiDropdown="Dropdown content" tuiDropdownHover tuiDropdownLimitWidth="fixed" tuiDropdownOpen tuiGroup >
+<div tuiDropdown="Dropdown content" tuiDropdownAuto tuiDropdownHover tuiDropdownLimitWidth="fixed" tuiGroup >
 <button tuiButton type="button" > Won't open here </button>
 <button #tuiDropdownHost tuiButton type="button" > Will open here </button>
 </div>
@@ -43677,7 +43677,7 @@ export default class PageComponent {
 # directives/DropdownOpen
 - **Package**: `CORE`
 - **Type**: directives
-DropdownOpen is a composite dropdown directive, similar to manual dropdown, but it also takes care of opening and closing on its own. If an element is a textfield ( input or textarea ), arrow down press opens a dropdown. The next press focuses the first item from the list. If it is not a textfield, click opens and closes a dropdown. By default directive is applied to the first focusable element inside. If you want another element to be the host, use #tuiDropdownHost reference.
+DropdownOpen is a composite dropdown directive, similar to manual dropdown, but it also takes care of opening and closing on its own. If an element is a textfield ( input or textarea ), arrow down press opens a dropdown. The next press focuses the first item from the list. If it is not a textfield, click opens and closes a dropdown. By default directive is applied to the first focusable element inside. If you want another element to be the host, use #tuiDropdownHost reference. Use tuiDropdownAuto selector with no binding if you do not want to track open state
 
 ### How to Use (Import)
 
@@ -43972,7 +43972,7 @@ export default class Example {
 
 **Template:**
 ```html
-<button iconStart="@tui.arrow-up-right" size="s" topRight tuiDropdownOpen tuiIconButton type="button" [tuiDropdown]="content" > Show details </button>
+<button iconStart="@tui.arrow-up-right" size="s" topRight tuiDropdownAuto tuiIconButton type="button" [tuiDropdown]="content" > Show details </button>
 <ng-template #content>
 <div class="dropdown">
 <h2 class="tui-text_h6">Custom positioning</h2> You can achieve this with <code>tuiAsPositionAccessor</code> helper and a custom directive </div>
