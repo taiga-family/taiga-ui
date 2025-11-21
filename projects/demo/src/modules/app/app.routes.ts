@@ -162,7 +162,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Title,
         title: 'Title',
-        loadComponent: async () => import('../directives/title'),
+        loadComponent: async () => import('../components/title'),
     }),
     route({
         path: DemoRoute.CardMedium,
