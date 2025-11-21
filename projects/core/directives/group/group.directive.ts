@@ -34,15 +34,11 @@ class Styles {}
     },
 })
 export class TuiGroup {
-    private readonly options = inject(TUI_GROUP_OPTIONS);
-
+    protected readonly options = inject(TUI_GROUP_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
 
     public readonly orientation = input<TuiOrientation>(this.options.orientation);
-
     public readonly collapsed = input(this.options.collapsed);
-
     public readonly rounded = input(this.options.rounded);
-
     public readonly size = input<TuiSizeL | TuiSizeS>(this.options.size);
 }

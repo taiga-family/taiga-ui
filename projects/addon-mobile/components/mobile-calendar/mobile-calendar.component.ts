@@ -39,12 +39,12 @@ import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_CALENDAR_SHEET_OPTIONS} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
 import {TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes/order-week-days';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
+    TUI_MONTHS,
     TUI_SHORT_WEEK_DAYS,
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
@@ -95,7 +95,6 @@ import {
         TuiLink,
         TuiMapperPipe,
         TuiMobileCalendarSheet,
-        TuiMonthPipe,
         TuiOrderWeekDaysPipe,
         TuiRipple,
         TuiTouchable,
@@ -136,6 +135,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly cancelWord = inject(TUI_CANCEL_WORD);
     protected readonly doneWord = inject(TUI_DONE_WORD);
+    protected readonly monthNames = inject(TUI_MONTHS);
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
     protected readonly chooseDayOrRangeTexts = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
         optional: true,

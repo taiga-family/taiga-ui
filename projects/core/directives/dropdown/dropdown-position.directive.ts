@@ -1,6 +1,6 @@
-import {Directive, inject, output} from '@angular/core';
+import {Directive, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -8,6 +8,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint, type TuiVerticalDirection} from '@taiga-ui/core/types';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {TUI_DROPDOWN_OPTIONS, type TuiDropdownAlign} from './dropdown-options.directive';
 
@@ -16,24 +17,18 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
-
     private previous?: TuiVerticalDirection;
 
-    public readonly directionChange = output<TuiVerticalDirection>({
-        alias: 'tuiDropdownDirectionChange',
-    });
-
+    public readonly direction = new Subject<TuiVerticalDirection>();
     public readonly type = 'dropdown';
-    public readonly accessor: TuiRectAccessor = tuiFallbackAccessor<TuiRectAccessor>(
-        'dropdown',
-    )(inject<any>(TuiRectAccessor, {optional: true}), {
-        getClientRect: () => this.el.getBoundingClientRect(),
-    });
+    public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
+        inject<any>(TuiRectAccessor, {optional: true}),
+        {getClientRect: () => this.el.getBoundingClientRect()},
+    );
 
-    @tuiPure
-    public emitDirection(direction: TuiVerticalDirection): void {
-        this.directionChange.emit(direction);
-    }
+    public readonly tuiDropdownDirectionChange = outputFromObservable(
+        this.direction.pipe(distinctUntilChanged()),
+    );
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         if (!width && !height) {
@@ -75,13 +70,13 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
             (available[previous] > minHeight && direction) ||
             available[previous] > height
         ) {
-            this.emitDirection(previous);
+            this.direction.next(previous);
 
             return [position[previous], position[align]];
         }
 
         this.previous = better;
-        this.emitDirection(better);
+        this.direction.next(better);
 
         return [position[better], position[align]];
     }

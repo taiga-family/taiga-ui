@@ -1,8 +1,8 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -15,16 +15,18 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
-import {TuiMonthPipe} from '@taiga-ui/core/pipes';
+import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-calendar-spin',
-    imports: [AsyncPipe, TuiLink, TuiMonthPipe, TuiSpinButton],
+    imports: [TuiLink, TuiSpinButton],
     templateUrl: './calendar-spin.template.html',
     styleUrl: './calendar-spin.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarSpin {
+    protected readonly months = inject(TUI_MONTHS);
+
     @Input()
     public value = TuiMonth.currentLocal();
 

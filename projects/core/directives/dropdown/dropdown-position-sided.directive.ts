@@ -18,9 +18,7 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private previous = this.options.direction || 'bottom';
 
     public readonly tuiDropdownSided = input<boolean | string>('');
-
     public readonly tuiDropdownSidedOffset = input(4);
-
     public readonly type = 'dropdown';
 
     public getPosition(rect: DOMRect): TuiPoint {
@@ -54,13 +52,13 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
             (available[this.previous] > height && direction) ||
             this.previous === better
         ) {
-            this.vertical.emitDirection(this.previous);
+            this.vertical.direction.next(this.previous);
 
             return [position[this.previous], left];
         }
 
         this.previous = better;
-        this.vertical.emitDirection(better);
+        this.vertical.direction.next(better);
 
         return [position[better], left];
     }

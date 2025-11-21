@@ -56,8 +56,6 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
-
-    // TODO: think of a better solution later
     private readonly drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );
@@ -69,6 +67,13 @@ export class TuiDropdownDirective
             this.ref()?.changeDetectorRef.markForCheck();
         });
 
+    protected readonly autoClose = effect(() => {
+        if (!this.content()) {
+            this.toggle(false);
+        }
+    });
+
+    public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
     public readonly component = new PolymorpheusComponent(
@@ -76,7 +81,7 @@ export class TuiDropdownDirective
         inject(INJECTOR),
     );
 
-    public ref = signal<ComponentRef<unknown> | null>(null);
+    public readonly tuiDropdown = input<PolymorpheusContent<TuiContext<() => void>>>();
     public readonly content = computed<PolymorpheusContent<TuiContext<() => void>>>(
         (content = this.tuiDropdown()) => {
             return content instanceof TemplateRef
@@ -84,14 +89,6 @@ export class TuiDropdownDirective
                 : content;
         },
     );
-
-    public readonly tuiDropdown = input<PolymorpheusContent<TuiContext<() => void>>>();
-
-    protected readonly setToggle = effect(() => {
-        if (!this.content()) {
-            this.toggle(false);
-        }
-    });
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
@@ -119,9 +116,8 @@ export class TuiDropdownDirective
             ref.destroy();
         }
 
-        this.drivers.forEach((driver) => driver?.next(show));
-
         // TODO: Remove in v5, only needed in Angular 16
         this.cdr.markForCheck();
+        this.drivers.forEach((driver) => driver?.next(show));
     }
 }

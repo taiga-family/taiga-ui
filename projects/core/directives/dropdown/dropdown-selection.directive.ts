@@ -54,11 +54,11 @@ export class TuiDropdownSelection
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly el = tuiInjectElement();
     protected readonly handler = computed((visible = this.tuiDropdownSelection()) =>
-        !tuiIsString(visible) ? visible : undefined,
+        tuiIsString(visible) ? TUI_TRUE_HANDLER : visible,
     );
 
     protected readonly stream$ = combineLatest([
-        toObservable(this.handler).pipe(filter(Boolean)),
+        toObservable(this.handler),
         inject(TUI_SELECTION_STREAM).pipe(
             map(() => this.getRange()),
             filter((range) => this.isValid(range)),
@@ -86,22 +86,18 @@ export class TuiDropdownSelection
         ? new Range()
         : ({} as unknown as Range);
 
-    public readonly position = input<'selection' | 'tag' | 'word'>('selection', {
-        alias: 'tuiDropdownSelectionPosition',
-    });
-
-    public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>(
-        TUI_TRUE_HANDLER,
-    );
-
     public readonly type = 'dropdown';
+    public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>('');
+    public readonly tuiDropdownSelectionPosition = input<'selection' | 'tag' | 'word'>(
+        'selection',
+    );
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     public getClientRect(): DOMRect {
-        switch (this.position()) {
+        switch (this.tuiDropdownSelectionPosition()) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
                 const element = tuiIsElement(commonAncestorContainer)
