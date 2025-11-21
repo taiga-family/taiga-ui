@@ -17,5 +17,6 @@ export * from './nullable-same';
 export * from './obfuscate';
 export * from './pure';
 export * from './px';
+export * from './sanitize-text';
 export * from './set-signal';
 export * from './with-styles';

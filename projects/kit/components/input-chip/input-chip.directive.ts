@@ -5,6 +5,7 @@ import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
@@ -120,7 +121,7 @@ export class TuiInputChipDirective<T>
                 ? event.dataTransfer?.getData('text/plain') || ''
                 : tuiGetClipboardDataText(event);
 
-        this.textfield.value.set(value);
+        this.textfield.value.set(tuiSanitizeText(value));
         this.onEnter();
     }
 
