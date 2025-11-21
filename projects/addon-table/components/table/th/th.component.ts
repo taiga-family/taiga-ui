@@ -1,12 +1,12 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     forwardRef,
     inject,
-    Input,
     input,
+    model,
     signal,
 } from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
@@ -20,7 +20,7 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 
 @Component({
     selector: 'th[tuiTh]',
-    imports: [AsyncPipe, NgTemplateOutlet, TuiIcon, TuiTableResized],
+    imports: [NgTemplateOutlet, TuiIcon, TuiTableResized],
     templateUrl: './th.template.html',
     styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,10 +49,9 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     public readonly maxWidth = input(Infinity);
 
-    @Input()
-    public sorter: TuiComparator<T> | null = this.head
-        ? (a, b) => tuiDefaultSort(a[this.key], b[this.key])
-        : null;
+    public sorter = model<TuiComparator<T> | null>(
+        this.head ? (a, b) => tuiDefaultSort(a[this.key], b[this.key]) : null,
+    );
 
     public readonly resizable = input(this.options.resizable);
 
@@ -69,7 +68,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected get isCurrent(): boolean {
-        return !!this.sorter && !!this.table && this.sorter === this.table.sorter;
+        return !!this.sorter && !!this.table && this.sorter() === this.table.sorter();
     }
 
     protected get icon(): string {
@@ -83,10 +82,10 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected updateSorterAndDirection(): void {
-        const sorter = this.requiredSort() ? this.sorter : null;
+        const sorter = this.requiredSort() ? this.sorter() : null;
 
         this.table?.updateSorterAndDirection(
-            this.isCurrentAndDescDirection ? sorter : this.sorter,
+            this.isCurrentAndDescDirection ? sorter : this.sorter(),
         );
     }
 
@@ -96,7 +95,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     private get isCurrentAndDescDirection(): boolean {
         return (
-            this.sorter === this.table?.sorter &&
+            this.sorter() === this.table?.sorter() &&
             this.table?.direction() === TuiSortDirection.Desc
         );
     }
