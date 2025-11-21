@@ -157,7 +157,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         this.input()?.nativeElement.focus();
 
         if (
-            !this.dropdownOpen.tuiDropdownEnabled ||
+            !this.dropdownOpen.tuiDropdownEnabled() ||
             this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
         ) {
             return;

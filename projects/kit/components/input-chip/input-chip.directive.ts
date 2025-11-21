@@ -105,7 +105,7 @@ export class TuiInputChipDirective<T>
     }
 
     protected onInput(): void {
-        this.open.set(!!this.dropdown.content);
+        this.open.set(!!this.dropdown.content());
 
         if (this.separator() && this.textfield.value().match(this.separator())) {
             this.onEnter();

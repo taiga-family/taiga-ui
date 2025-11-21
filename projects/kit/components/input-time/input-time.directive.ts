@@ -82,7 +82,7 @@ export class TuiInputTimeDirective
             this.computeMask({
                 ...this.options,
                 mode: this.timeMode(),
-                step: this.interactive() && !this.dropdown._content() ? 1 : 0,
+                step: this.interactive() && !this.dropdown.content() ? 1 : 0,
                 prefix: this.prefix(),
                 postfix: this.postfix(),
             }),

@@ -34,7 +34,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     imports: [PolymorpheusOutlet, TuiScrollbar],
     template: `
         <tui-scrollbar [style.height.%]="100">
-            <ng-container *polymorpheusOutlet="directive._content()" />
+            <ng-container *polymorpheusOutlet="directive.content()" />
         </tui-scrollbar>
     `,
     styleUrl: './drawer.style.less',
@@ -88,6 +88,6 @@ export class TuiDrawerDirective implements DoCheck {
 
     public ngDoCheck(): void {
         // TODO: Refactor to tuiDirectiveBinding
-        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen ? this.x : '');
+        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen() ? this.x : '');
     }
 }

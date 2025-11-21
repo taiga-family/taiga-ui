@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
@@ -17,16 +17,14 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private readonly vertical = inject(TuiDropdownPosition);
     private previous = this.options.direction || 'bottom';
 
-    @Input()
-    public tuiDropdownSided: boolean | string = '';
+    public readonly tuiDropdownSided = input<boolean | string>('');
 
-    @Input()
-    public tuiDropdownSidedOffset = 4;
+    public readonly tuiDropdownSidedOffset = input(4);
 
     public readonly type = 'dropdown';
 
     public getPosition(rect: DOMRect): TuiPoint {
-        if (this.tuiDropdownSided === false) {
+        if (this.tuiDropdownSided() === false) {
             return this.vertical.getPosition(rect);
         }
 
@@ -43,10 +41,10 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
             bottom: viewport.bottom - hostRect.top,
         } as const;
         const position = {
-            top: hostRect.bottom - height + this.tuiDropdownSidedOffset + 1, // 1 for border
+            top: hostRect.bottom - height + this.tuiDropdownSidedOffset() + 1, // 1 for border
             left: hostRect.left - width - offset,
             right: hostRect.right + offset,
-            bottom: hostRect.top - this.tuiDropdownSidedOffset - 1, // 1 for border
+            bottom: hostRect.top - this.tuiDropdownSidedOffset() - 1, // 1 for border
         } as const;
         const better = available.top > available.bottom ? 'top' : 'bottom';
         const maxLeft = available.left > available.right ? position.left : position.right;

@@ -18,7 +18,7 @@ import {TuiDropdownSheet} from './dropdown-sheet.directive';
     template: `
         <ng-template>
             <ng-container
-                *polymorpheusOutlet="dropdown._content() as text; context: context"
+                *polymorpheusOutlet="dropdown.content() as text; context: context"
             >
                 {{ text }}
             </ng-container>

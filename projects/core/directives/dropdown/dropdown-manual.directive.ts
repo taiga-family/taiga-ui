@@ -1,4 +1,4 @@
-import {Directive, inject, Input, type OnChanges} from '@angular/core';
+import {Directive, effect, inject, input} from '@angular/core';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 
 import {TuiDropdownDriver} from './dropdown.driver';
@@ -7,13 +7,12 @@ import {TuiDropdownDriver} from './dropdown.driver';
     selector: '[tuiDropdownManual]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
 })
-export class TuiDropdownManual implements OnChanges {
+export class TuiDropdownManual {
     private readonly driver = inject(TuiDropdownDriver);
 
-    @Input()
-    public tuiDropdownManual: boolean | '' = false;
+    public readonly tuiDropdownManual = input<boolean | ''>(false);
 
-    public ngOnChanges(): void {
-        this.driver.next(!!this.tuiDropdownManual);
-    }
+    protected readonly driverEffect = effect(() =>
+        this.driver.next(!!this.tuiDropdownManual()),
+    );
 }
