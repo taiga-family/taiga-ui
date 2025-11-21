@@ -30,6 +30,7 @@ export default class Page {
         'States',
         'Dropdown',
         'InputPassword',
+        'Custom cleaner',
         'Mask',
     ];
 
