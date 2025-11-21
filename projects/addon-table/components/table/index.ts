@@ -1,6 +1,5 @@
 export * from './caption/caption.component';
 export * from './directives/cell.directive';
-export * from './directives/direction-order.directive';
 export * from './directives/head.directive';
 export * from './directives/resized.directive';
 export * from './directives/sort-by.directive';
@@ -9,7 +8,6 @@ export * from './directives/stuck.directive';
 export * from './directives/table.directive';
 export * from './directives/thead.directive';
 export * from './pipes/table-sort.pipe';
-export * from './providers/table.provider';
 export * from './table';
 export * from './table.options';
 export * from './table-expand/table-expand.component';

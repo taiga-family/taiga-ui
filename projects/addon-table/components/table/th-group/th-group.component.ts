@@ -11,7 +11,6 @@ import {
 
 import {TuiTableHead} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTableTh} from '../th/th.component';
 
 @Component({
@@ -19,7 +18,6 @@ import {TuiTableTh} from '../th/th.component';
     imports: [NgTemplateOutlet, TuiTableTh],
     templateUrl: './th-group.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_TABLE_PROVIDER],
 })
 export class TuiTableThGroup<T extends Partial<Record<keyof T, unknown>>> {
     protected readonly th = contentChild<TuiTableTh<T>>(forwardRef(() => TuiTableTh));
@@ -30,12 +28,12 @@ export class TuiTableThGroup<T extends Partial<Record<keyof T, unknown>>> {
 
     protected readonly computedHeads = computed<
         Record<string | keyof T, TuiTableHead<T>>
-    >(() => {
-        return this.heads().reduce(
+    >(() =>
+        this.heads().reduce(
             (record, item) => ({...record, [item.tuiHead()]: item}),
             {} as Record<string | keyof T, TuiTableHead<T>>,
-        );
-    });
+        ),
+    );
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),

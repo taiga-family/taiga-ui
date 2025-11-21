@@ -1,4 +1,4 @@
-@if (sorter && table) {
+@if (sorter() && table) {
     <button
         type="button"
         class="t-sort"
@@ -6,7 +6,6 @@
         (click)="updateSorterAndDirection()"
     >
         <ng-container [ngTemplateOutlet]="content" />
-        {{ table.change$ | async }}
         <tui-icon
             class="t-icon"
             [icon]="icon"
