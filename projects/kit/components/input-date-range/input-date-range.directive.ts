@@ -10,11 +10,11 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
+import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
     TUI_INPUT_DATE_OPTIONS_NEW,

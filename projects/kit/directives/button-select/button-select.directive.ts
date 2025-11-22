@@ -7,13 +7,13 @@ import {
     tuiAsOptionContent,
     type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {
     TuiDropdownDirective,
     TuiDropdownOpen,
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+} from '@taiga-ui/core/portals/dropdown';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({

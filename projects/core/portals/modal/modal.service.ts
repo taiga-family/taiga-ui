@@ -1,7 +1,7 @@
 import {inject, Injectable, type Type} from '@angular/core';
 import {TUI_LEAVE} from '@taiga-ui/cdk/directives/animated';
 import {TuiPortal} from '@taiga-ui/cdk/portals';
-import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiModalComponent} from './modal.component';

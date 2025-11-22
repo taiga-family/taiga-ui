@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {type TuiPositionOptions} from '@taiga-ui/core/directives/alert';
+import {type TuiPositionOptions} from '@taiga-ui/core/portals/alert';
 
 export interface TuiPushOptions extends TuiPositionOptions {
     readonly buttons: readonly string[];

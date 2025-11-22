@@ -2,7 +2,7 @@ import {Directive, inject, input} from '@angular/core';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {TuiPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {TuiDialogService} from '@taiga-ui/core/components/dialog';
+import {TuiDialogService} from '@taiga-ui/core/portals/dialog';
 
 import {type TuiResponsiveDialogOptions} from './responsive-dialog.service';
 

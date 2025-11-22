@@ -1,4 +1,4 @@
-import {tuiAutoColor} from '@taiga-ui/core';
+import {tuiAutoColor} from '@taiga-ui/kit';
 
 describe('Convert string to HSL color', () => {
     it('the name in Russian is converted correctly', () => {

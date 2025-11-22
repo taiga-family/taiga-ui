@@ -11,7 +11,7 @@ import {
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiDropdownOptionsProvider} from '@taiga-ui/core/portals/dropdown';
 import {debounceTime, filter, merge, type Observable, startWith, tap} from 'rxjs';
 
 export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(

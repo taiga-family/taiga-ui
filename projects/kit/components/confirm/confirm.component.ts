@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, InjectionToken} from '@angul
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {type TuiDialogContext} from '@taiga-ui/core/components/dialog';
+import {type TuiDialogContext} from '@taiga-ui/core/portals/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
 import {
     injectContext,

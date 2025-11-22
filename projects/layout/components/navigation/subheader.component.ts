@@ -7,7 +7,7 @@ import {
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
-import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiDropdownOptionsProvider} from '@taiga-ui/core/portals/dropdown';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit/components/breadcrumbs';
 import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';

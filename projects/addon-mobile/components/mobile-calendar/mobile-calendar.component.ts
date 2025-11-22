@@ -37,9 +37,11 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TUI_CALENDAR_SHEET_OPTIONS} from '@taiga-ui/core/components/calendar';
+import {
+    TUI_CALENDAR_SHEET_OPTIONS,
+    TuiOrderWeekDaysPipe,
+} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes/order-week-days';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,

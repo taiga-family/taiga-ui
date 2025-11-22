@@ -9,11 +9,11 @@ import {
     TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
+import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiSelectOption} from './select-option/select-option.component';
 

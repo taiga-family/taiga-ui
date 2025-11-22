@@ -4,7 +4,7 @@ import {type TuiPortalContext, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiAlertDirective} from '@taiga-ui/core/directives/alert';
+import {TuiAlertDirective} from '@taiga-ui/core/portals/alert';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiPushComponent} from './push.component';

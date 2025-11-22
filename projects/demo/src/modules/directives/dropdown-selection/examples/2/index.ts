@@ -21,11 +21,10 @@ import {
     TuiDriver,
     TuiDropdown,
     tuiGetWordRange,
-    TuiInitialsPipe,
     TuiOption,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
+import {TuiAvatar, TuiInitialsPipe, TuiTextarea} from '@taiga-ui/kit';
 import {type Observable} from 'rxjs';
 
 export interface User {

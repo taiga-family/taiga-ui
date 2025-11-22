@@ -15,7 +15,7 @@ import {
     type TuiHandler,
     type TuiIdentityMatcher,
 } from '@taiga-ui/cdk/types';
-import {TuiHintOverflow} from '@taiga-ui/core/directives/hint';
+import {TuiHintOverflow} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TUI_BLOCK_OPTIONS, TuiBlock} from '@taiga-ui/kit/components/block';

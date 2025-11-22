@@ -1,6 +1,6 @@
 import {Directive, inject, Injectable, input} from '@angular/core';
 import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
-import {TuiAlertService} from '@taiga-ui/core/directives/alert';
+import {TuiAlertService} from '@taiga-ui/core/portals/alert';
 
 import {TuiNotificationComponent} from './notification.component';
 import {

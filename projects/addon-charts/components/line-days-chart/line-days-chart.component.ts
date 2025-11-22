@@ -22,7 +22,7 @@ import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber, tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
+import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';

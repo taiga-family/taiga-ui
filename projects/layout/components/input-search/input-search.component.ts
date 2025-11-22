@@ -22,7 +22,7 @@ import {
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

@@ -15,7 +15,7 @@ import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
     TuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 

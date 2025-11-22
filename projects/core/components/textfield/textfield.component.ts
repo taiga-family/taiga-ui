@@ -28,14 +28,14 @@ import {
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
+import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
     TuiDropdownDirective,
     TuiDropdownFixed,
     TuiDropdownOpen,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
-import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+} from '@taiga-ui/core/portals/dropdown';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

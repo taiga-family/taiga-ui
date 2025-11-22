@@ -12,11 +12,7 @@ import {outputFromObservable, toObservable, toSignal} from '@angular/core/rxjs-i
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TUI_HINT_COMPONENT,
-    TuiHint,
-    TuiHintDirective,
-} from '@taiga-ui/core/directives/hint';
+import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     debounceTime,

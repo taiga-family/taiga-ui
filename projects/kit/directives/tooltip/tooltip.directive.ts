@@ -23,7 +23,7 @@ import {
     TuiHintDescribe,
     TuiHintDirective,
     TuiHintHover,
-} from '@taiga-ui/core/directives/hint';
+} from '@taiga-ui/core/portals/hint';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 import {map} from 'rxjs';

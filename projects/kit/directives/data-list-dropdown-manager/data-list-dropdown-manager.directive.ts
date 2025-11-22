@@ -9,7 +9,7 @@ import {
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {
     debounceTime,
     EMPTY,

@@ -5,7 +5,7 @@ import {
 } from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {type TuiDialogOptions, TuiDialogService} from '@taiga-ui/core/components/dialog';
+import {type TuiDialogOptions, TuiDialogService} from '@taiga-ui/core/portals/dialog';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 

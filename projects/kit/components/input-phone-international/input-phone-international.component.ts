@@ -41,12 +41,12 @@ import {
     TuiTextfieldContent,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import {TuiTitle} from '@taiga-ui/core/directives/title';
-import {TuiFlagPipe} from '@taiga-ui/core/pipes';
+import {TuiTitle} from '@taiga-ui/core/components/title';
+import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TuiFlagPipe} from '@taiga-ui/kit/pipes';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiGetCallingCode, tuiMaskito} from '@taiga-ui/kit/utils';
 import {validatePhoneNumberLength} from 'libphonenumber-js';

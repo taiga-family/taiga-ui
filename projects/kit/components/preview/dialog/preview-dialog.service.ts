@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TuiModalService} from '@taiga-ui/core/components/modal';
+import {TuiModalService} from '@taiga-ui/core/portals/modal';
 
 import {TuiPreviewDialog} from './preview-dialog.component';
 

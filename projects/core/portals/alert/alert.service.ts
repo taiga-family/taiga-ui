@@ -1,6 +1,6 @@
 import {type ComponentRef, inject, Injectable} from '@angular/core';
 import {TuiPortal} from '@taiga-ui/cdk/portals';
-import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Injectable()

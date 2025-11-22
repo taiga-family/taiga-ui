@@ -11,7 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
+import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';

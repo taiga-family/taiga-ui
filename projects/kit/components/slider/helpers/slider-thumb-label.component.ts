@@ -7,7 +7,7 @@ import {
     ContentChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TuiSliderComponent} from '../slider.component';

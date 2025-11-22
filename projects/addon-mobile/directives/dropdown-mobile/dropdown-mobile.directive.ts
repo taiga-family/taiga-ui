@@ -1,7 +1,7 @@
 import {Directive, inject} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
+import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
 
