@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
@@ -18,22 +18,17 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     ],
     hostDirectives: [TuiAnimated],
     host: {
-        '[class._overlay]': 'overlay',
-        '[style.border-top-left-radius]': 'direction === "left" ? 0 : null',
-        '[style.border-top-right-radius]': 'direction === "right" ? 0 : null',
-        '[style.left]': 'direction === "left" ? 0 : null',
-        '[style.right]': 'direction === "right" ? 0 : null',
-        '[style.--tui-from]': 'from',
+        '[class._overlay]': 'overlay()',
+        '[style.border-top-left-radius]': 'direction() === "left" ? 0 : null',
+        '[style.border-top-right-radius]': 'direction() === "right" ? 0 : null',
+        '[style.left]': 'direction() === "left" ? 0 : null',
+        '[style.right]': 'direction() === "right" ? 0 : null',
+        '[style.--tui-from]':
+            'direction() === "right" ? "translateX(100%)" : "translateX(-100%)"',
     },
 })
 export class TuiDrawer {
-    @Input()
-    public direction: TuiHorizontalDirection = 'right';
+    public readonly direction = input<TuiHorizontalDirection>('right');
 
-    @Input()
-    public overlay = false;
-
-    public get from(): string {
-        return this.direction === 'right' ? 'translateX(100%)' : 'translateX(-100%)';
-    }
+    public readonly overlay = input(false);
 }

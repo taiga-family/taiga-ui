@@ -3,9 +3,8 @@ import {
     Directive,
     effect,
     inject,
-    Input,
+    input,
     isSignal,
-    signal,
     untracked,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
@@ -59,9 +58,6 @@ export class TuiComboBox<T>
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
-
-    private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
-    private readonly strict = signal(true);
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
         (x) => x !== this && 'options' in x && isSignal(x.options),
     );
@@ -125,17 +121,9 @@ export class TuiComboBox<T>
         }
     });
 
-    // TODO(v5): use signal input
-    @Input('strict')
-    public set strictSetter(x: boolean) {
-        this.strict.set(x);
-    }
+    public readonly strict = input(true);
 
-    // TODO(v5): use signal input
-    @Input('matcher')
-    public set matcherSetter(x: TuiStringMatcher<T> | null) {
-        this.matcher.set(x);
-    }
+    public readonly matcher = input<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
 
     public setValue(value: T | null): void {
         this.textfield.setValue(value);

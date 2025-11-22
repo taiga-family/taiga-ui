@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -29,41 +22,42 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider([])],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiFilter<T> extends TuiControl<readonly T[]> {
-    @Input()
-    public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    public readonly identityMatcher = input<TuiIdentityMatcher<T>>(
+        TUI_DEFAULT_IDENTITY_MATCHER,
+    );
 
-    @Input()
-    public items: readonly T[] = [];
+    public readonly items = input<readonly T[]>([]);
 
-    @Input()
-    public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size || 'l';
+    public readonly size = input<TuiSizeL | TuiSizeS>(
+        inject(TUI_BLOCK_OPTIONS).size || 'l',
+    );
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;
+    public readonly disabledItemHandler = input<TuiBooleanHandler<T>>(TUI_FALSE_HANDLER);
 
-    @Output()
-    public readonly toggledItem = new EventEmitter<T>();
+    public readonly toggledItem = output<T>();
 
-    @Input()
-    public content: PolymorpheusContent = ({$implicit}) => String($implicit);
+    public readonly content = input<PolymorpheusContent>(({$implicit}) =>
+        String($implicit),
+    );
 
-    @Input()
-    public badgeHandler: TuiHandler<T, number> = (item) => Number(item);
+    public readonly badgeHandler = input<TuiHandler<T, number>>((item) => Number(item));
 
     public onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
         this.onChange(
             value
                 ? [...this.value(), item]
-                : this.value().filter((arrItem) => !this.identityMatcher(arrItem, item)),
+                : this.value().filter(
+                      (arrItem) => !this.identityMatcher()(arrItem, item),
+                  ),
         );
     }
 
     protected isCheckboxEnabled(item: T): boolean {
-        return this.value().some((arrItem) => this.identityMatcher(arrItem, item));
+        return this.value().some((arrItem) => this.identityMatcher()(arrItem, item));
     }
 }
