@@ -146,7 +146,7 @@
 - [Textfield](https://taiga-ui.dev/components/textfield) — Textfield is a low level component that other more complex controls are based upon.
 - [Thumbnail Card](https://taiga-ui.dev/components/thumbnail-card) — Customizable credit card thumbnail
 - [Tiles](https://taiga-ui.dev/components/tiles) — Tiles is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
-- [Title](https://taiga-ui.dev/components/title)
+- [Title](https://taiga-ui.dev/components/title) — A directive for title with optional subtitle
 - [Toast](https://taiga-ui.dev/components/toast)
 - [Tooltip](https://taiga-ui.dev/components/tooltip) — Component to show icons with a hint by hover
 - [Tree](https://taiga-ui.dev/components/tree) — Component to display tree-like data structure

@@ -1479,8 +1479,7 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe} from '@taiga-ui/core';
-import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
+import {TuiAutoColorPipe, TuiAvatar, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiFade],
@@ -1534,13 +1533,13 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {
     TuiAutoColorPipe,
+    TuiAvatar,
+    TuiAvatarStack,
     TuiInitialsPipe,
-    type TuiSizeXS,
-    type TuiSizeXXL,
-} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
+} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiAvatarStack, TuiInitialsPipe],
@@ -3831,8 +3830,13 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
+import {TuiButton} from '@taiga-ui/core';
+import {
+    TuiAutoColorPipe,
+    TuiAvatar,
+    TuiAvatarStack,
+    TuiInitialsPipe,
+} from '@taiga-ui/kit';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
@@ -7313,19 +7317,12 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiAutoColorPipe, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        TuiAppearance,
-        TuiAutoColorPipe,
-        TuiAvatar,
-        TuiAvatarStack,
-        TuiCardMedium,
-        TuiTitle,
-    ],
+    imports: [TuiAutoColorPipe, TuiAvatar, TuiAvatarStack, TuiCardMedium, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -9012,8 +9009,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe} from '@taiga-ui/core';
-import {TuiChip} from '@taiga-ui/kit';
+import {TuiAutoColorPipe, TuiChip} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAutoColorPipe, TuiChip],
@@ -20446,8 +20442,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiValueTransformer} from '@taiga-ui/cdk';
-import {TuiFlagPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhone, tuiInputPhoneOptionsProvider} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiFlagPipe, TuiInputPhone, tuiInputPhoneOptionsProvider} from '@taiga-ui/kit';
 
 const VALUE_TRANSFORMER: TuiValueTransformer<string, string> = {
     fromControlValue: (value) => `+${value}`,
@@ -33302,8 +33298,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
-import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiAutoColorPipe,
+    TuiAvatar,
+    TuiFloatingContainer,
+    TuiInitialsPipe,
+} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -36361,20 +36362,20 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
 import {
-    TuiAutoColorPipe,
     TuiButton,
     TuiCell,
     TuiDropdown,
     TuiIcon,
-    TuiInitialsPipe,
     TuiLink,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
+    TuiAutoColorPipe,
     TuiAvatar,
     TuiBadge,
     TuiCheckbox,
     TuiChip,
+    TuiInitialsPipe,
     TuiItemsWithMore,
     TuiProgressBar,
     TuiRadioList,
@@ -39565,6 +39566,157 @@ export default class Page {
 ```
 
 ---
+# components/Title
+- **Package**: `CORE`
+- **Type**: components
+A directive for title with optional subtitle
+
+### How to Use (Import)
+
+```ts
+import {TuiTitle} from '@taiga-ui/core';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiTitle,
+  ],
+  // ...
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<h2 tuiTitle="s">
+  <div tuiSubtitle>Caption</div>
+  I am a title
+  <div tuiSubtitle>I'm a subtitle</div>
+</h2>
+```
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+<h2 tuiTitle>I am a title</h2>
+<h2 tuiTitle> I am a title <div tuiSubtitle>I'm a subtitle</div>
+</h2>
+<h2 tuiTitle>
+<div tuiSubtitle>Caption</div> I am a title </h2>
+<h2 tuiTitle>
+<div tuiSubtitle>Caption</div> I am a title <div tuiSubtitle>I'm a subtitle</div>
+</h2>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Sizes
+
+**Template:**
+```html
+<h2 tuiTitle="s">
+<div tuiSubtitle>Caption</div> I am a title <div tuiSubtitle>I'm a subtitle</div>
+</h2>
+<h2 tuiTitle="m">
+<div tuiSubtitle>Caption</div> I am a title </h2>
+<h2 tuiTitle="l"> I am a title <div tuiSubtitle>I'm a subtitle</div>
+</h2>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Custom
+
+**Template:**
+```html
+<h2 tuiTitle>
+<b>I am a title</b>
+<div tuiSubtitle [style.color]="'var(--tui-text-secondary)'" > I'm a subtitle </div>
+</h2>
+<a href="https://github.com/taiga-family/taiga-ui" tuiLink tuiTitle [style.font-size.rem]="1" [style.line-height.rem]="1.25" > Taiga UI — GitHub <div tuiSubtitle [style.font]="'var(--tui-font-text-s)'" > Drop us a star! </div>
+</a>
+<label class="flex">
+<div size="s" tuiAvatar="@tui.user" >
+<img alt="" src="assets/images/avatar.jpg" />
+</div>
+<div tuiTitle="s">
+<strong>Alex Inkin</strong>
+<div tuiSubtitle>Available</div>
+</div>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiAvatar, TuiLink, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = ['Basic', 'Sizes', 'Custom'];
+}
+```
+
+---
 # components/Toast
 - **Package**: `KIT`
 - **Type**: components
@@ -39910,8 +40062,8 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe, TuiHint, TuiLink} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiHint, TuiLink} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     imports: [RouterLink, TuiAutoColorPipe, TuiAvatar, TuiHint, TuiLink],
@@ -43049,14 +43201,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
-import {
-    TuiButton,
-    TuiCell,
-    TuiDropdown,
-    TuiInitialsPipe,
-    TuiTextfield,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiDropdown, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiAvatar,
@@ -43065,6 +43210,7 @@ import {
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiInitialsPipe,
     TuiInputChip,
     TuiInputNumber,
     TuiMultiSelect,
@@ -44210,11 +44356,10 @@ import {
     TuiDriver,
     TuiDropdown,
     tuiGetWordRange,
-    TuiInitialsPipe,
     TuiOption,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
+import {TuiAvatar, TuiInitialsPipe, TuiTextarea} from '@taiga-ui/kit';
 import {type Observable} from 'rxjs';
 
 export interface User {
@@ -45233,8 +45378,8 @@ export class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe, TuiHint} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiHint} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiHint],
@@ -45258,8 +45403,8 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe, TuiHint} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiHint} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiHint],
@@ -47604,157 +47749,6 @@ export default class Page {
 ```
 
 ---
-# directives/Title
-- **Package**: `CORE`
-- **Type**: directives
-A directive for title with optional subtitle
-
-### How to Use (Import)
-
-```ts
-import {TuiTitle} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTitle,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<h2 tuiTitle="s">
-  <div tuiSubtitle>Caption</div>
-  I am a title
-  <div tuiSubtitle>I'm a subtitle</div>
-</h2>
-```
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-<h2 tuiTitle>I am a title</h2>
-<h2 tuiTitle> I am a title <div tuiSubtitle>I'm a subtitle</div>
-</h2>
-<h2 tuiTitle>
-<div tuiSubtitle>Caption</div> I am a title </h2>
-<h2 tuiTitle>
-<div tuiSubtitle>Caption</div> I am a title <div tuiSubtitle>I'm a subtitle</div>
-</h2>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTitle} from '@taiga-ui/core';
-
-@Component({
-    imports: [TuiTitle],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-#### Sizes
-
-**Template:**
-```html
-<h2 tuiTitle="s">
-<div tuiSubtitle>Caption</div> I am a title <div tuiSubtitle>I'm a subtitle</div>
-</h2>
-<h2 tuiTitle="m">
-<div tuiSubtitle>Caption</div> I am a title </h2>
-<h2 tuiTitle="l"> I am a title <div tuiSubtitle>I'm a subtitle</div>
-</h2>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTitle} from '@taiga-ui/core';
-
-@Component({
-    imports: [TuiTitle],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-#### Custom
-
-**Template:**
-```html
-<h2 tuiTitle>
-<b>I am a title</b>
-<div tuiSubtitle [style.color]="'var(--tui-text-secondary)'" > I'm a subtitle </div>
-</h2>
-<a href="https://github.com/taiga-family/taiga-ui" tuiLink tuiTitle [style.font-size.rem]="1" [style.line-height.rem]="1.25" > Taiga UI — GitHub <div tuiSubtitle [style.font]="'var(--tui-font-text-s)'" > Drop us a star! </div>
-</a>
-<label class="flex">
-<div size="s" tuiAvatar="@tui.user" >
-<img alt="" src="assets/images/avatar.jpg" />
-</div>
-<div tuiTitle="s">
-<strong>Alex Inkin</strong>
-<div tuiSubtitle>Available</div>
-</div>
-</label>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLink, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
-
-@Component({
-    imports: [TuiAvatar, TuiLink, TuiTitle],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected readonly examples = ['Basic', 'Sizes', 'Custom'];
-}
-```
-
----
 # directives/Touchable
 - **Package**: `ADDON-MOBILE`
 - **Type**: directives
@@ -49747,7 +49741,7 @@ export default class Page {
 
 ---
 # pipes/Flag
-- **Package**: `CORE`
+- **Package**: `KIT`
 - **Type**: pipes
 Pipe for getting source path to image with flag
 
@@ -49803,9 +49797,8 @@ export class Example {}
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFlagPipe} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_COUNTRIES} from '@taiga-ui/kit';
+import {TUI_COUNTRIES, TuiFlagPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiFlagPipe],
@@ -49826,8 +49819,8 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiFlagPipe} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {TuiFlagPipe} from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';
 
 @Component({
