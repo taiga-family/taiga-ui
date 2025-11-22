@@ -46,16 +46,16 @@
 .t-scroll {
     .fullsize(absolute, inset);
 
-    top: 0.25rem;
-    bottom: 0.25rem;
+    inset-block-start: 0.25rem;
+    inset-block-end: 0.25rem;
     min-block-size: 0;
 
     ::ng-deep tui-textfield._with-label[data-size='m'] & {
-        top: @top-m-label;
+        inset-block-start: @top-m-label;
     }
 
     ::ng-deep tui-textfield._with-label[data-size='l'] & {
-        top: @top-l-label;
+        inset-block-start: @top-l-label;
     }
 }
 

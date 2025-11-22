@@ -3,10 +3,10 @@
 // TODO: replace with `tui-textfield:has([tuiInputDateTime]) input[type='datetime-local']` (when all browsers supports :has())
 tui-textfield input[tuiInputDateTime] ~ .t-content input[type='datetime-local'] {
     position: absolute;
-    top: 0;
-    left: auto;
-    right: 0;
-    bottom: 0;
+    inset-block-start: 0;
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    inset-block-end: 0;
     inline-size: 2.5rem;
     padding: 0;
     opacity: 0;

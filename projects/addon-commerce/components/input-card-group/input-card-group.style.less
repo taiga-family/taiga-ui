@@ -148,10 +148,10 @@
         }
 
         .t-collapsed-wrapper {
-            left: var(--t-collapsed-offset);
+            inset-inline-start: var(--t-collapsed-offset);
 
             :host-context([dir='rtl']) & {
-                left: unset;
+                inset-inline-start: unset;
             }
         }
     }
@@ -159,8 +159,8 @@
 
 .t-collapsed-wrapper {
     position: absolute;
-    top: 0;
     display: block;
+    inset-block-start: 0;
     inline-size: 100%;
     block-size: 100%;
     overflow: hidden;
@@ -170,15 +170,15 @@
     .transition(~'transform, clip-path');
 
     position: absolute;
-    bottom: 0;
-    right: 100%;
     display: block;
+    inset-block-end: 0;
+    inset-inline-end: 100%;
     clip-path: inset(0);
     transform: translate3d(calc(100% * var(--tui-inline)), 0, 0);
 
     :host-context([dir='rtl']) & {
-        right: unset;
-        left: 100%;
+        inset-inline-end: unset;
+        inset-inline-start: 100%;
         transform: translate3d(calc(100% * var(--tui-inline)), 0, 0) !important;
     }
 }
@@ -233,12 +233,12 @@
             // hide: -webkit-strong-password-auto-fill-button
             // because safari forcing set display as block
             position: absolute;
-            left: -60rem;
-            top: -60rem;
             z-index: -999;
 
             // hide: -webkit-contacts-auto-fill-button
             display: none !important;
+            inset-inline-start: -60rem;
+            inset-block-start: -60rem;
             background: transparent !important;
             pointer-events: none !important;
         }
@@ -255,18 +255,13 @@
 
 .t-icons {
     position: absolute;
-    right: 1rem;
     z-index: 1;
     display: flex;
+    inset-inline-end: 1rem;
     align-items: center;
     block-size: 100%;
     gap: 0.25rem;
     pointer-events: none;
-
-    @supports (inset-inline-end: 0) {
-        right: unset;
-        inset-inline-end: 1rem;
-    }
 }
 
 .t-icon-outlet {
