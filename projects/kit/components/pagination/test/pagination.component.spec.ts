@@ -197,8 +197,8 @@ describe('TuiPaginationComponent', () => {
         it('if the first item is selected, the left arrow is disabled, the right arrow is enabled', () => {
             setParams({index: 0});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(true);
             expect(rightArrowDisabledState).toBe(false);
@@ -207,8 +207,8 @@ describe('TuiPaginationComponent', () => {
         it('if the second item is selected, the left arrow is on, as well as the right', () => {
             setParams({index: 1});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(false);
             expect(rightArrowDisabledState).toBe(false);
@@ -217,8 +217,8 @@ describe('TuiPaginationComponent', () => {
         it('if the last item is selected, the right arrow is disabled, the left arrow is enabled', () => {
             setParams({index: 49});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(false);
             expect(rightArrowDisabledState).toBe(true);
@@ -227,8 +227,8 @@ describe('TuiPaginationComponent', () => {
         it('if the penultimate item is selected, the right arrow is on, as well as the left', () => {
             setParams({index: 48});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(false);
             expect(rightArrowDisabledState).toBe(false);
