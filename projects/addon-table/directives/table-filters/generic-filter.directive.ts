@@ -9,8 +9,7 @@ import {AbstractTuiTableFilter} from './abstract-table-filter';
     providers: [tuiProvide(AbstractTuiTableFilter, TuiGenericFilter)],
 })
 export class TuiGenericFilter<T, G> extends AbstractTuiTableFilter<T, G> {
-    public readonly tuiGenericFilter =
-        input<(item: T, value: G) => boolean>(TUI_TRUE_HANDLER);
-
-    public filter: (item: T, value: G) => boolean = this.tuiGenericFilter();
+    public readonly filter = input<(item: T, value: G) => boolean>(TUI_TRUE_HANDLER, {
+        alias: 'tuiGenericFilter',
+    });
 }
