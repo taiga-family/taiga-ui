@@ -34,6 +34,8 @@ class TuiButtonStyles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         '[attr.data-size]': 'size',
+        // https://bugs.webkit.org/show_bug.cgi?id=303022
+        '(pointerdown)': '$event.currentTarget?.focus()',
     },
 })
 export class TuiButton {
