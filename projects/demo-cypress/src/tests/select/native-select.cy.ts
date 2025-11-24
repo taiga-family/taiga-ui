@@ -3,6 +3,7 @@ import {
     Component,
     EventEmitter,
     input,
+    OnInit,
     Output,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -16,6 +17,13 @@ interface Item {
     name: string;
 }
 
+const ITEMS = [
+    {name: 'First Item', id: 1},
+    {name: '2nd Item', id: 2},
+    {name: 'DisabledItem', id: 3},
+    {name: '4th', id: 4},
+] as const satisfies Item[];
+
 @Component({
     imports: [ReactiveFormsModule, TuiChevron, TuiRoot, TuiSelect, TuiTextfield],
     template: `
@@ -27,7 +35,7 @@ interface Item {
             >
                 <select
                     tuiSelect
-                    [formControl]="control"
+                    [formControl]="control()"
                     [items]="items"
                     [placeholder]="placeholder()"
                 ></select>
@@ -36,16 +44,11 @@ interface Item {
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Sandbox {
-    protected readonly control = new FormControl<Item | null>(null);
-    protected items: readonly Item[] = [
-        {name: 'First Item', id: 1},
-        {name: '2nd Item', id: 2},
-        {name: 'DisabledItem', id: 3},
-        {name: '4th', id: 4},
-    ];
+export class Sandbox implements OnInit {
+    protected items: readonly Item[] = ITEMS;
 
     public readonly placeholder = input('');
+    public readonly control = input(new FormControl<Item | null>(null));
 
     /**
      * TODO: use `import {output} from '@angular/core'`
@@ -55,8 +58,8 @@ export class Sandbox {
     @Output()
     public readonly valueChanges = new EventEmitter<Item | null>();
 
-    constructor() {
-        this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
+    public ngOnInit(): void {
+        this.control().valueChanges.subscribe((x) => this.valueChanges.emit(x));
     }
 
     protected readonly stringify: TuiStringHandler<Item> = (item) => item.name;
@@ -106,5 +109,16 @@ describe('NativeSelect', () => {
         it('[disabledItemHandler] works', () => {
             cy.get('select').find('option[value="DisabledItem"]').should('be.disabled');
         });
+    });
+
+    it('with initial control value', () => {
+        cy.mount(Sandbox, {
+            componentProperties: {
+                control: new FormControl<Item | null>(ITEMS[1]),
+            },
+        });
+
+        cy.get('select').should('have.value', ITEMS[1].name);
+        cy.compareSnapshot('initial-control-value');
     });
 });
