@@ -9,9 +9,10 @@ import {TuiAppBarComponent} from './app-bar.component';
     selector: 'tui-app-bar[tuiAppBarSize]',
 })
 export class TuiAppBarSizeDirective {
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly size = tuiDirectiveBinding(
         TuiAppBarComponent,
         'size',
-        computed(() => (inject(TUI_BREAKPOINT)() === 'mobile' ? 'm' : 'l')),
+        computed(() => (this.breakpoint() === 'mobile' ? 'm' : 'l')),
     );
 }
