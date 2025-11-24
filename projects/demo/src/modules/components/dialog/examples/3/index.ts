@@ -1,14 +1,29 @@
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiButton, type TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDataList,
+    type TuiDialogContext,
+    TuiDialogService,
+    TuiDropdown,
+} from '@taiga-ui/core';
+import {TuiChevron} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton],
+    imports: [
+        AsyncPipe,
+        TuiAmountPipe,
+        TuiButton,
+        TuiChevron,
+        TuiDataList,
+        NgForOf,
+        TuiDropdown,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -22,7 +37,7 @@ export default class Example {
         this.dialogs.open(content).subscribe();
     }
 
-    protected withdraw(): void {
-        this.money -= 100;
+    protected withdraw(sum: number): void {
+        this.money -= sum;
     }
 }

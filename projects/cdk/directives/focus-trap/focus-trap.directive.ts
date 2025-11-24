@@ -14,7 +14,7 @@ import {tuiGetClosestFocusable, tuiGetNativeFocused} from '@taiga-ui/cdk/utils/f
         tabIndex: '0',
         '(window:focusin.zoneless)': 'initialized && onFocusIn($event.target)',
         // https://bugs.webkit.org/show_bug.cgi?id=303022
-        '(pointerdown)': '$event.target?.closest("button,a")?.focus()',
+        '(pointerdown)': '$event.currentTarget?.removeAttribute("tabindex")',
     },
 })
 export class TuiFocusTrap implements OnDestroy {
