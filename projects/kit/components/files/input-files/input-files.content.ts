@@ -4,12 +4,12 @@ import {toObservable} from '@angular/core/rxjs-interop';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiLink} from '@taiga-ui/core/components/link';
+import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {combineLatest, map, type Observable, of} from 'rxjs';
 
 import {TuiInputFiles} from './input-files.component';
-import {TUI_BREAKPOINT} from '@taiga-ui/core';
 
 @Component({
     imports: [AsyncPipe, TuiLink],
