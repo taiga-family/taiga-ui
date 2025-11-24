@@ -8,7 +8,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
@@ -21,7 +21,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         TuiDocTextfield,
         TuiInputNumber,
         TuiNumberFormat,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

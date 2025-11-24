@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiInput, TuiRoot} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiRoot, TuiTextfield],
+    imports: [FormsModule, TuiInput, TuiRoot],
     template: `
         <tui-root>
             <tui-textfield
@@ -12,7 +12,7 @@ import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
                 [filler]="filler()"
             >
                 <input
-                    tuiTextfield
+                    tuiInput
                     [(ngModel)]="initialValue"
                 />
             </tui-textfield>
@@ -43,7 +43,7 @@ describe('Textfield', () => {
                         },
                     });
 
-                    cy.get('input[tuiTextfield]').focus();
+                    cy.get('tui-textfield input').focus();
                     cy.get('tui-textfield').compareSnapshot(
                         `[filler]-initial-value_${initialValue.replaceAll(':', '-')}`,
                     );
@@ -59,12 +59,12 @@ describe('Textfield', () => {
                     },
                 });
 
-                cy.get('input[tuiTextfield]').focus();
+                cy.get('tui-textfield input').focus();
             });
 
             ['2', '23', '23:', '23:5', '23:59'].forEach((value) => {
                 it(value, () => {
-                    cy.get('input[tuiTextfield]').type(value);
+                    cy.get('tui-textfield input').type(value);
 
                     cy.get('tui-textfield').compareSnapshot(
                         `[filler]-user-types_${value.replaceAll(':', '-')}`,
@@ -89,13 +89,13 @@ describe('Textfield', () => {
         });
 
         it('hides content and show value on focus', () => {
-            cy.get('input[tuiTextfield]').focus();
+            cy.get('tui-textfield input').focus();
 
             cy.get('tui-textfield').compareSnapshot('[content]-focused');
         });
 
         it('shows content again after blur', () => {
-            cy.get('input[tuiTextfield]')
+            cy.get('tui-textfield input')
                 .focus()
                 .wait(300) // to ensure that all possible operations are finished
                 .blur();

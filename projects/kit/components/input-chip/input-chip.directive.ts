@@ -5,11 +5,11 @@ import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
     TuiTextfieldMultiComponent,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {
@@ -37,7 +37,7 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
             useFactory: () => inject(TuiAppearance, {skipSelf: true}),
         },
     ],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithInput],
     host: {
         enterkeyhint: 'enter',
         '[attr.tuiAppearance]': 'null',

@@ -14,7 +14,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
                 <input
                     name="name"
                     tuiAutoFocus
-                    tuiTextfield
+                    tuiInput
                     [(ngModel)]="value"
                 />
             </tui-textfield>

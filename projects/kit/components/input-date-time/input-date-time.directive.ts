@@ -26,10 +26,10 @@ import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {type TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiItemsHandlersValidator} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
@@ -56,7 +56,7 @@ const MAX_TIME = TuiTime.fromAbsoluteMilliseconds(MILLISECONDS_IN_DAY - 1);
         MaskitoDirective,
         TuiDropdownAuto,
         TuiItemsHandlersValidator,
-        TuiWithTextfield,
+        TuiWithInput,
     ],
 })
 export class TuiInputDateTimeDirective
@@ -131,7 +131,7 @@ export class TuiInputDateTimeDirective
 
     public setValue(value: readonly [TuiDay, TuiTime | null] | null): void {
         this.onChange(value);
-        this.textfield.value.set(this.stringify(value));
+        this.input.value.set(this.stringify(value));
     }
 
     public override setDate(newDate: TuiDay): void {
@@ -151,7 +151,7 @@ export class TuiInputDateTimeDirective
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.textfield.value.set(this.stringify(this.value())));
+            untracked(() => this.input.value.set(this.stringify(this.value())));
         }
     }
 
@@ -162,7 +162,7 @@ export class TuiInputDateTimeDirective
     }
 
     protected override onValueChange(value: string): void {
-        this.textfield.value.set(value);
+        this.input.value.set(value);
         this.control?.control?.updateValueAndValidity({emitEvent: false});
 
         const [date = '', time = ''] = value.split(this.options.dateTimeSeparator);

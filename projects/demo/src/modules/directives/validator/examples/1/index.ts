@@ -9,7 +9,7 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidator} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInput} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiInputPhone, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
@@ -18,9 +18,9 @@ import {TuiChevron, TuiDataListWrapper, TuiInputPhone, TuiSelect} from '@taiga-u
         ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,
+        TuiInput,
         TuiInputPhone,
         TuiSelect,
-        TuiTextfield,
         TuiValidator,
     ],
     templateUrl: './index.html',

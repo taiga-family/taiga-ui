@@ -4,13 +4,13 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_VALIDATION_ERRORS, TuiError, TuiTextfield} from '@taiga-ui/core';
+import {TUI_VALIDATION_ERRORS, TuiError, TuiInput} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInputNumber, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInputNumber, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

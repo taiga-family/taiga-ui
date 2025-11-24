@@ -15,7 +15,8 @@ import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {TuiIconPipe} from '@taiga-ui/core/components/icon';
-import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs';
 
@@ -35,7 +36,7 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
     styleUrl: './input-card.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [MaskitoDirective, TuiWithTextfield],
+    hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
         inputmode: 'numeric',
         placeholder: '0000 0000 0000 0000',

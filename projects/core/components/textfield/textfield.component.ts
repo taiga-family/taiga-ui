@@ -40,7 +40,6 @@ import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/to
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-accessor';
 
@@ -114,10 +113,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
     public readonly input: Signal<ElementRef<HTMLInputElement> | undefined> =
-        contentChild(
-            forwardRef(() => TuiTextfieldDirective),
-            {read: ElementRef},
-        );
+        contentChild(TUI_TEXTFIELD_ACCESSOR, {read: ElementRef});
 
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');

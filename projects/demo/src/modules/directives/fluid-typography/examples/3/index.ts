@@ -2,7 +2,7 @@ import {Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInput} from '@taiga-ui/core';
 import {
     TUI_FLUID_TYPOGRAPHY_OPTIONS,
     TuiFluidTypography,
@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiFluidTypography, TuiInputRange, TuiTextfield],
+    imports: [FormsModule, TuiFluidTypography, TuiInput, TuiInputRange],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

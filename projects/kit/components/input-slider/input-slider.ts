@@ -1,3 +1,4 @@
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TuiSliderComponent,
     TuiSliderKeySteps,
@@ -11,4 +12,5 @@ export const TuiInputSlider = [
     TuiSliderKeyStepsBase,
     TuiSliderKeySteps,
     TuiInputSliderDirective,
+    TuiTextfield,
 ] as const;

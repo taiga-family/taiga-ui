@@ -1,12 +1,12 @@
 import {computed, Directive, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CVC} from '@taiga-ui/addon-commerce/constants';
-import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Directive({
     selector: 'input[tuiInputCVC]',
-    hostDirectives: [MaskitoDirective, TuiWithTextfield],
+    hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
         inputmode: 'numeric',
         autocomplete: 'cc-csc',

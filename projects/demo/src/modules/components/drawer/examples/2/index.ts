@@ -2,13 +2,7 @@ import {Component, inject, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiDialogService,
-    TuiPopup,
-    TuiTextfield,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService, TuiInput, TuiPopup, TuiTitle} from '@taiga-ui/core';
 import {TUI_CONFIRM, TuiDrawer} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 import {filter} from 'rxjs';
@@ -19,8 +13,8 @@ import {filter} from 'rxjs';
         TuiButton,
         TuiDrawer,
         TuiHeader,
+        TuiInput,
         TuiPopup,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

@@ -8,8 +8,8 @@ import {
     TuiError,
     TuiGroup,
     TuiIcon,
+    TuiInput,
     TuiLabel,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
@@ -63,6 +63,7 @@ class Account {
         TuiGroup,
         TuiHeader,
         TuiIcon,
+        TuiInput,
         TuiInputDate,
         TuiInputNumber,
         TuiInputPhone,
@@ -71,7 +72,6 @@ class Account {
         TuiPassword,
         TuiRadio,
         TuiSelect,
-        TuiTextfield,
         TuiTitle,
         TuiTooltip,
     ],

@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    HostAttributeToken,
     inject,
     Input,
     signal,
@@ -17,7 +18,8 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
@@ -40,7 +42,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
         tuiFallbackValueProvider(''),
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithTextfield],
+    hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
         ngSkipHydration: 'true',
         spellcheck: 'false',
@@ -53,7 +55,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
 export class TuiInputColor extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly list = this.el.getAttribute('list');
+    protected readonly list = inject(new HostAttributeToken('list'));
     protected readonly format = signal(this.options.format);
     protected readonly align = signal<TuiHorizontalDirection>(this.options.align);
     protected readonly left = inject(TuiIcons).iconStart() || '';

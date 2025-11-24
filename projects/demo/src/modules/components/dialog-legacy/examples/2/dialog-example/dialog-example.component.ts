@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiSlider} from '@taiga-ui/kit';
 import {type TuiDialogContext, TuiDialogService} from '@taiga-ui/legacy';
 import {injectContext} from '@taiga-ui/polymorpheus';
@@ -16,9 +16,9 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         TuiButton,
         TuiChevron,
         TuiDataListWrapper,
+        TuiInput,
         TuiSelect,
         TuiSlider,
-        TuiTextfield,
     ],
     templateUrl: './dialog-example.template.html',
     styleUrl: './dialog-example.style.less',

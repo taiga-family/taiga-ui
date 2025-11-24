@@ -9,7 +9,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TUI_FIRST_DAY, TUI_IS_MOBILE, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
 @Component({
@@ -22,7 +22,6 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
         TuiDocTextfield,
         TuiDropdown,
         TuiInputDateTime,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

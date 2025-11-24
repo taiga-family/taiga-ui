@@ -3,6 +3,12 @@ import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {
+    TUI_TEXTFIELD_OPTIONS,
+    tuiAsTextfieldAccessor,
+    type TuiTextfieldAccessor,
+    TuiTextfieldComponent,
+} from '@taiga-ui/core/components/textfield';
+import {
     TuiAppearance,
     tuiAppearance,
     tuiAppearanceFocus,
@@ -15,16 +21,11 @@ import {
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
-import {TuiTextfieldComponent} from './textfield.component';
-import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
-import {tuiAsTextfieldAccessor, type TuiTextfieldAccessor} from './textfield-accessor';
-
 @Directive({
-    selector: 'input[tuiTextfield]',
-    providers: [tuiAsTextfieldAccessor(TuiTextfieldDirective)],
+    selector: 'input[tuiInput]',
+    providers: [tuiAsTextfieldAccessor(TuiInputDirective)],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
-        tuiTextfield: '',
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly()',
         '[class._empty]': 'value() === ""',
@@ -33,7 +34,7 @@ import {tuiAsTextfieldAccessor, type TuiTextfieldAccessor} from './textfield-acc
         '(focusout)': '0',
     },
 })
-export class TuiTextfieldDirective<T> implements TuiTextfieldAccessor<T> {
+export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -90,9 +91,9 @@ export class TuiTextfieldDirective<T> implements TuiTextfieldAccessor<T> {
 @Directive({
     hostDirectives: [
         {
-            directive: TuiTextfieldDirective,
+            directive: TuiInputDirective,
             inputs: ['invalid', 'focused', 'readOnly', 'state'],
         },
     ],
 })
-export class TuiWithTextfield {}
+export class TuiWithInput {}

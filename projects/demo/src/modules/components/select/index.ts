@@ -9,7 +9,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -30,7 +30,6 @@ interface Country {
         TuiDocTextfield,
         TuiDropdown,
         TuiSelect,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

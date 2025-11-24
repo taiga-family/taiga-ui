@@ -14,8 +14,8 @@ import {TUI_DOC_ICONS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/toke
 import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiInput} from '@taiga-ui/core/components/input';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
-import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
@@ -35,11 +35,11 @@ const SERIALIZED_SUFFIX = '$';
         TuiChevron,
         TuiDataListWrapper,
         TuiIcon,
+        TuiInput,
         TuiInputNumber,
         TuiInspectPipe,
         TuiSelect,
         TuiSwitch,
-        TuiTextfield,
         TuiTypeReferencePipe,
     ],
     templateUrl: './api-item.template.html',

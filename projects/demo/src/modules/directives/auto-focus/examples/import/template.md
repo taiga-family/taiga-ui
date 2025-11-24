@@ -9,7 +9,7 @@
 <tui-textfield>
   <input
     tuiAutoFocus
-    tuiTextfield
+    tuiInput
   />
 </tui-textfield>
 ```

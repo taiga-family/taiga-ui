@@ -3,12 +3,8 @@ import {MaskitoDirective} from '@maskito/angular';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
-import {
-    tuiInjectAuxiliary,
-    TuiTextfieldDirective,
-    tuiTextfieldIcon,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
+import {tuiInjectAuxiliary, tuiTextfieldIcon} from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
@@ -24,7 +20,7 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
         tuiAsControl(TuiInputYearDirective),
         tuiValueTransformerFrom(TUI_INPUT_YEAR_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, MaskitoDirective, TuiDropdownAuto],
+    hostDirectives: [TuiWithInput, MaskitoDirective, TuiDropdownAuto],
     host: {
         maxlength: '4',
         inputmode: 'numeric',
@@ -35,7 +31,7 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
 })
 export class TuiInputYearDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_YEAR_OPTIONS);
-    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly input = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly initialItem = computed(
         () => this.value() ?? this.calendar()?.initialItem() ?? null,
@@ -54,7 +50,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
      * something wrong with change detection on host binding
      */
     protected readonly valueEffect = effect(() =>
-        this.textfield.value.set(this.value()?.toString() ?? ''),
+        this.input.value.set(this.value()?.toString() ?? ''),
     );
 
     protected readonly mask = tuiMaskito(

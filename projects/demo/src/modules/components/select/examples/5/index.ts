@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
 
 interface Python {
@@ -13,14 +13,7 @@ interface Python {
 }
 
 @Component({
-    imports: [
-        JsonPipe,
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiDataList,
-        TuiSelect,
-        TuiTextfield,
-    ],
+    imports: [JsonPipe, ReactiveFormsModule, TuiChevron, TuiDataList, TuiSelect],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -2,7 +2,7 @@
 <tui-textfield>
   <label tuiLabel>Email</label>
   <input
-    tuiTextfield
+    tuiInput
     [(ngModel)]="value"
   />
   <tui-data-list-wrapper

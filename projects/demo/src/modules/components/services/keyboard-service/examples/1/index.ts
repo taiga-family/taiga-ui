@@ -3,10 +3,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiTextfield],
+    imports: [FormsModule, TuiButton, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

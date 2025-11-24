@@ -7,7 +7,6 @@ import {
     type TuiBooleanHandler,
     type TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 interface Character {
@@ -16,13 +15,7 @@ interface Character {
 }
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiDataListWrapper,
-        TuiSelect,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiChevron, TuiDataListWrapper, TuiSelect],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

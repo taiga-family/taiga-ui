@@ -35,11 +35,10 @@ import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/d
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
+import {TuiInput, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     TUI_TEXTFIELD_OPTIONS,
-    TuiTextfield,
     TuiTextfieldContent,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
@@ -68,7 +67,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiChevron,
         TuiDataList,
         TuiFlagPipe,
-        TuiTextfield,
+        TuiInput,
         TuiTextfieldContent,
         TuiTitle,
     ],
@@ -81,7 +80,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithTextfield],
+    hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
         type: 'tel',
         ngSkipHydration: 'true',

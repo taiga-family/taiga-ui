@@ -3,20 +3,13 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiError, TuiInput} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiButton,
-        TuiCheckbox,
-        TuiError,
-        TuiForm,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiButton, TuiCheckbox, TuiError, TuiForm, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

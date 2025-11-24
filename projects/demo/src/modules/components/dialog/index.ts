@@ -8,14 +8,14 @@ import {
     TuiButton,
     type TuiDialogContext,
     TuiDialogService,
+    TuiInput,
     TuiNotificationService,
-    TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
-    imports: [TuiAutoFocus, TuiButton, TuiDemo, TuiForm, TuiTextfield],
+    imports: [TuiAutoFocus, TuiButton, TuiDemo, TuiForm, TuiInput],
     templateUrl: './index.html',
     changeDetection,
 })

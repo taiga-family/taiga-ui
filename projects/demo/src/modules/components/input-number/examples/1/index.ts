@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiError, tuiValidationErrorsProvider} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputNumber, TuiTextfield],
+    imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputNumber],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -10,7 +10,7 @@ import {
     maskitoNumberOptionsGenerator,
     maskitoRemoveOnBlurPlugin,
 } from '@maskito/kit';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
 
 const postfix = ' rad';
 const numberOptions = maskitoNumberOptionsGenerator({
@@ -21,7 +21,7 @@ const numberOptions = maskitoNumberOptionsGenerator({
 });
 
 @Component({
-    imports: [FormsModule, MaskitoDirective, TuiButton, TuiTextfield],
+    imports: [FormsModule, MaskitoDirective, TuiButton, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

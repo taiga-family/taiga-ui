@@ -4,11 +4,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [MaskitoDirective, ReactiveFormsModule, TuiInputChip, TuiTextfield],
+    imports: [MaskitoDirective, ReactiveFormsModule, TuiInputChip],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

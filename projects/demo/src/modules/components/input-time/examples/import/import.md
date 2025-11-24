@@ -1,6 +1,5 @@
 ```ts
 import {FormsModule} from '@angular/forms';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
@@ -8,7 +7,6 @@ import {TuiInputTime} from '@taiga-ui/kit';
   imports: [
     // ...
     FormsModule,
-    TuiTextfield,
     TuiInputTime,
   ],
 })

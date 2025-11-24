@@ -3,7 +3,7 @@ import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
+import {TuiSelectLike} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -21,7 +21,6 @@ import {
         TuiMultiSelect,
         TuiSelectLike,
         TuiTable,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

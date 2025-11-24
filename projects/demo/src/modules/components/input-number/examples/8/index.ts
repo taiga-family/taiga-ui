@@ -3,7 +3,6 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValueTransformer} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 class NaNTransformer extends TuiValueTransformer<number | null, number> {
@@ -17,7 +16,7 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
 }
 
 @Component({
-    imports: [FormsModule, TuiInputNumber, TuiTextfield],
+    imports: [FormsModule, TuiInputNumber],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -25,9 +25,9 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiInput, TuiInputDirective} from '@taiga-ui/core/components/input';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TuiTextfield, TuiTextfieldDirective} from '@taiga-ui/core/components/textfield';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
@@ -70,9 +70,9 @@ function tuiUniqBy<T extends Record<string, any>>(
         TuiDocScrollIntoViewLink,
         TuiExpand,
         TuiIcon,
+        TuiInput,
         TuiLink,
         TuiScrollbar,
-        TuiTextfield,
     ],
     templateUrl: './navigation.template.html',
     styleUrl: './navigation.style.less',
@@ -84,7 +84,7 @@ function tuiUniqBy<T extends Record<string, any>>(
     },
 })
 export class TuiDocNavigation {
-    @ViewChild(TuiTextfieldDirective, {read: ElementRef})
+    @ViewChild(TuiInputDirective, {read: ElementRef})
     private readonly searchInput?: ElementRef<HTMLInputElement>;
 
     private readonly router = inject(Router);

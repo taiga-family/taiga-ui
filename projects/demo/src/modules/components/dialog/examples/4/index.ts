@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService, TuiInput} from '@taiga-ui/core';
 import {TuiConfirmService} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiForm, TuiTextfield],
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiForm, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

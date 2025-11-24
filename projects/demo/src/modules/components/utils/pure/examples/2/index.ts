@@ -3,10 +3,10 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, JsonPipe, TuiButton, TuiTextfield],
+    imports: [FormsModule, JsonPipe, TuiButton, TuiInput],
     templateUrl: './index.html',
     changeDetection,
 })

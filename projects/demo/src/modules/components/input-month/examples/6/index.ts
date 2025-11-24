@@ -3,11 +3,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiMonth} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiInputMonth, TuiTextfield],
+    imports: [FormsModule, TuiInputMonth],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

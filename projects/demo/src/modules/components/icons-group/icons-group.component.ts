@@ -14,7 +14,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiAutoFocus, TuiFilterPipe} from '@taiga-ui/cdk';
-import {TuiHint, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
+import {TuiHint, TuiInput, TuiNotificationService} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
 
@@ -31,7 +31,7 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiBadge,
         TuiFilterPipe,
         TuiHint,
-        TuiTextfield,
+        TuiInput,
     ],
     templateUrl: './icons-group.template.html',
     styleUrl: './icons-group.style.less',

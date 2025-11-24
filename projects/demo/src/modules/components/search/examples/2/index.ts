@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCountFilledControls} from '@taiga-ui/cdk';
-import {TuiButton, TuiLink, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiInput, TuiLink} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -28,7 +28,7 @@ import {map} from 'rxjs';
         TuiSegmented,
         TuiSelect,
         TuiSwitch,
-        TuiTextfield,
+        TuiInput,
     ],
     templateUrl: './index.html',
     encapsulation,

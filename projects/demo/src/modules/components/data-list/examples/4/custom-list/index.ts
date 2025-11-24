@@ -10,11 +10,11 @@ import {
 import {
     tuiAsOptionContent,
     TuiDataList,
+    TuiInput,
+    TuiInputDirective,
     tuiIsEditingKey,
     tuiItemsHandlersProvider,
-    TuiTextfield,
     TuiTextfieldComponent,
-    TuiTextfieldDirective,
 } from '@taiga-ui/core';
 import {TuiMultiSelect, TuiSelectOption} from '@taiga-ui/kit';
 
@@ -30,8 +30,8 @@ interface Items<T> {
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,
+        TuiInput,
         TuiMultiSelect,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -48,7 +48,7 @@ interface Items<T> {
     ],
 })
 export class CustomListComponent<T> {
-    @ViewChild(TuiTextfieldDirective, {read: ElementRef})
+    @ViewChild(TuiInputDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
     private readonly control = inject(TuiTextfieldComponent).control;

@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
 import {
     TuiAutoColorPipe,
     TuiAvatar,
@@ -43,7 +43,7 @@ const USERS = [
         TuiFloatingContainer,
         TuiInitialsPipe,
         TuiSheetDialog,
-        TuiTextfield,
+        TuiInput,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
