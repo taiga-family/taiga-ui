@@ -43,7 +43,7 @@ describe('Textfield', () => {
                         },
                     });
 
-                    cy.get('tui-textfield input').focus();
+                    cy.get('tui-textfield input[tuiInput]').focus();
                     cy.get('tui-textfield').compareSnapshot(
                         `[filler]-initial-value_${initialValue.replaceAll(':', '-')}`,
                     );
@@ -59,12 +59,12 @@ describe('Textfield', () => {
                     },
                 });
 
-                cy.get('tui-textfield input').focus();
+                cy.get('tui-textfield input[tuiInput]').focus();
             });
 
             ['2', '23', '23:', '23:5', '23:59'].forEach((value) => {
                 it(value, () => {
-                    cy.get('tui-textfield input').type(value);
+                    cy.get('tui-textfield input[tuiInput]').type(value);
 
                     cy.get('tui-textfield').compareSnapshot(
                         `[filler]-user-types_${value.replaceAll(':', '-')}`,
@@ -89,13 +89,13 @@ describe('Textfield', () => {
         });
 
         it('hides content and show value on focus', () => {
-            cy.get('tui-textfield input').focus();
+            cy.get('tui-textfield input[tuiInput]').focus();
 
             cy.get('tui-textfield').compareSnapshot('[content]-focused');
         });
 
         it('shows content again after blur', () => {
-            cy.get('tui-textfield input')
+            cy.get('tui-textfield input[tuiInput]')
                 .focus()
                 .wait(300) // to ensure that all possible operations are finished
                 .blur();
