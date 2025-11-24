@@ -26,6 +26,7 @@
 >
     <option
         *ngFor="let option of items"
+        #optionRef
         [disabled]="itemsHandlers.disabledItemHandler()(option)"
         [selected]="isSelected()(option)"
         [value]="itemsHandlers.stringify()(option)"

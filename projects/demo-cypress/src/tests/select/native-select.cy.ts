@@ -3,6 +3,7 @@ import {
     Component,
     EventEmitter,
     Input,
+    type OnInit,
     Output,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -15,6 +16,13 @@ interface Item {
     id: number;
     name: string;
 }
+
+const ITEMS = [
+    {name: 'First Item', id: 1},
+    {name: '2nd Item', id: 2},
+    {name: 'DisabledItem', id: 3},
+    {name: '4th', id: 4},
+] as const satisfies readonly Item[];
 
 @Component({
     standalone: true,
@@ -37,17 +45,14 @@ interface Item {
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Sandbox {
-    protected readonly control = new FormControl<Item | null>(null);
-    protected items: readonly Item[] = [
-        {name: 'First Item', id: 1},
-        {name: '2nd Item', id: 2},
-        {name: 'DisabledItem', id: 3},
-        {name: '4th', id: 4},
-    ];
+export class Sandbox implements OnInit {
+    protected items: readonly Item[] = ITEMS;
 
     @Input()
     public placeholder = '';
+
+    @Input()
+    public control = new FormControl<Item | null>(null);
 
     /**
      * TODO: use `import {output} from '@angular/core'`
@@ -57,7 +62,7 @@ export class Sandbox {
     @Output()
     public readonly valueChanges = new EventEmitter<Item | null>();
 
-    constructor() {
+    public ngOnInit(): void {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
     }
 
@@ -108,5 +113,16 @@ describe('NativeSelect', () => {
         it('[disabledItemHandler] works', () => {
             cy.get('select').find('option[value="DisabledItem"]').should('be.disabled');
         });
+    });
+
+    it('with initial control value', () => {
+        cy.mount(Sandbox, {
+            componentProperties: {
+                control: new FormControl<Item | null>(ITEMS[1]),
+            },
+        });
+
+        cy.get('select').should('have.value', ITEMS[1].name);
+        cy.compareSnapshot('initial-control-value');
     });
 });
