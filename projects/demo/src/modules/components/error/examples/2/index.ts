@@ -10,7 +10,7 @@ import {TuiForm} from '@taiga-ui/layout';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInputNumber, TuiInput],
+    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInput, TuiInputNumber],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

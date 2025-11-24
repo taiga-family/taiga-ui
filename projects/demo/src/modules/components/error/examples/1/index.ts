@@ -24,7 +24,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 }
 
 @Component({
-    imports: [FormsModule, ReactiveFormsModule, TuiError, TuiForm, TuiSwitch, TuiInput],
+    imports: [FormsModule, ReactiveFormsModule, TuiError, TuiForm, TuiInput, TuiSwitch],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
