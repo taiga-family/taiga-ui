@@ -19,7 +19,7 @@ import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({host: {'[attr.list]': 'null'}})
 export abstract class TuiNativeTimePicker {
-    protected readonly list = inject(new HostAttributeToken('list'));
+    protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
 
     protected getStep(timeMode: MaskitoTimeMode): number {
         switch (timeMode) {

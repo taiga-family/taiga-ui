@@ -55,7 +55,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
 export class TuiInputColor extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly list = inject(new HostAttributeToken('list'));
+    protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
     protected readonly format = signal(this.options.format);
     protected readonly align = signal<TuiHorizontalDirection>(this.options.align);
     protected readonly left = inject(TuiIcons).iconStart() || '';
