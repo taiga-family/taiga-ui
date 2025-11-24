@@ -12597,24 +12597,43 @@ export default class Example {
 <p>You can show a dialog with template</p>
 <p> Your balance: <span>{{ money | tuiAmount: 'RUB' | async }}</span>
 </p>
-<button size="m" tuiButton type="button" class="tui-space_right-3" (click)="withdraw()" > Withdraw&nbsp; <span>{{ 100 | tuiAmount: 'RUB' | async }}</span>
+<button size="m" tuiButton tuiChevron tuiDropdownOpen type="button" class="tui-space_right-3" [tuiDropdown]="dropdown" > Withdraw <ng-template #dropdown let-close >
+<tui-data-list>
+<button *ngFor="let sum of [10, 50, 100]" tuiOption (click)="withdraw(sum); close()" > {{ sum | tuiAmount: 'RUB' | async }} </button>
+</tui-data-list>
+</ng-template>
 </button>
 <button size="m" tuiButton type="button" (click)="observer.complete()" > Cancel </button>
 </ng-template>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiButton, type TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDataList,
+    type TuiDialogContext,
+    TuiDialogService,
+    TuiDropdown,
+} from '@taiga-ui/core';
+import {TuiChevron} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton],
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        TuiAmountPipe,
+        TuiButton,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -12628,8 +12647,8 @@ export default class Example {
         this.dialogs.open(content).subscribe();
     }
 
-    protected withdraw(): void {
-        this.money -= 100;
+    protected withdraw(sum: number): void {
+        this.money -= sum;
     }
 }
 ```

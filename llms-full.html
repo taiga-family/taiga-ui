@@ -12607,24 +12607,43 @@ export default class Example {
 &lt;p&gt;You can show a dialog with template&lt;/p&gt;
 &lt;p&gt; Your balance: &lt;span&gt;{{ money | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;/p&gt;
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; class=&quot;tui-space_right-3&quot; (click)=&quot;withdraw()&quot; &gt; Withdraw&amp;nbsp; &lt;span&gt;{{ 100 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
+&lt;button size=&quot;m&quot; tuiButton tuiChevron tuiDropdownOpen type=&quot;button&quot; class=&quot;tui-space_right-3&quot; [tuiDropdown]=&quot;dropdown&quot; &gt; Withdraw &lt;ng-template #dropdown let-close &gt;
+&lt;tui-data-list&gt;
+&lt;button *ngFor=&quot;let sum of [10, 50, 100]&quot; tuiOption (click)=&quot;withdraw(sum); close()&quot; &gt; {{ sum | tuiAmount: &#039;RUB&#039; | async }} &lt;/button&gt;
+&lt;/tui-data-list&gt;
+&lt;/ng-template&gt;
 &lt;/button&gt;
 &lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Cancel &lt;/button&gt;
 &lt;/ng-template&gt;
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from &#039;@angular/common&#039;;
+import {AsyncPipe, NgForOf} from &#039;@angular/common&#039;;
 import {Component, inject} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
-import {TuiButton, type TuiDialogContext, TuiDialogService} from &#039;@taiga-ui/core&#039;;
+import {
+    TuiButton,
+    TuiDataList,
+    type TuiDialogContext,
+    TuiDialogService,
+    TuiDropdown,
+} from &#039;@taiga-ui/core&#039;;
+import {TuiChevron} from &#039;@taiga-ui/kit&#039;;
 import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton],
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        TuiAmountPipe,
+        TuiButton,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+    ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -12638,8 +12657,8 @@ export default class Example {
         this.dialogs.open(content).subscribe();
     }
 
-    protected withdraw(): void {
-        this.money -= 100;
+    protected withdraw(sum: number): void {
+        this.money -= sum;
     }
 }
 ```
