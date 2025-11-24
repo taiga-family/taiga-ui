@@ -3,7 +3,7 @@ import {
     Component,
     EventEmitter,
     input,
-    OnInit,
+    type OnInit,
     Output,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
