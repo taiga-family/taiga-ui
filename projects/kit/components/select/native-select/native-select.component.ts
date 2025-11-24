@@ -69,7 +69,7 @@ export class TuiNativeSelect<T>
 
     protected selectOption(index: number): void {
         const items = (this.items()?.flat() ?? []) as T[];
-        const placeholderOffset = this.value() ? 0 : 1;
+        const placeholderOffset = this.stringified() ? 0 : 1;
 
         this.onChange(items[index - placeholderOffset] ?? null);
     }
