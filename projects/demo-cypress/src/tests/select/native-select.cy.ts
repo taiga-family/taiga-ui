@@ -17,6 +17,7 @@ interface Item {
 }
 
 @Component({
+    standalone: true,
     imports: [ReactiveFormsModule, TuiChevron, TuiRoot, TuiSelect, TuiTextfield],
     template: `
         <tui-root>
