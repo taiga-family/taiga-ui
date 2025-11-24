@@ -226,7 +226,6 @@
 - [Filter](https://taiga-ui.dev/pipes/filter) — Pipe for filtering an array
 - [Filter By Input](https://taiga-ui.dev/pipes/filter-by-input) — Pipe for filtering an array by value entered in a textfield
 - [Flag](https://taiga-ui.dev/pipes/flag) — Pipe for getting source path to image with flag
-- [Format Date](https://taiga-ui.dev/pipes/format-date) — Pipe to format timestamps/dates dynamically Differs from built-in Angular date formatting pipe because it returns an Observable
 - [Format Number](https://taiga-ui.dev/pipes/format-number) — Pipe to format number values to separate thousands Number formatting can be customized by using TUI_NUMBER_FORMAT
 - [Mapper](https://taiga-ui.dev/pipes/mapper) — Pipe to transform a value with a function
 - [Obfuscate](https://taiga-ui.dev/pipes/obfuscate) — Pipe for obfuscating sensitive data
