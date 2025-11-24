@@ -11,7 +11,7 @@ import {
     type Signal,
     viewChild,
 } from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -145,7 +145,7 @@ export class TuiInputCardGroup
     protected readonly maskExpire = TUI_MASK_EXPIRE;
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly textfield = inject(TUI_TEXTFIELD_OPTIONS);
-    protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
+    protected readonly texts = inject(TUI_INPUT_CARD_GROUP_TEXTS);
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly $ = this.isWebkit
         ? this.focus$

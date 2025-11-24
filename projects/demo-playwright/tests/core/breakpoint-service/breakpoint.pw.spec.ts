@@ -2,7 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('Breakpoint service', () => {
+test.describe('Breakpoint token', () => {
     [
         // smartphone (mobile)
         {width: 320, height: 480},
@@ -19,8 +19,8 @@ test.describe('Breakpoint service', () => {
     ].forEach(({width, height}) => {
         test(`${width}x${height}`, async ({page}) => {
             await page.setViewportSize({width, height});
-            await tuiGoto(page, DemoRoute.BreakpointService);
-            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            await tuiGoto(page, DemoRoute.Tokens);
+            const example = new TuiDocumentationPagePO(page).getExample('#breakpoints');
 
             await expect
                 .soft(example)
