@@ -2128,7 +2128,7 @@ export class Example {}
 &lt;h3 tuiTitle&gt; Colored icon &lt;span tuiSubtitle&gt; Use &lt;code&gt;tuiIcon&lt;/code&gt; pipe to resolve name &lt;/span&gt;
 &lt;/h3&gt;
 &lt;tui-avatar [src]=&quot;&#039;@tui.mastercard&#039; | tuiIcon&quot; /&gt;
-&lt;tui-avatar [src]=&quot;&#039;/assets/icons/nx.svg&#039;&quot; /&gt;
+&lt;tui-avatar [src]=&quot;&#039;assets/icons/nx.svg&#039;&quot; /&gt;
 &lt;h3 tuiTitle&gt;Image&lt;/h3&gt;
 &lt;tui-avatar [src]=&quot;&#039;https://avatars.githubusercontent.com/u/11832552&#039; | tuiFallbackSrc: &#039;@tui.user&#039; | async&quot; /&gt;
 &lt;h3 tuiTitle&gt;Initials&lt;/h3&gt;
@@ -2138,13 +2138,13 @@ export class Example {}
 &lt;tui-avatar&gt;99+&lt;/tui-avatar&gt;
 &lt;tui-avatar class=&quot;tui-space_horizontal-4&quot;&gt;
 &lt;picture&gt;
-&lt;source media=&quot;(min-width: 600px)&quot; srcset=&quot;/assets/images/angular.svg&quot; /&gt;
-&lt;img alt=&quot;Alex Inkin&quot; src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;source media=&quot;(min-width: 600px)&quot; srcset=&quot;assets/images/angular.svg&quot; /&gt;
+&lt;img alt=&quot;Alex Inkin&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;/picture&gt;
 &lt;/tui-avatar&gt;
 &lt;tui-avatar&gt;
 &lt;video autoplay loop playsinline [muted]=&quot;true&quot; &gt;
-&lt;source src=&quot;/assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;source src=&quot;assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
 &lt;/video&gt;
 &lt;/tui-avatar&gt;
 &lt;/div&gt;
@@ -2342,7 +2342,7 @@ export default class Example {}
 ```html
 &lt;tui-avatar size=&quot;m&quot; src=&quot;@tui.heart&quot; tuiAvatarOutline /&gt;
 &lt;tui-avatar size=&quot;l&quot; tuiAvatarOutline=&quot;var(--tui-background-accent-2)&quot; &gt;
-&lt;img alt=&quot;Alex Inkin&quot; src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;img alt=&quot;Alex Inkin&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;/tui-avatar&gt;
 &lt;tui-avatar size=&quot;xl&quot; src=&quot;OK&quot; tuiAvatarOutline=&quot;linear-gradient(#c86dd7, #3023ae)&quot; [style.background]=&quot;&#039;linear-gradient(#3023ae, #c86dd7)&#039;&quot; [style.color]=&quot;&#039;#fff&#039;&quot; /&gt;
 ```
@@ -3323,11 +3323,11 @@ export default class Example {}
 **Template:**
 ```html
 &lt;tui-badged-content&gt;
-&lt;img alt=&quot;icon&quot; src=&quot;/assets/images/angular.svg&quot; tuiSlot=&quot;top&quot; width=&quot;24&quot; /&gt;
+&lt;img alt=&quot;icon&quot; src=&quot;assets/images/angular.svg&quot; tuiSlot=&quot;top&quot; width=&quot;24&quot; /&gt;
 &lt;tui-avatar src=&quot;@tui.user&quot; [round]=&quot;false&quot; /&gt;
 &lt;/tui-badged-content&gt;
 &lt;tui-badged-content&gt;
-&lt;img alt=&quot;icon&quot; src=&quot;/assets/images/angular.svg&quot; tuiSlot=&quot;bottom&quot; width=&quot;24&quot; /&gt;
+&lt;img alt=&quot;icon&quot; src=&quot;assets/images/angular.svg&quot; tuiSlot=&quot;bottom&quot; width=&quot;24&quot; /&gt;
 &lt;tui-avatar src=&quot;@tui.user&quot; [round]=&quot;false&quot; /&gt;
 &lt;/tui-badged-content&gt;
 ```
@@ -4478,7 +4478,7 @@ export class Example {}
 
 ```html
 &lt;tui-block-status [card]=&quot;card&quot; [size]=&quot;size&quot; &gt;
-&lt;img alt=&quot;hidden content&quot; src=&quot;./assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; /&gt;
+&lt;img alt=&quot;hidden content&quot; src=&quot;assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; /&gt;
 &lt;h4&gt;Title&lt;/h4&gt; Description &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; &gt; Action &lt;/button&gt;
 &lt;/tui-block-status&gt;
 ```
@@ -4497,7 +4497,7 @@ export class Example {}
 **Template:**
 ```html
 &lt;tui-block-status&gt;
-&lt;img alt=&quot;not found&quot; src=&quot;./assets/images/not-found.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
+&lt;img alt=&quot;not found&quot; src=&quot;assets/images/not-found.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
 &lt;h4&gt;Not found&lt;/h4&gt; Try to find by number &lt;/tui-block-status&gt;
 ```
 **TypeScript:**
@@ -4522,7 +4522,7 @@ export default class Example {}
 **Template:**
 ```html
 &lt;tui-block-status *ngIf=&quot;size$ | async as size&quot;&gt;
-&lt;img alt=&quot;survived&quot; src=&quot;./assets/images/going-up.svg&quot; tuiSlot=&quot;top&quot; /&gt;
+&lt;img alt=&quot;survived&quot; src=&quot;assets/images/going-up.svg&quot; tuiSlot=&quot;top&quot; /&gt;
 &lt;h4&gt;Something has been achieved&lt;/h4&gt;
 &lt;span class=&quot;text&quot;&gt; You can do something with it, or you can not do it. And the description text can be quite long. &lt;/span&gt;
 &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; [size]=&quot;size&quot; &gt; Do &lt;/button&gt;
@@ -4561,10 +4561,10 @@ export default class Example {
 ```html
 &lt;div *ngIf=&quot;size$ | async as size&quot; class=&quot;container&quot; &gt;
 &lt;tui-block-status class=&quot;card&quot; [card]=&quot;true&quot; &gt;
-&lt;img alt=&quot;hidden content&quot; src=&quot;./assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; We hide the unwanted block &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; [size]=&quot;size&quot; &gt; Return &lt;/button&gt;
+&lt;img alt=&quot;hidden content&quot; src=&quot;assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; We hide the unwanted block &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; [size]=&quot;size&quot; &gt; Return &lt;/button&gt;
 &lt;/tui-block-status&gt;
 &lt;tui-block-status class=&quot;card&quot; [card]=&quot;true&quot; &gt;
-&lt;img alt=&quot;something wrong&quot; src=&quot;./assets/images/cancel.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; Something happened in this block &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; [size]=&quot;size&quot; &gt; Try again &lt;/button&gt;
+&lt;img alt=&quot;something wrong&quot; src=&quot;assets/images/cancel.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; Something happened in this block &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; [size]=&quot;size&quot; &gt; Try again &lt;/button&gt;
 &lt;/tui-block-status&gt;
 &lt;/div&gt;
 ```
@@ -4606,7 +4606,7 @@ export default class Example {
 &lt;/tui-avatar-stack&gt; You can put other content instead of image using &lt;code&gt;tui-block-content&lt;/code&gt; css class &lt;button appearance=&quot;primary&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; [style.border-radius.rem]=&quot;100&quot; &gt; Got it &lt;/button&gt;
 &lt;/tui-block-status&gt;
 &lt;tui-block-status [card]=&quot;true&quot; [class.card]=&quot;true&quot; &gt;
-&lt;img alt=&quot;Alex Inkin&quot; src=&quot;/assets/images/avatar.jpg&quot; tuiSlot=&quot;top&quot; class=&quot;avatar&quot; /&gt;
+&lt;img alt=&quot;Alex Inkin&quot; src=&quot;assets/images/avatar.jpg&quot; tuiSlot=&quot;top&quot; class=&quot;avatar&quot; /&gt;
 &lt;h1&gt;Alex Inkin&lt;/h1&gt;
 &lt;/tui-block-status&gt;
 &lt;/div&gt;
@@ -4653,10 +4653,10 @@ export default class Example {
 ```html
 &lt;div tuiPlatform=&quot;ios&quot; class=&quot;container&quot; &gt;
 &lt;tui-block-status class=&quot;card&quot; [card]=&quot;true&quot; &gt;
-&lt;img alt=&quot;hidden content&quot; src=&quot;./assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; We hide the unwanted block &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Return &lt;/button&gt;
+&lt;img alt=&quot;hidden content&quot; src=&quot;assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; We hide the unwanted block &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Return &lt;/button&gt;
 &lt;/tui-block-status&gt;
 &lt;tui-block-status tuiPlatform=&quot;ios&quot; class=&quot;card&quot; [card]=&quot;true&quot; &gt;
-&lt;img alt=&quot;something wrong&quot; src=&quot;./assets/images/cancel.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; Something happened in this block &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Try again &lt;/button&gt;
+&lt;img alt=&quot;something wrong&quot; src=&quot;assets/images/cancel.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt; Something happened in this block &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Try again &lt;/button&gt;
 &lt;/tui-block-status&gt;
 &lt;tui-block-status tuiPlatform=&quot;ios&quot; class=&quot;card&quot; [card]=&quot;true&quot; &gt; Something happened in this block &lt;/tui-block-status&gt;
 &lt;/div&gt;
@@ -4686,7 +4686,7 @@ export default class Example {}
 **Template:**
 ```html
 &lt;tui-block-status size=&quot;m&quot;&gt;
-&lt;img alt=&quot;survived&quot; src=&quot;./assets/images/going-up.svg&quot; tuiSlot=&quot;top&quot; /&gt;
+&lt;img alt=&quot;survived&quot; src=&quot;assets/images/going-up.svg&quot; tuiSlot=&quot;top&quot; /&gt;
 &lt;h4&gt;There is nothing here yet&lt;/h4&gt;
 &lt;span&gt;To get started, create a server&lt;/span&gt;
 &lt;button appearance=&quot;primary&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; &gt; Create &lt;/button&gt;
@@ -4744,11 +4744,11 @@ export default class Example {}
 ```html
 &lt;div class=&quot;container&quot;&gt;
 &lt;tui-block-status class=&quot;card&quot; [card]=&quot;true&quot; &gt;
-&lt;img alt=&quot;hidden content&quot; src=&quot;./assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
+&lt;img alt=&quot;hidden content&quot; src=&quot;assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
 &lt;h3&gt;No operations&lt;/h3&gt;
 &lt;/tui-block-status&gt;
 &lt;tui-block-status class=&quot;card&quot; [card]=&quot;true&quot; &gt;
-&lt;img alt=&quot;hidden content&quot; src=&quot;./assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
+&lt;img alt=&quot;hidden content&quot; src=&quot;assets/images/camping.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
 &lt;h3&gt;No operations&lt;/h3&gt;
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Return &lt;/button&gt;
 &lt;/tui-block-status&gt;
@@ -8958,8 +8958,8 @@ export default class Example {
 &lt;/div&gt;
 &lt;div tuiCell&gt;
 &lt;tui-avatar-stack&gt;
-&lt;tui-avatar src=&quot;/assets/images/avatar.jpg&quot; /&gt;
-&lt;tui-avatar src=&quot;/assets/images/poorly.png&quot; /&gt;
+&lt;tui-avatar src=&quot;assets/images/avatar.jpg&quot; /&gt;
+&lt;tui-avatar src=&quot;assets/images/poorly.png&quot; /&gt;
 &lt;tui-avatar&gt;+2&lt;/tui-avatar&gt;
 &lt;/tui-avatar-stack&gt;
 &lt;div tuiTitle&gt; Waterplea &lt;div tuiSubtitle&gt;
@@ -9052,7 +9052,7 @@ export default class Example {
 &lt;/div&gt;
 &lt;/button&gt;
 &lt;div tuiCell&gt;
-&lt;tui-avatar src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;tui-avatar src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;div tuiTitle&gt;Salary&lt;/div&gt;
 &lt;div tuiTitle&gt;
 &lt;span [style.color]=&quot;&#039;var(--tui-text-positive)&#039;&quot; [tuiSensitive]=&quot;true&quot; &gt; Enough &lt;/span&gt;
@@ -9126,7 +9126,7 @@ export default class Example {
 &lt;tui-badge-notification size=&quot;xs&quot; /&gt;
 &lt;/div&gt;
 &lt;div tuiCell&gt;
-&lt;tui-avatar src=&quot;/assets/images/avatar.jpg&quot; tuiAccessories /&gt;
+&lt;tui-avatar src=&quot;assets/images/avatar.jpg&quot; tuiAccessories /&gt;
 &lt;div tuiAccessories tuiTitle &gt; Alexander &lt;div tuiSubtitle&gt;Taiga UI developer&lt;/div&gt;
 &lt;/div&gt;
 &lt;div tuiTitle&gt;
@@ -9871,11 +9871,11 @@ export default class Example {}
 &lt;/section&gt;
 &lt;section&gt;
 &lt;tui-chip *ngFor=&quot;let size of sizes&quot; [size]=&quot;size&quot; &gt;
-&lt;img *ngIf=&quot;size === &#039;m&#039; || size === &#039;s&#039;&quot; alt=&quot;Avatar&quot; src=&quot;/assets/images/avatar.jpg&quot; [style.border-radius.rem]=&quot;size === &#039;m&#039; ? 0.25 : 0.5&quot; /&gt; Image &lt;/tui-chip&gt;
+&lt;img *ngIf=&quot;size === &#039;m&#039; || size === &#039;s&#039;&quot; alt=&quot;Avatar&quot; src=&quot;assets/images/avatar.jpg&quot; [style.border-radius.rem]=&quot;size === &#039;m&#039; ? 0.25 : 0.5&quot; /&gt; Image &lt;/tui-chip&gt;
 &lt;/section&gt;
 &lt;section&gt;
 &lt;tui-chip *ngFor=&quot;let size of sizes&quot; [size]=&quot;size&quot; [style.border-radius.rem]=&quot;5&quot; &gt;
-&lt;tui-avatar *ngIf=&quot;size === &#039;m&#039; || size === &#039;s&#039;&quot; src=&quot;/assets/images/avatar.jpg&quot; /&gt; Avatar &lt;/tui-chip&gt;
+&lt;tui-avatar *ngIf=&quot;size === &#039;m&#039; || size === &#039;s&#039;&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt; Avatar &lt;/tui-chip&gt;
 &lt;/section&gt;
 &lt;section&gt;
 &lt;tui-chip size=&quot;m&quot;&gt; Button &lt;button iconStart=&quot;@tui.x&quot; size=&quot;s&quot; tuiIconButton type=&quot;button&quot; &gt; Remove &lt;/button&gt;
@@ -10093,7 +10093,7 @@ export default class Example {
 &lt;div tuiFade&gt;{{ 9000 | tuiAmount: &#039;USD&#039; | async }}&lt;/div&gt;
 &lt;/tui-chip&gt;
 &lt;tui-chip appearance=&quot;accent&quot;&gt;
-&lt;tui-avatar src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;tui-avatar src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;div tuiFade&gt;AI&lt;/div&gt;
 &lt;div tuiFade&gt;{{ 9870043000 | tuiAmount: &#039;USD&#039; | async }}&lt;/div&gt;
 &lt;/tui-chip&gt;
@@ -10885,7 +10885,7 @@ DataListWrapper is just a helper to solve most popular use cases. Use DataList f
 ```
 **TypeScript:**
 ```ts
-import {KeyValuePipe, NgFor} from &#039;@angular/common&#039;;
+import {KeyValuePipe, NgFor, NgIf} from &#039;@angular/common&#039;;
 import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
@@ -10899,6 +10899,7 @@ import {TuiChevron, TuiChip, TuiComboBox, TuiFilterByInputPipe} from &#039;@taig
         FormsModule,
         KeyValuePipe,
         NgFor,
+        NgIf,
         TuiChevron,
         TuiChip,
         TuiComboBox,
@@ -12606,24 +12607,43 @@ export default class Example {
 &lt;p&gt;You can show a dialog with template&lt;/p&gt;
 &lt;p&gt; Your balance: &lt;span&gt;{{ money | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;/p&gt;
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; class=&quot;tui-space_right-3&quot; (click)=&quot;withdraw()&quot; &gt; Withdraw&amp;nbsp; &lt;span&gt;{{ 100 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
+&lt;button size=&quot;m&quot; tuiButton tuiChevron tuiDropdownOpen type=&quot;button&quot; class=&quot;tui-space_right-3&quot; [tuiDropdown]=&quot;dropdown&quot; &gt; Withdraw &lt;ng-template #dropdown let-close &gt;
+&lt;tui-data-list&gt;
+&lt;button *ngFor=&quot;let sum of [10, 50, 100]&quot; tuiOption (click)=&quot;withdraw(sum); close()&quot; &gt; {{ sum | tuiAmount: &#039;RUB&#039; | async }} &lt;/button&gt;
+&lt;/tui-data-list&gt;
+&lt;/ng-template&gt;
 &lt;/button&gt;
 &lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Cancel &lt;/button&gt;
 &lt;/ng-template&gt;
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from &#039;@angular/common&#039;;
+import {AsyncPipe, NgForOf} from &#039;@angular/common&#039;;
 import {Component, inject} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
-import {TuiButton, type TuiDialogContext, TuiDialogService} from &#039;@taiga-ui/core&#039;;
+import {
+    TuiButton,
+    TuiDataList,
+    type TuiDialogContext,
+    TuiDialogService,
+    TuiDropdown,
+} from &#039;@taiga-ui/core&#039;;
+import {TuiChevron} from &#039;@taiga-ui/kit&#039;;
 import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton],
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        TuiAmountPipe,
+        TuiButton,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+    ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -12637,8 +12657,8 @@ export default class Example {
         this.dialogs.open(content).subscribe();
     }
 
-    protected withdraw(): void {
-        this.money -= 100;
+    protected withdraw(sum: number): void {
+        this.money -= sum;
     }
 }
 ```
@@ -24122,7 +24142,7 @@ const DATA: Record&lt;string, readonly Result[]&gt; = {
             title: &#039;Taiga UI&#039;,
             subtitle: &#039;Super awesome library&#039;,
             href: &#039;https://taiga-ui.dev&#039;,
-            icon: &#039;/assets/images/taiga.svg&#039;,
+            icon: &#039;assets/images/taiga.svg&#039;,
         },
         {
             title: &#039;Maskito&#039;,
@@ -28850,7 +28870,7 @@ export default class Example {}
 **Template:**
 ```html
 &lt;div tuiCell&gt;
-&lt;tui-avatar src=&quot;/assets/images/avatar.jpg&quot; tuiAccessories /&gt;
+&lt;tui-avatar src=&quot;assets/images/avatar.jpg&quot; tuiAccessories /&gt;
 &lt;div tuiTitle&gt; Alexander I. &lt;div tuiSubtitle&gt;USD&lt;/div&gt;
 &lt;span tuiMessage&gt;Don&#039;t deny yourself anything&lt;/span&gt;
 &lt;/div&gt;
@@ -29597,8 +29617,12 @@ export class Example {}
 &lt;div [style.display]=&quot;&#039;flex&#039;&quot;&gt;
 &lt;aside [style.height.rem]=&quot;27&quot; [tuiNavigationAside]=&quot;expanded()&quot; &gt;
 &lt;header&gt;
-&lt;button iconStart=&quot;@tui.home&quot; tuiAsideItem type=&quot;button&quot; &gt;
+&lt;button iconStart=&quot;@tui.home&quot; type=&quot;button&quot; [tuiAsideItem]=&quot;hint&quot; &gt;
+&lt;ng-container [ngTemplateOutlet]=&quot;hint&quot; /&gt;
+&lt;ng-template #hint&gt;
 &lt;span tuiFade&gt;A very very long product name&lt;/span&gt;
+&lt;tui-badge appearance=&quot;accent&quot;&gt;Alpha&lt;/tui-badge&gt;
+&lt;/ng-template&gt;
 &lt;/button&gt;
 &lt;/header&gt;
 &lt;button iconStart=&quot;@tui.search&quot; tuiAsideItem type=&quot;button&quot; &gt; Search &lt;ng-container *ngIf=&quot;expanded()&quot;&gt;
@@ -29683,10 +29707,10 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {KeyValuePipe, NgForOf, NgIf} from &#039;@angular/common&#039;;
+import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from &#039;@angular/common&#039;;
 import {Component, signal} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
-import {RouterLink, RouterLinkActive} from &#039;@angular/router&#039;;
+import {RouterLink} from &#039;@angular/router&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
@@ -29725,8 +29749,8 @@ const ICON =
         KeyValuePipe,
         NgForOf,
         NgIf,
+        NgTemplateOutlet,
         RouterLink,
-        RouterLinkActive,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
@@ -31175,7 +31199,7 @@ export default class Example {
 &lt;/ng-template&gt;
 &lt;ng-template #errorContent&gt;
 &lt;tui-block-status&gt;
-&lt;img alt=&quot;not found&quot; src=&quot;./assets/images/not-found.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
+&lt;img alt=&quot;not found&quot; src=&quot;assets/images/not-found.svg&quot; tuiSlot=&quot;top&quot; class=&quot;image&quot; /&gt;
 &lt;h4&gt;Something went wrong&lt;/h4&gt;
 &lt;span&gt;Try again later&lt;/span&gt;
 &lt;button appearance=&quot;secondary&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; (click)=&quot;load()&quot; &gt; Retry &lt;/button&gt;
@@ -38068,7 +38092,7 @@ export default class Example {}
 ```html
 &lt;div tuiSurface class=&quot;surface&quot; &gt;
 &lt;video autoplay loop playsinline tuiSurfaceLayer [muted]=&quot;true&quot; &gt;
-&lt;source src=&quot;/assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;source src=&quot;assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
 &lt;/video&gt;
 &lt;p&gt;
 &lt;b&gt;Big Buck Bunny&lt;/b&gt;
@@ -38161,12 +38185,12 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;button tuiSurface type=&quot;button&quot; class=&quot;card&quot; [style.background-image]=&quot;&#039;url(/assets/images/tickets.svg)&#039;&quot; [style.color]=&quot;&#039;#d45d8c&#039;&quot; &gt;
+&lt;button tuiSurface type=&quot;button&quot; class=&quot;card&quot; [style.background-image]=&quot;&#039;url(assets/images/tickets.svg)&#039;&quot; [style.color]=&quot;&#039;#d45d8c&#039;&quot; &gt;
 &lt;h3 class=&quot;heading&quot;&gt;Tickets&lt;/h3&gt;
 &lt;div class=&quot;content&quot;&gt;Concerts, theater, sports and movies&lt;/div&gt;
 &lt;tui-badge appearance=&quot;primary&quot; size=&quot;s&quot; class=&quot;badge&quot; &gt; 20% off &lt;/tui-badge&gt;
 &lt;/button&gt;
-&lt;button tuiSurface type=&quot;button&quot; class=&quot;card&quot; [style.background-image]=&quot;&#039;url(/assets/images/gas.svg)&#039;&quot; [style.color]=&quot;&#039;#7caeff&#039;&quot; &gt;
+&lt;button tuiSurface type=&quot;button&quot; class=&quot;card&quot; [style.background-image]=&quot;&#039;url(assets/images/gas.svg)&#039;&quot; [style.color]=&quot;&#039;#7caeff&#039;&quot; &gt;
 &lt;h3 class=&quot;heading&quot;&gt;Gas&lt;/h3&gt;
 &lt;tui-badge appearance=&quot;primary&quot; size=&quot;s&quot; class=&quot;badge&quot; &gt; +2000% &lt;/tui-badge&gt;
 &lt;/button&gt;
@@ -38182,7 +38206,7 @@ export default class Example {}
 &lt;/footer&gt;
 &lt;/div&gt;
 &lt;div tuiSurface tuiTheme=&quot;dark&quot; class=&quot;blur&quot; &gt;
-&lt;tui-avatar src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;tui-avatar src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;label tuiLabel=&quot;Taiga UI&quot;&gt;Alex Inkin&lt;/label&gt;
 &lt;button appearance=&quot;glass&quot; iconStart=&quot;@tui.mail&quot; size=&quot;m&quot; tuiIconButton type=&quot;button&quot; class=&quot;button&quot; &gt; Message &lt;/button&gt;
 &lt;/div&gt;
@@ -38192,7 +38216,7 @@ export default class Example {}
 &lt;tui-scrollbar class=&quot;scrollbar&quot; [hidden]=&quot;true&quot; &gt;
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;div *ngFor=&quot;let review of reviews&quot; tuiSurface=&quot;neutral&quot; class=&quot;review&quot; &gt; {{ review.body }} &lt;footer class=&quot;footer&quot;&gt;
-&lt;tui-avatar size=&quot;m&quot; src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;tui-avatar size=&quot;m&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;label tuiTitle&gt; {{ review.name }} &lt;span tuiSubtitle&gt;{{ review.time }}&lt;/span&gt;
 &lt;/label&gt;
 &lt;/footer&gt;
@@ -38429,7 +38453,7 @@ export default class Example {}
 ```html
 &lt;tui-swipe-actions [style.--tui-actions-padding.rem]=&quot;0.5&quot;&gt;
 &lt;div tuiSurface class=&quot;blur&quot; &gt;
-&lt;tui-avatar src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;tui-avatar src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;h3 tuiTitle=&quot;m&quot;&gt;Alex Inkin&lt;/h3&gt;
 &lt;button appearance=&quot;glass&quot; iconStart=&quot;@tui.mail&quot; size=&quot;m&quot; tuiIconButton type=&quot;button&quot; class=&quot;button&quot; &gt; Message &lt;/button&gt;
 &lt;/div&gt;
@@ -49892,8 +49916,8 @@ export class Example {}
 **Template:**
 ```html
 &lt;video controls tuiMedia width=&quot;320&quot; class=&quot;video&quot; [(currentTime)]=&quot;currentTime&quot; [(paused)]=&quot;paused&quot; [(volume)]=&quot;volume&quot; &gt;
-&lt;source *tuiHighDpi src=&quot;/assets/media/bbb_dpi.ogv&quot; type=&quot;video/ogg&quot; /&gt;
-&lt;source src=&quot;/assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;source *tuiHighDpi src=&quot;assets/media/bbb_dpi.ogv&quot; type=&quot;video/ogg&quot; /&gt;
+&lt;source src=&quot;assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
 &lt;/video&gt;
 &lt;p&gt;currentTime: {{ currentTime }}&lt;/p&gt;
 &lt;p&gt;volume: {{ volume }}&lt;/p&gt;
@@ -49927,7 +49951,7 @@ export default class Example {
 ```html
 &lt;div class=&quot;player&quot;&gt;
 &lt;video #video tuiMedia width=&quot;320&quot; class=&quot;video&quot; [(currentTime)]=&quot;currentTime&quot; [(paused)]=&quot;paused&quot; (click)=&quot;toggleState()&quot; &gt;
-&lt;source src=&quot;/assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;source src=&quot;assets/media/bbb.mp4&quot; type=&quot;video/mp4&quot; /&gt;
 &lt;/video&gt;
 &lt;div class=&quot;controls&quot;&gt;
 &lt;button appearance=&quot;glass&quot; size=&quot;s&quot; title=&quot;Play/Pause&quot; tuiIconButton tuiTheme=&quot;dark&quot; type=&quot;button&quot; [iconStart]=&quot;icon&quot; [style.border-radius.%]=&quot;100&quot; (click)=&quot;toggleState()&quot; &gt;&lt;/button&gt;
@@ -51835,7 +51859,7 @@ export default class Example {}
 &lt;a href=&quot;https://github.com/taiga-family/taiga-ui&quot; tuiLink tuiTitle [style.font-size.rem]=&quot;1&quot; [style.line-height.rem]=&quot;1.25&quot; &gt; Taiga UI — GitHub &lt;div tuiSubtitle [style.font]=&quot;&#039;var(--tui-font-text-s)&#039;&quot; &gt; Drop us a star! &lt;/div&gt;
 &lt;/a&gt;
 &lt;label class=&quot;flex&quot;&gt;
-&lt;tui-avatar size=&quot;s&quot; src=&quot;/assets/images/avatar.jpg&quot; /&gt;
+&lt;tui-avatar size=&quot;s&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt;
 &lt;div tuiTitle=&quot;s&quot;&gt;
 &lt;strong&gt;Alex Inkin&lt;/strong&gt;
 &lt;div tuiSubtitle&gt;Available&lt;/div&gt;
