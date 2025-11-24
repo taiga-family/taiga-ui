@@ -26,6 +26,7 @@
 >
     @for (option of items; track option) {
         <option
+            #option
             [disabled]="itemsHandlers.disabledItemHandler()(option)"
             [selected]="isSelected()(option)"
             [value]="itemsHandlers.stringify()(option)"

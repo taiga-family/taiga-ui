@@ -6,6 +6,7 @@ import {
     effect,
     inject,
     input,
+    viewChildren,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -39,6 +40,7 @@ export class TuiNativeSelect<T>
     implements TuiTextfieldAccessor<T>
 {
     private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly options = viewChildren<HTMLOptionElement>('option');
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -54,7 +56,19 @@ export class TuiNativeSelect<T>
     );
 
     protected readonly valueEffect = effect(() => {
-        this.textfield.value.set(this.stringified());
+        /**
+         * Wait until all `<option>`-s are inside DOM.
+         * Otherwise
+         * ```
+         * document.querySelector('select').value = 'even upcoming valid value';
+         * // same as
+         * document.querySelector('select').value = '';
+         * ```
+         * (it breaks `tuiValue` utility logic)
+         */
+        if (this.options().length) {
+            this.textfield.value.set(this.stringified());
+        }
     });
 
     public readonly items = input<ReadonlyArray<readonly T[]> | readonly T[] | null>([]);
