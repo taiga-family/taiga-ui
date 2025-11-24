@@ -17,11 +17,11 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: true,
     imports: [
         AsyncPipe,
+        NgForOf,
         TuiAmountPipe,
         TuiButton,
         TuiChevron,
         TuiDataList,
-        NgForOf,
         TuiDropdown,
     ],
     templateUrl: './index.html',
