@@ -35,8 +35,6 @@ class TuiLinkStyles {}
     host: {
         tuiLink: '',
         '[style.text-decoration-line]': 'pseudo ? "underline" : null',
-        // https://bugs.webkit.org/show_bug.cgi?id=303022
-        '(pointerdown)': '$event.currentTarget?.focus()',
     },
 })
 export class TuiLink {
