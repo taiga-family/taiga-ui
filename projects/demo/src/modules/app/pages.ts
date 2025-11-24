@@ -1519,13 +1519,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'FormatDate',
-                keywords:
-                    'format, форматирование, преобразование, дата, date, timestamp, пайп, pipe',
-                route: DemoRoute.FormatDate,
-            },
-            {
-                section: 'Tools',
                 title: 'FormatNumber',
                 keywords:
                     'format, форматирование, преобразование, пробелы, тысячи, пайп, pipe',

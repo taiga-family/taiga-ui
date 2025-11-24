@@ -956,11 +956,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../pipes/flag'),
     }),
     route({
-        path: DemoRoute.FormatDate,
-        loadComponent: async () => import('../pipes/format-date'),
-        title: 'FormatDate',
-    }),
-    route({
         path: DemoRoute.FormatNumber,
         loadComponent: async () => import('../pipes/format-number'),
         title: 'FormatNumber',

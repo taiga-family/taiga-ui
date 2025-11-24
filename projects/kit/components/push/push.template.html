@@ -23,7 +23,7 @@
     @if (timestamp) {
         <span
             class="t-time"
-            [textContent]="isString(timestamp) ? timestamp : (timestamp | tuiFormatDate)"
+            [textContent]="isString(timestamp) ? timestamp : (timestamp | date: 'h:mm a')"
         ></span>
     }
 </div>
