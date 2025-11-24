@@ -66,7 +66,7 @@ export class TuiNativeSelect<T>
          * ```
          * (it breaks `tuiValue` utility logic)
          */
-        if (this.options()) {
+        if (this.options().length) {
             this.textfield.value.set(this.stringified());
         }
     });
