@@ -1,4 +1,4 @@
-import {AsyncPipe} from '@angular/common';
+import {DatePipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,12 +9,11 @@ import {
 } from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {TuiFormatDatePipe} from '@taiga-ui/core/pipes/format-date';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-push',
-    imports: [AsyncPipe, TuiButton, TuiFormatDatePipe],
+    imports: [DatePipe, TuiButton],
     templateUrl: './push.template.html',
     styleUrl: './push.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
