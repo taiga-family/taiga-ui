@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.62.0](https://github.com/taiga-family/taiga-ui/compare/v4.61.0...v4.62.0) (2025-11-24)
+
+### ⚠ BREAKING CHANGES
+
+- resolve valid base href (#12570)
+
+### revert
+
+- resolve valid base href ([#12570](https://github.com/taiga-family/taiga-ui/issues/12570))
+  ([fdab092](https://github.com/taiga-family/taiga-ui/commit/fdab092a8413e2ebf4d44c4858de821320a108ba))
+
+### 🐞 Bug Fixes
+
+- **addon-table:** remove generic type constraint from `TuiTableSortPipe`
+  ([#12574](https://github.com/taiga-family/taiga-ui/issues/12574))
+  ([e98f6fd](https://github.com/taiga-family/taiga-ui/commit/e98f6fd14070ae3830be441053f581b8ff4fdede))
+- **cdk:** fix append month in backward direction for last day of month in TuiDay
+  ([#12565](https://github.com/taiga-family/taiga-ui/issues/12565))
+  ([660926e](https://github.com/taiga-family/taiga-ui/commit/660926eb97ac4e78294e838887aa5973dbbc3b4c))
+- **core:** `ActiveZone` fix inside dialogs for Safari ([#12634](https://github.com/taiga-family/taiga-ui/issues/12634))
+  ([240884b](https://github.com/taiga-family/taiga-ui/commit/240884bd052fe7550407f14b32264e5bfab03c8e))
+- **core:** `tuiLink` with `iconStart` has double transition
+  ([#12507](https://github.com/taiga-family/taiga-ui/issues/12507))
+  ([b819205](https://github.com/taiga-family/taiga-ui/commit/b819205e4741ef3c0926e39c89318fc966cbb1dc))
+- **kit:** `inputChip` - add special character clearing
+  ([#12640](https://github.com/taiga-family/taiga-ui/issues/12640))
+  ([242f272](https://github.com/taiga-family/taiga-ui/commit/242f2723afb901c9bb699b7a37fea81d4c6c27b0))
+- **kit:** `InputNumber` with long `[prefix]`/`[postfix]` has invalid input length restriction
+  ([#12516](https://github.com/taiga-family/taiga-ui/issues/12516))
+  ([55776cc](https://github.com/taiga-family/taiga-ui/commit/55776cc7daa4a8ad5b10332dce10c2dedb9750d9))
+- **kit:** `Select` with native picker has invalid appearance for initial value
+  ([#12644](https://github.com/taiga-family/taiga-ui/issues/12644))
+  ([aa1564f](https://github.com/taiga-family/taiga-ui/commit/aa1564f4282bd2ee774f5dd459578bb1019d3702))
+- **kit:** impossible to select the first option in native `Select` without placeholder
+  ([#12641](https://github.com/taiga-family/taiga-ui/issues/12641))
+  ([e54577e](https://github.com/taiga-family/taiga-ui/commit/e54577e4d6e5d366cb8aba7550a8b7a987f810b6))
+- **layout:** `CardLarge` is not compatible with `Header` (font has CSS specificity problem)
+  ([#12549](https://github.com/taiga-family/taiga-ui/issues/12549))
+  ([a94e65a](https://github.com/taiga-family/taiga-ui/commit/a94e65ad91ac731ab86d7cee0a6a9c2b80388649))
+- **layout:** fix app-bar-back padding inside dialog on desktop
+  ([#12500](https://github.com/taiga-family/taiga-ui/issues/12500))
+  ([f0ac438](https://github.com/taiga-family/taiga-ui/commit/f0ac4389c0113375be2ae9c2c46dd9b205c6d2e6))
+- **layout:** support html in hint aside ([#12562](https://github.com/taiga-family/taiga-ui/issues/12562))
+  ([758af9e](https://github.com/taiga-family/taiga-ui/commit/758af9e7ccf7502a7edf323e75d46c6dca53c95f))
+
 ## [4.61.0](https://github.com/taiga-family/taiga-ui/compare/v4.60.0...v4.61.0) (2025-11-10)
 
 ### 🐞 Bug Fixes
