@@ -1,0 +1,1 @@
+import{Yb as p}from"./chunk-PVL5PQAX.js";var r=class r{transform(t,e,...n){return e(t,...n)}};r.\u0275fac=function(e){return new(e||r)},r.\u0275pipe=p({name:"tuiMapper",type:r,pure:!0});var i=r;export{i as a};
