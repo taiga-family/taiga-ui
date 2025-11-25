@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
@@ -66,8 +60,7 @@ export class Sandbox {
 
     protected readonly control = new FormControl(this.options[0]!);
 
-    @Output()
-    public readonly itemClick = new EventEmitter<User>();
+    public readonly itemClick = output<User>();
 
     public readonly content = input<PolymorpheusContent<TuiContext<User>>>(
         ({$implicit}) => this.stringify()($implicit),

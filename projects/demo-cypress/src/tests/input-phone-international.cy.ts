@@ -2,12 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
-    EventEmitter,
     inject,
     input,
     model,
     type OnInit,
-    Output,
+    output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -66,11 +65,9 @@ export class Test implements OnInit {
         'KZ',
     ]);
 
-    @Output()
-    public readonly valueChange = new EventEmitter<string>();
+    public readonly valueChange = output<string>();
 
-    @Output()
-    public readonly countryIsoCodeChange = new EventEmitter<string>();
+    public readonly countryIsoCodeChange = output<string>();
 
     public ngOnInit(): void {
         this.control()

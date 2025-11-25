@@ -1,10 +1,9 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     input,
     type OnInit,
-    Output,
+    output,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiBooleanHandler, type TuiStringHandler} from '@taiga-ui/cdk';
@@ -49,14 +48,7 @@ export class Sandbox implements OnInit {
 
     public readonly placeholder = input('');
     public readonly control = input(new FormControl<Item | null>(null));
-
-    /**
-     * TODO: use `import {output} from '@angular/core'`
-     * after Cypress >=15.0.0 bump
-     * https://github.com/cypress-io/cypress/issues/32137#issuecomment-3207460304
-     */
-    @Output()
-    public readonly valueChanges = new EventEmitter<Item | null>();
+    public readonly valueChanges = output<Item | null>();
 
     public ngOnInit(): void {
         this.control().valueChanges.subscribe((x) => this.valueChanges.emit(x));
