@@ -5,6 +5,7 @@ input[tuiSwitch]._native {
     inline-size: 3.1875rem;
     appearance: auto;
     accent-color: var(--tui-background-accent-2);
+    background: none !important;
 
     &:invalid {
         accent-color: var(--tui-status-negative);
@@ -15,7 +16,7 @@ input[tuiSwitch]._native {
         display: none;
     }
 
-    @supports (anchor-name: xxx) {
+    @supports (anchor-name: --xxx) {
         inline-size: 4rem;
         block-size: 1.75rem;
     }
