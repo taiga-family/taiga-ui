@@ -11,7 +11,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternational,
@@ -20,13 +20,7 @@ import {
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiIcon,
-        TuiInputPhoneInternational,
-        TuiRoot,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiIcon, TuiInputPhoneInternational, TuiRoot],
     template: `
         <tui-root>
             <tui-textfield>

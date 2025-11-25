@@ -16,6 +16,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         autocomplete: 'cc-exp',
     },
 })
-export class TuiInputExpire {
+export class TuiInputExpireDirective {
     protected readonly mask = tuiMaskito(TUI_MASK_EXPIRE);
 }

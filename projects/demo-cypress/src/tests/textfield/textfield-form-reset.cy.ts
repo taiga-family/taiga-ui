@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiYear} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiRoot} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
@@ -29,7 +29,6 @@ import {
         TuiInputTime,
         TuiRoot,
         TuiSelect,
-        TuiTextfield,
     ],
     template: `
         <tui-root>

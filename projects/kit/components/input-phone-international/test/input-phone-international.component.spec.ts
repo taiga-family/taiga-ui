@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, signal, ViewChild} from '@angular/co
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {provideTaiga, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {
     TUI_ENGLISH_LANGUAGE,
     TUI_FRENCH_LANGUAGE,
@@ -13,6 +13,7 @@ import {
 } from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternational,
+    TuiInputPhoneInternationalComponent,
     tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
@@ -21,7 +22,7 @@ import {of} from 'rxjs';
 
 describe('InputPhoneInternational', () => {
     @Component({
-        imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot, TuiTextfield],
+        imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
         template: `
             <tui-root>
                 <tui-textfield>
@@ -38,8 +39,8 @@ describe('InputPhoneInternational', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiInputPhoneInternational, {static: true})
-        public component!: TuiInputPhoneInternational;
+        @ViewChild(TuiInputPhoneInternationalComponent, {static: true})
+        public component!: TuiInputPhoneInternationalComponent;
 
         public control = new FormControl('+79110330102');
 
@@ -52,7 +53,7 @@ describe('InputPhoneInternational', () => {
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-    let component: TuiInputPhoneInternational;
+    let component: TuiInputPhoneInternationalComponent;
     let inputPO: TuiNativeInputPO;
 
     const initializeTestModule = (

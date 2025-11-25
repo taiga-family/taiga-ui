@@ -8,7 +8,6 @@ import {
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
@@ -29,7 +28,6 @@ import {
         TuiInputColor,
         TuiLabel,
         TuiSwitch,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

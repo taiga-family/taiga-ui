@@ -38,7 +38,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputColor),
+        tuiAsControl(TuiInputColorComponent),
         tuiFallbackValueProvider(''),
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
     ],
@@ -52,7 +52,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
         '(input)': 'onChange($event.target.value)',
     },
 })
-export class TuiInputColor extends TuiControl<string> {
+export class TuiInputColorComponent extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly list = inject(new HostAttributeToken('list'), {optional: true});

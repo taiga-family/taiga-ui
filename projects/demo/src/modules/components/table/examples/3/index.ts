@@ -10,7 +10,6 @@ import {
     TuiIcon,
     TuiNumberFormat,
     TuiScrollbar,
-    TuiTextfield,
 } from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -43,7 +42,6 @@ interface Item {
         TuiSelect,
         TuiTable,
         TuiTextarea,
-        TuiTextfield,
         TuiValidator,
         WaIntersectionObserver,
     ],

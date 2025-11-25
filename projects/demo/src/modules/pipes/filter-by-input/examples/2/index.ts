@@ -3,7 +3,6 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
@@ -25,7 +24,6 @@ interface User {
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

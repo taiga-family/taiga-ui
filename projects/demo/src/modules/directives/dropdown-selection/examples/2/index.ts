@@ -22,9 +22,13 @@ import {
     TuiDropdown,
     tuiGetWordRange,
     TuiOption,
-    TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiInitialsPipe, TuiTextarea} from '@taiga-ui/kit';
+import {
+    TuiAvatar,
+    TuiInitialsPipe,
+    TuiTextarea,
+    TuiTextareaComponent,
+} from '@taiga-ui/kit';
 import {type Observable} from 'rxjs';
 
 export interface User {
@@ -43,7 +47,6 @@ export interface User {
         TuiInitialsPipe,
         TuiMapperPipe,
         TuiTextarea,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -53,7 +56,7 @@ export default class Example {
     @ViewChildren(TuiOption, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    @ViewChild(TuiTextarea, {read: ElementRef})
+    @ViewChild(TuiTextareaComponent, {read: ElementRef})
     private readonly textarea?: ElementRef<HTMLTextAreaElement>;
 
     @ViewChild(TuiDriver)

@@ -3,29 +3,15 @@ import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    tuiCreateLuhnValidator,
-    TuiInputCard,
-    TuiInputCVC,
-    TuiInputExpire,
-} from '@taiga-ui/addon-commerce';
+import {tuiCreateLuhnValidator, TuiInputCard} from '@taiga-ui/addon-commerce';
 import {
     TuiError,
     TuiNotificationService,
-    TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 
 @Component({
-    imports: [
-        JsonPipe,
-        ReactiveFormsModule,
-        TuiError,
-        TuiInputCard,
-        TuiInputCVC,
-        TuiInputExpire,
-        TuiTextfield,
-    ],
+    imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputCard],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

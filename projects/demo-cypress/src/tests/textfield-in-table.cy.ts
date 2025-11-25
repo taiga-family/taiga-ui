@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiInput, TuiTextfield} from '@taiga-ui/core';
+import {TuiInput} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiInputChip, TuiTextarea} from '@taiga-ui/kit';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -42,7 +42,7 @@ class MySelectTextfield {
 }
 
 @Component({
-    imports: [TuiTextarea, TuiTextfield],
+    imports: [TuiTextarea],
     template: `
         <tui-textfield>
             <textarea

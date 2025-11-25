@@ -37,8 +37,8 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     selector: 'input[tuiComboBox]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),
-        tuiAsTextfieldAccessor(TuiComboBox),
-        tuiAsControl(TuiComboBox),
+        tuiAsTextfieldAccessor(TuiComboBoxDirective),
+        tuiAsControl(TuiComboBoxDirective),
     ],
     hostDirectives: [TuiWithInput],
     host: {
@@ -48,7 +48,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
-export class TuiComboBox<T>
+export class TuiComboBoxDirective<T>
     extends TuiControl<T | string | null>
     implements TuiTextfieldAccessor<T>
 {

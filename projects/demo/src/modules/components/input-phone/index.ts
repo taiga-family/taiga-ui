@@ -5,7 +5,6 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
 
 @Component({
@@ -16,7 +15,6 @@ import {TuiInputPhone} from '@taiga-ui/kit';
         TuiDocIcons,
         TuiDocTextfield,
         TuiInputPhone,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

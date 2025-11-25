@@ -36,7 +36,7 @@ import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options'
         '(scroll.once)': 'onScroll()',
     },
 })
-export class TuiTextarea implements AfterViewInit {
+export class TuiTextareaComponent implements AfterViewInit {
     @ViewChild(TemplateRef)
     private readonly template?: TemplateRef<any>;
 

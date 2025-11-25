@@ -1,8 +1,7 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiRoot} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
@@ -12,15 +11,7 @@ interface Country {
 }
 
 @Component({
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataListWrapper,
-        TuiRoot,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiChevron, TuiComboBox, TuiDataListWrapper, TuiRoot],
     template: `
         <tui-root>
             <tui-textfield

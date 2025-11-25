@@ -15,7 +15,7 @@ import {
     type TuiContext,
     type TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiChevron,
@@ -44,7 +44,6 @@ interface Country {
         TuiDocTextfield,
         TuiDropdown,
         TuiFilterByInputPipe,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

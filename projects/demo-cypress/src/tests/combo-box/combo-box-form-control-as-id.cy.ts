@@ -10,7 +10,7 @@ import {
 import {type ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
@@ -20,14 +20,7 @@ interface Item {
 }
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataList,
-        TuiRoot,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiChevron, TuiComboBox, TuiDataList, TuiRoot],
     template: `
         <tui-root>
             <tui-textfield

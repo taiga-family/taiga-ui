@@ -33,7 +33,7 @@ function isText(value: string): boolean {
 @Directive({
     selector: 'input[tuiInputPhone]',
     providers: [
-        tuiAsControl(TuiInputPhone),
+        tuiAsControl(TuiInputPhoneDirective),
         tuiValueTransformerFrom(TUI_INPUT_PHONE_OPTIONS),
     ],
     hostDirectives: [TuiWithInput, MaskitoDirective],
@@ -44,7 +44,7 @@ function isText(value: string): boolean {
         '(input)': 'onInput($event.target.value)',
     },
 })
-export class TuiInputPhone extends TuiControl<string | null> {
+export class TuiInputPhoneDirective extends TuiControl<string | null> {
     private readonly input = inject(TuiInputDirective);
     private readonly host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
 

@@ -47,9 +47,9 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiFlagPipe} from '@taiga-ui/kit/pipes';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
-import {tuiGetCallingCode, tuiMaskito} from '@taiga-ui/kit/utils';
+import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
-import {type MetadataJson} from 'libphonenumber-js/core';
+import {getCountryCallingCode, type MetadataJson} from 'libphonenumber-js/core';
 import {filter, from, skip} from 'rxjs';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
@@ -76,7 +76,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputPhoneInternational),
+        tuiAsControl(TuiInputPhoneInternationalComponent),
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
     ],
@@ -91,7 +91,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '(beforeinput.capture)': 'onPaste($event)',
     },
 })
-export class TuiInputPhoneInternational extends TuiControl<string> {
+export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     @ViewChildren(TuiOption, {read: ElementRef})
     protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
 
@@ -119,7 +119,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             .map((iso) => ({
                 iso,
                 name: this.names()?.[iso] || '',
-                code: tuiGetCallingCode(iso, this.metadata()),
+                code: getCallingCode(iso, this.metadata()),
             }))
             .filter(({name, code}) => TUI_DEFAULT_MATCHER(name + code, this.search())),
     );
@@ -130,7 +130,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             takeUntilDestroyed(),
         )
         .subscribe((active) => {
-            const prefix = `${tuiGetCallingCode(this.code(), this.metadata())} `;
+            const prefix = `${getCallingCode(this.code(), this.metadata())} `;
 
             this.search.set('');
             this.masked.update((value) => {
@@ -193,7 +193,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.search.set('');
         this.masked.set(
             maskitoTransform(
-                this.value() || tuiGetCallingCode(code, this.metadata()),
+                this.value() || getCallingCode(code, this.metadata()),
                 this.mask() || MASKITO_DEFAULT_OPTIONS,
             ),
         );
@@ -222,7 +222,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     private unmask(maskedValue: string): string {
         const value = maskedValue.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
 
-        return value === tuiGetCallingCode(this.code(), this.metadata()) ? '' : value;
+        return value === getCallingCode(this.code(), this.metadata()) ? '' : value;
     }
 
     private getCountryCode(value: string): TuiCountryIsoCode | null {
@@ -233,4 +233,8 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             ? (maskitoGetCountryFromNumber(phone, metadata) ?? null)
             : null;
     }
+}
+
+function getCallingCode(iso: TuiCountryIsoCode, metadata?: MetadataJson | null): string {
+    return metadata ? CHAR_PLUS + getCountryCallingCode(iso, metadata) : '';
 }

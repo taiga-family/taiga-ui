@@ -44,7 +44,7 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
         autocomplete: 'cc-number',
     },
 })
-export class TuiInputCard implements OnInit {
+export class TuiInputCardComponent implements OnInit {
     private readonly icons = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly control = inject(NgControl);
     private readonly value = toSignal(

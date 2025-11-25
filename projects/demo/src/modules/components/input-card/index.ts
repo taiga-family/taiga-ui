@@ -6,7 +6,6 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiInputCard} from '@taiga-ui/addon-commerce';
-import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
     imports: [
@@ -17,7 +16,6 @@ import {TuiTextfield} from '@taiga-ui/core';
         TuiDocIcons,
         TuiDocTextfield,
         TuiInputCard,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,
