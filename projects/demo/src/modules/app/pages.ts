@@ -1002,7 +1002,7 @@ export const pages: DocRoutePages = [
     {
         section: 'Components',
         title: 'Cell',
-        keywords: 'cell, feed, item, tuiaccessories, accessories',
+        keywords: 'cell, feed, item, tuiAccessories, accessories',
         route: DemoRoute.Cell,
         meta: [
             {name: 'tui-cell', figmaVersion: '1.3.1'},
@@ -1043,7 +1043,7 @@ export const pages: DocRoutePages = [
     {
         section: 'Layout',
         title: 'Header',
-        keywords: 'header, заголовок, item, tuiaccessories, accessories',
+        keywords: 'header, заголовок, item, tuiAccessories, accessories',
         route: DemoRoute.Header,
         meta: {},
     },
@@ -1080,7 +1080,7 @@ export const pages: DocRoutePages = [
         section: 'Components',
         title: 'Title',
         keywords:
-            'subtitle, заголовок, caption, description, подзаголовок, tuisubtitle, title',
+            'subtitle, заголовок, caption, description, подзаголовок, tuiSubtitle, title',
         route: DemoRoute.Title,
     },
     {
