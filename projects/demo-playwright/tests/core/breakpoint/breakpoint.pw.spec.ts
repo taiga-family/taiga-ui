@@ -10,17 +10,15 @@ test.describe('Breakpoint token', () => {
         {width: 767, height: 900},
         // tablet (desktopSmall)
         {width: 768, height: 900},
-        {width: 1023, height: 900},
-        // desktop (desktopLarge)
         {width: 1024, height: 900},
-        {width: 1279, height: 900},
         {width: 1280, height: 900},
+        // desktop (desktopLarge)
         {width: 1281, height: 900},
     ].forEach(({width, height}) => {
         test(`${width}x${height}`, async ({page}) => {
             await page.setViewportSize({width, height});
             await tuiGoto(page, DemoRoute.Tokens);
-            const example = new TuiDocumentationPagePO(page).getExample('#breakpoints');
+            const example = new TuiDocumentationPagePO(page).getExample('#breakpoint');
 
             await expect
                 .soft(example)
