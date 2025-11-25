@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHint} from '@taiga-ui/core/directives/hint';
@@ -30,6 +31,7 @@ const STEP = 0.5;
         PercentPipe,
         TuiButton,
         TuiHint,
+        TuiLet,
         TuiPreviewAction,
         TuiSlider,
     ],
@@ -40,6 +42,9 @@ const STEP = 0.5;
 export class TuiPreviewZoom {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
+    protected readonly sliderLabel$ = this.zoomTexts$.pipe(
+        map((texts) => `${texts.zoomOut} / ${texts.zoomIn}`),
+    );
 
     @Input()
     public min = 0.5;
