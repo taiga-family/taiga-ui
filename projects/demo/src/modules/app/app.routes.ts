@@ -230,9 +230,9 @@ export const ROUTES: Routes = [
         title: 'SwipeActions',
     }),
     route({
-        path: DemoRoute.Textfield,
-        loadComponent: async () => import('../components/textfield'),
-        title: 'Textfield',
+        path: DemoRoute.Input,
+        loadComponent: async () => import('../components/input'),
+        title: 'Input',
     }),
     route({
         path: DemoRoute.Navigation,

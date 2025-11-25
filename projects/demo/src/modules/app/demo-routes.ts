@@ -42,7 +42,6 @@ export const DemoRoute = {
     Surface: '/components/surface',
     SwipeActions: '/components/swipe-actions',
     BottomSheet: '/components/bottom-sheet',
-    Textfield: '/components/textfield',
     Navigation: '/components/navigation',
     Search: '/components/search',
     InputSearch: '/layout/input-search',

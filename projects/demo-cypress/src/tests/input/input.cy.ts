@@ -29,7 +29,7 @@ export class TestTextfield {
     public readonly content = input('');
 }
 
-describe('Textfield', () => {
+describe('Input', () => {
     beforeEach(() => cy.viewport(200, 150));
 
     describe('[filler] property', () => {
