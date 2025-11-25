@@ -1,6 +1,22 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-input[tuiSwitch] {
+input[tuiSwitch]._native {
+    block-size: 1.9375rem;
+    inline-size: 3.1875rem;
+    appearance: auto;
+    accent-color: var(--tui-background-accent-2);
+
+    &:invalid {
+        accent-color: var(--tui-status-negative);
+    }
+
+    &::before,
+    &::after {
+        display: none;
+    }
+}
+
+input[tuiSwitch]:not(._native) {
     block-size: 1.9375rem;
     inline-size: 3.1875rem;
     border-radius: 2rem;
