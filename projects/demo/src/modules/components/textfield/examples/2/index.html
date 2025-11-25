@@ -1,7 +1,7 @@
 <tui-textfield iconStart="@tui.search">
     <label tuiLabel>Disabled</label>
     <input
-        tuiTextfield
+        tuiInput
         [disabled]="true"
         [(ngModel)]="value"
     />
@@ -11,7 +11,7 @@
     <label tuiLabel>Read-only</label>
     <input
         placeholder="I am placeholder"
-        tuiTextfield
+        tuiInput
         [readOnly]="true"
         [(ngModel)]="value"
     />
@@ -21,7 +21,7 @@
     <label tuiLabel>Invalid</label>
     <input
         placeholder="I am placeholder"
-        tuiTextfield
+        tuiInput
         [invalid]="true"
         [(ngModel)]="value"
     />

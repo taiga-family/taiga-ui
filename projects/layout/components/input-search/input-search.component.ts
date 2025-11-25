@@ -17,10 +17,8 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
-import {
-    TuiTextfieldComponent,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -34,7 +32,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     styleUrl: './input-search.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiCellOptionsProvider({size: 'm'})],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithInput],
     host: {
         ngSkipHydration: 'true',
         '(focus)': 'open()',

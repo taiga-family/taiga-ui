@@ -4,7 +4,7 @@ import {FormArray, FormControl, FormGroup, ReactiveFormsModule} from '@angular/f
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
 import {TuiItemsWithMore} from '@taiga-ui/kit';
 import {TuiSearch} from '@taiga-ui/layout';
 
@@ -13,9 +13,9 @@ import {TuiSearch} from '@taiga-ui/layout';
         JsonPipe,
         ReactiveFormsModule,
         TuiButton,
+        TuiInput,
         TuiItemsWithMore,
         TuiSearch,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

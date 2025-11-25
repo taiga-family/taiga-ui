@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownSheet, TuiMobileCalendarDropdownNew} from '@taiga-ui/addon-mobile';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
@@ -15,7 +14,6 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiForm,
         TuiInputDateTime,
         TuiMobileCalendarDropdownNew,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

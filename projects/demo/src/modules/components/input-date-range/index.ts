@@ -8,7 +8,7 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
@@ -22,7 +22,6 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
         TuiDocTextfield,
         TuiDropdown,
         TuiInputDateRange,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -2,22 +2,16 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiTextfield} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiDataListWrapper,
-    TuiInputChip,
-    TuiSelect,
-    TuiTextarea,
-} from '@taiga-ui/kit';
+import {TuiInput} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, TuiInputChip, TuiTextarea} from '@taiga-ui/kit';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [TuiTextfield],
+    imports: [TuiInput],
     template: `
         <tui-textfield>
             <input
-                tuiTextfield
+                tuiInput
                 value="5678"
             />
         </tui-textfield>
@@ -27,16 +21,15 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 class MyInputTextfield {}
 
 @Component({
-    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiSelect, TuiTextfield],
+    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiInput],
     template: `
         <tui-textfield tuiChevron>
             <input
-                tuiTextfield
+                tuiInput
                 [(ngModel)]="value"
             />
             <tui-data-list-wrapper
                 *tuiDropdown
-                new
                 [items]="items"
             />
         </tui-textfield>
@@ -49,7 +42,7 @@ class MySelectTextfield {
 }
 
 @Component({
-    imports: [TuiTextarea, TuiTextfield],
+    imports: [TuiTextarea],
     template: `
         <tui-textfield>
             <textarea
@@ -63,7 +56,7 @@ class MySelectTextfield {
 class MyTextarea {}
 
 @Component({
-    imports: [FormsModule, TuiInputChip, TuiTextfield],
+    imports: [FormsModule, TuiInputChip],
     template: `
         <tui-textfield multi>
             <input
@@ -96,7 +89,7 @@ class MyInputCardGroup {
 }
 
 @Component({
-    imports: [PolymorpheusOutlet, TuiTable, TuiTextfield],
+    imports: [PolymorpheusOutlet, TuiInput, TuiTable],
     template: `
         <table
             style="inline-size: 100%"
@@ -107,7 +100,7 @@ class MyInputCardGroup {
                     <td tuiTd>
                         <tui-textfield>
                             <input
-                                tuiTextfield
+                                tuiInput
                                 value="1234"
                             />
                         </tui-textfield>

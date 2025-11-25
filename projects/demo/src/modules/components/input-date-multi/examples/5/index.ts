@@ -3,13 +3,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_ARRAY, TuiDay} from '@taiga-ui/cdk';
-import {type TuiMarkerHandler, TuiTextfield} from '@taiga-ui/core';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiInputDateMulti} from '@taiga-ui/kit';
 
 const DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    imports: [FormsModule, TuiInputDateMulti, TuiTextfield],
+    imports: [FormsModule, TuiInputDateMulti],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

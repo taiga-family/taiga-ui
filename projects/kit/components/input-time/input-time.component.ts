@@ -3,29 +3,23 @@ import {
     Component,
     computed,
     Directive,
+    HostAttributeToken,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {type TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiTextfieldContent,
-    TuiTextfieldDirective,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 
 import {TuiInputTimeDirective} from './input-time.directive';
 
-@Directive({
-    standalone: false,
-    host: {
-        '[attr.list]': 'null',
-    },
-})
+@Directive({host: {'[attr.list]': 'null'}})
 export abstract class TuiNativeTimePicker {
-    protected readonly list = tuiInjectElement().getAttribute('list');
+    protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
 
     protected getStep(timeMode: MaskitoTimeMode): number {
         switch (timeMode) {
@@ -65,10 +59,7 @@ export class TuiInputTimeComponent extends TuiNativeTimePicker {
     private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);
 
     protected readonly host = inject(TuiInputTimeDirective);
-
-    protected readonly textfield = inject(TuiTextfieldDirective);
     protected readonly value = computed(() => this.toISOString(this.control.value()));
-
     protected readonly step = computed(() => this.getStep(this.host.timeMode()));
 
     protected setValue(value: string): void {

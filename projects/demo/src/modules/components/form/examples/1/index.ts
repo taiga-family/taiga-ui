@@ -6,8 +6,8 @@ import {
     TuiButton,
     TuiError,
     TuiIcon,
+    TuiInput,
     TuiNotification,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
@@ -22,10 +22,10 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
         TuiForm,
         TuiHeader,
         TuiIcon,
+        TuiInput,
         TuiNotification,
         TuiSegmented,
         TuiSwitch,
-        TuiTextfield,
         TuiTitle,
         TuiTooltip,
     ],

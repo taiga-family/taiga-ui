@@ -2,21 +2,15 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiTextarea, tuiTextareaOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiTextarea, TuiTextfield],
+    imports: [FormsModule, TuiTextarea],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiTextareaOptionsProvider({
-            min: 4,
-            max: 4,
-        }),
-    ],
+    providers: [tuiTextareaOptionsProvider({min: 4, max: 4})],
 })
 export default class Example {
     protected value =

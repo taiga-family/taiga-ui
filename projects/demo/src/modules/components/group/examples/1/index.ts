@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiError, TuiGroup, TuiHint, TuiIcon, TuiTextfield} from '@taiga-ui/core';
+import {TuiError, TuiGroup, TuiIcon, TuiInput} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -18,11 +18,10 @@ import {
         TuiDataListWrapper,
         TuiError,
         TuiGroup,
-        TuiHint,
         TuiIcon,
+        TuiInput,
         TuiInputChip,
         TuiMultiSelect,
-        TuiTextfield,
         TuiTooltip,
     ],
     templateUrl: './index.html',

@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {type TuiBooleanHandler, TuiPlatform} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
@@ -15,7 +14,6 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         TuiDropdownSheet,
         TuiPlatform,
         TuiSelect,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

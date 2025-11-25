@@ -3,10 +3,10 @@ import {FormsModule} from '@angular/forms';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown, TuiTextfield],
+    imports: [FormsModule, TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown, TuiInput],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

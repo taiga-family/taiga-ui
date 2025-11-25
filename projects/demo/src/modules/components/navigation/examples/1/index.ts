@@ -11,9 +11,9 @@ import {
     TuiDataList,
     TuiDropdown,
     TuiIcon,
+    TuiInput,
     TuiLink,
     TuiPopupService,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
@@ -60,11 +60,11 @@ class Portal {}
         TuiForm,
         TuiHeader,
         TuiIcon,
+        TuiInput,
         TuiLink,
         TuiNavigation,
         TuiSwitch,
         TuiTabs,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

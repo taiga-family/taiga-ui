@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiError, TuiTextfield} from '@taiga-ui/core';
+import {TuiError, TuiInput} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
@@ -24,14 +24,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 }
 
 @Component({
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        TuiError,
-        TuiForm,
-        TuiSwitch,
-        TuiTextfield,
-    ],
+    imports: [FormsModule, ReactiveFormsModule, TuiError, TuiForm, TuiInput, TuiSwitch],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

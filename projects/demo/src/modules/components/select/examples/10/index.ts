@@ -2,19 +2,13 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent, TuiTextfield} from '@taiga-ui/core';
+import {tuiAsOptionContent} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 import {Option} from './option';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiDataListWrapper,
-        TuiSelect,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiChevron, TuiDataListWrapper, TuiSelect],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

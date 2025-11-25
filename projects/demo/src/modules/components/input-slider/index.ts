@@ -8,7 +8,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
 import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -22,7 +22,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiDocTextfield,
         TuiInputSlider,
         TuiNumberFormat,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

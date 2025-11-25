@@ -21,12 +21,11 @@ import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
-    TuiTextfieldDirective,
     tuiTextfieldIcon,
     TuiWithNativePicker,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TUI_ITEMS_HANDLERS,
@@ -66,7 +65,7 @@ export abstract class TuiInputDateBase<
     );
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly textfield = inject(TuiTextfieldDirective);
+    protected readonly input = inject(TuiInputDirective);
     protected readonly filler = tuiWithDateFiller();
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly open = inject(TuiDropdownOpen).open;
@@ -86,7 +85,7 @@ export abstract class TuiInputDateBase<
             this.stringify(this.value()) ||
             (this.filler().length === this.el.value.length ? '' : this.el.value);
 
-        this.textfield.value.set(value);
+        this.input.value.set(value);
     });
 
     protected readonly calendarIn = effect(() => {
@@ -126,7 +125,7 @@ export abstract class TuiInputDateBase<
 
         if (changed || reset) {
             super.writeValue(value);
-            this.textfield.value.set(this.stringify(this.value()));
+            this.input.value.set(this.stringify(this.value()));
         }
     }
 
@@ -170,7 +169,7 @@ export abstract class TuiInputDateBase<
         tuiValueTransformerFrom(TUI_INPUT_DATE_OPTIONS_NEW),
     ],
     hostDirectives: [
-        TuiWithTextfield,
+        TuiWithInput,
         TuiDropdownAuto,
         TuiItemsHandlersValidator,
         MaskitoDirective,

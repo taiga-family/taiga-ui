@@ -3,13 +3,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
 const TODAY = TuiDay.currentLocal();
 
 @Component({
-    imports: [FormsModule, TuiInputDateTime, TuiTextfield],
+    imports: [FormsModule, TuiInputDateTime],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

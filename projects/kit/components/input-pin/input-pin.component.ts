@@ -35,7 +35,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         '(keydown.arrowLeft)': 'onArrow()',
     },
 })
-export class TuiInputPin {
+export class TuiInputPinComponent {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly mask = signal<MaskitoMask>(/^\d+$/);
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;

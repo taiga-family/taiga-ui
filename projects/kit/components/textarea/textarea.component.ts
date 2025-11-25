@@ -12,11 +12,9 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
-import {
-    TuiTextfieldComponent,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -29,7 +27,7 @@ import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options'
     styleUrl: './textarea.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithInput],
     host: {
         ngSkipHydration: 'true',
         '[class._mobile]': 'isMobile',
@@ -38,7 +36,7 @@ import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options'
         '(scroll.once)': 'onScroll()',
     },
 })
-export class TuiTextarea implements AfterViewInit {
+export class TuiTextareaComponent implements AfterViewInit {
     @ViewChild(TemplateRef)
     private readonly template?: TemplateRef<any>;
 

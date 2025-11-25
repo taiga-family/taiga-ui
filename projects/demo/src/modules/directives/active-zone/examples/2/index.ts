@@ -2,10 +2,10 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZone} from '@taiga-ui/cdk';
-import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService, TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiActiveZone, TuiButton, TuiTextfield],
+    imports: [TuiActiveZone, TuiButton, TuiInput],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

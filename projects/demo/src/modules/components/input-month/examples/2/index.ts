@@ -3,12 +3,12 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiMonth} from '@taiga-ui/cdk';
-import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiError, tuiValidationErrorsProvider} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
 import {interval, map, startWith} from 'rxjs';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiInputMonth, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiError, TuiInputMonth],
     templateUrl: './index.html',
     styles: ':host {display: block; min-height: 4rem}',
     encapsulation,

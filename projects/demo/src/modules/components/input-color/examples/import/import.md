@@ -1,5 +1,4 @@
 ```ts
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputColor} from '@taiga-ui/kit';
 
 // ...
@@ -8,7 +7,6 @@ import {TuiInputColor} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiTextfield,
     TuiInputColor,
   ],
   // ...

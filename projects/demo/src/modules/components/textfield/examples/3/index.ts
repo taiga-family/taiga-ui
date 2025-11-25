@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdown, TuiIcon, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown, TuiIcon, TuiInput, TuiSelectLike} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -18,8 +18,8 @@ import {
         TuiDropdown,
         TuiFilterByInputPipe,
         TuiIcon,
+        TuiInput,
         TuiSelectLike,
-        TuiTextfield,
         TuiTooltip,
     ],
     templateUrl: './index.html',

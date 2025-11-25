@@ -12,6 +12,7 @@ import {tuiGetClosestFocusable, tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
     host: {
         tabIndex: '0',
         '(window:focusin.zoneless)': 'initialized && onFocusIn($event.target)',
+        '(pointerdown)': '$event.currentTarget?.removeAttribute("tabindex")',
     },
 })
 export class TuiFocusTrap implements OnDestroy {
@@ -51,10 +52,7 @@ export class TuiFocusTrap implements OnDestroy {
         const {firstElementChild} = this.el;
 
         if (!tuiContainsOrAfter(this.el, node) && firstElementChild) {
-            tuiGetClosestFocusable({
-                initial: firstElementChild,
-                root: this.el,
-            })?.focus();
+            tuiGetClosestFocusable({initial: firstElementChild, root: this.el})?.focus();
         }
     }
 }

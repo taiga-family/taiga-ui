@@ -3,7 +3,7 @@
   <label tuiLabel>Account</label>
   <input
     [formControl]="control"
-    tuiTextfield
+    tuiInput
   />
   <tui-data-list-wrapper
     *tuiDropdown

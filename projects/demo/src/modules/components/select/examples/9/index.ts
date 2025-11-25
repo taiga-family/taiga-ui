@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiChevron, TuiSelect, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiChevron, TuiSelect],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -9,7 +9,7 @@ import {
     TuiDayRange,
 } from '@taiga-ui/cdk/date-time';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
@@ -33,7 +33,7 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
         tuiValueTransformerFrom(TUI_INPUT_DATE_RANGE_OPTIONS),
         tuiProvide(TUI_INPUT_DATE_OPTIONS_NEW, TUI_INPUT_DATE_RANGE_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, TuiDropdownAuto, MaskitoDirective],
+    hostDirectives: [TuiWithInput, TuiDropdownAuto, MaskitoDirective],
 })
 export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
     protected readonly identity = inject<TuiItemsHandlers<TuiDayRange>>(

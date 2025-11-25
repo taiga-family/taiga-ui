@@ -3,10 +3,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputCard, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiInputCard, TuiTextfield, TuiThumbnailCard],
+    imports: [FormsModule, TuiInputCard, TuiThumbnailCard],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

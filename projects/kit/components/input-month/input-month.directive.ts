@@ -3,13 +3,12 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
-    TuiTextfieldDirective,
     tuiTextfieldIcon,
     TuiWithNativePicker,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownAuto,
@@ -27,14 +26,14 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
         tuiAsControl(TuiInputMonthDirective),
         tuiValueTransformerFrom(TUI_INPUT_MONTH_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, TuiSelectLike, TuiDropdownAuto],
+    hostDirectives: [TuiWithInput, TuiSelectLike, TuiDropdownAuto],
     host: {
         '[disabled]': 'disabled()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
 })
 export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
-    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly input = inject(TuiInputDirective);
     private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
     private readonly open = inject(TuiDropdownOpen).open;
 
@@ -44,7 +43,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     protected readonly valueEffect = effect(() => {
-        this.textfield.value.set(this.formatter()?.(this.value()) || '');
+        this.input.value.set(this.formatter()?.(this.value()) || '');
     });
 
     protected readonly calendarIn = effect(() => {

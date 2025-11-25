@@ -1,13 +1,13 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInput} from '@taiga-ui/core';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiTextfield,
+    TuiInput,
   ],
 })
 export class Example {}

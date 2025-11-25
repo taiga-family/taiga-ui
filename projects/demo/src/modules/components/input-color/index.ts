@@ -4,7 +4,6 @@ import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_INPUT_COLOR_OPTIONS, TuiInputColor} from '@taiga-ui/kit';
 
 @Component({
@@ -14,7 +13,6 @@ import {TUI_INPUT_COLOR_OPTIONS, TuiInputColor} from '@taiga-ui/kit';
         TuiDocControl,
         TuiDocTextfield,
         TuiInputColor,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

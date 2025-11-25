@@ -10,11 +10,10 @@ import {
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
-    TuiTextfieldDirective,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TUI_ITEMS_HANDLERS,
@@ -28,7 +27,7 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
     templateUrl: './native-select.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsTextfieldAccessor(TuiNativeSelect), tuiAsControl(TuiNativeSelect)],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithInput],
     host: {
         '[attr.aria-invalid]': 'invalid()',
         '[disabled]': '!interactive()',
@@ -39,12 +38,11 @@ export class TuiNativeSelect<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly input = inject(TuiInputDirective);
     private readonly options = viewChildren<HTMLOptionElement>('option');
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-
     protected readonly stringified = computed((value = this.value()) =>
         tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
     );
@@ -67,14 +65,12 @@ export class TuiNativeSelect<T>
          * (it breaks `tuiValue` utility logic)
          */
         if (this.options().length) {
-            this.textfield.value.set(this.stringified());
+            this.input.value.set(this.stringified());
         }
     });
 
     public readonly items = input<ReadonlyArray<readonly T[]> | readonly T[] | null>([]);
-
     public readonly labels = input<readonly string[]>([]);
-
     public readonly placeholder = input('');
 
     public setValue(value: T | null): void {

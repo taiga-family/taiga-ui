@@ -6,12 +6,11 @@ import {
     type TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk/date-time';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
-    TuiTextfieldDirective,
     tuiTextfieldIcon,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownAuto,
@@ -29,14 +28,14 @@ import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
         tuiAsControl(TuiInputMonthRangeDirective),
         tuiValueTransformerFrom(TUI_INPUT_MONTH_RANGE_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, TuiSelectLike, TuiDropdownAuto],
+    hostDirectives: [TuiWithInput, TuiSelectLike, TuiDropdownAuto],
     host: {
         '[disabled]': 'disabled()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
 })
 export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null> {
-    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly input = inject(TuiInputDirective);
     private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly intermediateValue = signal<TuiMonth | null>(null);
@@ -53,7 +52,7 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
             ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to)
             : '';
 
-        this.textfield.value.set(string);
+        this.input.value.set(string);
     });
 
     protected readonly calendarInit = effect(() => {

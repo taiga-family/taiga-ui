@@ -8,14 +8,14 @@ import {FormsModule} from '@angular/forms';
 import {
     TuiButton,
     tuiButtonOptionsProvider,
-    TuiTextfield,
+    TuiInput,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-wrapper-example-1',
-    imports: [FormsModule, TuiButton, TuiCheckbox, TuiTextfield],
+    imports: [FormsModule, TuiButton, TuiCheckbox, TuiInput],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,

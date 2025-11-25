@@ -6,7 +6,7 @@
         <label tuiLabel>Search</label>
         <input
           placeholder="Search"
-          tuiTextfield
+          tuiInput
           formControlName="search"
         />
       </tui-textfield>

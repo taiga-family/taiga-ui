@@ -1,18 +1,17 @@
 import {Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDataList, TuiLabel, TuiTextfield} from '@taiga-ui/core';
+import {TuiInput, TuiLabel} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiEmailsPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [
         FormsModule,
         ReactiveFormsModule,
-        TuiDataList,
         TuiDataListWrapper,
         TuiEmailsPipe,
+        TuiInput,
         TuiLabel,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -8,12 +8,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiError,
-    TuiTextfield,
-    tuiValidationErrorsProvider,
-} from '@taiga-ui/core';
+import {TuiButton, TuiError, tuiValidationErrorsProvider} from '@taiga-ui/core';
 import {TuiInputDateTime, TuiUnfinishedValidator} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
@@ -29,7 +24,6 @@ export function minLengthValidator(minLength: number): ValidatorFn {
         TuiError,
         TuiForm,
         TuiInputDateTime,
-        TuiTextfield,
         TuiUnfinishedValidator,
     ],
     templateUrl: './index.html',

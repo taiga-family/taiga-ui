@@ -7,7 +7,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
@@ -18,7 +17,6 @@ import {TuiInputChip} from '@taiga-ui/kit';
         TuiDocIcons,
         TuiDocTextfield,
         TuiInputChip,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

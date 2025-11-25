@@ -2,7 +2,7 @@
 <tui-textfield>
   <input
     formControlName="control"
-    tuiTextfield
+    tuiInput
     [tuiValidator]="validator"
   />
 </tui-textfield>

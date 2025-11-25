@@ -34,8 +34,8 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     host: {
         style: 'cursor: pointer',
         '(click)': 'copy()',
-        '[style.pointer-events]': 'disabled ? "none" : null',
-        '[style.opacity]': 'disabled ? "var(--tui-disabled-opacity)" : null',
+        '[style.pointer-events]': 'textfield.value() ? null : "none"',
+        '[style.opacity]': 'textfield.value() ? null : "var(--tui-disabled-opacity)"',
         '[style.border-width.rem]': 'textfield.options.size() === "l" ? null : 0.25',
     },
 })
@@ -66,10 +66,6 @@ export class TuiCopyDirective {
             {initialValue: ''},
         ),
     );
-
-    protected get disabled(): boolean {
-        return !this.textfield.input()?.nativeElement.value;
-    }
 
     protected copy(): void {
         this.textfield.input()?.nativeElement.select();

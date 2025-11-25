@@ -5,7 +5,7 @@
     <label tuiLabel>I am a label</label>
     <input
         placeholder="I am placeholder"
-        tuiTextfield
+        tuiInput
         [(ngModel)]="value"
     />
     <tui-icon icon="@tui.bell" />
@@ -21,7 +21,7 @@
         tuiTextfieldSize="m"
     >
         <input
-            tuiTextfield
+            tuiInput
             [placeholder]="m.focused() ? 'I am placeholder' : 'I am a label'"
             [(ngModel)]="value"
         />
@@ -37,7 +37,7 @@
     tuiTextfieldSize="s"
 >
     <input
-        tuiTextfield
+        tuiInput
         [placeholder]="s.focused() ? 'I am placeholder' : 'I am a label'"
         [(ngModel)]="value"
     />

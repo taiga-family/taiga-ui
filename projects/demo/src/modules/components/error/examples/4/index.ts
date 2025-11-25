@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiError, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiError, TuiTitle} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
@@ -26,7 +26,6 @@ function phoneValidator({value}: AbstractControl): ValidationErrors | null {
         TuiForm,
         TuiHeader,
         TuiInputPhone,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

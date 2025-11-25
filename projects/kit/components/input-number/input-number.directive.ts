@@ -12,10 +12,7 @@ import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
-import {
-    TuiTextfieldDirective,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -30,7 +27,7 @@ const DEFAULT_MAX_LENGTH = 18;
         tuiAsControl(TuiInputNumberDirective),
         tuiValueTransformerFrom(TUI_INPUT_NUMBER_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, MaskitoDirective],
+    hostDirectives: [TuiWithInput, MaskitoDirective],
     host: {
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
@@ -42,12 +39,12 @@ const DEFAULT_MAX_LENGTH = 18;
 })
 export class TuiInputNumberDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly input = inject(TuiInputDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
 
     private readonly formatted = computed(() =>
-        maskitoParseNumber(this.textfield.value(), this.numberFormat()),
+        maskitoParseNumber(this.input.value(), this.numberFormat()),
     );
 
     private readonly precision = computed((precision = this.numberFormat().precision) =>
@@ -80,7 +77,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected readonly defaultMaxLength = computed(() => {
         const {decimalSeparator, thousandSeparator} = this.numberFormat();
         const decimalPart =
-            !!this.precision() && this.textfield.value().includes(decimalSeparator);
+            !!this.precision() && this.input.value().includes(decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision() + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
         const affixes = this.prefix().length + this.postfix().length;
@@ -116,7 +113,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             max: Number.MAX_SAFE_INTEGER,
         });
 
-        this.textfield.value.update((x) => maskitoTransform(x, options));
+        this.input.value.update((x) => maskitoTransform(x, options));
     });
 
     public readonly min = computed(() => Math.min(this.minRaw(), this.maxRaw()));
@@ -144,12 +141,12 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     }
 
     public setValue(value: number | null): void {
-        this.textfield.value.set(this.formatNumber(value));
+        this.input.value.set(this.formatNumber(value));
     }
 
     protected onFocus(): void {
         if (Number.isNaN(this.formatted()) && !this.readOnly()) {
-            this.textfield.value.set(this.prefix() + this.postfix());
+            this.input.value.set(this.prefix() + this.postfix());
         }
     }
 

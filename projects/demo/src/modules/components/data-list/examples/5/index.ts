@@ -10,7 +10,7 @@ import {
     TuiDataList,
     TuiDropdown,
     TuiGroup,
-    TuiTextfield,
+    TuiInput,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
 
@@ -24,8 +24,8 @@ import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
         TuiDataListDropdownManager,
         TuiDropdown,
         TuiGroup,
+        TuiInput,
         TuiInputDateRange,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

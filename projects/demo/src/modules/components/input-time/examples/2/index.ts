@@ -4,11 +4,10 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTime} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
-    imports: [JsonPipe, ReactiveFormsModule, TuiInputTime, TuiTextfield],
+    imports: [JsonPipe, ReactiveFormsModule, TuiInputTime],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -7,7 +7,7 @@ test.describe('InputChip', () => {
         await tuiGoto(page, `${DemoRoute.InputChip}/API`);
 
         const example = new TuiDocumentationApiPagePO(page).apiPageExample;
-        const input = example.locator('[tuiTextfield]');
+        const input = example.locator('[tuiInputChip]');
 
         await input.focus();
         await input.fill('1');

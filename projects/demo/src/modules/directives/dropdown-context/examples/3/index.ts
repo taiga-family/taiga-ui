@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiTextarea} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiDropdown, TuiTextarea, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiButton, TuiDropdown, TuiTextarea],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

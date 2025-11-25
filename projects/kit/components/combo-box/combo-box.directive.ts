@@ -15,13 +15,12 @@ import {
     tuiAsOptionContent,
     type TuiDataListAccessor,
 } from '@taiga-ui/core/components/data-list';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
     type TuiTextfieldAccessor,
     TuiTextfieldComponent,
-    TuiTextfieldDirective,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TUI_ITEMS_HANDLERS,
@@ -38,10 +37,10 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     selector: 'input[tuiComboBox]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),
-        tuiAsTextfieldAccessor(TuiComboBox),
-        tuiAsControl(TuiComboBox),
+        tuiAsTextfieldAccessor(TuiComboBoxDirective),
+        tuiAsControl(TuiComboBoxDirective),
     ],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithInput],
     host: {
         '[disabled]': 'disabled()',
         '(click)': 'toggleDropdown()',
@@ -49,12 +48,12 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
-export class TuiComboBox<T>
+export class TuiComboBoxDirective<T>
     extends TuiControl<T | string | null>
     implements TuiTextfieldAccessor<T>
 {
     private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
-    private readonly textfield: TuiTextfieldDirective<T> = inject(TuiTextfieldDirective);
+    private readonly input: TuiInputDirective<T> = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
@@ -77,9 +76,9 @@ export class TuiComboBox<T>
         if (
             !this.options().length &&
             !this.strict() &&
-            this.stringify(this.value()) !== this.textfield.value()
+            this.stringify(this.value()) !== this.input.value()
         ) {
-            this.onChange(this.textfield.value() || null);
+            this.onChange(this.input.value() || null);
         }
     });
 
@@ -91,7 +90,7 @@ export class TuiComboBox<T>
             return;
         }
 
-        const textfieldValue = this.textfield.value();
+        const textfieldValue = this.input.value();
         const selectedOption = options.find((x) =>
             matcher(x, textfieldValue, this.handlers.stringify()),
         );
@@ -114,14 +113,14 @@ export class TuiComboBox<T>
     protected readonly newValueEffect = effect(() => {
         const stringified = this.stringify(this.value());
 
-        this.textfield.value.update((x) => stringified || x);
+        this.input.value.update((x) => stringified || x);
     });
 
     protected readonly blurEffect = effect(() => {
         const incomplete = untracked(() => this.strict() && this.value() === null);
 
         if (!this.host.focused() && incomplete) {
-            this.textfield.value.set('');
+            this.input.value.set('');
         }
     });
 
@@ -138,7 +137,7 @@ export class TuiComboBox<T>
     }
 
     public setValue(value: T | null): void {
-        this.textfield.setValue(value);
+        this.input.setValue(value);
         this.onChange(value);
 
         if (!value) {
@@ -152,7 +151,7 @@ export class TuiComboBox<T>
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.textfield.value.set(this.stringify(value)));
+            untracked(() => this.input.value.set(this.stringify(value)));
         }
     }
 

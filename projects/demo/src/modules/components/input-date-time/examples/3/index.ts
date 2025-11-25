@@ -3,13 +3,13 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, tuiSum, TuiTime} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
 type ControlValue = [TuiDay, TuiTime | null] | null;
 
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiInputDateTime, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiButton, TuiInputDateTime],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
