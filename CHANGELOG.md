@@ -5,15 +5,6 @@ All notable changes to this project will be documented in this file. See
 
 ## [4.62.0](https://github.com/taiga-family/taiga-ui/compare/v4.61.0...v4.62.0) (2025-11-24)
 
-### ⚠ BREAKING CHANGES
-
-- resolve valid base href (#12570)
-
-### revert
-
-- resolve valid base href ([#12570](https://github.com/taiga-family/taiga-ui/issues/12570))
-  ([fdab092](https://github.com/taiga-family/taiga-ui/commit/fdab092a8413e2ebf4d44c4858de821320a108ba))
-
 ### 🐞 Bug Fixes
 
 - **addon-table:** remove generic type constraint from `TuiTableSortPipe`
