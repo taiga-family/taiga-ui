@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {type TuiLooseUnion} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_OPTIONS,
     TuiDropdown,
@@ -33,9 +32,7 @@ export class TuiDocDropdown {
         'fixed',
     ];
 
-    public readonly hiddenOptions = input<Array<TuiLooseUnion<keyof TuiDropdownOptions>>>(
-        [],
-    );
+    public readonly hiddenOptions = input<Array<string | keyof TuiDropdownOptions>>([]);
 
     public align: TuiDropdownAlign = this.options.align;
     public direction: TuiVerticalDirection | null = this.options.direction;

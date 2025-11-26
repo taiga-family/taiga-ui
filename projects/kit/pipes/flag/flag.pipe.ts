@@ -1,9 +1,8 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
 import {TUI_ASSETS_PATH} from '@taiga-ui/core/tokens';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
-type IsoCode = TuiLooseUnion<TuiCountryIsoCode>;
+type IsoCode = TuiCountryIsoCode | string;
 
 @Pipe({
     name: 'tuiFlag',
