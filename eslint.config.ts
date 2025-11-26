@@ -39,8 +39,6 @@ export default process.env.HTML_ESLINT
                   ],
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
-                  '@taiga-ui/experience-next/short-tui-imports': 'off',
-
                   // TODO: enable after https://github.com/typescript-eslint/typescript-eslint/issues/11790
                   '@typescript-eslint/no-redundant-type-constituents': 'off',
               },
@@ -49,7 +47,6 @@ export default process.env.HTML_ESLINT
               files: ['**/*.spec.ts', '**/*.cy.ts', '**/demo/**/*.ts'],
               rules: {
                   'no-irregular-whitespace': 'off',
-                  '@taiga-ui/experience-next/short-tui-imports': 'error',
               },
           },
           {
