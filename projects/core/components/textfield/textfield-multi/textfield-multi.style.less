@@ -167,8 +167,9 @@ tui-textfield[multi][multi] {
     &:not(._empty),
     &[data-focus='true']:not([data-mode~='readonly']) {
         > .t-items [tuiLabel] {
-            font-size: var(--t-label-size);
-            transform: translateY(var(--t-label));
+            font: var(--t-label-font);
+            line-height: var(--t-height);
+            transform: translateY(var(--t-label-y));
         }
     }
 
