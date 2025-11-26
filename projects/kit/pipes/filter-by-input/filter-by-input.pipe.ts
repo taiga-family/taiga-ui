@@ -2,25 +2,18 @@ import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import {
-    TUI_ITEMS_HANDLERS,
-    type TuiItemsHandlers,
-} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
-// TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
 @Pipe({
     name: 'tuiFilterByInput',
     pure: false,
 })
 export class TuiFilterByInputPipe implements PipeTransform {
-    // TODO: Remove optional after legacy controls are dropped
-    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
-    private readonly host = inject(TUI_DATA_LIST_HOST);
-    private readonly itemsHandlers: TuiItemsHandlers<unknown> =
-        inject(TUI_ITEMS_HANDLERS);
+    private readonly textfield = inject(TuiTextfieldComponent);
+    private readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    private readonly multi = this.textfield.el.matches('[multi]');
 
     public transform<T>(
         items: ReadonlyArray<readonly T[]>,
@@ -42,13 +35,8 @@ export class TuiFilterByInputPipe implements PipeTransform {
         return this.filter<T>(
             items,
             matcher,
-            (this.textfield
-                ? this.itemsHandlers.stringify()
-                : // TODO(v5): delete backward compatibility
-                  this.host.stringify) || String,
-            this.textfield?.value() ||
-                (this.host as any).nativeFocusableElement?.value ||
-                '',
+            this.handlers.stringify(),
+            this.textfield.value(),
         );
     }
 
@@ -74,9 +62,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): readonly T[] {
-        const match = this.getMatch(items, stringify, query);
-
-        return match != null
+        return this.getMatch(items, stringify, query.toLocaleLowerCase()) != null
             ? items
             : items.filter((item) => matcher(item, query, stringify));
     }
@@ -87,9 +73,9 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): ReadonlyArray<readonly T[]> {
-        const match = items.find((item) => this.getMatch(item, stringify, query) != null);
-
-        return match != null
+        return items.find(
+            (item) => this.getMatch(item, stringify, query.toLocaleLowerCase()) != null,
+        ) != null
             ? items
             : items.map((inner) => this.filterFlat(inner, matcher, stringify, query));
     }
@@ -99,13 +85,8 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): T | undefined {
-        // TODO: Refactor when tui-textfield[multi] is ready
-        if ((this.host as any).tagValidator) {
-            return undefined;
-        }
-
-        return items.find(
-            (item) => stringify(item).toLocaleLowerCase() === query.toLocaleLowerCase(),
-        );
+        return this.multi
+            ? undefined
+            : items.find((item) => stringify(item).toLocaleLowerCase() === query);
     }
 }

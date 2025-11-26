@@ -28,7 +28,6 @@ import {
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -40,7 +39,6 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     providers: [
         tuiAsControl(TuiInputTimeDirective),
         tuiAsTextfieldAccessor(TuiInputTimeDirective),
-        tuiAsAuxiliary(TuiInputTimeDirective),
         tuiValueTransformerFrom(TUI_INPUT_TIME_OPTIONS),
         tuiAsOptionContent(TuiSelectOption),
     ],

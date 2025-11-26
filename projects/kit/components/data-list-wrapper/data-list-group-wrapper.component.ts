@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
-import {tuiAsDataListAccessor, TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {
     TuiMultiSelect,
     TuiMultiSelectGroupDirective,
@@ -15,7 +16,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
     templateUrl: './data-list-group-wrapper.template.html',
     styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListAccessor(TuiDataListGroupWrapperComponent)],
+    providers: [tuiAsAuxiliary(TuiDataListGroupWrapperComponent)],
 })
 export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperComponent<
     T,

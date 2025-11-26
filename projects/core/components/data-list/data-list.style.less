@@ -1,43 +1,24 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+/* stylelint-disable */
 tui-data-list {
-    --tui-data-list-padding: 0.25rem;
-    --tui-data-list-margin: 0.0625rem;
-
     display: flex;
-    font: var(--tui-font-text-m);
     flex-direction: column;
     padding: calc(var(--tui-data-list-padding) - var(--tui-data-list-margin)) var(--tui-data-list-padding);
-    color: var(--tui-text-tertiary);
 
-    &:focus-within {
-        .t-trap {
-            display: none;
-        }
-
-        [tuiOption]._with-dropdown:not(:focus) {
-            background-color: transparent;
-        }
+    &:focus-within [tuiOption]._with-dropdown:not(:focus) {
+        background: transparent;
     }
 
     &[data-size='s'] {
         // StackBlitz changes "0rem" to "0" breaking calc
         --tui-data-list-margin: ~'0rem';
+        --tui-data-list-padding: 0.25rem;
 
-        // TODO(v5): use `gap` in tuiCell and remove :not
-        [tuiOption]:not([tuiCell]) {
-            gap: 0.5rem;
-        }
-
-        & > .t-empty,
         [tuiOption] {
-            --t-option-padding-inline: 0.375rem;
-
             font: var(--tui-font-text-s);
             min-block-size: 2rem;
-            // TODO: use padding-block after Safari 14+
-            padding-block-start: 0.3125rem;
-            padding-block-end: 0.3125rem;
+            padding: 0.3125rem 0.375rem;
 
             &::before {
                 font-size: 1rem;
@@ -46,66 +27,36 @@ tui-data-list {
     }
 
     &[data-size='m'] {
-        // TODO(v5): use `gap` in tuiCell and remove :not
-        [tuiOption]:not([tuiCell]) {
-            gap: 0.75rem;
-        }
+        --tui-data-list-margin: 0.0625rem;
+        --tui-data-list-padding: 0.25rem;
 
-        & > .t-empty,
         [tuiOption] {
-            --t-option-padding-inline: 0.5rem;
-
             font: var(--tui-font-text-s);
             min-block-size: 2.5rem;
-            // TODO: use padding-block after Safari 14+
-            padding-block-start: 0.375rem;
-            padding-block-end: 0.375rem;
+            padding: 0.375rem 0.5rem;
         }
     }
 
     &[data-size='l'] {
-        --tui-data-list-padding: 0.375rem;
         --tui-data-list-margin: 0.125rem;
+        --tui-data-list-padding: 0.375rem;
 
-        // TODO(v5): use `gap` in tuiCell and remove :not
-        [tuiOption]:not([tuiCell]) {
-            gap: 1rem;
-        }
-
-        & > .t-empty,
         [tuiOption] {
-            --t-option-padding-inline: 0.625rem;
-
             font: var(--tui-font-text-m);
             min-block-size: 2.75rem;
-            // TODO: use padding-block after Safari 14+
-            padding-block-start: 0.375rem;
-            padding-block-end: 0.375rem;
+            padding: 0.375rem 0.625rem;
         }
-    }
-
-    & > .t-empty {
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-        margin: var(--tui-data-list-margin) 0;
     }
 
     [tuiOption] {
-        .button-clear();
         .transition(background);
 
-        display: flex;
-        align-items: center;
         box-sizing: border-box;
         margin: var(--tui-data-list-margin) 0;
-        text-align: start;
-        color: var(--tui-text-primary);
         border-radius: var(--tui-radius-s);
         outline: none;
         cursor: pointer;
         word-break: break-word;
-        background-clip: padding-box;
 
         &:disabled {
             opacity: var(--tui-disabled-opacity);
@@ -114,29 +65,21 @@ tui-data-list {
 
         @media @tui-mouse {
             &:hover:not(:disabled) {
-                background-color: var(--tui-background-neutral-1);
+                background: var(--tui-background-neutral-1);
             }
         }
 
         &:active:not(:disabled),
         &:focus-within,
         &._with-dropdown {
-            background-color: var(--tui-background-neutral-1);
+            background: var(--tui-background-neutral-1);
         }
 
         &::after {
             font-size: 1rem;
-            margin: 0 -0.625rem 0 auto;
-            border-inline-start: 0.5rem solid;
-            border-inline-end: 0.5rem solid;
+            margin-inline: auto -0.625rem;
+            border-inline: 0.5rem solid;
         }
-    }
-
-    & > .t-empty,
-    [tuiOption] {
-        // TODO: use padding-inline after Safari 14+
-        padding-inline-start: var(--t-option-padding-inline);
-        padding-inline-end: var(--t-option-padding-inline);
     }
 }
 
@@ -155,13 +98,11 @@ tui-opt-group {
         line-height: 1.25rem;
 
         &::before {
-            padding-inline-start: 0.625rem;
-            padding-inline-end: 0.625rem;
+            padding-inline: 0.625rem;
         }
 
         &::after {
-            left: 0.625rem;
-            right: 0.625rem;
+            inset-inline: 0.625rem;
         }
     }
 
@@ -172,7 +113,7 @@ tui-opt-group {
 
     &::before {
         content: attr(data-label);
-        padding: var(--tui-data-list-padding) 0.5rem var(--tui-data-list-padding);
+        padding: var(--tui-data-list-padding) 0.5rem;
         margin: var(--tui-data-list-margin) 0;
         white-space: normal;
         word-break: break-word;
@@ -186,8 +127,7 @@ tui-opt-group {
 
     &::after {
         position: absolute;
-        left: 0.5rem;
-        right: 0.5rem;
+        inset-inline: 0.5rem;
         top: var(--tui-data-list-padding);
         block-size: 1px;
         background: var(--tui-border-normal);
@@ -198,8 +138,7 @@ tui-opt-group {
             padding-block-start: calc(0.75rem + var(--tui-data-list-padding));
         }
 
-        &[data-label='']::before,
-        &:not([data-label])::before {
+        &[data-label='']::before {
             padding: var(--tui-data-list-padding) 0;
         }
 
@@ -208,8 +147,7 @@ tui-opt-group {
         }
     }
 
-    &[data-label='']::before,
-    &:not([data-label])::before {
+    &[data-label='']::before {
         content: '';
         padding: 0;
         margin: 0;

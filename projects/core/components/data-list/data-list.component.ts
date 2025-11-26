@@ -17,18 +17,15 @@ import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
+import {TUI_CELL_OPTIONS, tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
+import {TUI_NOTHING_FOUND_MESSAGE, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
-import {
-    TUI_DATA_LIST_HOST,
-    tuiAsDataListAccessor,
-    type TuiDataListAccessor,
-} from './data-list.tokens';
-import {TuiOptionWithValue} from './option/option.directive';
-import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option/option-content';
+import {TUI_DATA_LIST_HOST, type TuiDataListAccessor} from './data-list.tokens';
+import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option-content.directive';
+import {TuiOptionWithValue} from './option-with-value.directive';
 
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
@@ -46,7 +43,8 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsDataListAccessor(TuiDataListComponent),
+        tuiCellOptionsProvider(() => ({size: tuiInjectDataListSize()})),
+        tuiAsAuxiliary(TuiDataListComponent),
         {
             provide: TUI_OPTION_CONTENT,
             useFactory: () =>
@@ -84,7 +82,7 @@ export class TuiDataListComponent<T>
     protected readonly empty = signal(false);
 
     public readonly emptyContent = input<PolymorpheusContent>();
-    public readonly size = input(tuiInjectDataListSize());
+    public readonly size = input(inject(TUI_CELL_OPTIONS).size);
 
     public readonly options = computed(() =>
         this.optionsQuery()
@@ -121,6 +119,6 @@ export class TuiDataListComponent<T>
     }
 
     private get elements(): readonly HTMLElement[] {
-        return Array.from(this.el.querySelectorAll('[tuiOption]'));
+        return Array.from(this.el.querySelectorAll('[tuiOption]:not(.t-empty)'));
     }
 }

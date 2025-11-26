@@ -2,7 +2,7 @@ import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiDataList, TuiDropdown, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 interface ExampleAction {
@@ -14,7 +14,6 @@ interface ExampleAction {
     imports: [
         TuiActiveZone,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiDataList,
         TuiDropdown,

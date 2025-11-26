@@ -1,5 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+/* stylelint-disable */
 :host {
     .scrollbar-hidden();
 
@@ -55,12 +56,11 @@
     }
 
     ::ng-deep tui-data-list {
-        margin-inline-start: calc(-1 * var(--tui-data-list-padding));
-        margin-inline-end: calc(-1 * var(--tui-data-list-padding));
+        margin-inline: calc(-1 * var(--tui-data-list-padding));
 
-        [tuiOption] {
-            margin-inline-start: calc(-1 * var(--t-option-padding-inline));
-            margin-inline-end: calc(-1 * var(--t-option-padding-inline));
+        [tuiOption][data-size] {
+            margin-inline: -0.5rem;
+            padding-inline: 0.5rem;
         }
     }
 }

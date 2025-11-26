@@ -1,8 +1,14 @@
 <ng-content />
 @if (empty()) {
-    <div class="t-empty">
+    <!-- Component selectors purely for cosmetics, do not import -->
+    <button
+        disabled
+        tuiCell
+        tuiOption
+        class="t-empty"
+    >
         <ng-container *polymorpheusOutlet="emptyContent() || fallback() as text">
             {{ text }}
         </ng-container>
-    </div>
+    </button>
 }
