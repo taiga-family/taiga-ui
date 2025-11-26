@@ -4,10 +4,10 @@ aside[tuiNavigationAside] {
     .transition(width);
 
     position: sticky;
-    top: 3rem;
-    left: 0;
     z-index: 1;
     display: flex;
+    inset-block-start: 3rem;
+    inset-inline-start: 0;
     inset-inline-start: 0;
     inline-size: 3rem;
     flex-direction: column;
@@ -19,9 +19,9 @@ aside[tuiNavigationAside] {
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 100%;
         z-index: -1;
+        inset-block-start: 0;
+        inset-inline-start: 100%;
         inset-inline-start: 100%;
         block-size: 3rem;
         inline-size: 3rem;
@@ -34,10 +34,9 @@ aside[tuiNavigationAside] {
     &::after {
         content: '';
         position: fixed;
-        top: inherit;
-        left: 0;
-        bottom: -3rem;
         z-index: -1;
+        inset-block-start: inherit;
+        inset-block-end: -3rem;
         inset-inline-start: 0;
         inline-size: 3rem;
         background: inherit;

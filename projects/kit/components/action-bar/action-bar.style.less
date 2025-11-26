@@ -2,9 +2,9 @@
 
 :host {
     position: fixed;
-    left: ~'max(calc(50% - 37rem), 1.5rem)';
-    bottom: ~'max(1rem, env(safe-area-inset-bottom))';
     display: flex;
+    inset-inline-start: ~'max(calc(50% - 37rem), 1.5rem)';
+    inset-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
     inline-size: 100%;
     max-inline-size: ~'min(calc(100vw - 3rem), 74rem)';
     box-sizing: border-box;

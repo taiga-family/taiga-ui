@@ -2,10 +2,10 @@
 
 header[tuiNavigationHeader][tuiNavigationHeader] {
     position: sticky;
-    top: 0;
-    left: 0;
     z-index: 2;
     display: flex;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     inset-inline-start: 0;
     block-size: 3rem;
     inline-size: 100vw;
@@ -22,10 +22,10 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     &::before {
         content: '';
         position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
         z-index: -1;
+        inset-block-start: 100%;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
         block-size: 3rem;
         pointer-events: none;
         box-shadow: 0 -1.5rem var(--tui-theme-color, #000);

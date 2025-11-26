@@ -91,8 +91,8 @@
 
 .thumb-ghost(@size) {
     position: absolute;
-    top: ((@hitbox - @thumb-diameters[@@size]) / 2);
-    left: var(--t-left);
+    inset-block-start: ((@hitbox - @thumb-diameters[@@size]) / 2);
+    inset-inline-start: var(--t-left);
     inset-inline-start: var(--t-left);
     inline-size: @thumb-diameters[@@size];
     block-size: @thumb-diameters[@@size];
@@ -214,9 +214,9 @@
 }
 
 :host-context(tui-textfield) :host([type='range']) {
-    top: 100%;
-    left: var(--t-padding);
-    right: var(--t-padding);
+    inset-block-start: 100%;
+    inset-inline-start: var(--t-padding);
+    inset-inline-end: var(--t-padding);
     inline-size: calc(100% - var(--t-padding) * 2); // TODO: Use `auto` after bumping Firefox to 126+
     block-size: 1rem;
     margin: calc(-0.5rem - var(--tui-thickness) / 2) 0 0;
