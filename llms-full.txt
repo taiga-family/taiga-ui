@@ -8280,15 +8280,16 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-notification> Don't forget import <code>TuiCardLarge</code>
-</tui-notification>
 <div appearance="floating" tuiCardLarge >
 <h3 tuiTitle="m">Inside a block</h3> @for (item of items; track item) { <button tuiCell type="button" >
 <div appearance="accent" [tuiAvatar]="item.icon" ></div>
 <span tuiTitle> {{ item.title }} <span tuiSubtitle>{{ item.subtitle }}</span>
 </span>
 </button> } </div>
-<label> Inside a dropdown <tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
+<tui-notification>
+<code>DataList</code> already uses <code>Cell</code> for the options, but if you need to show it in value template as well – add a wrapping element with <code>Cell</code>
+</tui-notification>
+<tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
 <input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 <ng-template #content let-item >
@@ -8299,7 +8300,6 @@ export default class Example {
 </span>
 </ng-template>
 </tui-textfield>
-</label>
 ```
 **TypeScript:**
 ```ts
@@ -42639,7 +42639,7 @@ export class Example {}
 **Template:**
 ```html
 <button tuiButton tuiChevron type="button" [attr.aria-expanded]="open()" [tuiDropdown]="dropdownContent" [tuiDropdownManual]="open()" [tuiObscuredEnabled]="open()" (click)="onClick()" (tuiActiveZoneChange)="onActiveZone($event)" (tuiObscured)="onObscured($event)" > {{ buttonLabel() }} <ng-template #dropdownContent>
-<tui-data-list> @for (action of actions; track action.title) { <button tuiCell tuiOption type="button" (click)="onSelect(action)" >
+<tui-data-list> @for (action of actions; track action.title) { <button tuiOption type="button" (click)="onSelect(action)" >
 <span tuiTitle> {{ action.title }} <span tuiSubtitle>{{ action.description }}</span>
 </span>
 </button> } </tui-data-list>
@@ -42652,7 +42652,7 @@ import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiDataList, TuiDropdown, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 interface ExampleAction {
@@ -42664,7 +42664,6 @@ interface ExampleAction {
     imports: [
         TuiActiveZone,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiDataList,
         TuiDropdown,
@@ -44011,7 +44010,7 @@ export default class Example {}
 <tui-textfield tuiDropdownLimitWidth="auto" tuiDropdownSelectionPosition="word" [tuiDropdownSelection]="predicate" >
 <label tuiLabel>Type a message</label>
 <textarea tuiTextarea [focused]="(driver | async) || null" [max]="4" [min]="4" [(ngModel)]="value" (keydown.stop.arrowDown)="onArrow($event, 'first')" (keydown.stop.arrowUp)="onArrow($event, 'last')" ></textarea>
-<tui-data-list *tuiDropdown> @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) { <button tuiOption type="button" (click)="onClick(item.login)" >
+<tui-data-list *tuiDropdown size="m" > @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) { <button tuiOption type="button" (click)="onClick(item.login)" >
 <div size="s" tuiAvatar > {{ item.name | tuiInitials }} <img alt="" [src]="item.avatar" />
 </div> {{ item.name }} </button> } </tui-data-list>
 </tui-textfield>
@@ -44087,7 +44086,7 @@ export default class Example {
     protected readonly items = [
         {
             name: 'Alexander Inkin',
-            avatar: assets`/images/avatar.jpg`,
+            avatar: assets`images/avatar.jpg`,
             login: 'a.inkin',
         },
         {
