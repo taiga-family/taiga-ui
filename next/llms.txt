@@ -65,6 +65,7 @@
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
 - [Carousel](https://taiga-ui.dev/components/carousel) — Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
+- [Cell](https://taiga-ui.dev/components/cell)
 - [Checkbox](https://taiga-ui.dev/components/checkbox) — A checkbox component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 - [Chip](https://taiga-ui.dev/components/chip) — Chip component is used to display array data and can also be interactive depending on the tag used.
 - [Combo Box](https://taiga-ui.dev/components/combo-box) — ComboBox is a form control for selecting a single value from a set of options. It is similar to Select but with a major difference – possibility to enter value manually .
@@ -202,7 +203,6 @@
 - [Card Collapsed](https://taiga-ui.dev/layout/card-collapsed)
 - [Card Large](https://taiga-ui.dev/layout/card-large)
 - [Card Medium](https://taiga-ui.dev/layout/card-medium)
-- [Cell](https://taiga-ui.dev/layout/cell)
 - [Form](https://taiga-ui.dev/layout/form)
 - [Header](https://taiga-ui.dev/layout/header)
 - [Input Search](https://taiga-ui.dev/layout/input-search)
