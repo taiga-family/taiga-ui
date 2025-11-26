@@ -54,7 +54,7 @@ tui-data-list {
         box-sizing: border-box;
         margin: var(--tui-data-list-margin) 0;
         border-radius: var(--tui-radius-s);
-        outline: none;
+        outline: none !important;
         cursor: pointer;
         word-break: break-word;
 
@@ -81,6 +81,11 @@ tui-data-list {
             border-inline: 0.5rem solid;
         }
     }
+
+    > .t-empty {
+        pointer-events: none;
+        color: var(--tui-text-tertiary);
+    }
 }
 
 tui-opt-group {
@@ -91,6 +96,10 @@ tui-opt-group {
     color: var(--tui-text-primary);
     flex-direction: column;
     line-height: 1rem;
+
+    tui-data-list[data-size='s'] &::before {
+        padding-inline: 0.375rem;
+    }
 
     tui-data-list[data-size='l'] & {
         font: var(--tui-font-text-m);

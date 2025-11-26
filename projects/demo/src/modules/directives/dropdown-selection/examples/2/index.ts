@@ -67,7 +67,7 @@ export default class Example {
     protected readonly items = [
         {
             name: 'Alexander Inkin',
-            avatar: assets`/images/avatar.jpg`,
+            avatar: assets`images/avatar.jpg`,
             login: 'a.inkin',
         },
         {

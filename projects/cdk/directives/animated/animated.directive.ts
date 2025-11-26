@@ -84,10 +84,12 @@ function wrap(renderer: Renderer2): Renderer2['removeChild'] {
         const animations = element.getAnimations?.() ?? [];
         const last = animations[animations.length - 1];
         const finish = (): void => {
-            if (!parent || parent.contains(el)) {
-                remove();
-                app.tick();
-            }
+            try {
+                if (!parent || parent.contains(el)) {
+                    remove();
+                    app.tick();
+                }
+            } catch {}
         };
 
         if (animations.length > length && last) {

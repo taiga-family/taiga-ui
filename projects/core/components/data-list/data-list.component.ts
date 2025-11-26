@@ -17,7 +17,7 @@ import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_CELL_OPTIONS, tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
+import {TuiCell, tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -37,13 +37,13 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
     selector: 'tui-data-list',
-    imports: [PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet, TuiCell],
     templateUrl: './data-list.template.html',
     styleUrl: './data-list.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiCellOptionsProvider(() => ({size: tuiInjectDataListSize()})),
+        tuiCellOptionsProvider(() => ({size: inject(TuiDataListComponent).size()})),
         tuiAsAuxiliary(TuiDataListComponent),
         {
             provide: TUI_OPTION_CONTENT,
@@ -82,7 +82,7 @@ export class TuiDataListComponent<T>
     protected readonly empty = signal(false);
 
     public readonly emptyContent = input<PolymorpheusContent>();
-    public readonly size = input(inject(TUI_CELL_OPTIONS).size);
+    public readonly size = input(tuiInjectDataListSize());
 
     public readonly options = computed(() =>
         this.optionsQuery()
