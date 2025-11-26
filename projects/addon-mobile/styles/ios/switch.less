@@ -20,6 +20,33 @@ input[tuiSwitch]._native {
     @supports (anchor-name: --xxx) {
         inline-size: 4rem;
         block-size: 1.75rem;
+
+        &::before {
+            .transition(background);
+
+            position: absolute;
+            display: block;
+            inset: 0;
+            border-radius: 10rem;
+            inline-size: 5rem;
+            background-color: transparent;
+            mix-blend-mode: color;
+        }
+
+        &:invalid:not(:checked)::before {
+            background-color: var(--tui-status-negative);
+        }
+
+        [data-theme='dark'] & {
+            &:invalid:not(:checked)::before {
+                background-color: var(--tui-status-negative-pale);
+            }
+
+            &:disabled:not(:checked)::before {
+                background-color: rgba(255, 255, 255, 0.2);
+                mix-blend-mode: lighten;
+            }
+        }
     }
 }
 
