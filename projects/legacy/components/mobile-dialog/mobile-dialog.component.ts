@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
+import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
