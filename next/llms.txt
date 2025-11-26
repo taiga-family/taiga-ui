@@ -81,15 +81,15 @@
 - [Expand](https://taiga-ui.dev/components/expand)
 - [Filter](https://taiga-ui.dev/components/filter) — Components shows separated items that can be used to filter content on the page. There are also an option with badges.
 - [Floating Container](https://taiga-ui.dev/components/floating-container) — FloatingContainer is a special container for creating different animated sticky footers
-- [Group](https://taiga-ui.dev/components/group) — A directive for grouping other components. For example, textfields and buttons .
+- [Group](https://taiga-ui.dev/components/group) — A directive for grouping other components. For example, Input or Button .
 - [Icon](https://taiga-ui.dev/components/icon) — A component to show icons and color them with CSS. Taiga UI ships with Lucide icons . Same mechanism is used in all iconStart / iconEnd inputs across the library.
-- [Input](https://taiga-ui.dev/components/input)
+- [Input](https://taiga-ui.dev/components/input) — Input is a basic string textfield. All other input components are built on its basis.
 - [Input Card](https://taiga-ui.dev/components/input-card) — InputCard can be used with InputExpire and InputCVC to input a card. Use tuiCreateLuhnValidator(message) to create a Validator that uses Luhn algorithm
 - [Input Card Group](https://taiga-ui.dev/components/input-card-group) — InputCardGroup is used to input a card as a separated control
-- [Input Chip](https://taiga-ui.dev/components/input-chip) — InputChip uses specifically modified Textfield to represent array of selectable items.
+- [Input Chip](https://taiga-ui.dev/components/input-chip) — InputChip uses specifically modified Input to represent array of selectable items.
 - [Input Color](https://taiga-ui.dev/components/input-color) — InputColor = Textfield + type="color" + Maskito + ❤️
 - [Input Date](https://taiga-ui.dev/components/input-date) — InputDate = Textfield + Calendar + ❤️
-- [Input Date Multi](https://taiga-ui.dev/components/input-date-multi) — InputDateMulti uses specifically modified Textfield to represent array of dates.
+- [Input Date Multi](https://taiga-ui.dev/components/input-date-multi) — InputDateMulti uses specifically modified InputChip to represent array of dates.
 - [Input Date Range](https://taiga-ui.dev/components/input-date-range) — InputDateRange = Textfield + CalendarRange + ❤️
 - [Input Date Time](https://taiga-ui.dev/components/input-date-time) — InputDateTime = Textfield + Calendar + ❤️
 - [Input Files](https://taiga-ui.dev/components/input-files) — An input for uploading one or several files using native input file capabilities
@@ -143,7 +143,6 @@
 - [Table Filters](https://taiga-ui.dev/components/table-filters) — This module allows you to filter table data in a flexible way.
 - [Table Pagination](https://taiga-ui.dev/components/table-pagination) — Component to show pagination in table footer
 - [Textarea](https://taiga-ui.dev/components/textarea) — Textarea uses Textfield to create a multi-line string input.
-- [Textfield](https://taiga-ui.dev/components/textfield) — Textfield is a low level component that other more complex controls are based upon.
 - [Thumbnail Card](https://taiga-ui.dev/components/thumbnail-card) — Customizable credit card thumbnail
 - [Tiles](https://taiga-ui.dev/components/tiles) — Tiles is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
 - [Title](https://taiga-ui.dev/components/title) — A directive for title with optional subtitle

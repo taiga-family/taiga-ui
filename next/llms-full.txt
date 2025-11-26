@@ -9502,7 +9502,7 @@ export default class Example {
 
 #### Textfield customization
 
-Take full advantage of Textfield : add any number of Icons and Tooltips (with control over their order and color), adjust the size of the textbox, and more. Explore Textfield documentation page for more customization options.
+Take full advantage of Textfield : add any number of Icons and Tooltips (with control over their order and color), adjust the size of the textbox, and more. Explore Input documentation page for more customization options.
 
 **Template:**
 ```html
@@ -14369,7 +14369,7 @@ export default class Page {
 # components/Group
 - **Package**: `CORE`
 - **Type**: components
-A directive for grouping other components. For example, textfields and buttons .
+A directive for grouping other components. For example, Input or Button .
 
 ### How to Use (Import)
 
@@ -15227,6 +15227,330 @@ tui-icon {
 ```
 
 ---
+# components/Input
+- **Package**: `CORE`
+- **Type**: components
+Input is a basic string textfield. All other input components are built on its basis.
+
+### How to Use (Import)
+
+```ts
+import {Component} from '@angular/core';
+import {TuiInput} from '@taiga-ui/core';
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiInput,
+  ],
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<tui-textfield>
+  <input
+    tuiInput
+    [(ngModel)]="value"
+  />
+</tui-textfield>
+```
+
+### Example
+
+```html
+<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>I am a label</label> } <input placeholder="I am placeholder" tuiInput [disabled]="control.disabled" [invalid]="control.invalid" [readOnly]="control.readonly" [(ngModel)]="value" />
+<tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [(ngModel)] | `string` | Value (or reactive control directives) |
+| [filler] | `string` | Filler |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+<tui-textfield iconEnd="@tui.settings" iconStart="@tui.search" >
+<label tuiLabel>I am a label</label>
+<input placeholder="I am placeholder" tuiInput [(ngModel)]="value" />
+<tui-icon icon="@tui.bell" />
+<tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>
+<label tuiLabel> For long labels it is better to use label outside as it can wrap to multiple lines <tui-textfield #m iconEnd="@tui.settings" iconStart="@tui.search" tuiTextfieldSize="m" >
+<input tuiInput [placeholder]="m.focused() ? 'I am placeholder' : 'I am a label'" [(ngModel)]="value" />
+<tui-icon icon="@tui.bell" />
+<tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>
+</label>
+<tui-textfield #s iconEnd="@tui.settings" iconStart="@tui.search" tuiTextfieldSize="s" >
+<input tuiInput [placeholder]="s.focused() ? 'I am placeholder' : 'I am a label'" [(ngModel)]="value" />
+<tui-icon icon="@tui.bell" />
+<tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon, TuiInput} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiIcon, TuiInput, TuiTooltip],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = '';
+}
+```
+
+#### States
+
+**Template:**
+```html
+<tui-textfield iconStart="@tui.search">
+<label tuiLabel>Disabled</label>
+<input tuiInput [disabled]="true" [(ngModel)]="value" />
+<tui-icon tuiTooltip="Disabled does not show tooltip" />
+</tui-textfield>
+<tui-textfield iconStart="@tui.search">
+<label tuiLabel>Read-only</label>
+<input placeholder="I am placeholder" tuiInput [readOnly]="true" [(ngModel)]="value" />
+<tui-icon tuiTooltip="Readonly shows tooltip" />
+</tui-textfield>
+<tui-textfield iconStart="@tui.search">
+<label tuiLabel>Invalid</label>
+<input placeholder="I am placeholder" tuiInput [invalid]="true" [(ngModel)]="value" />
+<tui-icon tuiTooltip="Can also follow Angular validation" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon, TuiInput} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiIcon, TuiInput, TuiTooltip],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 'Test';
+}
+```
+
+#### Dropdown
+
+**Template:**
+```html
+<tui-textfield iconEnd="@tui.search">
+<label tuiLabel>Start typing</label>
+<input #input placeholder="I am placeholder" tuiInput [(ngModel)]="value" />
+<tui-icon tuiTooltip="Autocomplete suggestions" /> @if (items | tuiFilterByInput; as filtered) { @if (input.value && filtered.length) { <tui-data-list-wrapper *tuiDropdown [items]="filtered" /> } } </tui-textfield>
+<tui-textfield>
+<label tuiLabel>Select option</label>
+<input placeholder="I am placeholder" tuiInput tuiSelectLike [(ngModel)]="value" />
+<tui-icon tuiTooltip="Fixed choice select" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
+</tui-textfield>
+<tui-textfield tuiChevron tuiDropdownDirection="top" tuiDropdownLimitWidth="auto" >
+<label tuiLabel>Dropdown settings</label>
+<input placeholder="I am placeholder" tuiInput tuiSelectLike [(ngModel)]="value" />
+<tui-icon tuiTooltip="Fixed choice select" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDropdown, TuiIcon, TuiInput, TuiSelectLike} from '@taiga-ui/core';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiTooltip,
+} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdown,
+        TuiFilterByInputPipe,
+        TuiIcon,
+        TuiInput,
+        TuiSelectLike,
+        TuiTooltip,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = '';
+
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
+}
+```
+
+#### InputPassword
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Click icon to toggle</label>
+<input placeholder="I am placeholder" tuiInput type="password" [(ngModel)]="value" />
+<tui-icon tuiPassword />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon, TuiInput} from '@taiga-ui/core';
+import {TuiPassword} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiIcon, TuiInput, TuiPassword],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = '';
+}
+```
+
+#### Mask
+
+**Template:**
+```html
+<tui-textfield [tuiTextfieldCleaner]="false">
+<label tuiLabel>Flat angle</label>
+<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button iconStart="@tui.x" tabindex="-1" tuiIconButton type="button" (click)="clear()" (pointerdown.zoneless.prevent)="input.focus()" > Clear </button> } </tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {MaskitoDirective} from '@maskito/angular';
+import {type MaskitoOptions} from '@maskito/core';
+import {
+    maskitoAddOnFocusPlugin,
+    maskitoCaretGuard,
+    maskitoNumberOptionsGenerator,
+    maskitoRemoveOnBlurPlugin,
+} from '@maskito/kit';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
+
+const postfix = ' rad';
+const numberOptions = maskitoNumberOptionsGenerator({
+    postfix,
+    decimalSeparator: ',',
+    maximumFractionDigits: 8,
+    min: 0,
+});
+
+@Component({
+    imports: [FormsModule, MaskitoDirective, TuiButton, TuiInput],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = Math.PI.toFixed(8);
+    protected readonly options: MaskitoOptions = {
+        ...numberOptions,
+        plugins: [
+            ...numberOptions.plugins,
+            maskitoCaretGuard((value) => [0, value.length - postfix.length]),
+            maskitoAddOnFocusPlugin(postfix),
+            maskitoRemoveOnBlurPlugin(postfix),
+        ],
+    };
+
+    protected clear(): void {
+        this.value = postfix;
+    }
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
+import {TuiDocTextfield} from '@demo/components/textfield';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TuiIcon, TuiInput} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiDemo,
+        TuiDocControl,
+        TuiDocIcons,
+        TuiDocTextfield,
+        TuiIcon,
+        TuiInput,
+        TuiTooltip,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected routes = DemoRoute;
+    protected readonly examples = [
+        'Basic',
+        'States',
+        'Dropdown',
+        'InputPassword',
+        'Mask',
+    ];
+
+    protected value = '';
+    protected filler = '';
+}
+```
+
+---
 # components/InputCard
 - **Package**: `ADDON-COMMERCE`
 - **Type**: components
@@ -15812,7 +16136,7 @@ export default class PageComponent {
 # components/InputChip
 - **Package**: `KIT`
 - **Type**: components
-InputChip uses specifically modified Textfield to represent array of selectable items.
+InputChip uses specifically modified Input to represent array of selectable items.
 
 ### How to Use (Import)
 
@@ -17094,7 +17418,7 @@ export default class Example {
 # components/InputDateMulti
 - **Package**: `KIT`
 - **Type**: components
-InputDateMulti uses specifically modified Textfield to represent array of dates.
+InputDateMulti uses specifically modified InputChip to represent array of dates.
 
 ### How to Use (Import)
 
@@ -19299,7 +19623,7 @@ export default class Example {
 
 #### Textfield customization
 
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Textfield documentation page for more customization options.
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
 
 **Template:**
 ```html
@@ -22158,7 +22482,7 @@ export default class Example {
 
 #### Textfield customization
 
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Textfield documentation page for more customization options.
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
 
 **Template:**
 ```html
@@ -32063,7 +32387,7 @@ export class Example {
 
 #### Textfield customization
 
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Textfield documentation page for more customization options.
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
 
 **Template:**
 ```html
@@ -38028,7 +38352,7 @@ export default class Example {
 <tui-tabs size="m" vertical="right" class="right" >
 <a routerLinkActive tuiTab [routerLink]="routes.Button" > Button </a>
 <a routerLinkActive tuiTab [routerLink]="routes.Tabs" > Tabs </a>
-<a routerLinkActive tuiTab [routerLink]="routes.Textfield" > Input </a>
+<a routerLinkActive tuiTab [routerLink]="routes.Input" > Input </a>
 </tui-tabs>
 </section>
 ```
@@ -38430,7 +38754,6 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
 
@@ -38448,337 +38771,12 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly routes = DemoRoute;
     protected readonly options = inject(TUI_TEXTAREA_OPTIONS);
     protected readonly examples = ['Basic', 'Limit', 'Custom highlight', 'Icons'];
     protected readonly control = new FormControl(null);
 
     protected min = this.options.min;
     protected max = this.options.max;
-}
-```
-
----
-# components/Textfield
-- **Package**: `CORE`
-- **Type**: components
-Textfield is a low level component that other more complex controls are based upon.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiInput} from '@taiga-ui/core';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiInput,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInput
-    [(ngModel)]="value"
-  />
-</tui-textfield>
-```
-
-### Example
-
-```html
-<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>I am a label</label> } <input placeholder="I am placeholder" tuiInput [disabled]="control.disabled" [invalid]="control.invalid" [readOnly]="control.readonly" [(ngModel)]="value" />
-<tui-icon tuiTooltip="I am a hint" />
-</tui-textfield>
-```
-
-### API
-
-| Property | Type | Description |
-|----------|-----|----------|
-| [(ngModel)] | `string` | Value (or reactive control directives) |
-| [filler] | `string` | Filler |
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-<tui-textfield iconEnd="@tui.settings" iconStart="@tui.search" >
-<label tuiLabel>I am a label</label>
-<input placeholder="I am placeholder" tuiInput [(ngModel)]="value" />
-<tui-icon icon="@tui.bell" />
-<tui-icon tuiTooltip="I am a hint" />
-</tui-textfield>
-<label tuiLabel> For long labels it is better to use label outside as it can wrap to multiple lines <tui-textfield #m iconEnd="@tui.settings" iconStart="@tui.search" tuiTextfieldSize="m" >
-<input tuiInput [placeholder]="m.focused() ? 'I am placeholder' : 'I am a label'" [(ngModel)]="value" />
-<tui-icon icon="@tui.bell" />
-<tui-icon tuiTooltip="I am a hint" />
-</tui-textfield>
-</label>
-<tui-textfield #s iconEnd="@tui.settings" iconStart="@tui.search" tuiTextfieldSize="s" >
-<input tuiInput [placeholder]="s.focused() ? 'I am placeholder' : 'I am a label'" [(ngModel)]="value" />
-<tui-icon icon="@tui.bell" />
-<tui-icon tuiTooltip="I am a hint" />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiInput} from '@taiga-ui/core';
-import {TuiTooltip} from '@taiga-ui/kit';
-
-@Component({
-    imports: [FormsModule, TuiIcon, TuiInput, TuiTooltip],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value = '';
-}
-```
-
-#### States
-
-**Template:**
-```html
-<tui-textfield iconStart="@tui.search">
-<label tuiLabel>Disabled</label>
-<input tuiInput [disabled]="true" [(ngModel)]="value" />
-<tui-icon tuiTooltip="Disabled does not show tooltip" />
-</tui-textfield>
-<tui-textfield iconStart="@tui.search">
-<label tuiLabel>Read-only</label>
-<input placeholder="I am placeholder" tuiInput [readOnly]="true" [(ngModel)]="value" />
-<tui-icon tuiTooltip="Readonly shows tooltip" />
-</tui-textfield>
-<tui-textfield iconStart="@tui.search">
-<label tuiLabel>Invalid</label>
-<input placeholder="I am placeholder" tuiInput [invalid]="true" [(ngModel)]="value" />
-<tui-icon tuiTooltip="Can also follow Angular validation" />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiInput} from '@taiga-ui/core';
-import {TuiTooltip} from '@taiga-ui/kit';
-
-@Component({
-    imports: [FormsModule, TuiIcon, TuiInput, TuiTooltip],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value = 'Test';
-}
-```
-
-#### Dropdown
-
-**Template:**
-```html
-<tui-textfield iconEnd="@tui.search">
-<label tuiLabel>Start typing</label>
-<input #input placeholder="I am placeholder" tuiInput [(ngModel)]="value" />
-<tui-icon tuiTooltip="Autocomplete suggestions" /> @if (items | tuiFilterByInput; as filtered) { @if (input.value && filtered.length) { <tui-data-list-wrapper *tuiDropdown [items]="filtered" /> } } </tui-textfield>
-<tui-textfield>
-<label tuiLabel>Select option</label>
-<input placeholder="I am placeholder" tuiInput tuiSelectLike [(ngModel)]="value" />
-<tui-icon tuiTooltip="Fixed choice select" />
-<tui-data-list-wrapper *tuiDropdown [items]="items" />
-</tui-textfield>
-<tui-textfield tuiChevron tuiDropdownDirection="top" tuiDropdownLimitWidth="auto" >
-<label tuiLabel>Dropdown settings</label>
-<input placeholder="I am placeholder" tuiInput tuiSelectLike [(ngModel)]="value" />
-<tui-icon tuiTooltip="Fixed choice select" />
-<tui-data-list-wrapper *tuiDropdown [items]="items" />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdown, TuiIcon, TuiInput, TuiSelectLike} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-    TuiTooltip,
-} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiChevron,
-        TuiDataListWrapper,
-        TuiDropdown,
-        TuiFilterByInputPipe,
-        TuiIcon,
-        TuiInput,
-        TuiSelectLike,
-        TuiTooltip,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value = '';
-
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
-}
-```
-
-#### InputPassword
-
-**Template:**
-```html
-<tui-textfield>
-<label tuiLabel>Click icon to toggle</label>
-<input placeholder="I am placeholder" tuiInput type="password" [(ngModel)]="value" />
-<tui-icon tuiPassword />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiInput} from '@taiga-ui/core';
-import {TuiPassword} from '@taiga-ui/kit';
-
-@Component({
-    imports: [FormsModule, TuiIcon, TuiInput, TuiPassword],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value = '';
-}
-```
-
-#### Mask
-
-**Template:**
-```html
-<tui-textfield [tuiTextfieldCleaner]="false">
-<label tuiLabel>Flat angle</label>
-<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button iconStart="@tui.x" tabindex="-1" tuiIconButton type="button" (click)="clear()" (pointerdown.zoneless.prevent)="input.focus()" > Clear </button> } </tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {MaskitoDirective} from '@maskito/angular';
-import {type MaskitoOptions} from '@maskito/core';
-import {
-    maskitoAddOnFocusPlugin,
-    maskitoCaretGuard,
-    maskitoNumberOptionsGenerator,
-    maskitoRemoveOnBlurPlugin,
-} from '@maskito/kit';
-import {TuiButton, TuiInput} from '@taiga-ui/core';
-
-const postfix = ' rad';
-const numberOptions = maskitoNumberOptionsGenerator({
-    postfix,
-    decimalSeparator: ',',
-    maximumFractionDigits: 8,
-    min: 0,
-});
-
-@Component({
-    imports: [FormsModule, MaskitoDirective, TuiButton, TuiInput],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value = Math.PI.toFixed(8);
-    protected readonly options: MaskitoOptions = {
-        ...numberOptions,
-        plugins: [
-            ...numberOptions.plugins,
-            maskitoCaretGuard((value) => [0, value.length - postfix.length]),
-            maskitoAddOnFocusPlugin(postfix),
-            maskitoRemoveOnBlurPlugin(postfix),
-        ],
-    };
-
-    protected clear(): void {
-        this.value = postfix;
-    }
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {TuiDocControl} from '@demo/components/control';
-import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocTextfield} from '@demo/components/textfield';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
-import {TuiDemo} from '@demo/utils';
-import {TuiIcon, TuiInput} from '@taiga-ui/core';
-import {TuiTooltip} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiDemo,
-        TuiDocControl,
-        TuiDocIcons,
-        TuiDocTextfield,
-        TuiIcon,
-        TuiInput,
-        TuiTooltip,
-    ],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected routes = DemoRoute;
-    protected readonly examples = [
-        'Basic',
-        'States',
-        'Dropdown',
-        'InputPassword',
-        'Mask',
-    ];
-
-    protected value = '';
-    protected filler = '';
 }
 ```
 
