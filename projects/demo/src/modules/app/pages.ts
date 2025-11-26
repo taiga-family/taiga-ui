@@ -1000,7 +1000,7 @@ export const pages: DocRoutePages = [
         meta: {},
     },
     {
-        section: 'Layout',
+        section: 'Components',
         title: 'Cell',
         keywords: 'cell, feed, item, tuiaccessories, accessories',
         route: DemoRoute.Cell,

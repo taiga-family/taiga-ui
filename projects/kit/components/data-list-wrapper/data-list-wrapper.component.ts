@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {
-    tuiAsDataListAccessor,
     TuiDataList,
     type TuiDataListAccessor,
     TuiDataListComponent,
@@ -20,6 +19,7 @@ import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -28,7 +28,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     templateUrl: './data-list-wrapper.template.html',
     styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
+    providers: [tuiAsAuxiliary(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);

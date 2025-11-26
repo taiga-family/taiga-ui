@@ -1,8 +1,3 @@
-<tui-notification>
-    Don't forget import
-    <code>TuiCardLarge</code>
-</tui-notification>
-
 <div
     appearance="floating"
     tuiCardLarge
@@ -25,37 +20,42 @@
     }
 </div>
 
-<label>
-    Inside a dropdown
-    <tui-textfield
-        tuiChevron
-        [content]="content"
-        [tuiTextfieldCleaner]="false"
-    >
-        <input
-            tuiSelect
-            [(ngModel)]="value"
-        />
+<tui-notification>
+    <code>DataList</code>
+    already uses
+    <code>Cell</code>
+    for the options, but if you need to show it in value template as well – add a wrapping element with
+    <code>Cell</code>
+</tui-notification>
 
-        <tui-data-list-wrapper
-            *tuiDropdown
-            [itemContent]="content"
-            [items]="items"
-        />
-        <ng-template
-            #content
-            let-item
-        >
-            <span tuiCell>
-                <div
-                    appearance="primary"
-                    [tuiAvatar]="item.icon"
-                ></div>
-                <span tuiTitle>
-                    {{ item.title }}
-                    <span tuiSubtitle>{{ item.subtitle }}</span>
-                </span>
+<tui-textfield
+    tuiChevron
+    [content]="content"
+    [tuiTextfieldCleaner]="false"
+>
+    <input
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        [itemContent]="content"
+        [items]="items"
+    />
+    <ng-template
+        #content
+        let-item
+    >
+        <span tuiCell>
+            <div
+                appearance="primary"
+                [tuiAvatar]="item.icon"
+            ></div>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
             </span>
-        </ng-template>
-    </tui-textfield>
-</label>
+        </span>
+    </ng-template>
+</tui-textfield>

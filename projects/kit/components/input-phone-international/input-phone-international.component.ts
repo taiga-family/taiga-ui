@@ -33,7 +33,6 @@ import {
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiCell} from '@taiga-ui/core/components/cell';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {TuiInput, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
@@ -63,7 +62,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         NgTemplateOutlet,
         TuiAutoFocus,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiDataList,
         TuiFlagPipe,

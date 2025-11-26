@@ -58,17 +58,16 @@ export class TuiComboBoxDirective<T>
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
-
     private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
     private readonly strict = signal(true);
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
-        (x) => x !== this && 'options' in x && isSignal(x.options),
+        (x) => 'options' in x && isSignal(x.options),
     );
 
     private readonly options = computed(
         () =>
             this.datalist()
-                ?.options?.() // TODO(v5): remove optional call `?.()`
+                ?.options()
                 .filter((x) => !this.handlers.disabledItemHandler()(x)) ?? [],
     );
 

@@ -34,7 +34,7 @@ export const DemoRoute = {
     CardCollapsed: '/layout/card-collapsed',
     BadgeNotification: '/components/badge-notification',
     BlockDetails: '/layout/block-details',
-    Cell: '/layout/cell',
+    Cell: '/components/cell',
     Comment: '/components/comment',
     Header: '/layout/header',
     Icon: '/components/icon',
