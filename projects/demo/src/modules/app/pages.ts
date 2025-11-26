@@ -657,11 +657,13 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'Textfield',
+                title: 'Input',
                 keywords:
-                    'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
-                route: DemoRoute.Textfield,
-                meta: {},
+                    'form, textfield, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
+                route: DemoRoute.Input,
+                meta: {
+                    name: 'tui-textfield',
+                },
             },
             {
                 section: 'Components',

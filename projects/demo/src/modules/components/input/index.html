@@ -1,11 +1,10 @@
 <tui-doc-page
-    header="Textfield"
+    header="Input"
     package="CORE"
     type="components"
 >
     <ng-template pageTab>
-        <code>Textfield</code>
-        is a low level component that other more complex controls are based upon.
+        Input is a basic string textfield. All other input components are built on its basis.
 
         @for (example of examples; track example) {
             <tui-doc-example
@@ -18,7 +17,7 @@
                 <ng-template #description>
                     @switch ($index) {
                         @case (0) {
-                            <span>Textfield can be used as-is for string value inputs.</span>
+                            <span>Basic string value input.</span>
                         }
                         @case (1) {
                             <span>

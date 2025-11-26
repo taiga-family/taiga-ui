@@ -164,8 +164,8 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('');
         });
 
-        test('Textfield', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.Textfield}/API?tuiTextfieldCleaner=true`);
+        test('Input', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.Input}/API?tuiTextfieldCleaner=true`);
 
             await input.pressSequentially('qwerty');
             await expect(input).toHaveValue('qwerty');

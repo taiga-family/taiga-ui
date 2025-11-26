@@ -4,12 +4,12 @@ import {expect, type Locator, test} from '@playwright/test';
 
 import {tuiGetPseudoElement} from '../../../utils/get-pseudo-element';
 
-test.describe('Textfield', () => {
+test.describe('Input', () => {
     test.describe('interactivity on hover', () => {
         let example!: Locator;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.Textfield);
+            await tuiGoto(page, DemoRoute.Input);
             example = new TuiDocumentationPagePO(page).getExample('#states');
         });
 
@@ -44,8 +44,8 @@ test.describe('Textfield', () => {
         });
     });
 
-    test('open dropdown by click on chevron icon in Textfield page', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Textfield);
+    test('open dropdown by click on chevron icon in Input page', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Input);
         await page.locator('#dropdown').scrollIntoViewIfNeeded();
 
         const pseudo = await tuiGetPseudoElement(

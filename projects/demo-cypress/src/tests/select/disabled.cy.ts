@@ -55,7 +55,7 @@ export class TestTextfield implements OnInit {
     }
 }
 
-describe('Textfield and tuiSelect', () => {
+describe('Select', () => {
     beforeEach(() => cy.viewport(200, 150));
 
     it('show selected value after disabled', () => {
