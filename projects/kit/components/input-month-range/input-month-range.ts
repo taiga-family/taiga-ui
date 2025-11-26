@@ -6,5 +6,5 @@ import {TuiInputMonthRangeDirective} from './input-month-range.directive';
 export const TuiInputMonthRange = [
     TuiInputMonthRangeDirective,
     TuiCalendarMonth,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

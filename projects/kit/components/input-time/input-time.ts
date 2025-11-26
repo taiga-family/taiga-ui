@@ -6,5 +6,5 @@ import {TuiInputTimeDirective} from './input-time.directive';
 export const TuiInputTime = [
     TuiInputTimeDirective,
     TuiInputTimeComponent,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

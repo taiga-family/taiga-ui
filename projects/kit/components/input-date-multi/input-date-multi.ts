@@ -7,6 +7,6 @@ import {TuiInputDateMultiDirective} from './input-date-multi.directive';
 export const TuiInputDateMulti = [
     TuiInputDateMultiDirective,
     TuiCalendar,
-    TuiTextfield,
-    TuiInputChip,
+    ...TuiTextfield,
+    ...TuiInputChip,
 ] as const;

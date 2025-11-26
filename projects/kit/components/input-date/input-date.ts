@@ -8,5 +8,5 @@ export const TuiInputDate = [
     TuiInputDateDirective,
     TuiInputDateComponent,
     TuiCalendar,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

@@ -8,5 +8,5 @@ export const TuiInputNumber = [
     TuiInputNumberDirective,
     TuiInputNumberStep,
     TuiQuantumValueTransformer,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

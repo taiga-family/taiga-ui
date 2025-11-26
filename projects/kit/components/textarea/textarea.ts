@@ -6,5 +6,5 @@ import {TuiTextareaDirective} from './textarea.directive';
 export const TuiTextarea = [
     TuiTextareaComponent,
     TuiTextareaDirective,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

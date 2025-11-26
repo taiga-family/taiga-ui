@@ -4,5 +4,5 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
 
 export const TuiInputPhoneInternational = [
     TuiInputPhoneInternationalComponent,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;
