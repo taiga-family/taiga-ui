@@ -1,4 +1,5 @@
-import {tuiCreateOptions, tuiObfuscate} from '@taiga-ui/cdk/utils';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
+import {tuiObfuscate} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Defines the options for obfuscation.

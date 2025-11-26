@@ -1,5 +1,5 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {type TuiAppearanceOptions} from '@taiga-ui/core/directives';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiLikeOptions extends TuiAppearanceOptions {

@@ -21,7 +21,7 @@ import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 const LIMIT = 100;

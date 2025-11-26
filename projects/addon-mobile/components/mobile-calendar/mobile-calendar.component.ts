@@ -18,7 +18,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {TuiMobileCalendarSheet} from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';
-import {TuiRipple, TuiTouchable} from '@taiga-ui/addon-mobile/directives';
+import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
+import {TuiTouchable} from '@taiga-ui/addon-mobile/directives/touchable';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     MONTHS_IN_YEAR,

@@ -7,7 +7,7 @@ import {
     type OnInit,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiTableHead} from '@taiga-ui/addon-table/components';
+import {TuiTableHead} from '@taiga-ui/addon-table/components/table';
 import {defer, distinctUntilChanged, EMPTY, merge} from 'rxjs';
 
 import {AbstractTuiTableFilter} from './abstract-table-filter';

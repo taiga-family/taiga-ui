@@ -45,7 +45,7 @@ import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdo
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import {TuiFlagPipe} from '@taiga-ui/kit/pipes';
+import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {validatePhoneNumberLength} from 'libphonenumber-js';

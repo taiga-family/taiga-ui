@@ -20,7 +20,7 @@ import {
     TUI_MASK_CVC,
     TUI_MASK_EXPIRE,
 } from '@taiga-ui/addon-commerce/constants';
-import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
+import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes/format-card';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';

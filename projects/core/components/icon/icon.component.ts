@@ -6,7 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiIcons} from '@taiga-ui/core/directives';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
 @Component({
     // :not([tuiBadge]) is required to avoid double matching of TuiIcons
