@@ -14,7 +14,7 @@
                 tuiLink
                 type="button"
             >
-                <strong>{{ start + 1 }}–{{ end() }}</strong>
+                <strong>{{ start() + 1 }}–{{ end() }}</strong>
                 <tui-data-list
                     *tuiDropdown="let close"
                     size="s"
@@ -37,7 +37,7 @@
                             @if (item === size()) {
                                 <tui-icon
                                     class="t-checkmark"
-                                    [icon]="commonIcons.check"
+                                    [icon]="icons.check"
                                 />
                             } @else {
                                 <span class="t-checkmark"></span>
@@ -59,7 +59,7 @@
             tuiIconButton
             type="button"
             class="t-button t-button_back"
-            [disabled]="leftDisabled"
+            [disabled]="!start()"
             [iconStart]="icons.decrement"
             (click)="back()"
         >

@@ -15,7 +15,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options';

@@ -23,7 +23,7 @@ import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent} from 'rxjs';
 

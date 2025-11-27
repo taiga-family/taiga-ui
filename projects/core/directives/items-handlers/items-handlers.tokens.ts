@@ -2,9 +2,9 @@ import {
     InjectionToken,
     Optional,
     type Provider,
+    type Signal,
     signal,
     SkipSelf,
-    type WritableSignal,
 } from '@angular/core';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
@@ -14,9 +14,9 @@ import {
 } from '@taiga-ui/cdk/types';
 
 export interface TuiItemsHandlers<T> {
-    readonly disabledItemHandler: WritableSignal<TuiBooleanHandler<T>>;
-    readonly identityMatcher: WritableSignal<TuiIdentityMatcher<T>>;
-    readonly stringify: WritableSignal<TuiStringHandler<T>>;
+    readonly disabledItemHandler: Signal<TuiBooleanHandler<T>>;
+    readonly identityMatcher: Signal<TuiIdentityMatcher<T>>;
+    readonly stringify: Signal<TuiStringHandler<T>>;
 }
 
 export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {

@@ -14,7 +14,7 @@ import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 

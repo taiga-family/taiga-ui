@@ -6,7 +6,7 @@ import {
     tuiZoneOptimized,
 } from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {
     debounceTime,
     distinctUntilChanged,

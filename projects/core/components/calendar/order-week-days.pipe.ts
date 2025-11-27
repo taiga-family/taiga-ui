@@ -1,6 +1,7 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {map, type Observable} from 'rxjs';
+
+import {TUI_CALENDAR_OPTIONS} from './calendar.options';
 
 function convertToSundayFirstWeekFormat(
     weekDaysNames: readonly string[],
@@ -14,7 +15,7 @@ function convertToSundayFirstWeekFormat(
     name: 'tuiOrderWeekDays',
 })
 export class TuiOrderWeekDaysPipe implements PipeTransform {
-    private readonly firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
+    private readonly options = inject(TUI_CALENDAR_OPTIONS);
 
     public transform(
         mondayFirstWeekDays$: Observable<readonly string[]>,
@@ -22,8 +23,8 @@ export class TuiOrderWeekDaysPipe implements PipeTransform {
         return mondayFirstWeekDays$.pipe(
             map(convertToSundayFirstWeekFormat),
             map((weekDays) => [
-                ...weekDays.slice(this.firstDayOfWeekIndex),
-                ...weekDays.slice(0, this.firstDayOfWeekIndex),
+                ...weekDays.slice(this.options.weekStart),
+                ...weekDays.slice(0, this.options.weekStart),
             ]),
         );
     }

@@ -50,7 +50,6 @@ export class TuiRoot {
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = toSignal(inject(TuiBreakpointService));
-
     protected readonly scrollbars =
         !inject(TUI_IS_MOBILE) &&
         !this.child &&

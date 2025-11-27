@@ -11,10 +11,7 @@ export class TuiScrollable implements OnInit {
 
     public ngOnInit(): void {
         this.el.dispatchEvent(
-            new CustomEvent(TUI_SCROLLABLE, {
-                bubbles: true,
-                detail: this.el,
-            }),
+            new CustomEvent(TUI_SCROLLABLE, {bubbles: true, detail: this.el}),
         );
     }
 }

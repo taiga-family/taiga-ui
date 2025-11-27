@@ -5,7 +5,7 @@ import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {type TuiContext, type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, filter, map, type Observable, startWith} from 'rxjs';
 

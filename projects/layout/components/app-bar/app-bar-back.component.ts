@@ -5,7 +5,7 @@ import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
@@ -17,7 +17,7 @@ import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
     hostDirectives: [TuiWithAppearance],
 })
 export class TuiAppBarBack implements TuiAppearanceOptions {
-    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     public readonly appearance = 'link';
 }

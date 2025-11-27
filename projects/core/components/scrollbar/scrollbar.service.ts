@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {filter, map, merge, Observable, switchMap, takeUntil} from 'rxjs';
 
 @Injectable()

@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiZonefreeScheduler, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs';
 
 import {TuiScrollbarDirective} from './scrollbar.directive';
