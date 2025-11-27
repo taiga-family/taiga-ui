@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TuiDocAPIItem, TuiDocAPINumberItem} from '@taiga-ui/addon-doc';
-import {type TuiContext, type TuiLooseUnion} from '@taiga-ui/cdk';
+import {type TuiLooseUnion} from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_OPTIONS,
     type TuiSizeL,
