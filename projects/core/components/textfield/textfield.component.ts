@@ -11,6 +11,7 @@ import {
     forwardRef,
     inject,
     Input,
+    NgZone,
     type QueryList,
     signal,
     ViewChild,
@@ -22,7 +23,6 @@ import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -215,7 +215,6 @@ export class TuiTextfieldBaseComponent<T>
     hostDirectives: [
         TuiDropdownDirective,
         TuiDropdownFixed,
-        TuiTransitioned,
         TuiWithDropdownOpen,
         TuiWithIcons,
         TuiWithItemsHandlers,
@@ -227,10 +226,25 @@ export class TuiTextfieldBaseComponent<T>
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
+        '[style.transition]': '"none"',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
         '(tuiActiveZoneChange)': '!$event && cva?.onTouched()',
     },
 })
-export class TuiTextfieldComponent<T> extends TuiTextfieldBaseComponent<T> {}
+export class TuiTextfieldComponent<T> extends TuiTextfieldBaseComponent<T> {
+    constructor() {
+        super();
+
+        // TODO: Replace with TuiTransitioned when fixed:
+        // https://github.com/angular/angular/issues/57846
+        const el = tuiInjectElement();
+
+        inject(NgZone).runOutsideAngular(() => {
+            setTimeout(() => {
+                el.style.transition = '';
+            });
+        });
+    }
+}
