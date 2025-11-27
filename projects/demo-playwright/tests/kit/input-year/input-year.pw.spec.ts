@@ -2,14 +2,13 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-// TODO migrate
-test.skip('InputYear', () => {
+test.describe('InputYear', () => {
     let input: Locator;
     let documentationPO: TuiDocumentationPagePO;
 
     test.describe('Does not allow incorrect year entry', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputYearLegacy}/API?max=2020`);
+            await tuiGoto(page, `${DemoRoute.InputYear}/API?max=2020`);
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');
@@ -52,7 +51,7 @@ test.skip('InputYear', () => {
 
     test.describe('Value validation on blur', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputYearLegacy}/API?max=2024&min=2020`);
+            await tuiGoto(page, `${DemoRoute.InputYear}/API?max=2024&min=2020`);
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');
@@ -73,7 +72,7 @@ test.skip('InputYear', () => {
 
     test.describe('need select date from dropdown', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputYearLegacy}/API`);
+            await tuiGoto(page, `${DemoRoute.InputYear}/API`);
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');

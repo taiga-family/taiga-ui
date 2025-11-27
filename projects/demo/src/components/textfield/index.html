@@ -54,4 +54,21 @@
     </tr>
 }
 
+@if (!hiddenOptions().includes('content')) {
+    <tr
+        name="[content]"
+        tuiDocAPIItem
+        type="PolymorpheusContent"
+        [items]="contentVariants()"
+        [(value)]="content"
+    >
+        A template for custom view of textfield value.
+
+        <p>
+            We strongly recommend to unset this property on focus – otherwise, it breaks UX on attempt to edit field by
+            keyboard!
+        </p>
+    </tr>
+}
+
 <ng-content />

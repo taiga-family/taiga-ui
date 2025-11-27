@@ -352,7 +352,7 @@
                 <tui-textfield
                     #textfield
                     tuiChevron
-                    [content]="!textfield.focused() && control.value ? textfieldContent : ''"
+                    [content]="!textfield.focused() && control.value ? textfieldDoc.content : ''"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [iconStart]="icons.iconStart"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
@@ -431,23 +431,8 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
-            >
-                <!--TODO: create the inherited documentation for Textfield [content] prop)-->
-                <tr
-                    name="[content]"
-                    tuiDocAPIItem
-                    type="PolymorpheusContent"
-                    [items]="textfieldContentVariants()"
-                    [(value)]="textfieldContent"
-                >
-                    A template for custom view of textfield value.
-
-                    <p>
-                        We strongly recommend to unset this property on focus – otherwise, it breaks UX on attempt to
-                        edit field by keyboard!
-                    </p>
-                </tr>
-            </tbody>
+                [contentVariants]="textfieldContentVariants"
+            ></tbody>
 
             <tbody
                 #icons
