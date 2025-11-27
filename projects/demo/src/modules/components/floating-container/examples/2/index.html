@@ -64,8 +64,8 @@
 
         @if (floating) {
             <footer
+                tuiAnimated
                 tuiFloatingContainer
-                @tuiSlideInTop
             >
                 <button
                     tuiButton
@@ -77,9 +77,9 @@
                 @if (secondAction) {
                     <button
                         appearance="flat"
+                        tuiAnimated
                         tuiButton
                         type="button"
-                        @tuiHeightCollapse
                         (click)="observer.complete()"
                     >
                         Secondary action

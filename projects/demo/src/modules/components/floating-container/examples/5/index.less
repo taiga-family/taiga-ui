@@ -21,3 +21,39 @@ footer {
     color: var(--tui-text-secondary);
     margin-block-start: 0.5rem;
 }
+
+[tuiFloatingContainer] {
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+        animation-duration: var(--tui-duration);
+        animation-timing-function: ease-in-out;
+
+        --tui-from: translateY(2rem);
+    }
+}
+
+@keyframes tuiHeightCollapse {
+    from {
+        max-block-size: 0;
+        margin-block: 0;
+        opacity: 0;
+    }
+
+    to {
+        max-block-size: 3.5rem;
+        margin-block: 0;
+        opacity: 1;
+    }
+}
+
+[tuiFloatingContainer] > button {
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiHeightCollapse;
+        animation-duration: var(--tui-duration);
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+        overflow: hidden;
+    }
+}

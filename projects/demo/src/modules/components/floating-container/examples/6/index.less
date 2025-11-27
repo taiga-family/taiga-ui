@@ -12,3 +12,60 @@ footer {
     margin-inline-start: 1rem;
     margin-inline-end: 1rem;
 }
+
+[tuiFloatingContainer]:not([tuiAnimatedParent]) {
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+        animation-duration: var(--tui-duration);
+        animation-timing-function: ease-in-out;
+
+        --tui-from: translateY(2rem);
+    }
+}
+
+[tuiFloatingContainer] > div[tuiAnimatedParent] {
+    position: relative;
+    display: grid;
+    isolation: isolate;
+
+    > * {
+        grid-area: 1 / 1;
+
+        &.tui-enter,
+        &.tui-leave {
+            animation-name: tuiFade;
+            animation-duration: var(--tui-duration);
+            animation-timing-function: ease-in-out;
+        }
+
+        &.tui-leave {
+            z-index: 1;
+        }
+    }
+}
+
+@keyframes tuiHeightCollapse {
+    from {
+        max-block-size: 0;
+        margin-block: 0;
+        opacity: 0;
+    }
+
+    to {
+        max-block-size: 3.5rem;
+        margin-block: 0;
+        opacity: 1;
+    }
+}
+
+[tuiFloatingContainer] > button {
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiHeightCollapse;
+        animation-duration: var(--tui-duration);
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+        overflow: hidden;
+    }
+}

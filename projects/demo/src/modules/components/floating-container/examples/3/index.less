@@ -21,3 +21,35 @@ footer {
     margin-block-start: 0.5rem;
     min-block-size: 2rem;
 }
+
+[tuiFloatingContainer]:not([tuiAnimatedParent]) {
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+        animation-duration: var(--tui-duration);
+        animation-timing-function: ease-in-out;
+
+        --tui-from: translateY(2rem);
+    }
+}
+
+[tuiFloatingContainer] tui-elastic-container[tuiAnimatedParent] {
+    > .t-wrapper {
+        display: grid !important;
+
+        > * {
+            grid-area: 1 / 1;
+
+            &.tui-enter,
+            &.tui-leave {
+                animation-name: tuiFade;
+                animation-duration: var(--tui-duration);
+                animation-timing-function: ease-in-out;
+            }
+
+            &.tui-leave {
+                z-index: 1;
+            }
+        }
+    }
+}

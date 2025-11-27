@@ -12,3 +12,14 @@ footer {
     margin-inline-start: 1rem;
     margin-inline-end: 1rem;
 }
+
+[tuiFloatingContainer] {
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+        animation-duration: var(--tui-duration);
+        animation-timing-function: ease-in-out;
+
+        --tui-from: translateY(2rem);
+    }
+}

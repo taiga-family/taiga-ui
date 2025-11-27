@@ -36,11 +36,12 @@
 
     @if (floating) {
         <footer
+            tuiAnimated
             tuiFloatingContainer
-            @tuiSlideInTop
         >
-            <tui-elastic-container>
+            <tui-elastic-container tuiAnimatedParent>
                 <button
+                    tuiAnimated
                     tuiButton
                     type="button"
                 >
@@ -48,8 +49,8 @@
                 </button>
                 @if (!additional) {
                     <span
+                        tuiAnimated
                         class="clamp"
-                        [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}"
                     >
                         <tui-icon
                             icon="@tui.settings"
@@ -61,9 +62,9 @@
                 @if (additional) {
                     <button
                         appearance="flat"
+                        tuiAnimated
                         tuiButton
                         type="button"
-                        [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}"
                     >
                         Secondary action
                     </button>

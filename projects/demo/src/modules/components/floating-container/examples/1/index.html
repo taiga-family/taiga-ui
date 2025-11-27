@@ -41,7 +41,7 @@
 
     @if (floating) {
         <footer
-            @tuiSlideInTop
+            tuiAnimated
             [tuiFloatingContainer]="secondAction ? '' : 'transparent'"
         >
             <button
@@ -53,9 +53,9 @@
             @if (secondAction) {
                 <button
                     appearance="flat"
+                    tuiAnimated
                     tuiButton
                     type="button"
-                    @tuiHeightCollapse
                 >
                     Secondary action
                 </button>

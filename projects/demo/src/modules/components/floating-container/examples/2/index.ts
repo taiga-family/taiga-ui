@@ -3,21 +3,20 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {
-    TuiButton,
-    TuiCell,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+    TUI_DEFAULT_MATCHER,
+    TuiAnimated,
+    TuiFilterPipe,
+    type TuiMatcher,
+} from '@taiga-ui/cdk';
+import {TuiButton, TuiCell, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
 import {TuiHeader, TuiSearch} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         FormsModule,
+        TuiAnimated,
         TuiAvatar,
         TuiButton,
         TuiCell,
@@ -34,7 +33,6 @@ import {TuiHeader, TuiSearch} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
     protected open = false;
