@@ -24,21 +24,18 @@ export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly method = import('./method.md');
 
-    protected readonly dialogsCloseToken = import(
-        './examples/import/dialogs-close-token.md'
-    );
+    protected readonly dialogsCloseToken =
+        import('./examples/import/dialogs-close-token.md');
 
     protected readonly example2 = {
         'dialog-example/dialog-example.component.ts': import(
             './examples/2/dialog-example/dialog-example.component.ts?raw',
             {with: {loader: 'text'}}
         ),
-        'dialog-example/dialog-example.style.less': import(
-            './examples/2/dialog-example/dialog-example.style.less'
-        ),
-        'dialog-example/dialog-example.template.html': import(
-            './examples/2/dialog-example/dialog-example.template.html'
-        ),
+        'dialog-example/dialog-example.style.less':
+            import('./examples/2/dialog-example/dialog-example.style.less'),
+        'dialog-example/dialog-example.template.html':
+            import('./examples/2/dialog-example/dialog-example.template.html'),
     };
 
     protected readonly example7 = {
@@ -46,12 +43,10 @@ export default class Page {
             './examples/7/search-example/search-dialog-example.component.ts?raw',
             {with: {loader: 'text'}}
         ),
-        'search-example/search-dialog-example.template.html': import(
-            './examples/7/search-example/search-dialog-example.template.html'
-        ),
-        'search-example/search-dialog-example.component.less': import(
-            './examples/7/search-example/search-dialog-example.component.less'
-        ),
+        'search-example/search-dialog-example.template.html':
+            import('./examples/7/search-example/search-dialog-example.template.html'),
+        'search-example/search-dialog-example.component.less':
+            import('./examples/7/search-example/search-dialog-example.component.less'),
     };
 
     protected readonly example9 = {
@@ -71,12 +66,10 @@ export default class Page {
             './examples/9/pay-modal/pay-modal.component.ts?raw',
             {with: {loader: 'text'}}
         ),
-        'pay-modal/pay-modal.component.less': import(
-            './examples/9/pay-modal/pay-modal.component.less'
-        ),
-        'pay-modal/pay-modal.component.html': import(
-            './examples/9/pay-modal/pay-modal.component.html'
-        ),
+        'pay-modal/pay-modal.component.less':
+            import('./examples/9/pay-modal/pay-modal.component.less'),
+        'pay-modal/pay-modal.component.html':
+            import('./examples/9/pay-modal/pay-modal.component.html'),
     };
 
     protected readonly exampleServiceUsage = import('./examples/import/service-usage.md');

@@ -6,8 +6,7 @@ import {type TuiPositionOptions} from '@taiga-ui/core/portals/alert';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiNotificationOptions<I = undefined>
-    extends TuiAppearanceOptions,
-        TuiPositionOptions {
+    extends TuiAppearanceOptions, TuiPositionOptions {
     readonly icon: TuiStringHandler<string> | string;
     readonly size: TuiSizeL | TuiSizeS;
     readonly autoClose: TuiNumberHandler<string> | number;

@@ -29,13 +29,10 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
         }),
     ],
 })
-export class TuiDocNumberFormat
-    implements
-        Record<
-            keyof TuiNumberFormatSettings,
-            WritableSignal<TuiNumberFormatSettings[keyof TuiNumberFormatSettings]>
-        >
-{
+export class TuiDocNumberFormat implements Record<
+    keyof TuiNumberFormatSettings,
+    WritableSignal<TuiNumberFormatSettings[keyof TuiNumberFormatSettings]>
+> {
     protected readonly routes = DemoRoute;
     protected readonly decimalVariants: TuiDecimalMode[] = ['always', 'pad', 'not-zero'];
     protected readonly roundingVariants: TuiRounding[] = [

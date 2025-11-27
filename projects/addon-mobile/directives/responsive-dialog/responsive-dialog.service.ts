@@ -10,8 +10,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
 export interface TuiResponsiveDialogOptions<I = undefined>
-    extends TuiDialogOptions<I>,
-        TuiSheetDialogOptions<I> {}
+    extends TuiDialogOptions<I>, TuiSheetDialogOptions<I> {}
 
 /**
  * Same as `TuiDialogService` but automatically switches to `TuiSheetDialogService` on mobile
