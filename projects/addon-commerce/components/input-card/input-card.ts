@@ -1,4 +1,9 @@
-import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiLabel} from '@taiga-ui/core/components/label';
+import {
+    TuiTextfieldComponent,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core/components/textfield';
+import {TuiDropdownContent} from '@taiga-ui/core/portals';
 
 import {TuiInputCardComponent} from './input-card.component';
 import {TuiInputCVCDirective} from './input-cvc.directive';
@@ -8,5 +13,8 @@ export const TuiInputCard = [
     TuiInputCardComponent,
     TuiInputCVCDirective,
     TuiInputExpireDirective,
-    ...TuiTextfield,
+    TuiLabel,
+    TuiTextfieldComponent,
+    TuiTextfieldOptionsDirective,
+    TuiDropdownContent,
 ] as const;

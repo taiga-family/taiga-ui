@@ -1,4 +1,9 @@
-import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiLabel} from '@taiga-ui/core/components/label';
+import {
+    TuiTextfieldComponent,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core/components/textfield';
+import {TuiDropdownContent} from '@taiga-ui/core/portals';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 
 import {TuiInputMonthComponent} from './input-month.component';
@@ -8,5 +13,8 @@ export const TuiInputMonth = [
     TuiInputMonthComponent,
     TuiInputMonthDirective,
     TuiCalendarMonth,
-    ...TuiTextfield,
+    TuiLabel,
+    TuiTextfieldComponent,
+    TuiTextfieldOptionsDirective,
+    TuiDropdownContent,
 ] as const;
