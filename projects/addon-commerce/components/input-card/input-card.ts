@@ -8,5 +8,5 @@ export const TuiInputCard = [
     TuiInputCardComponent,
     TuiInputCVCDirective,
     TuiInputExpireDirective,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

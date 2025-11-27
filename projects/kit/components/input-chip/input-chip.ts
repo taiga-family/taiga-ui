@@ -4,7 +4,7 @@ import {TuiInputChipComponent} from './input-chip.component';
 import {TuiInputChipDirective} from './input-chip.directive';
 
 export const TuiInputChip = [
-    TuiTextfield,
+    ...TuiTextfield,
     TuiInputChipDirective,
     TuiInputChipComponent,
 ] as const;

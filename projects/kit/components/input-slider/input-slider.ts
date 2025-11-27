@@ -12,5 +12,5 @@ export const TuiInputSlider = [
     TuiSliderKeyStepsBase,
     TuiSliderKeySteps,
     TuiInputSliderDirective,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

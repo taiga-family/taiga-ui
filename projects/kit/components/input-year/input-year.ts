@@ -6,5 +6,5 @@ import {TuiInputYearDirective} from './input-year.directive';
 export const TuiInputYear = [
     TuiInputYearDirective,
     TuiCalendarYear,
-    TuiTextfield,
+    ...TuiTextfield,
 ] as const;

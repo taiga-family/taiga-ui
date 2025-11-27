@@ -121,7 +121,7 @@
         "@nx/jest": "22.1.1",
         "@nx/workspace": "22.1.1",
         "@schematics/angular": "19.2.19",
-        "@taiga-ui/configs": "0.365.0",
+        "@taiga-ui/configs": "0.366.0",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
         "@types/node": "24.10.1",
