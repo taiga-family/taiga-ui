@@ -6,7 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -21,7 +21,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiSlides]',
-    hostDirectives: [TuiAnimatedParent],
+    hostDirectives: [TuiAnimated],
     host: {
         tuiSlides: '',
         '[attr.data-direction]': 'sign()',
