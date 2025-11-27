@@ -17,10 +17,9 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 })
 export class TuiFilterByInputPipe implements PipeTransform {
     // TODO: Remove optional after legacy controls are dropped
-    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
-    private readonly host = inject(TUI_DATA_LIST_HOST);
-    private readonly itemsHandlers: TuiItemsHandlers<unknown> =
-        inject(TUI_ITEMS_HANDLERS);
+    readonly #textfield = inject(TuiTextfieldComponent, {optional: true});
+    readonly #host = inject(TUI_DATA_LIST_HOST);
+    readonly #itemsHandlers: TuiItemsHandlers<unknown> = inject(TUI_ITEMS_HANDLERS);
 
     public transform<T>(
         items: ReadonlyArray<readonly T[]>,
@@ -42,18 +41,18 @@ export class TuiFilterByInputPipe implements PipeTransform {
         return this.filter<T>(
             items,
             matcher,
-            (this.textfield
-                ? this.itemsHandlers.stringify()
+            (this.#textfield
+                ? this.#itemsHandlers.stringify()
                 : // TODO(v5): delete backward compatibility
-                  this.host.stringify) || String,
-            this.textfield?.value() ||
-                (this.host as any).nativeFocusableElement?.value ||
+                  this.#host.stringify) || String,
+            this.#textfield?.value() ||
+                (this.#host as any).nativeFocusableElement?.value ||
                 '',
         );
     }
 
     @tuiPure
-    private filter<T>(
+    filter<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T>,
         stringify: TuiStringHandler<T>,
@@ -64,43 +63,45 @@ export class TuiFilterByInputPipe implements PipeTransform {
         }
 
         return tuiIsFlat(items)
-            ? this.filterFlat(items, matcher, stringify, query)
-            : this.filter2d(items, matcher, stringify, query);
+            ? this.#filterFlat(items, matcher, stringify, query)
+            : this.#filter2d(items, matcher, stringify, query);
     }
 
-    private filterFlat<T>(
+    #filterFlat<T>(
         items: readonly T[],
         matcher: TuiStringMatcher<T>,
         stringify: TuiStringHandler<T>,
         query: string,
     ): readonly T[] {
-        const match = this.getMatch(items, stringify, query);
+        const match = this.#getMatch(items, stringify, query);
 
         return match != null
             ? items
             : items.filter((item) => matcher(item, query, stringify));
     }
 
-    private filter2d<T>(
+    #filter2d<T>(
         items: ReadonlyArray<readonly T[]>,
         matcher: TuiStringMatcher<T>,
         stringify: TuiStringHandler<T>,
         query: string,
     ): ReadonlyArray<readonly T[]> {
-        const match = items.find((item) => this.getMatch(item, stringify, query) != null);
+        const match = items.find(
+            (item) => this.#getMatch(item, stringify, query) != null,
+        );
 
         return match != null
             ? items
-            : items.map((inner) => this.filterFlat(inner, matcher, stringify, query));
+            : items.map((inner) => this.#filterFlat(inner, matcher, stringify, query));
     }
 
-    private getMatch<T>(
+    #getMatch<T>(
         items: readonly T[],
         stringify: TuiStringHandler<T>,
         query: string,
     ): T | undefined {
         // TODO: Refactor when tui-textfield[multi] is ready
-        if ((this.host as any).tagValidator) {
+        if ((this.#host as any).tagValidator) {
             return undefined;
         }
 

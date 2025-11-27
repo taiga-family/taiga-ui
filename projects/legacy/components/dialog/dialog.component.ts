@@ -75,7 +75,7 @@ export class TuiDialogComponent<O, I> {
         )
             .pipe(filter(Boolean), takeUntilDestroyed())
             .subscribe(() => {
-                this.close();
+                this.#close();
             });
     }
 
@@ -87,7 +87,7 @@ export class TuiDialogComponent<O, I> {
         return this.context.header;
     }
 
-    private close(): void {
+    #close(): void {
         if (this.context.required) {
             this.context.$implicit.error(REQUIRED_ERROR);
         } else {

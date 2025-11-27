@@ -67,11 +67,11 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     ],
 })
 export class App extends AbstractDemo implements OnInit {
-    private readonly isE2E = inject(TUI_IS_E2E);
-    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly http = inject(HttpClient);
-    private readonly ym = inject(YaMetrikaService);
+    readonly #isE2E = inject(TUI_IS_E2E);
+    readonly #isServer = isPlatformServer(inject(PLATFORM_ID));
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #http = inject(HttpClient);
+    readonly #ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
@@ -90,15 +90,15 @@ export class App extends AbstractDemo implements OnInit {
 
     public override ngOnInit(): void {
         this.replaceEnvInURI().then(() => {
-            if (this.isServer || this.isE2E || !environment.production) {
+            if (this.#isServer || this.#isE2E || !environment.production) {
                 return;
             }
 
-            this.enableYandexMetrika();
+            this.#enableYandexMetrika();
 
-            this.http
+            this.#http
                 .get<Record<string, any>>(environment.github)
-                .pipe(takeUntilDestroyed(this.destroyRef))
+                .pipe(takeUntilDestroyed(this.#destroyRef))
                 .subscribe((response) =>
                     this.stars.set(
                         Intl.NumberFormat('en', {notation: 'compact'}).format(
@@ -109,14 +109,14 @@ export class App extends AbstractDemo implements OnInit {
         });
     }
 
-    private enableYandexMetrika(): void {
+    #enableYandexMetrika(): void {
         this.router.events
             .pipe(
                 filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-                takeUntilDestroyed(this.destroyRef),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe((event) =>
-                this.ym.hit(event.urlAfterRedirects, {referer: event.url}),
+                this.#ym.hit(event.urlAfterRedirects, {referer: event.url}),
             );
     }
 }

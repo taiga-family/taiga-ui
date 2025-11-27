@@ -12,24 +12,21 @@ import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rx
     },
 })
 export class TuiDroppable {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
-    private readonly tuiDroppableDropped$ = tuiTypedFromEvent(this.el, 'drop').pipe(
+    readonly #tuiDroppableDropped$ = tuiTypedFromEvent(this.#el, 'drop').pipe(
         tuiPreventDefault(),
         map((event) => event.dataTransfer),
         filter(tuiIsPresent),
     );
 
-    private readonly tuiDroppableDragOverChange$ = tuiTypedFromEvent(
-        this.el,
-        'dragenter',
-    ).pipe(
+    readonly #tuiDroppableDragOverChange$ = tuiTypedFromEvent(this.#el, 'dragenter').pipe(
         switchMap(({target, dataTransfer}) =>
             merge(
-                tuiTypedFromEvent(this.el, 'dragleave').pipe(
+                tuiTypedFromEvent(this.#el, 'dragleave').pipe(
                     filter((event) => event.target === target),
                 ),
-                tuiTypedFromEvent(this.el, 'drop'),
+                tuiTypedFromEvent(this.#el, 'drop'),
             ).pipe(
                 map(() => null),
                 startWith(dataTransfer),
@@ -38,9 +35,11 @@ export class TuiDroppable {
         distinctUntilChanged((a, b) => (!!a && !!b) || (!a && !b)),
     );
 
-    public readonly tuiDroppableDropped = outputFromObservable(this.tuiDroppableDropped$);
+    public readonly tuiDroppableDropped = outputFromObservable(
+        this.#tuiDroppableDropped$,
+    );
 
     public readonly tuiDroppableDragOverChange = outputFromObservable(
-        this.tuiDroppableDragOverChange$,
+        this.#tuiDroppableDragOverChange$,
     );
 }

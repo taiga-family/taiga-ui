@@ -15,12 +15,12 @@ const COPIED_TIMEOUT = 1500;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCopy {
-    private readonly copy$ = new Subject<void>();
+    readonly #copy$ = new Subject<void>();
 
     protected readonly texts = inject(TUI_COPY_TEXTS);
 
     protected readonly copied = toSignal(
-        this.copy$.pipe(
+        this.#copy$.pipe(
             switchMap(() =>
                 timer(COPIED_TIMEOUT).pipe(map(TUI_FALSE_HANDLER), startWith(true)),
             ),
@@ -29,6 +29,6 @@ export class TuiDocCopy {
     );
 
     protected onClick(): void {
-        this.copy$.next();
+        this.#copy$.next();
     }
 }

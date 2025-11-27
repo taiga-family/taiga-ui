@@ -22,20 +22,20 @@ import {SEARCH_CONFIG} from './env';
     },
 })
 export class TuiAlgoliaSearch {
-    private readonly config = inject(SEARCH_CONFIG);
+    readonly #config = inject(SEARCH_CONFIG);
 
     constructor() {
-        this.setSearchDocDarkMode();
+        this.#setSearchDocDarkMode();
 
         afterNextRender(() => {
-            this.enableDocSearch();
+            this.#enableDocSearch();
         });
     }
 
-    private enableDocSearch(): void {
+    #enableDocSearch(): void {
         import('@docsearch/js').then((d) =>
             d.default({
-                ...this.config,
+                ...this.#config,
                 maxResultsPerGroup: 7,
                 transformSearchClient: (searchClient) => ({
                     ...searchClient,
@@ -50,7 +50,7 @@ export class TuiAlgoliaSearch {
         );
     }
 
-    private setSearchDocDarkMode(): void {
+    #setSearchDocDarkMode(): void {
         const {documentElement} = inject(DOCUMENT);
         const darkMode = inject(TUI_DARK_MODE);
 

@@ -17,11 +17,11 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
     },
 })
 export class TuiMedia {
-    private readonly el = tuiInjectElement<HTMLMediaElement>();
+    readonly #el = tuiInjectElement<HTMLMediaElement>();
 
     protected readonly setElCurrentTime = effect(() => {
-        if (Math.abs(this.currentTime() - this.el.currentTime) > 0.05) {
-            this.el.currentTime = this.currentTime();
+        if (Math.abs(this.currentTime() - this.#el.currentTime) > 0.05) {
+            this.#el.currentTime = this.currentTime();
         }
     });
 
@@ -33,9 +33,9 @@ export class TuiMedia {
         const paused = this.paused();
 
         if (paused) {
-            this.el.pause?.();
+            this.#el.pause?.();
         } else {
-            void this.el.play?.();
+            void this.#el.play?.();
         }
 
         this.updatePlaybackRate(untracked(this.playbackRate));
@@ -45,23 +45,23 @@ export class TuiMedia {
 
     public readonly volume = model<number>(1);
 
-    public readonly currentTime = model<number>(this.el.currentTime ?? 0);
+    public readonly currentTime = model<number>(this.#el.currentTime ?? 0);
 
-    public readonly paused = model<boolean>(this.el.paused);
+    public readonly paused = model<boolean>(this.#el.paused);
 
     protected onPausedChange(paused: boolean): void {
         this.paused.set(paused);
     }
 
     protected onVolumeChange(): void {
-        this.volume.set(this.el.volume);
+        this.volume.set(this.#el.volume);
     }
 
     protected onCurrentTimeChange(): void {
-        this.currentTime.set(this.el.currentTime);
+        this.currentTime.set(this.#el.currentTime);
     }
 
     private updatePlaybackRate(playbackRate: number): void {
-        this.el.playbackRate = playbackRate;
+        this.#el.playbackRate = playbackRate;
     }
 }

@@ -50,25 +50,26 @@ export interface TuiMobileCalendarData {
 })
 export class TuiMobileCalendarDropdown {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
-    private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
-    private readonly keyboard = inject(TuiKeyboardService);
+    readonly #dropdown = inject(TuiDropdownDirective, {optional: true});
+    readonly #keyboard = inject(TuiKeyboardService);
 
-    private readonly context = injectContext<Record<string, any>>({optional: true});
-    private readonly observer?: Observer<unknown> = this.context?.$implicit;
-    private readonly data: TuiMobileCalendarData = this.context?.data || {};
+    readonly #context = injectContext<Record<string, any>>({optional: true});
+    readonly #observer?: Observer<unknown> = this.#context?.$implicit;
+    readonly #data: TuiMobileCalendarData = this.#context?.data || {};
 
-    private selectedPeriod: TuiDayRange | null = null;
+    #selectedPeriod: TuiDayRange | null = null;
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
     protected readonly control: any = inject(TuiControl, {optional: true});
     protected readonly directive = inject(TuiMobileCalendarDropdownNew, {optional: true});
-    protected readonly range = !!this.directive?.range || this.is('tui-input-date-range');
-    protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
+    protected readonly range =
+        !!this.directive?.range || this.#is('tui-input-date-range');
+    protected readonly multi = this.#data.multi || this.#is('tui-input-date[multiple]');
     protected readonly single =
         !!this.directive?.single ||
         !!this.directive?.dateTime ||
-        this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
-        this.is('tui-input-date:not([multiple])');
+        this.#data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
+        this.#is('tui-input-date:not([multiple])');
 
     protected readonly value = computed<TuiDay | TuiDayRange | null>(
         (value = this.directive?.date?.value()) =>
@@ -76,17 +77,17 @@ export class TuiMobileCalendarDropdown {
     );
 
     constructor() {
-        this.keyboard.hide();
+        this.#keyboard.hide();
     }
 
     public max(): TuiDay {
         return (
             this.directive?.date?.max() ??
-            (this.data.max ||
+            (this.#data.max ||
                 (this.range
                     ? TUI_DAY_CAPS_MAPPER(
                           this.control.max,
-                          this.selectedPeriod,
+                          this.#selectedPeriod,
                           this.control.maxLength,
                           false,
                       )
@@ -98,11 +99,11 @@ export class TuiMobileCalendarDropdown {
     public min(): TuiDay {
         return (
             this.directive?.date?.min() ??
-            (this.data.min ||
+            (this.#data.min ||
                 (this.range
                     ? TUI_DAY_CAPS_MAPPER(
                           this.control.min,
-                          this.selectedPeriod,
+                          this.#selectedPeriod,
                           this.control.maxLength,
                           true,
                       )
@@ -117,31 +118,31 @@ export class TuiMobileCalendarDropdown {
         }
 
         if (value === null || value instanceof TuiDayRange) {
-            this.selectedPeriod = value;
+            this.#selectedPeriod = value;
         } else if (value instanceof TuiDay) {
-            this.selectedPeriod = new TuiDayRange(value, value);
+            this.#selectedPeriod = new TuiDayRange(value, value);
         }
     }
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
         return this.calculateDisabledItemHandler(
             this.directive?.handlers.disabledItemHandler() ||
-                this.data.disabledItemHandler ||
+                this.#data.disabledItemHandler ||
                 this.control?.disabledItemHandler ||
                 TUI_FALSE_HANDLER,
-            this.selectedPeriod,
+            this.#selectedPeriod,
             this.control?.minLength ?? null,
         );
     }
 
     protected close(): void {
-        this.dropdown?.toggle(false);
-        this.observer?.complete();
-        this.keyboard.show();
+        this.#dropdown?.toggle(false);
+        this.#observer?.complete();
+        this.#keyboard.show();
     }
 
     protected confirm(value: TuiDay | TuiDayRange | readonly TuiDay[]): void {
-        const normalizedValue = this.range ? this.selectedPeriod : value;
+        const normalizedValue = this.range ? this.#selectedPeriod : value;
 
         if (this.control) {
             this.control.value = normalizedValue;
@@ -151,7 +152,7 @@ export class TuiMobileCalendarDropdown {
             this.directive?.date?.setDate(normalizedValue);
         }
 
-        this.observer?.next(normalizedValue);
+        this.#observer?.next(normalizedValue);
         this.close();
     }
 
@@ -164,8 +165,8 @@ export class TuiMobileCalendarDropdown {
         return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
     }
 
-    private is(selector: string): boolean {
-        return !!this.dropdown?.el.closest(selector);
+    #is(selector: string): boolean {
+        return !!this.#dropdown?.el.closest(selector);
     }
 }
 

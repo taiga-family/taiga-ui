@@ -18,21 +18,21 @@ interface TuiThemeColor {
     providedIn: 'root',
 })
 export class TuiThemeColorService implements TuiThemeColor {
-    private current = inject(TUI_THEME_COLOR);
-    private readonly doc = inject(DOCUMENT);
-    private readonly meta = inject(Meta);
+    #current = inject(TUI_THEME_COLOR);
+    readonly #doc = inject(DOCUMENT);
+    readonly #meta = inject(Meta);
 
     constructor() {
-        this.color = this.current;
+        this.color = this.#current;
     }
 
     public get color(): string {
-        return this.current;
+        return this.#current;
     }
 
     public set color(content: string) {
-        this.current = content;
-        this.meta.updateTag({name: 'theme-color', content});
-        this.doc.documentElement.style.setProperty('--tui-theme-color', content);
+        this.#current = content;
+        this.#meta.updateTag({name: 'theme-color', content});
+        this.#doc.documentElement.style.setProperty('--tui-theme-color', content);
     }
 }

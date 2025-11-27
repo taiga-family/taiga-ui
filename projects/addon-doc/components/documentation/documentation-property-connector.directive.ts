@@ -27,11 +27,11 @@ export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' |
     exportAs: 'documentationProperty',
 })
 export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChanges {
-    private readonly locationRef = inject(Location);
-    private readonly activatedRoute = inject(ActivatedRoute);
-    private readonly urlSerializer = inject(UrlSerializer);
-    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
-    private readonly alerts = inject(TuiAlertService);
+    readonly #locationRef = inject(Location);
+    readonly #activatedRoute = inject(ActivatedRoute);
+    readonly #urlSerializer = inject(UrlSerializer);
+    readonly #urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    readonly #alerts = inject(TuiAlertService);
 
     public readonly documentationPropertyName = input('');
 
@@ -73,7 +73,7 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
     }
 
     public ngOnInit(): void {
-        this.parseParams(this.activatedRoute.snapshot.queryParams);
+        this.#parseParams(this.#activatedRoute.snapshot.queryParams);
     }
 
     public ngOnChanges(): void {
@@ -82,7 +82,7 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
 
     public onValueChange(value: T): void {
         this.documentationPropertyValue.set(value);
-        this.setQueryParam(value);
+        this.#setQueryParam(value);
     }
 
     public emitEvent(event: unknown): void {
@@ -97,10 +97,10 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
             content = tuiInspectAny(event, 2);
         }
 
-        this.alerts.open(content, {label: this.attrName()}).subscribe();
+        this.#alerts.open(content, {label: this.attrName()}).subscribe();
     }
 
-    private parseParams(params: Params): void {
+    #parseParams(params: Params): void {
         const propertyValue: string | undefined =
             params[this.documentationPropertyName()];
         const propertyValueWithSuffix: number | string | undefined =
@@ -123,8 +123,8 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
         this.onValueChange(value as T);
     }
 
-    private setQueryParam(value: unknown): void {
-        const tree = this.urlSerializer.parse(this.locationRef.path());
+    #setQueryParam(value: unknown): void {
+        const tree = this.#urlSerializer.parse(this.#locationRef.path());
         const isValueAvailableByKey = value instanceof Object;
         const name = this.documentationPropertyName();
         const nameWithSuffix = `${name}${SERIALIZED_SUFFIX}`;
@@ -152,6 +152,6 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
                   }),
         });
 
-        this.locationRef.go(this.urlStateHandler(tree));
+        this.#locationRef.go(this.#urlStateHandler(tree));
     }
 }

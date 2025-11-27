@@ -11,12 +11,12 @@ import {TuiLink} from '@taiga-ui/core/components/link';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSeeAlso {
-    private readonly pages = inject(TUI_DOC_MAP_PAGES);
+    readonly #pages = inject(TUI_DOC_MAP_PAGES);
     protected readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
 
     public readonly seeAlso = input<readonly string[]>([]);
 
     protected getRouterLink(pageTitle: string): string {
-        return this.pages.get(pageTitle)?.route ?? '';
+        return this.#pages.get(pageTitle)?.route ?? '';
     }
 }

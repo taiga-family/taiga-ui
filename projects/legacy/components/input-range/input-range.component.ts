@@ -66,8 +66,8 @@ export class TuiInputRangeComponent
     @ViewChild(TuiRange, {read: ElementRef})
     private readonly range?: ElementRef<HTMLElement>;
 
-    private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly el = tuiInjectElement();
+    readonly #isMobile = inject(TUI_IS_MOBILE);
+    readonly #el = tuiInjectElement();
 
     protected leftTextfieldValue = this.safeCurrentValue[0];
     protected rightTextfieldValue = this.safeCurrentValue[1];
@@ -108,12 +108,12 @@ export class TuiInputRangeComponent
     }
 
     public get focused(): boolean {
-        return tuiIsFocusedIn(this.el);
+        return tuiIsFocusedIn(this.#el);
     }
 
     public override writeValue(value: [number, number]): void {
         super.writeValue(value);
-        this.updateTextfieldValues(this.value);
+        this.#updateTextfieldValues(this.value);
     }
 
     protected get leftFocusableElement(): HTMLInputElement | null {
@@ -178,7 +178,7 @@ export class TuiInputRangeComponent
 
     protected onTextInputFocused(focused: boolean): void {
         if (!focused) {
-            this.updateTextfieldValues(this.value);
+            this.#updateTextfieldValues(this.value);
         }
     }
 
@@ -192,7 +192,7 @@ export class TuiInputRangeComponent
 
         event.preventDefault();
 
-        const newValue = this.valueGuard([
+        const newValue = this.#valueGuard([
             this.value[0] + leftCoefficient * this.step,
             this.value[1] + rightCoefficient * this.step,
         ]);
@@ -203,16 +203,16 @@ export class TuiInputRangeComponent
     }
 
     protected onInputLeft(value: number | null): void {
-        this.safelyUpdateValue([value ?? this.safeCurrentValue[0], this.value[1]]);
+        this.#safelyUpdateValue([value ?? this.safeCurrentValue[0], this.value[1]]);
     }
 
     protected onInputRight(value: number | null): void {
-        this.safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
+        this.#safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
     }
 
     protected onExternalValueUpdate(value: [number, number]): void {
-        this.safelyUpdateValue(value);
-        this.updateTextfieldValues(this.value);
+        this.#safelyUpdateValue(value);
+        this.#updateTextfieldValues(this.value);
     }
 
     protected focusToTextInput(): void {
@@ -221,7 +221,7 @@ export class TuiInputRangeComponent
                 ? this.leftFocusableElement
                 : this.rightFocusableElement;
 
-        if (!this.isMobile && element) {
+        if (!this.#isMobile && element) {
             element.focus();
         }
     }
@@ -234,13 +234,13 @@ export class TuiInputRangeComponent
         return [0, 0];
     }
 
-    private safelyUpdateValue(value: [number, number]): void {
-        this.value = this.valueGuard(value);
+    #safelyUpdateValue(value: [number, number]): void {
+        this.value = this.#valueGuard(value);
     }
 
-    private valueGuard([leftValue, rightValue]: [number, number]): [number, number] {
-        const leftCalibratedValue = this.calibrate(leftValue);
-        const rightCalibratedValue = this.calibrate(rightValue);
+    #valueGuard([leftValue, rightValue]: [number, number]): [number, number] {
+        const leftCalibratedValue = this.#calibrate(leftValue);
+        const rightCalibratedValue = this.#calibrate(rightValue);
 
         return [
             Math.min(leftCalibratedValue, this.value[1]),
@@ -248,7 +248,7 @@ export class TuiInputRangeComponent
         ];
     }
 
-    private calibrate(value: number): number {
+    #calibrate(value: number): number {
         const roundedValue = tuiRound(
             Math.round(value / this.quantum) * this.quantum,
             TUI_FLOATING_PRECISION,
@@ -257,7 +257,7 @@ export class TuiInputRangeComponent
         return tuiClamp(roundedValue, this.min, this.max);
     }
 
-    private updateTextfieldValues([leftValue, rightValue]: [number, number]): void {
+    #updateTextfieldValues([leftValue, rightValue]: [number, number]): void {
         this.leftTextfieldValue = leftValue;
         this.rightTextfieldValue = rightValue;
     }

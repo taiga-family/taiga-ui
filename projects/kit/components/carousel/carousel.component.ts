@@ -60,11 +60,11 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
     },
 })
 export class TuiCarouselComponent {
-    private readonly el = tuiInjectElement();
-    private readonly cdr = inject(ChangeDetectorRef);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly directive = inject(TuiCarouselDirective);
-    private translate = 0;
+    readonly #el = tuiInjectElement();
+    readonly #cdr = inject(ChangeDetectorRef);
+    readonly #isMobile = inject(TUI_IS_MOBILE);
+    readonly #directive = inject(TuiCarouselDirective);
+    #translate = 0;
 
     @ContentChildren(TuiItem, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
@@ -89,7 +89,7 @@ export class TuiCarouselComponent {
     @Input('index')
     public set indexSetter(index: number) {
         this.index = index;
-        this.directive.duration = NaN;
+        this.#directive.duration = NaN;
     }
 
     public next(): void {
@@ -123,7 +123,7 @@ export class TuiCarouselComponent {
         this.transitioned = transitioned;
 
         if (!transitioned) {
-            this.translate = this.computedTranslate;
+            this.#translate = this.computedTranslate;
         }
 
         this.onShift();
@@ -143,7 +143,7 @@ export class TuiCarouselComponent {
     }
 
     protected onScroll(delta: number): void {
-        if (!this.isMobile) {
+        if (!this.#isMobile) {
             if (delta > 0) {
                 this.next();
             } else {
@@ -159,7 +159,7 @@ export class TuiCarouselComponent {
 
         const min = 1 - this.items.length / this.itemsCount;
 
-        this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
+        this.#translate = tuiClamp(x / this.#el.clientWidth + this.#translate, min, 0);
 
         this.onShift();
     }
@@ -181,7 +181,7 @@ export class TuiCarouselComponent {
     }
 
     private get x(): number {
-        return this.transitioned ? this.computedTranslate : this.translate;
+        return this.transitioned ? this.computedTranslate : this.#translate;
     }
 
     private get computedTranslate(): number {
@@ -189,12 +189,12 @@ export class TuiCarouselComponent {
     }
 
     private get computedDraggable(): boolean {
-        return this.isMobile || this.draggable;
+        return this.#isMobile || this.draggable;
     }
 
     private updateIndex(index: number): void {
         this.index = tuiClamp(index, 0, this.items.length - 1);
         this.indexChange.emit(this.index);
-        this.cdr.markForCheck();
+        this.#cdr.markForCheck();
     }
 }

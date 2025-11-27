@@ -5,10 +5,10 @@ import {type AbstractControl, NgControl} from '@angular/forms';
     selector: '[tuiControl]',
     exportAs: 'ngControl',
 })
-export class TuiNgControl {
-    private readonly ngControl = inject(NgControl);
+export class TuiControl {
+    readonly #ngControl = inject(NgControl);
 
     public get control(): AbstractControl {
-        return this.ngControl.control!;
+        return this.#ngControl.control!;
     }
 }

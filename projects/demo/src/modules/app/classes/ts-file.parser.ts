@@ -14,7 +14,7 @@ export class TsFileParser {
             );
         }
 
-        this.replaceMetaAssets();
+        this.#replaceMetaAssets();
     }
 
     public get className(): string {
@@ -43,7 +43,7 @@ export class TsFileParser {
         const fromName = packageOrPath.replace('.ts', '');
 
         this.rawFileContent = this.rawFileContent.includes(fromName)
-            ? this.addIntoExistingImport(entity, fromName)
+            ? this.#addIntoExistingImport(entity, fromName)
             : `import {${entity}} from '${fromName}';\n${this.rawFileContent}`;
     }
 
@@ -51,7 +51,7 @@ export class TsFileParser {
         return this.rawFileContent;
     }
 
-    private addIntoExistingImport(entity: string, packageName: string): string {
+    #addIntoExistingImport(entity: string, packageName: string): string {
         const packageImportsRegex = new RegExp(
             String.raw`(?:import\s?\{\r?\n?)(?:(?:.*),\r?\n?)*?(?:.*?)\r?\n?} from (?:'|")${packageName}(?:'|");`,
             'gm',
@@ -66,7 +66,7 @@ export class TsFileParser {
      * @description:
      * The 'import.meta' doesn't support on Stackblitz
      */
-    private replaceMetaAssets(): void {
+    #replaceMetaAssets(): void {
         this.rawFileContent = this.rawFileContent.replace(
             "import {assets} from '@demo/utils';\n",
             '',

@@ -21,11 +21,11 @@ import {appPrefix} from '../utils';
     providers: [TuiStackblitzService],
 })
 export default class Page implements OnInit {
-    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private readonly stackblitz = inject(TuiStackblitzService);
+    readonly #isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+    readonly #stackblitz = inject(TuiStackblitzService);
 
     public ngOnInit(): void {
-        if (this.isBrowser) {
+        if (this.#isBrowser) {
             void this.openStackblitz();
         }
     }
@@ -38,7 +38,7 @@ export default class Page implements OnInit {
             ].map(tuiRawLoad),
         ).then((markdowns) => markdowns.map((md) => tuiTryParseMarkdownCodeBlock(md)[0]));
 
-        return this.stackblitz.openStarter(
+        return this.#stackblitz.openStarter(
             {
                 title: 'Taiga UI Starter',
                 description:

@@ -17,8 +17,8 @@ import {TuiDocNavigation} from '../../navigation/navigation.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocHeader {
-    private readonly router = inject(Router);
-    private readonly routeEvents = toSignal(this.router.events, {initialValue: null});
+    readonly #router = inject(Router);
+    readonly #routeEvents = toSignal(this.#router.events, {initialValue: null});
 
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly logo = inject(TUI_DOC_LOGO);
@@ -27,6 +27,6 @@ export class TuiDocHeader {
     protected readonly open = signal(false);
 
     constructor() {
-        effect(() => this.routeEvents() && this.open.set(false));
+        effect(() => this.#routeEvents() && this.open.set(false));
     }
 }

@@ -10,9 +10,9 @@ const CALENDAR_ROWS_COUNT = 6;
     name: 'tuiCalendarSheet',
 })
 export class TuiCalendarSheetPipe implements PipeTransform {
-    private readonly firstDayOfWeek = inject(TUI_FIRST_DAY_OF_WEEK);
-    private currentMonth: TuiMonth | null = null;
-    private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
+    readonly firstDayOfWeek = inject(TUI_FIRST_DAY_OF_WEEK);
+    currentMonth: TuiMonth | null = null;
+    currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
 
     public transform(
         month: TuiMonth,

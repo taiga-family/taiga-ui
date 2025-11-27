@@ -29,7 +29,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/layout/tokens';
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class TuiSearchFilterComponent {
-    private readonly dropdown = tuiDropdown(null);
+    readonly #dropdown = tuiDropdown(null);
     protected readonly template = viewChild(TemplateRef);
-    protected readonly ef = effect(() => this.dropdown.set(this.template()));
+    protected readonly ef = effect(() => this.#dropdown.set(this.template()));
 }

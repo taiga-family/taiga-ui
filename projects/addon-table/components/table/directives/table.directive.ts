@@ -65,8 +65,8 @@ class Styles {}
 export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     implements AfterViewInit, TuiTextfieldOptions, OnChanges
 {
-    private readonly options = inject(TUI_TABLE_OPTIONS);
-    private readonly cdr = inject(ChangeDetectorRef);
+    readonly #options = inject(TUI_TABLE_OPTIONS);
+    readonly #cdr = inject(ChangeDetectorRef);
 
     protected readonly nothing = tuiWithStyles(Styles);
 
@@ -74,7 +74,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     public columns: ReadonlyArray<string | keyof T> = [];
 
     @Input()
-    public direction = this.options.direction;
+    public direction = this.#options.direction;
 
     @Input()
     public sorter: TuiComparator<T> = EMPTY_COMPARATOR;
@@ -106,7 +106,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     );
 
     public readonly appearance = signal('table');
-    public readonly size = signal(this.options.size);
+    public readonly size = signal(this.#options.size);
     public readonly cleaner = signal(false);
 
     // TODO: refactor to signal inputs after Angular update
@@ -135,7 +135,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     }
 
     public ngAfterViewInit(): void {
-        this.cdr.detectChanges();
+        this.#cdr.detectChanges();
     }
 
     public updateSorter(

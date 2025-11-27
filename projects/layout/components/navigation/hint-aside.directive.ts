@@ -12,17 +12,17 @@ import {TuiAsideComponent} from './aside.component';
     hostDirectives: [TuiHintDirective],
 })
 export class TuiHintAsideDirective {
-    private readonly el = tuiInjectElement();
-    private readonly aside = inject(TuiAsideComponent);
-    private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
+    readonly #el = tuiInjectElement();
+    readonly #aside = inject(TuiAsideComponent);
+    readonly #dropdown = inject(TuiDropdownDirective, {optional: true});
 
     protected readonly binding = tuiDirectiveBinding(
         TuiHintDirective,
         'content',
         computed(() =>
-            this.aside.expanded() || this.dropdown
+            this.#aside.expanded() || this.#dropdown
                 ? ''
-                : () => this.el.textContent?.trim(),
+                : () => this.#el.textContent?.trim(),
         ),
     );
 }

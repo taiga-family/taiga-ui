@@ -79,10 +79,10 @@ export class TuiInputNumberComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly isIOS = inject(TUI_IS_IOS);
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    private unfinishedValue: string | null = '';
+    readonly #isIOS = inject(TUI_IS_IOS);
+    readonly #textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    readonly #options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    #unfinishedValue: string | null = '';
 
     @ContentChildren(PolymorpheusOutlet, {descendants: true})
     protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
@@ -95,13 +95,13 @@ export class TuiInputNumberComponent
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     @Input()
-    public min: number | null = this.options.min;
+    public min: number | null = this.#options.min;
 
     @Input()
-    public max: number | null = this.options.max;
+    public max: number | null = this.#options.max;
 
     @Input()
-    public step = this.options.step;
+    public step = this.#options.step;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.textfield || this.computedDisabled
@@ -114,7 +114,7 @@ export class TuiInputNumberComponent
     }
 
     public get inputMode(): string {
-        if (this.isIOS) {
+        if (this.#isIOS) {
             return this.isNegativeAllowed
                 ? 'text' // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
                 : 'decimal';
@@ -129,9 +129,9 @@ export class TuiInputNumberComponent
 
     public get calculatedMaxLength(): number {
         const decimalPart =
-            !!this.precision &&
+            !!this.#precision &&
             this.nativeValue.includes(this.numberFormat().decimalSeparator);
-        const precision = decimalPart ? Math.min(this.precision + 1, 20) : 0;
+        const precision = decimalPart ? Math.min(this.#precision + 1, 20) : 0;
         const takeThousand = this.numberFormat().thousandSeparator.repeat(5).length;
 
         return DEFAULT_MAX_LENGTH + precision + takeThousand;
@@ -144,7 +144,7 @@ export class TuiInputNumberComponent
     public onValueChange(nativeValue: string): void {
         const parsedValue = maskitoParseNumber(nativeValue, this.numberFormat());
 
-        this.unfinishedValue = null;
+        this.#unfinishedValue = null;
 
         if (Number.isNaN(parsedValue)) {
             this.value = null;
@@ -152,8 +152,8 @@ export class TuiInputNumberComponent
             return;
         }
 
-        if (this.isNativeValueNotFinished) {
-            this.unfinishedValue = nativeValue;
+        if (this.#isNativeValueNotFinished) {
+            this.#unfinishedValue = nativeValue;
             this.cdr.markForCheck();
 
             return;
@@ -172,11 +172,11 @@ export class TuiInputNumberComponent
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+        return this.#textfieldSize.size;
     }
 
     protected get icons(): TuiInputNumberOptions['icons'] {
-        return this.options.icons;
+        return this.#options.icons;
     }
 
     protected get computedMin(): number {
@@ -215,7 +215,7 @@ export class TuiInputNumberComponent
 
     protected get mask(): MaskitoOptions {
         return this.calculateMask(
-            this.precision,
+            this.#precision,
             this.numberFormat().decimalMode,
             this.numberFormat().decimalSeparator,
             this.numberFormat().thousandSeparator,
@@ -255,11 +255,11 @@ export class TuiInputNumberComponent
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
-        const nativeNumberValue = this.unfinishedValue
-            ? maskitoParseNumber(this.unfinishedValue, this.numberFormat())
-            : this.nativeNumberValue;
+        const nativeNumberValue = this.#unfinishedValue
+            ? maskitoParseNumber(this.#unfinishedValue, this.numberFormat())
+            : this.#nativeNumberValue;
 
-        this.unfinishedValue = null;
+        this.#unfinishedValue = null;
 
         if (Number.isNaN(nativeNumberValue)) {
             this.nativeValue =
@@ -288,27 +288,27 @@ export class TuiInputNumberComponent
                  * Before BigInt support there is no perfect solution – only trade off.
                  * No rounding is better than lose precision and incorrect mutation of already valid value.
                  */
-                precision: tuiIsSafeToRound(value, this.precision)
-                    ? this.precision
+                precision: tuiIsSafeToRound(value, this.#precision)
+                    ? this.#precision
                     : Infinity,
             }).replace(CHAR_HYPHEN, CHAR_MINUS) +
             this.computedPostfix
         );
     }
 
-    private get isNativeValueNotFinished(): boolean {
-        const {nativeNumberValue} = this;
+    get #isNativeValueNotFinished(): boolean {
+        const nativeNumberValue = this.#nativeNumberValue;
 
         return nativeNumberValue < 0
             ? nativeNumberValue > this.computedMax
             : nativeNumberValue < this.computedMin;
     }
 
-    private get nativeNumberValue(): number {
+    get #nativeNumberValue(): number {
         return maskitoParseNumber(this.nativeValue, this.numberFormat());
     }
 
-    private get precision(): number {
+    get #precision(): number {
         return Number.isNaN(this.numberFormat().precision)
             ? 2
             : this.numberFormat().precision;
@@ -317,16 +317,16 @@ export class TuiInputNumberComponent
     @tuiPure
     private computeMin(min: number | null, max: number | null): number {
         return Math.min(
-            this.valueTransformer?.fromControlValue(min) ?? min ?? this.options.min,
-            this.valueTransformer?.fromControlValue(max) ?? max ?? this.options.max,
+            this.valueTransformer?.fromControlValue(min) ?? min ?? this.#options.min,
+            this.valueTransformer?.fromControlValue(max) ?? max ?? this.#options.max,
         );
     }
 
     @tuiPure
     private computeMax(min: number | null, max: number | null): number {
         return Math.max(
-            this.valueTransformer?.fromControlValue(min) ?? min ?? this.options.min,
-            this.valueTransformer?.fromControlValue(max) ?? max ?? this.options.max,
+            this.valueTransformer?.fromControlValue(min) ?? min ?? this.#options.min,
+            this.valueTransformer?.fromControlValue(max) ?? max ?? this.#options.max,
         );
     }
 

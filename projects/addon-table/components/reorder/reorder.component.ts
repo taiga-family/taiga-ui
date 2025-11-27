@@ -34,7 +34,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     },
 })
 export class TuiReorder<T> {
-    private dragging = false;
+    #dragging = false;
 
     protected order = new Map<number, number>();
     protected unsortedItems: readonly T[] = [];
@@ -66,16 +66,16 @@ export class TuiReorder<T> {
     }) => String($implicit);
 
     protected onDrag(): void {
-        this.dragging = true;
+        this.#dragging = true;
     }
 
     protected onDrop(): void {
-        if (!this.dragging) {
+        if (!this.#dragging) {
             return;
         }
 
-        this.dragging = false;
-        this.updateItems();
+        this.#dragging = false;
+        this.#updateItems();
     }
 
     protected isEnabled(item: T): boolean {
@@ -91,7 +91,7 @@ export class TuiReorder<T> {
             ? this.enabled.filter((item) => item !== toggled)
             : this.enabled.concat(toggled);
 
-        this.updateEnabled();
+        this.#updateEnabled();
     }
 
     protected move(index: number, direction: number): void {
@@ -113,10 +113,10 @@ export class TuiReorder<T> {
         this.order.set(oldItem, oldIndex);
         this.order = new Map(this.order);
 
-        this.updateItems();
+        this.#updateItems();
     }
 
-    private getSortedItems(): T[] {
+    #getSortedItems(): T[] {
         const items = new Array(this.unsortedItems.length);
 
         this.unsortedItems.forEach((item, index) => {
@@ -126,13 +126,13 @@ export class TuiReorder<T> {
         return items;
     }
 
-    private updateItems(): void {
-        this.itemsChange.emit(this.getSortedItems());
-        this.updateEnabled();
+    #updateItems(): void {
+        this.itemsChange.emit(this.#getSortedItems());
+        this.#updateEnabled();
     }
 
-    private updateEnabled(): void {
-        const enabled = this.getSortedItems().filter((item) => this.isEnabled(item));
+    #updateEnabled(): void {
+        const enabled = this.#getSortedItems().filter((item) => this.isEnabled(item));
 
         this.enabled = enabled;
         this.enabledChange.emit(enabled);

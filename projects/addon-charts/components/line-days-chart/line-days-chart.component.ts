@@ -49,11 +49,11 @@ const DUMMY: TuiPoint = [NaN, NaN];
     },
 })
 export class TuiLineDaysChart implements AfterViewInit {
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-    private readonly hovered$ = inject(TuiHoveredService);
-    private readonly options = inject(TUI_LINE_CHART_OPTIONS);
-    private readonly hintDirective = inject(TuiLineDaysChartHint, {
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #zone = inject(NgZone);
+    readonly #hovered$ = inject(TuiHoveredService);
+    readonly #options = inject(TUI_LINE_CHART_OPTIONS);
+    readonly #hintDirective = inject(TuiLineDaysChartHint, {
         optional: true,
     });
 
@@ -67,7 +67,7 @@ export class TuiLineDaysChart implements AfterViewInit {
     public height = 0;
 
     @Input()
-    public smoothingFactor = this.options.smoothingFactor;
+    public smoothingFactor = this.#options.smoothingFactor;
 
     @Input()
     public hintContent: PolymorpheusContent<TuiContext<[TuiDay, number]>>;
@@ -79,7 +79,7 @@ export class TuiLineDaysChart implements AfterViewInit {
     public yStringify: TuiStringHandler<number> | null = null;
 
     @Input()
-    public dots = this.options.dots;
+    public dots = this.#options.dots;
 
     public zIndex = 0;
 
@@ -114,15 +114,15 @@ export class TuiLineDaysChart implements AfterViewInit {
     public get hint():
         | PolymorpheusContent<TuiContext<[TuiDay, number]>>
         | PolymorpheusContent<TuiContext<readonly TuiPoint[]>> {
-        return this.hintDirective?.hint ?? this.hintContent;
+        return this.#hintDirective?.hint ?? this.hintContent;
     }
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts), this.#hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
+                tuiZonefree(this.#zone),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe(() => {
                 this.onHovered(NaN);
@@ -158,8 +158,8 @@ export class TuiLineDaysChart implements AfterViewInit {
             return;
         }
 
-        if (this.hintDirective) {
-            this.hintDirective.raise(month);
+        if (this.#hintDirective) {
+            this.#hintDirective.raise(month);
         } else {
             this.onHovered(month);
         }
@@ -169,8 +169,8 @@ export class TuiLineDaysChart implements AfterViewInit {
         const x = value[index]?.[0] || 0;
         const day = this.getDay(x);
 
-        return this.hintDirective && day
-            ? this.hintDirective.getContext(day)
+        return this.#hintDirective && day
+            ? this.#hintDirective.getContext(day)
             : this.getHintContext(x, this.value);
     }
 

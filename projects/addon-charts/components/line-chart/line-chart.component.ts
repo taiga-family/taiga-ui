@@ -165,7 +165,7 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected getX(index: number): number {
-        if (this.isSinglePoint) {
+        if (this.#isSinglePoint) {
             return (this.value[0]?.[0] || 0) / 2;
         }
 
@@ -216,7 +216,7 @@ export class TuiLineChart implements OnChanges {
         }
     }
 
-    private get isSinglePoint(): boolean {
+    get #isSinglePoint(): boolean {
         return this.value.length === 1;
     }
 

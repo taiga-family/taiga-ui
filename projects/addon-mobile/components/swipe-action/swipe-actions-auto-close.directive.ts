@@ -9,14 +9,14 @@ import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
     },
 })
 export class TuiSwipeActionsAutoClose {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     @Input()
     public autoClose: boolean | string = true;
 
     protected handleEvent(event: Event): void {
-        if (this.autoClose !== false && !this.el.contains(tuiGetActualTarget(event))) {
-            this.el.scrollTo({
+        if (this.autoClose !== false && !this.#el.contains(tuiGetActualTarget(event))) {
+            this.#el.scrollTo({
                 left: 0,
                 behavior: 'smooth',
             });

@@ -10,19 +10,19 @@ import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
     },
 })
 export class TuiPresent implements OnDestroy {
-    private readonly visibility$ = new BehaviorSubject(false);
+    readonly #visibility$ = new BehaviorSubject(false);
 
     @Output()
-    public readonly tuiPresentChange = this.visibility$.pipe(
+    public readonly tuiPresentChange = this.#visibility$.pipe(
         distinctUntilChanged(),
         skip(1),
     );
 
     public ngOnDestroy(): void {
-        this.visibility$.next(false);
+        this.#visibility$.next(false);
     }
 
     protected onAnimation(visibility: boolean): void {
-        this.visibility$.next(visibility);
+        this.#visibility$.next(visibility);
     }
 }

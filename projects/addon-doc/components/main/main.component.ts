@@ -27,7 +27,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiDocMain {
-    private readonly doc = inject(DOCUMENT);
+    readonly #doc = inject(DOCUMENT);
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly dir = inject(TUI_DOC_DIRECTION_ENABLED);
     protected readonly darkMode = inject(TUI_DARK_MODE);
@@ -36,8 +36,8 @@ export class TuiDocMain {
     );
 
     public changeTextDirection(): void {
-        const dir = this.doc.documentElement.getAttribute('dir') ?? 'ltr';
+        const dir = this.#doc.documentElement.getAttribute('dir') ?? 'ltr';
 
-        this.doc.documentElement.setAttribute('dir', dir === 'ltr' ? 'rtl' : 'ltr');
+        this.#doc.documentElement.setAttribute('dir', dir === 'ltr' ? 'rtl' : 'ltr');
     }
 }

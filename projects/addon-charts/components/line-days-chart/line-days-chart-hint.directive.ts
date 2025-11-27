@@ -36,9 +36,9 @@ export class TuiLineDaysChartHint implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineDaysChart))
     private readonly charts: QueryList<TuiLineDaysChart> = EMPTY_QUERY;
 
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-    private readonly hovered$ = inject(TuiHoveredService);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #zone = inject(NgZone);
+    readonly #hovered$ = inject(TuiHoveredService);
 
     @Input('tuiLineChartHint')
     public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
@@ -46,12 +46,12 @@ export class TuiLineDaysChartHint implements AfterContentInit {
     public ngAfterContentInit(): void {
         combineLatest([
             ...this.charts.map(({charts}) => tuiLineChartDrivers(charts)),
-            this.hovered$,
+            this.#hovered$,
         ])
             .pipe(
                 filter((result) => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
+                tuiZonefree(this.#zone),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe(() => {
                 this.charts.forEach((chart) => chart.onHovered(NaN));

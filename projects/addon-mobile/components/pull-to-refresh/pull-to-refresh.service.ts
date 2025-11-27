@@ -36,51 +36,51 @@ const EXCLUSION_SELECTORS =
 
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {
-    private readonly el = tuiInjectElement();
-    private readonly scrollRef: ElementRef<HTMLElement> = inject(TUI_SCROLL_REF);
-    private readonly loaded$ = inject(TUI_PULL_TO_REFRESH_LOADED);
-    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
+    readonly #el = tuiInjectElement();
+    readonly #scrollRef: ElementRef<HTMLElement> = inject(TUI_SCROLL_REF);
+    readonly #loaded$ = inject(TUI_PULL_TO_REFRESH_LOADED);
+    readonly #threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
     // Hack for iOS to determine if pulling stopped due to scroll
     // because Safari does not support `touch-action: pan-down`
-    private touched = false;
+    #touched = false;
 
-    private readonly pulling$ = this.loaded$.pipe(
+    readonly #pulling$ = this.#loaded$.pipe(
         startWith(null),
         switchMap(() =>
-            tuiTypedFromEvent(this.el, 'touchstart', {passive: true}).pipe(
+            tuiTypedFromEvent(this.#el, 'touchstart', {passive: true}).pipe(
                 filter(
                     () =>
-                        !this.scrollRef.nativeElement.scrollTop &&
-                        !this.el.querySelector(EXCLUSION_SELECTORS),
+                        !this.#scrollRef.nativeElement.scrollTop &&
+                        !this.#el.querySelector(EXCLUSION_SELECTORS),
                 ),
                 map(({touches}) => touches[0]?.clientY ?? 0),
                 switchMap((start) =>
-                    tuiTypedFromEvent(this.el, 'touchmove').pipe(
+                    tuiTypedFromEvent(this.#el, 'touchmove').pipe(
                         tap((): void => {
-                            this.touched = true;
+                            this.#touched = true;
                         }),
                         map(({touches}) => (touches[0]?.clientY ?? 0) - start),
                         filter((distance) => distance > 0),
                         takeUntil(
-                            tuiTypedFromEvent(this.el, 'touchend').pipe(
+                            tuiTypedFromEvent(this.#el, 'touchend').pipe(
                                 tap((): void => {
-                                    this.touched = false;
+                                    this.#touched = false;
                                 }),
                             ),
                         ),
-                        takeUntil(tuiScrollFrom(this.scrollRef.nativeElement)),
+                        takeUntil(tuiScrollFrom(this.#scrollRef.nativeElement)),
                         endWith(0),
                     ),
                 ),
                 scan(
                     (prev, current) =>
-                        !current && !this.touched && prev > this.threshold
-                            ? this.threshold
+                        !current && !this.#touched && prev > this.#threshold
+                            ? this.#threshold
                             : current + current * MICRO_OFFSET,
                     0,
                 ),
-                takeWhile((distance) => distance !== this.threshold, true),
+                takeWhile((distance) => distance !== this.#threshold, true),
                 startWith(0),
             ),
         ),
@@ -93,6 +93,6 @@ export class TuiPullToRefreshService extends Observable<number> {
     constructor() {
         const component = inject(TUI_PULL_TO_REFRESH_COMPONENT);
 
-        super((subscriber) => (component ? this.pulling$ : EMPTY).subscribe(subscriber));
+        super((subscriber) => (component ? this.#pulling$ : EMPTY).subscribe(subscriber));
     }
 }

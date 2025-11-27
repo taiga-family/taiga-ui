@@ -7,17 +7,17 @@ import {TUI_VERSION} from '@taiga-ui/cdk';
     providedIn: 'root',
 })
 export class StackblitzDepsService {
-    private readonly location = inject(WA_LOCATION);
+    readonly #location = inject(WA_LOCATION);
 
     public async get(): Promise<Record<string, string>> {
         return {
-            ...this.getAngularPackages(),
-            ...this.getTaigaPackages(),
-            ...(await this.getCommonPackages()),
+            ...this.#getAngularPackages(),
+            ...this.#getTaigaPackages(),
+            ...(await this.#getCommonPackages()),
         };
     }
 
-    private getAngularPackages(): Record<string, string> {
+    #getAngularPackages(): Record<string, string> {
         const ngVersion = '20.x.x';
 
         return {
@@ -33,10 +33,10 @@ export class StackblitzDepsService {
         };
     }
 
-    private getTaigaPackages(): Record<string, string> {
+    #getTaigaPackages(): Record<string, string> {
         const version =
-            this.location.pathname.startsWith('/next/') ||
-            this.location.host.endsWith('web.app') ||
+            this.#location.pathname.startsWith('/next/') ||
+            this.#location.host.endsWith('web.app') ||
             !environment.production
                 ? 'canary'
                 : `${TUI_VERSION.split('.')[0]}.x.x`;
@@ -58,7 +58,7 @@ export class StackblitzDepsService {
         };
     }
 
-    private async getCommonPackages(): Promise<Record<string, string>> {
+    async #getCommonPackages(): Promise<Record<string, string>> {
         const {peerDependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
         const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
         const {devDependencies: rootDevDeps} = await import('@demo/root-package');

@@ -13,12 +13,12 @@ import {delayWhen, of, Subject} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly loadCountSubject = new Subject<void>();
+    readonly #loadCountSubject = new Subject<void>();
 
-    protected readonly count$ = of(0).pipe(delayWhen(() => this.loadCountSubject));
+    protected readonly count$ = of(0).pipe(delayWhen(() => this.#loadCountSubject));
 
     protected loadCount(): void {
-        this.loadCountSubject.next();
-        this.loadCountSubject.complete();
+        this.#loadCountSubject.next();
+        this.#loadCountSubject.complete();
     }
 }

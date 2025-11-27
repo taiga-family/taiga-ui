@@ -15,15 +15,15 @@ const DEFAULT_PRECISION = 2;
 
 @Pipe({name: 'tuiAmount'})
 export class TuiAmountPipe implements PipeTransform {
-    private readonly options = inject(TUI_AMOUNT_OPTIONS);
-    private readonly format = toObservable(inject(TUI_NUMBER_FORMAT));
+    readonly #options = inject(TUI_AMOUNT_OPTIONS);
+    readonly #format = toObservable(inject(TUI_NUMBER_FORMAT));
 
     public transform(
         value: number,
-        currency: TuiCurrencyVariants = this.options.currency,
-        currencyAlign: TuiHorizontalDirection = this.options.currencyAlign,
+        currency: TuiCurrencyVariants = this.#options.currency,
+        currencyAlign: TuiHorizontalDirection = this.#options.currencyAlign,
     ): Observable<string> {
-        return this.format.pipe(
+        return this.#format.pipe(
             map((format) => {
                 const currencySymbol = tuiFormatCurrency(currency);
                 const formatted = tuiFormatNumber(Math.abs(value), {
@@ -35,7 +35,7 @@ export class TuiAmountPipe implements PipeTransform {
                 const sign =
                     formatted === '0'
                         ? ''
-                        : tuiFormatSignSymbol(value, this.options.sign);
+                        : tuiFormatSignSymbol(value, this.#options.sign);
                 const space =
                     currencySymbol &&
                     (currencySymbol?.length > 1 || currencyAlign === 'right')

@@ -20,15 +20,13 @@ import {TuiTableControlDirective} from './table-control.directive';
     },
 })
 export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
-    private readonly control = inject(NgControl);
-    private readonly parent: TuiTableControlDirective<T> = inject(
-        TuiTableControlDirective,
-    );
+    readonly #control = inject(NgControl);
+    readonly #parent: TuiTableControlDirective<T> = inject(TuiTableControlDirective);
 
-    protected readonly checked = computed((checked = this.parent
+    public readonly checked = computed((checked = this.#parent
         .value()
         .includes(this.tuiCheckboxRow)) => {
-        setTimeout(() => this.control.control?.setValue(checked));
+        setTimeout(() => this.#control.control?.setValue(checked));
 
         return checked;
     });
@@ -37,17 +35,17 @@ export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
     public tuiCheckboxRow!: T;
 
     public ngOnInit(): void {
-        this.parent.process(this);
+        this.#parent.process(this);
     }
 
     public ngOnDestroy(): void {
-        this.parent.process(this);
-        this.parent.onChange(
-            this.parent.value().filter((item) => item !== this.tuiCheckboxRow),
+        this.#parent.process(this);
+        this.#parent.onChange(
+            this.#parent.value().filter((item) => item !== this.tuiCheckboxRow),
         );
     }
 
     protected onChange(): void {
-        this.parent.onChange(tuiArrayToggle(this.parent.value(), this.tuiCheckboxRow));
+        this.#parent.onChange(tuiArrayToggle(this.#parent.value(), this.tuiCheckboxRow));
     }
 }

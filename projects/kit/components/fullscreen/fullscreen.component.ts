@@ -24,7 +24,7 @@ export class TuiFullscreen {
     @ViewChild(TuiRoot, {read: ElementRef})
     private readonly root?: ElementRef<HTMLElement>;
 
-    private readonly doc = inject(DOCUMENT);
+    readonly #doc = inject(DOCUMENT);
     protected readonly open = signal(false);
 
     @Output('tuiFullscreenChange')
@@ -42,11 +42,11 @@ export class TuiFullscreen {
         if (open) {
             this.root?.nativeElement
                 .requestFullscreen(this.options)
-                .then(() => this.fullscreenState(open));
+                .then(() => this.#fullscreenState(open));
         } else {
-            this.doc
+            this.#doc
                 .exitFullscreen()
-                .then(() => this.fullscreenState(open))
+                .then(() => this.#fullscreenState(open))
                 .catch((error: unknown) =>
                     console.error('Failed to exit fullscreen:', error),
                 );
@@ -54,12 +54,12 @@ export class TuiFullscreen {
     }
 
     protected closedByEscape(event: Event): void {
-        if (!this.doc.fullscreenElement && event.target === this.root?.nativeElement) {
-            this.fullscreenState(false);
+        if (!this.#doc.fullscreenElement && event.target === this.root?.nativeElement) {
+            this.#fullscreenState(false);
         }
     }
 
-    private fullscreenState(open: boolean): void {
+    #fullscreenState(open: boolean): void {
         this.open.set(open);
         this.opened.emit(open);
     }

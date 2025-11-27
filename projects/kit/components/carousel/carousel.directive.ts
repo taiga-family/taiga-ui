@@ -16,34 +16,34 @@ import {
 
 @Directive()
 export class TuiCarouselDirective extends Observable<unknown> {
-    private readonly el = tuiInjectElement();
-    private readonly platform = inject(PLATFORM_ID);
-    private readonly visible$ = inject(WA_PAGE_VISIBILITY);
-    private readonly zone = inject(NgZone);
-    private readonly duration$ = new BehaviorSubject(0);
-    private readonly running$ = merge(
-        tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(TUI_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'touchstart').pipe(map(TUI_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'touchend').pipe(map(TUI_TRUE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'mouseleave').pipe(map(TUI_TRUE_HANDLER)),
-        this.visible$,
+    readonly #el = tuiInjectElement();
+    readonly #platform = inject(PLATFORM_ID);
+    readonly #visible$ = inject(WA_PAGE_VISIBILITY);
+    readonly #zone = inject(NgZone);
+    readonly #duration$ = new BehaviorSubject(0);
+    readonly #running$ = merge(
+        tuiTypedFromEvent(this.#el, 'mouseenter').pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'touchstart').pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'touchend').pipe(map(TUI_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'mouseleave').pipe(map(TUI_TRUE_HANDLER)),
+        this.#visible$,
     );
 
-    private readonly output$ = isPlatformServer(this.platform)
+    readonly #output$ = isPlatformServer(this.#platform)
         ? EMPTY
-        : combineLatest([this.duration$, this.running$]).pipe(
+        : combineLatest([this.#duration$, this.#running$]).pipe(
               tuiIfMap(
-                  ([duration]) => interval(duration).pipe(tuiZoneOptimized(this.zone)),
+                  ([duration]) => interval(duration).pipe(tuiZoneOptimized(this.#zone)),
                   (values) => values.every(Boolean),
               ),
           );
 
     constructor() {
-        super((subscriber) => this.output$.subscribe(subscriber));
+        super((subscriber) => this.#output$.subscribe(subscriber));
     }
 
     @Input()
     public set duration(duration: number) {
-        this.duration$.next(Number.isNaN(duration) ? this.duration$.value : duration);
+        this.#duration$.next(Number.isNaN(duration) ? this.#duration$.value : duration);
     }
 }

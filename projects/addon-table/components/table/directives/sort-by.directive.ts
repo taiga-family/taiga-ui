@@ -21,23 +21,23 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     @ContentChildren(TuiTableSortable, {descendants: true})
     private readonly sortables: QueryList<TuiTableSortable<T>> = EMPTY_QUERY;
 
-    private readonly table = inject(TuiTableDirective<T>);
+    readonly #table = inject(TuiTableDirective<T>);
 
     /**
      * @deprecated: use tuiSortChange
      */
     @Output()
-    public readonly tuiSortByChange = this.table.sorterChange.pipe(
+    public readonly tuiSortByChange = this.#table.sorterChange.pipe(
         // delay is for getting actual ContentChildren (sortables) https://github.com/angular/angular/issues/38976
         delay(0),
         filter(() => !!this.sortables.length),
-        map((sorter) => this.getKey(sorter)),
+        map((sorter) => this.#getKey(sorter)),
     );
 
     @Output()
     public readonly tuiSortChange: Observable<TuiSortChange<T>> = combineLatest([
         this.tuiSortByChange,
-        this.table.directionChange,
+        this.#table.directionChange,
     ]).pipe(
         debounceTime(0),
         map(([sortKey, sortDirection]) => ({
@@ -60,7 +60,7 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
         this.sortables.forEach((s) => s.check());
     }
 
-    private getKey(sorter: TuiComparator<T> | null): keyof T | null {
-        return this.sortables.find((s) => s.sorter === sorter)?.key || null;
+    #getKey(sorter: TuiComparator<T> | null): keyof T | null {
+        return this.sortables.find((s) => s.sorter === sorter)?.key ?? null;
     }
 }

@@ -12,9 +12,9 @@ import {TuiTableDirective} from './table.directive';
 export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>>
     implements OnChanges
 {
-    private readonly table: TuiTableDirective<T> = inject(TuiTableDirective<T>);
-    private readonly th: TuiTableTh<T> = inject(TuiTableTh<T>);
-    private readonly sortBy = inject<TuiTableSortBy<T>>(forwardRef(() => TuiTableSortBy));
+    readonly #table: TuiTableDirective<T> = inject(TuiTableDirective<T>);
+    readonly #th: TuiTableTh<T> = inject(TuiTableTh<T>);
+    readonly #sortBy = inject<TuiTableSortBy<T>>(forwardRef(() => TuiTableSortBy));
 
     @Input({
         alias: 'tuiSortable',
@@ -23,27 +23,27 @@ export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>>
     public sortable: BooleanInput;
 
     public get key(): keyof T {
-        return this.th.key;
+        return this.#th.key;
     }
 
     public sorter: TuiComparator<T> = (): number => 0;
 
     public ngOnChanges(): void {
         if (this.sortable) {
-            this.sorter = this.match ? this.table.sorter : this.sorter;
-            this.th.sorter = this.sorter;
+            this.sorter = this.#match ? this.#table.sorter : this.sorter;
+            this.#th.sorter = this.sorter;
         } else {
-            this.th.sorter = null;
+            this.#th.sorter = null;
         }
     }
 
     public check(): void {
-        if (this.match && this.table.sorter !== this.sorter) {
-            this.table.updateSorter(this.sorter);
+        if (this.#match && this.#table.sorter !== this.sorter) {
+            this.#table.updateSorter(this.sorter);
         }
     }
 
-    private get match(): boolean {
-        return this.sortBy.tuiSortBy === this.key;
+    get #match(): boolean {
+        return this.#sortBy.tuiSortBy === this.key;
     }
 }

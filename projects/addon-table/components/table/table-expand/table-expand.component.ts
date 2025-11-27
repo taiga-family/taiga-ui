@@ -39,18 +39,18 @@ export class TuiTableExpand {
     @ViewChild('content', {static: true})
     private readonly content?: ElementRef<HTMLElement>;
 
-    private readonly el = tuiInjectElement();
-    private readonly server = isPlatformServer(inject(PLATFORM_ID));
+    readonly #el = tuiInjectElement();
+    readonly #server = isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly transitioning = signal(false);
-    protected readonly contentHeight = computed((_ = this.expanded()) => this.update());
+    protected readonly contentHeight = computed((_ = this.expanded()) => this.#update());
     protected readonly visible$ = new Subject<boolean>();
     protected readonly sub = this.visible$
         .pipe(
             switchMap((v) => (v ? timer(500).pipe(map(() => v)) : of(v))),
             takeUntilDestroyed(),
         )
-        .subscribe((visible) => this.el.classList.toggle('_visible', visible));
+        .subscribe((visible) => this.#el.classList.toggle('_visible', visible));
 
     @Output()
     public readonly expandedChange = new EventEmitter<boolean>();
@@ -69,8 +69,8 @@ export class TuiTableExpand {
         this.expandedChange.emit(this.expanded());
     }
 
-    private update(): number {
-        if (!this.content || this.server) {
+    #update(): number {
+        if (!this.content || this.#server) {
             return 0;
         }
 

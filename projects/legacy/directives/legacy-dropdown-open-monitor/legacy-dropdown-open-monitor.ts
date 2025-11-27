@@ -9,29 +9,29 @@ import {distinctUntilChanged} from 'rxjs';
     selector: '[tuiDropdownOpenMonitor]',
 })
 export class TuiLegacyDropdownOpenMonitorDirective implements AfterViewInit {
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly el = tuiInjectElement();
-    private readonly host = inject(TuiDropdownOpen, {self: true});
-    private readonly external = inject(TuiDropdownOpenLegacy, {
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #el = tuiInjectElement();
+    readonly #host = inject(TuiDropdownOpen, {self: true});
+    readonly #external = inject(TuiDropdownOpenLegacy, {
         optional: true,
     });
 
     public ngAfterViewInit(): void {
-        this.external?.tuiDropdownOpenChange
-            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+        this.#external?.tuiDropdownOpenChange
+            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.#destroyRef))
             .subscribe((open) => {
                 if (open) {
                     tuiGetClosestFocusable({
-                        initial: this.el,
-                        root: this.el,
+                        initial: this.#el,
+                        root: this.#el,
                     })?.focus();
                 }
 
-                this.host.toggle(open);
+                this.#host.toggle(open);
             });
 
-        this.host.driver
-            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
-            .subscribe((open) => this.external?.emitOpenChange(open));
+        this.#host.driver
+            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.#destroyRef))
+            .subscribe((open) => this.#external?.emitOpenChange(open));
     }
 }

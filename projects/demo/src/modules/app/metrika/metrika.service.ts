@@ -32,28 +32,28 @@ export const [YA_METRIKA_OPTIONS, metrikaOptionsProvider] =
     providedIn: 'root',
 })
 export class YaMetrikaService {
-    private readonly options = inject(YA_METRIKA_OPTIONS);
-    private readonly doc = inject(DOCUMENT);
-    private readonly support =
-        !!this.options.id &&
-        (this.options.debug ||
+    readonly #options = inject(YA_METRIKA_OPTIONS);
+    readonly #doc = inject(DOCUMENT);
+    readonly #support =
+        !!this.#options.id &&
+        (this.#options.debug ||
             (isPlatformBrowser(inject(PLATFORM_ID)) &&
                 !ngDevMode &&
                 !inject(TUI_IS_E2E)));
 
     constructor() {
-        if (this.support) {
-            const script = this.doc.createElement('script');
+        if (this.#support) {
+            const script = this.#doc.createElement('script');
 
             script.async = true;
             // https://yandex.ru/support/metrica/code/counter-initialize.html
-            script.innerHTML = `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(${this.options.id}, "init", {clickmap: false, webvisor: false});`;
+            script.innerHTML = `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(${this.#options.id}, "init", {clickmap: false, webvisor: false}`;
 
-            this.doc.body.appendChild(script);
+            this.#doc.body.appendChild(script);
         }
     }
 
     public hit(url: string, options: HitOptions = {}): void {
-        this.doc.defaultView?.ym?.(this.options.id, 'hit', url, options);
+        this.#doc.defaultView?.ym?.(this.#options.id, 'hit', url, options);
     }
 }

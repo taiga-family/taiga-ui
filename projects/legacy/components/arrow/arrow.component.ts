@@ -29,23 +29,23 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
     },
 })
 export class TuiArrowComponent {
-    private readonly control: any = inject(AbstractTuiControl, {optional: true});
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly options = inject(TUI_ARROW_OPTIONS);
+    readonly #control: any = inject(AbstractTuiControl, {optional: true});
+    readonly #textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    readonly #options = inject(TUI_ARROW_OPTIONS);
     protected readonly dropdownOpen = toSignal(
         inject(TuiDropdownOpen, {optional: true})?.tuiDropdownOpenChange || of(false),
     );
 
     protected readonly rotated = computed(
-        () => this.dropdownOpen() || this.control.pseudoOpen?.(),
+        () => this.dropdownOpen() || this.#control.pseudoOpen?.(),
     );
 
     protected get small(): boolean {
-        return !tuiSizeBigger(this.textfieldSize.size);
+        return !tuiSizeBigger(this.#textfieldSize.size);
     }
 
     protected get arrowIcon(): PolymorpheusContent {
-        return !this.small ? this.options.iconLarge : this.options.iconSmall;
+        return !this.small ? this.#options.iconLarge : this.#options.iconSmall;
     }
 }
 

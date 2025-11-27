@@ -46,8 +46,8 @@ export default class Page implements OnInit {
     @ViewChildren('block', {read: ElementRef})
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly router = inject(Router);
-    private readonly activatedRoute = inject(ActivatedRoute);
+    readonly #router = inject(Router);
+    readonly #activatedRoute = inject(ActivatedRoute);
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
 
@@ -56,7 +56,7 @@ export default class Page implements OnInit {
     protected intersected = false;
 
     public ngOnInit(): void {
-        void this.clearQueryParams();
+        void this.#clearQueryParams();
     }
 
     protected get background(): string {
@@ -85,9 +85,9 @@ export default class Page implements OnInit {
         });
     }
 
-    private async clearQueryParams(): Promise<void> {
-        await this.router.navigate([], {
-            relativeTo: this.activatedRoute,
+    async #clearQueryParams(): Promise<void> {
+        await this.#router.navigate([], {
+            relativeTo: this.#activatedRoute,
             queryParamsHandling: '',
             queryParams: {},
         });

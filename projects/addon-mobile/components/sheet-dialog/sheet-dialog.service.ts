@@ -15,9 +15,9 @@ const THEME = '#404040';
     providedIn: 'root',
 })
 export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions<any>> {
-    private readonly theme = inject(TuiThemeColorService);
-    private readonly initial = this.theme.color;
-    private count = 0;
+    readonly #theme = inject(TuiThemeColorService);
+    readonly #initial = this.#theme.color;
+    #count = 0;
 
     protected readonly options = inject(TUI_SHEET_DIALOG_OPTIONS);
     protected readonly content = TuiSheetDialogComponent;
@@ -25,17 +25,17 @@ export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions
     protected override add(
         component: PolymorpheusComponent<TuiModalComponent<TuiSheetDialogOptions>>,
     ): () => void {
-        this.count++;
-        this.theme.color = THEME;
+        this.#count++;
+        this.#theme.color = THEME;
 
         const cleanup = super.add(component);
 
         return () => {
             cleanup();
-            this.count--;
+            this.#count--;
 
-            if (!this.count) {
-                this.theme.color = this.initial;
+            if (!this.#count) {
+                this.#theme.color = this.#initial;
             }
         };
     }

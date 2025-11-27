@@ -81,12 +81,12 @@ export class TuiInputDateTimeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    readonly #options = inject(TUI_INPUT_DATE_OPTIONS);
+    readonly #textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    private month: TuiMonth | null = null;
-    private readonly timeMode$ = new BehaviorSubject<MaskitoTimeMode>('HH:MM');
-    private readonly nativeValue = signal('');
+    #month: TuiMonth | null = null;
+    readonly #timeMode$ = new BehaviorSubject<MaskitoTimeMode>('HH:MM');
+    readonly #nativeValue = signal('');
 
     protected readonly timeTexts$ = toObservable(inject(TUI_TIME_TEXTS));
     protected readonly dateTexts$ = toObservable(inject(TUI_DATE_TEXTS));
@@ -106,7 +106,7 @@ export class TuiInputDateTimeComponent
             ),
         ),
         this.timeTexts$,
-        this.timeMode$,
+        this.#timeMode$,
     ]).pipe(
         map(([dateFiller, timeTexts, timeMode]) =>
             this.getDateTimeString(dateFiller, timeTexts[timeMode]),
@@ -117,10 +117,10 @@ export class TuiInputDateTimeComponent
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 
     @Input()
-    public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
+    public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.#options.min;
 
     @Input()
-    public max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
+    public max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.#options.max;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
@@ -132,11 +132,11 @@ export class TuiInputDateTimeComponent
 
     @Input()
     public set timeMode(value: MaskitoTimeMode) {
-        this.timeMode$.next(value);
+        this.#timeMode$.next(value);
     }
 
     public get timeMode(): MaskitoTimeMode {
-        return this.timeMode$.value;
+        return this.#timeMode$.value;
     }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
@@ -148,12 +148,12 @@ export class TuiInputDateTimeComponent
     }
 
     public get computedValue(): string {
-        const {value, nativeValue, timeMode} = this;
+        const {value, timeMode} = this;
         const [date, time] = value ?? [null, null];
-        const hasTimeInputChars = nativeValue().length > DATE_FILLER_LENGTH;
+        const hasTimeInputChars = this.#nativeValue().length > DATE_FILLER_LENGTH;
 
         if (!date || (!time && hasTimeInputChars)) {
-            return nativeValue();
+            return this.#nativeValue();
         }
 
         return this.getDateTimeString(date, time, timeMode);
@@ -179,13 +179,13 @@ export class TuiInputDateTimeComponent
             super.writeValue(null);
         }
 
-        this.nativeValue.set(
+        this.#nativeValue.set(
             this.value && (this.value[0] || this.value[1]) ? this.computedValue : '',
         );
     }
 
     public onValueChange(value: string): void {
-        this.nativeValue.set(value);
+        this.#nativeValue.set(value);
 
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
@@ -213,15 +213,15 @@ export class TuiInputDateTimeComponent
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+        return this.#textfieldSize.size;
     }
 
     protected get computedMin(): TuiDay | [TuiDay, TuiTime] {
-        return this.toTuiDay(this.min, this.options.min);
+        return this.#toTuiDay(this.min, this.#options.min);
     }
 
     protected get computedMax(): TuiDay | [TuiDay, TuiTime] {
-        return this.toTuiDay(this.max, this.options.max);
+        return this.#toTuiDay(this.max, this.#options.max);
     }
 
     protected get fillerLength(): number {
@@ -239,11 +239,11 @@ export class TuiInputDateTimeComponent
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
-        return this.options.icon;
+        return this.#options.icon;
     }
 
     protected get showNativePicker(): boolean {
-        return this.nativePicker && this.timeMode === 'HH:MM';
+        return this.#nativePicker && this.timeMode === 'HH:MM';
     }
 
     protected get calendarValue(): TuiDay | null {
@@ -266,7 +266,7 @@ export class TuiInputDateTimeComponent
         const {computedMin, computedMax} = this;
 
         return (
-            this.month ||
+            this.#month ||
             this.value?.[0] ||
             tuiDateClamp(
                 this.defaultActiveYearMonth,
@@ -282,11 +282,11 @@ export class TuiInputDateTimeComponent
 
     protected onDayClick(day: TuiDay): void {
         const modifiedTime =
-            (this.value?.[1] && this.clampTime(this.value?.[1], day)) ?? null;
+            (this.value?.[1] && this.#clampTime(this.value?.[1], day)) ?? null;
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
         this.value = [day, modifiedTime];
-        this.nativeValue.update((x) =>
+        this.#nativeValue.update((x) =>
             this.getDateTimeString(day, x.split(DATE_TIME_SEPARATOR)[1] || ''),
         );
         setTimeout(() =>
@@ -296,7 +296,7 @@ export class TuiInputDateTimeComponent
     }
 
     protected onMonthChange(month: TuiMonth): void {
-        this.month = month;
+        this.#month = month;
     }
 
     protected onOpenChange(open: boolean): void {
@@ -313,17 +313,17 @@ export class TuiInputDateTimeComponent
         timer(0)
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
-                this.nativeValue.update((x) => this.trimTrailingSeparator(x));
+                this.#nativeValue.update((x) => this.#trimTrailingSeparator(x));
             });
 
         if (
-            this.nativeValue().length === this.fillerLength ||
+            this.#nativeValue().length === this.fillerLength ||
             this.timeMode === 'HH:MM'
         ) {
             return;
         }
 
-        const [date = '', time] = this.nativeValue().split(DATE_TIME_SEPARATOR);
+        const [date = '', time] = this.#nativeValue().split(DATE_TIME_SEPARATOR);
 
         if (!time) {
             return;
@@ -355,8 +355,8 @@ export class TuiInputDateTimeComponent
         );
     }
 
-    private get nativePicker(): boolean {
-        return this.options.nativePicker && this.isMobile;
+    get #nativePicker(): boolean {
+        return this.#options.nativePicker && this.isMobile;
     }
 
     @tuiPure
@@ -371,8 +371,8 @@ export class TuiInputDateTimeComponent
             timeMode,
             dateSeparator,
             dateMode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
-            min: this.toNativeDate(min),
-            max: this.toNativeDate(max),
+            min: this.#toNativeDate(min),
+            max: this.#toNativeDate(max),
         });
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
@@ -407,7 +407,7 @@ export class TuiInputDateTimeComponent
             : dateString;
     }
 
-    private clampTime(time: TuiTime, day: TuiDay): TuiTime {
+    #clampTime(time: TuiTime, day: TuiDay): TuiTime {
         const {computedMin, computedMax} = this;
 
         const ms = time.toAbsoluteMilliseconds();
@@ -423,14 +423,14 @@ export class TuiInputDateTimeComponent
         return TuiTime.fromAbsoluteMilliseconds(tuiClamp(ms, min, max));
     }
 
-    private trimTrailingSeparator(value: string): string {
+    #trimTrailingSeparator(value: string): string {
         return value.replace(
             new RegExp(`(\\${this.dateFormat().separator}|${DATE_TIME_SEPARATOR}|\\.)$`),
             '',
         );
     }
 
-    private toNativeDate(value: TuiDay | [TuiDay, TuiTime]): Date {
+    #toNativeDate(value: TuiDay | [TuiDay, TuiTime]): Date {
         if (!Array.isArray(value)) {
             return value.toLocalNativeDate();
         }
@@ -440,7 +440,7 @@ export class TuiInputDateTimeComponent
         return new Date(year, month, day, hours, minutes, seconds, ms);
     }
 
-    private toTuiDay(
+    #toTuiDay(
         value: TuiDay | [TuiDay | null, TuiTime | null] | null,
         fallback: TuiDay,
     ): TuiDay | [TuiDay, TuiTime] {

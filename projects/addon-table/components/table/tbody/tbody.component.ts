@@ -28,7 +28,7 @@ import {TuiTableTr} from '../tr/tr.component';
     providers: TUI_TABLE_PROVIDER,
 })
 export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
-    private readonly options = inject(TUI_TABLE_OPTIONS);
+    readonly #options = inject(TUI_TABLE_OPTIONS);
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -46,7 +46,7 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Input()
-    public open = this.options.open;
+    public open = this.#options.open;
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Output()

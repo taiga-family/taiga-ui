@@ -77,8 +77,8 @@ export class TuiDocNavigation {
     @ViewChild(TuiTextfieldDirective, {read: ElementRef})
     private readonly searchInput?: ElementRef<HTMLInputElement>;
 
-    private readonly router = inject(Router);
-    private readonly doc = inject(DOCUMENT);
+    readonly #router = inject(Router);
+    readonly #doc = inject(DOCUMENT);
 
     protected open = signal(false);
     protected menuOpen = false;
@@ -113,15 +113,15 @@ export class TuiDocNavigation {
             .pipe(tuiWatch(), takeUntilDestroyed())
             .subscribe((title) => {
                 titleService.setTitle(title);
-                this.openActivePageGroup();
+                this.#openActivePageGroup();
             });
 
         combineLatest([
-            this.router.events.pipe(
+            this.#router.events.pipe(
                 filter((event): event is Scroll => event instanceof Scroll),
                 switchMap(({anchor}) =>
-                    'onscrollend' in this.doc
-                        ? fromEvent(this.doc, 'scrollend').pipe(map(() => anchor))
+                    'onscrollend' in this.#doc
+                        ? fromEvent(this.#doc, 'scrollend').pipe(map(() => anchor))
                         : of(anchor),
                 ),
             ),
@@ -135,7 +135,7 @@ export class TuiDocNavigation {
                 filter<string>(Boolean),
                 takeUntilDestroyed(),
             )
-            .subscribe((anchor) => this.navigateToAnchorLink(anchor));
+            .subscribe((anchor) => this.#navigateToAnchorLink(anchor));
     }
 
     protected get canOpen(): boolean {
@@ -166,13 +166,13 @@ export class TuiDocNavigation {
         this.open.set(false);
         this.menuOpen = false;
         this.search.setValue('');
-        this.openActivePageGroup();
+        this.#openActivePageGroup();
     }
 
     protected onFocusSearch(event: KeyboardEvent): void {
         if (
             event.code === 'Slash' &&
-            !this.doc.activeElement?.matches('input,textarea,[contenteditable]')
+            !this.#doc.activeElement?.matches('input,textarea,[contenteditable]')
         ) {
             this.searchInput?.nativeElement?.focus();
             event.preventDefault();
@@ -226,8 +226,8 @@ export class TuiDocNavigation {
         );
     }
 
-    private isActiveRoute(route: string): boolean {
-        return this.router.isActive(route, {
+    #isActiveRoute(route: string): boolean {
+        return this.#router.isActive(route, {
             paths: 'subset',
             queryParams: 'subset',
             fragment: 'ignored',
@@ -235,17 +235,17 @@ export class TuiDocNavigation {
         });
     }
 
-    private openActivePageGroup(): void {
+    #openActivePageGroup(): void {
         this.items.forEach((pages, pagesIndex) => {
             pages.forEach((page, pageIndex) => {
-                if ('route' in page && this.isActiveRoute(page.route)) {
+                if ('route' in page && this.#isActiveRoute(page.route)) {
                     this.openPagesArr[pagesIndex] = true;
                     this.active = page.route;
                 }
 
                 if ('subPages' in page) {
                     page.subPages.forEach((subPage) => {
-                        if (this.isActiveRoute(subPage.route)) {
+                        if (this.#isActiveRoute(subPage.route)) {
                             this.openPagesArr[pagesIndex] = true;
                             this.openPagesGroupsArr[pagesIndex * 100 + pageIndex] = true;
                             this.active = subPage.route;
@@ -256,8 +256,8 @@ export class TuiDocNavigation {
         });
     }
 
-    private navigateToAnchorLink(fragment: string): void {
-        const nodes = fragment ? this.doc.querySelectorAll(`#${fragment}`) : [];
+    #navigateToAnchorLink(fragment: string): void {
+        const nodes = fragment ? this.#doc.querySelectorAll(`#${fragment}`) : [];
         const element = nodes.length && nodes[nodes.length - 1];
 
         if (!element) {
@@ -265,12 +265,12 @@ export class TuiDocNavigation {
         }
 
         // emulate :target event
-        const target = this.doc.createElement('a');
+        const target = this.#doc.createElement('a');
 
-        target.href = `${this.doc.location.pathname}#${fragment}`;
+        target.href = `${this.#doc.location.pathname}#${fragment}`;
         target.style.display = 'none';
         target.style.position = 'absolute';
-        this.doc.body.appendChild(target);
+        this.#doc.body.appendChild(target);
         target.click();
         target.remove();
     }

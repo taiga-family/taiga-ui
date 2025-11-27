@@ -51,10 +51,10 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
-    private readonly datalist = signal<TuiDataListComponent<T> | null>(null);
-    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    readonly #datalist = signal<TuiDataListComponent<T> | null>(null);
+    readonly #itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     // TODO(v5): delete
-    private readonly itemsHandlersLegacy: TuiItemsHandlersLegacy<T> = inject(
+    readonly #itemsHandlersLegacy: TuiItemsHandlersLegacy<T> = inject(
         TUI_ITEMS_HANDLERS_LEGACY,
     );
 
@@ -73,8 +73,8 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = this.newOptionMode
-        ? this.itemsHandlers?.disabledItemHandler()
-        : this.itemsHandlersLegacy.disabledItemHandler;
+        ? this.#itemsHandlers?.disabledItemHandler()
+        : this.#itemsHandlersLegacy.disabledItemHandler;
 
     @Input()
     public emptyContent: PolymorpheusContent;
@@ -85,13 +85,13 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
     @Output()
     public readonly itemClick = new EventEmitter<T>();
 
-    public readonly options = computed(() => this.datalist()?.options() ?? []);
+    public readonly options = computed(() => this.#datalist()?.options() ?? []);
 
     @Input()
     public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
         this.newOptionMode
-            ? this.itemsHandlers.stringify()($implicit)
-            : this.itemsHandlersLegacy.stringify($implicit);
+            ? this.#itemsHandlers.stringify()($implicit)
+            : this.#itemsHandlersLegacy.stringify($implicit);
 
     public getContext(
         $implicit: T,
@@ -114,7 +114,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
     // TODO(v5): use signal `viewChild`
     @ViewChild(TuiDataListComponent)
     protected set datalistSetter(x: TuiDataListComponent<T>) {
-        this.datalist.set(x);
+        this.#datalist.set(x);
     }
 
     protected $cast(items: readonly K[]): readonly T[] {

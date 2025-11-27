@@ -54,16 +54,16 @@ export class TuiInputMonthRangeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    readonly #options = inject(TUI_INPUT_DATE_OPTIONS);
+    readonly #textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     protected readonly formatter = inject(TUI_MONTH_FORMATTER);
 
     @Input()
-    public min: TuiMonth = this.options.min;
+    public min: TuiMonth = this.#options.min;
 
     @Input()
-    public max: TuiMonth = this.options.max;
+    public max: TuiMonth = this.#options.max;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiMonth> = TUI_FALSE_HANDLER;
@@ -89,7 +89,7 @@ export class TuiInputMonthRangeComponent
 
     public override setDisabledState(): void {
         super.setDisabledState();
-        this.close();
+        this.#close();
     }
 
     public computeValue(from: string | null, to: string | null): string {
@@ -115,11 +115,11 @@ export class TuiInputMonthRangeComponent
         }
 
         this.value = TuiMonthRange.sort(this.value.from, month);
-        this.close();
+        this.#close();
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+        return this.#textfieldSize.size;
     }
 
     protected get computedDefaultActiveYear(): TuiYear {
@@ -129,7 +129,7 @@ export class TuiInputMonthRangeComponent
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
-        return this.options.icon;
+        return this.#options.icon;
     }
 
     protected onOpenChange(open: boolean): void {
@@ -148,7 +148,7 @@ export class TuiInputMonthRangeComponent
         }
     }
 
-    private close(): void {
+    #close(): void {
         this.open = false;
     }
 }

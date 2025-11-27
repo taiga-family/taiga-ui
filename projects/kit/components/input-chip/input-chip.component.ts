@@ -59,13 +59,13 @@ export class TuiInputChipComponent<T> {
     @ViewChild(TuiChip, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
-    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
-    private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
-    private readonly value = tuiInjectValue<readonly T[]>();
+    readonly #options = inject(TUI_TEXTFIELD_OPTIONS);
+    readonly #context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
+    readonly #value = tuiInjectValue<readonly T[]>();
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly mobile = inject(TUI_IS_MOBILE);
-    protected readonly internal = signal(this.context.$implicit.item);
+    protected readonly internal = signal(this.#context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -75,7 +75,7 @@ export class TuiInputChipComponent<T> {
         TuiAppearance,
         'tuiAppearanceState',
         computed(() =>
-            this.handlers.disabledItemHandler()(this.context.$implicit.item)
+            this.handlers.disabledItemHandler()(this.#context.$implicit.item)
                 ? 'disabled'
                 : null,
         ),
@@ -84,19 +84,18 @@ export class TuiInputChipComponent<T> {
     protected readonly size = tuiDirectiveBinding(
         TuiChip,
         'size',
-        computed(() => (this.options.size() === 'l' ? 's' : 'xs')),
+        computed(() => (this.#options.size() === 'l' ? 's' : 'xs')),
     );
 
     @Input()
     public editable = true;
 
     protected get index(): number {
-        return this.context.$implicit.index;
+        return this.#context.$implicit.index;
     }
 
     protected delete(): void {
-        this.textfield.cva?.onChange(this.value().filter((_, i) => i !== this.index));
-
+        this.textfield.cva?.onChange(this.#value().filter((_, i) => i !== this.index));
         if (!this.mobile) {
             this.textfield.input?.nativeElement.focus({preventScroll: true});
         }
@@ -109,7 +108,7 @@ export class TuiInputChipComponent<T> {
             return;
         }
 
-        const value = this.value().map((item, index) =>
+        const value = this.#value().map((item, index) =>
             index === this.index ? this.internal() : item,
         );
 
@@ -120,7 +119,7 @@ export class TuiInputChipComponent<T> {
 
     protected cancel(): void {
         this.editing.set(false);
-        this.internal.set(this.context.$implicit.item);
+        this.internal.set(this.#context.$implicit.item);
     }
 
     protected edit(): void {

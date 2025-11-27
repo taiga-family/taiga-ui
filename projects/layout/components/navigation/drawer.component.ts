@@ -78,16 +78,16 @@ class TuiDrawerComponent {
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class TuiDrawerDirective implements DoCheck {
-    private readonly x = inject(TUI_COMMON_ICONS).close;
-    private readonly icons = inject(TuiIcons);
-    private readonly dropdown = tuiDropdown(null);
-    private readonly open = inject(TuiDropdownOpen);
+    readonly #x = inject(TUI_COMMON_ICONS).close;
+    readonly #icons = inject(TuiIcons);
+    readonly #dropdown = tuiDropdown(null);
+    readonly #open = inject(TuiDropdownOpen);
 
     protected readonly template = viewChild(TemplateRef);
-    protected readonly ef = effect(() => this.dropdown.set(this.template()));
+    protected readonly ef = effect(() => this.#dropdown.set(this.template()));
 
     public ngDoCheck(): void {
         // TODO: Refactor to tuiDirectiveBinding
-        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen ? this.x : '');
+        tuiSetSignal(this.#icons.iconStart, this.#open.tuiDropdownOpen ? this.#x : '');
     }
 }

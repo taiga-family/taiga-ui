@@ -38,16 +38,16 @@ export function tuiDocThemeProvider(): FactoryProvider {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocThemeSwitcher {
-    private readonly storage = inject(WA_LOCAL_STORAGE);
-    private readonly key = inject(TUI_THEME_KEY);
-    private readonly location = inject(WA_LOCATION);
+    readonly #storage = inject(WA_LOCAL_STORAGE);
+    readonly #key = inject(TUI_THEME_KEY);
+    readonly #location = inject(WA_LOCATION);
 
     protected readonly theme = inject(TUI_THEME);
     protected readonly themes = inject(TUI_THEMES);
     protected readonly keys = Object.keys(this.themes);
 
     public onTheme(theme: string): void {
-        this.storage?.setItem(this.key, theme);
-        this.location.reload();
+        this.#storage?.setItem(this.#key, theme);
+        this.#location.reload();
     }
 }

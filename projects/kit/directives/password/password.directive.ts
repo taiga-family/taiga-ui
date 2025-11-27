@@ -34,16 +34,16 @@ import {TUI_PASSWORD_OPTIONS} from './password.options';
     },
 })
 export class TuiPassword {
-    private readonly options = inject(TUI_PASSWORD_OPTIONS);
-    private readonly texts = inject(TUI_PASSWORD_TEXTS);
+    readonly #options = inject(TUI_PASSWORD_OPTIONS);
+    readonly #texts = inject(TUI_PASSWORD_TEXTS);
 
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly hidden = signal(true);
     protected readonly icon = tuiIconStart(
         computed((size = this.textfield.options.size()) => {
             const icon = this.hidden()
-                ? this.options.icons.show
-                : this.options.icons.hide;
+                ? this.#options.icons.show
+                : this.#options.icons.hide;
 
             return tuiIsString(icon) ? icon : icon(size);
         }),
@@ -52,7 +52,7 @@ export class TuiPassword {
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
         'content',
-        computed(() => (this.hidden() ? this.texts()[0] : this.texts()[1])),
+        computed(() => (this.hidden() ? this.#texts()[0] : this.#texts()[1])),
     );
 
     protected toggle(): void {

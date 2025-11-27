@@ -18,7 +18,7 @@ const APP_COMP_META = {
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
-    private readonly deps = inject(StackblitzDepsService);
+    readonly #deps = inject(StackblitzDepsService);
 
     public readonly name = 'Stackblitz';
     public readonly content = new PolymorpheusComponent(StackblitzEditButton);
@@ -43,11 +43,11 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.defaultExport = false;
 
         stackblitz.openProject({
-            ...(await this.getStackblitzProjectConfig()),
+            ...(await this.#getStackblitzProjectConfig()),
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
             files: {
-                ...(await this.getBaseAngularProjectFiles()),
+                ...(await this.#getBaseAngularProjectFiles()),
                 ...modifiedSupportFiles,
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.template.html`]: content.HTML,
@@ -62,11 +62,11 @@ export class TuiStackblitzService implements TuiCodeEditor {
     ): Promise<void> {
         return stackblitz.openProject(
             {
-                ...(await this.getStackblitzProjectConfig()),
+                ...(await this.#getStackblitzProjectConfig()),
                 title,
                 description,
                 files: {
-                    ...(await this.getBaseAngularProjectFiles()),
+                    ...(await this.#getBaseAngularProjectFiles()),
                     ...files,
                 },
             },
@@ -74,7 +74,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         );
     }
 
-    private async getBaseAngularProjectFiles(): Promise<Project['files']> {
+    async #getBaseAngularProjectFiles(): Promise<Project['files']> {
         const {tsconfig, angularJson, mainTs, indexHtml, globalStyles} =
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
 
@@ -87,12 +87,12 @@ export class TuiStackblitzService implements TuiCodeEditor {
         };
     }
 
-    private async getStackblitzProjectConfig(): Promise<
+    async #getStackblitzProjectConfig(): Promise<
         Pick<Project, 'dependencies' | 'tags' | 'template'>
     > {
         return {
             template: 'angular-cli',
-            dependencies: await this.deps.get(),
+            dependencies: await this.#deps.get(),
             tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
         };
     }

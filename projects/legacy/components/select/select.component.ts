@@ -76,11 +76,11 @@ export class TuiSelectComponent<T>
     @ContentChild(AbstractTuiNativeSelect, {static: true})
     private readonly nativeSelect?: AbstractTuiNativeSelect;
 
-    private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
-    private readonly textfieldCleaner = inject(TUI_TEXTFIELD_CLEANER);
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly arrowMode = inject(TUI_ARROW_MODE);
-    private readonly options = inject(TUI_SELECT_OPTIONS);
+    readonly #itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
+    readonly #textfieldCleaner = inject(TUI_TEXTFIELD_CLEANER);
+    readonly #textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    readonly #arrowMode = inject(TUI_ARROW_MODE);
+    readonly #options = inject(TUI_SELECT_OPTIONS);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZone>>;
@@ -89,17 +89,17 @@ export class TuiSelectComponent<T>
     protected open = false;
 
     @Input()
-    public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
+    public stringify: TuiItemsHandlers<T>['stringify'] = this.#itemsHandlers.stringify;
 
     @Input()
     public identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
-        this.itemsHandlers.identityMatcher;
+        this.#itemsHandlers.identityMatcher;
 
     @Input()
-    public valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
+    public valueContent: TuiSelectOptions<T>['valueContent'] = this.#options.valueContent;
 
     public get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+        return this.#textfieldSize.size;
     }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
@@ -121,7 +121,7 @@ export class TuiSelectComponent<T>
     }
 
     public handleOption(option: T): void {
-        this.focusInput();
+        this.#focusInput();
         this.value = option;
         this.open = false;
     }
@@ -129,7 +129,7 @@ export class TuiSelectComponent<T>
     protected get arrow(): PolymorpheusContent<
         TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
     > {
-        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
+        return !this.interactive ? this.#arrowMode.disabled : this.#arrowMode.interactive;
     }
 
     protected get nativeDropdownMode(): boolean {
@@ -137,7 +137,7 @@ export class TuiSelectComponent<T>
     }
 
     protected get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
-        return this.valueContent || this.computedValue;
+        return this.#options.valueContent || this.computedValue;
     }
 
     protected onActiveZone(active: boolean): void {
@@ -145,12 +145,12 @@ export class TuiSelectComponent<T>
     }
 
     protected onKeyDownDelete(): void {
-        if (this.textfieldCleaner.cleaner) {
+        if (this.#textfieldCleaner.cleaner) {
             this.value = null;
         }
     }
 
-    private focusInput(preventScroll = false): void {
+    #focusInput(preventScroll = false): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
         }

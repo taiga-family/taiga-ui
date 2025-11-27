@@ -150,7 +150,7 @@ export class TuiInputSliderComponent
     }
 
     protected safelyUpdateValue(value: number | null): void {
-        this.value = this.valueGuard(value ?? this.safeCurrentValue);
+        this.value = this.#valueGuard(value ?? this.safeCurrentValue);
     }
 
     protected onVerticalArrowKeyDown(coefficient: number): void {
@@ -185,7 +185,7 @@ export class TuiInputSliderComponent
         return 0;
     }
 
-    private valueGuard(value: number): number {
+    #valueGuard(value: number): number {
         const roundedValue = tuiRound(
             Math.round(value / this.quantum) * this.quantum,
             TUI_FLOATING_PRECISION,

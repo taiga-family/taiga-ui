@@ -34,9 +34,9 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
     },
 })
 export class TuiDocCode {
-    private readonly icons = inject(TUI_DOC_ICONS);
-    private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
-    private readonly texts = inject(TUI_COPY_TEXTS);
+    readonly #icons = inject(TUI_DOC_ICONS);
+    readonly #rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
+    readonly #texts = inject(TUI_COPY_TEXTS);
 
     protected readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
@@ -44,22 +44,22 @@ export class TuiDocCode {
         inject(TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR);
 
     protected readonly copy$ = new Subject<void>();
-    protected readonly copyText = computed(() => this.texts()[0]);
+    protected readonly copyText = computed(() => this.#texts()[0]);
 
     protected readonly icon = toSignal(
         this.copy$.pipe(
             switchMap(() =>
                 timer(2000).pipe(
-                    map(() => this.icons.copy),
-                    startWith(this.icons.check),
+                    map(() => this.#icons.copy),
+                    startWith(this.#icons.check),
                 ),
             ),
         ),
-        {initialValue: this.icons.copy},
+        {initialValue: this.#icons.copy},
     );
 
     protected readonly processor = toSignal(
-        this.rawLoader$$.pipe(
+        this.#rawLoader$$.pipe(
             switchMap(tuiRawLoad),
             map((value: string) => this.markdownCodeProcessor(value)),
         ),
@@ -70,7 +70,7 @@ export class TuiDocCode {
 
     @Input()
     public set code(code: TuiRawLoaderContent) {
-        this.rawLoader$$.next(code);
+        this.#rawLoader$$.next(code);
     }
 
     public get hasFilename(): boolean {

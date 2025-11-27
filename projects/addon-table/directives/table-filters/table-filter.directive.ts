@@ -12,9 +12,9 @@ import {TuiTableFiltersDirective} from './table-filters.directive';
     selector: '[tuiTableFilter]',
 })
 export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFilter<T> {
-    private readonly head = inject(TuiTableHead<T>, {optional: true});
-    private readonly delegate = inject(AbstractTuiTableFilter<TuiValuesOf<T>, unknown>);
-    private readonly control = inject(NgControl);
+    readonly #head = inject(TuiTableHead<T>, {optional: true});
+    readonly #delegate = inject(AbstractTuiTableFilter<TuiValuesOf<T>, unknown>);
+    readonly #control = inject(NgControl);
     protected readonly filters = inject(TuiTableFiltersDirective<T>);
 
     @Input()
@@ -22,8 +22,8 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
 
     public readonly refresh$ = defer(() =>
         merge(
-            this.control.valueChanges || EMPTY,
-            this.control.statusChanges?.pipe(distinctUntilChanged()) || EMPTY,
+            this.#control.valueChanges || EMPTY,
+            this.#control.statusChanges?.pipe(distinctUntilChanged()) || EMPTY,
         ),
     );
 
@@ -36,16 +36,16 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
     }
 
     public filter(item: T): boolean {
-        const {disabled, value} = this.control;
+        const {disabled, value} = this.#control;
 
         return (
             !!disabled ||
-            !this.key ||
-            this.delegate.filter(item[this.key as keyof T], value)
+            !this.#key ||
+            this.#delegate.filter(item[this.#key as keyof T], value)
         );
     }
 
-    private get key(): string | keyof T | undefined {
-        return this.tuiTableFilter || this.head?.tuiHead;
+    get #key(): string | keyof T | undefined {
+        return this.tuiTableFilter || this.#head?.tuiHead;
     }
 }

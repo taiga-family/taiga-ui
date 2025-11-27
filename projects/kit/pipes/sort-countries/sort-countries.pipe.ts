@@ -8,12 +8,12 @@ import {map, type Observable} from 'rxjs';
     name: 'tuiSortCountries',
 })
 export class TuiSortCountriesPipe implements PipeTransform {
-    private readonly countriesNames$ = toObservable(inject(TUI_COUNTRIES));
+    readonly #countriesNames$ = toObservable(inject(TUI_COUNTRIES));
 
     public transform(
         countries: readonly TuiCountryIsoCode[],
     ): Observable<TuiCountryIsoCode[]> {
-        return this.countriesNames$.pipe(
+        return this.#countriesNames$.pipe(
             map((names) =>
                 [...countries].sort((a, b) => names[a].localeCompare(names[b])),
             ),

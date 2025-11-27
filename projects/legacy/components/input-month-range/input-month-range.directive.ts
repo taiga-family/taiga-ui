@@ -27,14 +27,14 @@ export class TuiInputMonthRangeDirective
     extends AbstractTuiTextfieldHost<TuiInputMonthRangeComponent>
     implements DoCheck
 {
-    private readonly value$ = new Subject<TuiMonthRange | null>();
+    readonly #value$ = new Subject<TuiMonthRange | null>();
 
-    private localizedValue: [string, string] = ['', ''];
+    #localizedValue: [string, string] = ['', ''];
 
     protected readonly formatter: TuiHandler<TuiMonth | null, Observable<string>> =
         inject(TUI_MONTH_FORMATTER);
 
-    protected readonly $ = this.value$
+    protected readonly $ = this.#value$
         .pipe(
             distinctUntilChanged(),
             switchMap((value: TuiMonthRange | null) =>
@@ -46,7 +46,7 @@ export class TuiInputMonthRangeDirective
             takeUntilDestroyed(),
         )
         .subscribe((localizedValue) => {
-            this.localizedValue = localizedValue;
+            this.#localizedValue = localizedValue;
         });
 
     public override get readOnly(): boolean {
@@ -54,13 +54,13 @@ export class TuiInputMonthRangeDirective
     }
 
     public override get value(): string {
-        return this.localizedValue[0]
-            ? this.host.computeValue(...this.localizedValue)
+        return this.#localizedValue[0]
+            ? this.host.computeValue(...this.#localizedValue)
             : '';
     }
 
     public ngDoCheck(): void {
-        this.value$.next(this.host.value);
+        this.#value$.next(this.host.value);
     }
 
     public onValueChange(value: string): void {

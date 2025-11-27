@@ -64,15 +64,13 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     },
 })
 export class TuiDocExample {
-    private readonly clipboard = inject(Clipboard);
-    private readonly alerts = inject(TuiAlertService);
-    private readonly location = inject(WA_LOCATION);
-    private readonly copyTexts = inject(TUI_COPY_TEXTS);
-    private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
+    readonly #clipboard = inject(Clipboard);
+    readonly #alerts = inject(TuiAlertService);
+    readonly #location = inject(WA_LOCATION);
+    readonly #copyTexts = inject(TUI_COPY_TEXTS);
+    readonly #processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
 
-    private readonly rawLoader$$ = new BehaviorSubject<
-        Record<string, TuiRawLoaderContent>
-    >({});
+    readonly #rawLoader$$ = new BehaviorSubject<Record<string, TuiRawLoaderContent>>({});
 
     protected readonly fullscreenEnabled = inject(DOCUMENT).fullscreenEnabled;
     protected readonly icons = inject(TUI_DOC_ICONS);
@@ -91,14 +89,14 @@ export class TuiDocExample {
     protected activeItemIndex = this.defaultTabIndex;
     protected fullscreen = false;
 
-    protected readonly copy = computed(() => this.copyTexts()[0]);
+    protected readonly copy = computed(() => this.#copyTexts()[0]);
 
     protected readonly loading = signal(false);
 
     protected readonly processor = toSignal(
-        this.rawLoader$$.pipe(
+        this.#rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
-            map((value) => this.processContent(value)),
+            map((value) => this.#processContent(value)),
         ),
         {initialValue: {} as unknown as Record<string, string>},
     );
@@ -111,13 +109,13 @@ export class TuiDocExample {
 
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
 
-    public readonly componentName = input<string>(this.location.pathname.slice(1));
+    public readonly componentName = input<string>(this.#location.pathname.slice(1));
 
     public readonly component = input<Promise<Type<unknown>>>();
 
     @Input()
     public set content(content: Record<string, TuiRawLoaderContent>) {
-        this.rawLoader$$.next(content);
+        this.#rawLoader$$.next(content);
     }
 
     protected readonly visible = (files: Record<string, string>): boolean =>
@@ -128,8 +126,8 @@ export class TuiDocExample {
     }
 
     protected copyExampleLink(target: EventTarget | null): void {
-        this.clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
-        this.alerts
+        this.#clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
+        this.#alerts
             .open(this.texts[1], {label: this.texts[2], appearance: 'positive'})
             .subscribe();
     }

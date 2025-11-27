@@ -59,7 +59,7 @@ export class TuiInputComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    readonly #textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZone>>;
@@ -67,7 +67,7 @@ export class TuiInputComponent
     public open = false;
 
     public get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+        return this.#textfieldSize.size;
     }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
@@ -83,8 +83,8 @@ export class TuiInputComponent
     }
 
     public handleOption(item: unknown): void {
-        this.setNativeValue(String(item));
-        this.focusInput();
+        this.#setNativeValue(String(item));
+        this.#focusInput();
         this.value = String(item);
         this.open = false;
     }
@@ -110,13 +110,13 @@ export class TuiInputComponent
         return '';
     }
 
-    private focusInput(preventScroll = false): void {
+    #focusInput(preventScroll = false): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
         }
     }
 
-    private setNativeValue(value: string): void {
+    #setNativeValue(value: string): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = value;
         }

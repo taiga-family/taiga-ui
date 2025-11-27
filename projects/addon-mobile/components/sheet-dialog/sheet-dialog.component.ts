@@ -44,8 +44,8 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     private readonly stops = viewChildren('stops', {read: ElementRef});
-    private readonly el = tuiInjectElement();
-    private pointers = 0;
+    readonly #el = tuiInjectElement();
+    #pointers = 0;
 
     protected readonly context =
         injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
@@ -60,8 +60,8 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             tuiZonefull(),
             exhaustMap(() => {
                 if (isObservable(this.context.closable)) {
-                    if (this.el.scrollTop <= 0) {
-                        this.el.scrollTo({top: this.initial, behavior: 'smooth'});
+                    if (this.#el.scrollTop <= 0) {
+                        this.#el.scrollTo({top: this.#initial, behavior: 'smooth'});
                     }
 
                     return this.context.closable.pipe(take(1));
@@ -72,29 +72,29 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             filter(Boolean),
             takeUntilDestroyed(),
         )
-        .subscribe(() => this.close());
+        .subscribe(() => this.#close());
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial || 0;
+        this.#el.scrollTop = this.#initial || 0;
     }
 
     protected onPointerChange(delta: number): void {
-        this.pointers = Math.max(this.pointers + delta, 0);
+        this.#pointers = Math.max(this.#pointers + delta, 0);
 
-        if (!this.pointers && this.el.scrollTop <= 0) {
+        if (!this.#pointers && this.#el.scrollTop <= 0) {
             this.close$.next();
         }
     }
 
-    private get initial(): number | undefined {
+    get #initial(): number | undefined {
         return this.context.closable
             ? this.stops()
                   .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial]
+                  .concat(this.#el.clientHeight ?? Infinity)[this.context.initial]
             : 0;
     }
 
-    private close(): void {
+    #close(): void {
         if (this.context.required) {
             this.context.$implicit.error(REQUIRED_ERROR);
         } else {

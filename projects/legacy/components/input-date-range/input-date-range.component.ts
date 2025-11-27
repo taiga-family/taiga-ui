@@ -89,11 +89,11 @@ export class TuiInputDateRangeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
-    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly nativeValue = signal('');
+    readonly #isMobile = inject(TUI_IS_MOBILE);
+    readonly #mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
+    readonly #options = inject(TUI_INPUT_DATE_OPTIONS);
+    readonly #textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    readonly #nativeValue = signal('');
 
     protected readonly dateTexts$ = toObservable(inject(TUI_DATE_TEXTS));
     protected override readonly valueTransformer = inject(
@@ -127,10 +127,10 @@ export class TuiInputDateRangeComponent
     public items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
-    public min: TuiDay | null = this.options.min;
+    public min: TuiDay | null = this.#options.min;
 
     @Input()
-    public max: TuiDay | null = this.options.max;
+    public max: TuiDay | null = this.#options.max;
 
     @Input()
     public minLength: TuiDayLike | null = null;
@@ -155,7 +155,7 @@ export class TuiInputDateRangeComponent
     }
 
     public get computedValue(): string {
-        const {value, nativeValue, activePeriod} = this;
+        const {value, activePeriod} = this;
 
         if (activePeriod) {
             return String(activePeriod);
@@ -166,32 +166,32 @@ export class TuiInputDateRangeComponent
                   this.dateFormat().mode,
                   this.dateFormat().separator,
               )
-            : nativeValue();
+            : this.#nativeValue();
     }
 
     public get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+        return this.#textfieldSize.size;
     }
 
     public onClick(): void {
-        if (!this.isMobile && this.interactive) {
-            this.toggle();
+        if (!this.#isMobile && this.interactive) {
+            this.#toggle();
         }
     }
 
     public onValueChange(value: string): void {
-        this.nativeValue.set(value);
+        this.#nativeValue.set(value);
 
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
-        if (!value && !this.mobileCalendar) {
+        if (!value && !this.#mobileCalendar) {
             this.onOpenChange(true);
         }
 
         if (this.activePeriod) {
-            this.nativeValue.set('');
+            this.#nativeValue.set('');
         }
 
         this.value =
@@ -205,11 +205,11 @@ export class TuiInputDateRangeComponent
     }
 
     public onRangeChange(range: TuiDayRange | null): void {
-        this.toggle();
-        this.focusInput();
+        this.#toggle();
+        this.#focusInput();
 
         if (!range) {
-            this.nativeValue.set('');
+            this.#nativeValue.set('');
         }
 
         this.value = range;
@@ -221,16 +221,16 @@ export class TuiInputDateRangeComponent
         }
 
         super.writeValue(value);
-        this.nativeValue.set(this.value ? this.computedValue : '');
-        this.selectedActivePeriod = this.findActivePeriodBy(this.value);
+        this.#nativeValue.set(this.value ? this.computedValue : '');
+        this.selectedActivePeriod = this.#findActivePeriodBy(this.value);
     }
 
     protected get computedMobile(): boolean {
-        return this.isMobile && !!this.mobileCalendar;
+        return this.#isMobile && !!this.#mobileCalendar;
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
-        return this.options.icon;
+        return this.#options.icon;
     }
 
     protected get computedMask(): MaskitoOptions {
@@ -247,7 +247,7 @@ export class TuiInputDateRangeComponent
     }
 
     protected get activePeriod(): TuiDayRangePeriod | null {
-        return this.selectedActivePeriod ?? this.findActivePeriodBy(this.value);
+        return this.selectedActivePeriod ?? this.#findActivePeriodBy(this.value);
     }
 
     protected get showValueTemplate(): boolean {
@@ -271,11 +271,11 @@ export class TuiInputDateRangeComponent
     }
 
     protected getComputedRangeFiller(dateFiller: string): string {
-        return this.activePeriod ? '' : this.getDateRangeFiller(dateFiller);
+        return this.activePeriod ? '' : this.#getDateRangeFiller(dateFiller);
     }
 
     protected onIconClick(): void {
-        if (this.isMobile && this.interactive) {
+        if (this.#isMobile && this.interactive) {
             this.onOpenChange(true);
         }
     }
@@ -289,13 +289,13 @@ export class TuiInputDateRangeComponent
 
         if (
             !focused &&
-            !this.itemSelected &&
-            (this.nativeValue().length === DATE_FILLER_LENGTH ||
-                this.nativeValue().length ===
+            !this.#itemSelected &&
+            (this.#nativeValue().length === DATE_FILLER_LENGTH ||
+                this.#nativeValue().length ===
                     DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length)
         ) {
             this.value = TuiDayRange.normalizeParse(
-                this.nativeValue(),
+                this.#nativeValue(),
                 this.dateFormat().mode,
             );
         }
@@ -308,8 +308,10 @@ export class TuiInputDateRangeComponent
         return tuiNullableSame(oldValue, newValue, (a, b) => a.daySame(b));
     }
 
-    private get itemSelected(): boolean {
-        return this.items.findIndex((item) => String(item) === this.nativeValue()) !== -1;
+    get #itemSelected(): boolean {
+        return (
+            this.items.findIndex((item) => String(item) === this.#nativeValue()) !== -1
+        );
     }
 
     // eslint-disable-next-line @typescript-eslint/max-params,max-params
@@ -332,21 +334,21 @@ export class TuiInputDateRangeComponent
         });
     }
 
-    private toggle(): void {
+    #toggle(): void {
         this.open = !this.open;
     }
 
-    private focusInput(preventScroll = false): void {
+    #focusInput(preventScroll = false): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
         }
     }
 
-    private getDateRangeFiller(dateFiller: string): string {
+    #getDateRangeFiller(dateFiller: string): string {
         return `${dateFiller}${RANGE_SEPARATOR_CHAR}${dateFiller}`;
     }
 
-    private findActivePeriodBy(value: TuiDayRange | null): TuiDayRangePeriod | null {
+    #findActivePeriodBy(value: TuiDayRange | null): TuiDayRangePeriod | null {
         return (
             this.items.find((item) =>
                 tuiNullableSame(

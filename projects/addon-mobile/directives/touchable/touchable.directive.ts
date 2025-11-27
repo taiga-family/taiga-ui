@@ -25,37 +25,37 @@ export function tuiFindTouchIndex(touches: TouchList, id: number): number {
     selector: '[tuiTouchable]',
 })
 export class TuiTouchable {
-    private readonly isIOS = inject(TUI_IS_IOS);
-    private readonly el = tuiInjectElement();
+    readonly #isIOS = inject(TUI_IS_IOS);
+    readonly #el = tuiInjectElement();
 
     @Input()
     public tuiTouchable: '' | 'background' | 'opacity' | 'transform' = '';
 
     constructor() {
-        if (!this.isIOS) {
+        if (!this.#isIOS) {
             return;
         }
 
-        tuiTypedFromEvent(this.el, 'touchstart', {passive: true})
+        tuiTypedFromEvent(this.#el, 'touchstart', {passive: true})
             .pipe(
-                tap(() => this.onTouchStart()),
+                tap(() => this.#onTouchStart()),
                 map(({touches}) => touches[touches.length - 1]?.identifier),
                 switchMap((identifier) =>
                     race(
-                        tuiTypedFromEvent(this.el, 'touchmove', {passive: true}).pipe(
+                        tuiTypedFromEvent(this.#el, 'touchmove', {passive: true}).pipe(
                             filter(({touches}) =>
-                                this.hasTouchLeft(this.el, touches, identifier ?? 0),
+                                this.#hasTouchLeft(this.#el, touches, identifier ?? 0),
                             ),
                         ),
-                        tuiTypedFromEvent(this.el, 'touchend'),
+                        tuiTypedFromEvent(this.#el, 'touchend'),
                     ).pipe(take(1)),
                 ),
                 takeUntilDestroyed(),
             )
             .subscribe(() => {
-                this.el.style.removeProperty('transform');
-                this.el.style.removeProperty('opacity');
-                this.el.style.removeProperty('background');
+                this.#el.style.removeProperty('transform');
+                this.#el.style.removeProperty('opacity');
+                this.#el.style.removeProperty('background');
             });
     }
 
@@ -63,11 +63,7 @@ export class TuiTouchable {
         return this.tuiTouchable || 'transform';
     }
 
-    private hasTouchLeft(
-        element: HTMLElement,
-        touches: TouchList,
-        identifier: number,
-    ): boolean {
+    #hasTouchLeft(element: HTMLElement, touches: TouchList, identifier: number): boolean {
         const {ownerDocument} = element;
         const id = tuiFindTouchIndex(touches, identifier);
 
@@ -80,13 +76,13 @@ export class TuiTouchable {
         return !element.contains(ownerDocument.elementFromPoint(clientX, clientY));
     }
 
-    private onTouchStart(): void {
+    #onTouchStart(): void {
         if (this.style !== 'transform') {
-            this.el.style.removeProperty('transition');
+            this.#el.style.removeProperty('transition');
         } else {
-            this.el.style.setProperty('transition', 'transform 0.2s');
+            this.#el.style.setProperty('transition', 'transform 0.2s');
         }
 
-        this.el.style.setProperty(this.style, STYLE[this.style]);
+        this.#el.style.setProperty(this.style, STYLE[this.style]);
     }
 }

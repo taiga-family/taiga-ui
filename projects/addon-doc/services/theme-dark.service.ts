@@ -28,8 +28,8 @@ export const TUI_DARK_THEME = new InjectionToken(ngDevMode ? 'TUI_DARK_THEME' : 
     providedIn: 'root',
 })
 export class TuiDocThemeDarkService extends BehaviorSubject<boolean> {
-    private readonly storage = inject(WA_LOCAL_STORAGE);
-    private readonly key = inject(TUI_DARK_THEME_KEY);
+    readonly #storage = inject(WA_LOCAL_STORAGE);
+    readonly #key = inject(TUI_DARK_THEME_KEY);
 
     constructor() {
         super(
@@ -42,7 +42,7 @@ export class TuiDocThemeDarkService extends BehaviorSubject<boolean> {
     }
 
     public override next(dark: boolean): void {
-        this.storage?.setItem(this.key, String(dark));
+        this.#storage?.setItem(this.#key, String(dark));
         super.next(dark);
     }
 

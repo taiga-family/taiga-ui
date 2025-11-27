@@ -35,8 +35,8 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     },
 })
 export class TuiPdfViewer<O, I> {
-    private readonly breakpoint = toSignal(inject(TuiBreakpointService));
-    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
+    readonly #breakpoint = toSignal(inject(TuiBreakpointService));
+    protected readonly isMobile = computed(() => this.#breakpoint() === 'mobile');
     protected readonly el = tuiInjectElement();
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);

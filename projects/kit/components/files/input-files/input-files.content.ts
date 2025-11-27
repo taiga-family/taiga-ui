@@ -21,22 +21,22 @@ import {TuiInputFiles} from './input-files.component';
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiInputFilesContent {
-    private readonly breakpoint$ = inject(TuiBreakpointService);
-    private readonly text$ = toObservable(inject(TUI_INPUT_FILE_TEXTS));
-    private readonly context = injectContext<TuiContext<boolean>>();
-    private readonly component = inject(TuiInputFiles);
+    readonly #breakpoint$ = inject(TuiBreakpointService);
+    readonly #text$ = toObservable(inject(TUI_INPUT_FILE_TEXTS));
+    readonly #context = injectContext<TuiContext<boolean>>();
+    readonly #component = inject(TuiInputFiles);
 
     protected get link$(): Observable<string> {
         return this.computeLink$(
-            this.context.$implicit,
-            !!this.component.input?.input.multiple,
+            this.#context.$implicit,
+            !!this.#component.input?.input.multiple,
         );
     }
 
     protected get label$(): Observable<string> {
         return this.computeLabel$(
-            this.context.$implicit,
-            !!this.component.input?.input.multiple,
+            this.#context.$implicit,
+            !!this.#component.input?.input.multiple,
         );
     }
 
@@ -44,7 +44,7 @@ export class TuiInputFilesContent {
     private computeLink$(fileDragged: boolean, multiple: boolean): Observable<string> {
         return fileDragged
             ? of('')
-            : this.text$.pipe(
+            : this.#text$.pipe(
                   map((t) => (multiple ? t.defaultLinkMultiple : t.defaultLinkSingle)),
               );
     }
@@ -52,7 +52,7 @@ export class TuiInputFilesContent {
     @tuiPure
     private computeLabel$(fileDragged: boolean, multiple: boolean): Observable<string> {
         return fileDragged
-            ? combineLatest([this.breakpoint$, this.text$]).pipe(
+            ? combineLatest([this.#breakpoint$, this.#text$]).pipe(
                   map(([breakpoint, text]) => {
                       if (breakpoint === 'mobile') {
                           return '';
@@ -61,7 +61,7 @@ export class TuiInputFilesContent {
                       return multiple ? text.dropMultiple : text.drop;
                   }),
               )
-            : combineLatest([this.breakpoint$, this.text$]).pipe(
+            : combineLatest([this.#breakpoint$, this.#text$]).pipe(
                   map(([breakpoint, text]) => {
                       if (breakpoint === 'mobile') {
                           return '';

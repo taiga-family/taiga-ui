@@ -68,10 +68,10 @@ class Styles {}
     },
 })
 export class TuiTooltip implements DoCheck {
-    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
-    private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly describe = inject(TuiHintDescribe);
-    private readonly driver = inject(TuiHintHover);
+    readonly #textfield = inject(TuiTextfieldComponent, {optional: true});
+    readonly #isMobile = inject(TUI_IS_MOBILE);
+    readonly #describe = inject(TuiHintDescribe);
+    readonly #driver = inject(TuiHintHover);
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly state: Signal<unknown> = tuiAppearanceState(
@@ -87,17 +87,17 @@ export class TuiTooltip implements DoCheck {
     public readonly size = input<TuiSizeS>('m');
 
     public ngDoCheck(): void {
-        if (this.textfield?.id) {
-            tuiSetSignal(this.describe.id, this.textfield.id);
+        if (this.#textfield?.id) {
+            tuiSetSignal(this.#describe.id, this.#textfield.id);
         }
     }
 
     protected onClick(event: MouseEvent): void {
-        if (this.isMobile) {
+        if (this.#isMobile) {
             event.preventDefault();
             event.stopPropagation();
         } else {
-            this.driver.toggle();
+            this.#driver.toggle();
         }
     }
 }

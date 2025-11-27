@@ -41,7 +41,7 @@ export class TuiTabBarComponent {
 
     public setActive(tab: EventTarget): void {
         if (tuiIsElement(tab)) {
-            this.updateIndex(
+            this.#updateIndex(
                 this.tabs.toArray().findIndex(({nativeElement}) => nativeElement === tab),
             );
         }
@@ -51,7 +51,7 @@ export class TuiTabBarComponent {
         return `--tui-tab-${this.activeItemIndex + 1}: var(--tui-active-color)`;
     }
 
-    private updateIndex(index: number): void {
+    #updateIndex(index: number): void {
         this.activeItemIndex = index;
         this.activeItemIndexChange.emit(index);
     }

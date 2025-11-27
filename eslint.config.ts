@@ -37,26 +37,25 @@ export default process.env.HTML_ESLINT
                       'error',
                       {countVoidThis: true, max: 5},
                   ],
+
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
 
                   'unicorn/prefer-class-fields': 'warn',
                   '@taiga-ui/experience-next/no-private-esnext-fields': 'off',
                   '@taiga-ui/experience-next/short-tui-imports': 'off',
+
+                  // Suppress warnings for "#private" fields
+                  '@taiga-ui/experience-next/no-implicit-public': [
+                      'error',
+                      {ignorePrivateIdentifier: true},
+                  ],
               },
           },
           {
-              files: ['**/*.spec.ts', '**/*.cy.ts', '**/demo/**/*.ts'],
+              files: ['**/*.spec.ts', '**/*.cy.ts'],
               rules: {
                   'no-irregular-whitespace': 'off',
-                  '@taiga-ui/experience-next/short-tui-imports': 'error',
               },
-          },
-          {
-              rules: {'@taiga-ui/experience-next/no-deep-imports': 'off'},
-              files: [
-                  'projects/demo/src/modules/components/icon/examples/4/index.ts',
-                  'projects/demo/src/modules/markup/breakpoints/index.ts',
-              ],
           },
       ];

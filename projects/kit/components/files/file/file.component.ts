@@ -51,11 +51,11 @@ import {TUI_FILE_OPTIONS} from './file.options';
     },
 })
 export class TuiFile {
-    private readonly sanitizer = inject(DomSanitizer);
-    private readonly options = inject(TUI_FILE_OPTIONS);
-    private readonly locale = inject(LOCALE_ID);
-    private readonly units$ = toObservable(inject(TUI_DIGITAL_INFORMATION_UNITS));
-    private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
+    readonly #sanitizer = inject(DomSanitizer);
+    readonly #options = inject(TUI_FILE_OPTIONS);
+    readonly #locale = inject(LOCALE_ID);
+    readonly #units$ = toObservable(inject(TUI_DIGITAL_INFORMATION_UNITS));
+    readonly #win = inject(WA_WINDOW) as Window & {File: typeof File};
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts$ = toObservable(inject(TUI_FILE_TEXTS));
@@ -106,7 +106,7 @@ export class TuiFile {
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
-        return this.state === 'loading' ? '' : this.options.icons[this.state];
+        return this.state === 'loading' ? '' : this.#options.icons[this.state];
     }
 
     protected get name(): string {
@@ -122,7 +122,7 @@ export class TuiFile {
     }
 
     protected get fileSize$(): Observable<string | null> {
-        return this.calculateFileSize$(this.file, this.units$);
+        return this.calculateFileSize$(this.file, this.#units$);
     }
 
     @tuiPure
@@ -142,7 +142,7 @@ export class TuiFile {
         units$: Observable<readonly [string, string, string]>,
     ): Observable<string | null> {
         return units$.pipe(
-            map((units) => this.options.formatSize(units, file.size, this.locale)),
+            map((units) => this.#options.formatSize(units, file.size, this.#locale)),
         );
     }
 
@@ -153,11 +153,11 @@ export class TuiFile {
         }
 
         if (
-            this.win.File &&
-            file instanceof this.win.File &&
+            this.#win.File &&
+            file instanceof this.#win.File &&
             file.type?.startsWith('image/')
         ) {
-            return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
+            return this.#sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }
 
         return '';

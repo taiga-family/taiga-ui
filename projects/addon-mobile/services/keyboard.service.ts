@@ -7,26 +7,26 @@ import {filter, fromEvent, merge} from 'rxjs';
     providedIn: 'root',
 })
 export class TuiKeyboardService implements OnDestroy {
-    private readonly doc = inject(DOCUMENT);
-    private readonly sub = merge(
-        fromEvent(this.doc, 'focusout'),
-        fromEvent(this.doc, 'mousedown').pipe(
-            filter((e) => Object.is(e.target, this.element)),
+    readonly #doc = inject(DOCUMENT);
+    readonly #sub = merge(
+        fromEvent(this.#doc, 'focusout'),
+        fromEvent(this.#doc, 'mousedown').pipe(
+            filter((e) => Object.is(e.target, this.#element)),
         ),
     ).subscribe(() => {
         this.show();
     });
 
-    private element?: ElementContentEditable;
-    private inputMode = '';
+    #element?: ElementContentEditable;
+    #inputMode = '';
 
     public ngOnDestroy(): void {
-        this.sub.unsubscribe();
+        this.#sub.unsubscribe();
         this.show();
     }
 
     public toggle(): void {
-        if (this.element) {
+        if (this.#element) {
             this.show();
         } else {
             this.hide();
@@ -34,24 +34,24 @@ export class TuiKeyboardService implements OnDestroy {
     }
 
     public hide(): void {
-        const focused = tuiGetFocused(this.doc) as HTMLInputElement;
+        const focused = tuiGetFocused(this.#doc) as HTMLInputElement;
 
-        if (focused?.inputMode === undefined || this.element) {
+        if (focused?.inputMode === undefined || this.#element) {
             return;
         }
 
-        this.element = focused;
-        this.inputMode = focused.inputMode;
+        this.#element = focused;
+        this.#inputMode = focused.inputMode;
         focused.inputMode = 'none';
     }
 
     public show(): void {
-        if (!this.element) {
+        if (!this.#element) {
             return;
         }
 
-        this.element.inputMode = 'none';
-        this.element.inputMode = this.inputMode;
-        this.element = undefined;
+        this.#element.inputMode = 'none';
+        this.#element.inputMode = this.#inputMode;
+        this.#element = undefined;
     }
 }

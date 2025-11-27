@@ -15,21 +15,21 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
     selector: '[tuiDynamicHeaderAnchor]',
 })
 export class TuiDynamicHeaderAnchorDirective implements AfterViewInit, OnDestroy {
-    private readonly vcr = inject(ViewContainerRef);
-    private readonly observer = inject(WaIntersectionObserverDirective);
-    private readonly container = inject(TuiDynamicHeaderContainerDirective);
+    readonly #vcr = inject(ViewContainerRef);
+    readonly #observer = inject(WaIntersectionObserverDirective);
+    readonly #container = inject(TuiDynamicHeaderContainerDirective);
     public readonly templateRef = inject(TemplateRef<unknown>);
-    public readonly view = this.vcr.createEmbeddedView(this.templateRef);
+    public readonly view = this.#vcr.createEmbeddedView(this.templateRef);
     public readonly visible = signal(false);
 
     public ngAfterViewInit(): void {
-        this.observer.observe(this.view.rootNodes[0], ([e]) => {
+        this.#observer.observe(this.view.rootNodes[0], ([e]) => {
             this.visible.set(!e?.isIntersecting);
-            this.container.update();
+            this.#container.update();
         });
     }
 
     public ngOnDestroy(): void {
-        this.observer.unobserve(this.view.rootNodes[0]);
+        this.#observer.unobserve(this.view.rootNodes[0]);
     }
 }

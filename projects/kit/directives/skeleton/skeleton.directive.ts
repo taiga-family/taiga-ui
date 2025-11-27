@@ -35,9 +35,9 @@ class Styles {}
     },
 })
 export class TuiSkeleton implements OnChanges {
-    private animation?: Animation;
-    private readonly el = tuiInjectElement();
-    private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)) * 2;
+    #animation?: Animation;
+    readonly #el = tuiInjectElement();
+    readonly #duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)) * 2;
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly placeholder = computed((length = this.tuiSkeleton()) => {
@@ -54,10 +54,10 @@ export class TuiSkeleton implements OnChanges {
     public readonly tuiSkeleton = input<boolean | number | string>(false);
 
     public ngOnChanges({tuiSkeleton}: SimpleChanges): void {
-        this.animation?.cancel();
+        this.#animation?.cancel();
 
         if (!tuiSkeleton?.currentValue && !tuiSkeleton?.firstChange) {
-            this.animation = this.el.animate?.(FADE, this.duration);
+            this.#animation = this.#el.animate?.(FADE, this.#duration);
         }
     }
 }

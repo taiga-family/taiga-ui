@@ -40,8 +40,8 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     },
 })
 export class TuiCopyDirective {
-    private readonly copied$ = new Subject<void>();
-    private readonly doc = inject(DOCUMENT);
+    readonly #copied$ = new Subject<void>();
+    readonly #doc = inject(DOCUMENT);
 
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
@@ -53,7 +53,7 @@ export class TuiCopyDirective {
         toSignal(
             toObservable(inject(TUI_COPY_TEXTS)).pipe(
                 switchMap(([copy, copied]) =>
-                    this.copied$.pipe(
+                    this.#copied$.pipe(
                         switchMap(() =>
                             timer(3000).pipe(
                                 map(() => copy),
@@ -77,7 +77,7 @@ export class TuiCopyDirective {
 
     protected copy(): void {
         this.textfield.input?.nativeElement.select();
-        this.doc.execCommand('copy');
-        this.copied$.next();
+        this.#doc.execCommand('copy');
+        this.#copied$.next();
     }
 }

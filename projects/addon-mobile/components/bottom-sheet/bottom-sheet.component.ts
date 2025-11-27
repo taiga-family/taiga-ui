@@ -37,21 +37,21 @@ export class TuiBottomSheet {
     @ViewChild('content')
     private readonly content?: ElementRef<HTMLElement>;
 
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     @Input()
     public stops: readonly string[] = ['1.5rem'];
 
     protected onScroll(): void {
-        const {clientHeight, scrollTop, scrollHeight} = this.el;
+        const {clientHeight, scrollTop, scrollHeight} = this.#el;
         const top = this.elements.get(0)?.nativeElement.clientHeight || 0;
         const max = this.content?.nativeElement.clientHeight || Infinity;
         const height = Math.min(clientHeight, max);
         const scrolled = Math.min(scrollTop, height - top);
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
 
-        this.el.style.setProperty('--t-height', `${scrollHeight}px`);
-        this.el.style.setProperty('overflow', 'scroll');
-        this.el.animate([{transform}], OPTIONS);
+        this.#el.style.setProperty('--t-height', `${scrollHeight}px`);
+        this.#el.style.setProperty('overflow', 'scroll');
+        this.#el.animate([{transform}], OPTIONS);
     }
 }

@@ -8,12 +8,10 @@ import {map, type Observable, of, timer} from 'rxjs';
 
 @Injectable()
 export class FormatService extends TuiFormatDateService {
-    private readonly delay$ = isPlatformBrowser(inject(PLATFORM_ID))
-        ? timer(0, 1000)
-        : of(0);
+    readonly #delay$ = isPlatformBrowser(inject(PLATFORM_ID)) ? timer(0, 1000) : of(0);
 
     public override format(timestamp: number): Observable<string> {
-        return this.delay$.pipe(map(() => formatDistance(timestamp, Date.now())));
+        return this.#delay$.pipe(map(() => formatDistance(timestamp, Date.now())));
     }
 }
 

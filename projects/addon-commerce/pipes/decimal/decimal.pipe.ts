@@ -7,8 +7,8 @@ import {map, type Observable, switchMap} from 'rxjs';
 
 @Pipe({name: 'tuiDecimal'})
 export class TuiDecimalPipe implements PipeTransform {
-    private readonly format = toObservable(inject(TUI_NUMBER_FORMAT));
-    private readonly amountPipe = Injector.create({
+    readonly #format = toObservable(inject(TUI_NUMBER_FORMAT));
+    readonly #amountPipe = Injector.create({
         providers: [{provide: TuiAmountPipe}],
         parent: inject(INJECTOR),
     }).get(TuiAmountPipe);
@@ -17,9 +17,9 @@ export class TuiDecimalPipe implements PipeTransform {
         value: number,
         currency: TuiCurrencyVariants = '',
     ): Observable<string> {
-        return this.format.pipe(
+        return this.#format.pipe(
             switchMap((format) =>
-                this.amountPipe.transform(value, currency).pipe(
+                this.#amountPipe.transform(value, currency).pipe(
                     map((value) => {
                         const [, decimal] = value.split(format.decimalSeparator);
 

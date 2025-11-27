@@ -34,36 +34,36 @@ const GAP = 16;
     },
 })
 export class TuiDropdownMobileComponent implements OnDestroy {
-    private readonly el = tuiInjectElement();
-    private readonly keyboard = inject(TuiKeyboardService);
-    private readonly doc = inject(DOCUMENT);
-    private readonly scrollTop = this.doc.documentElement.scrollTop;
-    private readonly observer = new ResizeObserver(() => this.refresh());
+    readonly #el = tuiInjectElement();
+    readonly #keyboard = inject(TuiKeyboardService);
+    readonly #doc = inject(DOCUMENT);
+    readonly #scrollTop = this.#doc.documentElement.scrollTop;
+    readonly #observer = new ResizeObserver(() => this.refresh());
 
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
 
     constructor() {
-        this.observer.observe(this.dropdown.el);
-        this.doc.documentElement.style.setProperty('scroll-behavior', 'initial');
+        this.#observer.observe(this.dropdown.el);
+        this.#doc.documentElement.style.setProperty('scroll-behavior', 'initial');
     }
 
     public ngOnDestroy(): void {
-        this.observer.disconnect();
-        this.doc.body.classList.remove('t-dropdown-mobile');
-        this.doc.body.style.removeProperty('--t-root-top');
-        this.doc.documentElement.scrollTop = this.scrollTop;
-        this.doc.documentElement.style.removeProperty('scroll-behavior');
+        this.#observer.disconnect();
+        this.#doc.body.classList.remove('t-dropdown-mobile');
+        this.#doc.body.style.removeProperty('--t-root-top');
+        this.#doc.documentElement.scrollTop = this.#scrollTop;
+        this.#doc.documentElement.style.removeProperty('scroll-behavior');
 
-        if (this.focused) {
-            this.keyboard.hide();
+        if (this.#focused) {
+            this.#keyboard.hide();
         }
     }
 
     protected onClick(event: MouseEvent): void {
         if (
             tuiIsElement(event.target) &&
-            !this.el.contains(event.target) &&
+            !this.#el.contains(event.target) &&
             (!this.dropdown.el.contains(event.target) ||
                 event.target.matches('input,textarea'))
         ) {
@@ -72,31 +72,31 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     }
 
     protected refresh(): void {
-        const {offsetTop = 0, height = 0} = this.doc.defaultView?.visualViewport || {};
+        const {offsetTop = 0, height = 0} = this.#doc.defaultView?.visualViewport || {};
 
-        this.doc.body.style.removeProperty('--t-root-top');
+        this.#doc.body.style.removeProperty('--t-root-top');
 
         if (
-            !this.focused ||
-            !this.doc.documentElement.style.getPropertyValue('scroll-behavior')
+            !this.#focused ||
+            !this.#doc.documentElement.style.getPropertyValue('scroll-behavior')
         ) {
             return;
         }
 
-        this.doc.documentElement.scrollTop = 0;
+        this.#doc.documentElement.scrollTop = 0;
 
         const rect = this.dropdown.el.getBoundingClientRect();
         const topMargin = `max(var(--tui-dropdown-mobile-offset, ${tuiPx(GAP)}), env(safe-area-inset-top))`;
         const offset = `(${topMargin} + ${tuiPx(rect.height + GAP)})`;
         const top = `calc(${tuiPx(offsetTop - rect.top)} + ${topMargin})`;
 
-        this.el.style.setProperty('top', `calc(${tuiPx(offsetTop)} + ${offset})`);
-        this.el.style.setProperty('height', `calc(${tuiPx(height)} - ${offset})`);
-        this.doc.body.classList.add('t-dropdown-mobile');
-        this.doc.body.style.setProperty('--t-root-top', top);
+        this.#el.style.setProperty('top', `calc(${tuiPx(offsetTop)} + ${offset})`);
+        this.#el.style.setProperty('height', `calc(${tuiPx(height)} - ${offset})`);
+        this.#doc.body.classList.add('t-dropdown-mobile');
+        this.#doc.body.style.setProperty('--t-root-top', top);
     }
 
-    private get focused(): boolean {
-        return this.dropdown.el.contains(tuiGetFocused(this.doc));
+    get #focused(): boolean {
+        return this.dropdown.el.contains(tuiGetFocused(this.#doc));
     }
 }

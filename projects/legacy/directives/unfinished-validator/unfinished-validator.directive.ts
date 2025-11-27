@@ -11,14 +11,14 @@ import {tuiCreateUnfinishedValidator} from './unfinished.validator';
     providers: [tuiProvide(NG_VALIDATORS, TuiUnfinishedValidator, true)],
 })
 export class TuiUnfinishedValidator implements Validator {
-    private readonly default = inject(TUI_DEFAULT_ERROR_MESSAGE);
-    private readonly injector = inject(INJECTOR);
+    readonly #default = inject(TUI_DEFAULT_ERROR_MESSAGE);
+    readonly #injector = inject(INJECTOR);
 
     @Input()
     public tuiUnfinishedValidator = '';
 
     public readonly validate = tuiCreateUnfinishedValidator(
-        () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
-        () => this.tuiUnfinishedValidator || this.default(),
+        () => this.#injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
+        () => this.tuiUnfinishedValidator || this.#default(),
     );
 }

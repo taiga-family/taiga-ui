@@ -7,13 +7,13 @@ import {TuiAccordionComponent, TuiAccordionDirective} from '@taiga-ui/kit';
     selector: '[tuiAccordionTarget]',
 })
 export class TuiAccordionTarget implements OnInit {
-    private readonly el = tuiInjectElement();
-    private readonly component = inject(TuiAccordionComponent);
-    private readonly directive = inject(TuiAccordionDirective);
-    private readonly location = inject(WA_LOCATION);
+    readonly #el = tuiInjectElement();
+    readonly #component = inject(TuiAccordionComponent);
+    readonly #directive = inject(TuiAccordionDirective);
+    readonly #location = inject(WA_LOCATION);
 
     public ngOnInit(): void {
-        this.directive.open.set(`#${this.el.id}` === this.location.hash);
-        this.component.toggle(this.directive);
+        this.#directive.open.set(`#${this.#el.id}` === this.#location.hash);
+        this.#component.toggle(this.#directive);
     }
 }

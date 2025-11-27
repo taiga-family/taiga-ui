@@ -37,9 +37,9 @@ function getY(elementOrWindow: Element | Window): number {
     providedIn: 'root',
 })
 export class TuiScrollService {
-    private readonly performanceRef = inject(WA_PERFORMANCE);
-    private readonly animationFrame$ = inject(WA_ANIMATION_FRAME);
-    private readonly zone = inject(NgZone);
+    readonly #performanceRef = inject(WA_PERFORMANCE);
+    readonly #animationFrame$ = inject(WA_ANIMATION_FRAME);
+    readonly #zone = inject(NgZone);
 
     public scroll$(
         elementOrWindow: Element | Window,
@@ -57,16 +57,16 @@ export class TuiScrollService {
         const deltaLeft = scrollLeft - initialLeft;
         const observable = !duration
             ? of<[number, number]>([scrollTop, scrollLeft])
-            : defer(() => of(this.performanceRef.now())).pipe(
+            : defer(() => of(this.#performanceRef.now())).pipe(
                   switchMap((start) =>
-                      this.animationFrame$.pipe(map((now) => now - start)),
+                      this.#animationFrame$.pipe(map((now) => now - start)),
                   ),
                   map((elapsed) => tuiEaseInOutQuad(tuiClamp(elapsed / duration, 0, 1))),
                   map<number, [number, number]>((percent) => [
                       initialTop + deltaTop * percent,
                       initialLeft + deltaLeft * percent,
                   ]),
-                  takeUntil(timer(duration, tuiZonefreeScheduler(this.zone))),
+                  takeUntil(timer(duration, tuiZonefreeScheduler(this.#zone))),
                   endWith<[number, number]>([scrollTop, scrollLeft]),
               );
 

@@ -81,11 +81,11 @@ export class TuiDocDemo implements AfterViewInit {
     @ViewChild('resizer', {static: true})
     private readonly resizer?: ElementRef<HTMLElement>;
 
-    private readonly el = tuiInjectElement();
-    private readonly locationRef = inject(Location);
-    private readonly urlSerializer = inject(UrlSerializer);
-    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
-    private readonly darkMode = inject(TUI_DARK_MODE);
+    readonly #el = tuiInjectElement();
+    readonly #locationRef = inject(Location);
+    readonly #urlSerializer = inject(UrlSerializer);
+    readonly #urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    readonly #darkMode = inject(TUI_DARK_MODE);
 
     @ContentChild(TemplateRef)
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
@@ -95,10 +95,10 @@ export class TuiDocDemo implements AfterViewInit {
     protected theme = computed(() => (this.dark() ? 'dark' : 'light'));
 
     protected dark = signal(
-        tuiCoerceValueIsTrue(this.params.darkMode ?? this.darkMode()),
+        tuiCoerceValueIsTrue(this.#params.darkMode ?? this.#darkMode()),
     );
 
-    protected readonly $ = toObservable(this.darkMode)
+    protected readonly $ = toObservable(this.#darkMode)
         .pipe(skip(1), takeUntilDestroyed())
         .subscribe((mode) => this.onModeChange(mode));
 
@@ -107,11 +107,11 @@ export class TuiDocDemo implements AfterViewInit {
     protected readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
     protected updateOn: 'blur' | 'change' | 'submit' =
-        this.params.updateOn || this.updateOnVariants[0];
+        this.#params.updateOn || this.updateOnVariants[0];
 
-    protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
-    protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
-    protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
+    protected opaque = tuiCoerceValueIsTrue(this.#params.sandboxOpaque ?? true);
+    protected expanded = tuiCoerceValueIsTrue(this.#params.sandboxExpanded ?? false);
+    protected sandboxWidth = tuiToInteger(this.#params.sandboxWidth);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     public readonly control = input<AbstractControl | null>(null);
@@ -119,8 +119,8 @@ export class TuiDocDemo implements AfterViewInit {
     public readonly sticky = input(true);
 
     public ngAfterViewInit(): void {
-        this.createForm();
-        this.updateWidth(this.sandboxWidth + this.delta);
+        this.#createForm();
+        this.updateWidth(this.sandboxWidth + this.#delta);
         this.rendered.set(true);
     }
 
@@ -130,28 +130,28 @@ export class TuiDocDemo implements AfterViewInit {
     }
 
     protected onMouseUp(): void {
-        this.updateUrl({sandboxWidth: this.sandboxWidth});
+        this.#updateUrl({sandboxWidth: this.sandboxWidth});
     }
 
     protected onModeChange(darkMode: boolean): void {
         this.dark.set(darkMode);
-        this.updateUrl({sandboxWidth: this.sandboxWidth, darkMode});
+        this.#updateUrl({sandboxWidth: this.sandboxWidth, darkMode});
     }
 
     protected toggleDetails(): void {
         this.expanded = !this.expanded;
-        this.updateUrl({sandboxExpanded: this.expanded});
+        this.#updateUrl({sandboxExpanded: this.expanded});
     }
 
     protected changeOpaque(opaque: boolean): void {
         this.opaque = opaque;
-        this.updateUrl({sandboxOpaque: this.opaque});
+        this.#updateUrl({sandboxOpaque: this.opaque});
     }
 
     protected updateOnChange(updateOn: 'blur' | 'change' | 'submit'): void {
         this.updateOn = updateOn;
-        this.updateUrl({updateOn});
-        this.createForm();
+        this.#updateUrl({updateOn});
+        this.#createForm();
     }
 
     protected updateWidth(width = NaN): void {
@@ -160,8 +160,8 @@ export class TuiDocDemo implements AfterViewInit {
         }
 
         const safe = width || this.resizable.nativeElement.clientWidth;
-        const total = this.el.clientWidth;
-        const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
+        const total = this.#el.clientWidth;
+        const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.#delta;
         const validated = safe < total ? clamped : NaN;
 
         this.resizer.nativeElement.textContent = String(clamped || '-');
@@ -169,20 +169,19 @@ export class TuiDocDemo implements AfterViewInit {
         this.sandboxWidth = validated;
     }
 
-    private get delta(): number {
+    get #delta(): number {
         return this.resizable && this.content
             ? this.resizable.nativeElement.clientWidth -
                   this.content.nativeElement.clientWidth
             : 0;
     }
 
-    private get params(): Params | TuiDemoParams {
-        return this.getUrlTree().queryParams;
+    get #params(): Params | TuiDemoParams {
+        return this.#getUrlTree().queryParams;
     }
 
-    @tuiPure
-    private updateUrl(params: TuiDemoParams): void {
-        const tree = this.getUrlTree();
+    #updateUrl(params: TuiDemoParams): void {
+        const tree = this.#getUrlTree();
         const {queryParams} = tree;
 
         delete queryParams.sandboxWidth;
@@ -192,10 +191,10 @@ export class TuiDocDemo implements AfterViewInit {
             ...tuiCleanObject({...params}),
         };
 
-        this.locationRef.go(this.urlStateHandler(tree));
+        this.#locationRef.go(this.#urlStateHandler(tree));
     }
 
-    private createForm(): void {
+    #createForm(): void {
         const control = this.control();
 
         if (control) {
@@ -206,7 +205,7 @@ export class TuiDocDemo implements AfterViewInit {
         }
     }
 
-    private getUrlTree(): UrlTree {
-        return this.urlSerializer.parse(this.locationRef.path());
+    #getUrlTree(): UrlTree {
+        return this.#urlSerializer.parse(this.#locationRef.path());
     }
 }

@@ -123,21 +123,21 @@ export class TuiInputCardGroup
     readonly #isServer = isPlatformServer(inject(PLATFORM_ID));
     readonly #focus$ = new Subject<void>();
     #expirePrefilled = false;
-    private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
-    private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
-    private readonly el = tuiInjectElement();
-    private readonly hover = tuiHovered();
-    private readonly focusedIn = tuiFocusedIn(this.el);
+    readonly #paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
+    readonly #options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
+    readonly #el = tuiInjectElement();
+    readonly #hover = tuiHovered();
+    readonly #focusedIn = tuiFocusedIn(this.#el);
 
     protected readonly exampleTextCVC = computed((length = this.codeLength()) =>
-        length ? '0'.repeat(length) : this.options.exampleTextCVC,
+        length ? '0'.repeat(length) : this.#options.exampleTextCVC,
     );
 
     protected readonly maskCVC = computed((length = this.codeLength()) =>
         TUI_MASK_CVC(length ?? 3),
     );
 
-    protected cvcHidden = this.options.cvcHidden;
+    protected cvcHidden = this.#options.cvcHidden;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly isWebkit = inject(TUI_IS_WEBKIT);
     protected readonly dropdown = inject(TuiDropdownDirective);
@@ -163,11 +163,11 @@ export class TuiInputCardGroup
 
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         // eslint-disable-next-line no-nested-ternary
-        computed(() => (this.disabled() ? 'disabled' : this.hover() ? 'hover' : null)),
+        computed(() => (this.disabled() ? 'disabled' : this.#hover() ? 'hover' : null)),
     );
 
     protected readonly focus = tuiAppearanceFocus(
-        computed(() => this.open() || this.focusedIn()),
+        computed(() => this.open() || this.#focusedIn()),
     );
 
     protected readonly labelRaised = computed(
@@ -181,14 +181,14 @@ export class TuiInputCardGroup
     /**
      * @deprecated use 'placeholder' instead
      */
-    public readonly exampleText = input(this.options.exampleText);
+    public readonly exampleText = input(this.#options.exampleText);
 
-    public readonly placeholder = input(this.options.exampleText);
+    public readonly placeholder = input(this.#options.exampleText);
 
-    public readonly inputs = input(this.options.inputs);
+    public readonly inputs = input(this.#options.inputs);
 
     public readonly cardValidator = input<TuiBooleanHandler<string>>(
-        this.options.cardValidator,
+        this.#options.cardValidator,
     );
 
     public readonly icon = input<PolymorpheusContent>('');
@@ -283,7 +283,7 @@ export class TuiInputCardGroup
     protected get content(): PolymorpheusContent {
         const system = this.getPaymentSystem(this.card);
 
-        return this.icon() || (system && this.paymentSystems[system]);
+        return this.icon() || (system && this.#paymentSystems[system]);
     }
 
     protected get card(): string {
@@ -340,7 +340,7 @@ export class TuiInputCardGroup
             return;
         }
 
-        this.updateProperty(parsed, 'card');
+        this.#updateProperty(parsed, 'card');
         this.#updateBin(bin);
 
         if (this.cardValidator()(this.card) && !value()?.expire && this.inputExpire()) {
@@ -351,7 +351,7 @@ export class TuiInputCardGroup
     }
 
     protected onExpireChange(expire: string): void {
-        this.updateProperty(expire, 'expire');
+        this.#updateProperty(expire, 'expire');
 
         // MM/YY
         if (Number(this.inputExpire()?.nativeElement.selectionStart) === 5) {
@@ -360,7 +360,7 @@ export class TuiInputCardGroup
     }
 
     protected onCVCChange(cvc: string): void {
-        this.updateProperty(cvc, 'cvc');
+        this.#updateProperty(cvc, 'cvc');
     }
 
     protected getStyle({offsetWidth}: HTMLSpanElement): string {
@@ -400,7 +400,7 @@ export class TuiInputCardGroup
         }
     }
 
-    private updateProperty(value: string, propName: 'card' | 'cvc' | 'expire'): void {
+    #updateProperty(value: string, propName: 'card' | 'cvc' | 'expire'): void {
         const {card = '', expire = '', cvc = ''} = this.value() || {};
         const newValue: TuiCard = {card, expire, cvc};
 

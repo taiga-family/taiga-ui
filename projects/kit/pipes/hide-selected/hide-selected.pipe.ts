@@ -10,8 +10,8 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
     pure: false,
 })
 export class TuiHideSelectedPipe implements PipeTransform {
-    private readonly textfield = inject(TuiTextfieldComponent);
-    private readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    readonly #textfield = inject(TuiTextfieldComponent);
+    readonly #handlers = inject(TUI_ITEMS_HANDLERS);
 
     public transform<T>(items: readonly T[] | null): readonly T[] | null;
     public transform<T>(
@@ -24,15 +24,14 @@ export class TuiHideSelectedPipe implements PipeTransform {
             return null;
         }
 
-        const value = this.textfield.control?.value || [];
+        const value = this.#textfield.control?.value || [];
 
         return tuiIsFlat(items)
-            ? this.filter(items, value, this.handlers.identityMatcher())
-            : this.filter2d(items, value, this.handlers.identityMatcher());
+            ? this.filter(items, value, this.#handlers.identityMatcher())
+            : this.#filter2d(items, value, this.#handlers.identityMatcher());
     }
 
-    @tuiPure
-    private filter2d<T>(
+    #filter2d<T>(
         items: ReadonlyArray<readonly T[]>,
         value: readonly T[],
         matcher: TuiIdentityMatcher<T>,
@@ -41,7 +40,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
     }
 
     @tuiPure
-    private filter<T>(
+    filter<T>(
         items: readonly T[],
         value: readonly T[],
         matcher: TuiIdentityMatcher<T>,

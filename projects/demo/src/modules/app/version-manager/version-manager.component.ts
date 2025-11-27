@@ -16,15 +16,15 @@ import {TUI_VERSIONS_META_OPTIONS, type TuiVersionMeta} from './versions.constan
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VersionManager {
-    private readonly locationRef = inject(WA_LOCATION);
-    private readonly router = inject(Router);
+    readonly #locationRef = inject(WA_LOCATION);
+    readonly #router = inject(Router);
     protected readonly initialVersion = inject(TUI_SELECTED_VERSION_META);
     protected readonly versions = inject(TUI_VERSIONS_META_OPTIONS);
     protected open = false;
 
     @tuiPure
     protected getVersionHref(version: TuiVersionMeta): string {
-        return `${this.locationRef.origin}/${version.baseHref}${this.router.url}${this.locationRef.search}`.replaceAll(
+        return `${this.#locationRef.origin}/${version.baseHref}${this.#router.url}${this.#locationRef.search}`.replaceAll(
             /(https?:\/\/)|(\/)+/g,
             '$1$2',
         );

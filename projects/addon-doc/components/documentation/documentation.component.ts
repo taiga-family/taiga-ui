@@ -77,8 +77,8 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
     ],
 })
 export class TuiDocDocumentation implements AfterContentInit {
-    private readonly cdr = inject(ChangeDetectorRef);
-    private readonly destroyRef = inject(DestroyRef);
+    readonly #cdr = inject(ChangeDetectorRef);
+    readonly #destroyRef = inject(DestroyRef);
 
     @ContentChildren(TuiDocDocumentationPropertyConnector)
     protected propertiesConnectors: QueryList<
@@ -101,8 +101,8 @@ export class TuiDocDocumentation implements AfterContentInit {
         tuiQueryListChanges(this.propertiesConnectors)
             .pipe(
                 switchMap((items) => merge(...items.map(({changed$}) => changed$))),
-                tuiWatch(this.cdr),
-                takeUntilDestroyed(this.destroyRef),
+                tuiWatch(this.#cdr),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe();
     }

@@ -31,9 +31,9 @@ import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
-    private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
-    private readonly el = tuiInjectElement();
-    private readonly changeDetection$ = new Subject<void>();
+    readonly #host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
+    readonly #el = tuiInjectElement();
+    readonly #changeDetection$ = new Subject<void>();
     protected readonly abstractControl = inject(AbstractTuiControl<T>, {optional: true});
     protected readonly control = inject(NgControl);
     protected readonly option = inject(TuiOption<T>);
@@ -44,9 +44,9 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
 
     protected readonly selected$ = merge<unknown[]>(
         this.abstractControl?.update$ || EMPTY,
-        this.changeDetection$,
+        this.#changeDetection$,
         this.control.valueChanges || EMPTY,
-        tuiTypedFromEvent(this.el, 'animationstart'),
+        tuiTypedFromEvent(this.#el, 'animationstart'),
     ).pipe(
         startWith(null),
         map(() => this.selected),
@@ -62,13 +62,13 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
          */
         void Promise.resolve().then(() => {
             if (tuiIsPresent(this.option.value) && !this.option.disabled) {
-                this.host.checkOption?.(this.option.value);
+                this.#host.checkOption?.(this.option.value);
             }
         });
     }
 
     public ngDoCheck(): void {
-        this.changeDetection$.next();
+        this.#changeDetection$.next();
     }
 
     protected get value(): T | null {
@@ -76,7 +76,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     }
 
     protected get matcher(): TuiIdentityMatcher<T> {
-        return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
+        return this.#host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
     protected get selected(): boolean {

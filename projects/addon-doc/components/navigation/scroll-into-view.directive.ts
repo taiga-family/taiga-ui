@@ -9,22 +9,22 @@ import {debounceTime, filter, ReplaySubject, switchMap, take} from 'rxjs';
     selector: '[tuiDocScrollIntoViewLink]',
 })
 export class TuiDocScrollIntoViewLink {
-    private readonly scroll$ = new ReplaySubject<boolean>(1);
-    private readonly el = tuiInjectElement();
+    readonly #scroll$ = new ReplaySubject<boolean>(1);
+    readonly #el = tuiInjectElement();
 
     protected readonly sub = inject(TUI_DOC_PAGE_LOADED)
         .pipe(
             filter(Boolean),
             take(1),
-            switchMap(() => this.scroll$),
+            switchMap(() => this.#scroll$),
             debounceTime(750, tuiZonefreeScheduler()),
-            filter((shallWe) => shallWe && !!tuiGetElementObscures(this.el)),
+            filter((shallWe) => shallWe && !!tuiGetElementObscures(this.#el)),
             takeUntilDestroyed(),
         )
-        .subscribe(() => this.el.scrollIntoView());
+        .subscribe(() => this.#el.scrollIntoView());
 
     @Input()
     public set tuiDocScrollIntoViewLink(shallWe: boolean) {
-        this.scroll$.next(shallWe);
+        this.#scroll$.next(shallWe);
     }
 }

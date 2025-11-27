@@ -49,14 +49,14 @@ export class TuiInputSearch implements OnChanges {
     @ViewChild('container')
     private readonly container?: ElementRef<HTMLElement>;
 
-    private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly service = inject(TuiPopupService);
-    private readonly textfield = inject(TuiTextfieldComponent);
-    private readonly i18n = inject(TUI_INPUT_SEARCH);
-    private parent = this.textfield.el.parentElement;
-    private neighbor = this.textfield.el.nextSibling;
-    private placeholder = '';
-    private ref?: EmbeddedViewRef<unknown>;
+    readonly #el = tuiInjectElement<HTMLInputElement>();
+    readonly #service = inject(TuiPopupService);
+    readonly #textfield = inject(TuiTextfieldComponent);
+    readonly #i18n = inject(TUI_INPUT_SEARCH);
+    #parent = this.#textfield.el.parentElement;
+    #neighbor = this.#textfield.el.nextSibling;
+    #placeholder = '';
+    #ref?: EmbeddedViewRef<unknown>;
 
     protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search, {});
 
@@ -73,38 +73,38 @@ export class TuiInputSearch implements OnChanges {
     }
 
     public open(): void {
-        if (this.ref?.destroyed === false || !this.template) {
+        if (this.#ref?.destroyed === false || !this.template) {
             return;
         }
 
-        this.placeholder = this.el.placeholder;
-        this.parent = this.textfield.el.parentElement;
-        this.neighbor = this.textfield.el.nextSibling;
-        this.ref = this.service.add(this.template);
-        this.ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.textfield.el);
-        this.el.focus({preventScroll: true});
-        this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;
+        this.#placeholder = this.#el.placeholder;
+        this.#parent = this.#textfield.el.parentElement;
+        this.#neighbor = this.#textfield.el.nextSibling;
+        this.#ref = this.#service.add(this.template);
+        this.#ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.#textfield.el);
+        this.#el.focus({preventScroll: true});
+        this.#el.placeholder = this.#i18n()?.placeholder || this.#el.placeholder;
         this.searchOpen.set(true);
     }
 
     public close(): void {
-        this.el.placeholder = this.placeholder || this.el.placeholder;
-        this.parent?.insertBefore(this.textfield.el, this.neighbor);
-        this.ref?.destroy();
+        this.#el.placeholder = this.#placeholder || this.#el.placeholder;
+        this.#parent?.insertBefore(this.#textfield.el, this.#neighbor);
+        this.#ref?.destroy();
         this.searchOpen.set(false);
     }
 
     protected onArrow(): void {
         tuiGetClosestFocusable({
-            initial: this.container?.nativeElement || this.el,
-            root: this.container?.nativeElement || this.el,
+            initial: this.container?.nativeElement || this.#el,
+            root: this.container?.nativeElement || this.#el,
         })?.focus();
     }
 
     protected onFocus({target}: Event): void {
         if (
             this.container &&
-            target !== this.el &&
+            target !== this.#el &&
             tuiIsElement(target) &&
             !tuiContainsOrAfter(this.container.nativeElement, target)
         ) {

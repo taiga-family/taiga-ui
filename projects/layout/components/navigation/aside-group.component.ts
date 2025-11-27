@@ -45,11 +45,11 @@ import {TuiAsideComponent} from './aside.component';
 export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     private readonly datalist = viewChild<PolymorpheusContent>('datalist');
     private readonly chevron = contentChild(TuiChevron);
-    private readonly aside = inject(TuiAsideComponent);
+    readonly #aside = inject(TuiAsideComponent);
 
     protected readonly template = contentChild(TemplateRef);
 
-    protected readonly expanded = computed(() => this.aside.expanded() && this.open());
+    protected readonly expanded = computed(() => this.#aside.expanded() && this.open());
     protected readonly chevronEffect = effect(() => {
         const chevron = this.chevron();
 
@@ -61,14 +61,14 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     protected readonly binding = tuiDirectiveBinding(
         TuiDropdownDirective,
         'tuiDropdown',
-        computed(() => (this.aside.expanded() ? null : this.datalist())),
+        computed(() => (this.#aside.expanded() ? null : this.datalist())),
     );
 
     public readonly size = 's';
     public readonly open = model(false);
 
     protected toggle(): void {
-        if (this.aside.expanded()) {
+        if (this.#aside.expanded()) {
             this.open.set(!this.open());
         }
     }

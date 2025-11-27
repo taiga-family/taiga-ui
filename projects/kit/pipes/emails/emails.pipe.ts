@@ -6,11 +6,11 @@ import {TUI_EMAIL_PIPE_OPTIONS} from './emails.options';
     name: 'tuiEmails',
 })
 export class TuiEmailsPipe implements PipeTransform {
-    private readonly options = inject(TUI_EMAIL_PIPE_OPTIONS);
+    readonly #options = inject(TUI_EMAIL_PIPE_OPTIONS);
 
     public transform(
         query: string,
-        suggestions: readonly string[] = this.options,
+        suggestions: readonly string[] = this.#options,
     ): readonly string[] {
         return query.includes('@')
             ? suggestions
