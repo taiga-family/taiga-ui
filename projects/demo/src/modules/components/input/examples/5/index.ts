@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiInput} from '@taiga-ui/core';
+import {TuiButtonX, TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiInput],
+    imports: [FormsModule, TuiButtonX, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -1,4 +1,5 @@
 export * from '@taiga-ui/core/components/button';
+export * from '@taiga-ui/core/components/button-x';
 export * from '@taiga-ui/core/components/calendar';
 export * from '@taiga-ui/core/components/cell';
 export * from '@taiga-ui/core/components/data-list';

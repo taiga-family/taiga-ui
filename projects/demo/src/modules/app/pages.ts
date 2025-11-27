@@ -253,9 +253,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'ButtonClose',
-                keywords: 'кнопка, button, close, закрыть',
-                route: DemoRoute.ButtonClose,
+                title: 'ButtonX',
+                keywords: 'кнопка, button, close, x, закрыть',
+                route: DemoRoute.ButtonX,
                 meta: {},
             },
             {

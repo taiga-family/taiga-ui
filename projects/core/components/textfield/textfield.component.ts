@@ -36,7 +36,12 @@ import {
     TuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {
+    TUI_AUXILIARY,
+    TUI_BUTTON_X,
+    TUI_CLEAR_WORD,
+    TUI_COMMON_ICONS,
+} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -77,6 +82,11 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
+
+    protected readonly closeX = contentChild(
+        forwardRef(() => TUI_BUTTON_X),
+        {read: ElementRef},
+    );
 
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
