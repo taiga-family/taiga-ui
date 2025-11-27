@@ -2,6 +2,7 @@ import {AsyncPipe, PercentPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     EventEmitter,
     inject,
     Input,
@@ -38,6 +39,9 @@ const STEP = 0.5;
 export class TuiPreviewZoom {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly zoomTexts = inject(TUI_PREVIEW_ZOOM_TEXTS);
+    protected readonly sliderLabel = computed(
+        () => `${this.zoomTexts().zoomOut} / ${this.zoomTexts().zoomIn}`,
+    );
 
     @Input()
     public min = 0.5;
