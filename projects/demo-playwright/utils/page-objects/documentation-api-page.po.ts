@@ -7,7 +7,9 @@ import {waitStableState} from '../wait-stable-state';
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
     public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
-    public readonly apiPageExample: Locator = this.page.locator('#demo-content');
+    public readonly apiPageExample: Locator = this.page.locator(
+        'tui-doc-demo > .t-wrapper',
+    );
 
     constructor(protected readonly page: Page) {}
 
@@ -76,11 +78,7 @@ export class TuiDocumentationApiPagePO {
 
         if ((await this.apiPageExample.all()).length) {
             await this.apiPageExample.evaluate((el) => el.scrollIntoView());
-            await expect(async () => {
-                expect(
-                    await this.apiPageExample.boundingBox().then((box) => box?.y),
-                ).toBeGreaterThanOrEqual(63);
-            }).toPass();
+            await expect(this.apiPageExample).toBeInViewport();
         }
     }
 

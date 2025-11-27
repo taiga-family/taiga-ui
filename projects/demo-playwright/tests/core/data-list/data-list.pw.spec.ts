@@ -117,7 +117,7 @@ test.describe('DataList', () => {
     test('Complex', async ({page, browserName}) => {
         test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
 
-        await page.setViewportSize({width: 1400, height: 500});
+        await page.setViewportSize({width: 1500, height: 900});
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
@@ -126,6 +126,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
+        await expect(example).toBeInViewport();
 
         await expect.soft(page).toHaveScreenshot('05-data-list.png');
 
