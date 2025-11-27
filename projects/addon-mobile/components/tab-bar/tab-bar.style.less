@@ -1,5 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+@keyframes shimmer {
+    to {
+        opacity: 0.5;
+    }
+}
+
 :host {
     --tui-active-color: var(--tui-text-action);
 
@@ -42,7 +48,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: tuiShimmer ease-in-out 1s infinite alternate;
+    animation: shimmer ease-in-out 1s infinite alternate;
 
     &::before {
         content: '';
