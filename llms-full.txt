@@ -4989,7 +4989,7 @@ export default class Example {}
 <tui-badge class="money">
 <tui-icon icon="@tui.wallet" /> {{ item.content }} </tui-badge>
 </div> } </tui-carousel>
-<tui-pagination size="s" [length]="items.length" [(index)]="index" />
+<tui-pager [count]="items.length" [index]="index" />
 <div tuiButtonGroup [style.background-color]="items[index]?.color" >
 <tui-elastic-container [style.opacity]="opacity * 2"> @if (index === 0) { <button type="button">
 <tui-icon icon="@tui.circle-plus" /> Create a payment </button>
@@ -5014,7 +5014,7 @@ import {
     TuiButtonGroup,
     TuiCarousel,
     TuiElasticContainer,
-    TuiPagination,
+    TuiPager,
 } from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
@@ -5026,7 +5026,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
         TuiCarousel,
         TuiElasticContainer,
         TuiIcon,
-        TuiPagination,
+        TuiPager,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -7551,7 +7551,7 @@ export class Example {}
 <!-- TODO: update documentation here -->
 <a tuiButton [attr.href]="`https://en.wikipedia.org/wiki/${item}`" > Wiki </a>
 </div> } </tui-carousel>
-<tui-pagination size="s" class="pagination" [length]="items.length" [(index)]="index" />
+<tui-pager [count]="items.length" [index]="index" />
 ```
 **TypeScript:**
 ```ts
@@ -7559,10 +7559,10 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
+import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiPagination],
+    imports: [TuiButton, TuiCarousel, TuiPager],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -7682,7 +7682,7 @@ export default class Example {}
 </tui-carousel>
 <button appearance="neutral" iconStart="@tui.chevron-right" tuiIconButton tuiTheme="dark" type="button" class="tui-space_left-4" (click)="navigate(1)" > Next </button>
 </div>
-<tui-pagination size="s" class="tui-space_top-4" [length]="3" [(index)]="index" />
+<tui-pager [count]="3" [index]="index" />
 <div class="tui-space_top-4">
 <button appearance="primary" tuiButton type="button" (click)="open = false" > Got it! </button>
 </div>
@@ -7696,11 +7696,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiButton, TuiLink} from '@taiga-ui/core';
-import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
+import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
 import {TuiDialog} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [RouterLink, TuiButton, TuiCarousel, TuiDialog, TuiLink, TuiPagination],
+    imports: [RouterLink, TuiButton, TuiCarousel, TuiDialog, TuiLink, TuiPager],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -7740,7 +7740,7 @@ export default class Example {
 ```html
 <tui-carousel [itemsCount]="3" [(index)]="index" > @for (item of items; track item) { <div *tuiItem class="item" >
 <h2 class="title">{{ item.title }}</h2> {{ item.content }} </div> } </tui-carousel>
-<tui-pagination size="s" class="tui-space_top-4" [index]="rounded" [length]="items.length / itemsCount" (indexChange)="onIndex($event)" />
+<tui-pagination [index]="rounded" [length]="items.length / itemsCount" (indexChange)="onIndex($event)" />
 ```
 **TypeScript:**
 ```ts
@@ -28259,7 +28259,7 @@ export class Example {}
 | [focusable] | `boolean` | Accepts focus with keyboard |
 | [(index)] | `number` | Active page index |
 | [length] | `number` | Total pages count |
-| [size] | `TuiSizeS | TuiSizeL` | Size |
+| [size] | `TuiSizeL` | Size |
 | [activePadding] | `number` | Amount of visible pages around active page |
 | [sidePadding] | `number` | Amount of visible pages at the edges |
 
@@ -28270,7 +28270,7 @@ export class Example {}
 **Template:**
 ```html
 <tui-textfield tuiTextfieldSize="m" class="slider" >
-<input tuiInputSlider [max]="length - 1" [(ngModel)]="index" />
+<input tuiInputSlider [max]="length - 1" [min]="0" [(ngModel)]="index" />
 <span>index</span>
 <input tuiSlider type="range" />
 </tui-textfield>
@@ -28309,7 +28309,7 @@ export default class Page {
 **Template:**
 ```html
 <tui-textfield tuiTextfieldSize="m" class="slider" >
-<input tuiInputSlider [max]="6" [(ngModel)]="activePadding" />
+<input tuiInputSlider [max]="6" [min]="0" [(ngModel)]="activePadding" />
 <span>activePadding</span>
 <input tuiSlider type="range" />
 </tui-textfield>
@@ -28372,8 +28372,9 @@ export default class Page {
 
 **Template:**
 ```html
-<tui-pagination [content]="test" [length]="7" />
-<ng-template #test let-index > {{ days[index] }} </ng-template>
+<tui-pagination [content]="content" [length]="7" >
+<ng-template #content let-index > {{ days[index] }} </ng-template>
+</tui-pagination>
 ```
 **TypeScript:**
 ```ts
@@ -28400,7 +28401,6 @@ export default class Page {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiPagination} from '@taiga-ui/kit';
 
 @Component({
@@ -28412,8 +28412,8 @@ export default class Page {
     protected focusable = true;
     protected index = 0;
     protected length = 8;
-    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-    protected size = this.sizeVariants[2]!;
+    protected readonly sizeVariants = ['m', 'l'] as const;
+    protected size = this.sizeVariants[1];
     protected activePadding = 1;
     protected sidePadding = 1;
 }
