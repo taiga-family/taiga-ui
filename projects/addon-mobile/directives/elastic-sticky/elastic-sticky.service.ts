@@ -9,8 +9,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiScrollFrom, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {SCROLL_REF_SELECTOR} from '@taiga-ui/core/components/scrollbar';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
+import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {distinctUntilChanged, map, Observable, scan, Subscription} from 'rxjs';
 
 @Injectable()
