@@ -15450,6 +15450,38 @@ export default class Example {
 }
 ```
 
+#### Custom cleaner
+
+**Template:**
+```html
+<tui-textfield [tuiTextfieldCleaner]="false">
+<input #input placeholder="Input value" tuiInput [(ngModel)]="value" /> @if (value) { <button iconStart="@tui.circle-x" tabindex="-1" tuiIconButton type="button" (click)="clear()" (pointerdown.zoneless.prevent)="input.focus()" > Clear </button> } </tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
+
+@Component({
+    imports: [FormsModule, TuiButton, TuiInput],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = '';
+
+    protected clear(): void {
+        console.info('The custom clear handler has been invoked');
+
+        this.value = '';
+    }
+}
+```
+
 #### Mask
 
 **Template:**
@@ -15542,6 +15574,7 @@ export default class Page {
         'States',
         'Dropdown',
         'InputPassword',
+        'Custom cleaner',
         'Mask',
     ];
 
