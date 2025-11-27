@@ -20,15 +20,13 @@ export default class Page {
     };
 
     protected example1 = {
-        'language-switcher.html': import(
-            '../../../../../addon-doc/components/language-switcher/index.html'
-        ),
+        'language-switcher.html':
+            import('../../../../../addon-doc/components/language-switcher/index.html'),
         'language-switcher.ts': import(
             '../../../../../addon-doc/components/language-switcher/index.ts?raw',
             {with: {loader: 'text'}}
         ),
-        'language-switcher.less': import(
-            '../../../../../addon-doc/components/language-switcher/index.less'
-        ),
+        'language-switcher.less':
+            import('../../../../../addon-doc/components/language-switcher/index.less'),
     };
 }

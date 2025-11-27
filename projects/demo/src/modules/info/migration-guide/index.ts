@@ -15,7 +15,6 @@ import {TuiAccordionTarget} from './target';
 export default class Page {
     protected readonly pages = DemoRoute;
 
-    protected readonly manuallyTriggerNxMigration = import(
-        './examples/manual-trigger-nx-migrate-v4.md'
-    );
+    protected readonly manuallyTriggerNxMigration =
+        import('./examples/manual-trigger-nx-migrate-v4.md');
 }

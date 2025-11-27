@@ -13,7 +13,7 @@ export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
     codeEditorVisibilityHandler: (files) =>
         Boolean(
             files[TUI_EXAMPLE_PRIMARY_FILE_NAME.TS] &&
-                files[TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML],
+            files[TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML],
         ),
     tabTitles: new Map(),
     fullsize: true,

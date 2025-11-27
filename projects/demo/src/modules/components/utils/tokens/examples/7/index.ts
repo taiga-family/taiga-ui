@@ -19,9 +19,8 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiLink} from '@taiga-ui/core';
     ],
 })
 export default class Example {
-    protected readonly provideFirstDayOfWeekToken = import(
-        './provide-first-day-of-week-token.md'
-    );
+    protected readonly provideFirstDayOfWeekToken =
+        import('./provide-first-day-of-week-token.md');
 
     protected readonly customizableComponentsViaThisToken = [
         {
