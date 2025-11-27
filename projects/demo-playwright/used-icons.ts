@@ -9,7 +9,5 @@ export const TUI_USED_ICONS = [
     '@tui.lock',
     '@tui.eye-off',
     '@tui.calendar',
-    '@tui.search',
-    '@tui.visa-mono',
     '@tui.mastercard-mono',
 ] as const;
