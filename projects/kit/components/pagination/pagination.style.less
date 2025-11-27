@@ -35,27 +35,9 @@
         transform: scaleX(var(--tui-inline));
         margin-inline-end: 0;
     }
-
-    &[data-size='xs'] {
-        min-inline-size: var(--tui-height-xs);
-        padding: 0 0.375rem;
-    }
-
-    &&&_small {
-        // @note: (&&&_) it's increasing css cascade priority
-        inline-size: 0.5rem;
-        block-size: 0.5rem;
-        font-size: 0;
-        padding: 0;
-        margin: 0;
-
-        &:not(:first-child) {
-            margin-inline-start: 0.5rem;
-        }
-    }
 }
 
-.t-dots {
+.t-ellipsis {
     inline-size: var(--tui-height-s);
     block-size: var(--tui-height-s);
     line-height: var(--tui-height-s);

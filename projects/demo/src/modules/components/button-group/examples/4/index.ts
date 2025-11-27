@@ -7,7 +7,7 @@ import {
     TuiButtonGroup,
     TuiCarousel,
     TuiElasticContainer,
-    TuiPagination,
+    TuiPager,
 } from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
@@ -19,7 +19,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
         TuiCarousel,
         TuiElasticContainer,
         TuiIcon,
-        TuiPagination,
+        TuiPager,
         TuiTitle,
     ],
     templateUrl: './index.html',
