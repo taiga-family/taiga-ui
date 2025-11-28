@@ -9,13 +9,10 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     templateUrl: './elastic-container.component.html',
     styleUrl: './elastic-container.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[style.height.px]': 'height',
-        '[style.block-size]': 'transitions ? "auto" : 0',
-    },
+    host: {'[style.block-size]': 'transitions ? "auto" : height'},
 })
 export class TuiElasticContainer {
-    protected height = NaN;
+    protected height = '';
     protected transitions = 0;
 
     @shouldCall((name) => name === 'height')
