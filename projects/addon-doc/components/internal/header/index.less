@@ -8,17 +8,16 @@
     // fix for Safari to prevent tabs underline above sidebar
     z-index: 1;
     display: flex;
-    box-shadow: var(--tui-shadow-small);
+    box-shadow: 0 0.25rem 1.875rem rgba(0, 0, 0, 0.1);
     block-size: 4.125rem;
     align-items: center;
     padding: 0 1.25rem;
     background: var(--tui-background-base);
-    border-block-end: 1px solid var(--tui-border-normal);
-
-    @supports (background: color-mix(in srgb, var(--tui-background-base), transparent 50%)) {
-        background: color-mix(in srgb, var(--tui-background-base), transparent 50%);
-        backdrop-filter: blur(1.25rem);
-    }
+    background: color-mix(in srgb, var(--tui-background-base) 70%, var(--tui-background-base) 0%);
+    backdrop-filter: blur(0.625rem);
+    border-radius: 0.9375rem;
+    border: 1px solid var(--tui-border-normal);
+    margin: 0.4375rem 1rem;
 }
 
 .t-logo {
