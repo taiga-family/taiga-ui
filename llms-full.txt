@@ -9162,7 +9162,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield #textfield tuiChevron [content]="!textfield.focused() && control.value ? textfieldContent : ''" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
+<tui-textfield #textfield tuiChevron [content]="!textfield.focused() && control.value ? textfieldDoc.content : ''" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
 <input placeholder="Search country" tuiComboBox [formControl]="control" [invalid]="controlDoc.invalid" [matcher]="matcher" [readOnly]="controlDoc.readonly" [strict]="strict" [tuiDisabled]="controlDoc.disabled" />
 <tui-data-list-wrapper *tuiDropdown [items]="countries() | tuiFilterByInput" />
 </tui-textfield>
@@ -9176,7 +9176,6 @@ export class Example {
 | [strict] | `boolean` |  |
 | [matcher] | `TuiStringMatcher | null` | function that compares search text and datalist's items to define a match between them. Lowercase string
                 comparison function by default. |
-| [content] | `PolymorpheusContent` |  |
 
 ### Usage Examples
 
@@ -9939,7 +9938,6 @@ import {
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 interface Country {
     id: string;
@@ -9971,8 +9969,6 @@ export default class PageComponent {
 
     protected readonly control = new FormControl<Country | null>(null);
 
-    protected textfieldContent: PolymorpheusContent = '';
-
     protected readonly countries = computed(() =>
         Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
@@ -9984,7 +9980,7 @@ export default class PageComponent {
 
     protected matcher = this.matcherVariants[0]!;
 
-    protected readonly textfieldContentVariants = computed(() => [
+    protected readonly textfieldContentVariants = [
         '',
         'TOP SECRET',
         ({$implicit: x}: TuiContext<any>) =>
@@ -9994,7 +9990,7 @@ export default class PageComponent {
                 .join(' '),
         ({$implicit: x}: TuiContext<any>) =>
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
-    ]);
+    ];
 
     protected strict = true;
 
@@ -15263,7 +15259,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>I am a label</label> } <input placeholder="I am placeholder" tuiInput [disabled]="control.disabled" [invalid]="control.invalid" [readOnly]="control.readonly" [(ngModel)]="value" />
+<tui-textfield #textfieldEl [content]="!textfieldEl.focused() && value ? textfield.content : ''" [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>I am a label</label> } <input placeholder="I am placeholder" tuiInput [disabled]="control.disabled" [invalid]="control.invalid" [readOnly]="control.readonly" [(ngModel)]="value" />
 <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>
 ```
@@ -21962,7 +21958,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldContent" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldDoc.content" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
 <input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
 <input tuiSlider type="range" [keySteps]="keySteps" [segments]="segments" [step]="step" />
 </tui-textfield>
@@ -21981,7 +21977,6 @@ export class Example {
 | [step] | `number` |  |
 | [segments] | `number[] | number` | for no ticks) |
 | [keySteps] | `TuiKeySteps | null` | Anchor points of non-uniform format between value and position |
-| [content] | `PolymorpheusContent` | A template for custom view of textfield value. |
 
 ### Usage Examples
 
@@ -22202,7 +22197,6 @@ import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
 import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [
@@ -22231,7 +22225,6 @@ export default class PageComponent {
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
-    protected textfieldContent: PolymorpheusContent = '';
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
         5,
@@ -32404,17 +32397,11 @@ export class Example {
 ### Example
 
 ```html
-<ng-template> @let showPlaceholder = textfieldDoc.size === 's' || !control.value; <tui-textfield tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
+<ng-template> @let showPlaceholder = textfieldDoc.size === 's' || !control.value; <tui-textfield tuiChevron [content]="control.value && textfieldDoc.content" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-data-list-wrapper *tuiDropdown [items]="countries()" />
 </tui-textfield>
 </ng-template>
 ```
-
-### API
-
-| Property | Type | Description |
-|----------|-----|----------|
-| [content] | `PolymorpheusContent` | A template for custom view of textfield value. |
 
 ### Usage Examples
 
@@ -32947,7 +32934,6 @@ import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 interface Country {
     id: string;
@@ -32980,18 +32966,16 @@ export default class PageComponent {
         name: 'USA',
     });
 
-    protected textfieldContent: PolymorpheusContent = '';
-
     protected readonly countries = computed(() =>
         Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
-    protected readonly textfieldContentVariants = computed(() => [
+    protected readonly textfieldContentVariants = [
         '',
         'TOP SECRET',
         ({$implicit: x}: TuiContext<any>) =>
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
-    ]);
+    ];
 
     protected selectOptionExample: TuiRawLoaderContent = import(
         './examples/10/option.ts?raw',
