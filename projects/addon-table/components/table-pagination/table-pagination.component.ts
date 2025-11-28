@@ -59,8 +59,10 @@ export class TuiTablePagination {
     public readonly paginationChange = output<TuiTablePaginationEvent>();
 
     public onItem(size: number): void {
+        const {start} = this;
+
         tuiSetSignal(this.size, size);
-        tuiSetSignal(this.page, Math.floor(this.start / this.size()));
+        tuiSetSignal(this.page, Math.floor(start / this.size()));
         this.paginationChange.emit(this.pagination());
     }
 
@@ -76,10 +78,6 @@ export class TuiTablePagination {
         return (
             Math.min(this.page(), Math.floor(this.total() / this.size())) * this.size()
         );
-    }
-
-    protected get leftDisabled(): boolean {
-        return !this.start;
     }
 
     protected back(): void {

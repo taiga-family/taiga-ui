@@ -30,7 +30,8 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
         },
     ],
     host: {
-        '[class._native-hidden]': 'options.mode !== "native" && !isIOS',
+        '[class._native-hidden]':
+            'options.mode !== "native" && (!isIOS || options.mode === "hidden")',
         [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
         [`(${TUI_SCROLL_INTO_VIEW}.stop)`]: 'scrollIntoView($event.detail)',
     },
