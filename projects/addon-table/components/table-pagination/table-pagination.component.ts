@@ -36,19 +36,15 @@ export interface TuiTablePaginationEvent {
 export class TuiTablePagination {
     private readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
 
+    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
     protected readonly texts = inject(TUI_TABLE_PAGINATION_TEXTS);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly pages = computed(() => Math.ceil(this.total() / this.size()));
-    protected readonly rightDisabled = computed(() => this.end() === this.total());
-    protected readonly start = computed(
-        () => Math.min(this.page(), Math.floor(this.total() / this.size())) * this.size(),
-    );
-
     protected readonly end = computed(() =>
-        Math.min(this.start() + this.size(), this.total()),
+        Math.min(this.start + this.size(), this.total()),
     );
 
+    protected readonly rightDisabled = computed(() => this.end() === this.total());
     protected readonly pagination = computed<TuiTablePaginationEvent>(() => {
         return {
             page: this.page(),
@@ -64,7 +60,7 @@ export class TuiTablePagination {
 
     public onItem(size: number): void {
         tuiSetSignal(this.size, size);
-        tuiSetSignal(this.page, Math.floor(this.start() / this.size()));
+        tuiSetSignal(this.page, Math.floor(this.start / this.size()));
         this.paginationChange.emit(this.pagination());
     }
 
@@ -74,6 +70,16 @@ export class TuiTablePagination {
 
     protected get sizeOptionContent(): TuiTablePaginationOptions['sizeOptionContent'] {
         return this.options.sizeOptionContent;
+    }
+
+    protected get start(): number {
+        return (
+            Math.min(this.page(), Math.floor(this.total() / this.size())) * this.size()
+        );
+    }
+
+    protected get leftDisabled(): boolean {
+        return !this.start;
     }
 
     protected back(): void {

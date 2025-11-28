@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
@@ -233,7 +234,9 @@ describe('CalendarSheet', () => {
                 TestBed.configureTestingModule({
                     imports: [Test],
                     providers: [
-                        tuiCalendarOptionsProvider({weekStart: TuiDayOfWeek.Sunday}),
+                        tuiCalendarOptionsProvider({
+                            weekStart: signal(TuiDayOfWeek.Sunday),
+                        }),
                     ],
                 });
                 await TestBed.compileComponents();
@@ -266,7 +269,9 @@ describe('CalendarSheet', () => {
                 TestBed.configureTestingModule({
                     imports: [Test],
                     providers: [
-                        tuiCalendarOptionsProvider({weekStart: TuiDayOfWeek.Monday}),
+                        tuiCalendarOptionsProvider({
+                            weekStart: signal(TuiDayOfWeek.Monday),
+                        }),
                     ],
                 });
                 await TestBed.compileComponents();
@@ -299,7 +304,9 @@ describe('CalendarSheet', () => {
                 TestBed.configureTestingModule({
                     imports: [Test],
                     providers: [
-                        tuiCalendarOptionsProvider({weekStart: TuiDayOfWeek.Wednesday}),
+                        tuiCalendarOptionsProvider({
+                            weekStart: signal(TuiDayOfWeek.Wednesday),
+                        }),
                     ],
                 });
                 await TestBed.compileComponents();

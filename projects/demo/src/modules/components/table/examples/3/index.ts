@@ -10,6 +10,7 @@ import {
     TuiIcon,
     TuiNumberFormat,
     TuiScrollbar,
+    tuiScrollbarOptionsProvider,
 } from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -49,6 +50,7 @@ interface Item {
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly options = {updateOn: 'blur'} as const;

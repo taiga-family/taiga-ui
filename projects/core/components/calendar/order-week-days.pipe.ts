@@ -23,8 +23,8 @@ export class TuiOrderWeekDaysPipe implements PipeTransform {
         return mondayFirstWeekDays$.pipe(
             map(convertToSundayFirstWeekFormat),
             map((weekDays) => [
-                ...weekDays.slice(this.options.weekStart),
-                ...weekDays.slice(0, this.options.weekStart),
+                ...weekDays.slice(this.options.weekStart()),
+                ...weekDays.slice(0, this.options.weekStart()),
             ]),
         );
     }

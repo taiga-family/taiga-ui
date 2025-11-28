@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayOfWeek} from '@taiga-ui/cdk';
@@ -9,7 +9,7 @@ import {TuiCalendar, tuiCalendarOptionsProvider} from '@taiga-ui/core';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiCalendarOptionsProvider({weekStart: TuiDayOfWeek.Sunday})],
+    providers: [tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Sunday)})],
 })
 export default class Example {
     protected value = new TuiDay(2025, 6, 4);
