@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TuiDocAPIItem, TuiDocAPINumberItem} from '@taiga-ui/addon-doc';
-import {type TuiLooseUnion} from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_OPTIONS,
     type TuiSizeL,
@@ -20,9 +19,9 @@ export class TuiDocTextfield {
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    public readonly hiddenOptions = input<
-        Array<TuiLooseUnion<keyof TuiTextfieldOptions>>
-    >(['rows']);
+    public readonly hiddenOptions = input<Array<string | keyof TuiTextfieldOptions>>([
+        'rows',
+    ]);
 
     public cleaner: boolean = this.options.cleaner();
     public size: TuiSizeL | TuiSizeS = this.options.size();

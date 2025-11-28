@@ -8,7 +8,7 @@ import {
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {type TuiLooseUnion, type TuiRounding} from '@taiga-ui/cdk';
+import {type TuiRounding} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_NUMBER_FORMAT,
     type TuiDecimalMode,
@@ -42,9 +42,9 @@ export class TuiDocNumberFormat implements Record<
         'floor',
     ];
 
-    public readonly hiddenOptions = input<
-        Array<TuiLooseUnion<keyof TuiNumberFormatSettings>>
-    >([]);
+    public readonly hiddenOptions = input<Array<string | keyof TuiNumberFormatSettings>>(
+        [],
+    );
 
     public thousandSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.thousandSeparator);
     public decimalSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalSeparator);
