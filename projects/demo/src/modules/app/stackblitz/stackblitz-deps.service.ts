@@ -21,7 +21,6 @@ export class StackblitzDepsService {
         const ngVersion = '20.x.x';
 
         return {
-            '@angular/animations': ngVersion,
             '@angular/cdk': ngVersion,
             '@angular/common': ngVersion,
             '@angular/compiler': ngVersion,

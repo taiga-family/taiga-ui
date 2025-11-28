@@ -1,6 +1,5 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-/* stylelint-disable */
 :host {
     .scrollbar-hidden();
 
@@ -140,26 +139,25 @@
     }
 }
 
-* ::ng-deep > header,
-* ::ng-deep > [tuiSlides] > * > header,
-* ::ng-deep > ng-component > header,
-* ::ng-deep > ng-component > [tuiSlides] > * > header {
-    position: sticky;
-    top: var(--t-top);
-    z-index: 1;
-    margin: 0 -1rem;
-    padding: 0.75rem 1rem;
-    border-radius: inherit;
-    background: var(--tui-background-elevation-1);
-    font: var(--tui-font-heading-6);
-}
+* ::ng-deep,
+* ::ng-deep > [tuiSlides] > *,
+* ::ng-deep > ng-component,
+* ::ng-deep > ng-component > [tuiSlides] > * {
+    > header {
+        position: sticky;
+        top: var(--t-top);
+        z-index: 1;
+        margin: 0 -1rem;
+        padding: 0.75rem 1rem;
+        border-radius: inherit;
+        background: var(--tui-background-elevation-1);
+        font: var(--tui-font-heading-6);
+    }
 
-* ::ng-deep > footer,
-* ::ng-deep > [tuiSlides] > * > footer,
-* ::ng-deep > ng-component > footer,
-* ::ng-deep > ng-component > [tuiSlides] > * > footer {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 0.5rem;
-    margin-block-start: 1rem;
+    > footer:not([tuiFloatingContainer]) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0.5rem;
+        margin-block-start: 1rem;
+    }
 }

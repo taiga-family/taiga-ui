@@ -9,6 +9,10 @@
 }
 
 footer {
-    margin-inline-start: 1rem;
-    margin-inline-end: 1rem;
+    margin-inline: 1rem;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiSlide;
+    }
 }

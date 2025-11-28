@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TuiButton, TuiInput, TuiTitle} from '@taiga-ui/core';
-import {TuiSlides, TuiStepper} from '@taiga-ui/kit';
+import {TuiElasticContainer, TuiSlides, TuiStepper} from '@taiga-ui/kit';
 import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -21,6 +21,7 @@ import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
         TuiSlides,
         TuiStepper,
         TuiTitle,
+        TuiElasticContainer,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

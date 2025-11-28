@@ -11,7 +11,7 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.height.px]': 'height',
-        '[class._transitioning]': 'transitions',
+        '[style.block-size]': 'transitions ? "auto" : 0',
     },
 })
 export class TuiElasticContainer {

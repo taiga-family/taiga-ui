@@ -46,46 +46,39 @@
             </p>
         </hgroup>
     </header>
-    <div class="content">
-        <section class="items">
-            @for (item of items | tuiFilter: filter : search; track item) {
-                <div tuiCell>
-                    <div
-                        appearance="primary"
-                        tuiAvatar="@tui.star"
-                    ></div>
-                    <div tuiTitle>
-                        {{ item.title }}
-                        <div tuiSubtitle>{{ item.description }}</div>
-                    </div>
+    <section class="content">
+        @for (item of items | tuiFilter: filter : search; track item) {
+            <div tuiCell>
+                <div
+                    appearance="primary"
+                    tuiAvatar="@tui.star"
+                ></div>
+                <div tuiTitle>
+                    {{ item.title }}
+                    <div tuiSubtitle>{{ item.description }}</div>
                 </div>
-            }
-        </section>
-
-        @if (floating) {
-            <footer
-                tuiFloatingContainer
-                @tuiSlideInTop
+            </div>
+        }
+    </section>
+    @if (floating) {
+        <footer tuiFloatingContainer>
+            <button
+                tuiButton
+                type="button"
+                (click)="observer.complete()"
             >
+                Main action
+            </button>
+            <tui-expand [expanded]="secondAction">
                 <button
+                    appearance="flat"
                     tuiButton
                     type="button"
                     (click)="observer.complete()"
                 >
-                    Main action
+                    Secondary action
                 </button>
-                @if (secondAction) {
-                    <button
-                        appearance="flat"
-                        tuiButton
-                        type="button"
-                        @tuiHeightCollapse
-                        (click)="observer.complete()"
-                    >
-                        Secondary action
-                    </button>
-                }
-            </footer>
-        }
-    </div>
+            </tui-expand>
+        </footer>
+    }
 </ng-template>
