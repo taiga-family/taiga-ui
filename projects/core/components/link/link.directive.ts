@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    inject,
-    input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
@@ -13,7 +12,9 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
-import {TUI_LINK_OPTIONS} from './link.options';
+export const [TUI_LINK_OPTIONS, tuiLinkOptionsProvider] = tuiCreateOptions({
+    appearance: 'action',
+});
 
 @Component({
     template: '',
@@ -30,15 +31,9 @@ class Styles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         tuiLink: '',
-        '[style.text-decoration-line]': 'pseudo() ? "underline" : null',
+        // '[style.text-decoration-line]': 'pseudo() ? "underline" : null',
     },
 })
 export class TuiLink {
     protected readonly nothing = tuiWithStyles(Styles);
-
-    /**
-     * @deprecated: use on host
-     * [style.text-decoration-line]="'underline'"
-     */
-    public readonly pseudo = input(inject(TUI_LINK_OPTIONS).pseudo);
 }

@@ -32,13 +32,11 @@ class Styles {}
     selector: 'tui-notification,[tuiNotification]:not(ng-template)',
     providers: [
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
-        tuiLinkOptionsProvider({appearance: '', pseudo: true}),
+        tuiLinkOptionsProvider({appearance: ''}),
         tuiButtonOptionsProvider({appearance: 'outline-grayscale', size: 's'}),
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiNotificationDirective {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);

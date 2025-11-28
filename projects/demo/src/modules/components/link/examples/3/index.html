@@ -3,66 +3,28 @@
     otherwise distance to the icons will be bigger than it should be
 </tui-notification>
 
-<section>
-    <button
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [textContent]="'Link with icons'"
-    ></button>
-    <button
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [style.text-decoration-line]="'underline'"
-        [textContent]="'Link with icons'"
-    ></button>
-</section>
-
-<section>
-    <button
-        appearance="action-grayscale"
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [textContent]="'Link with icons'"
-    ></button>
-    <button
-        appearance="action-grayscale"
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [style.text-decoration-line]="'underline'"
-        [textContent]="'Link with icons'"
-    ></button>
-</section>
-
-<section
-    tuiTheme="light"
-    [style.background]="'#fff'"
->
-    <button
-        appearance=""
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [textContent]="'Link with icons'"
-    ></button>
-    <button
-        appearance=""
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [style.text-decoration-line]="'underline'"
-        [textContent]="'Link with icons'"
-    ></button>
-</section>
+@for (appearance of appearances; track $index) {
+    <section>
+        <button
+            iconEnd="@tui.chevron-down"
+            iconStart="@tui.arrow-right"
+            tuiLink
+            type="button"
+            [appearance]="appearance"
+            [textContent]="'Link with icons'"
+        ></button>
+        <button
+            iconEnd="@tui.chevron-down"
+            iconStart="@tui.arrow-right"
+            tuiLink
+            type="button"
+            [appearance]="appearance"
+            [style.text-decoration-line]="'underline'"
+            [style.text-decoration-style]="'dashed'"
+            [textContent]="'Link with icons'"
+        ></button>
+    </section>
+}
 
 <section
     tuiTheme="dark"
@@ -82,29 +44,7 @@
         iconStart="@tui.arrow-right"
         tuiLink
         type="button"
-        [style.text-decoration-line]="'underline'"
-        [textContent]="'Link with icons'"
-    ></button>
-</section>
-
-<section>
-    <button
-        appearance=""
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [style.color]="'var(--tui-status-negative)'"
-        [textContent]="'Link with icons'"
-    ></button>
-    <button
-        appearance=""
-        iconEnd="@tui.chevron-down"
-        iconStart="@tui.arrow-right"
-        tuiLink
-        type="button"
-        [style.color]="'var(--tui-status-negative)'"
-        [style.text-decoration-line]="'underline'"
+        [style.text-decoration-style]="'dashed'"
         [textContent]="'Link with icons'"
     ></button>
 </section>

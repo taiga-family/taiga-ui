@@ -10,4 +10,11 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly appearances = [
+        'action',
+        'action-grayscale',
+        'action-destructive',
+        '',
+    ];
+}
