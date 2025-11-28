@@ -1,6 +1,55 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-input[tuiSwitch] {
+input[tuiSwitch]._native {
+    block-size: 1.9375rem;
+    inline-size: 3.1875rem;
+    appearance: auto;
+    accent-color: var(--tui-background-accent-2);
+
+    &:invalid {
+        accent-color: var(--tui-status-negative);
+    }
+
+    &::before,
+    &::after {
+        display: none;
+    }
+
+    @supports (anchor-name: --ios26) {
+        inline-size: 4rem;
+        block-size: 1.75rem;
+
+        &::before {
+            .transition(background);
+
+            position: absolute;
+            display: block;
+            inset: 0;
+            border-radius: 10rem;
+            inline-size: 100%;
+            background-color: transparent;
+            mix-blend-mode: color;
+            transform: none;
+        }
+
+        &:invalid:not(:checked)::before {
+            background-color: var(--tui-status-negative);
+        }
+
+        [data-theme='dark'] & {
+            &:invalid:not(:checked)::before {
+                background-color: var(--tui-status-negative-pale);
+            }
+
+            &:disabled:not(:checked)::before {
+                background-color: rgba(255, 255, 255, 0.2);
+                mix-blend-mode: lighten;
+            }
+        }
+    }
+}
+
+input[tuiSwitch]:not(._native) {
     block-size: 1.9375rem;
     inline-size: 3.1875rem;
     border-radius: 2rem;

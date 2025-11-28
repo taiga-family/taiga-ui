@@ -19,9 +19,14 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_RADIO_OPTIONS, TUI_SWITCH_OPTIONS)],
     hostDirectives: [TuiIcons],
-    host: {role: 'switch'},
+    host: {
+        switch: '',
+        role: 'switch',
+        '[class._native]': 'native',
+    },
 })
 export class TuiSwitch extends TuiRadioComponent<TuiSwitchOptions> {
+    protected readonly native = 'switch' in this.el;
     protected readonly icon = tuiIconStart(
         computed(() => (this.showIcons() ? this.options.icon(this.size()) : '')),
     );
