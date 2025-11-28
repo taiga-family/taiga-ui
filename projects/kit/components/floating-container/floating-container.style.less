@@ -27,12 +27,16 @@
     bottom: calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y));
     z-index: 1;
     display: grid;
-    grid-auto-flow: column;
     margin-block-start: 1rem;
     padding-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
     text-align: center;
     font: var(--tui-font-text-ui-s);
     color: var(--tui-text-secondary);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiSlide;
+    }
 
     > * {
         grid-area: 2 / 1;
