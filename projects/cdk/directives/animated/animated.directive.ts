@@ -1,7 +1,6 @@
 import {isPlatformServer} from '@angular/common';
 import {
     afterNextRender,
-    ApplicationRef,
     Directive,
     inject,
     type OnDestroy,
@@ -63,7 +62,6 @@ export class TuiAnimated implements OnDestroy {
 
 function wrap(renderer: Renderer2): any {
     const {removeChild} = renderer;
-    const app = inject(ApplicationRef);
 
     return (parent: Node, el: Node, host?: boolean) => {
         const remove = (): void => removeChild.call(renderer, parent, el, host);
@@ -87,7 +85,6 @@ function wrap(renderer: Renderer2): any {
         const finish = (): void => {
             if (!parent || parent.contains(el)) {
                 remove();
-                app.tick();
             }
         };
 
