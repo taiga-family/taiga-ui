@@ -144,8 +144,6 @@ test.describe('InputTime', () => {
 
                 const inputTime = new TuiInputTimePO(example.locator('tui-textfield'));
 
-                await example.scrollIntoViewIfNeeded();
-
                 await inputTime.textfield.click();
                 await inputTime.textfield.clear();
                 await inputTime.textfield.fill('07:55');
@@ -243,8 +241,6 @@ test.describe('InputTime', () => {
         });
 
         test('Do not match value until user is writing value', async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputTime);
-
             await inputTime.fill('16:45');
             await expect
                 .soft(example)
@@ -256,7 +252,7 @@ test.describe('InputTime', () => {
                 .soft(example)
                 .toHaveScreenshot('input-time-option-hh-mm__02.png');
 
-            await page.keyboard.type('35');
+            await page.keyboard.type('45');
             await expect
                 .soft(example)
                 .toHaveScreenshot('input-time-option-hh-mm__03.png');

@@ -8,7 +8,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Input', () => {
     test('custom content', async ({page}) => {
-        await tuiGoto(page, 'components/input/API?content=TOP%20SECRET');
+        await tuiGoto(page, `${DemoRoute.Input}/API?content=TOP%20SECRET`);
 
         const document = new TuiDocumentationPagePO(page);
 
@@ -67,6 +67,7 @@ test.describe('Input', () => {
         await inputs.last().fill('111111111111');
         await inputs.last().blur();
 
+        await expect(inputs.first()).toHaveValue('111 111 111 111 rad');
         await expect.soft(example).toHaveScreenshot('11-mask.png');
     });
 
@@ -75,7 +76,7 @@ test.describe('Input', () => {
             test(`size=${size}`, async ({page}) => {
                 await tuiGoto(
                     page,
-                    `components/input/API?iconEnd=@tui.calendar&ngModel=val&tuiTextfieldSize=${size}`,
+                    `${DemoRoute.Input}/API?iconEnd=@tui.calendar&ngModel=val&tuiTextfieldSize=${size}`,
                 );
 
                 const document = new TuiDocumentationPagePO(page);
