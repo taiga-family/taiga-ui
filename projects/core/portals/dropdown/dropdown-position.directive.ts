@@ -72,13 +72,13 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         ) {
             this.direction.next(previous);
 
-            return [position[previous], position[align]];
+            return [position[align], position[previous]];
         }
 
         this.previous = better;
         this.direction.next(better);
 
-        return [position[better], position[align]];
+        return [position[align], position[better]];
     }
 
     public getAlign(align: TuiDropdownAlign): TuiDropdownAlign {

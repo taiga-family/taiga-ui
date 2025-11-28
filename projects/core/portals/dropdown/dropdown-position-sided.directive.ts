@@ -54,12 +54,12 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
         ) {
             this.vertical.direction.next(this.previous);
 
-            return [position[this.previous], left];
+            return [left, position[this.previous]];
         }
 
         this.previous = better;
         this.vertical.direction.next(better);
 
-        return [position[better], left];
+        return [left, position[better]];
     }
 }

@@ -69,7 +69,7 @@ export class TuiDropdownComponent implements AfterViewInit {
                 !!this.directive.el.getBoundingClientRect().height,
         ),
         map((v) => (this.position === 'fixed' ? this.vvs.correct(v) : v)),
-        map(([top, left]) => this.getStyles(left, top)),
+        map((point) => this.getStyles(...point)),
         takeUntilDestroyed(),
     );
 

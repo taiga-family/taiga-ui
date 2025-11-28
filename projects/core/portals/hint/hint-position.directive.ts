@@ -18,8 +18,8 @@ import {
 
 const GAP = 8;
 const ARROW_OFFSET = 24;
-const TOP = 0;
-const LEFT = 1;
+const TOP = 1;
+const LEFT = 0;
 
 @Directive()
 export class TuiHintPosition extends TuiPositionAccessor {
@@ -52,10 +52,8 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.directionChange.emit(direction);
     }
 
-    public getPosition(rect: DOMRect, el?: HTMLElement): TuiPoint {
+    public getPosition({width, height}: DOMRect): TuiPoint {
         const direction = this.direction();
-        const width = el?.clientWidth ?? rect.width;
-        const height = el?.clientHeight ?? rect.height;
         const hostRect = this.accessor.getClientRect();
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
@@ -109,7 +107,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
             : 'bottom';
     }
 
-    private checkPosition([top, left]: TuiPoint, width: number, height: number): boolean {
+    private checkPosition([left, top]: TuiPoint, width: number, height: number): boolean {
         const viewport = this.viewport.getClientRect();
 
         return (
