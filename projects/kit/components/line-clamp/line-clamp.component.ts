@@ -13,6 +13,7 @@ import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/portals/hint';
+import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     debounceTime,
@@ -47,10 +48,13 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 })
 export class TuiLineClamp implements DoCheck {
     private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
+    private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly isOverflown$ = new Subject<boolean>();
-    private readonly maxHeight = computed(() => this.lineHeight() * this.linesLimit());
+    private readonly maxHeight = computed(
+        () => (this.lineHeight() + this.offset()) * this.linesLimit(),
+    );
 
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
