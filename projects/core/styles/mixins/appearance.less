@@ -3,7 +3,7 @@
 .appearance-hover(@content) {
     .interactive({
         @media @tui-mouse {
-            &:hover:not(:disabled):not([data-state]) {
+            &:hover:not([data-state]) {
                 @content();
             }
         }
