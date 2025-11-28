@@ -11,7 +11,6 @@ import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 interface Country {
     id: string;
@@ -44,18 +43,16 @@ export default class PageComponent {
         name: 'USA',
     });
 
-    protected textfieldContent: PolymorpheusContent = '';
-
     protected readonly countries = computed(() =>
         Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
-    protected readonly textfieldContentVariants = computed(() => [
+    protected readonly textfieldContentVariants = [
         '',
         'TOP SECRET',
         ({$implicit: x}: TuiContext<any>) =>
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
-    ]);
+    ];
 
     protected selectOptionExample: TuiRawLoaderContent = import(
         './examples/10/option.ts?raw',

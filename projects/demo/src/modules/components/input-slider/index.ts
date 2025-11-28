@@ -10,7 +10,6 @@ import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
 import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [
@@ -39,7 +38,6 @@ export default class PageComponent {
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
-    protected textfieldContent: PolymorpheusContent = '';
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
         5,

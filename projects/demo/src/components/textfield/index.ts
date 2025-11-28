@@ -8,6 +8,7 @@ import {
     type TuiTextfieldOptions,
     TuiTitle,
 } from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tbody[tuiDocTextfield]',
@@ -20,6 +21,8 @@ export class TuiDocTextfield {
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
+    public readonly contentVariants = input<PolymorpheusContent[]>(['', 'TOP SECRET']);
+
     public readonly hiddenOptions = input<
         Array<TuiLooseUnion<keyof TuiTextfieldOptions>>
     >(['rows']);
@@ -27,4 +30,5 @@ export class TuiDocTextfield {
     public cleaner: boolean = this.options.cleaner();
     public size: TuiSizeL | TuiSizeS = this.options.size();
     public rows = 100;
+    public content: PolymorpheusContent = '';
 }

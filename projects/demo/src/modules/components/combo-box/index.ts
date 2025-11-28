@@ -23,7 +23,6 @@ import {
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 interface Country {
     id: string;
@@ -55,8 +54,6 @@ export default class PageComponent {
 
     protected readonly control = new FormControl<Country | null>(null);
 
-    protected textfieldContent: PolymorpheusContent = '';
-
     protected readonly countries = computed(() =>
         Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
@@ -68,7 +65,7 @@ export default class PageComponent {
 
     protected matcher = this.matcherVariants[0]!;
 
-    protected readonly textfieldContentVariants = computed(() => [
+    protected readonly textfieldContentVariants = [
         '',
         'TOP SECRET',
         ({$implicit: x}: TuiContext<any>) =>
@@ -78,7 +75,7 @@ export default class PageComponent {
                 .join(' '),
         ({$implicit: x}: TuiContext<any>) =>
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
-    ]);
+    ];
 
     protected strict = true;
 

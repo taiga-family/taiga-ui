@@ -182,7 +182,7 @@
             <ng-template>
                 <tui-textfield
                     #textfield
-                    [content]="textfield.focused() ? '' : textfieldContent"
+                    [content]="textfield.focused() ? '' : textfieldDoc.content"
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -368,19 +368,9 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+                [contentVariants]="textfieldContentVariants()"
                 [hiddenOptions]="['cleaner', 'rows']"
-            >
-                <!--TODO: create the inherited documentation for Textfield ([content] + [filler] props)-->
-                <tr
-                    name="[content]"
-                    tuiDocAPIItem
-                    type="PolymorpheusContent"
-                    [items]="textfieldContentVariants()"
-                    [(value)]="textfieldContent"
-                >
-                    A template for custom view of textfield value.
-                </tr>
-            </tbody>
+            ></tbody>
 
             <tbody
                 #icons

@@ -95,6 +95,8 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-textfield
+                #textfieldEl
+                [content]="!textfieldEl.focused() && value ? textfield.content : ''"
                 [filler]="filler"
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"

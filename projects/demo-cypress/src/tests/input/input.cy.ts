@@ -13,6 +13,7 @@ import {TUI_ANIMATIONS_SPEED, TuiInput, TuiRoot} from '@taiga-ui/core';
             >
                 <input
                     tuiInput
+                    [placeholder]="placeholder()"
                     [(ngModel)]="initialValue"
                 />
             </tui-textfield>
@@ -27,6 +28,8 @@ export class TestTextfield {
     public readonly filler = input('');
 
     public readonly content = input('');
+
+    public readonly placeholder = input('');
 }
 
 describe('Input', () => {
@@ -101,6 +104,27 @@ describe('Input', () => {
                 .blur();
 
             cy.get('tui-textfield').compareSnapshot('[content]-after-blur');
+        });
+    });
+
+    describe('[placeholder]', () => {
+        beforeEach(() => {
+            cy.mount(TestTextfield, {
+                componentProperties: {
+                    initialValue: '',
+                    placeholder:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                },
+            });
+        });
+
+        it('long placeholder', () => {
+            cy.get('tui-textfield input[tuiInput]')
+                .focus()
+                .wait(300) // to ensure that all possible operations are finished
+                .blur();
+
+            cy.get('tui-textfield').compareSnapshot('[placeholder]-long-placeholder');
         });
     });
 });
