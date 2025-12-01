@@ -1,0 +1,1 @@
+import{b as i,c as o}from"./chunk-CUK77RQV.js";var p=e=>e.replaceAll(/@import.+taiga-ui-local(.less)?';/g,"@import '@taiga-ui/core/styles/taiga-ui-local.less';"),a=(e,r="")=>`src/app/${e.join("")}${r}`,c=e=>Object.entries(e).filter(([r,t])=>t&&!o(r)),g=e=>{let r={};return e.forEach(([t,s])=>{let n=a`${t}`;r[n]=i(t)?p(s):s}),r};export{p as a,a as b,c,g as d};
