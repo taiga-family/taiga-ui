@@ -7,6 +7,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {default as docsearch} from '@docsearch/js';
 import {TUI_DARK_MODE} from '@taiga-ui/core';
 
 import {SEARCH_CONFIG} from './env';
@@ -23,65 +24,104 @@ import {SEARCH_CONFIG} from './env';
 })
 export class TuiAlgoliaSearch {
     private readonly config = inject(SEARCH_CONFIG);
+    private readonly docEl = inject(DOCUMENT).documentElement;
+    private readonly darkMode = inject(TUI_DARK_MODE);
 
-    constructor() {
-        this.setSearchDocDarkMode();
+    protected readonly effect = effect(() =>
+        this.docEl?.setAttribute('data-theme', this.darkMode() ? 'dark' : 'light'),
+    );
 
-        afterNextRender(() => {
-            this.enableDocSearch();
-        });
-    }
+    protected readonly afterNextRender = afterNextRender(() =>
+        docsearch({
+            ...this.config,
+            maxResultsPerGroup: 7,
+            transformSearchClient: (searchClient) => {
+                const search = searchClient.search.bind(searchClient);
 
-    private enableDocSearch(): void {
-        import('@docsearch/js').then((d) =>
-            d.default({
-                ...this.config,
-                maxResultsPerGroup: 7,
-                transformSearchClient: (searchClient) => ({
+                type Req = Parameters<typeof search>[0];
+
+                type Rest = Parameters<typeof search>[1];
+
+                const request = async (
+                    req: Req,
+                    ...rest: Rest[]
+                ): ReturnType<typeof search> => {
+                    if (Array.isArray(req)) {
+                        return search(req, ...rest);
+                    }
+
+                    return search(
+                        req.requests.map((req) => ({
+                            ...req,
+                            query: transformQuery((req as {query: string}).query),
+                        })),
+                        ...rest,
+                    );
+                };
+
+                return {
                     ...searchClient,
-                    search: debounce<any>(searchClient.search, 400),
-                }),
-                transformItems: (items) =>
-                    items.map((item) => ({
-                        ...item,
-                        url: item.url.replace('https://taiga-ui.dev/', ''),
-                    })),
-            }),
-        );
-    }
+                    search: debounce(request, 400) as typeof search,
+                };
+            },
+            transformItems: (items) =>
+                items.map((item) => ({
+                    ...item,
+                    url: item.url.replace('https://taiga-ui.dev/', ''),
+                })),
+        }),
+    );
+}
 
-    private setSearchDocDarkMode(): void {
-        const {documentElement} = inject(DOCUMENT);
-        const darkMode = inject(TUI_DARK_MODE);
+/**
+ * Normalizes a search query by conditionally removing the `tui` prefix.
+ *
+ * Rules:
+ * - If the query starts with `tui` (any case) *and* the next character is an uppercase A–Z,
+ *   the prefix is removed. This matches Taiga UI component names (e.g., `tuiButton`, `TuiPagination`).
+ *     - "tuiButton"      → "button"
+ *     - "TuiPagination"  → "pagination"
+ *
+ * - If `tui` appears later in the string, it is not removed.
+ *     - "hello tui"      → "hello tui"
+ *
+ * - If the string starts with `TUI` followed by a space, the prefix is not removed.
+ *     - "TUI something"  → "TUI something"
+ *
+ * - If the string is exactly "tui", it is left unchanged.
+ *     - "tui"            → "tui"
+ *
+ * After processing, the result is always returned in lowercase.
+ */
+function transformQuery(query?: string): string {
+    const q = query?.trim() ?? '';
 
-        effect(() => {
-            documentElement?.setAttribute('data-theme', darkMode() ? 'dark' : 'light');
-        });
-    }
+    return /^tui(?=[A-Z])/i.test(q) ? q.slice(3).toLowerCase() : q.toLowerCase();
 }
 
 // https://docsearch.algolia.com/docs/api/#transformsearchclient
-function debounce<T extends (...args: unknown[]) => ReturnType<T>>(
-    func: T,
-    wait = 100,
-): (...args: Parameters<T>) => Promise<ReturnType<T>> {
-    let lastTimeout: ReturnType<typeof setTimeout> | null = null;
+function debounce<T extends (...args: any[]) => Promise<unknown>>(fn: T, wait = 100) {
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
     return async function (
-        this: unknown,
+        this: ThisParameterType<T>,
         ...args: Parameters<T>
-    ): Promise<ReturnType<T>> {
-        // eslint-disable-next-line @typescript-eslint/no-this-alias
-        const that = this;
+    ): Promise<Awaited<ReturnType<T>>> {
+        if (timer) {
+            clearTimeout(timer);
+        }
 
-        return new Promise<ReturnType<T>>((resolve, reject) => {
-            if (lastTimeout) {
-                clearTimeout(lastTimeout);
-            }
+        return new Promise<Awaited<ReturnType<T>>>((resolve, reject) => {
+            timer = setTimeout(async () => {
+                timer = null;
 
-            lastTimeout = setTimeout(() => {
-                lastTimeout = null;
-                Promise.resolve(func.apply(that, args)).then(resolve).catch(reject);
+                try {
+                    const result = await fn.apply(this, args);
+
+                    resolve(result as Awaited<ReturnType<T>>);
+                } catch (e) {
+                    return reject(new Error(String(e)));
+                }
             }, wait);
         });
     };
