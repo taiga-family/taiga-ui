@@ -18,7 +18,7 @@ import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
 import {
-    TUI_INPUT_DATE_OPTIONS_NEW,
+    TUI_INPUT_DATE_OPTIONS,
     tuiWithDateFiller,
 } from '@taiga-ui/kit/components/input-date';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -40,9 +40,9 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     },
 })
 export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
-    private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS_NEW);
+    private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS);
 
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS);
     protected readonly filler = tuiWithDateFiller();
     protected readonly format = inject(TUI_DATE_FORMAT);
 

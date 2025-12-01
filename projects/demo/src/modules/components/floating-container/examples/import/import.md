@@ -1,6 +1,7 @@
 ```ts
 // ...
-import {tuiFloatingContainer, TuiButton} from '@taiga-ui/kit';
+import {TuiButton} from '@taiga-ui/core';
+import {tuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
   standalone: true,

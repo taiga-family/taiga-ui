@@ -56,7 +56,6 @@ import {
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
 } from '@taiga-ui/kit/tokens';
-import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import {
     BehaviorSubject,
     debounceTime,
@@ -252,7 +251,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         if (this.single) {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
-            this.value = tuiToggleDay(this.value, day);
+            this.value = toggleDay(this.value, day);
         } else if (this.value instanceof TuiDay) {
             this.value = TuiDayRange.sort(this.value, day);
         } else if (this.value instanceof TuiDayRange) {
@@ -510,4 +509,12 @@ export class TuiMobileCalendar implements AfterViewInit {
     private getMonthOffset(year: number): number {
         return (year - this.activeYear) * MONTHS_IN_YEAR;
     }
+}
+
+function toggleDay(days: readonly TuiDay[] | null, day: TuiDay): readonly TuiDay[] {
+    return (
+        (days?.find((item) => item.daySame(day))
+            ? days.filter((item) => !item.daySame(day))
+            : days?.concat(day)) || []
+    );
 }

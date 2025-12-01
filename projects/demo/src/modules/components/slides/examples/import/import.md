@@ -1,10 +1,9 @@
 ```ts
-import {TuiSlides} from '@taiga-ui/kit';
+import {TuiSlides} from '@taiga-ui/layout';
 
 // ...
 
 @Component({
-  standalone: true,
   imports: [
     // ...
     TuiSlides,

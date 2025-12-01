@@ -6,12 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiButton, TuiInput} from '@taiga-ui/core';
-import {
-    TuiAutoColorPipe,
-    TuiAvatar,
-    TuiFloatingContainer,
-    TuiInitialsPipe,
-} from '@taiga-ui/kit';
+import {TuiAutoColorPipe, TuiAvatar, TuiInitialsPipe} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 const USERS = [

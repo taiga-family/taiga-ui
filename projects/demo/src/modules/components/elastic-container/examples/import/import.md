@@ -1,5 +1,5 @@
 ```ts
-import {TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiElasticContainer} from '@taiga-ui/layout';
 
 // ...
 

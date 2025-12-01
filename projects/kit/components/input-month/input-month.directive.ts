@@ -1,5 +1,4 @@
 import {computed, Directive, effect, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -15,8 +14,8 @@ import {
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
+import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
-import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
 import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
 
@@ -34,7 +33,7 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
 })
 export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     private readonly input = inject(TuiInputDirective);
-    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
+    private readonly months = inject(TUI_MONTHS);
     private readonly open = inject(TuiDropdownOpen).open;
 
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_OPTIONS);
@@ -43,7 +42,12 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     protected readonly valueEffect = effect(() => {
-        this.input.value.set(this.formatter()?.(this.value()) || '');
+        const value = this.value();
+        const formatted = value
+            ? `${this.months()[value.month] ?? ''} ${value.formattedYear}`
+            : '';
+
+        this.input.value.set(formatted);
     });
 
     protected readonly calendarIn = effect(() => {

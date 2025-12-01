@@ -5,7 +5,6 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 type IsoCode = TuiLooseUnion<TuiCountryIsoCode>;
 
-// TODO: Move to kit in v5
 @Pipe({
     name: 'tuiFlag',
 })

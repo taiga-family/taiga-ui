@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiInputDate, tuiInputDateOptionsProviderNew} from '@taiga-ui/kit';
+import {TuiInputDate, tuiInputDateOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, JsonPipe, TuiInputDate],
@@ -12,7 +12,7 @@ import {TuiInputDate, tuiInputDateOptionsProviderNew} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputDateOptionsProviderNew({
+        tuiInputDateOptionsProvider({
             valueTransformer: {
                 fromControlValue: (value: Date | null): TuiDay | null =>
                     value && TuiDay.fromUtcNativeDate(value),

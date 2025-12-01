@@ -14,10 +14,11 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TuiSlider} from '@taiga-ui/kit/components/slider';
-import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 
 import {TuiPreviewAction} from '../action/preview-action.directive';
+import {TUI_PREVIEW_ICONS} from '../preview.options';
 
 const STEP = 0.5;
 

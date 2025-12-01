@@ -6,15 +6,13 @@ import {
 import {type TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/di';
 import {
-    TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
-    TUI_INPUT_DATE_OPTIONS_NEW,
-    type TuiInputDateOptionsNew,
+    TUI_INPUT_DATE_DEFAULT_OPTIONS,
+    TUI_INPUT_DATE_OPTIONS,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/components/input-date';
 
-export interface TuiInputDateRangeOptions extends Omit<
-    TuiInputDateOptionsNew,
-    'valueTransformer'
-> {
+export interface TuiInputDateRangeOptions
+    extends Omit<TuiInputDateOptions, 'valueTransformer'> {
     readonly valueTransformer: TuiValueTransformer<TuiDayRange | null, any>;
 }
 
@@ -22,7 +20,7 @@ export const TUI_INPUT_DATE_RANGE_OPTIONS = new InjectionToken<TuiInputDateRange
     ngDevMode ? 'TUI_INPUT_DATE_RANGE_OPTIONS' : '',
     {
         factory: () => ({
-            ...inject(TUI_INPUT_DATE_OPTIONS_NEW),
+            ...inject(TUI_INPUT_DATE_OPTIONS),
             valueTransformer: TUI_IDENTITY_VALUE_TRANSFORMER,
         }),
     },
@@ -34,5 +32,5 @@ export const tuiInputDateRangeOptionsProvider = (
     tuiProvideOptions(
         TUI_INPUT_DATE_RANGE_OPTIONS,
         options,
-        TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
+        TUI_INPUT_DATE_DEFAULT_OPTIONS,
     );

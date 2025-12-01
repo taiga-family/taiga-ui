@@ -8,8 +8,8 @@ import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {
-    TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
-    TUI_INPUT_DATE_OPTIONS_NEW,
+    TUI_INPUT_DATE_DEFAULT_OPTIONS,
+    TUI_INPUT_DATE_OPTIONS,
 } from '@taiga-ui/kit/components/input-date';
 
 export interface TuiInputMonthOptions {
@@ -29,7 +29,7 @@ export const TUI_INPUT_MONTH_OPTIONS = new InjectionToken<TuiInputMonthOptions>(
     ngDevMode ? 'TUI_INPUT_MONTH_OPTIONS' : '',
     {
         factory: () => ({
-            ...inject(TUI_INPUT_DATE_OPTIONS_NEW),
+            ...inject(TUI_INPUT_DATE_OPTIONS),
             valueTransformer: TUI_IDENTITY_VALUE_TRANSFORMER,
         }),
     },
@@ -38,8 +38,4 @@ export const TUI_INPUT_MONTH_OPTIONS = new InjectionToken<TuiInputMonthOptions>(
 export const tuiInputMonthOptionsProvider = (
     options: Partial<TuiInputMonthOptions>,
 ): FactoryProvider =>
-    tuiProvideOptions(
-        TUI_INPUT_MONTH_OPTIONS,
-        options,
-        TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
-    );
+    tuiProvideOptions(TUI_INPUT_MONTH_OPTIONS, options, TUI_INPUT_DATE_DEFAULT_OPTIONS);

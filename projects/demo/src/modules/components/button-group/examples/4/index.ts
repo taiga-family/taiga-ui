@@ -2,14 +2,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiBadge,
-    TuiButtonGroup,
-    TuiCarousel,
-    TuiElasticContainer,
-    TuiPager,
-} from '@taiga-ui/kit';
-import {TuiCardMedium} from '@taiga-ui/layout';
+import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [

@@ -1,5 +1,4 @@
 import {Directive, effect, inject, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     RANGE_SEPARATOR_CHAR,
@@ -17,8 +16,8 @@ import {
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
+import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
-import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
 import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
 
@@ -36,7 +35,7 @@ import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
 })
 export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null> {
     private readonly input = inject(TuiInputDirective);
-    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
+    private readonly months = inject(TUI_MONTHS);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly intermediateValue = signal<TuiMonth | null>(null);
     private readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
@@ -47,12 +46,13 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly valueEffect = effect(() => {
         const value = this.value();
-        const format = this.formatter() || (() => '');
-        const string = value
-            ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to)
-            : '';
+        const months = this.months();
+        const format = ({month, formattedYear}: TuiMonth) =>
+            `${months[month] ?? ''} ${formattedYear}`;
 
-        this.input.value.set(string);
+        this.input.value.set(
+            value ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to) : '',
+        );
     });
 
     protected readonly calendarInit = effect(() => {

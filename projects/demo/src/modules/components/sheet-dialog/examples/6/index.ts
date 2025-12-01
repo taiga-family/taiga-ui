@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiNotification, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarLabeled, TuiFade, TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiAppBar} from '@taiga-ui/layout';
+import {TuiAvatar, TuiAvatarLabeled, TuiFade} from '@taiga-ui/kit';
+import {TuiAppBar, TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [

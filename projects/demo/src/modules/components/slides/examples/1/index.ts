@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiGroup, TuiTitle} from '@taiga-ui/core';
-import {TuiElasticContainer, TuiSlides} from '@taiga-ui/kit';
+import {TuiElasticContainer, TuiSlides} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiElasticContainer, TuiGroup, TuiSlides, TuiTitle],
