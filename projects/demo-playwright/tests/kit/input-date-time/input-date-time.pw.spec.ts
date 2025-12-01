@@ -7,8 +7,7 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-// TODO migrate
-test.skip('InputDateTime', () => {
+test.describe('InputDateTime', () => {
     test.describe('API page', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
@@ -22,12 +21,12 @@ test.skip('InputDateTime', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputDateTime = new TuiInputDateTimePO(
-                example.locator('tui-input-date-time'),
+                example.locator('tui-textfield:has([tuiInputDateTime])'),
             );
         });
 
         test('Maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateTimeLegacy}/API?max$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?max$=0`);
             await inputDateTime.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
@@ -36,7 +35,7 @@ test.skip('InputDateTime', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateTimeLegacy}/API?min$=3`);
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?min$=1`);
             await inputDateTime.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
@@ -46,38 +45,38 @@ test.skip('InputDateTime', () => {
 
         test('[max] property cannot be bypassed via selection', async ({page}) => {
             // max = [tomorrow, {hours: 16, minutes: 20, seconds: 0, ms: 0}]
-            await tuiGoto(page, `${DemoRoute.InputDateTimeLegacy}/API?max$=4`, {
-                date: new Date(2018, 10, 1),
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?max$=4`, {
+                date: new Date(2025, 11, 1),
             });
 
-            const maxValue = '02.11.2018, 16:20';
+            const maxValue = '02.12.2025, 12:34';
 
             await inputDateTime.textfield.fill(maxValue);
 
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
 
-            await inputDateTime.textfield.press('Shift+ArrowLeft'); // 02.11.2018, 16:2|0|
+            await inputDateTime.textfield.press('Shift+ArrowLeft'); // 02.12.2025, 12:3|4|
             await inputDateTime.textfield.pressSequentially('5');
 
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
 
             // valid case
-            await inputDateTime.textfield.press('ArrowLeft+ArrowLeft+ArrowLeft'); // 02.11.2018, 16|:20
+            await inputDateTime.textfield.press('ArrowLeft+ArrowLeft+ArrowLeft'); // 02.11.2025, 12|:34
             await inputDateTime.textfield.press('Shift+ArrowLeft');
-            await inputDateTime.textfield.pressSequentially('2');
+            await inputDateTime.textfield.pressSequentially('1');
 
-            await expect(inputDateTime.textfield).toHaveValue('02.11.2018, 12:20');
+            await expect(inputDateTime.textfield).toHaveValue('02.12.2025, 11:34');
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
-                '02.11.2018, 12:'.length,
+                '02.11.2018, 11:'.length,
             );
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionEnd',
-                '02.11.2018, 12:'.length,
+                '02.11.2018, 11:'.length,
             );
 
             // invalid case
-            await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2018, 1|2:|20
+            await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2025, 1|2:|34
             await inputDateTime.textfield.pressSequentially('9');
 
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
@@ -85,47 +84,47 @@ test.skip('InputDateTime', () => {
 
         test('[min] property cannot be bypassed via selection', async ({page}) => {
             // min = [yesterday, {hours: 12, minutes: 20, seconds: 0, ms: 0}]
-            await tuiGoto(page, `${DemoRoute.InputDateTimeLegacy}/API?min$=4`, {
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?min$=4`, {
                 date: new Date(2018, 10, 1),
             });
 
-            const minValue = '31.10.2018, 12:20';
+            const minValue = '02.11.2018, 12:34';
 
             await inputDateTime.textfield.focus();
             await inputDateTime.textfield.fill(minValue);
 
             await expect(inputDateTime.textfield).toHaveValue(minValue);
 
-            await inputDateTime.textfield.press('ArrowLeft+Shift+ArrowLeft'); // 31.10.2018, 12:|2|0
+            await inputDateTime.textfield.press('ArrowLeft+Shift+ArrowLeft'); // 02.11.2018, 12:|3|4
             await inputDateTime.textfield.press('1');
 
             await expect(inputDateTime.textfield).toHaveValue(minValue);
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
-                '31.10.2018, 12:2'.length,
+                '02.11.2018, 12:3'.length,
             );
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionEnd',
-                '31.10.2018, 12:2'.length,
+                '02.11.2018, 12:3'.length,
             );
 
             // valid case
-            await inputDateTime.textfield.press('ArrowLeft+ArrowLeft'); // 31.10.2018, 12|:20
-            await inputDateTime.textfield.press('Shift+ArrowLeft'); // 31.10.2018, 1|2|:20
+            await inputDateTime.textfield.press('ArrowLeft+ArrowLeft'); // 02.11.2018, 12|:34
+            await inputDateTime.textfield.press('Shift+ArrowLeft'); // 02.11.2018, 1|2|:34
             await inputDateTime.textfield.press('5');
 
-            await expect(inputDateTime.textfield).toHaveValue('31.10.2018, 15:20');
+            await expect(inputDateTime.textfield).toHaveValue('02.11.2018, 15:34');
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
-                '31.10.2018, 15:'.length,
+                '02.11.2018, 15:'.length,
             );
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionEnd',
-                '31.10.2018, 15:'.length,
+                '02.11.2018, 15:'.length,
             );
 
             // invalid case
-            await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 31.10.2018, 1|5:|20
+            await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2018, 1|5:|34
             await inputDateTime.textfield.press('1');
 
             await expect(inputDateTime.textfield).toHaveValue(minValue);
@@ -134,7 +133,7 @@ test.skip('InputDateTime', () => {
         test('should place caret before time after selection of a new date via calendar', async ({
             page,
         }) => {
-            await tuiGoto(page, `${DemoRoute.InputDateTimeLegacy}/API`);
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
 
             await inputDateTime.textfield.pressSequentially('191120181235');
 
@@ -163,7 +162,7 @@ test.skip('InputDateTime', () => {
         });
 
         test('change filler on dynamic change of [timeMode] prop', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateTimeLegacy}/API?timeMode=HH:MM`);
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM`);
             await inputDateTime.textfield.focus();
 
             await expect
@@ -175,10 +174,12 @@ test.skip('InputDateTime', () => {
                 (await documentationPage.getSelect(timeModeRow))!,
             );
 
-            await timeModeSelect.textfield.click();
+            await timeModeRow.locator('tui-textfield').click();
             await timeModeSelect.selectOptions([2]);
 
-            await expect(timeModeSelect.textfield).toHaveValue('HH:MM:SS');
+            await expect(
+                timeModeRow.locator('tui-textfield').getByRole('textbox'),
+            ).toHaveValue('HH:MM:SS');
 
             await inputDateTime.textfield.focus();
 
@@ -186,10 +187,12 @@ test.skip('InputDateTime', () => {
                 .soft(inputDateTime.host)
                 .toHaveScreenshot('03-timeMode=HH:MM.SS.png');
 
-            await timeModeSelect.textfield.click();
+            await timeModeRow.locator('tui-textfield').click();
             await timeModeSelect.selectOptions([4]);
 
-            await expect(timeModeSelect.textfield).toHaveValue('HH:MM:SS.MSS');
+            await expect(
+                timeModeRow.locator('tui-textfield').getByRole('textbox'),
+            ).toHaveValue('HH:MM:SS.MSS');
 
             await inputDateTime.textfield.focus();
 
@@ -198,13 +201,11 @@ test.skip('InputDateTime', () => {
                 .toHaveScreenshot('03-timeMode=HH:MM.SS.MSS.png');
         });
 
-        test('should time to pre-fill with zeros on blur', async ({page}) => {
-            await tuiGoto(
-                page,
-                `${DemoRoute.InputDateTimeLegacy}/API?timeMode=HH:MM:SS.MSS`,
-            );
+        // TODO: remove skip after https://github.com/taiga-family/taiga-ui/issues/12707
+        test.skip('should time to pre-fill with zeros on blur', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM:SS.MSS`);
 
-            await inputDateTime.textfield.fill('07.06.2024, 23:59');
+            await inputDateTime.textfield.fill('07.06.2024, 23:59:59.');
             await inputDateTime.textfield.blur();
 
             await expect(inputDateTime.textfield).toHaveValue('07.06.2024, 23:59:00.000');
@@ -212,10 +213,7 @@ test.skip('InputDateTime', () => {
 
         test.describe('AM / PM', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(
-                    page,
-                    `${DemoRoute.InputDateTimeLegacy}/API?timeMode=HH:MM%20AA`,
-                );
+                await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM%20AA`);
                 await inputDateTime.textfield.pressSequentially('2092020');
 
                 await expect(inputDateTime.textfield).toHaveValue('20.09.2020');
@@ -243,10 +241,10 @@ test.skip('InputDateTime', () => {
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
                 inputDateTime = new TuiInputDateTimePO(
-                    apiPageExample.locator('tui-input-date-time'),
+                    apiPageExample.locator('tui-textfield:has([tuiInputDateTime])'),
                 );
 
-                await tuiGoto(page, `${DemoRoute.InputDateTimeLegacy}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
             });
 
             test('does not accept day > 31', async () => {
@@ -283,42 +281,42 @@ test.skip('InputDateTime', () => {
 
             test.beforeEach(async ({page}) => {
                 const example = new TuiDocumentationPagePO(page).getExample(
-                    '#date-localization',
+                    '#date-format',
                 );
 
                 inputDateTime = new TuiInputDateTimePO(
-                    example.locator('tui-input-date-time'),
+                    example.locator('tui-textfield:has(input[tuiInputDateTime])'),
                 );
 
-                await tuiGoto(page, DemoRoute.InputDateTimeLegacy);
+                await tuiGoto(page, DemoRoute.InputDateTime);
                 await inputDateTime.textfield.clear();
             });
 
             test('does not accept day > 31', async () => {
                 await inputDateTime.textfield.pressSequentially('2023/05/35');
 
-                await expect(inputDateTime.textfield).toHaveValue('2023/05/3');
+                await expect(inputDateTime.textfield).toHaveValue('2023-05-3');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
-                    '2023/05/3'.length,
+                    '2023-05-3'.length,
                 );
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionEnd',
-                    '2023/05/3'.length,
+                    '2023-05-3'.length,
                 );
             });
 
             test('does not accept month > 12', async () => {
-                await inputDateTime.textfield.pressSequentially('2023/13');
+                await inputDateTime.textfield.pressSequentially('2023-13');
 
-                await expect(inputDateTime.textfield).toHaveValue('2023/01/3');
+                await expect(inputDateTime.textfield).toHaveValue('2023-01-3');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
-                    '2023/01/3'.length,
+                    '2023-01-3'.length,
                 );
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionEnd',
-                    '2023/01/3'.length,
+                    '2023-01-3'.length,
                 );
             });
         });
@@ -328,15 +326,15 @@ test.skip('InputDateTime', () => {
         let documentationPage!: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputDateTimeLegacy);
+            await tuiGoto(page, DemoRoute.InputDateTime);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
         test('With validator: enter incomplete date -> validator error', async () => {
-            const example = documentationPage.getExample('#with-validator');
+            const example = documentationPage.getExample('#validation');
             const inputDateTime = new TuiInputDateTimePO(
-                example.locator('tui-input-date-time').first(),
+                example.locator('tui-textfield:has(input[tuiInputDateTime])').first(),
             );
 
             await inputDateTime.textfield.clear();
@@ -351,53 +349,19 @@ test.skip('InputDateTime', () => {
                 });
         });
 
-        test.describe('with `input[tuiTextfieldLegacy]` inside', () => {
-            test('filler has no change detection problems', async () => {
-                const example = documentationPage.getExample('#base');
-                const inputDateTime = new TuiInputDateTimePO(
-                    example.locator('tui-input-date-time'),
-                );
-
-                /**
-                 * To ensure that example is not changed and
-                 * still contains InputDateTime with projected <input tuiTextfieldLegacy>
-                 */
-                await expect(
-                    inputDateTime.host.locator('input[tuiTextfieldLegacy]'),
-                ).toBeAttached();
-
-                await inputDateTime.textfield.focus();
-
-                await expect
-                    .soft(inputDateTime.host)
-                    .toHaveScreenshot('05-backspace-pressed-0-times.png');
-
-                for (let i = 1; i <= 8; i++) {
-                    await inputDateTime.textfield.press('Backspace');
-
-                    await expect
-                        .soft(inputDateTime.host)
-                        .toHaveScreenshot(`05-backspace-pressed-${i}-times.png`);
-                }
-
-                await expect(inputDateTime.textfield).toHaveValue('');
-            });
-        });
-
-        test('Actual min/max in calendar', async () => {
-            const example = documentationPage.getExample('#base');
+        test('Calendar customization', async () => {
+            const example = documentationPage.getExample('#calendar-customization');
             const inputDateTime = new TuiInputDateTimePO(
-                example.locator('tui-input-date-time'),
+                example.locator('tui-textfield:has(input[tuiInputDateTime])'),
             );
 
             await inputDateTime.textfield.click();
 
             await expect
-                .soft(inputDateTime.textfield)
-                .toHaveScreenshot('06-input-date-time-actual-min-max.png');
-            await expect
                 .soft(inputDateTime.calendar)
-                .toHaveScreenshot('06-input-date-time-calendar-actual-min-max.png');
+                .toHaveScreenshot(
+                    '06-input-date-time-calendar-calendar-customization.png',
+                );
         });
     });
 });
