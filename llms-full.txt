@@ -5450,23 +5450,18 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK, TuiCalendar} from '@taiga-ui/core';
+import {TuiCalendar, tuiCalendarOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        {
-            provide: TUI_FIRST_DAY_OF_WEEK,
-            useValue: TuiDayOfWeek.Sunday,
-        },
-    ],
+    providers: [tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Sunday)})],
 })
 export default class Example {
     protected value = new TuiDay(2025, 6, 4);
@@ -5484,9 +5479,9 @@ export default class Example {
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {type TuiDay, type TuiHandler} from '@taiga-ui/cdk';
-import {TUI_DAY_TYPE_HANDLER, TuiCalendar} from '@taiga-ui/core';
+import {TuiCalendar, tuiCalendarOptionsProvider} from '@taiga-ui/core';
 
-const useValue: TuiHandler<TuiDay, string> = (day) => {
+const dayType: TuiHandler<TuiDay, string> = (day) => {
     if (day.day === 10) {
         return 'holiday';
     }
@@ -5500,7 +5495,7 @@ const useValue: TuiHandler<TuiDay, string> = (day) => {
     styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
-    providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue}],
+    providers: [tuiCalendarOptionsProvider({dayType})],
 })
 export default class Example {}
 ```
@@ -6009,11 +6004,11 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
+import {tuiCalendarOptionsProvider} from '@taiga-ui/core';
 import {TuiCalendarRange} from '@taiga-ui/kit';
 
 @Component({
@@ -6022,12 +6017,7 @@ import {TuiCalendarRange} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        {
-            provide: TUI_FIRST_DAY_OF_WEEK,
-            useValue: TuiDayOfWeek.Sunday,
-        },
-    ],
+    providers: [tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Sunday)})],
 })
 export default class Example {}
 ```
@@ -6142,7 +6132,7 @@ import {
     type TuiDayLike,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TuiLink, type TuiMarkerHandler} from '@taiga-ui/core';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TuiCalendarRange,
     tuiCreateDefaultDayRangePeriods,
@@ -6156,7 +6146,7 @@ const TWO_DOTS: [string, string] = [
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    imports: [TuiCalendarRange, TuiDemo, TuiLink],
+    imports: [TuiCalendarRange, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -11801,7 +11791,7 @@ export class Example {}
 <button appearance="secondary" iconStart="@tui.ellipsis" size="xs" tuiIconButton type="button" > More </button>
 </nav>
 </header> @for (_ of '-'.repeat(15); track $index) { <p>Content</p> } <footer>
-<button size="m" tuiButton type="button" [style.margin-inline-end]="'auto'" > Tertiary action </button>
+<button size="m" tuiButton type="button" [style.order]="-1" > Tertiary action </button>
 <button size="m" tuiButton type="button" > Secondary action </button>
 <button appearance="primary" size="m" tuiButton type="button" > Primary action </button>
 </footer>
@@ -13332,9 +13322,7 @@ export class Example {}
 ```html
 ... Some content
 
-<footer
-  tuiFloatingContainer
->
+<footer tuiFloatingContainer>
   <button
     tuiButton
     type="button"
@@ -13346,7 +13334,7 @@ export class Example {}
     tuiButton
     type="button"
   >
-     Secondary action
+    Secondary action
   </button>
 </label>
 ```
@@ -13366,8 +13354,12 @@ export class Example {}
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="color" >
-<button tuiButton type="button" > Main action </button> @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
+</div> } @if (floating) { <footer [tuiFloatingContainer]="color">
+<button tuiButton type="button" > Main action </button>
+<tui-expand [expanded]="secondAction">
+<button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button>
+</tui-expand>
+</footer> } </div>
 ```
 
 ### API
@@ -13378,7 +13370,7 @@ export class Example {}
 
 ### Usage Examples
 
-#### Two actions
+#### Basic
 
 **Template:**
 ```html
@@ -13395,8 +13387,12 @@ export class Example {}
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" >
-<button tuiButton type="button" > Main action </button> @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
+</div> } @if (floating) { <footer [tuiFloatingContainer]="secondAction ? '' : 'transparent'">
+<button tuiButton type="button" > Main action </button>
+<tui-expand [expanded]="secondAction">
+<button appearance="flat" tuiButton type="button" > Secondary action </button>
+</tui-expand>
+</footer> } </div>
 ```
 **TypeScript:**
 ```ts
@@ -13404,14 +13400,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiCell,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
@@ -13420,6 +13409,7 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiExpand,
         TuiFloatingContainer,
         TuiLabel,
         TuiSwitch,
@@ -13429,11 +13419,9 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
     protected floating = false;
-
     protected secondAction = false;
 
     protected onScroll(el: HTMLElement): void {
@@ -13443,7 +13431,7 @@ export default class Example {
 }
 ```
 
-#### Inside SheetDialog
+#### Sheet
 
 **Template:**
 ```html
@@ -13466,14 +13454,16 @@ export default class Example {
 </p>
 </hgroup>
 </header>
-<div class="content">
-<section class="items"> @for (item of items | tuiFilter: filter : search; track item) { <div tuiCell>
+<section class="content"> @for (item of items | tuiFilter: filter : search; track item) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> {{ item.title }} <div tuiSubtitle>{{ item.description }}</div>
 </div>
-</div> } </section> @if (floating) { <footer tuiFloatingContainer @tuiSlideInTop >
-<button tuiButton type="button" (click)="observer.complete()" > Main action </button> @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse (click)="observer.complete()" > Secondary action </button> } </footer> } </div>
-</ng-template>
+</div> } </section> @if (floating) { <footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="observer.complete()" > Main action </button>
+<tui-expand [expanded]="secondAction">
+<button appearance="flat" tuiButton type="button" (click)="observer.complete()" > Secondary action </button>
+</tui-expand>
+</footer> } </ng-template>
 ```
 **TypeScript:**
 ```ts
@@ -13483,16 +13473,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiCell,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiHeader, TuiSearch} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13500,11 +13483,11 @@ import {TuiHeader, TuiSearch} from '@taiga-ui/layout';
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiExpand,
         TuiFilterPipe,
         TuiFloatingContainer,
         TuiHeader,
         TuiLabel,
-        TuiSearch,
         TuiSheetDialog,
         TuiSwitch,
         TuiTitle,
@@ -13513,14 +13496,11 @@ import {TuiHeader, TuiSearch} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
     protected open = false;
-
     protected floating = true;
     protected secondAction = false;
-
     protected search = '';
 
     protected readonly items = Array.from({length: 15}, (_, index) => ({
@@ -13535,7 +13515,7 @@ export default class Example {
 }
 ```
 
-#### Action and label/button
+#### Text
 
 **Template:**
 ```html
@@ -13551,10 +13531,12 @@ export default class Example {
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> } @if (floating) { <footer tuiFloatingContainer @tuiSlideInTop >
+</div> } @if (floating) { <footer tuiFloatingContainer>
+<button tuiButton type="button" > Main action </button>
 <tui-elastic-container>
-<button tuiButton type="button" > Main action </button> @if (!additional) { <span class="clamp" [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}" >
-<tui-icon icon="@tui.settings" [style.font-size.rem]="1" /> Legal text, max 3 lines </span> } @if (additional) { <button appearance="flat" tuiButton type="button" [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}" > Secondary action </button> } </tui-elastic-container>
+<div tuiSlides> @if (additional) { <button appearance="flat" tuiButton type="button" > Secondary action </button> } @else { <div class="clamp">
+<tui-icon icon="@tui.settings" [style.font-size.rem]="1" /> Legal text, max 3 lines </div> } </div>
+</tui-elastic-container>
 </footer> } </div>
 ```
 **TypeScript:**
@@ -13563,19 +13545,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiCell,
-    tuiCrossFade,
-    TuiIcon,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiElasticContainer,
     TuiFloatingContainer,
+    TuiSlides,
     TuiSwitch,
 } from '@taiga-ui/kit';
 
@@ -13589,6 +13564,7 @@ import {
         TuiFloatingContainer,
         TuiIcon,
         TuiLabel,
+        TuiSlides,
         TuiSwitch,
         TuiTitle,
     ],
@@ -13596,7 +13572,6 @@ import {
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiCrossFade],
 })
 export default class Example {
     protected floating = true;
@@ -13604,7 +13579,7 @@ export default class Example {
 }
 ```
 
-#### Custom content
+#### Content
 
 **Template:**
 ```html
@@ -13624,9 +13599,9 @@ export default class Example {
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> } @if (value === 'primary') { <footer tuiFloatingContainer="transparent" @tuiSlideInTop >
+</div> } @if (value === 'primary') { <footer tuiFloatingContainer="transparent" class="static" >
 <button appearance="accent" tuiButton type="button" > Main action </button>
-</footer> } @if (value === 'card') { <footer tuiFloatingContainer="transparent" @tuiSlideInTop >
+</footer> } @if (value === 'card') { <footer tuiFloatingContainer="transparent">
 <div appearance="floating" tuiCardLarge="compact" [style.margin-block-end.rem]="0.5" >
 <header tuiHeader>
 <div tuiTitle> 1000 $ <div tuiSubtitle>With price</div>
@@ -13636,7 +13611,7 @@ export default class Example {
 </aside>
 </header>
 </div>
-</footer> } @if (value === 'actions') { <footer tuiFloatingContainer @tuiSlideInTop >
+</footer> } @if (value === 'actions') { <footer tuiFloatingContainer>
 <button tuiButton type="button" > Main action </button>
 <button appearance="flat" tuiButton type="button" > Secondary action </button>
 </footer> } </div>
@@ -13647,7 +13622,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiCell, TuiLabel, tuiSlideInTop, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiRadio} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
@@ -13668,14 +13643,13 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop],
 })
 export default class Example {
     protected value = '';
 }
 ```
 
-#### Custom background color
+#### Overlay
 
 **Template:**
 ```html
@@ -13706,8 +13680,12 @@ export default class Example {
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="background ? color : 'transparent'" >
-<button tuiButton type="button" > Main action </button> @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
+</div> } @if (floating) { <footer [tuiFloatingContainer]="background ? color : 'transparent'">
+<button tuiButton type="button" > Main action </button>
+<tui-expand [expanded]="secondAction">
+<button appearance="flat" tuiButton type="button" > Secondary action </button>
+</tui-expand>
+</footer> } </div>
 ```
 **TypeScript:**
 ```ts
@@ -13715,14 +13693,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiCell,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiFloatingContainer,
@@ -13737,6 +13708,7 @@ import {
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiExpand,
         TuiFloatingContainer,
         TuiInputColor,
         TuiLabel,
@@ -13748,19 +13720,16 @@ import {
     encapsulation,
     changeDetection,
     providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
-    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
     protected floating = true;
     protected secondAction = false;
-
     protected background = true;
-
     protected color = 'rgba(255, 221, 45, 0.8)';
 }
 ```
 
-#### Primary button change
+#### Crossfade
 
 **Template:**
 ```html
@@ -13780,7 +13749,12 @@ export default class Example {
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" > @if (!action) { <button tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Main action </button> } @if (action) { <button appearance="primary-grayscale" tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Add to Apple Wallet </button> } @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
+</div> } @if (floating) { <footer [tuiFloatingContainer]="secondAction ? '' : 'transparent'">
+<div tuiSlides> @if (action) { <button appearance="primary-grayscale" tuiButton type="button" > Add to Apple Wallet </button> } @else { <button tuiButton type="button" > Main action </button> } </div>
+<tui-expand [expanded]="secondAction">
+<button appearance="flat" tuiButton type="button" > Secondary action </button>
+</tui-expand>
+</footer> } </div>
 ```
 **TypeScript:**
 ```ts
@@ -13788,16 +13762,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiCell,
-    tuiCrossFade,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
+import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiFloatingContainer, TuiSlides, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -13805,8 +13771,10 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiExpand,
         TuiFloatingContainer,
         TuiLabel,
+        TuiSlides,
         TuiSwitch,
         TuiTitle,
     ],
@@ -13814,11 +13782,9 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiCrossFade, tuiHeightCollapse],
 })
 export default class Example {
     protected floating = true;
-
     protected action = false;
     protected secondAction = false;
 }
@@ -13831,15 +13797,9 @@ export default class Example {
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {
-    TuiButton,
-    TuiCell,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
@@ -13849,6 +13809,7 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiButton,
         TuiCell,
         TuiDemo,
+        TuiExpand,
         TuiFloatingContainer,
         TuiLabel,
         TuiSwitch,
@@ -13857,20 +13818,18 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
-    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
     protected floating = true;
-
     protected secondAction = false;
-
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
-        'Two actions',
-        'Inside SheetDialog',
-        'Action and label/button',
-        'Custom content',
-        'Custom background color',
-        'Primary button change',
+        'Basic',
+        'Sheet',
+        'Text',
+        'Content',
+        'Overlay',
+        'Crossfade',
     ];
 
     protected readonly colors = [
@@ -26575,7 +26534,7 @@ export default class Example {
 
 #### Localization
 
-Use TUI_FIRST_DAY_OF_WEEK token to change start day of the week (Monday by default).
+Use tuiCalendarOptionsProvider to change start day of the week (Monday by default)
 
 **Template:**
 ```html
@@ -26583,12 +26542,12 @@ Use TUI_FIRST_DAY_OF_WEEK token to change start day of the week (Monday by defau
 ```
 **TypeScript:**
 ```ts
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {TuiDay, TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
+import {tuiCalendarOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiMobileCalendar],
@@ -26596,12 +26555,7 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        {
-            provide: TUI_FIRST_DAY_OF_WEEK,
-            useValue: TuiDayOfWeek.Sunday,
-        },
-    ],
+    providers: [tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Sunday)})],
 })
 export default class Example {
     protected min = TuiDay.currentLocal();
@@ -31688,7 +31642,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-scrollbar class="box" [hidden]="true" >
+<tui-scrollbar class="box">
 <div class="content">
 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dignissimos, doloremque. Aperiam assumenda atque aut blanditiis corporis, eum, facilis harum laudantium magni necessitatibus nobis quas repudiandae sint ut voluptatem! Optio. </p>
 <p> Accusamus aperiam assumenda aut consectetur, corporis delectus, dolor eaque eius est hic impedit labore possimus provident quas rem, rerum sequi sint tempora tempore ut? Debitis esse neque odio odit provident? </p>
@@ -31708,7 +31662,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiScrollbar} from '@taiga-ui/core';
+import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiScrollbar],
@@ -31716,6 +31670,7 @@ import {TuiScrollbar} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {}
 ```
@@ -33127,8 +33082,8 @@ A mobile draggable sheet dialog
 <ng-template #sheetTemplate let-completeWith="completeWith" let-observer >
 <p [style.flex-grow]="1"> Karl Gambolputty de von Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von. </p>
 <footer tuiFloatingContainer>
-<button tuiButton type="button" class="tui-space_right-1" (click)="observer.next('Hi')" > Say "Hi" </button>
-<button tuiButton type="button" class="tui-space_right-1" (click)="completeWith('Hi and bye!')" > Say "Hi and bye!" </button>
+<button tuiButton type="button" (click)="observer.next('Hi')" > Say "Hi" </button>
+<button tuiButton type="button" (click)="completeWith('Hi and bye!')" > Say "Hi and bye!" </button>
 </footer>
 </ng-template>
 ```
@@ -34122,6 +34077,7 @@ export default class Example {
 <button tuiStep>Shipping address</button>
 <button tuiStep>Payment info</button>
 </tui-stepper>
+<tui-elastic-container>
 <section [tuiSlides]="direction"> @for (form of forms; track form; let i = $index) { @if (i === index) { <form appearance="floating" tuiCardLarge tuiForm [formGroup]="form" [id]="`form_${i}`" (ngSubmit)="onSubmit()" >
 <header tuiHeader>
 <h2 tuiTitle> Registration form <span tuiSubtitle>Tell us about yourself</span>
@@ -34130,6 +34086,7 @@ export default class Example {
 <label tuiLabel>{{ control.key }}</label>
 <input tuiInput [formControlName]="control.key" [tuiAutoFocus]="!!index && !j" />
 </tui-textfield> } </form> } } </section>
+</tui-elastic-container>
 <footer>
 <button appearance="secondary" tuiButton type="button" [disabled]="!index" (click)="index = index - 1" > Back </button>
 <button tuiButton type="submit" [attr.form]="`form_${index}`" > Next </button>
@@ -34144,7 +34101,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TuiButton, TuiInput, TuiTitle} from '@taiga-ui/core';
-import {TuiSlides, TuiStepper} from '@taiga-ui/kit';
+import {TuiElasticContainer, TuiSlides, TuiStepper} from '@taiga-ui/kit';
 import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -34154,6 +34111,7 @@ import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
         TuiAutoFocus,
         TuiButton,
         TuiCard,
+        TuiElasticContainer,
         TuiForm,
         TuiHeader,
         TuiInput,
@@ -34417,11 +34375,17 @@ export default class Page {
 ### LESS
 
 ```less
-[tuiSlides] ng-component {
-    display: block;
+.tui-slides {
+    tui-doc-example .t-demo {
+        overflow: hidden;
+    }
 
-    &.tui-slides {
-        display: none;
+    [tuiSlides] ng-component {
+        display: block;
+
+        &.tui-slides {
+            display: none;
+        }
     }
 }
 ```
@@ -34955,7 +34919,7 @@ export default class Example {}
 <div appearance="floating" tuiCardLarge tuiSurface class="reviews" >
 <h3 class="heading"> Taiga UI reviews <button tuiLink type="button" class="link" > Hide </button>
 </h3>
-<tui-scrollbar class="scrollbar" [hidden]="true" >
+<tui-scrollbar class="scrollbar">
 <div class="wrapper"> @for (review of reviews; track review) { <div tuiAppearance="neutral" tuiSurface class="review" > {{ review.body }} <footer class="footer">
 <div size="m" tuiAvatar="@tui.user" >
 <img alt="" src="assets/images/avatar.jpg" />
@@ -34990,6 +34954,7 @@ import {
     TuiLabel,
     TuiLink,
     TuiScrollbar,
+    tuiScrollbarOptionsProvider,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
@@ -35014,6 +34979,7 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
     styleUrls: ['./index.less', './surface.less'],
     encapsulation,
     changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly reviews = [
@@ -36537,7 +36503,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-scrollbar waIntersectionRoot class="scrollbar" [hidden]="true" >
+<tui-scrollbar waIntersectionRoot class="scrollbar" >
 <table size="l" tuiTable class="table" [columns]="columns" [direction]="-1" [sorter]="totalSorter" >
 <thead tuiThead>
 <tr tuiThGroup>
@@ -36630,6 +36596,7 @@ import {
     TuiIcon,
     TuiNumberFormat,
     TuiScrollbar,
+    tuiScrollbarOptionsProvider,
 } from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -36669,6 +36636,7 @@ interface Item {
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly options = {updateOn: 'blur'} as const;
@@ -41615,65 +41583,6 @@ import {TuiLink} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly routes = DemoRoute;
-}
-```
-
-#### TUI_FIRST_DAY_OF_WEEK
-
-**Template:**
-```html
-<p class="tui-space_top-0"> Use <code>TUI_FIRST_DAY_OF_WEEK</code> injection token to change start day of the week (Monday by default). </p>
-<tui-doc-code [code]="provideFirstDayOfWeekToken" />
-<section>
-<h3>This token can customize the following components:</h3>
-<ul class="tui-list tui-list_small"> @for (component of customizableComponentsViaThisToken; track component) { <li class="tui-list__item">
-<a tuiLink [fragment]="component.fragment" [routerLink]="component.link" > {{ component.name }} </a>
-</li> } </ul>
-</section>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDocCode} from '@taiga-ui/addon-doc';
-import {TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK, TuiLink} from '@taiga-ui/core';
-
-@Component({
-    imports: [RouterLink, TuiDocCode, TuiLink],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-    providers: [
-        {
-            provide: TUI_FIRST_DAY_OF_WEEK,
-            useValue: TuiDayOfWeek.Sunday,
-        },
-    ],
-})
-export default class Example {
-    protected readonly provideFirstDayOfWeekToken =
-        import('./provide-first-day-of-week-token.md');
-
-    protected readonly customizableComponentsViaThisToken = [
-        {
-            name: 'Calendar',
-            link: '/components/calendar',
-            fragment: 'localization',
-        },
-        {
-            name: 'CalendarRange',
-            link: '/components/calendar-range',
-            fragment: 'localization',
-        },
-        {
-            name: 'MobileCalendar',
-            link: '/components/mobile-calendar',
-            fragment: 'localization',
-        },
-    ] as const;
 }
 ```
 
