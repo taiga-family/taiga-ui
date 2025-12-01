@@ -104,16 +104,8 @@ tui-textfield[multi][multi] {
                 min-block-size: var(--t-item-height, 1em);
             }
 
-            .t-filler {
-                position: absolute;
-                left: 0;
-                inset-inline-start: 0;
-                color: var(--tui-text-tertiary);
-                pointer-events: none;
-
-                &_hidden {
-                    display: none;
-                }
+            .t-filler_hidden {
+                display: none;
             }
         }
     }
@@ -124,26 +116,6 @@ tui-textfield[multi][multi] {
         inset-inline-start: calc(100% - var(--t-side, ~'0rem') - var(--t-end) + var(--t-padding) - var(--t-offset));
         margin: 0;
         gap: 0.25rem;
-    }
-
-    > .t-content .t-clear {
-        display: flex;
-    }
-
-    &[data-mode~='invalid']:not([data-mode~='readonly']) > .t-items > [tuiLabel] {
-        color: var(--tui-text-negative);
-    }
-
-    &[data-focus='true']:not([data-mode~='readonly']) > .t-items > [tuiLabel] {
-        color: var(--tui-text-primary) !important;
-    }
-
-    &[data-mode~='readonly'] > .t-content,
-    &._disabled > .t-content,
-    &._empty > .t-content {
-        .t-clear {
-            display: none;
-        }
     }
 
     > .t-items input:not(:focus),
@@ -158,15 +130,6 @@ tui-textfield[multi][multi] {
     &[data-focus='true']:not([data-mode~='readonly']):not(:focus-within) > .t-items {
         input::placeholder {
             opacity: 1;
-        }
-    }
-
-    &:not(._empty),
-    &[data-focus='true']:not([data-mode~='readonly']) {
-        > .t-items [tuiLabel] {
-            font: var(--t-label-font);
-            line-height: var(--t-height);
-            transform: translateY(var(--t-label-y));
         }
     }
 
@@ -252,13 +215,6 @@ tui-textfield[multi][multi] {
         }
     }
 
-    .appearance-focus({
-        input::placeholder,
-        input._empty {
-            color: var(--tui-text-tertiary);
-        }
-    });
-
     tui-textfield-item {
         transform: translateX(var(--t-scroll));
     }
@@ -270,7 +226,6 @@ tui-textfield[multi][multi] {
     select {
         opacity: 0;
         padding: 0;
-        pointer-events: none;
     }
 
     &._empty > .t-items select ~ .t-filler {
