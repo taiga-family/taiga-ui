@@ -31,7 +31,10 @@ import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
 } from '@taiga-ui/core/components/textfield';
-import {TuiItemsHandlersValidator} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TuiItemsHandlersDirective,
+    TuiItemsHandlersValidator,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TuiInputDateBase, tuiWithDateFiller} from '@taiga-ui/kit/components/input-date';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
@@ -66,24 +69,26 @@ export class TuiInputDateTimeDirective
     private readonly timeFillers = inject(TUI_TIME_TEXTS);
 
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
+    protected override readonly filler = tuiWithDateFiller(
+        (date) =>
+            `${date}${this.options.dateTimeSeparator}${this.timeFillers()?.[this.timeMode()] ?? ''}`,
+    );
 
-    protected override readonly filler = tuiWithDateFiller((date) => {
-        const time = this.timeFillers()?.[this.timeMode()] ?? '';
-
-        return `${date}${this.options.dateTimeSeparator}${time}`;
-    });
-
-    protected override valueEffect = effect(noop);
-
-    protected readonly identity = this.handlers.identityMatcher.set(
+    protected override readonly valueEffect = effect(noop);
+    protected override readonly identity = tuiDirectiveBinding(
+        TuiItemsHandlersDirective,
+        'identityMatcher',
         (a, b) => tuiSum(...a.map(Number)) === tuiSum(...b.map(Number)),
+        {},
     );
 
     protected readonly disabledItemHandler = tuiDirectiveBinding(
         TuiItemsHandlersValidator,
         'disabledItemHandler',
-        (value: readonly [TuiDay, TuiTime | null] | null) =>
-            Boolean(value && this.handlers.disabledItemHandler()(value)),
+        computed(
+            () => (value: readonly [TuiDay, TuiTime | null] | null) =>
+                Boolean(value && this.handlers.disabledItemHandler()(value)),
+        ),
     );
 
     protected readonly mask = tuiMaskito(

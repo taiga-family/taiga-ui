@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
@@ -14,8 +15,11 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
+import {
+    tuiCalendarOptionsProvider,
+    TuiCalendarSheet,
+    TuiCalendarSheetPipe,
+} from '@taiga-ui/core';
 import {tuiMockCurrentDate, tuiRestoreRealDate} from '@taiga-ui/testing';
 
 describe('CalendarSheet', () => {
@@ -211,7 +215,7 @@ describe('CalendarSheet', () => {
         });
     });
 
-    describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
+    describe('integration with TUI_CALENDAR_OPTIONS token', () => {
         let fixture: ComponentFixture<Test>;
         let testComponent: Test;
 
@@ -225,15 +229,14 @@ describe('CalendarSheet', () => {
             fixture.detectChanges();
         };
 
-        describe('Week starts with Sunday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Sunday', () => {
+        describe('Week starts with Sunday if TUI_CALENDAR_OPTIONS was set as TuiDayOfWeek.Sunday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     imports: [Test],
                     providers: [
-                        {
-                            provide: TUI_FIRST_DAY_OF_WEEK,
-                            useValue: TuiDayOfWeek.Sunday,
-                        },
+                        tuiCalendarOptionsProvider({
+                            weekStart: signal(TuiDayOfWeek.Sunday),
+                        }),
                     ],
                 });
                 await TestBed.compileComponents();
@@ -261,15 +264,14 @@ describe('CalendarSheet', () => {
             });
         });
 
-        describe('Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday', () => {
+        describe('Week starts with Monday if TUI_CALENDAR_OPTIONS was set as TuiDayOfWeek.Monday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     imports: [Test],
                     providers: [
-                        {
-                            provide: TUI_FIRST_DAY_OF_WEEK,
-                            useValue: TuiDayOfWeek.Monday,
-                        },
+                        tuiCalendarOptionsProvider({
+                            weekStart: signal(TuiDayOfWeek.Monday),
+                        }),
                     ],
                 });
                 await TestBed.compileComponents();
@@ -297,15 +299,14 @@ describe('CalendarSheet', () => {
             });
         });
 
-        describe('Week starts with Wednesday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Wednesday', () => {
+        describe('Week starts with Wednesday if TUI_CALENDAR_OPTIONS was set as TuiDayOfWeek.Wednesday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     imports: [Test],
                     providers: [
-                        {
-                            provide: TUI_FIRST_DAY_OF_WEEK,
-                            useValue: TuiDayOfWeek.Wednesday,
-                        },
+                        tuiCalendarOptionsProvider({
+                            weekStart: signal(TuiDayOfWeek.Wednesday),
+                        }),
                     ],
                 });
                 await TestBed.compileComponents();

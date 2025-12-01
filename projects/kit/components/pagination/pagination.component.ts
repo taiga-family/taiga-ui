@@ -15,7 +15,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -55,7 +55,7 @@ export class TuiPagination {
     );
 
     protected readonly texts = inject(TUI_PAGINATION_TEXTS);
-    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_PAGINATION_OPTIONS);
 
     protected readonly buttonSize = computed(() => (this.size() === 'm' ? 'xs' : 's'));

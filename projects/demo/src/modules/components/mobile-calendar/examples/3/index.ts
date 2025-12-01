@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {TuiDay, TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
+import {tuiCalendarOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiMobileCalendar],
@@ -11,12 +11,7 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        {
-            provide: TUI_FIRST_DAY_OF_WEEK,
-            useValue: TuiDayOfWeek.Sunday,
-        },
-    ],
+    providers: [tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Sunday)})],
 })
 export default class Example {
     protected min = TuiDay.currentLocal();

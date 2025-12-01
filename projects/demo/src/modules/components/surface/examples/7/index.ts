@@ -8,6 +8,7 @@ import {
     TuiLabel,
     TuiLink,
     TuiScrollbar,
+    tuiScrollbarOptionsProvider,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
@@ -32,6 +33,7 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
     styleUrls: ['./index.less', './surface.less'],
     encapsulation,
     changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly reviews = [

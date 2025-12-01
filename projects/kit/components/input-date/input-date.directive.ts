@@ -18,6 +18,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
@@ -28,7 +29,6 @@ import {
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 import {
-    TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
     TuiItemsHandlersDirective,
     TuiItemsHandlersValidator,
@@ -74,6 +74,13 @@ export abstract class TuiInputDateBase<
     protected readonly format = inject(TUI_DATE_FORMAT);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
+    );
+
+    protected readonly identity = tuiDirectiveBinding(
+        TuiItemsHandlersDirective,
+        'identityMatcher',
+        (a: TuiDay, b: TuiDay) => a.daySame(b),
+        {},
     );
 
     protected readonly options: Omit<TuiInputDateOptionsNew, 'valueTransformer'> = inject(
@@ -176,10 +183,6 @@ export abstract class TuiInputDateBase<
     ],
 })
 export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
-    protected readonly identity = inject<TuiItemsHandlers<TuiDay>>(
-        TUI_ITEMS_HANDLERS,
-    ).identityMatcher.set((a, b) => a.daySame(b));
-
     protected readonly mask = tuiMaskito(
         computed(() =>
             maskitoDateOptionsGenerator({

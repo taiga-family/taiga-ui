@@ -13,9 +13,8 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
-import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
+import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options';

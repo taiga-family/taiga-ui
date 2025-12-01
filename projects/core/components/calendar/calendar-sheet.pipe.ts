@@ -2,7 +2,8 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {DAYS_IN_WEEK, TuiDay, type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
+
+import {TUI_CALENDAR_OPTIONS} from './calendar.options';
 
 const CALENDAR_ROWS_COUNT = 6;
 
@@ -10,7 +11,7 @@ const CALENDAR_ROWS_COUNT = 6;
     name: 'tuiCalendarSheet',
 })
 export class TuiCalendarSheetPipe implements PipeTransform {
-    private readonly firstDayOfWeek = inject(TUI_FIRST_DAY_OF_WEEK);
+    private readonly options = inject(TUI_CALENDAR_OPTIONS);
     private currentMonth: TuiMonth | null = null;
     private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
 
@@ -32,7 +33,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                     month,
                     rowIndex,
                     colIndex,
-                    firstDayOfWeek: this.firstDayOfWeek,
+                    firstDayOfWeek: this.options.weekStart(),
                 });
 
                 const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
