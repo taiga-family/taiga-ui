@@ -1,13 +1,6 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    TuiCalendarPO,
-    TuiDocumentationPagePO,
-    tuiGoto,
-    TuiInputDatePO,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-
-import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 
 test.describe('InputDate', () => {
     test.describe('Examples', () => {
@@ -49,7 +42,6 @@ test.describe('InputDate', () => {
         let example: Locator;
 
         let inputDate!: TuiInputDatePO;
-        let calendar!: TuiCalendarPO;
 
         test.use({
             viewport: {
@@ -65,8 +57,6 @@ test.describe('InputDate', () => {
             inputDate = new TuiInputDatePO(
                 example.locator('tui-textfield:has(input[tuiInputDate])'),
             );
-
-            calendar = new TuiCalendarPO(inputDate.calendar);
         });
 
         ['s', 'm', 'l'].forEach((size) => {

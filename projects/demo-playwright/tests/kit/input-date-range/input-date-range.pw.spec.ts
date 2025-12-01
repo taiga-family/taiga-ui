@@ -1,17 +1,13 @@
 import {DemoRoute} from '@demo/routes';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 import {
     CHAR_NO_BREAK_SPACE,
-    TuiCalendarPO,
     TuiCalendarSheetPO,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDateRangePO,
-    TuiMobileCalendarPO,
 } from '../../../utils';
-import {timeout} from 'rxjs';
 
 const {describe, beforeEach} = test;
 
@@ -30,16 +26,12 @@ test.describe('InputDateRange', () => {
     describe('API', () => {
         let example!: Locator;
 
-        let calendar!: TuiCalendarPO;
-
         beforeEach(() => {
             example = documentationPage.apiPageExample;
 
             inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
-
-            calendar = new TuiCalendarPO(inputDateRange.calendar);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
