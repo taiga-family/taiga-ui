@@ -88,11 +88,10 @@ export class TuiTime implements TuiTimeLike {
      * Calculates TuiTime from milliseconds
      */
     public static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
-        ngDevMode && console.assert(Number.isInteger(milliseconds));
         ngDevMode &&
             console.assert(
-                tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
-                `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,
+                Number.isInteger(milliseconds) && milliseconds >= 0,
+                'Milliseconds must be a non-negative integer.',
             );
 
         const hours = Math.floor(milliseconds / MILLISECONDS_IN_HOUR);
