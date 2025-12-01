@@ -645,7 +645,7 @@ export class App {}
 </button> } </tui-opt-group>
 </tui-data-list>
 <div>
-<strong>Selected: {{ selected }} of {{ items.length }}</strong> @if (!isMobile()) { <button tuiLink type="button" class="tui-space_left-3" (click)="toggleSelect()" > {{ selected < items.length ? 'Select all' : 'Select none' }} </button> } </div>
+<strong>Selected: {{ selected }} of {{ items.length }}</strong> @if (!isMobile()) { <button tuiLink type="button" [style.margin-inline-start.rem]="0.75" [style.text-decoration-line]="'underline'" [style.text-decoration-style]="'dashed'" (click)="toggleSelect()" > {{ selected < items.length ? 'Select all' : 'Select none' }} </button> } </div>
 <tui-items-with-more> @for (_ of '-'.repeat(5); track $index) { <button *tuiItem iconStart="@tui.star" tuiButton type="button" > Action {{ $index + 1 }} </button> } <ng-template let-lastIndex tuiMore >
 <button iconStart="@tui.ellipsis" tuiButton tuiDropdownAlign="right" tuiDropdownAuto type="button" [tuiDropdown]="dropdown" > More </button>
 <ng-template #dropdown>
@@ -25723,7 +25723,7 @@ export default class Page {
 # components/Link
 - **Package**: `CORE`
 - **Type**: components
-Link component. It has focus highlight and can be customized with an icon
+Link component. It has focus highlight and can be customized with an icon Use textContent binding or wrapping entire content with a span to avoid extra whitespace introduced by browser to a tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
 
 ### How to Use (Import)
 
@@ -25819,37 +25819,27 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-notification class="tui-space_bottom-3"> Use textContent binding to avoid extra whitespace introduced by browser when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be </tui-notification>
-<section>
-<button iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [textContent]="'Link with icons'" ></button>
-<button iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [style.text-decoration-line]="'underline'" [textContent]="'Link with icons'" ></button>
-</section>
-<section>
-<button appearance="action-grayscale" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [textContent]="'Link with icons'" ></button>
-<button appearance="action-grayscale" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [style.text-decoration-line]="'underline'" [textContent]="'Link with icons'" ></button>
-</section>
-<section tuiTheme="light" [style.background]="'#fff'" >
-<button appearance="" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [textContent]="'Link with icons'" ></button>
-<button appearance="" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [style.text-decoration-line]="'underline'" [textContent]="'Link with icons'" ></button>
-</section>
-<section tuiTheme="dark" [style.background]="'#000'" >
-<button appearance="" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [textContent]="'Link with icons'" ></button>
-<button appearance="" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [style.text-decoration-line]="'underline'" [textContent]="'Link with icons'" ></button>
-</section>
-<section>
-<button appearance="" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [style.color]="'var(--tui-status-negative)'" [textContent]="'Link with icons'" ></button>
-<button appearance="" iconEnd="@tui.chevron-down" iconStart="@tui.arrow-right" tuiLink type="button" [style.color]="'var(--tui-status-negative)'" [style.text-decoration-line]="'underline'" [textContent]="'Link with icons'" ></button>
-</section>
+Links by default have <button iconStart="@tui.edit" tuiLink type="button" >
+<span>action</span>
+</button> appearance which you can override with <button appearance="action-grayscale" tuiLink type="button" > action-grayscale </button> or <button appearance="action-destructive" iconEnd="@tui.trash" tuiLink type="button" [textContent]="'action-destructive'" ></button>
+<p> If you use no appearance, links would <button appearance="" iconEnd="@tui.external-link" tuiLink type="button" >
+<span>inherit text color</span>
+</button> in tandem with an underline decoration to make them visible. </p>
+<p tuiTheme="dark"> It would also work well together with <a appearance="" iconStart="@tui.paintbrush" tuiLink >
+<span>dark theme</span>
+</a> and other text colors </p> If you want, you can <button iconStart="@tui.heart" tuiLink type="button" [style.text-decoration-line]="'underline'" >
+<span>enable</span>
+</button> dashed underline for any appearance using <code>text-decoration-line: underline</code> or switch <button appearance="" tuiLink type="button" [style.text-decoration-style]="'dashed'" > inherited </button> link underline to dashed style by <code>text-decoration-style: dashed</code>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLink, TuiNotification} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiLink, TuiNotification],
+    imports: [TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -25863,7 +25853,7 @@ export default class Example {}
 **Template:**
 ```html
 Link can be written inline in text. <!-- prettier-ignore -->
-<a href="https://www.lipsum.com/" iconEnd="@tui.external-link" tuiLink > Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text block</a> and here you can see icon wrapping to the next line with the last word, unless you introduce whitespace
+<a href="https://www.lipsum.com/" iconEnd="@tui.external-link" tuiLink > Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text block</a> and if no extra whitespace is introduced, the icon would wrap together with the last word inside the tag
 ```
 **TypeScript:**
 ```ts
@@ -36349,10 +36339,10 @@ export default class Example {
 <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
 </td>
 <td tuiTd>
-<tui-items-with-more [style.gap.rem]="0.25"> @for (chip of item.items; track chip) { <tui-badge *tuiItem>{{ chip }}</tui-badge> } <ng-template let-number tuiMore >
-<button appearance="action-grayscale" tuiDropdownAlign="right" tuiDropdownAuto tuiLink type="button" [pseudo]="true" [tuiDropdown]="dropdown" > + {{ item.items.length - number - 1 }} </button>
+<tui-items-with-more> @for (chip of item.items; track chip) { <tui-badge *tuiItem [style.margin-inline-end.rem]="0.25" > {{ chip }} </tui-badge> } <ng-template let-number tuiMore >
+<button appearance="action-grayscale" tuiDropdownAlign="right" tuiDropdownAuto tuiLink type="button" [style.text-decoration-style]="'dashed'" [tuiDropdown]="dropdown" > + {{ item.items.length - number - 1 }} </button>
 <ng-template #dropdown>
-<div tuiStatus [style.padding.rem]="1" > @for (chip of item.items; track chip) { @if ($index > number) { <tui-badge>{{ chip }}</tui-badge> } } </div>
+<div tuiItemGroup [style.padding]="'1rem 0.75rem 0.75rem 1rem'" > @for (chip of item.items; track chip) { @if ($index > number) { <tui-badge>{{ chip }}</tui-badge> } } </div>
 </ng-template>
 </ng-template>
 </tui-items-with-more>
@@ -36397,6 +36387,7 @@ import {
     TuiRadioList,
     TuiStatus,
 } from '@taiga-ui/kit';
+import {TuiItemGroup} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -36411,6 +36402,7 @@ import {
         TuiDropdown,
         TuiIcon,
         TuiInitialsPipe,
+        TuiItemGroup,
         TuiItemsWithMore,
         TuiLink,
         TuiProgressBar,
@@ -45091,7 +45083,7 @@ export default class Example {}
 </tui-textfield>
 <ng-template #periodHint> You will pay in equal installments on a monthly basis You will pay in equal installments on a monthly basis </ng-template>
 </form>
-<button tuiHintAppearance="floating" tuiHintDirection="top-left" tuiLink type="button" class="tui-space_top-4" [pseudo]="true" [tuiHint]="howToBuyTooltip" > How to buy <ng-template #howToBuyTooltip>
+<button tuiHintAppearance="floating" tuiHintDirection="top-left" tuiLink type="button" class="tui-space_top-4" [tuiHint]="howToBuyTooltip" > How to buy <ng-template #howToBuyTooltip>
 <ol class="tui-list tui-list_ordered tui-list_small">
 <li class="tui-list__item">Choose an installment plan</li>
 <li class="tui-list__item">Fill in the application</li>

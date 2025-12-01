@@ -109,7 +109,7 @@
 - [Label](https://taiga-ui.dev/components/label) — Label is used to show text related to textfields, checkboxes, toggles and radio buttons
 - [Like](https://taiga-ui.dev/components/like) — A like component based on native checkbox with icons and custom color for icon when :checked state.
 - [Line Clamp](https://taiga-ui.dev/components/line-clamp) — Component cuts overflown text with "..." and shows it by hover
-- [Link](https://taiga-ui.dev/components/link) — Link component. It has focus highlight and can be customized with an icon
+- [Link](https://taiga-ui.dev/components/link) — Link component. It has focus highlight and can be customized with an icon Use textContent binding or wrapping entire content with a span to avoid extra whitespace introduced by browser to a tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
 - [Loader](https://taiga-ui.dev/components/loader)
 - [Message](https://taiga-ui.dev/components/message) — Message component is used to display message block.
 - [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls if provided with tuiProvideMobileCalendar() You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
