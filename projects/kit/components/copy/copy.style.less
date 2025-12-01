@@ -52,16 +52,11 @@
 
 .t-button {
     position: sticky;
-    left: 0;
+    inset-inline-start: 0;
     opacity: 0;
     border-radius: 0;
     font-size: inherit !important;
     margin-inline-start: calc(-1 * var(--t-size));
-
-    @supports (inset-inline-start: 0) {
-        left: unset;
-        inset-inline-start: 0;
-    }
 
     --t-size: inherit;
 
