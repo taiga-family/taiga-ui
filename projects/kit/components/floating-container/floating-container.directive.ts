@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -18,6 +19,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiFloatingContainer]',
+    hostDirectives: [TuiAnimated],
     host: {
         tuiFloatingContainer: '',
         '[style.--t-background]': 'background()',

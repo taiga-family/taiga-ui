@@ -2,19 +2,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiCell,
-    tuiCrossFade,
-    TuiIcon,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiElasticContainer,
     TuiFloatingContainer,
+    TuiSlides,
     TuiSwitch,
 } from '@taiga-ui/kit';
 
@@ -28,6 +21,7 @@ import {
         TuiFloatingContainer,
         TuiIcon,
         TuiLabel,
+        TuiSlides,
         TuiSwitch,
         TuiTitle,
     ],
@@ -35,7 +29,6 @@ import {
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiCrossFade],
 })
 export default class Example {
     protected floating = true;

@@ -52,7 +52,7 @@
     @if (value === 'primary') {
         <footer
             tuiFloatingContainer="transparent"
-            @tuiSlideInTop
+            class="static"
         >
             <button
                 appearance="accent"
@@ -65,10 +65,7 @@
     }
 
     @if (value === 'card') {
-        <footer
-            tuiFloatingContainer="transparent"
-            @tuiSlideInTop
-        >
+        <footer tuiFloatingContainer="transparent">
             <div
                 appearance="floating"
                 tuiCardLarge="compact"
@@ -93,10 +90,7 @@
     }
 
     @if (value === 'actions') {
-        <footer
-            tuiFloatingContainer
-            @tuiSlideInTop
-        >
+        <footer tuiFloatingContainer>
             <button
                 tuiButton
                 type="button"
