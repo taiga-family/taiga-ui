@@ -83,7 +83,7 @@ export const TUI_USED_ICONS = [
     '@tui.moon',
     '@tui.sun',
     '@tui.star-filled',
-    '@tui.arrow-right',
+    '@tui.edit',
     '@tui.pie-chart',
     '@tui.gitlab',
     '@tui.align-justify',

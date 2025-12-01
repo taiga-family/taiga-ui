@@ -93,7 +93,9 @@
             <button
                 tuiLink
                 type="button"
-                class="tui-space_left-3"
+                [style.margin-inline-start.rem]="0.75"
+                [style.text-decoration-line]="'underline'"
+                [style.text-decoration-style]="'dashed'"
                 (click)="toggleSelect()"
             >
                 {{ selected < items.length ? 'Select all' : 'Select none' }}

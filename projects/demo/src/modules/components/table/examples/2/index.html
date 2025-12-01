@@ -101,9 +101,14 @@
                     <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
                 </td>
                 <td tuiTd>
-                    <tui-items-with-more [style.gap.rem]="0.25">
+                    <tui-items-with-more>
                         @for (chip of item.items; track chip) {
-                            <tui-badge *tuiItem>{{ chip }}</tui-badge>
+                            <tui-badge
+                                *tuiItem
+                                [style.margin-inline-end.rem]="0.25"
+                            >
+                                {{ chip }}
+                            </tui-badge>
                         }
                         <ng-template
                             let-number
@@ -115,15 +120,15 @@
                                 tuiDropdownAuto
                                 tuiLink
                                 type="button"
-                                [pseudo]="true"
+                                [style.text-decoration-style]="'dashed'"
                                 [tuiDropdown]="dropdown"
                             >
                                 + {{ item.items.length - number - 1 }}
                             </button>
                             <ng-template #dropdown>
                                 <div
-                                    tuiStatus
-                                    [style.padding.rem]="1"
+                                    tuiItemGroup
+                                    [style.padding]="'1rem 0.75rem 0.75rem 1rem'"
                                 >
                                     @for (chip of item.items; track chip) {
                                         @if ($index > number) {

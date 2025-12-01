@@ -30,6 +30,7 @@ class Styles {}
     selector: '[tuiSkeleton]',
     host: {
         tuiSkeleton: '',
+        '[attr.inert]': '!!tuiSkeleton() || null',
         '[class._skeleton]': 'tuiSkeleton()',
         '[attr.data-tui-skeleton]': 'placeholder()',
     },

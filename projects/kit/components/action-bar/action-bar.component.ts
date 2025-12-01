@@ -12,7 +12,7 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
     styleUrl: './action-bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiLinkOptionsProvider({appearance: 'action-grayscale', pseudo: true}),
+        tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
         tuiButtonOptionsProvider(() => ({
             appearance: 'secondary-grayscale',
             size: inject(TuiActionBar).size(),

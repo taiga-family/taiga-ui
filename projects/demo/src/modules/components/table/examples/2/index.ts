@@ -23,6 +23,7 @@ import {
     TuiRadioList,
     TuiStatus,
 } from '@taiga-ui/kit';
+import {TuiItemGroup} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -37,6 +38,7 @@ import {
         TuiDropdown,
         TuiIcon,
         TuiInitialsPipe,
+        TuiItemGroup,
         TuiItemsWithMore,
         TuiLink,
         TuiProgressBar,
