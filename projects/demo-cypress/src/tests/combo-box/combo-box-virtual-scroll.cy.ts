@@ -64,7 +64,7 @@ export class Sandbox {
 
     protected readonly control = new FormControl<string | null>(null);
 
-    public readonly valueChanges = output();
+    public readonly valueChanges = output<string | null>();
 
     constructor() {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
