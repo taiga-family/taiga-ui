@@ -4,7 +4,6 @@ import {
     addImportToComponent,
     addImportToNgModule,
     addProviderToNgModule,
-    type ArrayLiteralExpression,
     type CallExpression,
     type ClassDeclaration,
     createProject,
@@ -12,7 +11,6 @@ import {
     type Identifier,
     Node,
     type ObjectLiteralExpression,
-    type PropertyAssignment,
     saveActiveProject,
     setActiveProject,
     SyntaxKind,
@@ -93,29 +91,8 @@ function addTuiEntitiesToStandalone({
 function addRootTuiProvidersToBootstrapFn(
     bootstrapOptions: ObjectLiteralExpression,
 ): void {
-    const property = bootstrapOptions.getProperty('providers') as PropertyAssignment;
-    const initializer = property.getInitializer() as ArrayLiteralExpression;
-    const provideAnimations = initializer
-        .getElements()
-        .find(
-            (el) =>
-                Node.isCallExpression(el) &&
-                el.getExpression().getText() === 'provideAnimations',
-        );
-
     pushToObjectArrayProperty(bootstrapOptions, 'providers', 'provideEventPlugins()');
     const modules = [];
-
-    if (!provideAnimations) {
-        modules.push({
-            name: 'provideAnimations',
-            packageName: '@angular/platform-browser/animations',
-        });
-
-        pushToObjectArrayProperty(bootstrapOptions, 'providers', 'provideAnimations()', {
-            index: 0,
-        });
-    }
 
     modules.push({name: 'provideEventPlugins', packageName: '@taiga-ui/event-plugins'});
 

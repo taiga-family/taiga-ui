@@ -26,7 +26,6 @@ export class StackblitzDepsService {
             '@angular/compiler': ngVersion,
             '@angular/core': ngVersion,
             '@angular/forms': ngVersion,
-            '@angular/platform-browser': ngVersion,
             '@angular/router': ngVersion,
             typescript: '5.8.x', // compatible with angular 20
         };

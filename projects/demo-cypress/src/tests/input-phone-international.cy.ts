@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {provideAnimations} from '@angular/platform-browser/animations';
 import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
@@ -38,7 +37,6 @@ import {createOutputSpy} from 'cypress/angular';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideAnimations(),
         {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
         tuiInputPhoneInternationalOptionsProvider({
             metadata: import('libphonenumber-js/min/metadata').then((m) => m.default),

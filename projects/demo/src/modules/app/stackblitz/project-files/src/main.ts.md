@@ -2,7 +2,6 @@
 import 'zone.js';
 import {provideRouter} from '@angular/router';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {provideAnimations} from '@angular/platform-browser/animations';
 import {Component} from '@angular/core';
 import {provideTaiga, tuiAssetsPathProvider, TuiRoot} from '@taiga-ui/core';
 
@@ -18,7 +17,6 @@ class Root {}
 
 bootstrapApplication(Root, {
   providers: [
-    provideAnimations(),
     provideRouter([]),
     /**
      * A workaround for StackBlitz only (it does not support assets).
