@@ -1,13 +1,13 @@
 ```ts
 // ...
 import {TuiButton} from '@taiga-ui/core';
-import {tuiFloatingContainer} from '@taiga-ui/layout';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    tuiFloatingContainer,
+    TuiFloatingContainer,
     TuiButton,
   ],
   // ...
