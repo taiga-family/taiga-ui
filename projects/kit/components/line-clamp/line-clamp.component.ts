@@ -18,6 +18,7 @@ import {
     TuiHint,
     TuiHintDirective,
 } from '@taiga-ui/core/directives/hint';
+import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     BehaviorSubject,
@@ -61,6 +62,7 @@ export class TuiLineClamp implements DoCheck {
     @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
+    private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly linesLimit$ = new BehaviorSubject(1);
@@ -131,6 +133,6 @@ export class TuiLineClamp implements DoCheck {
     }
 
     private get maxHeight(): number {
-        return this.lineHeight * this.linesLimit$.value;
+        return (this.lineHeight + this.offset()) * this.linesLimit$.value;
     }
 }

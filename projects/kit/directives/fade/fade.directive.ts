@@ -46,14 +46,17 @@ class TuiFadeStyles {}
     ],
     hostDirectives: [TuiTransitioned],
     host: {
-        '[style.line-height]': 'lineHeight',
-        '[style.--t-line-height]': 'lineHeight',
-        '[style.--t-fade-size]': 'size',
-        '[style.--t-fade-offset]': 'offset',
+        '[style.line-height]': 'adjustedLineHeight',
+        '[style.--t-line-height]': 'adjustedLineHeight',
+        '[style.--t-fade-size]': 'adjustedSize',
+        '[style.--t-fade-offset]': 'adjustedOffset',
+        '[style.--t-fade-scroll-height.px]': 'el.scrollHeight',
         '[attr.data-orientation]': 'orientation',
     },
 })
 export class TuiFade {
+    protected readonly el = tuiInjectElement();
+
     // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     @Input('tuiFadeHeight')
     public lineHeight: string | null = null;
@@ -68,26 +71,38 @@ export class TuiFade {
     public orientation: TuiOrientation | '' = 'horizontal';
 
     constructor() {
-        const el = tuiInjectElement();
-
         tuiWithStyles(TuiFadeStyles);
         merge(
             inject(ResizeObserverService, {self: true}),
             inject(MutationObserverService, {self: true}),
-            fromEvent(el, 'scroll'),
+            fromEvent(this.el, 'scroll'),
         )
             .pipe(
-                filter(() => !!el.scrollWidth),
+                filter(() => !!this.el.scrollWidth),
                 tuiZonefree(),
                 takeUntilDestroyed(),
             )
             .subscribe(() => {
-                el.classList.toggle('_end', this.isEnd(el));
-                el.classList.toggle(
+                this.el.classList.toggle('_end', this.isEnd(this.el));
+                this.el.classList.toggle(
                     '_start',
-                    !!Math.floor(el.scrollLeft) || !!Math.floor(el.scrollTop),
+                    !!Math.floor(this.el.scrollLeft) || !!Math.floor(this.el.scrollTop),
                 );
             });
+    }
+
+    protected get adjustedSize(): string {
+        return `calc(${this.size} + var(--tui-font-offset))`;
+    }
+
+    protected get adjustedOffset(): string {
+        return `calc(${this.offset} + var(--tui-font-offset))`;
+    }
+
+    protected get adjustedLineHeight(): string | null {
+        const lineHeight = this.lineHeight;
+
+        return lineHeight ? `calc(${lineHeight} + var(--tui-font-offset))` : null;
     }
 
     private isEnd({
