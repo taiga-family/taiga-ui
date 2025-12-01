@@ -1,20 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLink, TuiNotification} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiLink, TuiNotification],
+    imports: [TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
-export default class Example {
-    protected readonly appearances = [
-        'action',
-        'action-grayscale',
-        'action-destructive',
-        '',
-    ];
-}
+export default class Example {}
