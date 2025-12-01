@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.63.0](https://github.com/taiga-family/taiga-ui/compare/v4.62.0...v4.63.0) (2025-12-01)
+
+### 🚀 Features
+
+- **cdk:** milliseconds just be a non-negative integer ([#12699](https://github.com/taiga-family/taiga-ui/issues/12699))
+  ([41242bb](https://github.com/taiga-family/taiga-ui/commit/41242bbb08e0a8aaf778bd34e602584894d8c68a))
+- **kit:** add screen reader support to preview-zoom component
+  ([#12515](https://github.com/taiga-family/taiga-ui/issues/12515))
+  ([3d55157](https://github.com/taiga-family/taiga-ui/commit/3d55157327682962a34d8db48b9f1f30bf400dcd))
+
+### 🐞 Bug Fixes
+
+- **addon-table:** `TableControl` fix empty list view ([#12694](https://github.com/taiga-family/taiga-ui/issues/12694))
+  ([b22ed2a](https://github.com/taiga-family/taiga-ui/commit/b22ed2a36a6e179a8de0efab10c6a0c952be46ab))
+- **cdk:** `Animated` remove tick ([#12670](https://github.com/taiga-family/taiga-ui/issues/12670))
+  ([d4347bb](https://github.com/taiga-family/taiga-ui/commit/d4347bb6aaad61ff7279e5c529476915225bed42))
+
 ## [4.62.0](https://github.com/taiga-family/taiga-ui/compare/v4.61.0...v4.62.0) (2025-11-24)
 
 ### 🐞 Bug Fixes
