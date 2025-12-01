@@ -29,10 +29,7 @@ class Styles {}
     selector: 'a[tuiLink], button[tuiLink]',
     providers: [tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
-    host: {
-        tuiLink: '',
-        // '[style.text-decoration-line]': 'pseudo() ? "underline" : null',
-    },
+    host: {tuiLink: ''},
 })
 export class TuiLink {
     protected readonly nothing = tuiWithStyles(Styles);
