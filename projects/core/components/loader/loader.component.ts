@@ -26,12 +26,8 @@ export class TuiLoader {
     protected readonly isHorizontal = computed(() => !tuiSizeBigger(this.size()));
 
     public readonly size = input(this.options.size);
-
     public readonly inheritColor = input(this.options.inheritColor);
-
     public readonly overlay = input(this.options.overlay);
-
     public readonly textContent = input<PolymorpheusContent>();
-
     public readonly loading = input(true);
 }

@@ -20,12 +20,7 @@ export class TuiPositionService extends Observable<TuiPoint> {
             animationFrame$
                 .pipe(
                     startWith(null),
-                    map(() =>
-                        this.accessor.getPosition(
-                            this.el.getBoundingClientRect(),
-                            this.el,
-                        ),
-                    ),
+                    map(() => this.accessor.getPosition(this.el.getBoundingClientRect())),
                     tuiZonefree(zone),
                     finalize(() => this.accessor.getPosition(EMPTY_CLIENT_RECT)),
                 )

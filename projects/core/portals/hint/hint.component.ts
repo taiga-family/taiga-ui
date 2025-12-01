@@ -97,7 +97,7 @@ export class TuiHintComponent {
                 takeUntilDestroyed(),
             )
             .subscribe({
-                next: ([top, left]) => this.update(top, left),
+                next: (point) => this.update(...point),
                 complete: () => this.hover.close(),
             });
 
@@ -127,7 +127,7 @@ export class TuiHintComponent {
         );
     }
 
-    private update(top: number, left: number): void {
+    private update(left: number, top: number): void {
         const {clientHeight, clientWidth} = this.el;
         const rect = this.accessor.getClientRect();
 

@@ -18,6 +18,6 @@ export class TuiLineClampPositionDirective extends TuiPositionAccessor {
     public getPosition(): TuiPoint {
         const {top, left} = this.accessor.getClientRect();
 
-        return [top, left];
+        return [left, top];
     }
 }

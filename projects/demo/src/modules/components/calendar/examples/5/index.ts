@@ -1,9 +1,9 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {type TuiDay, type TuiHandler} from '@taiga-ui/cdk';
-import {TUI_DAY_TYPE_HANDLER, TuiCalendar} from '@taiga-ui/core';
+import {TuiCalendar, tuiCalendarOptionsProvider} from '@taiga-ui/core';
 
-const useValue: TuiHandler<TuiDay, string> = (day) => {
+const dayType: TuiHandler<TuiDay, string> = (day) => {
     if (day.day === 10) {
         return 'holiday';
     }
@@ -17,6 +17,6 @@ const useValue: TuiHandler<TuiDay, string> = (day) => {
     styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
-    providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue}],
+    providers: [tuiCalendarOptionsProvider({dayType})],
 })
 export default class Example {}

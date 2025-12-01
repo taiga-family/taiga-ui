@@ -4,6 +4,7 @@ import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
@@ -12,6 +13,7 @@ import {
     tuiTextfieldIcon,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
@@ -43,8 +45,12 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly filler = tuiWithDateFiller();
     protected readonly format = inject(TUI_DATE_FORMAT);
-    protected readonly stringify = this.handlers.stringify.set((item) =>
-        item.toString(this.format().mode, this.format().separator),
+
+    protected readonly stringify = tuiDirectiveBinding(
+        TuiItemsHandlersDirective,
+        'stringify',
+        (item) => item.toString(this.format().mode, this.format().separator),
+        {},
     );
 
     protected readonly mask = tuiMaskito(

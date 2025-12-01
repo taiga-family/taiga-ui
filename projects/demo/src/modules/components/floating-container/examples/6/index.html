@@ -44,39 +44,34 @@
     }
 
     @if (floating) {
-        <footer
-            @tuiSlideInTop
-            [tuiFloatingContainer]="secondAction ? '' : 'transparent'"
-        >
-            @if (!action) {
-                <button
-                    tuiButton
-                    type="button"
-                    [@tuiCrossFade]="{value: '', params: {duration: 0.25}}"
-                >
-                    Main action
-                </button>
-            }
-            @if (action) {
-                <button
-                    appearance="primary-grayscale"
-                    tuiButton
-                    type="button"
-                    [@tuiCrossFade]="{value: '', params: {duration: 0.25}}"
-                >
-                    Add to Apple Wallet
-                </button>
-            }
-            @if (secondAction) {
+        <footer [tuiFloatingContainer]="secondAction ? '' : 'transparent'">
+            <div tuiSlides>
+                @if (action) {
+                    <button
+                        appearance="primary-grayscale"
+                        tuiButton
+                        type="button"
+                    >
+                        Add to Apple Wallet
+                    </button>
+                } @else {
+                    <button
+                        tuiButton
+                        type="button"
+                    >
+                        Main action
+                    </button>
+                }
+            </div>
+            <tui-expand [expanded]="secondAction">
                 <button
                     appearance="flat"
                     tuiButton
                     type="button"
-                    @tuiHeightCollapse
                 >
                     Secondary action
                 </button>
-            }
+            </tui-expand>
         </footer>
     }
 </div>

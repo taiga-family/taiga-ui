@@ -23,7 +23,7 @@ class TopRightDirective extends TuiPositionAccessor {
     public getPosition({height}: DOMRect): TuiPoint {
         const {right, top} = this.el.getBoundingClientRect();
 
-        return [top - height, right];
+        return [right, top - height];
     }
 }
 

@@ -1,9 +1,4 @@
-import {Directive, inject, Input, signal} from '@angular/core';
-import {
-    type TuiBooleanHandler,
-    type TuiIdentityMatcher,
-    type TuiStringHandler,
-} from '@taiga-ui/cdk/types';
+import {Directive, inject, input} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from './items-handlers.tokens';
@@ -12,33 +7,13 @@ import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from './items-handlers.tokens
     providers: [tuiProvide(TUI_ITEMS_HANDLERS, TuiItemsHandlersDirective)],
 })
 export class TuiItemsHandlersDirective<T> implements TuiItemsHandlers<T> {
-    private readonly defaultHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS, {
+    private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS, {
         skipSelf: true,
     });
 
-    public readonly stringify = signal(this.defaultHandlers.stringify());
-    public readonly identityMatcher = signal(this.defaultHandlers.identityMatcher());
-    public readonly disabledItemHandler = signal(
-        this.defaultHandlers.disabledItemHandler(),
-    );
-
-    // TODO(v5): use signal inputs
-    @Input('stringify')
-    public set stringifySetter(x: TuiStringHandler<T>) {
-        this.stringify.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('identityMatcher')
-    public set identityMatcherSetter(x: TuiIdentityMatcher<T>) {
-        this.identityMatcher.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('disabledItemHandler')
-    public set disabledItemHandlerSetter(x: TuiBooleanHandler<T>) {
-        this.disabledItemHandler.set(x);
-    }
+    public readonly stringify = input(this.handlers.stringify());
+    public readonly identityMatcher = input(this.handlers.identityMatcher());
+    public readonly disabledItemHandler = input(this.handlers.disabledItemHandler());
 }
 
 @Directive({

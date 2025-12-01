@@ -1,9 +1,7 @@
 ```html
 ... Some content
 
-<footer
-  tuiFloatingContainer
->
+<footer tuiFloatingContainer>
   <button
     tuiButton
     type="button"
@@ -15,7 +13,7 @@
     tuiButton
     type="button"
   >
-     Secondary action
+    Secondary action
   </button>
 </label>
 ```

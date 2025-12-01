@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
@@ -10,10 +10,6 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
-import {
-    TUI_ITEMS_HANDLERS,
-    type TuiItemsHandlers,
-} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
@@ -36,10 +32,6 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
     hostDirectives: [TuiWithInput, TuiDropdownAuto, MaskitoDirective],
 })
 export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
-    protected readonly identity = inject<TuiItemsHandlers<TuiDayRange>>(
-        TUI_ITEMS_HANDLERS,
-    ).identityMatcher.set((a, b) => a.daySame(b));
-
     protected override readonly filler = tuiWithDateFiller(
         (filler) => `${filler}${RANGE_SEPARATOR_CHAR}${filler}`,
     );
@@ -57,18 +49,8 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
         ),
     );
 
-    public readonly minLength = signal<TuiDayLike | null>(null);
-    public readonly maxLength = signal<TuiDayLike | null>(null);
-
-    @Input('minLength')
-    public set minLengthSetter(minLength: TuiDayLike | null) {
-        this.minLength.set(minLength);
-    }
-
-    @Input('maxLength')
-    public set maxLengthSetter(maxLength: TuiDayLike | null) {
-        this.maxLength.set(maxLength);
-    }
+    public readonly minLength = input<TuiDayLike | null>(null);
+    public readonly maxLength = input<TuiDayLike | null>(null);
 
     protected override processCalendar(calendar: TuiCalendarRange): void {
         super.processCalendar(calendar);

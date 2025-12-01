@@ -11,7 +11,7 @@ import {
     type TuiDayLike,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TuiLink, type TuiMarkerHandler} from '@taiga-ui/core';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TuiCalendarRange,
     tuiCreateDefaultDayRangePeriods,
@@ -25,7 +25,7 @@ const TWO_DOTS: [string, string] = [
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    imports: [TuiCalendarRange, TuiDemo, TuiLink],
+    imports: [TuiCalendarRange, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

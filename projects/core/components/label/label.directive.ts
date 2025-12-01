@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
     Directive,
     forwardRef,
     inject,
@@ -25,13 +25,11 @@ class Styles {}
     selector: 'label[tuiLabel]',
     host: {
         '[attr.for]': 'el.htmlFor || parent?.id',
-        '[attr.data-orientation]': 'textfield ? "vertical" : "horizontal"',
+        '[attr.data-orientation]': 'textfield() ? "vertical" : "horizontal"',
     },
 })
 export class TuiLabel {
-    @ContentChild(forwardRef(() => TUI_DATA_LIST_HOST))
-    protected readonly textfield?: unknown;
-
+    protected readonly textfield = contentChild(forwardRef(() => TUI_DATA_LIST_HOST));
     protected readonly el = tuiInjectElement<HTMLLabelElement>();
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly parent = inject(

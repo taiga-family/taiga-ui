@@ -1,4 +1,3 @@
-export * from '@taiga-ui/core/animations';
 export * from '@taiga-ui/core/classes';
 export * from '@taiga-ui/core/components';
 export * from '@taiga-ui/core/directives';

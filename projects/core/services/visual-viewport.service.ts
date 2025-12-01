@@ -14,8 +14,8 @@ export class TuiVisualViewportService {
     public correct(point: TuiPoint): TuiPoint {
         return this.isWebkit
             ? [
-                  point[0] + (this.win.visualViewport?.offsetTop ?? 0),
-                  point[1] + (this.win.visualViewport?.offsetLeft ?? 0),
+                  point[0] + (this.win.visualViewport?.offsetLeft ?? 0),
+                  point[1] + (this.win.visualViewport?.offsetTop ?? 0),
               ]
             : point;
     }
