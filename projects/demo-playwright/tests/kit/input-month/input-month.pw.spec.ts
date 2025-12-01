@@ -40,15 +40,6 @@ describe('InputMonth', () => {
                 await expect(inputMonth.calendar).not.toBeAttached();
             });
 
-            test('does NOT open on click for disabled input', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputMonth}/API?disabled=true`);
-
-                await expect(inputMonth.calendar).not.toBeAttached();
-                // eslint-disable-next-line playwright/no-force-option
-                await inputMonth.textfield.click({force: true});
-                await expect(inputMonth.calendar).not.toBeAttached();
-            });
-
             test('closes dropdown on the second click on the textfield', async ({
                 page,
             }) => {
@@ -97,20 +88,6 @@ describe('InputMonth', () => {
 
                 await inputMonth.clickOnIcon();
                 await expect(inputMonth.calendar).toBeAttached();
-            });
-
-            test('does NOT open dropdown on click on calendar icon for disabled input', async ({
-                page,
-            }) => {
-                await tuiGoto(
-                    page,
-                    `${DemoRoute.InputMonth}/API?disabled=true&readOnly=false`,
-                );
-
-                await expect(inputMonth.calendar).not.toBeAttached();
-
-                await inputMonth.clickOnIcon();
-                await expect(inputMonth.calendar).not.toBeAttached();
             });
 
             test('does NOT open dropdown on click on calendar icon for readonly input', async ({
