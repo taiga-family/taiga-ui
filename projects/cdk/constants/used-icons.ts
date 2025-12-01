@@ -56,11 +56,11 @@ export const TUI_USED_ICONS = [
     '@tui.plus',
     '@tui.heart',
     '@tui.heart-filled',
-    '@tui.star',
     '@tui.rotate-ccw-square',
     '@tui.arrow-left',
     '@tui.arrow-right',
     '@tui.minimize',
+    '@tui.star',
     '@tui.filter',
     '@tui.layout-grid',
 ] as const;
