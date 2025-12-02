@@ -12,6 +12,7 @@ import {
     provideZoneChangeDetection,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {provideAnimations} from '@angular/platform-browser/animations';
 import {
     NavigationStart,
     provideRouter,
@@ -65,6 +66,7 @@ import {TuiViewportScroller} from './utils/viewport-scroller.service';
 
 export const config: ApplicationConfig = {
     providers: [
+        provideAnimations(), // TODO: explore why Tabs does not properly work without it. Then remove it
         provideRouter(
             ROUTES,
             withInMemoryScrolling({

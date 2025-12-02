@@ -2,6 +2,7 @@
     "name": "@taiga-ui/demo",
     "private": true,
     "devDependencies": {
+        "@angular/animations": "19.2.16",
         "@angular/cdk": "19.2.19",
         "@angular/common": "19.2.16",
         "@angular/core": "19.2.16",
