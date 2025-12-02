@@ -87,7 +87,7 @@ describe('ng-update avatar', () => {
         expect(
             await migrate(
                 `
-                <tui-avatar class="tui-space_horizontal-4">
+                <tui-avatar class="tw-ms-4 tw-me-4">
                     <picture>
                         <source
                             media="(min-width: 600px)"
@@ -103,7 +103,7 @@ describe('ng-update avatar', () => {
             ),
         ).toEqual(
             `
-                <span tuiAvatar class="tui-space_horizontal-4">
+                <span tuiAvatar class="tw-ms-4 tw-me-4">
                     <picture>
                         <source
                             media="(min-width: 600px)"

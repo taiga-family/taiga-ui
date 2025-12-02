@@ -6,14 +6,14 @@
     <label tuiLabel>Type a text to start computing</label>
 </tui-textfield>
 
-<div class="tui-space_top-2">Called times: {{ counter.count }}</div>
+<div class="tw-mt-2">Called times: {{ counter.count }}</div>
 @if (show) {
-    <div class="tui-space_top-2">Result: {{ calculate(counter, text) | json }}</div>
+    <div class="tw-mt-2">Result: {{ calculate(counter, text) | json }}</div>
 }
 <button
     tuiButton
     type="button"
-    class="tui-space_top-2"
+    class="tw-mt-2"
     (click)="show = !show"
 >
     Show/hide

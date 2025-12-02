@@ -17,7 +17,7 @@
         size="s"
         tuiButton
         type="button"
-        class="tui-space_top-4"
+        class="tw-mt-4"
         (click)="nextQuestion()"
     >
         Next
@@ -25,7 +25,7 @@
 } @else {
     <p><b>Your answers</b></p>
     @for (options of results; track options; let i = $index) {
-        <div class="tui-space_top-4">
+        <div class="tw-mt-4">
             <p>{{ i + 1 }}. {{ questionTitles[i] }}</p>
             @for (question of questions[i]; track question; let j = $index) {
                 <label>

@@ -779,11 +779,6 @@ export const ROUTES: Routes = [
         title: 'Shadows',
     }),
     route({
-        path: DemoRoute.Spaces,
-        loadComponent: async () => import('../markup/spaces'),
-        title: 'Spaces',
-    }),
-    route({
         path: DemoRoute.Typography,
         loadComponent: async () => import('../markup/typography'),
         title: 'Typography',

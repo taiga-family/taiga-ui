@@ -70,7 +70,7 @@
         tuiTd
       >
         <tui-tag
-          class="tui-space_right-1"
+          class="tw-me-1"
           *ngFor="let tag of item.tags"
           [value]="tag"
           [autoColor]="true"

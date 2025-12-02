@@ -19,7 +19,7 @@
             </div>
         </tui-notification>
 
-        <tui-notification class="tui-space_vertical-4">
+        <tui-notification class="tw-my-4">
             Use
             <code>
                 <strong>TUI_DIALOGS_CLOSE</strong>
@@ -112,7 +112,7 @@
         >
             <tui-notification
                 appearance="warning"
-                class="tui-space_bottom-4"
+                class="tw-mb-4"
             >
                 Works only on mobile browsers
             </tui-notification>
@@ -174,7 +174,7 @@
                 size="m"
                 tuiButton
                 type="button"
-                class="tui-space_top-2 tui-space_right-1"
+                class="tw-mt-2 tw-me-1"
                 (click)="observer.complete()"
             >
                 Close
@@ -183,7 +183,7 @@
                 size="m"
                 tuiButton
                 type="button"
-                class="tui-space_top-2 tui-space_right-1"
+                class="tw-mt-2 tw-me-1"
                 (click)="observer.next('Hi')"
             >
                 Say "Hi"
@@ -192,7 +192,7 @@
                 size="m"
                 tuiButton
                 type="button"
-                class="tui-space_top-2 tui-space_right-1"
+                class="tw-mt-2 tw-me-1"
                 (click)="completeWith('Hi and bye!')"
             >
                 Say "Hi and bye!"
@@ -341,7 +341,7 @@
                     [code]="exampleCustomDialog"
                 />
 
-                <tui-notification class="tui-space_top-3">
+                <tui-notification class="tw-mt-3">
                     <code [innerText]="'TuiDialogContext<Type1 = void, Type2 = undefined>'"></code>
                     , the first type is the return type of value, for example:
                     <code [innerText]="'this.dialogs.open(...).subscribe((value: Type1) => ... )'"></code>

@@ -49,7 +49,7 @@ const TEMPLATE_BEFORE = `
 <tui-badged-content
      colorTop="var(--tui-error-fill)"
      size="l"
-     class="tui-space_right-5"
+     class="tw-me-5"
      [rounded]="true"
 >
      <tui-avatar
@@ -63,7 +63,7 @@ const TEMPLATE_BEFORE = `
   colorBottom="var(--tui-error-fill)"
   contentBottom="tuiIconCheckCircleLarge"
   size="l"
-  class="tui-space_right-5"
+  class="tw-me-5"
   [contentTop]="64"
 >
     <tui-avatar
@@ -101,7 +101,7 @@ const TEMPLATE_AFTER = `
 <tui-badged-content
     ${''}
     ${''}
-     class="tui-space_right-5"
+     class="tw-me-5"
     ${''}
  [style.--tui-radius.%]="50">
 <tui-badge-notification
@@ -120,7 +120,7 @@ const TEMPLATE_AFTER = `
  ${''}
  ${''}
  ${''}
-  class="tui-space_right-5"
+  class="tw-me-5"
  ${''}
  [style.--tui-radius.%]="50"><tui-badge-notification
         size="l"

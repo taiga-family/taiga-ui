@@ -136,9 +136,11 @@
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "10.0.0",
         "nx": "22.1.1",
+        "postcss": "8.5.6",
         "rxjs": "7.8.2",
         "source-map": "0.7.6",
         "standard-version": "9.5.0",
+        "tailwindcss": "3.4.18",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.8.3"

@@ -52,7 +52,7 @@ export class MyComponent {}`,
  <tui-input-year
     formControlName="testValue"
     tuiTextfieldSize="s"
-    class="tui-space_bottom-2"
+    class="tw-mb-2"
 >
     Choose a year
 </tui-input-year>
@@ -130,7 +130,7 @@ ${'    '}
  <tui-textfield${' '}
 ${'    '}
     tuiTextfieldSize="s"
-    class="tui-space_bottom-2"
+    class="tw-mb-2"
 >
 <label tuiLabel>
     Choose a year

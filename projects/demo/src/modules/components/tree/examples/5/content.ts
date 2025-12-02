@@ -7,7 +7,7 @@ import {TuiTreeItemContent} from '@taiga-ui/kit';
     imports: [NgTemplateOutlet, TuiIcon],
     template: `
         <tui-icon
-            class="tui-space_right-2"
+            class="tw-me-2"
             [icon]="icon"
         />
         <ng-container [ngTemplateOutlet]="context.template" />

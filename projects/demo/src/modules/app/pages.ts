@@ -156,13 +156,6 @@ export const pages: DocRoutePages = [
                     'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
                 route: DemoRoute.Lists,
             },
-            {
-                section: 'Foundations',
-                title: 'Spaces',
-                keywords:
-                    'layout, markup, отступы, margin, padding, маржин, падинг, spaces',
-                route: DemoRoute.Spaces,
-            },
         ],
     },
     // Components

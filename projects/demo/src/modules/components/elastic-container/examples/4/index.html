@@ -6,7 +6,7 @@
 >
     Add item
 </button>
-<tui-elastic-container class="tui-space_top-4">
+<tui-elastic-container class="tw-mt-4">
     @for (item of items; track item) {
         <div class="wrapper">
             <h3 class="title">
@@ -15,7 +15,7 @@
                     size="s"
                     tuiIconButton
                     type="button"
-                    class="tui-space_right-2"
+                    class="tw-me-2"
                     [style.border-radius.%]="100"
                     [tuiChevron]="item.expanded"
                     (click)="item.expanded = !item.expanded"
@@ -37,7 +37,7 @@
                 </button>
             </h3>
             <tui-expand [expanded]="item.expanded">
-                <tui-textfield class="tui-space_top-4">
+                <tui-textfield class="tw-mt-4">
                     <input
                         tuiInput
                         [(ngModel)]="item.value"

@@ -3,7 +3,7 @@
 <form [formGroup]="parametersForm">
     <div class="parameters">
         @for (parameter of ['value', 'min', 'max']; track parameter) {
-            <tui-textfield class="tui-space_top-2">
+            <tui-textfield class="tw-mt-2">
                 <label tuiLabel>{{ parameter }}</label>
                 <input
                     tuiInputNumber
