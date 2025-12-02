@@ -942,16 +942,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiBackModule',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
-        },
-        to: {
-            name: 'TuiBlockerComponent',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-    },
-    {
-        from: {
             name: 'TuiConfirmationModule',
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
@@ -1055,8 +1045,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
         to: {
-            name: 'TuiSignalComponent',
-            moduleSpecifier: '@taiga-ui/proprietary',
+            name: 'TuiPulse',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {
@@ -1097,16 +1087,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiEmailsPipe',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-    },
-    {
-        from: {
-            name: 'ProductsNavigationModule',
-            moduleSpecifier: '@taiga-ui/proprietary-navigation',
-        },
-        to: {
-            name: 'ProductsNavigationComponent',
             moduleSpecifier: '@taiga-ui/proprietary',
         },
     },
@@ -1177,20 +1157,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiTimelineStepsModule',
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
-        to: [
-            {
-                name: 'TuiTimelineStepsComponent',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-            {
-                name: 'TuiTimelineStepComponent',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-            {
-                name: 'TuiTimelineStepDirective',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-        ],
+        to: {
+            name: 'TuiTimelineSteps',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
     },
     {
         from: {
