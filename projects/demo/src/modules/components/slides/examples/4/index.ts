@@ -4,8 +4,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiDialogService, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCard, TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiProgressBar} from '@taiga-ui/kit';
+import {
+    TuiAppBar,
+    TuiCard,
+    TuiFloatingContainer,
+    TuiHeader,
+    TuiSlides,
+} from '@taiga-ui/layout';
 
 @Component({
     imports: [

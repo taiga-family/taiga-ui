@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,7 +12,7 @@ import {getCountries} from 'libphonenumber-js';
 import {defer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, FormsModule, TuiInputPhoneInternational, TuiSortCountriesPipe],
+    imports: [FormsModule, TuiInputPhoneInternational, TuiSortCountriesPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

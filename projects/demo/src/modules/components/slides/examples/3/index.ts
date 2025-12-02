@@ -9,7 +9,8 @@ import {
 } from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSlides, TuiTabs} from '@taiga-ui/kit';
+import {TuiTabs} from '@taiga-ui/kit';
+import {TuiSlides} from '@taiga-ui/layout';
 import {filter, map, pairwise} from 'rxjs';
 
 @Component({

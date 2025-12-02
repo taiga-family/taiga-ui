@@ -3,13 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiElasticContainer,
-    TuiFloatingContainer,
-    TuiSlides,
-    TuiSwitch,
-} from '@taiga-ui/kit';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiElasticContainer, TuiFloatingContainer, TuiSlides} from '@taiga-ui/layout';
 
 @Component({
     imports: [

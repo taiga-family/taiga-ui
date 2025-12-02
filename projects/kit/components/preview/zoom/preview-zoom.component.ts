@@ -14,10 +14,11 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TuiSlider} from '@taiga-ui/kit/components/slider';
-import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 
 import {TuiPreviewAction} from '../action/preview-action.directive';
+import {TUI_PREVIEW_ICONS, type TuiPreviewIcons} from '../preview.options';
 
 const STEP = 0.5;
 
@@ -37,7 +38,7 @@ const STEP = 0.5;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewZoom {
-    protected readonly icons = inject(TUI_PREVIEW_ICONS);
+    protected readonly icons: TuiPreviewIcons = inject(TUI_PREVIEW_ICONS);
     protected readonly zoomTexts = inject(TUI_PREVIEW_ZOOM_TEXTS);
     protected readonly sliderLabel = computed(
         () => `${this.zoomTexts().zoomOut} / ${this.zoomTexts().zoomIn}`,

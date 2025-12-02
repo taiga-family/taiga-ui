@@ -7,7 +7,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber, TuiSlides} from '@taiga-ui/kit';
+import {TuiInputNumber} from '@taiga-ui/kit';
+import {TuiSlides} from '@taiga-ui/layout';
 import {filter, map} from 'rxjs';
 
 import {Home} from './examples/3/home';

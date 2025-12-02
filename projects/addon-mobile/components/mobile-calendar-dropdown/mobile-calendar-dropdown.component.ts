@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    type ValueProvider,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiControl} from '@taiga-ui/cdk/classes';
@@ -25,7 +19,6 @@ import {
     calculateDisabledItemHandler,
     TUI_DAY_CAPS_MAPPER,
 } from '@taiga-ui/kit/components/calendar-range';
-import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {type Observer} from 'rxjs';
 
@@ -167,11 +160,4 @@ export class TuiMobileCalendarDropdown {
     private is(selector: string): boolean {
         return !!this.dropdown?.el.closest(selector);
     }
-}
-
-export function tuiProvideMobileCalendar(): ValueProvider {
-    return {
-        provide: TUI_MOBILE_CALENDAR,
-        useValue: TuiMobileCalendarDropdown,
-    };
 }

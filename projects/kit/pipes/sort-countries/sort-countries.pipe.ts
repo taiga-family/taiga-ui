@@ -1,22 +1,28 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
+import {
+    computed,
+    inject,
+    Pipe,
+    type PipeTransform,
+    signal,
+    untracked,
+} from '@angular/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
-import {map, type Observable} from 'rxjs';
 
 @Pipe({
     name: 'tuiSortCountries',
+    pure: false,
 })
 export class TuiSortCountriesPipe implements PipeTransform {
-    private readonly countriesNames$ = toObservable(inject(TUI_COUNTRIES));
+    private readonly names = inject(TUI_COUNTRIES);
+    private readonly countries = signal<readonly TuiCountryIsoCode[]>([]);
+    private readonly result = computed((names = this.names()) =>
+        [...this.countries()].sort((a, b) => names[a].localeCompare(names[b])),
+    );
 
-    public transform(
-        countries: readonly TuiCountryIsoCode[],
-    ): Observable<TuiCountryIsoCode[]> {
-        return this.countriesNames$.pipe(
-            map((names) =>
-                [...countries].sort((a, b) => names[a].localeCompare(names[b])),
-            ),
-        );
+    public transform(countries: readonly TuiCountryIsoCode[]): TuiCountryIsoCode[] {
+        untracked(() => this.countries.set(countries));
+
+        return this.result();
     }
 }

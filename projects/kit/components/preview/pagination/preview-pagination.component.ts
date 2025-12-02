@@ -8,9 +8,10 @@ import {
 } from '@angular/core';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
+import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 
 import {TuiPreviewAction} from '../action/preview-action.directive';
+import {TUI_PREVIEW_ICONS, type TuiPreviewIcons} from '../preview.options';
 
 @Component({
     selector: 'tui-preview-pagination',
@@ -24,7 +25,7 @@ import {TuiPreviewAction} from '../action/preview-action.directive';
     },
 })
 export class TuiPreviewPagination {
-    protected readonly icons = inject(TUI_PREVIEW_ICONS);
+    protected readonly icons: TuiPreviewIcons = inject(TUI_PREVIEW_ICONS);
     protected readonly paginationTexts = inject(TUI_PAGINATION_TEXTS);
 
     @Input()

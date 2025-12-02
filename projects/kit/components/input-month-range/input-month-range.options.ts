@@ -7,7 +7,7 @@ import {type TuiMonthRange} from '@taiga-ui/cdk/date-time';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
-import {TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW} from '@taiga-ui/kit/components/input-date';
+import {TUI_INPUT_DATE_DEFAULT_OPTIONS} from '@taiga-ui/kit/components/input-date';
 import {TUI_INPUT_MONTH_OPTIONS} from '@taiga-ui/kit/components/input-month';
 
 export interface TuiInputMonthRangeOptions {
@@ -32,5 +32,5 @@ export const tuiInputMonthRangeOptionsProvider = (
     tuiProvideOptions(
         TUI_INPUT_MONTH_RANGE_OPTIONS,
         options,
-        TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
+        TUI_INPUT_DATE_DEFAULT_OPTIONS,
     );

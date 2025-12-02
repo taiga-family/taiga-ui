@@ -13,7 +13,7 @@ import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
-    TUI_INPUT_DATE_OPTIONS_NEW,
+    TUI_INPUT_DATE_OPTIONS,
     TuiInputDateBase,
     tuiWithDateFiller,
 } from '@taiga-ui/kit/components/input-date';
@@ -27,7 +27,7 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
         // TODO: Add SelectOption after data-list in calendar-range is refactored
         tuiAsControl(TuiInputDateRangeDirective),
         tuiValueTransformerFrom(TUI_INPUT_DATE_RANGE_OPTIONS),
-        tuiProvide(TUI_INPUT_DATE_OPTIONS_NEW, TUI_INPUT_DATE_RANGE_OPTIONS),
+        tuiProvide(TUI_INPUT_DATE_OPTIONS, TUI_INPUT_DATE_RANGE_OPTIONS),
     ],
     hostDirectives: [TuiWithInput, TuiDropdownAuto, MaskitoDirective],
 })

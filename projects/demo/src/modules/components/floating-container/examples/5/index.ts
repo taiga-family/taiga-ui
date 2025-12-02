@@ -5,11 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
-    TuiFloatingContainer,
     TuiInputColor,
     tuiInputColorOptionsProvider,
     TuiSwitch,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [

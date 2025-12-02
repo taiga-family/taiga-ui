@@ -5,8 +5,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TuiButton, TuiInput, TuiTitle} from '@taiga-ui/core';
-import {TuiElasticContainer, TuiSlides, TuiStepper} from '@taiga-ui/kit';
-import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiStepper} from '@taiga-ui/kit';
+import {
+    TuiCard,
+    TuiElasticContainer,
+    TuiForm,
+    TuiHeader,
+    TuiSlides,
+} from '@taiga-ui/layout';
 
 @Component({
     imports: [
