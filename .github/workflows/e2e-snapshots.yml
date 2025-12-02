@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.172.0
-      - uses: taiga-family/ci/actions/setup/node@v1.172.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.172.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
+      - uses: taiga-family/ci/actions/setup/node@v1.174.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.174.0
 
       - run: npx nx build demo
-      - uses: taiga-family/ci/actions/run/serve@v1.172.0
+      - uses: taiga-family/ci/actions/run/serve@v1.174.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -38,8 +38,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.172.0
-      - uses: taiga-family/ci/actions/setup/node@v1.172.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
+      - uses: taiga-family/ci/actions/setup/node@v1.174.0
 
       - run: npx nx component-test demo-cypress
 
