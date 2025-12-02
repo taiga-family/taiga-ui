@@ -5007,14 +5007,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiBadge,
-    TuiButtonGroup,
-    TuiCarousel,
-    TuiElasticContainer,
-    TuiPager,
-} from '@taiga-ui/kit';
-import {TuiCardMedium} from '@taiga-ui/layout';
+import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -11529,8 +11523,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiDialog, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
-import {TuiAppBar, TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiProgress} from '@taiga-ui/kit';
+import {TuiAppBar, TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -11943,14 +11937,14 @@ export default class Page {
 
 ---
 # components/ElasticContainer
-- **Package**: `KIT`
+- **Package**: `LAYOUT`
 - **Type**: components
 A wrapper component that changes its height with transition, depending on the content
 
 ### How to Use (Import)
 
 ```ts
-import {TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiElasticContainer} from '@taiga-ui/layout';
 
 // ...
 
@@ -11990,7 +11984,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLink} from '@taiga-ui/core';
-import {TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiElasticContainer, TuiLink],
@@ -12026,7 +12020,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiElasticContainer],
@@ -12052,7 +12046,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiElasticContainer],
@@ -12099,7 +12093,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayRemove} from '@taiga-ui/cdk';
 import {TuiButton, TuiExpand, TuiInput} from '@taiga-ui/core';
-import {TuiChevron, TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiChevron} from '@taiga-ui/kit';
+import {TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -12798,7 +12793,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiExpand, TuiLoader} from '@taiga-ui/core';
-import {TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiElasticContainer} from '@taiga-ui/layout';
 import {map, startWith, timer} from 'rxjs';
 
 @Component({
@@ -13293,7 +13288,7 @@ export default class Page {
 
 ---
 # components/FloatingContainer
-- **Package**: `KIT`
+- **Package**: `LAYOUT`
 - **Type**: components
 FloatingContainer is a special container for creating different animated sticky footers
 
@@ -13301,13 +13296,14 @@ FloatingContainer is a special container for creating different animated sticky 
 
 ```ts
 // ...
-import {tuiFloatingContainer, TuiButton} from '@taiga-ui/kit';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    tuiFloatingContainer,
+    TuiFloatingContainer,
     TuiButton,
   ],
   // ...
@@ -13399,7 +13395,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13472,8 +13469,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13544,13 +13541,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiElasticContainer,
-    TuiFloatingContainer,
-    TuiSlides,
-    TuiSwitch,
-} from '@taiga-ui/kit';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiElasticContainer, TuiFloatingContainer, TuiSlides} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13621,8 +13613,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiRadio} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiRadio} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13694,11 +13686,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
-    TuiFloatingContainer,
     TuiInputColor,
     tuiInputColorOptionsProvider,
     TuiSwitch,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13761,7 +13753,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSlides, TuiSwitch} from '@taiga-ui/kit';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiFloatingContainer, TuiSlides} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13798,7 +13791,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -17146,7 +17140,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiInputDate, tuiInputDateOptionsProviderNew} from '@taiga-ui/kit';
+import {TuiInputDate, tuiInputDateOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, JsonPipe, TuiInputDate],
@@ -17154,7 +17148,7 @@ import {TuiInputDate, tuiInputDateOptionsProviderNew} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputDateOptionsProviderNew({
+        tuiInputDateOptionsProvider({
             valueTransformer: {
                 fromControlValue: (value: Date | null): TuiDay | null =>
                     value && TuiDay.fromUtcNativeDate(value),
@@ -19690,11 +19684,11 @@ export default class Example {
 
 #### Selected value customization
 
-Use TUI_MONTH_FORMATTER to customize view of selected value inside textfield . To switch language inside calendar – read documentation page "Internationalization" .
+Use [content] of Textfield to customize view of selected value inside textfield . To switch language inside calendar – read documentation page "Internationalization" .
 
 **Template:**
 ```html
-<tui-textfield>
+<tui-textfield [content]="stringify">
 <input placeholder="Best time to start" tuiInputMonth [(ngModel)]="value" />
 <tui-calendar-month *tuiDropdown />
 </tui-textfield>
@@ -19705,34 +19699,25 @@ import {Component, inject, LOCALE_ID} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMonth} from '@taiga-ui/cdk';
-import {TUI_MONTH_FORMATTER, TuiInputMonth} from '@taiga-ui/kit';
-import {of} from 'rxjs';
+import {type TuiContext, TuiMonth, type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiInputMonth} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiInputMonth],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        {
-            provide: TUI_MONTH_FORMATTER,
-            useFactory: () => {
-                const formatter = Intl.DateTimeFormat(inject(LOCALE_ID), {
-                    year: '2-digit',
-                    month: 'short',
-                });
-
-                return of(
-                    (x: TuiMonth | null) =>
-                        (x && formatter.format(x.toLocalNativeDate())) ?? '',
-                );
-            },
-        },
-    ],
 })
 export default class Example {
+    private readonly formatter = Intl.DateTimeFormat(inject(LOCALE_ID), {
+        year: '2-digit',
+        month: 'short',
+    });
+
     protected value: TuiMonth | null = TuiMonth.currentLocal().append({month: -1});
+    protected readonly stringify: TuiStringHandler<TuiContext<TuiMonth>> = ({
+        $implicit,
+    }) => this.formatter.format($implicit.toLocalNativeDate());
 }
 ```
 
@@ -20789,12 +20774,11 @@ Parameter countries allows you to choose which countries user can select from th
 ```html
 <tui-textfield>
 <label tuiLabel>Phone number</label>
-<input tuiInputPhoneInternational [countries]="(countries | tuiSortCountries | async) || []" [countrySearch]="true" [(countryIsoCode)]="countryIsoCode" [(ngModel)]="value" />
+<input tuiInputPhoneInternational [countries]="countries | tuiSortCountries" [countrySearch]="true" [(countryIsoCode)]="countryIsoCode" [(ngModel)]="value" />
 </tui-textfield>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -20809,7 +20793,7 @@ import {getCountries} from 'libphonenumber-js';
 import {defer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, FormsModule, TuiInputPhoneInternational, TuiSortCountriesPipe],
+    imports: [FormsModule, TuiInputPhoneInternational, TuiSortCountriesPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -20836,12 +20820,11 @@ You can enable mobile specific dropdown design on mobile devices by adding TuiDr
 ```html
 <tui-textfield tuiDropdownSheet="Select country">
 <label tuiLabel>Phone number</label>
-<input tuiInputPhoneInternational [countries]="(countries | tuiSortCountries | async) || []" [countrySearch]="true" [(countryIsoCode)]="countryIsoCode" [(ngModel)]="value" />
+<input tuiInputPhoneInternational [countries]="countries | tuiSortCountries" [countrySearch]="true" [(countryIsoCode)]="countryIsoCode" [(ngModel)]="value" />
 </tui-textfield>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -20858,7 +20841,6 @@ import {defer} from 'rxjs';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiDropdownSheet,
         TuiInputPhoneInternational,
@@ -26354,13 +26336,12 @@ export default class Example {
 # components/MobileCalendar
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
-A calendar for mobile devices. It is used in date picker controls if provided with tuiProvideMobileCalendar() You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
+A calendar for mobile devices. It is used in date picker controls on mobile devices if tuiMobileCalendar directive is applied. You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
 
 ### How to Use (Import)
 
 ```ts
-import {TuiMobileCalendar, tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
-import {TuiInputDateModule} from '@taiga-ui/legacy';
+import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 
 // ...
 
@@ -26370,8 +26351,6 @@ import {TuiInputDateModule} from '@taiga-ui/legacy';
     // ...
     TuiMobileCalendar,
   ],
-  // If you want it in date picker inputs
-  providers: [tuiProvideMobileCalendar()],
   // ...
 })
 export class Example {}
@@ -33148,7 +33127,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiFloatingContainer} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
@@ -33240,8 +33219,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -33292,12 +33270,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiButton, TuiInput} from '@taiga-ui/core';
-import {
-    TuiAutoColorPipe,
-    TuiAvatar,
-    TuiFloatingContainer,
-    TuiInitialsPipe,
-} from '@taiga-ui/kit';
+import {TuiAutoColorPipe, TuiAvatar, TuiInitialsPipe} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -33443,8 +33417,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiNotification, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarLabeled, TuiFade, TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiAppBar} from '@taiga-ui/layout';
+import {TuiAvatar, TuiAvatarLabeled, TuiFade} from '@taiga-ui/kit';
+import {TuiAppBar, TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -33541,7 +33515,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiFloatingContainer} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
@@ -33573,7 +33547,7 @@ import {
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
 import {TuiButton, type TuiDialogContext, TuiNotificationService} from '@taiga-ui/core';
-import {TuiFloatingContainer} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
@@ -33975,19 +33949,18 @@ export default class Page {
 
 ---
 # components/Slides
-- **Package**: `KIT`
+- **Package**: `LAYOUT`
 - **Type**: components
 A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
 
 ### How to Use (Import)
 
 ```ts
-import {TuiSlides} from '@taiga-ui/kit';
+import {TuiSlides} from '@taiga-ui/layout';
 
 // ...
 
 @Component({
-  standalone: true,
   imports: [
     // ...
     TuiSlides,
@@ -34040,7 +34013,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiGroup, TuiTitle} from '@taiga-ui/core';
-import {TuiElasticContainer, TuiSlides} from '@taiga-ui/kit';
+import {TuiElasticContainer, TuiSlides} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiElasticContainer, TuiGroup, TuiSlides, TuiTitle],
@@ -34089,8 +34062,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TuiButton, TuiInput, TuiTitle} from '@taiga-ui/core';
-import {TuiElasticContainer, TuiSlides, TuiStepper} from '@taiga-ui/kit';
-import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiStepper} from '@taiga-ui/kit';
+import {
+    TuiCard,
+    TuiElasticContainer,
+    TuiForm,
+    TuiHeader,
+    TuiSlides,
+} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -34176,7 +34155,8 @@ import {
 } from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSlides, TuiTabs} from '@taiga-ui/kit';
+import {TuiTabs} from '@taiga-ui/kit';
+import {TuiSlides} from '@taiga-ui/layout';
 import {filter, map, pairwise} from 'rxjs';
 
 @Component({
@@ -34242,8 +34222,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiDialogService, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCard, TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiProgressBar} from '@taiga-ui/kit';
+import {
+    TuiAppBar,
+    TuiCard,
+    TuiFloatingContainer,
+    TuiHeader,
+    TuiSlides,
+} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -34299,7 +34285,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber, TuiSlides} from '@taiga-ui/kit';
+import {TuiInputNumber} from '@taiga-ui/kit';
+import {TuiSlides} from '@taiga-ui/layout';
 import {filter, map} from 'rxjs';
 
 import {Home} from './examples/3/home';
