@@ -1,10 +1,10 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiButtonSelect, TuiMultiSelect} from '@taiga-ui/kit';
-import {NgForOf} from '@angular/common';
 
 interface User {
     readonly id: number;
@@ -15,12 +15,12 @@ interface User {
     standalone: true,
     imports: [
         FormsModule,
+        NgForOf,
         TuiButton,
         TuiButtonSelect,
         TuiDataList,
         TuiMultiSelect,
         TuiTextfield,
-        NgForOf,
     ],
     templateUrl: './index.html',
     encapsulation,
