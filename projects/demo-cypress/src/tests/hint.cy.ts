@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHint, TuiRoot} from '@taiga-ui/core';
 import {type MountResponse} from 'cypress/angular';
 
@@ -45,7 +44,7 @@ describe('TuiHint', () => {
     beforeEach(() =>
         cy
             .mount(Test, {
-                imports: [NoopAnimationsModule, Host],
+                imports: [Host],
             })
             .then((wrap) => {
                 component = wrap.component;

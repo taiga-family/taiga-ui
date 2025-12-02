@@ -289,7 +289,7 @@ export const appConfig: ApplicationConfig = {
 };`);
     });
 
-    it('[Standalone] Should add Taiga-ui modules and provideAnimation', async () => {
+    it('[Standalone] Should add Taiga-ui modules', async () => {
         createMainWithoutAnimation();
         saveActiveProject();
 
@@ -301,7 +301,6 @@ export const appConfig: ApplicationConfig = {
 
         expect(tree.readContent('test/main.ts'))
             .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
-import { provideAnimations } from "@angular/platform-browser/animations";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -311,7 +310,7 @@ import { appRoutes } from './app/app.routes';
 import { App } from './app/app.component';
 
 bootstrapApplication(App, {
-  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideEventPlugins()],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideEventPlugins()],
 }).catch((err) => console.error(err));
 `);
     });

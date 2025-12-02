@@ -1,5 +1,4 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 
 describe('root', () => {
@@ -8,7 +7,7 @@ describe('root', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiRoot, NoopAnimationsModule],
+            imports: [TuiRoot],
             providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
