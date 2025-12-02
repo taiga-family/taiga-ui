@@ -1,0 +1,29 @@
+import{b as U,d as z}from"./chunk-WGY6MAAQ.js";import{c as D,e as S,g as B,m as M,n as O,o as I,p as N}from"./chunk-VHMRU2OF.js";import"./chunk-F34EPSH3.js";import"./chunk-PMEOUF6I.js";import"./chunk-XWP52DAG.js";import"./chunk-RB27UUZT.js";import"./chunk-UJNPQJQO.js";import{D as w,H as E,I as P,w as k,x as C}from"./chunk-4RFBE36A.js";import"./chunk-JT5WR2GU.js";import{b as _,c as v}from"./chunk-OCRCVEIB.js";import"./chunk-WG5MBRT2.js";import"./chunk-N4GHRUTA.js";import"./chunk-CJELA3UL.js";import"./chunk-3XPU77JA.js";import"./chunk-4HIWC2KC.js";import"./chunk-GMWWH36R.js";import"./chunk-52IKC6RR.js";import"./chunk-WMFQ56TY.js";import"./chunk-Q5LIQ6KS.js";import"./chunk-TAO4NDK7.js";import"./chunk-BCFCVZZ4.js";import"./chunk-ZHFV5PM2.js";import"./chunk-5HSDZQTB.js";import"./chunk-O7WL7D25.js";import"./chunk-LMJYDE4V.js";import"./chunk-56KMAGBG.js";import"./chunk-NLAULQOT.js";import"./chunk-Z5QD4E2Q.js";import"./chunk-QJEBTRNI.js";import"./chunk-NBYF2UEU.js";import"./chunk-EFZNWBM4.js";import"./chunk-4GTWS6G4.js";import"./chunk-E4BHYIXV.js";import"./chunk-GQ45S7PF.js";import"./chunk-KJNZ3Q3Y.js";import"./chunk-4OAP56UQ.js";import"./chunk-NRP7WKSX.js";import"./chunk-FUFDZH5I.js";import"./chunk-6USYPSCO.js";import"./chunk-SJTZPLWC.js";import"./chunk-ZRMXKGW5.js";import{$b as c,Dc as d,Eb as n,Oc as m,Qc as T,Vb as g,ed as x,fd as h,hc as r,oc as s,pc as u,qc as b,rc as o,sc as i,tc as l}from"./chunk-AN37RPX6.js";import"./chunk-42JZD6NG.js";var A=`/*
+Every max-width of breakpoint is equal:
+next min-width - 60% from 1px (1/16 * 0.6 = 0.0375)
+*/
+
+@tui-media-retina: ~'(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+@tui-media-retina-mobile: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 37.4625em), (min-resolution: 192dpi) and (max-width: 37.4625em)';
+@tui-media-retina-tablet: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 63.9625em), (min-resolution: 192dpi) and (max-width: 63.9625em)';
+@tui-media-retina-desktop: ~'(-webkit-min-device-pixel-ratio: 2) and (max-width: 84.9625em), (min-resolution: 192dpi) and (max-width: 84.9625em)';
+
+@tui-mobile: ~'screen and (max-width: 47.9625em)';
+@tui-mobile-min: ~'screen and (min-width: 22.5em)';
+@tui-mobile-interval: ~'(min-width: 22.5em) and (max-width: 47.9625em)';
+
+@tui-tablet: ~'screen and (max-width: 63.9625em)';
+@tui-tablet-min: ~'screen and (min-width: 48em)';
+@tui-tablet-interval: ~'(min-width: 48em) and (max-width: 63.9625em)';
+
+@tui-desktop: ~'screen and (max-width: 79.9625em)';
+@tui-desktop-min: ~'screen and (min-width: 64em)';
+@tui-desktop-interval: ~'(min-width: 64em) and (max-width: 79.9625em)';
+
+@tui-desktop-lg-min: ~'screen and (min-width: 80em)';
+
+@tui-touch: ~'(hover: none) and (pointer: coarse)';
+@tui-stylus: ~'(hover: none) and (pointer: fine)';
+@tui-pointer: ~'(hover: hover) and (pointer: coarse)';
+@tui-mouse: ~'(hover: hover) and (pointer: fine)';
+`;function L(t,a){if(t&1&&(o(0,"th",6),m(1),i()),t&2){let e=a.$implicit;n(),T(" ",e," ")}}function j(t,a){if(t&1&&(o(0,"td",11)(1,"tui-doc-copy",12),m(2," Copy "),i(),m(3),i()),t&2){let e=d().$implicit;n(),r("cdkCopyToClipboard",e.name),n(2),T(" ",e.name," ")}}function q(t,a){t&1&&(o(0,"tr",8),c(1,j,4,2,"td",10),i()),t&2&&(n(),r("tuiCell","name"))}function G(t,a){if(t&1&&(o(0,"p"),m(1,"Breakpoints are widths that determine how your responsive layout behaves across different viewport sizes."),i(),o(2,"table",3)(3,"caption",4),m(4,"Our library includes the following breakpoints:"),i(),o(5,"thead")(6,"tr",5),u(7,L,2,1,"th",6,s),i()(),o(9,"tbody",7),u(10,q,2,1,"tr",8,s),i()(),l(12,"tui-doc-example",9),x(13,"tuiComponent"),x(14,"tuiExample")),t&2){let e=d();n(2),r("columns",e.columnsNames),n(5),b(e.columnsNames),n(2),r("data",e.breakpoints),n(),b(e.breakpoints),n(2),r("component",h(13,4,1))("content",h(14,6,1))}}function $(t,a){if(t&1&&(o(0,"ol",13)(1,"li",14)(2,"p"),m(3,"Add import to your file with styles:"),i(),l(4,"tui-doc-code",15),i(),o(5,"li",14)(6,"p"),m(7,"Use breakpoints inside media queries:"),i(),l(8,"tui-doc-code",15),i()()),t&2){let e=d();n(4),r("code",e.importTaigaUILocalLess),n(4),r("code",e.exampleBaseUsage)}}var R=/(\/\*([^*]|(\*+[^*/]))*\*+\/)|(\/\/.*)/g;function W(t){return t.replaceAll(R,"").split(";").map(a=>a.trim()).filter(Boolean).map(a=>{let[e="",...y]=a.split(":");return{name:e,value:y.join(":").replaceAll(/[~'"]/g,"").trim()}})}var p=class p{constructor(){this.breakpoints=W(A);this.columnsNames=Object.keys(this.breakpoints[0]);this.importTaigaUILocalLess=import("./chunk-UM53HRNZ.js");this.exampleBaseUsage=import("./chunk-JNRYF5G3.js")}};p.\u0275fac=function(e){return new(e||p)},p.\u0275cmp=g({type:p,selectors:[["ng-component"]],decls:3,vars:0,consts:[["header","Breakpoints","package","CORE","path","core/styles/variables","type","markup"],["pageTab",""],["pageTab","Setup"],["tuiTable","",3,"columns"],[1,"table-caption"],["tuiThGroup",""],["tuiTh","",1,"title"],["tuiTbody","",3,"data"],["tuiTr",""],["id","usage","heading","Usage",3,"component","content"],["tuiTd","",4,"tuiCell"],["tuiTd",""],[1,"copy",3,"cdkCopyToClipboard"],[1,"tui-list","tui-list_ordered"],[1,"tui-list__item"],["filename","your-file.styles.less",3,"code"]],template:function(e,y){e&1&&(o(0,"tui-doc-page",0),c(1,G,15,8,"ng-template",1)(2,$,9,2,"ng-template",2),i())},dependencies:[v,_,C,k,w,P,E,U,z,S,I,N,B,M,O,D],styles:[".table-caption[_ngcontent-%COMP%]{text-align:start;margin-block-end:.5rem}.title[_ngcontent-%COMP%]:first-letter{text-transform:capitalize}.copy[_ngcontent-%COMP%]{position:absolute;top:0;left:0;inline-size:100%;block-size:100%;transition-property:opacity;transition-duration:var(--tui-duration, .3s);transition-timing-function:ease-in-out;opacity:0}.copy[_ngcontent-%COMP%]     button{border-radius:0;block-size:100%}.copy[_ngcontent-%COMP%]:hover{opacity:1}"],changeDetection:0});var f=p;export{f as default};
