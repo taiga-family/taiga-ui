@@ -288,6 +288,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/button-group'),
     }),
     route({
+        path: DemoRoute.ButtonSelect,
+        title: 'ButtonSelect',
+        loadComponent: async () => import('../components/button-select'),
+    }),
+    route({
         path: DemoRoute.Calendar,
         title: 'Calendar',
         loadComponent: async () => import('../components/calendar'),

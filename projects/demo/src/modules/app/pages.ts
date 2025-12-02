@@ -279,6 +279,12 @@ export const pages: DocRoutePages = [
                     name: 'tui-button-group-card',
                 },
             },
+            {
+                section: 'Components',
+                title: 'ButtonSelect',
+                keywords: 'кнопка, button, select, multiselect',
+                route: DemoRoute.ButtonSelect,
+            },
         ],
     },
     {
