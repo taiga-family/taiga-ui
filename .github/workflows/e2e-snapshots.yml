@@ -1,0 +1,58 @@
+name: ⚙️ E2E Snapshots
+on:
+  push:
+    branches: [main, 'v[0-9]+.x']
+  workflow_dispatch:
+
+jobs:
+  playwright-snapshots:
+    name: Push Playwright snapshots
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.172.0
+      - uses: taiga-family/ci/actions/setup/node@v1.172.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.172.0
+
+      - run: npx nx build demo
+      - uses: taiga-family/ci/actions/run/serve@v1.172.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrl: false
+
+      - run: npx nx e2e demo-playwright -- --update-snapshots --project=chromium
+
+      - run: tree ./projects/demo-playwright/snapshots -L 2
+        continue-on-error: true
+
+      - uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: self
+          FOLDER: projects/demo-playwright/snapshots
+          BRANCH: snapshots/playwright-screenshots/${{ github.ref_name }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+  cypress-snapshots:
+    name: Push Cypress snapshots
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.172.0
+      - uses: taiga-family/ci/actions/setup/node@v1.172.0
+
+      - run: npx nx component-test demo-cypress
+
+      - run: tree ./projects/demo-cypress/tests-results/snapshots -L 2
+        continue-on-error: true
+
+      - uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: self
+          FOLDER: projects/demo-cypress/tests-results/snapshots
+          BRANCH: snapshots/cypress-screenshots/${{ github.ref_name }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
