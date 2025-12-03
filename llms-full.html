@@ -1577,6 +1577,12 @@ export class Example {}
 &lt;/label&gt;
 &lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;right&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
 &lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiAppBarBack tuiSlot=&quot;left&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt;
+&lt;div&gt;
+&lt;progress size=&quot;s&quot; tuiProgressBar [max]=&quot;100&quot; [value]=&quot;35&quot; &gt;&lt;/progress&gt;
+&lt;/div&gt;
+&lt;/tui-app-bar&gt;
 &lt;/section&gt;
 &lt;h3 class=&quot;tui-space_top-8&quot;&gt;Android&lt;/h3&gt;
 &lt;section tuiPlatform=&quot;android&quot;&gt;
@@ -1595,6 +1601,10 @@ export class Example {}
 &lt;/label&gt;
 &lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;right&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
 &lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiAppBarBack tuiSlot=&quot;left&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt;
+&lt;progress size=&quot;s&quot; tuiProgressBar [max]=&quot;100&quot; [value]=&quot;35&quot; &gt;&lt;/progress&gt;
+&lt;/tui-app-bar&gt;
 &lt;/section&gt;
 ```
 **TypeScript:**
@@ -1604,11 +1614,12 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
 import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiProgressBar} from &#039;@taiga-ui/kit&#039;;
 import {TuiAppBar} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiTitle],
+    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiProgressBar, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
     encapsulation,
