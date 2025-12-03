@@ -2,7 +2,7 @@
 
 /**
  * @name Notification
- * @selector tui-notification, [tuiNotification]
+ * @selector [tuiNotification]
  *
  * @description
  * A colored rounded block of information with optional icon, title, subtitle and actions
@@ -11,17 +11,16 @@
  * data-size — size (default: 'l') ('s' | 'm' | 'l')
  *
  * @example
- * <tui-notification tuiAppearance data-appearance="negative">
+ * <div tuiNotification tuiAppearance data-appearance="negative">
  *   <span tuiTitle>
  *     Error
  *     <span tuiSubtitle>Something went wrong</span>
  *   </span>
- * </tui-notification>
+ * </div>
  *
  * @see-also
  * Icons, Appearance
  */
-tui-notification,
 [tuiNotification] {
     .button-clear();
 
@@ -29,6 +28,7 @@ tui-notification,
     display: block;
     max-block-size: 100%;
     color: var(--tui-text-primary);
+    cursor: pointer;
     padding: 1rem;
     font: var(--tui-font-text-m);
     line-height: 1.5rem;
@@ -211,8 +211,4 @@ tui-notification,
             inset-inline-end: 0.75rem;
         }
     }
-}
-
-[tuiNotification] {
-    cursor: pointer;
 }

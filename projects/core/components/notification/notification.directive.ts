@@ -29,7 +29,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 class Styles {}
 
 @Directive({
-    selector: 'tui-notification,[tuiNotification]:not(ng-template)',
+    selector: '[tuiNotification]:not(ng-template)',
     providers: [
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
         tuiLinkOptionsProvider({appearance: ''}),
