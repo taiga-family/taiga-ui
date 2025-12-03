@@ -39,7 +39,10 @@
                 </a>
                 documentation page for more customization options.
 
-                <tui-notification class="tui-space_top-2">
+                <div
+                    tuiNotification
+                    class="tui-space_top-2"
+                >
                     <strong>
                         Don't set
                         <code>[min]</code>
@@ -60,7 +63,7 @@
                         <code>&lt;tui-textfield /&gt;</code>
                         .
                     </div>
-                </tui-notification>
+                </div>
             </ng-template>
         </tui-doc-example>
 
@@ -129,15 +132,18 @@
         >
             <ng-template #mobile>
                 @if (!isMobile) {
-                    <tui-notification>
+                    <div tuiNotification>
                         Open this on a mobile device or enable emulation in DevTools and refresh the page to explore
                         this example!
-                    </tui-notification>
+                    </div>
                 }
 
                 <p>You can use several different approaches to optimize UX on mobile devices when tapping the icon.</p>
 
-                <tui-notification appearance="warning">
+                <div
+                    appearance="warning"
+                    tuiNotification
+                >
                     <strong>Browser support limitations!</strong>
 
                     <div>
@@ -147,7 +153,7 @@
                     </div>
 
                     <div>Native picker supports only 24-hour format.</div>
-                </tui-notification>
+                </div>
             </ng-template>
         </tui-doc-example>
 

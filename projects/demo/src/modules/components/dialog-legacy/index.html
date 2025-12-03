@@ -4,7 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification appearance="negative">
+        <div
+            appearance="negative"
+            tuiNotification
+        >
             <div tuiTitle>
                 This component is deprecated
                 <div tuiSubtitle>
@@ -17,15 +20,18 @@
                     from Core package instead
                 </div>
             </div>
-        </tui-notification>
+        </div>
 
-        <tui-notification class="tui-space_vertical-4">
+        <div
+            tuiNotification
+            class="tui-space_vertical-4"
+        >
             Use
             <code>
                 <strong>TUI_DIALOGS_CLOSE</strong>
             </code>
             token if you need to close dialog with from a stream. For example, this way you can close dialogs by logout
-        </tui-notification>
+        </div>
 
         <tui-doc-code [code]="dialogsCloseToken" />
 
@@ -110,12 +116,13 @@
             [component]="11 | tuiComponent"
             [content]="11 | tuiExample"
         >
-            <tui-notification
+            <div
                 appearance="warning"
+                tuiNotification
                 class="tui-space_bottom-4"
             >
                 Works only on mobile browsers
-            </tui-notification>
+            </div>
         </tui-doc-example>
     </ng-template>
 
@@ -341,7 +348,10 @@
                     [code]="exampleCustomDialog"
                 />
 
-                <tui-notification class="tui-space_top-3">
+                <div
+                    tuiNotification
+                    class="tui-space_top-3"
+                >
                     <code [innerText]="'TuiDialogContext<Type1 = void, Type2 = undefined>'"></code>
                     , the first type is the return type of value, for example:
                     <code [innerText]="'this.dialogs.open(...).subscribe((value: Type1) => ... )'"></code>
@@ -351,7 +361,7 @@
                     <code [innerText]="'this.context.data: Type2'"></code>
                     and
                     <code [innerText]="'this.context.$implicit / completeWith: Type1'"></code>
-                </tui-notification>
+                </div>
             </li>
 
             <li class="tui-list__item">
