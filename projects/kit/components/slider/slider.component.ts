@@ -11,7 +11,6 @@ import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {type TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
 
 import {TUI_FLOATING_PRECISION} from './helpers/key-steps';
@@ -35,7 +34,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
         '[style.--tui-slider-track-color]': 'options.trackColor',
         '[style.--tui-ticks-gradient]': 'ticksGradient()',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
-        '[attr.data-size]': 'size',
     },
 })
 export class TuiSliderComponent {
@@ -46,9 +44,6 @@ export class TuiSliderComponent {
     protected readonly ticksGradient = computed((segments = this.segments()) =>
         this.getTicksGradient(segments),
     );
-
-    @Input()
-    public size: TuiSizeS = this.options.size;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly keySteps = inject(TuiSliderKeyStepsBase, {

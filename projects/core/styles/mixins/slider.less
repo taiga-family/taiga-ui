@@ -1,16 +1,11 @@
-@thumb-diameters: {
-    @s: 0.5rem;
-    @m: 0.75rem;
-};
-
 @track-inset: {
     @s: 0.625rem;
     @m: 0.75rem;
     @l: 1rem;
 };
 
-.tui-slider-ticks-labels(@thumb-size: m) {
-    @thumb: @thumb-diameters[@@thumb-size];
+.tui-slider-ticks-labels() {
+    @thumb: calc(var(--tui-thumb-radius) * 2);
 
     --t-offset: calc(@thumb / 2);
 

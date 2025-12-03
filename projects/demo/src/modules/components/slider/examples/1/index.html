@@ -1,14 +1,4 @@
 <input
-    max="10"
-    size="s"
-    step="1"
-    tuiSlider
-    type="range"
-    [(ngModel)]="value"
-/>
-
-<input
-    size="m"
     tuiSlider
     type="range"
     [formControl]="formControl"
@@ -17,9 +7,8 @@
 <p>Custom thickness</p>
 
 <input
-    size="m"
     tuiSlider
     type="range"
     [formControl]="formControl"
-    [style.--tui-thickness.rem]="0.25"
+    [style.--tui-thumb-radius.rem]="0.5"
 />

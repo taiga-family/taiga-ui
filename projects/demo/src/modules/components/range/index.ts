@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeS} from '@taiga-ui/core';
 import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
@@ -14,10 +13,7 @@ export default class Page {
     protected readonly examples = ['Sizes', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
 
-    protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
-
-    protected size: TuiSizeS = this.sizeVariants[1]!;
 
     protected min = 0;
 

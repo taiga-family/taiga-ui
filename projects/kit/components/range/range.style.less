@@ -1,5 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+@track-thickness: calc(var(--tui-thumb-radius) / 3);
 @tick-thickness: 0.25rem;
 @hitbox: 1rem;
 @thumb-shift: 1px;
@@ -7,14 +8,14 @@
 :host {
     position: relative;
     display: block;
-    block-size: var(--tui-thickness);
+    block-size: @track-thickness;
     border-radius: var(--tui-radius-m);
     cursor: pointer;
     outline: none;
-    margin: calc((@hitbox - var(--tui-thickness)) / 2) 0;
+    margin: calc((@hitbox - @track-thickness) / 2) 0;
     touch-action: pan-x;
 
-    --tui-thickness: 0.125rem;
+    --tui-thumb-radius: 0.375rem;
 
     &:active {
         cursor: ew-resize;
@@ -35,9 +36,11 @@
     }
 }
 
-.track(@thumb-width) {
+.track() {
+    @thumb-width: calc(var(--tui-thumb-radius) * 2);
+
     position: relative;
-    margin: 0 (@thumb-width / 2);
+    margin: 0 calc(@thumb-width / 2);
     block-size: 100%;
 
     /* Filled selected range */
@@ -59,10 +62,10 @@
         .fullsize(absolute, inset);
 
         content: '';
-        left: ((@thumb-width - @tick-thickness) / 2);
-        right: ((@thumb-width + @tick-thickness) / 2);
-        inset-inline-start: ((@thumb-width - @tick-thickness) / 2);
-        inset-inline-end: ((@thumb-width + @tick-thickness) / 2);
+        left: calc((@thumb-width - @tick-thickness) / 2);
+        right: calc((@thumb-width + @tick-thickness) / 2);
+        inset-inline-start: calc((@thumb-width - @tick-thickness) / 2);
+        inset-inline-end: calc((@thumb-width + @tick-thickness) / 2);
         background-image: repeating-linear-gradient(
             to var(--tui-inline-end),
             var(--tui-text-tertiary) 0 @tick-thickness,
@@ -75,12 +78,8 @@
 }
 
 .t-track {
-    :host[data-size='s'] & {
-        .track(@thumb-diameters[@s]);
-    }
-
-    :host[data-size='m'] & {
-        .track(@thumb-diameters[@m]);
+    :host & {
+        .track();
     }
 }
 

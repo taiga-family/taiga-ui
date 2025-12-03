@@ -1,3 +1,5 @@
+@track-thickness: calc(var(--tui-thumb-radius) / 3);
+
 :host {
     position: relative;
     display: block;
@@ -47,7 +49,7 @@ tui-range {
     left: 1rem;
     right: 1rem;
     z-index: 1;
-    margin: calc(-1 * var(--tui-thickness)) 0 0;
+    margin: calc(-1 * @track-thickness) 0 0;
 
     :host[data-size='m'] & {
         right: 0.75rem;

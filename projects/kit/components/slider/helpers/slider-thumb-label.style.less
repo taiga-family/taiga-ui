@@ -4,7 +4,9 @@
     position: relative;
 }
 
-.calculate-ghost-params(@thumb) {
+.calculate-ghost-params() {
+    @thumb: calc(var(--tui-thumb-radius) * 2);
+
     inline-size: @thumb;
     block-size: @thumb;
     transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb * var(--tui-inline)));
@@ -18,13 +20,7 @@
     border-radius: 50%;
     pointer-events: none;
 
-    &[data-size='s'] {
-        .calculate-ghost-params(@thumb-diameters[@s]);
-    }
-
-    &[data-size='m'] {
-        .calculate-ghost-params(@thumb-diameters[@m]);
-    }
+    .calculate-ghost-params();
 
     @supports (inset-inline-end: 0) {
         :host-context([dir='rtl']) & {

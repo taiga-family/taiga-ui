@@ -11,6 +11,5 @@ import {TuiSlider} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value = 4;
     protected formControl = new FormControl(60);
 }

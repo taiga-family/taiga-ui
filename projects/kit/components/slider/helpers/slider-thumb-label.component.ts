@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
-import {type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TuiSliderComponent} from '../slider.component';
 
@@ -34,10 +33,6 @@ export class TuiSliderThumbLabel implements AfterContentInit {
                 '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n' +
                     'Use [(ngModel)] or [formControl] or formControlName for correct work.',
             );
-    }
-
-    protected get size(): TuiSizeS {
-        return this.slider?.size || 'm';
     }
 
     protected get ratio(): number {
