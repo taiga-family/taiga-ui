@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
-      - uses: taiga-family/ci/actions/setup/node@v1.174.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.175.0
+      - uses: taiga-family/ci/actions/setup/node@v1.175.0
 
       - run: npx nx build demo
 
@@ -45,9 +45,9 @@ jobs:
           ]
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
-      - uses: taiga-family/ci/actions/setup/node@v1.174.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.174.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.175.0
+      - uses: taiga-family/ci/actions/setup/node@v1.175.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.175.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v4.3.0
@@ -55,7 +55,7 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.174.0
+      - uses: taiga-family/ci/actions/run/serve@v1.175.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -87,8 +87,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
-      - uses: taiga-family/ci/actions/setup/node@v1.174.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.175.0
+      - uses: taiga-family/ci/actions/setup/node@v1.175.0
 
       - name: Download Playwright snapshots artifacts
         uses: actions/download-artifact@v4.3.0
@@ -112,8 +112,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
-      - uses: taiga-family/ci/actions/setup/node@v1.174.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.175.0
+      - uses: taiga-family/ci/actions/setup/node@v1.175.0
 
       - run: npx nx component-test demo-cypress
 
