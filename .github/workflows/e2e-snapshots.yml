@@ -18,13 +18,11 @@ jobs:
 
       - run: npx nx build demo
 
-      - name: Upload demo dist artifact
-        uses: actions/upload-artifact@v4.6.2
+      - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
+        uses: actions/cache/save@v4.3.0
         with:
-          name: demo-dist-${{ github.sha }}
           path: dist/demo
-          if-no-files-found: error
-          compression-level: 0
+          key: ${{ env.CACHE_DIST_KEY }}
 
   playwright-snapshots:
     name: Push Playwright snapshots
@@ -51,11 +49,11 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.174.0
       - uses: taiga-family/ci/actions/setup/playwright@v1.174.0
 
-      - name: Download demo dist artifact
-        uses: actions/download-artifact@v4.3.0
+      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
+        uses: actions/cache/restore@v4.3.0
         with:
-          name: demo-dist-${{ github.sha }}
-          path: ${{ env.DIST }}
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
 
       - uses: taiga-family/ci/actions/run/serve@v1.174.0
         with:
