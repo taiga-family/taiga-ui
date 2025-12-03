@@ -42,11 +42,11 @@ tui-notification,
     --t-start: 0;
     --t-end: 0;
 
-    &[style*='--t-icon-start:'] {
+    &[data-icon-start] {
         --t-start: 2rem;
     }
 
-    &[style*='--t-icon-end:'] {
+    &[data-icon-end] {
         --t-end: 1.5rem;
     }
 
@@ -78,7 +78,7 @@ tui-notification,
         line-height: 1.25rem;
         border-radius: var(--tui-radius-m);
 
-        &[style*='--t-icon-start:'] {
+        &[data-icon-start] {
             --t-start: 1.5rem;
         }
 
@@ -133,7 +133,7 @@ tui-notification,
         line-height: 1.25rem;
         border-radius: var(--tui-radius-m);
 
-        &[style*='--t-icon-start:'] {
+        &[data-icon-start] {
             --t-start: 1.625rem;
         }
 

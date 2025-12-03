@@ -2,9 +2,7 @@
 
 [tuiAppearance][data-appearance='secondary'],
 [tuiAppearance][data-appearance='secondary-destructive'],
-[tuiAppearance][data-appearance='secondary-grayscale'],
-/* TODO @deprecated remove in v5 */
-[tuiAppearance][data-appearance='destructive'] {
+[tuiAppearance][data-appearance='secondary-grayscale'] {
     background: var(--tui-background-neutral-1);
     color: var(--tui-text-action);
 
@@ -30,9 +28,7 @@
             background: var(--tui-background-accent-1-pressed);
         });
 
-        &:invalid:not([data-mode]),
-        &[data-mode~='invalid'],
-        &.tui-invalid:not([data-mode]) {
+        .appearance-invalid({
             background: var(--tui-status-negative);
             color: #fff;
 
@@ -45,12 +41,10 @@
                 background: var(--tui-status-negative);
                 color: #fff;
             });
-        }
+        });
     }
 
-    &:invalid:not([data-mode]),
-    &[data-mode~='invalid'],
-    &.tui-invalid:not([data-mode]) {
+    .appearance-invalid({
         color: var(--tui-text-negative);
         background: var(--tui-status-negative-pale);
 
@@ -63,12 +57,10 @@
             color: var(--tui-text-negative-hover);
             background: var(--tui-status-negative-pale-hover);
         });
-    }
+    });
 }
 
-[tuiAppearance][data-appearance='secondary-destructive'],
-/* TODO @deprecated remove in v5 */
-[tuiAppearance][data-appearance='destructive'] {
+[tuiAppearance][data-appearance='secondary-destructive'] {
     color: var(--tui-text-negative);
 }
 

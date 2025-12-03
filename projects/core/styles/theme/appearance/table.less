@@ -1,47 +1,54 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-/*
-TODO: remove :not([tuiWrapper]) after legacy controls deletion
-*/
-[tuiAppearance][data-appearance='table']:not([tuiWrapper]) {
-    content: '';
-    position: fixed;
-    /* TODO: Use inset: -1px after Safari 14+ support */
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
-    inline-size: auto;
+[tuiAppearance][data-appearance='table'] {
     block-size: auto;
-    border-radius: 0;
+    border-radius: 0 !important;
     background: transparent;
+    color: var(--tui-text-primary);
     border: none;
     outline: none;
     border-block-end: calc(var(--t-row-height) - var(--t-height)) solid transparent;
 
-    &:not(._empty) {
-        color: var(--tui-text-primary);
+    &:is(tui-textfield[multi]),
+    &:is(tui-input-card-group) {
+        min-block-size: 100%;
+        border-block-end: 0;
     }
 
-    .appearance-hover({
-        &[data-focus='false'] {
-            background-color: var(--tui-background-neutral-1);
-        }
-    });
+    &:is(textarea) {
+        block-size: 100%;
+        border-block-end: 0;
+    }
+
+    &::before,
+    &::after {
+        color: var(--tui-text-tertiary);
+    }
+
+    &:not([data-mode~='readonly']) {
+        .appearance-hover({
+            &[data-focus='false'] {
+                background-color: var(--tui-background-neutral-1);
+            }
+
+            &::before,
+            &::after {
+                color: var(--tui-text-secondary);
+            }
+        });
+    }
 
     .appearance-focus({
-        outline-offset: -0.125rem;
+        outline-offset: -1px;
         outline: 0.125rem solid var(--tui-border-focus);
     });
 
-    &:invalid:not([data-mode]),
-    &[data-mode~='invalid'],
-    &.tui-invalid:not([data-mode]) {
-        background-origin: border-box;
-        background-position: top right;
-        background-repeat: no-repeat;
-        background-image: linear-gradient(to top right, transparent 0% 50%, var(--tui-status-negative) 50% 100%);
-        background-size: 0.5rem 0.5rem;
+    .appearance-invalid({
+        background:
+            linear-gradient(to top right, transparent 0% 50%, var(--tui-status-negative) 50% 100%)
+            top right / 0.5rem 0.5rem
+            no-repeat
+            border-box;
 
         &[data-focus='false'] {
             background-color: var(--tui-status-negative-pale);
@@ -60,8 +67,8 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
 
         .appearance-focus({
             background-color: transparent;
-            outline-offset: -0.0625rem;
+            outline-offset: 0;
             outline: 0.0625rem solid var(--tui-status-negative);
         });
-    }
+    });
 }

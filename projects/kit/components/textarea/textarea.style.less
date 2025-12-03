@@ -3,40 +3,31 @@
 @top-m-label: calc(0.5rem + var(--t-height) / 3);
 @top-l-label: calc(0.625rem + var(--t-height) / 3);
 
-// TODO: Refactor to :has(label) after Safari 15.4
 :host-context(tui-textfield._with-label[data-size='m']._with-label[data-size='m']) {
     border-block-start-width: @top-m-label;
-    padding-block-start: 0;
+    padding-block: 0;
 }
 
 :host-context(tui-textfield._with-label[data-size='l']._with-label[data-size='l']) {
     border-block-start-width: @top-l-label;
-    padding-block-start: 0;
+    padding-block: 0;
 }
 
 :host-context(tui-textfield[data-size='s']) {
-    padding-block-start: 0.5rem;
-    padding-block-end: 0.25rem;
+    padding-block: 0.5rem 0.25rem;
 }
 
 :host-context(tui-textfield[data-size='m']) {
-    padding-block-start: 0.875rem;
-    padding-block-end: 0.25rem;
+    padding-block: 0.875rem 0.25rem;
 }
 
 :host-context(tui-textfield[data-size='l']) {
-    padding-block-start: 1.125rem;
-    padding-block-end: 0.375rem;
+    padding-block: 1.125rem 0.375rem;
 }
 
 :host {
     word-break: break-word;
     border: 0 solid transparent;
-
-    &[data-appearance='table'] {
-        border-block-start: 1px solid transparent;
-        border-block-end: none !important;
-    }
 
     &:not(._mobile) {
         .scrollbar-hidden();
@@ -67,8 +58,7 @@
     white-space: pre-wrap;
     word-break: break-word;
     overflow-wrap: break-word;
-    padding-inline-start: var(--t-start);
-    padding-inline-end: calc(var(--t-end) + var(--t-side));
+    padding-inline: var(--t-start) calc(var(--t-end) + var(--t-side));
     pointer-events: none;
     box-sizing: content-box;
     overflow: hidden;

@@ -50,7 +50,6 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     ],
     hostDirectives: [TuiWithAppearance],
     host: {
-        class: 'tui-interactive',
         '[attr.data-state]': 'control()?.disabled ? "disabled" : null',
         '[class._empty]': '!control()?.value?.length',
         '[style.--t-item-height.px]': 'height()',
