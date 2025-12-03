@@ -4,24 +4,100 @@ on:
     branches: [main, 'v[0-9]+.x']
   workflow_dispatch:
 
+env:
+  PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY: playwright-snapshots-artifacts--${{ github.run_id }}
+
 jobs:
+  build-playwright-snapshots:
+    name: Build demo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
+      - uses: taiga-family/ci/actions/setup/node@v1.174.0
+
+      - run: npx nx build demo
+
+      - name: Upload demo dist artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: demo-dist-${{ github.sha }}
+          path: dist/demo
+          if-no-files-found: error
+          compression-level: 0
+
   playwright-snapshots:
     name: Push Playwright snapshots
-    runs-on: ubuntu-latest
+    needs: [build-playwright-snapshots]
+    runs-on: ${{ matrix.shard.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        shard:
+          [
+            {index: 1, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 2, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 3, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 4, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 5, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 6, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 7, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 8, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 9, os: 'ubuntu-latest', project: 'chromium', total: 9},
+          ]
     steps:
       - uses: actions/checkout@v4.3.1
       - uses: taiga-family/ci/actions/setup/variables@v1.174.0
       - uses: taiga-family/ci/actions/setup/node@v1.174.0
       - uses: taiga-family/ci/actions/setup/playwright@v1.174.0
 
-      - run: npx nx build demo
+      - name: Download demo dist artifact
+        uses: actions/download-artifact@v4.3.0
+        with:
+          name: demo-dist-${{ github.sha }}
+          path: ${{ env.DIST }}
+
       - uses: taiga-family/ci/actions/run/serve@v1.174.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
           replaceBaseUrl: false
 
-      - run: npx nx e2e demo-playwright -- --update-snapshots --project=chromium
+      - name: Run screenshot tests on ${{ env.DIST }}
+        run: |
+          npx nx e2e demo-playwright -- \
+            --update-snapshots \
+            --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+
+      - run: tree ./projects/demo-playwright/snapshots -L 2
+        continue-on-error: true
+
+      - name: Upload Playwright snapshots / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: ./projects/demo-playwright/snapshots
+          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+
+  playwright-snapshots-result:
+    name: Push Playwright snapshots result
+    if: ${{ always() }}
+    needs: [playwright-snapshots]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.174.0
+      - uses: taiga-family/ci/actions/setup/node@v1.174.0
+
+      - name: Download Playwright snapshots artifacts
+        uses: actions/download-artifact@v4.3.0
+        with:
+          path: projects/demo-playwright/snapshots
+          pattern: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_*
+          merge-multiple: true
 
       - run: tree ./projects/demo-playwright/snapshots -L 2
         continue-on-error: true
