@@ -27,25 +27,27 @@ export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>> {
         transform: coerceBooleanProperty,
     });
 
-    protected readonly setSorter = effect(() => {
-        this.th.sorter = this.sortable() ? untracked(this.sorter) : null;
+    protected readonly setThSorter = effect(() => {
+        this.th.sorter.set(this.sortable() ? this.sorter() : null);
     });
 
-    public readonly sorter = computed<TuiComparator<T>>(() => {
-        return this.sortable() && this.match ? this.table.sorter : (): number => 0;
+    protected readonly setTableSorter = effect(() => {
+        if (this.match && untracked(this.table.sorter) !== this.sorter()) {
+            this.table.updateSorter(this.sorter());
+        }
     });
+
+    public readonly sorter = computed<TuiComparator<T>>(() =>
+        this.sortable() && untracked(() => this.match)
+            ? untracked(this.table.sorter)
+            : (): number => 0,
+    );
 
     public get key(): keyof T {
         return this.th.key;
     }
 
-    public check(): void {
-        if (this.match && this.table.sorter !== this.sorter()) {
-            this.table.updateSorter(this.sorter());
-        }
-    }
-
     private get match(): boolean {
-        return untracked(this.sortBy.tuiSortBy) === this.key;
+        return this.sortBy.tuiSortBy() === this.key;
     }
 }

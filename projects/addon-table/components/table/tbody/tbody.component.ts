@@ -12,7 +12,6 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTr} from '../tr/tr.component';
 
@@ -22,7 +21,6 @@ import {TuiTableTr} from '../tr/tr.component';
     templateUrl: './tbody.template.html',
     styleUrl: './tbody.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TABLE_PROVIDER,
 })
 export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);

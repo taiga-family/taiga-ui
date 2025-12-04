@@ -1,3 +1,5 @@
+import {type Signal} from '@angular/core';
+
 export abstract class AbstractTuiTableFilter<T, G> {
-    public abstract filter(item: T, value: G): boolean;
+    public abstract filter: Signal<(item: T, value: G) => boolean>;
 }
