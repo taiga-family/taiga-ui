@@ -121,7 +121,7 @@ export class TuiInputChipDirective<T>
     protected onBackspace(key: string): void {
         // (keydown.backspace) doesn't emit event on empty input in ios safari
         if (key === 'Backspace' && !this.textfield.value() && this.interactive()) {
-            if (this.mobile || !this.textfield.item) {
+            if (this.mobile || !this.textfield.item()) {
                 this.onChange(this.value().slice(0, -1));
             } else {
                 this.el.dispatchEvent(
