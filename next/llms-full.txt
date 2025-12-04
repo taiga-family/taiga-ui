@@ -12546,7 +12546,7 @@ export default class Example {
 ```html
 <table tuiTable [style.width.%]="100" >
 <thead>
-<tr tuiThGroup>
+<tr>
 <th tuiTh>Name</th>
 <th tuiTh>Price</th>
 </tr>
@@ -35888,15 +35888,16 @@ export class Example {}
 
 **Template:**
 ```html
-<table tuiTable class="table" [columns]="columns" >
+<table tuiTable>
 <thead>
-<tr tuiThGroup>
-<th tuiTh [maxWidth]="500" [minWidth]="200" [resizable]="true" > Name </th>
+<tr>
+<th tuiTh>Name</th>
 <th tuiTh>Balance</th>
 </tr>
 </thead>
-<tbody tuiTbody [data]="data" > @for (item of data; track item) { <tr tuiTr>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
+<tbody tuiTbody> @for (item of data; track item) { <tr tuiTr>
+<td tuiTd>{{ item.name }}</td>
+<td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
 </tr> } </tbody>
 </table>
 ```
@@ -35911,7 +35912,6 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
 @Component({
     imports: [TuiFormatNumberPipe, TuiTable],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -35926,12 +35926,10 @@ export default class Example {
             balance: 423242,
         },
     ] as const;
-
-    protected readonly columns = Object.keys(this.data[0]);
 }
 ```
 
-#### Expandable rows: different ways to toggle rows
+#### Toggle rows
 
 **Template:**
 ```html
@@ -36104,175 +36102,132 @@ export default class Example {
 }
 ```
 
-#### Manual sorting
+#### Controls
 
 **Template:**
 ```html
-<table tuiTable [columns]="columns" [direction]="direction()" [tuiSortBy]="sortBy()" (tuiSortChange)="sortChange($event)" >
+<table tuiTable [style.width.%]="100" [tuiTextfieldCleaner]="false" >
 <thead>
-<tr tuiThGroup>
-<th *tuiHead="'name'" tuiSortable tuiTh [maxWidth]="500" [minWidth]="200" [resizable]="true" > Name </th>
-<th *tuiHead="'id'" tuiSortable tuiTh > ID </th>
-<th *tuiHead="'color'" tuiSortable tuiTh > Color </th>
+<tr>
+<th tuiTh>Growing height</th>
+<th tuiTh>Static height</th>
 </tr>
 </thead>
-<tbody tuiTbody [data]="data()" > @for (item of data(); track item) { <tr tuiTr>
-<td *tuiCell="'id'" tuiTd > {{ item.id }} </td>
-</tr> } </tbody>
+<tbody tuiTbody>
+<tr tuiTr>
+<td tuiTd>
+<tui-textfield>
+<textarea placeholder="Textarea" tuiTextarea [(ngModel)]="textarea" ></textarea>
+</tui-textfield>
+</td>
+<td tuiTd>
+<tui-textfield>
+<input placeholder="Input" tuiInput [(ngModel)]="input" />
+</tui-textfield>
+</td>
+</tr>
+<tr tuiTr>
+<td tuiTd>
+<tui-textfield multi>
+<input placeholder="InputChip" tuiInputChip [(ngModel)]="chip" />
+</tui-textfield>
+</td>
+<td tuiTd>
+<tui-textfield tuiChevron> @if (isMobile) { <select aria-label="Select" placeholder="Select" tuiSelect [items]="items" [(ngModel)]="select" ></select> } @if (!isMobile) { <input placeholder="Select" tuiSelect [(ngModel)]="select" /> } @if (!isMobile) { <tui-data-list-wrapper *tuiDropdown [items]="items" /> } </tui-textfield>
+</td>
+</tr>
+<tr tuiTr>
+<td tuiTd>
+<tui-textfield multi tuiChevron >
+<select aria-label="MultiSelect" placeholder="MultiSelect" tuiMultiSelect [items]="items" [(ngModel)]="multiselect" ></select>
+<tui-input-chip *tuiItem />
+</tui-textfield>
+</td>
+<td tuiTd [style.z-index]="2" >
+<tui-textfield>
+<input placeholder="InputSlider" tuiInputSlider [max]="1000" [min]="0" [(ngModel)]="slider" />
+<input tuiSlider type="range" />
+</tui-textfield>
+</td>
+</tr>
+<tr tuiTr>
+<td tuiTd>
+<tui-textfield multi>
+<input placeholder="InputDateMulti" tuiInputDateMulti [(ngModel)]="date" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+</td>
+<td tuiTd [style.z-index]="1" >
+<tui-input-range [content]="content" [max]="1000" [min]="0" [(ngModel)]="range" />
+</td>
+</tr>
+<tr tuiTr>
+<td colspan="2" tuiTd >
+<tui-input-card-group [(ngModel)]="card"> @if (!card) { InputCardGroup } </tui-input-card-group>
+</td>
+</tr>
+</tbody>
 </table>
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiSortChange, TuiTable} from '@taiga-ui/addon-table';
-
-interface Data {
-    id: number;
-    name: string;
-    color: string;
-}
+import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
+import {TuiInput} from '@taiga-ui/core';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiInputChip,
+    TuiInputDateMulti,
+    TuiInputRange,
+    TuiInputSlider,
+    TuiMultiSelect,
+    TuiSelect,
+    TuiTextarea,
+} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiTable],
+    imports: [
+        FormsModule,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiInput,
+        TuiInputCardGroup,
+        TuiInputChip,
+        TuiInputDateMulti,
+        TuiInputRange,
+        TuiInputSlider,
+        TuiMultiSelect,
+        TuiSelect,
+        TuiTable,
+        TuiTextarea,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly initial = [
-        {
-            name: 'Apple',
-            id: 1,
-            color: 'red',
-        },
-        {
-            name: 'Banana',
-            id: 2,
-            color: 'yellow',
-        },
-        {
-            name: 'Kiwi',
-            id: 3,
-            color: 'green',
-        },
-        {
-            name: 'Orange',
-            id: 4,
-            color: 'orange',
-        },
-        {
-            name: 'Grapes',
-            id: 5,
-            color: 'purple',
-        },
-        {
-            name: 'Strawberry',
-            id: 6,
-            color: 'red',
-        },
-        {
-            name: 'Blueberry',
-            id: 7,
-            color: 'blue',
-        },
-        {
-            name: 'Pineapple',
-            id: 8,
-            color: 'yellow',
-        },
-        {
-            name: 'Mango',
-            id: 9,
-            color: 'orange',
-        },
-        {
-            name: 'Watermelon',
-            id: 10,
-            color: 'green',
-        },
-        {
-            name: 'Peach',
-            id: 11,
-            color: 'orange',
-        },
-        {
-            name: 'Pear',
-            id: 12,
-            color: 'green',
-        },
-        {
-            name: 'Cherry',
-            id: 13,
-            color: 'red',
-        },
-        {
-            name: 'Lemon',
-            id: 14,
-            color: 'yellow',
-        },
-        {
-            name: 'Lime',
-            id: 15,
-            color: 'green',
-        },
-        {
-            name: 'Pomegranate',
-            id: 16,
-            color: 'red',
-        },
-        {
-            name: 'Raspberry',
-            id: 17,
-            color: 'red',
-        },
-        {
-            name: 'Blackberry',
-            id: 18,
-            color: 'purple',
-        },
-        {
-            name: 'Cantaloupe',
-            id: 19,
-            color: 'orange',
-        },
-        {
-            name: 'Plum',
-            id: 20,
-            color: 'purple',
-        },
+    protected textarea = '';
+    protected input = '';
+    protected chip = [];
+    protected multiselect = [];
+    protected date = [];
+    protected select = null;
+    protected slider = null;
+    protected range = null;
+    protected card = null;
+
+    protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly content = [
+        ({$implicit}: TuiContext<number>): number | string => $implicit || 'InputRange',
+        ({$implicit}: TuiContext<number>): number | string => $implicit || '',
     ] as const;
-
-    protected readonly columns = Object.keys(this.initial[0]);
-    protected readonly direction = signal<-1 | 1>(-1);
-    protected readonly sortBy = signal<keyof Data | null>('color');
-    protected readonly data = computed<readonly Data[]>(() => {
-        const direction = this.direction();
-        const key = this.sortBy();
-
-        return key
-            ? [...this.initial].sort((a, b) => {
-                  const valA = a[key];
-                  const valB = b[key];
-
-                  if (typeof valA === 'string' && typeof valB === 'string') {
-                      return valA.localeCompare(valB) * direction;
-                  }
-
-                  if (typeof valA === 'number' && typeof valB === 'number') {
-                      return (valA - valB) * direction;
-                  }
-
-                  return 0;
-              })
-            : this.initial;
-    });
-
-    protected sortChange({sortKey, sortDirection}: TuiSortChange<Data>): void {
-        this.sortBy.set(sortKey);
-        this.direction.set(sortDirection);
-    }
 }
 ```
 
@@ -36715,7 +36670,7 @@ export default class Example {
 }
 ```
 
-#### With tuiSortBy directive to work with column titles instead of sorters
+#### Sorting
 
 **Template:**
 ```html
@@ -37100,7 +37055,7 @@ export default class Example {
 }
 ```
 
-#### Dynamic columns
+#### Columns
 
 **Template:**
 ```html
@@ -37161,7 +37116,7 @@ export default class Example {
 <tui-pagination [length]="length" [style.float]="'right'" [(index)]="index" />
 </caption>
 <thead>
-<tr tuiThGroup>
+<tr>
 <th tuiTh>Name</th>
 <th tuiTh>Balance</th>
 </tr>
@@ -37219,21 +37174,20 @@ export default class Example {
 }
 ```
 
-#### Resize a large table
+#### Resizing
 
 **Template:**
 ```html
 <table tuiTable>
 <thead>
-<tr tuiThGroup>
-<th tuiTh [resizable]="true" > Name </th>
-<th tuiTh [minWidth]="100" [resizable]="true" > Items </th>
-<th tuiTh [resizable]="true" > Balance </th>
-<th tuiTh>Description</th>
+<tr>
+<th tuiTh [maxWidth]="300" [minWidth]="150" [resizable]="true" > Name </th>
+<th tuiTh [maxWidth]="300" [minWidth]="100" [resizable]="true" > Items </th>
+<th tuiTh [maxWidth]="200" [minWidth]="100" [resizable]="true" > Balance </th>
 </tr>
 </thead>
-<tbody tuiTbody> @for (item of data; track item) { <tr>
-<td tuiTd>{{ item.name }}</td>
+<tbody tuiTbody> @for (item of data; track item) { <tr tuiTr>
+<td tuiTd [style.vertical-align]="'top'" > {{ item.name }} </td>
 <td tuiTd>
 <tui-textfield multi>
 <input tuiInputChip [(ngModel)]="item.items" />
@@ -37244,7 +37198,6 @@ export default class Example {
 <input placeholder="Value" prefix="$" tuiInputNumber [(ngModel)]="item.balance" />
 </tui-textfield>
 </td>
-<td tuiTd [style.white-space]="'nowrap'" > {{ item.description }} </td>
 </tr> } </tbody>
 </table>
 ```
@@ -37277,15 +37230,11 @@ export default class Example {
             name: 'Alex Inkin',
             balance: 1323525,
             items: ['Wallet', 'Phone'],
-            description:
-                'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.',
         },
         {
             name: 'Roman Sedov',
             balance: '',
             items: ['Wallet'],
-            description:
-                'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.',
         },
     ];
 }
@@ -37295,30 +37244,27 @@ export default class Example {
 
 **Template:**
 ```html
-<table tuiTable class="table" [columns]="columns" >
+<table tuiTable>
 <thead>
-<tr tuiThGroup>
+<tr>
 <th tuiTh></th>
-<th tuiTh [minWidth]="50" > # </th>
-<th tuiTh [minWidth]="150" > Name </th>
-<th tuiTh [minWidth]="150" > Date of Birth </th>
-<th tuiTh>Age</th>
+<th tuiTh>#</th>
+<th tuiTh>Name</th>
+<th tuiTh>Date of Birth</th>
 </tr>
 </thead>
-<tbody tuiTbody [data]="data" > @for (item of data; track $index; let i = $index) { <tr tuiTr>
-<td *tuiCell="'children'" tuiTd >
-<button appearance="flat-grayscale" size="xs" tuiIconButton type="button" class="chevron-btn" [attr.title]="item.children?.length ? '' : 'No children'" [disabled]="!item.children?.length" [style.border-radius.%]="100" [tuiChevron]="rowState[i] ?? false" (click)="toggleRow(i)" > Toggle </button>
+<tbody tuiTbody> @for (item of data; track $index; let i = $index) { <tr tuiTr>
+<td tuiTd>
+<button appearance="flat-grayscale" size="xs" tuiIconButton type="button" [attr.title]="item.children.length ? null : 'No children'" [disabled]="!item.children.length" [style.border-radius.%]="100" [tuiChevron]="state[i] ?? false" (click)="state[i] = !state[i]" > Toggle </button>
 </td>
-<td *tuiCell="'#'" tuiTd > {{ i + 1 }} </td>
-<td *tuiCell="'name'" tuiTd > {{ item.name }} </td>
-<td *tuiCell="'dob'" tuiTd > {{ item.dob }} </td>
-<td *tuiCell="'age'" tuiTd > {{ item.age }} </td>
-</tr> @if (item.children?.length) { <tui-table-expand [expanded]="rowState[i] ?? false"> @for (child of item.children; track $index; let j = $index) { <tr tuiTr class="child" >
-<td *tuiCell="'children'" tuiTd ></td>
-<td *tuiCell="'#'" tuiTd > {{ i + 1 }}.{{ j + 1 }} </td>
-<td *tuiCell="'name'" tuiTd > {{ child.name }} </td>
-<td *tuiCell="'dob'" tuiTd > {{ child.dob }} </td>
-<td *tuiCell="'age'" tuiTd > {{ child.age }} </td>
+<td tuiTd>{{ i + 1 }}</td>
+<td tuiTd>{{ item.name }}</td>
+<td tuiTd>{{ item.dob }}</td>
+</tr> @if (item.children.length) { <tui-table-expand [expanded]="state[i] ?? false"> @for (child of item.children; track $index; let j = $index) { <tr tuiTr>
+<td tuiTd></td>
+<td tuiTd>{{ i + 1 }}.{{ j + 1 }}</td>
+<td tuiTd>{{ child.name }}</td>
+<td tuiTd>{{ child.dob }}</td>
 </tr> } </tui-table-expand> } } </tbody>
 </table>
 ```
@@ -37328,75 +37274,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
+import {TuiDay} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
-
-interface User {
-    readonly dob: TuiDay;
-    readonly name: string;
-    readonly age: number;
-    children?: User[];
-}
-
-const TODAY = TuiDay.currentLocal();
-
-const FIRST = [
-    'John',
-    'Jane',
-    'Jack',
-    'Jill',
-    'James',
-    'Joan',
-    'Jim',
-    'Julia',
-    'Joe',
-    'Julia',
-];
-
-const LAST = [
-    'Smith',
-    'West',
-    'Brown',
-    'Jones',
-    'Davis',
-    'Miller',
-    'Johnson',
-    'Jackson',
-    'Williams',
-    'Wilson',
-];
-
-const DATA: readonly User[] = Array.from({length: 10}, (_, index) => {
-    // From 5 to 0 children
-    const childrenCount = 5 - (index % 6),
-        user = generateUser();
-
-    user.children = Array.from({length: childrenCount}, () => generateUser());
-
-    return user;
-});
-
-function getAge(dob: TuiDay): number {
-    const years = TODAY.year - dob.year;
-    const months = TODAY.month - dob.month;
-    const days = TODAY.day - dob.day;
-    const offset = tuiToInt(months > 0 || (!months && days > 9));
-
-    return years + offset;
-}
-
-function generateUser(): User {
-    const dob = TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
-        age = getAge(dob),
-        name = `${LAST[getRandom(0, 9)]}, ${FIRST[getRandom(0, 9)]}`;
-
-    return {name, dob, age};
-}
-
-function getRandom(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min) + min);
-}
 
 @Component({
     imports: [TuiButton, TuiChevron, TuiTable],
@@ -37406,14 +37286,38 @@ function getRandom(min: number, max: number): number {
     changeDetection,
 })
 export default class Example {
-    protected columns = ['children', '#', 'name', 'dob', 'age'];
-    protected readonly data = DATA;
-
-    protected readonly rowState: Record<number, boolean> = {};
-
-    protected toggleRow(index: number): void {
-        this.rowState[index] = !this.rowState[index];
-    }
+    protected readonly state: Record<number, boolean> = {};
+    protected readonly data = [
+        {
+            dob: new TuiDay(1947, 6, 30),
+            name: 'John Matrix',
+            children: [
+                {
+                    dob: new TuiDay(1975, 6, 15),
+                    name: 'Jenny Matrix',
+                },
+            ],
+        },
+        {
+            dob: new TuiDay(1946, 6, 4),
+            name: 'John Rambo',
+            children: [],
+        },
+        {
+            dob: new TuiDay(1955, 2, 19),
+            name: 'John McClane',
+            children: [
+                {
+                    dob: new TuiDay(1982, 7, 10),
+                    name: 'Lucy McClane',
+                },
+                {
+                    dob: new TuiDay(1985, 3, 5),
+                    name: 'Jack McClane',
+                },
+            ],
+        },
+    ] as const;
 }
 ```
 
@@ -37437,14 +37341,14 @@ export default class Page {
         'Basic',
         'Custom',
         'Editable',
-        'With tuiSortBy directive to work with column titles instead of sorters',
+        'Sorting',
         'Virtual scroll',
-        'Dynamic columns',
+        'Columns',
         'Footer',
-        'Resize a large table',
+        'Resizing',
         'Expandable rows',
-        'Expandable rows: different ways to toggle rows',
-        'Manual sorting',
+        'Toggle rows',
+        'Controls',
     ];
 }
 ```
@@ -37542,7 +37446,7 @@ export class Example {}
 </form>
 <table tuiTable class="table" [columns]="columns" >
 <thead>
-<tr tuiThGroup>
+<tr>
 <th tuiTh>Name</th>
 <th tuiTh>Balance</th>
 </tr>
@@ -37625,7 +37529,7 @@ export default class Example {
 </form>
 <table tuiTable class="table" [columns]="columns" >
 <thead>
-<tr tuiThGroup>
+<tr>
 <th tuiTh>Name</th>
 <th tuiTh>Balance</th>
 </tr>
@@ -43008,8 +42912,8 @@ export default class Example {}
 ```html
 <p>Right-click any table row.</p>
 <table tuiTable>
-<thead tuiTHead>
-<tr tuiThGroup> @for (column of tableColumns; track column) { <th tuiTh> {{ column }} </th> } </tr>
+<thead>
+<tr> @for (column of tableColumns; track column) { <th tuiTh> {{ column }} </th> } </tr>
 </thead>
 <tbody tuiTbody> @for (rowInfo of tableData; track rowInfo) { <tr #dropdown="tuiDropdown" tuiDropdownContext [tuiDropdown]="contextMenu" > @for (value of getObjectValues(rowInfo); track value) { <td tuiTd> {{ value }} </td> } <ng-template #contextMenu>
 <tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
@@ -48975,8 +48879,8 @@ export class Example {}
 **Template:**
 ```html
 <table tuiTable [style.width.rem]="17" >
-<thead tuiThead>
-<tr tuiThGroup>
+<thead>
+<tr>
 <th tuiTh>Name</th>
 <th tuiTh>Sum, $</th>
 </tr>
