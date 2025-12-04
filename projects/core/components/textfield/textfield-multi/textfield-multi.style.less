@@ -42,14 +42,13 @@ tui-textfield[multi][multi] {
         display: flex;
         inset-inline-start: var(--t-start);
         min-inline-size: 0;
-        max-block-size: fit-content;
-        min-block-size: var(--t-height);
+        min-block-size: fit-content;
         flex: 1;
         align-items: center;
+        align-content: flex-start;
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
         transition-duration: inherit;
-        box-sizing: border-box;
 
         &::after {
             content: '';
