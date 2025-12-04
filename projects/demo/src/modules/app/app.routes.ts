@@ -900,6 +900,11 @@ export const ROUTES: Routes = [
         title: 'Touchable',
     }),
     route({
+        path: DemoRoute.Truncate,
+        loadComponent: async () => import('../directives/truncate'),
+        title: 'Truncate',
+    }),
+    route({
         path: DemoRoute.Validator,
         loadComponent: async () => import('../directives/validator'),
         title: 'Validator',
