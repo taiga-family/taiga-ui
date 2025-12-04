@@ -5,7 +5,7 @@ import {expect, test} from '@playwright/test';
 test.describe('Table', () => {
     test('Dynamic column', async ({page}) => {
         await tuiGoto(page, DemoRoute.Table);
-        const example = new TuiDocumentationPagePO(page).getExample('#dynamic-columns');
+        const example = new TuiDocumentationPagePO(page).getExample('#columns');
         const addColumnButton = example.locator('button').first();
 
         await addColumnButton.click();
@@ -55,9 +55,7 @@ test.describe('Table', () => {
 
     test('tuiSort directive', async ({page}) => {
         await tuiGoto(page, DemoRoute.Table);
-        const example = new TuiDocumentationPagePO(page).getExample(
-            '#with-tui-sort-by-directive-to-work-with-column-titles-instead-of-sorters',
-        );
+        const example = new TuiDocumentationPagePO(page).getExample('#sorting');
 
         const name = example.locator('th').filter({hasText: 'Name'});
         const dateOfBirth = example.locator('th').filter({hasText: 'Date of Birth'});
