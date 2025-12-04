@@ -1,6 +1,5 @@
 import {TuiTableCaption} from './caption/caption.component';
 import {TuiTableCell} from './directives/cell.directive';
-import {TuiTableDirectionOrder} from './directives/direction-order.directive';
 import {TuiTableHead} from './directives/head.directive';
 import {TuiTableResized} from './directives/resized.directive';
 import {TuiTableSortBy} from './directives/sort-by.directive';
@@ -30,6 +29,5 @@ export const TuiTable = [
     TuiTableThead,
     TuiTableResized,
     TuiTableSortPipe,
-    TuiTableDirectionOrder,
     TuiTableExpand,
 ] as const;

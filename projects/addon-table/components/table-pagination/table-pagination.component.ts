@@ -4,10 +4,10 @@ import {
     computed,
     inject,
     input,
+    model,
     output,
 } from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
-import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -34,8 +34,7 @@ export interface TuiTablePaginationEvent {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTablePagination {
-    private readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
-
+    protected readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
     protected readonly texts = inject(TUI_TABLE_PAGINATION_TEXTS);
@@ -54,20 +53,16 @@ export class TuiTablePagination {
 
     public readonly items = input<readonly number[]>(this.options.items);
     public readonly total = input(0);
-    public readonly page = input(0);
-    public readonly size = input(this.options.size);
+    public readonly page = model(0);
+    public readonly size = model(this.options.size);
     public readonly paginationChange = output<TuiTablePaginationEvent>();
 
     public onItem(size: number): void {
         const {start} = this;
 
-        tuiSetSignal(this.size, size);
-        tuiSetSignal(this.page, Math.floor(start / this.size()));
+        this.size.set(size);
+        this.page.set(Math.floor(start / this.size()));
         this.paginationChange.emit(this.pagination());
-    }
-
-    protected get showPages(): boolean {
-        return this.options.showPages;
     }
 
     protected get sizeOptionContent(): TuiTablePaginationOptions['sizeOptionContent'] {
@@ -81,12 +76,12 @@ export class TuiTablePagination {
     }
 
     protected back(): void {
-        tuiSetSignal(this.page, this.page() - 1);
+        this.page.update((page) => page - 1);
         this.paginationChange.emit(this.pagination());
     }
 
     protected forth(): void {
-        tuiSetSignal(this.page, this.page() + 1);
+        this.page.update((page) => page + 1);
         this.paginationChange.emit(this.pagination());
     }
 }

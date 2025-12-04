@@ -11,28 +11,12 @@ export const TuiSortDirection = {
 export type TuiSortDirection = (typeof TuiSortDirection)[keyof typeof TuiSortDirection];
 
 export interface TuiSortChange<T> {
-    /**
-     * @deprecated use sortKey
-     */
-    sortBy: keyof T | null;
     sortKey: keyof T | null;
-    /**
-     * @deprecated use sortDirection
-     */
-    orderBy: TuiSortDirection;
     sortDirection: TuiSortDirection;
 }
 
 export interface TuiTableSortChange<T> {
-    /**
-     * @deprecated use sortComparator
-     */
-    sortBy: TuiComparator<T> | null;
     sortComparator: TuiComparator<T> | null;
-    /**
-     * @deprecated use sortDirection
-     */
-    orderBy: TuiSortDirection;
     sortDirection: TuiSortDirection;
 }
 
