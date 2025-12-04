@@ -16,8 +16,8 @@
                         size="xs"
                         tuiIconButton
                         type="button"
-                        [attr.title]="item.children?.length ? null : 'No children'"
-                        [disabled]="!item.children?.length"
+                        [attr.title]="item.children.length ? null : 'No children'"
+                        [disabled]="!item.children.length"
                         [style.border-radius.%]="100"
                         [tuiChevron]="state[i] ?? false"
                         (click)="state[i] = !state[i]"
