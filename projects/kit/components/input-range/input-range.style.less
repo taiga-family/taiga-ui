@@ -27,6 +27,11 @@
 .t-content-end {
     color: var(--tui-text-primary);
 
+    tui-textfield:has(label:not(:empty)) & {
+        padding-block-start: calc(var(--t-height) / 3);
+    }
+
+    // TODO: Fallback until Chrome 105 & Safari 15.4
     tui-textfield._with-label & {
         padding-block-start: calc(var(--t-height) / 3);
     }
@@ -38,16 +43,20 @@
 
 tui-range {
     position: absolute;
+    top: 100%;
+    left: 1rem;
+    right: 1rem;
     z-index: 1;
-    inset: var(--t-row-height, 100%) 1rem 0;
     margin: calc(-1 * var(--tui-thickness)) 0 0;
 
     :host[data-size='m'] & {
-        inset-inline: 0.75rem;
+        right: 0.75rem;
+        left: 0.75rem;
     }
 
     :host[data-size='s'] & {
-        inset-inline: 0.625rem;
+        right: 0.625rem;
+        left: 0.625rem;
     }
 }
 
