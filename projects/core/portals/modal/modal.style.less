@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@keyframes tui-modal-backdrop {
+@keyframes tuiModalBackdrop {
     from {
         backdrop-filter: none;
     }
@@ -36,7 +36,7 @@ tui-modal {
 
             &.tui-enter,
             &.tui-leave {
-                animation-name: tui-modal-backdrop;
+                animation-name: tuiModalBackdrop;
             }
         }
     }
@@ -47,7 +47,7 @@ tui-modal {
         }
 
         &:nth-last-child(1 of tui-modal:not(:has(.tui-backdrop-hidden))):is(.tui-enter, .tui-leave) {
-            animation-name: tui-modal-backdrop;
+            animation-name: tuiModalBackdrop;
         }
     }
 
