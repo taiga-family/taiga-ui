@@ -13,6 +13,5 @@ import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 })
 export class TuiTableTd {
     protected readonly control = contentChild(TuiControl<unknown>);
-
     protected readonly textfield = contentChild(TuiTextfieldComponent<unknown>);
 }
