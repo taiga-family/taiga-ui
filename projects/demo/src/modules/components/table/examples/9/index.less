@@ -1,45 +1,26 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-.table {
-    inline-size: 28rem;
-
-    tbody {
-        tr {
-            td {
-                .transition(background);
-            }
-
-            &.child td {
-                background: var(--tui-background-base-alt);
-            }
-
-            &:hover {
-                td {
-                    background: var(--tui-background-base-alt);
-                }
-
-                &.child td {
-                    background: var(--tui-background-neutral-1-hover);
-                }
-            }
-        }
-
-        tui-table-expand {
-            animation-duration: 0.5s !important;
-        }
+tui-table-expand {
+    td {
+        background: var(--tui-background-base-alt);
     }
 
-    [tuiTh] {
-        border-top: none;
+    tr:hover td {
+        background: var(--tui-background-neutral-1-hover);
     }
+}
 
-    [tuiTh],
-    [tuiTd] {
-        border-inline-start: none;
-        border-inline-end: none;
-    }
+tr:hover td {
+    background: var(--tui-background-base-alt);
+}
 
-    button[disabled].chevron-btn::after {
-        cursor: initial;
-    }
+[tuiTh] {
+    border-top: none;
+}
+
+[tuiTh],
+[tuiTd] {
+    min-inline-size: 3rem;
+    border-inline: none;
+    white-space: nowrap;
 }

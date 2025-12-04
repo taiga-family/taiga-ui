@@ -1,6 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    .transition(background);
+
     position: relative;
     text-align: start;
     background: var(--tui-background-base);
@@ -24,11 +26,6 @@
         border-inline-start: none;
     }
 
-    // TODO(v5): Remove after we drop all legacy controls
-    &._editable:focus-within {
-        z-index: 1;
-    }
-
     &._editable {
         padding: 0 !important;
         vertical-align: top;
@@ -37,7 +34,7 @@
 
 :host(th) {
     position: sticky;
-    z-index: 1;
+    z-index: 100;
 
     &::after {
         .transition(opacity);
@@ -54,7 +51,7 @@
     }
 
     &:focus-within:not(:disabled) {
-        z-index: 11;
+        z-index: 1100;
     }
 }
 
@@ -63,7 +60,7 @@
 }
 
 :host-context(table._stuck) {
-    z-index: 10;
+    z-index: 1000;
 }
 
 :host-context(table._stuck):last-of-type::after {
@@ -90,7 +87,7 @@
 
 :host(td) {
     &:focus-within {
-        z-index: 1;
+        z-index: 100 !important;
     }
 
     &:not(:focus-within) {

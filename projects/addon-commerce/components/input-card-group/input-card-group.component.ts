@@ -175,7 +175,7 @@ export class TuiInputCardGroup
     );
 
     protected readonly hasCleaner = computed(
-        () => !!this.value()?.card && this.interactive(),
+        () => this.textfield.cleaner() && !!this.value()?.card && this.interactive(),
     );
 
     /**

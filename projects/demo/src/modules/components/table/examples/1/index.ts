@@ -7,7 +7,6 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
 @Component({
     imports: [TuiFormatNumberPipe, TuiTable],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -22,6 +21,4 @@ export default class Example {
             balance: 423242,
         },
     ] as const;
-
-    protected readonly columns = Object.keys(this.data[0]);
 }

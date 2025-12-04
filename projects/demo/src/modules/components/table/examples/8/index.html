@@ -1,14 +1,17 @@
 <table tuiTable>
     <thead>
-        <tr tuiThGroup>
+        <tr>
             <th
                 tuiTh
+                [maxWidth]="300"
+                [minWidth]="150"
                 [resizable]="true"
             >
                 Name
             </th>
             <th
                 tuiTh
+                [maxWidth]="300"
                 [minWidth]="100"
                 [resizable]="true"
             >
@@ -16,17 +19,23 @@
             </th>
             <th
                 tuiTh
+                [maxWidth]="200"
+                [minWidth]="100"
                 [resizable]="true"
             >
                 Balance
             </th>
-            <th tuiTh>Description</th>
         </tr>
     </thead>
     <tbody tuiTbody>
         @for (item of data; track item) {
-            <tr>
-                <td tuiTd>{{ item.name }}</td>
+            <tr tuiTr>
+                <td
+                    tuiTd
+                    [style.vertical-align]="'top'"
+                >
+                    {{ item.name }}
+                </td>
                 <td tuiTd>
                     <tui-textfield multi>
                         <input
@@ -44,12 +53,6 @@
                             [(ngModel)]="item.balance"
                         />
                     </tui-textfield>
-                </td>
-                <td
-                    tuiTd
-                    [style.white-space]="'nowrap'"
-                >
-                    {{ item.description }}
                 </td>
             </tr>
         }
