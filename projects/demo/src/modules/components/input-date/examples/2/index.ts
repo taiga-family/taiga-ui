@@ -2,7 +2,7 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiDay, TuiMonth, type TuiTime} from '@taiga-ui/cdk';
+import {type TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
@@ -15,7 +15,7 @@ const CHEAPEST_TICKET: [string] = ['var(--tui-status-positive)'];
     changeDetection,
 })
 export default class Example {
-    protected value: [TuiDay, TuiTime] | null = null;
+    protected value: [TuiDay] | null = null;
 
     protected readonly defaultActiveMonth = signal(new TuiMonth(2000, 0));
 
