@@ -20325,7 +20325,7 @@ export class Example {}
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
 <label tuiLabel>Type a phone number</label>
 <input tuiInputPhone [formControl]="control" [invalid]="controlDoc.invalid" [mask]="phoneMask" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 </tui-textfield>
@@ -20337,6 +20337,7 @@ export class Example {}
 | Property | Type | Description |
 |----------|-----|----------|
 | [mask] | `string` | Text mask. You can use # , - , brackets and spaces as a template symbol |
+| [filler] | `string` | Filler |
 
 ### Usage Examples
 
@@ -20607,6 +20608,8 @@ export default class PageComponent {
         '+850 (####)-#############',
         '+1 ### ###-####',
     ];
+
+    protected filler = '';
 
     protected phoneMask = this.phoneMasks[0]!;
 
@@ -41468,7 +41471,7 @@ export default class Example {
 <a tuiLink [routerLink]="routes.InputSlider" > TuiInputSliderComponent </a>
 </li>
 <li class="tui-list__item">
-<a tuiLink [routerLink]="routes.InputRangeLegacy" > TuiInputRangeComponent </a>
+<a tuiLink [routerLink]="routes.InputRange" > TuiInputRangeComponent </a>
 </li>
 </ul>
 </section>
@@ -41528,16 +41531,16 @@ export default class Example {
 <h3>Components that are customizable:</h3>
 <ul class="tui-list tui-list_small">
 <li class="tui-list__item">
-<a tuiLink [routerLink]="routes.InputDateLegacy" > TuiInputDate </a>
+<a tuiLink [routerLink]="routes.InputDate" > TuiInputDate </a>
 </li>
 <li class="tui-list__item">
-<a tuiLink [routerLink]="routes.InputDateRangeLegacy" > TuiInputDateRange </a>
+<a tuiLink [routerLink]="routes.InputDateRange" > TuiInputDateRange </a>
 </li>
 <li class="tui-list__item">
-<a tuiLink [routerLink]="routes.InputDateTimeLegacy" > TuiInputDateTime </a>
+<a tuiLink [routerLink]="routes.InputDateTime" > TuiInputDateTime </a>
 </li>
 <li class="tui-list__item">
-<a tuiLink [routerLink]="routes.InputDateMultiLegacy" > TuiInputDateMulti </a>
+<a tuiLink [routerLink]="routes.InputDateMulti" > TuiInputDateMulti </a>
 </li>
 </ul>
 </section>
