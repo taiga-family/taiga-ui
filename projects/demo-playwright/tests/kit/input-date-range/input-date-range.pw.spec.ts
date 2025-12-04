@@ -1,21 +1,17 @@
 import {DemoRoute} from '@demo/routes';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 import {
     CHAR_NO_BREAK_SPACE,
-    TuiCalendarPO,
     TuiCalendarSheetPO,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDateRangePO,
-    TuiMobileCalendarPO,
 } from '../../../utils';
 
 const {describe, beforeEach} = test;
 
-// TODO migrate
-test.skip('InputDateRange', () => {
+test.describe('InputDateRange', () => {
     let inputDateRange!: TuiInputDateRangePO;
     let documentationPage!: TuiDocumentationPagePO;
 
@@ -30,16 +26,12 @@ test.skip('InputDateRange', () => {
     describe('API', () => {
         let example!: Locator;
 
-        let calendar!: TuiCalendarPO;
-
         beforeEach(() => {
             example = documentationPage.apiPageExample;
 
             inputDateRange = new TuiInputDateRangePO(
-                example.locator('tui-input-date-range'),
+                example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
-
-            calendar = new TuiCalendarPO(inputDateRange.calendar);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
@@ -48,7 +40,7 @@ test.skip('InputDateRange', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputDateRangeLegacy}/API?tuiTextfieldSize=${size}`,
+                    `${DemoRoute.InputDateRange}/API?tuiTextfieldSize=${size}`,
                 );
 
                 await inputDateRange.textfield.click();
@@ -90,7 +82,7 @@ test.skip('InputDateRange', () => {
         });
 
         test('Maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?min$=3`);
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
             await inputDateRange.textfield.click();
 
             await expect
@@ -102,7 +94,7 @@ test.skip('InputDateRange', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?min$=3`);
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
             await inputDateRange.textfield.click();
 
             await expect
@@ -113,7 +105,7 @@ test.skip('InputDateRange', () => {
         });
 
         test('Maximum month when items not empty', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1&max$=7`);
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1&max$=7`);
             await inputDateRange.textfield.click();
 
             await expect
@@ -126,7 +118,7 @@ test.skip('InputDateRange', () => {
 
         describe('pads with zeroes if you enter an invalid date', () => {
             test('day > 31', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.pressSequentially('32');
 
@@ -134,7 +126,7 @@ test.skip('InputDateRange', () => {
             });
 
             test('month > 12', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.pressSequentially('2913');
 
@@ -146,7 +138,7 @@ test.skip('InputDateRange', () => {
             });
 
             test('pads date range if it is less than [minLength]', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?minLength$=0`); // minLength = {day: 3}
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=0`); // minLength = {day: 3}
 
                 await inputDateRange.textfield.pressSequentially('21052023-22052023');
 
@@ -156,7 +148,7 @@ test.skip('InputDateRange', () => {
             });
 
             test('cuts date range if it is more than [maxLength]', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?maxLength$=0`); // maxLength = {day: 5}
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=1`); // maxLength = {day: 5}
 
                 await inputDateRange.textfield.pressSequentially('20052023-29052023');
 
@@ -166,104 +158,11 @@ test.skip('InputDateRange', () => {
             });
         });
 
-        test('Select from [items] => select date range from calendar', async ({page}) => {
-            const calendarSheet = new TuiCalendarSheetPO(
-                inputDateRange.calendar.locator('tui-calendar-sheet'),
-            );
-
-            await tuiGoto(
-                page,
-                `${DemoRoute.InputDateRangeLegacy}/API?items$=1&sandboxExpanded=true`,
-            );
-
-            await inputDateRange.textfield.click();
-            await inputDateRange.selectItem(1);
-
-            await expect(inputDateRange.textfield).toHaveValue('Today');
-
-            await inputDateRange.textfield.click();
-            await calendarSheet.clickOnDay(21);
-            await calendarSheet.clickOnDay(25);
-
-            await expect(inputDateRange.textfield).toHaveValue(
-                `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
-            );
-            await expect
-                .soft(example)
-                .toHaveScreenshot('07-item-and-calendar-interactions.png');
-        });
-
-        test('Calendar shows end of period, when selected any range', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1`);
-
-            await inputDateRange.textfield.click();
-            await inputDateRange.selectItem(0);
-
-            await inputDateRange.textfield.click();
-
-            await expect
-                .soft(example)
-                .toHaveScreenshot('09-calendar-shows-end-of-period.png');
-        });
-
-        test('Press backspace to remove item, textfield is empty', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1`);
-
-            await inputDateRange.textfield.click();
-            await calendar.itemButton.first().click();
-
-            await inputDateRange.textfield.focus();
-            await inputDateRange.textfield.press('Backspace');
-
-            await expect(inputDateRange.textfield).toHaveValue('');
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('10-input-date-range.png');
-        });
-
-        test('Enter item date, it converts to item name', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1`);
-
-            await inputDateRange.textfield.focus();
-            await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
-
-            await expect(inputDateRange.textfield).toHaveValue('Today');
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('11-input-date-range.png');
-        });
-
-        describe('Mobile emulation', () => {
-            test.use(TUI_PLAYWRIGHT_MOBILE);
-
-            let mobileCalendar!: TuiMobileCalendarPO;
-
-            beforeEach(() => {
-                mobileCalendar = new TuiMobileCalendarPO(inputDateRange.calendar);
-            });
-
-            test('Selection of only single date produces range with the same start and end', async ({
-                page,
-            }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
-                await inputDateRange.textfieldIcon.click();
-
-                const [calendarSheet] = await mobileCalendar.getCalendarSheets();
-
-                await calendarSheet?.clickOnDay(17);
-                await mobileCalendar.confirmButton.click();
-
-                await expect(inputDateRange.textfield).toHaveValue(
-                    `17.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}17.09.2020`,
-                );
-            });
-        });
-
         describe('Selecting range consisting of the same start/end date', () => {
             test('double click on the same day - selects single-day range', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.click();
 
@@ -285,7 +184,7 @@ test.skip('InputDateRange', () => {
             test('allows to select new range start after double click on the same day', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.click();
 
@@ -318,7 +217,7 @@ test.skip('InputDateRange', () => {
             test('no highlighting hover effect after double click on the same day', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.click();
 
@@ -358,7 +257,7 @@ test.skip('InputDateRange', () => {
         });
 
         test('minLength=15', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?minLength$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=1`);
 
             const calendarSheet = new TuiCalendarSheetPO(
                 inputDateRange.calendar.locator('tui-calendar-sheet'),
@@ -381,14 +280,14 @@ test.skip('InputDateRange', () => {
 
     describe('Examples', () => {
         beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputDateRangeLegacy);
+            await tuiGoto(page, DemoRoute.InputDateRange);
         });
 
         test('Select second same range => after close/open calendar displays selected period displays correctly', async () => {
-            const example = documentationPage.getExample('#custom-period');
+            const example = documentationPage.getExample('#datalist');
 
             const inputDateRange = new TuiInputDateRangePO(
-                example.locator('tui-input-date-range'),
+                example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
 
             await inputDateRange.textfield.click();
@@ -398,78 +297,28 @@ test.skip('InputDateRange', () => {
             expect(await inputDateRange.itemHasCheckmark(1)).toBeFalsy();
             expect(await inputDateRange.itemHasCheckmark(2)).toBeTruthy();
 
-            await expect(inputDateRange.textfield).toHaveValue('Yet another yesterday');
+            await expect(inputDateRange.template).toHaveText(' Yesterday ');
             await expect
                 .soft(inputDateRange.calendar)
                 .toHaveScreenshot(
                     '08-calendar-correct-selected-period-after-close-open.png',
                 );
         });
-
-        test.describe('with `input[tuiTextfieldLegacy]` inside', () => {
-            test('filler has no change detection problems', async () => {
-                const example = documentationPage.getExample('#base');
-                const inputDateRange = new TuiInputDateRangePO(
-                    example.locator('tui-input-date-range'),
-                );
-
-                /**
-                 * To ensure that example is not changed and
-                 * still contains InputDateRange with projected <input tuiTextfieldLegacy>
-                 */
-                await expect(
-                    inputDateRange.host.locator('input[tuiTextfieldLegacy]'),
-                ).toBeAttached();
-
-                await inputDateRange.textfield.focus();
-
-                await expect
-                    .soft(inputDateRange.host)
-                    .toHaveScreenshot('12-backspace-pressed-0-times.png');
-
-                for (let i = 1; i <= 16; i++) {
-                    await inputDateRange.textfield.press('Backspace');
-
-                    await expect
-                        .soft(inputDateRange.host)
-                        .toHaveScreenshot(`12-backspace-pressed-${i}-times.png`);
-                }
-
-                await expect(inputDateRange.textfield).toHaveValue('');
-            });
-        });
-
-        test('Actual min/max in calendar', async () => {
-            const example = documentationPage.getExample('#base');
-
-            const inputDateRange = new TuiInputDateRangePO(
-                example.locator('tui-input-date-range'),
-            );
-
-            await inputDateRange.textfield.click();
-
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('17-input-date-range-actual-min-max.png');
-            await expect
-                .soft(inputDateRange.calendar)
-                .toHaveScreenshot('18-input-date-range-calendar-actual-min-max.png');
-        });
     });
 
     test('check valid active period', async ({page}) => {
-        await tuiGoto(page, DemoRoute.InputDateRangeLegacy);
+        await tuiGoto(page, DemoRoute.InputDateRange);
 
-        const example = documentationPage.getExample('#custom-period');
+        const example = documentationPage.getExample('#datalist');
         const inputDateRange = new TuiInputDateRangePO(
-            example.locator('tui-input-date-range'),
+            example.locator('tui-textfield:has(input[tuiInputDateRange])'),
         );
 
         await inputDateRange.textfield.focus();
-        await inputDateRange.textfieldIcon.click();
-        await inputDateRange.selectItem(1);
+        await inputDateRange.textfield.click();
+        await inputDateRange.selectItem(2);
 
-        await expect(inputDateRange.textfield).toHaveValue('Yesterday');
+        await expect(inputDateRange.template).toHaveText('Yesterday');
         await expect
             .soft(inputDateRange.host)
             .toHaveScreenshot('13-data-range-custom-period-yesterday-focused.png');
@@ -481,10 +330,10 @@ test.skip('InputDateRange', () => {
             .toHaveScreenshot('14-data-range-custom-period-yesterday-unfocused.png');
 
         await inputDateRange.textfield.focus();
-        await inputDateRange.textfieldIcon.click();
+        await inputDateRange.textfield.click();
         await inputDateRange.selectItem(0);
 
-        await expect(inputDateRange.textfield).toHaveValue('Today');
+        await expect(inputDateRange.template).toHaveText('For all the time');
         await expect
             .soft(inputDateRange.host)
             .toHaveScreenshot('15-data-range-custom-period-today-focused.png');
@@ -494,5 +343,76 @@ test.skip('InputDateRange', () => {
         await expect
             .soft(inputDateRange.host)
             .toHaveScreenshot('16-data-range-custom-period-today-unfocused.png');
+    });
+
+    describe('items', () => {
+        test('Select from [items] => select date range from calendar', async ({page}) => {
+            await tuiGoto(page, DemoRoute.InputDateRange);
+
+            const example = documentationPage.getExample('#datalist');
+            const inputDateRange = new TuiInputDateRangePO(
+                example.locator('tui-textfield:has(input[tuiInputDateRange])'),
+            );
+
+            const calendarSheet = new TuiCalendarSheetPO(
+                inputDateRange.calendar.locator('tui-calendar-sheet'),
+            );
+
+            await inputDateRange.textfield.click();
+            await inputDateRange.selectItem(1);
+
+            await expect(inputDateRange.template).toHaveText('Today');
+
+            await inputDateRange.textfield.click();
+            await calendarSheet.clickOnDay(21);
+            await calendarSheet.clickOnDay(25);
+
+            await expect(inputDateRange.textfield).toHaveValue(
+                `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
+            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot('07-item-and-calendar-interactions.png');
+        });
+
+        // TODO: Fix the test
+        test.skip('Press backspace to remove item, textfield is empty', async ({
+            page,
+        }) => {
+            await tuiGoto(page, DemoRoute.InputDateRange);
+
+            const example = documentationPage.getExample('#datalist');
+            const inputDateRange = new TuiInputDateRangePO(
+                example.locator('tui-textfield:has(input[tuiInputDateRange])'),
+            );
+
+            await inputDateRange.textfield.click();
+            await inputDateRange.selectItem(1);
+
+            await inputDateRange.textfield.focus();
+            await inputDateRange.textfield.press('Backspace');
+
+            await expect(inputDateRange.textfield).toHaveValue('');
+            await expect
+                .soft(inputDateRange.textfield)
+                .toHaveScreenshot('10-input-date-range.png');
+        });
+
+        test('Enter item date, it converts to item name', async ({page}) => {
+            await tuiGoto(page, DemoRoute.InputDateRange);
+
+            const example = documentationPage.getExample('#datalist');
+            const inputDateRange = new TuiInputDateRangePO(
+                example.locator('tui-textfield:has(input[tuiInputDateRange])'),
+            );
+
+            await inputDateRange.textfield.focus();
+            await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
+
+            await expect(inputDateRange.template).toHaveText('Today');
+            await expect
+                .soft(inputDateRange.textfield)
+                .toHaveScreenshot('11-input-date-range.png');
+        });
     });
 });

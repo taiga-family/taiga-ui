@@ -51,6 +51,7 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    [filler]="filler"
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -83,7 +84,17 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
-            ></tbody>
+            >
+                <tr
+                    name="[filler]"
+                    tuiDocAPIItem
+                    type="string"
+                    [(value)]="filler"
+                >
+                    Filler
+                </tr>
+                >
+            </tbody>
 
             <tbody
                 #icons

@@ -2,16 +2,15 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-// TODO: migrate
-test.skip('InputTable', () => {
+test.describe('Input in table', () => {
     test('editing fields inside a table', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Input);
+        await tuiGoto(page, DemoRoute.Table);
 
-        const example = new TuiDocumentationPagePO(page).getExample('#table');
+        const example = new TuiDocumentationPagePO(page).getExample('#editable');
 
         await example.scrollIntoViewIfNeeded();
 
-        for (const index of [0, 1, 2, 3, 4]) {
+        for (const index of [0, 1, 2]) {
             await example
                 .locator('tbody tr td')
                 .nth(index)

@@ -8,15 +8,14 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-// TODO migrate
-test.skip('InputPhone', () => {
+test.describe('InputPhone', () => {
     test.describe('API page', () => {
         let example: Locator;
         let inputPhone: TuiInputPhonePO;
 
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
-            inputPhone = new TuiInputPhonePO(example.locator('tui-input-phone'));
+            inputPhone = new TuiInputPhonePO(example.locator('tui-textfield').first());
         });
 
         test("Don't duplicate Code 52 When Inputting Digit '2' After Clearing", async ({
@@ -24,7 +23,7 @@ test.skip('InputPhone', () => {
         }) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.InputPhoneLegacy}/API?countryCode=%2B52&tuiTextfieldCleaner=true`,
+                `${DemoRoute.InputPhone}/API?mask=%2B52%20(%23%23%23)%20%23%23%23-%23%23-%23%23`,
             );
 
             await inputPhone.textfield.focus();
@@ -46,7 +45,7 @@ test.skip('InputPhone', () => {
         }) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.InputPhoneLegacy}/API?countryCode=%2B1&tuiTextfieldCleaner=true`,
+                `${DemoRoute.InputPhone}/API?mask=%2B1%20(%23%23%23)%20%23%23%23-%23%23-%23%23`,
             );
 
             await inputPhone.textfield.focus();
@@ -79,7 +78,7 @@ test.skip('InputPhone', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputPhoneLegacy}/API?countryCode=%2B1&tuiTextfieldCleaner=true&sandboxExpanded=true`,
+                    `${DemoRoute.InputPhone}/API?mask=%2B1%20(%23%23%23)%20%23%23%23-%23%23-%23%23&sandboxExpanded=true`,
                 );
             });
 
@@ -110,11 +109,11 @@ test.skip('InputPhone', () => {
 
         test.use({viewport: {width: 375, height: 812}});
 
-        test.describe('[countryCode]="+7" & [phoneMaskAfterCountryCode]="(###) ###-##-##"', () => {
+        test.describe('mask="+7 (###) ###-##-##"', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputPhoneLegacy}/API?countryCode=%2B7&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23`,
+                    `${DemoRoute.InputPhone}/API?mask=%2B7%20(%23%23%23)%20%23%23%23-%23%23-%23%23`,
                 );
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
@@ -1439,16 +1438,13 @@ test.skip('InputPhone', () => {
         });
 
         test('filler', async ({page}) => {
-            await tuiGoto(
-                page,
-                `${DemoRoute.InputPhoneLegacy}/API?tuiTextfieldCustomContent=@tui.mastercard-mono&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23&tuiTextfieldCleaner=true&focusable=true&tuiTextfieldPrefix=&tuiTextfieldPostfix=&tuiTextfieldFiller=57567567&tuiTextfieldSize=l&search=q3e`,
-            );
+            await tuiGoto(page, `${DemoRoute.InputPhone}/API?filler=%2B7%20999`);
 
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            input = example.locator('input');
 
-            await example.getByTestId('tui-primitive-textfield__native-input').focus();
-
-            await expect.soft(example).toHaveScreenshot('57-input-phone.png');
+            await input.focus();
+            await expect.soft(example).toHaveScreenshot('input-phone-filler.png');
         });
     });
 });
