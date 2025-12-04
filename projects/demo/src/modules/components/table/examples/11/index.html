@@ -44,6 +44,7 @@
                 <tui-textfield tuiChevron>
                     @if (isMobile) {
                         <select
+                            aria-label="Select"
                             placeholder="Select"
                             tuiSelect
                             [items]="items"
@@ -75,6 +76,7 @@
                     tuiChevron
                 >
                     <select
+                        aria-label="MultiSelect"
                         placeholder="MultiSelect"
                         tuiMultiSelect
                         [items]="items"
