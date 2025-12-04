@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
+import {TuiDay} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 

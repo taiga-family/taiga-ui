@@ -2,8 +2,9 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TUI_IS_MOBILE, TuiContext} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -16,7 +17,6 @@ import {
     TuiSelect,
     TuiTextarea,
 } from '@taiga-ui/kit';
-import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 
 @Component({
     imports: [
@@ -24,15 +24,15 @@ import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
         TuiChevron,
         TuiDataListWrapper,
         TuiInput,
+        TuiInputCardGroup,
         TuiInputChip,
+        TuiInputDateMulti,
+        TuiInputRange,
+        TuiInputSlider,
+        TuiMultiSelect,
         TuiSelect,
         TuiTable,
         TuiTextarea,
-        TuiMultiSelect,
-        TuiInputSlider,
-        TuiInputDateMulti,
-        TuiInputRange,
-        TuiInputCardGroup,
     ],
     templateUrl: './index.html',
     encapsulation,
