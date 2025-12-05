@@ -95,7 +95,7 @@ export class TuiInputChipDirective<T>
         }
 
         this.setValue([...this.value(), ...valid]);
-        this.scrollTo();
+        this.textfield.scrollTo(true);
     }
 
     protected onInput(): void {
@@ -104,7 +104,7 @@ export class TuiInputChipDirective<T>
         if (this.separator() && this.textfield.value().match(this.separator())) {
             this.onEnter();
         } else {
-            this.scrollTo();
+            this.textfield.scrollTo(true);
         }
     }
 
@@ -132,17 +132,5 @@ export class TuiInputChipDirective<T>
                 );
             }
         }
-    }
-
-    protected scrollTo(): void {
-        const sign = this.textfield.el.matches('[dir="rtl"] :scope') ? -1 : 1;
-
-        // Allow change detection to run and add new tag to DOM
-        setTimeout(() => {
-            this.textfield.el.scrollTo({
-                left: sign * Number.MAX_SAFE_INTEGER,
-                top: Number.MAX_SAFE_INTEGER,
-            });
-        });
     }
 }
