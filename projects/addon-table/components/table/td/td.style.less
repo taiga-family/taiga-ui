@@ -70,19 +70,19 @@
 :host-context(table[data-size='l']) {
     block-size: var(--tui-height-l);
     font: var(--tui-font-text-m);
-    padding: 1rem;
+    padding: calc(1rem - 1px) 1rem 1rem;
 }
 
 :host-context(table[data-size='m']) {
     block-size: var(--tui-height-m);
     font: var(--tui-font-text-s);
-    padding: 0.75rem;
+    padding: calc(0.75rem - 1px) 0.75rem 0.75rem;
 }
 
 :host-context(table[data-size='s']) {
     block-size: var(--tui-height-s);
     font: var(--tui-font-text-s);
-    padding: 0.25rem 0.5rem;
+    padding: calc(0.25rem - 1px) 0.5rem 0.25rem;
 }
 
 :host(td) {
