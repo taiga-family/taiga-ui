@@ -319,6 +319,10 @@ tui-textfield {
         cursor: pointer;
     }
 
+    &:has(input[type='tel']) {
+        direction: ltr;
+    }
+
     .appearance-invalid({
         [tuiInput]:not(._empty) ~ [tuiLabel],
         &[multi]:not(._empty) [tuiLabel] {
