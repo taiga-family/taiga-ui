@@ -1,8 +1,8 @@
 export const DEPRECATED_VARS = {
-    '--tui-font-text-l-2': '--tui-font-text-ui-l',
-    '--tui-font-text-m-2': '--tui-font-text-ui-m',
-    '--tui-font-text-s-2': '--tui-font-text-ui-s',
-    '--tui-font-text-xs-2': '--tui-font-text-ui-xs',
+    '--tui-font-body-l-2': '--tui-font-ui-l',
+    '--tui-font-body-m-2': '--tui-font-ui-m',
+    '--tui-font-body-s-2': '--tui-font-ui-s',
+    '--tui-font-body-xs-2': '--tui-font-ui-xs',
     '--tui-base-01': '--tui-background-base',
     '--tui-base-02': '--tui-background-base-alt',
     '--tui-base-03': '--tui-background-neutral-1-hover',
