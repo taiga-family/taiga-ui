@@ -5981,6 +5981,157 @@ export default class Page {
 ```
 
 ---
+# components/ButtonSelect
+- **Package**: `KIT`
+- **Type**: components
+ButtonSelect
+            is a form control for selecting one or multiple values, similar to a standard select element but with a
+            button-based interface.
+
+### How to Use (Import)
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {TuiButtonSelect} from &#039;@taiga-ui/kit&#039;;
+import {TuiButton, TuiDropdown} from &#039;@taiga-ui/core&#039;;
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiButton,
+    TuiButtonSelect,
+    TuiDropdown,
+  ],
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+&lt;button
+  tuiButton
+  tuiButtonSelect
+  type=&quot;button&quot;
+  [(ngModel)]=&quot;item&quot;
+&gt;
+  {{ item }}
+  &lt;tui-data-list-wrapper
+    *tuiDropdown
+    new
+    [items]=&quot;items&quot;
+  /&gt;
+&lt;/button&gt;
+```
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+&lt;button appearance=&quot;outline-grayscale&quot; iconStart=&quot;@tui.star&quot; size=&quot;m&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;value&quot; &gt; {{ value }} &lt;tui-data-list-wrapper *tuiTextfieldDropdown new [items]=&quot;items&quot; /&gt;
+&lt;/button&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton, TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {TuiButtonSelect, TuiDataListWrapper} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiButton, TuiButtonSelect, TuiDataListWrapper, TuiTextfield],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items: string[] = inject(&#039;Pythons&#039; as any);
+
+    protected value = this.items[0];
+}
+```
+
+#### Multiselect
+
+**Template:**
+```html
+&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.user&quot; size=&quot;m&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;value&quot; &gt; {{ value.length === 1 ? value[0]?.name : &#039;Selected &#039; + value.length }} &lt;tui-data-list *tuiTextfieldDropdown&gt;
+&lt;tui-opt-group label=&quot;Users&quot; tuiMultiSelectGroup &gt;
+&lt;button *ngFor=&quot;let name of items&quot; new tuiOption type=&quot;button&quot; [value]=&quot;name&quot; &gt; {{ name.name }} &lt;/button&gt;
+&lt;/tui-opt-group&gt;
+&lt;/tui-data-list&gt;
+&lt;/button&gt;
+```
+**TypeScript:**
+```ts
+import {NgForOf} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton, TuiDataList, TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {TuiButtonSelect, TuiMultiSelect} from &#039;@taiga-ui/kit&#039;;
+
+interface User {
+    readonly id: number;
+    readonly name: string;
+}
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        NgForOf,
+        TuiButton,
+        TuiButtonSelect,
+        TuiDataList,
+        TuiMultiSelect,
+        TuiTextfield,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items: User[] = [
+        {id: 42, name: &#039;Tommy Vercetti&#039;},
+        {id: 237, name: &#039;Carl Johnson&#039;},
+        {id: 666, name: &#039;Niko Bellic&#039;},
+        {id: 999, name: &#039;Trevor Philips&#039;},
+        {id: 123, name: &#039;Michael De Santa&#039;},
+        {id: 777, name: &#039;Franklin Clinton&#039;},
+    ];
+
+    protected value = this.items;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {}
+```
+
+---
 # components/Calendar
 - **Package**: `CORE`
 - **Type**: components
