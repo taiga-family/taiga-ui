@@ -24,7 +24,6 @@ const LEFT = 0;
 @Directive()
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
-    private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 8;
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
         inject<any>(TuiRectAccessor, {optional: true}),
@@ -39,6 +38,10 @@ export class TuiHintPosition extends TuiPositionAccessor {
 
     public readonly direction = input(inject(TUI_HINT_OPTIONS).direction, {
         alias: 'tuiHintDirection',
+    });
+
+    public readonly offset = input(inject(TUI_IS_MOBILE) ? 16 : 8, {
+        alias: 'tuiHintOffset',
     });
 
     public readonly directionChange = output<TuiHintDirection>({
@@ -59,14 +62,14 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const topCenter = hostRect.top + hostRect.height / 2;
         const rtl = this.el.matches('[dir="rtl"] :scope');
 
-        this.points['top-left'][TOP] = hostRect.top - height - this.offset;
+        this.points['top-left'][TOP] = hostRect.top - height - this.offset();
         this.points['top-left'][LEFT] = leftCenter - width + ARROW_OFFSET;
         this.points.top[TOP] = this.points['top-left'][TOP];
         this.points.top[LEFT] = leftCenter - width / 2;
         this.points['top-right'][TOP] = this.points['top-left'][TOP];
         this.points['top-right'][LEFT] = leftCenter - ARROW_OFFSET;
 
-        this.points['bottom-left'][TOP] = hostRect.bottom + this.offset;
+        this.points['bottom-left'][TOP] = hostRect.bottom + this.offset();
         this.points['bottom-left'][LEFT] = this.points['top-left'][LEFT];
         this.points.bottom[TOP] = this.points['bottom-left'][TOP];
         this.points.bottom[LEFT] = this.points.top[LEFT];
@@ -74,14 +77,14 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['bottom-right'][LEFT] = this.points['top-right'][LEFT];
 
         this.points['left-top'][TOP] = topCenter - height + ARROW_OFFSET;
-        this.points['left-top'][LEFT] = hostRect.left - width - this.offset;
+        this.points['left-top'][LEFT] = hostRect.left - width - this.offset();
         this.points.left[TOP] = topCenter - height / 2;
         this.points.left[LEFT] = this.points['left-top'][LEFT];
         this.points['left-bottom'][TOP] = topCenter - ARROW_OFFSET;
         this.points['left-bottom'][LEFT] = this.points['left-top'][LEFT];
 
         this.points['right-top'][TOP] = this.points['left-top'][TOP];
-        this.points['right-top'][LEFT] = hostRect.right + this.offset;
+        this.points['right-top'][LEFT] = hostRect.right + this.offset();
         this.points.right[TOP] = this.points.left[TOP];
         this.points.right[LEFT] = this.points['right-top'][LEFT];
         this.points['right-bottom'][TOP] = this.points['left-bottom'][TOP];
