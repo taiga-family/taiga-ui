@@ -1,33 +1,23 @@
-<form
-    tuiForm="m"
-    [formGroup]="form"
->
-    <tui-textfield>
-        <label tuiLabel>Required date</label>
-        <input
-            formControlName="required"
-            tuiInputDate
-        />
-        <tui-calendar *tuiDropdown />
-    </tui-textfield>
-    <tui-error formControlName="required" />
-    <tui-textfield>
-        <label tuiLabel>Optional date</label>
-        <input
-            formControlName="optional"
-            tuiInputDate
-            tuiUnfinishedValidator
-        />
-        <tui-calendar *tuiDropdown />
-    </tui-textfield>
-    <tui-error formControlName="optional" />
-    <footer>
+<tui-textfield [content]="control.value?.daySame(today) ? 'Today' : ''">
+    <label tuiLabel>Choose a date</label>
+    <input
+        tuiInputDate
+        [formControl]="control"
+    />
+    <ng-template
+        let-close
+        tuiDropdown
+    >
+        <tui-calendar />
         <button
+            appearance="action"
+            size="m"
             tuiButton
-            type="submit"
-            [disabled]="form.invalid"
+            type="button"
+            class="button"
+            (click)="control.setValue(today); close()"
         >
-            Submit
+            Today
         </button>
-    </footer>
-</form>
+    </ng-template>
+</tui-textfield>
