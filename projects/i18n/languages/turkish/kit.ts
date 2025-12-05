@@ -79,4 +79,12 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Sıfırla',
     },
     phoneSearch: 'Ülke veya kodu yazın',
+    dayRangePeriods: [
+        'Her zaman için',
+        'Bugün',
+        'Dün',
+        'Geçerli hafta',
+        'Geçerli ay',
+        'Önceki ay',
+    ],
 };

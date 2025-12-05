@@ -80,4 +80,12 @@ export const TUI_GERMAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Zurücksetzen',
     },
     phoneSearch: 'Geben Sie das Land oder den Code ein',
+    dayRangePeriods: [
+        'Die ganze Zeit',
+        'Heute',
+        'Gestern',
+        'Diese Woche',
+        'Diesen Monat',
+        'Letzter Monat',
+    ],
 };

@@ -149,3 +149,10 @@ export const TUI_INTERNATIONAL_SEARCH = new InjectionToken(
         factory: tuiExtractI18n('phoneSearch'),
     },
 );
+
+export const TUI_DAY_RANGE_PERIODS = new InjectionToken(
+    ngDevMode ? 'TUI_DAY_RANGE_PERIODS' : '',
+    {
+        factory: tuiExtractI18n('dayRangePeriods'),
+    },
+);

@@ -79,4 +79,12 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Қалпына келтіру',
     },
     phoneSearch: 'Елді немесе кодты теріңіз',
+    dayRangePeriods: [
+        'Барлық уақытта',
+        'Бүгін',
+        'Кеше',
+        'Осы аптада',
+        'Осы айда',
+        'Өткен айда',
+    ],
 };

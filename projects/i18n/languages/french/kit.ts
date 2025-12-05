@@ -83,4 +83,12 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Réinitialiser',
     },
     phoneSearch: 'Tapez le pays ou le code',
+    dayRangePeriods: [
+        'Tout le temps',
+        "Aujourd'hui",
+        'Hier',
+        'Cette semaine',
+        'Ce mois-ci',
+        'Le mois dernier',
+    ],
 };

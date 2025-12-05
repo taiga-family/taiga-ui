@@ -79,4 +79,12 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Opnieuw instellen',
     },
     phoneSearch: 'Indtast land eller kode',
+    dayRangePeriods: [
+        'All the time',
+        'Dag',
+        'I går',
+        'Denne uge',
+        'Denne måned',
+        'Sidste måned',
+    ],
 };
