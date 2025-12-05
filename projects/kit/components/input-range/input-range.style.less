@@ -27,11 +27,6 @@
 .t-content-end {
     color: var(--tui-text-primary);
 
-    tui-textfield:has(label:not(:empty)) & {
-        padding-block-start: calc(var(--t-height) / 3);
-    }
-
-    // TODO: Fallback until Chrome 105 & Safari 15.4
     tui-textfield._with-label & {
         padding-block-start: calc(var(--t-height) / 3);
     }
