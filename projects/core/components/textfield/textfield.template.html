@@ -10,7 +10,7 @@
 >
     <ng-content />
     <ng-container #vcr />
-    @if (options.cleaner()) {
+    @if (!closeX() && options.cleaner()) {
         <button
             appearance="icon"
             size="xs"

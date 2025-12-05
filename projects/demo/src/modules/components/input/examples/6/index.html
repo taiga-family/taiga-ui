@@ -2,7 +2,6 @@
     <label tuiLabel>Flat angle</label>
 
     <input
-        #input
         placeholder="3,14"
         tuiInput
         [maskito]="options"
@@ -11,12 +10,9 @@
 
     @if (value) {
         <button
-            iconStart="@tui.x"
-            tabindex="-1"
-            tuiIconButton
+            tuiButtonX
             type="button"
             (click)="clear()"
-            (pointerdown.zoneless.prevent)="input.focus()"
         >
             Clear
         </button>

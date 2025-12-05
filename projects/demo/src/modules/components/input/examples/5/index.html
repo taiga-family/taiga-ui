@@ -1,6 +1,5 @@
-<tui-textfield [tuiTextfieldCleaner]="false">
+<tui-textfield>
     <input
-        #input
         placeholder="Input value"
         tuiInput
         [(ngModel)]="value"
@@ -9,11 +8,9 @@
     @if (value) {
         <button
             iconStart="@tui.circle-x"
-            tabindex="-1"
-            tuiIconButton
+            tuiButtonX
             type="button"
             (click)="clear()"
-            (pointerdown.zoneless.prevent)="input.focus()"
         >
             Clear
         </button>

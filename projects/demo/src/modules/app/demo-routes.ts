@@ -47,7 +47,7 @@ export const DemoRoute = {
     InputSearch: '/layout/input-search',
     Breadcrumbs: '/navigation/breadcrumbs',
     Button: '/components/button',
-    ButtonClose: '/components/button-close',
+    ButtonX: '/components/button-x',
     ButtonGroup: '/components/button-group',
     ButtonSelect: '/components/button-select',
     Calendar: '/components/calendar',

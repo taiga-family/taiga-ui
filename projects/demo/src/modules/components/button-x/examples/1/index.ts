@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonClose} from '@taiga-ui/kit';
+import {TuiButtonX} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButtonClose],
+    imports: [TuiButtonX],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
