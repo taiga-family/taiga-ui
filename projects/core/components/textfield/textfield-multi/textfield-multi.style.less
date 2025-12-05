@@ -88,10 +88,9 @@ tui-textfield[multi][multi] {
             pointer-events: none;
             transform: translateX(var(--t-scroll));
 
-            input {
-                position: absolute;
-                inset-inline-start: 0;
-                inline-size: 100%;
+            .t-filler,
+            [tuiInput] {
+                block-size: 100%;
                 padding: 0;
                 pointer-events: auto;
             }
@@ -225,7 +224,7 @@ tui-textfield[multi][multi] {
 
     select {
         opacity: 0;
-        padding: 0;
+        pointer-events: none !important;
     }
 
     &._empty > .t-items select ~ .t-filler {

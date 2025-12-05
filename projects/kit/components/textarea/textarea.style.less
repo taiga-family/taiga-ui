@@ -26,6 +26,7 @@
 }
 
 :host {
+    block-size: 100% !important;
     word-break: break-word;
     border: 0 solid transparent;
 
@@ -35,18 +36,16 @@
 }
 
 .t-scroll {
-    .fullsize(absolute, inset);
-
-    top: 0.25rem;
-    bottom: 0.25rem;
+    position: absolute;
+    inset: 0.25rem 0;
     min-block-size: 0;
 
     ::ng-deep tui-textfield._with-label[data-size='m'] & {
-        top: @top-m-label;
+        inset-block-start: @top-m-label;
     }
 
     ::ng-deep tui-textfield._with-label[data-size='l'] & {
-        top: @top-l-label;
+        inset-block-start: @top-l-label;
     }
 }
 
