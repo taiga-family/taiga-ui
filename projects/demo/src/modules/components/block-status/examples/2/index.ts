@@ -1,21 +1,19 @@
-import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, TuiButton, type TuiSizeL} from '@taiga-ui/core';
+import {TUI_BREAKPOINT, TuiButton, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
-import {map, type Observable} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiBlockStatus, TuiButton],
+    imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly breakpointService = inject(TuiBreakpointService);
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected size$: Observable<TuiSizeL> = this.breakpointService.pipe(
-        map((key) => (key === 'mobile' ? 'm' : 'l')),
+    protected readonly size = computed<TuiSizeL>(() =>
+        this.breakpoint() === 'mobile' ? 'm' : 'l',
     );
 }

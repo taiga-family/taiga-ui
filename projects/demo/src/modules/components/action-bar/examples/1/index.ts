@@ -1,10 +1,9 @@
-import {Component, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiBreakpointService,
+    TUI_BREAKPOINT,
     TuiButton,
     TuiDataList,
     TuiDropdown,
@@ -13,7 +12,6 @@ import {
     TuiPopup,
 } from '@taiga-ui/core';
 import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 @Component({
     imports: [
@@ -33,13 +31,12 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
 
-    protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
-    );
+    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 
     protected get value(): string[] {
         return this.control.value || [];

@@ -977,11 +977,6 @@ export const ROUTES: Routes = [
     }),
     // SERVICES
     route({
-        path: DemoRoute.BreakpointService,
-        loadComponent: async () => import('../components/services/breakpoint-service'),
-        title: 'BreakpointService',
-    }),
-    route({
         path: DemoRoute.KeyboardService,
         loadComponent: async () => import('../components/services/keyboard-service'),
         title: 'Keyboard',

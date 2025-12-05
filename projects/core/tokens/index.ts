@@ -1,6 +1,7 @@
 export * from './animations-speed';
 export * from './assets-path';
 export * from './auxiliary';
+export * from './breakpoint';
 export * from './common-icons';
 export * from './dark-mode';
 export * from './date-format';

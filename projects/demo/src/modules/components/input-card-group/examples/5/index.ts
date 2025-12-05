@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
@@ -6,7 +6,6 @@ import {
     type TuiCard,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {of} from 'rxjs';
 
 @Component({
     imports: [ReactiveFormsModule, TuiInputCardGroup],
@@ -15,7 +14,7 @@ import {of} from 'rxjs';
     providers: [
         {
             provide: TUI_INPUT_CARD_GROUP_TEXTS,
-            useValue: of({
+            useValue: signal({
                 cardNumberText: 'Number',
                 expiryText: 'MM/YY',
                 cvcText: 'Code',

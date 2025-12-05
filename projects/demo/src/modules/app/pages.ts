@@ -1574,13 +1574,6 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Tools',
-                title: 'BreakpointService',
-                keywords:
-                    'breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
-                route: DemoRoute.BreakpointService,
-            },
-            {
-                section: 'Tools',
                 title: 'KeyboardService',
                 keywords: 'сервис, service, keyboard, virtual, screen, ios, android',
                 route: '/services/keyboard-service',

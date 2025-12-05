@@ -49,7 +49,7 @@
         <div
             tuiTransitioned
             class="t-label"
-            [attr.data-label]="texts()?.cardNumberText"
+            [attr.data-label]="texts().cardNumberText"
             [class.t-label_raised]="labelRaised()"
         >
             <ng-content />
@@ -88,7 +88,7 @@
             class="t-label"
             [class.t-label_raised]="labelRaised()"
         >
-            {{ texts()?.expiryText }}
+            {{ texts().expiryText }}
         </div>
     </label>
 </div>
@@ -123,7 +123,7 @@
             class="t-label"
             [class.t-label_raised]="labelRaised()"
         >
-            {{ texts()?.cvcText }}
+            {{ texts().cvcText }}
         </div>
     </label>
 </div>
