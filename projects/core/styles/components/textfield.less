@@ -42,8 +42,7 @@ tui-textfield {
         position: relative;
         block-size: auto;
         align-self: stretch;
-        border-inline-start: var(--t-padding) solid transparent;
-        border-inline-end: var(--t-padding) solid transparent;
+        border-inline: var(--t-padding) solid transparent;
         margin: 0 calc(-1 * var(--t-padding));
     }
 
@@ -80,8 +79,7 @@ tui-textfield {
         font: inherit;
         resize: none;
         outline: none;
-        padding-block-start: 1.125rem;
-        padding-block-end: 1.125rem;
+        padding-block: 1.125rem;
         color: var(--tui-text-primary);
 
         &[inputmode='none'] {
@@ -107,22 +105,19 @@ tui-textfield {
         }
 
         &::before {
-            margin-inline-end: 0.5rem;
-            margin-inline-start: -0.125rem;
+            margin-inline: -0.125rem 0.5rem;
             font-size: 1rem;
         }
 
         &::after {
-            margin-inline-end: calc(-0.125rem - var(--t-padding));
-            margin-inline-start: calc(0.625rem - var(--t-padding));
+            margin-inline: calc(0.625rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
             font-size: 1rem;
         }
 
         input,
         select,
         textarea {
-            padding-block-start: 0.5rem;
-            padding-block-end: 0.5rem;
+            padding-block: 0.5rem;
         }
 
         & > .t-content {
@@ -149,20 +144,17 @@ tui-textfield {
         }
 
         &::before {
-            margin-inline-start: -0.125rem;
-            margin-inline-end: 0.125rem;
+            margin-inline: -0.125rem 0.125rem;
         }
 
         &::after {
-            margin-inline-start: calc(0.25rem - var(--t-padding));
-            margin-inline-end: calc(-0.125rem - var(--t-padding));
+            margin-inline: calc(0.25rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
         }
 
         input,
         select,
         textarea {
-            padding-block-start: 0.875rem;
-            padding-block-end: 0.875rem;
+            padding-block: 0.875rem;
         }
 
         & > .t-content {
@@ -211,36 +203,12 @@ tui-textfield {
         opacity: var(--tui-disabled-opacity);
     }
 
-    &:has(label:not(:empty)) {
-        & > .t-template,
-        input:not([type='range']),
-        select:defined,
-        textarea:defined {
-            padding-block-start: calc(var(--t-height) / 3);
-            padding-block-end: 0;
-        }
-    }
-
-    &:not([data-focus='true']):has(label:not(:empty)) {
-        & > .t-template,
-        input:not([type='range']),
-        select:defined,
-        textarea:defined {
-            &::placeholder,
-            &._empty {
-                color: transparent;
-            }
-        }
-    }
-
-    // TODO: Fallback until Safari 15.4
     &._with-label {
         & > .t-template,
         input:not([type='range']),
         select:defined,
         textarea:defined {
-            padding-block-start: calc(var(--t-height) / 3);
-            padding-block-end: 0;
+            padding-block: calc(var(--t-height) / 3) 0;
         }
     }
 
@@ -268,8 +236,12 @@ tui-textfield {
         border-width: 0;
         overscroll-behavior: none;
         // StackBlitz changes "0rem" to "0" breaking calc
-        padding-inline-start: calc(var(--t-start, ~'0rem') + var(--t-padding));
-        padding-inline-end: calc(var(--t-end, ~'0rem') + var(--t-side) + var(--t-padding));
+        padding-inline: calc(var(--t-start, ~'0rem') + var(--t-padding))
+            calc(var(--t-end, ~'0rem') + var(--t-side) + var(--t-padding));
+
+        &:disabled {
+            animation: tuiPresent 1s infinite;
+        }
     }
 
     & > .t-template {
@@ -338,14 +310,6 @@ tui-textfield {
                 }
             });
         }
-
-        // @deprecated remove in v5
-        .ios-only({
-            &._ios-fix {
-                position: fixed;
-                left: 1000rem;
-            }
-        });
     }
 
     // Increasing specificity to override all other styles
@@ -423,7 +387,7 @@ tui-textfield {
     }
 
     & > .t-filler:defined {
-        pointer-events: none;
+        pointer-events: none !important;
         color: var(--tui-text-tertiary);
         opacity: 1;
     }
