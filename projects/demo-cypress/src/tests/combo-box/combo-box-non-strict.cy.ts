@@ -43,7 +43,7 @@ export class TestComboBox {
 
     protected readonly control = new FormControl<Country | string | null>(null);
 
-    public readonly valueChanges = output();
+    public readonly valueChanges = output<Country | string | null>();
 
     public readonly inputEvent = output<string>();
 
