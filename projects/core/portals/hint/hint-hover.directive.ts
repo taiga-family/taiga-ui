@@ -3,7 +3,7 @@ import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
-import {tuiIsObscured} from '@taiga-ui/core/utils';
+import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';
 import {
     delay,
     filter,

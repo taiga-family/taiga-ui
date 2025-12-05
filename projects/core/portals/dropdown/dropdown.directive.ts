@@ -23,7 +23,7 @@ import {
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
-import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
+import {tuiCheckFixedPosition} from '@taiga-ui/core/utils/dom';
 import {
     PolymorpheusComponent,
     type PolymorpheusContent,

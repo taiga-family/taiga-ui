@@ -31,7 +31,7 @@ import {
     type TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
-import {tuiGetWordRange} from '@taiga-ui/core/utils';
+import {tuiGetWordRange} from '@taiga-ui/core/utils/dom';
 import {combineLatest, distinctUntilChanged, filter, map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';

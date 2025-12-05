@@ -1,7 +1,8 @@
 import {Directive, input} from '@angular/core';
 import {type AbstractControl, NG_VALIDATORS, type Validator} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement, tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 
 @Directive({

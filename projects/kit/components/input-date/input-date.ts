@@ -4,7 +4,7 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownContent} from '@taiga-ui/core/portals';
+import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiInputDateComponent} from './input-date.component';
 import {TuiInputDateDirective} from './input-date.directive';

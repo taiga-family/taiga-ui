@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import {tuiOverrideOptions} from '@taiga-ui/core/utils';
+import {tuiOverrideOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
 

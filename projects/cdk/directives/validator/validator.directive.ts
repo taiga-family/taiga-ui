@@ -1,7 +1,7 @@
 import {Directive, type OnChanges} from '@angular/core';
 import {NG_VALIDATORS, type Validator, Validators} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
-import {tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 @Directive({
     selector: '[tuiValidator]',
