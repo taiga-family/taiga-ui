@@ -21240,9 +21240,7 @@ export class Example {
 ### How to Use (Template)
 
 ```html
-<tui-input-range [(ngModel)]="value">
-  <label tuiLabel>Text above numbers</label>
-</tui-input-range>
+<tui-input-range [(ngModel)]="value">Text above numbers</tui-input-range>
 ```
 
 ### Example
@@ -21275,9 +21273,7 @@ TuiNumberFormat allows to customize separators specific for your locale.
 
 **Template:**
 ```html
-<tui-input-range [max]="max" [min]="min" [tuiNumberFormat]="numberFormat" [(ngModel)]="value" >
-<label tuiLabel>Type number like a German</label>
-</tui-input-range>
+<tui-input-range [max]="max" [min]="min" [tuiNumberFormat]="numberFormat" [(ngModel)]="value" > Type number like a German </tui-input-range>
 ```
 **TypeScript:**
 ```ts
@@ -21341,9 +21337,7 @@ Use mixin tui-slider-ticks-labels to arrange ticks' labels (it places them stric
 
 **Template:**
 ```html
-<tui-input-range [formControl]="control" [max]="100" [min]="0" [postfix]="['%', '%']" [segments]="5" [step]="20" >
-<label tuiLabel>Select volume range</label>
-</tui-input-range>
+<tui-input-range [formControl]="control" [max]="100" [min]="0" [postfix]="['%', '%']" [segments]="5" [step]="20" > Select volume range </tui-input-range>
 <div class="ticks-labels">
 <span>
 <tui-icon icon="@tui.volume-x" />
@@ -21382,9 +21376,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-input-range [content]="[content, content]" [max]="10" [min]="0" [postfix]="[value[0] | i18nPlural: pluralize, value[1] | i18nPlural: pluralize]" [(ngModel)]="value" >
-<label tuiLabel>Desired departure day</label>
-</tui-input-range>
+<tui-input-range [content]="[content, content]" [max]="10" [min]="0" [postfix]="[value[0] | i18nPlural: pluralize, value[1] | i18nPlural: pluralize]" [(ngModel)]="value" > Desired departure day </tui-input-range>
 <ng-template #content let-value > @switch (value) { @case (0) { Today } @case (1) { Tomorrow } @case (7) { In a week } @default { {{ value }}{{ value | i18nPlural: pluralize }} } } </ng-template>
 ```
 **TypeScript:**
@@ -21419,9 +21411,7 @@ Key steps – anchor points of non-uniform format between control's value and sl
 
 **Template:**
 ```html
-<tui-input-range [keySteps]="keySteps" [max]="max" [min]="min" [segments]="segments" [step]="step" [(ngModel)]="value" >
-<label tuiLabel>Not linear growing sliders</label>
-</tui-input-range>
+<tui-input-range [keySteps]="keySteps" [max]="max" [min]="min" [segments]="segments" [step]="step" [(ngModel)]="value" > Not linear growing sliders </tui-input-range>
 <div class="ticks-labels"> @for (label of ticksLabels; track label) { <span>{{ label }}</span> } </div>
 <p>
 <strong>Control value:</strong>
@@ -21508,9 +21498,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-input-range [content]="[value[0] ? '' : 'Today', value[1] ? '' : 'Today']" [max]="0" [min]="-30" [postfix]="[value[0] | i18nPlural: pluralize, value[1] | i18nPlural: pluralize]" [(ngModel)]="value" >
-<label tuiLabel>How far back to look</label>
-</tui-input-range>
+<tui-input-range [content]="[value[0] ? '' : 'Today', value[1] ? '' : 'Today']" [max]="0" [min]="-30" [postfix]="[value[0] | i18nPlural: pluralize, value[1] | i18nPlural: pluralize]" [(ngModel)]="value" > How far back to look </tui-input-range>
 <p>
 <strong>Control value:</strong>
 <output>
@@ -36109,8 +36097,8 @@ export default class Example {
 <table tuiTable [style.width.%]="100" [tuiTextfieldCleaner]="false" >
 <thead>
 <tr>
-<th tuiTh>Growing height</th>
-<th tuiTh>Static height</th>
+<th tuiTh [style.width.%]="50" > Growing height </th>
+<th tuiTh [style.width.%]="50" > Static height </th>
 </tr>
 </thead>
 <tbody tuiTbody>
@@ -44637,9 +44625,7 @@ export default class Example {
 <tui-textfield>
 <input placeholder="Type in long value" tuiInput [tuiFluidTypography]="scale()" [(ngModel)]="value" />
 </tui-textfield>
-<tui-input-range [max]="30" [min]="1" [ngModel]="range()" [style.inset-block-start.rem]="0.5" (ngModelChange)="range.set($event)" >
-<label tuiLabel>Min/Max (converted to pixels)</label>
-</tui-input-range>
+<tui-input-range [max]="30" [min]="1" [ngModel]="range()" [style.inset-block-start.rem]="0.5" (ngModelChange)="range.set($event)" > Min/Max (converted to pixels) </tui-input-range>
 ```
 **TypeScript:**
 ```ts
