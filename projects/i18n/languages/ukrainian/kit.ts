@@ -79,4 +79,12 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Скинути',
     },
     phoneSearch: 'Введіть країну або код',
+    dayRangePeriods: [
+        'За весь час',
+        'Сьогодні',
+        'Вчора',
+        'Точний тиждень',
+        'Точний місяць',
+        'Прошлий місяць',
+    ],
 };

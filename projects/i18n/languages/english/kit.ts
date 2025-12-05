@@ -80,4 +80,12 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Reset',
     },
     phoneSearch: 'Type country or code',
+    dayRangePeriods: [
+        'For all the time',
+        'Today',
+        'Yesterday',
+        'Current week',
+        'Current month',
+        'Previous month',
+    ],
 };
