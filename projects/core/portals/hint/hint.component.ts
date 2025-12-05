@@ -23,7 +23,7 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import {tuiIsObscured} from '@taiga-ui/core/utils';
+import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 

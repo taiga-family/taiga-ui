@@ -3,7 +3,7 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownContent} from '@taiga-ui/core/portals';
+import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 
 import {TuiInputDateRangeDirective} from './input-date-range.directive';

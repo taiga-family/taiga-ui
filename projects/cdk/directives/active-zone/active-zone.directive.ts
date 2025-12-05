@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, inject, Injectable, type OnDestroy} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
-import {tuiArrayRemove, tuiPure} from '@taiga-ui/cdk/utils';
+import {tuiArrayRemove, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, map, type Observable, share, skip, startWith} from 'rxjs';
 
 @Injectable({providedIn: 'root'})

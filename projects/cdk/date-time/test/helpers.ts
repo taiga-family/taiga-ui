@@ -1,4 +1,4 @@
-import {tuiIsNumber} from '@taiga-ui/cdk/utils';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 
 declare const global: {Date: typeof Date};
 

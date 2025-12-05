@@ -2,8 +2,8 @@ import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject, Input} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiIsPresent} from '@taiga-ui/cdk/utils';
-import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsPresent, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {
     TuiSelectLike,

@@ -1,5 +1,5 @@
 import {Directive, effect, input, model, untracked} from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Directive({
     selector: 'video[tuiMedia], audio[tuiMedia]',

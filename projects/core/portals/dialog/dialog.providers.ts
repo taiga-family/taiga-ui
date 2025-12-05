@@ -9,7 +9,7 @@ import {
     tuiInjectElement,
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
-import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
+import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {filter, map, merge, Observable, switchMap, take} from 'rxjs';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(

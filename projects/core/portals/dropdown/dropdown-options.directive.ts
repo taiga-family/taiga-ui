@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiVerticalDirection} from '@taiga-ui/core/types';
-import {tuiOverrideOptions} from '@taiga-ui/core/utils';
+import {tuiOverrideOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 export type TuiDropdownAlign = 'center' | 'left' | 'right';
 export type TuiDropdownWidth = 'auto' | 'fixed' | 'min';

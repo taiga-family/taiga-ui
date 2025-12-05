@@ -2,11 +2,8 @@ import {DOCUMENT} from '@angular/common';
 import {inject, InjectionToken, NgZone} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
-import {
-    tuiGetActualTarget,
-    tuiGetDocumentOrShadowRoot,
-    tuiIsFocusable,
-} from '@taiga-ui/cdk/utils';
+import {tuiGetActualTarget, tuiGetDocumentOrShadowRoot} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsFocusable} from '@taiga-ui/cdk/utils/focus';
 import {
     distinctUntilChanged,
     filter,

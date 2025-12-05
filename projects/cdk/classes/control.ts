@@ -18,7 +18,7 @@ import {
 } from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {TUI_FALLBACK_VALUE} from '@taiga-ui/cdk/tokens';
-import {tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     delay,
     distinctUntilChanged,
