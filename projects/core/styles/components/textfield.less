@@ -14,8 +14,7 @@ tui-textfield {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    cursor: pointer;
+    align-items: flex-start;
     min-block-size: var(--t-height);
     padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
@@ -47,12 +46,21 @@ tui-textfield {
         --t-end: 2.25rem;
     }
 
-    &[tuiIcons]::after {
-        position: relative;
-        block-size: auto;
-        align-self: stretch;
-        border-inline: var(--t-padding) solid transparent;
-        margin: 0 calc(-1 * var(--t-padding));
+    &[tuiIcons] {
+        &::before {
+            z-index: 1;
+            block-size: var(--t-height);
+            margin-inline-end: 0.5rem;
+            pointer-events: none;
+        }
+
+        &::after {
+            position: relative;
+            block-size: var(--t-height);
+            cursor: pointer;
+            border-inline: var(--t-padding) solid transparent;
+            margin: 0 calc(-1 * var(--t-padding));
+        }
     }
 
     &::-webkit-resizer {
@@ -82,19 +90,6 @@ tui-textfield {
         pointer-events: none;
     }
 
-    [tuiInput],
-    .t-filler {
-        font: inherit;
-        resize: none;
-        outline: none;
-        padding-block: 1.125rem;
-        color: var(--tui-text-primary);
-
-        &[inputmode='none'] {
-            caret-color: transparent;
-        }
-    }
-
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
         --t-padding: var(--tui-padding-s);
@@ -120,10 +115,6 @@ tui-textfield {
         &::after {
             margin-inline: calc(0.625rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
             font-size: 1rem;
-        }
-
-        [tuiInput] {
-            padding-block: 0.5rem;
         }
 
         & > .t-content {
@@ -157,10 +148,6 @@ tui-textfield {
             margin-inline: calc(0.25rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
         }
 
-        [tuiInput] {
-            padding-block: 0.875rem;
-        }
-
         & > .t-content {
             margin-inline-end: -0.125rem;
         }
@@ -168,12 +155,6 @@ tui-textfield {
 
     &[data-size='l'] {
         --t-label: -0.7rem;
-    }
-
-    &::before {
-        z-index: 1;
-        margin-inline-end: 0.5rem;
-        pointer-events: none;
     }
 
     &._disabled,
@@ -188,8 +169,8 @@ tui-textfield {
 
     &._with-label {
         & > .t-template,
-        [tuiInput],
-        .t-filler {
+        .t-filler,
+        [tuiInput] {
             padding-block: calc(var(--t-height) / 3) 0;
         }
 
@@ -212,6 +193,10 @@ tui-textfield {
 
         appearance: none;
         background: none;
+        font: inherit;
+        resize: none;
+        outline: none;
+        color: var(--tui-text-primary);
         box-sizing: border-box;
         border-radius: inherit;
         border-width: 0;
@@ -227,12 +212,16 @@ tui-textfield {
         &:disabled {
             animation: tuiPresent 1s infinite;
         }
+
+        &[inputmode='none'] {
+            caret-color: transparent;
+        }
     }
 
     & > .t-template {
         display: flex;
+        block-size: 100%;
         align-items: center;
-        color: var(--tui-text-primary);
     }
 
     &._with-template [tuiInput] {
@@ -291,7 +280,8 @@ tui-textfield {
     }
 
     button,
-    a {
+    a,
+    tui-icon {
         pointer-events: auto;
     }
 
@@ -304,10 +294,6 @@ tui-textfield {
         margin-inline-start: auto;
         isolation: isolate;
         border-radius: inherit;
-
-        > tui-icon {
-            pointer-events: auto;
-        }
     }
 
     textarea ~ .t-content {
@@ -331,10 +317,6 @@ tui-textfield {
 
     [tuiSelectLike]:not(:read-only) {
         cursor: pointer;
-    }
-
-    &:has(input[type='tel']) {
-        direction: ltr;
     }
 
     .appearance-invalid({

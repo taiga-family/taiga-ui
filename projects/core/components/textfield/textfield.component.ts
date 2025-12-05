@@ -72,6 +72,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
         '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
         '(click.self.prevent)': '0',
+        // TODO preventing breaks resize: both, but not preventing breaks focus, fix
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
         '(tuiActiveZoneChange)': '!$event && control()?.valueAccessor?.onTouched?.()',
