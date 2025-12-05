@@ -65,10 +65,12 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     host: {
         class: 'tui-interactive',
         '[attr.data-size]': 'options.size()',
-        '[class._with-label]': 'hasLabel',
+        '[class._with-label]': 'hasLabel', // TODO :has([tuiLabel]
         '[class._with-template]': 'content() && control()?.value != null',
-        '[class._disabled]': 'input()?.nativeElement?.disabled',
+        '[class._disabled]': 'input()?.nativeElement?.disabled', // TODO :has([tuiInput]:disabled)
         '[style.transition]': '"none"',
+        '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
+        '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
