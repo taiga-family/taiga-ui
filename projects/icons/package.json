@@ -15,6 +15,6 @@
     },
     "license": "Apache-2.0",
     "devDependencies": {
-        "lucide-static": "0.555.0"
+        "lucide-static": "0.556.0"
     }
 }
