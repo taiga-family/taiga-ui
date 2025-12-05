@@ -1,0 +1,12 @@
+import"./chunk-XDESKJ7H.js";import"./chunk-HDBAUVPP.js";import{a as m}from"./chunk-F5JCRAE2.js";import"./chunk-QRGW5GCS.js";import"./chunk-CAS5T4G3.js";import"./chunk-B2Y22VHH.js";import{b as d}from"./chunk-BOA7BLQN.js";import"./chunk-V3XNDVWI.js";import"./chunk-4KGGOBQ3.js";import"./chunk-DKF2D2AX.js";import"./chunk-HLG3TIDM.js";import{h as u}from"./chunk-S2LSQIVM.js";import"./chunk-SIV6NX2S.js";import{W as c}from"./chunk-AYRMMDM4.js";import"./chunk-P5WUWMHO.js";import"./chunk-HNO7IIVZ.js";import"./chunk-NH5CIN22.js";import"./chunk-S3E23OSN.js";import"./chunk-QP5YMJ23.js";import"./chunk-E6CSIZUR.js";import"./chunk-3OPUGOAR.js";import"./chunk-KC37FEM7.js";import"./chunk-JUKN4WRM.js";import"./chunk-RGJEWAQ3.js";import{Db as r,Nc as e,Ub as p,gc as l,qc as t,rc as n}from"./chunk-YJQUARX2.js";import"./chunk-42JZD6NG.js";var i=class i{constructor(){this.routes=m}};i.\u0275fac=function(a){return new(a||i)},i.\u0275cmp=p({type:i,selectors:[["ng-component"]],decls:34,vars:1,consts:[["appearance","primary","tuiButton","","type","button"],["appearance","accent","tuiButton","","type","button"],["appearance","secondary","tuiButton","","type","button"],["appearance","flat","tuiButton","","type","button"],["appearance","outline","tuiButton","","type","button"],["appearance","floating","tuiButton","","type","button"],["appearance","primary","disabled","","tuiButton","","type","button"],["tuiLink","",3,"routerLink"],["appearance","outline","tuiAppearanceMode","checked","tuiButton","","type","button"],["appearance","outline-grayscale","tuiAppearanceMode","checked invalid","tuiButton","","type","button"]],template:function(a,x){a&1&&(t(0,"button",0),e(1,` Primary
+`),n(),t(2,"button",1),e(3,` Accent
+`),n(),t(4,"button",2),e(5,` Secondary
+`),n(),t(6,"button",3),e(7,` Flat
+`),n(),t(8,"button",4),e(9,` Outline
+`),n(),t(10,"button",5),e(11,` Floating
+`),n(),t(12,"button",6),e(13,` Primary disabled
+`),n(),t(14,"div"),e(15," See "),t(16,"a",7),e(17," Appearance "),n(),e(18,` directive for more.
+`),n(),t(19,"div"),e(20," Use "),t(21,"code"),e(22,"tuiAppearanceMode"),n(),e(23," to emulate "),t(24,"code"),e(25,":checked"),n(),e(26," / "),t(27,"code"),e(28,":invalid"),n(),e(29,` CSS state for outline appearance:
+`),n(),t(30,"button",8),e(31,` Outline
+`),n(),t(32,"button",9),e(33,` Whiteblock
+`),n()),a&2&&(r(16),l("routerLink",x.routes.Appearance))},dependencies:[u,c,d],styles:["[_nghost-%COMP%]{display:flex;gap:1rem;flex-wrap:wrap}"],changeDetection:0});var o=i;export{o as default};
