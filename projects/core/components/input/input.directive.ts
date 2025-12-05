@@ -26,6 +26,7 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
     providers: [tuiAsTextfieldAccessor(TuiInputDirective)],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
+        tuiInput: '',
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly()',
         '[class._empty]': 'value() === ""',

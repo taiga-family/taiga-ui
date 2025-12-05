@@ -214,9 +214,8 @@
 }
 
 :host-context(tui-textfield) :host([type='range']) {
-    top: 100%;
-    left: var(--t-padding);
-    right: var(--t-padding);
+    position: absolute;
+    inset: var(--t-row-height, 100%) var(--t-padding) 0;
     inline-size: calc(100% - var(--t-padding) * 2); // TODO: Use `auto` after bumping Firefox to 126+
     block-size: 1rem;
     margin: calc(-0.5rem - var(--tui-thickness) / 2) 0 0;

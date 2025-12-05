@@ -42,7 +42,7 @@ import {
     styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputRangeComponent),
+        tuiAsControl(TuiInputRange),
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
         tuiFallbackValueProvider([0, 0]),
     ],
@@ -54,7 +54,7 @@ import {
         '[style.--t-icon-lock]': 'contentEnd() ? "none" : null',
     },
 })
-export class TuiInputRangeComponent extends TuiControl<readonly [number, number]> {
+export class TuiInputRange extends TuiControl<readonly [number, number]> {
     @ViewChildren(TuiInputNumberDirective, {read: ElementRef})
     private readonly inputNumberRefs: QueryList<ElementRef<HTMLInputElement>> =
         EMPTY_QUERY;

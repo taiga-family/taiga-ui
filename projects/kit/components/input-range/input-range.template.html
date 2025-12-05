@@ -1,7 +1,7 @@
 <tui-textfield [content]="contentStartHidden ? '' : contentStart()">
-    <ng-container ngProjectAs="label">
-        <ng-content select="label" />
-    </ng-container>
+    <label tuiLabel>
+        <ng-content />
+    </label>
 
     <input
         tuiInputNumber

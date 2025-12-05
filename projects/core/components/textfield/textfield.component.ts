@@ -63,6 +63,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         TuiWithOptionContent,
     ],
     host: {
+        class: 'tui-interactive',
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content() && control()?.value != null',

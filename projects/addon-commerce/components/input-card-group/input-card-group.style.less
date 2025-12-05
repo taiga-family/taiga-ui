@@ -64,7 +64,7 @@
     }
 
     // Increasing specificity to override dark mode appearance
-    &[tuiAppearance][data-appearance]:has(:-webkit-autofill) {
+    &[tuiAppearance][data-appearance]:has(:-webkit-autofill, [chrome-autofilled]) {
         background: var(--tui-service-autofill-background) !important;
     }
 
@@ -83,7 +83,7 @@
     position: absolute;
     z-index: 1;
     inline-size: 100%;
-    block-size: 100%;
+    block-size: var(--t-height);
     transition: opacity 0s var(--tui-duration);
 
     &_cvc,
@@ -216,7 +216,7 @@
 
     &&&_card {
         // @note: (&&&_) it's increasing css cascade priority
-        &:not(:-webkit-autofill):not(:focus:placeholder-shown),
+        &:not(:-webkit-autofill, [chrome-autofilled]):not(:focus:placeholder-shown),
         &.t-input_filled {
             caret-color: var(--tui-text-primary);
             color: transparent !important;
@@ -256,7 +256,7 @@
     display: flex;
     inset-inline-end: 1rem;
     align-items: center;
-    block-size: 100%;
+    block-size: var(--t-height);
     gap: 0.25rem;
     pointer-events: none;
 }
@@ -288,6 +288,7 @@
         content: attr(data-label);
     }
 
+    input[chrome-autofilled] ~ &,
     input:-webkit-autofill ~ &,
     &_raised {
         font-size: var(--t-label-size);

@@ -12,14 +12,6 @@
     &[data-state='hover'] {
         @content();
     }
-
-    /* @deprecated TODO remove in v5 */
-    @media @tui-mouse {
-        &[tuiWrapper]:hover:not(._no-hover),
-        &[tuiWrapper][data-state='hover'] {
-            @content();
-        }
-    }
 }
 
 .appearance-active(@content) {
@@ -32,24 +24,11 @@
     &[data-state='active'] {
         @content();
     }
-
-    /* @deprecated TODO remove in v5 */
-    &[tuiWrapper]:active:not(._no-active),
-    &[tuiWrapper][data-state='active'],
-    &[tuiWrapper][data-state='active']:hover {
-        @content();
-    }
 }
 
 .appearance-disabled(@content) {
     &:disabled:not([data-state]),
     &[data-state='disabled'] {
-        @content();
-    }
-
-    /* @deprecated TODO remove in v5 */
-    &[tuiWrapper]:disabled:not([data-state]),
-    &[tuiWrapper][data-state='disabled'] {
         @content();
     }
 }
@@ -62,10 +41,15 @@
     &[data-focus='true'] {
         @content();
     }
+}
 
-    /* @deprecated TODO remove in v5 */
-    &[tuiWrapper]:not(._focused):has(:focus-visible),
-    &[tuiWrapper]._focused {
+.appearance-invalid(@content) {
+    &:is([data-mode~='invalid'], .tui-invalid, :invalid):not(
+            [data-mode~='readonly'],
+            [data-mode~='valid'],
+            [data-state='disabled'],
+            :disabled
+        ) {
         @content();
     }
 }
