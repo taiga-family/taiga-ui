@@ -2,10 +2,9 @@ import {
     afterNextRender,
     ChangeDetectionStrategy,
     Component,
-    computed,
     Directive,
     inject,
-    input,
+    Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -42,40 +41,29 @@ class Styles {}
         },
     ],
     host: {
-        '[style.line-height]': 'adjustedLineHeight()',
-        '[style.--t-line-height]': 'adjustedLineHeight()',
-        '[style.--t-fade-size]': 'adjustedSize()',
-        '[style.--t-fade-offset]': 'adjustedOffset()',
-        '[attr.data-orientation]': 'orientation()',
+        '[style.line-height]': 'lineHeight',
+        '[style.--t-line-height]': 'lineHeight',
+        '[style.--t-fade-size]': 'size',
+        '[style.--t-fade-offset]': 'offset',
+        '[attr.data-orientation]': 'orientation',
         '[style.transition]': '"none"',
     },
 })
 export class TuiFade {
     protected readonly nothing = tuiWithStyles(Styles);
 
-    protected readonly adjustedSize = computed(
-        () => `calc(${this.size()} + var(--tui-font-offset))`,
-    );
-
-    protected readonly adjustedOffset = computed(
-        () => `calc(${this.offset()} + var(--tui-font-offset))`,
-    );
-
-    protected readonly adjustedLineHeight = computed(() => {
-        const lineHeight = this.lineHeight();
-
-        return lineHeight ? `calc(${lineHeight} + var(--tui-font-offset))` : null;
-    });
-
     // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
-    public readonly lineHeight = input<string | null>(null, {alias: 'tuiFadeHeight'});
-    public readonly size = input('1.5em', {alias: 'tuiFadeSize'});
-    public readonly offset = input('0em', {alias: 'tuiFadeOffset'});
-    public readonly orientation = input('horizontal', {
-        alias: 'tuiFade',
-        transform: (initial: TuiOrientation | ''): TuiOrientation =>
-            initial || 'horizontal',
-    });
+    @Input('tuiFadeHeight')
+    public lineHeight: string | null = null;
+
+    @Input('tuiFadeSize')
+    public size = '1.5em';
+
+    @Input('tuiFadeOffset')
+    public offset = '0em';
+
+    @Input('tuiFade')
+    public orientation: TuiOrientation | '' = 'horizontal';
 
     constructor() {
         const el = tuiInjectElement();
@@ -111,7 +99,7 @@ export class TuiFade {
         clientHeight,
         clientWidth,
     }: HTMLElement): boolean {
-        return this.orientation() === 'vertical'
+        return this.orientation === 'vertical'
             ? Math.round(scrollTop) < scrollHeight - clientHeight - BUFFER
             : Math.ceil(Math.abs(scrollLeft)) < scrollWidth - clientWidth - BUFFER ||
                   // horizontal multiline fade can kick in early due to hanging elements of fonts so using bigger buffer
