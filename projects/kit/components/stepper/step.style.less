@@ -27,6 +27,12 @@
     }
 }
 
-[tuiAvatar]::before {
-    transition: none;
+[tuiAvatar][data-size] {
+    &::before {
+        transition: none;
+    }
+
+    &._initials::before {
+        font-weight: 400;
+    }
 }
