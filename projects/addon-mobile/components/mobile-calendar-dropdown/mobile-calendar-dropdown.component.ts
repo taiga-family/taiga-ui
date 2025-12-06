@@ -64,7 +64,7 @@ export class TuiMobileCalendarDropdown {
         this.is('tui-input-date:not([multiple])');
 
     protected readonly value = computed<TuiDay | TuiDayRange | null>(
-        (value = this.directive?.date?.value()) =>
+        (value = this.directive?.date()?.value()) =>
             Array.isArray(value) ? value[0] : value,
     );
 
@@ -74,7 +74,7 @@ export class TuiMobileCalendarDropdown {
 
     public max(): TuiDay {
         return (
-            this.directive?.date?.max() ??
+            this.directive?.date()?.max() ??
             (this.data.max ||
                 (this.range
                     ? TUI_DAY_CAPS_MAPPER(
@@ -90,7 +90,7 @@ export class TuiMobileCalendarDropdown {
 
     public min(): TuiDay {
         return (
-            this.directive?.date?.min() ??
+            this.directive?.date()?.min() ??
             (this.data.min ||
                 (this.range
                     ? TUI_DAY_CAPS_MAPPER(
@@ -141,7 +141,7 @@ export class TuiMobileCalendarDropdown {
         }
 
         if (normalizedValue) {
-            this.directive?.date?.setDate(normalizedValue);
+            this.directive?.date()?.setDate(normalizedValue);
         }
 
         this.observer?.next(normalizedValue);
