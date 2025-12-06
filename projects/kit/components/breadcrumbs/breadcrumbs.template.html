@@ -1,16 +1,16 @@
 @if (items.changes | async) {}
-@if (itemsLimit > 1) {
-    @if (itemsLimit !== 2) {
+@if (itemsLimit() > 1) {
+    @if (itemsLimit() !== 2) {
         <ng-container [ngTemplateOutlet]="items.first" />
         <ng-container [ngTemplateOutlet]="separator" />
     }
     <tui-items-with-more
         side="start"
-        [itemsLimit]="itemsLimit - 2"
-        [required]="items.length + offset - 2"
+        [itemsLimit]="itemsLimit() - 2"
+        [required]="items.length + offset() - 2"
     >
         @for (item of items; track item) {
-            @if (item !== items.first || itemsLimit === 2) {
+            @if (item !== items.first || itemsLimit() === 2) {
                 <ng-container *tuiItem>
                     <ng-container [ngTemplateOutlet]="item" />
                     @if (!$last) {
@@ -40,7 +40,7 @@
             <ng-template #dropdown>
                 <tui-data-list size="s">
                     @for (item of items; track item) {
-                        @if ($index + offset && $index <= index && item !== items.last) {
+                        @if ($index + offset() && $index <= index && item !== items.last) {
                             <span
                                 tuiOption
                                 class="t-option"
