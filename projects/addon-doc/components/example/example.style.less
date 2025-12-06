@@ -21,11 +21,11 @@
 }
 
 .t-title {
-    font: var(--tui-font-heading-5);
+    font: var(--tui-font-heading-h5);
     margin: 0 auto 0.5rem 0;
 
     @media @tui-mobile {
-        font: var(--tui-font-heading-6);
+        font: var(--tui-font-heading-h6);
     }
 
     &:hover + .t-link {
@@ -34,11 +34,11 @@
 }
 
 .t-link {
-    font: var(--tui-font-heading-6);
+    font: var(--tui-font-heading-h6);
     padding-inline-end: 0.1rem;
 
     @media not @tui-mobile {
-        font: var(--tui-font-heading-5);
+        font: var(--tui-font-heading-h5);
         margin-inline-start: -1.6rem;
 
         &:not(:hover, :focus-visible):not(.t-link-active) {
@@ -48,7 +48,7 @@
 }
 
 .t-description {
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     font-weight: normal;
     margin: 0;
 }
