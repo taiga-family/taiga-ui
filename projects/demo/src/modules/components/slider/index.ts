@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
@@ -19,7 +18,6 @@ export default class Page {
         'Complex',
     ];
 
-    protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
         5,
@@ -33,7 +31,6 @@ export default class Page {
     protected max = 5;
     protected min = 0;
     protected step = 1;
-    protected size: TuiSizeS = this.sizeVariants[1]!;
     protected segments: number[] | number = this.max;
 
     protected get disabled(): boolean {

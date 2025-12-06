@@ -30,7 +30,7 @@
                 <ng-template #description>
                     @switch ($index) {
                         @case (0) {
-                            Built-in size options and custom thickness
+                            Custom thickness
                         }
                         @case (1) {
                             Customizing colors of the filled track and thumb
@@ -76,7 +76,6 @@
                     [max]="max"
                     [min]="min"
                     [segments]="segments"
-                    [size]="size"
                     [step]="step"
                 />
             </ng-template>
@@ -145,15 +144,6 @@
                 </a>
                 of
                 <code>&lt;input type='range' /&gt;</code>
-            </tr>
-            <tr
-                name="[size]"
-                tuiDocAPIItem
-                type="TuiSizeS"
-                [items]="sizeVariants"
-                [(value)]="size"
-            >
-                Size
             </tr>
             <tr
                 name="[segments]"
