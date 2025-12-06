@@ -9,7 +9,6 @@ import {
     TuiTextfieldComponent,
 } from '@taiga-ui/core/components/textfield';
 import {
-    TuiAppearance,
     tuiAppearance,
     tuiAppearanceFocus,
     tuiAppearanceMode,
@@ -24,7 +23,7 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
 @Directive({
     selector: 'input[tuiInput]',
     providers: [tuiAsTextfieldAccessor(TuiInputDirective)],
-    hostDirectives: [TuiNativeValidator, TuiAppearance],
+    hostDirectives: [TuiNativeValidator],
     host: {
         tuiInput: '',
         '[id]': 'textfield.id',

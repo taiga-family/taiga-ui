@@ -43,6 +43,7 @@ import {TuiTitle} from '@taiga-ui/core/components/title';
 import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {TuiAppearanceProxy} from '@taiga-ui/kit/directives/appearance-proxy';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
@@ -78,7 +79,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithInput],
+    hostDirectives: [MaskitoDirective, TuiWithInput, TuiAppearanceProxy],
     host: {
         type: 'tel',
         ngSkipHydration: 'true',

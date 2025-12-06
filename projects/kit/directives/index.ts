@@ -1,3 +1,4 @@
+export * from '@taiga-ui/kit/directives/appearance-proxy';
 export * from '@taiga-ui/kit/directives/button-close';
 export * from '@taiga-ui/kit/directives/button-group';
 export * from '@taiga-ui/kit/directives/button-select';

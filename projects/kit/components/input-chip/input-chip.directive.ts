@@ -11,7 +11,6 @@ import {
     type TuiTextfieldAccessor,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
@@ -32,15 +31,10 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
         tuiAsControl(TuiInputChipDirective),
         tuiFallbackValueProvider([]),
         tuiAsTextfieldAccessor(TuiInputChipDirective),
-        {
-            provide: TuiAppearance,
-            useFactory: () => inject(TuiAppearance, {skipSelf: true}),
-        },
     ],
     hostDirectives: [TuiWithInput],
     host: {
         enterkeyhint: 'enter',
-        '[attr.tuiAppearance]': 'null',
         '[disabled]': 'disabled()',
         '(keydown.enter.prevent)': 'onEnter()',
         '(keydown.zoneless)': 'onBackspace($event.key)',
