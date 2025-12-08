@@ -60,7 +60,6 @@ export class TuiArcChart {
             take(1),
             // The linter rule 'no-restricted-syntax' incorrectly flags 'map(() => true)' here,
             // because the literal 'true' has type 'true' (not 'boolean'), which is intentional for this signal initialization.
-            // eslint-disable-next-line no-restricted-syntax
             map(() => true),
         ),
         {initialValue: false},
