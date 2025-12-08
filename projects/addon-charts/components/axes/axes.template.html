@@ -43,10 +43,10 @@
             @let vLines = verticalLines();
             @for (_ of '-'.repeat(vLines); track $index) {
                 <div
-                automation-id="tui-axex__vertical-line"
-                class="t-line t-line_vertical"
-                [style.border-right-style]="vLineFn($index, vLines)"
-            ></div>
+                    automation-id="tui-axex__vertical-line"
+                    class="t-line t-line_vertical"
+                    [style.border-right-style]="vLineFn($index, vLines)"
+                ></div>
             }
         </div>
         <div class="t-horizontal">
@@ -54,10 +54,10 @@
             @let hLines = horizontalLines();
             @for (_ of '-'.repeat(hLines); track $index) {
                 <div
-                automation-id="tui-axex__horizontal-line"
-                class="t-line"
-                [style.border-top-style]="hLineFn($index, hLines)"
-            ></div>
+                    automation-id="tui-axex__horizontal-line"
+                    class="t-line"
+                    [style.border-top-style]="hLineFn($index, hLines)"
+                ></div>
             }
         </div>
         @if (yInset) {
