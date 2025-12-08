@@ -17,14 +17,6 @@ jobs:
         run: |
           npx nx prebuild icons
           npx nx build icons
-      - name: Material icons
-        run: |
-          npx nx prebuild icons-material
-          npx nx build icons-material
-      - name: FontAwesome icons
-        run: |
-          npx nx prebuild icons-fontawesome
-          npx nx build icons-fontawesome
       - run: |
           npx ts-node ./scripts/generate-used-icons.ts
           npx eslint ./projects/cdk/constants/used-icons.ts --fix || echo "no file matching"
