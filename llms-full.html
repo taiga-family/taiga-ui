@@ -49377,26 +49377,34 @@ export class Example {}
 &lt;div&gt; What is &lt;strong&gt;love&lt;/strong&gt; ? &lt;/div&gt;
 &lt;div&gt;Baby don&#039;t hurt me&lt;/div&gt;
 &lt;div&gt;Don&#039;t hurt me&lt;/div&gt;
+&lt;div&gt;Counter: {{ counter() }}&lt;/div&gt;
 &lt;div&gt;No more...&lt;/div&gt;
+&lt;button size=&quot;xs&quot; tuiButton type=&quot;button&quot; (click)=&quot;onClick()&quot; &gt; Counter + 1 &lt;/button&gt;
 &lt;/ng-template&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component} from &#039;@angular/core&#039;;
+import {Component, signal} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAutoColorPipe, TuiHint} from &#039;@taiga-ui/core&#039;;
+import {TuiAutoColorPipe, TuiButton, TuiHint} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
     standalone: true,
-    imports: [TuiAutoColorPipe, TuiAvatar, TuiHint],
+    imports: [TuiAutoColorPipe, TuiAvatar, TuiButton, TuiHint],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly counter = signal(1);
+
+    protected onClick(): void {
+        this.counter.update((n) =&gt; n + 1);
+    }
+}
 ```
 
 #### Customizing
