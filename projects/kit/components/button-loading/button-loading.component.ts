@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
@@ -15,37 +15,35 @@ import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
             role="status"
             class="t-loader"
             [inheritColor]="true"
-            [loading]="!!loading"
-            [size]="loaderSize"
-            [textContent]="label"
+            [loading]="!!loading()"
+            [size]="loaderSize()"
+            [textContent]="label()"
         />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.aria-disabled]': 'loading',
-        '[class._loading]': 'loading',
+        '[attr.aria-disabled]': 'loading()',
+        '[class._loading]': 'loading()',
         '(click.capture)': 'onClick($event)',
     },
 })
 export class TuiButtonLoading {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
 
-    @Input()
-    public size = this.options.size;
+    public readonly size = input(this.options.size);
 
-    @Input()
-    public loading: boolean | string | null = false;
+    public readonly loading = input<boolean | string | null>(false);
 
-    protected get loaderSize(): TuiSizeS {
-        return tuiSizeBigger(this.size) ? 'm' : 's';
-    }
+    protected readonly loaderSize = computed<TuiSizeS>(() =>
+        tuiSizeBigger(this.size()) ? 'm' : 's',
+    );
 
-    protected get label(): string {
-        return tuiIsString(this.loading) ? this.loading : '';
-    }
+    protected readonly label = computed(() =>
+        tuiIsString(this.loading()) ? this.loading() : '',
+    );
 
     protected onClick(event: MouseEvent): void {
-        if (this.loading) {
+        if (this.loading()) {
             event.preventDefault();
             event.stopPropagation();
         }

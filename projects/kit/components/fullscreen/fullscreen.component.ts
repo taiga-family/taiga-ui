@@ -2,13 +2,12 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     ElementRef,
-    EventEmitter,
     inject,
-    Input,
-    Output,
-    signal,
-    ViewChild,
+    input,
+    model,
+    viewChild,
 } from '@angular/core';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
@@ -21,46 +20,34 @@ import {TuiRoot} from '@taiga-ui/core/components/root';
     host: {'(document:fullscreenchange)': 'closedByEscape($event)'},
 })
 export class TuiFullscreen {
-    @ViewChild(TuiRoot, {read: ElementRef})
-    private readonly root?: ElementRef<HTMLElement>;
+    private readonly root = viewChild(TuiRoot, {read: ElementRef});
 
     private readonly doc = inject(DOCUMENT);
-    protected readonly open = signal(false);
 
-    @Output('tuiFullscreenChange')
-    public readonly opened = new EventEmitter<boolean>();
+    public readonly options = input<FullscreenOptions>(
+        {navigationUI: 'auto'},
+        {alias: 'tuiFullscreenOptions'},
+    );
 
-    @Input('tuiFullscreenOptions')
-    public options?: FullscreenOptions = {navigationUI: 'auto'};
+    public readonly tuiFullscreen = model<boolean>(false);
 
-    @Input('tuiFullscreen')
-    public set fullscreen(open: boolean) {
-        if (this.open() === open) {
-            return;
-        }
+    protected readonly handleState = effect(async () => {
+        const open = this.tuiFullscreen();
 
         if (open) {
-            this.root?.nativeElement
-                .requestFullscreen(this.options)
-                .then(() => this.fullscreenState(open));
+            await this.root()?.nativeElement.requestFullscreen(this.options());
         } else {
-            this.doc
-                .exitFullscreen()
-                .then(() => this.fullscreenState(open))
-                .catch((error: unknown) =>
-                    console.error('Failed to exit fullscreen:', error),
-                );
+            try {
+                await this.doc.exitFullscreen();
+            } catch (error: unknown) {
+                console.error('Failed to exit fullscreen:', error);
+            }
         }
-    }
+    });
 
     protected closedByEscape(event: Event): void {
-        if (!this.doc.fullscreenElement && event.target === this.root?.nativeElement) {
-            this.fullscreenState(false);
+        if (!this.doc.fullscreenElement && event.target === this.root()?.nativeElement) {
+            this.tuiFullscreen.set(false);
         }
-    }
-
-    private fullscreenState(open: boolean): void {
-        this.open.set(open);
-        this.opened.emit(open);
     }
 }

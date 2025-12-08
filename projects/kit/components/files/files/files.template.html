@@ -1,28 +1,27 @@
-@if (items.changes | async) {}
 <ng-content />
-@for (item of items; track item) {
-    @if (!max || $index < max) {
+@for (item of items(); track item) {
+    @if (!max() || $index < max()) {
         <ng-container [ngTemplateOutlet]="item" />
     }
 }
-@if (hasExtraItems) {
-    <tui-expand [expanded]="expanded">
+@if (hasExtraItems()) {
+    <tui-expand [expanded]="expanded()">
         <div
             tuiGroup
             class="t-extra-items"
         >
-            @for (item of items; track item) {
-                @if (max && $index >= max) {
+            @for (item of items(); track item) {
+                @if (max() && $index >= max()) {
                     <ng-container [ngTemplateOutlet]="item" />
                 }
             }
         </div>
     </tui-expand>
 }
-@if (hasExtraItems) {
+@if (hasExtraItems()) {
     <div
         class="t-bottom"
-        [class.t-bottom_collapsed]="!expanded"
+        [class.t-bottom_collapsed]="!expanded()"
     >
         <button
             appearance="outline"
@@ -32,7 +31,7 @@
             class="t-button"
             (click)="toggle()"
         >
-            {{ expanded ? hideText() : showAllText() }}
+            {{ expanded() ? hideText() : showAllText() }}
         </button>
     </div>
 }

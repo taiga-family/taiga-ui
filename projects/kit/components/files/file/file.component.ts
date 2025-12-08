@@ -1,14 +1,13 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
+    computed,
     inject,
-    Input,
+    input,
     LOCALE_ID,
-    Output,
+    output,
+    signal,
 } from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
 import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -26,124 +25,106 @@ import {type TuiSizeL} from '@taiga-ui/core/types';
 import {type TuiLanguage} from '@taiga-ui/i18n/types';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {map, type Observable, of} from 'rxjs';
 
 import {type TuiFileLike, type TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({
     selector: 'tui-file,a[tuiFile],button[tuiFile]',
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        TuiButton,
-        TuiHintOverflow,
-        TuiIcon,
-        TuiLoader,
-    ],
+    imports: [PolymorpheusOutlet, TuiButton, TuiHintOverflow, TuiIcon, TuiLoader],
     templateUrl: './file.template.html',
     styleUrl: './file.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
     hostDirectives: [TuiAppearance],
     host: {
-        '[attr.data-delete]': 'showDelete',
+        '[attr.data-delete]': 'showDelete()',
     },
 })
 export class TuiFile {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly options = inject(TUI_FILE_OPTIONS);
     private readonly locale = inject(LOCALE_ID);
-    private readonly units$ = toObservable(inject(TUI_DIGITAL_INFORMATION_UNITS));
+    private readonly units = inject(TUI_DIGITAL_INFORMATION_UNITS);
     private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
+    private readonly removeObserved = signal(false);
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly fileTexts$ = toObservable(inject(TUI_FILE_TEXTS));
+    protected readonly fileTexts = inject(TUI_FILE_TEXTS);
 
-    @Input()
-    public file: TuiFileLike = {name: ''};
+    protected readonly content = computed<PolymorpheusContent>(() =>
+        this.calculateContent(this.state(), this.file(), this.fileTexts()),
+    );
 
-    @Input()
-    public state: TuiFileState = 'normal';
+    protected readonly fileSize = computed<string | null>(() =>
+        this.options.formatSize(this.units(), this.file().size, this.locale),
+    );
 
-    @Input()
-    public size: TuiSizeL = 'm';
+    public readonly file = input<TuiFileLike>({name: ''});
 
-    @Input()
-    public showDelete: boolean | 'always' = true;
+    public readonly state = input<TuiFileState>('normal');
 
-    @Input()
-    public showSize = true;
+    public readonly size = input<TuiSizeL>('m');
 
-    @Input()
-    public leftContent: PolymorpheusContent;
+    public readonly showDelete = input<boolean | 'always'>(true);
 
-    @Output()
-    public readonly remove = new EventEmitter<void>();
+    public readonly showSize = input(true);
+
+    public readonly leftContent = input<PolymorpheusContent>();
+
+    public readonly remove = output();
+
+    constructor() {
+        this.remove.subscribe(() => this.removeObserved.set(true));
+    }
 
     protected get preview(): SafeValue {
-        return this.isBig ? this.createPreview(this.file) : '';
+        return this.isBig ? this.createPreview(this.file()) : '';
     }
 
     protected get isBig(): boolean {
-        return this.size === 'l';
+        return this.size() === 'l';
     }
 
     protected get isLoading(): boolean {
-        return this.state === 'loading';
+        return this.state() === 'loading';
     }
 
     protected get isError(): boolean {
-        return this.state === 'error';
+        return this.state() === 'error';
     }
 
     protected get isDeleted(): boolean {
-        return this.state === 'deleted';
+        return this.state() === 'deleted';
     }
 
     protected get allowDelete(): boolean {
-        return this.showDelete && this.remove.observed;
+        return this.showDelete() && this.removeObserved();
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
-        return this.state === 'loading' ? '' : this.options.icons[this.state];
+        return this.state() === 'loading'
+            ? ''
+            : this.options.icons[this.state() as Exclude<TuiFileState, 'loading'>];
     }
 
     protected get name(): string {
-        return this.getName(this.file);
+        return this.getName(this.file());
     }
 
     protected get type(): string {
-        return this.getType(this.file);
-    }
-
-    protected get content$(): Observable<PolymorpheusContent> {
-        return this.calculateContent$(this.state, this.file, this.fileTexts$);
-    }
-
-    protected get fileSize$(): Observable<string | null> {
-        return this.calculateFileSize$(this.file, this.units$);
+        return this.getType(this.file());
     }
 
     @tuiPure
-    private calculateContent$(
+    private calculateContent(
         state: TuiFileState,
         file: TuiFileLike,
-        fileTexts$: Observable<Record<keyof TuiLanguage['fileTexts'], string>>,
-    ): Observable<PolymorpheusContent> {
+        fileTexts: Record<keyof TuiLanguage['fileTexts'], string>,
+    ): PolymorpheusContent {
         return state === 'error' && !file.content
-            ? fileTexts$.pipe(map((texts) => texts.loadingError))
-            : of(this.file.content || '');
-    }
-
-    @tuiPure
-    private calculateFileSize$(
-        file: TuiFileLike,
-        units$: Observable<readonly [string, string, string]>,
-    ): Observable<string | null> {
-        return units$.pipe(
-            map((units) => this.options.formatSize(units, file.size, this.locale)),
-        );
+            ? fileTexts.loadingError
+            : file.content || '';
     }
 
     @tuiPure
