@@ -237,7 +237,7 @@ tui-textfield {
         overscroll-behavior: none;
         // StackBlitz changes "0rem" to "0" breaking calc
         padding-inline: calc(var(--t-start, ~'0rem') + var(--t-padding))
-            calc(var(--t-end, ~'0rem') + var(--t-side) + var(--t-padding));
+            calc(var(--t-end, ~'0rem') + var(--t-side, ~'0rem') + var(--t-padding));
 
         &:disabled {
             animation: tuiPresent 1s infinite;
