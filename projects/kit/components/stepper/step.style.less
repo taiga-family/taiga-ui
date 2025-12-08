@@ -3,15 +3,15 @@
 :host {
     min-inline-size: fit-content;
 
-    &[tuiCell][tuiCell]:hover {
-        background: unset;
+    &:hover {
+        background: unset !important;
     }
 
     &._active._active:not(:disabled) {
         cursor: unset;
     }
 
-    &._horizontal {
+    &:not(._vertical) {
         &:first-of-type {
             padding-inline-start: 0;
         }

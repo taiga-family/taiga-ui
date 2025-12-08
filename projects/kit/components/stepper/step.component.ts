@@ -18,7 +18,7 @@ import {TuiStepperComponent} from './stepper.component';
     templateUrl: './step.template.html',
     styleUrl: './step.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [{directive: TuiCell, inputs: ['tuiCell: size']}, TuiWithAppearance],
+    hostDirectives: [TuiCell, TuiWithAppearance],
     host: {
         type: 'button',
         '[tabIndex]': 'isActive() ? 0 : -1',
@@ -50,16 +50,25 @@ export class TuiStep {
         () => this.stepper.activeItemIndex() === this.index,
     );
 
-    protected readonly avatarContent = computed(() => {
-        if (this.isActive() || (this.stepState() === 'normal' && !this.icon())) {
-            return `${this.index + 1}`;
-        } else {
-            return (
-                this.icon() ||
-                (this.stepState() === 'error' ? this.icons.error : this.icons.check)
-            );
+    protected avatarAppearance = computed(() => {
+        if (this.isActive()) {
+            return 'primary';
         }
+
+        return this.stepState() === 'error' ? 'negative' : 'secondary';
     });
+
+    protected readonly avatarContent = computed(() =>
+        this.isActive() || (this.stepState() === 'normal' && !this.icon())
+            ? `${this.index + 1}`
+            : this.avatarIcon(),
+    );
+
+    protected readonly avatarIcon = computed(
+        () =>
+            this.icon() ||
+            (this.stepState() === 'error' ? this.icons.error : this.icons.check),
+    );
 
     protected get index(): number {
         return this.stepper.indexOf(this.el);

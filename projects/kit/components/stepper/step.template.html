@@ -1,5 +1,5 @@
 <div
-    [appearance]="isActive() ? 'primary' : stepState() === 'error' ? 'negative' : 'secondary'"
+    [appearance]="avatarAppearance()"
     [tuiAvatar]="avatarContent()"
 ></div>
 <ng-content />
