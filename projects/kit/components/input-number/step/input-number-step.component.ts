@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    computed,
     inject,
     input,
     ViewEncapsulation,
@@ -23,6 +22,7 @@ import {
     TUI_INPUT_NUMBER_OPTIONS,
     type TuiInputNumberOptions,
 } from '../input-number.options';
+import {TuiNumberMask} from '../number-mask.directive';
 
 const INITIAL_DELAY = 300;
 const DELAY_DECREMENT = 15;
@@ -44,19 +44,19 @@ const MIN_DELAY = 100;
     },
 })
 export class TuiInputNumberStep {
-    protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
-    protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
-    protected readonly input = inject(TuiInputNumberDirective, {self: true});
-    protected readonly value = computed(() => this.input.value() ?? NaN);
-    protected readonly step$ = new Subject<number>();
-    protected readonly doc = inject(DOCUMENT);
-
-    protected readonly stop$ = merge(
+    private readonly doc = inject(DOCUMENT);
+    private readonly el = tuiInjectElement<HTMLInputElement>();
+    private readonly stop$ = merge(
         fromEvent(this.doc, 'pointerup'),
         fromEvent(this.doc, 'pointerleave'),
         fromEvent(this.doc, 'pointercancel'),
     );
+
+    protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
+    protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
+    protected readonly mask = inject(TuiNumberMask, {self: true});
+    protected readonly input = inject(TuiInputNumberDirective, {self: true});
+    protected readonly step$ = new Subject<bigint | number>();
 
     protected readonly stepping = this.step$
         .pipe(
@@ -73,10 +73,20 @@ export class TuiInputNumberStep {
 
     public readonly step = input(this.options.step);
 
-    protected onStep(step: number): void {
-        const current = this.input.value() ?? 0;
+    protected onStep(step: bigint | number): void {
+        const value = this.input.parsed() || 0;
 
-        this.input.setValue(tuiClamp(current + step, this.input.min(), this.input.max()));
+        this.input.setValue(
+            tuiClamp<bigint | number>(
+                /**
+                 * Without explicit conversion it throws
+                 * TS2365: Operator + cannot be applied to types `number | bigint` and `number | bigint`
+                 */
+                typeof value === 'bigint' ? value + BigInt(step) : value + Number(step),
+                this.mask.min(),
+                this.mask.max(),
+            ),
+        );
         this.el.setSelectionRange(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
     }
 }

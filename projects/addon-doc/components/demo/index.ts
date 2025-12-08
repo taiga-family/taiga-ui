@@ -1,4 +1,4 @@
-import {JsonPipe, Location, NgTemplateOutlet} from '@angular/common';
+import {Location, NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -8,6 +8,8 @@ import {
     ElementRef,
     inject,
     input,
+    Pipe,
+    type PipeTransform,
     type Signal,
     signal,
     TemplateRef,
@@ -42,11 +44,21 @@ import {skip} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
+@Pipe({name: 'json'})
+export class TuiJsonPipe implements PipeTransform {
+    public transform(value: unknown): string {
+        return JSON.stringify(
+            value,
+            (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
+            2,
+        );
+    }
+}
+
 @Component({
     selector: 'tui-doc-demo',
     imports: [
         FormsModule,
-        JsonPipe,
         NgTemplateOutlet,
         ReactiveFormsModule,
         TuiButton,
@@ -55,6 +67,7 @@ const MIN_WIDTH = 160;
         TuiExpand,
         TuiGroup,
         TuiItem,
+        TuiJsonPipe,
         TuiResizable,
         TuiResizer,
         TuiSelect,

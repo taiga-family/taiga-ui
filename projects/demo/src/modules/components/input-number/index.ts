@@ -29,8 +29,20 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(null, Validators.required);
-    protected readonly maxVariants: readonly number[] = [Infinity, 10, 500];
-    protected readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
+    protected readonly maxVariants: readonly number[] = [
+        Number.MAX_SAFE_INTEGER,
+        Infinity,
+        10,
+        500,
+    ];
+
+    protected readonly minVariants: readonly number[] = [
+        Number.MIN_SAFE_INTEGER,
+        -Infinity,
+        -500,
+        5,
+        25,
+    ];
 
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
@@ -38,4 +50,11 @@ export default class PageComponent {
     protected prefix = '';
     protected postfix = '';
     protected quantum = 0;
+
+    protected readonly bigIntWithDecimalTransformer = import(
+        './examples/11/transformer.ts?raw',
+        {
+            with: {loader: 'text'},
+        }
+    );
 }

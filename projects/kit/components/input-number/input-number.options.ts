@@ -5,11 +5,9 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiInputNumberOptions extends Pick<
     Required<MaskitoNumberParams>,
-    'minusSign' | 'postfix' | 'prefix' // TODO: add min/max after bigint support
+    'max' | 'min' | 'minusSign' | 'postfix' | 'prefix'
 > {
-    readonly max: number;
-    readonly min: number;
-    readonly step: number;
+    readonly step: bigint | number;
     readonly icons: Readonly<{
         decrease: string;
         increase: string;

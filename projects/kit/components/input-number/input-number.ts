@@ -6,12 +6,16 @@ import {
 import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiInputNumberDirective} from './input-number.directive';
+import {TuiNumberMask} from './number-mask.directive';
 import {TuiQuantumValueTransformer} from './quantum.directive';
 import {TuiInputNumberStep} from './step/input-number-step.component';
+import {TuiBigIntTypeValueTransformer} from './transformers/bigint-type.value-transformer';
 
 export const TuiInputNumber = [
     TuiInputNumberDirective,
+    TuiNumberMask,
     TuiInputNumberStep,
+    TuiBigIntTypeValueTransformer,
     TuiQuantumValueTransformer,
     TuiLabel,
     TuiTextfieldComponent,

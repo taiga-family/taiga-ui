@@ -1,0 +1,15 @@
+<tui-textfield>
+    <label tuiLabel>Huge integer & Huge decimal parts</label>
+
+    <input
+        bigintWithDecimal
+        tuiInputNumber
+        [max]="infinity"
+        [min]="-infinity"
+        [tuiNumberFormat]="{precision: infinity, thousandSeparator: '_'}"
+        [(ngModel)]="value"
+    />
+</tui-textfield>
+
+<p><strong>Control value:</strong></p>
+<code>{{ stringified() }}</code>
