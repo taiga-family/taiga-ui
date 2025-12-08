@@ -166,7 +166,7 @@ test.describe('TuiHint', () => {
 
             await tuiGoto(page, DemoRoute.Hint);
             await example.scrollIntoViewIfNeeded();
-            await example.locator('tui-avatar').click();
+            await example.locator('[tuiAvatar]').click();
 
             const button = page.locator('tui-hint button');
 
