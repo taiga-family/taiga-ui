@@ -1,3 +1,3 @@
-import {TUI_VERSION} from '../../../constants/version';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 export const TAIGA_VERSION = `^${TUI_VERSION}`;

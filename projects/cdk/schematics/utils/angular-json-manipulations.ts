@@ -2,9 +2,9 @@ import {type JsonArray} from '@angular-devkit/core';
 import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {addPackageJsonDependency} from 'ng-morph';
 
-import {tuiIsString} from '../../utils/miscellaneous/is-string';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {type TuiSchema} from '../ng-add/schema';
 import {type Asset} from '../ng-update/interfaces/asset';
