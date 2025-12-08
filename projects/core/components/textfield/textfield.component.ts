@@ -27,7 +27,7 @@ import {
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
-import {TuiAppearance} from '@taiga-ui/core/directives';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
