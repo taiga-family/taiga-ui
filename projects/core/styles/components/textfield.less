@@ -157,10 +157,13 @@ tui-textfield {
         --t-label: -0.7rem;
     }
 
-    &._disabled,
-    &[data-state='disabled'] {
+    &:is(._disabled, [data-state='disabled']) {
         pointer-events: none;
         opacity: var(--tui-disabled-opacity);
+
+        [tuiAppearance]:is(._disabled, :disabled, [data-state='disabled']) {
+            opacity: 1;
+        }
 
         tui-icon {
             display: none;
@@ -174,8 +177,7 @@ tui-textfield {
             padding-block: calc(var(--t-height) / 3) 0;
         }
 
-        &:not([data-focus='true']),
-        &[data-mode~='readonly'] {
+        &:is(:not([data-focus='true']), [data-mode~='readonly']) {
             & > .t-template,
             [tuiInput] {
                 &::placeholder,
