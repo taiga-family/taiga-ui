@@ -15,7 +15,7 @@ const CHEAPEST_TICKET: [string] = ['var(--tui-status-positive)'];
     changeDetection,
 })
 export default class Example {
-    protected value: [TuiDay] | null = null;
+    protected value: TuiDay | null = null;
 
     protected readonly defaultActiveMonth = signal(new TuiMonth(2000, 0));
 

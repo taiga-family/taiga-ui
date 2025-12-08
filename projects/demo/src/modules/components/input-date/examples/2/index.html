@@ -7,7 +7,7 @@
     <tui-calendar
         *tuiDropdown
         [markerHandler]="markerHandler"
-        [month]="value?.[0] ?? defaultActiveMonth()"
+        [month]="value ?? defaultActiveMonth()"
         [showAdjacent]="false"
         (monthChange)="defaultActiveMonth.set($event)"
     />
