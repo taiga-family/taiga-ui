@@ -5905,7 +5905,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCalendarRange} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-1',
     imports: [TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,
@@ -5918,34 +5917,26 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-calendar-range />
+<tui-calendar-range [(value)]="value" /> {{ value | json }}
 ```
 **TypeScript:**
 ```ts
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATE_STREAM, TuiCalendarRange} from '@taiga-ui/kit';
-import {of} from 'rxjs';
-
-export const calendarStream$ = of(
-    new TuiDayRange(new TuiDay(2019, 2, 11), new TuiDay(2019, 2, 14)),
-);
+import {TuiCalendarRange} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiCalendarRange],
+    imports: [JsonPipe, TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        {
-            provide: TUI_CALENDAR_DATE_STREAM,
-            useValue: calendarStream$,
-        },
-    ],
 })
-export default class Example {}
+export default class Example {
+    protected value = new TuiDayRange(new TuiDay(2019, 2, 11), new TuiDay(2019, 2, 14));
+}
 ```
 
 #### With ranges
@@ -17211,7 +17202,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownSheet, TuiMobileCalendarDropdownNew} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet, TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiInputDate} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
@@ -17222,7 +17213,7 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiDropdownSheet,
         TuiForm,
         TuiInputDate,
-        TuiMobileCalendarDropdownNew,
+        TuiMobileCalendarDropdown,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -17946,7 +17937,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownSheet, TuiMobileCalendarDropdownNew} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet, TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
 import {TuiInputDateRange} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
@@ -17956,7 +17947,7 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiDropdownSheet,
         TuiForm,
         TuiInputDateRange,
-        TuiMobileCalendarDropdownNew,
+        TuiMobileCalendarDropdown,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -18431,7 +18422,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownSheet, TuiMobileCalendarDropdownNew} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet, TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
@@ -18442,7 +18433,7 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiDropdownSheet,
         TuiForm,
         TuiInputDateTime,
-        TuiMobileCalendarDropdownNew,
+        TuiMobileCalendarDropdown,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -26378,10 +26369,12 @@ import {toObservable} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
+import {
+    TUI_CALENDAR_DATE_STREAM,
+    TuiMobileCalendarDropdownComponent,
+} from '@taiga-ui/addon-mobile';
 import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiButton, TuiDialogService} from '@taiga-ui/core';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {combineLatest, map, type Observable} from 'rxjs';
 
@@ -26400,7 +26393,7 @@ export default class Example {
 
     private readonly dialog$: Observable<TuiDay> = this.dialogs.open(
         new PolymorpheusComponent(
-            TuiMobileCalendarDropdown,
+            TuiMobileCalendarDropdownComponent,
             Injector.create({
                 providers: [
                     {
@@ -26520,10 +26513,12 @@ import {toObservable} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
+import {
+    TUI_CALENDAR_DATE_STREAM,
+    TuiMobileCalendarDropdownComponent,
+} from '@taiga-ui/addon-mobile';
 import {tuiControlValue, TuiDay, type TuiDayRange} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiButton, TuiDialogService} from '@taiga-ui/core';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {combineLatest, map, type Observable} from 'rxjs';
 
@@ -26542,7 +26537,7 @@ export default class Example {
 
     private readonly dialog$: Observable<TuiDayRange> = this.dialogs.open(
         new PolymorpheusComponent(
-            TuiMobileCalendarDropdown,
+            TuiMobileCalendarDropdownComponent,
             Injector.create({
                 providers: [
                     {
@@ -26606,10 +26601,12 @@ import {toObservable} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
+import {
+    TUI_CALENDAR_DATE_STREAM,
+    TuiMobileCalendarDropdownComponent,
+} from '@taiga-ui/addon-mobile';
 import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiButton, TuiDialogService} from '@taiga-ui/core';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {combineLatest, map, type Observable} from 'rxjs';
 
@@ -26628,7 +26625,7 @@ export default class Example {
 
     private readonly dialog$: Observable<readonly TuiDay[]> = this.dialogs.open(
         new PolymorpheusComponent(
-            TuiMobileCalendarDropdown,
+            TuiMobileCalendarDropdownComponent,
             Injector.create({
                 providers: [
                     {
@@ -26717,7 +26714,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
+import {TUI_CALENDAR_DATE_STREAM, TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -26727,7 +26724,6 @@ import {
     TuiDay,
     type TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {type Observable} from 'rxjs';
 
 @Component({
