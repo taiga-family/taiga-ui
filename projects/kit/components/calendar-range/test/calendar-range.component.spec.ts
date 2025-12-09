@@ -2,16 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {FormControl, NgControl} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {
     TUI_LAST_DAY,
-    tuiControlValue,
     TuiDay,
     type TuiDayLike,
     TuiDayRange,
@@ -25,7 +21,6 @@ import {
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {type Observable, of} from 'rxjs';
 
 describe('rangeCalendarComponent', () => {
     @Component({

@@ -3,7 +3,6 @@ import {
     type FactoryProvider,
     inject,
     InjectionToken,
-    Input,
     Optional,
     Self,
     SkipSelf,

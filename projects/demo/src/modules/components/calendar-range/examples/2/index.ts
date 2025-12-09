@@ -4,10 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiCalendarRange} from '@taiga-ui/kit';
-import {of} from 'rxjs';
 
 @Component({
-    imports: [TuiCalendarRange, JsonPipe],
+    imports: [JsonPipe, TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
