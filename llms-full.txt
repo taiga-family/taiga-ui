@@ -8243,9 +8243,9 @@ export default class Example {
 <span tuiTitle> {{ item.title }} <span tuiSubtitle>{{ item.subtitle }}</span>
 </span>
 </button> } </div>
-<tui-notification>
+<div tuiNotification>
 <code>DataList</code> already uses <code>Cell</code> for the options, but if you need to show it in value template as well – add a wrapping element with <code>Cell</code>
-</tui-notification>
+</div>
 <tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
 <input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
@@ -8313,8 +8313,8 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-notification> Can be attached as host directive: <code>hostDirectives: [TuiConnected]</code>
-</tui-notification>
+<div tuiNotification> Can be attached as host directive: <code>hostDirectives: [TuiConnected]</code>
+</div>
 <div appearance="floating" tuiCardLarge tuiConnected >
 <h3 tuiTitle="m">Inside a block</h3> @for (item of items; track item) { <button tuiCell type="button" >
 <div appearance="accent" [tuiAvatar]="item.icon" ></div>
@@ -13893,10 +13893,10 @@ export class Example {}
 </tui-segmented>
 </span>
 </header>
-<tui-notification appearance="warning">
+<div appearance="warning" tuiNotification >
 <h3 tuiTitle> Authenticity required <span tuiSubtitle>Please be honest and use your real data</span>
 </h3>
-</tui-notification>
+</div>
 <tui-textfield>
 <label tuiLabel>Name</label>
 <input formControlName="name" placeholder="John Wick" tuiInput />
@@ -23853,7 +23853,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-notification> In case you need to be able to toggle a category by separate action, for example, if clicking on it should expand it for more details </tui-notification>
+<div tuiNotification> In case you need to be able to toggle a category by separate action, for example, if clicking on it should expand it for more details </div>
 <div class="wrapper">
 <tui-ring-chart size="s" class="chart" [value]="value" />
 <div class="legend"> @for (label of labels; track label) { <tui-legend-item #item class="item" [color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`" [disabled]="!isEnabled($index)" [text]="label" (click)="onClick($index)" (keydown.delete)="toggle($index)" >
@@ -24625,7 +24625,7 @@ export class Example {}
 <div class="island">
 <tui-line-clamp [content]="daenerys" [lineHeight]="20" [linesLimit]="2" />
 </div>
-<tui-notification class="tui-space_bottom-4"> Use <code>white-space: nowrap</code> to expand to the right </tui-notification>
+<div tuiNotification class="tui-space_bottom-4" > Use <code>white-space: nowrap</code> to expand to the right </div>
 <div class="island">
 <tui-line-clamp [content]="mormont" [lineHeight]="20" [linesLimit]="1" />
 </div>
@@ -25353,8 +25353,8 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-notification>
-<code>TuiLineDaysChart</code> is used to show data of several months to simplify working with different number of days in months </tui-notification>
+<div tuiNotification>
+<code>TuiLineDaysChart</code> is used to show data of several months to simplify working with different number of days in months </div>
 <p class="controls">
 <tui-textfield [tuiTextfieldCleaner]="false">
 <label tuiLabel>Data</label>
@@ -27400,7 +27400,12 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-notification appearance="negative">Some content</tui-notification>
+<div
+  tuiNotification
+  appearance="negative"
+>
+  Some content
+</div>
 ```
 
 ### Example
@@ -27434,9 +27439,9 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-notification size="l"> Hello world <button iconStart="@tui.x" tuiIconButton type="button" > Close </button>
-</tui-notification>
-<tui-notification appearance="warning" size="m" >
+<div size="l" tuiNotification > Hello world <button iconStart="@tui.x" tuiIconButton type="button" > Close </button>
+</div>
+<div appearance="warning" size="m" tuiNotification >
 <div tuiTitle [style.padding-inline-end.rem]="2" > I am title <div tuiSubtitle>I am content of the notification and I can even wrap to multiple lines.</div>
 <div>
 <button tuiButton type="button" > So what? </button>
@@ -27444,8 +27449,8 @@ export class Example {}
 </div>
 </div>
 <button iconStart="@tui.x" tuiIconButton type="button" > Close </button>
-</tui-notification>
-<tui-notification appearance="neutral" icon="" size="s" > Most boring notification </tui-notification>
+</div>
+<div appearance="neutral" icon="" size="s" tuiNotification > Most boring notification </div>
 ```
 **TypeScript:**
 ```ts
@@ -27468,7 +27473,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-notification>Works with token options</tui-notification>
+<div tuiNotification>Works with token options</div>
 ```
 **TypeScript:**
 ```ts
@@ -33286,7 +33291,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-notification> When mobile styles are enabled you can use <code style="white-space: nowrap">input[type='search'][tuiSearch]</code> to imitate iOS native input </tui-notification>
+<div tuiNotification> When mobile styles are enabled you can use <code style="white-space: nowrap">input[type='search'][tuiSearch]</code> to imitate iOS native input </div>
 <p>
 <button tuiButton type="button" (click)="open.set(true)" > Show </button>
 </p>
@@ -44421,7 +44426,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-notification> Use CSS hyphens and declare <code>lang</code> on your <code>html</code> tag so that you don't get a situation where a whole long word is shifted to the new line and you observe no fade effect </tui-notification>
+<div tuiNotification> Use CSS hyphens and declare <code>lang</code> on your <code>html</code> tag so that you don't get a situation where a whole long word is shifted to the new line and you observe no fade effect </div>
 <p tuiFade tuiFadeHeight="1.25rem" tuiFadeOffset="4.5rem" > Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the pneumonoultramicroscopicsilicovolcanoconiosis Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. </p>
 ```
 **TypeScript:**
