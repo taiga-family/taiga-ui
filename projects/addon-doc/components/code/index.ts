@@ -4,8 +4,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     inject,
-    Input,
     input,
     PLATFORM_ID,
 } from '@angular/core';
@@ -68,9 +68,12 @@ export class TuiDocCode {
 
     public readonly filename = input('');
 
-    @Input()
-    public set code(code: TuiRawLoaderContent) {
-        this.rawLoader$$.next(code);
+    public readonly code = input<TuiRawLoaderContent>('');
+
+    constructor() {
+        effect(() => {
+            this.rawLoader$$.next(this.code());
+        });
     }
 
     public get hasFilename(): boolean {

@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, effect, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
@@ -23,8 +23,11 @@ export class TuiDocScrollIntoViewLink {
         )
         .subscribe(() => this.el.scrollIntoView());
 
-    @Input()
-    public set tuiDocScrollIntoViewLink(shallWe: boolean) {
-        this.scroll$.next(shallWe);
+    public readonly tuiDocScrollIntoViewLink = input<boolean>(false);
+
+    constructor() {
+        effect(() => {
+            this.scroll$.next(this.tuiDocScrollIntoViewLink());
+        });
     }
 }

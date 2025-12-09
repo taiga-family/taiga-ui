@@ -5,7 +5,7 @@ import {
     ElementRef,
     inject,
     signal,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -84,8 +84,9 @@ function tuiUniqBy<T extends Record<string, any>>(
     },
 })
 export class TuiDocNavigation {
-    @ViewChild(TuiInputDirective, {read: ElementRef})
-    private readonly searchInput?: ElementRef<HTMLInputElement>;
+    private readonly searchInput = viewChild(TuiInputDirective, {
+        read: ElementRef<HTMLInputElement>,
+    });
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
@@ -184,7 +185,7 @@ export class TuiDocNavigation {
             event.code === 'Slash' &&
             !this.doc.activeElement?.matches('input,textarea,[contenteditable]')
         ) {
-            this.searchInput?.nativeElement?.focus();
+            this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
         }
     }

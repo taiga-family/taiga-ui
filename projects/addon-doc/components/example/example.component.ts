@@ -4,8 +4,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     inject,
-    Input,
     input,
     signal,
     type Type,
@@ -115,9 +115,12 @@ export class TuiDocExample {
 
     public readonly component = input<Promise<Type<unknown>>>();
 
-    @Input()
-    public set content(content: Record<string, TuiRawLoaderContent>) {
-        this.rawLoader$$.next(content);
+    public readonly content = input<Record<string, TuiRawLoaderContent>>({});
+
+    constructor() {
+        effect(() => {
+            this.rawLoader$$.next(this.content());
+        });
     }
 
     protected readonly visible = (files: Record<string, string>): boolean =>
