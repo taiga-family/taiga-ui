@@ -124,7 +124,7 @@
         "@taiga-ui/configs": "0.373.0",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "24.10.1",
+        "@types/node": "24.10.2",
         "@typescript/native-preview": "7.0.0-dev.20251208.1",
         "browser-sync": "3.0.4",
         "cpy-cli": "5.0.0",
