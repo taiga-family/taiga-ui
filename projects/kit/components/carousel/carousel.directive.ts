@@ -1,22 +1,10 @@
 import {isPlatformServer} from '@angular/common';
 import {Directive, inject, input, NgZone, PLATFORM_ID} from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
 import {WA_PAGE_VISIBILITY} from '@ng-web-apis/common';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiIfMap, tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {
-    combineLatest,
-    EMPTY,
-    filter,
-    interval,
-    map,
-    merge,
-    Observable,
-    pairwise,
-    startWith,
-    Subject,
-} from 'rxjs';
+import {combineLatest, EMPTY, interval, map, merge, Observable, Subject} from 'rxjs';
 
 @Directive()
 export class TuiCarouselDirective extends Observable<unknown> {
