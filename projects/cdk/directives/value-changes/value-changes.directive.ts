@@ -1,7 +1,16 @@
 import {Directive, type DoCheck, inject} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {ControlContainer, NgControl} from '@angular/forms';
-import {distinctUntilChanged, EMPTY, type Observable, Subject, switchAll} from 'rxjs';
+
+import {
+    distinctUntilChanged,
+    EMPTY,
+    type Observable,
+    skip,
+    Subject,
+    switchAll,
+} from 'rxjs';
+import {tuiControlValue} from '../../observables';
 
 @Directive({
     selector: '[tuiValueChanges]',
@@ -15,13 +24,14 @@ export class TuiValueChanges<T> implements DoCheck {
         distinctUntilChanged(),
         switchAll(),
         distinctUntilChanged(),
+        skip(1),
     );
 
     public readonly tuiValueChanges = outputFromObservable(this.tuiValueChanges$);
 
     public ngDoCheck(): void {
-        this.refresh$.next(
-            this.control?.valueChanges || this.container?.valueChanges || EMPTY,
-        );
+        const control = this.control || this.container;
+
+        this.refresh$.next(control ? tuiControlValue<T>(control) : EMPTY);
     }
 }
