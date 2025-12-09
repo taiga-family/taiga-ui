@@ -1,11 +1,14 @@
+import {type MaskitoNumberParams} from '@maskito/kit';
 import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
-export interface TuiInputNumberOptions {
+export interface TuiInputNumberOptions extends Pick<
+    Required<MaskitoNumberParams>,
+    'minusSign' | 'postfix' | 'prefix' // TODO: add min/max after bigint support
+> {
     readonly max: number;
     readonly min: number;
-    readonly prefix: string;
-    readonly postfix: string;
     readonly step: number;
     readonly icons: Readonly<{
         decrease: string;
@@ -19,6 +22,7 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     max: Number.MAX_SAFE_INTEGER,
     prefix: '',
     postfix: '',
+    minusSign: CHAR_MINUS,
     step: 0,
     icons: {
         increase: '@tui.plus',

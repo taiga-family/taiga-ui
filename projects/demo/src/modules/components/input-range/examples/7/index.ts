@@ -5,6 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
 
+const CHAR_ZERO_WIDTH_SPACE = '\u200B';
+
 @Component({
     imports: [FormsModule, I18nPluralPipe, JsonPipe, TuiInputRange],
     templateUrl: './index.html',
@@ -12,14 +14,8 @@ import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
     changeDetection,
     providers: [
         tuiInputNumberOptionsProvider({
-            valueTransformer: {
-                fromControlValue(value: number | null): number | null {
-                    return value && Math.abs(value);
-                },
-                toControlValue(value: number | null): number | null {
-                    return value && -1 * Math.abs(value);
-                },
-            },
+            minusSign: CHAR_ZERO_WIDTH_SPACE,
+            prefix: CHAR_ZERO_WIDTH_SPACE,
         }),
     ],
 })
