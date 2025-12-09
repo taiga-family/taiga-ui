@@ -233,7 +233,6 @@
 
 ### Services
 
-- [Breakpoint Service](https://taiga-ui.dev/services/breakpoint-service)
 - [Keyboard Service](https://taiga-ui.dev/services/keyboard-service)
 
 ### Testing
