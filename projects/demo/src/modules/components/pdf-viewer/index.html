@@ -6,8 +6,9 @@
     <ng-template pageTab>
         <p>Wrapper component for viewing PDF files in an iframe</p>
 
-        <tui-notification
+        <div
             appearance="warning"
+            tuiNotification
             class="tui-space_top-5"
         >
             PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party
@@ -34,7 +35,7 @@
             >
                 pdf.js.
             </a>
-        </tui-notification>
+        </div>
 
         @for (example of examples; track example) {
             <tui-doc-example

@@ -28,7 +28,10 @@
             [component]="2 | tuiComponent"
             [content]="2 | tuiExample"
         >
-            <tui-notification class="tui-space_bottom-6">
+            <div
+                tuiNotification
+                class="tui-space_bottom-6"
+            >
                 Use
                 <a
                     tuiLink
@@ -38,7 +41,7 @@
                 </a>
                 directive to enable hints with
                 <code>tuiHintContent</code>
-            </tui-notification>
+            </div>
         </tui-doc-example>
     </ng-template>
 

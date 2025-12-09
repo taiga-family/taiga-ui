@@ -1,3 +1,8 @@
 ```html
-<tui-notification appearance="negative">Some content</tui-notification>
+<div
+  tuiNotification
+  appearance="negative"
+>
+  Some content
+</div>
 ```
