@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
+import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
@@ -22,7 +21,7 @@ export class TuiInputFilesContent {
     private readonly texts = inject(TUI_INPUT_FILE_TEXTS);
     private readonly component = inject(TuiInputFiles);
 
-    protected readonly breakpoint = toSignal(inject(TuiBreakpointService));
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly context = injectContext<TuiContext<boolean>>();
     protected readonly link = computed(() =>
         this.component.input()?.el.multiple
