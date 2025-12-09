@@ -7503,7 +7503,7 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-carousel [duration]="4000" [(index)]="index" > @for (item of items; track item) { <div *tuiItem class="item" >
+<tui-carousel [duration]="4000" [(index)]="index" > @for (item of items; track $index) { <div *tuiItem class="item" >
 <h2 class="title">{{ item }}</h2>
 <!-- TODO: update documentation here -->
 <a tuiButton [attr.href]="`https://en.wikipedia.org/wiki/${item}`" > Wiki </a>
@@ -7535,7 +7535,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-carousel [draggable]="true" [itemsCount]="3" [(index)]="index" > @for (item of items; track item) { <img *tuiItem alt="" draggable="false" class="item" [class.item_active]="$index === index + 1" [src]="`assets/images/${item}`" /> } </tui-carousel>
+<tui-carousel [draggable]="true" [itemsCount]="3" [(index)]="index" > @for (item of items; track $index) { <img *tuiItem alt="" draggable="false" class="item" [class.item_active]="$index === index + 1" [src]="`assets/images/${item}`" /> } </tui-carousel>
 ```
 **TypeScript:**
 ```ts
@@ -7695,7 +7695,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-carousel [itemsCount]="3" [(index)]="index" > @for (item of items; track item) { <div *tuiItem class="item" >
+<tui-carousel [itemsCount]="3" [(index)]="index" > @for (item of items; track $index) { <div *tuiItem class="item" >
 <h2 class="title">{{ item.title }}</h2> {{ item.content }} </div> } </tui-carousel>
 <tui-pagination [index]="rounded" [length]="items.length / itemsCount" (indexChange)="onIndex($event)" />
 ```
@@ -7787,7 +7787,7 @@ export default class Example {
 
 .plate {
     display: flex;
-    font: var(--tui-font-heading-3);
+    font: var(--tui-font-heading-h3);
     flex-direction: column;
     align-items: flex-start;
     inline-size: 100%;
@@ -10290,17 +10290,21 @@ import {TuiCopy} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly fonts = [
-        'font-heading-1',
-        'font-heading-2',
-        'font-heading-3',
-        'font-heading-4',
-        'font-heading-5',
-        'font-heading-6',
-        'font-text-xl',
-        'font-text-l',
-        'font-text-m',
-        'font-text-s',
-        'font-text-xs',
+        'font-heading-h1',
+        'font-heading-h2',
+        'font-heading-h3',
+        'font-heading-h4',
+        'font-heading-h5',
+        'font-heading-h6',
+        'font-legacy-body-xl',
+        'font-body-l',
+        'font-body-m',
+        'font-body-s',
+        'font-body-xs',
+        'font-ui-l',
+        'font-ui-m',
+        'font-ui-s',
+        'font-ui-xs',
     ];
 }
 ```
@@ -16078,7 +16082,7 @@ export default class PageComponent {
 }
 
 .title {
-    font: var(--tui-font-heading-5);
+    font: var(--tui-font-heading-h5);
 }
 
 .card {
@@ -18680,7 +18684,7 @@ export class Example {}
 ```html
 @if (!control.value) { <label tuiInputFiles>
 <input accept="image/*" tuiInputFiles [formControl]="control" />
-</label> } <tui-files class="tui-space_top-1"> @if (control.value | tuiFileRejected: {accept: 'image/*'} | async; as file) { <tui-file state="error" [file]="file" (remove)="removeFile()" /> } @if (loadedFiles$ | async; as file) { <tui-file [file]="file" (remove)="removeFile()" /> } @if (failedFiles$ | async; as file) { <tui-file state="error" [file]="file" (remove)="removeFile()" /> } @if (loadingFiles$ | async; as file) { <tui-file state="loading" [file]="file" (remove)="removeFile()" /> } </tui-files>
+</label> } <tui-files class="tui-space_top-1"> @if (control.value | tuiFileRejected: {accept: 'image/*'} | async; as file) { <tui-file state="error" [file]="file" (remove)="removeFile()" /> } @if (loadedFiles$ | async; as file) { <tui-file size="l" [file]="file" (remove)="removeFile()" /> } @if (failedFiles$ | async; as file) { <tui-file state="error" [file]="file" (remove)="removeFile()" /> } @if (loadingFiles$ | async; as file) { <tui-file state="loading" [file]="file" (remove)="removeFile()" /> } </tui-files>
 ```
 **TypeScript:**
 ```ts
@@ -20614,7 +20618,7 @@ export default class PageComponent {
 }
 
 .phone {
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-body-s);
     color: var(--tui-text-tertiary);
 }
 ```
@@ -39124,7 +39128,7 @@ export default class Example {}
 <b>I am a title</b>
 <div tuiSubtitle [style.color]="'var(--tui-text-secondary)'" > I'm a subtitle </div>
 </h2>
-<a href="https://github.com/taiga-family/taiga-ui" tuiLink tuiTitle [style.font-size.rem]="1" [style.line-height.rem]="1.25" > Taiga UI — GitHub <div tuiSubtitle [style.font]="'var(--tui-font-text-s)'" > Drop us a star! </div>
+<a href="https://github.com/taiga-family/taiga-ui" tuiLink tuiTitle [style.font-size.rem]="1" [style.line-height.rem]="1.25" > Taiga UI — GitHub <div tuiSubtitle [style.font]="'var(--tui-font-body-s)'" > Drop us a star! </div>
 </a>
 <label class="flex">
 <div size="s" tuiAvatar="@tui.user" >
@@ -40370,7 +40374,7 @@ export default class Page {
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 .description-header {
-    font: var(--tui-font-text-l);
+    font: var(--tui-font-body-l);
     font-weight: bold;
     line-height: 2.875rem;
     block-size: 2.1875rem;
@@ -44466,7 +44470,7 @@ export default class Page {
 
 ```less
 .fade {
-    font: var(--tui-font-heading-6);
+    font: var(--tui-font-heading-h6);
     white-space: nowrap;
 }
 ```
@@ -45822,7 +45826,7 @@ export default class Page {}
 # directives/Present
 - **Package**: `KIT`
 - **Type**: directives
-tuiPresentChange allows to detect appearance of elements in DOM
+tuiPresent allows to detect appearance of elements in DOM
 
 ### How to Use (Import)
 
@@ -45847,14 +45851,14 @@ export class Example {}
 ```html
 <div
   [class.hidden]="!visible"
-  (tuiPresentChange)="onPresentChange($event)"
+  (tuiPresent)="onPresentChange($event)"
 >
   I am a component hidden with CSS
 </div>
 or
 <div
   *ngIf="visible"
-  (tuiPresentChange)="onPresentChange($event)"
+  (tuiPresent)="onPresentChange($event)"
 >
   I am a component hidden with *ngIf
 </div>
@@ -45866,7 +45870,7 @@ or
 
 **Template:**
 ```html
-<p (tuiHoveredChange)="onHovered($event)"> Hover <span [class.hidden]="!hovered" (tuiPresentChange)="onCSS($event)" > I am a component hidden with CSS </span> @if (hovered) { <span (tuiPresentChange)="onIf($event)">I am a component hidden with *ngIf</span> } </p>
+<p (tuiHoveredChange)="onHovered($event)"> Hover <span [class.hidden]="!hovered" (tuiPresent)="onCSS($event)" > I am a component hidden with CSS </span> @if (hovered) { <span (tuiPresent)="onIf($event)">I am a component hidden with *ngIf</span> } </p>
 <p>Counter of component appearance minus counter of its disappearance:</p>
 <p> CSS: <tui-badge>{{ counterCSS }}</tui-badge>
 </p>
@@ -46573,7 +46577,7 @@ export class Example {
 ```html
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="loading" /> Loading </label>
-<span [style.font]="'var(--tui-font-text-xl)'">Shimmer</span>
+<span [style.font]="'var(--tui-font-legacy-body-xl)'">Shimmer</span>
 <section appearance="floating" tuiCardLarge >
 <header tuiHeader>
 <hgroup tuiTitle [tuiShimmer]="loading" >
@@ -46592,7 +46596,7 @@ export class Example {
 <button size="m" tuiButton type="button" > Take another look </button>
 </footer>
 </section>
-<span [style.font]="'var(--tui-font-text-xl)'">Skeleton</span>
+<span [style.font]="'var(--tui-font-legacy-body-xl)'">Skeleton</span>
 <section appearance="floating" tuiCardLarge >
 <header tuiHeader>
 <hgroup tuiTitle>
@@ -48127,8 +48131,8 @@ export default class Page {
     };
 
     protected readonly vars: Record<string, string> = {
-        '--tui-font-heading': 'font for headings',
-        '--tui-font-text': 'font for text',
+        '--tui-font-family-display': 'font for headings',
+        '--tui-font-family-text': 'font for text',
         '--tui-radius-xs': 'border radius for smallest items (i.e. small checkbox)',
         '--tui-radius-s': 'border radius for small elements (i.e. tags)',
         '--tui-radius-m': 'default border radius',

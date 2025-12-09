@@ -182,7 +182,7 @@
 - [Media](https://taiga-ui.dev/directives/media) — Directive for declarative work with HTML5 video and audio
 - [Number Format](https://taiga-ui.dev/directives/number-format) — Directive allows to customize TuiInputNumber , TuiInputSlider , TuiInputRange number format.
 - [Pan](https://taiga-ui.dev/directives/pan) — tuiPan The directive emits delta between mousemove / touchmove events. You can use it to change the coordinates of an element as in example below
-- [Present](https://taiga-ui.dev/directives/present) — tuiPresentChange allows to detect appearance of elements in DOM
+- [Present](https://taiga-ui.dev/directives/present) — tuiPresent allows to detect appearance of elements in DOM
 - [Resizer](https://taiga-ui.dev/directives/resizer) — Directive to resize container in multiple directions.
 - [Ripple](https://taiga-ui.dev/directives/ripple) — Directive for «ripple» effect on mobile devices
 - [Sensitive](https://taiga-ui.dev/directives/sensitive) — A directive that allows you to hide sensitive data under a pixel mask. This can be account balances, write-off amounts and any other content
