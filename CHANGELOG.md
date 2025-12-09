@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.64.0](https://github.com/taiga-family/taiga-ui/compare/v4.63.0...v4.64.0) (2025-12-09)
+
+### 🚀 Features
+
+- **core:** `Hint` make offset configurable ([#12767](https://github.com/taiga-family/taiga-ui/issues/12767))
+  ([4641ba8](https://github.com/taiga-family/taiga-ui/commit/4641ba8dd09e8bddcdfeb3d8438dc584dd5a9460))
+- **core:** add `TUI_FONT_OFFSET` signal token ([#12701](https://github.com/taiga-family/taiga-ui/issues/12701))
+  ([fdca425](https://github.com/taiga-family/taiga-ui/commit/fdca425ad72108b26119f7d9ddea9d300b072c10))
+- **core:** make line height grow with increased font size
+  ([#12755](https://github.com/taiga-family/taiga-ui/issues/12755))
+  ([43be83e](https://github.com/taiga-family/taiga-ui/commit/43be83e597b9fbd307ab12fa5a631f217cdab2bd))
+- **kit:** `ButtonSelect` add ability to work with array
+  ([#12720](https://github.com/taiga-family/taiga-ui/issues/12720))
+  ([7b4be4c](https://github.com/taiga-family/taiga-ui/commit/7b4be4cb0202196a5703ea82e52667a1438db313))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** center `ProgressBar` inside `AppBar` on android
+  ([#12727](https://github.com/taiga-family/taiga-ui/issues/12727))
+  ([de300f0](https://github.com/taiga-family/taiga-ui/commit/de300f01791abc2756f634456b52e4f975bc6530))
+- **core:** hover event from `TuiHint` faster than hover event of `TuiHintPointer`
+  ([#12773](https://github.com/taiga-family/taiga-ui/issues/12773))
+  ([3ccfc68](https://github.com/taiga-family/taiga-ui/commit/3ccfc68b454409743f14b915ce2eb6e96083dd27))
+- **kit:** `Switch` fix icon position according to specs
+  ([#12746](https://github.com/taiga-family/taiga-ui/issues/12746))
+  ([f38ff15](https://github.com/taiga-family/taiga-ui/commit/f38ff15f7663dce6a626229d2feca15adde33205))
+- **layout:** `AppBarBack` fix font size on desktop ([#12763](https://github.com/taiga-family/taiga-ui/issues/12763))
+  ([0dd3354](https://github.com/taiga-family/taiga-ui/commit/0dd335464431b3eed4512aa889c8d66b0fcf9656))
+
 ## [4.63.0](https://github.com/taiga-family/taiga-ui/compare/v4.62.0...v4.63.0) (2025-12-01)
 
 ### 🚀 Features
