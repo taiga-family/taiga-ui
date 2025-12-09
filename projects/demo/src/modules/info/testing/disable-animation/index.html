@@ -41,10 +41,10 @@
             <tui-doc-tab src="assets/icons/playwright.svg">playwright.config.ts</tui-doc-tab>
         </button>
     </tui-tabs-with-more>
-    @if (tabs.activeItemIndex === 0) {
+    @if (tabs.activeItemIndex() === 0) {
         <tui-doc-code [code]="cypress" />
     }
-    @if (tabs.activeItemIndex === 1) {
+    @if (tabs.activeItemIndex() === 1) {
         <tui-doc-code [code]="playwright" />
     }
 </tui-doc-page>

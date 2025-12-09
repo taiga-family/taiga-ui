@@ -1,7 +1,7 @@
 <div
     #wrapper
     class="t-wrapper"
-    (transitionend.self)="onTransitionEnd()"
+    (transitionend.self)="dragged.set(false)"
 >
     <ng-content />
 </div>

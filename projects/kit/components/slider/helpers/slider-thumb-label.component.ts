@@ -4,11 +4,10 @@ import {
     type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
-import {type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TuiSliderComponent} from '../slider.component';
 
@@ -21,30 +20,23 @@ import {TuiSliderComponent} from '../slider.component';
     providers: [tuiHintOptionsProvider({direction: 'top', appearance: 'floating'})],
 })
 export class TuiSliderThumbLabel implements AfterContentInit {
-    @ContentChild(TuiSliderComponent)
-    protected readonly slider?: TuiSliderComponent;
-
-    @ContentChild(NgControl)
-    protected readonly control?: NgControl;
+    protected readonly slider = contentChild(TuiSliderComponent);
+    protected readonly control = contentChild(NgControl);
 
     public ngAfterContentInit(): void {
         ngDevMode &&
             console.assert(
-                Boolean(this.control?.valueChanges),
+                Boolean(this.control()?.valueChanges),
                 '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n' +
                     'Use [(ngModel)] or [formControl] or formControlName for correct work.',
             );
     }
 
-    protected get size(): TuiSizeS {
-        return this.slider?.size || 'm';
-    }
-
     protected get ratio(): number {
-        return this.slider?.valueRatio || 0;
+        return this.slider()?.valueRatio || 0;
     }
 
     protected get ghostStart(): number {
-        return this.ratio * (this.slider?.el.offsetWidth || 0);
+        return this.ratio * (this.slider()?.el.offsetWidth || 0);
     }
 }

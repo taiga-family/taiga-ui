@@ -3,14 +3,14 @@ import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    computed,
     type ElementRef,
     inject,
-    Input,
+    input,
     type OnChanges,
-    type QueryList,
     signal,
     type TemplateRef,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {
@@ -40,18 +40,17 @@ import {delay, map} from 'rxjs';
         },
     ],
     host: {
-        '[attr.data-size]': 'size',
-        '[style.--t-gap.px]': 'gap',
+        '[attr.data-size]': 'size()',
+        '[style.--t-gap.px]': 'gap()',
         '[style.max-width.px]': 'maxWidth()',
     },
 })
 export class TuiPager implements OnChanges, AfterViewInit {
-    @ViewChildren('item')
-    protected items?: QueryList<ElementRef<HTMLElement>>;
-
-    protected start = 0;
-    protected end = 0;
-    protected left = signal(0);
+    protected readonly items = viewChildren<ElementRef<HTMLElement>>('item');
+    protected readonly start = signal(0);
+    protected readonly end = signal(0);
+    protected readonly left = signal(0);
+    protected readonly gap = computed(() => (this.size() === 'm' ? 9 : 7));
     protected readonly maxWidth = toSignal(
         inject(MutationObserverService, {self: true}).pipe(
             delay(0),
@@ -62,20 +61,11 @@ export class TuiPager implements OnChanges, AfterViewInit {
         {initialValue: 0},
     );
 
-    @Input()
-    public max = 6;
-
-    @Input()
-    public count = this.max;
-
-    @Input()
-    public size: TuiSizeS = 'm';
-
-    @Input()
-    public valueContent?: TemplateRef<unknown>;
-
-    @Input()
-    public index = 0;
+    public readonly max = input(6);
+    public readonly count = input(6);
+    public readonly size = input<TuiSizeS>('m');
+    public readonly valueContent = input<TemplateRef<unknown>>();
+    public readonly index = input(0);
 
     public ngOnChanges(): void {
         this.move();
@@ -85,16 +75,11 @@ export class TuiPager implements OnChanges, AfterViewInit {
         this.move();
     }
 
-    protected get gap(): number {
-        return this.size === 'm' ? 9 : 7;
-    }
-
     private get visibleRange(): [start: number, end: number] {
-        const max = this.max > this.count ? this.count : this.max;
-
+        const max = this.max() > this.count() ? this.count() : this.max();
         const start = Math.min(
-            Math.max(this.index - Math.floor(max / 2), 0),
-            this.count - max,
+            Math.max(this.index() - Math.floor(max / 2), 0),
+            this.count() - max,
         );
 
         return [start, start + (max - 1)];
@@ -102,22 +87,23 @@ export class TuiPager implements OnChanges, AfterViewInit {
 
     private get visibleWidth(): number {
         return (
-            (this.items?.map((item) => item.nativeElement.offsetWidth ?? 0) ?? [])
-                .slice(this.start, this.end + 1)
-                .reduce((sum, item) => sum + item + this.gap, 0) - this.gap
+            this.items()
+                .map((item) => item.nativeElement.offsetWidth)
+                .slice(this.start(), this.end() + 1)
+                .reduce((sum, item) => sum + item + this.gap(), 0) - this.gap()
         );
     }
 
     private move(): void {
         const [start, end] = this.visibleRange;
 
-        this.start = start;
-        this.end = end;
+        this.start.set(start);
+        this.end.set(end);
 
-        let left = this.start * this.gap;
+        let left = this.start() * this.gap();
 
-        for (let i = 0; i < this.start; i++) {
-            left += this.items?.get(i)?.nativeElement.offsetWidth ?? 0;
+        for (let i = 0; i < this.start(); i++) {
+            left += this.items()[i]?.nativeElement.offsetWidth ?? 0;
         }
 
         this.left.set(-1 * left);

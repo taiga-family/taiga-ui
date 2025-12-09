@@ -4,16 +4,13 @@ import {
     computed,
     ElementRef,
     inject,
-    Input,
     input,
-    type QueryList,
-    signal,
-    ViewChild,
-    ViewChildren,
+    viewChild,
+    viewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
@@ -56,16 +53,9 @@ import {
     },
 })
 export class TuiInputRange extends TuiControl<readonly [number, number]> {
-    @ViewChildren(TuiInputNumberDirective, {read: ElementRef})
-    private readonly inputNumberRefs: QueryList<ElementRef<HTMLInputElement>> =
-        EMPTY_QUERY;
-
-    @ViewChild(TuiRange)
-    private readonly range?: TuiRange;
-
-    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    private readonly inputs = viewChildren(TuiInputNumberDirective, {read: ElementRef});
+    private readonly range = viewChild(TuiRange);private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly quantum = signal(0);
     private readonly quantumTransformer = computed(
         () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
@@ -92,29 +82,21 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         this.contentStart() === this.content()[0] ? this.content()[1] : '',
     );
 
-    @Input()
-    public min = 0;
+    public readonly min = input(0);
+    public readonly max = input(100);
+    public readonly step = input(1);
+    public readonly segments = input(1);
+    public readonly keySteps = input<TuiKeySteps>();
+    public readonly quantum = input(0);
+    public readonly prefix = input(['', ''], {
+        transform: (x: readonly [string, string] | null): readonly [string, string] =>
+            x ?? [this.options.prefix, this.options.prefix],
+    });
 
-    @Input()
-    public max = 100;
-
-    @Input()
-    public step = 1;
-
-    @Input()
-    public segments = 1;
-
-    @Input()
-    public keySteps: TuiKeySteps | null = null;
-
-    @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
-    public prefix: readonly [string, string] = [this.options.prefix, this.options.prefix];
-
-    @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
-    public postfix: readonly [string, string] = [
-        this.options.postfix,
-        this.options.postfix,
-    ];
+    public readonly postfix = input(['', ''], {
+        transform: (x: readonly [string, string] | null): readonly [string, string] =>
+            x ?? [this.options.postfix, this.options.postfix],
+    });
 
     public content = input<
         readonly [
@@ -122,12 +104,6 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
             PolymorpheusContent<TuiContext<number>>,
         ]
     >(['', '']);
-
-    // TODO(v5): use signal inputs
-    @Input('quantum')
-    public set quantumSetter(x: number) {
-        this.quantum.set(x);
-    }
 
     public override writeValue(value: [number, number]): void {
         super.writeValue(value);
@@ -148,14 +124,14 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         event: Event | KeyboardEvent,
         coefficients: readonly [number, number],
     ): void {
-        if (!this.interactive() || !this.range) {
+        if (!this.interactive() || !this.range()) {
             return;
         }
 
         event.preventDefault();
 
         const [start, end] = this.value();
-        const newValue = this.valueGuard(this.range.takeStep(coefficients));
+        const newValue = this.valueGuard(this.range()!.takeStep(coefficients));
 
         if (newValue[0] !== start || newValue[1] !== end) {
             this.onExternalValueUpdate(newValue);
@@ -191,11 +167,11 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     }
 
     private get textfieldStart(): HTMLInputElement | null {
-        return this.inputNumberRefs.first?.nativeElement || null;
+        return this.inputs()[0]?.nativeElement || null;
     }
 
     private get textfieldEnd(): HTMLInputElement | null {
-        return this.inputNumberRefs.last?.nativeElement || null;
+        return this.inputs()[this.inputs().length - 1]?.nativeElement || null;
     }
 
     private get activeTextfield(): HTMLInputElement | null {

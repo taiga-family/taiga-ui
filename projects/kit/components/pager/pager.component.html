@@ -2,19 +2,19 @@
     class="t-items"
     [style.transform]="`translateX(calc(var(--tui-inline) * ${left()}px))`"
 >
-    @for (_ of '-'.repeat(count); track $index) {
+    @for (_ of '-'.repeat(count()); track $index) {
         <div
             #item
             class="t-item"
             [attr.data-index]="$index"
-            [class._active]="$index === index"
-            [class._last]="$index === count - 1"
-            [class._post-active]="$index === index + 1"
-            [class._pre-active]="$index === index - 1"
-            [class._pre-last]="$index === count - 2"
-            [class._visible]="$index >= start && $index <= end"
+            [class._active]="$index === index()"
+            [class._last]="$index === count() - 1"
+            [class._post-active]="$index === index() + 1"
+            [class._pre-active]="$index === index() - 1"
+            [class._pre-last]="$index === count() - 2"
+            [class._visible]="$index >= start() && $index <= end()"
         >
-            <ng-container *ngTemplateOutlet="valueContent || null; context: {$implicit: $index}" />
+            <ng-container *ngTemplateOutlet="valueContent() || null; context: {$implicit: $index}" />
         </div>
     }
 </div>

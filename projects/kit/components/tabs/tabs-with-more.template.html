@@ -1,13 +1,11 @@
-@if (items.changes | async) {}
 <tui-tabs
     class="t-tabs"
-    [activeItemIndex]="activeItemIndex"
-    [size]="size"
-    [underline]="underline"
-    (activeItemIndexChange)="onActiveItemIndexChange($event)"
+    [size]="size()"
+    [underline]="underline()"
+    [(activeItemIndex)]="activeItemIndex"
     (keydown.arrowRight)="onArrowRight($event)"
 >
-    @for (item of items; track item) {
+    @for (item of items(); track item) {
         @if ($index <= lastVisibleIndex) {
             <ng-container [ngTemplateOutlet]="item" />
         } @else {
@@ -21,7 +19,7 @@
     }
 </tui-tabs>
 
-@if (moreContent) {
+@if (moreContent()) {
     <button
         tuiTab
         type="button"
@@ -30,11 +28,11 @@
         [class.t-no-margin]="isMoreAlone"
         [class.t-overflown]="!isMoreVisible"
         [tabIndex]="isMoreFocusable ? 0 : -1"
-        [tuiDropdown]="dropdownContent || dropdown"
+        [tuiDropdown]="dropdownContent() || dropdown"
         [(tuiDropdownOpen)]="open"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
     >
-        <ng-container *polymorpheusOutlet="moreContent as text">
+        <ng-container *polymorpheusOutlet="moreContent() as text">
             {{ text }}
         </ng-container>
     </button>
@@ -48,7 +46,7 @@
         [class.t-no-margin]="isMoreAlone"
         [class.t-overflown]="!isMoreVisible"
         [tabIndex]="isMoreFocusable ? 0 : -1"
-        [tuiDropdown]="dropdownContent || dropdown"
+        [tuiDropdown]="dropdownContent() || dropdown"
         [(tuiDropdownOpen)]="open"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
     >
@@ -59,11 +57,11 @@
     <div
         #element
         class="t-dropdown"
-        [attr.data-size]="size"
+        [attr.data-size]="size()"
         (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
         (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
     >
-        @for (item of items; track item) {
+        @for (item of items(); track item) {
             <div
                 class="t-dropdown-item"
                 (tui-tab-activate)="onClick($index)"
