@@ -654,13 +654,12 @@ export class App {}
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiBreakpointService,
+    TUI_BREAKPOINT,
     TuiButton,
     TuiDataList,
     TuiDropdown,
@@ -669,7 +668,6 @@ import {
     TuiPopup,
 } from '@taiga-ui/core';
 import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 @Component({
     imports: [
@@ -689,13 +687,12 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
 
-    protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
-    );
+    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 
     protected get value(): string[] {
         return this.control.value || [];
@@ -733,13 +730,11 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Component, computed, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, TuiButton, TuiPopup} from '@taiga-ui/core';
+import {TUI_BREAKPOINT, TuiButton, TuiPopup} from '@taiga-ui/core';
 import {TuiActionBar} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 @Component({
     imports: [TuiActionBar, TuiButton, TuiPopup],
@@ -748,11 +743,10 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected open = signal(false);
 
-    protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
-    );
+    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 }
 ```
 
@@ -768,13 +762,11 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, TuiButton, TuiPopup} from '@taiga-ui/core';
+import {TuiButton, TuiPopup} from '@taiga-ui/core';
 import {TuiActionBar} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 @Component({
     imports: [TuiActionBar, TuiButton, TuiPopup],
@@ -785,10 +777,6 @@ import {map} from 'rxjs';
 })
 export default class Example {
     protected open = signal(false);
-
-    protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
-    );
 }
 ```
 
@@ -3737,7 +3725,7 @@ export default class Example {}
 
 **Template:**
 ```html
-@if (size$ | async; as size) { <tui-block-status>
+@if (size(); as size) { <tui-block-status>
 <img alt="survived" src="./assets/images/going-up.svg" tuiSlot="top" />
 <h4>Something has been achieved</h4>
 <span class="text"> You can do something with it, or you can not do it. And the description text can be quite long. </span>
@@ -3747,25 +3735,23 @@ export default class Example {}
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, TuiButton, type TuiSizeL} from '@taiga-ui/core';
+import {TUI_BREAKPOINT, TuiButton, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
-import {map, type Observable} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiBlockStatus, TuiButton],
+    imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly breakpointService = inject(TuiBreakpointService);
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected size$: Observable<TuiSizeL> = this.breakpointService.pipe(
-        map((key) => (key === 'mobile' ? 'm' : 'l')),
+    protected readonly size = computed<TuiSizeL>(() =>
+        this.breakpoint() === 'mobile' ? 'm' : 'l',
     );
 }
 ```
@@ -3774,7 +3760,7 @@ export default class Example {
 
 **Template:**
 ```html
-@if (size$ | async; as size) { <div class="container">
+@if (size(); as size) { <div class="container">
 <tui-block-status class="card" [card]="true" >
 <img alt="hidden content" src="./assets/images/camping.svg" tuiSlot="top" class="image" /> We hide the unwanted block <button appearance="secondary" tuiButton type="button" [size]="size" > Return </button>
 </tui-block-status>
@@ -3785,26 +3771,24 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, TuiButton, type TuiSizeL} from '@taiga-ui/core';
+import {TUI_BREAKPOINT, TuiButton, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
-import {map, type Observable} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiBlockStatus, TuiButton],
+    imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly breakpointService = inject(TuiBreakpointService);
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected size$: Observable<TuiSizeL> = this.breakpointService.pipe(
-        map((key) => (key === 'mobile' ? 'm' : 'l')),
+    protected size = computed<TuiSizeL>(() =>
+        this.breakpoint() === 'mobile' ? 'm' : 'l',
     );
 }
 ```
@@ -15963,7 +15947,7 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
@@ -15971,7 +15955,6 @@ import {
     type TuiCard,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {of} from 'rxjs';
 
 @Component({
     imports: [ReactiveFormsModule, TuiInputCardGroup],
@@ -15980,7 +15963,7 @@ import {of} from 'rxjs';
     providers: [
         {
             provide: TUI_INPUT_CARD_GROUP_TEXTS,
-            useValue: of({
+            useValue: signal({
                 cardNumberText: 'Number',
                 expiryText: 'MM/YY',
                 cvcText: 'Code',
@@ -32901,72 +32884,6 @@ export default class PageComponent {
 ```
 
 ---
-# services/BreakpointService
-- **Package**: `CORE`
-- **Type**: components/services
-Service to observe changes in the current breakpoint.
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-<p>Change the viewport of this window to see changes in breakpoint</p>
-<table class="tui-space_top-4">
-<thead>
-<tr>
-<th>CSS</th>
-<th>Service</th>
-</tr>
-</thead>
-<tbody>
-<td>
-<div class="mobile">Mobile</div>
-<div class="desktop-small">Desktop small</div>
-<div class="desktop-large">Desktop large</div>
-</td> @if (breakpoint$ | async; as breakpoint) { <td> @if (breakpoint === 'mobile') { <div>Mobile</div> } @if (breakpoint === 'desktopSmall') { <div>Desktop small</div> } @if (breakpoint === 'desktopLarge') { <div>Desktop large</div> } </td> } </tbody>
-</table>
-```
-**TypeScript:**
-```ts
-import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService} from '@taiga-ui/core';
-
-@Component({
-    imports: [AsyncPipe],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly breakpoint$ = inject(TuiBreakpointService);
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected injectService = import('./examples/inject-service.md');
-}
-```
-
----
 # services/KeyboardService
 - **Package**: `ADDON-MOBILE`
 - **Type**: components/services
@@ -41250,6 +41167,46 @@ export default class Page {
 - **Type**: components/utils
 
 ### Usage Examples
+
+#### TUI_BREAKPOINT
+
+**Template:**
+```html
+<p> Token to observe changes in the current breakpoint. Change the viewport of this window to see changes in breakpoint </p>
+<table class="tui-space_top-4">
+<thead>
+<tr>
+<th>CSS</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<td>
+<div class="mobile">Mobile</div>
+<div class="desktop-small">Desktop small</div>
+<div class="desktop-large">Desktop large</div>
+</td>
+<td> @if (breakpoint() === 'mobile') { <div>Mobile</div> } @if (breakpoint() === 'desktopSmall') { <div>Desktop small</div> } @if (breakpoint() === 'desktopLarge') { <div>Desktop large</div> } </td>
+</tbody>
+</table>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_BREAKPOINT} from '@taiga-ui/core';
+
+@Component({
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
+}
+```
 
 #### TUI_IS_ANDROID
 
