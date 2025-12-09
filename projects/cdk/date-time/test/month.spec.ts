@@ -118,6 +118,26 @@ describe('TuiMonth', () => {
             });
         });
 
+        describe('extractMonthFromRawDateString returns', () => {
+            it('October for dd/mm/yyyy', () => {
+                expect(
+                    TuiMonth.extractMonthFromRawDateString('12.10.2024', 'dd/mm/yyyy'),
+                ).toBe(9);
+            });
+
+            it('March for mm/dd/yyyy', () => {
+                expect(
+                    TuiMonth.extractMonthFromRawDateString('03/25/2024', 'mm/dd/yyyy'),
+                ).toBe(2);
+            });
+
+            it('December for yyyy/mm/dd', () => {
+                expect(
+                    TuiMonth.extractMonthFromRawDateString('2024/12/25', 'yyyy/mm/dd'),
+                ).toBe(11);
+            });
+        });
+
         describe('currentLocal', () => {
             it('UTC month is the same as local', () => {
                 tuiMockDateInside(Date.UTC(2000, 0, 31, 10), () => {

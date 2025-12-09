@@ -4,7 +4,7 @@ import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
 import {TuiMonthNumber} from './month-number';
-import {type TuiMonthLike} from './types';
+import {type TuiDateMode, type TuiMonthLike} from './types';
 import {TuiYear} from './year';
 
 /**
@@ -80,6 +80,21 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     public static normalizeMonthPart(month: number): number {
         return tuiNormalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
+    }
+
+    public static extractMonthFromRawDateString(
+        date: string,
+        dateMode: TuiDateMode,
+    ): number {
+        switch (dateMode) {
+            case 'mm/dd/yyyy':
+                return parseInt(date.slice(0, 2), 10) - 1;
+            case 'yyyy/mm/dd':
+                return parseInt(date.slice(5, 7), 10) - 1;
+            case 'dd/mm/yyyy':
+            default:
+                return parseInt(date.slice(3, 5), 10) - 1;
+        }
     }
 
     /**

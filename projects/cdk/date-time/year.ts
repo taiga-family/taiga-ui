@@ -2,7 +2,7 @@
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {MAX_YEAR, MIN_YEAR} from './date-time';
-import {type TuiYearLike} from './types';
+import {type TuiDateMode, type TuiYearLike} from './types';
 
 /**
  * Immutable year object
@@ -47,6 +47,20 @@ export class TuiYear implements TuiYearLike {
      */
     public static normalizeYearPart(year: number): number {
         return tuiNormalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
+    }
+
+    public static extractYearFromRawDateString(
+        date: string,
+        dateMode: TuiDateMode,
+    ): number {
+        switch (dateMode) {
+            case 'yyyy/mm/dd':
+                return parseInt(date.slice(0, 4), 10);
+            case 'dd/mm/yyyy':
+            case 'mm/dd/yyyy':
+            default:
+                return parseInt(date.slice(6, 10), 10);
+        }
     }
 
     public get formattedYear(): string {

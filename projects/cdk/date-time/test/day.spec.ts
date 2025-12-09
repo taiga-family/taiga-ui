@@ -55,6 +55,26 @@ describe('TuiDay', () => {
             });
         });
 
+        describe('extractDayFromRawDateString returns', () => {
+            it('12 for dd/mm/yyyy', () => {
+                expect(
+                    TuiDay.extractDayFromRawDateString('12.10.2024', 'dd/mm/yyyy'),
+                ).toBe(12);
+            });
+
+            it('25 for mm/dd/yyyy', () => {
+                expect(
+                    TuiDay.extractDayFromRawDateString('03/25/2024', 'mm/dd/yyyy'),
+                ).toBe(25);
+            });
+
+            it('31 for yyyy/mm/dd', () => {
+                expect(
+                    TuiDay.extractDayFromRawDateString('2024/12/31', 'yyyy/mm/dd'),
+                ).toBe(31);
+            });
+        });
+
         describe('currentLocal returns date', () => {
             it('same as UTC if UTC is the local time zone', () => {
                 tuiMockDateInside(Date.UTC(2000, 0, 15, 10), () => {

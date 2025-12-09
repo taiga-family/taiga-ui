@@ -118,6 +118,26 @@ describe('TuiYear', () => {
             });
         });
 
+        describe('extractYearFromRawDateString returns', () => {
+            it('2024 for dd/mm/yyyy', () => {
+                expect(
+                    TuiYear.extractYearFromRawDateString('12.10.2024', 'dd/mm/yyyy'),
+                ).toBe(2024);
+            });
+
+            it('1999 for mm/dd/yyyy', () => {
+                expect(
+                    TuiYear.extractYearFromRawDateString('03/25/1999', 'mm/dd/yyyy'),
+                ).toBe(1999);
+            });
+
+            it('2064 for yyyy/mm/dd', () => {
+                expect(
+                    TuiYear.extractYearFromRawDateString('2064/12/25', 'yyyy/mm/dd'),
+                ).toBe(2064);
+            });
+        });
+
         describe('getAbsoluteLeapYears returns', () => {
             it('0 if passed value was 0', () => {
                 expect(TuiYear.getAbsoluteLeapYears(0)).toBe(0);

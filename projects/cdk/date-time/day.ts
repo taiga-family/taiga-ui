@@ -123,32 +123,13 @@ export class TuiDay extends TuiMonth {
                 '[parseRawDateString]: wrong date string length',
             );
 
-        switch (dateMode) {
-            case 'mm/dd/yyyy':
-                return {
-                    day: parseInt(date.slice(3, 5), 10),
-                    month: parseInt(date.slice(0, 2), 10) - 1,
-                    year: parseInt(date.slice(6, 10), 10),
-                };
+        const day = TuiDay.extractDayFromRawDateString(date, dateMode);
+        const month = TuiMonth.extractMonthFromRawDateString(date, dateMode);
+        const year = TuiYear.extractYearFromRawDateString(date, dateMode);
 
-            case 'yyyy/mm/dd':
-                return {
-                    day: parseInt(date.slice(8, 10), 10),
-                    month: parseInt(date.slice(5, 7), 10) - 1,
-                    year: parseInt(date.slice(0, 4), 10),
-                };
-
-            case 'dd/mm/yyyy':
-            default:
-                return {
-                    day: parseInt(date.slice(0, 2), 10),
-                    month: parseInt(date.slice(3, 5), 10) - 1,
-                    year: parseInt(date.slice(6, 10), 10),
-                };
-        }
+        return {day, month, year};
     }
 
-    // TODO: Move month and year related code corresponding classes
     /**
      * Parsing a string with date with normalization
      *
@@ -198,6 +179,21 @@ export class TuiDay extends TuiMonth {
         );
 
         return tuiNormalizeToIntNumber(day, 1, monthDaysCount);
+    }
+
+    public static extractDayFromRawDateString(
+        date: string,
+        dateMode: TuiDateMode,
+    ): number {
+        switch (dateMode) {
+            case 'mm/dd/yyyy':
+                return parseInt(date.slice(3, 5), 10);
+            case 'yyyy/mm/dd':
+                return parseInt(date.slice(8, 10), 10);
+            case 'dd/mm/yyyy':
+            default:
+                return parseInt(date.slice(0, 2), 10);
+        }
     }
 
     public get formattedDayPart(): string {
