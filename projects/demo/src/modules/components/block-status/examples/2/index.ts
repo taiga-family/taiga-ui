@@ -1,7 +1,7 @@
 import {Component, computed, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_BREAKPOINT, TuiButton, type TuiSizeL} from '@taiga-ui/core';
+import {TUI_MOBILE_BREAKPOINT, TuiButton, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
@@ -11,9 +11,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected readonly breakpoint = inject(TUI_BREAKPOINT);
+    protected readonly isMobile = inject(TUI_MOBILE_BREAKPOINT);
 
-    protected readonly size = computed<TuiSizeL>(() =>
-        this.breakpoint() === 'mobile' ? 'm' : 'l',
-    );
+    protected readonly size = computed<TuiSizeL>(() => (this.isMobile() ? 'm' : 'l'));
 }

@@ -1,4 +1,4 @@
-import {inject, InjectionToken, type Signal} from '@angular/core';
+import {computed, inject, InjectionToken, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk/tokens';
@@ -35,6 +35,17 @@ export const TUI_BREAKPOINT = new InjectionToken<Signal<TuiBreakpointMediaKey>>(
             );
 
             return toSignal(stream$, {initialValue: 'desktopLarge'});
+        },
+    },
+);
+
+export const TUI_MOBILE_BREAKPOINT = new InjectionToken<Signal<boolean>>(
+    ngDevMode ? 'TUI_MOBILE_BREAKPOINT' : '',
+    {
+        factory: () => {
+            const breakpoint = inject(TUI_BREAKPOINT);
+
+            return computed(() => breakpoint() === 'mobile');
         },
     },
 );

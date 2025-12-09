@@ -1,9 +1,9 @@
-import {Component, computed, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TUI_BREAKPOINT,
+    TUI_MOBILE_BREAKPOINT,
     TuiButton,
     TuiDataList,
     TuiDropdown,
@@ -31,12 +31,11 @@ import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
 
-    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
+    protected readonly isMobile = inject(TUI_MOBILE_BREAKPOINT);
 
     protected get value(): string[] {
         return this.control.value || [];
