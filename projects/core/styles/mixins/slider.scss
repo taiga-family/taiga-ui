@@ -17,7 +17,7 @@ $track-inset: (
     --t-offset: calc($thumb / 2);
 
     display: flex;
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-body-s);
     margin-inline-start: var(--t-offset);
     margin-inline-end: var(--t-offset);
 

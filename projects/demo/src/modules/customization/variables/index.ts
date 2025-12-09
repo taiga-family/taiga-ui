@@ -20,8 +20,8 @@ export default class Page {
     };
 
     protected readonly vars: Record<string, string> = {
-        '--tui-font-heading': 'font for headings',
-        '--tui-font-text': 'font for text',
+        '--tui-font-family-display': 'font for headings',
+        '--tui-font-family-text': 'font for text',
         '--tui-radius-xs': 'border radius for smallest items (i.e. small checkbox)',
         '--tui-radius-s': 'border radius for small elements (i.e. tags)',
         '--tui-radius-m': 'default border radius',

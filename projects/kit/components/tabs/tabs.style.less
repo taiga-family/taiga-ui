@@ -77,14 +77,14 @@ tui-tabs {
 
     position: relative;
     display: flex;
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     color: var(--tui-text-secondary);
     box-shadow: inset 0 -1px var(--tui-border-normal);
     overflow: auto;
     isolation: isolate;
 
     &[data-size='m'] {
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
         /* stylelint-disable-next-line */
         --tui-tab-margin: 16px;
     }
@@ -154,7 +154,7 @@ tui-tabs[data-vertical],
 
     &[data-size='m'] [tuiTab] {
         min-block-size: 2.25rem;
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
     }
 
     &[data-vertical='right'] {
