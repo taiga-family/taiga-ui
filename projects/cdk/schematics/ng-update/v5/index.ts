@@ -20,11 +20,13 @@ import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
+import {tuiLetMigration} from './steps/migrate-tui-let';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
+        tuiLetMigration(tree, options);
         migrateTokens(tree, options);
         updateTsConfig(tree, options);
         replaceFunctions(REPLACE_FUNCTIONS);
