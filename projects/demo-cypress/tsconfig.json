@@ -3,7 +3,24 @@
     "compilerOptions": {
         "moduleResolution": "bundler",
         "typeRoots": ["../../node_modules/@types", "../../node_modules/cypress/types"],
-        "types": ["cypress", "node"]
+        "types": ["cypress", "node"],
+        "paths": {
+            "@taiga-ui/addon-commerce": ["projects/addon-commerce"],
+            "@taiga-ui/addon-commerce/*": ["projects/addon-commerce/*"],
+            "@taiga-ui/addon-mobile": ["projects/addon-mobile"],
+            "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
+            "@taiga-ui/cdk": ["projects/cdk"],
+            "@taiga-ui/cdk/*": ["projects/cdk/*"],
+            "@taiga-ui/core": ["projects/core"],
+            "@taiga-ui/core/*": ["projects/core/*"],
+            "@taiga-ui/i18n": ["projects/i18n"],
+            "@taiga-ui/i18n/*": ["projects/i18n/*"],
+            "@taiga-ui/icons": ["projects/icons"],
+            "@taiga-ui/kit": ["projects/kit"],
+            "@taiga-ui/kit/*": ["projects/kit/*"],
+            "@taiga-ui/layout": ["projects/layout"],
+            "@taiga-ui/layout/*": ["projects/layout/*"]
+        }
     },
     "include": ["**/*.ts", "**/*.d.ts"],
     "exclude": []
