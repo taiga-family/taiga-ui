@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
@@ -18,7 +18,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
         <ng-content />
         <span
             *polymorpheusOutlet="
-                template || content as text;
+                template() || content as text;
                 context: {$implicit: fileDragged}
             "
         >
@@ -38,17 +38,15 @@ import {TuiInputFilesDirective} from './input-files.directive';
     },
 })
 export class TuiInputFiles {
-    @ContentChild(TemplateRef)
-    protected readonly template?: TemplateRef<TuiContext<boolean>>;
-
     protected files?: FileList | null;
     protected readonly content = new PolymorpheusComponent(TuiInputFilesContent);
+    protected readonly template =
+        contentChild<TemplateRef<TuiContext<boolean>>>(TemplateRef);
 
-    @ContentChild(TuiInputFilesDirective)
-    public readonly input?: TuiInputFilesDirective;
+    public readonly input = contentChild(TuiInputFilesDirective);
 
     protected get fileDragged(): boolean {
-        return !!this.files && !this.input?.disabled();
+        return !!this.files && !this.input()?.disabled();
     }
 
     protected onFilesSelected(input: HTMLInputElement): void {
@@ -56,15 +54,15 @@ export class TuiInputFiles {
             return;
         }
 
-        this.input?.process(input.files);
+        this.input()?.process(input.files);
         input.value = '';
     }
 
     protected onDropped({dataTransfer}: DragEvent): void {
         this.files = null;
 
-        if (dataTransfer?.files && !this.input?.disabled()) {
-            this.input?.process(dataTransfer.files);
+        if (dataTransfer?.files && !this.input()?.disabled()) {
+            this.input()?.process(dataTransfer.files);
         }
     }
 

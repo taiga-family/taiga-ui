@@ -54,11 +54,8 @@ export class TuiFade {
 
     // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     public readonly lineHeight = input<string | null>(null, {alias: 'tuiFadeHeight'});
-
     public readonly size = input('1.5em', {alias: 'tuiFadeSize'});
-
     public readonly offset = input('0em', {alias: 'tuiFadeOffset'});
-
     public readonly orientation = input<TuiOrientation | ''>('horizontal', {
         alias: 'tuiFade',
     });

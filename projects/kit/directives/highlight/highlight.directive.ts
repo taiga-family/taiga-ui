@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, effect, inject, input, Renderer2} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Directive, inject, input, type OnChanges} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
@@ -16,32 +16,32 @@ export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] = tuiCreateOpt
     providers: [ResizeObserverService],
     host: {
         '[style.position]': '"relative"',
-        '[style.zIndex]': '0',
+        '[style.z-index]': '0',
     },
 })
-export class TuiHighlight {
+export class TuiHighlight implements OnChanges {
     private readonly el = tuiInjectElement();
-    private readonly renderer = inject(Renderer2);
+    private readonly options = inject(TUI_HIGHLIGHT_OPTIONS);
     private readonly doc = inject(DOCUMENT);
+    private readonly highlight: HTMLElement = this.setUpHighlight();
     private readonly treeWalker = this.doc.createTreeWalker(
         this.el,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
     );
 
-    private readonly resized = toSignal(inject(ResizeObserverService, {self: true}));
-
     public readonly tuiHighlight = input('');
+    public readonly tuiHighlightColor = input(this.options.highlightColor);
 
-    public readonly tuiHighlightColor = input(
-        inject(TUI_HIGHLIGHT_OPTIONS).highlightColor,
-    );
+    constructor() {
+        inject(ResizeObserverService, {self: true})
+            .pipe(takeUntilDestroyed())
+            .subscribe(() => this.updateStyles());
+    }
 
-    protected readonly highlight: HTMLElement = this.setUpHighlight();
-
-    protected readonly setStyles = effect((_, __ = this.resized()) =>
-        this.updateStyles(),
-    );
+    public ngOnChanges(): void {
+        this.updateStyles();
+    }
 
     protected get match(): boolean {
         return this.indexOf(this.el.textContent) !== -1;
@@ -90,13 +90,13 @@ export class TuiHighlight {
     }
 
     private setUpHighlight(): HTMLElement {
-        const highlight = this.renderer.createElement('div');
+        const highlight = this.doc.createElement('div');
         const {style} = highlight;
 
-        style.background = this.tuiHighlightColor();
+        style.background = this.options.highlightColor;
         style.zIndex = '-1';
         style.position = 'absolute';
-        this.renderer.appendChild(this.el, highlight);
+        this.el.appendChild(highlight);
 
         return highlight;
     }

@@ -21,22 +21,18 @@ import {TuiRoot} from '@taiga-ui/core/components/root';
 })
 export class TuiFullscreen {
     private readonly root = viewChild(TuiRoot, {read: ElementRef});
-
     private readonly doc = inject(DOCUMENT);
 
+    public readonly tuiFullscreen = model<boolean>(false);
     public readonly options = input<FullscreenOptions>(
         {navigationUI: 'auto'},
         {alias: 'tuiFullscreenOptions'},
     );
 
-    public readonly tuiFullscreen = model<boolean>(false);
-
     protected readonly handleState = effect(async () => {
-        const open = this.tuiFullscreen();
-
-        if (open) {
+        if (this.tuiFullscreen()) {
             await this.root()?.nativeElement.requestFullscreen(this.options());
-        } else {
+        } else if (this.doc.fullscreenElement === this.root()?.nativeElement) {
             try {
                 await this.doc.exitFullscreen();
             } catch (error: unknown) {

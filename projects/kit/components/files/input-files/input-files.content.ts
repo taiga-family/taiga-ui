@@ -1,76 +1,43 @@
-import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
-import {combineLatest, map, type Observable, of} from 'rxjs';
 
 import {TuiInputFiles} from './input-files.component';
 
 @Component({
-    imports: [AsyncPipe, TuiLink],
+    imports: [TuiLink],
     template: `
-        <a tuiLink>{{ link$ | async }}</a>
-        {{ label$ | async }}
+        <a tuiLink>{{ context.$implicit ? '' : link() }}</a>
+        @if (breakpoint() !== 'mobile') {
+            {{ context.$implicit ? dragged() : label() }}
+        }
     `,
-    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputFilesContent {
-    private readonly breakpoint$ = toObservable(inject(TUI_BREAKPOINT));
-    private readonly text$ = toObservable(inject(TUI_INPUT_FILE_TEXTS));
-    private readonly context = injectContext<TuiContext<boolean>>();
+    private readonly texts = inject(TUI_INPUT_FILE_TEXTS);
     private readonly component = inject(TuiInputFiles);
 
-    protected get link$(): Observable<string> {
-        return this.computeLink$(
-            this.context.$implicit,
-            !!this.component.input?.input.multiple,
-        );
-    }
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
+    protected readonly context = injectContext<TuiContext<boolean>>();
+    protected readonly link = computed(() =>
+        this.component.input()?.el.multiple
+            ? this.texts().defaultLinkMultiple
+            : this.texts().defaultLinkSingle,
+    );
 
-    protected get label$(): Observable<string> {
-        return this.computeLabel$(
-            this.context.$implicit,
-            !!this.component.input?.input.multiple,
-        );
-    }
+    protected readonly label = computed(() =>
+        this.component.input()?.el.multiple
+            ? this.texts().defaultLabelMultiple
+            : this.texts().defaultLabelSingle,
+    );
 
-    @tuiPure
-    private computeLink$(fileDragged: boolean, multiple: boolean): Observable<string> {
-        return fileDragged
-            ? of('')
-            : this.text$.pipe(
-                  map((t) => (multiple ? t.defaultLinkMultiple : t.defaultLinkSingle)),
-              );
-    }
-
-    @tuiPure
-    private computeLabel$(fileDragged: boolean, multiple: boolean): Observable<string> {
-        return fileDragged
-            ? combineLatest([this.breakpoint$, this.text$]).pipe(
-                  map(([breakpoint, text]) => {
-                      if (breakpoint === 'mobile') {
-                          return '';
-                      }
-
-                      return multiple ? text.dropMultiple : text.drop;
-                  }),
-              )
-            : combineLatest([this.breakpoint$, this.text$]).pipe(
-                  map(([breakpoint, text]) => {
-                      if (breakpoint === 'mobile') {
-                          return '';
-                      }
-
-                      return multiple
-                          ? text.defaultLabelMultiple
-                          : text.defaultLabelSingle;
-                  }),
-              );
-    }
+    protected readonly dragged = computed(() =>
+        this.component.input()?.el.multiple
+            ? this.texts().dropMultiple
+            : this.texts().drop,
+    );
 }

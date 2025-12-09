@@ -1,10 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
 @Component({
@@ -13,10 +13,8 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     template: `
         <ng-content />
         @if (label().length) {
-            @for (item of split(label()); track item) {
-                <span tuiFade>
-                    {{ item }}
-                </span>
+            @for (word of words(); track $index) {
+                <span tuiFade>{{ word }}</span>
             }
         }
     `,
@@ -27,8 +25,5 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
 export class TuiAvatarLabeled {
     public readonly label = input('');
 
-    @tuiPure
-    protected split(label: string): readonly string[] {
-        return label.split(' ');
-    }
+    protected readonly words = computed(() => this.label().split(' '));
 }

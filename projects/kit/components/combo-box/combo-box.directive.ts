@@ -121,7 +121,6 @@ export class TuiComboBoxDirective<T>
     });
 
     public readonly strict = input(true);
-
     public readonly matcher = input<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
 
     public setValue(value: T | null): void {
