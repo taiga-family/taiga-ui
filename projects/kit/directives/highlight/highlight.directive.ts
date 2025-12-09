@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, input, type OnChanges, Renderer2} from '@angular/core';
+import {Directive, inject, input, type OnChanges} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
@@ -21,7 +21,7 @@ export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] = tuiCreateOpt
 })
 export class TuiHighlight implements OnChanges {
     private readonly el = tuiInjectElement();
-    private readonly renderer = inject(Renderer2);
+    private readonly options = inject(TUI_HIGHLIGHT_OPTIONS);
     private readonly doc = inject(DOCUMENT);
     private readonly highlight: HTMLElement = this.setUpHighlight();
     private readonly treeWalker = this.doc.createTreeWalker(
@@ -31,9 +31,7 @@ export class TuiHighlight implements OnChanges {
     );
 
     public readonly tuiHighlight = input('');
-    public readonly tuiHighlightColor = input(
-        inject(TUI_HIGHLIGHT_OPTIONS).highlightColor,
-    );
+    public readonly tuiHighlightColor = input(this.options.highlightColor);
 
     constructor() {
         inject(ResizeObserverService, {self: true})
@@ -92,13 +90,13 @@ export class TuiHighlight implements OnChanges {
     }
 
     private setUpHighlight(): HTMLElement {
-        const highlight = this.renderer.createElement('div');
+        const highlight = this.doc.createElement('div');
         const {style} = highlight;
 
-        style.background = this.tuiHighlightColor();
+        style.background = this.options.highlightColor;
         style.zIndex = '-1';
         style.position = 'absolute';
-        this.renderer.appendChild(this.el, highlight);
+        this.el.appendChild(highlight);
 
         return highlight;
     }
