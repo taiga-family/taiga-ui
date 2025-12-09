@@ -22,7 +22,7 @@ import {
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {type Observer} from 'rxjs';
 
-import {TuiMobileCalendarDropdownNew} from './mobile-calendar-dropdown.directive';
+import {TuiMobileCalendarDropdown} from './mobile-calendar-dropdown.directive';
 
 export interface TuiMobileCalendarData {
     disabledItemHandler?: TuiBooleanHandler<TuiDay>;
@@ -32,7 +32,6 @@ export interface TuiMobileCalendarData {
     single?: boolean;
 }
 
-// TODO: Rename to TuiMobileCalendarDropdownComponent in v5, this component is terrible and needs a complete rewrite
 @Component({
     selector: 'tui-mobile-calendar-dropdown',
     imports: [TuiMobileCalendar],
@@ -41,7 +40,7 @@ export interface TuiMobileCalendarData {
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiAnimated],
 })
-export class TuiMobileCalendarDropdown {
+export class TuiMobileCalendarDropdownComponent {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
@@ -54,12 +53,14 @@ export class TuiMobileCalendarDropdown {
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
     protected readonly control: any = inject(TuiControl, {optional: true});
-    protected readonly directive = inject(TuiMobileCalendarDropdownNew, {optional: true});
-    protected readonly range = !!this.directive?.range || this.is('tui-input-date-range');
+    protected readonly directive = inject(TuiMobileCalendarDropdown, {optional: true});
     protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
+    protected readonly range =
+        !!this.directive?.range() || this.is('tui-input-date-range');
+
     protected readonly single =
-        !!this.directive?.single ||
-        !!this.directive?.dateTime ||
+        !!this.directive?.single() ||
+        !!this.directive?.dateTime() ||
         this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
         this.is('tui-input-date:not([multiple])');
 

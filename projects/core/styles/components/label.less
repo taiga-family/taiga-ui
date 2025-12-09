@@ -27,15 +27,6 @@
         font: var(--tui-font-text-m);
     }
 
-    // TODO: Remove after legacy inputs are dropped
-    &:has(tui-textfield),
-    &:has(tui-primitive-textfield),
-    &:has(tui-textarea) {
-        flex-direction: column !important;
-        inline-size: auto !important;
-        font: var(--tui-font-text-s) !important;
-    }
-
     input[type='checkbox'],
     input[type='radio'] {
         margin-inline-end: 0.5rem;

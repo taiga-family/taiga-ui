@@ -5,10 +5,6 @@ import {type TuiDay, type TuiDayRange, type TuiTime} from '@taiga-ui/cdk/date-ti
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {map, type Observable, of} from 'rxjs';
 
-/**
- * Stream that emits calendar data change
- * @deprecated this should be rewritten in v5
- */
 export const TUI_CALENDAR_DATE_STREAM = new InjectionToken<
     Observable<TuiDay | TuiDayRange | null>
 >(ngDevMode ? 'TUI_CALENDAR_DATE_STREAM' : '');

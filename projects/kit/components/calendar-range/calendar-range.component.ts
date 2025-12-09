@@ -9,7 +9,6 @@ import {
     type OnInit,
     Output,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     TUI_FIRST_DAY,
@@ -19,7 +18,6 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
@@ -32,8 +30,7 @@ import {
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_COMMON_ICONS, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
-import {type Observable} from 'rxjs';
+import {TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 
 import {calculateDisabledItemHandler} from './calculate-disabled-item-handler';
 import {TUI_DAY_CAPS_MAPPER} from './day-caps-mapper';
@@ -100,15 +97,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     @Output()
     public readonly itemChange = new EventEmitter<TuiDayRangePeriod | null>();
-
-    constructor() {
-        inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
-            ?.pipe(tuiWatch(), takeUntilDestroyed())
-            .subscribe((value) => {
-                this.currentValue = value;
-                this.initDefaultViewedMonth();
-            });
-    }
 
     @Input('value')
     public set valueSetter(value: TuiDayRange | null) {
