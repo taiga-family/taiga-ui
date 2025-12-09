@@ -1,5 +1,5 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -38,12 +38,6 @@ export class TuiCopyComponent {
     );
 
     public readonly size = input<TuiSizeL>('m');
-
-    protected readonly icon = computed(() => {
-        return tuiIsString(this.options.icon)
-            ? this.options.icon
-            : this.options.icon(this.size());
-    });
 
     protected get check(): string {
         return tuiIsString(this.notification.icon)

@@ -15,25 +15,18 @@ import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
         MutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
-            useValue: {
-                childList: true,
-                characterData: true,
-                subtree: true,
-            },
+            useValue: {childList: true, characterData: true, subtree: true},
         },
     ],
 })
 export class TuiElasticContainerDirective {
     private readonly el = tuiInjectElement();
 
-    private readonly tuiElasticContainer$ = merge(
-        inject(ResizeObserverService, {self: true}),
-        inject(MutationObserverService, {self: true}),
-    ).pipe(
-        debounceTime(0),
-        map(() => this.el.clientHeight - 1),
-        distinctUntilChanged(),
+    public readonly tuiElasticContainer = outputFromObservable(
+        merge(inject(ResizeObserverService), inject(MutationObserverService)).pipe(
+            debounceTime(0),
+            map(() => this.el.clientHeight - 1),
+            distinctUntilChanged(),
+        ),
     );
-
-    public readonly tuiElasticContainer = outputFromObservable(this.tuiElasticContainer$);
 }

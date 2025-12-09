@@ -14,12 +14,14 @@
             (tuiPan)="onPan($event[0])"
             (tuiSwipe)="onSwipe($event.direction)"
         >
-            @for (item of items(); track item) {
+            @for (item of items(); track $index) {
                 <fieldset
                     class="t-item"
                     [disabled]="isDisabled($index)"
-                    [style]="getStyle(itemsCount())"
-                    (waIntersectionObservee)="$event[0] && onIntersection($event[0], $index)"
+                    [style.flex-basis.%]="100 / itemsCount()"
+                    [style.max-width.%]="100 / itemsCount()"
+                    [style.min-width.%]="100 / itemsCount()"
+                    (waIntersectionObservee)="$event[0] && onIntersection($event[0].intersectionRatio, $index)"
                 >
                     <ng-container [ngTemplateOutlet]="item" />
                 </fieldset>

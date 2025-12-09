@@ -1,15 +1,13 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChildren,
+    contentChildren,
     inject,
     input,
-    type QueryList,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -26,7 +24,6 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
 @Component({
     selector: 'tui-breadcrumbs',
     imports: [
-        AsyncPipe,
         NgTemplateOutlet,
         TuiButton,
         TuiDataList,
@@ -46,16 +43,12 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
     },
 })
 export class TuiBreadcrumbs {
-    @ContentChildren(TuiItem, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
+    protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly more = inject(TUI_MORE_WORD);
 
     public readonly size = input<TuiBreadcrumbsOptions['size']>(this.options.size);
-
     public readonly itemsLimit = input(this.options.itemsLimit);
 
     protected readonly offset = computed(() => (this.itemsLimit() === 2 ? 1 : 0));

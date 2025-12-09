@@ -15,7 +15,6 @@ import {identity} from 'rxjs';
 })
 export class TuiUnmaskHandler extends TuiValueTransformer<string> {
     public readonly tuiUnmaskHandler = input<TuiMapper<[string], string>>(identity);
-
     public readonly maskito = input<MaskitoOptions | null>(null);
 
     public override fromControlValue(controlValue: unknown): string {

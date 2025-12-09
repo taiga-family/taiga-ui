@@ -1,4 +1,4 @@
-@for (item of items(); track item) {
+@for (item of items(); track $index) {
     <label
         appearance=""
         class="t-item"
@@ -22,7 +22,7 @@
         <input
             tuiBlock
             type="checkbox"
-            [disabled]="disabledItemHandler()(item)"
+            [disabled]="handlers.disabledItemHandler()(item)"
             [ngModel]="isCheckboxEnabled(item)"
             [ngModelOptions]="{standalone: true}"
             (ngModelChange)="onCheckbox($event, item)"

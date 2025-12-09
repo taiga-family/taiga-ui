@@ -1,21 +1,17 @@
-import {Directive, model, type OnDestroy} from '@angular/core';
+import {Directive, type OnDestroy, output} from '@angular/core';
 
 @Directive({
-    selector: '[tuiPresentChange]',
+    selector: '[tuiPresent]',
     host: {
         '[style.animation]': '"tuiPresent 1s infinite"',
-        '(animationcancel.self)': 'onAnimation(false)',
-        '(animationstart.self)': 'onAnimation(true)',
+        '(animationcancel.self)': 'tuiPresent.emit(false)',
+        '(animationstart.self)': 'tuiPresent.emit(true)',
     },
 })
 export class TuiPresent implements OnDestroy {
-    public readonly tuiPresent = model(false);
+    public readonly tuiPresent = output<boolean>();
 
     public ngOnDestroy(): void {
-        this.tuiPresent.set(false);
-    }
-
-    protected onAnimation(visibility: boolean): void {
-        this.tuiPresent.set(visibility);
+        this.tuiPresent.emit(false);
     }
 }

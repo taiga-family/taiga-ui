@@ -17,16 +17,13 @@ import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsRectAccessor(TuiPulse)],
     hostDirectives: [TuiAnimated],
-    host: {
-        '[class._playing]': 'playing()',
-    },
+    host: {'[class._playing]': 'playing()'},
 })
 export class TuiPulse extends TuiRectAccessor {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly el = tuiInjectElement();
 
     public readonly playing = input(true);
-
     public readonly type = 'hint';
 
     public getClientRect(): DOMRect {

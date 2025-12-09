@@ -26,12 +26,12 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     hostDirectives: [
         {
             directive: TuiPresent,
-            outputs: ['tuiPresentChange'],
+            outputs: ['tuiPresent'],
         },
     ],
     host: {
         ngSkipHydration: 'true',
-        '(tuiPresentChange)': 'visible$.next($event)',
+        '(tuiPresent)': 'visible$.next($event)',
     },
 })
 export class TuiTableExpand {

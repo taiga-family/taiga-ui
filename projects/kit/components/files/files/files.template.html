@@ -1,24 +1,22 @@
 <ng-content />
-@for (item of items(); track item) {
+@for (item of items(); track $index) {
     @if (!max() || $index < max()) {
         <ng-container [ngTemplateOutlet]="item" />
     }
 }
-@if (hasExtraItems()) {
+@if (max() && items().length > max()) {
     <tui-expand [expanded]="expanded()">
         <div
             tuiGroup
             class="t-extra-items"
         >
-            @for (item of items(); track item) {
+            @for (item of items(); track $index) {
                 @if (max() && $index >= max()) {
                     <ng-container [ngTemplateOutlet]="item" />
                 }
             }
         </div>
     </tui-expand>
-}
-@if (hasExtraItems()) {
     <div
         class="t-bottom"
         [class.t-bottom_collapsed]="!expanded()"
@@ -29,7 +27,7 @@
             tuiButton
             type="button"
             class="t-button"
-            (click)="toggle()"
+            (click)="expanded.set(!expanded())"
         >
             {{ expanded() ? hideText() : showAllText() }}
         </button>

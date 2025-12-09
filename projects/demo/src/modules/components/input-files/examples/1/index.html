@@ -19,6 +19,7 @@
 
     @if (loadedFiles$ | async; as file) {
         <tui-file
+            size="l"
             [file]="file"
             (remove)="removeFile()"
         />
