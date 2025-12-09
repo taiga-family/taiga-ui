@@ -4553,7 +4553,7 @@ export default class Example {
 </div> Alex Inkin </button>
 <button appearance="secondary" size="m" tuiButton type="button" >
 <tui-icon icon="@tui.users" /> Users </button>
-<button appearance="outline" iconEnd="@tui.chevron-down" size="s" tuiButton type="button" > More </button>
+<button appearance="outline" size="s" tuiButton tuiChevron type="button" > More </button>
 <button appearance="secondary-destructive" iconStart="@tui.heart" size="xs" tuiIconButton type="button" [style.border-radius.%]="100" > Favorite </button>
 ```
 **TypeScript:**
@@ -4562,10 +4562,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiChevron} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiIcon],
+    imports: [TuiAvatar, TuiButton, TuiChevron, TuiIcon],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -43353,6 +43353,7 @@ import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
