@@ -5,7 +5,7 @@ import {
     output,
     ViewChild,
 } from '@angular/core';
-import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
+import {TUI_CALENDAR_DATE_STREAM, TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -13,7 +13,6 @@ import {
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
 
