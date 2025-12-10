@@ -8,9 +8,12 @@
     border: none;
     outline: none;
     margin: -1px -1px 0;
+    overflow: hidden;
 
     &:not(tui-textfield[multi], tui-input-card-group) [tuiInput]:not(textarea) {
-        border-block-end: calc(var(--t-row-height) - var(--t-height)) solid transparent;
+        block-size: var(--t-height);
+        border-block-end: 100rem solid transparent;
+        box-sizing: content-box;
     }
 
     &::before,
