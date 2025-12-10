@@ -1,10 +1,4 @@
-import {
-    Directive,
-    inject,
-    input,
-    type OnChanges,
-    type SimpleChanges,
-} from '@angular/core';
+import {Directive, inject, input, type OnChanges} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
@@ -31,9 +25,7 @@ export class TuiDocScrollIntoViewLink implements OnChanges {
 
     public readonly tuiDocScrollIntoViewLink = input<boolean>(false);
 
-    public ngOnChanges({tuiDocScrollIntoViewLink}: SimpleChanges): void {
-        if (!tuiDocScrollIntoViewLink?.firstChange) {
-            this.scroll$.next(this.tuiDocScrollIntoViewLink());
-        }
+    public ngOnChanges(): void {
+        this.scroll$.next(this.tuiDocScrollIntoViewLink());
     }
 }
