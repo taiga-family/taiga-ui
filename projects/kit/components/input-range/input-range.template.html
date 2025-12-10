@@ -55,8 +55,8 @@
             [segments]="segments"
             [step]="step"
             (activeThumbChange)="lastActiveSide = $event"
-            (mousedown.prevent)="focusToTextfield()"
             (ngModelChange)="onExternalValueUpdate($event)"
+            (pointerdown.prevent.stop)="focusToTextfield()"
         />
     }
 </tui-textfield>
