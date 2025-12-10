@@ -161,10 +161,6 @@ tui-textfield {
         pointer-events: none;
         opacity: var(--tui-disabled-opacity);
 
-        [tuiAppearance]:is(._disabled, :disabled, [data-state='disabled']) {
-            opacity: 1;
-        }
-
         tui-icon {
             display: none;
         }
@@ -213,6 +209,7 @@ tui-textfield {
 
         &:disabled {
             animation: tuiPresent 1s infinite;
+            opacity: 1 !important;
         }
 
         &[inputmode='none'] {
