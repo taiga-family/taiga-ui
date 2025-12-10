@@ -216,7 +216,7 @@ describe('InputRange', () => {
             test('clicking on the END side changes only the END value (+ focuses the END textfield)', async ({
                 page,
             }) => {
-                const box = await inputRange.range.right.boundingBox().then((x) => x!);
+                const box = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
 
@@ -231,7 +231,7 @@ describe('InputRange', () => {
             test('clicking on the START side changes only the START value (+ focuses the START textfield)', async ({
                 page,
             }) => {
-                const box = await inputRange.range.left.boundingBox().then((x) => x!);
+                const box = await inputRange.range.start.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.x, box.height / 2 + box.y);
 
@@ -257,7 +257,7 @@ describe('InputRange', () => {
             test('click on the START thumb (with NO value changes) => focuses the START textfield', async ({
                 page,
             }) => {
-                const box = await inputRange.range.left.boundingBox().then((x) => x!);
+                const box = await inputRange.range.start.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.x, box.height / 2 + box.y);
 
@@ -272,7 +272,7 @@ describe('InputRange', () => {
             test('click on the END thumb (with NO value changes) => focuses the END textfield', async ({
                 page,
             }) => {
-                const box = await inputRange.range.right.boundingBox().then((x) => x!);
+                const box = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
 
@@ -307,7 +307,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
 
-                const box = await inputRange.range.right.boundingBox().then((x) => x!);
+                const box = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
 
@@ -330,7 +330,7 @@ describe('InputRange', () => {
                     .soft(example)
                     .toHaveScreenshot('22-input-range-start0-end10.png');
 
-                const box = await inputRange.range.left.boundingBox().then((x) => x!);
+                const box = await inputRange.range.start.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.x, box.height / 2 + box.y);
 
@@ -345,16 +345,16 @@ describe('InputRange', () => {
             test('does not focus anything if no textfield was focused before', async ({
                 page,
             }) => {
-                const leftBox = await inputRange.range.left.boundingBox().then((x) => x!);
+                const leftBox = await inputRange.range.start
+                    .boundingBox()
+                    .then((x) => x!);
 
                 await page.mouse.click(leftBox.x, leftBox.height / 2 + leftBox.y);
 
                 await expect(inputRange.textfieldStart).not.toBeFocused();
                 await expect(inputRange.textfieldEnd).not.toBeFocused();
 
-                const rightBox = await inputRange.range.right
-                    .boundingBox()
-                    .then((x) => x!);
+                const rightBox = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(
                     rightBox.width + rightBox.x,
