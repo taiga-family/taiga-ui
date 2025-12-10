@@ -21472,7 +21472,7 @@ export default class Example {
 }
 ```
 
-#### Using negative values without minus sign
+#### Using negative values with hidden minus sign
 
 **Template:**
 ```html
@@ -21491,6 +21491,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {CHAR_ZERO_WIDTH_SPACE} from '@taiga-ui/cdk';
 import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
@@ -21500,14 +21501,8 @@ import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
     changeDetection,
     providers: [
         tuiInputNumberOptionsProvider({
-            valueTransformer: {
-                fromControlValue(value: number | null): number | null {
-                    return value && Math.abs(value);
-                },
-                toControlValue(value: number | null): number | null {
-                    return value && -1 * Math.abs(value);
-                },
-            },
+            minusSign: CHAR_ZERO_WIDTH_SPACE,
+            prefix: CHAR_ZERO_WIDTH_SPACE, // Make minus non-erasable
         }),
     ],
 })
@@ -33894,7 +33889,7 @@ export class Example {}
 ```html
 <tui-textfield [style.width.rem]="15">
 <label tuiLabel>Current slide</label>
-<input tuiInputNumber [max]="0" [min]="2" [step]="1" [(ngModel)]="current" />
+<input tuiInputNumber [max]="2" [min]="0" [step]="1" [(ngModel)]="current" />
 </tui-textfield>
 <p [tuiSlides]="direction"> @for (_ of '-'.repeat(3); track $index) { @if ($index === current) { <div>Slide #{{ $index }}</div> } } </p>
 ```
