@@ -16989,6 +16989,46 @@ export default class Example {
 }
 ```
 
+#### Calendar customization
+
+Feel free to configure Calendar specific properties: disable adjacent months days, adds circled colored markers to some days, control initial opened month and etc. Explore Calendar documentation page for more customization options. Don't set [min] / [max] and [disabledItemHandler] properties for &lt;tui-calendar /&gt; ! Calendar automatically inherits these properties from &lt;input tuiInputDate /&gt; and &lt;tui-textfield /&gt; .
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Choose a date</label>
+<input tuiInputDate [(ngModel)]="value" />
+<tui-calendar *tuiDropdown [markerHandler]="markerHandler" [month]="value ?? defaultActiveMonth()" [showAdjacent]="false" (monthChange)="defaultActiveMonth.set($event)" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiDay, TuiMonth} from '@taiga-ui/cdk';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
+import {TuiInputDate} from '@taiga-ui/kit';
+
+const CHEAPEST_TICKET: [string] = ['var(--tui-status-positive)'];
+
+@Component({
+    imports: [FormsModule, TuiInputDate],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: TuiDay | null = null;
+
+    protected readonly defaultActiveMonth = signal(new TuiMonth(2000, 0));
+
+    protected readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =>
+        day.day % 5 === 0 ? CHEAPEST_TICKET : [];
+}
+```
+
 #### Custom dropdown
 
 **Template:**
@@ -17323,6 +17363,7 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
@@ -17345,6 +17386,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly control = new FormControl();
+    protected readonly routes = DemoRoute;
 
     protected readonly dates = [
         TUI_FIRST_DAY,
