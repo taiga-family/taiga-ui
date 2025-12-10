@@ -44,19 +44,19 @@
             </ng-container>
         </div>
     }
-</tui-textfield>
 
-@if (interactive()) {
-    <tui-range
-        [focusable]="false"
-        [keySteps]="keySteps"
-        [max]="max"
-        [min]="min"
-        [ngModel]="value()"
-        [segments]="segments"
-        [step]="step"
-        (activeThumbChange)="lastActiveSide = $event"
-        (mousedown.prevent)="focusToTextfield()"
-        (ngModelChange)="onExternalValueUpdate($event)"
-    />
-}
+    @if (interactive()) {
+        <tui-range
+            [focusable]="false"
+            [keySteps]="keySteps"
+            [max]="max"
+            [min]="min"
+            [ngModel]="value()"
+            [segments]="segments"
+            [step]="step"
+            (activeThumbChange)="lastActiveSide = $event"
+            (mousedown.prevent)="focusToTextfield()"
+            (ngModelChange)="onExternalValueUpdate($event)"
+        />
+    }
+</tui-textfield>

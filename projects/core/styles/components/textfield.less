@@ -113,7 +113,8 @@ tui-textfield {
         }
 
         &::after {
-            margin-inline: calc(0.625rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
+            margin-inline-start: calc(0.625rem - var(--t-padding));
+            margin-inline-end: calc(-0.125rem - var(--t-padding));
             font-size: 1rem;
         }
 
@@ -145,7 +146,8 @@ tui-textfield {
         }
 
         &::after {
-            margin-inline: calc(0.25rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
+            margin-inline-start: calc(0.25rem - var(--t-padding));
+            margin-inline-end: calc(-0.125rem - var(--t-padding));
         }
 
         & > .t-content {
@@ -174,7 +176,8 @@ tui-textfield {
         & > .t-template,
         .t-filler,
         [tuiInput] {
-            padding-block: calc(var(--t-height) / 3) 0;
+            padding-block-start: calc(var(--t-height) / 3);
+            padding-block-end: 0;
         }
 
         &:is(:not([data-focus='true']), [data-mode~='readonly']) {
@@ -191,8 +194,10 @@ tui-textfield {
     & > .t-template,
     .t-filler,
     [tuiInput] {
-        .fullsize();
-
+        position: absolute;
+        inset: 0 auto auto 0;
+        inline-size: stretch;
+        block-size: 100%;
         appearance: none;
         background: none;
         font: inherit;
@@ -204,8 +209,8 @@ tui-textfield {
         border-width: 0;
         overscroll-behavior: none;
         // StackBlitz changes "0rem" to "0" breaking calc
-        padding-inline: calc(var(--t-start, ~'0rem') + var(--t-padding))
-            calc(var(--t-end, ~'0rem') + var(--t-side, ~'0rem') + var(--t-padding));
+        padding-inline-start: calc(var(--t-start, ~'0rem') + var(--t-padding));
+        padding-inline-end: calc(var(--t-end, ~'0rem') + var(--t-side, ~'0rem') + var(--t-padding));
 
         &:is(input, textarea):read-only ~ .t-filler {
             display: none;

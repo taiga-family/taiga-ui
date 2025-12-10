@@ -51,8 +51,4 @@ export default class Example {
 
     protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly content = [
-        ({$implicit}: TuiContext<number>): number | string => $implicit || 'InputRange',
-        ({$implicit}: TuiContext<number>): number | string => $implicit || '',
-    ] as const;
 }
