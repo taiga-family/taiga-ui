@@ -1,10 +1,9 @@
 import {I18nPluralPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {CHAR_ZERO_WIDTH_SPACE} from '@taiga-ui/cdk';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
-
-const CHAR_ZERO_WIDTH_SPACE = '\u200B';
 
 @Component({
     imports: [I18nPluralPipe, ReactiveFormsModule, TuiInputNumber, TuiRoot, TuiTextfield],

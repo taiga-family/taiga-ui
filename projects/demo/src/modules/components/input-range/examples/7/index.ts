@@ -3,9 +3,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {CHAR_ZERO_WIDTH_SPACE} from '@taiga-ui/cdk';
 import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
-
-const CHAR_ZERO_WIDTH_SPACE = '\u200B';
 
 @Component({
     imports: [FormsModule, I18nPluralPipe, JsonPipe, TuiInputRange],
@@ -15,7 +14,7 @@ const CHAR_ZERO_WIDTH_SPACE = '\u200B';
     providers: [
         tuiInputNumberOptionsProvider({
             minusSign: CHAR_ZERO_WIDTH_SPACE,
-            prefix: CHAR_ZERO_WIDTH_SPACE,
+            prefix: CHAR_ZERO_WIDTH_SPACE, // Make minus non-erasable
         }),
     ],
 })
