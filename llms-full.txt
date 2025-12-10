@@ -12529,7 +12529,7 @@ export default class Example {
 <th tuiTh>Price</th>
 </tr>
 </thead>
-<tbody tuiTbody> @for (control of controls; track $index) { <tr tuiTr>
+<tbody tuiTbody> @for (control of controls; track $index) { <tr>
 <td tuiTd>{{ data[$index]?.name }}</td>
 <td tuiTd>
 <tui-textfield>
@@ -35789,7 +35789,7 @@ export class Example {}
 <th tuiTh>Balance</th>
 </tr>
 </thead>
-<tbody tuiTbody> @for (item of data; track item) { <tr tuiTr>
+<tbody tuiTbody> @for (item of data; track item) { <tr>
 <td tuiTd>{{ item.name }}</td>
 <td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
 </tr> } </tbody>
@@ -36008,7 +36008,7 @@ export default class Example {
 </tr>
 </thead>
 <tbody tuiTbody>
-<tr tuiTr>
+<tr>
 <td tuiTd>
 <tui-textfield>
 <textarea placeholder="Textarea" tuiTextarea [(ngModel)]="textarea" ></textarea>
@@ -36020,7 +36020,7 @@ export default class Example {
 </tui-textfield>
 </td>
 </tr>
-<tr tuiTr>
+<tr>
 <td tuiTd>
 <tui-textfield multi>
 <input placeholder="InputChip" tuiInputChip [(ngModel)]="chip" />
@@ -36030,7 +36030,7 @@ export default class Example {
 <tui-textfield tuiChevron> @if (isMobile) { <select aria-label="Select" placeholder="Select" tuiSelect [items]="items" [(ngModel)]="select" ></select> } @if (!isMobile) { <input placeholder="Select" tuiSelect [(ngModel)]="select" /> } @if (!isMobile) { <tui-data-list-wrapper *tuiDropdown [items]="items" /> } </tui-textfield>
 </td>
 </tr>
-<tr tuiTr>
+<tr>
 <td tuiTd>
 <tui-textfield multi tuiChevron >
 <select aria-label="MultiSelect" placeholder="MultiSelect" tuiMultiSelect [items]="items" [(ngModel)]="multiselect" ></select>
@@ -36044,7 +36044,7 @@ export default class Example {
 </tui-textfield>
 </td>
 </tr>
-<tr tuiTr>
+<tr>
 <td tuiTd>
 <tui-textfield multi>
 <input placeholder="InputDateMulti" tuiInputDateMulti [(ngModel)]="date" />
@@ -36052,10 +36052,10 @@ export default class Example {
 </tui-textfield>
 </td>
 <td tuiTd [style.z-index]="1" >
-<tui-input-range [content]="content" [max]="1000" [min]="0" [(ngModel)]="range" />
+<tui-input-range [max]="1000" [min]="0" [(ngModel)]="range" />
 </td>
 </tr>
-<tr tuiTr>
+<tr>
 <td colspan="2" tuiTd >
 <tui-input-card-group [(ngModel)]="card"> @if (!card) { InputCardGroup } </tui-input-card-group>
 </td>
@@ -36071,7 +36071,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -36118,10 +36118,6 @@ export default class Example {
 
     protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly content = [
-        ({$implicit}: TuiContext<number>): number | string => $implicit || 'InputRange',
-        ({$implicit}: TuiContext<number>): number | string => $implicit || '',
-    ] as const;
 }
 ```
 
@@ -37080,7 +37076,7 @@ export default class Example {
 <th tuiTh [maxWidth]="200" [minWidth]="100" [resizable]="true" > Balance </th>
 </tr>
 </thead>
-<tbody tuiTbody> @for (item of data; track item) { <tr tuiTr>
+<tbody tuiTbody> @for (item of data; track item) { <tr>
 <td tuiTd [style.vertical-align]="'top'" > {{ item.name }} </td>
 <td tuiTd>
 <tui-textfield multi>
@@ -37147,14 +37143,14 @@ export default class Example {
 <th tuiTh>Date of Birth</th>
 </tr>
 </thead>
-<tbody tuiTbody> @for (item of data; track $index; let i = $index) { <tr tuiTr>
+<tbody tuiTbody> @for (item of data; track $index; let i = $index) { <tr>
 <td tuiTd>
 <button appearance="flat-grayscale" size="xs" tuiIconButton type="button" [attr.title]="item.children.length ? null : 'No children'" [disabled]="!item.children.length" [style.border-radius.%]="100" [tuiChevron]="state[i] ?? false" (click)="state[i] = !state[i]" > Toggle </button>
 </td>
 <td tuiTd>{{ i + 1 }}</td>
 <td tuiTd>{{ item.name }}</td>
 <td tuiTd>{{ item.dob }}</td>
-</tr> @if (item.children.length) { <tui-table-expand [expanded]="state[i] ?? false"> @for (child of item.children; track $index; let j = $index) { <tr tuiTr>
+</tr> @if (item.children.length) { <tui-table-expand [expanded]="state[i] ?? false"> @for (child of item.children; track $index; let j = $index) { <tr>
 <td tuiTd></td>
 <td tuiTd>{{ i + 1 }}.{{ j + 1 }}</td>
 <td tuiTd>{{ child.name }}</td>
