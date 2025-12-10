@@ -54,7 +54,8 @@ import {
 })
 export class TuiInputRange extends TuiControl<readonly [number, number]> {
     private readonly inputs = viewChildren(TuiInputNumberDirective, {read: ElementRef});
-    private readonly range = viewChild(TuiRange);private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    private readonly range = viewChild(TuiRange);
+    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly quantumTransformer = computed(
         () => new TuiQuantumValueTransformerBase(this.quantum()),
