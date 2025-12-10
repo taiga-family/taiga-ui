@@ -181,4 +181,77 @@ describe('InputNumber | Allow using negative values with hidden minus sign', () 
                 });
         });
     });
+
+    describe('Should prevent any attempts to erase hidden minus', () => {
+        it('when control is empty by Backspace', () => {
+            cy.get('[tuiInputNumber]')
+                .focus()
+                .should('have.value', CHAR_ZERO_WIDTH_SPACE)
+                .type('{backspace}')
+                .should('have.value', CHAR_ZERO_WIDTH_SPACE)
+                .then(() => {
+                    expect(component.control.value).to.equal(null);
+                });
+        });
+
+        it('by keyboard arrow navigation + Delete', () => {
+            cy.get('[tuiInputNumber]')
+                .focus()
+                .should('have.value', CHAR_ZERO_WIDTH_SPACE)
+                .should('have.prop', 'selectionStart', 1)
+                .should('have.prop', 'selectionEnd', 1)
+                .type('{moveToStart}')
+                .should('have.prop', 'selectionStart', 1)
+                .should('have.prop', 'selectionEnd', 1)
+                .type('{leftArrow}')
+                .should('have.prop', 'selectionStart', 1)
+                .should('have.prop', 'selectionEnd', 1)
+                .type('{del}')
+                .should('have.value', CHAR_ZERO_WIDTH_SPACE)
+                .should('have.prop', 'selectionStart', 1)
+                .should('have.prop', 'selectionEnd', 1);
+        });
+
+        it('by select all + Delete', () => {
+            cy.get('[tuiInputNumber]')
+                .focus()
+                .type('{selectAll}{del}')
+                .should('have.value', CHAR_ZERO_WIDTH_SPACE)
+                .should('have.prop', 'selectionStart', 1)
+                .should('have.prop', 'selectionEnd', 1);
+        });
+
+        it('by select all + Backspace', () => {
+            cy.get('[tuiInputNumber]')
+                .type('4')
+                .should('have.value', `${CHAR_ZERO_WIDTH_SPACE}4 days ago`)
+                .type('{selectAll}{backspace}')
+                .should('have.value', CHAR_ZERO_WIDTH_SPACE)
+                .should('have.prop', 'selectionStart', 1)
+                .should('have.prop', 'selectionEnd', 1);
+        });
+    });
+
+    describe('Should prevent any attempts to duplicate hidden minus', () => {
+        it('by typing excessive hyphen', () => {
+            cy.get('[tuiInputNumber]')
+                .type('-1')
+                .should('have.value', `${CHAR_ZERO_WIDTH_SPACE}1 day ago`);
+        });
+
+        it('by typing excessive zero-width space', () => {
+            cy.get('[tuiInputNumber]')
+                .type(`${CHAR_ZERO_WIDTH_SPACE}7`)
+                .should('have.value', `${CHAR_ZERO_WIDTH_SPACE}7 days ago`);
+        });
+    });
+
+    it('hidden minus is not visible in the textfield', () => {
+        cy.viewport(200, 200);
+
+        cy.get('[tuiInputNumber]')
+            .type('15')
+            .should('have.value', `${CHAR_ZERO_WIDTH_SPACE}15 days ago`)
+            .compareSnapshot('input-number-with-hidden-minus');
+    });
 });
