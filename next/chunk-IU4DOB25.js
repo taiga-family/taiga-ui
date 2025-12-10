@@ -1,0 +1,61 @@
+import"./chunk-42JZD6NG.js";var e=`<table tuiTable>
+    <thead>
+        <tr>
+            <th
+                tuiTh
+                [maxWidth]="300"
+                [minWidth]="150"
+                [resizable]="true"
+            >
+                Name
+            </th>
+            <th
+                tuiTh
+                [maxWidth]="300"
+                [minWidth]="100"
+                [resizable]="true"
+            >
+                Items
+            </th>
+            <th
+                tuiTh
+                [maxWidth]="200"
+                [minWidth]="100"
+                [resizable]="true"
+            >
+                Balance
+            </th>
+        </tr>
+    </thead>
+    <tbody tuiTbody>
+        @for (item of data; track item) {
+            <tr>
+                <td
+                    tuiTd
+                    [style.vertical-align]="'top'"
+                >
+                    {{ item.name }}
+                </td>
+                <td tuiTd>
+                    <tui-textfield multi>
+                        <input
+                            tuiInputChip
+                            [(ngModel)]="item.items"
+                        />
+                    </tui-textfield>
+                </td>
+                <td tuiTd>
+                    <tui-textfield>
+                        <input
+                            placeholder="Value"
+                            prefix="$"
+                            tuiInputNumber
+                            [(ngModel)]="item.balance"
+                        />
+                    </tui-textfield>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+`;export{e as default};
