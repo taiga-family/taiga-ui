@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="JavaScriptTestRunnerCypress">
+    <node-interpreter value="project" />
+    <cypress-options value="-q --component" />
+    <envs />
+    <scope-kind value="TEST_FILE" />
+    <method v="2" />
+  </configuration>
+</component>
