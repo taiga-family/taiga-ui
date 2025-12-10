@@ -4,6 +4,7 @@ export const CHAR_MINUS = '\u2212';
 export const CHAR_EN_DASH = '\u2013';
 export const CHAR_EM_DASH = '\u2014';
 export const CHAR_HYPHEN = '\u002D';
+export const CHAR_ZERO_WIDTH_SPACE = '\u200B';
 
 // https://github.com/microsoft/playwright/issues/12168
 export const CMD = process.platform === 'darwin' ? 'Meta' : 'Control';
