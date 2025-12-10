@@ -7,7 +7,7 @@ import {
     inject,
     Input,
     type TrackByFunction,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -32,11 +32,9 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
 export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();
 
-    @ViewChild(forwardRef(() => TuiTreeItem))
-    protected readonly item?: TuiTreeItem;
+    protected readonly item = viewChild(forwardRef(() => TuiTreeItem));
 
-    @ViewChild(forwardRef(() => TuiTreeComponent))
-    protected readonly child?: TuiTreeComponent<T>;
+    protected readonly child = viewChild(forwardRef(() => TuiTreeComponent));
 
     protected readonly children$ = this.check$.pipe(
         startWith(null),
@@ -66,8 +64,8 @@ export class TuiTreeComponent<T> implements DoCheck {
 
     protected checkChanges(): void {
         this.check$.next();
-        this.item?.checkChanges();
-        this.child?.checkChanges();
+        this.item()?.checkChanges();
+        this.child()?.checkChanges();
     }
 
     private get handler(): TuiHandler<T, readonly T[]> {

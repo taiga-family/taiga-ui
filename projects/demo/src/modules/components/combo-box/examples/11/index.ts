@@ -25,8 +25,10 @@ import {
     changeDetection,
 })
 export default class Example {
+    private readonly countriesMap = inject(TUI_COUNTRIES);
+
     protected readonly countries: Signal<string[]> = computed(() =>
-        Object.values(inject(TUI_COUNTRIES)),
+        Object.values(this.countriesMap),
     );
 
     protected value: string | null = null;

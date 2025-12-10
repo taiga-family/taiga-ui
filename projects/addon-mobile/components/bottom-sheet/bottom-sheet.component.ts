@@ -3,11 +3,9 @@ import {
     Component,
     type ElementRef,
     Input,
-    type QueryList,
-    ViewChild,
-    ViewChildren,
+    viewChild,
+    viewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiHeaderOptionsProvider} from '@taiga-ui/layout/components/header';
 
@@ -31,11 +29,9 @@ const OPTIONS = {
     },
 })
 export class TuiBottomSheet {
-    @ViewChildren('stops')
-    private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly elements = viewChildren<ElementRef<HTMLElement>>('stops');
 
-    @ViewChild('content')
-    private readonly content?: ElementRef<HTMLElement>;
+    private readonly content = viewChild<ElementRef<HTMLElement>>('content');
 
     private readonly el = tuiInjectElement();
 
@@ -44,8 +40,8 @@ export class TuiBottomSheet {
 
     protected onScroll(): void {
         const {clientHeight, scrollTop, scrollHeight} = this.el;
-        const top = this.elements.get(0)?.nativeElement.clientHeight || 0;
-        const max = this.content?.nativeElement.clientHeight || Infinity;
+        const top = this.elements()[0]?.nativeElement.clientHeight || 0;
+        const max = this.content()?.nativeElement.clientHeight || Infinity;
         const height = Math.min(clientHeight, max);
         const scrolled = Math.min(scrollTop, height - top);
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;

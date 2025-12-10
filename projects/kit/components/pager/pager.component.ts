@@ -7,10 +7,9 @@ import {
     inject,
     Input,
     type OnChanges,
-    type QueryList,
     signal,
     type TemplateRef,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {
@@ -46,8 +45,7 @@ import {delay, map} from 'rxjs';
     },
 })
 export class TuiPager implements OnChanges, AfterViewInit {
-    @ViewChildren('item')
-    protected items?: QueryList<ElementRef<HTMLElement>>;
+    protected readonly items = viewChildren<ElementRef<HTMLElement>>('item');
 
     protected start = 0;
     protected end = 0;
@@ -102,7 +100,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
 
     private get visibleWidth(): number {
         return (
-            (this.items?.map((item) => item.nativeElement.offsetWidth ?? 0) ?? [])
+            (this.items()?.map((item) => item.nativeElement.offsetWidth ?? 0) ?? [])
                 .slice(this.start, this.end + 1)
                 .reduce((sum, item) => sum + item + this.gap, 0) - this.gap
         );
@@ -117,7 +115,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
         let left = this.start * this.gap;
 
         for (let i = 0; i < this.start; i++) {
-            left += this.items?.get(i)?.nativeElement.offsetWidth ?? 0;
+            left += this.items()?.[i]?.nativeElement.offsetWidth ?? 0;
         }
 
         this.left.set(-1 * left);

@@ -6,8 +6,7 @@ import {
     inject,
     Input,
     NgZone,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
@@ -16,7 +15,7 @@ import {
     tuiLineChartDrivers,
     TuiLineChartHint,
 } from '@taiga-ui/addon-charts/components/line-chart';
-import {EMPTY_ARRAY, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -57,8 +56,7 @@ export class TuiLineDaysChart implements AfterViewInit {
         optional: true,
     });
 
-    @ViewChildren(TuiLineChart)
-    public readonly charts: QueryList<TuiLineChart> = EMPTY_QUERY;
+    public readonly charts = viewChildren(TuiLineChart);
 
     @Input()
     public y = 0;
@@ -118,7 +116,7 @@ export class TuiLineDaysChart implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts.toArray()), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts()), this.hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),
@@ -131,7 +129,7 @@ export class TuiLineDaysChart implements AfterViewInit {
 
     public onHovered(day: TuiDay | number): void {
         if (tuiIsNumber(day)) {
-            this.charts.forEach((chart) => chart.onHovered(NaN));
+            this.charts().forEach((chart) => chart.onHovered(NaN));
 
             return;
         }
@@ -139,9 +137,9 @@ export class TuiLineDaysChart implements AfterViewInit {
         const start = this.value[0]?.[0];
         const index = start && day ? TuiMonth.lengthBetween(start, day) : 0;
         const x = start && day ? TuiDay.lengthBetween(start, day) + start.day - 1 : 0;
-        const current = this.charts.get(index);
+        const current = this.charts()?.[index];
 
-        this.charts.forEach((chart) => {
+        this.charts().forEach((chart) => {
             if (chart === current) {
                 current.onHovered(current.value.findIndex((point) => point[0] === x));
             } else {

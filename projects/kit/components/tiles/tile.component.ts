@@ -7,7 +7,7 @@ import {
     Input,
     type OnDestroy,
     signal,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
@@ -27,8 +27,7 @@ import {TuiTilesComponent} from './tiles.component';
     },
 })
 export class TuiTile implements OnDestroy, AfterViewInit {
-    @ViewChild('wrapper')
-    private readonly wrapper?: ElementRef<HTMLElement>;
+    private readonly wrapper = viewChild<ElementRef<HTMLElement>>('wrapper');
 
     private readonly service = inject(TuiTileService);
     private readonly tiles = inject(TuiTilesComponent);
@@ -59,8 +58,10 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        if (this.wrapper) {
-            this.service.init(this.wrapper.nativeElement);
+        const wrapper = this.wrapper();
+
+        if (wrapper) {
+            this.service.init(wrapper.nativeElement);
         }
     }
 

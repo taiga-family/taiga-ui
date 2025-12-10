@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -12,8 +12,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class Page {
-    @ViewChild('textTemplate')
-    protected readonly textTemplate: PolymorpheusContent;
+    protected readonly textTemplate = viewChild<PolymorpheusContent>('textTemplate');
 
     protected readonly routes = DemoRoute;
 
@@ -44,7 +43,7 @@ export default class Page {
                 return 'string';
             }
             case 'template': {
-                return this.textTemplate || '';
+                return this.textTemplate() || '';
             }
             default: {
                 return '';

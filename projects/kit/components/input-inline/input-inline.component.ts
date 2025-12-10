@@ -2,7 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -18,8 +18,7 @@ import {defer} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputInline {
-    @ContentChild(NgControl)
-    private readonly control?: NgControl;
+    private readonly control = contentChild(NgControl);
 
-    protected readonly value$ = defer(() => tuiControlValue(this.control));
+    protected readonly value$ = defer(() => tuiControlValue(this.control()));
 }

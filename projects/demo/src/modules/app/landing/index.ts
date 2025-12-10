@@ -4,8 +4,7 @@ import {
     ElementRef,
     inject,
     type OnInit,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
@@ -14,7 +13,7 @@ import {
     WA_INTERSECTION_ROOT,
     WaIntersectionObserver,
 } from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiAnimated, TuiAutoFocus, tuiProvide} from '@taiga-ui/cdk';
+import {TuiAnimated, TuiAutoFocus, tuiProvide} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
@@ -30,8 +29,7 @@ import {TuiButton} from '@taiga-ui/core';
     },
 })
 export default class Page implements OnInit {
-    @ViewChildren('block', {read: ElementRef})
-    private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly blocks = viewChildren('block', {read: ElementRef});
 
     private readonly router = inject(Router);
     private readonly activatedRoute = inject(ActivatedRoute);
@@ -65,7 +63,7 @@ export default class Page implements OnInit {
     }
 
     protected onClick(): void {
-        this.blocks.forEach(({nativeElement}, index) => {
+        this.blocks().forEach(({nativeElement}, index) => {
             if (index === this.current + 1) {
                 nativeElement.scrollIntoView({behavior: 'smooth'});
             }

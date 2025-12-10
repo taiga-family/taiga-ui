@@ -1,4 +1,4 @@
-import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
@@ -31,8 +31,7 @@ import {
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TemplateRef)
-    private readonly template?: TemplateRef<any>;
+    private readonly template = viewChild(TemplateRef);
 
     private readonly dialogs = inject(TUI_IS_MOBILE)
         ? inject(TuiSheetDialogService)
@@ -44,7 +43,7 @@ export default class Example {
     protected onClick(): void {
         this.step = 1;
         this.direction = 0;
-        this.dialogs.open(this.template, {appearance: 'fullscreen'}).subscribe();
+        this.dialogs.open(this.template(), {appearance: 'fullscreen'}).subscribe();
     }
 
     protected onStep(step: number): void {

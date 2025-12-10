@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
@@ -13,25 +13,30 @@ const SOME_OFFSET_CONST = 20;
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiScrollbar, {read: ElementRef})
-    private readonly scrollBar?: ElementRef<HTMLElement>;
+    private readonly scrollBar = viewChild(TuiScrollbar, {read: ElementRef});
 
     protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
-        return this.scrollBar ? this.scrollBar.nativeElement.scrollTop : 0;
+        const scrollBar = this.scrollBar();
+
+        return scrollBar ? scrollBar.nativeElement.scrollTop : 0;
     }
 
     protected get scrollLeft(): number {
-        return this.scrollBar ? this.scrollBar.nativeElement.scrollLeft : 0;
+        const scrollBar = this.scrollBar();
+
+        return scrollBar ? scrollBar.nativeElement.scrollLeft : 0;
     }
 
     protected onClick(): void {
-        if (!this.scrollBar) {
+        const scrollBar = this.scrollBar();
+
+        if (!scrollBar) {
             return;
         }
 
-        const {nativeElement} = this.scrollBar;
+        const {nativeElement} = scrollBar;
 
         nativeElement.scrollTop =
             nativeElement.scrollTop < SOME_OFFSET_CONST ? nativeElement.scrollHeight : 0;

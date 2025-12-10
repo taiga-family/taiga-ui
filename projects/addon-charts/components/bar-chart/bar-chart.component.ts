@@ -6,11 +6,9 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {TuiBarSet} from '@taiga-ui/addon-charts/components/bar-set';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
@@ -23,7 +21,6 @@ import {
 } from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {type Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-bar-chart',
@@ -37,8 +34,7 @@ export class TuiBarChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     private readonly autoId = tuiGenerateId();
 
-    @ViewChildren(TuiHintHover)
-    protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+    protected readonly drivers = viewChildren(TuiHintHover);
 
     @Input()
     public value: ReadonlyArray<readonly number[]> = [];

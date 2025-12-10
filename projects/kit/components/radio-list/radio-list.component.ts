@@ -3,17 +3,12 @@ import {
     Component,
     computed,
     Input,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule, NgControl, type ValidatorFn, Validators} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {
-    EMPTY_QUERY,
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FALSE_HANDLER,
-} from '@taiga-ui/cdk/constants';
+import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {
     type TuiBooleanHandler,
@@ -41,8 +36,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     },
 })
 export class TuiRadioList<T> extends TuiControl<T> {
-    @ViewChildren(NgControl)
-    private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
+    private readonly controls = viewChildren(NgControl);
 
     private readonly id = tuiGenerateId();
 
@@ -72,7 +66,7 @@ export class TuiRadioList<T> extends TuiControl<T> {
     }
 
     protected onFocusOut(): void {
-        this.controls.forEach((control) => control.control?.markAsTouched());
+        this.controls().forEach((control) => control.control?.markAsTouched());
 
         if (!this.touched()) {
             this.onTouched();

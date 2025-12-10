@@ -6,14 +6,13 @@ import {
     inject,
     Input,
     input,
-    type QueryList,
     signal,
-    ViewChild,
-    ViewChildren,
+    viewChild,
+    viewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
@@ -55,12 +54,11 @@ import {
     },
 })
 export class TuiInputRange extends TuiControl<readonly [number, number]> {
-    @ViewChildren(TuiInputNumberDirective, {read: ElementRef})
-    private readonly inputNumberRefs: QueryList<ElementRef<HTMLInputElement>> =
-        EMPTY_QUERY;
+    private readonly inputNumberRefs = viewChildren(TuiInputNumberDirective, {
+        read: ElementRef,
+    });
 
-    @ViewChild(TuiRange)
-    private readonly range?: TuiRange;
+    private readonly range = viewChild(TuiRange);
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly quantum = signal(0);
@@ -143,14 +141,16 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         event: Event | KeyboardEvent,
         coefficients: readonly [number, number],
     ): void {
-        if (!this.interactive() || !this.range) {
+        const range = this.range();
+
+        if (!this.interactive() || !range) {
             return;
         }
 
         event.preventDefault();
 
         const [start, end] = this.value();
-        const newValue = this.valueGuard(this.range.takeStep(coefficients));
+        const newValue = this.valueGuard(range.takeStep(coefficients));
 
         if (newValue[0] !== start || newValue[1] !== end) {
             this.onExternalValueUpdate(newValue);
@@ -186,11 +186,11 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     }
 
     private get textfieldStart(): HTMLInputElement | null {
-        return this.inputNumberRefs.first?.nativeElement || null;
+        return this.inputNumberRefs()[0]?.nativeElement || null;
     }
 
     private get textfieldEnd(): HTMLInputElement | null {
-        return this.inputNumberRefs.last?.nativeElement || null;
+        return this.inputNumberRefs().slice(-1)[0]?.nativeElement || null;
     }
 
     private get activeTextfield(): HTMLInputElement | null {

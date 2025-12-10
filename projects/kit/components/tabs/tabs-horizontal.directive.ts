@@ -1,18 +1,16 @@
 import {
     type AfterViewChecked,
-    ContentChildren,
+    contentChildren,
     Directive,
     forwardRef,
     inject,
     Input,
-    type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -55,8 +53,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly tabs = inject(TuiTabsDirective);
 
-    @ContentChildren(forwardRef(() => TuiTab))
-    protected readonly children: QueryList<unknown> = EMPTY_QUERY;
+    protected readonly children = contentChildren(forwardRef(() => TuiTab));
 
     protected readonly sub = inject(MutationObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())

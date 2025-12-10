@@ -3,7 +3,7 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {Component, computed, ViewChild} from '@angular/core';
+import {Component, computed, viewChild} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -40,8 +40,7 @@ import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    @ViewChild('filter')
-    protected readonly filter?: TuiTextfieldComponent<string>;
+    protected readonly filter = viewChild<TuiTextfieldComponent<string>>('filter');
 
     protected readonly items: string[] = Array.from({length: 3000}).map(
         (_, i) => `Item #${i}`,
@@ -49,7 +48,7 @@ export default class Example {
 
     protected value: string[] = [];
 
-    protected readonly filtered = computed((value = this.filter?.value()) =>
+    protected readonly filtered = computed((value = this.filter()?.value()) =>
         value
             ? this.items.filter((item) => TUI_DEFAULT_MATCHER(item, value))
             : this.items,

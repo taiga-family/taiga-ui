@@ -1,4 +1,4 @@
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp, TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
@@ -17,24 +17,25 @@ export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
     private readonly alerts = inject(TuiNotificationService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
-    @ViewChild('contentSample')
-    protected readonly contentSample?: TemplateRef<Record<string, unknown>>;
+    protected readonly contentSample =
+        viewChild<TemplateRef<Record<string, unknown>>>('contentSample');
 
     protected index = 0;
     protected length = 2;
     protected titles = ['Transaction cert.jpg', 'My face.jpg'];
 
     protected get previewContent(): PolymorpheusContent {
-        return this.index === 0 && this.contentSample
-            ? this.contentSample
+        const contentSample = this.contentSample();
+
+        return this.index === 0 && contentSample
+            ? contentSample
             : 'https://avatars.githubusercontent.com/u/10106368';
     }
 
     protected show(): void {
-        this.previewService.open(this.preview || '').subscribe({
+        this.previewService.open(this.preview() || '').subscribe({
             complete: () => console.info('complete'),
         });
     }

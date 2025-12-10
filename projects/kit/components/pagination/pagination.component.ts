@@ -6,10 +6,8 @@ import {
     inject,
     input,
     model,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
@@ -33,8 +31,7 @@ const ACTIVE_ITEM_LENGTH = 1;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPagination {
-    @ViewChildren('element', {read: ElementRef})
-    private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly els = viewChildren('element', {read: ElementRef});
 
     private readonly el = tuiInjectElement();
 
@@ -94,7 +91,7 @@ export class TuiPagination {
         }
 
         return (
-            this.els.find((_, index) => index === activeElementIndex)?.nativeElement ??
+            this.els().find((_, index) => index === activeElementIndex)?.nativeElement ??
             null
         );
     });
@@ -152,11 +149,13 @@ export class TuiPagination {
     }
 
     protected onElementKeyDownArrowLeft(element: HTMLElement): void {
-        if (element === this.els.first.nativeElement) {
+        const els = this.els();
+
+        if (element === els?.[0]!.nativeElement) {
             return;
         }
 
-        const previous = this.els.find(
+        const previous = els.find(
             (_, index, array) => array[index + 1]?.nativeElement === element,
         );
 
@@ -164,11 +163,13 @@ export class TuiPagination {
     }
 
     protected onElementKeyDownArrowRight(element: HTMLElement): void {
-        if (element === this.els.last.nativeElement) {
+        const els = this.els();
+
+        if (element === els.slice(-1)[0]!.nativeElement) {
             return;
         }
 
-        const next = this.els.find(
+        const next = els.find(
             (_, index, array) => array[index - 1]?.nativeElement === element,
         );
 

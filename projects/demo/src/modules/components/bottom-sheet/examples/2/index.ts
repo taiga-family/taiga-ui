@@ -1,4 +1,4 @@
-import {Component, type ElementRef, ViewChild} from '@angular/core';
+import {Component, type ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
@@ -13,8 +13,7 @@ import {TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    @ViewChild('buttons')
-    protected readonly button?: ElementRef<HTMLElement>;
+    protected readonly button = viewChild<ElementRef<HTMLElement>>('buttons');
 
     protected readonly stops = ['112px'] as const;
 
@@ -23,6 +22,6 @@ export default class Example {
         const top = Math.min(scrollTop, clientHeight - offset);
         const transform = `translate3d(0, ${-top}px, 0)`;
 
-        this.button?.nativeElement.style.setProperty('transform', transform);
+        this.button()?.nativeElement.style.setProperty('transform', transform);
     }
 }

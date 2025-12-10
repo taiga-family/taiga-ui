@@ -28,7 +28,7 @@
                         }
                         @for (item of group.value; track item) {
                             <ng-container
-                                [ngTemplateOutlet]="template || null"
+                                [ngTemplateOutlet]="template() || null"
                                 [ngTemplateOutletContext]="{$implicit: item}"
                             />
                         }

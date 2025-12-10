@@ -2,14 +2,13 @@ import {type KeyValue, KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
     inject,
     Input,
     type OnChanges,
     TemplateRef,
 } from '@angular/core';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
-import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -52,8 +51,7 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected active = 0;
 
-    @ContentChild(TemplateRef)
-    public readonly template?: TemplateRef<TuiContext<T>>;
+    public readonly template = contentChild(TemplateRef);
 
     @Input()
     public results: Record<string, readonly T[]> | null = {};

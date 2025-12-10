@@ -1,4 +1,4 @@
-import {Component, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
@@ -10,8 +10,7 @@ import {TuiPager} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    @ViewChild('templateRef')
-    protected templateRef?: TemplateRef<unknown>;
+    protected readonly templateRef = viewChild<TemplateRef<unknown>>('templateRef');
 
     protected readonly examples = ['Basic', 'Icons', 'Dynamic width'];
 
@@ -31,6 +30,8 @@ export default class Page {
     protected selectedTemplate = this.templateVariants[0]!;
 
     protected get valueContent(): TemplateRef<unknown> | undefined {
-        return this.templateRef && this.selectedTemplate ? this.templateRef : undefined;
+        const templateRef = this.templateRef();
+
+        return templateRef && this.selectedTemplate ? templateRef : undefined;
     }
 }

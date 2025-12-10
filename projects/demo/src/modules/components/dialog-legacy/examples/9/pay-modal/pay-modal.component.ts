@@ -5,7 +5,7 @@ import {
     DestroyRef,
     inject,
     type OnInit,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -59,8 +59,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PayModal implements OnInit {
-    @ViewChild('cardGroupedInput')
-    private readonly cardGroupedInput?: TuiInputCardGroup;
+    private readonly cardGroupedInput = viewChild<TuiInputCardGroup>('cardGroupedInput');
 
     private readonly payService = inject(PayService);
     private readonly destroyRef = inject(DestroyRef);
@@ -97,14 +96,14 @@ export class PayModal implements OnInit {
 
         this.form.controls.card.removeValidators(tuiCardNumberValidator);
         this.paymentMode = PaymentMode.BySavedCard;
-        this.cardGroupedInput?.focusCVC();
+        this.cardGroupedInput()?.focusCVC();
     }
 
     protected payByNewCard(): void {
         this.form.patchValue({card: null});
         this.form.controls.card.addValidators(tuiCardNumberValidator);
         this.paymentMode = PaymentMode.ByNewCard;
-        this.cardGroupedInput?.focusCard();
+        this.cardGroupedInput()?.focusCard();
     }
 
     protected pay(): void {

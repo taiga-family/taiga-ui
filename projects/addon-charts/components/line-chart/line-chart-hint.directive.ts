@@ -1,6 +1,6 @@
 import {
     type AfterViewInit,
-    ContentChildren,
+    contentChildren,
     DestroyRef,
     Directive,
     ElementRef,
@@ -8,11 +8,9 @@ import {
     inject,
     Input,
     NgZone,
-    type QueryList,
     Renderer2,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -36,11 +34,12 @@ import {TuiLineChart} from './line-chart.component';
     providers: [TuiHoveredService],
 })
 export class TuiLineChartHint implements AfterViewInit {
-    @ContentChildren(forwardRef(() => TuiLineChart))
-    private readonly charts: QueryList<TuiLineChart> = EMPTY_QUERY;
+    private readonly charts = contentChildren(forwardRef(() => TuiLineChart));
 
-    @ContentChildren(forwardRef(() => TuiLineChart), {read: ElementRef})
-    private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly chartsRef = contentChildren(
+        forwardRef(() => TuiLineChart),
+        {read: ElementRef},
+    );
 
     private readonly renderer = inject(Renderer2);
     private readonly destroyRef = inject(DestroyRef);
@@ -51,32 +50,32 @@ export class TuiLineChartHint implements AfterViewInit {
     public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts.toArray()), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts()), this.hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.charts.forEach((chart) => chart.onHovered(NaN));
+                this.charts().forEach((chart) => chart.onHovered(NaN));
             });
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
     public getContext(index: number, _chart: TuiLineChart): readonly TuiPoint[] {
-        return this.computeContext(...this.charts.map(({value}) => value))[index] || [];
+        return this.computeContext(...this.charts().map(({value}) => value))[index] || [];
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
     public raise(index: number, _chart: TuiLineChart): void {
-        const current = this.charts.map(
+        const current = this.charts().map(
             (chart) => chart.value[index] ?? ([0, 0] as const),
         );
 
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
-        this.charts.forEach((chart) => chart.onHovered(index));
-        this.chartsRef.forEach(({nativeElement}, index) =>
+        this.charts().forEach((chart) => chart.onHovered(index));
+        this.chartsRef().forEach(({nativeElement}, index) =>
             this.renderer.setStyle(
                 nativeElement,
                 'z-index',

@@ -1,4 +1,3 @@
-@if (items.changes | async) {}
 <tui-tabs
     class="t-tabs"
     [activeItemIndex]="activeItemIndex"
@@ -7,7 +6,7 @@
     (activeItemIndexChange)="onActiveItemIndexChange($event)"
     (keydown.arrowRight)="onArrowRight($event)"
 >
-    @for (item of items; track item) {
+    @for (item of items(); track item) {
         @if ($index <= lastVisibleIndex) {
             <ng-container [ngTemplateOutlet]="item" />
         } @else {
@@ -63,7 +62,7 @@
         (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
         (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
     >
-        @for (item of items; track item) {
+        @for (item of items(); track item) {
             <div
                 class="t-dropdown-item"
                 (tui-tab-activate)="onClick($index)"

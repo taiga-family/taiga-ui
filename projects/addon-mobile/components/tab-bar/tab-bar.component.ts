@@ -1,15 +1,13 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
+    contentChildren,
     ElementRef,
     EventEmitter,
     forwardRef,
     Input,
     Output,
-    type QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiTabBarItem} from './tab-bar-item.component';
@@ -25,8 +23,10 @@ import {TuiTabBarItem} from './tab-bar-item.component';
     },
 })
 export class TuiTabBarComponent {
-    @ContentChildren(forwardRef(() => TuiTabBarItem), {read: ElementRef})
-    private readonly tabs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly tabs = contentChildren(
+        forwardRef(() => TuiTabBarItem),
+        {read: ElementRef},
+    );
 
     @Input()
     public quantity = 4;
@@ -40,7 +40,7 @@ export class TuiTabBarComponent {
     public setActive(tab: EventTarget): void {
         if (tuiIsElement(tab)) {
             this.updateIndex(
-                this.tabs.toArray().findIndex(({nativeElement}) => nativeElement === tab),
+                this.tabs().findIndex(({nativeElement}) => nativeElement === tab),
             );
         }
     }

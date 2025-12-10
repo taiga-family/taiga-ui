@@ -1,15 +1,13 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
+    contentChildren,
     type DoCheck,
     forwardRef,
     inject,
-    type QueryList,
     SkipSelf,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
@@ -43,8 +41,7 @@ import {TUI_TREE_CONTENT} from '../tree-item-content/tree-item-content.component
     },
 })
 export class TuiTreeItem implements DoCheck {
-    @ContentChildren(TUI_TREE_NODE)
-    private readonly nested: QueryList<unknown> = EMPTY_QUERY;
+    private readonly nested = contentChildren(TUI_TREE_NODE);
 
     private readonly el = tuiInjectElement();
 
@@ -78,7 +75,7 @@ export class TuiTreeItem implements DoCheck {
     );
 
     public get isExpandable(): boolean {
-        return !!this.nested.length;
+        return !!this.nested().length;
     }
 
     public get isExpanded(): boolean {

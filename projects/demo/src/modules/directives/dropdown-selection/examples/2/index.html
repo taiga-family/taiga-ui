@@ -6,7 +6,7 @@
     <label tuiLabel>Type a message</label>
     <textarea
         tuiTextarea
-        [focused]="(driver | async) || null"
+        [focused]="(driver() | async) || null"
         [max]="4"
         [min]="4"
         [(ngModel)]="value"

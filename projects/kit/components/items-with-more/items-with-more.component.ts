@@ -1,12 +1,11 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
-    ContentChildren,
+    contentChild,
+    contentChildren,
     inject,
     Output,
-    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -15,9 +14,7 @@ import {
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {type TuiContext} from '@taiga-ui/cdk/types';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';
@@ -25,7 +22,7 @@ import {TuiMore} from './more.directive';
 
 @Component({
     selector: 'tui-items-with-more',
-    imports: [AsyncPipe, NgTemplateOutlet],
+    imports: [NgTemplateOutlet],
     templateUrl: './items-with-more.template.html',
     styleUrl: './items-with-more.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,11 +47,12 @@ import {TuiMore} from './more.directive';
     ],
 })
 export class TuiItemsWithMoreComponent {
-    @ContentChildren(TuiItem, {read: TemplateRef, descendants: true})
-    protected readonly items: QueryList<TemplateRef<unknown>> = EMPTY_QUERY;
+    protected readonly items = contentChildren(TuiItem, {
+        read: TemplateRef,
+        descendants: true,
+    });
 
-    @ContentChild(TuiMore, {read: TemplateRef})
-    protected readonly more?: TemplateRef<TuiContext<number>>;
+    protected readonly more = contentChild(TuiMore, {read: TemplateRef});
 
     protected readonly directive = inject(TuiItemsWithMoreDirective);
 
@@ -69,7 +67,7 @@ export class TuiItemsWithMoreComponent {
         const {computedSide} = this.directive;
 
         return (
-            (this.lastIndex() >= this.items.length - 1 && computedSide === 'end') ||
+            (this.lastIndex() >= this.items().length - 1 && computedSide === 'end') ||
             (!this.lastIndex() && computedSide === 'start')
         );
     }

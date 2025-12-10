@@ -1,21 +1,19 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewChecked,
     type AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    contentChildren,
     ElementRef,
     EventEmitter,
     inject,
     Input,
     Output,
-    type QueryList,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -38,7 +36,6 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
 @Component({
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     imports: [
-        AsyncPipe,
         NgTemplateOutlet,
         PolymorpheusOutlet,
         TuiChevron,
@@ -55,11 +52,9 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     },
 })
 export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
-    @ViewChild(TuiTab, {read: ElementRef})
-    private readonly moreButton?: ElementRef<HTMLButtonElement>;
+    private readonly moreButton = viewChild(TuiTab, {read: ElementRef});
 
-    @ViewChild(TuiTabsHorizontal, {read: ElementRef})
-    private readonly dir?: ElementRef<HTMLButtonElement>;
+    private readonly dir = viewChild(TuiTabsHorizontal, {read: ElementRef});
 
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
@@ -67,9 +62,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 
-    @ContentChildren(TuiItem, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
+    protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
 
     protected readonly moreWord = inject(TUI_MORE_WORD);
     protected open = false;
@@ -101,7 +94,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     public get lastVisibleIndex(): number {
-        if (this.itemsLimit + 1 >= this.items.length) {
+        if (this.itemsLimit + 1 >= this.items().length) {
             return this.maxIndex;
         }
 
@@ -141,7 +134,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
         return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
             ? tabs[safeActiveIndex] || null
-            : this.moreButton?.nativeElement || null;
+            : this.moreButton()?.nativeElement || null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -149,11 +142,13 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get isMoreVisible(): boolean {
-        return this.lastVisibleIndex < this.items.length - 1;
+        return this.lastVisibleIndex < this.items().length - 1;
     }
 
     protected get isMoreFocusable(): boolean {
-        return !!this.moreButton && tuiIsFocused(this.moreButton.nativeElement);
+        const moreButton = this.moreButton();
+
+        return !!moreButton && tuiIsFocused(moreButton.nativeElement);
     }
 
     protected get isMoreActive(): boolean {
@@ -222,8 +217,10 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     private focusMore(): void {
-        if (this.moreButton) {
-            this.moreButton.nativeElement.focus();
+        const moreButton = this.moreButton();
+
+        if (moreButton) {
+            moreButton.nativeElement.focus();
         }
     }
 
@@ -275,7 +272,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private refresh(): void {
         const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
-        this.dir?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
-        this.dir?.nativeElement.style.setProperty('--t-width', tuiPx(offsetWidth));
+        this.dir()?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.dir()?.nativeElement.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }

@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, input, signal, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, input, signal, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
@@ -48,8 +48,7 @@ interface Items<T> {
     ],
 })
 export class CustomListComponent<T> {
-    @ViewChild(TuiInputDirective, {read: ElementRef})
-    private readonly input?: ElementRef<HTMLInputElement>;
+    private readonly input = viewChild(TuiInputDirective, {read: ElementRef});
 
     private readonly control = inject(TuiTextfieldComponent).control;
 
@@ -61,7 +60,7 @@ export class CustomListComponent<T> {
 
     protected onKeyDown(key: string): void {
         if (tuiIsEditingKey(key)) {
-            this.input?.nativeElement.focus({preventScroll: true});
+            this.input()?.nativeElement.focus({preventScroll: true});
         }
     }
 

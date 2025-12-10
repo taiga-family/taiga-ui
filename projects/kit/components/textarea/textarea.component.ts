@@ -6,7 +6,7 @@ import {
     inject,
     Input,
     TemplateRef,
-    ViewChild,
+    viewChild,
     ViewContainerRef,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -36,14 +36,12 @@ import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options'
     },
 })
 export class TuiTextareaComponent implements AfterViewInit {
-    @ViewChild(TemplateRef)
-    private readonly template?: TemplateRef<any>;
+    private readonly template = viewChild(TemplateRef);
 
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
     private readonly vcr = inject(ViewContainerRef);
 
-    @ViewChild('text')
-    protected readonly text?: ElementRef<HTMLElement>;
+    protected readonly text = viewChild<ElementRef<HTMLElement>>('text');
 
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
     protected readonly textfield = inject(TuiTextfieldComponent<string>);
@@ -59,12 +57,14 @@ export class TuiTextareaComponent implements AfterViewInit {
     public content: TuiTextareaOptions['content'] = this.options.content;
 
     public ngAfterViewInit(): void {
-        if (this.template) {
-            this.vcr.createEmbeddedView(this.template);
+        const template = this.template();
+
+        if (template) {
+            this.vcr.createEmbeddedView(template);
         }
     }
 
     protected onScroll(): void {
-        this.text?.nativeElement.scrollTo({top: this.el.scrollTop});
+        this.text()?.nativeElement.scrollTo({top: this.el.scrollTop});
     }
 }

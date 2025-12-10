@@ -2,7 +2,7 @@
     <div
         class="t-wrapper"
         [class.t-wrapper_hoverable]="!!hintContent"
-        [class.t-wrapper_hovered]="drivers.get($index) | async"
+        [class.t-wrapper_hovered]="drivers()[$index] | async"
         [tuiHint]="hintContent"
         [tuiHintAppearance]="hintAppearance"
         [tuiHintContext]="{$implicit: $index}"
