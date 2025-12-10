@@ -4,9 +4,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    effect,
     inject,
     input,
+    type OnChanges,
     signal,
     type Type,
 } from '@angular/core';
@@ -63,7 +63,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         '[class._fullsize]': 'fullsize()',
     },
 })
-export class TuiDocExample {
+export class TuiDocExample implements OnChanges {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiNotificationService);
     private readonly location = inject(WA_LOCATION);
@@ -117,10 +117,8 @@ export class TuiDocExample {
 
     public readonly content = input<Record<string, TuiRawLoaderContent>>({});
 
-    constructor() {
-        effect(() => {
-            this.rawLoader$$.next(this.content());
-        });
+    public ngOnChanges(): void {
+        this.rawLoader$$.next(this.content());
     }
 
     protected readonly visible = (files: Record<string, string>): boolean =>

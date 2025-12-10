@@ -4,6 +4,7 @@ import {
     Component,
     ElementRef,
     inject,
+    type Signal,
     signal,
     viewChild,
 } from '@angular/core';
@@ -84,9 +85,8 @@ function tuiUniqBy<T extends Record<string, any>>(
     },
 })
 export class TuiDocNavigation {
-    private readonly searchInput = viewChild(TuiInputDirective, {
-        read: ElementRef<HTMLInputElement>,
-    });
+    private readonly searchInput: Signal<ElementRef<HTMLInputElement> | undefined> =
+        viewChild(TuiInputDirective, {read: ElementRef});
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
