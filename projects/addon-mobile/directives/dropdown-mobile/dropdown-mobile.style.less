@@ -41,9 +41,9 @@ tui-dropdown-mobile {
 
     [tuiDropdownButton][tuiDropdownButton] {
         position: fixed;
-        right: 1rem;
-        bottom: ~'max(1rem, env(safe-area-inset-bottom))';
         display: inline-flex;
+        inset-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
+        inset-inline-end: 1rem;
     }
 }
 

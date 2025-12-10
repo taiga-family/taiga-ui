@@ -5,15 +5,15 @@ TODO: if :has() is supported by all browsers
  */
 .t-input-number-buttons.t-input-number-buttons {
     position: absolute;
-    right: 0;
     display: flex;
+    inset-inline-end: 0;
     block-size: var(--t-height);
     flex-direction: column;
     gap: 0.125rem;
     border-radius: inherit;
 
     @supports (inset-inline-end: 0) {
-        right: unset;
+        inset-inline-end: unset;
         inset-inline-end: 0;
     }
 

@@ -6,10 +6,10 @@
 .t-end {
     position: absolute;
     top: 0;
-    bottom: 0;
-    right: 0;
     left: 50%;
     display: flex;
+    inset-block-end: 0;
+    inset-inline-end: 0;
     inline-size: 50%;
     text-align: end;
     outline: none !important;
@@ -19,7 +19,7 @@
     transition: none;
 
     &:dir(rtl) {
-        right: unset;
+        inset-inline-end: unset;
         inset-inline-end: 0;
     }
 }
@@ -40,18 +40,18 @@ tui-range {
     position: absolute;
     top: 100%;
     left: 1rem;
-    right: 1rem;
     z-index: 1;
+    inset-inline-end: 1rem;
     margin: calc(-1 * var(--tui-thickness)) 0 0;
 
     :host[data-size='m'] & {
-        right: 0.75rem;
         left: 0.75rem;
+        inset-inline-end: 0.75rem;
     }
 
     :host[data-size='s'] & {
-        right: 0.625rem;
         left: 0.625rem;
+        inset-inline-end: 0.625rem;
     }
 }
 

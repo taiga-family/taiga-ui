@@ -86,7 +86,7 @@
 .t-right {
     position: absolute;
     top: 0.1875rem;
-    right: 0.1875rem;
+    inset-inline-end: 0.1875rem;
 
     :host[data-size='xs'] &,
     :host[data-size='s'] & {
@@ -126,18 +126,18 @@
 
 .t-logo {
     position: absolute;
-    right: 0.25rem;
-    bottom: 0;
+    inset-block-end: 0;
+    inset-inline-end: 0.25rem;
     block-size: var(--t-logo-height);
     transform-origin: right;
 
     :host[data-size='xs'] & {
-        right: 0.125rem;
+        inset-inline-end: 0.125rem;
     }
 
     :host[data-size='m'] &,
     :host[data-size='l'] & {
-        bottom: 0.0625rem;
+        inset-block-end: 0.0625rem;
     }
 
     &::before {
@@ -154,12 +154,12 @@
 
     :host[data-size='m'] & {
         left: 0.1875rem;
-        bottom: 0.0625rem;
+        inset-block-end: 0.0625rem;
     }
 
     :host[data-size='l'] & {
         left: 0.25rem;
-        bottom: 0.0625rem;
+        inset-block-end: 0.0625rem;
     }
 }
 

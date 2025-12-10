@@ -101,8 +101,8 @@ tui-tabs {
         .transition(~'width, left');
 
         position: absolute;
-        left: var(--t-left);
-        bottom: 0;
+        inset-block-end: 0;
+        inset-inline-start: var(--t-left);
         block-size: 0.125rem;
         inline-size: var(--t-width);
         background: var(--t-color);
@@ -132,9 +132,9 @@ tui-tabs[data-vertical],
 
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
             display: block;
+            inset-block-start: 0;
+            inset-inline-end: 0;
             block-size: 100%;
             inline-size: 0.125rem;
             background: var(--tui-background-accent-1);
@@ -165,8 +165,8 @@ tui-tabs[data-vertical],
             padding: 0.25rem 0 0.25rem 1.25rem;
 
             &::after {
-                right: auto;
-                left: 0;
+                inset-inline-start: 0;
+                inset-inline-end: auto;
                 transform-origin: left;
             }
 

@@ -12,8 +12,8 @@
 
 .t-header {
     position: fixed;
-    top: ~'max(1rem, env(safe-area-inset-top))';
     display: flex;
+    inset-block-start: ~'max(1rem, env(safe-area-inset-top))';
     inline-size: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
@@ -21,8 +21,8 @@
 
 .t-footer {
     position: absolute;
-    bottom: ~'max(1rem, env(safe-area-inset-bottom))';
     display: flex;
+    inset-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
     inline-size: 100%;
     padding: 0 1rem;
     box-sizing: border-box;

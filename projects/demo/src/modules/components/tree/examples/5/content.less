@@ -15,8 +15,8 @@
     &::after {
         content: '';
         position: absolute;
-        left: -0.75rem;
         z-index: -1;
+        inset-inline-start: -0.75rem;
     }
 
     &::before {
@@ -25,8 +25,8 @@
     }
 
     &::after {
-        top: -1rem;
-        bottom: 1rem;
+        inset-block-start: -1rem;
+        inset-block-end: 1rem;
         border-inline-start: 1px solid var(--tui-border-normal);
     }
 

@@ -15,8 +15,8 @@
 
 .t-settings {
     position: absolute;
-    bottom: ~'calc(100% + 0.75rem)';
     display: flex;
+    inset-block-end: ~'calc(100% + 0.75rem)';
     gap: 1rem;
     align-items: center;
     justify-content: flex-end;
@@ -128,8 +128,8 @@
         content: '';
         position: absolute;
         top: 0.75rem;
-        left: 50%;
-        bottom: calc(50% + 1rem);
+        inset-block-end: calc(50% + 1rem);
+        inset-inline-start: 50%;
         inline-size: 1px;
         background: var(--tui-border-normal);
         box-shadow: -0.25rem 0 var(--tui-border-normal);
@@ -137,8 +137,8 @@
     }
 
     &::after {
-        bottom: 0.75rem;
         top: calc(50% + 1rem);
+        inset-block-end: 0.75rem;
     }
 
     @media @tui-mobile {

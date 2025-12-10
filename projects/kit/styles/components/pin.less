@@ -92,7 +92,7 @@
         }
 
         &::after {
-            top: 4.5rem;
+            inset-block-start: 4.5rem;
             opacity: 1;
         }
     }
@@ -120,7 +120,7 @@
         }
 
         &::after {
-            top: 4.5rem;
+            inset-block-start: 4.5rem;
             opacity: 1;
         }
     }
@@ -130,10 +130,10 @@
 
         content: '';
         position: absolute;
-        top: 50%;
-        left: 50%;
-        right: -0.25rem;
-        bottom: -0.625rem;
+        inset-block-start: 50%;
+        inset-block-end: -0.625rem;
+        inset-inline-start: 50%;
+        inset-inline-end: -0.25rem;
         box-sizing: border-box;
         border-width: 2.2rem 2rem;
         border-style: solid;
@@ -151,8 +151,8 @@
 
         content: '';
         position: absolute;
-        top: 50%;
-        left: 50%;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
         border: 0.1875rem solid currentColor;
         border-color: inherit;
         border-radius: 100%;

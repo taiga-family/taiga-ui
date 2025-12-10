@@ -91,8 +91,8 @@
 
 .thumb-ghost(@size) {
     position: absolute;
-    top: ((@hitbox - @thumb-diameters[@@size]) / 2);
-    left: var(--t-left);
+    inset-block-start: ((@hitbox - @thumb-diameters[@@size]) / 2);
+    inset-inline-start: var(--t-left);
     inset-inline-start: var(--t-left);
     inline-size: @thumb-diameters[@@size];
     block-size: @thumb-diameters[@@size];

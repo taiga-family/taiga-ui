@@ -39,10 +39,10 @@
 
 .footer {
     position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
     display: flex;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     padding: 2.75rem;
     pointer-events: none;
 
@@ -58,8 +58,8 @@
 
 .taiga {
     position: fixed;
-    left: 2.5rem;
-    top: 2.5rem;
+    inset-block-start: 2.5rem;
+    inset-inline-start: 2.5rem;
     inline-size: 2.1875rem;
     filter: brightness(0) invert(1);
 }
@@ -84,9 +84,9 @@
 
 .initial {
     position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    inset-block-start: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
     color: var(--tui-text-primary);
     background: #fff;
     inline-size: 60vw;
@@ -109,10 +109,10 @@
 
 .map {
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset-block-start: 50%;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     background: #3dc67c;
     border: 2.75rem solid transparent;
     border-block-end-width: 7.5rem;
@@ -167,15 +167,15 @@
 
 .topography {
     position: absolute;
-    top: -3.125rem;
-    left: -30vw;
+    inset-block-start: -3.125rem;
+    inset-inline-start: -30vw;
     overflow: hidden;
 }
 
 .components {
     position: sticky;
-    left: 0;
-    top: 8.125rem;
+    inset-block-start: 8.125rem;
+    inset-inline-start: 0;
     transition: transform 0.6s;
     transform: translate3d(100vw, 0, 0);
     transform-origin: top left;
@@ -212,8 +212,8 @@
     overflow: hidden;
 
     &_dark {
-        top: 0;
-        left: 100.375rem;
+        inset-block-start: 0;
+        inset-inline-start: 100.375rem;
         inline-size: 53.625rem;
         padding: 3.75rem 4rem;
         background: var(--tui-text-primary);
@@ -223,8 +223,8 @@
 
 .make {
     position: absolute;
-    left: 46.5rem;
-    top: 3.3125rem;
+    inset-block-start: 3.3125rem;
+    inset-inline-start: 46.5rem;
     inline-size: 47rem;
     block-size: 8.25rem;
     border-radius: 8.25rem;
@@ -247,8 +247,8 @@
     &::after {
         content: '';
         position: absolute;
-        top: -0.375rem;
-        left: -0.375rem;
+        inset-block-start: -0.375rem;
+        inset-inline-start: -0.375rem;
         inline-size: 0.75rem;
         block-size: 0.75rem;
         border-radius: 0.1875rem;
@@ -265,15 +265,15 @@
 
 .width {
     position: absolute;
-    left: 0.25rem;
-    top: 50%;
+    inset-block-start: 50%;
+    inset-inline-start: 0.25rem;
     margin-block-start: -0.625rem;
 }
 
 .customize {
     position: absolute;
-    left: 59.8125rem;
-    top: 17.6875rem;
+    inset-block-start: 17.6875rem;
+    inset-inline-start: 59.8125rem;
     inline-size: 25rem;
     font-size: 3.5rem;
     font-weight: bold;
@@ -283,8 +283,8 @@
 
 .arrow {
     position: absolute;
-    left: 20.5625rem;
-    bottom: 11.9375rem;
+    inset-block-end: 11.9375rem;
+    inset-inline-start: 20.5625rem;
 }
 
 .opensource {
@@ -304,8 +304,8 @@
 
 .os {
     position: absolute;
-    top: 2.625rem;
-    left: 30.625rem;
+    inset-block-start: 2.625rem;
+    inset-inline-start: 30.625rem;
     overflow: visible;
 }
 
@@ -317,8 +317,8 @@
     .transition(opacity);
 
     position: absolute;
-    top: 50%;
-    left: 50%;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
     margin: -2.1875rem -0.75rem;
     inline-size: 1.875rem;
     block-size: 4.0625rem;
@@ -335,7 +335,7 @@
         content: '';
         position: absolute;
         top: 0.9375rem;
-        left: 0.40625rem;
+        inset-inline-start: 0.40625rem;
         inline-size: 0.5rem;
         block-size: 0.5rem;
         transform: rotate(-45deg);

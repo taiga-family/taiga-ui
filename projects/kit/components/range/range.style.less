@@ -23,7 +23,7 @@
     &::after {
         content: '';
         position: absolute;
-        top: 50%;
+        inset-block-start: 50%;
         block-size: @hitbox;
         inline-size: 100%;
         transform: translateY(-50%);
@@ -44,9 +44,8 @@
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: ~'max(calc(var(--t-start) - 1px), 1px)';
-        right: ~'max(var(--t-end), 1px)';
+        inset-block-start: 0;
+        inset-inline-start: ~'max(calc(var(--t-start) - 1px), 1px)';
         inset-inline-start: ~'max(calc(var(--t-start) - 1px), 1px)';
         inset-inline-end: ~'max(var(--t-end), 1px)';
         block-size: 100%;
@@ -59,8 +58,7 @@
         .fullsize(absolute, inset);
 
         content: '';
-        left: ((@thumb-width - @tick-thickness) / 2);
-        right: ((@thumb-width + @tick-thickness) / 2);
+        inset-inline-start: ((@thumb-width - @tick-thickness) / 2);
         inset-inline-start: ((@thumb-width - @tick-thickness) / 2);
         inset-inline-end: ((@thumb-width + @tick-thickness) / 2);
         background-image: repeating-linear-gradient(
@@ -128,10 +126,10 @@
     .remove-track-background();
 
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
     z-index: 1;
+    inset-block-start: 50%;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     transform: translateY(-50%);
 
     &:first-of-type {

@@ -100,12 +100,12 @@
         position: absolute;
         top: 0.5625rem;
         left: 0.25rem;
-        bottom: -0.75rem;
+        inset-block-end: -0.75rem;
         pointer-events: none;
 
         &_secondary {
             left: auto;
-            right: 0.25rem;
+            inset-inline-end: 0.25rem;
             text-align: end;
         }
     }
@@ -145,7 +145,7 @@
     :host:not(._centered) & {
         &:last-child:not(:first-child) {
             position: absolute;
-            right: 0;
+            inset-inline-end: 0;
             text-align: end;
             border-inline-start: none;
         }
@@ -166,8 +166,8 @@
     position: absolute;
     top: 0;
     left: -1px;
-    right: 0;
-    bottom: -1px;
     display: flex;
+    inset-block-end: -1px;
+    inset-inline-end: 0;
     align-items: flex-end;
 }
