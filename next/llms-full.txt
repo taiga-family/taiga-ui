@@ -10296,7 +10296,6 @@ export default class Example {
         'font-heading-h4',
         'font-heading-h5',
         'font-heading-h6',
-        'font-legacy-body-xl',
         'font-body-l',
         'font-body-m',
         'font-body-s',
@@ -11733,7 +11732,7 @@ export class Example {}
 <button tuiButton type="button" (click)="open.set(!open())" > Toggle </button>
 <tui-drawer *tuiPopup="open()">
 <header>
-<h2 tuiHeader>
+<h2 tuiHeader="body-l">
 <div tuiTitle>
 <span tuiCaption>Caption・caption</span>
 <span> Drawer title <tui-badge>Label</tui-badge>
@@ -14663,16 +14662,6 @@ export class Example {}
 </aside>
 </header>
 <header tuiHeader="h6">
-<hgroup tuiTitle>
-<h6>Title</h6>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification size="s">1</tui-badge-notification>
-<button size="xs" tuiButton type="button" > Button </button>
-</aside>
-</header>
-<header tuiHeader="body-xl">
 <hgroup tuiTitle>
 <h6>Title</h6>
 <p tuiSubtitle>Subtitle</p>
@@ -24115,18 +24104,18 @@ export default class Example {
 **Template:**
 ```html
 <div>
-<p class="tui-text_body-xl">NgModel</p>
+<h3>NgModel</h3>
 <input tuiLike="var(--tui-status-negative)" type="checkbox" [(ngModel)]="liked" />
-<p class="tui-text_body-m-2">Liked: {{ liked }}</p>
+<p>Liked: {{ liked }}</p>
 </div>
 <div>
-<p class="tui-text_body-xl">Reactive form</p>
+<h3>Reactive form</h3>
 <form [formGroup]="likeForm">
 <input formControlName="liked" tuiLike="var(--tui-status-negative)" type="checkbox" />
 </form>
-<p class="tui-text_body-m-2">Liked: {{ likeForm.value.liked }}</p>
+<p>Liked: {{ likeForm.value.liked }}</p>
 </div>
-<button size="m" tuiButton type="button" [style.width.%]="100" (click)="changeValue()" > Toggle </button>
+<button size="m" tuiButton type="button" (click)="changeValue()" > Toggle </button>
 ```
 **TypeScript:**
 ```ts
@@ -46577,7 +46566,7 @@ export class Example {
 ```html
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="loading" /> Loading </label>
-<span [style.font]="'var(--tui-font-legacy-body-xl)'">Shimmer</span>
+<h3>Shimmer</h3>
 <section appearance="floating" tuiCardLarge >
 <header tuiHeader>
 <hgroup tuiTitle [tuiShimmer]="loading" >
@@ -46596,7 +46585,7 @@ export class Example {
 <button size="m" tuiButton type="button" > Take another look </button>
 </footer>
 </section>
-<span [style.font]="'var(--tui-font-legacy-body-xl)'">Skeleton</span>
+<h3>Skeleton</h3>
 <section appearance="floating" tuiCardLarge >
 <header tuiHeader>
 <hgroup tuiTitle>
