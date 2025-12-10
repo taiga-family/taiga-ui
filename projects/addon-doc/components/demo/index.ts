@@ -8,6 +8,7 @@ import {
     ElementRef,
     inject,
     input,
+    type Signal,
     signal,
     TemplateRef,
     viewChild,
@@ -70,13 +71,16 @@ const MIN_WIDTH = 160;
     },
 })
 export class TuiDocDemo implements AfterViewInit {
-    private readonly resizable = viewChild.required(TuiResizable, {
-        read: ElementRef<HTMLElement>,
-    });
+    private readonly resizable: Signal<ElementRef<HTMLElement>> = viewChild.required(
+        TuiResizable,
+        {read: ElementRef},
+    );
 
-    private readonly content = viewChild.required<ElementRef<HTMLElement>>('content');
+    private readonly content: Signal<ElementRef<HTMLElement>> =
+        viewChild.required<ElementRef<HTMLElement>>('content');
 
-    private readonly resizer = viewChild.required<ElementRef<HTMLElement>>('resizer');
+    private readonly resizer: Signal<ElementRef<HTMLElement>> =
+        viewChild.required<ElementRef<HTMLElement>>('resizer');
 
     private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);
