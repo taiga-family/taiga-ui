@@ -6,6 +6,7 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
@@ -28,6 +29,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly control = new FormControl();
+    protected readonly routes = DemoRoute;
 
     protected readonly dates = [
         TUI_FIRST_DAY,

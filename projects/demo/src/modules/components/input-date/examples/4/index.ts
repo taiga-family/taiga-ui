@@ -1,27 +1,33 @@
-import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay} from '@taiga-ui/cdk';
-import {TuiInputDate, tuiInputDateOptionsProvider} from '@taiga-ui/kit';
+import {TuiButton, TuiError, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiInputDate, TuiUnfinishedValidator} from '@taiga-ui/kit';
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
-    imports: [FormsModule, JsonPipe, TuiInputDate],
+    imports: [
+        ReactiveFormsModule,
+        TuiButton,
+        TuiError,
+        TuiForm,
+        TuiInputDate,
+        TuiUnfinishedValidator,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputDateOptionsProvider({
-            valueTransformer: {
-                fromControlValue: (value: Date | null): TuiDay | null =>
-                    value && TuiDay.fromUtcNativeDate(value),
-                toControlValue: (value: TuiDay | null): Date | null =>
-                    value?.toUtcNativeDate() || null,
-            },
+        tuiValidationErrorsProvider({
+            tuiUnfinished: 'Either fill this or leave blank',
+            required: 'This field is required',
         }),
     ],
 })
 export default class Example {
-    protected value: Date | null = null;
+    protected readonly form = new FormGroup({
+        required: new FormControl(null, Validators.required),
+        optional: new FormControl(),
+    });
 }
