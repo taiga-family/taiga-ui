@@ -69,7 +69,8 @@ tui-badge,
         --t-status: var(--tui-status-neutral);
     }
 
-    &[data-size='s'] {
+    &[data-size='s'][data-size='s'] {
+        // @note: it's increasing css cascade priority
         --t-padding: 0 0.3125rem;
         --t-size: 1rem;
         --t-icon-size: 0.625rem;
@@ -84,14 +85,16 @@ tui-badge,
         }
     }
 
-    &[data-size='m'] {
+    &[data-size='m'][data-size='m'] {
+        // @note: it's increasing css cascade priority
         --t-padding: 0 0.375rem;
         --t-size: 1.25rem;
         --t-icon-size: 0.75rem;
         --t-margin: -0.125rem;
     }
 
-    &[data-size='xl'] {
+    &[data-size='xl'][data-size='xl'] {
+        // @note: it's increasing css cascade priority
         --t-margin: -0.25rem;
         --t-padding: 0 0.75rem;
         --t-size: var(--tui-height-s);
