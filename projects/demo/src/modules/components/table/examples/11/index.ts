@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
 import {
     TuiChevron,
