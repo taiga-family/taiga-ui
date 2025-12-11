@@ -59,6 +59,7 @@ export class TuiMultiSelectNative<T> {
         TuiTextfieldMultiComponent,
         'filler',
         this.placeholder,
+        {},
     );
 
     protected onInput(): void {

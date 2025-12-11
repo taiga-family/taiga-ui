@@ -61,8 +61,8 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
         }
     });
 
-    protected readonly countryCode = computed(() => extractCode(this.options.mask));
-    protected readonly phoneMask = computed(() => extractMask(this.options.mask));
+    protected readonly countryCode = computed(() => extractCode(this.mask()));
+    protected readonly phoneMask = computed(() => extractMask(this.mask()));
     protected readonly maskito = tuiMaskito(
         computed(() =>
             this.calculateMask(

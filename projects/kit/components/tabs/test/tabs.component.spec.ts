@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {provideTaiga} from '@taiga-ui/core';
 import {TUI_TAB_ACTIVATE, TuiTabs, TuiTabsDirective} from '@taiga-ui/kit';
 
 describe('Tabs', () => {
@@ -39,6 +40,7 @@ describe('Tabs', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
 
@@ -88,7 +90,7 @@ describe('Tabs', () => {
             firstTab?.click();
             fixture.detectChanges();
 
-            expect(component.activeItemIndex).toBe(0);
+            expect(component.activeItemIndex()).toBe(0);
             expect(component.onTabActivate).toHaveBeenCalledTimes(1);
         });
 
