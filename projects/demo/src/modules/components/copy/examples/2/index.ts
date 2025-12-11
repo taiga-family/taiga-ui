@@ -17,7 +17,6 @@ export default class Example {
         'font-heading-h4',
         'font-heading-h5',
         'font-heading-h6',
-        'font-legacy-body-xl',
         'font-body-l',
         'font-body-m',
         'font-body-s',

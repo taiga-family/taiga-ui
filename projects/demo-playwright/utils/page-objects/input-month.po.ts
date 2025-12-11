@@ -11,7 +11,9 @@ export class TuiInputMonthPO {
 
     constructor(public readonly host: Locator) {}
 
-    public async clickOnIcon(): Promise<void> {
+    public async clickOnIcon(
+        options: Parameters<Locator['click']>[0] = {},
+    ): Promise<void> {
         const box = (await this.host.boundingBox())!;
         const padding = await this.host
             .evaluate((el) =>
@@ -29,6 +31,7 @@ export class TuiInputMonthPO {
         expect(iconWidth).not.toBeFalsy();
 
         await this.host.click({
+            ...options,
             position: {x: box.width - padding - iconWidth, y: box.height / 2},
         });
     }

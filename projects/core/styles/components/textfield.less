@@ -14,8 +14,7 @@ tui-textfield {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    cursor: pointer;
+    align-items: flex-start;
     min-block-size: var(--t-height);
     padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
@@ -25,9 +24,18 @@ tui-textfield {
     gap: 0 0.25rem;
     isolation: isolate;
 
-    // Increasing specificity to override custom appearance
-    &[tuiIcons]:read-only {
-        color: var(--tui-text-tertiary);
+    &[tuiAppearance] {
+        outline: none;
+
+        &[data-appearance=''] {
+            color: var(--tui-text-tertiary);
+
+            &:not([data-mode~='readonly']) {
+                .appearance-hover({
+                    color: var(--tui-text-secondary);
+                });
+            }
+        }
     }
 
     &[data-icon-start] {
@@ -38,12 +46,21 @@ tui-textfield {
         --t-end: 2.25rem;
     }
 
-    &[tuiIcons]::after {
-        position: relative;
-        block-size: auto;
-        align-self: stretch;
-        border-inline: var(--t-padding) solid transparent;
-        margin: 0 calc(-1 * var(--t-padding));
+    &[tuiIcons] {
+        &::before {
+            z-index: 1;
+            block-size: var(--t-height);
+            margin-inline-end: 0.5rem;
+            pointer-events: none;
+        }
+
+        &::after {
+            position: relative;
+            block-size: var(--t-height);
+            cursor: pointer;
+            border-inline: var(--t-padding) solid transparent;
+            margin: 0 calc(-1 * var(--t-padding));
+        }
     }
 
     &::-webkit-resizer {
@@ -67,24 +84,10 @@ tui-textfield {
         background-clip: content-box;
     }
 
-    label,
+    [tuiLabel],
     & > .t-content,
     & > .t-template {
         pointer-events: none;
-    }
-
-    input,
-    select,
-    textarea {
-        font: inherit;
-        resize: none;
-        outline: none;
-        padding-block: 1.125rem;
-        color: var(--tui-text-primary);
-
-        &[inputmode='none'] {
-            caret-color: transparent;
-        }
     }
 
     &[data-size='s'] {
@@ -110,14 +113,9 @@ tui-textfield {
         }
 
         &::after {
-            margin-inline: calc(0.625rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
+            margin-inline-start: calc(0.625rem - var(--t-padding));
+            margin-inline-end: calc(-0.125rem - var(--t-padding));
             font-size: 1rem;
-        }
-
-        input,
-        select,
-        textarea {
-            padding-block: 0.5rem;
         }
 
         & > .t-content {
@@ -148,13 +146,8 @@ tui-textfield {
         }
 
         &::after {
-            margin-inline: calc(0.25rem - var(--t-padding)) calc(-0.125rem - var(--t-padding));
-        }
-
-        input,
-        select,
-        textarea {
-            padding-block: 0.875rem;
+            margin-inline-start: calc(0.25rem - var(--t-padding));
+            margin-inline-end: calc(-0.125rem - var(--t-padding));
         }
 
         & > .t-content {
@@ -166,149 +159,92 @@ tui-textfield {
         --t-label: -0.7rem;
     }
 
-    /*
-    TODO: refactor to the following way after Chrome 105+ & Safari 15.4+
-    &:hover:has(input:not(:read-only)),
-    &:hover:has(textarea:not(:read-only)),
-    &:hover:has(select:not([data-mode='readonly'])) {
-        color: var(--tui-text-secondary);
-    }
-    */
-    &[tuiIcons]:hover {
-        color: var(--tui-text-secondary);
-
-        &:has(input:read-only):not([multi]),
-        &:has(textarea:read-only),
-        &:has(select[data-mode~='readonly']) {
-            color: var(--tui-text-tertiary);
-        }
-    }
-
-    &::before {
-        z-index: 1;
-        margin-inline-end: 0.5rem;
+    &:is(._disabled, [data-state='disabled']) {
         pointer-events: none;
-    }
-
-    &:has(:disabled:not(.t-filler, button, option, [tuiChip]))::before,
-    &:has(:disabled:not(.t-filler, button, option, [tuiChip]))::after,
-    &:has(:disabled:not(.t-filler, button, option, [tuiChip])) > .t-template {
         opacity: var(--tui-disabled-opacity);
-    }
 
-    // TODO: Fallback until Safari 15.4
-    &._disabled::before,
-    &._disabled::after,
-    &._disabled > .t-template {
-        opacity: var(--tui-disabled-opacity);
+        [tuiAppearance]:is(._disabled, :disabled, [data-state='disabled']) {
+            opacity: 1;
+        }
+
+        tui-icon {
+            display: none;
+        }
     }
 
     &._with-label {
         & > .t-template,
-        input:not([type='range']),
-        select:defined,
-        textarea:defined {
-            padding-block: calc(var(--t-height) / 3) 0;
+        .t-filler,
+        [tuiInput] {
+            padding-block-start: calc(var(--t-height) / 3);
+            padding-block-end: 0;
         }
-    }
 
-    &:not([data-focus='true'])._with-label {
-        & > .t-template,
-        input:not([type='range']),
-        select:defined,
-        textarea:defined {
-            &::placeholder,
-            &._empty {
-                color: transparent;
+        &:is(:not([data-focus='true']), [data-mode~='readonly']) {
+            & > .t-template,
+            [tuiInput] {
+                &::placeholder,
+                &._empty {
+                    color: transparent;
+                }
             }
         }
     }
 
     & > .t-template,
-    input:defined,
-    select:defined,
-    textarea:defined {
-        .fullsize();
-
+    .t-filler,
+    [tuiInput] {
+        position: absolute;
+        inset: 0 auto auto 0;
+        inline-size: stretch;
+        block-size: 100%;
         appearance: none;
+        background: none;
+        font: inherit;
+        resize: none;
+        outline: none;
+        color: var(--tui-text-primary);
         box-sizing: border-box;
         border-radius: inherit;
         border-width: 0;
         overscroll-behavior: none;
         // StackBlitz changes "0rem" to "0" breaking calc
-        padding-inline: calc(var(--t-start, ~'0rem') + var(--t-padding))
-            calc(var(--t-end, ~'0rem') + var(--t-side, ~'0rem') + var(--t-padding));
+        padding-inline-start: calc(var(--t-start, ~'0rem') + var(--t-padding));
+        padding-inline-end: calc(var(--t-end, ~'0rem') + var(--t-side, ~'0rem') + var(--t-padding));
+
+        &:is(input, textarea):read-only ~ .t-filler {
+            display: none;
+        }
 
         &:disabled {
             animation: tuiPresent 1s infinite;
+            opacity: 1;
+        }
+
+        &[inputmode='none'] {
+            caret-color: transparent;
         }
     }
 
     & > .t-template {
         display: flex;
+        block-size: 100%;
         align-items: center;
-        color: var(--tui-text-primary);
     }
 
-    &._with-template input:first-of-type,
-    &._with-template select,
-    &._with-template textarea {
+    &._with-template [tuiInput] {
         color: transparent !important;
     }
 
-    input:not([type='range']),
-    select:defined,
-    textarea:defined {
-        pointer-events: auto;
-        background: none;
-
-        &:not(select):read-only ~ .t-filler {
-            display: none;
-        }
-
-        &:disabled {
-            & ~ label,
-            & ~ .t-content {
-                opacity: var(--tui-disabled-opacity);
-
-                > tui-icon {
-                    display: none;
-                }
-            }
-        }
-
-        &:-webkit-autofill,
-        &:not(._empty):not(:placeholder-shown) {
-            & ~ label {
-                font: var(--t-label-font);
-                line-height: var(--t-height);
-                transform: translateY(var(--t-label-y));
-            }
-
-            &:not(:disabled)[data-mode~='invalid'] ~ label,
-            &:invalid:not(:disabled):not([data-mode]) ~ label {
-                color: var(--tui-text-negative);
-            }
-
-            &:not(:disabled):not([data-mode~='readonly']) ~ .t-content .t-clear {
-                display: flex;
-            }
-        }
-
-        &:not([data-mode~='readonly']) {
-            .appearance-focus({
-                &::placeholder,
-                &._empty {
-                    color: var(--tui-text-tertiary);
-                }
-
-                & ~ label {
-                    color: var(--tui-text-primary) !important;
-                    font: var(--t-label-font);
-                    line-height: var(--t-height);
-                    transform: translateY(var(--t-label-y));
-                }
-            });
+    [tuiInput]:-webkit-autofill,
+    [tuiInput][chrome-autofilled], /* Chrome on IOS */
+    [tuiInput]:not(._empty, :placeholder-shown),
+    &[multi][multi]:not(._empty) {
+        [tuiLabel],
+        &:not(tui-textfield) ~ [tuiLabel] {
+            font: var(--t-label-font);
+            line-height: var(--t-height);
+            transform: translateY(var(--t-label-y));
         }
     }
 
@@ -322,22 +258,18 @@ tui-textfield {
         flex: 1;
         align-self: flex-start;
         font-size: inherit;
+        user-select: none;
         line-height: var(--t-height);
         transition-duration: inherit;
     }
 
-    label:defined,
-    input:defined::placeholder,
-    textarea:defined::placeholder,
-    select:defined._empty {
+    [tuiLabel],
+    [tuiInput]::placeholder,
+    [tuiInput]._empty {
         color: var(--tui-text-secondary);
     }
 
     select {
-        &:not([data-mode~='readonly']) {
-            cursor: pointer;
-        }
-
         option[value='']:disabled {
             // Hide placeholder from native datalist (Windows OS only)
             color: transparent;
@@ -357,7 +289,8 @@ tui-textfield {
     }
 
     button,
-    a {
+    a,
+    tui-icon {
         pointer-events: auto;
     }
 
@@ -370,26 +303,21 @@ tui-textfield {
         margin-inline-start: auto;
         isolation: isolate;
         border-radius: inherit;
-
-        > tui-icon {
-            pointer-events: auto;
-        }
     }
 
     textarea ~ .t-content {
         min-inline-size: 0.5rem;
     }
 
-    .t-clear {
-        z-index: 1;
+    &:is([data-mode~='readonly'], [data-state='disabled'], ._empty) .t-clear,
+    [tuiInput]._empty ~ .t-content .t-clear,
+    [tuiInput]:disabled ~ .t-content .t-clear {
         display: none;
-        pointer-events: auto;
     }
 
-    & > .t-filler:defined {
+    .t-filler {
         pointer-events: none !important;
         color: var(--tui-text-tertiary);
-        opacity: 1;
     }
 
     [tuiFluidTypography] {
@@ -402,5 +330,28 @@ tui-textfield {
 
     &:has(input[type='tel']) {
         direction: ltr;
+    }
+
+    .appearance-invalid({
+        [tuiInput]:not(._empty) ~ [tuiLabel],
+        &[multi]:not(._empty) [tuiLabel] {
+            color: var(--tui-text-negative);
+        }
+    });
+
+    &:not([data-mode~='readonly']) {
+        .appearance-focus({
+            [tuiInput]::placeholder,
+            [tuiInput]._empty {
+                color: var(--tui-text-tertiary);
+            }
+
+            [tuiLabel] {
+                color: var(--tui-text-primary) !important;
+                font: var(--t-label-font);
+                line-height: var(--t-height);
+                transform: translateY(var(--t-label-y));
+            }
+        });
     }
 }

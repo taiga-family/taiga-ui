@@ -16,6 +16,7 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldContent,
 } from '@taiga-ui/core/components/textfield';
+import {TuiAppearanceProxy} from '@taiga-ui/kit/directives/appearance-proxy';
 import {expand, fromEvent, map, merge, Subject, switchMap, takeUntil, timer} from 'rxjs';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
@@ -35,6 +36,7 @@ const MIN_DELAY = 100;
     styleUrl: './input-number-step.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiAppearanceProxy],
     host: {
         ngSkipHydration: 'true',
         '(keydown.arrowDown.prevent)': 'onStep(-step())',

@@ -1,39 +1,32 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='textfield'] {
-    .transition(~'box-shadow, background-color, outline-color, border-color');
+    .transition(~'box-shadow, background-color, outline-color, border-color, color');
 
     --t-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
     background-color: var(--tui-background-base);
-    color: var(--tui-text-primary);
+    color: var(--tui-text-tertiary);
     box-shadow: var(--t-shadow);
     outline: 1px solid var(--tui-border-normal);
     outline-offset: -1px;
     border-width: 0;
 
-    // TODO: Remove tuiWrapper hack in v5
-    &:not([tuiWrapper])::before,
-    &:not([tuiWrapper])::after {
-        transition-property: color, transform;
-        color: var(--tui-text-tertiary);
+    &:is(input, textarea, select) {
+        color: var(--tui-text-primary) !important;
     }
 
-    .appearance-hover({
-        --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+    &::before,
+    &::after {
+        transition-property: transform;
+    }
 
-        &:not([tuiWrapper]):before,
-        &:not([tuiWrapper]):after {
+    &:not([data-mode~='readonly']) {
+        .appearance-hover({
+            --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
             color: var(--tui-text-secondary);
-        }
-    });
-
-    .appearance-active({
-        &:not([tuiWrapper]):before,
-        &:not([tuiWrapper]):after {
-            color: var(--tui-text-primary);
-        }
-    });
+        });
+    }
 
     .appearance-focus({
         box-shadow: none;
@@ -45,25 +38,35 @@
         box-shadow: none;
     });
 
-    &[data-mode~='invalid'][data-mode~='invalid'],
-    &:invalid:not([data-mode]),
-    &.tui-invalid:not([data-mode]) {
+    .appearance-invalid({
         outline-color: var(--tui-status-negative);
-    }
+    });
 
     &[data-mode~='readonly'],
-    input&:read-only:not([data-mode]) {
+    &[data-state='disabled'],
+    &:disabled,
+    &._disabled {
         background: transparent !important;
         box-shadow: none !important;
         outline-color: var(--tui-border-normal) !important;
     }
 
-    &[chrome-autofilled], /* Chrome on IOS */
-    &:-webkit-autofill {
+    [tuiInput][chrome-autofilled], /* Chrome on IOS */
+    [tuiInput]:-webkit-autofill,
+    &[tuiInput][chrome-autofilled], /* Chrome on IOS */
+    &[tuiInput]:-webkit-autofill {
         -webkit-text-fill-color: var(--tui-text-primary) !important;
         caret-color: var(--tui-text-primary) !important;
         box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
         transition: background-color 600000s 0s;
+        clip-path: inset(0.125rem round calc(var(--tui-radius-m) - 0.125rem));
+    }
+
+    &[data-size='l'] [tuiInput][chrome-autofilled], /* Chrome on IOS */
+    &[data-size='l'] [tuiInput]:-webkit-autofill,
+    &[data-size='l'][tuiInput][chrome-autofilled], /* Chrome on IOS */
+    &[data-size='l'][tuiInput]:-webkit-autofill {
+        clip-path: inset(0.125rem round calc(var(--tui-radius-l) - 0.125rem));
     }
 }
 
