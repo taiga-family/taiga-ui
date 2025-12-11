@@ -1,5 +1,6 @@
 import {isPlatformBrowser} from '@angular/common';
 import {inject, Injectable, type OnDestroy, PLATFORM_ID} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
@@ -17,7 +18,6 @@ import {
 } from 'rxjs';
 
 import {TuiTilesComponent} from './tiles.component';
-import {toObservable} from '@angular/core/rxjs-interop';
 
 @Injectable()
 export class TuiTileService implements OnDestroy {

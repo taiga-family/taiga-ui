@@ -2,7 +2,7 @@ import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-list';

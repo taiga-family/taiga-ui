@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import {tuiIsNumber} from '@taiga-ui/cdk/utils';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {take} from 'rxjs';
 

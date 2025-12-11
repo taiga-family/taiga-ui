@@ -4,7 +4,6 @@ import {
     effect,
     inject,
     input,
-    Input,
     type Signal,
     untracked,
 } from '@angular/core';
