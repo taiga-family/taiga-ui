@@ -28,7 +28,7 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
         '[style.--tui-slider-track-color]': 'options.trackColor',
         '[style.--tui-ticks-gradient]': 'ticksGradient()',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiSliderComponent {
