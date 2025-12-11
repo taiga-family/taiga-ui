@@ -36,7 +36,7 @@
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
                 [tuiAutoFocus]="!ios"
-                (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
+                (keydown.arrowDown)="list()[0]?.nativeElement?.focus()"
                 (ngModelChange)="search.set($event)"
             />
         </tui-textfield>

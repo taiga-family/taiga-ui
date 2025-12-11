@@ -4,9 +4,9 @@ import {
     Component,
     ElementRef,
     inject,
-    Input,
+    input,
     TemplateRef,
-    ViewChild,
+    viewChild,
     ViewContainerRef,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -17,7 +17,7 @@ import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrol
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options';
+import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 
 @Component({
     selector: 'textarea[tuiTextarea]',
@@ -36,35 +36,24 @@ import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options'
     },
 })
 export class TuiTextareaComponent implements AfterViewInit {
-    @ViewChild(TemplateRef)
-    private readonly template?: TemplateRef<any>;
-
+    private readonly template = viewChild.required(TemplateRef);
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
     private readonly vcr = inject(ViewContainerRef);
-
-    @ViewChild('text')
-    protected readonly text?: ElementRef<HTMLElement>;
+    private readonly text = viewChild('text', {read: ElementRef});
 
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
     protected readonly textfield = inject(TuiTextfieldComponent<string>);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 
-    @Input()
-    public min = this.options.min;
-
-    @Input()
-    public max = this.options.max;
-
-    @Input()
-    public content: TuiTextareaOptions['content'] = this.options.content;
+    public readonly min = input(this.options.min);
+    public readonly max = input(this.options.max);
+    public readonly content = input(this.options.content);
 
     public ngAfterViewInit(): void {
-        if (this.template) {
-            this.vcr.createEmbeddedView(this.template);
-        }
+        this.vcr.createEmbeddedView(this.template());
     }
 
     protected onScroll(): void {
-        this.text?.nativeElement.scrollTo({top: this.el.scrollTop});
+        this.text()?.nativeElement.scrollTo({top: this.el.scrollTop});
     }
 }

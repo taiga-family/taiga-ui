@@ -1,25 +1,24 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
     ViewEncapsulation,
 } from '@angular/core';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {defer} from 'rxjs';
+import {switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-input-inline',
-    imports: [AsyncPipe],
     templateUrl: './input-inline.template.html',
     styleUrl: './input-inline.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputInline {
-    @ContentChild(NgControl)
-    private readonly control?: NgControl;
-
-    protected readonly value$ = defer(() => tuiControlValue(this.control));
+    protected readonly control = contentChild(NgControl);
+    protected readonly value = toSignal(
+        toObservable(this.control).pipe(switchMap(tuiControlValue)),
+    );
 }

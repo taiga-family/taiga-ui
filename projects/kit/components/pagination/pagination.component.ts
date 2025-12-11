@@ -6,10 +6,8 @@ import {
     inject,
     input,
     model,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
@@ -33,11 +31,8 @@ const ACTIVE_ITEM_LENGTH = 1;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPagination {
-    @ViewChildren('element', {read: ElementRef})
-    private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
+    private readonly els = viewChildren('element', {read: ElementRef});
     private readonly el = tuiInjectElement();
-
     private readonly maxHalfLength = computed(
         () => this.sidePadding() + ELLIPSIS_ITEM_LENGTH + this.activePadding(),
     );
@@ -49,7 +44,6 @@ export class TuiPagination {
     private readonly lastElementIndex = computed(() => this.elementsLength() - 1);
     private readonly itemsFit = computed(() => this.length() <= this.maxElementsLength());
     private readonly lastIndex = computed(() => this.length() - 1);
-
     private readonly reverseIndex = computed(
         (): number => this.lastIndex() - this.index(),
     );
@@ -57,9 +51,7 @@ export class TuiPagination {
     protected readonly texts = inject(TUI_PAGINATION_TEXTS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_PAGINATION_OPTIONS);
-
     protected readonly buttonSize = computed(() => (this.size() === 'm' ? 'xs' : 's'));
-
     protected readonly elementsLength = computed(() =>
         this.itemsFit() ? this.length() : this.maxElementsLength(),
     );
@@ -94,7 +86,7 @@ export class TuiPagination {
         }
 
         return (
-            this.els.find((_, index) => index === activeElementIndex)?.nativeElement ??
+            this.els().find((_, index) => index === activeElementIndex)?.nativeElement ??
             null
         );
     });
@@ -152,11 +144,11 @@ export class TuiPagination {
     }
 
     protected onElementKeyDownArrowLeft(element: HTMLElement): void {
-        if (element === this.els.first.nativeElement) {
+        if (element === this.els()[0]?.nativeElement) {
             return;
         }
 
-        const previous = this.els.find(
+        const previous = this.els().find(
             (_, index, array) => array[index + 1]?.nativeElement === element,
         );
 
@@ -164,11 +156,11 @@ export class TuiPagination {
     }
 
     protected onElementKeyDownArrowRight(element: HTMLElement): void {
-        if (element === this.els.last.nativeElement) {
+        if (element === this.els()[this.els().length - 1]?.nativeElement) {
             return;
         }
 
-        const next = this.els.find(
+        const next = this.els().find(
             (_, index, array) => array[index - 1]?.nativeElement === element,
         );
 

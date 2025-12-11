@@ -18,8 +18,8 @@ $track-inset: (
 
     display: flex;
     font: var(--tui-font-body-s);
-    margin-inline-start: var(--t-offset);
-    margin-inline-end: var(--t-offset);
+    color: var(--tui-text-secondary);
+    margin: 0.25rem var(--t-offset) 0;
 
     & > * {
         position: relative;
@@ -27,44 +27,46 @@ $track-inset: (
         text-align: center;
 
         &:first-child {
-            left: calc(-1 * var(--t-offset));
             inset-inline-start: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: start;
         }
 
         &:last-child {
-            right: calc(-1 * var(--t-offset));
+            inset-inline-end: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: end;
-
-            @supports (inset-inline-end: 0) {
-                right: unset;
-                inset-inline-end: calc(-1 * var(--t-offset));
-            }
         }
-    }
-
-    /* TODO(v5): delete */
-    tui-input-slider + & {
-        margin-inline-start: calc(var(--tui-radius-m) / 2 + var(--t-offset));
-    }
-
-    /* TODO: add :has([tuiInputSlider]) */
-    tui-textfield + & {
-        --t-offset: calc(var(--tui-radius-m) / 2 + $thumb / 2);
-    }
-
-    /* TODO: add :has([tuiInputSlider]) */
-    tui-textfield[data-size='l'] + & {
-        --t-offset: calc(var(--tui-radius-l) / 2 + $thumb / 2);
     }
 
     tui-range + & {
         --t-offset: $thumb;
     }
 
-    tui-input-range + & {
-        --t-offset: calc(map-get($track-inset, $input-size) + $thumb);
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='l'] + & {
+        --t-offset: calc(map-get($track-inset, 'l') + $thumb / 2);
+    }
+
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='m'] + & {
+        --t-offset: calc(map-get($track-inset, 'm') + $thumb / 2);
+    }
+
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='s'] + & {
+        --t-offset: calc(map-get($track-inset, 's') + $thumb / 2);
+    }
+
+    tui-input-range[data-size='l'] + & {
+        --t-offset: calc(map-get($track-inset, 'l') + $thumb);
+    }
+
+    tui-input-range[data-size='m'] + & {
+        --t-offset: calc(map-get($track-inset, 'm') + $thumb);
+    }
+
+    tui-input-range[data-size='s'] + & {
+        --t-offset: calc(map-get($track-inset, 's') + $thumb);
     }
 }

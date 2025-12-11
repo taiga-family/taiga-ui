@@ -33,12 +33,12 @@
             }
         </h1>
     }
-    @if (tabConnectors.length) {
+    @if (tabConnectors().length) {
         <tui-tabs-with-more
             class="t-tabs"
             [(activeItemIndex)]="activeItemIndex"
         >
-            @for (tab of tabConnectors; track tab) {
+            @for (tab of tabConnectors(); track tab) {
                 @if (tab.pageTab() || defaultTabs[$index]; as tabName) {
                     <a
                         *tuiItem
@@ -87,13 +87,13 @@
             [seeAlso]="seeAlso()"
         />
     }
-    @for (tab of tabConnectors; track tab) {
+    @for (tab of tabConnectors(); track tab) {
         @if ($index === activeItemIndex()) {
             <ng-container [ngTemplateOutlet]="tab.template" />
         }
     }
     @for (tab of tabs | keyvalue; track tab) {
-        @if ($index + tabConnectors.length === activeItemIndex()) {
+        @if ($index + tabConnectors().length === activeItemIndex()) {
             <ng-container *polymorpheusOutlet="tab.value as text">{{ text }}</ng-container>
         }
     }

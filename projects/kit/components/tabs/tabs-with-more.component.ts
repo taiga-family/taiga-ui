@@ -1,21 +1,19 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewChecked,
     type AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    contentChildren,
+    effect,
     ElementRef,
-    EventEmitter,
     inject,
-    Input,
-    Output,
-    type QueryList,
+    input,
+    model,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -24,7 +22,6 @@ import {tuiGetClosestFocusable, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
-import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -38,7 +35,6 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
 @Component({
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     imports: [
-        AsyncPipe,
         NgTemplateOutlet,
         PolymorpheusOutlet,
         TuiChevron,
@@ -50,67 +46,44 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     styleUrl: './tabs-with-more.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABS_PROVIDERS,
-    host: {
-        '[attr.data-size]': 'size',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
-    @ViewChild(TuiTab, {read: ElementRef})
-    private readonly moreButton?: ElementRef<HTMLButtonElement>;
-
-    @ViewChild(TuiTabsHorizontal, {read: ElementRef})
-    private readonly dir?: ElementRef<HTMLButtonElement>;
-
+    private readonly moreButton = viewChild(TuiTab, {read: ElementRef});
+    private readonly dir = viewChild(TuiTabsHorizontal, {read: ElementRef});
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 
-    @ContentChildren(TuiItem, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
+    protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
     protected open = false;
-
-    @Input()
-    public size: TuiSizeL = this.options.size;
-
-    @Input()
-    public moreContent: PolymorpheusContent;
-
-    @Input()
-    public dropdownContent: PolymorpheusContent<TuiContext<TuiActiveZone>>;
-
-    @Input()
-    public underline = this.options.underline;
-
-    @Input()
-    public itemsLimit = this.options.itemsLimit;
-
-    @Output()
-    public readonly activeItemIndexChange = new EventEmitter<number>();
-
-    public activeItemIndex = 0;
-
-    @Input('activeItemIndex')
-    public set itemIndex(activeItemIndex: number) {
-        this.activeItemIndex = activeItemIndex;
+    protected readonly sync = effect(() => {
+        this.activeItemIndex();
         this.maxIndex = this.getMaxIndex();
-    }
+    });
+
+    public readonly activeItemIndex = model(0);
+    public readonly size = input(this.options.size);
+    public readonly underline = input(this.options.underline);
+    public readonly itemsLimit = input(this.options.itemsLimit);
+    public readonly moreContent = input<PolymorpheusContent>();
+    public readonly dropdownContent =
+        input<PolymorpheusContent<TuiContext<TuiActiveZone>>>();
 
     public get lastVisibleIndex(): number {
-        if (this.itemsLimit + 1 >= this.items.length) {
+        if (this.itemsLimit() + 1 >= this.items().length) {
             return this.maxIndex;
         }
 
         const offset =
-            this.itemsLimit - 1 > this.activeItemIndex || !this.options.exposeActive
+            this.itemsLimit() - 1 > this.activeItemIndex() || !this.options.exposeActive
                 ? 1
                 : 2;
 
-        return Math.min(this.itemsLimit - offset, this.maxIndex);
+        return Math.min(this.itemsLimit() - offset, this.maxIndex);
     }
 
     public ngAfterViewInit(): void {
@@ -137,11 +110,11 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     protected get activeElement(): HTMLElement | null {
         const {tabs} = this;
-        const safeActiveIndex = tuiClamp(this.activeItemIndex || 0, 0, tabs.length - 2);
+        const safeActiveIndex = tuiClamp(this.activeItemIndex() || 0, 0, tabs.length - 2);
 
         return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
             ? tabs[safeActiveIndex] || null
-            : this.moreButton?.nativeElement || null;
+            : this.moreButton()?.nativeElement || null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -149,28 +122,24 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get isMoreVisible(): boolean {
-        return this.lastVisibleIndex < this.items.length - 1;
+        return this.lastVisibleIndex < this.items().length - 1;
     }
 
     protected get isMoreFocusable(): boolean {
-        return !!this.moreButton && tuiIsFocused(this.moreButton.nativeElement);
+        return tuiIsFocused(this.moreButton()?.nativeElement);
     }
 
     protected get isMoreActive(): boolean {
         return (
             this.open ||
-            (!this.options.exposeActive && this.lastVisibleIndex < this.activeItemIndex)
+            (!this.options.exposeActive && this.lastVisibleIndex < this.activeItemIndex())
         );
-    }
-
-    protected onActiveItemIndexChange(activeItemIndex: number): void {
-        this.updateActiveItemIndex(activeItemIndex);
     }
 
     protected onClick(index: number): void {
         this.open = false;
         this.focusMore();
-        this.updateActiveItemIndex(index);
+        this.activeItemIndex.set(index);
     }
 
     protected onArrowRight(event: Event): void {
@@ -208,7 +177,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected isOverflown(index: number): boolean {
-        return index !== this.activeItemIndex || !this.options.exposeActive;
+        return index !== this.activeItemIndex() || !this.options.exposeActive;
     }
 
     protected shouldShow(index: number): boolean {
@@ -218,13 +187,11 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     // TODO drop comment after fix issue: https://github.com/typescript-eslint/typescript-eslint/issues/11771
     // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private get margin(): number {
-        return this.size === 'l' ? 24 : 16;
+        return this.size() === 'l' ? 24 : 16;
     }
 
     private focusMore(): void {
-        if (this.moreButton) {
-            this.moreButton.nativeElement.focus();
-        }
+        this.moreButton()?.nativeElement.focus();
     }
 
     private getMaxIndex(): number {
@@ -236,7 +203,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
         const {exposeActive, minMoreWidth} = this.options;
         const {clientWidth} = this.el;
-        const active = tabs[activeItemIndex];
+        const active = tabs[activeItemIndex()];
         const activeWidth = active?.scrollWidth ?? 0;
         const moreWidth = Math.max(tabs[tabs.length - 1]?.scrollWidth ?? 0, minMoreWidth);
         let maxIndex = tabs.length - 2;
@@ -253,7 +220,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
             total -= (tabs[maxIndex]?.scrollWidth ?? 0) + margin;
             maxIndex--;
 
-            const activeDisplaced = exposeActive && activeItemIndex > maxIndex;
+            const activeDisplaced = exposeActive && activeItemIndex() > maxIndex;
             const activeOffset = activeDisplaced ? activeWidth + margin : 0;
             const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
@@ -267,15 +234,10 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         return -1;
     }
 
-    private updateActiveItemIndex(activeItemIndex: number): void {
-        this.itemIndex = activeItemIndex;
-        this.activeItemIndexChange.emit(activeItemIndex);
-    }
-
     private refresh(): void {
         const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
-        this.dir?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
-        this.dir?.nativeElement.style.setProperty('--t-width', tuiPx(offsetWidth));
+        this.dir()?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.dir()?.nativeElement.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }
