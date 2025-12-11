@@ -876,6 +876,12 @@ export class Example {}
 </label>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
 </tui-app-bar>
+<tui-app-bar>
+<button tuiAppBarBack tuiSlot="left" type="button" > Back </button>
+<div>
+<progress size="s" tuiProgressBar [max]="100" [value]="35" ></progress>
+</div>
+</tui-app-bar>
 </section>
 <h3 class="tui-space_top-8">Android</h3>
 <section tuiPlatform="android">
@@ -894,6 +900,10 @@ export class Example {}
 </label>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
 </tui-app-bar>
+<tui-app-bar>
+<button tuiAppBarBack tuiSlot="left" type="button" > Back </button>
+<progress size="s" tuiProgressBar [max]="100" [value]="35" ></progress>
+</tui-app-bar>
 </section>
 ```
 **TypeScript:**
@@ -903,10 +913,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiProgressBar} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiTitle],
+    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiProgressBar, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -14184,8 +14195,8 @@ export default class Example {
 <button type="button">Stepper</button>
 <button type="button">Tabs</button>
 </tui-segmented> @switch (segmentedIndex) { @case (0) { <tui-stepper [activeItemIndex]="index()">
-<button tuiStep [disabled]="true" > Common </button>
-<button tuiStep [disabled]="true" > Network access </button>
+<button tuiStep [disabled]="index() === 1" > Common </button>
+<button tuiStep [disabled]="index() === 0" > Network access </button>
 </tui-stepper> } @case (1) { <tui-tabs size="m" underline="var(--tui-background-accent-opposite-pressed)" [activeItemIndex]="index()" (activeItemIndexChange)="index.set($event)" >
 <button tuiTab>Common</button>
 <button tuiTab>Network access</button>
