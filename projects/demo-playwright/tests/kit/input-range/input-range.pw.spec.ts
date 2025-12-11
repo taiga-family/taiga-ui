@@ -1,6 +1,8 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    CHAR_ZERO_WIDTH_SPACE,
     TuiDocumentationApiPagePO,
+    TuiDocumentationPagePO,
     tuiGoto,
     TuiInputRangePO,
 } from '@demo-playwright/utils';
@@ -214,7 +216,7 @@ describe('InputRange', () => {
             test('clicking on the END side changes only the END value (+ focuses the END textfield)', async ({
                 page,
             }) => {
-                const box = await inputRange.range.right.boundingBox().then((x) => x!);
+                const box = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
 
@@ -229,7 +231,7 @@ describe('InputRange', () => {
             test('clicking on the START side changes only the START value (+ focuses the START textfield)', async ({
                 page,
             }) => {
-                const box = await inputRange.range.left.boundingBox().then((x) => x!);
+                const box = await inputRange.range.start.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.x, box.height / 2 + box.y);
 
@@ -255,7 +257,7 @@ describe('InputRange', () => {
             test('click on the START thumb (with NO value changes) => focuses the START textfield', async ({
                 page,
             }) => {
-                const box = await inputRange.range.left.boundingBox().then((x) => x!);
+                const box = await inputRange.range.start.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.x, box.height / 2 + box.y);
 
@@ -270,7 +272,7 @@ describe('InputRange', () => {
             test('click on the END thumb (with NO value changes) => focuses the END textfield', async ({
                 page,
             }) => {
-                const box = await inputRange.range.right.boundingBox().then((x) => x!);
+                const box = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
 
@@ -305,7 +307,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
 
-                const box = await inputRange.range.right.boundingBox().then((x) => x!);
+                const box = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
 
@@ -328,7 +330,7 @@ describe('InputRange', () => {
                     .soft(example)
                     .toHaveScreenshot('22-input-range-start0-end10.png');
 
-                const box = await inputRange.range.left.boundingBox().then((x) => x!);
+                const box = await inputRange.range.start.boundingBox().then((x) => x!);
 
                 await page.mouse.click(box.x, box.height / 2 + box.y);
 
@@ -343,16 +345,16 @@ describe('InputRange', () => {
             test('does not focus anything if no textfield was focused before', async ({
                 page,
             }) => {
-                const leftBox = await inputRange.range.left.boundingBox().then((x) => x!);
+                const leftBox = await inputRange.range.start
+                    .boundingBox()
+                    .then((x) => x!);
 
                 await page.mouse.click(leftBox.x, leftBox.height / 2 + leftBox.y);
 
                 await expect(inputRange.textfieldStart).not.toBeFocused();
                 await expect(inputRange.textfieldEnd).not.toBeFocused();
 
-                const rightBox = await inputRange.range.right
-                    .boundingBox()
-                    .then((x) => x!);
+                const rightBox = await inputRange.range.end.boundingBox().then((x) => x!);
 
                 await page.mouse.click(
                     rightBox.width + rightBox.x,
@@ -490,6 +492,122 @@ describe('InputRange', () => {
                     );
                 });
             });
+        });
+    });
+
+    describe('Using negative values with hidden minus sign', () => {
+        beforeEach(async ({page}) => {
+            await tuiGoto(page, DemoRoute.InputRange);
+
+            example = new TuiDocumentationPagePO(page).getExample('#hidden-minus-sign');
+            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+        });
+
+        function control([start, end]: [number, number]): RegExp {
+            return new RegExp(String.raw`Control value:\[\s+${start},\s+${end}\s+\]`);
+        }
+
+        describe('still keeps last control value when all digits are erased', () => {
+            test('for start textfield', async () => {
+                await inputRange.textfieldStart.focus();
+                await inputRange.textfieldStart.clear();
+
+                await expect(inputRange.textfieldStart).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE} days ago`,
+                );
+                await expect(example).toContainText(control([-30, 0]));
+            });
+
+            test('for end textfield', async () => {
+                await inputRange.textfieldEnd.focus();
+                await inputRange.textfieldEnd.press('Backspace');
+
+                await expect(inputRange.textfieldEnd).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE} days ago`,
+                );
+                await expect(example).toContainText(control([-30, 0]));
+            });
+
+            test('fill empty textfield with control value on blur', async () => {
+                await inputRange.textfieldStart.focus();
+                await inputRange.textfieldStart.clear();
+                await expect(inputRange.textfieldStart).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE} days ago`,
+                );
+
+                await inputRange.textfieldStart.blur();
+                await expect(inputRange.textfieldStart).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}30 days ago`,
+                );
+            });
+        });
+
+        describe('allows to enter new valid value after erasing all', () => {
+            test('for start textfield', async () => {
+                await inputRange.textfieldStart.focus();
+                await inputRange.textfieldStart.clear();
+
+                await inputRange.textfieldStart.pressSequentially('5');
+                await expect(inputRange.textfieldStart).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}5 days ago`,
+                );
+                await expect(example).toContainText(control([-5, 0]));
+            });
+
+            test('for end textfield', async () => {
+                await inputRange.textfieldEnd.focus();
+                await inputRange.textfieldEnd.press('Backspace');
+                await expect(inputRange.textfieldEnd).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE} days ago`,
+                );
+
+                await inputRange.textfieldEnd.pressSequentially('1');
+                await expect(inputRange.textfieldEnd).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}1 day ago`,
+                );
+                await expect(example).toContainText(control([-30, -1]));
+            });
+        });
+
+        describe('keyboard arrows', () => {
+            test('Arrow up increase negative number (even if minus is hidden)', async ({
+                page,
+            }) => {
+                await inputRange.textfieldStart.focus();
+
+                await expect(inputRange.textfieldStart).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}30 days ago`,
+                );
+                await page.keyboard.down('ArrowUp');
+                await expect(inputRange.textfieldStart).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}29 days ago`,
+                );
+                await expect(example).toContainText(control([-29, 0]));
+            });
+
+            test('Arrow down decreases negative number (even if minus is hidden)', async ({
+                page,
+            }) => {
+                await inputRange.textfieldEnd.focus();
+
+                await expect(inputRange.textfieldEnd).toHaveValue('0 days ago');
+                await page.keyboard.down('ArrowDown');
+                await expect(inputRange.textfieldEnd).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}1 day ago`,
+                );
+                await expect(example).toContainText(control([-30, -1]));
+            });
+        });
+
+        test('interaction with slider changes control value', async () => {
+            const {width} = await inputRange.range.host.boundingBox().then((x) => x!);
+
+            await inputRange.range.host.click({position: {x: width * 0.4, y: 0}});
+
+            await expect(inputRange.textfieldStart).toHaveValue(
+                `${CHAR_ZERO_WIDTH_SPACE}18 days ago`,
+            );
+            await expect(example).toContainText(control([-18, 0]));
         });
     });
 });

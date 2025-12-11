@@ -1,6 +1,5 @@
 import {AsyncPipe} from '@angular/common';
 import {
-    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -28,6 +27,7 @@ import {
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
@@ -55,6 +55,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         tuiAsDataListHost(TuiTextfieldComponent),
     ],
     hostDirectives: [
+        TuiAppearance,
         TuiDropdownDirective,
         TuiDropdownFixed,
         TuiWithDropdownOpen,
@@ -68,10 +69,10 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         '[class._with-label]': 'hasLabel', // TODO :has([tuiLabel]
         '[class._with-template]': 'content() && control()?.value != null',
         '[class._disabled]': 'input()?.nativeElement?.disabled', // TODO :has([tuiInput]:disabled)
-        '[style.transition]': '"none"',
         '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
         '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
         '(click.self.prevent)': '0',
+        // TODO preventing breaks resize: both, but not preventing breaks focus, fix
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
         '(tuiActiveZoneChange)': '!$event && control()?.valueAccessor?.onTouched?.()',
@@ -121,12 +122,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');
     public readonly value = tuiValue(this.input);
-
-    constructor() {
-        // TODO: Replace with TuiTransitioned when fixed:
-        // https://github.com/angular/angular/issues/57846
-        afterNextRender(() => this.el.style.setProperty('transition', ''));
-    }
 
     public get id(): string {
         return this.input()?.nativeElement.id || this.autoId;

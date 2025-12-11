@@ -1,23 +1,14 @@
-<tui-textfield [content]="control.value?.daySame(today) ? 'Today' : ''">
+<tui-textfield>
     <label tuiLabel>Choose a date</label>
     <input
         tuiInputDate
-        [formControl]="control"
+        [(ngModel)]="value"
     />
-    <ng-template
-        let-close
-        tuiDropdown
-    >
-        <tui-calendar />
-        <button
-            appearance="action"
-            size="m"
-            tuiButton
-            type="button"
-            class="button"
-            (click)="control.setValue(today); close()"
-        >
-            Today
-        </button>
-    </ng-template>
+    <tui-calendar
+        *tuiDropdown
+        [markerHandler]="markerHandler"
+        [month]="value ?? defaultActiveMonth()"
+        [showAdjacent]="false"
+        (monthChange)="defaultActiveMonth.set($event)"
+    />
 </tui-textfield>

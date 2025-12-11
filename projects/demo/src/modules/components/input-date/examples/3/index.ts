@@ -1,33 +1,19 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiError, tuiValidationErrorsProvider} from '@taiga-ui/core';
-import {TuiInputDate, TuiUnfinishedValidator} from '@taiga-ui/kit';
-import {TuiForm} from '@taiga-ui/layout';
+import {TuiDay} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiButton,
-        TuiError,
-        TuiForm,
-        TuiInputDate,
-        TuiUnfinishedValidator,
-    ],
+    imports: [ReactiveFormsModule, TuiButton, TuiInputDate],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiValidationErrorsProvider({
-            tuiUnfinished: 'Either fill this or leave blank',
-            required: 'This field is required',
-        }),
-    ],
 })
 export default class Example {
-    protected readonly form = new FormGroup({
-        required: new FormControl(null, Validators.required),
-        optional: new FormControl(),
-    });
+    protected readonly control = new FormControl<TuiDay | null>(null);
+    protected readonly today = TuiDay.currentLocal();
 }

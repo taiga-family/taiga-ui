@@ -20,6 +20,7 @@ import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
+    TUI_INPUT_NUMBER_OPTIONS,
     TuiInputNumber,
     TuiInputNumberDirective,
     TuiQuantumValueTransformerBase,
@@ -62,6 +63,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     @ViewChild(TuiRange)
     private readonly range?: TuiRange;
 
+    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly quantum = signal(0);
     private readonly quantumTransformer = computed(
@@ -106,10 +108,13 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     public keySteps: TuiKeySteps | null = null;
 
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
-    public prefix: readonly [string, string] = ['', ''];
+    public prefix: readonly [string, string] = [this.options.prefix, this.options.prefix];
 
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
-    public postfix: readonly [string, string] = ['', ''];
+    public postfix: readonly [string, string] = [
+        this.options.postfix,
+        this.options.postfix,
+    ];
 
     public content = input<
         readonly [

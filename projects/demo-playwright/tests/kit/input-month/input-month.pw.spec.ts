@@ -109,7 +109,7 @@ describe('InputMonth', () => {
 
                 await expect(inputMonth.calendar).not.toBeAttached();
 
-                await inputMonth.clickOnIcon();
+                await inputMonth.clickOnIcon({force: true});
                 await expect(inputMonth.calendar).not.toBeAttached();
             });
 

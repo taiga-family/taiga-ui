@@ -35,10 +35,8 @@
 }
 
 .t-scroll {
-    .fullsize(absolute, inset);
-
-    top: 0.25rem;
-    bottom: 0.25rem;
+    position: absolute;
+    inset: 0.25rem 0;
     min-block-size: 0;
 
     ::ng-deep tui-textfield._with-label[data-size='m'] & {
@@ -58,7 +56,8 @@
     white-space: pre-wrap;
     word-break: break-word;
     overflow-wrap: break-word;
-    padding-inline: var(--t-start) calc(var(--t-end) + var(--t-side, ~'0rem'));
+    padding-inline-start: var(--t-start);
+    padding-inline-end: calc(var(--t-end) + var(--t-side, ~'0rem'));
     pointer-events: none;
     box-sizing: content-box;
     overflow: hidden;
