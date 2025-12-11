@@ -15,7 +15,7 @@ import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TUI_INPUT_NUMBER_OPTIONS,
     TuiInputNumber,
@@ -48,6 +48,7 @@ const transform = (x?: readonly [string, string] | null): readonly [string, stri
         tuiFallbackValueProvider([0, 0]),
     ],
     host: {
+        '[attr.data-size]': 'size()',
         // TODO: Delete this line and put `tui-input-range:has(.t-content-end) {--t-icon-lock: none}` to proprietary styles
         '[style.--t-icon-lock]': 'contentEnd() ? "none" : null',
     },
@@ -61,6 +62,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
 
+    protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected start = this.value()[0];
     protected end = this.value()[1];
     protected side: 'end' | 'start' = 'start';
