@@ -11,7 +11,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
     styleUrl: './push.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
-    host: {'[style.--t-lines]': 'lines'},
+    host: {'[style.--t-lines]': 'lines()'},
 })
 export class TuiPushComponent {
     protected readonly isString = tuiIsString;
