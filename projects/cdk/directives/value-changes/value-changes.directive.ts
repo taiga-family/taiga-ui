@@ -15,7 +15,7 @@ export class TuiValueChanges<T> implements DoCheck {
 
     private readonly tuiValueChanges$ = this.control$.pipe(
         distinctUntilChanged(),
-        switchMap((control) => tuiControlValue<T>(control)),
+        switchMap(tuiControlValue),
         distinctUntilChanged(),
         skip(1),
     );
