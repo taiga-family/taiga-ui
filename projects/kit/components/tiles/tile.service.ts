@@ -32,8 +32,8 @@ export class TuiTileService implements OnDestroy {
         this.tiles.order$.pipe(debounceTime(0, tuiZonefreeScheduler())),
     ]).pipe(map(([offset]) => offset));
 
-    public init(element: HTMLElement): void {
-        if (this.isBrowser) {
+    public init(element?: HTMLElement): void {
+        if (this.isBrowser && element) {
             this.sub.add(
                 this.position$.subscribe((offset) => {
                     this.setPosition(element, offset);

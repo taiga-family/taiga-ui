@@ -1,4 +1,4 @@
-<ng-template #template>
+<ng-template>
     @if (!isMobile) {
         <tui-scroll-controls
             class="t-scroll"
@@ -9,10 +9,10 @@
         #text
         aria-hidden="true"
         class="t-ghost"
-        [style.max-height.em]="1.25 * max"
-        [style.min-height.em]="1.25 * min"
+        [style.max-height.em]="1.25 * max()"
+        [style.min-height.em]="1.25 * min()"
     >
-        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: el.value}">{{ text }}</ng-container>
+        <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: el.value}">{{ text }}</ng-container>
     </span>
     <span class="t-hack"></span>
 </ng-template>

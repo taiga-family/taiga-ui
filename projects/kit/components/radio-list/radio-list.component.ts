@@ -2,25 +2,21 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    Input,
-    type QueryList,
-    ViewChildren,
+    inject,
+    input,
+    viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule, NgControl, type ValidatorFn, Validators} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {
-    EMPTY_QUERY,
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FALSE_HANDLER,
-} from '@taiga-ui/cdk/constants';
+import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
-import {
-    type TuiBooleanHandler,
-    type TuiContext,
-    type TuiIdentityMatcher,
-} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TUI_ITEMS_HANDLERS,
+    TuiWithItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -35,44 +31,32 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiRadioList)],
+    hostDirectives: [TuiWithItemsHandlers],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '(focusout)': 'onFocusOut()',
     },
 })
 export class TuiRadioList<T> extends TuiControl<T> {
-    @ViewChildren(NgControl)
-    private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
-
+    private readonly controls = viewChildren(NgControl);
     private readonly id = tuiGenerateId();
 
-    protected validator = computed(() =>
+    protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    protected readonly validator = computed(() =>
         this.invalid() ? ERROR : Validators.nullValidator,
     );
 
-    @Input()
-    public items: readonly T[] = [];
-
-    @Input()
-    public size: TuiSizeS = 'm';
-
-    @Input()
-    public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
-
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;
-
-    @Input()
-    public itemContent: PolymorpheusContent<TuiContext<T> & {active: boolean}> = ({
-        $implicit,
-    }) => String($implicit);
+    public readonly items = input<readonly T[]>();
+    public readonly size = input<TuiSizeS>('m');
+    public readonly itemContent =
+        input<PolymorpheusContent<TuiContext<T> & {active: boolean}>>(TUI_STRINGIFY);
 
     protected get name(): string {
         return `${this.control.name}-${this.id}`;
     }
 
     protected onFocusOut(): void {
-        this.controls.forEach((control) => control.control?.markAsTouched());
+        this.controls().forEach((control) => control.control?.markAsTouched());
 
         if (!this.touched()) {
             this.onTouched();
@@ -82,6 +66,6 @@ export class TuiRadioList<T> extends TuiControl<T> {
     protected itemIsActive(item: T): boolean {
         return this.value() === null
             ? item === null
-            : this.identityMatcher(this.value(), item);
+            : this.handlers.identityMatcher()(this.value(), item);
     }
 }

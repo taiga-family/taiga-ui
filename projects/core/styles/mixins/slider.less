@@ -16,8 +16,8 @@
 
     display: flex;
     font: var(--tui-font-body-s);
-    margin-inline-start: var(--t-offset);
-    margin-inline-end: var(--t-offset);
+    color: var(--tui-text-secondary);
+    margin: 0.25rem var(--t-offset) 0;
 
     & > * {
         position: relative;
@@ -25,21 +25,15 @@
         text-align: center;
 
         &:first-child {
-            left: calc(-1 * var(--t-offset));
             inset-inline-start: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: start;
         }
 
         &:last-child {
-            right: calc(-1 * var(--t-offset));
+            inset-inline-end: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: end;
-
-            @supports (inset-inline-end: 0) {
-                right: unset;
-                inset-inline-end: calc(-1 * var(--t-offset));
-            }
         }
     }
 

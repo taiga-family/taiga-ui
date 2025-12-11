@@ -74,7 +74,6 @@ interface User {
                     />
                     <tui-data-list-wrapper
                         *tuiDropdown
-                        new
                         [itemContent]="template"
                         [items]="users"
                     />
@@ -98,7 +97,6 @@ interface User {
 
                     <ng-container *tuiDropdown>
                         <tui-data-list-wrapper
-                            new
                             tuiMultiSelectGroup
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"

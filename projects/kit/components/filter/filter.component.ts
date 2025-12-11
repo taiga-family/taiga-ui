@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {
@@ -10,7 +11,7 @@ import {
 import {TuiHintOverflow} from '@taiga-ui/core/portals/hint';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TUI_BLOCK_OPTIONS, TuiBlock} from '@taiga-ui/kit/components/block';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tui-filter',
@@ -30,9 +31,7 @@ export class TuiFilter<T> extends TuiControl<readonly T[]> {
     public readonly items = input<readonly T[]>([]);
     public readonly size = input(inject(TUI_BLOCK_OPTIONS).size || 'l');
     public readonly badgeHandler = input<TuiHandler<T, number>>((item) => Number(item));
-    public readonly content = input<PolymorpheusContent>(({$implicit}) =>
-        String($implicit),
-    );
+    public readonly content = input(TUI_STRINGIFY);
 
     public readonly toggledItem = output<T>();
 

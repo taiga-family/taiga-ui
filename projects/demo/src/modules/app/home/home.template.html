@@ -24,10 +24,10 @@
             <tui-doc-tab src="assets/icons/nx.svg">Nx</tui-doc-tab>
         </button>
     </tui-tabs-with-more>
-    @if (add.activeItemIndex === 0) {
+    @if (add.activeItemIndex() === 0) {
         <tui-doc-code code="ng add taiga-ui" />
     }
-    @if (add.activeItemIndex === 1) {
+    @if (add.activeItemIndex() === 1) {
         <tui-doc-code [code]="nxAdd" />
     }
 
@@ -120,10 +120,10 @@
                 <tui-doc-tab src="assets/icons/npm.svg">Addons packages (optional)</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        @if (install.activeItemIndex === 0) {
+        @if (install.activeItemIndex() === 0) {
             <tui-doc-code [code]="main" />
         }
-        @if (install.activeItemIndex === 1) {
+        @if (install.activeItemIndex() === 1) {
             <tui-doc-code [code]="addons" />
         }
 
@@ -167,16 +167,16 @@
                 <tui-doc-tab src="assets/icons/css.svg">my.component.(less,scss)</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        @if (styles.activeItemIndex === 0) {
+        @if (styles.activeItemIndex() === 0) {
             <tui-doc-code [code]="angularJsonStyles" />
         }
-        @if (styles.activeItemIndex === 1) {
+        @if (styles.activeItemIndex() === 1) {
             <tui-doc-code [code]="projectJsonStyles" />
         }
-        @if (styles.activeItemIndex === 2) {
+        @if (styles.activeItemIndex() === 2) {
             <tui-doc-code [code]="componentsStyles" />
         }
-        @if (styles.activeItemIndex === 3) {
+        @if (styles.activeItemIndex() === 3) {
             <tui-doc-code [code]="importLocalLess" />
         }
 
@@ -206,10 +206,10 @@
                 <tui-doc-tab src="assets/icons/html.svg">app.component.html</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        @if (ngStandalone.activeItemIndex === 0) {
+        @if (ngStandalone.activeItemIndex() === 0) {
             <tui-doc-code [code]="standalone" />
         }
-        @if (ngStandalone.activeItemIndex === 1) {
+        @if (ngStandalone.activeItemIndex() === 1) {
             <tui-doc-code [code]="appTemplate" />
         }
 
@@ -256,10 +256,10 @@
                 <tui-doc-tab src="assets/icons/nx.svg">project.json</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        @if (icons.activeItemIndex === 0) {
+        @if (icons.activeItemIndex() === 0) {
             <tui-doc-code [code]="assets" />
         }
-        @if (icons.activeItemIndex === 1) {
+        @if (icons.activeItemIndex() === 1) {
             <tui-doc-code [code]="nxAssets" />
         }
     </div>
@@ -288,10 +288,10 @@
             <tui-doc-tab src="assets/icons/nx.svg">Nx</tui-doc-tab>
         </button>
     </tui-tabs-with-more>
-    @if (update.activeItemIndex === 0) {
+    @if (update.activeItemIndex() === 0) {
         <tui-doc-code code="ng update &#64;taiga-ui/cdk" />
     }
-    @if (update.activeItemIndex === 1) {
+    @if (update.activeItemIndex() === 1) {
         <tui-doc-code [code]="nxMigrate" />
     }
 </section>

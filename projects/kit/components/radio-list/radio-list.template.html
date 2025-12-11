@@ -1,22 +1,24 @@
-@for (item of items; track item) {
+@for (item of items(); track item) {
     <label
         class="t-item"
-        [class.t-item_disabled]="disabled() || disabledItemHandler(item)"
+        [class.t-item_disabled]="disabled() || handlers.disabledItemHandler()(item)"
     >
         <input
             tuiRadio
             type="radio"
-            [disabled]="disabled() || disabledItemHandler(item)"
-            [identityMatcher]="identityMatcher"
+            [disabled]="disabled() || handlers.disabledItemHandler()(item)"
+            [identityMatcher]="handlers.identityMatcher()"
             [name]="name"
             [ngModel]="value()"
             [ngModelOptions]="{standalone: true}"
-            [size]="size"
+            [size]="size()"
             [tuiValidator]="validator()"
             [value]="item"
             (ngModelChange)="onChange($event)"
         />
-        <ng-container *polymorpheusOutlet="itemContent as text; context: {$implicit: item, active: itemIsActive(item)}">
+        <ng-container
+            *polymorpheusOutlet="itemContent() as text; context: {$implicit: item, active: itemIsActive(item)}"
+        >
             {{ text }}
         </ng-container>
     </label>
