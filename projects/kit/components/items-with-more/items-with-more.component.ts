@@ -2,6 +2,7 @@ import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     contentChild,
     contentChildren,
     inject,
@@ -54,24 +55,21 @@ export class TuiItemsWithMoreComponent {
         descendants: true,
     });
 
+    protected readonly isMoreHidden = computed(
+        (index = this.lastIndex()) =>
+            (index >= this.items().length - 1 && this.directive.align() === 'end') ||
+            (!index && this.directive.align() === 'start'),
+    );
+
     public readonly lastIndexChange = outputFromObservable(this.service);
     public readonly lastIndex = toSignal(this.service, {initialValue: 0});
 
-    protected get isMoreHidden(): boolean {
-        const {computedSide} = this.directive;
-
-        return (
-            (this.lastIndex() >= this.items().length - 1 && computedSide === 'end') ||
-            (!this.lastIndex() && computedSide === 'start')
-        );
-    }
-
     protected isHidden(index: number): boolean {
-        const {computedSide, required} = this.directive;
+        const {align, required} = this.directive;
 
         return (
-            (index > this.lastIndex() && index !== required && computedSide === 'end') ||
-            (index < this.lastIndex() && index !== required && computedSide === 'start')
+            (index > this.lastIndex() && index !== required() && align() === 'end') ||
+            (index < this.lastIndex() && index !== required() && align() === 'start')
         );
     }
 }

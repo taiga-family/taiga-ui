@@ -16,9 +16,9 @@
     >
         <img
             class="t-ipi-flag"
-            [alt]="names()[code()]"
+            [alt]="names()[countryIsoCode()]"
             [class.t-ipi-flag_small]="size() === 's'"
-            [src]="code() | tuiFlag"
+            [src]="countryIsoCode() | tuiFlag"
         />
     </button>
 </ng-container>
@@ -44,7 +44,7 @@
 </ng-template>
 <ng-container *tuiDropdown>
     <!-- To keep it under local injector -->
-    @if (countrySearch) {
+    @if (countrySearch()) {
         <ng-container *ngTemplateOutlet="filter" />
     }
     <tui-data-list class="t-ipi-options">

@@ -62,6 +62,6 @@ export class TuiTreeComponent<T> implements DoCheck {
     }
 
     private get handler(): TuiHandler<T, readonly T[]> {
-        return this.directive?.childrenHandler || TuiTreeChildren.defaultHandler;
+        return this.directive?.childrenHandler() || TuiTreeChildren.defaultHandler;
     }
 }

@@ -17,6 +17,7 @@ import {
 } from 'rxjs';
 
 import {TuiTilesComponent} from './tiles.component';
+import {toObservable} from '@angular/core/rxjs-interop';
 
 @Injectable()
 export class TuiTileService implements OnDestroy {
@@ -29,7 +30,7 @@ export class TuiTileService implements OnDestroy {
         this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
         inject(ResizeObserverService).pipe(startWith(null)),
         inject(MutationObserverService).pipe(startWith(null)),
-        this.tiles.order$.pipe(debounceTime(0, tuiZonefreeScheduler())),
+        toObservable(this.tiles.order).pipe(debounceTime(0, tuiZonefreeScheduler())),
     ]).pipe(map(([offset]) => offset));
 
     public init(element?: HTMLElement): void {

@@ -2,17 +2,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
-    Input,
-    ViewChild,
+    input,
+    model,
+    viewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {
-    TUI_TAB_ACTIVATE,
-    TuiTabs,
-    TuiTabsDirective,
-    TuiTabsHorizontal,
-} from '@taiga-ui/kit';
+import {TUI_TAB_ACTIVATE, TuiTabs, TuiTabsDirective} from '@taiga-ui/kit';
 
 describe('Tabs', () => {
     @Component({
@@ -22,27 +18,17 @@ describe('Tabs', () => {
                 [(activeItemIndex)]="activeItemIndex"
                 (${TUI_TAB_ACTIVATE})="onTabActivate()"
             >
-                @for (tab of tabs; track tab) {
-                    <button tuiTab>
-                        {{ tab }}
-                    </button>
+                @for (tab of tabs(); track $index) {
+                    <button tuiTab>{{ tab }}</button>
                 }
             </tui-tabs>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiTabsHorizontal, {static: true})
-        public tabsHorizontalDirective!: TuiTabsHorizontal;
-
-        @ViewChild(TuiTabsDirective, {static: true})
-        public tabsDirective!: TuiTabsDirective;
-
-        @Input()
-        public activeItemIndex = 0;
-
-        @Input()
-        public tabs = [1, 2, 3];
+        public readonly tabsDirective = viewChild.required(TuiTabsDirective);
+        public readonly activeItemIndex = model(0);
+        public readonly tabs = input([1, 2, 3]);
 
         public onTabActivate(): void {}
     }
@@ -80,13 +66,13 @@ describe('Tabs', () => {
                 (tab) => tab.nativeElement as HTMLButtonElement,
             );
 
-            expect(firstTab).toEqual(component.tabsDirective.activeElement);
+            expect(firstTab).toEqual(component.tabsDirective().activeElement);
 
             secondTab?.click();
             fixture.detectChanges();
 
-            expect(firstTab).not.toEqual(component.tabsDirective.activeElement);
-            expect(secondTab).toEqual(component.tabsDirective.activeElement);
+            expect(firstTab).not.toEqual(component.tabsDirective().activeElement);
+            expect(secondTab).toEqual(component.tabsDirective().activeElement);
         });
 
         it('when you click on a tab tui-tab-activate event emits once', () => {

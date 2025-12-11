@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSpinButton} from '@taiga-ui/core';
 
@@ -11,8 +11,7 @@ describe('primitiveSpinButton', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiSpinButton, {static: true})
-        public component!: TuiSpinButton;
+        public readonly component = viewChild.required(TuiSpinButton);
     }
 
     let fixture: ComponentFixture<Test>;
@@ -20,13 +19,11 @@ describe('primitiveSpinButton', () => {
     let component: TuiSpinButton;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [Test],
-        });
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
-        component = testComponent.component;
+        component = testComponent.component();
         fixture.detectChanges();
     });
 

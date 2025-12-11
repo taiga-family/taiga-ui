@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -41,8 +41,7 @@ describe('rangeCalendarComponent', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiCalendarRange)
-        public readonly component!: TuiCalendarRange;
+        public readonly component = viewChild.required(TuiCalendarRange);
 
         public items: readonly TuiDayRangePeriod[] = [];
 
@@ -80,7 +79,7 @@ describe('rangeCalendarComponent', () => {
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
 
-        component = testComponent.component;
+        component = testComponent.component();
 
         await fixture.whenStable();
         fixture.detectChanges();
@@ -254,15 +253,18 @@ describe('rangeCalendarComponent', () => {
                 component['onItemSelect'](component.items[1]);
             }
 
-            expect(testComponent.component?.selectedActivePeriod?.toString()).toBe(
+            expect(testComponent.component()?.selectedActivePeriod?.toString()).toBe(
                 'Today',
             );
         });
 
         it('should fire itemChange before valueChange', () => {
-            const itemChangeSpy = jest.spyOn(testComponent.component.itemChange, 'emit');
+            const itemChangeSpy = jest.spyOn(
+                testComponent.component().itemChange,
+                'emit',
+            );
             const valueChangeSpy = jest.spyOn(
-                testComponent.component.valueChange,
+                testComponent.component().valueChange,
                 'emit',
             );
 

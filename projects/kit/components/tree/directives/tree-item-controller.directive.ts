@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {type TuiTreeItem} from '../components/tree-item/tree-item.component';
@@ -13,11 +13,10 @@ import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 export class TuiTreeItemController implements TuiTreeController {
     private readonly map = new WeakMap<TuiTreeItem, boolean>();
 
-    @Input('tuiTreeController')
-    public fallback = true;
+    public readonly fallback = input(true, {alias: 'tuiTreeController'});
 
     public isExpanded(item: TuiTreeItem): boolean {
-        return this.map.get(item) ?? this.fallback;
+        return this.map.get(item) ?? this.fallback();
     }
 
     public toggle(item: TuiTreeItem): void {

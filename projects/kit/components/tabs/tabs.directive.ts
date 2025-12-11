@@ -4,17 +4,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    EventEmitter,
     inject,
     INJECTOR,
-    Input,
-    Output,
+    input,
+    model,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {type TuiSizeL} from '@taiga-ui/core/types';
 
 import {TUI_TAB_ACTIVATE} from './tab.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
@@ -30,8 +28,8 @@ class Styles {}
 
 @Directive({
     host: {
-        '[attr.data-size]': 'size',
-        [`(${TUI_TAB_ACTIVATE})`]: 'onActivate($event, $event.target)',
+        '[attr.data-size]': 'size()',
+        [`(${TUI_TAB_ACTIVATE}.stop)`]: 'onActivate($event.target)',
     },
 })
 export class TuiTabsDirective implements AfterViewChecked {
@@ -40,21 +38,15 @@ export class TuiTabsDirective implements AfterViewChecked {
 
     protected readonly nothing = tuiWithStyles(Styles);
 
-    @Input()
-    public size: TuiSizeL = inject(TUI_TABS_OPTIONS).size;
-
-    @Input()
-    public activeItemIndex = 0;
-
-    @Output()
-    public readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly size = input(inject(TUI_TABS_OPTIONS).size);
+    public readonly activeItemIndex = model(0);
 
     public get tabs(): readonly HTMLElement[] {
         return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiTab]'));
     }
 
     public get activeElement(): HTMLElement | null {
-        return this.tabs[this.activeItemIndex] || null;
+        return this.tabs[this.activeItemIndex()] || null;
     }
 
     public moveFocus(current: HTMLElement, step: number): void {
@@ -72,17 +64,8 @@ export class TuiTabsDirective implements AfterViewChecked {
         );
     }
 
-    protected onActivate(event: Event, element: HTMLElement): void {
-        const index = this.tabs.findIndex((tab) => tab === element);
-
-        event.stopPropagation();
-
-        if (index === this.activeItemIndex) {
-            return;
-        }
-
-        this.activeItemIndexChange.emit(index);
-        this.activeItemIndex = index;
+    protected onActivate(element: HTMLElement): void {
+        this.activeItemIndex.set(this.tabs.findIndex((tab) => tab === element));
     }
 
     protected markTabAsActive(): void {

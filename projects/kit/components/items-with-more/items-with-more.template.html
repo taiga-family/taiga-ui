@@ -1,4 +1,4 @@
-@if (directive.side === 'start') {
+@if (directive.side() === 'start') {
     <ng-container [ngTemplateOutlet]="template" />
 }
 @for (item of items(); track item) {
@@ -9,11 +9,11 @@
         <ng-container *ngTemplateOutlet="item" />
     </div>
 }
-@if (directive.side === 'end') {
+@if (directive.side() === 'end') {
     <ng-container [ngTemplateOutlet]="template" />
 }
 <ng-template #template>
-    @if (!isMoreHidden) {
+    @if (!isMoreHidden()) {
         <span class="t-item t-item_more">
             <ng-container
                 [ngTemplateOutlet]="more() || null"
