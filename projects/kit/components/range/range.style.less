@@ -108,7 +108,7 @@
 
 .remove-track-background() {
     /* Artificially increased specificity */
-    input[type='range']& {
+    input[type='range']:is(&) {
         &::-webkit-slider-runnable-track {
             background: transparent;
         }
@@ -123,15 +123,15 @@
     }
 }
 
-.t-thumb {
+:host .t-thumb {
     .ignore-track-pointer-events();
     .remove-track-background();
 
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
     z-index: 1;
+    inset: 50% 0 auto;
+    margin: 0;
+    opacity: 1;
     transform: translateY(-50%);
 
     &:first-of-type {
@@ -142,9 +142,5 @@
     &:last-of-type {
         --tui-slider-thumb-transform: translateX(calc(var(--tui-inline) * 50%))
             translateX(calc(var(--tui-inline) * @thumb-shift));
-    }
-
-    :host._disabled & {
-        opacity: 1; // prevent double overlay for disabled state
     }
 }

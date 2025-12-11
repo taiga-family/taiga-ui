@@ -4,13 +4,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChild,
-    type ElementRef,
+    contentChild,
+    ElementRef,
     inject,
     input,
+    type Signal,
     signal,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {
@@ -70,14 +71,16 @@ const MIN_WIDTH = 160;
     },
 })
 export class TuiDocDemo implements AfterViewInit {
-    @ViewChild(TuiResizable, {static: true})
-    private readonly resizable?: ElementRef<HTMLElement>;
+    private readonly resizable: Signal<ElementRef<HTMLElement>> = viewChild.required(
+        TuiResizable,
+        {read: ElementRef},
+    );
 
-    @ViewChild('content', {static: true})
-    private readonly content?: ElementRef<HTMLElement>;
+    private readonly content: Signal<ElementRef<HTMLElement>> =
+        viewChild.required<ElementRef<HTMLElement>>('content');
 
-    @ViewChild('resizer', {static: true})
-    private readonly resizer?: ElementRef<HTMLElement>;
+    private readonly resizer: Signal<ElementRef<HTMLElement>> =
+        viewChild.required<ElementRef<HTMLElement>>('resizer');
 
     private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);
@@ -85,8 +88,7 @@ export class TuiDocDemo implements AfterViewInit {
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly darkMode = inject(TUI_DARK_MODE);
 
-    @ContentChild(TemplateRef)
-    protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
+    protected readonly template = contentChild(TemplateRef<Record<string, unknown>>);
 
     protected readonly rendered = signal(false);
 
@@ -153,24 +155,24 @@ export class TuiDocDemo implements AfterViewInit {
     }
 
     protected updateWidth(width = NaN): void {
-        if (!this.resizer || !this.resizable || !this.content) {
+        if (!this.resizer() || !this.resizable() || !this.content()) {
             return;
         }
 
-        const safe = width || this.resizable.nativeElement.clientWidth;
+        const safe = width || this.resizable().nativeElement.clientWidth;
         const total = this.el.clientWidth;
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
         const validated = safe < total ? clamped : NaN;
 
-        this.resizer.nativeElement.textContent = String(clamped || '-');
-        this.resizable.nativeElement.style.width = validated ? tuiPx(safe) : '';
+        this.resizer().nativeElement.textContent = String(clamped || '-');
+        this.resizable().nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;
     }
 
     private get delta(): number {
-        return this.resizable && this.content
-            ? this.resizable.nativeElement.clientWidth -
-                  this.content.nativeElement.clientWidth
+        return this.resizable() && this.content()
+            ? this.resizable().nativeElement.clientWidth -
+                  this.content().nativeElement.clientWidth
             : 0;
     }
 

@@ -1,5 +1,5 @@
 tui-app-bar {
-    font: var(--tui-font-heading-6);
+    font: var(--tui-font-heading-h6);
     block-size: 3.5rem;
 
     > .t-content {
@@ -11,6 +11,10 @@ tui-app-bar {
 
         > * {
             max-inline-size: calc(100% - var(--t-sides, 0px));
+        }
+
+        > [tuiProgressBar] {
+            .center-left();
         }
     }
 

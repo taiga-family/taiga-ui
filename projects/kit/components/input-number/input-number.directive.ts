@@ -8,7 +8,7 @@ import {
     maskitoParseNumber,
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk/constants';
+import {CHAR_HYPHEN} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
@@ -44,7 +44,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
 
     private readonly formatted = computed(() =>
-        maskitoParseNumber(this.input.value(), this.numberFormat()),
+        maskitoParseNumber(this.input.value(), this.maskParams),
     );
 
     private readonly precision = computed((precision = this.numberFormat().precision) =>
@@ -116,19 +116,16 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         this.input.value.update((x) => maskitoTransform(x, options));
     });
 
-    public readonly min = computed(() => Math.min(this.minRaw(), this.maxRaw()));
-    public readonly max = computed(() => Math.max(this.minRaw(), this.maxRaw()));
-    public readonly prefix = input(this.options.prefix);
-    public readonly postfix = input(this.options.postfix);
-    public readonly minRaw = input<number, number | null>(this.options.min, {
-        alias: 'min',
-        transform: (x) => this.transformer.fromControlValue(x ?? this.options.min),
+    public readonly min = input<number, number | null>(this.options.min, {
+        transform: (x) => x ?? this.options.min,
     });
 
-    public readonly maxRaw = input<number, number | null>(this.options.max, {
-        alias: 'max',
-        transform: (x) => this.transformer.fromControlValue(x ?? this.options.max),
+    public readonly max = input<number, number | null>(this.options.max, {
+        transform: (x) => x ?? this.options.max,
     });
+
+    public readonly prefix = input(this.options.prefix);
+    public readonly postfix = input(this.options.postfix);
 
     public override writeValue(value: number | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
@@ -156,13 +153,14 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
 
         return {
             ...numberFormat,
+            ...this.options,
             maximumFractionDigits,
             min: this.min(),
             max: this.max(),
             prefix: this.prefix(),
             postfix: this.postfix(),
             minimumFractionDigits: decimalMode === 'always' ? maximumFractionDigits : 0,
-        };
+        } as const satisfies MaskitoNumberParams;
     }
 
     private formatNumber(value: number | null): string {
@@ -170,8 +168,10 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             return '';
         }
 
+        const minus = this.options.minusSign;
+
         return (
-            (this.prefix() !== CHAR_MINUS ? this.prefix() : '') +
+            (this.prefix() !== minus ? this.prefix() : '') +
             tuiFormatNumber(value, {
                 ...this.numberFormat(),
                 /**
@@ -183,7 +183,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
                 precision: tuiIsSafeToRound(value, this.precision())
                     ? this.precision()
                     : Infinity,
-            }).replace(CHAR_HYPHEN, CHAR_MINUS) +
+            }).replace(CHAR_HYPHEN, minus) +
             this.postfix()
         );
     }

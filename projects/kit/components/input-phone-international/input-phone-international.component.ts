@@ -8,9 +8,8 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
     signal,
-    ViewChildren,
+    viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
@@ -24,7 +23,7 @@ import {
 } from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {CHAR_PLUS, EMPTY_QUERY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
+import {CHAR_PLUS, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {
     TuiAutoFocus,
@@ -43,6 +42,7 @@ import {TuiTitle} from '@taiga-ui/core/components/title';
 import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {TuiAppearanceProxy} from '@taiga-ui/kit/directives/appearance-proxy';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
@@ -78,7 +78,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithInput],
+    hostDirectives: [MaskitoDirective, TuiWithInput, TuiAppearanceProxy],
     host: {
         type: 'tel',
         ngSkipHydration: 'true',
@@ -90,9 +90,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     },
 })
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
-    @ViewChildren(TuiOption, {read: ElementRef})
-    protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
-
+    protected readonly list = viewChildren(TuiOption, {read: ElementRef});
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly ios = inject(TUI_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);

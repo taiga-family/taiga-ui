@@ -1,9 +1,9 @@
+import {type Signal} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TuiBreakpointService} from '@taiga-ui/core';
-import {first} from 'rxjs';
+import {TUI_BREAKPOINT, type TuiBreakpointMediaKey} from '@taiga-ui/core';
 
-describe('TuiBreakpointService', () => {
+describe('TUI_BREAKPOINT', () => {
     const windowMock = {
         matchMedia: jest.fn().mockReturnValue({
             ...document.createElement('div'),
@@ -15,13 +15,12 @@ describe('TuiBreakpointService', () => {
         removeEventListener: jest.fn(),
     } as unknown as Window;
 
-    let service: TuiBreakpointService;
+    let breakpoint: Signal<TuiBreakpointMediaKey | null>;
 
     describe('<meta name="viewport" content="width=device-width">', () => {
         beforeEach(async () => {
             await TestBed.configureTestingModule({
                 providers: [
-                    TuiBreakpointService,
                     {
                         provide: WA_WINDOW,
                         useValue: {
@@ -32,15 +31,11 @@ describe('TuiBreakpointService', () => {
                 ],
             }).compileComponents();
 
-            service = TestBed.inject(TuiBreakpointService);
+            breakpoint = TestBed.inject(TUI_BREAKPOINT);
         });
 
         it('should emit mobile', () => {
-            const observerMock = jest.fn();
-
-            service.pipe(first()).subscribe(observerMock);
-
-            expect(observerMock).toHaveBeenCalledWith('mobile');
+            expect(breakpoint()).toBe('mobile');
         });
     });
 
@@ -48,7 +43,6 @@ describe('TuiBreakpointService', () => {
         beforeEach(async () => {
             await TestBed.configureTestingModule({
                 providers: [
-                    TuiBreakpointService,
                     {
                         provide: WA_WINDOW,
                         useValue: {
@@ -59,15 +53,33 @@ describe('TuiBreakpointService', () => {
                 ],
             }).compileComponents();
 
-            service = TestBed.inject(TuiBreakpointService);
+            breakpoint = TestBed.inject(TUI_BREAKPOINT);
+        });
+
+        it('should emit desktopSmall', () => {
+            expect(breakpoint()).toBe('desktopSmall');
+        });
+    });
+
+    describe('<meta name="viewport" content="width=1281">', () => {
+        beforeEach(async () => {
+            await TestBed.configureTestingModule({
+                providers: [
+                    {
+                        provide: WA_WINDOW,
+                        useValue: {
+                            ...windowMock,
+                            document: {documentElement: {clientWidth: 1281}},
+                        },
+                    },
+                ],
+            }).compileComponents();
+
+            breakpoint = TestBed.inject(TUI_BREAKPOINT);
         });
 
         it('should emit desktopLarge', () => {
-            const observerMock = jest.fn();
-
-            service.pipe(first()).subscribe(observerMock);
-
-            expect(observerMock).toHaveBeenCalledWith('desktopLarge');
+            expect(breakpoint()).toBe('desktopLarge');
         });
     });
 

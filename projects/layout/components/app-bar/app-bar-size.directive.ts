@@ -1,8 +1,6 @@
-import {Directive, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {computed, Directive, inject} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {map} from 'rxjs';
+import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
 
 import {TuiAppBarComponent} from './app-bar.component';
 
@@ -11,14 +9,10 @@ import {TuiAppBarComponent} from './app-bar.component';
     selector: 'tui-app-bar[tuiAppBarSize]',
 })
 export class TuiAppBarSizeDirective {
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly size = tuiDirectiveBinding(
         TuiAppBarComponent,
         'size',
-        toSignal(
-            inject(TuiBreakpointService).pipe(
-                map((breakpoint) => (breakpoint === 'mobile' ? 'm' : 'l')),
-            ),
-            {initialValue: 'm' as const},
-        ),
+        computed(() => (this.breakpoint() === 'mobile' ? 'm' : 'l')),
     );
 }

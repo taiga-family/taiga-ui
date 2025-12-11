@@ -1,19 +1,24 @@
-import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {type TuiDay, TuiMonth} from '@taiga-ui/cdk';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
+const CHEAPEST_TICKET: [string] = ['var(--tui-status-positive)'];
+
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiInputDate],
+    imports: [FormsModule, TuiInputDate],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly control = new FormControl<TuiDay | null>(null);
-    protected readonly today = TuiDay.currentLocal();
+    protected value: TuiDay | null = null;
+
+    protected readonly defaultActiveMonth = signal(new TuiMonth(2000, 0));
+
+    protected readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =>
+        day.day % 5 === 0 ? CHEAPEST_TICKET : [];
 }

@@ -1,23 +1,19 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='table'] {
-    block-size: auto;
+    min-block-size: calc(100% + 1px);
     border-radius: 0 !important;
     background: transparent;
     color: var(--tui-text-primary);
     border: none;
     outline: none;
-    border-block-end: calc(var(--t-row-height) - var(--t-height)) solid transparent;
+    margin: -1px -1px 0;
+    overflow: hidden;
 
-    &:is(tui-textfield[multi]),
-    &:is(tui-input-card-group) {
-        min-block-size: 100%;
-        border-block-end: 0;
-    }
-
-    &:is(textarea) {
-        block-size: 100%;
-        border-block-end: 0;
+    &:not(tui-textfield[multi], tui-input-card-group) [tuiInput]:not(textarea) {
+        block-size: var(--t-height);
+        border-block-end: 100rem solid transparent;
+        box-sizing: content-box;
     }
 
     &::before,
@@ -39,8 +35,7 @@
     }
 
     .appearance-focus({
-        outline-offset: -1px;
-        outline: 0.125rem solid var(--tui-border-focus);
+        border-image: conic-gradient(var(--tui-border-focus) 0 0) 1 / 0.125rem / 0 0 1px;
     });
 
     .appearance-invalid({
@@ -67,8 +62,7 @@
 
         .appearance-focus({
             background-color: transparent;
-            outline-offset: 0;
-            outline: 0.0625rem solid var(--tui-status-negative);
+            border-image: conic-gradient(var(--tui-status-negative) 0 0) 1 / 1px / 0 0 1px;
         });
     });
 }

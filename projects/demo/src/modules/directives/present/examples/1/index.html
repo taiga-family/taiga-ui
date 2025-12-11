@@ -2,12 +2,12 @@
     Hover
     <span
         [class.hidden]="!hovered"
-        (tuiPresentChange)="onCSS($event)"
+        (tuiPresent)="onCSS($event)"
     >
         I am a component hidden with CSS
     </span>
     @if (hovered) {
-        <span (tuiPresentChange)="onIf($event)">I am a component hidden with *ngIf</span>
+        <span (tuiPresent)="onIf($event)">I am a component hidden with *ngIf</span>
     }
 </p>
 <p>Counter of component appearance minus counter of its disappearance:</p>

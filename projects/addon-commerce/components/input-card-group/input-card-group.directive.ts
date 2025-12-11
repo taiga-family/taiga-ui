@@ -1,23 +1,12 @@
-import {Directive, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {BehaviorSubject, combineLatest, map} from 'rxjs';
+import {computed, Directive, inject, input} from '@angular/core';
+import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
 
 @Directive({
-    inputs: ['compactSetter: compact'],
-    host: {'[class._compact]': 'compact()'},
+    host: {'[class._compact]': 'c()'},
 })
 export class TuiInputCardGroupDirective {
-    private readonly c$ = new BehaviorSubject(false);
-    private readonly m$ = inject(TuiBreakpointService).pipe(map((b) => b === 'mobile'));
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
+    public readonly compact = input(false);
 
-    public readonly compact$ = combineLatest([this.c$, this.m$]).pipe(
-        map((c) => c.some(Boolean)),
-    );
-
-    public readonly compact = toSignal(this.compact$, {initialValue: false});
-
-    public set compactSetter(compact: boolean) {
-        this.c$.next(compact);
-    }
+    public readonly c = computed(() => this.compact() || this.breakpoint() === 'mobile');
 }

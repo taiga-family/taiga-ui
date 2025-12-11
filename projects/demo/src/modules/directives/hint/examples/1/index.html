@@ -16,5 +16,14 @@
     </div>
     <div>Baby don't hurt me</div>
     <div>Don't hurt me</div>
+    <div>Counter: {{ counter() }}</div>
     <div>No more...</div>
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        (click)="onClick()"
+    >
+        Counter + 1
+    </button>
 </ng-template>

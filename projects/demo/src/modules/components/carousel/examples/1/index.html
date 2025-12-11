@@ -2,7 +2,7 @@
     [duration]="4000"
     [(index)]="index"
 >
-    @for (item of items; track item) {
+    @for (item of items; track $index) {
         <div
             *tuiItem
             class="item"

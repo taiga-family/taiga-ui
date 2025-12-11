@@ -12,7 +12,6 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_SLIDER_OPTIONS,
@@ -60,40 +59,34 @@ export class TuiRange extends TuiControl<[number, number]> {
     protected lastActiveThumb: 'end' | 'start' = 'end';
 
     public readonly min = input(0);
-
     public readonly max = input(100);
-
     public readonly step = input(1);
-
     public readonly size = input<TuiSizeS>(this.options.size);
-
     public readonly segments = input(1);
-
-    public readonly keySteps = input<TuiKeySteps | null>(null);
-
+    public readonly keySteps = input<TuiKeySteps>();
     public readonly focusable = input(true);
-
     public readonly margin = input(0);
-
     public readonly limit = input(Infinity);
 
-    public readonly slidersRefs = viewChildren<
+    public readonly start = computed(() => this.toPercent(this.value()[0]));
+    public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
+    public readonly sliders = viewChildren<
         TuiSliderComponent,
         ElementRef<HTMLInputElement>
     >(TuiSliderComponent, {read: ElementRef});
 
-    public readonly start = computed(() => this.toPercent(this.value()[0]));
-    public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
-
+    protected readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
     protected readonly fractionStep = computed<number>((step = this.step()) => {
         return this.keySteps() ? step / 100 : step / (this.max() - this.min());
     });
 
-    protected readonly computedKeySteps = computed<TuiKeySteps>(() => {
-        return this.computePureKeySteps(this.keySteps(), this.min(), this.max());
-    });
-
-    protected readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
+    protected readonly computedKeySteps = computed<TuiKeySteps>(
+        () =>
+            this.keySteps() || [
+                [0, this.min()],
+                [100, this.max()],
+            ],
+    );
 
     public processValue(value: number, end: boolean): void {
         if (end) {
@@ -126,7 +119,7 @@ export class TuiRange extends TuiControl<[number, number]> {
     }
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {
-        const [startThumb, endThumb] = this.slidersRefs().map((x) => x?.nativeElement);
+        const [startThumb, endThumb] = this.sliders().map((x) => x?.nativeElement);
         const isEndThumb =
             target === this.el ? this.lastActiveThumb === 'end' : target === endThumb;
         const activeThumbElement = isEndThumb ? endThumb : startThumb;
@@ -138,20 +131,6 @@ export class TuiRange extends TuiControl<[number, number]> {
 
     protected toPercent(value: number): number {
         return tuiKeyStepValueToPercentage(value, this.computedKeySteps());
-    }
-
-    @tuiPure
-    private computePureKeySteps(
-        keySteps: TuiKeySteps | null,
-        min: number,
-        max: number,
-    ): TuiKeySteps {
-        return (
-            keySteps || [
-                [0, min],
-                [100, max],
-            ]
-        );
     }
 
     private updateStart(value: number): void {

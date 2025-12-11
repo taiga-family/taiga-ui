@@ -46,18 +46,18 @@ export class TuiInputFilesDirective extends TuiControl<
 > {
     protected readonly host = inject(forwardRef(() => TuiInputFiles));
     protected readonly m = tuiAppearanceMode(this.mode);
-    protected readonly reject$ = timer(0, tuiZonefreeScheduler()).pipe(
-        switchMap(() => tuiControlValue(this.control.control)),
-        map(() => tuiFilesRejected(this.control.control)),
-        filter(({length}) => !!length),
+
+    public readonly el = tuiInjectElement<HTMLInputElement>();
+    public readonly reject = outputFromObservable(
+        timer(0, tuiZonefreeScheduler()).pipe(
+            switchMap(() => tuiControlValue(this.control.control)),
+            map(() => tuiFilesRejected(this.control.control)),
+            filter(({length}) => !!length),
+        ),
     );
 
-    public readonly reject = outputFromObservable(this.reject$);
-
-    public readonly input = tuiInjectElement<HTMLInputElement>();
-
     public process(files: FileList): void {
-        const fileOrFiles = this.input.multiple
+        const fileOrFiles = this.el.multiple
             ? [...toArray(this.value()), ...Array.from(files)]
             : files[0];
 
@@ -67,7 +67,7 @@ export class TuiInputFilesDirective extends TuiControl<
     }
 
     protected onClick(event: MouseEvent): void {
-        if (this.input.readOnly) {
+        if (this.el.readOnly) {
             event.preventDefault();
         }
     }

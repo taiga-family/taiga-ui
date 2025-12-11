@@ -6,7 +6,6 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
@@ -18,8 +17,11 @@ import {
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
 import {TuiPopups} from '@taiga-ui/core/portals/popup';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TUI_BREAKPOINT,
+    TUI_REDUCED_MOTION,
+} from '@taiga-ui/core/tokens';
 import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
@@ -49,7 +51,7 @@ export class TuiRoot {
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
-    protected readonly breakpoint = toSignal(inject(TuiBreakpointService));
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly scrollbars =
         !inject(TUI_IS_MOBILE) &&
         !this.child &&

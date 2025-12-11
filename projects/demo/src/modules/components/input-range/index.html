@@ -138,8 +138,8 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="negative"
-            heading="Using negative values without minus sign"
+            id="hidden-minus-sign"
+            heading="Using negative values with hidden minus sign"
             [component]="7 | tuiComponent"
             [content]="7 | tuiExample"
         />
@@ -152,7 +152,7 @@
                     [content]="content"
                     [formControl]="control"
                     [invalid]="controlDoc.invalid"
-                    [keySteps]="keySteps"
+                    [keySteps]="keySteps || undefined"
                     [max]="max"
                     [min]="min"
                     [postfix]="postfix"

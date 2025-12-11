@@ -71,6 +71,25 @@
             type="button"
         ></button>
     </tui-app-bar>
+
+    <tui-app-bar>
+        <button
+            tuiAppBarBack
+            tuiSlot="left"
+            type="button"
+        >
+            Back
+        </button>
+
+        <div>
+            <progress
+                size="s"
+                tuiProgressBar
+                [max]="100"
+                [value]="35"
+            ></progress>
+        </div>
+    </tui-app-bar>
 </section>
 
 <h3 class="tui-space_top-8">Android</h3>
@@ -145,5 +164,21 @@
             tuiSlot="right"
             type="button"
         ></button>
+    </tui-app-bar>
+    <tui-app-bar>
+        <button
+            tuiAppBarBack
+            tuiSlot="left"
+            type="button"
+        >
+            Back
+        </button>
+
+        <progress
+            size="s"
+            tuiProgressBar
+            [max]="100"
+            [value]="35"
+        ></progress>
     </tui-app-bar>
 </section>

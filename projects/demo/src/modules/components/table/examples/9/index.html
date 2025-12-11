@@ -9,7 +9,7 @@
     </thead>
     <tbody tuiTbody>
         @for (item of data; track $index; let i = $index) {
-            <tr tuiTr>
+            <tr>
                 <td tuiTd>
                     <button
                         appearance="flat-grayscale"
@@ -33,7 +33,7 @@
             @if (item.children.length) {
                 <tui-table-expand [expanded]="state[i] ?? false">
                     @for (child of item.children; track $index; let j = $index) {
-                        <tr tuiTr>
+                        <tr>
                             <td tuiTd></td>
                             <td tuiTd>{{ i + 1 }}.{{ j + 1 }}</td>
                             <td tuiTd>{{ child.name }}</td>

@@ -5,11 +5,12 @@ tui-icon[tuiChevron]::before {
     .transition(~'transform, color');
 
     cursor: pointer;
+    font-size: 1rem;
 }
 
 [tuiChevron][tuiIcons]::after {
-    tui-textfield& {
-        font-size: 1rem;
+    [tuiButton][data-size='m']& {
+        margin-inline-end: -0.125rem;
     }
 
     tui-textfield[data-size='s']& {
@@ -28,10 +29,6 @@ tui-icon[tuiChevron]::before {
 [tuiChevron][tuiIcons]._chevron-rotated::after,
 tui-icon[tuiChevron]._chevron-rotated::before {
     transform: rotate(180deg);
-}
-
-[tuiChevron]:has(input[tuiAppearance]:read-only)::after {
-    cursor: default;
 }
 
 tui-textfield[tuiChevron][data-icon-end] {

@@ -7,7 +7,7 @@
     </thead>
     <tbody tuiTbody>
         @for (item of data; track item) {
-            <tr tuiTr>
+            <tr>
                 <td tuiTd>{{ item.name }}</td>
                 <td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
             </tr>

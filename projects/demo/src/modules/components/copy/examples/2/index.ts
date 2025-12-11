@@ -11,16 +11,19 @@ import {TuiCopy} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly fonts = [
-        'font-heading-1',
-        'font-heading-2',
-        'font-heading-3',
-        'font-heading-4',
-        'font-heading-5',
-        'font-heading-6',
-        'font-text-xl',
-        'font-text-l',
-        'font-text-m',
-        'font-text-s',
-        'font-text-xs',
+        'font-heading-h1',
+        'font-heading-h2',
+        'font-heading-h3',
+        'font-heading-h4',
+        'font-heading-h5',
+        'font-heading-h6',
+        'font-body-l',
+        'font-body-m',
+        'font-body-s',
+        'font-body-xs',
+        'font-ui-l',
+        'font-ui-m',
+        'font-ui-s',
+        'font-ui-xs',
     ];
 }

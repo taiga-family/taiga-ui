@@ -35,7 +35,7 @@ describe('TuiRange', () => {
         public min = 1;
         public segments = 10;
         public step = 1;
-        public keySteps: TuiKeySteps | null = null;
+        public keySteps: TuiKeySteps | undefined = undefined;
         public margin = 0;
         public limit = Infinity;
     }

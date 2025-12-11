@@ -1,8 +1,8 @@
-@if (control?.valueChanges | async) {}
+@if (control()?.valueChanges | async) {}
 
 <div
     class="t-ghost"
-    [attr.data-size]="size"
+    [attr.data-size]="slider()?.size || 'm'"
     [style.--tui-slider-thumb-ratio]="ratio"
     [style.inset-inline-start.px]="ghostStart"
 >

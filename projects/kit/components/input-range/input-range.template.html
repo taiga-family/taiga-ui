@@ -8,12 +8,12 @@
         [disabled]="disabled()"
         [invalid]="invalid()"
         [max]="value()[1]"
-        [min]="min"
-        [postfix]="postfix[0]"
-        [prefix]="prefix[0]"
+        [min]="min()"
+        [postfix]="postfix()[0]"
+        [prefix]="prefix()[0]"
         [readOnly]="readOnly()"
-        [(ngModel)]="textfieldValueStart"
-        (blur)="textfieldValueStart = value()[0]"
+        [(ngModel)]="start"
+        (blur)="start = value()[0]"
         (keydown.arrowDown)="takeStep($event, [-1, 0])"
         (keydown.arrowUp)="takeStep($event, [1, 0])"
         (ngModelChange)="onInput([$event, null])"
@@ -21,18 +21,17 @@
 
     <input
         tuiInputNumber
-        tuiTextfieldAppearance="none"
         class="t-end"
         [class._hidden]="!contentEndHidden || !this.interactive()"
         [disabled]="disabled()"
         [invalid]="invalid()"
-        [max]="max"
+        [max]="max()"
         [min]="value()[0]"
-        [postfix]="postfix[1]"
-        [prefix]="prefix[1]"
+        [postfix]="postfix()[1]"
+        [prefix]="prefix()[1]"
         [readOnly]="readOnly()"
-        [(ngModel)]="textfieldValueEnd"
-        (blur)="textfieldValueEnd = value()[1]"
+        [(ngModel)]="end"
+        (blur)="end = value()[1]"
         (keydown.arrowDown)="takeStep($event, [0, -1])"
         (keydown.arrowUp)="takeStep($event, [0, 1])"
         (ngModelChange)="onInput([null, $event])"
@@ -45,19 +44,19 @@
             </ng-container>
         </div>
     }
-</tui-textfield>
 
-@if (interactive()) {
-    <tui-range
-        [focusable]="false"
-        [keySteps]="keySteps"
-        [max]="max"
-        [min]="min"
-        [ngModel]="value()"
-        [segments]="segments"
-        [step]="step"
-        (activeThumbChange)="lastActiveSide = $event"
-        (mousedown.prevent)="focusToTextfield()"
-        (ngModelChange)="onExternalValueUpdate($event)"
-    />
-}
+    @if (interactive()) {
+        <tui-range
+            [focusable]="false"
+            [keySteps]="keySteps()"
+            [max]="max()"
+            [min]="min()"
+            [ngModel]="value()"
+            [segments]="segments()"
+            [step]="step()"
+            (activeThumbChange)="side = $event"
+            (ngModelChange)="onExternalValueUpdate($event)"
+            (pointerdown.prevent.stop)="focusToTextfield()"
+        />
+    }
+</tui-textfield>

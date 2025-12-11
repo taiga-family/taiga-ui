@@ -10,12 +10,7 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     templateUrl: './drawer.template.html',
     styleUrl: './drawer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiButtonOptionsProvider({
-            appearance: 'secondary',
-            size: 's',
-        }),
-    ],
+    providers: [tuiButtonOptionsProvider({appearance: 'secondary', size: 's'})],
     hostDirectives: [TuiAnimated],
     host: {
         '[class._overlay]': 'overlay()',
@@ -29,6 +24,5 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 })
 export class TuiDrawer {
     public readonly direction = input<TuiHorizontalDirection>('right');
-
     public readonly overlay = input(false);
 }

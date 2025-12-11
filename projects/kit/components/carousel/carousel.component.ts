@@ -7,7 +7,7 @@ import {
     effect,
     inject,
     input,
-    linkedSignal,
+    model,
     output,
     signal,
     TemplateRef,
@@ -23,7 +23,6 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiCarouselDirective} from './carousel.directive';
 import {TuiCarouselAutoscroll} from './carousel-autoscroll.directive';
@@ -50,7 +49,7 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         },
     ],
     host: {
-        '[class._transitioned]': 'transitioned',
+        '[class._transitioned]': 'transitioned()',
         '[class._draggable]': 'draggable()',
         '(touchstart)': 'onTransitioned(false)',
         '(touchend)': 'onTransitioned(true)',
@@ -63,13 +62,10 @@ export class TuiCarouselComponent {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
     private readonly translate = signal(0);
-    private readonly transitioned = signal(true);
-    private readonly index = linkedSignal(() => this.indexSetter());
 
-    protected readonly items = contentChildren(TuiItem, {
-        read: TemplateRef<Record<string, unknown>>,
-    });
-
+    protected readonly transitioned = signal(true);
+    protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
+    protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly computedDraggable = computed(
         () => this.isMobile || this.draggable(),
     );
@@ -82,43 +78,24 @@ export class TuiCarouselComponent {
         this.transitioned() ? this.computedTranslate() : this.translate(),
     );
 
-    protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
-
-    protected readonly resetDuration = effect((_, __ = this.indexSetter()) => {
-        tuiSetSignal(this.directive.duration, NaN);
+    protected readonly resetDuration = effect(() => {
+        this.index();
+        this.directive.restart();
     });
 
     public readonly draggable = input(false);
-
     public readonly itemsCount = input(1);
-
-    public readonly indexSetter = input(0, {alias: 'index'});
-
-    public readonly indexChange = output<number>();
-
+    public readonly index = model(0);
     public readonly shift = output<number>();
 
     public next(): void {
-        if (this.items() && this.index() === this.items().length - this.itemsCount()) {
-            return;
+        if (this.index() !== this.items().length - this.itemsCount()) {
+            this.updateIndex(this.index() + 1);
         }
-
-        this.updateIndex(this.index() + 1);
     }
 
     public prev(): void {
         this.updateIndex(this.index() - 1);
-    }
-
-    @tuiPure
-    protected getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
-        const percent = `${100 / itemsCount}%`;
-
-        return {
-            flexBasis: percent,
-            minWidth: percent,
-            maxWidth: percent,
-        };
     }
 
     protected onTransitioned(transitioned: boolean): void {
@@ -135,11 +112,8 @@ export class TuiCarouselComponent {
         return index < this.index() || index >= this.index() + this.itemsCount();
     }
 
-    protected onIntersection(
-        {intersectionRatio}: IntersectionObserverEntry,
-        index: number,
-    ): void {
-        if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned()) {
+    protected onIntersection(ratio: number, index: number): void {
+        if (ratio && ratio >= 0.5 && !this.transitioned()) {
             this.updateIndex(
                 this.index() < index ? index - this.itemsCount() + 1 : index,
             );
@@ -148,11 +122,7 @@ export class TuiCarouselComponent {
 
     protected onScroll(delta: number): void {
         if (!this.isMobile) {
-            if (delta > 0) {
-                this.next();
-            } else {
-                this.prev();
-            }
+            this.onSwipe(delta > 0 ? 'left' : 'right');
         }
     }
 
@@ -164,7 +134,6 @@ export class TuiCarouselComponent {
         const min = 1 - this.items().length / this.itemsCount();
 
         this.translate.set(tuiClamp(x / this.el.clientWidth + this.translate(), min, 0));
-
         this.onShift();
     }
 
@@ -186,6 +155,5 @@ export class TuiCarouselComponent {
 
     private updateIndex(index: number): void {
         this.index.set(tuiClamp(index, 0, this.items().length - 1));
-        this.indexChange.emit(this.index());
     }
 }
