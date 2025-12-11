@@ -1,0 +1,51 @@
+import"./chunk-42JZD6NG.js";var o=`<tui-doc-page header="Disable animation">
+    <p>
+        During integration testing you can face with problem of flaky tests caused by animation. It is especially
+        crucial if you are writing screenshot tests. For example, you want to make screenshot of dialog content: you
+        click button which opens dialog and make screenshot. Sometimes screenshots can be made too early (before dialog
+        fully opens) and test fails.
+    </p>
+
+    <p>
+        To avoid this
+        <strong>we recommend to toggle all animation off while integration test works.</strong>
+    </p>
+
+    <p>
+        <code>&#64;taiga-ui/cdk</code>
+        used
+        <code>TUI_REDUCED_MOTION</code>
+        token which disables all animations for taiga-ui components. That token based on
+        <code>prefers-reduced-motion</code>
+        . The prefers-reduced-motion CSS media feature is used to detect if a user has enabled a setting on their device
+        to minimize the amount of non-essential motion.. The setting is used to convey to the browser on the device that
+        the user prefers an interface that removes, reduces, or replaces motion-based animations.
+    </p>
+
+    <tui-tabs-with-more
+        #tabs
+        class="tabs"
+    >
+        <button
+            *tuiItem
+            tuiTab
+            type="button"
+        >
+            <tui-doc-tab src="assets/icons/cypress.svg">cypress.config.ts</tui-doc-tab>
+        </button>
+        <button
+            *tuiItem
+            tuiTab
+            type="button"
+        >
+            <tui-doc-tab src="assets/icons/playwright.svg">playwright.config.ts</tui-doc-tab>
+        </button>
+    </tui-tabs-with-more>
+    @if (tabs.activeItemIndex() === 0) {
+        <tui-doc-code [code]="cypress" />
+    }
+    @if (tabs.activeItemIndex() === 1) {
+        <tui-doc-code [code]="playwright" />
+    }
+</tui-doc-page>
+`;export{o as default};

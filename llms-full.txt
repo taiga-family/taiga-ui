@@ -21256,7 +21256,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [segments]="segments" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), }" [tuiTextfieldSize]="textfieldDoc.size" />
+<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps || undefined" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [segments]="segments" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), }" [tuiTextfieldSize]="textfieldDoc.size" />
 </ng-template>
 ```
 
@@ -21348,16 +21348,12 @@ Use mixin tui-slider-ticks-labels to arrange ticks' labels (it places them stric
 ```html
 <tui-input-range [formControl]="control" [max]="100" [min]="0" [postfix]="['%', '%']" [segments]="5" [step]="20" > Select volume range </tui-input-range>
 <div class="ticks-labels">
-<span>
 <tui-icon icon="@tui.volume-x" />
-</span>
 <span>20%</span>
 <span>40%</span>
 <span>60%</span>
 <span>80%</span>
-<span>
 <tui-icon icon="@tui.volume-2" />
-</span>
 </div>
 ```
 **TypeScript:**
@@ -21894,7 +21890,7 @@ export class Example {
 <ng-template>
 <tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldDoc.content" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
 <input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
-<input tuiSlider type="range" [keySteps]="keySteps" [segments]="segments" [step]="step" />
+<input tuiSlider type="range" [keySteps]="keySteps || undefined" [segments]="segments" [step]="step" />
 </tui-textfield>
 </ng-template>
 ```
@@ -30835,7 +30831,7 @@ class Example {
 
 ```html
 <ng-template>
-<tui-range [formControl]="control" [keySteps]="keySteps" [limit]="limit" [margin]="margin" [max]="max" [min]="min" [segments]="segments" [size]="size" [step]="step" />
+<tui-range [formControl]="control" [keySteps]="keySteps || undefined" [limit]="limit" [margin]="margin" [max]="max" [min]="min" [segments]="segments" [size]="size" [step]="step" />
 </ng-template>
 ```
 
@@ -49803,7 +49799,6 @@ export class Example {}
 
   <tui-data-list-wrapper
     *tuiDropdown
-    new
     [items]="items"
     [itemContent]="stringify | tuiStringifyContent"
   ></tui-data-list-wrapper>
