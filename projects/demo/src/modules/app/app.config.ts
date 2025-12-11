@@ -118,7 +118,7 @@ export const config: ApplicationConfig = {
                 package: pkg,
             }: TuiDocSourceCodePathOptions) => {
                 const link =
-                    'https://github.com/taiga-family/taiga-ui/tree/main/projects';
+                    'https://github.com/taiga-family/taiga-ui/tree/v4.x/projects';
 
                 if (!pkg) {
                     return null;
