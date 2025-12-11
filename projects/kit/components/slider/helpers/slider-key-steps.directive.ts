@@ -105,6 +105,7 @@ export class TuiSliderKeyStepsBase {
 @Directive({
     selector:
         'input[tuiSlider][keySteps][ngModel],input[tuiSlider][keySteps][formControl],input[tuiSlider][keySteps][formControlName]',
+    inputs: ['keySteps'],
     providers: [tuiFallbackValueProvider(0)],
     host: {
         '[value]': 'base.toSliderValue(value())',
@@ -116,15 +117,12 @@ export class TuiSliderKeyStepsBase {
 })
 export class TuiSliderKeySteps extends TuiControl<number> {
     protected readonly base = inject(TuiSliderKeyStepsBase);
-    protected readonly steps = effect(() => {
-        const keySteps = this.keySteps();
 
-        this.transformer = keySteps
-            ? tuiCreateKeyStepsTransformer(keySteps)
+    public set keySteps(steps: TuiKeySteps | null | undefined) {
+        this.transformer = steps
+            ? tuiCreateKeyStepsTransformer(steps)
             : TUI_IDENTITY_VALUE_TRANSFORMER;
-    });
-
-    public readonly keySteps = input<TuiKeySteps>();
+    }
 
     protected setValue(sliderValue: number): void {
         this.onChange(

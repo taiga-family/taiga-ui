@@ -61,7 +61,7 @@ export class TuiItemsWithMoreComponent {
         const {computedSide} = this.directive;
 
         return (
-            (this.lastIndex() >= this.items.length - 1 && computedSide === 'end') ||
+            (this.lastIndex() >= this.items().length - 1 && computedSide === 'end') ||
             (!this.lastIndex() && computedSide === 'start')
         );
     }

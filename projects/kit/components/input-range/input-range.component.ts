@@ -15,7 +15,7 @@ import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TUI_INPUT_NUMBER_OPTIONS,
     TuiInputNumber,
@@ -33,6 +33,9 @@ import {
     type PolymorpheusPrimitive,
 } from '@taiga-ui/polymorpheus';
 
+const transform = (x?: readonly [string, string] | null): readonly [string, string] =>
+    x ?? ['', ''];
+
 @Component({
     selector: 'tui-input-range',
     imports: [FormsModule, PolymorpheusOutlet, TuiInputNumber, TuiRange, TuiTextfield],
@@ -45,9 +48,6 @@ import {
         tuiFallbackValueProvider([0, 0]),
     ],
     host: {
-        new: '', // TODO(v5): remove after deletion of legacy control
-        // TODO: use css :host:has(tui-textfield[data-size]) after browser bump
-        '[attr.data-size]': 'size()',
         // TODO: Delete this line and put `tui-input-range:has(.t-content-end) {--t-icon-lock: none}` to proprietary styles
         '[style.--t-icon-lock]': 'contentEnd() ? "none" : null',
     },
@@ -61,10 +61,9 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
 
-    protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
-    protected textfieldValueStart = this.value()[0];
-    protected textfieldValueEnd = this.value()[1];
-    protected lastActiveSide: 'end' | 'start' = 'start';
+    protected start = this.value()[0];
+    protected end = this.value()[1];
+    protected side: 'end' | 'start' = 'start';
     protected readonly contentStart = computed(() => {
         const [start, end] = this.content().map((x, i) => {
             const value = this.value()[i]!;
@@ -89,14 +88,12 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();
     public readonly quantum = input(0);
-    public readonly prefix = input(['', ''], {
-        transform: (x: readonly [string, string] | null): readonly [string, string] =>
-            x ?? [this.options.prefix, this.options.prefix],
+    public readonly prefix = input([this.options.prefix, this.options.prefix], {
+        transform,
     });
 
-    public readonly postfix = input(['', ''], {
-        transform: (x: readonly [string, string] | null): readonly [string, string] =>
-            x ?? [this.options.postfix, this.options.postfix],
+    public readonly postfix = input([this.options.postfix, this.options.postfix], {
+        transform,
     });
 
     public content = input<
@@ -140,9 +137,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     }
 
     protected onInput([start, end]: [number | null, number | null]): void {
-        const [prevStart, prevEnd] = this.value();
-
-        this.setValue([start ?? prevStart, end ?? prevEnd]);
+        this.setValue([start ?? this.value()[0], end ?? this.value()[1]]);
     }
 
     protected onExternalValueUpdate(value: readonly [number, number]): void {
@@ -163,8 +158,8 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     }
 
     protected setTextfieldValues([start, end]: readonly [number, number]): void {
-        this.textfieldValueStart = start;
-        this.textfieldValueEnd = end;
+        this.start = start;
+        this.end = end;
     }
 
     private get textfieldStart(): HTMLInputElement | null {
@@ -176,7 +171,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     }
 
     private get activeTextfield(): HTMLInputElement | null {
-        return this.lastActiveSide === 'start' ? this.textfieldStart : this.textfieldEnd;
+        return this.side === 'start' ? this.textfieldStart : this.textfieldEnd;
     }
 
     private setValue(value: readonly [number, number]): void {

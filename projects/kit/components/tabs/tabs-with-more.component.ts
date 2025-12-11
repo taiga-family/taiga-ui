@@ -46,9 +46,7 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     styleUrl: './tabs-with-more.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABS_PROVIDERS,
-    host: {
-        '[attr.data-size]': 'size',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly moreButton = viewChild(TuiTab, {read: ElementRef});
