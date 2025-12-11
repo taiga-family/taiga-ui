@@ -3,15 +3,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChildren,
+    contentChildren,
     inject,
     input,
     model,
-    type QueryList,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {TUI_DOC_DEFAULT_TABS, TUI_DOC_SUPPORT_LANGUAGE} from '@taiga-ui/addon-doc/tokens';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TuiAutoColorPipe} from '@taiga-ui/kit/pipes/auto-color';
@@ -62,8 +60,7 @@ export class TuiDocPage {
 
     public readonly deprecated = input<boolean | ''>(false);
 
-    @ContentChildren(TuiDocPageTabConnector)
-    public readonly tabConnectors: QueryList<TuiDocPageTabConnector> = EMPTY_QUERY;
+    public readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
 
     public readonly activeItemIndex = model(0);
 
