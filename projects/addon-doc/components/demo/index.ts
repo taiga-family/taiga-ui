@@ -28,7 +28,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
@@ -180,7 +180,6 @@ export class TuiDocDemo implements AfterViewInit {
         return this.getUrlTree().queryParams;
     }
 
-    @tuiPure
     private updateUrl(params: TuiDemoParams): void {
         const tree = this.getUrlTree();
         const {queryParams} = tree;

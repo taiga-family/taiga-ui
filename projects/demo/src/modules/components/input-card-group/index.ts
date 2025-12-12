@@ -47,7 +47,7 @@ export default class PageComponent {
     protected iconSelected: PolymorpheusContent = null;
 
     protected id = '';
-    protected placeholder = this.options.exampleText;
+    protected placeholder = this.options.placeholder;
 
     protected readonly codeLengthVariants = [3, 4] as const;
     protected codeLength: 3 | 4 = this.codeLengthVariants[0];

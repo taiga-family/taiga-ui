@@ -5,8 +5,7 @@ import {
 import {inject} from '@angular/core';
 import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {distinctUntilChanged, type Observable, Subject} from 'rxjs';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
     ANDROID_CYCLE,
@@ -52,10 +51,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     private readonly index$ = new Subject<number>();
     private viewport: CdkVirtualScrollViewport | null = null;
 
-    @tuiPure
-    public get scrolledIndexChange(): Observable<number> {
-        return this.index$.pipe(distinctUntilChanged());
-    }
+    public readonly scrolledIndexChange = this.index$.pipe(distinctUntilChanged());
 
     public attach(viewport: CdkVirtualScrollViewport): void {
         const cycle = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
