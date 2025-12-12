@@ -110,12 +110,8 @@ import {
     },
 })
 export class TuiMobileCalendar implements AfterViewInit {
-    private readonly yearsScrollRef =
-        viewChild<CdkVirtualScrollViewport>('yearsScrollRef');
-
-    private readonly monthsScrollRef =
-        viewChild<CdkVirtualScrollViewport>('monthsScrollRef');
-
+    private readonly yearsScroll = viewChild<CdkVirtualScrollViewport>('yearsScroll');
+    private readonly monthsScroll = viewChild<CdkVirtualScrollViewport>('monthsScroll');
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
     private activeMonth = 0;
@@ -124,7 +120,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly ngZone = inject(NgZone);
     private readonly getYearsViewportSize = computed(
-        () => this.yearsScrollRef()?.getViewportSize() || 0,
+        () => this.yearsScroll()?.getViewportSize() || 0,
     );
 
     private readonly initialYear = computed((value = this.value()) => {
@@ -316,8 +312,8 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private updateViewportDimension(): void {
-        this.yearsScrollRef()?.checkViewportSize();
-        this.monthsScrollRef()?.checkViewportSize();
+        this.yearsScroll()?.checkViewportSize();
+        this.monthsScroll()?.checkViewportSize();
     }
 
     private lateInit(): MonoTypeOperatorFunction<number> {
@@ -327,7 +323,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     private waitScrolledChange(): void {
         this.updateViewportDimension();
 
-        this.monthsScrollRef()
+        this.monthsScroll()
             ?.scrolledIndexChange.pipe(
                 delay(tuiGetDuration(this.speed)),
                 this.lateInit(),
@@ -345,29 +341,26 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private initYearScroll(): void {
-        const yearsScrollRef = this.yearsScrollRef();
+        const yearsScroll = this.yearsScroll();
 
-        if (!yearsScrollRef) {
+        if (!yearsScroll) {
             return;
         }
 
         const touchstart$ = tuiTypedFromEvent(
-            yearsScrollRef.elementRef.nativeElement,
+            yearsScroll.elementRef.nativeElement,
             'touchstart',
             {passive: true},
         );
         const touchend$ = tuiTypedFromEvent(
-            yearsScrollRef.elementRef.nativeElement,
+            yearsScroll.elementRef.nativeElement,
             'touchend',
             {passive: true},
         );
-        const click$ = tuiTypedFromEvent(
-            yearsScrollRef.elementRef.nativeElement,
-            'click',
-        );
+        const click$ = tuiTypedFromEvent(yearsScroll.elementRef.nativeElement, 'click');
 
         // Refresh activeYear
-        yearsScrollRef
+        yearsScroll
             .elementScrolled()
             .pipe(
                 // Ignore smooth scroll resulting from click on the exact year
@@ -377,9 +370,7 @@ export class TuiMobileCalendar implements AfterViewInit {
                 delay(0),
                 map(
                     () =>
-                        Math.round(
-                            yearsScrollRef.measureScrollOffset() / this.yearWidth,
-                        ) +
+                        Math.round(yearsScroll.measureScrollOffset() / this.yearWidth) +
                         Math.floor(YEARS_IN_ROW / 2) +
                         STARTING_YEAR,
                 ),
@@ -398,7 +389,7 @@ export class TuiMobileCalendar implements AfterViewInit {
                 switchMap(() => touchend$),
                 switchMap(() =>
                     race(
-                        yearsScrollRef.elementScrolled(),
+                        yearsScroll.elementScrolled(),
                         timer(SCROLL_DEBOUNCE_TIME, tuiZonefreeScheduler(this.ngZone)),
                     ).pipe(
                         debounceTime(
@@ -415,19 +406,19 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private initMonthScroll(): void {
-        const monthsScrollRef = this.monthsScrollRef();
+        const monthsScroll = this.monthsScroll();
 
-        if (!monthsScrollRef) {
+        if (!monthsScroll) {
             return;
         }
 
         const touchstart$ = tuiTypedFromEvent(
-            monthsScrollRef.elementRef.nativeElement,
+            monthsScroll.elementRef.nativeElement,
             'touchstart',
             {passive: true},
         );
         const touchend$ = tuiTypedFromEvent(
-            monthsScrollRef.elementRef.nativeElement,
+            monthsScroll.elementRef.nativeElement,
             'touchend',
             {passive: true},
         );
@@ -438,7 +429,7 @@ export class TuiMobileCalendar implements AfterViewInit {
                 switchMap(() => touchend$),
                 switchMap(() =>
                     race(
-                        monthsScrollRef.elementScrolled(),
+                        monthsScroll.elementScrolled(),
                         timer(SCROLL_DEBOUNCE_TIME, tuiZonefreeScheduler(this.ngZone)),
                     ).pipe(
                         debounceTime(
@@ -455,14 +446,14 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private scrollToActiveYear(behavior: ScrollBehavior = 'auto'): void {
-        this.yearsScrollRef()?.scrollToIndex(
+        this.yearsScroll()?.scrollToIndex(
             Math.max(this.activeYear - STARTING_YEAR - 2, 0),
             this.isE2E ? 'auto' : behavior,
         );
     }
 
     private scrollToActiveMonth(behavior: ScrollBehavior = 'auto'): void {
-        this.monthsScrollRef()?.scrollToIndex(
+        this.monthsScroll()?.scrollToIndex(
             this.activeMonth,
             this.isE2E ? 'auto' : behavior,
         );

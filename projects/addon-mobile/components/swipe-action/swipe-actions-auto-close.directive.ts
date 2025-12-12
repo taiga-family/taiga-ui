@@ -15,10 +15,7 @@ export class TuiSwipeActionsAutoClose {
 
     protected handleEvent(event: Event): void {
         if (this.autoClose() !== false && !this.el.contains(tuiGetActualTarget(event))) {
-            this.el.scrollTo({
-                left: 0,
-                behavior: 'smooth',
-            });
+            this.el.scrollTo({left: 0, behavior: 'smooth'});
         }
     }
 }
