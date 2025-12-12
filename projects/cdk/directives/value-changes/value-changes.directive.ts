@@ -1,8 +1,8 @@
 import {Directive, type DoCheck, inject} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {ControlContainer, NgControl} from '@angular/forms';
-
 import {distinctUntilChanged, skip, Subject, switchMap} from 'rxjs';
+
 import {tuiControlValue} from '../../observables';
 
 @Directive({
@@ -15,7 +15,7 @@ export class TuiValueChanges<T> implements DoCheck {
 
     private readonly tuiValueChanges$ = this.control$.pipe(
         distinctUntilChanged(),
-        switchMap(tuiControlValue),
+        switchMap(tuiControlValue<T>),
         distinctUntilChanged(),
         skip(1),
     );
