@@ -1,12 +1,5 @@
 import {DatePipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -18,27 +11,16 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
     styleUrl: './push.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
-    host: {
-        '[style.--t-lines]': 'lines',
-    },
+    host: {'[style.--t-lines]': 'lines()'},
 })
 export class TuiPushComponent {
     protected readonly isString = tuiIsString;
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
-    @Input()
-    public heading = '';
-
-    @Input()
-    public type = '';
-
-    @Input()
-    public lines = 2;
-
-    @Input()
-    public timestamp: number | string = '';
-
-    @Output()
-    public readonly close = new EventEmitter<void>();
+    public readonly heading = input('');
+    public readonly type = input('');
+    public readonly lines = input(2);
+    public readonly timestamp = input<number | string>('');
+    public readonly close = output();
 }

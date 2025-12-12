@@ -1,6 +1,6 @@
 import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, TemplateRef, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLoader} from '@taiga-ui/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -27,12 +27,8 @@ describe('Loader', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiLoader, {static: true})
-        public component!: TuiLoader;
-
-        @ViewChild('template', {static: true})
-        public template: PolymorpheusContent;
-
+        public readonly component = viewChild.required(TuiLoader);
+        public readonly template = viewChild.required('template', {read: TemplateRef});
         public custom = false;
         public showLoader = false;
         public content: PolymorpheusContent;
@@ -81,7 +77,7 @@ describe('Loader', () => {
         });
 
         it('if there is `textContent`, the text is shown', async () => {
-            component.content = component.template;
+            component.content = component.template();
             component.custom = true;
             component.showLoader = true;
             fixture.detectChanges();

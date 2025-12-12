@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -25,8 +25,7 @@ describe('InputInline', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiInputInline, {static: true})
-        public component!: TuiInputInline;
+        public readonly component = viewChild.required(TuiInputInline);
 
         public control = new FormControl('');
     }

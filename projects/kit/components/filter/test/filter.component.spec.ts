@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_FALSE_HANDLER, type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk';
@@ -43,8 +43,7 @@ describe('Filter', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiFilter, {static: true})
-        public component!: TuiFilter<any>;
+        public readonly component = viewChild.required(TuiFilter);
 
         public disabledItemHandler: TuiBooleanHandler<any> = TUI_FALSE_HANDLER;
 
@@ -69,7 +68,7 @@ describe('Filter', () => {
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
-        component = testComponent.component;
+        component = testComponent.component();
         fixture.detectChanges();
     });
 

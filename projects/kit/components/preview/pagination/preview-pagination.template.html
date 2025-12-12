@@ -1,24 +1,23 @@
-@let texts = paginationTexts();
 <button
     tuiIconButton
     tuiPreviewAction
     type="button"
     class="t-arrow t-arrow_left"
-    [disabled]="leftButtonDisabled"
+    [disabled]="!index()"
     [iconStart]="icons.prev"
     (click)="onArrowClick(-1)"
 >
-    {{ texts[0] }}
+    {{ texts()[0] }}
 </button>
-{{ index + 1 }}/{{ length }}
+{{ index() + 1 }}/{{ length() }}
 <button
     tuiIconButton
     tuiPreviewAction
     type="button"
     class="t-arrow t-arrow_right"
-    [disabled]="rightButtonDisabled"
+    [disabled]="index() === length() - 1"
     [iconStart]="icons.next"
     (click)="onArrowClick(1)"
 >
-    {{ texts[1] }}
+    {{ texts()[1] }}
 </button>

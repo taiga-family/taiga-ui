@@ -3,8 +3,8 @@ import {
     Directive,
     effect,
     inject,
-    Input,
-    signal,
+    input,
+    type Signal,
     untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
@@ -12,6 +12,8 @@ import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_FILLER_LENGTH,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
     TuiDay,
     type TuiDayRange,
     type TuiTime,
@@ -57,6 +59,9 @@ import {TUI_INPUT_DATE_OPTIONS, type TuiInputDateOptions} from './input-date.opt
 export abstract class TuiInputDateBase<
     T extends TuiDay | TuiDayRange | readonly [TuiDay, TuiTime | null],
 > extends TuiControl<T | null> {
+    public abstract readonly max: Signal<TuiDay>;
+    public abstract readonly min: Signal<TuiDay>;
+
     private readonly calendar = tuiInjectAuxiliary<TuiCalendar | TuiCalendarRange>(
         (x) => x instanceof TuiCalendar || x instanceof TuiCalendarRange,
     );
@@ -105,22 +110,10 @@ export abstract class TuiInputDateBase<
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly min = signal(this.options.min);
-    public readonly max = signal(this.options.max);
     public readonly native =
         !!inject(TuiWithNativePicker, {optional: true}) && this.mobile;
 
     protected abstract onValueChange(value: string): void;
-
-    @Input('min')
-    public set minSetter(min: Exclude<T, TuiDayRange> | TuiDay | null) {
-        this.min.set(min instanceof TuiDay ? min : this.options.min);
-    }
-
-    @Input('max')
-    public set maxSetter(max: Exclude<T, TuiDayRange> | TuiDay | null) {
-        this.max.set(max instanceof TuiDay ? max : this.options.max);
-    }
 
     public override writeValue(value: T | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
@@ -179,6 +172,16 @@ export abstract class TuiInputDateBase<
     ],
 })
 export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
+    public override readonly max = input(this.options.max, {
+        transform: (max: TuiDay | null): TuiDay =>
+            max instanceof TuiDay ? max : TUI_LAST_DAY,
+    });
+
+    public override readonly min = input(this.options.min, {
+        transform: (min: TuiDay | null): TuiDay =>
+            min instanceof TuiDay ? min : TUI_FIRST_DAY,
+    });
+
     protected readonly mask = tuiMaskito(
         computed(() =>
             maskitoDateOptionsGenerator({

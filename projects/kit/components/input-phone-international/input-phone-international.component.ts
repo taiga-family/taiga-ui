@@ -6,13 +6,13 @@ import {
     effect,
     ElementRef,
     inject,
-    Input,
-    Output,
+    input,
+    model,
     signal,
     viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {
@@ -49,7 +49,7 @@ import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
 import {getCountryCallingCode, type MetadataJson} from 'libphonenumber-js/core';
-import {filter, from, skip} from 'rxjs';
+import {filter, from} from 'rxjs';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
 
@@ -95,8 +95,6 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     protected readonly ios = inject(TUI_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-    protected readonly countries = signal(this.options.countries);
-    protected readonly code = signal(this.options.countryIsoCode);
     protected readonly label = inject(TUI_INTERNATIONAL_SEARCH);
     protected readonly metadata = toSignal(from(this.options.metadata));
     protected readonly names = inject(TUI_COUNTRIES);
@@ -107,7 +105,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected readonly masked = tuiValue(this.el);
     protected readonly mask = tuiMaskito(
-        computed(() => this.computeMask(this.code(), this.metadata())),
+        computed(() => this.computeMask(this.countryIsoCode(), this.metadata())),
     );
 
     protected readonly filtered = computed(() =>
@@ -126,7 +124,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             takeUntilDestroyed(),
         )
         .subscribe((active) => {
-            const prefix = `${getCallingCode(this.code(), this.metadata())} `;
+            const prefix = `${getCallingCode(this.countryIsoCode(), this.metadata())} `;
 
             this.search.set('');
             this.masked.update((value) => {
@@ -136,27 +134,15 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             });
         });
 
-    @Input()
-    public countrySearch = false;
-
-    @Output()
-    public readonly countryIsoCodeChange = toObservable(this.code).pipe(skip(1));
-
-    @Input('countries')
-    public set countriesValue(value: readonly TuiCountryIsoCode[]) {
-        this.countries.set(value);
-    }
-
-    @Input('countryIsoCode')
-    public set isoCode(code: TuiCountryIsoCode) {
-        this.code.set(code);
-    }
+    public readonly countrySearch = input(this.options.countrySearch);
+    public readonly countryIsoCode = model(this.options.countryIsoCode);
+    public readonly countries = input(this.options.countries);
 
     public override writeValue(unmasked: string | null): void {
         const code = this.getCountryCode(unmasked ?? '');
 
         if (code) {
-            this.code.set(code);
+            this.countryIsoCode.set(code);
         }
 
         super.writeValue(unmasked);
@@ -178,14 +164,14 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         const code = this.getCountryCode(data);
 
         if (code) {
-            this.code.set(code);
+            this.countryIsoCode.set(code);
         }
     }
 
     protected onItemClick(code: TuiCountryIsoCode): void {
         this.el.focus();
         this.open.set(false);
-        this.code.set(code);
+        this.countryIsoCode.set(code);
         this.search.set('');
         this.masked.set(
             maskitoTransform(
@@ -198,9 +184,9 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     private computeMask(
         countryIsoCode: TuiCountryIsoCode,
         metadata?: MetadataJson,
-    ): MaskitoOptions | null {
+    ): MaskitoOptions {
         if (!metadata) {
-            return null;
+            return MASKITO_DEFAULT_OPTIONS;
         }
 
         const {plugins, ...options} = maskitoPhoneOptionsGenerator({
@@ -217,8 +203,9 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
 
     private unmask(maskedValue: string): string {
         const value = maskedValue.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
+        const code = getCallingCode(this.countryIsoCode(), this.metadata());
 
-        return value === getCallingCode(this.code(), this.metadata()) ? '' : value;
+        return value === code ? '' : value;
     }
 
     private getCountryCode(value: string): TuiCountryIsoCode | null {

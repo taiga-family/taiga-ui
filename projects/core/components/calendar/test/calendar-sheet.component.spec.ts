@@ -3,7 +3,7 @@ import {
     Component,
     type DebugElement,
     signal,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -39,8 +39,7 @@ describe('CalendarSheet', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiCalendarSheet, {static: true})
-        public component!: TuiCalendarSheet;
+        public readonly component = viewChild.required(TuiCalendarSheet);
 
         public month = new TuiMonth(2018, 1);
 
@@ -57,15 +56,13 @@ describe('CalendarSheet', () => {
 
     describe('main case', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule({
-                imports: [Test],
-            });
+            TestBed.configureTestingModule({imports: [Test]});
             await TestBed.compileComponents();
             tuiMockCurrentDate(new Date(2018, 1, today));
 
             fixture = TestBed.createComponent(Test);
             testComponent = fixture.componentInstance;
-            component = testComponent.component;
+            component = testComponent.component();
 
             fixture.detectChanges();
         });

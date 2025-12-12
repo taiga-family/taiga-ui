@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPreview, TuiPreviewPagination} from '@taiga-ui/kit';
@@ -19,8 +19,7 @@ describe('PreviewPagination', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiPreviewPagination, {static: true})
-        public component!: TuiPreviewPagination;
+        public readonly component = viewChild.required(TuiPreviewPagination);
 
         public index = 0;
         public length = 11;
@@ -38,7 +37,7 @@ describe('PreviewPagination', () => {
 
     describe('Preview pagination', () => {
         it('0 switching to 1', () => {
-            testComponent.component.onArrowClick(1);
+            testComponent.component().onArrowClick(1);
             fixture.detectChanges();
 
             expect(testComponent.index).toBe(1);
