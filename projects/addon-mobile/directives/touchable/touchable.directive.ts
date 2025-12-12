@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {computed, Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
@@ -11,7 +12,7 @@ const STYLE = {
     background: 'rgba(146, 153, 162, 0.12)',
 } as const;
 
-export function tuiFindTouchIndex(touches: TouchList, id: number): number {
+function findIndex(touches: TouchList, id = 0): number {
     for (let i = 0; i < touches.length; i++) {
         if (touches[i]?.identifier === id) {
             return i;
@@ -27,6 +28,8 @@ export function tuiFindTouchIndex(touches: TouchList, id: number): number {
 export class TuiTouchable {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly el = tuiInjectElement();
+    private readonly doc = inject(DOCUMENT);
+
     protected readonly style = computed<'background' | 'opacity' | 'transform'>(
         () => this.tuiTouchable() || 'transform',
     );
@@ -42,14 +45,12 @@ export class TuiTouchable {
             .pipe(
                 tap(() => this.onTouchStart()),
                 map(({touches}) => touches[touches.length - 1]?.identifier),
-                switchMap((identifier) =>
+                switchMap((id) =>
                     race(
-                        tuiTypedFromEvent(this.el, 'touchmove', {passive: true}).pipe(
-                            filter(({touches}) =>
-                                this.hasTouchLeft(this.el, touches, identifier ?? 0),
-                            ),
-                        ),
                         tuiTypedFromEvent(this.el, 'touchend'),
+                        tuiTypedFromEvent(this.el, 'touchmove', {passive: true}).pipe(
+                            filter(({touches}) => this.hasTouches(this.el, touches, id)),
+                        ),
                     ).pipe(take(1)),
                 ),
                 takeUntilDestroyed(),
@@ -61,21 +62,11 @@ export class TuiTouchable {
             });
     }
 
-    private hasTouchLeft(
-        element: HTMLElement,
-        touches: TouchList,
-        identifier: number,
-    ): boolean {
-        const {ownerDocument} = element;
-        const id = tuiFindTouchIndex(touches, identifier);
+    private hasTouches(el: HTMLElement, touches: TouchList, id?: number): boolean {
+        const index = findIndex(touches, id);
+        const {clientX = 0, clientY = 0} = touches[index] ?? {};
 
-        if (!ownerDocument || id === -1) {
-            return true;
-        }
-
-        const {clientX = 0, clientY = 0} = touches[id] ?? {};
-
-        return !element.contains(ownerDocument.elementFromPoint(clientX, clientY));
+        return index === -1 || !el.contains(this.doc.elementFromPoint(clientX, clientY));
     }
 
     private onTouchStart(): void {
