@@ -1,27 +1,64 @@
-<ul class="tui-list tui-list_small">
-    <li class="tui-list__item">Code Review ($ 10)</li>
-    <li class="tui-list__item">
-        The whole project refactoring ($ 1000)
-        <ul class="tui-list tui-list_linear tui-list_nested">
-            <li class="tui-list__item">Add auto prettier and linters on precommit ($ 50)</li>
-            <li class="tui-list__item">Rewrite to react and back ($ Infinity)</li>
-        </ul>
-    </li>
-    <li class="tui-list__item">
-        Live workshop from
-        <a
-            href="https://angular.institute/corporate"
-            rel="noreferrer"
-            target="_blank"
-            tuiLink
-        >
-            angular.institute
-        </a>
-        ($ 3000)
-        <ol class="tui-list tui-list_ordered tui-list_nested">
-            <li class="tui-list__item">Interactive samples</li>
-            <li class="tui-list__item">Case analysis</li>
-            <li class="tui-list__item">Angular knowledge that keeps on growing</li>
+<header tuiHeader="h6">
+    <hgroup tuiTitle>
+        <h1>Header of first list</h1>
+    </hgroup>
+</header>
+
+<ol tuiList>
+    <li>
+        First level
+
+        <ol tuiList>
+            <li>Second level</li>
+            <li>
+                Second level
+
+                <ol tuiList>
+                    <li>Third level</li>
+                    <li>Third level</li>
+                </ol>
+            </li>
+            <li>
+                Second level
+
+                <ol tuiList>
+                    <li>Third level</li>
+                    <li>
+                        Third level
+
+                        <ol tuiList>
+                            <li>Fourth level</li>
+                            <li>Fourth level</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
         </ol>
     </li>
+    <li>First level</li>
+</ol>
+
+<header tuiHeader="h6">
+    <hgroup tuiTitle>
+        <h1>Header of second list</h1>
+    </hgroup>
+</header>
+
+<ul tuiList>
+    <li>
+        First level
+
+        <ul tuiList>
+            <li>Second level</li>
+            <li>
+                Second level
+
+                <ul tuiList>
+                    <li>Third level</li>
+                    <li>Third level</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>First level</li>
 </ul>

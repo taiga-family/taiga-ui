@@ -1,27 +1,50 @@
-<ul class="tui-list">
-    <li class="tui-list__item">Code Review ($ 10)</li>
-    <li class="tui-list__item">
-        The whole project refactoring ($ 1000)
-        <ul class="tui-list tui-list_linear tui-list_nested">
-            <li class="tui-list__item">Add auto prettier and linters on precommit ($ 50)</li>
-            <li class="tui-list__item">Rewrite to react and back ($ Infinity)</li>
-        </ul>
-    </li>
-    <li class="tui-list__item">
-        Live workshop from
-        <a
-            href="https://angular.institute/corporate"
-            rel="noreferrer"
-            target="_blank"
-            tuiLink
+@for (platform of platforms; track $index) {
+    <div
+        class="wrapper"
+        [tuiPlatform]="platform"
+    >
+        <code>{{ platform === 'web' ? 'Web' : 'Android/iOS' }}</code>
+
+        <h2>Body L</h2>
+
+        <ol
+            aria-label="List of Continents"
+            tuiList
         >
-            angular.institute
-        </a>
-        ($ 3000)
-        <ol class="tui-list tui-list_ordered tui-list_nested">
-            <li class="tui-list__item">Interactive samples</li>
-            <li class="tui-list__item">Case analysis</li>
-            <li class="tui-list__item">Angular knowledge that keeps on growing</li>
+            <li>Eurasia</li>
+            <li>Africa</li>
+            <li>Australia</li>
+            <li>Antarctica</li>
+            <li>North America</li>
+            <li>South America</li>
         </ol>
-    </li>
-</ul>
+
+        <h2>Body M</h2>
+
+        <ol
+            aria-label="List of Continents"
+            tuiList="m"
+        >
+            <li>Eurasia</li>
+            <li>Africa</li>
+            <li>Australia</li>
+            <li>Antarctica</li>
+            <li>North America</li>
+            <li>South America</li>
+        </ol>
+
+        <h2>UI S</h2>
+
+        <ol
+            aria-label="List of Continents"
+            tuiList="s"
+        >
+            <li>Eurasia</li>
+            <li>Africa</li>
+            <li>Australia</li>
+            <li>Antarctica</li>
+            <li>North America</li>
+            <li>South America</li>
+        </ol>
+    </div>
+}
