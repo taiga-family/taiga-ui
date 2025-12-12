@@ -1,12 +1,4 @@
-import {
-    computed,
-    Directive,
-    effect,
-    inject,
-    Input,
-    signal,
-    untracked,
-} from '@angular/core';
+import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
     MASKITO_DEFAULT_OPTIONS,
@@ -54,7 +46,7 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
     protected inputMode = computed(() => (this.allowText() ? 'text' : 'numeric'));
     protected readonly valueEffect = effect(() => {
         if (this.value()) {
-            this.input.value.set(maskitoTransform(this.value() ?? '', this.mask()));
+            this.input.value.set(maskitoTransform(this.value() ?? '', this.maskito()));
         }
     });
 
@@ -69,33 +61,21 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
         }
     });
 
-    protected readonly mask = computed(() =>
-        this.calculateMask(
-            this.countryCode(),
-            this.phoneMask(),
-            this.nonRemovablePrefix(),
-            this.allowText(),
+    protected readonly countryCode = computed(() => extractCode(this.mask()));
+    protected readonly phoneMask = computed(() => extractMask(this.mask()));
+    protected readonly maskito = tuiMaskito(
+        computed(() =>
+            this.calculateMask(
+                this.countryCode(),
+                this.phoneMask(),
+                this.nonRemovablePrefix(),
+                this.allowText(),
+            ),
         ),
     );
 
-    protected readonly maskito = tuiMaskito(computed(() => this.mask()));
-
-    public readonly countryCode = signal(extractCountryCode(this.options.mask));
-    public readonly allowText = signal(this.options.allowText);
-    public readonly phoneMask = signal(extractMask(this.options.mask));
-
-    // TODO(v5): replace with signal input
-    @Input('allowText')
-    public set allowTextSetter(allow: boolean) {
-        this.allowText.set(allow);
-    }
-
-    // TODO(v5): replace with signal input
-    @Input('mask')
-    public set maskSetter(mask: string) {
-        this.countryCode.set(extractCountryCode(mask));
-        this.phoneMask.set(extractMask(mask));
-    }
+    public readonly allowText = input(this.options.allowText);
+    public readonly mask = input(this.options.mask);
 
     protected onInput(value: string): void {
         if (!value && !this.allowText()) {
@@ -153,7 +133,7 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
     }
 }
 
-function extractCountryCode(mask: string): string {
+function extractCode(mask: string): string {
     const match = /^(\+\d+)/.exec(mask);
 
     return match?.[1] || '';

@@ -2,18 +2,19 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    Input,
-    Output,
+    input,
+    model,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
+import {debounce, filter, map, Subject, timer} from 'rxjs';
 
 import {TUI_TILES_REORDER} from './tiles.tokens';
 
@@ -31,37 +32,26 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
             useValue: {childList: true},
         },
     ],
-    host: {
-        '(pointerleave.zoneless)': 'rearrange()',
-    },
+    host: {'(pointerleave.zoneless)': 'rearrange()'},
 })
 export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
     private readonly handler = inject(TUI_TILES_REORDER);
 
-    @Input()
-    public debounce = 0;
+    protected readonly sub = this.el$
+        .pipe(
+            debounce(() => timer(this.debounce())),
+            filter(this.filter.bind(this)),
+            map((element) => this.reorder(element)),
+            takeUntilDestroyed(),
+        )
+        .subscribe((order) => this.order.set(order));
 
-    @Output()
-    public readonly orderChange = this.el$.pipe(
-        debounce(() => timer(this.debounce)),
-        filter(this.filter.bind(this)),
-        map((element) => this.reorder(element)),
-    );
+    public readonly debounce = input(0);
+    public readonly order = model(new Map<number, number>());
 
     public readonly element = signal<Element | null>(null);
     public readonly el = tuiInjectElement();
-
-    public readonly order$ = new BehaviorSubject(new Map<number, number>());
-
-    @Input()
-    public set order(map: Map<number, number>) {
-        this.order$.next(map);
-    }
-
-    public get order(): Map<number, number> {
-        return this.order$.value;
-    }
 
     public rearrange(element?: Element): void {
         this.el$.next(element);
@@ -75,12 +65,10 @@ export class TuiTilesComponent {
         const elements = Array.from(this.el.children);
         const currentIndex = elements.indexOf(this.element() || element);
         const newIndex = elements.indexOf(element);
-        const order = this.order.size
-            ? new Map(this.order)
+        const order = this.order().size
+            ? new Map(this.order())
             : new Map(elements.map((_, index) => [index, index]));
 
-        this.order$.next(this.handler(order, currentIndex, newIndex));
-
-        return this.order$.value;
+        return this.handler(order, currentIndex, newIndex);
     }
 }

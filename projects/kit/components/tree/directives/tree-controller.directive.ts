@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import {Directive, input, output} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -19,14 +19,9 @@ export class TuiTreeControllerDirective<T>
 {
     protected readonly items = new Map<TuiTreeItem, T>();
 
-    @Input('tuiTreeController')
-    public fallback = true;
-
-    @Input()
-    public map = new Map<T, boolean>();
-
-    @Output()
-    public readonly toggled = new EventEmitter<T>();
+    public readonly fallback = input(true, {alias: 'tuiTreeController'});
+    public readonly map = input(new Map<T, boolean>());
+    public readonly toggled = output<T>();
 
     public register(item: TuiTreeItem, value: T): void {
         this.items.set(item, value);
@@ -39,7 +34,7 @@ export class TuiTreeControllerDirective<T>
     public isExpanded(item: TuiTreeItem): boolean {
         const value = this.items.get(item);
 
-        return (value && this.map.get(value)) ?? this.fallback;
+        return (value && this.map().get(value)) ?? this.fallback();
     }
 
     public toggle(item: TuiTreeItem): void {
@@ -51,6 +46,6 @@ export class TuiTreeControllerDirective<T>
         }
 
         this.toggled.emit(value);
-        this.map.set(value, !expanded);
+        this.map().set(value, !expanded);
     }
 }

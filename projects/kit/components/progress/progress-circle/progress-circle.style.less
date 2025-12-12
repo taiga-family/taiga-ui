@@ -87,16 +87,12 @@
 }
 
 .t-progress {
+    .transition(~'stroke-dashoffset, stroke-dasharray');
+
+    transition-timing-function: linear;
     stroke: var(--tui-progress-color, currentColor);
     stroke-dasharray: @circumference;
-    stroke-dashoffset: @circumference;
-
-    &_filled {
-        .transition(~'stroke-dashoffset, stroke-dasharray');
-
-        transition-timing-function: linear;
-        stroke-dashoffset: calc(@circumference - var(--t-progress-ratio) * @circumference);
-    }
+    stroke-dashoffset: calc(@circumference - var(--t-progress-ratio) * @circumference);
 
     :host._arc & {
         stroke-dashoffset: 0.1px;

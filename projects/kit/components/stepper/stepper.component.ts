@@ -1,7 +1,5 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     contentChildren,
     ElementRef,
@@ -11,20 +9,17 @@ import {
     model,
     type OnChanges,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {type TuiOrientation} from '@taiga-ui/core/types';
-import {delay} from 'rxjs';
 
 import {TuiStep} from './step.component';
 
 @Component({
     selector: 'tui-stepper, nav[tuiStepper]',
-    imports: [AsyncPipe],
     template: `
-        @if (changes$ | async) {}
         <ng-content />
     `,
     styleUrl: './stepper.style.less',
@@ -39,16 +34,12 @@ import {TuiStep} from './step.component';
     },
 })
 export class TuiStepperComponent implements OnChanges {
-    private readonly cdr = inject(ChangeDetectorRef);
     private readonly el = tuiInjectElement();
     private readonly steps = contentChildren(
         forwardRef(() => TuiStep),
         {read: ElementRef},
     );
 
-    // Delay is required to trigger change detection after steps are rendered,
-    // so they can update their "active" status
-    protected readonly changes$ = toObservable(this.steps).pipe(delay(0));
     protected readonly $ = inject(ResizeObserverService, {self: true})
         .pipe(takeUntilDestroyed())
         .subscribe(() => this.scrollIntoView(this.activeItemIndex()));
@@ -76,7 +67,6 @@ export class TuiStepperComponent implements OnChanges {
         }
 
         this.activeItemIndex.set(index);
-        this.cdr.markForCheck();
         this.scrollIntoView(index);
     }
 

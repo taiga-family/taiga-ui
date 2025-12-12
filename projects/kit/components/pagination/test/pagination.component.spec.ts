@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
@@ -30,8 +30,7 @@ describe('TuiPaginationComponent', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiPagination, {static: true})
-        public component!: TuiPagination;
+        public readonly component = viewChild.required(TuiPagination);
 
         public index = 0;
 
@@ -96,7 +95,7 @@ describe('TuiPaginationComponent', () => {
         fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
-        component = testComponent.component;
+        component = testComponent.component();
     });
 
     describe('number of points', () => {

@@ -52,7 +52,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     public readonly underline = input(this.options.underline);
 
     public ngAfterViewChecked(): void {
-        this.scrollTo(this.tabs.activeItemIndex);
+        this.scrollTo(this.tabs.activeItemIndex());
         this.refresh();
     }
 

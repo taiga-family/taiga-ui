@@ -1,13 +1,14 @@
-import {AsyncPipe, PercentPipe} from '@angular/common';
+import {PercentPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     inject,
-    Input,
-    Output,
+    input,
+    model,
+    output,
 } from '@angular/core';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -15,87 +16,40 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
-import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
+import {map, merge, of, skip, startWith, switchMap, timer} from 'rxjs';
 
 import {TuiPreviewAction} from '../action/preview-action.directive';
 import {TUI_PREVIEW_ICONS, type TuiPreviewIcons} from '../preview.options';
 
-const STEP = 0.5;
-
 @Component({
     selector: 'tui-preview-zoom',
-    imports: [
-        AsyncPipe,
-        FormsModule,
-        PercentPipe,
-        TuiButton,
-        TuiHint,
-        TuiPreviewAction,
-        TuiSlider,
-    ],
+    imports: [FormsModule, PercentPipe, TuiButton, TuiHint, TuiPreviewAction, TuiSlider],
     templateUrl: './preview-zoom.template.html',
     styleUrl: './preview-zoom.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewZoom {
     protected readonly icons: TuiPreviewIcons = inject(TUI_PREVIEW_ICONS);
-    protected readonly zoomTexts = inject(TUI_PREVIEW_ZOOM_TEXTS);
+    protected readonly texts = inject(TUI_PREVIEW_ZOOM_TEXTS);
     protected readonly sliderLabel = computed(
-        () => `${this.zoomTexts().zoomOut} / ${this.zoomTexts().zoomIn}`,
+        () => `${this.texts().zoomOut} / ${this.texts().zoomIn}`,
     );
 
-    @Input()
-    public min = 0.5;
+    public readonly min = input(0.5);
+    public readonly max = input(2);
+    public readonly value = model(1);
+    public readonly reset = output();
 
-    @Input()
-    public max = 2;
-
-    @Input()
-    public value = 1;
-
-    @Output()
-    public readonly valueChange = new EventEmitter<number>();
-
-    @Output()
-    public readonly reset = new EventEmitter<void>();
-
-    public readonly hintShow$ = this.valueChange.pipe(
-        switchMap(() => merge(of(true), timer(1000).pipe(map(TUI_FALSE_HANDLER)))),
-        startWith(false),
+    protected readonly hint = toSignal(
+        toObservable(this.value).pipe(
+            skip(1),
+            switchMap(() => merge(of(true), timer(1000).pipe(map(TUI_FALSE_HANDLER)))),
+            startWith(false),
+        ),
+        {requireSync: true},
     );
 
-    protected get leftButtonDisabled(): boolean {
-        return this.value === this.min;
-    }
-
-    protected get rightButtonDisabled(): boolean {
-        return this.value === this.max;
-    }
-
-    protected get collapseVisible(): boolean {
-        return this.value > this.min;
-    }
-
-    protected onModelChange(value: number): void {
-        const clamped = tuiClamp(value, this.min, this.max);
-
-        if (clamped === this.value) {
-            return;
-        }
-
-        this.value = clamped;
-        this.valueChange.emit(clamped);
-    }
-
-    protected onReset(): void {
-        this.reset.emit();
-    }
-
-    protected onMinus(): void {
-        this.onModelChange(this.value - STEP);
-    }
-
-    protected onPlus(): void {
-        this.onModelChange(this.value < 1 ? 1 : this.value + STEP);
+    protected clamp(value: number): void {
+        this.value.set(tuiClamp(value, this.min(), this.max()));
     }
 }

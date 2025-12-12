@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiDay} from '@taiga-ui/cdk/date-time';
@@ -29,8 +29,7 @@ import {TuiInputDateDirective} from './input-date.directive';
 export class TuiInputDateComponent {
     protected readonly host = inject(TuiInputDateDirective);
 
-    @Input()
-    public list: string | null = null;
+    public readonly list = input<string>();
 
     protected onInput(value: string): void {
         if (!value) {

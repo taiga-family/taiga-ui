@@ -1,9 +1,9 @@
-<ng-container *polymorpheusOutlet="component; context: {$implicit: (pulling$ | async) || 0}" />
+<ng-container *polymorpheusOutlet="component; context: {$implicit: pulling()}" />
 
 <div
-    [class.t-drop]="dropped$ | async"
+    [class.t-drop]="dropped()"
     [style.position]="'relative'"
-    [style]="styleHandler((pulling$ | async) || 0)"
+    [style]="style()"
 >
     <ng-content />
 </div>

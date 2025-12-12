@@ -1,6 +1,10 @@
-import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input, Output} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {
+    outputFromObservable,
+    takeUntilDestroyed,
+    toObservable,
+    toSignal,
+} from '@angular/core/rxjs-interop';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {type TuiContext, type TuiHandler} from '@taiga-ui/cdk/types';
@@ -17,7 +21,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 
 @Component({
     selector: 'tui-pull-to-refresh',
-    imports: [AsyncPipe, PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet],
     templateUrl: './pull-to-refresh.template.html',
     styleUrl: './pull-to-refresh.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,24 +31,33 @@ export class TuiPullToRefresh {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
-    protected readonly pulling$ = inject(TuiPullToRefreshService);
+    protected readonly pulling = toSignal(inject(TuiPullToRefreshService), {
+        initialValue: 0,
+    });
+
     protected readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
         TUI_PULL_TO_REFRESH_COMPONENT,
     );
 
-    protected readonly dropped$: Observable<boolean> = this.pulling$.pipe(
+    protected readonly dropped$: Observable<boolean> = toObservable(this.pulling).pipe(
         map((distance) => distance <= MICRO_OFFSET || distance === this.threshold),
         distinctUntilChanged(),
     );
 
-    @Input()
-    public styleHandler: TuiHandler<number, Record<string, unknown> | null> = this.isIOS
-        ? (distance) => ({top: tuiPx(distance / 2)})
-        : () => null;
+    protected readonly dropped = toSignal(this.dropped$);
 
-    @Output()
-    public readonly pulled: Observable<unknown> = inject(TuiPullToRefreshService).pipe(
-        filter((distance) => distance === this.threshold),
+    protected readonly style = computed((styleHandler = this.styleHandler()) =>
+        styleHandler(this.pulling()),
+    );
+
+    public readonly styleHandler = input<
+        TuiHandler<number, Record<string, unknown> | null>
+    >(this.isIOS ? (distance) => ({top: tuiPx(distance / 2)}) : () => null);
+
+    public readonly pulled = outputFromObservable(
+        inject(TuiPullToRefreshService).pipe(
+            filter((distance) => distance === this.threshold),
+        ),
     );
 
     constructor() {

@@ -1,6 +1,6 @@
-import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
@@ -33,8 +33,7 @@ export class TuiSliderReadonly {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly doc = inject(DOCUMENT);
 
-    @Input({transform: coerceBooleanProperty})
-    public readonly: BooleanInput = true;
+    public readonly readonly = input(true, {transform: coerceBooleanProperty});
 
     constructor() {
         const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {
@@ -68,7 +67,7 @@ export class TuiSliderReadonly {
     }
 
     protected preventEvent(event: Event): void {
-        if (event.cancelable && this.readonly) {
+        if (event.cancelable && this.readonly()) {
             event.preventDefault();
         }
     }

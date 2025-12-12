@@ -1,22 +1,19 @@
-@let texts = zoomTexts();
 <section class="t-zoom">
     <button
         tuiIconButton
         tuiPreviewAction
         type="button"
         class="t-sign_minus"
-        [disabled]="leftButtonDisabled"
+        [disabled]="value() === min()"
         [iconStart]="icons.zoomOut"
-        (click)="onMinus()"
+        (click)="clamp(value() - 0.5)"
     >
-        {{ texts.zoomOut }}
+        {{ texts().zoomOut }}
     </button>
     <label tuiSliderThumbLabel>
-        @let sliderValueText = (valueChange | async) || (value | percent);
-
         <div
-            [tuiHint]="sliderValueText"
-            [tuiHintManual]="!!(hintShow$ | async)"
+            [tuiHint]="value() | percent"
+            [tuiHintManual]="hint()"
         ></div>
         <input
             step="any"
@@ -25,12 +22,11 @@
             type="range"
             class="t-slider"
             [attr.aria-label]="sliderLabel()"
-            [attr.aria-valuetext]="sliderValueText"
-            [max]="max"
-            [min]="min"
-            [ngModel]="value"
+            [attr.aria-valuetext]="value() | percent"
+            [max]="max()"
+            [min]="min()"
             [ngModelOptions]="{standalone: true}"
-            (ngModelChange)="onModelChange($event)"
+            [(ngModel)]="value"
         />
     </label>
     <button
@@ -38,25 +34,25 @@
         tuiPreviewAction
         type="button"
         class="t-sign_plus"
-        [disabled]="rightButtonDisabled"
+        [disabled]="value() === max()"
         [iconStart]="icons.zoomIn"
-        (click)="onPlus()"
+        (click)="clamp(value() + 0.5)"
     >
-        {{ texts.zoomIn }}
+        {{ texts().zoomIn }}
     </button>
 </section>
 <button
-    tuiHintAppearance="dark"
+    tuiHintAppearance="floating"
     tuiHintDescribe
     tuiHintDirection="top-right"
     tuiIconButton
     tuiPreviewAction
     type="button"
     class="t-reset-button"
-    [class.t-invisible]="!collapseVisible"
+    [class.t-invisible]="value() === this.min()"
     [iconStart]="icons.zoomReset"
-    [tuiHint]="texts.reset"
-    (click)="onReset()"
+    [tuiHint]="texts().reset"
+    (click)="reset.emit()"
 >
-    {{ texts.reset }}
+    {{ texts().reset }}
 </button>

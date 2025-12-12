@@ -1,4 +1,5 @@
-import {Directive, inject, Output} from '@angular/core';
+import {Directive, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 import {TuiCarouselDirective} from './carousel.directive';
 
@@ -6,6 +7,7 @@ import {TuiCarouselDirective} from './carousel.directive';
     selector: '[tuiCarouselAutoscroll]',
 })
 export class TuiCarouselAutoscroll {
-    @Output()
-    public readonly tuiCarouselAutoscroll = inject(TuiCarouselDirective);
+    public readonly tuiCarouselAutoscroll = outputFromObservable(
+        inject(TuiCarouselDirective),
+    );
 }

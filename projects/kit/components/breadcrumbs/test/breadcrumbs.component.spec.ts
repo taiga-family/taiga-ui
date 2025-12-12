@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -50,11 +50,8 @@ describe('Breadcrumbs Wrapper', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiBreadcrumbs, {static: true})
-        public component!: TuiBreadcrumbs;
-
+        public readonly component = viewChild.required(TuiBreadcrumbs);
         public items = ITEMS;
-
         public size: TuiSizeL = 'm';
     }
 
