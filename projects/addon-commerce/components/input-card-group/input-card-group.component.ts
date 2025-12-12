@@ -8,6 +8,7 @@ import {
     input,
     output,
     PLATFORM_ID,
+    signal,
     type Signal,
     viewChild,
 } from '@angular/core';
@@ -117,7 +118,7 @@ export class TuiInputCardGroup
     private readonly doc = inject(DOCUMENT);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly focus$ = new Subject<void>();
-    private expirePrefilled = false;
+    private readonly expirePrefilled = signal(false);
     private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
     private readonly el = tuiInjectElement();
@@ -143,7 +144,7 @@ export class TuiInputCardGroup
     );
 
     protected readonly expireFocusable = computed(
-        () => this.focusable() && !this.expirePrefilled,
+        () => this.focusable() && !this.expirePrefilled(),
     );
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
@@ -212,7 +213,7 @@ export class TuiInputCardGroup
 
         super.writeValue(value);
         this.updateBin(bin);
-        this.expirePrefilled = !!this.expire() && this.cardPrefilled();
+        this.expirePrefilled.set(!!this.expire() && this.cardPrefilled());
 
         // Programmatic setting of expire input value breaks autofill in Chrome
         const inputExpire = this.inputExpire();
@@ -261,14 +262,13 @@ export class TuiInputCardGroup
         this.onChange({card, expire, cvc});
         this.updateBin(bin);
         this.open.set(false);
-        this.expirePrefilled = !!expire;
+        this.expirePrefilled.set(!!expire);
 
         element?.focus();
     }
 
     public clear(): void {
-        this.expirePrefilled = false;
-
+        this.expirePrefilled.set(false);
         [this.inputCVC(), this.inputExpire(), this.inputCard()].forEach((e) => {
             e?.nativeElement.focus();
             e?.nativeElement.select();

@@ -185,7 +185,7 @@ describe('InputCardGroup', () => {
 
         it('input-card-group have a default icon', () => {
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component['content']).toBe('@tui.visa');
+            expect(testComponent.component['content']()).toBe('@tui.visa');
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
@@ -194,7 +194,7 @@ describe('InputCardGroup', () => {
             tuiSetSignal(testComponent.component.icon, 'tuiIconMastercard');
 
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component['content']).toBe('tuiIconMastercard');
+            expect(testComponent.component['content']()).toBe('tuiIconMastercard');
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
@@ -206,7 +206,7 @@ describe('InputCardGroup', () => {
             );
 
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component['content']).toBeInstanceOf(TemplateRef);
+            expect(testComponent.component['content']()).toBeInstanceOf(TemplateRef);
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
