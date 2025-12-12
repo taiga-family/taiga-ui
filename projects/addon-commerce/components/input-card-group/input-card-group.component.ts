@@ -8,8 +8,8 @@ import {
     input,
     output,
     PLATFORM_ID,
-    signal,
     type Signal,
+    signal,
     viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
