@@ -98,8 +98,10 @@ export class TuiInputNumberDirective extends TuiControl<string> {
         }
     }
 
-    public setValue(value: bigint | number | null): void {
-        this.input.value.set(this.mask.stringify(value));
+    public setValue(value: bigint | number | string | null): void {
+        this.input.value.set(
+            typeof value === 'string' ? value : this.mask.stringify(value),
+        );
     }
 
     protected onFocus(): void {
