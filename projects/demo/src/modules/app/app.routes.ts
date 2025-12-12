@@ -188,6 +188,11 @@ export const ROUTES: Routes = [
         title: 'Cell',
     }),
     route({
+        path: DemoRoute.List,
+        loadComponent: async () => import('../directives/list'),
+        title: 'List',
+    }),
+    route({
         path: DemoRoute.Comment,
         loadComponent: async () => import('../directives/comment'),
         title: 'Comment',
@@ -750,11 +755,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Colors,
         loadComponent: async () => import('../markup/colors'),
         title: 'Colors',
-    }),
-    route({
-        path: DemoRoute.Lists,
-        loadComponent: async () => import('../markup/lists'),
-        title: 'Lists',
     }),
     route({
         path: DemoRoute.Shadows,
