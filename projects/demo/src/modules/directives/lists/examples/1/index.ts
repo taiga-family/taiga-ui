@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiList} from '@taiga-ui/kit';
+import {TuiList} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiList, TuiPlatform],
     templateUrl: './index.html',
-    styleUrl: '../1/index.less',
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

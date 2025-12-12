@@ -31,15 +31,14 @@ class Styles {}
 @Directive({
     selector: 'ul[tuiList], ol[tuiList]',
     host: {
-        '[attr.data-size]': 'size()',
+        '[attr.data-size]': 'size() || options.size',
     },
 })
 export class TuiList {
-    private readonly options = inject(TUI_LIST_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly options = inject(TUI_LIST_OPTIONS);
 
-    public readonly size = input(this.options.size, {
+    public readonly size = input<TuiListOptions['size'] | ''>(this.options.size, {
         alias: 'tuiList',
-        transform: (size: TuiSizeL | TuiSizeS | '') => size || this.options.size,
     });
 }

@@ -6,14 +6,8 @@
     padding-block-start: 0.25rem;
     padding-block-end: 0.25rem;
 
-    & [tuiList] {
+    [tuiList] {
         padding: 0;
-    }
-
-    &[aria-label]::before {
-        content: attr(aria-label);
-        display: flex;
-        align-items: center;
     }
 
     & > li {
@@ -21,6 +15,7 @@
         grid-template-columns: max-content 1fr;
         gap: 1rem 0.75rem;
         align-items: start;
+        line-height: var(--t-line-height);
 
         & > * {
             grid-column: 2;
@@ -35,48 +30,24 @@
     &[data-size='l'] {
         font: var(--tui-font-body-l);
 
-        & > &[aria-label]::before {
-            min-block-size: 1.75rem;
-        }
-
         & > li {
-            line-height: 1.75rem;
-        }
-
-        &:is(ul) > li::before {
-            margin-block-start: calc(1.75rem / 2 - 0.1875rem);
+            --t-line-height: 1.75rem;
         }
     }
 
     &[data-size='m'] {
         font: var(--tui-font-body-m);
 
-        & > &[aria-label]::before {
-            min-block-size: 1.625rem;
-        }
-
         & > li {
-            line-height: 1.5rem;
-        }
-
-        &:is(ul) > li::before {
-            margin-block-start: calc(1.5rem / 2 - 0.1875rem);
+            --t-line-height: 1.5rem;
         }
     }
 
     &[data-size='s'] {
         font: var(--tui-font-ui-s);
 
-        & > &[aria-label]::before {
-            min-block-size: 1.5rem;
-        }
-
         & > li {
-            line-height: 1.25rem;
-        }
-
-        &:is(ul) > li::before {
-            margin-block-start: calc(1.25rem / 2 - 0.1875rem);
+            --t-line-height: 1.25rem;
         }
     }
 
@@ -89,6 +60,7 @@
         min-inline-size: auto;
         padding: 0.1875rem;
         margin: 0 0.1875rem;
+        margin-block-start: calc(var(--t-line-height) / 2 - 0.1875rem);
     }
 
     &:is(ol) {
@@ -133,34 +105,16 @@
             padding: 0;
         }
 
-        &[data-size='l'] {
-            & > li {
-                line-height: 1.25rem;
-            }
-
-            &:is(ul) > li::before {
-                margin-block-start: calc(1.25rem / 2 - 0.1875rem);
-            }
+        &[data-size='l'] > li {
+            --t-line-height: 1.25rem;
         }
 
-        &[data-size='m'] {
-            & > li {
-                line-height: 1.125rem;
-            }
-
-            &:is(ul) > li::before {
-                margin-block-start: calc(1.125rem / 2 - 0.1875rem);
-            }
+        &[data-size='m'] > li {
+            --t-line-height: 1.125rem;
         }
 
-        &[data-size='s'] {
-            & > li {
-                line-height: 1rem;
-            }
-
-            &:is(ul) > li::before {
-                margin-block-start: calc(1rem / 2 - 0.1875rem);
-            }
+        &[data-size='s'] > li {
+            --t-line-height: 1rem;
         }
     }
 }
