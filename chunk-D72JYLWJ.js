@@ -1,1 +1,0 @@
-import{Fb as e,Wb as c,Za as r,za as t}from"./chunk-YJQUARX2.js";var i=class i{constructor(){this.iconGroup=r();this.template=t(e)}};i.\u0275fac=function(n){return new(n||i)},i.\u0275dir=c({type:i,selectors:[["","iconGroup",""]],inputs:{iconGroup:[1,"iconGroup"]}});var o=i;export{o as a};
