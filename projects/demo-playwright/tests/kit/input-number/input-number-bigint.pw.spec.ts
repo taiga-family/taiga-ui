@@ -14,6 +14,12 @@ describe('InputNumber | BigInt', () => {
     let inputNumber: InputNumberPO;
     let controlValue: Locator;
 
+    async function expectControlValue(
+        value: 'null' | {significand: string; exp: number},
+    ): Promise<void> {
+        await expect(controlValue).toHaveText(JSON.stringify(value, null, 2));
+    }
+
     describe('Examples', () => {
         describe('BigInt as form control value', () => {
             beforeEach(async ({page}) => {
@@ -31,12 +37,12 @@ describe('InputNumber | BigInt', () => {
             describe('initial state', () => {
                 test('textfield value', async () => {
                     await expect(inputNumber.textfield).toHaveValue(
-                        '7 779 007 199 254 740 991 000',
+                        '777 900 719 925 474 099 100',
                     );
                 });
 
                 test('control value', async () => {
-                    await expect(controlValue).toHaveText('7779007199254740991000n');
+                    await expect(controlValue).toHaveText('777900719925474099100n');
                 });
             });
 
@@ -133,7 +139,7 @@ describe('InputNumber | BigInt', () => {
                 await tuiGoto(page, DemoRoute.InputNumber);
 
                 example = new TuiDocumentationPagePO(page).getExample(
-                    '#bigint-decimal-type-control-value',
+                    '#large-int-decimal-parts',
                 );
                 inputNumber = new InputNumberPO(
                     example.locator('tui-textfield:has([tuiInputNumber])'),
@@ -143,54 +149,51 @@ describe('InputNumber | BigInt', () => {
 
             test('initial state', async () => {
                 await expect(inputNumber.textfield).toHaveValue(
-                    '1_234_567_890.9876543210',
+                    '$1_234_567.00042 per day',
                 );
-                await expect(controlValue).toHaveText(
-                    '{"integer":"1234567890n","decimal":"9876543210n"}',
-                );
+                await expectControlValue({significand: '123456700042n', exp: -5});
             });
 
             test('handles extremely large integer and decimal parts without precision loss', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially(
                     '9999999999999999.8888888888888888',
                 );
 
                 await expect(inputNumber.textfield).toHaveValue(
-                    '9_999_999_999_999_999.8888888888888888',
+                    '$9_999_999_999_999_999.8888888888888888 per day',
                 );
-                await expect(controlValue).toHaveText(
-                    '{"integer":"9999999999999999n","decimal":"8888888888888888n"}',
-                );
+                await expectControlValue({
+                    significand: '99999999999999998888888888888888n',
+                    exp: -16,
+                });
             });
 
-            test('integer-only input sets decimal part to null', async () => {
+            test('integer-only input sets decimal part to 0', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('424242');
 
-                await expect(inputNumber.textfield).toHaveValue('424_242');
-                await expect(controlValue).toHaveText(
-                    '{"integer":"424242n","decimal":null}',
-                );
+                await expect(inputNumber.textfield).toHaveValue('$424_242 per day');
+                await expectControlValue({significand: '424242n', exp: 0});
             });
 
-            test('negative value keeps integer sign and decimal magnitude', async () => {
+            test('ingores negative sign', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
-                await inputNumber.textfield.pressSequentially('-123456789.321');
+                await inputNumber.textfield.pressSequentially('-123');
 
-                await expect(inputNumber.textfield).toHaveValue(
-                    `${CHAR_MINUS}123_456_789.321`,
-                );
-                await expect(controlValue).toHaveText(
-                    '{"integer":"-123456789n","decimal":"321n"}',
-                );
+                await expect(inputNumber.textfield).toHaveValue('$123 per day');
+                await expectControlValue({significand: '123n', exp: 0});
             });
 
             test('clearing resets both integer and decimal parts to null', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('10.5');
 
-                await expect(controlValue).toHaveText('{"integer":"10n","decimal":"5n"}');
+                await expectControlValue({significand: '105n', exp: -1});
 
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.blur();
@@ -200,54 +203,53 @@ describe('InputNumber | BigInt', () => {
             });
 
             test('rejects second decimal separator and keeps existing digits', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('12.34.56');
 
-                await expect(inputNumber.textfield).toHaveValue('12.3456');
-                await expect(controlValue).toHaveText(
-                    '{"integer":"12n","decimal":"3456n"}',
-                );
+                await expect(inputNumber.textfield).toHaveValue('$12.3456 per day');
+                await expectControlValue({significand: '123456n', exp: -4});
             });
 
             test('preserves long decimal part without rounding', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('1.12345678901234567890');
 
-                await expect(inputNumber.textfield).toHaveValue('1.12345678901234567890');
-                await expect(controlValue).toHaveText(
-                    '{"integer":"1n","decimal":"12345678901234567890n"}',
+                await expect(inputNumber.textfield).toHaveValue(
+                    '$1.12345678901234567890 per day',
                 );
+                await expectControlValue({
+                    significand: '112345678901234567890n',
+                    exp: -20,
+                });
             });
 
             test('pads integer part with zero if starting with decimal separator', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('.123');
 
-                await expect(inputNumber.textfield).toHaveValue('0.123');
-                await expect(controlValue).toHaveText(
-                    '{"integer":"0n","decimal":"123n"}',
-                );
+                await expect(inputNumber.textfield).toHaveValue('$0.123 per day');
+                await expectControlValue({significand: '123n', exp: -3});
             });
 
-            // TODO
-            test.skip('handles leading zeros in decimal part', async () => {
+            test('handles leading zeros in decimal part', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('1.005');
-                await expect(inputNumber.textfield).toHaveValue('1.005');
-                await expect(controlValue).toHaveText('{"integer":"1n","decimal":"5n"}');
-
+                await expect(inputNumber.textfield).toHaveValue('$1.005 per day');
+                await expectControlValue({significand: '1005n', exp: -3});
                 await inputNumber.textfield.blur();
-                await expect(inputNumber.textfield).toHaveValue('1.5');
+                await expect(inputNumber.textfield).toHaveValue('$1.005 per day');
             });
 
-            // TODO
-            test.skip('trims trailing zeros in decimal part', async () => {
+            test('keeps trailing zeros in decimal part', async () => {
+                await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('1.500');
-                await expect(inputNumber.textfield).toHaveValue('1.500');
-                await expect(controlValue).toHaveText(
-                    '{"integer":"1n","decimal":"500n"}',
-                );
+                await expect(inputNumber.textfield).toHaveValue('$1.500 per day');
+                await expectControlValue({significand: '1500n', exp: -3});
             });
         });
     });

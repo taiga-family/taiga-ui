@@ -3,7 +3,7 @@ import {maskitoParseNumber, maskitoStringifyNumber} from '@maskito/kit';
 import {tuiProvide, TuiValueTransformer} from '@taiga-ui/cdk';
 import {TuiNumberMask} from '@taiga-ui/kit';
 
-export type ControlValue = {integer: bigint | null; decimal: bigint | null} | null;
+export type ControlValue = {significand: bigint; exp: number} | null;
 
 @Directive({
     selector: '[tuiInputNumber][bigintWithDecimal]',
@@ -13,30 +13,44 @@ export class TuiBigIntWithDecimal extends TuiValueTransformer<string, ControlVal
     private readonly mask = inject(TuiNumberMask);
 
     public toControlValue(textfieldValue: string | null): ControlValue {
-        if (!textfieldValue) {
+        const params = this.mask.params();
+        const {decimalSeparator} = params;
+        const significand = maskitoParseNumber(
+            textfieldValue?.replace(decimalSeparator, '') ?? '',
+            {
+                ...params,
+                bigint: true,
+            },
+        );
+
+        if (significand === null) {
             return null;
         }
 
-        const params = this.mask.params();
-        const [integer = '', decimal = ''] = textfieldValue.split(
-            params.decimalSeparator,
-        );
-
         return {
-            integer: maskitoParseNumber(integer, {...params, bigint: true}),
-            decimal: maskitoParseNumber(decimal, {...params, bigint: true}),
+            significand: significand,
+            exp: textfieldValue?.includes(decimalSeparator)
+                ? -Array.from(textfieldValue.replace(params.postfix, ''))
+                      .reverse()
+                      .indexOf(decimalSeparator)
+                : 0,
         };
     }
 
     public fromControlValue(controlValue: ControlValue): string {
-        const params = this.mask.params();
-        const {integer, decimal} = controlValue ?? {};
+        const {significand, exp} = controlValue ?? {};
 
-        return `${this.mask.stringify(integer)}${
-            decimal
-                ? params.decimalSeparator +
-                  maskitoStringifyNumber(decimal, {...params, thousandSeparator: ''})
-                : ''
-        }`;
+        if (!controlValue) {
+            return '';
+        }
+
+        const params = this.mask.params();
+        const integer = maskitoStringifyNumber(
+            BigInt(String(significand).slice(0, exp || Infinity)),
+            {...params, postfix: ''},
+        );
+        const decimal = exp ? String(significand).slice(exp) : '';
+
+        return `${integer}${decimal && params.decimalSeparator + decimal}${params.postfix}`;
     }
 }

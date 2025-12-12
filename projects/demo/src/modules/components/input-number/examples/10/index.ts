@@ -20,7 +20,7 @@ import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly value = signal<bigint | null>(
-        BigInt(`777${Number.MAX_SAFE_INTEGER}000`),
+        BigInt(`777${Number.MAX_SAFE_INTEGER}00`),
     );
 
     protected readonly stringified = computed((x = this.value()) =>

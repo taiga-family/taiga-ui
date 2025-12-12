@@ -232,13 +232,13 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="bigint-decimal-type-control-value"
-            heading="BigInt integer + BigInt decimal as form control value"
+            id="large-int-decimal-parts"
+            heading="Large integer + large decimal parts"
             [component]="11 | tuiComponent"
             [content]="11 | tuiExample: 'html,ts' : {'transformer.ts': bigIntWithDecimalTransformer}"
-            [description]="bigintWithDecimalDescription"
+            [description]="largeIntDecimalPartsDescription"
         >
-            <ng-template #bigintWithDecimalDescription>
+            <ng-template #largeIntDecimalPartsDescription>
                 JavaScript’s built‑in
                 <code>number</code>
                 type loses precision when a value contains too many digits in either the integer part, the decimal part,
@@ -254,7 +254,7 @@
                     If you need to preserve all extremely large digits of both parts, you can override the built‑in
                     <code>TuiValueTransformer</code>
                     and store the number as an
-                    <code>&#123;integer: bigint; decimal: bigint&#125;</code>
+                    <code>&#123;significand: bigint; exp: number&#125;</code>
                     instead.
                 </p>
             </ng-template>

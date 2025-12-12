@@ -16,13 +16,15 @@ import {type ControlValue, TuiBigIntWithDecimal} from './transformer';
 export default class Example {
     protected readonly infinity = Infinity;
     protected readonly value = signal<ControlValue>({
-        integer: 1234567890n,
-        decimal: 9876543210n,
+        significand: 123456700042n,
+        exp: -5,
     });
 
     protected readonly stringified = computed(() =>
-        JSON.stringify(this.value(), (_, x) =>
-            typeof x === 'bigint' ? `${String(x)}n` : x,
+        JSON.stringify(
+            this.value(),
+            (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
+            2,
         ),
     );
 }
