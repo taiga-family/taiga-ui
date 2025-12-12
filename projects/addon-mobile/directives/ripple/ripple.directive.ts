@@ -5,7 +5,7 @@ import {
     DestroyRef,
     Directive,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -41,11 +41,10 @@ export class TuiRipple {
 
     protected readonly nothing = tuiWithStyles(Styles);
 
-    @Input()
-    public tuiRipple = '';
+    public readonly tuiRipple = input('');
 
     protected start(x: number, y: number, target: HTMLElement, el: HTMLElement): void {
-        const element = this.tuiRipple ? target.closest(this.tuiRipple) : el;
+        const element = this.tuiRipple() ? target.closest(this.tuiRipple()) : el;
 
         if (!tuiIsHTMLElement(element)) {
             return;
