@@ -11,7 +11,6 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 })
 export class TuiTabBarItem {
     public readonly icon = input('');
-
     public readonly badge = input<number>();
 
     protected format(value: number): string {

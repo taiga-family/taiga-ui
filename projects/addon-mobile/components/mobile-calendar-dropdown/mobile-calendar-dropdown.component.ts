@@ -44,11 +44,9 @@ export class TuiMobileCalendarDropdownComponent {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
-
     private readonly context = injectContext<Record<string, any>>({optional: true});
     private readonly observer?: Observer<unknown> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
-
     private selectedPeriod: TuiDayRange | null = null;
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit

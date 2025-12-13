@@ -45,54 +45,54 @@ export class TuiPullToRefreshService extends Observable<number> {
     // because Safari does not support `touch-action: pan-down`
     private touched = false;
 
-    private readonly pulling$ = this.loaded$.pipe(
-        startWith(null),
-        switchMap(() =>
-            tuiTypedFromEvent(this.el, 'touchstart', {passive: true}).pipe(
-                filter(
-                    () =>
-                        !this.scrollRef.nativeElement.scrollTop &&
-                        !this.el.querySelector(EXCLUSION_SELECTORS),
-                ),
-                map(({touches}) => touches[0]?.clientY ?? 0),
-                switchMap((start) =>
-                    tuiTypedFromEvent(this.el, 'touchmove').pipe(
-                        tap((): void => {
-                            this.touched = true;
-                        }),
-                        map(({touches}) => (touches[0]?.clientY ?? 0) - start),
-                        filter((distance) => distance > 0),
-                        takeUntil(
-                            tuiTypedFromEvent(this.el, 'touchend').pipe(
-                                tap((): void => {
-                                    this.touched = false;
-                                }),
-                            ),
-                        ),
-                        takeUntil(tuiScrollFrom(this.scrollRef.nativeElement)),
-                        endWith(0),
-                    ),
-                ),
-                scan(
-                    (prev, current) =>
-                        !current && !this.touched && prev > this.threshold
-                            ? this.threshold
-                            : current + current * MICRO_OFFSET,
-                    0,
-                ),
-                takeWhile((distance) => distance !== this.threshold, true),
-                startWith(0),
-            ),
-        ),
-        debounceTime(0, tuiZonefreeScheduler()),
-        distinctUntilChanged(),
-        tuiZoneOptimized(),
-        share(),
-    );
+    private readonly pulling$ = inject(TUI_PULL_TO_REFRESH_COMPONENT)
+        ? this.loaded$.pipe(
+              startWith(null),
+              switchMap(() =>
+                  tuiTypedFromEvent(this.el, 'touchstart', {passive: true}).pipe(
+                      filter(
+                          () =>
+                              !this.scrollRef.nativeElement.scrollTop &&
+                              !this.el.querySelector(EXCLUSION_SELECTORS),
+                      ),
+                      map(({touches}) => touches[0]?.clientY ?? 0),
+                      switchMap((start) =>
+                          tuiTypedFromEvent(this.el, 'touchmove').pipe(
+                              tap((): void => {
+                                  this.touched = true;
+                              }),
+                              map(({touches}) => (touches[0]?.clientY ?? 0) - start),
+                              filter((distance) => distance > 0),
+                              takeUntil(
+                                  tuiTypedFromEvent(this.el, 'touchend').pipe(
+                                      tap((): void => {
+                                          this.touched = false;
+                                      }),
+                                  ),
+                              ),
+                              takeUntil(tuiScrollFrom(this.scrollRef.nativeElement)),
+                              endWith(0),
+                          ),
+                      ),
+                      scan(
+                          (prev, current) =>
+                              !current && !this.touched && prev > this.threshold
+                                  ? this.threshold
+                                  : current + current * MICRO_OFFSET,
+                          0,
+                      ),
+                      takeWhile((distance) => distance !== this.threshold, true),
+                      startWith(0),
+                  ),
+              ),
+              debounceTime(0, tuiZonefreeScheduler()),
+              distinctUntilChanged(),
+              tuiZoneOptimized(),
+              share(),
+          )
+        : EMPTY;
 
     constructor() {
-        const component = inject(TUI_PULL_TO_REFRESH_COMPONENT);
-
-        super((subscriber) => (component ? this.pulling$ : EMPTY).subscribe(subscriber));
+        super((subscriber) => this.pulling$.subscribe(subscriber));
     }
 }
