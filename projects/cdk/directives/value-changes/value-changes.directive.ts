@@ -1,9 +1,8 @@
 import {Directive, type DoCheck, inject} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {ControlContainer, NgControl} from '@angular/forms';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {distinctUntilChanged, skip, Subject, switchMap} from 'rxjs';
-
-import {tuiControlValue} from '../../observables';
 
 @Directive({
     selector: '[tuiValueChanges]',
