@@ -125,7 +125,7 @@
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
         "@types/node": "24.10.3",
-        "@typescript/native-preview": "7.0.0-dev.20251212.1",
+        "@typescript/native-preview": "7.0.0-dev.20251213.1",
         "browser-sync": "3.0.4",
         "cpy-cli": "5.0.0",
         "glob": "11.1.0",
