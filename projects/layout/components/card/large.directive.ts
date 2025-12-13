@@ -6,7 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiCreateOptions} from '@taiga-ui/cdk';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export const [TUI_CARD_OPTIONS, tuiCardOptionsProvider] = tuiCreateOptions({
