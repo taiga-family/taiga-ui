@@ -2,6 +2,7 @@ import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {tuiInjectAuxiliary, tuiTextfieldIcon} from '@taiga-ui/core/components/textfield';
@@ -66,7 +67,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
 
         if (calendar) {
             calendar.initialItemSetter = this.initialItem();
-            calendar.value.set(this.value());
+            tuiSetSignal(calendar.value, this.value());
             calendar.min.set(this.min());
             calendar.max.set(this.max());
         }

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayRange, tuiSetSignal} from '@taiga-ui/cdk';
 import {TuiCalendarYear} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -57,7 +57,7 @@ describe('TuiCalendarYearComponent', () => {
         it('returns null if there is no value', () => {
             const item = 2019;
 
-            component.value.set(null);
+            tuiSetSignal(component.value, null);
 
             expect(component.getItemRange(item)).toBeNull();
         });
@@ -65,7 +65,8 @@ describe('TuiCalendarYearComponent', () => {
         it('returns start correctly', () => {
             const item = 2019;
 
-            component.value.set(
+            tuiSetSignal(
+                component.value,
                 new TuiDayRange(new TuiDay(item, 1, 1), new TuiDay(2020, 1, 1)),
             );
 
@@ -75,7 +76,8 @@ describe('TuiCalendarYearComponent', () => {
         it('returns end correctly', () => {
             const item = 2019;
 
-            component.value.set(
+            tuiSetSignal(
+                component.value,
                 new TuiDayRange(new TuiDay(2018, 1, 1), new TuiDay(item, 1, 1)),
             );
 
@@ -85,7 +87,8 @@ describe('TuiCalendarYearComponent', () => {
         it('returns active correctly', () => {
             const item = 2018;
 
-            component.value.set(
+            tuiSetSignal(
+                component.value,
                 new TuiDayRange(new TuiDay(item, 1, 1), new TuiDay(item, 2, 2)),
             );
 

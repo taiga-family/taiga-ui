@@ -58,7 +58,7 @@ export class TuiCalendarYear {
     public readonly initialItem = signal<number>(CURRENT_YEAR);
     public readonly min = signal(MIN_YEAR);
     public readonly max = signal(MAX_YEAR);
-    public readonly value = signal<
+    public readonly value = input<
         TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null
     >(null);
 
@@ -78,14 +78,6 @@ export class TuiCalendarYear {
     @Input({alias: 'max', transform: (x: number | null) => x ?? MAX_YEAR})
     public set maxSetter(x: number) {
         this.max.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('value')
-    public set valueSetter(
-        x: TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null,
-    ) {
-        this.value.set(x);
     }
 
     public isDisabled(item: number): boolean {
