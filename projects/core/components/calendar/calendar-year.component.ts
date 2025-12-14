@@ -56,8 +56,14 @@ export class TuiCalendarYear {
     public readonly yearClick = output<number>();
 
     public readonly initialItem = signal<number>(CURRENT_YEAR);
-    public readonly min = signal(MIN_YEAR);
-    public readonly max = signal(MAX_YEAR);
+    public readonly min = input(MIN_YEAR, {
+        transform: (x: number | null) => x ?? MIN_YEAR,
+    });
+
+    public readonly max = input(MAX_YEAR, {
+        transform: (x: number | null) => x ?? MAX_YEAR,
+    });
+
     public readonly value = input<
         TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null
     >(null);
@@ -66,18 +72,6 @@ export class TuiCalendarYear {
     @Input({alias: 'initialItem', transform: (x: number | null) => x ?? CURRENT_YEAR})
     public set initialItemSetter(x: number | null) {
         this.initialItem.set(x ?? CURRENT_YEAR);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input({alias: 'min', transform: (x: number | null) => x ?? MIN_YEAR})
-    public set minSetter(x: number) {
-        this.min.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input({alias: 'max', transform: (x: number | null) => x ?? MAX_YEAR})
-    public set maxSetter(x: number) {
-        this.max.set(x);
     }
 
     public isDisabled(item: number): boolean {

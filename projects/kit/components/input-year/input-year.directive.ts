@@ -68,8 +68,8 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         if (calendar) {
             calendar.initialItemSetter = this.initialItem();
             tuiSetSignal(calendar.value, this.value());
-            calendar.min.set(this.min());
-            calendar.max.set(this.max());
+            tuiSetSignal(calendar.min, this.min());
+            tuiSetSignal(calendar.max, this.max());
         }
     });
 
