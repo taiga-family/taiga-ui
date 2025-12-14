@@ -3,7 +3,6 @@ import {
     Component,
     computed,
     inject,
-    Input,
     input,
     output,
     signal,
@@ -55,7 +54,8 @@ export class TuiCalendarYear {
 
     public readonly yearClick = output<number>();
 
-    public readonly initialItem = signal<number>(CURRENT_YEAR);
+    public readonly initialItem = input(CURRENT_YEAR);
+
     public readonly min = input(MIN_YEAR, {
         transform: (x: number | null) => x ?? MIN_YEAR,
     });
@@ -67,12 +67,6 @@ export class TuiCalendarYear {
     public readonly value = input<
         TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null
     >(null);
-
-    // TODO(v5): use signal inputs
-    @Input({alias: 'initialItem', transform: (x: number | null) => x ?? CURRENT_YEAR})
-    public set initialItemSetter(x: number | null) {
-        this.initialItem.set(x ?? CURRENT_YEAR);
-    }
 
     public isDisabled(item: number): boolean {
         return (
