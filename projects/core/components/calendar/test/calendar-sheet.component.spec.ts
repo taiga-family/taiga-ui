@@ -14,6 +14,7 @@ import {
     TuiDayOfWeek,
     TuiDayRange,
     TuiMonth,
+    tuiSetSignal,
 } from '@taiga-ui/cdk';
 import {
     tuiCalendarOptionsProvider,
@@ -126,7 +127,7 @@ describe('CalendarSheet', () => {
                 const day1 = new TuiDay(2019, 4, 16);
                 const day2 = new TuiDay(2020, 1, 1);
 
-                component.value = new TuiDayRange(day1, day2);
+                tuiSetSignal(component.value, new TuiDayRange(day1, day2));
 
                 expect(component.getItemRange(day1)).toBe('start');
             });
@@ -135,7 +136,7 @@ describe('CalendarSheet', () => {
                 const day1 = new TuiDay(2019, 4, 16);
                 const day2 = new TuiDay(2020, 1, 1);
 
-                component.value = new TuiDayRange(day1, day2);
+                tuiSetSignal(component.value, new TuiDayRange(day1, day2));
 
                 expect(component.getItemRange(day2)).toBe('end');
             });
@@ -143,7 +144,7 @@ describe('CalendarSheet', () => {
             it('returns single if value is single day and item equals this', () => {
                 const day1 = new TuiDay(2019, 4, 24);
 
-                component.value = new TuiDayRange(day1, day1);
+                tuiSetSignal(component.value, new TuiDayRange(day1, day1));
 
                 expect(component.getItemRange(day1)).toBe('active');
             });
@@ -153,7 +154,7 @@ describe('CalendarSheet', () => {
             it('returns false if there is single day range value but no hoveredItem', () => {
                 const day = new TuiDay(2019, 4, 16);
 
-                component.value = new TuiDayRange(day, day);
+                tuiSetSignal(component.value, new TuiDayRange(day, day));
                 component.hoveredItem.set(null);
 
                 expect(component.itemIsInterval(day)).toBe(false);
@@ -167,7 +168,7 @@ describe('CalendarSheet', () => {
                 const day = new TuiDay(2019, 4, 16);
                 const hoveredDay = new TuiDay(2019, 4, 18);
 
-                component.value = singleDayRangeValue;
+                tuiSetSignal(component.value, singleDayRangeValue);
                 component.onItemHovered(hoveredDay);
 
                 expect(component.itemIsInterval(day)).toBe(true);
@@ -180,7 +181,7 @@ describe('CalendarSheet', () => {
                 );
                 const day = new TuiDay(2019, 4, 16);
 
-                component.value = dayRangeValue;
+                tuiSetSignal(component.value, dayRangeValue);
 
                 expect(component.itemIsInterval(day)).toBe(true);
             });

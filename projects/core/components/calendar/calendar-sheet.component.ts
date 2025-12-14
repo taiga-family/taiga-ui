@@ -2,12 +2,10 @@ import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     inject,
-    Input,
     input,
     model,
-    Output,
+    output,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -55,8 +53,7 @@ export class TuiCalendarSheet {
 
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
 
-    @Input()
-    public value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    public readonly value = input<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
 
     public readonly hoveredItem = model<TuiDay | null>(null);
 
@@ -71,14 +68,13 @@ export class TuiCalendarSheet {
      */
     public readonly single = input(true);
 
-    @Output()
-    public readonly dayClick = new EventEmitter<TuiDay>();
+    public readonly dayClick = output<TuiDay>();
 
     /**
      * @deprecated TODO(v5): delete it. It is used nowhere except unit tests
      */
     public itemIsInterval(day: TuiDay): boolean {
-        const {value} = this;
+        const value = this.value();
         const hoveredItem = this.hoveredItem();
 
         if (!(value instanceof TuiDayRange)) {
@@ -103,7 +99,7 @@ export class TuiCalendarSheet {
     }
 
     public getItemRange(item: TuiDay): 'active' | 'end' | 'middle' | 'start' | null {
-        const {value} = this;
+        const value = this.value();
         const hoveredItem = this.hoveredItem();
 
         if (!value) {
@@ -144,13 +140,15 @@ export class TuiCalendarSheet {
     }
 
     protected get isRangePicking(): boolean {
+        const value = this.value();
+
         return this.computedRangeMode
-            ? this.value instanceof TuiDay
+            ? value instanceof TuiDay
             : /**
                * Only for backward compatibility!
                * TODO(v5): replace with `this.options.rangeMode && this.value instanceof TuiDay`
                */
-              this.value instanceof TuiDayRange && this.value.isSingleDay;
+              value instanceof TuiDayRange && value.isSingleDay;
     }
 
     protected readonly toMarkers = (
