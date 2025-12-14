@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    input,
     Output,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
@@ -46,14 +47,12 @@ export class TuiCalendarSheet {
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
     protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
 
-    @Input()
-    public month: TuiMonth = TuiMonth.currentLocal();
+    public readonly month = input<TuiMonth>(TuiMonth.currentLocal());
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
-    @Input()
-    public markerHandler: TuiMarkerHandler | null = null;
+    public readonly markerHandler = input<TuiMarkerHandler | null>(null);
 
     @Input()
     public value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
@@ -61,8 +60,7 @@ export class TuiCalendarSheet {
     @Input()
     public hoveredItem: TuiDay | null = null;
 
-    @Input()
-    public showAdjacent = true;
+    public readonly showAdjacent = input(true);
 
     /**
      * @deprecated use static DI options instead
@@ -71,8 +69,7 @@ export class TuiCalendarSheet {
      * ```
      * TODO(v5): delete it
      */
-    @Input()
-    public single = true;
+    public readonly single = input(true);
 
     @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
@@ -144,7 +141,7 @@ export class TuiCalendarSheet {
     }
 
     protected get computedRangeMode(): boolean {
-        return !this.single || this.options.rangeMode;
+        return !this.single() || this.options.rangeMode;
     }
 
     protected get isRangePicking(): boolean {
@@ -177,7 +174,7 @@ export class TuiCalendarSheet {
     }
 
     protected itemIsUnavailable(item: TuiDay): boolean {
-        return !this.month.monthSame(item);
+        return !this.month().monthSame(item);
     }
 
     protected onItemClick(item: TuiDay): void {
