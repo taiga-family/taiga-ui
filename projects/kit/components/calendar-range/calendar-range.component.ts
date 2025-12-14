@@ -86,9 +86,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     @Output()
     public readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
-    @Output()
-    public readonly itemChange = new EventEmitter<TuiDayRangePeriod | null>();
-
     @Input('value')
     public set valueSetter(value: TuiDayRange | null) {
         this.currentValue = value;
