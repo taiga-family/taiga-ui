@@ -69,22 +69,16 @@ export class TuiCalendarMonth {
     public readonly hoveredItemChange = new EventEmitter<TuiMonth | null>();
 
     public options = inject(TUI_CALENDAR_MONTH_OPTIONS);
-    public readonly min = signal<TuiMonth>(TUI_FIRST_DAY);
-    public readonly max = signal<TuiMonth>(TUI_LAST_DAY);
+    public readonly min = input<TuiMonth, TuiMonth | null>(TUI_FIRST_DAY, {
+        transform: (x) => x ?? TUI_FIRST_DAY,
+    });
+
+    public readonly max = input<TuiMonth, TuiMonth | null>(TUI_LAST_DAY, {
+        transform: (x) => x ?? TUI_LAST_DAY,
+    });
+
     public readonly value = signal<TuiMonth | TuiMonthRange | null>(null);
     public hoveredItem: TuiMonth | null = null;
-
-    // TODO(v5): use signal inputs
-    @Input({alias: 'min', transform: (x: TuiMonth | null) => x ?? TUI_FIRST_DAY})
-    public set minSetter(x: TuiMonth) {
-        this.min.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input({alias: 'max', transform: (x: TuiMonth | null) => x ?? TUI_LAST_DAY})
-    public set maxSetter(x: TuiMonth) {
-        this.max.set(x);
-    }
 
     // TODO(v5): use signal inputs
     @Input('value')
