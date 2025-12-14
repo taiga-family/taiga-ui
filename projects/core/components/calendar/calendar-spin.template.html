@@ -1,13 +1,13 @@
 <tui-spin-button
     [focusable]="false"
-    [leftDisabled]="value.monthSameOrBefore(min)"
-    [rightDisabled]="value.monthSameOrAfter(max)"
+    [leftDisabled]="value().monthSameOrBefore(min())"
+    [rightDisabled]="value().monthSameOrAfter(max())"
     (leftClick)="append({month: -1})"
     (rightClick)="append({month: 1})"
 >
-    {{ months()[value.month] }}
-    @if (min.year === max.year) {
-        {{ value.formattedYear }}
+    {{ months()[value().month] }}
+    @if (min().year === max().year) {
+        {{ value().formattedYear }}
     } @else {
         <button
             tabIndex="-1"
@@ -15,7 +15,7 @@
             type="button"
             (click)="onYearClick()"
         >
-            {{ value.formattedYear }}
+            {{ value().formattedYear }}
         </button>
     }
 </tui-spin-button>

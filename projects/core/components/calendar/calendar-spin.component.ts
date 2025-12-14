@@ -1,10 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     inject,
-    Input,
-    Output,
+    input,
+    model,
+    output,
 } from '@angular/core';
 import {
     TUI_FIRST_DAY,
@@ -27,41 +27,33 @@ import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 export class TuiCalendarSpin {
     protected readonly months = inject(TUI_MONTHS);
 
-    @Input()
-    public value = TuiMonth.currentLocal();
+    public readonly value = model(TuiMonth.currentLocal());
 
-    @Input()
-    public min: TuiMonth = TUI_FIRST_DAY;
+    public readonly min = input<TuiMonth>(TUI_FIRST_DAY);
 
-    @Input()
-    public max: TuiMonth = TUI_LAST_DAY;
+    public readonly max = input<TuiMonth>(TUI_LAST_DAY);
 
-    @Output()
-    public readonly valueChange = new EventEmitter<TuiMonth>();
-
-    @Output()
-    public readonly yearClick = new EventEmitter<TuiYear>();
+    public readonly yearClick = output<TuiYear>();
 
     protected onYearClick(): void {
-        this.yearClick.next(this.value);
+        this.yearClick.emit(this.value());
     }
 
     protected append(date: TuiMonthLike): void {
-        const value = this.value.append(date);
+        const value = this.value().append(date);
 
-        if (this.min.monthSameOrAfter(value)) {
-            this.updateValue(this.min);
+        if (this.min().monthSameOrAfter(value)) {
+            this.updateValue(this.min());
         } else {
-            this.updateValue(this.max.monthSameOrBefore(value) ? this.max : value);
+            this.updateValue(this.max().monthSameOrBefore(value) ? this.max() : value);
         }
     }
 
     private updateValue(value: TuiMonth): void {
-        if (this.value.monthSame(value)) {
+        if (this.value().monthSame(value)) {
             return;
         }
 
-        this.value = value;
-        this.valueChange.emit(value);
+        this.value.set(value);
     }
 }
