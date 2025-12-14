@@ -133,11 +133,11 @@ describe('Calendar', () => {
         const savedMonth = new TuiMonth(date.getFullYear(), date.getMonth());
         const sameMonth = new TuiMonth(date.getFullYear(), date.getMonth());
 
-        component.month = savedMonth;
+        component.month.set(savedMonth);
 
         component.onPaginationValueChange(sameMonth);
 
-        expect(component.month).toBe(savedMonth);
+        expect(component.month()).toBe(savedMonth);
     });
 
     it('click on day calls emitter', async () => {

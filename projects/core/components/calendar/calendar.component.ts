@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    model,
     Output,
 } from '@angular/core';
 import {
@@ -51,8 +52,7 @@ export class TuiCalendar {
     private view: 'month' | 'year' = 'month';
     protected readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
 
-    @Input()
-    public month: TuiMonth = TuiMonth.currentLocal();
+    public readonly month = model<TuiMonth>(TuiMonth.currentLocal());
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> =
@@ -83,9 +83,6 @@ export class TuiCalendar {
     public readonly dayClick = new EventEmitter<TuiDay>();
 
     @Output()
-    public readonly monthChange = new EventEmitter<TuiMonth>();
-
-    @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
     /** @deprecated for private use only until Calendars are refactored */
@@ -101,7 +98,7 @@ export class TuiCalendar {
             value instanceof TuiDay &&
             value.daySameOrBefore(TUI_LAST_DISPLAYED_DAY)
         ) {
-            this.month = value;
+            this.month.set(value);
         }
     }
 
@@ -165,16 +162,15 @@ export class TuiCalendar {
 
     protected onPickerYearClick(year: number): void {
         this.view = 'month';
-        this.updateViewedMonth(new TuiMonth(year, this.month.month));
+        this.updateViewedMonth(new TuiMonth(year, this.month().month));
     }
 
     private updateViewedMonth(month: TuiMonth): void {
-        if (this.month.monthSame(month)) {
+        if (this.month().monthSame(month)) {
             return;
         }
 
-        this.month = month;
-        this.monthChange.emit(month);
+        this.month.set(month);
     }
 
     private updateHoveredDay(day: TuiDay | null): void {
