@@ -2,12 +2,11 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    EventEmitter,
     inject,
     Input,
     input,
     model,
-    Output,
+    output,
 } from '@angular/core';
 import {
     TUI_FIRST_DAY,
@@ -77,11 +76,9 @@ export class TuiCalendar {
     @Input()
     public markerHandler: TuiMarkerHandler | null = null;
 
-    @Output()
-    public readonly dayClick = new EventEmitter<TuiDay>();
+    public readonly dayClick = output<TuiDay>();
 
-    @Output()
-    public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
+    public readonly hoveredItemChange = output<TuiDay | null>();
 
     /** @deprecated for private use only until Calendars are refactored */
     public readonly valueChange = new Subject<TuiDay>();
