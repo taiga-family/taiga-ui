@@ -135,9 +135,10 @@ describe('rangeCalendarComponent', () => {
 
             testComponent.min = min;
             fixture.detectChanges();
+            const items = component.items();
 
-            if (component.items[5]) {
-                component['onItemSelect'](component.items[5]);
+            if (items[5]) {
+                component['onItemSelect'](items[5]);
             }
 
             fixture.detectChanges();
@@ -188,9 +189,10 @@ describe('rangeCalendarComponent', () => {
             const today = TuiDay.currentLocal();
             const previousMonth = today.append({month: -1});
             const title = 'New interval';
+            const periods = component.items();
 
-            if (component.items[0]) {
-                component['onItemSelect'](component.items[0]);
+            if (periods[0]) {
+                component['onItemSelect'](periods[0]);
             }
 
             fixture.detectChanges();
@@ -219,8 +221,10 @@ describe('rangeCalendarComponent', () => {
 
             fixture.detectChanges();
 
-            if (component.items[1]) {
-                component['onItemSelect'](component.items[1]);
+            const periods = component.items();
+
+            if (periods[1]) {
+                component['onItemSelect'](periods[1]);
             }
 
             fixture.detectChanges();
@@ -249,8 +253,10 @@ describe('rangeCalendarComponent', () => {
         });
 
         it('should update selectedActivePeriod after onItemSelect', () => {
-            if (component.items[1]) {
-                component['onItemSelect'](component.items[1]);
+            const periods = component.items();
+
+            if (periods[1]) {
+                component['onItemSelect'](periods[1]);
             }
 
             expect(testComponent.component()?.item?.toString()).toBe('Today');
@@ -265,9 +271,10 @@ describe('rangeCalendarComponent', () => {
                 testComponent.component().valueChange,
                 'emit',
             );
+            const periods = component.items();
 
-            if (component.items[1]) {
-                component['onItemSelect'](component.items[1]);
+            if (periods[1]) {
+                component['onItemSelect'](periods[1]);
             }
 
             const itemChangeOrder = itemChangeSpy.mock.invocationCallOrder[0] || 0;

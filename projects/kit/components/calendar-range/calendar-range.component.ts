@@ -70,8 +70,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
 
-    @Input()
-    public items: readonly TuiDayRangePeriod[] = [];
+    public readonly items = input<readonly TuiDayRangePeriod[]>([]);
 
     public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
 
@@ -218,7 +217,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.item ??
-            (this.items.find((item) =>
+            (this.items().find((item) =>
                 tuiNullableSame<TuiDayRange>(
                     this.currentValue instanceof TuiDay
                         ? new TuiDayRange(this.currentValue, this.currentValue)
@@ -249,17 +248,17 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         if (this.currentValue instanceof TuiDay) {
             this.month = this.currentValue;
         } else if (this.currentValue) {
-            this.month = this.items.length
+            this.month = this.items().length
                 ? this.currentValue.to
                 : this.currentValue.from;
         } else if (max && this.month.monthSameOrAfter(max)) {
-            this.month = this.items.length ? max : max.append({month: -1});
+            this.month = this.items().length ? max : max.append({month: -1});
         } else if (min && this.month.monthSameOrBefore(min)) {
             this.month = min;
         }
     }
 
     private findItemByDayRange(dayRange: TuiDayRange): TuiDayRangePeriod | null {
-        return this.items.find((item) => dayRange.daySame(item.range)) ?? null;
+        return this.items().find((item) => dayRange.daySame(item.range)) ?? null;
     }
 }

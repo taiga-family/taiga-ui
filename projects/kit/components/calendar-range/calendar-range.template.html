@@ -4,16 +4,16 @@
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler()"
     [max]="max() | tuiMapper: capsMapper : currentValue : maxLength() : false"
-    [maxViewedMonth]="items.length || mobile ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
+    [maxViewedMonth]="items().length || mobile ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
     [min]="min() | tuiMapper: capsMapper : currentValue : maxLength() : true"
     [month]="defaultViewedMonth"
-    [showAdjacent]="!!items.length || mobile"
+    [showAdjacent]="!!items().length || mobile"
     [value]="currentValue"
     [(hoveredItem)]="hoveredItem"
     (dayClick)="onDayClick($event)"
     (monthChange)="onMonthChange($event)"
 />
-@if (!items.length && !mobile) {
+@if (!items().length && !mobile) {
     <tui-calendar
         [disabledItemHandler]="calculatedDisabledItemHandler"
         [markerHandler]="markerHandler()"
@@ -34,7 +34,7 @@
             role="menu"
             [style.flex]="1"
         >
-            @for (item of items | tuiMapper: mapper : min() : max() : minLength() : otherDateText(); track item) {
+            @for (item of items() | tuiMapper: mapper : min() : max() : minLength() : otherDateText(); track item) {
                 <button
                     automation-id="tui-calendar-range__menu__item"
                     role="menuitemradio"
