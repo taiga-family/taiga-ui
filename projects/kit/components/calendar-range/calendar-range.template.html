@@ -2,7 +2,7 @@
     automation-id="tui-calendar-range__calendar"
     [class.t-calendar]="!mobile"
     [disabledItemHandler]="calculatedDisabledItemHandler"
-    [markerHandler]="markerHandler"
+    [markerHandler]="markerHandler()"
     [max]="max() | tuiMapper: capsMapper : currentValue : maxLength : false"
     [maxViewedMonth]="items.length || mobile ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
     [min]="min() | tuiMapper: capsMapper : currentValue : maxLength : true"
@@ -16,7 +16,7 @@
 @if (!items.length && !mobile) {
     <tui-calendar
         [disabledItemHandler]="calculatedDisabledItemHandler"
-        [markerHandler]="markerHandler"
+        [markerHandler]="markerHandler()"
         [max]="max() | tuiMapper: capsMapper : currentValue : maxLength : false"
         [min]="min() | tuiMapper: capsMapper : currentValue : maxLength : true"
         [minViewedMonth]="defaultViewedMonth | tuiMapper: monthOffset : 1"

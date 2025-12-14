@@ -25,9 +25,9 @@
     />
     <tui-calendar-sheet
         automation-id="tui-calendar__calendar"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : computedMin : computedMax"
+        [disabledItemHandler]="disabledItemHandler() | tuiMapper: disabledItemHandlerMapper : computedMin : computedMax"
         [hoveredItem]="hoveredItem"
-        [markerHandler]="markerHandler"
+        [markerHandler]="markerHandler()"
         [month]="month()"
         [showAdjacent]="showAdjacent()"
         [value]="value"

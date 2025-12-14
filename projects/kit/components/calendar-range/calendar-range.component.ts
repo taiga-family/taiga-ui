@@ -69,11 +69,10 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(TUI_IS_MOBILE);
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
-    @Input()
-    public markerHandler: TuiMarkerHandler | null = null;
+    public readonly markerHandler = input<TuiMarkerHandler | null>(null);
 
     @Input()
     public items: readonly TuiDayRangePeriod[] = [];
@@ -145,7 +144,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
         return this.calculateDisabledItemHandler(
-            this.disabledItemHandler,
+            this.disabledItemHandler(),
             this.currentValue,
             this.minLength,
         );

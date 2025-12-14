@@ -54,9 +54,9 @@ export class TuiCalendar {
 
     public readonly month = model<TuiMonth>(TuiMonth.currentLocal());
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> =
-        inject(TUI_ITEMS_HANDLERS).disabledItemHandler();
+    public readonly disabledItemHandler = input<TuiBooleanHandler<TuiDay>>(
+        inject(TUI_ITEMS_HANDLERS).disabledItemHandler(),
+    );
 
     public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
 
@@ -71,8 +71,7 @@ export class TuiCalendar {
 
     public readonly showAdjacent = input(true);
 
-    @Input()
-    public markerHandler: TuiMarkerHandler | null = null;
+    public readonly markerHandler = input<TuiMarkerHandler | null>(null);
 
     public readonly dayClick = output<TuiDay>();
 

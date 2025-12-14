@@ -139,10 +139,12 @@ export abstract class TuiInputDateBase<
         const value = this.value();
 
         calendar.value = Array.isArray(value) ? value[0] : value;
-        calendar.disabledItemHandler =
+        tuiSetSignal(
+            calendar.disabledItemHandler,
             this.handlers.disabledItemHandler() as TuiBooleanHandler<
                 TuiDay | TuiDayRange
-            >;
+            >,
+        );
         tuiSetSignal(calendar.min, this.min());
         tuiSetSignal(calendar.max, this.max());
     }

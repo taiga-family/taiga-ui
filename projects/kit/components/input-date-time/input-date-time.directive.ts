@@ -15,6 +15,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -151,8 +152,9 @@ export class TuiInputDateTimeDirective
 
     protected override processCalendar(calendar: TuiCalendar): void {
         super.processCalendar(calendar);
-        calendar.disabledItemHandler = (day: TuiDay) =>
-            this.handlers.disabledItemHandler()([day, null]);
+        tuiSetSignal(calendar.disabledItemHandler, (day: TuiDay) =>
+            this.handlers.disabledItemHandler()([day, null]),
+        );
     }
 
     protected override onValueChange(value: string): void {
