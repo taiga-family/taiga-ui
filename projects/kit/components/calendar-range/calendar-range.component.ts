@@ -81,11 +81,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
 
-    @Input()
-    public minLength: TuiDayLike | null = null;
+    public readonly minLength = input<TuiDayLike | null>(null);
 
-    @Input()
-    public maxLength: TuiDayLike | null = null;
+    public readonly maxLength = input<TuiDayLike | null>(null);
 
     @Input()
     public item: TuiDayRangePeriod | null = null;
@@ -146,7 +144,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         return this.calculateDisabledItemHandler(
             this.disabledItemHandler(),
             this.currentValue,
-            this.minLength,
+            this.minLength(),
         );
     }
 

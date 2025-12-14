@@ -12,6 +12,7 @@ import {
     TuiDayRange,
 } from '@taiga-ui/cdk/date-time';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
@@ -68,8 +69,8 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
     protected override processCalendar(calendar: TuiCalendarRange): void {
         super.processCalendar(calendar);
 
-        calendar.minLength = this.minLength();
-        calendar.maxLength = this.maxLength();
+        tuiSetSignal(calendar.minLength, this.minLength());
+        tuiSetSignal(calendar.maxLength, this.maxLength());
     }
 
     protected override onValueChange(value: string): void {
