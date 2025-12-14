@@ -2,10 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     inject,
     Input,
-    Output,
+    input,
+    output,
     signal,
 } from '@angular/core';
 import {
@@ -44,18 +44,16 @@ export class TuiCalendarYear {
 
     protected readonly isRangePicking = computed(
         (x = this.value()) =>
-            this.rangeMode && (x instanceof TuiDay || x instanceof TuiMonth),
+            this.rangeMode() && (x instanceof TuiDay || x instanceof TuiMonth),
     );
 
-    @Input()
-    public rangeMode = false;
+    public readonly rangeMode = input(false);
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<number> =
-        inject(TUI_ITEMS_HANDLERS).disabledItemHandler();
+    public readonly disabledItemHandler = input<TuiBooleanHandler<number>>(
+        inject(TUI_ITEMS_HANDLERS).disabledItemHandler(),
+    );
 
-    @Output()
-    public readonly yearClick = new EventEmitter<number>();
+    public readonly yearClick = output<number>();
 
     public readonly initialItem = signal<number>(CURRENT_YEAR);
     public readonly min = signal(MIN_YEAR);
@@ -94,7 +92,7 @@ export class TuiCalendarYear {
         return (
             (this.max() && this.max() < item) ||
             (this.min() && this.min() > item) ||
-            this.disabledItemHandler(item)
+            this.disabledItemHandler()(item)
         );
     }
 
