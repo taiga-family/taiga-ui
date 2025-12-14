@@ -2,12 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     inject,
-    Input,
     input,
     model,
-    Output,
+    output,
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
@@ -54,18 +52,16 @@ export class TuiCalendarMonth {
 
     public readonly year = model<TuiYear>(TODAY);
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = TUI_FALSE_HANDLER;
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiMonth>>(TUI_FALSE_HANDLER);
 
     public readonly minLength = input<number | null>(null);
 
     public readonly maxLength = input<number | null>(null);
 
-    @Output()
-    public readonly monthClick = new EventEmitter<TuiMonth>();
+    public readonly monthClick = output<TuiMonth>();
 
-    @Output()
-    public readonly hoveredItemChange = new EventEmitter<TuiMonth | null>();
+    public readonly hoveredItemChange = output<TuiMonth | null>();
 
     public options = inject(TUI_CALENDAR_MONTH_OPTIONS);
     public readonly min = input<TuiMonth, TuiMonth | null>(TUI_FIRST_DAY, {
@@ -126,7 +122,7 @@ export class TuiCalendarMonth {
 
     protected get disabledItemHandlerWithMinMax(): TuiBooleanHandler<TuiMonth> {
         return this.calculateDisabledItemHandlerWithMinMax(
-            this.disabledItemHandler,
+            this.disabledItemHandler(),
             this.value(),
             this.isRangePicking(),
             this.min(),
