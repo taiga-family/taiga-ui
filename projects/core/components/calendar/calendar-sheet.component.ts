@@ -6,6 +6,7 @@ import {
     inject,
     Input,
     input,
+    model,
     Output,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
@@ -57,8 +58,7 @@ export class TuiCalendarSheet {
     @Input()
     public value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
-    @Input()
-    public hoveredItem: TuiDay | null = null;
+    public readonly hoveredItem = model<TuiDay | null>(null);
 
     public readonly showAdjacent = input(true);
 
@@ -72,16 +72,14 @@ export class TuiCalendarSheet {
     public readonly single = input(true);
 
     @Output()
-    public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
-
-    @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();
 
     /**
      * @deprecated TODO(v5): delete it. It is used nowhere except unit tests
      */
     public itemIsInterval(day: TuiDay): boolean {
-        const {value, hoveredItem} = this;
+        const {value} = this;
+        const hoveredItem = this.hoveredItem();
 
         if (!(value instanceof TuiDayRange)) {
             return false;
@@ -105,7 +103,8 @@ export class TuiCalendarSheet {
     }
 
     public getItemRange(item: TuiDay): 'active' | 'end' | 'middle' | 'start' | null {
-        const {value, hoveredItem} = this;
+        const {value} = this;
+        const hoveredItem = this.hoveredItem();
 
         if (!value) {
             return null;
@@ -196,11 +195,10 @@ export class TuiCalendarSheet {
     }
 
     private updateHoveredItem(day: TuiDay | null): void {
-        if (tuiNullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
+        if (tuiNullableSame(this.hoveredItem(), day, (a, b) => a.daySame(b))) {
             return;
         }
 
-        this.hoveredItem = day;
-        this.hoveredItemChange.emit(day);
+        this.hoveredItem.set(day);
     }
 }

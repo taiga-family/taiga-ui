@@ -154,7 +154,7 @@ describe('CalendarSheet', () => {
                 const day = new TuiDay(2019, 4, 16);
 
                 component.value = new TuiDayRange(day, day);
-                component.hoveredItem = null;
+                component.hoveredItem.set(null);
 
                 expect(component.itemIsInterval(day)).toBe(false);
             });
@@ -190,7 +190,7 @@ describe('CalendarSheet', () => {
             let result: unknown;
             const day = new TuiDay(2019, 4, 16);
 
-            component.hoveredItemChange.subscribe((hoveredDay: TuiDay) => {
+            component.hoveredItem.subscribe((hoveredDay: TuiDay | null) => {
                 result = hoveredDay;
             });
 
