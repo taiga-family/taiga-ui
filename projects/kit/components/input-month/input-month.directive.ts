@@ -2,6 +2,7 @@ import {computed, Directive, effect, inject} from '@angular/core';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
@@ -51,7 +52,11 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     });
 
     protected readonly calendarIn = effect(() => {
-        this.calendar()?.value.set(this.value());
+        const calendar = this.calendar();
+
+        if (calendar) {
+            tuiSetSignal(calendar.value, this.value());
+        }
     });
 
     protected readonly calendarOut = effect((onCleanup) => {

@@ -8,7 +8,6 @@ import {
     input,
     model,
     Output,
-    signal,
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
@@ -77,14 +76,8 @@ export class TuiCalendarMonth {
         transform: (x) => x ?? TUI_LAST_DAY,
     });
 
-    public readonly value = signal<TuiMonth | TuiMonthRange | null>(null);
+    public readonly value = input<TuiMonth | TuiMonthRange | null>(null);
     public hoveredItem: TuiMonth | null = null;
-
-    // TODO(v5): use signal inputs
-    @Input('value')
-    public set valueSetter(x: TuiMonth | TuiMonthRange | null) {
-        this.value.set(x);
-    }
 
     public onNextYear(): void {
         this.updateActiveYear(this.year().append({year: 1}));
