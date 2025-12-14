@@ -62,11 +62,9 @@ export class TuiCalendar {
 
     public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
 
-    @Input()
-    public minViewedMonth: TuiMonth | null = TUI_FIRST_DAY;
+    public readonly minViewedMonth = input<TuiMonth | null>(TUI_FIRST_DAY);
 
-    @Input()
-    public maxViewedMonth: TuiMonth | null = TUI_LAST_DAY;
+    public readonly maxViewedMonth = input<TuiMonth | null>(TUI_LAST_DAY);
 
     @Input()
     public hoveredItem: TuiDay | null = null;
@@ -129,14 +127,14 @@ export class TuiCalendar {
 
     protected get computedMinViewedMonth(): TuiMonth {
         const min = this.computedMin;
-        const minViewed = this.minViewedMonth ?? TUI_FIRST_DAY;
+        const minViewed = this.minViewedMonth() ?? TUI_FIRST_DAY;
 
         return minViewed.monthSameOrAfter(min) ? minViewed : min;
     }
 
     protected get computedMaxViewedMonth(): TuiMonth {
         const max = this.computedMax;
-        const maxViewed = this.maxViewedMonth ?? TUI_LAST_DAY;
+        const maxViewed = this.maxViewedMonth() ?? TUI_LAST_DAY;
 
         return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
     }
