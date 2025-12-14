@@ -93,22 +93,22 @@ describe('CalendarMonth', () => {
         it('append year by onNextYear', () => {
             const year = new TuiYear(TODAY.year);
 
-            component.year = year;
+            component.year.set(year);
 
             component.onNextYear();
 
-            expect(component.year.year).toBe(year.year + 1);
+            expect(component.year().year).toBe(year.year + 1);
             expect(testComponent.year.year).toBe(year.year + 1);
         });
 
         it('reduce year by onPreviousYear', () => {
             const year = new TuiYear(TODAY.year);
 
-            component.year = year;
+            component.year.set(year);
 
             component.onPreviousYear();
 
-            expect(component.year.year).toBe(year.year - 1);
+            expect(component.year().year).toBe(year.year - 1);
             expect(testComponent.year.year).toBe(year.year - 1);
         });
     });
