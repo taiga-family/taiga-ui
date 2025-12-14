@@ -253,9 +253,7 @@ describe('rangeCalendarComponent', () => {
                 component['onItemSelect'](component.items[1]);
             }
 
-            expect(testComponent.component()?.selectedActivePeriod?.toString()).toBe(
-                'Today',
-            );
+            expect(testComponent.component()?.item?.toString()).toBe('Today');
         });
 
         it('should fire itemChange before valueChange', () => {

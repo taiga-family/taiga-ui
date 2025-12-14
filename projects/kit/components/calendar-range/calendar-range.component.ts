@@ -53,10 +53,6 @@ import {type TuiDayRangePeriod} from './day-range-period';
     },
 })
 export class TuiCalendarRange implements OnInit, OnChanges {
-    /**
-     * @deprecated use `item`
-     */
-    private selectedPeriod: TuiDayRangePeriod | null = null;
     private readonly cdr = inject(ChangeDetectorRef);
 
     protected currentValue: TuiDay | TuiDayRange | null = null;
@@ -114,20 +110,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     public get defaultViewedMonth(): TuiMonth {
         return this.month;
-    }
-
-    /**
-     * @deprecated use `item`
-     */
-    public get selectedActivePeriod(): TuiDayRangePeriod | null {
-        return this.selectedPeriod;
-    }
-
-    /**
-     * @deprecated use `item`
-     */
-    public set selectedActivePeriod(period: TuiDayRangePeriod | null) {
-        this.selectedPeriod = period;
     }
 
     public ngOnChanges(): void {
@@ -197,11 +179,11 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
-            this.selectedActivePeriod = item;
+            this.item = item;
             this.itemChange.emit(item);
             this.updateValue(item.range.dayLimit(this.min(), this.max()));
         } else if (this.activePeriod !== null) {
-            this.selectedActivePeriod = null;
+            this.item = null;
             this.itemChange.emit(null);
             this.updateValue(null);
         }
@@ -215,7 +197,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected onDayClick(day: TuiDay): void {
         this.previousValue = this.currentValue;
-        this.selectedActivePeriod = null;
+        this.item = null;
 
         if (this.currentValue instanceof TuiDay) {
             const range = TuiDayRange.sort(this.currentValue, day);
@@ -236,7 +218,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.item ??
-            this.selectedActivePeriod ??
             (this.items.find((item) =>
                 tuiNullableSame<TuiDayRange>(
                     this.currentValue instanceof TuiDay
