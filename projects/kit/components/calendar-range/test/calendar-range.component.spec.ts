@@ -259,14 +259,11 @@ describe('rangeCalendarComponent', () => {
                 component['onItemSelect'](periods[1]);
             }
 
-            expect(testComponent.component()?.item?.toString()).toBe('Today');
+            expect(testComponent.component()?.item()?.toString()).toBe('Today');
         });
 
         it('should fire itemChange before valueChange', () => {
-            const itemChangeSpy = jest.spyOn(
-                testComponent.component().itemChange,
-                'emit',
-            );
+            const itemChangeSpy = jest.spyOn(testComponent.component().item, 'set');
             const valueChangeSpy = jest.spyOn(
                 testComponent.component().valueChange,
                 'emit',

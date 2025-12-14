@@ -6,6 +6,7 @@ import {
     inject,
     Input,
     input,
+    model,
     type OnChanges,
     type OnInit,
     Output,
@@ -80,8 +81,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     public readonly maxLength = input<TuiDayLike | null>(null);
 
-    @Input()
-    public item: TuiDayRangePeriod | null = null;
+    public readonly item = model<TuiDayRangePeriod | null>(null);
 
     @Output()
     public readonly valueChange = new EventEmitter<TuiDayRange | null>();
@@ -178,12 +178,10 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
-            this.item = item;
-            this.itemChange.emit(item);
+            this.item.set(item);
             this.updateValue(item.range.dayLimit(this.min(), this.max()));
         } else if (this.activePeriod !== null) {
-            this.item = null;
-            this.itemChange.emit(null);
+            this.item.set(null);
             this.updateValue(null);
         }
 
@@ -196,13 +194,13 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected onDayClick(day: TuiDay): void {
         this.previousValue = this.currentValue;
-        this.item = null;
+        this.item.set(null);
 
         if (this.currentValue instanceof TuiDay) {
             const range = TuiDayRange.sort(this.currentValue, day);
 
             this.currentValue = range;
-            this.itemChange.emit(this.findItemByDayRange(range));
+            this.item.set(this.findItemByDayRange(range));
             this.updateValue(range);
         } else {
             this.currentValue = day;
@@ -216,7 +214,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
-            this.item ??
+            this.item() ??
             (this.items().find((item) =>
                 tuiNullableSame<TuiDayRange>(
                     this.currentValue instanceof TuiDay
