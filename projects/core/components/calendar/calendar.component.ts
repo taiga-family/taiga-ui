@@ -59,11 +59,9 @@ export class TuiCalendar {
     public disabledItemHandler: TuiBooleanHandler<TuiDay> =
         inject(TUI_ITEMS_HANDLERS).disabledItemHandler();
 
-    @Input()
-    public min: TuiDay | null = TUI_FIRST_DAY;
+    public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
 
-    @Input()
-    public max: TuiDay | null = TUI_LAST_DAY;
+    public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
 
     @Input()
     public minViewedMonth: TuiMonth | null = TUI_FIRST_DAY;
@@ -125,11 +123,11 @@ export class TuiCalendar {
     }
 
     protected get computedMin(): TuiDay {
-        return this.min ?? TUI_FIRST_DAY;
+        return this.min() ?? TUI_FIRST_DAY;
     }
 
     protected get computedMax(): TuiDay {
-        return this.max ?? TUI_LAST_DAY;
+        return this.max() ?? TUI_LAST_DAY;
     }
 
     protected get computedMinViewedMonth(): TuiMonth {
