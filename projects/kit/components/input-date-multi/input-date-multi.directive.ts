@@ -86,7 +86,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     public readonly max = input<TuiDay | null>(this.dateOptions.max);
 
     protected processCalendar(calendar: TuiCalendar): void {
-        calendar.value = this.value();
+        calendar.value.set(this.value());
         tuiSetSignal(calendar.min, this.min());
         tuiSetSignal(calendar.max, this.max());
         calendar.month.set(

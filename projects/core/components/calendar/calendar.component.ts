@@ -1,10 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
+    effect,
     inject,
-    Input,
     input,
+    linkedSignal,
     model,
     output,
 } from '@angular/core';
@@ -22,7 +22,6 @@ import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {Subject} from 'rxjs';
 
 import {TuiCalendarSheet, type TuiMarkerHandler} from './calendar-sheet.component';
 import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
@@ -47,9 +46,7 @@ import {TuiCalendarYear} from './calendar-year.component';
     },
 })
 export class TuiCalendar {
-    private readonly cdr = inject(ChangeDetectorRef);
-    private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
-    private view: 'month' | 'year' = 'month';
+    private readonly view = linkedSignal(() => this.initialView());
     protected readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
 
     public readonly month = model<TuiMonth>(TuiMonth.currentLocal());
@@ -66,8 +63,7 @@ export class TuiCalendar {
 
     public readonly maxViewedMonth = input<TuiMonth | null>(TUI_LAST_DAY);
 
-    @Input()
-    public hoveredItem: TuiDay | null = null;
+    public readonly hoveredItem = model<TuiDay | null>(null);
 
     public readonly showAdjacent = input(true);
 
@@ -75,15 +71,10 @@ export class TuiCalendar {
 
     public readonly dayClick = output<TuiDay>();
 
-    public readonly hoveredItemChange = output<TuiDay | null>();
+    public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
 
-    /** @deprecated for private use only until Calendars are refactored */
-    public readonly valueChange = new Subject<TuiDay>();
-
-    @Input()
-    public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
-        this.cdr.markForCheck();
-        this.day = value;
+    protected readonly whenValueChange = effect(() => {
+        const value = this.value();
 
         if (
             this.showAdjacent() &&
@@ -92,16 +83,9 @@ export class TuiCalendar {
         ) {
             this.month.set(value);
         }
-    }
+    });
 
-    @Input()
-    public set initialView(view: 'month' | 'year') {
-        this.view = view;
-    }
-
-    public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
-        return this.day;
-    }
+    public readonly initialView = input<'month' | 'year'>('month');
 
     public onPaginationValueChange(month: TuiMonth): void {
         this.updateViewedMonth(month);
@@ -109,7 +93,7 @@ export class TuiCalendar {
 
     public onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
-        this.valueChange.next(day);
+        this.value.set(day);
     }
 
     public onHoveredItemChange(day: TuiDay | null): void {
@@ -139,7 +123,7 @@ export class TuiCalendar {
     }
 
     protected get isInYearView(): boolean {
-        return this.view === 'year';
+        return this.view() === 'year';
     }
 
     protected readonly disabledItemHandlerMapper: TuiMapper<
@@ -149,11 +133,11 @@ export class TuiCalendar {
         item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
 
     protected onPaginationYearClick(): void {
-        this.view = 'year';
+        this.view.set('year');
     }
 
     protected onPickerYearClick(year: number): void {
-        this.view = 'month';
+        this.view.set('month');
         this.updateViewedMonth(new TuiMonth(year, this.month().month));
     }
 
@@ -166,11 +150,10 @@ export class TuiCalendar {
     }
 
     private updateHoveredDay(day: TuiDay | null): void {
-        if (tuiNullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
+        if (tuiNullableSame(this.hoveredItem(), day, (a, b) => a.daySame(b))) {
             return;
         }
 
-        this.hoveredItem = day;
-        this.hoveredItemChange.emit(day);
+        this.hoveredItem.set(day);
     }
 }

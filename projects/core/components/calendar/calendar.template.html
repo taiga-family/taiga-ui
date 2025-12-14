@@ -9,7 +9,7 @@
             [max]="computedMax.year"
             [min]="computedMin.year"
             [rangeMode]="options.rangeMode"
-            [value]="value"
+            [value]="value()"
             (yearClick)="onPickerYearClick($event)"
         />
     </tui-scrollbar>
@@ -26,11 +26,11 @@
     <tui-calendar-sheet
         automation-id="tui-calendar__calendar"
         [disabledItemHandler]="disabledItemHandler() | tuiMapper: disabledItemHandlerMapper : computedMin : computedMax"
-        [hoveredItem]="hoveredItem"
+        [hoveredItem]="hoveredItem()"
         [markerHandler]="markerHandler()"
         [month]="month()"
         [showAdjacent]="showAdjacent()"
-        [value]="value"
+        [value]="value()"
         (dayClick)="onDayClick($event)"
         (hoveredItemChange)="onHoveredItemChange($event)"
     />
