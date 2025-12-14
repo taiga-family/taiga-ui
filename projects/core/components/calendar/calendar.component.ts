@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    input,
     model,
     Output,
 } from '@angular/core';
@@ -73,8 +74,7 @@ export class TuiCalendar {
     @Input()
     public hoveredItem: TuiDay | null = null;
 
-    @Input()
-    public showAdjacent = true;
+    public readonly showAdjacent = input(true);
 
     @Input()
     public markerHandler: TuiMarkerHandler | null = null;
@@ -94,7 +94,7 @@ export class TuiCalendar {
         this.day = value;
 
         if (
-            this.showAdjacent &&
+            this.showAdjacent() &&
             value instanceof TuiDay &&
             value.daySameOrBefore(TUI_LAST_DISPLAYED_DAY)
         ) {
