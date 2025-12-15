@@ -112,14 +112,13 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
     private parse(value: string): bigint | number {
         const params = this.mask.params();
+        const possibleTooBig =
+            !Number.isFinite(this.mask.min()) || !Number.isFinite(this.mask.max());
 
         return (
             maskitoParseNumber(value, {
                 ...params,
-                bigint:
-                    !value.includes(params.decimalSeparator) &&
-                    !Number.isFinite(this.mask.min()) &&
-                    !Number.isFinite(this.mask.max()),
+                bigint: !value.includes(params.decimalSeparator) && possibleTooBig,
             }) ?? NaN
         );
     }

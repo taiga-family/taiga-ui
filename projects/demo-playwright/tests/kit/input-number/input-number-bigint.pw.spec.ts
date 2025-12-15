@@ -179,7 +179,7 @@ describe('InputNumber | BigInt', () => {
                 await expectControlValue({significand: '424242n', exp: 0});
             });
 
-            test('ingores negative sign', async () => {
+            test('ignores negative sign', async () => {
                 await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('-123');

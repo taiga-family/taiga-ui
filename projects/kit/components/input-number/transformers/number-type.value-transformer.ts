@@ -38,7 +38,7 @@ export class TuiNumberTypeValueTransformer extends TuiValueTransformer<
 
     public fromControlValue(controlValue: number | null): string {
         return this.optionsTransformer.fromControlValue(
-            this.quantumTransformer.fromControlValue(this.mask.stringify(controlValue)),
+            this.mask.stringify(controlValue),
         );
     }
 }

@@ -65,7 +65,7 @@ export class TuiNumberMask {
 
     protected readonly mask = tuiMaskito(computed(() => this.computeMask(this.params())));
 
-    protected maskInitialCalibrationEffect = effect(() => {
+    protected maskInitialCalibration = effect(() => {
         const options = maskitoNumberOptionsGenerator({
             ...this.params(),
             min: -Infinity,
