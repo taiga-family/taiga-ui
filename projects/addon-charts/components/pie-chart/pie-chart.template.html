@@ -29,7 +29,7 @@
             r="100"
             class="t-placeholder"
         />
-        @for (_ of '-'.repeat(segments.length); track $index) {
+        @for (_ of '-'.repeat(segments().length); track $index) {
             <path
                 automation-id="tui-pie-chart__segment"
                 d=""
@@ -40,7 +40,7 @@
                 [style.color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
                 [tuiHint]="hintContent"
                 [tuiHintContext]="{$implicit: $index}"
-                [tuiPieChart]="segments[$index] || [0, 0]"
+                [tuiPieChart]="segments()[$index] || [0, 0]"
                 (tuiHoveredChange)="onHovered($event, $index)"
             />
         }

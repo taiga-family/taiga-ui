@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
@@ -9,22 +8,16 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     styleUrl: './bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiBar {
-    @Input()
-    public value: readonly number[] = [];
+    private readonly sum = computed(() => tuiSum(...this.value()));
 
-    @Input()
-    public size: TuiSizeL | TuiSizeS = 'm';
+    public readonly value = input<readonly number[]>([]);
+    public readonly size = input<TuiSizeL | TuiSizeS>('m');
 
     protected getHeight(value: number): number {
-        return (100 * value) / this.getSum(this.value);
-    }
-
-    @tuiPure
-    private getSum(value: readonly number[]): number {
-        return tuiSum(...value);
+        return (100 * value) / this.sum();
     }
 }

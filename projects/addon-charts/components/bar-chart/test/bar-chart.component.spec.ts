@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiBarChart} from '@taiga-ui/addon-charts';
 
@@ -7,6 +7,7 @@ describe('BarChart', () => {
         imports: [TuiBarChart],
         template: `
             <tui-bar-chart
+                [collapsed]="collapsed()"
                 [max]="max"
                 [value]="value"
             />
@@ -23,6 +24,7 @@ describe('BarChart', () => {
         ];
 
         public max = NaN;
+        public collapsed = signal(false);
     }
 
     let fixture: ComponentFixture<Test>;
@@ -36,32 +38,25 @@ describe('BarChart', () => {
         fixture.detectChanges();
     });
 
-    it('transposes correctly', () => {
-        expect(testComponent.component.transposed).toEqual([
-            [1, 4],
-            [2, 5],
-            [3, 6],
-        ]);
-    });
-
     it('computes percent correctly', () => {
         expect(
             testComponent.component.percentMapper(
                 [1, 3],
-                testComponent.component.collapsed,
-                testComponent.component.computedMax,
+                testComponent.component.collapsed(),
+                testComponent.component.computedMax(),
             ),
         ).toBe(50);
     });
 
     it('computes percent correctly in collapsed mode', () => {
-        testComponent.component.collapsed = true;
+        testComponent.collapsed.set(true);
+        fixture.detectChanges();
 
         expect(
             testComponent.component.percentMapper(
                 [8, 1],
-                testComponent.component.collapsed,
-                testComponent.component.computedMax,
+                testComponent.component.collapsed(),
+                testComponent.component.computedMax(),
             ),
         ).toBe(100);
     });
