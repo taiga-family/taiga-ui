@@ -1,34 +1,24 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-.title {
-    text-align: center;
-}
-
 .examples {
     display: flex;
     gap: 2.5rem;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    inline-size: 20rem;
+    flex-direction: column;
 }
 
-.item {
+[tuiCardLarge] {
     .transition(box-shadow);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    inline-size: 17.5rem;
-    block-size: 5rem;
-    padding: 0.3125rem;
-    border-radius: var(--tui-radius-m);
-    border: 1px solid var(--tui-background-base-alt);
-    color: var(--tui-text-tertiary);
     cursor: pointer;
-    text-align: center;
+    gap: 0;
+    box-shadow: var(--tui-shadow-medium);
 
-    &_default {
+    &:hover {
+        box-shadow: var(--tui-shadow-medium-hover);
+    }
+
+    &:first-child {
         box-shadow: var(--tui-shadow-small);
 
         &:hover {
@@ -36,27 +26,7 @@
         }
     }
 
-    &_dropdown {
-        box-shadow: var(--tui-shadow-medium);
+    &:last-child {
+        box-shadow: var(--tui-shadow-popup) !important;
     }
-
-    &_modal {
-        box-shadow: var(--tui-shadow-popup);
-    }
-
-    &_sidebar {
-        box-shadow: var(--tui-shadow-medium);
-    }
-
-    &_navigation {
-        box-shadow: var(--tui-shadow-small);
-    }
-
-    &_mobile {
-        box-shadow: var(--tui-shadow-popup);
-    }
-}
-
-.code:not(pre code) {
-    color: var(--tui-text-action);
 }

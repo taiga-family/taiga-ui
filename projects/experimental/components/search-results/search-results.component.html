@@ -1,10 +1,10 @@
 @if (!textfield.value()) {
     <ng-content />
 } @else {
-    @if (!results) {
+    @if (!results()) {
         <tui-loader class="t-loader" />
     } @else {
-        @if (results && isEmpty(results)) {
+        @if (empty()) {
             <tui-block-status
                 size="m"
                 class="t-status"
@@ -17,7 +17,7 @@
                 {{ i18n().empty }}
             </tui-block-status>
         } @else {
-            @let items = (results | keyvalue: asIs) || [];
+            @let items = (results() | keyvalue: asIs) || [];
             <tui-scrollbar class="t-scrollbar">
                 @for (group of items | tuiFilter: notEmpty; track group) {
                     @if (!active || active === $index + 1) {
@@ -28,7 +28,7 @@
                         }
                         @for (item of group.value; track item) {
                             <ng-container
-                                [ngTemplateOutlet]="template || null"
+                                [ngTemplateOutlet]="template() || null"
                                 [ngTemplateOutletContext]="{$implicit: item}"
                             />
                         }

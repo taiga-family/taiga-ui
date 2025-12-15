@@ -1,7 +1,7 @@
-import {Directive, inject, input, output} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -9,6 +9,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
     TUI_HINT_DIRECTIONS,
@@ -25,6 +26,7 @@ const LEFT = 0;
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly viewport = inject(TUI_VIEWPORT);
+    private readonly directionChange = new Subject<TuiHintDirection>();
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
         inject<any>(TuiRectAccessor, {optional: true}),
         {getClientRect: () => this.el.getBoundingClientRect()},
@@ -44,16 +46,11 @@ export class TuiHintPosition extends TuiPositionAccessor {
         alias: 'tuiHintOffset',
     });
 
-    public readonly directionChange = output<TuiHintDirection>({
-        alias: 'tuiHintDirectionChange',
-    });
+    public readonly tuiHintDirectionChange = outputFromObservable(
+        this.directionChange.pipe(distinctUntilChanged()),
+    );
 
     public readonly type = 'hint';
-
-    @tuiPure
-    public emitDirection(direction: TuiHintDirection): void {
-        this.directionChange.emit(direction);
-    }
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         const direction = this.direction();
@@ -98,7 +95,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
                 .find((dir) => this.checkPosition(this.points[dir], width, height)) ||
             this.fallback;
 
-        this.emitDirection(adjust(updated, rtl));
+        this.directionChange.next(adjust(updated, rtl));
 
         return this.points[updated];
     }

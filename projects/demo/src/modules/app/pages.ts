@@ -118,46 +118,108 @@ export const pages: DocRoutePages = [
         keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
         route: DemoRoute.AISupport,
     },
+    // Customization
+    {
+        section: 'Documentation',
+        title: 'Customization',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'i18n',
+                keywords: 'i18n, internationalization, local, translate, language',
+                route: DemoRoute.I18N,
+            },
+            {
+                section: 'Documentation',
+                title: 'Variables',
+                keywords: 'colors, css, vars, custom, properties, style',
+                route: DemoRoute.Variables,
+            },
+            {
+                section: 'Documentation',
+                title: 'Appearances',
+                keywords: 'colors, css, theme, custom, style',
+                route: DemoRoute.Appearances,
+            },
+            {
+                section: 'Documentation',
+                title: 'Portals',
+                keywords: 'portal, custom, theme, style',
+                route: DemoRoute.Portals,
+            },
+            {
+                section: 'Documentation',
+                title: 'Viewport',
+                keywords:
+                    'viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown',
+                route: DemoRoute.Viewport,
+            },
+        ],
+    },
+    {
+        section: 'Documentation',
+        title: 'Routable Dialog',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'Eager',
+                keywords: 'dialog, modal, navigation, route, eager, routable',
+                route: DemoRoute.DialogRoutable,
+            },
+            {
+                section: 'Documentation',
+                title: 'Lazy',
+                keywords: 'dialog, modal, navigation, route, lazy, routable',
+                route: DemoRoute.DialogLazyRoutable,
+            },
+        ],
+    },
     // Foundations
     {
-        section: 'Foundations',
-        title: 'Typography',
-        keywords:
-            'layout, text, верстка, markup, font, текст, шрифты, гельветика, sans, typography',
-        route: DemoRoute.Typography,
+        section: 'Documentation',
+        title: 'Foundations',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'Typography',
+                keywords:
+                    'layout, text, верстка, markup, font, текст, шрифты, гельветика, sans, typography',
+                route: DemoRoute.Typography,
+            },
+            {
+                section: 'Documentation',
+                title: 'Breakpoints',
+                keywords:
+                    'css, breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
+                route: DemoRoute.Breakpoints,
+            },
+            {
+                section: 'Documentation',
+                title: 'Colors',
+                keywords: 'layout, верстка, palette, markup, цвет, палитра',
+                route: DemoRoute.Colors,
+            },
+        ],
     },
     {
-        section: 'Foundations',
-        title: 'Breakpoints',
-        keywords:
-            'css, breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
-        route: DemoRoute.Breakpoints,
-    },
-    {
-        section: 'Foundations',
-        title: 'Colors',
-        keywords: 'layout, верстка, palette, markup, цвет, палитра',
-        route: DemoRoute.Colors,
-    },
-    {
-        section: 'Foundations',
+        section: 'Documentation',
         title: 'Styles',
         subPages: [
             {
-                section: 'Foundations',
+                section: 'Documentation',
                 title: 'Shadows',
                 keywords: 'layout, markup, тень, shadows',
                 route: DemoRoute.Shadows,
             },
             {
-                section: 'Foundations',
+                section: 'Documentation',
                 title: 'Lists',
                 keywords:
                     'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
                 route: DemoRoute.Lists,
             },
             {
-                section: 'Foundations',
+                section: 'Documentation',
                 title: 'Spaces',
                 keywords:
                     'layout, markup, отступы, margin, padding, маржин, падинг, spaces',
@@ -1253,56 +1315,6 @@ export const pages: DocRoutePages = [
         keywords: 'mobile, ios, android, шаги, таб, tab, tabs, vertical, navigation',
         route: DemoRoute.Tabs,
         meta: {},
-    },
-    // Customization
-    {
-        section: 'Customization',
-        title: 'i18n',
-        keywords: 'i18n, internationalization, local, translate, language',
-        route: DemoRoute.I18N,
-    },
-    {
-        section: 'Customization',
-        title: 'Variables',
-        keywords: 'colors, css, vars, custom, properties, style',
-        route: DemoRoute.Variables,
-    },
-    {
-        section: 'Customization',
-        title: 'Appearances',
-        keywords: 'colors, css, theme, custom, style',
-        route: DemoRoute.Appearances,
-    },
-    {
-        section: 'Customization',
-        title: 'Dialog',
-        subPages: [
-            {
-                section: 'Customization',
-                title: 'Routable',
-                keywords: 'dialog, modal, navigation, route, eager',
-                route: DemoRoute.DialogRoutable,
-            },
-            {
-                section: 'Customization',
-                title: 'LazyRoutable',
-                keywords: 'dialog, modal, navigation, route, lazy',
-                route: DemoRoute.DialogLazyRoutable,
-            },
-        ],
-    },
-    {
-        section: 'Customization',
-        title: 'Portals',
-        keywords: 'portal, custom, theme, style',
-        route: DemoRoute.Portals,
-    },
-    {
-        section: 'Customization',
-        title: 'Viewport',
-        keywords:
-            'viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown',
-        route: DemoRoute.Viewport,
     },
     // Tools
     {
