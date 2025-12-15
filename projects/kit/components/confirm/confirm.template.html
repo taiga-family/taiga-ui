@@ -1,5 +1,5 @@
 <p
-    *polymorpheusOutlet="context.data?.content as text"
+    *polymorpheusOutlet="context.data?.content as text; context: context"
     class="t-content"
     [innerHTML]="text"
 ></p>
