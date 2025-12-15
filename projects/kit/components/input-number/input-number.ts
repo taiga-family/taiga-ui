@@ -9,13 +9,13 @@ import {TuiInputNumberDirective} from './input-number.directive';
 import {TuiNumberMask} from './number-mask.directive';
 import {TuiQuantumValueTransformer} from './quantum.directive';
 import {TuiInputNumberStep} from './step/input-number-step.component';
-import {TuiBigIntTypeValueTransformer} from './transformers/bigint-type.value-transformer';
+import {TuiBigIntValueTransformer} from './transformers/bigint.value-transformer';
 
 export const TuiInputNumber = [
     TuiInputNumberDirective,
     TuiNumberMask,
     TuiInputNumberStep,
-    TuiBigIntTypeValueTransformer,
+    TuiBigIntValueTransformer,
     TuiQuantumValueTransformer,
     TuiLabel,
     TuiTextfieldComponent,

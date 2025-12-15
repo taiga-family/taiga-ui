@@ -11,10 +11,10 @@ import {
 } from '../quantum.directive';
 
 @Directive({
-    providers: [tuiProvide(TuiValueTransformer, TuiNumberTypeValueTransformer)],
+    providers: [tuiProvide(TuiValueTransformer, TuiNumberValueTransformer)],
     hostDirectives: [TuiWithQuantumValueTransformer],
 })
-export class TuiNumberTypeValueTransformer extends TuiValueTransformer<
+export class TuiNumberValueTransformer extends TuiValueTransformer<
     string,
     number | null
 > {

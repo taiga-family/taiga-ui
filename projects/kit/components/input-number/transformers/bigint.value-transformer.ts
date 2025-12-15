@@ -8,9 +8,9 @@ import {TuiNumberMask} from '../number-mask.directive';
 
 @Directive({
     selector: '[tuiInputNumber][bigint]',
-    providers: [tuiProvide(TuiValueTransformer, TuiBigIntTypeValueTransformer)],
+    providers: [tuiProvide(TuiValueTransformer, TuiBigIntValueTransformer)],
 })
-export class TuiBigIntTypeValueTransformer extends TuiValueTransformer<
+export class TuiBigIntValueTransformer extends TuiValueTransformer<
     string,
     bigint | null
 > {

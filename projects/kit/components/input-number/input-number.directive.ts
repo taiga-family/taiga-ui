@@ -6,14 +6,14 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 
 import {TuiNumberMask} from './number-mask.directive';
-import {TuiNumberTypeValueTransformer} from './transformers/number-type.value-transformer';
+import {TuiNumberValueTransformer} from './transformers/number.value-transformer';
 
 const DEFAULT_MAX_LENGTH = 18;
 
 @Directive({
     selector: 'input[tuiInputNumber]',
     providers: [tuiAsControl(TuiInputNumberDirective)],
-    hostDirectives: [TuiWithInput, TuiNumberTypeValueTransformer],
+    hostDirectives: [TuiWithInput, TuiNumberValueTransformer],
     host: {
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
