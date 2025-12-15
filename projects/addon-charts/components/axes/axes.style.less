@@ -1,14 +1,16 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr auto;
+    block-size: 100%;
 }
 
 .t-wrapper {
-    display: flex;
-    flex: 1;
-    block-size: 100%;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
 }
 
 .t-grid {
@@ -20,6 +22,7 @@
     border-width: 1px;
     border-color: var(--tui-border-normal);
     isolation: isolate;
+    grid-row: 1;
 }
 
 .t-horizontal {
@@ -117,15 +120,17 @@
 }
 
 .t-label-x {
-    block-size: 0.4375rem;
-    border-inline-start: 1px solid var(--tui-border-normal);
     flex: 1;
-    margin-block-end: 1.5625rem;
 
     &::before {
         content: '';
         display: block;
         block-size: 0.5625rem;
+        border-inline-start: 1px solid var(--tui-border-normal);
+    }
+
+    &:last-of-type::before {
+        border: none;
     }
 
     &_transparent {

@@ -4,11 +4,11 @@
 @let yInset = axisYInset();
 @let hasXs = hasXLabels();
 
-@if (hasYLabels()) {
-    <div
-        class="t-side"
-        [class.t-side_padding]="hasXs"
-    >
+<div
+    class="t-side"
+    [class.t-side_padding]="hasXs"
+>
+    @if (hasYLabels()) {
         @let yName = axisYName();
         @if (yName) {
             <div
@@ -30,14 +30,10 @@
                 }
             </div>
         }
-    </div>
-}
+    }
+</div>
 <div class="t-wrapper">
-    <div
-        class="t-grid"
-        [style.borderBottomStyle]="axisX()"
-        [style.borderLeftStyle]="axisY()"
-    >
+    <div class="t-grid">
         <div class="t-vertical">
             @let vLineFn = verticalLinesHandler();
             @let vLines = verticalLines();
@@ -45,7 +41,7 @@
                 <div
                     automation-id="tui-axex__vertical-line"
                     class="t-line t-line_vertical"
-                    [style.border-right-style]="vLineFn($index, vLines)"
+                    [style.border-inline-start-style]="vLineFn($index, vLines)"
                 ></div>
             }
         </div>
@@ -56,7 +52,7 @@
                 <div
                     automation-id="tui-axex__horizontal-line"
                     class="t-line"
-                    [style.border-top-style]="hLineFn($index, hLines)"
+                    [style.border-block-end-style]="hLineFn($index, hLines)"
                 ></div>
             }
         </div>
@@ -102,11 +98,11 @@
         </div>
     }
 </div>
-@if (hasYSecondaryLabels()) {
-    <div
-        class="t-side"
-        [class.t-side_padding]="hasXs"
-    >
+<div
+    class="t-side"
+    [class.t-side_padding]="hasXs"
+>
+    @if (hasYSecondaryLabels()) {
         @if (!ySecInset) {
             <div class="t-labels-y t-labels-y_secondary">
                 @for (label of ySecLabels; track label) {
@@ -128,5 +124,5 @@
                 {{ axisYSec }}
             </div>
         }
-    </div>
-}
+    }
+</div>
