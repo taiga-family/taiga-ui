@@ -264,10 +264,7 @@ describe('rangeCalendarComponent', () => {
 
         it('should fire itemChange before valueChange', () => {
             const itemChangeSpy = jest.spyOn(testComponent.component().item, 'set');
-            const valueChangeSpy = jest.spyOn(
-                testComponent.component().valueChange,
-                'emit',
-            );
+            const valueChangeSpy = jest.spyOn(testComponent.component().value, 'set');
             const periods = component.items();
 
             if (periods[1]) {
@@ -286,10 +283,7 @@ describe('rangeCalendarComponent', () => {
             testComponent.min = minDate;
             fixture.detectChanges();
 
-            component.ngOnInit();
-            fixture.detectChanges();
-
-            expect(component.defaultViewedMonth).toEqual(minDate);
+            expect(component.month).toEqual(minDate);
         });
 
         it('when max and items not empty, defaultViewedMonth is max', () => {
@@ -298,10 +292,7 @@ describe('rangeCalendarComponent', () => {
             testComponent.max = maxDate;
             fixture.detectChanges();
 
-            component.ngOnInit();
-            fixture.detectChanges();
-
-            expect(component.defaultViewedMonth).toEqual(maxDate);
+            expect(component.month).toEqual(maxDate);
         });
 
         it('isItemActive returns true when value is set to today after being changed to yesterday', () => {
@@ -356,14 +347,14 @@ describe('rangeCalendarComponent', () => {
                 day.day % 2 === 0 ? ['first'] : ['second'];
             fixture.detectChanges();
 
-            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+            expect(component.month.toString()).toBe(updatedMonth.toString());
         });
 
         it('if value not selected, updating defaultViewedMonth change viewed months', () => {
             testComponent.defaultViewedMonth = updatedMonth;
             fixture.detectChanges();
 
-            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+            expect(component.month.toString()).toBe(updatedMonth.toString());
         });
 
         it('if value selected, updating defaultViewedMonth do not change viewed month', () => {
@@ -376,7 +367,7 @@ describe('rangeCalendarComponent', () => {
             testComponent.defaultViewedMonth = updatedMonth;
             fixture.detectChanges();
 
-            expect(component.defaultViewedMonth.toString()).toBe(defaultMonth.toString());
+            expect(component.month.toString()).toBe(defaultMonth.toString());
         });
 
         it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {
@@ -389,7 +380,7 @@ describe('rangeCalendarComponent', () => {
             component['onMonthChange'](updatedMonth);
             fixture.detectChanges();
 
-            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+            expect(component.month.toString()).toBe(updatedMonth.toString());
         });
     });
 

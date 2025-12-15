@@ -104,16 +104,7 @@ export abstract class TuiInputDateBase<
     });
 
     protected readonly calendarOut = effect((onCleanup) => {
-        const calendar = this.calendar();
-
-        if (!calendar) {
-            return;
-        }
-
-        const ev = (
-            calendar instanceof TuiCalendarRange ? calendar?.valueChange : calendar.value
-        )?.subscribe;
-        const subscription = ev((value) => {
+        const subscription = this.calendar()?.value.subscribe((value) => {
             if (value) {
                 this.setDate(value);
             }
@@ -149,11 +140,7 @@ export abstract class TuiInputDateBase<
     protected processCalendar(calendar: TuiCalendar | TuiCalendarRange): void {
         const value = this.value();
 
-        if (calendar instanceof TuiCalendar) {
-            calendar.value.set(Array.isArray(value) ? value[0] : value);
-        } else {
-            calendar.value = Array.isArray(value) ? value[0] : value;
-        }
+        calendar.value.set(Array.isArray(value) ? value[0] : value);
 
         tuiSetSignal(
             calendar.disabledItemHandler,
