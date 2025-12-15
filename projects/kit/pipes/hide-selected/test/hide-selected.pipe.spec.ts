@@ -10,7 +10,7 @@ describe('HideSelected pipe', () => {
     let pipe: TuiHideSelectedPipe;
 
     beforeEach(() => {
-        textfield = {control: signal({value: []})};
+        textfield = {cva: signal({value: signal([])})};
         handlers = {identityMatcher: signal(TUI_FALSE_HANDLER)};
 
         TestBed.overrideProvider(TuiTextfieldMultiComponent, {useValue: textfield})
@@ -22,14 +22,14 @@ describe('HideSelected pipe', () => {
 
     it('works for flat arrays', () => {
         handlers.identityMatcher.set((a: any, b: any) => a === b);
-        textfield.control.set({value: [1, 2, 3]});
+        textfield.cva().value.set([1, 2, 3]);
 
         expect(pipe.transform([1, 4, 5])).toEqual([4, 5]);
     });
 
     it('works for 2d arrays', () => {
         handlers.identityMatcher.set((a: any, b: any) => a === b);
-        textfield.control.set({value: [1, 2, 3]});
+        textfield.cva().value.set([1, 2, 3]);
 
         expect(
             pipe.transform([
@@ -41,14 +41,14 @@ describe('HideSelected pipe', () => {
 
     it('works with flat array and custom matcher', () => {
         handlers.identityMatcher.set((a: any, b: any) => a.id === b.id);
-        textfield.control.set({value: [{id: 1}, {id: 2}]});
+        textfield.cva().value.set([{id: 1}, {id: 2}]);
 
         expect(pipe.transform([{id: 1}, {id: 3}])).toEqual([{id: 3}]);
     });
 
     it('works with 2d array and custom matcher', () => {
         handlers.identityMatcher.set((a: any, b: any) => a.id === b.id);
-        textfield.control.set({value: [{id: 1}, {id: 2}]});
+        textfield.cva().value.set([{id: 1}, {id: 2}]);
 
         expect(pipe.transform([[{id: 1}, {id: 3}], [{id: 2}]])).toEqual([[{id: 3}], []]);
     });

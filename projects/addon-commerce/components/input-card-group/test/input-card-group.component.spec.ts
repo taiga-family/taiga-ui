@@ -25,7 +25,7 @@ describe('InputCardGroup', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiInputCardGroup);
-        public customIconTemplate = viewChild.required('customIconTemplate', {
+        public readonly customIconTemplate = viewChild.required('customIconTemplate', {
             read: TemplateRef,
         });
 
@@ -201,7 +201,7 @@ describe('InputCardGroup', () => {
         it('input-card-group have TemplateRef', () => {
             tuiSetSignal(
                 testComponent.component().icon,
-                fixture.componentInstance.customIconTemplate,
+                fixture.componentInstance.customIconTemplate(),
             );
 
             expect(testComponent.control.valid).toBe(true);
