@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, signal, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiBarChart} from '@taiga-ui/addon-charts';
 
@@ -15,9 +15,7 @@ describe('BarChart', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiBarChart)
-        public readonly component!: TuiBarChart;
-
+        public readonly component = viewChild.required(TuiBarChart);
         public readonly value = [
             [1, 2, 3],
             [4, 5, 6],
@@ -40,11 +38,13 @@ describe('BarChart', () => {
 
     it('computes percent correctly', () => {
         expect(
-            testComponent.component.percentMapper(
-                [1, 3],
-                testComponent.component.collapsed(),
-                testComponent.component.computedMax(),
-            ),
+            testComponent
+                .component()
+                .percentMapper(
+                    [1, 3],
+                    testComponent.component().collapsed(),
+                    testComponent.component().computedMax(),
+                ),
         ).toBe(50);
     });
 
@@ -53,11 +53,13 @@ describe('BarChart', () => {
         fixture.detectChanges();
 
         expect(
-            testComponent.component.percentMapper(
-                [8, 1],
-                testComponent.component.collapsed(),
-                testComponent.component.computedMax(),
-            ),
+            testComponent
+                .component()
+                .percentMapper(
+                    [8, 1],
+                    testComponent.component().collapsed(),
+                    testComponent.component().computedMax(),
+                ),
         ).toBe(100);
     });
 });

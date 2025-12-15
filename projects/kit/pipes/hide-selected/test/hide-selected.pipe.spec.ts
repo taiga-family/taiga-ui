@@ -1,7 +1,7 @@
 import {signal} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
-import {TUI_ITEMS_HANDLERS, TuiTextfieldComponent} from '@taiga-ui/core';
+import {TUI_ITEMS_HANDLERS, TuiTextfieldMultiComponent} from '@taiga-ui/core';
 import {TuiHideSelectedPipe} from '@taiga-ui/kit';
 
 describe('HideSelected pipe', () => {
@@ -13,7 +13,7 @@ describe('HideSelected pipe', () => {
         textfield = {control: signal({value: []})};
         handlers = {identityMatcher: signal(TUI_FALSE_HANDLER)};
 
-        TestBed.overrideProvider(TuiTextfieldComponent, {useValue: textfield})
+        TestBed.overrideProvider(TuiTextfieldMultiComponent, {useValue: textfield})
             .overrideProvider(TUI_ITEMS_HANDLERS, {useValue: handlers})
             .runInInjectionContext(() => {
                 pipe = new TuiHideSelectedPipe();

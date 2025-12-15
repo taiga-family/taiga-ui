@@ -3,7 +3,7 @@ import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     Component,
     computed,
-    ContentChild,
+    contentChild,
     DestroyRef,
     inject,
     input,
@@ -44,9 +44,7 @@ export class IconsGroup implements OnInit {
     private readonly router = inject(Router);
     private readonly destroyRef = inject(DestroyRef);
 
-    @ContentChild(IconsGroupTemplate)
-    protected readonly iconGroup?: IconsGroupTemplate;
-
+    protected readonly iconGroup = contentChild(IconsGroupTemplate);
     protected readonly matcher = TUI_DEFAULT_MATCHER;
     protected readonly control = new FormControl<string>('');
     protected readonly keys = computed(() => Object.keys(this.icons()));

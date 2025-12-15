@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, TemplateRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, TemplateRef, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
@@ -24,11 +24,10 @@ describe('InputCardGroup', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiInputCardGroup, {static: true})
-        public component!: TuiInputCardGroup;
-
-        @ViewChild('customIconTemplate', {read: TemplateRef})
-        public customIconTemplate!: TemplateRef<unknown>;
+        public readonly component = viewChild.required(TuiInputCardGroup);
+        public customIconTemplate = viewChild.required('customIconTemplate', {
+            read: TemplateRef,
+        });
 
         public control = new FormControl<Partial<TuiCard>>({card: ''});
 
@@ -60,7 +59,7 @@ describe('InputCardGroup', () => {
             expire: '12/12',
             cvc: '321',
         });
-        testComponent.component.clear();
+        testComponent.component().clear();
 
         expect(testComponent.control.value).toBeNull();
     });
@@ -185,28 +184,28 @@ describe('InputCardGroup', () => {
 
         it('input-card-group have a default icon', () => {
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component['content']()).toBe('@tui.visa');
+            expect(testComponent.component()['content']()).toBe('@tui.visa');
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
 
         it('input-card-group have tuiIconMastercard icon', () => {
-            tuiSetSignal(testComponent.component.icon, 'tuiIconMastercard');
+            tuiSetSignal(testComponent.component().icon, 'tuiIconMastercard');
 
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component['content']()).toBe('tuiIconMastercard');
+            expect(testComponent.component()['content']()).toBe('tuiIconMastercard');
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
 
         it('input-card-group have TemplateRef', () => {
             tuiSetSignal(
-                testComponent.component.icon,
+                testComponent.component().icon,
                 fixture.componentInstance.customIconTemplate,
             );
 
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component['content']()).toBeInstanceOf(TemplateRef);
+            expect(testComponent.component()['content']()).toBeInstanceOf(TemplateRef);
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });

@@ -3,10 +3,6 @@ import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core
 import {TuiBar} from '@taiga-ui/addon-charts/components/bar';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
-const PERCENT = 100;
-const EMPTY_ARRAY: readonly number[] = [];
-const FILLER_ARRAY: readonly number[] = [1];
-
 @Component({
     selector: 'tui-bar-set',
     imports: [NgTemplateOutlet, TuiBar],
@@ -26,14 +22,14 @@ export class TuiBarSet {
     public readonly collapsed = input(false);
 
     protected readonly computedValue = computed<readonly number[]>(() =>
-        this.collapsed() ? FILLER_ARRAY : this.value(),
+        this.collapsed() ? [1] : this.value(),
     );
 
     protected readonly computedSegments = computed<readonly number[]>(() =>
-        this.collapsed() ? this.value() : EMPTY_ARRAY,
+        this.collapsed() ? this.value() : [],
     );
 
     protected getHeight(value: number): number {
-        return Math.abs((PERCENT * value) / this.largest());
+        return Math.abs((100 * value) / this.largest());
     }
 }

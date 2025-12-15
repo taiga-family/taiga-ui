@@ -1,12 +1,7 @@
 import {Component, ElementRef, inject, input, signal, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    EMPTY_ARRAY,
-    TUI_DEFAULT_MATCHER,
-    TuiAutoFocus,
-    TuiFilterPipe,
-} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiAutoFocus, TuiFilterPipe} from '@taiga-ui/cdk';
 import {
     tuiAsOptionContent,
     TuiDataList,
@@ -56,7 +51,7 @@ export class CustomListComponent<T> {
     public readonly items = input<ReadonlyArray<Items<T>>>([]);
 
     protected value = '';
-    protected readonly all = EMPTY_ARRAY;
+    protected readonly all = [];
     protected readonly filter: (item: T, value: string) => boolean = TUI_DEFAULT_MATCHER;
 
     protected onKeyDown(key: string): void {

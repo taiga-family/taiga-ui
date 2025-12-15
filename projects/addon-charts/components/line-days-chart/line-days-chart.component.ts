@@ -17,13 +17,11 @@ import {
     tuiLineChartDrivers,
     TuiLineChartHint,
 } from '@taiga-ui/addon-charts/components/line-chart';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
@@ -34,7 +32,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 
 @Component({
     selector: 'tui-line-days-chart',
-    imports: [PolymorpheusOutlet, TuiChartHint, TuiHint, TuiLineChart],
+    imports: [PolymorpheusOutlet, TuiChartHint, TuiLineChart],
     templateUrl: './line-days-chart.template.html',
     styleUrl: './line-days-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -189,7 +187,7 @@ export class TuiLineDaysChart implements AfterViewInit {
     }
 
     protected get months(): ReadonlyArray<readonly TuiPoint[]> {
-        return this.value().length ? this.brokenMonths() : EMPTY_ARRAY;
+        return this.value().length ? this.brokenMonths() : [];
     }
 
     protected get firstWidth(): number {

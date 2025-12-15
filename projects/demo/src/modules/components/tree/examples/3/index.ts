@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {EMPTY_ARRAY, type TuiHandler} from '@taiga-ui/cdk';
+import {type TuiHandler} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
 import {TuiTree} from '@taiga-ui/kit';
 
@@ -45,5 +45,5 @@ export default class Example {
     };
 
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
-        item.children || EMPTY_ARRAY;
+        item.children || [];
 }
