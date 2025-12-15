@@ -28,7 +28,7 @@ export class TuiBigIntWithDecimal extends TuiValueTransformer<string, ControlVal
         }
 
         return {
-            significand: significand,
+            significand,
             exp: textfieldValue?.includes(decimalSeparator)
                 ? -Array.from(textfieldValue.replace(params.postfix, ''))
                       .reverse()

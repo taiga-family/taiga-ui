@@ -28,11 +28,6 @@ export class TuiInputNumberDirective extends TuiControl<string> {
     private readonly input = inject(TuiInputDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
 
-    private readonly unfinished = computed(
-        (value = this.parsed(), min = this.mask.min(), max = this.mask.max()) =>
-            (value < 0 ? value > max : value < min) || value < min || value > max,
-    );
-
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
     protected readonly inputMode = computed(() => {
@@ -80,8 +75,11 @@ export class TuiInputNumberDirective extends TuiControl<string> {
             this.input.value().replaceAll(/\D/g, ''),
             untracked(() => this.value()?.replaceAll(/\D/g, '')) ?? '',
         );
+        const value = this.parsed();
+        const valid =
+            Number.isNaN(value) || (value >= this.mask.min() && value <= this.mask.max());
 
-        if (changed && !this.unfinished()) {
+        if (changed && valid) {
             this.onChange(this.input.value());
         }
     });
