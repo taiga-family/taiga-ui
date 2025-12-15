@@ -1,14 +1,18 @@
 import {
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
-    type DoCheck,
+    DestroyRef,
+    effect,
     ElementRef,
     inject,
     input,
+    output,
+    signal,
     viewChild,
 } from '@angular/core';
-import {outputFromObservable, toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -16,14 +20,13 @@ import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/port
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     debounceTime,
-    distinctUntilChanged,
     filter,
     fromEvent,
     map,
+    merge,
     of,
     pairwise,
     startWith,
-    Subject,
     switchMap,
 } from 'rxjs';
 
@@ -39,25 +42,57 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox}],
     hostDirectives: [TuiTransitioned],
-    host: {
-        '(transitionend)': 'update()',
-        '(mouseenter)': 'update()',
-        '(resize)': 'update()',
-    },
 })
-export class TuiLineClamp implements DoCheck {
-    private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
+export class TuiLineClamp {
+    private readonly outlet = viewChild(TuiHintDirective, {read: ElementRef});
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-    private readonly isOverflown$ = new Subject<boolean>();
+    private readonly destroyRef = inject(DestroyRef);
+
+    private readonly calculatedForHint = signal(false);
+    private readonly overflown = signal(false);
     private readonly maxHeight = computed(() => this.lineHeight() * this.linesLimit());
+
+    private readonly lazyCalculation = afterNextRender({
+        write: () => {
+            this.updateMaxHeight();
+            this.updateVisualState();
+
+            merge(
+                fromEvent(this.el, 'mouseenter').pipe(
+                    filter(() => !this.calculatedForHint()),
+                ),
+                fromEvent(window, 'resize').pipe(
+                    debounceTime(100),
+                    filter(() => this.calculatedForHint()),
+                ),
+                fromEvent(this.el, 'transitionend').pipe(
+                    filter((e: Event) => e.target === e.currentTarget),
+                    filter(() => this.calculatedForHint()),
+                ),
+            )
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe(() => this.calculateForHint());
+        },
+    });
+
+    private readonly recalculateOnChange = effect(() => {
+        this.lineHeight();
+        this.linesLimit();
+
+        this.updateMaxHeight();
+
+        if (this.calculatedForHint()) {
+            this.calculateForHint();
+        } else {
+            this.updateVisualState();
+        }
+    });
 
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
-    public readonly overflownChange = outputFromObservable(
-        this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
-    );
+    public readonly overflownChange = output<boolean>();
 
     protected readonly lineClamp = toSignal(
         toObservable(this.linesLimit).pipe(
@@ -75,25 +110,47 @@ export class TuiLineClamp implements DoCheck {
         {initialValue: 0},
     );
 
-    public ngDoCheck(): void {
-        this.update();
-        this.isOverflown$.next(this.overflown);
-    }
-
-    protected get overflown(): boolean {
-        const {scrollHeight, scrollWidth} = this.outlet().nativeElement;
-        const {clientWidth} = this.el;
-
-        return scrollHeight > this.maxHeight() || scrollWidth > clientWidth;
-    }
-
     protected get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.overflown ? this.content() : '';
+        return this.calculatedForHint() && this.options.showHint && this.overflown()
+            ? this.content()
+            : '';
     }
 
-    protected update(): void {
-        this.el.style.height = tuiPx(this.outlet().nativeElement.scrollHeight);
+    private updateMaxHeight(): void {
         this.el.style.maxHeight = tuiPx(this.maxHeight());
-        this.el.classList.toggle('_overflown', this.overflown);
+    }
+
+    private updateVisualState(): void {
+        const outlet = this.outlet()?.nativeElement;
+
+        if (!outlet) {
+            return;
+        }
+
+        const overflown =
+            outlet.scrollHeight > this.maxHeight() ||
+            outlet.scrollWidth > this.el.clientWidth;
+
+        this.el.style.height = tuiPx(outlet.scrollHeight);
+        this.el.classList.toggle('_overflown', overflown);
+    }
+
+    private calculateForHint(): void {
+        const outlet = this.outlet()?.nativeElement;
+
+        if (!outlet) {
+            return;
+        }
+
+        const overflown =
+            outlet.scrollHeight > this.maxHeight() ||
+            outlet.scrollWidth > this.el.clientWidth;
+
+        this.calculatedForHint.set(true);
+        this.overflown.set(overflown);
+        this.overflownChange.emit(overflown);
+
+        this.el.style.height = tuiPx(outlet.scrollHeight);
+        this.el.classList.toggle('_overflown', overflown);
     }
 }
