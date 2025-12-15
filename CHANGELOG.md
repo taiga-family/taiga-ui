@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.65.0](https://github.com/taiga-family/taiga-ui/compare/v4.64.0...v4.65.0) (2025-12-15)
+
+### 🚀 Features
+
+- **layout:** `Card` add options token ([#12834](https://github.com/taiga-family/taiga-ui/issues/12834))
+  ([e719fb4](https://github.com/taiga-family/taiga-ui/commit/e719fb4364bbc2f21b89cd1928379cbff8e1850c))
+
+### 🐞 Bug Fixes
+
+- **kit:** `MultiSelect` fix native on newer Androids ([#12840](https://github.com/taiga-family/taiga-ui/issues/12840))
+  ([0fa3797](https://github.com/taiga-family/taiga-ui/commit/0fa3797afdf22685d4f300def64f227aadcdb645))
+- **kit:** confirm content receives dialog context ([#12838](https://github.com/taiga-family/taiga-ui/issues/12838))
+  ([3522c48](https://github.com/taiga-family/taiga-ui/commit/3522c487fe7a1c0c4e945c2b8243807ca197194c))
+
 ## [4.64.0](https://github.com/taiga-family/taiga-ui/compare/v4.63.0...v4.64.0) (2025-12-09)
 
 ### 🚀 Features
