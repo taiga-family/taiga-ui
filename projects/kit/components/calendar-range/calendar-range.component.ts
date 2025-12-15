@@ -57,7 +57,19 @@ export class TuiCalendarRange {
     );
 
     protected hoveredItem: TuiDay | null = null;
-    public month: TuiMonth = TuiMonth.currentLocal();
+    public readonly month = linkedSignal<
+        {min: TuiDay | null; max: TuiDay | null},
+        TuiMonth
+    >({
+        source: () => ({min: this.min(), max: this.max()}),
+        computation: (source, previous) => {
+            return this.calculateDefaultViewedMonth(
+                previous?.value ?? TuiMonth.currentLocal(),
+                source.min,
+                source.max,
+            );
+        },
+    });
 
     protected readonly otherDateText = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -87,12 +99,8 @@ export class TuiCalendarRange {
         const month = this.defaultViewedMonth();
 
         if (!this.currentValue()) {
-            this.month = month;
+            this.month.set(month);
         }
-    });
-
-    protected readonly whenMinMaxChange = effect(() => {
-        this.initDefaultViewedMonth(this.min(), this.max());
     });
 
     public readonly defaultViewedMonth = input<TuiMonth>(TuiMonth.currentLocal());
@@ -160,12 +168,10 @@ export class TuiCalendarRange {
             this.item.set(null);
             this.updateValue(null);
         }
-
-        this.initDefaultViewedMonth(this.min(), this.max());
     }
 
     protected onMonthChange(month: TuiMonth): void {
-        this.month = month;
+        this.month.set(month);
     }
 
     protected onDayClick(day: TuiDay): void {
@@ -219,18 +225,24 @@ export class TuiCalendarRange {
         return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
     }
 
-    private initDefaultViewedMonth(min: TuiDay | null, max: TuiDay | null): void {
+    private calculateDefaultViewedMonth(
+        month: TuiMonth,
+        min: TuiDay | null,
+        max: TuiDay | null,
+    ): TuiMonth {
         const currentValue = untracked(this.currentValue);
 
         if (currentValue instanceof TuiDay) {
-            this.month = currentValue;
+            return currentValue;
         } else if (currentValue) {
-            this.month = this.items().length ? currentValue.to : currentValue.from;
-        } else if (max && this.month.monthSameOrAfter(max)) {
-            this.month = this.items().length ? max : max.append({month: -1});
-        } else if (min && this.month.monthSameOrBefore(min)) {
-            this.month = min;
+            return this.items().length ? currentValue.to : currentValue.from;
+        } else if (max && month.monthSameOrAfter(max)) {
+            return this.items().length ? max : max.append({month: -1});
+        } else if (min && month.monthSameOrBefore(min)) {
+            return min;
         }
+
+        return month;
     }
 
     private findItemByDayRange(dayRange: TuiDayRange): TuiDayRangePeriod | null {

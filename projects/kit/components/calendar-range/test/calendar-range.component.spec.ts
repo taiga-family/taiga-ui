@@ -283,7 +283,7 @@ describe('rangeCalendarComponent', () => {
             testComponent.min = minDate;
             fixture.detectChanges();
 
-            expect(component.month).toEqual(minDate);
+            expect(component.month()).toEqual(minDate);
         });
 
         it('when max and items not empty, defaultViewedMonth is max', () => {
@@ -292,7 +292,7 @@ describe('rangeCalendarComponent', () => {
             testComponent.max = maxDate;
             fixture.detectChanges();
 
-            expect(component.month).toEqual(maxDate);
+            expect(component.month()).toEqual(maxDate);
         });
 
         it('isItemActive returns true when value is set to today after being changed to yesterday', () => {
@@ -347,14 +347,14 @@ describe('rangeCalendarComponent', () => {
                 day.day % 2 === 0 ? ['first'] : ['second'];
             fixture.detectChanges();
 
-            expect(component.month.toString()).toBe(updatedMonth.toString());
+            expect(component.month().toString()).toBe(updatedMonth.toString());
         });
 
         it('if value not selected, updating defaultViewedMonth change viewed months', () => {
             testComponent.defaultViewedMonth = updatedMonth;
             fixture.detectChanges();
 
-            expect(component.month.toString()).toBe(updatedMonth.toString());
+            expect(component.month().toString()).toBe(updatedMonth.toString());
         });
 
         it('if value selected, updating defaultViewedMonth do not change viewed month', () => {
@@ -367,7 +367,7 @@ describe('rangeCalendarComponent', () => {
             testComponent.defaultViewedMonth = updatedMonth;
             fixture.detectChanges();
 
-            expect(component.month.toString()).toBe(defaultMonth.toString());
+            expect(component.month().toString()).toBe(defaultMonth.toString());
         });
 
         it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {
@@ -380,7 +380,7 @@ describe('rangeCalendarComponent', () => {
             component['onMonthChange'](updatedMonth);
             fixture.detectChanges();
 
-            expect(component.month.toString()).toBe(updatedMonth.toString());
+            expect(component.month().toString()).toBe(updatedMonth.toString());
         });
     });
 
