@@ -1824,6 +1824,7 @@ import {
     TUI_ALWAYS_NONE,
     TuiAxes,
     TuiBarChart,
+    TuiChartHint,
 } from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiCeil, tuiPure} from '@taiga-ui/cdk';
@@ -1832,7 +1833,7 @@ import {TuiHint} from '@taiga-ui/core';
 const BENJI = 100;
 
 @Component({
-    imports: [TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
+    imports: [TuiAmountPipe, TuiAxes, TuiBarChart, TuiChartHint, TuiHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -2877,9 +2878,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiBarChart, TuiChartHint} from '@taiga-ui/addon-charts';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {tuiFormatNumber, TuiHint, TuiTextfield} from '@taiga-ui/core';
+import {tuiFormatNumber, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
@@ -2887,9 +2888,9 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         FormsModule,
         TuiAxes,
         TuiBarChart,
+        TuiChartHint,
         TuiChevron,
         TuiDataListWrapper,
-        TuiHint,
         TuiSelect,
         TuiTextfield,
     ],
@@ -2906,7 +2907,7 @@ export default class Example {
 
     protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar', ''];
     protected readonly labelsY = ['0', '10 000'];
-    protected readonly appearances = ['dark', 'error'];
+    protected readonly appearances = ['floating', 'accent'];
 
     protected appearance = this.appearances[0]!;
 
@@ -23890,9 +23891,9 @@ export default class Example {
 <div class="wrapper">
 <tui-ring-chart size="s" class="chart" [value]="value" />
 <div class="legend"> @for (label of labels; track label) { <tui-legend-item #item class="item" [color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`" [disabled]="!isEnabled($index)" [text]="label" (click)="onClick($index)" (keydown.delete)="toggle($index)" >
-<input size="s" tuiCheckbox type="checkbox" [checked]="!item.disabled" />
+<input size="s" tuiCheckbox type="checkbox" [checked]="!item.disabled()" />
 <span>{{ data[$index] || 0 | tuiAmount: 'RUB' }}</span>
-<tui-icon icon="@tui.x" class="disable" [class.disable_rotated]="item.disabled" (click.stop)="toggle($index)" />
+<tui-icon icon="@tui.x" class="disable" [class.disable_rotated]="item.disabled()" (click.stop)="toggle($index)" />
 </tui-legend-item> } </div>
 </div>
 ```
@@ -24426,12 +24427,12 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiChartHint, TuiLineChart} from '@taiga-ui/addon-charts';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiHint, type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiAxes, TuiHint, TuiLineChart],
+    imports: [TuiAxes, TuiChartHint, TuiHint, TuiLineChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -28654,6 +28655,7 @@ import {TuiPieChart} from '@taiga-ui/addon-charts';
 })
 export default class Example {
     protected readonly value = [40, 30, 20, 10];
+    protected index = 1;
 }
 ```
 
@@ -28672,12 +28674,12 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPieChart} from '@taiga-ui/addon-charts';
+import {TuiChartHint, TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiAmountPipe, TuiHint, TuiPieChart],
+    imports: [TuiAmountPipe, TuiChartHint, TuiHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
