@@ -177,7 +177,7 @@ export const pages: DocRoutePages = [
     // Foundations
     {
         section: 'Documentation',
-        title: 'Founations',
+        title: 'Foundations',
         subPages: [
             {
                 section: 'Documentation',
