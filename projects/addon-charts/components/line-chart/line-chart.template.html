@@ -1,5 +1,3 @@
-@let hovered = hovered$ | async;
-
 <svg
     focusable="false"
     height="100%"
@@ -31,7 +29,7 @@
     </defs>
     <path
         stroke="none"
-        [attr.d]="fillD"
+        [attr.d]="fillD()"
         [attr.fill]="fill"
     />
     <path
@@ -39,11 +37,11 @@
         stroke="currentColor"
         stroke-width="2"
         vector-effect="non-scaling-stroke"
-        [attr.d]="d"
+        [attr.d]="d()"
     />
 </svg>
-@if (dots) {
-    @for (point of value; track point) {
+@if (dots()) {
+    @for (point of value(); track point) {
         <div
             class="t-dot"
             [style.inset-block-end.%]="getBottom(point[1])"
@@ -52,16 +50,16 @@
     }
 }
 @if (hasHints) {
-    @for (point of value; track point) {
+    @for (point of value(); track point) {
         <!-- TODO: Fix hint type -->
-        @if ($count > 1 || dots) {
+        @if ($count > 1 || dots()) {
             <div
                 class="t-column"
                 [class.t-column_hint_hovered]="drivers()[$index] | async"
-                [class.t-column_hovered]="hovered === $index"
+                [class.t-column_hovered]="hovered() === $index"
                 [style.inset-inline-start.%]="getLeft(getX($index))"
                 [style.width.%]="getWidth($index)"
-                [tuiHint]="$any(hintDirective?.hint || hintContent)"
+                [tuiHint]="$any(hintDirective?.hint() || hintContent)"
                 [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
                 [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
                 [tuiHintHost]="hintHost"
@@ -89,21 +87,23 @@
         }
     }
 }
-@if (getHovered(hovered); as point) {
-    @if (xStringify) {
+@if (getHovered(hovered()); as point) {
+    @let xString = xStringify();
+    @let yString = yStringify();
+    @if (xString) {
         <div
             class="t-hint t-hint_x"
             [style.inset-inline-start.%]="getLeft(point[0])"
         >
-            {{ xStringify(point[0]) }}
+            {{ xString(point[0]) }}
         </div>
     }
-    @if (yStringify) {
+    @if (yString) {
         <div
             class="t-hint t-hint_y"
             [style.inset-block-end.%]="getBottom(point[1])"
         >
-            {{ yStringify(point[1]) }}
+            {{ yString(point[1]) }}
         </div>
     }
 }

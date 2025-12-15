@@ -24,6 +24,7 @@
             [style.stroke]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
             [style.strokeDasharray.em]="getLength($index)"
             [style.strokeDashoffset.em]="initialized() ? getOffset($index) : getLength($index)"
+            (tuiHoveredChange)="onHovered($event, $index)"
         />
     </svg>
 }

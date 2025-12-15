@@ -12,4 +12,5 @@ import {TuiPieChart} from '@taiga-ui/addon-charts';
 })
 export default class Example {
     protected readonly value = [40, 30, 20, 10];
+    protected index = 1;
 }

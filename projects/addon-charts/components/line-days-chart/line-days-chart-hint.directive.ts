@@ -1,17 +1,15 @@
 import {
     type AfterContentInit,
-    ContentChildren,
+    contentChildren,
     DestroyRef,
     Directive,
     forwardRef,
     inject,
-    Input,
+    input,
     NgZone,
-    type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {type TuiDay} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -33,19 +31,20 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
     providers: [TuiHoveredService],
 })
 export class TuiLineDaysChartHint implements AfterContentInit {
-    @ContentChildren(forwardRef(() => TuiLineDaysChart))
-    private readonly charts: QueryList<TuiLineDaysChart> = EMPTY_QUERY;
+    private readonly charts = contentChildren(forwardRef(() => TuiLineDaysChart));
 
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
 
-    @Input('tuiLineChartHint')
-    public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
+    public readonly hint = input<PolymorpheusContent<TuiContext<readonly TuiPoint[]>>>(
+        '',
+        {alias: 'tuiLineChartHint'},
+    );
 
     public ngAfterContentInit(): void {
         combineLatest([
-            ...this.charts.map(({charts}) => tuiLineChartDrivers(charts.toArray())),
+            ...this.charts().map(({charts}) => tuiLineChartDrivers(charts())),
             this.hovered$,
         ])
             .pipe(
@@ -54,21 +53,23 @@ export class TuiLineDaysChartHint implements AfterContentInit {
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.charts.forEach((chart) => chart.onHovered(NaN));
+                this.charts().forEach((chart) => chart.onHovered(NaN));
             });
     }
 
     public getContext(day: TuiDay): ReadonlyArray<[TuiDay, number]> {
-        return this.getMap(...this.charts.map(({value}) => value)).get(String(day)) || [];
+        return (
+            this.getMap(...this.charts().map(({value}) => value())).get(String(day)) || []
+        );
     }
 
     public raise(day: TuiDay): void {
-        const current = this.charts
-            .map(({value}) => (day ? find(value, day) : []))
+        const current = this.charts()
+            .map(({value}) => (day ? find(value(), day) : []))
             .filter(([_, value]) => !Number.isNaN(value));
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
-        this.charts.forEach((chart, index) => {
+        this.charts().forEach((chart, index) => {
             const item = current[index];
 
             chart.onHovered(day);

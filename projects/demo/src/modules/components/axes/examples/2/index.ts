@@ -6,6 +6,7 @@ import {
     TUI_ALWAYS_NONE,
     TuiAxes,
     TuiBarChart,
+    TuiChartHint,
 } from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiCeil, tuiPure} from '@taiga-ui/cdk';
@@ -14,7 +15,7 @@ import {TuiHint} from '@taiga-ui/core';
 const BENJI = 100;
 
 @Component({
-    imports: [TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
+    imports: [TuiAmountPipe, TuiAxes, TuiBarChart, TuiChartHint, TuiHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
