@@ -1,0 +1,120 @@
+[tuiList] {
+    display: grid;
+    padding-inline-start: 1rem;
+    list-style: none;
+    gap: 1rem;
+    padding-block-start: 0.25rem;
+    padding-block-end: 0.25rem;
+
+    [tuiList] {
+        padding: 0;
+    }
+
+    & > li {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 1rem 0.75rem;
+        align-items: start;
+        line-height: var(--t-line-height);
+
+        & > * {
+            grid-column: 2;
+            padding-inline-start: 0;
+        }
+    }
+
+    & > li::before {
+        min-inline-size: 0.75rem;
+    }
+
+    &[data-size='l'] {
+        font: var(--tui-font-body-l);
+
+        & > li {
+            --t-line-height: 1.75rem;
+        }
+    }
+
+    &[data-size='m'] {
+        font: var(--tui-font-body-m);
+
+        & > li {
+            --t-line-height: 1.5rem;
+        }
+    }
+
+    &[data-size='s'] {
+        font: var(--tui-font-ui-s);
+
+        & > li {
+            --t-line-height: 1.25rem;
+        }
+    }
+
+    &:is(ul) > li::before {
+        content: '';
+        grid-column: 1;
+        justify-self: center;
+        background: var(--tui-status-info);
+        border-radius: 50%;
+        min-inline-size: auto;
+        padding: 0.1875rem;
+        margin: 0 0.1875rem;
+        margin-block-start: calc(var(--t-line-height) / 2 - 0.1875rem);
+    }
+
+    &:is(ol) {
+        counter-reset: item;
+
+        & > li {
+            --t-marker-width: 1ch;
+
+            counter-increment: item;
+        }
+
+        & > li > ol > li {
+            --t-marker-width: 2.5ch;
+        }
+
+        & > li > ol > li > ol > li {
+            --t-marker-width: 3.5ch;
+        }
+
+        & > li > ol > li > ol > li > ol > li {
+            --t-marker-width: 4.5ch;
+        }
+
+        & > li > ol > li > ol > li > ol > li > ol > li {
+            --t-marker-width: 5.5ch;
+        }
+
+        & > li::before {
+            content: counters(item, '.') '.';
+            grid-column: 1;
+            text-align: end;
+            inline-size: var(--t-marker-width, auto);
+        }
+    }
+
+    [data-platform='ios'] &,
+    [data-platform='android'] & {
+        & > li::before {
+            margin: 0;
+            inline-size: 0.375rem;
+            block-size: 0.375rem;
+            padding: 0;
+        }
+
+        &[data-size='l'] > li {
+            --t-line-height: 1.25rem;
+        }
+
+        &[data-size='m'] > li {
+            --t-line-height: 1.125rem;
+        }
+
+        &[data-size='s'] > li {
+            --t-line-height: 1rem;
+        }
+    }
+}

@@ -151,13 +151,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Foundations',
-                title: 'Lists',
-                keywords:
-                    'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
-                route: DemoRoute.Lists,
-            },
-            {
-                section: 'Foundations',
                 title: 'Spaces',
                 keywords:
                     'layout, markup, отступы, margin, padding, маржин, падинг, spaces',
@@ -998,6 +991,13 @@ export const pages: DocRoutePages = [
         keywords: 'details, block, детали, блок',
         route: DemoRoute.BlockDetails,
         meta: {},
+    },
+    {
+        section: 'Layout',
+        title: 'Lists',
+        keywords:
+            'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
+        route: DemoRoute.Lists,
     },
     {
         section: 'Components',
