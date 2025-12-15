@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {WA_LOCATION} from '@ng-web-apis/common';
-import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
@@ -22,7 +21,6 @@ export class VersionManager {
     protected readonly versions = inject(TUI_VERSIONS_META_OPTIONS);
     protected open = false;
 
-    @tuiPure
     protected getVersionHref(version: TuiVersionMeta): string {
         return `${this.locationRef.origin}/${version.baseHref}${this.router.url}${this.locationRef.search}`.replaceAll(
             /(https?:\/\/)|(\/)+/g,

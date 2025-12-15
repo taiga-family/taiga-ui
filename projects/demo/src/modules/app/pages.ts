@@ -1638,13 +1638,6 @@ export const pages: DocRoutePages = [
                 keywords: 'токены tokens',
                 route: DemoRoute.Tokens,
             },
-            {
-                section: 'Tools',
-                title: 'Pure',
-                keywords:
-                    'Инструменты, утилиты, lazy, calculation, optimization, pipe, memoization',
-                route: DemoRoute.Pure,
-            },
         ],
     },
 ] as const;

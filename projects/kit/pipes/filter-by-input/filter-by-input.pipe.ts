@@ -1,19 +1,32 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {
+    computed,
+    inject,
+    Pipe,
+    type PipeTransform,
+    signal,
+    untracked,
+} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
-@Pipe({
-    name: 'tuiFilterByInput',
-    pure: false,
-})
+@Pipe({name: 'tuiFilterByInput', pure: false})
 export class TuiFilterByInputPipe implements PipeTransform {
     private readonly textfield = inject(TuiTextfieldComponent);
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
     private readonly multi = this.textfield.el.matches('[multi]');
+    private readonly matcher = signal<TuiStringMatcher<any>>(TUI_DEFAULT_MATCHER);
+    private readonly items = signal<readonly any[] | null>([]);
+    private readonly filtered = computed(() =>
+        this.filter(
+            this.items(),
+            this.matcher(),
+            this.handlers.stringify(),
+            this.textfield.value(),
+        ),
+    );
 
     public transform<T>(
         items: ReadonlyArray<readonly T[]>,
@@ -32,15 +45,14 @@ export class TuiFilterByInputPipe implements PipeTransform {
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
-        return this.filter<T>(
-            items,
-            matcher,
-            this.handlers.stringify(),
-            this.textfield.value(),
-        );
+        untracked(() => {
+            this.items.set(items);
+            this.matcher.set(matcher);
+        });
+
+        return this.filtered() as ReadonlyArray<readonly T[]> | readonly T[] | null;
     }
 
-    @tuiPure
     private filter<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T>,

@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {tuiPure, tuiSum} from '@taiga-ui/cdk';
+import {tuiSum} from '@taiga-ui/cdk';
 import {
     tuiFormatNumber,
     TuiIcon,
@@ -35,7 +35,7 @@ export default class Example {
     protected readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
 
     protected get value(): readonly number[] {
-        return this.getValue(this.data, this.enabled);
+        return this.data.map((value, index) => (this.enabled[index] ? value : 0));
     }
 
     protected isEnabled(index: number): boolean {
@@ -56,13 +56,5 @@ export default class Example {
         } else {
             this.toggle(index);
         }
-    }
-
-    @tuiPure
-    private getValue(
-        data: readonly number[],
-        enabled: readonly boolean[],
-    ): readonly number[] {
-        return data.map((value, index) => (enabled[index] ? value : 0));
     }
 }
