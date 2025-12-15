@@ -168,6 +168,10 @@ export class TuiCalendarRange {
             this.item.set(null);
             this.updateValue(null);
         }
+
+        this.month.set(
+            this.calculateDefaultViewedMonth(this.month(), this.min(), this.max()),
+        );
     }
 
     protected onMonthChange(month: TuiMonth): void {
@@ -192,7 +196,6 @@ export class TuiCalendarRange {
     }
 
     protected updateValue(value: TuiDayRange | null): void {
-        // this.currentValue.set(value);
         this.value.set(value);
     }
 
