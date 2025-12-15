@@ -1,4 +1,5 @@
 import {Directive, inject, input} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -8,14 +9,13 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
     TUI_HINT_DIRECTIONS,
     TUI_HINT_OPTIONS,
     type TuiHintDirection,
 } from './hint-options.directive';
-import {distinctUntilChanged, Subject} from 'rxjs';
-import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 const GAP = 8;
 const ARROW_OFFSET = 24;
