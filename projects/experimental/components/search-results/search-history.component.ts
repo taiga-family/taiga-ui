@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
@@ -36,7 +36,7 @@ export class TuiSearchHistory {
     protected readonly $ = this.control.valueChanges
         ?.pipe(
             map(String),
-            filter((item) => !!item && !this.popular.includes(item)),
+            filter((item) => !!item && !this.popular().includes(item)),
             takeUntilDestroyed(),
         )
         .subscribe((value) => {
@@ -45,8 +45,7 @@ export class TuiSearchHistory {
 
     protected history = this.items;
 
-    @Input()
-    public popular: readonly string[] = [];
+    public readonly popular = input<readonly string[]>([]);
 
     protected store(item: string): void {
         this.storage?.setItem(
