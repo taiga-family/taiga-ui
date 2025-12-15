@@ -22,11 +22,9 @@ export class TuiDecimalPipe implements PipeTransform {
 
     private readonly value = signal(NaN);
     private readonly currency = signal<TuiCurrencyVariants>('');
-
     private readonly formatted = computed(() => {
         const format = this.format();
         const amount = this.amountPipe.transform(this.value(), this.currency());
-
         const [, decimal] = amount.split(format.decimalSeparator);
 
         return decimal ? `${format.decimalSeparator}${decimal}` : '';

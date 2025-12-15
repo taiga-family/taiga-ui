@@ -13,7 +13,7 @@ import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
@@ -115,10 +115,9 @@ export class TuiHintComponent {
         }
     }
 
-    @tuiPure
     private apply(top: string, left: string, beakTop: number, beakLeft: number): void {
-        this.el.style.top = top;
-        this.el.style.left = left;
+        this.el.style.setProperty('top', top);
+        this.el.style.setProperty('left', left);
         this.el.style.setProperty('--t-top', `${beakTop}%`);
         this.el.style.setProperty('--t-left', `${beakLeft}%`);
         this.el.style.setProperty(
