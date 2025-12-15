@@ -41679,7 +41679,7 @@ export default class Page {}
 # directives/Animated
 - **Package**: `CDK`
 - **Type**: directives
-TuiAnimated allows adding animation to DOM elements.
+TuiAnimated allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19.
 
 ### How to Use (Import)
 
