@@ -9,19 +9,19 @@ import {TuiQuantumValueTransformer} from '../quantum.directive';
 
 @Directive({
     providers: [tuiProvide(TuiValueTransformer, TuiNumberValueTransformer)],
-    hostDirectives: [
-        {
-            directive: TuiQuantumValueTransformer,
-            inputs: ['quantum'],
-        },
-    ],
 })
 export class TuiNumberValueTransformer extends TuiValueTransformer<
     string,
     number | null
 > {
     private readonly mask = inject(TuiNumberMask);
-    private readonly quantumTransformer = inject(TuiQuantumValueTransformer);
+    private readonly quantumTransformer: TuiValueTransformer<
+        number | null,
+        number | null
+    > =
+        inject(TuiQuantumValueTransformer, {optional: true}) ??
+        TUI_IDENTITY_VALUE_TRANSFORMER;
+
     private readonly optionsTransformer: TuiValueTransformer<number | null, any> =
         inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer ??
         TUI_IDENTITY_VALUE_TRANSFORMER;

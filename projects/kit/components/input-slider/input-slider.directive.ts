@@ -17,6 +17,7 @@ import {
     TuiInputNumberDirective,
     tuiInputNumberOptionsProvider,
     TuiNumberMask,
+    TuiQuantumValueTransformer,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent, switchMap, tap} from 'rxjs';
@@ -47,6 +48,10 @@ class Styles {}
         {
             directive: TuiInputNumberDirective,
             inputs: ['invalid', 'readOnly'],
+        },
+        {
+            directive: TuiQuantumValueTransformer,
+            inputs: ['quantum'],
         },
     ],
     host: {

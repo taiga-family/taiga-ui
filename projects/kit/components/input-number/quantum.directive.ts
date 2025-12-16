@@ -1,6 +1,5 @@
 import {Directive, input} from '@angular/core';
 import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiIsSafeToRound, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
@@ -31,8 +30,8 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 }
 
 @Directive({
+    selector: '[tuiInputNumber][quantum]:not([bigint])',
     inputs: ['quantum'],
-    providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
 })
 export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
     constructor() {
@@ -40,9 +39,7 @@ export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
     }
 }
 
-@Directive({
-    providers: [tuiProvide(TuiValueTransformer, TuiBigIntQuantumValueTransformer)],
-})
+@Directive({selector: '[tuiInputNumber][bigint][quantum]'})
 export class TuiBigIntQuantumValueTransformer extends TuiValueTransformer<
     bigint | null,
     bigint | null

@@ -10,18 +10,18 @@ import {TuiBigIntQuantumValueTransformer} from '../quantum.directive';
 @Directive({
     selector: '[tuiInputNumber][bigint]',
     providers: [tuiProvide(TuiValueTransformer, TuiBigIntValueTransformer)],
-    hostDirectives: [
-        {
-            directive: TuiBigIntQuantumValueTransformer,
-            inputs: ['quantum'],
-        },
-    ],
 })
 export class TuiBigIntValueTransformer extends TuiValueTransformer<
     string,
     bigint | null
 > {
-    private readonly quantumTransformer = inject(TuiBigIntQuantumValueTransformer);
+    private readonly quantumTransformer: TuiValueTransformer<
+        bigint | null,
+        bigint | null
+    > =
+        inject(TuiBigIntQuantumValueTransformer, {optional: true}) ??
+        TUI_IDENTITY_VALUE_TRANSFORMER;
+
     private readonly optionsTransformer: TuiValueTransformer<bigint | null, any> =
         inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer ??
         TUI_IDENTITY_VALUE_TRANSFORMER;
