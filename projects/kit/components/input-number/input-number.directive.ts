@@ -5,7 +5,7 @@ import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 
-import {TuiNumberMask} from './number-mask.directive';
+import {TuiNumberMask, TuiWithNumberMask} from './number-mask.directive';
 import {TuiNumberValueTransformer} from './transformers/number.value-transformer';
 
 const DEFAULT_MAX_LENGTH = 18;
@@ -13,7 +13,7 @@ const DEFAULT_MAX_LENGTH = 18;
 @Directive({
     selector: 'input[tuiInputNumber]',
     providers: [tuiAsControl(TuiInputNumberDirective)],
-    hostDirectives: [TuiWithInput, TuiNumberValueTransformer],
+    hostDirectives: [TuiWithInput, TuiWithNumberMask, TuiNumberValueTransformer],
     host: {
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',

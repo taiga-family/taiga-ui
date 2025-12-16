@@ -149,7 +149,7 @@ describe('InputNumber | BigInt', () => {
 
             test('initial state', async () => {
                 await expect(inputNumber.textfield).toHaveValue(
-                    '$1_234_567.00042 per day',
+                    '$1 234 567.00042 per day',
                 );
                 await expectControlValue({significand: '123456700042n', exp: -5});
             });
@@ -162,7 +162,7 @@ describe('InputNumber | BigInt', () => {
                 );
 
                 await expect(inputNumber.textfield).toHaveValue(
-                    '$9_999_999_999_999_999.8888888888888888 per day',
+                    '$9 999 999 999 999 999.8888888888888888 per day',
                 );
                 await expectControlValue({
                     significand: '99999999999999998888888888888888n',
@@ -175,7 +175,7 @@ describe('InputNumber | BigInt', () => {
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('424242');
 
-                await expect(inputNumber.textfield).toHaveValue('$424_242 per day');
+                await expect(inputNumber.textfield).toHaveValue('$424 242 per day');
                 await expectControlValue({significand: '424242n', exp: 0});
             });
 

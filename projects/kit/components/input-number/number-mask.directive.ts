@@ -16,11 +16,7 @@ import {
     type TuiInputNumberOptions,
 } from './input-number.options';
 
-@Directive({
-    // TODO: apply as host directive for TuiInputNumberDirective after https://github.com/angular/angular/issues/57846
-    selector: 'input[tuiInputNumber]',
-    hostDirectives: [MaskitoDirective],
-})
+@Directive({hostDirectives: [MaskitoDirective]})
 export class TuiNumberMask {
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly numberFormat = inject(TUI_NUMBER_FORMAT);

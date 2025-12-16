@@ -20,9 +20,7 @@ export class TuiNumberValueTransformer extends TuiValueTransformer<
 > {
     private readonly mask = inject(TuiNumberMask);
 
-    private readonly quantumTransformer =
-        inject(TuiQuantumValueTransformer, {optional: true}) ??
-        TUI_IDENTITY_VALUE_TRANSFORMER;
+    private readonly quantumTransformer = inject(TuiQuantumValueTransformer);
 
     private readonly optionsTransformer =
         inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer ??
