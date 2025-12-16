@@ -70,7 +70,6 @@ export const TUI_USED_ICONS = [
     '@tui.info',
     '@tui.mastercard',
     '@tui.heart-filled',
-    '@tui.circle-x',
     '@tui.file',
     '@tui.droplet',
     '@tui.cloud-upload',
