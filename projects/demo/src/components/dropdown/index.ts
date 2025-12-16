@@ -24,7 +24,7 @@ export class TuiDocDropdown {
 
     protected readonly routes = DemoRoute;
 
-    protected readonly aligns: readonly TuiDropdownAlign[] = ['left', 'right', 'center'];
+    protected readonly aligns: readonly TuiDropdownAlign[] = ['start', 'end', 'center'];
     protected readonly directions: TuiVerticalDirection[] = ['bottom', 'top'];
     protected readonly limitWidths: readonly TuiDropdownWidth[] = [
         'auto',

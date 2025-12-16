@@ -42,6 +42,20 @@
             }
         }
     }
+
+    &[data-direction='start'] {
+        border-start-start-radius: 0;
+        inset-inline-start: 0;
+
+        --tui-from: translateX(calc(-100% * var(--tui-inline)));
+    }
+
+    &[data-direction='end'] {
+        border-start-end-radius: 0;
+        inset-inline-end: 0;
+
+        --tui-from: translateX(calc(100% * var(--tui-inline)));
+    }
 }
 
 .t-aside {

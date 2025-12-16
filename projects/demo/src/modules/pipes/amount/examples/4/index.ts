@@ -14,6 +14,6 @@ import {TuiNumberFormat} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiAmountOptionsProvider({currencyAlign: 'left'})],
+    providers: [tuiAmountOptionsProvider({currencyAlign: 'start'})],
 })
 export default class Example {}

@@ -21,7 +21,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     providers: [
         tuiAsOptionContent(TuiSelectOption),
         tuiAsDataListHost(TuiButtonSelect),
-        tuiDropdownOptionsProvider({align: 'right'}),
+        tuiDropdownOptionsProvider({align: 'end'}),
     ],
     hostDirectives: [TuiDropdownDirective, TuiNativeValidator, TuiWithDropdownOpen],
 })
