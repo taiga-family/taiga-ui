@@ -15356,7 +15356,7 @@ export default class Example {
 **Template:**
 ```html
 <tui-textfield [tuiTextfieldCleaner]="false">
-<input #input placeholder="Input value" tuiInput [(ngModel)]="value" /> @if (value) { <button iconStart="@tui.circle-x" tabindex="-1" tuiIconButton type="button" (click)="clear()" (pointerdown.zoneless.prevent)="input.focus()" > Clear </button> } </tui-textfield>
+<input #input placeholder="Input value" tuiInput [(ngModel)]="value" /> @if (value) { <button tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -15364,10 +15364,10 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiInput} from '@taiga-ui/core';
+import {TuiButtonX, TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiInput],
+    imports: [FormsModule, TuiButtonX, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -15389,7 +15389,7 @@ export default class Example {
 ```html
 <tui-textfield [tuiTextfieldCleaner]="false">
 <label tuiLabel>Flat angle</label>
-<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button iconStart="@tui.x" tabindex="-1" tuiIconButton type="button" (click)="clear()" (pointerdown.zoneless.prevent)="input.focus()" > Clear </button> } </tui-textfield>
+<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -15405,7 +15405,7 @@ import {
     maskitoNumberOptionsGenerator,
     maskitoRemoveOnBlurPlugin,
 } from '@maskito/kit';
-import {TuiButton, TuiInput} from '@taiga-ui/core';
+import {TuiButtonX, TuiInput} from '@taiga-ui/core';
 
 const postfix = ' rad';
 const numberOptions = maskitoNumberOptionsGenerator({
@@ -15416,7 +15416,7 @@ const numberOptions = maskitoNumberOptionsGenerator({
 });
 
 @Component({
-    imports: [FormsModule, MaskitoDirective, TuiButton, TuiInput],
+    imports: [FormsModule, MaskitoDirective, TuiButtonX, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -16290,7 +16290,7 @@ export default class Example {
 **Template:**
 ```html
 <tui-textfield multi [disabledItemHandler]="handler" [style.width.rem]="19" [tuiTextfieldCleaner]="false" >
-<input tuiInputChip [formControl]="control" /> @if (control.value.length > 2) { <button appearance="icon" iconStart="@tui.x" size="xs" tabindex="-1" tuiIconButton type="button" (click)="control.setValue(this.required)" > Clear </button> } <tui-input-chip *tuiItem />
+<input tuiInputChip [formControl]="control" /> @if (control.value.length > 2) { <button tuiButtonX (click)="control.setValue(this.required)" > Clear </button> } <tui-input-chip *tuiItem />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -16300,18 +16300,17 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButtonX} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiInputChip],
+    imports: [ReactiveFormsModule, TuiButtonX, TuiInputChip],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
     protected readonly required = ['Required', 'Obligatory'];
-
     protected readonly control = new FormControl(this.required.concat('Removable'), {
         nonNullable: true,
     });
