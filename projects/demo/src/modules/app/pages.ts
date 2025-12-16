@@ -315,10 +315,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'ButtonClose',
+                title: 'ButtonX',
                 keywords: 'кнопка, button, close, закрыть',
-                route: DemoRoute.ButtonClose,
-                meta: {},
+                route: DemoRoute.ButtonX,
+                meta: {
+                    name: 'tui-button-close',
+                },
             },
             {
                 section: 'Components',
