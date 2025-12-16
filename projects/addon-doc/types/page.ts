@@ -20,7 +20,7 @@ export interface TuiDocRoutePageGroup extends TuiDocRoutePageBase {
     readonly subPages: readonly TuiDocRoutePage[];
 }
 
-export type TuiRawLoaderContent = Promise<{default: string}> | string;
+export type TuiRawLoaderContent = Promise<{readonly default: unknown}> | string;
 
 export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
     TS: 'TypeScript',
