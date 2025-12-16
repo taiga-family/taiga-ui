@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, input} from '@angular/core';
 import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiIsSafeToRound, tuiRound} from '@taiga-ui/cdk/utils/math';
@@ -41,11 +41,18 @@ export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
 }
 
 @Directive({
-    hostDirectives: [
-        {
-            directive: TuiQuantumValueTransformer,
-            inputs: ['quantum'],
-        },
-    ],
+    providers: [tuiProvide(TuiValueTransformer, TuiBigIntQuantumValueTransformer)],
 })
-export class TuiWithQuantumValueTransformer {}
+export class TuiBigIntQuantumValueTransformer extends TuiValueTransformer<
+    bigint | null,
+    bigint | null
+> {
+    public readonly quantum = input<bigint>(BigInt(0));
+    public override fromControlValue = identity;
+
+    public toControlValue(value: bigint | null): bigint | null {
+        return this.quantum() && value
+            ? (value / this.quantum()) * this.quantum()
+            : value;
+    }
+}

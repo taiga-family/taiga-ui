@@ -5,24 +5,24 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 import {TuiNumberMask} from '../number-mask.directive';
-import {
-    TuiQuantumValueTransformer,
-    TuiWithQuantumValueTransformer,
-} from '../quantum.directive';
+import {TuiQuantumValueTransformer} from '../quantum.directive';
 
 @Directive({
     providers: [tuiProvide(TuiValueTransformer, TuiNumberValueTransformer)],
-    hostDirectives: [TuiWithQuantumValueTransformer],
+    hostDirectives: [
+        {
+            directive: TuiQuantumValueTransformer,
+            inputs: ['quantum'],
+        },
+    ],
 })
 export class TuiNumberValueTransformer extends TuiValueTransformer<
     string,
     number | null
 > {
     private readonly mask = inject(TuiNumberMask);
-
     private readonly quantumTransformer = inject(TuiQuantumValueTransformer);
-
-    private readonly optionsTransformer =
+    private readonly optionsTransformer: TuiValueTransformer<number | null, any> =
         inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer ??
         TUI_IDENTITY_VALUE_TRANSFORMER;
 
@@ -35,8 +35,8 @@ export class TuiNumberValueTransformer extends TuiValueTransformer<
     }
 
     public fromControlValue(controlValue: number | null): string {
-        return this.optionsTransformer.fromControlValue(
-            this.mask.stringify(controlValue),
+        return this.mask.stringify(
+            this.optionsTransformer.fromControlValue(controlValue),
         );
     }
 }

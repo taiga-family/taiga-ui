@@ -5,31 +5,43 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 import {TuiNumberMask} from '../number-mask.directive';
+import {TuiBigIntQuantumValueTransformer} from '../quantum.directive';
 
 @Directive({
     selector: '[tuiInputNumber][bigint]',
     providers: [tuiProvide(TuiValueTransformer, TuiBigIntValueTransformer)],
+    hostDirectives: [
+        {
+            directive: TuiBigIntQuantumValueTransformer,
+            inputs: ['quantum'],
+        },
+    ],
 })
 export class TuiBigIntValueTransformer extends TuiValueTransformer<
     string,
     bigint | null
 > {
-    private readonly parentTransformer =
+    private readonly quantumTransformer = inject(TuiBigIntQuantumValueTransformer);
+    private readonly optionsTransformer: TuiValueTransformer<bigint | null, any> =
         inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer ??
         TUI_IDENTITY_VALUE_TRANSFORMER;
 
     private readonly mask = inject(TuiNumberMask);
 
     public toControlValue(textfieldValue: string | null): bigint | null {
-        return this.parentTransformer.toControlValue(
-            maskitoParseNumber(textfieldValue ?? '', {
-                ...this.mask.params(),
-                bigint: true,
-            }),
+        return this.optionsTransformer.toControlValue(
+            this.quantumTransformer.toControlValue(
+                maskitoParseNumber(textfieldValue ?? '', {
+                    ...this.mask.params(),
+                    bigint: true,
+                }),
+            ),
         );
     }
 
     public fromControlValue(controlValue: bigint | null): string {
-        return this.parentTransformer.fromControlValue(this.mask.stringify(controlValue));
+        return this.mask.stringify(
+            this.optionsTransformer.fromControlValue(controlValue),
+        );
     }
 }

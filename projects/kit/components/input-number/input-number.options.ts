@@ -12,7 +12,10 @@ export interface TuiInputNumberOptions extends Pick<
         decrease: string;
         increase: string;
     }>;
-    readonly valueTransformer: TuiValueTransformer<number | null, any> | null;
+    readonly valueTransformer:
+        | TuiValueTransformer<bigint | null, any>
+        | TuiValueTransformer<number | null, any>
+        | null;
 }
 
 export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
