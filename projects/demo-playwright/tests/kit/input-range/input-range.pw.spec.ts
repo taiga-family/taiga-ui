@@ -385,13 +385,19 @@ describe('InputRange', () => {
             await tuiGoto(page, `${DemoRoute.InputRange}/API?content$=2&max=100`);
             await inputRange.textfieldEnd.fill('100');
 
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '26-input-range-start-no-content--end-has-content-focused.png',
+                );
+
             await inputRange.textfieldEnd.blur();
 
             await expect(inputRange.textfieldStart).toHaveValue('0');
             await expect(inputRange.textfieldEnd).toHaveValue('100');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('26-input-range-start-no-content--end-has-content.png');
+            await expect(example).toHaveScreenshot(
+                '26-input-range-start-no-content--end-has-content.png',
+            );
         });
 
         test('START textfield has content + END textfield has content', async ({
@@ -401,15 +407,19 @@ describe('InputRange', () => {
             await inputRange.textfieldEnd.fill('100');
             await inputRange.textfieldStart.fill('100');
 
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '27-input-range-start-has-content--end-has-content-focused.png',
+                );
+
             await inputRange.textfieldStart.blur();
 
             await expect(inputRange.textfieldStart).toHaveValue('100');
             await expect(inputRange.textfieldEnd).toHaveValue('100');
-            await expect
-                .soft(example)
-                .toHaveScreenshot(
-                    '27-input-range-start-has-content--end-has-content.png',
-                );
+            await expect(example).toHaveScreenshot(
+                '27-input-range-start-has-content--end-has-content.png',
+            );
         });
 
         test('START textfield has content + END textfield without content', async ({
