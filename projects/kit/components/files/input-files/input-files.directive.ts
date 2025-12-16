@@ -2,7 +2,6 @@ import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, forwardRef, inject} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -76,5 +75,5 @@ export class TuiInputFilesDirective extends TuiControl<
 function toArray(
     value: TuiFileLike | readonly TuiFileLike[] | null,
 ): readonly TuiFileLike[] {
-    return value ? coerceArray(value) : EMPTY_ARRAY;
+    return value ? coerceArray(value) : [];
 }

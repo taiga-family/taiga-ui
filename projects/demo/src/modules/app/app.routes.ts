@@ -1028,11 +1028,6 @@ export const ROUTES: Routes = [
         title: 'Tokens',
     }),
     route({
-        path: DemoRoute.Pure,
-        loadComponent: async () => import('../components/utils/pure'),
-        title: 'Pure',
-    }),
-    route({
         path: DemoRoute.StackblitzStarter,
         loadComponent: async () => import('./stackblitz/starter'),
         title: 'Stackblitz Starter',

@@ -1,5 +1,4 @@
 import {Directive, input} from '@angular/core';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 
 @Directive({
@@ -11,6 +10,6 @@ export class TuiTreeChildren<T> {
     );
 
     public static defaultHandler<G>(item: G): readonly G[] {
-        return Array.isArray(item) ? item : EMPTY_ARRAY;
+        return Array.isArray(item) ? item : [];
     }
 }

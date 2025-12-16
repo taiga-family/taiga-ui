@@ -36,7 +36,7 @@
             >
                 @for (icon of filtered; track icon) {
                     <ng-container
-                        [ngTemplateOutlet]="iconGroup?.template || null"
+                        [ngTemplateOutlet]="iconGroup()?.template || null"
                         [ngTemplateOutletContext]="{
                             icon: icon,
                             group: key,
