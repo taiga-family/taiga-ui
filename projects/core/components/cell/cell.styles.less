@@ -17,6 +17,12 @@
     min-block-size: var(--t-height);
     border-radius: var(--t-radius);
 
+    &:active {
+        .interactive({
+            background: var(--tui-background-neutral-1);
+        });
+    }
+
     &:disabled,
     &[data-state='disabled'] {
         opacity: initial;
