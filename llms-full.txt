@@ -1749,16 +1749,15 @@ export class Example {}
 ### Example
 
 ```html
-<tui-axes class="axes" [axisX]="axisX" [axisXLabels]="axisXLabels || []" [axisY]="axisY" [axisYInset]="axisYInset" [axisYLabels]="axisYLabels || []" [axisYName]="axisYName" [axisYSecondaryInset]="axisYSecondaryInset" [axisYSecondaryLabels]="axisYSecondaryLabels" [axisYSecondaryName]="axisYSecondaryName" [horizontalLines]="horizontalLines" [horizontalLinesHandler]="horizontalLinesHandler" [verticalLines]="verticalLines" [verticalLinesHandler]="verticalLinesHandler" />
+<tui-axes class="axes" [axisXLabels]="axisXLabels || []" [axisYInset]="axisYInset" [axisYLabels]="axisYLabels || []" [axisYName]="axisYName" [axisYSecondaryInset]="axisYSecondaryInset" [axisYSecondaryLabels]="axisYSecondaryLabels" [axisYSecondaryName]="axisYSecondaryName" [centeredXLabels]="centeredXLabels" [horizontalLines]="horizontalLines" [horizontalLinesHandler]="horizontalLinesHandler" [verticalLines]="verticalLines" [verticalLinesHandler]="verticalLinesHandler" />
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [axisX] | `TuiLineType` | Axis X |
+| [centeredXLabels] | `boolean` | Center X labels |
 | [axisXLabels] | `ReadonlyArray<string | null>` | — no stroke |
-| [axisY] | `TuiLineType` | Axis Y |
 | [axisYInset] | `boolean` | Inset of labels on axis Y |
 | [axisYLabels] | `readonly string[]` | Labels for Y |
 | [axisYName] | `string` | Name of Y axis |
@@ -1776,7 +1775,7 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-axes axisYName="Target" axisYSecondaryName="Sum" class="axes" [axisXLabels]="axisXLabels" [axisYInset]="true" [axisYLabels]="axisYLabels" [axisYSecondaryLabels]="axisYSecondaryLabels" [horizontalLines]="2" [verticalLines]="3" [verticalLinesHandler]="verticalLinesHandler" />
+<tui-axes axisYName="Target" axisYSecondaryName="Sum" class="axes" [axisXLabels]="axisXLabels" [axisYInset]="true" [axisYLabels]="axisYLabels" [axisYSecondaryLabels]="axisYSecondaryLabels" [horizontalLines]="3" [verticalLines]="4" [verticalLinesHandler]="verticalLinesHandler" />
 ```
 **TypeScript:**
 ```ts
@@ -1797,7 +1796,7 @@ export default class Example {
     protected readonly axisYLabels = ['', '25%', '50%', '75%', '100%'];
     protected readonly axisYSecondaryLabels = ['80 k', '100 k', '120 k'];
     protected readonly verticalLinesHandler: TuiLineHandler = (index, total) =>
-        index === total - 1 ? 'none' : 'dashed';
+        (index && (index === total - 1 ? 'none' : 'dashed')) || 'solid';
 }
 ```
 
@@ -1805,7 +1804,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-axes axisY="none" class="axes" [axisXLabels]="axisXLabels" [axisYSecondaryLabels]="axisYSecondaryLabels" [horizontalLines]="2" [horizontalLinesHandler]="horizontalLinesHandler" [verticalLines]="4" [verticalLinesHandler]="verticalLinesHandler" >
+<tui-axes axisY="none" class="axes" [axisXLabels]="axisXLabels" [axisYSecondaryLabels]="axisYSecondaryLabels" [centeredXLabels]="true" [horizontalLines]="3" [horizontalLinesHandler]="horizontalLinesHandler" [verticalLines]="5" [verticalLinesHandler]="verticalLinesHandler" >
 <tui-bar-chart class="chart" [max]="maxValue" [tuiHintContent]="hint" [value]="value" />
 </tui-axes>
 <ng-template #hint let-setIndex > @for (item of value; track item) { <p class="hint">
@@ -1874,7 +1873,7 @@ function getMax(value: ReadonlyArray<[number, number, number, number]>): number 
 
 **Template:**
 ```html
-<tui-axes class="axes" [axisXLabels]="axisXLabels" [verticalLines]="4" >
+<tui-axes class="axes" [axisXLabels]="axisXLabels" [verticalLines]="5" >
 <div class="t-horizontal-bars"> @for (bar of value; track bar) { <tui-bar size="m" [style.background-color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`" [style.height.%]="getHeight(bar)" /> } </div>
 </tui-axes>
 ```
@@ -1954,30 +1953,18 @@ export default class Page {
         (index) => (index % 2 ? 'dashed' : 'solid'),
     ];
 
-    protected axisX = this.lineVariants[0]!;
+    protected centeredXLabels = false;
 
     protected axisXLabels = this.labelsXVariants[0]!;
-
-    protected axisY = this.lineVariants[0]!;
-
     protected axisYInset = false;
-
     protected axisYLabels = this.labelsYVariants[0]!;
-
     protected axisYName = '';
-
     protected axisYSecondaryInset = false;
-
     protected axisYSecondaryLabels = this.labelsYVariants[0]!;
-
     protected axisYSecondaryName = '';
-
-    protected horizontalLines = 0;
-
+    protected horizontalLines = 1;
     protected horizontalLinesHandler = this.handlerVariants[0]!;
-
-    protected verticalLines = 0;
-
+    protected verticalLines = 1;
     protected verticalLinesHandler = this.handlerVariants[1]!;
 }
 ```
@@ -24238,7 +24225,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-axes class="axes" [horizontalLines]="2" [verticalLines]="4" >
+<tui-axes class="axes" [horizontalLines]="3" [verticalLines]="5" >
 <tui-line-chart [dots]="dots" [filled]="filled" [height]="height" [smoothingFactor]="smoothingFactor" [value]="value" [width]="width" [x]="x" [xStringify]="xStringify" [y]="y" [yStringify]="yStringify" />
 </tui-axes>
 ```
@@ -24264,7 +24251,7 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-axes class="axes" [horizontalLines]="2" [tuiLineChartHint]="hintContent" [verticalLines]="4" >
+<tui-axes class="axes" [horizontalLines]="3" [tuiLineChartHint]="hintContent" [verticalLines]="5" >
 <tui-line-chart [dots]="true" [height]="200" [value]="value" [width]="400" [x]="0" [xStringify]="stringify" [y]="0" [yStringify]="stringify" />
 </tui-axes>
 ```
@@ -24307,7 +24294,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-axes class="axes" [horizontalLines]="2" [verticalLines]="4" >
+<tui-axes class="axes" [horizontalLines]="3" [verticalLines]="5" >
 <tui-line-chart [filled]="true" [height]="200" [smoothingFactor]="50" [value]="value" [width]="400" [x]="0" [y]="0" />
 </tui-axes>
 ```
@@ -24343,7 +24330,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-axes class="axes" [horizontalLines]="2" [verticalLines]="4" >
+<tui-axes class="axes" [horizontalLines]="3" [verticalLines]="5" >
 <tui-line-chart class="chart chart_dotted" [dots]="true" [height]="200" [value]="dotted" [width]="400" [x]="0" [y]="0" />
 <tui-line-chart class="chart" [dots]="true" [height]="200" [value]="solid" [width]="400" [x]="0" [y]="0" />
 <tui-line-chart class="chart chart_dashed" [dots]="true" [height]="200" [value]="dashed" [width]="400" [x]="0" [y]="0" />
@@ -24389,7 +24376,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-axes class="axes" [horizontalLines]="2" [verticalLines]="4" >
+<tui-axes class="axes" [horizontalLines]="3" [verticalLines]="5" >
 <tui-line-chart [height]="200" [tuiHintContent]="hint" [value]="value" [width]="400" [x]="0" [y]="0" />
 </tui-axes>
 <tui-axes class="axes tui-space_top-10" [horizontalLines]="2" [verticalLines]="4" >
@@ -24439,7 +24426,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-axes class="axes" [horizontalLines]="2" [tuiLineChartHint]="hint" [verticalLines]="4" > @for (value of values; track value) { <tui-line-chart class="chart" [height]="200" [value]="value" [width]="400" [x]="0" [y]="0" /> } </tui-axes>
+<tui-axes class="axes" [horizontalLines]="3" [tuiLineChartHint]="hint" [verticalLines]="5" > @for (value of values; track value) { <tui-line-chart class="chart" [height]="200" [value]="value" [width]="400" [x]="0" [y]="0" /> } </tui-axes>
 ```
 **TypeScript:**
 ```ts
@@ -25229,7 +25216,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-axes class="axes" [axisXLabels]="labels()" [horizontalLines]="4" [verticalLines]="3" >
+<tui-axes class="axes" [axisXLabels]="labels()" [horizontalLines]="5" [verticalLines]="4" >
 <tui-line-days-chart [dots]="dots" [height]="height" [hintContent]="hintContent" [smoothingFactor]="smoothingFactor" [value]="value" [xStringify]="xStringify" [y]="y" [yStringify]="yStringify" />
 </tui-axes>
 ```
@@ -25260,7 +25247,7 @@ export class Example {}
 <tui-calendar-range *tuiDropdown />
 </tui-textfield>
 </p>
-<tui-axes class="axes" [axisXLabels]="labels()" [horizontalLines]="4" [verticalLines]="labels().length - 1" >
+<tui-axes class="axes" [axisXLabels]="labels()" [horizontalLines]="5" [verticalLines]="labels().length" >
 <tui-line-days-chart class="chart" [height]="200" [value]="value()" [xStringify]="xStringify()" [yStringify]="yStringify" />
 </tui-axes>
 ```
@@ -25355,7 +25342,7 @@ export default class Example {
 <p class="legend"> @for (chart of days(); track chart) { <span class="item">
 <small class="name">Chart {{ $index + 1 }}</small>
 </span> } </p>
-<tui-axes class="axes" [axisXLabels]="labels()" [horizontalLines]="4" [tuiLineChartHint]="hint" [verticalLines]="labels().length - 1" > @if (getWidth(show()) > 90) { @for (chart of days(); track chart) { <tui-line-days-chart class="chart" [height]="200" [value]="chart | tuiFilter: filter : range()" /> } } @else { @for (chart of days(); track chart) { <tui-line-chart class="chart" [height]="200" [value]="chart | tuiFilter: filter : range() | tuiMapper: toNumbers : range()" [width]="getWidth(range())" /> } } </tui-axes>
+<tui-axes class="axes" [axisXLabels]="labels()" [horizontalLines]="5" [tuiLineChartHint]="hint" [verticalLines]="labels().length" > @if (getWidth(show()) > 90) { @for (chart of days(); track chart) { <tui-line-days-chart class="chart" [height]="200" [value]="chart | tuiFilter: filter : range()" /> } } @else { @for (chart of days(); track chart) { <tui-line-chart class="chart" [height]="200" [value]="chart | tuiFilter: filter : range() | tuiMapper: toNumbers : range()" [width]="getWidth(range())" /> } } </tui-axes>
 <ng-template #hint let-data >
 <div class="tui-space_bottom-2">
 <strong>{{ getDate(data[0][0], range().from) }}</strong>
