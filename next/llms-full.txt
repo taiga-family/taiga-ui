@@ -4730,78 +4730,6 @@ export default class Page {
 ```
 
 ---
-# components/ButtonClose
-- **Package**: `KIT`
-- **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiButtonClose} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiButtonClose,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button tuiButtonClose>Close</button>
-```
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-<button tuiButtonClose type="button" > Close </button>
-<button appearance="glass" tuiButtonClose type="button" > Close </button>
-<button size="xs" tuiButtonClose type="button" > Close </button>
-<button appearance="glass" size="xs" tuiButtonClose type="button" > Close </button>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonClose} from '@taiga-ui/kit';
-
-@Component({
-    imports: [TuiButtonClose],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {}
-```
-
----
 # components/ButtonGroup
 - **Package**: `KIT`
 - **Type**: components
@@ -5180,6 +5108,77 @@ export default class Example {
 
     protected value = this.items;
 }
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {}
+```
+
+---
+# components/ButtonX
+- **Package**: `Core`
+- **Type**: components
+
+### How to Use (Import)
+
+```ts
+import {Component} from '@angular/core';
+import {TuiButtonX} from '@taiga-ui/core';
+// ...
+
+@Component({
+  imports: [
+    // ...
+    TuiButtonX,
+  ],
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<button tuiButtonX>Close</button>
+```
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+<button tuiButtonX>Close</button>
+<button appearance="glass" tuiButtonX > Close </button>
+<button size="xs" tuiButtonX > Close </button>
+<button appearance="glass" size="xs" tuiButtonX > Close </button>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonX} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButtonX],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
 ```
 
 
@@ -6475,14 +6474,14 @@ export default class Example {}
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 <aside tuiAccessories>
-<button appearance="glass" tuiButtonClose type="button" > Close </button>
+<button appearance="glass" tuiButtonX type="button" > Close </button>
 </aside>
 </div>
 <div tuiCardLarge tuiHeader tuiTheme="dark" class="image-2" >
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 <aside tuiAccessories>
-<button appearance="glass" tuiButtonClose type="button" > Close </button>
+<button appearance="glass" tuiButtonX type="button" > Close </button>
 </aside>
 </div>
 ```
@@ -6491,12 +6490,11 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTitle} from '@taiga-ui/core';
-import {TuiButtonClose} from '@taiga-ui/kit';
+import {TuiButtonX, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiButtonClose, TuiCardLarge, TuiHeader, TuiTitle],
+    imports: [TuiButtonX, TuiCardLarge, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -6518,7 +6516,7 @@ export default class Example {}
 <div tuiFade tuiFadeHeight="1rem" tuiFadeOffset="1.5em" tuiFadeSize="1.5em" tuiSubtitle [style.align-items]="'flex-start'" [style.block-size.rem]="2" > Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </div>
 </div>
 <aside tuiAccessories>
-<button tuiButtonClose type="button" > Close </button>
+<button tuiButtonX type="button" > Close </button>
 </aside>
 </div>
 </div>
@@ -6529,14 +6527,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiCell, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiButtonClose, TuiFade} from '@taiga-ui/kit';
+import {TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         TuiAvatar,
-        TuiButtonClose,
+        TuiButtonX,
         TuiCardLarge,
         TuiCell,
         TuiFade,
