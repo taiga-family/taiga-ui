@@ -248,5 +248,4 @@
 - [Format](https://taiga-ui.dev/utils/format)
 - [Math](https://taiga-ui.dev/utils/math)
 - [Miscellaneous](https://taiga-ui.dev/utils/miscellaneous)
-- [Pure](https://taiga-ui.dev/utils/pure)
 - [Tokens](https://taiga-ui.dev/utils/tokens)
