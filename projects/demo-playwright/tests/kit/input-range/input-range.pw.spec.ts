@@ -600,7 +600,9 @@ describe('InputRange', () => {
             }) => {
                 await inputRange.textfieldEnd.focus();
 
-                await expect(inputRange.textfieldEnd).toHaveValue('0 days ago');
+                await expect(inputRange.textfieldEnd).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}0 days ago`,
+                );
                 await page.keyboard.down('ArrowDown');
                 await expect(inputRange.textfieldEnd).toHaveValue(
                     `${CHAR_ZERO_WIDTH_SPACE}1 day ago`,

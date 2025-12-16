@@ -217,6 +217,7 @@ export const config: ApplicationConfig = {
             useValue: (type: string) => {
                 switch (type) {
                     case 'any':
+                    case 'bigint':
                     case 'boolean':
                     case 'Map':
                     case 'null':

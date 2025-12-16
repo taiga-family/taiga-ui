@@ -16,7 +16,8 @@ import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
     tuiInputNumberOptionsProvider,
-    TuiWithQuantumValueTransformer,
+    TuiNumberMask,
+    TuiQuantumValueTransformer,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent, switchMap, tap} from 'rxjs';
@@ -46,9 +47,12 @@ class Styles {}
     hostDirectives: [
         {
             directive: TuiInputNumberDirective,
-            inputs: ['min', 'max', 'prefix', 'postfix', 'invalid', 'readOnly'],
+            inputs: ['invalid', 'readOnly'],
         },
-        TuiWithQuantumValueTransformer,
+        {
+            directive: TuiQuantumValueTransformer,
+            inputs: ['quantum'],
+        },
     ],
     host: {
         '(blur)': 'inputNumber.setValue(value() ?? null)',
@@ -63,11 +67,13 @@ export class TuiInputSliderDirective {
         (x) => x instanceof TuiSliderComponent,
     );
 
-    private readonly controlTransformer = inject<
-        TuiValueTransformer<number | null, number>
-    >(TuiValueTransformer, {self: true});
+    private readonly controlTransformer = inject<TuiValueTransformer<string, number>>(
+        TuiValueTransformer,
+        {self: true},
+    );
 
     protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly mask = inject(TuiNumberMask, {self: true});
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),
@@ -81,8 +87,9 @@ export class TuiInputSliderDirective {
         }
 
         if (!slider.keySteps?.transformer()) {
-            slider.min = this.inputNumber.min();
-            slider.max = this.inputNumber.max();
+            // Native <input type="range" /> does not support BigInt
+            slider.min = Number(this.mask.min());
+            slider.max = Number(this.mask.max());
             slider.value = this.value();
         } else {
             slider.keySteps?.setControlValue(this.value());
@@ -128,8 +135,8 @@ export class TuiInputSliderDirective {
             const newValue = tuiClamp(
                 slider.keySteps?.takeStep(coefficient) ??
                     slider.value + coefficient * slider.step,
-                this.inputNumber.min(),
-                this.inputNumber.max(),
+                this.mask.min(),
+                this.mask.max(),
             );
 
             this.inputNumber.setValue(newValue);

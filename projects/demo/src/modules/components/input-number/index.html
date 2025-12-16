@@ -8,14 +8,14 @@
         is a form field to provide numerical input.
 
         <tui-doc-example
-            id="form-control-value"
-            heading="Form control value"
+            id="number-type-control-value"
+            heading="Number as form control value"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-            [description]="formControlDescription"
+            [description]="numberFormControlDescription"
         >
-            <ng-template #formControlDescription>
-                Form control value is
+            <ng-template #numberFormControlDescription>
+                By default, form control value is
                 <code>number</code>
                 or
                 <code>null</code>
@@ -202,6 +202,63 @@
                 </p>
             </ng-template>
         </tui-doc-example>
+
+        <!-- TODO: change order of examples in separate PR -->
+        <!-- (otherwise, snapshots of every previous examples will fail – easy to miss real bug) -->
+        <tui-doc-example
+            id="bigint-type-control-value"
+            heading="BigInt as form control value"
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample"
+            [description]="bigintFormControlDescription"
+        >
+            <ng-template #bigintFormControlDescription>
+                Form control value type can be changed to
+                <code>bigint</code>
+                .
+
+                <p>
+                    Just put
+                    <code>bigint</code>
+                    attribute and set new values for
+                    <code>min</code>
+                    ,
+                    <code>max</code>
+                    and
+                    <code>precision</code>
+                    properties.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large-int-decimal-parts"
+            heading="Large integer + large decimal parts"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample: 'html,ts' : {'transformer.ts': bigIntWithDecimalTransformer}"
+            [description]="largeIntDecimalPartsDescription"
+        >
+            <ng-template #largeIntDecimalPartsDescription>
+                JavaScript’s built‑in
+                <code>number</code>
+                type loses precision when a value contains too many digits in either the integer part, the decimal part,
+                or both.
+
+                <p>
+                    The built‑in
+                    <code>bigint</code>
+                    type avoids this issue but supports only integers.
+                </p>
+
+                <p>
+                    If you need to preserve all extremely large digits of both parts, you can override the built‑in
+                    <code>TuiValueTransformer</code>
+                    and store the number as an
+                    <code>&#123;significand: bigint; exp: number&#125;</code>
+                    instead.
+                </p>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -246,7 +303,7 @@
                 <tr
                     name="[min]"
                     tuiDocAPIItem
-                    type="number | null"
+                    type="number | bigint | null"
                     [items]="minVariants"
                     [(value)]="min"
                 >
@@ -258,7 +315,7 @@
                 <tr
                     name="[max]"
                     tuiDocAPIItem
-                    type="number | null"
+                    type="number | bigint | null"
                     [items]="maxVariants"
                     [(value)]="max"
                 >
@@ -270,7 +327,7 @@
                 <tr
                     name="[step]"
                     tuiDocAPIItem
-                    type="number"
+                    type="number | bigint"
                     [(value)]="step"
                 >
                     Step to increase/decrease value with keyboard and buttons on the side
@@ -301,7 +358,7 @@
                 <tr
                     name="[quantum]"
                     tuiDocAPIItem
-                    type="number"
+                    type="number | bigint"
                     [(value)]="quantum"
                 >
                     Minimum indivisible value
