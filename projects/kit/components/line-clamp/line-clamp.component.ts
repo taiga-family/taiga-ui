@@ -56,7 +56,7 @@ export class TuiLineClamp {
     private readonly lazyCalculation = afterNextRender({
         write: () => {
             this.updateMaxHeight();
-            this.updateVisualState();
+            this.calculateAndEmitOverflow();
 
             merge(
                 fromEvent(this.el, 'mouseenter').pipe(
@@ -79,14 +79,10 @@ export class TuiLineClamp {
     private readonly recalculateOnChange = effect(() => {
         this.lineHeight();
         this.linesLimit();
+        this.content();
 
         this.updateMaxHeight();
-
-        if (this.calculatedForHint()) {
-            this.calculateForHint();
-        } else {
-            this.updateVisualState();
-        }
+        this.calculateAndEmitOverflow();
     });
 
     public readonly lineHeight = input(24);
@@ -120,22 +116,18 @@ export class TuiLineClamp {
         this.el.style.maxHeight = tuiPx(this.maxHeight());
     }
 
-    private updateVisualState(): void {
+    private updateVisualState(overflown: boolean): void {
         const outlet = this.outlet()?.nativeElement;
 
         if (!outlet) {
             return;
         }
-
-        const overflown =
-            outlet.scrollHeight > this.maxHeight() ||
-            outlet.scrollWidth > this.el.clientWidth;
 
         this.el.style.height = tuiPx(outlet.scrollHeight);
         this.el.classList.toggle('_overflown', overflown);
     }
 
-    private calculateForHint(): void {
+    private calculateAndEmitOverflow(): void {
         const outlet = this.outlet()?.nativeElement;
 
         if (!outlet) {
@@ -146,11 +138,18 @@ export class TuiLineClamp {
             outlet.scrollHeight > this.maxHeight() ||
             outlet.scrollWidth > this.el.clientWidth;
 
-        this.calculatedForHint.set(true);
-        this.overflown.set(overflown);
-        this.overflownChange.emit(overflown);
+        const previousOverflown = this.overflown();
 
-        this.el.style.height = tuiPx(outlet.scrollHeight);
-        this.el.classList.toggle('_overflown', overflown);
+        this.overflown.set(overflown);
+        this.updateVisualState(overflown);
+
+        if (previousOverflown !== overflown) {
+            this.overflownChange.emit(overflown);
+        }
+    }
+
+    private calculateForHint(): void {
+        this.calculatedForHint.set(true);
+        this.calculateAndEmitOverflow();
     }
 }
