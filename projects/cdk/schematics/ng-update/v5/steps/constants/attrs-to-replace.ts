@@ -17,4 +17,8 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         },
         to: {attrName: '[iconStart]'},
     },
+    {
+        from: {attrName: 'tuiButtonClose'},
+        to: {attrName: 'tuiButtonX'},
+    },
 ];
