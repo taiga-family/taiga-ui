@@ -58,9 +58,9 @@
 - [Block](https://taiga-ui.dev/components/block) — Block is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself
 - [Bottom Sheet](https://taiga-ui.dev/components/bottom-sheet) — A non-modal draggable sheet
 - [Button](https://taiga-ui.dev/components/button)
-- [Button Close](https://taiga-ui.dev/components/button-close)
 - [Button Group](https://taiga-ui.dev/components/button-group)
 - [Button Select](https://taiga-ui.dev/components/button-select) — ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
+- [Button X](https://taiga-ui.dev/components/button-x)
 - [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
