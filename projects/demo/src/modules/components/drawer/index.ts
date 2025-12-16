@@ -28,7 +28,7 @@ export default class Page {
 
     protected open = signal(false);
     protected overlay = false;
-    protected direction: TuiHorizontalDirection = 'start';
+    protected direction: TuiHorizontalDirection = 'end';
 
     public onClose(): void {
         this.open.set(false);

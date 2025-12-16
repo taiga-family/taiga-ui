@@ -17,19 +17,19 @@ test.describe('TuiHint', () => {
 
     test.describe('Manual hint works', () => {
         const directions: Array<TuiHintOptions['direction']> = [
-            'bottom-left',
-            'bottom-right',
+            'bottom-start',
+            'bottom-end',
             'bottom',
-            'left-bottom',
-            'left-top',
-            'left',
-            'right-bottom',
-            'right-top',
-            'right',
-            'top-left',
-            'top-right',
+            'start-bottom',
+            'start-top',
+            'start',
+            'end-bottom',
+            'end-top',
+            'end',
+            'top-start',
+            'top-end',
             'top',
-            ['bottom', 'left'],
+            ['bottom', 'start'],
         ];
 
         directions.forEach((direction, directionIndex) => {
