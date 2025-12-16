@@ -51,8 +51,15 @@ export class TuiBigIntQuantumValueTransformer extends TuiValueTransformer<
     public override fromControlValue = identity;
 
     public toControlValue(value: bigint | null): bigint | null {
-        return this.quantum() && value
-            ? (value / this.quantum()) * this.quantum()
-            : value;
+        if (!this.quantum() || !value) {
+            return value;
+        }
+
+        const floor = (value / this.quantum()) * this.quantum();
+        const remainder = value % this.quantum();
+
+        return (
+            floor + (BigInt(2) * remainder >= this.quantum() ? this.quantum() : BigInt(0))
+        );
     }
 }
