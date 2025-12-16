@@ -9,7 +9,7 @@
 
 .t-wrapper {
     display: grid;
-    grid-template-rows: subgrid;
+    grid-template-rows: 1fr auto;
     grid-row: span 2;
 }
 
@@ -140,8 +140,11 @@
     :host._centered & {
         block-size: 2rem;
         text-align: center;
-        border: none;
         margin: 0;
+
+        &::before {
+            border: none;
+        }
     }
 
     :host:not(._centered) & {

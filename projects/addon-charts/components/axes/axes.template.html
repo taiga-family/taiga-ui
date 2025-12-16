@@ -33,32 +33,36 @@
     }
 </div>
 <div class="t-wrapper">
-    <div class="t-grid">
+    @let vLineFn = verticalLinesHandler();
+    @let vLines = verticalLines();
+    @let hLineFn = horizontalLinesHandler();
+    @let hLines = horizontalLines();
+    <div
+        class="t-grid"
+        [style.border-block-end-style]="hLineFn(0, hLines)"
+        [style.border-inline-start-style]="vLineFn(0, vLines)"
+    >
         <div class="t-vertical">
-            @let vLineFn = verticalLinesHandler();
-            @let vLines = verticalLines();
-            @for (_ of '-'.repeat(vLines); track $index) {
+            @for (_ of '-'.repeat(vLines - 1); track $index) {
                 <div
                     automation-id="tui-axex__vertical-line"
                     class="t-line t-line_vertical"
-                    [style.border-inline-start-style]="vLineFn($index, vLines)"
+                    [style.border-inline-end-style]="vLineFn($index + 1, vLines)"
                 ></div>
             }
         </div>
         <div class="t-horizontal">
-            @let hLineFn = horizontalLinesHandler();
-            @let hLines = horizontalLines();
-            @for (_ of '-'.repeat(hLines); track $index) {
+            @for (_ of '-'.repeat(hLines - 1); track $index) {
                 <div
                     automation-id="tui-axex__horizontal-line"
                     class="t-line"
-                    [style.border-block-end-style]="hLineFn($index, hLines)"
+                    [style.border-block-start-style]="hLineFn($index + 1, hLines)"
                 ></div>
             }
         </div>
         @if (yInset) {
             <div class="t-labels-y t-labels-y_inset">
-                @for (label of yLabels; track label) {
+                @for (label of yLabels; track $index) {
                     <div
                         automation-id="tui-axex__axis-y-label"
                         class="t-label-y"
@@ -70,7 +74,7 @@
         }
         @if (ySecInset) {
             <div class="t-labels-y t-labels-y_inset t-labels-y_inset_secondary">
-                @for (label of ySecLabels; track label) {
+                @for (label of ySecLabels; track $index) {
                     <div
                         automation-id="tui-axex__axis-y-secondary-label"
                         class="t-label-y"
@@ -86,7 +90,7 @@
     </div>
     @if (hasXs) {
         <div class="t-labels-x">
-            @for (label of axisXLabels(); track label) {
+            @for (label of axisXLabels(); track $index) {
                 <div
                     automation-id="tui-axex__axis-x-label"
                     class="t-label-x"

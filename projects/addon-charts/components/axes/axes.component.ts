@@ -18,17 +18,14 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
     },
 })
 export class TuiAxes {
-    protected readonly centeredXLabels = computed(() => this.axisY() === 'none');
-
-    public readonly axisX = input<TuiLineType>('solid');
     public readonly axisXLabels = input<ReadonlyArray<string | null>>([]);
-    public readonly axisY = input<TuiLineType>('solid');
     public readonly axisYInset = input(false);
     public readonly axisYLabels = input<readonly string[]>([]);
     public readonly axisYName = input('');
     public readonly axisYSecondaryInset = input(false);
     public readonly axisYSecondaryLabels = input<readonly string[]>([]);
     public readonly axisYSecondaryName = input('');
+    public readonly centeredXLabels = input(false);
     public readonly horizontalLines = input(1);
     public readonly horizontalLinesHandler = input<TuiLineHandler>(TUI_ALWAYS_SOLID);
     public readonly verticalLines = input(1);
