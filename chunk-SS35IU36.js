@@ -1,0 +1,26 @@
+import"./chunk-42JZD6NG.js";var t=`<p>
+    <tui-textfield [tuiTextfieldCleaner]="false">
+        <label tuiLabel>Range</label>
+        <input
+            tuiInputDateRange
+            [maxLength]="maxLength"
+            [(ngModel)]="range"
+        />
+        <tui-calendar-range *tuiDropdown />
+    </tui-textfield>
+</p>
+<tui-axes
+    class="axes"
+    [axisXLabels]="labels()"
+    [horizontalLines]="4"
+    [verticalLines]="labels().length - 1"
+>
+    <tui-line-days-chart
+        class="chart"
+        [height]="200"
+        [value]="value()"
+        [xStringify]="xStringify()"
+        [yStringify]="yStringify"
+    />
+</tui-axes>
+`;export{t as default};
