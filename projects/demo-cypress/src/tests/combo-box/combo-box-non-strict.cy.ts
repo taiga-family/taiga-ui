@@ -134,7 +134,7 @@ describe('ComboBox[strict=false]', () => {
 
             cy.get('@inputEvent').should('have.been.calledWith', 'Andorra');
 
-            cy.get('tui-textfield .t-clear').click();
+            cy.get('tui-textfield [tuiButtonX]').click();
 
             cy.get('@inputEvent').should('have.been.calledTwice');
             cy.get('@inputEvent').should('have.been.calledWith', '');
@@ -149,7 +149,7 @@ describe('ComboBox[strict=false]', () => {
                 name: 'Andorra',
             });
 
-            cy.get('tui-textfield .t-clear').click();
+            cy.get('tui-textfield [tuiButtonX]').click();
 
             cy.get('@valueChanges').should('have.been.calledTwice');
             cy.get('@valueChanges').should('have.been.calledWith', null);

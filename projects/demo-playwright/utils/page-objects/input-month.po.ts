@@ -1,7 +1,7 @@
 import {expect, type Locator} from '@playwright/test';
 
 export class TuiInputMonthPO {
-    public readonly cleaner = this.host.locator('.t-clear');
+    public readonly cleaner = this.host.locator('[tuiButtonX]');
     public readonly textfield: Locator = this.host.locator(
         '[tuiInputMonth], [tuiInputMonthRange]',
     );

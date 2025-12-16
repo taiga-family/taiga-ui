@@ -8,6 +8,10 @@ tui-dialog {
     &:not([data-appearance~='fullscreen'])._closable > header,
     &:not([data-appearance~='fullscreen'])._closable > ng-component > header {
         padding-inline-end: 2.5rem;
+
+        p {
+            margin-inline-end: -2.5rem;
+        }
     }
 
     & > header,
@@ -28,7 +32,7 @@ tui-dialog {
         }
     }
 
-    > .t-close {
+    > [tuiButtonX] {
         position: absolute;
         top: 1rem;
         z-index: 1;
