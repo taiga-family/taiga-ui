@@ -19910,18 +19910,18 @@ export class Example {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number | null` | value in the range of permitted values |
-| [max] | `number | null` | value in the range of permitted values |
-| [step] | `number` | Step to increase/decrease value with keyboard and buttons on the side |
+| [min] | `number | bigint | null` | value in the range of permitted values |
+| [max] | `number | bigint | null` | value in the range of permitted values |
+| [step] | `number | bigint` | Step to increase/decrease value with keyboard and buttons on the side |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
-| [quantum] | `number` |  |
+| [quantum] | `number | bigint` |  |
 
 ### Usage Examples
 
-#### Form control value
+#### Number as form control value
 
-Form control value is number or null when empty
+By default, form control value is number or null when empty
 
 **Template:**
 ```html
@@ -19930,8 +19930,10 @@ Form control value is number or null when empty
 <input tuiInputNumber [formControl]="control" />
 </tui-textfield>
 <tui-error [formControl]="control" />
-<p><strong>Control value:</strong></p>
+<p>
+<strong>Control value:</strong>
 <code>{{ control.value | json }}</code>
+</p>
 ```
 **TypeScript:**
 ```ts
@@ -19958,6 +19960,100 @@ export default class Example {
     protected readonly control = new FormControl<number | null>(
         null,
         Validators.required,
+    );
+}
+```
+
+#### BigInt as form control value
+
+Form control value type can be changed to bigint . Just put bigint attribute and set new values for min , max and precision properties.
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Enter a really huge integer</label>
+<input bigint tuiInputNumber [(ngModel)]="value" />
+</tui-textfield>
+<p>
+<strong>Control value:</strong>
+<code>{{ stringified() }}</code>
+</p>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiNumberFormatProvider} from '@taiga-ui/core';
+import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiInputNumber],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputNumberOptionsProvider({
+            min: -Infinity,
+            max: Infinity,
+        }),
+        tuiNumberFormatProvider({precision: 0}),
+    ],
+})
+export default class Example {
+    protected readonly value = signal<bigint | null>(
+        BigInt(`777${Number.MAX_SAFE_INTEGER}00`),
+    );
+
+    protected readonly stringified = computed((x = this.value()) =>
+        typeof x === 'bigint' ? `${x}n` : 'null',
+    );
+}
+```
+
+#### Large integer + large decimal parts
+
+JavaScript’s built‑in number type loses precision when a value contains too many digits in either the integer part, the decimal part, or both. The built‑in bigint type avoids this issue but supports only integers. If you need to preserve all extremely large digits of both parts, you can override the built‑in TuiValueTransformer and store the number as an &#123;significand: bigint; exp: number&#125; instead.
+
+**Template:**
+```html
+<tui-textfield>
+<input bigintWithDecimal postfix=" per day" prefix="$" tuiInputNumber [max]="infinity" [min]="0" [tuiNumberFormat]="{precision: infinity}" [(ngModel)]="value" />
+</tui-textfield>
+<p><strong>Control value:</strong></p>
+<pre><code>{{ stringified() }}</code></pre>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiNumberFormat} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
+
+import {type ControlValue, TuiBigIntWithDecimal} from './transformer';
+
+@Component({
+    imports: [FormsModule, TuiBigIntWithDecimal, TuiInputNumber, TuiNumberFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly infinity = Infinity;
+    protected readonly value = signal<ControlValue>({
+        significand: 123456700042n,
+        exp: -5,
+    });
+
+    protected readonly stringified = computed(() =>
+        JSON.stringify(
+            this.value(),
+            (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
+            2,
+        ),
     );
 }
 ```
@@ -20270,8 +20366,20 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(null, Validators.required);
-    protected readonly maxVariants: readonly number[] = [Infinity, 10, 500];
-    protected readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
+    protected readonly maxVariants: readonly number[] = [
+        Number.MAX_SAFE_INTEGER,
+        Infinity,
+        10,
+        500,
+    ];
+
+    protected readonly minVariants: readonly number[] = [
+        Number.MIN_SAFE_INTEGER,
+        -Infinity,
+        -500,
+        5,
+        25,
+    ];
 
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
@@ -20279,6 +20387,13 @@ export default class PageComponent {
     protected prefix = '';
     protected postfix = '';
     protected quantum = 0;
+
+    protected readonly bigIntWithDecimalTransformer = import(
+        './examples/11/transformer.ts?raw',
+        {
+            with: {loader: 'text'},
+        }
+    );
 }
 ```
 
