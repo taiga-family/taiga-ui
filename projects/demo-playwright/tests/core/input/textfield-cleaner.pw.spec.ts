@@ -18,7 +18,7 @@ describe('Textfield cleaner', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
             input = example.locator('tui-textfield input,textarea').first();
-            cleaner = example.locator('tui-textfield button.t-clear');
+            cleaner = example.locator('tui-textfield [tuiButtonX]');
         });
 
         test('ComboBox', async ({page}) => {

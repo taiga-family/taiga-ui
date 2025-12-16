@@ -1,14 +1,9 @@
 @if (context.closable) {
     <button
-        size="s"
-        tuiIconButton
-        type="button"
-        class="t-close"
+        tabindex="0"
+        tuiButtonX
         [appearance]="context.appearance.includes('fullscreen') ? 'action' : 'neutral'"
-        [iconStart]="icons.close"
-        [style.border-radius.%]="100"
         (click)="close$.next()"
-        (mousedown.prevent.zoneless)="(0)"
     >
         {{ close() }}
     </button>

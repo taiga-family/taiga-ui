@@ -16,7 +16,7 @@
         animation-name: tuiFade, tuiSlide;
     }
 
-    > .t-close {
+    > [tuiButtonX] {
         position: sticky;
         top: env(safe-area-inset-top);
         block-size: 4rem;
@@ -33,8 +33,8 @@
     }
 
     // Replace with :has when it's supported
-    //&:has(tui-app-bar) .t-close {
-    &.tui-app-bar .t-close {
+    //&:has(tui-app-bar) [tuiButtonX] {
+    &.tui-app-bar [tuiButtonX] {
         display: none;
     }
 
@@ -98,7 +98,7 @@
 
         --tui-from: translateY(4rem);
 
-        .t-close {
+        [tuiButtonX] {
             align-self: flex-start;
             block-size: 3.5rem;
             margin-block-end: 1rem;

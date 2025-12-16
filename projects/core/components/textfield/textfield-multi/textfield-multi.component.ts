@@ -18,9 +18,10 @@ import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
+import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent} from 'rxjs';
@@ -33,7 +34,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     imports: [
         AsyncPipe,
         PolymorpheusOutlet,
-        TuiButton,
+        TuiButtonX,
         TuiScrollControls,
         WaResizeObserver,
     ],

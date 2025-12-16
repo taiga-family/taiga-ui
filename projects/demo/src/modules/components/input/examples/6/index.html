@@ -11,12 +11,8 @@
 
     @if (value) {
         <button
-            iconStart="@tui.x"
-            tabindex="-1"
-            tuiIconButton
-            type="button"
+            tuiButtonX
             (click)="clear()"
-            (pointerdown.zoneless.prevent)="input.focus()"
         >
             Clear
         </button>

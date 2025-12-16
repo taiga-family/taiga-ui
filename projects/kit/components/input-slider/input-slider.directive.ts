@@ -24,8 +24,8 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
 @Component({
     template: '',
     styles: [
-        // TODO: tui-textfield:has([tuiInputSlider]) .t-clear
-        'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
+        // TODO: tui-textfield:has([tuiInputSlider]) [tuiButtonX]
+        'tui-textfield [tuiInputSlider] ~ .t-content [tuiButtonX] {display: none !important}',
         // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
         'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
         'tui-textfield [tuiSlider] { --tui-slider-track-color: transparent !important; }',

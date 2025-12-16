@@ -43,7 +43,7 @@ describe('InputDate', () => {
     });
 
     it('click on cleaner', () => {
-        cy.get('.t-clear').click();
+        cy.get('[tuiButtonX]').click();
 
         cy.get('[tuiInputDate]').should('have.value', '');
     });

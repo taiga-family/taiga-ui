@@ -309,9 +309,9 @@ tui-textfield {
         min-inline-size: 0.5rem;
     }
 
-    &:is([data-mode~='readonly'], [data-state='disabled'], ._empty) .t-clear,
-    [tuiInput]._empty ~ .t-content .t-clear,
-    [tuiInput]:disabled ~ .t-content .t-clear {
+    &:is([data-mode~='readonly'], [data-state='disabled'], ._empty) [tuiButtonX],
+    [tuiInput]._empty ~ .t-content [tuiButtonX],
+    [tuiInput]:disabled ~ .t-content [tuiButtonX] {
         display: none;
     }
 
