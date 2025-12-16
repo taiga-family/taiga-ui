@@ -35,9 +35,9 @@
 <tui-axes
     class="axes"
     [axisXLabels]="labels()"
-    [horizontalLines]="4"
+    [horizontalLines]="5"
     [tuiLineChartHint]="hint"
-    [verticalLines]="labels().length - 1"
+    [verticalLines]="labels().length"
 >
     @if (getWidth(show()) > 90) {
         @for (chart of days(); track chart) {

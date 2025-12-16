@@ -1,9 +1,11 @@
 import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
-import {type TuiLineHandler, type TuiLineType} from '@taiga-ui/addon-charts/types';
+import {type TuiLineHandler} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
-export const TUI_ALWAYS_DASHED: TuiLineHandler = () => 'dashed';
-export const TUI_ALWAYS_DOTTED: TuiLineHandler = () => 'dotted';
+export const TUI_ALWAYS_DASHED: TuiLineHandler = (index) =>
+    (index && 'dashed') || 'solid';
+export const TUI_ALWAYS_DOTTED: TuiLineHandler = (index) =>
+    (index && 'dotted') || 'solid';
 export const TUI_ALWAYS_SOLID: TuiLineHandler = () => 'solid';
 export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 
@@ -18,20 +20,17 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
     },
 })
 export class TuiAxes {
-    protected readonly centeredXLabels = computed(() => this.axisY() === 'none');
-
-    public readonly axisX = input<TuiLineType>('solid');
     public readonly axisXLabels = input<ReadonlyArray<string | null>>([]);
-    public readonly axisY = input<TuiLineType>('solid');
     public readonly axisYInset = input(false);
     public readonly axisYLabels = input<readonly string[]>([]);
     public readonly axisYName = input('');
     public readonly axisYSecondaryInset = input(false);
     public readonly axisYSecondaryLabels = input<readonly string[]>([]);
     public readonly axisYSecondaryName = input('');
-    public readonly horizontalLines = input(0);
+    public readonly centeredXLabels = input(false);
+    public readonly horizontalLines = input(1);
     public readonly horizontalLinesHandler = input<TuiLineHandler>(TUI_ALWAYS_SOLID);
-    public readonly verticalLines = input(0);
+    public readonly verticalLines = input(1);
     public readonly verticalLinesHandler = input<TuiLineHandler>(TUI_ALWAYS_DASHED);
 
     public readonly fallbackLabel = CHAR_NO_BREAK_SPACE;
