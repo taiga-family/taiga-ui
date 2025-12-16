@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
-import {type TuiLineHandler, type TuiLineType} from '@taiga-ui/addon-charts/types';
+import {type TuiLineHandler} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
 export const TUI_ALWAYS_DASHED: TuiLineHandler = (index) =>
