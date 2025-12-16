@@ -39,7 +39,7 @@ class PortalHost implements TuiRectAccessor {
 export default class Example {
     protected hintShown = false;
 
-    protected directions: TuiHintDirection[] = ['top', 'left', 'right', 'bottom'];
+    protected directions: TuiHintDirection[] = ['top', 'start', 'end', 'bottom'];
 
     protected selected = this.directions[0]!;
 

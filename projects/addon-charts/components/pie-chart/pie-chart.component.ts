@@ -40,7 +40,7 @@ const TRANSFORM = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [
         tuiHintOptionsProvider({
-            direction: 'top-right',
+            direction: 'top-end',
             appearance: 'floating',
             showDelay: 0,
             hideDelay: 0,
