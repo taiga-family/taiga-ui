@@ -1,14 +1,12 @@
 <tui-textfield>
-    <label tuiLabel>Enter a really huge integer</label>
-
     <input
-        bigint
         tuiInputNumber
+        [max]="1"
+        [min]="0"
+        [quantum]="0.05"
         [(ngModel)]="value"
     />
 </tui-textfield>
 
-<p>
-    <strong>Control value:</strong>
-    <code>{{ stringified() }}</code>
-</p>
+<p><strong>Control value:</strong></p>
+<code>{{ value | json }}</code>

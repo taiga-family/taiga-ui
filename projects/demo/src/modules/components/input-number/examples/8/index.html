@@ -1,12 +1,9 @@
-<tui-textfield>
+<tui-textfield [style.width.rem]="10">
     <input
-        placeholder="Form control contains NaN"
+        postfix=" €"
+        tuiFluidTypography
         tuiInputNumber
+        [min]="0"
         [(ngModel)]="value"
     />
 </tui-textfield>
-
-<p>
-    Control value:
-    <code>{{ value.toString() }}</code>
-</p>
