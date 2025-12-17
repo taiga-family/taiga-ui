@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {shouldCall} from '@taiga-ui/event-plugins';
 
 import {TuiElasticContainerDirective} from './elastic-container.directive';
 
@@ -15,8 +14,9 @@ export class TuiElasticContainer {
     protected height = '';
     protected transitions = 0;
 
-    @shouldCall((name) => name === 'height')
-    protected onAnimation(_name: string, count: number): void {
-        this.transitions += count;
+    protected onAnimation(name: string, count: number): void {
+        if (name === 'height') {
+            this.transitions += count;
+        }
     }
 }
