@@ -18,8 +18,11 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
 
 @Directive()
 export class TuiDropdownClose {
-    private readonly open = inject(TuiDropdownOpen);
+    private readonly el = tuiInjectElement();
     private readonly ref = inject(TuiDropdownDirective).ref;
+    private readonly open = inject(TuiDropdownOpen);
+    private readonly obscured = inject(TuiObscured);
+    private readonly activeZone = inject(TuiActiveZone);
 
     protected readonly tuiDropdownClose = outputFromObservable(
         merge(
@@ -27,9 +30,9 @@ export class TuiDropdownClose {
                 tuiIfMap(() =>
                     merge(
                         tuiCloseWatcher(),
-                        inject(TuiObscured).tuiObscured$.pipe(filter(Boolean)),
-                        inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter((a) => !a)),
-                        tuiTypedFromEvent(tuiInjectElement(), 'focusin').pipe(
+                        this.obscured.tuiObscured$.pipe(filter(Boolean)),
+                        this.activeZone.tuiActiveZoneChange.pipe(filter((a) => !a)),
+                        tuiTypedFromEvent(this.el, 'focusin').pipe(
                             filter(
                                 (event) =>
                                     !this.open.host.contains(tuiGetActualTarget(event)) ||
