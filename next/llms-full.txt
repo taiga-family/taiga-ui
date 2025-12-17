@@ -19964,51 +19964,35 @@ export default class Example {
 }
 ```
 
-#### BigInt as form control value
+#### Quantum
 
-Form control value type can be changed to bigint . Just put bigint attribute and set new values for min , max and precision properties.
+Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
 
 **Template:**
 ```html
 <tui-textfield>
-<label tuiLabel>Enter a really huge integer</label>
-<input bigint tuiInputNumber [(ngModel)]="value" />
+<input tuiInputNumber [max]="1" [min]="0" [quantum]="0.05" [(ngModel)]="value" />
 </tui-textfield>
-<p>
-<strong>Control value:</strong>
-<code>{{ stringified() }}</code>
-</p>
+<p><strong>Control value:</strong></p>
+<code>{{ value | json }}</code>
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, signal} from '@angular/core';
+import {JsonPipe} from '@angular/common';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiNumberFormatProvider} from '@taiga-ui/core';
-import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiInputNumber],
+    imports: [FormsModule, JsonPipe, TuiInputNumber],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputNumberOptionsProvider({
-            min: -Infinity,
-            max: Infinity,
-        }),
-        tuiNumberFormatProvider({precision: 0}),
-    ],
 })
 export default class Example {
-    protected readonly value = signal<bigint | null>(
-        BigInt(`777${Number.MAX_SAFE_INTEGER}00`),
-    );
-
-    protected readonly stringified = computed((x = this.value()) =>
-        typeof x === 'bigint' ? `${x}n` : 'null',
-    );
+    protected value = 0.5;
 }
 ```
 
@@ -20054,6 +20038,54 @@ export default class Example {
             (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
             2,
         ),
+    );
+}
+```
+
+#### BigInt as form control value
+
+Form control value type can be changed to bigint . Just put bigint attribute and set new values for min , max and precision properties.
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Enter a really huge integer</label>
+<input bigint tuiInputNumber [(ngModel)]="value" />
+</tui-textfield>
+<p>
+<strong>Control value:</strong>
+<code>{{ stringified() }}</code>
+</p>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiNumberFormatProvider} from '@taiga-ui/core';
+import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiInputNumber],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputNumberOptionsProvider({
+            min: -Infinity,
+            max: Infinity,
+        }),
+        tuiNumberFormatProvider({precision: 0}),
+    ],
+})
+export default class Example {
+    protected readonly value = signal<bigint | null>(
+        BigInt(`777${Number.MAX_SAFE_INTEGER}00`),
+    );
+
+    protected readonly stringified = computed((x = this.value()) =>
+        typeof x === 'bigint' ? `${x}n` : 'null',
     );
 }
 ```
@@ -20296,38 +20328,6 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
 })
 export default class Example {
     protected value = NaN;
-}
-```
-
-#### Quantum
-
-Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
-
-**Template:**
-```html
-<tui-textfield>
-<input tuiInputNumber [max]="1" [min]="0" [quantum]="0.05" [(ngModel)]="value" />
-</tui-textfield>
-<p><strong>Control value:</strong></p>
-<code>{{ value | json }}</code>
-```
-**TypeScript:**
-```ts
-import {JsonPipe} from '@angular/common';
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputNumber} from '@taiga-ui/kit';
-
-@Component({
-    imports: [FormsModule, JsonPipe, TuiInputNumber],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value = 0.5;
 }
 ```
 
