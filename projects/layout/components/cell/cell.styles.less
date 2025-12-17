@@ -4,6 +4,7 @@
     --t-padding: 0.125rem 1rem;
     --t-radius: var(--tui-radius-s);
 
+    .transition(~'background');
     .button-clear();
 
     position: relative;
@@ -15,6 +16,10 @@
     padding: var(--t-padding);
     min-block-size: var(--t-height);
     border-radius: var(--t-radius);
+
+    &:is(button, label):not(:disabled):active {
+        background: var(--tui-background-neutral-1);
+    }
 
     &:disabled,
     &[data-state='disabled'] {
