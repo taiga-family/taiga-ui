@@ -1,0 +1,1 @@
+import{c as e}from"./chunk-E7Y4TAVT.js";import{a as i}from"./chunk-KAYYP4SN.js";import{wa as t,za as n}from"./chunk-3GO6VFWB.js";var T=new t(""),u=[{provide:T,useFactory:()=>{var r;let o=n(i),E=(((r=o.querySelector("base"))==null?void 0:r.href)??"").replace(o.location.origin,"");return e.get(E)??e.get("/")??null}}];export{T as a,u as b};
