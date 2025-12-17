@@ -11,7 +11,7 @@
 .img {
     display: block;
     margin: auto;
-    max-inline-size: 25rem;
+    max-inline-size: ~'min(25rem, 100%)';
 }
 
 .img-min {
@@ -52,28 +52,7 @@
     border-radius: 1.5rem;
     flex-direction: column;
     justify-content: space-between;
+    text-decoration: none;
     padding: 0;
-    border: none;
     overflow: hidden;
-
-    .title {
-        margin-block-start: 2.1875rem;
-    }
-
-    [tuiCardLarge] {
-        .transition(transform);
-
-        display: inline;
-        box-shadow: none;
-        border: 1px solid var(--tui-border-normal);
-        border-block-end: none;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-        background: var(--tui-background-base);
-        transform: translateY(2.5rem);
-    }
-
-    &:hover [tuiCardLarge] {
-        transform: translateY(0);
-    }
 }

@@ -1,4 +1,38 @@
-<tui-doc-page header="Taiga UI family">
+<tui-doc-page header="About">
+    <p>
+        Taiga UI is a comprehensive Angular UI kit built and maintained by a dedicated team of passionate developers,
+        including two Google Developer Experts.
+    </p>
+    <p>
+        The library consists of several packages, such as CDK, Core, Kit and so on, building upon each other to provide
+        a robust foundation for Angular applications.
+    </p>
+    <p>
+        All of its
+        <em>dependencies</em>
+        <tui-icon
+            tuiHintAppearance="floating"
+            [tuiTooltip]="deps"
+        />
+        <ng-template #deps>
+            With a sole exception of Google's
+            <a
+                href="https://github.com/google/libphonenumber"
+                tuiLink
+            >
+                libphonenumber
+            </a>
+            used as a source of truth for internation phone number formats
+        </ng-template>
+        are managed under the same
+        <a
+            href="https://github.com/taiga-family"
+            tuiLink
+        >
+            Taiga Family
+        </a>
+        GitHub organization. You can read more on each individual package below.
+    </p>
     <div class="grid-container grid">
         <a
             href="http://bit.ly/3XBdHs4"
@@ -13,39 +47,15 @@
                 class="img"
             />
 
-            <button
-                tuiCardLarge
-                type="button"
-            >
-                Taiga UI is a huge Angular UI kit and a components library that you should definitely try out. But it’s
-                not just that. We’ve been working on it for over 5 years, starting as far back as Angular 4. And being
-                fascinated by decomposition, we’ve spawned a multitude of independently helpful isolated libraries that
-                allow us to build impressive Angular apps. While you might not be interested in using Taiga UI itself,
-                these separate projects could definitely improve your Angular DX and provide you with amazingly useful
-                tools. So in this article, let’s explore the Taiga UI family and see what makes it great.
-                <br />
-                <br />
-                <a tuiLink>Read more...</a>
-            </button>
+            <div tuiCardLarge>
+                <div>
+                    Read more about
+                    <b>Taiga UI Family</b>
+                </div>
+            </div>
         </a>
 
         <div class="grid">
-            <a
-                appearance="floating"
-                href="https://taiga-family.github.io/ng-morph/"
-                rel="noreferrer"
-                target="_blank"
-                tuiCardLarge
-            >
-                <img
-                    alt="ng-morph logo"
-                    src="https://raw.githubusercontent.com/taiga-family/ng-morph/main/apps/demo/src/assets/images/ng-morph.png"
-                    class="img img-min"
-                />
-                <h3 class="title title_size_s">ng-morph</h3>
-                <div>Code mutations in your project or schematics were never easier than now.</div>
-            </a>
-
             <a
                 appearance="floating"
                 href="https://github.com/taiga-family/ng-event-plugins"
@@ -72,13 +82,45 @@
                         Included with
                         <code>&#64;taiga-ui/cdk</code>
                     </strong>
-                    and enabled by
-                    <code>TuiRoot</code>
                 </div>
+            </a>
+            <a
+                appearance="floating"
+                href="https://taiga-family.github.io/ng-morph/"
+                rel="noreferrer"
+                target="_blank"
+                tuiCardLarge
+            >
+                <img
+                    alt="ng-morph logo"
+                    src="https://raw.githubusercontent.com/taiga-family/ng-morph/main/apps/demo/src/assets/images/ng-morph.png"
+                    class="img img-min"
+                />
+                <h3 class="title title_size_s">ng-morph</h3>
+                <div>Code mutations in your project or schematics were never easier than now.</div>
             </a>
         </div>
 
         <div class="grid">
+            <a
+                appearance="floating"
+                href="https://maskito.dev"
+                rel="noreferrer"
+                target="_blank"
+                tuiCardLarge
+            >
+                <img
+                    alt="maskito logo"
+                    src="https://raw.githubusercontent.com/taiga-family/maskito/main/projects/demo/src/assets/icons/maskito.svg"
+                    class="img img-min"
+                />
+                <h3 class="title title_size_s">Maskito</h3>
+                <div>
+                    Collection of libraries to create an input mask which ensures that user types value according to
+                    predefined format. Core concepts of the libraries are simple but they provide flexible API to set
+                    any format you wish: numbers, phone, date, credit card number etc.
+                </div>
+            </a>
             <a
                 appearance="floating"
                 href="https://github.com/taiga-family/ng-dompurify"
@@ -91,27 +133,6 @@
                 <div>
                     This library implements DOMPurify as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify
                     and supports the same configuration.
-                </div>
-            </a>
-
-            <a
-                appearance="floating"
-                href="https://taiga-family.github.io/ng-draw-flow"
-                rel="noreferrer"
-                target="_blank"
-                tuiCardLarge
-            >
-                <img
-                    alt="ng-draw-flow logo"
-                    src="https://raw.githubusercontent.com/taiga-family/ng-draw-flow/main/projects/demo/src/assets/icons/logo.svg"
-                    class="img img-min"
-                />
-
-                <h3 class="title">NgDrawFlow</h3>
-
-                <div>
-                    A customizable Angular component for building node-based editors and interactive diagrams with
-                    intuitive drag-and-drop functionality and seamless connection management.
                 </div>
             </a>
         </div>
@@ -131,11 +152,32 @@
             <h3 class="title title_size_s">&#64;taiga-ui/polymorpheus</h3>
             <div>
                 A tiny library that abstracts over different ways of view customization in Angular with one simple
-                attribute component.
+                structural directive.
                 <strong>
                     Included with
                     <code>&#64;taiga-ui/cdk</code>
                 </strong>
+            </div>
+        </a>
+
+        <a
+            appearance="floating"
+            href="https://taiga-family.github.io/ng-draw-flow"
+            rel="noreferrer"
+            target="_blank"
+            tuiCardLarge
+        >
+            <img
+                alt="ng-draw-flow logo"
+                src="https://raw.githubusercontent.com/taiga-family/ng-draw-flow/main/projects/demo/src/assets/icons/logo.svg"
+                class="img img-min"
+            />
+
+            <h3 class="title">NgDrawFlow</h3>
+
+            <div>
+                A customizable Angular component for building node-based editors and interactive diagrams with intuitive
+                drag-and-drop functionality and seamless connection management.
             </div>
         </a>
 
@@ -166,42 +208,7 @@
             </div>
         </a>
 
-        <a
-            appearance="floating"
-            href="https://maskito.dev"
-            rel="noreferrer"
-            target="_blank"
-            tuiCardLarge
-        >
-            <img
-                alt="maskito logo"
-                src="https://raw.githubusercontent.com/taiga-family/maskito/main/projects/demo/src/assets/icons/maskito.svg"
-                class="img img-min"
-            />
-            <h3 class="title title_size_s">Maskito</h3>
-            <div>
-                Collection of libraries to create an input mask which ensures that user types value according to
-                predefined format. Core concepts of the libraries are simple but they provide flexible API to set any
-                format you wish: numbers, phone, date, credit card number etc.
-            </div>
-        </a>
-
         <div class="grid">
-            <a
-                appearance="floating"
-                rel="noreferrer"
-                target="_blank"
-                tuiCardLarge
-                [href]="screenshotBotLink"
-            >
-                <h3 class="title">Github App {{ screenshotBotName }}</h3>
-
-                <div>
-                    GitHub App to watch for repository's workflows with tests and pin screenshots differences images to
-                    bot's comment of pull request
-                </div>
-            </a>
-
             <a
                 appearance="floating"
                 href="https://taiga-family.github.io/editor"
@@ -216,6 +223,18 @@
                 />
                 <h3 class="title title_size_s">&#64;taiga-ui/editor</h3>
                 <div>TUI Editor is a rich text editor extension with related Taiga UI components.</div>
+            </a>
+
+            <a
+                appearance="floating"
+                rel="noreferrer"
+                target="_blank"
+                tuiCardLarge
+                [href]="screenshotBotLink"
+            >
+                <h3 class="title">Github App {{ screenshotBotName }}</h3>
+
+                <div>GitHub App to help with screenshot tests by attaching them as comments to PRs</div>
             </a>
         </div>
     </div>

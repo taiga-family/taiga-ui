@@ -34,91 +34,74 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Documentation',
-        title: 'Migration Guide',
-        keywords: 'update, migrate, обновление, миграция',
-        route: DemoRoute.MigrationGuide,
-    },
-    {
-        section: 'Documentation',
-        title: 'Browser support',
-        keywords: 'chrome, safari, ie, edge, firefox',
-        route: DemoRoute.BrowserSupport,
-    },
-    {
-        section: 'Documentation',
-        title: 'Changelog',
-        keywords: 'release, change, changelog, archive, history',
-        route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
-        target: '_blank',
-    },
-    {
-        section: 'Documentation',
-        title: 'Server Side Rendering',
-        keywords: 'ssr, server, prerender, back, node, universal',
-        route: DemoRoute.SSR,
-    },
-    {
-        section: 'Documentation',
-        title: 'Direction: RTL',
-        keywords:
-            'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
-        route: DemoRoute.RTL,
-    },
-    {
-        section: 'Documentation',
-        title: 'Documentation engine',
-        keywords:
-            'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
-        route: 'https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-doc/README.md',
-        target: '_blank',
-    },
-    {
-        section: 'Documentation',
-        title: 'Taiga UI family',
-        keywords: 'related, libraries, other, friendly, npm, packages',
-        route: DemoRoute.Related,
-    },
-    {
-        section: 'Documentation',
-        title: 'StackBlitz',
-        keywords: 'reproduce, issue, bug, sandbox, playground, test',
-        route: DemoRoute.StackblitzStarter,
-        target: '_blank',
-    },
-    {
-        section: 'Documentation',
-        title: 'Testing',
+        title: 'Information',
         subPages: [
             {
                 section: 'Documentation',
-                title: 'Jest',
-                keywords:
-                    'test, tests, testing, jest, ReferenceError, IntersectionObserver',
-                route: DemoRoute.Jest,
+                title: 'About',
+                keywords: 'related, libraries, other, friendly, npm, packages',
+                route: DemoRoute.About,
             },
             {
                 section: 'Documentation',
-                title: 'Disable animation',
-                keywords:
-                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы',
-                route: DemoRoute.DisableAnimation,
+                title: 'Browser support',
+                keywords: 'chrome, safari, ie, edge, firefox',
+                route: DemoRoute.BrowserSupport,
             },
             {
                 section: 'Documentation',
-                title: 'Our screenshot bot',
-                keywords:
-                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы, github, github-app, bot, screenshot',
-                route: DemoRoute.ScreenshotBot,
+                title: 'Changelog',
+                keywords: 'release, change, changelog, archive, history',
+                route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
+                target: '_blank',
+            },
+            {
+                section: 'Documentation',
+                title: 'Migration Guide',
+                keywords: 'update, migrate, обновление, миграция',
+                route: DemoRoute.MigrationGuide,
             },
         ],
     },
     {
         section: 'Documentation',
-        title: 'AI support',
-        keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
-        route: DemoRoute.AISupport,
+        title: 'Styles',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'Typography',
+                keywords:
+                    'layout, text, верстка, markup, font, текст, шрифты, гельветика, sans, typography',
+                route: DemoRoute.Typography,
+            },
+            {
+                section: 'Documentation',
+                title: 'Breakpoints',
+                keywords:
+                    'css, breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
+                route: DemoRoute.Breakpoints,
+            },
+            {
+                section: 'Documentation',
+                title: 'Colors',
+                keywords: 'layout, верстка, palette, markup, цвет, палитра',
+                route: DemoRoute.Colors,
+            },
+            {
+                section: 'Documentation',
+                title: 'Shadows',
+                keywords: 'layout, markup, тень, shadows',
+                route: DemoRoute.Shadows,
+            },
+            {
+                section: 'Documentation',
+                title: 'Lists',
+                keywords:
+                    'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
+                route: DemoRoute.Lists,
+            },
+        ],
     },
-    // Customization
     {
         section: 'Documentation',
         title: 'Customization',
@@ -158,6 +141,73 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Testing',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'Jest',
+                keywords:
+                    'test, tests, testing, jest, ReferenceError, IntersectionObserver',
+                route: DemoRoute.Jest,
+            },
+            {
+                section: 'Documentation',
+                title: 'Disable animations',
+                keywords:
+                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы',
+                route: DemoRoute.DisableAnimation,
+            },
+            {
+                section: 'Documentation',
+                title: 'Our screenshot bot',
+                keywords:
+                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы, github, github-app, bot, screenshot',
+                route: DemoRoute.ScreenshotBot,
+            },
+        ],
+    },
+    {
+        section: 'Documentation',
+        title: 'More',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'Server Side Rendering',
+                keywords: 'ssr, server, prerender, back, node, universal',
+                route: DemoRoute.SSR,
+            },
+            {
+                section: 'Documentation',
+                title: 'AI support',
+                keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
+                route: DemoRoute.AISupport,
+            },
+            {
+                section: 'Documentation',
+                title: 'Direction: RTL',
+                keywords:
+                    'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
+                route: DemoRoute.RTL,
+            },
+            {
+                section: 'Documentation',
+                title: 'Documentation engine',
+                keywords:
+                    'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
+                route: 'https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-doc/README.md',
+                target: '_blank',
+            },
+            {
+                section: 'Documentation',
+                title: 'StackBlitz',
+                keywords: 'reproduce, issue, bug, sandbox, playground, test',
+                route: DemoRoute.StackblitzStarter,
+                target: '_blank',
+            },
+        ],
+    },
+    {
+        section: 'Documentation',
         title: 'Routable Dialog',
         subPages: [
             {
@@ -171,59 +221,6 @@ export const pages: DocRoutePages = [
                 title: 'Lazy',
                 keywords: 'dialog, modal, navigation, route, lazy, routable',
                 route: DemoRoute.DialogLazyRoutable,
-            },
-        ],
-    },
-    // Foundations
-    {
-        section: 'Documentation',
-        title: 'Foundations',
-        subPages: [
-            {
-                section: 'Documentation',
-                title: 'Typography',
-                keywords:
-                    'layout, text, верстка, markup, font, текст, шрифты, гельветика, sans, typography',
-                route: DemoRoute.Typography,
-            },
-            {
-                section: 'Documentation',
-                title: 'Breakpoints',
-                keywords:
-                    'css, breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
-                route: DemoRoute.Breakpoints,
-            },
-            {
-                section: 'Documentation',
-                title: 'Colors',
-                keywords: 'layout, верстка, palette, markup, цвет, палитра',
-                route: DemoRoute.Colors,
-            },
-        ],
-    },
-    {
-        section: 'Documentation',
-        title: 'Styles',
-        subPages: [
-            {
-                section: 'Documentation',
-                title: 'Shadows',
-                keywords: 'layout, markup, тень, shadows',
-                route: DemoRoute.Shadows,
-            },
-            {
-                section: 'Documentation',
-                title: 'Lists',
-                keywords:
-                    'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
-                route: DemoRoute.Lists,
-            },
-            {
-                section: 'Documentation',
-                title: 'Spaces',
-                keywords:
-                    'layout, markup, отступы, margin, padding, маржин, падинг, spaces',
-                route: DemoRoute.Spaces,
             },
         ],
     },
