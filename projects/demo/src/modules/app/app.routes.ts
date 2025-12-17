@@ -31,9 +31,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/rtl'),
     }),
     route({
-        path: DemoRoute.Related,
-        title: 'Taiga UI family',
-        loadComponent: async () => import('../info/related'),
+        path: DemoRoute.About,
+        title: 'About',
+        loadComponent: async () => import('../info/about'),
     }),
     route({
         path: DemoRoute.Jest,
@@ -42,7 +42,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.DisableAnimation,
-        title: 'Disable animation',
+        title: 'Disable animations',
         loadComponent: async () => import('../info/testing/disable-animation'),
     }),
     route({
@@ -777,11 +777,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Shadows,
         loadComponent: async () => import('../markup/shadows'),
         title: 'Shadows',
-    }),
-    route({
-        path: DemoRoute.Spaces,
-        loadComponent: async () => import('../markup/spaces'),
-        title: 'Spaces',
     }),
     route({
         path: DemoRoute.Typography,
