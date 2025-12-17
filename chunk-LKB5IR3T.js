@@ -1,0 +1,18 @@
+import"./chunk-B4AJQJMI.js";var e=`\`\`\`ts
+import {ReactiveFormsModule} from '@angular/forms';
+import {TuiInputInline} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    ReactiveFormsModule,
+    TuiInputInline,
+  ],
+  // ...
+})
+export class Example {}
+\`\`\`
+`;export{e as default};

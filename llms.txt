@@ -17,17 +17,14 @@
 - [Ai Support](https://taiga-ui.dev/ai-support)
 - [Appearances](https://taiga-ui.dev/appearances)
 - [Breakpoints](https://taiga-ui.dev/breakpoints)
-- [Browser Support](https://taiga-ui.dev/browser-support)
 - [Colors](https://taiga-ui.dev/colors)
 - [Getting Started](https://taiga-ui.dev/getting-started)
 - [I18n](https://taiga-ui.dev/i18n)
 - [Lists](https://taiga-ui.dev/lists)
 - [Migration Guide](https://taiga-ui.dev/migration-guide)
 - [Portals](https://taiga-ui.dev/portals)
-- [Related](https://taiga-ui.dev/related)
 - [Rtl](https://taiga-ui.dev/rtl)
 - [Shadows](https://taiga-ui.dev/shadows)
-- [Spaces](https://taiga-ui.dev/spaces)
 - [Ssr](https://taiga-ui.dev/ssr)
 - [Stackblitz](https://taiga-ui.dev/stackblitz)
 - [Typography](https://taiga-ui.dev/typography)
@@ -195,6 +192,11 @@
 - [Validator](https://taiga-ui.dev/directives/validator) — tuiValidator allows set validators for form control on the fly
 - [Value Changes](https://taiga-ui.dev/directives/value-changes) — This directive allows you to access reactive control or container value changes as an output
 - [Zoom](https://taiga-ui.dev/directives/zoom) — tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
+
+### Info
+
+- [About](https://taiga-ui.dev/info/about)
+- [Browser Support](https://taiga-ui.dev/info/browser-support)
 
 ### Layout
 

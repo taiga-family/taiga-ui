@@ -1,0 +1,1 @@
+import"./chunk-B4AJQJMI.js";var i="```html\n{{ 100000 | tuiAmount : currency : align }}\n<p>{{ 100000 | tuiAmount : '978' : 'left' }}</p>\n<p>{{ 100000 | tuiAmount : 'EUR' : 'right' }}</p>\n```\n";export{i as default};

@@ -1,9 +1,0 @@
-import"./chunk-42JZD6NG.js";var l=`.badge {
-    max-inline-size: 10rem;
-}
-
-.t-ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-`;export{l as default};

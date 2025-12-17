@@ -1,0 +1,20 @@
+import"./chunk-B4AJQJMI.js";var r=`:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 18rem;
+    margin: 1rem 0;
+}
+
+tui-swipe-actions {
+    margin: -1.5rem -1rem;
+}
+
+[tuiCardLarge] {
+    margin: 1.5rem 1rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
+}
+`;export{r as default};

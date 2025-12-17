@@ -1,0 +1,14 @@
+import"./chunk-B4AJQJMI.js";var e=`\`\`\`ts
+import {TuiTableFilters} from '@taiga-ui/addon-table';
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiTableFilters,
+  ],
+  // ...
+})
+export class Example {}
+\`\`\`
+`;export{e as default};

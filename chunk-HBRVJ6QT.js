@@ -1,0 +1,14 @@
+import"./chunk-B4AJQJMI.js";var o=`import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+
+@Component({
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+}
+`;export{o as default};

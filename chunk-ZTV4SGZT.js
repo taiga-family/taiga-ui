@@ -1,0 +1,10 @@
+import"./chunk-B4AJQJMI.js";var p=`<tui-chip>Default appearance is Neutral</tui-chip>
+<tui-chip appearance="primary">Primary</tui-chip>
+<tui-chip appearance="accent">Accent</tui-chip>
+<tui-chip appearance="positive">Positive</tui-chip>
+<tui-chip appearance="negative">Negative</tui-chip>
+<tui-chip appearance="warning">Warning</tui-chip>
+<tui-chip appearance="info">Info</tui-chip>
+<tui-chip appearance="outline">Outline</tui-chip>
+<tui-chip appearance="floating">Floating</tui-chip>
+`;export{p as default};
