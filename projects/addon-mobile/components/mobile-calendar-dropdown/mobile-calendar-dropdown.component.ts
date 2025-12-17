@@ -47,9 +47,9 @@ export class TuiMobileCalendarDropdownComponent {
     private readonly context = injectContext<Record<string, any>>({optional: true});
     private readonly observer?: Observer<unknown> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
-    private selectedPeriod: TuiDayRange | null = null;
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
+    protected selectedPeriod: TuiDayRange | null = null;
     protected readonly control: any = inject(TuiControl, {optional: true});
     protected readonly directive = inject(TuiMobileCalendarDropdown, {optional: true});
     protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
