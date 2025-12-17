@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {TuiMapperPipe} from '@taiga-ui/cdk/pipes';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {
