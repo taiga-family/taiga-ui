@@ -1,0 +1,73 @@
+import"./chunk-B4AJQJMI.js";var o=`<h3>Long mobile dialog with filters</h3>
+<button
+    size="m"
+    tuiButton
+    type="button"
+    class="tui-space_right-3 tui-space_bottom-2"
+    (click)="showDialog(long)"
+>
+    Show
+</button>
+
+<ng-template #long>
+    <div class="background"></div>
+    <header
+        #header
+        class="header"
+        (tuiElasticSticky)="onElastic($event, header)"
+    >
+        <section class="logo">
+            <label class="date">8 March, 23:51</label>
+            <div
+                size="xl"
+                tuiAvatar="@tui.chevron-down"
+                class="icon"
+            ></div>
+        </section>
+        <div class="wrapper">
+            <p class="description">Card payment</p>
+            <h3 class="title">Sushi</h3>
+
+            <span
+                class="money"
+                [tuiNumberFormat]="{decimalMode: 'always'}"
+            >
+                {{ 300 | tuiAmount: 'RUB' }}
+            </span>
+        </div>
+    </header>
+    <blockquote>
+        <h1>Additional information</h1>
+        <p>
+            In user interface design for computer applications, a modal window is a graphical control element
+            subordinate to an application's main window. A modal window creates a mode that disables the main window but
+            keeps it visible, with the modal window as a child window in front of it. Users must interact with the modal
+            window before they can return to the parent application. This avoids interrupting the workflow on the main
+            window. Modal windows are sometimes called heavy windows or modal dialogs because they often display a
+            dialog box.
+        </p>
+    </blockquote>
+    <blockquote>
+        <h2>Additional information</h2>
+        <p>
+            In user interface design for computer applications, a modal window is a graphical control element
+            subordinate to an application's main window. A modal window creates a mode that disables the main window but
+            keeps it visible, with the modal window as a child window in front of it. Users must interact with the modal
+            window before they can return to the parent application. This avoids interrupting the workflow on the main
+            window. Modal windows are sometimes called heavy windows or modal dialogs because they often display a
+            dialog box.
+        </p>
+    </blockquote>
+
+    <button
+        *tuiPopup="!filters()"
+        tuiButton
+        type="button"
+        class="portal"
+        (click)="onFilterClick()"
+        (touchmove.prevent.zoneless)="(0)"
+    >
+        Filters
+    </button>
+</ng-template>
+`;export{o as default};

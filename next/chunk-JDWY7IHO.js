@@ -1,0 +1,121 @@
+import"./chunk-B4AJQJMI.js";var a=`<tui-doc-page
+    header="Badge"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component for displaying text, pictures and icons.</p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html'"
+        />
+
+        <tui-doc-example
+            id="sizes"
+            heading="Sizes"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html'"
+        />
+
+        <tui-doc-example
+            id="content-type"
+            heading="Content type (mobile platform)"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html'"
+        />
+
+        <tui-doc-example
+            id="fade"
+            heading="Long value"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample: 'html,less'"
+        />
+
+        <tui-doc-example
+            id="custom"
+            heading="Customization"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,less'"
+        />
+
+        <tui-doc-example
+            id="options"
+            heading="Options with DI"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <p>
+                @if (contentType === 'with icon') {
+                    <tui-badge
+                        iconStart="@tui.check"
+                        [appearance]="appearance"
+                        [size]="size"
+                    >
+                        <div tuiFade>Taiga UI</div>
+                    </tui-badge>
+                }
+
+                @if (contentType === 'text') {
+                    <tui-badge
+                        [appearance]="appearance"
+                        [size]="size"
+                    >
+                        Taiga UI
+                    </tui-badge>
+                }
+
+                @if (contentType === 'image') {
+                    <img
+                        alt="market"
+                        src="assets/images/avatar.jpg"
+                        tuiBadge
+                        [appearance]="appearance"
+                        [size]="size"
+                    />
+                }
+            </p>
+        </tui-doc-demo>
+        <div>
+            Content type
+            <tui-radio-list
+                name="content-type"
+                size="s"
+                class="tui-space_vertical-2"
+                [items]="contentTypeVariants"
+                [style.flex-direction]="'row'"
+                [(ngModel)]="contentType"
+            />
+        </div>
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="TuiStatus"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
+            >
+                Appearance
+            </tr>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
+`;export{a as default};

@@ -1,0 +1,56 @@
+import"./chunk-B4AJQJMI.js";var i=`<button
+    appearance="secondary-destructive"
+    size="m"
+    tuiButton
+    type="button"
+>
+    <span>
+        Pay
+        <span [tuiSensitive]="sensitive">1000$</span>
+    </span>
+</button>
+<button
+    appearance="flat"
+    size="m"
+    tuiButton
+    type="button"
+    class="tui-space_left-2"
+>
+    <span>
+        Pay
+        <span [tuiSensitive]="sensitive">1000$</span>
+    </span>
+</button>
+
+<p>
+    <tui-badge
+        [style.background]="'var(--tui-status-positive)'"
+        [tuiSensitive]="sensitive"
+    >
+        12 000$
+    </tui-badge>
+    <tui-badge
+        appearance="primary"
+        class="tui-space_left-2"
+    >
+        <span [tuiSensitive]="sensitive">12 000$</span>
+    </tui-badge>
+    <tui-badge
+        appearance="accent"
+        size="xl"
+        class="tui-space_left-2"
+        [tuiSensitive]="sensitive"
+    >
+        12 000$
+    </tui-badge>
+</p>
+
+<label tuiLabel>
+    <input
+        tuiSwitch
+        type="checkbox"
+        [(ngModel)]="sensitive"
+    />
+    Hide
+</label>
+`;export{i as default};

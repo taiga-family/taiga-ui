@@ -1,0 +1,11 @@
+import"./chunk-B4AJQJMI.js";var e=`\`\`\`html
+<div
+  tuiDropdownHover
+  [tuiDropdown]="content"
+>
+  Host element
+</div>
+
+<ng-template #content>Dropdown content</ng-template>
+\`\`\`
+`;export{e as default};

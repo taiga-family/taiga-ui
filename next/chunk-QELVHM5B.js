@@ -1,0 +1,20 @@
+import"./chunk-B4AJQJMI.js";var l=`<form [formGroup]="testForm">
+    <label tuiLabel>
+        Label can be outside
+        <tui-textfield>
+            <input
+                formControlName="testValue"
+                tuiInput
+            />
+        </tui-textfield>
+    </label>
+
+    <tui-textfield class="tui-space_top-4">
+        <label tuiLabel>Or inside textfield</label>
+        <input
+            formControlName="testValue"
+            tuiInput
+        />
+    </tui-textfield>
+</form>
+`;export{l as default};

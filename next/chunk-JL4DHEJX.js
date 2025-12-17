@@ -1,0 +1,12 @@
+import"./chunk-B4AJQJMI.js";var e=`@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.group {
+    max-inline-size: 33rem;
+    margin-block-end: 1.5rem;
+}
+
+.title {
+    font: var(--tui-font-heading-h5);
+    margin: 0 0 1rem;
+}
+`;export{e as default};

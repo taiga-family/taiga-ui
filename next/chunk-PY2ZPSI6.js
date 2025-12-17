@@ -1,0 +1,35 @@
+import"./chunk-B4AJQJMI.js";var t=`<tui-chip
+    appearance="accent"
+    iconStart="@tui.shopping-cart"
+>
+    <div tuiFade>Supermarkets</div>
+    <div tuiFade>{{ 9000 | tuiAmount: 'USD' }}</div>
+</tui-chip>
+
+<tui-chip appearance="accent">
+    <span tuiAvatar="@tui.user">
+        <img
+            alt=""
+            src="assets/images/avatar.jpg"
+        />
+    </span>
+    <div tuiFade>AI</div>
+    <div tuiFade>{{ 9870043000 | tuiAmount: 'USD' }}</div>
+</tui-chip>
+
+<tui-chip
+    appearance="accent"
+    iconEnd="@tui.shower-head"
+>
+    <div tuiFade>Long category name</div>
+</tui-chip>
+
+<p>Use CSS to set a custom priority for the fade:</p>
+<tui-chip
+    appearance="primary"
+    class="custom"
+>
+    <div tuiFade>Miscellaneous goods</div>
+    <div tuiFade>{{ 105000 | tuiAmount: 'USD' }}</div>
+</tui-chip>
+`;export{t as default};

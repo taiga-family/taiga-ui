@@ -1,0 +1,33 @@
+import"./chunk-B4AJQJMI.js";var a=`<div
+    appearance="neutral"
+    tuiCardMedium
+>
+    <tui-badge
+        appearance="custom"
+        class="badge"
+    >
+        <tui-icon icon="@tui.target" />
+        10 %
+    </tui-badge>
+
+    <h2 tuiTitle>
+        Title
+        <span tuiSubtitle>Subtitle</span>
+    </h2>
+</div>
+
+<div
+    appearance="neutral"
+    tuiCardMedium
+>
+    <h2 tuiTitle>
+        Title
+        <span tuiSubtitle>Subtitle</span>
+    </h2>
+
+    <tui-badge class="badge">
+        <tui-icon icon="@tui.target" />
+        10 %
+    </tui-badge>
+</div>
+`;export{a as default};

@@ -1,0 +1,14 @@
+import"./chunk-B4AJQJMI.js";var a=`import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAvatar, TuiAvatarLabeled} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiAvatar, TuiAvatarLabeled],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+`;export{a as default};
