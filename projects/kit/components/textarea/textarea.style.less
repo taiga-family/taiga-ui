@@ -52,7 +52,7 @@
     position: relative;
     z-index: 1;
     order: 1;
-    inline-size: stretch;
+    inline-size: calc(100% - var(--t-start) - var(--t-end) - var(--t-side, ~'0rem'));
     white-space: pre-wrap;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -91,14 +91,4 @@
         margin-block-start: -2.5rem;
         padding-block-end: 1rem;
     }
-}
-
-// TODO: Remove after Safari 16 and round outline support or Safari 15 + :has for a better hack
-.t-hack {
-    .transition(box-shadow);
-    .fullsize();
-
-    pointer-events: none;
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 1px transparent;
 }

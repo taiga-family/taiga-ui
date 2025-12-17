@@ -52,9 +52,7 @@
     }
 
     [tuiInput][chrome-autofilled], /* Chrome on IOS */
-    [tuiInput]:-webkit-autofill,
-    &[tuiInput][chrome-autofilled], /* Chrome on IOS */
-    &[tuiInput]:-webkit-autofill {
+    [tuiInput]:-webkit-autofill {
         -webkit-text-fill-color: var(--tui-text-primary) !important;
         caret-color: var(--tui-text-primary) !important;
         box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
@@ -63,9 +61,7 @@
     }
 
     &[data-size='l'] [tuiInput][chrome-autofilled], /* Chrome on IOS */
-    &[data-size='l'] [tuiInput]:-webkit-autofill,
-    &[data-size='l'][tuiInput][chrome-autofilled], /* Chrome on IOS */
-    &[data-size='l'][tuiInput]:-webkit-autofill {
+    &[data-size='l'] [tuiInput]:-webkit-autofill {
         clip-path: inset(0.125rem round calc(var(--tui-radius-l) - 0.125rem));
     }
 }
