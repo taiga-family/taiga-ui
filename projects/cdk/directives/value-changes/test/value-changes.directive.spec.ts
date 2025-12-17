@@ -24,7 +24,7 @@ describe('TuiValueChangesDirective', () => {
     })
     class Test {
         public readonly form = new FormGroup({
-            control: new FormControl(),
+            control: new FormControl('Lorem'),
         });
 
         public formSpy = jest.fn();
@@ -45,18 +45,29 @@ describe('TuiValueChangesDirective', () => {
         testComponent.formSpy.mockClear();
         testComponent.controlSpy.mockClear();
         fixture.detectChanges();
-
-        const input = fixture.debugElement.query(By.css('input'));
-
-        input.nativeElement.value = 'Hapica';
-        input.nativeElement.dispatchEvent(new Event('input'));
     });
 
-    it('works for controls', () => {
-        expect(testComponent.controlSpy).toHaveBeenCalledWith('Hapica');
+    describe('base case', () => {
+        beforeEach(() => {
+            const input = fixture.debugElement.query(By.css('input'));
+
+            input.nativeElement.value = 'Hapica';
+            input.nativeElement.dispatchEvent(new Event('input'));
+        });
+
+        it('works for controls', () => {
+            expect(testComponent.controlSpy).toHaveBeenCalledWith('Hapica');
+        });
+
+        it('works for containers', () => {
+            expect(testComponent.formSpy).toHaveBeenCalledWith({control: 'Hapica'});
+        });
     });
 
-    it('works for containers', () => {
-        expect(testComponent.formSpy).toHaveBeenCalledWith({control: 'Hapica'});
+    describe('extra case', () => {
+        it('should not work when emit same value', () => {
+            testComponent.form.patchValue({control: 'Lorem'});
+            expect(testComponent.controlSpy).not.toHaveBeenCalled();
+        });
     });
 });
