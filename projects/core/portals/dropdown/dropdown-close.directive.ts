@@ -1,7 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
-import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk/directives';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiObscured} from '@taiga-ui/cdk/directives/obscured';
 import {
     tuiCloseWatcher,
     tuiIfMap,
