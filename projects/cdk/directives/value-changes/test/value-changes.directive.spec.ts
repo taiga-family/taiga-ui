@@ -24,7 +24,7 @@ describe('TuiValueChangesDirective', () => {
     })
     class Test {
         public readonly form = new FormGroup({
-            control: new FormControl('Loremipsum'),
+            control: new FormControl('Lorem'),
         });
 
         public formSpy = jest.fn();
@@ -66,7 +66,7 @@ describe('TuiValueChangesDirective', () => {
 
     describe('extra case', () => {
         it('should not work when emit same value', () => {
-            testComponent.form.patchValue({control: 'Loremipsum'});
+            testComponent.form.patchValue({control: 'Lorem'});
             expect(testComponent.controlSpy).not.toHaveBeenCalled();
         });
     });
