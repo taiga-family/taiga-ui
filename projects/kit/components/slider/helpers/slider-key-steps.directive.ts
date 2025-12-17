@@ -5,6 +5,7 @@ import {
     inject,
     INJECTOR,
     input,
+    type OnInit,
     signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -16,7 +17,6 @@ import {
 } from '@taiga-ui/cdk/classes';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {switchMap, timer} from 'rxjs';
 
 import {TuiSliderComponent} from '../slider.component';
@@ -25,15 +25,15 @@ import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
 @Directive({
     selector: 'input[tuiSlider][keySteps]',
     host: {
-        '[attr.min]': 'transformer() ? 0 : slider.min',
+        '[attr.min]': 'transformer() ? 0 : slider?.min',
         '[attr.step]': 'transformer() ? 1 : step()',
-        '[attr.max]': 'transformer() ? totalSteps() : slider.max',
+        '[attr.max]': 'transformer() ? totalSteps() : slider?.max',
         '[attr.aria-valuemin]': 'min()',
         '[attr.aria-valuemax]': 'max()',
         '[attr.aria-valuenow]': 'controlValue()',
     },
 })
-export class TuiSliderKeyStepsBase {
+export class TuiSliderKeyStepsBase implements OnInit {
     private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
 
@@ -47,6 +47,7 @@ export class TuiSliderKeyStepsBase {
         this.max.set(steps?.[steps.length - 1]?.[1]);
     });
 
+    public slider!: TuiSliderComponent;
     public readonly step = input(1);
     public readonly keySteps = input<TuiKeySteps>();
     public readonly transformer = signal<TuiValueTransformer<number, number> | undefined>(
@@ -69,9 +70,8 @@ export class TuiSliderKeyStepsBase {
         Math.round(100 / this.step()),
     );
 
-    @tuiPure
-    public get slider(): TuiSliderComponent {
-        return this.injector.get(TuiSliderComponent);
+    public ngOnInit(): void {
+        this.slider = this.injector.get(TuiSliderComponent);
     }
 
     public takeStep(coefficient: number): number {

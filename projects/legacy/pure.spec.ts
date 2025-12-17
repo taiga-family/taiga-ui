@@ -1,4 +1,4 @@
-import {tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/legacy';
 
 /** TODO this tests does not cover typescript@^5 and experimentalDecorators: false */
 

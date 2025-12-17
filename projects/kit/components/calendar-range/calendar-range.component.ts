@@ -21,7 +21,7 @@ import {
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
-import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiCalendar,
     tuiCalendarSheetOptionsProvider,
@@ -144,14 +144,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         this.initDefaultViewedMonth();
     }
 
-    protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return this.calculateDisabledItemHandler(
-            this.disabledItemHandler,
-            this.currentValue,
-            this.minLength,
-        );
-    }
-
     protected onEsc(event: KeyboardEvent): void {
         if (event.key !== 'Escape' || !(this.currentValue instanceof TuiDay)) {
             return;
@@ -188,6 +180,13 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         ),
         otherDateText || '',
     ];
+
+    protected readonly disabledMapper = (
+        disabledItemHandler: TuiBooleanHandler<TuiDay>,
+        value: TuiDay | TuiDayRange | null,
+        minLength: TuiDayLike | null,
+    ): TuiBooleanHandler<TuiDay> =>
+        calculateDisabledItemHandler(disabledItemHandler, value, minLength);
 
     protected isItemActive(item: TuiDayRangePeriod | string): boolean {
         const {activePeriod} = this;
@@ -254,15 +253,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             ) ||
                 null)
         );
-    }
-
-    @tuiPure
-    private calculateDisabledItemHandler(
-        disabledItemHandler: TuiBooleanHandler<TuiDay>,
-        value: TuiDay | TuiDayRange | null,
-        minLength: TuiDayLike | null,
-    ): TuiBooleanHandler<TuiDay> {
-        return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
     }
 
     private initDefaultViewedMonth(): void {

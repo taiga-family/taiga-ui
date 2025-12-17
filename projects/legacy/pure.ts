@@ -47,7 +47,7 @@ function decorateGetter(
  * @throws error if used not on getter or function
  *
  * CAUTION: they must be pure.
- * TODO(v5): drop compatibility for legacy "experimentalDecorators": true
+ * @deprecated use computed instead
  */
 export function tuiPure<T>(
     target: object,
@@ -61,6 +61,7 @@ export function tuiPure<T>(
  * value for function, skipping calculation when arguments are strictly the same.
  *
  * CAUTION: they must be pure.
+ * @deprecated use computed instead
  */
 export function tuiPure<A extends unknown[], R>(
     target: (...args: A) => R,
