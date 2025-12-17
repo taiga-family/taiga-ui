@@ -21,7 +21,7 @@ import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgedContent} from '@taiga-ui/kit';
-import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
+import {distinctUntilChanged, filter, map} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
 import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
@@ -81,9 +81,8 @@ export class App extends AbstractDemo implements OnInit {
             filter((event) => event instanceof NavigationEnd),
             map(() => this.url === '' || this.url === '/'),
             distinctUntilChanged(),
-            startWith(true),
         ),
-        {initialValue: true},
+        {initialValue: false},
     );
 
     public override ngOnInit(): void {
