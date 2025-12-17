@@ -68,7 +68,7 @@ import {TuiViewportScroller} from './utils/viewport-scroller.service';
 export const config: ApplicationConfig = {
     providers: [
         provideAnimations(), // TODO: explore why Tabs does not properly work without it. Then remove it
-        provideClientHydration(),
+        ngDevMode ? [] : provideClientHydration(),
         provideRouter(
             ROUTES,
             withInMemoryScrolling({
