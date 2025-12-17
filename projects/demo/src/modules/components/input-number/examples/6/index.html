@@ -1,29 +1,12 @@
-<tui-textfield [tuiTextfieldCleaner]="false">
+<tui-textfield>
+    <label tuiLabel>Percentage</label>
+
     <input
+        postfix="%"
         tuiInputNumber
+        [max]="100"
         [min]="0"
+        [step]="1"
         [(ngModel)]="value"
-        (keydown.arrowDown)="onStep(-1)"
-        (keydown.arrowUp)="onStep(+1)"
     />
-
-    <button
-        appearance="floating"
-        size="s"
-        tuiButton
-        type="button"
-        (click.prevent)="onStep(+100)"
-    >
-        + 100
-    </button>
-
-    <button
-        appearance="floating"
-        size="s"
-        tuiButton
-        type="button"
-        (click.prevent)="onStep(+1000)"
-    >
-        + 1000
-    </button>
 </tui-textfield>
