@@ -12,8 +12,8 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {
     calculateDisabledItemHandler,
@@ -34,7 +34,7 @@ export interface TuiMobileCalendarData {
 
 @Component({
     selector: 'tui-mobile-calendar-dropdown',
-    imports: [TuiMobileCalendar],
+    imports: [TuiMapperPipe, TuiMobileCalendar],
     templateUrl: './mobile-calendar-dropdown.template.html',
     styleUrl: './mobile-calendar-dropdown.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -115,14 +115,12 @@ export class TuiMobileCalendarDropdownComponent {
         }
     }
 
-    protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return this.calculateDisabledItemHandler(
+    protected get handler(): TuiBooleanHandler<TuiDay> {
+        return (
             this.directive?.handlers.disabledItemHandler() ||
-                this.data.disabledItemHandler ||
-                this.control?.disabledItemHandler ||
-                TUI_FALSE_HANDLER,
-            this.selectedPeriod,
-            this.control?.minLength ?? null,
+            this.data.disabledItemHandler ||
+            this.control?.disabledItemHandler ||
+            TUI_FALSE_HANDLER
         );
     }
 
@@ -147,14 +145,12 @@ export class TuiMobileCalendarDropdownComponent {
         this.close();
     }
 
-    @tuiPure
-    private calculateDisabledItemHandler(
+    protected readonly mapper = (
         disabledItemHandler: TuiBooleanHandler<TuiDay>,
         value: TuiDayRange | null,
-        minLength: TuiDayLike | null,
-    ): TuiBooleanHandler<TuiDay> {
-        return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
-    }
+        minLength: TuiDayLike | null = null,
+    ): TuiBooleanHandler<TuiDay> =>
+        calculateDisabledItemHandler(disabledItemHandler, value, minLength);
 
     private is(selector: string): boolean {
         return !!this.dropdown?.el.closest(selector);

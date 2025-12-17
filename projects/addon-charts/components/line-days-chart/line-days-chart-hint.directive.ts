@@ -1,5 +1,6 @@
 import {
     type AfterContentInit,
+    computed,
     contentChildren,
     DestroyRef,
     Directive,
@@ -14,7 +15,6 @@ import {type TuiDay} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
@@ -32,6 +32,9 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
 })
 export class TuiLineDaysChartHint implements AfterContentInit {
     private readonly charts = contentChildren(forwardRef(() => TuiLineDaysChart));
+    private readonly map = computed(() =>
+        this.getMap(...this.charts().map(({value}) => value())),
+    );
 
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
@@ -58,9 +61,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
     }
 
     public getContext(day: TuiDay): ReadonlyArray<[TuiDay, number]> {
-        return (
-            this.getMap(...this.charts().map(({value}) => value())).get(String(day)) || []
-        );
+        return this.map().get(String(day)) || [];
     }
 
     public raise(day: TuiDay): void {
@@ -77,7 +78,6 @@ export class TuiLineDaysChartHint implements AfterContentInit {
         });
     }
 
-    @tuiPure
     private getMap(
         ...values: Array<ReadonlyArray<[TuiDay, number]>>
     ): Map<string, ReadonlyArray<[TuiDay, number]>> {

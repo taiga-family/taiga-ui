@@ -1,5 +1,5 @@
 <tui-mobile-calendar
-    [disabledItemHandler]="calculatedDisabledItemHandler"
+    [disabledItemHandler]="handler | tuiMapper: mapper : selectedPeriod : control?.minLength"
     [max]="max()"
     [min]="min()"
     [multi]="multi"
