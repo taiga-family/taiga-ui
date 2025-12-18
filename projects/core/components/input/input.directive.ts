@@ -61,11 +61,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
             return 'valid';
         }
 
-        if (this.invalid()) {
-            return 'invalid';
-        }
-
-        return null;
+        return this.invalid() ? 'invalid' : null;
     });
 
     public setValue(value: T | null): void {

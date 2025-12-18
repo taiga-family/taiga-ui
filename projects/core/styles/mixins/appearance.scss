@@ -49,7 +49,8 @@
             [data-mode~='readonly'],
             [data-mode~='valid'],
             [data-state='disabled'],
-            :disabled
+            :disabled,
+            ._disabled
         ) {
         @content;
     }
