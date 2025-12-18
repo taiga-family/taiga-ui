@@ -5,17 +5,15 @@
 }
 
 .t-ghost {
-    @thumb: calc(var(--tui-thumb-radius) * 2);
-
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
     border-radius: 50%;
     pointer-events: none;
-    inline-size: @thumb;
-    block-size: @thumb;
-    transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb * var(--tui-inline)));
+    inline-size: @thumb-diameter;
+    block-size: @thumb-diameter;
+    transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb-diameter * var(--tui-inline)));
 
     @supports (inset-inline-end: 0) {
         :host-context([dir='rtl']) & {
