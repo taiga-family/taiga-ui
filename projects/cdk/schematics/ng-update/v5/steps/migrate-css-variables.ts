@@ -22,7 +22,7 @@ const FONT_VARIABLES_REPLACEMENTS = [
     {from: '--tui-font-text-ui-l', to: '--tui-font-ui-l'},
     {from: '--tui-font-text-ui-m', to: '--tui-font-ui-m'},
     {from: '--tui-font-text-ui-s', to: '--tui-font-ui-s'},
-    {from: '--tui-font-text-ui-xs', to: '--tui-font-ui-xs'},
+    {from: '--tui-font-text-ui-xs', to: '--tui-font-ui-2xs'},
 ];
 
 export function migrateCssVariables(tree: Tree, options: TuiSchema): void {
