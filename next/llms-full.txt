@@ -289,13 +289,13 @@ export default class Example {
 <tui-accordion class="accordion"> @for (group of operations | keyvalue: orderBy; track group) { <button appearance="" iconEnd="" tuiAccordion tuiCell >
 <span tuiTitle>
 <strong>{{ group.key }}</strong>
-<span tuiSubtitle> @if (group.value.length) { {{ group.value.length }} operations • Total: {{ sum(group.value) | tuiAmount: '$' : 'left' }} } @else { No operations so far } </span>
+<span tuiSubtitle> @if (group.value.length) { {{ group.value.length }} operations • Total: {{ sum(group.value) | tuiAmount: '$' : 'start' }} } @else { No operations so far } </span>
 </span>
 </button>
 <tui-expand [style.display]="group.value.length ? null : 'none'"> @for (operation of group.value; track operation) { <div tuiCell>
 <div [appearance]="operation.sum && operation.sum > 0 ? '' : 'negative'" [tuiAvatar]="getIcon(operation)" ></div>
 <span tuiTitle>
-<strong>{{ operation.title }}</strong> @if (operation.subtitle) { <span tuiSubtitle> {{ operation.subtitle }} </span> } </span> @if (operation.sum) { <span tuiTitle [style.color]="operation.sum > 0 ? 'var(--tui-text-positive)' : null" > {{ operation.sum | tuiAmount: '$' : 'left' }} <span tuiSubtitle>{{ operation.time }}</span>
+<strong>{{ operation.title }}</strong> @if (operation.subtitle) { <span tuiSubtitle> {{ operation.subtitle }} </span> } </span> @if (operation.sum) { <span tuiTitle [style.color]="operation.sum > 0 ? 'var(--tui-text-positive)' : null" > {{ operation.sum | tuiAmount: '$' : 'start' }} <span tuiSubtitle>{{ operation.time }}</span>
 </span> } @else { <button appearance="secondary" tuiButton type="button" > Retry </button> } </div> } </tui-expand> } </tui-accordion>
 ```
 **TypeScript:**
@@ -645,7 +645,7 @@ export class App {}
 <div>
 <strong>Selected: {{ selected }} of {{ items.length }}</strong> @if (!isMobile()) { <button tuiLink type="button" [style.margin-inline-start.rem]="0.75" [style.text-decoration-line]="'underline'" [style.text-decoration-style]="'dashed'" (click)="toggleSelect()" > {{ selected < items.length ? 'Select all' : 'Select none' }} </button> } </div>
 <tui-items-with-more> @for (_ of '-'.repeat(5); track $index) { <button *tuiItem iconStart="@tui.star" tuiButton type="button" > Action {{ $index + 1 }} </button> } <ng-template let-lastIndex tuiMore >
-<button iconStart="@tui.ellipsis" tuiButton tuiDropdownAlign="right" tuiDropdownAuto type="button" [tuiDropdown]="dropdown" > More </button>
+<button iconStart="@tui.ellipsis" tuiButton tuiDropdownAlign="end" tuiDropdownAuto type="button" [tuiDropdown]="dropdown" > More </button>
 <ng-template #dropdown>
 <tui-data-list size="l"> @for (_ of '-'.repeat(5); track $index) { @if ($index > lastIndex) { <button tuiOption type="button" > Action {{ $index + 1 }} </button> } } </tui-data-list>
 </ng-template>
@@ -838,7 +838,7 @@ export class Example {}
   <tui-app-bar>
     <button
       tuiAppBarBack
-      tuiSlot="left"
+      tuiSlot="start"
     >
       Back
     </button>
@@ -847,7 +847,7 @@ export class Example {}
       tuiIconButton
       icon="@tui.settings"
       title="settings"
-      tuiSlot="right"
+      tuiSlot="end"
     ></button>
   </tui-app-bar>
 </header>
@@ -862,22 +862,22 @@ export class Example {}
 <h3>iOS</h3>
 <section tuiPlatform="ios">
 <tui-app-bar>
-<button tuiButton tuiSlot="left" type="button" > Back </button> Taiga UI <button tuiButton tuiSlot="right" type="button" > Action </button>
+<button tuiButton tuiSlot="start" type="button" > Back </button> Taiga UI <button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="left" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="right" ></a>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
 </tui-app-bar>
 <tui-app-bar>
-<button title="Back" tuiAppBarBack tuiSlot="left" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="right" ></a>
-<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
 <label tuiTitle> Taiga UI <span tuiSubtitle>Components library</span>
 </label>
-<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
+<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="left" type="button" > Back </button>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button>
 <div>
 <progress size="s" tuiProgressBar [max]="100" [value]="35" ></progress>
 </div>
@@ -885,23 +885,23 @@ export class Example {}
 </section>
 <h3 class="tui-space_top-8">Android</h3>
 <section tuiPlatform="android">
-<tui-app-bar> Taiga UI <button tuiButton tuiSlot="right" type="button" > Action </button>
+<tui-app-bar> Taiga UI <button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="left" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="right" ></a>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
 </tui-app-bar>
 <tui-app-bar>
-<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="left" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="right" ></a>
-<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
+<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
-<button title="Back" tuiAppBarBack tuiSlot="left" type="button" ></button>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button>
 <label tuiTitle> Taiga UI <span tuiSubtitle>Components library</span>
 </label>
-<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
+<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="left" type="button" > Back </button>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button>
 <progress size="s" tuiProgressBar [max]="100" [value]="35" ></progress>
 </tui-app-bar>
 </section>
@@ -931,22 +931,22 @@ export default class Example {}
 **Template:**
 ```html
 <tui-app-bar size="l">
-<button iconStart="@tui.chevron-left" tuiButton tuiSlot="left" type="button" > Action </button> Taiga UI </tui-app-bar>
+<button iconStart="@tui.chevron-left" tuiButton tuiSlot="start" type="button" > Action </button> Taiga UI </tui-app-bar>
 <tui-app-bar size="l">
 <label tuiTitle> Taiga UI <span tuiSubtitle>Components library</span>
 </label>
-<button tuiButton tuiSlot="right" type="button" > Action </button>
+<button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar size="l">
-<button tuiButton tuiSlot="left" type="button" > Action </button>
+<button tuiButton tuiSlot="start" type="button" > Action </button>
 <label tuiTitle> Taiga UI is a very long title that should fade away <span tuiSubtitle>Components library</span>
 </label>
-<button iconStart="@tui.x" tuiIconButton tuiSlot="right" type="button" > Close </button>
+<button iconStart="@tui.x" tuiIconButton tuiSlot="end" type="button" > Close </button>
 </tui-app-bar>
 <tui-app-bar size="l">
-<button iconStart="@tui.chevron-left" tuiIconButton tuiSlot="left" type="button" > Back </button>
+<button iconStart="@tui.chevron-left" tuiIconButton tuiSlot="start" type="button" > Back </button>
 <progress size="s" tuiProgressBar [max]="100" [style.width.rem]="10" [value]="35" ></progress>
-<button tuiButton tuiSlot="right" type="button" > Action </button>
+<button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 ```
 **TypeScript:**
@@ -977,36 +977,36 @@ export default class Example {}
 <progress size="s" tuiProgressBar [max]="100" [value]="35" ></progress>
 </tui-app-bar>
 <tui-app-bar class="gray">
-<button appearance="" tuiButton tuiSlot="left" type="button" > Back </button>
+<button appearance="" tuiButton tuiSlot="start" type="button" > Back </button>
 <label tuiTitle>
 <span tuiSubtitle>More interesting title</span> Taiga UI </label>
-<button appearance="" tuiButton tuiSlot="right" type="button" > Accept </button>
+<button appearance="" tuiButton tuiSlot="end" type="button" > Accept </button>
 </tui-app-bar>
 <tui-app-bar class="black">
-<button appearance="" tuiButton tuiSlot="left" type="button" > Cancel </button> Taiga UI <button appearance="" iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
+<button appearance="" tuiButton tuiSlot="start" type="button" > Cancel </button> Taiga UI <button appearance="" iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <h3 class="tui-space_top-8">Centered Android</h3>
 <section tuiPlatform="android">
 <tui-app-bar>
 <label tuiTitle>Taiga UI</label>
-<button tuiButton tuiSlot="right" type="button" > Action </button>
+<button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="left" type="button" > Back </button>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button>
 <label tuiFade tuiTitle > Taiga UI — Components library </label>
-<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="right" ></a>
+<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
 </tui-app-bar>
 <tui-app-bar>
-<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="left" type="button" ></button>
+<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button>
 <label tuiTitle>Taiga UI</label>
-<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="right" ></a>
-<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
+<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
-<button title="Back" tuiAppBarBack tuiSlot="left" type="button" ></button>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button>
 <label tuiTitle> Taiga UI <span tuiSubtitle>Components library</span>
 </label>
-<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
+<button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 </section>
 ```
@@ -1037,9 +1037,9 @@ export default class Example {}
 <button size="m" tuiButton type="button" (click)="open(template)" > Show </button>
 <ng-template #template let-observer >
 <tui-app-bar tuiAppBarSize>
-<button tuiAppBarBack tuiSlot="left" type="button" [disabled]="!step" (click)="step = step - 1" > Back </button>
+<button tuiAppBarBack tuiSlot="start" type="button" [disabled]="!step" (click)="step = step - 1" > Back </button>
 <progress max="5" size="s" tuiProgressBar [style.width.rem]="8" [value]="step" ></progress>
-<button tuiButton tuiSlot="right" type="button" (click)="observer.complete()" > Close </button>
+<button tuiButton tuiSlot="end" type="button" (click)="observer.complete()" > Close </button>
 </tui-app-bar>
 <h2 tuiHeader="h3">
 <span tuiTitle>I'm a stepper</span>
@@ -1091,7 +1091,7 @@ export default class Example {
 </tui-segmented>
 <div tuiDynamicHeaderContainer class="container" [tuiPlatform]="activeItemIndex ? 'android' : 'ios'" >
 <tui-app-bar>
-<button title="Back" tuiAppBarBack tuiSlot="left" type="button" ></button>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button>
 <div tuiDynamicHeader></div>
 </tui-app-bar>
 <div class="content">
@@ -1522,7 +1522,7 @@ export default class Example {
 
 **Template:**
 ```html
-@for (size of sizes; track size; let odd = $odd) { <tui-avatar-stack class="tui-space_vertical-4" [direction]="odd ? 'left' : 'right'" > @for (name of names; track name) { <div [round]="odd" [size]="size" [style.background]="name | tuiAutoColor" [tuiAvatar]="name | tuiInitials" ></div> } <div tuiAvatar [round]="odd" [size]="size" > 99+ </div>
+@for (size of sizes; track size; let odd = $odd) { <tui-avatar-stack class="tui-space_vertical-4" [direction]="odd ? 'start' : 'end'" > @for (name of names; track name) { <div [round]="odd" [size]="size" [style.background]="name | tuiAutoColor" [tuiAvatar]="name | tuiInitials" ></div> } <div tuiAvatar [round]="odd" [size]="size" > 99+ </div>
 </tui-avatar-stack> }
 ```
 **TypeScript:**
@@ -6921,7 +6921,7 @@ export default class Example {}
 <header tuiHeader>
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
-</header> @for (_ of '-'.repeat(3); track $index) { <button tuiCell="l" tuiDropdownAlign="right" tuiDropdownAuto type="button" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" >
+</header> @for (_ of '-'.repeat(3); track $index) { <button tuiCell="l" tuiDropdownAlign="end" tuiDropdownAuto type="button" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" >
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
@@ -7237,7 +7237,7 @@ export default class Example {}
 **Template:**
 ```html
 <div appearance="floating" tuiCardMedium >
-<tui-avatar-stack direction="left"> @for (url of urls; track url) { <div size="s" tuiAvatar="@tui.user" [style.background]="url | tuiAutoColor" >
+<tui-avatar-stack direction="start"> @for (url of urls; track url) { <div size="s" tuiAvatar="@tui.user" [style.background]="url | tuiAutoColor" >
 <img alt="" [src]="url" />
 </div> } </tui-avatar-stack>
 <h2 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
@@ -7246,7 +7246,7 @@ export default class Example {}
 <div appearance="floating" tuiCardMedium >
 <h2 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h2>
-<tui-avatar-stack direction="left"> @for (url of urls; track url) { <div size="s" tuiAvatar="@tui.user" [style.background]="url | tuiAutoColor" >
+<tui-avatar-stack direction="start"> @for (url of urls; track url) { <div size="s" tuiAvatar="@tui.user" [style.background]="url | tuiAutoColor" >
 <img alt="" [src]="url" />
 </div> } </tui-avatar-stack>
 </div>
@@ -8173,7 +8173,7 @@ export default class Example {}
 <div tuiCell>
 <div tuiTitle> Multiple actions <div tuiSubtitle>With no content on the right</div>
 </div>
-<button appearance="icon" iconStart="@tui.ellipsis" tuiDropdownAlign="right" tuiDropdownAuto tuiIconButton type="button" [tuiDropdown]="dropdown" > Action </button>
+<button appearance="icon" iconStart="@tui.ellipsis" tuiDropdownAlign="end" tuiDropdownAuto tuiIconButton type="button" [tuiDropdown]="dropdown" > Action </button>
 <ng-template #dropdown let-close >
 <tui-data-list-wrapper [items]="items" (itemClick)="close()" />
 </ng-template>
@@ -10486,11 +10486,11 @@ export default class Example {
 <button appearance="flat" iconStart="@tui.ellipsis-vertical" tuiIconButton type="button" [tuiAppearanceState]="open ? 'hover' : null" [tuiDropdown]="content" [(tuiDropdownOpen)]="open" > Open </button>
 <ng-template #content>
 <tui-data-list tuiDataListDropdownManager [size]="size" > @let frenchFries = 'French Fries'; <button tuiOption type="button" (click)="selectOption(frenchFries)" > {{ frenchFries }} </button>
-<button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="burgersTmp" > Burgers </button>
-<button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="drinksTmp" > Drinks </button> @let item = 'Ice Cream'; <button tuiOption type="button" (click)="selectOption(item)" > {{ item }} </button>
+<button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="burgersTmp" > Burgers </button>
+<button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="drinksTmp" > Drinks </button> @let item = 'Ice Cream'; <button tuiOption type="button" (click)="selectOption(item)" > {{ item }} </button>
 </tui-data-list>
 <ng-template #burgersTmp>
-<tui-data-list tuiDataListDropdownManager> @for (burger of burgers; track burger) { <button tuiOption type="button" (click)="selectOption(burger)" > {{ burger }} </button> } <button iconEnd="@tui.chevron-right" iconStart="@tui.menu" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="drinksTmp" > Nested menu </button>
+<tui-data-list tuiDataListDropdownManager> @for (burger of burgers; track burger) { <button tuiOption type="button" (click)="selectOption(burger)" > {{ burger }} </button> } <button iconEnd="@tui.chevron-right" iconStart="@tui.menu" tuiDropdownAlign="end" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="drinksTmp" > Nested menu </button>
 </tui-data-list>
 </ng-template>
 <ng-template #drinksTmp>
@@ -10706,10 +10706,10 @@ export default class Example {
 <button appearance="outline" iconStart="@tui.ellipsis-vertical" size="m" tuiButton tuiDropdownLimitWidth="fixed" type="button" class="example" [tuiDropdown]="content" [(tuiDropdownOpen)]="dropdownOpen" > List of components </button>
 <ng-template #content>
 <tui-data-list tuiDataListDropdownManager>
-<button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownDirection="top" tuiDropdownSided tuiOption type="button" [tuiDropdown]="money" [tuiDropdownManual]="true" > 💰 Money: </button>
-<button automation-id="tui-data-list-calendar-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="calendar" > 📅 Calendar: {{ dateValue }} </button>
-<button automation-id="tui-data-list-email-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="input" > 📧 Email: {{ emailValue }} </button>
-<button automation-id="tui-data-list-range-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownDirection="top" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="range" > ⌛ Range: {{ rangeValue }} </button>
+<button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownDirection="top" tuiDropdownSided tuiOption type="button" [tuiDropdown]="money" [tuiDropdownManual]="true" > 💰 Money: </button>
+<button automation-id="tui-data-list-calendar-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="calendar" > 📅 Calendar: {{ dateValue }} </button>
+<button automation-id="tui-data-list-email-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="input" > 📧 Email: {{ emailValue }} </button>
+<button automation-id="tui-data-list-range-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownDirection="top" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="range" > ⌛ Range: {{ rangeValue }} </button>
 </tui-data-list>
 <ng-template #money>
 <tui-textfield automation-id="tui-data-money-input">
@@ -10717,7 +10717,7 @@ export default class Example {
 <label tuiLabel>RUB</label>
 </tui-textfield>
 <tui-data-list tuiDataListDropdownManager>
-<button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownDirection="bottom" tuiDropdownLimitWidth="auto" tuiDropdownSided tuiOption type="button" [tuiDropdown]="currency" [tuiDropdownManual]="true" > Exchange Rates: </button>
+<button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownDirection="bottom" tuiDropdownLimitWidth="auto" tuiDropdownSided tuiOption type="button" [tuiDropdown]="currency" [tuiDropdownManual]="true" > Exchange Rates: </button>
 </tui-data-list>
 </ng-template>
 <ng-template #calendar>
@@ -11464,9 +11464,9 @@ export default class Example {
 </ng-template>
 <ng-template [tuiDialogOptions]="{appearance: 'fullscreen'}" [(tuiDialog)]="scrollable" >
 <tui-app-bar tuiAppBarSize>
-<button iconStart="@tui.chevron-left" tuiIconButton tuiSlot="left" type="button" (click)="scrollable = false" > Back </button>
+<button iconStart="@tui.chevron-left" tuiIconButton tuiSlot="start" type="button" (click)="scrollable = false" > Back </button>
 <progress size="s" tuiProgressBar [max]="100" [style.width.rem]="10" [value]="35" ></progress>
-<button tuiButton tuiSlot="right" type="button" (click)="scrollable = false" > Action </button>
+<button tuiButton tuiSlot="end" type="button" (click)="scrollable = false" > Action </button>
 </tui-app-bar>
 <section [style.margin]="'0 -1rem'"> @for (_ of '-'.repeat(50); track $index) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
@@ -11693,8 +11693,7 @@ export class Example {}
 </h2>
 </header>
 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate perspiciatis exercitationem nemo velit aliquam voluptates non porro, vel, nihil laudantium sapiente ex omnis corrupti assumenda voluptatibus, architecto sequi saepe consectetur ratione qui. Beatae, sapiente explicabo velit facere repudiandae veniam et soluta quia qui expedita voluptate accusamus dolor adipisci. Illo quia sint consequatur unde nulla fuga eum officiis, impedit dolorem? Vel itaque temporibus nihil quia? Provident earum aperiam autem veritatis hic doloremque unde nesciunt accusantium nisi corrupti. </p>
-<footer tuiHeader>
-<div tuiTitle>Footer</div>
+<footer>
 <button appearance="secondary" tuiButton type="button" (click)="onClose()" > Close </button>
 </footer>
 </tui-drawer>
@@ -11788,7 +11787,7 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open.set(true)" > Open </button>
-<tui-drawer *tuiPopup="open()" direction="left" class="drawer" [overlay]="true" (click.self)="onClose()" >
+<tui-drawer *tuiPopup="open()" direction="start" class="drawer" [overlay]="true" (click.self)="onClose()" >
 <header class="header">
 <h2 tuiHeader>
 <div tuiTitle>Sticky header</div>
@@ -11885,13 +11884,13 @@ import {TuiHeader} from '@taiga-ui/layout';
 export default class Page {
     protected readonly examples = ['Full', 'Modal'];
     protected readonly directionVariants: readonly TuiHorizontalDirection[] = [
-        'left',
-        'right',
+        'start',
+        'end',
     ];
 
     protected open = signal(false);
     protected overlay = false;
-    protected direction: TuiHorizontalDirection = 'right';
+    protected direction: TuiHorizontalDirection = 'end';
 
     public onClose(): void {
         this.open.set(false);
@@ -12519,7 +12518,7 @@ export default class Example {
 <td tuiTd>{{ data[$index]?.name }}</td>
 <td tuiTd>
 <tui-textfield>
-<input placeholder="Price" tuiHintDirection="right" tuiInputNumber [formControl]="control" [prefix]="'USD' | tuiCurrency" [tuiHint]="[] | tuiError" />
+<input placeholder="Price" tuiHintDirection="end" tuiInputNumber [formControl]="control" [prefix]="'USD' | tuiCurrency" [tuiHint]="[] | tuiError" />
 </tui-textfield>
 </td>
 </tr> } </tbody>
@@ -13673,7 +13672,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
+    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'end'})],
 })
 export default class Example {
     protected floating = true;
@@ -16845,7 +16844,7 @@ import {TuiInputColor, tuiInputColorOptionsProvider} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
+    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'end'})],
 })
 export default class Example {
     protected value = '#ff7f50cc';
@@ -16880,7 +16879,7 @@ export default class PageComponent {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly examples = ['Basic', 'Opacity'];
 
-    protected readonly aligns = ['left', 'right'] as const;
+    protected readonly aligns = ['start', 'end'] as const;
     protected align = this.options.align;
 
     protected readonly formats = ['hex', 'hexa'] as const;
@@ -20132,7 +20131,7 @@ TuiNumberFormat allows to customize separators specific for your locale.
 <tui-textfield>
 <label tuiLabel>Type number like a German</label>
 <input tuiInputNumber [tuiNumberFormat]="numberFormat" [(ngModel)]="value" />
-<tui-icon tuiHintDirection="right" tuiTooltip="In Germany people use comma as decimal separator and point for thousands" />
+<tui-icon tuiHintDirection="end" tuiTooltip="In Germany people use comma as decimal separator and point for thousands" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -23399,7 +23398,7 @@ export default class Page {
 ```html
 <tui-items-with-more size="m" tuiGroup [collapsed]="true" > @for (item of items; track item) { <label *tuiItem appearance="" tuiBlock="m" [style.border-radius]="'inherit'" > {{ item }} <input tuiBlock type="checkbox" [(ngModel)]="value[$index]" />
 </label> } <ng-template let-lastIndex tuiMore >
-<button appearance="outline-grayscale" size="m" tuiButton tuiDropdownAlign="right" tuiDropdownAuto type="button" class="item" [tuiDropdown]="dropdown" > More <tui-badge>{{ items.length - lastIndex - 1 }}</tui-badge>
+<button appearance="outline-grayscale" size="m" tuiButton tuiDropdownAlign="end" tuiDropdownAuto type="button" class="item" [tuiDropdown]="dropdown" > More <tui-badge>{{ items.length - lastIndex - 1 }}</tui-badge>
 </button>
 <ng-template #dropdown>
 <tui-data-list size="l"> @for (item of items; track item) { @if ($index > lastIndex) { <button tuiOption type="button" (click)="value[$index] = !value[$index]" > {{ item }} <tui-icon icon="@tui.check" class="tui-space_left-2" [class._hidden]="!value[$index]" />
@@ -24879,7 +24878,7 @@ export default class Example {
 
 **Template:**
 ```html
-<h3 class="header"> Dropdown&nbsp;&mdash; <button tuiChevron tuiDropdownAlign="left" tuiDropdownLimitWidth="auto" tuiLink type="button" [tuiDropdown]="template" [(tuiDropdownOpen)]="open" > Open </button>
+<h3 class="header"> Dropdown&nbsp;&mdash; <button tuiChevron tuiDropdownAlign="start" tuiDropdownLimitWidth="auto" tuiLink type="button" [tuiDropdown]="template" [(tuiDropdownOpen)]="open" > Open </button>
 </h3>
 <ng-template #template>
 <tui-data-list tuiDataListDropdownManager>
@@ -30357,7 +30356,7 @@ export default class Example {
 </footer>
 </ng-template>
 </tui-pulse> } </div>
-<button appearance="outline" size="m" tuiButton type="button" (click)="step.set(1)" > Start tutorial @if (step()) { <tui-pulse tuiHintAppearance="accent" tuiHintDirection="right" tuiTheme="dark" class="step-1" [tuiHint]="step1" [tuiHintManual]="step() === 1" >
+<button appearance="outline" size="m" tuiButton type="button" (click)="step.set(1)" > Start tutorial @if (step()) { <tui-pulse tuiHintAppearance="accent" tuiHintDirection="end" tuiTheme="dark" class="step-1" [tuiHint]="step1" [tuiHintManual]="step() === 1" >
 <ng-template #step1>
 <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" (click)="step.set(0)" > Close </button>
 <h3 tuiTitle> Welcome to the tutorial! <div tuiSubtitle>This is the first step.</div>
@@ -32582,7 +32581,7 @@ DataListWrapper is just a helper to solve most popular use cases. Use DataList f
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="Install library" tuiSelect [(ngModel)]="value" />
-<tui-data-list *tuiDropdown tuiDataListDropdownManager > @for (group of taigaFamilyLibs; track group) { <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="options" > {{ group.name }} <ng-template #options>
+<tui-data-list *tuiDropdown tuiDataListDropdownManager > @for (group of taigaFamilyLibs; track group) { <button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="options" > {{ group.name }} <ng-template #options>
 <tui-data-list> @for (lib of group.libraries; track lib) { <button tuiOption type="button" [value]="lib" > {{ lib }} </button> } </tui-data-list>
 </ng-template>
 </button> } </tui-data-list>
@@ -33362,7 +33361,7 @@ export default class Example {
 <ng-template [tuiSheetDialogOptions]="{appearance: 'fullscreen', bar: false}" [(tuiSheetDialog)]="open" >
 <header>
 <tui-app-bar>
-<button tuiButton tuiSlot="left" type="button" (click)="open.set(false)" > Close </button> Search contacts </tui-app-bar>
+<button tuiButton tuiSlot="start" type="button" (click)="open.set(false)" > Close </button> Search contacts </tui-app-bar>
 <input placeholder="Search contacts" tuiSearch type="search" class="input" [(ngModel)]="search" />
 </header>
 <div class="favorites"> @for (item of items | slice: 0 : 6; track item) { <tui-avatar-labeled [label]="item.name">
@@ -34161,8 +34160,8 @@ export default class Example {
 ```html
 <button tuiButton type="button" (click)="onClick()" > Show dialog </button>
 <ng-template let-observer>
-<tui-app-bar tuiAppBarSize> @if (step > 1) { <button tuiButton tuiSlot="left" type="button" (click)="onStep(-1)" > Back </button> } <progress size="s" tuiProgressBar [max]="3" [style.width.rem]="10" [value]="step" ></progress>
-<button tuiButton tuiSlot="right" type="button" (click)="observer.complete()" > Close </button>
+<tui-app-bar tuiAppBarSize> @if (step > 1) { <button tuiButton tuiSlot="start" type="button" (click)="onStep(-1)" > Back </button> } <progress size="s" tuiProgressBar [max]="3" [style.width.rem]="10" [value]="step" ></progress>
+<button tuiButton tuiSlot="end" type="button" (click)="observer.complete()" > Close </button>
 </tui-app-bar>
 <section [tuiSlides]="direction"> @switch (step) { @case (1) { <div>
 <header>Welcome to the slides demo</header>
@@ -34886,7 +34885,7 @@ export default class Example {}
 <div tuiSurface tuiTheme="dark" class="mask" >
 <h3 class="heading"> My bank account <button appearance="secondary" iconStart="@tui.pencil" size="s" tuiIconButton type="button" class="button" > Edit name </button>
 </h3>
-<span class="sum">{{ 23742 | tuiAmount: 'USD' : 'left' }}</span>
+<span class="sum">{{ 23742 | tuiAmount: 'USD' : 'start' }}</span>
 <footer class="footer">
 <tui-thumbnail-card paymentSystem="mastercard" [style.background]="'#337'" > 1234 </tui-thumbnail-card>
 <tui-thumbnail-card paymentSystem="visa" [style.background]="'#e33'" > 5678 </tui-thumbnail-card>
@@ -36253,7 +36252,7 @@ export default class Example {
 </td>
 <td tuiTd>
 <tui-items-with-more> @for (chip of item.items; track chip) { <tui-badge *tuiItem [style.margin-inline-end.rem]="0.25" > {{ chip }} </tui-badge> } <ng-template let-number tuiMore >
-<button appearance="action-grayscale" tuiDropdownAlign="right" tuiDropdownAuto tuiLink type="button" [style.text-decoration-style]="'dashed'" [tuiDropdown]="dropdown" > + {{ item.items.length - number - 1 }} </button>
+<button appearance="action-grayscale" tuiDropdownAlign="end" tuiDropdownAuto tuiLink type="button" [style.text-decoration-style]="'dashed'" [tuiDropdown]="dropdown" > + {{ item.items.length - number - 1 }} </button>
 <ng-template #dropdown>
 <div tuiItemGroup [style.padding]="'1rem 0.75rem 0.75rem 1rem'" > @for (chip of item.items; track chip) { @if ($index > number) { <tui-badge>{{ chip }}</tui-badge> } } </div>
 </ng-template>
@@ -38173,7 +38172,7 @@ export default class Example {
 **Template:**
 ```html
 <section class="content">
-<nav tuiTabs vertical="left" class="left" >
+<nav tuiTabs vertical="start" class="left" >
 <button tuiTab type="button" > Item 1 </button>
 <button tuiTab type="button" > Item 2 </button>
 <button tuiTab type="button" > Item 3 with name so long it spans multiple lines </button>
@@ -38188,7 +38187,7 @@ export default class Example {
 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultricies enim, vel molestie orci. In finibus diam ac nulla accumsan, vel condimentum lorem ultricies. In feugiat mauris sem, ac ultricies metus aliquet nec. Ut a iaculis metus, id vestibulum justo. Nulla id ante semper, aliquam augue vitae, sollicitudin massa. Sed congue nisi sed ullamcorper mollis. Vivamus volutpat non est a vestibulum. Sed in elementum odio. Proin a lectus ac quam vulputate ornare nec id mi. Maecenas pharetra ultricies efficitur. Etiam sit amet vulputate elit. Donec ut dapibus nunc. Nullam vestibulum diam eros, ac euismod velit porta ac. Ut ut auctor velit. Nulla ac lobortis erat, ut tempor neque. </p>
 <p> Donec quis lacus leo. Mauris quis vestibulum mauris. Sed hendrerit odio id blandit iaculis. Nulla ac gravida ligula, tristique tempus eros. Mauris efficitur risus quis arcu pharetra, eu semper ex rutrum. Aenean justo felis, imperdiet non justo vel, fringilla maximus nibh. Vestibulum ut imperdiet ex, vel varius odio. Nunc nec lorem non odio mollis porta. In gravida accumsan lacus, vitae egestas lectus aliquet sed. Morbi justo orci, fringilla sit amet consectetur vel, consectetur a nibh. Sed eu porttitor ante. Morbi imperdiet ligula id velit dignissim malesuada. Vestibulum blandit posuere sem. </p>
 </div>
-<tui-tabs size="m" vertical="right" class="right" >
+<tui-tabs size="m" vertical="end" class="right" >
 <a routerLinkActive tuiTab [routerLink]="routes.Button" > Button </a>
 <a routerLinkActive tuiTab [routerLink]="routes.Tabs" > Tabs </a>
 <a routerLinkActive tuiTab [routerLink]="routes.Input" > Input </a>
@@ -39533,10 +39532,10 @@ export class Example {}
 **Template:**
 ```html
 <p>Component with a static text...</p>
-<tui-icon tuiHintDirection="right" tuiTooltip="Supports basic <strong>HTML</strong>" />
+<tui-icon tuiHintDirection="end" tuiTooltip="Supports basic <strong>HTML</strong>" />
 <p> ...or any custom HTML or logic with <code>PolymorpheusContent</code> : </p>
-<tui-icon tuiHintDirection="bottom-right" [tuiTooltip]="tooltip" />
-<p class="wrapping-tooltip"> Example of wrapping tooltip <tui-icon tuiHintDirection="bottom-right" [tuiTooltip]="tooltip" />
+<tui-icon tuiHintDirection="bottom-end" [tuiTooltip]="tooltip" />
+<p class="wrapping-tooltip"> Example of wrapping tooltip <tui-icon tuiHintDirection="bottom-end" [tuiTooltip]="tooltip" />
 </p>
 <ng-template #tooltip> @let isLoading = (isLoading$ | async)!; <tui-loader size="s" class="tooltip" [inheritColor]="true" [loading]="isLoading" > {{ isLoading ? '' : 'Error 502: Bad Gateway' }} </tui-loader>
 </ng-template>
@@ -39573,7 +39572,7 @@ export default class Example {
 <p> Custom host can be set with <a tuiLink [routerLink]="['/tui-hint']" >
 <code>tuiHint</code>
 </a> directive </p>
-<div size="l" tabindex="0" tuiAvatar tuiHintAppearance="dark" tuiHintDirection="right" [style.background]="'❤️' | tuiAutoColor" [tuiHint]="tooltip" > ❤️ </div>
+<div size="l" tabindex="0" tuiAvatar tuiHintAppearance="floating" tuiHintDirection="end" [style.background]="'❤️' | tuiAutoColor" [tuiHint]="tooltip" > ❤️ </div>
 <ng-template #tooltip>
 <div> What is <strong>love</strong> ? </div>
 <div>Baby don't hurt me</div>
@@ -39616,7 +39615,7 @@ export default class Example {}
 <tui-textfield tuiTextfieldSize="m" class="input" >
 <input tuiInput />
 </tui-textfield>
-<tui-icon tuiHintDirection="right" [tuiTooltip]="tooltip" />
+<tui-icon tuiHintDirection="end" [tuiTooltip]="tooltip" />
 ```
 **TypeScript:**
 ```ts
@@ -42055,8 +42054,8 @@ export default class Example {}
 ```html
 <div tuiComment="top">Good job</div>
 <div tuiComment="bottom" class="success" > Cashback </div>
-<div tuiComment="left" class="primary" > Extra payment </div>
-<div tuiComment="right">Check it out</div>
+<div tuiComment="start" class="primary" > Extra payment </div>
+<div tuiComment="end">Check it out</div>
 ```
 **TypeScript:**
 ```ts
@@ -42589,7 +42588,7 @@ export default class Example {
 <div [tuiAvatar]="user.name | tuiInitials"> @if (user.url) { <img alt="" [src]="user.url" /> } </div>
 <span tuiTitle>
 <span tuiFade>{{ user.name }}</span>
-<span tuiSubtitle> {{ user.balance | tuiAmount: '$' : 'left' }} </span>
+<span tuiSubtitle> {{ user.balance | tuiAmount: '$' : 'start' }} </span>
 </span>
 </span>
 </ng-template>
@@ -42824,7 +42823,7 @@ export default class Example {}
 <tr> @for (column of tableColumns; track column) { <th tuiTh> {{ column }} </th> } </tr>
 </thead>
 <tbody tuiTbody> @for (rowInfo of tableData; track rowInfo) { <tr #dropdown="tuiDropdown" tuiDropdownContext [tuiDropdown]="contextMenu" > @for (value of getObjectValues(rowInfo); track value) { <td tuiTd> {{ value }} </td> } <ng-template #contextMenu>
-<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
+<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
 </tui-data-list>
 <ng-template #nestedMenu>
 <tui-data-list> @for (option of moreOptions; track option) { <button tuiOption type="button" > {{ option }} </button> } </tui-data-list>
@@ -43296,7 +43295,7 @@ export class Example {}
 
 **Template:**
 ```html
-<button appearance="flat" iconEnd="@tui.chevron-right" size="m" tuiButton tuiDropdownAlign="right" type="button" [tuiAppearanceState]="open ? 'active' : null" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" [(tuiDropdownOpen)]="open" > Button </button>
+<button appearance="flat" iconEnd="@tui.chevron-right" size="m" tuiButton tuiDropdownAlign="end" type="button" [tuiAppearanceState]="open ? 'active' : null" [tuiDropdown]="dropdown" [tuiDropdownSided]="true" [(tuiDropdownOpen)]="open" > Button </button>
 <ng-template #dropdown let-close >
 <tui-data-list>
 <tui-opt-group> @for (item of items; track item) { <button tuiOption type="button" (click)="onClick()" > {{ item }} </button> } </tui-opt-group>
@@ -43399,7 +43398,7 @@ export default class Example {
 
 **Template:**
 ```html
-<button tuiChevron tuiDropdownAlign="right" tuiLink type="button" class="link" [iconStart]="ascending ? '@tui.chevron-up' : '@tui.chevron-down'" [textContent]="primary" [tuiDropdown]="dropdown" [(tuiDropdownOpen)]="open" ></button>
+<button tuiChevron tuiDropdownAlign="end" tuiLink type="button" class="link" [iconStart]="ascending ? '@tui.chevron-up' : '@tui.chevron-down'" [textContent]="primary" [tuiDropdown]="dropdown" [(tuiDropdownOpen)]="open" ></button>
 <ng-template #dropdown>
 <tui-data-list> @for (group of items; track group) { <tui-opt-group> @for (item of group; track item) { <button tuiOption type="button" class="item" (click)="onClick(item)" > {{ item }} @if (itemIsActive(item)) { <tui-icon icon="@tui.check" /> } </button> } </tui-opt-group> } </tui-data-list>
 </ng-template>
@@ -44750,7 +44749,7 @@ export class Example {}
 
 **Template:**
 ```html
-<div size="l" tuiAvatar tuiHintAppearance="dark" tuiHintDirection="right" [style.background]="'❤️' | tuiAutoColor" [tuiHint]="tooltip" > ❤️ </div>
+<div size="l" tuiAvatar tuiHintAppearance="floating" tuiHintDirection="end" [style.background]="'❤️' | tuiAutoColor" [tuiHint]="tooltip" > ❤️ </div>
 <ng-template #tooltip>
 <div> What is <strong>love</strong> ? </div>
 <div>Baby don't hurt me</div>
@@ -44788,7 +44787,7 @@ export default class Example {
 
 **Template:**
 ```html
-<div size="l" tuiAvatar tuiHint tuiHintDirection="right" [style.background]="'❤️' | tuiAutoColor" > ❤️ <tui-hint *tuiHint class="hint" [@.disabled]="true" > You can expose the bubble component with <code>*tuiHint</code> directive to customize it </tui-hint>
+<div size="l" tuiAvatar tuiHint tuiHintDirection="end" [style.background]="'❤️' | tuiAutoColor" > ❤️ <tui-hint *tuiHint class="hint" [@.disabled]="true" > You can expose the bubble component with <code>*tuiHint</code> directive to customize it </tui-hint>
 </div>
 ```
 **TypeScript:**
@@ -44868,11 +44867,11 @@ export default class Example {}
 <label tuiLabel>Term</label>
 <input formControlName="period" tuiSelect />
 <tui-data-list-wrapper *tuiDropdown [itemContent]="stringify | tuiStringifyContent" [items]="items | tuiFilterByInput" />
-<tui-icon tuiHintDirection="top-left" [tuiTooltip]="periodHint" />
+<tui-icon tuiHintDirection="top-start" [tuiTooltip]="periodHint" />
 </tui-textfield>
 <ng-template #periodHint> You will pay in equal installments on a monthly basis You will pay in equal installments on a monthly basis </ng-template>
 </form>
-<button tuiHintAppearance="floating" tuiHintDirection="top-left" tuiLink type="button" class="tui-space_top-4" [tuiHint]="howToBuyTooltip" > How to buy <ng-template #howToBuyTooltip>
+<button tuiHintAppearance="floating" tuiHintDirection="top-start" tuiLink type="button" class="tui-space_top-4" [tuiHint]="howToBuyTooltip" > How to buy <ng-template #howToBuyTooltip>
 <ol class="tui-list tui-list_ordered tui-list_small">
 <li class="tui-list__item">Choose an installment plan</li>
 <li class="tui-list__item">Fill in the application</li>
@@ -45015,11 +45014,11 @@ export class Example {}
 **Template:**
 ```html
 <p>
-<button appearance="secondary" iconStart="@tui.circle-help" tuiHint="Works well with icon buttons" tuiHintDescribe tuiHintDirection="right" tuiIconButton type="button" ></button>
+<button appearance="secondary" iconStart="@tui.circle-help" tuiHint="Works well with icon buttons" tuiHintDescribe tuiHintDirection="end" tuiIconButton type="button" ></button>
 </p>
 <p>
 <button id="button" appearance="secondary" iconStart="@tui.circle-help" tuiButton type="button" > Hint </button>
-<tui-icon tuiHintDirection="right" tuiTooltip="Or with external tooltip" tuiTooltipDescribe="button" class="tui-space_top-4 tui-space_left-4" />
+<tui-icon tuiHintDirection="end" tuiTooltip="Or with external tooltip" tuiTooltipDescribe="button" class="tui-space_top-4 tui-space_left-4" />
 </p>
 <tui-textfield>
 <input tuiInput [(ngModel)]="value" />
@@ -45237,7 +45236,7 @@ export class Example {}
 
 **Template:**
 ```html
-<div tuiHint="Wow! How exciting!" tuiHintDirection="top-left" tuiHintPointer class="block" >
+<div tuiHint="Wow! How exciting!" tuiHintDirection="top-start" tuiHintPointer class="block" >
 <p>In this block hint follows cursor</p>
 </div>
 ```
@@ -46959,7 +46958,7 @@ export default class Example {
 
 **Template:**
 ```html
-<div class="container tui-text_body-l" (tuiSwipe)="onSwipe($event)" > Swipe left to open <tui-drawer *tuiPopup="open()" direction="right" class="drawer tui-text_body-l" [overlay]="true" (click.self)="open.set(false)" (tuiSwipe)="onSwipe($event)" > Swipe right to close </tui-drawer>
+<div class="container tui-text_body-l" (tuiSwipe)="onSwipe($event)" > Swipe left to open <tui-drawer *tuiPopup="open()" direction="end" class="drawer tui-text_body-l" [overlay]="true" (click.self)="open.set(false)" (tuiSwipe)="onSwipe($event)" > Swipe right to close </tui-drawer>
 </div>
 ```
 **TypeScript:**
@@ -48254,7 +48253,7 @@ class PortalHost implements TuiRectAccessor {
 export default class Example {
     protected hintShown = false;
 
-    protected directions: TuiHintDirection[] = ['top', 'left', 'right', 'bottom'];
+    protected directions: TuiHintDirection[] = ['top', 'start', 'end', 'bottom'];
 
     protected selected = this.directions[0]!;
 
@@ -48311,8 +48310,8 @@ export class Example {}
 
 ```html
 {{ 100000 | tuiAmount : currency : align }}
-<p>{{ 100000 | tuiAmount : '978' : 'left' }}</p>
-<p>{{ 100000 | tuiAmount : 'EUR' : 'right' }}</p>
+<p>{{ 100000 | tuiAmount : '978' : 'start' }}</p>
+<p>{{ 100000 | tuiAmount : 'EUR' : 'end' }}</p>
 ```
 
 ### Usage Examples
@@ -48327,9 +48326,9 @@ export class Example {}
 <li>{{ 10728.9 | tuiAmount: 'EUR' }}</li>
 <li>{{ 10728.9 | tuiAmount: 'USD' }}</li>
 <li>{{ 10728.9 | tuiAmount: 'GBP' }}</li>
-<li>{{ -12345.1 | tuiAmount: 'USD' : 'left' }}</li>
-<li>{{ 100 | tuiAmount: '£' : 'left' }}</li>
-<li>{{ 200 | tuiAmount: 'AED' : 'left' }}</li>
+<li>{{ -12345.1 | tuiAmount: 'USD' : 'start' }}</li>
+<li>{{ 100 | tuiAmount: '£' : 'start' }}</li>
+<li>{{ 200 | tuiAmount: 'AED' : 'start' }}</li>
 </ol>
 <hr class="tui-space_top-1 tui-space_bottom-1" />
 <span>Remaining {{ 10728.9 | tuiAmount }} of {{ 11000 | tuiAmount }}</span>
@@ -48354,11 +48353,11 @@ export default class Example {}
 
 **Template:**
 ```html
-<div [tuiNumberFormat]="{rounding: 'round', thousandSeparator: ',', decimalSeparator: '.'}"> {{ -10000000.536 | tuiAmount: 'USD' : 'left' }} </div>
+<div [tuiNumberFormat]="{rounding: 'round', thousandSeparator: ',', decimalSeparator: '.'}"> {{ -10000000.536 | tuiAmount: 'USD' : 'start' }} </div>
 <div>{{ 200.536 | tuiAmount: 'EUR' }}</div>
-<div [tuiNumberFormat]="{rounding: 'ceil', precision: 1}"> {{ 54000.643 | tuiAmount: 'USD' : 'left' }} </div>
-<div [tuiNumberFormat]="{decimalMode: 'always'}"> {{ 800 | tuiAmount: 'USD' : 'left' }} </div>
-<div [tuiNumberFormat]="{precision: 0}"> {{ -0.83 | tuiAmount: 'RUB' : 'right' }} </div>
+<div [tuiNumberFormat]="{rounding: 'ceil', precision: 1}"> {{ 54000.643 | tuiAmount: 'USD' : 'start' }} </div>
+<div [tuiNumberFormat]="{decimalMode: 'always'}"> {{ 800 | tuiAmount: 'USD' : 'start' }} </div>
+<div [tuiNumberFormat]="{precision: 0}"> {{ -0.83 | tuiAmount: 'RUB' : 'end' }} </div>
 ```
 **TypeScript:**
 ```ts
@@ -48400,7 +48399,7 @@ import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce'
         tuiAmountOptionsProvider({
             sign: 'always',
             currency: 'USD',
-            currencyAlign: 'left',
+            currencyAlign: 'start',
         }),
     ],
 })
@@ -48442,7 +48441,7 @@ import {TuiNumberFormat} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiAmountOptionsProvider({currencyAlign: 'left'})],
+    providers: [tuiAmountOptionsProvider({currencyAlign: 'start'})],
 })
 export default class Example {}
 ```
