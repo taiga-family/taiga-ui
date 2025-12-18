@@ -15,6 +15,7 @@
 @transform-noop: scale(1);
 
 @thumb-diameter: calc(var(--tui-thumb-radius) * 2);
+@hitboxThumbDiameterDiff: max(calc(@hitbox - @thumb-diameter), 0.125rem);
 
 .customize-track(@progress-filling) {
     min-block-size: 0.125rem;
@@ -64,7 +65,7 @@
     /* Increase vertical hitbox by transparent borders */
     box-sizing: content-box;
     background-clip: content-box;
-    border: (@hitbox / 8) solid transparent;
+    border: calc(@hitboxThumbDiameterDiff / 2) solid transparent;
     border-inline-start: 0;
     border-inline-end: 0;
     transform: var(--tui-slider-thumb-transform, @transform-noop);
@@ -78,19 +79,19 @@
         }
     }
 
-    :focus-visible & {
+    :focus-visible& {
         box-shadow: 0 0 0 2px inset var(--tui-border-focus);
     }
 }
 
 /* Vertically centers thumb on the track (webkit only) */
 .vertically-align-thumb() {
-    margin-block-start: calc((@thumb-diameter - @track-thickness + (@hitbox / 4)) / 2 * -1);
+    margin-block-start: calc((@thumb-diameter - @track-thickness + @hitboxThumbDiameterDiff) / 2 * -1);
 }
 
 .thumb-ghost() {
     position: absolute;
-    top: calc((@hitbox - @thumb-diameter) / 2);
+    top: calc(@hitboxThumbDiameterDiff / 2);
     left: var(--t-left);
     inset-inline-start: var(--t-left);
     inline-size: @thumb-diameter;
