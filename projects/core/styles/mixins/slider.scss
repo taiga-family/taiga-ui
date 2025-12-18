@@ -10,6 +10,8 @@ $track-inset: (
     'l': 1rem,
 );
 
+$track-thickness: calc(var(--tui-thumb-radius) / 3);
+
 // TODO(v5): use `l` by default (default size for new textfields)
 @mixin tui-slider-ticks-labels($input-size: m) {
     $thumb: map-get($thumb-diameters, $input-size);

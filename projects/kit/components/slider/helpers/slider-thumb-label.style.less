@@ -4,23 +4,18 @@
     position: relative;
 }
 
-.calculate-ghost-params() {
+.t-ghost {
     @thumb: calc(var(--tui-thumb-radius) * 2);
 
-    inline-size: @thumb;
-    block-size: @thumb;
-    transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb * var(--tui-inline)));
-}
-
-.t-ghost {
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
     border-radius: 50%;
     pointer-events: none;
-
-    .calculate-ghost-params();
+    inline-size: @thumb;
+    block-size: @thumb;
+    transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb * var(--tui-inline)));
 
     @supports (inset-inline-end: 0) {
         :host-context([dir='rtl']) & {

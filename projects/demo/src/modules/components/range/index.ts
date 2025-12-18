@@ -2,10 +2,11 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiDemo, TuiRange],
+    imports: [ReactiveFormsModule, TuiDemo, TuiRange, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -26,6 +27,8 @@ export default class Page {
     protected step = 1;
 
     protected segments = 1;
+
+    protected thumbRadius = 0.37;
 
     protected readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [

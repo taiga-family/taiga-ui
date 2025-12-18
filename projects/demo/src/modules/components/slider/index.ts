@@ -1,16 +1,17 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiDemo, TuiSlider],
+    imports: [ReactiveFormsModule, TuiDemo, TuiSlider, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
     protected readonly examples = [
-        'Sizes',
+        'Thickness',
         'Colors',
         'Segments',
         'Disabled',
@@ -32,6 +33,7 @@ export default class Page {
     protected min = 0;
     protected step = 1;
     protected segments: number[] | number = this.max;
+    protected thumbRadius = 0.37;
 
     protected get disabled(): boolean {
         return this.control.disabled;

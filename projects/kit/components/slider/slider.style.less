@@ -14,10 +14,9 @@
 
 @transform-noop: scale(1);
 
-@track-thickness: calc(var(--tui-thumb-radius) / 3);
 @thumb-diameter: calc(var(--tui-thumb-radius) * 2);
 
-.tui-customize-track(@progress-filling) {
+.customize-track(@progress-filling) {
     min-block-size: 0.125rem;
     block-size: @track-thickness;
     border-radius: inherit;
@@ -152,11 +151,11 @@
     }
 
     &::-webkit-slider-runnable-track {
-        .tui-customize-track(true);
+        .customize-track(true);
     }
 
     &::-moz-range-track {
-        .tui-customize-track(false);
+        .customize-track(false);
     }
 
     &::-webkit-slider-thumb {
