@@ -22,7 +22,7 @@ export default class PageComponent {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly examples = ['Basic', 'Opacity'];
 
-    protected readonly aligns = ['left', 'right'] as const;
+    protected readonly aligns = ['start', 'end'] as const;
     protected align = this.options.align;
 
     protected readonly formats = ['hex', 'hexa'] as const;

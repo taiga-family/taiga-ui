@@ -12,7 +12,7 @@ import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce'
         tuiAmountOptionsProvider({
             sign: 'always',
             currency: 'USD',
-            currencyAlign: 'left',
+            currencyAlign: 'start',
         }),
     ],
 })

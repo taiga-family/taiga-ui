@@ -14,7 +14,7 @@
     <tui-app-bar tuiAppBarSize>
         <button
             tuiAppBarBack
-            tuiSlot="left"
+            tuiSlot="start"
             type="button"
             [disabled]="!step"
             (click)="step = step - 1"
@@ -30,7 +30,7 @@
         ></progress>
         <button
             tuiButton
-            tuiSlot="right"
+            tuiSlot="end"
             type="button"
             (click)="observer.complete()"
         >

@@ -33,7 +33,7 @@ tui-avatar-stack {
         mask-image: radial-gradient(circle at calc(50% - calc(var(--tui-inline) * (var(--t-size) - var(--t-offset)))) 50%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px));
     }
 
-    &[data-direction='right'] [tuiAvatar]._round {
+    &[data-direction='end'] [tuiAvatar]._round {
         --tui-inline: -1;
 
         [dir='rtl'] & {
@@ -45,14 +45,14 @@ tui-avatar-stack {
         }
     }
 
-    &[data-direction='left'] [tuiAvatar]._round {
+    &[data-direction='start'] [tuiAvatar]._round {
         &:first-child {
             mask-image: none;
         }
     }
 
-    &[data-direction='left'] [tuiAvatar]:not(._round):not(:first-child),
-    [dir='rtl'] &[data-direction='right'] [tuiAvatar]:not(._round):not(:last-child) {
+    &[data-direction='start'] [tuiAvatar]:not(._round):not(:first-child),
+    [dir='rtl'] &[data-direction='end'] [tuiAvatar]:not(._round):not(:last-child) {
         mask-image:
             radial-gradient(circle at 0% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
             radial-gradient(circle at 0% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
@@ -63,8 +63,8 @@ tui-avatar-stack {
             bottom;
     }
 
-    &[data-direction='right'] [tuiAvatar]:not(._round):not(:last-child),
-    [dir='rtl'] &[data-direction='left'] [tuiAvatar]:not(._round):not(:first-child) {
+    &[data-direction='end'] [tuiAvatar]:not(._round):not(:last-child),
+    [dir='rtl'] &[data-direction='start'] [tuiAvatar]:not(._round):not(:first-child) {
         mask-image:
             radial-gradient(circle at 150% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
             radial-gradient(circle at 150% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
@@ -79,15 +79,15 @@ tui-avatar-stack {
         mask-repeat: no-repeat;
     }
 
-    [dir='rtl'] &[data-direction='left'] [tuiAvatar]:not(._round),
-    &[data-direction='right'] [tuiAvatar]:not(._round){
+    [dir='rtl'] &[data-direction='start'] [tuiAvatar]:not(._round),
+    &[data-direction='end'] [tuiAvatar]:not(._round){
         mask-size:
             calc(var(--t-radius) + var(--t-gap)) calc(var(--t-radius) + var(--t-gap)),
             calc(var(--t-radius) + var(--t-gap)) calc(var(--t-radius) + var(--t-gap)),
             100%;
     }
 
-    [dir='rtl'] &[data-direction='right'] [tuiAvatar]:not(._round) {
+    [dir='rtl'] &[data-direction='end'] [tuiAvatar]:not(._round) {
         mask-size: unset;
     }
 

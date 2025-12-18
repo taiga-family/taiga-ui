@@ -4,14 +4,14 @@
     <tui-app-bar>
         <button
             tuiButton
-            tuiSlot="left"
+            tuiSlot="start"
             type="button"
             (click)="context.$implicit.complete()"
         >
             {{ close() }}
         </button>
         <ng-container [ngTemplateOutlet]="content" />
-        <ng-container tuiSlot="right">
+        <ng-container tuiSlot="end">
             <ng-container [ngTemplateOutlet]="actions" />
         </ng-container>
     </tui-app-bar>

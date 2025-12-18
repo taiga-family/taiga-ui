@@ -81,13 +81,21 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         return [position[align], position[better]];
     }
 
-    public getAlign(align: TuiDropdownAlign): TuiDropdownAlign {
+    public getAlign(align: TuiDropdownAlign): 'center' | 'left' | 'right' {
         const rtl = this.el.matches('[dir="rtl"] :scope');
 
-        if (rtl && align === 'left') {
+        if (rtl && align === 'start') {
             return 'right';
         }
 
-        return rtl && align === 'right' ? 'left' : align;
+        if (rtl && align === 'end') {
+            return 'left';
+        }
+
+        if (align === 'center') {
+            return 'center';
+        }
+
+        return align === 'end' ? 'right' : 'left';
     }
 }

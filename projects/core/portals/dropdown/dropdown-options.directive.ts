@@ -11,7 +11,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiVerticalDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils/miscellaneous';
 
-export type TuiDropdownAlign = 'center' | 'left' | 'right';
+export type TuiDropdownAlign = 'center' | 'end' | 'start';
 export type TuiDropdownWidth = 'auto' | 'fixed' | 'min';
 
 export interface TuiDropdownOptions {
@@ -25,7 +25,7 @@ export interface TuiDropdownOptions {
 }
 
 export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
-    align: 'left',
+    align: 'start',
     direction: null,
     limitWidth: 'auto',
     maxHeight: 400,

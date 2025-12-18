@@ -171,12 +171,12 @@
 
     position: absolute;
     display: block;
-    inset: auto 100% 0 auto;
+    inset-block: auto 0;
+    inset-inline: auto 100%;
     clip-path: inset(0);
     transform: translate3d(calc(100% * var(--tui-inline)), 0, 0);
 
     :host-context([dir='rtl']) & {
-        inset: auto unset auto 100%;
         transform: translate3d(calc(100% * var(--tui-inline)), 0, 0) !important;
     }
 }

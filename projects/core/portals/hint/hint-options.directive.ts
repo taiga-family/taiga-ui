@@ -3,32 +3,32 @@ import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 export type TuiHintDirection =
-    | 'bottom-left'
-    | 'bottom-right'
+    | 'bottom-end'
+    | 'bottom-start'
     | 'bottom'
-    | 'left-bottom'
-    | 'left-top'
-    | 'left'
-    | 'right-bottom'
-    | 'right-top'
-    | 'right'
-    | 'top-left'
-    | 'top-right'
+    | 'end-bottom'
+    | 'end-top'
+    | 'end'
+    | 'start-bottom'
+    | 'start-top'
+    | 'start'
+    | 'top-end'
+    | 'top-start'
     | 'top';
 
 export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
-    'bottom-left',
+    'bottom-start',
     'bottom',
-    'bottom-right',
-    'top-left',
+    'bottom-end',
+    'top-start',
     'top',
-    'top-right',
-    'left-top',
-    'left',
-    'left-bottom',
-    'right-top',
-    'right',
-    'right-bottom',
+    'top-end',
+    'start-top',
+    'start',
+    'start-bottom',
+    'end-top',
+    'end',
+    'end-bottom',
 ];
 
 export interface TuiHintOptions extends TuiAppearanceOptions {
@@ -40,7 +40,7 @@ export interface TuiHintOptions extends TuiAppearanceOptions {
 
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
-    direction: 'bottom-left',
+    direction: 'bottom-start',
     showDelay: 500,
     hideDelay: 200,
     appearance: '',

@@ -34,7 +34,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
         tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({
             appearance: 'dropdown-navigation',
-            align: 'right',
+            align: 'end',
             offset: 12,
         }),
     ],

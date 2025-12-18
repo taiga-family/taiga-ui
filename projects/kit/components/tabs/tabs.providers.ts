@@ -21,7 +21,7 @@ export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
 export const TUI_TABS_PROVIDERS: Provider[] = [
     ResizeObserverService,
     MutationObserverService,
-    tuiDropdownOptionsProvider({align: 'right'}),
+    tuiDropdownOptionsProvider({align: 'end'}),
     {
         provide: WA_MUTATION_OBSERVER_INIT,
         useValue: {

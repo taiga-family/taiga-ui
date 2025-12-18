@@ -17,5 +17,5 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     },
 })
 export class TuiAvatarStack {
-    public readonly direction = input<TuiHorizontalDirection>('right');
+    public readonly direction = input<TuiHorizontalDirection>('end');
 }
