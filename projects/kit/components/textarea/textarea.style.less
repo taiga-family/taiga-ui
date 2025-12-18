@@ -63,7 +63,7 @@
     position: relative;
     z-index: 1;
     order: 1;
-    inline-size: stretch;
+    inline-size: calc(100% - var(--t-start) - var(--t-end) - var(--t-side, ~'0rem'));
     white-space: pre-wrap;
     word-break: break-word;
     overflow-wrap: break-word;
