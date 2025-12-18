@@ -53,38 +53,6 @@ export class TuiLineClamp {
     private readonly overflown = signal(false);
     private readonly maxHeight = computed(() => this.lineHeight() * this.linesLimit());
 
-    private readonly lazyCalculation = afterNextRender({
-        write: () => {
-            this.updateMaxHeight();
-            this.calculateAndEmitOverflow();
-
-            merge(
-                fromEvent(this.el, 'mouseenter').pipe(
-                    filter(() => !this.calculatedForHint()),
-                ),
-                fromEvent(window, 'resize').pipe(
-                    debounceTime(100),
-                    filter(() => this.calculatedForHint()),
-                ),
-                fromEvent(this.el, 'transitionend').pipe(
-                    filter((e: Event) => e.target === e.currentTarget),
-                    filter(() => this.calculatedForHint()),
-                ),
-            )
-                .pipe(takeUntilDestroyed(this.destroyRef))
-                .subscribe(() => this.calculateForHint());
-        },
-    });
-
-    private readonly recalculateOnChange = effect(() => {
-        this.lineHeight();
-        this.linesLimit();
-        this.content();
-
-        this.updateMaxHeight();
-        this.calculateAndEmitOverflow();
-    });
-
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
@@ -105,6 +73,40 @@ export class TuiLineClamp {
         ),
         {initialValue: 0},
     );
+
+    constructor() {
+        afterNextRender({
+            write: () => {
+                this.updateMaxHeight();
+                this.calculateAndEmitOverflow();
+
+                merge(
+                    fromEvent(this.el, 'mouseenter').pipe(
+                        filter(() => !this.calculatedForHint()),
+                    ),
+                    fromEvent(window, 'resize').pipe(
+                        debounceTime(100),
+                        filter(() => this.calculatedForHint()),
+                    ),
+                    fromEvent(this.el, 'transitionend').pipe(
+                        filter((e: Event) => e.target === e.currentTarget),
+                        filter(() => this.calculatedForHint()),
+                    ),
+                )
+                    .pipe(takeUntilDestroyed(this.destroyRef))
+                    .subscribe(() => this.calculateForHint());
+            },
+        });
+
+        effect(() => {
+            this.lineHeight();
+            this.linesLimit();
+            this.content();
+
+            this.updateMaxHeight();
+            this.calculateAndEmitOverflow();
+        });
+    }
 
     protected get computedContent(): PolymorpheusContent {
         return this.calculatedForHint() && this.options.showHint && this.overflown()
