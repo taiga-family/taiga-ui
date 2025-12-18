@@ -131,7 +131,7 @@ interface User {
                     <span tuiTitle>
                         {{ user.name }}
                         <span tuiSubtitle>
-                            {{ user.balance | tuiAmount: '$' : 'left' }}
+                            {{ user.balance | tuiAmount: '$' : 'start' }}
                         </span>
                     </span>
                 </span>

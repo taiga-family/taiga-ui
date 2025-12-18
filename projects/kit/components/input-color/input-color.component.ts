@@ -54,9 +54,9 @@ export class TuiInputColorComponent extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
-    protected readonly left = inject(TuiIcons).iconStart() || '';
+    protected readonly start = inject(TuiIcons).iconStart() || '';
     protected readonly icon = tuiIconStart(
-        computed(() => (this.align() === 'left' ? EMPTY : this.left)),
+        computed(() => (this.align() === 'start' ? EMPTY : this.start)),
         {},
     );
 

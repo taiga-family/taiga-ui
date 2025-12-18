@@ -101,7 +101,8 @@
 
     &_inset {
         position: absolute;
-        inset: 0.5625rem auto -0.75rem 0.25rem;
+        inset-block: 0.5625rem -0.75rem;
+        inset-inline: 0.25rem auto;
         pointer-events: none;
 
         &_secondary {
@@ -170,6 +171,7 @@
 .t-content {
     position: absolute;
     display: flex;
-    inset: 0 0 -1px -1px;
+    inset-block: 0 -1px;
+    inset-inline: -1px 0;
     align-items: flex-end;
 }

@@ -14,7 +14,6 @@ import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -167,8 +166,8 @@ export class TuiPagination {
         next?.nativeElement.focus();
     }
 
-    protected onArrowClick(direction: TuiHorizontalDirection): void {
-        this.tryChangeTo(direction);
+    protected onArrowClick(step: -1 | 1): void {
+        this.tryChangeTo(step);
         this.nativeFocusableElement()?.focus();
     }
 
@@ -181,14 +180,8 @@ export class TuiPagination {
         return !this.itemsFit() && index > this.maxHalfLength();
     }
 
-    private tryChangeTo(direction: TuiHorizontalDirection): void {
-        this.updateIndex(
-            tuiClamp(
-                this.index() + (direction === 'right' ? 1 : -1),
-                0,
-                this.lastIndex(),
-            ),
-        );
+    private tryChangeTo(step: -1 | 1): void {
+        this.updateIndex(tuiClamp(this.index() + step, 0, this.lastIndex()));
     }
 
     private updateIndex(index: number): void {

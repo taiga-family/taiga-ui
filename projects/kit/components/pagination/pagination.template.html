@@ -8,7 +8,7 @@
         [disabled]="arrowIsDisabledLeft()"
         [iconStart]="icons.decrement"
         [size]="buttonSize()"
-        (click)="onArrowClick('left')"
+        (click)="onArrowClick(-1)"
         (mousedown.zoneless.prevent)="(0)"
     >
         {{ texts()[0] }}
@@ -52,7 +52,7 @@
         [disabled]="arrowIsDisabledRight()"
         [iconStart]="icons.increment"
         [size]="buttonSize()"
-        (click)="onArrowClick('right')"
+        (click)="onArrowClick(1)"
         (mousedown.zoneless.prevent)="(0)"
     >
         {{ texts()[1] }}

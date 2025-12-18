@@ -28,7 +28,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
+    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'end'})],
 })
 export default class Example {
     protected floating = true;

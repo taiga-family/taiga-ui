@@ -4,5 +4,5 @@ import {Directive, input} from '@angular/core';
     selector: '[tuiSlot]',
 })
 export class TuiAppBarDirective {
-    public readonly tuiSlot = input<string | 'left' | 'right'>('left');
+    public readonly tuiSlot = input<string | 'end' | 'start'>('start');
 }
