@@ -1,41 +1,47 @@
 <section>
     @for (size of sizes; track size) {
-        <tui-chip
+        <span
+            tuiChip
             [size]="size"
             [style.border-radius.rem]="5"
         >
             Text
-        </tui-chip>
+        </span>
     }
 </section>
 
 <section>
     @for (size of sizes; track size) {
-        <tui-chip
+        <span
             iconStart="@tui.bell"
+            tuiChip
             [size]="size"
         >
             Single icon
-        </tui-chip>
+        </span>
     }
 </section>
 
 <section>
     @for (size of sizes; track size) {
-        <tui-chip
+        <span
             iconEnd="@tui.circle-help"
             iconStart="@tui.bell"
+            tuiChip
             [size]="size"
             [style.border-radius.rem]="5"
         >
             Duo icon
-        </tui-chip>
+        </span>
     }
 </section>
 
 <section>
     @for (size of sizes; track size) {
-        <tui-chip [size]="size">
+        <span
+            tuiChip
+            [size]="size"
+        >
             @if (size === 'm' || size === 's') {
                 <img
                     alt="Avatar"
@@ -44,13 +50,14 @@
                 />
             }
             Image
-        </tui-chip>
+        </span>
     }
 </section>
 
 <section>
     @for (size of sizes; track size) {
-        <tui-chip
+        <span
+            tuiChip
             [size]="size"
             [style.border-radius.rem]="5"
         >
@@ -66,12 +73,15 @@
                 </div>
             }
             Avatar
-        </tui-chip>
+        </span>
     }
 </section>
 
 <section>
-    <tui-chip size="m">
+    <span
+        size="m"
+        tuiChip
+    >
         Button
         <button
             iconStart="@tui.x"
@@ -81,9 +91,12 @@
         >
             Remove
         </button>
-    </tui-chip>
+    </span>
     @for (size of sizes | slice: 1; track size) {
-        <tui-chip [size]="size">
+        <span
+            tuiChip
+            [size]="size"
+        >
             Button
             <button
                 iconStart="@tui.x"
@@ -92,13 +105,16 @@
             >
                 Remove
             </button>
-        </tui-chip>
+        </span>
     }
 </section>
 
 <section>
     @for (size of sizes; track size) {
-        <tui-chip [size]="size">
+        <span
+            tuiChip
+            [size]="size"
+        >
             Badge
 
             @if (size !== 'xxs') {
@@ -117,6 +133,6 @@
             >
                 Remove
             </button>
-        </tui-chip>
+        </span>
     }
 </section>

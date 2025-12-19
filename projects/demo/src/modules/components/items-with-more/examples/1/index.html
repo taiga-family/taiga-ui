@@ -1,13 +1,14 @@
 <tui-items-with-more [required]="required">
     @for (item of items; track item) {
-        <tui-chip
+        <span
             *tuiItem
             appearance="neutral"
             size="s"
+            tuiChip
             class="tui-space_right-1"
         >
             {{ item }}
-        </tui-chip>
+        </span>
     }
     <ng-template
         let-index

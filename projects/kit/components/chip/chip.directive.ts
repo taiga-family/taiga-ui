@@ -30,7 +30,7 @@ import {TUI_CHIP_OPTIONS} from './chip.options';
 class Styles {}
 
 @Directive({
-    selector: 'tui-chip,[tuiChip]',
+    selector: '[tuiChip]',
     providers: [
         tuiAppearanceOptionsProvider(TUI_CHIP_OPTIONS),
         tuiSwitchOptionsProvider({size: 's'}),
