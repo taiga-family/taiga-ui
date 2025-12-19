@@ -9,9 +9,9 @@ import {
     viewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';

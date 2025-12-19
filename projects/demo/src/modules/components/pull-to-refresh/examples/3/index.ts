@@ -6,13 +6,13 @@ import {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     TUI_ANDROID_LOADER,
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
-import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiNotificationService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 

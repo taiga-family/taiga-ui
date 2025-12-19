@@ -1,7 +1,7 @@
 import {type Provider} from '@angular/core';
 import {
-    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';

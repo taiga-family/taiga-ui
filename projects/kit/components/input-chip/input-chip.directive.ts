@@ -1,9 +1,9 @@
 import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithInput} from '@taiga-ui/core/components/input';

@@ -4,8 +4,8 @@ import {
     takeUntilDestroyed,
     toSignal,
 } from '@angular/core/rxjs-interop';
-import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext, type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';

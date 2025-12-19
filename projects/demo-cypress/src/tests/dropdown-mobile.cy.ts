@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {
     TuiDropdownMobile,
     TuiDropdownSheet,
     TuiResponsiveDialog,
 } from '@taiga-ui/addon-mobile';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,

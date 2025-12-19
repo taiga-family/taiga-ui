@@ -18,6 +18,7 @@ import {
     viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
+import {WA_IS_E2E, WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiMobileCalendarSheet} from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
 import {TuiTouchable} from '@taiga-ui/addon-mobile/directives/touchable';
@@ -36,7 +37,6 @@ import {
     tuiZonefreeScheduler,
 } from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {WA_IS_E2E, WA_IS_IOS} from '@ng-web-apis/platform';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {

@@ -1,10 +1,10 @@
 import {inject, Injectable} from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {
     type TuiSheetDialogOptions,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiDialogOptions, TuiDialogService} from '@taiga-ui/core/portals/dialog';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';

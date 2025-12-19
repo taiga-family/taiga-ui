@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, InjectionToken} from '@angular/core';
-import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {type TuiDialogContext} from '@taiga-ui/core/portals/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';

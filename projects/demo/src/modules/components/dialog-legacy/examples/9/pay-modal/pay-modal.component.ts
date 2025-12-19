@@ -9,13 +9,13 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     type TuiCard,
     tuiCardNumberValidator,
     tuiDefaultCardValidator,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TuiButton,

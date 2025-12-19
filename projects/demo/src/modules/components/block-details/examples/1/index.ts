@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiComment} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';

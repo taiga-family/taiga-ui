@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/portals/dropdown';

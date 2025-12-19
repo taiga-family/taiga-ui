@@ -1,6 +1,6 @@
 import {inject, Pipe, type PipeTransform, TemplateRef} from '@angular/core';
-import {tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {tuiInspect} from '@taiga-ui/addon-doc/utils';
 
 @Pipe({
     name: 'tuiInspect',

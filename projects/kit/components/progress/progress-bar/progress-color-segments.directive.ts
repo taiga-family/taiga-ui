@@ -1,8 +1,8 @@
 import {computed, Directive, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
-    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {map} from 'rxjs';

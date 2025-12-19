@@ -1,6 +1,6 @@
 import {Directive, inject, input} from '@angular/core';
-import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';

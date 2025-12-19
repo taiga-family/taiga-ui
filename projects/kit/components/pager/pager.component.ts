@@ -14,8 +14,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {
-    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {type TuiSizeS} from '@taiga-ui/core/types';

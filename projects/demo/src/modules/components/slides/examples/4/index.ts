@@ -1,8 +1,8 @@
 import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiCell, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiProgressBar} from '@taiga-ui/kit';
 import {

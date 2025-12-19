@@ -7,10 +7,10 @@ import {
     viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiAlertDirective} from '@taiga-ui/core/portals/alert';

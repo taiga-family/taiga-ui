@@ -20,6 +20,7 @@ import {
     withInMemoryScrolling,
 } from '@angular/router';
 import {environment} from '@demo/environments/environment';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -39,7 +40,6 @@ import {
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
 import {TUI_FALSE_HANDLER, TUI_PLATFORM} from '@taiga-ui/cdk';
-import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     provideTaiga,
     TUI_DIALOGS_CLOSE,

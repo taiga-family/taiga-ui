@@ -1,7 +1,7 @@
 import {Directive, inject, input} from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {TuiPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiDialogService} from '@taiga-ui/core/portals/dialog';
 
 import {type TuiResponsiveDialogOptions} from './responsive-dialog.service';

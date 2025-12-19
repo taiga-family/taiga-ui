@@ -6,8 +6,8 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';

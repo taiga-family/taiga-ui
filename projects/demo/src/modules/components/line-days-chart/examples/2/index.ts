@@ -1,6 +1,7 @@
 import {Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TuiAxes,
     TuiLineChart,
@@ -19,7 +20,6 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiNotification, type TuiPoint, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
-import {WA_IS_E2E} from '@ng-web-apis/platform';
 
 @Component({
     imports: [

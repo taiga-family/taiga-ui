@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiNotificationService, TuiTitle} from '@taiga-ui/core';
 import {TuiPdfViewer} from '@taiga-ui/layout';
 

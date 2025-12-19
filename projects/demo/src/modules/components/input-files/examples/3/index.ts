@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiItem} from '@taiga-ui/cdk';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 

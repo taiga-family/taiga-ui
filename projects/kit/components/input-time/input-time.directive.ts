@@ -10,9 +10,9 @@ import {
     maskitoTimeOptionsGenerator,
     type MaskitoTimeParams,
 } from '@maskito/kit';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';

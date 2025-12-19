@@ -1,7 +1,7 @@
 import {computed, Directive, effect, inject} from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,

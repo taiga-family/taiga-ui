@@ -2,6 +2,7 @@ import {Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
 import {
     TuiDay,
@@ -12,7 +13,6 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
-import {WA_IS_E2E} from '@ng-web-apis/platform';
 
 @Component({
     imports: [FormsModule, TuiAxes, TuiInputDateRange, TuiLineDaysChart, TuiTextfield],

@@ -15,6 +15,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
+import {WA_IS_MOBILE, WA_IS_WEBKIT} from '@ng-web-apis/platform';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {
     TUI_MASK_CARD,
@@ -29,7 +30,6 @@ import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {WA_IS_MOBILE, WA_IS_WEBKIT} from '@ng-web-apis/platform';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';

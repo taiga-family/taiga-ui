@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_FILLER_LENGTH,
@@ -18,7 +19,6 @@ import {
     type TuiDayRange,
     type TuiTime,
 } from '@taiga-ui/cdk/date-time';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';

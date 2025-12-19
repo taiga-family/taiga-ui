@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

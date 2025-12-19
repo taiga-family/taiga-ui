@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
 import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
 
 @Component({

@@ -9,6 +9,7 @@ import {
     type OnInit,
     Output,
 } from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     TUI_FIRST_DAY,
@@ -19,7 +20,6 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {

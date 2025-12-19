@@ -3,8 +3,8 @@ import {
     type VirtualScrollStrategy,
 } from '@angular/cdk/scrolling';
 import {inject} from '@angular/core';
-import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {

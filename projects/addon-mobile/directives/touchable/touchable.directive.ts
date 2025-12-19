@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {computed, Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, race, switchMap, take, tap} from 'rxjs';
 

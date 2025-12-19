@@ -13,6 +13,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import {
@@ -20,7 +21,6 @@ import {
     TuiSwipe,
     type TuiSwipeDirection,
 } from '@taiga-ui/cdk/directives/swipe';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 

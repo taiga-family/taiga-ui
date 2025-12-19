@@ -2,9 +2,9 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiInput} from '@taiga-ui/core';
 import {
     TuiChevron,

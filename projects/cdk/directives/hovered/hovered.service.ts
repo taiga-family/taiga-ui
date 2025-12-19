@@ -1,8 +1,8 @@
 import {inject, Injectable, NgZone, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, filter, map, merge, Observable, of} from 'rxjs';
 
