@@ -9,8 +9,7 @@ import {type TuiSheetOptions} from './sheet-options';
  * https://taiga-ui.dev/components/sheet-dialog
  */
 export interface TuiSheet<O, I = undefined>
-    extends TuiSheetOptions<I, O>,
-        TuiContext<Observer<O>> {
+    extends TuiSheetOptions<I, O>, TuiContext<Observer<O>> {
     completeWith(value: O): void;
     readonly content: PolymorpheusContent<TuiSheet<O, I>>;
     readonly scroll$: Observable<number>;

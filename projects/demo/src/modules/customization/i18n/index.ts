@@ -21,14 +21,11 @@ export default class Page {
     };
 
     protected example1 = {
-        'language-switcher.html': import(
-            '../../../../../addon-doc/components/language-switcher/index.html?raw'
-        ),
-        'language-switcher.ts': import(
-            '../../../../../addon-doc/components/language-switcher/index.ts?raw'
-        ),
-        'language-switcher.less': import(
-            '../../../../../addon-doc/components/language-switcher/index.less?raw'
-        ),
+        'language-switcher.html':
+            import('../../../../../addon-doc/components/language-switcher/index.html?raw'),
+        'language-switcher.ts':
+            import('../../../../../addon-doc/components/language-switcher/index.ts?raw'),
+        'language-switcher.less':
+            import('../../../../../addon-doc/components/language-switcher/index.less?raw'),
     };
 }

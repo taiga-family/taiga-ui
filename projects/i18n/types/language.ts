@@ -214,7 +214,8 @@ export interface TuiLanguageMeta {
 }
 
 export interface TuiLanguage
-    extends TuiLanguageCore,
+    extends
+        TuiLanguageCore,
         TuiLanguageKit,
         TuiLanguageLayout,
         TuiLanguageCommerce,

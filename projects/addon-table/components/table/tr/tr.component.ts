@@ -31,9 +31,9 @@ import {TuiTableTd} from '../td/td.component';
         '[style.--t-row-height.px]': 'height()',
     },
 })
-export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
-    implements AfterContentInit
-{
+export class TuiTableTr<
+    T extends Partial<Record<keyof T, unknown>>,
+> implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiTableCell))
     private readonly cells: QueryList<TuiTableCell> = EMPTY_QUERY;
 

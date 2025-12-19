@@ -16,7 +16,6 @@ import {OpenOnRouteFragment} from './open-accordion-on-route-fragment';
 export default class Page {
     protected readonly pages = DemoRoute;
 
-    protected readonly manuallyTriggerNxMigration = import(
-        './examples/manual-trigger-nx-migrate-v4.md?raw'
-    );
+    protected readonly manuallyTriggerNxMigration =
+        import('./examples/manual-trigger-nx-migrate-v4.md?raw');
 }
