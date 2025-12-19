@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.66.0](https://github.com/taiga-family/taiga-ui/compare/v4.65.0...v4.66.0) (2025-12-19)
+
+### 🚀 Features
+
+- **layout:** add cell `:active` state on mobile ([#12870](https://github.com/taiga-family/taiga-ui/issues/12870))
+  ([dffe503](https://github.com/taiga-family/taiga-ui/commit/dffe503d0259206707a727dd8a5313c2aba41e4f))
+
+### 🐞 Bug Fixes
+
+- **cdk:** `tuiValueChanges` should not work for same control value emission
+  ([#12850](https://github.com/taiga-family/taiga-ui/issues/12850))
+  ([94dfd4f](https://github.com/taiga-family/taiga-ui/commit/94dfd4f8058ffd9a9f471ae0390443abc031cf12))
+- **kit:** `MultiSelect` fix native on desktop ([#12891](https://github.com/taiga-family/taiga-ui/issues/12891))
+  ([272638b](https://github.com/taiga-family/taiga-ui/commit/272638b1db0d7e303f2b3f5462f4590772653bf8))
+- **kit:** `Select` should ignore `Backspace`/`Delete` keyboard keys if cleaner is disabled
+  ([#12866](https://github.com/taiga-family/taiga-ui/issues/12866))
+  ([56794a5](https://github.com/taiga-family/taiga-ui/commit/56794a532baade8712cf78a6133d1c0eca2ef3b2))
+- **kit:** `TabsWithMore` duplicates tabs on client hydration
+  ([#12863](https://github.com/taiga-family/taiga-ui/issues/12863))
+  ([2777b37](https://github.com/taiga-family/taiga-ui/commit/2777b3719cfa4ee2dd4e54111f8ea19a9d6829fe))
+
 ## [4.65.0](https://github.com/taiga-family/taiga-ui/compare/v4.64.0...v4.65.0) (2025-12-15)
 
 ### 🚀 Features
