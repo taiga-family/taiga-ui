@@ -1422,17 +1422,14 @@ export default class Page {
 
     protected readonly method = import('./examples/import/method.md?raw');
 
-    protected readonly exampleServiceUsage = import(
-        './examples/import/service-usage.md?raw'
-    );
+    protected readonly exampleServiceUsage =
+        import('./examples/import/service-usage.md?raw');
 
-    protected readonly exampleServiceUsageComponent = import(
-        './examples/import/service-usage-component.md?raw'
-    );
+    protected readonly exampleServiceUsageComponent =
+        import('./examples/import/service-usage-component.md?raw');
 
-    protected readonly exampleCustomAlert = import(
-        './examples/import/custom-alert.md?raw'
-    );
+    protected readonly exampleCustomAlert =
+        import('./examples/import/custom-alert.md?raw');
 
     protected readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
     protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
@@ -11269,13 +11266,11 @@ export default class PageComponent {
 
     protected strict = true;
 
-    protected readonly databaseExample: TuiRawLoaderContent = import(
-        './examples/5/database.ts?raw'
-    );
+    protected readonly databaseExample: TuiRawLoaderContent =
+        import('./examples/5/database.ts?raw');
 
-    protected readonly selectOptionExample: TuiRawLoaderContent = import(
-        './examples/12/option.ts?raw'
-    );
+    protected readonly selectOptionExample: TuiRawLoaderContent =
+        import('./examples/12/option.ts?raw');
 
     protected readonly handler = (item: Country): boolean =>
         item.id.charCodeAt(1) % 3 === 0;
@@ -13235,36 +13230,29 @@ export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly method = import('./method.md?raw');
 
-    protected readonly dialogsCloseToken = import(
-        './examples/import/dialogs-close-token.md?raw'
-    );
+    protected readonly dialogsCloseToken =
+        import('./examples/import/dialogs-close-token.md?raw');
 
     protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        'dialog-example/dialog-example.component.ts': import(
-            './examples/2/dialog-example/dialog-example.component.ts?raw'
-        ),
-        'dialog-example/dialog-example.style.less': import(
-            './examples/2/dialog-example/dialog-example.style.less?raw'
-        ),
-        'dialog-example/dialog-example.template.html': import(
-            './examples/2/dialog-example/dialog-example.template.html?raw'
-        ),
+        'dialog-example/dialog-example.component.ts':
+            import('./examples/2/dialog-example/dialog-example.component.ts?raw'),
+        'dialog-example/dialog-example.style.less':
+            import('./examples/2/dialog-example/dialog-example.style.less?raw'),
+        'dialog-example/dialog-example.template.html':
+            import('./examples/2/dialog-example/dialog-example.template.html?raw'),
     };
 
     protected readonly example7 = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
-        'search-example/search-dialog-example.component.ts': import(
-            './examples/7/search-example/search-dialog-example.component.ts?raw'
-        ),
-        'search-example/search-dialog-example.template.html': import(
-            './examples/7/search-example/search-dialog-example.template.html?raw'
-        ),
-        'search-example/search-dialog-example.component.less': import(
-            './examples/7/search-example/search-dialog-example.component.less?raw'
-        ),
+        'search-example/search-dialog-example.component.ts':
+            import('./examples/7/search-example/search-dialog-example.component.ts?raw'),
+        'search-example/search-dialog-example.template.html':
+            import('./examples/7/search-example/search-dialog-example.template.html?raw'),
+        'search-example/search-dialog-example.component.less':
+            import('./examples/7/search-example/search-dialog-example.component.less?raw'),
     };
 
     protected readonly example9 = {
@@ -13275,24 +13263,19 @@ export default class Page {
         'helpers/models.ts': import('./examples/9/helpers/models.ts?raw'),
         'helpers/pay.service.ts': import('./examples/9/helpers/pay.service.ts?raw'),
         'helpers/validator.ts': import('./examples/9/helpers/validator.ts?raw'),
-        'pay-modal/pay-modal.component.ts': import(
-            './examples/9/pay-modal/pay-modal.component.ts?raw'
-        ),
-        'pay-modal/pay-modal.component.less': import(
-            './examples/9/pay-modal/pay-modal.component.less?raw'
-        ),
-        'pay-modal/pay-modal.component.html': import(
-            './examples/9/pay-modal/pay-modal.component.html?raw'
-        ),
+        'pay-modal/pay-modal.component.ts':
+            import('./examples/9/pay-modal/pay-modal.component.ts?raw'),
+        'pay-modal/pay-modal.component.less':
+            import('./examples/9/pay-modal/pay-modal.component.less?raw'),
+        'pay-modal/pay-modal.component.html':
+            import('./examples/9/pay-modal/pay-modal.component.html?raw'),
     };
 
-    protected readonly exampleServiceUsage = import(
-        './examples/import/service-usage.md?raw'
-    );
+    protected readonly exampleServiceUsage =
+        import('./examples/import/service-usage.md?raw');
 
-    protected readonly exampleCustomDialog = import(
-        './examples/import/custom-dialog.md?raw'
-    );
+    protected readonly exampleCustomDialog =
+        import('./examples/import/custom-dialog.md?raw');
 
     protected readonly exampleLazyDialog = import('./examples/import/lazy-dialog.md?raw');
 
@@ -31642,12 +31625,10 @@ export default class Page {
     protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        'actions-content.component.ts': import(
-            './examples/2/actions-content/index.ts?raw'
-        ),
-        'actions-content.component.html': import(
-            './examples/2/actions-content/index.html?raw'
-        ),
+        'actions-content.component.ts':
+            import('./examples/2/actions-content/index.ts?raw'),
+        'actions-content.component.html':
+            import('./examples/2/actions-content/index.html?raw'),
         'pdf-content.component.ts': import('./examples/2/pdf-content/index.ts?raw'),
         'pdf-content.component.html': import('./examples/2/pdf-content/index.html?raw'),
         'pdf-content.component.less': import('./examples/2/pdf-content/index.less?raw'),
@@ -36267,9 +36248,8 @@ export default class PageComponent {
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
     ]);
 
-    protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/10/option.ts?raw'
-    );
+    protected selectOptionExample: TuiRawLoaderContent =
+        import('./examples/10/option.ts?raw');
 
     protected readonly handler = (item: Country): boolean =>
         item.id.charCodeAt(1) % 3 === 0;
@@ -45753,9 +45733,8 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiLink} from '@taiga-ui/core';
     ],
 })
 export default class Example {
-    protected readonly provideFirstDayOfWeekToken = import(
-        './provide-first-day-of-week-token.md?raw'
-    );
+    protected readonly provideFirstDayOfWeekToken =
+        import('./provide-first-day-of-week-token.md?raw');
 
     protected readonly customizableComponentsViaThisToken = [
         {
@@ -52732,30 +52711,24 @@ export default class Page {
         LESS: import('./examples/1/index.less?raw'),
         'prompt/prompt.service.ts': import('./examples/1/prompt/prompt.service.ts?raw'),
         'prompt/prompt-options.ts': import('./examples/1/prompt/prompt-options.ts?raw'),
-        'prompt/prompt.component.ts': import(
-            './examples/1/prompt/prompt.component.ts?raw'
-        ),
-        'prompt/prompt.template.html': import(
-            './examples/1/prompt/prompt.template.html?raw'
-        ),
+        'prompt/prompt.component.ts':
+            import('./examples/1/prompt/prompt.component.ts?raw'),
+        'prompt/prompt.template.html':
+            import('./examples/1/prompt/prompt.template.html?raw'),
         'prompt/prompt.style.less': import('./examples/1/prompt/prompt.style.less?raw'),
     };
 
     protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        'custom-dialog/custom-dialog.service.ts': import(
-            './examples/2/custom-dialog/custom-dialog.service.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.directive.ts': import(
-            './examples/2/custom-dialog/custom-dialog.directive.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.component.ts': import(
-            './examples/2/custom-dialog/custom-dialog.component.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.style.less': import(
-            './examples/2/custom-dialog/custom-dialog.style.less?raw'
-        ),
+        'custom-dialog/custom-dialog.service.ts':
+            import('./examples/2/custom-dialog/custom-dialog.service.ts?raw'),
+        'custom-dialog/custom-dialog.directive.ts':
+            import('./examples/2/custom-dialog/custom-dialog.directive.ts?raw'),
+        'custom-dialog/custom-dialog.component.ts':
+            import('./examples/2/custom-dialog/custom-dialog.component.ts?raw'),
+        'custom-dialog/custom-dialog.style.less':
+            import('./examples/2/custom-dialog/custom-dialog.style.less?raw'),
     };
 }
 ```
@@ -52791,15 +52764,12 @@ export default class Page {
     };
 
     protected example1 = {
-        'language-switcher.html': import(
-            '../../../../../addon-doc/components/language-switcher/index.html?raw'
-        ),
-        'language-switcher.ts': import(
-            '../../../../../addon-doc/components/language-switcher/index.ts?raw'
-        ),
-        'language-switcher.less': import(
-            '../../../../../addon-doc/components/language-switcher/index.less?raw'
-        ),
+        'language-switcher.html':
+            import('../../../../../addon-doc/components/language-switcher/index.html?raw'),
+        'language-switcher.ts':
+            import('../../../../../addon-doc/components/language-switcher/index.ts?raw'),
+        'language-switcher.less':
+            import('../../../../../addon-doc/components/language-switcher/index.less?raw'),
     };
 }
 ```
