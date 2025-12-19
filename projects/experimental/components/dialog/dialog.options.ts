@@ -25,8 +25,7 @@ export interface TuiDialogOptions<I> {
 }
 
 export interface TuiDialogContext<O = void, I = undefined>
-    extends TuiPopoverContext<O>,
-        TuiDialogOptions<I> {}
+    extends TuiPopoverContext<O>, TuiDialogOptions<I> {}
 
 export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogOptions<void> = {
     appearance: 'taiga',

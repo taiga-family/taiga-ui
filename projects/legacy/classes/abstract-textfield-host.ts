@@ -7,9 +7,9 @@ import {AbstractTuiControl} from './control';
  * @deprecated: drop in v5.0
  */
 @Directive()
-export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>>
-    implements TuiTextfieldHost
-{
+export abstract class AbstractTuiTextfieldHost<
+    T extends AbstractTuiControl<any>,
+> implements TuiTextfieldHost {
     protected readonly host: T = inject<any>(AbstractTuiControl, {optional: true});
 
     public abstract onValueChange(value: string): void;

@@ -25,9 +25,9 @@ import {TuiTableTh} from '../th/th.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTableThGroup<T extends Partial<Record<keyof T, unknown>>>
-    implements AfterContentInit
-{
+export class TuiTableThGroup<
+    T extends Partial<Record<keyof T, unknown>>,
+> implements AfterContentInit {
     @ContentChild(forwardRef(() => TuiTableTh))
     protected readonly th!: TuiTableTh<T>;
 

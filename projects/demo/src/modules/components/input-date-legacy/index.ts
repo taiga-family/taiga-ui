@@ -50,9 +50,8 @@ export default class Example extends AbstractExampleTuiControl {
     protected readonly example5 = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
-        'native-date-transformer.directive.ts': import(
-            './examples/5/native-date-transformer.directive.ts?raw'
-        ),
+        'native-date-transformer.directive.ts':
+            import('./examples/5/native-date-transformer.directive.ts?raw'),
     };
 
     protected minVariants = [

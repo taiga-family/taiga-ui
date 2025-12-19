@@ -10,8 +10,8 @@ import {
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -41,8 +41,8 @@ export class TuiAppBarComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
 
     protected readonly width$ = merge(
-        inject(ResizeObserverService, {self: true}),
-        inject(MutationObserverService, {self: true}),
+        inject(WaResizeObserverService, {self: true}),
+        inject(WaMutationObserverService, {self: true}),
     ).pipe(
         tuiZonefull(),
         map(

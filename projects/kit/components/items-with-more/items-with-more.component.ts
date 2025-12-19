@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -31,8 +31,8 @@ import {TuiMore} from './more.directive';
     styleUrls: ['./items-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        MutationObserverService,
-        ResizeObserverService,
+        WaMutationObserverService,
+        WaResizeObserverService,
         TuiItemsWithMoreService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,

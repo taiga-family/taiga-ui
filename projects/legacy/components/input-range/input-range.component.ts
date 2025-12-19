@@ -131,18 +131,18 @@ export class TuiInputRangeComponent
     protected get showLeftValueContent(): boolean {
         return Boolean(
             this.leftValueContent &&
-                !tuiIsNativeFocused(this.leftFocusableElement) &&
-                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
-                    this.lastActiveSide !== 'left'),
+            !tuiIsNativeFocused(this.leftFocusableElement) &&
+            (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                this.lastActiveSide !== 'left'),
         );
     }
 
     protected get showRightValueContent(): boolean {
         return Boolean(
             this.rightValueContent &&
-                !tuiIsNativeFocused(this.rightFocusableElement) &&
-                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
-                    this.lastActiveSide !== 'right'),
+            !tuiIsNativeFocused(this.rightFocusableElement) &&
+            (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                this.lastActiveSide !== 'right'),
         );
     }
 

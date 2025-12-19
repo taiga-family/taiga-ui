@@ -12,8 +12,10 @@ import {
     type TuiInputDateOptionsNew,
 } from '@taiga-ui/kit/components/input-date';
 
-export interface TuiInputDateTimeOptions
-    extends Omit<TuiInputDateOptionsNew, 'valueTransformer'> {
+export interface TuiInputDateTimeOptions extends Omit<
+    TuiInputDateOptionsNew,
+    'valueTransformer'
+> {
     readonly timeMode: MaskitoTimeMode;
     readonly dateTimeSeparator: string;
     readonly valueTransformer: TuiValueTransformer<[TuiDay, TuiTime | null] | null, any>;

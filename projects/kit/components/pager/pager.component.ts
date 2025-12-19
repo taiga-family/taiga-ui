@@ -15,7 +15,7 @@ import {
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
@@ -31,7 +31,7 @@ import {delay, map} from 'rxjs';
     styleUrls: ['./pager.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        MutationObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
@@ -56,7 +56,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
     protected end = 0;
     protected left = signal(0);
     protected readonly maxWidth = toSignal(
-        inject(MutationObserverService, {self: true}).pipe(
+        inject(WaMutationObserverService, {self: true}).pipe(
             delay(0),
             map(() => this.visibleWidth),
             tuiWatch(),

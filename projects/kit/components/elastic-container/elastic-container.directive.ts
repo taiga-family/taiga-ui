@@ -1,9 +1,9 @@
 import {Directive, inject, Output} from '@angular/core';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
 
@@ -11,8 +11,8 @@ import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
     standalone: true,
     selector: '[tuiElasticContainer]',
     providers: [
-        ResizeObserverService,
-        MutationObserverService,
+        WaResizeObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
@@ -28,8 +28,8 @@ export class TuiElasticContainerDirective {
 
     @Output()
     public readonly tuiElasticContainer = merge(
-        inject(ResizeObserverService, {self: true}),
-        inject(MutationObserverService, {self: true}),
+        inject(WaResizeObserverService, {self: true}),
+        inject(WaMutationObserverService, {self: true}),
     ).pipe(
         debounceTime(0),
         map(() => this.el.clientHeight - 1),

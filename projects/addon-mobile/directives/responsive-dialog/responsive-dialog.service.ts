@@ -14,8 +14,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
 export interface TuiResponsiveDialogOptions<I = undefined>
-    extends Omit<TuiDialogOptions<I>, 'label'>,
-        TuiSheetDialogOptions<unknown> {
+    extends Omit<TuiDialogOptions<I>, 'label'>, TuiSheetDialogOptions<unknown> {
     readonly data: I extends void ? undefined : I & {button?: string};
     readonly label: PolymorpheusContent;
 }

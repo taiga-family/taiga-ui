@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Injectable, signal} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
+import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
 import {Subject} from 'rxjs';
 
 import {TuiProgress} from '../progress';
@@ -10,7 +10,7 @@ describe('TuiProgressColorSegments', () => {
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
 
-    let mutationObserverServiceMock: MutationObserverServiceMock;
+    let mutationObserverServiceMock: WaMutationObserverServiceMock;
 
     @Component({
         standalone: true,
@@ -34,16 +34,16 @@ describe('TuiProgressColorSegments', () => {
     }
 
     @Injectable()
-    class MutationObserverServiceMock
+    class WaMutationObserverServiceMock
         extends Subject<never[]>
-        implements MutationObserverService {}
+        implements WaMutationObserverService {}
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
         });
-        TestBed.overrideProvider(MutationObserverService, {
-            useValue: new MutationObserverServiceMock(),
+        TestBed.overrideProvider(WaMutationObserverService, {
+            useValue: new WaMutationObserverServiceMock(),
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
@@ -51,7 +51,7 @@ describe('TuiProgressColorSegments', () => {
         fixture.detectChanges();
         mutationObserverServiceMock = fixture.debugElement
             .query(By.css('progress'))
-            .injector.get(MutationObserverService) as MutationObserverServiceMock;
+            .injector.get(WaMutationObserverService) as WaMutationObserverServiceMock;
     });
 
     describe('TuiProgressColorSegments', () => {

@@ -60,9 +60,8 @@ export default class PageComponent {
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
     ]);
 
-    protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/10/option.ts?raw'
-    );
+    protected selectOptionExample: TuiRawLoaderContent =
+        import('./examples/10/option.ts?raw');
 
     protected readonly handler = (item: Country): boolean =>
         item.id.charCodeAt(1) % 3 === 0;

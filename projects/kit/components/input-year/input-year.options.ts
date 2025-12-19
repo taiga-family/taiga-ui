@@ -10,8 +10,10 @@ import {
     type TuiInputDateOptionsNew,
 } from '@taiga-ui/kit/components/input-date';
 
-export interface TuiInputYearOptions
-    extends Omit<TuiInputDateOptionsNew, 'valueTransformer'> {
+export interface TuiInputYearOptions extends Omit<
+    TuiInputDateOptionsNew,
+    'valueTransformer'
+> {
     readonly valueTransformer: TuiValueTransformer<number | null, any>;
 }
 

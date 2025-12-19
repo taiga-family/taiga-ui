@@ -113,7 +113,8 @@
             "@angular/compiler": "$@angular/compiler",
             "@angular/platform-browser": "$@angular/platform-browser",
             "@angular/platform-browser-dynamic": "$@angular/platform-browser-dynamic"
-        }
+        },
+        "rxjs": "$rxjs"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "16.2.16",
