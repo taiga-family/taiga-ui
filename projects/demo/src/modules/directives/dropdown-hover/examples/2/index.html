@@ -1,7 +1,4 @@
-<nav
-    tuiTabs
-    [(activeItemIndex)]="index"
->
+<tui-tabs [(activeItemIndex)]="index">
     <button
         tuiTab
         type="button"
@@ -70,5 +67,5 @@
             Turn option
         </div>
     </ng-template>
-</nav>
+</tui-tabs>
 <p>Current state: {{ open ? 'open' : 'closed' }}</p>

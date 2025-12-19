@@ -33,13 +33,11 @@
         outline-offset: -0.125rem;
     }
 
-    tui-tabs._underline &:hover:not(._active),
-    [tuiTabs]._underline &:hover:not(._active) {
+    tui-tabs._underline &:hover:not(._active) {
         box-shadow: inset 0 -0.125rem var(--tui-border-normal);
     }
 
     tui-tabs > &:first-child,
-    [tuiTabs] > &:first-child,
     tui-tabs > :not(.t-overflown) > &:first-child {
         margin-inline-start: 0;
     }
@@ -71,7 +69,6 @@
     }
 }
 
-[tuiTabs],
 tui-tabs {
     .scrollbar-hidden();
 
@@ -114,8 +111,7 @@ tui-tabs {
     }
 }
 
-tui-tabs[data-vertical],
-[tuiTabs][data-vertical] {
+tui-tabs[data-vertical] {
     flex-direction: column;
     box-shadow: inset calc(-1px * var(--tui-inline)) 0 var(--tui-border-normal);
 

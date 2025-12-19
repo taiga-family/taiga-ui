@@ -18,7 +18,7 @@ import {type TuiOrientation} from '@taiga-ui/core/types';
 import {TuiStep} from './step.component';
 
 @Component({
-    selector: 'tui-stepper, nav[tuiStepper]',
+    selector: 'tui-stepper',
     template: `
         <ng-content />
     `,
