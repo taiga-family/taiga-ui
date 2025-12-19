@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-doc",
-    "version": "4.52.0",
+    "version": null,
     "description": "Taiga UI based library for developing documentation portals for Angular libraries.",
     "keywords": [
         "angular",
@@ -24,10 +24,10 @@
         "@angular/router": ">=19.0.0",
         "@ng-web-apis/common": "^5.0.1",
         "@ng-web-apis/platform": "^5.0.1",
-        "@taiga-ui/cdk": "^4.52.0",
-        "@taiga-ui/core": "^4.52.0",
-        "@taiga-ui/kit": "^4.52.0",
-        "@taiga-ui/legacy": "^4.52.0",
+        "@taiga-ui/cdk": "^null",
+        "@taiga-ui/core": "^null",
+        "@taiga-ui/kit": "^null",
+        "@taiga-ui/legacy": "^null",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "@types/markdown-it": "^14.1.2",
         "markdown-it": "^14.1.0",

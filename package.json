@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "4.52.0",
+    "version": null,
     "private": true,
     "description": "Taiga UI is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
