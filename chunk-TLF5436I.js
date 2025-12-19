@@ -1,0 +1,61 @@
+import"./chunk-B4AJQJMI.js";var i=`<tui-doc-page
+    header="Lists"
+    type="markup"
+>
+    <tui-doc-example
+        id="large"
+        heading="large"
+        [component]="1 | tuiComponent"
+        [content]="1 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        id="medium"
+        heading="medium"
+        [component]="2 | tuiComponent"
+        [content]="2 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        id="small"
+        heading="small"
+        [component]="3 | tuiComponent"
+        [content]="3 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        id="large-with-title"
+        heading="large with heading"
+        [component]="4 | tuiComponent"
+        [content]="4 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        id="medium-with-title"
+        heading="medium with heading"
+        [component]="5 | tuiComponent"
+        [content]="5 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        id="small-with-title"
+        heading="small with heading"
+        [component]="6 | tuiComponent"
+        [content]="6 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        id="triangle-bullets"
+        heading="triangle bullets"
+        [component]="7 | tuiComponent"
+        [content]="7 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+</tui-doc-page>
+`;export{i as default};
