@@ -106,6 +106,7 @@
         "preset": "@taiga-ui/jest-config"
     },
     "overrides": {
+        "rxjs": "$rxjs",
         "jest-preset-angular": {
             "@angular/core": "$@angular/core",
             "@angular/common": "$@angular/common",
