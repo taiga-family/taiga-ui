@@ -18,7 +18,7 @@
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
-        "@ng-web-apis/intersection-observer": "^4.12.2",
+        "@ng-web-apis/intersection-observer": "^4.14.0",
         "@taiga-ui/cdk": "^4.52.0",
         "@taiga-ui/core": "^4.52.0",
         "@taiga-ui/i18n": "^4.52.0",

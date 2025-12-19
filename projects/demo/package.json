@@ -14,7 +14,7 @@
         "@angular/ssr": "19.2.19",
         "@docsearch/css": "4.3.2",
         "@docsearch/js": "4.3.2",
-        "@ng-web-apis/universal": "4.12.2",
+        "@ng-web-apis/universal": "4.14.0",
         "@stackblitz/sdk": "1.11.0",
         "@types/express": "4.17.25",
         "date-fns": "4.1.0",
