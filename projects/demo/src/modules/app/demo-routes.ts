@@ -197,7 +197,6 @@ export const DemoRoute = {
     Math: '/utils/math',
     Format: '/utils/format',
     DOM: '/utils/dom',
-    Browser: '/utils/browser',
     Miscellaneous: '/utils/miscellaneous',
     Tokens: '/utils/tokens',
     StackblitzStarter: '/stackblitz',

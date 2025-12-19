@@ -1,10 +1,10 @@
 import {DOCUMENT} from '@angular/common';
 import {computed, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_TOUCH} from '@ng-web-apis/platform';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {TUI_IS_TOUCH} from '@taiga-ui/cdk/tokens';
 import {tuiGetActualTarget, tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {filter, merge} from 'rxjs';
@@ -27,7 +27,7 @@ import {TuiDropdownDriver} from './dropdown.driver';
     },
 })
 export class TuiDropdownContext extends TuiRectAccessor {
-    private readonly isTouch = inject(TUI_IS_TOUCH);
+    private readonly isTouch = inject(WA_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
 
     protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));

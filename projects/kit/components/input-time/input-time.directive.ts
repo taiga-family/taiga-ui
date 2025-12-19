@@ -10,9 +10,9 @@ import {
     maskitoTimeOptionsGenerator,
     type MaskitoTimeParams,
 } from '@maskito/kit';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
@@ -91,7 +91,7 @@ export class TuiInputTimeDirective
     public readonly prefix = input('');
     public readonly postfix = input('');
     public readonly native =
-        !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
+        !!inject(TuiWithNativePicker, {optional: true}) && inject(WA_IS_MOBILE);
 
     public setValue(value: TuiTime | null): void {
         this.onChange(value);

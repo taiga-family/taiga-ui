@@ -1,6 +1,6 @@
 import {Directive, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiFallbackAccessor,
@@ -42,7 +42,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
         alias: 'tuiHintDirection',
     });
 
-    public readonly offset = input(inject(TUI_IS_MOBILE) ? 16 : 8, {
+    public readonly offset = input(inject(WA_IS_MOBILE) ? 16 : 8, {
         alias: 'tuiHintOffset',
     });
 

@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {map, type Observable, timer} from 'rxjs';
 
 import {MOCK_CARDS} from './mock-cards';
@@ -9,7 +9,7 @@ import {type AccountCard, type FetchedCards} from './models';
     providedIn: 'root',
 })
 export class PayService {
-    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isE2E = inject(WA_IS_E2E);
 
     public preparePayment(amount: number): Observable<number> {
         return timer(this.getRandomDelay()).pipe(map(() => amount));

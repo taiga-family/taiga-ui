@@ -10,7 +10,7 @@ import {
     type Type,
     ViewContainerRef,
 } from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiCell} from '@taiga-ui/core/components/cell';
@@ -33,7 +33,7 @@ import {TUI_OPTION_CONTENT} from './option-content.directive';
 })
 export class TuiOption<T = unknown> implements OnDestroy {
     private readonly vcr = inject(ViewContainerRef);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement();
     private readonly datalist = inject<TuiDataListComponent<T>>(
         forwardRef(() => TuiDataListComponent),

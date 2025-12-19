@@ -1,12 +1,12 @@
 import {inject, Pipe, type PipeTransform, TemplateRef} from '@angular/core';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {tuiInspect} from '@taiga-ui/addon-doc/utils';
-import {TUI_IS_E2E} from '@taiga-ui/cdk/tokens';
 
 @Pipe({
     name: 'tuiInspect',
 })
 export class TuiInspectPipe implements PipeTransform {
-    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isE2E = inject(WA_IS_E2E);
 
     public transform(value: unknown, depth = 2): string {
         if (this.isE2E && typeof value === 'function') {

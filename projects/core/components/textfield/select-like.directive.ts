@@ -1,5 +1,5 @@
 import {Directive, inject} from '@angular/core';
-import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
+import {WA_IS_ANDROID} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -21,7 +21,7 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 })
 export class TuiSelectLike {
     private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly isAndroid = inject(TUI_IS_ANDROID);
+    private readonly isAndroid = inject(WA_IS_ANDROID);
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected clear(): void {

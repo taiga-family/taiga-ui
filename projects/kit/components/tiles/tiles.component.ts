@@ -9,10 +9,10 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounce, filter, map, Subject, timer} from 'rxjs';
 
@@ -25,8 +25,8 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        ResizeObserverService,
-        MutationObserverService,
+        WaResizeObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {childList: true},

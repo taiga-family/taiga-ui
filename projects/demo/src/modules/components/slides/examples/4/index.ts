@@ -1,8 +1,8 @@
 import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiProgressBar} from '@taiga-ui/kit';
 import {
@@ -34,7 +34,7 @@ export default class Example {
     @ViewChild(TemplateRef)
     private readonly template?: TemplateRef<any>;
 
-    private readonly dialogs = inject(TUI_IS_MOBILE)
+    private readonly dialogs = inject(WA_IS_MOBILE)
         ? inject(TuiSheetDialogService)
         : inject(TuiDialogService);
 

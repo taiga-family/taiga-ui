@@ -10,7 +10,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {TuiInputInline} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
@@ -25,7 +26,7 @@ export default class Example implements OnInit {
     private readonly cd = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
 
     protected count = '0';
 

@@ -8,7 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
@@ -28,7 +28,10 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     styleUrl: './segmented.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
+    providers: [
+        WaResizeObserverService,
+        tuiBadgeNotificationOptionsProvider({size: 's'}),
+    ],
     hostDirectives: [TuiSegmentedDirective],
     host: {
         '[attr.data-size]': 'size()',
@@ -37,7 +40,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
 export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();
 
-    protected readonly sub = inject(ResizeObserverService, {self: true})
+    protected readonly sub = inject(WaResizeObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 

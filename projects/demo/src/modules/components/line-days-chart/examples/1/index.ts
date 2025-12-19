@@ -2,9 +2,9 @@ import {Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
 import {
-    TUI_IS_E2E,
     TuiDay,
     type TuiDayLike,
     TuiDayRange,
@@ -22,7 +22,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isE2E = inject(WA_IS_E2E);
     private readonly months = inject(TUI_MONTHS);
 
     protected readonly maxLength: TuiDayLike = {month: 12};

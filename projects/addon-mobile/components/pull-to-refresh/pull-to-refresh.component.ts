@@ -4,8 +4,8 @@ import {
     takeUntilDestroyed,
     toSignal,
 } from '@angular/core/rxjs-interop';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {type TuiContext, type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
@@ -27,7 +27,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     providers: [TuiPullToRefreshService],
 })
 export class TuiPullToRefresh {
-    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isIOS = inject(WA_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
     private readonly service = inject(TuiPullToRefreshService);
     private readonly el = inject(TUI_SCROLL_REF).nativeElement;

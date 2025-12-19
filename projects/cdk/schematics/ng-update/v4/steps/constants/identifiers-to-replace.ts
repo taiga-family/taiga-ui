@@ -628,7 +628,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiResizeService', moduleSpecifier: '@taiga-ui/cdk'},
         to: {
-            name: 'ResizeObserverService',
+            name: 'WaResizeObserverService',
             moduleSpecifier: '@ng-web-apis/resize-observer',
         },
     },
