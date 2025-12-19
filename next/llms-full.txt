@@ -3550,8 +3550,8 @@ export class Example {}
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiComment} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
@@ -3571,7 +3571,7 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 }
 ```
 
@@ -3599,8 +3599,8 @@ export default class Example {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiFade} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
@@ -3614,7 +3614,7 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
     providers: [tuiAmountOptionsProvider({sign: 'always'})],
 })
 export default class Example {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 }
 ```
 
@@ -9881,13 +9881,9 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {
-    TUI_IS_MOBILE,
-    TUI_STRICT_MATCHER,
-    type TuiContext,
-    type TuiStringMatcher,
-} from '@taiga-ui/cdk';
+import {TUI_STRICT_MATCHER, type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
@@ -9923,7 +9919,7 @@ interface Country {
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     protected readonly control = new FormControl<Country | null>(null);
 
@@ -10852,7 +10848,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
@@ -10888,7 +10884,7 @@ export default class Example {
         },
     ];
 
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     public control = new FormControl('');
 }
@@ -10901,7 +10897,7 @@ export default class Example {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiDataList, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {delay, of} from 'rxjs';
 
@@ -10912,7 +10908,7 @@ import {delay, of} from 'rxjs';
 })
 export default class Page {
     private readonly items = ['Foo', 'Bar', 'Baz'];
-    protected readonly items$ = inject(TUI_IS_E2E)
+    protected readonly items$ = inject(WA_IS_E2E)
         ? of(this.items)
         : of(this.items).pipe(delay(1e3));
 
@@ -12489,7 +12485,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiError, TuiInput} from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
 import {delay, of} from 'rxjs';
@@ -12512,7 +12508,7 @@ export default class Example {
         text: new FormControl(
             'русский текст',
             [Validators.required],
-            [asyncValidatorFn(inject(TUI_IS_E2E))],
+            [asyncValidatorFn(inject(WA_IS_E2E))],
         ),
     });
 }
@@ -18599,7 +18595,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
-import {TUI_FIRST_DAY, TUI_IS_MOBILE, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
@@ -18619,7 +18616,7 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly routes = DemoRoute;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl();
 
     protected readonly dates = [
@@ -18861,7 +18858,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 
@@ -18872,7 +18870,7 @@ import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 
@@ -19356,7 +19354,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {TuiInputInline} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
@@ -19371,7 +19370,7 @@ export default class Example implements OnInit {
     private readonly cd = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
 
     protected count = '0';
 
@@ -20479,7 +20478,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_IOS} from '@taiga-ui/cdk';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiInputPhone} from '@taiga-ui/kit';
 
 @Component({
@@ -20489,7 +20488,7 @@ import {TuiInputPhone} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly isIos = inject(TUI_IS_IOS);
+    protected readonly isIos = inject(WA_IS_IOS);
 
     public value = '+71234567890';
 
@@ -24786,7 +24785,8 @@ import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, tuiWatch} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {tuiWatch} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core';
 import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
@@ -24799,7 +24799,7 @@ import {map, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isE2E = inject(WA_IS_E2E);
 
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
         map(() => `${'async fake value, '.repeat(10)}end!`),
@@ -25390,9 +25390,9 @@ import {Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
 import {
-    TUI_IS_E2E,
     TuiDay,
     type TuiDayLike,
     TuiDayRange,
@@ -25410,7 +25410,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isE2E = inject(WA_IS_E2E);
     private readonly months = inject(TUI_MONTHS);
 
     protected readonly maxLength: TuiDayLike = {month: 12};
@@ -25490,6 +25490,7 @@ export default class Example {
 import {Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TuiAxes,
     TuiLineChart,
@@ -25497,7 +25498,6 @@ import {
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
 import {
-    TUI_IS_E2E,
     TuiDay,
     type TuiDayLike,
     TuiDayRange,
@@ -25528,7 +25528,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isE2E = inject(WA_IS_E2E);
     private readonly months = inject(TUI_MONTHS);
 
     protected readonly data = signal(
@@ -28146,7 +28146,8 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, TuiMapperPipe} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiPager, TuiProgress} from '@taiga-ui/kit';
 import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
@@ -28159,7 +28160,7 @@ import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected static = inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
+    protected static = inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
     protected count = 10;
     protected activeIndex = signal(0);
 
@@ -28435,7 +28436,7 @@ export default class Page {
 # components/PdfViewer
 - **Package**: `LAYOUT`
 - **Type**: components
-Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on TUI_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
+Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on WA_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
 
 ### How to Use (Import)
 
@@ -28485,7 +28486,7 @@ import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton, TuiDialog, TuiTitle} from '@taiga-ui/core';
 import {TuiPdfViewer} from '@taiga-ui/layout';
 
@@ -28497,7 +28498,7 @@ import {TuiPdfViewer} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
@@ -28527,8 +28528,8 @@ import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotificationService, TuiTitle} from '@taiga-ui/core';
 import {TuiPdfViewer} from '@taiga-ui/layout';
 
@@ -28541,7 +28542,7 @@ import {TuiPdfViewer} from '@taiga-ui/layout';
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
     protected readonly alerts = inject(TuiNotificationService);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
@@ -28574,7 +28575,7 @@ import {Component, inject, signal} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton, TuiDialog, TuiLoader, TuiTitle} from '@taiga-ui/core';
 import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 
@@ -28586,7 +28587,7 @@ import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
@@ -29377,7 +29378,7 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, timer} from 'rxjs';
 
@@ -29389,7 +29390,7 @@ import {map, of, startWith, timer} from 'rxjs';
 })
 export default class Example {
     protected readonly value$ =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(40)
             : timer(300, 300).pipe(
                   map((i) => i + 30),
@@ -29421,7 +29422,7 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {of, timer} from 'rxjs';
 
@@ -29434,7 +29435,7 @@ import {of, timer} from 'rxjs';
 })
 export default class Example {
     private readonly animationDisabled =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly fastValue$ = this.animationDisabled ? of(80) : timer(500, 100);
     protected readonly slowValue$ = this.animationDisabled ? of(4) : timer(500, 2000);
@@ -29489,7 +29490,7 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, takeWhile, timer} from 'rxjs';
 
@@ -29503,7 +29504,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
 export default class Example {
     protected readonly max = 100;
     protected readonly value$ =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
             : timer(300, 300).pipe(
                   map((i) => i + 30),
@@ -29715,7 +29716,7 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, takeWhile, timer} from 'rxjs';
 
@@ -29728,7 +29729,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
 export default class Example {
     protected readonly max = 100;
     protected readonly value$ =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
             : timer(300, 200).pipe(
                   map((i) => i + 30),
@@ -29779,7 +29780,7 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, takeWhile, timer} from 'rxjs';
 
@@ -29793,7 +29794,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
 export default class Example {
     protected readonly max = 100;
     protected readonly value$ =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
             : timer(300, 200).pipe(
                   map((i) => i + 30),
@@ -29850,7 +29851,7 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, repeat, share, takeWhile, timer} from 'rxjs';
 
@@ -29865,7 +29866,7 @@ export default class Example {
     protected readonly max = 100;
 
     protected readonly value$ =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
             : timer(300, 200).pipe(
                   takeWhile((value) => value <= this.max),
@@ -29903,7 +29904,7 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {of, repeat, takeWhile, timer} from 'rxjs';
 
@@ -29917,7 +29918,7 @@ import {of, repeat, takeWhile, timer} from 'rxjs';
 export default class Example {
     protected readonly max = 100;
     protected readonly value$ =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
             : timer(300, 200).pipe(
                   takeWhile((value) => value <= this.max),
@@ -30082,13 +30083,13 @@ export class Example {}
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     TUI_ANDROID_LOADER,
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
-import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
@@ -30100,11 +30101,11 @@ import {Subject} from 'rxjs';
     changeDetection,
     providers: [
         {
-            provide: TUI_IS_IOS,
+            provide: WA_IS_IOS,
             useValue: false,
         },
         {
-            provide: TUI_IS_ANDROID,
+            provide: WA_IS_ANDROID,
             useValue: true,
         },
         {
@@ -30146,13 +30147,13 @@ export default class Example {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     TUI_IOS_LOADER,
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
-import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
@@ -30163,11 +30164,11 @@ import {Subject} from 'rxjs';
     changeDetection,
     providers: [
         {
-            provide: TUI_IS_IOS,
+            provide: WA_IS_IOS,
             useValue: true,
         },
         {
-            provide: TUI_IS_ANDROID,
+            provide: WA_IS_ANDROID,
             useValue: false,
         },
         {
@@ -30216,13 +30217,13 @@ import {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     TUI_ANDROID_LOADER,
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
-import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiNotificationService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
@@ -30241,11 +30242,11 @@ import {Subject} from 'rxjs';
     changeDetection,
     providers: [
         {
-            provide: TUI_IS_IOS,
+            provide: WA_IS_IOS,
             useValue: false,
         },
         {
-            provide: TUI_IS_ANDROID,
+            provide: WA_IS_ANDROID,
             useValue: true,
         },
         {
@@ -32832,11 +32833,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TUI_IS_MOBILE,
-    type TuiBooleanHandler,
-    type TuiStringHandler,
-} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {type TuiBooleanHandler, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 interface Character {
@@ -32851,7 +32849,7 @@ interface Character {
     changeDetection,
 })
 export default class Example {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl(null);
     protected items: readonly Character[] = [
         {name: 'Luke Skywalker', id: 1},
@@ -32914,8 +32912,9 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
+import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
@@ -32944,7 +32943,7 @@ export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
 
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl<Country | null>({
         id: 'US',
         name: 'USA',
@@ -34215,8 +34214,8 @@ export default class Example {
 import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiProgressBar} from '@taiga-ui/kit';
 import {
@@ -34248,7 +34247,7 @@ export default class Example {
     @ViewChild(TemplateRef)
     private readonly template?: TemplateRef<any>;
 
-    private readonly dialogs = inject(TUI_IS_MOBILE)
+    private readonly dialogs = inject(WA_IS_MOBILE)
         ? inject(TuiSheetDialogService)
         : inject(TuiDialogService);
 
@@ -36168,9 +36167,9 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -36216,7 +36215,7 @@ export default class Example {
     protected card = null;
 
     protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 }
 ```
 
@@ -39402,7 +39401,8 @@ import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, TuiPlatform} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton, TuiLoader} from '@taiga-ui/core';
 import {TuiProgressCircle, TuiToast} from '@taiga-ui/kit';
 import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
@@ -39417,7 +39417,7 @@ import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
 export default class Example {
     protected readonly trigger$ = new BehaviorSubject(0);
     protected readonly value = toSignal(
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
             : this.trigger$.pipe(switchMap(() => timer(0, 200).pipe(take(100)))),
         {initialValue: 0},
@@ -40334,91 +40334,6 @@ export default class Page {
 ```
 
 ---
-# utils/Browser
-- **Package**: `CDK`
-- **Type**: components/utils
-A set of tools for work with browser
-
-### How to Use (Import)
-
-```ts
-import {tuiIsEdge} from '@taiga-ui/cdk';
-import {WA_USER_AGENT} from '@ng-web-apis/common';
-
-// ...
-export class Example {
-  private readonly userAgent = inject(WA_USER_AGENT);
-
-  areThereProblems = tuiIsEdge(this.userAgent);
-}
-// ...
-```
-
-### Usage Examples
-
-#### Browser detection
-
-**Template:**
-```html
-<label>
-<b>Your browser is:</b>
-</label>
-<p>{{ aboutMyBrowser }}</p>
-```
-**TypeScript:**
-```ts
-import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {WA_USER_AGENT} from '@ng-web-apis/common';
-import {tuiInjectElement, tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
-
-@Component({
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    private readonly userAgent = inject(WA_USER_AGENT);
-    private readonly el = tuiInjectElement();
-
-    protected get aboutMyBrowser(): string {
-        if (tuiIsEdge(this.userAgent)) {
-            return 'Edge';
-        }
-
-        if (tuiIsFirefox(this.userAgent)) {
-            return 'Okay, you have Firefox!';
-        }
-
-        if (tuiIsSafari(this.el)) {
-            return 'Okay, you have Safari!';
-        }
-
-        return 'You have Chromium based browser, cool!';
-    }
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected readonly component = import('./examples/import/import.md');
-}
-```
-
----
 # utils/DOM utils
 - **Package**: `CDK`
 - **Type**: components/utils
@@ -41190,11 +41105,11 @@ export default class Example {
 }
 ```
 
-#### TUI_IS_ANDROID
+#### WA_IS_ANDROID
 
 **Template:**
 ```html
-<p> A token with a factory. It takes <a fragment="is-mobile" routerLink="." tuiLink > TUI_IS_MOBILE </a> and <a fragment="is-ios" routerLink="." tuiLink > TUI_IS_IOS </a> , returns true if the device is mobile but not iOS (technically includes Windows Phone, Blackberry etc.) </p>
+<p> A token with a factory. It takes <a fragment="is-mobile" routerLink="." tuiLink > WA_IS_MOBILE </a> and <a fragment="is-ios" routerLink="." tuiLink > WA_IS_IOS </a> , returns true if the device is mobile but not iOS (technically includes Windows Phone, Blackberry etc.) </p>
 ```
 **TypeScript:**
 ```ts
@@ -41202,7 +41117,7 @@ import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_ANDROID} from '@taiga-ui/cdk';
+import {WA_IS_ANDROID} from '@ng-web-apis/platform';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
@@ -41212,15 +41127,15 @@ import {TuiLink} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly isAndroid = inject(WA_IS_ANDROID);
 }
 ```
 
-#### TUI_IS_IOS
+#### WA_IS_IOS
 
 **Template:**
 ```html
-<p> A token with a factory. It takes <a fragment="is-mobile" routerLink="." tuiLink > TUI_IS_MOBILE </a> and if it is true detects iOS devices with a regex </p>
+<p> A token with a factory. It takes <a fragment="is-mobile" routerLink="." tuiLink > WA_IS_MOBILE </a> and if it is true detects iOS devices with a regex </p>
 ```
 **TypeScript:**
 ```ts
@@ -41228,7 +41143,7 @@ import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_IOS} from '@taiga-ui/cdk';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
@@ -41238,11 +41153,11 @@ import {TuiLink} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected readonly isIos = inject(TUI_IS_IOS);
+    protected readonly isIos = inject(WA_IS_IOS);
 }
 ```
 
-#### TUI_IS_MOBILE
+#### WA_IS_MOBILE
 
 **Template:**
 ```html
@@ -41253,7 +41168,7 @@ export default class Example {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 
 @Component({
     templateUrl: './index.html',
@@ -41261,7 +41176,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
     changeDetection,
 })
 export default class Example {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 }
 ```
 
