@@ -45,9 +45,7 @@ export class TuiSubheaderComponent {}
     template: `
         <div class="t-nav-subheader">
             <ng-content />
-            <ng-content
-                select="tui-tabs,tui-tabs-with-more,[tuiTabsWithMore],[tuiTabs]"
-            />
+            <ng-content select="tui-tabs,tui-tabs-with-more" />
             <ng-content select="[tuiButton],[tuiIconButton]" />
         </div>
     `,

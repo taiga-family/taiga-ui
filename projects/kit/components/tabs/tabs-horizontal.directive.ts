@@ -12,7 +12,7 @@ import {TuiTabsDirective} from './tabs.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Directive({
-    selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',
+    selector: 'tui-tabs:not([vertical])',
     providers: [
         MutationObserverService,
         {
