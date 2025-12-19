@@ -156,7 +156,7 @@
 ### Directives
 
 - [Active Zone](https://taiga-ui.dev/directives/active-zone) — tuiActiveZone allows to track a scope that user interacts with. For example, for closing dropdown on blur
-- [Animated](https://taiga-ui.dev/directives/animated) — TuiAnimated allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19.
+- [Animated](https://taiga-ui.dev/directives/animated) — TuiAnimated allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19. In case the user's operating system has reduced motion settings turned on, Taiga UI will honor this, disabling animations under its control, and TuiAnimated will not play animations. To override this behavior, use TUI_REDUCED_MOTION injection token. However, this is not the recommended approach, as the user's system preferences would be ignored.
 - [Appearance](https://taiga-ui.dev/directives/appearance) — A directive for visual presets of interactive components
 - [Auto Focus](https://taiga-ui.dev/directives/auto-focus) — tuiAutoFocus allows to focus HTML-element right after its appearance. It works also with focusable Taiga UI components
 - [Copy Processor](https://taiga-ui.dev/directives/copy-processor) — Directive is used to processed text when coping

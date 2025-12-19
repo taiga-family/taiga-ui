@@ -41605,7 +41605,7 @@ export default class Page {}
 # directives/Animated
 - **Package**: `CDK`
 - **Type**: directives
-TuiAnimated allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19.
+TuiAnimated allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19. In case the user's operating system has reduced motion settings turned on, Taiga UI will honor this, disabling animations under its control, and TuiAnimated will not play animations. To override this behavior, use TUI_REDUCED_MOTION injection token. However, this is not the recommended approach, as the user's system preferences would be ignored.
 
 ### How to Use (Import)
 
