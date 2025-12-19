@@ -38,9 +38,13 @@ describe('Tabs', () => {
 
                 await page.locator('button:has-text("Collaborators")').click();
 
+                await expect(page.locator('tui-dropdown')).toBeVisible();
+
                 await expect.soft(example).toHaveScreenshot('01-tabs-2.png');
 
                 await page.locator('button:has-text("Neil Innes")').click();
+
+                await expect(page.locator('tui-dropdown')).not.toBeAttached();
 
                 await expect.soft(example).toHaveScreenshot('01-tabs-3.png');
 
@@ -50,10 +54,14 @@ describe('Tabs', () => {
 
                 await example.locator('tui-tabs-with-more .t-more').click();
 
+                await expect(page.locator('tui-dropdown')).toBeVisible();
+
                 await expect.soft(example).toHaveScreenshot('01-tabs-5.png');
 
                 await page.locator('button:has-text("John Cleese")').nth(1).focus();
                 await page.keyboard.down('Enter');
+
+                await expect(page.locator('tui-dropdown')).not.toBeAttached();
 
                 await expect.soft(example).toHaveScreenshot('01-tabs-6.png');
 
@@ -61,10 +69,14 @@ describe('Tabs', () => {
                 await page.locator('button:has-text("Collaborators")').nth(1).focus();
                 await page.keyboard.down('Enter');
 
+                await expect(page.locator('tui-dropdown')).toHaveCount(2);
+
                 await expect.soft(example).toHaveScreenshot('01-tabs-7.png');
 
                 await page.locator('button:has-text("Neil Innes")').nth(0).focus();
                 await page.keyboard.down('Enter');
+
+                await expect(page.locator('tui-dropdown')).not.toBeAttached();
 
                 await expect.soft(example).toHaveScreenshot('01-tabs-8.png');
             });

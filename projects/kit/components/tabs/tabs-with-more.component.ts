@@ -5,12 +5,14 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     contentChildren,
     effect,
     ElementRef,
     inject,
     input,
     model,
+    signal,
     TemplateRef,
     viewChild,
 } from '@angular/core';
@@ -55,15 +57,47 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
-    private maxIndex = Infinity;
+    private readonly maxIndex = signal(Infinity);
 
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
-    protected open = false;
+    protected readonly open = signal(false);
     protected readonly sync = effect(() => {
         this.activeItemIndex();
-        this.maxIndex = this.getMaxIndex();
+        this.maxIndex.set(this.getMaxIndex());
     });
+
+    protected readonly lastVisibleIndex = computed(() => {
+        if (this.itemsLimit() + 1 >= this.items().length) {
+            return this.maxIndex();
+        }
+
+        const offset =
+            this.itemsLimit() - 1 > this.activeItemIndex() || !this.options.exposeActive
+                ? 1
+                : 2;
+
+        return Math.min(this.itemsLimit() - offset, this.maxIndex());
+    });
+
+    protected readonly isMoreAlone = computed(
+        () => this.lastVisibleIndex() < 0 && !this.options.exposeActive,
+    );
+
+    protected isMoreVisible = computed(
+        () => this.lastVisibleIndex() < this.items().length - 1,
+    );
+
+    protected isMoreFocusable = computed(() =>
+        tuiIsFocused(this.moreButton()?.nativeElement),
+    );
+
+    protected readonly isMoreActive = computed(
+        () =>
+            this.open() ||
+            (!this.options.exposeActive &&
+                this.lastVisibleIndex() < this.activeItemIndex()),
+    );
 
     public readonly activeItemIndex = model(0);
     public readonly size = input(this.options.size);
@@ -73,28 +107,15 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     public readonly dropdownContent =
         input<PolymorpheusContent<TuiContext<TuiActiveZone>>>();
 
-    public get lastVisibleIndex(): number {
-        if (this.itemsLimit() + 1 >= this.items().length) {
-            return this.maxIndex;
-        }
-
-        const offset =
-            this.itemsLimit() - 1 > this.activeItemIndex() || !this.options.exposeActive
-                ? 1
-                : 2;
-
-        return Math.min(this.itemsLimit() - offset, this.maxIndex);
-    }
-
     public ngAfterViewInit(): void {
         this.refresh$
             .pipe(
                 map(() => this.getMaxIndex()),
                 tap(() => this.refresh()),
-                filter((maxIndex) => this.maxIndex !== maxIndex),
+                filter((maxIndex) => this.maxIndex() !== maxIndex),
             )
             .subscribe((maxIndex) => {
-                this.maxIndex = maxIndex;
+                this.maxIndex.set(maxIndex);
                 this.cdr.detectChanges();
             });
     }
@@ -112,32 +133,13 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         const {tabs} = this;
         const safeActiveIndex = tuiClamp(this.activeItemIndex() || 0, 0, tabs.length - 2);
 
-        return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
+        return this.options.exposeActive || this.lastVisibleIndex() >= safeActiveIndex
             ? tabs[safeActiveIndex] || null
             : this.moreButton()?.nativeElement || null;
     }
 
-    protected get isMoreAlone(): boolean {
-        return this.lastVisibleIndex < 0 && !this.options.exposeActive;
-    }
-
-    protected get isMoreVisible(): boolean {
-        return this.lastVisibleIndex < this.items().length - 1;
-    }
-
-    protected get isMoreFocusable(): boolean {
-        return tuiIsFocused(this.moreButton()?.nativeElement);
-    }
-
-    protected get isMoreActive(): boolean {
-        return (
-            this.open ||
-            (!this.options.exposeActive && this.lastVisibleIndex < this.activeItemIndex())
-        );
-    }
-
     protected onClick(index: number): void {
-        this.open = false;
+        this.open.set(false);
         this.focusMore();
         this.activeItemIndex.set(index);
     }
@@ -181,7 +183,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected shouldShow(index: number): boolean {
-        return index > this.lastVisibleIndex && this.isOverflown(index);
+        return index > this.lastVisibleIndex() && this.isOverflown(index);
     }
 
     // TODO drop comment after fix issue: https://github.com/typescript-eslint/typescript-eslint/issues/11771
@@ -224,7 +226,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
             const activeOffset = activeDisplaced ? activeWidth + margin : 0;
             const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
-            const safetyOffset = tuiToInt(this.maxIndex === maxIndex - 1);
+            const safetyOffset = tuiToInt(this.maxIndex() === maxIndex - 1);
 
             if (currentWidth + safetyOffset < clientWidth) {
                 return maxIndex;
