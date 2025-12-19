@@ -23,26 +23,29 @@
 </button>
 
 <p>
-    <tui-badge
+    <span
+        tuiBadge
         [style.background]="'var(--tui-status-positive)'"
         [tuiSensitive]="sensitive"
     >
         12 000$
-    </tui-badge>
-    <tui-badge
+    </span>
+    <span
         appearance="primary"
+        tuiBadge
         class="tui-space_left-2"
     >
         <span [tuiSensitive]="sensitive">12 000$</span>
-    </tui-badge>
-    <tui-badge
+    </span>
+    <span
         appearance="accent"
         size="xl"
+        tuiBadge
         class="tui-space_left-2"
         [tuiSensitive]="sensitive"
     >
         12 000$
-    </tui-badge>
+    </span>
 </p>
 
 <label tuiLabel>

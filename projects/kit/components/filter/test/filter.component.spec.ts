@@ -81,7 +81,7 @@ describe('Filter', () => {
     }
 
     function getBadge(): HTMLElement {
-        return getContent().querySelector('tui-badge')!;
+        return getContent().querySelector('[tuiBadge]')!;
     }
 
     describe('value', () => {
