@@ -2003,15 +2003,20 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-badge appearance="primary">{{ value }}</tui-badge>
+<span
+  tuiBadge
+  appearance="primary"
+>
+  {{ value }}
+</span>
 ```
 
 ### Example
 
 ```html
-<p> @if (contentType === 'with icon') { <tui-badge iconStart="@tui.check" [appearance]="appearance" [size]="size" >
+<p> @if (contentType === 'with icon') { <span iconStart="@tui.check" tuiBadge [appearance]="appearance" [size]="size" >
 <div tuiFade>Taiga UI</div>
-</tui-badge> } @if (contentType === 'text') { <tui-badge [appearance]="appearance" [size]="size" > Taiga UI </tui-badge> } @if (contentType === 'image') { <img alt="market" src="assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" /> } </p>
+</span> } @if (contentType === 'text') { <span tuiBadge [appearance]="appearance" [size]="size" > Taiga UI </span> } @if (contentType === 'image') { <img alt="market" src="assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" /> } </p>
 ```
 
 ### API
@@ -2027,22 +2032,22 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-badge>Default</tui-badge>
-<tui-badge appearance="primary">Primary</tui-badge>
-<tui-badge appearance="accent">Accent</tui-badge>
-<tui-badge appearance="positive" tuiStatus > Success </tui-badge>
-<tui-badge appearance="negative" tuiStatus > Error </tui-badge>
-<tui-badge appearance="warning" tuiStatus > Warning </tui-badge>
-<tui-badge appearance="warning">Warning</tui-badge>
-<tui-badge appearance="neutral">Neutral</tui-badge>
-<tui-badge appearance="info">Info</tui-badge>
+<div tuiBadge>Default</div>
+<div appearance="primary" tuiBadge > Primary </div>
+<div appearance="accent" tuiBadge > Accent </div>
+<div appearance="positive" tuiBadge tuiStatus > Success </div>
+<div appearance="negative" tuiBadge tuiStatus > Error </div>
+<div appearance="warning" tuiBadge tuiStatus > Warning </div>
+<div appearance="warning" tuiBadge > Warning </div>
+<div appearance="neutral" tuiBadge > Neutral </div>
+<div appearance="info" tuiBadge > Info </div>
 <p>Custom status</p>
-<tui-badge tuiStatus="var(--tui-chart-categorical-09)" [style.background]="'var(--tui-chart-categorical-01)'" > Custom </tui-badge>
-<p>Use CSS for support colors</p> @for (_ of '-'.repeat(20); track $index) { <tui-badge [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"> Taiga </tui-badge> } <p>Sizes</p>
-<tui-badge appearance="positive" size="xl" tuiStatus > Success </tui-badge>
-<tui-badge appearance="positive" size="l" tuiStatus > Success </tui-badge>
-<tui-badge appearance="positive" size="m" tuiStatus > Success </tui-badge>
-<tui-badge appearance="positive" size="s" tuiStatus > Success </tui-badge>
+<div tuiBadge tuiStatus="var(--tui-chart-categorical-09)" [style.background]="'var(--tui-chart-categorical-01)'" > Custom </div>
+<p>Use CSS for support colors</p> @for (_ of '-'.repeat(20); track $index) { <div tuiBadge [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`" > Taiga </div> } <p>Sizes</p>
+<div appearance="positive" size="xl" tuiBadge tuiStatus > Success </div>
+<div appearance="positive" size="l" tuiBadge tuiStatus > Success </div>
+<div appearance="positive" size="m" tuiBadge tuiStatus > Success </div>
+<div appearance="positive" size="s" tuiBadge tuiStatus > Success </div>
 ```
 **TypeScript:**
 ```ts
@@ -2065,10 +2070,10 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-badge appearance="primary" size="xl" > x-large </tui-badge>
-<tui-badge appearance="primary" size="l" class="tui-space_left-1" > large </tui-badge>
-<tui-badge appearance="primary" size="m" class="tui-space_left-1" > medium </tui-badge>
-<tui-badge appearance="primary" size="s" class="tui-space_left-1" > small </tui-badge>
+<div appearance="primary" size="xl" tuiBadge > x-large </div>
+<div appearance="primary" size="l" tuiBadge class="tui-space_left-1" > large </div>
+<div appearance="primary" size="m" tuiBadge class="tui-space_left-1" > medium </div>
+<div appearance="primary" size="s" tuiBadge class="tui-space_left-1" > small </div>
 ```
 **TypeScript:**
 ```ts
@@ -2092,10 +2097,10 @@ export default class Example {}
 ```html
 <div tuiPlatform="ios">
 <h4 class="tui-space_vertical-1">Value with icon</h4>
-<tui-badge appearance="primary" iconStart="@tui.box" size="xl" > x-large </tui-badge>
-<tui-badge appearance="primary" iconStart="@tui.box" size="l" class="tui-space_left-1" > large </tui-badge>
-<tui-badge appearance="primary" iconStart="@tui.box" size="m" class="tui-space_left-1" > medium </tui-badge>
-<tui-badge appearance="primary" iconStart="@tui.box" size="s" class="tui-space_left-1" > small </tui-badge>
+<div appearance="primary" iconStart="@tui.box" size="xl" tuiBadge > x-large </div>
+<div appearance="primary" iconStart="@tui.box" size="l" tuiBadge class="tui-space_left-1" > large </div>
+<div appearance="primary" iconStart="@tui.box" size="m" tuiBadge class="tui-space_left-1" > medium </div>
+<div appearance="primary" iconStart="@tui.box" size="s" tuiBadge class="tui-space_left-1" > small </div>
 </div>
 <div tuiPlatform="ios">
 <h4 class="tui-space_top-3 tui-space_bottom-1">Icon only</h4>
@@ -2134,12 +2139,12 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-badge appearance="primary" size="xl" class="badge" >
+<div appearance="primary" size="xl" tuiBadge class="badge" >
 <div tuiFade>Very long value in badge</div>
-</tui-badge>
-<tui-badge appearance="accent" iconStart="@tui.box" size="l" class="badge tui-space_top-3" >
+</div>
+<div appearance="accent" iconStart="@tui.box" size="l" tuiBadge class="badge tui-space_top-3" >
 <div class="t-ellipsis">Very long value in badge</div>
-</tui-badge>
+</div>
 ```
 **TypeScript:**
 ```ts
@@ -2162,8 +2167,8 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-badge appearance="custom" iconStart="@tui.lock" size="xl" class="custom-1" > 10 000 000 $ </tui-badge>
-<tui-badge appearance="custom" size="xl" class="custom-2 tui-space_left-3" > Taiga </tui-badge>
+<div appearance="custom" iconStart="@tui.lock" size="xl" tuiBadge class="custom-1" > 10 000 000 $ </div>
+<div appearance="custom" size="xl" tuiBadge class="custom-2 tui-space_left-3" > Taiga </div>
 ```
 **TypeScript:**
 ```ts
@@ -2186,7 +2191,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-badge>10 000 000 $</tui-badge>
+<div tuiBadge>10 000 000 $</div>
 ```
 **TypeScript:**
 ```ts
@@ -2494,7 +2499,7 @@ export default class Example {}
 <div size="m" tuiAvatar="@tui.user" ></div>
 </tui-badged-content>
 <tui-badged-content [style.--tui-radius.%]="50">
-<tui-badge appearance="accent" size="l" tuiSlot="top" > Taiga </tui-badge>
+<span appearance="accent" size="l" tuiBadge tuiSlot="top" > Taiga </span>
 <div size="l" tuiAvatar="@tui.user" ></div>
 </tui-badged-content>
 <tui-badged-content [style.--tui-radius.%]="50">
@@ -3509,7 +3514,12 @@ export class Example {}
   <span>{{ amount }} | tuiAmount: 'USD' | async }}</span>
   <span tuiAmountDescription>description</span>
   <span tuiComment>comment</span>
-  <tui-badge appearance="neutral">Badge</tui-badge>
+  <span
+    tuiBadge
+    appearance="neutral"
+  >
+    Badge
+  </span>
 </div>
 ```
 
@@ -3528,8 +3538,8 @@ export class Example {}
 <span tuiSubtitle>extra subtitle</span>
 <span tuiComment>Birthday gift</span>
 <div tuiAccessories>
-<tui-badge appearance="neutral">private</tui-badge>
-<tui-badge appearance="default">fast</tui-badge>
+<div appearance="neutral" tuiBadge > private </div>
+<div appearance="default" tuiBadge > fast </div>
 </div>
 <div tuiDetailsStatus>
 <tui-icon icon="@tui.clock" [style.font-size.rem]="1" /> Pending </div>
@@ -3575,7 +3585,7 @@ export default class Example {
 </h2>
 <span [style.color]="'var(--tui-text-positive)'">{{ 0.5 | tuiAmount: 'USD' }}</span>
 <span tuiFade tuiSubtitle > promotion (long value with fade) </span>
-<tui-badge appearance="neutral">cashback</tui-badge>
+<div appearance="neutral" tuiBadge > cashback </div>
 </div>
 <div tuiBlockDetails>
 <div tuiAvatar="@tui.star" [size]="isMobile ? 'xl' : 'xxl'" ></div>
@@ -4884,8 +4894,8 @@ export default class Example {}
 <tui-carousel [draggable]="true" [itemsCount]="1" [(index)]="index" (shift)="opacity = $event" > @for (item of items; track item) { <div *tuiItem tuiCardMedium class="card" [style.background]="item.gradient" >
 <h2 tuiTitle> BANK <span tuiSubtitle>{{ item.title }}</span>
 </h2>
-<tui-badge class="money">
-<tui-icon icon="@tui.wallet" /> {{ item.content }} </tui-badge>
+<div tuiBadge class="money" >
+<tui-icon icon="@tui.wallet" /> {{ item.content }} </div>
 </div> } </tui-carousel>
 <tui-pager [count]="items.length" [index]="index" />
 <div tuiButtonGroup [style.background-color]="items[index]?.color" >
@@ -6254,7 +6264,7 @@ export class Example {}
 </div>
 <div tuiTitle>
 <div tuiSubtitle>Category</div>
-<div> Angular <tui-badge appearance="neutral" size="s" > Open Source </tui-badge>
+<div> Angular <span appearance="neutral" size="s" tuiBadge > Open Source </span>
 </div>
 </div>
 <button appearance="secondary" size="s" tuiIconButton type="button" [tuiChevron]="!collapsed()" (click)="collapsed.set(!collapsed())" > Expand </button>
@@ -6394,7 +6404,7 @@ export class Example {}
 <header tuiHeader>
 <h2 tuiTitle>Header</h2>
 <aside tuiAccessories>
-<tui-badge appearance="neutral" iconStart="@tui.heart" size="xl" > Like </tui-badge>
+<div appearance="neutral" iconStart="@tui.heart" size="xl" tuiBadge > Like </div>
 </aside>
 </header>
 <section>Replace me</section>
@@ -7201,16 +7211,16 @@ export default class Example {}
 **Template:**
 ```html
 <div appearance="neutral" tuiCardMedium >
-<tui-badge appearance="custom" class="badge" >
-<tui-icon icon="@tui.target" /> 10 % </tui-badge>
+<div appearance="custom" tuiBadge class="badge" >
+<tui-icon icon="@tui.target" /> 10 % </div>
 <h2 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h2>
 </div>
 <div appearance="neutral" tuiCardMedium >
 <h2 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h2>
-<tui-badge class="badge">
-<tui-icon icon="@tui.target" /> 10 % </tui-badge>
+<div tuiBadge class="badge" >
+<tui-icon icon="@tui.target" /> 10 % </div>
 </div>
 ```
 **TypeScript:**
@@ -7283,23 +7293,23 @@ export default class Example {
 <div tuiCardMedium tuiSurface class="poster" >
 <h2 tuiTitle> Poster <span tuiSubtitle>Cinema, concerts, theaters and sports up to 25%</span>
 </h2>
-<tui-badge class="badge">
-<tui-icon icon="@tui.target" /> 10% </tui-badge>
+<div tuiBadge class="badge" >
+<tui-icon icon="@tui.target" /> 10% </div>
 </div>
 <div tuiCardMedium tuiSurface class="fly" >
 <h2 tuiTitle>Flights</h2>
-<tui-badge class="badge">
-<tui-icon icon="@tui.target" /> 10% </tui-badge>
+<div tuiBadge class="badge" >
+<tui-icon icon="@tui.target" /> 10% </div>
 </div>
 <div tuiCardMedium tuiSurface class="google" >
 <h2 tuiTitle> Google <span tuiSubtitle>-2.7%</span>
 </h2>
-<tui-badge class="money">$3,605.2</tui-badge>
+<div tuiBadge class="money" > $3,605.2 </div>
 </div>
 <div tuiCardMedium tuiSurface class="microsoft" >
 <h2 tuiTitle> Microsoft <span tuiSubtitle>-12.44%</span>
 </h2>
-<tui-badge class="money">$1,095.3</tui-badge>
+<div tuiBadge class="money" > $1,095.3 </div>
 </div>
 ```
 **TypeScript:**
@@ -7937,7 +7947,7 @@ export default class Example {
 <div tuiSubtitle>Saving for a Benjamin Franklin portrait</div>
 </div>
 <div tuiTitle>
-<tui-badge appearance="positive" size="s" > +$30 </tui-badge>
+<div appearance="positive" size="s" tuiBadge > +$30 </div>
 <div tuiSubtitle>&nbsp;</div>
 </div>
 </div>
@@ -7952,8 +7962,8 @@ export default class Example {
 <div tuiAvatar>+2</div>
 </tui-avatar-stack>
 <div tuiTitle> Waterplea <div tuiSubtitle>
-<tui-badge appearance="neutral" size="s" >
-<tui-icon icon="@tui.lock" /> 100 ₽ </tui-badge> Music <tui-icon appearance="positive" iconStart="@tui.bell" size="s" tuiBadge />
+<div appearance="neutral" size="s" tuiBadge >
+<tui-icon icon="@tui.lock" /> 100 ₽ </div> Music <tui-icon appearance="positive" iconStart="@tui.bell" size="s" tuiBadge />
 </div>
 </div>
 <a href="https://waterplea.bandcamp.com" tuiLink > Buy </a>
@@ -8102,7 +8112,7 @@ export default class Example {
 <div tuiCell [style.white-space]="'nowrap'" >
 <div tuiFade tuiTitle > Alternatively you can use fade to hide extra text using nowrap CSS <div tuiSubtitle>Works the same for subtitle when fade directive is applied to the top</div>
 </div>
-<tui-badge>Works with the right side</tui-badge>
+<div tuiBadge>Works with the right side</div>
 </div>
 <div tuiCell [style.white-space]="'nowrap'" >
 <div tuiAvatar="@tui.smile" [round]="false" ></div>
@@ -8121,7 +8131,7 @@ export default class Example {
 <div tuiTitle>
 <span [style.color]="'var(--tui-text-positive)'">+$1000</span>
 <div tuiSubtitle>Bonus for tuiCell component</div>
-<tui-badge appearance="primary">Awesome!</tui-badge>
+<div appearance="primary" tuiBadge > Awesome! </div>
 </div>
 </div>
 <div tuiCell>
@@ -8129,7 +8139,7 @@ export default class Example {
 <div tuiTitle>
 <strong>Main account</strong>
 <div tuiSubtitle>USD</div>
-<tui-badge appearance="neutral">By default unless arrested</tui-badge>
+<div appearance="neutral" tuiBadge > By default unless arrested </div>
 </div>
 <div tuiAccessories tuiTitle [style.white-space]="'nowrap'" [style.width]="0" > $123 456 <div tuiSubtitle>Careful, content may overlap</div>
 </div>
@@ -8813,7 +8823,7 @@ export default class Example {}
 <span size="m" tuiChip > Button <button iconStart="@tui.x" size="s" tuiIconButton type="button" > Remove </button>
 </span> @for (size of sizes | slice: 1; track size) { <span tuiChip [size]="size" > Button <button iconStart="@tui.x" tuiIconButton type="button" > Remove </button>
 </span> } </section>
-<section> @for (size of sizes; track size) { <span tuiChip [size]="size" > Badge @if (size !== 'xxs') { <tui-badge appearance="primary" [size]="size === 'm' ? 'm' : 's'" > 1 </tui-badge> } <button iconStart="@tui.x" tuiIconButton type="button" > Remove </button>
+<section> @for (size of sizes; track size) { <span tuiChip [size]="size" > Badge @if (size !== 'xxs') { <div appearance="primary" tuiBadge [size]="size === 'm' ? 'm' : 's'" > 1 </div> } <button iconStart="@tui.x" tuiIconButton type="button" > Remove </button>
 </span> } </section>
 ```
 **TypeScript:**
@@ -11725,7 +11735,7 @@ export class Example {}
 <h2 tuiHeader="body-l">
 <div tuiTitle>
 <span tuiCaption>Caption・caption</span>
-<span> Drawer title <tui-badge>Label</tui-badge>
+<span> Drawer title <div tuiBadge>Label</div>
 </span>
 <span tuiSubtitle> In publishing and graphic design, Lorem ipsum is a placeholder text commonly used. </span>
 </div>
@@ -14741,7 +14751,7 @@ export default class Example {}
 <p tuiSubtitle>The power of dreams</p>
 </hgroup>
 <aside tuiAccessories>
-<tui-badge>Free tier</tui-badge>
+<div tuiBadge>Free tier</div>
 <a href="https://github.com/taiga-family/ng-polymorpheus" tuiLink > Link </a>
 </aside>
 </header>
@@ -23408,7 +23418,7 @@ export default class Page {
 ```html
 <tui-items-with-more size="m" tuiGroup [collapsed]="true" > @for (item of items; track item) { <label *tuiItem appearance="" tuiBlock="m" [style.border-radius]="'inherit'" > {{ item }} <input tuiBlock type="checkbox" [(ngModel)]="value[$index]" />
 </label> } <ng-template let-lastIndex tuiMore >
-<button appearance="outline-grayscale" size="m" tuiButton tuiDropdownAlign="end" tuiDropdownAuto type="button" class="item" [tuiDropdown]="dropdown" > More <tui-badge>{{ items.length - lastIndex - 1 }}</tui-badge>
+<button appearance="outline-grayscale" size="m" tuiButton tuiDropdownAlign="end" tuiDropdownAuto type="button" class="item" [tuiDropdown]="dropdown" > More <div tuiBadge>{{ items.length - lastIndex - 1 }}</div>
 </button>
 <ng-template #dropdown>
 <tui-data-list size="l"> @for (item of items; track item) { @if ($index > lastIndex) { <button tuiOption type="button" (click)="value[$index] = !value[$index]" > {{ item }} <tui-icon icon="@tui.check" class="tui-space_left-2" [class._hidden]="!value[$index]" />
@@ -26917,7 +26927,7 @@ export class Example {}
 <span tuiNavigationLogo>
 <tui-icon icon="@tui.home" />
 <span tuiFade>A very very long product name</span>
-<tui-badge>Test</tui-badge>
+<div tuiBadge>Test</div>
 </span>
 <span tuiNavigationSegments>
 <button appearance="secondary-grayscale" tuiButton type="button" > Link 1 </button>
@@ -26947,11 +26957,11 @@ export class Example {}
 <ng-container [ngTemplateOutlet]="hint" />
 <ng-template #hint>
 <span tuiFade>A very very long product name</span>
-<tui-badge appearance="accent">Alpha</tui-badge>
+<div appearance="accent" tuiBadge > Alpha </div>
 </ng-template>
 </button>
 </header>
-<button iconStart="@tui.search" tuiAsideItem type="button" > Search @if (expanded()) { <tui-badge appearance="accent">12</tui-badge> } </button>
+<button iconStart="@tui.search" tuiAsideItem type="button" > Search @if (expanded()) { <div appearance="accent" tuiBadge > 12 </div> } </button>
 <a iconStart="@tui.users" tuiAsideItem [routerLink]="routes.Navigation" > Groups </a>
 <tui-aside-group>
 <button automation-id="setting" iconStart="@tui.settings" tuiAsideItem tuiChevron type="button" > Settings <ng-template>
@@ -34387,7 +34397,7 @@ export class Example {}
 ```html
 <span tuiStatus="var(--tui-status-positive)">Success</span>
 <p>Status is automatically colored within some badge appearances</p>
-<tui-badge appearance="positive" tuiStatus > Success </tui-badge>
+<span appearance="positive" tuiBadge tuiStatus > Success </span>
 ```
 **TypeScript:**
 ```ts
@@ -34853,11 +34863,11 @@ export default class Example {}
 <button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/tickets.svg)'" [style.color]="'#d45d8c'" >
 <h3 class="heading">Tickets</h3>
 <div class="content">Concerts, theater, sports and movies</div>
-<tui-badge appearance="primary" size="s" class="badge" > 20% off </tui-badge>
+<div appearance="primary" size="s" tuiBadge class="badge" > 20% off </div>
 </button>
 <button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/gas.svg)'" [style.color]="'#7caeff'" >
 <h3 class="heading">Gas</h3>
-<tui-badge appearance="primary" size="s" class="badge" > +2000% </tui-badge>
+<div appearance="primary" size="s" tuiBadge class="badge" > +2000% </div>
 </button>
 <div tuiSurface class="restaurant" >
 <header tuiTheme="dark" class="header" >
@@ -36261,10 +36271,10 @@ export default class Example {
 <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
 </td>
 <td tuiTd>
-<tui-items-with-more> @for (chip of item.items; track chip) { <tui-badge *tuiItem [style.margin-inline-end.rem]="0.25" > {{ chip }} </tui-badge> } <ng-template let-number tuiMore >
+<tui-items-with-more> @for (chip of item.items; track chip) { <div *tuiItem tuiBadge [style.margin-inline-end.rem]="0.25" > {{ chip }} </div> } <ng-template let-number tuiMore >
 <button appearance="action-grayscale" tuiDropdownAlign="end" tuiDropdownAuto tuiLink type="button" [style.text-decoration-style]="'dashed'" [tuiDropdown]="dropdown" > + {{ item.items.length - number - 1 }} </button>
 <ng-template #dropdown>
-<div tuiItemGroup [style.padding]="'1rem 0.75rem 0.75rem 1rem'" > @for (chip of item.items; track chip) { @if ($index > number) { <tui-badge>{{ chip }}</tui-badge> } } </div>
+<div tuiItemGroup [style.padding]="'1rem 0.75rem 0.75rem 1rem'" > @for (chip of item.items; track chip) { @if ($index > number) { <div tuiBadge>{{ chip }}</div> } } </div>
 </ng-template>
 </ng-template>
 </tui-items-with-more>
@@ -44822,11 +44832,11 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-badge appearance="accent" size="l" class="badge tui-space_left-2" [tuiHint]="badgeHint" > Hover me <ng-template #badgeHint>
+<span appearance="accent" size="l" tuiBadge class="badge tui-space_left-2" [tuiHint]="badgeHint" > Hover me <ng-template #badgeHint>
 <a tuiHintAppearance="dark" [tuiHint]="linkHint" > Hover me again <ng-template #linkHint>Nested hint</ng-template>
 </a>
 </ng-template>
-</tui-badge>
+</span>
 ```
 **TypeScript:**
 ```ts
@@ -45826,9 +45836,9 @@ or
 ```html
 <p (tuiHoveredChange)="onHovered($event)"> Hover <span [class.hidden]="!hovered" (tuiPresent)="onCSS($event)" > I am a component hidden with CSS </span> @if (hovered) { <span (tuiPresent)="onIf($event)">I am a component hidden with *ngIf</span> } </p>
 <p>Counter of component appearance minus counter of its disappearance:</p>
-<p> CSS: <tui-badge>{{ counterCSS }}</tui-badge>
+<p> CSS: <span tuiBadge>{{ counterCSS }}</span>
 </p>
-<p> ngIf: <tui-badge>{{ counterIf }}</tui-badge>
+<p> ngIf: <span tuiBadge>{{ counterIf }}</span>
 </p>
 ```
 **TypeScript:**
@@ -46415,11 +46425,11 @@ export default class Example {
 </span>
 </button>
 <p>
-<tui-badge [style.background]="'var(--tui-status-positive)'" [tuiSensitive]="sensitive" > 12 000$ </tui-badge>
-<tui-badge appearance="primary" class="tui-space_left-2" >
+<span tuiBadge [style.background]="'var(--tui-status-positive)'" [tuiSensitive]="sensitive" > 12 000$ </span>
+<span appearance="primary" tuiBadge class="tui-space_left-2" >
 <span [tuiSensitive]="sensitive">12 000$</span>
-</tui-badge>
-<tui-badge appearance="accent" size="xl" class="tui-space_left-2" [tuiSensitive]="sensitive" > 12 000$ </tui-badge>
+</span>
+<span appearance="accent" size="xl" tuiBadge class="tui-space_left-2" [tuiSensitive]="sensitive" > 12 000$ </span>
 </p>
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="sensitive" /> Hide </label>
@@ -46804,7 +46814,7 @@ export class Example {}
 </p>
 <p>
 <span tuiChip [tuiSkeleton]="skeleton" > Chip </span>
-<tui-badge [tuiSkeleton]="skeleton">Dale</tui-badge>
+<span tuiBadge [tuiSkeleton]="skeleton" > Dale </span>
 </p>
 ```
 **TypeScript:**
