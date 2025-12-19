@@ -45,7 +45,7 @@
     <span tuiNavigationLogo>
         <tui-icon icon="@tui.home" />
         <span tuiFade>A very very long product name</span>
-        <tui-badge>Test</tui-badge>
+        <div tuiBadge>Test</div>
     </span>
     <span tuiNavigationSegments>
         <button
@@ -139,7 +139,12 @@
                 <ng-container [ngTemplateOutlet]="hint" />
                 <ng-template #hint>
                     <span tuiFade>A very very long product name</span>
-                    <tui-badge appearance="accent">Alpha</tui-badge>
+                    <div
+                        appearance="accent"
+                        tuiBadge
+                    >
+                        Alpha
+                    </div>
                 </ng-template>
             </button>
         </header>
@@ -151,7 +156,12 @@
             Search
 
             @if (expanded()) {
-                <tui-badge appearance="accent">12</tui-badge>
+                <div
+                    appearance="accent"
+                    tuiBadge
+                >
+                    12
+                </div>
             }
         </button>
         <a

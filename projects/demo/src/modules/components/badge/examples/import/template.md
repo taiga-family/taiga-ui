@@ -1,3 +1,8 @@
 ```html
-<tui-badge appearance="primary">{{ value }}</tui-badge>
+<span
+  tuiBadge
+  appearance="primary"
+>
+  {{ value }}
+</span>
 ```

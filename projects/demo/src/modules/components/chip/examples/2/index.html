@@ -118,12 +118,13 @@
             Badge
 
             @if (size !== 'xxs') {
-                <tui-badge
+                <div
                     appearance="primary"
+                    tuiBadge
                     [size]="size === 'm' ? 'm' : 's'"
                 >
                     1
-                </tui-badge>
+                </div>
             }
 
             <button
