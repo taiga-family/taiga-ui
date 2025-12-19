@@ -5,15 +5,16 @@
     (lastIndexChange)="lastIndex = $event"
 >
     @for (item of items; track item) {
-        <tui-chip
+        <span
             *tuiItem
             appearance="neutral"
             size="s"
+            tuiChip
             class="item"
             [class.item_visible]="$index <= lastIndex"
         >
             {{ item }} item
-        </tui-chip>
+        </span>
     }
 
     <ng-template

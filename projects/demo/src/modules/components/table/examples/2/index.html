@@ -70,13 +70,13 @@
                                 <tui-icon [icon]="item.title.icon" />
                                 {{ item.title.title }}
                                 @if (item.title.chip && item.title.subtitle) {
-                                    <tui-chip>{{ item.title.chip }}</tui-chip>
+                                    <span tuiChip>{{ item.title.chip }}</span>
                                 }
                             </span>
                             @if (!item.title.subtitle && item.title.chip) {
-                                <tui-chip>
+                                <span tuiChip>
                                     {{ item.title.chip }}
-                                </tui-chip>
+                                </span>
                             } @else {
                                 <span tuiSubtitle>
                                     {{ item.title.subtitle }}
