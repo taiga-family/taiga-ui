@@ -11,7 +11,8 @@ import {
 import {FormsModule} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
-import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -57,7 +58,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     private readonly inputs = viewChildren(TuiInputNumberDirective, {read: ElementRef});
     private readonly range = viewChild(TuiRange);
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly quantumTransformer = computed(
         () => new TuiQuantumValueTransformerBase(this.quantum()),
     );

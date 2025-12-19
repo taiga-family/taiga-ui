@@ -6,7 +6,7 @@ import {
     TuiDropdownSheet,
     TuiResponsiveDialog,
 } from '@taiga-ui/addon-mobile';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
@@ -163,7 +163,7 @@ describe('DropdownMobile', () => {
         cy.mount(TestDropdownMobile, {
             providers: [
                 {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
-                {provide: TUI_IS_MOBILE, useValue: true},
+                {provide: WA_IS_MOBILE, useValue: true},
             ],
         }).then(({fixture, component}) => {
             fixture.detectChanges();

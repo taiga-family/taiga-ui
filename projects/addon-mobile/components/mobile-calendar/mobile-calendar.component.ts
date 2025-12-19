@@ -36,7 +36,7 @@ import {
     tuiZonefreeScheduler,
 } from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {WA_IS_E2E, WA_IS_IOS} from '@ng-web-apis/platform';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
@@ -159,8 +159,8 @@ export class TuiMobileCalendar implements AfterViewInit {
     });
 
     protected initialized = false;
-    protected readonly isIOS = inject(TUI_IS_IOS);
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isIOS = inject(WA_IS_IOS);
+    protected readonly isE2E = inject(WA_IS_E2E);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly cancelWord = inject(TUI_CANCEL_WORD);

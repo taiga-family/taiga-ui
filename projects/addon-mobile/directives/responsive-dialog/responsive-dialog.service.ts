@@ -4,7 +4,7 @@ import {
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiDialogOptions, TuiDialogService} from '@taiga-ui/core/portals/dialog';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
@@ -19,7 +19,7 @@ export interface TuiResponsiveDialogOptions<I = undefined>
     providedIn: 'root',
 })
 export class TuiResponsiveDialogService {
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly dialogs = inject(TuiDialogService);
     private readonly sheets = inject(TuiSheetDialogService);
 

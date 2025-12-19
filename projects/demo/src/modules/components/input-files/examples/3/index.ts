@@ -2,7 +2,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 
@@ -13,7 +14,7 @@ import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 

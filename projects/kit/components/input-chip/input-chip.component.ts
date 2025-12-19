@@ -10,7 +10,7 @@ import {
     viewChild,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -67,7 +67,7 @@ export class TuiInputChipComponent<T> {
     );
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly mobile = inject(TUI_IS_MOBILE);
+    protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});

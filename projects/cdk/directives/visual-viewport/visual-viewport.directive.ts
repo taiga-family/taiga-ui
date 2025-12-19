@@ -1,7 +1,7 @@
 import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {ViewportService} from '@ng-web-apis/screen-orientation';
+import {WaViewportService} from '@ng-web-apis/screen-orientation';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -12,7 +12,7 @@ export class TuiVisualViewport {
     private readonly w = inject(WA_WINDOW);
     private readonly style = tuiInjectElement().style;
 
-    protected readonly $ = inject(ViewportService)
+    protected readonly $ = inject(WaViewportService)
         .pipe(takeUntilDestroyed())
         .subscribe(({offsetLeft, offsetTop, height, width, scale}) => {
             this.style.setProperty('--tui-viewport-x', tuiPx(offsetLeft));

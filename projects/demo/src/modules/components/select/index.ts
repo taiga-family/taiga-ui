@@ -8,7 +8,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
@@ -37,7 +38,7 @@ export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
 
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl<Country | null>({
         id: 'US',
         name: 'USA',

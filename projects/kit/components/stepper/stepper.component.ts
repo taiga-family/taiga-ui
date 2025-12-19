@@ -10,7 +10,7 @@ import {
     type OnChanges,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {type TuiOrientation} from '@taiga-ui/core/types';
@@ -24,7 +24,7 @@ import {TuiStep} from './step.component';
     `,
     styleUrl: './stepper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     host: {
         '[attr.data-orientation]': 'orientation()',
         '(keydown.arrowRight)': 'onHorizontal($event, 1)',
@@ -40,7 +40,7 @@ export class TuiStepperComponent implements OnChanges {
         {read: ElementRef},
     );
 
-    protected readonly $ = inject(ResizeObserverService, {self: true})
+    protected readonly $ = inject(WaResizeObserverService, {self: true})
         .pipe(takeUntilDestroyed())
         .subscribe(() => this.scrollIntoView(this.activeItemIndex()));
 

@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_ANDROID} from '@taiga-ui/cdk';
+import {WA_IS_ANDROID} from '@ng-web-apis/platform';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
@@ -12,5 +12,5 @@ import {TuiLink} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly isAndroid = inject(WA_IS_ANDROID);
 }

@@ -29,7 +29,8 @@ import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
-import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
@@ -92,7 +93,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     protected readonly list = viewChildren(TuiOption, {read: ElementRef});
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly ios = inject(TUI_IS_IOS);
+    protected readonly ios = inject(WA_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly label = inject(TUI_INTERNATIONAL_SEARCH);

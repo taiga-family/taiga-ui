@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {computed, Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, race, switchMap, take, tap} from 'rxjs';
 
@@ -26,7 +26,7 @@ function findIndex(touches: TouchList, id = 0): number {
     selector: '[tuiTouchable]',
 })
 export class TuiTouchable {
-    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isIOS = inject(WA_IS_IOS);
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
 

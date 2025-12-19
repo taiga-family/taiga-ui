@@ -2,7 +2,7 @@ import {inject, Injectable, NgZone, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, filter, map, merge, Observable, of} from 'rxjs';
 
@@ -36,7 +36,7 @@ export class TuiHoveredService extends Observable<boolean> {
 
 export function tuiHovered(): Signal<boolean> {
     return toSignal(
-        inject(TUI_IS_MOBILE) ? of(false) : inject(TuiHoveredService).pipe(tuiWatch()),
+        inject(WA_IS_MOBILE) ? of(false) : inject(TuiHoveredService).pipe(tuiWatch()),
         {
             initialValue: false,
         },

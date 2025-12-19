@@ -7,7 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';
@@ -24,7 +24,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider(() => ({
-            appearance: inject(TUI_IS_MOBILE) ? 'action' : 'glass',
+            appearance: inject(WA_IS_MOBILE) ? 'action' : 'glass',
             size: 's',
         })),
     ],

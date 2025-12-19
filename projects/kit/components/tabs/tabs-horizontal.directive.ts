@@ -1,7 +1,7 @@
 import {type AfterViewChecked, Directive, effect, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -14,7 +14,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
 @Directive({
     selector: 'tui-tabs:not([vertical])',
     providers: [
-        MutationObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
@@ -45,7 +45,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly tabs = inject(TuiTabsDirective);
 
-    protected readonly sub = inject(MutationObserverService, {self: true})
+    protected readonly sub = inject(WaMutationObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 

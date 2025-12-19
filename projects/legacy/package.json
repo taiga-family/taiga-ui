@@ -17,7 +17,7 @@
         "@angular/core": ">=19.0.0",
         "@taiga-ui/cdk": "^4.52.0",
         "@taiga-ui/core": "^4.52.0",
-        "@taiga-ui/polymorpheus": "^4.9.0",
+        "@taiga-ui/polymorpheus": "^5.0.0",
         "tslib": ">=2.8.1"
     }
 }

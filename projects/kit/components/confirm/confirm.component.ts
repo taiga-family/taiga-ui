@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, InjectionToken} from '@angular/core';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {type TuiDialogContext} from '@taiga-ui/core/portals/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
@@ -25,7 +25,7 @@ export interface TuiConfirmData {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiConfirm {
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly words = inject(TUI_CONFIRM_WORDS);
 
     public readonly context =

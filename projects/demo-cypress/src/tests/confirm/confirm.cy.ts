@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_CONFIRM_WORDS, TuiConfirm} from '@taiga-ui/kit';
 import {
     injectContext,
@@ -34,7 +34,7 @@ describe('TuiConfirm', () => {
                         id: 'context-id',
                     },
                 },
-                {provide: TUI_IS_MOBILE, useValue: false},
+                {provide: WA_IS_MOBILE, useValue: false},
                 {provide: TUI_CONFIRM_WORDS, useValue: () => ({yes: 'Yes', no: 'No'})},
             ],
         });

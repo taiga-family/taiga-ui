@@ -1,6 +1,6 @@
 import {Directive, inject, input} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';
@@ -24,7 +24,7 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
     exportAs: 'tuiHintHover',
 })
 export class TuiHintHover extends TuiDriver {
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement();
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);

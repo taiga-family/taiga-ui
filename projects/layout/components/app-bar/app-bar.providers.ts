@@ -1,14 +1,14 @@
 import {type Provider} from '@angular/core';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 
 export const TUI_APP_BAR_PROVIDERS: Provider[] = [
-    ResizeObserverService,
-    MutationObserverService,
+    WaResizeObserverService,
+    WaMutationObserverService,
     {
         provide: WA_MUTATION_OBSERVER_INIT,
         useValue: {

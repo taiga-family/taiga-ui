@@ -8,7 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -61,7 +61,7 @@ class Styles {}
     },
 })
 export class TuiInputSliderDirective {
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>(
         (x) => x instanceof TuiSliderComponent,

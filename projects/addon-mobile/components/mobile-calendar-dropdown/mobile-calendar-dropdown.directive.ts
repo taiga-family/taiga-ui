@@ -1,6 +1,6 @@
 import {contentChild, Directive, inject} from '@angular/core';
 import {type TuiDay, type TuiDayRange, type TuiTime} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/portals/dropdown';
 import {
@@ -18,7 +18,7 @@ import {TuiMobileCalendarDropdownComponent} from './mobile-calendar-dropdown.com
         {
             provide: TUI_DROPDOWN_COMPONENT,
             useFactory: () =>
-                inject(TUI_IS_MOBILE)
+                inject(WA_IS_MOBILE)
                     ? TuiMobileCalendarDropdownComponent
                     : inject(TUI_DROPDOWN_COMPONENT, {skipSelf: true}),
         },

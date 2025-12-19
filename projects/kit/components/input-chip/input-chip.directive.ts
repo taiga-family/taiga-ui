@@ -2,7 +2,8 @@ import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -49,7 +50,7 @@ export class TuiInputChipDirective<T>
     implements TuiTextfieldAccessor<T[]>
 {
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
-    private readonly mobile = inject(TUI_IS_MOBILE);
+    private readonly mobile = inject(WA_IS_MOBILE);
     private readonly dropdown = inject(TuiDropdownDirective);
 
     protected readonly textfield = inject(TuiTextfieldMultiComponent);

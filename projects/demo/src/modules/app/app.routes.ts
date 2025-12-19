@@ -1008,11 +1008,6 @@ export const ROUTES: Routes = [
         title: 'DOM',
     }),
     route({
-        path: DemoRoute.Browser,
-        loadComponent: async () => import('../components/utils/browser'),
-        title: 'Browser',
-    }),
-    route({
         path: DemoRoute.Miscellaneous,
         loadComponent: async () => import('../components/utils/miscellaneous'),
         title: 'Miscellaneous',

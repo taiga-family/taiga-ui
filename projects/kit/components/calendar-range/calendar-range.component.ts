@@ -19,7 +19,7 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -66,7 +66,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly otherDateText = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
-    protected readonly mobile = inject(TUI_IS_MOBILE);
+    protected readonly mobile = inject(WA_IS_MOBILE);
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;

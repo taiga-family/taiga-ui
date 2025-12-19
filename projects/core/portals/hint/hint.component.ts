@@ -10,7 +10,7 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -76,7 +76,7 @@ export class TuiHintComponent {
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     protected readonly content =
         this.hint.component.component === TuiHintUnstyledComponent

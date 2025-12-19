@@ -10,7 +10,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TUI_SCROLLBAR_OPTIONS,
@@ -53,7 +53,7 @@ export class TuiRoot {
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly scrollbars =
-        !inject(TUI_IS_MOBILE) &&
+        !inject(WA_IS_MOBILE) &&
         !this.child &&
         inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
         inject(TUI_OPTIONS).scrollbars !== 'native';

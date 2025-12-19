@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_IOS} from '@taiga-ui/cdk';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiInputPhone} from '@taiga-ui/kit';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiInputPhone} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly isIos = inject(TUI_IS_IOS);
+    protected readonly isIos = inject(WA_IS_IOS);
 
     public value = '+71234567890';
 

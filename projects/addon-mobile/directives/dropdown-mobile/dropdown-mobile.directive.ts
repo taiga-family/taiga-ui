@@ -1,5 +1,5 @@
 import {Directive, inject} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/portals/dropdown';
 
@@ -11,7 +11,7 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
         {
             provide: TUI_DROPDOWN_COMPONENT,
             useFactory: () =>
-                inject(TUI_IS_MOBILE)
+                inject(WA_IS_MOBILE)
                     ? TuiDropdownMobileComponent
                     : inject(TUI_DROPDOWN_COMPONENT, {skipSelf: true}),
         },
@@ -22,7 +22,7 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
     },
 })
 export class TuiDropdownMobile {
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
 
     protected onMouseDown(event: MouseEvent): void {
         if (
