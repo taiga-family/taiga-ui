@@ -8745,13 +8745,18 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-chip appearance="primary">{{ value }}</tui-chip>
+<span
+  tuiChip
+  appearance="primary"
+>
+  {{ value }}
+</span>
 ```
 
 ### Example
 
 ```html
-<tui-chip [appearance]="appearance.appearance" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [size]="size" > Chip </tui-chip>
+<span tuiChip [appearance]="appearance.appearance" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [size]="size" > Chip </span>
 ```
 
 ### API
@@ -8766,15 +8771,15 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-chip>Default appearance is Neutral</tui-chip>
-<tui-chip appearance="primary">Primary</tui-chip>
-<tui-chip appearance="accent">Accent</tui-chip>
-<tui-chip appearance="positive">Positive</tui-chip>
-<tui-chip appearance="negative">Negative</tui-chip>
-<tui-chip appearance="warning">Warning</tui-chip>
-<tui-chip appearance="info">Info</tui-chip>
-<tui-chip appearance="outline">Outline</tui-chip>
-<tui-chip appearance="floating">Floating</tui-chip>
+<span tuiChip>Default appearance is Neutral</span>
+<span appearance="primary" tuiChip > Primary </span>
+<span appearance="accent" tuiChip > Accent </span>
+<span appearance="positive" tuiChip > Positive </span>
+<span appearance="negative" tuiChip > Negative </span>
+<span appearance="warning" tuiChip > Warning </span>
+<span appearance="info" tuiChip > Info </span>
+<span appearance="outline" tuiChip > Outline </span>
+<span appearance="floating" tuiChip > Floating </span>
 ```
 **TypeScript:**
 ```ts
@@ -8797,19 +8802,19 @@ export default class Example {}
 
 **Template:**
 ```html
-<section> @for (size of sizes; track size) { <tui-chip [size]="size" [style.border-radius.rem]="5" > Text </tui-chip> } </section>
-<section> @for (size of sizes; track size) { <tui-chip iconStart="@tui.bell" [size]="size" > Single icon </tui-chip> } </section>
-<section> @for (size of sizes; track size) { <tui-chip iconEnd="@tui.circle-help" iconStart="@tui.bell" [size]="size" [style.border-radius.rem]="5" > Duo icon </tui-chip> } </section>
-<section> @for (size of sizes; track size) { <tui-chip [size]="size"> @if (size === 'm' || size === 's') { <img alt="Avatar" src="assets/images/avatar.jpg" [style.border-radius.rem]="size === 'm' ? 0.25 : 0.5" /> } Image </tui-chip> } </section>
-<section> @for (size of sizes; track size) { <tui-chip [size]="size" [style.border-radius.rem]="5" > @if (size === 'm' || size === 's') { <div tuiAvatar="@tui.user" [round]="true" >
+<section> @for (size of sizes; track size) { <span tuiChip [size]="size" [style.border-radius.rem]="5" > Text </span> } </section>
+<section> @for (size of sizes; track size) { <span iconStart="@tui.bell" tuiChip [size]="size" > Single icon </span> } </section>
+<section> @for (size of sizes; track size) { <span iconEnd="@tui.circle-help" iconStart="@tui.bell" tuiChip [size]="size" [style.border-radius.rem]="5" > Duo icon </span> } </section>
+<section> @for (size of sizes; track size) { <span tuiChip [size]="size" > @if (size === 'm' || size === 's') { <img alt="Avatar" src="assets/images/avatar.jpg" [style.border-radius.rem]="size === 'm' ? 0.25 : 0.5" /> } Image </span> } </section>
+<section> @for (size of sizes; track size) { <span tuiChip [size]="size" [style.border-radius.rem]="5" > @if (size === 'm' || size === 's') { <div tuiAvatar="@tui.user" [round]="true" >
 <img alt="" src="assets/images/avatar.jpg" />
-</div> } Avatar </tui-chip> } </section>
+</div> } Avatar </span> } </section>
 <section>
-<tui-chip size="m"> Button <button iconStart="@tui.x" size="s" tuiIconButton type="button" > Remove </button>
-</tui-chip> @for (size of sizes | slice: 1; track size) { <tui-chip [size]="size"> Button <button iconStart="@tui.x" tuiIconButton type="button" > Remove </button>
-</tui-chip> } </section>
-<section> @for (size of sizes; track size) { <tui-chip [size]="size"> Badge @if (size !== 'xxs') { <tui-badge appearance="primary" [size]="size === 'm' ? 'm' : 's'" > 1 </tui-badge> } <button iconStart="@tui.x" tuiIconButton type="button" > Remove </button>
-</tui-chip> } </section>
+<span size="m" tuiChip > Button <button iconStart="@tui.x" size="s" tuiIconButton type="button" > Remove </button>
+</span> @for (size of sizes | slice: 1; track size) { <span tuiChip [size]="size" > Button <button iconStart="@tui.x" tuiIconButton type="button" > Remove </button>
+</span> } </section>
+<section> @for (size of sizes; track size) { <span tuiChip [size]="size" > Badge @if (size !== 'xxs') { <tui-badge appearance="primary" [size]="size === 'm' ? 'm' : 's'" > 1 </tui-badge> } <button iconStart="@tui.x" tuiIconButton type="button" > Remove </button>
+</span> } </section>
 ```
 **TypeScript:**
 ```ts
@@ -8850,11 +8855,11 @@ export default class Example {
 <input hidden type="checkbox" [(ngModel)]="checked[$index]" /> Label {{ $index + 1 }} </label> } </section>
 <h3>Button</h3>
 <section> @for (_ of '-'.repeat(3); track $index) { <button tuiChip type="button" (click)="onChip($index)" > Button {{ $index + 1 }} </button> } </section>
-<section> @for (_ of '-'.repeat(3); track $index) { <tui-chip> Close button {{ $index + 1 }} <button iconStart="@tui.x" tuiIconButton type="button" (click.stop)="onX($index)" > Remove </button>
-</tui-chip> } </section>
+<section> @for (_ of '-'.repeat(3); track $index) { <span tuiChip> Close button {{ $index + 1 }} <button iconStart="@tui.x" tuiIconButton type="button" (click.stop)="onX($index)" > Remove </button>
+</span> } </section>
 <h3>Input</h3>
-<section> @for (_ of '-'.repeat(values.length); track $index) { <tui-chip appearance="" [style.color]="'transparent'" > {{ values[$index] }} <input tuiChip [(ngModel)]="values[$index]" />
-</tui-chip> } </section>
+<section> @for (_ of '-'.repeat(values.length); track $index) { <span appearance="" tuiChip [style.color]="'transparent'" > {{ values[$index] }} <input tuiChip [(ngModel)]="values[$index]" />
+</span> } </section>
 ```
 **TypeScript:**
 ```ts
@@ -8894,20 +8899,20 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-chip appearance="primary" class="fade" >
+<span appearance="primary" tuiChip class="fade" >
 <div tuiFade>Very long value in chip</div>
 <div>{{ 123000 | tuiAmount: 'RUB' }}</div>
-</tui-chip>
-<tui-chip appearance="accent" iconStart="@tui.box" >
+</span>
+<span appearance="accent" iconStart="@tui.box" tuiChip >
 <div class="ellipsis">Very long value in chip</div>
-</tui-chip>
+</span>
 <tui-badged-content>
 <tui-badge-notification size="xs" tuiSlot="top" />
-<tui-chip appearance="secondary" iconStart="@tui.bell" > Notifications </tui-chip>
+<span appearance="secondary" iconStart="@tui.bell" tuiChip > Notifications </span>
 </tui-badged-content>
-<tui-chip appearance="custom" iconEnd="@tui.thumbs-up" > Customized chip </tui-chip>
-<tui-chip [appearance]="selected ? 'primary' : 'neutral'"> Toggle chip <button iconStart="@tui.plus" tuiIconButton type="button" class="toggle" [style.transform]="selected ? 'rotate(45deg)' : 'rotate(0)'" (click)="selected = !selected" > Toggle </button>
-</tui-chip>
+<span appearance="custom" iconEnd="@tui.thumbs-up" tuiChip > Customized chip </span>
+<span tuiChip [appearance]="selected ? 'primary' : 'neutral'" > Toggle chip <button iconStart="@tui.plus" tuiIconButton type="button" class="toggle" [style.transform]="selected ? 'rotate(45deg)' : 'rotate(0)'" (click)="selected = !selected" > Toggle </button>
+</span>
 ```
 **TypeScript:**
 ```ts
@@ -8941,7 +8946,7 @@ export default class Example {
 
 **Template:**
 ```html
-@for (chip of chips; track chip) { <tui-chip appearance="custom" [style.background-color]="chip | tuiAutoColor" > {{ chip }} </tui-chip> }
+@for (chip of chips; track chip) { <span appearance="custom" tuiChip [style.background-color]="chip | tuiAutoColor" > {{ chip }} </span> }
 ```
 **TypeScript:**
 ```ts
@@ -8987,25 +8992,25 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-chip appearance="accent" iconStart="@tui.shopping-cart" >
+<span appearance="accent" iconStart="@tui.shopping-cart" tuiChip >
 <div tuiFade>Supermarkets</div>
 <div tuiFade>{{ 9000 | tuiAmount: 'USD' }}</div>
-</tui-chip>
-<tui-chip appearance="accent">
+</span>
+<span appearance="accent" tuiChip >
 <span tuiAvatar="@tui.user">
 <img alt="" src="assets/images/avatar.jpg" />
 </span>
 <div tuiFade>AI</div>
 <div tuiFade>{{ 9870043000 | tuiAmount: 'USD' }}</div>
-</tui-chip>
-<tui-chip appearance="accent" iconEnd="@tui.shower-head" >
+</span>
+<span appearance="accent" iconEnd="@tui.shower-head" tuiChip >
 <div tuiFade>Long category name</div>
-</tui-chip>
+</span>
 <p>Use CSS to set a custom priority for the fade:</p>
-<tui-chip appearance="primary" class="custom" >
+<span appearance="primary" tuiChip class="custom" >
 <div tuiFade>Miscellaneous goods</div>
 <div tuiFade>{{ 105000 | tuiAmount: 'USD' }}</div>
-</tui-chip>
+</span>
 ```
 **TypeScript:**
 ```ts
@@ -23045,7 +23050,12 @@ export class Example {}
 
 ```html
 <div tuiItemGroup>
-  <tui-chip appearance="primary">{{ value }}</tui-chip>
+  <span
+    tuiChip
+    appearance="primary"
+  >
+    {{ value }}
+  </span>
 </div>
 ```
 
@@ -23069,7 +23079,7 @@ export class Example {}
 
 **Template:**
 ```html
-<div tuiItemGroup> @for (chip of chips; track chip) { <tui-chip>{{ chip }}</tui-chip> } </div>
+<div tuiItemGroup> @for (chip of chips; track chip) { <span tuiChip>{{ chip }}</span> } </div>
 ```
 **TypeScript:**
 ```ts
@@ -23342,8 +23352,8 @@ export class Example {}
 ### Example
 
 ```html
-<tui-items-with-more [itemsLimit]="itemsLimit" [linesLimit]="linesLimit" [required]="required" [side]="side" > @for (item of items; track item) { <tui-chip *tuiItem class="tui-space_right-2 tui-space_vertical-1" > {{ item }} </tui-chip> } <span *tuiMore class="tui-space_right-2 tui-space_vertical-1" >
-<tui-chip appearance="secondary">and now!</tui-chip>
+<tui-items-with-more [itemsLimit]="itemsLimit" [linesLimit]="linesLimit" [required]="required" [side]="side" > @for (item of items; track item) { <span *tuiItem tuiChip class="tui-space_right-2 tui-space_vertical-1" > {{ item }} </span> } <span *tuiMore class="tui-space_right-2 tui-space_vertical-1" >
+<span appearance="secondary" tuiChip > and now! </span>
 </span>
 </tui-items-with-more>
 ```
@@ -23363,7 +23373,7 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-items-with-more [required]="required"> @for (item of items; track item) { <tui-chip *tuiItem appearance="neutral" size="s" class="tui-space_right-1" > {{ item }} </tui-chip> } <ng-template let-index tuiMore > and {{ getRemaining(index) }} more </ng-template>
+<tui-items-with-more [required]="required"> @for (item of items; track item) { <span *tuiItem appearance="neutral" size="s" tuiChip class="tui-space_right-1" > {{ item }} </span> } <ng-template let-index tuiMore > and {{ getRemaining(index) }} more </ng-template>
 </tui-items-with-more>
 ```
 **TypeScript:**
@@ -23478,7 +23488,7 @@ export default class Page {
 
 **Template:**
 ```html
-<tui-items-with-more class="container" [class.container_expanded]="linesLimit === 100" [linesLimit]="linesLimit" (lastIndexChange)="lastIndex = $event" > @for (item of items; track item) { <tui-chip *tuiItem appearance="neutral" size="s" class="item" [class.item_visible]="$index <= lastIndex" > {{ item }} item </tui-chip> } <ng-template let-index tuiMore >
+<tui-items-with-more class="container" [class.container_expanded]="linesLimit === 100" [linesLimit]="linesLimit" (lastIndexChange)="lastIndex = $event" > @for (item of items; track item) { <span *tuiItem appearance="neutral" size="s" tuiChip class="item" [class.item_visible]="$index <= lastIndex" > {{ item }} item </span> } <ng-template let-index tuiMore >
 <button appearance="neutral" iconEnd="@tui.chevron-down" size="s" tuiChip type="button" class="more" (click)="linesLimit = 100" > More {{ getRemaining(index) }} </button>
 </ng-template>
 </tui-items-with-more>
@@ -24751,7 +24761,7 @@ export class Example {}
 <div class="island">
 <tui-line-clamp [content]="content" />
 <ng-template #content>
-<tui-chip appearance="negative" size="xxs" > DRAFT </tui-chip> Davis, Julia </ng-template>
+<span appearance="negative" size="xxs" tuiChip > DRAFT </span> Davis, Julia </ng-template>
 </div> @if (value$ | async; as value) { <div class="wrapper">
 <div class="result">
 <div class="content">
@@ -35930,7 +35940,7 @@ export default class Example {
 <td *tuiCell="'action'" tuiTd ></td>
 <td *tuiCell="'firstName'" tuiTd >
 <div>
-<tui-chip size="s" [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" > {{ item.firstName }} </tui-chip>
+<span size="s" tuiChip [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" > {{ item.firstName }} </span>
 </div>
 </td>
 <td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
@@ -35969,7 +35979,7 @@ export default class Example {
 <tr>
 <td [colSpan]="columns.length">
 <tui-expand [expanded]="customOpen">
-<div class="chips"> @for (item of customContentData; track item) { <tui-chip size="s" [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`" > {{ item.firstName }} {{ item.lastName }} </tui-chip> } </div>
+<div class="chips"> @for (item of customContentData; track item) { <span size="s" tuiChip [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`" > {{ item.firstName }} {{ item.lastName }} </span> } </div>
 </tui-expand>
 </td>
 </tr>
@@ -36237,7 +36247,7 @@ export default class Example {
 <div [tuiCell]="size">
 <span tuiTitle>
 <span tuiStatus>
-<tui-icon [icon]="item.title.icon" /> {{ item.title.title }} @if (item.title.chip && item.title.subtitle) { <tui-chip>{{ item.title.chip }}</tui-chip> } </span> @if (!item.title.subtitle && item.title.chip) { <tui-chip> {{ item.title.chip }} </tui-chip> } @else { <span tuiSubtitle> {{ item.title.subtitle }} </span> } </span>
+<tui-icon [icon]="item.title.icon" /> {{ item.title.title }} @if (item.title.chip && item.title.subtitle) { <span tuiChip>{{ item.title.chip }}</span> } </span> @if (!item.title.subtitle && item.title.chip) { <span tuiChip> {{ item.title.chip }} </span> } @else { <span tuiSubtitle> {{ item.title.subtitle }} </span> } </span>
 </div>
 </td>
 <td tuiTd>
@@ -46793,7 +46803,7 @@ export class Example {}
 <button appearance="secondary" tuiButton type="button" [tuiSkeleton]="skeleton" > Cool </button>
 </p>
 <p>
-<tui-chip [tuiSkeleton]="skeleton">Chip</tui-chip>
+<span tuiChip [tuiSkeleton]="skeleton" > Chip </span>
 <tui-badge [tuiSkeleton]="skeleton">Dale</tui-badge>
 </p>
 ```
