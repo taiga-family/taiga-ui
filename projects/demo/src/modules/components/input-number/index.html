@@ -8,14 +8,14 @@
         is a form field to provide numerical input.
 
         <tui-doc-example
-            id="form-control-value"
-            heading="Form control value"
+            id="number-type-control-value"
+            heading="Number as form control value"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-            [description]="formControlDescription"
+            [description]="numberFormControlDescription"
         >
-            <ng-template #formControlDescription>
-                Form control value is
+            <ng-template #numberFormControlDescription>
+                By default, form control value is
                 <code>number</code>
                 or
                 <code>null</code>
@@ -24,10 +24,36 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="texfield-based"
-            heading="Textfield-based"
+            id="bigint-type-control-value"
+            heading="BigInt as form control value"
             [component]="2 | tuiComponent"
             [content]="2 | tuiExample"
+            [description]="bigintFormControlDescription"
+        >
+            <ng-template #bigintFormControlDescription>
+                Form control value type can be changed to
+                <code>bigint</code>
+                .
+
+                <p>
+                    Just put
+                    <code>bigint</code>
+                    attribute and set new values for
+                    <code>min</code>
+                    ,
+                    <code>max</code>
+                    and
+                    <code>precision</code>
+                    properties.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="texfield-based"
+            heading="Textfield-based"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
             [description]="textfieldBasedDescription"
         >
             <ng-template #textfieldBasedDescription>
@@ -57,8 +83,8 @@
         <tui-doc-example
             id="localization"
             heading="Localization"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
             [description]="numberFormatDescription"
         >
             <ng-template #numberFormatDescription>
@@ -76,8 +102,8 @@
         <tui-doc-example
             id="affixes"
             heading="Affixes"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
             [description]="affixesDescription"
         >
             <ng-template #affixesDescription>
@@ -102,8 +128,8 @@
         <tui-doc-example
             id="step"
             heading="Step"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
             [description]="stepDescription"
         >
             <ng-template #stepDescription>
@@ -121,15 +147,15 @@
         <tui-doc-example
             id="custom-step-buttons"
             heading="Custom step buttons"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
         />
 
         <tui-doc-example
             id="fluid-typography"
             heading="Fluid typography"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
             [description]="fluidTypographyDescription"
         >
             <ng-template #fluidTypographyDescription>
@@ -148,8 +174,8 @@
         <tui-doc-example
             id="value-transformer"
             heading="Value transformer"
-            [component]="8 | tuiComponent"
-            [content]="8 | tuiExample"
+            [component]="9 | tuiComponent"
+            [content]="9 | tuiExample"
             [description]="transformerDescription"
         >
             <ng-template #transformerDescription>
@@ -170,8 +196,8 @@
         <tui-doc-example
             id="quantum"
             heading="Quantum"
-            [component]="9 | tuiComponent"
-            [content]="9 | tuiExample"
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample"
             [description]="quantumDescription"
         >
             <ng-template #quantumDescription>
@@ -199,6 +225,35 @@
                     ,
                     <code>1</code>
                     .
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large-int-decimal-parts"
+            heading="Large integer + large decimal parts"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample: 'html,ts' : {'transformer.ts': bigIntWithDecimalTransformer}"
+            [description]="largeIntDecimalPartsDescription"
+        >
+            <ng-template #largeIntDecimalPartsDescription>
+                JavaScript’s built‑in
+                <code>number</code>
+                type loses precision when a value contains too many digits in either the integer part, the decimal part,
+                or both.
+
+                <p>
+                    The built‑in
+                    <code>bigint</code>
+                    type avoids this issue but supports only integers.
+                </p>
+
+                <p>
+                    If you need to preserve all extremely large digits of both parts, you can override the built‑in
+                    <code>TuiValueTransformer</code>
+                    and store the number as an
+                    <code>&#123;significand: bigint; exp: number&#125;</code>
+                    instead.
                 </p>
             </ng-template>
         </tui-doc-example>
@@ -246,7 +301,7 @@
                 <tr
                     name="[min]"
                     tuiDocAPIItem
-                    type="number | null"
+                    type="number | bigint | null"
                     [items]="minVariants"
                     [(value)]="min"
                 >
@@ -258,7 +313,7 @@
                 <tr
                     name="[max]"
                     tuiDocAPIItem
-                    type="number | null"
+                    type="number | bigint | null"
                     [items]="maxVariants"
                     [(value)]="max"
                 >
@@ -270,7 +325,7 @@
                 <tr
                     name="[step]"
                     tuiDocAPIItem
-                    type="number"
+                    type="number | bigint"
                     [(value)]="step"
                 >
                     Step to increase/decrease value with keyboard and buttons on the side
@@ -301,7 +356,7 @@
                 <tr
                     name="[quantum]"
                     tuiDocAPIItem
-                    type="number"
+                    type="number | bigint"
                     [(value)]="quantum"
                 >
                     Minimum indivisible value

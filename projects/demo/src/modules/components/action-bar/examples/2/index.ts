@@ -1,10 +1,8 @@
-import {Component, inject, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Component, computed, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, TuiButton, TuiPopup} from '@taiga-ui/core';
+import {TUI_BREAKPOINT, TuiButton, TuiPopup} from '@taiga-ui/core';
 import {TuiActionBar} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 @Component({
     imports: [TuiActionBar, TuiButton, TuiPopup],
@@ -13,9 +11,8 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected open = signal(false);
 
-    protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
-    );
+    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 }

@@ -39,6 +39,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
     );
 
     public readonly options = computed(() => this.datalist()?.options() ?? []);
+
     public readonly items = input<readonly K[] | null>([]);
     public readonly emptyContent = input<PolymorpheusContent>();
     public readonly size = input(tuiInjectDataListSize());

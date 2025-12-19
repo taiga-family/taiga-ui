@@ -1,12 +1,7 @@
 import {NgTemplateOutlet} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
 import {TuiBar} from '@taiga-ui/addon-charts/components/bar';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
-
-const PERCENT = 100;
-const EMPTY_ARRAY: readonly number[] = [];
-const FILLER_ARRAY: readonly number[] = [1];
 
 @Component({
     selector: 'tui-bar-set',
@@ -16,35 +11,25 @@ const FILLER_ARRAY: readonly number[] = [1];
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarSet {
-    @Input()
-    public value: readonly number[] = [];
+    private readonly largest = computed(() =>
+        this.computedValue().some((a) => a > 0)
+            ? this.computedValue().reduce((a, b) => (a > b ? a : b), 0)
+            : Math.abs(this.computedValue().reduce((a, b) => (a < b ? a : b), 0)),
+    );
 
-    @Input()
-    public size: TuiSizeL | TuiSizeS | null = 'm';
+    public readonly value = input<readonly number[]>([]);
+    public readonly size = input<TuiSizeL | TuiSizeS | null>('m');
+    public readonly collapsed = input(false);
 
-    @Input()
-    public collapsed = false;
+    protected readonly computedValue = computed<readonly number[]>(() =>
+        this.collapsed() ? [1] : this.value(),
+    );
 
-    protected get computedValue(): readonly number[] {
-        return this.collapsed ? FILLER_ARRAY : this.value;
-    }
-
-    protected get computedSegments(): readonly number[] {
-        return this.collapsed ? this.value : EMPTY_ARRAY;
-    }
-
-    protected get computedSize(): TuiSizeL | TuiSizeS {
-        return this.size || 'm';
-    }
+    protected readonly computedSegments = computed<readonly number[]>(() =>
+        this.collapsed() ? this.value() : [],
+    );
 
     protected getHeight(value: number): number {
-        return Math.abs((PERCENT * value) / this.getLargest(this.computedValue));
-    }
-
-    @tuiPure
-    private getLargest(value: readonly number[]): number {
-        return value.some((a) => a > 0)
-            ? value.reduce((a, b) => (a > b ? a : b), 0)
-            : Math.abs(value.reduce((a, b) => (a < b ? a : b), 0));
+        return Math.abs((100 * value) / this.largest());
     }
 }

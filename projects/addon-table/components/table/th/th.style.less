@@ -6,7 +6,7 @@
     position: relative;
     top: 0;
     block-size: var(--tui-height-m);
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-body-s);
     text-align: start;
     font-weight: bold;
     color: var(--tui-text-secondary);
@@ -32,7 +32,7 @@
     &._sticky,
     :host-context(._stuck) &._sticky {
         position: sticky;
-        z-index: 30;
+        z-index: 3000;
 
         &:first-child {
             left: 0;
@@ -54,7 +54,7 @@
     }
 
     :host-context(._stuck) & {
-        z-index: 20;
+        z-index: 2000;
     }
 }
 
@@ -64,14 +64,14 @@
 
 :host-context(table[data-size='l']) {
     block-size: var(--tui-height-l);
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     font-weight: bold;
     padding: 0 1rem;
 }
 
 :host-context(table[data-size='s']) {
     block-size: var(--tui-height-s);
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-body-s);
     font-weight: bold;
     padding: 0 0.5rem;
 }

@@ -1,5 +1,5 @@
 import {Directive, ElementRef} from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Directive({
     selector: '[tuiElement]',

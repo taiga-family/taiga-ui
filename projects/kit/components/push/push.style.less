@@ -8,7 +8,7 @@
     box-sizing: border-box;
     padding: 1.25rem 1.25rem 0.25rem;
     overflow: hidden;
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     border-radius: var(--tui-radius-xl);
     background: var(--tui-background-elevation-2);
     box-shadow: var(--tui-shadow-small);
@@ -24,22 +24,17 @@
 
 .t-close {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    inset-block-start: 0.75rem;
+    inset-inline-end: 0.75rem;
     color: rgba(0, 0, 0, 0.54);
     background: rgba(242, 242, 242, 0.32);
     backdrop-filter: blur(1rem);
-
-    @supports (inset-inline-end: 0) {
-        right: unset;
-        inset-inline-end: 0.75rem;
-    }
 }
 
 .t-top {
     display: flex;
     align-items: center;
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-body-s);
     color: var(--tui-text-secondary);
 }
 
@@ -79,7 +74,7 @@
 .t-actions {
     display: flex;
     align-items: center;
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-body-s);
 }
 
 .t-button:not(:empty) {

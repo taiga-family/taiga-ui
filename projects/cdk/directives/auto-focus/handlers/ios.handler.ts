@@ -1,5 +1,5 @@
 import {type ElementRef, type NgZone, type Renderer2} from '@angular/core';
-import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils';
+import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {type TuiAutofocusOptions} from '../autofocus.options';
 import {AbstractTuiAutofocusHandler} from './abstract.handler';

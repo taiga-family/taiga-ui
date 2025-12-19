@@ -26,7 +26,7 @@
             automation-id="tui-mobile-calendar__label"
             class="t-label"
         >
-            {{ single ? texts[0] : multi ? texts[2] : texts[1] }}
+            {{ single() ? texts[0] : multi() ? texts[2] : texts[1] }}
         </h2>
         <button
             automation-id="tui-mobile-calendar__confirm"
@@ -41,7 +41,7 @@
     </header>
 }
 <cdk-virtual-scroll-viewport
-    #yearsScrollRef
+    #yearsScroll
     orientation="horizontal"
     class="t-years"
     [itemSize]="yearWidth"
@@ -66,7 +66,7 @@
     }
 </div>
 <cdk-virtual-scroll-viewport
-    #monthsScrollRef
+    #monthsScroll
     itemSize="354"
     maxBufferPx="5000"
     minBufferPx="0"
@@ -80,10 +80,10 @@
         <h2 class="t-month">{{ monthNames()[month.month] }}</h2>
         <tui-mobile-calendar-sheet
             class="t-calendar"
-            [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : min : max"
+            [disabledItemHandler]="disabledItemHandler() | tuiMapper: disabledItemHandlerMapper : min() : max()"
             [month]="month"
-            [single]="single"
-            [value]="value"
+            [single]="single()"
+            [value]="value()"
             (dayClick)="onDayClick($event)"
         />
     </section>

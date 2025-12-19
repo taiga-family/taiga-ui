@@ -1,18 +1,22 @@
 tui-dialog {
     position: relative;
     box-sizing: border-box;
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     background: var(--tui-background-elevation-1);
     box-shadow: var(--tui-shadow-popup);
 
     &:not([data-appearance~='fullscreen'])._closable > header,
     &:not([data-appearance~='fullscreen'])._closable > ng-component > header {
         padding-inline-end: 2.5rem;
+
+        p {
+            margin-inline-end: -2.5rem;
+        }
     }
 
     & > header,
     & > ng-component > header {
-        font: var(--tui-font-heading-5);
+        font: var(--tui-font-heading-h5);
 
         [tuiTitle] {
             font: inherit;
@@ -20,7 +24,7 @@ tui-dialog {
 
         p {
             margin: 0.25rem 0 0;
-            font: var(--tui-font-text-m);
+            font: var(--tui-font-body-m);
 
             &:empty {
                 display: none;
@@ -28,7 +32,7 @@ tui-dialog {
         }
     }
 
-    > .t-close {
+    > [tuiButtonX] {
         position: absolute;
         top: 1rem;
         z-index: 1;

@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiBarChart, TuiChartHint} from '@taiga-ui/addon-charts';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {tuiFormatNumber, TuiHint, TuiTextfield} from '@taiga-ui/core';
+import {tuiFormatNumber, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
@@ -12,9 +12,9 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         FormsModule,
         TuiAxes,
         TuiBarChart,
+        TuiChartHint,
         TuiChevron,
         TuiDataListWrapper,
-        TuiHint,
         TuiSelect,
         TuiTextfield,
     ],
@@ -31,7 +31,7 @@ export default class Example {
 
     protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar', ''];
     protected readonly labelsY = ['0', '10 000'];
-    protected readonly appearances = ['dark', 'error'];
+    protected readonly appearances = ['floating', 'accent'];
 
     protected appearance = this.appearances[0]!;
 

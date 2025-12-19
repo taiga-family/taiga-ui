@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 
@@ -14,8 +14,7 @@ describe('Loader component options', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiLoader, {static: true})
-        public component!: TuiLoader;
+        public readonly component = viewChild.required(TuiLoader);
     }
 
     beforeEach(() => {
@@ -36,8 +35,8 @@ describe('Loader component options', () => {
     });
 
     it('override by custom options', () => {
-        expect(testComponent.component.size()).toBe('xxl');
-        expect(testComponent.component.inheritColor()).toBe(true);
-        expect(testComponent.component.overlay()).toBe(false);
+        expect(testComponent.component().size()).toBe('xxl');
+        expect(testComponent.component().inheritColor()).toBe(true);
+        expect(testComponent.component().overlay()).toBe(false);
     });
 });

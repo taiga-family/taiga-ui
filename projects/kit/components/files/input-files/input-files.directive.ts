@@ -1,7 +1,7 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {Directive, forwardRef, inject, Output} from '@angular/core';
+import {Directive, forwardRef, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -46,17 +46,17 @@ export class TuiInputFilesDirective extends TuiControl<
     protected readonly host = inject(forwardRef(() => TuiInputFiles));
     protected readonly m = tuiAppearanceMode(this.mode);
 
-    @Output()
-    public readonly reject = timer(0, tuiZonefreeScheduler()).pipe(
-        switchMap(() => tuiControlValue(this.control.control)),
-        map(() => tuiFilesRejected(this.control.control)),
-        filter(({length}) => !!length),
+    public readonly el = tuiInjectElement<HTMLInputElement>();
+    public readonly reject = outputFromObservable(
+        timer(0, tuiZonefreeScheduler()).pipe(
+            switchMap(() => tuiControlValue(this.control.control)),
+            map(() => tuiFilesRejected(this.control.control)),
+            filter(({length}) => !!length),
+        ),
     );
 
-    public readonly input = tuiInjectElement<HTMLInputElement>();
-
     public process(files: FileList): void {
-        const fileOrFiles = this.input.multiple
+        const fileOrFiles = this.el.multiple
             ? [...toArray(this.value()), ...Array.from(files)]
             : files[0];
 
@@ -66,7 +66,7 @@ export class TuiInputFilesDirective extends TuiControl<
     }
 
     protected onClick(event: MouseEvent): void {
-        if (this.input.readOnly) {
+        if (this.el.readOnly) {
             event.preventDefault();
         }
     }
@@ -75,5 +75,5 @@ export class TuiInputFilesDirective extends TuiControl<
 function toArray(
     value: TuiFileLike | readonly TuiFileLike[] | null,
 ): readonly TuiFileLike[] {
-    return value ? coerceArray(value) : EMPTY_ARRAY;
+    return value ? coerceArray(value) : [];
 }

@@ -1,14 +1,19 @@
-<tui-textfield>
-    <label tuiLabel>Type number like a German</label>
+<tui-textfield
+    iconStart="@tui.euro"
+    tuiTextfieldSize="m"
+>
+    <label tuiLabel>I am a label</label>
 
     <input
+        placeholder="I am placeholder"
         tuiInputNumber
-        [tuiNumberFormat]="numberFormat"
         [(ngModel)]="value"
     />
 
     <tui-icon
-        tuiHintDirection="right"
-        tuiTooltip="In Germany people use comma as decimal separator and point for thousands"
+        icon="@tui.circle-alert"
+        style="color: var(--tui-status-negative)"
     />
+
+    <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>

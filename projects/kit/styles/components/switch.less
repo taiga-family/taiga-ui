@@ -22,6 +22,7 @@
 [tuiSwitch] {
     .transition(~'background, box-shadow');
 
+    display: inline-block;
     inline-size: 3rem;
     block-size: 1.5rem;
     border-radius: 2rem;
@@ -36,7 +37,7 @@
         inline-size: 2rem;
 
         &::before {
-            inline-size: 1.125rem;
+            inline-size: 1rem;
             transform: translateX(-1rem);
             font-size: 0.75rem;
         }
@@ -76,8 +77,8 @@
     }
 
     &::before {
+        left: 0.125rem;
         font-size: 1rem;
-        inline-size: 1.375rem;
         transform: translateX(-1.5rem);
     }
 

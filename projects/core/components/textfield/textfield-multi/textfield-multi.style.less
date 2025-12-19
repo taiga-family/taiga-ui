@@ -1,7 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 @import '@taiga-ui/core/styles/components/textfield.less';
 
-// TODO: Remove all the @supports in v5
 tui-textfield[multi][multi] {
     flex-wrap: nowrap;
     overflow: scroll;
@@ -15,14 +14,13 @@ tui-textfield[multi][multi] {
     &::before,
     &::after {
         position: sticky;
-        top: 0;
-        left: 0;
+        inset-block-start: 0;
         inset-inline-start: 0;
         block-size: var(--t-height);
     }
 
     &[tuiChevron]::after {
-        top: 0.375rem;
+        inset-block-start: 0.375rem;
         block-size: calc(var(--t-height) - 0.75rem);
     }
 
@@ -39,16 +37,17 @@ tui-textfield[multi][multi] {
 
     > .t-items {
         position: sticky;
-        left: var(--t-start);
         display: flex;
         inset-inline-start: var(--t-start);
         min-inline-size: 0;
+        max-block-size: var(--t-height);
         min-block-size: fit-content;
         flex: 1;
         align-items: center;
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
         transition-duration: inherit;
+        box-sizing: border-box;
 
         &::after {
             content: '';
@@ -65,7 +64,7 @@ tui-textfield[multi][multi] {
             }
 
             > .t-input {
-                padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding));
+                padding-inline-end: calc(var(--t-side, ~'0rem') + var(--t-end) + var(--t-padding));
             }
         }
 
@@ -75,7 +74,7 @@ tui-textfield[multi][multi] {
 
         > label[tuiLabel] {
             position: absolute;
-            top: 0;
+            inset-block-start: 0;
             inline-size: 100%;
         }
 
@@ -90,12 +89,11 @@ tui-textfield[multi][multi] {
             pointer-events: none;
             transform: translateX(var(--t-scroll));
 
-            input {
-                position: absolute;
-                left: 0;
-                inset-inline-start: 0;
-                inline-size: 100%;
+            .t-filler,
+            [tuiInput] {
+                block-size: 100%;
                 padding: 0;
+                pointer-events: auto;
             }
 
             .t-ghost {
@@ -106,47 +104,18 @@ tui-textfield[multi][multi] {
                 min-block-size: var(--t-item-height, 1em);
             }
 
-            .t-filler {
-                position: absolute;
-                left: 0;
-                inset-inline-start: 0;
-                color: var(--tui-text-tertiary);
-                pointer-events: none;
-
-                &_hidden {
-                    display: none;
-                }
+            .t-filler_hidden {
+                display: none;
             }
         }
     }
 
     > .t-content {
         position: sticky;
-        top: 0;
-        left: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
-        inset-inline-start: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
+        inset-block-start: 0;
+        inset-inline-start: calc(100% - var(--t-side, ~'0rem') - var(--t-end) + var(--t-padding) - var(--t-offset));
         margin: 0;
         gap: 0.25rem;
-    }
-
-    > .t-content .t-clear {
-        display: flex;
-    }
-
-    &[data-mode~='invalid']:not([data-mode~='readonly']) > .t-items > [tuiLabel] {
-        color: var(--tui-text-negative);
-    }
-
-    &[data-focus='true']:not([data-mode~='readonly']) > .t-items > [tuiLabel] {
-        color: var(--tui-text-primary) !important;
-    }
-
-    &[data-mode~='readonly'] > .t-content,
-    &._disabled > .t-content,
-    &._empty > .t-content {
-        .t-clear {
-            display: none;
-        }
     }
 
     > .t-items input:not(:focus),
@@ -161,15 +130,6 @@ tui-textfield[multi][multi] {
     &[data-focus='true']:not([data-mode~='readonly']):not(:focus-within) > .t-items {
         input::placeholder {
             opacity: 1;
-        }
-    }
-
-    &:not(._empty),
-    &[data-focus='true']:not([data-mode~='readonly']) {
-        > .t-items [tuiLabel] {
-            font: var(--t-label-font);
-            line-height: var(--t-height);
-            transform: translateY(var(--t-label-y));
         }
     }
 
@@ -192,10 +152,9 @@ tui-textfield[multi][multi] {
 
         &::after {
             // tuiChevron changes icon size to 1rem
-            left: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
             inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
-            margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
             margin-inline-start: -0.75rem;
+            margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
         }
 
         &._with-label {
@@ -212,17 +171,15 @@ tui-textfield[multi][multi] {
         --t-offset: calc(0.75rem + var(--t-end) / 14);
 
         &::before {
-            left: -0.125rem;
             inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
         &::after {
-            left: calc(100% - var(--t-end) - 0.25rem);
             inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
-            margin-inline-start: -0.125rem;
             border-width: 0.625rem;
             // tuiChevron changes icon size to 1rem
+            margin-inline-start: -0.125rem;
             margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
         }
 
@@ -244,13 +201,11 @@ tui-textfield[multi][multi] {
         --t-offset: calc(0.625rem + var(--t-end) / 10);
 
         &::before {
-            left: -0.125rem;
             inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
         &::after {
-            left: calc(100% - var(--t-end) - 0.125rem);
             inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
             border-width: 0.5rem;
             margin-inline-end: calc(-1 * var(--t-padding));
@@ -262,13 +217,6 @@ tui-textfield[multi][multi] {
         }
     }
 
-    .appearance-focus({
-        input::placeholder,
-        input._empty {
-            color: var(--tui-text-tertiary);
-        }
-    });
-
     tui-textfield-item {
         transform: translateX(var(--t-scroll));
     }
@@ -279,8 +227,7 @@ tui-textfield[multi][multi] {
 
     select {
         opacity: 0;
-        padding: 0;
-        pointer-events: none;
+        pointer-events: none !important;
     }
 
     &._empty > .t-items select ~ .t-filler {

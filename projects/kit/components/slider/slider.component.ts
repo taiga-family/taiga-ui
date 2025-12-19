@@ -1,15 +1,9 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    Input,
-    signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {take} from 'rxjs';
 
@@ -40,10 +34,15 @@ export class TuiSliderComponent {
     private readonly control = inject(NgControl, {self: true, optional: true});
 
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
-    protected readonly segments = signal<number[]>([1]);
     protected readonly ticksGradient = computed((segments = this.segments()) =>
         this.getTicksGradient(segments),
     );
+
+    public readonly segments = input([1], {
+        alias: 'segments',
+        transform: (x: number | readonly number[]): readonly number[] =>
+            tuiIsNumber(x) ? Array.from({length: x}, (_, i) => i / x) : x,
+    });
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly keySteps = inject(TuiSliderKeyStepsBase, {
@@ -62,16 +61,6 @@ export class TuiSliderComponent {
              */
             this.control.valueChanges?.pipe(tuiWatch(), take(1)).subscribe();
         }
-    }
-
-    // TODO(v5): use signal inputs
-    @Input({
-        alias: 'segments',
-        transform: (x: number[] | number) =>
-            Array.isArray(x) ? x : Array.from({length: x}, (_, i) => i / x),
-    })
-    public set segmentsSetter(segments: number[]) {
-        this.segments.set(segments);
     }
 
     public get valueRatio(): number {
@@ -137,7 +126,7 @@ export class TuiSliderComponent {
         this.el.value = `${newValue}`;
     }
 
-    protected getTicksGradient(segments: number[]): string {
+    protected getTicksGradient(segments: readonly number[]): string {
         if (segments.length <= 1) {
             return 'linear-gradient(to right, transparent 0 100%)';
         }

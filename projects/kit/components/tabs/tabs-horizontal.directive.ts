@@ -1,23 +1,13 @@
-import {
-    type AfterViewChecked,
-    ContentChildren,
-    Directive,
-    forwardRef,
-    inject,
-    Input,
-    type QueryList,
-} from '@angular/core';
+import {type AfterViewChecked, Directive, effect, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import {TuiTab} from './tab.directive';
 import {TuiTabsDirective} from './tabs.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 
@@ -42,9 +32,9 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
         },
     ],
     host: {
-        '[class._underline]': 'underline',
+        '[class._underline]': 'underline()',
         '[style.--t-color]':
-            "underline === true ? 'var(--tui-background-accent-1)' : underline",
+            "underline() === true ? 'var(--tui-background-accent-1)' : underline()",
         '(animationend)': 'refresh()',
         '(keydown.arrowRight.prevent)': 'onKeyDownArrow($event.target, 1)',
         '(keydown.arrowLeft.prevent)': 'onKeyDownArrow($event.target, -1)',
@@ -55,18 +45,34 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly tabs = inject(TuiTabsDirective);
 
-    @ContentChildren(forwardRef(() => TuiTab))
-    protected readonly children: QueryList<unknown> = EMPTY_QUERY;
-
     protected readonly sub = inject(MutationObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 
-    @Input()
-    public underline = this.options.underline;
+    public readonly underline = input(this.options.underline);
+
+    constructor() {
+        effect(() => {
+            const index = this.tabs.activeItemIndex();
+            const element = this.tabs.tabs[index];
+
+            if (!element) {
+                return;
+            }
+
+            const {offsetLeft, offsetWidth} = element;
+
+            if (offsetLeft < this.el.scrollLeft) {
+                this.el.scrollLeft = offsetLeft;
+            }
+
+            if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
+                this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
+            }
+        });
+    }
 
     public ngAfterViewChecked(): void {
-        this.scrollTo(this.tabs.activeItemIndex);
         this.refresh();
     }
 
@@ -85,24 +91,5 @@ export class TuiTabsHorizontal implements AfterViewChecked {
 
         this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
         this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
-    }
-
-    @tuiPure
-    private scrollTo(index: number): void {
-        const element = this.tabs.tabs[index];
-
-        if (!element) {
-            return;
-        }
-
-        const {offsetLeft, offsetWidth} = element;
-
-        if (offsetLeft < this.el.scrollLeft) {
-            this.el.scrollLeft = offsetLeft;
-        }
-
-        if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
-            this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
-        }
     }
 }

@@ -1,4 +1,7 @@
-@for (_ of '-'.repeat(value.length); track $index) {
+@let data = value();
+@let min = minLabel();
+@let max = maxLabel();
+@for (_ of '-'.repeat(data.length); track $index) {
     <svg
         focusable="false"
         viewBox="-100 -100 200 200"
@@ -6,8 +9,7 @@
         class="t-svg"
         [style.height.rem]="getDiameter($index)"
         [style.inset-block-start.rem]="getInset($index)"
-        [style.inset-inline-end.rem]="getInset($index)"
-        [style.inset-inline-start.rem]="getInset($index)"
+        [style.inset-inline.rem]="getInset($index)"
     >
         <path
             d="M -70 70 A 100 100 0 1 1 70 70"
@@ -22,6 +24,7 @@
             [style.stroke]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
             [style.strokeDasharray.em]="getLength($index)"
             [style.strokeDashoffset.em]="initialized() ? getOffset($index) : getLength($index)"
+            (tuiHoveredChange)="onHovered($event, $index)"
         />
     </svg>
 }
@@ -31,6 +34,6 @@
     </div>
 </div>
 <div class="t-percent">
-    <span>{{ minLabel }}</span>
-    <span>{{ maxLabel }}</span>
+    <span>{{ min }}</span>
+    <span>{{ max }}</span>
 </div>

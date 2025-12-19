@@ -6,11 +6,9 @@
     background: var(--t-bg);
     color: var(--tui-text-primary-on-accent-1);
 
-    &:invalid:not([data-mode]),
-    &[data-mode~='invalid'],
-    &.tui-invalid:not([data-mode]) {
+    .appearance-invalid({
         background: var(--tui-status-negative);
-    }
+    });
 
     .appearance-hover({
         --t-bg: var(--tui-background-accent-1-hover);

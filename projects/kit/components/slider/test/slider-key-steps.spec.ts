@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    type Signal,
+    viewChild,
+} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideTaiga} from '@taiga-ui/core';
@@ -20,8 +26,10 @@ describe('TuiSliderKeyStepsDirective', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiSliderComponent, {static: true, read: ElementRef})
-        public inputElRef!: ElementRef<HTMLInputElement>;
+        public inputElRef: Signal<ElementRef<HTMLInputElement>> = viewChild.required(
+            TuiSliderComponent,
+            {read: ElementRef},
+        );
 
         public control = new FormControl(720_000);
 
@@ -52,7 +60,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         it('720_000 => 26/30', () => {
             fixture.detectChanges();
 
-            expect(testComponent.inputElRef.nativeElement.value).toBe('26');
+            expect(testComponent.inputElRef().nativeElement.value).toBe('26');
         });
 
         const controlNativeValuesMap = [
@@ -95,7 +103,7 @@ describe('TuiSliderKeyStepsDirective', () => {
 
                 expect(
                     // TODO: need investigate without toFixed
-                    Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
+                    Number(testComponent.inputElRef().nativeElement.value).toFixed(0),
                 ).toBe(`${nativeValue}`);
             });
         });
@@ -125,7 +133,7 @@ describe('TuiSliderKeyStepsDirective', () => {
 
                 expect(
                     // TODO: need investigate without toFixed
-                    Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
+                    Number(testComponent.inputElRef().nativeElement.value).toFixed(0),
                 ).toBe(`${expectedNativeValue}`);
             });
         });
@@ -180,7 +188,7 @@ describe('TuiSliderKeyStepsDirective', () => {
 
                 expect(
                     // TODO: need investigate without toFixed
-                    Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
+                    Number(testComponent.inputElRef().nativeElement.value).toFixed(0),
                 ).toBe(`${expectedNativeValue}`);
             });
         });
@@ -236,7 +244,7 @@ describe('TuiSliderKeyStepsDirective', () => {
 
                 expect(
                     // TODO: need investigate without toFixed
-                    Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
+                    Number(testComponent.inputElRef().nativeElement.value).toFixed(0),
                 ).toBe(`${expectedNativeValue}`);
             });
         });
@@ -250,6 +258,6 @@ describe('TuiSliderKeyStepsDirective', () => {
         testComponent.control = new FormControl(25_000);
         fixture.detectChanges();
 
-        expect(testComponent.inputElRef.nativeElement.value).toBe('0');
+        expect(testComponent.inputElRef().nativeElement.value).toBe('0');
     });
 });

@@ -13,8 +13,7 @@ import {TuiAccordionTarget} from './target';
     changeDetection,
 })
 export default class Page {
-    protected readonly pages = DemoRoute;
-
+    protected readonly routes = DemoRoute;
     protected readonly manuallyTriggerNxMigration =
         import('./examples/manual-trigger-nx-migrate-v4.md');
 }

@@ -10,7 +10,7 @@
         @if (step > 1) {
             <button
                 tuiButton
-                tuiSlot="left"
+                tuiSlot="start"
                 type="button"
                 (click)="onStep(-1)"
             >
@@ -26,7 +26,7 @@
         ></progress>
         <button
             tuiButton
-            tuiSlot="right"
+            tuiSlot="end"
             type="button"
             (click)="observer.complete()"
         >

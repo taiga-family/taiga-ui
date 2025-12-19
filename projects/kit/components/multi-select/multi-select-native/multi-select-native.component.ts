@@ -1,9 +1,10 @@
 import {NgTemplateOutlet} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiIsPresent} from '@taiga-ui/cdk/utils';
-import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {
     TuiSelectLike,
@@ -29,6 +30,7 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
     hostDirectives: [TuiInputChipDirective, TuiSelectLike],
     host: {
         multiple: '',
+        '[size]': 'mobile ? 1 : 2',
         '(click.stop.zoneless)': '0',
         '(input)': 'onInput()',
     },
@@ -50,19 +52,19 @@ export class TuiMultiSelectNative<T> {
                 value.some((item) => this.handlers.identityMatcher()(x, item)),
     );
 
-    @Input()
-    public items: ReadonlyArray<readonly T[]> | readonly T[] | null = [];
+    public readonly items = input<ReadonlyArray<readonly T[]> | readonly T[] | null>([]);
+    public readonly labels = input<readonly string[]>([]);
+    public readonly placeholder = input('');
 
-    @Input()
-    public labels: readonly string[] = [];
-
-    @Input()
-    public set placeholder(placeholder: string) {
-        tuiSetSignal(this.textfield.filler, placeholder);
-    }
+    protected readonly binding = tuiDirectiveBinding(
+        TuiTextfieldMultiComponent,
+        'filler',
+        this.placeholder,
+        {},
+    );
 
     protected onInput(): void {
-        const items = this.items?.flat() || [];
+        const items = this.items()?.flat() || [];
         const options = Array.from(this.el.selectedOptions).map(({index}) => index);
 
         this.textfield.cva()?.onChange(items.filter((_, i) => options.includes(i)));

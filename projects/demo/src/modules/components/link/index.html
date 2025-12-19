@@ -5,7 +5,10 @@
 >
     <ng-template pageTab>
         Link component. It has focus highlight and can be customized with an icon
-        <tui-notification [style.clear]="'both'">
+        <div
+            tuiNotification
+            [style.clear]="'both'"
+        >
             Use
             <code>textContent</code>
             binding or wrapping entire content with a
@@ -13,7 +16,7 @@
             to avoid extra whitespace introduced by browser to
             <code>a</code>
             tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
-        </tui-notification>
+        </div>
 
         @for (example of examples; track example) {
             <tui-doc-example

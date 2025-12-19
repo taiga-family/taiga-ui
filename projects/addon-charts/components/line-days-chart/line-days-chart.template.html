@@ -1,24 +1,24 @@
 @for (month of months; track month) {
     <tui-line-chart
         class="t-chart"
-        [dots]="dots"
-        [height]="height"
-        [smoothingFactor]="smoothingFactor"
+        [dots]="dots()"
+        [height]="height()"
+        [smoothingFactor]="smoothingFactor()"
         [style.z-index]="zIndex"
-        [tuiHintContent]="hintContent ? hint : ''"
+        [tuiHintContent]="hintContent() ? hint : ''"
         [value]="month"
         [width]="$first ? firstWidth : getWidth(month[0]?.[0] ?? 0)"
         [x]="$first ? 0 : getX(month[0]?.[0] ?? 0)"
-        [xStringify]="xStringify ? daysStringify : null"
-        [y]="y"
-        [yStringify]="yStringify"
+        [xStringify]="xStringify() ? daysStringify : null"
+        [y]="y()"
+        [yStringify]="yStringify()"
     />
 }
 <ng-template
     #hint
     let-point
 >
-    <ng-container *polymorpheusOutlet="hintContent as text; context: {$implicit: getHintContext(point[0], value)}">
+    <ng-container *polymorpheusOutlet="hintContent() as text; context: {$implicit: getHintContext(point[0], value())}">
         {{ text }}
     </ng-container>
 </ng-template>

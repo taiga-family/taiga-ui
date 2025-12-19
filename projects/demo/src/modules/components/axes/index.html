@@ -20,15 +20,14 @@
         <tui-doc-demo>
             <tui-axes
                 class="axes"
-                [axisX]="axisX"
                 [axisXLabels]="axisXLabels || []"
-                [axisY]="axisY"
                 [axisYInset]="axisYInset"
                 [axisYLabels]="axisYLabels || []"
                 [axisYName]="axisYName"
                 [axisYSecondaryInset]="axisYSecondaryInset"
                 [axisYSecondaryLabels]="axisYSecondaryLabels"
                 [axisYSecondaryName]="axisYSecondaryName"
+                [centeredXLabels]="centeredXLabels"
                 [horizontalLines]="horizontalLines"
                 [horizontalLinesHandler]="horizontalLinesHandler"
                 [verticalLines]="verticalLines"
@@ -37,13 +36,12 @@
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[axisX]"
+                name="[centeredXLabels]"
                 tuiDocAPIItem
-                type="TuiLineType"
-                [items]="lineVariants"
-                [(value)]="axisX"
+                type="boolean"
+                [(value)]="centeredXLabels"
             >
-                Axis X
+                Center X labels
             </tr>
 
             <tr
@@ -56,16 +54,6 @@
                 Labels for X. Empty string is empty stroke,
                 <code>null</code>
                 — no stroke
-            </tr>
-
-            <tr
-                name="[axisY]"
-                tuiDocAPIItem
-                type="TuiLineType"
-                [items]="lineVariants"
-                [(value)]="axisY"
-            >
-                Axis Y
             </tr>
 
             <tr

@@ -1,17 +1,14 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
-    EventEmitter,
+    contentChildren,
     inject,
-    Input,
-    Output,
-    type QueryList,
+    input,
+    model,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
@@ -20,7 +17,7 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 
 @Component({
     selector: 'tui-files',
-    imports: [AsyncPipe, NgTemplateOutlet, TuiButton, TuiExpand, TuiGroup],
+    imports: [NgTemplateOutlet, TuiButton, TuiExpand, TuiGroup],
     templateUrl: './files.template.html',
     styleUrl: './files.styles.less',
     encapsulation: ViewEncapsulation.None,
@@ -31,28 +28,10 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
     hostDirectives: [TuiGroup],
 })
 export class TuiFilesComponent {
-    @ContentChildren(TuiItem, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
     protected readonly hideText = inject(TUI_HIDE_TEXT);
     protected readonly showAllText = inject(TUI_SHOW_ALL_TEXT);
+    protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
 
-    @Input()
-    public max = 0;
-
-    @Input()
-    public expanded = false;
-
-    @Output()
-    public readonly expandedChange = new EventEmitter<boolean>();
-
-    protected get hasExtraItems(): boolean {
-        return !!this.max && this.items.length > this.max;
-    }
-
-    protected toggle(): void {
-        this.expanded = !this.expanded;
-        this.expandedChange.emit(this.expanded);
-    }
+    public readonly max = input(0);
+    public readonly expanded = model(false);
 }

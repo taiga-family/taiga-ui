@@ -79,4 +79,12 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Επαναφορά',
     },
     phoneSearch: 'Πληκτρολογήστε χώρα ή κωδικό',
+    dayRangePeriods: [
+        'Πάντοτε',
+        'Σήμερα',
+        'Χθες',
+        'Αυτή την εβδομάδα',
+        'Αυτό το μήνα',
+        'Τον περασμένο μήνα',
+    ],
 };

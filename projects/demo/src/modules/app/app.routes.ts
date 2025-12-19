@@ -31,9 +31,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/rtl'),
     }),
     route({
-        path: DemoRoute.Related,
-        title: 'Taiga UI family',
-        loadComponent: async () => import('../info/related'),
+        path: DemoRoute.About,
+        title: 'About',
+        loadComponent: async () => import('../info/about'),
     }),
     route({
         path: DemoRoute.Jest,
@@ -42,7 +42,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.DisableAnimation,
-        title: 'Disable animation',
+        title: 'Disable animations',
         loadComponent: async () => import('../info/testing/disable-animation'),
     }),
     route({
@@ -260,9 +260,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/button'),
     }),
     route({
-        path: DemoRoute.ButtonClose,
-        title: 'ButtonClose',
-        loadComponent: async () => import('../components/button-close'),
+        path: DemoRoute.ButtonX,
+        title: 'ButtonX',
+        loadComponent: async () => import('../components/button-x'),
     }),
     route({
         path: DemoRoute.ButtonGroup,
@@ -779,11 +779,6 @@ export const ROUTES: Routes = [
         title: 'Shadows',
     }),
     route({
-        path: DemoRoute.Spaces,
-        loadComponent: async () => import('../markup/spaces'),
-        title: 'Spaces',
-    }),
-    route({
         path: DemoRoute.Typography,
         loadComponent: async () => import('../markup/typography'),
         title: 'Typography',
@@ -977,11 +972,6 @@ export const ROUTES: Routes = [
     }),
     // SERVICES
     route({
-        path: DemoRoute.BreakpointService,
-        loadComponent: async () => import('../components/services/breakpoint-service'),
-        title: 'BreakpointService',
-    }),
-    route({
         path: DemoRoute.KeyboardService,
         loadComponent: async () => import('../components/services/keyboard-service'),
         title: 'Keyboard',
@@ -1031,11 +1021,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Tokens,
         loadComponent: async () => import('../components/utils/tokens'),
         title: 'Tokens',
-    }),
-    route({
-        path: DemoRoute.Pure,
-        loadComponent: async () => import('../components/utils/pure'),
-        title: 'Pure',
     }),
     route({
         path: DemoRoute.StackblitzStarter,

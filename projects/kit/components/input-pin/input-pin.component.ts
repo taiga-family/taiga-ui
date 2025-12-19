@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    Input,
-    signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoMask} from '@maskito/core';
@@ -37,21 +30,16 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 })
 export class TuiInputPinComponent {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly mask = signal<MaskitoMask>(/^\d+$/);
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly control = inject(NgControl);
-
     protected readonly maskito = tuiMaskito(
-        computed(() => ({
-            mask: this.mask(),
-            overwriteMode: 'replace',
-        })),
+        computed(() => ({mask: this.mask(), overwriteMode: 'replace'})),
     );
 
-    @Input('mask')
-    public set maskSetter(mask: MaskitoMask | string) {
-        this.mask.set(tuiIsString(mask) ? new RegExp(mask) : mask);
-    }
+    public readonly mask = input(/^\d+$/, {
+        transform: (mask: MaskitoMask | string): MaskitoMask =>
+            tuiIsString(mask) ? new RegExp(mask) : mask,
+    });
 
     public onClick(index: number): void {
         this.el.focus();

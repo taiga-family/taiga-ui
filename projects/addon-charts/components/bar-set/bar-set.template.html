@@ -1,12 +1,12 @@
-@if (size) {
-    @for (item of computedValue; track item) {
+@if (size()) {
+    @for (item of computedValue(); track item) {
         <ng-container
             [ngTemplateOutlet]="bar"
             [ngTemplateOutletContext]="{$implicit: item, index: $index, flexible: false}"
         />
     }
 } @else {
-    @for (item of computedValue; track item) {
+    @for (item of computedValue(); track item) {
         <div class="t-wrapper">
             <ng-container
                 [ngTemplateOutlet]="bar"
@@ -26,10 +26,10 @@
         class="t-bar"
         [class.t-bar_flexible]="flexible"
         [class.t-bar_negative]="item < 0"
-        [size]="computedSize"
+        [size]="size() || 'm'"
         [style.background]="`var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`"
         [style.height.%]="getHeight(item)"
-        [value]="computedSegments"
+        [value]="computedSegments()"
     />
 </ng-template>
 <span class="t-label">

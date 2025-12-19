@@ -20,6 +20,7 @@ import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateInputYear} from './templates/migrate-input-year';
+import {migrateTuiNotification} from './templates/migrate-notification';
 
 export function getAction<T>({
     action,
@@ -60,6 +61,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         migrateInputYear,
         migrateAvatarToDirective,
+        migrateTuiNotification,
     ] as const;
 
     const progressLog = setupProgressLogger({

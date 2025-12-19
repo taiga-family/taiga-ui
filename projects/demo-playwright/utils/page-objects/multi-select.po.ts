@@ -1,7 +1,3 @@
-import {TuiInputTagPO} from './input-tag.po';
+import {TuiInputChipPO} from './input-chip.po';
 
-export class TuiMultiSelectPO extends TuiInputTagPO {
-    public readonly arrow = this.host.locator(
-        '[automation-id="tui-multi-select__arrow"]',
-    );
-}
+export class TuiMultiSelectPO extends TuiInputChipPO {}

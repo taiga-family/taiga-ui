@@ -1,6 +1,5 @@
 import {AsyncPipe} from '@angular/common';
 import {
-    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -21,13 +20,15 @@ import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     tuiAsDataListHost,
     type TuiDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
@@ -36,7 +37,7 @@ import {
     TuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_AUXILIARY, TUI_CLEAR_WORD} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -45,7 +46,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 
 @Component({
     selector: 'tui-textfield:not([multi])',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, WaResizeObserver],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, WaResizeObserver],
     templateUrl: './textfield.template.html',
     styles: '@import "@taiga-ui/core/styles/components/textfield.less";',
     encapsulation: ViewEncapsulation.None,
@@ -55,6 +56,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         tuiAsDataListHost(TuiTextfieldComponent),
     ],
     hostDirectives: [
+        TuiAppearance,
         TuiDropdownDirective,
         TuiDropdownFixed,
         TuiWithDropdownOpen,
@@ -63,12 +65,15 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         TuiWithOptionContent,
     ],
     host: {
+        class: 'tui-interactive',
         '[attr.data-size]': 'options.size()',
-        '[class._with-label]': 'hasLabel',
+        '[class._with-label]': 'hasLabel', // TODO :has([tuiLabel]
         '[class._with-template]': 'content() && control()?.value != null',
-        '[class._disabled]': 'input()?.nativeElement?.disabled',
-        '[style.transition]': '"none"',
+        '[class._disabled]': 'input()?.nativeElement?.disabled', // TODO :has([tuiInput]:disabled)
+        '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
+        '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
         '(click.self.prevent)': '0',
+        // TODO preventing breaks resize: both, but not preventing breaks focus, fix
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
         '(tuiActiveZoneChange)': '!$event && control()?.valueAccessor?.onTouched?.()',
@@ -81,7 +86,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = inject(TUI_CLEAR_WORD);
     protected readonly label = contentChild(
         forwardRef(() => TuiLabel),
@@ -118,12 +122,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');
     public readonly value = tuiValue(this.input);
-
-    constructor() {
-        // TODO: Replace with TuiTransitioned when fixed:
-        // https://github.com/angular/angular/issues/57846
-        afterNextRender(() => this.el.style.setProperty('transition', ''));
-    }
 
     public get id(): string {
         return this.input()?.nativeElement.id || this.autoId;

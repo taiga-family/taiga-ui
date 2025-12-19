@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
@@ -21,11 +21,8 @@ describe('CalendarMonth', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiCalendarMonth, {static: true})
-        public component!: TuiCalendarMonth;
-
+        public readonly component = viewChild.required(TuiCalendarMonth);
         public year = new TuiYear(TODAY.year);
-
         public min = TODAY.append({year: -2});
         public max = TODAY.append({year: 2});
         public value = TODAY;
@@ -45,7 +42,7 @@ describe('CalendarMonth', () => {
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
-        component = testComponent.component;
+        component = testComponent.component();
         fixture.detectChanges();
     });
 

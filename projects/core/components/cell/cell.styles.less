@@ -4,6 +4,7 @@
     --t-padding: 0.125rem 1rem;
     --t-radius: var(--tui-radius-s);
 
+    .transition(~'background');
     .button-clear();
 
     position: relative;
@@ -16,6 +17,10 @@
     padding: var(--t-padding);
     min-block-size: var(--t-height);
     border-radius: var(--t-radius);
+
+    &:is(button, label):not(:disabled):active {
+        background: var(--tui-background-neutral-1);
+    }
 
     &:disabled,
     &[data-state='disabled'] {
@@ -119,12 +124,12 @@
 
         [tuiTitle] {
             max-block-size: 100%;
-            font: var(--tui-font-text-ui-s);
+            font: var(--tui-font-ui-s);
             gap: 0;
         }
 
         [tuiSubtitle] {
-            font: var(--tui-font-text-ui-xs);
+            font: var(--tui-font-ui-xs);
         }
 
         & > [tuiAvatar],
@@ -133,7 +138,7 @@
         & > [tuiAccessories] tui-avatar-stack [tuiAvatar] {
             --t-size: 1.5rem;
 
-            font: var(--tui-font-text-m);
+            font: var(--tui-font-body-m);
             font-size: 0.5625rem;
         }
     }
@@ -154,12 +159,12 @@
         }
 
         [tuiTitle] {
-            font: var(--tui-font-text-ui-s);
+            font: var(--tui-font-ui-s);
             gap: 0.125rem;
         }
 
         [tuiSubtitle] {
-            font: var(--tui-font-text-ui-xs);
+            font: var(--tui-font-ui-xs);
         }
 
         & > [tuiAvatar],
@@ -194,7 +199,7 @@
         & > [tuiAccessories] tui-avatar-stack [tuiAvatar] {
             --t-size: 2.5rem;
 
-            font: var(--tui-font-text-m);
+            font: var(--tui-font-body-m);
             font-weight: bold;
             align-self: flex-start;
         }

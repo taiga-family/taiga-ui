@@ -9,7 +9,7 @@ import {TuiAsideComponent} from './aside.component';
 
 @Directive({
     selector: '[tuiHintAside]',
-    providers: [tuiHintOptionsProvider({direction: 'right'})],
+    providers: [tuiHintOptionsProvider({direction: 'end'})],
     hostDirectives: [TuiHintDirective],
 })
 export class TuiHintAsideDirective {

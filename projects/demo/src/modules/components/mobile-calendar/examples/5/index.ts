@@ -4,10 +4,12 @@ import {toObservable} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
+import {
+    TUI_CALENDAR_DATE_STREAM,
+    TuiMobileCalendarDropdownComponent,
+} from '@taiga-ui/addon-mobile';
 import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiButton, TuiDialogService} from '@taiga-ui/core';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {combineLatest, map, type Observable} from 'rxjs';
 
@@ -26,7 +28,7 @@ export default class Example {
 
     private readonly dialog$: Observable<readonly TuiDay[]> = this.dialogs.open(
         new PolymorpheusComponent(
-            TuiMobileCalendarDropdown,
+            TuiMobileCalendarDropdownComponent,
             Injector.create({
                 providers: [
                     {

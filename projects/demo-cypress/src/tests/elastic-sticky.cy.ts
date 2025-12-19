@@ -28,7 +28,7 @@ describe('ElasticSticky', () => {
         public readonly change = output<number>();
 
         protected transform(value: number): number {
-            // sometimes tuiElasticSticky emit 0.5, 0.52 or 0.53 on CI
+            // sometimes tuiElasticSticky will emit 0.5, 0.52 or 0.53 on CI
             return Number(value.toFixed(1));
         }
     }

@@ -31,6 +31,7 @@ tui-icon {
     vertical-align: middle;
     box-sizing: border-box;
     mask: var(--t-icon-bg) no-repeat center / calc(100% + 10 * var(--tui-stroke-width, 0.125rem)) 100%;
+    zoom: ~'calc(100% * (min(max(var(--tui-font-offset) - 10px, 0px), 1px) / 0.8px))';
 
     @media @tui-mouse {
         &[data-appearance='icon']:hover {
@@ -68,5 +69,15 @@ tui-icon {
 
             --tui-icon-size: 0.5715em;
         }
+    }
+
+    &[data-icon-start='img']::before,
+    &[data-icon-end='img']::after {
+        zoom: 1;
+    }
+
+    &[data-icon-start='font']::before,
+    &[data-icon-end='font']::after {
+        zoom: 0.667;
     }
 }

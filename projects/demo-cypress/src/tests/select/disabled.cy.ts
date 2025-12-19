@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, type OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
-import {delay, of} from 'rxjs';
 
 @Component({
     imports: [
@@ -38,20 +37,18 @@ import {delay, of} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
-export class TestTextfield implements OnInit {
+export class Sandbox {
     protected readonly form = new FormGroup({
         test: new FormControl(''),
     });
 
-    public ngOnInit(): void {
-        of('Text')
-            .pipe(delay(1_000))
-            .subscribe((text) => {
-                const control = this.form.get('test');
+    constructor() {
+        setTimeout(() => {
+            const control = this.form.get('test');
 
-                control?.setValue(text);
-                control?.disable();
-            });
+            control?.setValue('Text');
+            control?.disable();
+        }, 500);
     }
 }
 
@@ -59,8 +56,9 @@ describe('Select', () => {
     beforeEach(() => cy.viewport(200, 150));
 
     it('show selected value after disabled', () => {
-        cy.mount(TestTextfield);
-        cy.wait(1_000);
+        cy.mount(Sandbox).wait(1_000);
+
+        cy.get('tui-textfield input').should('be.disabled');
         cy.get('tui-textfield').compareSnapshot('tui-textfield-disabled');
     });
 });

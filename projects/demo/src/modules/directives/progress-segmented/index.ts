@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiLink} from '@taiga-ui/core';
-import {TuiProgress, type TuiProgressBar} from '@taiga-ui/kit';
+import {TuiLink, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
+import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
     imports: [RouterLink, TuiDemo, TuiLink, TuiProgress],
@@ -18,7 +18,7 @@ export default class Page {
 
     protected examples = ['Basic', 'Sizes', 'Colors', 'With labels', 'No round corners'];
 
-    protected readonly sizeVariants: ReadonlyArray<TuiProgressBar['size']> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
         'xs',
         's',
         'm',
@@ -27,7 +27,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiProgressBar['size'] = this.sizeVariants[2]!;
+    protected size: TuiSizeXXL | TuiSizeXXS = this.sizeVariants[2]!;
 
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-background-accent-1)'],

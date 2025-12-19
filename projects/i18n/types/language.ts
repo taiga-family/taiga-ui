@@ -120,6 +120,14 @@ export interface TuiLanguageKit {
         reset: string;
     };
     phoneSearch: string;
+    dayRangePeriods: readonly [
+        forAllTime: string,
+        today: string,
+        yesterday: string,
+        currentWeek: string,
+        currentMonth: string,
+        previousMonth: string,
+    ];
 }
 
 export interface TuiLanguageLayout {

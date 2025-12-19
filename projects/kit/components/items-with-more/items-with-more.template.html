@@ -1,8 +1,7 @@
-@if (items.changes | async) {}
-@if (directive.side === 'start') {
+@if (directive.side() === 'start') {
     <ng-container [ngTemplateOutlet]="template" />
 }
-@for (item of items; track item) {
+@for (item of items(); track item) {
     <div
         class="t-item"
         [class.t-item_hidden]="isHidden($index)"
@@ -10,14 +9,14 @@
         <ng-container *ngTemplateOutlet="item" />
     </div>
 }
-@if (directive.side === 'end') {
+@if (directive.side() === 'end') {
     <ng-container [ngTemplateOutlet]="template" />
 }
 <ng-template #template>
-    @if (!isMoreHidden) {
+    @if (!isMoreHidden()) {
         <span class="t-item t-item_more">
             <ng-container
-                [ngTemplateOutlet]="more || null"
+                [ngTemplateOutlet]="more() || null"
                 [ngTemplateOutletContext]="{$implicit: lastIndex()}"
             />
         </span>

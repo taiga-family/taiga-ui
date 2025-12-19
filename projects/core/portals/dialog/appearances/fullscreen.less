@@ -16,7 +16,7 @@
         animation-name: tuiFade, tuiSlide;
     }
 
-    > .t-close {
+    > [tuiButtonX] {
         position: sticky;
         top: env(safe-area-inset-top);
         block-size: 4rem;
@@ -24,7 +24,7 @@
         align-self: flex-end;
         margin-block-end: 2rem;
         border-radius: 0 !important;
-        font: var(--tui-font-text-m) !important;
+        font: var(--tui-font-body-m) !important;
         border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0 / 0 / env(safe-area-inset-top) 100vw 0;
 
         &::before {
@@ -33,8 +33,8 @@
     }
 
     // Replace with :has when it's supported
-    //&:has(tui-app-bar) .t-close {
-    &.tui-app-bar .t-close {
+    //&:has(tui-app-bar) [tuiButtonX] {
+    &.tui-app-bar [tuiButtonX] {
         display: none;
     }
 
@@ -58,7 +58,7 @@
     > [tuiSlides] > * > header,
     > ng-component > header,
     > ng-component > [tuiSlides] > * > header {
-        font: var(--tui-font-heading-3);
+        font: var(--tui-font-heading-h3);
         margin-block-end: 2rem;
     }
 
@@ -98,7 +98,7 @@
 
         --tui-from: translateY(4rem);
 
-        .t-close {
+        [tuiButtonX] {
             align-self: flex-start;
             block-size: 3.5rem;
             margin-block-end: 1rem;

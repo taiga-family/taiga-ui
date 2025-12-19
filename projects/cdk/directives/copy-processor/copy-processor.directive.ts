@@ -1,7 +1,7 @@
 import {Directive, inject, input} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiGetSelectedText} from '@taiga-ui/cdk/utils';
+import {tuiGetSelectedText} from '@taiga-ui/cdk/utils/dom';
 import {identity} from 'rxjs';
 
 @Directive({

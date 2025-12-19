@@ -20,7 +20,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
     ).pipe(
         debounceTime(0, tuiZonefreeScheduler()),
         map(() =>
-            this.directive.linesLimit > 1
+            this.directive.linesLimit() > 1
                 ? this.getOverflowIndexMultiline()
                 : this.getOverflowIndex(Array.from(this.el.children)),
         ),
@@ -34,18 +34,18 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getOverflowIndex(children: Element[]): number {
-        const {computedSide, itemsLimit} = this.directive;
+        const {align, itemsLimit} = this.directive;
         const {clientWidth} = this.el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
-        const index = computedSide === 'start' ? 0 : items.length - 1;
+        const index = align() === 'start' ? 0 : items.length - 1;
         const more = children[index]?.tagName === 'SPAN' ? (items[index] ?? 0) : 0;
         const total = items.reduce((sum, width) => sum + width, 0) - more;
 
-        if (total <= clientWidth && itemsLimit >= items.length) {
-            return computedSide === 'end' ? itemsLimit : 0;
+        if (total <= clientWidth && itemsLimit() >= items.length) {
+            return align() === 'end' ? itemsLimit() : 0;
         }
 
-        return computedSide === 'start'
+        return align() === 'start'
             ? this.getIndexStart(items, total, more)
             : this.getIndexEnd(items, total, more);
     }
@@ -53,9 +53,9 @@ export class TuiItemsWithMoreService extends Observable<number> {
     private getIndexStart(items: number[], total: number, more: number): number {
         const {required, itemsLimit} = this.directive;
         const {clientWidth} = this.el;
-        const min = Number.isFinite(itemsLimit) ? items.length - itemsLimit - 1 : 0;
+        const min = Number.isFinite(itemsLimit()) ? items.length - itemsLimit() - 1 : 0;
         const last = items.length - 1;
-        const mandatory = required === -1 ? last : required;
+        const mandatory = required() === -1 ? last : required();
 
         for (let i = 1; i < last; i++) {
             if (i === mandatory + 1) {
@@ -75,9 +75,9 @@ export class TuiItemsWithMoreService extends Observable<number> {
     private getIndexEnd(items: number[], total: number, more: number): number {
         const {required, itemsLimit} = this.directive;
         const {clientWidth} = this.el;
-        const max = itemsLimit > required ? itemsLimit - 1 : itemsLimit - 2;
+        const max = itemsLimit() > required() ? itemsLimit() - 1 : itemsLimit() - 2;
         const last = items.length - 1;
-        const mandatory = required === -1 ? 0 : required;
+        const mandatory = required() === -1 ? 0 : required;
 
         for (let i = last - 1; i > 0; i--) {
             if (i === mandatory) {
@@ -99,11 +99,11 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const {linesLimit, itemsLimit} = this.directive;
         const items = Array.from(children) as HTMLElement[];
         const rows = new Set(items.map((item) => item.offsetTop));
-        const offset = Array.from(rows)[linesLimit - 1];
+        const offset = Array.from(rows)[linesLimit() - 1];
         const firstItemLastRow = items.findIndex((i) => i.offsetTop === offset);
         const lastRow = items.slice(firstItemLastRow);
         const index = firstItemLastRow + this.getOverflowIndex(lastRow);
 
-        return Math.min(itemsLimit - 1, index);
+        return Math.min(itemsLimit() - 1, index);
     }
 }

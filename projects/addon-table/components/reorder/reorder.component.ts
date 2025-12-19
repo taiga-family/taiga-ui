@@ -7,6 +7,7 @@ import {
     model,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
+import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -60,9 +61,8 @@ export class TuiReorder<T> {
 
     public readonly items = model<readonly T[]>([]);
 
-    public readonly content = input<PolymorpheusContent<TuiContext<T> & {index: number}>>(
-        ({$implicit}) => String($implicit),
-    );
+    public readonly content =
+        input<PolymorpheusContent<TuiContext<T> & {index: number}>>(TUI_STRINGIFY);
 
     protected onDrag(): void {
         this.dragging = true;

@@ -12,7 +12,7 @@
 
     p {
         margin: 0.25rem 0 0;
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
 
         &:empty {
             display: none;
@@ -47,17 +47,17 @@
     }
 
     [tuiSubtitle] {
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
         color: var(--tui-text-secondary);
         margin: 0;
     }
 
     [tuiLink] {
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
     }
 
     [tuiCaption] {
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
         color: var(--tui-text-secondary);
         font-weight: 500;
         text-transform: uppercase;
@@ -65,39 +65,31 @@
     }
 
     &[data-size='h1'] {
-        font: var(--tui-font-heading-1);
+        font: var(--tui-font-heading-h1);
     }
 
     &[data-size='h2'] {
-        font: var(--tui-font-heading-2);
+        font: var(--tui-font-heading-h2);
     }
 
     &[data-size='h3'] {
-        font: var(--tui-font-heading-3);
+        font: var(--tui-font-heading-h3);
     }
 
     &[data-size='h4'] {
-        font: var(--tui-font-heading-4);
+        font: var(--tui-font-heading-h4);
     }
 
     &[data-size='h5'] {
-        font: var(--tui-font-heading-5);
+        font: var(--tui-font-heading-h5);
     }
 
     &[data-size='h6'] {
-        font: var(--tui-font-heading-6);
-    }
-
-    &[data-size='body-xl'] {
-        font: var(--tui-font-text-xl);
-
-        [tuiTitle] {
-            font-weight: bold;
-        }
+        font: var(--tui-font-heading-h6);
     }
 
     &[data-size='body-l'] {
-        font: var(--tui-font-text-l);
+        font: var(--tui-font-body-l);
 
         [tuiTitle] {
             font-weight: bold;
@@ -105,7 +97,7 @@
     }
 
     &[data-size='body-m'] {
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
 
         [tuiTitle] {
             gap: 0.125rem;
@@ -117,7 +109,7 @@
     &[data-size='body-l'] {
         [tuiSubtitle],
         [tuiLink] {
-            font: var(--tui-font-text-s);
+            font: var(--tui-font-body-s);
         }
     }
 
@@ -126,7 +118,7 @@
     &[data-size='h3'] {
         [tuiSubtitle],
         [tuiLink] {
-            font: var(--tui-font-text-l);
+            font: var(--tui-font-body-l);
         }
     }
 }

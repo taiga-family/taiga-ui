@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, inject, Injectable, type OnDestroy} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
-import {tuiArrayRemove, tuiPure} from '@taiga-ui/cdk/utils';
+import {tuiArrayRemove} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, map, type Observable, share, skip, startWith} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
@@ -37,7 +37,9 @@ export class TuiActiveZone implements OnDestroy {
     }
 
     public set tuiActiveZoneParentSetter(zone: TuiActiveZone | null) {
-        this.setZone(zone);
+        this.tuiActiveZoneParent?.removeSubActiveZone(this);
+        zone?.addSubActiveZone(this);
+        this.tuiActiveZoneParent = zone;
     }
 
     public ngOnDestroy(): void {
@@ -49,13 +51,6 @@ export class TuiActiveZone implements OnDestroy {
         return (
             this.el.contains(node) || this.children.some((item) => item.contains(node))
         );
-    }
-
-    @tuiPure
-    private setZone(zone: TuiActiveZone | null): void {
-        this.tuiActiveZoneParent?.removeSubActiveZone(this);
-        zone?.addSubActiveZone(this);
-        this.tuiActiveZoneParent = zone;
     }
 
     // issue: https://github.com/typescript-eslint/typescript-eslint/issues/11770

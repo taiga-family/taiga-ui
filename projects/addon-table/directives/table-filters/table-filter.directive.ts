@@ -49,7 +49,7 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
         return (
             !!disabled ||
             !this.key() ||
-            this.delegate.filter(item[this.key() as keyof T], value)
+            this.delegate.filter()(item[this.key() as keyof T], value)
         );
     }
 }

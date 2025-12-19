@@ -1,128 +1,38 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .button-clear();
-
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    color: var(--tui-text-action);
-    margin-inline-end: 1.5rem;
-    outline: none;
-    cursor: pointer;
-    counter-increment: steps;
-    text-align: start;
-
-    &:disabled {
-        pointer-events: none;
-        color: var(--tui-text-secondary);
-    }
+    min-inline-size: fit-content;
 
     &:hover {
-        color: var(--tui-text-action-hover);
+        background: unset !important;
     }
 
-    &:not(:last-of-type)._vertical {
-        margin-block-end: 1.25rem;
+    &._active._active:not(:disabled) {
+        cursor: unset;
     }
 
-    &._active,
-    &._active:hover {
-        color: var(--tui-text-primary);
-        cursor: default;
+    &:not(._vertical) {
+        &:first-of-type {
+            padding-inline-start: 0;
+        }
+
+        &:last-of-type {
+            padding-inline-end: 0;
+        }
     }
 
-    &:focus-visible::before {
-        content: '';
-        position: absolute;
-        left: 2.75rem;
-        right: 0;
-        top: 50%;
-        block-size: 1.5rem;
-        margin-block-start: -0.75rem;
-        background: var(--tui-service-selection-background);
+    &._vertical {
+        padding-inline: 0;
+        margin-block-end: 0.5rem;
     }
 }
 
-.t-marker {
-    .transition(background);
-
-    position: relative;
-    display: flex;
-    inline-size: 2rem;
-    block-size: 2rem;
-    border-radius: 100%;
-    margin-inline-end: 0.75rem;
-    flex-shrink: 0;
-    align-items: center;
-    align-self: flex-start;
-    justify-content: center;
-    background: var(--tui-background-neutral-1);
-    color: var(--tui-text-action);
-    box-sizing: border-box;
-
+[tuiAvatar][data-size] {
     &::before {
-        font-size: 1rem;
+        transition: none;
     }
 
-    :host:disabled & {
-        background: var(--tui-background-neutral-1);
-        color: var(--tui-text-secondary);
-    }
-
-    &_index {
-        &::before {
-            content: counter(steps);
-        }
-
-        :host:hover & {
-            color: var(--tui-text-action-hover);
-            background: var(--tui-background-neutral-1-hover);
-        }
-
-        :host._active & {
-            color: var(--tui-text-primary-on-accent-1);
-            background: var(--tui-background-accent-1);
-        }
-
-        :host:not([data-state='normal']):not(._active) &,
-        :host:not(._active) .t-marker_custom ~ & {
-            display: none;
-        }
-    }
-
-    &_error {
-        background: var(--tui-status-negative-pale);
-        color: var(--tui-status-negative);
-
-        :host:hover & {
-            background: var(--tui-status-negative-pale-hover);
-            color: var(--tui-status-negative);
-        }
-
-        :host:not([data-state='error']) &,
-        :host._active & {
-            display: none;
-        }
-    }
-
-    &_pass {
-        :host:not([data-state='pass']) &,
-        :host._active & {
-            display: none;
-        }
-    }
-
-    &_custom {
-        :host:not([data-state='normal']) &,
-        :host._active & {
-            display: none;
-        }
-
-        :host:hover & {
-            color: var(--tui-text-action-hover);
-            background: var(--tui-background-neutral-1-hover);
-        }
+    &._initials::before {
+        font-weight: normal;
     }
 }

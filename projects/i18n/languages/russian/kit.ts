@@ -79,4 +79,12 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Сбросить масштаб',
     },
     phoneSearch: 'Введите страну или код',
+    dayRangePeriods: [
+        'За все время',
+        'Сегодня',
+        'Вчера',
+        'Текущая неделя',
+        'Текущий месяц',
+        'Прошлый месяц',
+    ],
 };

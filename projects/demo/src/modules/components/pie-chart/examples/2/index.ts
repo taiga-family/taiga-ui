@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPieChart} from '@taiga-ui/addon-charts';
+import {TuiChartHint, TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiAmountPipe, TuiHint, TuiPieChart],
+    imports: [TuiAmountPipe, TuiChartHint, TuiHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

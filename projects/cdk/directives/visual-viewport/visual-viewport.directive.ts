@@ -2,7 +2,8 @@ import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {ViewportService} from '@ng-web-apis/screen-orientation';
-import {tuiInjectElement, tuiPx} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Directive({
     selector: '[tuiVisualViewport]',

@@ -57,42 +57,42 @@
         </tui-textfield>
     } @else {
         @if (value() !== undefined) {
-            @switch (type()) {
-                @case ('boolean') {
+            @if (type() === 'boolean') {
+                <input
+                    tuiSwitch
+                    type="checkbox"
+                    [id]="name()"
+                    [ngModel]="value()"
+                    (ngModelChange)="onValueChange($event)"
+                />
+            }
+
+            @if (type() === 'string') {
+                <tui-textfield
+                    tuiTextfieldSize="m"
+                    class="t-input"
+                >
                     <input
-                        tuiSwitch
-                        type="checkbox"
+                        tuiInput
                         [id]="name()"
-                        [ngModel]="value()"
+                        [ngModel]="value() || ''"
                         (ngModelChange)="onValueChange($event)"
                     />
-                }
-                @case ('string') {
-                    <tui-textfield
-                        tuiTextfieldSize="m"
-                        class="t-input"
-                    >
-                        <input
-                            tuiInput
-                            [id]="name()"
-                            [ngModel]="value() || ''"
-                            (ngModelChange)="onValueChange($event)"
-                        />
-                    </tui-textfield>
-                }
-                @case ('number') {
-                    <tui-textfield tuiTextfieldSize="m">
-                        <input
-                            tuiInputNumber
-                            [id]="name()"
-                            [max]="numberItem?.max() ?? null"
-                            [min]="numberItem?.min() ?? null"
-                            [ngModel]="value()"
-                            [step]="1"
-                            (ngModelChange)="onValueChange($event || 0)"
-                        />
-                    </tui-textfield>
-                }
+                </tui-textfield>
+            }
+
+            @if (type() === 'number' || type() === 'bigint' || type() === 'number | bigint') {
+                <tui-textfield tuiTextfieldSize="m">
+                    <input
+                        tuiInputNumber
+                        [id]="name()"
+                        [max]="numberItem?.max() ?? null"
+                        [min]="numberItem?.min() ?? null"
+                        [ngModel]="value()"
+                        [step]="1"
+                        (ngModelChange)="onValueChange($event || 0)"
+                    />
+                </tui-textfield>
             }
         }
     }

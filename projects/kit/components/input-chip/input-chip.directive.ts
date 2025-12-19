@@ -11,7 +11,6 @@ import {
     type TuiTextfieldAccessor,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
@@ -32,15 +31,10 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
         tuiAsControl(TuiInputChipDirective),
         tuiFallbackValueProvider([]),
         tuiAsTextfieldAccessor(TuiInputChipDirective),
-        {
-            provide: TuiAppearance,
-            useFactory: () => inject(TuiAppearance, {skipSelf: true}),
-        },
     ],
     hostDirectives: [TuiWithInput],
     host: {
         enterkeyhint: 'enter',
-        '[attr.tuiAppearance]': 'null',
         '[disabled]': 'disabled()',
         '(keydown.enter.prevent)': 'onEnter()',
         '(keydown.zoneless)': 'onBackspace($event.key)',
@@ -121,7 +115,7 @@ export class TuiInputChipDirective<T>
     protected onBackspace(key: string): void {
         // (keydown.backspace) doesn't emit event on empty input in ios safari
         if (key === 'Backspace' && !this.textfield.value() && this.interactive()) {
-            if (this.mobile || !this.textfield.item) {
+            if (this.mobile || !this.textfield.item()) {
                 this.onChange(this.value().slice(0, -1));
             } else {
                 this.el.dispatchEvent(

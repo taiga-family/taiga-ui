@@ -3,7 +3,7 @@
   <tui-app-bar>
     <button
       tuiAppBarBack
-      tuiSlot="left"
+      tuiSlot="start"
     >
       Back
     </button>
@@ -12,7 +12,7 @@
       tuiIconButton
       icon="@tui.settings"
       title="settings"
-      tuiSlot="right"
+      tuiSlot="end"
     ></button>
   </tui-app-bar>
 </header>

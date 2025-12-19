@@ -4,7 +4,7 @@ import {
     ElementRef,
     NgZone,
     Renderer2,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {WA_WINDOW} from '@ng-web-apis/common';
@@ -31,8 +31,9 @@ describe('TuiAutoFocus directive', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestWithDiv {
-            @ViewChild(TuiAutoFocus, {read: ElementRef})
-            public element!: ElementRef<HTMLElement>;
+            public readonly element = viewChild.required(TuiAutoFocus, {
+                read: ElementRef,
+            });
         }
 
         let fixture: ComponentFixture<TestWithDiv>;
@@ -52,7 +53,7 @@ describe('TuiAutoFocus directive', () => {
             fixture.detectChanges();
             tick(100);
 
-            expect(tuiIsFocused(testComponent.element.nativeElement)).toBe(true);
+            expect(tuiIsFocused(testComponent.element().nativeElement)).toBe(true);
         }));
     });
 
@@ -65,8 +66,9 @@ describe('TuiAutoFocus directive', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestIos {
-            @ViewChild(TuiAutoFocus, {read: ElementRef})
-            public element!: ElementRef<HTMLElement>;
+            public readonly element = viewChild.required(TuiAutoFocus, {
+                read: ElementRef,
+            });
         }
 
         let fixture: ComponentFixture<TestIos>;
@@ -106,7 +108,7 @@ describe('TuiAutoFocus directive', () => {
             fixture.detectChanges();
             tick(100);
 
-            expect(tuiIsFocused(testComponent.element.nativeElement)).toBe(true);
+            expect(tuiIsFocused(testComponent.element().nativeElement)).toBe(true);
         }));
     });
 
@@ -122,8 +124,9 @@ describe('TuiAutoFocus directive', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestWithFocusFlag {
-            @ViewChild(TuiAutoFocus, {read: ElementRef})
-            public element!: ElementRef<HTMLElement>;
+            public readonly element = viewChild.required(TuiAutoFocus, {
+                read: ElementRef,
+            });
 
             public autoFocus = false;
         }
@@ -145,7 +148,7 @@ describe('TuiAutoFocus directive', () => {
             fixture.detectChanges();
             tick(100);
 
-            expect(tuiIsFocused(testComponent.element.nativeElement)).toBe(false);
+            expect(tuiIsFocused(testComponent.element().nativeElement)).toBe(false);
         }));
     });
 });

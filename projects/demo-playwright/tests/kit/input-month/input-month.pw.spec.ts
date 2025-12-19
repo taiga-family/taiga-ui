@@ -109,7 +109,7 @@ describe('InputMonth', () => {
 
                 await expect(inputMonth.calendar).not.toBeAttached();
 
-                await inputMonth.clickOnIcon();
+                await inputMonth.clickOnIcon({force: true});
                 await expect(inputMonth.calendar).not.toBeAttached();
             });
 
@@ -195,6 +195,45 @@ describe('InputMonth', () => {
                 await dropdown.locator('button', {hasText: "My wife's birthday"}).click();
                 await expect(inputMonth.calendar).not.toBeAttached();
                 await expect(inputMonth.textfield).toHaveValue('March 1998');
+            });
+        });
+
+        describe('Month range', () => {
+            beforeEach(({page}) => {
+                example = new TuiDocumentationPagePO(page).getExample('#range');
+                inputMonth = new TuiInputMonthPO(
+                    example.locator('tui-textfield:has([tuiInputMonthRange])'),
+                );
+            });
+
+            test('range select', async () => {
+                await inputMonth.textfield.click();
+
+                const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
+
+                await calendarMonth.month.nth(1).click();
+                await calendarMonth.month.nth(4).click();
+
+                await expect(inputMonth.textfield).toHaveValue(
+                    'February 2020 – May 2020',
+                );
+                await expect(inputMonth.calendar).not.toBeAttached();
+            });
+
+            test('disabled items', async () => {
+                await inputMonth.textfield.click();
+
+                const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
+
+                await calendarMonth.month.nth(1).click();
+                await expect(async () => {
+                    await calendarMonth.month.nth(3).click();
+                }).rejects.toThrow();
+
+                await expect(inputMonth.textfield).toHaveValue('');
+                await expect(example).toHaveScreenshot(
+                    'input-month-range-disabled-items.png',
+                );
             });
         });
     });

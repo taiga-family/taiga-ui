@@ -1,19 +1,10 @@
-import {
-    computed,
-    Directive,
-    effect,
-    inject,
-    Input,
-    signal,
-    untracked,
-} from '@angular/core';
+import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
     type MaskitoDateTimeParams,
     maskitoSelectionChangeHandler,
-    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
@@ -104,35 +95,33 @@ export class TuiInputDateTimeDirective
         ),
     );
 
-    public readonly timeMode = signal(this.options.timeMode);
-    public readonly minTime = signal(MIN_TIME);
-    public readonly maxTime = signal(MAX_TIME);
+    public override readonly min = computed<TuiDay>((min = this.minInput()) =>
+        Array.isArray(min) ? min[0] : (min ?? this.options.min),
+    );
 
-    // TODO(v5): use signal inputs
-    @Input('timeMode')
-    public set timeModeSetter(x: MaskitoTimeMode) {
-        this.timeMode.set(x);
-    }
+    public override readonly max = computed<TuiDay>((max = this.maxInput()) =>
+        Array.isArray(max) ? max[0] : (max ?? this.options.max),
+    );
 
-    @Input('min')
-    public override set minSetter(
-        min: TuiDay | readonly [TuiDay, TuiTime | null] | null,
-    ) {
-        const [date, time] = Array.isArray(min) ? min : [min, null];
+    public readonly minTime = computed((min = this.minInput()) =>
+        Array.isArray(min) ? min[1] : MIN_TIME,
+    );
 
-        this.min.set(date || this.options.min);
-        this.minTime.set(time ?? MIN_TIME);
-    }
+    public readonly maxTime = computed((max = this.maxInput()) =>
+        Array.isArray(max) ? max[1] : MAX_TIME,
+    );
 
-    @Input('max')
-    public override set maxSetter(
-        max: TuiDay | readonly [TuiDay, TuiTime | null] | null,
-    ) {
-        const [date, time] = Array.isArray(max) ? max : [max, null];
+    public readonly timeMode = input(this.options.timeMode);
 
-        this.max.set(date || this.options.max);
-        this.maxTime.set(time ?? MAX_TIME);
-    }
+    public readonly minInput = input<TuiDay | readonly [TuiDay, TuiTime | null] | null>(
+        this.options.min,
+        {alias: 'min'},
+    );
+
+    public readonly maxInput = input<TuiDay | readonly [TuiDay, TuiTime | null] | null>(
+        this.options.max,
+        {alias: 'max'},
+    );
 
     public setValue(value: readonly [TuiDay, TuiTime | null] | null): void {
         this.onChange(value);

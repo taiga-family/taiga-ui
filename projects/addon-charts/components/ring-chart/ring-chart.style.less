@@ -39,7 +39,7 @@
     .fullsize();
 
     display: flex;
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     max-block-size: 100%;
     flex-direction: column;
     justify-content: center;
@@ -53,7 +53,7 @@
     color: var(--tui-text-secondary);
 
     :host[data-size='m'] & {
-        font: var(--tui-font-text-xs);
+        font: var(--tui-font-body-xs);
     }
 }
 
@@ -61,22 +61,19 @@
     color: var(--tui-text-primary);
 
     :host[data-size='l'] & {
-        font: var(--tui-font-text-l);
+        font: var(--tui-font-body-l);
         font-weight: bold;
     }
 
     :host[data-size='m'] & {
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
         font-weight: bold;
     }
 }
 
 .t-shield {
     position: absolute;
-    top: 25%;
-    left: 25%;
-    right: 25%;
-    bottom: 25%;
+    inset: 25%;
     border-radius: 100%;
 }
 

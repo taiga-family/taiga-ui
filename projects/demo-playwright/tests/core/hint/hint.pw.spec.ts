@@ -3,6 +3,8 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {type TuiHintOptions} from '@taiga-ui/core';
 
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+
 test.describe('TuiHint', () => {
     test('TuiHint works', async ({page}) => {
         await tuiGoto(page, DemoRoute.Hint);
@@ -15,19 +17,19 @@ test.describe('TuiHint', () => {
 
     test.describe('Manual hint works', () => {
         const directions: Array<TuiHintOptions['direction']> = [
-            'bottom-left',
-            'bottom-right',
+            'bottom-start',
+            'bottom-end',
             'bottom',
-            'left-bottom',
-            'left-top',
-            'left',
-            'right-bottom',
-            'right-top',
-            'right',
-            'top-left',
-            'top-right',
+            'start-bottom',
+            'start-top',
+            'start',
+            'end-bottom',
+            'end-top',
+            'end',
+            'top-start',
+            'top-end',
             'top',
-            ['bottom', 'left'],
+            ['bottom', 'start'],
         ];
 
         directions.forEach((direction, directionIndex) => {
@@ -154,5 +156,28 @@ test.describe('TuiHint', () => {
         await page.waitForTimeout(300);
 
         await expect.soft(example).toHaveScreenshot('07-hint.png');
+    });
+
+    test.describe('Mobile', () => {
+        test.use(TUI_PLAYWRIGHT_MOBILE);
+
+        test('Increment inside hint', async ({page}) => {
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+            await tuiGoto(page, DemoRoute.Hint);
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('[tuiAvatar]').click();
+
+            const button = page.locator('tui-hint button');
+
+            await button.click();
+            await button.click();
+            await button.click();
+            await page.locator('tui-hint').click();
+            await expect.soft(page).toHaveScreenshot('09-hint-on-mobile.png');
+
+            await example.click();
+            await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
+        });
     });
 });

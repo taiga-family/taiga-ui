@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiChartHint, TuiLineChart} from '@taiga-ui/addon-charts';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiHint, type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiAxes, TuiHint, TuiLineChart],
+    imports: [TuiAxes, TuiChartHint, TuiHint, TuiLineChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

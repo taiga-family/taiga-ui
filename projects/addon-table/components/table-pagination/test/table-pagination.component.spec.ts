@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiTablePagination, type TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 
@@ -19,9 +19,7 @@ describe('TablePagination', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiTablePagination, {static: true})
-        public component!: TuiTablePagination;
-
+        public readonly component = viewChild.required(TuiTablePagination);
         public page = 3;
         public size = 10;
 
@@ -43,21 +41,21 @@ describe('TablePagination', () => {
 
     describe('Keeps current top item on the page when switching page size', () => {
         it('31 switching to 20', () => {
-            testComponent.component.onItem(20);
+            testComponent.component().onItem(20);
             fixture.detectChanges();
 
             expect(testComponent.page).toBe(1);
         });
 
         it('31 switching to 50', () => {
-            testComponent.component.onItem(50);
+            testComponent.component().onItem(50);
             fixture.detectChanges();
 
             expect(testComponent.page).toBe(0);
         });
 
         it('31 switching to 100', () => {
-            testComponent.component.onItem(100);
+            testComponent.component().onItem(100);
             fixture.detectChanges();
 
             expect(testComponent.page).toBe(0);

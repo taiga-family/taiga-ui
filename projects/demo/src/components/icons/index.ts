@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {type TuiLooseUnion} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
@@ -20,7 +19,7 @@ export class TuiDocIcons {
         '@tui.dollar-sign',
     ];
 
-    public readonly hiddenOptions = input<Array<TuiLooseUnion<keyof TuiDocIcons>>>([]);
+    public readonly hiddenOptions = input<Array<string | keyof TuiDocIcons>>([]);
 
     public iconStart = '';
     public iconEnd = '';

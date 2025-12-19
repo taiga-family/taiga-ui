@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {EMPTY_ARRAY, type TuiHandler} from '@taiga-ui/cdk';
+import {type TuiHandler} from '@taiga-ui/cdk';
 import {TuiTiles, TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
@@ -46,7 +46,7 @@ export default class Example {
     };
 
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
-        item.children || EMPTY_ARRAY;
+        item.children || [];
 
     protected onDrag(drag: TreeNode): void {
         this.drag.set(drag);

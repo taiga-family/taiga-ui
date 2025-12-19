@@ -15,5 +15,5 @@ export default class Example {
     protected readonly axisYLabels = ['', '25%', '50%', '75%', '100%'];
     protected readonly axisYSecondaryLabels = ['80 k', '100 k', '120 k'];
     protected readonly verticalLinesHandler: TuiLineHandler = (index, total) =>
-        index === total - 1 ? 'none' : 'dashed';
+        (index && (index === total - 1 ? 'none' : 'dashed')) || 'solid';
 }

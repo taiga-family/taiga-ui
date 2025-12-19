@@ -3,7 +3,6 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
 import {PAGE_SEE_ALSO, TuiDocPage} from '@taiga-ui/addon-doc';
 import {TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
 
 describe('TuiDocPageComponent', () => {
     let component: TuiDocPage;
@@ -59,9 +58,8 @@ describe('TuiDocPageComponent', () => {
         expect(component.activeItemIndex()).toBe(0);
     });
 
-    it('TuiDocPageTabConnectorDirective', () => {
-        expect(EMPTY_QUERY.dirty).toBe(true);
-        expect(component.tabConnectors.dirty).toBe(false);
+    it('should have tabConnectors as signal returning empty array initially', () => {
+        expect(component.tabConnectors()).toEqual([]);
     });
 
     it('should have deprecated set to false by default', () => {

@@ -17,7 +17,7 @@
             }
         },
         "build": {
-            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "executor": "@angular/build:ng-packagr",
             "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "tsconfig.build.json",

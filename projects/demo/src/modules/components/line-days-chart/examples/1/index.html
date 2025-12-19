@@ -9,19 +9,17 @@
         <tui-calendar-range *tuiDropdown />
     </tui-textfield>
 </p>
-@if (computeLabels$(range) | async; as labels) {
-    <tui-axes
-        class="axes"
-        [axisXLabels]="labels"
-        [horizontalLines]="4"
-        [verticalLines]="labels.length - 1"
-    >
-        <tui-line-days-chart
-            class="chart"
-            [height]="200"
-            [value]="value"
-            [xStringify]="xStringify$ | async"
-            [yStringify]="yStringify"
-        />
-    </tui-axes>
-}
+<tui-axes
+    class="axes"
+    [axisXLabels]="labels()"
+    [horizontalLines]="5"
+    [verticalLines]="labels().length"
+>
+    <tui-line-days-chart
+        class="chart"
+        [height]="200"
+        [value]="value()"
+        [xStringify]="xStringify()"
+        [yStringify]="yStringify"
+    />
+</tui-axes>

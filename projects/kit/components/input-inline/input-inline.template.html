@@ -1,10 +1,9 @@
-@let value = value$ | async;
 <span
     class="t-before"
-    [textContent]="value"
+    [textContent]="value()"
 ></span>
 
-@if (!value) {
+@if (!value()) {
     <span
         automation-id="tui-input-inline__placeholder"
         class="t-placeholder"

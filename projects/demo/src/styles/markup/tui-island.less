@@ -1,0 +1,200 @@
+@padding: 1rem;
+@padding-large: 1.25rem;
+
+.tui-island {
+    position: relative;
+    display: block;
+    border-radius: var(--tui-radius-xl);
+    background-color: var(--tui-background-base);
+    overflow-wrap: break-word;
+    text-decoration: none;
+    color: var(--tui-text-primary);
+    outline: none;
+    box-sizing: content-box;
+
+    &:not(&_hoverable)::before {
+        .fullsize();
+
+        content: '';
+        box-sizing: border-box;
+        border: 1px solid var(--tui-border-normal);
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    &:focus,
+    &:hover:focus {
+        &::before {
+            border-color: var(--tui-border-focus);
+        }
+    }
+
+    &_hoverable {
+        .transition();
+
+        background: var(--tui-background-elevation-2);
+        box-shadow: var(--tui-shadow-small);
+        cursor: pointer;
+        transition-property: transform, box-shadow;
+        will-change: transform, box-shadow;
+
+        &:hover {
+            box-shadow: var(--tui-shadow-small-hover);
+            transform: translateY(-0.25rem);
+        }
+    }
+
+    &_transparent {
+        background-color: transparent;
+    }
+
+    &_size_s {
+        --tui-radius-xl: calc(4 * var(--tui-radius-l) / 3);
+
+        font: var(--tui-font-body-s);
+        padding: @padding;
+    }
+
+    &_size_m {
+        --tui-radius-xl: calc(5 * var(--tui-radius-l) / 3);
+
+        font: var(--tui-font-body-m);
+        padding: @padding;
+    }
+
+    &_size_l {
+        font: var(--tui-font-body-m);
+        padding: @padding-large;
+    }
+
+    &_text-align_left {
+        text-align: start;
+    }
+
+    &_text-align_center {
+        text-align: center;
+    }
+
+    &_text-align_right {
+        text-align: end;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+
+        .tui-island_text-align_center & {
+            display: block;
+        }
+
+        & > * {
+            min-inline-size: 0;
+        }
+    }
+
+    &__category {
+        font-size: 0.6875rem;
+        line-height: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.075em;
+        margin: 0 0 0.5rem;
+        color: var(--tui-text-secondary);
+
+        .tui-island_size_l & {
+            margin: 0 0 0.75rem;
+        }
+    }
+
+    &__title {
+        font: var(--tui-font-body-m);
+        margin: 0 0 0.5rem;
+
+        .tui-island_size_m & {
+            font: var(--tui-font-heading-h6);
+            margin: 0 0 0.75rem;
+        }
+
+        .tui-island_size_l & {
+            font: var(--tui-font-heading-h6);
+        }
+    }
+
+    &__paragraph {
+        margin: 0;
+        color: var(--tui-text-secondary);
+
+        &_link.tui-island__paragraph {
+            margin-block-start: 1rem;
+
+            .tui-island_size_l & {
+                margin: 1rem 0 0;
+            }
+        }
+
+        &_button.tui-island__paragraph {
+            margin-block-start: 1.25rem;
+
+            .tui-island_size_l & {
+                margin: 1.25rem 0 0;
+            }
+        }
+    }
+
+    &__figure {
+        display: flex;
+        justify-content: center;
+        order: 1;
+        flex-shrink: 0;
+        margin: 0 0 0 1rem;
+
+        .tui-island_size_l & {
+            margin-inline-start: 2.25rem;
+        }
+
+        .tui-island_text-align_center & {
+            margin: 0 0 0.75rem;
+        }
+    }
+
+    &__carousel-controls {
+        display: flex;
+        padding-block-end: 1rem;
+        margin-block-end: 1rem;
+        border-block-end: 1px solid var(--tui-border-normal);
+        white-space: nowrap;
+    }
+
+    &__carousel-pages {
+        margin-inline-start: auto;
+        color: var(--tui-text-secondary);
+    }
+
+    &__carousel-button {
+        margin-inline-end: 0.5rem;
+    }
+
+    .tui-island &__footer-button {
+        display: block;
+        max-inline-size: unset;
+        inline-size: ~'calc(100% + 1.875rem);'; // margin compensation
+        margin: @padding calc(-1rem + 1px) calc(-1rem + 1px); // 1px is compensations of border
+        border-block-start: 1px solid var(--tui-border-normal);
+        border-radius: 0 0 var(--tui-radius-xl) var(--tui-radius-xl);
+    }
+
+    .tui-island_size_l &__footer-button {
+        inline-size: ~'calc(100% + 2.375rem);'; // margin compensation
+        margin: @padding-large calc(-1.25rem + 1px) calc(-1.25rem + 1px); // 1px is compensations of border
+    }
+
+    &__marker {
+        &:first-child:not(:only-child) {
+            margin-inline-end: 1.25rem;
+        }
+
+        &:not(:first-child),
+        &:only-child {
+            margin-inline-start: 1.25rem;
+        }
+    }
+}

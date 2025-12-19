@@ -3,9 +3,9 @@ import {
     Component,
     input,
     output,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
-import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
+import {TUI_CALENDAR_DATE_STREAM, TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -13,7 +13,6 @@ import {
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
 
@@ -51,13 +50,9 @@ describe('Mobile calendar', () => {
         protected max = TUI_LAST_DAY;
         protected disabledItemHandler = TUI_FALSE_HANDLER;
 
-        @ViewChild(TuiMobileCalendar, {static: true})
-        public calendar!: TuiMobileCalendar;
-
+        public readonly calendar = viewChild.required(TuiMobileCalendar);
         public readonly single = input(true);
-
         public readonly cancel = output<boolean>();
-
         public readonly confirm = output<TuiDay | TuiDayRange | readonly TuiDay[]>();
     }
 
@@ -137,7 +132,7 @@ describe('Mobile calendar', () => {
                 .then((wrapper) => wrapper.component)
                 .then((component) => {
                     cy.wait(500).then(() => {
-                        component.calendar.setYear(1950);
+                        component.calendar().setYear(1950);
 
                         cy.get(
                             '[automation-id="tui-primitive-calendar-mobile__cell"]:visible',

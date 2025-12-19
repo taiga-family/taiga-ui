@@ -1,27 +1,29 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    computed,
+    inject,
+    Pipe,
+    type PipeTransform,
+    signal,
+    untracked,
+} from '@angular/core';
 
 import {TuiTableDirective} from '../directives/table.directive';
-import {type TuiSortDirection} from '../table.options';
 
 @Pipe({
     name: 'tuiTableSort',
     pure: false,
 })
-export class TuiTableSortPipe implements PipeTransform {
+export class TuiTableSortPipe<T> implements PipeTransform {
     private readonly table = inject(TuiTableDirective<any>);
+    private readonly data = signal<readonly T[]>([]);
+    private readonly sorted = computed(
+        (direction = this.table.direction(), sorter = this.table.sorter()) =>
+            [...this.data()].sort((a, b) => direction * sorter(a, b)),
+    );
 
-    public transform<T>(data?: readonly T[] | null): readonly T[] {
-        return this.sort<T>(data ?? [], this.table.sorter, this.table.direction());
-    }
+    public transform(data?: readonly T[] | null): readonly T[] {
+        untracked(() => this.data.set(data ?? []));
 
-    @tuiPure
-    private sort<T>(
-        data: readonly T[],
-        sorter: TuiComparator<T>,
-        direction: TuiSortDirection,
-    ): readonly T[] {
-        return [...data].sort((a, b) => direction * sorter(a, b));
+        return this.sorted();
     }
 }

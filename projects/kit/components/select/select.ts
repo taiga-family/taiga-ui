@@ -3,7 +3,7 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownContent} from '@taiga-ui/core/portals';
+import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiNativeSelect} from './native-select/native-select.component';
 import {TuiSelectDirective} from './select.directive';

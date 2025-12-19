@@ -6,7 +6,7 @@ import {
     contentChildren,
     ElementRef,
     inject,
-    Input,
+    input,
     TemplateRef,
     viewChild,
 } from '@angular/core';
@@ -74,8 +74,7 @@ export class TuiSearchFiltersComponent {
         ),
     );
 
-    @Input()
-    public size: TuiSizeS = 'm';
+    public readonly size = input<TuiSizeS>('m');
 
     protected onReset(): void {
         this.controls().forEach(({control}, index) => {

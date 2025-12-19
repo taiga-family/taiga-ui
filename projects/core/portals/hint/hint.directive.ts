@@ -41,7 +41,7 @@ import {TuiHintPosition} from './hint-position.directive';
         },
         {
             directive: TuiHintPosition,
-            inputs: ['tuiHintDirection'],
+            inputs: ['tuiHintDirection', 'tuiHintOffset'],
             outputs: ['tuiHintDirectionChange'],
         },
     ],

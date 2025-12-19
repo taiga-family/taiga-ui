@@ -1,9 +1,9 @@
 import {type Signal, type WritableSignal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 
-type M = MaskitoOptions | null;
+type M = MaskitoOptions;
 
 export function tuiMaskito(options: M | WritableSignal<M>): WritableSignal<M>;
 export function tuiMaskito(options: Signal<M>): Signal<M>;

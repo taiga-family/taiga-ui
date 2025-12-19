@@ -1,8 +1,8 @@
 <p>Right-click any table row.</p>
 
 <table tuiTable>
-    <thead tuiTHead>
-        <tr tuiThGroup>
+    <thead>
+        <tr>
             @for (column of tableColumns; track column) {
                 <th tuiTh>
                     {{ column }}
@@ -40,7 +40,7 @@
                         }
                         <button
                             iconEnd="@tui.chevron-right"
-                            tuiDropdownAlign="right"
+                            tuiDropdownAlign="end"
                             tuiDropdownSided
                             tuiOption
                             type="button"

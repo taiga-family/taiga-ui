@@ -10,7 +10,7 @@ import {TuiInputColor, tuiInputColorOptionsProvider} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
+    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'end'})],
 })
 export default class Example {
     protected value = '#ff7f50cc';

@@ -13,7 +13,7 @@ import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Component({
     template: '',
-    styleUrl: './group.style.less',
+    styles: '@import "@taiga-ui/core/styles/components/group.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-group'},

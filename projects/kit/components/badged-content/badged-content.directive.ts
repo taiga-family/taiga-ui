@@ -1,10 +1,8 @@
-import {Directive, Input} from '@angular/core';
-import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
+import {Directive, input} from '@angular/core';
 
 @Directive({
     selector: '[tuiSlot]',
 })
 export class TuiBadgedContentDirective {
-    @Input()
-    public tuiSlot: TuiLooseUnion<'bottom' | 'top'> = 'top';
+    public readonly tuiSlot = input<string | 'bottom' | 'top'>('top');
 }

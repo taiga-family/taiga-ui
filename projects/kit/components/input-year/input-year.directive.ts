@@ -1,4 +1,4 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
@@ -39,8 +39,6 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_YEAR_OPTIONS);
-    protected readonly min = signal(this.options.min.year);
-    protected readonly max = signal(this.options.max.year);
     protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
         (x) => x instanceof TuiCalendarYear,
     );
@@ -83,17 +81,8 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    // TODO(v5): use signal inputs
-    @Input('min')
-    public set minSetter(x: number) {
-        this.min.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('max')
-    public set maxSetter(x: number) {
-        this.max.set(x);
-    }
+    public readonly min = input(this.options.min.year);
+    public readonly max = input(this.options.max.year);
 
     protected toggle(): void {
         if (this.interactive()) {

@@ -1,20 +1,17 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
+    computed,
     inject,
-    Input,
-    Output,
+    input,
+    model,
 } from '@angular/core';
+import {TuiChartHint} from '@taiga-ui/addon-charts/components/chart-hint';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiGenerateId, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TuiHint,
-    TuiHintOptionsDirective,
-    tuiHintOptionsProvider,
-} from '@taiga-ui/core/portals/hint';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiHint, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -42,83 +39,25 @@ const TRANSFORM = {
     styleUrl: './pie-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [
-        tuiHintOptionsProvider({direction: 'top-right', appearance: 'floating'}),
+        tuiHintOptionsProvider({
+            direction: 'top-end',
+            appearance: 'floating',
+            showDelay: 0,
+            hideDelay: 0,
+        }),
     ],
     host: {
-        '[attr.data-size]': 'size',
-        '[class._empty]': 'empty',
+        '[attr.data-size]': 'size()',
+        '[class._empty]': '!getSum()',
     },
 })
 export class TuiPieChart {
-    private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    private readonly hintOptions = inject(TuiChartHint, {optional: true});
     private readonly autoId = tuiGenerateId();
 
-    @Input()
-    public value: readonly number[] = [];
-
-    @Input()
-    public size: TuiSizeXL | TuiSizeXS = 'm';
-
-    @Input()
-    public masked = false;
-
-    @Input()
-    public activeItemIndex = NaN;
-
-    @Output()
-    public readonly activeItemIndexChange = new EventEmitter<number>();
-
-    constructor() {
-        if (this.hintOptions) {
-            this.hintOptions.showDelay = 0;
-            this.hintOptions.hideDelay = 0;
-        }
-    }
-
-    protected get empty(): boolean {
-        return !this.getSum(this.value);
-    }
-
-    protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
-        return this.hintOptions?.content || '';
-    }
-
-    protected get maskId(): string {
-        return `tui-ring-chart-${this.autoId}`;
-    }
-
-    protected get mask(): string | null {
-        return this.masked ? `url(#${this.maskId})` : null;
-    }
-
-    protected get radius(): string {
-        return RADII[this.size];
-    }
-
-    protected get segments(): ReadonlyArray<[number, number]> {
-        return this.getSegments(this.value);
-    }
-
-    protected getTransform(index: number): string | null {
-        const transform = this.masked
-            ? `scale(${TRANSFORM[this.size]})`
-            : `scale(${TRANSFORM.xs})`;
-
-        return index === this.activeItemIndex ? transform : null;
-    }
-
-    protected onHovered(hovered: boolean, index: number): void {
-        this.updateActiveItemIndex(hovered ? index : NaN);
-    }
-
-    @tuiPure
-    private getSum(value: readonly number[]): number {
-        return tuiSum(...value);
-    }
-
-    @tuiPure
-    private getSegments(value: readonly number[]): ReadonlyArray<[number, number]> {
-        return value
+    protected readonly getSum = computed(() => tuiSum(...this.value()));
+    protected readonly segments = computed<ReadonlyArray<[number, number]>>(() =>
+        this.value()
             .map((initial, i, array) =>
                 array.reduce(
                     (sum, current, j) => (j < i ? this.getDeg(current) + sum : sum),
@@ -128,19 +67,43 @@ export class TuiPieChart {
             .map((angle, index, array) => [
                 array[index - 1] || 0,
                 Math.min(angle, 359.9999),
-            ]);
+            ]),
+    );
+
+    public readonly value = input<readonly number[]>([]);
+    public readonly size = input<TuiSizeXL | TuiSizeXS>('m');
+    public readonly masked = input(false);
+    public readonly activeItemIndex = model(NaN);
+
+    protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
+        return this.hintOptions?.content() || '';
+    }
+
+    protected get maskId(): string {
+        return `tui-ring-chart-${this.autoId}`;
+    }
+
+    protected get mask(): string | null {
+        return this.masked() ? `url(#${this.maskId})` : null;
+    }
+
+    protected get radius(): string {
+        return RADII[this.size()];
+    }
+
+    protected getTransform(index: number): string | null {
+        const transform = this.masked()
+            ? `scale(${TRANSFORM[this.size()]})`
+            : `scale(${TRANSFORM.xs})`;
+
+        return index === this.activeItemIndex() ? transform : null;
+    }
+
+    protected onHovered(hovered: boolean, index: number): void {
+        this.activeItemIndex.set(hovered ? index : NaN);
     }
 
     private getDeg(value: number): number {
-        return 360 * (value / this.getSum(this.value)) || 0;
-    }
-
-    private updateActiveItemIndex(index: number): void {
-        if (index === this.activeItemIndex) {
-            return;
-        }
-
-        this.activeItemIndex = index;
-        this.activeItemIndexChange.next(index);
+        return 360 * (value / this.getSum()) || 0;
     }
 }

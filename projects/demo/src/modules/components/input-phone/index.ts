@@ -27,6 +27,8 @@ export default class PageComponent {
         '+1 ### ###-####',
     ];
 
+    protected filler = '';
+
     protected phoneMask = this.phoneMasks[0]!;
 
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);

@@ -1,6 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    .transition(background);
+
     position: relative;
     text-align: start;
     background: var(--tui-background-base);
@@ -24,11 +26,6 @@
         border-inline-start: none;
     }
 
-    // TODO(v5): Remove after we drop all legacy controls
-    &._editable:focus-within {
-        z-index: 1;
-    }
-
     &._editable {
         padding: 0 !important;
         vertical-align: top;
@@ -37,7 +34,7 @@
 
 :host(th) {
     position: sticky;
-    z-index: 1;
+    z-index: 100;
 
     &::after {
         .transition(opacity);
@@ -54,7 +51,7 @@
     }
 
     &:focus-within:not(:disabled) {
-        z-index: 11;
+        z-index: 1100;
     }
 }
 
@@ -63,7 +60,7 @@
 }
 
 :host-context(table._stuck) {
-    z-index: 10;
+    z-index: 1000;
 }
 
 :host-context(table._stuck):last-of-type::after {
@@ -72,25 +69,25 @@
 
 :host-context(table[data-size='l']) {
     block-size: var(--tui-height-l);
-    font: var(--tui-font-text-m);
-    padding: 1rem;
+    font: var(--tui-font-body-m);
+    padding: calc(1rem - 1px) 1rem 1rem;
 }
 
 :host-context(table[data-size='m']) {
     block-size: var(--tui-height-m);
-    font: var(--tui-font-text-s);
-    padding: 0.75rem;
+    font: var(--tui-font-body-s);
+    padding: calc(0.75rem - 1px) 0.75rem 0.75rem;
 }
 
 :host-context(table[data-size='s']) {
     block-size: var(--tui-height-s);
-    font: var(--tui-font-text-s);
-    padding: 0.25rem 0.5rem;
+    font: var(--tui-font-body-s);
+    padding: calc(0.25rem - 1px) 0.5rem 0.25rem;
 }
 
 :host(td) {
     &:focus-within {
-        z-index: 1;
+        z-index: 100 !important;
     }
 
     &:not(:focus-within) {

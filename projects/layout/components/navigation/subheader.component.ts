@@ -17,7 +17,7 @@ const PROVIDERS = [
     tuiBreadcrumbsOptionsProvider({icon: '/'}),
     tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
     tuiTabsOptionsProvider({size: 'm'}),
-    tuiDropdownOptionsProvider({align: 'right'}),
+    tuiDropdownOptionsProvider({align: 'end'}),
     tuiBadgeOptionsProvider({size: 'm'}),
 ];
 

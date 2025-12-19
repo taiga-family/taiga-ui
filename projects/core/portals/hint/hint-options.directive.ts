@@ -1,47 +1,34 @@
-import {
-    Directive,
-    type FactoryProvider,
-    inject,
-    InjectionToken,
-    Input,
-    type OnChanges,
-    Optional,
-    Self,
-    SkipSelf,
-} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {type FactoryProvider, InjectionToken, Optional, SkipSelf} from '@angular/core';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import {tuiOverrideOptions} from '@taiga-ui/core/utils';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {Subject} from 'rxjs';
+import {tuiOverrideOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 export type TuiHintDirection =
-    | 'bottom-left'
-    | 'bottom-right'
+    | 'bottom-end'
+    | 'bottom-start'
     | 'bottom'
-    | 'left-bottom'
-    | 'left-top'
-    | 'left'
-    | 'right-bottom'
-    | 'right-top'
-    | 'right'
-    | 'top-left'
-    | 'top-right'
+    | 'end-bottom'
+    | 'end-top'
+    | 'end'
+    | 'start-bottom'
+    | 'start-top'
+    | 'start'
+    | 'top-end'
+    | 'top-start'
     | 'top';
 
 export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
-    'bottom-left',
+    'bottom-start',
     'bottom',
-    'bottom-right',
-    'top-left',
+    'bottom-end',
+    'top-start',
     'top',
-    'top-right',
-    'left-top',
-    'left',
-    'left-bottom',
-    'right-top',
-    'right',
-    'right-bottom',
+    'top-end',
+    'start-top',
+    'start',
+    'start-bottom',
+    'end-top',
+    'end',
+    'end-bottom',
 ];
 
 export interface TuiHintOptions extends TuiAppearanceOptions {
@@ -53,7 +40,7 @@ export interface TuiHintOptions extends TuiAppearanceOptions {
 
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
-    direction: 'bottom-left',
+    direction: 'bottom-start',
     showDelay: 500,
     hideDelay: 200,
     appearance: '',
@@ -72,43 +59,6 @@ export const tuiHintOptionsProvider: (
     options: Partial<TuiHintOptions>,
 ) => FactoryProvider = (override: Partial<TuiHintOptions>) => ({
     provide: TUI_HINT_OPTIONS,
-    deps: [
-        [new Optional(), new Self(), TuiHintOptionsDirective],
-        [new Optional(), new SkipSelf(), TUI_HINT_OPTIONS],
-    ],
+    deps: [[new Optional(), new SkipSelf(), TUI_HINT_OPTIONS]],
     useFactory: tuiOverrideOptions(override, TUI_HINT_DEFAULT_OPTIONS),
 });
-
-/**
- * @deprecated: drop in 5.0
- */
-@Directive({
-    selector: '[tuiHintContent]',
-    providers: [tuiProvide(TUI_HINT_OPTIONS, TuiHintOptionsDirective)],
-})
-export class TuiHintOptionsDirective implements TuiHintOptions, OnChanges {
-    private readonly options = inject(TUI_HINT_OPTIONS, {skipSelf: true});
-
-    @Input('tuiHintContent')
-    public content: PolymorpheusContent;
-
-    @Input('tuiHintDirection')
-    public direction = this.options.direction;
-
-    @Input('tuiHintAppearance')
-    public appearance = this.options.appearance;
-
-    @Input('tuiHintShowDelay')
-    public showDelay = this.options.showDelay;
-
-    @Input('tuiHintHideDelay')
-    public hideDelay = this.options.hideDelay;
-
-    public icon = this.options.icon;
-
-    public readonly change$ = new Subject<void>();
-
-    public ngOnChanges(): void {
-        this.change$.next();
-    }
-}

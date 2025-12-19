@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
+import {TUI_CALENDAR_DATE_STREAM, TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -13,7 +13,6 @@ import {
     TuiDay,
     type TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {type Observable} from 'rxjs';
 
 @Component({

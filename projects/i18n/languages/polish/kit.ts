@@ -79,4 +79,12 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Resetowanie',
     },
     phoneSearch: 'Nuna imaluunniit kode allaguk',
+    dayRangePeriods: [
+        'Przez cały czas',
+        'Dzisiaj',
+        'Wczoraj',
+        'W tym tygodniu',
+        'W tym miesiącu',
+        'Poprzedni miesiąc',
+    ],
 };

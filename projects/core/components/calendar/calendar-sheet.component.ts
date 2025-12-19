@@ -13,7 +13,7 @@ import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 
 import {TUI_CALENDAR_OPTIONS} from './calendar.options';
@@ -184,7 +184,6 @@ export class TuiCalendarSheet {
         this.dayClick.emit(item);
     }
 
-    @tuiPure
     private getRange(
         value: TuiDay | TuiDayRange,
         hoveredItem: TuiDay | null,

@@ -3,9 +3,9 @@ import {InjectionToken, Optional, type Provider} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {type TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
 import {EMPTY, type Observable} from 'rxjs';
 
+import {TUI_CALENDAR_DATE_STREAM} from './calendar-date-stream';
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
 
 /**

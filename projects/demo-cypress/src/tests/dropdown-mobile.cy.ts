@@ -74,7 +74,6 @@ interface User {
                     />
                     <tui-data-list-wrapper
                         *tuiDropdown
-                        new
                         [itemContent]="template"
                         [items]="users"
                     />
@@ -98,7 +97,6 @@ interface User {
 
                     <ng-container *tuiDropdown>
                         <tui-data-list-wrapper
-                            new
                             tuiMultiSelectGroup
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
@@ -133,7 +131,7 @@ interface User {
                     <span tuiTitle>
                         {{ user.name }}
                         <span tuiSubtitle>
-                            {{ user.balance | tuiAmount: '$' : 'left' }}
+                            {{ user.balance | tuiAmount: '$' : 'start' }}
                         </span>
                     </span>
                 </span>

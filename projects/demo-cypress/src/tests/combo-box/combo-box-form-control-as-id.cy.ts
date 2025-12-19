@@ -72,7 +72,7 @@ export class Sandbox implements OnInit {
 
     public readonly control = input(new FormControl<number | null>(null));
 
-    public readonly valueChanges = output();
+    public readonly valueChanges = output<number | null>();
 
     public readonly inputEvent = output<string>();
 

@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    input,
     Output,
     signal,
 } from '@angular/core';
@@ -19,7 +20,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
@@ -51,17 +52,25 @@ export class TuiCalendarMonth {
             (this.options.rangeMode && x instanceof TuiMonth),
     );
 
+    protected readonly handler = computed(() =>
+        this.calculateDisabledItemHandlerWithMinMax(
+            this.disabledItemHandler(),
+            this.value(),
+            this.isRangePicking(),
+            this.min(),
+            this.max(),
+            this.minLength(),
+            this.maxLength(),
+        ),
+    );
+
     @Input()
     public year: TuiYear = TODAY;
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = TUI_FALSE_HANDLER;
-
-    @Input()
-    public minLength: number | null = null;
-
-    @Input()
-    public maxLength: number | null = null;
+    public readonly minLength = input<number | null>(null);
+    public readonly maxLength = input<number | null>(null);
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiMonth>>(TUI_FALSE_HANDLER);
 
     @Output()
     public readonly monthClick = new EventEmitter<TuiMonth>();
@@ -141,18 +150,6 @@ export class TuiCalendarMonth {
         return min < months && months < max ? 'middle' : null;
     }
 
-    protected get disabledItemHandlerWithMinMax(): TuiBooleanHandler<TuiMonth> {
-        return this.calculateDisabledItemHandlerWithMinMax(
-            this.disabledItemHandler,
-            this.value(),
-            this.isRangePicking(),
-            this.min(),
-            this.max(),
-            this.minLength,
-            this.maxLength,
-        );
-    }
-
     protected getTuiMonth(monthNumber: number, yearNumber: number): TuiMonth {
         return new TuiMonth(yearNumber, monthNumber);
     }
@@ -170,7 +167,7 @@ export class TuiCalendarMonth {
     }
 
     protected onItemClick(month: TuiMonth): void {
-        if (!this.disabledItemHandlerWithMinMax(month)) {
+        if (!this.handler()(month)) {
             this.monthClick.emit(month);
         }
     }
@@ -184,7 +181,6 @@ export class TuiCalendarMonth {
     }
 
     // eslint-disable-next-line @typescript-eslint/max-params,max-params
-    @tuiPure
     private calculateDisabledItemHandlerWithMinMax(
         disabledItemHandler: TuiBooleanHandler<TuiMonth>,
         value: TuiMonth | TuiMonthRange | null,

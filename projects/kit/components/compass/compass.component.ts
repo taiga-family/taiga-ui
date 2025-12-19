@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 
@@ -12,10 +12,9 @@ import {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.--t-degrees.deg]': 'degrees',
+        '[style.--t-degrees.deg]': 'degrees()',
     },
 })
 export class TuiCompass {
-    @Input()
-    public degrees = NaN;
+    public readonly degrees = input(NaN);
 }

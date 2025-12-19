@@ -84,7 +84,7 @@
 
 <section>
     @for (_ of '-'.repeat(3); track $index) {
-        <tui-chip>
+        <span tuiChip>
             Close button {{ $index + 1 }}
             <button
                 iconStart="@tui.x"
@@ -94,15 +94,16 @@
             >
                 Remove
             </button>
-        </tui-chip>
+        </span>
     }
 </section>
 
 <h3>Input</h3>
 <section>
     @for (_ of '-'.repeat(values.length); track $index) {
-        <tui-chip
+        <span
             appearance=""
+            tuiChip
             [style.color]="'transparent'"
         >
             {{ values[$index] }}
@@ -110,6 +111,6 @@
                 tuiChip
                 [(ngModel)]="values[$index]"
             />
-        </tui-chip>
+        </span>
     }
 </section>

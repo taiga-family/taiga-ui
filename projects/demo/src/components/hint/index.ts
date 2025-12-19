@@ -12,7 +12,7 @@ export class TuiDocHint {
     public readonly appearances = ['', 'floating', 'accent'];
     public readonly directions = [
         ...TUI_HINT_DIRECTIONS,
-        ['bottom', 'left'] satisfies TuiHintDirection[],
+        ['bottom', 'start'] satisfies TuiHintDirection[],
     ];
 
     public direction = this.directions[0]!;

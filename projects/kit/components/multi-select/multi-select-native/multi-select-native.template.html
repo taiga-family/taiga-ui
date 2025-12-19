@@ -1,15 +1,16 @@
-@if (items && !isFlat(items)) {
-    @for (group of labels; track group) {
-        <optgroup [label]="labels[$index]">
-            <ng-container *ngTemplateOutlet="options; context: {$implicit: items[$index]}" />
+@let list = items();
+@if (list && !isFlat(list)) {
+    @for (label of labels(); track $index) {
+        <optgroup [label]="label">
+            <ng-container *ngTemplateOutlet="options; context: {$implicit: list[$index]}" />
         </optgroup>
     }
     @if (!mobile) {
         <tui-data-list *tuiDropdown>
-            @for (group of items; track $index) {
+            @for (group of list; track $index) {
                 <tui-opt-group
                     tuiMultiSelectGroup
-                    [label]="labels[$index] || ''"
+                    [label]="labels()[$index] || ''"
                 >
                     @for (item of group; track $index) {
                         <button
@@ -26,10 +27,10 @@
         </tui-data-list>
     }
 } @else {
-    <ng-container *ngTemplateOutlet="options; context: {$implicit: items}" />
+    <ng-container *ngTemplateOutlet="options; context: {$implicit: list}" />
     @if (!mobile) {
         <tui-data-list *tuiDropdown>
-            @for (item of items; track $index) {
+            @for (item of list; track $index) {
                 <button
                     tuiOption
                     type="button"

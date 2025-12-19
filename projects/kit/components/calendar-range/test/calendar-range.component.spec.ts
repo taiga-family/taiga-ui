@@ -2,16 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
-    Optional,
-    Self,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {FormControl, NgControl} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {
     TUI_LAST_DAY,
-    tuiControlValue,
     TuiDay,
     type TuiDayLike,
     TuiDayRange,
@@ -20,13 +16,11 @@ import {
 } from '@taiga-ui/cdk';
 import {provideTaiga, type TuiMarkerHandler} from '@taiga-ui/core';
 import {
-    TUI_CALENDAR_DATE_STREAM,
     TuiCalendarRange,
     tuiCreateDefaultDayRangePeriods,
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {type Observable, of} from 'rxjs';
 
 describe('rangeCalendarComponent', () => {
     @Component({
@@ -40,30 +34,14 @@ describe('rangeCalendarComponent', () => {
                 [maxLength]="maxLength"
                 [min]="min"
                 [minLength]="minLength"
-                [value]="value"
-                (valueChange)="onRangeChange($event)"
+                [(value)]="value"
             />
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,
-        providers: [
-            {
-                provide: TUI_CALENDAR_DATE_STREAM,
-                deps: [[new Optional(), new Self(), NgControl]],
-                useFactory: (
-                    control: NgControl | null,
-                ): Observable<TuiDayRange | null> | null =>
-                    control ? tuiControlValue(control) : of(null),
-            },
-        ],
     })
     class Test {
-        @ViewChild(TuiCalendarRange)
-        public readonly component!: TuiCalendarRange;
-
-        public readonly control = new FormControl(
-            new TuiDayRange(new TuiDay(2019, 2, 10), new TuiDay(2019, 2, 12)),
-        );
+        public readonly component = viewChild.required(TuiCalendarRange);
 
         public items: readonly TuiDayRangePeriod[] = [];
 
@@ -80,10 +58,6 @@ describe('rangeCalendarComponent', () => {
         public defaultViewedMonth = TuiMonth.currentLocal();
 
         public markerHandler: TuiMarkerHandler | null = null;
-
-        public onRangeChange(range: TuiDayRange | null): void {
-            this.control.setValue(range);
-        }
     }
 
     let fixture: ComponentFixture<Test>;
@@ -105,7 +79,7 @@ describe('rangeCalendarComponent', () => {
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
 
-        component = testComponent.component;
+        component = testComponent.component();
 
         await fixture.whenStable();
         fixture.detectChanges();
@@ -169,7 +143,7 @@ describe('rangeCalendarComponent', () => {
             fixture.detectChanges();
 
             expect(
-                testComponent.control.value?.daySame(
+                testComponent.value?.daySame(
                     new TuiDayRange(min, startOfMonth.append({day: -1})),
                 ),
             ).toBe(true);
@@ -279,15 +253,18 @@ describe('rangeCalendarComponent', () => {
                 component['onItemSelect'](component.items[1]);
             }
 
-            expect(testComponent.component?.selectedActivePeriod?.toString()).toBe(
+            expect(testComponent.component()?.selectedActivePeriod?.toString()).toBe(
                 'Today',
             );
         });
 
         it('should fire itemChange before valueChange', () => {
-            const itemChangeSpy = jest.spyOn(testComponent.component.itemChange, 'emit');
+            const itemChangeSpy = jest.spyOn(
+                testComponent.component().itemChange,
+                'emit',
+            );
             const valueChangeSpy = jest.spyOn(
-                testComponent.component.valueChange,
+                testComponent.component().valueChange,
                 'emit',
             );
 

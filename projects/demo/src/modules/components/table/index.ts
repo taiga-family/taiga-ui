@@ -14,13 +14,13 @@ export default class Page {
         'Basic',
         'Custom',
         'Editable',
-        'With tuiSortBy directive to work with column titles instead of sorters',
+        'Sorting',
         'Virtual scroll',
-        'Dynamic columns',
+        'Columns',
         'Footer',
-        'Resize a large table',
+        'Resizing',
         'Expandable rows',
-        'Expandable rows: different ways to toggle rows',
-        'Manual sorting',
+        'Toggle rows',
+        'Controls',
     ];
 }

@@ -17,4 +17,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             },
         ],
     },
+    {
+        from: {
+            name: 'TuiButtonClose',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiButtonX',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
