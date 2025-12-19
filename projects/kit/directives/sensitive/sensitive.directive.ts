@@ -7,7 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map} from 'rxjs';
@@ -29,7 +29,7 @@ class TuiSensitiveStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiSensitive]',
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     host: {
         '[style.--t-offset.px]': 'offset',
         '[style.--t-mask-height.px]': 'height()',
@@ -41,7 +41,7 @@ export class TuiSensitive {
     protected readonly offset = Math.round(Math.random() * 10) * 10;
 
     protected readonly height = toSignal(
-        inject(ResizeObserverService, {self: true}).pipe(
+        inject(WaResizeObserverService, {self: true}).pipe(
             map((entry): [number, number] => {
                 const height = entry[0]?.contentRect.height ?? 0;
 

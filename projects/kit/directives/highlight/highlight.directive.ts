@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, Input, type OnChanges, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -14,7 +14,7 @@ export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] = tuiCreateOpt
 @Directive({
     standalone: true,
     selector: '[tuiHighlight]',
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     host: {
         '[style.position]': '"relative"',
         '[style.zIndex]': '0',
@@ -39,7 +39,7 @@ export class TuiHighlight implements OnChanges {
     public tuiHighlightColor = inject(TUI_HIGHLIGHT_OPTIONS).highlightColor;
 
     constructor() {
-        inject(ResizeObserverService, {self: true})
+        inject(WaResizeObserverService, {self: true})
             .pipe(takeUntilDestroyed())
             .subscribe(() => this.updateStyles());
     }

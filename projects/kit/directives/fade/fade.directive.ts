@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -37,8 +37,8 @@ class TuiFadeStyles {}
     standalone: true,
     selector: '[tuiFade]',
     providers: [
-        ResizeObserverService,
-        MutationObserverService,
+        WaResizeObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {characterData: true, subtree: true},
@@ -72,8 +72,8 @@ export class TuiFade {
 
         tuiWithStyles(TuiFadeStyles);
         merge(
-            inject(ResizeObserverService, {self: true}),
-            inject(MutationObserverService, {self: true}),
+            inject(WaResizeObserverService, {self: true}),
+            inject(WaMutationObserverService, {self: true}),
             fromEvent(el, 'scroll'),
         )
             .pipe(

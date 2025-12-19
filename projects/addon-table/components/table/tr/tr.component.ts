@@ -9,7 +9,7 @@ import {
     type QueryList,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {distinctUntilChanged, map, ReplaySubject, switchMap} from 'rxjs';
@@ -26,7 +26,7 @@ import {TuiTableTd} from '../td/td.component';
     imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiTableTd],
     templateUrl: './tr.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_TABLE_PROVIDER, ResizeObserverService],
+    providers: [TUI_TABLE_PROVIDER, WaResizeObserverService],
     host: {
         '[style.--t-row-height.px]': 'height()',
     },
@@ -46,7 +46,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
     );
 
     protected readonly height = toSignal(
-        inject(ResizeObserverService, {self: true}).pipe(
+        inject(WaResizeObserverService, {self: true}).pipe(
             map(([entry]) => entry?.contentRect.height ?? 0),
             distinctUntilChanged(),
             tuiZoneOptimized(),

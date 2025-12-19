@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -25,7 +25,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     standalone: true,
     selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',
     providers: [
-        MutationObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
@@ -59,7 +59,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     @ContentChildren(forwardRef(() => TuiTab))
     protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
-    protected readonly sub = inject(MutationObserverService, {self: true})
+    protected readonly sub = inject(WaMutationObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 

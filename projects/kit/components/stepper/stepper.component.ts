@@ -15,7 +15,7 @@ import {
     type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {TuiScrollService} from '@taiga-ui/cdk/services';
@@ -39,7 +39,7 @@ import {TuiStep} from './step.component';
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     host: {
         '[attr.data-orientation]': 'orientation',
         '(keydown.arrowRight)': 'onHorizontal($event, 1)',
@@ -58,7 +58,7 @@ export class TuiStepperComponent implements OnChanges {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly destroyRef = inject(DestroyRef);
 
-    protected readonly $ = inject(ResizeObserverService, {self: true})
+    protected readonly $ = inject(WaResizeObserverService, {self: true})
         .pipe(takeUntilDestroyed())
         .subscribe(() => this.scrollIntoView(this.activeItemIndex));
 
