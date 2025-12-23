@@ -84,11 +84,11 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         () => this.lastVisibleIndex() < 0 && !this.options.exposeActive,
     );
 
-    protected isMoreVisible = computed(
+    protected readonly isMoreVisible = computed(
         () => this.lastVisibleIndex() < this.items().length - 1,
     );
 
-    protected isMoreFocusable = computed(() =>
+    protected readonly isMoreFocusable = computed(() =>
         tuiIsFocused(this.moreButton()?.nativeElement),
     );
 

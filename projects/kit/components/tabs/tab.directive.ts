@@ -29,7 +29,7 @@ export class TuiTab implements OnDestroy {
         );
 
     constructor() {
-        let parent!: HTMLElement;
+        let parent = this.el.parentElement!;
 
         merge(
             this.observer || EMPTY,
