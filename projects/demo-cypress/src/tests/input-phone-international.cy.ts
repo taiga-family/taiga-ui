@@ -104,8 +104,10 @@ describe('InputPhoneInternational', () => {
 
         it('Focused textfield with country calling code only => blur => empty textfield => no form control value changes', () => {
             cy.get('@input')
+                .should('have.value', '')
                 .focus()
                 .should('have.value', '+1 ')
+                .wait(0)
                 .blur()
                 .should('have.value', '');
 
