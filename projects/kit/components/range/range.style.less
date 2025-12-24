@@ -36,7 +36,7 @@
 .t-track {
     :host & {
         position: relative;
-        margin: 0 var(--tui-thumb-radius);
+        margin: 0 @thumb-radius;
         block-size: 100%;
 
         /* Filled selected range */
@@ -50,7 +50,7 @@
             inset-inline-end: ~'max(var(--t-end), 1px)';
             block-size: 100%;
             background: var(--tui-background-accent-1);
-            margin: 0 calc(var(--tui-thumb-radius) * -1);
+            margin: 0 calc(@thumb-radius * -1);
         }
 
         /* Ticks */

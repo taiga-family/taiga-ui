@@ -12,5 +12,5 @@ import {TuiRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value = [4, 6];
+    protected value = [40, 60];
 }

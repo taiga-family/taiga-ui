@@ -14,7 +14,7 @@
 
 @transform-noop: scale(1);
 
-@hitboxThumbDiameterDiff: max(calc(@hitbox - @thumb-diameter), 0.125rem);
+@hitbox-padding: max(calc(@hitbox - @thumb-diameter), 0.125rem);
 
 .customize-track(@progress-filling) {
     min-block-size: 0.125rem;
@@ -50,7 +50,8 @@
     }
 }
 
-.tui-customize-thumb() {
+/* stylelint-disable */
+.customize-thumb() {
     .transition(transform);
 
     isolation: isolate;
@@ -64,7 +65,7 @@
     /* Increase vertical hitbox by transparent borders */
     box-sizing: content-box;
     background-clip: content-box;
-    border: calc(@hitboxThumbDiameterDiff / 2) solid transparent;
+    border: calc(@hitbox-padding / 2) solid transparent;
     border-inline-start: 0;
     border-inline-end: 0;
     transform: var(--tui-slider-thumb-transform, @transform-noop);
@@ -77,20 +78,17 @@
             transform: var(--tui-slider-thumb-transform, @transform-noop) scale(@active-thumb-scale-factor);
         }
     }
-
-    :focus-visible& {
-        box-shadow: 0 0 0 2px inset var(--tui-border-focus);
-    }
 }
+/* stylelint-enable */
 
 /* Vertically centers thumb on the track (webkit only) */
 .vertically-align-thumb() {
-    margin-block-start: calc((@thumb-diameter - @track-thickness + @hitboxThumbDiameterDiff) / 2 * -1);
+    margin-block-start: calc((@thumb-diameter - @track-thickness + @hitbox-padding) / 2 * -1);
 }
 
 .thumb-ghost() {
     position: absolute;
-    top: calc(@hitboxThumbDiameterDiff / 2);
+    top: calc(@hitbox-padding / 2);
     left: var(--t-left);
     inset-inline-start: var(--t-left);
     inline-size: @thumb-diameter;
@@ -158,12 +156,19 @@
     }
 
     &::-webkit-slider-thumb {
-        .tui-customize-thumb();
+        .customize-thumb();
         .vertically-align-thumb();
     }
 
+    &:focus-visible {
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb {
+            box-shadow: 0 0 0 2px inset var(--tui-border-focus);
+        }
+    }
+
     &::-moz-range-thumb {
-        .tui-customize-thumb();
+        .customize-thumb();
     }
 
     &::-moz-range-progress {

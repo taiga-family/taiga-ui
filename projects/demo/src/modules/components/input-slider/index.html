@@ -214,7 +214,7 @@
                         [keySteps]="keySteps || undefined"
                         [segments]="segments"
                         [step]="step"
-                        [style.--tui-thumb-radius.rem]="thumbRadius"
+                        [style.--tui-thumb-radius.px]="thumbRadius"
                     />
                 </tui-textfield>
             </ng-template>
@@ -393,12 +393,12 @@
                 </tr>
 
                 <tr
-                    name="[style.--tui-thumb-radius.rem]"
+                    name="thumb-radius"
                     tuiDocAPIItem
                     type="number"
                     [(value)]="thumbRadius"
                 >
-                    Width of the circle's stroke
+                    Radius of thumb
                 </tr>
             </tbody>
         </table>

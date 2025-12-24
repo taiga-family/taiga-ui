@@ -11,7 +11,7 @@ import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Thickness', 'Segments', 'KeySteps'];
+    protected readonly examples = ['Thumb radius', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
 
     protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
@@ -28,7 +28,7 @@ export default class Page {
 
     protected segments = 1;
 
-    protected thumbRadius = 0.37;
+    protected thumbRadius = 6;
 
     protected readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [

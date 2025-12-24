@@ -11,7 +11,7 @@ import {TuiSlider} from '@taiga-ui/kit';
 })
 export default class Page {
     protected readonly examples = [
-        'Thickness',
+        'Thumb radius',
         'Colors',
         'Segments',
         'Disabled',
@@ -33,7 +33,7 @@ export default class Page {
     protected min = 0;
     protected step = 1;
     protected segments: number[] | number = this.max;
-    protected thumbRadius = 0.37;
+    protected thumbRadius = 6;
 
     protected get disabled(): boolean {
         return this.control.disabled;

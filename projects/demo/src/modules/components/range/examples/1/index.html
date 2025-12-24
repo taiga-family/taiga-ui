@@ -1,14 +1,8 @@
-<p class="tui-space_top-0">Default</p>
-
-<tui-range
-    [max]="10"
-    [(ngModel)]="value"
-/>
+<tui-range [(ngModel)]="value" />
 
 <p>Custom radius and thickness</p>
 
 <tui-range
-    [max]="10"
-    [(ngModel)]="value"
     [style.--tui-thumb-radius.rem]="0.5"
+    [(ngModel)]="value"
 />
