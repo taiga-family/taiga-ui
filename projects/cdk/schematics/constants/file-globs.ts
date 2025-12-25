@@ -10,6 +10,7 @@ const EXCLUDE_DIRECTORIES = [
     'dll',
     'tmp',
     '__build__',
+    'allure-results',
     // hidden directories
     '.rpt2_cache',
     '.husky',
