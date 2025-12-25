@@ -30,7 +30,7 @@
 
     @filling-progress-gradient: linear-gradient(
         to var(--tui-inline-end),
-        @thumb-color calc(100% * var(--tui-slider-fill-ratio)),
+        @thumb-color calc(100% * var(--tui-slider-fill-ratio) + @thumb-radius),
         transparent calc(100% * var(--tui-slider-fill-ratio))
     );
 
