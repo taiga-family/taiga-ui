@@ -1,8 +1,8 @@
 import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
-    WaIntersectionObserverService,
     WA_INTERSECTION_THRESHOLD,
+    WaIntersectionObserverService,
 } from '@ng-web-apis/intersection-observer';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
