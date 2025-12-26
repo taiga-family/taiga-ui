@@ -20016,7 +20016,7 @@ JavaScript’s built‑in number type loses precision when a value contains too 
 **Template:**
 ```html
 <tui-textfield>
-<input bigintWithDecimal postfix=" per day" prefix="$" tuiInputNumber [max]="infinity" [min]="0" [tuiNumberFormat]="{precision: infinity}" [(ngModel)]="value" />
+<input bigintWithDecimal postfix=" per day" prefix="$" tuiInputNumber [max]="infinity" [min]="0" [tuiNumberFormat]="{precision: infinity, decimalSeparator: '.'}" [(ngModel)]="value" />
 </tui-textfield>
 <p><strong>Control value:</strong></p>
 <pre><code>{{ stringified() }}</code></pre>
@@ -20030,10 +20030,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
-import {type ControlValue, TuiBigIntWithDecimal} from './transformer';
+import {BigIntWithDecimal, type ControlValue} from './transformer';
 
 @Component({
-    imports: [FormsModule, TuiBigIntWithDecimal, TuiInputNumber, TuiNumberFormat],
+    imports: [BigIntWithDecimal, FormsModule, TuiInputNumber, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
