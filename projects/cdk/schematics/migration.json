@@ -23,7 +23,7 @@
         },
         "updateToV5": {
             "description": "Updates Taiga UI packages to v5",
-            "version": "5.0.0",
+            "version": "5.0.0-rc.0",
             "factory": "./ng-update/v5/index#updateToV5"
         }
     }
