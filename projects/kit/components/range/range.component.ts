@@ -12,7 +12,6 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
-import {type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_SLIDER_OPTIONS,
     type TuiKeySteps,
@@ -38,7 +37,6 @@ import {TuiRangeChange} from './range-change.directive';
         },
     ],
     host: {
-        '[attr.data-size]': 'size()',
         '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'disabled()',
         '[style.--t-start.%]': 'start()',
@@ -61,7 +59,6 @@ export class TuiRange extends TuiControl<[number, number]> {
     public readonly min = input(0);
     public readonly max = input(100);
     public readonly step = input(1);
-    public readonly size = input<TuiSizeS>(this.options.size);
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();
     public readonly focusable = input(true);

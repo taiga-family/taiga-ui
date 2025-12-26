@@ -28,7 +28,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
         '[style.--tui-slider-track-color]': 'options.trackColor',
         '[style.--tui-ticks-gradient]': 'ticksGradient()',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
-        '[attr.data-size]': 'size()',
     },
 })
 export class TuiSliderComponent {
@@ -39,7 +38,6 @@ export class TuiSliderComponent {
         this.getTicksGradient(segments),
     );
 
-    public readonly size = input(this.options.size);
     public readonly segments = input([1], {
         alias: 'segments',
         transform: (x: number | readonly number[]): readonly number[] =>
