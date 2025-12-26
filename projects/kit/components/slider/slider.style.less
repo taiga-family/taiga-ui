@@ -159,9 +159,14 @@
     }
 
     &:focus-visible {
-        &::-webkit-slider-thumb,
+        @outline: 0 0 0 2px inset var(--tui-border-focus);
+
+        &::-webkit-slider-thumb {
+            box-shadow: @outline;
+        }
+
         &::-moz-range-thumb {
-            box-shadow: 0 0 0 2px inset var(--tui-border-focus);
+            box-shadow: @outline;
         }
     }
 
