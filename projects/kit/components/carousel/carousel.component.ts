@@ -13,6 +13,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import {
@@ -20,7 +21,6 @@ import {
     TuiSwipe,
     type TuiSwipeDirection,
 } from '@taiga-ui/cdk/directives/swipe';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
@@ -59,7 +59,7 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
 })
 export class TuiCarouselComponent {
     private readonly el = tuiInjectElement();
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
     private readonly translate = signal(0);
 

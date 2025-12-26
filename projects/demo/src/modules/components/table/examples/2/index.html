@@ -103,12 +103,13 @@
                 <td tuiTd>
                     <tui-items-with-more>
                         @for (chip of item.items; track chip) {
-                            <tui-badge
+                            <div
                                 *tuiItem
+                                tuiBadge
                                 [style.margin-inline-end.rem]="0.25"
                             >
                                 {{ chip }}
-                            </tui-badge>
+                            </div>
                         }
                         <ng-template
                             let-number
@@ -132,7 +133,7 @@
                                 >
                                     @for (chip of item.items; track chip) {
                                         @if ($index > number) {
-                                            <tui-badge>{{ chip }}</tui-badge>
+                                            <div tuiBadge>{{ chip }}</div>
                                         }
                                     }
                                 </div>

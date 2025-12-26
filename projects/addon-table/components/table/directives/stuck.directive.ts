@@ -1,8 +1,8 @@
 import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
-    IntersectionObserverService,
     WA_INTERSECTION_THRESHOLD,
+    WaIntersectionObserverService,
 } from '@ng-web-apis/intersection-observer';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
@@ -11,7 +11,7 @@ import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
 @Directive({
     selector: 'tui-stuck:never',
     providers: [
-        IntersectionObserverService,
+        WaIntersectionObserverService,
         {
             provide: WA_INTERSECTION_THRESHOLD,
             useValue: [0, 1],
@@ -21,7 +21,7 @@ import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
 })
 export class TuiStuck {
     protected readonly stuck = toSignal(
-        inject(IntersectionObserverService).pipe(
+        inject(WaIntersectionObserverService).pipe(
             map((entries) => (entries[entries.length - 1]?.intersectionRatio ?? 0) < 1),
             distinctUntilChanged(),
             tuiWatch(),

@@ -33,7 +33,7 @@ import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs.providers';
 import {TuiTabsHorizontal} from './tabs-horizontal.directive';
 
 @Component({
-    selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
+    selector: 'tui-tabs-with-more',
     imports: [
         NgTemplateOutlet,
         PolymorpheusOutlet,

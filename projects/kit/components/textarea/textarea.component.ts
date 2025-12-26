@@ -9,7 +9,7 @@ import {
     viewChild,
     ViewContainerRef,
 } from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -43,7 +43,7 @@ export class TuiTextareaComponent implements AfterViewInit {
 
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
     protected readonly textfield = inject(TuiTextfieldComponent<string>);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     public readonly min = input(this.options.min);
     public readonly max = input(this.options.max);

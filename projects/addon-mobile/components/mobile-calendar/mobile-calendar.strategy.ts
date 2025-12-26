@@ -3,8 +3,8 @@ import {
     type VirtualScrollStrategy,
 } from '@angular/cdk/scrolling';
 import {inject} from '@angular/core';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
@@ -46,7 +46,7 @@ function reduceCycle(
  * work for {@link TuiMobileCalendar} with years 1906 to 2102
  */
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
-    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isIOS = inject(WA_IS_IOS);
     private readonly destroy$ = new Subject<void>();
     private readonly index$ = new Subject<number>();
     private viewport: CdkVirtualScrollViewport | null = null;

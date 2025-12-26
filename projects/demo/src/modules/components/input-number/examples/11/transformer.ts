@@ -7,9 +7,9 @@ export type ControlValue = {significand: bigint; exp: number} | null;
 
 @Directive({
     selector: '[tuiInputNumber][bigintWithDecimal]',
-    providers: [tuiProvide(TuiValueTransformer, TuiBigIntWithDecimal)],
+    providers: [tuiProvide(TuiValueTransformer, BigIntWithDecimal)],
 })
-export class TuiBigIntWithDecimal extends TuiValueTransformer<string, ControlValue> {
+export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue> {
     private readonly mask = inject(TuiNumberMask);
 
     public toControlValue(textfieldValue: string | null): ControlValue {

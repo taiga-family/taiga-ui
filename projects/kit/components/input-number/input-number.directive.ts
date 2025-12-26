@@ -1,7 +1,7 @@
 import {computed, Directive, effect, inject, untracked} from '@angular/core';
 import {maskitoParseNumber} from '@maskito/kit';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 
@@ -26,7 +26,7 @@ const DEFAULT_MAX_LENGTH = 18;
 export class TuiInputNumberDirective extends TuiControl<string> {
     private readonly mask = inject(TuiNumberMask);
     private readonly input = inject(TuiInputDirective);
-    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isIOS = inject(WA_IS_IOS);
 
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 

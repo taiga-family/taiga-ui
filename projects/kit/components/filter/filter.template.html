@@ -12,12 +12,13 @@
             {{ text }}
         </span>
         @if (badgeHandler()(item); as badgeValue) {
-            <tui-badge
+            <div
                 appearance="neutral"
+                tuiBadge
                 [size]="size()"
             >
                 {{ badgeValue }}
-            </tui-badge>
+            </div>
         }
         <input
             tuiBlock

@@ -1,5 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiPositionOptions} from '@taiga-ui/core/portals/alert';
 
@@ -12,7 +12,7 @@ export interface TuiToastOptions<I> extends TuiPositionOptions {
 
 export const TUI_TOAST_CONCURRENCY = new InjectionToken(
     ngDevMode ? 'TUI_TOAST_CONCURRENCY' : '',
-    {factory: () => (inject(TUI_IS_MOBILE) ? 1 : 2)},
+    {factory: () => (inject(WA_IS_MOBILE) ? 1 : 2)},
 );
 
 export const [TUI_TOAST_OPTIONS, tuiToastOptionsProvider] = tuiCreateOptions<

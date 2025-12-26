@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_FILLER_LENGTH,
@@ -18,7 +19,6 @@ import {
     type TuiDayRange,
     type TuiTime,
 } from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -69,7 +69,7 @@ export abstract class TuiInputDateBase<
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly input = inject(TuiInputDirective);
     protected readonly filler = tuiWithDateFiller();
-    protected readonly mobile = inject(TUI_IS_MOBILE);
+    protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS);
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TuiItemsHandlersDirective);

@@ -26,7 +26,7 @@ class Styles {}
 
 @Directive({
     // tui-icon[tuiBadge] is required to avoid double matching of TuiIcons
-    selector: 'tui-badge,[tuiBadge],tui-icon[tuiBadge]',
+    selector: '[tuiBadge],tui-icon[tuiBadge]',
     providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {'[attr.data-size]': 'size()'},

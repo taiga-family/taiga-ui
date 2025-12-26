@@ -503,6 +503,27 @@ describe('InputRange', () => {
                 });
             });
         });
+
+        describe('different textfield sizes', () => {
+            ['s', 'm', 'l'].forEach((size) => {
+                test(`${size}`, async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=2&tuiTextfieldSize=${size}`,
+                    );
+                    await expect(inputRange.textfieldStart).toHaveValue('0');
+                    await expect(inputRange.textfieldEnd).toHaveValue('10');
+                    await expect(example).toHaveScreenshot(
+                        `34-input-range--size-${size}--start-has-content--end-has-content.png`,
+                    );
+
+                    await inputRange.textfieldEnd.focus();
+                    await expect(example).toHaveScreenshot(
+                        `34-input-range--size-${size}--start-has-content--end-no-content.png`,
+                    );
+                });
+            });
+        });
     });
 
     describe('Using negative values with hidden minus sign', () => {

@@ -2,9 +2,9 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -50,5 +50,5 @@ export default class Example {
     protected card = null;
 
     protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 }

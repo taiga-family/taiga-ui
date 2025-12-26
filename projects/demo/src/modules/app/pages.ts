@@ -1619,13 +1619,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Browser',
-                keywords:
-                    'Инструменты, утилиты, browser, браузер, firefox, ie, edge, ios, chrome',
-                route: DemoRoute.Browser,
-            },
-            {
-                section: 'Tools',
                 title: 'Miscellaneous',
                 keywords: `Инструменты, утилиты, miscellaneous, прочие, assert, isNil, isPresent, flatLength,
                            getPaymentSystem, syncObject`,

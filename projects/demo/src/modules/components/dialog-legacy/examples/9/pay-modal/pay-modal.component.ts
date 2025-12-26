@@ -9,13 +9,14 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     type TuiCard,
     tuiCardNumberValidator,
     tuiDefaultCardValidator,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {TUI_IS_IOS, TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiFormatNumberPipe,
@@ -73,7 +74,7 @@ export class PayModal implements OnInit {
         saveCard: new FormControl(true),
     });
 
-    protected readonly iOS = inject(TUI_IS_IOS);
+    protected readonly iOS = inject(WA_IS_IOS);
 
     protected cards: AccountCard[] = [];
     protected paymentMode: 0 | 1 = PaymentMode.ByNewCard;

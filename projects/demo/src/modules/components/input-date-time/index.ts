@@ -8,7 +8,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
-import {TUI_FIRST_DAY, TUI_IS_MOBILE, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
@@ -28,7 +29,7 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly routes = DemoRoute;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl();
 
     protected readonly dates = [

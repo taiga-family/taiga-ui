@@ -15,10 +15,13 @@
                 BANK
                 <span tuiSubtitle>{{ item.title }}</span>
             </h2>
-            <tui-badge class="money">
+            <div
+                tuiBadge
+                class="money"
+            >
                 <tui-icon icon="@tui.wallet" />
                 {{ item.content }}
-            </tui-badge>
+            </div>
         </div>
     }
 </tui-carousel>

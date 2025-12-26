@@ -20,6 +20,7 @@ import {
     withInMemoryScrolling,
 } from '@angular/router';
 import {environment} from '@demo/environments/environment';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -38,7 +39,7 @@ import {
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {TUI_FALSE_HANDLER, TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
     provideTaiga,
     TUI_DIALOGS_CLOSE,
@@ -190,14 +191,14 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_HINT_OPTIONS,
             useFactory: () =>
-                inject(TUI_IS_E2E)
+                inject(WA_IS_E2E)
                     ? {...TUI_HINT_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                     : TUI_HINT_DEFAULT_OPTIONS,
         },
         {
             provide: TUI_DROPDOWN_HOVER_OPTIONS,
             useFactory: () =>
-                inject(TUI_IS_E2E)
+                inject(WA_IS_E2E)
                     ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                     : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
         },

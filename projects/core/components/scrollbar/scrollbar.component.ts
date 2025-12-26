@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiScrollControls} from './scroll-controls.component';
@@ -40,7 +40,7 @@ export class TuiScrollbar {
     private readonly el = tuiInjectElement();
 
     protected readonly options = inject(TUI_SCROLLBAR_OPTIONS);
-    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly isIOS = inject(WA_IS_IOS);
     protected readonly browserScrollRef = new ElementRef(this.el);
 
     protected get delegated(): boolean {

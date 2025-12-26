@@ -1,10 +1,10 @@
 import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {fromEvent, merge} from 'rxjs';
@@ -16,8 +16,8 @@ const STEP = 1 / 16;
 @Directive({
     selector: '[tuiFluidTypography]',
     providers: [
-        ResizeObserverService,
-        MutationObserverService,
+        WaResizeObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {characterData: true, subtree: true},
@@ -35,8 +35,8 @@ export class TuiFluidTypography {
 
     protected readonly sub = merge(
         toObservable(this.tuiFluidTypography),
-        inject(ResizeObserverService, {self: true}),
-        inject(MutationObserverService, {self: true}),
+        inject(WaResizeObserverService, {self: true}),
+        inject(WaMutationObserverService, {self: true}),
         fromEvent(this.el, 'input'),
     )
         .pipe(tuiZonefree(), takeUntilDestroyed())

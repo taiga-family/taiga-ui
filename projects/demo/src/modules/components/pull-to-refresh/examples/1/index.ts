@@ -1,13 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     TUI_ANDROID_LOADER,
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
-import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
@@ -19,11 +19,11 @@ import {Subject} from 'rxjs';
     changeDetection,
     providers: [
         {
-            provide: TUI_IS_IOS,
+            provide: WA_IS_IOS,
             useValue: false,
         },
         {
-            provide: TUI_IS_ANDROID,
+            provide: WA_IS_ANDROID,
             useValue: true,
         },
         {
