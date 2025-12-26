@@ -50,8 +50,7 @@
     }
 }
 
-/* stylelint-disable */
-.customize-thumb() {
+.t-customize-thumb() {
     .transition(transform);
 
     isolation: isolate;
@@ -79,7 +78,6 @@
         }
     }
 }
-/* stylelint-enable */
 
 /* Vertically centers thumb on the track (webkit only) */
 .vertically-align-thumb() {
@@ -156,7 +154,7 @@
     }
 
     &::-webkit-slider-thumb {
-        .customize-thumb();
+        .t-customize-thumb();
         .vertically-align-thumb();
     }
 
@@ -168,7 +166,7 @@
     }
 
     &::-moz-range-thumb {
-        .customize-thumb();
+        .t-customize-thumb();
     }
 
     &::-moz-range-progress {
