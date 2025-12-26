@@ -1,1 +1,0 @@
-import{a,b,c,d,e,f,g,h,i,j,k,l,m,n}from"./chunk-MA2PDUQX.js";import"./chunk-B4AJQJMI.js";export{n as default,i as dependencies,c as description,j as devDependencies,h as exports,e as homepage,d as keywords,g as license,a as name,l as optionalDependencies,k as peerDependencies,f as repository,m as schematics,b as version};
