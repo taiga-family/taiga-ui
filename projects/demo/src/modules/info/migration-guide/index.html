@@ -307,6 +307,45 @@
 
         <tui-accordion>
             <button
+                id="heap-out-of-memory"
+                tuiAccordion
+                tuiAccordionTarget
+            >
+                Migration fails with
+                <code>FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory</code>
+            </button>
+            <tui-expand>
+                <div class="tui-space_bottom-4">
+                    Migration schematics recursively traverse every file and directory. This operation can be
+                    memory-intensive. If you encounter this error, try increasing the memory limit for the Node.js
+                    process.
+                </div>
+
+                <div>
+                    For example:
+                    <p tuiNotification>
+                        The syntax for defining environment variables varies by OS and shell!
+                        <br />
+                        The command below is for Unix-based systems and Nx CLI.
+                    </p>
+                    <tui-doc-code code="NODE_OPTIONS=--max-old-space-size=8192 nx migrate --run-migrations" />
+                </div>
+
+                <p>
+                    If the problem persists –
+                    <a
+                        href="https://github.com/taiga-family/taiga-ui/issues/new?template=1-bug-report.yml"
+                        target="_blank"
+                        tuiLink
+                    >
+                        report the issue.
+                    </a>
+                </p>
+            </tui-expand>
+        </tui-accordion>
+
+        <tui-accordion>
+            <button
                 id="manual-run-schematics"
                 tuiAccordion
                 tuiAccordionTarget
