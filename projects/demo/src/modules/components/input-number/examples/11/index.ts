@@ -5,10 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
-import {type ControlValue, TuiBigIntWithDecimal} from './transformer';
+import {BigIntWithDecimal, type ControlValue} from './transformer';
 
 @Component({
-    imports: [FormsModule, TuiBigIntWithDecimal, TuiInputNumber, TuiNumberFormat],
+    imports: [BigIntWithDecimal, FormsModule, TuiInputNumber, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
