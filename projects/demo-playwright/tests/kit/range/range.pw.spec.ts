@@ -28,7 +28,7 @@ describe('TuiRange', () => {
                 await range.host.click({position: {x: 0, y: 0}});
 
                 await expect(range.start).toHaveValue('0');
-                await expect(range.end).toHaveValue('6');
+                await expect(range.end).toHaveValue('60');
                 await expect
                     .soft(example)
                     .toHaveScreenshot('01-range-click-checks-0-6.png');
@@ -37,8 +37,8 @@ describe('TuiRange', () => {
             test('click on the end of the track changes only nearest (right) slider', async () => {
                 await range.host.click({position: {x: 290, y: 0}});
 
-                await expect(range.start).toHaveValue('4');
-                await expect(range.end).toHaveValue('10');
+                await expect(range.start).toHaveValue('40');
+                await expect(range.end).toHaveValue('95');
                 await expect
                     .soft(example)
                     .toHaveScreenshot('02-range-click-checks-4-10.png');
@@ -48,8 +48,8 @@ describe('TuiRange', () => {
                 await range.host.click({position: {x: 157, y: 0}});
                 await range.host.click({position: {x: 290, y: 0}});
 
-                await expect(range.start).toHaveValue('4');
-                await expect(range.end).toHaveValue('10');
+                await expect(range.start).toHaveValue('40');
+                await expect(range.end).toHaveValue('95');
                 await expect
                     .soft(example)
                     .toHaveScreenshot('03-range-click-checks-4-10.png');
@@ -57,8 +57,8 @@ describe('TuiRange', () => {
                 await range.host.click({position: {x: 163, y: 0}});
                 await range.host.click({position: {x: 290, y: 0}});
 
-                await expect(range.start).toHaveValue('5');
-                await expect(range.end).toHaveValue('10');
+                await expect(range.start).toHaveValue('54');
+                await expect(range.end).toHaveValue('95');
                 await expect
                     .soft(example)
                     .toHaveScreenshot('03-range-click-checks-5-10.png');
