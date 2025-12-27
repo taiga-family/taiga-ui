@@ -6,7 +6,7 @@
     (keydown.arrowRight)="onArrowRight($event)"
 >
     @for (item of items(); track item) {
-        @if ($index <= lastVisibleIndex) {
+        @if ($index <= lastVisibleIndex()) {
             <ng-container [ngTemplateOutlet]="item" />
         } @else {
             <div
@@ -24,10 +24,10 @@
         tuiTab
         type="button"
         class="t-more"
-        [class._active]="isMoreActive"
-        [class.t-no-margin]="isMoreAlone"
-        [class.t-overflown]="!isMoreVisible"
-        [tabIndex]="isMoreFocusable ? 0 : -1"
+        [class._active]="isMoreActive()"
+        [class.t-no-margin]="isMoreAlone()"
+        [class.t-overflown]="!isMoreVisible()"
+        [tabIndex]="isMoreFocusable() ? 0 : -1"
         [tuiDropdown]="dropdownContent() || dropdown"
         [(tuiDropdownOpen)]="open"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
@@ -42,10 +42,10 @@
         tuiTab
         type="button"
         class="t-more"
-        [class._active]="isMoreActive"
-        [class.t-no-margin]="isMoreAlone"
-        [class.t-overflown]="!isMoreVisible"
-        [tabIndex]="isMoreFocusable ? 0 : -1"
+        [class._active]="isMoreActive()"
+        [class.t-no-margin]="isMoreAlone()"
+        [class.t-overflown]="!isMoreVisible()"
+        [tabIndex]="isMoreFocusable() ? 0 : -1"
         [tuiDropdown]="dropdownContent() || dropdown"
         [(tuiDropdownOpen)]="open"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
