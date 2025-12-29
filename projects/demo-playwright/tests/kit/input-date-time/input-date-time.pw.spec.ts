@@ -238,12 +238,12 @@ test.describe('InputDateTime', () => {
                     await expect(inputDateTime.textfield).toHaveValue('');
 
                     await inputDateTime.textfield.pressSequentially(
-                        '20.09.2020, ' + typedCharacters,
+                        `20.09.2020, ${typedCharacters}`,
                     );
                     await inputDateTime.textfield.blur();
 
                     await expect(inputDateTime.textfield).toHaveValue(
-                        '20.09.2020, ' + expectedFinalValue,
+                        `20.09.2020, ${expectedFinalValue}`,
                     );
                 });
             };
