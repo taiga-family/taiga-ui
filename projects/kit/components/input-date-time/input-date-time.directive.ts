@@ -52,6 +52,9 @@ const MAX_TIME = TuiTime.fromAbsoluteMilliseconds(MILLISECONDS_IN_DAY - 1);
         TuiItemsHandlersValidator,
         TuiWithInput,
     ],
+    host: {
+        '(blur)': 'onBlur($event.target.value)',
+    },
 })
 export class TuiInputDateTimeDirective
     extends TuiInputDateBase<readonly [TuiDay, TuiTime | null]>
@@ -190,6 +193,24 @@ export class TuiInputDateTimeDirective
         return timeString
             ? `${dateString}${this.options.dateTimeSeparator}${timeString}`
             : dateString;
+    }
+
+    protected onBlur(valueWithAffixes: string): void {
+        const [date = '', timeValue = ''] = valueWithAffixes.split(
+            this.options.dateTimeSeparator,
+        );
+
+        if (timeValue && !this.value()) {
+            const time = TuiTime.fromString(timeValue);
+            const newValue = [
+                TuiDay.normalizeParse(date, this.format().mode),
+                time,
+            ] as const;
+
+            this.control?.control?.updateValueAndValidity({emitEvent: false});
+            this.onChange(newValue);
+            this.input.value.set(this.stringify(newValue));
+        }
     }
 
     private clampTime([date, time]: [TuiDay, TuiTime | null]): [TuiDay, TuiTime | null] {
