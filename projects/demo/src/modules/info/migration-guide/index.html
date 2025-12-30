@@ -1,4 +1,4 @@
-<tui-doc-page header="Migration Guide (v3 -> v4)">
+<tui-doc-page [header]="`Migration Guide (v${tuiMajor - 1} -> v${tuiMajor})`">
     <section>
         <h2>Prerequisites</h2>
         <ul class="tui-list">
@@ -11,7 +11,7 @@
                     Update Angular
                 </a>
                 version to
-                <strong>v16</strong>
+                <strong>v{{ ngMajor }}</strong>
                 or higher.
             </li>
 
@@ -32,7 +32,10 @@
                 <code>npm install</code>
                 command.
 
-                <tui-notification class="tui-space_top-2">
+                <div
+                    tuiNotification
+                    class="tui-space_top-2"
+                >
                     If you use Yarn or cannot get rid of
                     <code>legacy-peer-deps</code>
                     flag – this step cannot be skipped, but you should be ready to make some
@@ -52,17 +55,17 @@
                         <strong>Troubleshooting</strong>
                         section.
                     </p>
-                </tui-notification>
+                </div>
             </li>
 
             <li class="tui-list__item">
-                Update all Taiga UI packages to the latest
+                Update all Taiga UI packages to the
                 <a
-                    href="https://www.npmjs.com/package/@taiga-ui/cdk/v/v3-lts"
                     target="_blank"
                     tuiLink
+                    [href]="`https://www.npmjs.com/package/@taiga-ui/cdk/v/v${tuiMajor - 1}-lts`"
                 >
-                    v3
+                    latest v{{ tuiMajor - 1 }}
                 </a>
                 version.
             </li>
@@ -96,7 +99,25 @@
         <h3>Angular CLI</h3>
         <tui-doc-code code="ng update @taiga-ui/cdk" />
 
-        <h3>Nx CLI</h3>
+        <h3 class="tui-space_bottom-0">Nx CLI</h3>
+        <p tuiNotification>
+            Ensure your Nx version is compatible with
+            <a
+                href="https://nx.dev/docs/technologies/angular/guides/angular-nx-version-matrix#nx-and-angular-version-compatibility-matrix"
+                target="_blank"
+                tuiLink
+            >
+                Angular v{{ ngMajor }}+
+            </a>
+            and
+            <a
+                href="https://nx.dev/docs/reference/nodejs-typescript-compatibility#nodejs-compatibility-matrix"
+                target="_blank"
+                tuiLink
+            >
+                installed Node.js
+            </a>
+        </p>
         <tui-doc-code code="nx migrate @taiga-ui/cdk" />
     </section>
 
@@ -122,9 +143,9 @@
                     </a>
                 </code>
                 . This package is a transitional state for many outdated entities before their full removal. Everything
-                you find inside this package in the fourth major release will be removed in the fifth one. So, you can
-                just continue to use them for a while. However, some of those components already have modern
-                alternatives – they will be marked by comment with
+                you find inside this package in the {{ tuiMajor }}th major release will be removed in the
+                {{ tuiMajor + 1 }}th one. So, you can just continue to use them for a while. However, some of those
+                components already have modern alternatives – they will be marked by comment with
                 <code>&#64;deprecated</code>
                 tag (most IDEs displays the such entities as stricken-through). We strongly recommend to replace them by
                 new alternatives as soon as possible!
@@ -222,7 +243,7 @@
                 Taiga UI depends on many other
                 <a
                     tuiLink
-                    [routerLink]="pages.Related"
+                    [routerLink]="routes.About"
                 >
                     Taiga Family packages
                 </a>
@@ -302,7 +323,7 @@
                 <ol class="tui-list tui-list_ordered">
                     <li class="tui-list__item">
                         Manually update all Taiga UI's packages to
-                        <code>v4</code>
+                        <code>v{{ tuiMajor }}</code>
                         (i.e. just change versions inside your
                         <code>package.json</code>
                         by yourself without any console commands and then run
@@ -312,11 +333,13 @@
                     <li class="tui-list__item">
                         Check that
                         <code>node_modules/&#64;taiga-ui/cdk/package.json</code>
-                        contains the 4th major version
+                        contains the {{ tuiMajor }}th major version
                     </li>
                     <li class="tui-list__item">
                         Execute:
-                        <tui-doc-code code="ng update @taiga-ui/cdk --migrate-only --from=3 --to=4" />
+                        <tui-doc-code
+                            [code]="`ng update @taiga-ui/cdk --migrate-only --from=${tuiMajor - 1} --to=${tuiMajor}`"
+                        />
                         or
                         <tui-doc-code [code]="manuallyTriggerNxMigration" />
                     </li>

@@ -1,8 +1,8 @@
 import {computed, Directive, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {map} from 'rxjs';
@@ -10,7 +10,7 @@ import {map} from 'rxjs';
 @Directive({
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
     providers: [
-        MutationObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
@@ -23,7 +23,7 @@ import {map} from 'rxjs';
 export class TuiProgressColorSegments {
     private readonly el = tuiInjectElement<HTMLProgressElement>();
     private readonly position = toSignal(
-        inject(MutationObserverService, {self: true}).pipe(map(() => this.el.position)),
+        inject(WaMutationObserverService, {self: true}).pipe(map(() => this.el.position)),
         {initialValue: this.el.position},
     );
 

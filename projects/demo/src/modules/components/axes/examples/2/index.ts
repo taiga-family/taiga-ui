@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,15 +6,13 @@ import {
     TUI_ALWAYS_NONE,
     TuiAxes,
     TuiBarChart,
+    TuiChartHint,
 } from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {tuiCeil, tuiPure} from '@taiga-ui/cdk';
-import {TuiHint} from '@taiga-ui/core';
-
-const BENJI = 100;
+import {tuiCeil} from '@taiga-ui/cdk';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
+    imports: [TuiAmountPipe, TuiAxes, TuiBarChart, TuiChartHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -32,32 +29,24 @@ export default class Example {
     ];
 
     protected readonly maxValue = 40;
-
     protected readonly axisYSecondaryLabels = [
         '',
-        `${this.getMax(this.value) / 2} k`,
-        `${this.getMax(this.value)} k`,
+        `${getMax(this.value) / 2} k`,
+        `${getMax(this.value)} k`,
     ];
 
     protected readonly axisXLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
-
     protected readonly horizontalLinesHandler = TUI_ALWAYS_DASHED;
-
     protected readonly verticalLinesHandler = TUI_ALWAYS_NONE;
-
-    protected getPercent(set: [number, number, number, number]): number {
-        return (BENJI * Math.max(...set)) / this.getMax(this.value);
-    }
 
     protected getSetName(index: number): string {
         return this.setNames[index] ?? '';
     }
+}
 
-    @tuiPure
-    private getMax(value: ReadonlyArray<[number, number, number, number]>): number {
-        return tuiCeil(
-            value.reduce((max, value) => Math.max(...value, max), 0),
-            -1,
-        );
-    }
+function getMax(value: ReadonlyArray<[number, number, number, number]>): number {
+    return tuiCeil(
+        value.reduce((max, value) => Math.max(...value, max), 0),
+        -1,
+    );
 }

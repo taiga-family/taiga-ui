@@ -1,7 +1,7 @@
 <tui-doc-page
     header="HintManual"
     package="CORE"
-    path="core/directives/hint"
+    path="core/portals/hint"
     type="directives"
 >
     <ng-template pageTab>
@@ -21,8 +21,8 @@
                 tuiButton
                 tuiHint="It says 'Hi all!' into console"
                 type="button"
-                [tuiHintAppearance]="appearance"
-                [tuiHintDirection]="direction"
+                [tuiHintAppearance]="hint.appearance"
+                [tuiHintDirection]="hint.direction"
                 [tuiHintManual]="show"
                 (click)="sayHi()"
             >
@@ -45,8 +45,11 @@
             >
                 Show/hide hint
             </tr>
+            <tbody
+                #hint
+                tuiDocHint
+            ></tbody>
         </table>
-        <inherited-documentation />
     </ng-template>
 
     <tui-setup *pageTab />

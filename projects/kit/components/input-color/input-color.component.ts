@@ -2,9 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    HostAttributeToken,
     inject,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -17,13 +17,13 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
-import {TUI_INPUT_COLOR_OPTIONS, type TuiInputColorOptions} from './input-color.options';
+import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';
 
 const REGEX = /[0-9a-fA-F]/;
 const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';
@@ -36,11 +36,11 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputColor),
+        tuiAsControl(TuiInputColorComponent),
         tuiFallbackValueProvider(''),
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithTextfield],
+    hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
         ngSkipHydration: 'true',
         spellcheck: 'false',
@@ -50,15 +50,13 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
         '(input)': 'onChange($event.target.value)',
     },
 })
-export class TuiInputColor extends TuiControl<string> {
+export class TuiInputColorComponent extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly list = this.el.getAttribute('list');
-    protected readonly format = signal(this.options.format);
-    protected readonly align = signal<TuiHorizontalDirection>(this.options.align);
-    protected readonly left = inject(TuiIcons).iconStart() || '';
+    protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
+    protected readonly start = inject(TuiIcons).iconStart() || '';
     protected readonly icon = tuiIconStart(
-        computed(() => (this.align() === 'left' ? EMPTY : this.left)),
+        computed(() => (this.align() === 'start' ? EMPTY : this.start)),
         {},
     );
 
@@ -81,15 +79,8 @@ export class TuiInputColor extends TuiControl<string> {
             : 255,
     );
 
-    @Input('align')
-    public set alignSetter(align: TuiInputColorOptions['align']) {
-        this.align.set(align);
-    }
-
-    @Input('format')
-    public set formatSetter(mode: TuiInputColorOptions['format']) {
-        this.format.set(mode);
-    }
+    public readonly format = input(this.options.format);
+    public readonly align = input(this.options.align);
 
     protected onInput(value: string): void {
         this.onChange(

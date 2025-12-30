@@ -16,9 +16,9 @@
     >
         <img
             class="t-ipi-flag"
-            [alt]="names()[code()]"
+            [alt]="names()[countryIsoCode()]"
             [class.t-ipi-flag_small]="size() === 's'"
-            [src]="code() | tuiFlag"
+            [src]="countryIsoCode() | tuiFlag"
         />
     </button>
 </ng-container>
@@ -30,13 +30,13 @@
         >
             <input
                 autocomplete="off"
-                tuiTextfield
+                tuiInput
                 type="text"
                 [ngModel]="search()"
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
                 [tuiAutoFocus]="!ios"
-                (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
+                (keydown.arrowDown)="list()[0]?.nativeElement?.focus()"
                 (ngModelChange)="search.set($event)"
             />
         </tui-textfield>
@@ -44,16 +44,14 @@
 </ng-template>
 <ng-container *tuiDropdown>
     <!-- To keep it under local injector -->
-    @if (countrySearch) {
+    @if (countrySearch()) {
         <ng-container *ngTemplateOutlet="filter" />
     }
     <tui-data-list class="t-ipi-options">
         @for (item of filtered(); track $index) {
             <button
-                new
                 tuiOption
                 type="button"
-                [tuiCell]="size()"
                 (click)="onItemClick(item.iso)"
             >
                 <img

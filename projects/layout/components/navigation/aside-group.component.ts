@@ -10,7 +10,8 @@ import {
     viewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDirectiveBinding, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
     TuiDataList,
@@ -22,7 +23,7 @@ import {
     TuiDropdownHover,
     TuiDropdownOpen,
     TuiDropdownPositionSided,
-} from '@taiga-ui/core/directives/dropdown';
+} from '@taiga-ui/core/portals/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

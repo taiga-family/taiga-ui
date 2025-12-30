@@ -104,7 +104,7 @@ describe('TuiDayRange', () => {
             it('correctly works with dateMode="YMD" + separator = "-"', () => {
                 const result: TuiDayRange = TuiDayRange.normalizeParse(
                     `2021-12-14${RANGE_SEPARATOR_CHAR}2022-06-19`,
-                    'YMD',
+                    'yyyy/mm/dd',
                 );
 
                 expect(result.from.day).toBe(14);
@@ -118,7 +118,7 @@ describe('TuiDayRange', () => {
             it('correctly works with dateMode="MDY" + separator = "/"', () => {
                 const result: TuiDayRange = TuiDayRange.normalizeParse(
                     `12/14/2021${RANGE_SEPARATOR_CHAR}06/19/2022`,
-                    'MDY',
+                    'mm/dd/yyyy',
                 );
 
                 expect(result.from.day).toBe(14);
@@ -231,7 +231,7 @@ describe('TuiDayRange', () => {
                 new TuiDayRange(
                     new TuiDay(2000, 11, 20),
                     new TuiDay(3000, 9, 18),
-                ).getFormattedDayRange('DMY', '.'),
+                ).getFormattedDayRange('dd/mm/yyyy', '.'),
             ).toBe(`20.12.2000${RANGE_SEPARATOR_CHAR}18.10.3000`);
         });
 
@@ -240,7 +240,7 @@ describe('TuiDayRange', () => {
                 new TuiDayRange(
                     new TuiDay(2000, 11, 20),
                     new TuiDay(3000, 9, 18),
-                ).getFormattedDayRange('MDY', '/'),
+                ).getFormattedDayRange('mm/dd/yyyy', '/'),
             ).toBe(`12/20/2000${RANGE_SEPARATOR_CHAR}10/18/3000`);
         });
 
@@ -249,7 +249,7 @@ describe('TuiDayRange', () => {
                 new TuiDayRange(
                     new TuiDay(2000, 11, 20),
                     new TuiDay(3000, 9, 18),
-                ).getFormattedDayRange('YMD', '-'),
+                ).getFormattedDayRange('yyyy/mm/dd', '-'),
             ).toBe(`2000-12-20${RANGE_SEPARATOR_CHAR}3000-10-18`);
         });
     });

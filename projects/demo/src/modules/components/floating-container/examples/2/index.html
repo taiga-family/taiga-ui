@@ -6,89 +6,79 @@
     Show
 </button>
 
-<ng-template #template>
-    <div tuiHeader>
-        <div tuiTitle>
-            Title
-            <div tuiSubtitle>Subtitle</div>
-        </div>
-    </div>
-    <label
-        tuiLabel
-        [style.margin-block-start.rem]="1"
-    >
-        <input
-            tuiSwitch
-            type="checkbox"
-            [(ngModel)]="floating"
-        />
-        Floating visibility
-    </label>
-    <label
-        tuiLabel
-        [style.margin-block-start.rem]="0.5"
-    >
-        <input
-            tuiSwitch
-            type="checkbox"
-            [(ngModel)]="secondAction"
-        />
-        Second action visibility
-    </label>
-    <input
-        placeholder="Some search"
-        tuiSearch
-        type="search"
-        class="input"
-        [(ngModel)]="search"
-    />
-</ng-template>
-
 <ng-template
     let-observer
-    [tuiSheetDialogOptions]="{label: template, fullscreen: true}"
+    [tuiSheetDialogOptions]="{appearance: 'fullscreen'}"
     [(tuiSheetDialog)]="open"
 >
-    <div class="content">
-        <section class="items">
-            @for (item of items | tuiFilter: filter : search; track item) {
-                <div tuiCell>
-                    <div
-                        appearance="primary"
-                        tuiAvatar="@tui.star"
-                    ></div>
-                    <div tuiTitle>
-                        {{ item.title }}
-                        <div tuiSubtitle>{{ item.description }}</div>
-                    </div>
+    <header tuiHeader>
+        <hgroup tuiTitle>
+            <h2>Title</h2>
+            <p tuiSubtitle>Subtitle</p>
+            <p [style.margin-block]="'0.75rem 0'">
+                <label tuiLabel>
+                    <input
+                        tuiSwitch
+                        type="checkbox"
+                        [(ngModel)]="floating"
+                    />
+                    Floating visibility
+                </label>
+            </p>
+            <p>
+                <label tuiLabel>
+                    <input
+                        tuiSwitch
+                        type="checkbox"
+                        [(ngModel)]="secondAction"
+                    />
+                    Second action visibility
+                </label>
+            </p>
+            <p>
+                <input
+                    placeholder="Some search"
+                    tuiSearch
+                    type="search"
+                    class="input"
+                    [(ngModel)]="search"
+                />
+            </p>
+        </hgroup>
+    </header>
+    <section class="content">
+        @for (item of items | tuiFilter: filter : search; track item) {
+            <div tuiCell>
+                <div
+                    appearance="primary"
+                    tuiAvatar="@tui.star"
+                ></div>
+                <div tuiTitle>
+                    {{ item.title }}
+                    <div tuiSubtitle>{{ item.description }}</div>
                 </div>
-            }
-        </section>
-
-        @if (floating) {
-            <footer
-                tuiFloatingContainer
-                @tuiSlideInTop
+            </div>
+        }
+    </section>
+    @if (floating) {
+        <footer tuiFloatingContainer>
+            <button
+                tuiButton
+                type="button"
+                (click)="observer.complete()"
             >
+                Main action
+            </button>
+            <tui-expand [expanded]="secondAction">
                 <button
+                    appearance="flat"
                     tuiButton
                     type="button"
                     (click)="observer.complete()"
                 >
-                    Main action
+                    Secondary action
                 </button>
-                @if (secondAction) {
-                    <button
-                        appearance="flat"
-                        tuiButton
-                        type="button"
-                        @tuiHeightCollapse
-                        (click)="observer.complete()"
-                    >
-                        Secondary action
-                    </button>
-                }
-            </footer>
-        }
-    </div>
+            </tui-expand>
+        </footer>
+    }
 </ng-template>

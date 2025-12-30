@@ -1,21 +1,17 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
-    EventEmitter,
+    contentChildren,
     forwardRef,
     inject,
-    Input,
-    Output,
-    type QueryList,
+    input,
+    model,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTr} from '../tr/tr.component';
 
@@ -25,7 +21,6 @@ import {TuiTableTr} from '../tr/tr.component';
     templateUrl: './tbody.template.html',
     styleUrl: './tbody.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TABLE_PROVIDER,
 })
 export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
@@ -34,27 +29,18 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
         forwardRef(() => TuiTableDirective),
     );
 
-    @ContentChildren(forwardRef(() => TuiTableTr))
-    public readonly rows: QueryList<TuiTableTr<T>> = EMPTY_QUERY;
+    public readonly rows = contentChildren<TuiTableTr<T>>(forwardRef(() => TuiTableTr));
 
-    @Input()
-    public data: readonly T[] = [];
+    public readonly data = input<readonly T[]>([]);
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
-    @Input()
-    public heading: PolymorpheusContent;
+    public readonly heading = input<PolymorpheusContent>();
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
-    @Input()
-    public open = this.options.open;
-
-    /** @deprecated: drop in v5.0, use TuiTableExpand */
-    @Output()
-    public readonly openChange = new EventEmitter<boolean>();
+    public readonly open = model(this.options.open);
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
     protected onClick = (): void => {
-        this.open = !this.open;
-        this.openChange.emit(this.open);
+        this.open.set(!this.open());
     };
 }

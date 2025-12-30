@@ -1,6 +1,7 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 // ...
 
 @Component({

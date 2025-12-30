@@ -1,23 +1,14 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiFade} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        TuiAmountPipe,
-        TuiAvatar,
-        TuiBadge,
-        TuiBlockDetails,
-        TuiFade,
-        TuiTitle,
-    ],
+    imports: [TuiAmountPipe, TuiAvatar, TuiBadge, TuiBlockDetails, TuiFade, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -25,5 +16,5 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
     providers: [tuiAmountOptionsProvider({sign: 'always'})],
 })
 export default class Example {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 }

@@ -8,16 +8,17 @@
 
 <ng-template
     [tuiSheetDialog]="open"
-    [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, fullscreen: true}"
+    [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, appearance: 'fullscreen'}"
     (tuiSheetDialogChange)="toggle($event)"
 >
     <header class="header">
-        <tui-input
-            tuiTextfieldIconLeft="@tui.search"
-            [formControl]="search"
-        >
-            Find user
-        </tui-input>
+        <tui-textfield iconStart="@tui.search">
+            <input
+                tuiInput
+                [formControl]="search"
+            />
+            <label tuiLabel>Find user</label>
+        </tui-textfield>
     </header>
     <div class="container">
         @for (user of users$ | async; track user) {

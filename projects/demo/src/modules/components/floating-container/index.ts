@@ -1,17 +1,11 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiCell,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
+import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -20,29 +14,27 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiButton,
         TuiCell,
         TuiDemo,
+        TuiExpand,
         TuiFloatingContainer,
         TuiLabel,
-        TuiRepeatTimesPipe,
         TuiSwitch,
         TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
-    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
     protected floating = true;
-
     protected secondAction = false;
-
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
-        'Two actions',
-        'Inside SheetDialog',
-        'Action and label/button',
-        'Custom content',
-        'Custom background color',
-        'Primary button change',
+        'Basic',
+        'Sheet',
+        'Text',
+        'Content',
+        'Overlay',
+        'Crossfade',
     ];
 
     protected readonly colors = [

@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input, type OnChanges, Renderer2} from '@angular/core';
+import {Directive, inject, input, type OnChanges} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -13,17 +13,16 @@ export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] = tuiCreateOpt
 
 @Directive({
     selector: '[tuiHighlight]',
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     host: {
         '[style.position]': '"relative"',
-        '[style.zIndex]': '0',
+        '[style.z-index]': '0',
     },
 })
 export class TuiHighlight implements OnChanges {
     private readonly el = tuiInjectElement();
-    private readonly renderer = inject(Renderer2);
+    private readonly options = inject(TUI_HIGHLIGHT_OPTIONS);
     private readonly doc = inject(DOCUMENT);
-
     private readonly highlight: HTMLElement = this.setUpHighlight();
     private readonly treeWalker = this.doc.createTreeWalker(
         this.el,
@@ -31,14 +30,11 @@ export class TuiHighlight implements OnChanges {
         svgNodeFilter,
     );
 
-    @Input()
-    public tuiHighlight = '';
-
-    @Input()
-    public tuiHighlightColor = inject(TUI_HIGHLIGHT_OPTIONS).highlightColor;
+    public readonly tuiHighlight = input('');
+    public readonly tuiHighlightColor = input(this.options.highlightColor);
 
     constructor() {
-        inject(ResizeObserverService, {self: true})
+        inject(WaResizeObserverService, {self: true})
             .pipe(takeUntilDestroyed())
             .subscribe(() => this.updateStyles());
     }
@@ -70,13 +66,13 @@ export class TuiHighlight implements OnChanges {
             const range = this.doc.createRange();
 
             range.setStart(this.treeWalker.currentNode, index);
-            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight.length);
+            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight().length);
 
             const hostRect = this.el.getBoundingClientRect();
             const {left, top, width, height} = range.getBoundingClientRect();
             const {style} = this.highlight;
 
-            style.background = this.tuiHighlightColor;
+            style.background = this.tuiHighlightColor();
             style.left = tuiPx(left - hostRect.left);
             style.top = tuiPx(top - hostRect.top);
             style.width = tuiPx(width);
@@ -88,19 +84,19 @@ export class TuiHighlight implements OnChanges {
     }
 
     private indexOf(source: string | null): number {
-        return !source || !this.tuiHighlight
+        return !source || !this.tuiHighlight()
             ? -1
-            : source.toLowerCase().indexOf(this.tuiHighlight.toLowerCase());
+            : source.toLowerCase().indexOf(this.tuiHighlight().toLowerCase());
     }
 
     private setUpHighlight(): HTMLElement {
-        const highlight = this.renderer.createElement('div');
+        const highlight = this.doc.createElement('div');
         const {style} = highlight;
 
-        style.background = this.tuiHighlightColor;
+        style.background = this.options.highlightColor;
         style.zIndex = '-1';
         style.position = 'absolute';
-        this.renderer.appendChild(this.el, highlight);
+        this.el.appendChild(highlight);
 
         return highlight;
     }

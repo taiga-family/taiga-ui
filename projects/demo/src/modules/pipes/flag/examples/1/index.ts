@@ -1,13 +1,11 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFlagPipe} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_COUNTRIES} from '@taiga-ui/kit';
+import {TUI_COUNTRIES, TuiFlagPipe} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiFlagPipe],
+    imports: [TuiFlagPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

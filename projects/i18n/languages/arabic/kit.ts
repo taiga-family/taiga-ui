@@ -25,9 +25,9 @@ export const TUI_ARABIC_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd/mm/yyyy',
-        MDY: 'mm/dd/yyyy',
-        YMD: 'yyyy/mm/dd',
+        'dd/mm/yyyy': 'dd/mm/yyyy',
+        'mm/dd/yyyy': 'mm/dd/yyyy',
+        'yyyy/mm/dd': 'yyyy/mm/dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['عرض كلمة المرور', 'إخفاء كلمة المرور'],
@@ -79,4 +79,12 @@ export const TUI_ARABIC_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'إعادة تعيين',
     },
     phoneSearch: 'اكتب الدولة أو الرمز',
+    dayRangePeriods: [
+        'طوال الوقت',
+        'اليوم',
+        'أمس',
+        'هذا الأسبوع',
+        'هذا الشهر',
+        'الشهر الماضي',
+    ],
 };

@@ -8,7 +8,7 @@ import {
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDropdownSheet} from './dropdown-sheet.directive';
@@ -18,7 +18,7 @@ import {TuiDropdownSheet} from './dropdown-sheet.directive';
     template: `
         <ng-template>
             <ng-container
-                *polymorpheusOutlet="dropdown._content() as text; context: context"
+                *polymorpheusOutlet="dropdown.content() as text; context: context"
             >
                 {{ text }}
             </ng-container>

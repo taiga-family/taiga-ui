@@ -2,7 +2,14 @@
     appearance="floating"
     tuiCardLarge
 >
-    <tui-input [(ngModel)]="value">Input example</tui-input>
+    <tui-textfield>
+        <input
+            tuiInput
+            [(ngModel)]="value"
+        />
+        <label tuiLabel>Input example</label>
+    </tui-textfield>
+
     <label tuiLabel>
         <input
             tuiCheckbox

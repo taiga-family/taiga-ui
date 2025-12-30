@@ -8,14 +8,10 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {
-    TUI_IS_MOBILE,
-    TUI_STRICT_MATCHER,
-    type TuiContext,
-    type TuiStringMatcher,
-} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TUI_STRICT_MATCHER, type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk';
+import {TuiDropdown} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiChevron,
@@ -23,7 +19,6 @@ import {
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 interface Country {
     id: string;
@@ -44,7 +39,6 @@ interface Country {
         TuiDocTextfield,
         TuiDropdown,
         TuiFilterByInputPipe,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,
@@ -52,11 +46,9 @@ interface Country {
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     protected readonly control = new FormControl<Country | null>(null);
-
-    protected textfieldContent: PolymorpheusContent = '';
 
     protected readonly countries = computed(() =>
         Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
@@ -69,7 +61,7 @@ export default class PageComponent {
 
     protected matcher = this.matcherVariants[0]!;
 
-    protected readonly textfieldContentVariants = computed(() => [
+    protected readonly textfieldContentVariants = [
         '',
         'TOP SECRET',
         ({$implicit: x}: TuiContext<any>) =>
@@ -79,16 +71,18 @@ export default class PageComponent {
                 .join(' '),
         ({$implicit: x}: TuiContext<any>) =>
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
-    ]);
+    ];
 
     protected strict = true;
 
     protected readonly databaseExample: TuiRawLoaderContent = import(
-        './examples/5/database.ts?raw'
+        './examples/5/database.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly selectOptionExample: TuiRawLoaderContent = import(
-        './examples/12/option.ts?raw'
+        './examples/12/option.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly handler = (item: Country): boolean =>

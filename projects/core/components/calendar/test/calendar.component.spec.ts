@@ -1,6 +1,6 @@
 import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {provideTaiga, TuiCalendar} from '@taiga-ui/core';
@@ -35,8 +35,7 @@ describe('Calendar', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiCalendar, {static: true})
-        public component!: TuiCalendar;
+        public readonly component = viewChild.required(TuiCalendar);
 
         public value = TuiDay.currentLocal();
         public month = new TuiMonth(2019, 2);
@@ -65,7 +64,7 @@ describe('Calendar', () => {
         fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
-        component = testComponent.component;
+        component = testComponent.component();
         fixture.detectChanges();
     });
 

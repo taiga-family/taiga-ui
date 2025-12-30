@@ -3,14 +3,14 @@
 :host {
     position: relative;
     display: flex;
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     box-sizing: border-box;
     color: var(--tui-text-secondary);
     box-shadow: inset 0 -1px var(--tui-border-normal);
     overflow: hidden;
 
     &[data-size='m'] {
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
     }
 }
 
@@ -57,7 +57,7 @@
         padding: 0 0.625rem;
         line-height: 1.5rem;
         border-radius: var(--tui-radius-s);
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
         color: var(--tui-text-primary);
 
         &:before {
@@ -75,7 +75,7 @@
 
     &[data-size='m'] ::ng-deep *[tuiTab] {
         block-size: 2.25rem;
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
     }
     /* stylelint-enable */
 }

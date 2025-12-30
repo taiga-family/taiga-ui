@@ -8,7 +8,7 @@ import {
     model,
     type OnChanges,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiContainsOrAfter,
@@ -17,12 +17,10 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
-import {
-    TuiTextfieldComponent,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -34,7 +32,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     styleUrl: './input-search.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiCellOptionsProvider({size: 'm'})],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithInput],
     host: {
         ngSkipHydration: 'true',
         '(focus)': 'open()',
@@ -43,12 +41,8 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     },
 })
 export class TuiInputSearch implements OnChanges {
-    @ViewChild(TemplateRef)
-    private readonly template?: TemplateRef<any>;
-
-    @ViewChild('container')
-    private readonly container?: ElementRef<HTMLElement>;
-
+    private readonly template = viewChild.required(TemplateRef);
+    private readonly container = viewChild<ElementRef<HTMLElement>>('container');
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly service = inject(TuiPopupService);
     private readonly textfield = inject(TuiTextfieldComponent);
@@ -73,14 +67,14 @@ export class TuiInputSearch implements OnChanges {
     }
 
     public open(): void {
-        if (this.ref?.destroyed === false || !this.template) {
+        if (this.ref?.destroyed === false) {
             return;
         }
 
         this.placeholder = this.el.placeholder;
         this.parent = this.textfield.el.parentElement;
         this.neighbor = this.textfield.el.nextSibling;
-        this.ref = this.service.add(this.template);
+        this.ref = this.service.add(this.template());
         this.ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.textfield.el);
         this.el.focus({preventScroll: true});
         this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;
@@ -96,17 +90,17 @@ export class TuiInputSearch implements OnChanges {
 
     protected onArrow(): void {
         tuiGetClosestFocusable({
-            initial: this.container?.nativeElement || this.el,
-            root: this.container?.nativeElement || this.el,
+            initial: this.container()?.nativeElement || this.el,
+            root: this.container()?.nativeElement || this.el,
         })?.focus();
     }
 
     protected onFocus({target}: Event): void {
         if (
-            this.container &&
+            this.container() &&
             target !== this.el &&
             tuiIsElement(target) &&
-            !tuiContainsOrAfter(this.container.nativeElement, target)
+            !tuiContainsOrAfter(this.container()!.nativeElement, target)
         ) {
             this.close();
         }

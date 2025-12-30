@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import {TuiTitle} from '@taiga-ui/core/directives/title';
+import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiAvatar} from '@taiga-ui/kit/components/avatar';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
@@ -36,7 +36,7 @@ export class TuiSearchHistory {
     protected readonly $ = this.control.valueChanges
         ?.pipe(
             map(String),
-            filter((item) => !!item && !this.popular.includes(item)),
+            filter((item) => !!item && !this.popular().includes(item)),
             takeUntilDestroyed(),
         )
         .subscribe((value) => {
@@ -45,8 +45,7 @@ export class TuiSearchHistory {
 
     protected history = this.items;
 
-    @Input()
-    public popular: readonly string[] = [];
+    public readonly popular = input<readonly string[]>([]);
 
     protected store(item: string): void {
         this.storage?.setItem(
@@ -60,7 +59,7 @@ export class TuiSearchHistory {
     }
 
     protected remove(item: string): void {
-        this.textfield.input?.nativeElement.focus();
+        this.textfield.input()?.nativeElement.focus();
         this.history = this.history.filter((v) => v !== item);
         this.storage?.setItem(
             this.options.key,
@@ -70,7 +69,7 @@ export class TuiSearchHistory {
 
     protected select(item: string): void {
         this.control.control?.setValue(item);
-        this.textfield.input?.nativeElement.focus();
+        this.textfield.input()?.nativeElement.focus();
     }
 
     private get items(): readonly string[] {

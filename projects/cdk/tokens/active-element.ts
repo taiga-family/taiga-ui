@@ -2,11 +2,8 @@ import {DOCUMENT} from '@angular/common';
 import {inject, InjectionToken, NgZone} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
-import {
-    tuiGetActualTarget,
-    tuiGetDocumentOrShadowRoot,
-    tuiIsMouseFocusable,
-} from '@taiga-ui/cdk/utils';
+import {tuiGetActualTarget, tuiGetDocumentOrShadowRoot} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsFocusable} from '@taiga-ui/cdk/utils/focus';
 import {
     distinctUntilChanged,
     filter,
@@ -36,7 +33,7 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
         // Not due to element being removed from DOM
         !removedElement?.contains(target) &&
         // Not due to scrollable element became non-scrollable
-        tuiIsMouseFocusable(target)
+        (target.getAttribute('tabIndex') === '-1' || tuiIsFocusable(target))
     );
 }
 

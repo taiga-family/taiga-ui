@@ -10,7 +10,6 @@
 
   <tui-data-list-wrapper
     *tuiDropdown
-    new
     [items]="items"
     [itemContent]="stringify | tuiStringifyContent"
   ></tui-data-list-wrapper>

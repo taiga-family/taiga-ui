@@ -15,7 +15,7 @@
 
 .t-column {
     position: absolute;
-    top: 0;
+    inset-block-start: 0;
     block-size: 100%;
     pointer-events: auto;
 }
@@ -32,7 +32,7 @@
 
 .t-host {
     position: absolute;
-    left: 50%;
+    inset-inline-start: 50%;
     inline-size: 0.5rem;
     block-size: 0.5rem;
     border-radius: 100%;
@@ -59,9 +59,8 @@
     background: var(--tui-border-normal);
 
     &_vertical {
-        top: 0;
-        bottom: 0;
-        left: 50%;
+        inset-block: 0;
+        inset-inline: 50% auto;
         inline-size: 1px;
     }
 
@@ -84,7 +83,7 @@
 .t-hint {
     position: absolute;
     box-shadow: var(--tui-shadow-small);
-    font: var(--tui-font-text-xs);
+    font: var(--tui-font-body-xs);
     block-size: 1.25rem;
     line-height: 1.25rem;
     margin-block-end: -0.625rem;
@@ -95,10 +94,10 @@
     transform: translate3d(-50%, 0, 0);
 
     &_x {
-        bottom: 0;
+        inset-block-end: 0;
     }
 
     &_y {
-        left: 0;
+        inset-inline-start: 0;
     }
 }

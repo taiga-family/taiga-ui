@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiThemeColorService} from '@taiga-ui/cdk/services';
-import {type TuiModal, TuiModalService} from '@taiga-ui/core/components/modal';
+import {TuiThemeColorService} from '@taiga-ui/addon-mobile/services';
+import {type TuiModalComponent, TuiModalService} from '@taiga-ui/core/portals/modal';
 import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiSheetDialogComponent} from './sheet-dialog.component';
@@ -23,7 +23,7 @@ export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions
     protected readonly content = TuiSheetDialogComponent;
 
     protected override add(
-        component: PolymorpheusComponent<TuiModal<TuiSheetDialogOptions>>,
+        component: PolymorpheusComponent<TuiModalComponent<TuiSheetDialogOptions>>,
     ): () => void {
         this.count++;
         this.theme.color = THEME;

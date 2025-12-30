@@ -2,10 +2,10 @@ import {
     type CdkVirtualScrollViewport,
     type VirtualScrollStrategy,
 } from '@angular/cdk/scrolling';
+import {inject} from '@angular/core';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
-import {type TuiScrollService} from '@taiga-ui/cdk/services';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {distinctUntilChanged, type Observable, Subject, takeUntil} from 'rxjs';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
     ANDROID_CYCLE,
@@ -41,26 +41,17 @@ function reduceCycle(
 }
 
 /**
- * This scroll strategy is hard wired with styles for iOS and Android.
+ * This scroll strategy is hard-wired with styles for iOS and Android.
  * It is dependent on month height on those platforms and is designed to
  * work for {@link TuiMobileCalendar} with years 1906 to 2102
  */
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
+    private readonly isIOS = inject(WA_IS_IOS);
+    private readonly destroy$ = new Subject<void>();
     private readonly index$ = new Subject<number>();
-
     private viewport: CdkVirtualScrollViewport | null = null;
 
-    private readonly destroy$ = new Subject<void>();
-
-    constructor(
-        private readonly isIOS: boolean,
-        private readonly scrollService: TuiScrollService,
-    ) {}
-
-    @tuiPure
-    public get scrolledIndexChange(): Observable<number> {
-        return this.index$.pipe(distinctUntilChanged());
-    }
+    public readonly scrolledIndexChange = this.index$.pipe(distinctUntilChanged());
 
     public attach(viewport: CdkVirtualScrollViewport): void {
         const cycle = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
@@ -89,22 +80,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     public onRenderedOffsetChanged(): void {}
 
     public scrollToIndex(index: number, behavior: ScrollBehavior): void {
-        if (!this.viewport) {
-            return;
-        }
-
-        const scrollTop = this.getOffsetForIndex(index);
-
-        if (behavior !== 'smooth') {
-            this.viewport.scrollToOffset(scrollTop, behavior);
-
-            return;
-        }
-
-        this.scrollService
-            .scroll$(this.viewport.elementRef.nativeElement, scrollTop)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe();
+        this.viewport?.scrollToOffset(this.getOffsetForIndex(index), behavior);
     }
 
     private getOffsetForIndex(index: number): number {

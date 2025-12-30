@@ -3,7 +3,7 @@
     "private": true,
     "devDependencies": {
         "@axe-core/playwright": "4.11.0",
-        "@playwright/test": "1.56.1",
+        "@playwright/test": "1.57.0",
         "axe-playwright": "2.2.2"
     }
 }

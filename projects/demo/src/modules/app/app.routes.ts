@@ -31,9 +31,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/rtl'),
     }),
     route({
-        path: DemoRoute.Related,
-        title: 'Taiga UI family',
-        loadComponent: async () => import('../info/related'),
+        path: DemoRoute.About,
+        title: 'About',
+        loadComponent: async () => import('../info/about'),
     }),
     route({
         path: DemoRoute.Jest,
@@ -42,7 +42,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.DisableAnimation,
-        title: 'Disable animation',
+        title: 'Disable animations',
         loadComponent: async () => import('../info/testing/disable-animation'),
     }),
     route({
@@ -65,11 +65,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Appearances,
         title: 'Appearances',
         loadComponent: async () => import('../customization/appearances'),
-    }),
-    route({
-        path: DemoRoute.DialogCustom,
-        title: 'Custom',
-        loadComponent: async () => import('../customization/dialogs'),
     }),
     route({
         path: DemoRoute.DialogRoutable,
@@ -167,7 +162,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Title,
         title: 'Title',
-        loadComponent: async () => import('../directives/title'),
+        loadComponent: async () => import('../components/title'),
     }),
     route({
         path: DemoRoute.CardMedium,
@@ -235,9 +230,9 @@ export const ROUTES: Routes = [
         title: 'SwipeActions',
     }),
     route({
-        path: DemoRoute.Textfield,
-        loadComponent: async () => import('../components/textfield'),
-        title: 'Textfield',
+        path: DemoRoute.Input,
+        loadComponent: async () => import('../components/input'),
+        title: 'Input',
     }),
     route({
         path: DemoRoute.Navigation,
@@ -265,14 +260,19 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/button'),
     }),
     route({
-        path: DemoRoute.ButtonClose,
-        title: 'ButtonClose',
-        loadComponent: async () => import('../components/button-close'),
+        path: DemoRoute.ButtonX,
+        title: 'ButtonX',
+        loadComponent: async () => import('../components/button-x'),
     }),
     route({
         path: DemoRoute.ButtonGroup,
         title: 'ButtonGroup',
         loadComponent: async () => import('../components/button-group'),
+    }),
+    route({
+        path: DemoRoute.ButtonSelect,
+        title: 'ButtonSelect',
+        loadComponent: async () => import('../components/button-select'),
     }),
     route({
         path: DemoRoute.Calendar,
@@ -523,11 +523,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Push,
         loadComponent: async () => import('../components/push'),
         title: 'Push',
-    }),
-    route({
-        path: DemoRoute.MobileDialog,
-        loadComponent: async () => import('../components/mobile-dialog'),
-        title: 'MobileDialog',
     }),
     route({
         path: DemoRoute.MobileCalendar,
@@ -784,11 +779,6 @@ export const ROUTES: Routes = [
         title: 'Shadows',
     }),
     route({
-        path: DemoRoute.Spaces,
-        loadComponent: async () => import('../markup/spaces'),
-        title: 'Spaces',
-    }),
-    route({
         path: DemoRoute.Typography,
         loadComponent: async () => import('../markup/typography'),
         title: 'Typography',
@@ -961,29 +951,14 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../pipes/flag'),
     }),
     route({
-        path: DemoRoute.FormatDate,
-        loadComponent: async () => import('../pipes/format-date'),
-        title: 'FormatDate',
-    }),
-    route({
         path: DemoRoute.FormatNumber,
         loadComponent: async () => import('../pipes/format-number'),
         title: 'FormatNumber',
     }),
     route({
-        path: DemoRoute.IsPresent,
-        loadComponent: async () => import('../pipes/is-present'),
-        title: 'IsPresent',
-    }),
-    route({
         path: DemoRoute.Mapper,
         loadComponent: async () => import('../pipes/mapper'),
         title: 'Mapper',
-    }),
-    route({
-        path: DemoRoute.RepeatTimes,
-        loadComponent: async () => import('../pipes/repeat-times'),
-        title: 'RepeatTimes',
     }),
     route({
         path: DemoRoute.Stringify,
@@ -996,16 +971,6 @@ export const ROUTES: Routes = [
         title: 'StringifyContent',
     }),
     // SERVICES
-    route({
-        path: DemoRoute.Alert,
-        title: 'Alert',
-        loadComponent: async () => import('../components/alert'),
-    }),
-    route({
-        path: DemoRoute.BreakpointService,
-        loadComponent: async () => import('../components/services/breakpoint-service'),
-        title: 'BreakpointService',
-    }),
     route({
         path: DemoRoute.KeyboardService,
         loadComponent: async () => import('../components/services/keyboard-service'),
@@ -1043,11 +1008,6 @@ export const ROUTES: Routes = [
         title: 'DOM',
     }),
     route({
-        path: DemoRoute.Browser,
-        loadComponent: async () => import('../components/utils/browser'),
-        title: 'Browser',
-    }),
-    route({
         path: DemoRoute.Miscellaneous,
         loadComponent: async () => import('../components/utils/miscellaneous'),
         title: 'Miscellaneous',
@@ -1056,11 +1016,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Tokens,
         loadComponent: async () => import('../components/utils/tokens'),
         title: 'Tokens',
-    }),
-    route({
-        path: DemoRoute.Pure,
-        loadComponent: async () => import('../components/utils/pure'),
-        title: 'Pure',
     }),
     route({
         path: DemoRoute.StackblitzStarter,

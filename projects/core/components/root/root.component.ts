@@ -6,27 +6,27 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiPopups} from '@taiga-ui/core/directives/popup';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
+import {TuiPopups} from '@taiga-ui/core/portals/popup';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TUI_BREAKPOINT,
+    TUI_REDUCED_MOTION,
+} from '@taiga-ui/core/tokens';
 import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-root',
-    imports: [TuiDialogs, TuiPopups, TuiScrollControls],
+    imports: [TuiPopups, TuiScrollControls],
     templateUrl: './root.template.html',
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -37,7 +37,7 @@ import {map} from 'rxjs';
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
-        '[class._mobile]': 'isMobileRes()',
+        '[class._mobile]': 'breakpoint() === "mobile"',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
         '(touchstart.passive.zoneless)': '0',
         '(document:fullscreenchange)': 'top.set(parent)',
@@ -51,12 +51,9 @@ export class TuiRoot {
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
-    protected readonly isMobileRes = toSignal(
-        inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
-    );
-
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly scrollbars =
-        !inject(TUI_IS_MOBILE) &&
+        !inject(WA_IS_MOBILE) &&
         !this.child &&
         inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
         inject(TUI_OPTIONS).scrollbars !== 'native';

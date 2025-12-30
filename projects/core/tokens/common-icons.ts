@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 // TODO: Rename `ellipsis` to `more` in the next major version
 const COMMON_ICONS: TuiCommonIcons = {
@@ -9,6 +8,8 @@ const COMMON_ICONS: TuiCommonIcons = {
     more: '@tui.chevron-right',
     search: '@tui.search',
     ellipsis: '@tui.ellipsis',
+    decrement: '@tui.chevron-left',
+    increment: '@tui.chevron-right',
 };
 
 export interface TuiCommonIcons {
@@ -18,12 +19,8 @@ export interface TuiCommonIcons {
     readonly more: string;
     readonly search: string;
     readonly ellipsis: string;
+    readonly decrement: string;
+    readonly increment: string;
 }
 
-export const TUI_COMMON_ICONS = new InjectionToken(ngDevMode ? 'TUI_COMMON_ICONS' : '', {
-    factory: () => COMMON_ICONS,
-});
-
-export function tuiCommonIconsProvider(icons: Partial<TuiCommonIcons>): Provider {
-    return tuiProvideOptions(TUI_COMMON_ICONS, icons, COMMON_ICONS);
-}
+export const [TUI_COMMON_ICONS, tuiCommonIconsProvider] = tuiCreateOptions(COMMON_ICONS);

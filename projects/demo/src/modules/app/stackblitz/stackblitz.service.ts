@@ -12,7 +12,7 @@ import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './ut
 const APP_COMP_META = {
     SELECTOR: 'app',
     TEMPLATE_URL: './app.template.html',
-    STYLE_URLS: ['./app.style.less'],
+    STYLE_URL: './app.style.less',
     CLASS_NAME: 'App',
 } as const;
 
@@ -38,7 +38,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
 
         appCompTs.selector = APP_COMP_META.SELECTOR;
         appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
-        appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
+        appCompTs.styleUrl = APP_COMP_META.STYLE_URL;
         appCompTs.className = APP_COMP_META.CLASS_NAME;
         appCompTs.defaultExport = false;
 

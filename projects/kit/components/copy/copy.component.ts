@@ -1,12 +1,12 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
+import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, map, startWith, switchMap, timer} from 'rxjs';
@@ -20,7 +20,7 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     styleUrl: './copy.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '(pointerdown)': 'copied$.next(false)',
     },
 })
@@ -37,14 +37,7 @@ export class TuiCopyComponent {
         ),
     );
 
-    @Input()
-    public size: TuiSizeL = 'm';
-
-    protected get icon(): string {
-        return tuiIsString(this.options.icon)
-            ? this.options.icon
-            : this.options.icon(this.size);
-    }
+    public readonly size = input<TuiSizeL>('m');
 
     protected get check(): string {
         return tuiIsString(this.notification.icon)

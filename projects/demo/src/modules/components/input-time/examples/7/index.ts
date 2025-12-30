@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiBooleanHandler, type TuiStringMatcher, TuiTime} from '@taiga-ui/cdk';
-import {tuiItemsHandlersProvider, TuiTextfield} from '@taiga-ui/core';
+import {tuiItemsHandlersProvider} from '@taiga-ui/core';
 import {
     tuiCreateTimePeriods,
     TuiDataListWrapper,
@@ -12,13 +12,7 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiDataListWrapper,
-        TuiFilterByInputPipe,
-        TuiInputTime,
-        TuiTextfield,
-    ],
+    imports: [FormsModule, TuiDataListWrapper, TuiFilterByInputPipe, TuiInputTime],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

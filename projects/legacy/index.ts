@@ -1,5 +1,2 @@
-export * from '@taiga-ui/legacy/classes';
+export * from './pure';
 export * from '@taiga-ui/legacy/components';
-export * from '@taiga-ui/legacy/directives';
-export * from '@taiga-ui/legacy/tokens';
-export * from '@taiga-ui/legacy/utils';

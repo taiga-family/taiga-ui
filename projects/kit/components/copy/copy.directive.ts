@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {
     TuiTextfieldComponent,
     tuiTextfieldIcon,
@@ -10,7 +10,7 @@ import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -34,8 +34,8 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     host: {
         style: 'cursor: pointer',
         '(click)': 'copy()',
-        '[style.pointer-events]': 'disabled ? "none" : null',
-        '[style.opacity]': 'disabled ? "var(--tui-disabled-opacity)" : null',
+        '[style.pointer-events]': 'textfield.value() ? null : "none"',
+        '[style.opacity]': 'textfield.value() ? null : "var(--tui-disabled-opacity)"',
         '[style.border-width.rem]': 'textfield.options.size() === "l" ? null : 0.25',
     },
 })
@@ -46,7 +46,6 @@ export class TuiCopyDirective {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
     protected readonly copyTexts = inject(TUI_COPY_TEXTS);
-
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
         'content',
@@ -68,15 +67,8 @@ export class TuiCopyDirective {
         ),
     );
 
-    @Input()
-    public tuiCopy = '';
-
-    protected get disabled(): boolean {
-        return !this.textfield.input?.nativeElement.value;
-    }
-
     protected copy(): void {
-        this.textfield.input?.nativeElement.select();
+        this.textfield.input()?.nativeElement.select();
         this.doc.execCommand('copy');
         this.copied$.next();
     }

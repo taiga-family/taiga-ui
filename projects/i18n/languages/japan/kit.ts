@@ -25,9 +25,9 @@ export const TUI_JAPAN_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.yyyy',
+        'mm/dd/yyyy': 'mm.dd.yyyy',
+        'yyyy/mm/dd': 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['パスワードを表示', 'パスワードを隠す'],
@@ -79,4 +79,5 @@ export const TUI_JAPAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'リセット',
     },
     phoneSearch: '国またはコードを入力',
+    dayRangePeriods: ['すべての時間', '今日', '昨日', '今週', '今月', '先月'],
 };

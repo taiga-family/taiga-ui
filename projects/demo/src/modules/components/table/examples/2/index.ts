@@ -4,25 +4,26 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
 import {
-    TuiAutoColorPipe,
     TuiButton,
     TuiCell,
     TuiDropdown,
     TuiIcon,
-    TuiInitialsPipe,
     TuiLink,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
+    TuiAutoColorPipe,
     TuiAvatar,
     TuiBadge,
     TuiCheckbox,
     TuiChip,
+    TuiInitialsPipe,
     TuiItemsWithMore,
     TuiProgressBar,
     TuiRadioList,
     TuiStatus,
 } from '@taiga-ui/kit';
+import {TuiItemGroup} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -37,6 +38,7 @@ import {
         TuiDropdown,
         TuiIcon,
         TuiInitialsPipe,
+        TuiItemGroup,
         TuiItemsWithMore,
         TuiLink,
         TuiProgressBar,

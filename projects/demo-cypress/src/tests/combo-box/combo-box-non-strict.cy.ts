@@ -1,14 +1,7 @@
-import {AsyncPipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiRoot} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
@@ -18,15 +11,7 @@ interface Country {
 }
 
 @Component({
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataListWrapper,
-        TuiRoot,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiChevron, TuiComboBox, TuiDataListWrapper, TuiRoot],
     template: `
         <tui-root>
             <tui-textfield
@@ -58,11 +43,9 @@ export class TestComboBox {
 
     protected readonly control = new FormControl<Country | string | null>(null);
 
-    @Output()
-    public readonly valueChanges = new EventEmitter();
+    public readonly valueChanges = output<Country | string | null>();
 
-    @Output()
-    public readonly inputEvent = new EventEmitter<string>();
+    public readonly inputEvent = output<string>();
 
     constructor() {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
@@ -151,7 +134,7 @@ describe('ComboBox[strict=false]', () => {
 
             cy.get('@inputEvent').should('have.been.calledWith', 'Andorra');
 
-            cy.get('tui-textfield .t-clear').click();
+            cy.get('tui-textfield [tuiButtonX]').click();
 
             cy.get('@inputEvent').should('have.been.calledTwice');
             cy.get('@inputEvent').should('have.been.calledWith', '');
@@ -166,7 +149,7 @@ describe('ComboBox[strict=false]', () => {
                 name: 'Andorra',
             });
 
-            cy.get('tui-textfield .t-clear').click();
+            cy.get('tui-textfield [tuiButtonX]').click();
 
             cy.get('@valueChanges').should('have.been.calledTwice');
             cy.get('@valueChanges').should('have.been.calledWith', null);

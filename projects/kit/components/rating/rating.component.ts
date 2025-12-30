@@ -36,7 +36,7 @@ export class TuiRating extends TuiControl<number> {
     private readonly options = inject(TUI_RATING_OPTIONS);
 
     protected readonly active = signal(0);
-    protected readonly array = computed(() => new Array(this.max()));
+    protected readonly array = computed(() => Array.from({length: this.max()}));
 
     public readonly icon = input(this.options.icon);
     public readonly max = input(this.options.max);

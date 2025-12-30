@@ -1,7 +1,7 @@
 <img
     alt="taiga"
     loading="lazy"
-    src="/assets/images/taiga.svg"
+    src="assets/images/taiga.svg"
     class="taiga"
 />
 
@@ -16,7 +16,7 @@
         <img
             alt="topography"
             loading="lazy"
-            src="/assets/images/topography.svg"
+            src="assets/images/topography.svg"
         />
     </div>
     <div
@@ -130,7 +130,7 @@
         <img
             alt="topography"
             loading="lazy"
-            src="/assets/images/topography.svg"
+            src="assets/images/topography.svg"
         />
     </div>
     <h1
@@ -142,7 +142,7 @@
         <img
             alt="logo"
             loading="lazy"
-            src="/assets/images/taiga.svg"
+            src="assets/images/taiga.svg"
             class="logo"
         />
         <br />
@@ -160,15 +160,15 @@
         />
     </h1>
 </section>
-
-<div
-    *tuiRepeatTimes="let index of 3"
-    #block
-    waIntersectionObserver
-    waIntersectionThreshold="0.5"
-    class="screen"
-    (waIntersectionObservee)="$event[0] && onIntersection($event[0], index)"
-></div>
+@for (_ of '-'.repeat(3); track $index) {
+    <div
+        #block
+        waIntersectionObserver
+        waIntersectionThreshold="0.5"
+        class="screen"
+        (waIntersectionObservee)="$event[0] && onIntersection($event[0], $index)"
+    ></div>
+}
 
 <footer class="footer">
     <a

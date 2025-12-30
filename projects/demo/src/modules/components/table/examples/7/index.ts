@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -10,7 +9,6 @@ import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit'
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiButton,
         TuiButtonSelect,

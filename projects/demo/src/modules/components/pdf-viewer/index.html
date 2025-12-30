@@ -6,8 +6,9 @@
     <ng-template pageTab>
         <p>Wrapper component for viewing PDF files in an iframe</p>
 
-        <tui-notification
+        <div
             appearance="warning"
+            tuiNotification
             class="tui-space_top-5"
         >
             PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party
@@ -23,7 +24,7 @@
             . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle
             your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you
             need to rely on
-            <code>TUI_IS_MOBILE</code>
+            <code>WA_IS_MOBILE</code>
             token to provide suitable alternative behavior. For example, you can use third-party service
             <code>https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF</code>
             or your own service to render PDF by
@@ -34,7 +35,7 @@
             >
                 pdf.js.
             </a>
-        </tui-notification>
+        </div>
 
         @for (example of examples; track example) {
             <tui-doc-example

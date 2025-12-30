@@ -24,7 +24,7 @@ export interface TuiDateFormatSettings {
 }
 
 export const TUI_DEFAULT_DATE_FORMAT: TuiDateFormatSettings = {
-    mode: 'DMY',
+    mode: 'dd/mm/yyyy',
     separator: '.',
 };
 

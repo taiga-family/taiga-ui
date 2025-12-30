@@ -1,17 +1,17 @@
 <tui-textfield>
     <input
         placeholder="Type in long value"
-        tuiTextfield
+        tuiInput
         [tuiFluidTypography]="scale()"
         [(ngModel)]="value"
     />
 </tui-textfield>
 
 <tui-input-range
-    class="tui-space_top-4"
     [max]="30"
     [min]="1"
     [ngModel]="range()"
+    [style.inset-block-start.rem]="0.5"
     (ngModelChange)="range.set($event)"
 >
     Min/Max (converted to pixels)

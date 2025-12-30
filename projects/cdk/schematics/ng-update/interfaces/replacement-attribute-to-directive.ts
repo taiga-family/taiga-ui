@@ -7,6 +7,6 @@ export interface ReplacementAttributeToDirective {
         readonly moduleSpecifier: string;
         readonly name: string;
     };
-    readonly filterFn?: (element: Element) => boolean;
     readonly inputProperty: string;
+    filterFn?(element: Element): boolean;
 }

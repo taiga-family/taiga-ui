@@ -4,7 +4,7 @@ import {
     TuiPositionAccessor,
     type TuiRectAccessor,
 } from '@taiga-ui/core/classes';
-import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
 @Directive({
@@ -18,6 +18,6 @@ export class TuiLineClampPositionDirective extends TuiPositionAccessor {
     public getPosition(): TuiPoint {
         const {top, left} = this.accessor.getClientRect();
 
-        return [top, left];
+        return [left, top];
     }
 }

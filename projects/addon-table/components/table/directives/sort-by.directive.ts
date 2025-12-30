@@ -1,14 +1,13 @@
 import {
-    ContentChildren,
+    computed,
+    contentChildren,
     Directive,
+    effect,
     inject,
-    Input,
-    Output,
-    type QueryList,
+    input,
+    output,
 } from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {combineLatest, debounceTime, delay, filter, map, type Observable} from 'rxjs';
 
 import {type TuiSortChange} from '../table.options';
 import {TuiTableSortable} from './sortable.directive';
@@ -18,49 +17,26 @@ import {TuiTableDirective} from './table.directive';
     selector: 'table[tuiTable][tuiSortBy]',
 })
 export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
-    @ContentChildren(TuiTableSortable, {descendants: true})
-    private readonly sortables: QueryList<TuiTableSortable<T>> = EMPTY_QUERY;
-
     private readonly table = inject(TuiTableDirective<T>);
+    private readonly sortables = contentChildren<TuiTableSortable<T>>(TuiTableSortable, {
+        descendants: true,
+    });
 
-    /**
-     * @deprecated: use tuiSortChange
-     */
-    @Output()
-    public readonly tuiSortByChange = this.table.sorterChange.pipe(
-        // delay is for getting actual ContentChildren (sortables) https://github.com/angular/angular/issues/38976
-        delay(0),
-        filter(() => !!this.sortables.length),
-        map((sorter) => this.getKey(sorter)),
-    );
+    private readonly sortChange = computed<TuiSortChange<T>>(() => ({
+        sortKey: this.sortables().length ? this.getKey(this.table.sorter()) : null,
+        sortDirection: this.table.direction(),
+    }));
 
-    @Output()
-    public readonly tuiSortChange: Observable<TuiSortChange<T>> = combineLatest([
-        this.tuiSortByChange,
-        this.table.directionChange,
-    ]).pipe(
-        debounceTime(0),
-        map(([sortKey, sortDirection]) => ({
-            sortBy: sortKey,
-            orderBy: sortDirection,
-            sortKey,
-            sortDirection,
-        })),
-    );
+    protected readonly sortOutput = effect(() => {
+        if (this.sortables().length) {
+            this.tuiSortChange.emit(this.sortChange());
+        }
+    });
 
-    public tuiSortBy: string | keyof T | null = null;
-
-    @Input('tuiSortBy')
-    public set sortBy(sortBy: string | keyof T | null) {
-        this.tuiSortBy = sortBy;
-        this.checkSortables();
-    }
-
-    protected checkSortables(): void {
-        this.sortables.forEach((s) => s.check());
-    }
+    public readonly tuiSortChange = output<TuiSortChange<T>>();
+    public readonly tuiSortBy = input<string | keyof T | null>(null);
 
     private getKey(sorter: TuiComparator<T> | null): keyof T | null {
-        return this.sortables.find((s) => s.sorter === sorter)?.key || null;
+        return this.sortables().find((s) => s.sorter() === sorter)?.key || null;
     }
 }

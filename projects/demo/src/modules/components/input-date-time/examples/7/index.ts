@@ -2,9 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownSheet, TuiMobileCalendarDropdownNew} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet, TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
@@ -14,8 +13,7 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiDropdownSheet,
         TuiForm,
         TuiInputDateTime,
-        TuiMobileCalendarDropdownNew,
-        TuiTextfield,
+        TuiMobileCalendarDropdown,
     ],
     templateUrl: './index.html',
     encapsulation,

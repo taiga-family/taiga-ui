@@ -1,143 +1,101 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     ElementRef,
-    EventEmitter,
     inject,
-    Input,
-    Output,
-    type QueryList,
-    ViewChildren,
+    input,
+    model,
+    viewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
-import {
-    type TuiHorizontalDirection,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXS,
-} from '@taiga-ui/core/types';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_PAGINATION_OPTIONS} from './pagination.options';
 
-const DOTS_LENGTH = 1;
+const ELLIPSIS_ITEM_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
 @Component({
     selector: 'tui-pagination',
-    imports: [PolymorpheusOutlet, TuiButton, TuiRepeatTimes],
+    imports: [PolymorpheusOutlet, TuiButton],
     templateUrl: './pagination.template.html',
     styleUrl: './pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPagination {
-    @ViewChildren('element', {read: ElementRef})
-    private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
+    private readonly els = viewChildren('element', {read: ElementRef});
     private readonly el = tuiInjectElement();
+    private readonly maxHalfLength = computed(
+        () => this.sidePadding() + ELLIPSIS_ITEM_LENGTH + this.activePadding(),
+    );
+
+    private readonly maxElementsLength = computed(
+        () => this.maxHalfLength() * 2 + ACTIVE_ITEM_LENGTH,
+    );
+
+    private readonly lastElementIndex = computed(() => this.elementsLength() - 1);
+    private readonly itemsFit = computed(() => this.length() <= this.maxElementsLength());
+    private readonly lastIndex = computed(() => this.length() - 1);
+    private readonly reverseIndex = computed(
+        (): number => this.lastIndex() - this.index(),
+    );
 
     protected readonly texts = inject(TUI_PAGINATION_TEXTS);
-    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_PAGINATION_OPTIONS);
+    protected readonly buttonSize = computed(() => (this.size() === 'm' ? 'xs' : 's'));
+    protected readonly elementsLength = computed(() =>
+        this.itemsFit() ? this.length() : this.maxElementsLength(),
+    );
 
-    @Input()
-    public length = 1;
-
-    @Input()
-    public focusable = true;
-
-    @Input()
-    public size: TuiSizeL | TuiSizeS = this.options.defaultSize;
-
-    @Input()
-    public readonly disabled = false;
-
-    /**
-     * Amount of visible pages around active page
-     */
-    @Input()
-    public activePadding = 1;
-
-    /**
-     * Amount of visible pages at the edges
-     */
-    @Input()
-    public sidePadding = 1;
-
-    /**
-     * Customization for page number display.
-     */
-    @Input()
-    public content: PolymorpheusContent<TuiContext<number>>;
-
-    /**
-     * Active page index
-     */
-    @Input()
-    public index = 0;
-
-    @Output()
-    public readonly indexChange = new EventEmitter<number>();
-
-    public get nativeFocusableElement(): HTMLElement | null {
-        if (this.disabled) {
+    public readonly length = input(1);
+    public readonly focusable = input(true);
+    public readonly size = input(this.options.size);
+    public readonly disabled = input(false);
+    public readonly activePadding = input(1);
+    public readonly sidePadding = input(1);
+    public readonly content = input<PolymorpheusContent<TuiContext<number>>>();
+    public readonly index = model(0);
+    public readonly arrowIsDisabledRight = computed(() => this.reverseIndex() === 0);
+    public readonly arrowIsDisabledLeft = computed(() => this.index() === 0);
+    public readonly nativeFocusableElement = computed((): HTMLElement | null => {
+        if (this.disabled()) {
             return null;
         }
 
         let activeElementIndex = 0;
-        const {elementsLength} = this;
 
-        for (let i = 0; i < elementsLength; i++) {
+        for (let i = 0; i < this.elementsLength(); i++) {
             const itemIndex = this.getItemIndexByElementIndex(i);
 
             if (itemIndex) {
                 activeElementIndex++;
             }
 
-            if (itemIndex === this.index) {
+            if (itemIndex === this.index()) {
                 break;
             }
         }
 
         return (
-            this.els.find((_, index) => index === activeElementIndex)?.nativeElement ??
+            this.els().find((_, index) => index === activeElementIndex)?.nativeElement ??
             null
         );
-    }
+    });
 
     public get focused(): boolean {
         return tuiIsFocusedIn(this.el);
     }
 
-    public get arrowIsDisabledLeft(): boolean {
-        return this.index === 0;
-    }
-
-    public get arrowIsDisabledRight(): boolean {
-        return this.reverseIndex === 0;
-    }
-
-    /**
-     * Number of items in a container.
-     */
-    protected get elementsLength(): number {
-        return this.itemsFit ? this.length : this.maxElementsLength;
-    }
-
-    protected get buttonSize(): TuiSizeXS {
-        return this.size === 'm' ? 'xs' : 's';
-    }
-
     protected elementIsFocusable(index: number): boolean {
-        return this.index === index && !this.focused;
+        return this.index() === index && !this.focused;
     }
 
     /**
@@ -146,45 +104,38 @@ export class TuiPagination {
      * @returns index or null (for '…')
      */
     protected getItemIndexByElementIndex(elementIndex: number): number | null {
-        if (this.size === 's') {
+        const reverseElementIndex = this.lastElementIndex() - elementIndex;
+
+        if (elementIndex < this.sidePadding()) {
             return elementIndex;
         }
 
-        if (elementIndex < this.sidePadding) {
-            return elementIndex;
+        if (reverseElementIndex < this.sidePadding()) {
+            return this.lastIndex() - reverseElementIndex;
         }
 
-        if (elementIndex === this.sidePadding && this.hasCollapsedItems(this.index)) {
+        if (elementIndex === this.sidePadding() && this.hasCollapsedItems(this.index())) {
             return null;
         }
 
-        const reverseElementIndex = this.lastElementIndex - elementIndex;
-
         if (
-            reverseElementIndex === this.sidePadding &&
-            this.hasCollapsedItems(this.reverseIndex)
+            reverseElementIndex === this.sidePadding() &&
+            this.hasCollapsedItems(this.reverseIndex())
         ) {
             return null;
         }
 
-        if (reverseElementIndex < this.sidePadding) {
-            return this.lastIndex - reverseElementIndex;
-        }
-
-        const computedIndex = this.index - this.maxHalfLength + elementIndex;
+        const computedIndex = this.index() - this.maxHalfLength() + elementIndex;
 
         return tuiClamp(
             computedIndex,
             elementIndex,
-            this.lastIndex - reverseElementIndex,
+            this.lastIndex() - reverseElementIndex,
         );
     }
 
     protected getElementMode(index = -1): string {
-        return this.options.appearance({
-            isActive: this.index === index,
-            size: this.size,
-        });
+        return this.options.appearance(this.index() === index);
     }
 
     protected onElementClick(index: number): void {
@@ -192,11 +143,11 @@ export class TuiPagination {
     }
 
     protected onElementKeyDownArrowLeft(element: HTMLElement): void {
-        if (element === this.els.first.nativeElement) {
+        if (element === this.els()[0]?.nativeElement) {
             return;
         }
 
-        const previous = this.els.find(
+        const previous = this.els().find(
             (_, index, array) => array[index + 1]?.nativeElement === element,
         );
 
@@ -204,56 +155,20 @@ export class TuiPagination {
     }
 
     protected onElementKeyDownArrowRight(element: HTMLElement): void {
-        if (element === this.els.last.nativeElement) {
+        if (element === this.els()[this.els().length - 1]?.nativeElement) {
             return;
         }
 
-        const next = this.els.find(
+        const next = this.els().find(
             (_, index, array) => array[index - 1]?.nativeElement === element,
         );
 
         next?.nativeElement.focus();
     }
 
-    protected onArrowClick(direction: TuiHorizontalDirection): void {
-        this.tryChangeTo(direction);
-        this.focusActive();
-    }
-
-    /**
-     * Active index from the end
-     */
-    private get reverseIndex(): number {
-        return this.lastIndex - this.index;
-    }
-
-    /**
-     * Max number of elements in half (not counting the middle one).
-     */
-    private get maxHalfLength(): number {
-        return this.sidePadding + DOTS_LENGTH + this.activePadding;
-    }
-
-    /**
-     * Is there '...' anywhere
-     */
-    private get itemsFit(): boolean {
-        return this.length <= this.maxElementsLength;
-    }
-
-    /**
-     * Max number of elements
-     */
-    private get maxElementsLength(): number {
-        return this.maxHalfLength * 2 + ACTIVE_ITEM_LENGTH;
-    }
-
-    private get lastIndex(): number {
-        return this.length - 1;
-    }
-
-    private get lastElementIndex(): number {
-        return this.elementsLength - 1;
+    protected onArrowClick(step: -1 | 1): void {
+        this.tryChangeTo(step);
+        this.nativeFocusableElement()?.focus();
     }
 
     /**
@@ -262,29 +177,16 @@ export class TuiPagination {
      * @returns there are collapsed items
      */
     private hasCollapsedItems(index: number): boolean {
-        return !this.itemsFit && index > this.maxHalfLength;
+        return !this.itemsFit() && index > this.maxHalfLength();
     }
 
-    private tryChangeTo(direction: TuiHorizontalDirection): void {
-        this.updateIndex(
-            tuiClamp(this.index + (direction === 'right' ? 1 : -1), 0, this.lastIndex),
-        );
-    }
-
-    private focusActive(): void {
-        const {nativeFocusableElement} = this;
-
-        if (nativeFocusableElement) {
-            nativeFocusableElement.focus();
-        }
+    private tryChangeTo(step: -1 | 1): void {
+        this.updateIndex(tuiClamp(this.index() + step, 0, this.lastIndex()));
     }
 
     private updateIndex(index: number): void {
-        if (this.index === index) {
-            return;
+        if (this.index() !== index) {
+            this.index.set(index);
         }
-
-        this.index = index;
-        this.indexChange.emit(index);
     }
 }

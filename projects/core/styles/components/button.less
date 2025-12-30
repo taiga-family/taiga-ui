@@ -32,7 +32,7 @@
     padding: var(--t-padding);
     user-select: none;
     cursor: pointer;
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     font-weight: bold;
 
     > .t-loader {
@@ -50,10 +50,11 @@
         --t-padding: 0 0.375rem;
         --t-margin: -0.125rem;
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
 
         tui-icon,
-        &::before {
+        &::before,
+        &::after {
             font-size: 1rem;
         }
     }
@@ -65,10 +66,11 @@
         --t-padding: 0 0.625rem;
         --t-margin: -0.125rem;
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
 
         tui-icon,
-        &:not([tuiIconButton][data-appearance='icon']):not([tuiIconButton][data-appearance='link'])::before {
+        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance='link'])::before,
+        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance='link'])::after {
             font-size: 1rem;
         }
     }
@@ -80,12 +82,8 @@
         --t-padding: 0 1rem;
         --t-margin: -0.375rem;
 
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
         font-weight: bold;
-
-        &::after {
-            margin-inline-end: -0.125rem;
-        }
     }
 
     &._loading {
@@ -104,10 +102,6 @@
         }
     }
 
-    &[tuiIcons]::after {
-        font-size: 1rem;
-    }
-
     &[tuiButtonVertical] {
         // StackBlitz changes "0rem" to "0" breaking calc
         --t-margin: ~'0rem' !important;
@@ -120,7 +114,7 @@
         gap: 0.375rem;
         min-inline-size: 5rem;
         white-space: pre-line;
-        font: var(--tui-font-text-ui-s);
+        font: var(--tui-font-ui-s);
 
         & > * {
             max-block-size: calc(var(--t-line-height) * 2);
@@ -134,11 +128,7 @@
     font-size: 0 !important;
     padding: 0;
 
-    &[data-size='l']::after {
-        margin: 0;
-    }
-
-    &&[style*='--t-icon-start:']::after {
+    &&[data-icon-start]::after {
         display: none;
     }
 }

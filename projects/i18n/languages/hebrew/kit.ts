@@ -25,9 +25,9 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd/mm/yyyy',
-        MDY: 'mm/dd/yyyy',
-        YMD: 'yyyy/mm/dd',
+        'dd/mm/yyyy': 'dd/mm/yyyy',
+        'mm/dd/yyyy': 'mm/dd/yyyy',
+        'yyyy/mm/dd': 'yyyy/mm/dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['הראה סיסמה', 'הסתר סיסמא'],
@@ -79,4 +79,5 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'אִתחוּל',
     },
     phoneSearch: 'הקלד מדינה או קוד',
+    dayRangePeriods: ['כל הזמן', 'היום', 'אתמול', 'השבוע', 'החודש', 'בחודש שעבר'],
 };

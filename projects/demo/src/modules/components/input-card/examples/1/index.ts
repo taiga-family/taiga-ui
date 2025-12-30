@@ -3,29 +3,15 @@ import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiCreateLuhnValidator, TuiInputCard} from '@taiga-ui/addon-commerce';
 import {
-    tuiCreateLuhnValidator,
-    TuiInputCard,
-    TuiInputCVC,
-    TuiInputExpire,
-} from '@taiga-ui/addon-commerce';
-import {
-    TuiAlertService,
     TuiError,
-    TuiTextfield,
+    TuiNotificationService,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 
 @Component({
-    imports: [
-        JsonPipe,
-        ReactiveFormsModule,
-        TuiError,
-        TuiInputCard,
-        TuiInputCVC,
-        TuiInputExpire,
-        TuiTextfield,
-    ],
+    imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputCard],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -33,7 +19,7 @@ import {
     providers: [tuiTextfieldOptionsProvider({cleaner: signal(true)})],
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         card: new FormControl('', tuiCreateLuhnValidator('Card number is invalid')),

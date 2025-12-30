@@ -3,17 +3,17 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValueChanges} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TuiInput, TuiNotificationService} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiInputNumber, TuiTextfield, TuiValueChanges],
+    imports: [ReactiveFormsModule, TuiInput, TuiInputNumber, TuiValueChanges],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         name: new FormControl('', {updateOn: 'blur'}),

@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotification, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiNotification} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiNotification, TuiTitle],
+    imports: [TuiButton, TuiNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly show = signal(false);
+}

@@ -11,13 +11,14 @@
     #content
     let-context
 >
-    <tui-input
-        class="tui-space_bottom-3"
-        [ngModel]="value"
-        (ngModelChange)="onModelChange($event)"
-    >
-        Your name
-    </tui-input>
+    <tui-textfield class="tui-space_bottom-3">
+        <input
+            tuiInput
+            [ngModel]="value"
+            (ngModelChange)="onModelChange($event)"
+        />
+        <label tuiLabel>Your name</label>
+    </tui-textfield>
     <button
         tuiButton
         type="button"

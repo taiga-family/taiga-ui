@@ -6,7 +6,7 @@ import {
     SkipSelf,
     type Type,
 } from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
 export abstract class TuiAccessor {
@@ -14,10 +14,7 @@ export abstract class TuiAccessor {
 }
 
 export abstract class TuiPositionAccessor extends TuiAccessor {
-    /*
-     * TODO @deprecated switching from DOMRect to HTMLElement in v5
-     */
-    public abstract getPosition(rect: DOMRect, element?: HTMLElement): TuiPoint;
+    public abstract getPosition(rect: DOMRect): TuiPoint;
 }
 
 export abstract class TuiRectAccessor extends TuiAccessor {
@@ -38,11 +35,11 @@ export function tuiProvideAccessor<T extends TuiAccessor>(
 
 export function tuiFallbackAccessor<T extends TuiAccessor>(
     type: string,
-): (accessors: readonly T[] | null, fallback: T) => T {
+): (accessors: readonly T[] | null, fallback: Omit<T, 'type'>) => T {
     return (accessors, fallback) =>
         accessors?.find?.(
             (accessor) => accessor !== fallback && accessor.type === type,
-        ) || fallback;
+        ) || Object.create(fallback, {type: {value: type}});
 }
 
 export function tuiPositionAccessorFor(

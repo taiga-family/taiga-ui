@@ -1,15 +1,16 @@
 <p class="text">
     Your balance:
-    <span>{{ data | tuiAmount: 'RUB' | async }}</span>
+    <span>{{ data | tuiAmount: 'RUB' }}</span>
 </p>
 
-<tui-input
-    tuiAutoFocus
-    tuiTextfieldSize="m"
-    [(ngModel)]="name"
->
-    Type a name
-</tui-input>
+<tui-textfield tuiTextfieldSize="m">
+    <input
+        tuiAutoFocus
+        tuiInput
+        [(ngModel)]="name"
+    />
+    <label tuiLabel>Type a name</label>
+</tui-textfield>
 
 <tui-textfield
     tuiChevron
@@ -24,7 +25,6 @@
 
     <tui-data-list-wrapper
         *tuiDropdown
-        new
         [items]="items"
     />
 </tui-textfield>

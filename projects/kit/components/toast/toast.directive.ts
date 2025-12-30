@@ -8,7 +8,7 @@ import {
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core/components';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
@@ -21,7 +21,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-toast'},
 })
-class TuiToastStyles {}
+class Styles {}
 
 @Directive({
     selector: '[tuiToast]:not(ng-template)',
@@ -46,5 +46,5 @@ class TuiToastStyles {}
     hostDirectives: [TuiWithIcons],
 })
 export class TuiToastDirective {
-    protected readonly nothing = tuiWithStyles(TuiToastStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

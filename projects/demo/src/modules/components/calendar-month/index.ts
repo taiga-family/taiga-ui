@@ -15,10 +15,9 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiCalendarMonth} from '@taiga-ui/kit';
-import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [RouterModule, TuiCalendarMonth, TuiDemo, TuiInputMonthRangeModule, TuiLink],
+    imports: [RouterModule, TuiCalendarMonth, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

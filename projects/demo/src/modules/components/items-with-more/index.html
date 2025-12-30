@@ -6,7 +6,7 @@
     <ng-template pageTab>
         <p>Component to hide overflown items behind custom content.</p>
 
-        <tui-notification>Resize the screen to see extra items disappear</tui-notification>
+        <div tuiNotification>Resize the screen to see extra items disappear</div>
 
         @for (example of examples; track example) {
             <tui-doc-example
@@ -56,18 +56,24 @@
                 [side]="side"
             >
                 @for (item of items; track item) {
-                    <tui-chip
+                    <span
                         *tuiItem
+                        tuiChip
                         class="tui-space_right-2 tui-space_vertical-1"
                     >
                         {{ item }}
-                    </tui-chip>
+                    </span>
                 }
                 <span
                     *tuiMore
                     class="tui-space_right-2 tui-space_vertical-1"
                 >
-                    <tui-chip appearance="secondary">and now!</tui-chip>
+                    <span
+                        appearance="secondary"
+                        tuiChip
+                    >
+                        and now!
+                    </span>
                 </span>
             </tui-items-with-more>
         </tui-doc-demo>

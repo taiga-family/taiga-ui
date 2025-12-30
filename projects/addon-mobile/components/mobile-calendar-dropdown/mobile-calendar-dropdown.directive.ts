@@ -1,8 +1,8 @@
-import {ContentChild, Directive, inject} from '@angular/core';
+import {contentChild, Directive, inject} from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiDay, type TuiDayRange, type TuiTime} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/portals/dropdown';
 import {
     type TuiInputDateBase,
     TuiInputDateDirective,
@@ -10,31 +10,24 @@ import {
 import {TuiInputDateRangeDirective} from '@taiga-ui/kit/components/input-date-range';
 import {TuiInputDateTimeDirective} from '@taiga-ui/kit/components/input-date-time';
 
-import {TuiMobileCalendarDropdown} from './mobile-calendar-dropdown.component';
+import {TuiMobileCalendarDropdownComponent} from './mobile-calendar-dropdown.component';
 
-// TODO: Rename to TuiMobileCalendarDropdown in v5
 @Directive({
     selector: '[tuiMobileCalendar]',
     providers: [
         {
             provide: TUI_DROPDOWN_COMPONENT,
             useFactory: () =>
-                inject(TUI_IS_MOBILE)
-                    ? TuiMobileCalendarDropdown
+                inject(WA_IS_MOBILE)
+                    ? TuiMobileCalendarDropdownComponent
                     : inject(TUI_DROPDOWN_COMPONENT, {skipSelf: true}),
         },
     ],
 })
-export class TuiMobileCalendarDropdownNew {
-    @ContentChild(TuiInputDateDirective)
-    public readonly single?: TuiInputDateDirective;
-
-    @ContentChild(TuiInputDateRangeDirective)
-    public readonly range?: TuiInputDateRangeDirective;
-
-    @ContentChild(TuiInputDateTimeDirective)
-    public readonly dateTime?: TuiInputDateTimeDirective;
-
+export class TuiMobileCalendarDropdown {
+    public readonly single = contentChild(TuiInputDateDirective);
+    public readonly range = contentChild(TuiInputDateRangeDirective);
+    public readonly dateTime = contentChild(TuiInputDateTimeDirective);
     public readonly handlers = inject(TuiItemsHandlersDirective);
 
     public get date():
@@ -42,6 +35,6 @@ export class TuiMobileCalendarDropdownNew {
         | TuiInputDateBase<TuiDay>
         | TuiInputDateBase<TuiDayRange>
         | undefined {
-        return this.single || this.range || this.dateTime;
+        return this.single() || this.range() || this.dateTime();
     }
 }

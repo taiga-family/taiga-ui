@@ -5,22 +5,22 @@ import {TuiDemo} from '@demo/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TUI_DIALOG_OPTIONS,
-    TuiAlertService,
     TuiButton,
     type TuiDialogContext,
     TuiDialogService,
-    TuiTextfield,
+    TuiInput,
+    TuiNotificationService,
 } from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
-    imports: [TuiAutoFocus, TuiButton, TuiDemo, TuiForm, TuiTextfield],
+    imports: [TuiAutoFocus, TuiButton, TuiDemo, TuiForm, TuiInput],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page extends Array {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
 
@@ -36,11 +36,11 @@ export default class Page extends Array {
     ];
 
     protected readonly [2] = {
-        'component.ts': import('./examples/3/component.ts?raw'),
+        'component.ts': import('./examples/3/component.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly [4] = {
-        'service.ts': import('./examples/5/service.ts?raw'),
+        'service.ts': import('./examples/5/service.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected data = 'Data';

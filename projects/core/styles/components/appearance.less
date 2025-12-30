@@ -41,5 +41,10 @@
     .appearance-disabled({
         cursor: initial;
         opacity: var(--tui-disabled-opacity);
+
+        &::before,
+        &::after {
+            cursor: initial;
+        }
     });
 }

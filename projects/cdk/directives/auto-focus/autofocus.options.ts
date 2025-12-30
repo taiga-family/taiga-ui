@@ -1,7 +1,7 @@
 import {ElementRef, InjectionToken, NgZone, Renderer2} from '@angular/core';
 import {WA_ANIMATION_FRAME, WA_WINDOW} from '@ng-web-apis/common';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiCreateOptions} from '@taiga-ui/cdk/utils';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type Observable} from 'rxjs';
 
 import {TuiDefaultAutofocusHandler} from './handlers/default.handler';
@@ -37,10 +37,9 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             Renderer2,
             NgZone,
             WA_WINDOW,
-            TUI_IS_IOS,
+            WA_IS_IOS,
             TUI_AUTOFOCUS_OPTIONS,
         ],
-
         // eslint-disable-next-line @typescript-eslint/max-params,max-params
         useFactory: (
             el: ElementRef<HTMLElement>,

@@ -29,12 +29,3 @@
         }
     </tui-data-list>
 </ng-template>
-
-<tui-input
-    [formControl]="control"
-    [tuiDropdownOpen]="((control.valueChanges | async)?.length ?? 0) > 2"
->
-    Enter 3 characters
-
-    <tui-data-list *tuiDataList />
-</tui-input>

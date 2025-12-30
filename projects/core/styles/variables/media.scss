@@ -1,21 +1,21 @@
 $tui-media-retina: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
-$tui-media-retina-mobile: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 37.4625em), (min-resolution: 192dpi) and (max-width: 37.4625em)';
-$tui-media-retina-tablet: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 63.9625em), (min-resolution: 192dpi) and (max-width: 63.9625em)';
-$tui-media-retina-desktop: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 84.9625em), (min-resolution: 192dpi) and (max-width: 84.9625em)';
+$tui-media-retina-mobile: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 599.4px), (min-resolution: 192dpi) and (max-width: 599.4px)';
+$tui-media-retina-tablet: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 1023.4px), (min-resolution: 192dpi) and (max-width: 1023.4px)';
+$tui-media-retina-desktop: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 1359.4px), (min-resolution: 192dpi) and (max-width: 1359.4px)';
 
-$tui-mobile: 'screen and (max-width: 47.9625em)';
-$tui-mobile-min: 'screen and (min-width: 22.5em)';
-$tui-mobile-interval: '(min-width: 22.5em) and (max-width: 47.9625em)';
+$tui-mobile: 'screen and (max-width: 767.4px)';
+$tui-mobile-min: 'screen and (min-width: 360px)';
+$tui-mobile-interval: '(min-width: 360px) and (max-width: 767.4px)';
 
-$tui-tablet: 'screen and (max-width: 63.9625em)';
-$tui-tablet-min: 'screen and (min-width: 48em)';
-$tui-tablet-interval: '(min-width: 48em) and (max-width: 63.9625em)';
+$tui-tablet: 'screen and (max-width: 1023.4px)';
+$tui-tablet-min: 'screen and (min-width: 768px)';
+$tui-tablet-interval: '(min-width: 768px) and (max-width: 1023.4px)';
 
-$tui-desktop: 'screen and (max-width: 79.9625em)';
-$tui-desktop-min: 'screen and (min-width: 64em)';
-$tui-desktop-interval: '(min-width: 64em) and (max-width: 79.9625em)';
+$tui-desktop: 'screen and (max-width: 1279.4px)';
+$tui-desktop-min: 'screen and (min-width: 1024px)';
+$tui-desktop-interval: '(min-width: 1024px) and (max-width: 1279.4px)';
 
-$tui-desktop-lg-min: 'screen and (min-width: 80em)';
+$tui-desktop-lg-min: 'screen and (min-width: 1280px)';
 
 $tui-touch: '(hover: none) and (pointer: coarse)';
 $tui-stylus: '(hover: none) and (pointer: fine)';

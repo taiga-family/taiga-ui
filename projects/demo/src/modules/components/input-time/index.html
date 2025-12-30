@@ -114,9 +114,9 @@
                 <a
                     target="_blank"
                     tuiLink
-                    [routerLink]="routes.Textfield"
+                    [routerLink]="routes.Input"
                 >
-                    <strong>Textfield</strong>
+                    <strong>Input</strong>
                 </a>
                 documentation page for more customization options.
             </ng-template>
@@ -231,7 +231,10 @@
                     keyboard.
                 </p>
 
-                <tui-notification appearance="warning">
+                <div
+                    appearance="warning"
+                    tuiNotification
+                >
                     <strong>Browser support limitations!</strong>
 
                     <p class="tui-space_bottom-0">
@@ -241,7 +244,7 @@
                     </p>
 
                     <p class="tui-space_top-0 tui-space_bottom-0">Native picker supports only 24-hour format.</p>
-                </tui-notification>
+                </div>
             </ng-template>
         </tui-doc-example>
 
@@ -268,7 +271,10 @@
                     provide a different value.
                 </p>
 
-                <tui-notification appearance="warning">
+                <div
+                    appearance="warning"
+                    tuiNotification
+                >
                     <strong>Browser support limitations!</strong>
 
                     <p class="tui-space_bottom-0">
@@ -276,7 +282,7 @@
                         <code>&lt;datalist /&gt;</code>
                         for time picker.
                     </p>
-                </tui-notification>
+                </div>
             </ng-template>
         </tui-doc-example>
     </ng-template>
@@ -351,6 +357,7 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+                [hiddenOptions]="['content', 'rows']"
             ></tbody>
 
             <tbody

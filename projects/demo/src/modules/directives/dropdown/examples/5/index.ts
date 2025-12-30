@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,14 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
-import {
-    TuiButton,
-    TuiCell,
-    TuiDropdown,
-    TuiInitialsPipe,
-    TuiTextfield,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiAvatar,
@@ -22,12 +14,12 @@ import {
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiInitialsPipe,
     TuiInputChip,
     TuiInputNumber,
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface User {
     readonly url?: string;
@@ -37,7 +29,6 @@ interface User {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiAvatar,
@@ -56,8 +47,6 @@ interface User {
         TuiInputNumber,
         TuiMultiSelect,
         TuiSelect,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './index.html',

@@ -59,7 +59,6 @@
         />
         <tui-data-list-wrapper
             *tuiDropdown
-            new
             tuiMultiSelectGroup
             [items]="items"
         />
@@ -87,7 +86,6 @@
             >
                 @for (user of users | tuiFilterByInput; track user) {
                     <button
-                        new
                         tuiOption
                         [value]="user"
                     >
@@ -101,7 +99,6 @@
             >
                 @for (user of more | tuiFilterByInput; track user) {
                     <button
-                        new
                         tuiOption
                         [value]="user"
                     >

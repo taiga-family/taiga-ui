@@ -1,25 +1,23 @@
 import {Directive, effect, inject, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     RANGE_SEPARATOR_CHAR,
     type TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk/date-time';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
-    TuiTextfieldDirective,
     tuiTextfieldIcon,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+    TuiDropdownOpen,
+} from '@taiga-ui/core/portals/dropdown';
+import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
-import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
 import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
 
@@ -29,33 +27,32 @@ import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
         tuiAsControl(TuiInputMonthRangeDirective),
         tuiValueTransformerFrom(TUI_INPUT_MONTH_RANGE_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, TuiSelectLike, TuiDropdownAuto],
+    hostDirectives: [TuiWithInput, TuiSelectLike, TuiDropdownAuto],
     host: {
         '[disabled]': 'disabled()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
 })
 export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null> {
-    private readonly textfield = inject(TuiTextfieldDirective);
-    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
-    private readonly open = tuiDropdownOpen();
+    private readonly input = inject(TuiInputDirective);
+    private readonly months = inject(TUI_MONTHS);
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly intermediateValue = signal<TuiMonth | null>(null);
-
     private readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
         (x) => x instanceof TuiCalendarMonth,
     );
 
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_RANGE_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-
     protected readonly valueEffect = effect(() => {
         const value = this.value();
-        const format = this.formatter() || (() => '');
-        const string = value
-            ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to)
-            : '';
+        const months = this.months();
+        const format = ({month, formattedYear}: TuiMonth): string =>
+            `${months[month] ?? ''} ${formattedYear}`;
 
-        this.textfield.value.set(string);
+        this.input.value.set(
+            value ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to) : '',
+        );
     });
 
     protected readonly calendarInit = effect(() => {

@@ -3,9 +3,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdown} from '@taiga-ui/core';
+import {TuiDropdown, TuiInput} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {interval, map} from 'rxjs';
 
@@ -15,7 +14,7 @@ import {interval, map} from 'rxjs';
         FormsModule,
         PolymorpheusTemplate,
         TuiDropdown,
-        TuiInputModule,
+        TuiInput,
         TuiSwitch,
     ],
     templateUrl: './index.html',

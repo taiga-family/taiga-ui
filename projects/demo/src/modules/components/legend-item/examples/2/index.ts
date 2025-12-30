@@ -1,16 +1,19 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {tuiPure, tuiSum} from '@taiga-ui/cdk';
-import {TuiAlertService, tuiFormatNumber, TuiIcon, TuiNotification} from '@taiga-ui/core';
+import {tuiSum} from '@taiga-ui/cdk';
+import {
+    tuiFormatNumber,
+    TuiIcon,
+    TuiNotification,
+    TuiNotificationService,
+} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiCheckbox,
         TuiIcon,
@@ -24,19 +27,19 @@ import {TuiCheckbox} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
-    private enabled = new Array(5).fill(true);
+    private readonly alerts = inject(TuiNotificationService);
+    private enabled = Array.from<unknown, boolean>({length: 5}, () => true);
 
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
     protected readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
 
     protected get value(): readonly number[] {
-        return this.getValue(this.data, this.enabled);
+        return this.data.map((value, index) => (this.enabled[index] ? value : 0));
     }
 
     protected isEnabled(index: number): boolean {
-        return this.enabled[index];
+        return this.enabled[index] ?? false;
     }
 
     protected toggle(index: number): void {
@@ -53,13 +56,5 @@ export default class Example {
         } else {
             this.toggle(index);
         }
-    }
-
-    @tuiPure
-    private getValue(
-        data: readonly number[],
-        enabled: readonly number[],
-    ): readonly number[] {
-        return data.map((value, index) => (enabled[index] ? value : 0));
     }
 }

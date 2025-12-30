@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 import {
     MASKITO_DEFAULT_OPTIONS,
     type MaskitoOptions,
@@ -6,7 +6,7 @@ import {
 } from '@maskito/core';
 import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {type TuiMapper} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {identity} from 'rxjs';
 
 @Directive({
@@ -14,20 +14,17 @@ import {identity} from 'rxjs';
     providers: [tuiProvide(TuiValueTransformer, TuiUnmaskHandler)],
 })
 export class TuiUnmaskHandler extends TuiValueTransformer<string> {
-    @Input()
-    public tuiUnmaskHandler: TuiMapper<[string], string> = identity;
-
-    @Input()
-    public maskito: MaskitoOptions | null = null;
+    public readonly tuiUnmaskHandler = input<TuiMapper<[string], string>>(identity);
+    public readonly maskito = input<MaskitoOptions | null>(null);
 
     public override fromControlValue(controlValue: unknown): string {
         return maskitoTransform(
             String(controlValue ?? ''),
-            this.maskito || MASKITO_DEFAULT_OPTIONS,
+            this.maskito() || MASKITO_DEFAULT_OPTIONS,
         );
     }
 
     public override toControlValue(value: string): string {
-        return this.tuiUnmaskHandler(value);
+        return this.tuiUnmaskHandler()(value);
     }
 }

@@ -24,15 +24,21 @@
             >
                 @switch ($index + 1) {
                     @case (1) {
-                        <tui-notification class="tui-space_bottom-4">
+                        <div
+                            tuiNotification
+                            class="tui-space_bottom-4"
+                        >
                             You can enable hover effects only on devices with pointer:
                             <div>
                                 <code>&#64;media (hover: hover)</code>
                             </div>
-                        </tui-notification>
+                        </div>
                     }
                     @case (2) {
-                        <tui-notification class="tui-space_bottom-4">
+                        <div
+                            tuiNotification
+                            class="tui-space_bottom-4"
+                        >
                             Note that
                             <code>padding</code>
                             and
@@ -41,15 +47,15 @@
                             <a
                                 tuiLink
                                 [routerLink]="routes.CardLarge"
-                            >
-                                Card
-                            </a>
+                                [textContent]="'Card'"
+                            ></a>
                             component for that.
-                        </tui-notification>
+                        </div>
                     }
                     @case (3) {
-                        <tui-notification
+                        <div
                             appearance="warning"
+                            tuiNotification
                             class="tui-space_bottom-4"
                         >
                             Text should have vertical compensation to look properly aligned, either with unequal
@@ -61,7 +67,7 @@
                             , smaller line-height might require
                             <strong>0.125rem</strong>
                             instead.
-                        </tui-notification>
+                        </div>
                     }
                 }
             </tui-doc-example>

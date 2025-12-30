@@ -1,51 +1,22 @@
-@if (items) {
+@if (items()) {
     <tui-data-list
-        [emptyContent]="emptyContent"
-        [size]="size"
+        [emptyContent]="emptyContent()"
+        [size]="size()"
     >
-        @if (newOptionMode) {
-            @for (item of $cast(items); track item) {
-                <button
-                    #elementRef="elementRef"
-                    automation-id="tui-data-list-wrapper__option"
-                    new
-                    tuiElement
-                    tuiOption
-                    type="button"
-                    [disabled]="disabledItemHandler(item)"
-                    [value]="item"
-                    (click.capture)="itemClick.emit(item)"
-                >
-                    <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                        {{ text }}
-                    </ng-container>
-                </button>
-            }
-        } @else {
-            @for (item of $cast(items); track item) {
-                <button
-                    #elementRef="elementRef"
-                    automation-id="tui-data-list-wrapper__option"
-                    tuiElement
-                    tuiOption
-                    type="button"
-                    [disabled]="disabledItemHandler(item)"
-                    [value]="item"
-                    (click)="itemClick.emit(item)"
-                >
-                    <span class="t-content">
-                        <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                            {{ text }}
-                        </ng-container>
-                    </span>
-                </button>
-            }
+        @for (item of $cast(items()); track item) {
+            <button
+                tuiOption
+                type="button"
+                [disabled]="handlers.disabledItemHandler()(item)"
+                [value]="item"
+                (click.capture)="itemClick.emit(item)"
+            >
+                <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: item}">
+                    {{ text }}
+                </ng-container>
+            </button>
         }
-        <!-- TODO(v5): delete fallback -->
     </tui-data-list>
 } @else {
-    <tui-loader
-        automation-id="tui-data-list-wrapper__loader"
-        class="t-loader"
-    />
+    <tui-loader class="t-loader" />
 }

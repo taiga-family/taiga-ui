@@ -1,4 +1,5 @@
 import {TuiTime} from '@taiga-ui/cdk';
+import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 
 describe('TuiTime', () => {
     describe('static method', () => {
@@ -63,6 +64,22 @@ describe('TuiTime', () => {
                 expect(TuiTime.fromAbsoluteMilliseconds(86399999).toString()).toBe(
                     '23:59:59.999',
                 );
+            });
+
+            it('25:00 for 90 000 000 without failed assertion', () => {
+                tuiSwitchNgDevMode(true);
+
+                const assertSpy = jest.spyOn(console, 'assert');
+
+                const time = TuiTime.fromAbsoluteMilliseconds(90_000_000);
+
+                expect(time.toString()).toBe('25:00');
+                expect(
+                    assertSpy.mock.calls.map(([condition]) => condition),
+                ).not.toContain(false);
+
+                assertSpy.mockRestore();
+                tuiSwitchNgDevMode(false);
             });
 
             it('0:0:0.001 for 1', () => {

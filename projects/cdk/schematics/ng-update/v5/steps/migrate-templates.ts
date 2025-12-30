@@ -15,15 +15,18 @@ import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../interfaces/template-resource';
-import {addHTMLCommentTags} from '../../utils/templates';
+import {addHTMLCommentTags, replaceAttrs} from '../../utils/templates';
+import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
+import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateInputYear} from './templates/migrate-input-year';
+import {migrateTuiNotification} from './templates/migrate-notification';
 
 export function getAction<T>({
     action,
     requiredData,
 }: {
-    action: ({
+    action({
         resource,
         fileSystem,
         recorder,
@@ -33,7 +36,7 @@ export function getAction<T>({
         recorder: UpdateRecorder;
         data: T;
         resource: TemplateResource;
-    }) => void;
+    }): void;
     requiredData: T;
 }) {
     return ({
@@ -55,7 +58,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
+        getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         migrateInputYear,
+        migrateAvatarToDirective,
+        migrateTuiNotification,
     ] as const;
 
     const progressLog = setupProgressLogger({

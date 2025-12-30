@@ -2,7 +2,8 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, TuiMapperPipe} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiPager, TuiProgress} from '@taiga-ui/kit';
 import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
@@ -15,7 +16,7 @@ import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected static = inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
+    protected static = inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
     protected count = 10;
     protected activeIndex = signal(0);
 

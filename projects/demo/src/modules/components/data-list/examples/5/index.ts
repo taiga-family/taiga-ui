@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,14 +10,12 @@ import {
     TuiDataList,
     TuiDropdown,
     TuiGroup,
-    TuiTextfield,
+    TuiInput,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiButton,
@@ -27,9 +24,8 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiDataListDropdownManager,
         TuiDropdown,
         TuiGroup,
+        TuiInput,
         TuiInputDateRange,
-        TuiInputModule,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

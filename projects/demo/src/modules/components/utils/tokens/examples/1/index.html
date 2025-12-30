@@ -1,20 +1,30 @@
 <p>
-    A stream of modal dialogs displayed by
-    <a
-        tuiLink
-        [routerLink]="routes.Dialog"
-    >
-        TuiDialogsComponent
-    </a>
-    .
+    Token to observe changes in the current breakpoint. Change the viewport of this window to see changes in breakpoint
 </p>
-<p>
-    You can create your own service extending
-    <a
-        tuiLink
-        [routerLink]="routes.DialogCustom"
-    >
-        TuiPopoverService
-    </a>
-    to easily add another modal dialogs behavior to your application.
-</p>
+
+<table class="tui-space_top-4">
+    <thead>
+        <tr>
+            <th>CSS</th>
+            <th>Service</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td>
+            <div class="mobile">Mobile</div>
+            <div class="desktop-small">Desktop small</div>
+            <div class="desktop-large">Desktop large</div>
+        </td>
+        <td>
+            @if (breakpoint() === 'mobile') {
+                <div>Mobile</div>
+            }
+            @if (breakpoint() === 'desktopSmall') {
+                <div>Desktop small</div>
+            }
+            @if (breakpoint() === 'desktopLarge') {
+                <div>Desktop large</div>
+            }
+        </td>
+    </tbody>
+</table>

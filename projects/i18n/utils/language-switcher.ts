@@ -44,7 +44,8 @@ export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLa
     constructor() {
         super(
             tuiAsyncLoadLanguage(
-                inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
+                inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_LANGUAGE_STORAGE_KEY)) ||
+                    null,
                 inject(TUI_LANGUAGE_LOADER, {optional: true}),
                 inject(TUI_DEFAULT_LANGUAGE),
             ),

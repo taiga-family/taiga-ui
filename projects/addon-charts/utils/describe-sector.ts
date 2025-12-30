@@ -1,6 +1,10 @@
-import {tuiToInt, tuiToRadians} from '@taiga-ui/cdk/utils/math';
+import {tuiToInt} from '@taiga-ui/cdk/utils/math';
 
 const EMPTY = 'M 100 0 A 100 100 0 1 1 100 0 L 0 0';
+
+function toRadians(deg: number): number {
+    return (deg * Math.PI) / 180;
+}
 
 /**
  * Describes a normalized sector by angles. Normalized meaning it supposed to work with
@@ -12,8 +16,8 @@ const EMPTY = 'M 100 0 A 100 100 0 1 1 100 0 L 0 0';
  * @param endAngle ending angle in degrees
  */
 export function tuiDescribeSector(startAngle = 0, endAngle = 0): string {
-    const startRad = tuiToRadians(startAngle);
-    const endRad = tuiToRadians(endAngle);
+    const startRad = toRadians(startAngle);
+    const endRad = toRadians(endAngle);
     const startX = Math.cos(startRad) * 100;
     const startY = Math.sin(startRad) * 100;
     const endX = Math.cos(endRad) * 100;

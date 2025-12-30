@@ -1,4 +1,5 @@
-import {tuiCreateOptions, tuiObfuscate} from '@taiga-ui/cdk/utils';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
+import {tuiObfuscate} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Defines the options for obfuscation.
@@ -8,7 +9,7 @@ export interface TuiObfuscateOptions {
      * Default function used to obfuscate a string
      * if no recipe was found.
      */
-    readonly default: (value: string, symbol?: string) => string;
+    default(value: string, symbol?: string): string;
 
     /**
      * Collection of named recipes for different obfuscation scenarios.

@@ -7,18 +7,10 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiTime} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiDemo,
-        TuiDocControl,
-        TuiDocTextfield,
-        TuiInputTime,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiDemo, TuiDocControl, TuiDocTextfield, TuiInputTime],
     templateUrl: './index.html',
     changeDetection,
 })

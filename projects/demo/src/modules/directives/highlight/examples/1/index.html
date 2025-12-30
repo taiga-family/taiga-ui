@@ -1,9 +1,11 @@
-<tui-input
-    tuiTextfieldIconLeft="@tui.search"
-    [(ngModel)]="search"
->
-    Search
-</tui-input>
+<tui-textfield iconStart="@tui.search">
+    <input
+        tuiInput
+        [(ngModel)]="search"
+    />
+    <label tuiLabel>Search</label>
+</tui-textfield>
+
 <table class="tui-space_top-4">
     <thead>
         <tr>

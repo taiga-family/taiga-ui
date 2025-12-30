@@ -6,7 +6,7 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiDropdown, TuiIcon, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternational,
@@ -25,7 +25,6 @@ import {getCountries} from 'libphonenumber-js';
         TuiDropdown,
         TuiIcon,
         TuiInputPhoneInternational,
-        TuiTextfield,
         TuiTooltip,
     ],
     templateUrl: './index.html',

@@ -8,7 +8,7 @@
         <div tuiSubtitle>grocery &#x2022; MMC 5350</div>
     </h2>
 
-    <span [style.color]="'var(--tui-text-positive)'">{{ 0.5 | tuiAmount: 'USD' | async }}</span>
+    <span [style.color]="'var(--tui-text-positive)'">{{ 0.5 | tuiAmount: 'USD' }}</span>
     <span
         tuiFade
         tuiSubtitle
@@ -16,7 +16,12 @@
         promotion (long value with fade)
     </span>
 
-    <tui-badge appearance="neutral">cashback</tui-badge>
+    <div
+        appearance="neutral"
+        tuiBadge
+    >
+        cashback
+    </div>
 </div>
 
 <div tuiBlockDetails>
@@ -29,5 +34,5 @@
         <div tuiSubtitle>taxi &#x2022; MMC 5550</div>
     </h2>
 
-    <span [style.color]="'var(--tui-text-negative)'">{{ -10.5 | tuiAmount: 'USD' | async }}</span>
+    <span [style.color]="'var(--tui-text-negative)'">{{ -10.5 | tuiAmount: 'USD' }}</span>
 </div>

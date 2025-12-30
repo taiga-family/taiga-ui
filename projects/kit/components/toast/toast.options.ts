@@ -1,8 +1,7 @@
-import {inject} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {inject, InjectionToken} from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
-import {type TuiPositionOptions} from '@taiga-ui/core/directives/notification';
+import {type TuiPositionOptions} from '@taiga-ui/core/portals/alert';
 
 export interface TuiToastOptions<I> extends TuiPositionOptions {
     readonly autoClose: number;
@@ -11,8 +10,9 @@ export interface TuiToastOptions<I> extends TuiPositionOptions {
     readonly data?: I;
 }
 
-export const TUI_TOAST_CONCURRENCY = tuiCreateTokenFromFactory<number>(() =>
-    inject(TUI_IS_MOBILE) ? 1 : 2,
+export const TUI_TOAST_CONCURRENCY = new InjectionToken(
+    ngDevMode ? 'TUI_TOAST_CONCURRENCY' : '',
+    {factory: () => (inject(WA_IS_MOBILE) ? 1 : 2)},
 );
 
 export const [TUI_TOAST_OPTIONS, tuiToastOptionsProvider] = tuiCreateOptions<

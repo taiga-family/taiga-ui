@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiOrientation, type TuiSizeL} from '@taiga-ui/core/types';
 
 export interface TuiGroupOptions {
@@ -16,13 +15,6 @@ export const TUI_GROUP_DEFAULT_OPTIONS: TuiGroupOptions = {
     orientation: 'horizontal',
 };
 
-export const TUI_GROUP_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_GROUP_OPTIONS' : '',
-    {
-        factory: () => TUI_GROUP_DEFAULT_OPTIONS,
-    },
+export const [TUI_GROUP_OPTIONS, tuiGroupOptionsProvider] = tuiCreateOptions(
+    TUI_GROUP_DEFAULT_OPTIONS,
 );
-
-export function tuiGroupOptionsProvider(options: Partial<TuiGroupOptions>): Provider {
-    return tuiProvideOptions(TUI_GROUP_OPTIONS, options, TUI_GROUP_DEFAULT_OPTIONS);
-}

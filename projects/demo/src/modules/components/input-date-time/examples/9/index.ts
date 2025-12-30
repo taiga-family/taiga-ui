@@ -4,11 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, KeyValuePipe, TuiDataList, TuiInputDateTime, TuiTextfield],
+    imports: [FormsModule, KeyValuePipe, TuiDataList, TuiInputDateTime],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -26,7 +26,7 @@ export default class Example {
         Object.values(this.dates).at(-1) ?? null;
 
     protected toISOString([day, time]: readonly [TuiDay, TuiTime]): string {
-        return `${day.toString('YMD', '-')}T${time.toString()}`;
+        return `${day.toString('yyyy/mm/dd', '-')}T${time.toString()}`;
     }
 
     protected asIs(): number {

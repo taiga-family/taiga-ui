@@ -1,39 +1,46 @@
-<tui-chip
+<span
     appearance="primary"
+    tuiChip
     class="fade"
 >
     <div tuiFade>Very long value in chip</div>
-    <div>{{ 123000 | tuiAmount: 'RUB' | async }}</div>
-</tui-chip>
+    <div>{{ 123000 | tuiAmount: 'RUB' }}</div>
+</span>
 
-<tui-chip
+<span
     appearance="accent"
     iconStart="@tui.box"
+    tuiChip
 >
     <div class="ellipsis">Very long value in chip</div>
-</tui-chip>
+</span>
 
 <tui-badged-content>
     <tui-badge-notification
         size="xs"
         tuiSlot="top"
     />
-    <tui-chip
+    <span
         appearance="secondary"
         iconStart="@tui.bell"
+        tuiChip
     >
         Notifications
-    </tui-chip>
+    </span>
 </tui-badged-content>
 
-<tui-chip
+<span
     appearance="custom"
     iconEnd="@tui.thumbs-up"
+    tuiChip
 >
     Customized chip
-</tui-chip>
+</span>
 
-<tui-chip [appearance]="selected ? 'primary' : 'neutral'">
+<span
+    tuiChip
+    [appearance]="selected ? 'primary' : 'neutral'"
+>
     Toggle chip
     <button
         iconStart="@tui.plus"
@@ -45,4 +52,4 @@
     >
         Toggle
     </button>
-</tui-chip>
+</span>

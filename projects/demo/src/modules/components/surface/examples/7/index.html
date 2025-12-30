@@ -7,13 +7,14 @@
 >
     <h3 class="heading">Tickets</h3>
     <div class="content">Concerts, theater, sports and movies</div>
-    <tui-badge
+    <div
         appearance="primary"
         size="s"
+        tuiBadge
         class="badge"
     >
         20% off
-    </tui-badge>
+    </div>
 </button>
 <button
     tuiSurface
@@ -23,13 +24,14 @@
     [style.color]="'#7caeff'"
 >
     <h3 class="heading">Gas</h3>
-    <tui-badge
+    <div
         appearance="primary"
         size="s"
+        tuiBadge
         class="badge"
     >
         +2000%
-    </tui-badge>
+    </div>
 </button>
 
 <div
@@ -85,7 +87,7 @@
     <div tuiAvatar="@tui.user">
         <img
             alt=""
-            src="/assets/images/avatar.jpg"
+            src="assets/images/avatar.jpg"
         />
     </div>
     <label tuiLabel="Taiga UI">Alex Inkin</label>
@@ -117,10 +119,7 @@
             Hide
         </button>
     </h3>
-    <tui-scrollbar
-        class="scrollbar"
-        [hidden]="true"
-    >
+    <tui-scrollbar class="scrollbar">
         <div class="wrapper">
             @for (review of reviews; track review) {
                 <div
@@ -136,7 +135,7 @@
                         >
                             <img
                                 alt=""
-                                src="/assets/images/avatar.jpg"
+                                src="assets/images/avatar.jpg"
                             />
                         </div>
                         <label tuiTitle>
@@ -176,7 +175,7 @@
             Edit name
         </button>
     </h3>
-    <span class="sum">{{ 23742 | tuiAmount: 'USD' : 'left' | async }}</span>
+    <span class="sum">{{ 23742 | tuiAmount: 'USD' : 'start' }}</span>
     <footer class="footer">
         <tui-thumbnail-card
             paymentSystem="mastercard"

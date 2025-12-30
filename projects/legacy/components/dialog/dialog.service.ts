@@ -1,6 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPopoverService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
+import {TuiModalService} from '@taiga-ui/core/portals/modal';
 
 import {TuiDialogComponent} from './dialog.component';
 import {type TuiDialogOptions} from './dialog.interfaces';
@@ -8,7 +7,8 @@ import {TUI_DIALOG_OPTIONS} from './dialog.tokens';
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiDialogService(TUI_DIALOGS, TuiDialogComponent, inject(TUI_DIALOG_OPTIONS)),
 })
-export class TuiDialogService extends TuiPopoverService<TuiDialogOptions<any>> {}
+export class TuiDialogService extends TuiModalService<TuiDialogOptions<any>> {
+    protected readonly options = inject(TUI_DIALOG_OPTIONS);
+    protected readonly content = TuiDialogComponent;
+}

@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
@@ -13,10 +13,9 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.data-direction]': 'direction',
+        '[attr.data-direction]': 'direction()',
     },
 })
 export class TuiAvatarStack {
-    @Input()
-    public direction: TuiHorizontalDirection = 'right';
+    public readonly direction = input<TuiHorizontalDirection>('end');
 }

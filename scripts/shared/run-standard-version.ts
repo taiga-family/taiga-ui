@@ -13,7 +13,7 @@ export function runStandardVersion(
             `
             npm run release -- \
                 --prerelease=rc \
-                --release-as ${version} ${dryRun} \
+                ${dryRun} \
                 --skip.changelog \
             `,
         );

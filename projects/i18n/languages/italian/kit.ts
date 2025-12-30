@@ -25,9 +25,9 @@ export const TUI_ITALIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'gg.mm.aaaa',
-        MDY: 'mm.gg.aaaa',
-        YMD: 'aaaa.mm.gg',
+        'dd/mm/yyyy': 'gg.mm.aaaa',
+        'mm/dd/yyyy': 'mm.gg.aaaa',
+        'yyyy/mm/dd': 'aaaa.mm.gg',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Mostra password', 'Nascondi password'],
@@ -79,4 +79,12 @@ export const TUI_ITALIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Ripristina',
     },
     phoneSearch: 'Digitare il paese o il codice',
+    dayRangePeriods: [
+        'Tutto il tempo',
+        'Oggi',
+        'Ieri',
+        'Questa settimana',
+        'Questo mese',
+        'Il mese scorso',
+    ],
 };

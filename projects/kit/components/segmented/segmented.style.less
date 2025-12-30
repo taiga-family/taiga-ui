@@ -15,7 +15,7 @@ tui-segmented {
         --t-margin: -0.125rem;
         --t-height: var(--tui-height-s);
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
         border-radius: var(--tui-radius-m);
 
         tui-icon {
@@ -29,7 +29,7 @@ tui-segmented {
         --t-margin: -0.375rem;
         --t-height: var(--tui-height-m);
 
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-body-m);
         border-radius: var(--tui-radius-m);
     }
 
@@ -39,7 +39,7 @@ tui-segmented {
         --t-margin: -0.375rem;
         --t-height: var(--tui-height-l);
 
-        font: var(--tui-font-text-l);
+        font: var(--tui-font-body-l);
         border-radius: var(--tui-radius-l);
 
         > *::before {
@@ -113,20 +113,16 @@ tui-segmented {
 
     & > label > input:not([tuiRadio]) {
         position: absolute;
-        top: -0.125rem;
-        left: -0.125rem;
-        right: -0.125rem;
-        bottom: -0.125rem;
+        inset: -0.125rem;
         background: transparent !important;
     }
 
     &::before {
-        .transition(~'top, left, width');
+        .transition(~'inset, width');
 
         content: '';
         position: absolute;
-        left: var(--t-left);
-        top: var(--t-top);
+        inset: var(--t-top) auto auto var(--t-left);
         block-size: var(--t-height);
         inline-size: var(--t-width);
         border-radius: inherit;
@@ -135,6 +131,10 @@ tui-segmented {
         border: 0.125rem solid transparent;
         box-sizing: border-box;
         filter: drop-shadow(0 0.25rem 1.25rem rgba(0, 0, 0, 0.1));
+    }
+
+    [dir='rtl'] &::before {
+        inset-inline: auto var(--t-left);
     }
 }
 

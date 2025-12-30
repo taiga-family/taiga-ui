@@ -16,7 +16,6 @@ const FLAKY_EXAMPLES = new Map<
             {exampleIndex: 3}, // just button (to open dialog)
         ],
     ],
-    [DemoRoute.IconsCustomization, [{exampleIndex: 0}]], // TODO: investigate flaky test
     [
         DemoRoute.LegendItem,
         [
@@ -24,7 +23,6 @@ const FLAKY_EXAMPLES = new Map<
             {exampleIndex: 0, browserName: 'chromium'},
         ],
     ], // Flaky, need to investigate a problem
-    [DemoRoute.MultiSelect, [{exampleIndex: 3}]], // Imitating server response (timer(5000))
     [DemoRoute.Navigation, [{exampleIndex: 0, browserName: 'webkit'}]],
     [
         DemoRoute.RingChart,

@@ -1,17 +1,17 @@
 <td class="t-td">
     <code
         class="t-name"
-        [class.t-name_banana]="name.startsWith('[(')"
-        [class.t-name_input]="name.startsWith('[')"
-        [class.t-name_output]="name.startsWith('(')"
+        [class.t-name_banana]="isBananaBox()"
+        [class.t-name_input]="isInput()"
+        [class.t-name_output]="isOutput()"
     >
-        {{ name }}
+        {{ name() }}
     </code>
     <ng-content />
 </td>
 <td class="t-td">
     <code class="t-type">
-        @for (item of type | tuiDocTypeReference; track item) {
+        @for (item of type() | tuiTypeReference; track item) {
             @if (item.reference) {
                 <a
                     target="_blank"
@@ -36,64 +36,63 @@
     </code>
 </td>
 <td class="t-td">
-    @if (items.length) {
+    @if (items().length) {
         <tui-textfield
             tuiChevron
             tuiTextfieldSize="m"
             class="t-input"
             [content]="content"
-            [tuiTextfieldCleaner]="type.includes('null') || type.includes('PolymorpheusContent')"
+            [tuiTextfieldCleaner]="hasCleaner()"
         >
             <input
                 tuiSelect
-                [ngModel]="value ?? null"
+                [ngModel]="value() ?? null"
                 (ngModelChange)="onValueChange($event)"
             />
             <tui-data-list-wrapper
                 *tuiDropdown
-                new
                 [itemContent]="content"
-                [items]="items"
+                [items]="items()"
             />
         </tui-textfield>
     } @else {
-        @if (value !== undefined) {
-            @switch (type) {
-                @case ('boolean') {
+        @if (value() !== undefined) {
+            @if (type() === 'boolean') {
+                <input
+                    tuiSwitch
+                    type="checkbox"
+                    [id]="name()"
+                    [ngModel]="value()"
+                    (ngModelChange)="onValueChange($event)"
+                />
+            }
+
+            @if (type() === 'string') {
+                <tui-textfield
+                    tuiTextfieldSize="m"
+                    class="t-input"
+                >
                     <input
-                        tuiSwitch
-                        type="checkbox"
-                        [id]="name"
-                        [ngModel]="value"
+                        tuiInput
+                        [id]="name()"
+                        [ngModel]="value() || ''"
                         (ngModelChange)="onValueChange($event)"
                     />
-                }
-                @case ('string') {
-                    <tui-textfield
-                        tuiTextfieldSize="m"
-                        class="t-input"
-                    >
-                        <input
-                            tuiTextfield
-                            [id]="name"
-                            [ngModel]="value || ''"
-                            (ngModelChange)="onValueChange($event)"
-                        />
-                    </tui-textfield>
-                }
-                @case ('number') {
-                    <tui-textfield tuiTextfieldSize="m">
-                        <input
-                            tuiInputNumber
-                            [id]="name"
-                            [max]="numberItem?.max ?? null"
-                            [min]="numberItem?.min ?? null"
-                            [ngModel]="value"
-                            [step]="1"
-                            (ngModelChange)="onValueChange($event || 0)"
-                        />
-                    </tui-textfield>
-                }
+                </tui-textfield>
+            }
+
+            @if (type() === 'number' || type() === 'bigint' || type() === 'number | bigint') {
+                <tui-textfield tuiTextfieldSize="m">
+                    <input
+                        tuiInputNumber
+                        [id]="name()"
+                        [max]="numberItem?.max() ?? null"
+                        [min]="numberItem?.min() ?? null"
+                        [ngModel]="value()"
+                        [step]="1"
+                        (ngModelChange)="onValueChange($event || 0)"
+                    />
+                </tui-textfield>
             }
         }
     }
@@ -101,6 +100,6 @@
         #content
         let-data
     >
-        <code [style.margin]="0">{{ data | tuiInspectAny }}</code>
+        <code [style.margin]="0">{{ data | tuiInspect }}</code>
     </ng-template>
 </td>

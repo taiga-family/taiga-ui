@@ -6,9 +6,9 @@ import {
     type Provider,
     type Type,
 } from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     // eslint-disable-next-line no-restricted-imports
     POLYMORPHEUS_CONTEXT,
@@ -24,7 +24,7 @@ export type TuiPortalContext<T, O = void> = T &
         readonly content: PolymorpheusContent<TuiPortalContext<T, O>>;
         readonly createdAt: number;
         readonly id: string;
-        readonly completeWith: (value: O) => void;
+        completeWith(value: O): void;
     };
 
 @Injectable()
@@ -33,8 +33,8 @@ export abstract class TuiPortal<T, K = void> {
     protected abstract readonly options: T;
 
     private readonly injector = inject(INJECTOR);
-    private readonly id = inject(TuiIdService);
 
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(protected readonly service: TuiPortalService) {}
 
     public open<G = void>(
@@ -56,7 +56,7 @@ export abstract class TuiPortal<T, K = void> {
                                     content,
                                     $implicit,
                                     createdAt: Date.now(),
-                                    id: this.id.generate(),
+                                    id: tuiGenerateId(),
                                     completeWith: (v: K extends void ? G : K): void => {
                                         $implicit.next(v);
                                         $implicit.complete();

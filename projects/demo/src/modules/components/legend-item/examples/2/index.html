@@ -1,7 +1,7 @@
-<tui-notification>
+<div tuiNotification>
     In case you need to be able to toggle a category by separate action, for example, if clicking on it should expand it
     for more details
-</tui-notification>
+</div>
 
 <div class="wrapper">
     <tui-ring-chart
@@ -25,13 +25,13 @@
                     size="s"
                     tuiCheckbox
                     type="checkbox"
-                    [checked]="!item.disabled"
+                    [checked]="!item.disabled()"
                 />
-                <span>{{ data[$index] || 0 | tuiAmount: 'RUB' | async }}</span>
+                <span>{{ data[$index] || 0 | tuiAmount: 'RUB' }}</span>
                 <tui-icon
                     icon="@tui.x"
                     class="disable"
-                    [class.disable_rotated]="item.disabled"
+                    [class.disable_rotated]="item.disabled()"
                     (click.stop)="toggle($index)"
                 />
             </tui-legend-item>

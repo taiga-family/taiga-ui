@@ -1,6 +1,6 @@
 <tui-doc-page
     header="Slides"
-    package="KIT"
+    package="LAYOUT"
     type="components"
 >
     <ng-template pageTab>
@@ -60,18 +60,18 @@
                 <label tuiLabel>Current slide</label>
                 <input
                     tuiInputNumber
-                    [max]="0"
-                    [min]="2"
+                    [max]="2"
+                    [min]="0"
                     [step]="1"
                     [(ngModel)]="current"
                 />
             </tui-textfield>
             <p [tuiSlides]="direction">
-                <ng-container *tuiRepeatTimes="let index of 3">
-                    @if (index === current) {
-                        <div>Slide #{{ index }}</div>
+                @for (_ of '-'.repeat(3); track $index) {
+                    @if ($index === current) {
+                        <div>Slide #{{ $index }}</div>
                     }
-                </ng-container>
+                }
             </p>
         </tui-doc-demo>
         <table tuiDocAPI>

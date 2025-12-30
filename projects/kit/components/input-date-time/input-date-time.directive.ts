@@ -1,11 +1,10 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
     type MaskitoDateTimeParams,
     maskitoSelectionChangeHandler,
-    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
@@ -14,22 +13,21 @@ import {
     TuiDay,
     TuiTime,
 } from '@taiga-ui/cdk/date-time';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
-import {TuiItemsHandlersValidator} from '@taiga-ui/core/directives/items-handlers';
 import {
-    TUI_DATE_ADAPTER,
-    TuiInputDateBase,
-    tuiWithDateFiller,
-} from '@taiga-ui/kit/components/input-date';
+    TuiItemsHandlersDirective,
+    TuiItemsHandlersValidator,
+} from '@taiga-ui/core/directives/items-handlers';
+import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
+import {TuiInputDateBase, tuiWithDateFiller} from '@taiga-ui/kit/components/input-date';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -52,7 +50,7 @@ const MAX_TIME = TuiTime.fromAbsoluteMilliseconds(MILLISECONDS_IN_DAY - 1);
         MaskitoDirective,
         TuiDropdownAuto,
         TuiItemsHandlersValidator,
-        TuiWithTextfield,
+        TuiWithInput,
     ],
 })
 export class TuiInputDateTimeDirective
@@ -62,30 +60,32 @@ export class TuiInputDateTimeDirective
     private readonly timeFillers = inject(TUI_TIME_TEXTS);
 
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
+    protected override readonly filler = tuiWithDateFiller(
+        (date) =>
+            `${date}${this.options.dateTimeSeparator}${this.timeFillers()?.[this.timeMode()] ?? ''}`,
+    );
 
-    protected override readonly filler = tuiWithDateFiller((date) => {
-        const time = this.timeFillers()?.[this.timeMode()] ?? '';
-
-        return `${date}${this.options.dateTimeSeparator}${time}`;
-    });
-
-    protected override valueEffect = effect(noop);
-
-    protected readonly identity = this.handlers.identityMatcher.set(
+    protected override readonly valueEffect = effect(noop);
+    protected override readonly identity = tuiDirectiveBinding(
+        TuiItemsHandlersDirective,
+        'identityMatcher',
         (a, b) => tuiSum(...a.map(Number)) === tuiSum(...b.map(Number)),
+        {},
     );
 
     protected readonly disabledItemHandler = tuiDirectiveBinding(
         TuiItemsHandlersValidator,
         'disabledItemHandler',
-        (value: readonly [TuiDay, TuiTime | null] | null) =>
-            Boolean(value && this.handlers.disabledItemHandler()(value)),
+        computed(
+            () => (value: readonly [TuiDay, TuiTime | null] | null) =>
+                Boolean(value && this.handlers.disabledItemHandler()(value)),
+        ),
     );
 
     protected readonly mask = tuiMaskito(
         computed(() =>
             this.computeMask({
-                dateMode: TUI_DATE_ADAPTER[this.format().mode],
+                dateMode: this.format().mode,
                 timeMode: this.timeMode(),
                 min: this.toNativeDate([this.min(), this.minTime()]),
                 max: this.toNativeDate([this.max(), this.maxTime()]),
@@ -95,39 +95,37 @@ export class TuiInputDateTimeDirective
         ),
     );
 
-    public readonly timeMode = signal(this.options.timeMode);
-    public readonly minTime = signal(MIN_TIME);
-    public readonly maxTime = signal(MAX_TIME);
+    public override readonly min = computed<TuiDay>((min = this.minInput()) =>
+        Array.isArray(min) ? min[0] : (min ?? this.options.min),
+    );
 
-    // TODO(v5): use signal inputs
-    @Input('timeMode')
-    public set timeModeSetter(x: MaskitoTimeMode) {
-        this.timeMode.set(x);
-    }
+    public override readonly max = computed<TuiDay>((max = this.maxInput()) =>
+        Array.isArray(max) ? max[0] : (max ?? this.options.max),
+    );
 
-    @Input('min')
-    public override set minSetter(
-        min: TuiDay | readonly [TuiDay, TuiTime | null] | null,
-    ) {
-        const [date, time] = Array.isArray(min) ? min : [min, null];
+    public readonly minTime = computed((min = this.minInput()) =>
+        Array.isArray(min) ? min[1] : MIN_TIME,
+    );
 
-        this.min.set(date || this.options.min);
-        this.minTime.set(time ?? MIN_TIME);
-    }
+    public readonly maxTime = computed((max = this.maxInput()) =>
+        Array.isArray(max) ? max[1] : MAX_TIME,
+    );
 
-    @Input('max')
-    public override set maxSetter(
-        max: TuiDay | readonly [TuiDay, TuiTime | null] | null,
-    ) {
-        const [date, time] = Array.isArray(max) ? max : [max, null];
+    public readonly timeMode = input(this.options.timeMode);
 
-        this.max.set(date || this.options.max);
-        this.maxTime.set(time ?? MAX_TIME);
-    }
+    public readonly minInput = input<TuiDay | readonly [TuiDay, TuiTime | null] | null>(
+        this.options.min,
+        {alias: 'min'},
+    );
+
+    public readonly maxInput = input<TuiDay | readonly [TuiDay, TuiTime | null] | null>(
+        this.options.max,
+        {alias: 'max'},
+    );
 
     public setValue(value: readonly [TuiDay, TuiTime | null] | null): void {
         this.onChange(value);
-        this.textfield.value.set(this.stringify(value));
+        this.input.value.set(this.stringify(value));
     }
 
     public override setDate(newDate: TuiDay): void {
@@ -147,7 +145,7 @@ export class TuiInputDateTimeDirective
 
         if (changed || reset) {
             super.writeValue(value);
-            this.textfield.value.set(this.stringify(this.value()));
+            untracked(() => this.input.value.set(this.stringify(this.value())));
         }
     }
 
@@ -158,7 +156,7 @@ export class TuiInputDateTimeDirective
     }
 
     protected override onValueChange(value: string): void {
-        this.textfield.value.set(value);
+        this.input.value.set(value);
         this.control?.control?.updateValueAndValidity({emitEvent: false});
 
         const [date = '', time = ''] = value.split(this.options.dateTimeSeparator);

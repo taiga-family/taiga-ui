@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiDialog, TuiHeader, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
-import {TuiAppBar} from '@taiga-ui/layout';
+import {TuiButton, TuiCell, TuiDialog, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiProgress} from '@taiga-ui/kit';
+import {TuiAppBar, TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -16,7 +15,6 @@ import {TuiAppBar} from '@taiga-ui/layout';
         TuiFloatingContainer,
         TuiHeader,
         TuiProgress,
-        TuiRepeatTimes,
         TuiTitle,
     ],
     templateUrl: './index.html',

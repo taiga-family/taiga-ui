@@ -7,8 +7,8 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -16,7 +16,8 @@ import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
     tuiInputNumberOptionsProvider,
-    TuiWithQuantumValueTransformer,
+    TuiNumberMask,
+    TuiQuantumValueTransformer,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent, switchMap, tap} from 'rxjs';
@@ -24,10 +25,11 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
 @Component({
     template: '',
     styles: [
-        // TODO: tui-textfield:has([tuiInputSlider]) .t-clear
-        'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
+        // TODO: tui-textfield:has([tuiInputSlider]) [tuiButtonX]
+        'tui-textfield [tuiInputSlider] ~ .t-content [tuiButtonX] {display: none !important}',
         // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
         'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
+        'tui-textfield [tuiSlider] { --tui-slider-track-color: transparent !important; }',
     ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,9 +47,12 @@ class Styles {}
     hostDirectives: [
         {
             directive: TuiInputNumberDirective,
-            inputs: ['min', 'max', 'prefix', 'postfix', 'invalid', 'readOnly'],
+            inputs: ['invalid', 'readOnly'],
         },
-        TuiWithQuantumValueTransformer,
+        {
+            directive: TuiQuantumValueTransformer,
+            inputs: ['quantum'],
+        },
     ],
     host: {
         '(blur)': 'inputNumber.setValue(value() ?? null)',
@@ -56,17 +61,19 @@ class Styles {}
     },
 })
 export class TuiInputSliderDirective {
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>(
         (x) => x instanceof TuiSliderComponent,
     );
 
-    private readonly controlTransformer = inject<
-        TuiValueTransformer<number | null, number>
-    >(TuiValueTransformer, {self: true});
+    private readonly controlTransformer = inject<TuiValueTransformer<string, number>>(
+        TuiValueTransformer,
+        {self: true},
+    );
 
     protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly mask = inject(TuiNumberMask, {self: true});
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),
@@ -80,8 +87,9 @@ export class TuiInputSliderDirective {
         }
 
         if (!slider.keySteps?.transformer()) {
-            slider.min = this.inputNumber.min();
-            slider.max = this.inputNumber.max();
+            // Native <input type="range" /> does not support BigInt
+            slider.min = Number(this.mask.min());
+            slider.max = Number(this.mask.max());
             slider.value = this.value();
         } else {
             slider.keySteps?.setControlValue(this.value());
@@ -90,14 +98,13 @@ export class TuiInputSliderDirective {
         slider.el.disabled = !this.inputNumber.interactive();
     });
 
-    protected readonly sliderInitEffect = effect((onCleanup) => {
+    protected readonly sliderInit = effect((onCleanup) => {
         const slider = this.slider();
 
         if (!slider) {
             return;
         }
 
-        slider.el.style.setProperty('--tui-slider-track-color', 'transparent');
         slider.el.setAttribute('tabindex', '-1');
 
         if (slider.keySteps) {
@@ -128,8 +135,8 @@ export class TuiInputSliderDirective {
             const newValue = tuiClamp(
                 slider.keySteps?.takeStep(coefficient) ??
                     slider.value + coefficient * slider.step,
-                this.inputNumber.min(),
-                this.inputNumber.max(),
+                this.mask.min(),
+                this.mask.max(),
             );
 
             this.inputNumber.setValue(newValue);

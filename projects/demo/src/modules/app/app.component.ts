@@ -16,12 +16,11 @@ import {environment} from '@demo/environments/environment';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgedContent} from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
@@ -42,7 +41,6 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TuiDemo,
         TuiDropdown,
         TuiIcon,
-        TuiTextfieldControllerModule,
         VersionManager,
     ],
     templateUrl: './app.template.html',
@@ -50,7 +48,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [
-        ResizeObserverService,
+        WaResizeObserverService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
         {
@@ -67,7 +65,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     ],
 })
 export class App extends AbstractDemo implements OnInit {
-    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isE2E = inject(WA_IS_E2E);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly destroyRef = inject(DestroyRef);
     private readonly http = inject(HttpClient);

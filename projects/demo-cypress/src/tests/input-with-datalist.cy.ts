@@ -1,20 +1,23 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDataList, TuiRoot} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiDataList, TuiInput, TuiRoot} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, ReactiveFormsModule, TuiDataList, TuiInputModule, TuiRoot],
+    imports: [AsyncPipe, ReactiveFormsModule, TuiDataList, TuiInput, TuiRoot],
     template: `
         <tui-root>
-            <tui-input [formControl]="control">
-                Enter 3 characters
+            <tui-textfield>
+                <label tuiLabel>Enter 3 characters</label>
+                <input
+                    tuiInput
+                    [formControl]="control"
+                />
 
                 @if ((control.valueChanges | async)?.length > 2) {
-                    <tui-data-list *tuiDataList>Taiga UI</tui-data-list>
+                    <tui-data-list *tuiDropdown>Taiga UI</tui-data-list>
                 }
-            </tui-input>
+            </tui-textfield>
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,7 +35,7 @@ describe('Input + Datalist', () => {
                 },
             });
 
-            cy.get('tui-input input').as('textfield');
+            cy.get('tui-textfield input').as('textfield');
         });
 
         it('Type 12 => no dropdown', () => {

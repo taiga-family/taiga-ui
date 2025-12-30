@@ -5,14 +5,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiError,
-    TuiHeader,
     TuiIcon,
+    TuiInput,
     TuiNotification,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -23,10 +22,10 @@ import {TuiCardLarge, TuiForm} from '@taiga-ui/layout';
         TuiForm,
         TuiHeader,
         TuiIcon,
+        TuiInput,
         TuiNotification,
         TuiSegmented,
         TuiSwitch,
-        TuiTextfield,
         TuiTitle,
         TuiTooltip,
     ],

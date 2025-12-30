@@ -4,8 +4,9 @@ import {
     Component,
     ElementRef,
     inject,
+    type Signal,
     signal,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -21,18 +22,15 @@ import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/t
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
-import {tuiPure, tuiUniqBy} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiInput, TuiInputDirective} from '@taiga-ui/core/components/input';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TuiTextfield, TuiTextfieldDirective} from '@taiga-ui/core/components/textfield';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
-import {TuiInputModule} from '@taiga-ui/legacy/components/input';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
 
@@ -43,6 +41,20 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
+
+function tuiUniqBy<T extends Record<string, any>>(
+    array: readonly T[],
+    key: keyof T,
+): readonly T[] {
+    return Array.from(
+        array
+            .reduce(
+                (map, item) => (map.has(item[key]) ? map : map.set(item[key], item)),
+                new Map<T[keyof T], T>(),
+            )
+            .values(),
+    );
+}
 
 @Component({
     selector: 'tui-doc-navigation',
@@ -58,11 +70,9 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
         TuiDocScrollIntoViewLink,
         TuiExpand,
         TuiIcon,
-        TuiInputModule,
+        TuiInput,
         TuiLink,
         TuiScrollbar,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './navigation.template.html',
     styleUrl: './navigation.style.less',
@@ -74,8 +84,8 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
     },
 })
 export class TuiDocNavigation {
-    @ViewChild(TuiTextfieldDirective, {read: ElementRef})
-    private readonly searchInput?: ElementRef<HTMLInputElement>;
+    private readonly searchInput: Signal<ElementRef<HTMLInputElement> | undefined> =
+        viewChild(TuiInputDirective, {read: ElementRef});
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
@@ -90,6 +100,19 @@ export class TuiDocNavigation {
     protected readonly searchEnabled = inject(TUI_DOC_SEARCH_ENABLED);
     protected readonly docIcons = inject(TUI_DOC_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly flat = this.items.reduce<
+        ReadonlyArray<readonly TuiDocRoutePage[]>
+    >(
+        (array, item) => [
+            ...array,
+            item.reduce<readonly TuiDocRoutePage[]>(
+                (pages, page) =>
+                    'subPages' in page ? [...pages, ...page.subPages] : [...pages, page],
+                [],
+            ),
+        ],
+        [],
+    );
 
     protected openPagesArr: boolean[] = [];
     protected openPagesGroupsArr: boolean[] = [];
@@ -100,7 +123,7 @@ export class TuiDocNavigation {
     protected readonly filtered = toSignal(
         tuiControlValue<string>(this.search).pipe(
             filter((search) => search.trim().length > 2),
-            map((search) => this.filterItems(this.flattenSubPages(this.items), search)),
+            map((search) => this.filterItems(this.flat, search)),
         ),
         {initialValue: []},
     );
@@ -174,12 +197,11 @@ export class TuiDocNavigation {
             event.code === 'Slash' &&
             !this.doc.activeElement?.matches('input,textarea,[contenteditable]')
         ) {
-            this.searchInput?.nativeElement?.focus();
+            this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
         }
     }
 
-    @tuiPure
     private filterItems(
         items: ReadonlyArray<readonly TuiDocRoutePage[]>,
         search: string,
@@ -204,25 +226,6 @@ export class TuiDocNavigation {
                 }),
                 'title',
             ),
-        );
-    }
-
-    @tuiPure
-    private flattenSubPages(
-        items: readonly TuiDocRoutePages[],
-    ): ReadonlyArray<readonly TuiDocRoutePage[]> {
-        return items.reduce<ReadonlyArray<readonly TuiDocRoutePage[]>>(
-            (array, item) => [
-                ...array,
-                item.reduce<readonly TuiDocRoutePage[]>(
-                    (pages, page) =>
-                        'subPages' in page
-                            ? [...pages, ...page.subPages]
-                            : [...pages, page],
-                    [],
-                ),
-            ],
-            [],
         );
     }
 

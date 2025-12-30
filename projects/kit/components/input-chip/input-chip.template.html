@@ -21,7 +21,7 @@
 >
     {{ handlers.stringify()(internal()) }}
 </div>
-@if (textfield.cva?.interactive() && !editing() && !disabled()) {
+@if (textfield.cva()?.interactive() && !editing() && !disabled()) {
     <button
         tabIndex="-1"
         tuiIconButton

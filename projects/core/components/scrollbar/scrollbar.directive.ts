@@ -7,9 +7,9 @@ import {
     tuiZonefreeScheduler,
 } from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {merge, throttleTime} from 'rxjs';
 
+import {TUI_SCROLL_REF} from './scroll-ref.directive';
 import {TuiScrollbarService} from './scrollbar.service';
 
 const MIN_WIDTH = 24;

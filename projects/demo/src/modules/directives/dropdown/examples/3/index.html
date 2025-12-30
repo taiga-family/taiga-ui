@@ -1,4 +1,10 @@
-<tui-input [(ngModel)]="value">Changes propagate both ways</tui-input>
+<tui-textfield>
+    <label tuiLabel>Changes propagate both ways</label>
+    <input
+        tuiInput
+        [(ngModel)]="value"
+    />
+</tui-textfield>
 <label
     class="flex"
     [tuiDropdown]="dropdownContent"
@@ -19,7 +25,14 @@
     polymorpheus
 >
     <div class="dropdown">
-        <tui-input [(ngModel)]="value">Changes propagate both ways</tui-input>
+        <tui-textfield>
+            <input
+                tuiInput
+                [(ngModel)]="value"
+            />
+            <label tuiLabel>Changes propagate both ways</label>
+        </tui-textfield>
+
         <p>
             Use
             <code>polymorpheus</code>

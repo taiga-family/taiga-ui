@@ -2,7 +2,7 @@
     <label tuiLabel>Phone number</label>
     <input
         tuiInputPhoneInternational
-        [countries]="(countries | tuiSortCountries | async) || []"
+        [countries]="countries | tuiSortCountries"
         [countrySearch]="true"
         [(countryIsoCode)]="countryIsoCode"
         [(ngModel)]="value"

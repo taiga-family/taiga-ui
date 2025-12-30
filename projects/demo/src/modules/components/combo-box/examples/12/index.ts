@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent, TuiTextfield} from '@taiga-ui/core';
+import {tuiAsOptionContent} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
@@ -19,7 +19,6 @@ import {Option} from './option';
         TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -27,9 +26,10 @@ import {Option} from './option';
     providers: [tuiAsOptionContent(Option)],
 })
 export default class Example {
-    protected readonly items = new Array(5)
-        .fill(null)
-        .map((_, index) => `Option ${index + 1}`);
+    protected readonly items = Array.from(
+        {length: 5},
+        (_, index) => `Option ${index + 1}`,
+    );
 
     protected readonly control = new FormControl<string | null>(this.items[2]!);
 }

@@ -1,20 +1,11 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHint, TuiHintDirective, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiHint, TuiIcon, TuiInput} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiButton,
-        TuiHint,
-        TuiHintDirective,
-        TuiIcon,
-        TuiInputModule,
-        TuiTooltip,
-    ],
+    imports: [FormsModule, TuiButton, TuiHint, TuiIcon, TuiInput, TuiTooltip],
     templateUrl: './index.html',
     changeDetection,
 })

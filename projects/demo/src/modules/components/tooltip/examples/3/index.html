@@ -1,20 +1,24 @@
 <ng-template #tooltip>Allowed symbols: ♠ ♣ ♦ ♥</ng-template>
 
-<tui-input
+<tui-textfield
     tuiTextfieldSize="m"
     class="input"
-    [tuiTextfieldLabelOutside]="true"
-/>
+>
+    <input tuiInput />
+</tui-textfield>
+
 <tui-icon
     tuiHintDirection="bottom"
     [tuiTooltip]="tooltip"
 />
 
-<tui-input
+<tui-textfield
     tuiTextfieldSize="m"
     class="input"
-    [tuiTextfieldLabelOutside]="true"
-/>
+>
+    <input tuiInput />
+</tui-textfield>
+
 <tui-icon
     appearance=""
     tuiHintDirection="bottom"
@@ -22,11 +26,14 @@
     class="primary"
 />
 
-<tui-input
+<tui-textfield
     tuiTextfieldSize="m"
     class="input"
-/>
+>
+    <input tuiInput />
+</tui-textfield>
+
 <tui-icon
-    tuiHintDirection="right"
+    tuiHintDirection="end"
     [tuiTooltip]="tooltip"
 />

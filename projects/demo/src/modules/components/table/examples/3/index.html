@@ -1,7 +1,6 @@
 <tui-scrollbar
     waIntersectionRoot
     class="scrollbar"
-    [hidden]="true"
 >
     <table
         size="l"
@@ -147,7 +146,6 @@
                             />
                             <tui-data-list-wrapper
                                 *tuiDropdown
-                                new
                                 [items]="units"
                             />
                         </tui-textfield>
@@ -171,7 +169,7 @@
                         tuiTd
                         class="number text"
                     >
-                        {{ getTotal(item) | tuiFormatNumber | async }}
+                        {{ getTotal(item) | tuiFormatNumber }}
                     </td>
                 </tr>
             }
@@ -243,7 +241,6 @@
                             />
                             <tui-data-list-wrapper
                                 *tuiDropdown
-                                new
                                 [items]="units"
                             />
                         </tui-textfield>
@@ -267,7 +264,7 @@
                         tuiTd
                         class="number text"
                     >
-                        {{ getTotal(item) | tuiFormatNumber | async }}
+                        {{ getTotal(item) | tuiFormatNumber }}
                     </td>
                 </tr>
             }

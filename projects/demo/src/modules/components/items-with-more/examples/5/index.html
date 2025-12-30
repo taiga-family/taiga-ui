@@ -9,7 +9,6 @@
     />
     <tui-data-list-wrapper
         *tuiDropdown
-        new
         [itemContent]="content"
         [items]="items"
     />
@@ -30,7 +29,7 @@
                         <span>&nbsp;*{{ item.number.slice(-4) }}</span>
                     </div>
                 </tui-items-with-more>
-                ${{ item.value | tuiFormatNumber | async }}
+                ${{ item.value | tuiFormatNumber }}
             </span>
         </span>
     </ng-template>

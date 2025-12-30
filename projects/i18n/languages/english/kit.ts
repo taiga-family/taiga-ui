@@ -26,9 +26,9 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
     },
     // TODO(v5): transform to uppercase for ALL languages
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd/mm/yyyy',
+        'mm/dd/yyyy': 'mm/dd/yyyy',
+        'yyyy/mm/dd': 'yyyy/mm/dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Show password', 'Hide password'],
@@ -80,4 +80,12 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Reset',
     },
     phoneSearch: 'Type country or code',
+    dayRangePeriods: [
+        'For all the time',
+        'Today',
+        'Yesterday',
+        'Current week',
+        'Current month',
+        'Previous month',
+    ],
 };

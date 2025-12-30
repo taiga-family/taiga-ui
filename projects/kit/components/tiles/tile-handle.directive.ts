@@ -1,44 +1,44 @@
+import {DOCUMENT} from '@angular/common';
 import {Directive, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiGetActualTarget, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {shouldCall} from '@taiga-ui/event-plugins';
+import {filter, merge} from 'rxjs';
 
 import {TuiTile} from './tile.component';
 
-function isInteracting(this: TuiTileHandle, x = NaN): boolean {
-    return !Number.isNaN(x) || !Number.isNaN(this['x']);
-}
-
-function isDragging(this: TuiTileHandle): boolean {
-    return !Number.isNaN(this['x']);
-}
-
 @Directive({
     selector: '[tuiTileHandle]',
-    host: {
-        '[style.touchAction]': '"none"',
-        '[style.userSelect]': '"none"',
-        '(pointerdown.zoneless.prevent)': 'onStart($event)',
-        '(document:pointerup.zoneless)': 'onPointer()',
-        '(document:pointermove.zoneless)': 'onMove($event.x, $event.y)',
-    },
+    host: {'(pointerdown.zoneless.prevent)': 'onStart($event)'},
 })
 export class TuiTileHandle {
+    private readonly doc = inject(DOCUMENT);
     private readonly tile = inject(TuiTile);
     private x = NaN;
     private y = NaN;
 
-    @shouldCall(isInteracting)
+    protected readonly pointerSub = merge(
+        tuiTypedFromEvent(this.doc, 'pointerup'),
+        tuiTypedFromEvent(this.doc, 'pointermove'),
+    )
+        .pipe(
+            filter(() => !Number.isNaN(this.x)),
+            takeUntilDestroyed(),
+        )
+        .subscribe(({x, y, type}) => {
+            if (type === 'pointerup') {
+                this.onPointer();
+            } else {
+                this.tile.onDrag([x - this.x, y - this.y]);
+            }
+        });
+
     protected onPointer(x = NaN, y = NaN): void {
         const {left, top} = this.tile.element.getBoundingClientRect();
 
         this.x = x - left;
         this.y = y - top;
         this.tile.onDrag([NaN, NaN]);
-    }
-
-    @shouldCall(isDragging)
-    protected onMove(x: number, y: number): void {
-        this.tile.onDrag([x - this.x, y - this.y]);
     }
 
     protected onStart(event: PointerEvent): void {

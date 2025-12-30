@@ -13,7 +13,7 @@
         block-size: inherit;
         align-items: center;
         gap: 0.5rem;
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
         white-space: nowrap;
         overflow: hidden;
         padding: inherit;
@@ -25,9 +25,7 @@
         }
 
         > tui-tabs,
-        > tui-tabs-with-more,
-        > [tuiTabs],
-        > [tuiTabsWithMore] {
+        > tui-tabs-with-more {
             margin-inline-start: auto;
             margin-inline-end: 1.5rem;
             border-inline-start: 3rem solid transparent;
@@ -35,9 +33,7 @@
         }
 
         tui-tabs::before,
-        tui-tabs-with-more::before,
-        [tuiTabs]::before,
-        [tuiTabsWithMore]::before {
+        tui-tabs-with-more::before {
             background: var(--tui-background-accent-opposite-pressed);
         }
     }
@@ -59,7 +55,7 @@
         }
 
         [tuiSubtitle] {
-            font: var(--tui-font-text-s);
+            font: var(--tui-font-body-s);
 
             tui-icon {
                 font-size: 1rem;
@@ -71,8 +67,7 @@
         }
     }
 
-    tui-tabs,
-    [tuiTabs] {
+    tui-tabs {
         margin-block-start: 0.5rem;
 
         &::before {

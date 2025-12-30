@@ -1,7 +1,6 @@
 <ng-content />
 <div class="t-skeletons">
-    <div
-        *tuiRepeatTimes="let index of quantity"
-        class="t-skeleton"
-    ></div>
+    @for (_ of '-'.repeat(quantity()); track $index) {
+        <div class="t-skeleton"></div>
+    }
 </div>

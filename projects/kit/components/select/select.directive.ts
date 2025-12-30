@@ -2,18 +2,17 @@ import {Directive, effect, inject} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     TuiSelectLike,
     type TuiTextfieldAccessor,
-    TuiTextfieldDirective,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
+import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiSelectOption} from './select-option/select-option.component';
 
@@ -24,7 +23,7 @@ import {TuiSelectOption} from './select-option/select-option.component';
         tuiAsTextfieldAccessor(TuiSelectDirective),
         tuiAsControl(TuiSelectDirective),
     ],
-    hostDirectives: [TuiWithTextfield, TuiSelectLike],
+    hostDirectives: [TuiWithInput, TuiSelectLike],
     host: {
         '[disabled]': 'disabled()',
         '(input)': '$event.inputType?.includes("delete") && setValue(null)',
@@ -34,8 +33,8 @@ export class TuiSelectDirective<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly textfield = inject(TuiTextfieldDirective);
-    private readonly open = tuiDropdownOpen();
+    private readonly input = inject(TuiInputDirective);
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
@@ -43,7 +42,7 @@ export class TuiSelectDirective<T>
         const value = this.value();
         const string = tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '';
 
-        this.textfield.value.set(string);
+        this.input.value.set(string);
     });
 
     public setValue(value: T | null): void {

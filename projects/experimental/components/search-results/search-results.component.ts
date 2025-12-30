@@ -2,18 +2,17 @@ import {type KeyValue, KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    computed,
+    contentChild,
     inject,
-    Input,
+    input,
     type OnChanges,
     TemplateRef,
 } from '@angular/core';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
-import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
@@ -51,37 +50,33 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
     protected readonly i18n = inject(TUI_INPUT_SEARCH);
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected active = 0;
+    protected readonly empty = computed(
+        (results = this.results() || {}) =>
+            !Object.values(results).reduce((total, {length}) => length + total, 0),
+    );
 
-    @ContentChild(TemplateRef)
-    public readonly template?: TemplateRef<TuiContext<T>>;
-
-    @Input()
-    public results: Record<string, readonly T[]> | null = {};
+    public readonly template = contentChild(TemplateRef);
+    public readonly results = input<Record<string, readonly T[]> | null>({});
 
     public ngOnChanges(): void {
         this.active = 0;
-    }
-
-    @tuiPure
-    protected isEmpty(results: Record<string, readonly T[]>): boolean {
-        return !Object.values(results).reduce((total, {length}) => length + total, 0);
     }
 
     protected onArrow(current: HTMLElement, step: number): void {
         const elements = Array.from(this.el.querySelectorAll<HTMLElement>('[tuiCell]'));
 
         if (elements[0] === current && step < 0) {
-            this.textfield.input?.nativeElement.focus();
+            this.textfield.input()?.nativeElement.focus();
         } else {
             tuiMoveFocus(elements.indexOf(current), elements, step);
         }
     }
 
     protected tab(step: number): void {
-        const max = Object.values(this.results || {}).filter((v) => v.length).length;
+        const max = Object.values(this.results() || {}).filter((v) => v.length).length;
 
         this.active = tuiClamp(this.active + step, 0, max);
-        this.textfield.input?.nativeElement.focus();
+        this.textfield.input()?.nativeElement.focus();
     }
 
     protected notEmpty({value}: KeyValue<string, readonly T[]>): boolean {

@@ -1,8 +1,8 @@
 <div
     class="t-preview"
-    [class.t-preview_big]="isBig"
+    [class.t-preview_big]="size() === 'l'"
 >
-    <ng-container *polymorpheusOutlet="leftContent || defaultLeftContent as text">
+    <ng-container *polymorpheusOutlet="leftContent() || defaultLeftContent as text">
         {{ text }}
     </ng-container>
 </div>
@@ -12,18 +12,18 @@
             tuiHintOverflow
             class="t-name"
         >
-            {{ name }}
+            {{ name() }}
         </div>
-        <div class="t-type">{{ type }}</div>
-        @if (showSize && (fileSize$ | async); as fileSize) {
+        <div class="t-type">{{ type() }}</div>
+        @if (showSize() && fileSize()) {
             <div class="t-size">
-                {{ fileSize }}
+                {{ fileSize() }}
             </div>
         }
     </div>
-    @if (content$ | async; as content) {
+    @if (content(); as text) {
         <div class="t-content">
-            <ng-container *polymorpheusOutlet="content as text">
+            <ng-container *polymorpheusOutlet="text">
                 {{ text }}
             </ng-container>
         </div>
@@ -31,7 +31,7 @@
     <ng-content />
 </div>
 @if (allowDelete) {
-    @if (fileTexts$ | async; as texts) {
+    @if (fileTexts(); as texts) {
         <button
             appearance="icon"
             size="xs"
@@ -48,24 +48,24 @@
 }
 
 <ng-template #defaultLeftContent>
-    @if (preview) {
+    @if (preview()) {
         <img
             alt="file preview"
             class="t-image"
-            [src]="preview"
+            [src]="preview()"
         />
     } @else {
-        @if (isLoading) {
+        @if (state() === 'loading') {
             <tui-loader
                 class="t-loader"
-                [inheritColor]="isBig"
+                [inheritColor]="size() === 'l'"
             />
         } @else {
             <tui-icon
-                *polymorpheusOutlet="icon as src; context: {$implicit: size}"
+                *polymorpheusOutlet="icon() as src; context: {$implicit: size()}"
                 class="t-icon"
-                [class.t-icon_blank]="isBig || isDeleted"
-                [class.t-icon_error]="isError"
+                [class.t-icon_blank]="size() === 'l' || state() === 'deleted'"
+                [class.t-icon_error]="state() === 'error'"
                 [icon]="src.toString()"
             />
         }

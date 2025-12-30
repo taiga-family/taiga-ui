@@ -1,8 +1,7 @@
-import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
+import {Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TuiAxes,
     TuiLineChart,
@@ -10,7 +9,6 @@ import {
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
 import {
-    TUI_IS_E2E,
     TuiDay,
     type TuiDayLike,
     TuiDayRange,
@@ -19,15 +17,12 @@ import {
     TuiMapperPipe,
     type TuiMatcher,
     TuiMonth,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiNotification, type TuiPoint, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
-import {map, type Observable, of} from 'rxjs';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAxes,
         TuiFilterPipe,
@@ -44,86 +39,18 @@ import {map, type Observable, of} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(TUI_IS_E2E);
-    private readonly months$ = toObservable(inject(TUI_MONTHS));
+    private readonly isE2E = inject(WA_IS_E2E);
+    private readonly months = inject(TUI_MONTHS);
 
-    protected data = new TuiDayRange(
-        TuiDay.currentLocal(),
-        TuiDay.currentLocal().append({month: 5}),
+    protected readonly data = signal(
+        new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({month: 5})),
     );
 
-    protected show = this.data;
-
-    protected days = this.random(this.data);
-
+    protected readonly show = signal(this.data());
+    protected readonly days = computed(() => this.random(this.data()));
     protected readonly maxLength: TuiDayLike = {month: 6};
-
-    protected get range(): TuiDayRange {
-        return this.computeRange(this.show);
-    }
-
-    @tuiPure
-    protected getWidth({from, to}: TuiDayRange): number {
-        return TuiDay.lengthBetween(from, to);
-    }
-
-    @tuiPure
-    protected getDate(day: TuiDay | number, date: TuiDay): TuiDay {
-        return day instanceof TuiDay ? day : date.append({day});
-    }
-
-    @tuiPure
-    protected labels({from, to}: TuiDayRange): Observable<readonly string[]> {
-        const length = TuiDay.lengthBetween(from, to);
-
-        if (length > 90) {
-            return this.months$.pipe(
-                map((months) => [
-                    ...Array.from(
-                        {length: TuiMonth.lengthBetween(from, to) + 1},
-                        (_, i) => months[from.append({month: i}).month] ?? '',
-                    ),
-                    '',
-                ]),
-            );
-        }
-
-        const range = Array.from({length}, (_, day) => from.append({day}));
-        const mondays = onlyMondays(range);
-        const days = range.map(String);
-
-        if (length > 60) {
-            return of([...even(mondays), '']);
-        }
-
-        if (length > 14) {
-            return of([...mondays, '']);
-        }
-
-        if (length > 7) {
-            return of([...even(days), '']);
-        }
-
-        return of([...days, '']);
-    }
-
-    protected readonly filter: TuiMatcher<[readonly [TuiDay, number], TuiDayRange]> = (
-        [day],
-        {from, to},
-    ) => day.daySameOrAfter(from) && day.daySameOrBefore(to);
-
-    protected readonly toNumbers: TuiMapper<
-        [ReadonlyArray<readonly [TuiDay, number]>, TuiDayRange],
-        readonly TuiPoint[]
-    > = (days, {from}) =>
-        days.map(([day, value]) => [TuiDay.lengthBetween(from, day), value]);
-
-    protected onDataChange(data: TuiDayRange): void {
-        this.days = this.random(data);
-    }
-
-    @tuiPure
-    private computeRange(range: TuiDayRange): TuiDayRange {
+    protected readonly range = computed(() => {
+        const range = this.show();
         const {from, to} = range;
         const length = TuiDay.lengthBetween(from, to);
         const dayOfWeekFrom = from.dayOfWeek();
@@ -148,15 +75,66 @@ export default class Example {
         }
 
         return new TuiDayRange(from, to.append({day: length % 2}));
+    });
+
+    protected readonly labels = computed(() => {
+        const {from, to} = this.show();
+        const length = TuiDay.lengthBetween(from, to);
+        const months = this.months();
+
+        if (length > 90) {
+            return [
+                ...Array.from(
+                    {length: TuiMonth.lengthBetween(from, to) + 1},
+                    (_, i) => months[from.append({month: i}).month] ?? '',
+                ),
+                '',
+            ];
+        }
+
+        const range = Array.from({length}, (_, day) => from.append({day}));
+        const mondays = onlyMondays(range);
+        const days = range.map(String);
+
+        if (length > 60) {
+            return [...even(mondays), ''];
+        }
+
+        if (length > 14) {
+            return [...mondays, ''];
+        }
+
+        if (length > 7) {
+            return [...even(days), ''];
+        }
+
+        return [...days, ''];
+    });
+
+    protected getWidth({from, to}: TuiDayRange): number {
+        return TuiDay.lengthBetween(from, to);
     }
 
-    @tuiPure
+    protected getDate(day: TuiDay | number, date: TuiDay): TuiDay {
+        return day instanceof TuiDay ? day : date.append({day});
+    }
+
+    protected readonly filter: TuiMatcher<[readonly [TuiDay, number], TuiDayRange]> = (
+        [day],
+        {from, to},
+    ) => day.daySameOrAfter(from) && day.daySameOrBefore(to);
+
+    protected readonly toNumbers: TuiMapper<
+        [ReadonlyArray<readonly [TuiDay, number]>, TuiDayRange],
+        readonly TuiPoint[]
+    > = (days, {from}) =>
+        days.map(([day, value]) => [TuiDay.lengthBetween(from, day), value]);
+
     private generateRandomData(
         {from, to}: TuiDayRange,
         initial: number,
     ): ReadonlyArray<[TuiDay, number]> {
-        return new Array(TuiDay.lengthBetween(from, to) + 1)
-            .fill(0)
+        return Array.from({length: TuiDay.lengthBetween(from, to) + 1})
             .reduce<ReadonlyArray<[TuiDay, number]>>(
                 (array, _, i) => [
                     ...array,

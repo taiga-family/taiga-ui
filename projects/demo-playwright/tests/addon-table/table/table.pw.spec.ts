@@ -5,7 +5,7 @@ import {expect, test} from '@playwright/test';
 test.describe('Table', () => {
     test('Dynamic column', async ({page}) => {
         await tuiGoto(page, DemoRoute.Table);
-        const example = new TuiDocumentationPagePO(page).getExample('#dynamic-columns');
+        const example = new TuiDocumentationPagePO(page).getExample('#columns');
         const addColumnButton = example.locator('button').first();
 
         await addColumnButton.click();
@@ -55,9 +55,7 @@ test.describe('Table', () => {
 
     test('tuiSort directive', async ({page}) => {
         await tuiGoto(page, DemoRoute.Table);
-        const example = new TuiDocumentationPagePO(page).getExample(
-            '#with-tui-sort-by-directive-to-work-with-column-titles-instead-of-sorters',
-        );
+        const example = new TuiDocumentationPagePO(page).getExample('#sorting');
 
         const name = example.locator('th').filter({hasText: 'Name'});
         const dateOfBirth = example.locator('th').filter({hasText: 'Date of Birth'});
@@ -126,34 +124,5 @@ test.describe('Table', () => {
 
         await page.waitForTimeout(100);
         await expect.soft(example).toHaveScreenshot('02-checkboxes-6.png');
-    });
-
-    test('manual sorting', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Table);
-
-        const example = new TuiDocumentationPagePO(page).getExample('#manual-sorting');
-        const name = example.locator('th').filter({hasText: 'Name'}).locator('button');
-        const color = example.locator('th').filter({hasText: 'Color'}).locator('button');
-
-        await example.scrollIntoViewIfNeeded();
-        await expect.soft(example).toHaveScreenshot('table-manual-sorting-01.png');
-
-        await color.click();
-        await expect.soft(example).toHaveScreenshot('table-manual-sorting-02.png');
-
-        await color.click();
-        await expect.soft(example).toHaveScreenshot('table-manual-sorting-03.png');
-
-        await color.click();
-        await expect.soft(example).toHaveScreenshot('table-manual-sorting-04.png');
-
-        await name.click();
-        await expect.soft(example).toHaveScreenshot('table-manual-sorting-05.png');
-
-        await name.click();
-        await expect.soft(example).toHaveScreenshot('table-manual-sorting-06.png');
-
-        await name.click();
-        await expect.soft(example).toHaveScreenshot('table-manual-sorting-07.png');
     });
 });

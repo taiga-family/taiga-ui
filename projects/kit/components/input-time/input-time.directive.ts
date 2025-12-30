@@ -10,26 +10,24 @@ import {
     maskitoTimeOptionsGenerator,
     type MaskitoTimeParams,
 } from '@maskito/kit';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
     TuiTextfieldComponent,
-    TuiTextfieldDirective,
     tuiTextfieldIcon,
     TuiWithNativePicker,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownDirective,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
+    TuiDropdownOpen,
+} from '@taiga-ui/core/portals/dropdown';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -41,11 +39,10 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     providers: [
         tuiAsControl(TuiInputTimeDirective),
         tuiAsTextfieldAccessor(TuiInputTimeDirective),
-        tuiAsAuxiliary(TuiInputTimeDirective),
         tuiValueTransformerFrom(TUI_INPUT_TIME_OPTIONS),
         tuiAsOptionContent(TuiSelectOption),
     ],
-    hostDirectives: [TuiWithTextfield, MaskitoDirective],
+    hostDirectives: [TuiWithInput, MaskitoDirective],
     host: {
         inputmode: 'numeric',
         '[disabled]': 'disabled()',
@@ -58,9 +55,9 @@ export class TuiInputTimeDirective
     extends TuiControl<TuiTime | null>
     implements TuiTextfieldAccessor<TuiTime | null>
 {
-    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly input = inject(TuiInputDirective);
     private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly open = tuiDropdownOpen();
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = inject(TUI_TIME_TEXTS);
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_TIME_OPTIONS);
@@ -82,7 +79,7 @@ export class TuiInputTimeDirective
             this.computeMask({
                 ...this.options,
                 mode: this.timeMode(),
-                step: this.interactive() && !this.dropdown._content() ? 1 : 0,
+                step: this.interactive() && !this.dropdown.content() ? 1 : 0,
                 prefix: this.prefix(),
                 postfix: this.postfix(),
             }),
@@ -90,23 +87,19 @@ export class TuiInputTimeDirective
     );
 
     public readonly accept = input<readonly TuiTime[]>([]);
-
-    public readonly native =
-        !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
-
     public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
-
     public readonly prefix = input('');
-
     public readonly postfix = input('');
+    public readonly native =
+        !!inject(TuiWithNativePicker, {optional: true}) && inject(WA_IS_MOBILE);
 
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
 
         if (value) {
-            this.textfield.value.set(this.stringify(value));
+            this.input.value.set(this.stringify(value));
         } else {
-            this.textfield.setValue(value);
+            this.input.setValue(value);
         }
 
         if (!value && this.dropdownEnabled()) {
@@ -120,7 +113,7 @@ export class TuiInputTimeDirective
 
         if (changed || reset) {
             super.writeValue(value);
-            this.textfield.value.set(this.stringify(this.value()));
+            untracked(() => this.input.value.set(this.stringify(this.value())));
         }
     }
 
@@ -139,7 +132,7 @@ export class TuiInputTimeDirective
         this.onChange(newValue);
 
         if (newValue && newValue !== time) {
-            this.textfield.value.set(this.stringify(newValue));
+            this.input.value.set(this.stringify(newValue));
         }
     }
 
@@ -163,7 +156,7 @@ export class TuiInputTimeDirective
             this.onChange(newValue);
 
             if (newValue) {
-                this.textfield.value.set(this.stringify(newValue));
+                this.input.value.set(this.stringify(newValue));
             }
         }
     }

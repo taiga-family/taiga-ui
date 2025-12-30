@@ -14,6 +14,7 @@ test.describe('DropdownSelection', () => {
         await example.scrollIntoViewIfNeeded();
         await api.waitStableState();
         await page.waitForTimeout(500); // flaky in Safari
+        await api.hideScrollbars();
 
         await example.locator('textarea').focus();
         await page.keyboard.press('Control+ArrowLeft');

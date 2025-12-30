@@ -25,9 +25,9 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'СС.МСС',
     },
     dateTexts: {
-        DMY: 'ДД.ММ.ГГГГ',
-        MDY: 'ММ.ДД.ГГГГ',
-        YMD: 'ГГГГ.ММ.ДД',
+        'dd/mm/yyyy': 'ДД.ММ.ГГГГ',
+        'mm/dd/yyyy': 'ММ.ДД.ГГГГ',
+        'yyyy/mm/dd': 'ГГГГ.ММ.ДД',
     },
     digitalInformationUnits: ['Б', 'КиБ', 'МиБ'],
     passwordTexts: ['Показать пароль', 'Скрыть пароль'],
@@ -79,4 +79,12 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Сбросить масштаб',
     },
     phoneSearch: 'Введите страну или код',
+    dayRangePeriods: [
+        'За все время',
+        'Сегодня',
+        'Вчера',
+        'Текущая неделя',
+        'Текущий месяц',
+        'Прошлый месяц',
+    ],
 };

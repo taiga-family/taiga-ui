@@ -319,7 +319,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                     for (let j = 0; j < 50; j++) {
                         const val = ((iteration * 131 + j * 17) % 1000) / 1000;
 
-                        tempArrays.push(new Array(2000).fill(val));
+                        tempArrays.push(Array.from({length: 2000}, () => val));
                     }
 
                     tempArrays.length = 0;

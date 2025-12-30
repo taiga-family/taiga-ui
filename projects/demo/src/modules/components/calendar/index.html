@@ -33,19 +33,13 @@
                     @switch ($index + 1) {
                         @case (4) {
                             Use
-                            <a
-                                fragment="first-day-of-week"
-                                tuiLink
-                                [routerLink]="routes.Tokens"
-                            >
-                                TUI_FIRST_DAY_OF_WEEK
-                            </a>
-                            token to change start day of the week (Monday by default)
+                            <code>tuiCalendarOptionsProvider</code>
+                            to change start day of the week (Monday by default)
                         }
                         @case (5) {
                             Use
-                            <code>TUI_DAY_TYPE_HANDLER</code>
-                            token to change cell's data-type attribute and customize its color. (The default color for
+                            <code>tuiCalendarOptionsProvider</code>
+                            to change cell's data-type attribute and customize its color. (The default color for
                             Saturday and Sunday is var(--tui-text-negative))
                         }
                         @default {}

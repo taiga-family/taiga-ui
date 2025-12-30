@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TuiDocAPIItem, TuiDocAPINumberItem} from '@taiga-ui/addon-doc';
-import {type TuiLooseUnion} from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_OPTIONS,
     type TuiSizeL,
@@ -8,6 +7,7 @@ import {
     type TuiTextfieldOptions,
     TuiTitle,
 } from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tbody[tuiDocTextfield]',
@@ -20,11 +20,14 @@ export class TuiDocTextfield {
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    public readonly hiddenOptions = input<
-        Array<TuiLooseUnion<keyof TuiTextfieldOptions>>
-    >(['rows']);
+    public readonly contentVariants = input<PolymorpheusContent[]>(['', 'TOP SECRET']);
+
+    public readonly hiddenOptions = input<Array<string | keyof TuiTextfieldOptions>>([
+        'rows',
+    ]);
 
     public cleaner: boolean = this.options.cleaner();
     public size: TuiSizeL | TuiSizeS = this.options.size();
     public rows = 100;
+    public content: PolymorpheusContent = '';
 }

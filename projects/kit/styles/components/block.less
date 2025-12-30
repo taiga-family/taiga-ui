@@ -14,7 +14,7 @@
  * <label tuiBlock>
  *   Click me
  *   <input tuiBlock />
- * </tui-badge>
+ * </label>
  *
  * @see-also
  * Icons, Appearance, Link, Button
@@ -33,20 +33,20 @@
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-body-m);
     padding: var(--tui-padding-l);
     isolation: isolate;
 
     &[data-size='s'] {
         gap: 0.5rem;
-        font: var(--tui-font-text-ui-s);
+        font: var(--tui-font-ui-s);
         padding: 0.5rem;
 
         --t-height: var(--tui-height-s);
         --t-radius: var(--tui-radius-m);
 
         [tuiSubtitle] {
-            font: var(--tui-font-text-ui-xs);
+            font: var(--tui-font-ui-xs);
         }
 
         [tuiTooltip] {
@@ -56,7 +56,7 @@
 
     &[data-size='m'] {
         gap: 0.625rem;
-        font: var(--tui-font-text-ui-m);
+        font: var(--tui-font-ui-m);
         padding: var(--tui-padding-m);
 
         --t-height: var(--tui-height-m);

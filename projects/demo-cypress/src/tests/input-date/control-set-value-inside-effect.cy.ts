@@ -1,20 +1,13 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    effect,
-    EventEmitter,
-    Output,
-    signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, effect, output, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 describe('InputDate | control.setValue is used inside effect', () => {
     @Component({
-        imports: [ReactiveFormsModule, TuiInputDate, TuiRoot, TuiTextfield],
+        imports: [ReactiveFormsModule, TuiInputDate, TuiRoot],
         template: `
             <tui-root>
                 <tui-textfield>
@@ -64,8 +57,7 @@ describe('InputDate | control.setValue is used inside effect', () => {
             {allowSignalWrites: true},
         );
 
-        @Output()
-        public readonly count = new EventEmitter<void>();
+        public readonly count = output();
     }
 
     beforeEach(() => {

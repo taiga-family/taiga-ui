@@ -7,7 +7,7 @@ import {
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
-import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiDropdownOptionsProvider} from '@taiga-ui/core/portals/dropdown';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit/components/breadcrumbs';
 import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
@@ -17,7 +17,7 @@ const PROVIDERS = [
     tuiBreadcrumbsOptionsProvider({icon: '/'}),
     tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
     tuiTabsOptionsProvider({size: 'm'}),
-    tuiDropdownOptionsProvider({align: 'right'}),
+    tuiDropdownOptionsProvider({align: 'end'}),
     tuiBadgeOptionsProvider({size: 'm'}),
 ];
 
@@ -45,9 +45,7 @@ export class TuiSubheaderComponent {}
     template: `
         <div class="t-nav-subheader">
             <ng-content />
-            <ng-content
-                select="tui-tabs,tui-tabs-with-more,[tuiTabsWithMore],[tuiTabs]"
-            />
+            <ng-content select="tui-tabs,tui-tabs-with-more" />
             <ng-content select="[tuiButton],[tuiIconButton]" />
         </div>
     `,

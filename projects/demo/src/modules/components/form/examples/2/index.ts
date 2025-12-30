@@ -7,10 +7,9 @@ import {
     TuiButton,
     TuiError,
     TuiGroup,
-    TuiHeader,
     TuiIcon,
+    TuiInput,
     TuiLabel,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
@@ -21,17 +20,13 @@ import {
     TuiInputDate,
     TuiInputNumber,
     TuiInputPhone,
+    TuiInputSlider,
     TuiPassword,
     TuiRadio,
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiForm} from '@taiga-ui/layout';
-import {
-    TuiInputModule,
-    TuiInputSliderModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 class User {
     constructor(
@@ -68,17 +63,15 @@ class Account {
         TuiGroup,
         TuiHeader,
         TuiIcon,
+        TuiInput,
         TuiInputDate,
-        TuiInputModule,
         TuiInputNumber,
         TuiInputPhone,
-        TuiInputSliderModule,
+        TuiInputSlider,
         TuiLabel,
         TuiPassword,
         TuiRadio,
         TuiSelect,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTitle,
         TuiTooltip,
     ],

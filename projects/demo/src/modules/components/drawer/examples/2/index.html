@@ -8,7 +8,7 @@
 
 <tui-drawer
     *tuiPopup="open()"
-    direction="left"
+    direction="start"
     class="drawer"
     [overlay]="true"
     (click.self)="onClose()"
@@ -30,9 +30,11 @@
     <tui-textfield>
         <label tuiLabel>Enter value</label>
         <input
-            tuiTextfield
+            tuiInput
             [formControl]="control"
         />
     </tui-textfield>
-    <p *tuiRepeatTimes="let index of 30">Content</p>
+    @for (_ of '-'.repeat(30); track $index) {
+        <p>Content</p>
+    }
 </tui-drawer>

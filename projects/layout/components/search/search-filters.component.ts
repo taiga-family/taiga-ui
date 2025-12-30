@@ -6,13 +6,13 @@ import {
     contentChildren,
     ElementRef,
     inject,
-    Input,
+    input,
     TemplateRef,
     viewChild,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiIsControlEmpty} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -32,7 +32,7 @@ const WIDTH = 12;
     styleUrl: './search-filters.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        ResizeObserverService,
+        WaResizeObserverService,
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
     ],
     hostDirectives: [
@@ -55,7 +55,7 @@ export class TuiSearchFiltersComponent {
     });
 
     protected readonly overflown = toSignal(
-        inject(ResizeObserverService, {self: true}).pipe(
+        inject(WaResizeObserverService, {self: true}).pipe(
             map((entry) => {
                 const width = entry[0]?.contentRect.width ?? 0;
 
@@ -74,8 +74,7 @@ export class TuiSearchFiltersComponent {
         ),
     );
 
-    @Input()
-    public size: TuiSizeS = 'm';
+    public readonly size = input<TuiSizeS>('m');
 
     protected onReset(): void {
         this.controls().forEach(({control}, index) => {

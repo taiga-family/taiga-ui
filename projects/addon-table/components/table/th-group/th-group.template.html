@@ -1,6 +1,6 @@
 <ng-content />
-@if (heads$ | async; as headings) {
-    @for (key of table.columns; track key) {
+@if (computedHeads(); as headings) {
+    @for (key of table.columns(); track key) {
         <ng-container
             [ngTemplateOutlet]="headings?.[key]?.template || plain"
             [ngTemplateOutletContext]="{$implicit: key}"
@@ -10,7 +10,7 @@
         #plain
         let-key
     >
-        @if (!th && !heads.length) {
+        @if (!th() && !heads().length) {
             <th tuiTh>
                 {{ key.toString() }}
             </th>

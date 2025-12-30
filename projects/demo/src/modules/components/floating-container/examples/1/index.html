@@ -26,41 +26,36 @@
     class="content"
     (scroll)="onScroll(content)"
 >
-    <div
-        *tuiRepeatTimes="let i of 30"
-        tuiCell
-    >
-        <div
-            appearance="primary"
-            tuiAvatar="@tui.star"
-        ></div>
-        <div tuiTitle>
-            Title
-            <div tuiSubtitle>Description</div>
+    @for (_ of '-'.repeat(30); track $index) {
+        <div tuiCell>
+            <div
+                appearance="primary"
+                tuiAvatar="@tui.star"
+            ></div>
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
         </div>
-    </div>
+    }
 
     @if (floating) {
-        <footer
-            @tuiSlideInTop
-            [tuiFloatingContainer]="secondAction ? '' : 'transparent'"
-        >
+        <footer [tuiFloatingContainer]="secondAction ? '' : 'transparent'">
             <button
                 tuiButton
                 type="button"
             >
                 Main action
             </button>
-            @if (secondAction) {
+            <tui-expand [expanded]="secondAction">
                 <button
                     appearance="flat"
                     tuiButton
                     type="button"
-                    @tuiHeightCollapse
                 >
                     Secondary action
                 </button>
-            }
+            </tui-expand>
         </footer>
     }
 </div>

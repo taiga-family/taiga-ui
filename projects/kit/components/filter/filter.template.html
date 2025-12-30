@@ -1,28 +1,29 @@
-@for (item of items; track item) {
+@for (item of items(); track $index) {
     <label
         appearance=""
         class="t-item"
-        [tuiBlock]="size"
+        [tuiBlock]="size()"
     >
         <span
-            *polymorpheusOutlet="content as text; context: {$implicit: item}"
+            *polymorpheusOutlet="content() as text; context: {$implicit: item}"
             tuiHintOverflow
             class="t-text"
         >
             {{ text }}
         </span>
-        @if (badgeHandler(item); as badgeValue) {
-            <tui-badge
+        @if (badgeHandler()(item); as badgeValue) {
+            <div
                 appearance="neutral"
-                [size]="size"
+                tuiBadge
+                [size]="size()"
             >
                 {{ badgeValue }}
-            </tui-badge>
+            </div>
         }
         <input
             tuiBlock
             type="checkbox"
-            [disabled]="disabledItemHandler(item)"
+            [disabled]="handlers.disabledItemHandler()(item)"
             [ngModel]="isCheckboxEnabled(item)"
             [ngModelOptions]="{standalone: true}"
             (ngModelChange)="onCheckbox($event, item)"

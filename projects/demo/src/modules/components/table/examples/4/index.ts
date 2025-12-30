@@ -17,17 +17,16 @@ import {
     tuiControlValue,
     TuiDay,
     tuiDefaultSort,
-    tuiIsFalsy,
     tuiIsPresent,
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDropdown,
+    TuiInput,
     TuiLabel,
     TuiLoader,
     TuiNumberFormat,
-    TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiCheckbox, TuiChevron, TuiInputNumber} from '@taiga-ui/kit';
 import {
@@ -114,6 +113,7 @@ function getAge(dob: TuiDay): number {
         TuiCheckbox,
         TuiChevron,
         TuiDropdown,
+        TuiInput,
         TuiInputNumber,
         TuiLabel,
         TuiLoader,
@@ -121,7 +121,6 @@ function getAge(dob: TuiDay): number {
         TuiReorder,
         TuiTable,
         TuiTablePagination,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -167,7 +166,7 @@ export default class Example {
 
     protected search = '';
 
-    protected readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
+    protected readonly loading$ = this.request$.pipe(map((v) => !v));
 
     protected readonly total$ = this.request$.pipe(
         filter(tuiIsPresent),

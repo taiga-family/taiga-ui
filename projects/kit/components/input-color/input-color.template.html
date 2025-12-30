@@ -5,7 +5,7 @@
         type="color"
         class="tui-input-color_picker"
         [attr.list]="list"
-        [class.tui-input-color_left]="align() === 'left'"
+        [class.tui-input-color_start]="align() === 'start'"
         [disabled]="!interactive()"
         [style.--t-opacity]="filled() ? opacity() / 255 : 0"
         [value]="value().length > 6 ? value().slice(0, 7) : ''"

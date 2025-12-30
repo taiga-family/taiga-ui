@@ -2,7 +2,7 @@ import {Component, inject, signal} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton, TuiDialog, TuiLoader, TuiTitle} from '@taiga-ui/core';
 import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 
@@ -14,8 +14,8 @@ import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly pdf = 'assets/media/taiga.pdf';
+    protected readonly isMobile = inject(WA_IS_MOBILE);
+    protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
     protected readonly url = this.sanitizer.bypassSecurityTrustResourceUrl(

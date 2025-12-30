@@ -1,118 +1,43 @@
-<table
-    tuiTable
-    class="table"
-    [columns]="columns"
->
+<table tuiTable>
     <thead>
-        <tr tuiThGroup>
+        <tr>
             <th tuiTh></th>
-            <th
-                tuiTh
-                [minWidth]="50"
-            >
-                #
-            </th>
-            <th
-                tuiTh
-                [minWidth]="150"
-            >
-                Name
-            </th>
-            <th
-                tuiTh
-                [minWidth]="150"
-            >
-                Date of Birth
-            </th>
-            <th tuiTh>Age</th>
+            <th tuiTh>#</th>
+            <th tuiTh>Name</th>
+            <th tuiTh>Date of Birth</th>
         </tr>
     </thead>
-    <tbody
-        tuiTbody
-        [data]="data"
-    >
+    <tbody tuiTbody>
         @for (item of data; track $index; let i = $index) {
-            <tr tuiTr>
-                <td
-                    *tuiCell="'children'"
-                    tuiTd
-                >
+            <tr>
+                <td tuiTd>
                     <button
                         appearance="flat-grayscale"
                         size="xs"
                         tuiIconButton
                         type="button"
-                        class="chevron-btn"
-                        [attr.title]="item.children?.length ? '' : 'No children'"
-                        [disabled]="!item.children?.length"
+                        [attr.title]="item.children.length ? null : 'No children'"
+                        [disabled]="!item.children.length"
                         [style.border-radius.%]="100"
-                        [tuiChevron]="rowState[i] ?? false"
-                        (click)="toggleRow(i)"
+                        [tuiChevron]="state[i] ?? false"
+                        (click)="state[i] = !state[i]"
                     >
                         Toggle
                     </button>
                 </td>
-                <td
-                    *tuiCell="'#'"
-                    tuiTd
-                >
-                    {{ i + 1 }}
-                </td>
-                <td
-                    *tuiCell="'name'"
-                    tuiTd
-                >
-                    {{ item.name }}
-                </td>
-                <td
-                    *tuiCell="'dob'"
-                    tuiTd
-                >
-                    {{ item.dob }}
-                </td>
-                <td
-                    *tuiCell="'age'"
-                    tuiTd
-                >
-                    {{ item.age }}
-                </td>
+                <td tuiTd>{{ i + 1 }}</td>
+                <td tuiTd>{{ item.name }}</td>
+                <td tuiTd>{{ item.dob }}</td>
             </tr>
 
-            @if (item.children?.length) {
-                <tui-table-expand [expanded]="rowState[i] ?? false">
+            @if (item.children.length) {
+                <tui-table-expand [expanded]="state[i] ?? false">
                     @for (child of item.children; track $index; let j = $index) {
-                        <tr
-                            tuiTr
-                            class="child"
-                        >
-                            <td
-                                *tuiCell="'children'"
-                                tuiTd
-                            ></td>
-                            <td
-                                *tuiCell="'#'"
-                                tuiTd
-                            >
-                                {{ i + 1 }}.{{ j + 1 }}
-                            </td>
-                            <td
-                                *tuiCell="'name'"
-                                tuiTd
-                            >
-                                {{ child.name }}
-                            </td>
-                            <td
-                                *tuiCell="'dob'"
-                                tuiTd
-                            >
-                                {{ child.dob }}
-                            </td>
-                            <td
-                                *tuiCell="'age'"
-                                tuiTd
-                            >
-                                {{ child.age }}
-                            </td>
+                        <tr>
+                            <td tuiTd></td>
+                            <td tuiTd>{{ i + 1 }}.{{ j + 1 }}</td>
+                            <td tuiTd>{{ child.name }}</td>
+                            <td tuiTd>{{ child.dob }}</td>
                         </tr>
                     }
                 </tui-table-expand>

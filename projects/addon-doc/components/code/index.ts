@@ -5,7 +5,8 @@ import {
     Component,
     computed,
     inject,
-    Input,
+    input,
+    type OnChanges,
     PLATFORM_ID,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -32,7 +33,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
         '[class._has-filename]': 'hasFilename',
     },
 })
-export class TuiDocCode {
+export class TuiDocCode implements OnChanges {
     private readonly icons = inject(TUI_DOC_ICONS);
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
     private readonly texts = inject(TUI_COPY_TEXTS);
@@ -65,15 +66,15 @@ export class TuiDocCode {
         {initialValue: []},
     );
 
-    @Input()
-    public filename = '';
+    public readonly filename = input('');
 
-    @Input()
-    public set code(code: TuiRawLoaderContent) {
-        this.rawLoader$$.next(code);
-    }
+    public readonly code = input<TuiRawLoaderContent>('');
 
     public get hasFilename(): boolean {
-        return !!this.filename;
+        return !!this.filename();
+    }
+
+    public ngOnChanges(): void {
+        this.rawLoader$$.next(this.code());
     }
 }

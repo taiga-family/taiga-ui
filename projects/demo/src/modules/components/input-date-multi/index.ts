@@ -9,12 +9,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
-import {
-    TuiInputChipComponent,
-    TuiInputDate,
-    TuiInputDateMultiDirective,
-} from '@taiga-ui/kit';
+import {TuiDropdown} from '@taiga-ui/core';
+import {TuiInputChip, TuiInputDate, TuiInputDateMulti} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -26,10 +22,9 @@ import {
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
-        TuiInputChipComponent,
+        TuiInputChip,
         TuiInputDate,
-        TuiInputDateMultiDirective,
-        TuiTextfield,
+        TuiInputDateMulti,
     ],
     templateUrl: './index.html',
     changeDetection,

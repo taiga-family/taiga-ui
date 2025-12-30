@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiElement} from '@taiga-ui/cdk/directives/element';
-import {tuiAsDataListAccessor, TuiDataList} from '@taiga-ui/core/components/data-list';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {
-    TuiMultiSelectGroupComponent,
+    TuiMultiSelect,
     TuiMultiSelectGroupDirective,
 } from '@taiga-ui/kit/components/multi-select';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -12,17 +12,11 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
-    imports: [
-        PolymorpheusOutlet,
-        TuiDataList,
-        TuiElement,
-        TuiLoader,
-        TuiMultiSelectGroupComponent,
-    ],
+    imports: [PolymorpheusOutlet, TuiDataList, TuiLoader, TuiMultiSelect],
     templateUrl: './data-list-group-wrapper.template.html',
     styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListAccessor(TuiDataListGroupWrapperComponent)],
+    providers: [tuiAsAuxiliary(TuiDataListGroupWrapperComponent)],
 })
 export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperComponent<
     T,
@@ -30,6 +24,5 @@ export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperCompo
 > {
     protected readonly multi = inject(TuiMultiSelectGroupDirective, {optional: true});
 
-    @Input()
-    public labels: readonly string[] = [];
+    public readonly labels = input<readonly string[]>([]);
 }

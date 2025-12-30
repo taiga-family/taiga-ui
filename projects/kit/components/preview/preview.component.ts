@@ -4,7 +4,7 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
-    Input,
+    input,
 } from '@angular/core';
 import {WaMutationObserver} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -16,11 +16,12 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
-import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
+import {TuiHint} from '@taiga-ui/core/portals/hint';
+import {TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 
 import {TuiPreviewAction} from './action/preview-action.directive';
+import {TUI_PREVIEW_ICONS} from './preview.options';
 import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 
 const EMPTY_COORDINATES: [number, number] = [0, 0];
@@ -49,7 +50,7 @@ export class TuiPreviewComponent {
     protected minZoom = 1;
     protected width = 0;
     protected height = 0;
-    protected readonly previewTexts = inject(TUI_PREVIEW_TEXTS);
+    protected readonly texts = inject(TUI_PREVIEW_TEXTS);
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
@@ -82,14 +83,9 @@ export class TuiPreviewComponent {
         ),
     );
 
-    @Input()
-    public zoomable = true;
-
-    @Input()
-    public rotatable = false;
-
-    @Input()
-    public initialScale = 0.8;
+    public readonly zoomable = input(true);
+    public readonly rotatable = input(false);
+    public readonly initialScale = input(0.8);
 
     protected rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
@@ -111,7 +107,7 @@ export class TuiPreviewComponent {
     }
 
     protected onZoom({clientX, clientY, delta}: TuiZoomEvent): void {
-        if (this.zoomable) {
+        if (this.zoomable()) {
             this.processZoom(clientX, clientY, delta);
         }
     }
@@ -149,15 +145,15 @@ export class TuiPreviewComponent {
         boxWidth: number,
     ): number {
         const bigSize =
-            contentHeight > boxHeight * this.initialScale ||
-            contentWidth > boxWidth * this.initialScale;
+            contentHeight > boxHeight * this.initialScale() ||
+            contentWidth > boxWidth * this.initialScale();
         const {clientHeight, clientWidth} = this.el;
 
         return bigSize
             ? tuiRound(
                   Math.min(
-                      (clientHeight * this.initialScale) / contentHeight,
-                      (clientWidth * this.initialScale) / contentWidth,
+                      (clientHeight * this.initialScale()) / contentHeight,
+                      (clientWidth * this.initialScale()) / contentWidth,
                   ),
                   2,
               )

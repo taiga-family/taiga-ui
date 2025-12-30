@@ -1,27 +1,22 @@
 import {inject, Injectable} from '@angular/core';
 import {type SafeResourceUrl} from '@angular/platform-browser';
-import {type TuiPopoverContext, TuiPopoverService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
+import {TuiModalService} from '@taiga-ui/core/portals/modal';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
 import {TuiPdfViewerComponent} from './pdf-viewer.component';
 import {TUI_PDF_VIEWER_OPTIONS, type TuiPdfViewerOptions} from './pdf-viewer.options';
 
-type Content<G> = PolymorpheusContent<
-    TuiPdfViewerOptions<unknown> & TuiPopoverContext<G>
->;
+type Content<G> = PolymorpheusContent<TuiPortalContext<TuiPdfViewerOptions<unknown>, G>>;
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiPdfViewerService(
-            TUI_DIALOGS,
-            TuiPdfViewerComponent,
-            inject(TUI_PDF_VIEWER_OPTIONS),
-        ),
 })
-export class TuiPdfViewerService extends TuiPopoverService<TuiPdfViewerOptions<unknown>> {
+export class TuiPdfViewerService extends TuiModalService<TuiPdfViewerOptions<unknown>> {
+    protected readonly options = inject(TUI_PDF_VIEWER_OPTIONS);
+    protected readonly content = TuiPdfViewerComponent;
+
     public override open<G>(
         content: Content<G> | SafeResourceUrl,
         options: Partial<TuiPdfViewerOptions<any>> = {},

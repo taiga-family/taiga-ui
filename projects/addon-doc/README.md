@@ -10,13 +10,13 @@
 
 Install main packages:
 
-```
+```bash
 npm i @taiga-ui/{cdk,core,kit}
 ```
 
 Install doc:
 
-```
+```bash
 npm i @taiga-ui/addon-doc
 ```
 

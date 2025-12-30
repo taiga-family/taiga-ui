@@ -1,22 +1,19 @@
-import {ɵAnimationEngine as AnimationEngine} from '@angular/animations/browser';
-import {inject, InjectionToken} from '@angular/core';
+import {inject, InjectionToken, RendererFactory2} from '@angular/core';
 import {map, share, startWith, Subject, switchMap, timer} from 'rxjs';
 
-/**
- * Element currently being removed by AnimationEngine
- */
+// TODO: Remove when fixed: https://issues.chromium.org/issues/41484175
 export const TUI_REMOVED_ELEMENT = new InjectionToken(
     ngDevMode ? 'TUI_REMOVED_ELEMENT' : '',
     {
         factory: () => {
-            const stub = {onRemovalComplete: () => {}};
             const element$ = new Subject<Element | null>();
-            const engine = inject(AnimationEngine, {optional: true}) || stub;
-            const {onRemovalComplete = stub.onRemovalComplete} = engine;
+            const renderer = inject(RendererFactory2).createRenderer(null, null);
+            const proto = Object.getPrototypeOf((renderer as any).delegate ?? renderer);
+            const {removeChild} = proto;
 
-            engine.onRemovalComplete = (element, context) => {
-                element$.next(element);
-                onRemovalComplete.call(engine, element, context);
+            proto.removeChild = function (...args: any[]): void {
+                element$.next(args[1]);
+                removeChild.apply(this, args);
             };
 
             return element$.pipe(

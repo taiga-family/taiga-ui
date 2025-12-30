@@ -13,7 +13,7 @@ import {
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
 
 const TAIGA_BIRTHDAY = new TuiDay(2020, 8, 20);
@@ -27,7 +27,6 @@ const TAIGA_V4 = new TuiDay(2024, 7, 9);
         TuiDocControl,
         TuiDocTextfield,
         TuiInputMonth,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

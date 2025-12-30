@@ -8,12 +8,12 @@
 
 <tui-drawer *tuiPopup="open()">
     <header>
-        <h2 tuiHeader>
+        <h2 tuiHeader="body-l">
             <div tuiTitle>
                 <span tuiCaption>Caption・caption</span>
                 <span>
                     Drawer title
-                    <tui-badge>Label</tui-badge>
+                    <div tuiBadge>Label</div>
                 </span>
                 <span tuiSubtitle>
                     In publishing and graphic design, Lorem ipsum is a placeholder text commonly used.
@@ -107,13 +107,15 @@
             </button>
         </nav>
     </header>
-    <p *tuiRepeatTimes="let index of 15">Content</p>
+    @for (_ of '-'.repeat(15); track $index) {
+        <p>Content</p>
+    }
     <footer>
         <button
             size="m"
             tuiButton
             type="button"
-            [style.margin-inline-end]="'auto'"
+            [style.order]="-1"
         >
             Tertiary action
         </button>

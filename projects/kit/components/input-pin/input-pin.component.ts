@@ -1,15 +1,7 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    Input,
-    signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoMask} from '@maskito/core';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -22,7 +14,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Component({
     selector: 'input[tuiInputPin]',
-    imports: [TuiAppearance, TuiRepeatTimes, TuiTextfieldContent],
+    imports: [TuiAppearance, TuiTextfieldContent],
     templateUrl: './input-pin.template.html',
     styleUrl: './input-pin.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,23 +28,18 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         '(keydown.arrowLeft)': 'onArrow()',
     },
 })
-export class TuiInputPin {
+export class TuiInputPinComponent {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly mask = signal<MaskitoMask>(/^\d+$/);
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly control = inject(NgControl);
-
     protected readonly maskito = tuiMaskito(
-        computed(() => ({
-            mask: this.mask(),
-            overwriteMode: 'replace',
-        })),
+        computed(() => ({mask: this.mask(), overwriteMode: 'replace'})),
     );
 
-    @Input('mask')
-    public set maskSetter(mask: MaskitoMask | string) {
-        this.mask.set(tuiIsString(mask) ? new RegExp(mask) : mask);
-    }
+    public readonly mask = input(/^\d+$/, {
+        transform: (mask: MaskitoMask | string): MaskitoMask =>
+            tuiIsString(mask) ? new RegExp(mask) : mask,
+    });
 
     public onClick(index: number): void {
         this.el.focus();

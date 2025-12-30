@@ -1,18 +1,27 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {tuiDateFormatProvider, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputDate} from '@taiga-ui/kit';
+import {TuiInputDate, tuiInputDateOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, ReactiveFormsModule, TuiInputDate, TuiTextfield],
+    imports: [FormsModule, JsonPipe, TuiInputDate],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'MDY', separator: '/'})],
+    providers: [
+        tuiInputDateOptionsProvider({
+            valueTransformer: {
+                fromControlValue: (value: Date | null): TuiDay | null =>
+                    value && TuiDay.fromUtcNativeDate(value),
+                toControlValue: (value: TuiDay | null): Date | null =>
+                    value?.toUtcNativeDate() || null,
+            },
+        }),
+    ],
 })
 export default class Example {
-    protected value = new TuiDay(2017, 0, 15);
+    protected value: Date | null = null;
 }

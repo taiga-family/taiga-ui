@@ -7,14 +7,14 @@ import {
     TuiDataListComponent,
     type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {
     TUI_DROPDOWN_OPTIONS,
     TuiDropdownDirective,
     TuiDropdownManual,
     type TuiDropdownOptions,
     TuiDropdownPositionSided,
-} from '@taiga-ui/core/directives/dropdown';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+} from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_CHEVRON, TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
@@ -28,7 +28,10 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
         provideDropdown(),
     ],
     hostDirectives: [
-        TuiHintAsideDirective,
+        {
+            directive: TuiHintAsideDirective,
+            inputs: ['tuiHintAside:tuiAsideItem'],
+        },
         TuiDropdownManual,
         TuiDropdownPositionSided,
         TuiButton,
@@ -40,6 +43,7 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
     host: {
         tuiButton: '',
         tuiOption: '',
+        tuiAsideItem: '',
         '[class._link]': 'link',
         '[class._active]': 'active()',
         '[class._custom]': 'icon !== icons.iconEnd()',

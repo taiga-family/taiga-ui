@@ -3,15 +3,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {tuiDateFormatProvider, TuiTextfield} from '@taiga-ui/core';
+import {tuiDateFormatProvider} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, ReactiveFormsModule, TuiInputDateTime, TuiTextfield],
+    selector: 'example-6',
+    imports: [FormsModule, ReactiveFormsModule, TuiInputDateTime],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiDateFormatProvider({mode: 'YMD', separator: '-'})],
+    providers: [tuiDateFormatProvider({mode: 'yyyy/mm/dd', separator: '-'})],
 })
 export default class Example {
     protected value = [new TuiDay(2017, 0, 15)];

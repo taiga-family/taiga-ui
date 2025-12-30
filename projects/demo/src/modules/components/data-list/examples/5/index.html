@@ -16,7 +16,7 @@
     <tui-data-list tuiDataListDropdownManager>
         <button
             iconEnd="@tui.chevron-right"
-            tuiDropdownAlign="right"
+            tuiDropdownAlign="end"
             tuiDropdownDirection="top"
             tuiDropdownSided
             tuiOption
@@ -29,7 +29,7 @@
         <button
             automation-id="tui-data-list-calendar-option"
             iconEnd="@tui.chevron-right"
-            tuiDropdownAlign="right"
+            tuiDropdownAlign="end"
             tuiDropdownLimitWidth="auto"
             tuiDropdownManual
             tuiDropdownSided
@@ -42,7 +42,7 @@
         <button
             automation-id="tui-data-list-email-option"
             iconEnd="@tui.chevron-right"
-            tuiDropdownAlign="right"
+            tuiDropdownAlign="end"
             tuiDropdownManual
             tuiDropdownSided
             tuiOption
@@ -54,7 +54,7 @@
         <button
             automation-id="tui-data-list-range-option"
             iconEnd="@tui.chevron-right"
-            tuiDropdownAlign="right"
+            tuiDropdownAlign="end"
             tuiDropdownDirection="top"
             tuiDropdownLimitWidth="auto"
             tuiDropdownManual
@@ -68,21 +68,19 @@
     </tui-data-list>
 
     <ng-template #money>
-        <tui-input
-            automation-id="tui-data-money-input"
-            [(ngModel)]="moneyValue"
-        >
-            RUB
+        <tui-textfield automation-id="tui-data-money-input">
             <input
                 name="moneyValue"
-                tuiTextfieldLegacy
+                tuiInput
+                [(ngModel)]="moneyValue"
             />
-        </tui-input>
+            <label tuiLabel>RUB</label>
+        </tui-textfield>
 
         <tui-data-list tuiDataListDropdownManager>
             <button
                 iconEnd="@tui.chevron-right"
-                tuiDropdownAlign="right"
+                tuiDropdownAlign="end"
                 tuiDropdownDirection="bottom"
                 tuiDropdownLimitWidth="auto"
                 tuiDropdownSided
@@ -105,16 +103,14 @@
     </ng-template>
 
     <ng-template #input>
-        <tui-input
-            automation-id="tui-data-list-email-field"
-            [(ngModel)]="emailValue"
-        >
-            Email
+        <tui-textfield automation-id="tui-data-list-email-field">
             <input
                 name="emailValue"
-                tuiTextfieldLegacy
+                tuiInput
+                [(ngModel)]="emailValue"
             />
-        </tui-input>
+            <label tuiLabel>Email</label>
+        </tui-textfield>
     </ng-template>
 
     <ng-template #currency>
@@ -123,16 +119,29 @@
                 tuiGroup
                 class="group"
             >
-                <tui-input [(ngModel)]="dollar">1 Rub = (X) Dollars</tui-input>
-                <tui-input [(ngModel)]="euro">1 Rub = (Y) Euros</tui-input>
+                <tui-textfield>
+                    <input
+                        tuiInput
+                        [(ngModel)]="dollar"
+                    />
+                    <label tuiLabel>1 Rub = (X) Dollars</label>
+                </tui-textfield>
+
+                <tui-textfield>
+                    <input
+                        tuiInput
+                        [(ngModel)]="euro"
+                    />
+                    <label tuiLabel>1 Rub = (Y) Euros</label>
+                </tui-textfield>
             </div>
 
             <ul class="exchange tui-list tui-list_large">
                 <li class="tui-list__item">
-                    <span>{{ moneyValue / dollar | tuiAmount: 'USD' | async }}</span>
+                    <span>{{ moneyValue / dollar | tuiAmount: 'USD' }}</span>
                 </li>
                 <li class="tui-list__item">
-                    <span>{{ moneyValue / euro | tuiAmount: 'EUR' | async }}</span>
+                    <span>{{ moneyValue / euro | tuiAmount: 'EUR' }}</span>
                 </li>
             </ul>
         </div>

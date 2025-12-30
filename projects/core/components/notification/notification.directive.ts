@@ -29,29 +29,26 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 class Styles {}
 
 @Directive({
-    selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
+    selector: '[tuiNotification]:not(ng-template)',
     providers: [
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
-        tuiLinkOptionsProvider({appearance: '', pseudo: true}),
+        tuiLinkOptionsProvider({appearance: ''}),
         tuiButtonOptionsProvider({appearance: 'outline-grayscale', size: 's'}),
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
-export class TuiNotification {
+export class TuiNotificationDirective {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
-    protected readonly computedIcon = computed((icon = this.icon()) =>
-        tuiIsString(icon) ? icon : icon(this.appearance()),
-    );
 
     protected readonly nothing = tuiWithStyles(Styles);
-    protected readonly icons = tuiIconStart(this.computedIcon);
+    protected readonly icons = tuiIconStart(
+        computed((icon = this.icon()) =>
+            tuiIsString(icon) ? icon : icon(this.appearance()),
+        ),
+    );
 
     public readonly appearance = input(this.options.appearance);
-
-    public readonly icon = input<TuiStringHandler<string> | string>(this.options.icon);
-
     public readonly size = input(this.options.size);
+    public readonly icon = input<TuiStringHandler<string> | string>(this.options.icon);
 }

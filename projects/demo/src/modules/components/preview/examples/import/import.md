@@ -1,5 +1,5 @@
 ```ts
-import {, inject, TemplateRef, ViewChild} from '@angular/core';
+import {inject, TemplateRef, viewChild} from '@angular/core';
 import {TuiPreviewDialogService} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TuiDialogContext} from '@taiga-ui/core';
@@ -9,12 +9,10 @@ import {TuiDialogContext} from '@taiga-ui/core';
 })
 export class Example {
   private readonly previewDialogService = inject(TuiPreviewDialogService);
-
-  @ViewChild(`preview`)
-  readonly preview: TemplateRef<TuiDialogContext<void>>;
+  private readonly preview = viewChild('preview', {read: TemplateRef});
 
   show() {
-    this.previewDialogService.open(this.preview).subscribe();
+    this.previewDialogService.open(this.preview()).subscribe();
   }
 }
 ```

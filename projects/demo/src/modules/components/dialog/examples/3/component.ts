@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, type TuiDialogContext, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, type TuiDialogContext, TuiInput} from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiForm, TuiTextfield],
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiForm, TuiInput],
     template: `
         <form tuiForm>
             <tui-textfield>
@@ -14,7 +14,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
                 <input
                     name="name"
                     tuiAutoFocus
-                    tuiTextfield
+                    tuiInput
                     [(ngModel)]="value"
                 />
             </tui-textfield>

@@ -31,7 +31,7 @@ const config: KnipConfig = {
         '**/examples/*/*.ts',
         '**/tokens/icons.ts',
         '**/demo/**/server.ts',
-        '**/demo/used-icons.ts',
+        '**/used-icons.ts',
         '**/demo/src/emulate/*.ts',
         '**/demo/**/main.server.ts',
         '**/versions.constants.ts',

@@ -3,7 +3,7 @@ import {
     Component,
     Directive,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -13,7 +13,7 @@ import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Component({
     template: '',
-    styleUrl: './group.style.less',
+    styles: '@import "@taiga-ui/core/styles/components/group.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-group'},
@@ -24,29 +24,21 @@ class Styles {}
     selector: '[tuiGroup]:not(ng-container)',
     host: {
         tuiGroup: '',
-        '[attr.data-orientation]': 'orientation',
-        '[attr.data-size]': 'size',
-        '[style.--t-group-radius]': 'rounded ? null : 0',
-        '[style.--t-group-margin.rem]': 'collapsed ? null : 0.125',
-        '[style.--t-group-mask]': 'collapsed ? null : "none"',
-        '[style.--t-group-mask-start]': 'collapsed ? null : "none"',
-        '[style.--t-group-mask-end]': 'collapsed ? null : "none"',
+        '[attr.data-orientation]': 'orientation()',
+        '[attr.data-size]': 'size()',
+        '[style.--t-group-radius]': 'rounded() ? null : 0',
+        '[style.--t-group-margin.rem]': 'collapsed() ? null : 0.125',
+        '[style.--t-group-mask]': 'collapsed() ? null : "none"',
+        '[style.--t-group-mask-start]': 'collapsed() ? null : "none"',
+        '[style.--t-group-mask-end]': 'collapsed() ? null : "none"',
     },
 })
 export class TuiGroup {
-    private readonly options = inject(TUI_GROUP_OPTIONS);
-
+    protected readonly options = inject(TUI_GROUP_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
 
-    @Input()
-    public orientation: TuiOrientation = this.options.orientation;
-
-    @Input()
-    public collapsed = this.options.collapsed;
-
-    @Input()
-    public rounded = this.options.rounded;
-
-    @Input()
-    public size: TuiSizeL | TuiSizeS = this.options.size;
+    public readonly orientation = input<TuiOrientation>(this.options.orientation);
+    public readonly collapsed = input(this.options.collapsed);
+    public readonly rounded = input(this.options.rounded);
+    public readonly size = input<TuiSizeL | TuiSizeS>(this.options.size);
 }

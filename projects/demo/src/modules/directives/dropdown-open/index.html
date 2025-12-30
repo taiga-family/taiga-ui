@@ -1,6 +1,7 @@
 <tui-doc-page
     header="DropdownOpen"
     package="CORE"
+    path="core/portals/dropdown"
     type="directives"
 >
     <ng-template pageTab>
@@ -23,6 +24,12 @@
             focusable element inside. If you want another element to be the host, use
             <code>#tuiDropdownHost</code>
             reference.
+        </p>
+
+        <p>
+            Use
+            <code>tuiDropdownAuto</code>
+            selector with no binding if you do not want to track open state
         </p>
 
         <tui-doc-example
@@ -63,10 +70,8 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-input
+            <tui-textfield
                 class="input"
-                [ngModel]="input"
-                [tuiDropdown]="template ? dropdownContent : content"
                 [tuiDropdownAlign]="dropdown.align"
                 [tuiDropdownDirection]="dropdown.direction"
                 [tuiDropdownEnabled]="enabled"
@@ -76,11 +81,47 @@
                 [tuiDropdownOffset]="dropdown.offset"
                 [tuiDropdownSided]="dropdown.dropdownSided"
                 [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset"
-                [(tuiDropdownOpen)]="open"
-                (ngModelChange)="onInput($event)"
+                [(open)]="open"
             >
-                Start typing
-            </tui-input>
+                <label tuiLabel>Start typing</label>
+                <input
+                    tuiInput
+                    [ngModel]="input"
+                    (ngModelChange)="onInput($event)"
+                />
+
+                <div *tuiDropdown>
+                    @if (template) {
+                        <div class="dropdown">
+                            <div>Do you like using Taiga UI?</div>
+                            <p class="buttons">
+                                <button
+                                    appearance="primary"
+                                    size="m"
+                                    tuiButton
+                                    type="button"
+                                    class="button"
+                                    (click)="onClick()"
+                                >
+                                    Yes
+                                </button>
+                                <button
+                                    appearance="secondary"
+                                    size="m"
+                                    tuiButton
+                                    type="button"
+                                    class="button"
+                                    (click)="onClick()"
+                                >
+                                    Yes
+                                </button>
+                            </p>
+                        </div>
+                    } @else {
+                        {{ content }}
+                    }
+                </div>
+            </tui-textfield>
         </tui-doc-demo>
         <ng-template #dropdownContent>
             <div class="dropdown">

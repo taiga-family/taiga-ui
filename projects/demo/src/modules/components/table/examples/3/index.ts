@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule, type ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,7 +10,7 @@ import {
     TuiIcon,
     TuiNumberFormat,
     TuiScrollbar,
-    TuiTextfield,
+    tuiScrollbarOptionsProvider,
 } from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -32,7 +31,6 @@ interface Item {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,
@@ -45,7 +43,6 @@ interface Item {
         TuiSelect,
         TuiTable,
         TuiTextarea,
-        TuiTextfield,
         TuiValidator,
         WaIntersectionObserver,
     ],
@@ -53,6 +50,7 @@ interface Item {
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly options = {updateOn: 'blur'} as const;

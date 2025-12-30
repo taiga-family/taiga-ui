@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiFloatingContainer} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
@@ -17,6 +17,6 @@ export default class Example {
     protected readonly options: Partial<TuiSheetDialogOptions> = {
         label: 'Alexander Inkin',
         closable: true,
-        fullscreen: true,
+        appearance: 'fullscreen',
     };
 }

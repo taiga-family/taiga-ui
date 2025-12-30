@@ -13,11 +13,14 @@ describe('Tabs', () => {
         describe('complex', () => {
             let example!: Locator;
             let tabsPO!: TuiTabsPO;
+            let pagePO!: TuiDocumentationPagePO;
 
             beforeEach(async ({page}) => {
-                example = new TuiDocumentationPagePO(page).getExample('#complex');
+                pagePO = new TuiDocumentationPagePO(page);
+                example = pagePO.getExample('#complex');
                 tabsPO = new TuiTabsPO(example.locator('tui-tabs-with-more'));
 
+                await pagePO.hideScrollbars();
                 await example.scrollIntoViewIfNeeded();
             });
 

@@ -118,5 +118,5 @@ describe('InputNumber with dynamic postfix', () => {
 });
 
 export function range(from: number, to: number): number[] {
-    return new Array(to - from + 1).fill(null).map((_, i) => from + i);
+    return Array.from({length: to - from + 1}, (_, i) => from + i);
 }

@@ -1,21 +1,20 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
+    computed,
+    contentChildren,
     inject,
-    Input,
-    type QueryList,
+    input,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
-import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
+import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiItemsWithMore} from '@taiga-ui/kit/components/items-with-more';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
@@ -25,7 +24,6 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
 @Component({
     selector: 'tui-breadcrumbs',
     imports: [
-        AsyncPipe,
         NgTemplateOutlet,
         TuiButton,
         TuiDataList,
@@ -41,29 +39,17 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
         tuiHintOptionsProvider({direction: 'bottom'}),
     ],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiBreadcrumbs {
-    @ContentChildren(TuiItem, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
+    protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly more = inject(TUI_MORE_WORD);
 
-    @Input()
-    public size: TuiBreadcrumbsOptions['size'] = this.options.size;
+    public readonly size = input<TuiBreadcrumbsOptions['size']>(this.options.size);
+    public readonly itemsLimit = input(this.options.itemsLimit);
 
-    @Input()
-    public itemsLimit = this.options.itemsLimit;
-
-    protected get limit(): number {
-        return this.itemsLimit ? this.itemsLimit - 2 : Infinity;
-    }
-
-    protected get offset(): number {
-        return this.itemsLimit === 2 ? 1 : 0;
-    }
+    protected readonly offset = computed(() => (this.itemsLimit() === 2 ? 1 : 0));
 }

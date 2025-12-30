@@ -1,0 +1,31 @@
+<div class="t-wrapper">
+    <div
+        size="m"
+        tuiNotification
+        [appearance]="item.appearance"
+        [class.t-closable]="item.closable"
+        [icon]="item.icon"
+    >
+        <span tuiTitle>
+            <ng-container *polymorpheusOutlet="item.label as text; context: item">
+                {{ text }}
+            </ng-container>
+            <span tuiSubtitle>
+                <span
+                    *polymorpheusOutlet="item.content as text; context: item"
+                    [innerHTML]="text"
+                ></span>
+            </span>
+        </span>
+        @if (item.closable) {
+            <button
+                tuiIconButton
+                type="button"
+                [iconStart]="icons.close"
+                (click)="item.$implicit.complete()"
+            >
+                {{ close() }}
+            </button>
+        }
+    </div>
+</div>

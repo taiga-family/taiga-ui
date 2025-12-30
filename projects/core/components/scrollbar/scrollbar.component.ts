@@ -1,15 +1,9 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    inject,
-    input,
-} from '@angular/core';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';
+import {TUI_SCROLL_REF} from './scroll-ref.directive';
 import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 
 /**
@@ -36,7 +30,8 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
         },
     ],
     host: {
-        '[class._native-hidden]': 'options.mode !== "native" && (!isIOS || hidden())',
+        '[class._native-hidden]':
+            'options.mode !== "native" && (!isIOS || options.mode === "hidden")',
         [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
         [`(${TUI_SCROLL_INTO_VIEW}.stop)`]: 'scrollIntoView($event.detail)',
     },
@@ -45,13 +40,8 @@ export class TuiScrollbar {
     private readonly el = tuiInjectElement();
 
     protected readonly options = inject(TUI_SCROLLBAR_OPTIONS);
-    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly isIOS = inject(WA_IS_IOS);
     protected readonly browserScrollRef = new ElementRef(this.el);
-
-    /**
-     * @deprecated: use tuiScrollbarOptionsProvider({ mode: 'hidden' })
-     */
-    public readonly hidden = input(this.options.mode === 'hidden');
 
     protected get delegated(): boolean {
         return this.scrollRef !== this.el || this.options.mode === 'native';

@@ -31,7 +31,6 @@
                 <tui-opt-group [label]="group.key">
                     @for (film of group.value | tuiFilterByInput; track film) {
                         <button
-                            new
                             tuiOption
                             type="button"
                             [value]="film"

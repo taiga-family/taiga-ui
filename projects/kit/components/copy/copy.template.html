@@ -18,7 +18,7 @@
     class="t-button"
     [attr.aria-label]="texts()[0]"
     [cdkCopyToClipboard]="content.textContent ?? ''"
-    [iconStart]="icon"
+    [iconStart]="options.icon(size())"
     (cdkCopyToClipboardCopied)="copied$.next($event)"
 ></button>
 <ng-template #template>

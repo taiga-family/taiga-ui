@@ -1,4 +1,4 @@
-@let formattedCard = value()?.card | tuiFormatCard: cardPrefilled;
+@let formattedCard = card() | tuiFormatCard: cardPrefilled();
 
 <div class="t-wrapper">
     <label (click.zoneless.prevent)="(0)">
@@ -10,17 +10,17 @@
             translate="no"
             type="text"
             class="t-input t-input_card"
-            [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
-            [attr.id]="`${id}_card`"
-            [class.t-input_filled]="card.length"
-            [class.t-input_inert]="cardPrefilled"
+            [attr.aria-invalid]="!cardPrefilled() && !(this.card() | tuiMapper: cardValidator())"
+            [attr.id]="`${id()}_card`"
+            [class.t-input_filled]="card().length"
+            [class.t-input_inert]="cardPrefilled()"
             [disabled]="disabled()"
             [maskito]="maskCard"
             [ngModel]="formattedCard"
             [ngModelOptions]="{standalone: true}"
-            [placeholder]="cardPrefilled ? '' : placeholder || exampleText"
+            [placeholder]="cardPrefilled() ? '' : placeholder()"
             [readOnly]="readOnly()"
-            [tabIndex]="cardFocusable ? 0 : -1"
+            [tabIndex]="cardPrefilled() ? -1 : 0"
             (focus)="(0)"
             (ngModelChange)="onCardChange($event)"
         />
@@ -28,14 +28,14 @@
             aria-hidden="true"
             translate="no"
             class="t-collapsed"
-            [attr.data-before]="masked"
+            [attr.data-before]="cardPrefilled() ? card().slice(-4) : ''"
             [class.t-collapsed_enable-mask]="cardCollapsed"
             (waResizeObserver)="onResize()"
         >
             <span
                 #ghost
                 class="t-ghost"
-                [textContent]="formattedCard.slice(-tailLength)"
+                [textContent]="formattedCard.slice(card().length % 4 > 0 ? -5 : -4)"
             ></span>
 
             <span class="t-collapsed-wrapper">
@@ -49,7 +49,7 @@
         <div
             tuiTransitioned
             class="t-label"
-            [attr.data-label]="texts()?.cardNumberText"
+            [attr.data-label]="texts().cardNumberText"
             [class.t-label_raised]="labelRaised()"
         >
             <ng-content />
@@ -70,16 +70,16 @@
             name="ccexpiryyear"
             translate="no"
             class="t-input"
-            [attr.id]="`${id}_expire`"
-            [class.t-input_inert]="!expireFocusable"
-            [class.t-input_prefilled]="!inputs.expire"
+            [attr.id]="`${id()}_expire`"
+            [class.t-input_inert]="!expireFocusable()"
+            [class.t-input_prefilled]="!inputs().expire"
             [disabled]="disabled()"
             [maskito]="maskExpire"
-            [ngModel]="expire"
+            [ngModel]="expire()"
             [ngModelOptions]="{standalone: true}"
-            [placeholder]="inputs.expire ? '00/00' : '••/••'"
-            [readOnly]="readOnly() || !inputs.expire"
-            [tabIndex]="expireFocusable || (isMobile && isWebkit) ? 0 : -1"
+            [placeholder]="inputs().expire ? '00/00' : '••/••'"
+            [readOnly]="readOnly() || !inputs().expire"
+            [tabIndex]="expireFocusable() || (isMobile && isWebkit) ? 0 : -1"
             (focus)="(0)"
             (ngModelChange)="onExpireChange($event)"
         />
@@ -88,7 +88,7 @@
             class="t-label"
             [class.t-label_raised]="labelRaised()"
         >
-            {{ texts()?.expiryText }}
+            {{ texts().expiryText }}
         </div>
     </label>
 </div>
@@ -105,16 +105,16 @@
             translate="no"
             type="text"
             class="t-input"
-            [attr.id]="`${id}_cvc`"
+            [attr.id]="`${id()}_cvc`"
             [class.t-input_cvc_hidden]="cvcHidden"
-            [class.t-input_prefilled]="cvcPrefilled"
+            [class.t-input_prefilled]="cvcPrefilled()"
             [disabled]="disabled()"
-            [maskito]="maskCVC"
-            [ngModel]="cvc"
+            [maskito]="cvcMask()"
+            [ngModel]="cvc()"
             [ngModelOptions]="{standalone: true}"
-            [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
-            [readOnly]="readOnly() || cvcPrefilled"
-            [tabIndex]="cvcFocusable || (isMobile && isWebkit) ? 0 : -1"
+            [placeholder]="cvcPrefilled() ? '•••' : cvcPlaceholder()"
+            [readOnly]="readOnly() || cvcPrefilled()"
+            [tabIndex]="focusable() || (isMobile && isWebkit) ? 0 : -1"
             (focus)="(0)"
             (ngModelChange)="onCVCChange($event)"
         />
@@ -123,15 +123,15 @@
             class="t-label"
             [class.t-label_raised]="labelRaised()"
         >
-            {{ texts()?.cvcText }}
+            {{ texts().cvcText }}
         </div>
     </label>
 </div>
 <div class="t-icons">
-    @if (content) {
+    @if (content()) {
         <div class="t-icon-outlet">
             <img
-                *polymorpheusOutlet="content as src"
+                *polymorpheusOutlet="content() as src"
                 alt=""
                 automation-id="tui-input-card-group__icon"
                 class="t-card"
@@ -148,7 +148,7 @@
             (click)="clear()"
         />
     }
-    @if (dropdown._content()) {
+    @if (dropdown.content()) {
         <tui-icon
             automation-id="tui-input-card-group__dropdown"
             tuiAppearance="icon"

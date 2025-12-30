@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAnimated, TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiPopup, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiPopup, TuiTitle} from '@taiga-ui/core';
 import {TuiRating, TuiTextarea} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
@@ -11,14 +11,12 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     imports: [
         FormsModule,
         TuiAnimated,
-        TuiAppearance,
         TuiAutoFocus,
         TuiButton,
         TuiCardLarge,
         TuiPopup,
         TuiRating,
         TuiTextarea,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

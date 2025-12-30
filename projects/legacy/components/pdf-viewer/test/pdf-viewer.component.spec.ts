@@ -38,6 +38,7 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
         tuiPdfViewerService = TestBed.inject(TuiPdfViewerService);
         pageObject = new TuiPageObject(fixture);
         sanitizer = TestBed.inject(DomSanitizer);
+        fixture.detectChanges();
     });
 
     describe('label', () => {

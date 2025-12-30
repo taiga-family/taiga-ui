@@ -8,7 +8,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 import {TuiInputYear} from '@taiga-ui/kit';
 
 @Component({
@@ -22,7 +22,6 @@ import {TuiInputYear} from '@taiga-ui/kit';
         TuiDocTextfield,
         TuiDropdown,
         TuiInputYear,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

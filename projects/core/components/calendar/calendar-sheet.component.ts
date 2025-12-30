@@ -11,14 +11,15 @@ import {toObservable} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
-import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 
+import {TUI_CALENDAR_OPTIONS} from './calendar.options';
 import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
+import {TuiCalendarSheetPipe} from './calendar-sheet.pipe';
+import {TuiOrderWeekDaysPipe} from './order-week-days.pipe';
 
 export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [string]>;
 
@@ -30,7 +31,6 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
         TuiHovered,
         TuiMapperPipe,
         TuiOrderWeekDaysPipe,
-        TuiRepeatTimes,
     ],
     templateUrl: './calendar-sheet.template.html',
     styleUrl: './calendar-sheet.style.less',
@@ -44,7 +44,7 @@ export class TuiCalendarSheet {
     private readonly today = TuiDay.currentLocal();
 
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
-    protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
+    protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
 
     @Input()
     public month: TuiMonth = TuiMonth.currentLocal();
@@ -184,7 +184,6 @@ export class TuiCalendarSheet {
         this.dayClick.emit(item);
     }
 
-    @tuiPure
     private getRange(
         value: TuiDay | TuiDayRange,
         hoveredItem: TuiDay | null,

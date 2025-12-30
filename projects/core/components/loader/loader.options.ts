@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core/types';
 
 export interface TuiLoaderOptions {
@@ -18,13 +17,6 @@ export const TUI_LOADER_DEFAULT_OPTIONS: TuiLoaderOptions = {
 /**
  * Default parameters for loader component
  */
-export const TUI_LOADER_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_LOADER_OPTIONS' : '',
-    {
-        factory: () => TUI_LOADER_DEFAULT_OPTIONS,
-    },
+export const [TUI_LOADER_OPTIONS, tuiLoaderOptionsProvider] = tuiCreateOptions(
+    TUI_LOADER_DEFAULT_OPTIONS,
 );
-
-export function tuiLoaderOptionsProvider(options: Partial<TuiLoaderOptions>): Provider {
-    return tuiProvideOptions(TUI_LOADER_OPTIONS, options, TUI_LOADER_DEFAULT_OPTIONS);
-}

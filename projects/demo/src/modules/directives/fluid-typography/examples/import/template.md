@@ -1,7 +1,7 @@
 ```html
 <tui-textfield>
   <input
-    tuiTextfield
+    tuiInput
     tuiFluidTypography
   />
 </tui-textfield>

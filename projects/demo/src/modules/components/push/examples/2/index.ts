@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TuiPushService} from '@taiga-ui/kit';
 import {switchMap, take} from 'rxjs';
 
@@ -13,7 +13,7 @@ import {switchMap, take} from 'rxjs';
 })
 export default class Example {
     protected readonly push = inject(TuiPushService);
-    protected readonly alert = inject(TuiAlertService);
+    protected readonly alert = inject(TuiNotificationService);
 
     protected onClick(): void {
         this.push

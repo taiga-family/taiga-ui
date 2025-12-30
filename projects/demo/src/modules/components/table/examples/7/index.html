@@ -14,7 +14,6 @@
             {{ index * size + 1 }}-{{ (index + 1) * size }} rows
             <tui-data-list-wrapper
                 *tuiDropdown
-                new
                 [itemContent]="content"
                 [items]="items"
             />
@@ -26,7 +25,7 @@
         />
     </caption>
     <thead>
-        <tr tuiThGroup>
+        <tr>
             <th tuiTh>Name</th>
             <th tuiTh>Balance</th>
         </tr>
@@ -35,7 +34,7 @@
         @for (item of data; track item) {
             <tr>
                 <td tuiTd>{{ item.name }}</td>
-                <td tuiTd>{{ item.balance | tuiFormatNumber | async }}</td>
+                <td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
             </tr>
         }
     </tbody>

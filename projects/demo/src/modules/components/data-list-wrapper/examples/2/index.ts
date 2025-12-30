@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
@@ -10,7 +9,6 @@ import {
     TuiFilterByInputPipe,
     TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -20,8 +18,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

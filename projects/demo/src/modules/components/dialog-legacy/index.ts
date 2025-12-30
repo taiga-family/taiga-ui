@@ -2,7 +2,7 @@ import {Component, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService, TuiTitle} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {
     type TuiDialogContext,
@@ -18,65 +18,65 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
 
     protected readonly routes = DemoRoute;
-    protected readonly method = import('./method.md?raw');
+    protected readonly method = import('./method.md');
 
-    protected readonly dialogsCloseToken = import(
-        './examples/import/dialogs-close-token.md?raw'
-    );
+    protected readonly dialogsCloseToken =
+        import('./examples/import/dialogs-close-token.md');
 
     protected readonly example2 = {
         'dialog-example/dialog-example.component.ts': import(
-            './examples/2/dialog-example/dialog-example.component.ts?raw'
+            './examples/2/dialog-example/dialog-example.component.ts?raw',
+            {with: {loader: 'text'}}
         ),
-        'dialog-example/dialog-example.style.less': import(
-            './examples/2/dialog-example/dialog-example.style.less?raw'
-        ),
-        'dialog-example/dialog-example.template.html': import(
-            './examples/2/dialog-example/dialog-example.template.html?raw'
-        ),
+        'dialog-example/dialog-example.style.less':
+            import('./examples/2/dialog-example/dialog-example.style.less'),
+        'dialog-example/dialog-example.template.html':
+            import('./examples/2/dialog-example/dialog-example.template.html'),
     };
 
     protected readonly example7 = {
         'search-example/search-dialog-example.component.ts': import(
-            './examples/7/search-example/search-dialog-example.component.ts?raw'
+            './examples/7/search-example/search-dialog-example.component.ts?raw',
+            {with: {loader: 'text'}}
         ),
-        'search-example/search-dialog-example.template.html': import(
-            './examples/7/search-example/search-dialog-example.template.html?raw'
-        ),
-        'search-example/search-dialog-example.component.less': import(
-            './examples/7/search-example/search-dialog-example.component.less?raw'
-        ),
+        'search-example/search-dialog-example.template.html':
+            import('./examples/7/search-example/search-dialog-example.template.html'),
+        'search-example/search-dialog-example.component.less':
+            import('./examples/7/search-example/search-dialog-example.component.less'),
     };
 
     protected readonly example9 = {
-        'helpers/mock-cards.ts': import('./examples/9/helpers/mock-cards.ts?raw'),
-        'helpers/models.ts': import('./examples/9/helpers/models.ts?raw'),
-        'helpers/pay.service.ts': import('./examples/9/helpers/pay.service.ts?raw'),
-        'helpers/validator.ts': import('./examples/9/helpers/validator.ts?raw'),
+        'helpers/mock-cards.ts': import('./examples/9/helpers/mock-cards.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        'helpers/models.ts': import('./examples/9/helpers/models.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        'helpers/pay.service.ts': import('./examples/9/helpers/pay.service.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        'helpers/validator.ts': import('./examples/9/helpers/validator.ts?raw', {
+            with: {loader: 'text'},
+        }),
         'pay-modal/pay-modal.component.ts': import(
-            './examples/9/pay-modal/pay-modal.component.ts?raw'
+            './examples/9/pay-modal/pay-modal.component.ts?raw',
+            {with: {loader: 'text'}}
         ),
-        'pay-modal/pay-modal.component.less': import(
-            './examples/9/pay-modal/pay-modal.component.less?raw'
-        ),
-        'pay-modal/pay-modal.component.html': import(
-            './examples/9/pay-modal/pay-modal.component.html?raw'
-        ),
+        'pay-modal/pay-modal.component.less':
+            import('./examples/9/pay-modal/pay-modal.component.less'),
+        'pay-modal/pay-modal.component.html':
+            import('./examples/9/pay-modal/pay-modal.component.html'),
     };
 
-    protected readonly exampleServiceUsage = import(
-        './examples/import/service-usage.md?raw'
-    );
+    protected readonly exampleServiceUsage = import('./examples/import/service-usage.md');
 
-    protected readonly exampleCustomDialog = import(
-        './examples/import/custom-dialog.md?raw'
-    );
+    protected readonly exampleCustomDialog = import('./examples/import/custom-dialog.md');
 
-    protected readonly exampleLazyDialog = import('./examples/import/lazy-dialog.md?raw');
+    protected readonly exampleLazyDialog = import('./examples/import/lazy-dialog.md');
 
     protected data = 100;
 

@@ -1,8 +1,9 @@
 @for (chip of chips; track chip) {
-    <tui-chip
+    <span
         appearance="custom"
+        tuiChip
         [style.background-color]="chip | tuiAutoColor"
     >
         {{ chip }}
-    </tui-chip>
+    </span>
 }

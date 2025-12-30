@@ -11,7 +11,7 @@
                 <span tuiSubtitle>
                     @if (group.value.length) {
                         {{ group.value.length }} operations • Total:
-                        {{ sum(group.value) | tuiAmount: '$' : 'left' | async }}
+                        {{ sum(group.value) | tuiAmount: '$' : 'start' }}
                     } @else {
                         No operations so far
                     }
@@ -38,7 +38,7 @@
                             tuiTitle
                             [style.color]="operation.sum > 0 ? 'var(--tui-text-positive)' : null"
                         >
-                            {{ operation.sum | tuiAmount: '$' : 'left' | async }}
+                            {{ operation.sum | tuiAmount: '$' : 'start' }}
                             <span tuiSubtitle>{{ operation.time }}</span>
                         </span>
                     } @else {

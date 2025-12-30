@@ -4,17 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiCell,
-    TuiHeader,
-    tuiHeightCollapse,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiSearch} from '@taiga-ui/layout';
+import {TuiButton, TuiCell, TuiExpand, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -22,11 +14,11 @@ import {TuiSearch} from '@taiga-ui/layout';
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiExpand,
         TuiFilterPipe,
         TuiFloatingContainer,
         TuiHeader,
         TuiLabel,
-        TuiSearch,
         TuiSheetDialog,
         TuiSwitch,
         TuiTitle,
@@ -35,17 +27,14 @@ import {TuiSearch} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
     protected open = false;
-
     protected floating = true;
     protected secondAction = false;
-
     protected search = '';
 
-    protected readonly items = new Array(15).fill(0).map((_, index) => ({
+    protected readonly items = Array.from({length: 15}, (_, index) => ({
         title: `Title ${index + 1}`,
         description: `Description ${index + 1}`,
     }));

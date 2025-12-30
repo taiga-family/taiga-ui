@@ -38,7 +38,7 @@
                     [formGroup]="testForm"
                 >
                     <div class="t-input-wrapper">
-                        <ng-container [ngTemplateOutlet]="template" />
+                        <ng-container [ngTemplateOutlet]="template() || null" />
                     </div>
                     <button
                         automation-id="tui-demo-button__toggle-details"
@@ -77,7 +77,6 @@
 
                                     <tui-data-list-wrapper
                                         *tuiDropdown
-                                        new
                                         [items]="updateOnVariants"
                                     />
                                 </tui-textfield>

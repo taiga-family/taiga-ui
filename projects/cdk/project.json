@@ -7,7 +7,7 @@
     "implicitDependencies": ["!testing", "!core", "!styles"],
     "targets": {
         "prebuild": {
-            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "executor": "@angular/build:ng-packagr",
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "{projectRoot}/ng-package.json"

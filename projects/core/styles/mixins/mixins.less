@@ -1,11 +1,6 @@
 @import 'browsers.less';
 
 .interactive(@ruleset) {
-    // TODO remove after dropping Safari 13 support
-    &:matches(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
-        @ruleset();
-    }
-
     &:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
         @ruleset();
     }

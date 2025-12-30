@@ -1,17 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
+    contentChildren,
     type DoCheck,
     forwardRef,
     inject,
-    type QueryList,
     SkipSelf,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
@@ -20,12 +18,8 @@ import {
     type TuiTreeController,
     type TuiTreeItemContext,
 } from '../../misc/tree.interfaces';
-import {
-    TUI_TREE_CONTENT,
-    TUI_TREE_CONTROLLER,
-    TUI_TREE_LEVEL,
-    TUI_TREE_NODE,
-} from '../../misc/tree.tokens';
+import {TUI_TREE_CONTROLLER, TUI_TREE_LEVEL, TUI_TREE_NODE} from '../../misc/tree.tokens';
+import {TUI_TREE_CONTENT} from '../tree-item-content/tree-item-content.component';
 
 @Component({
     selector: 'tui-tree-item',
@@ -47,19 +41,14 @@ import {
     },
 })
 export class TuiTreeItem implements DoCheck {
-    @ContentChildren(TUI_TREE_NODE)
-    private readonly nested: QueryList<unknown> = EMPTY_QUERY;
-
+    private readonly nested = contentChildren(TUI_TREE_NODE);
     private readonly el = tuiInjectElement();
-
+    private readonly change$ = new Subject<void>();
     private readonly controller = inject<TuiTreeController>(
         forwardRef(() => TUI_TREE_CONTROLLER),
     );
 
-    private readonly change$ = new Subject<void>();
-
     protected readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
-
     protected readonly content = inject<PolymorpheusContent<TuiTreeItemContext>>(
         forwardRef(() => TUI_TREE_CONTENT),
     );
@@ -82,7 +71,7 @@ export class TuiTreeItem implements DoCheck {
     );
 
     public get isExpandable(): boolean {
-        return !!this.nested.length;
+        return !!this.nested().length;
     }
 
     public get isExpanded(): boolean {

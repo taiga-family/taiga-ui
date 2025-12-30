@@ -1,6 +1,6 @@
+import {InjectionToken} from '@angular/core';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
-import {type TuiPositionOptions} from '@taiga-ui/core/directives/notification';
+import {type TuiPositionOptions} from '@taiga-ui/core/portals/alert';
 
 export interface TuiPushOptions extends TuiPositionOptions {
     readonly buttons: readonly string[];
@@ -12,7 +12,6 @@ export interface TuiPushOptions extends TuiPositionOptions {
     readonly type: string;
 }
 
-export const TUI_PUSH_CONCURRENCY = tuiCreateToken<number>(5);
 export const [TUI_PUSH_OPTIONS, tuiPushOptionsProvider] =
     tuiCreateOptions<TuiPushOptions>({
         heading: '',
@@ -25,3 +24,8 @@ export const [TUI_PUSH_OPTIONS, tuiPushOptionsProvider] =
         block: 'end',
         inline: 'end',
     });
+
+export const TUI_PUSH_CONCURRENCY = new InjectionToken(
+    ngDevMode ? 'TUI_PUSH_CONCURRENCY' : '',
+    {factory: () => 5},
+);

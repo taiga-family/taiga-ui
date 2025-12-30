@@ -1,8 +1,8 @@
-import {Directive, inject, Input, signal} from '@angular/core';
+import {Directive, inject, input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NG_VALIDATORS, type Validator} from '@angular/forms';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DEFAULT_ERROR_MESSAGE, TUI_VALIDATION_ERRORS} from '@taiga-ui/core/tokens';
 import {isObservable} from 'rxjs';
 
@@ -20,11 +20,10 @@ export class TuiUnfinishedValidator implements Validator {
         ? toSignal(this.error)
         : this.fallback;
 
-    @Input()
-    public tuiUnfinishedValidator = '';
+    public readonly tuiUnfinishedValidator = input('');
 
     public readonly validate = tuiCreateUnfinishedValidator(
         tuiInjectElement<HTMLInputElement>(),
-        () => this.tuiUnfinishedValidator || this.message(),
+        () => this.tuiUnfinishedValidator() || this.message(),
     );
 }

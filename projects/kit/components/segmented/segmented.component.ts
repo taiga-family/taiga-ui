@@ -1,15 +1,14 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     inject,
-    Input,
+    input,
+    model,
     type OnChanges,
-    Output,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
@@ -29,48 +28,40 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     styleUrl: './segmented.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
+    providers: [
+        WaResizeObserverService,
+        tuiBadgeNotificationOptionsProvider({size: 's'}),
+    ],
     hostDirectives: [TuiSegmentedDirective],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();
 
-    protected readonly sub = inject(ResizeObserverService, {self: true})
+    protected readonly sub = inject(WaResizeObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 
-    @Input()
-    public size: TuiSizeL | TuiSizeS = inject(TUI_SEGMENTED_OPTIONS).size;
-
-    @Input()
-    public activeItemIndex = 0;
-
-    @Output()
-    public readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly size = input(inject(TUI_SEGMENTED_OPTIONS).size);
+    public readonly activeItemIndex = model(0);
 
     public ngOnChanges(): void {
         this.refresh();
     }
 
     public update(activeItemIndex: number): void {
-        if (activeItemIndex === this.activeItemIndex || activeItemIndex < 0) {
+        if (activeItemIndex === this.activeItemIndex() || activeItemIndex < 0) {
             return;
         }
 
-        this.activeItemIndex = activeItemIndex;
-        this.activeItemIndexChange.emit(activeItemIndex);
+        this.activeItemIndex.set(activeItemIndex);
         this.refresh();
     }
 
-    private get activeElement(): Element | null {
-        return this.el.children.item(this.activeItemIndex);
-    }
-
     private refresh(): void {
-        const el = this.activeElement;
+        const el = this.el.children.item(this.activeItemIndex());
 
         if (!tuiIsHTMLElement(el)) {
             return;

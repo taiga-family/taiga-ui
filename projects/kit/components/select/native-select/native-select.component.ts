@@ -6,14 +6,14 @@ import {
     effect,
     inject,
     input,
+    viewChildren,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
-    TuiTextfieldDirective,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TUI_ITEMS_HANDLERS,
@@ -27,7 +27,7 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
     templateUrl: './native-select.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsTextfieldAccessor(TuiNativeSelect), tuiAsControl(TuiNativeSelect)],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithInput],
     host: {
         '[attr.aria-invalid]': 'invalid()',
         '[disabled]': '!interactive()',
@@ -38,17 +38,13 @@ export class TuiNativeSelect<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly input = inject(TuiInputDirective);
+    private readonly options = viewChildren<HTMLOptionElement>('option');
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-
     protected readonly stringified = computed((value = this.value()) =>
         tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
-    );
-
-    protected readonly showPlaceholder = computed(
-        () => this.placeholder() && !this.stringified(),
     );
 
     protected readonly isSelected = computed(
@@ -58,13 +54,23 @@ export class TuiNativeSelect<T>
     );
 
     protected readonly valueEffect = effect(() => {
-        this.textfield.value.set(this.stringified());
+        /**
+         * Wait until all `<option>`-s are inside DOM.
+         * Otherwise
+         * ```
+         * document.querySelector('select').value = 'even upcoming valid value';
+         * // same as
+         * document.querySelector('select').value = '';
+         * ```
+         * (it breaks `tuiValue` utility logic)
+         */
+        if (this.options().length) {
+            this.input.value.set(this.stringified());
+        }
     });
 
     public readonly items = input<ReadonlyArray<readonly T[]> | readonly T[] | null>([]);
-
     public readonly labels = input<readonly string[]>([]);
-
     public readonly placeholder = input('');
 
     public setValue(value: T | null): void {
@@ -73,7 +79,8 @@ export class TuiNativeSelect<T>
 
     protected selectOption(index: number): void {
         const items = (this.items()?.flat() ?? []) as T[];
+        const placeholderOffset = this.stringified() ? 0 : 1;
 
-        this.onChange(items[index - (this.showPlaceholder() ? 1 : 0)] ?? null);
+        this.onChange(items[index - placeholderOffset] ?? null);
     }
 }

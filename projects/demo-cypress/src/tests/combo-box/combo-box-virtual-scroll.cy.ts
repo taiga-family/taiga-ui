@@ -1,19 +1,7 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TuiDataList,
-    TuiRoot,
-    TuiScrollable,
-    TuiTextfield,
-} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot, TuiScrollable} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiChevron,
@@ -33,7 +21,6 @@ import {createOutputSpy} from 'cypress/angular';
         TuiFilterByInputPipe,
         TuiRoot,
         TuiScrollable,
-        TuiTextfield,
     ],
     template: `
         <tui-root>
@@ -77,8 +64,7 @@ export class Sandbox {
 
     protected readonly control = new FormControl<string | null>(null);
 
-    @Output()
-    public readonly valueChanges = new EventEmitter();
+    public readonly valueChanges = output<string | null>();
 
     constructor() {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));

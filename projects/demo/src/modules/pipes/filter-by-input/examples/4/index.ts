@@ -3,17 +3,18 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInput} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of, startWith} from 'rxjs';
 
 @Component({
+    selector: 'example-4',
     imports: [
         AsyncPipe,
         ReactiveFormsModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiInputModule,
+        TuiInput,
     ],
     templateUrl: './index.html',
     encapsulation,

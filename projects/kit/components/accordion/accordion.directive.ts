@@ -1,5 +1,5 @@
 import {Directive, inject, model, type OnChanges} from '@angular/core';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';

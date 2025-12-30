@@ -1,9 +1,7 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, computed, inject, type Signal, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
-import {TuiTextfield} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiChevron,
@@ -14,14 +12,12 @@ import {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

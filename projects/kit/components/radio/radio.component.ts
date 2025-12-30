@@ -39,8 +39,8 @@ import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
 })
 export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, OnInit {
     private readonly destroyRef = inject(DestroyRef);
-    private readonly el = tuiInjectElement<HTMLInputElement>();
 
+    protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly options = inject<T>(TUI_RADIO_OPTIONS);
     protected readonly appearance = tuiAppearance(this.options.appearance(this.el));
     protected readonly control = inject(NgControl, {self: true, optional: true});

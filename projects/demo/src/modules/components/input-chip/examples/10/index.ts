@@ -11,9 +11,9 @@ import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
+    TuiInput,
     TuiScrollable,
     TuiSelectLike,
-    TuiTextfield,
     type TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
@@ -28,11 +28,11 @@ import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
         TuiButton,
         TuiChevron,
         TuiDataList,
+        TuiInput,
         TuiInputChip,
         TuiMultiSelect,
         TuiScrollable,
         TuiSelectLike,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

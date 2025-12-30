@@ -27,12 +27,16 @@
     (tuiActiveZoneChange)="onChildActiveZone($event)"
 >
     <h2>Child zone</h2>
-    <tui-input
-        #input
-        [formControl]="control"
-    >
-        Input inside zone
-    </tui-input>
+
+    <tui-textfield>
+        <label tuiLabel>Input inside zone</label>
+        <input
+            #input
+            tuiInput
+            [formControl]="control"
+        />
+    </tui-textfield>
+
     <p>
         You can bind different elements with
         <code>[tuiActiveZoneParent]</code>

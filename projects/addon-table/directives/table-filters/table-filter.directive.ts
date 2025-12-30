@@ -1,7 +1,13 @@
-import {Directive, inject, Input, type OnDestroy, type OnInit} from '@angular/core';
+import {
+    computed,
+    Directive,
+    inject,
+    input,
+    type OnDestroy,
+    type OnInit,
+} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiTableHead} from '@taiga-ui/addon-table/components';
-import {type TuiValuesOf} from '@taiga-ui/cdk/types';
+import {TuiTableHead} from '@taiga-ui/addon-table/components/table';
 import {defer, distinctUntilChanged, EMPTY, merge} from 'rxjs';
 
 import {AbstractTuiTableFilter} from './abstract-table-filter';
@@ -13,12 +19,14 @@ import {TuiTableFiltersDirective} from './table-filters.directive';
 })
 export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFilter<T> {
     private readonly head = inject(TuiTableHead<T>, {optional: true});
-    private readonly delegate = inject(AbstractTuiTableFilter<TuiValuesOf<T>, unknown>);
+    private readonly delegate = inject(AbstractTuiTableFilter<T[keyof T], unknown>);
     private readonly control = inject(NgControl);
     protected readonly filters = inject(TuiTableFiltersDirective<T>);
+    protected readonly key = computed<string | keyof T | undefined>(
+        () => this.tuiTableFilter() || this.head?.tuiHead(),
+    );
 
-    @Input()
-    public tuiTableFilter?: keyof T;
+    public readonly tuiTableFilter = input<keyof T>();
 
     public readonly refresh$ = defer(() =>
         merge(
@@ -40,12 +48,8 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
 
         return (
             !!disabled ||
-            !this.key ||
-            this.delegate.filter(item[this.key as keyof T], value)
+            !this.key() ||
+            this.delegate.filter()(item[this.key() as keyof T], value)
         );
-    }
-
-    private get key(): string | keyof T | undefined {
-        return this.tuiTableFilter || this.head?.tuiHead;
     }
 }

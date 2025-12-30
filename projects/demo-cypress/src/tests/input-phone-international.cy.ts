@@ -2,17 +2,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
-    EventEmitter,
     inject,
     input,
     model,
     type OnInit,
-    Output,
+    output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {provideAnimations} from '@angular/platform-browser/animations';
-import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternational,
@@ -21,13 +19,7 @@ import {
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiIcon,
-        TuiInputPhoneInternational,
-        TuiRoot,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiIcon, TuiInputPhoneInternational, TuiRoot],
     template: `
         <tui-root>
             <tui-textfield>
@@ -45,7 +37,6 @@ import {createOutputSpy} from 'cypress/angular';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideAnimations(),
         {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
         tuiInputPhoneInternationalOptionsProvider({
             metadata: import('libphonenumber-js/min/metadata').then((m) => m.default),
@@ -66,11 +57,9 @@ export class Test implements OnInit {
         'KZ',
     ]);
 
-    @Output()
-    public readonly valueChange = new EventEmitter<string>();
+    public readonly valueChange = output<string>();
 
-    @Output()
-    public readonly countryIsoCodeChange = new EventEmitter<string>();
+    public readonly countryIsoCodeChange = output<string>();
 
     public ngOnInit(): void {
         this.control()

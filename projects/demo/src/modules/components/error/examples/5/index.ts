@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import {TuiError, TuiTextfield} from '@taiga-ui/core';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiError, TuiInput} from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
 import {delay, of} from 'rxjs';
 
@@ -21,7 +21,7 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
 }
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -31,7 +31,7 @@ export default class Example {
         text: new FormControl(
             'русский текст',
             [Validators.required],
-            [asyncValidatorFn(inject(TUI_IS_E2E))],
+            [asyncValidatorFn(inject(WA_IS_E2E))],
         ),
     });
 }

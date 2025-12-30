@@ -1,13 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {TuiCalendarSheet} from '@taiga-ui/core/components/calendar';
-import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes/calendar-sheet';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
+import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
 
 @Component({
     selector: 'tui-mobile-calendar-sheet',
-    imports: [TuiCalendarSheetPipe, TuiRepeatTimes, TuiRipple],
+    imports: [TuiCalendarSheetPipe, TuiRipple],
     templateUrl: './mobile-calendar-sheet.template.html',
     styleUrl: './mobile-calendar-sheet.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,5 +14,5 @@ import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes/calendar-sheet';
     },
 })
 export class TuiMobileCalendarSheet extends TuiCalendarSheet {
-    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly isIOS = inject(WA_IS_IOS);
 }

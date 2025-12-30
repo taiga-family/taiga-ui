@@ -1,11 +1,16 @@
 <form [formGroup]="group">
-    <tui-input formControlName="name">Name</tui-input>
+    <tui-textfield>
+        <label tuiLabel>Name</label>
+        <input
+            formControlName="name"
+            tuiInput
+        />
+    </tui-textfield>
     <tui-textfield
         tuiChevron
         class="tui-space_vertical-3"
     >
         <label tuiLabel>Connection</label>
-
         <input
             tuiSelect
             [ngModelOptions]="{standalone: true}"
@@ -13,21 +18,21 @@
         />
         <tui-data-list-wrapper
             *tuiDropdown
-            new
             [items]="items"
         />
     </tui-textfield>
     @if (type === items[0]!) {
-        <tui-input
-            formControlName="contact"
-            [tuiValidator]="validator"
-        >
-            Contact
-        </tui-input>
+        <tui-textfield>
+            <label tuiLabel>Contact</label>
+            <input
+                formControlName="contact"
+                tuiInput
+                [tuiValidator]="validator"
+            />
+        </tui-textfield>
     } @else {
         <tui-textfield>
             <label tuiLabel>Contact</label>
-
             <input
                 autocomplete="tel"
                 formControlName="contact"

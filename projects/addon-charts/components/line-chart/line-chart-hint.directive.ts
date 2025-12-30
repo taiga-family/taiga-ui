@@ -1,22 +1,19 @@
 import {
     type AfterViewInit,
-    ContentChildren,
+    computed,
+    contentChildren,
     DestroyRef,
     Directive,
     ElementRef,
-    forwardRef,
     inject,
-    Input,
+    input,
     NgZone,
-    type QueryList,
     Renderer2,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {tuiQueryListChanges, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
@@ -36,47 +33,52 @@ import {TuiLineChart} from './line-chart.component';
     providers: [TuiHoveredService],
 })
 export class TuiLineChartHint implements AfterViewInit {
-    @ContentChildren(forwardRef(() => TuiLineChart))
-    private readonly charts: QueryList<TuiLineChart> = EMPTY_QUERY;
-
-    @ContentChildren(forwardRef(() => TuiLineChart), {read: ElementRef})
-    private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
+    private readonly charts = contentChildren(TuiLineChart);
+    private readonly chartsRef = contentChildren(TuiLineChart, {read: ElementRef});
     private readonly renderer = inject(Renderer2);
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
 
-    @Input('tuiLineChartHint')
-    public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
+    private readonly computedContext = computed<ReadonlyArray<readonly TuiPoint[]>>(
+        (values = this.charts().map(({value}) => value())) =>
+            (values[0] || []).map((_, index) =>
+                values.map((value) => value[index] ?? [0, 0]),
+            ),
+    );
+
+    public readonly hint = input<PolymorpheusContent<TuiContext<readonly TuiPoint[]>>>(
+        '',
+        {alias: 'tuiLineChartHint'},
+    );
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts()), this.hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.charts.forEach((chart) => chart.onHovered(NaN));
+                this.charts().forEach((chart) => chart.onHovered(NaN));
             });
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
     public getContext(index: number, _chart: TuiLineChart): readonly TuiPoint[] {
-        return this.computeContext(...this.charts.map(({value}) => value))[index] || [];
+        return this.computedContext()[index] || [];
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
     public raise(index: number, _chart: TuiLineChart): void {
-        const current = this.charts.map(
-            (chart) => chart.value[index] ?? ([0, 0] as const),
+        const current = this.charts().map(
+            (chart) => chart.value()[index] ?? ([0, 0] as const),
         );
 
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
-        this.charts.forEach((chart) => chart.onHovered(index));
-        this.chartsRef.forEach(({nativeElement}, index) =>
+        this.charts().forEach((chart) => chart.onHovered(index));
+        this.chartsRef().forEach(({nativeElement}, index) =>
             this.renderer.setStyle(
                 nativeElement,
                 'z-index',
@@ -84,23 +86,14 @@ export class TuiLineChartHint implements AfterViewInit {
             ),
         );
     }
-
-    @tuiPure
-    private computeContext(
-        ...values: ReadonlyArray<readonly TuiPoint[]>
-    ): ReadonlyArray<readonly TuiPoint[]> {
-        return (values[0] || []).map((_, index) =>
-            values.map((value) => value[index] ?? [0, 0]),
-        );
-    }
 }
 
 export function tuiLineChartDrivers(
-    charts: QueryList<{drivers: QueryList<Observable<boolean>>}>,
+    charts: ReadonlyArray<{drivers$: Observable<ReadonlyArray<Observable<boolean>>>}>,
 ): Observable<boolean> {
     return combineLatest(
-        charts.map(({drivers}) =>
-            tuiQueryListChanges(drivers).pipe(
+        charts.map(({drivers$}) =>
+            drivers$.pipe(
                 map((drivers) => drivers.map((driver) => driver.pipe(startWith(false)))),
             ),
         ),

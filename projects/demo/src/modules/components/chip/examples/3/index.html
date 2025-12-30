@@ -1,107 +1,116 @@
 <h3>Checkbox</h3>
 <section>
-    <label
-        *tuiRepeatTimes="let i of checked.length"
-        appearance=""
-        tuiChip
-    >
-        Checkbox {{ i + 1 }}
-        <input
-            appearance="outline-grayscale"
+    @for (_ of '-'.repeat(checked.length); track $index) {
+        <label
+            appearance=""
             tuiChip
-            type="checkbox"
-            [(ngModel)]="checked[i]"
-        />
-    </label>
+        >
+            Checkbox {{ $index + 1 }}
+            <input
+                appearance="outline-grayscale"
+                tuiChip
+                type="checkbox"
+                [(ngModel)]="checked[$index]"
+            />
+        </label>
+    }
 </section>
 
 <h3>Radio</h3>
 <section>
-    <label
-        *tuiRepeatTimes="let i of 3"
-        appearance=""
-        tuiChip
-    >
-        Radio {{ i + 1 }}
-        <input
-            appearance="outline-grayscale"
-            name="radio"
+    @for (_ of '-'.repeat(3); track $index) {
+        <label
+            appearance=""
             tuiChip
-            type="radio"
-            [value]="i"
-        />
-    </label>
+        >
+            Radio {{ $index + 1 }}
+            <input
+                appearance="outline-grayscale"
+                name="radio"
+                tuiChip
+                type="radio"
+                [value]="$index"
+            />
+        </label>
+    }
 </section>
 
 <h3>Label outline</h3>
 <section>
-    <label
-        *tuiRepeatTimes="let i of checked.length"
-        appearance="outline-grayscale"
-        tuiChip
-    >
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [(ngModel)]="checked[i]"
-        />
-        Label {{ i + 1 }}
-    </label>
+    @for (_ of '-'.repeat(checked.length); track $index) {
+        <label
+            appearance="outline-grayscale"
+            tuiChip
+        >
+            <input
+                tuiCheckbox
+                type="checkbox"
+                [(ngModel)]="checked[$index]"
+            />
+            Label {{ $index + 1 }}
+        </label>
+    }
 </section>
 
 <h3>Label accent</h3>
 <section>
-    <label
-        *tuiRepeatTimes="let i of checked.length"
-        tuiChip
-        [appearance]="checked[i] ? 'accent' : 'neutral'"
-    >
-        <input
-            hidden
-            type="checkbox"
-            [(ngModel)]="checked[i]"
-        />
-        Label {{ i + 1 }}
-    </label>
+    @for (_ of '-'.repeat(checked.length); track $index) {
+        <label
+            tuiChip
+            [appearance]="checked[$index] ? 'accent' : 'neutral'"
+        >
+            <input
+                hidden
+                type="checkbox"
+                [(ngModel)]="checked[$index]"
+            />
+            Label {{ $index + 1 }}
+        </label>
+    }
 </section>
 
 <h3>Button</h3>
 <section>
-    <button
-        *tuiRepeatTimes="let i of 3"
-        tuiChip
-        type="button"
-        (click)="onChip(i)"
-    >
-        Button {{ i + 1 }}
-    </button>
+    @for (_ of '-'.repeat(3); track $index) {
+        <button
+            tuiChip
+            type="button"
+            (click)="onChip($index)"
+        >
+            Button {{ $index + 1 }}
+        </button>
+    }
 </section>
 
 <section>
-    <tui-chip *tuiRepeatTimes="let i of 3">
-        Close button {{ i + 1 }}
-        <button
-            iconStart="@tui.x"
-            tuiIconButton
-            type="button"
-            (click.stop)="onX(i)"
-        >
-            Remove
-        </button>
-    </tui-chip>
+    @for (_ of '-'.repeat(3); track $index) {
+        <span tuiChip>
+            Close button {{ $index + 1 }}
+            <button
+                iconStart="@tui.x"
+                tuiIconButton
+                type="button"
+                (click.stop)="onX($index)"
+            >
+                Remove
+            </button>
+        </span>
+    }
 </section>
 
 <h3>Input</h3>
 <section>
-    <tui-chip
-        *tuiRepeatTimes="let i of values.length"
-        appearance=""
-        [style.color]="'transparent'"
-    >
-        {{ values[i] }}
-        <input
+    @for (_ of '-'.repeat(values.length); track $index) {
+        <span
+            appearance=""
             tuiChip
-            [(ngModel)]="values[i]"
-        />
-    </tui-chip>
+            [style.color]="'transparent'"
+        >
+            {{ values[$index] }}
+            <input
+                tuiChip
+                [(ngModel)]="values[$index]"
+            />
+        </span>
+    }
 </section>

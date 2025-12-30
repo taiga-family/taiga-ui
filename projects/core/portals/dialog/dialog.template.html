@@ -1,0 +1,46 @@
+@if (context.closable) {
+    <button
+        tabindex="0"
+        tuiButtonX
+        [appearance]="context.appearance.includes('fullscreen') ? 'action' : 'neutral'"
+        (click)="close$.next()"
+    >
+        {{ close() }}
+    </button>
+}
+
+@if (!primitive && context.label) {
+    <header>
+        <hgroup tuiTitle>
+            <h2
+                [id]="context.id"
+                [innerHTML]="context.label"
+            ></h2>
+        </hgroup>
+    </header>
+}
+
+<ng-container *polymorpheusOutlet="context.content as text; context: context">
+    <header>
+        <hgroup tuiTitle>
+            <h2
+                [id]="context.id"
+                [innerHTML]="context.label"
+            ></h2>
+            <p [innerHTML]="text"></p>
+        </hgroup>
+    </header>
+    @if (context.closable || context.dismissible) {
+        <footer>
+            <button
+                size="m"
+                tuiAutoFocus
+                tuiButton
+                type="button"
+                (click)="context.$implicit.complete()"
+            >
+                {{ context.data || 'OK' }}
+            </button>
+        </footer>
+    }
+</ng-container>

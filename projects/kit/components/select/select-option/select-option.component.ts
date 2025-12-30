@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {tuiDirectiveBinding, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiDataListComponent,
     TuiOptionWithValue,
@@ -21,7 +22,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
                 type="checkbox"
                 class="t-check"
                 [checked]="selected()"
-                [size]="datalist.size === 'l' ? 'm' : 's'"
+                [size]="datalist.size() === 'l' ? 'm' : 's'"
             />
         } @else {
             <span class="t-dummy"></span>

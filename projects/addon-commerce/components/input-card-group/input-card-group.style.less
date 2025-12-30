@@ -34,7 +34,7 @@
     min-inline-size: 24rem;
     border-radius: var(--tui-radius-l);
     overflow: hidden;
-    font: var(--tui-font-text-ui-m);
+    font: var(--tui-font-ui-m);
     isolation: isolate;
 
     &[data-size='m'] {
@@ -44,7 +44,7 @@
         --t-collapsed-offset: 1.125rem;
 
         border-radius: var(--tui-radius-m);
-        font: var(--tui-font-text-ui-s);
+        font: var(--tui-font-ui-s);
 
         .t-card {
             inline-size: 1.5rem;
@@ -64,7 +64,7 @@
     }
 
     // Increasing specificity to override dark mode appearance
-    &[tuiAppearance][data-appearance]:has(:-webkit-autofill) {
+    &[tuiAppearance][data-appearance]:has(:-webkit-autofill, [chrome-autofilled]) {
         background: var(--tui-service-autofill-background) !important;
     }
 
@@ -83,7 +83,7 @@
     position: absolute;
     z-index: 1;
     inline-size: 100%;
-    block-size: 100%;
+    block-size: var(--t-height);
     transition: opacity 0s var(--tui-duration);
 
     &_cvc,
@@ -148,10 +148,10 @@
         }
 
         .t-collapsed-wrapper {
-            left: var(--t-collapsed-offset);
+            inset-inline-start: var(--t-collapsed-offset);
 
             :host-context([dir='rtl']) & {
-                left: unset;
+                inset-inline-start: unset;
             }
         }
     }
@@ -159,8 +159,8 @@
 
 .t-collapsed-wrapper {
     position: absolute;
-    top: 0;
     display: block;
+    inset-block-start: 0;
     inline-size: 100%;
     block-size: 100%;
     overflow: hidden;
@@ -170,15 +170,13 @@
     .transition(~'transform, clip-path');
 
     position: absolute;
-    bottom: 0;
-    right: 100%;
     display: block;
+    inset-block: auto 0;
+    inset-inline: auto 100%;
     clip-path: inset(0);
     transform: translate3d(calc(100% * var(--tui-inline)), 0, 0);
 
     :host-context([dir='rtl']) & {
-        right: unset;
-        left: 100%;
         transform: translate3d(calc(100% * var(--tui-inline)), 0, 0) !important;
     }
 }
@@ -218,7 +216,7 @@
 
     &&&_card {
         // @note: (&&&_) it's increasing css cascade priority
-        &:not(:-webkit-autofill):not(:focus:placeholder-shown),
+        &:not(:-webkit-autofill, [chrome-autofilled]):not(:focus:placeholder-shown),
         &.t-input_filled {
             caret-color: var(--tui-text-primary);
             color: transparent !important;
@@ -233,12 +231,11 @@
             // hide: -webkit-strong-password-auto-fill-button
             // because safari forcing set display as block
             position: absolute;
-            left: -60rem;
-            top: -60rem;
             z-index: -999;
 
             // hide: -webkit-contacts-auto-fill-button
             display: none !important;
+            inset: -60rem 0 0 -60rem;
             background: transparent !important;
             pointer-events: none !important;
         }
@@ -255,18 +252,13 @@
 
 .t-icons {
     position: absolute;
-    right: 1rem;
     z-index: 1;
     display: flex;
+    inset-inline-end: 1rem;
     align-items: center;
-    block-size: 100%;
+    block-size: var(--t-height);
     gap: 0.25rem;
     pointer-events: none;
-
-    @supports (inset-inline-end: 0) {
-        right: unset;
-        inset-inline-end: 1rem;
-    }
 }
 
 .t-icon-outlet {
@@ -296,6 +288,7 @@
         content: attr(data-label);
     }
 
+    input[chrome-autofilled] ~ &,
     input:-webkit-autofill ~ &,
     &_raised {
         font-size: var(--t-label-size);

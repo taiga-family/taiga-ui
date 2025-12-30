@@ -25,9 +25,9 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'ΔΔ.ΜΜΜ',
     },
     dateTexts: {
-        DMY: 'ηη.μμ.εεεε',
-        MDY: 'μμ.ηη.εεεε',
-        YMD: 'εεεε.μμ.ηη',
+        'dd/mm/yyyy': 'ηη.μμ.εεεε',
+        'mm/dd/yyyy': 'μμ.ηη.εεεε',
+        'yyyy/mm/dd': 'εεεε.μμ.ηη',
     },
     digitalInformationUnits: ['Β', 'ΚιΒ', 'ΜιΒ'],
     passwordTexts: ['Εμφάνιση κωδικού', 'Απόκρυψη κωδικού'],
@@ -79,4 +79,12 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Επαναφορά',
     },
     phoneSearch: 'Πληκτρολογήστε χώρα ή κωδικό',
+    dayRangePeriods: [
+        'Πάντοτε',
+        'Σήμερα',
+        'Χθες',
+        'Αυτή την εβδομάδα',
+        'Αυτό το μήνα',
+        'Τον περασμένο μήνα',
+    ],
 };

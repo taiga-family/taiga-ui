@@ -4,7 +4,6 @@ import {
     TUI_FALSE_HANDLER,
     type TuiBooleanHandler,
     type TuiIdentityMatcher,
-    type TuiLooseUnion,
     type TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers, TuiTitle} from '@taiga-ui/core';
@@ -31,7 +30,7 @@ export class TuiDocItemsHandlers implements TuiItemsHandlers<unknown> {
     protected readonly falseHandler: TuiBooleanHandler<any> = TUI_FALSE_HANDLER;
 
     public readonly hiddenOptions = input<
-        Array<TuiLooseUnion<keyof TuiItemsHandlers<unknown>>>
+        Array<string | keyof TuiItemsHandlers<unknown>>
     >([]);
 
     public readonly stringify = signal(this.stringifyVariants[0]!);

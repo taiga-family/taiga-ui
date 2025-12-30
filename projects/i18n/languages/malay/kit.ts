@@ -25,9 +25,9 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.yyyy',
+        'mm/dd/yyyy': 'mm.dd.yyyy',
+        'yyyy/mm/dd': 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Tunjukkan kata laluan', 'Sembunyikan kata laluan'],
@@ -79,4 +79,12 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Set semula',
     },
     phoneSearch: 'Taip negara atau kod',
+    dayRangePeriods: [
+        'Sepanjang masa',
+        'Hari ini',
+        'Semalam',
+        'Minggu ini',
+        'Bulan ini',
+        'Bulan lepas',
+    ],
 };

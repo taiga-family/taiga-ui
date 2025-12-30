@@ -2,16 +2,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     input,
     type OnInit,
-    Output,
+    output,
     signal,
 } from '@angular/core';
 import {type ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
@@ -21,14 +20,7 @@ interface Item {
 }
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataList,
-        TuiRoot,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiChevron, TuiComboBox, TuiDataList, TuiRoot],
     template: `
         <tui-root>
             <tui-textfield
@@ -80,11 +72,9 @@ export class Sandbox implements OnInit {
 
     public readonly control = input(new FormControl<number | null>(null));
 
-    @Output()
-    public readonly valueChanges = new EventEmitter();
+    public readonly valueChanges = output<number | null>();
 
-    @Output()
-    public readonly inputEvent = new EventEmitter<string>();
+    public readonly inputEvent = output<string>();
 
     public ngOnInit(): void {
         this.control().valueChanges.subscribe((x) => this.valueChanges.emit(x));

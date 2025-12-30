@@ -58,7 +58,7 @@
         <button
             iconStart="@tui.chevron-left"
             tuiIconButton
-            tuiSlot="left"
+            tuiSlot="start"
             type="button"
             (click)="scrollable = false"
         >
@@ -73,7 +73,7 @@
         ></progress>
         <button
             tuiButton
-            tuiSlot="right"
+            tuiSlot="end"
             type="button"
             (click)="scrollable = false"
         >
@@ -81,23 +81,22 @@
         </button>
     </tui-app-bar>
     <section [style.margin]="'0 -1rem'">
-        <div
-            *tuiRepeatTimes="let _ of 50"
-            tuiCell
-        >
-            <div
-                appearance="primary"
-                tuiAvatar="@tui.star"
-            ></div>
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
+        @for (_ of '-'.repeat(50); track $index) {
+            <div tuiCell>
+                <div
+                    appearance="primary"
+                    tuiAvatar="@tui.star"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
+                <div tuiTitle>
+                    Secondary title
+                    <div tuiSubtitle>Another description</div>
+                </div>
             </div>
-            <div tuiTitle>
-                Secondary title
-                <div tuiSubtitle>Another description</div>
-            </div>
-        </div>
+        }
     </section>
     <footer tuiFloatingContainer>
         <button

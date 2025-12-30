@@ -25,9 +25,9 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.yyyy',
+        'mm/dd/yyyy': 'mm.dd.yyyy',
+        'yyyy/mm/dd': 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Hiện mật khẩu', 'Ẩn mật khẩu'],
@@ -79,4 +79,12 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Đặt lại',
     },
     phoneSearch: 'Nhập quốc gia hoặc mã',
+    dayRangePeriods: [
+        'Cả thời gian',
+        'Hôm nay',
+        'Hôm qua',
+        'Tuần này',
+        'Tháng này',
+        'Tháng trước',
+    ],
 };

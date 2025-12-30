@@ -8,9 +8,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
 import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [
@@ -22,7 +21,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiDocTextfield,
         TuiInputSlider,
         TuiNumberFormat,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -40,7 +38,6 @@ export default class PageComponent {
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
-    protected textfieldContent: PolymorpheusContent = '';
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
         5,

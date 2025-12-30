@@ -1,13 +1,11 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/portals/dialog';
+import {TUI_BREAKPOINT, TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {
     injectContext,
     type PolymorpheusContent,
@@ -26,7 +24,7 @@ import {
     take,
 } from 'rxjs';
 
-import {type TuiDialogOptions, type TuiDialogSize} from './dialog.interfaces';
+import {type TuiDialogContext, type TuiDialogSize} from './dialog.interfaces';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 
@@ -53,18 +51,17 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 })
 export class TuiDialogComponent<O, I> {
     protected readonly close$ = new Subject<void>();
-    protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
+    protected readonly context = injectContext<TuiDialogContext<I, O>>();
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly from = computed(() =>
         this.size === 'fullscreen' || this.size === 'page' || this.isMobile()
             ? 'translateY(100vh)'
             : 'translateY(2.5rem)',
     );
 
-    protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
-    );
+    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 
     constructor() {
         merge(
@@ -84,7 +81,7 @@ export class TuiDialogComponent<O, I> {
         return this.context.size;
     }
 
-    protected get header(): PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, O>> {
+    protected get header(): PolymorpheusContent<TuiDialogContext<I, O>> {
         return this.context.header;
     }
 

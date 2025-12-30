@@ -15,7 +15,7 @@ export class TuiCalendarSpinHarness extends TuiComponentHarness {
         'button[tuiIconButton]:last-child',
     );
 
-    private readonly button = this.locatorForOptional('#year-btn');
+    private readonly button = this.locatorForOptional('[tuiLink]');
     private readonly primitiveSpinButton = this.locatorFor(TuiSpinButtonHarness);
 
     public async clickLeft(): Promise<void> {

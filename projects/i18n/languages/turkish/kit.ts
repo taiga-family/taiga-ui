@@ -25,9 +25,9 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.yyyy',
+        'mm/dd/yyyy': 'mm.dd.yyyy',
+        'yyyy/mm/dd': 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Göster', 'Gizle'],
@@ -79,4 +79,12 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Sıfırla',
     },
     phoneSearch: 'Ülke veya kodu yazın',
+    dayRangePeriods: [
+        'Her zaman için',
+        'Bugün',
+        'Dün',
+        'Geçerli hafta',
+        'Geçerli ay',
+        'Önceki ay',
+    ],
 };

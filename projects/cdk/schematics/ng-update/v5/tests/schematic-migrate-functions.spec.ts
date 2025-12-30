@@ -90,24 +90,7 @@ export class Test {
 }`);
     });
 
-    it('migrate tuiIsNativeMouseFocusable to tuiIsMouseFocusable', async () => {
-        const {component} = await runMigration({
-            collection,
-            component: `
-import {tuiIsNativeMouseFocusable} from '@taiga-ui/cdk';
-
-tuiIsNativeMouseFocusable(document.createElement('div'));
-`,
-        });
-
-        expect(component).toEqual(`
-import {tuiIsMouseFocusable} from '@taiga-ui/cdk';
-
-tuiIsMouseFocusable(document.createElement('div'));
-`);
-    });
-
-    it('migrate tuiIsNativeKeyboardFocusable to tuiIsNativeKeyboardFocusable', async () => {
+    it('migrate tuiIsNativeKeyboardFocusable to tuiIsFocusable', async () => {
         const {component} = await runMigration({
             collection,
             component: `
@@ -118,9 +101,9 @@ tuiIsNativeKeyboardFocusable(document.createElement('div'));
         });
 
         expect(component).toEqual(`
-import {tuiIsKeyboardFocusable} from '@taiga-ui/cdk';
+import {tuiIsFocusable} from '@taiga-ui/cdk';
 
-tuiIsKeyboardFocusable(document.createElement('div'));
+tuiIsFocusable(document.createElement('div'));
 `);
     });
 

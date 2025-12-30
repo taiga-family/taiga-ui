@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -9,6 +8,7 @@ import {
     TuiLabel,
     TuiLink,
     TuiScrollbar,
+    tuiScrollbarOptionsProvider,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
@@ -16,7 +16,6 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
@@ -34,6 +33,7 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
     styleUrls: ['./index.less', './surface.less'],
     encapsulation,
     changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly reviews = [

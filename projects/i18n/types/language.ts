@@ -38,9 +38,9 @@ export interface TuiLanguageKit {
     copyTexts: readonly [copy: string, copied: string];
     countTexts: readonly [plus: string, minus: string];
     dateTexts: {
-        DMY: string;
-        MDY: string;
-        YMD: string;
+        ['dd/mm/yyyy']: string;
+        ['mm/dd/yyyy']: string;
+        ['yyyy/mm/dd']: string;
     };
     digitalInformationUnits: readonly [
         short_byte: string,
@@ -120,6 +120,14 @@ export interface TuiLanguageKit {
         reset: string;
     };
     phoneSearch: string;
+    dayRangePeriods: readonly [
+        forAllTime: string,
+        today: string,
+        yesterday: string,
+        currentWeek: string,
+        currentMonth: string,
+        previousMonth: string,
+    ];
 }
 
 export interface TuiLanguageLayout {
@@ -214,7 +222,8 @@ export interface TuiLanguageMeta {
 }
 
 export interface TuiLanguage
-    extends TuiLanguageCore,
+    extends
+        TuiLanguageCore,
         TuiLanguageKit,
         TuiLanguageLayout,
         TuiLanguageCommerce,

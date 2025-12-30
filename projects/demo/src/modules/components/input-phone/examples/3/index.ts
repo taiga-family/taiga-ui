@@ -3,7 +3,6 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiValueTransformer} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhone, tuiInputPhoneOptionsProvider} from '@taiga-ui/kit';
 
 const VALUE_TRANSFORMER: TuiValueTransformer<string, string> = {
@@ -12,7 +11,7 @@ const VALUE_TRANSFORMER: TuiValueTransformer<string, string> = {
 };
 
 @Component({
-    imports: [FormsModule, TuiInputPhone, TuiTextfield],
+    imports: [FormsModule, TuiInputPhone],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

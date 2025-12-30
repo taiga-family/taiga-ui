@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {EMPTY_ARRAY, type TuiHandler, TuiMapperPipe} from '@taiga-ui/cdk';
+import {type TuiHandler, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiLabel} from '@taiga-ui/core';
 import {TuiCheckbox, TuiTree} from '@taiga-ui/kit';
 
@@ -51,7 +51,7 @@ export default class Example {
     };
 
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
-        item.children || EMPTY_ARRAY;
+        item.children || [];
 
     protected readonly getValue = (
         item: TreeNode,

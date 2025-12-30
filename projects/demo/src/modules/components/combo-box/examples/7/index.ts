@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiPaymentSystem, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
@@ -25,7 +24,6 @@ interface Card {
         TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiTextfield,
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',

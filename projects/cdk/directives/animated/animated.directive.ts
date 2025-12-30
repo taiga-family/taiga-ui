@@ -1,15 +1,13 @@
-import {isPlatformServer} from '@angular/common';
+import {isPlatformBrowser} from '@angular/common';
 import {
     afterNextRender,
-    ApplicationRef,
     Directive,
     inject,
-    type OnDestroy,
     PLATFORM_ID,
     type Renderer2,
     ViewContainerRef,
 } from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
 export const TUI_ENTER = 'tui-enter';
 export const TUI_LEAVE = 'tui-leave';
@@ -22,7 +20,7 @@ export const TUI_LEAVE = 'tui-leave';
         '(animationcancel.self)': 'remove()',
     },
 })
-export class TuiAnimated implements OnDestroy {
+export class TuiAnimated {
     // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
     private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
     private readonly el = tuiInjectElement();
@@ -30,27 +28,10 @@ export class TuiAnimated implements OnDestroy {
     constructor() {
         afterNextRender(() => this.remove());
 
-        if (!this.renderer || isPlatformServer(inject(PLATFORM_ID))) {
-            return;
+        if (this.renderer && isPlatformBrowser(inject(PLATFORM_ID))) {
+            // delegate is used in Angular Animations renderer
+            wrap(this.renderer.delegate || this.renderer);
         }
-
-        // delegate is used in Angular Animations renderer
-        const renderer = this.renderer.delegate || this.renderer;
-
-        if (renderer.data[TUI_LEAVE]) {
-            renderer.data[TUI_LEAVE].push(this.el);
-        } else {
-            renderer.data[TUI_LEAVE] = [this.el];
-            renderer.removeChild = wrap(renderer);
-        }
-    }
-
-    public ngOnDestroy(): void {
-        const data = this.renderer?.data || {[TUI_LEAVE]: []};
-
-        setTimeout(() => {
-            data[TUI_LEAVE] = data[TUI_LEAVE]?.filter((e: Element) => e !== this.el);
-        });
     }
 
     protected remove(): void {
@@ -60,33 +41,33 @@ export class TuiAnimated implements OnDestroy {
     }
 }
 
-function wrap(renderer: Renderer2): Renderer2['removeChild'] {
+function wrap(renderer: Renderer2): void {
+    if (renderer.data[TUI_LEAVE]) {
+        return;
+    }
+
     const {removeChild} = renderer;
-    const app = inject(ApplicationRef);
 
-    return (parent: Node, el: Node, host?: boolean): void => {
-        const remove = (): void => removeChild.call(renderer, parent, el, host);
-        const elements: Element[] = renderer.data[TUI_LEAVE];
-        const element = elements.find((leave) => el.contains(leave));
+    renderer.data[TUI_LEAVE] = true;
 
-        if (!element) {
-            remove();
+    renderer.removeChild = (parent: Node, el: Node, host?: boolean): void => {
+        if (!tuiIsElement(el)) {
+            removeChild.call(renderer, parent, el, host);
 
             return;
         }
 
-        element.classList.remove(TUI_ENTER);
+        el.classList.remove(TUI_ENTER);
 
-        const {length} = element.getAnimations?.() || [];
+        const {length} = el.getAnimations?.() || [];
 
-        element.classList.add(TUI_LEAVE);
+        el.classList.add(TUI_LEAVE);
 
-        const animations = element.getAnimations?.() ?? [];
+        const animations = el.getAnimations?.() ?? [];
         const last = animations[animations.length - 1];
         const finish = (): void => {
             if (!parent || parent.contains(el)) {
-                remove();
-                app.tick();
+                removeChild.call(renderer, parent, el, host);
             }
         };
 
@@ -94,7 +75,7 @@ function wrap(renderer: Renderer2): Renderer2['removeChild'] {
             last.onfinish = finish;
             last.oncancel = finish;
         } else {
-            remove();
+            finish();
         }
     };
 }

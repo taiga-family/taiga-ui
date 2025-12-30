@@ -1,0 +1,76 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@keyframes tuiModalBackdrop {
+    from {
+        backdrop-filter: none;
+    }
+
+    to {
+        backdrop-filter: brightness(0.25);
+    }
+}
+
+tui-modal {
+    .transition(backdrop-filter);
+    .scrollbar-hidden();
+
+    position: fixed;
+    display: grid;
+    inset: 0;
+    grid-template-rows: 0;
+    place-items: center;
+    outline: none;
+    overflow: auto;
+    overscroll-behavior: none contain;
+    transition-timing-function: linear;
+    animation-timing-function: cubic-bezier(0.14, 0.52, 0.35, 0.84) !important;
+    perspective: 10rem;
+    transform: translateY(var(--t-root-top));
+
+    // Safari < 15.4 and Chromium < 111
+    @supports not (selector(:has(*))) or not (selector(:nth-child(1 of *))) {
+        &:last-of-type {
+            &:not(.tui-leave) {
+                backdrop-filter: brightness(0.25);
+            }
+
+            &.tui-enter,
+            &.tui-leave {
+                animation-name: tuiModalBackdrop;
+            }
+        }
+    }
+
+    @supports (selector(:has(*))) and (selector(:nth-child(1 of *))) {
+        &:nth-last-child(1 of tui-modal:not(.tui-leave):not(:has(.tui-backdrop-hidden))) {
+            backdrop-filter: brightness(0.25);
+        }
+
+        &:nth-last-child(1 of tui-modal:not(:has(.tui-backdrop-hidden))):is(.tui-enter, .tui-leave) {
+            animation-name: tuiModalBackdrop;
+        }
+    }
+
+    &::before {
+        content: '';
+        block-size: 1px;
+        inline-size: calc(100% + 1px);
+    }
+
+    > .t-scrollbars {
+        position: fixed;
+        inset: 0;
+        margin: 0;
+        color: #747474;
+
+        .t-bar_horizontal,
+        .t-bar_vertical .t-thumb[style*='height: 100%'] {
+            display: none;
+        }
+    }
+
+    > .tui-enter + .t-scrollbars .t-bar_vertical,
+    > .tui-leave + .t-scrollbars .t-bar_vertical {
+        display: none;
+    }
+}

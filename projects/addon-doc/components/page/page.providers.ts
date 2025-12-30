@@ -1,4 +1,10 @@
-import {ElementRef, InjectionToken, type Provider} from '@angular/core';
+import {
+    ElementRef,
+    InjectionToken,
+    type Provider,
+    signal,
+    type WritableSignal,
+} from '@angular/core';
 import {type ActivatedRouteSnapshot} from '@angular/router';
 import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
@@ -13,7 +19,7 @@ export const TUI_DOC_TABS = new InjectionToken<
 /**
  * Array if related page titles
  */
-export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>(
+export const PAGE_SEE_ALSO = new InjectionToken<WritableSignal<readonly string[]>>(
     ngDevMode ? 'PAGE_SEE_ALSO' : '',
 );
 
@@ -24,7 +30,7 @@ export const PAGE_PROVIDERS: Provider[] = [
         useFactory: (
             {nativeElement}: ElementRef,
             seeAlsoGroups: ReadonlyArray<readonly string[]>,
-        ): readonly string[] => {
+        ): WritableSignal<readonly string[]> => {
             const currentHeader = nativeElement.getAttribute('header');
             const groups =
                 seeAlsoGroups.filter((group) => group.includes(currentHeader)) || [];
@@ -36,7 +42,7 @@ export const PAGE_PROVIDERS: Provider[] = [
                     .filter((component) => component && component !== currentHeader),
             );
 
-            return Array.from(seeAlsoSet);
+            return signal(Array.from(seeAlsoSet));
         },
     },
 ];

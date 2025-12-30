@@ -12,8 +12,7 @@
         @for (group of taigaFamilyLibs; track group) {
             <button
                 iconEnd="@tui.chevron-right"
-                new
-                tuiDropdownAlign="right"
+                tuiDropdownAlign="end"
                 tuiDropdownLimitWidth="auto"
                 tuiDropdownManual
                 tuiDropdownSided
@@ -26,7 +25,6 @@
                     <tui-data-list>
                         @for (lib of group.libraries; track lib) {
                             <button
-                                new
                                 tuiOption
                                 type="button"
                                 [value]="lib"

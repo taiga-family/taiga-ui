@@ -1,9 +1,9 @@
 import {Directive, inject, type OnInit} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {type Router} from '@angular/router';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {tuiInjectElement, tuiPure, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, type Observable, shareReplay, startWith} from 'rxjs';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
@@ -11,7 +11,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
     useFactory(): Observable<boolean> {
         const host = tuiInjectElement();
 
-        return inject(ResizeObserverService).pipe(
+        return inject(WaResizeObserverService).pipe(
             map(([entry]) => entry?.contentRect.height ?? 0),
             distinctUntilChanged(),
             startWith(0),
@@ -38,20 +38,19 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
 
 @Directive()
 export abstract class AbstractDemo implements OnInit {
-    protected abstract readonly storage: Storage;
+    protected abstract readonly storage: Storage | null;
     protected abstract readonly router: Router;
+
+    private readonly today = new Date();
 
     public ngOnInit(): void {
         void this.replaceEnvInURI();
     }
 
-    @tuiPure
     protected get isChristmas(): boolean {
-        const today = new Date();
-
         return (
-            (!today.getMonth() && today.getDate() < 14) ||
-            (today.getMonth() === 11 && today.getDate() > 24)
+            (!this.today.getMonth() && this.today.getDate() < 14) ||
+            (this.today.getMonth() === 11 && this.today.getDate() > 24)
         );
     }
 

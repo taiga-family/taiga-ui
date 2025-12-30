@@ -1,9 +1,13 @@
 ```html
-<tui-input [formControl]="user">
-  User
+<tui-textfield>
+  <label tuiLabel>User</label>
+  <input
+    [formControl]="control"
+    tuiInput
+  />
   <tui-data-list-wrapper
-    *tuiDataList
+    *tuiDropdown
     [items]="items | tuiFilterByInput"
-  ></tui-data-list-wrapper>
-</tui-input>
+  />
+</tui-textfield>
 ```

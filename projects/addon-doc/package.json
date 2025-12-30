@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-doc",
-    "version": "4.52.0",
+    "version": "5.0.0-rc.0",
     "description": "Taiga UI based library for developing documentation portals for Angular libraries.",
     "keywords": [
         "angular",
@@ -11,7 +11,10 @@
         "storybook"
     ],
     "homepage": "https://github.com/taiga-family/taiga-ui",
-    "repository": "https://github.com/taiga-family/taiga-ui",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/taiga-ui"
+    },
     "license": "Apache-2.0",
     "peerDependencies": {
         "@angular/cdk": ">=19.0.0",
@@ -19,12 +22,13 @@
         "@angular/core": ">=19.0.0",
         "@angular/forms": ">=19.0.0",
         "@angular/router": ">=19.0.0",
-        "@ng-web-apis/common": "^4.12.2",
-        "@taiga-ui/cdk": "^4.52.0",
-        "@taiga-ui/core": "^4.52.0",
-        "@taiga-ui/kit": "^4.52.0",
-        "@taiga-ui/legacy": "^4.52.0",
-        "@taiga-ui/polymorpheus": "^4.9.0",
+        "@ng-web-apis/common": "^5.0.2",
+        "@ng-web-apis/platform": "^5.0.2",
+        "@taiga-ui/cdk": "^5.0.0-rc.0",
+        "@taiga-ui/core": "^5.0.0-rc.0",
+        "@taiga-ui/kit": "^5.0.0-rc.0",
+        "@taiga-ui/legacy": "^5.0.0-rc.0",
+        "@taiga-ui/polymorpheus": "^5.0.0",
         "@types/markdown-it": "^14.1.2",
         "markdown-it": "^14.1.0",
         "ngx-highlightjs": "^10.0.0",

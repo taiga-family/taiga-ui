@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TuiPopoverService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
+import {TuiModalService} from '@taiga-ui/core/portals/modal';
 
 import {
     TuiNotificationMiddleComponent,
@@ -9,9 +8,8 @@ import {
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiNotificationMiddleService(TUI_DIALOGS, TuiNotificationMiddleComponent, {
-            closable: false,
-        }),
 })
-export class TuiNotificationMiddleService extends TuiPopoverService<TuiNotificationMiddleOptions> {}
+export class TuiNotificationMiddleService extends TuiModalService<TuiNotificationMiddleOptions> {
+    protected readonly options = {closable: false};
+    protected readonly content = TuiNotificationMiddleComponent;
+}

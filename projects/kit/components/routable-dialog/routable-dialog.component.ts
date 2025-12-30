@@ -7,9 +7,9 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TuiDialogService} from '@taiga-ui/core/components/dialog';
+import {TuiDialogService} from '@taiga-ui/core/portals/dialog';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
-import {from, of, switchMap} from 'rxjs';
+import {delay, from, of, switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-routable-dialog',
@@ -28,6 +28,11 @@ export default class TuiRoutableDialog {
 
         from(isClass(dialog) ? of(dialog) : dialog().then((m: any) => m.default ?? m))
             .pipe(
+                /**
+                 * All portal hosts are created only after the first render
+                 * See `@if (top()) {...}` condition in `tui-root`
+                 */
+                delay(0),
                 switchMap((dialog: any) =>
                     this.dialog.open(
                         new PolymorpheusComponent<Type<any>>(dialog, this.injector),

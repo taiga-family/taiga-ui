@@ -2,18 +2,17 @@ import {KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
+    computed,
+    contentChildren,
     inject,
-    Input,
-    type QueryList,
+    input,
+    model,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {TUI_DOC_DEFAULT_TABS, TUI_DOC_SUPPORT_LANGUAGE} from '@taiga-ui/addon-doc/tokens';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiReplacePipe} from '@taiga-ui/cdk/pipes/replace';
-import {TuiAutoColorPipe} from '@taiga-ui/core/pipes/auto-color';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
+import {TuiAutoColorPipe} from '@taiga-ui/kit/pipes/auto-color';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDocSeeAlso} from '../internal/see-also';
@@ -35,7 +34,6 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         TuiDocLanguageSwitcher,
         TuiDocSeeAlso,
         TuiDocSourceCode,
-        TuiReplacePipe,
         TuiTabs,
     ],
     templateUrl: './page.template.html',
@@ -50,31 +48,25 @@ export class TuiDocPage {
     protected readonly from = / /g;
     protected readonly to = '_';
 
-    @Input()
-    public header = '';
+    public readonly header = input('');
 
-    @Input()
-    public package = '';
+    public readonly package = input('');
 
-    @Input()
-    public type = '';
+    public readonly type = input('');
 
-    @Input()
-    public tags: string[] = [];
+    public readonly tags = input<string[]>([]);
 
-    @Input()
-    public path = '';
+    public readonly path = input('');
 
-    @Input()
-    public deprecated: boolean | '' = false;
+    public readonly deprecated = input<boolean | ''>(false);
 
-    @ContentChildren(TuiDocPageTabConnector)
-    public readonly tabConnectors: QueryList<TuiDocPageTabConnector> = EMPTY_QUERY;
+    public readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
 
-    public activeItemIndex = 0;
+    public readonly activeItemIndex = model(0);
+
     public readonly seeAlso = inject(PAGE_SEE_ALSO);
 
-    public get showSeeAlso(): boolean {
-        return !!this.seeAlso.length && this.activeItemIndex === 0;
-    }
+    public readonly showSeeAlso = computed((): boolean => {
+        return !!this.seeAlso().length && this.activeItemIndex() === 0;
+    });
 }

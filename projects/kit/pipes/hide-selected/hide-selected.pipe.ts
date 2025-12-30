@@ -1,17 +1,33 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {
+    computed,
+    inject,
+    Pipe,
+    type PipeTransform,
+    signal,
+    untracked,
+} from '@angular/core';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import {TuiTextfieldMultiComponent} from '@taiga-ui/core/components/textfield';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
-@Pipe({
-    name: 'tuiHideSelected',
-    pure: false,
-})
+@Pipe({name: 'tuiHideSelected', pure: false})
 export class TuiHideSelectedPipe implements PipeTransform {
-    private readonly textfield = inject(TuiTextfieldComponent);
+    private readonly textfield = inject(TuiTextfieldMultiComponent);
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    private readonly items = signal<readonly any[] | null>([]);
+    private readonly filtered = computed(() => {
+        const items = this.items();
+        const value = this.textfield.cva()?.value() || [];
+
+        if (!items) {
+            return null;
+        }
+
+        return tuiIsFlat(items)
+            ? this.filter(items, value, this.handlers.identityMatcher())
+            : this.filter2d(items, value, this.handlers.identityMatcher());
+    });
 
     public transform<T>(items: readonly T[] | null): readonly T[] | null;
     public transform<T>(
@@ -20,18 +36,13 @@ export class TuiHideSelectedPipe implements PipeTransform {
     public transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
-        if (!items) {
-            return null;
-        }
+        untracked(() => {
+            this.items.set(items);
+        });
 
-        const value = this.textfield.control?.value || [];
-
-        return tuiIsFlat(items)
-            ? this.filter(items, value, this.handlers.identityMatcher())
-            : this.filter2d(items, value, this.handlers.identityMatcher());
+        return this.filtered() as ReadonlyArray<readonly T[]> | readonly T[] | null;
     }
 
-    @tuiPure
     private filter2d<T>(
         items: ReadonlyArray<readonly T[]>,
         value: readonly T[],
@@ -40,7 +51,6 @@ export class TuiHideSelectedPipe implements PipeTransform {
         return items.map((subItems) => this.filter(subItems, value, matcher));
     }
 
-    @tuiPure
     private filter<T>(
         items: readonly T[],
         value: readonly T[],

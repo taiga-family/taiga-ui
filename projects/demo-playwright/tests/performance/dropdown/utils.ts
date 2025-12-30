@@ -11,7 +11,7 @@ export interface DropdownCtx {
 export interface StressScenario {
     label: string;
     repeats: number;
-    run: (page: Page, ctx: DropdownCtx) => Promise<void>;
+    run(page: Page, ctx: DropdownCtx): Promise<void>;
 }
 
 const INTENSITY = Math.max(1, Number(process.env.STRESS_INTENSITY || '2'));
@@ -32,18 +32,7 @@ export function createDropdownCtx(
     example: ReturnType<TuiDocumentationPagePO['getExample']>,
 ): DropdownCtx {
     const dropdownTrigger = example.locator('[tuiDropdown]').first();
-    const filterInput = example
-        .locator(
-            [
-                'tui-textfield input',
-                'tui-combo-box input',
-                'tui-multi-select input',
-                'tui-input input',
-                'input[tuiSelect]',
-                'input[tuiTextfield]',
-            ].join(', '),
-        )
-        .first();
+    const filterInput = example.locator('tui-textfield input').first();
     const exampleHost = example.first();
 
     return {example, dropdownTrigger, filterInput, exampleHost};

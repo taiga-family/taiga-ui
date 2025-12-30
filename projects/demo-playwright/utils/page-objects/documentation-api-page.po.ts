@@ -7,7 +7,9 @@ import {waitStableState} from '../wait-stable-state';
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
     public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
-    public readonly apiPageExample: Locator = this.page.locator('#demo-content');
+    public readonly apiPageExample: Locator = this.page.locator(
+        'tui-doc-demo > .t-wrapper',
+    );
 
     constructor(protected readonly page: Page) {}
 
@@ -22,7 +24,9 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async hideNotifications(): Promise<void> {
-        const notifications = await this.page.locator('tui-popups tui-alert').all();
+        const notifications = await this.page
+            .locator('tui-popups tui-notification-alert')
+            .all();
 
         for (const notification of notifications) {
             await tuiHideElement(notification);
@@ -74,11 +78,7 @@ export class TuiDocumentationApiPagePO {
 
         if ((await this.apiPageExample.all()).length) {
             await this.apiPageExample.evaluate((el) => el.scrollIntoView());
-            await expect(async () => {
-                expect(
-                    await this.apiPageExample.boundingBox().then((box) => box?.y),
-                ).toBeGreaterThanOrEqual(63);
-            }).toPass();
+            await expect(this.apiPageExample).toBeInViewport();
         }
     }
 
@@ -93,7 +93,9 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getSelect(row: Locator): Promise<Locator | null> {
-        return ((await row.locator('[tuiSelect]').all()) ?? [])?.[0] ?? null;
+        return (
+            ((await row.locator('[tuiSelect], [tuiSelectLike]').all()) ?? [])?.[0] ?? null
+        );
     }
 
     public async getNameProperty(row: Locator): Promise<string> {
@@ -101,7 +103,7 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getOptions(): Promise<Locator[]> {
-        return this.page.locator('[automation-id="tui-data-list-wrapper__option"]').all();
+        return this.page.locator('tui-data-list-wrapper [tuiOption]').all();
     }
 
     public async focusOnBody(): Promise<void> {

@@ -1,12 +1,13 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     inject,
-    Input,
-    Output,
+    input,
+    linkedSignal,
+    model,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
+import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -37,33 +38,31 @@ export class TuiReorder<T> {
     private dragging = false;
 
     protected order = new Map<number, number>();
-    protected unsortedItems: readonly T[] = [];
+    protected readonly unsortedItems = linkedSignal<readonly T[], readonly T[]>({
+        source: () => this.items(),
+        computation: (items, previous) => {
+            const previousUnsortedItems = previous?.value ?? [];
+
+            if (
+                items.length !== previousUnsortedItems.length ||
+                !items.every((item) => previousUnsortedItems.includes(item))
+            ) {
+                return items;
+            }
+
+            return previousUnsortedItems;
+        },
+    });
+
     protected readonly options = inject(TUI_REORDER_OPTIONS);
     protected readonly showHideText = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
 
-    @Input()
-    public enabled: readonly T[] = [];
+    public readonly enabled = model<readonly T[]>([]);
 
-    @Output()
-    public readonly itemsChange = new EventEmitter<T[]>();
+    public readonly items = model<readonly T[]>([]);
 
-    @Output()
-    public readonly enabledChange = new EventEmitter<T[]>();
-
-    @Input()
-    public set items(items: readonly T[]) {
-        if (
-            items.length !== this.unsortedItems.length ||
-            !items.every((item) => this.unsortedItems.includes(item))
-        ) {
-            this.unsortedItems = items;
-        }
-    }
-
-    @Input()
-    public content: PolymorpheusContent<TuiContext<T> & {index: number}> = ({
-        $implicit,
-    }) => String($implicit);
+    public readonly content =
+        input<PolymorpheusContent<TuiContext<T> & {index: number}>>(TUI_STRINGIFY);
 
     protected onDrag(): void {
         this.dragging = true;
@@ -79,7 +78,7 @@ export class TuiReorder<T> {
     }
 
     protected isEnabled(item: T): boolean {
-        return this.enabled.includes(item);
+        return this.enabled().includes(item);
     }
 
     protected getIcon(item: T): string {
@@ -87,9 +86,11 @@ export class TuiReorder<T> {
     }
 
     protected toggle(toggled: T): void {
-        this.enabled = this.isEnabled(toggled)
-            ? this.enabled.filter((item) => item !== toggled)
-            : this.enabled.concat(toggled);
+        this.enabled.update((enabled) =>
+            this.isEnabled(toggled)
+                ? enabled.filter((item) => item !== toggled)
+                : enabled.concat(toggled),
+        );
 
         this.updateEnabled();
     }
@@ -99,7 +100,7 @@ export class TuiReorder<T> {
 
         if (
             (!oldIndex && direction < 0) ||
-            (oldIndex === this.unsortedItems.length - 1 && direction > 0)
+            (oldIndex === this.unsortedItems().length - 1 && direction > 0)
         ) {
             return;
         }
@@ -117,9 +118,10 @@ export class TuiReorder<T> {
     }
 
     private getSortedItems(): T[] {
-        const items = new Array(this.unsortedItems.length);
+        const unsortedItems = this.unsortedItems();
+        const items = Array.from<T>({length: unsortedItems.length});
 
-        this.unsortedItems.forEach((item, index) => {
+        unsortedItems.forEach((item, index) => {
             items[this.order.get(index) ?? index] = item;
         });
 
@@ -127,14 +129,11 @@ export class TuiReorder<T> {
     }
 
     private updateItems(): void {
-        this.itemsChange.emit(this.getSortedItems());
+        this.items.set(this.getSortedItems());
         this.updateEnabled();
     }
 
     private updateEnabled(): void {
-        const enabled = this.getSortedItems().filter((item) => this.isEnabled(item));
-
-        this.enabled = enabled;
-        this.enabledChange.emit(enabled);
+        this.enabled.set(this.getSortedItems().filter((item) => this.isEnabled(item)));
     }
 }

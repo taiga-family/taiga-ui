@@ -26,14 +26,14 @@
             appearance="outline-grayscale"
             size="m"
             tuiButton
-            tuiDropdownAlign="right"
-            tuiDropdownOpen
+            tuiDropdownAlign="end"
+            tuiDropdownAuto
             type="button"
             class="item"
             [tuiDropdown]="dropdown"
         >
             More
-            <tui-badge>{{ items.length - lastIndex - 1 }}</tui-badge>
+            <div tuiBadge>{{ items.length - lastIndex - 1 }}</div>
         </button>
         <ng-template #dropdown>
             <tui-data-list size="l">

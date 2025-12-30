@@ -1,19 +1,15 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
-import {
-    tuiInjectAuxiliary,
-    TuiTextfieldDirective,
-    tuiTextfieldIcon,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
+import {tuiInjectAuxiliary, tuiTextfieldIcon} from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+    TuiDropdownOpen,
+} from '@taiga-ui/core/portals/dropdown';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
@@ -24,7 +20,7 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
         tuiAsControl(TuiInputYearDirective),
         tuiValueTransformerFrom(TUI_INPUT_YEAR_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, MaskitoDirective, TuiDropdownAuto],
+    hostDirectives: [TuiWithInput, MaskitoDirective, TuiDropdownAuto],
     host: {
         maxlength: '4',
         inputmode: 'numeric',
@@ -35,28 +31,24 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
 })
 export class TuiInputYearDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_YEAR_OPTIONS);
-    private readonly textfield = inject(TuiTextfieldDirective);
-    private readonly open = tuiDropdownOpen();
-
+    private readonly input = inject(TuiInputDirective);
+    private readonly open = inject(TuiDropdownOpen).open;
     private readonly initialItem = computed(
         () => this.value() ?? this.calendar()?.initialItem() ?? null,
     );
 
+    protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_YEAR_OPTIONS);
     protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
         (x) => x instanceof TuiCalendarYear,
     );
-
-    protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_YEAR_OPTIONS);
-    protected readonly min = signal(this.options.min.year);
-    protected readonly max = signal(this.options.max.year);
 
     /**
      * TODO: move to [value]="value()" after update to Angular 17+
      * something wrong with change detection on host binding
      */
     protected readonly valueEffect = effect(() =>
-        this.textfield.value.set(this.value()?.toString() ?? ''),
+        this.input.value.set(this.value()?.toString() ?? ''),
     );
 
     protected readonly mask = tuiMaskito(
@@ -89,17 +81,8 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    // TODO(v5): use signal inputs
-    @Input('min')
-    public set minSetter(x: number) {
-        this.min.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('max')
-    public set maxSetter(x: number) {
-        this.max.set(x);
-    }
+    public readonly min = input(this.options.min.year);
+    public readonly max = input(this.options.max.year);
 
     protected toggle(): void {
         if (this.interactive()) {

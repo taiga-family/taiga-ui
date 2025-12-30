@@ -7,6 +7,8 @@
 }
 
 :host {
+    position: absolute;
+    inset: 0;
     color: transparent;
     background: transparent;
     border: none;
@@ -29,7 +31,7 @@
         color: transparent !important;
     }
 
-    ::ng-deep + .t-content .t-clear {
+    ::ng-deep + .t-content [tuiButtonX] {
         display: none !important;
     }
 }

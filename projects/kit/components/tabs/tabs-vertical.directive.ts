@@ -1,10 +1,10 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 import {TuiTabsDirective} from './tabs.directive';
 
 @Directive({
-    selector: 'tui-tabs[vertical], nav[tuiTabs][vertical]',
+    selector: 'tui-tabs[vertical]',
     hostDirectives: [
         {
             directive: TuiTabsDirective,
@@ -13,7 +13,7 @@ import {TuiTabsDirective} from './tabs.directive';
         },
     ],
     host: {
-        '[attr.data-vertical]': 'vertical',
+        '[attr.data-vertical]': 'vertical()',
         '(keydown.arrowDown.prevent)': 'onKeyDownArrow($event.target, 1)',
         '(keydown.arrowUp.prevent)': 'onKeyDownArrow($event.target, -1)',
     },
@@ -21,8 +21,7 @@ import {TuiTabsDirective} from './tabs.directive';
 export class TuiTabsVertical {
     private readonly tabs = inject(TuiTabsDirective);
 
-    @Input()
-    public vertical: TuiHorizontalDirection = 'left';
+    public readonly vertical = input<TuiHorizontalDirection>('start');
 
     protected onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);

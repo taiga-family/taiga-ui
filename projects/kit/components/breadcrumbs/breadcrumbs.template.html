@@ -1,16 +1,15 @@
-@if (items.changes | async) {}
-@if (itemsLimit > 1) {
-    @if (itemsLimit !== 2) {
-        <ng-container [ngTemplateOutlet]="items.first" />
+@if (itemsLimit() > 1) {
+    @if (itemsLimit() !== 2) {
+        <ng-container [ngTemplateOutlet]="items()[0] || null" />
         <ng-container [ngTemplateOutlet]="separator" />
     }
     <tui-items-with-more
         side="start"
-        [itemsLimit]="itemsLimit - 2"
-        [required]="items.length + offset - 2"
+        [itemsLimit]="itemsLimit() - 2"
+        [required]="items().length + offset() - 2"
     >
-        @for (item of items; track item) {
-            @if (item !== items.first || itemsLimit === 2) {
+        @for (item of items(); track item) {
+            @if (item !== items()[0] || itemsLimit() === 2) {
                 <ng-container *tuiItem>
                     <ng-container [ngTemplateOutlet]="item" />
                     @if (!$last) {
@@ -27,7 +26,7 @@
                 <button
                     appearance="flat"
                     size="xs"
-                    tuiDropdownOpen
+                    tuiDropdownAuto
                     tuiIconButton
                     type="button"
                     [iconStart]="icons.ellipsis"
@@ -39,8 +38,8 @@
             </span>
             <ng-template #dropdown>
                 <tui-data-list size="s">
-                    @for (item of items; track item) {
-                        @if ($index + offset && $index <= index && item !== items.last) {
+                    @for (item of items(); track item) {
+                        @if ($index + offset() && $index <= index && item !== items()[items().length - 1]) {
                             <span
                                 tuiOption
                                 class="t-option"
@@ -54,7 +53,7 @@
         </ng-template>
     </tui-items-with-more>
 } @else {
-    @for (item of items; track item) {
+    @for (item of items(); track item) {
         <ng-container [ngTemplateOutlet]="item" />
         @if (!$last) {
             <ng-container [ngTemplateOutlet]="separator" />
@@ -71,3 +70,5 @@
         <span class="t-char">{{ options.icon }}</span>
     }
 </ng-template>
+
+<ng-content />

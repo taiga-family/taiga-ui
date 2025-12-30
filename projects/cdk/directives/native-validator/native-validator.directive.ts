@@ -1,7 +1,8 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 import {type AbstractControl, NG_VALIDATORS, type Validator} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement, tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 
 @Directive({
@@ -24,8 +25,7 @@ export class TuiNativeValidator implements Validator {
         )
         .subscribe(() => this.handleValidation());
 
-    @Input()
-    public tuiNativeValidator = 'Invalid';
+    public readonly tuiNativeValidator = input('Invalid');
 
     public validate(control: AbstractControl): null {
         this.control$.next(control);
@@ -38,6 +38,6 @@ export class TuiNativeValidator implements Validator {
 
         // TODO: Replace with :has(:invalid) when supported
         this.el.closest('tui-textfield')?.classList.toggle('tui-invalid', invalid);
-        this.el.setCustomValidity?.(invalid ? this.tuiNativeValidator : '');
+        this.el.setCustomValidity?.(invalid ? this.tuiNativeValidator() : '');
     }
 }

@@ -1,35 +1,28 @@
-@if (control?.control?.valueChanges | async) {}
+@if (control()?.control?.valueChanges | async) {}
 <ng-content select="input" />
 <ng-content select="select" />
 <ng-content select="textarea" />
 <ng-content select="label" />
 <span
     class="t-content"
-    (pointerdown)="input?.nativeElement?.focus()"
+    (pointerdown)="input()?.nativeElement?.focus()"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
     <ng-container #vcr />
     @if (options.cleaner()) {
         <button
-            appearance="icon"
-            size="xs"
-            tabindex="-1"
-            tuiIconButton
-            type="button"
-            class="t-clear"
-            [iconStart]="icons.close"
-            (click)="accessor?.setValue(null)"
-            (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+            tuiButtonX
+            (click)="accessor()?.setValue(null)"
         >
             {{ clear() }}
         </button>
     }
     <ng-content select="tui-icon" />
 </span>
-@if (control?.value != null) {
+@if (control()?.value != null) {
     <span class="t-template">
-        <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: control?.value}">
+        <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: control()?.value}">
             {{ text }}
         </ng-container>
     </span>

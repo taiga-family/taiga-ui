@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe} from '@taiga-ui/core';
-import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
+import {TuiAutoColorPipe, TuiAvatar, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiFade],

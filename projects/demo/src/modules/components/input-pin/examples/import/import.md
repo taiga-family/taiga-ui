@@ -1,14 +1,11 @@
 ```ts
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPin} from '@taiga-ui/kit';
 
 // ...
 
 @Component({
-  standalone: true,
   imports: [
     // ...
-    TuiTextfield,
     TuiInputPin,
   ],
   // ...

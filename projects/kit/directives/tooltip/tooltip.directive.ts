@@ -9,8 +9,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
@@ -23,7 +23,7 @@ import {
     TuiHintDescribe,
     TuiHintDirective,
     TuiHintHover,
-} from '@taiga-ui/core/directives/hint';
+} from '@taiga-ui/core/portals/hint';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 import {map} from 'rxjs';
@@ -69,7 +69,7 @@ class Styles {}
 })
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly describe = inject(TuiHintDescribe);
     private readonly driver = inject(TuiHintHover);
 

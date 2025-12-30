@@ -2,7 +2,7 @@
     [duration]="4000"
     [(index)]="index"
 >
-    @for (item of items; track item) {
+    @for (item of items; track $index) {
         <div
             *tuiItem
             class="item"
@@ -18,9 +18,8 @@
         </div>
     }
 </tui-carousel>
-<tui-pagination
-    size="s"
-    class="pagination"
-    [length]="items.length"
-    [(index)]="index"
+
+<tui-pager
+    [count]="items.length"
+    [index]="index"
 />

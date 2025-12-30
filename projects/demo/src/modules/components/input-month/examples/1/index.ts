@@ -3,13 +3,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiBooleanHandler, TuiMonth, TuiYear} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
 
 const NEXT_YEAR = TuiMonth.currentLocal().year + 1;
 
 @Component({
-    imports: [FormsModule, TuiInputMonth, TuiTextfield],
+    imports: [FormsModule, TuiInputMonth],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

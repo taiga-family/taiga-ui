@@ -9,6 +9,11 @@
   <span>{{ amount }} | tuiAmount: 'USD' | async }}</span>
   <span tuiAmountDescription>description</span>
   <span tuiComment>comment</span>
-  <tui-badge appearance="neutral">Badge</tui-badge>
+  <span
+    tuiBadge
+    appearance="neutral"
+  >
+    Badge
+  </span>
 </div>
 ```

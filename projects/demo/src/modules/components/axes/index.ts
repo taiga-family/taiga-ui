@@ -45,29 +45,17 @@ export default class Page {
         (index) => (index % 2 ? 'dashed' : 'solid'),
     ];
 
-    protected axisX = this.lineVariants[0]!;
+    protected centeredXLabels = false;
 
     protected axisXLabels = this.labelsXVariants[0]!;
-
-    protected axisY = this.lineVariants[0]!;
-
     protected axisYInset = false;
-
     protected axisYLabels = this.labelsYVariants[0]!;
-
     protected axisYName = '';
-
     protected axisYSecondaryInset = false;
-
     protected axisYSecondaryLabels = this.labelsYVariants[0]!;
-
     protected axisYSecondaryName = '';
-
-    protected horizontalLines = 0;
-
+    protected horizontalLines = 1;
     protected horizontalLinesHandler = this.handlerVariants[0]!;
-
-    protected verticalLines = 0;
-
+    protected verticalLines = 1;
     protected verticalLinesHandler = this.handlerVariants[1]!;
 }

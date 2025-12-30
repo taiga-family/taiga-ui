@@ -1,18 +1,16 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {
     TuiDropdownMobile,
     TuiDropdownSheet,
     TuiResponsiveDialog,
 } from '@taiga-ui/addon-mobile';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
     TuiCell,
-    TuiInitialsPipe,
     TuiRoot,
     TuiTextfield,
     TuiTitle,
@@ -22,6 +20,7 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiInitialsPipe,
     TuiInputChip,
     TuiMultiSelect,
     TuiSelect,
@@ -40,7 +39,6 @@ interface User {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAmountPipe,
         TuiAvatar,
@@ -66,8 +64,8 @@ interface User {
                 <tui-textfield
                     tuiChevron
                     tuiDropdownSheet="Select user"
-                    class="tui-space_vertical-4"
                     [content]="template"
+                    [style.margin-block-end.rem]="1"
                 >
                     <input
                         placeholder="Select user"
@@ -76,7 +74,6 @@ interface User {
                     />
                     <tui-data-list-wrapper
                         *tuiDropdown
-                        new
                         [itemContent]="template"
                         [items]="users"
                     />
@@ -86,7 +83,6 @@ interface User {
                     multi
                     tuiChevron
                     tuiDropdownMobile
-                    class="tui-space_vertical-4"
                     [open]="open()"
                     [stringify]="stringify"
                     (openChange)="open.set($event)"
@@ -101,7 +97,6 @@ interface User {
 
                     <ng-container *tuiDropdown>
                         <tui-data-list-wrapper
-                            new
                             tuiMultiSelectGroup
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
@@ -136,7 +131,7 @@ interface User {
                     <span tuiTitle>
                         {{ user.name }}
                         <span tuiSubtitle>
-                            {{ user.balance | tuiAmount: '$' : 'left' | async }}
+                            {{ user.balance | tuiAmount: '$' : 'start' }}
                         </span>
                     </span>
                 </span>
@@ -168,7 +163,7 @@ describe('DropdownMobile', () => {
         cy.mount(TestDropdownMobile, {
             providers: [
                 {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
-                {provide: TUI_IS_MOBILE, useValue: true},
+                {provide: WA_IS_MOBILE, useValue: true},
             ],
         }).then(({fixture, component}) => {
             fixture.detectChanges();

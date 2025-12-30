@@ -12,13 +12,12 @@
         />
         <tui-data-list-wrapper
             *tuiDropdown
-            new
             [itemContent]="stringify | tuiStringifyContent"
             [items]="items | tuiFilterByInput"
         />
 
         <tui-icon
-            tuiHintDirection="top-left"
+            tuiHintDirection="top-start"
             [tuiTooltip]="periodHint"
         />
     </tui-textfield>
@@ -28,12 +27,11 @@
 </form>
 
 <button
-    tuiHintAppearance="dark"
-    tuiHintDirection="top-left"
+    tuiHintAppearance="floating"
+    tuiHintDirection="top-start"
     tuiLink
     type="button"
     class="tui-space_top-4"
-    [pseudo]="true"
     [tuiHint]="howToBuyTooltip"
 >
     How to buy

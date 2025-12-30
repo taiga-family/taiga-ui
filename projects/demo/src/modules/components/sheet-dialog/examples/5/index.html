@@ -10,25 +10,19 @@
     [tuiResponsiveDialogOptions]="options"
     [(tuiResponsiveDialog)]="open"
 >
-    This dialog would show up as regular
-    <a
-        tuiLink
-        [routerLink]="routes.Dialog"
-    >
-        Dialog
-    </a>
-    on desktop and as a
-    <code>SheetDialog</code>
-    on a mobile device.
-    <footer class="footer">
-        <button
-            size="m"
-            tuiButton
-            type="button"
-            (click)="observer.complete()"
+    <div>
+        This dialog would show up as regular
+        <a
+            tuiLink
+            [routerLink]="routes.Dialog"
         >
-            This is really cool
-        </button>
+            Dialog
+        </a>
+        on desktop and as a
+        <code>SheetDialog</code>
+        on a mobile device.
+    </div>
+    <footer>
         <button
             appearance="secondary"
             size="m"
@@ -37,6 +31,14 @@
             (click)="observer.complete()"
         >
             Glad to know that
+        </button>
+        <button
+            size="m"
+            tuiButton
+            type="button"
+            (click)="observer.complete()"
+        >
+            Sure
         </button>
     </footer>
 </ng-template>

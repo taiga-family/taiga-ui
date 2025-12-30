@@ -25,9 +25,9 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.yyyy',
+        'mm/dd/yyyy': 'mm.dd.yyyy',
+        'yyyy/mm/dd': 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Құпия сөзді көрсету', 'Құпия сөзді жасыру'],
@@ -79,4 +79,12 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Қалпына келтіру',
     },
     phoneSearch: 'Елді немесе кодты теріңіз',
+    dayRangePeriods: [
+        'Барлық уақытта',
+        'Бүгін',
+        'Кеше',
+        'Осы аптада',
+        'Осы айда',
+        'Өткен айда',
+    ],
 };

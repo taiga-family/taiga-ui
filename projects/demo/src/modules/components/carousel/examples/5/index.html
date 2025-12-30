@@ -2,7 +2,7 @@
     [itemsCount]="3"
     [(index)]="index"
 >
-    @for (item of items; track item) {
+    @for (item of items; track $index) {
         <div
             *tuiItem
             class="item"
@@ -12,9 +12,8 @@
         </div>
     }
 </tui-carousel>
+
 <tui-pagination
-    size="s"
-    class="tui-space_top-4"
     [index]="rounded"
     [length]="items.length / itemsCount"
     (indexChange)="onIndex($event)"

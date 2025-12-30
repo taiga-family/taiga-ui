@@ -22,13 +22,7 @@
         >
             <ng-template #textfieldBasedDescription>
                 Use all powers of
-                <a
-                    target="_blank"
-                    tuiLink
-                    [routerLink]="routes.Textfield"
-                >
-                    <strong>Textfield</strong>
-                </a>
+                <code>Textfield</code>
                 : put any number of
                 <a
                     target="_blank"
@@ -188,7 +182,7 @@
             <ng-template>
                 <tui-textfield
                     #textfield
-                    [content]="textfield.focused() ? '' : textfieldContent"
+                    [content]="textfield.focused() ? '' : textfieldDoc.content"
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -217,7 +211,7 @@
                     <input
                         tuiSlider
                         type="range"
-                        [keySteps]="keySteps"
+                        [keySteps]="keySteps || undefined"
                         [segments]="segments"
                         [step]="step"
                     />
@@ -245,8 +239,7 @@
                     name="[min]"
                     tuiDocAPIItem
                     type="number"
-                    [value]="min()"
-                    (valueChange)="min.set($event)"
+                    [(value)]="min"
                 >
                     The
                     <strong>lowest</strong>
@@ -257,8 +250,7 @@
                     name="[max]"
                     tuiDocAPIItem
                     type="number"
-                    [value]="max()"
-                    (valueChange)="max.set($event)"
+                    [(value)]="max"
                 >
                     The
                     <strong>greatest</strong>
@@ -376,19 +368,9 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+                [contentVariants]="textfieldContentVariants()"
                 [hiddenOptions]="['cleaner', 'rows']"
-            >
-                <!--TODO: create the inherited documentation for Textfield ([content] + [filler] props)-->
-                <tr
-                    name="[content]"
-                    tuiDocAPIItem
-                    type="PolymorpheusContent"
-                    [items]="textfieldContentVariants()"
-                    [(value)]="textfieldContent"
-                >
-                    A template for custom view of textfield value.
-                </tr>
-            </tbody>
+            ></tbody>
 
             <tbody
                 #icons

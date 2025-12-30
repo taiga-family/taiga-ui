@@ -1,7 +1,7 @@
 @for (size of sizes; track size; let odd = $odd) {
     <tui-avatar-stack
         class="tui-space_vertical-4"
-        [direction]="odd ? 'left' : 'right'"
+        [direction]="odd ? 'start' : 'end'"
     >
         @for (name of names; track name) {
             <div

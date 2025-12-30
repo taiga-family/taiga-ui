@@ -1,46 +1,32 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
-    ContentChildren,
-    DestroyRef,
+    contentChildren,
     ElementRef,
-    EventEmitter,
     forwardRef,
     inject,
-    Input,
+    input,
+    model,
     type OnChanges,
-    Output,
-    type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
-import {TuiScrollService} from '@taiga-ui/cdk/services';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import {
-    tuiGetOriginalArrayFromQueryList,
-    tuiPure,
-} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {type TuiOrientation} from '@taiga-ui/core/types';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {delay, type Observable} from 'rxjs';
 
 import {TuiStep} from './step.component';
 
 @Component({
-    selector: 'tui-stepper, nav[tuiStepper]',
-    imports: [AsyncPipe],
-    templateUrl: './stepper.template.html',
+    selector: 'tui-stepper',
+    template: `
+        <ng-content />
+    `,
     styleUrl: './stepper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     host: {
-        '[attr.data-orientation]': 'orientation',
+        '[attr.data-orientation]': 'orientation()',
         '(keydown.arrowRight)': 'onHorizontal($event, 1)',
         '(keydown.arrowLeft)': 'onHorizontal($event, -1)',
         '(keydown.arrowDown)': 'onVertical($event, 1)',
@@ -48,64 +34,44 @@ import {TuiStep} from './step.component';
     },
 })
 export class TuiStepperComponent implements OnChanges {
-    @ContentChildren(forwardRef(() => TuiStep), {read: ElementRef})
-    private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
-    private readonly cdr = inject(ChangeDetectorRef);
     private readonly el = tuiInjectElement();
-    private readonly scrollService = inject(TuiScrollService);
-    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
-    private readonly destroyRef = inject(DestroyRef);
+    private readonly steps = contentChildren(
+        forwardRef(() => TuiStep),
+        {read: ElementRef},
+    );
 
-    protected readonly $ = inject(ResizeObserverService, {self: true})
+    protected readonly $ = inject(WaResizeObserverService, {self: true})
         .pipe(takeUntilDestroyed())
-        .subscribe(() => this.scrollIntoView(this.activeItemIndex));
+        .subscribe(() => this.scrollIntoView(this.activeItemIndex()));
 
-    @Input()
-    public activeItemIndex = 0;
-
-    @Input()
-    public orientation: TuiOrientation = 'horizontal';
-
-    @Output()
-    public readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly orientation = input<TuiOrientation>('horizontal');
+    public readonly activeItemIndex = model(0);
 
     public ngOnChanges(): void {
-        this.scrollIntoView(this.activeItemIndex);
+        this.scrollIntoView(this.activeItemIndex());
     }
 
     public indexOf(step: HTMLElement): number {
-        const index = tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
-            ({nativeElement}) => nativeElement === step,
-        );
+        const index = this.steps().findIndex(({nativeElement}) => nativeElement === step);
 
         return index < 0 ? NaN : index;
     }
 
     public isActive(index: number): boolean {
-        return index === this.activeItemIndex;
+        return index === this.activeItemIndex();
     }
 
     public activate(index: number): void {
-        if (this.activeItemIndex === index) {
+        if (this.activeItemIndex() === index) {
             return;
         }
 
-        this.activeItemIndex = index;
-        this.activeItemIndexChange.emit(index);
-        this.cdr.markForCheck();
+        this.activeItemIndex.set(index);
         this.scrollIntoView(index);
     }
 
-    @tuiPure
-    protected get changes$(): Observable<unknown> {
-        // Delay is required to trigger change detection after steps are rendered,
-        // so they can update their "active" status
-        return tuiQueryListChanges(this.steps).pipe(delay(0));
-    }
-
     protected onHorizontal(event: Event, step: number): void {
-        if (this.orientation !== 'horizontal' || !event.target) {
+        if (this.orientation() !== 'horizontal' || !event.target) {
             return;
         }
 
@@ -114,7 +80,7 @@ export class TuiStepperComponent implements OnChanges {
     }
 
     protected onVertical(event: Event, step: number): void {
-        if (this.orientation !== 'vertical' || !event.target) {
+        if (this.orientation() !== 'vertical' || !event.target) {
             return;
         }
 
@@ -127,14 +93,14 @@ export class TuiStepperComponent implements OnChanges {
             return;
         }
 
-        const stepElements = this.steps.toArray().map(({nativeElement}) => nativeElement);
+        const stepElements = this.steps().map(({nativeElement}) => nativeElement);
         const index = stepElements.findIndex((element) => element === current);
 
         tuiMoveFocus(index, stepElements, step);
     }
 
     private scrollIntoView(index: number): void {
-        const step = this.steps.get(index)?.nativeElement;
+        const step = this.steps()[index]?.nativeElement;
 
         if (!step) {
             return;
@@ -150,14 +116,6 @@ export class TuiStepperComponent implements OnChanges {
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
         const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
 
-        this.scrollService
-            .scroll$(
-                this.el,
-                Math.max(0, top),
-                Math.max(0, left),
-                tuiGetDuration(this.speed) / 3,
-            )
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe();
+        this.el.scrollTo?.({left: Math.max(0, left), top: Math.max(0, top)});
     }
 }

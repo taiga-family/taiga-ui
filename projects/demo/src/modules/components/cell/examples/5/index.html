@@ -33,7 +33,7 @@
         Alternatively you can use fade to hide extra text using nowrap CSS
         <div tuiSubtitle>Works the same for subtitle when fade directive is applied to the top</div>
     </div>
-    <tui-badge>Works with the right side</tui-badge>
+    <div tuiBadge>Works with the right side</div>
 </div>
 
 <div
@@ -68,7 +68,7 @@
     >
         <img
             alt=""
-            src="/assets/images/avatar.jpg"
+            src="assets/images/avatar.jpg"
         />
     </div>
     <div
@@ -81,7 +81,12 @@
     <div tuiTitle>
         <span [style.color]="'var(--tui-text-positive)'">+$1000</span>
         <div tuiSubtitle>Bonus for tuiCell component</div>
-        <tui-badge appearance="primary">Awesome!</tui-badge>
+        <div
+            appearance="primary"
+            tuiBadge
+        >
+            Awesome!
+        </div>
     </div>
 </div>
 
@@ -93,7 +98,12 @@
     <div tuiTitle>
         <strong>Main account</strong>
         <div tuiSubtitle>USD</div>
-        <tui-badge appearance="neutral">By default unless arrested</tui-badge>
+        <div
+            appearance="neutral"
+            tuiBadge
+        >
+            By default unless arrested
+        </div>
     </div>
     <div
         tuiAccessories

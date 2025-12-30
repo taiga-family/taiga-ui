@@ -26,7 +26,7 @@
 
 .t-bar {
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     pointer-events: auto;
 
     &.tui-enter,
@@ -35,29 +35,22 @@
     }
 
     &_vertical {
-        top: 0.25rem;
-        bottom: 0.25rem;
+        inset-block: 0.25rem;
         inline-size: @scroll-width-large;
-
-        @supports (inset-inline-end: 0) {
-            right: unset;
-            inset-inline-end: 0;
-        }
     }
 
     &_horizontal {
-        bottom: 0;
-        left: 0;
+        inset-block-end: 0;
         inset-inline-start: 0;
         block-size: @scroll-width-large;
     }
 
     &_has-horizontal {
-        bottom: @scroll-width - 0.25rem;
+        inset-block-end: @scroll-width - 0.25rem;
     }
 
     &_has-vertical {
-        right: @scroll-width - 0.25rem;
+        inset-inline-end: @scroll-width - 0.25rem;
     }
 }
 
@@ -85,7 +78,6 @@
     }
 
     .t-bar_vertical & {
-        right: 0;
         inset-inline-end: 0;
         inline-size: @scroll-width;
         min-block-size: @scroll-min-size;
@@ -97,7 +89,7 @@
     }
 
     .t-bar_horizontal & {
-        bottom: 0;
+        inset-block-end: 0;
         block-size: @scroll-width;
         min-inline-size: @scroll-min-size;
     }

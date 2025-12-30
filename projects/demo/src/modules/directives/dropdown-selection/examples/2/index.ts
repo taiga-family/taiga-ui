@@ -1,33 +1,23 @@
 import {AsyncPipe} from '@angular/common';
-import {
-    Component,
-    ElementRef,
-    type QueryList,
-    ViewChild,
-    ViewChildren,
-} from '@angular/core';
+import {Component, ElementRef, viewChild, viewChildren} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {
-    EMPTY_QUERY,
-    type TuiBooleanHandler,
-    type TuiMapper,
-    TuiMapperPipe,
-} from '@taiga-ui/cdk';
+import {type TuiBooleanHandler, type TuiMapper, TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiDataList,
     TuiDriver,
     TuiDropdown,
     tuiGetWordRange,
-    TuiInitialsPipe,
-    TuiOptionNew,
-    TuiTextfield,
+    TuiOption,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
-import {TuiTextareaModule} from '@taiga-ui/legacy';
-import {type Observable} from 'rxjs';
+import {
+    TuiAvatar,
+    TuiInitialsPipe,
+    TuiTextarea,
+    TuiTextareaComponent,
+} from '@taiga-ui/kit';
 
 export interface User {
     readonly avatar: string;
@@ -45,29 +35,24 @@ export interface User {
         TuiInitialsPipe,
         TuiMapperPipe,
         TuiTextarea,
-        TuiTextareaModule,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    @ViewChildren(TuiOptionNew, {read: ElementRef})
-    private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly textarea = viewChild.required<
+        TuiTextareaComponent,
+        ElementRef<HTMLTextAreaElement>
+    >(TuiTextareaComponent, {read: ElementRef});
 
-    @ViewChild(TuiTextarea, {read: ElementRef})
-    private readonly textarea?: ElementRef<HTMLTextAreaElement>;
-
-    @ViewChild(TuiDriver)
-    protected readonly driver?: Observable<boolean>;
-
+    protected readonly options = viewChildren(TuiOption, {read: ElementRef});
+    protected readonly driver = viewChild(TuiDriver);
     protected value = 'Type @ to see a dropdown';
-
     protected readonly items = [
         {
             name: 'Alexander Inkin',
-            avatar: assets`/images/avatar.jpg`,
+            avatar: assets`images/avatar.jpg`,
             login: 'a.inkin',
         },
         {
@@ -78,9 +63,9 @@ export default class Example {
     ];
 
     protected get search(): string {
-        const el = this.textarea?.nativeElement;
+        const el = this.textarea().nativeElement;
 
-        return el?.value.slice(el.value.indexOf('@'), el.selectionStart) || '';
+        return el.value.slice(el.value.indexOf('@'), el.selectionStart) || '';
     }
 
     protected readonly filter: TuiMapper<[readonly User[], string], readonly User[]> = (
@@ -94,8 +79,8 @@ export default class Example {
     protected predicate: TuiBooleanHandler<Range> = (range) =>
         String(tuiGetWordRange(range)).startsWith('@');
 
-    protected onArrow(event: Event, which: 'first' | 'last'): void {
-        const item = this.options[which];
+    protected onArrow(event: Event, index: number): void {
+        const item = this.options()[index];
 
         if (!item) {
             return;
@@ -106,17 +91,13 @@ export default class Example {
     }
 
     protected onClick(login: string): void {
-        if (!this.textarea) {
-            return;
-        }
-
         const search = this.search;
         const value = this.value.replace(search, login);
         const caret = value.indexOf(login) + login.length;
 
         this.value = value;
-        this.textarea.nativeElement.focus();
-        this.textarea.nativeElement.value = value;
-        this.textarea.nativeElement.setSelectionRange(caret, caret);
+        this.textarea().nativeElement.focus();
+        this.textarea().nativeElement.value = value;
+        this.textarea().nativeElement.setSelectionRange(caret, caret);
     }
 }

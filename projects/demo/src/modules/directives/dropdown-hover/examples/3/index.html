@@ -22,7 +22,6 @@
 
                 <tui-data-list-wrapper
                     *tuiDropdown
-                    new
                     [items]="selectItems"
                 />
             </tui-textfield>
@@ -31,8 +30,8 @@
                 <button
                     size="s"
                     tuiButton
+                    tuiDropdownAuto
                     tuiDropdownHover
-                    tuiDropdownOpen
                     type="button"
                     [tuiDropdown]="content"
                 >

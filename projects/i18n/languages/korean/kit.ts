@@ -25,9 +25,9 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.yyyy',
+        'mm/dd/yyyy': 'mm.dd.yyyy',
+        'yyyy/mm/dd': 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['비밀번호 표시', '비밀번호 숨기기'],
@@ -79,4 +79,5 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: '다시 놓기',
     },
     phoneSearch: '국가 또는 코드를 입력하세요',
+    dayRangePeriods: ['모든 시간', '오늘', '어제', '이번 주', '이번 달', '지난 달'],
 };

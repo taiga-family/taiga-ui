@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
@@ -30,8 +30,7 @@ describe('TuiPaginationComponent', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiPagination, {static: true})
-        public component!: TuiPagination;
+        public readonly component = viewChild.required(TuiPagination);
 
         public index = 0;
 
@@ -96,7 +95,7 @@ describe('TuiPaginationComponent', () => {
         fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
-        component = testComponent.component;
+        component = testComponent.component();
     });
 
     describe('number of points', () => {
@@ -197,8 +196,8 @@ describe('TuiPaginationComponent', () => {
         it('if the first item is selected, the left arrow is disabled, the right arrow is enabled', () => {
             setParams({index: 0});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(true);
             expect(rightArrowDisabledState).toBe(false);
@@ -207,8 +206,8 @@ describe('TuiPaginationComponent', () => {
         it('if the second item is selected, the left arrow is on, as well as the right', () => {
             setParams({index: 1});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(false);
             expect(rightArrowDisabledState).toBe(false);
@@ -217,8 +216,8 @@ describe('TuiPaginationComponent', () => {
         it('if the last item is selected, the right arrow is disabled, the left arrow is enabled', () => {
             setParams({index: 49});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(false);
             expect(rightArrowDisabledState).toBe(true);
@@ -227,8 +226,8 @@ describe('TuiPaginationComponent', () => {
         it('if the penultimate item is selected, the right arrow is on, as well as the left', () => {
             setParams({index: 48});
 
-            const leftArrowDisabledState = component.arrowIsDisabledLeft;
-            const rightArrowDisabledState = component.arrowIsDisabledRight;
+            const leftArrowDisabledState = component.arrowIsDisabledLeft();
+            const rightArrowDisabledState = component.arrowIsDisabledRight();
 
             expect(leftArrowDisabledState).toBe(false);
             expect(rightArrowDisabledState).toBe(false);

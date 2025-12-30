@@ -34,56 +34,110 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Documentation',
-        title: 'Migration Guide',
-        keywords: 'update, migrate, обновление, миграция',
-        route: DemoRoute.MigrationGuide,
+        title: 'Information',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'About',
+                keywords: 'related, libraries, other, friendly, npm, packages',
+                route: DemoRoute.About,
+            },
+            {
+                section: 'Documentation',
+                title: 'Browser support',
+                keywords: 'chrome, safari, ie, edge, firefox',
+                route: DemoRoute.BrowserSupport,
+            },
+            {
+                section: 'Documentation',
+                title: 'Changelog',
+                keywords: 'release, change, changelog, archive, history',
+                route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
+                target: '_blank',
+            },
+            {
+                section: 'Documentation',
+                title: 'Migration Guide',
+                keywords: 'update, migrate, обновление, миграция',
+                route: DemoRoute.MigrationGuide,
+            },
+        ],
     },
     {
         section: 'Documentation',
-        title: 'Browser support',
-        keywords: 'chrome, safari, ie, edge, firefox',
-        route: DemoRoute.BrowserSupport,
+        title: 'Styles',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'Typography',
+                keywords:
+                    'layout, text, верстка, markup, font, текст, шрифты, гельветика, sans, typography',
+                route: DemoRoute.Typography,
+            },
+            {
+                section: 'Documentation',
+                title: 'Breakpoints',
+                keywords:
+                    'css, breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
+                route: DemoRoute.Breakpoints,
+            },
+            {
+                section: 'Documentation',
+                title: 'Colors',
+                keywords: 'layout, верстка, palette, markup, цвет, палитра',
+                route: DemoRoute.Colors,
+            },
+            {
+                section: 'Documentation',
+                title: 'Shadows',
+                keywords: 'layout, markup, тень, shadows',
+                route: DemoRoute.Shadows,
+            },
+            {
+                section: 'Documentation',
+                title: 'Lists',
+                keywords:
+                    'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
+                route: DemoRoute.Lists,
+            },
+        ],
     },
     {
         section: 'Documentation',
-        title: 'Changelog',
-        keywords: 'release, change, changelog, archive, history',
-        route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
-        target: '_blank',
-    },
-    {
-        section: 'Documentation',
-        title: 'Server Side Rendering',
-        keywords: 'ssr, server, prerender, back, node, universal',
-        route: DemoRoute.SSR,
-    },
-    {
-        section: 'Documentation',
-        title: 'Direction: RTL',
-        keywords:
-            'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
-        route: DemoRoute.RTL,
-    },
-    {
-        section: 'Documentation',
-        title: 'Documentation engine',
-        keywords:
-            'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
-        route: 'https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-doc/README.md',
-        target: '_blank',
-    },
-    {
-        section: 'Documentation',
-        title: 'Taiga UI family',
-        keywords: 'related, libraries, other, friendly, npm, packages',
-        route: DemoRoute.Related,
-    },
-    {
-        section: 'Documentation',
-        title: 'StackBlitz',
-        keywords: 'reproduce, issue, bug, sandbox, playground, test',
-        route: DemoRoute.StackblitzStarter,
-        target: '_blank',
+        title: 'Customization',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'i18n',
+                keywords: 'i18n, internationalization, local, translate, language',
+                route: DemoRoute.I18N,
+            },
+            {
+                section: 'Documentation',
+                title: 'Variables',
+                keywords: 'colors, css, vars, custom, properties, style',
+                route: DemoRoute.Variables,
+            },
+            {
+                section: 'Documentation',
+                title: 'Appearances',
+                keywords: 'colors, css, theme, custom, style',
+                route: DemoRoute.Appearances,
+            },
+            {
+                section: 'Documentation',
+                title: 'Portals',
+                keywords: 'portal, custom, theme, style',
+                route: DemoRoute.Portals,
+            },
+            {
+                section: 'Documentation',
+                title: 'Viewport',
+                keywords:
+                    'viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown',
+                route: DemoRoute.Viewport,
+            },
+        ],
     },
     {
         section: 'Documentation',
@@ -98,7 +152,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Documentation',
-                title: 'Disable animation',
+                title: 'Disable animations',
                 keywords:
                     'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы',
                 route: DemoRoute.DisableAnimation,
@@ -114,54 +168,59 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Documentation',
-        title: 'AI support',
-        keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
-        route: DemoRoute.AISupport,
-    },
-    // Foundations
-    {
-        section: 'Foundations',
-        title: 'Typography',
-        keywords:
-            'layout, text, верстка, markup, font, текст, шрифты, гельветика, sans, typography',
-        route: DemoRoute.Typography,
-    },
-    {
-        section: 'Foundations',
-        title: 'Breakpoints',
-        keywords:
-            'css, breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
-        route: DemoRoute.Breakpoints,
-    },
-    {
-        section: 'Foundations',
-        title: 'Colors',
-        keywords: 'layout, верстка, palette, markup, цвет, палитра',
-        route: DemoRoute.Colors,
-    },
-    {
-        section: 'Foundations',
-        title: 'Styles',
+        title: 'More',
         subPages: [
             {
-                section: 'Foundations',
-                title: 'Shadows',
-                keywords: 'layout, markup, тень, shadows',
-                route: DemoRoute.Shadows,
+                section: 'Documentation',
+                title: 'Server Side Rendering',
+                keywords: 'ssr, server, prerender, back, node, universal',
+                route: DemoRoute.SSR,
             },
             {
-                section: 'Foundations',
-                title: 'Lists',
-                keywords:
-                    'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
-                route: DemoRoute.Lists,
+                section: 'Documentation',
+                title: 'AI support',
+                keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
+                route: DemoRoute.AISupport,
             },
             {
-                section: 'Foundations',
-                title: 'Spaces',
+                section: 'Documentation',
+                title: 'Direction: RTL',
                 keywords:
-                    'layout, markup, отступы, margin, padding, маржин, падинг, spaces',
-                route: DemoRoute.Spaces,
+                    'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
+                route: DemoRoute.RTL,
+            },
+            {
+                section: 'Documentation',
+                title: 'Documentation engine',
+                keywords:
+                    'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
+                route: 'https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-doc/README.md',
+                target: '_blank',
+            },
+            {
+                section: 'Documentation',
+                title: 'StackBlitz',
+                keywords: 'reproduce, issue, bug, sandbox, playground, test',
+                route: DemoRoute.StackblitzStarter,
+                target: '_blank',
+            },
+        ],
+    },
+    {
+        section: 'Documentation',
+        title: 'Routable Dialog',
+        subPages: [
+            {
+                section: 'Documentation',
+                title: 'Eager',
+                keywords: 'dialog, modal, navigation, route, eager, routable',
+                route: DemoRoute.DialogRoutable,
+            },
+            {
+                section: 'Documentation',
+                title: 'Lazy',
+                keywords: 'dialog, modal, navigation, route, lazy, routable',
+                route: DemoRoute.DialogLazyRoutable,
             },
         ],
     },
@@ -171,12 +230,6 @@ export const pages: DocRoutePages = [
         title: 'Accordion',
         keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
         route: DemoRoute.Accordion,
-    },
-    {
-        section: 'Components',
-        title: 'Alert',
-        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
-        route: DemoRoute.Alert,
     },
     {
         section: 'Components',
@@ -259,10 +312,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'ButtonClose',
+                title: 'ButtonX',
                 keywords: 'кнопка, button, close, закрыть',
-                route: DemoRoute.ButtonClose,
-                meta: {},
+                route: DemoRoute.ButtonX,
+                meta: {
+                    name: 'tui-button-close',
+                },
             },
             {
                 section: 'Components',
@@ -272,6 +327,12 @@ export const pages: DocRoutePages = [
                 meta: {
                     name: 'tui-button-group-card',
                 },
+            },
+            {
+                section: 'Components',
+                title: 'ButtonSelect',
+                keywords: 'кнопка, button, select, multiselect',
+                route: DemoRoute.ButtonSelect,
             },
         ],
     },
@@ -657,11 +718,13 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'Textfield',
+                title: 'Input',
                 keywords:
-                    'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
-                route: DemoRoute.Textfield,
-                meta: {},
+                    'form, textfield, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
+                route: DemoRoute.Input,
+                meta: {
+                    name: 'tui-textfield',
+                },
             },
             {
                 section: 'Components',
@@ -758,13 +821,6 @@ export const pages: DocRoutePages = [
         section: 'Components',
         title: 'Mobile',
         subPages: [
-            {
-                section: 'Components',
-                title: 'MobileDialog',
-                keywords:
-                    'мобильный, ios, android, alert, сообщение, dialog, modal, popup, попап, диалог',
-                route: DemoRoute.MobileDialog,
-            },
             {
                 section: 'Components',
                 title: 'MobileCalendar',
@@ -1005,9 +1061,9 @@ export const pages: DocRoutePages = [
         meta: {},
     },
     {
-        section: 'Layout',
+        section: 'Components',
         title: 'Cell',
-        keywords: 'cell, feed, item, tuiaccessories, accessories',
+        keywords: 'cell, feed, item, tuiAccessories, accessories',
         route: DemoRoute.Cell,
         meta: [
             {name: 'tui-cell', figmaVersion: '1.3.1'},
@@ -1048,7 +1104,7 @@ export const pages: DocRoutePages = [
     {
         section: 'Layout',
         title: 'Header',
-        keywords: 'header, заголовок, item, tuiaccessories, accessories',
+        keywords: 'header, заголовок, item, tuiAccessories, accessories',
         route: DemoRoute.Header,
         meta: {},
     },
@@ -1085,7 +1141,7 @@ export const pages: DocRoutePages = [
         section: 'Components',
         title: 'Title',
         keywords:
-            'subtitle, заголовок, caption, description, подзаголовок, tuisubtitle, title',
+            'subtitle, заголовок, caption, description, подзаголовок, tuiSubtitle, title',
         route: DemoRoute.Title,
     },
     {
@@ -1258,62 +1314,6 @@ export const pages: DocRoutePages = [
         keywords: 'mobile, ios, android, шаги, таб, tab, tabs, vertical, navigation',
         route: DemoRoute.Tabs,
         meta: {},
-    },
-    // Customization
-    {
-        section: 'Customization',
-        title: 'i18n',
-        keywords: 'i18n, internationalization, local, translate, language',
-        route: DemoRoute.I18N,
-    },
-    {
-        section: 'Customization',
-        title: 'Variables',
-        keywords: 'colors, css, vars, custom, properties, style',
-        route: DemoRoute.Variables,
-    },
-    {
-        section: 'Customization',
-        title: 'Appearances',
-        keywords: 'colors, css, theme, custom, style',
-        route: DemoRoute.Appearances,
-    },
-    {
-        section: 'Customization',
-        title: 'Dialog',
-        subPages: [
-            {
-                section: 'Customization',
-                title: 'Custom',
-                keywords: 'dialog, modal, popup, theme, custom, style',
-                route: DemoRoute.DialogCustom,
-            },
-            {
-                section: 'Customization',
-                title: 'Routable',
-                keywords: 'dialog, modal, navigation, route, eager',
-                route: DemoRoute.DialogRoutable,
-            },
-            {
-                section: 'Customization',
-                title: 'LazyRoutable',
-                keywords: 'dialog, modal, navigation, route, lazy',
-                route: DemoRoute.DialogLazyRoutable,
-            },
-        ],
-    },
-    {
-        section: 'Customization',
-        title: 'Portals',
-        keywords: 'portal, custom, theme, style',
-        route: DemoRoute.Portals,
-    },
-    {
-        section: 'Customization',
-        title: 'Viewport',
-        keywords:
-            'viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown',
-        route: DemoRoute.Viewport,
     },
     // Tools
     {
@@ -1532,13 +1532,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'FormatDate',
-                keywords:
-                    'format, форматирование, преобразование, дата, date, timestamp, пайп, pipe',
-                route: DemoRoute.FormatDate,
-            },
-            {
-                section: 'Tools',
                 title: 'FormatNumber',
                 keywords:
                     'format, форматирование, преобразование, пробелы, тысячи, пайп, pipe',
@@ -1546,22 +1539,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'IsPresent',
-                keywords:
-                    'present, существует, ngif, if, пайп, pipe, null, undefined, nil',
-                route: DemoRoute.IsPresent,
-            },
-            {
-                section: 'Tools',
                 title: 'Mapper',
                 keywords: 'mapper, мап, преобразование, пайп, pipe',
                 route: DemoRoute.Mapper,
-            },
-            {
-                section: 'Tools',
-                title: 'RepeatTimes',
-                keywords: 'повторение, repeat, пайп, pipe',
-                route: DemoRoute.RepeatTimes,
             },
             {
                 section: 'Tools',
@@ -1605,13 +1585,6 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Tools',
-                title: 'BreakpointService',
-                keywords:
-                    'breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
-                route: DemoRoute.BreakpointService,
-            },
-            {
-                section: 'Tools',
                 title: 'KeyboardService',
                 keywords: 'сервис, service, keyboard, virtual, screen, ios, android',
                 route: '/services/keyboard-service',
@@ -1646,13 +1619,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Browser',
-                keywords:
-                    'Инструменты, утилиты, browser, браузер, firefox, ie, edge, ios, chrome',
-                route: DemoRoute.Browser,
-            },
-            {
-                section: 'Tools',
                 title: 'Miscellaneous',
                 keywords: `Инструменты, утилиты, miscellaneous, прочие, assert, isNil, isPresent, flatLength,
                            getPaymentSystem, syncObject`,
@@ -1663,13 +1629,6 @@ export const pages: DocRoutePages = [
                 title: 'Tokens',
                 keywords: 'токены tokens',
                 route: DemoRoute.Tokens,
-            },
-            {
-                section: 'Tools',
-                title: 'Pure',
-                keywords:
-                    'Инструменты, утилиты, lazy, calculation, optimization, pipe, memoization',
-                route: DemoRoute.Pure,
             },
         ],
     },

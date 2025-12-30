@@ -1,7 +1,7 @@
 <tui-doc-page
     header="HintPointer"
     package="CORE"
-    path="core/directives/hint"
+    path="core/portals/hint"
     type="directives"
 >
     <ng-template pageTab>
@@ -20,8 +20,8 @@
             <div
                 tuiHint="Some information"
                 tuiHintPointer
-                [tuiHintAppearance]="appearance"
-                [tuiHintDirection]="direction"
+                [tuiHintAppearance]="hint.appearance"
+                [tuiHintDirection]="hint.direction"
                 [tuiHintHideDelay]="hideDelay"
                 [tuiHintShowDelay]="showDelay"
             >
@@ -52,8 +52,11 @@
             >
                 Hide delay (ms)
             </tr>
+            <tbody
+                #hint
+                tuiDocHint
+            ></tbody>
         </table>
-        <inherited-documentation />
     </ng-template>
 
     <tui-setup *pageTab />

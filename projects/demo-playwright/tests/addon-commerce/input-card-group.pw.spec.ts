@@ -40,9 +40,8 @@ test.describe('InputCardGroup', () => {
                 .soft(numberTextfield)
                 .toHaveScreenshot('02-input-card-group-cleared.png');
 
-            await apiPageExample.click({
-                position: {x: 0, y: 0}, // click top left corner, away from field
-            });
+            // click top left corner, away from field
+            await page.locator('body').click({position: {x: 0, y: 0}});
 
             await expect
                 .soft(numberTextfield)

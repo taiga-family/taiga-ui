@@ -9,7 +9,7 @@
             tuiAvatar="@tui.dollar-sign"
         ></div>
         <div tuiTitle>
-            <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+            <strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
             <div tuiSubtitle>Dollar account</div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         appearance="flat"
         iconStart="@tui.ellipsis-vertical"
         size="s"
-        tuiDropdownOpen
+        tuiDropdownAuto
         tuiIconButton
         type="button"
         class="fallback"

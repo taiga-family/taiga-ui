@@ -37,12 +37,13 @@
                 </button>
             </h3>
             <tui-expand [expanded]="item.expanded">
-                <tui-input
-                    class="tui-space_top-4"
-                    [(ngModel)]="item.value"
-                >
-                    Some input
-                </tui-input>
+                <tui-textfield class="tui-space_top-4">
+                    <input
+                        tuiInput
+                        [(ngModel)]="item.value"
+                    />
+                    <label tuiLabel>Some input</label>
+                </tui-textfield>
             </tui-expand>
         </div>
     }

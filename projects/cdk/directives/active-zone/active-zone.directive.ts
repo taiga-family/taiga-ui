@@ -1,25 +1,9 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    inject,
-    Injectable,
-    NgZone,
-    type OnDestroy,
-} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Directive, ElementRef, inject, Injectable, type OnDestroy} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
-import {tuiArrayRemove, tuiPure} from '@taiga-ui/cdk/utils';
-import {
-    distinctUntilChanged,
-    map,
-    type Observable,
-    share,
-    skip,
-    startWith,
-    tap,
-} from 'rxjs';
+import {tuiArrayRemove} from '@taiga-ui/cdk/utils/miscellaneous';
+import {distinctUntilChanged, map, type Observable, share, skip, startWith} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 @Directive({
@@ -30,10 +14,7 @@ import {
     exportAs: 'tuiActiveZone',
 })
 export class TuiActiveZone implements OnDestroy {
-    // TODO: Should we remove in v5? It's no longer used in Taiga UI
-    private readonly control: any = inject(NgControl, {self: true, optional: true});
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
-    private readonly zone = inject(NgZone);
     private tuiActiveZoneParent: TuiActiveZone | null = null;
     private readonly parent = inject(TuiActiveZone, {skipSelf: true, optional: true});
     private readonly el: HTMLElement =
@@ -45,12 +26,7 @@ export class TuiActiveZone implements OnDestroy {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tap((active) => {
-            if (!active && typeof this.control?.valueAccessor.onTouched === 'function') {
-                this.control.valueAccessor.onTouched();
-            }
-        }),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(),
         share(),
     );
 
@@ -61,7 +37,9 @@ export class TuiActiveZone implements OnDestroy {
     }
 
     public set tuiActiveZoneParentSetter(zone: TuiActiveZone | null) {
-        this.setZone(zone);
+        this.tuiActiveZoneParent?.removeSubActiveZone(this);
+        zone?.addSubActiveZone(this);
+        this.tuiActiveZoneParent = zone;
     }
 
     public ngOnDestroy(): void {
@@ -75,17 +53,14 @@ export class TuiActiveZone implements OnDestroy {
         );
     }
 
-    @tuiPure
-    private setZone(zone: TuiActiveZone | null): void {
-        this.tuiActiveZoneParent?.removeSubActiveZone(this);
-        zone?.addSubActiveZone(this);
-        this.tuiActiveZoneParent = zone;
-    }
-
+    // issue: https://github.com/typescript-eslint/typescript-eslint/issues/11770
+    // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private addSubActiveZone(activeZone: TuiActiveZone): void {
         this.children = [...this.children, activeZone];
     }
 
+    // issue: https://github.com/typescript-eslint/typescript-eslint/issues/11770
+    // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private removeSubActiveZone(activeZone: TuiActiveZone): void {
         this.children = tuiArrayRemove(this.children, this.children.indexOf(activeZone));
     }

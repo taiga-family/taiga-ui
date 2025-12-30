@@ -10,7 +10,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#custom');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-select').click();
+        await example.locator('[tuiSelectLike]').click();
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
 
         await expect
@@ -24,7 +24,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#links');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('[tuiDropdownOpen]').click();
+        await example.locator('[tuiDropdownAuto]').click();
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
         await page.waitForTimeout(300);
 
@@ -117,7 +117,7 @@ test.describe('DataList', () => {
     test('Complex', async ({page, browserName}) => {
         test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
 
-        await page.setViewportSize({width: 1400, height: 500});
+        await page.setViewportSize({width: 1500, height: 900});
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
@@ -126,6 +126,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
+        await expect(example).toBeInViewport();
 
         await expect.soft(page).toHaveScreenshot('05-data-list.png');
 

@@ -1,5 +1,5 @@
 import {type InjectOptions, type Signal, type WritableSignal} from '@angular/core';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 
 import {TuiIcons} from './icons.directive';
 

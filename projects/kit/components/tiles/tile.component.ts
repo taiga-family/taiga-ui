@@ -2,12 +2,12 @@ import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
-    type ElementRef,
+    ElementRef,
     inject,
-    Input,
+    input,
     type OnDestroy,
     signal,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
@@ -21,26 +21,20 @@ import {TuiTilesComponent} from './tiles.component';
     providers: [TuiTileService],
     host: {
         '[class._dragged]': 'dragged()',
-        '[style.gridColumn]': 'column',
-        '[style.gridRow]': 'row',
-        '(pointerenter)': 'onEnter()',
+        '[style.grid-column]': '`span var(--tui-width, ${width()})`',
+        '[style.grid-row]': '`span var(--tui-height, ${height()})`',
+        '(pointerenter)': 'tiles.rearrange(element)',
     },
 })
 export class TuiTile implements OnDestroy, AfterViewInit {
-    @ViewChild('wrapper')
-    private readonly wrapper?: ElementRef<HTMLElement>;
-
+    private readonly wrapper = viewChild('wrapper', {read: ElementRef});
     private readonly service = inject(TuiTileService);
-    private readonly tiles = inject(TuiTilesComponent);
 
-    protected dragged = signal(false);
+    protected readonly tiles = inject(TuiTilesComponent);
+    protected readonly dragged = signal(false);
 
-    @Input()
-    public width = 1;
-
-    @Input()
-    public height = 1;
-
+    public readonly width = input(1);
+    public readonly height = input(1);
     public readonly element = tuiInjectElement();
 
     public onDrag(offset: readonly [number, number]): void {
@@ -59,30 +53,12 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        if (this.wrapper) {
-            this.service.init(this.wrapper.nativeElement);
-        }
+        this.service.init(this.wrapper()?.nativeElement);
     }
 
     public ngOnDestroy(): void {
         if (this.tiles.element() === this.element) {
             this.tiles.element.set(null);
         }
-    }
-
-    protected get column(): string {
-        return `span var(--tui-width, ${this.width})`;
-    }
-
-    protected get row(): string {
-        return `span var(--tui-height, ${this.height})`;
-    }
-
-    protected onEnter(): void {
-        this.tiles.rearrange(this.element);
-    }
-
-    protected onTransitionEnd(): void {
-        this.dragged.set(false);
     }
 }

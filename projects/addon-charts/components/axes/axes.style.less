@@ -1,14 +1,16 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr auto;
+    block-size: 100%;
 }
 
 .t-wrapper {
-    display: flex;
-    flex: 1;
-    block-size: 100%;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-row: span 2;
 }
 
 .t-grid {
@@ -20,6 +22,7 @@
     border-width: 1px;
     border-color: var(--tui-border-normal);
     isolation: isolate;
+    grid-row: 1;
 }
 
 .t-horizontal {
@@ -65,7 +68,7 @@
 }
 
 .t-name {
-    font: var(--tui-font-text-xs);
+    font: var(--tui-font-body-xs);
     writing-mode: tb;
     text-align: center;
     padding-block-end: 0.75rem;
@@ -78,7 +81,7 @@
 
 .t-labels-y {
     display: flex;
-    font: var(--tui-font-text-xs);
+    font: var(--tui-font-body-xs);
     flex-direction: column-reverse;
     justify-content: space-between;
     color: var(--tui-text-secondary);
@@ -98,14 +101,12 @@
 
     &_inset {
         position: absolute;
-        top: 0.5625rem;
-        left: 0.25rem;
-        bottom: -0.75rem;
+        inset-block: 0.5625rem -0.75rem;
+        inset-inline: 0.25rem auto;
         pointer-events: none;
 
         &_secondary {
-            left: auto;
-            right: 0.25rem;
+            inset-inline: auto 0.25rem;
             text-align: end;
         }
     }
@@ -114,21 +115,23 @@
 .t-labels-x {
     position: relative;
     display: flex;
-    font: var(--tui-font-text-xs);
+    font: var(--tui-font-body-xs);
     border-inline-end: 1px solid transparent;
     color: var(--tui-text-secondary);
 }
 
 .t-label-x {
-    block-size: 0.4375rem;
-    border-inline-start: 1px solid var(--tui-border-normal);
     flex: 1;
-    margin-block-end: 1.5625rem;
 
     &::before {
         content: '';
         display: block;
         block-size: 0.5625rem;
+        border-inline-start: 1px solid var(--tui-border-normal);
+    }
+
+    &:last-of-type::before {
+        border: none;
     }
 
     &_transparent {
@@ -138,14 +141,17 @@
     :host._centered & {
         block-size: 2rem;
         text-align: center;
-        border: none;
         margin: 0;
+
+        &::before {
+            border: none;
+        }
     }
 
     :host:not(._centered) & {
         &:last-child:not(:first-child) {
             position: absolute;
-            right: 0;
+            inset-inline-end: 0;
             text-align: end;
             border-inline-start: none;
         }
@@ -164,10 +170,8 @@
 
 .t-content {
     position: absolute;
-    top: 0;
-    left: -1px;
-    right: 0;
-    bottom: -1px;
     display: flex;
+    inset-block: 0 -1px;
+    inset-inline: -1px 0;
     align-items: flex-end;
 }

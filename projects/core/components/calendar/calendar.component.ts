@@ -19,7 +19,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {Subject} from 'rxjs';
 

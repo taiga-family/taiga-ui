@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {CHAR_ZERO_WIDTH_SPACE} from '@taiga-ui/cdk';
 import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
@@ -12,14 +13,8 @@ import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
     changeDetection,
     providers: [
         tuiInputNumberOptionsProvider({
-            valueTransformer: {
-                fromControlValue(value: number | null): number | null {
-                    return value && Math.abs(value);
-                },
-                toControlValue(value: number | null): number | null {
-                    return value && -1 * Math.abs(value);
-                },
-            },
+            minusSign: CHAR_ZERO_WIDTH_SPACE,
+            prefix: CHAR_ZERO_WIDTH_SPACE, // Make minus non-erasable
         }),
     ],
 })

@@ -4,8 +4,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiFilterByInputPipe} from '@taiga-ui/kit';
 
 interface Python {
     readonly id: number;
@@ -19,7 +19,7 @@ interface Python {
         TuiChevron,
         TuiComboBox,
         TuiDataList,
-        TuiTextfield,
+        TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -37,8 +37,13 @@ export default class Example {
         {id: 999, name: 'Graham Chapman'},
     ];
 
-    protected readonly stringify: TuiStringHandler<number> = (id) =>
-        this.items.find((item) => item.id === id)?.name ?? '';
+    protected readonly stringify: TuiStringHandler<Python | number> = (item) => {
+        return typeof item === 'number'
+            ? // Number-type form control value => human-readable text inside textfield
+              (this.items.find(({id}) => id === item)?.name ?? '')
+            : // for `tuiFilterByInput` pipe
+              item.name;
+    };
 
     protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
         const {name} = this.items.find((item) => item.id === id)!;

@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_MATCHER, type TuiMatcher} from '@taiga-ui/cdk';
-import {TuiCell, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiDataListWrapper,
@@ -66,7 +66,6 @@ const DATA: readonly User[] = [
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiInputPhone,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -96,11 +95,4 @@ export default class Example {
         (search.startsWith('+') &&
             TUI_DEFAULT_MATCHER(item.phone, search.replaceAll(/\D/g, ''))) ||
         TUI_DEFAULT_MATCHER(item.toString(), search);
-
-    private isFullMatch(response: readonly User[], value: string): boolean {
-        return (
-            response.length === 1 &&
-            (String(response[0]) === value || response[0]?.phone === value)
-        );
-    }
 }

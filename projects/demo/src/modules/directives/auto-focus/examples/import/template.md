@@ -6,10 +6,10 @@
 ></div>
 
 <!-- Or focusable component of Taiga UI -->
-<tui-input
-  tuiAutoFocus
-  [(ngModel)]="model"
->
-  Input
-</tui-input>
+<tui-textfield>
+  <input
+    tuiAutoFocus
+    tuiInput
+  />
+</tui-textfield>
 ```

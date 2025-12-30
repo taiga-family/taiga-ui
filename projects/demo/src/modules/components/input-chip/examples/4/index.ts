@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
+import {TuiDataList, TuiSelectLike} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -29,7 +29,6 @@ interface User {
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,
-        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

@@ -82,7 +82,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
 
@@ -101,12 +101,13 @@
                         tuiTd
                     >
                         <div>
-                            <tui-chip
+                            <span
                                 size="s"
+                                tuiChip
                                 [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
                             >
                                 {{ item.firstName }}
-                            </tui-chip>
+                            </span>
                         </div>
                     </td>
                     <td
@@ -125,7 +126,7 @@
                         *tuiCell="'balance'"
                         tuiTd
                     >
-                        {{ item.balance | tuiFormatNumber | async }}
+                        {{ item.balance | tuiFormatNumber }}
                     </td>
                 </tr>
             }
@@ -171,7 +172,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
 
@@ -204,7 +205,7 @@
                         *tuiCell="'balance'"
                         tuiTd
                     >
-                        {{ item.balance | tuiFormatNumber | async }}
+                        {{ item.balance | tuiFormatNumber }}
                     </td>
                 </tr>
             }
@@ -247,7 +248,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
 
@@ -256,14 +257,15 @@
                 <tui-expand [expanded]="customOpen">
                     <div class="chips">
                         @for (item of customContentData; track item) {
-                            <tui-chip
+                            <span
                                 size="s"
+                                tuiChip
                                 [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
                                 [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`"
                             >
                                 {{ item.firstName }}
                                 {{ item.lastName }}
-                            </tui-chip>
+                            </span>
                         }
                     </div>
                 </tui-expand>

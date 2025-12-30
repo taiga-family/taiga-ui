@@ -1,6 +1,5 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Signal, signal} from '@angular/core';
 import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
-import {type Observable, of} from 'rxjs';
 
 /**
  * Number and card number i18n
@@ -25,9 +24,9 @@ export const TUI_CARD_EXPIRY_TEXTS = new InjectionToken(
 /**
  * Card CVC number text [mobile, desktop]
  */
-export const TUI_CARD_CVC_TEXTS = new InjectionToken<Observable<[string, string]>>(
+export const TUI_CARD_CVC_TEXTS = new InjectionToken<Signal<[string, string]>>(
     ngDevMode ? 'TUI_CARD_CVC_TEXTS' : '',
     {
-        factory: () => of(['CVC', 'CVC/CVV']),
+        factory: () => signal(['CVC', 'CVC/CVV']),
     },
 );

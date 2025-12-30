@@ -1,23 +1,21 @@
 import {computed, Directive, effect, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
-    TuiTextfieldDirective,
     tuiTextfieldIcon,
     TuiWithNativePicker,
-    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
-    tuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+    TuiDropdownOpen,
+} from '@taiga-ui/core/portals/dropdown';
+import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
-import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
 import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
 
@@ -27,16 +25,16 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
         tuiAsControl(TuiInputMonthDirective),
         tuiValueTransformerFrom(TUI_INPUT_MONTH_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, TuiSelectLike, TuiDropdownAuto],
+    hostDirectives: [TuiWithInput, TuiSelectLike, TuiDropdownAuto],
     host: {
         '[disabled]': 'disabled()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
 })
 export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
-    private readonly textfield = inject(TuiTextfieldDirective);
-    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
-    private readonly open = tuiDropdownOpen();
+    private readonly input = inject(TuiInputDirective);
+    private readonly months = inject(TUI_MONTHS);
+    private readonly open = inject(TuiDropdownOpen).open;
 
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -44,7 +42,12 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     protected readonly valueEffect = effect(() => {
-        this.textfield.value.set(this.formatter()?.(this.value()) || '');
+        const value = this.value();
+        const formatted = value
+            ? `${this.months()[value.month] ?? ''} ${value.formattedYear}`
+            : '';
+
+        this.input.value.set(formatted);
     });
 
     protected readonly calendarIn = effect(() => {
@@ -65,7 +68,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     public readonly native =
-        !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
+        !!inject(TuiWithNativePicker, {optional: true}) && inject(WA_IS_MOBILE);
 
     protected clear(): void {
         this.onChange(null);

@@ -1,10 +1,13 @@
 ```html
-<tui-input [formControl]="control">
-  Account
-
+<tui-textfield>
+  <label tuiLabel>Account</label>
+  <input
+    [formControl]="control"
+    tuiInput
+  />
   <tui-data-list-wrapper
-    *tuiDataList
+    *tuiDropdown
     [items]="items"
-  ></tui-data-list-wrapper>
-</tui-input>
+  />
+</tui-textfield>
 ```

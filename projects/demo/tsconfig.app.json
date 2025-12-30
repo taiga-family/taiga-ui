@@ -1,10 +1,13 @@
 {
     "extends": "../../tsconfig.json",
-    "files": ["src/main.ts", "src/polyfills.ts"],
-    "include": ["**/*.d.ts", "**/examples/**/index.ts"],
+    "files": ["src/typings.d.ts"],
+    "include": ["src/**/*.ts"],
     "angularCompilerOptions": {
         "strictMetadataEmit": false,
-        "compilationMode": "full"
+        "compilationMode": "full",
+        "extendedDiagnostics": {
+            "defaultCategory": "warning"
+        }
     },
     "compilerOptions": {
         "target": "ES2022",

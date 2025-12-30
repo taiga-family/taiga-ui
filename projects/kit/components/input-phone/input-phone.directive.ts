@@ -1,4 +1,4 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
     MASKITO_DEFAULT_OPTIONS,
@@ -8,11 +8,8 @@ import {
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {
-    TuiTextfieldComponent,
-    TuiTextfieldDirective,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
@@ -28,10 +25,10 @@ function isText(value: string): boolean {
 @Directive({
     selector: 'input[tuiInputPhone]',
     providers: [
-        tuiAsControl(TuiInputPhone),
+        tuiAsControl(TuiInputPhoneDirective),
         tuiValueTransformerFrom(TUI_INPUT_PHONE_OPTIONS),
     ],
-    hostDirectives: [TuiWithTextfield, MaskitoDirective],
+    hostDirectives: [TuiWithInput, MaskitoDirective],
     host: {
         type: 'tel',
         '[inputMode]': 'inputMode()',
@@ -39,16 +36,17 @@ function isText(value: string): boolean {
         '(input)': 'onInput($event.target.value)',
     },
 })
-export class TuiInputPhone extends TuiControl<string | null> {
-    private readonly textfield = inject(TuiTextfieldDirective);
+export class TuiInputPhoneDirective extends TuiControl<string | null> {
+    private readonly input = inject(TuiInputDirective);
     private readonly host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
 
+    protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
+    protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly nonRemovablePrefix = computed(() => `${this.countryCode()} `);
     protected inputMode = computed(() => (this.allowText() ? 'text' : 'numeric'));
-
     protected readonly valueEffect = effect(() => {
         if (this.value()) {
-            this.textfield.value.set(maskitoTransform(this.value() ?? '', this.mask()));
+            this.input.value.set(maskitoTransform(this.value() ?? '', this.maskito()));
         }
     });
 
@@ -57,46 +55,31 @@ export class TuiInputPhone extends TuiControl<string | null> {
         const prefix = incomplete && this.interactive() && !this.allowText();
 
         if (!this.host.focused() && incomplete) {
-            this.textfield.value.set('');
+            this.input.value.set('');
         } else if (this.host.focused() && prefix) {
-            this.textfield.value.set(this.nonRemovablePrefix());
+            this.input.value.set(this.nonRemovablePrefix());
         }
     });
 
-    protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
-    protected readonly el = tuiInjectElement<HTMLInputElement>();
-
-    protected readonly mask = computed(() =>
-        this.calculateMask(
-            this.countryCode(),
-            this.phoneMask(),
-            this.nonRemovablePrefix(),
-            this.allowText(),
+    protected readonly countryCode = computed(() => extractCode(this.mask()));
+    protected readonly phoneMask = computed(() => extractMask(this.mask()));
+    protected readonly maskito = tuiMaskito(
+        computed(() =>
+            this.calculateMask(
+                this.countryCode(),
+                this.phoneMask(),
+                this.nonRemovablePrefix(),
+                this.allowText(),
+            ),
         ),
     );
 
-    protected readonly maskito = tuiMaskito(computed(() => this.mask()));
-
-    public readonly countryCode = signal(extractCountryCode(this.options.mask));
-    public readonly allowText = signal(this.options.allowText);
-    public readonly phoneMask = signal(extractMask(this.options.mask));
-
-    // TODO(v5): replace with signal input
-    @Input('allowText')
-    public set allowTextSetter(allow: boolean) {
-        this.allowText.set(allow);
-    }
-
-    // TODO(v5): replace with signal input
-    @Input('mask')
-    public set maskSetter(mask: string) {
-        this.countryCode.set(extractCountryCode(mask));
-        this.phoneMask.set(extractMask(mask));
-    }
+    public readonly allowText = input(this.options.allowText);
+    public readonly mask = input(this.options.mask);
 
     protected onInput(value: string): void {
         if (!value && !this.allowText()) {
-            this.textfield.value.set(this.nonRemovablePrefix());
+            this.input.value.set(this.nonRemovablePrefix());
         }
 
         const parsed = isText(value)
@@ -150,7 +133,7 @@ export class TuiInputPhone extends TuiControl<string | null> {
     }
 }
 
-function extractCountryCode(mask: string): string {
+function extractCode(mask: string): string {
     const match = /^(\+\d+)/.exec(mask);
 
     return match?.[1] || '';

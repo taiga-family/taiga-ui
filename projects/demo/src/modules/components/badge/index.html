@@ -53,28 +53,30 @@
         <tui-doc-demo>
             <p>
                 @if (contentType === 'with icon') {
-                    <tui-badge
+                    <span
                         iconStart="@tui.check"
+                        tuiBadge
                         [appearance]="appearance"
                         [size]="size"
                     >
                         <div tuiFade>Taiga UI</div>
-                    </tui-badge>
+                    </span>
                 }
 
                 @if (contentType === 'text') {
-                    <tui-badge
+                    <span
+                        tuiBadge
                         [appearance]="appearance"
                         [size]="size"
                     >
                         Taiga UI
-                    </tui-badge>
+                    </span>
                 }
 
                 @if (contentType === 'image') {
                     <img
                         alt="market"
-                        src="/assets/images/avatar.jpg"
+                        src="assets/images/avatar.jpg"
                         tuiBadge
                         [appearance]="appearance"
                         [size]="size"

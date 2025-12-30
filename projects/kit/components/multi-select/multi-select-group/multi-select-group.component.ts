@@ -2,11 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChildren,
+    contentChildren,
     inject,
-    Input,
-    type QueryList,
-    signal,
+    input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -31,35 +29,27 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     },
 })
 export class TuiMultiSelectGroupComponent<T> {
+    private readonly options = contentChildren(TuiOptionWithValue<T>);
     private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly control =
-        inject(TuiTextfieldComponent, {optional: true})?.control ||
+        inject(TuiTextfieldComponent, {optional: true})?.control() ||
         inject(NgControl, {optional: true});
 
-    protected readonly values = signal<readonly T[]>([]);
+    protected readonly values = computed(() => this.options().map(({value}) => value()));
     protected readonly texts = inject(TUI_MULTI_SELECT_TEXTS);
     protected readonly value = tuiInjectValue<readonly T[] | null>();
     protected readonly checked = computed(() =>
         this.values().every((item) =>
-            this.value()?.some((value) => this.handlers.identityMatcher()(item, value)),
+            this.value()?.some(
+                (v) => tuiIsPresent(item) && this.handlers.identityMatcher()(item, v),
+            ),
         ),
     );
 
-    @Input()
-    public label = '';
-
-    @ContentChildren(TuiOptionWithValue)
-    protected set options(options: QueryList<TuiOptionWithValue<T>>) {
-        this.values.set(
-            options
-                .toArray()
-                .map(({value}) => value())
-                .filter(tuiIsPresent),
-        );
-    }
+    public readonly label = input('');
 
     protected toggle(): void {
-        const values = this.values();
+        const values = this.values().filter(tuiIsPresent);
         const matcher = this.handlers.identityMatcher();
         const value = this.value() || [];
         const others = value.filter((a) => values.every((b) => !matcher(a, b)));

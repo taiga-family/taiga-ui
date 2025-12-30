@@ -29,9 +29,9 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.yyyy',
-        MDY: 'mm.dd.yyyy',
-        YMD: 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.yyyy',
+        'mm/dd/yyyy': 'mm.dd.yyyy',
+        'yyyy/mm/dd': 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Rodyti slaptažodį', 'Slėpti slaptažodį'],
@@ -83,4 +83,12 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Atstatyti',
     },
     phoneSearch: 'Ievadiet valsti vai kodu',
+    dayRangePeriods: [
+        'Visą laiką',
+        'Šiandien',
+        'Vakar',
+        'Šią savaitę',
+        'Šį mėnesį',
+        'Praėjusį mėnesį',
+    ],
 };

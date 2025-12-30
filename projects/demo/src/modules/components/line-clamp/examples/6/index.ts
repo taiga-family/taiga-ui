@@ -199,7 +199,7 @@ export default class Example {
         'Paradox',
     ];
 
-    protected readonly users = Array.from(new Array(10_000), (_, index) => {
+    protected readonly users = Array.from({length: 10_000}, (_, index) => {
         const firstName = this.names[Math.floor(Math.random() * this.names.length)] ?? '';
         const lastName =
             this.names[Math.floor((Math.random() * this.names.length) / 2)] ?? '';

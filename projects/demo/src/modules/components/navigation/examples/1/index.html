@@ -45,7 +45,7 @@
     <span tuiNavigationLogo>
         <tui-icon icon="@tui.home" />
         <span tuiFade>A very very long product name</span>
-        <tui-badge>Test</tui-badge>
+        <div tuiBadge>Test</div>
     </span>
     <span tuiNavigationSegments>
         <button
@@ -66,7 +66,7 @@
             appearance="secondary-grayscale"
             tuiButton
             tuiChevron
-            tuiDropdownOpen
+            tuiDropdownAuto
             type="button"
             [tuiDropdown]="products"
         >
@@ -133,10 +133,19 @@
         <header>
             <button
                 iconStart="@tui.home"
-                tuiAsideItem
                 type="button"
+                [tuiAsideItem]="hint"
             >
-                <span tuiFade>A very very long product name</span>
+                <ng-container [ngTemplateOutlet]="hint" />
+                <ng-template #hint>
+                    <span tuiFade>A very very long product name</span>
+                    <div
+                        appearance="accent"
+                        tuiBadge
+                    >
+                        Alpha
+                    </div>
+                </ng-template>
             </button>
         </header>
         <button
@@ -147,7 +156,12 @@
             Search
 
             @if (expanded()) {
-                <tui-badge appearance="accent">12</tui-badge>
+                <div
+                    appearance="accent"
+                    tuiBadge
+                >
+                    12
+                </div>
             }
         </button>
         <a
@@ -200,8 +214,8 @@
             iconEnd="@tui.chevron-right"
             iconStart="@tui.ellipsis"
             tuiAsideItem
+            tuiDropdownAuto
             tuiDropdownHover
-            tuiDropdownOpen
             type="button"
             [tuiDropdown]="more"
         >
@@ -339,54 +353,56 @@
                 Primary
             </button>
         </nav>
-        <ng-container *tuiRepeatTimes="let index of 10">
-            <form
-                appearance="floating"
-                tuiCardLarge
-                tuiForm="m"
-                [style.grid-column]="'2 / span 7'"
-                [style.margin-block-start.rem]="1"
-            >
-                <header tuiHeader>
+        <ng-container>
+            @for (_ of '-'.repeat(10); track $index) {
+                <form
+                    appearance="floating"
+                    tuiCardLarge
+                    tuiForm="m"
+                    [style.grid-column]="'2 / span 7'"
+                    [style.margin-block-start.rem]="1"
+                >
+                    <header tuiHeader>
+                        <h2 tuiTitle>
+                            Registration form
+                            <span tuiSubtitle>Tell us about yourself</span>
+                        </h2>
+                    </header>
+                    <tui-textfield>
+                        <label tuiLabel>Name</label>
+                        <input
+                            placeholder="John Wick"
+                            tuiInput
+                        />
+                    </tui-textfield>
+                    <footer>
+                        <button
+                            appearance="secondary"
+                            tuiButton
+                            type="button"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            tuiButton
+                            type="submit"
+                        >
+                            Ok
+                        </button>
+                    </footer>
+                </form>
+                <div
+                    appearance="outline-grayscale"
+                    tuiCardLarge
+                    [style.grid-column]="'span 3'"
+                    [style.margin-block-start.rem]="1"
+                >
                     <h2 tuiTitle>
-                        Registration form
-                        <span tuiSubtitle>Tell us about yourself</span>
+                        Sidebar content
+                        <span tuiSubtitle>Use CSS grid to position</span>
                     </h2>
-                </header>
-                <tui-textfield>
-                    <label tuiLabel>Name</label>
-                    <input
-                        placeholder="John Wick"
-                        tuiTextfield
-                    />
-                </tui-textfield>
-                <footer>
-                    <button
-                        appearance="secondary"
-                        tuiButton
-                        type="button"
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        tuiButton
-                        type="submit"
-                    >
-                        Ok
-                    </button>
-                </footer>
-            </form>
-            <div
-                appearance="outline-grayscale"
-                tuiCardLarge
-                [style.grid-column]="'span 3'"
-                [style.margin-block-start.rem]="1"
-            >
-                <h2 tuiTitle>
-                    Sidebar content
-                    <span tuiSubtitle>Use CSS grid to position</span>
-                </h2>
-            </div>
+                </div>
+            }
         </ng-container>
     </main>
 </div>

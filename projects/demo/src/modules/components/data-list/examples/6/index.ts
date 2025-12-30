@@ -1,23 +1,13 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiButton,
-        TuiChevron,
-        TuiDataList,
-        TuiDropdown,
-        TuiInputModule,
-    ],
+    imports: [ReactiveFormsModule, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
     styles: `
         .option {
@@ -48,7 +38,7 @@ export default class Example {
         },
     ];
 
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     public control = new FormControl('');
 }

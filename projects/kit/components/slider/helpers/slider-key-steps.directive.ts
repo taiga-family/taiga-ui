@@ -1,4 +1,13 @@
-import {computed, Directive, inject, INJECTOR, Input, input, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    INJECTOR,
+    input,
+    type OnInit,
+    signal,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {
@@ -8,7 +17,6 @@ import {
 } from '@taiga-ui/cdk/classes';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {switchMap, timer} from 'rxjs';
 
 import {TuiSliderComponent} from '../slider.component';
@@ -17,24 +25,35 @@ import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
 @Directive({
     selector: 'input[tuiSlider][keySteps]',
     host: {
-        '[attr.min]': 'transformer() ? 0 : slider.min',
+        '[attr.min]': 'transformer() ? 0 : slider?.min',
         '[attr.step]': 'transformer() ? 1 : step()',
-        '[attr.max]': 'transformer() ? totalSteps() : slider.max',
+        '[attr.max]': 'transformer() ? totalSteps() : slider?.max',
         '[attr.aria-valuemin]': 'min()',
         '[attr.aria-valuemax]': 'max()',
         '[attr.aria-valuenow]': 'controlValue()',
     },
 })
-export class TuiSliderKeyStepsBase {
+export class TuiSliderKeyStepsBase implements OnInit {
     private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
 
     protected readonly min = signal<number | undefined>(undefined);
     protected readonly max = signal<number | undefined>(undefined);
+    protected readonly sync = effect(() => {
+        const steps = this.keySteps();
 
-    public step = input(1);
+        this.transformer.set(steps && tuiCreateKeyStepsTransformer(steps));
+        this.min.set(steps?.[0][1]);
+        this.max.set(steps?.[steps.length - 1]?.[1]);
+    });
 
-    public transformer = signal<TuiValueTransformer<number, number> | null>(null);
+    public slider!: TuiSliderComponent;
+    public readonly step = input(1);
+    public readonly keySteps = input<TuiKeySteps>();
+    public readonly transformer = signal<TuiValueTransformer<number, number> | undefined>(
+        undefined,
+    );
+
     public controlValue = toSignal(
         timer(0) // https://github.com/angular/angular/issues/54418
             .pipe(switchMap(() => tuiControlValue<number>(this.control))),
@@ -51,16 +70,8 @@ export class TuiSliderKeyStepsBase {
         Math.round(100 / this.step()),
     );
 
-    @tuiPure
-    public get slider(): TuiSliderComponent {
-        return this.injector.get(TuiSliderComponent);
-    }
-
-    @Input()
-    public set keySteps(steps: TuiKeySteps | null) {
-        this.transformer.set(steps && tuiCreateKeyStepsTransformer(steps));
-        this.min.set(steps?.[0][1]);
-        this.max.set(steps?.[steps.length - 1]?.[1]);
+    public ngOnInit(): void {
+        this.slider = this.injector.get(TuiSliderComponent);
     }
 
     public takeStep(coefficient: number): number {
@@ -94,6 +105,7 @@ export class TuiSliderKeyStepsBase {
 @Directive({
     selector:
         'input[tuiSlider][keySteps][ngModel],input[tuiSlider][keySteps][formControl],input[tuiSlider][keySteps][formControlName]',
+    inputs: ['keySteps'],
     providers: [tuiFallbackValueProvider(0)],
     host: {
         '[value]': 'base.toSliderValue(value())',
@@ -106,8 +118,7 @@ export class TuiSliderKeyStepsBase {
 export class TuiSliderKeySteps extends TuiControl<number> {
     protected readonly base = inject(TuiSliderKeyStepsBase);
 
-    @Input()
-    public set keySteps(steps: TuiKeySteps | null) {
+    public set keySteps(steps: TuiKeySteps | null | undefined) {
         this.transformer = steps
             ? tuiCreateKeyStepsTransformer(steps)
             : TUI_IDENTITY_VALUE_TRANSFORMER;

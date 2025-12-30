@@ -1,15 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
-import {TuiLink} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDemo, TuiLink, TuiTabs],
+    imports: [TuiDemo, TuiTabs],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
-    protected readonly cypress = import('./examples/cypress.md?raw');
-    protected readonly playwright = import('./examples/playwright.md?raw');
+    protected readonly cypress = import('./examples/cypress.md');
+    protected readonly playwright = import('./examples/playwright.md');
 }

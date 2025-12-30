@@ -2,15 +2,16 @@ import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {type TuiDialogOptions} from '@taiga-ui/core/components/dialog';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';
+import {TUI_BREAKPOINT, TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
@@ -23,18 +24,20 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider(() => ({
-            appearance: inject(TUI_IS_MOBILE) ? 'action' : 'glass',
+            appearance: inject(WA_IS_MOBILE) ? 'action' : 'glass',
             size: 's',
         })),
     ],
     host: {
-        '[attr.tuiTheme]': 'isMobile ? "" : "dark"',
+        '[attr.tuiTheme]': 'isMobile() ? "" : "dark"',
     },
 })
 export class TuiPdfViewer<O, I> {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly breakpoint = inject(TUI_BREAKPOINT);
+    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
     protected readonly el = tuiInjectElement();
-    protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly context =
+        injectContext<TuiPortalContext<TuiDialogOptions<I>, O>>();
 }

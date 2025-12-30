@@ -1,7 +1,8 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {type Params} from '@angular/router';
-import {TUI_IS_E2E, tuiCreateOptions} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {tuiCreateOptions} from '@taiga-ui/cdk';
 
 declare global {
     interface Window {
@@ -37,9 +38,7 @@ export class YaMetrikaService {
     private readonly support =
         !!this.options.id &&
         (this.options.debug ||
-            (isPlatformBrowser(inject(PLATFORM_ID)) &&
-                !ngDevMode &&
-                !inject(TUI_IS_E2E)));
+            (isPlatformBrowser(inject(PLATFORM_ID)) && !ngDevMode && !inject(WA_IS_E2E)));
 
     constructor() {
         if (this.support) {

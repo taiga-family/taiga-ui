@@ -1,18 +1,19 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
-    ContentChildren,
-    EventEmitter,
+    computed,
+    contentChildren,
+    effect,
     inject,
-    Input,
-    Output,
-    type QueryList,
+    input,
+    model,
+    output,
+    signal,
     TemplateRef,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import {
@@ -20,10 +21,8 @@ import {
     TuiSwipe,
     type TuiSwipeDirection,
 } from '@taiga-ui/cdk/directives/swipe';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiCarouselDirective} from './carousel.directive';
 import {TuiCarouselAutoscroll} from './carousel-autoscroll.directive';
@@ -32,7 +31,6 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
 @Component({
     selector: 'tui-carousel',
     imports: [
-        AsyncPipe,
         NgTemplateOutlet,
         TuiCarouselAutoscroll,
         TuiCarouselScroll,
@@ -51,8 +49,8 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         },
     ],
     host: {
-        '[class._transitioned]': 'transitioned',
-        '[class._draggable]': 'draggable',
+        '[class._transitioned]': 'transitioned()',
+        '[class._draggable]': 'draggable()',
         '(touchstart)': 'onTransitioned(false)',
         '(touchend)': 'onTransitioned(true)',
         '(mousedown)': 'onTransitioned(false)',
@@ -61,106 +59,81 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
 })
 export class TuiCarouselComponent {
     private readonly el = tuiInjectElement();
-    private readonly cdr = inject(ChangeDetectorRef);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
-    private translate = 0;
+    private readonly translate = signal(0);
 
-    @ContentChildren(TuiItem, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
+    protected readonly transitioned = signal(true);
+    protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
+    protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
+    protected readonly computedDraggable = computed(
+        () => this.isMobile || this.draggable(),
+    );
 
-    protected transitioned = true;
+    protected readonly computedTranslate = computed(
+        () => -this.index() / this.itemsCount(),
+    );
 
-    protected index = 0;
+    protected readonly x = computed(() =>
+        this.transitioned() ? this.computedTranslate() : this.translate(),
+    );
 
-    @Input()
-    public draggable = false;
+    protected readonly resetDuration = effect(() => {
+        this.index();
+        this.directive.restart();
+    });
 
-    @Input()
-    public itemsCount = 1;
-
-    @Output()
-    public readonly indexChange = new EventEmitter<number>();
-
-    @Output()
-    public readonly shift = new EventEmitter<number>();
-
-    @Input('index')
-    public set indexSetter(index: number) {
-        this.index = index;
-        this.directive.duration = NaN;
-    }
+    public readonly draggable = input(false);
+    public readonly itemsCount = input(1);
+    public readonly index = model(0);
+    public readonly shift = output<number>();
 
     public next(): void {
-        if (this.items && this.index === this.items.length - this.itemsCount) {
-            return;
+        if (this.index() !== this.items().length - this.itemsCount()) {
+            this.updateIndex(this.index() + 1);
         }
-
-        this.updateIndex(this.index + 1);
     }
 
     public prev(): void {
-        this.updateIndex(this.index - 1);
-    }
-
-    protected get transform(): string {
-        return `translateX(${100 * this.x}%)`;
-    }
-
-    @tuiPure
-    protected getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
-        const percent = `${100 / itemsCount}%`;
-
-        return {
-            flexBasis: percent,
-            minWidth: percent,
-            maxWidth: percent,
-        };
+        this.updateIndex(this.index() - 1);
     }
 
     protected onTransitioned(transitioned: boolean): void {
-        this.transitioned = transitioned;
+        this.transitioned.set(transitioned);
 
         if (!transitioned) {
-            this.translate = this.computedTranslate;
+            this.translate.set(this.computedTranslate());
         }
 
         this.onShift();
     }
 
     protected isDisabled(index: number): boolean {
-        return index < this.index || index >= this.index + this.itemsCount;
+        return index < this.index() || index >= this.index() + this.itemsCount();
     }
 
-    protected onIntersection(
-        {intersectionRatio}: IntersectionObserverEntry,
-        index: number,
-    ): void {
-        if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned) {
-            this.updateIndex(this.index < index ? index - this.itemsCount + 1 : index);
+    protected onIntersection(ratio: number, index: number): void {
+        if (ratio && ratio >= 0.5 && !this.transitioned()) {
+            this.updateIndex(
+                this.index() < index ? index - this.itemsCount() + 1 : index,
+            );
         }
     }
 
     protected onScroll(delta: number): void {
         if (!this.isMobile) {
-            if (delta > 0) {
-                this.next();
-            } else {
-                this.prev();
-            }
+            this.onSwipe(delta > 0 ? 'left' : 'right');
         }
     }
 
     protected onPan(x: number): void {
-        if (!this.computedDraggable) {
+        if (!this.computedDraggable()) {
             return;
         }
 
-        const min = 1 - this.items.length / this.itemsCount;
+        const min = 1 - this.items().length / this.itemsCount();
 
-        this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
-
+        this.translate.set(tuiClamp(x / this.el.clientWidth + this.translate(), min, 0));
         this.onShift();
     }
 
@@ -173,28 +146,14 @@ export class TuiCarouselComponent {
     }
 
     protected onAutoscroll(): void {
-        this.updateIndex(this.index === this.items.length - 1 ? 0 : this.index + 1);
+        this.updateIndex(this.index() === this.items().length - 1 ? 0 : this.index() + 1);
     }
 
     protected onShift(): void {
-        this.shift.emit(Math.abs((this.x % 1) + 0.5) * 2);
-    }
-
-    private get x(): number {
-        return this.transitioned ? this.computedTranslate : this.translate;
-    }
-
-    private get computedTranslate(): number {
-        return -this.index / this.itemsCount;
-    }
-
-    private get computedDraggable(): boolean {
-        return this.isMobile || this.draggable;
+        this.shift.emit(Math.abs((this.x() % 1) + 0.5) * 2);
     }
 
     private updateIndex(index: number): void {
-        this.index = tuiClamp(index, 0, this.items.length - 1);
-        this.indexChange.emit(this.index);
-        this.cdr.markForCheck();
+        this.index.set(tuiClamp(index, 0, this.items().length - 1));
     }
 }

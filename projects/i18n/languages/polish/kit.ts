@@ -25,9 +25,9 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd.mm.rrrr',
-        MDY: 'mm.dd.rrrr',
-        YMD: 'rrrr.mm.dd',
+        'dd/mm/yyyy': 'dd.mm.rrrr',
+        'mm/dd/yyyy': 'mm.dd.rrrr',
+        'yyyy/mm/dd': 'rrrr.mm.dd',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Pokaż hasło', 'Ukryj hasło'],
@@ -79,4 +79,12 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Resetowanie',
     },
     phoneSearch: 'Nuna imaluunniit kode allaguk',
+    dayRangePeriods: [
+        'Przez cały czas',
+        'Dzisiaj',
+        'Wczoraj',
+        'W tym tygodniu',
+        'W tym miesiącu',
+        'Poprzedni miesiąc',
+    ],
 };

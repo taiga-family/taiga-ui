@@ -7,13 +7,13 @@ import {
     viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiNotificationDirective} from '@taiga-ui/core/directives/notification';
+import {TuiAlertDirective} from '@taiga-ui/core/portals/alert';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
@@ -27,7 +27,7 @@ import {type TuiToastOptions} from './toast.options';
     templateUrl: './toast.template.html',
     styleUrl: './toast.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiAnimated, TuiNotificationDirective],
+    hostDirectives: [TuiAnimated, TuiAlertDirective],
     host: {
         role: 'status',
         '[class._mobile]': 'isMobile',
@@ -39,8 +39,8 @@ export class TuiToastComponent<O, I> implements AfterViewInit {
 
     private readonly el = tuiInjectElement();
 
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly context = injectContext<TuiPopover<TuiToastOptions<I>, O>>();
+    protected readonly isMobile = inject(WA_IS_MOBILE);
+    protected readonly context = injectContext<TuiPortalContext<TuiToastOptions<I>, O>>();
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly $ = of(this.context.autoClose)
         .pipe(

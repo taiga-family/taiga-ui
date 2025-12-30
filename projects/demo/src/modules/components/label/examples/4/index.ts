@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

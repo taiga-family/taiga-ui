@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -10,11 +9,11 @@ import {
 import {TuiNumberFormat} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiDecimalPipe, TuiNumberFormat],
+    imports: [TuiAmountPipe, TuiDecimalPipe, TuiNumberFormat],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [tuiAmountOptionsProvider({currencyAlign: 'left'})],
+    providers: [tuiAmountOptionsProvider({currencyAlign: 'start'})],
 })
 export default class Example {}

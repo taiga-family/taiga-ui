@@ -18,22 +18,13 @@
     display: flex;
     gap: 0.25rem;
     flex-direction: column;
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-body-s);
     color: var(--tui-text-primary);
 
     &:not([data-orientation='vertical']) {
         flex-direction: row;
         inline-size: fit-content;
-        font: var(--tui-font-text-m);
-    }
-
-    // TODO: Remove after legacy inputs are dropped
-    &:has(tui-textfield),
-    &:has(tui-primitive-textfield),
-    &:has(tui-textarea) {
-        flex-direction: column !important;
-        inline-size: auto !important;
-        font: var(--tui-font-text-s) !important;
+        font: var(--tui-font-body-m);
     }
 
     input[type='checkbox'],
@@ -47,7 +38,7 @@
     }
 
     small {
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-body-s);
     }
 
     [tuiTitle] {

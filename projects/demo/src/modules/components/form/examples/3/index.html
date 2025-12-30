@@ -13,13 +13,13 @@
         <tui-stepper [activeItemIndex]="index()">
             <button
                 tuiStep
-                [disabled]="true"
+                [disabled]="index() === 1"
             >
                 Common
             </button>
             <button
                 tuiStep
-                [disabled]="true"
+                [disabled]="index() === 0"
             >
                 Network access
             </button>
@@ -58,7 +58,7 @@
                 <input
                     formControlName="name"
                     placeholder="John Wick"
-                    tuiTextfield
+                    tuiInput
                 />
             </tui-textfield>
         </form>
@@ -99,7 +99,7 @@
                 <input
                     formControlName="ip"
                     placeholder="192.0.2.1"
-                    tuiTextfield
+                    tuiInput
                 />
             </tui-textfield>
         </form>

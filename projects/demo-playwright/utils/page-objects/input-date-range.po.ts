@@ -2,9 +2,6 @@ import {expect, type Locator} from '@playwright/test';
 
 export class TuiInputDateRangePO {
     public readonly textfield: Locator = this.host.getByRole('textbox');
-    public readonly textfieldIcon: Locator = this.host.getByTestId(
-        'tui-input-date-range__icon',
-    );
 
     public readonly calendar: Locator = this.host
         .page()
@@ -13,6 +10,8 @@ export class TuiInputDateRangePO {
     public readonly items = this.calendar.locator(
         '[automation-id="tui-calendar-range__menu"]',
     );
+
+    public readonly template = this.host.locator('.t-template');
 
     constructor(public readonly host: Locator) {}
 

@@ -21,7 +21,7 @@
 </p>
 
 <div class="content">
-    @for (i of 30 | tuiRepeatTimes; track i) {
+    @for (_ of '-'.repeat(30); track $index) {
         <div tuiCell>
             <div
                 appearance="primary"
@@ -35,39 +35,33 @@
     }
 
     @if (floating) {
-        <footer
-            tuiFloatingContainer
-            @tuiSlideInTop
-        >
+        <footer tuiFloatingContainer>
+            <button
+                tuiButton
+                type="button"
+            >
+                Main action
+            </button>
             <tui-elastic-container>
-                <button
-                    tuiButton
-                    type="button"
-                >
-                    Main action
-                </button>
-                @if (!additional) {
-                    <span
-                        class="clamp"
-                        [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
-                    >
-                        <tui-icon
-                            icon="@tui.settings"
-                            [style.font-size.rem]="1"
-                        />
-                        Legal text, max 3 lines
-                    </span>
-                }
-                @if (additional) {
-                    <button
-                        appearance="flat"
-                        tuiButton
-                        type="button"
-                        [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
-                    >
-                        Secondary action
-                    </button>
-                }
+                <div tuiSlides>
+                    @if (additional) {
+                        <button
+                            appearance="flat"
+                            tuiButton
+                            type="button"
+                        >
+                            Secondary action
+                        </button>
+                    } @else {
+                        <div class="clamp">
+                            <tui-icon
+                                icon="@tui.settings"
+                                [style.font-size.rem]="1"
+                            />
+                            Legal text, max 3 lines
+                        </div>
+                    }
+                </div>
             </tui-elastic-container>
         </footer>
     }

@@ -6,37 +6,39 @@
     <button tuiStep>Shipping address</button>
     <button tuiStep>Payment info</button>
 </tui-stepper>
-<section [tuiSlides]="direction">
-    @for (form of forms; track form; let i = $index) {
-        @if (i === index) {
-            <form
-                appearance="floating"
-                tuiCardLarge
-                tuiForm
-                [formGroup]="form"
-                [id]="`form_${i}`"
-                (ngSubmit)="onSubmit()"
-            >
-                <header tuiHeader>
-                    <h2 tuiTitle>
-                        Registration form
-                        <span tuiSubtitle>Tell us about yourself</span>
-                    </h2>
-                </header>
-                @for (control of form.controls | keyvalue; track control; let j = $index) {
-                    <tui-textfield>
-                        <label tuiLabel>{{ control.key }}</label>
-                        <input
-                            tuiTextfield
-                            [formControlName]="control.key"
-                            [tuiAutoFocus]="!!index && !j"
-                        />
-                    </tui-textfield>
-                }
-            </form>
+<tui-elastic-container>
+    <section [tuiSlides]="direction">
+        @for (form of forms; track form; let i = $index) {
+            @if (i === index) {
+                <form
+                    appearance="floating"
+                    tuiCardLarge
+                    tuiForm
+                    [formGroup]="form"
+                    [id]="`form_${i}`"
+                    (ngSubmit)="onSubmit()"
+                >
+                    <header tuiHeader>
+                        <h2 tuiTitle>
+                            Registration form
+                            <span tuiSubtitle>Tell us about yourself</span>
+                        </h2>
+                    </header>
+                    @for (control of form.controls | keyvalue; track control; let j = $index) {
+                        <tui-textfield>
+                            <label tuiLabel>{{ control.key }}</label>
+                            <input
+                                tuiInput
+                                [formControlName]="control.key"
+                                [tuiAutoFocus]="!!index && !j"
+                            />
+                        </tui-textfield>
+                    }
+                </form>
+            }
         }
-    }
-</section>
+    </section>
+</tui-elastic-container>
 <footer>
     <button
         appearance="secondary"

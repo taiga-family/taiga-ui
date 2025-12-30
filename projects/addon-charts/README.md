@@ -16,13 +16,13 @@ consisting of multiple base libraries and several add-ons
 
 Install base packages:
 
-```
+```bash
 npm i @taiga-ui/{cdk,core}
 ```
 
 Install addon-charts:
 
-```
+```bash
 npm i @taiga-ui/addon-charts
 ```
 

@@ -3,18 +3,10 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 @Component({
-    imports: [
-        JsonPipe,
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataListWrapper,
-        TuiTextfield,
-    ],
+    imports: [JsonPipe, ReactiveFormsModule, TuiChevron, TuiComboBox, TuiDataListWrapper],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
