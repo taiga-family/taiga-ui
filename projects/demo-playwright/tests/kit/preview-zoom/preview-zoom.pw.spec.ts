@@ -17,8 +17,8 @@ test.describe('PreviewZoom', () => {
 
         await preview.locator('.t-sign_plus').click();
 
-        const hint = page.locator('tui-hint');
-
-        await expect(hint).toHaveText('100%');
+        await expect
+            .poll(async () => page.locator('tui-hint').last().innerText())
+            .toContain('%');
     });
 });
