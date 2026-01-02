@@ -7,14 +7,12 @@
 :host {
     position: relative;
     display: block;
-    block-size: var(--tui-thickness);
+    block-size: @track-thickness;
     border-radius: var(--tui-radius-m);
     cursor: pointer;
     outline: none;
-    margin: calc((@hitbox - var(--tui-thickness)) / 2) 0;
+    margin: calc((@hitbox - @track-thickness) / 2) 0;
     touch-action: pan-x;
-
-    --tui-thickness: 0.125rem;
 
     &:active {
         cursor: ew-resize;
@@ -35,52 +33,44 @@
     }
 }
 
-.track(@thumb-width) {
-    position: relative;
-    margin: 0 (@thumb-width / 2);
-    block-size: 100%;
-
-    /* Filled selected range */
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: ~'max(calc(var(--t-start) - 1px), 1px)';
-        right: ~'max(var(--t-end), 1px)';
-        inset-inline-start: ~'max(calc(var(--t-start) - 1px), 1px)';
-        inset-inline-end: ~'max(var(--t-end), 1px)';
-        block-size: 100%;
-        background: var(--tui-background-accent-1);
-        margin: 0 calc(-@thumb-width / 2);
-    }
-
-    /* Ticks */
-    &::after {
-        .fullsize(absolute, inset);
-
-        content: '';
-        left: ((@thumb-width - @tick-thickness) / 2);
-        right: ((@thumb-width + @tick-thickness) / 2);
-        inset-inline-start: ((@thumb-width - @tick-thickness) / 2);
-        inset-inline-end: ((@thumb-width + @tick-thickness) / 2);
-        background-image: repeating-linear-gradient(
-            to var(--tui-inline-end),
-            var(--tui-text-tertiary) 0 @tick-thickness,
-            transparent 0 calc(var(--t-segment-width) / var(--t-bg-size-ratio))
-        );
-        background-position-x: var(--tui-inline-end);
-        background-repeat: no-repeat;
-        background-size: calc(100% * var(--t-bg-size-ratio));
-    }
-}
-
 .t-track {
-    :host[data-size='s'] & {
-        .track(@thumb-diameters[@s]);
-    }
+    :host & {
+        position: relative;
+        margin: 0 @thumb-radius;
+        block-size: 100%;
 
-    :host[data-size='m'] & {
-        .track(@thumb-diameters[@m]);
+        /* Filled selected range */
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: ~'max(calc(var(--t-start) - 1px), 1px)';
+            right: ~'max(var(--t-end), 1px)';
+            inset-inline-start: ~'max(calc(var(--t-start) - 1px), 1px)';
+            inset-inline-end: ~'max(var(--t-end), 1px)';
+            block-size: 100%;
+            background: var(--tui-background-accent-1);
+            margin: 0 calc(@thumb-radius * -1);
+        }
+
+        /* Ticks */
+        &::after {
+            .fullsize(absolute, inset);
+
+            content: '';
+            left: calc((@thumb-diameter - @tick-thickness) / 2);
+            right: calc((@thumb-diameter + @tick-thickness) / 2);
+            inset-inline-start: calc((@thumb-diameter - @tick-thickness) / 2);
+            inset-inline-end: calc((@thumb-diameter + @tick-thickness) / 2);
+            background-image: repeating-linear-gradient(
+                to var(--tui-inline-end),
+                var(--tui-text-tertiary) 0 @tick-thickness,
+                transparent 0 calc(var(--t-segment-width) / var(--t-bg-size-ratio))
+            );
+            background-position-x: var(--tui-inline-end);
+            background-repeat: no-repeat;
+            background-size: calc(100% * var(--t-bg-size-ratio));
+        }
     }
 }
 

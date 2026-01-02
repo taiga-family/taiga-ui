@@ -38,6 +38,7 @@ export default class PageComponent {
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
+    protected thumbRadius = 6;
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
         5,

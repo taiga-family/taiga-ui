@@ -161,6 +161,7 @@
                     [readOnly]="controlDoc.readonly"
                     [segments]="segments"
                     [step]="step"
+                    [style.--tui-thumb-radius.px]="thumbRadius"
                     [tuiDisabled]="controlDoc.disabled"
                     [tuiNumberFormat]="{
                         decimalMode: numberFormatDoc.decimalMode(),
@@ -323,6 +324,25 @@
                 #controlDoc
                 tuiDocControl
             ></tbody>
+
+            <tbody>
+                <tr>
+                    <td colspan="3">
+                        <span tuiTitle>
+                            <strong>CSS customization</strong>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr
+                    name="[style.--tui-thumb-radius.px]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="thumbRadius"
+                >
+                    Radius of thumb
+                </tr>
+            </tbody>
         </table>
     </ng-template>
 
