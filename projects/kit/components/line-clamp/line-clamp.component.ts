@@ -49,7 +49,7 @@ export class TuiLineClamp {
     private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
 
-    private readonly calculatedForHint = signal(false);
+    private readonly calculated = signal(false);
     private readonly overflown = signal(false);
     private readonly maxHeight = computed(() => this.lineHeight() * this.linesLimit());
 
@@ -78,38 +78,42 @@ export class TuiLineClamp {
         afterNextRender({
             write: () => {
                 this.updateMaxHeight();
-                this.calculateAndEmitOverflow();
+                this.updateCss();
 
                 merge(
                     fromEvent(this.el, 'mouseenter').pipe(
-                        filter(() => !this.calculatedForHint()),
+                        filter(() => !this.calculated()),
                     ),
                     fromEvent(window, 'resize').pipe(
                         debounceTime(100),
-                        filter(() => this.calculatedForHint()),
+                        filter(() => this.calculated()),
                     ),
                     fromEvent(this.el, 'transitionend').pipe(
                         filter((e: Event) => e.target === e.currentTarget),
-                        filter(() => this.calculatedForHint()),
+                        filter(() => this.calculated()),
                     ),
                 )
                     .pipe(takeUntilDestroyed(this.destroyRef))
-                    .subscribe(() => this.calculateForHint());
+                    .subscribe(() => this.calculate());
             },
         });
 
         effect(() => {
             this.lineHeight();
             this.linesLimit();
-            this.content();
 
             this.updateMaxHeight();
-            this.calculateAndEmitOverflow();
+
+            if (this.calculated()) {
+                this.calculate();
+            } else {
+                this.updateCss();
+            }
         });
     }
 
     protected get computedContent(): PolymorpheusContent {
-        return this.calculatedForHint() && this.options.showHint && this.overflown()
+        return this.calculated() && this.options.showHint && this.overflown()
             ? this.content()
             : '';
     }
@@ -118,18 +122,7 @@ export class TuiLineClamp {
         this.el.style.maxHeight = tuiPx(this.maxHeight());
     }
 
-    private updateVisualState(overflown: boolean): void {
-        const outlet = this.outlet()?.nativeElement;
-
-        if (!outlet) {
-            return;
-        }
-
-        this.el.style.height = tuiPx(outlet.scrollHeight);
-        this.el.classList.toggle('_overflown', overflown);
-    }
-
-    private calculateAndEmitOverflow(): void {
+    private updateCss(): void {
         const outlet = this.outlet()?.nativeElement;
 
         if (!outlet) {
@@ -140,18 +133,36 @@ export class TuiLineClamp {
             outlet.scrollHeight > this.maxHeight() ||
             outlet.scrollWidth > this.el.clientWidth;
 
-        const previousOverflown = this.overflown();
+        this.el.style.height = tuiPx(outlet.scrollHeight);
+        this.el.classList.toggle('_overflown', overflown);
 
-        this.overflown.set(overflown);
-        this.updateVisualState(overflown);
-
-        if (previousOverflown !== overflown) {
+        if (this.overflown() !== overflown) {
             this.overflownChange.emit(overflown);
         }
+
+        this.overflown.set(overflown);
     }
 
-    private calculateForHint(): void {
-        this.calculatedForHint.set(true);
-        this.calculateAndEmitOverflow();
+    private calculate(): void {
+        const outlet = this.outlet()?.nativeElement;
+
+        if (!outlet) {
+            return;
+        }
+
+        const overflown =
+            outlet.scrollHeight > this.maxHeight() ||
+            outlet.scrollWidth > this.el.clientWidth;
+
+        this.calculated.set(true);
+
+        if (this.overflown() !== overflown) {
+            this.overflownChange.emit(overflown);
+        }
+
+        this.overflown.set(overflown);
+
+        this.el.style.height = tuiPx(outlet.scrollHeight);
+        this.el.classList.toggle('_overflown', overflown);
     }
 }
