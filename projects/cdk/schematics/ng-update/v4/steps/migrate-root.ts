@@ -54,10 +54,7 @@ export function migrateRoot(fileSystem: DevkitFileSystem, options: TuiSchema): v
 function replaceRootIdentifier(ref: Node, fileSystem: DevkitFileSystem): void {
     const callExpression = ref.getParentWhile(Node.isCallExpression);
 
-    if (
-        callExpression &&
-        callExpression.getExpression().getText() === 'importProvidersFrom'
-    ) {
+    if (callExpression?.getExpression().getText() === 'importProvidersFrom') {
         const node = callExpression
             .getArguments()
             .find((arg) => arg.getText() === ref.getText());
