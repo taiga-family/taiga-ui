@@ -28,7 +28,7 @@ class Styles {}
     hostDirectives: [TuiWithAppearance],
     host: {
         tuiCardLarge: '',
-        '[attr.data-space]': 'tuiCardLarge || this.options.space',
+        '[attr.data-space]': 'tuiCardLarge() || this.options.space',
     },
 })
 export class TuiCardLarge {
