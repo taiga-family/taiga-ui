@@ -12,7 +12,7 @@
     pointer-events: none;
     inline-size: @thumb-diameter;
     block-size: @thumb-diameter;
-    transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb-diameter * var(--tui-inline)));
+    transform: translateX(calc(var(--tui-slider-thumb-ratio) * @thumb-diameter * -1 * var(--tui-inline)));
 
     :host-context([dir='rtl']) & {
         left: unset !important;
