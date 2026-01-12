@@ -21369,7 +21369,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps || undefined" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [segments]="segments" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), }" [tuiTextfieldSize]="textfieldDoc.size" />
+<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps || undefined" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [segments]="segments" [step]="step" [style.--tui-thumb-radius.px]="thumbRadius" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), }" [tuiTextfieldSize]="textfieldDoc.size" />
 </ng-template>
 ```
 
@@ -21386,6 +21386,7 @@ export class Example {
 | [segments] | `number` | for no ticks) |
 | [step] | `number` |  |
 | [keySteps] | `TuiKeySteps` | Anchor points of non-uniform format between value and position |
+| [style.--tui-thumb-radius.px] | `number` | Radius of thumb |
 
 ### Usage Examples
 
@@ -21745,6 +21746,7 @@ export default class PageComponent {
     protected quantum = 0;
     protected keySteps: TuiKeySteps | null = null;
     protected content = this.contentVariants[0]!;
+    protected thumbRadius = 6;
 }
 ```
 
@@ -22003,7 +22005,7 @@ export class Example {
 <ng-template>
 <tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldDoc.content" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
 <input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
-<input tuiSlider type="range" [keySteps]="keySteps || undefined" [segments]="segments" [step]="step" />
+<input tuiSlider type="range" [keySteps]="keySteps || undefined" [segments]="segments" [step]="step" [style.--tui-thumb-radius.px]="thumbRadius" />
 </tui-textfield>
 </ng-template>
 ```
@@ -22020,6 +22022,7 @@ export class Example {
 | [step] | `number` |  |
 | [segments] | `number[] | number` | for no ticks) |
 | [keySteps] | `TuiKeySteps | null` | Anchor points of non-uniform format between value and position |
+| [style.--tui-thumb-radius.px] | `number` | Radius of thumb |
 
 ### Usage Examples
 
@@ -22268,6 +22271,7 @@ export default class PageComponent {
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
+    protected thumbRadius = 6;
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
         5,
@@ -30895,7 +30899,7 @@ class Example {
 
 ```html
 <ng-template>
-<tui-range [formControl]="control" [keySteps]="keySteps || undefined" [limit]="limit" [margin]="margin" [max]="max" [min]="min" [segments]="segments" [size]="size" [step]="step" />
+<tui-range [formControl]="control" [keySteps]="keySteps || undefined" [limit]="limit" [margin]="margin" [max]="max" [min]="min" [segments]="segments" [step]="step" [style.--tui-thumb-radius.px]="thumbRadius" />
 </ng-template>
 ```
 
@@ -30907,42 +30911,39 @@ class Example {
 | [min] | `number` |  |
 | [max] | `number` |  |
 | [step] | `number` |  |
-| [size] | `TuiSizeS` |  |
 | [segments] | `number` |  |
 | [keySteps] | `TuiKeySteps | null` |  |
 | [limit] | `number` |  |
 | [margin] | `number` |  |
+| [style.--tui-thumb-radius.px] | `number` | Radius of thumb |
 
 ### Usage Examples
 
-#### Sizes
+#### Thumb radius
 
 **Template:**
 ```html
-<tui-range size="s" [max]="10" [(ngModel)]="value" />
-<tui-range size="m" [formControl]="formControl" [max]="10" />
-<p>Custom thickness</p>
-<tui-range size="m" [formControl]="formControl" [max]="10" [style.--tui-thickness.rem]="0.25" />
+<tui-range [(ngModel)]="value" />
+<p>Custom radius and thickness</p>
+<tui-range [style.--tui-thumb-radius.rem]="0.5" [(ngModel)]="value" />
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, ReactiveFormsModule, TuiRange],
+    imports: [FormsModule, TuiRange],
     templateUrl: './index.html',
     styles: ':host {display: flex; flex-direction: column;}',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value = [4, 6];
-
-    protected readonly formControl = new FormControl([4, 6]);
+    protected value = [40, 60];
 }
 ```
 
@@ -31047,22 +31048,19 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeS} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiDemo, TuiRange],
+    imports: [ReactiveFormsModule, TuiDemo, TuiRange, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Sizes', 'Segments', 'KeySteps'];
+    protected readonly examples = ['Thumb radius', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
 
-    protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
-
-    protected size: TuiSizeS = this.sizeVariants[1]!;
 
     protected min = 0;
 
@@ -31075,6 +31073,8 @@ export default class Page {
     protected step = 1;
 
     protected segments = 1;
+
+    protected thumbRadius = 6;
 
     protected readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [
@@ -33658,7 +33658,7 @@ export class Example {
 
 ```html
 <ng-template>
-<input tuiSlider type="range" [formControl]="control" [max]="max" [min]="min" [segments]="segments" [size]="size" [step]="step" />
+<input tuiSlider type="range" [formControl]="control" [max]="max" [min]="min" [segments]="segments" [step]="step" [style.--tui-thumb-radius.px]="thumbRadius" />
 </ng-template>
 ```
 
@@ -33670,19 +33670,18 @@ export class Example {
 | [max] | `number` |  |
 | [min] | `number` |  |
 | [step] | `number` |  |
-| [size] | `TuiSizeS` | Size |
 | [segments] | `number[] | number` | for no ticks) |
+| [style.--tui-thumb-radius.px] | `number` | Radius of thumb |
 
 ### Usage Examples
 
-#### Sizes
+#### Thumb radius
 
 **Template:**
 ```html
-<input max="10" size="s" step="1" tuiSlider type="range" [(ngModel)]="value" />
-<input size="m" tuiSlider type="range" [formControl]="formControl" />
-<p>Custom thickness</p>
-<input size="m" tuiSlider type="range" [formControl]="formControl" [style.--tui-thickness.rem]="0.25" />
+<input tuiSlider type="range" [formControl]="formControl" />
+<p>Custom radius and thickness</p>
+<input tuiSlider type="range" [formControl]="formControl" [style.--tui-thumb-radius.rem]="0.5" />
 ```
 **TypeScript:**
 ```ts
@@ -33699,7 +33698,6 @@ import {TuiSlider} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value = 4;
     protected formControl = new FormControl(60);
 }
 ```
@@ -33733,7 +33731,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<input size="m" tuiSlider type="range" [formControl]="formControl" [max]="1000" [segments]="4" [step]="250" />
+<input tuiSlider type="range" [formControl]="formControl" [max]="1000" [segments]="4" [step]="250" />
 <div class="ticks-labels"> @for (label of labels; track label) { <button type="button" class="tick-label" (click)="patchValue(label)" > ${{ label }} </button> } </div>
 <p> Control value: <code>{{ formControl.value }}</code>
 </p>
@@ -33891,17 +33889,17 @@ export default class Example {
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeS} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiDemo, TuiSlider],
+    imports: [ReactiveFormsModule, TuiDemo, TuiSlider, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
     protected readonly examples = [
-        'Sizes',
+        'Thumb radius',
         'Colors',
         'Segments',
         'Disabled',
@@ -33909,7 +33907,6 @@ export default class Page {
         'Complex',
     ];
 
-    protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
         5,
@@ -33923,8 +33920,8 @@ export default class Page {
     protected max = 5;
     protected min = 0;
     protected step = 1;
-    protected size: TuiSizeS = this.sizeVariants[1]!;
     protected segments: number[] | number = this.max;
+    protected thumbRadius = 6;
 
     protected get disabled(): boolean {
         return this.control.disabled;
