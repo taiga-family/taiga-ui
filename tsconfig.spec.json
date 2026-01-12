@@ -5,6 +5,7 @@
     "compilerOptions": {
         "target": "es2016",
         "types": ["jest", "node"],
-        "sourceMap": true
+        "sourceMap": true,
+        "experimentalDecorators": true
     }
 }
