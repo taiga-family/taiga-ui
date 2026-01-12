@@ -214,6 +214,7 @@
                         [keySteps]="keySteps || undefined"
                         [segments]="segments"
                         [step]="step"
+                        [style.--tui-thumb-radius.px]="thumbRadius"
                     />
                 </tui-textfield>
             </ng-template>
@@ -381,6 +382,25 @@
                 #controlDoc
                 tuiDocControl
             ></tbody>
+
+            <tbody>
+                <tr>
+                    <td colspan="3">
+                        <span tuiTitle>
+                            <strong>CSS customization</strong>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr
+                    name="[style.--tui-thumb-radius.px]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="thumbRadius"
+                >
+                    Radius of thumb
+                </tr>
+            </tbody>
         </table>
     </ng-template>
 

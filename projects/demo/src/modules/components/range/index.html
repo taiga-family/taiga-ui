@@ -17,7 +17,9 @@
                 <ng-template #description>
                     @switch ($index) {
                         @case (0) {
-                            Built-in size options and custom thickness
+                            Use css-variable
+                            <code>--tui-thumb-radius</code>
+                            to customize radius of the thumb and track thickness.
                         }
                         @case (1) {
                             Use mixin
@@ -53,8 +55,8 @@
                     [max]="max"
                     [min]="min"
                     [segments]="segments"
-                    [size]="size"
                     [step]="step"
+                    [style.--tui-thumb-radius.px]="thumbRadius"
                 />
             </ng-template>
         </tui-doc-demo>
@@ -112,20 +114,6 @@
                 </p>
             </tr>
             <tr
-                name="[size]"
-                tuiDocAPIItem
-                type="TuiSizeS"
-                [items]="sizeVariants"
-                [(value)]="size"
-            >
-                Size
-                <p>
-                    The default is
-                    <code>m</code>
-                    .
-                </p>
-            </tr>
-            <tr
                 name="[segments]"
                 tuiDocAPIItem
                 type="number"
@@ -179,6 +167,24 @@
                     .
                 </p>
             </tr>
+            <tbody>
+                <tr>
+                    <td colspan="3">
+                        <span tuiTitle>
+                            <strong>CSS customization</strong>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr
+                    name="[style.--tui-thumb-radius.px]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="thumbRadius"
+                >
+                    Radius of thumb
+                </tr>
+            </tbody>
         </table>
     </ng-template>
 

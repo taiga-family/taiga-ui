@@ -1,3 +1,5 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 :host {
     position: relative;
     display: block;
@@ -30,7 +32,7 @@ tui-range {
     position: absolute;
     z-index: 1;
     inset: 100% var(--t-padding) auto;
-    margin: calc(-1 * var(--tui-thickness)) 0 0;
+    margin: calc(-1 * @track-thickness) 0 0;
     pointer-events: auto;
 }
 

@@ -1,18 +1,15 @@
-@thumb-diameters: {
-    @s: 0.5rem;
-    @m: 0.75rem;
-};
-
 @track-inset: {
     @s: 0.625rem;
     @m: 0.75rem;
     @l: 1rem;
 };
 
-.tui-slider-ticks-labels(@thumb-size: m) {
-    @thumb: @thumb-diameters[@@thumb-size];
+@thumb-radius: var(--tui-thumb-radius, 0.375rem);
+@track-thickness: calc(@thumb-radius - 0.25rem);
+@thumb-diameter: calc(@thumb-radius * 2);
 
-    --t-offset: calc(@thumb / 2);
+.tui-slider-ticks-labels() {
+    --t-offset: @thumb-radius;
 
     display: flex;
     font: var(--tui-font-body-s);
@@ -38,33 +35,33 @@
     }
 
     tui-range + & {
-        --t-offset: @thumb;
+        --t-offset: @thumb-diameter;
     }
 
     /* TODO: add :has([tuiInputSlider]) */
     tui-textfield[data-size='l'] + & {
-        --t-offset: calc(@track-inset[@l] + @thumb / 2);
+        --t-offset: calc(@track-inset[@l] + @thumb-radius);
     }
 
     /* TODO: add :has([tuiInputSlider]) */
     tui-textfield[data-size='m'] + & {
-        --t-offset: calc(@track-inset[@m] + @thumb / 2);
+        --t-offset: calc(@track-inset[@m] + @thumb-radius);
     }
 
     /* TODO: add :has([tuiInputSlider]) */
     tui-textfield[data-size='s'] + & {
-        --t-offset: calc(@track-inset[@s] + @thumb / 2);
+        --t-offset: calc(@track-inset[@s] + @thumb-radius);
     }
 
     tui-input-range[data-size='l'] + & {
-        --t-offset: calc(@track-inset[@l] + @thumb);
+        --t-offset: calc(@track-inset[@l] + @thumb-diameter);
     }
 
     tui-input-range[data-size='m'] + & {
-        --t-offset: calc(@track-inset[@m] + @thumb);
+        --t-offset: calc(@track-inset[@m] + @thumb-diameter);
     }
 
     tui-input-range[data-size='s'] + & {
-        --t-offset: calc(@track-inset[@s] + @thumb);
+        --t-offset: calc(@track-inset[@s] + @thumb-diameter);
     }
 }
