@@ -2,11 +2,17 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    inject,
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
+
+export const [TUI_CARD_OPTIONS, tuiCardOptionsProvider] = tuiCreateOptions({
+    space: 'normal' as 'compact' | 'normal',
+});
 
 @Component({
     template: '',
@@ -22,13 +28,12 @@ class Styles {}
     hostDirectives: [TuiWithAppearance],
     host: {
         tuiCardLarge: '',
-        '[attr.data-space]': 'space() || "normal"',
+        '[attr.data-space]': 'tuiCardLarge() || this.options.space',
     },
 })
 export class TuiCardLarge {
+    protected readonly options = inject(TUI_CARD_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
 
-    public readonly space = input<'' | 'compact' | 'normal'>('normal', {
-        alias: 'tuiCardLarge',
-    });
+    public readonly tuiCardLarge = input<'' | 'compact' | 'normal'>('');
 }
