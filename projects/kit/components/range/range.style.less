@@ -13,6 +13,7 @@
     outline: none;
     margin: calc((@hitbox - @track-thickness) / 2) 0;
     touch-action: pan-x;
+    background: var(--tui-background-neutral-2);
 
     &:active {
         cursor: ew-resize;
@@ -44,8 +45,6 @@
             content: '';
             position: absolute;
             top: 0;
-            left: ~'max(calc(var(--t-start) - 1px), 1px)';
-            right: ~'max(var(--t-end), 1px)';
             inset-inline-start: ~'max(calc(var(--t-start) - 1px), 1px)';
             inset-inline-end: ~'max(var(--t-end), 1px)';
             block-size: 100%;
@@ -97,6 +96,8 @@
 }
 
 .remove-track-background() {
+    background: transparent;
+
     /* Artificially increased specificity */
     input[type='range']:is(&) {
         &::-webkit-slider-runnable-track {

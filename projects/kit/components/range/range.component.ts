@@ -3,7 +3,6 @@ import {
     Component,
     computed,
     ElementRef,
-    inject,
     input,
     viewChildren,
 } from '@angular/core';
@@ -13,7 +12,6 @@ import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
 import {
-    TUI_SLIDER_OPTIONS,
     type TuiKeySteps,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
@@ -41,7 +39,6 @@ import {TuiRangeChange} from './range-change.directive';
         '[attr.aria-disabled]': 'disabled()',
         '[style.--t-start.%]': 'start()',
         '[style.--t-end.%]': 'end()',
-        '[style.background]': 'options.trackColor',
         '[class._disabled]': 'disabled()',
         '(focusout)': 'onTouched()',
         '(keydown.arrowUp.prevent)': 'changeByStep(1, $event.target)',
@@ -53,7 +50,6 @@ import {TuiRangeChange} from './range-change.directive';
 export class TuiRange extends TuiControl<[number, number]> {
     private readonly el = tuiInjectElement();
 
-    protected readonly options = inject(TUI_SLIDER_OPTIONS);
     protected lastActiveThumb: 'end' | 'start' = 'end';
 
     public readonly min = input(0);

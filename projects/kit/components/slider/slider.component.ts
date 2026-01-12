@@ -9,7 +9,6 @@ import {take} from 'rxjs';
 
 import {TUI_FLOATING_PRECISION} from './helpers/key-steps';
 import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
-import {TUI_SLIDER_OPTIONS} from './slider.options';
 
 @Component({
     selector: 'input[type=range][tuiSlider]',
@@ -25,7 +24,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
          * This function triggers change detection (for {@link valueRatio} getter) when we drag thumb of the input.
          */
         '(input)': '0',
-        '[style.--tui-slider-track-color]': 'options.trackColor',
         '[style.--tui-ticks-gradient]': 'ticksGradient()',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
     },
@@ -33,7 +31,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
 export class TuiSliderComponent {
     private readonly control = inject(NgControl, {self: true, optional: true});
 
-    protected readonly options = inject(TUI_SLIDER_OPTIONS);
     protected readonly ticksGradient = computed((segments = this.segments()) =>
         this.getTicksGradient(segments),
     );

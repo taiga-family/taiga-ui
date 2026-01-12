@@ -5,7 +5,7 @@
 };
 
 @thumb-radius: var(--tui-thumb-radius, 0.375rem);
-@track-thickness: calc(@thumb-radius - 0.25rem);
+@track-thickness: max(calc(@thumb-radius - 0.25rem), 0.125rem);
 @thumb-diameter: calc(@thumb-radius * 2);
 
 .tui-slider-ticks-labels() {
