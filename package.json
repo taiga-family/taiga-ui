@@ -106,14 +106,12 @@
         "preset": "@taiga-ui/jest-config"
     },
     "overrides": {
-        "jest-preset-angular": {
-            "@angular/core": "$@angular/core",
-            "@angular/common": "$@angular/common",
-            "@angular/compiler-cli": "$@angular/compiler-cli",
-            "@angular/compiler": "$@angular/compiler",
-            "@angular/platform-browser": "$@angular/platform-browser",
-            "@angular/platform-browser-dynamic": "$@angular/platform-browser-dynamic"
-        },
+        "@angular/common": "$@angular/common",
+        "@angular/compiler": "$@angular/compiler",
+        "@angular/compiler-cli": "$@angular/compiler-cli",
+        "@angular/core": "$@angular/core",
+        "@angular/platform-browser": "$@angular/platform-browser",
+        "@angular/platform-browser-dynamic": "$@angular/platform-browser-dynamic",
         "rxjs": "$rxjs"
     },
     "devDependencies": {

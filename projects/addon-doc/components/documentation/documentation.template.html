@@ -10,156 +10,158 @@
         *ngIf="properties.length"
         class="t-table"
     >
-        <tr class="t-row t-row_header">
-            <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
-            <th class="t-th">{{ type }}</th>
-            <th
-                *ngIf="showValues && !isAPI"
-                class="t-th t-cell t-th_value"
-            >
-                {{ texts[3] }}
-            </th>
-        </tr>
-        <tr
-            *ngFor="let propertyConnector of properties"
-            class="t-row"
-            [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
-        >
-            <td class="t-cell t-no-overflow">
-                <div
-                    automation-id="tui-documentation__property-name"
-                    class="t-property t-additional-info"
+        <tbody>
+            <tr class="t-row t-row_header">
+                <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
+                <th class="t-th">{{ type }}</th>
+                <th
+                    *ngIf="showValues && !isAPI"
+                    class="t-th t-cell t-th_value"
                 >
-                    <code
-                        *ngIf="propertyConnector.attrName"
-                        class="t-property-code"
-                        [style.color]="'var(--tui-background-accent-2-pressed)'"
-                    >
-                        {{ propertyConnector.attrName | tuiStripOptionalPipe }}
-                    </code>
-                    <tui-badge
-                        *ngIf="propertyConnector.attrName | tuiIsOptionalPipe"
-                        appearance="neutral"
-                        size="s"
-                    >
-                        Optional
-                    </tui-badge>
-                    <tui-badge
-                        *ngIf="propertyConnector.documentationPropertyDeprecated"
-                        appearance="negative"
-                        size="s"
-                    >
-                        Deprecated
-                    </tui-badge>
-                </div>
-                <ng-container [ngTemplateOutlet]="propertyConnector.template" />
-            </td>
-            <td class="t-cell t-no-overflow">
-                <span class="type">
-                    <code class="t-code-type">
-                        <ng-container
-                            *ngFor="
-                                let item of propertyConnector.documentationPropertyType | tuiDocTypeReference;
-                                let last = last
-                            "
-                        >
-                            <a
-                                *ngIf="item.reference; else default"
-                                target="_blank"
-                                class="t-code-reference"
-                                [attr.href]="item.reference"
-                            >
-                                {{ item.type }}
-                            </a>
-                            <ng-template #default>
-                                {{ item.type }}
-                            </ng-template>
-                            <span *ngIf="!last">&nbsp;|&nbsp;</span>
-                        </ng-container>
-                    </code>
-                </span>
-            </td>
-            <td
-                *ngIf="showValues"
-                class="t-cell t-cell_value"
+                    {{ texts[3] }}
+                </th>
+            </tr>
+            <tr
+                *ngFor="let propertyConnector of properties"
+                class="t-row"
+                [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
             >
-                <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
-                    <tui-select
-                        *ngIf="propertyConnector.hasItems; else noItems"
-                        tuiDropdownLimitWidth="min"
-                        tuiTextfieldSize="m"
-                        [nativeId]="propertyConnector.attrName"
-                        [ngModel]="propertyConnector.documentationPropertyValue"
-                        [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
-                        [tuiTextfieldLabelOutside]="true"
-                        [valueContent]="selectContent"
-                        (ngModelChange)="propertyConnector.onValueChange($event)"
+                <td class="t-cell t-no-overflow">
+                    <div
+                        automation-id="tui-documentation__property-name"
+                        class="t-property t-additional-info"
                     >
-                        <code class="t-exception">null</code>
-                        <tui-data-list-wrapper
-                            *tuiDataList
-                            class="t-data-list"
-                            [itemContent]="selectContent"
-                            [items]="propertyConnector.documentationPropertyValues"
-                        />
-                    </tui-select>
-                    <ng-template
-                        #selectContent
-                        let-data
-                    >
-                        <code>{{ data | tuiInspectAny }}</code>
-                    </ng-template>
-
-                    <ng-template #noItems>
-                        <ng-container [ngSwitch]="propertyConnector.documentationPropertyType">
-                            <input
-                                *ngSwitchCase="'boolean'"
-                                tuiSwitch
-                                type="checkbox"
-                                class="t-switch"
-                                [id]="propertyConnector.attrName"
-                                [ngModel]="propertyConnector.documentationPropertyValue"
-                                [showIcons]="true"
-                                (ngModelChange)="propertyConnector.onValueChange($event)"
+                        <code
+                            *ngIf="propertyConnector.attrName"
+                            class="t-property-code"
+                            [style.color]="'var(--tui-background-accent-2-pressed)'"
+                        >
+                            {{ propertyConnector.attrName | tuiStripOptionalPipe }}
+                        </code>
+                        <tui-badge
+                            *ngIf="propertyConnector.attrName | tuiIsOptionalPipe"
+                            appearance="neutral"
+                            size="s"
+                        >
+                            Optional
+                        </tui-badge>
+                        <tui-badge
+                            *ngIf="propertyConnector.documentationPropertyDeprecated"
+                            appearance="negative"
+                            size="s"
+                        >
+                            Deprecated
+                        </tui-badge>
+                    </div>
+                    <ng-container [ngTemplateOutlet]="propertyConnector.template" />
+                </td>
+                <td class="t-cell t-no-overflow">
+                    <span class="type">
+                        <code class="t-code-type">
+                            <ng-container
+                                *ngFor="
+                                    let item of propertyConnector.documentationPropertyType | tuiDocTypeReference;
+                                    let last = last
+                                "
+                            >
+                                <a
+                                    *ngIf="item.reference; else default"
+                                    target="_blank"
+                                    class="t-code-reference"
+                                    [attr.href]="item.reference"
+                                >
+                                    {{ item.type }}
+                                </a>
+                                <ng-template #default>
+                                    {{ item.type }}
+                                </ng-template>
+                                <span *ngIf="!last">&nbsp;|&nbsp;</span>
+                            </ng-container>
+                        </code>
+                    </span>
+                </td>
+                <td
+                    *ngIf="showValues"
+                    class="t-cell t-cell_value"
+                >
+                    <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
+                        <tui-select
+                            *ngIf="propertyConnector.hasItems; else noItems"
+                            tuiDropdownLimitWidth="min"
+                            tuiTextfieldSize="m"
+                            [nativeId]="propertyConnector.attrName"
+                            [ngModel]="propertyConnector.documentationPropertyValue"
+                            [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
+                            [tuiTextfieldLabelOutside]="true"
+                            [valueContent]="selectContent"
+                            (ngModelChange)="propertyConnector.onValueChange($event)"
+                        >
+                            <code class="t-exception">null</code>
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                class="t-data-list"
+                                [itemContent]="selectContent"
+                                [items]="propertyConnector.documentationPropertyValues"
                             />
+                        </tui-select>
+                        <ng-template
+                            #selectContent
+                            let-data
+                        >
+                            <code>{{ data | tuiInspectAny }}</code>
+                        </ng-template>
 
-                            <tui-textfield
-                                *ngSwitchCase="'string'"
-                                tuiTextfieldSize="m"
-                            >
+                        <ng-template #noItems>
+                            <ng-container [ngSwitch]="propertyConnector.documentationPropertyType">
                                 <input
-                                    tuiTextfield
-                                    [id]="propertyConnector.attrName"
-                                    [ngModel]="propertyConnector.documentationPropertyValue || ''"
-                                    (ngModelChange)="propertyConnector.onValueChange($event)"
-                                />
-                            </tui-textfield>
-
-                            <tui-textfield
-                                *ngSwitchCase="'number'"
-                                tuiTextfieldSize="m"
-                            >
-                                <input
-                                    tuiInputNumber
+                                    *ngSwitchCase="'boolean'"
+                                    tuiSwitch
+                                    type="checkbox"
+                                    class="t-switch"
                                     [id]="propertyConnector.attrName"
                                     [ngModel]="propertyConnector.documentationPropertyValue"
-                                    [step]="1"
-                                    (ngModelChange)="propertyConnector.onValueChange($event || 0)"
+                                    [showIcons]="true"
+                                    (ngModelChange)="propertyConnector.onValueChange($event)"
                                 />
-                            </tui-textfield>
-                        </ng-container>
-                    </ng-template>
-                </ng-container>
 
-                <ng-template #elseEmitter>
-                    <tui-notification
-                        class="t-output"
-                        [@emitEvent]="propertyConnector.emits()"
-                    >
-                        Emit!
-                    </tui-notification>
-                </ng-template>
-            </td>
-        </tr>
+                                <tui-textfield
+                                    *ngSwitchCase="'string'"
+                                    tuiTextfieldSize="m"
+                                >
+                                    <input
+                                        tuiTextfield
+                                        [id]="propertyConnector.attrName"
+                                        [ngModel]="propertyConnector.documentationPropertyValue || ''"
+                                        (ngModelChange)="propertyConnector.onValueChange($event)"
+                                    />
+                                </tui-textfield>
+
+                                <tui-textfield
+                                    *ngSwitchCase="'number'"
+                                    tuiTextfieldSize="m"
+                                >
+                                    <input
+                                        tuiInputNumber
+                                        [id]="propertyConnector.attrName"
+                                        [ngModel]="propertyConnector.documentationPropertyValue"
+                                        [step]="1"
+                                        (ngModelChange)="propertyConnector.onValueChange($event || 0)"
+                                    />
+                                </tui-textfield>
+                            </ng-container>
+                        </ng-template>
+                    </ng-container>
+
+                    <ng-template #elseEmitter>
+                        <tui-notification
+                            class="t-output"
+                            [@emitEvent]="propertyConnector.emits()"
+                        >
+                            Emit!
+                        </tui-notification>
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </ng-container>
