@@ -12,7 +12,7 @@
             {{ texts.zoomOut }}
         </button>
         <label
-            *tuiLet="(valueChange | async) || (value | percent) as sliderValueText"
+            *tuiLet="value | percent as sliderValueText"
             tuiSliderThumbLabel
         >
             <div
