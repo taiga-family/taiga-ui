@@ -3,6 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
+import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
@@ -20,6 +21,7 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
+        TuiDocInput,
         TuiDocTextfield,
         TuiDropdown,
         TuiInputDateTime,

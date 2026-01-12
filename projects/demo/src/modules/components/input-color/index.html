@@ -47,11 +47,13 @@
                         list="colors"
                         tuiInputColor
                         [align]="align"
+                        [focused]="input.focused"
                         [format]="format"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                     <datalist id="colors">
@@ -85,6 +87,10 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #controlDoc

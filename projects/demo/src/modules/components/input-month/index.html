@@ -204,9 +204,11 @@
                     <input
                         placeholder="Month"
                         tuiInputMonth
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
@@ -282,6 +284,11 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
 
             <tbody

@@ -197,12 +197,14 @@
 
                     <input
                         tuiInputDateTime
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [timeMode]="timeMode"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -243,6 +245,10 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #icons

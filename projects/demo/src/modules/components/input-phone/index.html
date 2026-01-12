@@ -61,10 +61,12 @@
 
                     <input
                         tuiInputPhone
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [mask]="phoneMask"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>
@@ -95,6 +97,11 @@
                 </tr>
                 >
             </tbody>
+
+            <tbody
+                #input
+                tuiDocInput
+            ></tbody>
 
             <tbody
                 #icons

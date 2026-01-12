@@ -274,6 +274,7 @@
 
                     <input
                         tuiInputNumber
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max"
@@ -283,6 +284,7 @@
                         [prefix]="prefix"
                         [quantum]="quantum"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [step]="step"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
@@ -383,6 +385,11 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
 
             <tbody

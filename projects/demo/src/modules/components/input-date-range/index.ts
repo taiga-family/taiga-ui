@@ -3,12 +3,13 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
+import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from '@taiga-ui/cdk';
-import {TuiDropdown} from '@taiga-ui/core';
+import {TuiDropdown, TuiInput} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
@@ -18,9 +19,11 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
+        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
+        TuiInput,
         TuiInputDateRange,
     ],
     templateUrl: './index.html',
