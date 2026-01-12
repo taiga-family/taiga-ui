@@ -33,7 +33,7 @@ export default class Page {
     protected min = 0;
     protected step = 1;
     protected segments: number[] | number = this.max;
-    protected thumbRadius = 6;
+    protected thumbSize = 12;
 
     protected get disabled(): boolean {
         return this.control.disabled;

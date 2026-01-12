@@ -18,7 +18,7 @@
                     @switch ($index) {
                         @case (0) {
                             Use css-variable
-                            <code>--tui-thumb-radius</code>
+                            <code>--tui-thumb-size</code>
                             to customize radius of the thumb and track thickness.
                         }
                         @case (1) {
@@ -56,7 +56,7 @@
                     [min]="min"
                     [segments]="segments"
                     [step]="step"
-                    [style.--tui-thumb-radius.px]="thumbRadius"
+                    [style.--tui-thumb-size.px]="thumbSize"
                 />
             </ng-template>
         </tui-doc-demo>
@@ -177,12 +177,12 @@
                 </tr>
 
                 <tr
-                    name="[style.--tui-thumb-radius.px]"
+                    name="[style.--tui-thumb-size.px]"
                     tuiDocAPIItem
                     type="number"
-                    [(value)]="thumbRadius"
+                    [(value)]="thumbSize"
                 >
-                    Radius of thumb
+                    Size of thumb
                 </tr>
             </tbody>
         </table>

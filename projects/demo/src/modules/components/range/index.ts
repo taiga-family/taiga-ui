@@ -28,7 +28,7 @@ export default class Page {
 
     protected segments = 1;
 
-    protected thumbRadius = 6;
+    protected thumbSize = 12;
 
     protected readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [

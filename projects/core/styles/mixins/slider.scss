@@ -4,9 +4,9 @@ $track-inset: (
     'l': 1rem,
 );
 
-$thumb-radius: var(--tui-thumb-radius, 0.375rem);
+$thumb-diameter: var(--tui-thumb-size, 0.75rem);
+$thumb-radius: calc($thumb-diameter / 2);
 $track-thickness: max(calc($thumb-radius - 0.25rem), 0.125rem);
-$thumb-diameter: calc($thumb-radius * 2);
 
 @mixin tui-slider-ticks-labels() {
     --t-offset: $thumb-radius;

@@ -6,7 +6,6 @@
 *** Ticks - tick marks along the length of the track.
 */
 
-@track-color: var(--tui-slider-track-color);
 @hitbox: 1rem;
 @transform-noop: scale(1);
 @hitbox-padding: max(calc(@hitbox - @thumb-diameter), ~'0rem');
@@ -129,9 +128,9 @@ The first tick should start at the center of thumb to set correct position for a
 :host-context(tui-textfield) :host([type='range']) {
     position: absolute;
     inset: 100% var(--t-padding) 0;
-    block-size: 1rem;
     inline-size: auto;
-    margin: calc(-0.5rem - @track-thickness / 2) 0 0;
+    margin: calc(-0.5 * @track-thickness) 0 0;
+    transform: translateY(-50%);
     background-color: transparent;
     pointer-events: auto;
 }

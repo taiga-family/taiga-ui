@@ -82,5 +82,5 @@ export default class PageComponent {
     protected quantum = 0;
     protected keySteps: TuiKeySteps | null = null;
     protected content = this.contentVariants[0]!;
-    protected thumbRadius = 6;
+    protected thumbSize = 12;
 }
