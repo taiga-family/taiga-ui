@@ -1,4 +1,4 @@
-import {Directive, input} from '@angular/core';
+import {Directive, forwardRef, input} from '@angular/core';
 import {type AbstractControl, NG_VALIDATORS, type Validator} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -7,7 +7,13 @@ import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 
 @Directive({
     selector: '[tuiNativeValidator]',
-    providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
+    providers: [
+        tuiProvide(
+            NG_VALIDATORS,
+            forwardRef(() => TuiNativeValidator),
+            true,
+        ),
+    ],
     host: {
         '(focusout)': 'handleValidation()',
     },
