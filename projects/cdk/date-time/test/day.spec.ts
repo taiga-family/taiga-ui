@@ -1,5 +1,5 @@
 import {TuiDay} from '@taiga-ui/cdk';
-import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
+import {tuiSwitchNgDevMode} from '@taiga-ui/jest-config';
 
 import {tuiMockDateInside} from './helpers';
 

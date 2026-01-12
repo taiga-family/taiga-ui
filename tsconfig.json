@@ -8,6 +8,7 @@
         "types": ["node", "ng-dev-mode"],
         "noUnusedLocals": false,
         "noUnusedParameters": false,
+        "experimentalDecorators": true,
         "paths": {
             "@demo-cypress/*": ["projects/demo-cypress/cypress/*"],
             "@demo-playwright/utils": ["projects/demo-playwright/utils/index"],
