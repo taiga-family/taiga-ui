@@ -6,56 +6,23 @@
 *** Ticks - tick marks along the length of the track.
 */
 
-@track-color: var(--tui-slider-track-color);
-@thumb-color: currentColor;
-
 @hitbox: 1rem;
-@active-thumb-scale-factor: 1.333;
-
 @transform-noop: scale(1);
+@hitbox-padding: max(calc(@hitbox - @thumb-diameter), ~'0rem');
+@outline: 0 0 0 2px inset var(--tui-border-focus);
 
-@hitbox-padding: max(calc(@hitbox - @thumb-diameter), 0.125rem);
-
-.customize-track(@progress-filling) {
-    min-block-size: 0.125rem;
-    block-size: @track-thickness;
-    border-radius: inherit;
-
-    /*
-    The most left point of the track is the most left point of the thumb (at the zero-position).
-    The first tick should start at the center of thumb to set correct position for all other ticks.
-    */
-    @first-tick-offset: calc((@thumb-diameter - var(--t-tick-thickness)) / 2);
-    @ticks-background-size: calc(100% - @thumb-diameter);
-
-    @filling-progress-gradient: linear-gradient(
-        to var(--tui-inline-end),
-        @thumb-color max(@thumb-radius, calc(100% * var(--tui-slider-fill-ratio))),
-        transparent calc(100% * var(--tui-slider-fill-ratio))
-    );
-
-    background-repeat: no-repeat;
-    background-color: @track-color;
-
-    & when (@progress-filling = true) {
-        background-image: var(--tui-ticks-gradient), @filling-progress-gradient;
-        background-position-x: @first-tick-offset, 0;
-        background-size: @ticks-background-size, auto;
-    }
-
-    & when (@progress-filling = false) {
-        background-image: var(--tui-ticks-gradient);
-        background-position-x: @first-tick-offset;
-        background-size: @ticks-background-size;
-    }
-}
+/*
+The most left point of the track is the most left point of the thumb (at the zero-position).
+The first tick should start at the center of thumb to set correct position for all other ticks.
+*/
+@first-tick-offset: calc((@thumb-diameter - var(--t-tick-thickness)) / 2);
 
 .t-customize-thumb() {
     .transition(transform);
 
     isolation: isolate;
     appearance: none;
-    background-color: @thumb-color;
+    background-color: currentColor;
     box-shadow: none;
     border-radius: 50%;
     block-size: @thumb-diameter;
@@ -74,43 +41,8 @@
 
         &:hover,
         :active& {
-            transform: var(--tui-slider-thumb-transform, @transform-noop) scale(@active-thumb-scale-factor);
+            transform: var(--tui-slider-thumb-transform, @transform-noop) scale(1.333);
         }
-    }
-}
-
-/* Vertically centers thumb on the track (webkit only) */
-.vertically-align-thumb() {
-    margin-block-start: calc((@thumb-diameter - @track-thickness + @hitbox-padding) / 2 * -1);
-}
-
-.thumb-ghost() {
-    position: absolute;
-    top: calc(@hitbox-padding / 2);
-    left: var(--t-left);
-    inset-inline-start: var(--t-left);
-    inline-size: @thumb-diameter;
-    block-size: @thumb-diameter;
-    border-radius: 50%;
-    transform: var(--tui-slider-thumb-transform, @transform-noop);
-
-    --t-left: calc(var(--tui-slider-fill-ratio) * 100% - var(--tui-slider-fill-ratio) * @thumb-diameter);
-}
-
-.thumb-overlay() {
-    &:not(:disabled)::before {
-        .transition(~'transform, opacity');
-        .thumb-ghost();
-
-        content: '';
-        cursor: ew-resize;
-        background: @thumb-color;
-        opacity: 0;
-    }
-
-    &:active::before {
-        opacity: 0.2;
-        transform: var(--tui-slider-thumb-transform, @transform-noop) scale(2.33);
     }
 }
 
@@ -123,44 +55,54 @@
     color: var(--tui-background-accent-1); /* See currentColor inside this file */
     cursor: pointer;
     appearance: none;
-    min-block-size: 1rem;
-    block-size: @thumb-diameter;
-    background-color: transparent;
-    background-clip: content-box; /* To clip filling of paddings */
+    block-size: max(@thumb-diameter, 1rem);
+    padding: calc((max(@thumb-diameter, 1rem) - @track-thickness) / 2) 0;
+    box-sizing: border-box;
     outline: none;
-    border-radius: var(--tui-radius-m);
+    border-radius: 1rem / 3rem;
+    background:
+        var(--tui-ticks-gradient) no-repeat @first-tick-offset / calc(100% - @thumb-diameter),
+        linear-gradient(
+            to var(--tui-inline-end),
+            currentColor calc(100% * var(--tui-slider-fill-ratio)),
+            transparent calc(100% * var(--tui-slider-fill-ratio))
+        ),
+        var(--tui-background-neutral-2);
+    background-clip: content-box;
 
     &:active {
         cursor: ew-resize;
+
+        &::before {
+            opacity: 0.2;
+            transform: var(--tui-slider-thumb-transform, @transform-noop) scale(2.33);
+        }
     }
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
-        cursor: auto;
+        pointer-events: none;
     }
 
-    .thumb-overlay();
+    &::before {
+        .transition(~'transform, opacity');
 
-    &::-webkit-slider-container {
-        border-radius: inherit;
-    }
+        content: '';
+        position: absolute;
+        top: calc(@hitbox-padding / 2);
+        inset-inline-start: var(--t-left);
+        inline-size: @thumb-diameter;
+        block-size: @thumb-diameter;
+        border-radius: 50%;
+        transform: var(--tui-slider-thumb-transform, @transform-noop);
+        cursor: ew-resize;
+        background: currentColor;
+        opacity: 0;
 
-    &::-webkit-slider-runnable-track {
-        .customize-track(true);
-    }
-
-    &::-moz-range-track {
-        .customize-track(false);
-    }
-
-    &::-webkit-slider-thumb {
-        .t-customize-thumb();
-        .vertically-align-thumb();
+        --t-left: calc(var(--tui-slider-fill-ratio) * 100% - var(--tui-slider-fill-ratio) * @thumb-diameter);
     }
 
     &:focus-visible {
-        @outline: 0 0 0 2px inset var(--tui-border-focus);
-
         &::-webkit-slider-thumb {
             box-shadow: @outline;
         }
@@ -170,38 +112,25 @@
         }
     }
 
+    &::-webkit-slider-thumb {
+        .t-customize-thumb();
+    }
+
     &::-moz-range-thumb {
         .t-customize-thumb();
     }
 
     &::-moz-range-progress {
-        /**
-        Don't join this line with other ones from the same selector!
-        Angular optimizer mistakenly transforms all lines with `border-**-radius` into the single one:
-        ```
-        border-radius: inherit 0 0 inherit;
-        ```
-        It is not valid for Firefox.
-        Read more: https://github.com/taiga-family/taiga-ui/issues/3489#issuecomment-1401820320
-        */
-        border-radius: inherit;
-    }
-
-    /* stylelint-disable-next-line no-duplicate-selectors */
-    &::-moz-range-progress {
-        block-size: @track-thickness;
-        background: @thumb-color;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        opacity: 0;
     }
 }
 
 :host-context(tui-textfield) :host([type='range']) {
     position: absolute;
     inset: 100% var(--t-padding) 0;
-    block-size: 1rem;
     inline-size: auto;
-    margin: calc(-0.5rem - @track-thickness / 2) 0 0;
-    padding: 0;
+    margin: calc(-0.5 * @track-thickness) 0 0;
+    transform: translateY(-50%);
+    background-color: transparent;
     pointer-events: auto;
 }

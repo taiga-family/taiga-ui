@@ -20,7 +20,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
+import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';
@@ -35,11 +35,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     styleUrl: './input-color.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsControl(TuiInputColorComponent),
-        tuiFallbackValueProvider(''),
-        tuiSliderOptionsProvider({trackColor: 'transparent'}),
-    ],
+    providers: [tuiAsControl(TuiInputColorComponent), tuiFallbackValueProvider('')],
     hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
         ngSkipHydration: 'true',

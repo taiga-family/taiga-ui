@@ -29,7 +29,6 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
         'tui-textfield [tuiInputSlider] ~ .t-content [tuiButtonX] {display: none !important}',
         // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
         'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
-        'tui-textfield [tuiSlider] { --tui-slider-track-color: transparent !important; }',
     ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,

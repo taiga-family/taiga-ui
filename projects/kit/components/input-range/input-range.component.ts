@@ -24,10 +24,7 @@ import {
     TuiQuantumValueTransformerBase,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiRange} from '@taiga-ui/kit/components/range';
-import {
-    type TuiKeySteps,
-    tuiSliderOptionsProvider,
-} from '@taiga-ui/kit/components/slider';
+import {type TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     type PolymorpheusContent,
     PolymorpheusOutlet,
@@ -43,11 +40,7 @@ const transform = (x?: readonly [string, string] | null): readonly [string, stri
     templateUrl: './input-range.template.html',
     styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsControl(TuiInputRange),
-        tuiSliderOptionsProvider({trackColor: 'transparent'}),
-        tuiFallbackValueProvider([0, 0]),
-    ],
+    providers: [tuiAsControl(TuiInputRange), tuiFallbackValueProvider([0, 0])],
     host: {
         '[attr.data-size]': 'size()',
         // TODO: Delete this line and put `tui-input-range:has(.t-content-end) {--t-icon-lock: none}` to proprietary styles
