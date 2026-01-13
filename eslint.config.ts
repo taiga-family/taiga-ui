@@ -42,6 +42,7 @@ export default process.env.HTML_ESLINT
                   '@angular-eslint/prefer-signals': 'off',
                   // TODO: enable after https://github.com/typescript-eslint/typescript-eslint/issues/11790
                   '@typescript-eslint/no-redundant-type-constituents': 'off',
+                  '@typescript-eslint/strict-void-return': 'off',
               },
           },
           {

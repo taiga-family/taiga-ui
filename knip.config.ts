@@ -17,6 +17,7 @@ const config: KnipConfig = {
         'playwright',
         'mkcert',
         'commitlint',
+        'lint-staged',
         'extract-changelog-release',
     ],
     // TODO: investigate why some files are broken
