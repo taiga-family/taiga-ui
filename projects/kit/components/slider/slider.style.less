@@ -64,7 +64,7 @@ The first tick should start at the center of thumb to set correct position for a
         var(--tui-ticks-gradient) no-repeat @first-tick-offset / calc(100% - @thumb-diameter),
         linear-gradient(
             to var(--tui-inline-end),
-            currentColor max(@thumb-radius, calc(100% * var(--tui-slider-fill-ratio))),
+            currentColor calc(100% * var(--tui-slider-fill-ratio)),
             transparent calc(100% * var(--tui-slider-fill-ratio))
         ),
         var(--tui-background-neutral-2);
