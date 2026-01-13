@@ -67,11 +67,13 @@
                     <textarea
                         placeholder="Placeholder"
                         tuiTextarea
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     ></textarea>
                 </tui-textfield>
@@ -99,6 +101,10 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #icons

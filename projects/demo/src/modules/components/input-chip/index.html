@@ -106,10 +106,12 @@
                     <input
                         placeholder="Enter"
                         tuiInputChip
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [readOnly]="controlDoc.readonly"
                         [separator]="separator"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                         [unique]="unique"
                     />
@@ -141,6 +143,11 @@
                 #textfieldDoc
                 tuiDocTextfield
                 [hiddenOptions]="[]"
+            ></tbody>
+
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
 
             <tbody

@@ -109,8 +109,10 @@
                     placeholder="I am placeholder"
                     tuiInput
                     [disabled]="control.disabled"
+                    [focused]="input.focused"
                     [invalid]="control.invalid"
                     [readOnly]="control.readonly"
+                    [state]="input.state"
                     [(ngModel)]="value"
                 />
                 <tui-icon tuiTooltip="I am a hint" />
@@ -136,6 +138,10 @@
             <tbody
                 #control
                 tuiDocControl
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #textfield

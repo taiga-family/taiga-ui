@@ -1,0 +1,36 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <strong>State</strong>
+            <span tuiSubtitle>Manually override interactive state</span>
+        </span>
+    </td>
+</tr>
+
+@if (!hiddenOptions().includes('state')) {
+    <tr
+        name="[state]"
+        tuiDocAPIItem
+        type="TuiInteractiveState | null"
+        [items]="states"
+        [(value)]="state"
+    >
+        Interactive state (
+        <code>null</code>
+        for automatic)
+    </tr>
+}
+
+@if (!hiddenOptions().includes('focused')) {
+    <tr
+        name="[focused]"
+        tuiDocAPIItem
+        type="boolean | null"
+        [items]="focuses"
+        [(value)]="focused"
+    >
+        Focused state (
+        <code>null</code>
+        for automatic)
+    </tr>
+}

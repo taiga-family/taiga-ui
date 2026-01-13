@@ -243,10 +243,12 @@
                         tuiInputPhoneInternational
                         [countries]="countries"
                         [countrySearch]="countrySearch"
+                        [focused]="input.focused"
                         [formControl]="formControl"
                         [invalid]="control.invalid"
                         [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''"
                         [readOnly]="control.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="control.disabled"
                         [(countryIsoCode)]="countryIsoCode"
                     />
@@ -283,6 +285,10 @@
             <tbody
                 #textfield
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #control

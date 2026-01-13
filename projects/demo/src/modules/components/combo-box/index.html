@@ -375,10 +375,12 @@
                     <input
                         placeholder="Search country"
                         tuiComboBox
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [matcher]="matcher"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [strict]="strict"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -436,6 +438,11 @@
                 #textfieldDoc
                 tuiDocTextfield
                 [contentVariants]="textfieldContentVariants"
+            ></tbody>
+
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
 
             <tbody

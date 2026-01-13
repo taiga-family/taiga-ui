@@ -109,6 +109,7 @@
 
                     <input
                         tuiInputDateRange
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max"
@@ -117,6 +118,7 @@
                         [minLength]="minLength"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
@@ -170,6 +172,10 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #icons

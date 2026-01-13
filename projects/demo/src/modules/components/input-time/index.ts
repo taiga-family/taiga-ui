@@ -1,16 +1,26 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiTime} from '@taiga-ui/cdk';
+import {TuiInput} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiDemo, TuiDocControl, TuiDocTextfield, TuiInputTime],
+    imports: [
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiDocControl,
+        TuiDocInput,
+        TuiDocTextfield,
+        TuiInput,
+        TuiInputTime,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })

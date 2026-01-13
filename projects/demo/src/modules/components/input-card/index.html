@@ -52,9 +52,11 @@
                 <input
                     tuiInputCard
                     [disabled]="control.disabled"
+                    [focused]="input.focused"
                     [invalid]="control.invalid"
                     [placeholder]="textfield.size === 's' ? 'Card number' : ''"
                     [readOnly]="control.readonly"
+                    [state]="input.state"
                     [(ngModel)]="card"
                     (binChange)="binChange.emitEvent($event)"
                 />
@@ -84,6 +86,10 @@
             <tbody
                 #textfield
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #icons

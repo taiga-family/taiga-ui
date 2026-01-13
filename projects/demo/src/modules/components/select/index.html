@@ -322,10 +322,12 @@
 
                     <input
                         tuiSelect
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [placeholder]="showPlaceholder ? 'Choose country' : ''"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
@@ -347,6 +349,11 @@
                 #textfieldDoc
                 tuiDocTextfield
                 [contentVariants]="textfieldContentVariants"
+            ></tbody>
+
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
 
             <tbody

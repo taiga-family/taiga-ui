@@ -298,12 +298,14 @@
                         placeholder="Pick a time"
                         tuiInputTime
                         [accept]="accept"
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [mode]="mode"
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>
@@ -358,6 +360,11 @@
                 #textfieldDoc
                 tuiDocTextfield
                 [hiddenOptions]="['content', 'rows']"
+            ></tbody>
+
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
 
             <tbody

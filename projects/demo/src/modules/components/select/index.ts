@@ -2,6 +2,7 @@ import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
+import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -10,7 +11,7 @@ import {TuiDemo} from '@demo/utils';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiDropdown} from '@taiga-ui/core';
+import {TuiDropdown, TuiInput} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 interface Country {
@@ -26,9 +27,11 @@ interface Country {
         TuiDemo,
         TuiDocControl,
         TuiDocDropdown,
+        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
+        TuiInput,
         TuiSelect,
     ],
     templateUrl: './index.html',

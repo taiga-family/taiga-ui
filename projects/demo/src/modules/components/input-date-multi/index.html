@@ -84,11 +84,13 @@
                     <input
                         placeholder="Choose date"
                         tuiInputDateMulti
+                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
@@ -125,6 +127,10 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
             ></tbody>
             <tbody
                 #icons
