@@ -12,6 +12,7 @@ import {getFileSystem} from '../../utils/get-file-system';
 import {replaceText} from '../../utils/replace-text';
 
 const FONT_VARIABLES_REPLACEMENTS = [
+    {from: String.raw`--tui-font-text\)`, to: '--tui-font-family-text)'},
     {from: '--tui-font-heading-([1-6])', to: '--tui-font-heading-h$1'},
     {from: '--tui-font-text-xl', to: '--tui-font-legacy-body-xl'},
     {from: '--tui-font-text-l', to: '--tui-font-body-l'},

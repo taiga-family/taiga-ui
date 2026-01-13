@@ -12,6 +12,7 @@ describe('ng-update font variables', () => {
             collection,
             template: `
                 <div>
+                    <p style="font: var(--tui-font-text)"></p>
                     <p style="font: var(--tui-font-heading-1)"></p>
                     <p style="font: var(--tui-font-heading-2)"></p>
                     <p style="font: var(--tui-font-heading-3)"></p>
@@ -35,6 +36,7 @@ describe('ng-update font variables', () => {
 
         expect(template).toEqual(`
                 <div>
+                    <p style="font: var(--tui-font-family-text)"></p>
                     <p style="font: var(--tui-font-heading-h1)"></p>
                     <p style="font: var(--tui-font-heading-h2)"></p>
                     <p style="font: var(--tui-font-heading-h3)"></p>
