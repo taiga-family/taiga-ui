@@ -539,6 +539,16 @@ export const pages: DocRoutePages = [
                 meta: {name: 'tui-button-tooltip'},
             },
             {
+                section: 'Components',
+                title: 'TooltipCopy',
+                keywords:
+                    'tooltip, тултип, hint, подсказка, помощь, help, copy, копирование',
+                route: DemoRoute.TooltipCopy,
+                meta: {
+                    name: 'tui-tooltip-copy',
+                },
+            },
+            {
                 section: 'Tools',
                 title: 'Hint',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help, хинт',

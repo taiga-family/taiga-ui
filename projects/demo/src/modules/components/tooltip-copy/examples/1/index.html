@@ -1,0 +1,62 @@
+<p [tuiTooltipCopy]="inkin">
+    Alexander Inkin
+
+    <ng-template #inkin>
+        <tui-tooltip-copy #manager>
+            @let copiedId = manager.copiedId();
+
+            <button
+                tuiButton
+                tuiSlot="first"
+                type="button"
+                [iconStart]="copiedId === 'first' ? '@tui.check' : '@tui.copy'"
+                (click)="manager.copy('first', 'Alexander Inkin')"
+            >
+                {{ copiedId === 'first' ? 'Copied' : 'Alexander Inkin' }}
+            </button>
+            <button
+                tuiButton
+                tuiSlot="second"
+                type="button"
+                [iconStart]="copiedId === 'second' ? '@tui.check' : '@tui.copy'"
+                (click)="manager.copy('second', '@a.inkin')"
+            >
+                {{ copiedId === 'second' ? 'Copied' : '@a.inkin' }}
+            </button>
+        </tui-tooltip-copy>
+    </ng-template>
+</p>
+
+<br />
+
+<p
+    tuiHintAppearance="floating"
+    [tuiTooltipCopy]="sedov"
+>
+    Roman Sedov
+
+    <ng-template #sedov>
+        <tui-tooltip-copy #manager>
+            @let copiedId = manager.copiedId();
+
+            <button
+                tuiButton
+                tuiSlot="first"
+                type="button"
+                [iconStart]="copiedId === 'first' ? '@tui.check' : '@tui.copy'"
+                (click)="manager.copy('first', 'Roman Sedov')"
+            >
+                {{ copiedId === 'first' ? 'Copied' : 'Roman Sedov' }}
+            </button>
+            <button
+                tuiButton
+                tuiSlot="second"
+                type="button"
+                [iconStart]="copiedId === 'second' ? '@tui.check' : '@tui.copy'"
+                (click)="manager.copy('second', '@r.sedov')"
+            >
+                {{ copiedId === 'second' ? 'Copied' : '@r.sedov' }}
+            </button>
+        </tui-tooltip-copy>
+    </ng-template>
+</p>

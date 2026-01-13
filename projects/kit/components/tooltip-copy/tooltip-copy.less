@@ -1,0 +1,52 @@
+tui-tooltip-copy {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+
+    .t-divider {
+        inline-size: 1px;
+        block-size: 1.25rem;
+        background: rgba(0, 16, 36, 0.12);
+        margin-inline-start: -1px;
+    }
+
+    .t-divider:last-child {
+        display: none;
+    }
+}
+
+tui-hint[data-mode='tooltip-copy'] {
+    max-inline-size: none;
+    padding: 0.375rem;
+}
+
+tui-hint[data-mode='tooltip-copy'][data-appearance=''] {
+    background: rgba(87, 91, 97, 1);
+
+    [tuiButton] {
+        color: #fff;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+    }
+
+    &[tuiTheme='dark'] {
+        background: #fff;
+
+        [tuiButton] {
+            color: #000;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.06);
+            }
+        }
+    }
+}
+
+tui-hint[data-mode='tooltip-copy'][data-appearance='']:not([tuiTheme]),
+tui-hint[data-mode='tooltip-copy'][data-appearance='floating'][tuiTheme] {
+    tui-tooltip-copy .t-divider {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}

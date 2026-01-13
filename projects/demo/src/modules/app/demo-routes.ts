@@ -133,6 +133,7 @@ export const DemoRoute = {
     Tiles: '/components/tiles',
     Switch: '/components/switch',
     Tooltip: '/components/tooltip',
+    TooltipCopy: '/components/tooltip-copy',
     Tree: '/components/tree',
     Filter: '/components/filter',
     ArcChart: '/charts/arc-chart',

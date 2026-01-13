@@ -1,0 +1,19 @@
+<tui-doc-page
+    header="TooltipCopy"
+    package="KIT"
+    path="kit/directives/tooltip-copy"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>A special case of a tooltip with actions inside, allowing you to copy the parameters of an object</p>
+
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

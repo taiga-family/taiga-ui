@@ -684,6 +684,11 @@ export const ROUTES: Routes = [
         title: 'Tooltip',
     }),
     route({
+        path: DemoRoute.TooltipCopy,
+        loadComponent: async () => import('../components/tooltip-copy'),
+        title: 'TooltipCopy',
+    }),
+    route({
         path: DemoRoute.Tree,
         loadComponent: async () => import('../components/tree'),
         title: 'Tree',

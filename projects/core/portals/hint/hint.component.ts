@@ -20,7 +20,11 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {
+    TuiAppearance,
+    tuiAppearance,
+    tuiAppearanceMode,
+} from '@taiga-ui/core/directives/appearance';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';
@@ -88,6 +92,7 @@ export class TuiHintComponent {
         ?.getAttribute('tuiTheme');
 
     protected readonly appearance = tuiAppearance(this.hint.appearance);
+    protected readonly mode = tuiAppearanceMode(this.hint.mode);
 
     constructor() {
         inject(TuiPositionService)

@@ -58,6 +58,10 @@ export class TuiHintDirective<C>
         alias: 'tuiHintAppearance',
     });
 
+    public readonly mode = input<string | null>(null, {
+        alias: 'tuiAppearanceMode',
+    });
+
     public readonly visible = output<boolean>({alias: 'tuiHintVisible'});
 
     public component = inject(PolymorpheusComponent<unknown>);
