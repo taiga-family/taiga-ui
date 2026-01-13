@@ -7,9 +7,10 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDirectiveBinding, tuiWithStyles} from '@taiga-ui/cdk/utils';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core/components';
-import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/portals';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Directive({
