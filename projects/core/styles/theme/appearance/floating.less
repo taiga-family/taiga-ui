@@ -5,6 +5,11 @@
     color: var(--tui-text-primary);
     box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
 
+    &::before,
+    &::after {
+        transition-property: color;
+    }
+
     .appearance-hover({
         box-shadow: 0 0.875rem 2.625rem rgba(0, 0, 0, 0.14);
     });

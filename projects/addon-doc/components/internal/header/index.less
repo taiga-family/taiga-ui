@@ -2,22 +2,25 @@
 
 :host {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    // fix for Safari to prevent tabs underline above sidebar
     z-index: 1;
     display: flex;
-    box-shadow: 0 0.25rem 1.875rem rgba(0, 0, 0, 0.1);
-    block-size: 4.125rem;
+    inset: 0 0 auto;
+    block-size: 4rem;
     align-items: center;
     padding: 0 1.25rem;
-    background: var(--tui-background-base);
-    background: color-mix(in srgb, var(--tui-background-base) 70%, var(--tui-background-base) 0%);
-    backdrop-filter: blur(0.625rem);
-    border-radius: 0.9375rem;
-    border: 1px solid var(--tui-border-normal);
-    margin: 0.4375rem 1rem;
+    background: var(--tui-background-base-alt);
+
+    &::after {
+        content: '';
+        position: fixed;
+        inset: 3.5rem 0 0;
+        pointer-events: none;
+        border-radius: var(--tui-radius-xl);
+        border: 0.5rem solid var(--tui-background-base-alt);
+        box-shadow:
+            -5rem 0 var(--tui-background-base-alt),
+            5rem 0 var(--tui-background-base-alt);
+    }
 }
 
 .t-logo {

@@ -12,30 +12,34 @@
 
         @if (dir && icons.ltr) {
             <button
-                appearance="outline"
+                appearance=""
                 aria-label="Switch directionality of the element's text"
                 size="s"
-                tuiButton
+                tuiIconButton
                 type="button"
                 class="tui-doc-switch-direction"
-                [iconEnd]="icons.ltr.preview"
+                [style.border-radius.%]="100"
                 (click)="changeTextDirection()"
             >
-                <tui-icon [icon]="icons.ltr.direction" />
+                <tui-icon
+                    [badge]="icons.ltr.direction"
+                    [icon]="icons.ltr.preview"
+                />
             </button>
         }
 
         <button
-            appearance="secondary"
+            appearance=""
             aria-label="Switch between dark and light mode"
             size="s"
             tuiIconButton
             type="button"
             class="tui-doc-dark-mode-switch"
-            [iconStart]="icon()"
             [style.border-radius.%]="100"
             (click)="darkMode.set(!darkMode())"
-        ></button>
+        >
+            <tui-icon [icon]="icon()" />
+        </button>
     </header>
     <ng-container ngProjectAs="tuiOverContent">
         <ng-content select="tuiOverContent" />

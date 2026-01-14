@@ -1,12 +1,10 @@
 import {isPlatformServer} from '@angular/common';
-import {HttpClient} from '@angular/common/http';
 import {
     Component,
     DestroyRef,
     inject,
     type OnInit,
     PLATFORM_ID,
-    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -19,30 +17,18 @@ import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
-import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
-import {TuiBadgedContent} from '@taiga-ui/kit';
+import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
 import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
 import {TuiAlgoliaSearch} from './search';
-import {VersionManager} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
 @Component({
     selector: 'app',
-    imports: [
-        CustomHost,
-        TuiAlgoliaSearch,
-        TuiBadgedContent,
-        TuiButton,
-        TuiDataList,
-        TuiDemo,
-        TuiDropdown,
-        TuiIcon,
-        VersionManager,
-    ],
+    imports: [CustomHost, TuiAlgoliaSearch, TuiButton, TuiDataList, TuiDemo, TuiDropdown],
     templateUrl: './app.template.html',
     styleUrl: './app.style.less',
     encapsulation: ViewEncapsulation.None,
@@ -68,12 +54,10 @@ export class App extends AbstractDemo implements OnInit {
     private readonly isE2E = inject(WA_IS_E2E);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly destroyRef = inject(DestroyRef);
-    private readonly http = inject(HttpClient);
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
-    protected readonly stars = signal('');
     protected readonly defaultSearchEnabled = inject(TUI_DOC_SEARCH_ENABLED);
 
     protected readonly isLanding = toSignal(
@@ -93,17 +77,6 @@ export class App extends AbstractDemo implements OnInit {
             }
 
             this.enableYandexMetrika();
-
-            this.http
-                .get<Record<string, any>>(environment.github)
-                .pipe(takeUntilDestroyed(this.destroyRef))
-                .subscribe((response) =>
-                    this.stars.set(
-                        Intl.NumberFormat('en', {notation: 'compact'}).format(
-                            response['stargazers_count'],
-                        ),
-                    ),
-                );
         });
     }
 

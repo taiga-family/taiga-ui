@@ -25,13 +25,12 @@ export type DocRoutePageGroup = TuiDocRoutePageBase & {
 };
 
 export const pages: DocRoutePages = [
-    // Documentation
     {
-        section: 'Documentation',
-        title: 'Getting started',
+        title: 'Getting Started',
         keywords: 'intro, how to, guide, main, главная, начало, инструкция',
         route: DemoRoute.GettingStarted,
     },
+    // Documentation
     {
         section: 'Documentation',
         title: 'Information',
