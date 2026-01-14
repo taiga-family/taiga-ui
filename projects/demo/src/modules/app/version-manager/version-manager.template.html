@@ -4,10 +4,11 @@
     tuiButton
     tuiChevron
     type="button"
+    [style.margin-block-start.rem]="0.25"
     [tuiDropdown]="content"
     [(tuiDropdownOpen)]="open"
 >
-    {{ initialVersion?.label }}
+    <b>{{ initialVersion?.label }}</b>
 </button>
 
 <ng-template #content>
