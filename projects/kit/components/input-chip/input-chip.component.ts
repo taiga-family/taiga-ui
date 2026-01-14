@@ -96,7 +96,11 @@ export class TuiInputChipComponent<T> {
     }
 
     protected delete(): void {
-        this.textfield.cva()?.onChange(this.value().filter((_, i) => i !== this.index));
+        if (this.textfield.cva()?.interactive()) {
+            this.textfield
+                .cva()
+                ?.onChange(this.value().filter((_, i) => i !== this.index));
+        }
 
         if (!this.mobile) {
             this.textfield.input()?.nativeElement.focus({preventScroll: true});

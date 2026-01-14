@@ -86,6 +86,25 @@ test.describe('InputChip', () => {
             await expect.soft(example).toHaveScreenshot('input-chip-unique.png');
         });
 
+        test('readonly true', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputChip}/API`);
+            const apiPage = new TuiDocumentationApiPagePO(page);
+            const example = apiPage.apiPageExample;
+
+            const inputChip = new TuiInputChipPO(example);
+
+            await inputChip.input.fill('123');
+            await inputChip.input.blur();
+
+            const toggle = await apiPage.getToggle(apiPage.getRow('readOnly'));
+
+            await toggle?.click();
+
+            await inputChip.chips.first().hover();
+
+            await expect.soft(example).toHaveScreenshot('input-chip-readonly-hover.png');
+        });
+
         test('chip cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const example = new TuiDocumentationApiPagePO(page).apiPageExample;
