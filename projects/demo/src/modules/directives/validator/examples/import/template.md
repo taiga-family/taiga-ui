@@ -1,9 +1,0 @@
-```html
-<tui-textfield>
-  <input
-    formControlName="control"
-    tuiInput
-    [tuiValidator]="validator"
-  />
-</tui-textfield>
-```
