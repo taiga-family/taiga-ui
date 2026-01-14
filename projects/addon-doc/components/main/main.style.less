@@ -75,7 +75,23 @@ tui-doc-navigation.tui-doc-navigation {
     top: 4rem;
     bottom: 0;
     inline-size: @sidebar-width;
-    border-inline-end: 1px solid var(--tui-border-normal);
+    box-sizing: border-box;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        inset: -0.25rem 0 0.25rem;
+        pointer-events: none;
+        border-radius: var(--tui-radius-m);
+        border: 0.25rem solid var(--tui-background-base-alt);
+    }
+
+    &::after {
+        inset-inline-start: 100%;
+        inline-size: 200vw;
+        margin-inline-start: -0.25rem;
+    }
 
     @media @tui-mobile {
         display: none;
@@ -94,9 +110,10 @@ tui-doc-navigation.tui-doc-navigation {
     display: block;
 }
 
-.tui-doc-switch-direction,
-.tui-doc-dark-mode-switch {
+button.tui-doc-switch-direction,
+button.tui-doc-dark-mode-switch {
     margin-inline-start: 1rem;
+    background: var(--tui-background-base);
 }
 
 // highlightjs custom theme
@@ -225,4 +242,10 @@ tui-doc-code[tuiTheme='dark'] {
     .hljs-template-variable {
         color: var(--tui-status-warning);
     }
+}
+
+tui-root > tui-scroll-controls .t-bar.t-bar_vertical {
+    inset-block: 4.5rem 1rem;
+    transform: translateX(-0.75rem);
+    opacity: 0.5;
 }

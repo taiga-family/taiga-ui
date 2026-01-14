@@ -28,6 +28,7 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
+    TUI_DOC_PAGES_ICONS,
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
@@ -306,6 +307,18 @@ export const config: ApplicationConfig = {
                         filter((e) => e instanceof NavigationStart),
                     ),
                 ),
+        },
+        {
+            provide: TUI_DOC_PAGES_ICONS,
+            useValue: {
+                'Getting Started': '@tui.rocket',
+                Documentation: '@tui.file-code-corner',
+                Components: '@tui.puzzle',
+                Layout: '@tui.layout-panel-left',
+                Navigation: '@tui.compass',
+                Charts: '@tui.chart-pie',
+                Tools: '@tui.hammer',
+            },
         },
     ],
 };

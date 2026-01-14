@@ -1,14 +1,12 @@
-import {DOCUMENT} from '@angular/common';
 import {
     afterNextRender,
     ChangeDetectionStrategy,
     Component,
-    effect,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
 import {default as docsearch} from '@docsearch/js';
-import {TUI_DARK_MODE} from '@taiga-ui/core';
+import {TUI_ICON_START, TuiIcons} from '@taiga-ui/core';
 
 import {SEARCH_CONFIG} from './env';
 
@@ -18,18 +16,12 @@ import {SEARCH_CONFIG} from './env';
     styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.id]': "'docsearch'",
-    },
+    providers: [{provide: TUI_ICON_START, useValue: '@tui.search'}],
+    hostDirectives: [TuiIcons],
+    host: {'[attr.id]': "'docsearch'"},
 })
 export class TuiAlgoliaSearch {
     private readonly config = inject(SEARCH_CONFIG);
-    private readonly docEl = inject(DOCUMENT).documentElement;
-    private readonly darkMode = inject(TUI_DARK_MODE);
-
-    protected readonly effect = effect(() =>
-        this.docEl?.setAttribute('data-theme', this.darkMode() ? 'dark' : 'light'),
-    );
 
     protected readonly afterNextRender = afterNextRender(() =>
         docsearch({

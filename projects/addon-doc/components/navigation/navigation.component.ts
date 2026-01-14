@@ -15,6 +15,7 @@ import {Router, RouterLink, RouterLinkActive, Scroll} from '@angular/router';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
+    TUI_DOC_PAGES_ICONS,
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
@@ -99,6 +100,7 @@ export class TuiDocNavigation {
     protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
     protected readonly searchEnabled = inject(TUI_DOC_SEARCH_ENABLED);
     protected readonly docIcons = inject(TUI_DOC_ICONS);
+    protected readonly pagesIcons = inject(TUI_DOC_PAGES_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly flat = this.items.reduce<
         ReadonlyArray<readonly TuiDocRoutePage[]>

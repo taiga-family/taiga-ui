@@ -42,8 +42,28 @@
 }
 
 /* Darkmode */
-
-html[data-theme='dark'] {
+[tuiTheme='dark'] {
+    --docsearch-secondary-text-color: #b6b7d5;
+    --docsearch-subtle-color: #212139;
+    --docsearch-error-color: #ef5350;
+    --docsearch-success-color: rgba(67, 160, 71, 0.2);
+    --docsearch-highlight-color: #457aff;
+    --docsearch-focus-color: #9ac8ff;
+    --docsearch-background-color: #36395a;
+    --docsearch-icon-color: #b6b7d5;
+    --docsearch-key-background: #36395a;
+    --docsearch-key-color: #b6b7d5;
+    --shimmer-bg: linear-gradient(
+        90deg,
+        #e0e3e8 0%,
+        var(--docsearch-muted-color) 20%,
+        var(--docsearch-muted-color) 60%,
+        #e0e3e8 95%
+    );
+    --docsearch-dropdown-menu-background: var(--docsearch-hit-background);
+    --docsearch-dropdown-menu-item-hover-background: var(--docsearch-modal-background);
+    --docsearch-search-button-background: var(--docsearch-modal-background);
+    --docsearch-search-button-text-color: var(--docsearch-text-color);
     --docsearch-text-color: #fff;
     --docsearch-container-background: rgba(9, 10, 17, 0.8);
     --docsearch-modal-background: #292929;
@@ -63,6 +83,28 @@ html[data-theme='dark'] {
     --docsearch-muted-color: rgb(127, 132, 151);
 }
 
+tui-algolia-search {
+    .center-all();
+
+    &::before {
+        .center-top();
+
+        inset-inline-start: 0.5rem;
+
+        --tui-icon-size: 1rem;
+    }
+
+    @media @tui-mobile {
+        position: relative;
+        left: 0;
+        inline-size: var(--tui-height-s);
+        overflow: hidden;
+        transform: none;
+        border-radius: 100%;
+        order: 2;
+    }
+}
+
 .DocSearch-Modal {
     border-radius: var(--tui-radius-l);
     overflow: hidden;
@@ -73,47 +115,28 @@ html[data-theme='dark'] {
 }
 
 .DocSearch-Button-Placeholder {
+    padding: 0 0.25rem;
     font: var(--tui-font-body-s);
 }
 
-.DocSearch-Button-Keys {
-    transform: scale(0.75);
-}
-
 .DocSearch-Button {
-    .transition(~'box-shadow, color');
-
-    position: relative;
+    inline-size: 12rem;
     block-size: var(--tui-height-s);
     border: none;
     margin: 0;
-    border-radius: var(--tui-radius-m);
-    background: transparent;
+    color: var(--tui-text-primary);
+    background: var(--tui-background-base);
+    border-radius: 1rem;
 
     .DocSearch-Search-Icon {
-        color: var(--docsearch-muted-color);
-        inline-size: 1rem;
+        opacity: 0;
     }
 
-    &::after {
-        .fullsize(absolute, inset);
-        .transition(color);
-
-        content: '';
-        border-radius: inherit;
-        border: 1px solid currentColor;
-        pointer-events: none;
-        color: var(--tui-border-normal);
-    }
-
-    &:active,
-    &:hover {
-        color: var(--docsearch-muted-color);
-
-        &::after {
-            color: var(--tui-background-accent-1);
-            border-width: 2px;
-        }
+    .DocSearch-Button-Key {
+        border: none;
+        background: transparent;
+        margin: 0;
+        color: var(--tui-text-secondary);
     }
 }
 

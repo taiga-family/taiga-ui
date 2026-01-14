@@ -23,6 +23,7 @@ export const EXCLUDED_SECTIONS = [
 ];
 
 export const EXCLUDED_ROUTES = [
+    DemoRoute.GettingStarted,
     DemoRoute.I18N,
     DemoRoute.Preview, // no need take screenshot of buttons
     DemoRoute.Dialog, // just buttons

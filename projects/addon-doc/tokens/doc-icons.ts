@@ -44,8 +44,8 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     shrink: '@tui.shrink',
     expand: '@tui.expand',
     ltr: {
-        preview: '@tui.a-large-small',
-        direction: '@tui.arrow-right-left',
+        preview: '@tui.case-upper',
+        direction: '@tui.arrow-left',
     },
 };
 
