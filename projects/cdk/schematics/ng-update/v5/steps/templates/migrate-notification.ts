@@ -73,6 +73,8 @@ export function migrateTuiNotification({
             location,
             'tui-notification',
             'div',
+            template,
+            false,
             templateOffset,
             attrsToAdd,
         );

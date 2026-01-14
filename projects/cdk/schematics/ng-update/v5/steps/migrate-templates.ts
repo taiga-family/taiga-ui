@@ -15,9 +15,10 @@ import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../interfaces/template-resource';
-import {addHTMLCommentTags, replaceAttrs} from '../../utils/templates';
+import {addHTMLCommentTags, replaceAttrs, replaceTags} from '../../utils/templates';
 import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
+import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateTuiNotification} from './templates/migrate-notification';
@@ -58,6 +59,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
+        getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         migrateInputYear,
         migrateAvatarToDirective,

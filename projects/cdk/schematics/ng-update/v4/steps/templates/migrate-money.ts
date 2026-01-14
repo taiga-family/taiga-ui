@@ -69,7 +69,7 @@ export function migrateMoney({
                 }),
             );
 
-            const formatPart = `[tuiNumberFormat]='${format}'`;
+            const formatPart = ` [tuiNumberFormat]='${format}'`;
 
             const insertTo = (sourceCodeLocation?.startTag?.startOffset || 0) + 1;
 

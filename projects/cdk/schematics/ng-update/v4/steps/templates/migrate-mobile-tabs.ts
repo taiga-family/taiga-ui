@@ -45,6 +45,8 @@ export function migrateMobileTabs({
             element.sourceCodeLocation,
             TABS_TAG_NAME,
             SEGMENTED_TAG_NAME,
+            template,
+            false,
             templateOffset,
         );
 

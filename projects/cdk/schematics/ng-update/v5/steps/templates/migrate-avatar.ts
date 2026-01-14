@@ -102,23 +102,14 @@ export function migrateAvatarToDirective({
         const srcAttr = getSrcAttr(element.attrs);
         const hasAvatarAttr = hasTuiAvatarAttr(element.attrs);
         const attrToAdd = hasAvatarAttr ? null : getAvatarAttr(srcAttr);
-        const raw = template.slice(loc.startTag.startOffset, loc.startTag.endOffset);
-        const isSelfClosing = raw.trimEnd().endsWith('/>');
-
-        if (isSelfClosing) {
-            const start = loc.startTag;
-            const startTagEnd = templateOffset + start.endOffset;
-
-            recorder.remove(startTagEnd - 2, 2);
-            recorder.insertRight(startTagEnd - 2, '>');
-            recorder.insertRight(startTagEnd - 1, '</span>');
-        }
 
         replaceTag(
             recorder,
             loc,
             'tui-avatar',
             'span',
+            template,
+            true,
             templateOffset,
             attrToAdd ? [attrToAdd] : [],
         );

@@ -58,9 +58,9 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<span  class="money">{{ 123 | tuiAmount : currency | async }}</span>
+<span class="money">{{ 123 | tuiAmount : currency | async }}</span>
 
-<span   class="money">{{ 123 | tuiAmount : "RUB" | async }}</span>
+<span  class="money">{{ 123 | tuiAmount : "RUB" | async }}</span>
 
 <span [tuiNumberFormat]='{"decimalMode":"always"}' customDirective>{{ value | tuiAmount : "RUB" | async }}</span>
 
@@ -87,7 +87,7 @@ import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
     standalone: true,
     template: \`
         @let code = currencyCode();
-        <span  >{{ getValue(activeItemIndex()) | tuiAmount : currencyCode() | async }}</span>
+        <span >{{ getValue(activeItemIndex()) | tuiAmount : currencyCode() | async }}</span>
     \`,
     imports: [TuiAmountPipe, AsyncPipe]
 })
