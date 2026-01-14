@@ -5,7 +5,8 @@
     margin-inline-end: 0.25rem;
     pointer-events: auto;
 
-    &[data-state='disabled'] {
+    &[data-state='disabled'],
+    :host-context(tui-textfield[data-state='disabled']) & {
         pointer-events: none;
     }
 
