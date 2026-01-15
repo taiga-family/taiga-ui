@@ -1,3 +1,0 @@
-```html
-<div tuiRipple>...</div>
-```
