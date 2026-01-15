@@ -57,7 +57,7 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<div ${''}
+<div
     tuiDropdownLimitWidth="fixed"
     [tuiDropdown]="dropdown"
     [(tuiDropdownOpen)]="open"

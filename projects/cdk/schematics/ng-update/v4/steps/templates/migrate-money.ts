@@ -50,6 +50,16 @@ export function migrateMoney({
                 ? currencyAttr?.value
                 : `'${currencyAttr?.value}'`;
 
+        recorder.remove(
+            (sourceCodeLocation.startTag?.startOffset ?? 0) + templateOffset + 1,
+            'tui-money'.length,
+        );
+
+        recorder.insertRight(
+            (sourceCodeLocation.startTag?.startOffset ?? 0) + templateOffset + 1,
+            'span',
+        );
+
         recorder.insertRight(
             templateOffset + insertTo,
             `{{ ${value} | tuiAmount ${currencyAttr ? `: ${currency}` : ': "RUB"'} | async }}${selfClosing ? '</span>' : ''}`,
@@ -69,7 +79,7 @@ export function migrateMoney({
                 }),
             );
 
-            const formatPart = `[tuiNumberFormat]='${format}'`;
+            const formatPart = ` [tuiNumberFormat]='${format}'`;
 
             const insertTo = (sourceCodeLocation?.startTag?.startOffset || 0) + 1;
 
@@ -90,6 +100,18 @@ export function migrateMoney({
             recorder.remove(
                 templateOffset + (sourceCodeLocation.startTag?.endOffset ?? 2) - 2,
                 1,
+            );
+        }
+
+        if (!selfClosing) {
+            recorder.remove(
+                (sourceCodeLocation.endTag?.startOffset ?? 0) + templateOffset + 2,
+                'tui-money'.length,
+            );
+
+            recorder.insertRight(
+                (sourceCodeLocation.endTag?.startOffset ?? 0) + templateOffset + 2,
+                'span',
             );
         }
 

@@ -50,10 +50,10 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<tui-thumbnail-card  class="tui-card">{{ cardNumber }}</tui-thumbnail-card>
-<tui-thumbnail-card  class="tui-card">{{ cardNumber }}</tui-thumbnail-card>
-<tui-thumbnail-card  class="tui-card" iconStart="logo">1234</tui-thumbnail-card>
-<tui-thumbnail-card  class="tui-card" iconStart="logo" ></tui-thumbnail-card>
+<tui-thumbnail-card class="tui-card">{{ cardNumber }}</tui-thumbnail-card>
+<tui-thumbnail-card class="tui-card">{{ cardNumber }}</tui-thumbnail-card>
+<tui-thumbnail-card class="tui-card" iconStart="logo">1234</tui-thumbnail-card>
+<tui-thumbnail-card class="tui-card" iconStart="logo" ></tui-thumbnail-card>
 <tui-thumbnail-card [iconStart]="logo">{{ cardNumber }}</tui-thumbnail-card>
 `;
 

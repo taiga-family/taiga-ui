@@ -37,6 +37,7 @@ export function migrateInputYear({
             sourceCodeLocation,
             'tui-input-year',
             'tui-textfield',
+            template,
             templateOffset,
         );
 

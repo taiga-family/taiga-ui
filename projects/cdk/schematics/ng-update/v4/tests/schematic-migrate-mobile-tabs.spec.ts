@@ -50,7 +50,7 @@ export class Test {
 	activeItemIndex = 0;
 }`;
 
-const TEMPLATE_AFTER = `<tui-segmented  [(activeItemIndex)]="activeItemIndex">
+const TEMPLATE_AFTER = `<tui-segmented [(activeItemIndex)]="activeItemIndex">
     <button>
         Tab 1
     </button>
