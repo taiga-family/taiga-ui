@@ -46,7 +46,9 @@ export function migrateAvatarToDirective({
             return;
         }
 
-        const tuiAvatarAttr = element.attrs.find((a) => a.name === '[tuiavatar]');
+        const tuiAvatarAttr = element.attrs.find(
+            (a) => a.name === '[tuiAvatar]'.toLowerCase(),
+        );
         const fallbackBinding = getFallbackBinding(tuiAvatarAttr?.value);
 
         if (!tuiAvatarAttr || !fallbackBinding) {
@@ -140,7 +142,9 @@ function replaceAttribute(
 
 function hasTuiAvatarAttr(attrs: Attribute[]): boolean {
     return attrs.some(({name}) =>
-        ['[(tuiavatar)]', '[tuiavatar]', 'tuiavatar'].includes(name),
+        ['[(tuiAvatar)]', '[tuiAvatar]', 'tuiAvatar']
+            .map((attr) => attr.toLowerCase())
+            .includes(name),
     );
 }
 

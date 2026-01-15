@@ -1,5 +1,9 @@
+import {type DefaultTreeAdapterTypes} from 'parse5';
+
 import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {type ReplacementTag} from '../../../interfaces';
+
+type Element = DefaultTreeAdapterTypes.Element;
 
 export const TAGS_TO_REPLACE: ReplacementTag[] = [
     {from: 'tui-card', to: 'tui-thumbnail-card'},
@@ -15,7 +19,7 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         from: 'tui-input-count',
         to: 'tui-input-number',
         addAttributes: ['decimal="never"', '[step]="1"'],
-        filterFn: (element) => !hasElementAttribute(element, 'step'),
+        filterFn: (element: Element) => !hasElementAttribute(element, 'step'),
     },
     {
         from: 'tui-checkbox-labeled',
@@ -31,36 +35,40 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         from: 'tui-checkbox-block',
         to: 'input',
         addAttributes: ['tuiCheckbox', 'type="checkbox"', 'tuiBlock'],
-        filterFn: (el) => el.attrs.some((attr) => attr.name === '[hidecheckbox]'),
+        filterFn: (el: Element) =>
+            el.attrs.some((attr) => attr.name === '[hideCheckbox]'.toLowerCase()),
     },
     {
         from: 'tui-checkbox-block',
         to: 'input',
         addAttributes: ['tuiCheckbox', 'type="checkbox"'],
-        filterFn: (el) => !el.attrs.some((attr) => attr.name === '[hidecheckbox]'),
+        filterFn: (el: Element) =>
+            !el.attrs.some((attr) => attr.name === '[hideCheckbox]'.toLowerCase()),
     },
     {
         from: 'tui-radio-block',
         to: 'input',
         addAttributes: ['tuiRadio', 'type="radio"', 'tuiBlock'],
-        filterFn: (el) => el.attrs.some((attr) => attr.name === '[hideradio]'),
+        filterFn: (el: Element) =>
+            el.attrs.some((attr) => attr.name === '[hideRadio]'.toLowerCase()),
     },
     {
         from: 'tui-radio-block',
         to: 'input',
         addAttributes: ['tuiRadio', 'type="radio"'],
-        filterFn: (el) => !el.attrs.some((attr) => attr.name === '[hideradio]'),
+        filterFn: (el: Element) =>
+            !el.attrs.some((attr) => attr.name === '[hideRadio]'.toLowerCase()),
     },
     {
         from: 'tui-hosted-dropdown',
         to: 'div',
-        filterFn: (el) =>
+        filterFn: (el: Element) =>
             el.attrs.some((attr) => attr.name === '[open]' || attr.name === '[(open)]'),
     },
     {
         from: 'tui-hosted-dropdown',
         to: 'div',
-        filterFn: (el) =>
+        filterFn: (el: Element) =>
             el.attrs.every((attr) => attr.name !== '[open]' && attr.name !== '[(open)]'),
         addAttributes: ['tuiDropdownOpen'],
     },
