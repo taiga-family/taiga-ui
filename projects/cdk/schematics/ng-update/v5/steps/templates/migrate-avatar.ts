@@ -109,7 +109,6 @@ export function migrateAvatarToDirective({
             'tui-avatar',
             'span',
             template,
-            true,
             templateOffset,
             attrToAdd ? [attrToAdd] : [],
         );

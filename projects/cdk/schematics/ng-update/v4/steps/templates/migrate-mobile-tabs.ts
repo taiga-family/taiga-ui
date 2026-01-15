@@ -46,7 +46,6 @@ export function migrateMobileTabs({
             TABS_TAG_NAME,
             SEGMENTED_TAG_NAME,
             template,
-            false,
             templateOffset,
         );
 

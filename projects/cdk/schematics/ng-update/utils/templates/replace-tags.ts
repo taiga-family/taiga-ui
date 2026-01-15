@@ -24,7 +24,7 @@ export function replaceTags({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    data.forEach(({from, to, addAttributes, filterFn, ensureNonSelfClosingNative}) => {
+    data.forEach(({from, to, addAttributes, filterFn}) => {
         const elements = findElementsByTagName(template, from, filterFn);
 
         elements.forEach(({sourceCodeLocation}) => {
@@ -35,7 +35,6 @@ export function replaceTags({
                     from,
                     to,
                     template,
-                    ensureNonSelfClosingNative,
                     templateOffset,
                     addAttributes,
                 );

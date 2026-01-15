@@ -18,10 +18,6 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         filterFn: (element) => !hasElementAttribute(element, 'step'),
     },
     {
-        from: 'tui-money',
-        to: 'span',
-    },
-    {
         from: 'tui-checkbox-labeled',
         to: 'input',
         addAttributes: ['tuiCheckbox', 'type="checkbox"'],

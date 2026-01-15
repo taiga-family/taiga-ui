@@ -13,7 +13,6 @@ export function replaceTag(
     from: string,
     to: string,
     template: string,
-    ensureNonSelfClosingNative = false,
     templateOffset = 0,
     addAttributes: string[] = [],
 ): void {
@@ -22,7 +21,6 @@ export function replaceTag(
     const endTagOffset = sourceCodeLocation?.endTag?.startOffset;
 
     if (
-        ensureNonSelfClosingNative &&
         startTag &&
         !endTagOffset &&
         NON_SELF_CLOSING_NATIVE_TAGS.has(to) &&
