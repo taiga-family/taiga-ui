@@ -34,6 +34,7 @@ export function replaceTags({
                     sourceCodeLocation,
                     from,
                     to,
+                    template,
                     templateOffset,
                     addAttributes,
                 );

@@ -91,7 +91,7 @@ iconStart="tuiIconHelpCircle">Taiga
 <tui-badge
     appearance="success"
 >
-    <tui-icon  icon="tuiIconHelpCircle"></tui-icon>
+    <tui-icon icon="tuiIconHelpCircle"></tui-icon>
 </tui-badge>
 
 <ng-container [ngSwitch]="state$ | async">

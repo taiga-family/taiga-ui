@@ -47,7 +47,7 @@ describe('ng-update notification directive', () => {
     it('does not duplicate directive attribute', async () => {
         expect(
             await migrate('<tui-notification tuiNotification></tui-notification>'),
-        ).toEqual('<div  tuiNotification></div>');
+        ).toEqual('<div tuiNotification></div>');
     });
 
     afterEach(() => resetActiveProject());

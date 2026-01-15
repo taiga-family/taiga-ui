@@ -62,7 +62,7 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<div ${''}
+<div
   [tuiDropdown]="template"
   [tuiDropdownSided]="sided"
   [tuiDropdownEnabled]="canOpen"

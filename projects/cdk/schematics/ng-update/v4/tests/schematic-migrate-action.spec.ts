@@ -88,7 +88,7 @@ const TEMPLATE_AFTER = `
         <h3 class="header tui-text_body-s">Header</h3>
         <p class="description tui-text_body-xs">Description</p>
     </section>
-    <tui-avatar${' '}
+    <tui-avatar
         size="s"
         src="tuiIconStarLarge"
         class="tui-island__marker icon"

@@ -57,29 +57,29 @@ const TODO =
 
 const TEMPLATE_AFTER = `
 ${TODO}
-<tui-icon  class="custom" [icon]="src"></tui-icon>
+<tui-icon class="custom" [icon]="src"></tui-icon>
 
 ${TODO}
-<tui-icon  icon="icon"></tui-icon>
+<tui-icon icon="icon"></tui-icon>
 
-<tui-icon  [icon]="'tuiIconHeartLarge'" />
+<tui-icon [icon]="'tuiIconHeartLarge'" />
 ${TODO}
-<tui-icon  [icon]="'tuiIconTdsSubscriptionPremiumLogo'" />
+<tui-icon [icon]="'tuiIconTdsSubscriptionPremiumLogo'" />
 ${TODO}
-<tui-icon  [icon]="'tuiIconTdsTInsuranceEngLogo'" />
+<tui-icon [icon]="'tuiIconTdsTInsuranceEngLogo'" />
 ${TODO}
-<tui-icon  [icon]="'tuiIconTdsGoogleLogoSquare'" />
+<tui-icon [icon]="'tuiIconTdsGoogleLogoSquare'" />
 ${TODO}
-<tui-icon  [icon]="'tuiIconTdsTBankLogoSiteheader'" />
+<tui-icon [icon]="'tuiIconTdsTBankLogoSiteheader'" />
 ${TODO}
-<tui-icon  [icon]="'tuiIconTdsGgyFlags'" />
-<tui-icon  [icon]="'tuiIconTdsDiceSmall'" />
+<tui-icon [icon]="'tuiIconTdsGgyFlags'" />
+<tui-icon [icon]="'tuiIconTdsDiceSmall'" />
 ${TODO}
-<tui-icon  icon="tuiIconTdsTinkoffBusinessShieldLogoLogoSiteheader" />
-<tui-icon  icon="tuiIconTdsAirplaneMediumPragmatic" />
-<tui-icon  icon="tuiIconTdsAlertCircleSmallPragmatic" />
+<tui-icon icon="tuiIconTdsTinkoffBusinessShieldLogoLogoSiteheader" />
+<tui-icon icon="tuiIconTdsAirplaneMediumPragmatic" />
+<tui-icon icon="tuiIconTdsAlertCircleSmallPragmatic" />
 ${TODO}
-<tui-icon  icon="tuiIconTdsPlwFlags" />
+<tui-icon icon="tuiIconTdsPlwFlags" />
 `;
 
 describe('ng-update', () => {

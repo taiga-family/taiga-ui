@@ -103,7 +103,7 @@ export class MyComponent {}`);
 
         expect(template).toEqual(`
 <form [formGroup]="testForm">
-  <tui-textfield  >
+  <tui-textfield >
 <label tuiLabel>Choose a month</label>
 
 <input tuiInputYear formControlName="testValue" />
@@ -111,7 +111,7 @@ export class MyComponent {}`);
 </tui-textfield>
 </form>
 
-<tui-textfield${' '}
+<tui-textfield
     class="b-form"
 ${'    '}
     [tuiTextfieldCleaner]="true"
@@ -127,7 +127,7 @@ ${'    '}
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 
- <tui-textfield${' '}
+ <tui-textfield
 ${'    '}
     tuiTextfieldSize="s"
     class="tui-space_bottom-2"
@@ -140,7 +140,7 @@ ${'    '}
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 
-<tui-textfield${' '}
+<tui-textfield
     class="b-form"
 ${'    '}
     [tuiTextfieldCleaner]="true"
@@ -156,7 +156,7 @@ ${'    '}
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 
-<tui-textfield${' '}
+<tui-textfield
 ${'    '}
 ${'    '}
 ${'    '}
