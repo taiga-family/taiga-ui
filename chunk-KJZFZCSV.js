@@ -1,0 +1,16 @@
+import"./chunk-B4AJQJMI.js";var a=`<tui-doc-page
+    header="ButtonX"
+    package="Core"
+    path="core/directives/button-x"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

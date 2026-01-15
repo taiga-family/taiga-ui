@@ -1,0 +1,17 @@
+import"./chunk-B4AJQJMI.js";var t=`<tui-doc-page
+    header="Reorder"
+    package="ADDON-TABLE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component to change order of elements in an array</p>
+
+        <tui-doc-example
+            id="usage"
+            heading="Usage"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+</tui-doc-page>
+`;export{t as default};

@@ -195,39 +195,6 @@ npm install css-vars-ponyfill
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiAccordion} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAccordion,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-accordion>
-  <button tuiAccordion>Taiga UI cdk</button>
-  <tui-expand>
-    Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular entities
-  </tui-expand>
-  <button tuiAccordion>Taiga UI core</button>
-  <tui-expand>Basic elements needed to develop components, directives and more using Taiga UI design system</tui-expand>
-  <button tuiAccordion>Taiga UI kit</button>
-  <tui-expand>The main set of components used to build Taiga UI based Angular applications</tui-expand>
-</tui-accordion>
-```
-
 ### Example
 
 ```html
@@ -583,31 +550,6 @@ export default class Page {
 - **Type**: components
 It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom content.
 
-### How to Use (Import)
-
-```ts
-import {TuiPopup} from '@taiga-ui/core';
-import {TuiActionBar} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    TuiPopup,
-    TuiActionBar,
-    // ...
-  ],
-  // ...
-})
-export class App {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-action-bar *tuiPopup="open">content</tui-action-bar>
-```
-
 ### Usage Examples
 
 #### Size M
@@ -812,46 +754,6 @@ export default class Page {
 - **Package**: `LAYOUT`
 - **Type**: components
 Component for the main app header
-
-### How to Use (Import)
-
-```ts
-import {TuiAppBar} from '@taiga-ui/layout';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAppBar,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<header>
-  <tui-app-bar>
-    <button
-      tuiAppBarBack
-      tuiSlot="start"
-    >
-      Back
-    </button>
-    Page title
-    <button
-      tuiIconButton
-      icon="@tui.settings"
-      title="settings"
-      tuiSlot="end"
-    ></button>
-  </tui-app-bar>
-</header>
-```
 
 ### Usage Examples
 
@@ -1177,30 +1079,6 @@ export default class Page {
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiArcChart} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiArcChart,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-arc-chart [value]="value"></tui-arc-chart>
-```
-
 ### Example
 
 ```html
@@ -1360,31 +1238,6 @@ export default class Page {
 # components/Avatar
 - **Package**: `KIT`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiAvatar} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAvatar,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiAvatar="@tui.user">
-  <img src="avatar.jpg" />
-</div>
-```
 
 ### Example
 
@@ -1722,30 +1575,6 @@ export default class Page {
 - **Type**: components
 Just axes for charts
 
-### How to Use (Import)
-
-```ts
-import {TuiAxes} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAxes,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-axes [value]="value"></tui-axes>
-```
-
 ### Example
 
 ```html
@@ -1982,34 +1811,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Component for displaying text, pictures and icons.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiBadge} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBadge,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<span
-  tuiBadge
-  appearance="primary"
->
-  {{ value }}
-</span>
-```
 
 ### Example
 
@@ -2261,29 +2062,6 @@ export default class Page {
 - **Type**: components
 Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate notifications, such as new messages
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiBadgeNotification} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBadgeNotification,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-badge-notification>10</tui-badge-notification>
-```
-
 ### Example
 
 ```html
@@ -2400,33 +2178,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 BadgedContent is a wrapper for other components to add badges and notifications to them.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiBadgedContent} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBadgedContent,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-badged-content>
-  <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
-  <div tuiAvatar="@tui.user"></div>
-  <tui-badge-notification tuiSlot="bottom">1</tui-badge-notification>
-</tui-badged-content>
-```
 
 ### Example
 
@@ -2622,30 +2373,6 @@ export default class Example {
 - **Type**: components
 A bar for bar chart
 
-### How to Use (Import)
-
-```ts
-import {TuiBar} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBar,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-bar [value]="value"></tui-bar>
-```
-
 ### Example
 
 ```html
@@ -2754,30 +2481,6 @@ export default class Page {
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
 Bar chart that can be used as a content to axes .
-
-### How to Use (Import)
-
-```ts
-import {TuiBarChart} from '@taiga-ui/addon-charts';
-
-//...
-
-@Component({
-  standalone: true,
-  imports: [
-    //  ...
-    TuiBarChart,
-  ],
-  //...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-bar-chart [value]="value"></tui-bar-chart>
-```
 
 ### Example
 
@@ -2958,30 +2661,6 @@ export default class Page {
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
 A group of bars for bar chart
-
-### How to Use (Import)
-
-```ts
-import {TuiBarSet} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBarSet,
-  ],
-})
-// ...
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-bar-set [value]="value"></tui-bar>
-```
 
 ### Example
 
@@ -3183,51 +2862,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Block is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself
-
-### How to Use (Import)
-
-```ts
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiBlock,
-    TuiCheckbox, // or TuiRadio
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<!-- Visible checkbox -->
-<label tuiBlock>
-  <input
-    type="checkbox"
-    tuiCheckbox
-    [(ngModel)]="value"
-  />
-  I'm a label
-</label>
-
-<!-- Implicit checkbox -->
-<label tuiBlock>
-  <input
-    type="checkbox"
-    tuiBlock
-    [(ngModel)]="value"
-  />
-  I'm a label
-</label>
-```
 
 ### Example
 
@@ -3484,45 +3118,6 @@ export default class Example {
 - **Type**: components
 Layout directive for describing details. For example, transaction details
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiBlockDetails} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBlockDetails,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiBlockDetails>
-  <div tuiAvatar="..."></div>
-  <h2 tuiTitle>
-    Title
-    <div tuiSubtitle>Subtitle</div>
-  </h2>
-
-  <span>{{ amount }} | tuiAmount: 'USD' | async }}</span>
-  <span tuiAmountDescription>description</span>
-  <span tuiComment>comment</span>
-  <span
-    tuiBadge
-    appearance="neutral"
-  >
-    Badge
-  </span>
-</div>
-```
-
 ### Usage Examples
 
 #### Full
@@ -3639,43 +3234,6 @@ export default class Page {}
 - **Package**: `LAYOUT`
 - **Type**: components
 Component for status screens, result screens and zero screens
-
-### How to Use (Import)
-
-```ts
-import {TuiBlockStatus} from '@taiga-ui/layout';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBlockStatus,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-block-status [card]="card">
-  <img
-    tuiSlot="top"
-    src="src"
-  />
-  <h4>Title</h4>
-  Description
-  <button
-    tuiButton
-    tuiItem
-  >
-    Button
-  </button>
-</tui-block-status>
-```
 
 ### Example
 
@@ -4006,30 +3564,6 @@ export default class Example {
 - **Type**: components
 A non-modal draggable sheet
 
-### How to Use (Import)
-
-```ts
-import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiBottomSheet,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-bottom-sheet>Content</tui-bottom-sheet>
-```
-
 ### API
 
 | Property | Type | Description |
@@ -4237,42 +3771,6 @@ export default class Page {
 - **Type**: components
 Navigation element that shows a path from root page to the current
 
-### How to Use (Import)
-
-```ts
-import {TuiItem} from '@taiga-ui/cdk';
-import {TuiBreadcrumbs} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiItem,
-    TuiBreadcrumbs,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-breadcrumbs [size]="size">
-  <ng-container *ngFor="let item of items">
-    <a
-      *tuiItem
-      tuiLink
-      [routerLink]="item.routerLink"
-    >
-      {{ item.caption }}
-    </a>
-  </ng-container>
-</tui-breadcrumbs>
-```
-
 ### Example
 
 ```html
@@ -4438,30 +3936,6 @@ export default class Example {
 # components/Button
 - **Package**: `CORE`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiButton} from '@taiga-ui/core';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiButton,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button tuiButton>Press me</button>
-<a tuiButton>Press me</a>
-```
 
 ### Example
 
@@ -4731,37 +4205,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiButtonGroup} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiButtonGroup,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  tuiButtonGroup
-  tuiAppearance="elevated"
->
-  <button>
-    <tui-icon icon="@tui.circle-plus"></tui-icon>
-    Create a payment
-  </button>
-</div>
-```
-
 ### Usage Examples
 
 #### Elevated
@@ -4987,45 +4430,6 @@ export default class Page {
 - **Type**: components
 ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiButtonSelect} from '@taiga-ui/kit';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiButton,
-    TuiButtonSelect,
-    TuiDropdown,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button
-  tuiButton
-  tuiButtonSelect
-  type="button"
-  [(ngModel)]="item"
->
-  {{ item }}
-  <tui-data-list-wrapper
-    *tuiDropdown
-    new
-    [items]="items"
-  />
-</button>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -5128,28 +4532,6 @@ export default class Page {}
 - **Package**: `Core`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiButtonX} from '@taiga-ui/core';
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiButtonX,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button tuiButtonX>Close</button>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -5199,30 +4581,6 @@ export default class Page {}
 - **Package**: `CORE`
 - **Type**: components
 A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
-
-### How to Use (Import)
-
-```ts
-import {TuiCalendar} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCalendar,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-calendar></tui-calendar>
-```
 
 ### Example
 
@@ -5643,30 +5001,6 @@ export default class Example {
 - **Type**: components
 Month picker component. If you want a textfield, see InputMonth
 
-### How to Use (Import)
-
-```ts
-import {TuiCalendarMonth} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCalendarMonth,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-calendar-month></tui-calendar-month>
-```
-
 ### Example
 
 ```html
@@ -5841,30 +5175,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Component for choosing date range in calendar
-
-### How to Use (Import)
-
-```ts
-import {TuiCalendarRange} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCalendarRange,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-calendar-range />
-```
 
 ### Example
 
@@ -6187,55 +5497,6 @@ export default class Example {
 - **Package**: `LAYOUT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
-import {TuiExpand, TuiChevron} from '@taiga-ui/kit';
-import {TuiCard} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCard,
-    TuiHeader,
-    TuiTitle,
-    TuiButton,
-    TuiChevron,
-    TuiExpand,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<section
-  tuiCardLarge
-  [tuiCardCollapsed]="collapsed"
->
-  <header tuiHeader>
-    <hgroup tuiTitle>
-      <h2>Title</h2>
-      <p tuiSubtitle>Subtitle</p>
-    </hgroup>
-    <aside tuiAccessories>
-      <button
-        tuiIconButton
-        [tuiChevron]="!collapsed"
-        (click)="collapsed = !collapsed"
-      >
-        Expand
-      </button>
-    </aside>
-  </header>
-  <tui-expand [expanded]="!collapsed">...</tui-expand>
-</section>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -6350,38 +5611,6 @@ export default class Example {
 # components/CardLarge
 - **Package**: `LAYOUT`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiAppearance} from '@taiga-ui/core';
-import {TuiCardLarge} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAppearance,
-    TuiCardLarge,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  tuiCardLarge
-  tuiAppearance="floating"
->
-  <div tuiHeader>
-    <h2 tuiTitle>Header</h2>
-  </div>
-</div>
-```
 
 ### Usage Examples
 
@@ -7105,35 +6334,6 @@ export default class Example {
 - **Type**: components
 A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets.
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiCardMedium} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCardMedium,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiCardMedium>
-  <div tuiAvatar="@tui.star"></div>
-  <h2 tuiTitle>
-    Title
-    <span tuiSubtitle>Subtitle</span>
-  </h2>
-</div>
-```
-
 ### Usage Examples
 
 #### Avatar and text
@@ -7448,34 +6648,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
-
-### How to Use (Import)
-
-```ts
-import {TuiCarousel} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCarousel,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-carousel>
-  <div *tuiItem>Slide 1</div>
-  <div *tuiItem>Slide 2</div>
-  <div *tuiItem>Slide 3</div>
-</tui-carousel>
-```
 
 ### Example
 
@@ -7802,35 +6974,6 @@ export default class Example {
 # components/Cell
 - **Package**: `CORE`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiCell} from '@taiga-ui/core';
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiCell,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiCell>
-  <div tuiAvatar="..."></div>
-  <div tuiTitle>
-    Title
-    <div tuiSubtitle>Subtitle</div>
-  </div>
-  <button tuiButton>Action</button>
-</div>
-```
 
 ### Example
 
@@ -8535,33 +7678,6 @@ export default class Example {
 - **Type**: components
 A checkbox component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCheckbox,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<input
-  tuiCheckbox
-  type="checkbox"
-  [(ngModel)]="value"
-/>
-```
-
 ### Usage Examples
 
 #### Platforms
@@ -8735,33 +7851,6 @@ export default class Page {}
 - **Package**: `KIT`
 - **Type**: components
 Chip component is used to display array data and can also be interactive depending on the tag used.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiChip} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiChip,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<span
-  tuiChip
-  appearance="primary"
->
-  {{ value }}
-</span>
-```
 
 ### Example
 
@@ -9079,42 +8168,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 ComboBox is a form control for selecting a single value from a set of options. It is similar to Select but with a major difference – possibility to enter value manually .
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
-
-@Component({
-  imports: [
-    // ...
-    FormsModule,
-    TuiChevron,
-    TuiComboBox,
-  ],
-})
-export class Example {
-  items = ['Option 1', 'Option 2', 'Option 3'];
-  value: string | null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield tuiChevron>
-  <input
-    tuiComboBox
-    [(ngModel)]="value"
-  />
-
-  <tui-data-list-wrapper
-    *tuiDropdown
-    [items]="items"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -9970,29 +9023,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiCompass} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCompass,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-compass [degrees]="degrees"></tui-compass>
-```
-
 ### Example
 
 ```html
@@ -10211,28 +9241,6 @@ export default class Example implements TuiConfirmData {
 - **Type**: components
 This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied.
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiCopy} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiCopy,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-copy>Here you can reproduce copy Taiga UI</tui-copy>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -10360,44 +9368,6 @@ export default class Example {
 - **Package**: `CORE`
 - **Type**: components
 DataList allows to make lists or menus
-
-### How to Use (Import)
-
-```ts
-import {TuiDataList} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDataList,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-data-list role="menu">
-  <tui-opt-group
-    *ngFor="let group of groups"
-    [label]="group.label"
-  >
-    <a
-      *ngFor="let item of group.items"
-      tuiOption
-      role="menuitem"
-      [routerLink]="item.routerLink"
-    >
-      {{item.label}}
-    </a>
-  </tui-opt-group>
-</tui-data-list>
-```
 
 ### Example
 
@@ -10935,40 +9905,6 @@ export default class Page {
 - **Type**: components
 DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
 
-### How to Use (Import)
-
-```ts
-import {TuiDataListWrapper} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDataListWrapper,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <label tuiLabel>Account</label>
-  <input
-    [formControl]="control"
-    tuiInput
-  />
-  <tui-data-list-wrapper
-    *tuiDropdown
-    [items]="items"
-  />
-</tui-textfield>
-```
-
 ### API
 
 | Property | Type | Description |
@@ -11140,52 +10076,6 @@ export default class Page {
 - **Package**: `CORE`
 - **Type**: components
 Customizable modal dialogs
-
-### How to Use (Import)
-
-```ts
-import {TuiButton} from '@taiga-ui/core';
-import {TuiDialog} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiButton,
-    TuiDialog,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<ng-template
-  [tuiDialogOptions]="{ size: 'm' }"
-  [(tuiDialog)]="open"
->
-  <header tuiHeader>
-    <hgroup tuiTitle>
-      <h2>I am a title</h2>
-      <p>I am some text</p>
-    </hgroup>
-  </header>
-  <!-- Arbitrary content -->
-  <footer>
-    <button tuiButton>Primary Button</button>
-    <button
-      tuiButton
-      appearance="secondary"
-    >
-      Secondary Button
-    </button>
-  </footer>
-</ng-template>
-```
 
 ### Example
 
@@ -11651,47 +10541,6 @@ export default class Page extends Array {
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiPopup} from '@taiga-ui/core';
-import {TuiDrawer} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPopup,
-    TuiDrawer,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-drawer *tuiPopup="open()">
-  <header>
-    <h2 tuiHeader>
-      <div tuiTitle>Header</div>
-      <div tuiAccessories>
-        <button
-          tuiButton
-          (click)="open.set(false)"
-        >
-          Close
-        </button>
-      </div>
-    </h2>
-    Content
-  </header>
-</tui-drawer>
-```
-
 ### Example
 
 ```html
@@ -11917,34 +10766,6 @@ export default class Page {
 - **Type**: components
 A wrapper component that changes its height with transition, depending on the content
 
-### How to Use (Import)
-
-```ts
-import {TuiElasticContainer} from '@taiga-ui/layout';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiElasticContainer,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-elastic-container>
-  <h2>Title</h2>
-  <p>Your content here</p>
-  <button>Add more</button>
-</tui-elastic-container>
-```
-
 ### Usage Examples
 
 #### Show more
@@ -12129,30 +10950,6 @@ export default class Page {}
 - **Package**: `CORE`
 - **Type**: components
 Component for showing arbitrary messages styled as errors, with height and fade transition, as well as displaying form validation errors from controls
-
-### How to Use (Import)
-
-```ts
-import {TuiError} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiError,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-error [error]="error" />
-```
 
 ### Example
 
@@ -12671,30 +11468,6 @@ export default class Page {
 - **Package**: `Core`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiExpand} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiExpand,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-expand [expanded]="expanded">Eager content</tui-expand>
-```
-
 ### Usage Examples
 
 #### Lazy
@@ -12851,39 +11624,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Components shows separated items that can be used to filter content on the page. There are also an option with badges.
-
-### How to Use (Import)
-
-```ts
-import {TuiFilter} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFilter,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<form [formGroup]="form">
-  <tui-filter
-    formControlName="filters"
-    [badgeHandler]="badgeHandler"
-    [disabledItemHandler]="disabledItemHandler"
-    [items]="items"
-    [size]="size"
-    (toggledItem)="onToggledItemChange($event)"
-  ></tui-filter>
-</form>
-```
 
 ### Example
 
@@ -13267,47 +12007,6 @@ export default class Page {
 - **Package**: `LAYOUT`
 - **Type**: components
 FloatingContainer is a special container for creating different animated sticky footers
-
-### How to Use (Import)
-
-```ts
-// ...
-import {TuiButton} from '@taiga-ui/core';
-import {TuiFloatingContainer} from '@taiga-ui/layout';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFloatingContainer,
-    TuiButton,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-... Some content
-
-<footer tuiFloatingContainer>
-  <button
-    tuiButton
-    type="button"
-  >
-    Main action
-  </button>
-  <button
-    appearance="flat"
-    tuiButton
-    type="button"
-  >
-    Secondary action
-  </button>
-</label>
-```
 
 ### Example
 
@@ -13838,39 +12537,6 @@ footer {
 - **Package**: `LAYOUT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiAppearance} from '@taiga-ui/core';
-import {TuiCardLarge, TuiForm} from '@taiga-ui/layout';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCardLarge,
-    TuiAppearance,
-    TuiForm,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<form
-  tuiAppearance="floating"
-  tuiCardLarge
-  tuiForm="l"
->
-  <!-- Form content -->
-</form>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -14294,34 +12960,6 @@ export default class Page {
 - **Type**: components
 A directive for grouping other components. For example, Input or Button .
 
-### How to Use (Import)
-
-```ts
-import {TuiGroup} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiGroup,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiGroup>
-  <button tuiButton>Button 1</button>
-  <button tuiButton>Button 2</button>
-  <button tuiButton>Button 3</button>
-</div>
-```
-
 ### Example
 
 ```html
@@ -14572,37 +13210,6 @@ export default class Page {
 - **Package**: `LAYOUT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiTitle} from '@taiga-ui/core';
-import {TuiHeader} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiHeader,
-    TuiTitle,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<header tuiHeader>
-  <hgroup tuiTitle>
-    <h1>Title</h1>
-    <p tuiSubtitle>Subtitle</p>
-  </hgroup>
-  <aside tuiAccessories>Accessories</aside>
-</header>
-```
-
 ### Usage Examples
 
 #### Sizes
@@ -14843,29 +13450,6 @@ export default class Page {}
 - **Package**: `CORE`
 - **Type**: components
 A component to show icons and color them with CSS. Taiga UI ships with Lucide icons . Same mechanism is used in all iconStart / iconEnd inputs across the library.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiIcon} from '@taiga-ui/core';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiIcon,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-icon icon="@tui.check" />
-```
 
 ### Example
 
@@ -15144,34 +13728,6 @@ tui-icon {
 - **Package**: `CORE`
 - **Type**: components
 Input is a basic string textfield. All other input components are built on its basis.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiInput} from '@taiga-ui/core';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiInput,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInput
-    [(ngModel)]="value"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -15504,52 +14060,6 @@ export default class Page {
 - **Type**: components
 InputCard can be used with InputExpire and InputCVC to input a card. Use tuiCreateLuhnValidator(message) to create a Validator that uses Luhn algorithm
 
-### How to Use (Import)
-
-```ts
-import {TuiInputCard} from '@taiga-ui/addon-commerce';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiInputCard,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<form [formGroup]="form">
-  <tui-textfield>
-    <label tuiLabel>Card number</label>
-    <input
-      formControlName="card"
-      tuiInputCard
-    />
-  </tui-textfield>
-  <tui-textfield>
-    <label tuiLabel>Expire date</label>
-    <input
-      formControlName="expire"
-      tuiInputExpire
-    />
-  </tui-textfield>
-  <tui-textfield>
-    <label tuiLabel>CVC/CVV</label>
-    <input
-      formControlName="cvc"
-      tuiInputCVC
-    />
-  </tui-textfield>
-</form>
-```
-
 ### Example
 
 ```html
@@ -15691,30 +14201,6 @@ export default class Page {
 - **Package**: `ADDON-COMMERCE`
 - **Type**: components
 InputCardGroup is used to input a card as a separated control
-
-### How to Use (Import)
-
-```ts
-import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiInputCardGroup,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-input-card-group formControlName="card"></tui-input-card-group>
-```
 
 ### Example
 
@@ -16086,36 +14572,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 InputChip uses specifically modified Input to represent array of selectable items.
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputChip} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputChip,
-  ],
-})
-export class Example {
-  value = [];
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield multi>
-  <input
-    tuiInputChip
-    [(ngModel)]="value"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -16742,41 +15198,6 @@ export default class PageComponent {
 - **Type**: components
 InputColor = Textfield + type="color" + Maskito + ❤️
 
-### How to Use (Import)
-
-```ts
-import {TuiInputColor} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiInputColor,
-  ],
-  // ...
-})
-export class Example {
-  readonly testForm = new FormGroup({
-    testValue: new FormControl(),
-  });
-}
-```
-
-### How to Use (Template)
-
-```html
-<form [formGroup]="testForm">
-  <tui-textfield>
-    <input
-      tuiInputColor
-      [formControl]="control"
-    />
-  </tui-textfield>
-</form>
-```
-
 ### Example
 
 ```html
@@ -16913,37 +15334,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 InputDate = Textfield + Calendar + ❤️
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputDate} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputDate,
-  ],
-})
-export class Example {
-  protected value: TuiDay | null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputDate
-    [(ngModel)]="value"
-  />
-  <tui-calendar *tuiDropdown />
-</tui-textfield>
-```
 
 ### Example
 
@@ -17416,37 +15806,6 @@ export default class Example {
 - **Type**: components
 InputDateMulti uses specifically modified InputChip to represent array of dates.
 
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputDateMulti} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputDate,
-  ],
-})
-export class Example {
-  protected value: TuiDay[] = [];
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield multi>
-  <input
-    tuiInputDateMulti
-    [(ngModel)]="value"
-  />
-  <tui-calendar *tuiDropdown />
-</tui-textfield>
-```
-
 ### Example
 
 ```html
@@ -17697,37 +16056,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 InputDateRange = Textfield + CalendarRange + ❤️
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputDateRange} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputDateRange,
-  ],
-})
-export class Example {
-  protected value: TuiDayRange | null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputDateRange
-    [(ngModel)]="value"
-  />
-  <tui-calendar-range *tuiDropdown />
-</tui-textfield>
-```
 
 ### Example
 
@@ -18104,36 +16432,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 InputDateTime = Textfield + Calendar + ❤️
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputDateTime} from '@taiga-ui/kit';
-
-@Component({
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputDateTime,
-  ],
-})
-export class Example {
-  protected value: [TuiDay, TuiTime | null] | null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputDateTime
-    [(ngModel)]="value"
-  />
-  <tui-calendar *tuiDropdown />
-</tui-textfield>
-```
 
 ### Example
 
@@ -18668,42 +16966,6 @@ export default class Example {
 - **Type**: components
 An input for uploading one or several files using native input file capabilities
 
-### How to Use (Import)
-
-```ts
-import {TuiFiles} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [TuiFiles],
-  //...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<label tuiInputFiles>
-  <input
-    tuiInputFiles
-    accept="image/*"
-    [multiple]="true"
-    [formControl]="control"
-    (reject)="onReject($event)"
-  />
-</label>
-
-<tui-files>
-  <tui-file
-    tuiItem
-    [file]="file"
-  ></tui-file>
-</tui-files>
-```
-
 ### Example
 
 ```html
@@ -19211,35 +17473,6 @@ export default class PageComponent {
 - **Type**: components
 Inline input field
 
-### How to Use (Import)
-
-```ts
-import {ReactiveFormsModule} from '@angular/forms';
-import {TuiInputInline} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    ReactiveFormsModule,
-    TuiInputInline,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-input-inline>
-  Placeholder
-  <input [formControl]="control" />
-</tui-input-inline>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -19483,44 +17716,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 InputMonth = Textfield + CalendarMonth + ❤️
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputMonth} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputMonth,
-  ],
-})
-export class Example {
-  value: TuiMonth | null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputMonth
-    [(ngModel)]="value"
-  />
-
-  <tui-calendar-month
-    *tuiDropdown
-    [min]="min"
-    [max]="max"
-    [disabledItemHandler]="disabledItemHandler"
-    [(year)]="activeYear"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -19890,46 +18085,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 InputNumber is a form field to provide numerical input.
-
-### How to Use (Import)
-
-```ts
-import {ReactiveFormsModule} from '@angular/forms';
-import {TuiNumberFormat} from '@taiga-ui/core';
-import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [ReactiveFormsModule, TuiInputNumber, TuiNumberFormat],
-  providers: [
-    /**
-     * (Optional)
-     * Customize default behavior for all InputNumber-s
-     * inside specific Dependency Injection scope
-     */
-    tuiInputNumberOptionsProvider({
-      min: 0,
-      max: 100,
-      postfix: '%',
-    }),
-  ],
-})
-export class Example {
-  protected readonly control = new FormControl(42);
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputNumber
-    [formControl]="control"
-    [tuiNumberFormat]="{precision: 2}"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -20439,33 +18594,6 @@ export default class PageComponent {
 - **Type**: components
 InputPhone allows to input a phone number
 
-### How to Use (Import)
-
-```ts
-import {TuiInputPhone} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiInputPhone,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputPhone
-    [ngModel]="value"
-  />
-</tui-textfield>
-```
-
 ### Example
 
 ```html
@@ -20797,40 +18925,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 Allows to input phone number in international format InputPhoneInternational is based on &#64;maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that InputPhoneInternational has the robust source of truth!
-
-### How to Use (Import)
-
-```ts
-import {ReactiveFormsModule} from '@angular/forms';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternational} from '@taiga-ui/kit';
-
-@Component({
-  imports: [ReactiveFormsModule, TuiInputPhoneInternational],
-  // ...
-})
-export class Example {
-  readonly testForm = new FormGroup({
-    testValue: new FormControl('+78005553535'),
-  });
-
-  readonly countries: ReadonlyArray<TuiCountryIsoCode> = ['RU', 'KZ', 'UA', 'BY'];
-}
-```
-
-### How to Use (Template)
-
-```html
-<form [formGroup]="testForm">
-  <tui-textfield>
-    <input
-      tuiInputPhoneInternational
-      formControlName="testValue"
-      [countries]="countries"
-    />
-  </tui-textfield>
-</form>
-```
 
 ### Example
 
@@ -21225,41 +19319,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiInputPin} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiInputPin,
-  ],
-  // ...
-})
-export class Example {
-  readonly testForm = new FormGroup({
-    testValue: new FormControl(null),
-  });
-}
-```
-
-### How to Use (Template)
-
-```html
-<form [formGroup]="testForm">
-  <tui-textfield>
-    <input
-      maxlength="4"
-      tuiInputPin
-      [formControl]="control"
-    />
-  </tui-textfield>
-</form>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -21366,31 +19425,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputRange} from '@taiga-ui/kit';
-
-@Component({
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputRange,
-  ],
-  // ...
-})
-export class Example {
-  value = [0, 0];
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-input-range [(ngModel)]="value">Text above numbers</tui-input-range>
-```
 
 ### Example
 
@@ -21782,40 +19816,6 @@ export default class PageComponent {
 - **Package**: `LAYOUT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiInputSearch} from '@taiga-ui/layout';
-import {TuiTextfield} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTextfield,
-    TuiInputSearch,
-  ],
-  // ...
-})
-export class MyComponent {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    [tuiInputSearch]="results"
-    [(ngModel)]="value"
-  />
-  <ng-template #results>
-    <!-- ... -->
-  </ng-template>
-</tui-textfield>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -21979,52 +19979,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 InputSlider = Textfield + InputNumber + Slider + ❤️
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiNumberFormat} from '@taiga-ui/core';
-import {TuiInputSlider} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputSlider,
-    TuiNumberFormat,
-  ],
-  // ...
-})
-export class Example {
-  value = 0;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputSlider
-    prefix="$"
-    postfix="%"
-    [min]="0"
-    [max]="100"
-    [tuiNumberFormat]="{precision: 3}"
-    [(ngModel)]="value"
-  />
-
-  <input
-    tuiSlider
-    type="range"
-    [keySteps]="keySteps"
-    [segments]="segments"
-    [step]="step"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -22330,36 +20284,6 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 InputTime allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputTime} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputTime,
-  ],
-})
-export class Example {
-  value: TuiTime | null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputTime
-    [(ngModel)]="value"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -22871,39 +20795,6 @@ export default class PageComponent {
 - **Type**: components
 Component to input a single year
 
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiInputYear} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiInputYear,
-  ],
-})
-export class Example {
-  value: number | null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputYear
-    [(ngModel)]="value"
-  />
-  <tui-calendar-year *tuiDropdown />
-</tui-textfield>
-```
-
 ### Example
 
 ```html
@@ -23081,35 +20972,6 @@ export default class PageComponent {
 # components/ItemGroup
 - **Package**: `LAYOUT`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiItemGroup} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiItemGroup,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiItemGroup>
-  <span
-    tuiChip
-    appearance="primary"
-  >
-    {{ value }}
-  </span>
-</div>
-```
 
 ### Example
 
@@ -23366,40 +21228,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Component to hide overflown items behind custom content. Resize the screen to see extra items disappear
-
-### How to Use (Import)
-
-```ts
-import {TuiItemsWithMore} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiItemsWithMore,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-items-with-more>
-  <ng-container *ngFor="let item of items">
-    <span *tuiItem>{{ item }}</span>
-  </ng-container>
-  <ng-template
-    tuiMore
-    let-index
-  >
-    and {{ items.length - index - 1 }} more
-  </ng-template>
-</tui-items-with-more>
-```
 
 ### Example
 
@@ -23700,42 +21528,6 @@ export default class Page {
 - **Type**: components
 Label is used to show text related to textfields, checkboxes, toggles and radio buttons
 
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiLabel} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiCheckbox,
-    TuiLabel,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<label tuiLabel>
-  <input
-    tuiCheckbox
-    type="checkbox"
-    size="s"
-    [(ngModel)]="selected"
-  />
-  Label text
-</label>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -23939,30 +21731,6 @@ export default class Page {
 - **Type**: components
 A button for a legend of ring or pie charts
 
-### How to Use (Import)
-
-```ts
-import {TuiLegendItem} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiLegendItem,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-legend-item [value]="value">Content</tui-legend-item>
-```
-
 ### Example
 
 ```html
@@ -24153,32 +21921,6 @@ export default class Page {
 - **Type**: components
 A like component based on native checkbox with icons and custom color for icon when :checked state.
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiLike} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiLike,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<input
-  tuiLike
-  type="checkbox"
-/>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -24366,36 +22108,6 @@ export default class Page {
 # components/LineChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {TuiLineChart} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiLineChart,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-line-chart
-  [x]="0"
-  [y]="0"
-  [width]="200"
-  [height]="100"
-  [value]="value"
-></tui-line-chart>
-```
 
 ### Example
 
@@ -24735,42 +22447,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Component cuts overflown text with "..." and shows it by hover
-
-### How to Use (Import)
-
-```ts
-import {TuiLineClamp} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiLineClamp,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-line-clamp
-  [content]="content"
-  [linesLimit]="3"
-></tui-line-clamp>
-<ng-template #content>
-  Lorem ipsum
-  <br />
-  Gaudeamus igitur
-  <br />
-  <strong>Carpe diem</strong>
-  <br />
-  Veni, vidi, vici
-</ng-template>
-```
 
 ### Example
 
@@ -25361,34 +23037,6 @@ export default class Page {
 - **Type**: components
 Line chart but for days
 
-### How to Use (Import)
-
-```ts
-import {TuiLineDaysChart} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiLineDaysChart,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-line-days-chart
-  [y]="0"
-  [height]="100"
-  [value]="value"
-></tui-line-days-chart>
-```
-
 ### Example
 
 ```html
@@ -25803,43 +23451,6 @@ export default class Page {
 - **Type**: components
 Link component. It has focus highlight and can be customized with an icon Use textContent binding or wrapping entire content with a span to avoid extra whitespace introduced by browser to a tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
 
-### How to Use (Import)
-
-```ts
-import {TuiLink} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiLink,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<a
-  tuiLink
-  href="#"
->
-  Link
-</a>
-
-<a
-  tuiLink
-  iconStart="@tui.settings"
-  href="#"
->
-  Link with an icon on the left
-</a>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -25971,34 +23582,6 @@ export default class Page {
 # components/Loader
 - **Package**: `CORE`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {TuiLoader} from '@taiga-ui/core';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiLoader,
-  ],
-  providers: [
-    tuiLoaderOptionsProvider({
-      size: 'l',
-      inheritColor: false,
-      overlay: true,
-    }),
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-loader [loading]="loader">Let off some steam, Bennett</tui-loader>
-```
 
 ### Example
 
@@ -26208,28 +23791,6 @@ export default class Page {
 - **Type**: components
 Message component is used to display message block.
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiMessage} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiMessage,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<span tuiMessage>{{ value }}</span>
-```
-
 ### Example
 
 ```html
@@ -26435,34 +23996,6 @@ export default class Example {
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
 A calendar for mobile devices. It is used in date picker controls on mobile devices if tuiMobileCalendar directive is applied. You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
-
-### How to Use (Import)
-
-```ts
-import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiMobileCalendar,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-mobile-calendar
-  [min]="min"
-  [max]="max"
-  [disabledItemHandler]="disabledItemHandler"
-></tui-mobile-calendar>
-```
 
 ### Example
 
@@ -26918,35 +24451,6 @@ export default class Page {
 - **Package**: `LAYOUT`
 - **Type**: components
 A set of basic layout components for global navigation
-
-### How to Use (Import)
-
-```ts
-import {TuiNavigation} from '@taiga-ui/layout';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiNavigation,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<header tuiNavigationHeader>Header content</header>
-<aside [tuiNavigationAside]="expanded">Sidebar content</aside>
-<main tuiNavigationMain>
-  <nav tuiNavigationNav>Breadcrumbs, tabs, buttons</nav>
-  Main content
-</main>
-```
 
 ### Usage Examples
 
@@ -27509,34 +25013,6 @@ export default class Page implements OnDestroy {
 - **Type**: components
 A notification message that can be displayed inline or as an alert
 
-### How to Use (Import)
-
-```ts
-import {TuiNotification} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiNotification,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  tuiNotification
-  appearance="negative"
->
-  Some content
-</div>
-```
-
 ### Example
 
 ```html
@@ -27830,30 +25306,6 @@ export default class Page {
 - **Type**: components
 A modal component to indicate an ongoing blocking action
 
-### How to Use (Import)
-
-```ts
-import {TuiNotificationMiddle} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiNotificationMiddle,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<ng-template [(tuiNotificationMiddle)]="open">Loader with text</ng-template>
-```
-
 ### Example
 
 ```html
@@ -28045,32 +25497,6 @@ export default class Page {
 # components/Pager
 - **Package**: `KIT`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiPager} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPager,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-pager
-  [index]="index"
-  [count]="count"
-/>
-```
 
 ### Example
 
@@ -28274,34 +25700,6 @@ export default class Page {
 - **Type**: components
 Pagination component enables the user to select a specific page from a range of pages
 
-### How to Use (Import)
-
-```ts
-import {TuiPagination} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPagination,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-pagination
-  [length]="pageCount"
-  [index]="currentPage"
-  (indexChange)="goToPage($event)"
-></tui-pagination>
-```
-
 ### Example
 
 ```html
@@ -28481,33 +25879,6 @@ export default class Page {
 - **Type**: components
 Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on WA_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
 
-### How to Use (Import)
-
-```ts
-import {TuiPdfViewer} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPdfViewer,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-pdf-viewer>
-  <h2 tuiTitle>title</h2>
-  <button tuiButton>Action</button>
-
-  <iframe [src]="src"></iframe>
-</tui-pdf-viewer>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -28683,30 +26054,6 @@ export default class Page {
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiPieChart} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPieChart,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-pie-chart [value]="value"></tui-pie-chart>
-```
-
 ### Example
 
 ```html
@@ -28867,29 +26214,6 @@ export default class Page {
 - **Type**: components
 Pins are used to show a location on a 2D plane. Use color , background , border and box-shadow to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiPin} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPin,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-pin [open]="open">16</tui-pin>
-```
-
 ### Usage Examples
 
 #### Default
@@ -29012,62 +26336,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate etc) As a document you can provide images, embeds and other arbitrary content. The component automatically adjusts to the mobile device
-
-### How to Use (Import)
-
-```ts
-import {inject, TemplateRef, viewChild} from '@angular/core';
-import {TuiPreviewDialogService} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {TuiDialogContext} from '@taiga-ui/core';
-
-@Component({
-  // ...
-})
-export class Example {
-  private readonly previewDialogService = inject(TuiPreviewDialogService);
-  private readonly preview = viewChild('preview', {read: TemplateRef});
-
-  show() {
-    this.previewDialogService.open(this.preview()).subscribe();
-  }
-}
-```
-
-### How to Use (Template)
-
-```html
-<ng-template #preview>
-  <tui-preview>
-    <tui-preview-title>{{title}}</tui-preview-title>
-    <tui-preview-pagination
-      [length]="2"
-      [(index)]="index"
-    ></tui-preview-pagination>
-
-    <button
-      tuiIconButton
-      tuiPreviewAction
-      icon="@tui.trash"
-      title="Delete"
-      (click)="delete()"
-    ></button>
-    <button
-      tuiIconButton
-      tuiPreviewAction
-      icon="@tui.download"
-      title="Download"
-      (click)="download()"
-    ></button>
-
-    <img
-      *polymorpheusOutlet="previewContent as src"
-      alt=""
-      [src]="src"
-    />
-  </tui-preview>
-</ng-template>
-```
 
 ### Usage Examples
 
@@ -29364,33 +26632,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 tuiProgressBar – attribute component for native html tag '"> . Usage: '"> .
-
-### How to Use (Import)
-
-```ts
-import {TuiProgress} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiProgress,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<progress
-  tuiProgressBar
-  [value]="40"
-  [max]="100"
-></progress>
-```
 
 ### Example
 
@@ -29700,33 +26941,6 @@ dd {
 - **Package**: `KIT`
 - **Type**: components
 '"> is a component to visually represent the completion of a process or operation (as a partially filled circle/ring). It shows how much has been completed and how much remains.
-
-### How to Use (Import)
-
-```ts
-import {TuiProgress} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiProgress,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-progress-circle
-  [max]="100"
-  [value]="70"
-></tui-progress-circle>
-```
 
 ### Example
 
@@ -30085,30 +27299,6 @@ dd {
 - **Type**: components
 Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits (pulled) event when the pull threshold is reached. You can set that threshold in pixels by TUI_PULL_TO_REFRESH_THRESHOLD DI token. You can finish loading with TUI_PULL_TO_REFRESH_LOADED stream token that can be provided in DI. Use overscroll-behavior: none; CSS on your scrolling container to stop elastic scrolling on iOS
 
-### How to Use (Import)
-
-```ts
-import {TuiPullToRefresh} from '@taiga-ui/addon-mobile';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPullToRefresh,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-pull-to-refresh (pulled)="onPulled()">content</tui-pull-to-refresh>
-```
-
 ### Usage Examples
 
 #### Android
@@ -30354,28 +27544,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {TuiPulse} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPulse,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-pulse [playing]="value"></tui-pulse>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -30475,34 +27643,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Notifications in style of native browser push
-
-### How to Use (Import)
-
-```ts
-import {TuiPush} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPush,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-push heading="1.21 Gigawatts!?!">
-  <tui-icon icon="@tui.clock" />
-  This is heavy!
-  <button tuiLink>Great Scott!</button>
-</tui-push>
-```
 
 ### Example
 
@@ -30679,33 +27819,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 A radio component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation Due to internal Angular implementation of radio buttons, you are required to add name attribute to your input tag, unless you are using formControlName
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiRadio} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiRadio,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<input
-  tuiRadio
-  type="radio"
-  [(ngModel)]="value"
-/>
-```
 
 ### Usage Examples
 
@@ -30895,44 +28008,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 A two-thumb slider for selecting a range of values
-
-### How to Use (Import)
-
-```ts
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiRange} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    ReactiveFormsModule,
-    TuiRange,
-  ],
-})
-class Example {
-  testForm = new FormGroup({
-    testValue: new FormControl(0),
-  });
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-range
-  [max]="10"
-  [(ngModel)]="model"
-></tui-range>
-
-<tui-range
-  [formControl]="testValue"
-  [max]="10"
-></tui-range>
-```
 
 ### Example
 
@@ -31146,29 +28221,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiRating} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiRating,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-rating [(ngModel)]="value"></tui-rating>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -31290,33 +28342,6 @@ export default class Page {
 - **Type**: components
 Component to change order of elements in an array
 
-### How to Use (Import)
-
-```ts
-import {TuiReorder} from '@taiga-ui/addon-table';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiReorder,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-reorder
-  [(items)]="items"
-  [(enabled)]="enabled"
-></tui-reorder>
-```
-
 ### Usage Examples
 
 #### Usage
@@ -31368,30 +28393,6 @@ export default class Page {}
 # components/RingChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {TuiRingChart} from '@taiga-ui/addon-charts';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiRingChart,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-ring-chart [value]="value"></tui-ring-chart>
-```
 
 ### Example
 
@@ -31534,37 +28535,6 @@ export default class Page {
 - **Package**: `CORE`
 - **Type**: components
 Scrollbar implements a custom scrollbar in Taiga UI style. Native scrollbar is hidden to keep native platform scroll experience Use TUI_SCROLL_REF token to get a scrollable container. For example, when working with virtual scroll.
-
-### How to Use (Import)
-
-```ts
-import {TuiScrollbar} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  // ...
-  imports: [
-    //  ...
-    TuiScrollbar,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-scrollbar>
-  <ul>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-  </ul>
-</tui-scrollbar>
-```
 
 ### Usage Examples
 
@@ -31943,44 +28913,6 @@ export default class Page {
 - **Type**: components
 A wrapping component for search or filtering the table
 
-### How to Use (Import)
-
-```ts
-import {TuiSearch} from '@taiga-ui/layout';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSearch,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<search tuiSearch>
-  <form [formGroup]="form">
-    <fieldset>
-      <tui-textfield iconStart="@tui.search">
-        <label tuiLabel>Search</label>
-        <input
-          placeholder="Search"
-          tuiInput
-          formControlName="search"
-        />
-      </tui-textfield>
-      <button tuiButton>Search</button>
-    </fieldset>
-  </form>
-</search>
-```
-
 ### Usage Examples
 
 #### Filters
@@ -32148,33 +29080,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Segmented is used for links and buttons to navigate within the application. It can also work as a radio button to toggle between different states.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiSegmented} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSegmented,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-segmented [(activeItemIndex)]="index">
-  <button>Tab 1</button>
-  <button>Tab 2</button>
-  <button>Tab 3</button>
-</tui-segmented>
-```
 
 ### Usage Examples
 
@@ -32382,41 +29287,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element.
-
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiSelect} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiSelect,
-  ],
-})
-export class Example {
-  value: null = null;
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield tuiChevron>
-  <input
-    tuiSelect
-    [(ngModel)]="value"
-  />
-
-  <tui-data-list-wrapper
-    *tuiDropdown
-    [items]="items"
-  />
-</tui-textfield>
-```
 
 ### Example
 
@@ -33663,39 +30533,6 @@ export default class Page {
 - **Type**: components
 Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs
 
-### How to Use (Import)
-
-```ts
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiSlider} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    ReactiveFormsModule,
-    TuiSlider,
-  ],
-  // ...
-})
-export class Example {
-  readonly control = new FormControl(1);
-}
-```
-
-### How to Use (Template)
-
-```html
-<input
-  tuiSlider
-  type="range"
-  [formControl]="control"
-/>
-```
-
 ### Example
 
 ```html
@@ -33986,29 +30823,6 @@ export default class Page {
 - **Package**: `LAYOUT`
 - **Type**: components
 A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
-
-### How to Use (Import)
-
-```ts
-import {TuiSlides} from '@taiga-ui/layout';
-
-// ...
-
-@Component({
-  imports: [
-    // ...
-    TuiSlides,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<section [tuiSlides]="direction">// Content</section>
-```
 
 ### Example
 
@@ -34404,29 +31218,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiStatus} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiStatus,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<span tuiStatus="var(--tui-status-positive)">Success</span>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -34473,52 +31264,6 @@ export default class Page {}
 # components/Stepper
 - **Package**: `KIT`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {TuiStepper} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiStepper,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-stepper>
-  <a
-    routerLink="/step-1"
-    routerLinkActive
-    tuiStep
-  >
-    One 1
-  </a>
-  <a
-    routerLink="/step-2"
-    routerLinkActive
-    tuiStep
-  >
-    Two 2
-  </a>
-  <a
-    routerLink="/step-3"
-    routerLinkActive
-    tuiStep
-  >
-    Three 3
-  </a>
-</tui-stepper>
-```
 
 ### Example
 
@@ -34694,31 +31439,6 @@ export default class Page {
 - **Package**: `LAYOUT`
 - **Type**: components
 General purpose container used in Taiga UI interfaces. Often used in conjunction with Card component.
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiSurface} from '@taiga-ui/layout';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSurface,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiSurface>
-  <!-- Content -->
-</div>
-```
 
 ### Usage Examples
 
@@ -35049,38 +31769,6 @@ export default class Example {
 - **Type**: components
 Component should be used on mobile devices only.
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSwipeActions,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-swipe-actions>
-  <div>Card content</div>
-
-  <button
-    iconStart="@tui.eye"
-    size="m"
-    tuiIconButton
-    tuiSwipeAction
-  ></button>
-</tui-swipe-actions>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -35386,33 +32074,6 @@ export default class Page {}
 - **Type**: components
 A switch component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiSwitch} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSwitch,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<input
-  tuiSwitch
-  type="checkbox"
-  [(ngModel)]="value"
-/>
-```
-
 ### Usage Examples
 
 #### Platforms
@@ -35519,50 +32180,6 @@ export default class Page {
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
 Component for creating mobile navigation.
-
-### How to Use (Import)
-
-```ts
-import {TuiTabBar} from '@taiga-ui/addon-mobile';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTabBar,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<!--
-    Add to the template inside your root component
-    at the required layer and position with CSS:
--->
-<tui-root>
-  Your app
-  <nav
-    tuiTabBar
-    ngProjectAs="tuiOverContent"
-  >
-    <a
-      *ngFor="let item of items"
-      tuiTabBarItem
-      routerLinkActive
-      [routerLink]="item.path"
-      [icon]="item.icon"
-    >
-      {{ item.text}}
-    </a>
-  </nav>
-</tui-root>
-```
 
 ### Usage Examples
 
@@ -35802,107 +32419,6 @@ export default class Page {
 - **Package**: `ADDON-TABLE`
 - **Type**: components
 This module allows you to create various tables, both static and editable.
-
-### How to Use (Import)
-
-```ts
-import {TuiTable} from '@taiga-ui/addon-table';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTable,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<table
-  tuiTable
-  [columns]="columns"
->
-  <thead tuiThead>
-    <tr tuiThGroup>
-      <th
-        *tuiHead="'name'"
-        tuiTh
-      >
-        Name
-      </th>
-      <th
-        *tuiHead="'email'"
-        tuiTh
-      >
-        E-mail
-      </th>
-      <th
-        *tuiHead="'status'"
-        tuiTh
-      >
-        Status
-      </th>
-      <th
-        *tuiHead="'tags'"
-        tuiTh
-        [sorter]="null"
-      >
-        Tags
-      </th>
-    </tr>
-  </thead>
-  @let sortedUsers = users | tuiTableSort;
-  <tbody
-    tuiTbody
-    [data]="sortedUsers"
-  >
-    <tr
-      *ngFor="let item of sortedUsers"
-      tuiTr
-    >
-      <td
-        *tuiCell="'name'"
-        tuiTd
-      >
-        {{ item.name }}
-      </td>
-      <td
-        *tuiCell="'email'"
-        tuiTd
-      >
-        <a
-          *ngIf="item.email"
-          tuiLink
-          [href]="'mailto:' + item.email"
-        >
-          {{ item.email }}
-        </a>
-      </td>
-      <td
-        *tuiCell="'status'"
-        tuiTd
-      >
-        <div [class]="item.status">{{ item.status }}</div>
-      </td>
-      <td
-        *tuiCell="'tags'"
-        tuiTd
-      >
-        <tui-tag
-          class="tui-space_right-1"
-          *ngFor="let tag of item.tags"
-          [value]="tag"
-          [autoColor]="true"
-        ></tui-tag>
-      </td>
-    </tr>
-  </tbody>
-</table>
-```
 
 ### API
 
@@ -37386,76 +33902,6 @@ export default class Page {
 - **Type**: components
 This module allows you to filter table data in a flexible way.
 
-### How to Use (Import)
-
-```ts
-import {TuiTableFilters} from '@taiga-ui/addon-table';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTableFilters,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<table
-  tuiTableFilters
-  tuiTable
-  [columns]="columns"
->
-  <thead tuiThead>
-    <tr tuiThGroup>
-      <th
-        *tuiHead="'name'"
-        tuiTh
-      >
-        Name
-      </th>
-      <th
-        *tuiHead="'balance'"
-        tuiTh
-      >
-        <tui-textfield>
-          <label tuiLabel>Minimal balance</label>
-          <input
-            tuiInputNumber
-            tuiTableFilter
-            [tuiGenericFilter]="filter"
-            [formControl]="balance"
-          />
-        </tui-textfield>
-      </th>
-    </tr>
-  </thead>
-  <tbody tuiTbody>
-    <tr
-      *ngFor="let item of users | tuiTableFilters"
-      tuiTr
-    >
-      <td
-        *tuiCell="'name'"
-        tuiTd
-      >
-        {{item.name}}
-      </td>
-      <td
-        *tuiCell="'balance'"
-        tuiTd
-      >
-        {{ item.balance}}
-      </td>
-    </tr>
-  </tbody>
-</table>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -37688,33 +34134,6 @@ export default class Page {}
 - **Type**: components
 Component to show pagination in table footer
 
-### How to Use (Import)
-
-```ts
-import {TuiTablePagination} from '@taiga-ui/addon-table';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTablePagination,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-table-pagination
-  [total]="total"
-  [(page)]="page"
-  [(size)]="size"
-></tui-table-pagination>
-```
-
 ### Example
 
 ```html
@@ -37887,62 +34306,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Component for creating tabs. If you use routerLink you must also add routerLinkActive directive.
-
-### How to Use (Import)
-
-```ts
-import {TuiTabs} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTabs,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-Router links:
-<tui-tabs>
-  <a
-    tuiTab
-    routerLink="/page-1"
-    routerLinkActive
-  >
-    Page 1
-  </a>
-  <a
-    tuiTab
-    routerLink="/page-2"
-    routerLinkActive
-  >
-    Page 2
-  </a>
-</tui-tabs>
-
-Buttons:
-<tui-tabs [(activeItemIndex)]="activeItemIndex">
-  <button
-    tuiTab
-    (click)="onTabClick(1)"
-  >
-    Page 1
-  </button>
-  <button
-    tuiTab
-    (click)="onTabClick(2)"
-  >
-    Page 2
-  </button>
-</tui-tabs>
-```
 
 ### Example
 
@@ -38444,37 +34807,6 @@ export default class Page {
 - **Type**: components
 Textarea uses Textfield to create a multi-line string input.
 
-### How to Use (Import)
-
-```ts
-import {FormsModule} from '@angular/forms';
-import {TuiTextarea} from '@taiga-ui/kit';
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    FormsModule,
-    TuiTextarea,
-  ],
-})
-export class Example {
-  value = 'Value';
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <label tuiLabel>Label</label>
-  <textarea
-    tuiTextarea
-    [(ngModel)]="value"
-  ></textarea>
-</tui-textfield>
-```
-
 ### Example
 
 ```html
@@ -38684,35 +35016,6 @@ export default class PageComponent {
 - **Type**: components
 Customizable credit card thumbnail
 
-### How to Use (Import)
-
-```ts
-import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiThumbnailCard,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-thumbnail-card
-  class="logo"
-  paymentSystem="visa"
->
-  {{ 1234 }}
-</tui-thumbnail-card>
-```
-
 ### Example
 
 ```html
@@ -38913,42 +35216,6 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Tiles is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
-
-### How to Use (Import)
-
-```ts
-import {TuiTiles} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTiles,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-tiles [(order)]="order">
-  <tui-tile
-    *ngFor="let item of items"
-    [width]="item.w"
-    [height]="item.h"
-  >
-    <tui-icon
-      tuiTileHandle
-      icon="@tui.grip-vertical"
-    />
-    {{ item.content }}
-  </tui-tile>
-</tui-tiles>
-```
 
 ### Example
 
@@ -39155,34 +35422,6 @@ export default class Page {
 - **Type**: components
 A directive for title with optional subtitle
 
-### How to Use (Import)
-
-```ts
-import {TuiTitle} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTitle,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<h2 tuiTitle="s">
-  <div tuiSubtitle>Caption</div>
-  I am a title
-  <div tuiSubtitle>I'm a subtitle</div>
-</h2>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -39304,44 +35543,6 @@ export default class Page {
 # components/Toast
 - **Package**: `KIT`
 - **Type**: components
-
-### How to Use (Import)
-
-```ts
-import {TuiToast} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiToast,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<!-- Inline -->
-<div tuiToast>
-  Notification
-  <button
-    tuiButton
-    type="button"
-  >
-    Action
-  </button>
-</div>
-
-<!-- Portal -->
-<ng-template [(tuiToast)]="open">
-  <button tuiToast>Interactive toast</button>
-</ng-template>
-```
 
 ### Example
 
@@ -39560,32 +35761,6 @@ export default class Example {
 - **Type**: components
 Component to show icons with a hint by hover
 
-### How to Use (Import)
-
-```ts
-import {TuiHint} from '@taiga-ui/core';
-import {TuiTooltip} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTooltip,
-    TuiHint,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-icon tuiTooltip="Please don't touch this" />
-```
-
 ### Usage Examples
 
 #### Basic
@@ -39748,33 +35923,6 @@ export default class Page {}
 - **Package**: `KIT`
 - **Type**: components
 Component to display tree-like data structure
-
-### How to Use (Import)
-
-```ts
-import {TuiTree} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTree,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-tree
-  [value]="value"
-  [childrenHandler]="handler"
-></tui-tree>
-```
 
 ### API
 
@@ -41382,49 +37530,6 @@ export default class Page {}
 - **Type**: directives
 tuiActiveZone allows to track a scope that user interacts with. For example, for closing dropdown on blur
 
-### How to Use (Import)
-
-```ts
-import {TuiActiveZone} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiActiveZone,
-  ],
-  // ...
-})
-export class Example {
-  active = false;
-
-  onActiveZone(active: boolean) {
-    this.active = active;
-  }
-}
-```
-
-### How to Use (Template)
-
-```html
-<div (tuiActiveZoneChange)="onActiveZone($event)">
-  <button
-    tuiButton
-    type="button"
-  >
-    Button 1
-  </button>
-  <button
-    tuiButton
-    type="button"
-  >
-    Button 2
-  </button>
-</div>
-```
-
 ### Usage Examples
 
 #### Composite zone
@@ -41669,34 +37774,6 @@ export default class Page {
 - **Type**: directives
 A directive for visual presets of interactive components
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiAppearance} from '@taiga-ui/core';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAppearance,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button
-  tuiButton
-  tuiAppearance="secondary"
->
-  Press me
-</button>
-```
-
 ### Example
 
 ```html
@@ -41873,43 +37950,6 @@ export default class Page {
 - **Type**: directives
 tuiAutoFocus allows to focus HTML-element right after its appearance. It works also with focusable Taiga UI components
 
-### How to Use (Import)
-
-```ts
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAutoFocus,
-  ],
-  providers: [
-    tuiAutoFocusOptionsProvider({
-      delay: 300, // NaN = no delay/sync
-      preventScroll: true,
-    }),
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<!-- Usual HTML element -->
-<div
-  tuiAutoFocus
-  tabindex="0"
-></div>
-
-<!-- Or focusable component of Taiga UI -->
-<tui-textfield>
-  <input
-    tuiAutoFocus
-    tuiInput
-  />
-</tui-textfield>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -41976,29 +38016,6 @@ export default class Page {}
 # directives/Comment
 - **Package**: `KIT`
 - **Type**: directives
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiComment} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiComment,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiComment="bottom">comment</div>
-```
 
 ### Usage Examples
 
@@ -42072,32 +38089,6 @@ export default class Page {}
 - **Type**: directives
 Directive is used to processed text when coping
 
-### How to Use (Import)
-
-```ts
-import {TuiCopyProcessor} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiCopyProcessor,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<span [tuiCopyProcessor]="processor">
-  ...
-</div>
-```
-
 ### Usage Examples
 
 #### Usage
@@ -42156,10 +38147,10 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo, TuiDocSetup} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 
 @Component({
-    imports: [TuiDemo, TuiDocSetup],
+    imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -42171,39 +38162,6 @@ export default class Page {}
 - **Package**: `CORE`
 - **Type**: directives
 Directive allows to customize TuiInputDate , TuiInputDateRange , TuiInputDateMulti and TuiInputDateTime date format.
-
-### How to Use (Import)
-
-```ts
-import {TuiDateFormat, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputDate} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDateFormat,
-    TuiInputDate,
-    TuiTextfield,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputDate
-    [tuiDateFormat]="{mode, separator}"
-  />
-  <tui-calendar *tuiDropdown />
-</tui-textfield>
-```
 
 ### Usage Examples
 
@@ -42269,37 +38227,6 @@ export default class Page {
 - **Package**: `CORE`
 - **Type**: directives
 tuiDropdown shows a dropdown with custom template. Use ActiveZone directive to hide dropdown. See also DropdownOpen
-
-### How to Use (Import)
-
-```ts
-import {TuiDropdown} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDropdown,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  [tuiDropdown]="dropdownContent"
-  [tuiDropdownManual]="open"
->
-  Host element
-</div>
-
-<ng-template #dropdownContent>Dropdown content</ng-template>
-```
 
 ### Example
 
@@ -42706,43 +38633,6 @@ export default class PageComponent {
 - **Type**: directives
 DropdownContext allows to show custom right click context dropdown. To close dropdown: Use Esc Make mouse left/right click outside of dropdown content Manually toggle tuiDropdown to false using template reference variable (see first example)
 
-### How to Use (Import)
-
-```ts
-import {TuiDropdown} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDropdown,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  tuiDropdownContext
-  [tuiDropdown]="content"
->
-  Host element
-</div>
-
-<ng-template
-  #content
-  let-close
->
-  Dropdown content
-  <button (click)="close()"></button>
-</ng-template>
-```
-
 ### Example
 
 ```html
@@ -42922,37 +38812,6 @@ export default class PageComponent {}
 - **Package**: `CORE`
 - **Type**: directives
 DropdownHover shows dropdown with custom template upon hover
-
-### How to Use (Import)
-
-```ts
-import {TuiDropdown} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDropdown,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  tuiDropdownHover
-  [tuiDropdown]="content"
->
-  Host element
-</div>
-
-<ng-template #content>Dropdown content</ng-template>
-```
 
 ### Example
 
@@ -43200,47 +39059,6 @@ export default class PageComponent {
 - **Package**: `CORE`
 - **Type**: directives
 DropdownOpen is a composite dropdown directive, similar to manual dropdown, but it also takes care of opening and closing on its own. If an element is a textfield ( input or textarea ), arrow down press opens a dropdown. The next press focuses the first item from the list. If it is not a textfield, click opens and closes a dropdown. By default directive is applied to the first focusable element inside. If you want another element to be the host, use #tuiDropdownHost reference. Use tuiDropdownAuto selector with no binding if you do not want to track open state
-
-### How to Use (Import)
-
-```ts
-import {TuiDropdown} from '@taiga-ui/core';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDropdown,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button
-  tuiButton
-  type="button"
-  [tuiDropdown]="dropdown"
-  [(tuiDropdownOpen)]="open"
->
-  Open menu
-  <ng-template #dropdown>
-    <tui-data-list>
-      <button
-        *ngFor="let item of items"
-        tuiOption
-        (click)="onClick()"
-      >
-        {{item}}
-      </button>
-    </tui-data-list>
-  </ng-template>
-</button>
-```
 
 ### Example
 
@@ -43622,37 +39440,6 @@ export default class PageComponent {
 - **Type**: directives
 DropdownSelection shows dropdown with custom template on selected text
 
-### How to Use (Import)
-
-```ts
-import {TuiDropdown} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiDropdown,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  tuiDropdownSelection
-  [tuiDropdown]="content"
->
-  Host element
-</div>
-
-<ng-template #content>Dropdown content</ng-template>
-```
-
 ### Example
 
 ```html
@@ -43852,43 +39639,6 @@ export default class PageComponent {
 - **Package**: `ADDON-MOBILE`
 - **Type**: directives
 Directive allows to scale "stuck" sticky heading. It can also be used as service TuiElasticStickyService
-
-### How to Use (Import)
-
-```ts
-import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
-import {TuiScrollbar} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiScrollbar,
-    TuiElasticSticky,
-  ],
-  // ...
-})
-export class Example {
-  scale = 1;
-
-  // ...
-
-  onElastic(scale: number) {
-    this.scale = clamp(scale, 0.5, 1); // We do not want to scale below 50%
-  }
-}
-```
-
-### How to Use (Template)
-
-```html
-<tui-scrollbar>
-  <header (tuiElasticSticky)="onElastic($event)">I'm sticky</header>
-  ...
-</tui-scrollbar>
-```
 
 ### Usage Examples
 
@@ -44119,35 +39869,6 @@ export default class Page {}
 - **Type**: directives
 Directive is used to get a link to a native element as template reference variable (analogue of &#64;ViewChild(&#39;ref&#39;, &#123;read: ElementRef&#125; for template)
 
-### How to Use (Import)
-
-```ts
-import {TuiElement} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiElement,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-scrollbar
-  #element="elementRef"
-  tuiElement
->
-  <some-infinite-scroll-library [scrollingElement]="element.nativeElement" />
-</tui-scrollbar>
-```
-
 ### Usage Examples
 
 #### Usage
@@ -44209,31 +39930,6 @@ export default class Page {}
 - **Package**: `KIT`
 - **Type**: directives
 Directive that uses masking to fade out overflown content
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiFade} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFade,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiFade>
-  <!-- long text here -->
-</div>
-```
 
 ### Example
 
@@ -44401,36 +40097,6 @@ export default class Page {
 - **Type**: directives
 A directive that adjusts font size for the text to fit in the container
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiTextfield} from '@taiga-ui/core';
-import {TuiFluidTypography} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTextfield,
-    TuiFluidTypography,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInput
-    tuiFluidTypography
-  />
-</tui-textfield>
-```
-
 ### Usage Examples
 
 #### Text
@@ -44560,35 +40226,6 @@ export default class Page {
 - **Type**: directives
 Directive is used to highlight text in element. You can configure the directive with TUI_HIGHLIGHT_OPTIONS token. Allowed options: highlightColor: The default color for the highlight. Use function tuiHighlightOptionsProvider to provide new value of this token. Does not work with inline elements
 
-### How to Use (Import)
-
-```ts
-import {TuiHighlight} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiHighlight,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  [tuiHighlight]="query"
-  [tuiHighlightColor]="'#228B22'"
->
-  ...
-</div>
-```
-
 ### Usage Examples
 
 #### Usage
@@ -44660,45 +40297,6 @@ export default class Page {}
 - **Package**: `CORE`
 - **Type**: directives
 Directive to show a hint by hover of an element
-
-### How to Use (Import)
-
-```ts
-import {TuiHint} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiHint,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button
-  tuiButton
-  type="button"
-  tuiHint="Custom host with text tooltip"
->
-  Press me
-</button>
-<button
-  tuiButton
-  type="button"
-  [tuiHint]="template"
->
-  Press him ↑
-</button>
-
-<ng-template #template>Reusable template</ng-template>
-```
 
 ### Example
 
@@ -44940,36 +40538,6 @@ export default class PageComponent {
 - **Type**: directives
 Directive to show a hint in accessible way upon keyboard focus
 
-### How to Use (Import)
-
-```ts
-import {TuiHint} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiHint,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button
-  tuiButton
-  tuiHint="I'm a hint"
-  tuiHintDescribe
->
-  Press me
-</button>
-```
-
 ### Example
 
 ```html
@@ -45046,48 +40614,6 @@ export default class PageComponent {
 - **Type**: directives
 Directive to show a hint manually
 
-### How to Use (Import)
-
-```ts
-import {TuiHint} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiHint,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button
-  tuiButton
-  type="button"
-  tuiHint="Custom host with text tooltip"
-  [tuiHintManual]="true"
->
-  Press me
-</button>
-
-<button
-  tuiButton
-  type="button"
-  [tuiHint]="template"
-  [tuiHintManual]="true"
->
-  Press that ↑
-</button>
-
-<ng-template #template>Reusable template</ng-template>
-```
-
 ### Example
 
 ```html
@@ -45163,35 +40689,6 @@ export default class PageComponent {
 - **Type**: directives
 A directive to show a hint above the cursor
 
-### How to Use (Import)
-
-```ts
-import {TuiHint} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiHint,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  tuiHintPointer
-  tuiHint="Hint text"
->
-  Block with pointer hint
-</div>
-```
-
 ### Example
 
 ```html
@@ -45258,36 +40755,6 @@ export default class PageComponent {
 - **Type**: directives
 tuiHoveredChange is used for emitting true/false when users hovers over an element or moves cursor away from it.
 
-### How to Use (Import)
-
-```ts
-import {TuiHovered} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiHovered,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<button
-  tuiButton
-  type="button"
-  (tuiHoveredChange)="onHovered($event)"
->
-  Hover over me to reveal hidden text!
-</button>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -45343,43 +40810,6 @@ export default class Page {}
 - **Package**: `CDK`
 - **Type**: directives
 Directive for declarative work with HTML5 video and audio
-
-### How to Use (Import)
-
-```ts
-import {TuiMedia} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiMedia,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<video
-  tuiMedia
-  controls
->
-  <source
-    *tuiHdpi
-    src="4k.mp4"
-    type="video/mp4"
-  />
-  <source
-    src="1080p.mp4"
-    type="video/mp4"
-  />
-</video>
-```
 
 ### API
 
@@ -45559,35 +40989,6 @@ export default class Page {
 - **Type**: directives
 Directive allows to customize TuiInputNumber , TuiInputSlider , TuiInputRange number format.
 
-### How to Use (Import)
-
-```ts
-import {TuiNumberFormat} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiNumberFormat,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    tuiInputNumber
-    [tuiNumberFormat]="{decimal, precision, zeroPadding, rounding, thousandSeparator, decimalSeparator}"
-  />
-</tui-textfield>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -45648,30 +41049,6 @@ export default class Page {}
 - **Package**: `CDK`
 - **Type**: directives
 tuiPan The directive emits delta between mousemove / touchmove events. You can use it to change the coordinates of an element as in example below
-
-### How to Use (Import)
-
-```ts
-import {TuiPan} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPan,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div (tuiPan)="..."></div>
-```
 
 ### Usage Examples
 
@@ -45748,42 +41125,6 @@ export default class Page {}
 - **Type**: directives
 tuiPresent allows to detect appearance of elements in DOM
 
-### How to Use (Import)
-
-```ts
-import {TuiPresent} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiPresent,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div
-  [class.hidden]="!visible"
-  (tuiPresent)="onPresentChange($event)"
->
-  I am a component hidden with CSS
-</div>
-or
-<div
-  *ngIf="visible"
-  (tuiPresent)="onPresentChange($event)"
->
-  I am a component hidden with *ngIf
-</div>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -45854,35 +41195,6 @@ export default class Page {}
 - **Package**: `KIT`
 - **Type**: directives
 ProgressSegmented is a component to visually represent the completion of a process or operation (as a segmented bar). It shows how much has been completed and how much remains. Actually, this component is the same ProgressBar processed by css-property mask .
-
-### How to Use (Import)
-
-```ts
-import {TuiProgress} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiProgress,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<progress
-  tuiProgressBar
-  [max]="5"
-  [segments]="5"
-  [value]="3"
-></progress>
-```
 
 ### Example
 
@@ -46100,33 +41412,6 @@ export default class Page {
 - **Type**: directives
 Directive to resize container in multiple directions.
 
-### How to Use (Import)
-
-```ts
-import {TuiResizable, TuiResizer} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiResizable,
-    TuiResizer,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiResizable>
-  <div [tuiResizer]="[1, 0]"></div>
-</div>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -46193,30 +41478,6 @@ export default class Page {}
 - **Package**: `ADDON-MOBILE`
 - **Type**: directives
 Directive for «ripple» effect on mobile devices
-
-### How to Use (Import)
-
-```ts
-import {TuiRipple} from '@taiga-ui/addon-mobile';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiRipple,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiRipple>...</div>
-```
 
 ### Usage Examples
 
@@ -46295,30 +41556,6 @@ export default class Example {}
 - **Package**: `KIT`
 - **Type**: directives
 A directive that allows you to hide sensitive data under a pixel mask. This can be account balances, write-off amounts and any other content
-
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiSensitive} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSensitive,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<span [tuiSensitive]="true">text</span>
-```
 
 ### Example
 
@@ -46434,31 +41671,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: directives
 tuiShimmer directive visually implements the "Shimmer" UI pattern — an animated loading indicator that simulates content appearance while data is being fetched. This pattern enhances the user experience by providing visual feedback during loading states, helping users understand that the interface is active and content is on its way. When to Use To indicate loading states in cards, headers, lists, avatars, and other UI elements. When you want to visually communicate that content is loading, rather than missing or frozen. Shimmer is used when you have cached data that is currently being refreshed and if you have no data at all — a better choice would be Skeleton
-
-### How to Use (Import)
-
-```ts
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiShimmer,
-  ],
-})
-export class Example {
-  protected shimmer = true;
-}
-```
-
-### How to Use (Template)
-
-```html
-<!-- Usual HTML element -->
-<div [tuiShimmer]="shimmer">I'm shimmering</div>
-
-<!-- Or other component of Taiga UI -->
-<tui-calendar [tuiShimmer]="shimmer" />
-```
 
 ### Example
 
@@ -46711,29 +41923,6 @@ footer {
 - **Package**: `KIT`
 - **Type**: directives
 
-### How to Use (Import)
-
-```ts
-import {Component} from '@angular/core';
-import {TuiSkeleton} from '@taiga-ui/kit';
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSkeleton,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<span [tuiSkeleton]="true">Loading..</span>
-```
-
 ### Usage Examples
 
 #### Components
@@ -46871,30 +42060,6 @@ export default class Page {}
 - **Package**: `CDK`
 - **Type**: directives
 tuiSwipe directive allows detecting swipes on mobile devices. You can configure the directive with TUI_SWIPE_OPTIONS token. Allowed options: timeout: max time between touchstart and touchend threshold : min distance between touchstart and touchend.
-
-### How to Use (Import)
-
-```ts
-import {TuiSwipe} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiSwipe,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div (tuiSwipe)="..."></div>
-```
 
 ### Usage Examples
 
@@ -47122,36 +42287,6 @@ export default class Page {
 - **Type**: directives
 Directive to emulate native iOS touches
 
-### How to Use (Import)
-
-```ts
-import {TuiTouchable} from '@taiga-ui/addon-mobile';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiTouchable,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div tuiTouchable="transform">...</div>
-<a
-  tuiLink
-  tuiTouchable="opacity"
->
-  ...
-</a>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -47204,36 +42339,6 @@ export default class Page {}
 - **Package**: `CDK`
 - **Type**: directives
 tuiValidator allows set validators for form control on the fly
-
-### How to Use (Import)
-
-```ts
-import {TuiValidator} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiValidator,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <input
-    formControlName="control"
-    tuiInput
-    [tuiValidator]="validator"
-  />
-</tui-textfield>
-```
 
 ### Usage Examples
 
@@ -47324,33 +42429,6 @@ export default class Page {}
 - **Package**: `CDK`
 - **Type**: directives
 This directive allows you to access reactive control or container value changes as an output
-
-### How to Use (Import)
-
-```ts
-import {TuiValueChanges} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiValueChanges,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<input
-  [formControl]="control"
-  (tuiValueChanges)="onChanges($event)"
-/>
-```
 
 ### Usage Examples
 
@@ -47461,32 +42539,6 @@ export default class Page {
 - **Package**: `CDK`
 - **Type**: directives
 tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
-
-### How to Use (Import)
-
-```ts
-import {TuiZoom} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiZoom,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div (tuiZoom)="onZoom(scale += $event.delta)">
-  <div [style.transform]="'scale(' + scale + ')'">Zoomable</div>
-</div>
-```
 
 ### Usage Examples
 
@@ -48265,31 +43317,6 @@ export default class Page {
 - **Type**: pipes
 Pipe to format number values to show money sums Number formatting can be customized by using TUI_NUMBER_FORMAT
 
-### How to Use (Import)
-
-```ts
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiAmountPipe,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-{{ 100000 | tuiAmount : currency : align }}
-<p>{{ 100000 | tuiAmount : '978' : 'start' }}</p>
-<p>{{ 100000 | tuiAmount : 'EUR' : 'end' }}</p>
-```
-
 ### Usage Examples
 
 #### base
@@ -48448,38 +43475,6 @@ export default class Page {
 - **Type**: pipes
 Pipe for transforming number into money. It is usually used with InputNumber
 
-### How to Use (Import)
-
-```ts
-import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-
-//...
-
-@Component({
-  standalone: true,
-  imports: [
-    //...
-    TuiCurrencyPipe,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <label tuiLabel>Type a sum</label>
-
-  <input
-    formControlName="testValue"
-    tuiInputNumber
-    [prefix]="'USD' | tuiCurrency"
-  />
-</tui-textfield>
-```
-
 ### Example
 
 ```html
@@ -48594,50 +43589,6 @@ export default class Page {
 - **Type**: pipes
 Pipe for creating autocomplete when entering email addresses
 
-### How to Use (Import)
-
-```ts
-import {NgIf} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {TuiDataList} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiEmailsPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    NgIf,
-    FormsModule,
-    TuiEmailsPipe,
-    TuiInputModule,
-    TuiDataList,
-    TuiDataListWrapper,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <label tuiLabel>Email</label>
-  <input
-    tuiInput
-    [(ngModel)]="value"
-  />
-  <tui-data-list-wrapper
-    *tuiDropdown
-    [items]="value | tuiEmails"
-  />
-  } }
-</tui-textfield>
-```
-
 ### Usage Examples
 
 #### Example
@@ -48720,30 +43671,6 @@ export default class Page {}
 - **Type**: pipes
 Pipe for filtering an array
 
-### How to Use (Import)
-
-```ts
-import {TuiFilterPipe} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFilterPipe,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<div *ngFor="let item of items | tuiFilter: matcher: someArg">{{item}}</div>
-```
-
 ### Usage Examples
 
 #### Usage
@@ -48825,40 +43752,6 @@ export default class Page {}
 - **Package**: `KIT`
 - **Type**: pipes
 Pipe for filtering an array by value entered in a textfield
-
-### How to Use (Import)
-
-```ts
-import {TuiFilterByInputPipe} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFilterByInputPipe,
-  ],
-  //  ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield>
-  <label tuiLabel>User</label>
-  <input
-    [formControl]="control"
-    tuiInput
-  />
-  <tui-data-list-wrapper
-    *tuiDropdown
-    [items]="items | tuiFilterByInput"
-  />
-</tui-textfield>
-```
 
 ### Usage Examples
 
@@ -49101,33 +43994,6 @@ export default class Page {
 - **Type**: pipes
 Pipe for getting source path to image with flag
 
-### How to Use (Import)
-
-```ts
-import {TuiFlagPipe} from '@taiga-ui/core';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFlagPipe,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<img
-  alt="United Arab Emirates"
-  [src]="'AE' | tuiFlag"
-/>
-```
-
 ### Example
 
 ```html
@@ -49200,30 +44066,6 @@ export default class Page {
 - **Type**: pipes
 Pipe to format number values to separate thousands Number formatting can be customized by using TUI_NUMBER_FORMAT
 
-### How to Use (Import)
-
-```ts
-import {TuiFormatNumberPipe} from '@taiga-ui/core';
-
-//...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFormatNumberPipe,
-  ],
-  //  ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-Formatted number: {{index | tuiFormatNumber}}
-```
-
 ### Usage Examples
 
 #### Basic
@@ -49286,30 +44128,6 @@ export default class PageComponent {
 - **Package**: `CDK`
 - **Type**: pipes
 Pipe to transform a value with a function
-
-### How to Use (Import)
-
-```ts
-import {TuiMapperPipe} from '@taiga-ui/cdk';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    //    ...
-    TuiMapperPipe,
-  ],
-  //  ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-{{item | tuiMapper: mapper: someArg}}
-```
 
 ### Usage Examples
 
@@ -49390,42 +44208,6 @@ export default class Page {
 - **Package**: `CDK`
 - **Type**: pipes
 Pipe for obfuscating sensitive data
-
-### How to Use (Import)
-
-```ts
-import {tuiObfuscateOptionsProvider, TuiObfuscatePipe} from '@taiga-ui/cdk';
-
-//...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiObfuscatePipe,
-  ],
-  //  ...
-  providers: [
-    tuiObfuscateOptionsProvider({
-      default: ({length}, symbol = '*') => symbol.repeat(length),
-      recipes: {
-        city: ({length}) => 'x'.repeat(length),
-        phone: ({length}) => '*'.repeat(length),
-      },
-    }),
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<p>Obfuscated value: {{'abc' | tuiObfuscate}}</p>
-<p>Obfuscated value: {{'abc' | tuiObfuscate: '#'}}</p>
-<p>Obfuscated value: {{'abc' | tuiObfuscate: 'city'}}</p>
-<p>Obfuscated value: {{'abc' | tuiObfuscate: 'phone'}}</p>
-```
 
 ### Usage Examples
 
@@ -49548,40 +44330,6 @@ export default class PageComponent {
 - **Type**: pipes
 Pipe that creates TuiStringHandler by given key.
 
-### How to Use (Import)
-
-```ts
-import {TuiStringifyPipe} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    //...
-    TuiStringifyPipe,
-  ],
-  //  ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield
-  tuiChevron
-  [stringify]="'name' | tuiStringify"
->
-  <input
-    tuiComboBox
-    [(ngModel)]="value"
-  />
-
-  <!-- ... -->
-</tui-textfield>
-```
-
 ### Usage Examples
 
 #### Basic
@@ -49663,44 +44411,6 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: pipes
 Pipe that turns TuiStringHandler into content that works with $implicit .
-
-### How to Use (Import)
-
-```ts
-import {TuiStringifyContentPipe} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiStringifyContentPipe,
-  ],
-  // ...
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-<tui-textfield
-  tuiChevron
-  [stringify]="stringify"
->
-  <input
-    tuiComboBox
-    [(ngModel)]="value"
-  />
-
-  <tui-data-list-wrapper
-    *tuiDropdown
-    [items]="items"
-    [itemContent]="stringify | tuiStringifyContent"
-  ></tui-data-list-wrapper>
-</tui-textfield>
-```
 
 ### Usage Examples
 
