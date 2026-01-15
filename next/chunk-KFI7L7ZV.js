@@ -1,0 +1,17 @@
+import"./chunk-B4AJQJMI.js";var a=`<tui-doc-page
+    header="CopyProcessor"
+    package="CDK"
+    type="directives"
+>
+    <ng-template pageTab>
+        Directive is used to processed text when coping
+
+        <tui-doc-example
+            id="usage"
+            heading="Usage"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

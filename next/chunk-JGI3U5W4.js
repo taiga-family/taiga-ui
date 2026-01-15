@@ -1,0 +1,21 @@
+import"./chunk-B4AJQJMI.js";var t=`<tui-doc-page
+    header="Navigation"
+    package="LAYOUT"
+    type="components"
+>
+    <ng-template pageTab>
+        A set of basic layout components for global navigation
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                class="sticky-example"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [fullsize]="true"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{t as default};

@@ -1,0 +1,24 @@
+import"./chunk-B4AJQJMI.js";var o=`<tui-doc-page
+    header="BlockDetails"
+    package="LAYOUT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Layout directive for describing details. For example, transaction details</p>
+
+        <tui-doc-example
+            id="full"
+            heading="Full"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="customization"
+            heading="Customization"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};
