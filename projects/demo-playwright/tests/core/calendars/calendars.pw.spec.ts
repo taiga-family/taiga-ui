@@ -70,6 +70,6 @@ test.describe('Calendars', () => {
 
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect.soft(calendar).toHaveScreenshot('01-calendar-month.png');
+        await expect.soft(calendar).toHaveScreenshot('02-calendar-month.png');
     });
 });
