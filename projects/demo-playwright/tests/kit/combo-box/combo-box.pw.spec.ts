@@ -83,13 +83,20 @@ describe('ComboBox', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.ComboBox}/API?sandboxExpanded=true`);
 
-            await comboBox.textfield.fill('austr');
+            await comboBox.textfield.fill(
+                // cspell:disable-next-line
+                'austr',
+            );
 
             await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
 
             await page.keyboard.press('Enter');
 
-            await expect(comboBox.textfield).toHaveValue('austr');
+            await expect(comboBox.textfield).toHaveValue(
+                // cspell:disable-next-line
+                'austr',
+            );
+
             await expect(example).toContainText('"testValue": null');
 
             await comboBox.textfield.pressSequentially('i');

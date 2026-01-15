@@ -10,10 +10,10 @@ import {type TemplateResource} from '../../../interfaces';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 const NOTIFICATION_ATTRIBUTE = [
-    'tuinotification',
-    '[tuinotification]',
-    '[(tuinotification)]',
-];
+    'tuiNotification',
+    '[tuiNotification]',
+    '[(tuiNotification)]',
+].map((attr) => attr.toLowerCase());
 
 export function migrateTuiNotification({
     resource,

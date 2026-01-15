@@ -2,5 +2,6 @@
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
     "ignorePaths": ["**/projects/i18n/languages/**"],
-    "files": ["*/*.*"]
+    "files": ["*/*.*"],
+    "ignoreWords": ["yellin", "callin", "spittin", "protestin", "looooooooooooooooooooooooong", "Austri"]
 }
