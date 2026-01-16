@@ -22,8 +22,6 @@ export const TUI_USED_ICONS = [
     '@tui.ellipsis',
     '@tui.arrow-right-left',
     '@tui.zap',
-    '@tui.square-filled',
-    '@tui.zap-filled',
     '@tui.triangle-alert',
     '@tui.thumbs-up',
     '@tui.thumbs-down',
