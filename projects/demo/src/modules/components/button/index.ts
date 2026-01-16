@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiButtonLoading} from '@taiga-ui/kit';
-import {DemoRoute} from '@demo/routes';
 
 @Component({
     imports: [TuiButton, TuiButtonLoading, TuiDemo, TuiDocAppearance, TuiDocIcons],

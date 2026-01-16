@@ -15,7 +15,6 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
 import {toKebab} from '@demo/utils';
 import {WA_LOCATION} from '@ng-web-apis/common';
 import {
-    WA_INTERSECTION_THRESHOLD,
     WaIntersectionObservee,
     WaIntersectionObserverDirective,
 } from '@ng-web-apis/intersection-observer';
@@ -30,14 +29,15 @@ import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {TuiLink, TuiTitle} from '@taiga-ui/core/components';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
+import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
-import {TuiHeader} from '@taiga-ui/layout/components';
+import {TuiHeader} from '@taiga-ui/layout/components/header';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 

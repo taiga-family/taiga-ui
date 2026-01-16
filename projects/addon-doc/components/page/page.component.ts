@@ -9,10 +9,11 @@ import {
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {TUI_DOC_DEFAULT_TABS, TUI_DOC_SUPPORT_LANGUAGE} from '@taiga-ui/addon-doc/tokens';
-import {TuiTitle} from '@taiga-ui/core/components';
-import {TuiBadge, TuiSegmented} from '@taiga-ui/kit/components';
+import {TuiTitle} from '@taiga-ui/core/components/title';
+import {TuiBadge} from '@taiga-ui/kit/components/badge';
+import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
 import {TuiAutoColorPipe} from '@taiga-ui/kit/pipes/auto-color';
-import {TuiHeader} from '@taiga-ui/layout/components';
+import {TuiHeader} from '@taiga-ui/layout/components/header';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDocSourceCode} from '../internal/source-code/source-code.component';

@@ -7,8 +7,9 @@ import {
     TUI_DOC_SEE_ALSO_TEXT,
     TUI_DOC_TOC_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import {tuiArrayToggle} from '@taiga-ui/cdk/utils';
-import {TuiLink, TuiTitle} from '@taiga-ui/core/components';
+import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiTitle} from '@taiga-ui/core/components/title';
 
 @Component({
     selector: 'tui-doc-toc',
