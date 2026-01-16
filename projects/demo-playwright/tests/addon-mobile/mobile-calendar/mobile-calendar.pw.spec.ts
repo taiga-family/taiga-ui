@@ -7,7 +7,7 @@ test.describe('MobileCalendar', () => {
 
     test('works', async ({page}) => {
         await tuiGoto(page, DemoRoute.MobileCalendar);
-        const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
+        const example = new TuiDocumentationPagePO(page).getExample('#custom_dropdown');
 
         await example.locator('button:has-text("Choose a date")').click();
 

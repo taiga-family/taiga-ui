@@ -396,12 +396,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Dialog (Legacy)',
-        keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
-        route: DemoRoute.DialogLegacy,
-    },
-    {
-        section: 'Components',
         title: 'Drawer',
         keywords:
             'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',

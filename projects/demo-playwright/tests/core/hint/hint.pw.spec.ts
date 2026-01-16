@@ -113,7 +113,7 @@ test.describe('TuiHint', () => {
 
     test('Tooltip horizontal direction', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tooltip);
-        const example = new TuiDocumentationPagePO(page).getExample('#example-base');
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.locator('[tuiTooltip]').nth(0).hover();
 

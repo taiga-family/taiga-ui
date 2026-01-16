@@ -51,7 +51,9 @@ test.describe('Dropdown', () => {
 
     test('DropdownOpen and custom position', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
-        const example = new TuiDocumentationPagePO(page).getExample('#position');
+        const example = new TuiDocumentationPagePO(page).getExample(
+            '#custom-positioning',
+        );
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
@@ -68,7 +70,7 @@ test.describe('Dropdown', () => {
 
     test.skip('Esc -> Hosted Dropdown', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
-        const example = new TuiDocumentationPagePO(page).getExample('#tui-dropdown-host');
+        const example = new TuiDocumentationPagePO(page).getExample('#with-custom-host');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button[tuiChevron]').click();
@@ -141,7 +143,7 @@ test.describe('Dropdown', () => {
 
     test('late init control binding', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
-        const example = new TuiDocumentationPagePO(page).getExample('#complex');
+        const example = new TuiDocumentationPagePO(page).getExample('#complex-example');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button[data-appearance="outline-grayscale"]').click();

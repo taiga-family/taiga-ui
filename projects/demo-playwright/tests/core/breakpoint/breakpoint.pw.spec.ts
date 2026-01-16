@@ -18,7 +18,9 @@ test.describe('Breakpoint token', () => {
         test(`${width}x${height}`, async ({page}) => {
             await page.setViewportSize({width, height});
             await tuiGoto(page, DemoRoute.Tokens);
-            const example = new TuiDocumentationPagePO(page).getExample('#breakpoint');
+            const example = new TuiDocumentationPagePO(page).getExample(
+                '#tui_-breakpoint',
+            );
 
             await expect
                 .soft(example)

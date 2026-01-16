@@ -103,7 +103,7 @@ test.describe('DataList', () => {
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
-        const example = documentationPagePO.getExample('#control');
+        const example = documentationPagePO.getExample('#form-control');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').first().click();
@@ -181,7 +181,7 @@ test.describe('DataList', () => {
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
-        const example = documentationPagePO.getExample('#long-text-options');
+        const example = documentationPagePO.getExample('#options-with-long-text');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();

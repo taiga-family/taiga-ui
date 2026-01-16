@@ -308,11 +308,6 @@ export const ROUTES: Routes = [
         title: 'Dialog',
     }),
     route({
-        path: DemoRoute.DialogLegacy,
-        loadComponent: async () => import('../components/dialog-legacy'),
-        title: 'Dialog (Legacy)',
-    }),
-    route({
         path: DemoRoute.Drawer,
         loadComponent: async () => import('../components/drawer'),
         title: 'Drawer',
