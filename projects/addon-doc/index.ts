@@ -12,6 +12,7 @@ import {
     TuiDocPage,
     TuiDocPageTabConnector,
     TuiDocTab,
+    TuiDocToc,
 } from '@taiga-ui/addon-doc/components';
 
 export const TuiAddonDoc = [
@@ -28,6 +29,7 @@ export const TuiAddonDoc = [
     TuiDocPageTabConnector,
     TuiDocNavigation,
     TuiDocMain,
+    TuiDocToc,
 ] as const;
 
 export * from '@taiga-ui/addon-doc/components';

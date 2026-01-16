@@ -1,0 +1,30 @@
+<h5 tuiTitle="s">
+    <b>{{ text.toc }}</b>
+</h5>
+<nav>
+    @for (item of toc(); track $index) {
+        <button
+            appearance="action-grayscale"
+            tuiLink
+            type="button"
+            [class._active]="isActive(item)"
+            (click)="onClick(item)"
+        >
+            {{ item }}
+        </button>
+    }
+</nav>
+
+<h5 tuiTitle="s">
+    <b>{{ text.seeAlso }}</b>
+</h5>
+@for (item of seeAlso; track $index) {
+    <a
+        tuiLink
+        [innerText]="item"
+        [routerLink]="getRouterLink(item)"
+    ></a>
+    @if (!$last) {
+        <span>{{ ', ' }}</span>
+    }
+}

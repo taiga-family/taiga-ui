@@ -25,18 +25,9 @@ export const TUI_DOC_DEMO_TEXTS = new InjectionToken<[string, string, string]>(
  * ]
  */
 export const TUI_DOC_DOCUMENTATION_TEXTS = new InjectionToken<
-    [argument: string, type: string, name: string, value: string, tooltip: string]
+    [argument: string, type: string, name: string, value: string]
 >(ngDevMode ? 'TUI_DOC_DOCUMENTATION_TEXTS' : '', {
-    factory: () => [
-        'Argument',
-        'Type',
-        'Name and description',
-        'Value',
-        /**
-         * @deprecated
-         */
-        'Learn about our dynamic templates from ',
-    ],
+    factory: () => ['Argument', 'Type', 'Name and description', 'Value'],
 });
 
 /**
@@ -65,6 +56,9 @@ export const TUI_DOC_SEE_ALSO_TEXT = new InjectionToken(
     ngDevMode ? 'TUI_DOC_SEE_ALSO_TEXT' : '',
     {factory: () => 'See also'},
 );
+export const TUI_DOC_TOC_TEXT = new InjectionToken(ngDevMode ? 'TUI_DOC_TOC_TEXT' : '', {
+    factory: () => 'On this page',
+});
 export const TUI_DOC_SOURCE_CODE_TEXT = new InjectionToken(
     ngDevMode ? 'TUI_DOC_SOURCE_CODE_TEXT' : '',
     {factory: () => 'Source code'},

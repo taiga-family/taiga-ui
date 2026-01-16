@@ -5,6 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiButtonLoading} from '@taiga-ui/kit';
+import {DemoRoute} from '@demo/routes';
 
 @Component({
     imports: [TuiButton, TuiButtonLoading, TuiDemo, TuiDocAppearance, TuiDocIcons],
@@ -23,8 +24,7 @@ export default class Page {
     ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
-
     protected size = this.sizes[3]!;
-
     protected loading = false;
+    protected readonly routes = DemoRoute;
 }

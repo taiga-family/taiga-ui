@@ -32,11 +32,13 @@ import {
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
+    TUI_DOC_SOURCE_CODE_TEXT,
     TUI_DOC_SUPPORT_LANGUAGE,
     TUI_DOC_TITLE,
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
+    tuiDocIconsProvider,
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
@@ -321,5 +323,10 @@ export const config: ApplicationConfig = {
                 Tools: '@tui.hammer',
             },
         },
+        {
+            provide: TUI_DOC_SOURCE_CODE_TEXT,
+            useValue: 'GitHub',
+        },
+        tuiDocIconsProvider({code: '@tui.github'}),
     ],
 };

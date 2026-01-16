@@ -11,8 +11,14 @@ import {
     type Type,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {toKebab} from '@demo/utils';
 import {WA_LOCATION} from '@ng-web-apis/common';
+import {
+    WA_INTERSECTION_THRESHOLD,
+    WaIntersectionObservee,
+    WaIntersectionObserverDirective,
+} from '@ng-web-apis/intersection-observer';
 import {
     TUI_DOC_CODE_ACTIONS,
     TUI_DOC_CODE_EDITOR,
@@ -24,13 +30,14 @@ import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
+import {TuiLink, TuiTitle} from '@taiga-ui/core/components';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
+import {TuiHeader} from '@taiga-ui/layout/components';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
@@ -45,31 +52,42 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         NgComponentOutlet,
         PolymorpheusOutlet,
         RouterLink,
-        RouterLinkActive,
         TuiButton,
         TuiDocCode,
         TuiDocExampleGetTabsPipe,
         TuiFullscreen,
+        TuiHeader,
         TuiLink,
         TuiLoader,
         TuiMapperPipe,
         TuiTabs,
+        TuiTitle,
     ],
     templateUrl: './example.template.html',
     styleUrl: './example.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        WaIntersectionObserverDirective,
+        {
+            directive: WaIntersectionObservee,
+            outputs: ['waIntersectionObservee'],
+        },
+    ],
     host: {
-        '[attr.id]': 'id()',
+        waIntersectionThreshold: '1',
+        waIntersectionRootMargin: '0px 0px 1000000% 0px',
+        '[attr.id]': 'computedId()',
         '[class._fullsize]': 'fullsize()',
+        '(waIntersectionObservee)': 'onIntersection()',
     },
 })
 export class TuiDocExample implements OnChanges {
+    private readonly doc = inject(DOCUMENT);
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiNotificationService);
     private readonly location = inject(WA_LOCATION);
     private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
-
     private readonly rawLoader$$ = new BehaviorSubject<
         Record<string, TuiRawLoaderContent>
     >({});
@@ -85,16 +103,12 @@ export class TuiDocExample implements OnChanges {
         );
 
     protected readonly route = inject(ActivatedRoute);
-
     protected readonly defaultTabIndex = 0;
     protected readonly defaultTab = this.texts[this.defaultTabIndex];
     protected activeItemIndex = this.defaultTabIndex;
     protected fullscreen = false;
-
     protected readonly copy = computed(() => this.copyTexts()[0]);
-
     protected readonly loading = signal(false);
-
     protected readonly processor = toSignal(
         this.rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
@@ -103,18 +117,13 @@ export class TuiDocExample implements OnChanges {
         {initialValue: {} as unknown as Record<string, string>},
     );
 
+    protected readonly computedId = computed(() => this.id() || toKebab(this.heading()));
+
     public readonly id = input<string | null>(null);
-
-    public readonly heading = input<PolymorpheusContent>();
-
+    public readonly heading = input('');
     public readonly description = input<PolymorpheusContent>();
-
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
-
-    public readonly componentName = input<string>(this.location.pathname.slice(1));
-
     public readonly component = input<Promise<Type<unknown>>>();
-
     public readonly content = input<Record<string, TuiRawLoaderContent>>({});
 
     public ngOnChanges(): void {
@@ -138,7 +147,13 @@ export class TuiDocExample implements OnChanges {
     protected edit(files: Record<string, string>): void {
         this.loading.set(true);
         this.codeEditor
-            ?.edit(this.componentName(), this.id() || '', files)
+            ?.edit(this.location.pathname.slice(1), this.id() || '', files)
             .finally(() => this.loading.set(false));
+    }
+
+    protected onIntersection(): void {
+        this.doc.dispatchEvent(
+            new CustomEvent('tui-example', {detail: this.computedId()}),
+        );
     }
 }

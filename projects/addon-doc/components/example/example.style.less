@@ -3,64 +3,46 @@
 :host {
     position: relative;
     display: block;
-    padding-block-start: 3.5rem;
-    clear: inline-end;
+    padding-block-start: 2rem;
+    scroll-margin-top: 6rem;
+
+    :host-context(tui-doc-toc +),
+    &:first-child {
+        padding-block-start: 0;
+    }
+
+    :host-context(tui-doc-toc ~) {
+        inline-size: calc(100% - 20rem);
+
+        @media @tui-desktop {
+            inline-size: 100%;
+        }
+    }
 
     &:target {
         animation: 1s tuiShaking;
     }
-
-    @media @tui-mobile {
-        padding-block-start: 2rem;
-    }
-}
-
-.t-title-block {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.t-title {
-    font: var(--tui-font-heading-h5);
-    margin: 0 auto 0.5rem 0;
-
-    @media @tui-mobile {
-        font: var(--tui-font-heading-h6);
-    }
-
-    &:hover + .t-link {
-        opacity: 1;
-    }
 }
 
 .t-link {
-    font: var(--tui-font-heading-h6);
-    padding-inline-end: 0.1rem;
+    text-decoration: none !important;
+    font: inherit;
 
-    @media not @tui-mobile {
-        font: var(--tui-font-heading-h5);
-        margin-inline-start: -1.6rem;
+    &::after {
+        .transition(color);
 
-        &:not(:hover, :focus-visible):not(.t-link-active) {
-            opacity: 0;
-        }
+        color: transparent;
     }
-}
 
-.t-description {
-    font: var(--tui-font-body-m);
-    font-weight: normal;
-    margin: 0;
-}
-
-.t-title::first-letter,
-.t-description::first-letter {
-    text-transform: capitalize;
+    &:hover,
+    &:hover::after {
+        color: var(--tui-text-secondary);
+    }
 }
 
 .t-example {
     position: relative;
-    margin-block-start: 1.5rem;
+    margin-block-start: 1.25rem;
     border: 1px solid var(--tui-border-normal);
     border-radius: var(--tui-radius-m);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);

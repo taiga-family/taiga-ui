@@ -1,39 +1,31 @@
-<div class="t-title-block">
-    @if (heading()) {
-        <h2 class="t-title">
-            <span
-                *polymorpheusOutlet="heading() as text"
-                [textContent]="text"
-            ></span>
-        </h2>
-    }
-
-    @let fragmentId = id();
-
-    @if (fragmentId) {
-        <a
-            routerLink="."
-            routerLinkActive="t-link-active"
-            tuiLink
-            type="button"
-            class="t-link"
-            [attr.title]="copy()"
-            [fragment]="fragmentId"
-            [relativeTo]="route.firstChild ?? route"
-            [routerLinkActiveOptions]="{matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'}"
-            (click)="copyExampleLink($event.currentTarget)"
-        >
-            #
-        </a>
-    }
-</div>
-@if (description()) {
-    <h3 class="t-description">
-        <ng-container *polymorpheusOutlet="description() as text">
-            {{ text }}
-        </ng-container>
-    </h3>
-}
+<header tuiHeader="h6">
+    <hgroup tuiTitle>
+        @if (heading()) {
+            <h2>
+                <a
+                    appearance=""
+                    routerLink="."
+                    tuiLink
+                    class="t-link"
+                    [attr.title]="copy()"
+                    [fragment]="computedId()"
+                    [iconEnd]="icons.link"
+                    [relativeTo]="route.firstChild ?? route"
+                    (click)="copyExampleLink($event.currentTarget)"
+                >
+                    {{ heading() }}
+                </a>
+            </h2>
+            @if (description()) {
+                <p>
+                    <ng-container *polymorpheusOutlet="description() as text">
+                        {{ text }}
+                    </ng-container>
+                </p>
+            }
+        }
+    </hgroup>
+</header>
 
 <div
     class="t-example"
