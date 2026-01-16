@@ -2,6 +2,26 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
+        from: [
+            {
+                name: 'TuiAccordion',
+                moduleSpecifier: '@taiga-ui/experimental',
+            },
+            {
+                name: 'TuiAccordionComponent',
+                moduleSpecifier: '@taiga-ui/experimental',
+            },
+            {
+                name: 'TuiAccordionDirective',
+                moduleSpecifier: '@taiga-ui/experimental',
+            },
+        ],
+        to: {
+            name: 'TuiAccordion',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
         from: {
             name: 'TuiInputYearModule',
             moduleSpecifier: '@taiga-ui/legacy',
