@@ -8,7 +8,7 @@
                     tuiLink
                     class="t-link"
                     [attr.title]="copy()"
-                    [fragment]="computedId()"
+                    [fragment]="id()"
                     [iconEnd]="icons.link"
                     [relativeTo]="route.firstChild ?? route"
                     (click)="copyExampleLink($event.currentTarget)"
