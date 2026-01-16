@@ -1,5 +1,4 @@
 import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {hasAncestor} from '../../../utils/templates';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
@@ -13,6 +12,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces';
+import {hasAncestor} from '../../../utils/templates';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
