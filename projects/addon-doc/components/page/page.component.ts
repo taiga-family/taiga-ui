@@ -18,7 +18,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
 import {TuiDocLanguageSwitcher} from '../language-switcher';
-import {PAGE_PROVIDERS, TUI_DOC_TABS} from './page.providers';
+import {TUI_DOC_TABS} from './page.providers';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
 @Component({
@@ -40,7 +40,6 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
     templateUrl: './page.template.html',
     styleUrl: './page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: PAGE_PROVIDERS,
 })
 export class TuiDocPage {
     protected readonly tabConnectors = contentChildren(TuiDocPageTabConnector);

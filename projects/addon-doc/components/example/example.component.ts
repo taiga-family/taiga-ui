@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {toKebab} from '@demo/utils';
 import {WA_LOCATION} from '@ng-web-apis/common';
 import {
     WaIntersectionObservee,
@@ -26,7 +25,7 @@ import {
     TUI_DOC_ICONS,
 } from '@taiga-ui/addon-doc/tokens';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
-import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
+import {tuiRawLoadRecord, tuiToKebab} from '@taiga-ui/addon-doc/utils';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -117,7 +116,9 @@ export class TuiDocExample implements OnChanges {
         {initialValue: {} as unknown as Record<string, string>},
     );
 
-    protected readonly computedId = computed(() => this.id() || toKebab(this.heading()));
+    protected readonly computedId = computed(
+        () => this.id() || tuiToKebab(this.heading()),
+    );
 
     public readonly id = input<string | null>(null);
     public readonly heading = input('');

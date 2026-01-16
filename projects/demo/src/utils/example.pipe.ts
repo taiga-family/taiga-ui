@@ -1,7 +1,5 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {TuiDocPage, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-
-import {toKebab} from './kebab.pipe';
+import {TuiDocPage, type TuiRawLoaderContent, tuiToKebab} from '@taiga-ui/addon-doc';
 
 const EMPTY = {default: ''};
 
@@ -19,7 +17,7 @@ export class TuiExamplePipe implements PipeTransform {
             | 'ts' = 'html,ts,less',
         additionalFiles?: Record<string, TuiRawLoaderContent>,
     ): Record<string, TuiRawLoaderContent> {
-        const directory = `${this.page.type()}/${toKebab(this.page.header())}/examples/${index}`;
+        const directory = `${this.page.type()}/${tuiToKebab(this.page.header())}/examples/${index}`;
         const ts = import(`../modules/${directory}/index.ts`, {
             with: {loader: 'text'},
         }).catch(() => EMPTY);
