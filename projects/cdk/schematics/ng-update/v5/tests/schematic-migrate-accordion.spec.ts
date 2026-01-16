@@ -57,6 +57,7 @@ describe('ng-update accordion item', () => {
         `;
 
         const after = `
+<!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
 <tui-accordion>
     <button [tuiAccordion]="true">Level 1</button>
     <tui-expand>
@@ -96,6 +97,7 @@ describe('ng-update accordion item', () => {
         `;
 
         const after = `
+<!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
 <tui-accordion>
     <button tuiAccordion>Taiga UI lazy</button>
     <tui-expand>
@@ -103,6 +105,7 @@ describe('ng-update accordion item', () => {
     </tui-expand>
 </tui-accordion>
 
+<!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
 <tui-accordion>
     <button tuiAccordion>Taiga UI eager</button>
     <tui-expand>I'm eager content</tui-expand>
