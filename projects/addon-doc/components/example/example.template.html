@@ -86,11 +86,11 @@
         }
         @for (tab of tabs; track tab) {
             <div class="t-content">
-                @if ($index === defaultTabIndex) {
+                @if (!$index) {
                     <section
                         automation-id="tui-doc-example"
                         class="t-demo"
-                        [style.display]="activeItemIndex === $index && $index === defaultTabIndex ? 'block' : 'none'"
+                        [style.display]="activeItemIndex === $index ? 'block' : 'none'"
                     >
                         <ng-content />
                         <ng-container *ngComponentOutlet="component() | async" />
@@ -99,7 +99,7 @@
                 @let code = processor()[tabs[$index] || 0] || '';
                 <tui-doc-code
                     [code]="code"
-                    [style.display]="activeItemIndex === $index && $index !== defaultTabIndex ? 'block' : 'none'"
+                    [style.display]="activeItemIndex === $index && $index ? 'block' : 'none'"
                 >
                     @for (action of codeActions; track action) {
                         <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">

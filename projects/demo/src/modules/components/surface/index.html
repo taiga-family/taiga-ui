@@ -20,7 +20,6 @@
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
                 [heading]="example"
-                [id]="example | tuiKebab"
             >
                 @switch ($index + 1) {
                     @case (1) {
@@ -117,7 +116,6 @@
         <hr />
 
         <tui-doc-example
-            id="layers"
             heading="Examples"
             [component]="7 | tuiComponent"
             [content]="7 | tuiExample: 'html,less' : layerExample"

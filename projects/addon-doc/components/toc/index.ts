@@ -1,4 +1,3 @@
-import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -13,7 +12,7 @@ import {
     TUI_DOC_SEE_ALSO_TEXT,
     TUI_DOC_TOC_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import {tuiToKebab} from '@taiga-ui/addon-doc/utils';
+import {TuiDocKebabPipe, tuiToKebab} from '@taiga-ui/addon-doc/utils';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -23,7 +22,7 @@ import {TuiDocPage} from '../page/page.component';
 
 @Component({
     selector: 'tui-doc-toc',
-    imports: [RouterLink, TuiLink, TuiTitle],
+    imports: [RouterLink, TuiDocKebabPipe, TuiLink, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,7 +30,6 @@ import {TuiDocPage} from '../page/page.component';
 })
 export class TuiDocToc implements OnInit {
     private readonly el = tuiInjectElement();
-    private readonly doc = inject(DOCUMENT);
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
     private examples: readonly string[] = [];
     private active = '';
@@ -51,10 +49,6 @@ export class TuiDocToc implements OnInit {
 
             this.toc.set(toc);
         });
-    }
-
-    protected onClick(title: string): void {
-        this.doc.querySelector(`#${tuiToKebab(title)}`)?.scrollIntoView();
     }
 
     protected isActive(fragment: string): boolean {

@@ -6,7 +6,7 @@ test.describe('PieChart', () => {
     test('should be show hints on charts', async ({page}) => {
         await tuiGoto(page, DemoRoute.PieChart);
 
-        const example = new TuiDocumentationPagePO(page).getExample('#labels');
+        const example = new TuiDocumentationPagePO(page).getExample('#with-labels');
         const pieChartSegments = await example
             .getByTestId('tui-pie-chart__segment')
             .all();

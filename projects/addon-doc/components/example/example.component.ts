@@ -35,7 +35,6 @@ import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
-import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiHeader} from '@taiga-ui/layout/components/header';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -61,7 +60,6 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiLoader,
         TuiMapperPipe,
         TuiSegmented,
-        TuiTabs,
         TuiTitle,
     ],
     templateUrl: './example.template.html',
@@ -77,7 +75,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     host: {
         waIntersectionThreshold: '1',
         waIntersectionRootMargin: '-40px 0px 1000000% 0px',
-        '[attr.id]': 'computedId()',
+        '[attr.id]': 'id()',
         '[class._fullsize]': 'fullsize()',
         '(waIntersectionObservee)': 'onIntersection()',
     },
@@ -104,12 +102,12 @@ export class TuiDocExample implements OnChanges {
         );
 
     protected readonly route = inject(ActivatedRoute);
-    protected readonly defaultTabIndex = 0;
-    protected readonly defaultTab = this.texts[this.defaultTabIndex];
-    protected activeItemIndex = this.defaultTabIndex;
+    protected readonly defaultTab = this.texts[0];
+    protected activeItemIndex = 0;
     protected fullscreen = false;
     protected readonly copy = computed(() => this.copyTexts()[0]);
     protected readonly loading = signal(false);
+    protected readonly id = computed(() => tuiToKebab(this.heading()));
     protected readonly processor = toSignal(
         this.rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
@@ -118,11 +116,6 @@ export class TuiDocExample implements OnChanges {
         {initialValue: {} as unknown as Record<string, string>},
     );
 
-    protected readonly computedId = computed(
-        () => this.id() || tuiToKebab(this.heading()),
-    );
-
-    public readonly id = input<string | null>(null);
     public readonly heading = input('');
     public readonly description = input<PolymorpheusContent>();
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
@@ -155,8 +148,6 @@ export class TuiDocExample implements OnChanges {
     }
 
     protected onIntersection(): void {
-        this.doc.dispatchEvent(
-            new CustomEvent('tui-example', {detail: this.computedId()}),
-        );
+        this.doc.dispatchEvent(new CustomEvent('tui-example', {detail: this.id()}));
     }
 }
