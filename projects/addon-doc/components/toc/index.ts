@@ -8,8 +8,9 @@ import {
     TUI_DOC_TOC_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiToKebab} from '@taiga-ui/addon-doc/utils';
-import {tuiArrayToggle} from '@taiga-ui/cdk/utils';
-import {TuiLink, TuiTitle} from '@taiga-ui/core/components';
+import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiTitle} from '@taiga-ui/core/components/title';
 
 import {TuiDocPage} from '../page/page.component';
 
