@@ -33,23 +33,19 @@
 >
     @if (processor() | tuiDocExampleGetTabs: defaultTab; as tabs) {
         @if (tabs.length > 1) {
-            <div class="t-tabs-wrapper">
-                <tui-tabs-with-more
+            <div class="t-header">
+                <tui-segmented
                     class="t-tabs"
                     [(activeItemIndex)]="activeItemIndex"
                 >
                     @for (tab of tabs; track tab) {
-                        <button
-                            *tuiItem
-                            tuiTab
-                            type="button"
-                        >
+                        <button type="button">
                             <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
                                 {{ text }}
                             </ng-container>
                         </button>
                     }
-                </tui-tabs-with-more>
+                </tui-segmented>
                 @if (processor() | tuiMapper: visible) {
                     <tui-loader
                         size="xs"
@@ -76,7 +72,7 @@
                 }
                 @if (fullscreenEnabled) {
                     <button
-                        appearance="flat"
+                        appearance="flat-grayscale"
                         size="xs"
                         tuiIconButton
                         type="button"

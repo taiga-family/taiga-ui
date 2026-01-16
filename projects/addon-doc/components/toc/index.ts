@@ -1,5 +1,12 @@
 import {DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {
+    type AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    OnInit,
+    signal,
+} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {
     TUI_DOC_MAP_PAGES,
@@ -8,9 +15,8 @@ import {
     TUI_DOC_TOC_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiToKebab} from '@taiga-ui/addon-doc/utils';
-import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiTitle} from '@taiga-ui/core/components/title';
+import {tuiArrayToggle, tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {TuiLink, TuiTitle} from '@taiga-ui/core/components';
 
 import {TuiDocPage} from '../page/page.component';
 
@@ -22,19 +28,29 @@ import {TuiDocPage} from '../page/page.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {'(document:tui-example)': 'onExample($event.detail)'},
 })
-export class TuiDocToc {
+export class TuiDocToc implements OnInit {
+    private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
     private examples: readonly string[] = [];
     private active = '';
 
+    protected readonly toc = signal<readonly string[]>([]);
     protected readonly seeAlso = getSeeAlso();
     protected readonly text = {
         toc: inject(TUI_DOC_TOC_TEXT),
         seeAlso: inject(TUI_DOC_SEE_ALSO_TEXT),
     };
 
-    public readonly toc = input<readonly string[]>([]);
+    public ngOnInit(): void {
+        setTimeout(() => {
+            const page = this.el.closest('tui-doc-page');
+            const links = page?.querySelectorAll('tui-doc-example > header .t-link');
+            const toc = Array.from(links || []).map((el) => el.textContent?.trim() || '');
+
+            this.toc.set(toc);
+        });
+    }
 
     protected onClick(title: string): void {
         this.doc.querySelector(`#${tuiToKebab(title)}`)?.scrollIntoView();

@@ -43,6 +43,7 @@ import {BehaviorSubject, map, switchMap} from 'rxjs';
 import {TuiDocCode} from '../code';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
+import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-doc-example',
@@ -61,6 +62,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiMapperPipe,
         TuiTabs,
         TuiTitle,
+        TuiSegmented,
     ],
     templateUrl: './example.template.html',
     styleUrl: './example.style.less',
@@ -74,7 +76,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     ],
     host: {
         waIntersectionThreshold: '1',
-        waIntersectionRootMargin: '0px 0px 1000000% 0px',
+        waIntersectionRootMargin: '-40px 0px 1000000% 0px',
         '[attr.id]': 'computedId()',
         '[class._fullsize]': 'fullsize()',
         '(waIntersectionObservee)': 'onIntersection()',

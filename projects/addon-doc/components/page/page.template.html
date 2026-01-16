@@ -27,7 +27,7 @@
                 }
             </h1>
             <p class="t-navigation">
-                @if (tabConnectors().length) {
+                @if (tabConnectors().length > 1) {
                     <tui-segmented [(activeItemIndex)]="activeItemIndex">
                         @for (tab of tabConnectors(); track tab) {
                             @if (tab.pageTab() || defaultTabs[$index]; as tabName) {
@@ -70,6 +70,9 @@
 <ng-content />
 @for (tab of tabConnectors(); track tab) {
     @if ($index === activeItemIndex()) {
+        @if (!$index) {
+            <tui-doc-toc />
+        }
         <ng-container [ngTemplateOutlet]="tab.template" />
     }
 }

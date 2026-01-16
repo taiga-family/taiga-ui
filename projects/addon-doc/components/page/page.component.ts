@@ -18,6 +18,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
 import {TuiDocLanguageSwitcher} from '../language-switcher';
+import {TuiDocToc} from '../toc';
 import {TUI_DOC_TABS} from './page.providers';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
@@ -33,6 +34,7 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         TuiBadge,
         TuiDocLanguageSwitcher,
         TuiDocSourceCode,
+        TuiDocToc,
         TuiHeader,
         TuiSegmented,
         TuiTitle,

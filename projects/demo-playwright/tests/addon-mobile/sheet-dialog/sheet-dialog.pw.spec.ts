@@ -9,7 +9,7 @@ test.describe('SheetDialog', () => {
 
     test('Close sheet by route navigation', async ({page}) => {
         await tuiGoto(page, DemoRoute.SheetDialog);
-        await page.locator('tui-tabs a:has-text("API")').click();
+        await page.locator('tui-segmented a:has-text("API")').click();
 
         const example = new TuiDocumentationApiPagePO(page).apiPageExample;
         const button = example.locator('button:has-text("Click")');

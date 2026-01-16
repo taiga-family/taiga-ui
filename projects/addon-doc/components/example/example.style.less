@@ -4,10 +4,9 @@
     position: relative;
     display: block;
     padding-block-start: 2rem;
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 4rem;
 
-    :host-context(tui-doc-toc +),
-    &:first-child {
+    :host-context(tui-doc-toc +) {
         padding-block-start: 0;
     }
 
@@ -17,6 +16,10 @@
         @media @tui-desktop {
             inline-size: 100%;
         }
+    }
+
+    :host-context(tui-doc-toc:empty ~) {
+        inline-size: 100%;
     }
 
     &:target {
@@ -43,9 +46,8 @@
 .t-example {
     position: relative;
     margin-block-start: 1.25rem;
-    border: 1px solid var(--tui-border-normal);
+    border: 0.25rem solid var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
-    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
 
     @media @tui-mobile {
@@ -53,22 +55,34 @@
     }
 }
 
-.t-tabs-wrapper {
+.t-header {
     display: flex;
-    padding: 0 0.875rem 0 2rem;
-    box-shadow: inset 0 -1px var(--tui-border-normal);
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    overflow: auto;
+    gap: 0.25rem;
+    padding-block-end: 0.25rem;
+    padding-inline-end: 0.125rem;
+    background: var(--tui-background-base-alt);
 
-    @media @tui-mobile {
-        padding: 0 0.875rem 0 1rem;
-    }
+    --tui-stroke-width: 0.09375rem;
 }
 
 .t-tabs {
     flex-grow: 1;
-    box-shadow: none;
+    background: none;
+    margin: -0.125rem;
+
+    &::before {
+        filter: none;
+    }
+}
+
+.t-content {
+    border-radius: var(--tui-radius-m);
+    box-shadow:
+        -1rem -1rem var(--tui-background-base-alt),
+        1rem -1rem var(--tui-background-base-alt);
 }
 
 .t-code-editor {
@@ -88,13 +102,14 @@
     box-sizing: border-box;
     overflow-x: auto;
 
-    @media @tui-mobile {
-        padding: 1rem;
-    }
-
     :host:not(._fullsize) & {
         inline-size: min-content;
         min-inline-size: 21rem;
+    }
+
+    @media @tui-mobile {
+        min-inline-size: 0 !important;
+        padding: 1rem;
     }
 }
 
