@@ -34,6 +34,7 @@ import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
+import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiHeader} from '@taiga-ui/layout/components/header';
@@ -43,7 +44,6 @@ import {BehaviorSubject, map, switchMap} from 'rxjs';
 import {TuiDocCode} from '../code';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
-import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-doc-example',
@@ -60,9 +60,9 @@ import {TuiSegmented} from '@taiga-ui/kit';
         TuiLink,
         TuiLoader,
         TuiMapperPipe,
+        TuiSegmented,
         TuiTabs,
         TuiTitle,
-        TuiSegmented,
     ],
     templateUrl: './example.template.html',
     styleUrl: './example.style.less',

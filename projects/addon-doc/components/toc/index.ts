@@ -1,10 +1,9 @@
 import {DOCUMENT} from '@angular/common';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     inject,
-    OnInit,
+    type OnInit,
     signal,
 } from '@angular/core';
 import {RouterLink} from '@angular/router';
@@ -15,8 +14,10 @@ import {
     TUI_DOC_TOC_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiToKebab} from '@taiga-ui/addon-doc/utils';
-import {tuiArrayToggle, tuiInjectElement} from '@taiga-ui/cdk/utils';
-import {TuiLink, TuiTitle} from '@taiga-ui/core/components';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiTitle} from '@taiga-ui/core/components/title';
 
 import {TuiDocPage} from '../page/page.component';
 
