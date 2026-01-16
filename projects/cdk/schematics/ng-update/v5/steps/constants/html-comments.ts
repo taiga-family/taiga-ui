@@ -7,4 +7,9 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             '(activeThumbChange) emits "start"/"end" instead of "left"/"right". Adjust your code accordingly',
     },
+    {
+        tag: 'tui-accordion',
+        comment:
+            'tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion',
+    },
 ];

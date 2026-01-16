@@ -1,3 +1,4 @@
+export * from './has-ancestor';
 export * from './remove-inputs';
 export * from './replace-attr-values';
 export * from './replace-attrs';
