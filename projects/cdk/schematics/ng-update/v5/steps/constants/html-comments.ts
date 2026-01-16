@@ -1,5 +1,6 @@
 import {type HtmlComment} from '../../../interfaces';
 import {hasChild} from '../../../utils/templates/has-ancestor';
+
 export const HTML_COMMENTS: HtmlComment[] = [
     {
         tag: 'tui-range',
