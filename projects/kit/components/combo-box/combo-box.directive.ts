@@ -10,7 +10,7 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiStringMatcher} from '@taiga-ui/cdk/types';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsOptionContent,
     type TuiDataListAccessor,
