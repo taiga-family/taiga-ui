@@ -80,10 +80,13 @@ export class TuiInputChipDirective<T>
 
     protected onEnter(): void {
         const value = this.textfield.value().trim();
-        const items: any[] = this.separator() ? value.split(this.separator()) : [value];
-        const valid = items.filter(
-            (item) => item && !this.handlers.disabledItemHandler()(item),
-        );
+        const items = this.separator() ? value.split(this.separator()) : [value];
+
+        const valid = items
+            .map(tuiSanitizeText)
+            .filter(
+                (item) => item && !this.handlers.disabledItemHandler()(item as T),
+            ) as T[];
 
         if (!value || !valid.length) {
             return;
@@ -104,12 +107,16 @@ export class TuiInputChipDirective<T>
     }
 
     protected onPaste(event: ClipboardEvent | DragEvent): void {
+        const input = this.textfield.input();
         const value =
             'dataTransfer' in event
                 ? event.dataTransfer?.getData('text/plain') || ''
                 : tuiGetClipboardDataText(event);
 
-        this.textfield.value.set(tuiSanitizeText(value));
+        if (input) {
+            input.nativeElement.value = value;
+        }
+
         this.onEnter();
     }
 

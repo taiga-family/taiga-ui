@@ -25,5 +25,8 @@ export function tuiSanitizeText(value: string): string {
     const controlCharsRegex = /[\x00-\x1F\x7F-\x9F]/g;
     const zeroWidthCharsRegex = /[\u200B-\u200D\uFEFF]/g;
 
-    return value.replaceAll(controlCharsRegex, '').replaceAll(zeroWidthCharsRegex, '');
+    return value
+        .trim()
+        .replaceAll(controlCharsRegex, '')
+        .replaceAll(zeroWidthCharsRegex, '');
 }

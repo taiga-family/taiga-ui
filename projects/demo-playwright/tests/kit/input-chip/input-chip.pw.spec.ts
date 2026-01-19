@@ -38,6 +38,20 @@ test.describe('InputChip', () => {
 
             await expect.soft(basic).toHaveScreenshot('05-input-chip-trimmed.png');
         });
+
+        test('regex separator works when copying values from spreadsheet', async ({
+            page,
+        }) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const basic = doc.getExample('#basic');
+
+            const chip = new TuiInputChipPO(basic);
+
+            await chip.cleaner.click();
+            await chip.addChip('repo\ttest\tseparator');
+
+            await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator.png');
+        });
     });
 
     test.describe('API', () => {
