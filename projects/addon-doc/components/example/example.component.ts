@@ -121,6 +121,7 @@ export class TuiDocExample implements OnChanges {
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
     public readonly component = input<Promise<Type<unknown>>>();
     public readonly content = input<Record<string, TuiRawLoaderContent>>({});
+    public readonly example = input(true);
 
     public ngOnChanges(): void {
         this.rawLoader$$.next(this.content());
