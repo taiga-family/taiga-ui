@@ -140,7 +140,9 @@ test.describe('InputTime', () => {
                 page,
             }) => {
                 await tuiGoto(page, DemoRoute.InputTime);
-                const example = new TuiDocumentationPagePO(page).getExample('#strict');
+                const example = new TuiDocumentationPagePO(page).getExample(
+                    '#strict-mode',
+                );
 
                 const inputTime = new TuiInputTimePO(example.locator('tui-textfield'));
 

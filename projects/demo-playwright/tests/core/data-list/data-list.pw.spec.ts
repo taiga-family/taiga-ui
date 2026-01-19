@@ -7,7 +7,7 @@ test.describe('DataList', () => {
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
-        const example = documentationPagePO.getExample('#custom');
+        const example = documentationPagePO.getExample('#custom-list');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiSelectLike]').click();

@@ -563,7 +563,9 @@ describe('InputRange', () => {
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputRange);
 
-            example = new TuiDocumentationPagePO(page).getExample('#hidden-minus-sign');
+            example = new TuiDocumentationPagePO(page).getExample(
+                '#using-negative-values-with-hidden-minus-sign',
+            );
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 

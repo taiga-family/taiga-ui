@@ -30,7 +30,7 @@ import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        // https://taiga-ui.dev/components/input-range#hidden-minus-sign
+        // https://taiga-ui.dev/components/input-range#using-negative-values-with-hidden-minus-sign
         tuiInputNumberOptionsProvider({
             minusSign: CHAR_ZERO_WIDTH_SPACE,
             prefix: CHAR_ZERO_WIDTH_SPACE,

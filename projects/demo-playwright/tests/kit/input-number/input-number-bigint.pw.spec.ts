@@ -26,7 +26,7 @@ describe('InputNumber | BigInt', () => {
                 await tuiGoto(page, DemoRoute.InputNumber);
 
                 example = new TuiDocumentationPagePO(page).getExample(
-                    '#bigint-type-control-value',
+                    '#big-int-as-form-control-value',
                 );
                 inputNumber = new InputNumberPO(
                     example.locator('tui-textfield:has([tuiInputNumber])'),
@@ -139,7 +139,7 @@ describe('InputNumber | BigInt', () => {
                 await tuiGoto(page, DemoRoute.InputNumber);
 
                 example = new TuiDocumentationPagePO(page).getExample(
-                    '#large-int-decimal-parts',
+                    '#large-integer-+-large-decimal-parts',
                 );
                 inputNumber = new InputNumberPO(
                     example.locator('tui-textfield:has([tuiInputNumber])'),

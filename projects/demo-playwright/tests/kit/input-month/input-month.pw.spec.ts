@@ -132,7 +132,9 @@ describe('InputMonth', () => {
 
                 beforeEach(async ({page}) => {
                     await tuiGoto(page, DemoRoute.InputMonth);
-                    example = new TuiDocumentationPagePO(page).getExample('#native');
+                    example = new TuiDocumentationPagePO(page).getExample(
+                        '#native-picker',
+                    );
                     inputMonth = new TuiInputMonthPO(
                         example.locator('tui-textfield:has([tuiInputMonth])'),
                     );
