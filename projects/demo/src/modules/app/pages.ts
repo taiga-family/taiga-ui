@@ -208,20 +208,8 @@ export const pages: DocRoutePages = [
     {
         section: 'Documentation',
         title: 'Routable Dialog',
-        subPages: [
-            {
-                section: 'Documentation',
-                title: 'Eager',
-                keywords: 'dialog, modal, navigation, route, eager, routable',
-                route: DemoRoute.DialogRoutable,
-            },
-            {
-                section: 'Documentation',
-                title: 'Lazy',
-                keywords: 'dialog, modal, navigation, route, lazy, routable',
-                route: DemoRoute.DialogLazyRoutable,
-            },
-        ],
+        keywords: 'dialog, modal, navigation, route, eager, lazy, routable',
+        route: DemoRoute.DialogRoutable,
     },
     // Components
     {

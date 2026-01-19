@@ -5,9 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
+    selector: 'tui-eager-example',
     imports: [RouterLink, RouterOutlet, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export default class TuiEagerExample1 {}
+export default class Example2 {}

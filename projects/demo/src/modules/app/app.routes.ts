@@ -69,14 +69,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.DialogRoutable,
         title: 'Routable',
-        loadComponent: async () => import('../customization/routable/eager'),
-        loadChildren: async () => import('../customization/routable/eager/routes'),
-    }),
-    route({
-        path: DemoRoute.DialogLazyRoutable,
-        title: 'LazyRoutable',
-        loadComponent: async () => import('../customization/routable/lazy'),
-        loadChildren: async () => import('../customization/routable/lazy/routes'),
+        loadChildren: async () => import('../customization/routable/routes'),
     }),
     route({
         path: DemoRoute.Portals,
