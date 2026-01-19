@@ -31,6 +31,12 @@ const serverConfig = mergeApplicationConfig(config, {
                             'Support_palette',
                             'Setup',
                         ]);
+                    case DemoRoute.DialogRoutable:
+                        return withTabs(path, [
+                            'path/to/lazy',
+                            'path/to/eager',
+                            'path/to/named-outlet',
+                        ]);
                     case DemoRoute.I18N:
                         return withTabs(path, ['Dynamic_loader']);
                     case DemoRoute.Surface:
