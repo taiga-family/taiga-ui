@@ -27,7 +27,6 @@ export const TUI_USED_ICONS = [
     '@tui.copy',
     '@tui.check',
     '@tui.link',
-    '@tui.external-link',
     '@tui.languages',
     '@tui.shrink',
     '@tui.expand',
