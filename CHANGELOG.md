@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.67.0](https://github.com/taiga-family/taiga-ui/compare/v4.66.0...v4.67.0) (2026-01-19)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `DocDocumentation` throws `NG0500: During hydration expected <tr> but found <tbody>`
+  ([#12933](https://github.com/taiga-family/taiga-ui/issues/12933))
+  ([2b36d77](https://github.com/taiga-family/taiga-ui/commit/2b36d773441ed8097642de06f6ff74aa66ad2db0))
+- **cdk:** downgrade parse5 ([#12963](https://github.com/taiga-family/taiga-ui/issues/12963))
+  ([2792bf2](https://github.com/taiga-family/taiga-ui/commit/2792bf2fbcd60de60c51b81c5c38ff2aa00797f7))
+- **cdk:** migration fails with `JavaScript heap out of memory` because of `allure-results` directory
+  ([#12932](https://github.com/taiga-family/taiga-ui/issues/12932))
+  ([683ca3f](https://github.com/taiga-family/taiga-ui/commit/683ca3fb3ff3014cd3fabfc17c4c8d1de967d6bf))
+- **kit:** `InputChip` make chip hoverable in readonly mode
+  ([#12983](https://github.com/taiga-family/taiga-ui/issues/12983))
+  ([61fc246](https://github.com/taiga-family/taiga-ui/commit/61fc246dda50a0c5a12b1220106a084addeea454))
+- **kit:** `TuiTransitioned` matches multiple times ([#12920](https://github.com/taiga-family/taiga-ui/issues/12920))
+  ([6ef1785](https://github.com/taiga-family/taiga-ui/commit/6ef17859c25213620d419171d2838ae3e0b9b251))
+- **kit:** added zero blur padding for InputDateTime ([#12945](https://github.com/taiga-family/taiga-ui/issues/12945))
+  ([7087652](https://github.com/taiga-family/taiga-ui/commit/70876525d9321d053f8cd58cb8b98d81d312ce26))
+- **kit:** do not use `tuiFade` for sheet dialog ([#12994](https://github.com/taiga-family/taiga-ui/issues/12994))
+  ([90fec63](https://github.com/taiga-family/taiga-ui/commit/90fec639426755045e0d65299826a166ddfb9585))
+- **kit:** resolve `Preview` zoom hint bug ([#12947](https://github.com/taiga-family/taiga-ui/issues/12947))
+  ([fb3a45e](https://github.com/taiga-family/taiga-ui/commit/fb3a45e52a43034b70c4f182a2ef2e1757261ae0))
+
 ## [4.66.0](https://github.com/taiga-family/taiga-ui/compare/v4.65.0...v4.66.0) (2025-12-19)
 
 ### 🚀 Features
