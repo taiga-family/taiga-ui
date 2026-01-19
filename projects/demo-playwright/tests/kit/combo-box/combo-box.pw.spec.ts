@@ -36,7 +36,7 @@ describe('ComboBox', () => {
                 .soft(option)
                 .toHaveScreenshot('01-combobox-option-no-checkmark.png');
 
-            await expect(example).toContainText('"testValue": null');
+            await expect(example).toContainText('"value": null');
         });
 
         test('Automatically selects not disabled option by typing its name', async ({
@@ -64,7 +64,7 @@ describe('ComboBox', () => {
             await comboBox.textfield.fill('aUsTri');
 
             await expect(comboBox.textfield).toHaveValue('aUsTri');
-            await expect(example).toContainText('"testValue": null');
+            await expect(example).toContainText('"value": null');
 
             await comboBox.textfield.pressSequentially('a');
 
@@ -93,7 +93,7 @@ describe('ComboBox', () => {
                 'austr',
             );
 
-            await expect(example).toContainText('"testValue": null');
+            await expect(example).toContainText('"value": null');
 
             await comboBox.textfield.pressSequentially('i');
 
@@ -120,7 +120,7 @@ describe('ComboBox', () => {
             await comboBox.textfield.blur();
 
             await expect(comboBox.textfield).toHaveValue('');
-            await expect(example).toContainText('"testValue": null');
+            await expect(example).toContainText('"value": null');
         });
 
         test('does not clear incomplete textfield value (not matched by any option) on blur for [strict]=false', async ({
@@ -136,7 +136,7 @@ describe('ComboBox', () => {
             await comboBox.textfield.blur();
 
             await expect(comboBox.textfield).toHaveValue('Austri');
-            await expect(example).toContainText('"testValue": "Austri"');
+            await expect(example).toContainText('"value": "Austri"');
         });
 
         test('set `null` on Backspace for matched value', async ({page}) => {
@@ -153,7 +153,7 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.press('Backspace');
             await expect(comboBox.textfield).toHaveValue('Austri');
-            await expect(example).toContainText('"testValue": null');
+            await expect(example).toContainText('"value": null');
         });
     });
 

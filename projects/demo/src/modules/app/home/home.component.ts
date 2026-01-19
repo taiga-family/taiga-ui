@@ -3,10 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
 import {TuiTabs} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
+import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
     selector: 'demo-home',
-    imports: [TuiDemo, TuiTabs],
+    imports: [TuiDemo, TuiTabs, TuiHeader, TuiTitle],
     templateUrl: './home.template.html',
     styleUrl: './home.style.less',
     encapsulation,
@@ -14,9 +16,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 })
 export class Home {
     protected readonly angularJsonStyles = import('./examples/angular-json-styles.md');
-
     protected readonly projectJsonStyles = import('./examples/project-json-styles.md');
-
     protected readonly appTemplate = import('./examples/app-template.md');
     protected readonly assets = import('./examples/assets.md');
     protected readonly nxAssets = import('./examples/nx-assets.md');

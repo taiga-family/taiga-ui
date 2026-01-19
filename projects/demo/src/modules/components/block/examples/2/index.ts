@@ -13,5 +13,5 @@ import {TuiBlock, TuiFade, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({testValue: new FormControl('orange')});
+    protected readonly form = new FormGroup({value: new FormControl('orange')});
 }

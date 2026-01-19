@@ -12,7 +12,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
+    protected form = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),
         testValue3: new FormControl(false),

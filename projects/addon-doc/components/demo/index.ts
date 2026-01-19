@@ -113,7 +113,7 @@ export class TuiDocDemo implements AfterViewInit {
         .pipe(skip(1), takeUntilDestroyed())
         .subscribe((mode) => this.onModeChange(mode));
 
-    protected testForm?: FormGroup;
+    protected form?: FormGroup;
 
     protected readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
@@ -207,7 +207,7 @@ export class TuiDocDemo implements AfterViewInit {
         const control = this.control();
 
         if (control) {
-            this.testForm = new FormGroup({value: control}, {updateOn: this.updateOn});
+            this.form = new FormGroup({value: control}, {updateOn: this.updateOn});
         }
     }
 

@@ -31,10 +31,10 @@
             #content
             id="demo-content"
         >
-            @if (testForm) {
+            @if (form) {
                 <form
                     id="tui-demo-form"
-                    [formGroup]="testForm"
+                    [formGroup]="form"
                 >
                     <ng-container [ngTemplateOutlet]="template() || null" />
                 </form>
@@ -50,10 +50,10 @@
         <tui-icon icon="@tui.grip-vertical" />
     </div>
 </div>
-@if (testForm) {
+@if (form) {
     <tui-expand [expanded]="expanded">
         <ng-template tuiItem>
-            <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
+            <pre class="t-value">Form data: {{ form.value | json }}</pre>
         </ng-template>
     </tui-expand>
     <div class="t-footer">

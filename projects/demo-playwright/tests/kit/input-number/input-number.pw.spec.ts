@@ -579,23 +579,23 @@ describe('InputNumber', () => {
                 describe('form control always contains only number which IS divisible by quantum value', () => {
                     test('4 => 0', async () => {
                         await inputNumber.textfield.fill('4');
-                        await expect(example).toContainText('"testValue": 0');
+                        await expect(example).toContainText('"value": 0');
                         await inputNumber.textfield.blur();
-                        await expect(example).toContainText('"testValue": 0');
+                        await expect(example).toContainText('"value": 0');
                     });
 
                     test('5 => 10', async () => {
                         await inputNumber.textfield.fill('5');
-                        await expect(example).toContainText('"testValue": 10');
+                        await expect(example).toContainText('"value": 10');
                         await inputNumber.textfield.blur();
-                        await expect(example).toContainText('"testValue": 10');
+                        await expect(example).toContainText('"value": 10');
                     });
 
                     test('77 => 80', async () => {
                         await inputNumber.textfield.fill('77');
-                        await expect(example).toContainText('"testValue": 80');
+                        await expect(example).toContainText('"value": 80');
                         await inputNumber.textfield.blur();
-                        await expect(example).toContainText('"testValue": 80');
+                        await expect(example).toContainText('"value": 80');
                     });
                 });
             });

@@ -86,19 +86,19 @@ test.describe('InputPhone', () => {
                 await inputPhone.textfield.focus();
 
                 await expect(inputPhone.textfield).toHaveValue('+1 ');
-                await expect(example).toContainText('"testValue": ""');
+                await expect(example).toContainText('"value": ""');
             });
 
             test('Click on cleaner => => textfield value is country code & form control is empty', async () => {
                 await inputPhone.textfield.pressSequentially('2345');
 
                 await expect(inputPhone.textfield).toHaveValue('+1 (234) 5');
-                await expect(example).toContainText('"testValue": "+12345"');
+                await expect(example).toContainText('"value": "+12345"');
 
                 await inputPhone.cleaner.click();
 
                 await expect(inputPhone.textfield).toHaveValue('+1 ');
-                await expect(example).toContainText('"testValue": ""');
+                await expect(example).toContainText('"value": ""');
             });
         });
     });

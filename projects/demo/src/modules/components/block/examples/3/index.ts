@@ -22,7 +22,7 @@ import {TuiAvatar, TuiBlock, TuiCheckbox, TuiSwitch, TuiTooltip} from '@taiga-ui
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
+    protected readonly form = new FormGroup({
         testValue1: new FormControl(false),
         testValue2: new FormControl(false),
         testValue3: new FormControl(false),

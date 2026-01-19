@@ -11,5 +11,5 @@ import {TuiInput} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({testValue: new FormControl('Input value')});
+    protected form = new FormGroup({value: new FormControl('Input value')});
 }

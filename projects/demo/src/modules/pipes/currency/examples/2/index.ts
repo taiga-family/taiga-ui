@@ -13,5 +13,5 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({testValue: new FormControl(100)});
+    protected readonly form = new FormGroup({value: new FormControl(100)});
 }
