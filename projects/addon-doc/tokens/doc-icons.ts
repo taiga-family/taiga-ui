@@ -15,16 +15,9 @@ export interface TuiDocIcons {
     /**
      * TODO: drop optional in v5
      */
-    readonly externalLink?: string;
-    /**
-     * TODO: drop optional in v5
-     */
     readonly shrink?: string;
     readonly expand?: string;
-    /**
-     * TODO: drop optional in v5
-     */
-    readonly ltr?: {
+    readonly ltr: {
         readonly preview: string;
         readonly direction: string;
     };
@@ -39,7 +32,6 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     copy: '@tui.copy',
     check: '@tui.check',
     link: '@tui.link',
-    externalLink: '@tui.external-link',
     languages: '@tui.languages',
     shrink: '@tui.shrink',
     expand: '@tui.expand',

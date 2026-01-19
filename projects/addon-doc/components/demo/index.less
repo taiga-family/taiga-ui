@@ -8,43 +8,35 @@
     position: relative;
     display: block;
     min-inline-size: 100%;
-    margin: 1.5rem 0;
-    pointer-events: none;
+    margin: 0 0 1.5rem;
     font: var(--tui-font-body-s);
+    color: var(--tui-text-primary);
+    background: var(--tui-background-base-alt);
+    border-radius: var(--tui-radius-m);
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .t-settings {
-    position: absolute;
-    bottom: ~'calc(100% + 0.75rem)';
     display: flex;
     gap: 1rem;
     align-items: center;
     justify-content: flex-end;
-    pointer-events: none;
-    inline-size: 100%;
-
-    & > * {
-        pointer-events: auto;
-    }
-}
-
-.t-label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    padding: 0.5rem 0.75rem 0.25rem;
 }
 
 .t-wrapper {
     display: flex;
-    box-shadow: var(--tui-shadow-medium);
-    border: 1px solid var(--tui-border-normal);
-    border-radius: var(--tui-radius-m);
     max-inline-size: 100%;
     min-block-size: 6rem;
     inline-size: 100%;
     min-inline-size: 10rem;
     color: var(--tui-text-primary);
     background-color: var(--tui-background-base);
+    padding: 0.25rem;
+    border-radius: var(--tui-radius-m);
+    box-sizing: border-box;
+    box-shadow: inset 0 0 0 0.25rem var(--tui-background-base-alt);
     overflow: hidden;
     pointer-events: auto;
 
@@ -79,66 +71,40 @@
     }
 }
 
-.t-form {
+.t-footer {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0 0.25rem 0.25rem;
 }
 
-.t-input-wrapper {
-    inline-size: 100%;
-    margin-block-end: 0.5rem;
-}
-
-.t-expand {
-    inline-size: 100%;
+.t-select {
+    inline-size: 6rem;
+    margin-inline-start: auto;
 }
 
 .t-value {
     flex: 1;
-    background: var(--tui-background-neutral-1);
-    padding: 0.75rem;
-    border-radius: 0.25rem;
-}
-
-.t-mode {
-    inline-size: 12.5rem;
-}
-
-.t-select {
-    max-inline-size: 15rem;
+    background: var(--tui-background-base);
+    border-radius: var(--tui-radius-m);
+    box-shadow: inset 0 -0.25rem 0 0.25rem var(--tui-background-base-alt);
+    padding: 0.5rem 0.75rem 1rem;
+    margin: 0;
 }
 
 .t-resizer {
+    .transition(color);
+
     position: relative;
     display: flex;
-    box-shadow: var(--tui-shadow-medium);
-    inline-size: 3.5rem;
     min-block-size: inherit;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border-inline-start: 1px solid var(--tui-border-normal);
-    outline: none;
-    background: var(--tui-background-base);
-    color: var(--tui-text-primary);
+    color: var(--tui-text-tertiary);
 
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0.75rem;
-        left: 50%;
-        bottom: calc(50% + 1rem);
-        inline-size: 1px;
-        background: var(--tui-border-normal);
-        box-shadow: -0.25rem 0 var(--tui-border-normal);
-        transform: translate3d(0, 0, 0);
-    }
-
-    &::after {
-        bottom: 0.75rem;
-        top: calc(50% + 1rem);
+    &:hover,
+    &:active {
+        color: var(--tui-text-secondary);
     }
 
     @media @tui-mobile {
@@ -146,38 +112,12 @@
     }
 }
 
-.t-resizer-text {
-    position: relative;
-    z-index: 1;
-    font: var(--tui-font-body-s);
-    padding: 0.75rem;
-    background: var(--tui-background-base);
-
-    .wrapper_light & {
-        background: @color-dark-resizer;
-    }
-}
-
-.t-group,
-.t-checkbox {
-    display: flex;
-    align-items: center;
-    margin-inline-start: 0.75rem;
-}
-
-.t-button,
-.t-form-controls {
-    margin-block-start: 0.75rem;
-}
-
-@supports (position: sticky) {
-    @media screen and (min-height: 37.5rem) {
-        :host {
-            &._sticky {
-                position: sticky;
-                top: 4.625rem;
-                z-index: 2;
-            }
+@media screen and (min-height: 37.5rem) {
+    :host {
+        &._sticky {
+            position: sticky;
+            top: 4.625rem;
+            z-index: 2;
         }
     }
 }

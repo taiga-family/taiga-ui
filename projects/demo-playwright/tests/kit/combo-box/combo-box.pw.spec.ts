@@ -166,7 +166,7 @@ describe('ComboBox', () => {
                 await tuiGoto(page, DemoRoute.ComboBox);
                 const documentationPage = new TuiDocumentationPagePO(page);
 
-                example = documentationPage.getExample('#form-control-output');
+                example = documentationPage.getExample('#choose-form-control-output');
                 comboBox = new TuiComboBoxPO(
                     example.locator('tui-textfield:has([tuiComboBox])'),
                 );

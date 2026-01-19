@@ -10,25 +10,8 @@ import {InjectionToken, signal} from '@angular/core';
  */
 export const TUI_DOC_DEMO_TEXTS = new InjectionToken<[string, string, string]>(
     ngDevMode ? 'TUI_DOC_DEMO_TEXTS' : '',
-    {factory: () => ['Dark mode', 'Background', 'Form value']},
+    {factory: () => ['Dark mode', 'Background', 'Value']},
 );
-
-/**
- * tui-doc-documentation i18n texts
- * Works with a tuple
- * [
- * @string word 'argument',
- * @string word 'type',
- * @string 'name and description',
- * @string word 'value'
- * @string @deprecated message for tooltip about ng-polymorpheus
- * ]
- */
-export const TUI_DOC_DOCUMENTATION_TEXTS = new InjectionToken<
-    [argument: string, type: string, name: string, value: string]
->(ngDevMode ? 'TUI_DOC_DOCUMENTATION_TEXTS' : '', {
-    factory: () => ['Argument', 'Type', 'Name and description', 'Value'],
-});
 
 /**
  * tui-doc-example i18n texts

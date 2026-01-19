@@ -1,30 +1,29 @@
 <td class="t-td">
     <code
+        tuiHintDirection="top"
         class="t-name"
         [class.t-name_banana]="isBananaBox()"
         [class.t-name_input]="isInput()"
         [class.t-name_output]="isOutput()"
+        [tuiHint]="hint"
     >
         {{ name() }}
     </code>
-    <ng-content />
+    <ng-template #hint>
+        <ng-content>{{ name() }}</ng-content>
+    </ng-template>
 </td>
 <td class="t-td">
     <code class="t-type">
         @for (item of type() | tuiTypeReference; track item) {
             @if (item.reference) {
                 <a
+                    rel="noreferrer"
                     target="_blank"
                     class="t-reference"
                     [attr.href]="item.reference"
                 >
                     {{ item.type }}
-                    @if (icons.externalLink) {
-                        <tui-icon
-                            [icon]="icons.externalLink"
-                            [style.font-size.rem]="1"
-                        />
-                    }
                 </a>
             } @else {
                 {{ item.type }}
@@ -35,11 +34,13 @@
         }
     </code>
 </td>
-<td class="t-td">
+<td
+    tuiTextfieldSize="m"
+    class="t-td"
+>
     @if (items().length) {
         <tui-textfield
             tuiChevron
-            tuiTextfieldSize="m"
             class="t-input"
             [content]="content"
             [tuiTextfieldCleaner]="hasCleaner()"
@@ -68,10 +69,7 @@
             }
 
             @if (type() === 'string') {
-                <tui-textfield
-                    tuiTextfieldSize="m"
-                    class="t-input"
-                >
+                <tui-textfield class="t-input">
                     <input
                         tuiInput
                         [id]="name()"
@@ -82,7 +80,7 @@
             }
 
             @if (type() === 'number' || type() === 'bigint' || type() === 'number | bigint') {
-                <tui-textfield tuiTextfieldSize="m">
+                <tui-textfield class="t-input">
                     <input
                         tuiInputNumber
                         [id]="name()"

@@ -52,6 +52,9 @@
                 }
 
                 @if (package() || path() || type()) {
+                    @if (supportLanguage.has(header())) {
+                        <tui-doc-language-switcher />
+                    }
                     <tui-doc-source-code
                         class="t-source-code"
                         [header]="header()"
@@ -59,9 +62,6 @@
                         [path]="path()"
                         [type]="type()"
                     />
-                    @if (supportLanguage.has(header())) {
-                        <tui-doc-language-switcher />
-                    }
                 }
             </p>
         </hgroup>

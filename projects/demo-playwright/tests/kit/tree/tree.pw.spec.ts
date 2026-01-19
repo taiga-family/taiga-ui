@@ -6,7 +6,9 @@ test.describe('Tree', () => {
     test('Programmatic control', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tree);
 
-        const example = new TuiDocumentationPagePO(page).getExample('#programmatic');
+        const example = new TuiDocumentationPagePO(page).getExample(
+            '#programmatic-control',
+        );
 
         await example.locator('button.programmatic').nth(0).click();
         await example.locator('button.programmatic').nth(1).click();

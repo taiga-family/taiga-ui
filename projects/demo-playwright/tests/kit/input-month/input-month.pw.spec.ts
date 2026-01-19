@@ -202,7 +202,7 @@ describe('InputMonth', () => {
 
         describe('Month range', () => {
             beforeEach(({page}) => {
-                example = new TuiDocumentationPagePO(page).getExample('#range');
+                example = new TuiDocumentationPagePO(page).getExample('#range-mode');
                 inputMonth = new TuiInputMonthPO(
                     example.locator('tui-textfield:has([tuiInputMonthRange])'),
                 );

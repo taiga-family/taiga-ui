@@ -139,7 +139,7 @@ describe('InputNumber | BigInt', () => {
                 await tuiGoto(page, DemoRoute.InputNumber);
 
                 example = new TuiDocumentationPagePO(page).getExample(
-                    '#large-integer-+-large-decimal-parts',
+                    '#large-integer-and-large-decimal-parts',
                 );
                 inputNumber = new InputNumberPO(
                     example.locator('tui-textfield:has([tuiInputNumber])'),

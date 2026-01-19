@@ -33,8 +33,8 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
@@ -65,7 +65,7 @@ export class TuiJsonPipe implements PipeTransform {
         TuiChevron,
         TuiDataListWrapper,
         TuiExpand,
-        TuiGroup,
+        TuiIcon,
         TuiItem,
         TuiJsonPipe,
         TuiResizable,
@@ -79,6 +79,7 @@ export class TuiJsonPipe implements PipeTransform {
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._sticky]': 'sticky()',
+        '[attr.tuiTheme]': 'theme()',
         '(window:resize)': 'onResize()',
         '(document:mouseup.zoneless)': 'onMouseUp()',
     },
@@ -91,9 +92,6 @@ export class TuiDocDemo implements AfterViewInit {
 
     private readonly content: Signal<ElementRef<HTMLElement>> =
         viewChild.required<ElementRef<HTMLElement>>('content');
-
-    private readonly resizer: Signal<ElementRef<HTMLElement>> =
-        viewChild.required<ElementRef<HTMLElement>>('resizer');
 
     private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);
@@ -128,7 +126,6 @@ export class TuiDocDemo implements AfterViewInit {
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     public readonly control = input<AbstractControl | null>(null);
-
     public readonly sticky = input(true);
 
     public ngAfterViewInit(): void {
@@ -168,7 +165,7 @@ export class TuiDocDemo implements AfterViewInit {
     }
 
     protected updateWidth(width = NaN): void {
-        if (!this.resizer() || !this.resizable() || !this.content()) {
+        if (!this.resizable() || !this.content()) {
             return;
         }
 
@@ -177,7 +174,6 @@ export class TuiDocDemo implements AfterViewInit {
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
         const validated = safe < total ? clamped : NaN;
 
-        this.resizer().nativeElement.textContent = String(clamped || '-');
         this.resizable().nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;
     }
@@ -211,10 +207,7 @@ export class TuiDocDemo implements AfterViewInit {
         const control = this.control();
 
         if (control) {
-            this.testForm = new FormGroup(
-                {testValue: control},
-                {updateOn: this.updateOn},
-            );
+            this.testForm = new FormGroup({value: control}, {updateOn: this.updateOn});
         }
     }
 
