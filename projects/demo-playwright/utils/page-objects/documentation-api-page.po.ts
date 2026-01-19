@@ -7,9 +7,7 @@ import {waitStableState} from '../wait-stable-state';
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
     public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
-    public readonly apiPageExample: Locator = this.page.locator(
-        'tui-doc-demo > .t-wrapper',
-    );
+    public readonly apiPageExample: Locator = this.page.locator('tui-doc-demo > .t-demo');
 
     constructor(protected readonly page: Page) {}
 
