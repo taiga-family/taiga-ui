@@ -1,6 +1,6 @@
-<header tuiHeader="h6">
-    <hgroup tuiTitle>
-        @if (heading()) {
+@if (heading()) {
+    <header tuiHeader="h6">
+        <hgroup tuiTitle>
             <h2>
                 <a
                     appearance=""
@@ -23,10 +23,9 @@
                     </ng-container>
                 </p>
             }
-        }
-    </hgroup>
-</header>
-
+        </hgroup>
+    </header>
+}
 <div
     class="t-example"
     [(tuiFullscreen)]="fullscreen"

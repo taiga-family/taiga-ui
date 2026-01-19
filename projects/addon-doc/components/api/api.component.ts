@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 
 @Component({
     selector: 'table[tuiDocAPI]',
@@ -6,5 +7,6 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     styleUrl: './api.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiHintOptionsProvider({appearance: 'floating'})],
 })
 export class TuiDocAPI {}

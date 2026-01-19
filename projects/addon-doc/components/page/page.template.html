@@ -73,9 +73,7 @@
 <ng-content />
 @for (tab of tabConnectors(); track tab) {
     @if ($index === activeItemIndex()) {
-        @if (!$index) {
-            <tui-doc-toc />
-        }
+        <tui-doc-toc />
         <ng-container [ngTemplateOutlet]="tab.template" />
     }
 }

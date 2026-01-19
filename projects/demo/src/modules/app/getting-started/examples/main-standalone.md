@@ -7,5 +7,5 @@ bootstrapApplication(App, {
     provideTaiga(),
     //...
   ],
-}).catch((err) => console.error(err));
+}).catch(console.error);
 ```

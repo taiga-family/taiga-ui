@@ -41,13 +41,16 @@
 
 .t-example {
     position: relative;
-    margin-block-start: 1.25rem;
     border: 0.25rem solid var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
     overflow: hidden;
 
-    @media @tui-mobile {
-        margin-block-start: 0.75rem;
+    &:not(:first-child) {
+        margin-block-start: 1.25rem;
+
+        @media @tui-mobile {
+            margin-block-start: 0.75rem;
+        }
     }
 }
 
