@@ -18120,7 +18120,7 @@ export class Example {
 ```html
 &lt;tui-textfield multi [rows]=&quot;1&quot; &gt;
 &lt;label tuiLabel&gt;Plain strings&lt;/label&gt;
-&lt;input placeholder=&quot;Placeholder&quot; tuiInputChip [(ngModel)]=&quot;value&quot; /&gt;
+&lt;input placeholder=&quot;Placeholder&quot; tuiInputChip [separator]=&quot;separator&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;/tui-textfield&gt;
 &lt;tui-textfield multi&gt;
 &lt;label tuiLabel&gt;Growing height&lt;/label&gt;
@@ -18146,6 +18146,7 @@ import {TuiInputChip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected value: string[] = inject(&#039;Pythons&#039; as any);
+    public readonly separator = /[\s,;]/;
 }
 ```
 
