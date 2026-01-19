@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
-import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
     selector: 'demo-home',
-    imports: [TuiDemo, TuiTabs, TuiHeader, TuiTitle],
+    imports: [TuiDemo, TuiHeader, TuiTabs, TuiTitle],
     templateUrl: './home.template.html',
     styleUrl: './home.style.less',
     encapsulation,
