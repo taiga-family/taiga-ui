@@ -238,11 +238,6 @@ export const ROUTES: Routes = [
         title: 'Search',
     }),
     route({
-        path: DemoRoute.InputSearch,
-        loadComponent: async () => import('../components/input-search'),
-        title: 'InputSearch',
-    }),
-    route({
         path: DemoRoute.Breadcrumbs,
         title: 'Breadcrumbs',
         loadComponent: async () => import('../components/breadcrumbs'),

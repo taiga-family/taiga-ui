@@ -24,7 +24,7 @@ test.describe('InputDate and mobile user agent', () => {
         );
 
         // eslint-disable-next-line playwright/no-force-option
-        await inputDate.textfield.first().click({position: {x: 260, y: 20}, force: true});
+        await inputDate.textfield.first().click({position: {x: 300, y: 20}, force: true});
 
         await page.waitForSelector('tui-sheet-dialog', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
@@ -48,7 +48,7 @@ test.describe('InputDate and mobile user agent', () => {
         );
 
         // eslint-disable-next-line playwright/no-force-option
-        await inputDate.textfield.first().click({position: {x: 260, y: 20}, force: true});
+        await inputDate.textfield.first().click({position: {x: 300, y: 20}, force: true});
 
         await page.waitForSelector('tui-mobile-calendar-sheet', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky

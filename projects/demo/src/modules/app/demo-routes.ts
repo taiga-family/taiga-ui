@@ -43,7 +43,6 @@ export const DemoRoute = {
     BottomSheet: '/components/bottom-sheet',
     Navigation: '/components/navigation',
     Search: '/components/search',
-    InputSearch: '/layout/input-search',
     Breadcrumbs: '/navigation/breadcrumbs',
     Button: '/components/button',
     ButtonX: '/components/button-x',

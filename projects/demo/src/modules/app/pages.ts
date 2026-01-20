@@ -205,12 +205,6 @@ export const pages: DocRoutePages = [
             },
         ],
     },
-    {
-        section: 'Documentation',
-        title: 'Routable Dialog',
-        keywords: 'dialog, modal, navigation, route, eager, lazy, routable',
-        route: DemoRoute.DialogRoutable,
-    },
     // Components
     {
         section: 'Components',
@@ -302,14 +296,18 @@ export const pages: DocRoutePages = [
                 title: 'ButtonX',
                 keywords: 'кнопка, button, close, закрыть',
                 route: DemoRoute.ButtonX,
-                meta: {name: 'tui-button-close'},
+                meta: {
+                    name: 'tui-button-close',
+                },
             },
             {
                 section: 'Components',
                 title: 'ButtonGroup',
                 keywords: 'кнопка, button, group, группа',
                 route: DemoRoute.ButtonGroup,
-                meta: {name: 'tui-button-group-card'},
+                meta: {
+                    name: 'tui-button-group-card',
+                },
             },
             {
                 section: 'Components',
@@ -352,7 +350,9 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {figmaVersion: '1.8.0'},
+        meta: {
+            figmaVersion: '1.8.0',
+        },
     },
     {
         section: 'Components',
@@ -389,10 +389,47 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Dialog',
-        keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
-        route: DemoRoute.Dialog,
-        meta: {},
+        title: 'Modals',
+        subPages: [
+            {
+                section: 'Components',
+                title: 'Dialog',
+                keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
+                route: DemoRoute.Dialog,
+                meta: {},
+            },
+            {
+                section: 'Documentation',
+                title: 'Dialog routable',
+                keywords: 'dialog, modal, navigation, route, eager, lazy, routable',
+                route: DemoRoute.DialogRoutable,
+            },
+            {
+                section: 'Components',
+                title: 'SheetDialog',
+                keywords: 'mobile, dialog, popup, map, details, шторка',
+                route: DemoRoute.SheetDialog,
+                meta: {
+                    name: 'tui-bottomsheet',
+                },
+            },
+            {
+                section: 'Components',
+                title: 'NotificationMiddle',
+                keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
+                route: DemoRoute.NotificationMiddle,
+                meta: {
+                    figmaVersion: '1.1.0',
+                },
+            },
+            {
+                section: 'Components',
+                title: 'PdfViewer',
+                keywords:
+                    'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
+                route: DemoRoute.PdfViewer,
+            },
+        ],
     },
     {
         section: 'Components',
@@ -516,14 +553,18 @@ export const pages: DocRoutePages = [
                 title: 'Tooltip',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help',
                 route: DemoRoute.Tooltip,
-                meta: {name: 'tui-button-tooltip'},
+                meta: {
+                    name: 'tui-button-tooltip',
+                },
             },
             {
                 section: 'Tools',
                 title: 'Hint',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help, хинт',
                 route: DemoRoute.Hint,
-                meta: {name: 'tui-tooltip'},
+                meta: {
+                    name: 'tui-tooltip',
+                },
             },
             {
                 section: 'Tools',
@@ -693,7 +734,9 @@ export const pages: DocRoutePages = [
                 keywords:
                     'form, textfield, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
                 route: DemoRoute.Input,
-                meta: {name: 'tui-textfield'},
+                meta: {
+                    name: 'tui-textfield',
+                },
             },
             {
                 section: 'Components',
@@ -729,7 +772,9 @@ export const pages: DocRoutePages = [
         title: 'Like',
         keywords: 'like, лайк, эмодзи, смайлик, стикер',
         route: DemoRoute.Like,
-        meta: {name: 'tui-button-like'},
+        meta: {
+            name: 'tui-button-like',
+        },
     },
     {
         section: 'Components',
@@ -742,7 +787,12 @@ export const pages: DocRoutePages = [
         title: 'Link',
         keywords: 'href, anchor, ссылка, псевдо, pseudo, link',
         route: DemoRoute.Link,
-        meta: [{name: 'tui-button-link'}, {name: 'tui-link', figmaVersion: '1.0.1'}],
+        meta: [
+            {
+                name: 'tui-button-link',
+            },
+            {name: 'tui-link', figmaVersion: '1.0.1'},
+        ],
     },
     {
         section: 'Components',
@@ -750,7 +800,9 @@ export const pages: DocRoutePages = [
         keywords:
             'загрузка, крутилка, лоадер, спиннер, спинер, крутится, мутится, spinner, loader',
         route: DemoRoute.Loader,
-        meta: {figmaVersion: '1.0.0'},
+        meta: {
+            figmaVersion: '1.0.0',
+        },
     },
     {
         section: 'Components',
@@ -761,13 +813,6 @@ export const pages: DocRoutePages = [
             name: 'tui-notification-banner',
             figmaVersion: '1.1.1',
         },
-    },
-    {
-        section: 'Components',
-        title: 'NotificationMiddle',
-        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
-        route: DemoRoute.NotificationMiddle,
-        meta: {figmaVersion: '1.1.0'},
     },
     {
         section: 'Components',
@@ -794,12 +839,6 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.PullToRefresh,
             },
         ],
-    },
-    {
-        section: 'Components',
-        title: 'PdfViewer',
-        keywords: 'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
-        route: DemoRoute.PdfViewer,
     },
     {
         section: 'Components',
@@ -862,14 +901,18 @@ export const pages: DocRoutePages = [
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: DemoRoute.Rating,
-        meta: {figmaVersion: '1.1.1'},
+        meta: {
+            figmaVersion: '1.1.1',
+        },
     },
     {
         section: 'Components',
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
-        meta: {name: 'tui-badge-t-client'},
+        meta: {
+            name: 'tui-badge-t-client',
+        },
     },
     {
         section: 'Components',
@@ -882,13 +925,6 @@ export const pages: DocRoutePages = [
         title: 'BottomSheet',
         keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
         route: DemoRoute.BottomSheet,
-    },
-    {
-        section: 'Components',
-        title: 'SheetDialog',
-        keywords: 'mobile, dialog, popup, map, details, шторка',
-        route: DemoRoute.SheetDialog,
-        meta: {name: 'tui-bottomsheet'},
     },
     {
         section: 'Components',
@@ -1036,7 +1072,9 @@ export const pages: DocRoutePages = [
         title: 'ItemGroup',
         keywords: 'item, chip, group, list, tag, тэг, badge',
         route: DemoRoute.ItemGroup,
-        meta: {name: 'tui-chip-group'},
+        meta: {
+            name: 'tui-chip-group',
+        },
     },
     {
         section: 'Components',
@@ -1083,7 +1121,9 @@ export const pages: DocRoutePages = [
         title: 'SwipeActions',
         keywords: 'swipe, action, свайп, card, действие',
         route: DemoRoute.SwipeActions,
-        meta: {version: '1.1.0'},
+        meta: {
+            version: '1.1.0',
+        },
     },
     {
         section: 'Components',
@@ -1101,14 +1141,18 @@ export const pages: DocRoutePages = [
                 title: 'Medium',
                 keywords: 'card, card-medium, medium, block, карточка, блок',
                 route: DemoRoute.CardMedium,
-                meta: {name: 'tui-card-medium'},
+                meta: {
+                    name: 'tui-card-medium',
+                },
             },
             {
                 section: 'Layout',
                 title: 'Large',
                 keywords: 'card, card-large, large, block, карточка, блок',
                 route: DemoRoute.CardLarge,
-                meta: {name: 'tui-card-large'},
+                meta: {
+                    name: 'tui-card-large',
+                },
             },
             {
                 section: 'Layout',
@@ -1120,24 +1164,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Layout',
-        title: 'Navigation',
-        keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
-        route: DemoRoute.Navigation,
-        meta: [
-            {scheme: 'beaver', anchor: 'full', name: 'navigation'},
-            {
-                scheme: 'beaver',
-                anchor: 'subheader-compact',
-                name: 'subheaders',
-                qualifiedName: 'subheader-compact',
-            },
-            {
-                scheme: 'beaver',
-                anchor: 'subheader-object',
-                name: 'subheaders',
-                qualifiedName: 'subheader-object',
-            },
-        ],
+        title: 'AppBar',
+        keywords: 'mobile, ios, android, header, bar, navigation',
+        route: DemoRoute.AppBar,
+        meta: {
+            name: 'tui-appbar',
+            figmaVersion: '1.1.1',
+        },
     },
     {
         section: 'Layout',
@@ -1145,13 +1178,6 @@ export const pages: DocRoutePages = [
         keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
         meta: {scheme: 'beaver', name: 'filters'},
-    },
-    {
-        section: 'Layout',
-        title: 'InputSearch',
-        keywords: 'search, поиск, глобальный, beaver, бивер, finedog',
-        route: DemoRoute.InputSearch,
-        meta: {scheme: 'beaver', name: 'search'},
     },
     // Charts
     {
@@ -1217,13 +1243,24 @@ export const pages: DocRoutePages = [
     // Navigation
     {
         section: 'Navigation',
-        title: 'AppBar',
-        keywords: 'mobile, ios, android, header, bar, navigation',
-        route: DemoRoute.AppBar,
-        meta: {
-            name: 'tui-appbar',
-            figmaVersion: '1.1.1',
-        },
+        title: 'Navigation',
+        keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
+        route: DemoRoute.Navigation,
+        meta: [
+            {scheme: 'beaver', anchor: 'full', name: 'navigation'},
+            {
+                scheme: 'beaver',
+                anchor: 'subheader-compact',
+                name: 'subheaders',
+                qualifiedName: 'subheader-compact',
+            },
+            {
+                scheme: 'beaver',
+                anchor: 'subheader-object',
+                name: 'subheaders',
+                qualifiedName: 'subheader-object',
+            },
+        ],
     },
     {
         section: 'Navigation',
@@ -1429,7 +1466,9 @@ export const pages: DocRoutePages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: DemoRoute.Sensitive,
-                meta: {figmaVersion: '1.1.0'},
+                meta: {
+                    figmaVersion: '1.1.0',
+                },
             },
             {
                 section: 'Tools',
@@ -1437,7 +1476,9 @@ export const pages: DocRoutePages = [
                 keywords:
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: DemoRoute.Skeleton,
-                meta: {figmaVersion: '1.2.0'},
+                meta: {
+                    figmaVersion: '1.2.0',
+                },
             },
         ],
     },

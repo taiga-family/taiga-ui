@@ -60,9 +60,13 @@ export class TuiDocToc implements OnInit {
     }
 
     protected onExample(example: string): void {
+        const toc = this.toc();
+
         this.examples = tuiArrayToggle(this.examples, example);
         this.active =
-            this.toc().find((item) => this.examples.includes(tuiToKebab(item))) || '';
+            toc.find((item) => this.examples.includes(tuiToKebab(item))) ||
+            toc[toc.length - 1] ||
+            '';
     }
 }
 

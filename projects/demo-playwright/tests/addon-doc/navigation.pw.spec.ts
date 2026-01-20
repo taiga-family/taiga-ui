@@ -82,7 +82,7 @@ test.describe('Navigation', () => {
             );
 
             await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual`);
-            await page.locator('a[href$="#root-component"]').click();
+            await page.locator('a[href$="#root-component"]').first().click();
 
             await expect(page.locator('#root-component')).toBeInViewport();
         });
