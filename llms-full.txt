@@ -42822,94 +42822,9 @@ export default class Page {
 ```
 
 ---
-# routable/Routable dialog
+# customization/Routable
 - **Package**: `null`
 - **Type**: null
-
-### Usage Examples
-
-#### Eager loading dialog
-
-**Template:**
-```html
-<button routerLink="path/to/dialog" tuiButton type="button" > Open dialog </button>
-<router-outlet />
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-
-@Component({
-    imports: [RouterLink, RouterOutlet, TuiButton],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class TuiEagerExample1 {}
-```
-
-#### Named outlet
-
-**Template:**
-```html
-<button tuiButton type="button" [routerLink]="[ { outlets: { myOutlet: 'path/to/dialog', }, }, ]" > Open dialog </button>
-<router-outlet name="myOutlet" />
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-
-@Component({
-    imports: [RouterLink, RouterOutlet, TuiButton],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-#### Example 3
-
-**Template:**
-```html
-<ol class="tui-list tui-list_ordered">
-<li class="tui-list__item">
-<p> Add <code>router-outlet</code> to the page template: </p>
-<tui-doc-code filename="my-page.component.html" [code]="html" />
-</li>
-<li class="tui-list__item">
-<p> Use <code>tuiGenerateDialogableRoute</code> inside children property of page router config </p>
-<tui-doc-code filename="my-page.routes.ts" [code]="routes" />
-</li>
-</ol>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDocCode} from '@taiga-ui/addon-doc';
-
-@Component({
-    imports: [TuiDocCode],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class TuiEagerExample3 {
-    protected readonly html = import('../setup/html.md');
-    protected readonly routes = import('../setup/routes.md');
-}
-```
-
 
 ### TypeScript
 
@@ -42918,116 +42833,39 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
+import Example1 from './1';
+import Example2 from './2';
+import Example3 from './3';
+
 @Component({
-    imports: [TuiDemo],
+    imports: [Example1, Example2, Example3, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
     protected readonly example1 = {
-        'page.routes.ts': import('./routes.ts?raw', {with: {loader: 'text'}}),
-        'page.template.html': import('./examples/1/index.html'),
-        'page.ts': import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
-        'dialog.component.ts': import('./examples/1/dialog.component.ts?raw', {
+        HTML: import('./1/index.html'),
+        Typescript: import('./1/index.ts?raw', {with: {loader: 'text'}}),
+        Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
+        Dialog: import('./1/dialog.component.ts?raw', {
             with: {loader: 'text'},
         }),
     };
 
     protected readonly example2 = {
-        'page.routes.ts': import('./routes.ts?raw', {with: {loader: 'text'}}),
-        'page.template.html': import('./examples/2/index.html'),
-        'page.ts': import('./examples/2/index.ts?raw', {with: {loader: 'text'}}),
-        'dialog.component.ts': import('./examples/2/dialog.component.ts?raw', {
+        HTML: import('./2/index.html'),
+        TypeScript: import('./2/index.ts?raw', {with: {loader: 'text'}}),
+        Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
+        Dialog: import('./2/dialog.component.ts?raw', {
             with: {loader: 'text'},
         }),
     };
-}
-```
 
----
-# routable/Lazy routable dialog
-- **Package**: `null`
-- **Type**: null
-
-### Usage Examples
-
-#### Lazy loading dialog
-
-**Template:**
-```html
-<button routerLink="path/to/dialog" tuiButton type="button" > Open dialog </button>
-<router-outlet />
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-
-@Component({
-    imports: [RouterLink, RouterOutlet, TuiButton],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class TuiLazyExample1 {}
-```
-
-#### Example 2
-
-**Template:**
-```html
-<ol class="tui-list tui-list_ordered">
-<li class="tui-list__item">
-<p> Add <code>router-outlet</code> to the page template: </p>
-<tui-doc-code filename="my-page.component.html" [code]="html" />
-</li>
-<li class="tui-list__item">
-<p> Use <code>tuiGenerateDialogableRoute</code> inside children property of page router config </p>
-<tui-doc-code filename="my-page.routes.ts" [code]="routes" />
-</li>
-</ol>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDocCode} from '@taiga-ui/addon-doc';
-
-@Component({
-    imports: [TuiDocCode],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class TuiLazyExample2 {
-    protected readonly html = import('../setup/html.md');
-    protected readonly routes = import('../setup/routes.md');
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected readonly example1 = {
-        'page.routes.ts': import('./routes.ts?raw', {with: {loader: 'text'}}),
-        'page.template.html': import('./examples/1/index.html'),
-        'page.ts': import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
-        'dialog.component.ts': import('./examples/1/dialog.component.ts?raw', {
+    protected readonly example3 = {
+        HTML: import('./3/index.html'),
+        TypeScript: import('./3/index.ts?raw', {with: {loader: 'text'}}),
+        Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
+        Dialog: import('./3/dialog.component.ts?raw', {
             with: {loader: 'text'},
         }),
     };
