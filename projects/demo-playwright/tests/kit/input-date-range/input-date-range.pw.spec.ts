@@ -25,7 +25,7 @@ test.describe('InputDateRange', () => {
         let example!: Locator;
 
         beforeEach(() => {
-            example = documentationPage.apiPageExample;
+            example = documentationPage.demo;
 
             inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),

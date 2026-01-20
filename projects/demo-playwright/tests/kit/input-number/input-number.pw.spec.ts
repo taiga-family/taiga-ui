@@ -15,11 +15,13 @@ const {describe, beforeEach} = test;
 
 describe('InputNumber', () => {
     let example: Locator;
+    let value: Locator;
     let inputNumber: InputNumberPO;
 
     describe('API', () => {
         beforeEach(({page}) => {
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
+            value = new TuiDocumentationApiPagePO(page).value;
             inputNumber = new InputNumberPO(
                 example.locator('tui-textfield:has([tuiInputNumber])'),
             );
@@ -579,23 +581,23 @@ describe('InputNumber', () => {
                 describe('form control always contains only number which IS divisible by quantum value', () => {
                     test('4 => 0', async () => {
                         await inputNumber.textfield.fill('4');
-                        await expect(example).toContainText('"value": 0');
+                        await expect(value).toContainText('"value": 0');
                         await inputNumber.textfield.blur();
-                        await expect(example).toContainText('"value": 0');
+                        await expect(value).toContainText('"value": 0');
                     });
 
                     test('5 => 10', async () => {
                         await inputNumber.textfield.fill('5');
-                        await expect(example).toContainText('"value": 10');
+                        await expect(value).toContainText('"value": 10');
                         await inputNumber.textfield.blur();
-                        await expect(example).toContainText('"value": 10');
+                        await expect(value).toContainText('"value": 10');
                     });
 
                     test('77 => 80', async () => {
                         await inputNumber.textfield.fill('77');
-                        await expect(example).toContainText('"value": 80');
+                        await expect(value).toContainText('"value": 80');
                         await inputNumber.textfield.blur();
-                        await expect(example).toContainText('"value": 80');
+                        await expect(value).toContainText('"value": 80');
                     });
                 });
             });

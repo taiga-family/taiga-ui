@@ -18,19 +18,15 @@ test.describe('MobileCalendar', () => {
 
     test('check disabled state', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.MobileCalendar}/API?max$=1`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const {demo} = new TuiDocumentationPagePO(page);
 
-        await expect
-            .soft(apiPageExample)
-            .toHaveScreenshot('02-mobile-calendar-disabled.png');
+        await expect.soft(demo).toHaveScreenshot('02-mobile-calendar-disabled.png');
     });
 
     test('check enabled state', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.MobileCalendar}/API?max$=0`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const {demo} = new TuiDocumentationPagePO(page);
 
-        await expect
-            .soft(apiPageExample)
-            .toHaveScreenshot('03-mobile-calendar-enabled.png');
+        await expect.soft(demo).toHaveScreenshot('03-mobile-calendar-enabled.png');
     });
 });

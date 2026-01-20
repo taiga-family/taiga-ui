@@ -11,13 +11,13 @@ test.describe('Slider', () => {
             test(`value = ${value}`, async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.Slider}/API?max=89&min=0&step=1`);
 
-                const {apiPageExample} = new TuiDocumentationPagePO(page);
-                const slider = new TuiSliderPO(apiPageExample.getByRole('slider'));
+                const {demo} = new TuiDocumentationPagePO(page);
+                const slider = new TuiSliderPO(demo.getByRole('slider'));
 
                 await slider.setValue(value);
 
                 await expect
-                    .soft(apiPageExample)
+                    .soft(demo)
                     .toHaveScreenshot(`01-slider-float-percentage-${value}.png`);
             });
         });
@@ -63,20 +63,20 @@ test.describe('Slider', () => {
     test('with [min] > 0', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Slider}/API?min=1&max=10&segments=9`);
 
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const {demo} = new TuiDocumentationPagePO(page);
 
         await expect
-            .soft(apiPageExample)
+            .soft(demo)
             .toHaveScreenshot('03-min-1-max-10-value-1-segments-9.png');
     });
 
     test('with [min] < 0 && [max] > 0', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Slider}/API?min=-5&max=5&segments=5`);
 
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const {demo} = new TuiDocumentationPagePO(page);
 
         await expect
-            .soft(apiPageExample)
+            .soft(demo)
             .toHaveScreenshot('04-min--5-max-5-value-1-segments_5.png');
     });
 

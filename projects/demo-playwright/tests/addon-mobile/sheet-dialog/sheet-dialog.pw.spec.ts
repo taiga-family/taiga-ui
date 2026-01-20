@@ -11,7 +11,7 @@ test.describe('SheetDialog', () => {
         await tuiGoto(page, DemoRoute.SheetDialog);
         await page.locator('tui-segmented a:has-text("API")').click();
 
-        const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+        const example = new TuiDocumentationApiPagePO(page).demo;
         const button = example.locator('button:has-text("Click")');
 
         await button.click();

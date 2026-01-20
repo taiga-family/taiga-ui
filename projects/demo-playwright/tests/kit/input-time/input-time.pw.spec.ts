@@ -8,7 +8,7 @@ test.describe('InputTime', () => {
         let inputTime: TuiInputTimePO;
 
         test.beforeEach(({page}) => {
-            example = new TuiDocumentationPagePO(page).apiPageExample;
+            example = new TuiDocumentationPagePO(page).demo;
             inputTime = new TuiInputTimePO(
                 example.locator('tui-textfield:has([tuiInputTime])'),
             );

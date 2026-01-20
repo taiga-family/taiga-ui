@@ -20,95 +20,93 @@
         <small>{{ texts[1] }}</small>
     </label>
 </div>
-<div class="t-demo">
-    <div
-        tuiResizable
-        class="t-wrapper"
-        [class.t-wrapper_transparent]="!opaque"
-        [style.visibility]="rendered() ? 'visible' : 'hidden'"
-    >
-        <div class="t-content">
-            <div
-                #content
-                id="demo-content"
-            >
-                @if (form) {
-                    <form
-                        id="tui-demo-form"
-                        [formGroup]="form"
-                    >
-                        <ng-container [ngTemplateOutlet]="template() || null" />
-                    </form>
-                }
-                <ng-content />
-            </div>
-        </div>
+<div
+    tuiResizable
+    class="t-wrapper"
+    [class.t-wrapper_transparent]="!opaque"
+    [style.visibility]="rendered() ? 'visible' : 'hidden'"
+>
+    <div class="t-content">
         <div
-            class="t-resizer"
-            [tuiResizer]="[1, 0]"
-            (tuiSizeChange)="updateWidth($event[0])"
+            #content
+            id="demo-content"
         >
-            <tui-icon icon="@tui.grip-vertical" />
+            @if (form) {
+                <form
+                    id="tui-demo-form"
+                    [formGroup]="form"
+                >
+                    <ng-container [ngTemplateOutlet]="template() || null" />
+                </form>
+            }
+            <ng-content />
         </div>
     </div>
-    @if (form) {
-        <tui-expand [expanded]="expanded">
-            <ng-template tuiItem>
-                <pre class="t-value">Form data: {{ form.value | json }}</pre>
-            </ng-template>
-        </tui-expand>
-        <div class="t-footer">
-            <button
-                appearance="flat-grayscale"
-                automation-id="tui-demo-button__toggle-details"
-                size="s"
-                tuiButton
-                type="button"
-                class="t-button"
-                [tuiChevron]="expanded"
-                (click)="toggleDetails()"
-            >
-                {{ texts[2] }}
-            </button>
-            <tui-textfield
-                tuiChevron
-                tuiTextfieldAppearance="secondary-grayscale"
-                tuiTextfieldSize="s"
-                class="t-select"
-                [tuiTextfieldCleaner]="false"
-            >
-                <input
-                    automation-id="tui-demo-select__expand-update-on"
-                    tuiSelect
-                    [ngModel]="updateOn"
-                    [ngModelOptions]="{standalone: true}"
-                    (ngModelChange)="updateOnChange($event)"
-                />
-                <tui-data-list-wrapper
-                    *tuiDropdown
-                    [items]="updateOnVariants"
-                />
-            </tui-textfield>
-            <button
-                appearance="secondary-grayscale"
-                automation-id="tui-demo-button__reset-state"
-                form="tui-demo-form"
-                size="s"
-                tuiButton
-                type="reset"
-            >
-                Reset
-            </button>
-            <button
-                appearance="secondary-grayscale"
-                automation-id="tui-demo-button__submit-state"
-                form="tui-demo-form"
-                size="s"
-                tuiButton
-                type="submit"
-            >
-                Submit
-            </button>
-        </div>
-    }
+    <div
+        class="t-resizer"
+        [tuiResizer]="[1, 0]"
+        (tuiSizeChange)="updateWidth($event[0])"
+    >
+        <tui-icon icon="@tui.grip-vertical" />
+    </div>
 </div>
+@if (form) {
+    <tui-expand [expanded]="expanded">
+        <ng-template tuiItem>
+            <pre class="t-value">Form data: {{ form.value | json }}</pre>
+        </ng-template>
+    </tui-expand>
+    <div class="t-footer">
+        <button
+            appearance="flat-grayscale"
+            automation-id="tui-demo-button__toggle-details"
+            size="s"
+            tuiButton
+            type="button"
+            class="t-button"
+            [tuiChevron]="expanded"
+            (click)="toggleDetails()"
+        >
+            {{ texts[2] }}
+        </button>
+        <tui-textfield
+            tuiChevron
+            tuiTextfieldAppearance="secondary-grayscale"
+            tuiTextfieldSize="s"
+            class="t-select"
+            [tuiTextfieldCleaner]="false"
+        >
+            <input
+                automation-id="tui-demo-select__expand-update-on"
+                tuiSelect
+                [ngModel]="updateOn"
+                [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="updateOnChange($event)"
+            />
+            <tui-data-list-wrapper
+                *tuiDropdown
+                [items]="updateOnVariants"
+            />
+        </tui-textfield>
+        <button
+            appearance="secondary-grayscale"
+            automation-id="tui-demo-button__reset-state"
+            form="tui-demo-form"
+            size="s"
+            tuiButton
+            type="reset"
+        >
+            Reset
+        </button>
+        <button
+            appearance="secondary-grayscale"
+            automation-id="tui-demo-button__submit-state"
+            form="tui-demo-form"
+            size="s"
+            tuiButton
+            type="submit"
+        >
+            Submit
+        </button>
+    </div>
+}

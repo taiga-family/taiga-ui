@@ -99,7 +99,7 @@ test.describe('Dropdown', () => {
     test('Scrollbar dropdown in active zone', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Dropdown}/API?tuiDropdownMaxHeight=150`);
 
-        const api = new TuiDocumentationPagePO(page).apiPageExample;
+        const api = new TuiDocumentationPagePO(page).demo;
 
         await api.locator('button').click();
 

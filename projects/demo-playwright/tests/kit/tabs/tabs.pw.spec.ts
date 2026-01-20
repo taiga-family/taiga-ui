@@ -110,7 +110,7 @@ describe('Tabs', () => {
         let example!: Locator;
 
         beforeEach(({page}) => {
-            example = new TuiDocumentationPagePO(page).apiPageExample;
+            example = new TuiDocumentationPagePO(page).demo;
         });
 
         [-2, -1, 0, 1, 2, 3, 4, 5, 100, 1000].forEach((index) => {

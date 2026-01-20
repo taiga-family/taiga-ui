@@ -9,29 +9,29 @@ test.describe('Stepper', () => {
         await tuiGoto(page, `${DemoRoute.Stepper}/API?orientation=horizontal`);
 
         const po = new TuiDocumentationPagePO(page);
-        const steps = po.apiPageExample.locator('[tuiStep]');
+        const steps = po.demo.locator('[tuiStep]');
 
         await steps.nth(1).click();
 
-        await expect.soft(po.apiPageExample).toHaveScreenshot('01-stepper.png');
+        await expect.soft(po.demo).toHaveScreenshot('01-stepper.png');
 
         await steps.nth(2).click();
 
-        await expect.soft(po.apiPageExample).toHaveScreenshot('02-stepper.png');
+        await expect.soft(po.demo).toHaveScreenshot('02-stepper.png');
     });
 
     test('vertical orientation', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Stepper}/API?orientation=vertical`);
 
         const po = new TuiDocumentationPagePO(page);
-        const steps = po.apiPageExample.locator('[tuiStep]');
+        const steps = po.demo.locator('[tuiStep]');
 
         await steps.nth(1).click();
 
-        await expect.soft(po.apiPageExample).toHaveScreenshot('03-stepper.png');
+        await expect.soft(po.demo).toHaveScreenshot('03-stepper.png');
 
         await steps.nth(2).click();
 
-        await expect.soft(po.apiPageExample).toHaveScreenshot('04-stepper.png');
+        await expect.soft(po.demo).toHaveScreenshot('04-stepper.png');
     });
 });

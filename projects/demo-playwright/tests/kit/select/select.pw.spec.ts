@@ -67,7 +67,7 @@ describe('Select', () => {
                         page,
                         `${DemoRoute.Select}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
                     );
-                    example = new TuiDocumentationPagePO(page).apiPageExample;
+                    example = new TuiDocumentationPagePO(page).demo;
                     select = new TuiSelectPO(
                         example.locator('tui-textfield:has([tuiSelect])'),
                     );

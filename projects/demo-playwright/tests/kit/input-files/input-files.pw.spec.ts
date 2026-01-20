@@ -15,7 +15,7 @@ test.describe('InputFiles with no-extension file', () => {
     test('Displays name without leading dot and no type', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.InputFiles}/API`);
 
-        const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+        const example = new TuiDocumentationApiPagePO(page).demo;
 
         await example.locator('input[tuiInputFiles]').setInputFiles(stubPath);
 
@@ -35,7 +35,7 @@ test.describe('InputFiles', () => {
     let example: Locator;
 
     test.beforeEach(({page}) => {
-        example = new TuiDocumentationApiPagePO(page).apiPageExample;
+        example = new TuiDocumentationApiPagePO(page).demo;
     });
 
     ['english', 'dutch', 'russian'].forEach((language) =>

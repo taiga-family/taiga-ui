@@ -19,7 +19,7 @@ test.describe('LineClamp', () => {
 
             await expect.soft(page).toHaveScreenshot('01-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('01-2-line-clamp.png');
         });
@@ -35,7 +35,7 @@ test.describe('LineClamp', () => {
 
             await expect.soft(page).toHaveScreenshot('02-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('02-2-line-clamp.png');
         });
@@ -56,7 +56,7 @@ test.describe('LineClamp', () => {
 
             await expect.soft(page).toHaveScreenshot('03-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('03-2-line-clamp.png');
         });
@@ -72,7 +72,7 @@ test.describe('LineClamp', () => {
 
             await expect.soft(page).toHaveScreenshot('04-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('04-2-line-clamp.png');
         });
@@ -94,7 +94,7 @@ test.describe('LineClamp', () => {
 
                 await expect.soft(page).toHaveScreenshot(`05-1-line-clamp-${index}.png`);
 
-                await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+                await pagePO.demo.locator('tui-line-clamp').hover();
 
                 await expect.soft(page).toHaveScreenshot(`05-2-line-clamp-${index}.png`);
             });

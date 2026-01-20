@@ -8,11 +8,11 @@ test.describe('Button', () => {
             page,
             `${DemoRoute.Button}/API?darkMode=true&appearance=icon&iconStart=@tui.eye-off`,
         );
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const {demo} = new TuiDocumentationPagePO(page);
 
-        await expect(apiPageExample).toBeVisible();
+        await expect(demo).toBeVisible();
 
-        const button = apiPageExample.locator('[tuiButton]');
+        const button = demo.locator('[tuiButton]');
 
         await button.hover();
 
@@ -26,8 +26,8 @@ test.describe('Button', () => {
     test('hover state', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Button}/API`);
 
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
-        const button = apiPageExample.locator('[tuiButton]');
+        const {demo} = new TuiDocumentationPagePO(page);
+        const button = demo.locator('[tuiButton]');
 
         await button.hover();
         await expect.soft(button).toHaveScreenshot('button-hover.png');
@@ -36,8 +36,8 @@ test.describe('Button', () => {
     test('active state', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Button}/API`);
 
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
-        const button = apiPageExample.locator('[tuiButton]');
+        const {demo} = new TuiDocumentationPagePO(page);
+        const button = demo.locator('[tuiButton]');
         const {x, y, width, height} = (await button.boundingBox()) ?? {
             x: 0,
             y: 0,
