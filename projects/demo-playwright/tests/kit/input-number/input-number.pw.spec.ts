@@ -342,6 +342,32 @@ describe('InputNumber', () => {
                 });
             });
 
+            describe('[step]=0.001 + [tuiNumberFormat]="{precision: 3, rounding: round}"', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?step=0.001&rounding=round&precision=3`,
+                    );
+                });
+
+                // 0.009 + 0.001 returns 0.009999999999999998 in JS
+                test('0.009 + 0.001', async () => {
+                    await inputNumber.textfield.fill('0.009');
+                    await inputNumber.stepUp.click();
+
+                    await expect(inputNumber.textfield).toHaveValue('0.010');
+                });
+
+                // 0.009 + 0.001 returns 1.0019999999999998 in JS
+                test('1.001 + 0.001', async ({page}) => {
+                    await inputNumber.textfield.fill('1.001');
+
+                    await page.keyboard.press('ArrowUp');
+
+                    await expect(inputNumber.textfield).toHaveValue('1.002');
+                });
+            });
+
             describe('[min=0] & [max=0] & [step]=4', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(
