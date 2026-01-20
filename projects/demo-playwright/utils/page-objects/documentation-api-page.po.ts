@@ -9,7 +9,7 @@ export class TuiDocumentationApiPagePO {
 
     public readonly examples: Locator = this.page.locator('tui-doc-example');
     public readonly demo: Locator = this.page.locator('tui-doc-demo > .t-wrapper');
-    public readonly value: Locator = this.page.locator('tui-doc-demo > pre');
+    public readonly value: Locator = this.page.locator('tui-doc-demo > tui-expand pre');
 
     constructor(protected readonly page: Page) {}
 

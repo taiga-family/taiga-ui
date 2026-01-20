@@ -68,10 +68,10 @@ test.describe('Navigation', () => {
                 'This feature is only relevant in Chrome',
             );
 
-            await tuiGoto(page, `${DemoRoute.GettingStarted}#icons`);
+            await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual#add-icons`);
 
-            await expect(page.locator('#icons')).toBeVisible();
-            await expect(page.locator('#icons')).toBeInViewport();
+            await expect(page.locator('#add-icons')).toBeVisible();
+            await expect(page.locator('#add-icons')).toBeInViewport();
         });
 
         test('scroll after click on link with anchor', async ({page, browserName}) => {
@@ -81,10 +81,10 @@ test.describe('Navigation', () => {
                 'This feature is only relevant in Chrome',
             );
 
-            await tuiGoto(page, DemoRoute.GettingStarted);
-            await page.locator('a[fragment="root"]').click();
+            await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual`);
+            await page.locator('a[fragment="root-component"]').click();
 
-            await expect(page.locator('#root')).toBeInViewport();
+            await expect(page.locator('#root-component')).toBeInViewport();
         });
     });
 });
