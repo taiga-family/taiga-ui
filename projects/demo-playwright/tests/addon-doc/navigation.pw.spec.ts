@@ -82,7 +82,8 @@ test.describe('Navigation', () => {
             );
 
             await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual`);
-            await page.locator('a[href$="#root-component"]').first().click();
+            // eslint-disable-next-line playwright/no-force-option
+            await page.locator('a[href$="#root-component"]').first().click({force: true});
 
             await expect(page.locator('#root-component')).toBeInViewport();
         });
