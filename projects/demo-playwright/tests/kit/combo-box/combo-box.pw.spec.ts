@@ -178,14 +178,14 @@ describe('ComboBox', () => {
                 await comboBox.textfield.clear();
                 await comboBox.textfield.fill('eRiC iDle');
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
-                await expect(value).toContainText('Form control:0');
+                await expect(example).toContainText('Form control:0');
             });
 
             test('match option by typing id', async () => {
                 await comboBox.textfield.clear();
                 await comboBox.textfield.fill('0');
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
-                await expect(value).toContainText('Form control:0');
+                await expect(example).toContainText('Form control:0');
             });
 
             test('click on item and blur – keeps already matched option', async () => {
@@ -195,18 +195,18 @@ describe('ComboBox', () => {
                     .click();
 
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
-                await expect(value).toContainText('Form control:0');
+                await expect(example).toContainText('Form control:0');
 
                 await comboBox.closeDropdown();
                 await comboBox.textfield.blur();
 
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
-                await expect(value).toContainText('Form control:0');
+                await expect(example).toContainText('Form control:0');
             });
 
             test('shows all available options on click (control has selected item)', async () => {
                 await expect(comboBox.textfield).toHaveValue('Terry Jones');
-                await expect(value).toContainText('Form control:777');
+                await expect(example).toContainText('Form control:777');
 
                 await comboBox.textfield.click();
                 await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(6);
@@ -215,13 +215,13 @@ describe('ComboBox', () => {
             test('filter works', async () => {
                 await comboBox.textfield.clear();
                 await comboBox.textfield.fill('eRic iDl');
-                await expect(value).toContainText('Form control:null');
+                await expect(example).toContainText('Form control:null');
                 await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
                 await expect(comboBox.dropdown).toHaveText('Eric Idle');
 
                 await comboBox.textfield.pressSequentially('e');
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
-                await expect(value).toContainText('Form control:0');
+                await expect(example).toContainText('Form control:0');
             });
 
             test('shows all options again when textfield value matches datalist item', async () => {

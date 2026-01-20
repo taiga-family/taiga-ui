@@ -32,58 +32,56 @@
 >
     @if (processor() | tuiDocExampleGetTabs: defaultTab; as all) {
         @let tabs = example() ? all : all.slice(1);
-        @if (tabs.length > 1) {
-            <div class="t-header">
-                <tui-segmented
-                    class="t-tabs"
-                    [(activeItemIndex)]="activeItemIndex"
-                >
-                    @for (tab of tabs; track tab) {
-                        <button type="button">
-                            <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
-                                {{ text }}
-                            </ng-container>
-                        </button>
-                    }
-                </tui-segmented>
-                @if (processor() | tuiMapper: visible) {
-                    <tui-loader
-                        size="xs"
-                        class="t-code-editor"
-                        [loading]="loading()"
-                        [overlay]="true"
-                        (click)="edit(processor())"
-                    >
-                        @if (codeEditor?.content; as content) {
-                            <ng-container *polymorpheusOutlet="content as editContent">
-                                {{ editContent }}
-                            </ng-container>
-                        } @else {
-                            <button
-                                appearance="flat"
-                                size="s"
-                                tuiButton
-                                type="button"
-                            >
-                                Edit on {{ codeEditor!.name }}
-                            </button>
-                        }
-                    </tui-loader>
-                }
-                @if (fullscreenEnabled && example()) {
-                    <button
-                        appearance="flat-grayscale"
-                        size="xs"
-                        tuiIconButton
-                        type="button"
-                        [iconStart]="fullscreen ? icons.shrink : icons.expand"
-                        (click)="fullscreen = !fullscreen"
-                    >
-                        Fullscreen
+        <div class="t-header">
+            <tui-segmented
+                class="t-tabs"
+                [(activeItemIndex)]="activeItemIndex"
+            >
+                @for (tab of tabs; track tab) {
+                    <button type="button">
+                        <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
+                            {{ text }}
+                        </ng-container>
                     </button>
                 }
-            </div>
-        }
+            </tui-segmented>
+            @if (processor() | tuiMapper: visible) {
+                <tui-loader
+                    size="xs"
+                    class="t-code-editor"
+                    [loading]="loading()"
+                    [overlay]="true"
+                    (click)="edit(processor())"
+                >
+                    @if (codeEditor?.content; as content) {
+                        <ng-container *polymorpheusOutlet="content as editContent">
+                            {{ editContent }}
+                        </ng-container>
+                    } @else {
+                        <button
+                            appearance="flat"
+                            size="s"
+                            tuiButton
+                            type="button"
+                        >
+                            Edit on {{ codeEditor!.name }}
+                        </button>
+                    }
+                </tui-loader>
+            }
+            @if (fullscreenEnabled && example()) {
+                <button
+                    appearance="flat-grayscale"
+                    size="xs"
+                    tuiIconButton
+                    type="button"
+                    [iconStart]="fullscreen ? icons.shrink : icons.expand"
+                    (click)="fullscreen = !fullscreen"
+                >
+                    Fullscreen
+                </button>
+            }
+        </div>
         @for (tab of tabs; track tab) {
             <div class="t-content">
                 @if (!$index && example()) {
