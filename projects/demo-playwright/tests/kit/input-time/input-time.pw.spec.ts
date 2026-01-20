@@ -235,7 +235,9 @@ test.describe('InputTime', () => {
         test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputTime);
 
-            example = new TuiDocumentationPagePO(page).getExample('#dropdown-datalist');
+            example = new TuiDocumentationPagePO(page).getExample(
+                '#dropdown-with--data-list',
+            );
 
             await example.scrollIntoViewIfNeeded();
 

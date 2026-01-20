@@ -13,7 +13,7 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${basicText}&linesLimit=1`,
+                `${DemoRoute.LineClamp}/API?content=${basicText}&linesLimit=1`,
             );
             await pagePO.prepareBeforeScreenshot();
 
@@ -29,7 +29,7 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${basicText}&linesLimit=2`,
+                `${DemoRoute.LineClamp}/API?content=${basicText}&linesLimit=2`,
             );
             await pagePO.prepareBeforeScreenshot();
 
@@ -50,7 +50,7 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=1`,
+                `${DemoRoute.LineClamp}/API?content=${textWithLongWord}&linesLimit=1`,
             );
             await pagePO.prepareBeforeScreenshot();
 
@@ -66,7 +66,7 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=2`,
+                `${DemoRoute.LineClamp}/API?content=${textWithLongWord}&linesLimit=2`,
             );
             await pagePO.prepareBeforeScreenshot();
 
@@ -88,7 +88,7 @@ test.describe('LineClamp', () => {
 
                 await tuiGoto(
                     page,
-                    `components/line-clamp/API?style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
+                    `${DemoRoute.LineClamp}/API?style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
                 );
                 await pagePO.prepareBeforeScreenshot();
 
@@ -104,7 +104,7 @@ test.describe('LineClamp', () => {
     test('do not close after click in hint area', async ({page}) => {
         await tuiGoto(page, DemoRoute.LineClamp);
 
-        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+        const example = new TuiDocumentationPagePO(page).getExample('#styles-change');
         const lineClampElement = example.locator('tui-line-clamp').first();
 
         await example.scrollIntoViewIfNeeded();

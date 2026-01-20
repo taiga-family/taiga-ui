@@ -19,7 +19,7 @@ describe('Select', () => {
         });
 
         test('checkmark size', async ({page}) => {
-            const example = documentationPage.getExample('#content-customization');
+            const example = documentationPage.getExample('#customize-content');
             const host = example.locator('tui-textfield').first();
             const select = new TuiSelectPO(host);
 
