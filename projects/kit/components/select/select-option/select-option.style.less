@@ -19,5 +19,9 @@
 }
 
 .t-dummy {
-    inline-size: 1.5rem;
+    inline-size: 1rem;
+
+    :host[data-size='l'] & {
+        inline-size: 1.5rem;
+    }
 }
