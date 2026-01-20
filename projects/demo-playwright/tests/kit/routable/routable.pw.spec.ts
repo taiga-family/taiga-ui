@@ -6,14 +6,14 @@ test.describe('Routable', () => {
     test('should open lazy loaded dialog by click and then close by outside click', async ({
         page,
     }) => {
-        await tuiGoto(page, DemoRoute.DialogLazyRoutable);
+        await tuiGoto(page, DemoRoute.DialogRoutable);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#lazy');
 
         await example.locator('button').click();
 
-        await expect(page).toHaveURL('/dialog/lazy-routable/path/to/dialog');
+        await expect(page).toHaveURL('/dialog/routable/path/to/lazy');
 
         await documentationPagePO.prepareBeforeScreenshot();
 
@@ -23,29 +23,27 @@ test.describe('Routable', () => {
     test('should open lazy loaded dialog by direct link and then close by outside click', async ({
         page,
     }) => {
-        await tuiGoto(page, `${DemoRoute.DialogLazyRoutable}/path/to/dialog`);
+        await tuiGoto(page, `${DemoRoute.DialogRoutable}/path/to/lazy`);
 
-        await expect(page).toHaveURL(/\/dialog\/lazy-routable\/path\/to\/dialog$/);
+        await expect(page).toHaveURL('/dialog/routable/path/to/lazy');
 
-        await page.locator('tui-dialog button').click();
+        await page.locator('tui-dialog').getByRole('button').nth(1).click();
 
-        await expect(page).toHaveURL(/\/dialog\/lazy-routable$/);
+        await expect(page).toHaveURL(/\/dialog\/routable$/);
     });
 
     test('should open dialog in named outlet example', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.DialogRoutable}/NamedOutlet`);
+        await tuiGoto(page, `${DemoRoute.DialogRoutable}`);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
-        const example = documentationPagePO.getExample('#named-outlet');
+        const example = documentationPagePO.getExample('#named');
 
         await example.locator('button').click();
 
-        await expect(page).toHaveURL(
-            '/dialog/routable/NamedOutlet/(myOutlet:path/to/dialog)',
-        );
+        await expect(page).toHaveURL('/dialog/routable/(myOutlet:path/to/named-outlet)');
 
-        await page.locator('tui-dialog button').click();
+        await page.locator('tui-dialog button').first().click();
 
-        await expect(page).toHaveURL(/\/dialog\/routable\/NamedOutlet$/);
+        await expect(page).toHaveURL(/\/dialog\/routable$/);
     });
 });

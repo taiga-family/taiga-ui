@@ -21,7 +21,6 @@ const serverConfig = mergeApplicationConfig(config, {
 
                 switch (path) {
                     case DemoRoute.Breakpoints:
-                    case DemoRoute.DialogLazyRoutable:
                     case DemoRoute.Portals:
                     case DemoRoute.Viewport:
                         return withTabs(path, ['Setup']);
@@ -33,7 +32,11 @@ const serverConfig = mergeApplicationConfig(config, {
                             'Setup',
                         ]);
                     case DemoRoute.DialogRoutable:
-                        return withTabs(path, ['NamedOutlet', 'Setup']);
+                        return withTabs(path, [
+                            'path/to/lazy',
+                            'path/to/eager',
+                            'path/to/named-outlet',
+                        ]);
                     case DemoRoute.I18N:
                         return withTabs(path, ['Dynamic_loader']);
                     case DemoRoute.Surface:

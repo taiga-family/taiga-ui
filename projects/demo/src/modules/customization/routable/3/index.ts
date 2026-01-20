@@ -1,15 +1,14 @@
 import {Component} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDocCode} from '@taiga-ui/addon-doc';
+import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDocCode],
+    selector: 'tui-named-outlet-example',
+    imports: [RouterLink, RouterOutlet, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export default class TuiLazyExample2 {
-    protected readonly html = import('../setup/html.md');
-    protected readonly routes = import('../setup/routes.md');
-}
+export default class Example3 {}

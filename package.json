@@ -51,7 +51,7 @@
         "start:host": "nx serve demo --open --host 0.0.0.0 --disable-host-check",
         "start:shadow": "nx serve demo -c shadow",
         "start:ssl": "nx serve-ssl demo",
-        "start:ssr": "nx serve-ssr demo",
+        "start:ssr": "nx serve demo -c production",
         "stylelint": "stylelint '**/*.{less,css}' --config package.json",
         "pretest": "npx tsc --project tsconfig.spec.json",
         "test": "nx run-many --target test --all --output-style=stream",

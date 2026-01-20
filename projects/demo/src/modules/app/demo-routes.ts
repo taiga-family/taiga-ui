@@ -11,7 +11,6 @@ export const DemoRoute = {
     I18N: '/i18n',
     Variables: '/variables',
     DialogRoutable: '/dialog/routable',
-    DialogLazyRoutable: '/dialog/lazy-routable',
     Portals: '/portals',
     Viewport: '/viewport',
     Accordion: '/components/accordion',
