@@ -2,7 +2,8 @@
 import type {Config} from 'jest';
 
 const config: Config = {
-  preset: '@taiga-ui/jest-config',
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
 };
 
 export default config;

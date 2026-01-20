@@ -1,80 +1,150 @@
 <tui-doc-page header="Jest">
-    <p>
-        If you use Jest to run your tests, you need additional configuration because Jest is running on a Node.js
-        emulator.
-    </p>
+    <div
+        appearance="neutral"
+        icon=""
+        size="m"
+        tuiNotification
+    >
+        <div
+            tuiTitle
+            [style.padding-inline-end.rem]="2"
+        >
+            Introduction
+            <div tuiSubtitle>
+                By default, Jest runs in a Node.js environment, which means that global objects like window, document,
+                and navigator which are present in a real web browser, are unavailable. This instructions ensures that
+                Taiga UI components can run correctly in Jest.
+            </div>
+        </div>
+    </div>
 
-    <p>
-        Taiga UI uses
-        <code>&#64;ng-web-apis/common</code>
-        to avoid accessing global variables like
-        <code>window</code>
-        or
-        <code>navigator</code>
-        directly. Which requires Server Side Rendering (SSR) with the help of its sister library
-        <code>&#64;ng-web-apis/universal</code>
-        for Jest to run properly.
-    </p>
+    <section tuiPlatform="web">
+        <div
+            appearance="custom"
+            tuiCardLarge
+        >
+            <header tuiHeader>
+                <h1 tuiTitle>
+                    Installation
+                    <span tuiSubtitle>
+                        <p>
+                            Taiga UI is designed to be SSR-safe, and we use abstractions provided by
+                            <code>&#64;ng-web-apis/common</code>
+                            to avoid direct access to browser globals such as
+                            <a
+                                href="https://github.com/taiga-family/ng-web-apis/blob/main/libs/common/src/tokens/window.ts#L4"
+                                target="_blank"
+                                tuiLink
+                            >
+                                window
+                            </a>
+                            or
+                            <a
+                                href="https://github.com/taiga-family/ng-web-apis/blob/main/libs/common/src/tokens/navigator.ts#L6"
+                                target="_blank"
+                                tuiLink
+                            >
+                                navigator.
+                            </a>
+                            However, most browser APIs cannot have abstractions, so you need to have some required Web
+                            APIs mocked to prevent runtime errors such as
+                            <code>ReferenceError: IntersectionObserver is not defined</code>
+                            .
+                        </p>
+                        <br />
+                        <p>
+                            To simplify this, we provide ready-to-use
+                            <a
+                                href="https://github.com/taiga-family/toolkit/blob/main/projects/jest-config/polyfill.ts"
+                                tuiLink
+                            >
+                                mocks.
+                            </a>
+                        </p>
+                    </span>
+                </h1>
 
-    <p>
-        Otherwise, you're gonna face errors like
-        <code>ReferenceError: IntersectionObserver is not defined</code>
-    </p>
+                <aside tuiAccessories>
+                    <div
+                        appearance="primary"
+                        size="xl"
+                        tuiBadge
+                    >
+                        1
+                    </div>
+                </aside>
+            </header>
 
-    <h2>
-        Using
-        <code>&#64;angular-builders/jest</code>
-        or
-        <code>jest-preset-angular</code>
-    </h2>
+            <footer>
+                <tui-doc-code
+                    filename="terminal"
+                    [code]="install"
+                />
+            </footer>
+        </div>
 
-    <p>If you're using one of these libraries. You can follow the following steps :</p>
+        <div
+            appearance="custom"
+            tuiCardLarge
+        >
+            <header tuiHeader>
+                <h1 tuiTitle>
+                    Configuring Jest
+                    <span tuiSubtitle>
+                        By default, we provide a preconfigured setup that you only need to connect to your project.
+                    </span>
+                </h1>
 
-    <ol class="tui-list">
-        <li class="tui-list__item">
-            Install
-            <code>npm i &#64;ng-web-apis/universal --save-dev</code>
-            (install it as a devDependency only if you will use it for Jest, otherwise install it as a regular
-            dependency).
-        </li>
-        <li class="tui-list__item">
-            Add a
-            <code>setupFilesAfterEnv</code>
-            property to your
-            <code>jest.config.ts</code>
-            or
-            <code>package.json</code>
-            jest configuration (depending on where your configuration is) with the path to
-            <code>setup-jest.ts</code>
-            if you have not already.
+                <aside tuiAccessories>
+                    <div
+                        appearance="primary"
+                        size="xl"
+                        tuiBadge
+                    >
+                        2
+                    </div>
+                </aside>
+            </header>
 
+            <footer>
+                <tui-doc-code
+                    filename="jest.config.ts"
+                    [code]="jestConfig"
+                />
+            </footer>
+        </div>
+    </section>
+
+    <div
+        appearance="custom"
+        tuiCardLarge
+    >
+        <header tuiHeader>
+            <h1 tuiTitle>
+                Manual setup-jest.ts
+                <span tuiSubtitle>
+                    If your project already has Jest configured and uses a custom setup-jest.ts, you only need to
+                    include our
+                    <a
+                        href="https://github.com/taiga-family/toolkit/blob/main/projects/jest-config/polyfill.ts"
+                        tuiLink
+                    >
+                        mocks.
+                    </a>
+                </span>
+            </h1>
+        </header>
+
+        <footer>
             <tui-doc-code
                 filename="jest.config.ts"
-                [code]="jestConfig"
+                [code]="jestCustomConfig"
             />
-            or
-            <tui-doc-code
-                filename="package.json"
-                [code]="packageJson"
-            />
-        </li>
-        <li class="tui-list__item">
-            Create the file
-            <code>setup-jest.ts</code>
-            (wherever you want as long as it's at the path referenced above) if you have not already. For example here
-            at the root of the project.
-        </li>
-        <li class="tui-list__item">
-            Add the following line to the
-            <code>setup-jest.ts</code>
-            :
-            <code>import '&#64;taiga-ui/testing/setup-jest';</code>
-            .
 
             <tui-doc-code
                 filename="setup-jest.ts"
                 [code]="setupJest"
             />
-        </li>
-    </ol>
+        </footer>
+    </div>
 </tui-doc-page>
