@@ -7,7 +7,7 @@ import {
     type MaskitoNumberParams,
     maskitoStringifyNumber,
 } from '@maskito/kit';
-import {tuiIsSafeToRound, tuiRoundWith} from '@taiga-ui/cdk/utils';
+import {tuiIsSafeToRound, tuiRoundWith} from '@taiga-ui/cdk/utils/math';
 import {TuiInputDirective} from '@taiga-ui/core/components/input';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
