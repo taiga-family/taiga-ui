@@ -150,7 +150,6 @@
 
 ### Dialog
 
-- [Lazy Routable](https://taiga-ui.dev/dialog/lazy-routable)
 - [Routable](https://taiga-ui.dev/dialog/routable)
 
 ### Directives
