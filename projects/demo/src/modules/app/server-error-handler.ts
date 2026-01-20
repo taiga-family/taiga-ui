@@ -19,6 +19,7 @@ const KNOWN_ISSUES: string[] = [
      * TODO(v6): no more relevant for Angular >= 20
      */
     't.match is not a function',
+    'Input data should be a String',
 ];
 
 @Injectable()
