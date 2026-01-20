@@ -358,7 +358,7 @@ describe('InputNumber', () => {
                     await expect(inputNumber.textfield).toHaveValue('0.010');
                 });
 
-                // 0.009 + 0.001 returns 1.0019999999999998 in JS
+                // 1.001 + 0.001 returns 1.0019999999999998 in JS
                 test('1.001 + 0.001', async ({page}) => {
                     await inputNumber.textfield.fill('1.001');
 
