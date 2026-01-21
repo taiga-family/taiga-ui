@@ -123,4 +123,5 @@ export const TUI_USED_ICONS = [
     '@tui.chevron-up',
     '@tui.play',
     '@tui.pause',
+    '@tui.circle-question-mark',
 ] as const;
