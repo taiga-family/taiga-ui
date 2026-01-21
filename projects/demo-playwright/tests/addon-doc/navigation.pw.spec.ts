@@ -82,8 +82,14 @@ test.describe('Navigation', () => {
             );
 
             await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual`);
-            // eslint-disable-next-line playwright/no-force-option
-            await page.locator('a[href$="#root-component"]').first().click({force: true});
+
+            const handle = await page
+                .locator('a[href$="#root-component"]')
+                .first()
+                .elementHandle();
+
+            await page.evaluate((el: any) => el?.click(), handle);
+            await handle?.dispose();
 
             await expect(page.locator('#root-component')).toBeInViewport();
         });

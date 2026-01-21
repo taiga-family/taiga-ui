@@ -11,6 +11,7 @@
                 type="button"
                 [class._active]="isActive(item)"
                 [fragment]="item | tuiKebab"
+                [relativeTo]="route.firstChild ?? route"
             >
                 {{ item }}
             </a>

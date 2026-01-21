@@ -5,7 +5,7 @@ import {
     type OnInit,
     signal,
 } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {
     TUI_DOC_MAP_PAGES,
     TUI_DOC_SEE_ALSO,
@@ -35,6 +35,7 @@ export class TuiDocToc implements OnInit {
     private active = '';
 
     protected readonly toc = signal<readonly string[]>([]);
+    protected readonly route = inject(ActivatedRoute);
     protected readonly seeAlso = getSeeAlso();
     protected readonly text = {
         toc: inject(TUI_DOC_TOC_TEXT),
