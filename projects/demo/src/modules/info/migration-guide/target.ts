@@ -5,6 +5,7 @@ import {TuiAccordionComponent, TuiAccordionDirective} from '@taiga-ui/kit';
 
 @Directive({
     selector: '[tuiAccordionTarget]',
+    host: {'(click)': 'onClick()'},
 })
 export class TuiAccordionTarget implements OnInit {
     private readonly el = tuiInjectElement();
@@ -15,5 +16,9 @@ export class TuiAccordionTarget implements OnInit {
     public ngOnInit(): void {
         this.directive.open.set(`#${this.el.id}` === this.location.hash);
         this.component.toggle(this.directive);
+    }
+
+    public onClick(): void {
+        this.location.hash = this.el.id;
     }
 }

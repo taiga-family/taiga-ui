@@ -69,6 +69,7 @@ export class TuiDocCode implements OnChanges {
     public readonly filename = input('');
 
     public readonly code = input<TuiRawLoaderContent>('');
+    public readonly lineNumbers = input(true);
 
     public get hasFilename(): boolean {
         return !!this.filename();

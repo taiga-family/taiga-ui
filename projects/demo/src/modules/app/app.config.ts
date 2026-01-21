@@ -102,6 +102,7 @@ export const config: ApplicationConfig = {
                             import('highlight.js/lib/languages/typescript'),
                         less: async () => import('highlight.js/lib/languages/less'),
                         xml: async () => import('highlight.js/lib/languages/xml'),
+                        bash: async () => import('highlight.js/lib/languages/bash'),
                     },
                 };
             },
