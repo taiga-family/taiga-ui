@@ -28,8 +28,8 @@
             heading="Installation"
             [content]="install"
             [description]="installation"
-            [example]="false"
             [fullsize]="true"
+            [preview]="false"
         />
         <ng-template #installation>
             Most browser APIs do not exist under Node.js, so you need to have them mocked to prevent runtime errors such
@@ -50,16 +50,16 @@
             description="By default, we provide a preconfigured setup that you only need to connect to your project."
             heading="Configuration"
             [content]="config"
-            [example]="false"
             [fullsize]="true"
+            [preview]="false"
         />
 
         <tui-doc-example
             heading="Manual setup"
             [content]="manual"
             [description]="desc"
-            [example]="false"
             [fullsize]="true"
+            [preview]="false"
         />
         <ng-template #desc>
             If your project already has Jest configured and uses a custom setup-jest.ts, you only need to include our

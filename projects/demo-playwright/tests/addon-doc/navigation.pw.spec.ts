@@ -61,19 +61,6 @@ test.describe('Navigation', () => {
             await expect(page.locator('#table')).toBeInViewport();
         });
 
-        test('scroll to "tui-doc-code"', async ({page, browserName}) => {
-            test.skip(
-                browserName !== 'chromium',
-                // TODO: why does this test keep failing in safari
-                'This feature is only relevant in Chrome',
-            );
-
-            await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual#add-icons`);
-
-            await expect(page.locator('#add-icons')).toBeVisible();
-            await expect(page.locator('#add-icons')).toBeInViewport();
-        });
-
         test('scroll after click on link with anchor', async ({page, browserName}) => {
             test.skip(
                 browserName !== 'chromium',

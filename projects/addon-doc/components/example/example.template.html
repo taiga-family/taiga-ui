@@ -31,7 +31,7 @@
     [(tuiFullscreen)]="fullscreen"
 >
     @if (processor() | tuiDocExampleGetTabs: defaultTab; as all) {
-        @let tabs = example() ? all : all.slice(1);
+        @let tabs = preview() ? all : all.slice(1);
         <div class="t-header">
             <tui-segmented
                 class="t-tabs"
@@ -69,7 +69,7 @@
                     }
                 </tui-loader>
             }
-            @if (fullscreenEnabled && example()) {
+            @if (fullscreenEnabled && preview()) {
                 <button
                     appearance="flat-grayscale"
                     size="xs"
@@ -84,7 +84,7 @@
         </div>
         @for (tab of tabs; track tab) {
             <div class="t-content">
-                @if (!$index && example()) {
+                @if (!$index && preview()) {
                     <section
                         automation-id="tui-doc-example"
                         class="t-demo"
@@ -97,7 +97,7 @@
                 @let code = processor()[tabs[$index] || 0] || '';
                 <tui-doc-code
                     [code]="code"
-                    [style.display]="activeItemIndex === $index && ($index || !example()) ? 'block' : 'none'"
+                    [style.display]="activeItemIndex === $index && ($index || !preview()) ? 'block' : 'none'"
                 >
                     @for (action of codeActions; track action) {
                         <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
