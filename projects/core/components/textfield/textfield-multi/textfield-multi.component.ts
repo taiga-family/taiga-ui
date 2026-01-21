@@ -11,6 +11,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
@@ -28,7 +29,6 @@ import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
-import {WA_WINDOW} from '@ng-web-apis/common';
 
 @Component({
     selector: 'tui-textfield[multi]',
