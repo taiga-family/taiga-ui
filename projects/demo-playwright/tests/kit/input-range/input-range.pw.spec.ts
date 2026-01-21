@@ -202,6 +202,34 @@ describe('InputRange', () => {
         });
     });
 
+    describe('updateOn blur', () => {
+        test('updates form control value on blur', async ({page}) => {
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputRange}/API?sandboxExpanded=true&updateOn=blur`,
+            );
+
+            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+
+            await expect
+                .soft(example)
+                .toHaveScreenshot('input-range-update-on-blur-01.png');
+
+            await inputRange.textfieldStart.fill('5');
+
+            await expect
+                .soft(example)
+                .toHaveScreenshot('input-range-update-on-blur-02.png');
+
+            await inputRange.textfieldStart.blur();
+
+            await expect
+                .soft(example)
+                .toHaveScreenshot('input-range-update-on-blur-03.png');
+        });
+    });
+
     describe('Range interactions', () => {
         describe("click on the sliders' track", () => {
             beforeEach(async ({page}) => {
