@@ -1,12 +1,14 @@
-<button
-    appearance="flat-grayscale"
-    tuiIconButton
-    type="button"
-    class="t-menu"
-    [iconStart]="icons.menu"
-    [title]="menu"
-    (click)="open.set(true)"
-></button>
+@if (breakpoint() === 'mobile') {
+    <button
+        appearance="flat-grayscale"
+        tuiIconButton
+        type="button"
+        class="t-menu"
+        [iconStart]="icons.menu"
+        [title]="menu"
+        (click)="open.set(true)"
+    ></button>
+}
 
 <tui-drawer
     *tuiPopup="open()"

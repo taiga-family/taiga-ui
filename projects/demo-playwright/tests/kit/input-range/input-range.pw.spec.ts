@@ -252,8 +252,7 @@ describe('InputRange', () => {
                 );
 
                 await expect(inputRange.textfieldStart).toHaveValue('0');
-                // TODO: For some reason in tests clicking the very edge of the range sets limit - step instead of limit
-                await expect(inputRange.textfieldEnd).toHaveValue('90');
+                await expect(inputRange.textfieldEnd).toHaveValue('100');
                 await expect(inputRange.textfieldEnd).toBeFocused();
                 await expect
                     .soft(example)
@@ -267,8 +266,7 @@ describe('InputRange', () => {
 
                 await page.mouse.click(track.x, track.height / 2 + track.y);
 
-                // TODO: For some reason in tests clicking the very edge of the range sets limit - step instead of limit
-                await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}90`);
+                await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}100`);
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
                 await expect(inputRange.textfieldStart).toBeFocused();
                 await expect
