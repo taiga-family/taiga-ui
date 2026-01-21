@@ -20,6 +20,6 @@ test.describe('Select mobile', () => {
 
         await nativeSelect.selectOption({index: 1});
 
-        await expect.soft(host).toHaveScreenshot('01-native-select-value.png');
+        await expect.soft(host).toHaveScreenshot();
     });
 });

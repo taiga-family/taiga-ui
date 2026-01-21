@@ -44,14 +44,9 @@ test.describe('Demo', () => {
                 // e2e flaky: wait more time for charts graphics
                 await page.waitForTimeout(path.includes('charts') ? 1000 : 150);
 
-                const makeName = (mode: string): string[] => [
-                    path.replace('/', '').replaceAll('/', '-'),
-                    `${i + 1}.${mode}.png`,
-                ];
-
-                await expect.soft(example).toHaveScreenshot(makeName('desktop'));
+                await expect.soft(example).toHaveScreenshot();
                 await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
-                await expect.soft(example).toHaveScreenshot(makeName('desktop-rtl'));
+                await expect.soft(example).toHaveScreenshot();
                 await example.evaluate((node) => node.setAttribute('dir', 'auto'));
 
                 const nestingPlatform = await example.locator('[data-platform]').all();
@@ -65,13 +60,13 @@ test.describe('Demo', () => {
                     node.setAttribute('data-platform', 'ios'),
                 );
 
-                await expect.soft(example).toHaveScreenshot(makeName('ios'));
+                await expect.soft(example).toHaveScreenshot();
 
                 await example.evaluate((node) =>
                     node.setAttribute('data-platform', 'android'),
                 );
 
-                await expect.soft(example).toHaveScreenshot(makeName('android'));
+                await expect.soft(example).toHaveScreenshot();
             }
 
             await checkA11y(

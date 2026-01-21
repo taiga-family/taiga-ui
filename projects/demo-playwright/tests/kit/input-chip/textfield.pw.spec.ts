@@ -16,31 +16,31 @@ test.describe('InputChip', () => {
         await page.keyboard.press('Enter');
         await input.fill('3');
         await page.keyboard.press('Enter');
-        await expect.soft(example).toHaveScreenshot('input-chip-01.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await page.keyboard.press('Backspace');
-        await expect.soft(example).toHaveScreenshot('input-chip-02.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await page.keyboard.press('Backspace');
-        await expect.soft(example).toHaveScreenshot('input-chip-03.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await page.keyboard.press('Backspace');
-        await expect.soft(example).toHaveScreenshot('input-chip-04.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await page.keyboard.press('Backspace');
-        await expect.soft(example).toHaveScreenshot('input-chip-05.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await page.keyboard.press('Backspace');
-        await expect.soft(example).toHaveScreenshot('input-chip-06.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await page.keyboard.press('Backspace');
-        await expect.soft(example).toHaveScreenshot('input-chip-07.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await input.fill('1');
         await page.keyboard.press('Enter');
 
         await input.fill('123');
         await page.keyboard.press('Backspace');
-        await expect.soft(example).toHaveScreenshot('input-chip-08.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 });

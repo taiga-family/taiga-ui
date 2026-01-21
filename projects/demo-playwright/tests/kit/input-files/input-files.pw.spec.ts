@@ -27,7 +27,7 @@ test.describe('InputFiles with no-extension file', () => {
         await expect(example.locator('.t-name')).toHaveText('no-extension-file');
         await expect(example.locator('.t-type')).toHaveText('');
 
-        await expect.soft(example).toHaveScreenshot('04-no-extension-file.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 });
 
@@ -53,7 +53,7 @@ test.describe('InputFiles', () => {
                 icons: await example.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect.soft(example).toHaveScreenshot(`01-${language}-input-files.png`);
+            await expect.soft(example).toHaveScreenshot();
         }),
     );
 
@@ -73,7 +73,7 @@ test.describe('InputFiles', () => {
                 icons: await example.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect.soft(example).toHaveScreenshot(`02-${language}-input-files.png`);
+            await expect.soft(example).toHaveScreenshot();
         }),
     );
 
@@ -83,6 +83,6 @@ test.describe('InputFiles', () => {
 
         await example.locator('button').first().click();
 
-        await expect.soft(example).toHaveScreenshot('03-with-button.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 });

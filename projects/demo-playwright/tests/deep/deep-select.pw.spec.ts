@@ -64,12 +64,10 @@ test.describe('Deep / Select', () => {
                     await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
                     const example = api.apiPageExample;
-                    const makeName = (dir: string): string =>
-                        `deep-${path}-${name}-row-${rowIndex}-select-option-${index}.${dir}.png`;
 
-                    await expect.soft(example).toHaveScreenshot(makeName('ltr'));
+                    await expect.soft(example).toHaveScreenshot();
                     await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
-                    await expect.soft(example).toHaveScreenshot(makeName('rtl'));
+                    await expect.soft(example).toHaveScreenshot();
 
                     // note: revert to default mode after take screenshot
                     await example.evaluate((node) => node.setAttribute('dir', 'auto'));

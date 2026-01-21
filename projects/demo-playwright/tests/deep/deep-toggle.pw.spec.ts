@@ -40,12 +40,10 @@ test.describe('Deep / Toggle', () => {
                 }
 
                 const example = api.apiPageExample;
-                const makeName = (dir: string): string =>
-                    `deep-${path}-${name}-row-${rowIndex}-toggled.${dir}.png`;
 
-                await expect.soft(example).toHaveScreenshot(makeName('ltr'));
+                await expect.soft(example).toHaveScreenshot();
                 await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
-                await expect.soft(example).toHaveScreenshot(makeName('rtl'));
+                await expect.soft(example).toHaveScreenshot();
 
                 // note: revert to default mode after take screenshot
                 await example.evaluate((node) => node.setAttribute('dir', 'auto'));

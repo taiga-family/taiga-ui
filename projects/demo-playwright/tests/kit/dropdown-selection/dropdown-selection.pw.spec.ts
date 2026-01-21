@@ -19,7 +19,7 @@ test.describe('DropdownSelection', () => {
         await example.locator('textarea').focus();
         await page.keyboard.press('Control+ArrowLeft');
 
-        await expect.soft(page).toHaveScreenshot('01-dropdown-selection.png');
+        await expect.soft(page).toHaveScreenshot();
 
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
@@ -28,19 +28,19 @@ test.describe('DropdownSelection', () => {
         await page.keyboard.press('ArrowRight');
         await api.waitStableState();
 
-        await expect.soft(page).toHaveScreenshot('02-dropdown-selection.png');
+        await expect.soft(page).toHaveScreenshot();
 
         await example.locator('textarea').fill('');
         await example.locator('textarea').fill('@');
         await api.waitStableState();
 
-        await expect.soft(page).toHaveScreenshot('03-dropdown-selection.png');
+        await expect.soft(page).toHaveScreenshot();
 
         await page.locator('button[tuiOption]').first().click();
         await api.waitStableState();
         await page.waitForTimeout(300); // flaky in Safari
 
-        await expect.soft(page).toHaveScreenshot('04-dropdown-selection.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 
     test('dropdown after new line char must be opened', async ({page}) => {
@@ -77,7 +77,7 @@ test.describe('DropdownSelection', () => {
             .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
 
         await expect(page.locator('tui-dropdown')).toBeVisible();
-        await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 
     test('keyArrowDown / keyArrowUp must be handled correctly', async ({page}) => {
@@ -99,6 +99,6 @@ test.describe('DropdownSelection', () => {
         await page.keyboard.press('@');
 
         await expect(page.locator('tui-dropdown')).toBeVisible();
-        await expect.soft(page).toHaveScreenshot('06-dropdown-selection-keydown.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 });

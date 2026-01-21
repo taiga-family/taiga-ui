@@ -29,7 +29,7 @@ test.describe('Preview', () => {
             // wait load image in dialog. timeout is required to wait when slider thumb hint will be hidden
             await page.waitForLoadState('networkidle', {timeout: 2000});
 
-            await expect.soft(preview).toHaveScreenshot('01-preview-zoom-by-wheel.png');
+            await expect.soft(preview).toHaveScreenshot();
         });
 
         test('No preview available', async ({page}) => {
@@ -45,7 +45,7 @@ test.describe('Preview', () => {
 
             await documentationPage.hideContent();
 
-            await expect.soft(preview).toHaveScreenshot('02-preview-unavailable.png');
+            await expect.soft(preview).toHaveScreenshot();
         });
     });
 });

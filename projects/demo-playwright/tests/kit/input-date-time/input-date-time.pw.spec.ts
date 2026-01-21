@@ -31,7 +31,7 @@ test.describe('InputDateTime', () => {
 
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot('01-maximum-month.png');
+            await expect(page).toHaveScreenshot();
         });
 
         test('Minimum month more than current month', async ({page}) => {
@@ -40,7 +40,7 @@ test.describe('InputDateTime', () => {
 
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect.soft(page).toHaveScreenshot('02-minimum-month.png');
+            await expect.soft(page).toHaveScreenshot();
         });
 
         test('[max] property cannot be bypassed via selection', async ({page}) => {
@@ -165,9 +165,7 @@ test.describe('InputDateTime', () => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM`);
             await inputDateTime.textfield.focus();
 
-            await expect
-                .soft(inputDateTime.host)
-                .toHaveScreenshot('03-timeMode=HH:MM.png');
+            await expect.soft(inputDateTime.host).toHaveScreenshot();
 
             const timeModeRow = documentationPage.getRow('[timeMode]');
             const timeModeSelect = new TuiSelectPO(
@@ -183,9 +181,7 @@ test.describe('InputDateTime', () => {
 
             await inputDateTime.textfield.focus();
 
-            await expect
-                .soft(inputDateTime.host)
-                .toHaveScreenshot('03-timeMode=HH:MM.SS.png');
+            await expect.soft(inputDateTime.host).toHaveScreenshot();
 
             await timeModeRow.locator('tui-textfield').click();
             await timeModeSelect.selectOptions([4]);
@@ -196,9 +192,7 @@ test.describe('InputDateTime', () => {
 
             await inputDateTime.textfield.focus();
 
-            await expect
-                .soft(inputDateTime.host)
-                .toHaveScreenshot('03-timeMode=HH:MM.SS.MSS.png');
+            await expect.soft(inputDateTime.host).toHaveScreenshot();
         });
 
         // TODO: remove skip after https://github.com/taiga-family/taiga-ui/issues/12707
@@ -428,11 +422,9 @@ test.describe('InputDateTime', () => {
             await inputDateTime.textfield.blur();
 
             // allow animations to capture tui-error validation message on screenshot
-            await expect
-                .soft(example)
-                .toHaveScreenshot('04-input-data-time-with-validator.png', {
-                    animations: 'allow',
-                });
+            await expect.soft(example).toHaveScreenshot({
+                animations: 'allow',
+            });
         });
 
         test('Calendar customization', async () => {
@@ -443,11 +435,7 @@ test.describe('InputDateTime', () => {
 
             await inputDateTime.textfield.click();
 
-            await expect
-                .soft(inputDateTime.calendar)
-                .toHaveScreenshot(
-                    '06-input-date-time-calendar-calendar-customization.png',
-                );
+            await expect.soft(inputDateTime.calendar).toHaveScreenshot();
         });
     });
 });

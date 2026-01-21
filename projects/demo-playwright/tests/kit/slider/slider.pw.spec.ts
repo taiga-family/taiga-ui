@@ -16,9 +16,7 @@ test.describe('Slider', () => {
 
                 await slider.setValue(value);
 
-                await expect
-                    .soft(apiPageExample)
-                    .toHaveScreenshot(`01-slider-float-percentage-${value}.png`);
+                await expect.soft(apiPageExample).toHaveScreenshot();
             });
         });
     });
@@ -53,9 +51,7 @@ test.describe('Slider', () => {
                     .then((x) => maskitoParseNumber(x || ''));
 
                 expect(controlValue).toBe(expectedControlValue);
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot(`02-slider-key-steps-${inputStep}step.png`);
+                await expect.soft(example).toHaveScreenshot();
             });
         });
     });
@@ -65,9 +61,7 @@ test.describe('Slider', () => {
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await expect
-            .soft(apiPageExample)
-            .toHaveScreenshot('03-min-1-max-10-value-1-segments-9.png');
+        await expect.soft(apiPageExample).toHaveScreenshot();
     });
 
     test('with [min] < 0 && [max] > 0', async ({page}) => {
@@ -75,9 +69,7 @@ test.describe('Slider', () => {
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await expect
-            .soft(apiPageExample)
-            .toHaveScreenshot('04-min--5-max-5-value-1-segments_5.png');
+        await expect.soft(apiPageExample).toHaveScreenshot();
     });
 
     test.describe('programmatically change value', () => {
@@ -115,9 +107,7 @@ test.describe('Slider', () => {
 
                 await expect(page.locator('tui-hint')).toBeAttached();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('05-slider-ngModel-decrease-by-1-step.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('increase value by 1 step', async ({page}) => {
@@ -130,9 +120,7 @@ test.describe('Slider', () => {
 
                 await expect(page.locator('tui-hint')).toBeAttached();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('06-slider-ngModel-increase-by-1-step.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('increase value by 2 steps', async ({page}) => {
@@ -146,9 +134,7 @@ test.describe('Slider', () => {
 
                 await expect(page.locator('tui-hint')).toBeAttached();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('07-slider-ngModel-increase-by-2-step.png');
+                await expect.soft(example).toHaveScreenshot();
             });
         });
 
@@ -178,9 +164,7 @@ test.describe('Slider', () => {
                     expect(await slider.fillPercentage).toBe(0);
                 }).toPass();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('08-slider-formControl-0.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('=> 500', async () => {
@@ -191,9 +175,7 @@ test.describe('Slider', () => {
                     expect(await slider.fillPercentage).toBe(50);
                 }).toPass();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('08-slider-formControl-500.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('=> 750', async () => {
@@ -204,9 +186,7 @@ test.describe('Slider', () => {
                     expect(await slider.fillPercentage).toBe(75);
                 }).toPass();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('08-slider-formControl-750.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('=> 1000', async () => {
@@ -217,9 +197,7 @@ test.describe('Slider', () => {
                     expect(await slider.fillPercentage).toBe(100);
                 }).toPass();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('08-slider-formControl-1000.png');
+                await expect.soft(example).toHaveScreenshot();
             });
         });
     });

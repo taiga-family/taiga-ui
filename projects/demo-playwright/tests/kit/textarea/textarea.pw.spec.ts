@@ -14,11 +14,11 @@ test.describe('Textarea', () => {
 
         await textarea.fill('1\n2\n3\n4');
 
-        await expect.soft(textarea).toHaveScreenshot('textarea-line-break.png');
+        await expect.soft(textarea).toHaveScreenshot();
 
         await page.getByRole('row', {name: 'disabled'}).locator('input').click();
 
-        await expect.soft(textarea).toHaveScreenshot('textarea-line-break-disabled.png');
+        await expect.soft(textarea).toHaveScreenshot();
     });
 
     ['m', 'l'].forEach((size) => {
@@ -26,9 +26,7 @@ test.describe('Textarea', () => {
             await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldSize=${size}`);
             const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-            await expect
-                .soft(apiPageExample)
-                .toHaveScreenshot(`textarea-tuiTextfieldSize-${size}.png`);
+            await expect.soft(apiPageExample).toHaveScreenshot();
         });
     });
 });

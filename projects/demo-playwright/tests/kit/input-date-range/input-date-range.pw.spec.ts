@@ -45,39 +45,23 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.textfield.click();
 
-                await expect
-                    .soft(inputDateRange.textfield)
-                    .toHaveScreenshot(`01-textfield-size-${size}-empty.png`);
-                await expect
-                    .soft(inputDateRange.calendar)
-                    .toHaveScreenshot(`01-calendar-size-${size}-empty.png`);
+                await expect.soft(inputDateRange.textfield).toHaveScreenshot();
+                await expect.soft(inputDateRange.calendar).toHaveScreenshot();
 
                 await inputDateRange.textfield.pressSequentially('01');
 
-                await expect
-                    .soft(inputDateRange.textfield)
-                    .toHaveScreenshot(`02-textfield-size-${size}-set-day.png`);
-                await expect
-                    .soft(inputDateRange.calendar)
-                    .toHaveScreenshot(`02-calendar-size-${size}-set-day.png`);
+                await expect.soft(inputDateRange.textfield).toHaveScreenshot();
+                await expect.soft(inputDateRange.calendar).toHaveScreenshot();
 
                 await inputDateRange.textfield.pressSequentially('.06.1994');
 
-                await expect
-                    .soft(inputDateRange.textfield)
-                    .toHaveScreenshot(`03-textfield-size-${size}-set-from-date.png`);
-                await expect
-                    .soft(inputDateRange.calendar)
-                    .toHaveScreenshot(`03-calendar-size-${size}-set-from-date.png`);
+                await expect.soft(inputDateRange.textfield).toHaveScreenshot();
+                await expect.soft(inputDateRange.calendar).toHaveScreenshot();
 
                 await inputDateRange.textfield.pressSequentially('01.01.2022');
 
-                await expect
-                    .soft(inputDateRange.textfield)
-                    .toHaveScreenshot(`04-textfield-size-${size}-set-to-date.png`);
-                await expect
-                    .soft(inputDateRange.calendar)
-                    .toHaveScreenshot(`04-calendar-size-${size}-set-to-date.png`);
+                await expect.soft(inputDateRange.textfield).toHaveScreenshot();
+                await expect.soft(inputDateRange.calendar).toHaveScreenshot();
             });
         });
 
@@ -85,35 +69,25 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
             await inputDateRange.textfield.click();
 
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('05-textfield-maximum-month.png');
-            await expect
-                .soft(inputDateRange.calendar)
-                .toHaveScreenshot('05-calendar-maximum-month.png');
+            await expect.soft(inputDateRange.textfield).toHaveScreenshot();
+            await expect.soft(inputDateRange.calendar).toHaveScreenshot();
         });
 
         test('Minimum month more than current month', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
             await inputDateRange.textfield.click();
 
-            await expect
-                .soft(page)
-                .toHaveScreenshot('06-input-date-range-minimum-month.png', {
-                    mask: [page.locator('tui-doc-page header')],
-                });
+            await expect.soft(page).toHaveScreenshot({
+                mask: [page.locator('tui-doc-page header')],
+            });
         });
 
         test('Maximum month when items not empty', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1&max$=7`);
             await inputDateRange.textfield.click();
 
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('06-textfield-maximum-month-with-items.png');
-            await expect
-                .soft(inputDateRange.calendar)
-                .toHaveScreenshot('06-calendar-maximum-month-with-items.png');
+            await expect.soft(inputDateRange.textfield).toHaveScreenshot();
+            await expect.soft(inputDateRange.calendar).toHaveScreenshot();
         });
 
         describe('pads with zeroes if you enter an invalid date', () => {
@@ -228,9 +202,7 @@ test.describe('InputDateRange', () => {
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.getCalendarDay(20).then(async (x) => x!.hover());
 
-                await expect
-                    .soft(inputDateRange.calendar)
-                    .toHaveScreenshot('12-1-has-hover-effect.png');
+                await expect.soft(inputDateRange.calendar).toHaveScreenshot();
 
                 await calendarSheet.clickOnDay(15);
 
@@ -242,17 +214,13 @@ test.describe('InputDateRange', () => {
                 await inputDateRange.textfield.click();
                 await calendarSheet.getCalendarDay(22).then(async (x) => x!.hover());
 
-                await expect
-                    .soft(inputDateRange.calendar)
-                    .toHaveScreenshot('12-2-no-hover-effect.png');
+                await expect.soft(inputDateRange.calendar).toHaveScreenshot();
 
                 await calendarSheet.clickOnDay(22);
 
                 await calendarSheet.getCalendarDay(25).then(async (x) => x!.hover());
 
-                await expect
-                    .soft(inputDateRange.calendar)
-                    .toHaveScreenshot('12-3-has-hover-effect.png');
+                await expect.soft(inputDateRange.calendar).toHaveScreenshot();
             });
         });
 
@@ -268,13 +236,11 @@ test.describe('InputDateRange', () => {
 
             await expect(
                 page.locator('tui-dropdown tui-calendar-range'),
-            ).toHaveScreenshot('input-date-range-min-length-15-1.png');
+            ).toHaveScreenshot();
 
             await calendarSheet.clickOnDay(18);
 
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('input-date-range-min-length-15-2.png');
+            await expect.soft(inputDateRange.textfield).toHaveScreenshot();
         });
     });
 
@@ -298,11 +264,7 @@ test.describe('InputDateRange', () => {
             expect(await inputDateRange.itemHasCheckmark(2)).toBeTruthy();
 
             await expect(inputDateRange.template).toHaveText(' Yesterday ');
-            await expect
-                .soft(inputDateRange.calendar)
-                .toHaveScreenshot(
-                    '08-calendar-correct-selected-period-after-close-open.png',
-                );
+            await expect.soft(inputDateRange.calendar).toHaveScreenshot();
         });
     });
 
@@ -319,30 +281,22 @@ test.describe('InputDateRange', () => {
         await inputDateRange.selectItem(2);
 
         await expect(inputDateRange.template).toHaveText('Yesterday');
-        await expect
-            .soft(inputDateRange.host)
-            .toHaveScreenshot('13-data-range-custom-period-yesterday-focused.png');
+        await expect.soft(inputDateRange.host).toHaveScreenshot();
 
         await inputDateRange.textfield.blur();
 
-        await expect
-            .soft(inputDateRange.host)
-            .toHaveScreenshot('14-data-range-custom-period-yesterday-unfocused.png');
+        await expect.soft(inputDateRange.host).toHaveScreenshot();
 
         await inputDateRange.textfield.focus();
         await inputDateRange.textfield.click();
         await inputDateRange.selectItem(0);
 
         await expect(inputDateRange.template).toHaveText('For all the time');
-        await expect
-            .soft(inputDateRange.host)
-            .toHaveScreenshot('15-data-range-custom-period-today-focused.png');
+        await expect.soft(inputDateRange.host).toHaveScreenshot();
 
         await inputDateRange.textfield.blur();
 
-        await expect
-            .soft(inputDateRange.host)
-            .toHaveScreenshot('16-data-range-custom-period-today-unfocused.png');
+        await expect.soft(inputDateRange.host).toHaveScreenshot();
     });
 
     describe('items', () => {
@@ -370,9 +324,7 @@ test.describe('InputDateRange', () => {
             await expect(inputDateRange.textfield).toHaveValue(
                 `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
             );
-            await expect
-                .soft(example)
-                .toHaveScreenshot('07-item-and-calendar-interactions.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         // TODO: Fix the test
@@ -393,9 +345,7 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.press('Backspace');
 
             await expect(inputDateRange.textfield).toHaveValue('');
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('10-input-date-range.png');
+            await expect.soft(inputDateRange.textfield).toHaveScreenshot();
         });
 
         test('Enter item date, it converts to item name', async ({page}) => {
@@ -410,9 +360,7 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
 
             await expect(inputDateRange.template).toHaveText('Today');
-            await expect
-                .soft(inputDateRange.textfield)
-                .toHaveScreenshot('11-input-date-range.png');
+            await expect.soft(inputDateRange.textfield).toHaveScreenshot();
         });
     });
 });

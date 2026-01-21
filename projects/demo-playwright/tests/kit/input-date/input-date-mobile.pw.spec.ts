@@ -29,11 +29,11 @@ test.describe('InputDate and mobile user agent', () => {
         await page.waitForSelector('tui-sheet-dialog', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
 
-        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-1.png');
+        await expect.soft(page).toHaveScreenshot();
 
         await page.locator(november).nth(11).click();
 
-        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-2.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 
     test('InputDate mobile calendar', async ({page}) => {
@@ -53,14 +53,10 @@ test.describe('InputDate and mobile user agent', () => {
         await page.waitForSelector('tui-mobile-calendar-sheet', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
 
-        await expect
-            .soft(page)
-            .toHaveScreenshot('03-input-date-range-mobile-calendar-1.png');
+        await expect.soft(page).toHaveScreenshot();
 
         await page.locator(november).nth(11).click();
 
-        await expect
-            .soft(page)
-            .toHaveScreenshot('03-input-date-range-mobile-calendar-2.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 });

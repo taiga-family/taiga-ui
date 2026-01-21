@@ -242,20 +242,14 @@ test.describe('InputTime', () => {
 
         test('Do not match value until user is writing value', async ({page}) => {
             await inputTime.fill('16:45');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('input-time-option-hh-mm__01.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await page.keyboard.press('Backspace');
             await page.keyboard.press('Backspace');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('input-time-option-hh-mm__02.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await page.keyboard.type('45');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('input-time-option-hh-mm__03.png');
+            await expect.soft(example).toHaveScreenshot();
         });
     });
 });

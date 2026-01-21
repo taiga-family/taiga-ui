@@ -19,6 +19,6 @@ test.describe('DataListWrapper', () => {
 
         await expect
             .soft(page.locator('tui-dropdown tui-data-list-wrapper'))
-            .toHaveScreenshot('01-data-list-wrapper.png');
+            .toHaveScreenshot();
     });
 });

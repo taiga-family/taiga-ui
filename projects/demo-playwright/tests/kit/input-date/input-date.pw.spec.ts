@@ -28,12 +28,8 @@ test.describe('InputDate', () => {
 
             await inputDate.textfield.click();
 
-            await expect
-                .soft(inputDate.textfield)
-                .toHaveScreenshot('05-input-actual-min-max.png');
-            await expect
-                .soft(inputDate.calendar)
-                .toHaveScreenshot('05-calendar-actual-min-max.png');
+            await expect.soft(inputDate.textfield).toHaveScreenshot();
+            await expect.soft(inputDate.calendar).toHaveScreenshot();
         });
     });
 
@@ -69,15 +65,15 @@ test.describe('InputDate', () => {
                 await inputDate.textfield.click();
                 await documentationPage.prepareBeforeScreenshot();
 
-                await expect.soft(page).toHaveScreenshot(`02-01-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot();
 
                 await page.keyboard.type('01.');
 
-                await expect.soft(page).toHaveScreenshot(`02-02-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot();
 
                 await page.keyboard.type('06.1994');
 
-                await expect.soft(page).toHaveScreenshot(`02-03-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot();
             });
         });
 
@@ -88,7 +84,7 @@ test.describe('InputDate', () => {
             await inputDate.textfield.click();
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect.soft(page).toHaveScreenshot('03-input-date.png');
+            await expect.soft(page).toHaveScreenshot();
         });
 
         test('minimum month more than current month', async ({page}) => {
@@ -98,7 +94,7 @@ test.describe('InputDate', () => {
             await inputDate.textfield.click();
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect.soft(page).toHaveScreenshot('04-input-date.png');
+            await expect.soft(page).toHaveScreenshot();
         });
 
         test.describe('Invalid date cases', () => {
@@ -117,9 +113,7 @@ test.describe('InputDate', () => {
                     'selectionEnd',
                     '03.05'.length,
                 );
-                await expect
-                    .soft(inputDate.textfield)
-                    .toHaveScreenshot('05-input-date.png');
+                await expect.soft(inputDate.textfield).toHaveScreenshot();
             });
 
             test('does not accept month > 12', async ({page}) => {
@@ -136,9 +130,7 @@ test.describe('InputDate', () => {
                     'selectionEnd',
                     '17.1'.length,
                 );
-                await expect
-                    .soft(inputDate.textfield)
-                    .toHaveScreenshot('06-input-date.png');
+                await expect.soft(inputDate.textfield).toHaveScreenshot();
             });
 
             test('Type 999999 => 09.09.9999', async ({page}) => {
@@ -155,9 +147,7 @@ test.describe('InputDate', () => {
                     'selectionEnd',
                     '09.09.9999'.length,
                 );
-                await expect
-                    .soft(inputDate.textfield)
-                    .toHaveScreenshot('07-input-date.png');
+                await expect.soft(inputDate.textfield).toHaveScreenshot();
             });
         });
     });

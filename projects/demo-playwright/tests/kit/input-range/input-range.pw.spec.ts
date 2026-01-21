@@ -36,16 +36,12 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowDown');
 
             await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}5`);
-            await expect
-                .soft(example)
-                .toHaveScreenshot('01-input-range-start-5-end10.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await page.keyboard.down('ArrowDown');
 
             await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}10`);
-            await expect
-                .soft(example)
-                .toHaveScreenshot('02-input-range-start-10-end10.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('pressing Arrow Down decreases END value when END textfield is focused', async ({
@@ -55,12 +51,12 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowDown');
 
             await expect(inputRange.textfieldEnd).toHaveValue('5');
-            await expect.soft(example).toHaveScreenshot('03-input-range-start0-end5.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await page.keyboard.down('ArrowDown');
 
             await expect(inputRange.textfieldEnd).toHaveValue('0');
-            await expect.soft(example).toHaveScreenshot('04-input-range-start0-end0.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('pressing Arrow Up increases START value when START textfield is focused', async ({
@@ -70,16 +66,12 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowUp');
 
             await expect(inputRange.textfieldStart).toHaveValue('5');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('05-input-range-start5-end10.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await page.keyboard.down('ArrowUp');
 
             await expect(inputRange.textfieldStart).toHaveValue('10');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('06-input-range-start10-end10.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('pressing Arrow Up increases END value when END textfield is focused', async ({
@@ -89,16 +81,12 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowUp');
 
             await expect(inputRange.textfieldEnd).toHaveValue('15');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('07-input-range-start0-end15.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await page.keyboard.down('ArrowUp');
 
             await expect(inputRange.textfieldEnd).toHaveValue('20');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('08-input-range-start0-end20.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('cannot set END value less than START value via ArrowDown', async ({
@@ -113,7 +101,7 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowDown');
 
             await expect(inputRange.textfieldEnd).toHaveValue('0');
-            await expect.soft(example).toHaveScreenshot('09-input-range-start0-end0.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('cannot set START value more than END value via ArrowUp', async ({page}) => {
@@ -126,9 +114,7 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowUp');
 
             await expect(inputRange.textfieldStart).toHaveValue('10');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('10-input-range-start10-end10.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('pressing ArrowRight does not change any value (this key is for caret navigation only)', async ({
@@ -144,9 +130,7 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowRight');
             await expect(inputRange.textfieldEnd).toHaveValue('10');
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot('11-input-range-start0-end10.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('pressing ArrowLeft does not change any value (this key is for caret navigation only)', async ({
@@ -162,9 +146,7 @@ describe('InputRange', () => {
             await page.keyboard.down('ArrowLeft');
             await expect(inputRange.textfieldEnd).toHaveValue('10');
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot('12-input-range-start0-end10.png');
+            await expect.soft(example).toHaveScreenshot();
         });
     });
 
@@ -254,9 +236,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('100');
                 await expect(inputRange.textfieldEnd).toBeFocused();
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('13-input-range-start0-end100.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('clicking on the START side changes only the START value (+ focuses the START textfield)', async ({
@@ -269,9 +249,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}100`);
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
                 await expect(inputRange.textfieldStart).toBeFocused();
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('14-input-range-start-100-end10.png');
+                await expect.soft(example).toHaveScreenshot();
             });
         });
 
@@ -295,9 +273,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldStart).toBeFocused();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('15-input-range-start0-end10.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('click on the END thumb (with NO value changes) => focuses the END textfield', async ({
@@ -313,9 +289,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
                 await expect(inputRange.textfieldEnd).toBeFocused();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('16-input-range-start0-end10.png');
+                await expect.soft(example).toHaveScreenshot();
             });
         });
     });
@@ -351,9 +325,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('20');
                 await expect(inputRange.textfieldEnd).toBeFocused();
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('21-input-range-start0-end20.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('keeps focus if the START textfield was focused before', async ({
@@ -363,9 +335,7 @@ describe('InputRange', () => {
 
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('22-input-range-start0-end10.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
@@ -374,9 +344,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}20`);
                 await expect(inputRange.textfieldStart).toBeFocused();
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('23-input-range-start-20-end10.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('does not focus anything if no textfield was focused before', async ({
@@ -399,9 +367,7 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldEnd).toHaveValue('20');
                 await expect(inputRange.textfieldEnd).not.toBeFocused();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('25-input-range-start-20-end20.png');
+                await expect.soft(example).toHaveScreenshot();
             });
         });
     });
@@ -418,19 +384,13 @@ describe('InputRange', () => {
             await tuiGoto(page, `${DemoRoute.InputRange}/API?content$=2&max=100`);
             await inputRange.textfieldEnd.fill('100');
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot(
-                    '26-input-range-start-no-content--end-has-content-focused.png',
-                );
+            await expect.soft(example).toHaveScreenshot();
 
             await inputRange.textfieldEnd.blur();
 
             await expect(inputRange.textfieldStart).toHaveValue('0');
             await expect(inputRange.textfieldEnd).toHaveValue('100');
-            await expect(example).toHaveScreenshot(
-                '26-input-range-start-no-content--end-has-content.png',
-            );
+            await expect(example).toHaveScreenshot();
         });
 
         test('START textfield has content + END textfield has content', async ({
@@ -440,19 +400,13 @@ describe('InputRange', () => {
             await inputRange.textfieldEnd.fill('100');
             await inputRange.textfieldStart.fill('100');
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot(
-                    '27-input-range-start-has-content--end-has-content-focused.png',
-                );
+            await expect.soft(example).toHaveScreenshot();
 
             await inputRange.textfieldStart.blur();
 
             await expect(inputRange.textfieldStart).toHaveValue('100');
             await expect(inputRange.textfieldEnd).toHaveValue('100');
-            await expect(example).toHaveScreenshot(
-                '27-input-range-start-has-content--end-has-content.png',
-            );
+            await expect(example).toHaveScreenshot();
         });
 
         test('START textfield has content + END textfield without content', async ({
@@ -461,9 +415,7 @@ describe('InputRange', () => {
             await tuiGoto(page, `${DemoRoute.InputRange}/API?content$=3&min=0`);
             await expect(inputRange.textfieldStart).toHaveValue('0');
             await expect(inputRange.textfieldEnd).toHaveValue('10');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('28-input-range-start-has-content--end-no-content.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         ['readOnly', 'disabled'].forEach((nonInteractiveProp) => {
@@ -475,9 +427,7 @@ describe('InputRange', () => {
                     );
                     await expect(inputRange.textfieldStart).toHaveValue('0');
                     await expect(inputRange.textfieldEnd).toHaveValue('10');
-                    await expect(example).toHaveScreenshot(
-                        `29-input-range-${nonInteractiveProp}-start-no-content--end-no-content.png`,
-                    );
+                    await expect(example).toHaveScreenshot();
                 });
 
                 test('START & END textfields both have content', async ({page}) => {
@@ -488,9 +438,7 @@ describe('InputRange', () => {
                     await expect(example.locator('tui-input-range')).toContainText(
                         'START – END',
                     );
-                    await expect(example).toHaveScreenshot(
-                        `30-input-range-${nonInteractiveProp}-start-has-content--end-has-content.png`,
-                    );
+                    await expect(example).toHaveScreenshot();
                 });
 
                 test('START textfield without content + END textfield has content', async ({
@@ -503,9 +451,7 @@ describe('InputRange', () => {
                     await expect(example.locator('tui-input-range')).toContainText(
                         '0 – MAX',
                     );
-                    await expect(example).toHaveScreenshot(
-                        `31-input-range-${nonInteractiveProp}-start-no-content--end-has-content.png`,
-                    );
+                    await expect(example).toHaveScreenshot();
                 });
 
                 test('START textfield has content + END textfield without content', async ({
@@ -518,9 +464,7 @@ describe('InputRange', () => {
                     await expect(example.locator('tui-input-range')).toContainText(
                         'MIN – 10',
                     );
-                    await expect(example).toHaveScreenshot(
-                        `32-input-range-${nonInteractiveProp}-start-has-content--end-no-content.png`,
-                    );
+                    await expect(example).toHaveScreenshot();
                 });
 
                 test('START textfield without content + END textfield has non-primitive content', async ({
@@ -530,9 +474,7 @@ describe('InputRange', () => {
                         page,
                         `${DemoRoute.InputRange}/API?content$=5&${nonInteractiveProp}=true`,
                     );
-                    await expect(example).toHaveScreenshot(
-                        `33-input-range-${nonInteractiveProp}-start-no-content--end-non-primitive-content.png`,
-                    );
+                    await expect(example).toHaveScreenshot();
                 });
             });
         });
@@ -546,14 +488,10 @@ describe('InputRange', () => {
                     );
                     await expect(inputRange.textfieldStart).toHaveValue('0');
                     await expect(inputRange.textfieldEnd).toHaveValue('10');
-                    await expect(example).toHaveScreenshot(
-                        `34-input-range--size-${size}--start-has-content--end-has-content.png`,
-                    );
+                    await expect(example).toHaveScreenshot();
 
                     await inputRange.textfieldEnd.focus();
-                    await expect(example).toHaveScreenshot(
-                        `34-input-range--size-${size}--start-has-content--end-no-content.png`,
-                    );
+                    await expect(example).toHaveScreenshot();
                 });
             });
         });

@@ -20,7 +20,7 @@ test.describe('ActionBar', () => {
         await api.hideContent();
         await api.prepareBeforeScreenshot();
 
-        await expect.soft(actionBarExample).toHaveScreenshot('01-actions-bar.png');
+        await expect.soft(actionBarExample).toHaveScreenshot();
     });
 
     test('should show on top', async ({page}) => {
@@ -36,6 +36,6 @@ test.describe('ActionBar', () => {
         await api.hideContent();
         await api.prepareBeforeScreenshot();
 
-        await expect.soft(actionBarExample).toHaveScreenshot('02-actions-bar.png');
+        await expect.soft(actionBarExample).toHaveScreenshot();
     });
 });

@@ -183,9 +183,7 @@ describe('InputMonth', () => {
             test('displays custom option on dropdown', async () => {
                 await inputMonth.textfield.click();
 
-                await expect
-                    .soft(dropdown)
-                    .toHaveScreenshot('input-month-with-dropdown-customization.png');
+                await expect.soft(dropdown).toHaveScreenshot();
             });
 
             test('closes dropdown after click on custom option', async () => {
@@ -231,9 +229,7 @@ describe('InputMonth', () => {
                 }).rejects.toThrow();
 
                 await expect(inputMonth.textfield).toHaveValue('');
-                await expect(example).toHaveScreenshot(
-                    'input-month-range-disabled-items.png',
-                );
+                await expect(example).toHaveScreenshot();
             });
         });
     });

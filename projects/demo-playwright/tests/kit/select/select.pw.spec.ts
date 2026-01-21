@@ -34,7 +34,7 @@ describe('Select', () => {
                 icons: await example.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect.soft(example).toHaveScreenshot('01-checkmark-size.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('opens dropdown by click on icon', async ({page}) => {
@@ -52,7 +52,7 @@ describe('Select', () => {
                 icons: await example.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect.soft(select.dropdown).toHaveScreenshot('01-click-arrow.png');
+            await expect.soft(select.dropdown).toHaveScreenshot();
         });
     });
 

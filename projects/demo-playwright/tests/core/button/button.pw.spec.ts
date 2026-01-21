@@ -16,11 +16,7 @@ test.describe('Button', () => {
 
         await button.hover();
 
-        await expect
-            .soft(button)
-            .toHaveScreenshot(
-                '01-[darkMode=true]-[appearance=icon]-[data-state=hovered].png',
-            );
+        await expect.soft(button).toHaveScreenshot();
     });
 
     test('hover state', async ({page}) => {
@@ -30,7 +26,7 @@ test.describe('Button', () => {
         const button = apiPageExample.locator('[tuiButton]');
 
         await button.hover();
-        await expect.soft(button).toHaveScreenshot('button-hover.png');
+        await expect.soft(button).toHaveScreenshot();
     });
 
     test('active state', async ({page}) => {
@@ -48,6 +44,6 @@ test.describe('Button', () => {
         await page.mouse.move(x + width / 2, y + height / 2);
         await page.mouse.down();
 
-        await expect.soft(button).toHaveScreenshot('button-active.png');
+        await expect.soft(button).toHaveScreenshot();
     });
 });

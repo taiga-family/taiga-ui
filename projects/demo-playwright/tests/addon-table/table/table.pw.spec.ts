@@ -10,7 +10,7 @@ test.describe('Table', () => {
 
         await addColumnButton.click();
 
-        await expect.soft(example).toHaveScreenshot('01-table-dynamic.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test('Virtual scroll sorting example', async ({page}) => {
@@ -18,19 +18,19 @@ test.describe('Table', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#virtual-scroll');
         const age = example.locator('th').filter({hasText: 'Age'});
 
-        await expect.soft(example).toHaveScreenshot('02-table-age-no-sort.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await age.click();
-        await expect.soft(example).toHaveScreenshot('02-table-age-asc.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await age.click();
-        await expect.soft(example).toHaveScreenshot('02-table-age-desc.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await age.click();
-        await expect.soft(example).toHaveScreenshot('02-table-age-cleared.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await age.click();
-        await expect.soft(example).toHaveScreenshot('02-table-age-asc-again.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test('Editable sorting example', async ({page}) => {
@@ -38,19 +38,19 @@ test.describe('Table', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#editable');
         const total = example.locator('th').filter({hasText: 'Total'});
 
-        await expect.soft(example).toHaveScreenshot('03-table-total-no-sort.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await total.click();
-        await expect.soft(example).toHaveScreenshot('03-table-total-asc.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await total.click();
-        await expect.soft(example).toHaveScreenshot('03-table-total-desc.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await total.click();
-        await expect.soft(example).toHaveScreenshot('03-total-cleared.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await total.click();
-        await expect.soft(example).toHaveScreenshot('03-total-asc-again.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test('tuiSort directive', async ({page}) => {
@@ -64,29 +64,21 @@ test.describe('Table', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiCheckbox]').click();
 
-        await expect
-            .soft(example)
-            .toHaveScreenshot('04-table-with-tui-sort-by-1-default.png');
+        await expect.soft(example).toHaveScreenshot();
 
         for (let i = 1; i <= 3; i++) {
             await name.click();
-            await expect
-                .soft(example)
-                .toHaveScreenshot(`04-table-with-tui-sort-by-2-${i}-name.png`);
+            await expect.soft(example).toHaveScreenshot();
         }
 
         for (let i = 1; i <= 3; i++) {
             await age.click();
-            await expect
-                .soft(example)
-                .toHaveScreenshot(`04-table-with-tui-sort-by-3-${i}-age.png`);
+            await expect.soft(example).toHaveScreenshot();
         }
 
         for (let i = 1; i <= 3; i++) {
             await dateOfBirth.click();
-            await expect
-                .soft(example)
-                .toHaveScreenshot(`04-table-with-tui-sort-by-4-${i}-dob.png`);
+            await expect.soft(example).toHaveScreenshot();
         }
     });
 
@@ -98,31 +90,31 @@ test.describe('Table', () => {
         checkboxes[1]?.click();
 
         await page.waitForTimeout(100);
-        await expect.soft(example).toHaveScreenshot('02-checkboxes-1.png');
+        await expect.soft(example).toHaveScreenshot();
 
         checkboxes[2]?.click();
 
         await page.waitForTimeout(100);
-        await expect.soft(example).toHaveScreenshot('02-checkboxes-2.png');
+        await expect.soft(example).toHaveScreenshot();
 
         checkboxes[3]?.click();
 
         await page.waitForTimeout(100);
-        await expect.soft(example).toHaveScreenshot('02-checkboxes-3.png');
+        await expect.soft(example).toHaveScreenshot();
 
         checkboxes[3]?.click();
 
         await page.waitForTimeout(100);
-        await expect.soft(example).toHaveScreenshot('02-checkboxes-4.png');
+        await expect.soft(example).toHaveScreenshot();
 
         checkboxes[0]?.click();
 
         await page.waitForTimeout(100);
-        await expect.soft(example).toHaveScreenshot('02-checkboxes-5.png');
+        await expect.soft(example).toHaveScreenshot();
 
         checkboxes[0]?.click();
 
         await page.waitForTimeout(100);
-        await expect.soft(example).toHaveScreenshot('02-checkboxes-6.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 });

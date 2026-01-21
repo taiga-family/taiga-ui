@@ -27,9 +27,7 @@ describe('TuiProgressCircle', () => {
                                     'tui-progress-circle',
                                 ),
                             )
-                            .toHaveScreenshot(
-                                `progress-circle--size-${size}--value-${value}--max-10.png`,
-                            );
+                            .toHaveScreenshot();
                     });
                 });
             });

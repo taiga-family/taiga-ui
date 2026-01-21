@@ -34,9 +34,7 @@ describe('ComboBox', () => {
                 hasText: 'Austria',
             });
 
-            await expect
-                .soft(option)
-                .toHaveScreenshot('01-combobox-option-no-checkmark.png');
+            await expect.soft(option).toHaveScreenshot();
 
             await expect(example).toContainText('"testValue": null');
         });
@@ -52,9 +50,7 @@ describe('ComboBox', () => {
                 hasText: 'Austria',
             });
 
-            await expect
-                .soft(option)
-                .toHaveScreenshot('02-combobox-option-has-checkmark.png');
+            await expect.soft(option).toHaveScreenshot();
 
             await expect(example).toContainText('"id": "AT"');
             await expect(example).toContainText('"name": "Austria"');
@@ -263,11 +259,7 @@ describe('ComboBox', () => {
 
                 await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
 
-                await expect
-                    .soft(comboBox.dropdown)
-                    .toHaveScreenshot(
-                        'example---server-side-filtering---combobox-option-has-checkmark.png',
-                    );
+                await expect.soft(comboBox.dropdown).toHaveScreenshot();
             });
         });
 

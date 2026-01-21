@@ -11,6 +11,6 @@ test.describe('breadcrumbs', () => {
         await example.scrollIntoViewIfNeeded();
         await more.click();
 
-        await expect(page.locator('tui-dropdown')).toHaveScreenshot('01-breadcrumbs.png');
+        await expect(page.locator('tui-dropdown')).toHaveScreenshot();
     });
 });

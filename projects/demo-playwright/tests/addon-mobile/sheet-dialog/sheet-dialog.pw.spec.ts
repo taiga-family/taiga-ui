@@ -15,13 +15,13 @@ test.describe('SheetDialog', () => {
         const button = example.locator('button:has-text("Click")');
 
         await button.click();
-        await expect.soft(page).toHaveScreenshot('01-sheet-dialog.png');
+        await expect.soft(page).toHaveScreenshot();
 
         await page.evaluate(() => {
             history.back();
             history.back();
         });
 
-        await expect.soft(page).toHaveScreenshot('02-sheet-dialog.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 });

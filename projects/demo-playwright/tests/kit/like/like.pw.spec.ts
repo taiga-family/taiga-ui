@@ -10,7 +10,7 @@ test.describe('TuiLike', () => {
 
             await example.locator('[tuiLike]').first().click();
 
-            await expect.soft(example).toHaveScreenshot('01-basic-like.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('External icon loads', async ({page}) => {
@@ -21,7 +21,7 @@ test.describe('TuiLike', () => {
 
             await example.locator('[tuiLike]').first().click();
 
-            await expect.soft(example).toHaveScreenshot('02-external-icon-like.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('Other appearances hover', async ({page}) => {
@@ -32,9 +32,7 @@ test.describe('TuiLike', () => {
 
             await example.locator('[tuiLike]').nth(1).hover();
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot('03-other-appearances-hover-like.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('Other appearances click', async ({page}) => {
@@ -45,9 +43,7 @@ test.describe('TuiLike', () => {
 
             await example.locator('[tuiLike]').nth(1).click();
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot('04-other-appearances-click-like.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('With forms click', async ({page}) => {
@@ -56,19 +52,15 @@ test.describe('TuiLike', () => {
 
             await example.locator('[tuiLike]').nth(0).click();
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot('05-with-forms-ngModel-click-like.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await example.locator('[tuiLike]').nth(1).click();
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot('06-with-forms-reactive-forms-click-like.png');
+            await expect.soft(example).toHaveScreenshot();
 
             await example.locator('[tuiButton]').click();
 
-            await expect.soft(example).toHaveScreenshot('07-with-forms-click-toggle.png');
+            await expect.soft(example).toHaveScreenshot();
         });
     });
 });

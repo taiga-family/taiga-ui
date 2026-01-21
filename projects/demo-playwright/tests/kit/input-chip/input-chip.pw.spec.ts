@@ -20,12 +20,12 @@ test.describe('InputChip', () => {
 
             await chip.addChip('Very looooooooooooooooooooooooong Text');
 
-            await expect.soft(basic).toHaveScreenshot('01-input-chip-basic.png');
+            await expect.soft(basic).toHaveScreenshot();
 
             await chip.addChip('1');
             await chip.addChip('2');
 
-            await expect.soft(basic).toHaveScreenshot('02-input-chip-basic-multi.png');
+            await expect.soft(basic).toHaveScreenshot();
         });
 
         test('forbid leading/trailing spaces normalization', async ({page}) => {
@@ -36,7 +36,7 @@ test.describe('InputChip', () => {
 
             await chip.addChip(' taiga ui library ');
 
-            await expect.soft(basic).toHaveScreenshot('05-input-chip-trimmed.png');
+            await expect.soft(basic).toHaveScreenshot();
         });
 
         test('regex separator works when copying values from spreadsheet', async ({
@@ -50,7 +50,7 @@ test.describe('InputChip', () => {
             await chip.cleaner.click();
             await chip.addChip('repo\ttest\tseparator');
 
-            await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator.png');
+            await expect.soft(basic).toHaveScreenshot();
         });
     });
 
@@ -67,7 +67,7 @@ test.describe('InputChip', () => {
 
             expect(chipCount).toEqual(3);
 
-            await expect.soft(example).toHaveScreenshot('input-chip-separator.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('unique false', async ({page}) => {
@@ -82,7 +82,7 @@ test.describe('InputChip', () => {
 
             expect(chipCount).toEqual(3);
 
-            await expect.soft(example).toHaveScreenshot('input-chip-not-unique.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('unique true', async ({page}) => {
@@ -97,7 +97,7 @@ test.describe('InputChip', () => {
 
             expect(chipCount).toEqual(1);
 
-            await expect.soft(example).toHaveScreenshot('input-chip-unique.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('readonly true', async ({page}) => {
@@ -116,7 +116,7 @@ test.describe('InputChip', () => {
 
             await inputChip.chips.first().hover();
 
-            await expect.soft(example).toHaveScreenshot('input-chip-readonly-hover.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('chip cleaner', async ({page}) => {
@@ -135,7 +135,7 @@ test.describe('InputChip', () => {
 
             expect(await chips.count()).toEqual(2);
 
-            await expect.soft(example).toHaveScreenshot('input-chip-cleaner.png');
+            await expect.soft(example).toHaveScreenshot();
         });
 
         test('textfield cleaner', async ({page}) => {
@@ -151,9 +151,7 @@ test.describe('InputChip', () => {
 
             expect(await inputChip.chips.count()).toEqual(0);
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot('input-chip-textfield-cleaner.png');
+            await expect.soft(example).toHaveScreenshot();
         });
     });
 
@@ -174,7 +172,7 @@ test.describe('InputChip', () => {
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
-                await expect.soft(example).toHaveScreenshot('multiselect-any-value.png');
+                await expect.soft(example).toHaveScreenshot();
                 await multiselect.input.blur();
 
                 expect(await multiselect.chips.count()).toEqual(1);
@@ -187,9 +185,7 @@ test.describe('InputChip', () => {
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('multiselect-value-from-list.png');
+                await expect.soft(example).toHaveScreenshot();
                 await multiselect.input.blur();
 
                 expect(await multiselect.chips.count()).toEqual(0);
@@ -206,9 +202,7 @@ test.describe('InputChip', () => {
 
                 await options.nth(0).click();
                 await options.nth(1).click();
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('multiselect-select-values-from-list.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('checkboxes', async () => {
@@ -222,9 +216,7 @@ test.describe('InputChip', () => {
 
                 await options.nth(0).click();
                 await options.nth(1).click();
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('multiselect-select-checkboxes.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('working with objects', async () => {
@@ -241,9 +233,7 @@ test.describe('InputChip', () => {
                     .first()
                     .click();
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot('multiselect-select-objects.png');
+                await expect.soft(example).toHaveScreenshot();
             });
         });
     });

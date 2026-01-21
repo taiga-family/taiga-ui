@@ -15,11 +15,11 @@ test.describe('Navigation', () => {
 
         await example.scrollIntoViewIfNeeded();
 
-        await expect.soft(example).toHaveScreenshot('01-navigation.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await example.locator('[automation-id="setting"]').hover();
 
-        await expect.soft(example).toHaveScreenshot('02-navigation.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test('Show hint in aside', async ({page, browserName}) => {
@@ -37,7 +37,7 @@ test.describe('Navigation', () => {
 
         await example.locator('[automation-id="hint"]').hover();
 
-        await expect.soft(example).toHaveScreenshot('03-navigation.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test('A12y', async ({page, browserName}) => {
@@ -53,17 +53,17 @@ test.describe('Navigation', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('aside footer button').nth(1).click();
 
-        await expect.soft(example).toHaveScreenshot('04-navigation.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await example.locator('[automation-id="setting"]').focus();
         await page.keyboard.press('Enter');
 
-        await expect.soft(example).toHaveScreenshot('05-navigation.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await example.locator('[automation-id="hint"]').focus();
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
 
-        await expect.soft(example).toHaveScreenshot('06-navigation.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 });

@@ -20,9 +20,7 @@ test.describe('Breakpoint token', () => {
             await tuiGoto(page, DemoRoute.Tokens);
             const example = new TuiDocumentationPagePO(page).getExample('#breakpoint');
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot(`breakpoint-${width}x${height}.png`);
+            await expect.soft(example).toHaveScreenshot();
         });
     });
 });

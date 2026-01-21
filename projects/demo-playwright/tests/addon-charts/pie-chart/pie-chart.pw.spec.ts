@@ -11,9 +11,7 @@ test.describe('PieChart', () => {
             .getByTestId('tui-pie-chart__segment')
             .all();
 
-        await expect
-            .soft(example)
-            .toHaveScreenshot('01-pie-chart-with-label-no-hover.png');
+        await expect.soft(example).toHaveScreenshot();
 
         for (const [i, segment] of pieChartSegments.entries()) {
             await segment.hover();
@@ -21,9 +19,7 @@ test.describe('PieChart', () => {
             await expect(page.locator('tui-hint')).toHaveCount(1);
             await expect(page.locator('tui-hint')).toBeAttached();
 
-            await expect
-                .soft(example)
-                .toHaveScreenshot(`01-pie-chart-with-label--hover-${i + 1}.png`);
+            await expect.soft(example).toHaveScreenshot();
         }
     });
 });

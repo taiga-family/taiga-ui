@@ -365,9 +365,7 @@ describe('InputNumber', () => {
                     await inputNumber.stepUp.press('ArrowUp');
 
                     await expect(inputNumber.textfield).toHaveValue('10');
-                    await expect
-                        .soft(inputNumber.host)
-                        .toHaveScreenshot('input-number-with-disabled-step-up.png');
+                    await expect.soft(inputNumber.host).toHaveScreenshot();
                 });
 
                 test('Minimum limit cannot be violated via steps', async () => {
@@ -375,9 +373,7 @@ describe('InputNumber', () => {
                     await inputNumber.textfield.press('ArrowDown');
 
                     await expect(inputNumber.textfield).toHaveValue('0');
-                    await expect
-                        .soft(inputNumber.host)
-                        .toHaveScreenshot('input-number-with-disabled-step-down.png');
+                    await expect.soft(inputNumber.host).toHaveScreenshot();
 
                     await inputNumber.textfield.fill('2');
                     await inputNumber.stepDown.click();
@@ -396,11 +392,7 @@ describe('InputNumber', () => {
                                 `${DemoRoute.InputNumber}/API?step=1&tuiTextfieldSize=${size}`,
                             );
 
-                            await expect
-                                .soft(inputNumber.host)
-                                .toHaveScreenshot(
-                                    `input-number-with-step-no-value-tuiTextfieldSize=${size}.png`,
-                                );
+                            await expect.soft(inputNumber.host).toHaveScreenshot();
                         });
                     });
                 });
@@ -414,11 +406,7 @@ describe('InputNumber', () => {
                             );
                             await inputNumber.textfield.fill('42');
 
-                            await expect
-                                .soft(inputNumber.host)
-                                .toHaveScreenshot(
-                                    `input-number-with-step-with-value-tuiTextfieldSize=${size}.png`,
-                                );
+                            await expect.soft(inputNumber.host).toHaveScreenshot();
                         });
                     });
                 });
@@ -1112,17 +1100,11 @@ describe('InputNumber', () => {
                     );
 
                     await expect(inputNumber.textfield).toHaveValue('');
-                    await expect
-                        .soft(example)
-                        .toHaveScreenshot(
-                            `input-number-unfocused-empty-size-${size}.png`,
-                        );
+                    await expect.soft(example).toHaveScreenshot();
 
                     await inputNumber.textfield.focus();
 
-                    await expect
-                        .soft(example)
-                        .toHaveScreenshot(`input-number-focused-empty-size-${size}.png`);
+                    await expect.soft(example).toHaveScreenshot();
                 });
 
                 test(`Textfield has value | ${size}`, async ({page}) => {
@@ -1134,19 +1116,11 @@ describe('InputNumber', () => {
                     await inputNumber.textfield.fill('12.34');
 
                     await expect(inputNumber.textfield).toHaveValue('12.34');
-                    await expect
-                        .soft(example)
-                        .toHaveScreenshot(
-                            `input-number-focused-with-value-size-${size}.png`,
-                        );
+                    await expect.soft(example).toHaveScreenshot();
 
                     await inputNumber.textfield.blur();
 
-                    await expect
-                        .soft(example)
-                        .toHaveScreenshot(
-                            `input-number-unfocused-with-value-size-${size}.png`,
-                        );
+                    await expect.soft(example).toHaveScreenshot();
                 });
             });
         });

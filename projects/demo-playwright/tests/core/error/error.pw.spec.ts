@@ -15,9 +15,7 @@ test.describe('TuiError', () => {
         await expect(checkbox).toBeChecked();
         await expect(error).toBeVisible();
         await expect(error).toHaveText('An error');
-        await expect
-            .soft(example)
-            .toHaveScreenshot('01-error.png', {animations: 'allow'});
+        await expect.soft(example).toHaveScreenshot({animations: 'allow'});
     });
 
     test('Errors of invalid control are shown correctly', async ({page}) => {
@@ -29,9 +27,7 @@ test.describe('TuiError', () => {
         await input.focus();
         await input.blur();
         await page.waitForTimeout(500);
-        await expect
-            .soft(example)
-            .toHaveScreenshot('02-error.png', {animations: 'allow'});
+        await expect.soft(example).toHaveScreenshot({animations: 'allow'});
     });
 
     test('Submit invalid form', async ({page}) => {
@@ -41,8 +37,6 @@ test.describe('TuiError', () => {
 
         await example.locator('button').last().click();
         await page.waitForTimeout(500);
-        await expect
-            .soft(example)
-            .toHaveScreenshot('03-error.png', {animations: 'allow'});
+        await expect.soft(example).toHaveScreenshot({animations: 'allow'});
     });
 });

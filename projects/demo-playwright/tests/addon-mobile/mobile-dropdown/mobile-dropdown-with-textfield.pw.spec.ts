@@ -19,7 +19,7 @@ describe('DropdownMobile for textfields', () => {
         await page.locator('tui-sheet-dialog [tuiOption]').first().hover();
 
         await documentation.hideContent();
-        await expect.soft(page).toHaveScreenshot('dropdown-mobile-with-select.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 
     test('with legacy multi-select', async ({page}) => {
@@ -31,9 +31,7 @@ describe('DropdownMobile for textfields', () => {
         await example.locator('tui-textfield[multi]').click();
         await page.locator('tui-dropdown-mobile [tuiOption]').first().click();
 
-        await expect
-            .soft(page)
-            .toHaveScreenshot('dropdown-mobile-with-legacy-multi-select.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 
     test('with multi-select (full screen mode)', async ({page}) => {
@@ -44,9 +42,7 @@ describe('DropdownMobile for textfields', () => {
         await example.locator('tui-textfield[multi][tuiDropdownMobile]').click();
         await page.locator('tui-dropdown-mobile [tuiOption]').first().click();
 
-        await expect
-            .soft(page)
-            .toHaveScreenshot('dropdown-mobile-with-multi-select-fullscreen.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 
     test('with multi-select (sheet mode)', async ({page}) => {
@@ -59,8 +55,6 @@ describe('DropdownMobile for textfields', () => {
         await page.locator('tui-sheet-dialog [tuiOption]').last().click();
 
         await documentation.hideContent();
-        await expect
-            .soft(page)
-            .toHaveScreenshot('dropdown-mobile-with-multi-select-sheet.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 });

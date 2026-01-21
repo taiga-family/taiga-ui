@@ -14,8 +14,6 @@ test.describe('NotificationService', () => {
 
         await showAlertButton.click();
 
-        await expect
-            .soft(page.locator('tui-notification-alert'))
-            .toHaveScreenshot('01-alert.png');
+        await expect.soft(page.locator('tui-notification-alert')).toHaveScreenshot();
     });
 });

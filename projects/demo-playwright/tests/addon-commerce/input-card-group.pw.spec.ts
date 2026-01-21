@@ -30,22 +30,16 @@ test.describe('InputCardGroup', () => {
             await numberTextfield.pressSequentially(entryValue);
 
             await expect(numberTextfield).toHaveValue(entryValue);
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('01-input-card-group-filled.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await cleanerIcon.click();
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('02-input-card-group-cleared.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             // click top left corner, away from field
             await page.locator('body').click({position: {x: 0, y: 0}});
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('03-input-card-group-unfocused.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
         });
 
         test('disabled input card grouped', async ({page}) => {
@@ -54,9 +48,7 @@ test.describe('InputCardGroup', () => {
             const {numberTextfield} = new TuiInputCardGroupPO(apiPageExample);
 
             await expect(numberTextfield).toHaveAttribute('disabled');
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('04-input-card-group-disabled.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
         });
     });
 
@@ -86,55 +78,39 @@ test.describe('InputCardGroup', () => {
                 cvc: '123',
             };
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('05-default-state-input-card.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await numberTextfield.pressSequentially(cardInfo.number);
 
             await expect(numberTextfield).toHaveValue(cardInfo.number);
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('06-input-card-with-value.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await numberTextfield.focus();
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('07-input-card-with-value-focus-edit-card.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await numberTextfield.press('Tab');
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('08-input-card-with-value-tab-to-expired.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await expiryTextfield.pressSequentially(cardInfo.expiry);
 
             await expect(expiryTextfield).toHaveValue(cardInfo.expiry);
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('09-input-card-with-value-expire-filled.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await cvcTextfield.pressSequentially('123');
 
             await expect(cvcTextfield).toHaveValue(cardInfo.cvc);
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('10-input-card-with-value-cvc-filled.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await cleanerIcon.click();
 
             await expect(numberTextfield).toBeEmpty();
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('11-input-card-with-focused-after-clear.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await example.click({position: {x: 0, y: 0}});
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('12-default-state-input-card.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
         });
 
         test('input card grouped with saved cards', async () => {
@@ -144,33 +120,23 @@ test.describe('InputCardGroup', () => {
             );
             const cvc = '123';
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('13-default-prefilled-state-input-card.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
             await expect(numberTextfield).toHaveCSS('pointer-events', /none/);
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('14-prefilled-value-cannot-be-edit.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await cvcTextfield.pressSequentially(cvc);
 
             await expect(cvcTextfield).toHaveValue(cvc);
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('15-input-card-with-value-cvc-filled.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await cleanerIcon.click();
 
             await expect(numberTextfield).toBeEmpty();
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('16-input-card-with-focused-after-clear.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
 
             await example.click({position: {x: 0, y: 0}});
 
-            await expect
-                .soft(numberTextfield)
-                .toHaveScreenshot('17-default-prefilled-state-input-card.png');
+            await expect.soft(numberTextfield).toHaveScreenshot();
         });
 
         test('expired field should be clickable after reset of prefilled value', async () => {

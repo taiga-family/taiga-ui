@@ -19,9 +19,7 @@ test.describe('Input', () => {
         await input.fill('123');
         await input.blur();
 
-        await expect
-            .soft(document.apiPageExample)
-            .toHaveScreenshot('input-custom-content.png');
+        await expect.soft(document.apiPageExample).toHaveScreenshot();
     });
 
     test('can be horizontally scrolled', async ({page}) => {
@@ -39,11 +37,11 @@ test.describe('Input', () => {
         );
         await input.blur();
 
-        await expect.soft(example).toHaveScreenshot('1-horizontally-scrolled.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await input.focus();
 
-        await expect.soft(example).toHaveScreenshot('2-horizontally-scrolled.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await page.evaluate(() => {
             const input = window.document.querySelector('input[tuiInput]');
@@ -53,7 +51,7 @@ test.describe('Input', () => {
             }
         });
 
-        await expect.soft(example).toHaveScreenshot('3-horizontally-scrolled.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test('external mask works', async ({page}) => {
@@ -68,7 +66,7 @@ test.describe('Input', () => {
         await inputs.last().blur();
 
         await expect(inputs.first()).toHaveValue('111 111 111 111 rad');
-        await expect.soft(example).toHaveScreenshot('11-mask.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test.describe('check tuiTextfieldCleaner', () => {
@@ -83,11 +81,7 @@ test.describe('Input', () => {
 
                 await document.waitTuiIcons();
 
-                await expect
-                    .soft(document.apiPageExample)
-                    .toHaveScreenshot(
-                        `input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}.png`,
-                    );
+                await expect.soft(document.apiPageExample).toHaveScreenshot();
             });
         });
     });
@@ -158,6 +152,6 @@ test.describe('Input', () => {
         await example.locator('tui-icon[tuiTooltip]').first().hover();
 
         await expect(page.locator('tui-hint')).toBeAttached();
-        await expect.soft(example).toHaveScreenshot('input-hint.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 });

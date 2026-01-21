@@ -15,6 +15,6 @@ test.describe('AppBar', () => {
 
         await button.click();
 
-        await expect.soft(page).toHaveScreenshot('01-app-bar.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 });

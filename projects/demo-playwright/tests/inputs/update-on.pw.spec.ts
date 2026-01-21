@@ -41,7 +41,7 @@ test.describe('Inputs - updateOn', () => {
             });
 
             async function expectScreenshot(name: string): Promise<void> {
-                await expect.soft(demo).toHaveScreenshot(`${title}-${name}.png`);
+                await expect.soft(demo).toHaveScreenshot();
             }
 
             test('update on change', async () => {

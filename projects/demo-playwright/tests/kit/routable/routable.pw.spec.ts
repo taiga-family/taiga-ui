@@ -17,7 +17,7 @@ test.describe('Routable', () => {
 
         await documentationPagePO.prepareBeforeScreenshot();
 
-        await expect.soft(page).toHaveScreenshot('01-routable-dialog.png');
+        await expect.soft(page).toHaveScreenshot();
     });
 
     test('should open lazy loaded dialog by direct link and then close by outside click', async ({

@@ -34,39 +34,39 @@ describe('Tabs', () => {
 
                 await page.setViewportSize({width: 1500, height: 500});
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-1.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 await page.locator('button:has-text("Collaborators")').click();
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-2.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 await page.locator('button:has-text("Neil Innes")').click();
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-3.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 await page.setViewportSize({width: 560, height: 500});
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-4.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 await example.locator('tui-tabs-with-more .t-more').click();
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-5.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 await page.locator('button:has-text("John Cleese")').nth(1).focus();
                 await page.keyboard.down('Enter');
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-6.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 await example.locator('tui-tabs-with-more .t-more').click();
                 await page.locator('button:has-text("Collaborators")').nth(1).focus();
                 await page.keyboard.down('Enter');
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-7.png');
+                await expect.soft(example).toHaveScreenshot();
 
                 await page.locator('button:has-text("Neil Innes")').nth(0).focus();
                 await page.keyboard.down('Enter');
 
-                await expect.soft(example).toHaveScreenshot('01-tabs-8.png');
+                await expect.soft(example).toHaveScreenshot();
             });
 
             test('shows only a single dropdown for the nested item (with [tuiDropdown]) inside more section', async ({
@@ -89,9 +89,7 @@ describe('Tabs', () => {
                 await tabsPO.getMoreOption('Collaborators').click();
 
                 await expect(page.locator('tui-dropdown')).toHaveCount(2);
-                await expect
-                    .soft(page)
-                    .toHaveScreenshot('tabs-dropdown-inside-more-dropdown.png');
+                await expect.soft(page).toHaveScreenshot();
 
                 await page
                     .locator('tui-dropdown [tuiOption]', {
@@ -99,11 +97,7 @@ describe('Tabs', () => {
                     })
                     .hover();
 
-                await expect
-                    .soft(page)
-                    .toHaveScreenshot(
-                        'tabs-dropdown-inside-more-dropdown-hover-item.png',
-                    );
+                await expect.soft(page).toHaveScreenshot();
             });
         });
     });
@@ -119,9 +113,7 @@ describe('Tabs', () => {
             test(`clamp active activeItemIndex=${index}`, async ({page}) => {
                 await tuiGoto(page, `/navigation/tabs/API?activeItemIndex=${index}`);
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot(`02-tabs-activeItemIndex-${index}.png`);
+                await expect.soft(example).toHaveScreenshot();
             });
         });
 
@@ -131,7 +123,7 @@ describe('Tabs', () => {
                 `${DemoRoute.Tabs}/API?activeItemIndex=2&sandboxWidth=133`,
             );
 
-            await expect.soft(example).toHaveScreenshot('03-tabs-single-item-01.png');
+            await expect.soft(example).toHaveScreenshot();
         });
     });
 });

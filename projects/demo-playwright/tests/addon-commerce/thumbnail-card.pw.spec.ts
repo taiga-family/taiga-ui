@@ -43,9 +43,7 @@ describe('ThumbnailCard', () => {
 
                                 await expect(
                                     documentationPage.apiPageExample,
-                                ).toHaveScreenshot(
-                                    `ps-${paymentSystem}-size-${size}-${cardNumber}.png`,
-                                );
+                                ).toHaveScreenshot();
                             });
                         });
                     });
@@ -60,9 +58,7 @@ describe('ThumbnailCard', () => {
 
                         await expect
                             .soft(documentationPage.apiPageExample)
-                            .toHaveScreenshot(
-                                `ps-${paymentSystem}-size-${size}-8888.png`,
-                            );
+                            .toHaveScreenshot();
                     });
                 });
             });

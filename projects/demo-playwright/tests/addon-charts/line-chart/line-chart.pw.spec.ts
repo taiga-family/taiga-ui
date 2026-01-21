@@ -10,7 +10,7 @@ test.describe('LineChart', () => {
 
         await chartColumn.hover();
 
-        await expect.soft(example).toHaveScreenshot('01-line-chart.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 
     test("shouldn't re-render when it goes out of the viewport", async ({page}) => {
@@ -19,12 +19,12 @@ test.describe('LineChart', () => {
         const example = documentationPage.getExample('#line');
         const tabs = page.locator('#line button[tuiTab]');
 
-        await expect.soft(example).toHaveScreenshot('02-line-chart.png');
+        await expect.soft(example).toHaveScreenshot();
 
         await tabs.filter({hasText: 'HTML'}).click();
         await page.waitForTimeout(1000);
         await tabs.filter({hasText: 'Preview'}).click();
 
-        await expect.soft(example).toHaveScreenshot('03-line-chart.png');
+        await expect.soft(example).toHaveScreenshot();
     });
 });
