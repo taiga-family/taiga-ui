@@ -94,9 +94,7 @@ describe('Tabs', () => {
                     .toHaveScreenshot('tabs-dropdown-inside-more-dropdown.png');
 
                 await page
-                    .locator('tui-dropdown [tuiOption]', {
-                        hasText: 'Carol Cleveland',
-                    })
+                    .locator('tui-dropdown [tuiOption]', {hasText: 'Carol Cleveland'})
                     .hover();
 
                 await expect

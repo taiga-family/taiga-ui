@@ -1,9 +1,7 @@
 import {Directive} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 
-@Directive({
-    selector: '[tuiMore]',
-})
+@Directive({selector: '[tuiMore]'})
 export class TuiMore {
     public static ngTemplateContextGuard(
         _dir: TuiMore,

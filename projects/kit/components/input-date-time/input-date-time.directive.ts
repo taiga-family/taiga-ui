@@ -52,9 +52,7 @@ const MAX_TIME = TuiTime.fromAbsoluteMilliseconds(MILLISECONDS_IN_DAY - 1);
         TuiItemsHandlersValidator,
         TuiWithInput,
     ],
-    host: {
-        '(blur)': 'onBlur($event.target.value)',
-    },
+    host: {'(blur)': 'onBlur($event.target.value)'},
 })
 export class TuiInputDateTimeDirective
     extends TuiInputDateBase<readonly [TuiDay, TuiTime | null]>

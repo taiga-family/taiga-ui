@@ -14,9 +14,7 @@ import {AbstractTuiTableFilter} from './abstract-table-filter';
 import {type TuiTableFilter} from './table-filter';
 import {TuiTableFiltersDirective} from './table-filters.directive';
 
-@Directive({
-    selector: '[tuiTableFilter]',
-})
+@Directive({selector: '[tuiTableFilter]'})
 export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFilter<T> {
     private readonly head = inject(TuiTableHead<T>, {optional: true});
     private readonly delegate = inject(AbstractTuiTableFilter<T[keyof T], unknown>);

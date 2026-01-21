@@ -13,9 +13,7 @@ const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
 export async function tuiCombinePlaywrightFailedScreenshots(
     rootPath = FAILED_SCREENSHOTS_PATH,
 ): Promise<void> {
-    const filesOrDirs = readdirSync(rootPath, {
-        withFileTypes: true,
-    }).filter((x) =>
+    const filesOrDirs = readdirSync(rootPath, {withFileTypes: true}).filter((x) =>
         x.isDirectory()
             ? REG_EXP.exec(x.name) || REG_EXP.exec(x.parentPath)
             : REG_EXP.exec(x.parentPath),

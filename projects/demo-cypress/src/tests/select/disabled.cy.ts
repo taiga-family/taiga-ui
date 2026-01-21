@@ -38,9 +38,7 @@ import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
     providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class Sandbox {
-    protected readonly form = new FormGroup({
-        test: new FormControl(''),
-    });
+    protected readonly form = new FormGroup({test: new FormControl('')});
 
     constructor() {
         setTimeout(() => {

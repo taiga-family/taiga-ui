@@ -11,11 +11,7 @@ import {TuiTextfield} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
     providers: [
-        tuiObfuscateOptionsProvider({
-            recipes: {
-                city: ({length}) => 'x'.repeat(length),
-            },
-        }),
+        tuiObfuscateOptionsProvider({recipes: {city: ({length}) => 'x'.repeat(length)}}),
     ],
 })
 export default class PageComponent {

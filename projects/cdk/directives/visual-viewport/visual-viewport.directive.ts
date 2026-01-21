@@ -5,9 +5,7 @@ import {WaViewportService} from '@ng-web-apis/screen-orientation';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
-@Directive({
-    selector: '[tuiVisualViewport]',
-})
+@Directive({selector: '[tuiVisualViewport]'})
 export class TuiVisualViewport {
     private readonly w = inject(WA_WINDOW);
     private readonly style = tuiInjectElement().style;

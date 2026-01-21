@@ -22,9 +22,7 @@ describe('TuiValueChangesDirective', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        public readonly form = new FormGroup({
-            control: new FormControl('Loremipsum'),
-        });
+        public readonly form = new FormGroup({control: new FormControl('Loremipsum')});
 
         public formSpy = jest.fn();
         public controlSpy = jest.fn();

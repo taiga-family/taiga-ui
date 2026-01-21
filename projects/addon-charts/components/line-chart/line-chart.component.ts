@@ -31,9 +31,7 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [WaResizeObserverService],
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
-    host: {
-        '(mouseleave)': 'onMouseLeave()',
-    },
+    host: {'(mouseleave)': 'onMouseLeave()'},
 })
 export class TuiLineChart {
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);

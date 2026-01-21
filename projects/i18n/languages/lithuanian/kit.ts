@@ -74,9 +74,7 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Taip',
         no: 'Ne',
     },
-    previewTexts: {
-        rotate: 'Pasukti',
-    },
+    previewTexts: {rotate: 'Pasukti'},
     zoomTexts: {
         zoomOut: 'Mažinti',
         zoomIn: 'Didinti',

@@ -25,9 +25,7 @@ describe('PieChart', () => {
             providers: [
                 {
                     provide: Location,
-                    useValue: {
-                        path: () => '',
-                    },
+                    useValue: {path: () => ''},
                 },
             ],
         });

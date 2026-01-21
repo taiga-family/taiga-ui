@@ -55,8 +55,6 @@ export default class PageComponent {
 
     protected readonly bigIntWithDecimalTransformer = import(
         './examples/11/transformer.ts?raw',
-        {
-            with: {loader: 'text'},
-        }
+        {with: {loader: 'text'}}
     );
 }

@@ -46,9 +46,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
             outputs: ['tuiDropdownDirectionChange'],
         },
     ],
-    host: {
-        '[class.tui-dropdown-open]': 'ref()',
-    },
+    host: {'[class.tui-dropdown-open]': 'ref()'},
 })
 export class TuiDropdownDirective
     implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle

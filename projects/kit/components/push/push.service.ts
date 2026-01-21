@@ -8,9 +8,7 @@ import {
 } from './push.options';
 import {TuiPushAlert} from './push-alert.component';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiPushService extends TuiAlertService<TuiPushOptions, string> {
     protected override readonly options = inject(TUI_PUSH_OPTIONS);
     protected override readonly component = TuiPushAlert;

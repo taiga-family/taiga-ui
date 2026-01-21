@@ -12,9 +12,7 @@ export function replaceImports(
     options: TuiSchema,
 ): void {
     const allImports = getImports(ALL_TS_FILES);
-    const progressLog = setupProgressLogger({
-        total: replaceable.length,
-    });
+    const progressLog = setupProgressLogger({total: replaceable.length});
 
     replaceable.forEach(({from, to}) => {
         const importDeclarations = allImports.filter(

@@ -56,11 +56,7 @@ describe('Input', () => {
 
         describe('user types new value', () => {
             beforeEach(() => {
-                cy.mount(TestTextfield, {
-                    componentProperties: {
-                        filler: 'HH:MM',
-                    },
-                });
+                cy.mount(TestTextfield, {componentProperties: {filler: 'HH:MM'}});
 
                 cy.get('tui-textfield input[tuiInput]').focus();
             });

@@ -13,9 +13,7 @@ import {map} from 'rxjs';
         WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
-            useValue: {
-                attributeOldValue: true,
-            },
+            useValue: {attributeOldValue: true},
         },
     ],
     host: {'[style.--tui-progress-color]': 'color()'},

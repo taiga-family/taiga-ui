@@ -88,8 +88,6 @@ export default defineConfig({
             scale: 'device',
             ...options,
         },
-        toMatchSnapshot: {
-            ...options,
-        },
+        toMatchSnapshot: {...options},
     },
 });

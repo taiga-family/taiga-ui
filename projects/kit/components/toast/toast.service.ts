@@ -9,9 +9,7 @@ import {
     type TuiToastOptions,
 } from './toast.options';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiToastService extends TuiAlertService<TuiToastOptions<any>> {
     protected override readonly options = inject(TUI_TOAST_OPTIONS);
     protected override readonly component = TuiToastComponent;

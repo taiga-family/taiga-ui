@@ -6,9 +6,7 @@ import {identity} from 'rxjs';
 
 @Directive({
     selector: '[tuiCopyProcessor]',
-    host: {
-        '(copy.prevent)': 'onCopy($event)',
-    },
+    host: {'(copy.prevent)': 'onCopy($event)'},
 })
 export class TuiCopyProcessor {
     private readonly win = inject(WA_WINDOW);

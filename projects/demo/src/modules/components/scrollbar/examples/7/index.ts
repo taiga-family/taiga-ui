@@ -10,10 +10,6 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiScrollbarOptionsProvider({
-            mode: 'hover',
-        }),
-    ],
+    providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
 })
 export default class Example {}

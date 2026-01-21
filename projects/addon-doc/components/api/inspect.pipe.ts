@@ -2,9 +2,7 @@ import {inject, Pipe, type PipeTransform, TemplateRef} from '@angular/core';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {tuiInspect} from '@taiga-ui/addon-doc/utils';
 
-@Pipe({
-    name: 'tuiInspect',
-})
+@Pipe({name: 'tuiInspect'})
 export class TuiInspectPipe implements PipeTransform {
     private readonly isE2E = inject(WA_IS_E2E);
 

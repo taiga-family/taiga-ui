@@ -13,9 +13,7 @@ import {TuiDialog} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class Example {
-    protected exampleForm = new FormGroup({
-        exampleControl: new FormControl(''),
-    });
+    protected exampleForm = new FormGroup({exampleControl: new FormControl('')});
 
     protected open = false;
 

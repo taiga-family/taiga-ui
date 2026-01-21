@@ -8,9 +8,7 @@ import {identity} from 'rxjs';
  */
 export const TUI_DOC_EXAMPLE_CONTENT_PROCESSOR = new InjectionToken<
     TuiHandler<Record<string, string>, Record<string, string>>
->(ngDevMode ? 'TUI_DOC_EXAMPLE_CONTENT_PROCESSOR' : '', {
-    factory: () => identity,
-});
+>(ngDevMode ? 'TUI_DOC_EXAMPLE_CONTENT_PROCESSOR' : '', {factory: () => identity});
 
 /**
  * Processes markdown in code block

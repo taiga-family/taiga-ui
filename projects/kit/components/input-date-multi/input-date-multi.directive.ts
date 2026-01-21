@@ -35,9 +35,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         },
     ],
     hostDirectives: [TuiDropdownAuto, MaskitoDirective],
-    host: {
-        '(keydown.enter.prevent)': '0',
-    },
+    host: {'(keydown.enter.prevent)': '0'},
 })
 export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS);

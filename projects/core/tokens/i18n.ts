@@ -27,9 +27,7 @@ export const TUI_CLEAR_WORD = new InjectionToken(ngDevMode ? 'TUI_CLEAR_WORD' : 
  */
 export const TUI_NOTHING_FOUND_MESSAGE = new InjectionToken(
     ngDevMode ? 'TUI_NOTHING_FOUND_MESSAGE' : '',
-    {
-        factory: tuiExtractI18n('nothingFoundMessage'),
-    },
+    {factory: tuiExtractI18n('nothingFoundMessage')},
 );
 
 /**
@@ -37,9 +35,7 @@ export const TUI_NOTHING_FOUND_MESSAGE = new InjectionToken(
  */
 export const TUI_DEFAULT_ERROR_MESSAGE = new InjectionToken(
     ngDevMode ? 'TUI_DEFAULT_ERROR_MESSAGE' : '',
-    {
-        factory: tuiExtractI18n('defaultErrorMessage'),
-    },
+    {factory: tuiExtractI18n('defaultErrorMessage')},
 );
 
 /**
@@ -54,7 +50,5 @@ export const TUI_SPIN_TEXTS = new InjectionToken(ngDevMode ? 'TUI_SPIN_TEXTS' : 
  */
 export const TUI_SHORT_WEEK_DAYS = new InjectionToken(
     ngDevMode ? 'TUI_SHORT_WEEK_DAYS' : '',
-    {
-        factory: tuiExtractI18n('shortWeekDays'),
-    },
+    {factory: tuiExtractI18n('shortWeekDays')},
 );

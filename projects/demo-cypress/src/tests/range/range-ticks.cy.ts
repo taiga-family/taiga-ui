@@ -48,11 +48,7 @@ describe('Range | With segments + tick labels', () => {
         const stringified = JSON.stringify(value);
 
         it(`value = ${stringified}`, () => {
-            cy.mount(SandBox, {
-                componentProperties: {
-                    value,
-                },
-            });
+            cy.mount(SandBox, {componentProperties: {value}});
 
             cy.compareSnapshot(`range-ticks-${stringified}`);
         });

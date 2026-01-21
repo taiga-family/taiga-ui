@@ -41,9 +41,7 @@ import {TuiCalendarYear} from './calendar-year.component';
     styleUrl: './calendar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendar)],
-    host: {
-        '(pointerdown.prevent.zoneless)': '0',
-    },
+    host: {'(pointerdown.prevent.zoneless)': '0'},
 })
 export class TuiCalendar {
     private readonly cdr = inject(ChangeDetectorRef);

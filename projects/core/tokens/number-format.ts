@@ -54,9 +54,7 @@ export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
  */
 export const TUI_NUMBER_FORMAT = new InjectionToken<Signal<TuiNumberFormatSettings>>(
     ngDevMode ? 'TUI_NUMBER_FORMAT' : '',
-    {
-        factory: () => signal(TUI_DEFAULT_NUMBER_FORMAT),
-    },
+    {factory: () => signal(TUI_DEFAULT_NUMBER_FORMAT)},
 );
 
 export function tuiNumberFormatProvider(

@@ -39,9 +39,7 @@ const TODAY = TuiDay.currentLocal();
     styleUrl: './calendar-month.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendarMonth)],
-    host: {
-        '[class._picking]': 'isRangePicking()',
-    },
+    host: {'[class._picking]': 'isRangePicking()'},
 })
 export class TuiCalendarMonth {
     protected isYearPickerShown = false;

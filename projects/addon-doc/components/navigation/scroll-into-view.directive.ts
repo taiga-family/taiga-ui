@@ -5,9 +5,7 @@ import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounceTime, filter, ReplaySubject, switchMap, take} from 'rxjs';
 
-@Directive({
-    selector: '[tuiDocScrollIntoViewLink]',
-})
+@Directive({selector: '[tuiDocScrollIntoViewLink]'})
 export class TuiDocScrollIntoViewLink implements OnChanges {
     private readonly scroll$ = new ReplaySubject<boolean>(1);
     private readonly el = tuiInjectElement();

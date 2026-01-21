@@ -3,9 +3,7 @@ import {WA_WINDOW} from '@ng-web-apis/common';
 import {WA_IS_WEBKIT} from '@ng-web-apis/platform';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiVisualViewportService {
     private readonly isWebkit = inject(WA_IS_WEBKIT);
     private readonly win = inject(WA_WINDOW);

@@ -42,9 +42,7 @@ export default class Example {
         {
             appearance: 'fullscreen',
             closable: false,
-            data: {
-                min: new TuiDay(2018, 2, 10),
-            },
+            data: {min: new TuiDay(2018, 2, 10)},
         },
     );
 

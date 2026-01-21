@@ -15,11 +15,7 @@ import {map, switchMap} from 'rxjs';
 
 import {TuiSegmented} from './segmented.component';
 
-@Directive({
-    host: {
-        '(click)': 'update($event.target)',
-    },
-})
+@Directive({host: {'(click)': 'update($event.target)'}})
 export class TuiSegmentedDirective implements AfterContentChecked, AfterContentInit {
     private readonly component = inject(TuiSegmented);
     private readonly el = tuiInjectElement();

@@ -235,9 +235,7 @@ test.describe('InputChip', () => {
                 await example.locator('tui-textfield').nth(3).click();
                 await expect(multiselect.dropdown).toBeAttached();
                 await multiselect.dropdown
-                    .getByRole('button', {
-                        name: 'Select all',
-                    })
+                    .getByRole('button', {name: 'Select all'})
                     .first()
                     .click();
 

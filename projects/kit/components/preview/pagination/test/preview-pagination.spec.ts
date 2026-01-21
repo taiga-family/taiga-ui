@@ -26,9 +26,7 @@ describe('PreviewPagination', () => {
     }
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [Test],
-        });
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;

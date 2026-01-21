@@ -22,9 +22,7 @@ import {
     tap,
 } from 'rxjs';
 
-@Directive({
-    selector: 'tui-data-list[tuiDataListDropdownManager]',
-})
+@Directive({selector: 'tui-data-list[tuiDataListDropdownManager]'})
 export class TuiDataListDropdownManager implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly dropdowns = contentChildren(TuiDropdownDirective, {

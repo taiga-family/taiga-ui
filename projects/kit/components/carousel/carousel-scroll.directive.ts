@@ -4,9 +4,7 @@ import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, tap, throttleTime} from 'rxjs';
 
-@Directive({
-    selector: '[tuiCarouselScroll]',
-})
+@Directive({selector: '[tuiCarouselScroll]'})
 export class TuiCarouselScroll {
     private readonly el = tuiInjectElement();
 

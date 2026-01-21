@@ -6,9 +6,7 @@ import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
-@Directive({
-    selector: '[tuiResized]',
-})
+@Directive({selector: '[tuiResized]'})
 export class TuiTableResized {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();

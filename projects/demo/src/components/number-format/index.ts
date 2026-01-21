@@ -23,11 +23,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     imports: [RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiInputNumberOptionsProvider({
-            min: 0,
-        }),
-    ],
+    providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
 export class TuiDocNumberFormat implements Record<
     keyof TuiNumberFormatSettings,

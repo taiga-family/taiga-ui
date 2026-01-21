@@ -14,9 +14,7 @@ import {TuiTreeItemContent} from '@taiga-ui/kit';
     `,
     styleUrl: './content.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '(click)': 'onClick()',
-    },
+    host: {'(click)': 'onClick()'},
 })
 export class Folders extends TuiTreeItemContent {
     protected get icon(): string {

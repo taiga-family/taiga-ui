@@ -68,9 +68,7 @@ export function saveAddedImports(options: TuiSchema): void {
         const ngModule = findNgModule(ngComponent, ALL_TS_FILES);
 
         if (ngModule) {
-            addImportToNgModule(ngModule, moduleName, {
-                unique: true,
-            });
+            addImportToNgModule(ngModule, moduleName, {unique: true});
             addUniqueImport(
                 ngModule.getSourceFile().getFilePath(),
                 moduleName,

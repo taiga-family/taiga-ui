@@ -40,9 +40,7 @@ export default class Example {
         {name: 'Terry', surname: 'Jones'},
     ];
 
-    protected readonly form = new FormGroup({
-        period: new FormControl(),
-    });
+    protected readonly form = new FormGroup({period: new FormControl()});
 
     protected readonly stringify = (item: {name: string; surname: string}): string =>
         `${item.name} ${item.surname}`;

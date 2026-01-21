@@ -13,9 +13,7 @@ import {
 } from '../files.validators';
 import {TUI_INPUT_FILES_OPTIONS} from '../input-files/input-files.options';
 
-@Pipe({
-    name: 'tuiFileRejected',
-})
+@Pipe({name: 'tuiFileRejected'})
 export class TuiFileRejectedPipe implements PipeTransform {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);
     private readonly formatSize = inject(TUI_FILE_OPTIONS).formatSize;

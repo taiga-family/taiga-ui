@@ -7,9 +7,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     templateUrl: './bar.template.html',
     styleUrl: './bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiBar {
     private readonly sum = computed(() => tuiSum(...this.value()));

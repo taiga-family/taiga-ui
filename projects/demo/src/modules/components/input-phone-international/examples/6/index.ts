@@ -11,9 +11,7 @@ import metadata from 'libphonenumber-js/max/metadata';
     template: 'Phone: {{ rawValue | maskito: mask }}',
     encapsulation,
     changeDetection,
-    host: {
-        '(click)': 'showUtilityPower()',
-    },
+    host: {'(click)': 'showUtilityPower()'},
 })
 export default class Example {
     protected rawValue = '12125552368';

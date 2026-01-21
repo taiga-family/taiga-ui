@@ -23,9 +23,7 @@ export default process.env.HTML_ESLINT
           ...taiga.configs['taiga-specific'],
           {
               files: ['**/legacy/**/*.ts'],
-              rules: {
-                  '@angular-eslint/prefer-standalone': 'off',
-              },
+              rules: {'@angular-eslint/prefer-standalone': 'off'},
           },
           {
               files: ['**/*.{ts,js}'],
@@ -47,9 +45,7 @@ export default process.env.HTML_ESLINT
           },
           {
               files: ['**/*.spec.ts', '**/*.cy.ts', '**/demo/**/*.ts'],
-              rules: {
-                  'no-irregular-whitespace': 'off',
-              },
+              rules: {'no-irregular-whitespace': 'off'},
           },
           {
               rules: {'@taiga-ui/experience-next/no-deep-imports': 'off'},

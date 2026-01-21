@@ -6,9 +6,7 @@ import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
  */
 export const TUI_CARD_NUMBER_TEXTS = new InjectionToken(
     ngDevMode ? 'TUI_CARD_NUMBER_TEXTS' : '',
-    {
-        factory: tuiExtractI18n('cardNumber'),
-    },
+    {factory: tuiExtractI18n('cardNumber')},
 );
 
 /**
@@ -16,9 +14,7 @@ export const TUI_CARD_NUMBER_TEXTS = new InjectionToken(
  */
 export const TUI_CARD_EXPIRY_TEXTS = new InjectionToken(
     ngDevMode ? 'TUI_CARD_EXPIRY_TEXTS' : '',
-    {
-        factory: tuiExtractI18n('cardExpiry'),
-    },
+    {factory: tuiExtractI18n('cardExpiry')},
 );
 
 /**
@@ -26,7 +22,5 @@ export const TUI_CARD_EXPIRY_TEXTS = new InjectionToken(
  */
 export const TUI_CARD_CVC_TEXTS = new InjectionToken<Signal<[string, string]>>(
     ngDevMode ? 'TUI_CARD_CVC_TEXTS' : '',
-    {
-        factory: () => signal(['CVC', 'CVC/CVV']),
-    },
+    {factory: () => signal(['CVC', 'CVC/CVV'])},
 );

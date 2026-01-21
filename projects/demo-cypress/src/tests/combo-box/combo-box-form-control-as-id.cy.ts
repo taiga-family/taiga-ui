@@ -102,9 +102,7 @@ describe('ComboBox + form control contains IDs of items from datalist', () => {
                 cy.clock();
 
                 cy.mount(Sandbox, {
-                    componentProperties: {
-                        control: new FormControl(0),
-                    },
+                    componentProperties: {control: new FormControl(0)},
                 }).then((x) => {
                     fixture = x.fixture;
                 });

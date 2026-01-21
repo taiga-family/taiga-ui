@@ -2,9 +2,7 @@ import {inject, Pipe, type PipeTransform} from '@angular/core';
 
 import {TUI_EMAIL_PIPE_OPTIONS} from './emails.options';
 
-@Pipe({
-    name: 'tuiEmails',
-})
+@Pipe({name: 'tuiEmails'})
 export class TuiEmailsPipe implements PipeTransform {
     private readonly options = inject(TUI_EMAIL_PIPE_OPTIONS);
 

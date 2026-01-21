@@ -10,9 +10,7 @@ import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
     styleUrl: './badge-notification.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiBadgeNotification {
     public readonly size = input<TuiSizeL | TuiSizeXS>(

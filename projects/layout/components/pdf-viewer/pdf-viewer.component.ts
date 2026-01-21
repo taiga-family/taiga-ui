@@ -28,9 +28,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
             size: 's',
         })),
     ],
-    host: {
-        '[attr.tuiTheme]': 'isMobile() ? "" : "dark"',
-    },
+    host: {'[attr.tuiTheme]': 'isMobile() ? "" : "dark"'},
 })
 export class TuiPdfViewer<O, I> {
     private readonly breakpoint = inject(TUI_BREAKPOINT);

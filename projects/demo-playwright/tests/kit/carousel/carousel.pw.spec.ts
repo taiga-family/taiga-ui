@@ -3,9 +3,7 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Carousel', () => {
-    test.use({
-        viewport: {width: 500, height: 400},
-    });
+    test.use({viewport: {width: 500, height: 400}});
 
     test('default padding', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Carousel}/API`);

@@ -10,9 +10,7 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {map, pairwise, startWith, switchMap, takeWhile} from 'rxjs';
 
-@Directive({
-    selector: 'path[tuiPieChart]',
-})
+@Directive({selector: 'path[tuiPieChart]'})
 export class TuiPieChartDirective {
     private readonly el = tuiInjectElement<SVGPathElement>();
     private readonly performance = inject(WA_PERFORMANCE);

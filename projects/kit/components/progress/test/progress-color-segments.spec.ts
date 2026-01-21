@@ -38,9 +38,7 @@ describe('TuiProgressColorSegments', () => {
         implements WaMutationObserverService {}
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [Test],
-        });
+        TestBed.configureTestingModule({imports: [Test]});
         mutationObserverServiceMock = new MutationObserverServiceMock();
         TestBed.overrideProvider(WaMutationObserverService, {
             useValue: mutationObserverServiceMock,

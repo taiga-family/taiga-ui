@@ -13,9 +13,7 @@ test.describe('InputDateTime', () => {
         let example: Locator;
         let inputDateTime: TuiInputDateTimePO;
 
-        test.use({
-            viewport: {width: 360, height: 500},
-        });
+        test.use({viewport: {width: 360, height: 500}});
 
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);

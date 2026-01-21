@@ -8,9 +8,7 @@ import {TUI_SCROLL_INTO_VIEW} from './scrollbar.component';
 /**
  * Directive scrolls element into view inside tui-scrollbar
  */
-@Directive({
-    selector: '[tuiScrollIntoView]',
-})
+@Directive({selector: '[tuiScrollIntoView]'})
 export class TuiScrollIntoView {
     private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);

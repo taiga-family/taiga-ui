@@ -3,9 +3,7 @@ import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('AppBar', () => {
-    test.use({
-        viewport: {width: 1000, height: 720},
-    });
+    test.use({viewport: {width: 1000, height: 720}});
 
     test('desktop appbar inside dialog', async ({page}) => {
         await tuiGoto(page, DemoRoute.AppBar);

@@ -29,11 +29,7 @@ export class TestInputWithDatalist {
 describe('Input + Datalist', () => {
     describe('Shows dropdown only if textfield contains >2 characters', () => {
         beforeEach(() => {
-            cy.mount(TestInputWithDatalist, {
-                componentProperties: {
-                    filler: 'HH:MM',
-                },
-            });
+            cy.mount(TestInputWithDatalist, {componentProperties: {filler: 'HH:MM'}});
 
             cy.get('tui-textfield input').as('textfield');
         });

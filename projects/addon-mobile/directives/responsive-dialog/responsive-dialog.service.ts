@@ -15,9 +15,7 @@ export interface TuiResponsiveDialogOptions<I = undefined>
 /**
  * Same as `TuiDialogService` but automatically switches to `TuiSheetDialogService` on mobile
  */
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiResponsiveDialogService {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly dialogs = inject(TuiDialogService);

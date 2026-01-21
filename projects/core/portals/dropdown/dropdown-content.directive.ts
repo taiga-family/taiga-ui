@@ -4,9 +4,7 @@ import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
-@Directive({
-    selector: 'ng-template[tuiDropdown]',
-})
+@Directive({selector: 'ng-template[tuiDropdown]'})
 export class TuiDropdownContent implements OnDestroy {
     private readonly directive = inject(TuiDropdownDirective);
 

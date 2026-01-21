@@ -1,8 +1,6 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 
-@Pipe({
-    name: 'tuiAutoColor',
-})
+@Pipe({name: 'tuiAutoColor'})
 export class TuiAutoColorPipe implements PipeTransform {
     public transform(text: string): string {
         return tuiAutoColor(text);

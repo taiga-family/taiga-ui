@@ -19,7 +19,5 @@ import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
-    protected readonly form = new FormGroup({
-        user: new FormControl(''),
-    });
+    protected readonly form = new FormGroup({user: new FormControl('')});
 }

@@ -32,14 +32,10 @@ export default class Example {
         closable: true,
     });
 
-    protected readonly amountControl = new FormControl(100, {
-        nonNullable: true,
-    });
+    protected readonly amountControl = new FormControl(100, {nonNullable: true});
 
     protected payByCard(): void {
-        this.payModal({
-            amount: this.amountControl.value,
-        })
+        this.payModal({amount: this.amountControl.value})
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe();
     }

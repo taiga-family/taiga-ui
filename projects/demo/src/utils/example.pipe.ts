@@ -5,9 +5,7 @@ import {toKebab} from './kebab.pipe';
 
 const EMPTY = {default: ''};
 
-@Pipe({
-    name: 'tuiExample',
-})
+@Pipe({name: 'tuiExample'})
 export class TuiExamplePipe implements PipeTransform {
     private readonly page = inject(TuiDocPage);
 

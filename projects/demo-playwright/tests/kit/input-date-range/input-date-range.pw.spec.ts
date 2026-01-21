@@ -15,9 +15,7 @@ test.describe('InputDateRange', () => {
     let inputDateRange!: TuiInputDateRangePO;
     let documentationPage!: TuiDocumentationPagePO;
 
-    test.use({
-        viewport: {width: 650, height: 650},
-    });
+    test.use({viewport: {width: 650, height: 650}});
 
     beforeEach(({page}) => {
         documentationPage = new TuiDocumentationPagePO(page);

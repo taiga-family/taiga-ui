@@ -9,9 +9,7 @@ export function toKebab(str: string): string {
         );
 }
 
-@Pipe({
-    name: 'tuiKebab',
-})
+@Pipe({name: 'tuiKebab'})
 export class TuiKebabPipe implements PipeTransform {
     public readonly transform = toKebab;
 }

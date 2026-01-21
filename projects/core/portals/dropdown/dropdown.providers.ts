@@ -7,9 +7,7 @@ import {TuiDropdownComponent} from './dropdown.component';
  */
 export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
     ngDevMode ? 'TUI_DROPDOWN_COMPONENT' : '',
-    {
-        factory: () => TuiDropdownComponent,
-    },
+    {factory: () => TuiDropdownComponent},
 );
 
 export const TUI_DROPDOWN_CONTEXT = new InjectionToken<Record<any, any>>(

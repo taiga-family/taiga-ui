@@ -57,11 +57,7 @@ describe('Mobile calendar', () => {
     }
 
     it('the back button emits a cancel event', () => {
-        cy.mount(Test, {
-            componentProperties: {
-                cancel: createOutputSpy('onCancelSpy'),
-            },
-        });
+        cy.mount(Test, {componentProperties: {cancel: createOutputSpy('onCancelSpy')}});
 
         cy.get('[automation-id="tui-mobile-calendar__cancel"]').click();
         cy.get('@onCancelSpy').should('be.calledWith', true);
@@ -77,11 +73,7 @@ describe('Mobile calendar', () => {
     });
 
     it('single === false', () => {
-        cy.mount(Test, {
-            componentProperties: {
-                single: false,
-            },
-        });
+        cy.mount(Test, {componentProperties: {single: false}});
 
         cy.get('[automation-id="tui-mobile-calendar__label"]').should(
             'contain.text',
@@ -92,9 +84,7 @@ describe('Mobile calendar', () => {
     describe('when the done button emits', () => {
         it('confirm event with selected day', () => {
             cy.mount(Test, {
-                componentProperties: {
-                    confirm: createOutputSpy('onConfirmSpy'),
-                },
+                componentProperties: {confirm: createOutputSpy('onConfirmSpy')},
             });
 
             cy.get(
@@ -125,9 +115,7 @@ describe('Mobile calendar', () => {
         // TODO: why failed after https://github.com/taiga-family/taiga-ui/pull/8961
         xit('year selection scrolls through months', () => {
             cy.mount(Test, {
-                componentProperties: {
-                    confirm: createOutputSpy('onConfirmSpy'),
-                },
+                componentProperties: {confirm: createOutputSpy('onConfirmSpy')},
             })
                 .then((wrapper) => wrapper.component)
                 .then((component) => {

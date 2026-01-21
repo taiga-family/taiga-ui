@@ -1,8 +1,6 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 
-@Pipe({
-    name: 'tuiInitials',
-})
+@Pipe({name: 'tuiInitials'})
 export class TuiInitialsPipe implements PipeTransform {
     public transform(text: string): string {
         return text

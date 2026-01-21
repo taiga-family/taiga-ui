@@ -14,9 +14,7 @@ import {type TuiPdfViewerOptions} from './pdf-viewer.options';
     styleUrl: './pdf-viewer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
-    host: {
-        '(document:keydown.esc)': 'onKeyDownEsc()',
-    },
+    host: {'(document:keydown.esc)': 'onKeyDownEsc()'},
 })
 export class TuiPdfViewerComponent<I, O> {
     protected readonly closeWord = inject(TUI_CLOSE_WORD);

@@ -9,9 +9,7 @@ import {
     type TuiNotificationOptions,
 } from './notification.options';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiNotificationService extends TuiAlertService<TuiNotificationOptions<any>> {
     protected override readonly options = inject(TUI_NOTIFICATION_OPTIONS);
     protected override readonly component = TuiNotificationComponent;

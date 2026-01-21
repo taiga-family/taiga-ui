@@ -12,9 +12,7 @@ import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
  */
 export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>>(
     ngDevMode ? 'TUI_PULL_TO_REFRESH_LOADED' : '',
-    {
-        factory: () => EMPTY,
-    },
+    {factory: () => EMPTY},
 );
 
 /**
@@ -22,9 +20,7 @@ export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>
  */
 export const TUI_PULL_TO_REFRESH_THRESHOLD = new InjectionToken(
     ngDevMode ? 'TUI_PULL_TO_REFRESH_THRESHOLD' : '',
-    {
-        factory: () => 50,
-    },
+    {factory: () => 50},
 );
 
 /**

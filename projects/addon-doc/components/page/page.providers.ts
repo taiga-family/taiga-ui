@@ -12,9 +12,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export const TUI_DOC_TABS = new InjectionToken<
     TuiHandler<ActivatedRouteSnapshot, Record<string, PolymorpheusContent>>
->(ngDevMode ? 'TUI_DOC_TABS' : '', {
-    factory: () => () => ({}),
-});
+>(ngDevMode ? 'TUI_DOC_TABS' : '', {factory: () => () => ({})});
 
 /**
  * Array if related page titles

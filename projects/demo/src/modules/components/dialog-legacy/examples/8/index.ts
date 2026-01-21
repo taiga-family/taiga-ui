@@ -36,9 +36,7 @@ export default class Example {
     protected onClick(content: PolymorpheusContent): void {
         const closable = this.confirm.withConfirm({
             label: 'Are you sure?',
-            data: {
-                content: 'Your data will be <strong>lost</strong>',
-            },
+            data: {content: 'Your data will be <strong>lost</strong>'},
         });
 
         this.dialogs

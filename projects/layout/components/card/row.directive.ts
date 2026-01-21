@@ -15,9 +15,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 })
 class Styles {}
 
-@Directive({
-    selector: '[tuiCardRow]',
-})
+@Directive({selector: '[tuiCardRow]'})
 export class TuiCardRow {
     protected readonly nothing = tuiWithStyles(Styles);
 }

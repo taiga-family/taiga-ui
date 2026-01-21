@@ -31,9 +31,7 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
 @Directive({
     selector: '[tuiDropdownHover]',
     providers: [TuiActiveZone, tuiAsDriver(TuiDropdownHover)],
-    host: {
-        '(click.capture)': 'onClick($event)',
-    },
+    host: {'(click.capture)': 'onClick($event)'},
 })
 export class TuiDropdownHover extends TuiDriver {
     private readonly dropdownHost = contentChild('tuiDropdownHost', {

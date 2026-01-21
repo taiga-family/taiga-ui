@@ -9,9 +9,7 @@ import {tuiInjectValue} from '@taiga-ui/kit';
     styles: ':host {flex-direction: row-reverse; justify-content: start}',
     encapsulation,
     changeDetection,
-    host: {
-        '[style.font-weight]': 'selected() ? "bold" : null',
-    },
+    host: {'[style.font-weight]': 'selected() ? "bold" : null'},
 })
 export class Option<T> {
     private readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);

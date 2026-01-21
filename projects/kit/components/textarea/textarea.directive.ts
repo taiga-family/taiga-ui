@@ -75,9 +75,7 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimit);
         tuiProvide(NG_VALIDATORS, TuiTextareaDirective, true),
         tuiTextareaOptionsProvider({content: COMPONENT}),
     ],
-    host: {
-        '[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75',
-    },
+    host: {'[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75'},
 })
 export class TuiTextareaDirective implements Validator, DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent);

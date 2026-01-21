@@ -35,9 +35,7 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     templateUrl: './calendar-sheet.template.html',
     styleUrl: './calendar-sheet.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._picking]': 'isRangePicking',
-    },
+    host: {'[class._picking]': 'isRangePicking'},
 })
 export class TuiCalendarSheet {
     private readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);

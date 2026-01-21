@@ -11,9 +11,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    host: {
-        '(copy)': 'onCopy($event)',
-    },
+    host: {'(copy)': 'onCopy($event)'},
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);

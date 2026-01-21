@@ -70,9 +70,7 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Tak',
         no: 'Nie',
     },
-    previewTexts: {
-        rotate: 'Obracać się',
-    },
+    previewTexts: {rotate: 'Obracać się'},
     zoomTexts: {
         zoomOut: 'Pomniejsz',
         zoomIn: 'Zbliżenie',

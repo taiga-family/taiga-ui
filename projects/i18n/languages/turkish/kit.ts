@@ -70,9 +70,7 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Evet',
         no: 'Hayır',
     },
-    previewTexts: {
-        rotate: 'Döndür',
-    },
+    previewTexts: {rotate: 'Döndür'},
     zoomTexts: {
         zoomOut: 'Uzaklaştır',
         zoomIn: 'Yakınlaştır',

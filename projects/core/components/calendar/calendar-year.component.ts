@@ -35,9 +35,7 @@ const CURRENT_YEAR = TuiMonth.currentLocal().year;
     styleUrl: './calendar-year.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendarYear)],
-    host: {
-        '[class._picking]': 'isRangePicking()',
-    },
+    host: {'[class._picking]': 'isRangePicking()'},
 })
 export class TuiCalendarYear {
     private readonly hoveredItem = signal<number | null>(null);

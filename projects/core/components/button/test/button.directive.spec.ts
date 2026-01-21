@@ -62,9 +62,7 @@ describe('ButtonDirective', () => {
     let loader: HarnessLoader;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [Test],
-        });
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);

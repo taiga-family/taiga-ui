@@ -1,6 +1,4 @@
-const MAPPING = {
-    space: '0.25rem',
-};
+const MAPPING = {space: '0.25rem'};
 
 export function migrateLessSCSSConstants(fileContent: string): string {
     if (!fileContent.includes('@taiga-ui/core/styles/taiga-ui-local')) {

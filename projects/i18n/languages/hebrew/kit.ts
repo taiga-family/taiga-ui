@@ -70,9 +70,7 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'כן',
         no: 'לא',
     },
-    previewTexts: {
-        rotate: 'להתחלף',
-    },
+    previewTexts: {rotate: 'להתחלף'},
     zoomTexts: {
         zoomOut: 'להקטין את התצוגה',
         zoomIn: 'לְהִתְמַקֵד',

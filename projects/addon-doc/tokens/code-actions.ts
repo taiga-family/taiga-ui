@@ -7,6 +7,4 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
  */
 export const TUI_DOC_CODE_ACTIONS = new InjectionToken<
     PolymorpheusContent<TuiContext<string>>
->(ngDevMode ? 'TUI_DOC_CODE_ACTIONS' : '', {
-    factory: () => '',
-});
+>(ngDevMode ? 'TUI_DOC_CODE_ACTIONS' : '', {factory: () => ''});

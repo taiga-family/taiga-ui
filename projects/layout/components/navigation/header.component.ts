@@ -27,8 +27,6 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
         tuiTextfieldOptionsProvider({size: signal('s')}),
         tuiHintOptionsProvider({appearance: 'floating'}),
     ],
-    host: {
-        tuiTheme: 'dark',
-    },
+    host: {tuiTheme: 'dark'},
 })
 export class TuiHeaderComponent {}

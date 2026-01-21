@@ -13,9 +13,7 @@ import {type TuiMobileDialogOptions} from './mobile-dialog.options';
     templateUrl: './mobile-dialog.template.html',
     styleUrl: './mobile-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._ios]': 'isIOS',
-    },
+    host: {'[class._ios]': 'isIOS'},
 })
 export class TuiMobileDialog<I> {
     protected readonly isIOS = inject(WA_IS_IOS);

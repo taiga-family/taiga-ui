@@ -59,9 +59,7 @@ export default class TuiRoutableDialog {
             ? this.lazyLoadedBackUrl
             : this.route.snapshot.data['backUrl'];
 
-        void this.router.navigate([backUrl], {
-            relativeTo: this.route,
-        });
+        void this.router.navigate([backUrl], {relativeTo: this.route});
     }
 }
 

@@ -11,9 +11,7 @@ import {
 
 import {type TuiTableFilter} from './table-filter';
 
-@Directive({
-    selector: '[tuiTableFilters]',
-})
+@Directive({selector: '[tuiTableFilters]'})
 export class TuiTableFiltersDirective<T> {
     private readonly refresh$ = new ReplaySubject<Observable<unknown>>(1);
 

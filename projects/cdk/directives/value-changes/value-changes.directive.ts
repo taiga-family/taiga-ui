@@ -4,9 +4,7 @@ import {ControlContainer, NgControl} from '@angular/forms';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {distinctUntilChanged, skip, Subject, switchMap} from 'rxjs';
 
-@Directive({
-    selector: '[tuiValueChanges]',
-})
+@Directive({selector: '[tuiValueChanges]'})
 export class TuiValueChanges<T> implements DoCheck {
     private readonly container = inject(ControlContainer, {optional: true});
     private readonly control = inject(NgControl, {optional: true});

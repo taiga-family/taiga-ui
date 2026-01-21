@@ -10,9 +10,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    host: {
-        dir: 'rtl',
-    },
+    host: {dir: 'rtl'},
 })
 export default class Example {
     protected value = [

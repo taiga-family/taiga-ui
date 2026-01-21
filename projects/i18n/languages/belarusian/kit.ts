@@ -70,9 +70,7 @@ export const TUI_BELARUSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Так',
         no: 'Не',
     },
-    previewTexts: {
-        rotate: 'Павярнуць',
-    },
+    previewTexts: {rotate: 'Павярнуць'},
     zoomTexts: {
         zoomIn: 'Павялічыць',
         zoomOut: 'Паменшыць',

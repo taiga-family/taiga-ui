@@ -31,9 +31,7 @@ class Test {
 
 describe('InputNumber with [tuiNumberFormat]', () => {
     it('[precision]=Infinity', () => {
-        cy.mount(Test, {
-            componentProperties: {numberFormat: {precision: Infinity}},
-        });
+        cy.mount(Test, {componentProperties: {numberFormat: {precision: Infinity}}});
 
         cy.get('[tuiInputNumber]')
             .type(',123456789012345')

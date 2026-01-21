@@ -15,9 +15,7 @@ export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<unknown>>(
  */
 export const TUI_TREE_CONTROLLER = new InjectionToken(
     ngDevMode ? 'TUI_TREE_CONTROLLER' : '',
-    {
-        factory: () => TUI_DEFAULT_TREE_CONTROLLER,
-    },
+    {factory: () => TUI_DEFAULT_TREE_CONTROLLER},
 );
 
 /**

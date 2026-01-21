@@ -70,9 +70,7 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: '예',
         no: '아니요',
     },
-    previewTexts: {
-        rotate: '회전하다',
-    },
+    previewTexts: {rotate: '회전하다'},
     zoomTexts: {
         zoomOut: '축소',
         zoomIn: '확대하다',

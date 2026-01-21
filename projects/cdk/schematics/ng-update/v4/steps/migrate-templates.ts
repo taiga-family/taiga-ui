@@ -128,9 +128,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateActiveZoneParent,
     ] as const;
 
-    const progressLog = setupProgressLogger({
-        total: componentWithTemplatesPaths.length,
-    });
+    const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
 
     componentWithTemplatesPaths.forEach((resource) => {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));

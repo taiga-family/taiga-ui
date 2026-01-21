@@ -7,9 +7,7 @@ import {TUI_CALENDAR_OPTIONS} from './calendar.options';
 
 const CALENDAR_ROWS_COUNT = 6;
 
-@Pipe({
-    name: 'tuiCalendarSheet',
-})
+@Pipe({name: 'tuiCalendarSheet'})
 export class TuiCalendarSheetPipe implements PipeTransform {
     private readonly options = inject(TUI_CALENDAR_OPTIONS);
     private currentMonth: TuiMonth | null = null;

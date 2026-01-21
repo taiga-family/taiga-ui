@@ -38,9 +38,7 @@ export default class Example {
                 sum: 237,
                 time: '19:32',
             },
-            {
-                title: 'Failed to load',
-            },
+            {title: 'Failed to load'},
         ],
         'January 6, 2021': [
             {

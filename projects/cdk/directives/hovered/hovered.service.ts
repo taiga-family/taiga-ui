@@ -37,8 +37,6 @@ export class TuiHoveredService extends Observable<boolean> {
 export function tuiHovered(): Signal<boolean> {
     return toSignal(
         inject(WA_IS_MOBILE) ? of(false) : inject(TuiHoveredService).pipe(tuiWatch()),
-        {
-            initialValue: false,
-        },
+        {initialValue: false},
     );
 }

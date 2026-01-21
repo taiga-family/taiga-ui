@@ -14,32 +14,16 @@ export default class Example {
     protected height = 3;
 
     protected readonly files: readonly TuiFileLike[] = [
-        {
-            name: 'Loaded.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'last_file.txt',
-        },
+        {name: 'Loaded.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'last_file.txt'},
     ];
 
     protected readonly rejectedFiles: readonly TuiFileLike[] = [
-        {
-            name: 'File with an error.txt',
-        },
+        {name: 'File with an error.txt'},
     ];
 }

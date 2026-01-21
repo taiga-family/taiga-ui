@@ -70,9 +70,7 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Ναι',
         no: 'Όχι',
     },
-    previewTexts: {
-        rotate: 'Περιστροφή',
-    },
+    previewTexts: {rotate: 'Περιστροφή'},
     zoomTexts: {
         zoomOut: 'Μέγεθος μικρότερο',
         zoomIn: 'Μεγέθυνση',

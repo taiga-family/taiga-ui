@@ -20,11 +20,7 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputNumberOptionsProvider({
-            valueTransformer: new NaNTransformer(),
-        }),
-    ],
+    providers: [tuiInputNumberOptionsProvider({valueTransformer: new NaNTransformer()})],
 })
 export default class Example {
     protected value = NaN;

@@ -70,9 +70,7 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Да',
         no: 'Нет',
     },
-    previewTexts: {
-        rotate: 'Повернуть',
-    },
+    previewTexts: {rotate: 'Повернуть'},
     zoomTexts: {
         zoomIn: 'Увеличить масштаб',
         zoomOut: 'Уменьшить масштаб',

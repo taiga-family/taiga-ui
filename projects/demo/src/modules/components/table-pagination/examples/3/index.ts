@@ -11,11 +11,7 @@ import {
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiTablePaginationOptionsProvider({
-            showPages: false,
-        }),
-    ],
+    providers: [tuiTablePaginationOptionsProvider({showPages: false})],
 })
 export default class Example {
     protected total = 350;

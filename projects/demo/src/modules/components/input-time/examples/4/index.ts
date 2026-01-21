@@ -14,9 +14,7 @@ import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
         tuiInputTimeOptionsProvider({
             icon: () => '@tui.timer',
             mode: 'HH:MM:SS.MSS',
-            timeSegmentMaxValues: {
-                hours: 99,
-            },
+            timeSegmentMaxValues: {hours: 99},
         }),
     ],
 })

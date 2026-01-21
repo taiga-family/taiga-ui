@@ -42,14 +42,10 @@ describe('TuiHint', () => {
     }
 
     beforeEach(() =>
-        cy
-            .mount(Test, {
-                imports: [Host],
-            })
-            .then((wrap) => {
-                component = wrap.component;
-                wrapper = wrap;
-            }),
+        cy.mount(Test, {imports: [Host]}).then((wrap) => {
+            component = wrap.component;
+            wrapper = wrap;
+        }),
     );
 
     it('hint should hidden when detached from dom', () => {

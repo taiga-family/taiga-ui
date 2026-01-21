@@ -5,7 +5,5 @@ import {InjectionToken} from '@angular/core';
  */
 export const TUI_DOC_SEE_ALSO = new InjectionToken<ReadonlyArray<readonly string[]>>(
     ngDevMode ? 'TUI_DOC_SEE_ALSO' : '',
-    {
-        factory: () => [],
-    },
+    {factory: () => []},
 );

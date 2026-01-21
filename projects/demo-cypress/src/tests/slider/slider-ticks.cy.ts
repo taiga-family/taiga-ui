@@ -39,11 +39,7 @@ describe('Slider | With segments + tick labels', () => {
 
     [0, 25, 50, 75, 100].forEach((value) => {
         it(`value = ${value}`, () => {
-            cy.mount(SandBox, {
-                componentProperties: {
-                    value,
-                },
-            });
+            cy.mount(SandBox, {componentProperties: {value}});
 
             cy.compareSnapshot(`slider-ticks-${value}`);
         });

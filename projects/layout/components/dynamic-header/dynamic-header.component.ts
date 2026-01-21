@@ -22,9 +22,7 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
     `,
     styleUrl: './dynamic-header.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[style.--t-dir]': 'container.scrollDir() || -1',
-    },
+    host: {'[style.--t-dir]': 'container.scrollDir() || -1'},
 })
 export class TuiDynamicHeaderComponent {
     protected readonly container = inject(TuiDynamicHeaderContainerDirective);
