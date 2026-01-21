@@ -18,6 +18,7 @@ export const TUI_GREEK_LANGUAGE_CORE: TuiLanguageCore = {
         'Δεκέμβριος',
     ],
     close: 'Κλείσιμο',
+    back: 'Πίσω',
     clear: 'Εκκαθάρισή',
     nothingFoundMessage: 'Δεν βρέθηκε τίποτα',
     defaultErrorMessage: 'Η τιμή είναι άκυρη',
