@@ -209,7 +209,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?sandboxExpanded=true&updateOn=blur`,
             );
 
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
 
             await expect
