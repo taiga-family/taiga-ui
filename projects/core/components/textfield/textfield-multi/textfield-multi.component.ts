@@ -28,6 +28,7 @@ import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
+import {WA_WINDOW} from '@ng-web-apis/common';
 
 @Component({
     selector: 'tui-textfield[multi]',
@@ -59,6 +60,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
 })
 export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     protected readonly height = signal<number | null>(null);
+    protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component = TUI_TEXTFIELD_ITEM;
     protected readonly sub = fromEvent(this.el, 'scroll')
@@ -112,6 +114,14 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
 
         event.preventDefault();
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
+    }
+
+    protected focusInput(): void {
+        const selection = this.win.getSelection();
+
+        if (!selection?.rangeCount || selection.getRangeAt(0)?.collapsed) {
+            this.input()?.nativeElement.focus();
+        }
     }
 
     protected onClick(target: HTMLElement): void {
