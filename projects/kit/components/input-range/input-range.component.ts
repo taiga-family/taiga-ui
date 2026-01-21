@@ -153,6 +153,11 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         }
     }
 
+    protected onBlur(): void {
+        this.onTouched();
+        this.setTextfieldValues(this.value());
+    }
+
     protected setTextfieldValues([start, end]: readonly [number, number]): void {
         this.start = start;
         this.end = end;
