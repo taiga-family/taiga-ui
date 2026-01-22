@@ -13,9 +13,7 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-@Directive({
-    selector: '[tuiSlot]',
-})
+@Directive({selector: '[tuiSlot]'})
 export class TuiTooltipCopyContentDirective {
     public readonly tuiSlot = input<string | 'first' | 'second'>('first');
 }
