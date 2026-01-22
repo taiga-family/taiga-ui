@@ -1,10 +1,14 @@
-.steps {
-    list-style-type: decimal;
-    padding-inline-start: 0.9375rem;
+.explore {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
     margin: 1rem 0;
-}
 
-.tabs {
-    z-index: 2;
-    box-shadow: none;
+    [tuiAvatar] {
+        background: var(--tui-background-base);
+    }
+
+    button {
+        cursor: pointer;
+    }
 }

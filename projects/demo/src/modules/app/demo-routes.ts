@@ -10,7 +10,7 @@ export const DemoRoute = {
     ScreenshotBot: '/testing/screenshot-bot',
     I18N: '/i18n',
     Variables: '/variables',
-    DialogRoutable: '/dialog/routable',
+    DialogRoutable: '/components/dialog-routable',
     Portals: '/portals',
     Viewport: '/viewport',
     Accordion: '/components/accordion',

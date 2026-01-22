@@ -69,7 +69,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.DialogRoutable,
         title: 'Routable',
-        loadChildren: async () => import('../customization/routable/routes'),
+        loadChildren: async () => import('../components/dialog-routable/routes'),
     }),
     route({
         path: DemoRoute.Portals,

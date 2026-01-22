@@ -1,14 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiAvatar, TuiCardLarge, TuiDemo, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
+    private readonly doc = inject(DOCUMENT);
+
     protected readonly automatic = {
         Angular: 'ng add taiga-ui',
         Nx: import('./examples/nx-add.md'),
@@ -40,4 +46,16 @@ export default class Page {
         Angular: 'ng update @taiga-ui/cdk',
         Nx: import('./examples/nx-migrate.md'),
     };
+
+    protected toggle(section: string): void {
+        this.doc
+            .querySelector<HTMLElement>('[tuiDocHeader] > button:first-child')
+            ?.click();
+
+        setTimeout(() =>
+            Array.from(this.doc.querySelectorAll('button'))
+                .filter(({textContent}) => textContent?.trim() === section)
+                .forEach((e) => e.click()),
+        );
+    }
 }

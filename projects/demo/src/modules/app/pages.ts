@@ -264,49 +264,6 @@ export const pages: DocRoutePages = [
         meta: [{name: 'tui-toggle-block', figmaVersion: '1.2.0'}],
     },
     {
-        section: 'Layout',
-        title: 'BlockStatus',
-        keywords: 'блок, статус, block, status, block-status, blockstatus, layout',
-        route: DemoRoute.BlockStatus,
-        meta: {},
-    },
-    {
-        section: 'Components',
-        title: 'Buttons',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'Button',
-                keywords: 'кнопка, button, icon-button, иконка',
-                route: DemoRoute.Button,
-                meta: [
-                    {name: 'tui-button', figmaVersion: '1.9.1'},
-                    {name: 'tui-button-vertical', figmaVersion: '1.0.1'},
-                ],
-            },
-            {
-                section: 'Components',
-                title: 'ButtonX',
-                keywords: 'кнопка, button, close, закрыть',
-                route: DemoRoute.ButtonX,
-                meta: {name: 'tui-button-close'},
-            },
-            {
-                section: 'Components',
-                title: 'ButtonGroup',
-                keywords: 'кнопка, button, group, группа',
-                route: DemoRoute.ButtonGroup,
-                meta: {name: 'tui-button-group-card'},
-            },
-            {
-                section: 'Components',
-                title: 'ButtonSelect',
-                keywords: 'кнопка, button, select, multiselect',
-                route: DemoRoute.ButtonSelect,
-            },
-        ],
-    },
-    {
         section: 'Components',
         title: 'Calendars',
         subPages: [
@@ -349,35 +306,15 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Toggles',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'Checkbox',
-                keywords: 'чек, ввод, форма, form, checkbox',
-                route: DemoRoute.Checkbox,
-                meta: {},
-            },
-            {
-                section: 'Components',
-                title: 'Radio',
-                keywords: 'инпут, форма, ввод, radio, радио',
-                route: DemoRoute.Radio,
-                meta: {},
-            },
-            {
-                section: 'Components',
-                title: 'Switch',
-                keywords: 'инпут, форма, ввод, toggle, переключение',
-                route: DemoRoute.Switch,
-                meta: {},
-            },
-        ],
-    },
-    {
-        section: 'Components',
         title: 'Modals',
         subPages: [
+            {
+                section: 'Components',
+                title: 'Confirm',
+                keywords:
+                    'попап, модал, popup, dialog, диалог, modal, окно, confirm, approve, prompt, подтверждение',
+                route: DemoRoute.Confirm,
+            },
             {
                 section: 'Components',
                 title: 'Dialog',
@@ -412,15 +349,15 @@ export const pages: DocRoutePages = [
                     'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
                 route: DemoRoute.PdfViewer,
             },
+            {
+                section: 'Components',
+                title: 'Preview',
+                keywords:
+                    'popup, dialog, диалог, попап, модалка, modal, просмотр, превью, предпросмотр, ' +
+                    'предпоказ, показ, pdf, jpg, png, viewer, файл',
+                route: DemoRoute.Preview,
+            },
         ],
-    },
-    {
-        section: 'Components',
-        title: 'Drawer',
-        keywords:
-            'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',
-        route: DemoRoute.Drawer,
-        meta: {scheme: 'beaver', name: 'drawer'},
     },
     {
         section: 'Components',
@@ -478,47 +415,15 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Error',
-        keywords: 'error, ошибка',
-        route: DemoRoute.Error,
-    },
-    {
-        section: 'Components',
         title: 'Expand',
         keywords: 'аккордеон, expand, раскрывашка, spoiler, cut',
         route: DemoRoute.Expand,
     },
     {
         section: 'Components',
-        title: 'ElasticContainer',
-        keywords: 'container, height, transition, expand, контейнер, высота, анимация',
-        route: DemoRoute.ElasticContainer,
-    },
-    {
-        section: 'Components',
         title: 'Filter',
         keywords: 'фильтр, filters',
         route: DemoRoute.Filter,
-    },
-    {
-        section: 'Components',
-        title: 'FloatingContainer',
-        keywords: 'floating-container, sticky, плавающий, липкий, footer, футер',
-        route: DemoRoute.FloatingContainer,
-        meta: {},
-    },
-    {
-        section: 'Layout',
-        title: 'Form',
-        keywords: 'форма, поле, кнопка, группировка, группа',
-        route: DemoRoute.Form,
-        meta: {scheme: 'beaver', name: 'form'},
-    },
-    {
-        section: 'Components',
-        title: 'Group',
-        keywords: 'buttongroup, форма, поле, кнопка, группировка, группа, Group',
-        route: DemoRoute.Group,
     },
     {
         section: 'Components',
@@ -569,180 +474,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Inputs',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'InputCard',
-                keywords:
-                    'карта, visa, mastercard, credit, card, срок, expire, код, cvc, cvv',
-                route: DemoRoute.InputCard,
-            },
-            {
-                section: 'Components',
-                title: 'InputCardGroup',
-                keywords:
-                    'карта, visa, mastercard, credit, card, срок, expire, код, cvc, cvv',
-                route: DemoRoute.InputCardGroup,
-            },
-            {
-                section: 'Components',
-                title: 'InputChip',
-                keywords:
-                    'поле, инпут, форма, ввод, input, виртуальный скролл, chip, virtual scroll, tag, тэг',
-                route: DemoRoute.InputChip,
-                meta: [
-                    {name: 'tui-input-chip'},
-                    {name: 'tui-multi-select', anchor: 'multi-select'},
-                ],
-            },
-            {
-                section: 'Components',
-                title: 'InputColor',
-                keywords: 'input-color, picker, color, цвет, выбор, палитра',
-                route: DemoRoute.InputColor,
-            },
-            {
-                section: 'Components',
-                title: 'InputDate',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar',
-                route: DemoRoute.InputDate,
-            },
-            {
-                section: 'Components',
-                title: 'InputDateMulti',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar, multiple',
-                route: DemoRoute.InputDateMulti,
-            },
-            {
-                section: 'Components',
-                title: 'InputDateRange',
-                keywords: 'calendar, календарь, даты, период',
-                route: DemoRoute.InputDateRange,
-            },
-            {
-                section: 'Components',
-                title: 'InputDateTime',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
-                route: DemoRoute.InputDateTime,
-            },
-            {
-                section: 'Components',
-                title: 'InputInline',
-                keywords: 'input',
-                route: DemoRoute.InputInline,
-            },
-            {
-                section: 'Components',
-                title: 'InputMonth',
-                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
-                route: DemoRoute.InputMonth,
-            },
-            {
-                section: 'Components',
-                title: 'InputNumber',
-                keywords: 'textfield, input, number, count, digit, money, число',
-                route: DemoRoute.InputNumber,
-            },
-            {
-                section: 'Components',
-                title: 'InputPhone',
-                keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
-                route: DemoRoute.InputPhone,
-            },
-            {
-                section: 'Components',
-                title: 'InputPhoneInternational',
-                keywords:
-                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
-                route: DemoRoute.InputPhoneInternational,
-            },
-            {
-                section: 'Components',
-                title: 'InputPin',
-                keywords: 'поле, инпут, форма, ввод, input, pin, пин, код',
-                route: DemoRoute.InputPin,
-            },
-            {
-                section: 'Components',
-                title: 'InputRange',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputRange,
-            },
-            {
-                section: 'Components',
-                title: 'InputSlider',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSlider,
-            },
-            {
-                section: 'Components',
-                title: 'InputTime',
-                keywords:
-                    'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
-                route: DemoRoute.InputTime,
-            },
-            {
-                section: 'Components',
-                title: 'InputYear',
-                keywords: 'поле, инпут, форма, ввод, input, год, дата',
-                route: DemoRoute.InputYear,
-            },
-            {
-                section: 'Components',
-                title: 'InputFiles',
-                keywords: 'input-files, files, file, файлы',
-                route: DemoRoute.InputFiles,
-            },
-            {
-                section: 'Components',
-                title: 'Textarea',
-                keywords: 'поле, инпут, форма, ввод, textarea, area',
-                route: DemoRoute.Textarea,
-                meta: {},
-            },
-            {
-                section: 'Components',
-                title: 'Input',
-                keywords:
-                    'form, textfield, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
-                route: DemoRoute.Input,
-                meta: {name: 'tui-textfield'},
-            },
-            {
-                section: 'Components',
-                title: 'ComboBox',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
-                route: DemoRoute.ComboBox,
-                meta: {},
-            },
-            {
-                section: 'Components',
-                title: 'Select',
-                keywords: 'инпут, форма, ввод, select, селект, выбор',
-                route: DemoRoute.Select,
-                meta: {},
-            },
-        ],
-    },
-    {
-        section: 'Components',
         title: 'ItemsWithMore',
         keywords: 'список, list, items, элементы, more, больше, overflow',
         route: DemoRoute.ItemsWithMore,
-    },
-    {
-        section: 'Components',
-        title: 'Label',
-        keywords: 'лэйбл, метка, форма, label',
-        route: DemoRoute.Label,
     },
     {
         section: 'Components',
@@ -806,6 +540,13 @@ export const pages: DocRoutePages = [
                     'mobile, потянуть, обновление, лоадер, loader, крутилка, загрузка',
                 route: DemoRoute.PullToRefresh,
             },
+            {
+                section: 'Components',
+                title: 'SwipeActions',
+                keywords: 'swipe, action, свайп, card, действие',
+                route: DemoRoute.SwipeActions,
+                meta: {version: '1.1.0'},
+            },
         ],
     },
     {
@@ -859,20 +600,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Confirm',
-        keywords:
-            'попап, модал, popup, dialog, диалог, modal, окно, confirm, approve, prompt, подтверждение',
-        route: DemoRoute.Confirm,
-    },
-    {
-        section: 'Components',
-        title: 'Rating',
-        keywords: 'рейтинг, оценка, звезда, rating, star, rate',
-        route: DemoRoute.Rating,
-        meta: {figmaVersion: '1.1.1'},
-    },
-    {
-        section: 'Components',
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
@@ -889,51 +616,6 @@ export const pages: DocRoutePages = [
         title: 'BottomSheet',
         keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
         route: DemoRoute.BottomSheet,
-    },
-    {
-        section: 'Components',
-        title: 'Sliders',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'InputRange',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputRange,
-            },
-            {
-                section: 'Components',
-                title: 'InputSlider',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSlider,
-            },
-            {
-                section: 'Components',
-                title: 'Slider',
-                keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
-                route: DemoRoute.Slider,
-                meta: {},
-            },
-            {
-                section: 'Components',
-                title: 'Range',
-                keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
-                route: DemoRoute.Range,
-            },
-        ],
-    },
-    {
-        section: 'Components',
-        title: 'Slides',
-        keywords: 'слайды, слайдер, slider, carousel, карусель, слайд, slide, swiper',
-        route: DemoRoute.Slides,
-    },
-    {
-        section: 'Components',
-        title: 'Preview',
-        keywords:
-            'popup, dialog, диалог, попап, модалка, modal, просмотр, превью, предпросмотр, ' +
-            'предпоказ, показ, pdf, jpg, png, viewer, файл',
-        route: DemoRoute.Preview,
     },
     {
         section: 'Components',
@@ -1006,6 +688,278 @@ export const pages: DocRoutePages = [
         route: DemoRoute.Tree,
     },
     {
+        section: 'Form',
+        title: 'Form',
+        keywords: 'форма, поле, кнопка, группировка, группа',
+        route: DemoRoute.Form,
+        meta: {scheme: 'beaver', name: 'form'},
+    },
+    {
+        section: 'Form',
+        title: 'Buttons',
+        subPages: [
+            {
+                section: 'Form',
+                title: 'Button',
+                keywords: 'кнопка, button, icon-button, иконка',
+                route: DemoRoute.Button,
+                meta: [
+                    {name: 'tui-button', figmaVersion: '1.9.1'},
+                    {name: 'tui-button-vertical', figmaVersion: '1.0.1'},
+                ],
+            },
+            {
+                section: 'Form',
+                title: 'ButtonX',
+                keywords: 'кнопка, button, close, закрыть',
+                route: DemoRoute.ButtonX,
+                meta: {name: 'tui-button-close'},
+            },
+            {
+                section: 'Form',
+                title: 'ButtonGroup',
+                keywords: 'кнопка, button, group, группа',
+                route: DemoRoute.ButtonGroup,
+                meta: {name: 'tui-button-group-card'},
+            },
+            {
+                section: 'Form',
+                title: 'ButtonSelect',
+                keywords: 'кнопка, button, select, multiselect',
+                route: DemoRoute.ButtonSelect,
+            },
+        ],
+    },
+    {
+        section: 'Form',
+        title: 'Label',
+        keywords: 'лэйбл, метка, форма, label',
+        route: DemoRoute.Label,
+    },
+    {
+        section: 'Form',
+        title: 'Error',
+        keywords: 'error, ошибка, форма, validation, валидация, проверка',
+        route: DemoRoute.Error,
+    },
+    {
+        section: 'Form',
+        title: 'Inputs',
+        subPages: [
+            {
+                section: 'Form',
+                title: 'InputCard',
+                keywords:
+                    'карта, visa, mastercard, credit, card, срок, expire, код, cvc, cvv',
+                route: DemoRoute.InputCard,
+            },
+            {
+                section: 'Form',
+                title: 'InputCardGroup',
+                keywords:
+                    'карта, visa, mastercard, credit, card, срок, expire, код, cvc, cvv',
+                route: DemoRoute.InputCardGroup,
+            },
+            {
+                section: 'Form',
+                title: 'InputChip',
+                keywords:
+                    'поле, инпут, форма, ввод, input, виртуальный скролл, chip, virtual scroll, tag, тэг',
+                route: DemoRoute.InputChip,
+                meta: [
+                    {name: 'tui-input-chip'},
+                    {name: 'tui-multi-select', anchor: 'multi-select'},
+                ],
+            },
+            {
+                section: 'Form',
+                title: 'InputColor',
+                keywords: 'input-color, picker, color, цвет, выбор, палитра',
+                route: DemoRoute.InputColor,
+            },
+            {
+                section: 'Form',
+                title: 'InputDate',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar',
+                route: DemoRoute.InputDate,
+            },
+            {
+                section: 'Form',
+                title: 'InputDateMulti',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar, multiple',
+                route: DemoRoute.InputDateMulti,
+            },
+            {
+                section: 'Form',
+                title: 'InputDateRange',
+                keywords: 'calendar, календарь, даты, период',
+                route: DemoRoute.InputDateRange,
+            },
+            {
+                section: 'Form',
+                title: 'InputDateTime',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
+                route: DemoRoute.InputDateTime,
+            },
+            {
+                section: 'Form',
+                title: 'InputInline',
+                keywords: 'input',
+                route: DemoRoute.InputInline,
+            },
+            {
+                section: 'Form',
+                title: 'InputMonth',
+                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
+                route: DemoRoute.InputMonth,
+            },
+            {
+                section: 'Form',
+                title: 'InputNumber',
+                keywords: 'textfield, input, number, count, digit, money, число',
+                route: DemoRoute.InputNumber,
+            },
+            {
+                section: 'Form',
+                title: 'InputPhone',
+                keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
+                route: DemoRoute.InputPhone,
+            },
+            {
+                section: 'Form',
+                title: 'InputPhoneInternational',
+                keywords:
+                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
+                route: DemoRoute.InputPhoneInternational,
+            },
+            {
+                section: 'Form',
+                title: 'InputPin',
+                keywords: 'поле, инпут, форма, ввод, input, pin, пин, код',
+                route: DemoRoute.InputPin,
+            },
+            {
+                section: 'Form',
+                title: 'InputTime',
+                keywords:
+                    'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
+                route: DemoRoute.InputTime,
+            },
+            {
+                section: 'Form',
+                title: 'InputYear',
+                keywords: 'поле, инпут, форма, ввод, input, год, дата',
+                route: DemoRoute.InputYear,
+            },
+            {
+                section: 'Form',
+                title: 'InputFiles',
+                keywords: 'input-files, files, file, файлы',
+                route: DemoRoute.InputFiles,
+            },
+            {
+                section: 'Form',
+                title: 'Input',
+                keywords:
+                    'form, textfield, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
+                route: DemoRoute.Input,
+                meta: {name: 'tui-textfield'},
+            },
+        ],
+    },
+    {
+        section: 'Form',
+        title: 'ComboBox',
+        keywords: 'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
+        route: DemoRoute.ComboBox,
+        meta: {},
+    },
+    {
+        section: 'Form',
+        title: 'Select',
+        keywords: 'инпут, форма, ввод, select, селект, выбор',
+        route: DemoRoute.Select,
+        meta: {},
+    },
+    {
+        section: 'Form',
+        title: 'Textarea',
+        keywords: 'поле, инпут, форма, ввод, textarea, area',
+        route: DemoRoute.Textarea,
+        meta: {},
+    },
+    {
+        section: 'Form',
+        title: 'Rating',
+        keywords: 'рейтинг, оценка, звезда, rating, star, rate',
+        route: DemoRoute.Rating,
+        meta: {figmaVersion: '1.1.1'},
+    },
+    {
+        section: 'Form',
+        title: 'Toggles',
+        subPages: [
+            {
+                section: 'Form',
+                title: 'Checkbox',
+                keywords: 'чек, ввод, форма, form, checkbox',
+                route: DemoRoute.Checkbox,
+                meta: {},
+            },
+            {
+                section: 'Form',
+                title: 'Radio',
+                keywords: 'инпут, форма, ввод, radio, радио',
+                route: DemoRoute.Radio,
+                meta: {},
+            },
+            {
+                section: 'Form',
+                title: 'Switch',
+                keywords: 'инпут, форма, ввод, toggle, переключение',
+                route: DemoRoute.Switch,
+                meta: {},
+            },
+        ],
+    },
+    {
+        section: 'Form',
+        title: 'Sliders',
+        subPages: [
+            {
+                section: 'Form',
+                title: 'InputRange',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
+                route: DemoRoute.InputRange,
+            },
+            {
+                section: 'Form',
+                title: 'InputSlider',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
+                route: DemoRoute.InputSlider,
+            },
+            {
+                section: 'Form',
+                title: 'Slider',
+                keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
+                route: DemoRoute.Slider,
+                meta: {},
+            },
+            {
+                section: 'Form',
+                title: 'Range',
+                keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
+                route: DemoRoute.Range,
+            },
+        ],
+    },
+    {
         section: 'Layout',
         title: 'BlockDetails',
         keywords: 'details, block, детали, блок',
@@ -1020,7 +974,27 @@ export const pages: DocRoutePages = [
         route: DemoRoute.List,
     },
     {
-        section: 'Components',
+        section: 'Layout',
+        title: 'BlockStatus',
+        keywords: 'блок, статус, block, status, block-status, blockstatus, layout',
+        route: DemoRoute.BlockStatus,
+        meta: {},
+    },
+    {
+        section: 'Layout',
+        title: 'ElasticContainer',
+        keywords: 'container, height, transition, expand, контейнер, высота, анимация',
+        route: DemoRoute.ElasticContainer,
+    },
+    {
+        section: 'Layout',
+        title: 'FloatingContainer',
+        keywords: 'floating-container, sticky, плавающий, липкий, footer, футер',
+        route: DemoRoute.FloatingContainer,
+        meta: {},
+    },
+    {
+        section: 'Layout',
         title: 'Cell',
         keywords: 'cell, feed, item, tuiAccessories, accessories',
         route: DemoRoute.Cell,
@@ -1032,18 +1006,38 @@ export const pages: DocRoutePages = [
         ],
     },
     {
+        section: 'Layout',
+        title: 'Drawer',
+        keywords:
+            'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',
+        route: DemoRoute.Drawer,
+        meta: {scheme: 'beaver', name: 'drawer'},
+    },
+    {
+        section: 'Layout',
+        title: 'Group',
+        keywords: 'buttongroup, форма, поле, кнопка, группировка, группа, Group',
+        route: DemoRoute.Group,
+    },
+    {
+        section: 'Layout',
+        title: 'ItemGroup',
+        keywords: 'item, chip, group, list, tag, тэг, badge',
+        route: DemoRoute.ItemGroup,
+        meta: {name: 'tui-chip-group'},
+    },
+    {
+        section: 'Layout',
+        title: 'Slides',
+        keywords: 'слайды, слайдер, slider, carousel, карусель, слайд, slide, swiper',
+        route: DemoRoute.Slides,
+    },
+    {
         section: 'Components',
         title: 'Chip',
         keywords: 'chip, tag, тэг, badge',
         route: DemoRoute.Chip,
         meta: {figmaVersion: '1.3.3'},
-    },
-    {
-        section: 'Components',
-        title: 'ItemGroup',
-        keywords: 'item, chip, group, list, tag, тэг, badge',
-        route: DemoRoute.ItemGroup,
-        meta: {name: 'tui-chip-group'},
     },
     {
         section: 'Components',
@@ -1084,13 +1078,6 @@ export const pages: DocRoutePages = [
         keywords: 'card, container, wrapper, image, blur, overlay',
         route: DemoRoute.Surface,
         meta: {},
-    },
-    {
-        section: 'Components',
-        title: 'SwipeActions',
-        keywords: 'swipe, action, свайп, card, действие',
-        route: DemoRoute.SwipeActions,
-        meta: {version: '1.1.0'},
     },
     {
         section: 'Components',
