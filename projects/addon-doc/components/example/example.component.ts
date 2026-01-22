@@ -49,6 +49,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     imports: [
         AsyncPipe,
         NgComponentOutlet,
+        NgTemplateOutlet,
         PolymorpheusOutlet,
         RouterLink,
         TuiButton,
@@ -61,7 +62,6 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiMapperPipe,
         TuiSegmented,
         TuiTitle,
-        NgTemplateOutlet,
     ],
     templateUrl: './example.template.html',
     styleUrl: './example.style.less',
