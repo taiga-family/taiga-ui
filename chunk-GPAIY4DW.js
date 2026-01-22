@@ -1,0 +1,54 @@
+import"./chunk-B4AJQJMI.js";var n=`<tui-doc-page
+    header="Lists"
+    type="markup"
+>
+    <tui-doc-example
+        heading="large"
+        [component]="1 | tuiComponent"
+        [content]="1 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        heading="medium"
+        [component]="2 | tuiComponent"
+        [content]="2 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        heading="small"
+        [component]="3 | tuiComponent"
+        [content]="3 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        heading="large with heading"
+        [component]="4 | tuiComponent"
+        [content]="4 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        heading="medium with heading"
+        [component]="5 | tuiComponent"
+        [content]="5 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        heading="small with heading"
+        [component]="6 | tuiComponent"
+        [content]="6 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+
+    <tui-doc-example
+        heading="triangle bullets"
+        [component]="7 | tuiComponent"
+        [content]="7 | tuiExample: 'html'"
+        [fullsize]="true"
+    />
+</tui-doc-page>
+`;export{n as default};

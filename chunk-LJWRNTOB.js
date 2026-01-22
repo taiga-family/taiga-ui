@@ -1,0 +1,70 @@
+import"./chunk-B4AJQJMI.js";var a=`<tui-doc-page header="Getting started">
+    <ng-template pageTab="Automatic">
+        To install the
+        <strong>Taiga UI</strong>
+        , you can use the command below. This command will automatically install and add the library to your project,
+        and configure it.
+
+        <tui-doc-example
+            [content]="automatic"
+            [preview]="false"
+        />
+
+        <div
+            tuiNotification
+            [style.margin-block-start.rem]="1"
+        >
+            <strong>Note:</strong>
+            If you want to add Taiga UI to a project that is not using the latest major version of Angular, make sure to
+            install the appropriate version of
+            <code>&#64;angular/cdk</code>
+            first to prevent dependency conflicts.
+        </div>
+    </ng-template>
+    <ng-template pageTab="Manual">
+        Use this guide to install
+        <strong>Taiga UI</strong>
+        manually.
+
+        <tui-doc-example
+            heading="Install libraries"
+            [content]="libraries"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            heading="Include styles"
+            [content]="styles"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            heading="Add icons"
+            [content]="icons"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            heading="Root component"
+            [content]="root"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            heading="Provide config"
+            [content]="provide"
+            [preview]="false"
+        />
+    </ng-template>
+    <ng-template pageTab="Update">
+        Updating
+        <strong>Taiga UI</strong>
+        packages to the latest version.
+
+        <tui-doc-example
+            [content]="update"
+            [preview]="false"
+        />
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};
