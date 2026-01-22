@@ -92,13 +92,6 @@ export const pages: DocRoutePages = [
                 keywords: 'layout, markup, тень, shadows',
                 route: DemoRoute.Shadows,
             },
-            {
-                section: 'Documentation',
-                title: 'Lists',
-                keywords:
-                    'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
-                route: DemoRoute.Lists,
-            },
         ],
     },
     {
@@ -1018,6 +1011,13 @@ export const pages: DocRoutePages = [
         keywords: 'details, block, детали, блок',
         route: DemoRoute.BlockDetails,
         meta: {},
+    },
+    {
+        section: 'Layout',
+        title: 'List',
+        keywords:
+            'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
+        route: DemoRoute.List,
     },
     {
         section: 'Components',

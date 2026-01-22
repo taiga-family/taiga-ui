@@ -146,7 +146,7 @@ export const DemoRoute = {
     PieChart: '/charts/pie-chart',
     RingChart: '/charts/ring-chart',
     Colors: '/colors',
-    Lists: '/lists',
+    List: '/list',
     Shadows: '/shadows',
     Typography: '/typography',
     Breakpoints: '/breakpoints',
