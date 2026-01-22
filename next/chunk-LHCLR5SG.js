@@ -1,0 +1,2 @@
+import{g as u,i as l}from"./chunk-S3HE6DIU.js";import{ga as s}from"./chunk-BGWEGHNK.js";import{Mc as m,Tb as n,pc as i,qc as a,rc as r}from"./chunk-AXUCSVX7.js";var e=class e{};e.\u0275fac=function(t){return new(t||e)},e.\u0275cmp=n({type:e,selectors:[["tui-lazy-example"]],decls:3,vars:0,consts:[["routerLink","path/to/lazy","tuiButton","","type","button"]],template:function(t,p){t&1&&(i(0,"button",0),m(1,` Open dialog
+`),a(),r(2,"router-outlet"))},dependencies:[l,u,s],encapsulation:2,changeDetection:0});var o=e;export{o as a};

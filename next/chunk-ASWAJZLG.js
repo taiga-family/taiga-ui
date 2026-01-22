@@ -1,0 +1,16 @@
+import"./chunk-B4AJQJMI.js";var t=`<tui-doc-page
+    header="Filter"
+    package="CDK"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe for filtering an array
+
+        <tui-doc-example
+            heading="Usage"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+</tui-doc-page>
+`;export{t as default};

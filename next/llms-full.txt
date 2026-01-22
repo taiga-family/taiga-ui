@@ -1,196 +1,3 @@
-# addons.md
-
-```bash
-npm i @taiga-ui/addon-charts    // Components for various charts, graphs and visualizations
-npm i @taiga-ui/addon-commerce  // Money-related extension with currencies, credit card inputs and validators
-npm i @taiga-ui/addon-mobile    // Components and tools specific to mobile version of the app
-npm i @taiga-ui/addon-table     // Interactive table component and related utilities
-npm i @taiga-ui/addon-doc       // Taiga UI based library for developing documentation portals for Angular libraries
-npm i @taiga-ui/layout          // Layout components
-```
-
----
-# angular-json-styles.md
-
-```json
-{
-  "projects": {
-    "my-project": {
-      "architect": {
-        "build": {
-          "options": {
-            "styles": [
-              "@taiga-ui/core/styles/taiga-ui-theme.less",
-              "@taiga-ui/core/styles/taiga-ui-fonts.less",
-              "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less" // optional
-            ]
-          }
-        }
-      }
-    }
-  }
-}
-```
-
----
-# app-standalone.md
-
-```ts
-import {TuiRoot} from '@taiga-ui/core';
-// ..
-@Component({
-  standalone: true,
-  selector: 'app-root',
-  imports: [
-    TuiRoot,
-    // ...
-  ],
-  templateUrl: './app.component.html',
-})
-export class App {}
-```
-
----
-# app-template.md
-
-```html
-<tui-root>
-  <!-- content of your app -->
-  <ng-container ngProjectAs="tuiOverContent">
-    <!-- Content over app content in the portal layer -->
-  </ng-container>
-</tui-root>
-```
-
----
-# assets.md
-
-```json
-{
-  "projects": {
-    "my-project": {
-      "architect": {
-        "build": {
-          // ...
-          "assets": [
-            {
-              "glob": "**/*",
-              "input": "node_modules/@taiga-ui/icons/src",
-              "output": "assets/taiga-ui/icons"
-            }
-          ]
-        }
-      }
-    }
-  }
-}
-```
-
----
-# components-styles.md
-
-```ts
-@Component({
-  //...,
-  styleUrls: ['./my.component.scss', './my.component.less'],
-})
-export class Example {}
-```
-
----
-# import-local-less.md
-
-```less
-@import '@taiga-ui/core/styles/taiga-ui-local.less';
-// other styles
-```
-
----
-# main-standalone.md
-
-```ts
-import {provideTaiga} from '@taiga-ui/core';
-// ...
-bootstrapApplication(App, {
-  providers: [
-    provideTaiga(),
-    //...
-  ],
-}).catch((err) => console.error(err));
-```
-
----
-# main.md
-
-```bash
-npm i @taiga-ui/{cdk,core,kit,icons}
-```
-
----
-# nx-add.md
-
-```bash
-npm i taiga-ui
-nx g taiga-ui:ng-add
-```
-
----
-# nx-assets.md
-
-```json
-{
-  "targets": {
-    "build": {
-      "options": {
-        // ...
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "node_modules/@taiga-ui/icons/src",
-            "output": "assets/taiga-ui/icons"
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
----
-# nx-migrate.md
-
-```bash
-nx migrate @taiga-ui/cdk
-nx migrate --run-migrations=migrations.json
-```
-
----
-# ponyfill.md
-
-```bash
-npm install css-vars-ponyfill
-```
-
----
-# project-json-styles.md
-
-```json
-{
-  "targets": {
-    "build": {
-      "options": {
-        "styles": [
-          "@taiga-ui/core/styles/taiga-ui-theme.less",
-          "@taiga-ui/core/styles/taiga-ui-fonts.less",
-          "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less" // optional
-        ]
-      }
-    }
-  }
-}
-```
-
----
 # components/Accordion
 - **Package**: `KIT`
 - **Type**: components
@@ -2883,7 +2690,7 @@ Block is a special presentation of a checkbox/radiobutton which can display actu
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <label tuiBlock="s"> Qiwi <input formControlName="testValue2" size="s" tuiCheckbox type="checkbox" />
 </label>
 <label tuiBlock="m"> Oranges <input formControlName="testValue3" size="s" tuiCheckbox type="checkbox" />
@@ -2891,7 +2698,7 @@ Block is a special presentation of a checkbox/radiobutton which can display actu
 <label tuiBlock> Watermelons <input formControlName="testValue4" tuiCheckbox type="checkbox" />
 </label>
 </form>
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <label tuiBlock="s">
 <input formControlName="testValue5" size="s" tuiRadio type="radio" value="qiwi" />
 <span tuiTitle>
@@ -2943,7 +2750,7 @@ import {TuiBlock, TuiCheckbox, TuiRadio, TuiTooltip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
+    protected readonly form = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl({value: false, disabled: true}),
         testValue3: new FormControl({value: true, disabled: true}),
@@ -2958,33 +2765,33 @@ export default class Example {
 **Template:**
 ```html
 <h3 class="title">Horizontal group</h3>
-<form tuiGroup class="group" [collapsed]="true" [formGroup]="testForm" >
+<form tuiGroup class="group" [collapsed]="true" [formGroup]="form" >
 <label tuiBlock>
-<input formControlName="testValue" tuiRadio type="radio" value="oranges" /> Oranges </label>
+<input formControlName="value" tuiRadio type="radio" value="oranges" /> Oranges </label>
 <label tuiBlock>
-<input formControlName="testValue" tuiRadio type="radio" value="apples" /> Apples </label>
+<input formControlName="value" tuiRadio type="radio" value="apples" /> Apples </label>
 <label tuiBlock>
-<input formControlName="testValue" tuiRadio type="radio" value="pineapples" />
+<input formControlName="value" tuiRadio type="radio" value="pineapples" />
 <span tuiFade>Pineapples</span>
 </label>
 </form>
 <h3 class="title">Vertical group</h3>
-<form orientation="vertical" tuiGroup class="group" [collapsed]="true" [formGroup]="testForm" >
+<form orientation="vertical" tuiGroup class="group" [collapsed]="true" [formGroup]="form" >
 <label tuiBlock>
-<input formControlName="testValue" tuiRadio type="radio" value="oranges" /> Oranges </label>
+<input formControlName="value" tuiRadio type="radio" value="oranges" /> Oranges </label>
 <label tuiBlock>
-<input formControlName="testValue" tuiRadio type="radio" value="apples" /> Apples </label>
+<input formControlName="value" tuiRadio type="radio" value="apples" /> Apples </label>
 <label tuiBlock>
-<input formControlName="testValue" tuiRadio type="radio" value="pineapples" /> Pineapples </label>
+<input formControlName="value" tuiRadio type="radio" value="pineapples" /> Pineapples </label>
 </form>
 <h3 class="title">Without checkbox indicators</h3>
-<form tuiGroup class="group" [collapsed]="true" [formGroup]="testForm" >
+<form tuiGroup class="group" [collapsed]="true" [formGroup]="form" >
 <label appearance="" tuiBlock >
-<input formControlName="testValue" tuiBlock type="radio" value="oranges" /> Oranges </label>
+<input formControlName="value" tuiBlock type="radio" value="oranges" /> Oranges </label>
 <label appearance="" tuiBlock >
-<input formControlName="testValue" tuiBlock type="radio" value="apples" /> Apples </label>
+<input formControlName="value" tuiBlock type="radio" value="apples" /> Apples </label>
 <label appearance="" tuiBlock >
-<input formControlName="testValue" tuiBlock type="radio" value="pineapples" /> Pineapples </label>
+<input formControlName="value" tuiBlock type="radio" value="pineapples" /> Pineapples </label>
 </form>
 ```
 **TypeScript:**
@@ -3004,7 +2811,7 @@ import {TuiBlock, TuiFade, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({testValue: new FormControl('orange')});
+    protected readonly form = new FormGroup({value: new FormControl('orange')});
 }
 ```
 
@@ -3012,7 +2819,7 @@ export default class Example {
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <label tuiBlock>
 <div tuiAvatar="@tui.user">
 <img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
@@ -3063,7 +2870,7 @@ import {TuiAvatar, TuiBlock, TuiCheckbox, TuiSwitch, TuiTooltip} from '@taiga-ui
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
+    protected readonly form = new FormGroup({
         testValue1: new FormControl(false),
         testValue2: new FormControl(false),
         testValue3: new FormControl(false),
@@ -3932,6 +3739,7 @@ export default class Example {
 # components/Button
 - **Package**: `CORE`
 - **Type**: components
+Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to button and a tags. When used as tuiIconButton don't forget to still put text label within the tag for accessibility.
 
 ### Example
 
@@ -3985,30 +3793,25 @@ export default class Example {}
 <button appearance="outline" tuiButton type="button" > Outline </button>
 <button appearance="floating" tuiButton type="button" > Floating </button>
 <button appearance="primary" disabled tuiButton type="button" > Primary disabled </button>
-<div> See <a tuiLink [routerLink]="routes.Appearance" > Appearance </a> directive for more. </div>
 <div> Use <code>tuiAppearanceMode</code> to emulate <code>:checked</code> / <code>:invalid</code> CSS state for outline appearance: </div>
 <button appearance="outline" tuiAppearanceMode="checked" tuiButton type="button" > Outline </button>
-<button appearance="outline-grayscale" tuiAppearanceMode="checked invalid" tuiButton type="button" > Whiteblock </button>
+<button appearance="outline-grayscale" tuiAppearanceMode="checked invalid" tuiButton type="button" > Outline </button>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {DemoRoute} from '@demo/routes';
-import {TuiButton, TuiLink} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    imports: [RouterLink, TuiButton, TuiLink],
+    imports: [TuiButton],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
-export default class Example {
-    protected readonly routes = DemoRoute;
-}
+export default class Example {}
 ```
 
 #### Icons
@@ -4168,6 +3971,7 @@ import {Component} from '@angular/core';
 import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiButtonLoading} from '@taiga-ui/kit';
@@ -4189,10 +3993,9 @@ export default class Page {
     ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
-
     protected size = this.sizes[3]!;
-
     protected loading = false;
+    protected readonly routes = DemoRoute;
 }
 ```
 
@@ -12579,7 +12382,7 @@ export default class Example {
 
 **Template:**
 ```html
-<form tuiForm [formGroup]="testForm" [style.max-width.rem]="35" >
+<form tuiForm [formGroup]="form" [style.max-width.rem]="35" >
 <header tuiHeader>
 <h3 tuiTitle> A header <span tuiSubtitle>Form with large controls</span>
 </h3>
@@ -12770,7 +12573,7 @@ export default class Example {
         new Account('4', 'Mutation', 100, TuiCurrency.Pound, this.svgIcons.mutation),
     ];
 
-    protected testForm = new FormGroup({
+    protected form = new FormGroup({
         nameValue: new FormControl('', Validators.required),
         textValue: new FormControl('', Validators.required),
         passwordValue: new FormControl('', Validators.required),
@@ -12937,32 +12740,32 @@ A directive for grouping other components. For example, Input or Button .
 
 **Template:**
 ```html
-<form class="input-wrapper" [formGroup]="testForm" >
+<form class="input-wrapper" [formGroup]="form" >
 <div tuiGroup class="group" >
 <div>
 <tui-textfield [style.border-radius]="'inherit'">
-<input formControlName="testValue" placeholder="House" tuiInput />
+<input formControlName="value" placeholder="House" tuiInput />
 <label tuiLabel>House</label>
 <tui-icon tuiTooltip="Write a number" />
 </tui-textfield>
-<tui-error formControlName="testValue" />
+<tui-error formControlName="value" />
 </div>
 <div>
 <tui-textfield multi tuiChevron [rows]="1" [style.border-radius]="'inherit'" [tuiTextfieldCleaner]="false" >
-<input formControlName="multiSelectControl" placeholder="Building" tuiInputChip />
+<input formControlName="multi" placeholder="Building" tuiInputChip />
 <tui-input-chip *tuiItem />
 <tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 <tui-icon tuiTooltip="Write house building" />
 </tui-textfield>
-<tui-error formControlName="multiSelectControl" />
+<tui-error formControlName="multi" />
 </div>
 <div>
 <tui-textfield [style.border-radius]="'inherit'">
-<input formControlName="testValue3" placeholder="Apartment number" tuiInput />
+<input formControlName="number" placeholder="Apartment number" tuiInput />
 <label tuiLabel>Apartment</label>
 <tui-icon tuiTooltip="Write an apartment number only" />
 </tui-textfield>
-<tui-error formControlName="testValue3" />
+<tui-error formControlName="number" />
 </div>
 </div>
 </form>
@@ -13002,11 +12805,10 @@ import {
 })
 export default class Example {
     protected readonly items = ['Option 1', 'Option 2', 'Option 3'];
-
-    protected testForm = new FormGroup({
-        testValue: new FormControl('', Validators.required),
-        multiSelectControl: new FormControl<string[]>([], Validators.required),
-        testValue3: new FormControl('', Validators.required),
+    protected readonly form = new FormGroup({
+        value: new FormControl('', Validators.required),
+        multi: new FormControl<string[]>([], Validators.required),
+        number: new FormControl('', Validators.required),
     });
 }
 ```
@@ -13042,12 +12844,12 @@ export default class Example {}
 
 **Template:**
 ```html
-<form orientation="vertical" tuiGroup class="group" [collapsed]="true" [formGroup]="testForm" >
-<label tuiBlock [style.justify-content]="'space-between'" > Oranges <input formControlName="testValue" tuiRadio type="radio" value="orange" />
+<form orientation="vertical" tuiGroup class="group" [collapsed]="true" [formGroup]="form" >
+<label tuiBlock [style.justify-content]="'space-between'" > Oranges <input formControlName="value" tuiRadio type="radio" value="orange" />
 </label>
-<label tuiBlock> Apples <input formControlName="testValue" tuiRadio type="radio" value="apple" [style.margin-inline-start]="'auto'" />
+<label tuiBlock> Apples <input formControlName="value" tuiRadio type="radio" value="apple" [style.margin-inline-start]="'auto'" />
 </label>
-<label tuiBlock> Pineapples <input formControlName="testValue" tuiRadio type="radio" value="pineapple" />
+<label tuiBlock> Pineapples <input formControlName="value" tuiRadio type="radio" value="pineapple" />
 </label>
 </form>
 ```
@@ -13067,7 +12869,7 @@ import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({testValue: new FormControl('orange')});
+    protected form = new FormGroup({value: new FormControl('orange')});
 }
 ```
 
@@ -13076,17 +12878,17 @@ export default class Example {
 **Template:**
 ```html
 <p>Directive helps to avoid extra layers of HTML</p>
-<form tuiGroup [collapsed]="true" [formGroup]="testForm" >
+<form tuiGroup [collapsed]="true" [formGroup]="form" >
 <label tuiBlock>
 <span tuiTitle> Orange <span tuiSubtitle>An orange is a fruit of various citrus species in the family Rutaceae</span>
 </span>
-<input formControlName="testValue" tuiRadio type="radio" value="orange" />
+<input formControlName="value" tuiRadio type="radio" value="orange" />
 </label>
 <label tuiBlock>
 <span tuiTitle> Pineapple <span tuiSubtitle> Not to be confused with neither <em>pines</em> nor <em>apples</em>
 </span>
 </span>
-<input formControlName="testValue" tuiRadio type="radio" value="pineapple" />
+<input formControlName="value" tuiRadio type="radio" value="pineapple" />
 </label>
 </form>
 ```
@@ -13107,7 +12909,7 @@ import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({testValue: new FormControl('')});
+    protected readonly form = new FormGroup({value: new FormControl('')});
 }
 ```
 
@@ -17402,7 +17204,7 @@ Inline input field
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <tui-input-inline class="input1">
 <input formControlName="testValue1" />
 </tui-input-inline>
@@ -17434,7 +17236,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
+    protected form = new FormGroup({
         testValue1: new FormControl('Hello 1'),
         testValue2: new FormControl('Hello 2'),
         testValue3: new FormControl('Hello 3'),
@@ -17442,18 +17244,18 @@ export default class Example {
     });
 
     protected get toggleContent(): string {
-        return this.testForm.disabled ? 'enable (allow editing)' : 'disable';
+        return this.form.disabled ? 'enable (allow editing)' : 'disable';
     }
 
     protected get input4Empty(): boolean {
-        return this.testForm.get('testValue4')!.value === '';
+        return this.form.get('testValue4')!.value === '';
     }
 
     protected onToggleClick(): void {
-        if (this.testForm.disabled) {
-            this.testForm.enable();
+        if (this.form.disabled) {
+            this.form.enable();
         } else {
-            this.testForm.disable();
+            this.form.disable();
         }
     }
 }
@@ -18104,7 +17906,7 @@ export default class Example {
 }
 ```
 
-#### Large integer + large decimal parts
+#### Large integer and large decimal parts
 
 JavaScript’s built‑in number type loses precision when a value contains too many digits in either the integer part, the decimal part, or both. The built‑in bigint type avoids this issue but supports only integers. If you need to preserve all extremely large digits of both parts, you can override the built‑in TuiValueTransformer and store the number as an &#123;significand: bigint; exp: number&#125; instead.
 
@@ -19715,169 +19517,6 @@ export default class PageComponent {
 ```
 
 ---
-# components/InputSearch
-- **Package**: `LAYOUT`
-- **Type**: components
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-<header tuiNavigationHeader>
-<strong>Taiga UI</strong>
-<hr />
-<tui-textfield (pointerdown.capture.stop)="(0)">
-<input tuiSearchHotkey [formControl]="control" [tuiInputSearch]="search" [(tuiInputSearchOpen)]="open" />
-<ng-template #search>
-<tui-search-results [results]="results$ | async">
-<tui-search-history [popular]="popular" />
-<ng-template let-item>
-<a tuiCell [href]="item.href" >
-<span [tuiAvatar]="item.icon || '@tui.file'"></span>
-<span tuiTitle> {{ item.title }} <span tuiSubtitle>{{ item.subtitle }}</span>
-</span>
-</a>
-</ng-template>
-</tui-search-results>
-</ng-template>
-</tui-textfield> Alex Inkin <div tuiAvatar="@tui.user">
-<img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
-</div>
-</header>
-<p>
-<button size="m" tuiButton type="button" (click)="open = !open" > Toggle open: {{ open }} </button>
-</p>
-```
-**TypeScript:**
-```ts
-import {AsyncPipe} from '@angular/common';
-import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {TuiSearchResults} from '@taiga-ui/experimental';
-import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';
-import {filter, map, startWith, switchMap, timer} from 'rxjs';
-
-interface Result {
-    href: string;
-    title: string;
-    subtitle?: string;
-    icon?: string;
-}
-
-const DATA: Record<string, readonly Result[]> = {
-    Documents: [
-        {
-            title: 'Monty Python',
-            href: 'https://en.wikipedia.org/wiki/Monty_Python',
-        },
-    ],
-    Code: [
-        {
-            title: 'Taiga UI',
-            href: 'https://github.com/taiga-family/taiga-ui',
-            icon: '@tui.github',
-        },
-        {
-            title: 'Maskito',
-            href: 'https://github.com/taiga-family/maskito',
-            icon: '@tui.github',
-        },
-        {
-            title: 'Web APIs with Angular',
-            href: 'https://github.com/taiga-family/ng-web-apis',
-            icon: '@tui.github',
-        },
-    ],
-    Links: [
-        {
-            title: 'Taiga UI',
-            subtitle: 'Super awesome library',
-            href: 'https://taiga-ui.dev',
-            icon: '/assets/images/taiga.svg',
-        },
-        {
-            title: 'Maskito',
-            href: 'https://maskito.dev',
-            icon: '@tui.external-link',
-        },
-    ],
-};
-
-@Component({
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiAvatar,
-        TuiButton,
-        TuiCell,
-        TuiInputSearch,
-        TuiNavigation,
-        TuiSearchResults,
-        TuiTextfield,
-        TuiTitle,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class ExampleComponent {
-    protected readonly popular = ['Taiga UI', 'Maskito', 'Web APIs for Angular'];
-
-    protected readonly control = new FormControl('');
-
-    protected readonly results$ = this.control.valueChanges.pipe(
-        filter(Boolean),
-        switchMap((value: string) =>
-            timer(2000).pipe(
-                map(() => this.filter(value)),
-                startWith(null),
-            ),
-        ),
-    );
-
-    protected open = false;
-
-    private filter(query: string): Record<string, readonly Result[]> {
-        return Object.entries(DATA).reduce(
-            (result, [key, value]) => ({
-                ...result,
-                [key]: value.filter(({title, href, subtitle = ''}) =>
-                    TUI_DEFAULT_MATCHER(title + href + subtitle, query),
-                ),
-            }),
-            {},
-        );
-    }
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class PageComponent {
-    protected readonly examples = ['Basic'];
-}
-```
-
----
 # components/InputSlider
 - **Package**: `KIT`
 - **Type**: components
@@ -21431,7 +21070,7 @@ Label is used to show text related to textfields, checkboxes, toggles and radio 
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <label tuiLabel>
 <input formControlName="testValue1" tuiCheckbox type="checkbox" />
 <span tuiTitle> Taiga UI <span tuiSubtitle>Angular UI Kit for awesome people</span>
@@ -21468,7 +21107,7 @@ import {TuiCheckbox, TuiTooltip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
+    protected form = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),
         testValue3: new FormControl(false),
@@ -21480,17 +21119,17 @@ export default class Example {
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <label tuiLabel>
-<input formControlName="testValue" size="s" tuiRadio type="radio" value="taiga" />
+<input formControlName="value" size="s" tuiRadio type="radio" value="taiga" />
 <small>Taiga UI</small>
 </label>
 <label tuiLabel class="tui-space_vertical-2" >
-<input formControlName="testValue" size="s" tuiRadio type="radio" value="polymorpheus" />
+<input formControlName="value" size="s" tuiRadio type="radio" value="polymorpheus" />
 <small>ng-polymorpheus</small>
 </label>
 <label tuiLabel>
-<input formControlName="testValue" size="s" tuiRadio type="radio" value="dompurify" />
+<input formControlName="value" size="s" tuiRadio type="radio" value="dompurify" />
 <small>ng-dompurify</small>
 </label>
 </form>
@@ -21511,7 +21150,7 @@ import {TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({testValue: new FormControl()});
+    protected form = new FormGroup({value: new FormControl()});
 }
 ```
 
@@ -21519,7 +21158,7 @@ export default class Example {
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <label tuiLabel>
 <input formControlName="testValue1" tuiSwitch type="checkbox" /> Taiga UI </label>
 <label tuiLabel class="tui-space_vertical-2" >
@@ -21527,7 +21166,7 @@ export default class Example {
 <label tuiLabel>
 <input formControlName="testValue3" tuiSwitch type="checkbox" /> ng-dompurify </label>
 </form>
-<form class="tui-space_top-4" [formGroup]="testForm" >
+<form class="tui-space_top-4" [formGroup]="form" >
 <label tuiLabel>
 <input formControlName="testValue1" size="s" tuiSwitch type="checkbox" />
 <small>Taiga UI</small>
@@ -21558,7 +21197,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
+    protected form = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),
         testValue3: new FormControl(false),
@@ -21570,14 +21209,14 @@ export default class Example {
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <label tuiLabel> Label can be outside <tui-textfield>
-<input formControlName="testValue" tuiInput />
+<input formControlName="value" tuiInput />
 </tui-textfield>
 </label>
 <tui-textfield class="tui-space_top-4">
 <label tuiLabel>Or inside textfield</label>
-<input formControlName="testValue" tuiInput />
+<input formControlName="value" tuiInput />
 </tui-textfield>
 </form>
 ```
@@ -21596,7 +21235,7 @@ import {TuiInput} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({testValue: new FormControl('Input value')});
+    protected form = new FormGroup({value: new FormControl('Input value')});
 }
 ```
 
@@ -24337,7 +23976,7 @@ export default class Page {
 # components/Navigation
 - **Package**: `LAYOUT`
 - **Type**: components
-A set of basic layout components for global navigation
+Taiga UI is a low level component library with many atomic components that provide great flexibility when combined together. An exception to the general rule is the Navigation component – an opinionated global wrapping navigation that exposes less customization options developed specifically to target data-heavy dashboards with minimal space lost and compact controls.
 
 ### Usage Examples
 
@@ -24834,6 +24473,145 @@ export default class Example extends TuiPortals {
 }
 ```
 
+#### InputSearch
+
+**Template:**
+```html
+<header tuiNavigationHeader>
+<strong>Taiga UI</strong>
+<hr />
+<tui-textfield (pointerdown.capture.stop)="(0)">
+<input tuiSearchHotkey [formControl]="control" [tuiInputSearch]="search" [(tuiInputSearchOpen)]="open" />
+<ng-template #search>
+<tui-search-results [results]="results$ | async">
+<tui-search-history [popular]="popular" />
+<ng-template let-item>
+<a tuiCell [href]="item.href" >
+<span [tuiAvatar]="item.icon || '@tui.file'"></span>
+<span tuiTitle> {{ item.title }} <span tuiSubtitle>{{ item.subtitle }}</span>
+</span>
+</a>
+</ng-template>
+</tui-search-results>
+</ng-template>
+</tui-textfield> Alex Inkin <div tuiAvatar="@tui.user">
+<img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
+</div>
+</header>
+<main tuiNavigationMain>
+<p>
+<button size="m" tuiButton type="button" (click)="open = !open" > Toggle open: {{ open }} </button>
+</p>
+</main>
+```
+**TypeScript:**
+```ts
+import {AsyncPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {TuiButton, TuiCell, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiSearchResults} from '@taiga-ui/experimental';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';
+import {filter, map, startWith, switchMap, timer} from 'rxjs';
+
+interface Result {
+    href: string;
+    title: string;
+    subtitle?: string;
+    icon?: string;
+}
+
+const DATA: Record<string, readonly Result[]> = {
+    Documents: [
+        {
+            title: 'Monty Python',
+            href: 'https://en.wikipedia.org/wiki/Monty_Python',
+        },
+    ],
+    Code: [
+        {
+            title: 'Taiga UI',
+            href: 'https://github.com/taiga-family/taiga-ui',
+            icon: '@tui.github',
+        },
+        {
+            title: 'Maskito',
+            href: 'https://github.com/taiga-family/maskito',
+            icon: '@tui.github',
+        },
+        {
+            title: 'Web APIs with Angular',
+            href: 'https://github.com/taiga-family/ng-web-apis',
+            icon: '@tui.github',
+        },
+    ],
+    Links: [
+        {
+            title: 'Taiga UI',
+            subtitle: 'Super awesome library',
+            href: 'https://taiga-ui.dev',
+            icon: '/assets/images/taiga.svg',
+        },
+        {
+            title: 'Maskito',
+            href: 'https://maskito.dev',
+            icon: '@tui.external-link',
+        },
+    ],
+};
+
+@Component({
+    imports: [
+        AsyncPipe,
+        ReactiveFormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiCell,
+        TuiInputSearch,
+        TuiNavigation,
+        TuiSearchResults,
+        TuiTextfield,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class ExampleComponent {
+    protected readonly popular = ['Taiga UI', 'Maskito', 'Web APIs for Angular'];
+
+    protected readonly control = new FormControl('');
+
+    protected readonly results$ = this.control.valueChanges.pipe(
+        filter(Boolean),
+        switchMap((value: string) =>
+            timer(2000).pipe(
+                map(() => this.filter(value)),
+                startWith(null),
+            ),
+        ),
+    );
+
+    protected open = false;
+
+    private filter(query: string): Record<string, readonly Result[]> {
+        return Object.entries(DATA).reduce(
+            (result, [key, value]) => ({
+                ...result,
+                [key]: value.filter(({title, href, subtitle = ''}) =>
+                    TUI_DEFAULT_MATCHER(title + href + subtitle, query),
+                ),
+            }),
+            {},
+        );
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -24858,6 +24636,7 @@ export default class Page implements OnDestroy {
         'Subheader compact',
         'Subheader object',
         'Customization',
+        'InputSearch',
     ];
 
     constructor() {
@@ -25957,7 +25736,7 @@ export default class Page {
 
 ### Usage Examples
 
-#### sizes
+#### Sizes
 
 **Template:**
 ```html
@@ -28055,6 +27834,11 @@ import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiRange, TuiTitle],
     templateUrl: './index.html',
+    styles: `
+        :host tui-doc-example ::ng-deep tui-range {
+            max-inline-size: 19rem;
+        }
+    `,
     changeDetection,
 })
 export default class Page {
@@ -38614,7 +38398,7 @@ export default class Example {
 <p tuiDropdownContext [tuiDropdown]="reportForm" > Some text with a mistake. Right-click it. </p>
 <p tuiDropdownContext [tuiDropdown]="reportForm" > Another text </p>
 <ng-template #reportForm let-close >
-<form class="container" [formGroup]="testForm" >
+<form class="container" [formGroup]="form" >
 <tui-textfield>
 <label tuiLabel>Have you found a mistake?</label>
 <textarea formControlName="reportText" tuiTextarea [max]="3" [min]="3" ></textarea>
@@ -38640,10 +38424,10 @@ import {TuiTextarea} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({reportText: new FormControl('Misspell HERE!')});
+    protected form = new FormGroup({reportText: new FormControl('Misspell HERE!')});
 
     protected report(): void {
-        console.info(this.testForm.value);
+        console.info(this.form.value);
     }
 }
 ```
@@ -38733,7 +38517,7 @@ export default class Example {}
 <button tuiTab type="button" > Another tab </button>
 <button iconStart="@tui.settings" title="Open settings" tuiDropdownHover tuiTab type="button" [tuiDropdown]="settings" [(tuiDropdownOpen)]="openSettings" (tui-tab-activate.stop)="(0)" ></button>
 <ng-template #settings>
-<div class="settings" [formGroup]="testForm" >
+<div class="settings" [formGroup]="form" >
 <input formControlName="option" tuiSwitch type="checkbox" /> Turn option </div>
 </ng-template>
 </tui-tabs>
@@ -38763,7 +38547,7 @@ import {TuiChevron, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({option: new FormControl(false)});
+    protected readonly form = new FormGroup({option: new FormControl(false)});
 
     protected open = false;
     protected openSettings = false;
@@ -39340,7 +39124,7 @@ import {TuiDropdown} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-#### textarea
+#### Textarea
 
 **Template:**
 ```html
@@ -43205,10 +42989,10 @@ export default class Example {}
 
 **Template:**
 ```html
-<form [formGroup]="testForm">
+<form [formGroup]="form">
 <tui-textfield>
 <label tuiLabel>Type a sum</label>
-<input formControlName="testValue" tuiInputNumber [postfix]="` ${(826 | tuiCurrency)}`" />
+<input formControlName="value" tuiInputNumber [postfix]="` ${(826 | tuiCurrency)}`" />
 </tui-textfield>
 </form>
 ```
@@ -43229,7 +43013,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({testValue: new FormControl(100)});
+    protected readonly form = new FormGroup({value: new FormControl(100)});
 }
 ```
 
