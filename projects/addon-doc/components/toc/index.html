@@ -1,0 +1,35 @@
+@if (toc().length > 1) {
+    <h5 tuiTitle="s">
+        <b>{{ text.toc }}</b>
+    </h5>
+    <nav>
+        @for (item of toc(); track $index) {
+            <a
+                appearance="action-grayscale"
+                routerLink="."
+                tuiLink
+                type="button"
+                [class._active]="isActive(item)"
+                [fragment]="item | tuiKebab"
+                [relativeTo]="route.firstChild ?? route"
+            >
+                {{ item }}
+            </a>
+        }
+    </nav>
+    @if (seeAlso.length) {
+        <h5 tuiTitle="s">
+            <b>{{ text.seeAlso }}</b>
+        </h5>
+        @for (item of seeAlso; track $index) {
+            <a
+                tuiLink
+                [innerText]="item"
+                [routerLink]="getRouterLink(item)"
+            ></a>
+            @if (!$last) {
+                <span>{{ ', ' }}</span>
+            }
+        }
+    }
+}

@@ -238,11 +238,6 @@ export const ROUTES: Routes = [
         title: 'Search',
     }),
     route({
-        path: DemoRoute.InputSearch,
-        loadComponent: async () => import('../components/input-search'),
-        title: 'InputSearch',
-    }),
-    route({
         path: DemoRoute.Breadcrumbs,
         title: 'Breadcrumbs',
         loadComponent: async () => import('../components/breadcrumbs'),
@@ -306,11 +301,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Dialog,
         loadComponent: async () => import('../components/dialog'),
         title: 'Dialog',
-    }),
-    route({
-        path: DemoRoute.DialogLegacy,
-        loadComponent: async () => import('../components/dialog-legacy'),
-        title: 'Dialog (Legacy)',
     }),
     route({
         path: DemoRoute.Drawer,

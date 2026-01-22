@@ -8,6 +8,11 @@ import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiRange, TuiTitle],
     templateUrl: './index.html',
+    styles: `
+        :host tui-doc-example ::ng-deep tui-range {
+            max-inline-size: 19rem;
+        }
+    `,
     changeDetection,
 })
 export default class Page {

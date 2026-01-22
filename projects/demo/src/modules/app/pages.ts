@@ -205,12 +205,6 @@ export const pages: DocRoutePages = [
             },
         ],
     },
-    {
-        section: 'Documentation',
-        title: 'Routable Dialog',
-        keywords: 'dialog, modal, navigation, route, eager, lazy, routable',
-        route: DemoRoute.DialogRoutable,
-    },
     // Components
     {
         section: 'Components',
@@ -389,16 +383,43 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Dialog',
-        keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
-        route: DemoRoute.Dialog,
-        meta: {},
-    },
-    {
-        section: 'Components',
-        title: 'Dialog (Legacy)',
-        keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
-        route: DemoRoute.DialogLegacy,
+        title: 'Modals',
+        subPages: [
+            {
+                section: 'Components',
+                title: 'Dialog',
+                keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
+                route: DemoRoute.Dialog,
+                meta: {},
+            },
+            {
+                section: 'Documentation',
+                title: 'Dialog routable',
+                keywords: 'dialog, modal, navigation, route, eager, lazy, routable',
+                route: DemoRoute.DialogRoutable,
+            },
+            {
+                section: 'Components',
+                title: 'SheetDialog',
+                keywords: 'mobile, dialog, popup, map, details, шторка',
+                route: DemoRoute.SheetDialog,
+                meta: {name: 'tui-bottomsheet'},
+            },
+            {
+                section: 'Components',
+                title: 'NotificationMiddle',
+                keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
+                route: DemoRoute.NotificationMiddle,
+                meta: {figmaVersion: '1.1.0'},
+            },
+            {
+                section: 'Components',
+                title: 'PdfViewer',
+                keywords:
+                    'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
+                route: DemoRoute.PdfViewer,
+            },
+        ],
     },
     {
         section: 'Components',
@@ -770,13 +791,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'NotificationMiddle',
-        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
-        route: DemoRoute.NotificationMiddle,
-        meta: {figmaVersion: '1.1.0'},
-    },
-    {
-        section: 'Components',
         title: 'Push',
         keywords: 'push, пуш, нотификация, notification, alert',
         route: DemoRoute.Push,
@@ -800,12 +814,6 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.PullToRefresh,
             },
         ],
-    },
-    {
-        section: 'Components',
-        title: 'PdfViewer',
-        keywords: 'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
-        route: DemoRoute.PdfViewer,
     },
     {
         section: 'Components',
@@ -888,13 +896,6 @@ export const pages: DocRoutePages = [
         title: 'BottomSheet',
         keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
         route: DemoRoute.BottomSheet,
-    },
-    {
-        section: 'Components',
-        title: 'SheetDialog',
-        keywords: 'mobile, dialog, popup, map, details, шторка',
-        route: DemoRoute.SheetDialog,
-        meta: {name: 'tui-bottomsheet'},
     },
     {
         section: 'Components',
@@ -1126,24 +1127,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Layout',
-        title: 'Navigation',
-        keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
-        route: DemoRoute.Navigation,
-        meta: [
-            {scheme: 'beaver', anchor: 'full', name: 'navigation'},
-            {
-                scheme: 'beaver',
-                anchor: 'subheader-compact',
-                name: 'subheaders',
-                qualifiedName: 'subheader-compact',
-            },
-            {
-                scheme: 'beaver',
-                anchor: 'subheader-object',
-                name: 'subheaders',
-                qualifiedName: 'subheader-object',
-            },
-        ],
+        title: 'AppBar',
+        keywords: 'mobile, ios, android, header, bar, navigation',
+        route: DemoRoute.AppBar,
+        meta: {
+            name: 'tui-appbar',
+            figmaVersion: '1.1.1',
+        },
     },
     {
         section: 'Layout',
@@ -1151,13 +1141,6 @@ export const pages: DocRoutePages = [
         keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
         meta: {scheme: 'beaver', name: 'filters'},
-    },
-    {
-        section: 'Layout',
-        title: 'InputSearch',
-        keywords: 'search, поиск, глобальный, beaver, бивер, finedog',
-        route: DemoRoute.InputSearch,
-        meta: {scheme: 'beaver', name: 'search'},
     },
     // Charts
     {
@@ -1223,13 +1206,24 @@ export const pages: DocRoutePages = [
     // Navigation
     {
         section: 'Navigation',
-        title: 'AppBar',
-        keywords: 'mobile, ios, android, header, bar, navigation',
-        route: DemoRoute.AppBar,
-        meta: {
-            name: 'tui-appbar',
-            figmaVersion: '1.1.1',
-        },
+        title: 'Navigation',
+        keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
+        route: DemoRoute.Navigation,
+        meta: [
+            {scheme: 'beaver', anchor: 'full', name: 'navigation'},
+            {
+                scheme: 'beaver',
+                anchor: 'subheader-compact',
+                name: 'subheaders',
+                qualifiedName: 'subheader-compact',
+            },
+            {
+                scheme: 'beaver',
+                anchor: 'subheader-object',
+                name: 'subheaders',
+                qualifiedName: 'subheader-object',
+            },
+        ],
     },
     {
         section: 'Navigation',

@@ -52,7 +52,7 @@ test.describe('InputDate', () => {
 
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
-            example = documentationPage.apiPageExample;
+            example = documentationPage.demo;
 
             inputDate = new TuiInputDatePO(
                 example.locator('tui-textfield:has(input[tuiInputDate])'),

@@ -1,28 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@keyframes tuiShaking {
-    from,
-    to {
-        transform: translate3d(0, 0, 0);
-    }
-
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-        transform: translate3d(-0.3125rem, 0, 0);
-    }
-
-    20%,
-    40%,
-    60%,
-    80% {
-        transform: translate3d(0.3125rem, 0, 0);
-    }
-}
-
-@sidebar-width: 16.25rem;
+@sidebar-width: 16rem;
 
 html,
 body {
@@ -102,7 +80,7 @@ tui-doc-navigation.tui-doc-navigation {
     margin-inline-start: @sidebar-width;
 
     @media @tui-mobile {
-        margin-inline-start: 0;
+        margin-inline: 0;
     }
 }
 
@@ -128,11 +106,6 @@ tui-doc-code {
         overflow-x: auto;
         padding: 0.5em;
         color: var(--tui-text-primary);
-        background-color: var(--tui-background-neutral-1);
-
-        &.hljs-line-numbers {
-            background: transparent;
-        }
     }
 
     .hljs-subst,

@@ -20,11 +20,10 @@ import {TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
                     <label tuiLabel>Character</label>
                     <input
                         tuiSelect
-                        [formControl]="testValue"
+                        [formControl]="value"
                     />
                     <tui-data-list-wrapper
                         *tuiDropdown
-                        new
                         [items]="items"
                     />
                 </tui-textfield>
@@ -44,11 +43,10 @@ import {TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
                         <label tuiLabel>Nested character</label>
                         <input
                             tuiSelect
-                            [formControl]="testValue"
+                            [formControl]="value"
                         />
                         <tui-data-list-wrapper
                             *tuiDropdown
-                            new
                             [items]="items"
                         />
                     </tui-textfield>
@@ -78,8 +76,7 @@ export class Test {
         'Yoda',
     ];
 
-    public testValue = new FormControl();
-
+    public value = new FormControl();
     public visible = true;
     public dialog = false;
     public nested = false;

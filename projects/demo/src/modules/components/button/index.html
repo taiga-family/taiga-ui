@@ -4,13 +4,64 @@
     type="components"
 >
     <ng-template pageTab>
+        Button is a basic component used for both icon buttons and regular buttons with optional icons on either side.
+        It can be applied to
+        <code>button</code>
+        and
+        <code>a</code>
+        tags. When used as
+        <code>tuiIconButton</code>
+        don't forget to still put text label within the tag for accessibility.
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
+                [description]="description"
                 [heading]="example"
-                [id]="example | tuiKebab"
             />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Simple buttons with preset size options.
+                    }
+                    @case (1) {
+                        Buttons support all built-in appearances. See
+                        <a
+                            tuiLink
+                            [routerLink]="routes.Appearance"
+                        >
+                            Appearance
+                        </a>
+                        directive for more.
+                    }
+                    @case (2) {
+                        Using icons and other elements, such as an
+                        <a
+                            tuiLink
+                            [routerLink]="routes.Avatar"
+                        >
+                            Avatar
+                        </a>
+                        inside buttons in a variety of ways.
+                    }
+                    @case (3) {
+                        Buttons can show a loading indicator when performing an action. Dedicated
+                        <code>TuiButtonLoading</code>
+                        component helps with accessibility by keeping button focusable while preventing click events.
+                    }
+                    @case (4) {
+                        Default values for buttons can be configured using DI options.
+                    }
+                    @case (5) {
+                        Use
+                        <code>tuiButtonVertical</code>
+                        attribute to set different layout.
+                    }
+                    @case (6) {
+                        Nested elements with a little bit of CSS can make button appear to have sections.
+                    }
+                }
+            </ng-template>
         }
     </ng-template>
 

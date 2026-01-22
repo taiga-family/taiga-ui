@@ -13,13 +13,13 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${basicText}&linesLimit=1`,
+                `${DemoRoute.LineClamp}/API?content=${basicText}&linesLimit=1`,
             );
             await pagePO.prepareBeforeScreenshot();
 
             await expect.soft(page).toHaveScreenshot('01-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('01-2-line-clamp.png');
         });
@@ -29,13 +29,13 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${basicText}&linesLimit=2`,
+                `${DemoRoute.LineClamp}/API?content=${basicText}&linesLimit=2`,
             );
             await pagePO.prepareBeforeScreenshot();
 
             await expect.soft(page).toHaveScreenshot('02-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('02-2-line-clamp.png');
         });
@@ -50,13 +50,13 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=1`,
+                `${DemoRoute.LineClamp}/API?content=${textWithLongWord}&linesLimit=1`,
             );
             await pagePO.prepareBeforeScreenshot();
 
             await expect.soft(page).toHaveScreenshot('03-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('03-2-line-clamp.png');
         });
@@ -66,13 +66,13 @@ test.describe('LineClamp', () => {
 
             await tuiGoto(
                 page,
-                `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=2`,
+                `${DemoRoute.LineClamp}/API?content=${textWithLongWord}&linesLimit=2`,
             );
             await pagePO.prepareBeforeScreenshot();
 
             await expect.soft(page).toHaveScreenshot('04-1-line-clamp.png');
 
-            await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+            await pagePO.demo.locator('tui-line-clamp').hover();
 
             await expect.soft(page).toHaveScreenshot('04-2-line-clamp.png');
         });
@@ -88,13 +88,13 @@ test.describe('LineClamp', () => {
 
                 await tuiGoto(
                     page,
-                    `components/line-clamp/API?style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
+                    `${DemoRoute.LineClamp}/API?style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
                 );
                 await pagePO.prepareBeforeScreenshot();
 
                 await expect.soft(page).toHaveScreenshot(`05-1-line-clamp-${index}.png`);
 
-                await pagePO.apiPageExample.locator('tui-line-clamp').hover();
+                await pagePO.demo.locator('tui-line-clamp').hover();
 
                 await expect.soft(page).toHaveScreenshot(`05-2-line-clamp-${index}.png`);
             });
@@ -104,7 +104,7 @@ test.describe('LineClamp', () => {
     test('do not close after click in hint area', async ({page}) => {
         await tuiGoto(page, DemoRoute.LineClamp);
 
-        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+        const example = new TuiDocumentationPagePO(page).getExample('#styles-change');
         const lineClampElement = example.locator('tui-line-clamp').first();
 
         await example.scrollIntoViewIfNeeded();

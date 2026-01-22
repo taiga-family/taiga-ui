@@ -12,5 +12,5 @@ import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({testValue: new FormControl('orange')});
+    protected form = new FormGroup({value: new FormControl('orange')});
 }

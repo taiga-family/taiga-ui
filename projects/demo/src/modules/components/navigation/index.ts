@@ -18,6 +18,7 @@ export default class Page implements OnDestroy {
         'Subheader compact',
         'Subheader object',
         'Customization',
+        'InputSearch',
     ];
 
     constructor() {

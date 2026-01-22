@@ -4,9 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_VERSION} from '@taiga-ui/cdk';
-import {TuiNotification, TuiTitle} from '@taiga-ui/core';
+import {TuiLabel, TuiNotification} from '@taiga-ui/core';
 import {TuiAccordion, TuiBadge, TuiCheckbox} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 import {TuiAccordionTarget} from './target';
 
@@ -16,12 +15,10 @@ import {TuiAccordionTarget} from './target';
         TuiAccordion,
         TuiAccordionTarget,
         TuiBadge,
-        TuiCardLarge,
         TuiCheckbox,
         TuiDemo,
-        TuiHeader,
+        TuiLabel,
         TuiNotification,
-        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

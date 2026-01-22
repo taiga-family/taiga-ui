@@ -3,90 +3,89 @@
 :host {
     position: relative;
     display: block;
-    padding-block-start: 3.5rem;
-    clear: inline-end;
+    padding-block-start: 2rem;
+    scroll-margin-top: 4rem;
 
-    &:target {
-        animation: 1s tuiShaking;
+    :host-context(tui-doc-toc +) {
+        padding-block-start: 0;
     }
 
-    @media @tui-mobile {
-        padding-block-start: 2rem;
-    }
-}
+    :host-context(tui-doc-toc ~) {
+        inline-size: calc(100% - 20rem);
 
-.t-title-block {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.t-title {
-    font: var(--tui-font-heading-h5);
-    margin: 0 auto 0.5rem 0;
-
-    @media @tui-mobile {
-        font: var(--tui-font-heading-h6);
+        @media @tui-desktop {
+            inline-size: 100%;
+        }
     }
 
-    &:hover + .t-link {
-        opacity: 1;
+    :host-context(tui-doc-toc:empty ~) {
+        inline-size: 100%;
     }
 }
 
 .t-link {
-    font: var(--tui-font-heading-h6);
-    padding-inline-end: 0.1rem;
+    text-decoration: none !important;
+    font: inherit;
 
-    @media not @tui-mobile {
-        font: var(--tui-font-heading-h5);
-        margin-inline-start: -1.6rem;
+    &::after {
+        .transition(color);
 
-        &:not(:hover, :focus-visible):not(.t-link-active) {
-            opacity: 0;
-        }
+        color: transparent;
     }
-}
 
-.t-description {
-    font: var(--tui-font-body-m);
-    font-weight: normal;
-    margin: 0;
-}
-
-.t-title::first-letter,
-.t-description::first-letter {
-    text-transform: capitalize;
+    &:hover,
+    &:hover::after {
+        color: var(--tui-text-secondary);
+    }
 }
 
 .t-example {
     position: relative;
-    margin-block-start: 1.5rem;
-    border: 1px solid var(--tui-border-normal);
+    border: 0.25rem solid var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
-    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
 
-    @media @tui-mobile {
-        margin-block-start: 0.75rem;
+    &:not(:first-child) {
+        margin-block-start: 1.25rem;
+
+        @media @tui-mobile {
+            margin-block-start: 0.75rem;
+        }
     }
 }
 
-.t-tabs-wrapper {
+.t-header {
     display: flex;
-    padding: 0 0.875rem 0 2rem;
-    box-shadow: inset 0 -1px var(--tui-border-normal);
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    overflow: auto;
+    gap: 0.25rem;
+    padding-block-end: 0.25rem;
+    padding-inline-end: 0.125rem;
+    background: var(--tui-background-base-alt);
 
-    @media @tui-mobile {
-        padding: 0 0.875rem 0 1rem;
-    }
+    --tui-stroke-width: 0.09375rem;
 }
 
 .t-tabs {
     flex-grow: 1;
-    box-shadow: none;
+    background: none;
+    margin: -0.125rem;
+
+    &::before {
+        filter: none;
+    }
+}
+
+.t-content {
+    border-radius: var(--tui-radius-m);
+    box-shadow:
+        -1rem -1rem var(--tui-background-base-alt),
+        1rem -1rem var(--tui-background-base-alt);
+
+    &:first-child {
+        box-shadow: none;
+    }
 }
 
 .t-code-editor {
@@ -106,13 +105,14 @@
     box-sizing: border-box;
     overflow-x: auto;
 
-    @media @tui-mobile {
-        padding: 1rem;
-    }
-
     :host:not(._fullsize) & {
         inline-size: min-content;
         min-inline-size: 21rem;
+    }
+
+    @media @tui-mobile {
+        min-inline-size: 100% !important;
+        padding: 1rem;
     }
 }
 

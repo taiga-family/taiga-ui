@@ -6,18 +6,18 @@ import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
-    public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
-    public readonly apiPageExample: Locator = this.page.locator(
-        'tui-doc-demo > .t-wrapper',
-    );
+
+    public readonly examples: Locator = this.page.locator('tui-doc-example');
+    public readonly demo: Locator = this.page.locator('tui-doc-demo > .t-wrapper');
+    public readonly value: Locator = this.page.locator('tui-doc-demo > tui-expand pre');
 
     constructor(protected readonly page: Page) {}
 
     public async waitStableState(): Promise<void> {
-        if ((await this.apiPageExample.all()).length) {
-            await waitStableState(this.apiPageExample);
-        } else if ((await this.pageExamples.all()).length) {
-            for (const example of await this.pageExamples.all()) {
+        if ((await this.demo.all()).length) {
+            await waitStableState(this.demo);
+        } else if ((await this.examples.all()).length) {
+            for (const example of await this.examples.all()) {
                 await waitStableState(example);
             }
         }
@@ -76,9 +76,9 @@ export class TuiDocumentationApiPagePO {
         await this.hideNotifications();
         await this.hideScrollbars();
 
-        if ((await this.apiPageExample.all()).length) {
-            await this.apiPageExample.evaluate((el) => el.scrollIntoView());
-            await expect(this.apiPageExample).toBeInViewport();
+        if ((await this.demo.all()).length) {
+            await this.demo.evaluate((el) => el.scrollIntoView());
+            await expect(this.demo).toBeInViewport();
         }
     }
 

@@ -13,18 +13,16 @@ test.describe('InputCardGroup', () => {
     test.describe('API', () => {
         test.use({viewport: {width: 700, height: 800}});
 
-        let apiPageExample: Locator;
+        let demo: Locator;
 
         test.beforeEach(({page}) => {
-            ({apiPageExample} = new TuiDocumentationPagePO(page));
+            ({demo} = new TuiDocumentationPagePO(page));
         });
 
         test('set value and clear after', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGroup}/API`);
 
-            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupPO(
-                apiPageExample,
-            );
+            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupPO(demo);
             const entryValue = '1234 4567 8910 1112'.replaceAll(' ', CHAR_NO_BREAK_SPACE);
 
             await numberTextfield.pressSequentially(entryValue);
@@ -51,7 +49,7 @@ test.describe('InputCardGroup', () => {
         test('disabled input card grouped', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGroup}/API?disabled=true`);
 
-            const {numberTextfield} = new TuiInputCardGroupPO(apiPageExample);
+            const {numberTextfield} = new TuiInputCardGroupPO(demo);
 
             await expect(numberTextfield).toHaveAttribute('disabled');
             await expect

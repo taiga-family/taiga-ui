@@ -33,8 +33,8 @@ export class MyModule {}
 })
 export class MyComponent {}`,
             template: `
-<form [formGroup]="testForm">
-  <tui-input-year formControlName="testValue">Choose a month</tui-input-year>
+<form [formGroup]="form">
+  <tui-input-year formControlName="value">Choose a month</tui-input-year>
 </form>
 
 <tui-input-year
@@ -50,7 +50,7 @@ export class MyComponent {}`,
 </tui-input-year>
 
  <tui-input-year
-    formControlName="testValue"
+    formControlName="value"
     tuiTextfieldSize="s"
     class="tui-space_bottom-2"
 >
@@ -102,11 +102,11 @@ export class MyModule {}
 export class MyComponent {}`);
 
         expect(template).toEqual(`
-<form [formGroup]="testForm">
+<form [formGroup]="form">
   <tui-textfield >
 <label tuiLabel>Choose a month</label>
 
-<input tuiInputYear formControlName="testValue" />
+<input tuiInputYear formControlName="value" />
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 </form>
@@ -136,7 +136,7 @@ ${'    '}
     Choose a year
 </label>
 
-<input tuiInputYear formControlName="testValue" />
+<input tuiInputYear formControlName="value" />
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 

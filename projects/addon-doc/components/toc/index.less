@@ -1,0 +1,53 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    position: sticky;
+    top: 6rem;
+    display: block;
+    float: inline-end;
+    inline-size: 14rem;
+    margin-inline-start: 5rem;
+    font: var(--tui-font-body-s);
+
+    &:empty {
+        display: none;
+    }
+
+    @media @tui-desktop {
+        display: none;
+    }
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 1px 0 var(--tui-border-normal);
+    margin: 1rem 0 2rem;
+    clip-path: inset(0.5rem -1rem);
+
+    [tuiLink] {
+        position: relative;
+        padding: 0.375rem 1rem;
+
+        &._active {
+            font-weight: bold;
+            color: var(--tui-text-primary);
+
+            &::before {
+                position: absolute;
+                display: block;
+                inset-inline-start: -1px;
+                inset-block: 0.5rem;
+                inline-size: 0.1875rem;
+                block-size: 1rem;
+                background: var(--tui-text-primary);
+                border-radius: 1rem;
+                padding: 0;
+            }
+        }
+    }
+}
+
+[tuiTitle] {
+    margin: 0.5rem 0;
+}

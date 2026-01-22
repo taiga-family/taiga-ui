@@ -6,7 +6,7 @@ test.describe('InputChip', () => {
     test('remove chips by backspace', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.InputChip}/API`);
 
-        const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+        const example = new TuiDocumentationApiPagePO(page).demo;
         const input = example.locator('[tuiInputChip]');
 
         await input.focus();

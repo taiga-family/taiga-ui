@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiPopup} from '@taiga-ui/core/portals/popup';
+import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -23,7 +24,7 @@ export class TuiDocHeader {
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly logo = inject(TUI_DOC_LOGO);
     protected readonly menu = inject(TUI_DOC_MENU_TEXT);
-
+    protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly open = signal(false);
 
     constructor() {

@@ -16,7 +16,7 @@ test.describe('TablePagination', () => {
             const documentationPage = new TuiDocumentationPagePO(page);
 
             const {linesPerPageButton} = new TuiTablePaginationPO(
-                documentationPage.apiPageExample.locator('tui-table-pagination'),
+                documentationPage.demo.locator('tui-table-pagination'),
             );
 
             await linesPerPageButton.click();
@@ -35,7 +35,7 @@ test.describe('TablePagination', () => {
 
             const documentationPage = new TuiDocumentationPagePO(page);
             const tablePagination = new TuiTablePaginationPO(
-                documentationPage.apiPageExample.locator('tui-table-pagination'),
+                documentationPage.demo.locator('tui-table-pagination'),
             );
 
             await tablePagination.linesPerPageButton.click();
@@ -72,7 +72,7 @@ test.describe('TablePagination', () => {
 
             const documentationPage = new TuiDocumentationPagePO(page);
             const tablePagination = new TuiTablePaginationPO(
-                documentationPage.apiPageExample.locator('tui-table-pagination'),
+                documentationPage.demo.locator('tui-table-pagination'),
             );
 
             await expect(tablePagination.linesPerPageButton).toHaveText('1–25');
@@ -86,7 +86,7 @@ test.describe('TablePagination', () => {
 
             const documentationPage = new TuiDocumentationPagePO(page);
             const tablePagination = new TuiTablePaginationPO(
-                documentationPage.apiPageExample.locator('tui-table-pagination'),
+                documentationPage.demo.locator('tui-table-pagination'),
             );
 
             await expect(tablePagination.linesPerPageButton).toHaveText('21–25');

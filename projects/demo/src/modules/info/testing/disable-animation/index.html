@@ -22,29 +22,8 @@
         device that the user prefers an interface that removes, reduces, or replaces motion-based animations.
     </p>
 
-    <tui-tabs-with-more
-        #tabs
-        class="tabs"
-    >
-        <button
-            *tuiItem
-            tuiTab
-            type="button"
-        >
-            <tui-doc-tab src="assets/icons/cypress.svg">cypress.config.ts</tui-doc-tab>
-        </button>
-        <button
-            *tuiItem
-            tuiTab
-            type="button"
-        >
-            <tui-doc-tab src="assets/icons/playwright.svg">playwright.config.ts</tui-doc-tab>
-        </button>
-    </tui-tabs-with-more>
-    @if (tabs.activeItemIndex() === 0) {
-        <tui-doc-code [code]="cypress" />
-    }
-    @if (tabs.activeItemIndex() === 1) {
-        <tui-doc-code [code]="playwright" />
-    }
+    <tui-doc-example
+        [content]="content"
+        [preview]="false"
+    />
 </tui-doc-page>

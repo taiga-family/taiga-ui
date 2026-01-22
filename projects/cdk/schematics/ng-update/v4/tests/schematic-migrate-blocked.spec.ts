@@ -39,21 +39,21 @@ export class Test {}`;
 const TEMPLATE_BEFORE = `
 <tui-checkbox-block [(ngModel)]="value" [pseudoInvalid]="invalid" [pseudoFocus]="pseudoFocus">Content</tui-checkbox-block>
 
-<form [formGroup]="testForm">
+<form [formGroup]="form">
   <tui-radio-block
-    formControlName="testValue"
+    formControlName="value"
     item="orange"
   >
     Oranges
   </tui-radio-block>
   <tui-radio-block
-    formControlName="testValue"
+    formControlName="value"
     item="apple"
   >
     Apples
   </tui-radio-block>
   <tui-radio-block
-    formControlName="testValue"
+    formControlName="value"
     item="pineapple"
   >
     Pineapples
@@ -79,7 +79,7 @@ const TEMPLATE_BEFORE = `
 </tui-checkbox-block>
 
 <tui-radio-block
-    formControlName="testValue"
+    formControlName="value"
     size="l"
     [hideRadio]="true"
     [item]="fruit"
@@ -97,21 +97,21 @@ const TEMPLATE_BEFORE = `
 const TEMPLATE_AFTER = `
 <label tuiBlock><input tuiCheckbox type="checkbox" [(ngModel)]="value" [tuiAppearanceMode]="invalid ? 'invalid' : null" [tuiAppearanceFocus]="pseudoFocus">Content</label>
 
-<form [formGroup]="testForm">
+<form [formGroup]="form">
  <label tuiBlock> <input tuiRadio type="radio"
-    formControlName="testValue"
+    formControlName="value"
     value="orange"
   >
     Oranges
   </label>
  <label tuiBlock> <input tuiRadio type="radio"
-    formControlName="testValue"
+    formControlName="value"
     value="apple"
   >
     Apples
   </label>
  <label tuiBlock> <input tuiRadio type="radio"
-    formControlName="testValue"
+    formControlName="value"
     value="pineapple"
   >
     Pineapples
@@ -137,7 +137,7 @@ const TEMPLATE_AFTER = `
 </label>
 <label tuiBlock="l" appearance="">
 <input tuiRadio type="radio" tuiBlock
-    formControlName="testValue"
+    formControlName="value"
     ${''}
     ${''}
     [value]="fruit"

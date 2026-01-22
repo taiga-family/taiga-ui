@@ -59,7 +59,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
     test.describe('API', () => {
         test('basic', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API`);
-            const example = new TuiDocumentationPagePO(page).apiPageExample;
+            const example = new TuiDocumentationPagePO(page).demo;
             const inputPhoneInternational = new TuiInputPhoneInternationalPO(
                 example.locator('tui-textfield'),
             );
@@ -74,7 +74,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
 
         test('readonly', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readOnly=true`);
-            const example = new TuiDocumentationPagePO(page).apiPageExample;
+            const example = new TuiDocumentationPagePO(page).demo;
             const inputPhoneInternational = new TuiInputPhoneInternationalPO(
                 example.locator('input[tuiInputPhoneInternational]'),
             );

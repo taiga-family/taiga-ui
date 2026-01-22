@@ -1,14 +1,11 @@
 <tui-doc-page [header]="`Guide to update Taiga UI v${tuiMajor - 1} -> v${tuiMajor}`">
-    <div
-        appearance="custom"
-        tuiCardLarge
-    >
-        <header tuiHeader>
-            <h1 tuiTitle>Before you update</h1>
-        </header>
-
-        <footer>
-            <label>
+    <ng-template pageTab>
+        <tui-doc-example
+            heading="Before you update"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <label tuiLabel>
                 <input
                     tuiCheckbox
                     type="checkbox"
@@ -18,7 +15,7 @@
                 Use Node.js LTS, NPM v10 or higher.
             </label>
 
-            <label>
+            <label tuiLabel>
                 <input
                     tuiCheckbox
                     type="checkbox"
@@ -27,6 +24,7 @@
 
                 Update Taiga UI version to
                 <a
+                    rel="noreferrer noopener"
                     target="_blank"
                     tuiLink
                     [href]="`https://www.npmjs.com/package/@taiga-ui/cdk/v/v${tuiMajor - 1}-lts`"
@@ -35,7 +33,7 @@
                 </a>
             </label>
 
-            <label>
+            <label tuiLabel>
                 <input
                     tuiCheckbox
                     type="checkbox"
@@ -45,7 +43,7 @@
                 Update Angular version to v19 or higher.
             </label>
 
-            <label>
+            <label tuiLabel>
                 <input
                     tuiCheckbox
                     type="checkbox"
@@ -54,19 +52,14 @@
 
                 Ensure Prettier’s endOfLine option is set to auto for fix some issues with end of line after migration.
             </label>
-        </footer>
-    </div>
+        </tui-doc-example>
 
-    <div
-        appearance="custom"
-        tuiCardLarge
-    >
-        <header tuiHeader>
-            <h1 tuiTitle>Update to the new version</h1>
-        </header>
-
-        <footer>
-            <label>
+        <tui-doc-example
+            heading="Updating"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <label tuiLabel>
                 <input
                     tuiCheckbox
                     type="checkbox"
@@ -79,9 +72,10 @@
             <tui-doc-code
                 [code]="runMigration"
                 [lineNumbers]="false"
+                [style.margin-block-start.rem]="1"
             />
 
-            <label>
+            <label tuiLabel>
                 <input
                     tuiCheckbox
                     type="checkbox"
@@ -96,7 +90,7 @@
                 </span>
             </label>
 
-            <label>
+            <label tuiLabel>
                 <input
                     tuiCheckbox
                     type="checkbox"
@@ -108,6 +102,7 @@
                     <code>
                         <a
                             href="https://github.com/taiga-family/taiga-ui/tree/main/projects/legacy"
+                            rel="noreferrer noopener"
                             target="_blank"
                             tuiLink
                         >
@@ -123,21 +118,17 @@
                     them by new alternatives as soon as possible!
                 </span>
             </label>
-        </footer>
-    </div>
+        </tui-doc-example>
 
-    <div
-        appearance="custom"
-        tuiCardLarge
-    >
-        <header tuiHeader>
-            <h1 tuiTitle>Troubleshooting</h1>
-        </header>
-
-        <footer>
+        <tui-doc-example
+            heading="Troubleshooting"
+            [fullsize]="true"
+            [preview]="false"
+        >
             <tui-accordion>
                 <button
                     id="unused-imports"
+                    appearance=""
                     tuiAccordion
                     tuiAccordionTarget
                 >
@@ -160,16 +151,16 @@
                         tuiNotification
                     >
                         We don't include any code formatting in our schematics on purpose. Otherwise, it will
-                        drastically slow down the overall process of schematics execution. So,
-                        <strong>use well-optimized prettier/eslint rules and power of your IDEs</strong>
-                        .
+                        drastically slow down the overall process of schematics execution. So, use well-optimized
+                        prettier/eslint rules and power of your IDEs .
 
                         <p>
-                            <u>If you are WebStorm user.</u>
+                            <b>If you are WebStorm user.</b>
                             Just make right click on the root folder with the codebase of your recently migrated
                             application. Choose
                             <a
                                 href="https://blog.jetbrains.com/webstorm/2018/05/optimize-imports-in-webstorm/#optimize-all-imports"
+                                rel="noreferrer noopener"
                                 target="_blank"
                                 tuiLink
                             >
@@ -179,10 +170,11 @@
                             in that folder.
                         </p>
 
-                        <u>If you are Visual Studio Code user.</u>
+                        <b>If you are Visual Studio Code user.</b>
                         Use an
                         <a
                             href="https://marketplace.visualstudio.com/items?itemName=bierner.folder-source-actions"
+                            rel="noreferrer noopener"
                             target="_blank"
                             tuiLink
                         >
@@ -191,6 +183,7 @@
                         extension to trigger built-in
                         <a
                             href="https://code.visualstudio.com/docs/languages/javascript#_organize-imports"
+                            rel="noreferrer noopener"
                             target="_blank"
                             tuiLink
                         >
@@ -205,6 +198,7 @@
             <tui-accordion>
                 <button
                     id="manual-install-transitive-peer-deps"
+                    appearance=""
                     tuiAccordion
                     tuiAccordionTarget
                 >
@@ -267,6 +261,7 @@
             <tui-accordion>
                 <button
                     id="nx-legacy-peer-deps-bug"
+                    appearance=""
                     tuiAccordion
                     tuiAccordionTarget
                 >
@@ -294,14 +289,14 @@
                     >
                         Command
                         <code>ng migrate</code>
-                        has known
+                        has a known
                         <a
                             href="https://github.com/nrwl/nx/issues/26675"
+                            rel="noreferrer noopener"
                             target="_blank"
                             tuiLink
-                        >
-                            issue
-                        </a>
+                            [textContent]="'issue'"
+                        ></a>
                         . Just run
                         <code>npm install</code>
                         again and run
@@ -317,6 +312,7 @@
             <tui-accordion>
                 <button
                     id="heap-out-of-memory"
+                    appearance=""
                     tuiAccordion
                     tuiAccordionTarget
                 >
@@ -361,6 +357,7 @@
                             If the problem persists –
                             <a
                                 href="https://github.com/taiga-family/taiga-ui/issues/new?template=1-bug-report.yml"
+                                rel="noreferrer noopener"
                                 target="_blank"
                                 tuiLink
                             >
@@ -374,6 +371,7 @@
             <tui-accordion>
                 <button
                     id="manual-run-schematics"
+                    appearance=""
                     tuiAccordion
                     tuiAccordionTarget
                 >
@@ -425,6 +423,6 @@
                     </div>
                 </tui-expand>
             </tui-accordion>
-        </footer>
-    </div>
+        </tui-doc-example>
+    </ng-template>
 </tui-doc-page>

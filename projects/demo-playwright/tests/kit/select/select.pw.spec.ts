@@ -19,7 +19,7 @@ describe('Select', () => {
         });
 
         test('checkmark size', async ({page}) => {
-            const example = documentationPage.getExample('#content-customization');
+            const example = documentationPage.getExample('#customize-content');
             const host = example.locator('tui-textfield').first();
             const select = new TuiSelectPO(host);
 
@@ -67,7 +67,7 @@ describe('Select', () => {
                         page,
                         `${DemoRoute.Select}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
                     );
-                    example = new TuiDocumentationPagePO(page).apiPageExample;
+                    example = new TuiDocumentationPagePO(page).demo;
                     select = new TuiSelectPO(
                         example.locator('tui-textfield:has([tuiSelect])'),
                     );

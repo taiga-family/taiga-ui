@@ -1,66 +1,36 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    display: flex;
-    flex-direction: column;
-    min-block-size: 0;
-    flex-basis: 0;
-    flex-grow: 1;
+    display: block;
+    max-inline-size: 70rem;
     font: var(--tui-font-body-m);
+    padding: 3rem;
+    margin: 0 auto;
+
+    @media @tui-mobile {
+        padding: 1rem 1.5rem;
+    }
 }
 
 .t-header {
+    margin-block-end: 2rem;
+}
+
+.t-navigation {
     display: flex;
-    min-block-size: 5.5rem;
-    font: var(--tui-font-heading-h4);
-    flex-wrap: wrap;
-    color: var(--tui-text-primary);
-    box-shadow: inset 0 -1px 0 0 var(--tui-border-normal);
-    box-sizing: border-box;
-    flex-shrink: 0;
-    margin: 0 2rem;
+    gap: 0.625rem;
+    margin-block-start: 1rem;
 
     @media @tui-mobile {
-        min-block-size: 4.5rem;
-        padding: 0 1.5rem;
-        margin: 0;
+        margin: 0.5rem 0 1rem;
     }
 }
 
-.t-title {
-    min-inline-size: 100%;
-    padding: 1.75rem 0 0;
-    font-size: inherit;
-    margin: 0;
-
-    @media @tui-mobile {
-        padding: 1rem 0 0;
-    }
-}
-
-.t-tag {
+.t-badge {
     vertical-align: middle;
     text-transform: uppercase;
     margin-inline-end: 0.5rem;
-
-    &_deprecated {
-        background-color: var(--tui-status-negative);
-        color: #fff;
-    }
-
-    &&_package {
-        color: #000;
-    }
-}
-
-.t-tabs {
-    flex: 1;
-    margin: 0.75rem 0.25rem 0 0;
-    box-shadow: none;
-
-    @media @tui-mobile {
-        margin-block-start: 0.25rem;
-    }
+    color: #000;
 }
 
 .t-content {
@@ -69,30 +39,4 @@
     @media @tui-mobile {
         padding: 1rem 1.5rem;
     }
-}
-
-.t-see-also {
-    min-inline-size: 18.75rem;
-    inline-size: 30%;
-    float: inline-end;
-    margin: 0 0 1rem;
-    margin-inline-start: 1.5rem;
-
-    @media @tui-mobile {
-        float: none;
-        inline-size: 100%;
-        margin: 0 0 1.5rem;
-    }
-}
-
-.t-right-side {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    align-self: center;
-    margin-inline-start: auto;
-}
-
-.t-source-code {
-    block-size: 3.125rem;
 }

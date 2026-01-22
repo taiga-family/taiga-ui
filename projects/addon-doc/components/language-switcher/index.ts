@@ -9,8 +9,8 @@ import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {type TuiCountryIsoCode, type TuiLanguageName} from '@taiga-ui/i18n/types';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n/utils';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
-import {TuiBadgedContent} from '@taiga-ui/kit/components/badged-content';
 import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 
 @Component({
@@ -19,9 +19,9 @@ import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
         ReactiveFormsModule,
         TitleCasePipe,
         TuiBadge,
-        TuiBadgedContent,
         TuiButton,
         TuiButtonSelect,
+        TuiChevron,
         TuiDataList,
         TuiFlagPipe,
         TuiTextfield,

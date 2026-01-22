@@ -17,7 +17,7 @@ test.describe('LineChart', () => {
         await tuiGoto(page, `${DemoRoute.LineChart}#line`);
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#line');
-        const tabs = page.locator('#line button[tuiTab]');
+        const tabs = page.locator('#line tui-segmented button');
 
         await expect.soft(example).toHaveScreenshot('02-line-chart.png');
 

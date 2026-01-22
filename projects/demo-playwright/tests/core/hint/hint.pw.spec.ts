@@ -64,7 +64,7 @@ test.describe('TuiHint', () => {
             const example = new TuiDocumentationPagePO(page);
 
             await example.prepareBeforeScreenshot();
-            await example.apiPageExample.locator('span').hover();
+            await example.demo.locator('span').hover();
             await page.waitForTimeout(0);
 
             await expect
@@ -84,7 +84,7 @@ test.describe('TuiHint', () => {
             await example.prepareBeforeScreenshot();
 
             await page.clock.install();
-            await example.apiPageExample.locator('span').hover();
+            await example.demo.locator('span').hover();
             await page.clock.runFor(0);
 
             await expect
@@ -113,7 +113,7 @@ test.describe('TuiHint', () => {
 
     test('Tooltip horizontal direction', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tooltip);
-        const example = new TuiDocumentationPagePO(page).getExample('#example-base');
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.locator('[tuiTooltip]').nth(0).hover();
 

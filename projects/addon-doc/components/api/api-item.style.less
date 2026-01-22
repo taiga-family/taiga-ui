@@ -13,13 +13,19 @@
         text-align: end;
         min-inline-size: 10rem;
     }
+
+    .t-name,
+    .t-type {
+        outline: none;
+        font-weight: bold;
+        margin: 0;
+    }
 }
 
 .t-name {
     display: flex !important;
     min-block-size: 1.5rem;
     inline-size: fit-content;
-    margin: 0 0 0.5rem !important;
     -webkit-text-fill-color: var(--tui-background-accent-2-pressed);
 
     &_input {
@@ -40,7 +46,6 @@
     align-items: center;
     justify-content: flex-start;
     min-block-size: 1.5rem;
-    margin: 0 !important;
 }
 
 .t-reference {
@@ -54,7 +59,7 @@
 
 .t-input {
     min-inline-size: 10rem;
-    margin-block-start: -0.625rem;
+    margin-block: -0.625rem;
 
     code {
         overflow: hidden;

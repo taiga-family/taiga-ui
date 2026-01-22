@@ -11,10 +11,8 @@ test.describe('Carousel', () => {
 
         await document.waitTuiIcons();
 
-        await expect(document.apiPageExample).toBeVisible();
-        await expect
-            .soft(document.apiPageExample)
-            .toHaveScreenshot('carousel-padding-default.png');
+        await expect(document.demo).toBeVisible();
+        await expect.soft(document.demo).toHaveScreenshot('carousel-padding-default.png');
     });
 
     test('padding has zero value', async ({page}) => {
@@ -23,10 +21,8 @@ test.describe('Carousel', () => {
 
         await document.waitTuiIcons();
 
-        await expect(document.apiPageExample).toBeVisible();
-        await expect
-            .soft(document.apiPageExample)
-            .toHaveScreenshot('carousel-padding-0.png');
+        await expect(document.demo).toBeVisible();
+        await expect.soft(document.demo).toHaveScreenshot('carousel-padding-0.png');
     });
 
     test('should show next item after drag', async ({page, browserName}) => {
@@ -43,8 +39,6 @@ test.describe('Carousel', () => {
         await page.mouse.move(125, 300, {steps: 10});
         await page.mouse.up();
 
-        await expect
-            .soft(document.apiPageExample)
-            .toHaveScreenshot('carousel-draggable.png');
+        await expect.soft(document.demo).toHaveScreenshot('carousel-draggable.png');
     });
 });

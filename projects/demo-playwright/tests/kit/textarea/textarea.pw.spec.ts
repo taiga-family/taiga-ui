@@ -9,8 +9,8 @@ test.describe('Textarea', () => {
         test.skip(browserName !== 'chromium', 'Font flaky');
 
         await tuiGoto(page, `${DemoRoute.Textarea}/API`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
-        const textarea = apiPageExample.locator('textarea[tuiTextarea]');
+        const {demo} = new TuiDocumentationPagePO(page);
+        const textarea = demo.locator('textarea[tuiTextarea]');
 
         await textarea.fill('1\n2\n3\n4');
 
@@ -24,10 +24,10 @@ test.describe('Textarea', () => {
     ['m', 'l'].forEach((size) => {
         test(`size of ${size}`, async ({page}) => {
             await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldSize=${size}`);
-            const {apiPageExample} = new TuiDocumentationPagePO(page);
+            const {demo} = new TuiDocumentationPagePO(page);
 
             await expect
-                .soft(apiPageExample)
+                .soft(demo)
                 .toHaveScreenshot(`textarea-tuiTextfieldSize-${size}.png`);
         });
     });

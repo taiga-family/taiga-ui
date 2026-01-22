@@ -63,7 +63,7 @@ test.describe('Deep / Select', () => {
                     // e2e flaky: wait more time for charts graphics
                     await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
-                    const example = api.apiPageExample;
+                    const example = api.demo;
                     const makeName = (dir: string): string =>
                         `deep-${path}-${name}-row-${rowIndex}-select-option-${index}.${dir}.png`;
 

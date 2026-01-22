@@ -94,7 +94,7 @@ describe('CalendarRange', () => {
             await tuiGoto(page, DemoRoute.CalendarRange, {date: today});
 
             documentationPage = new TuiDocumentationPagePO(page);
-            example = documentationPage.apiPageExample;
+            example = documentationPage.demo;
 
             calendarRange = new TuiCalendarRangePO(example.locator('tui-calendar-range'));
         });

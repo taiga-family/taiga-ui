@@ -13,7 +13,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
+    protected form = new FormGroup({
         testValue1: new FormControl('Hello 1'),
         testValue2: new FormControl('Hello 2'),
         testValue3: new FormControl('Hello 3'),
@@ -21,18 +21,18 @@ export default class Example {
     });
 
     protected get toggleContent(): string {
-        return this.testForm.disabled ? 'enable (allow editing)' : 'disable';
+        return this.form.disabled ? 'enable (allow editing)' : 'disable';
     }
 
     protected get input4Empty(): boolean {
-        return this.testForm.get('testValue4')!.value === '';
+        return this.form.get('testValue4')!.value === '';
     }
 
     protected onToggleClick(): void {
-        if (this.testForm.disabled) {
-            this.testForm.enable();
+        if (this.form.disabled) {
+            this.form.enable();
         } else {
-            this.testForm.disable();
+            this.form.disable();
         }
     }
 }

@@ -1,13 +1,11 @@
 <a
     *polymorpheusOutlet="pathIsUrl() ? path() : sourceCode as link; context: pathOptions()"
-    appearance="icon"
+    appearance="secondary-grayscale"
     size="s"
     target="_blank"
-    tuiIconButton
-    type="button"
+    tuiButton
     [href]="link"
     [iconStart]="icons.code"
-    [style.height]="'var(--tui-height-l)'"
 >
     {{ text }}
 </a>

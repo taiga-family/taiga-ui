@@ -9,5 +9,6 @@ export * from './raw-load';
 export * from './raw-load-record';
 export * from './sort-pages';
 export * from './to-flat-map-pages';
+export * from './to-kebab';
 export * from './transliterate-keyboard-layout';
 export * from './type-reference-parser';

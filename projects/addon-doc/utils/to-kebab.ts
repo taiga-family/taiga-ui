@@ -1,6 +1,6 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 
-export function toKebab(str: string): string {
+export function tuiToKebab(str: string): string {
     return str
         .replaceAll(' ', '-')
         .replaceAll(
@@ -10,6 +10,6 @@ export function toKebab(str: string): string {
 }
 
 @Pipe({name: 'tuiKebab'})
-export class TuiKebabPipe implements PipeTransform {
-    public readonly transform = toKebab;
+export class TuiDocKebabPipe implements PipeTransform {
+    public readonly transform = tuiToKebab;
 }

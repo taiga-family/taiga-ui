@@ -23,7 +23,7 @@ describe('TuiProgressCircle', () => {
 
                         await expect
                             .soft(
-                                new TuiDocumentationPagePO(page).apiPageExample.locator(
+                                new TuiDocumentationPagePO(page).demo.locator(
                                     'tui-progress-circle',
                                 ),
                             )

@@ -61,19 +61,6 @@ test.describe('Navigation', () => {
             await expect(page.locator('#table')).toBeInViewport();
         });
 
-        test('scroll to "tui-doc-code"', async ({page, browserName}) => {
-            test.skip(
-                browserName !== 'chromium',
-                // TODO: why does this test keep failing in safari
-                'This feature is only relevant in Chrome',
-            );
-
-            await tuiGoto(page, `${DemoRoute.GettingStarted}#icons`);
-
-            await expect(page.locator('#icons')).toBeVisible();
-            await expect(page.locator('#icons')).toBeInViewport();
-        });
-
         test('scroll after click on link with anchor', async ({page, browserName}) => {
             test.skip(
                 browserName !== 'chromium',
@@ -81,10 +68,17 @@ test.describe('Navigation', () => {
                 'This feature is only relevant in Chrome',
             );
 
-            await tuiGoto(page, DemoRoute.GettingStarted);
-            await page.locator('a[fragment="root"]').click();
+            await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual`);
 
-            await expect(page.locator('#root')).toBeInViewport();
+            const handle = await page
+                .locator('a[href$="#root-component"]')
+                .first()
+                .elementHandle();
+
+            await page.evaluate((el: any) => el?.click(), handle);
+            await handle?.dispose();
+
+            await expect(page.locator('#root-component')).toBeInViewport();
         });
     });
 });

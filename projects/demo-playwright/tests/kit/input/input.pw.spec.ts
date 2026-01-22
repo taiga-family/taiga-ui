@@ -13,15 +13,13 @@ test.describe('Input', () => {
         const document = new TuiDocumentationPagePO(page);
 
         await document.waitTuiIcons();
-        const example = document.apiPageExample;
+        const example = document.demo;
         const input = example.locator('input[tuiInput]');
 
         await input.fill('123');
         await input.blur();
 
-        await expect
-            .soft(document.apiPageExample)
-            .toHaveScreenshot('input-custom-content.png');
+        await expect.soft(document.demo).toHaveScreenshot('input-custom-content.png');
     });
 
     test('can be horizontally scrolled', async ({page}) => {
@@ -31,7 +29,7 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
 
-        const example = document.apiPageExample;
+        const example = document.demo;
         const input = example.locator('input[tuiInput]');
 
         await input.fill(
@@ -84,7 +82,7 @@ test.describe('Input', () => {
                 await document.waitTuiIcons();
 
                 await expect
-                    .soft(document.apiPageExample)
+                    .soft(document.demo)
                     .toHaveScreenshot(
                         `input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}.png`,
                     );

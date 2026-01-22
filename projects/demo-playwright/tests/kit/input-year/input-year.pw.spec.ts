@@ -11,7 +11,7 @@ test.describe('InputYear', () => {
             await tuiGoto(page, `${DemoRoute.InputYear}/API?max=2020`);
 
             documentationPO = new TuiDocumentationPagePO(page);
-            input = documentationPO.apiPageExample.locator('input');
+            input = documentationPO.demo.locator('input');
             await documentationPO.prepareBeforeScreenshot();
             await input.click();
         });
@@ -54,7 +54,7 @@ test.describe('InputYear', () => {
             await tuiGoto(page, `${DemoRoute.InputYear}/API?max=2024&min=2020`);
 
             documentationPO = new TuiDocumentationPagePO(page);
-            input = documentationPO.apiPageExample.locator('input');
+            input = documentationPO.demo.locator('input');
             await documentationPO.prepareBeforeScreenshot();
             await input.click();
         });
@@ -75,7 +75,7 @@ test.describe('InputYear', () => {
             await tuiGoto(page, `${DemoRoute.InputYear}/API`);
 
             documentationPO = new TuiDocumentationPagePO(page);
-            input = documentationPO.apiPageExample.locator('input');
+            input = documentationPO.demo.locator('input');
             await documentationPO.prepareBeforeScreenshot();
             await input.click();
         });

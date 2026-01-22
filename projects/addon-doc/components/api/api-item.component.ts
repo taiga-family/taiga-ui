@@ -10,12 +10,12 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
-import {TUI_DOC_ICONS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiInput} from '@taiga-ui/core/components/input';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
+import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
@@ -34,7 +34,7 @@ const SERIALIZED_SUFFIX = '$';
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,
-        TuiIcon,
+        TuiHint,
         TuiInput,
         TuiInputNumber,
         TuiInspectPipe,
@@ -52,8 +52,6 @@ export class TuiDocAPIItem<T> implements OnInit {
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly alerts = inject(TuiNotificationService);
-
-    protected readonly icons = inject(TUI_DOC_ICONS);
 
     protected readonly numberItem = inject(TuiDocAPINumberItem, {
         self: true,

@@ -1,6 +1,6 @@
 <form
     class="input-wrapper"
-    [formGroup]="testForm"
+    [formGroup]="form"
 >
     <div
         tuiGroup
@@ -9,15 +9,14 @@
         <div>
             <tui-textfield [style.border-radius]="'inherit'">
                 <input
-                    formControlName="testValue"
+                    formControlName="value"
                     placeholder="House"
                     tuiInput
                 />
                 <label tuiLabel>House</label>
                 <tui-icon tuiTooltip="Write a number" />
             </tui-textfield>
-
-            <tui-error formControlName="testValue" />
+            <tui-error formControlName="value" />
         </div>
         <div>
             <tui-textfield
@@ -28,13 +27,11 @@
                 [tuiTextfieldCleaner]="false"
             >
                 <input
-                    formControlName="multiSelectControl"
+                    formControlName="multi"
                     placeholder="Building"
                     tuiInputChip
                 />
-
                 <tui-input-chip *tuiItem />
-
                 <tui-data-list-wrapper
                     *tuiDropdown
                     tuiMultiSelectGroup
@@ -42,19 +39,19 @@
                 />
                 <tui-icon tuiTooltip="Write house building" />
             </tui-textfield>
-            <tui-error formControlName="multiSelectControl" />
+            <tui-error formControlName="multi" />
         </div>
         <div>
             <tui-textfield [style.border-radius]="'inherit'">
                 <input
-                    formControlName="testValue3"
+                    formControlName="number"
                     placeholder="Apartment number"
                     tuiInput
                 />
                 <label tuiLabel>Apartment</label>
                 <tui-icon tuiTooltip="Write an apartment number only" />
             </tui-textfield>
-            <tui-error formControlName="testValue3" />
+            <tui-error formControlName="number" />
         </div>
     </div>
 </form>

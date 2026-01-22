@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        A two-thumb slider for selecting a range of values
+        <div>A two-thumb slider for selecting a range of values</div>
 
         @for (example of examples; track example) {
             <tui-doc-example
@@ -12,7 +12,6 @@
                 [content]="$index + 1 | tuiExample"
                 [description]="description"
                 [heading]="example"
-                [id]="example | tuiKebab"
             >
                 <ng-template #description>
                     @switch ($index) {

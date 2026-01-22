@@ -9,7 +9,7 @@ test.describe('Routable', () => {
         await tuiGoto(page, DemoRoute.DialogRoutable);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
-        const example = documentationPagePO.getExample('#lazy');
+        const example = documentationPagePO.getExample('#lazy-loading-dialog');
 
         await example.locator('button').click();
 
@@ -36,7 +36,7 @@ test.describe('Routable', () => {
         await tuiGoto(page, `${DemoRoute.DialogRoutable}`);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
-        const example = documentationPagePO.getExample('#named');
+        const example = documentationPagePO.getExample('#named-outlet');
 
         await example.locator('button').click();
 

@@ -12,7 +12,7 @@ test.describe('Surface', () => {
 
         await tuiGoto(page, `${DemoRoute.Surface}/Layers`);
 
-        const example = new TuiDocumentationPagePO(page).getExample('#layers');
+        const example = new TuiDocumentationPagePO(page).getExample('#examples');
 
         await expect.soft(example).toHaveScreenshot('01-layers.png');
     });

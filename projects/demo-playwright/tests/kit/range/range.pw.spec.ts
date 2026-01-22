@@ -395,7 +395,7 @@ describe('TuiRange', () => {
 
     describe('API page', () => {
         beforeEach(({page}) => {
-            example = new TuiDocumentationPagePO(page).apiPageExample;
+            example = new TuiDocumentationPagePO(page).demo;
             range = new TuiRangePO(example.locator('tui-range').first());
         });
 

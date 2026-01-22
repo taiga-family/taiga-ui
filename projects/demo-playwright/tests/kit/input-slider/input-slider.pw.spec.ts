@@ -24,7 +24,7 @@ describe('InputSlider', () => {
                 );
 
                 inputSlider = new TuiInputSliderPO(
-                    new TuiDocumentationPagePO(page).apiPageExample.locator(
+                    new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
                 );
@@ -68,7 +68,7 @@ describe('InputSlider', () => {
                 );
 
                 inputSlider = new TuiInputSliderPO(
-                    new TuiDocumentationPagePO(page).apiPageExample.locator(
+                    new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
                 );
@@ -99,7 +99,7 @@ describe('InputSlider', () => {
                 );
 
                 inputSlider = new TuiInputSliderPO(
-                    new TuiDocumentationPagePO(page).apiPageExample.locator(
+                    new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
                 );
@@ -126,6 +126,7 @@ describe('InputSlider', () => {
     describe('[quantum] prop', () => {
         let inputSlider!: TuiInputSliderPO;
         let example!: Locator;
+        let value!: Locator;
 
         describe('[quantum]="10"', () => {
             beforeEach(async ({page}) => {
@@ -134,7 +135,8 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?max=100&&quantum=10&sandboxExpanded=true`,
                 );
 
-                example = new TuiDocumentationPagePO(page).apiPageExample;
+                example = new TuiDocumentationPagePO(page).demo;
+                value = new TuiDocumentationPagePO(page).value;
                 inputSlider = new TuiInputSliderPO(
                     example.locator('tui-textfield:has([tuiInputSlider])'),
                 );
@@ -193,23 +195,23 @@ describe('InputSlider', () => {
             describe('form control always contains only number which IS divisible by quantum value', () => {
                 test('4 => 0', async () => {
                     await inputSlider.textfield.fill('4');
-                    await expect(example).toContainText('"testValue": 0');
+                    await expect(value).toContainText('"value": 0');
                     await inputSlider.textfield.blur();
-                    await expect(example).toContainText('"testValue": 0');
+                    await expect(value).toContainText('"value": 0');
                 });
 
                 test('5 => 10', async () => {
                     await inputSlider.textfield.fill('5');
-                    await expect(example).toContainText('"testValue": 10');
+                    await expect(value).toContainText('"value": 10');
                     await inputSlider.textfield.blur();
-                    await expect(example).toContainText('"testValue": 10');
+                    await expect(value).toContainText('"value": 10');
                 });
 
                 test('77 => 80', async () => {
                     await inputSlider.textfield.fill('77');
-                    await expect(example).toContainText('"testValue": 80');
+                    await expect(value).toContainText('"value": 80');
                     await inputSlider.textfield.blur();
-                    await expect(example).toContainText('"testValue": 80');
+                    await expect(value).toContainText('"value": 80');
                 });
             });
         });
@@ -221,7 +223,7 @@ describe('InputSlider', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?disabled=true`);
 
-            const example = new TuiDocumentationPagePO(page).apiPageExample;
+            const example = new TuiDocumentationPagePO(page).demo;
             const inputSlider = new TuiInputSliderPO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
@@ -229,9 +231,9 @@ describe('InputSlider', () => {
             await expect(inputSlider.textfield).toBeDisabled();
             await expect(inputSlider.slider).toBeHidden();
 
-            await expect(
-                new TuiDocumentationPagePO(page).apiPageExample,
-            ).toHaveScreenshot('input-slider-disabled-state.png');
+            await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
+                'input-slider-disabled-state.png',
+            );
         });
     });
 
@@ -244,7 +246,7 @@ describe('InputSlider', () => {
                 `${DemoRoute.InputSlider}/API?min=-10&max=10&readOnly=true`,
             );
 
-            const example = new TuiDocumentationPagePO(page).apiPageExample;
+            const example = new TuiDocumentationPagePO(page).demo;
             const inputSlider = new TuiInputSliderPO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
@@ -271,15 +273,15 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?content=TOP-SECRET&postfix=things&prefix=$`,
                 );
 
-                const {apiPageExample} = new TuiDocumentationPagePO(page);
+                const {demo} = new TuiDocumentationPagePO(page);
                 const inputSlider = new TuiInputSliderPO(
-                    apiPageExample.locator('tui-textfield:has([tuiInputSlider])'),
+                    demo.locator('tui-textfield:has([tuiInputSlider])'),
                 );
 
                 await inputSlider.textfield.focus();
 
                 await expect
-                    .soft(apiPageExample)
+                    .soft(demo)
                     .toHaveScreenshot('input-slider-content-not-visible.png');
             });
 
@@ -291,9 +293,9 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?content=TOP-SECRET&postfix=things&prefix=$`,
                 );
 
-                await expect(
-                    new TuiDocumentationPagePO(page).apiPageExample,
-                ).toHaveScreenshot('input-slider-content-visible.png');
+                await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
+                    'input-slider-content-visible.png',
+                );
             });
         });
     });
@@ -303,7 +305,7 @@ describe('InputSlider', () => {
         let inputSlider!: TuiInputSliderPO;
 
         beforeEach(({page}) => {
-            example = new TuiDocumentationPagePO(page).apiPageExample;
+            example = new TuiDocumentationPagePO(page).demo;
             inputSlider = new TuiInputSliderPO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );

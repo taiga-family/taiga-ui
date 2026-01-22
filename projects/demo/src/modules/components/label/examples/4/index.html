@@ -1,9 +1,9 @@
-<form [formGroup]="testForm">
+<form [formGroup]="form">
     <label tuiLabel>
         Label can be outside
         <tui-textfield>
             <input
-                formControlName="testValue"
+                formControlName="value"
                 tuiInput
             />
         </tui-textfield>
@@ -12,7 +12,7 @@
     <tui-textfield class="tui-space_top-4">
         <label tuiLabel>Or inside textfield</label>
         <input
-            formControlName="testValue"
+            formControlName="value"
             tuiInput
         />
     </tui-textfield>

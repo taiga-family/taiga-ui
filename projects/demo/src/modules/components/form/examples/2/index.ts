@@ -104,7 +104,7 @@ export default class Example {
         new Account('4', 'Mutation', 100, TuiCurrency.Pound, this.svgIcons.mutation),
     ];
 
-    protected testForm = new FormGroup({
+    protected form = new FormGroup({
         nameValue: new FormControl('', Validators.required),
         textValue: new FormControl('', Validators.required),
         passwordValue: new FormControl('', Validators.required),

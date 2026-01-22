@@ -57,7 +57,7 @@ test.describe('InputChip', () => {
     test.describe('API', () => {
         test('custom separator', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            const example = new TuiDocumentationApiPagePO(page).demo;
 
             const inputChip = new TuiInputChipPO(example);
 
@@ -72,7 +72,7 @@ test.describe('InputChip', () => {
 
         test('unique false', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=false`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            const example = new TuiDocumentationApiPagePO(page).demo;
 
             const inputChip = new TuiInputChipPO(example);
 
@@ -87,7 +87,7 @@ test.describe('InputChip', () => {
 
         test('unique true', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=true`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            const example = new TuiDocumentationApiPagePO(page).demo;
 
             const inputChip = new TuiInputChipPO(example);
 
@@ -103,7 +103,7 @@ test.describe('InputChip', () => {
         test('readonly true', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const apiPage = new TuiDocumentationApiPagePO(page);
-            const example = apiPage.apiPageExample;
+            const example = apiPage.demo;
 
             const inputChip = new TuiInputChipPO(example);
 
@@ -121,7 +121,7 @@ test.describe('InputChip', () => {
 
         test('chip cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            const example = new TuiDocumentationApiPagePO(page).demo;
 
             const inputChip = new TuiInputChipPO(example);
 
@@ -140,7 +140,7 @@ test.describe('InputChip', () => {
 
         test('textfield cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            const example = new TuiDocumentationApiPagePO(page).demo;
 
             const inputChip = new TuiInputChipPO(example);
 

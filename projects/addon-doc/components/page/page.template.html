@@ -1,103 +1,84 @@
-<header class="t-header">
+<header
+    tuiHeader
+    class="t-header"
+>
     @if (header()) {
-        <h1 class="t-title">
-            {{ header() }}
-            @if (!!deprecated() || deprecated() === '') {
-                <span
-                    appearance="custom"
-                    size="xs"
-                    tuiChip
-                    class="t-tag t-tag_deprecated"
-                >
-                    deprecated
-                </span>
-            }
-            @if (package()) {
-                <span
-                    appearance="custom"
-                    size="xs"
-                    tuiChip
-                    class="t-tag t-tag_package"
-                    [style.background]="package() | tuiAutoColor"
-                >
-                    {{ package() }}
-                </span>
-            }
-            @for (tag of tags(); track tag) {
-                <span
-                    appearance="custom"
-                    size="xs"
-                    tuiChip
-                    class="t-tag t-tag_package"
-                    [style.background]="tag | tuiAutoColor"
-                >
-                    {{ tag }}
-                </span>
-            }
-        </h1>
-    }
-    @if (tabConnectors().length) {
-        <tui-tabs-with-more
-            class="t-tabs"
-            [(activeItemIndex)]="activeItemIndex"
-        >
-            @for (tab of tabConnectors(); track tab) {
-                @if (tab.pageTab() || defaultTabs[$index]; as tabName) {
-                    <a
-                        *tuiItem
-                        routerLinkActive
-                        tuiTab
-                        [routerLink]="$first ? './' : tabName.replace(from, to)"
-                        [routerLinkActiveOptions]="{exact: $first}"
+        <hgroup tuiTitle>
+            <h1>
+                {{ header() }}
+                @if (package()) {
+                    <span
+                        appearance="custom"
+                        size="m"
+                        tuiBadge
+                        class="t-badge"
+                        [style.background]="package() | tuiAutoColor"
                     >
-                        {{ tabName }}
-                    </a>
+                        {{ package() }}
+                    </span>
                 }
-            }
-            @for (tab of tabs | keyvalue; track tab) {
-                <a
-                    *tuiItem
-                    routerLinkActive
-                    tuiTab
-                    [routerLink]="tab.key"
-                >
-                    {{ tab.key }}
-                </a>
-            }
-        </tui-tabs-with-more>
-    }
+                @for (tag of tags(); track $index) {
+                    <span
+                        appearance="custom"
+                        size="m"
+                        tuiBadge
+                        class="t-badge"
+                        [style.background]="tag | tuiAutoColor"
+                    >
+                        {{ tag }}
+                    </span>
+                }
+            </h1>
+            <p class="t-navigation">
+                @if (tabConnectors().length > 1) {
+                    <tui-segmented [(activeItemIndex)]="activeItemIndex">
+                        @for (tab of tabConnectors(); track tab) {
+                            @if (tab.pageTab() || defaultTabs[$index]; as tabName) {
+                                <a
+                                    routerLinkActive
+                                    [routerLink]="$first ? './' : tabName.replace(from, to)"
+                                    [routerLinkActiveOptions]="{exact: $first}"
+                                >
+                                    {{ tabName }}
+                                </a>
+                            }
+                        }
+                        @for (tab of tabs | keyvalue; track tab) {
+                            <a
+                                routerLinkActive
+                                [routerLink]="tab.key"
+                            >
+                                {{ tab.key }}
+                            </a>
+                        }
+                    </tui-segmented>
+                }
 
-    @if (package() || path() || type()) {
-        <div class="t-right-side">
-            <tui-doc-source-code
-                class="t-source-code"
-                [header]="header()"
-                [package]="package()"
-                [path]="path()"
-                [type]="type()"
-            />
-            @if (supportLanguage.has(header())) {
-                <tui-doc-language-switcher />
-            }
-        </div>
+                @if (package() || path() || type()) {
+                    @if (supportLanguage.has(header())) {
+                        <tui-doc-language-switcher />
+                    }
+                    <tui-doc-source-code
+                        class="t-source-code"
+                        [header]="header()"
+                        [package]="package()"
+                        [path]="path()"
+                        [type]="type()"
+                    />
+                }
+            </p>
+        </hgroup>
     }
 </header>
-<div class="t-content">
-    <ng-content />
-    @if (showSeeAlso()) {
-        <tui-doc-see-also
-            class="t-see-also"
-            [seeAlso]="seeAlso()"
-        />
+<ng-content />
+@for (tab of tabConnectors(); track tab) {
+    @if ($index === activeItemIndex()) {
+        <tui-doc-toc />
+        <ng-container [ngTemplateOutlet]="tab.template" />
     }
-    @for (tab of tabConnectors(); track tab) {
-        @if ($index === activeItemIndex()) {
-            <ng-container [ngTemplateOutlet]="tab.template" />
-        }
+}
+@for (tab of tabs | keyvalue; track tab) {
+    @if ($index + tabConnectors().length === activeItemIndex()) {
+        <ng-container *polymorpheusOutlet="tab.value as text">{{ text }}</ng-container>
     }
-    @for (tab of tabs | keyvalue; track tab) {
-        @if ($index + tabConnectors().length === activeItemIndex()) {
-            <ng-container *polymorpheusOutlet="tab.value as text">{{ text }}</ng-container>
-        }
-    }
-</div>
+}

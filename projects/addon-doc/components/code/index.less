@@ -43,12 +43,16 @@
 
 .t-code-actions {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
     display: flex;
+    inset-block-start: 0.75rem;
+    inset-inline-end: 0.75rem;
     justify-content: center;
     align-items: center;
     flex-direction: row-reverse;
+    background: var(--tui-background-base-alt);
+    border-radius: var(--tui-radius-xs);
+
+    --tui-stroke-width: 0.09375rem;
 }
 
 .t-copy-button::ng-deep + *:not(:empty) {
@@ -59,21 +63,8 @@
 .hljs:not(:empty) {
     font: var(--tui-font-body-m);
     font-size: 0.875rem;
-    padding: 1.5rem 2rem;
+    padding: 1rem;
     font-family: monospace;
     overflow-wrap: break-word;
     white-space: pre-wrap;
-
-    @media @tui-mobile {
-        padding: 1rem;
-    }
-}
-
-.t-code-actions,
-.hljs:not(:empty) {
-    background: var(--tui-background-base);
-
-    @supports (background: color-mix(in srgb, var(--tui-background-base), #222 2%)) {
-        background: color-mix(in srgb, var(--tui-background-base), #222 2%);
-    }
 }

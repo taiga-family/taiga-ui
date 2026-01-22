@@ -11,10 +11,12 @@ import {expect, type Locator, test} from '@playwright/test';
 test.describe('InputPhone', () => {
     test.describe('API page', () => {
         let example: Locator;
+        let value: Locator;
         let inputPhone: TuiInputPhonePO;
 
         test.beforeEach(({page}) => {
-            example = new TuiDocumentationPagePO(page).apiPageExample;
+            example = new TuiDocumentationPagePO(page).demo;
+            value = new TuiDocumentationPagePO(page).value;
             inputPhone = new TuiInputPhonePO(example.locator('tui-textfield').first());
         });
 
@@ -86,19 +88,19 @@ test.describe('InputPhone', () => {
                 await inputPhone.textfield.focus();
 
                 await expect(inputPhone.textfield).toHaveValue('+1 ');
-                await expect(example).toContainText('"testValue": ""');
+                await expect(value).toContainText('"value": ""');
             });
 
             test('Click on cleaner => => textfield value is country code & form control is empty', async () => {
                 await inputPhone.textfield.pressSequentially('2345');
 
                 await expect(inputPhone.textfield).toHaveValue('+1 (234) 5');
-                await expect(example).toContainText('"testValue": "+12345"');
+                await expect(value).toContainText('"value": "+12345"');
 
                 await inputPhone.cleaner.click();
 
                 await expect(inputPhone.textfield).toHaveValue('+1 ');
-                await expect(example).toContainText('"testValue": ""');
+                await expect(value).toContainText('"value": ""');
             });
         });
     });
@@ -116,7 +118,7 @@ test.describe('InputPhone', () => {
                     `${DemoRoute.InputPhone}/API?mask=%2B7%20(%23%23%23)%20%23%23%23-%23%23-%23%23`,
                 );
 
-                example = new TuiDocumentationApiPagePO(page).apiPageExample;
+                example = new TuiDocumentationApiPagePO(page).demo;
                 input = example.locator('input');
             });
 
@@ -1440,7 +1442,7 @@ test.describe('InputPhone', () => {
         test('filler', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhone}/API?filler=%2B7%20999`);
 
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             input = example.locator('input');
 
             await input.focus();

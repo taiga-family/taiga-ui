@@ -41,9 +41,7 @@ describe('ThumbnailCard', () => {
                                     .getByRole('textbox')
                                     .fill(cardNumber);
 
-                                await expect(
-                                    documentationPage.apiPageExample,
-                                ).toHaveScreenshot(
+                                await expect(documentationPage.demo).toHaveScreenshot(
                                     `ps-${paymentSystem}-size-${size}-${cardNumber}.png`,
                                 );
                             });
@@ -59,7 +57,7 @@ describe('ThumbnailCard', () => {
                         );
 
                         await expect
-                            .soft(documentationPage.apiPageExample)
+                            .soft(documentationPage.demo)
                             .toHaveScreenshot(
                                 `ps-${paymentSystem}-size-${size}-8888.png`,
                             );

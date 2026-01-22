@@ -25,7 +25,7 @@ test.describe('InputDateRange', () => {
         let example!: Locator;
 
         beforeEach(() => {
-            example = documentationPage.apiPageExample;
+            example = documentationPage.demo;
 
             inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
@@ -282,7 +282,7 @@ test.describe('InputDateRange', () => {
         });
 
         test('Select second same range => after close/open calendar displays selected period displays correctly', async () => {
-            const example = documentationPage.getExample('#datalist');
+            const example = documentationPage.getExample('#data-list');
 
             const inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
@@ -307,7 +307,7 @@ test.describe('InputDateRange', () => {
     test('check valid active period', async ({page}) => {
         await tuiGoto(page, DemoRoute.InputDateRange);
 
-        const example = documentationPage.getExample('#datalist');
+        const example = documentationPage.getExample('#data-list');
         const inputDateRange = new TuiInputDateRangePO(
             example.locator('tui-textfield:has(input[tuiInputDateRange])'),
         );
@@ -347,7 +347,7 @@ test.describe('InputDateRange', () => {
         test('Select from [items] => select date range from calendar', async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
-            const example = documentationPage.getExample('#datalist');
+            const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
@@ -379,7 +379,7 @@ test.describe('InputDateRange', () => {
         }) => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
-            const example = documentationPage.getExample('#datalist');
+            const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
@@ -399,7 +399,7 @@ test.describe('InputDateRange', () => {
         test('Enter item date, it converts to item name', async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
-            const example = documentationPage.getExample('#datalist');
+            const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );

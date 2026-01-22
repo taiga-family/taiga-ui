@@ -66,4 +66,27 @@ test.describe('Navigation', () => {
 
         await expect.soft(example).toHaveScreenshot('06-navigation.png');
     });
+
+    test('with InputSearch opens', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Navigation);
+
+        const example = page.locator('#input-search');
+        const input = example.locator('input').first();
+
+        await input.focus();
+
+        await expect.soft(page).toHaveScreenshot('01-input-search.png');
+    });
+
+    test('with InputSearch closes', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Navigation);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#input-search');
+        const input = example.locator('input').first();
+
+        await input.focus();
+        await page.locator('[tuiTheme="dark"].t-container').click();
+
+        await expect.soft(example).toHaveScreenshot('02-input-search.png');
+    });
 });

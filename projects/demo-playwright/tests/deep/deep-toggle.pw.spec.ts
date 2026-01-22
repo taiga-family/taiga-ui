@@ -39,7 +39,7 @@ test.describe('Deep / Toggle', () => {
                     await page.waitForTimeout(300);
                 }
 
-                const example = api.apiPageExample;
+                const example = api.demo;
                 const makeName = (dir: string): string =>
                     `deep-${path}-${name}-row-${rowIndex}-toggled.${dir}.png`;
 

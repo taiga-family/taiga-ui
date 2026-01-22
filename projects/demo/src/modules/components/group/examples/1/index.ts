@@ -31,10 +31,9 @@ import {
 })
 export default class Example {
     protected readonly items = ['Option 1', 'Option 2', 'Option 3'];
-
-    protected testForm = new FormGroup({
-        testValue: new FormControl('', Validators.required),
-        multiSelectControl: new FormControl<string[]>([], Validators.required),
-        testValue3: new FormControl('', Validators.required),
+    protected readonly form = new FormGroup({
+        value: new FormControl('', Validators.required),
+        multi: new FormControl<string[]>([], Validators.required),
+        number: new FormControl('', Validators.required),
     });
 }

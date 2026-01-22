@@ -8,7 +8,7 @@ test.describe('InputTime', () => {
         let inputTime: TuiInputTimePO;
 
         test.beforeEach(({page}) => {
-            example = new TuiDocumentationPagePO(page).apiPageExample;
+            example = new TuiDocumentationPagePO(page).demo;
             inputTime = new TuiInputTimePO(
                 example.locator('tui-textfield:has([tuiInputTime])'),
             );
@@ -140,7 +140,9 @@ test.describe('InputTime', () => {
                 page,
             }) => {
                 await tuiGoto(page, DemoRoute.InputTime);
-                const example = new TuiDocumentationPagePO(page).getExample('#strict');
+                const example = new TuiDocumentationPagePO(page).getExample(
+                    '#strict-mode',
+                );
 
                 const inputTime = new TuiInputTimePO(example.locator('tui-textfield'));
 
@@ -233,7 +235,9 @@ test.describe('InputTime', () => {
         test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputTime);
 
-            example = new TuiDocumentationPagePO(page).getExample('#dropdown-datalist');
+            example = new TuiDocumentationPagePO(page).getExample(
+                '#dropdown-with--data-list',
+            );
 
             await example.scrollIntoViewIfNeeded();
 

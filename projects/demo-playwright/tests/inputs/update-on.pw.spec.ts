@@ -22,7 +22,7 @@ test.describe('Inputs - updateOn', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, `${route}/API`);
 
-                demo = new TuiDocumentationApiPagePO(page).apiPageExample;
+                demo = new TuiDocumentationApiPagePO(page).demo;
 
                 const details = demo.getByTestId('tui-demo-button__toggle-details');
 

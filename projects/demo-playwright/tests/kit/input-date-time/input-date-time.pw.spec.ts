@@ -17,7 +17,7 @@ test.describe('InputDateTime', () => {
 
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
-            example = documentationPage.apiPageExample;
+            example = documentationPage.demo;
             inputDateTime = new TuiInputDateTimePO(
                 example.locator('tui-textfield:has([tuiInputDateTime])'),
             );
@@ -322,10 +322,10 @@ test.describe('InputDateTime', () => {
             let inputDateTime!: TuiInputDateTimePO;
 
             test.beforeEach(async ({page}) => {
-                const {apiPageExample} = new TuiDocumentationPagePO(page);
+                const {demo} = new TuiDocumentationPagePO(page);
 
                 inputDateTime = new TuiInputDateTimePO(
-                    apiPageExample.locator('tui-textfield:has([tuiInputDateTime])'),
+                    demo.locator('tui-textfield:has([tuiInputDateTime])'),
                 );
 
                 await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);

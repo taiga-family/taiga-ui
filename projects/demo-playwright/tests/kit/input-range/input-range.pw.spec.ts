@@ -25,7 +25,7 @@ describe('InputRange', () => {
                 page,
                 `${DemoRoute.InputRange}/API?min=-100&max=100&step=5&sandboxExpanded=true`,
             );
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -174,7 +174,7 @@ describe('InputRange', () => {
                 page,
                 `${DemoRoute.InputRange}/API?min=0&max=10&quantum=2.5&precision=1`,
             );
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -209,7 +209,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?sandboxExpanded=true&updateOn=blur`,
             );
 
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
 
             await expect
@@ -237,7 +237,7 @@ describe('InputRange', () => {
                     page,
                     `${DemoRoute.InputRange}/API?min=-100&max=100&step=10&sandboxExpanded=true`,
                 );
-                example = new TuiDocumentationApiPagePO(page).apiPageExample;
+                example = new TuiDocumentationApiPagePO(page).demo;
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
             });
 
@@ -281,7 +281,7 @@ describe('InputRange', () => {
                     page,
                     `${DemoRoute.InputRange}/API?min=0&max=10&step=1&sandboxExpanded=true`,
                 );
-                example = new TuiDocumentationApiPagePO(page).apiPageExample;
+                example = new TuiDocumentationApiPagePO(page).demo;
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
             });
 
@@ -328,7 +328,7 @@ describe('InputRange', () => {
                 page,
                 `${DemoRoute.InputRange}/API?min=-20&max=20&step=5&sandboxExpanded=true`,
             );
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -408,7 +408,7 @@ describe('InputRange', () => {
 
     describe('[content] property', () => {
         beforeEach(({page}) => {
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -563,7 +563,9 @@ describe('InputRange', () => {
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputRange);
 
-            example = new TuiDocumentationPagePO(page).getExample('#hidden-minus-sign');
+            example = new TuiDocumentationPagePO(page).getExample(
+                '#using-negative-values-with-hidden-minus-sign',
+            );
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 

@@ -13,8 +13,8 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
 
         beforeEach(({page}) => {
             documentation = new TuiDocumentationPagePO(page);
-            example = documentation.apiPageExample;
-            input = example.locator('tui-textfield input, tui-primitive-textfield input');
+            example = documentation.demo;
+            input = example.locator('tui-textfield input');
             dropdown = page.locator('tui-dropdown');
         });
 
