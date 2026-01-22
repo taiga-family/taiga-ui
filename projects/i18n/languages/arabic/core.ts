@@ -18,6 +18,7 @@ export const TUI_ARABIC_LANGUAGE_CORE: TuiLanguageCore = {
         'ديسمبر',
     ],
     close: 'إغلاق',
+    back: 'رجوع',
     clear: 'مسح',
     nothingFoundMessage: 'لم يتم العثور على شيء',
     defaultErrorMessage: 'القيمة غير صالحة',
