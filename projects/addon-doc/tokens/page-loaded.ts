@@ -6,7 +6,5 @@ import {defer, of, switchMap, timer} from 'rxjs';
  */
 export const TUI_DOC_PAGE_LOADED = new InjectionToken(
     ngDevMode ? 'TUI_DOC_PAGE_LOADED' : '',
-    {
-        factory: () => defer(() => timer(200).pipe(switchMap(() => of(true)))),
-    },
+    {factory: () => defer(() => timer(200).pipe(switchMap(() => of(true))))},
 );

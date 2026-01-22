@@ -853,9 +853,7 @@ describe('TuiDay', () => {
                     'TuiDay {year: 2025, month: 7, day: 31} if {month: -1} was passed (for the last day of month,' +
                         'when the current month has less days than the final month)',
                     () => {
-                        const result = new TuiDay(2025, 8, 30).append({
-                            month: -1,
-                        });
+                        const result = new TuiDay(2025, 8, 30).append({month: -1});
 
                         expect(result.year).toBe(2025);
                         expect(result.month).toBe(7);
@@ -864,9 +862,7 @@ describe('TuiDay', () => {
                 );
 
                 it('TuiDay {year: 2025, month: 9, day: 1} if {month: 1} was passed', () => {
-                    const result = new TuiDay(2025, 8, 1).append({
-                        month: 1,
-                    });
+                    const result = new TuiDay(2025, 8, 1).append({month: 1});
 
                     expect(result.year).toBe(2025);
                     expect(result.month).toBe(9);
@@ -926,9 +922,7 @@ describe('TuiDay', () => {
                         ' more days than the final month, but both have the day, and it`s the last day of the final' +
                         ' month)',
                     () => {
-                        const result = new TuiDay(2018, 2, 28).append({
-                            month: -1,
-                        });
+                        const result = new TuiDay(2018, 2, 28).append({month: -1});
 
                         expect(result.year).toBe(2018);
                         expect(result.month).toBe(1);

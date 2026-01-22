@@ -10,9 +10,7 @@ import {TUI_PDF_VIEWER_OPTIONS, type TuiPdfViewerOptions} from './pdf-viewer.opt
 
 type Content<G> = PolymorpheusContent<TuiPortalContext<TuiPdfViewerOptions<unknown>, G>>;
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiPdfViewerService extends TuiModalService<TuiPdfViewerOptions<unknown>> {
     protected readonly options = inject(TUI_PDF_VIEWER_OPTIONS);
     protected readonly content = TuiPdfViewerComponent;

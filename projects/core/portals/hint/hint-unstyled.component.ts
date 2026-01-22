@@ -20,9 +20,7 @@ export class TuiHintUnstyledComponent {
     protected readonly hint = inject(TuiHintDirective);
 }
 
-@Directive({
-    selector: 'ng-template[tuiHint]',
-})
+@Directive({selector: 'ng-template[tuiHint]'})
 export class TuiHintUnstyled<C> {
     constructor() {
         const hint = inject(TuiHintDirective<C>);

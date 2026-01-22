@@ -16,26 +16,20 @@ export default class Page {
         HTML: import('./1/index.html'),
         Typescript: import('./1/index.ts?raw', {with: {loader: 'text'}}),
         Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
-        Dialog: import('./1/dialog.component.ts?raw', {
-            with: {loader: 'text'},
-        }),
+        Dialog: import('./1/dialog.component.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly example2 = {
         HTML: import('./2/index.html'),
         TypeScript: import('./2/index.ts?raw', {with: {loader: 'text'}}),
         Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
-        Dialog: import('./2/dialog.component.ts?raw', {
-            with: {loader: 'text'},
-        }),
+        Dialog: import('./2/dialog.component.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly example3 = {
         HTML: import('./3/index.html'),
         TypeScript: import('./3/index.ts?raw', {with: {loader: 'text'}}),
         Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
-        Dialog: import('./3/dialog.component.ts?raw', {
-            with: {loader: 'text'},
-        }),
+        Dialog: import('./3/dialog.component.ts?raw', {with: {loader: 'text'}}),
     };
 }

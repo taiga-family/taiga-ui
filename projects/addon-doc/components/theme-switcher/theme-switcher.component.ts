@@ -18,9 +18,7 @@ export const TUI_THEME_KEY = new InjectionToken(ngDevMode ? 'TUI_THEME_KEY' : ''
 });
 export const TUI_THEMES = new InjectionToken<Record<string, string>>(
     ngDevMode ? 'TUI_THEMES' : '',
-    {
-        factory: () => ({}),
-    },
+    {factory: () => ({})},
 );
 
 export function tuiDocThemeProvider(): FactoryProvider {

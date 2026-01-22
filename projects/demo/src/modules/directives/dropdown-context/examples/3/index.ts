@@ -13,9 +13,7 @@ import {TuiTextarea} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
-        reportText: new FormControl('Misspell HERE!'),
-    });
+    protected testForm = new FormGroup({reportText: new FormControl('Misspell HERE!')});
 
     protected report(): void {
         console.info(this.testForm.value);

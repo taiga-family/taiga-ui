@@ -14,9 +14,7 @@ import {TuiFilter} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly form = new FormGroup({
-        filters: new FormControl(['Food']),
-    });
+    protected readonly form = new FormGroup({filters: new FormControl(['Food'])});
 
     protected readonly items = [
         'News',

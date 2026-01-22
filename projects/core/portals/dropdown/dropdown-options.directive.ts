@@ -36,9 +36,7 @@ export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
 
 export const TUI_DROPDOWN_OPTIONS = new InjectionToken(
     ngDevMode ? 'TUI_DROPDOWN_OPTIONS' : '',
-    {
-        factory: () => TUI_DROPDOWN_DEFAULT_OPTIONS,
-    },
+    {factory: () => TUI_DROPDOWN_DEFAULT_OPTIONS},
 );
 
 export const tuiDropdownOptionsProvider: (

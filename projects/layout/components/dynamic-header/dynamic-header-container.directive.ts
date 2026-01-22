@@ -13,9 +13,7 @@ import {TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive
 @Directive({
     selector: '[tuiDynamicHeaderContainer]',
     hostDirectives: [WaIntersectionRoot, WaIntersectionObserverDirective],
-    host: {
-        waIntersectionRootMargin: '-44px 0px 1000000% 0px',
-    },
+    host: {waIntersectionRootMargin: '-44px 0px 1000000% 0px'},
 })
 export class TuiDynamicHeaderContainerDirective {
     private readonly el = tuiInjectElement();

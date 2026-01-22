@@ -26,7 +26,5 @@ export default class Example {
         delay(1000),
     );
 
-    protected readonly form = new FormGroup({
-        user: new FormControl(''),
-    });
+    protected readonly form = new FormGroup({user: new FormControl('')});
 }

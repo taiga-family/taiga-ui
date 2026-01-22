@@ -4,9 +4,7 @@ import {WA_WINDOW} from '@ng-web-apis/common';
 /**
  * Only adds current content if user has High DPI display
  */
-@Directive({
-    selector: '[tuiHighDpi]',
-})
+@Directive({selector: '[tuiHighDpi]'})
 export class TuiHighDpi {
     protected readonly ref =
         inject(WA_WINDOW).devicePixelRatio > 1 &&

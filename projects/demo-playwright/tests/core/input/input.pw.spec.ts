@@ -34,9 +34,7 @@ test.describe('Input', () => {
         });
 
         test('invalid state', async () => {
-            const textfield = example.locator('tui-textfield', {
-                hasText: 'Invalid',
-            });
+            const textfield = example.locator('tui-textfield', {hasText: 'Invalid'});
 
             await textfield.hover();
 

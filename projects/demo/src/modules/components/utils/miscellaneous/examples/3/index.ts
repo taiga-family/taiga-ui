@@ -28,9 +28,7 @@ export default class Example {
         '4000567890123456',
     ];
 
-    protected parametersForm = new FormGroup({
-        cardNumber: new FormControl(''),
-    });
+    protected parametersForm = new FormGroup({cardNumber: new FormControl('')});
 
     protected get paymentSystem(): string | null {
         const {cardNumber} = this.parametersForm.value;

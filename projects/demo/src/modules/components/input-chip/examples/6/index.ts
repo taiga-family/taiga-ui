@@ -14,7 +14,5 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly control = new FormControl();
-    protected readonly mask: MaskitoOptions = {
-        mask: [/\d/, /\d/, /\d/],
-    };
+    protected readonly mask: MaskitoOptions = {mask: [/\d/, /\d/, /\d/]};
 }

@@ -3,9 +3,7 @@ import {RadioControlValueAccessor} from '@angular/forms';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
-@Directive({
-    selector: 'input[type="radio"][tuiRadio][identityMatcher]',
-})
+@Directive({selector: 'input[type="radio"][tuiRadio][identityMatcher]'})
 export class TuiRadioDirective<T> {
     public readonly identityMatcher = input<TuiIdentityMatcher<T>>(
         TUI_DEFAULT_IDENTITY_MATCHER,

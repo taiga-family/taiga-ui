@@ -143,11 +143,7 @@ describe('Textfield + form.reset()', () => {
             phone: new FormControl(null),
             select: new FormControl(null),
         });
-        cy.mount(Sandbox, {
-            componentProperties: {
-                formGroup: form,
-            },
-        });
+        cy.mount(Sandbox, {componentProperties: {formGroup: form}});
     });
 
     it('ComboBox', () => {

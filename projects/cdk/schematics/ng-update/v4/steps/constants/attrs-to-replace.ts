@@ -121,18 +121,14 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             attrName: '(openChange)',
             withTagNames: ['tui-hosted-dropdown'],
         },
-        to: {
-            attrName: '(tuiDropdownOpenChange)',
-        },
+        to: {attrName: '(tuiDropdownOpenChange)'},
     },
     {
         from: {
             attrName: '(focusedChange)',
             withTagNames: ['tui-hosted-dropdown'],
         },
-        to: {
-            attrName: '(tuiActiveZoneChange)',
-        },
+        to: {attrName: '(tuiActiveZoneChange)'},
     },
     {
         from: {
@@ -292,17 +288,13 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             attrName: '*tuiRow',
             withTagNames: ['tr'],
         },
-        to: {
-            attrName: '*ngFor',
-        },
+        to: {attrName: '*ngFor'},
     },
     {
         from: {
             attrName: 'tuiResizeable',
             withTagNames: ['*'],
         },
-        to: {
-            attrName: 'tuiResizable',
-        },
+        to: {attrName: 'tuiResizable'},
     },
 ];

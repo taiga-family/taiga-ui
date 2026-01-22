@@ -26,7 +26,5 @@ import {type TuiStringHandler} from '@taiga-ui/cdk/types';
  */
 export const TUI_DOC_URL_STATE_HANDLER = new InjectionToken<TuiStringHandler<UrlTree>>(
     ngDevMode ? 'TUI_DOC_URL_STATE_HANDLER' : '',
-    {
-        factory: () => String,
-    },
+    {factory: () => String},
 );

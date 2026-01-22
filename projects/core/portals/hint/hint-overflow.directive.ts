@@ -11,9 +11,7 @@ import {TuiHintDirective} from './hint.directive';
             inputs: ['tuiHintAppearance'],
         },
     ],
-    host: {
-        '(mouseenter)': 'onMouseEnter($event.currentTarget)',
-    },
+    host: {'(mouseenter)': 'onMouseEnter($event.currentTarget)'},
 })
 export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);

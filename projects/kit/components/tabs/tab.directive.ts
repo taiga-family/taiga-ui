@@ -14,9 +14,7 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
     selector:
         'a[tuiTab]:not([routerLink]), a[tuiTab][routerLink][routerLinkActive], button[tuiTab]',
     hostDirectives: [TuiWithIcons],
-    host: {
-        type: 'button',
-    },
+    host: {type: 'button'},
 })
 export class TuiTab implements OnDestroy {
     private readonly el = tuiInjectElement();

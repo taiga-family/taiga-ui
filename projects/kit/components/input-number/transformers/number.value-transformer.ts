@@ -7,9 +7,7 @@ import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 import {TuiNumberMask} from '../number-mask.directive';
 import {TuiQuantumValueTransformer} from '../quantum.directive';
 
-@Directive({
-    providers: [tuiProvide(TuiValueTransformer, TuiNumberValueTransformer)],
-})
+@Directive({providers: [tuiProvide(TuiValueTransformer, TuiNumberValueTransformer)]})
 export class TuiNumberValueTransformer extends TuiValueTransformer<
     string,
     number | null

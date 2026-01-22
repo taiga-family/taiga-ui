@@ -30,9 +30,7 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
  */
 export const TUI_ITEMS_HANDLERS = new InjectionToken(
     ngDevMode ? 'TUI_ITEMS_HANDLERS' : '',
-    {
-        factory: () => TUI_DEFAULT_ITEMS_HANDLERS,
-    },
+    {factory: () => TUI_DEFAULT_ITEMS_HANDLERS},
 );
 
 export function tuiItemsHandlersProvider<T>(

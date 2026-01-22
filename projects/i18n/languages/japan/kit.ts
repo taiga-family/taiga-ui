@@ -70,9 +70,7 @@ export const TUI_JAPAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'はい',
         no: 'しかし',
     },
-    previewTexts: {
-        rotate: '回転',
-    },
+    previewTexts: {rotate: '回転'},
     zoomTexts: {
         zoomOut: 'ズームアウトする',
         zoomIn: 'ズームイン',

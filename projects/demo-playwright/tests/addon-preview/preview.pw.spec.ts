@@ -4,9 +4,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Preview', () => {
     test.describe('Examples', () => {
-        test.use({
-            viewport: {width: 500, height: 500},
-        });
+        test.use({viewport: {width: 500, height: 500}});
 
         let documentationPage!: TuiDocumentationPagePO;
 

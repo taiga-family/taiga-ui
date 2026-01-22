@@ -9,9 +9,7 @@ import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core/components/
     templateUrl: './mobile-calendar-sheet.template.html',
     styleUrl: './mobile-calendar-sheet.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._ios]': 'isIOS',
-    },
+    host: {'[class._ios]': 'isIOS'},
 })
 export class TuiMobileCalendarSheet extends TuiCalendarSheet {
     protected readonly isIOS = inject(WA_IS_IOS);

@@ -38,9 +38,7 @@ export default class Example {
             .open(TUI_CONFIRM, {
                 label: 'Cancel editing form?',
                 size: 's',
-                data: {
-                    content: 'You have unsaved changes that will be lost',
-                },
+                data: {content: 'You have unsaved changes that will be lost'},
             })
             .pipe(filter(Boolean))
             .subscribe(() => {

@@ -9,10 +9,6 @@ import {TuiTooltip} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiHintOptionsProvider({
-            icon: '@tui.camera',
-        }),
-    ],
+    providers: [tuiHintOptionsProvider({icon: '@tui.camera'})],
 })
 export default class Example {}

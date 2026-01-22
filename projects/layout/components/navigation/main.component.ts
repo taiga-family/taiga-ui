@@ -6,8 +6,6 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     styleUrl: './main.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        tuiNavigationMain: '',
-    },
+    host: {tuiNavigationMain: ''},
 })
 export class TuiMainComponent {}

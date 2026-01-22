@@ -17,14 +17,7 @@ interface Operation {
 
 const COMPLETED = {
     title: 'Done',
-    operations: [
-        {
-            amount: 100,
-        },
-        {
-            amount: 200,
-        },
-    ],
+    operations: [{amount: 100}, {amount: 200}],
 };
 
 @Component({
@@ -36,31 +29,14 @@ const COMPLETED = {
 })
 export default class Example {
     protected readonly form = new FormGroup({
-        filters: new FormControl([
-            {
-                title: 'Drafts',
-            },
-        ]),
+        filters: new FormControl([{title: 'Drafts'}]),
     });
 
     protected items: readonly Operations[] = [
         COMPLETED,
         {
             title: 'Drafts',
-            operations: [
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 100,
-                },
-            ],
+            operations: [{amount: 100}, {amount: 200}, {amount: 100}, {amount: 100}],
         },
         {
             title: 'For sign',
@@ -69,24 +45,12 @@ export default class Example {
         {
             title: 'Queue',
             operations: [
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
+                {amount: 100},
+                {amount: 200},
+                {amount: 100},
+                {amount: 200},
+                {amount: 100},
+                {amount: 200},
             ],
         },
     ];

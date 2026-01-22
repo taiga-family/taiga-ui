@@ -4,9 +4,7 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 type IsoCode = TuiCountryIsoCode | string;
 
-@Pipe({
-    name: 'tuiFlag',
-})
+@Pipe({name: 'tuiFlag'})
 export class TuiFlagPipe implements PipeTransform {
     private readonly staticPath = inject(TUI_ASSETS_PATH);
 

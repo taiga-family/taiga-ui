@@ -9,10 +9,6 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiScrollbarOptionsProvider({
-            mode: 'native',
-        }),
-    ],
+    providers: [tuiScrollbarOptionsProvider({mode: 'native'})],
 })
 export default class Example {}

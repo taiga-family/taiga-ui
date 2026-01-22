@@ -3,9 +3,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from './items-handlers.tokens';
 
-@Directive({
-    providers: [tuiProvide(TUI_ITEMS_HANDLERS, TuiItemsHandlersDirective)],
-})
+@Directive({providers: [tuiProvide(TUI_ITEMS_HANDLERS, TuiItemsHandlersDirective)]})
 export class TuiItemsHandlersDirective<T> implements TuiItemsHandlers<T> {
     private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS, {
         skipSelf: true,

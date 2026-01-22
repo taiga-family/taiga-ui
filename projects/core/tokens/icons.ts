@@ -2,9 +2,7 @@ import {type FactoryProvider, inject, InjectionToken} from '@angular/core';
 
 export const TUI_ICON_REGISTRY = new InjectionToken<Record<string, string>>(
     ngDevMode ? 'TUI_ICON_REGISTRY' : '',
-    {
-        factory: () => ({}),
-    },
+    {factory: () => ({})},
 );
 
 export function tuiIconsProvider(icons: Record<string, string>): FactoryProvider {

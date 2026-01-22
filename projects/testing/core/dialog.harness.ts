@@ -7,9 +7,7 @@ export class TuiDialogHarness extends TuiContentContainerComponentHarness {
 
     public async getCloseButton(): Promise<TuiButtonHarness | null> {
         return this.locatorForOptional(
-            TuiButtonHarness.with({
-                selector: ':scope > button',
-            }),
+            TuiButtonHarness.with({selector: ':scope > button'}),
         )();
     }
 }

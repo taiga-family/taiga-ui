@@ -15,11 +15,7 @@ const VALUE_TRANSFORMER: TuiValueTransformer<string, string> = {
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputPhoneOptionsProvider({
-            valueTransformer: VALUE_TRANSFORMER,
-        }),
-    ],
+    providers: [tuiInputPhoneOptionsProvider({valueTransformer: VALUE_TRANSFORMER})],
 })
 export default class Example {
     public value = '';

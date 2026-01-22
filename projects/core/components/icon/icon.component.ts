@@ -21,9 +21,7 @@ import {TuiIcons} from '@taiga-ui/core/directives/icons';
             inputs: ['iconStart: icon', 'iconEnd: badge'],
         },
     ],
-    host: {
-        '[style.--t-icon-bg]': 'mask()',
-    },
+    host: {'[style.--t-icon-bg]': 'mask()'},
 })
 export class TuiIcon {
     protected readonly icons = inject(TuiIcons);

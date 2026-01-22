@@ -36,15 +36,9 @@ export class TuiSliderReadonly {
     public readonly readonly = input(true, {transform: coerceBooleanProperty});
 
     constructor() {
-        const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {
-            passive: false,
-        });
-        const touchMove$ = tuiTypedFromEvent(this.doc, 'touchmove', {
-            passive: false,
-        });
-        const touchEnd$ = tuiTypedFromEvent(this.doc, 'touchend', {
-            passive: true,
-        });
+        const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {passive: false});
+        const touchMove$ = tuiTypedFromEvent(this.doc, 'touchmove', {passive: false});
+        const touchEnd$ = tuiTypedFromEvent(this.doc, 'touchend', {passive: true});
 
         const shouldPreventMove$ = merge(
             touchStart$.pipe(

@@ -30,9 +30,7 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.fill('austria');
 
-            const option = comboBox.dropdown.locator('[tuiOption]', {
-                hasText: 'Austria',
-            });
+            const option = comboBox.dropdown.locator('[tuiOption]', {hasText: 'Austria'});
 
             await expect
                 .soft(option)
@@ -48,9 +46,7 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.fill('austria');
 
-            const option = comboBox.dropdown.locator('[tuiOption]', {
-                hasText: 'Austria',
-            });
+            const option = comboBox.dropdown.locator('[tuiOption]', {hasText: 'Austria'});
 
             await expect
                 .soft(option)
@@ -193,9 +189,7 @@ describe('ComboBox', () => {
             test('click on item and blur – keeps already matched option', async () => {
                 await comboBox.textfield.click();
                 await comboBox.dropdown
-                    .locator('[tuiOption]', {
-                        hasText: 'Eric Idle',
-                    })
+                    .locator('[tuiOption]', {hasText: 'Eric Idle'})
                     .click();
 
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');

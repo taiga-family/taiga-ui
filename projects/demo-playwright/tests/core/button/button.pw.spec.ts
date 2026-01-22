@@ -38,7 +38,7 @@ test.describe('Button', () => {
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
         const button = apiPageExample.locator('[tuiButton]');
-        const {x, y, width, height} = (await button.boundingBox()) || {
+        const {x, y, width, height} = (await button.boundingBox()) ?? {
             x: 0,
             y: 0,
             width: 0,

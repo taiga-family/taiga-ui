@@ -48,7 +48,5 @@ export const tuiTilesShift: TuiReorderFunction = (order, currentIndex, newIndex)
 
 export const TUI_TILES_REORDER = new InjectionToken<TuiReorderFunction>(
     ngDevMode ? 'TUI_TILES_REORDER' : '',
-    {
-        factory: () => tuiTilesSwap,
-    },
+    {factory: () => tuiTilesSwap},
 );

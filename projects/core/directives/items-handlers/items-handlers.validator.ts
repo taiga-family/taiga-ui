@@ -6,9 +6,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TuiItemsHandlersDirective} from './items-handlers.directive';
 
-@Directive({
-    providers: [tuiProvide(NG_VALIDATORS, TuiItemsHandlersValidator, true)],
-})
+@Directive({providers: [tuiProvide(NG_VALIDATORS, TuiItemsHandlersValidator, true)]})
 export class TuiItemsHandlersValidator extends TuiValidator {
     private readonly handlers = inject(TuiItemsHandlersDirective);
 

@@ -5,9 +5,7 @@ import {EMPTY} from 'rxjs';
 
 import {TuiTabBarComponent} from './tab-bar.component';
 
-@Directive({
-    selector: '[tuiTabBarItem][routerLinkActive]',
-})
+@Directive({selector: '[tuiTabBarItem][routerLinkActive]'})
 export class TuiTabBarItemDirective {
     constructor() {
         const tabs = inject(TuiTabBarComponent);

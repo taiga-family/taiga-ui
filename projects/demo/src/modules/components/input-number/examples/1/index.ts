@@ -11,11 +11,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiValidationErrorsProvider({
-            required: 'Required field',
-        }),
-    ],
+    providers: [tuiValidationErrorsProvider({required: 'Required field'})],
 })
 export default class Example {
     protected readonly control = new FormControl<number | null>(

@@ -10,9 +10,7 @@ import {
 
 import {TuiPopupService} from './popup.service';
 
-@Directive({
-    selector: 'ng-template[tuiPopup]',
-})
+@Directive({selector: 'ng-template[tuiPopup]'})
 export class TuiPopup implements OnChanges, OnDestroy {
     private readonly template = inject(TemplateRef);
     private readonly service = inject(TuiPopupService);

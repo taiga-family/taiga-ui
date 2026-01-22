@@ -34,9 +34,7 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
-    private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {
-        optional: true,
-    });
+    private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {optional: true});
 
     protected readonly width = signal<number | null>(null);
 

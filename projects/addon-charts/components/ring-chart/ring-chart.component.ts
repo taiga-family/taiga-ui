@@ -8,9 +8,7 @@ import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
     templateUrl: './ring-chart.template.html',
     styleUrl: './ring-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiRingChart {
     public readonly value = input<readonly number[]>([]);

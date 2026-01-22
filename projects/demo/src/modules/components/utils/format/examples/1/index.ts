@@ -14,9 +14,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected parametersForm = new FormGroup({
-        value: new FormControl(11),
-    });
+    protected parametersForm = new FormGroup({value: new FormControl(11)});
 
     protected get px(): string {
         const {value} = this.parametersForm.value;

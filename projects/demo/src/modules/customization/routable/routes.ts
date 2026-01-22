@@ -12,9 +12,7 @@ export default [
             tuiRouteDialog(async () => import('./1/dialog.component'), {
                 path: 'path/to/lazy',
             }),
-            tuiRouteDialog(EagerExample, {
-                path: 'path/to/eager',
-            }),
+            tuiRouteDialog(EagerExample, {path: 'path/to/eager'}),
             tuiRouteDialog(NamedOutletExample, {
                 path: 'path/to/named-outlet',
                 outlet: 'myOutlet',

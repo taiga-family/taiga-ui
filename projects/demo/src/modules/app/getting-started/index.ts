@@ -7,9 +7,7 @@ import {Home} from '../home/home.component';
 
 export const TUI_HOME_COMPONENT = new InjectionToken(
     ngDevMode ? 'TUI_HOME_COMPONENT' : '',
-    {
-        factory: () => Home,
-    },
+    {factory: () => Home},
 );
 
 @Component({

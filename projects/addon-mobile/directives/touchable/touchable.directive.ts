@@ -22,9 +22,7 @@ function findIndex(touches: TouchList, id = 0): number {
     return -1;
 }
 
-@Directive({
-    selector: '[tuiTouchable]',
-})
+@Directive({selector: '[tuiTouchable]'})
 export class TuiTouchable {
     private readonly isIOS = inject(WA_IS_IOS);
     private readonly el = tuiInjectElement();

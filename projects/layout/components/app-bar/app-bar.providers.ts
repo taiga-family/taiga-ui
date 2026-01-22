@@ -17,7 +17,5 @@ export const TUI_APP_BAR_PROVIDERS: Provider[] = [
             subtree: true,
         },
     },
-    tuiButtonOptionsProvider({
-        appearance: 'action',
-    }),
+    tuiButtonOptionsProvider({appearance: 'action'}),
 ];

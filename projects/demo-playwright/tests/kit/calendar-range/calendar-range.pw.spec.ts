@@ -14,9 +14,7 @@ describe('CalendarRange', () => {
     let calendarRange!: TuiCalendarRangePO;
     let documentationPage!: TuiDocumentationPagePO;
 
-    test.use({
-        viewport: {width: 650, height: 650},
-    });
+    test.use({viewport: {width: 650, height: 650}});
 
     beforeEach(({page}) => {
         documentationPage = new TuiDocumentationPagePO(page);
@@ -24,9 +22,7 @@ describe('CalendarRange', () => {
 
     describe('Examples', () => {
         beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.CalendarRange, {
-                date: today,
-            });
+            await tuiGoto(page, DemoRoute.CalendarRange, {date: today});
         });
 
         test('With another range switcher', async () => {
@@ -95,9 +91,7 @@ describe('CalendarRange', () => {
 
     describe('API', () => {
         beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.CalendarRange, {
-                date: today,
-            });
+            await tuiGoto(page, DemoRoute.CalendarRange, {date: today});
 
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;

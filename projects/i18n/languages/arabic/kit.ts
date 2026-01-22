@@ -70,9 +70,7 @@ export const TUI_ARABIC_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'نعم',
         no: 'لا',
     },
-    previewTexts: {
-        rotate: 'تدوير',
-    },
+    previewTexts: {rotate: 'تدوير'},
     zoomTexts: {
         zoomOut: 'تصغير',
         zoomIn: 'تكبير',

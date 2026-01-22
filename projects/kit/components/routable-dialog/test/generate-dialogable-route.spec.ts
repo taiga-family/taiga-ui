@@ -21,9 +21,7 @@ describe('tuiGenerateDialogableRoute', () => {
     });
 
     it('path passed correctly', () => {
-        const result = tuiGenerateDialogableRoute(Dialog, {
-            path: 'path/to/dialog',
-        });
+        const result = tuiGenerateDialogableRoute(Dialog, {path: 'path/to/dialog'});
 
         expect(result.path).toBe('path/to/dialog');
     });
@@ -68,33 +66,25 @@ describe('tuiGenerateDialogableRoute', () => {
         });
 
         it('back url calculated correctly for empty path', () => {
-            const result = tuiGenerateDialogableRoute(Dialog, {
-                path: '',
-            });
+            const result = tuiGenerateDialogableRoute(Dialog, {path: ''});
 
             expect(result?.data?.backUrl).toBe('..');
         });
 
         it('back url calculated correctly for single segment', () => {
-            const result = tuiGenerateDialogableRoute(Dialog, {
-                path: 'path',
-            });
+            const result = tuiGenerateDialogableRoute(Dialog, {path: 'path'});
 
             expect(result?.data?.backUrl).toBe('..');
         });
 
         it('back url calculated correctly for double segments', () => {
-            const result = tuiGenerateDialogableRoute(Dialog, {
-                path: 'path/to',
-            });
+            const result = tuiGenerateDialogableRoute(Dialog, {path: 'path/to'});
 
             expect(result?.data?.backUrl).toBe('../..');
         });
 
         it('back url calculated correctly for triple segments', () => {
-            const result = tuiGenerateDialogableRoute(Dialog, {
-                path: 'path/to/dialog',
-            });
+            const result = tuiGenerateDialogableRoute(Dialog, {path: 'path/to/dialog'});
 
             expect(result?.data?.backUrl).toBe('../../..');
         });

@@ -33,9 +33,7 @@ export const TUI_DEFAULT_DATE_FORMAT: TuiDateFormatSettings = {
  */
 export const TUI_DATE_FORMAT = new InjectionToken<Signal<TuiDateFormatSettings>>(
     ngDevMode ? 'TUI_DATE_FORMAT' : '',
-    {
-        factory: () => signal(TUI_DEFAULT_DATE_FORMAT),
-    },
+    {factory: () => signal(TUI_DEFAULT_DATE_FORMAT)},
 );
 
 export function tuiDateFormatProvider(options: Partial<TuiDateFormatSettings>): Provider {

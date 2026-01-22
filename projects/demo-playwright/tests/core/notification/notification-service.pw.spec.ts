@@ -3,9 +3,7 @@ import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('NotificationService', () => {
-    test.use({
-        viewport: {width: 720, height: 720},
-    });
+    test.use({viewport: {width: 720, height: 720}});
 
     test('is shown correctly', async ({page}) => {
         await tuiGoto(page, DemoRoute.Notification);

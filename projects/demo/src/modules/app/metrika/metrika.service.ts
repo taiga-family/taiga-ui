@@ -29,9 +29,7 @@ interface YaMetrikaOptions {
 export const [YA_METRIKA_OPTIONS, metrikaOptionsProvider] =
     tuiCreateOptions<YaMetrikaOptions>({id: '', debug: false});
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class YaMetrikaService {
     private readonly options = inject(YA_METRIKA_OPTIONS);
     private readonly doc = inject(DOCUMENT);

@@ -70,9 +70,7 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Иә',
         no: 'Жоқ',
     },
-    previewTexts: {
-        rotate: 'Айналдыру',
-    },
+    previewTexts: {rotate: 'Айналдыру'},
     zoomTexts: {
         zoomOut: 'Кішірейту',
         zoomIn: 'Үлкейту',

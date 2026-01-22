@@ -8,9 +8,7 @@ import {
 
 import {TuiTextfieldComponent} from './textfield.component';
 
-@Directive({
-    selector: 'ng-template[tuiTextfieldContent]',
-})
+@Directive({selector: 'ng-template[tuiTextfieldContent]'})
 export class TuiTextfieldContent implements DoCheck, OnDestroy {
     private readonly ref = inject(TuiTextfieldComponent)
         .vcr()

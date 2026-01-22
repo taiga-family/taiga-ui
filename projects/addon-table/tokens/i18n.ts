@@ -6,9 +6,7 @@ import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
  */
 export const TUI_TABLE_SHOW_HIDE_MESSAGE = new InjectionToken(
     ngDevMode ? 'TUI_TABLE_SHOW_HIDE_MESSAGE' : '',
-    {
-        factory: tuiExtractI18n('showHideText'),
-    },
+    {factory: tuiExtractI18n('showHideText')},
 );
 
 /**
@@ -16,7 +14,5 @@ export const TUI_TABLE_SHOW_HIDE_MESSAGE = new InjectionToken(
  */
 export const TUI_TABLE_PAGINATION_TEXTS = new InjectionToken(
     ngDevMode ? 'TUI_TABLE_PAGINATION_TEXTS' : '',
-    {
-        factory: tuiExtractI18n('paginationTexts'),
-    },
+    {factory: tuiExtractI18n('paginationTexts')},
 );

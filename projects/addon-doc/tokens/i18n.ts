@@ -10,9 +10,7 @@ import {InjectionToken, signal} from '@angular/core';
  */
 export const TUI_DOC_DEMO_TEXTS = new InjectionToken<[string, string, string]>(
     ngDevMode ? 'TUI_DOC_DEMO_TEXTS' : '',
-    {
-        factory: () => ['Dark mode', 'Background', 'Form value'],
-    },
+    {factory: () => ['Dark mode', 'Background', 'Form value']},
 );
 
 /**
@@ -52,38 +50,26 @@ export const TUI_DOC_DOCUMENTATION_TEXTS = new InjectionToken<
  */
 export const TUI_DOC_EXAMPLE_TEXTS = new InjectionToken<[string, string, string]>(
     ngDevMode ? 'TUI_DOC_EXAMPLE_TEXTS' : '',
-    {
-        factory: () => ['Preview', 'Link to a sample was successfully copied', 'Done'],
-    },
+    {factory: () => ['Preview', 'Link to a sample was successfully copied', 'Done']},
 );
 
 export const TUI_DOC_MENU_TEXT = new InjectionToken(
     ngDevMode ? 'TUI_DOC_MENU_TEXT' : '',
-    {
-        factory: () => 'Menu',
-    },
+    {factory: () => 'Menu'},
 );
 export const TUI_DOC_SEARCH_TEXT = new InjectionToken(
     ngDevMode ? 'TUI_DOC_SEARCH_TEXT' : '',
-    {
-        factory: () => 'Search',
-    },
+    {factory: () => 'Search'},
 );
 export const TUI_DOC_SEE_ALSO_TEXT = new InjectionToken(
     ngDevMode ? 'TUI_DOC_SEE_ALSO_TEXT' : '',
-    {
-        factory: () => 'See also',
-    },
+    {factory: () => 'See also'},
 );
 export const TUI_DOC_SOURCE_CODE_TEXT = new InjectionToken(
     ngDevMode ? 'TUI_DOC_SOURCE_CODE_TEXT' : '',
-    {
-        factory: () => 'Source code',
-    },
+    {factory: () => 'Source code'},
 );
 export const TUI_DOC_SEARCH_ENABLED = new InjectionToken(
     ngDevMode ? 'TUI_DOC_SEARCH_ENABLED' : '',
-    {
-        factory: () => signal(true),
-    },
+    {factory: () => signal(true)},
 );

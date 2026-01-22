@@ -15,7 +15,5 @@ import {TuiAvatar, type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 export default class Example {
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 
-    protected readonly file: TuiFileLike = {
-        name: 'custom.txt',
-    };
+    protected readonly file: TuiFileLike = {name: 'custom.txt'};
 }

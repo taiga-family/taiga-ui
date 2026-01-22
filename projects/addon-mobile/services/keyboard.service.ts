@@ -3,9 +3,7 @@ import {inject, Injectable, type OnDestroy} from '@angular/core';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {filter, fromEvent, merge} from 'rxjs';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiKeyboardService implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly sub = merge(

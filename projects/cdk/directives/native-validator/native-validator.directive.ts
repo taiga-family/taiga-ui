@@ -8,9 +8,7 @@ import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 @Directive({
     selector: '[tuiNativeValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
-    host: {
-        '(focusout)': 'handleValidation()',
-    },
+    host: {'(focusout)': 'handleValidation()'},
 })
 export class TuiNativeValidator implements Validator {
     private readonly el = tuiInjectElement<HTMLInputElement>();

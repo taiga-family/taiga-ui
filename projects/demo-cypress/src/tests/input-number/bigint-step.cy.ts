@@ -23,9 +23,7 @@ import {type MountConfig} from 'cypress/angular';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiInputNumberOptionsProvider({minusSign: '-'}),
-        tuiNumberFormatProvider({
-            thousandSeparator: '',
-        }),
+        tuiNumberFormatProvider({thousandSeparator: ''}),
     ],
 })
 class SandBox {

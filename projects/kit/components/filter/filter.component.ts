@@ -21,9 +21,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider([])],
     hostDirectives: [TuiWithItemsHandlers],
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiFilter<T> extends TuiControl<readonly T[]> {
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);

@@ -2,9 +2,7 @@ import {InjectionToken, type ValueProvider} from '@angular/core';
 
 export const TUI_FALLBACK_VALUE = new InjectionToken<any>(
     ngDevMode ? 'TUI_FALLBACK_VALUE' : '',
-    {
-        factory: () => null,
-    },
+    {factory: () => null},
 );
 
 export function tuiFallbackValueProvider<T>(useValue: T): ValueProvider {

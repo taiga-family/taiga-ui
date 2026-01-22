@@ -342,9 +342,7 @@ describe('rangeCalendarComponent', () => {
         });
 
         const defaultMonth = TuiMonth.currentLocal();
-        const updatedMonth = defaultMonth.append({
-            year: 1,
-        });
+        const updatedMonth = defaultMonth.append({year: 1});
 
         it('if other input updates after defaultViewedMonth was updated, new viewed months do not change', () => {
             testComponent.defaultViewedMonth = updatedMonth;

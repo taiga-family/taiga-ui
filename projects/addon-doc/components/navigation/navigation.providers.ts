@@ -80,7 +80,5 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
             ];
         },
     },
-    tuiScrollbarOptionsProvider({
-        mode: 'hover',
-    }),
+    tuiScrollbarOptionsProvider({mode: 'hover'}),
 ];

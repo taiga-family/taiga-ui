@@ -11,9 +11,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     templateUrl: './error.template.html',
     styleUrl: './error.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._error]': 'content()',
-    },
+    host: {'[class._error]': 'content()'},
 })
 export class TuiErrorComponent {
     protected readonly default = inject(TUI_DEFAULT_ERROR_MESSAGE);

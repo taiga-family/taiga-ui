@@ -39,7 +39,5 @@ export const TUI_VERSIONS_META_MAP = TUI_VERSIONS_META.reduce(
 
 export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
     ngDevMode ? 'TUI_VERSIONS_META_OPTIONS' : '',
-    {
-        factory: () => TUI_VERSIONS_META,
-    },
+    {factory: () => TUI_VERSIONS_META},
 );

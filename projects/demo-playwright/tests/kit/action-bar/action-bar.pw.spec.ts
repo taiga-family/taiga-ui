@@ -3,9 +3,7 @@ import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('ActionBar', () => {
-    test.use({
-        viewport: {width: 1000, height: 720},
-    });
+    test.use({viewport: {width: 1000, height: 720}});
 
     test('works', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);

@@ -33,9 +33,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
         tuiBadgeNotificationOptionsProvider({size: 's'}),
     ],
     hostDirectives: [TuiSegmentedDirective],
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();

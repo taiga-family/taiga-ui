@@ -19,17 +19,13 @@ export default class Example {
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 
     protected readonly files: readonly TuiFileLike[] = [
-        {
-            name: 'Loaded.txt',
-        },
+        {name: 'Loaded.txt'},
         {
             name: 'A file with a very very long title to check that it can be cut correctly.txt',
         },
     ];
 
-    protected loadingFile: TuiFileLike | null = {
-        name: 'Loading file.txt',
-    };
+    protected loadingFile: TuiFileLike | null = {name: 'Loading file.txt'};
 
     protected readonly rejectedFiles: readonly TuiFileLike[] = [
         {

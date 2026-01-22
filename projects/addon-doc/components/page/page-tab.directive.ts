@@ -1,8 +1,6 @@
 import {Directive, inject, input, TemplateRef} from '@angular/core';
 
-@Directive({
-    selector: 'ng-template[pageTab]',
-})
+@Directive({selector: 'ng-template[pageTab]'})
 export class TuiDocPageTabConnector {
     public readonly pageTab = input<string>();
 

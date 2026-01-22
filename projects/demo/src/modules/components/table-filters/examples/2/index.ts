@@ -41,9 +41,7 @@ export default class Example {
         {name: 'Daniel', balance: 50000},
     ] as const;
 
-    protected readonly filterForm = new FormGroup({
-        balance: new FormControl(0),
-    });
+    protected readonly filterForm = new FormGroup({balance: new FormControl(0)});
 
     protected readonly array = new FormArray<FormGroup>([]);
 

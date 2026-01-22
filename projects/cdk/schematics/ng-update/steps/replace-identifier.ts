@@ -22,9 +22,7 @@ export function replaceIdentifiers(
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing identifiers...`);
 
-    const progressLog = setupProgressLogger({
-        total: constants.length,
-    });
+    const progressLog = setupProgressLogger({total: constants.length});
 
     constants.forEach(({from, to}) => {
         toArray(from).forEach((x) => replaceIdentifier({from: x, to}));

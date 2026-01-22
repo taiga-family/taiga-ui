@@ -9,9 +9,7 @@ import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    host: {
-        '[class]': 'swiped',
-    },
+    host: {'[class]': 'swiped'},
 })
 export default class Example {
     protected swiped = 'default';

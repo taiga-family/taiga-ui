@@ -9,9 +9,7 @@ import {TuiCompass} from '@taiga-ui/kit';
     template: '<tui-compass [degrees]="degrees" />',
     encapsulation,
     changeDetection,
-    host: {
-        '(document:mousemove)': 'calculate($event)',
-    },
+    host: {'(document:mousemove)': 'calculate($event)'},
 })
 export default class Example {
     @ViewChild(TuiCompass, {read: ElementRef})

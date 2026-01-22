@@ -43,18 +43,14 @@ const DUMMY: TuiPoint = [NaN, NaN];
             useExisting: TuiLineDaysChart,
         },
     ],
-    host: {
-        '[style.z-index]': 'zIndex',
-    },
+    host: {'[style.z-index]': 'zIndex'},
 })
 export class TuiLineDaysChart implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
-    private readonly hintDirective = inject(TuiLineDaysChartHint, {
-        optional: true,
-    });
+    private readonly hintDirective = inject(TuiLineDaysChartHint, {optional: true});
 
     private readonly brokenMonths = computed(() => {
         const value = this.value();

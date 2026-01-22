@@ -74,9 +74,7 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Oui',
         no: 'Non',
     },
-    previewTexts: {
-        rotate: 'Faire pivoter',
-    },
+    previewTexts: {rotate: 'Faire pivoter'},
     zoomTexts: {
         zoomOut: 'Zoomer',
         zoomIn: 'Dézoomer',

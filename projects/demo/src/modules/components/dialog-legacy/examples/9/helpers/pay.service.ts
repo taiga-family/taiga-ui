@@ -5,9 +5,7 @@ import {map, type Observable, timer} from 'rxjs';
 import {MOCK_CARDS} from './mock-cards';
 import {type AccountCard, type FetchedCards} from './models';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class PayService {
     private readonly isE2E = inject(WA_IS_E2E);
 

@@ -15,9 +15,7 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
-    host: {
-        '(document:keydown.esc.prevent)': 'context.$implicit.complete()',
-    },
+    host: {'(document:keydown.esc.prevent)': 'context.$implicit.complete()'},
 })
 export class TuiPreviewDialog {
     protected readonly context = injectContext<TuiPortalContext<void>>();

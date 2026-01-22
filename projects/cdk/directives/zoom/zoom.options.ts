@@ -7,9 +7,5 @@ import {type TuiZoomOptions} from './zoom.types';
  */
 export const TUI_ZOOM_OPTIONS = new InjectionToken<TuiZoomOptions>(
     ngDevMode ? 'TUI_ZOOM_OPTIONS' : '',
-    {
-        factory: () => ({
-            wheelSensitivity: 0.01,
-        }),
-    },
+    {factory: () => ({wheelSensitivity: 0.01})},
 );

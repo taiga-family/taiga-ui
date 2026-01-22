@@ -14,9 +14,7 @@ import {TuiTableTh} from '../th/th.component';
 import {TuiTableSortBy} from './sort-by.directive';
 import {TuiTableDirective} from './table.directive';
 
-@Directive({
-    selector: 'th[tuiTh][tuiSortable]',
-})
+@Directive({selector: 'th[tuiTh][tuiSortable]'})
 export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>> {
     private readonly table: TuiTableDirective<T> = inject(TuiTableDirective<T>);
     private readonly th: TuiTableTh<T> = inject(TuiTableTh<T>);

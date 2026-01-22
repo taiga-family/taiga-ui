@@ -27,9 +27,7 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_APP_BAR_PROVIDERS,
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');

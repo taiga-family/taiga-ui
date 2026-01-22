@@ -36,15 +36,11 @@ export interface TuiAppearanceOptions {
     readonly appearance: Appearance | '';
 }
 
-export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {
-    appearance: '',
-};
+export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {appearance: ''};
 
 export const TUI_APPEARANCE_OPTIONS = new InjectionToken(
     ngDevMode ? 'TUI_APPEARANCE_OPTIONS' : '',
-    {
-        factory: () => TUI_APPEARANCE_DEFAULT_OPTIONS,
-    },
+    {factory: () => TUI_APPEARANCE_DEFAULT_OPTIONS},
 );
 
 export function tuiAppearanceOptionsProvider(

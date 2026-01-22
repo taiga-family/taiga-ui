@@ -70,9 +70,7 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Ja',
         no: 'Ingen',
     },
-    previewTexts: {
-        rotate: 'Draaien',
-    },
+    previewTexts: {rotate: 'Draaien'},
     zoomTexts: {
         zoomOut: 'Uitzoomen',
         zoomIn: 'Inzoomen',

@@ -25,9 +25,7 @@ import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly form = new FormGroup({
-        balance: new FormControl(0),
-    });
+    protected readonly form = new FormGroup({balance: new FormControl(0)});
 
     protected readonly data = [
         {name: 'Alex Inkin', balance: 1323525},
