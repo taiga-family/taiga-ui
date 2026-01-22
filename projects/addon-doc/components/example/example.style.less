@@ -49,6 +49,10 @@
     border-radius: var(--tui-radius-m);
     overflow: hidden;
 
+    :host-context([tuiTheme='dark']) & {
+        border: 0.25rem solid var(--tui-background-elevation-2);
+    }
+
     &:not(:first-child) {
         margin-block-start: 1.25rem;
 
@@ -68,6 +72,10 @@
     padding-inline-end: 0.125rem;
     background: var(--tui-background-base-alt);
 
+    :host-context([tuiTheme='dark']) & {
+        background: var(--tui-background-elevation-2);
+    }
+
     --tui-stroke-width: 0.09375rem;
 }
 
@@ -86,6 +94,12 @@
     box-shadow:
         -1rem -1rem var(--tui-background-base-alt),
         1rem -1rem var(--tui-background-base-alt);
+
+    :host-context([tuiTheme='dark']) & {
+        box-shadow:
+            -1rem -1rem var(--tui-background-elevation-2),
+            1rem -1rem var(--tui-background-elevation-2);
+    }
 
     &:first-child {
         box-shadow: none;

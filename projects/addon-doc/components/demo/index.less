@@ -15,6 +15,10 @@
     border-radius: var(--tui-radius-m);
     overflow: hidden;
     box-sizing: border-box;
+
+    :host-context([tuiTheme='dark']) {
+        background: var(--tui-background-elevation-2);
+    }
 }
 
 .t-settings {
@@ -39,6 +43,10 @@
     box-shadow: inset 0 0 0 0.25rem var(--tui-background-base-alt);
     overflow: hidden;
     pointer-events: auto;
+
+    :host-context([tuiTheme='dark']) & {
+        box-shadow: inset 0 0 0 0.25rem var(--tui-background-elevation-2);
+    }
 
     &.t-wrapper_transparent {
         background-image:
@@ -89,6 +97,10 @@
     box-shadow: inset 0 -0.25rem 0 0.25rem var(--tui-background-base-alt);
     padding: 0.5rem 0.75rem 1rem;
     margin: 0 0 -0.25rem;
+
+    :host-context([tuiTheme='dark']) & {
+        box-shadow: inset 0 -0.25rem 0 0.25rem var(--tui-background-elevation-2);
+    }
 }
 
 .t-resizer {
