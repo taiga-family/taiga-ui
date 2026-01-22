@@ -18,6 +18,7 @@ export const TUI_DUTCH_LANGUAGE_CORE: TuiLanguageCore = {
         'December',
     ],
     close: 'Sluiten',
+    back: 'Terug',
     clear: 'Duidelijk veld',
     nothingFoundMessage: 'Niets gevonden',
     defaultErrorMessage: 'Ongeldige waarde',

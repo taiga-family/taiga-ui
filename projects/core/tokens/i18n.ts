@@ -16,6 +16,13 @@ export const TUI_CLOSE_WORD = new InjectionToken(ngDevMode ? 'TUI_CLOSE_WORD' : 
 });
 
 /**
+ * i18n 'back' word
+ */
+export const TUI_BACK_WORD = new InjectionToken(ngDevMode ? 'TUI_BACK_WORD' : '', {
+    factory: tuiExtractI18n('back'),
+});
+
+/**
  * i18n 'clear' word
  */
 export const TUI_CLEAR_WORD = new InjectionToken(ngDevMode ? 'TUI_CLEAR_WORD' : '', {

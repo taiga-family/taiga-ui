@@ -3,6 +3,7 @@ import {type TuiLanguageName} from './language-names';
 
 export interface TuiLanguageCore {
     close: string;
+    back?: string;
     clear: string;
     countries: Record<TuiCountryIsoCode, string>;
     defaultErrorMessage: string;

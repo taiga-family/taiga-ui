@@ -18,6 +18,7 @@ export const TUI_FRENCH_LANGUAGE_CORE: TuiLanguageCore = {
         'Décembre',
     ],
     close: 'Fermer',
+    back: 'Retour',
     clear: 'Effacer le champ',
     nothingFoundMessage: 'Aucun résultat',
     defaultErrorMessage: 'Valeur non valide',
