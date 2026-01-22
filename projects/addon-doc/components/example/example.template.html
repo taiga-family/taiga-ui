@@ -92,7 +92,7 @@
                         class="t-demo"
                         [style.display]="activeItemIndex === $index ? 'block' : 'none'"
                     >
-                        <ng-content />
+                        <ng-container *ngTemplateOutlet="content" />
                         <ng-container *ngComponentOutlet="component() | async" />
                     </section>
                 }
@@ -111,9 +111,12 @@
         } @empty {
             <div class="t-content">
                 <section class="t-demo">
-                    <ng-content />
+                    <ng-container *ngTemplateOutlet="content" />
                 </section>
             </div>
         }
     }
 </div>
+<ng-template #content>
+    <ng-content />
+</ng-template>

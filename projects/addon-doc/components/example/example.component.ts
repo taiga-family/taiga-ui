@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {AsyncPipe, DOCUMENT, NgComponentOutlet} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgComponentOutlet, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -61,6 +61,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiMapperPipe,
         TuiSegmented,
         TuiTitle,
+        NgTemplateOutlet,
     ],
     templateUrl: './example.template.html',
     styleUrl: './example.style.less',
