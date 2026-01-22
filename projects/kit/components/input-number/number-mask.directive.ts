@@ -85,7 +85,7 @@ export class TuiNumberMask {
         return maskitoStringifyNumber(rounded ?? null, {
             ...params,
             minimumFractionDigits:
-                String(value).includes(params.decimalSeparator) &&
+                String(rounded).includes(params.decimalSeparator) &&
                 this.numberFormat().decimalMode !== 'not-zero'
                     ? params.maximumFractionDigits
                     : 0,
