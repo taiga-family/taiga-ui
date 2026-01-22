@@ -14,6 +14,7 @@ export const TUI_USED_ICONS = [
     '@tui.rocket',
     '@tui.file-code-corner',
     '@tui.puzzle',
+    '@tui.form',
     '@tui.layout-panel-left',
     '@tui.compass',
     '@tui.chart-pie',
