@@ -15,9 +15,7 @@ export interface TuiListOptions {
 }
 
 export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
-    tuiCreateOptions<TuiListOptions>({
-        size: 'l',
-    });
+    tuiCreateOptions<TuiListOptions>({size: 'l'});
 
 @Component({
     template: '',
