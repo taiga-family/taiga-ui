@@ -13,7 +13,7 @@ test.describe('Routable', () => {
 
         await example.locator('button').click();
 
-        await expect(page).toHaveURL('/components/dialog-routable/path/to/lazy');
+        await expect(page).toHaveURL('/dialog/routable/path/to/lazy');
 
         await documentationPagePO.prepareBeforeScreenshot();
 
@@ -25,7 +25,7 @@ test.describe('Routable', () => {
     }) => {
         await tuiGoto(page, `${DemoRoute.DialogRoutable}/path/to/lazy`);
 
-        await expect(page).toHaveURL('/components/dialog-routable/path/to/lazy');
+        await expect(page).toHaveURL('/dialog/routable/path/to/lazy');
 
         await page.locator('tui-dialog').getByRole('button').nth(1).click();
 
@@ -40,9 +40,7 @@ test.describe('Routable', () => {
 
         await example.locator('button').click();
 
-        await expect(page).toHaveURL(
-            '/components/dialog-routable/(myOutlet:path/to/named-outlet)',
-        );
+        await expect(page).toHaveURL('/dialog/routable/(myOutlet:path/to/named-outlet)');
 
         await page.locator('tui-dialog button').first().click();
 
