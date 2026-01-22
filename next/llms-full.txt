@@ -307,9 +307,7 @@ export default class Example {
                 sum: 237,
                 time: '19:32',
             },
-            {
-                title: 'Failed to load',
-            },
+            {title: 'Failed to load'},
         ],
         'January 6, 2021': [
             {
@@ -3006,9 +3004,7 @@ import {TuiBlock, TuiFade, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl('orange'),
-    });
+    protected readonly testForm = new FormGroup({testValue: new FormControl('orange')});
 }
 ```
 
@@ -9071,9 +9067,7 @@ import {TuiCompass} from '@taiga-ui/kit';
     template: '<tui-compass [degrees]="degrees" />',
     encapsulation,
     changeDetection,
-    host: {
-        '(document:mousemove)': 'calculate($event)',
-    },
+    host: {'(document:mousemove)': 'calculate($event)'},
 })
 export default class Example {
     @ViewChild(TuiCompass, {read: ElementRef})
@@ -10705,9 +10699,7 @@ export default class Example {
             .open(TUI_CONFIRM, {
                 label: 'Cancel editing form?',
                 size: 's',
-                data: {
-                    content: 'You have unsaved changes that will be lost',
-                },
+                data: {content: 'You have unsaved changes that will be lost'},
             })
             .pipe(filter(Boolean))
             .subscribe(() => {
@@ -11676,9 +11668,7 @@ import {TuiFilter} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly form = new FormGroup({
-        filters: new FormControl(['Food']),
-    });
+    protected readonly form = new FormGroup({filters: new FormControl(['Food'])});
 
     protected readonly items = [
         'News',
@@ -11728,14 +11718,7 @@ interface Operation {
 
 const COMPLETED = {
     title: 'Done',
-    operations: [
-        {
-            amount: 100,
-        },
-        {
-            amount: 200,
-        },
-    ],
+    operations: [{amount: 100}, {amount: 200}],
 };
 
 @Component({
@@ -11747,31 +11730,14 @@ const COMPLETED = {
 })
 export default class Example {
     protected readonly form = new FormGroup({
-        filters: new FormControl([
-            {
-                title: 'Drafts',
-            },
-        ]),
+        filters: new FormControl([{title: 'Drafts'}]),
     });
 
     protected items: readonly Operations[] = [
         COMPLETED,
         {
             title: 'Drafts',
-            operations: [
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 100,
-                },
-            ],
+            operations: [{amount: 100}, {amount: 200}, {amount: 100}, {amount: 100}],
         },
         {
             title: 'For sign',
@@ -11780,24 +11746,12 @@ export default class Example {
         {
             title: 'Queue',
             operations: [
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
+                {amount: 100},
+                {amount: 200},
+                {amount: 100},
+                {amount: 200},
+                {amount: 100},
+                {amount: 200},
             ],
         },
     ];
@@ -11853,9 +11807,7 @@ const getIcon: Record<string, string> = {
 export default class Example {
     protected items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
 
-    protected form = new FormGroup({
-        filters: new FormControl<string[]>([]),
-    });
+    protected form = new FormGroup({filters: new FormControl<string[]>([])});
 
     protected getItemIcon(title: string): string {
         return getIcon[title] ?? '';
@@ -13115,9 +13067,7 @@ import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
-        testValue: new FormControl('orange'),
-    });
+    protected testForm = new FormGroup({testValue: new FormControl('orange')});
 }
 ```
 
@@ -13157,9 +13107,7 @@ import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl(''),
-    });
+    protected readonly testForm = new FormGroup({testValue: new FormControl('')});
 }
 ```
 
@@ -14940,9 +14888,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly control = new FormControl();
-    protected readonly mask: MaskitoOptions = {
-        mask: [/\d/, /\d/, /\d/],
-    };
+    protected readonly mask: MaskitoOptions = {mask: [/\d/, /\d/, /\d/]};
 }
 ```
 
@@ -14977,9 +14923,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    host: {
-        dir: 'rtl',
-    },
+    host: {dir: 'rtl'},
 })
 export default class Example {
     protected value = [
@@ -17157,17 +17101,13 @@ export default class Example {
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 
     protected readonly files: readonly TuiFileLike[] = [
-        {
-            name: 'Loaded.txt',
-        },
+        {name: 'Loaded.txt'},
         {
             name: 'A file with a very very long title to check that it can be cut correctly.txt',
         },
     ];
 
-    protected loadingFile: TuiFileLike | null = {
-        name: 'Loading file.txt',
-    };
+    protected loadingFile: TuiFileLike | null = {name: 'Loading file.txt'};
 
     protected readonly rejectedFiles: readonly TuiFileLike[] = [
         {
@@ -17232,33 +17172,17 @@ export default class Example {
     protected height = 3;
 
     protected readonly files: readonly TuiFileLike[] = [
-        {
-            name: 'Loaded.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'one_more_file.txt',
-        },
-        {
-            name: 'last_file.txt',
-        },
+        {name: 'Loaded.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'one_more_file.txt'},
+        {name: 'last_file.txt'},
     ];
 
     protected readonly rejectedFiles: readonly TuiFileLike[] = [
-        {
-            name: 'File with an error.txt',
-        },
+        {name: 'File with an error.txt'},
     ];
 }
 ```
@@ -17308,9 +17232,7 @@ import {TuiAvatar, type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 export default class Example {
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 
-    protected readonly file: TuiFileLike = {
-        name: 'custom.txt',
-    };
+    protected readonly file: TuiFileLike = {name: 'custom.txt'};
 }
 ```
 
@@ -18140,11 +18062,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiValidationErrorsProvider({
-            required: 'Required field',
-        }),
-    ],
+    providers: [tuiValidationErrorsProvider({required: 'Required field'})],
 })
 export default class Example {
     protected readonly control = new FormControl<number | null>(
@@ -18510,11 +18428,7 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputNumberOptionsProvider({
-            valueTransformer: new NaNTransformer(),
-        }),
-    ],
+    providers: [tuiInputNumberOptionsProvider({valueTransformer: new NaNTransformer()})],
 })
 export default class Example {
     protected value = NaN;
@@ -18582,9 +18496,7 @@ export default class PageComponent {
 
     protected readonly bigIntWithDecimalTransformer = import(
         './examples/11/transformer.ts?raw',
-        {
-            with: {loader: 'text'},
-        }
+        {with: {loader: 'text'}}
     );
 }
 ```
@@ -18799,11 +18711,7 @@ const VALUE_TRANSFORMER: TuiValueTransformer<string, string> = {
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputPhoneOptionsProvider({
-            valueTransformer: VALUE_TRANSFORMER,
-        }),
-    ],
+    providers: [tuiInputPhoneOptionsProvider({valueTransformer: VALUE_TRANSFORMER})],
 })
 export default class Example {
     public value = '';
@@ -18839,11 +18747,7 @@ const VALUE_TRANSFORMER: TuiValueTransformer<string, string> = {
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputPhoneOptionsProvider({
-            valueTransformer: VALUE_TRANSFORMER,
-        }),
-    ],
+    providers: [tuiInputPhoneOptionsProvider({valueTransformer: VALUE_TRANSFORMER})],
 })
 export default class Example {
     public value = '';
@@ -19229,9 +19133,7 @@ import metadata from 'libphonenumber-js/max/metadata';
     template: 'Phone: {{ rawValue | maskito: mask }}',
     encapsulation,
     changeDetection,
-    host: {
-        '(click)': 'showUtilityPower()',
-    },
+    host: {'(click)': 'showUtilityPower()'},
 })
 export default class Example {
     protected rawValue = '12125552368';
@@ -20494,9 +20396,7 @@ import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
         tuiInputTimeOptionsProvider({
             icon: () => '@tui.timer',
             mode: 'HH:MM:SS.MSS',
-            timeSegmentMaxValues: {
-                hours: 99,
-            },
+            timeSegmentMaxValues: {hours: 99},
         }),
     ],
 })
@@ -20531,11 +20431,7 @@ import {TuiInputTime, tuiInputTimeOptionsProvider, TuiTooltip} from '@taiga-ui/k
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputTimeOptionsProvider({
-            icon: () => '',
-        }),
-    ],
+    providers: [tuiInputTimeOptionsProvider({icon: () => ''})],
 })
 export default class Example {
     protected value: TuiTime | null = new TuiTime(9, 0);
@@ -21615,9 +21511,7 @@ import {TuiRadio} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
-        testValue: new FormControl(),
-    });
+    protected testForm = new FormGroup({testValue: new FormControl()});
 }
 ```
 
@@ -21702,9 +21596,7 @@ import {TuiInput} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
-        testValue: new FormControl('Input value'),
-    });
+    protected testForm = new FormGroup({testValue: new FormControl('Input value')});
 }
 ```
 
@@ -22070,9 +21962,7 @@ import {TuiLike} from '@taiga-ui/kit';
 export default class Example {
     protected liked = false;
 
-    protected likeForm = new FormGroup({
-        liked: new FormControl(false),
-    });
+    protected likeForm = new FormGroup({liked: new FormControl(false)});
 
     protected changeValue(): void {
         this.liked = !this.liked;
@@ -23415,9 +23305,7 @@ export default class Page {
         ({$implicit}: {$implicit: [TuiDay, number]}) =>
             `${this.months()?.[$implicit[0].month]}, ${$implicit[0].day}\n${(
                 10 * $implicit[1]
-            ).toLocaleString('en-US', {
-                maximumFractionDigits: 0,
-            })} $`,
+            ).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ]);
 
     protected yStringify: TuiStringHandler<number> | null = null;
@@ -24218,9 +24106,7 @@ export default class Example {
         {
             appearance: 'fullscreen',
             closable: false,
-            data: {
-                min: new TuiDay(2018, 2, 10),
-            },
+            data: {min: new TuiDay(2018, 2, 10)},
         },
     );
 
@@ -28831,11 +28717,7 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiScrollbarOptionsProvider({
-            mode: 'hover',
-        }),
-    ],
+    providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
 })
 export default class Example {}
 ```
@@ -28872,11 +28754,7 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiScrollbarOptionsProvider({
-            mode: 'native',
-        }),
-    ],
+    providers: [tuiScrollbarOptionsProvider({mode: 'native'})],
 })
 export default class Example {}
 ```
@@ -33962,9 +33840,7 @@ import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly form = new FormGroup({
-        balance: new FormControl(0),
-    });
+    protected readonly form = new FormGroup({balance: new FormControl(0)});
 
     protected readonly data = [
         {name: 'Alex Inkin', balance: 1323525},
@@ -34070,9 +33946,7 @@ export default class Example {
         {name: 'Daniel', balance: 50000},
     ] as const;
 
-    protected readonly filterForm = new FormGroup({
-        balance: new FormControl(0),
-    });
+    protected readonly filterForm = new FormGroup({balance: new FormControl(0)});
 
     protected readonly array = new FormArray<FormGroup>([]);
 
@@ -34251,11 +34125,7 @@ import {
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiTablePaginationOptionsProvider({
-            showPages: false,
-        }),
-    ],
+    providers: [tuiTablePaginationOptionsProvider({showPages: false})],
 })
 export default class Example {
     protected total = 350;
@@ -35894,11 +35764,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiHintOptionsProvider({
-            icon: '@tui.camera',
-        }),
-    ],
+    providers: [tuiHintOptionsProvider({icon: '@tui.camera'})],
 })
 export default class Example {}
 ```
@@ -36609,9 +36475,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected parametersForm = new FormGroup({
-        value: new FormControl(11),
-    });
+    protected parametersForm = new FormGroup({value: new FormControl(11)});
 
     protected get px(): string {
         const {value} = this.parametersForm.value;
@@ -37102,9 +36966,7 @@ export default class Example {
         '4000567890123456',
     ];
 
-    protected parametersForm = new FormGroup({
-        cardNumber: new FormControl(''),
-    });
+    protected parametersForm = new FormGroup({cardNumber: new FormControl('')});
 
     protected get paymentSystem(): string | null {
         const {cardNumber} = this.parametersForm.value;
@@ -38117,9 +37979,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    host: {
-        '(copy)': 'onCopy($event)',
-    },
+    host: {'(copy)': 'onCopy($event)'},
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
@@ -38780,9 +38640,7 @@ import {TuiTextarea} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
-        reportText: new FormControl('Misspell HERE!'),
-    });
+    protected testForm = new FormGroup({reportText: new FormControl('Misspell HERE!')});
 
     protected report(): void {
         console.info(this.testForm.value);
@@ -38905,9 +38763,7 @@ import {TuiChevron, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        option: new FormControl(false),
-    });
+    protected readonly testForm = new FormGroup({option: new FormControl(false)});
 
     protected open = false;
     protected openSettings = false;
@@ -40499,9 +40355,7 @@ export default class Example {
         {name: 'Terry', surname: 'Jones'},
     ];
 
-    protected readonly form = new FormGroup({
-        period: new FormControl(),
-    });
+    protected readonly form = new FormGroup({period: new FormControl()});
 
     protected readonly stringify = (item: {name: string; surname: string}): string =>
         `${item.name} ${item.surname}`;
@@ -42083,9 +41937,7 @@ import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    host: {
-        '[class]': 'swiped',
-    },
+    host: {'[class]': 'swiped'},
 })
 export default class Example {
     protected swiped = 'default';
@@ -42847,27 +42699,21 @@ export default class Page {
         HTML: import('./1/index.html'),
         Typescript: import('./1/index.ts?raw', {with: {loader: 'text'}}),
         Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
-        Dialog: import('./1/dialog.component.ts?raw', {
-            with: {loader: 'text'},
-        }),
+        Dialog: import('./1/dialog.component.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly example2 = {
         HTML: import('./2/index.html'),
         TypeScript: import('./2/index.ts?raw', {with: {loader: 'text'}}),
         Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
-        Dialog: import('./2/dialog.component.ts?raw', {
-            with: {loader: 'text'},
-        }),
+        Dialog: import('./2/dialog.component.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly example3 = {
         HTML: import('./3/index.html'),
         TypeScript: import('./3/index.ts?raw', {with: {loader: 'text'}}),
         Routes: import('./routes.ts?raw', {with: {loader: 'text'}}),
-        Dialog: import('./3/dialog.component.ts?raw', {
-            with: {loader: 'text'},
-        }),
+        Dialog: import('./3/dialog.component.ts?raw', {with: {loader: 'text'}}),
     };
 }
 ```
@@ -43383,9 +43229,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl(100),
-    });
+    protected readonly testForm = new FormGroup({testValue: new FormControl(100)});
 }
 ```
 
@@ -43627,9 +43471,7 @@ import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
-    protected readonly form = new FormGroup({
-        user: new FormControl(''),
-    });
+    protected readonly form = new FormGroup({user: new FormControl('')});
 }
 ```
 
@@ -43803,9 +43645,7 @@ export default class Example {
         delay(1000),
     );
 
-    protected readonly form = new FormGroup({
-        user: new FormControl(''),
-    });
+    protected readonly form = new FormGroup({user: new FormControl('')});
 }
 ```
 
@@ -44150,11 +43990,7 @@ import {TuiTextfield} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
     providers: [
-        tuiObfuscateOptionsProvider({
-            recipes: {
-                city: ({length}) => 'x'.repeat(length),
-            },
-        }),
+        tuiObfuscateOptionsProvider({recipes: {city: ({length}) => 'x'.repeat(length)}}),
     ],
 })
 export default class PageComponent {
