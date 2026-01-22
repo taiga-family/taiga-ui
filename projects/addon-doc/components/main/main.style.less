@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@sidebar-width: 16rem;
+@sidebar-width: 16.5rem;
 
 html,
 body {
@@ -63,6 +63,10 @@ tui-doc-navigation.tui-doc-navigation {
         pointer-events: none;
         border-radius: var(--tui-radius-m);
         border: 0.25rem solid var(--tui-background-base-alt);
+
+        :host-context([tuiTheme='dark']) & {
+            border: 0.25rem solid var(--tui-background-elevation-2);
+        }
     }
 
     &::after {

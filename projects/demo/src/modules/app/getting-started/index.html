@@ -1,31 +1,90 @@
 <tui-doc-page header="Getting started">
     <ng-template pageTab="Automatic">
-        To install the
-        <strong>Taiga UI</strong>
-        , you can use the command below. This command will automatically install and add the library to your project,
+        To install the Taiga UI use the command below. This command will automatically add the library to your project
         and configure it.
 
-        <tui-doc-example
-            [content]="automatic"
-            [preview]="false"
-        />
-
-        <div
-            tuiNotification
-            [style.margin-block-start.rem]="1"
-        >
+        <p tuiNotification>
             <strong>Note:</strong>
             If you want to add Taiga UI to a project that is not using the latest major version of Angular, make sure to
             install the appropriate version of
             <code>&#64;angular/cdk</code>
             first to prevent dependency conflicts.
-        </div>
+        </p>
+
+        <tui-doc-example
+            [content]="automatic"
+            [preview]="false"
+            [style.margin-block-end.rem]="2"
+        />
+
+        <header tuiHeader="h6">
+            <hgroup tuiTitle>
+                <h2>Explore Taiga UI</h2>
+                <p>
+                    See
+                    <b>Components</b>
+                    section in the main navigation and check out UI elements broken into dedicated groups by their
+                    purpose
+                </p>
+            </hgroup>
+        </header>
+
+        <article class="explore">
+            <button
+                appearance="secondary-grayscale"
+                tuiCardLarge="compact"
+                tuiHeader="h6"
+                type="button"
+                (click)="toggle('Form')"
+            >
+                <span tuiTitle>
+                    Form
+                    <span tuiSubtitle>
+                        Inputs, buttons, checkboxes, error messages and other components to build forms
+                    </span>
+                </span>
+
+                <span tuiAccessories>
+                    <div tuiAvatar="@tui.form"></div>
+                </span>
+            </button>
+            <button
+                appearance="secondary-grayscale"
+                tuiCardLarge="compact"
+                tuiHeader="h6"
+                type="button"
+                (click)="toggle('Layout')"
+            >
+                <span tuiTitle>
+                    Layout
+                    <span tuiSubtitle>Cards, containers, lists and other components to build application layout</span>
+                </span>
+
+                <span tuiAccessories>
+                    <div tuiAvatar="@tui.layout-panel-left"></div>
+                </span>
+            </button>
+            <button
+                appearance="secondary-grayscale"
+                tuiCardLarge="compact"
+                tuiHeader="h6"
+                type="button"
+                (click)="toggle('Navigation')"
+            >
+                <span tuiTitle>
+                    Navigation
+                    <span tuiSubtitle>
+                        Tabs, breadcrumbs, pagination, stepper and other components that handle app navigation
+                    </span>
+                </span>
+
+                <span tuiAccessories>
+                    <div tuiAvatar="@tui.compass"></div>
+                </span>
+            </button>
+        </article>
     </ng-template>
     <ng-template pageTab="Manual">
-        Use this guide to install
-        <strong>Taiga UI</strong>
-        manually.
-
         <tui-doc-example
             heading="Install libraries"
             [content]="libraries"
@@ -57,7 +116,7 @@
         />
     </ng-template>
     <ng-template pageTab="Update">
-        Updating
+        Update
         <strong>Taiga UI</strong>
         packages to the latest version.
 

@@ -52,6 +52,10 @@
     background: var(--tui-background-base-alt);
     border-radius: var(--tui-radius-xs);
 
+    :host-context([tuiTheme='dark']) & {
+        background: var(--tui-background-elevation-2);
+    }
+
     --tui-stroke-width: 0.09375rem;
 }
 

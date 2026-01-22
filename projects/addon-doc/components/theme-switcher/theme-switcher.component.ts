@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,13 +10,17 @@ import {FormsModule} from '@angular/forms';
 import {WA_LOCAL_STORAGE, WA_LOCATION} from '@ng-web-apis/common';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
-import {TUI_THEME} from '@taiga-ui/core/tokens';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 export const TUI_THEME_KEY = new InjectionToken(ngDevMode ? 'TUI_THEME_KEY' : '', {
     factory: () => 'data-tui-theme',
 });
+
+export const TUI_THEME = new InjectionToken(ngDevMode ? 'TUI_THEME' : '', {
+    factory: () => 'Taiga UI',
+});
+
 export const TUI_THEMES = new InjectionToken<Record<string, string>>(
     ngDevMode ? 'TUI_THEMES' : '',
     {factory: () => ({})},
@@ -43,6 +48,10 @@ export class TuiDocThemeSwitcher {
     protected readonly theme = inject(TUI_THEME);
     protected readonly themes = inject(TUI_THEMES);
     protected readonly keys = Object.keys(this.themes);
+
+    constructor() {
+        inject(DOCUMENT).documentElement.setAttribute(this.key, this.theme);
+    }
 
     public onTheme(theme: string): void {
         this.storage?.setItem(this.key, theme);

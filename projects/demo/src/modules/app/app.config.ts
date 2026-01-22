@@ -317,6 +317,7 @@ export const config: ApplicationConfig = {
                 'Getting Started': '@tui.rocket',
                 Documentation: '@tui.file-code-corner',
                 Components: '@tui.puzzle',
+                Form: '@tui.form',
                 Layout: '@tui.layout-panel-left',
                 Navigation: '@tui.compass',
                 Charts: '@tui.chart-pie',

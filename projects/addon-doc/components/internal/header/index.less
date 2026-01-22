@@ -10,6 +10,10 @@
     padding: 0 1.5rem;
     background: var(--tui-background-base-alt);
 
+    :host-context([tuiTheme='dark']) {
+        background: var(--tui-background-elevation-2);
+    }
+
     --tui-stroke-width: 0.09375rem;
 
     &::after {
@@ -22,6 +26,13 @@
         box-shadow:
             -5rem 0 var(--tui-background-base-alt),
             5rem 0 var(--tui-background-base-alt);
+
+        :host-context([tuiTheme='dark']) & {
+            border: 0.5rem solid var(--tui-background-elevation-2);
+            box-shadow:
+                -5rem 0 var(--tui-background-elevation-2),
+                5rem 0 var(--tui-background-elevation-2);
+        }
     }
 }
 
