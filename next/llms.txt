@@ -20,7 +20,7 @@
 - [Colors](https://taiga-ui.dev/colors)
 - [Getting Started](https://taiga-ui.dev/getting-started)
 - [I18n](https://taiga-ui.dev/i18n)
-- [Lists](https://taiga-ui.dev/lists)
+- [List](https://taiga-ui.dev/list)
 - [Migration Guide](https://taiga-ui.dev/migration-guide)
 - [Portals](https://taiga-ui.dev/portals)
 - [Rtl](https://taiga-ui.dev/rtl)
