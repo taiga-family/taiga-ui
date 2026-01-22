@@ -258,13 +258,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Block',
-        keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
-        route: DemoRoute.Block,
-        meta: [{name: 'tui-toggle-block', figmaVersion: '1.2.0'}],
-    },
-    {
-        section: 'Components',
         title: 'Calendars',
         subPages: [
             {
@@ -905,6 +898,13 @@ export const pages: DocRoutePages = [
         section: 'Form',
         title: 'Toggles',
         subPages: [
+            {
+                section: 'Form',
+                title: 'Block',
+                keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
+                route: DemoRoute.Block,
+                meta: [{name: 'tui-toggle-block', figmaVersion: '1.2.0'}],
+            },
             {
                 section: 'Form',
                 title: 'Checkbox',
