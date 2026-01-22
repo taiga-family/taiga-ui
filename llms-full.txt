@@ -40445,6 +40445,241 @@ export default class Page {}
 ```
 
 ---
+# directives/List
+- **Package**: `LAYOUT`
+- **Type**: directives
+
+### Usage Examples
+
+#### Bulleted
+
+**Template:**
+```html
+<h2>Body L</h2>
+<h6 style="font: var(--tui-font-body-l)">List of Continents</h6>
+<ul tuiList>
+<li>Eurasia</li>
+<li>Africa</li>
+<li>Australia</li>
+<li>Antarctica</li>
+<li>North America</li>
+<li>South America</li>
+</ul>
+<h2>Body M</h2>
+<h6 style="font: var(--tui-font-body-m)">List of Continents</h6>
+<ul tuiList="m">
+<li>Eurasia</li>
+<li>Africa</li>
+<li>Australia</li>
+<li>Antarctica</li>
+<li>North America</li>
+<li>South America</li>
+</ul>
+<h2>UI S</h2>
+<h6 style="font: var(--tui-font-ui-s)">List of Continents</h6>
+<ul tuiList="s">
+<li>Eurasia</li>
+<li>Africa</li>
+<li>Australia</li>
+<li>Antarctica</li>
+<li>North America</li>
+<li>South America</li>
+</ul>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiList} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiList],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Numbered
+
+**Template:**
+```html
+<h2>Body L</h2>
+<h6 style="font: var(--tui-font-body-l)">List of Continents</h6>
+<ol tuiList>
+<li>Eurasia</li>
+<li>Africa</li>
+<li>Australia</li>
+<li>Antarctica</li>
+<li>North America</li>
+<li>South America</li>
+</ol>
+<h2>Body M</h2>
+<h6 style="font: var(--tui-font-body-m)">List of Continents</h6>
+<ol tuiList="m">
+<li>Eurasia</li>
+<li>Africa</li>
+<li>Australia</li>
+<li>Antarctica</li>
+<li>North America</li>
+<li>South America</li>
+</ol>
+<h2>UI S</h2>
+<h6 style="font: var(--tui-font-ui-s)">List of Continents</h6>
+<ol tuiList="s">
+<li>Eurasia</li>
+<li>Africa</li>
+<li>Australia</li>
+<li>Antarctica</li>
+<li>North America</li>
+<li>South America</li>
+</ol>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiList} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiList],
+    templateUrl: './index.html',
+    styleUrl: '../1/index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Nested
+
+**Template:**
+```html
+<header tuiHeader="h6">
+<hgroup tuiTitle>
+<h1>Header of first list</h1>
+</hgroup>
+</header>
+<ol tuiList>
+<li> First level <ol tuiList>
+<li>Second level</li>
+<li>
+<span>Second level</span>
+<ol tuiList>
+<li>Third level</li>
+<li>Third level</li>
+</ol>
+</li>
+<li>
+<span>Second level</span>
+<ol tuiList>
+<li>Third level</li>
+<li>
+<span>Third level</span>
+<ol tuiList>
+<li>Fourth level</li>
+<li>Fourth level</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>First level</li>
+</ol>
+<header tuiHeader="h6">
+<hgroup tuiTitle>
+<h1>Header of second list</h1>
+</hgroup>
+</header>
+<ul tuiList>
+<li> First level <ul tuiList>
+<li>Second level</li>
+<li>
+<span>Second level</span>
+<ul tuiList>
+<li>Third level</li>
+<li>Third level</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>First level</li>
+</ul>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiHeader, TuiList} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiHeader, TuiList, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Long text
+
+**Template:**
+```html
+<ul tuiList>
+<li>If a list item is long, the bullet stays aligned to the top.</li>
+<li>There are no restrictions on the text length at all. You can write as much text as you want.</li>
+<!-- prettier-ignore -->
+<li>This item uses <strong>nested tags</strong> inside which should not break</li>
+</ul>
+<ol tuiList>
+<li>If a list item is long, the bullet stays aligned to the top.</li>
+<li>There are no restrictions on the text length at all. You can write as much text as you want.</li>
+</ol>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiList} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiList],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = ['Bulleted', 'Numbered', 'Nested', 'Long text'];
+}
+```
+
+---
 # directives/Media
 - **Package**: `CDK`
 - **Type**: directives
