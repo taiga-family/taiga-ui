@@ -34,9 +34,7 @@ export default class Page {
         'app.component.html': import('./examples/app-template.md'),
     };
 
-    protected readonly provide = {
-        'main.ts': import('./examples/main-standalone.md'),
-    };
+    protected readonly provide = {'main.ts': import('./examples/main-standalone.md')};
 
     protected readonly update = {
         Angular: 'ng update @taiga-ui/cdk',

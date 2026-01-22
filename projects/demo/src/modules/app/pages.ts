@@ -296,18 +296,14 @@ export const pages: DocRoutePages = [
                 title: 'ButtonX',
                 keywords: 'кнопка, button, close, закрыть',
                 route: DemoRoute.ButtonX,
-                meta: {
-                    name: 'tui-button-close',
-                },
+                meta: {name: 'tui-button-close'},
             },
             {
                 section: 'Components',
                 title: 'ButtonGroup',
                 keywords: 'кнопка, button, group, группа',
                 route: DemoRoute.ButtonGroup,
-                meta: {
-                    name: 'tui-button-group-card',
-                },
+                meta: {name: 'tui-button-group-card'},
             },
             {
                 section: 'Components',
@@ -350,9 +346,7 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {
-            figmaVersion: '1.8.0',
-        },
+        meta: {figmaVersion: '1.8.0'},
     },
     {
         section: 'Components',
@@ -409,18 +403,14 @@ export const pages: DocRoutePages = [
                 title: 'SheetDialog',
                 keywords: 'mobile, dialog, popup, map, details, шторка',
                 route: DemoRoute.SheetDialog,
-                meta: {
-                    name: 'tui-bottomsheet',
-                },
+                meta: {name: 'tui-bottomsheet'},
             },
             {
                 section: 'Components',
                 title: 'NotificationMiddle',
                 keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
                 route: DemoRoute.NotificationMiddle,
-                meta: {
-                    figmaVersion: '1.1.0',
-                },
+                meta: {figmaVersion: '1.1.0'},
             },
             {
                 section: 'Components',
@@ -553,18 +543,14 @@ export const pages: DocRoutePages = [
                 title: 'Tooltip',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help',
                 route: DemoRoute.Tooltip,
-                meta: {
-                    name: 'tui-button-tooltip',
-                },
+                meta: {name: 'tui-button-tooltip'},
             },
             {
                 section: 'Tools',
                 title: 'Hint',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help, хинт',
                 route: DemoRoute.Hint,
-                meta: {
-                    name: 'tui-tooltip',
-                },
+                meta: {name: 'tui-tooltip'},
             },
             {
                 section: 'Tools',
@@ -734,9 +720,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'form, textfield, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
                 route: DemoRoute.Input,
-                meta: {
-                    name: 'tui-textfield',
-                },
+                meta: {name: 'tui-textfield'},
             },
             {
                 section: 'Components',
@@ -772,9 +756,7 @@ export const pages: DocRoutePages = [
         title: 'Like',
         keywords: 'like, лайк, эмодзи, смайлик, стикер',
         route: DemoRoute.Like,
-        meta: {
-            name: 'tui-button-like',
-        },
+        meta: {name: 'tui-button-like'},
     },
     {
         section: 'Components',
@@ -787,12 +769,7 @@ export const pages: DocRoutePages = [
         title: 'Link',
         keywords: 'href, anchor, ссылка, псевдо, pseudo, link',
         route: DemoRoute.Link,
-        meta: [
-            {
-                name: 'tui-button-link',
-            },
-            {name: 'tui-link', figmaVersion: '1.0.1'},
-        ],
+        meta: [{name: 'tui-button-link'}, {name: 'tui-link', figmaVersion: '1.0.1'}],
     },
     {
         section: 'Components',
@@ -800,9 +777,7 @@ export const pages: DocRoutePages = [
         keywords:
             'загрузка, крутилка, лоадер, спиннер, спинер, крутится, мутится, spinner, loader',
         route: DemoRoute.Loader,
-        meta: {
-            figmaVersion: '1.0.0',
-        },
+        meta: {figmaVersion: '1.0.0'},
     },
     {
         section: 'Components',
@@ -901,18 +876,14 @@ export const pages: DocRoutePages = [
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: DemoRoute.Rating,
-        meta: {
-            figmaVersion: '1.1.1',
-        },
+        meta: {figmaVersion: '1.1.1'},
     },
     {
         section: 'Components',
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
-        meta: {
-            name: 'tui-badge-t-client',
-        },
+        meta: {name: 'tui-badge-t-client'},
     },
     {
         section: 'Components',
@@ -1072,9 +1043,7 @@ export const pages: DocRoutePages = [
         title: 'ItemGroup',
         keywords: 'item, chip, group, list, tag, тэг, badge',
         route: DemoRoute.ItemGroup,
-        meta: {
-            name: 'tui-chip-group',
-        },
+        meta: {name: 'tui-chip-group'},
     },
     {
         section: 'Components',
@@ -1121,9 +1090,7 @@ export const pages: DocRoutePages = [
         title: 'SwipeActions',
         keywords: 'swipe, action, свайп, card, действие',
         route: DemoRoute.SwipeActions,
-        meta: {
-            version: '1.1.0',
-        },
+        meta: {version: '1.1.0'},
     },
     {
         section: 'Components',
@@ -1141,18 +1108,14 @@ export const pages: DocRoutePages = [
                 title: 'Medium',
                 keywords: 'card, card-medium, medium, block, карточка, блок',
                 route: DemoRoute.CardMedium,
-                meta: {
-                    name: 'tui-card-medium',
-                },
+                meta: {name: 'tui-card-medium'},
             },
             {
                 section: 'Layout',
                 title: 'Large',
                 keywords: 'card, card-large, large, block, карточка, блок',
                 route: DemoRoute.CardLarge,
-                meta: {
-                    name: 'tui-card-large',
-                },
+                meta: {name: 'tui-card-large'},
             },
             {
                 section: 'Layout',
@@ -1466,9 +1429,7 @@ export const pages: DocRoutePages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: DemoRoute.Sensitive,
-                meta: {
-                    figmaVersion: '1.1.0',
-                },
+                meta: {figmaVersion: '1.1.0'},
             },
             {
                 section: 'Tools',
@@ -1476,9 +1437,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: DemoRoute.Skeleton,
-                meta: {
-                    figmaVersion: '1.2.0',
-                },
+                meta: {figmaVersion: '1.2.0'},
             },
         ],
     },

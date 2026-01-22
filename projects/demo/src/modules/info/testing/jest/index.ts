@@ -7,13 +7,9 @@ import {TuiDemo} from '@demo/utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
-    protected readonly install = {
-        Terminal: import('./examples/install.md'),
-    };
+    protected readonly install = {Terminal: import('./examples/install.md')};
 
-    protected readonly config = {
-        'jest.config.ts': import('./examples/jest-config.md'),
-    };
+    protected readonly config = {'jest.config.ts': import('./examples/jest-config.md')};
 
     protected readonly manual = {
         'jest.config.ts': import('./examples/jest-config-custom.md'),
