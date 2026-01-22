@@ -1,1 +1,0 @@
-import{Mc as a,Tb as n}from"./chunk-AXUCSVX7.js";import"./chunk-B4AJQJMI.js";var e=class e{};e.\u0275fac=function(t){return new(t||e)},e.\u0275cmp=n({type:e,selectors:[["ng-component"]],decls:1,vars:0,template:function(t,c){t&1&&a(0,"Lazy loaded dialog content")},encapsulation:2,changeDetection:0});var o=e;export{o as default};
