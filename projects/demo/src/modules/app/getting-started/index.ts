@@ -1,10 +1,10 @@
+import {DOCUMENT} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
-import {DOCUMENT} from '@angular/common';
 
 @Component({
     imports: [TuiAvatar, TuiCardLarge, TuiDemo, TuiHeader, TuiTitle],

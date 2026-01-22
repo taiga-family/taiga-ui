@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,7 +12,6 @@ import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import {DOCUMENT} from '@angular/common';
 
 export const TUI_THEME_KEY = new InjectionToken(ngDevMode ? 'TUI_THEME_KEY' : '', {
     factory: () => 'data-tui-theme',
