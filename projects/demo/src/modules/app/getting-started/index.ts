@@ -55,7 +55,12 @@ export default class Page {
         setTimeout(() =>
             Array.from(this.doc.querySelectorAll('button'))
                 .filter(({textContent}) => textContent?.trim() === section)
-                .forEach((e) => e.click()),
+                .forEach((button) => {
+                    const expand = button.nextElementSibling as HTMLElement | null;
+
+                    button.click();
+                    expand?.scrollIntoView({behavior: 'smooth', block: 'center'});
+                }),
         );
     }
 }
