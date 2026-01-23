@@ -7,7 +7,7 @@ import {
     input,
     ViewContainerRef,
 } from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TUI_DATA_LIST_HOST} from './data-list.tokens';
 import {TUI_OPTION_CONTENT} from './option-content.directive';
