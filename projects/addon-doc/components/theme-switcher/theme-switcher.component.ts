@@ -18,21 +18,13 @@ export const TUI_THEME_KEY = new InjectionToken(ngDevMode ? 'TUI_THEME_KEY' : ''
 });
 
 export const TUI_THEME = new InjectionToken(ngDevMode ? 'TUI_THEME' : '', {
-    factory: () => 'Taiga UI',
+    factory: () => inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
 });
 
 export const TUI_THEMES = new InjectionToken<Record<string, string>>(
     ngDevMode ? 'TUI_THEMES' : '',
     {factory: () => ({})},
 );
-
-export function tuiDocThemeProvider(): FactoryProvider {
-    return {
-        provide: TUI_THEME,
-        useFactory: () =>
-            inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
-    };
-}
 
 @Component({
     selector: 'tui-doc-theme-switcher',
