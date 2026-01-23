@@ -75,7 +75,6 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         EMPTY_QUERY;
 
     protected readonly moreWord$ = inject(TUI_MORE_WORD);
-    protected open = false;
 
     @Input()
     public size: TuiSizeL = this.options.size;
@@ -94,6 +93,8 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
+
+    public open = false;
 
     public activeItemIndex = 0;
 
@@ -114,6 +115,14 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
                 : 2;
 
         return Math.min(this.itemsLimit - offset, this.maxIndex);
+    }
+
+    public isOverflown(index: number): boolean {
+        return index !== this.activeItemIndex || !this.options.exposeActive;
+    }
+
+    public shouldShow(index: number): boolean {
+        return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 
     public ngAfterViewInit(): void {
@@ -208,14 +217,6 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         if (target) {
             target.focus();
         }
-    }
-
-    protected isOverflown(index: number): boolean {
-        return index !== this.activeItemIndex || !this.options.exposeActive;
-    }
-
-    protected shouldShow(index: number): boolean {
-        return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 
     private get margin(): number {
