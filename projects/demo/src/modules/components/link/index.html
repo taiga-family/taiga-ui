@@ -4,18 +4,21 @@
     type="components"
 >
     <ng-template pageTab>
-        Link component. It has focus highlight and can be customized with an icon
-        <div
-            tuiNotification
-            [style.clear]="'both'"
-        >
-            Use
-            <code>textContent</code>
-            binding or wrapping entire content with a
-            <code>span</code>
-            to avoid extra whitespace introduced by browser to
-            <code>a</code>
-            tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
+        <div>
+            Link component. It has focus highlight and can be customized with an icon
+            <div
+                tuiNotification
+                [style.clear]="'both'"
+            >
+                Use
+                <code>textContent</code>
+                binding or wrapping entire content with a
+                <code>span</code>
+                to avoid extra whitespace introduced by browser to
+                <code>a</code>
+                tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should
+                be
+            </div>
         </div>
 
         @for (example of examples; track example) {

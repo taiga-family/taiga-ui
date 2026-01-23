@@ -4,20 +4,22 @@
     type="components"
 >
     <ng-template pageTab>
-        Taiga UI styling of native html tag
-        <code [textContent]="'<input type=\'range\' />'"></code>
-        to choose a value from a limited range
-        <p>
-            Read more about this input type in
-            <a
-                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/range"
-                rel="noreferrer"
-                target="_blank"
-                tuiLink
-            >
-                MDN Docs
-            </a>
-        </p>
+        <div>
+            Taiga UI styling of native html tag
+            <code [textContent]="'<input type=\'range\' />'"></code>
+            to choose a value from a limited range
+            <p>
+                Read more about this input type in
+                <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/range"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    MDN Docs
+                </a>
+            </p>
+        </div>
 
         @for (example of examples; track example) {
             <tui-doc-example

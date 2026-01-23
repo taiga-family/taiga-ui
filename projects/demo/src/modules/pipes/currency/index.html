@@ -5,13 +5,15 @@
     type="pipes"
 >
     <ng-template pageTab>
-        Pipe for transforming number into money. It is usually used with
-        <a
-            tuiLink
-            [routerLink]="routes.InputNumber"
-        >
-            <code>InputNumber</code>
-        </a>
+        <div>
+            Pipe for transforming number into money. It is usually used with
+            <a
+                tuiLink
+                [routerLink]="routes.InputNumber"
+            >
+                <code>InputNumber</code>
+            </a>
+        </div>
         <tui-doc-example
             heading="Basic"
             [component]="1 | tuiComponent"

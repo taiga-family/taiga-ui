@@ -1,28 +1,30 @@
 <tui-doc-page header="Jest">
     <ng-template pageTab>
-        Jest runs in a Node.js environment, which means that global objects like window, document, and navigator which
-        are present in a real web browser, are unavailable. This instructions ensures that Taiga UI components can run
-        correctly in Jest.
-        <p>
-            Taiga UI is designed to be SSR-safe, and we use abstractions provided by
-            <code>&#64;ng-web-apis/common</code>
-            to avoid direct access to browser globals such as
-            <a
-                href="https://github.com/taiga-family/ng-web-apis/blob/main/libs/common/src/tokens/window.ts#L4"
-                target="_blank"
-                tuiLink
-            >
-                window
-            </a>
-            or
-            <a
-                href="https://github.com/taiga-family/ng-web-apis/blob/main/libs/common/src/tokens/navigator.ts#L6"
-                target="_blank"
-                tuiLink
-            >
-                navigator.
-            </a>
-        </p>
+        <div>
+            Jest runs in a Node.js environment, which means that global objects like window, document, and navigator
+            which are present in a real web browser, are unavailable. This instructions ensures that Taiga UI components
+            can run correctly in Jest.
+            <p>
+                Taiga UI is designed to be SSR-safe, and we use abstractions provided by
+                <code>&#64;ng-web-apis/common</code>
+                to avoid direct access to browser globals such as
+                <a
+                    href="https://github.com/taiga-family/ng-web-apis/blob/main/libs/common/src/tokens/window.ts#L4"
+                    target="_blank"
+                    tuiLink
+                >
+                    window
+                </a>
+                or
+                <a
+                    href="https://github.com/taiga-family/ng-web-apis/blob/main/libs/common/src/tokens/navigator.ts#L6"
+                    target="_blank"
+                    tuiLink
+                >
+                    navigator.
+                </a>
+            </p>
+        </div>
 
         <tui-doc-example
             heading="Installation"

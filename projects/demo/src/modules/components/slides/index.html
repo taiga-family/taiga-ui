@@ -4,13 +4,15 @@
     type="components"
 >
     <ng-template pageTab>
-        A component for displaying dynamic content animated between states. Use negative value for
-        <code>tuiSlides</code>
-        to indicate backward direction, positive for forward direction and 0 for static crossfade.
-        <p>
-            <strong>Important:</strong>
-            each child must be exactly one DOM element.
-        </p>
+        <div>
+            A component for displaying dynamic content animated between states. Use negative value for
+            <code>tuiSlides</code>
+            to indicate backward direction, positive for forward direction and 0 for static crossfade.
+            <p>
+                <strong>Important:</strong>
+                each child must be exactly one DOM element.
+            </p>
+        </div>
 
         @for (example of examples; track example) {
             <tui-doc-example
