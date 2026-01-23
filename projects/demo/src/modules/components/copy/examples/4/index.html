@@ -1,0 +1,28 @@
+<p
+    tuiHintDirection="top"
+    [tuiHint]="inkin"
+>
+    Alexander Inkin
+
+    <ng-template #inkin>
+        <button tuiButtonCopy="Alexander Inkin">Name</button>
+        <div tuiButtonCopyDivider></div>
+        <button tuiButtonCopy="@a.inkin">Login</button>
+    </ng-template>
+</p>
+
+<br />
+
+<p
+    tuiHintAppearance="floating"
+    tuiHintDirection="top"
+    [tuiHint]="sedov"
+>
+    Roman Sedov
+
+    <ng-template #sedov>
+        <button tuiButtonCopy="Roman Sedov">Name</button>
+        <div tuiButtonCopyDivider></div>
+        <button tuiButtonCopy="@r.sedov">Login</button>
+    </ng-template>
+</p>
