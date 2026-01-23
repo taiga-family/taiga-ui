@@ -1,11 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    type FactoryProvider,
-    inject,
-    InjectionToken,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, InjectionToken} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_LOCAL_STORAGE, WA_LOCATION} from '@ng-web-apis/common';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
