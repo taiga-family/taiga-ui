@@ -1,11 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    type FactoryProvider,
-    inject,
-    InjectionToken,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, InjectionToken} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_LOCAL_STORAGE, WA_LOCATION} from '@ng-web-apis/common';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -18,21 +12,13 @@ export const TUI_THEME_KEY = new InjectionToken(ngDevMode ? 'TUI_THEME_KEY' : ''
 });
 
 export const TUI_THEME = new InjectionToken(ngDevMode ? 'TUI_THEME' : '', {
-    factory: () => 'Taiga UI',
+    factory: () => inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
 });
 
 export const TUI_THEMES = new InjectionToken<Record<string, string>>(
     ngDevMode ? 'TUI_THEMES' : '',
     {factory: () => ({})},
 );
-
-export function tuiDocThemeProvider(): FactoryProvider {
-    return {
-        provide: TUI_THEME,
-        useFactory: () =>
-            inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
-    };
-}
 
 @Component({
     selector: 'tui-doc-theme-switcher',
