@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import {
+    extractRequiredDirectives,
     getAllFolders,
     getComponentApiFromTable,
     getComponentApiFromTemplates,
@@ -220,6 +221,34 @@ async function main(): Promise<void> {
 
     const output: string[] = [];
 
+    // Add header sections with critical information
+    console.info('Adding header sections...');
+    const headerSectionsPath = path.resolve(
+        process.cwd(),
+        'projects/demo/src/llms-header-sections',
+    );
+
+    const headerFiles = [
+        'import-map.md',
+        'checklist.md',
+        'cdk-types.md',
+        'common-mistakes.md',
+    ];
+
+    for (const headerFile of headerFiles) {
+        const headerPath = path.join(headerSectionsPath, headerFile);
+
+        try {
+            const headerContent = await fs.readFile(headerPath, 'utf-8');
+
+            output.push(headerContent);
+            output.push('\n---\n');
+            console.info(`  ✓ Added header section: ${headerFile}`);
+        } catch (error) {
+            console.warn(`  ⚠ Could not load header section ${headerFile}: ${error}`);
+        }
+    }
+
     if (getConfigValue(config.llmsFull.includeMarkdownFiles)) {
         for (const [idx, rootCandidate] of cliOptions.roots.entries()) {
             if (cliOptions.markdownDirs && !cliOptions.markdownDirs[idx]) {
@@ -421,6 +450,13 @@ async function main(): Promise<void> {
             if (importExample) {
                 output.push(importExample);
             }
+        }
+
+        // Extract required directives from templates
+        const requiredDirectives = extractRequiredDirectives(content);
+
+        if (requiredDirectives) {
+            output.push(requiredDirectives);
         }
 
         if (getConfigValue(config.llmsFull.includeExamples)) {

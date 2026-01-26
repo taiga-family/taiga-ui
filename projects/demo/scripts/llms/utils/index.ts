@@ -7,6 +7,7 @@ export * from './routes';
 // File system operations - exclude fileExists to avoid conflict
 export {
     extractExampleDescriptions,
+    extractRequiredDirectives,
     getAllFolders,
     getComponentApiFromTable,
     getComponentApiFromTemplates,
