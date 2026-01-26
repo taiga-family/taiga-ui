@@ -45,7 +45,7 @@ const serverConfig = mergeApplicationConfig(config, {
                         return /^(components|directives|pipes|services|utils|layout|navigation|charts|experimental|legacy)/.exec(
                             path,
                         )
-                            ? withTabs(path, ['API', 'Setup'])
+                            ? withTabs(path, ['API'])
                             : {
                                   path,
                                   renderMode: RenderMode.Prerender,

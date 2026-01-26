@@ -13,10 +13,6 @@ export default [
         component: Page,
     },
     {
-        path: 'Setup',
-        component: Page,
-    },
-    {
         path: 'Routing',
         loadComponent: async () => import('./examples/8'),
         children,
