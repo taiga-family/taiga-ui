@@ -7,7 +7,7 @@
 <div
     class="t-items"
     [class.t-items_horizontal]="rows === 1"
-    (click)="input?.nativeElement?.focus()"
+    (click)="focusInput()"
     (pointerdown.self.zoneless.prevent)="(0)"
     (waResizeObserver)="$event[0] && onItems($event[0])"
 >
