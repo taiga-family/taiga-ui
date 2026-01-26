@@ -31,7 +31,7 @@ export interface TuiTextfieldItem<T> {
     host: {
         '[class._string]': '!textfield.item()',
         '[class._disabled]': 'handlers.disabledItemHandler()(context.$implicit.item)',
-        '(pointerdown.self.prevent)': '0',
+        '(pointerdown.self)': 'prevent($event)',
         '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
         '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
     },
@@ -46,6 +46,10 @@ export class TuiTextfieldItemComponent<T> {
             this.textfield.item() ??
             this.handlers.stringify()(this.context.$implicit.item),
     );
+
+    protected prevent(e: Event): void {
+        this.textfield.focused() && e.preventDefault();
+    }
 }
 
 export const TUI_TEXTFIELD_ITEM: PolymorpheusContent<TuiContext<TuiTextfieldItem<any>>> =

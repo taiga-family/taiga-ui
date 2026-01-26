@@ -11,6 +11,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
@@ -59,6 +60,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
 })
 export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     protected readonly height = signal<number | null>(null);
+    protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component = TUI_TEXTFIELD_ITEM;
     protected readonly sub = fromEvent(this.el, 'scroll')
@@ -112,6 +114,14 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
 
         event.preventDefault();
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
+    }
+
+    protected focusInput(): void {
+        const selection = this.win.getSelection();
+
+        if (!selection?.rangeCount || selection.getRangeAt(0)?.collapsed) {
+            this.input()?.nativeElement.focus();
+        }
     }
 
     protected onClick(target: HTMLElement): void {
