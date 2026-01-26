@@ -86,13 +86,11 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
     public override writeValue(value: any): void {
         const reset = this.control.pristine && this.control.untouched && !value;
-        const changed = untracked(
-            () => value !== this.transformer.toControlValue(this.value()),
-        );
+        const changed = value !== this.value();
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.input.value.set(this.value()));
+            this.setValue(this.value());
         }
     }
 

@@ -90,7 +90,7 @@ export class TuiComboBoxDirective<T>
         const selectedOption = options.find((x) =>
             matcher(x, textfieldValue, this.handlers.stringify()),
         );
-        const value = untracked(() => this.value());
+        const value = this.value();
         const unchanged = this.stringify(value) === textfieldValue;
         const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
 
@@ -113,7 +113,7 @@ export class TuiComboBoxDirective<T>
     });
 
     protected readonly blurEffect = effect(() => {
-        const incomplete = untracked(() => this.strict() && this.value() === null);
+        const incomplete = this.strict() && this.value() === null;
 
         if (!this.host.focused() && incomplete) {
             this.input.value.set('');
@@ -134,7 +134,7 @@ export class TuiComboBoxDirective<T>
 
     public override writeValue(value: T | string | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
-        const changed = untracked(() => value !== this.value());
+        const changed = value !== this.value();
 
         if (changed || reset) {
             super.writeValue(value);

@@ -51,7 +51,7 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
     });
 
     protected readonly blurEffect = effect(() => {
-        const incomplete = untracked(() => !this.value());
+        const incomplete = !this.value();
         const prefix = incomplete && this.interactive() && !this.allowText();
 
         if (!this.host.focused() && incomplete) {
