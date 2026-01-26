@@ -22,10 +22,6 @@
         "production": ["default"]
     },
     "targetDefaults": {
-        "prerender": {
-            "inputs": ["default", "^default"],
-            "cache": true
-        },
         "build": {
             "inputs": ["default", "^default"],
             "cache": true
