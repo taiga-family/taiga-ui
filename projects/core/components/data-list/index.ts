@@ -4,4 +4,5 @@ export * from './data-list.tokens';
 export * from './opt-group.directive';
 export * from './option.directive';
 export * from './option-content.directive';
+export * from './option-with-content.directive';
 export * from './option-with-value.directive';
