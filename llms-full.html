@@ -50022,6 +50022,246 @@ export default class Page {}
 ```
 
 ---
+# directives/List
+- **Package**: `LAYOUT`
+- **Type**: directives
+
+### Usage Examples
+
+#### Bulleted
+
+**Template:**
+```html
+&lt;h2&gt;Body L&lt;/h2&gt;
+&lt;h6 style=&quot;font: var(--tui-font-body-l)&quot;&gt;List of Continents&lt;/h6&gt;
+&lt;ul tuiList&gt;
+&lt;li&gt;Eurasia&lt;/li&gt;
+&lt;li&gt;Africa&lt;/li&gt;
+&lt;li&gt;Australia&lt;/li&gt;
+&lt;li&gt;Antarctica&lt;/li&gt;
+&lt;li&gt;North America&lt;/li&gt;
+&lt;li&gt;South America&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Body M&lt;/h2&gt;
+&lt;h6 style=&quot;font: var(--tui-font-body-m)&quot;&gt;List of Continents&lt;/h6&gt;
+&lt;ul tuiList=&quot;m&quot;&gt;
+&lt;li&gt;Eurasia&lt;/li&gt;
+&lt;li&gt;Africa&lt;/li&gt;
+&lt;li&gt;Australia&lt;/li&gt;
+&lt;li&gt;Antarctica&lt;/li&gt;
+&lt;li&gt;North America&lt;/li&gt;
+&lt;li&gt;South America&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;UI S&lt;/h2&gt;
+&lt;h6 style=&quot;font: var(--tui-font-ui-s)&quot;&gt;List of Continents&lt;/h6&gt;
+&lt;ul tuiList=&quot;s&quot;&gt;
+&lt;li&gt;Eurasia&lt;/li&gt;
+&lt;li&gt;Africa&lt;/li&gt;
+&lt;li&gt;Australia&lt;/li&gt;
+&lt;li&gt;Antarctica&lt;/li&gt;
+&lt;li&gt;North America&lt;/li&gt;
+&lt;li&gt;South America&lt;/li&gt;
+&lt;/ul&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiList} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiList],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Numbered
+
+**Template:**
+```html
+&lt;h2&gt;Body L&lt;/h2&gt;
+&lt;h6 style=&quot;font: var(--tui-font-body-l)&quot;&gt;List of Continents&lt;/h6&gt;
+&lt;ol tuiList&gt;
+&lt;li&gt;Eurasia&lt;/li&gt;
+&lt;li&gt;Africa&lt;/li&gt;
+&lt;li&gt;Australia&lt;/li&gt;
+&lt;li&gt;Antarctica&lt;/li&gt;
+&lt;li&gt;North America&lt;/li&gt;
+&lt;li&gt;South America&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Body M&lt;/h2&gt;
+&lt;h6 style=&quot;font: var(--tui-font-body-m)&quot;&gt;List of Continents&lt;/h6&gt;
+&lt;ol tuiList=&quot;m&quot;&gt;
+&lt;li&gt;Eurasia&lt;/li&gt;
+&lt;li&gt;Africa&lt;/li&gt;
+&lt;li&gt;Australia&lt;/li&gt;
+&lt;li&gt;Antarctica&lt;/li&gt;
+&lt;li&gt;North America&lt;/li&gt;
+&lt;li&gt;South America&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;UI S&lt;/h2&gt;
+&lt;h6 style=&quot;font: var(--tui-font-ui-s)&quot;&gt;List of Continents&lt;/h6&gt;
+&lt;ol tuiList=&quot;s&quot;&gt;
+&lt;li&gt;Eurasia&lt;/li&gt;
+&lt;li&gt;Africa&lt;/li&gt;
+&lt;li&gt;Australia&lt;/li&gt;
+&lt;li&gt;Antarctica&lt;/li&gt;
+&lt;li&gt;North America&lt;/li&gt;
+&lt;li&gt;South America&lt;/li&gt;
+&lt;/ol&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiList} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiList],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;../1/index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Nested
+
+**Template:**
+```html
+&lt;header tuiHeader=&quot;h6&quot;&gt;
+&lt;hgroup tuiTitle&gt;
+&lt;h1&gt;Header of first list&lt;/h1&gt;
+&lt;/hgroup&gt;
+&lt;/header&gt;
+&lt;ol tuiList&gt;
+&lt;li&gt; First level &lt;ol tuiList&gt;
+&lt;li&gt;Second level&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;Second level&lt;/span&gt;
+&lt;ol tuiList&gt;
+&lt;li&gt;Third level&lt;/li&gt;
+&lt;li&gt;Third level&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;Second level&lt;/span&gt;
+&lt;ol tuiList&gt;
+&lt;li&gt;Third level&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;Third level&lt;/span&gt;
+&lt;ol tuiList&gt;
+&lt;li&gt;Fourth level&lt;/li&gt;
+&lt;li&gt;Fourth level&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;First level&lt;/li&gt;
+&lt;/ol&gt;
+&lt;header tuiHeader=&quot;h6&quot;&gt;
+&lt;hgroup tuiTitle&gt;
+&lt;h1&gt;Header of second list&lt;/h1&gt;
+&lt;/hgroup&gt;
+&lt;/header&gt;
+&lt;ul tuiList&gt;
+&lt;li&gt; First level &lt;ul tuiList&gt;
+&lt;li&gt;Second level&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;Second level&lt;/span&gt;
+&lt;ul tuiList&gt;
+&lt;li&gt;Third level&lt;/li&gt;
+&lt;li&gt;Third level&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;First level&lt;/li&gt;
+&lt;/ul&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiHeader, TuiList} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiHeader, TuiList, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Long text
+
+**Template:**
+```html
+&lt;ul tuiList&gt;
+&lt;li&gt;If a list item is long, the bullet stays aligned to the top.&lt;/li&gt;
+&lt;li&gt;There are no restrictions on the text length at all. You can write as much text as you want.&lt;/li&gt;
+&lt;!-- prettier-ignore --&gt;
+&lt;li&gt;This item uses &lt;strong&gt;nested tags&lt;/strong&gt; inside which should not break&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol tuiList&gt;
+&lt;li&gt;If a list item is long, the bullet stays aligned to the top.&lt;/li&gt;
+&lt;li&gt;There are no restrictions on the text length at all. You can write as much text as you want.&lt;/li&gt;
+&lt;/ol&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiList} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiList],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [&#039;Bulleted&#039;, &#039;Numbered&#039;, &#039;Nested&#039;, &#039;Long text&#039;];
+}
+```
+
+---
 # directives/Media
 - **Package**: `CDK`
 - **Type**: directives

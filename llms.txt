@@ -114,6 +114,7 @@
 - [Like](https://taiga-ui.dev/components/like) — A like component based on native checkbox with icons and custom color for icon when :checked state.
 - [Line Clamp](https://taiga-ui.dev/components/line-clamp) — Component cuts overflown text with "..." and shows it by hover
 - [Link](https://taiga-ui.dev/components/link) — Link component. It has focus highlight and can be customized with an icon
+- [List](https://taiga-ui.dev/components/list)
 - [Loader](https://taiga-ui.dev/components/loader)
 - [Message](https://taiga-ui.dev/components/message) — Message component is used to display message block.
 - [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls if provided with tuiProvideMobileCalendar() You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)

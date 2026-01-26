@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[71945],{71945:e=>{e.exports=":host {\n    display: flex;\n    flex-direction: column;\n    max-inline-size: 20rem;\n    gap: 1rem;\n}\n"}}]);
