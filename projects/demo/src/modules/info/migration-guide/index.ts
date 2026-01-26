@@ -29,7 +29,10 @@ export default class Page {
 
     protected readonly routes = DemoRoute;
 
-    protected readonly runMigration = import('./examples/run-migration.md');
+    protected readonly runMigration = {
+        'Angular CLI': import('./examples/angular-cli.md'),
+        'Nx CLI': import('./examples/nx-cli.md'),
+    };
 
     protected readonly manuallyTriggerNxMigration =
         import('./examples/manual-trigger-nx-migrate.md').then((x) => ({
