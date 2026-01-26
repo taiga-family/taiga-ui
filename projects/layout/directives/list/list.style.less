@@ -1,0 +1,55 @@
+[tuiList] {
+    list-style: none;
+    padding: 0.25rem 0;
+    counter-reset: item;
+    margin-inline-start: 1.5rem;
+
+    [tuiList] {
+        padding: 0;
+        margin-inline-start: 1.25rem;
+    }
+
+    & > li {
+        counter-increment: item;
+        margin: 0.5rem 0;
+    }
+
+    & > li::before {
+        content: counters(item, '.') '.';
+        display: inline-flex;
+        margin: 0 0.5625rem 0 -1.5rem;
+    }
+
+    &:is(ul) > li::before {
+        color: transparent;
+        background: radial-gradient(circle 0.1875rem, var(--tui-status-info) 100%, transparent 101%);
+        inline-size: 0.75rem;
+        margin-inline-end: 0.75rem;
+    }
+
+    &:is(ol) > li::before {
+        unicode-bidi: isolate;
+        font-variant-numeric: tabular-nums;
+    }
+
+    &[data-size='l'] {
+        font: var(--tui-font-body-l);
+
+        &:is(ul) > li::before {
+            inline-size: 0.875rem;
+            margin: 0 0.5625rem 0 -1.4375rem;
+        }
+    }
+
+    &[data-size='m'] {
+        font: var(--tui-font-body-m);
+    }
+
+    &[data-size='s'] {
+        font: var(--tui-font-ui-s);
+
+        & > li {
+            margin: 0.625rem 0;
+        }
+    }
+}

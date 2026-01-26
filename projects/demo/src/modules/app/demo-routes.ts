@@ -181,6 +181,7 @@ export const DemoRoute = {
     RingChart: '/charts/ring-chart',
     Colors: '/colors',
     Lists: '/lists',
+    List: '/components/list',
     Shadows: '/shadows',
     Spaces: '/spaces',
     Typography: '/typography',

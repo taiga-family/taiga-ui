@@ -244,6 +244,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Layout',
+        title: 'List',
+        keywords:
+            'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
+        route: DemoRoute.List,
+    },
+    {
+        section: 'Layout',
         title: 'BlockStatus',
         keywords: 'блок, статус, block, status, block-status, blockstatus, layout',
         route: DemoRoute.BlockStatus,
