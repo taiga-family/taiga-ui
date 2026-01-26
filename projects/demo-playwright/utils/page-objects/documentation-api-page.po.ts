@@ -120,8 +120,9 @@ export class TuiDocumentationApiPagePO {
 
     public async getToggle(row: Locator): Promise<Locator | null> {
         return (
-            ((await row.locator('.t-cell_value input[tuiSwitch]').all()) ?? [])?.[0] ??
-            null
+            ((await row
+                .locator('.t-cell_value input[tuiSwitch], .t-td input[tuiSwitch]')
+                .all()) ?? [])?.[0] ?? null
         );
     }
 
