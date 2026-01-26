@@ -9,4 +9,10 @@ test.describe('Landing', () => {
 
         await expect.soft(page).toHaveScreenshot('landing-360-740.png');
     });
+
+    test('browser support', async ({page}) => {
+        await tuiGoto(page, '/info/browser-support', {hideHeader: false});
+
+        await expect.soft(page).toHaveScreenshot('browser-support-360-740.png');
+    });
 });
