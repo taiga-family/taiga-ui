@@ -21,13 +21,12 @@ jobs:
 
   demo:
     if: ${{ !contains(github.head_ref, 'release/') }}
-    name: Prerender of demo application
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
       - uses: taiga-family/ci/actions/setup/variables@v1.183.0
       - uses: taiga-family/ci/actions/setup/node@v1.183.0
-      - run: npx nx build demo
+      - run: npx nx build demo --skip-nx-cache
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
         continue-on-error: true
         env:
