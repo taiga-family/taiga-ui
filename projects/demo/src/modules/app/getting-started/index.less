@@ -12,3 +12,19 @@
         cursor: pointer;
     }
 }
+
+.stackblitz {
+    inline-size: 100%;
+    block-size: 31.25rem;
+    border-radius: 0.375rem;
+}
+
+::ng-deep :fullscreen .stackblitz {
+    block-size: calc(100vh - 3.125rem);
+    border-radius: 0.875rem;
+}
+
+[heading='Stackblitz']::ng-deep .t-demo {
+    padding: 0.3125rem;
+    padding-block-end: 0;
+}
