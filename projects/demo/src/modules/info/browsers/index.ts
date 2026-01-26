@@ -1,6 +1,12 @@
-import {DatePipe, DecimalPipe} from '@angular/common';
+import {DatePipe, DecimalPipe, isPlatformServer} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
-import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    PLATFORM_ID,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiDemo} from '@demo/utils';
 import {TuiTable} from '@taiga-ui/addon-table';
@@ -91,10 +97,11 @@ const CONFIG_KEY_BY_BROWSER_ID: Record<string, string> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
+    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly http = inject(HttpClient);
 
     private readonly config$ = from(import('@taiga-ui/browserslist-config')).pipe(
-        map((module) => module.default),
+        map((module) => module.default.modern),
         map((config) => encodeURIComponent(String(config))),
         distinctUntilChanged(),
         shareReplay({bufferSize: 1, refCount: true}),
@@ -102,26 +109,34 @@ export default class Page {
 
     private readonly response$ = this.config$.pipe(
         switchMap((config) =>
-            this.http.get<ApiResponse<Record<string, number>>>(
-                `https://browsersl.ist/api/browsers?q=${config}`,
-            ),
+            this.isServer
+                ? of(null)
+                : this.http.get<ApiResponse<Record<string, number>>>(
+                      `https://browsersl.ist/api/browsers?q=${config}`,
+                  ),
         ),
         map(
-            (response): ApiResponse<VersionItem[]> => ({
-                ...response,
-                browsers: response.browsers.map((browser) => ({
-                    ...browser,
-                    versions: Object.entries(browser.versions)
-                        .map(([version, coverage]) => ({
-                            version,
-                            coverage,
-                        }))
-                        .sort(
-                            (a, b) =>
-                                versionPriority(b.version) - versionPriority(a.version),
-                        ),
-                })),
-            }),
+            (
+                response: ApiResponse<Record<string, number>> | null,
+            ): ApiResponse<VersionItem[]> | null =>
+                response
+                    ? {
+                          ...response,
+                          browsers: response.browsers.map((browser) => ({
+                              ...browser,
+                              versions: Object.entries(browser.versions)
+                                  .map(([version, coverage]) => ({
+                                      version,
+                                      coverage,
+                                  }))
+                                  .sort(
+                                      (a, b) =>
+                                          versionPriority(b.version) -
+                                          versionPriority(a.version),
+                                  ),
+                          })),
+                      }
+                    : null,
         ),
         shareReplay({bufferSize: 1, refCount: true}),
         catchError(() => of(null as ApiResponse<VersionItem[]> | null)),

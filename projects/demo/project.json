@@ -34,6 +34,7 @@
                 "polyfills": ["zone.js"],
                 "inlineStyleLanguage": "less",
                 "tsConfig": "{projectRoot}/tsconfig.app.json",
+                "allowedCommonJsDependencies": ["@taiga-ui/browserslist-config"],
                 "assets": [
                     {
                         "glob": "**/404.html",
