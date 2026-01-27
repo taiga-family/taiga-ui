@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.68.0](https://github.com/taiga-family/taiga-ui/compare/v4.67.0...v4.68.0) (2026-01-27)
+
+### 🐞 Bug Fixes
+
+- **core:** `Link` has invalid `mask-size` for icons ([#13038](https://github.com/taiga-family/taiga-ui/issues/13038))
+  ([3977c19](https://github.com/taiga-family/taiga-ui/commit/3977c19050b1f220d8f63735cc108742180ccd7a))
+- **core:** update data-list paddings according to specs
+  ([#13031](https://github.com/taiga-family/taiga-ui/issues/13031))
+  ([c917bf8](https://github.com/taiga-family/taiga-ui/commit/c917bf85148f514f5164c4ab30eb1ba6f7e74cb2))
+- **kit:** `InputChip` fix pasting with whitespace separator, fix caret position
+  ([#13019](https://github.com/taiga-family/taiga-ui/issues/13019))
+  ([d414d5c](https://github.com/taiga-family/taiga-ui/commit/d414d5c0ff6755efaa92c6f04d1a7915c80d332a))
+- **kit:** `InputRange` not updating on blur ([#13037](https://github.com/taiga-family/taiga-ui/issues/13037))
+  ([f90f735](https://github.com/taiga-family/taiga-ui/commit/f90f735e564f405b5c58c48421223cea0ebf837d))
+- **layout:** new behavior for horizontal boundary of a scrolling area
+  ([#13023](https://github.com/taiga-family/taiga-ui/issues/13023))
+  ([2c6a9a6](https://github.com/taiga-family/taiga-ui/commit/2c6a9a67deac0e150a08352997ccb5c7eaf67409))
+
+### 🚀 Features
+
+- **core:** add ability to copy multiselect content ([#13078](https://github.com/taiga-family/taiga-ui/issues/13078))
+  ([d9ab520](https://github.com/taiga-family/taiga-ui/commit/d9ab520494bece316fa4f1cb5c00942fb05da462))
+- **i18n:** `Back` add ([#13046](https://github.com/taiga-family/taiga-ui/issues/13046))
+  ([79dc291](https://github.com/taiga-family/taiga-ui/commit/79dc291cf319d582ee19348040126fb2aef62d52))
+- **layout:** add `tuiList` directive ([#13071](https://github.com/taiga-family/taiga-ui/issues/13071))
+  ([9fcc7c0](https://github.com/taiga-family/taiga-ui/commit/9fcc7c046d7c028a196d4be4280bab4ba93e041c))
+
 ## [4.67.0](https://github.com/taiga-family/taiga-ui/compare/v4.66.0...v4.67.0) (2026-01-19)
 
 ### 🐞 Bug Fixes
