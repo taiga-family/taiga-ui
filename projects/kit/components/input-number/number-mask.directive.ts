@@ -7,6 +7,7 @@ import {
     type MaskitoNumberParams,
     maskitoStringifyNumber,
 } from '@maskito/kit';
+import {tuiIsSafeToRound, tuiRoundWith} from '@taiga-ui/cdk/utils/math';
 import {TuiInputDirective} from '@taiga-ui/core/components/input';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -57,7 +58,7 @@ export class TuiNumberMask {
 
     protected readonly mask = tuiMaskito(computed(() => this.computeMask(this.params())));
 
-    protected maskInitialCalibration = effect(() => {
+    protected readonly maskInitialCalibration = effect(() => {
         const options = maskitoNumberOptionsGenerator({
             ...this.params(),
             min: -Infinity,
@@ -69,11 +70,22 @@ export class TuiNumberMask {
 
     public stringify(value: bigint | number | null | undefined): string {
         const params = this.params();
+        const precision = params.maximumFractionDigits;
+        const rounded =
+            typeof value === 'number' &&
+            Number.isFinite(precision) &&
+            tuiIsSafeToRound(value, precision)
+                ? tuiRoundWith({
+                      value,
+                      precision,
+                      method: this.numberFormat().rounding,
+                  })
+                : value;
 
-        return maskitoStringifyNumber(value ?? null, {
+        return maskitoStringifyNumber(rounded ?? null, {
             ...params,
             minimumFractionDigits:
-                String(value).includes(params.decimalSeparator) &&
+                String(rounded).includes(params.decimalSeparator) &&
                 this.numberFormat().decimalMode !== 'not-zero'
                     ? params.maximumFractionDigits
                     : 0,

@@ -127,14 +127,39 @@
             [description]="stepDescription"
         >
             <ng-template #stepDescription>
-                Positive value of
+                A positive value of the
                 <code>step</code>
-                property enables sided button to increase / decrease the number by the specified step's value. Moreover,
-                keyboard keys
+                property enables side buttons to increase / decrease the number by the specified step value.
+                Additionally, the
                 <code>ArrowUp</code>
                 /
                 <code>ArrowDown</code>
-                will also work in the same way.
+                keyboard keys provide the same functionality.
+
+                <div
+                    appearance="warning"
+                    tuiNotification
+                    class="tui-space_top-4"
+                >
+                    Keep in mind that in JavaScript, the standard
+                    <code>number</code>
+                    type is based on
+                    <strong>double-precision floating-point numbers!</strong>
+
+                    <p class="tui-space_bottom-0">
+                        For extremely small
+                        <code>step</code>
+                        value with
+                        <strong>possible loss of precision on step</strong>
+                        (e.g.
+                        <code>0.009 + 0.001</code>
+                        returns
+                        <code>0.009999999999999998</code>
+                        ), you can also use
+                        <code>[tuiNumberFormat]="&#123; rounding: 'round' &#125;"</code>
+                        or another appropriate rounding strategy.
+                    </p>
+                </div>
             </ng-template>
         </tui-doc-example>
 
@@ -317,6 +342,7 @@
                     name="[step]"
                     tuiDocAPIItem
                     type="number | bigint"
+                    [tuiNumberFormat]="{precision: 3}"
                     [(value)]="step"
                 >
                     Step to increase/decrease value with keyboard and buttons on the side
