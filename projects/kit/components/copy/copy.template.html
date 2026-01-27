@@ -1,10 +1,10 @@
 <span
     #content
-    tuiHintAppearance="dark"
-    tuiHintDirection="top"
     class="t-content"
     [cdkCopyToClipboard]="content.textContent ?? ''"
     [tuiHint]="template"
+    [tuiHintAppearance]="tuiHintAppearance()"
+    [tuiHintDirection]="tuiHintDirection()"
     [tuiHintManual]="!!hint()"
     (cdkCopyToClipboardCopied)="copied$.next($event)"
 >
