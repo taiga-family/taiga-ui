@@ -17,7 +17,7 @@ import {
     ViewContainerRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
@@ -48,7 +48,7 @@ import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {ReplaySubject, startWith, switchMap, take} from 'rxjs';
+import {ReplaySubject, startWith, switchMap, take, of, map} from 'rxjs';
 
 import {TuiTextfieldBase} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -64,6 +64,7 @@ export class TuiTextfieldBaseComponent<T>
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
+    private readonly controlSignal = signal<NgControl | undefined>(undefined);
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
     private readonly inputQuery = signal<ElementRef<HTMLInputElement> | undefined>(
         undefined,
@@ -109,9 +110,6 @@ export class TuiTextfieldBaseComponent<T>
     @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
-    @ContentChild(NgControl)
-    public readonly control?: NgControl;
-
     @ContentChild(TuiControl)
     public readonly cva?: TuiControl<unknown>;
 
@@ -130,6 +128,28 @@ export class TuiTextfieldBaseComponent<T>
     public readonly el = tuiInjectElement();
     public readonly value = tuiValue(this.inputQuery);
 
+    public readonly controlDisabled = toSignal(
+        toObservable(this.controlSignal).pipe(
+            switchMap((control) =>
+                control?.statusChanges
+                    ? control.statusChanges.pipe(
+                          startWith(control.status),
+                          map(() => control.disabled),
+                      )
+                    : of(null),
+            ),
+        ),
+        {initialValue: null},
+    );
+
+    public readonly disabled = computed(
+        () =>
+            this.cva?.disabled() ??
+            this.controlDisabled() ??
+            this.input?.nativeElement?.disabled ??
+            false,
+    );
+
     // TODO: Refactor to signal queries when Angular is updated
     public readonly auxiliaries = toSignal<readonly object[]>(
         this.contentReady$.pipe(
@@ -140,9 +160,18 @@ export class TuiTextfieldBaseComponent<T>
         {requireSync: true},
     );
 
+    @ContentChild(NgControl)
+    public set control(value: NgControl | undefined) {
+        this.controlSignal.set(value);
+    }
+
     @Input('filler')
     public set fillerSetter(filler: string) {
         this.filler.set(filler);
+    }
+
+    public get control(): NgControl | undefined {
+        return this.controlSignal();
     }
 
     public get id(): string {
@@ -226,7 +255,7 @@ export class TuiTextfieldBaseComponent<T>
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
-        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '[class._disabled]': 'disabled()',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
