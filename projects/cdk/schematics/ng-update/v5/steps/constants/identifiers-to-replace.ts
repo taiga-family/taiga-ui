@@ -67,4 +67,24 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/layout',
         },
     },
+    {
+        from: {
+            name: 'TuiPdfViewer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiPdfViewer',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPdfViewerComponent',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiPdfViewer',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
 ];
