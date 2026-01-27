@@ -3,7 +3,15 @@ import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 
 @Component({
     selector: 'table[tuiDocAPI]',
-    template: '<tbody><ng-content /></tbody><ng-content select="tbody" />',
+    template: `
+        <thead>
+            <tr>
+                <ng-content select="th" />
+            </tr>
+        </thead>
+        <tbody><ng-content /></tbody>
+        <ng-content select="tbody" />
+    `,
     styleUrl: './api.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
