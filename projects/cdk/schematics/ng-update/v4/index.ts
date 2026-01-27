@@ -53,6 +53,7 @@ import {migrateImportProvidersFrom} from './steps/migrate-providers-from';
 import {migrateRoot} from './steps/migrate-root';
 import {replaceFunctions} from './steps/replace-functions';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
+import {migrateCssVars} from './migrate-css-vars';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -107,6 +108,7 @@ export function updateToV4(options: TuiSchema): Rule {
         );
 
     return chain([
+        migrateCssVars(options),
         main(options),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());

@@ -95,7 +95,7 @@ const TEMPLATE_AFTER = `
 <tui-badge-notification
         size="xs"
         tuiSlot="top"
-        [style.color]="(unsavedChanges.value$ | async) ? 'var(--tui-warning-fill)' : ''"
+        [style.color]="(unsavedChanges.value$ | async) ? 'var(--tui-status-warning)' : ''"
     ></tui-badge-notification>
 </tui-badged-content>
 <tui-badged-content
@@ -107,7 +107,7 @@ const TEMPLATE_AFTER = `
 <tui-badge-notification
         size="xs"
         tuiSlot="top"
-        [style.color]="'var(--tui-error-fill)'"
+        [style.color]="'var(--tui-status-negative)'"
     ></tui-badge-notification>
      <tui-avatar [src]="'a b' | tuiInitials"
          size="xl"
@@ -133,7 +133,7 @@ const TEMPLATE_AFTER = `
         size="l"
         tuiBadge
         tuiSlot="bottom"
-        [style.color]="'var(--tui-error-fill)'"
+        [style.color]="'var(--tui-status-negative)'"
     ></tui-icon>
 
     <tui-avatar [src]="'e' | tuiInitials" [round]="false"

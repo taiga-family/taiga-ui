@@ -55,6 +55,7 @@ const STYLES_BEFORE = `@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     box-shadow: var(--tui-shadow-navigation);
+    background: var(--tui-text-01);
     color: var(--tui-text-01-night);
     --tui-base-01: 'black';
     --tui-info-bg-night: 'blue';
@@ -69,6 +70,7 @@ const STYLES_AFTER = `@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     box-shadow: var(--tui-shadow-small);
+    background: var(--tui-text-primary);
 // TODO: (Taiga UI migration) night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme
     color: var(--tui-text-primary);
     --tui-background-base: 'black';
@@ -98,7 +100,7 @@ describe('ng-update', () => {
 
     it('should migrate css vars in styles', async () => {
         const tree = await runner.runSchematic(
-            'migrateCssVarsV4',
+            'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
@@ -122,8 +124,8 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
+    createSourceFile('test/app/test.template.html', '');
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-
     createSourceFile('test/app/test.style.less', STYLES_BEFORE);
 
     createSourceFile(
