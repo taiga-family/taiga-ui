@@ -14,6 +14,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -40,7 +41,12 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
         WaResizeObserver,
     ],
     templateUrl: './textfield-multi.template.html',
-    styleUrl: './textfield-multi.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/core/styles/components/textfield.less';
+            @import 'textfield-multi.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

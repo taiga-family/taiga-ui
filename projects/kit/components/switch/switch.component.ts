@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
@@ -14,7 +15,11 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
 @Component({
     selector: 'input[type="checkbox"][tuiSwitch]',
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/switch.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/kit/styles/components/switch.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_RADIO_OPTIONS, TUI_SWITCH_OPTIONS)],

@@ -34,10 +34,7 @@ class Styles {}
     selector: 'a[tuiLink], button[tuiLink]',
     providers: [tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
-    host: {
-        tuiLink: '',
-        'data-tui-version': TUI_VERSION,
-    },
+    host: {tuiLink: ''},
 })
 export class TuiLink {
     protected readonly nothing = tuiWithStyles(Styles);
