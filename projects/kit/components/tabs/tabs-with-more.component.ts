@@ -59,12 +59,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
-    protected open = false;
     protected readonly sync = effect(() => {
         this.activeItemIndex();
         this.maxIndex = this.getMaxIndex();
     });
 
+    public open = false;
     public readonly activeItemIndex = model(0);
     public readonly size = input(this.options.size);
     public readonly underline = input(this.options.underline);
@@ -84,6 +84,14 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
                 : 2;
 
         return Math.min(this.itemsLimit() - offset, this.maxIndex);
+    }
+
+    public isOverflown(index: number): boolean {
+        return index !== this.activeItemIndex() || !this.options.exposeActive;
+    }
+
+    public shouldShow(index: number): boolean {
+        return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 
     public ngAfterViewInit(): void {
@@ -174,14 +182,6 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         if (target) {
             target.focus();
         }
-    }
-
-    protected isOverflown(index: number): boolean {
-        return index !== this.activeItemIndex() || !this.options.exposeActive;
-    }
-
-    protected shouldShow(index: number): boolean {
-        return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 
     // TODO drop comment after fix issue: https://github.com/typescript-eslint/typescript-eslint/issues/11771
