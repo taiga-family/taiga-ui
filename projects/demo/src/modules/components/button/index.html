@@ -4,14 +4,16 @@
     type="components"
 >
     <ng-template pageTab>
-        Button is a basic component used for both icon buttons and regular buttons with optional icons on either side.
-        It can be applied to
-        <code>button</code>
-        and
-        <code>a</code>
-        tags. When used as
-        <code>tuiIconButton</code>
-        don't forget to still put text label within the tag for accessibility.
+        <div>
+            Button is a basic component used for both icon buttons and regular buttons with optional icons on either
+            side. It can be applied to
+            <code>button</code>
+            and
+            <code>a</code>
+            tags. When used as
+            <code>tuiIconButton</code>
+            don't forget to still put text label within the tag for accessibility.
+        </div>
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
