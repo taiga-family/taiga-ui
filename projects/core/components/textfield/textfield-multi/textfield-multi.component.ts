@@ -48,6 +48,7 @@ import {
     type TuiTextfieldItem,
     TuiTextfieldItemComponent,
 } from './textfield-item.component';
+import {WA_WINDOW} from '@ng-web-apis/common';
 
 @Component({
     standalone: true,
@@ -101,6 +102,7 @@ import {
 })
 export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> {
     protected readonly height = signal<number | null>(null);
+    protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
         new PolymorpheusComponent(TuiTextfieldItemComponent);
@@ -159,6 +161,14 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
 
         event.preventDefault();
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
+    }
+
+    protected focusInput(): void {
+        const selection = this.win.getSelection();
+
+        if (!selection?.rangeCount || selection.getRangeAt(0)?.collapsed) {
+            this.input?.nativeElement.focus();
+        }
     }
 
     protected onClick(target: HTMLElement): void {
