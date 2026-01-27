@@ -62,9 +62,7 @@ describe('ComboBox | Dispatches (input) event on programmatic updates', () => {
 
     beforeEach(() => {
         cy.mount(Sandbox, {
-            componentProperties: {
-                inputEvent: createOutputSpy('inputEvent'),
-            },
+            componentProperties: {inputEvent: createOutputSpy('inputEvent')},
         });
     });
 
