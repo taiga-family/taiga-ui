@@ -1,10 +1,11 @@
-import {DOCUMENT} from '@angular/common';
+import {Clipboard} from '@angular/cdk/clipboard';
 import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {
     TuiTextfieldComponent,
     tuiTextfieldIcon,
+    TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,
@@ -34,16 +35,20 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     host: {
         style: 'cursor: pointer',
         '(click)': 'copy()',
-        '[style.pointer-events]': 'textfield.value() ? null : "none"',
-        '[style.opacity]': 'textfield.value() ? null : "var(--tui-disabled-opacity)"',
+        '[style.pointer-events]': 'hasValue ? null : "none"',
+        '[style.opacity]': 'hasValue ? null : "var(--tui-disabled-opacity)"',
         '[style.border-width.rem]': 'textfield.options.size() === "l" ? null : 0.25',
     },
 })
 export class TuiCopyDirective {
     private readonly copied$ = new Subject<void>();
-    private readonly doc = inject(DOCUMENT);
+    private readonly clipboard = inject(Clipboard);
 
     protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly textfieldMulti = inject(TuiTextfieldMultiComponent, {
+        optional: true,
+    });
+
     protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
     protected readonly copyTexts = inject(TUI_COPY_TEXTS);
     protected readonly hint = tuiDirectiveBinding(
@@ -67,9 +72,24 @@ export class TuiCopyDirective {
         ),
     );
 
+    protected get hasValue(): boolean {
+        return this.textfieldMulti
+            ? !!this.textfieldMulti?.control()?.value?.length
+            : !!this.textfield.value();
+    }
+
     protected copy(): void {
-        this.textfield.input()?.nativeElement.select();
-        this.doc.execCommand('copy');
+        if (this.textfieldMulti) {
+            this.clipboard.copy(
+                Array.from(this.textfieldMulti.el.querySelectorAll('tui-textfield-item'))
+                    ?.map((el) => el.textContent?.trim())
+                    .join(', '),
+            );
+        } else {
+            this.textfield.input()?.nativeElement.select();
+            this.clipboard.copy(this.textfield.value());
+        }
+
         this.copied$.next();
     }
 }
