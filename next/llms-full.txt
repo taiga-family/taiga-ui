@@ -18147,13 +18147,13 @@ export default class Example {
 
 #### Step
 
-Positive value of step property enables sided button to increase / decrease the number by the specified step's value. Moreover, keyboard keys ArrowUp / ArrowDown will also work in the same way.
+A positive value of the step property enables side buttons to increase / decrease the number by the specified step value. Additionally, the ArrowUp / ArrowDown keyboard keys provide the same functionality. Keep in mind that in JavaScript, the standard number type is based on double-precision floating-point numbers! For extremely small step value with possible loss of precision on step (e.g. 0.009 + 0.001 returns 0.009999999999999998 ), you can also use [tuiNumberFormat]="&#123; rounding: 'round' &#125;" or another appropriate rounding strategy.
 
 **Template:**
 ```html
 <tui-textfield>
 <label tuiLabel>Percentage</label>
-<input postfix="%" tuiInputNumber [max]="100" [min]="0" [step]="1" [(ngModel)]="value" />
+<input postfix="%" tuiInputNumber [max]="100" [min]="0" [step]="0.001" [tuiNumberFormat]="{precision: 3, rounding: 'round'}" [(ngModel)]="value" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -18162,16 +18162,17 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiInputNumber],
+    imports: [FormsModule, TuiInputNumber, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value: number | null = null;
+    protected value: number | null = 0.009;
 }
 ```
 
