@@ -56,7 +56,7 @@ describe('Tabs', () => {
                 await expect(page.locator('tui-dropdown')).toBeVisible();
                 await expect.soft(example).toHaveScreenshot('01-tabs-5.png');
 
-                await page.locator('button:has-text("John Cleese")').nth(1).focus();
+                await page.keyboard.down('ArrowDown');
                 await page.keyboard.down('Enter');
 
                 await expect(example).toContainText('Currently active: John Cleese');
