@@ -13,7 +13,6 @@
                 "testingType": "component",
                 "skipServe": true,
                 "devServerTarget": "demo:build",
-                "inlineStyleLanguage": "less",
                 "browser": "chrome"
             }
         }
