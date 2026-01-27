@@ -41,5 +41,6 @@ export default class PageComponent {
         'Mobile',
         'Table',
         'Virtual scroll',
+        'Stringify',
     ];
 }

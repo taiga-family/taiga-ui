@@ -86,10 +86,13 @@ export class TuiInputChipBaseDirective<T>
         const items = this.separator ? value.split(this.separator) : [value];
 
         const valid = items
-            .map(tuiSanitizeText)
+            .map((item) => tuiSanitizeText(item) as T)
             .filter(
-                (item) => item && !this.handlers.disabledItemHandler()(item as T),
-            ) as T[];
+                (item) =>
+                    item &&
+                    !this.handlers.disabledItemHandler()(item) &&
+                    this.handlers.stringify()(item),
+            );
 
         if (!value || !valid.length) {
             return;
