@@ -33200,19 +33200,19 @@ export default class Example {
 ```html
 <tui-scrollbar>
 <cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollable class="viewport tui-zero-scrollbar" [itemSize]="45" [maxBufferPx]="500" [minBufferPx]="400" >
-<table tuiTable [columns]="columns" >
+<table tuiTable>
 <thead>
-<tr tuiThGroup>
-<th *tuiHead="'name'" tuiTh [sticky]="true" [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)" > Name </th>
-<th *tuiHead="'dob'" tuiTh [sticky]="true" [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)" > Date of Birth </th>
-<th *tuiHead="'age'" tuiTh [sorter]="ageSorter" [sticky]="true" [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)" > Age </th>
+<tr [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)">
+<th tuiTh [sorter]="'name' | tuiSorter" [sticky]="true" > Name </th>
+<th tuiTh [sorter]="'dob' | tuiSorter" [sticky]="true" > Date of Birth </th>
+<th tuiTh [sorter]="ageSorter" [sticky]="true" > Age </th>
 </tr>
 </thead>
 <tbody tuiTbody>
-<tr *cdkVirtualFor="let item of data | tuiTableSort" tuiTr >
-<td *tuiCell="'name'" tuiTd > {{ item.name }} </td>
-<td *tuiCell="'dob'" tuiTd > {{ item.dob }} </td>
-<td *tuiCell="'age'" tuiTd > {{ getAge(item) }} </td>
+<tr *cdkVirtualFor="let item of data | tuiTableSort">
+<td tuiTd>{{ item.name }}</td>
+<td tuiTd>{{ item.dob }}</td>
+<td tuiTd>{{ getAge(item) }}</td>
 </tr>
 </tbody>
 </table>
@@ -33297,11 +33297,7 @@ function getAge({dob}: User): number {
 })
 export default class Example {
     protected readonly data = DATA;
-
-    protected readonly columns = ['name', 'dob', 'age'];
-
     protected readonly getAge = getAge;
-
     protected readonly ageSorter: TuiComparator<User> = (a: User, b: User) =>
         getAge(a) - getAge(b);
 }
