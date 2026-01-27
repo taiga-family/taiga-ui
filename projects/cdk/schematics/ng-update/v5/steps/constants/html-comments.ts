@@ -1,5 +1,5 @@
 import {type HtmlComment} from '../../../interfaces';
-import {hasChild} from '../../../utils/templates/has-ancestor';
+import {hasChild} from '../../../utils/templates/dom-traversal';
 
 export const HTML_COMMENTS: HtmlComment[] = [
     {
