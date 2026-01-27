@@ -1,0 +1,250 @@
+# Taiga UI — Angular Components Library
+
+> Enterprise‑grade Angular UI components with 100+ building blocks, charts, and utilities.
+> For AI assistants helping developers implement Taiga UI in Angular apps.
+
+## For Human Visitors
+
+- Main docs: https://taiga-ui.dev
+- GitHub: https://github.com/taiga-family/taiga-ui
+- Issues: https://github.com/taiga-family/taiga-ui/issues
+
+<!-- AUTO-GENERATED BELOW -->
+
+
+### Documentation
+
+- [Ai Support](https://taiga-ui.dev/ai-support)
+- [Appearances](https://taiga-ui.dev/appearances)
+- [Breakpoints](https://taiga-ui.dev/breakpoints)
+- [Colors](https://taiga-ui.dev/colors)
+- [Getting Started](https://taiga-ui.dev/getting-started)
+- [I18n](https://taiga-ui.dev/i18n)
+- [List](https://taiga-ui.dev/list)
+- [Migration Guide](https://taiga-ui.dev/migration-guide)
+- [Portals](https://taiga-ui.dev/portals)
+- [Rtl](https://taiga-ui.dev/rtl)
+- [Shadows](https://taiga-ui.dev/shadows)
+- [Ssr](https://taiga-ui.dev/ssr)
+- [Stackblitz](https://taiga-ui.dev/stackblitz)
+- [Typography](https://taiga-ui.dev/typography)
+- [Variables](https://taiga-ui.dev/variables)
+- [Viewport](https://taiga-ui.dev/viewport)
+
+### Charts
+
+- [Arc Chart](https://taiga-ui.dev/charts/arc-chart)
+- [Axes](https://taiga-ui.dev/charts/axes)
+- [Bar](https://taiga-ui.dev/charts/bar)
+- [Bar Chart](https://taiga-ui.dev/charts/bar-chart)
+- [Bar Set](https://taiga-ui.dev/charts/bar-set)
+- [Legend Item](https://taiga-ui.dev/charts/legend-item)
+- [Line Chart](https://taiga-ui.dev/charts/line-chart)
+- [Line Days Chart](https://taiga-ui.dev/charts/line-days-chart)
+- [Pie Chart](https://taiga-ui.dev/charts/pie-chart)
+- [Ring Chart](https://taiga-ui.dev/charts/ring-chart)
+
+### Components
+
+- [Accordion](https://taiga-ui.dev/components/accordion)
+- [Actions Bar](https://taiga-ui.dev/components/actions-bar)
+- [Avatar](https://taiga-ui.dev/components/avatar)
+- [Badge](https://taiga-ui.dev/components/badge) — Component for displaying text, pictures and icons.
+- [Badge Notification](https://taiga-ui.dev/components/badge-notification) — Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate notifications, such as new messages
+- [Badged Content](https://taiga-ui.dev/components/badged-content) — BadgedContent is a wrapper for other components to add badges and notifications to them.
+- [Block](https://taiga-ui.dev/components/block) — Block is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself
+- [Bottom Sheet](https://taiga-ui.dev/components/bottom-sheet) — A non-modal draggable sheet
+- [Button](https://taiga-ui.dev/components/button) — Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to button and a tags. When used as tuiIconButton don't forget to still put text label within the tag for accessibility.
+- [Button Group](https://taiga-ui.dev/components/button-group)
+- [Button Select](https://taiga-ui.dev/components/button-select) — ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
+- [Button X](https://taiga-ui.dev/components/button-x)
+- [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
+- [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
+- [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
+- [Carousel](https://taiga-ui.dev/components/carousel) — Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
+- [Cell](https://taiga-ui.dev/components/cell)
+- [Checkbox](https://taiga-ui.dev/components/checkbox) — A checkbox component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
+- [Chip](https://taiga-ui.dev/components/chip) — Chip component is used to display array data and can also be interactive depending on the tag used.
+- [Combo Box](https://taiga-ui.dev/components/combo-box) — ComboBox is a form control for selecting a single value from a set of options. It is similar to Select but with a major difference – possibility to enter value manually .
+- [Comment](https://taiga-ui.dev/components/comment)
+- [Compass](https://taiga-ui.dev/components/compass)
+- [Confirm](https://taiga-ui.dev/components/confirm) — Confirm is a ready to use Dialog to ask user to confirm an action See this example to learn how to use confirm to prevent data loss on forms inside other modals
+- [Copy](https://taiga-ui.dev/components/copy) — This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied.
+- [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
+- [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
+- [Dialog](https://taiga-ui.dev/components/dialog) — Customizable modal dialogs
+- [Drawer](https://taiga-ui.dev/components/drawer)
+- [Elastic Container](https://taiga-ui.dev/components/elastic-container) — A wrapper component that changes its height with transition, depending on the content
+- [Error](https://taiga-ui.dev/components/error) — Component for showing arbitrary messages styled as errors, with height and fade transition, as well as displaying form validation errors from controls
+- [Expand](https://taiga-ui.dev/components/expand)
+- [Filter](https://taiga-ui.dev/components/filter) — Components shows separated items that can be used to filter content on the page. There are also an option with badges.
+- [Floating Container](https://taiga-ui.dev/components/floating-container) — FloatingContainer is a special container for creating different animated sticky footers
+- [Group](https://taiga-ui.dev/components/group) — A directive for grouping other components. For example, Input or Button .
+- [Icon](https://taiga-ui.dev/components/icon) — A component to show icons and color them with CSS. Taiga UI ships with Lucide icons . Same mechanism is used in all iconStart / iconEnd inputs across the library.
+- [Input](https://taiga-ui.dev/components/input) — Input is a basic string textfield. All other input components are built on its basis.
+- [Input Card](https://taiga-ui.dev/components/input-card) — InputCard can be used with InputExpire and InputCVC to input a card. Use tuiCreateLuhnValidator(message) to create a Validator that uses Luhn algorithm
+- [Input Card Group](https://taiga-ui.dev/components/input-card-group) — InputCardGroup is used to input a card as a separated control
+- [Input Chip](https://taiga-ui.dev/components/input-chip) — InputChip uses specifically modified Input to represent array of selectable items.
+- [Input Color](https://taiga-ui.dev/components/input-color) — InputColor = Textfield + type="color" + Maskito + ❤️
+- [Input Date](https://taiga-ui.dev/components/input-date) — InputDate = Textfield + Calendar + ❤️
+- [Input Date Multi](https://taiga-ui.dev/components/input-date-multi) — InputDateMulti uses specifically modified InputChip to represent array of dates.
+- [Input Date Range](https://taiga-ui.dev/components/input-date-range) — InputDateRange = Textfield + CalendarRange + ❤️
+- [Input Date Time](https://taiga-ui.dev/components/input-date-time) — InputDateTime = Textfield + Calendar + ❤️
+- [Input Files](https://taiga-ui.dev/components/input-files) — An input for uploading one or several files using native input file capabilities
+- [Input Inline](https://taiga-ui.dev/components/input-inline) — Inline input field
+- [Input Month](https://taiga-ui.dev/components/input-month) — InputMonth = Textfield + CalendarMonth + ❤️
+- [Input Number](https://taiga-ui.dev/components/input-number) — InputNumber is a form field to provide numerical input.
+- [Input Phone](https://taiga-ui.dev/components/input-phone) — InputPhone allows to input a phone number
+- [Input Phone International](https://taiga-ui.dev/components/input-phone-international) — Allows to input phone number in international format InputPhoneInternational is based on &#64;maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that InputPhoneInternational has the robust source of truth!
+- [Input Pin](https://taiga-ui.dev/components/input-pin)
+- [Input Range](https://taiga-ui.dev/components/input-range) — InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
+- [Input Slider](https://taiga-ui.dev/components/input-slider) — InputSlider = Textfield + InputNumber + Slider + ❤️
+- [Input Time](https://taiga-ui.dev/components/input-time) — InputTime allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.
+- [Input Year](https://taiga-ui.dev/components/input-year) — Component to input a single year
+- [Item Group](https://taiga-ui.dev/components/item-group)
+- [Items With More](https://taiga-ui.dev/components/items-with-more) — Component to hide overflown items behind custom content. Resize the screen to see extra items disappear
+- [Label](https://taiga-ui.dev/components/label) — Label is used to show text related to textfields, checkboxes, toggles and radio buttons
+- [Like](https://taiga-ui.dev/components/like) — A like component based on native checkbox with icons and custom color for icon when :checked state.
+- [Line Clamp](https://taiga-ui.dev/components/line-clamp) — Component cuts overflown text with "..." and shows it by hover
+- [Link](https://taiga-ui.dev/components/link) — Link component. It has focus highlight and can be customized with an icon Use textContent binding or wrapping entire content with a span to avoid extra whitespace introduced by browser to a tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
+- [Loader](https://taiga-ui.dev/components/loader)
+- [Message](https://taiga-ui.dev/components/message) — Message component is used to display message block.
+- [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls on mobile devices if tuiMobileCalendar directive is applied. You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
+- [Navigation](https://taiga-ui.dev/components/navigation) — Taiga UI is a low level component library with many atomic components that provide great flexibility when combined together. An exception to the general rule is the Navigation component – an opinionated global wrapping navigation that exposes less customization options developed specifically to target data-heavy dashboards with minimal space lost and compact controls.
+- [Notification](https://taiga-ui.dev/components/notification) — A notification message that can be displayed inline or as an alert
+- [Notification Middle](https://taiga-ui.dev/components/notification-middle) — A modal component to indicate an ongoing blocking action
+- [Pager](https://taiga-ui.dev/components/pager)
+- [Pdf Viewer](https://taiga-ui.dev/components/pdf-viewer) — Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on WA_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
+- [Pin](https://taiga-ui.dev/components/pin) — Pins are used to show a location on a 2D plane. Use color , background , border and box-shadow to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.
+- [Preview](https://taiga-ui.dev/components/preview) — Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate etc) As a document you can provide images, embeds and other arbitrary content. The component automatically adjusts to the mobile device
+- [Progress Bar](https://taiga-ui.dev/components/progress-bar) — tuiProgressBar – attribute component for native html tag '"> . Usage: '"> .
+- [Progress Circle](https://taiga-ui.dev/components/progress-circle) — '"> is a component to visually represent the completion of a process or operation (as a partially filled circle/ring). It shows how much has been completed and how much remains.
+- [Progress Segmented](https://taiga-ui.dev/components/progress-segmented)
+- [Pull To Refresh](https://taiga-ui.dev/components/pull-to-refresh) — Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits (pulled) event when the pull threshold is reached. You can set that threshold in pixels by TUI_PULL_TO_REFRESH_THRESHOLD DI token. You can finish loading with TUI_PULL_TO_REFRESH_LOADED stream token that can be provided in DI. Use overscroll-behavior: none; CSS on your scrolling container to stop elastic scrolling on iOS
+- [Pulse](https://taiga-ui.dev/components/pulse)
+- [Push](https://taiga-ui.dev/components/push) — Notifications in style of native browser push
+- [Radio](https://taiga-ui.dev/components/radio) — A radio component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation Due to internal Angular implementation of radio buttons, you are required to add name attribute to your input tag, unless you are using formControlName
+- [Range](https://taiga-ui.dev/components/range) — A two-thumb slider for selecting a range of values
+- [Rating](https://taiga-ui.dev/components/rating)
+- [Reorder](https://taiga-ui.dev/components/reorder) — Component to change order of elements in an array
+- [Scrollbar](https://taiga-ui.dev/components/scrollbar) — Scrollbar implements a custom scrollbar in Taiga UI style. Native scrollbar is hidden to keep native platform scroll experience Use TUI_SCROLL_REF token to get a scrollable container. For example, when working with virtual scroll.
+- [Search](https://taiga-ui.dev/components/search) — A wrapping component for search or filtering the table
+- [Select](https://taiga-ui.dev/components/select) — Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element.
+- [Sheet Dialog](https://taiga-ui.dev/components/sheet-dialog) — A mobile draggable sheet dialog
+- [Slider](https://taiga-ui.dev/components/slider) — Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs
+- [Slides](https://taiga-ui.dev/components/slides) — A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
+- [Status](https://taiga-ui.dev/components/status)
+- [Surface](https://taiga-ui.dev/components/surface) — General purpose container used in Taiga UI interfaces. Often used in conjunction with Card component.
+- [Swipe Actions](https://taiga-ui.dev/components/swipe-actions)
+- [Switch](https://taiga-ui.dev/components/switch) — A switch component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
+- [Table](https://taiga-ui.dev/components/table) — This module allows you to create various tables, both static and editable.
+- [Table Filters](https://taiga-ui.dev/components/table-filters) — This module allows you to filter table data in a flexible way.
+- [Table Pagination](https://taiga-ui.dev/components/table-pagination) — Component to show pagination in table footer
+- [Textarea](https://taiga-ui.dev/components/textarea) — Textarea uses Textfield to create a multi-line string input.
+- [Thumbnail Card](https://taiga-ui.dev/components/thumbnail-card) — Customizable credit card thumbnail
+- [Tiles](https://taiga-ui.dev/components/tiles) — Tiles is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
+- [Title](https://taiga-ui.dev/components/title) — A directive for title with optional subtitle
+- [Toast](https://taiga-ui.dev/components/toast)
+- [Tooltip](https://taiga-ui.dev/components/tooltip) — Component to show icons with a hint by hover
+- [Tree](https://taiga-ui.dev/components/tree) — Component to display tree-like data structure
+
+### Dialog
+
+- [Routable](https://taiga-ui.dev/dialog/routable)
+
+### Directives
+
+- [Active Zone](https://taiga-ui.dev/directives/active-zone) — tuiActiveZone allows to track a scope that user interacts with. For example, for closing dropdown on blur
+- [Animated](https://taiga-ui.dev/directives/animated) — TuiAnimated allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19. In case the user's operating system has reduced motion settings turned on, Taiga UI will honor this, disabling animations under its control, and TuiAnimated will not play animations. To override this behavior, use TUI_REDUCED_MOTION injection token. However, this is not the recommended approach, as the user's system preferences would be ignored.
+- [Appearance](https://taiga-ui.dev/directives/appearance) — A directive for visual presets of interactive components
+- [Auto Focus](https://taiga-ui.dev/directives/auto-focus) — tuiAutoFocus allows to focus HTML-element right after its appearance. It works also with focusable Taiga UI components
+- [Copy Processor](https://taiga-ui.dev/directives/copy-processor) — Directive is used to processed text when coping
+- [Date Format](https://taiga-ui.dev/directives/date-format) — Directive allows to customize TuiInputDate , TuiInputDateRange , TuiInputDateMulti and TuiInputDateTime date format.
+- [Dropdown](https://taiga-ui.dev/directives/dropdown) — tuiDropdown shows a dropdown with custom template. Use ActiveZone directive to hide dropdown. See also DropdownOpen
+- [Dropdown Context](https://taiga-ui.dev/directives/dropdown-context) — DropdownContext allows to show custom right click context dropdown. To close dropdown: Use Esc Make mouse left/right click outside of dropdown content Manually toggle tuiDropdown to false using template reference variable (see first example)
+- [Dropdown Hover](https://taiga-ui.dev/directives/dropdown-hover) — DropdownHover shows dropdown with custom template upon hover
+- [Dropdown Open](https://taiga-ui.dev/directives/dropdown-open) — DropdownOpen is a composite dropdown directive, similar to manual dropdown, but it also takes care of opening and closing on its own. If an element is a textfield ( input or textarea ), arrow down press opens a dropdown. The next press focuses the first item from the list. If it is not a textfield, click opens and closes a dropdown. By default directive is applied to the first focusable element inside. If you want another element to be the host, use #tuiDropdownHost reference. Use tuiDropdownAuto selector with no binding if you do not want to track open state
+- [Dropdown Selection](https://taiga-ui.dev/directives/dropdown-selection) — DropdownSelection shows dropdown with custom template on selected text
+- [Elastic Sticky](https://taiga-ui.dev/directives/elastic-sticky) — Directive allows to scale "stuck" sticky heading. It can also be used as service TuiElasticStickyService
+- [Element](https://taiga-ui.dev/directives/element) — Directive is used to get a link to a native element as template reference variable (analogue of &#64;ViewChild(&#39;ref&#39;, &#123;read: ElementRef&#125; for template)
+- [Fade](https://taiga-ui.dev/directives/fade) — Directive that uses masking to fade out overflown content
+- [Fluid Typography](https://taiga-ui.dev/directives/fluid-typography) — A directive that adjusts font size for the text to fit in the container
+- [Highlight](https://taiga-ui.dev/directives/highlight) — Directive is used to highlight text in element. You can configure the directive with TUI_HIGHLIGHT_OPTIONS token. Allowed options: highlightColor: The default color for the highlight. Use function tuiHighlightOptionsProvider to provide new value of this token. Does not work with inline elements
+- [Hint](https://taiga-ui.dev/directives/hint) — Directive to show a hint by hover of an element
+- [Hint Describe](https://taiga-ui.dev/directives/hint-describe) — Directive to show a hint in accessible way upon keyboard focus
+- [Hint Manual](https://taiga-ui.dev/directives/hint-manual) — Directive to show a hint manually
+- [Hint Pointer](https://taiga-ui.dev/directives/hint-pointer) — A directive to show a hint above the cursor
+- [Hovered Change](https://taiga-ui.dev/directives/hovered-change) — tuiHoveredChange is used for emitting true/false when users hovers over an element or moves cursor away from it.
+- [Media](https://taiga-ui.dev/directives/media) — Directive for declarative work with HTML5 video and audio
+- [Number Format](https://taiga-ui.dev/directives/number-format) — Directive allows to customize TuiInputNumber , TuiInputSlider , TuiInputRange number format.
+- [Pan](https://taiga-ui.dev/directives/pan) — tuiPan The directive emits delta between mousemove / touchmove events. You can use it to change the coordinates of an element as in example below
+- [Present](https://taiga-ui.dev/directives/present) — tuiPresent allows to detect appearance of elements in DOM
+- [Resizer](https://taiga-ui.dev/directives/resizer) — Directive to resize container in multiple directions.
+- [Ripple](https://taiga-ui.dev/directives/ripple) — Directive for «ripple» effect on mobile devices
+- [Sensitive](https://taiga-ui.dev/directives/sensitive) — A directive that allows you to hide sensitive data under a pixel mask. This can be account balances, write-off amounts and any other content
+- [Shimmer](https://taiga-ui.dev/directives/shimmer) — tuiShimmer directive visually implements the "Shimmer" UI pattern — an animated loading indicator that simulates content appearance while data is being fetched. This pattern enhances the user experience by providing visual feedback during loading states, helping users understand that the interface is active and content is on its way. When to Use To indicate loading states in cards, headers, lists, avatars, and other UI elements. When you want to visually communicate that content is loading, rather than missing or frozen. Shimmer is used when you have cached data that is currently being refreshed and if you have no data at all — a better choice would be Skeleton
+- [Skeleton](https://taiga-ui.dev/directives/skeleton)
+- [Swipe](https://taiga-ui.dev/directives/swipe) — tuiSwipe directive allows detecting swipes on mobile devices. You can configure the directive with TUI_SWIPE_OPTIONS token. Allowed options: timeout: max time between touchstart and touchend threshold : min distance between touchstart and touchend.
+- [Textfield Controller](https://taiga-ui.dev/directives/textfield-controller)
+- [Theme](https://taiga-ui.dev/directives/theme) — tuiTheme allows to set style for a DOM branch. By default dark and light are included. Importing is not required.
+- [Touchable](https://taiga-ui.dev/directives/touchable) — Directive to emulate native iOS touches
+- [Validator](https://taiga-ui.dev/directives/validator) — tuiValidator allows set validators for form control on the fly
+- [Value Changes](https://taiga-ui.dev/directives/value-changes) — This directive allows you to access reactive control or container value changes as an output
+- [Zoom](https://taiga-ui.dev/directives/zoom) — tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
+
+### Info
+
+- [About](https://taiga-ui.dev/info/about)
+- [Browser Support](https://taiga-ui.dev/info/browser-support)
+
+### Layout
+
+- [Block Details](https://taiga-ui.dev/layout/block-details)
+- [Block Status](https://taiga-ui.dev/layout/block-status)
+- [Card Collapsed](https://taiga-ui.dev/layout/card-collapsed)
+- [Card Large](https://taiga-ui.dev/layout/card-large)
+- [Card Medium](https://taiga-ui.dev/layout/card-medium)
+- [Form](https://taiga-ui.dev/layout/form)
+- [Header](https://taiga-ui.dev/layout/header)
+
+### Navigation
+
+- [App Bar](https://taiga-ui.dev/navigation/app-bar)
+- [Breadcrumbs](https://taiga-ui.dev/navigation/breadcrumbs)
+- [Pagination](https://taiga-ui.dev/navigation/pagination)
+- [Segmented](https://taiga-ui.dev/navigation/segmented)
+- [Stepper](https://taiga-ui.dev/navigation/stepper)
+- [Tab Bar](https://taiga-ui.dev/navigation/tab-bar)
+- [Tabs](https://taiga-ui.dev/navigation/tabs)
+
+### Pipes
+
+- [Amount](https://taiga-ui.dev/pipes/amount) — Pipe to format number values to show money sums Number formatting can be customized by using TUI_NUMBER_FORMAT
+- [Currency](https://taiga-ui.dev/pipes/currency) — Pipe for transforming number into money. It is usually used with InputNumber
+- [Emails](https://taiga-ui.dev/pipes/emails) — Pipe for creating autocomplete when entering email addresses
+- [Filter](https://taiga-ui.dev/pipes/filter) — Pipe for filtering an array
+- [Filter By Input](https://taiga-ui.dev/pipes/filter-by-input) — Pipe for filtering an array by value entered in a textfield
+- [Flag](https://taiga-ui.dev/pipes/flag) — Pipe for getting source path to image with flag
+- [Format Number](https://taiga-ui.dev/pipes/format-number) — Pipe to format number values to separate thousands Number formatting can be customized by using TUI_NUMBER_FORMAT
+- [Mapper](https://taiga-ui.dev/pipes/mapper) — Pipe to transform a value with a function
+- [Obfuscate](https://taiga-ui.dev/pipes/obfuscate) — Pipe for obfuscating sensitive data
+- [Stringify](https://taiga-ui.dev/pipes/stringify) — Pipe that creates TuiStringHandler by given key.
+- [Stringify Content](https://taiga-ui.dev/pipes/stringify-content) — Pipe that turns TuiStringHandler into content that works with $implicit .
+
+### Services
+
+- [Keyboard Service](https://taiga-ui.dev/services/keyboard-service)
+
+### Testing
+
+- [Disable Animation](https://taiga-ui.dev/testing/disable-animation)
+- [Jest](https://taiga-ui.dev/testing/jest)
+- [Screenshot Bot](https://taiga-ui.dev/testing/screenshot-bot)
+
+### Utils
+
+- [Dom](https://taiga-ui.dev/utils/dom)
+- [Format](https://taiga-ui.dev/utils/format)
+- [Math](https://taiga-ui.dev/utils/math)
+- [Miscellaneous](https://taiga-ui.dev/utils/miscellaneous)
+- [Tokens](https://taiga-ui.dev/utils/tokens)
