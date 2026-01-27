@@ -1,5 +1,5 @@
 import {
-    contentChild,
+    ContentChild,
     Directive,
     inject,
     InjectionToken,
@@ -20,10 +20,12 @@ export function tuiAsOptionContent(useValue: Type<any>): Provider {
 
 @Directive()
 export class TuiWithOptionContent {
-    private readonly local = contentChild(TUI_OPTION_CONTENT, {descendants: true});
-    private readonly global = inject<Type<any>>(TUI_OPTION_CONTENT, {optional: true});
+    @ContentChild(TUI_OPTION_CONTENT, {descendants: true})
+    protected readonly local: Type<any> | null = null;
+
+    protected readonly global = inject<Type<any>>(TUI_OPTION_CONTENT, {optional: true});
 
     public get content(): Type<any> | null | undefined {
-        return this.global ?? this.local();
+        return this.global ?? this.local;
     }
 }
