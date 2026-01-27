@@ -1,4 +1,4 @@
-import {Location} from '@angular/common';
+import {Location, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -32,6 +32,7 @@ const SERIALIZED_SUFFIX = '$';
     selector: 'tr[tuiDocAPIItem]',
     imports: [
         FormsModule,
+        NgTemplateOutlet,
         TuiChevron,
         TuiDataListWrapper,
         TuiHint,

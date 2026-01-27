@@ -12,6 +12,9 @@
     <ng-template #hint>
         <ng-content>{{ name() }}</ng-content>
     </ng-template>
+    <div class="t-description">
+        <ng-container *ngTemplateOutlet="hint" />
+    </div>
 </td>
 <td class="t-td">
     <code class="t-type">
