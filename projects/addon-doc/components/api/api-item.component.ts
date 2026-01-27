@@ -65,7 +65,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     public readonly name = input('');
     public readonly type = input('');
     public readonly value = model<T>();
-    public readonly items = input<readonly T[]>([]);
+    public readonly items = input([], {transform: (v?: readonly T[]) => v || []});
 
     protected readonly hasCleaner = computed(
         () => this.type().includes('null') || this.type().includes('PolymorpheusContent'),
