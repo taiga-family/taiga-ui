@@ -40021,11 +40021,11 @@ Directive to show a hint by hover of an element
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint} from '@taiga-ui/core';
+import {TuiButton, TuiHint} from '@taiga-ui/core';
 import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAutoColorPipe, TuiAvatar, TuiHint],
+    imports: [TuiAutoColorPipe, TuiAvatar, TuiButton, TuiHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
