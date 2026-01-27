@@ -147,4 +147,24 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
     },
+    {
+        from: {
+            name: 'TuiIslandDirective',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiCardLarge',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccordion',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiAccordion',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

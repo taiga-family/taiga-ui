@@ -19,6 +19,7 @@ import {addHTMLCommentTags, replaceAttrs, replaceTags} from '../../utils/templat
 import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
 import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
+import {migrateAccordionItem} from './templates/migrate-accordion';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateTuiNotification} from './templates/migrate-notification';
@@ -62,6 +63,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         migrateInputYear,
+        migrateAccordionItem,
         migrateAvatarToDirective,
         migrateTuiNotification,
     ] as const;

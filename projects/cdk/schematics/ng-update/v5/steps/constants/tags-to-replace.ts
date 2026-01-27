@@ -16,4 +16,9 @@ export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
         to: 'div',
         addAttributes: ['tuiPin'],
     },
+    {
+        from: 'tui-island',
+        to: 'div',
+        addAttributes: ['tuiCardLarge'],
+    },
 ];
