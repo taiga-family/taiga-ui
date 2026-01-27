@@ -22,7 +22,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.183.0
       - uses: taiga-family/ci/actions/setup/node@v1.183.0
 
-      - run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
+      - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
       - uses: s0/git-publish-subdir-action@v2.6.0
@@ -42,7 +42,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.183.0
         id: nodejs-workspace
 
-      - run: npx nx prerender demo
+      - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
       - uses: s0/git-publish-subdir-action@v2.6.0

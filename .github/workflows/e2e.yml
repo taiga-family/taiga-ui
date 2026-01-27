@@ -22,7 +22,7 @@ jobs:
 
       - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
-        run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
+        run: npx nx build demo
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v4.3.0
