@@ -547,6 +547,9 @@
     <loc>https://taiga-ui.dev/lists/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/list/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/shadows/</loc>
   </url>
   <url>
@@ -1700,6 +1703,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/charts/ring-chart/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/list/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/list/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/directives/active-zone/API/</loc>
