@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -22,7 +23,11 @@ import {TUI_CHIP_OPTIONS} from './chip.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/chip.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/kit/styles/components/chip.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-chip'},

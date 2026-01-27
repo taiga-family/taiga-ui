@@ -16,7 +16,7 @@
  * @see-also
  * Icons, Appearance, Badge, Block
  */
-[tuiChip] {
+[tuiChip]:where(*&) {
     --t-gap: 0.125rem;
     --t-margin: -0.125rem;
     --t-icon-size: 1rem;
@@ -122,17 +122,9 @@
             z-index: -1;
         }
     }
-
-    &[tuiAppearance][data-appearance='negative'],
-    &[tuiAppearance][data-appearance='positive'],
-    &[tuiAppearance][data-appearance='warning'],
-    &[tuiAppearance][data-appearance='info'],
-    &[tuiAppearance][data-appearance='neutral'] {
-        color: var(--tui-text-primary);
-    }
 }
 
-input[tuiChip] {
+input[tuiChip]:where(*&) {
     .interactive({
         cursor: text;
     });

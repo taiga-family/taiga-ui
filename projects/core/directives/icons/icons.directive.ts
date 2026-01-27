@@ -7,6 +7,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -20,7 +21,11 @@ const OPT = {self: true, optional: true} as const;
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/icons.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/core/styles/components/icons.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-icons'},
@@ -34,6 +39,7 @@ class Styles {}
         '[style.--t-icon-end]': 'end()',
         '[attr.data-icon-start]': 'startMode()',
         '[attr.data-icon-end]': 'endMode()',
+        'data-tui-version': TUI_VERSION,
     },
 })
 export class TuiIcons {

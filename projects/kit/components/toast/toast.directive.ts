@@ -5,6 +5,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -16,7 +17,11 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/toast.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/kit/styles/components/toast.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-toast'},
