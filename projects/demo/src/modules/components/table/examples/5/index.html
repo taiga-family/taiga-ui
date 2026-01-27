@@ -8,62 +8,37 @@
         [maxBufferPx]="500"
         [minBufferPx]="400"
     >
-        <table
-            tuiTable
-            [columns]="columns"
-        >
+        <table tuiTable>
             <thead>
-                <tr tuiThGroup>
+                <tr [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)">
                     <th
-                        *tuiHead="'name'"
                         tuiTh
+                        [sorter]="'name' | tuiSorter"
                         [sticky]="true"
-                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
                     >
                         Name
                     </th>
                     <th
-                        *tuiHead="'dob'"
                         tuiTh
+                        [sorter]="'dob' | tuiSorter"
                         [sticky]="true"
-                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
                     >
                         Date of Birth
                     </th>
                     <th
-                        *tuiHead="'age'"
                         tuiTh
                         [sorter]="ageSorter"
                         [sticky]="true"
-                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
                     >
                         Age
                     </th>
                 </tr>
             </thead>
             <tbody tuiTbody>
-                <tr
-                    *cdkVirtualFor="let item of data | tuiTableSort"
-                    tuiTr
-                >
-                    <td
-                        *tuiCell="'name'"
-                        tuiTd
-                    >
-                        {{ item.name }}
-                    </td>
-                    <td
-                        *tuiCell="'dob'"
-                        tuiTd
-                    >
-                        {{ item.dob }}
-                    </td>
-                    <td
-                        *tuiCell="'age'"
-                        tuiTd
-                    >
-                        {{ getAge(item) }}
-                    </td>
+                <tr *cdkVirtualFor="let item of data | tuiTableSort">
+                    <td tuiTd>{{ item.name }}</td>
+                    <td tuiTd>{{ item.dob }}</td>
+                    <td tuiTd>{{ getAge(item) }}</td>
                 </tr>
             </tbody>
         </table>

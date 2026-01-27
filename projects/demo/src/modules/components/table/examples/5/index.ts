@@ -74,11 +74,7 @@ function getAge({dob}: User): number {
 })
 export default class Example {
     protected readonly data = DATA;
-
-    protected readonly columns = ['name', 'dob', 'age'];
-
     protected readonly getAge = getAge;
-
     protected readonly ageSorter: TuiComparator<User> = (a: User, b: User) =>
         getAge(a) - getAge(b);
 }
