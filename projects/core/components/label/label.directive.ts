@@ -29,6 +29,7 @@ class Styles {}
 @Directive({
     selector: 'label[tuiLabel]',
     host: {
+        'data-tui-version': TUI_VERSION,
         '[attr.for]': 'el.htmlFor || parent?.id',
         '[attr.data-orientation]': 'textfield() ? "vertical" : "horizontal"',
     },
