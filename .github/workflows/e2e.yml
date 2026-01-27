@@ -38,6 +38,65 @@ jobs:
           if-no-files-found: error
           compression-level: 0
 
+  cypress:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    runs-on: ubuntu-latest
+    name: Cypress / Component Testing
+    env:
+      CYPRESS_BASELINE_REPO: 'baseline'
+      CYPRESS_RESULTS_FOLDER: 'projects/demo-cypress/tests-results'
+      CYPRESS_BASELINE_SNAPSHOTS: 'projects/demo-cypress/tests-results/snapshots/baseline'
+      CYPRESS_BASELINE_SNAPSHOTS_KEY: 'cy_baseline_${{ github.event.pull_request.head.sha }}'
+    steps:
+      - uses: actions/checkout@v4.3.1
+        with:
+          ref: ${{ github.base_ref }}
+      - uses: taiga-family/ci/actions/setup/variables@v1.183.0
+      - uses: taiga-family/ci/actions/setup/node@v1.183.0
+        with:
+          validate-peer-deps: false
+
+      - name: Run tests for baseline state
+        run: npx nx component-test demo-cypress
+
+      - name: Save Cypress Baseline Snapshots
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
+          name: ${{env.CYPRESS_BASELINE_SNAPSHOTS_KEY}}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+
+      - uses: actions/checkout@v4.3.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.183.0
+      - uses: taiga-family/ci/actions/setup/node@v1.183.0
+
+      - name: Download Cypress Baseline Snapshots
+        uses: actions/download-artifact@v4.3.0
+        with:
+          path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
+          pattern: ${{ env.CYPRESS_BASELINE_SNAPSHOTS_KEY }}
+          merge-multiple: true
+
+      - name: Run tests for current state
+        run: npx nx component-test demo-cypress
+
+      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@v1.183.0
+
+      - name: Debug output
+        continue-on-error: true
+        run: tree ${{ env.CYPRESS_RESULTS_FOLDER }}  -L 1
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: '${{ env.CYPRESS_RESULTS_FOLDER }}/**/*.diff.png'
+          name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+
   playwright:
     if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
@@ -57,6 +116,14 @@ jobs:
             # {index: 9, os: 'macos-latest', project: 'webkit', total: 9},
             # Chrome
             {index: 1, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 2, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 3, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 4, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 5, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 6, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 7, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 8, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 9, os: 'ubuntu-latest', project: 'chromium', total: 9},
           ]
     name: Playwright / ${{ matrix.shard.os }} / ${{ matrix.shard.index }} of ${{ matrix.shard.total }}
     runs-on: ${{ matrix.shard.os }}
@@ -85,9 +152,10 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST }}
         run: |
-          npx nx e2e demo-playwright -- tabs.pw.spec.ts \
+          npx nx e2e demo-playwright -- \
             --update-snapshots \
             --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
       - run: tree ./projects/demo-playwright/snapshots
         continue-on-error: true
 
@@ -105,9 +173,10 @@ jobs:
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
         run: |
-          npx nx e2e demo-playwright -- tabs.pw.spec.ts \
+          npx nx e2e demo-playwright -- \
             --update-snapshots=none \
             --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
             --retries=${{ env.RETRY_COUNT }}
       - run: tree ./projects/demo-playwright/tests-results
         continue-on-error: true
@@ -151,7 +220,7 @@ jobs:
   result:
     if: ${{ !contains(github.head_ref , 'release/') }}
     name: E2E result
-    needs: [playwright]
+    needs: [playwright, cypress]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
@@ -166,6 +235,15 @@ jobs:
           pattern: playwright-snapshots-artifacts--*
           merge-multiple: true
       - run: ls -R ./total/playwright || echo "not found"
+
+      - name: Download artifacts for Cypress
+        continue-on-error: true
+        uses: actions/download-artifact@v4.3.0
+        with:
+          path: ./total/cypress
+          pattern: cypress-snapshots-artifacts--*
+          merge-multiple: true
+      - run: ls -R ./total/cypress || echo "not found"
 
       - name: Download blob reports for Playwright
         continue-on-error: true
@@ -205,6 +283,12 @@ jobs:
       - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.183.0
         with:
           pw-result: ./total
+
+  performance-stress:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    needs: [build-demo]
+    uses: ./.github/workflows/performance.yml
+    secrets: inherit
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

@@ -1,0 +1,47 @@
+name: ⚙️ Lint
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
+jobs:
+  lint:
+    name: Lint
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.1
+        with:
+          persist-credentials: false
+      - uses: taiga-family/ci/actions/setup/variables@v1.183.0
+      - uses: taiga-family/ci/actions/setup/node@v1.183.0
+        with:
+          audit: true
+
+      - run: echo "$(git log -1 --pretty=format:"%s")" | npx commitlint --verbose
+        if: github.event_name == 'pull_request'
+      - run: npm run typecheck
+      - run: npm run knip
+      - run: npm run cspell
+      - run: |
+          if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then
+              npm run stylelint -- --fix
+              npm run prettier -- --write
+              npm run lint -- --fix
+              HTML_ESLINT=true npm run lint -- --fix
+          else
+              npm run stylelint
+              npm run prettier -- --check
+              npm run lint
+              HTML_ESLINT=true npm run lint
+          fi
+      - uses: taiga-family/ci/actions/auto/push@v1.183.0
+        with:
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
