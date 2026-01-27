@@ -13,7 +13,7 @@ includes the error message, incorrect code, and the correct solution.
 
 **Error:**
 
-```
+```text
 NG5002: Parser Error: Bindings cannot contain assignments at column X
 ```
 
@@ -49,11 +49,11 @@ get activeItems(): Item[] {
 
 ## 2. Missing FormsModule (NG8002)
 
-### ❌ Using [(ngModel)] without FormsModule
+### ❌ Using `[(ngModel)]` without FormsModule
 
 **Error:**
 
-```
+```text
 NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'
 ```
 
@@ -87,7 +87,7 @@ import {FormsModule} from '@angular/forms';
 
 **Error:**
 
-```
+```text
 NG8116: A structural directive `tuiDropdown` was used in the template
 without a corresponding import in the component.
 ```
@@ -134,7 +134,7 @@ import {TuiDropdown} from '@taiga-ui/core';
 
 **Error:**
 
-```
+```text
 TS2531: Object is possibly 'null'
 ```
 
@@ -173,7 +173,7 @@ protected selectedDate: TuiDay | null = null;
 
 **Error:**
 
-```
+```text
 TS2345: Argument of type 'Event' is not assignable to parameter of type 'TuiDayRange'
 ```
 
@@ -214,7 +214,7 @@ onRangeChange(range: TuiDayRange): void {
 
 **Error:**
 
-```
+```text
 TS2304: Cannot find name 'TuiMonth'
 TS2322: Type 'number' is not assignable to type 'TuiYear'
 ```
@@ -244,7 +244,7 @@ protected nextMonth = this.month.append({month: 1});  // ✓ Works!
 
 **Error:**
 
-```
+```text
 TS2305: Module '@taiga-ui/kit' has no exported member 'TuiButton'
 TS2724: '@taiga-ui/kit' has no exported member named 'TuiOption'. Did you mean 'TuiPin'?
 ```
@@ -282,7 +282,7 @@ See **Import Map** section above for complete reference.
 
 **Error:**
 
-```
+```text
 NG8103: The `*ngIf` directive was used in the template, but neither
 the `NgIf` directive nor the `CommonModule` was imported.
 ```
@@ -324,7 +324,7 @@ import {NgIf} from '@angular/common';
 
 **Error:**
 
-```
+```text
 NG8002: Can't bind to 'autoClose' since it isn't a known property of 'tui-swipe-actions'
 ```
 
