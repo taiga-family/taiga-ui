@@ -23,12 +23,13 @@
 </div>
 @if (textfield.cva()?.interactive() && !editing() && !disabled()) {
     <button
-        aria-label="Remove"
         tabIndex="-1"
         tuiIconButton
         type="button"
         [iconStart]="icons.close"
         (click.stop)="delete()"
         (pointerdown.prevent.stop.zoneless)="(0)"
-    ></button>
+    >
+        {{ texts().remove }}
+    </button>
 }
