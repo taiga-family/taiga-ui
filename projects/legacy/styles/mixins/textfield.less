@@ -73,15 +73,17 @@
         caret-color: transparent;
     }
 
-    /* stylelint-disable */
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        appearance: none;
+    }
+
     /* Safari autofill icons */
-    //noinspection CssInvalidPseudoSelector
     &:-webkit-autofill,
     &:-webkit-autofill::first-line {
         font-size: inherit;
         line-height: inherit;
     }
-    /* stylelint-enable */
 
     //noinspection ALL
     &::-webkit-caps-lock-indicator,
