@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TUI_ANIMATIONS_SPEED, TuiInput, TuiRoot} from '@taiga-ui/core';
+import {TuiInput, TuiRoot} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, TuiInput, TuiRoot],
@@ -20,7 +20,6 @@ import {TUI_ANIMATIONS_SPEED, TuiInput, TuiRoot} from '@taiga-ui/core';
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestTextfield {
     public readonly initialValue = model('');
