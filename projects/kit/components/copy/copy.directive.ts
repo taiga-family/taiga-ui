@@ -6,11 +6,11 @@ import {
     TuiTextfieldComponent,
     tuiTextfieldIcon,
 } from '@taiga-ui/core/components/textfield';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
