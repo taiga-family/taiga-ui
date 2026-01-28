@@ -36,7 +36,7 @@
 
 <span
     class="t-content"
-    (click.stop)="input?.nativeElement?.focus()"
+    (click)="input?.nativeElement?.focus()"
     (pointerdown.zoneless.prevent)="(0)"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
