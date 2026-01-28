@@ -5,8 +5,8 @@ import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {
     TuiTextfieldComponent,
     tuiTextfieldIcon,
-    TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
@@ -43,12 +43,9 @@ import {TUI_COPY_OPTIONS} from './copy.options';
 export class TuiCopyDirective {
     private readonly copied$ = new Subject<void>();
     private readonly clipboard = inject(Clipboard);
+    private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
 
     protected readonly textfield = inject(TuiTextfieldComponent);
-    protected readonly textfieldMulti = inject(TuiTextfieldMultiComponent, {
-        optional: true,
-    });
-
     protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
     protected readonly copyTexts = inject(TUI_COPY_TEXTS);
     protected readonly hint = tuiDirectiveBinding(
@@ -73,17 +70,15 @@ export class TuiCopyDirective {
     );
 
     protected get hasValue(): boolean {
-        return this.textfieldMulti
-            ? !!this.textfieldMulti?.control()?.value?.length
+        return this.multi
+            ? !!this.textfield.control()?.value.length
             : !!this.textfield.value();
     }
 
     protected copy(): void {
-        if (this.textfieldMulti) {
+        if (this.multi) {
             this.clipboard.copy(
-                Array.from(this.textfieldMulti.el.querySelectorAll('tui-textfield-item'))
-                    ?.map((el) => el.textContent?.trim())
-                    .join(', '),
+                this.textfield.control()?.value.map(this.stringify()).join(', '),
             );
         } else {
             this.textfield.input()?.nativeElement.select();
@@ -91,5 +86,9 @@ export class TuiCopyDirective {
         }
 
         this.copied$.next();
+    }
+
+    private get multi(): boolean {
+        return Array.isArray(this.textfield.control()?.value);
     }
 }
