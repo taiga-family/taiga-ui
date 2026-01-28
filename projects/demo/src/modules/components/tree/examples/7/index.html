@@ -17,3 +17,24 @@
         {{ item.text }}
     }
 </ng-template>
+
+<p>
+    <button
+        size="s"
+        style="margin-right: 0.5rem"
+        tuiButton
+        type="button"
+        (click)="reset()"
+    >
+        Reset
+    </button>
+
+    <button
+        size="s"
+        tuiButton
+        type="button"
+        (click)="loadNewData()"
+    >
+        Load New Data
+    </button>
+</p>
