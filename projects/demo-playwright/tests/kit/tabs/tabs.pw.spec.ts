@@ -24,14 +24,7 @@ describe('Tabs', () => {
                 await example.scrollIntoViewIfNeeded();
             });
 
-            test('no extra margin after the last tab', async ({page, browserName}) => {
-                // TODO: why does this test keep failing in safari
-
-                test.skip(
-                    browserName !== 'chromium',
-                    'This feature is only relevant in Chrome',
-                );
-
+            test('no extra margin after the last tab', async ({page}) => {
                 await page.setViewportSize({width: 1500, height: 500});
 
                 await expect.soft(example).toHaveScreenshot('01-tabs-1.png');
@@ -81,6 +74,7 @@ describe('Tabs', () => {
                 // TODO: https://github.com/taiga-family/taiga-ui/issues/13005
                 // await expect(page.locator('tui-dropdown')).not.toBeAttached();
                 await expect(page.locator('tui-dropdown')).toHaveCount(1);
+                await page.waitForTimeout(100);
                 await expect.soft(example).toHaveScreenshot('01-tabs-8.png');
             });
 
