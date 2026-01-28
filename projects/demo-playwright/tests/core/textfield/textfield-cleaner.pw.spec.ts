@@ -164,6 +164,28 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('');
         });
 
+        test('Textarea with limit - scroll to clear button and click', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.Textarea}#limit`);
+
+            const limitExample = page
+                .locator('tui-doc-example')
+                .filter({hasText: 'Limit'});
+            const textfield = limitExample.locator('tui-textfield');
+            const textarea = textfield.locator('textarea');
+            const clearButton = textfield.locator('button.t-clear');
+
+            await expect(textarea).not.toHaveValue('');
+
+            await clearButton.evaluate((el) =>
+                el.scrollIntoView({block: 'end', inline: 'nearest'}),
+            );
+
+            await clearButton.click();
+            await page.waitForTimeout(100);
+
+            await expect(textfield).toHaveScreenshot('textarea-limit-cleared.png');
+        });
+
         test('Textfield', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.Textfield}/API?tuiTextfieldCleaner=true`);
 
