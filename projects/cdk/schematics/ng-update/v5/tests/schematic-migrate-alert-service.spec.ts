@@ -17,20 +17,18 @@ describe('ng-update TuiAlertService to TuiNotificationService', () => {
     }
 
     it('renames imported service and its usages', async () => {
-        const before = `
-import {TuiAlertService} from '@taiga-ui/core';
+        const result = await migrate(`
+            import {TuiAlertService} from '@taiga-ui/core';
 
-@Component({})
-export class Test {
-    constructor(private readonly alerts: TuiAlertService) {}
+            @Component({})
+            export class Test {
+                constructor(private readonly alerts: TuiAlertService) {}
 
-    public show(): void {
-        this.alerts.open('Hello');
-    }
-}
-        `;
-
-        const result = await migrate(before);
+                public show(): void {
+                    this.alerts.open('Hello');
+                }
+            }
+        `);
 
         expect(result).toContain('TuiNotificationService');
         expect(result).not.toContain('TuiAlertService');
