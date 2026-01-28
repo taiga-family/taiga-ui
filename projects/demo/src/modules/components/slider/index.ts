@@ -17,6 +17,7 @@ export default class Page {
         'Disabled',
         'KeySteps',
         'Complex',
+        'Vertical',
     ];
 
     protected readonly segmentsVariants: Array<number[] | number> = [
