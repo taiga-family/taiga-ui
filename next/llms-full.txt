@@ -24260,8 +24260,8 @@ export default class Example extends TuiPortals {
 **Template:**
 ```html
 <header tuiNavigationHeader>
-<span tuiNavigationLogo> Custom color <input tuiSwitch type="checkbox" [ngModel]="color" (ngModelChange)="onColor($event)" />
-</span>
+<label tuiNavigationLogo> Custom color <input tuiSwitch type="checkbox" [ngModel]="color" (ngModelChange)="onColor($event)" />
+</label>
 <button tuiButton tuiChevron tuiDropdown="Use TuiThemeColorService to control color" tuiDropdownAuto type="button" > How to? </button>
 </header>
 <main tuiNavigationMain>
