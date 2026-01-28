@@ -9121,6 +9121,11 @@ export default class Example {
 <input placeholder="I am placeholder" tuiInput [(ngModel)]="value" />
 <tui-icon tuiCopy />
 </tui-textfield>
+<tui-textfield multi [rows]="1" [style.margin-block-start.rem]="1" [style.max-inline-size.rem]="17" >
+<input tuiInputChip [(ngModel)]="multiValue" />
+<tui-input-chip *tuiItem />
+<tui-icon tuiCopy />
+</tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -9129,16 +9134,18 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiInput} from '@taiga-ui/core';
-import {TuiCopy} from '@taiga-ui/kit';
+import {TuiCopy, TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiCopy, TuiIcon, TuiInput],
+    imports: [FormsModule, TuiCopy, TuiIcon, TuiInput, TuiInputChip],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
     protected value = '';
+
+    protected multiValue = ['I', 'love', 'Taiga UI'];
 }
 ```
 
