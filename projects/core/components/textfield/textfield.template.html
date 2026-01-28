@@ -18,10 +18,10 @@
         type="button"
         class="t-clear"
         [iconStart]="icons.close"
-        (click)="accessor?.setValue(null)"
-        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+        (click.capture.prevent)="clear(null)"
+        (pointerdown.zoneless.stop)="(0)"
     >
-        {{ clear() }}
+        {{ clearWord() }}
     </button>
     <ng-container #vcr />
     <ng-content select="tui-icon" />
