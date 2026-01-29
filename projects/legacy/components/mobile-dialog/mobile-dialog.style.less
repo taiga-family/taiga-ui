@@ -61,7 +61,12 @@
 
     :host:not(._ios) & {
         margin: 0.5rem 0 0.5rem 0.5rem;
-        float: inline-end;
+        float: right;
+
+        // Safari 15+
+        @supports (float: inline-end) {
+            float: inline-end;
+        }
 
         &_column {
             display: block;

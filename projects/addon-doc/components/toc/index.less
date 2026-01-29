@@ -4,10 +4,15 @@
     position: sticky;
     top: 6rem;
     display: block;
-    float: inline-end;
+    float: right;
     inline-size: 14rem;
     margin-inline-start: 5rem;
     font: var(--tui-font-body-s);
+
+    // Safari 15+
+    @supports (float: inline-end) {
+        float: inline-end;
+    }
 
     &:empty {
         display: none;
