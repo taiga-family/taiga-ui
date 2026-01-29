@@ -1,16 +1,15 @@
 import {computed, Directive, inject} from '@angular/core';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
-import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
 
 import {TuiAppBarComponent} from './app-bar.component';
 
-// TODO: Make size automatic based on tuiPlatform in v5
 @Directive({selector: 'tui-app-bar[tuiAppBarSize]'})
 export class TuiAppBarSizeDirective {
-    private readonly breakpoint = inject(TUI_BREAKPOINT);
+    private readonly platform = inject(TUI_PLATFORM);
     protected readonly size = tuiDirectiveBinding(
         TuiAppBarComponent,
         'size',
-        computed(() => (this.breakpoint() === 'mobile' ? 'm' : 'l')),
+        computed(() => (this.platform === 'web' ? 'l' : 'm')),
     );
 }
