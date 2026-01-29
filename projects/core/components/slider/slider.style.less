@@ -10,6 +10,7 @@
 @transform-noop: scale(1);
 @hitbox-padding: max(calc(@hitbox - @thumb-diameter), ~'0rem');
 @outline: 0 0 0 2px inset var(--tui-border-focus);
+@cursor: var(--tui-thumb-cursor, ew-resize);
 
 /*
 The most left point of the track is the most left point of the thumb (at the zero-position).
@@ -37,7 +38,7 @@ The first tick should start at the center of thumb to set correct position for a
     transform: var(--tui-slider-thumb-transform, @transform-noop);
 
     :not(:disabled)& {
-        cursor: ew-resize;
+        cursor: @cursor;
 
         &:hover,
         :active& {
@@ -71,7 +72,7 @@ The first tick should start at the center of thumb to set correct position for a
     background-clip: content-box;
 
     &:active {
-        cursor: ew-resize;
+        cursor: @cursor;
 
         &::before {
             opacity: 0.2;
@@ -95,7 +96,6 @@ The first tick should start at the center of thumb to set correct position for a
         block-size: @thumb-diameter;
         border-radius: 50%;
         transform: var(--tui-slider-thumb-transform, @transform-noop);
-        cursor: ew-resize;
         background: currentColor;
         opacity: 0;
 
