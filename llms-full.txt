@@ -30281,19 +30281,19 @@ Taiga UI styling of native html tag '"> to choose a value from a limited range R
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, ReactiveFormsModule, TuiSlider],
+    imports: [ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected formControl = new FormControl(60);
+    protected readonly formControl = new FormControl(60);
 }
 ```
 
@@ -30477,6 +30477,33 @@ export default class Example {
 }
 ```
 
+#### Vertical
+
+**Template:**
+```html
+<button appearance="icon" iconStart="@tui.volume-2" size="s" tuiDropdown tuiDropdownAppearance="neutral" tuiDropdownAuto tuiDropdownDirection="top" tuiDropdownLimitWidth="fixed" tuiIconButton type="button" > Volume <input *tuiDropdown tuiSlider type="range" [(ngModel)]="value" />
+</button>
+```
+**TypeScript:**
+```ts
+import {Component, ViewEncapsulation} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiSlider} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiButton, TuiDropdown, TuiSlider],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+})
+export default class Example {
+    protected value = 80;
+}
+```
+
 
 ### TypeScript
 
@@ -30500,6 +30527,7 @@ export default class Page {
         'Disabled',
         'KeySteps',
         'Complex',
+        'Vertical',
     ];
 
     protected readonly segmentsVariants: Array<number[] | number> = [
