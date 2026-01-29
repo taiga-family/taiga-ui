@@ -85,8 +85,13 @@
     }
 
     .link {
-        float: inline-end;
+        float: right;
         font: var(--tui-font-text-m);
+
+        // Safari 15+
+        @supports (float: inline-end) {
+            float: inline-end;
+        }
     }
 
     .scrollbar {
