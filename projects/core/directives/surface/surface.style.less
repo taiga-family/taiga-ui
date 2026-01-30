@@ -29,6 +29,11 @@
             mix-blend-mode: multiply;
         }
     });
+
+    tui-dialog:not([data-size='fullscreen'],[data-size='page']) &,
+    tui-sheet-dialog & {
+       --tui-background-elevation-1: var(--tui-background-elevation-2);
+    }
 }
 
 button[data-surface] {
@@ -130,8 +135,7 @@ input[tuiSurfaceLayer] {
 }
 
 // TODO: Drop elevated and box-shadow/background-color
-[tuiSurface][data-surface='elevated'],
-[tuiSurface][data-surface='floating'] {
+[tuiSurface][data-surface='elevated'] {
     box-shadow: var(--tui-shadow-small);
     background-color: var(--tui-background-elevation-2);
 
@@ -152,8 +156,7 @@ input[tuiSurfaceLayer] {
 }
 
 // TODO: Drop flat and background-color
-[tuiSurface][data-surface='flat'],
-[tuiSurface][data-surface='neutral'] {
+[tuiSurface][data-surface='flat'] {
     background-color: var(--tui-background-neutral-1);
 
     .interactive({
@@ -166,5 +169,37 @@ input[tuiSurfaceLayer] {
                 transform: scale(1.15);
             }
         }
+    });
+}
+
+[tuiSurface][data-appearance='floating'] {
+    background: var(--tui-background-elevation-1);
+
+    .appearance-hover({
+        box-shadow: var(--tui-shadow-small-hover);
+        transform: translate3d(0, -0.25rem, 0);
+    });
+
+    .appearance-active({
+        box-shadow: var(--tui-shadow-small);
+        transform: scale(0.95);
+        background: var(--tui-background-elevation-1);
+    });
+}
+
+[tuiSurface][data-appearance='neutral'] {
+    background: conic-gradient(var(--tui-background-neutral-1) 0 0), conic-gradient(var(--tui-background-base) 0 0);
+
+    [tuiTheme='dark'] &,
+    [tuiTheme='dark']& {
+        background: var(--tui-background-elevation-1);
+    }
+
+    .appearance-hover({
+        transform: scale(1.15);
+    });
+
+    .appearance-active({
+        transform: scale(0.95);
     });
 }
