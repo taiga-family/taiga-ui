@@ -225,6 +225,11 @@ tui-textfield:where(*&) {
         &[inputmode='none'] {
             caret-color: transparent;
         }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+        }
     }
 
     & > .t-template {
