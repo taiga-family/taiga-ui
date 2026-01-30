@@ -12,35 +12,9 @@ tui-icon[tuiChevron]::before {
     [tuiButton][data-size='m']& {
         margin-inline-end: -0.125rem;
     }
-
-    tui-textfield[data-size='s']& {
-        margin-inline-end: calc(-1 * var(--t-padding));
-    }
-
-    tui-textfield[data-size='m']& {
-        margin-inline-end: calc(0.125rem - var(--t-padding));
-    }
-
-    tui-textfield[data-size='l']& {
-        margin-inline-end: calc(0.25rem - var(--t-padding));
-    }
 }
 
 [tuiChevron][tuiIcons]._chevron-rotated::after,
 tui-icon[tuiChevron]._chevron-rotated::before {
     transform: rotate(180deg);
-}
-
-tui-textfield[tuiChevron][data-icon-end] {
-    &[data-size='l'] {
-        --t-end: 2.375rem;
-    }
-
-    &[data-size='m'] {
-        --t-end: 1.75rem;
-    }
-
-    &[data-size='s'] {
-        --t-end: 1.5rem;
-    }
 }
