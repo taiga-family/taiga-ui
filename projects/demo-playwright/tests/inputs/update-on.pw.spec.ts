@@ -1,7 +1,7 @@
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {type DocRoutePageGroup, pages} from '../../../demo/src/modules/app/pages';
+import {type DocRoutePageGroup, pages} from '../../../demo/src/pages/app/pages';
 
 const inputs =
     (pages as DocRoutePageGroup[]).find((page) => page.title === 'Inputs')?.subPages ??
