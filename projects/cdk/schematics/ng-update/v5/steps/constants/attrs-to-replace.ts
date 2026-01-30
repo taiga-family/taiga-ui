@@ -18,11 +18,11 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '[iconStart]'},
     },
     {
-        from: {attrName: 'tuiButtonClose'},
+        from: {attrName: 'tuiButtonClose', withTagNames: ['*']},
         to: {attrName: 'tuiButtonX'},
     },
     {
-        from: {attrName: '*tuiTextfieldDropdown'},
+        from: {attrName: '*tuiTextfieldDropdown', withTagNames: ['*']},
         to: {attrName: '*tuiDropdown'},
     },
 ];
