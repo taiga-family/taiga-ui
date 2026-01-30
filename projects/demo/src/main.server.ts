@@ -5,10 +5,10 @@ import {provideServerRouting, RenderMode, type ServerRoute} from '@angular/ssr';
 import {DemoRoute} from '@demo/routes';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
-import {App} from './modules/app/app.component';
-import {config} from './modules/app/app.config';
-import {ROUTES} from './modules/app/app.routes';
-import {ServerErrorHandler} from './modules/app/server-error-handler';
+import {App} from './pages/app/app.component';
+import {config} from './pages/app/app.config';
+import {ROUTES} from './pages/app/app.routes';
+import {ServerErrorHandler} from './pages/app/server-error-handler';
 
 /* eslint-disable @typescript-eslint/require-await */
 

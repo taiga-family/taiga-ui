@@ -12,7 +12,7 @@ import {
 
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms.txt');
 const TEMPLATE_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms.template.txt');
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
 
 function prettifyTitle(name: string): string {
     return name.replaceAll('-', ' ').replaceAll(/\b\w/g, (c) => c.toUpperCase());
@@ -99,7 +99,7 @@ async function main(): Promise<void> {
         for (const c of sortedLinks) {
             const url = `https://taiga-ui.dev${c.route}`;
             // Try to extract a per-entity description from its index.html
-            const folderPath = path.join(MODULES_PATH, c.route.replace(/^\//, ''));
+            const folderPath = path.join(PAGES_PATH, c.route.replace(/^\//, ''));
             let brief = '';
 
             try {

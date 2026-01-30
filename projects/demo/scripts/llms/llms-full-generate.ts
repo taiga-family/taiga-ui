@@ -19,7 +19,7 @@ import {
     shouldIncludeSection,
 } from './utils';
 
-const DEFAULT_MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const DEFAULT_PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
 const DEFAULT_OUTPUT_FILE = path.resolve(
     process.cwd(),
     'projects/demo/src/llms-full.txt',
@@ -126,7 +126,7 @@ function parseArgs(argv: string[]): CliOptions {
     }
 
     if (options.roots.length === 0) {
-        options.roots = [DEFAULT_MODULES_PATH];
+        options.roots = [DEFAULT_PAGES_PATH];
     }
 
     return options;
@@ -256,7 +256,7 @@ async function main(): Promise<void> {
     }
 
     async function scanAdditionalRoot(root: string): Promise<string[]> {
-        if (root === DEFAULT_MODULES_PATH) {
+        if (root === DEFAULT_PAGES_PATH) {
             return getAllFolders();
         }
 

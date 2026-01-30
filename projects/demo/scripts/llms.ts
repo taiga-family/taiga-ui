@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-full.txt');
 
-// child folders of the main `modules` folder from which the content will be taken
+// child folders of the main `pages` folder from which the content will be taken
 const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
 interface ComponentHeader {
@@ -282,12 +282,12 @@ async function getAllFolders(): Promise<string[]> {
     }
 
     for (const subFolder of FOLDERS_TO_SCAN) {
-        const dirPath = path.join(MODULES_PATH, subFolder);
+        const dirPath = path.join(PAGES_PATH, subFolder);
 
         if (await fileExists(dirPath)) {
             await scanDir(dirPath, 0);
         } else {
-            console.warn(`Folder ${subFolder} not found in ${MODULES_PATH}`);
+            console.warn(`Folder ${subFolder} not found in ${PAGES_PATH}`);
         }
     }
 
@@ -324,14 +324,14 @@ async function getMarkdownFiles(startPath: string): Promise<string[]> {
 async function processMarkdownFile(filePath: string): Promise<string> {
     const content = await fs.readFile(filePath, 'utf-8');
 
-    const relativePath = path.relative(MODULES_PATH, filePath);
+    const relativePath = path.relative(PAGES_PATH, filePath);
     const title = `# ${relativePath}`;
 
     return `${title}\n\n${content.trim()}\n`;
 }
 
 async function main(): Promise<void> {
-    const EXAMPLES_MD_PATH = path.join(MODULES_PATH, 'app', 'home', 'examples');
+    const EXAMPLES_MD_PATH = path.join(PAGES_PATH, 'app', 'home', 'examples');
 
     console.info(`Search .md files in: ${EXAMPLES_MD_PATH}`);
 
@@ -345,11 +345,11 @@ async function main(): Promise<void> {
         output.push(await processMarkdownFile(mdFile));
     }
 
-    console.info(`Scanning component folders in: ${MODULES_PATH}`);
+    console.info(`Scanning component folders in: ${PAGES_PATH}`);
     const allFolders = await getAllFolders();
 
     if (allFolders.length === 0) {
-        console.warn(`Folders with content not found in ${MODULES_PATH}`);
+        console.warn(`Folders with content not found in ${PAGES_PATH}`);
 
         return;
     }
