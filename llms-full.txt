@@ -38172,8 +38172,8 @@ export default class Example {}
 
 **Template:**
 ```html
-<button tuiSurface="floating" type="button" > Elevated </button>
-<button tuiSurface="neutral" type="button" > Flat </button>
+<button tuiSurface="floating" type="button" > Floating </button>
+<button tuiSurface="neutral" type="button" > Neutral </button>
 ```
 **TypeScript:**
 ```ts
