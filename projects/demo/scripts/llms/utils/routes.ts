@@ -20,7 +20,7 @@ export async function extractComponentsFromRoutes(): Promise<ComponentInfo[]> {
     const demoRoutesContent = await fs.readFile(demoRoutesPath, 'utf-8');
 
     // Extract route definitions using a more robust regex
-    const routeMatches = demoRoutesContent.match(/(\w+):\s*'([^']+)'/g);
+    const routeMatches = demoRoutesContent.match(/\w+:\s*'[^']+'/g);
 
     if (!routeMatches) {
         console.warn('No route matches found');

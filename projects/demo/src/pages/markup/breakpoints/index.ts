@@ -15,7 +15,7 @@ import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less';
  * // code comment
  * ```
  */
-const CODE_COMMENTS = /(\/\*([^*]|(\*+[^*/]))*\*+\/)|(\/\/.*)/g;
+const CODE_COMMENTS = /\/\*(?:[^*]|\*+[^*/])*\*+\/|\/\/.*/g;
 
 function parseBreakpoints(file: string): Array<{name: string; value: string}> {
     return file

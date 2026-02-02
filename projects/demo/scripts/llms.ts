@@ -36,14 +36,14 @@ async function readIndexHtml(folderPath: string): Promise<string> {
 
 // parse metadata from tui-doc-page
 function getComponentHeader(content: string): ComponentHeader {
-    const tagMatch = /<tui-doc-page\s+([^>]*)>/i.exec(content);
+    const tagMatch = /<tui-doc-page\b([^>]*)>/i.exec(content);
 
     if (!tagMatch?.[1]) {
         return {header: null, package: null, type: null, deprecated: false};
     }
 
     const tagContent = tagMatch[1];
-    const deprecated = /(^|\s)deprecated(\s|$)/i.test(tagContent);
+    const deprecated = /(?:^|\s)deprecated(?:\s|$)/i.test(tagContent);
 
     const headerMatch = /header="([^"]*)"/i.exec(tagContent);
     const header = headerMatch?.[1]?.trim() || null;
@@ -71,7 +71,7 @@ function getComponentDescription(content: string): string | undefined {
     const cleanContent = templateContent
         ?.replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
         .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
-        .replaceAll(/<((\/?)(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
+        .replaceAll(/<(\/?(?:p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
         .replaceAll(/<[^>]+>/g, '')
         .trim();
 
@@ -114,7 +114,7 @@ function getComponentExample(content: string): string {
     }
 
     const html = match[1]
-        ?.replaceAll(/<(\/?(tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
+        ?.replaceAll(/<(\/?(?:tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
         .trim();
 
     return `\n### Example\n\n\`\`\`html\n${html}\n\`\`\``;
@@ -129,7 +129,7 @@ function getComponentApiFromTable(content: string): string {
     }
 
     const tableContent = tableMatch[1];
-    const apiRows = tableContent?.match(/<tr[^>]+name="([^"]+)"[^>]*>[\s\S]*?<\/tr>/gi);
+    const apiRows = tableContent?.match(/<tr[^>]+name="[^"]+"[^>]*>[\s\S]*?<\/tr>/gi);
 
     if (!apiRows) {
         return '';
@@ -140,7 +140,7 @@ function getComponentApiFromTable(content: string): string {
     for (const row of apiRows) {
         const nameMatch = /name="([^"]+)"/i.exec(row);
         const typeMatch = /type="([^"]+)"/i.exec(row);
-        const descriptionMatch = />([^<>]+?)<\/tr>/i.exec(row);
+        const descriptionMatch = />([^<>]+)<\/tr>/i.exec(row);
 
         if (nameMatch && typeMatch) {
             const name = nameMatch[1]?.trim();
@@ -169,7 +169,7 @@ function getComponentApiFromTemplates(content: string): string {
 
     const templatesContent = templateMatch[1];
     const templateRows = templatesContent?.match(
-        /<ng-template[^>]+documentationPropertyName="([^"]+)"[^>]+documentationPropertyType="([^"]+)"[^>]*>([\s\S]*?)<\/ng-template>/gi,
+        /<ng-template[^>]+documentationPropertyName="[^"]+"[^>]+documentationPropertyType="[^"]+"[^>]*>[\s\S]*?<\/ng-template>/gi,
     );
 
     if (!templateRows) {

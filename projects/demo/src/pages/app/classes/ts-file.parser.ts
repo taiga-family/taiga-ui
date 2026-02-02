@@ -19,7 +19,7 @@ export class TsFileParser {
 
     public get className(): string {
         const [, className] =
-            /(?:export(?: default)? class\s)(\w*)/i.exec(this.rawFileContent) || [];
+            /export(?: default)? class\s(\w*)/i.exec(this.rawFileContent) || [];
 
         return className || '';
     }

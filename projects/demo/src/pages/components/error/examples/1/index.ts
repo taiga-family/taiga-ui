@@ -14,7 +14,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
 export function passwordValidator(field: AbstractControl): Validators | null {
-    return field.value && /^[a-zA-Z]+$/.test(field.value)
+    return field.value && /^[a-z]+$/i.test(field.value)
         ? null
         : {other: 'Only latin letters are allowed'};
 }

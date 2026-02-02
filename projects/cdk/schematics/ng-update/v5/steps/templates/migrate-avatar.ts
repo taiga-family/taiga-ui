@@ -178,7 +178,7 @@ function getFallbackBinding(value?: string): {source: string; fallback: string} 
     }
 
     const fallbackRegExp =
-        /^([^|]+?)\s*\|\s*tuiFallbackSrc\s*:\s*(['"])([^'"]+)\2(?:\s*\|\s*async)?\s*$/;
+        /^([^|]*\S)\s*\|\s*tuiFallbackSrc\s*:\s*(['"])([^'"]+)\2(?:\s*\|\s*async)?\s*$/;
 
     const match = fallbackRegExp.exec(value);
 

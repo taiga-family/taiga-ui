@@ -62,7 +62,7 @@ function parseMinByConfig(config: string): MinByConfig {
         .split(',')
         .map((x) => x.trim())
         .reduce<MinByConfig>((acc, part) => {
-            const match = /^(.+?)\s*>=\s*(.+)$/.exec(part);
+            const match = /^(\S(?:.*\S)?)\s*>=\s*(\S(?:.*\S)?)$/.exec(part);
 
             if (!match) {
                 return acc;

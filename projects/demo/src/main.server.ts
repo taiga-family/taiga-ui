@@ -42,7 +42,7 @@ const serverConfig = mergeApplicationConfig(config, {
                     case DemoRoute.Surface:
                         return withTabs(path, ['Layers']);
                     default:
-                        return /^(components|directives|pipes|services|utils|layout|navigation|charts|experimental|legacy)/.exec(
+                        return /^(?:components|directives|pipes|services|utils|layout|navigation|charts|experimental|legacy)/.exec(
                             path,
                         )
                             ? withTabs(path, ['API'])
