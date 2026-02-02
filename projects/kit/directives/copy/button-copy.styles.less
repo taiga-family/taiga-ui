@@ -1,0 +1,16 @@
+tui-hint:has([tuiButtonCopy]) {
+    display: flex;
+    padding: 0.375rem;
+    max-inline-size: none;
+}
+
+[tuiButtonCopy]:not(:first-of-type) {
+    margin-inline-start: calc(0.75rem - 1px);
+    border-image: linear-gradient(
+            transparent 0.375rem,
+            var(--tui-border-normal) 0.375rem,
+            var(--tui-border-normal) calc(100% - 0.375rem),
+            transparent calc(100% - 0.375rem)
+        )
+        0 0 0 1 / 0 1px / 0 0.375rem;
+}
