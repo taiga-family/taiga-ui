@@ -15,7 +15,7 @@ import {delay, of} from 'rxjs';
 
 function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
     return ({value}) =>
-        value && /^[a-zA-Z]+$/.test(value)
+        value && /^[a-z]+$/i.test(value)
             ? of(null)
             : of({error: 'Only latin letters allowed'}).pipe(delay(isE2E ? 0 : 3000));
 }

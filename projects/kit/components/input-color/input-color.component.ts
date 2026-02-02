@@ -25,7 +25,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';
 
-const REGEX = /[0-9a-fA-F]/;
+const REGEX = /[0-9a-f]/i;
 const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';
 
 @Component({

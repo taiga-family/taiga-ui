@@ -9,16 +9,16 @@ export function processTs(fileContent: string): string {
 
     return tsFileContent
         .toString()
-        .replaceAll(/import {DemoRoute} from '.*';\n/gm, '')
+        .replaceAll(/import \{DemoRoute\} from '.*';\n/g, '')
         .replaceAll(
-            /protected readonly routes = DemoRoute;/gm,
+            'protected readonly routes = DemoRoute;',
             'protected readonly routes: any = {};',
         )
-        .replaceAll(/import {encapsulation} from '.*';\n/gm, '')
-        .replaceAll(/import {changeDetection} from '.*';\n/gm, '')
-        .replaceAll(/\n +encapsulation,/gm, '')
+        .replaceAll(/import \{encapsulation\} from '.*';\n/g, '')
+        .replaceAll(/import \{changeDetection\} from '.*';\n/g, '')
+        .replaceAll(/\n +encapsulation,/g, '')
         .replaceAll(
-            /changeDetection,/gm,
+            'changeDetection,',
             'changeDetection: ChangeDetectionStrategy.OnPush,',
         );
 }

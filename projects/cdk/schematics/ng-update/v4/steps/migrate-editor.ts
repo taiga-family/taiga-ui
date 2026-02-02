@@ -96,7 +96,7 @@ export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema):
             sourceFile
                 .getFullText()
                 .replaceAll(
-                    /import\(['"`](@tinkoff|@taiga-ui)\/(tui-editor|addon-editor)\/(.*)['"`]\)/g,
+                    /import\(['"`](?:@tinkoff|@taiga-ui)\/(?:tui-editor|addon-editor)\/.*['"`]\)/g,
                     "import('@taiga-ui/editor')",
                 ),
         ),

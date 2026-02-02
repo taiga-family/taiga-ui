@@ -242,7 +242,7 @@ function normalizeBlock(value: string): string {
 
 function normalizePlainText(value: string): string {
     const trimmed = value.trim();
-    const hasMarkup = /<[^>]+>/.test(trimmed) || /{{|}}/.test(trimmed);
+    const hasMarkup = /<[^>]+>/.test(trimmed) || /\{\{|\}\}/.test(trimmed);
 
     if (hasMarkup) {
         return value;
