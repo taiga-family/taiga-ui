@@ -11705,6 +11705,44 @@ export default class Example {
 }
 ```
 
+#### ButtonCopy
+
+**Template:**
+```html
+&lt;p&gt;
+&lt;span tuiHintDirection=&quot;top&quot; [tuiHint]=&quot;inkin&quot; &gt; Alexander Inkin &lt;/span&gt;
+&lt;ng-template #inkin&gt;
+&lt;button tuiButtonCopy=&quot;Alexander Inkin&quot; tuiTheme=&quot;dark&quot; type=&quot;button&quot; &gt; Name &lt;/button&gt;
+&lt;button tuiButtonCopy=&quot;@a.inkin&quot; tuiTheme=&quot;dark&quot; type=&quot;button&quot; &gt; Login &lt;/button&gt;
+&lt;/ng-template&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;span tuiHintAppearance=&quot;dark&quot; tuiHintDirection=&quot;top&quot; [tuiHint]=&quot;sedov&quot; &gt; Roman Sedov &lt;/span&gt;
+&lt;ng-template #sedov&gt;
+&lt;button tuiButtonCopy=&quot;Roman Sedov&quot; type=&quot;button&quot; &gt; Name &lt;/button&gt;
+&lt;button tuiButtonCopy=&quot;@r.sedov&quot; type=&quot;button&quot; &gt; Login &lt;/button&gt;
+&lt;/ng-template&gt;
+&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiHint} from &#039;@taiga-ui/core&#039;;
+import {TuiCopy} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiCopy, TuiHint],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
 
 ### TypeScript
 
@@ -11720,7 +11758,13 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Sizes&#039;, &#039;InputCopy&#039;, &#039;With CopyProcessor&#039;];
+    protected readonly examples = [
+        &#039;Basic&#039;,
+        &#039;Sizes&#039;,
+        &#039;InputCopy&#039;,
+        &#039;With CopyProcessor&#039;,
+        &#039;ButtonCopy&#039;,
+    ];
 }
 ```
 
@@ -18245,6 +18289,58 @@ export default class Example {
 }
 ```
 
+#### Stringify
+
+**Template:**
+```html
+&lt;label tuiLabel&gt;
+&lt;tui-textfield multi tuiChevron [stringify]=&quot;stringify&quot; &gt;
+&lt;input tuiInputChip [placeholder]=&quot;value.length ? &#039;&#039; : &#039;Picking users&#039;&quot; [(ngModel)]=&quot;value&quot; /&gt;
+&lt;tui-input-chip *tuiItem /&gt;
+&lt;tui-data-list *tuiTextfieldDropdown tuiMultiSelectGroup &gt;
+&lt;button *ngFor=&quot;let item of items&quot; new tuiOption [value]=&quot;item.nickname&quot; &gt; {{ item.name }} ({{ item.nickname }}) &lt;/button&gt;
+&lt;/tui-data-list&gt;
+&lt;/tui-textfield&gt;
+&lt;/label&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiDataList, TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {TuiChevron, TuiInputChip, TuiMultiSelect} from &#039;@taiga-ui/kit&#039;;
+import {NgForOf} from &#039;@angular/common&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        NgForOf,
+        TuiChevron,
+        TuiDataList,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiTextfield,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: string[] = [];
+
+    protected items = [
+        {nickname: &#039;a.inkin&#039;, name: &#039;Alex Inkin&#039;},
+        {nickname: &#039;r.sedov&#039;, name: &#039;Roman Sedov&#039;},
+    ];
+
+    protected readonly stringify = (value: string): string =&gt;
+        this.items.find((item) =&gt; item.nickname === value)?.name ?? &#039;&#039;;
+}
+```
+
 #### Chips
 
 **Template:**
@@ -18757,6 +18853,7 @@ export default class PageComponent {
         &#039;Mobile&#039;,
         &#039;Table&#039;,
         &#039;Virtual scroll&#039;,
+        &#039;Stringify&#039;,
     ];
 }
 ```
@@ -38182,8 +38279,8 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;button tuiSurface=&quot;floating&quot; type=&quot;button&quot; &gt; Elevated &lt;/button&gt;
-&lt;button tuiSurface=&quot;neutral&quot; type=&quot;button&quot; &gt; Flat &lt;/button&gt;
+&lt;button tuiSurface=&quot;floating&quot; type=&quot;button&quot; &gt; Floating &lt;/button&gt;
+&lt;button tuiSurface=&quot;neutral&quot; type=&quot;button&quot; &gt; Neutral &lt;/button&gt;
 ```
 **TypeScript:**
 ```ts
