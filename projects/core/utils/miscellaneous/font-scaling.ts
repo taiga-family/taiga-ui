@@ -3,6 +3,7 @@ import {
     inject,
     InjectionToken,
     type Provider,
+    type Signal,
     signal,
     type WritableSignal,
 } from '@angular/core';
@@ -10,7 +11,7 @@ import {TUI_FONT_SIZE_HANDLER} from '@taiga-ui/cdk/directives/font-size';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
-export const TUI_FONT_OFFSET = new InjectionToken<WritableSignal<number>>(
+export const TUI_FONT_OFFSET = new InjectionToken<Signal<number>>(
     ngDevMode ? 'TUI_FONT_OFFSET' : '',
     {factory: () => signal(0)},
 );
@@ -19,7 +20,7 @@ export function tuiEnableFontScaling(): Provider {
     return {
         provide: TUI_FONT_SIZE_HANDLER,
         useFactory: () => {
-            const offset = inject(TUI_FONT_OFFSET);
+            const offset = inject<WritableSignal<number>>(TUI_FONT_OFFSET);
             const {documentElement} = inject(DOCUMENT);
 
             return (size: number): void => {

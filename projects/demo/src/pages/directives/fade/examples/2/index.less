@@ -5,12 +5,13 @@
 }
 
 .fade {
-    .transition(height);
+    .transition(max-block-size);
 
-    block-size: 3.75rem;
+    max-block-size: calc(3 * (1.25rem + var(--tui-font-offset)));
+    interpolate-size: allow-keywords;
 
     &_expanded {
-        block-size: 10rem;
+        max-block-size: 15rem;
     }
 }
 
