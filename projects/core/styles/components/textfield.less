@@ -26,8 +26,8 @@ tui-textfield:where(*&) {
     isolation: isolate;
 
     // TODO: Remove in next PR
-    &:has([tuiInputPin]),
-    &[data-size='s'] {
+    &[data-size='s'],
+    &:has([tuiInputPin]) {
         gap: 0;
     }
 
