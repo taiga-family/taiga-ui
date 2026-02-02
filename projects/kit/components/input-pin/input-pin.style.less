@@ -14,6 +14,10 @@
     border: none;
     outline: none;
 
+    & ::ng-deep + .t-content {
+        gap: inherit !important;
+    }
+
     // Hack for IOS Safari
     --t-caret-color: rgba(255, 255, 255, 0.01);
 
@@ -52,9 +56,11 @@
     border-radius: inherit;
     pointer-events: auto;
     cursor: text;
+    margin-inline-start: 0.25rem;
 
     &:first-child {
         pointer-events: none;
+        margin: 0;
     }
 
     &[data-focus='true'] .t-value {

@@ -10,6 +10,7 @@ tui-textfield:where(*&) {
     --t-label-font: var(--tui-font-body-s);
     --t-end: ~'0rem';
     --t-start: ~'0rem';
+    --t-side: ~'0rem';
 
     position: relative;
     display: flex;
@@ -21,7 +22,6 @@ tui-textfield:where(*&) {
     font: var(--tui-font-ui-m);
     line-height: 1.25rem;
     box-sizing: border-box;
-    gap: 0 0.25rem;
     isolation: isolate;
 
     &[tuiAppearance] {
@@ -305,7 +305,7 @@ tui-textfield:where(*&) {
         display: flex;
         block-size: var(--t-height);
         align-items: center;
-        gap: inherit;
+        gap: 0.25rem;
         margin-inline-start: auto;
         isolation: isolate;
         border-radius: inherit;
