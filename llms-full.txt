@@ -11695,6 +11695,44 @@ export default class Example {
 }
 ```
 
+#### ButtonCopy
+
+**Template:**
+```html
+<p>
+<span tuiHintDirection="top" [tuiHint]="inkin" > Alexander Inkin </span>
+<ng-template #inkin>
+<button tuiButtonCopy="Alexander Inkin" tuiTheme="dark" type="button" > Name </button>
+<button tuiButtonCopy="@a.inkin" tuiTheme="dark" type="button" > Login </button>
+</ng-template>
+</p>
+<p>
+<span tuiHintAppearance="dark" tuiHintDirection="top" [tuiHint]="sedov" > Roman Sedov </span>
+<ng-template #sedov>
+<button tuiButtonCopy="Roman Sedov" type="button" > Name </button>
+<button tuiButtonCopy="@r.sedov" type="button" > Login </button>
+</ng-template>
+</p>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHint} from '@taiga-ui/core';
+import {TuiCopy} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiCopy, TuiHint],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
 
 ### TypeScript
 
@@ -11710,7 +11748,13 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Basic', 'Sizes', 'InputCopy', 'With CopyProcessor'];
+    protected readonly examples = [
+        'Basic',
+        'Sizes',
+        'InputCopy',
+        'With CopyProcessor',
+        'ButtonCopy',
+    ];
 }
 ```
 
