@@ -26,7 +26,8 @@ tui-textfield:where(*&) {
     isolation: isolate;
 
     // TODO: Remove in next PR
-    &:has([tuiInputPin]) {
+    &:has([tuiInputPin]),
+    &[data-size='s'] {
         gap: 0;
     }
 
@@ -101,7 +102,6 @@ tui-textfield:where(*&) {
         --t-padding: var(--tui-padding-s);
 
         border-radius: var(--tui-radius-m);
-        gap: 0;
         font: var(--tui-font-ui-s);
         line-height: 1rem;
 
@@ -125,6 +125,7 @@ tui-textfield:where(*&) {
         }
 
         & > .t-content {
+            gap: 0;
             margin-inline-end: -0.375rem;
         }
     }
