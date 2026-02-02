@@ -31,8 +31,13 @@
 
 .t-close {
     display: none;
-    float: inline-end;
+    float: right;
     margin-inline-end: -0.25rem;
+
+    // Safari 15+
+    @supports (float: inline-end) {
+        float: inline-end;
+    }
 
     :host-context(.t-wrapper_closeable) & {
         display: block;

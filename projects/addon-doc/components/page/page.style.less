@@ -81,9 +81,14 @@
 .t-see-also {
     min-inline-size: 18.75rem;
     inline-size: 30%;
-    float: inline-end;
+    float: right;
     margin: 0 0 1rem;
     margin-inline-start: 1.5rem;
+
+    // Safari 15+
+    @supports (float: inline-end) {
+        float: inline-end;
+    }
 
     @media @tui-mobile {
         float: none;
