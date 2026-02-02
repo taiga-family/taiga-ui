@@ -16,8 +16,8 @@
  * @see-also
  * Icons, Appearance, Link
  */
-[tuiButton],
-[tuiIconButton] {
+[tuiButton]:where(*&),
+[tuiIconButton]:where(*&) {
     --t-size: var(--tui-height-l);
     --t-radius: var(--tui-radius-l);
     --t-gap: 0.25rem;
@@ -122,7 +122,7 @@
     }
 }
 
-[tuiIconButton] {
+[tuiIconButton]:where(*&) {
     gap: 0;
     inline-size: var(--t-size);
     font-size: 0 !important;

@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiOrientation, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
@@ -13,7 +14,11 @@ import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/group.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/core/styles/components/group.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-group'},
@@ -31,6 +36,7 @@ class Styles {}
         '[style.--t-group-mask]': 'collapsed() ? null : "none"',
         '[style.--t-group-mask-start]': 'collapsed() ? null : "none"',
         '[style.--t-group-mask-end]': 'collapsed() ? null : "none"',
+        'data-tui-version': TUI_VERSION,
     },
 })
 export class TuiGroup {

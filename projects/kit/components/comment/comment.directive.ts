@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     type TuiHorizontalDirection,
@@ -13,7 +14,11 @@ import {
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/comment.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/kit/styles/components/comment.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-comment'},
@@ -22,7 +27,10 @@ class Styles {}
 
 @Directive({
     selector: '[tuiComment]',
-    host: {'[attr.data-direction]': 'direction()'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '[attr.data-direction]': 'direction()',
+    },
 })
 export class TuiComment {
     protected readonly nothing = tuiWithStyles(Styles);

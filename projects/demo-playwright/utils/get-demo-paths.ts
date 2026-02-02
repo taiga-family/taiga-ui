@@ -2,7 +2,7 @@ import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc';
 
 // Knip problem
 // noinspection ES6PreferShortImport
-import {DemoRoute} from '../../demo/src/modules/app/demo-routes';
+import {DemoRoute} from '../../demo/src/pages/app/demo-routes';
 
 function flatPages(pages: TuiDocRoutePages): readonly TuiDocRoutePage[] {
     return pages.reduce(

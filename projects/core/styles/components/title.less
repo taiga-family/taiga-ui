@@ -18,7 +18,7 @@
  * @see-also
  * Label
  */
-[tuiTitle] {
+[tuiTitle]:where(*&) {
     position: relative;
     display: flex;
     min-inline-size: 0;
@@ -64,14 +64,14 @@
         margin: 0;
         font: inherit;
     }
+
+    [tuiSubtitle] {
+        font: var(--tui-font-ui-s);
+        margin: 0;
+    }
 }
 
-[tuiSubtitle] {
-    font: var(--tui-font-ui-s);
-    margin: 0;
-}
-
-[tuiButton] [tuiTitle] {
+[tuiButton]:where(*&) [tuiTitle] {
     margin-inline-end: auto;
 
     [tuiSubtitle] {

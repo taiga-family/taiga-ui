@@ -1,7 +1,7 @@
 @if (heading()) {
     <header tuiHeader="h6">
         <hgroup tuiTitle>
-            <h2>
+            <h3>
                 <a
                     appearance=""
                     routerLink="."
@@ -15,7 +15,7 @@
                 >
                     {{ heading() }}
                 </a>
-            </h2>
+            </h3>
             @if (description()) {
                 <p>
                     <ng-container *polymorpheusOutlet="description() as text">

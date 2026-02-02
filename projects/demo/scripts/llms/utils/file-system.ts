@@ -8,9 +8,9 @@ export interface ComponentHeader {
     deprecated: boolean;
 }
 
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
 
-// child folders of the main `modules` folder from which the content will be taken
+// child folders of the main `pages` folder from which the content will be taken
 const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
 export async function fileExists(filePath: string): Promise<boolean> {
@@ -623,12 +623,12 @@ export async function getAllFolders(): Promise<string[]> {
     }
 
     for (const subFolder of FOLDERS_TO_SCAN) {
-        const dirPath = path.join(MODULES_PATH, subFolder);
+        const dirPath = path.join(PAGES_PATH, subFolder);
 
         if (await fileExists(dirPath)) {
             await scanDir(dirPath, 0);
         } else {
-            console.warn(`Folder ${subFolder} not found in ${MODULES_PATH}`);
+            console.warn(`Folder ${subFolder} not found in ${PAGES_PATH}`);
         }
     }
 

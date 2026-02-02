@@ -7,6 +7,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -21,7 +22,11 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/notification.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/core/styles/components/notification.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-notification'},

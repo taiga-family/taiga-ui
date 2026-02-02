@@ -1,7 +1,7 @@
 @if (toc().length > 1) {
-    <h5 tuiTitle="s">
+    <h2 tuiTitle="s">
         <b>{{ text.toc }}</b>
-    </h5>
+    </h2>
     <nav>
         @for (item of toc(); track $index) {
             <a
@@ -18,9 +18,9 @@
         }
     </nav>
     @if (seeAlso.length) {
-        <h5 tuiTitle="s">
+        <h2 tuiTitle="s">
             <b>{{ text.seeAlso }}</b>
-        </h5>
+        </h2>
         @for (item of seeAlso; track $index) {
             <a
                 tuiLink

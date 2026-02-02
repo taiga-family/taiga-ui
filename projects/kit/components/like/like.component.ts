@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -17,7 +18,11 @@ import {TUI_LIKE_OPTIONS} from './like.options';
 @Component({
     selector: 'input[tuiLike][type=checkbox]',
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/like.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/kit/styles/components/like.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

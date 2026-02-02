@@ -7,6 +7,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
@@ -15,7 +16,11 @@ import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/appearance.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/core/styles/components/appearance.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-appearance'},
@@ -27,6 +32,7 @@ class Styles {}
     hostDirectives: [TuiTransitioned],
     host: {
         tuiAppearance: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-appearance]': 'tuiAppearance()',
         '[attr.data-state]': 'tuiAppearanceState()',
         '[attr.data-focus]': 'tuiAppearanceFocus()',

@@ -18,7 +18,7 @@ export class TuiExamplePipe implements PipeTransform {
         additionalFiles?: Record<string, TuiRawLoaderContent>,
     ): Record<string, TuiRawLoaderContent> {
         const directory = `${this.page.type()}/${tuiToKebab(this.page.header())}/examples/${index}`;
-        const ts = import(`../modules/${directory}/index.ts`, {
+        const ts = import(`../pages/${directory}/index.ts`, {
             with: {loader: 'text'},
         }).catch(() => EMPTY);
 
@@ -44,7 +44,7 @@ export class TuiExamplePipe implements PipeTransform {
 
 async function load(path: string): Promise<{default: string}> {
     try {
-        return await import(/* @vite-ignore */ `../modules/${path}`);
+        return await import(/* @vite-ignore */ `../pages/${path}`);
     } catch {
         return EMPTY;
     }

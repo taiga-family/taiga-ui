@@ -47,9 +47,7 @@
     }
 
     [tuiSubtitle] {
-        font: var(--tui-font-body-m);
         color: var(--tui-text-secondary);
-        margin: 0;
     }
 
     [tuiLink] {
@@ -119,6 +117,14 @@
         [tuiSubtitle],
         [tuiLink] {
             font: var(--tui-font-body-l);
+        }
+    }
+
+    &[data-size='h4'],
+    &[data-size='h5'],
+    &[data-size='h6'] {
+        [tuiSubtitle] {
+            font: var(--tui-font-body-m);
         }
     }
 }

@@ -18,7 +18,7 @@
             "@demo/emulate/ng-zone-options": ["projects/demo/src/emulate/ng-zone-options.ts"],
             "@demo/environments/*": ["projects/demo/src/environments/*"],
             "@demo/root-package": ["package.json"],
-            "@demo/routes": ["projects/demo/src/modules/app/demo-routes"],
+            "@demo/routes": ["projects/demo/src/pages/app/demo-routes"],
             "@demo/utils": ["projects/demo/src/utils/index"],
             "@taiga-ui/addon-charts": ["projects/addon-charts/index"],
             "@taiga-ui/addon-charts/*": ["projects/addon-charts/*"],

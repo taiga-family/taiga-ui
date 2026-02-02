@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-tui-textfield {
+tui-textfield:where(*&) {
     .scrollbar-hidden();
     .transition(color);
 
@@ -225,6 +225,11 @@ tui-textfield {
         &[inputmode='none'] {
             caret-color: transparent;
         }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+        }
     }
 
     & > .t-template {
@@ -342,11 +347,6 @@ tui-textfield {
 
     &:not([data-mode~='readonly']) {
         .appearance-focus({
-            [tuiInput]::placeholder,
-            [tuiInput]._empty {
-                color: var(--tui-text-tertiary);
-            }
-
             [tuiLabel] {
                 color: var(--tui-text-primary) !important;
                 font: var(--t-label-font);
