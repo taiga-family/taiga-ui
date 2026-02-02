@@ -18,7 +18,7 @@ tui-textfield[multi][multi]:where(*&) {
     }
 
     &::after {
-        inset-inline-start: calc(100% - var(--t-end));
+        inset-inline-start: calc(100% - var(--t-end) - var(--t-padding) + 0.25rem);
     }
 
     > .t-scrollbar {
@@ -156,6 +156,10 @@ tui-textfield[multi][multi]:where(*&) {
 
         &::before {
             inset-inline-start: -0.125rem;
+        }
+
+        &::after {
+            inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
         }
 
         &._with-label {
