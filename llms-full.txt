@@ -18235,6 +18235,58 @@ export default class Example {
 }
 ```
 
+#### Stringify
+
+**Template:**
+```html
+<label tuiLabel>
+<tui-textfield multi tuiChevron [stringify]="stringify" >
+<input tuiInputChip [placeholder]="value.length ? '' : 'Picking users'" [(ngModel)]="value" />
+<tui-input-chip *tuiItem />
+<tui-data-list *tuiTextfieldDropdown tuiMultiSelectGroup >
+<button *ngFor="let item of items" new tuiOption [value]="item.nickname" > {{ item.name }} ({{ item.nickname }}) </button>
+</tui-data-list>
+</tui-textfield>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
+import {NgForOf} from '@angular/common';
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        NgForOf,
+        TuiChevron,
+        TuiDataList,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: string[] = [];
+
+    protected items = [
+        {nickname: 'a.inkin', name: 'Alex Inkin'},
+        {nickname: 'r.sedov', name: 'Roman Sedov'},
+    ];
+
+    protected readonly stringify = (value: string): string =>
+        this.items.find((item) => item.nickname === value)?.name ?? '';
+}
+```
+
 #### Chips
 
 **Template:**
@@ -18747,6 +18799,7 @@ export default class PageComponent {
         'Mobile',
         'Table',
         'Virtual scroll',
+        'Stringify',
     ];
 }
 ```
