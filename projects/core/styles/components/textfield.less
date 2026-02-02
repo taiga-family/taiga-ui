@@ -22,7 +22,13 @@ tui-textfield:where(*&) {
     font: var(--tui-font-ui-m);
     line-height: 1.25rem;
     box-sizing: border-box;
+    gap: 0 0.25rem;
     isolation: isolate;
+
+    // TODO: Remove in next PR
+    &:has([tuiInputPin]) {
+        gap: 0;
+    }
 
     &[tuiAppearance] {
         outline: none;
