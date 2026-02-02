@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.69.0](https://github.com/taiga-family/taiga-ui/compare/v4.68.0...v4.69.0) (2026-02-02)
+
+### 🚀 Features
+
+- **kit:** add `tuiButtonCopy` ([#13131](https://github.com/taiga-family/taiga-ui/issues/13131))
+  ([6cc066b](https://github.com/taiga-family/taiga-ui/commit/6cc066b6828750213b29336c6c4f8df1e44e75b9))
+
+### 🐞 Bug Fixes
+
+- **core:** `Surface` update presets according to specs
+  ([#13127](https://github.com/taiga-family/taiga-ui/issues/13127))
+  ([1f8bc6e](https://github.com/taiga-family/taiga-ui/commit/1f8bc6e87cf795cbf221e70da310730c195be9a2))
+- **core:** gaps between input chips are collapsing ([#13118](https://github.com/taiga-family/taiga-ui/issues/13118))
+  ([af50640](https://github.com/taiga-family/taiga-ui/commit/af50640dff1eaaf3cd224bc23183eb593881449f))
+- **core:** hide webkit spin buttons ([#13109](https://github.com/taiga-family/taiga-ui/issues/13109))
+  ([05e4776](https://github.com/taiga-family/taiga-ui/commit/05e477615a285e041b7fd15915767524ad67ee0d))
+- **kit:** `InputChip` fix pasting value with newlines ([#13134](https://github.com/taiga-family/taiga-ui/issues/13134))
+  ([4de0bc6](https://github.com/taiga-family/taiga-ui/commit/4de0bc6a4df6002bfae8ac64983810436a2ed6ce))
+- **kit:** input chip filter should ignore empty stringified values
+  ([#13095](https://github.com/taiga-family/taiga-ui/issues/13095))
+  ([db8b85a](https://github.com/taiga-family/taiga-ui/commit/db8b85a20002bfa089113bdf6e2b63c46377bfea))
+
 ## [4.68.0](https://github.com/taiga-family/taiga-ui/compare/v4.67.0...v4.68.0) (2026-01-27)
 
 ### 🐞 Bug Fixes
