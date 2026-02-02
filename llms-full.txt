@@ -11695,6 +11695,44 @@ export default class Example {
 }
 ```
 
+#### ButtonCopy
+
+**Template:**
+```html
+<p>
+<span tuiHintDirection="top" [tuiHint]="inkin" > Alexander Inkin </span>
+<ng-template #inkin>
+<button tuiButtonCopy="Alexander Inkin" tuiTheme="dark" type="button" > Name </button>
+<button tuiButtonCopy="@a.inkin" tuiTheme="dark" type="button" > Login </button>
+</ng-template>
+</p>
+<p>
+<span tuiHintAppearance="dark" tuiHintDirection="top" [tuiHint]="sedov" > Roman Sedov </span>
+<ng-template #sedov>
+<button tuiButtonCopy="Roman Sedov" type="button" > Name </button>
+<button tuiButtonCopy="@r.sedov" type="button" > Login </button>
+</ng-template>
+</p>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHint} from '@taiga-ui/core';
+import {TuiCopy} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiCopy, TuiHint],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
 
 ### TypeScript
 
@@ -11710,7 +11748,13 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Basic', 'Sizes', 'InputCopy', 'With CopyProcessor'];
+    protected readonly examples = [
+        'Basic',
+        'Sizes',
+        'InputCopy',
+        'With CopyProcessor',
+        'ButtonCopy',
+    ];
 }
 ```
 
@@ -18235,6 +18279,58 @@ export default class Example {
 }
 ```
 
+#### Stringify
+
+**Template:**
+```html
+<label tuiLabel>
+<tui-textfield multi tuiChevron [stringify]="stringify" >
+<input tuiInputChip [placeholder]="value.length ? '' : 'Picking users'" [(ngModel)]="value" />
+<tui-input-chip *tuiItem />
+<tui-data-list *tuiTextfieldDropdown tuiMultiSelectGroup >
+<button *ngFor="let item of items" new tuiOption [value]="item.nickname" > {{ item.name }} ({{ item.nickname }}) </button>
+</tui-data-list>
+</tui-textfield>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
+import {NgForOf} from '@angular/common';
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        NgForOf,
+        TuiChevron,
+        TuiDataList,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: string[] = [];
+
+    protected items = [
+        {nickname: 'a.inkin', name: 'Alex Inkin'},
+        {nickname: 'r.sedov', name: 'Roman Sedov'},
+    ];
+
+    protected readonly stringify = (value: string): string =>
+        this.items.find((item) => item.nickname === value)?.name ?? '';
+}
+```
+
 #### Chips
 
 **Template:**
@@ -18747,6 +18843,7 @@ export default class PageComponent {
         'Mobile',
         'Table',
         'Virtual scroll',
+        'Stringify',
     ];
 }
 ```
@@ -38172,8 +38269,8 @@ export default class Example {}
 
 **Template:**
 ```html
-<button tuiSurface="floating" type="button" > Elevated </button>
-<button tuiSurface="neutral" type="button" > Flat </button>
+<button tuiSurface="floating" type="button" > Floating </button>
+<button tuiSurface="neutral" type="button" > Neutral </button>
 ```
 **TypeScript:**
 ```ts
