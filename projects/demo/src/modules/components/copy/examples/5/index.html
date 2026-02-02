@@ -1,0 +1,47 @@
+<p>
+    <span
+        tuiHintDirection="top"
+        [tuiHint]="inkin"
+    >
+        Alexander Inkin
+    </span>
+    <ng-template #inkin>
+        <button
+            tuiButtonCopy="Alexander Inkin"
+            tuiTheme="dark"
+            type="button"
+        >
+            Name
+        </button>
+        <button
+            tuiButtonCopy="@a.inkin"
+            tuiTheme="dark"
+            type="button"
+        >
+            Login
+        </button>
+    </ng-template>
+</p>
+<p>
+    <span
+        tuiHintAppearance="dark"
+        tuiHintDirection="top"
+        [tuiHint]="sedov"
+    >
+        Roman Sedov
+    </span>
+    <ng-template #sedov>
+        <button
+            tuiButtonCopy="Roman Sedov"
+            type="button"
+        >
+            Name
+        </button>
+        <button
+            tuiButtonCopy="@r.sedov"
+            type="button"
+        >
+            Login
+        </button>
+    </ng-template>
+</p>
