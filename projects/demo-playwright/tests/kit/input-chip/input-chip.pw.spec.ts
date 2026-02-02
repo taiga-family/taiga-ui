@@ -22,7 +22,7 @@ test.describe('InputChip', () => {
             await expect.soft(basic).toHaveScreenshot('05-input-chip-trimmed.png');
         });
 
-        test('regex separator works when copying values from spreadsheet', async ({
+        test('regex separator works when copying values from spreadsheet (tab)', async ({
             page,
         }) => {
             const doc = new TuiDocumentationPagePO(page);
@@ -34,6 +34,18 @@ test.describe('InputChip', () => {
             await chip.addChip('repo\ttest\tseparator');
 
             await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator.png');
+        });
+
+        test('regex separator works when copying values with newline', async ({page}) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const basic = doc.getExample('#basic');
+
+            const chip = new TuiInputChipPO(basic);
+
+            await chip.cleaner.click();
+            await chip.addChip('repo\ntest\nseparator');
+
+            await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator-2.png');
         });
     });
 
