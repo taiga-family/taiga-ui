@@ -1,16 +1,14 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCopyProcessor} from '@taiga-ui/cdk';
+import {TuiHint} from '@taiga-ui/core';
 import {TuiCopy} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [TuiCopy, TuiCopyProcessor],
+    imports: [FormsModule, TuiCopy, TuiHint],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export default class Example {
-    protected readonly processor = (value: string): string => ` ${value} `;
-}
+export default class Example {}
