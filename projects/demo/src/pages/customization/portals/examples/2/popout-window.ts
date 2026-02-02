@@ -4,22 +4,18 @@ import {TuiButton, TuiDialogService, TuiDropdown, TuiRoot} from '@taiga-ui/core'
 
 @Component({
     selector: 'tui-popout-window',
-    imports: [TuiRoot, TuiButton, TuiDropdown],
-    templateUrl: './popout-window.template.html',
-    styleUrl: './popout-window.style.less',
+    imports: [TuiButton, TuiDropdown, TuiRoot],
+    templateUrl: './popout-window.html',
+    styleUrl: './popout-window.less',
     changeDetection,
 })
-export class PopoutWindowComponent {
+export class PopoutWindow {
     private readonly dialogs = inject(TuiDialogService);
-
-    constructor() {
-        console.log('PopoutWindowComponent initialized');
-    }
 
     protected openDialog(): void {
         this.dialogs
-            .open('Диалог живет в отдельном окне и использует свой портал.', {
-                label: 'Попап окно',
+            .open('The dialog lives in a separate window and uses its own portal.', {
+                label: 'Popup window',
                 size: 's',
             })
             .subscribe();

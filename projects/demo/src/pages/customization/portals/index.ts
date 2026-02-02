@@ -4,6 +4,7 @@ import {TuiDemo} from '@demo/utils';
 
 import {TuiPortalsExample1} from './examples/1';
 import {TuiPortalsExample2} from './examples/2';
+
 @Component({
     imports: [TuiDemo, TuiPortalsExample1, TuiPortalsExample2],
     templateUrl: './index.html',
@@ -25,13 +26,11 @@ export default class Page {
     protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/2/index.html'),
-        LESS: import('./examples/2/index.less'),
-        'popout-window.component.ts': import(
-            './examples/2/popout-window.component.ts?raw',
-            {with: {loader: 'text'}}
-        ),
-        'popout-window.template.html': import('./examples/2/popout-window.template.html'),
-        'popout-window.style.less': import('./examples/2/popout-window.style.less'),
+        'popout-window.html': import('./examples/2/popout-window.html'),
+        'popout-window.ts': import('./examples/2/popout-window.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        'popout-window.less': import('./examples/2/popout-window.less'),
         'popout.service.ts': import('./examples/2/popout.service.ts?raw', {
             with: {loader: 'text'},
         }),
