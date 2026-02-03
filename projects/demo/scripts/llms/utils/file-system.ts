@@ -718,7 +718,7 @@ export function extractRequiredDirectives(content: string): string {
     const directives = new Set<string>();
 
     // Match structural directives in templates (*ngIf, *ngFor, *tuiDropdown, etc.)
-    const structuralDirectiveMatches = content.matchAll(/\*([a-zA-Z][a-zA-Z0-9]*)/g);
+    const structuralDirectiveMatches = content.matchAll(/\*([a-z][a-z0-9]*)/gi);
 
     for (const match of structuralDirectiveMatches) {
         const directiveName = match[1];
