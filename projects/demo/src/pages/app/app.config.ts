@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-experimental */
 import {
     isPlatformBrowser,
     LocationStrategy,
@@ -9,7 +10,7 @@ import {
     type ApplicationConfig,
     inject,
     PLATFORM_ID,
-    provideZoneChangeDetection,
+    provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
@@ -297,10 +298,7 @@ export const config: ApplicationConfig = {
                     return import('@taiga-ui/i18n/languages/english');
             }
         }),
-        provideZoneChangeDetection({
-            eventCoalescing: false,
-            runCoalescing: false,
-        }),
+        provideExperimentalZonelessChangeDetection(),
         {
             provide: TUI_DIALOGS_CLOSE,
             useFactory: () =>
