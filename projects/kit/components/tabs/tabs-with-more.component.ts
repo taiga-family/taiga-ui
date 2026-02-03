@@ -19,7 +19,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
+import {tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
@@ -118,11 +118,9 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     protected get activeElement(): HTMLElement | null {
         const {tabs} = this;
-        const safeActiveIndex = tuiClamp(this.activeItemIndex() || 0, 0, tabs.length - 2);
+        const activeElement = tabs.find((tab) => tab.classList.contains('_active'));
 
-        return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
-            ? tabs[safeActiveIndex] || null
-            : this.moreButton()?.nativeElement || null;
+        return activeElement || null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -234,7 +232,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         return -1;
     }
 
+    // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     private refresh(): void {
+        if ('anchorName' in this.el.style) {
+            return;
+        }
+
         const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
         this.dir()?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
