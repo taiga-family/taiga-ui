@@ -1,0 +1,46 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-swipe-actions._onboarding {
+    scroll-snap-type: none;
+
+    & > * {
+        animation:
+            onboarding-enter var(--tui-animation-duration-slow, 500ms)
+                var(--tui-animation-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1)),
+            onboarding-show var(--tui-animation-duration-moderate, 300ms) linear
+                var(--tui-animation-duration-slow, 500ms),
+            onboarding-exit var(--tui-animation-duration-slow, 500ms)
+                var(--tui-animation-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1))
+                calc(var(--tui-animation-duration-slow, 500ms) + var(--tui-animation-duration-moderate, 300ms));
+
+        @keyframes onboarding-enter {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+        }
+
+        @keyframes onboarding-show {
+            0% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+
+            100% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+        }
+
+        @keyframes onboarding-exit {
+            0% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    }
+}
