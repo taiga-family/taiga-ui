@@ -1,0 +1,22 @@
+import"./chunk-B4AJQJMI.js";var o=`<button
+    size="s"
+    tuiButton
+    type="button"
+    [disabled]="ref()"
+    (click)="openPopout()"
+>
+    Open a separate window
+</button>
+
+@if (ref()) {
+    <button
+        appearance="primary-destructive"
+        size="s"
+        tuiButton
+        type="button"
+        (click)="closePopout()"
+    >
+        Close window
+    </button>
+}
+`;export{o as default};
