@@ -19,16 +19,12 @@ import {
     readIndexHtml,
     shouldIncludeSection,
 } from './utils';
+import {saveImportMap} from './utils/generate-import-map';
 
-const DEFAULT_MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
-const DEFAULT_OUTPUT_FILE = path.resolve(
-    process.cwd(),
-    'projects/demo/src/llms-full.txt',
-);
-const DEFAULT_OUTPUT_FILE_HTML = path.resolve(
-    process.cwd(),
-    'projects/demo/src/llms-full.html',
-);
+// These will be loaded from config
+let DEFAULT_MODULES_PATH: string;
+let DEFAULT_OUTPUT_FILE: string;
+let DEFAULT_OUTPUT_FILE_HTML: string;
 
 interface CliOptions {
     roots: string[];
@@ -44,8 +40,8 @@ interface CliOptions {
 function parseArgs(argv: string[]): CliOptions {
     const options: CliOptions = {
         roots: [],
-        output: DEFAULT_OUTPUT_FILE,
-        outputHtml: DEFAULT_OUTPUT_FILE_HTML,
+        output: '', // Will be set later from config
+        outputHtml: '', // Will be set later from config
         overrides: {},
     };
 
@@ -126,9 +122,7 @@ function parseArgs(argv: string[]): CliOptions {
         }
     }
 
-    if (options.roots.length === 0) {
-        options.roots = [DEFAULT_MODULES_PATH];
-    }
+    // Don't set default roots here - will be set later from config
 
     return options;
 }
@@ -179,6 +173,33 @@ async function main(): Promise<void> {
         return fallback;
     })();
 
+    // Initialize constants from config
+    DEFAULT_MODULES_PATH = path.resolve(
+        process.cwd(),
+        config.constants?.defaultModulesPath,
+    );
+    DEFAULT_OUTPUT_FILE = path.resolve(
+        process.cwd(),
+        config.constants?.defaultOutputFile,
+    );
+    DEFAULT_OUTPUT_FILE_HTML = path.resolve(
+        process.cwd(),
+        config.constants?.defaultOutputFileHtml,
+    );
+
+    // Apply defaults to cliOptions if not provided
+    if (cliOptions.roots.length === 0) {
+        cliOptions.roots = [DEFAULT_MODULES_PATH];
+    }
+
+    if (!cliOptions.output) {
+        cliOptions.output = DEFAULT_OUTPUT_FILE;
+    }
+
+    if (!cliOptions.outputHtml) {
+        cliOptions.outputHtml = DEFAULT_OUTPUT_FILE_HTML;
+    }
+
     const overrideKeysApplied: string[] = [];
 
     for (const [key, value] of Object.entries(cliOptions.overrides)) {
@@ -221,19 +242,24 @@ async function main(): Promise<void> {
 
     const output: string[] = [];
 
+    // Generate fresh import map from source code
+    console.info('Generating import map from Taiga UI source code...');
+
+    try {
+        await saveImportMap();
+        console.info('  ✓ Import map regenerated');
+    } catch (error) {
+        console.warn(`  ⚠ Could not generate import map: ${error}`);
+    }
+
     // Add header sections with critical information
     console.info('Adding header sections...');
     const headerSectionsPath = path.resolve(
         process.cwd(),
-        'projects/demo/src/llms-header-sections',
+        config.constants?.headerSectionsPath,
     );
 
-    const headerFiles = [
-        'import-map.md',
-        'checklist.md',
-        'cdk-types.md',
-        'common-mistakes.md',
-    ];
+    const headerFiles = config.constants?.headerFiles;
 
     for (const headerFile of headerFiles) {
         const headerPath = path.join(headerSectionsPath, headerFile);
@@ -290,29 +316,8 @@ async function main(): Promise<void> {
         }
 
         const folders: string[] = [];
-        const SKIP_FOLDERS = new Set([
-            '__test__',
-            'assets',
-            'build',
-            'coverage',
-            'data',
-            'dist',
-            'docs',
-            'examples',
-            'lib',
-            'mocks',
-            'node_modules',
-            'src',
-            'test',
-        ]);
-        const CHILD_FOLDERS = [
-            'components',
-            'directives',
-            'tokens',
-            'customization',
-            'pipes',
-            'light',
-        ];
+        const SKIP_FOLDERS = new Set(config.constants?.skipFolders);
+        const CHILD_FOLDERS = config.constants?.childFolders;
 
         async function fileExistsLocal(p: string): Promise<boolean> {
             try {
