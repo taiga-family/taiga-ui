@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-tui-textfield {
+tui-textfield:where(*&) {
     .scrollbar-hidden();
     .transition(color);
 
@@ -10,6 +10,7 @@ tui-textfield {
     --t-label-font: var(--tui-font-body-s);
     --t-end: ~'0rem';
     --t-start: ~'0rem';
+    --t-side: ~'0rem';
 
     position: relative;
     display: flex;
@@ -23,6 +24,12 @@ tui-textfield {
     box-sizing: border-box;
     gap: 0 0.25rem;
     isolation: isolate;
+
+    // TODO: Remove in next PR
+    &[data-size='s'],
+    &:has([tuiInputPin]) {
+        gap: 0;
+    }
 
     &[tuiAppearance] {
         outline: none;
@@ -95,7 +102,6 @@ tui-textfield {
         --t-padding: var(--tui-padding-s);
 
         border-radius: var(--tui-radius-m);
-        gap: 0;
         font: var(--tui-font-ui-s);
         line-height: 1rem;
 
@@ -119,6 +125,7 @@ tui-textfield {
         }
 
         & > .t-content {
+            gap: 0;
             margin-inline-end: -0.375rem;
         }
     }
@@ -225,6 +232,11 @@ tui-textfield {
         &[inputmode='none'] {
             caret-color: transparent;
         }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+        }
     }
 
     & > .t-template {
@@ -300,7 +312,7 @@ tui-textfield {
         display: flex;
         block-size: var(--t-height);
         align-items: center;
-        gap: inherit;
+        gap: 0.25rem;
         margin-inline-start: auto;
         isolation: isolate;
         border-radius: inherit;
@@ -342,11 +354,6 @@ tui-textfield {
 
     &:not([data-mode~='readonly']) {
         .appearance-focus({
-            [tuiInput]::placeholder,
-            [tuiInput]._empty {
-                color: var(--tui-text-tertiary);
-            }
-
             [tuiLabel] {
                 color: var(--tui-text-primary) !important;
                 font: var(--t-label-font);

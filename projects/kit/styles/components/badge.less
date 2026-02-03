@@ -16,7 +16,7 @@
  * @see-also
  * Icons, Appearance, Chip, Block
  */
-[tuiBadge] {
+[tuiBadge]:where(*&) {
     --t-icon-size: 1rem;
     --t-padding: 0 0.5rem;
     --t-size: var(--tui-height-xs);
@@ -115,12 +115,12 @@
     }
 }
 
-img[tuiBadge] {
+img[tuiBadge]:where(*&) {
     padding: 0;
     inline-size: var(--t-size);
 }
 
-tui-icon[tuiBadge]::before {
+tui-icon[tuiBadge]:where(*&)::before {
     .fullsize();
 
     --t-margin: 0;

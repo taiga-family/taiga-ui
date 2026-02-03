@@ -67,4 +67,104 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/layout',
         },
     },
+    {
+        from: {
+            name: 'TuiPdfViewer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiPdfViewer',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPdfViewerComponent',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiPdfViewer',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_ANDROID',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_ANDROID',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_IOS',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_IOS',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_MOBILE',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_MOBILE',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_WEBKIT',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_WEBKIT',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_E2E',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_E2E',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'provideEventPlugins',
+            moduleSpecifier: '@taiga-ui/event-plugins',
+        },
+        to: {
+            name: 'provideTaiga',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiIslandDirective',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiCardLarge',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccordion',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiAccordion',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

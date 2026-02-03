@@ -70,7 +70,7 @@ function processImport(
 }
 
 function removeGeneric(type: string): string {
-    return type.replaceAll(/<.*>$/gi, '');
+    return type.replaceAll(/<.*>$/g, '');
 }
 
 function addGeneric(typeName: string, generics: TypeNode[]): string {

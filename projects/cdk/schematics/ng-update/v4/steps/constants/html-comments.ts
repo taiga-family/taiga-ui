@@ -90,8 +90,7 @@ export const HTML_COMMENTS: HtmlComment[] = [
 
             return (
                 !!icon &&
-                ((icon.startsWith('tuiIconTds') &&
-                    !!/Logo|LogoSquare|LogoSiteheader|Flags$/.exec(icon)) ||
+                ((icon.startsWith('tuiIconTds') && !!/Logo|Flags$/.exec(icon)) ||
                     !icon.startsWith('tuiIcon'))
             );
         },

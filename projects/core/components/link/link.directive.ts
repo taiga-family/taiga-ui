@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -18,7 +19,11 @@ export const [TUI_LINK_OPTIONS, tuiLinkOptionsProvider] = tuiCreateOptions({
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/link.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/core/styles/components/link.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-link'},

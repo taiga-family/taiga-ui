@@ -13,15 +13,15 @@ import {TuiTableDirective} from '../directives/table.directive';
     name: 'tuiTableSort',
     pure: false,
 })
-export class TuiTableSortPipe<T> implements PipeTransform {
+export class TuiTableSortPipe implements PipeTransform {
     private readonly table = inject(TuiTableDirective<any>);
-    private readonly data = signal<readonly T[]>([]);
+    private readonly data = signal<readonly any[]>([]);
     private readonly sorted = computed(
         (direction = this.table.direction(), sorter = this.table.sorter()) =>
             [...this.data()].sort((a, b) => direction * sorter(a, b)),
     );
 
-    public transform(data?: readonly T[] | null): readonly T[] {
+    public transform<T>(data?: readonly T[] | null): readonly T[] {
         untracked(() => this.data.set(data ?? []));
 
         return this.sorted();

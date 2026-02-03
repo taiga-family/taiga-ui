@@ -80,7 +80,12 @@ export class TuiTabsHorizontal implements AfterViewChecked {
         this.tabs.moveFocus(current, step);
     }
 
+    // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     protected refresh(): void {
+        if ('anchorName' in this.el.style) {
+            return;
+        }
+
         const {activeElement} = this.tabs;
 
         if (activeElement && !activeElement.isConnected) {

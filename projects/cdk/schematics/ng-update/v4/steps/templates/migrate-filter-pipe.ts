@@ -42,7 +42,7 @@ export function migrateFilterPipe({
         );
         recorder.insertRight(
             templateOffset + startOffset + attr.name.length,
-            `="${attr.value.replace(/\| tuiFilterByInputWith\s*:\s*[^|]+/, '| tuiFilterByInput')}"`,
+            `="${attr.value.replace(/\| tuiFilterByInputWith\s*:[^|]+/, '| tuiFilterByInput')}"`,
         );
     });
 }

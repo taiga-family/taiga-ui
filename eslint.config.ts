@@ -50,8 +50,8 @@ export default process.env.HTML_ESLINT
           {
               rules: {'@taiga-ui/experience-next/no-deep-imports': 'off'},
               files: [
-                  'projects/demo/src/modules/components/icon/examples/4/index.ts',
-                  'projects/demo/src/modules/markup/breakpoints/index.ts',
+                  'projects/demo/src/pages/components/icon/examples/4/index.ts',
+                  'projects/demo/src/pages/markup/breakpoints/index.ts',
               ],
           },
       ];

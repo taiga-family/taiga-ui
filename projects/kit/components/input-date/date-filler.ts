@@ -6,7 +6,7 @@ import {TUI_DATE_TEXTS} from '@taiga-ui/kit/tokens';
 import {identity} from 'rxjs';
 
 function changeDateSeparator(dateString: string, newDateSeparator: string): string {
-    return dateString.replaceAll(/[^0-9A-Za-zА-Яа-я]/gi, newDateSeparator);
+    return dateString.replaceAll(/[^0-9A-ZА-Я]/gi, newDateSeparator);
 }
 
 export function tuiWithDateFiller(

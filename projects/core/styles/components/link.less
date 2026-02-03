@@ -13,7 +13,7 @@
  * @see-also
  * Icons, Appearance, Button
  */
-[tuiLink] {
+[tuiLink]:where(*&) {
     .transition(~'color, text-decoration, opacity');
 
     padding: 0;
@@ -51,6 +51,7 @@
 
     &[tuiChevron]::after {
         display: inline-block;
+        vertical-align: initial;
     }
 
     .appearance-hover({

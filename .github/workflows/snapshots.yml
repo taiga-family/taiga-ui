@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.183.0
-      - uses: taiga-family/ci/actions/setup/node@v1.183.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.184.0
+      - uses: taiga-family/ci/actions/setup/node@v1.184.0
 
-      - run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
+      - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
       - uses: s0/git-publish-subdir-action@v2.6.0
@@ -38,11 +38,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.183.0
-      - uses: taiga-family/ci/actions/setup/node@v1.183.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.184.0
+      - uses: taiga-family/ci/actions/setup/node@v1.184.0
         id: nodejs-workspace
 
-      - run: npx nx prerender demo
+      - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
       - uses: s0/git-publish-subdir-action@v2.6.0

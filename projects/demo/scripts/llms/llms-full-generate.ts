@@ -122,8 +122,6 @@ function parseArgs(argv: string[]): CliOptions {
         }
     }
 
-    // Don't set default roots here - will be set later from config
-
     return options;
 }
 
@@ -311,7 +309,7 @@ async function main(): Promise<void> {
     }
 
     async function scanAdditionalRoot(root: string): Promise<string[]> {
-        if (root === DEFAULT_MODULES_PATH) {
+        if (root === DEFAULT_PAGES_PATH) {
             return getAllFolders();
         }
 

@@ -67,6 +67,10 @@
     }
 }
 
+.t-description {
+    display: none;
+}
+
 @media @tui-mobile {
     :host {
         gap: 1rem;
@@ -83,5 +87,14 @@
 
     .t-input {
         margin: 0;
+    }
+
+    .t-name {
+        pointer-events: none;
+    }
+
+    .t-description {
+        display: block;
+        margin-block-start: 1rem;
     }
 }

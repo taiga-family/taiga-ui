@@ -140,7 +140,7 @@ function extractCode(mask: string): string {
 }
 
 function extractMask(mask: string): string {
-    const match = /^\+\d+(.*)$/.exec(mask);
+    const match = /^\+\d+(\D.*)?$/.exec(mask);
 
     return match?.[1]?.trim() || '';
 }

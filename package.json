@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "5.0.0-rc.1",
+    "version": "5.0.0-rc.2",
     "private": true,
     "description": "Taiga UI is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -82,6 +82,7 @@
         ],
         "rules": {
             "property-disallowed-list": null,
+            "plugin/use-logical-properties-and-values": null,
             "selector-class-pattern": [
                 "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$",
                 {
@@ -122,12 +123,12 @@
         "@nx/jest": "22.1.1",
         "@nx/workspace": "22.1.1",
         "@schematics/angular": "19.2.19",
-        "@taiga-ui/browserslist-config": "0.399.0",
-        "@taiga-ui/configs": "0.399.0",
+        "@taiga-ui/browserslist-config": "0.403.0",
+        "@taiga-ui/configs": "0.403.0",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "24.10.9",
-        "@typescript/native-preview": "7.0.0-dev.20260126.1",
+        "@types/node": "24.10.10",
+        "@typescript/native-preview": "7.0.0-dev.20260203.1",
         "browser-sync": "3.0.4",
         "cpy-cli": "5.0.0",
         "glob": "11.1.0",

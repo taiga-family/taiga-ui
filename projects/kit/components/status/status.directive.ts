@@ -5,11 +5,16 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/status.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/kit/styles/components/status.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-status'},
@@ -20,6 +25,7 @@ class Styles {}
     selector: '[tuiStatus]',
     host: {
         tuiStatus: '',
+        'data-tui-version': TUI_VERSION,
         '[style.--t-status]': 'tuiStatus() || null',
     },
 })

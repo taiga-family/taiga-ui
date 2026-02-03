@@ -20,10 +20,7 @@ export function dropUniversalMock(options: TuiSchema): void {
                 `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} drop "${moduleSpecifier}" import`,
             );
 
-        const match = new RegExp(
-            `import\\s+[\\'\\"\`]${moduleSpecifier}[\\'\\"\`];`,
-            'g',
-        );
+        const match = new RegExp(`import\\s+['"\`]${moduleSpecifier}['"\`];`, 'g');
 
         imports.forEach((declaration) =>
             declaration

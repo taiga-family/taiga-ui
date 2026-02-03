@@ -19,7 +19,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
+import {tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
@@ -59,12 +59,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
-    protected open = false;
     protected readonly sync = effect(() => {
         this.activeItemIndex();
         this.maxIndex = this.getMaxIndex();
     });
 
+    public open = false;
     public readonly activeItemIndex = model(0);
     public readonly size = input(this.options.size);
     public readonly underline = input(this.options.underline);
@@ -84,6 +84,14 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
                 : 2;
 
         return Math.min(this.itemsLimit() - offset, this.maxIndex);
+    }
+
+    public isOverflown(index: number): boolean {
+        return index !== this.activeItemIndex() || !this.options.exposeActive;
+    }
+
+    public shouldShow(index: number): boolean {
+        return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 
     public ngAfterViewInit(): void {
@@ -110,11 +118,9 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     protected get activeElement(): HTMLElement | null {
         const {tabs} = this;
-        const safeActiveIndex = tuiClamp(this.activeItemIndex() || 0, 0, tabs.length - 2);
+        const activeElement = tabs.find((tab) => tab.classList.contains('_active'));
 
-        return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
-            ? tabs[safeActiveIndex] || null
-            : this.moreButton()?.nativeElement || null;
+        return activeElement || null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -176,16 +182,8 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         }
     }
 
-    protected isOverflown(index: number): boolean {
-        return index !== this.activeItemIndex() || !this.options.exposeActive;
-    }
-
-    protected shouldShow(index: number): boolean {
-        return index > this.lastVisibleIndex && this.isOverflown(index);
-    }
-
     // TODO drop comment after fix issue: https://github.com/typescript-eslint/typescript-eslint/issues/11771
-    // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
+
     private get margin(): number {
         return this.size() === 'l' ? 24 : 16;
     }
@@ -234,7 +232,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         return -1;
     }
 
+    // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     private refresh(): void {
+        if ('anchorName' in this.el.style) {
+            return;
+        }
+
         const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
         this.dir()?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));

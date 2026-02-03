@@ -41,7 +41,7 @@ const MAPPING = {
 // .tui-text-h1();
 // @include tui-text-h1();
 const MIXIN_RE =
-    /(?:@include\s|\.)(?!text-overflow\b)(text-[\w-]+)\(([\w-,\s]+)?\)(\s?!important)?;/g;
+    /(?:@include\s|\.)(?!text-overflow\b)(text-[\w-]+)\(([\w,\s-]+)?\)(?:\s?!important)?;/g;
 
 export function migrateTextMixins(fileContent: string): string {
     if (!fileContent.includes('@taiga-ui/core/styles/taiga-ui-local')) {

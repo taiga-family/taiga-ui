@@ -25,7 +25,7 @@ export class TuiWithOptionContent {
 
     protected readonly global = inject<Type<any>>(TUI_OPTION_CONTENT, {optional: true});
 
-    public get content(): Type<any> | null {
+    public get content(): Type<any> | null | undefined {
         return this.global ?? this.local;
     }
 }

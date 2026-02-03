@@ -8,9 +8,9 @@ export interface ComponentHeader {
     deprecated: boolean;
 }
 
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
 
-// child folders of the main `modules` folder from which the content will be taken
+// child folders of the main `pages` folder from which the content will be taken
 const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
 export async function fileExists(filePath: string): Promise<boolean> {
@@ -35,14 +35,14 @@ export async function readIndexHtml(folderPath: string): Promise<string> {
 
 // parse metadata from tui-doc-page
 export function getComponentHeader(content: string): ComponentHeader {
-    const tagMatch = /<tui-doc-page\s+([^>]*)>/i.exec(content);
+    const tagMatch = /<tui-doc-page\b([^>]*)>/i.exec(content);
 
     if (!tagMatch?.[1]) {
         return {header: null, package: null, type: null, deprecated: false};
     }
 
     const tagContent = tagMatch[1];
-    const deprecated = /(^|\s)deprecated(\s|$)/i.test(tagContent);
+    const deprecated = /(?:^|\s)deprecated(?:\s|$)/i.test(tagContent);
 
     const headerMatch = /header="([^"]*)"/i.exec(tagContent);
     const header = headerMatch?.[1]?.trim() || null;
@@ -79,7 +79,7 @@ export function getComponentDescription(content: string): string | undefined {
     const cleanContent = withoutControlFlow
         .replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
         .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
-        .replaceAll(/<((\/?)(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
+        .replaceAll(/<(\/?(?:p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
         .replaceAll(/<[^>]+>/g, '')
         .replaceAll(/\s+/g, ' ')
         .trim();
@@ -140,7 +140,7 @@ export function getComponentExample(content: string): string {
     }
 
     const html = match[1]
-        ?.replaceAll(/<(\/?(tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
+        ?.replaceAll(/<(\/?(?:tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
         .trim();
 
     // Clean up the HTML formatting for better LLM consumption
@@ -162,7 +162,7 @@ export function getComponentApiFromTable(content: string): string {
     }
 
     const tableContent = tableMatch[1];
-    const apiRows = tableContent?.match(/<tr[^>]+name="([^"]+)"[^>]*>[\s\S]*?<\/tr>/gi);
+    const apiRows = tableContent?.match(/<tr[^>]+name="[^"]+"[^>]*>[\s\S]*?<\/tr>/gi);
 
     if (!apiRows) {
         return '';
@@ -174,7 +174,7 @@ export function getComponentApiFromTable(content: string): string {
     for (const row of apiRows) {
         const nameMatch = /name="([^"]+)"/i.exec(row);
         const typeMatch = /type="([^"]+)"/i.exec(row);
-        const descriptionMatch = />([^<>]+?)<\/tr>/i.exec(row);
+        const descriptionMatch = />([^<>]+)<\/tr>/i.exec(row);
 
         if (nameMatch && typeMatch) {
             const name = nameMatch[1]?.trim();
@@ -221,7 +221,7 @@ export function getComponentApiFromTemplates(content: string): string {
 
     const templatesContent = templateMatch[1];
     const templateRows = templatesContent?.match(
-        /<ng-template[^>]+documentationPropertyName="([^"]+)"[^>]+documentationPropertyType="([^"]+)"[^>]*>([\s\S]*?)<\/ng-template>/gi,
+        /<ng-template[^>]+documentationPropertyName="[^"]+"[^>]+documentationPropertyType="[^"]+"[^>]*>[\s\S]*?<\/ng-template>/gi,
     );
 
     if (!templateRows) {
@@ -661,12 +661,12 @@ export async function getAllFolders(): Promise<string[]> {
     }
 
     for (const subFolder of FOLDERS_TO_SCAN) {
-        const dirPath = path.join(MODULES_PATH, subFolder);
+        const dirPath = path.join(PAGES_PATH, subFolder);
 
         if (await fileExists(dirPath)) {
             await scanDir(dirPath, 0);
         } else {
-            console.warn(`Folder ${subFolder} not found in ${MODULES_PATH}`);
+            console.warn(`Folder ${subFolder} not found in ${PAGES_PATH}`);
         }
     }
 

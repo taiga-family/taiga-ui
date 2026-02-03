@@ -29,6 +29,7 @@ import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/portals/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
+import {TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
@@ -68,6 +69,8 @@ export class TuiInputChipComponent<T> {
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly mobile = inject(WA_IS_MOBILE);
+    protected readonly texts = inject(TUI_FILE_TEXTS);
+
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});

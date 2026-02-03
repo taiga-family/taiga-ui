@@ -11,7 +11,12 @@ import {FINISH_SYMBOL, saveActiveProject, START_SYMBOL, titleLog} from 'ng-morph
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {type TuiSchema} from '../../ng-add/schema';
+import {
+    formatMigrationStats,
+    type MigrationStepTiming,
+} from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
+import {runSteps} from '../../utils/run-steps';
 import {replaceIdentifiers} from '../steps/replace-identifier';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceFunctions} from '../utils/replace-functions';
@@ -23,17 +28,34 @@ import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
 
-function main(options: TuiSchema): Rule {
+function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
-        tuiLetMigration(tree, options);
-        migrateTokens(tree, options);
-        updateTsConfig(tree, options);
-        migrateCssVariables(tree, options);
-        replaceFunctions(REPLACE_FUNCTIONS);
-        replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
-        migrateTemplates(fileSystem, options);
+        runSteps(
+            [
+                {name: 'tuiLetMigration', step: () => tuiLetMigration(tree, options)},
+                {name: 'migrateTokens', step: () => migrateTokens(tree, options)},
+                {name: 'updateTsConfig', step: () => updateTsConfig(tree, options)},
+                {
+                    name: 'migrateCssVariables',
+                    step: () => migrateCssVariables(tree, options),
+                },
+                {
+                    name: 'replaceFunctions',
+                    step: () => replaceFunctions(REPLACE_FUNCTIONS),
+                },
+                {
+                    name: 'replaceIdentifiers',
+                    step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
+                },
+                {
+                    name: 'migrateTemplates',
+                    step: () => migrateTemplates(fileSystem, options),
+                },
+            ],
+            timings,
+        );
 
         fileSystem.commitEdits();
         saveActiveProject();
@@ -44,6 +66,7 @@ function main(options: TuiSchema): Rule {
 
 export function updateToV5(options: TuiSchema): Rule {
     const t0 = performance.now();
+    const timings: MigrationStepTiming[] = [];
 
     !options['skip-logs'] &&
         titleLog(
@@ -51,14 +74,19 @@ export function updateToV5(options: TuiSchema): Rule {
         );
 
     return chain([
-        main(options),
+        main(options, timings),
         () => {
-            const executionTime = getExecutionTime(t0, performance.now());
+            const finishedAt = performance.now();
+            const executionTime = getExecutionTime(t0, finishedAt);
 
-            !options['skip-logs'] &&
-                titleLog(
-                    `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
-                );
+            if (options['skip-logs']) {
+                return;
+            }
+
+            titleLog(
+                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
+            );
+            titleLog(`${formatMigrationStats(timings, finishedAt - t0)}\n`);
         },
     ]);
 }
