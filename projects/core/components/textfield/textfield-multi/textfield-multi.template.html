@@ -24,13 +24,14 @@
         <ng-content select="input" />
         <ng-content select="select" />
         <span class="t-ghost">{{ placeholder }}</span>
-        <input
-            aria-hidden="true"
-            disabled
-            class="t-filler"
-            [class.t-filler_hidden]="!showFiller()"
-            [value]="computedFiller()"
-        />
+        @if (showFiller()) {
+            <input
+                aria-hidden="true"
+                disabled
+                class="t-filler"
+                [value]="computedFiller()"
+            />
+        }
     </span>
 </div>
 

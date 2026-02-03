@@ -65,10 +65,6 @@ tui-textfield[multi][multi]:where(*&) {
             }
         }
 
-        &:not(&_horizontal) {
-            --t-scroll: 0;
-        }
-
         > label[tuiLabel] {
             position: absolute;
             inset-block-start: 0;
@@ -100,10 +96,6 @@ tui-textfield[multi][multi]:where(*&) {
                 padding-inline-end: 0.125rem;
                 min-block-size: var(--t-item-height, 1em);
             }
-
-            .t-filler_hidden {
-                display: none;
-            }
         }
     }
 
@@ -111,8 +103,6 @@ tui-textfield[multi][multi]:where(*&) {
         position: sticky;
         inset-block-start: 0;
         inset-inline-start: calc(100% - var(--t-side) - var(--t-end));
-        margin: 0;
-        gap: 0.25rem;
     }
 
     > .t-items input:not(:focus),
@@ -176,10 +166,6 @@ tui-textfield[multi][multi]:where(*&) {
 
         &::before {
             inset-inline-start: -0.25rem;
-        }
-
-        > .t-content {
-            gap: 0;
         }
     }
 
