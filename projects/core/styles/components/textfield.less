@@ -216,6 +216,8 @@ tui-textfield:where(*&) {
         overscroll-behavior: none;
         padding-inline-start: calc(var(--t-start) + var(--t-padding));
         padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding));
+        white-space: nowrap;
+        overflow: hidden;
 
         &:is(input, textarea):read-only ~ .t-filler {
             display: none;
@@ -234,12 +236,6 @@ tui-textfield:where(*&) {
         &::-webkit-outer-spin-button {
             appearance: none;
         }
-    }
-
-    & > .t-template {
-        display: flex;
-        block-size: 100%;
-        align-items: center;
     }
 
     &._with-template [tuiInput]:first-of-type {

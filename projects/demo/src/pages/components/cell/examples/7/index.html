@@ -21,11 +21,12 @@
 </div>
 
 <div tuiNotification>
+    <code>Cell</code>
+    is used inside
     <code>DataList</code>
-    already uses
-    <code>Cell</code>
-    for the options, but if you need to show it in value template as well – add a wrapping element with
-    <code>Cell</code>
+    options and
+    <code>Textfield</code>
+    template by default.
 </div>
 
 <tui-textfield
@@ -47,15 +48,13 @@
         #content
         let-item
     >
-        <span tuiCell>
-            <div
-                appearance="primary"
-                [tuiAvatar]="item.icon"
-            ></div>
-            <span tuiTitle>
-                {{ item.title }}
-                <span tuiSubtitle>{{ item.subtitle }}</span>
-            </span>
+        <div
+            appearance="primary"
+            [tuiAvatar]="item.icon"
+        ></div>
+        <span tuiTitle>
+            {{ item.title }}
+            <span tuiSubtitle>{{ item.subtitle }}</span>
         </span>
     </ng-template>
 </tui-textfield>
