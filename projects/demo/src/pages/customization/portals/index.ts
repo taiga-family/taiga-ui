@@ -26,11 +26,9 @@ export default class Page {
     protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/2/index.html'),
-        'popout-window.html': import('./examples/2/popout-window.html'),
-        'popout-window.ts': import('./examples/2/popout-window.ts?raw', {
-            with: {loader: 'text'},
-        }),
-        'popout-window.less': import('./examples/2/popout-window.less'),
+        'popout.html': import('./examples/2/popout.html'),
+        'popout.ts': import('./examples/2/popout.ts?raw', {with: {loader: 'text'}}),
+        'popout.less': import('./examples/2/popout.less'),
         'popout.service.ts': import('./examples/2/popout.service.ts?raw', {
             with: {loader: 'text'},
         }),

@@ -1,15 +1,15 @@
+/* eslint-disable @angular-eslint/no-experimental */
 import {DOCUMENT} from '@angular/common';
 import {
     inject,
     Injectable,
-    NgZone,
     provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import {createApplication} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {provideTaiga} from '@taiga-ui/core';
 
-import {PopoutWindow} from './popout-window';
+import {Popout} from './popout';
 
 export interface PopoutRef {
     readonly window: Window;
@@ -20,7 +20,6 @@ export interface PopoutRef {
 export class PopoutService {
     private readonly win = inject(WA_WINDOW);
     private readonly doc = inject(DOCUMENT);
-    private readonly zone = inject(NgZone);
 
     public async open(title = 'Portals: Popout'): Promise<PopoutRef | null> {
         const popout = this.win.open(
@@ -51,37 +50,32 @@ export class PopoutService {
 
         this.copyGlobalStyles(this.doc, popout.document);
 
-        const host = popout.document.querySelector('#app')!;
-
-        const {app, compRef} = await this.zone.runOutsideAngular(async () => {
-            const app = await createApplication({
-                providers: [
-                    provideTaiga(),
-                    {provide: WA_WINDOW, useValue: popout},
-                    {provide: DOCUMENT, useValue: popout.document},
-                    // eslint-disable-next-line @angular-eslint/no-experimental
-                    provideExperimentalZonelessChangeDetection(),
-                ],
-            });
-
-            const compRef = app.bootstrap(PopoutWindow, host);
-
-            return {app, compRef};
+        const host = popout.document.querySelector('#app');
+        const app = await createApplication({
+            providers: [
+                provideTaiga(),
+                {provide: WA_WINDOW, useValue: popout},
+                {provide: DOCUMENT, useValue: popout.document},
+                provideExperimentalZonelessChangeDetection(),
+            ],
         });
 
-        const destroy = (): void => {
-            compRef.destroy();
-            app.destroy();
-        };
+        const compRef = app.bootstrap(Popout, host);
 
-        popout.addEventListener('beforeunload', destroy, {once: true});
+        popout.addEventListener(
+            'beforeunload',
+            () => {
+                compRef.destroy();
+                app.destroy();
+            },
+            {once: true},
+        );
+
+        this.win.addEventListener('beforeunload', () => popout.close(), {once: true});
 
         return {
             window: popout,
-            close: () => {
-                destroy();
-                popout.close();
-            },
+            close: () => popout.close(),
         };
     }
 
