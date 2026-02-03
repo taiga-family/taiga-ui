@@ -26,6 +26,7 @@
     &._active {
         color: var(--tui-text-primary);
         box-shadow: none;
+        anchor-name: --tui-tab-active;
     }
 
     &:focus-visible {
@@ -80,6 +81,7 @@ tui-tabs {
     box-shadow: inset 0 -1px var(--tui-border-normal);
     overflow: auto;
     isolation: isolate;
+    anchor-scope: --tui-tab-active;
 
     &[data-size='m'] {
         font: var(--tui-font-body-s);
@@ -96,7 +98,7 @@ tui-tabs {
     }
 
     &::before {
-        .transition(~'width, left');
+        .transition(~'inline-size, left');
 
         position: absolute;
         left: var(--t-left);
@@ -105,6 +107,13 @@ tui-tabs {
         inline-size: var(--t-width);
         background: var(--t-color);
         animation: tuiPresent 1ms;
+        contain: strict;
+
+        @supports (anchor-name: --tui-tab-active) {
+            left: anchor(left);
+            inline-size: anchor-size(inline);
+            position-anchor: --tui-tab-active;
+        }
     }
 
     &._underline::before {
