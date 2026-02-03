@@ -197,22 +197,22 @@ tui-textfield[multi][multi]:where(*&) {
 
     &[data-size='s'] {
         --t-vertical: 0.125rem;
-        --t-offset: calc(0.625rem + var(--t-end) / 10);
+        --t-offset: calc(0.625rem + var(--t-end) / 12);
 
         &::before {
-            inset-inline-start: -0.125rem;
+            inset-inline-start: 0;
             margin-inline-end: 0.375rem;
         }
 
         &::after {
-            inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
+            inset-inline-start: calc(100% - var(--t-end));
             border-width: 0.5rem;
-            margin-inline-end: calc(-1 * var(--t-padding));
+            margin-inline: 0.25rem -0.5rem;
         }
 
         > .t-content {
             gap: 0;
-            transform: translateX(calc(0.375rem - var(--t-end) / 10));
+            transform: translateX(calc(0.5rem - var(--t-end) / 12));
         }
     }
 
