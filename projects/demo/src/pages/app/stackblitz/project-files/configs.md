@@ -21,7 +21,7 @@
           "options": {
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [],
             "styles": ["src/styles.less"],
             "tsConfig": "tsconfig.json"
           }

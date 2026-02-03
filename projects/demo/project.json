@@ -31,7 +31,7 @@
                 "outputPath": "dist/{projectName}",
                 "index": "{projectRoot}/src/index.html",
                 "browser": "{projectRoot}/src/main.ts",
-                "polyfills": ["zone.js"],
+                "polyfills": [],
                 "inlineStyleLanguage": "less",
                 "tsConfig": "{projectRoot}/tsconfig.app.json",
                 "allowedCommonJsDependencies": ["@taiga-ui/browserslist-config"],

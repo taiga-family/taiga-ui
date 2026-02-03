@@ -1,6 +1,11 @@
+/* eslint-disable @angular-eslint/no-experimental */
 import {LocationStrategy, PathLocationStrategy, ViewportScroller} from '@angular/common';
 import {HttpClient, provideHttpClient, withFetch} from '@angular/common/http';
-import {type ApplicationConfig, inject, provideZoneChangeDetection} from '@angular/core';
+import {
+    type ApplicationConfig,
+    inject,
+    provideExperimentalZonelessChangeDetection,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
     NavigationStart,
@@ -275,10 +280,7 @@ export const config: ApplicationConfig = {
                     return import('@taiga-ui/i18n/languages/english');
             }
         }),
-        provideZoneChangeDetection({
-            eventCoalescing: false,
-            runCoalescing: false,
-        }),
+        provideExperimentalZonelessChangeDetection(),
         {
             provide: TUI_DIALOGS_CLOSE,
             useFactory: () =>
