@@ -1,5 +1,7 @@
 import {join} from 'node:path';
 
+import {resetActiveProject} from 'ng-morph';
+
 import {runMigration} from '../../../utils/run-migration';
 
 const collection = join(__dirname, '../../../migration.json');
@@ -78,4 +80,6 @@ describe('ng-update input-range', () => {
 
         expect(await migrate(before)).toEqual(after);
     });
+
+    afterEach(() => resetActiveProject());
 });

@@ -1,6 +1,5 @@
 import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
-import {type DefaultTreeAdapterTypes} from 'parse5';
 
 import {
     findElementsByFn,
@@ -12,8 +11,6 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces';
-
-type Element = DefaultTreeAdapterTypes.Element;
 
 export function migrateInputRange({
     resource,
