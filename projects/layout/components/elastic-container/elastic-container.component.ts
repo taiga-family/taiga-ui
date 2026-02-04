@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
-import {tuiPx} from '@taiga-ui/cdk/utils';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiElasticContainerDirective} from './elastic-container.directive';
 
