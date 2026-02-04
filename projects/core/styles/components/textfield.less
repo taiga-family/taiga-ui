@@ -22,14 +22,7 @@ tui-textfield:where(*&) {
     font: var(--tui-font-ui-m);
     line-height: 1.25rem;
     box-sizing: border-box;
-    gap: 0 0.25rem;
     isolation: isolate;
-
-    // TODO: Remove in next PR
-    &[data-size='s'],
-    &:has([tuiInputPin]) {
-        gap: 0;
-    }
 
     &[tuiAppearance] {
         outline: none;
@@ -46,27 +39,29 @@ tui-textfield:where(*&) {
     }
 
     &[data-icon-start] {
-        --t-start: 2.25rem;
+        --t-start: 2.5rem;
     }
 
     &[data-icon-end] {
-        --t-end: 2.25rem;
+        --t-end: 1.75rem;
     }
 
     &[tuiIcons] {
         &::before {
             z-index: 1;
             block-size: var(--t-height);
-            margin-inline-end: 0.5rem;
+            inline-size: 1.5rem;
+            margin-inline-end: 1rem;
             pointer-events: none;
         }
 
         &::after {
             position: relative;
             block-size: var(--t-height);
+            inline-size: calc(1.5rem + 2 * var(--t-padding));
             cursor: pointer;
-            border-inline: var(--t-padding) solid transparent;
-            margin: 0 calc(-1 * var(--t-padding));
+            margin-inline-start: calc(0.25rem - var(--t-padding));
+            margin-inline-end: calc(-1 * var(--t-padding));
         }
     }
 
@@ -115,16 +110,21 @@ tui-textfield:where(*&) {
 
         &::before {
             font-size: 1rem;
+            margin-inline: -0.25rem 0.25rem;
         }
 
         &::after {
-            margin-inline-start: calc(0.5rem - var(--t-padding));
+            inline-size: calc(0.75rem + 2 * var(--t-padding));
+            margin-inline: 0 -0.5rem;
             font-size: 1rem;
         }
 
         & > .t-content {
             gap: 0;
-            margin-inline-end: -0.25rem;
+
+            > *:last-child {
+                margin-inline-end: -0.25rem;
+            }
         }
     }
 
@@ -139,7 +139,7 @@ tui-textfield:where(*&) {
         line-height: 1rem;
 
         &[data-icon-start] {
-            --t-start: 1.75rem;
+            --t-start: 1.875rem;
         }
 
         &[data-icon-end] {
@@ -147,15 +147,15 @@ tui-textfield:where(*&) {
         }
 
         &::before {
-            margin-inline: -0.125rem 0.125rem;
+            margin-inline: -0.125rem 0.5rem;
         }
 
         &::after {
-            margin-inline-start: calc(0.25rem - var(--t-padding));
-            margin-inline-end: calc(-0.125rem - var(--t-padding));
+            inline-size: calc(1.25rem + 2 * var(--t-padding));
+            margin-inline-start: calc(0.5rem - var(--t-padding));
         }
 
-        & > .t-content {
+        & > .t-content > *:last-child {
             margin-inline-end: -0.125rem;
         }
     }
@@ -214,9 +214,8 @@ tui-textfield:where(*&) {
         border-radius: inherit;
         border-width: 0;
         overscroll-behavior: none;
-        // StackBlitz changes "0rem" to "0" breaking calc
-        padding-inline-start: calc(var(--t-start, ~'0rem') + var(--t-padding));
-        padding-inline-end: calc(var(--t-end, ~'0rem') + var(--t-side, ~'0rem') + var(--t-padding));
+        padding-inline-start: calc(var(--t-start) + var(--t-padding));
+        padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding));
 
         &:is(input, textarea):read-only ~ .t-filler {
             display: none;

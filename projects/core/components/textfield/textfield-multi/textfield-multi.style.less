@@ -5,7 +5,6 @@ tui-textfield[multi][multi]:where(*&) {
     overflow: scroll;
     align-items: stretch;
     cursor: text;
-    gap: 0;
     max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
     overscroll-behavior-x: none;
     scroll-behavior: var(--tui-scroll-behavior);
@@ -16,11 +15,6 @@ tui-textfield[multi][multi]:where(*&) {
         inset-block-start: 0;
         inset-inline-start: 0;
         block-size: var(--t-height);
-    }
-
-    &[tuiChevron]::after {
-        inset-block-start: 0.375rem;
-        block-size: calc(var(--t-height) - 0.75rem);
     }
 
     > .t-scrollbar {
@@ -55,20 +49,16 @@ tui-textfield[multi][multi]:where(*&) {
         }
 
         &_horizontal {
-            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem));
+            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem));
             flex-wrap: nowrap;
 
             [dir='rtl'] & {
-                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem) 0 0);
+                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem) 0 0);
             }
 
             > .t-input {
-                padding-inline-end: calc(var(--t-side, ~'0rem') + var(--t-end) + var(--t-padding));
+                padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding) + 0.25rem);
             }
-        }
-
-        &:not(&_horizontal) {
-            --t-scroll: 0;
         }
 
         > label[tuiLabel] {
@@ -112,9 +102,7 @@ tui-textfield[multi][multi]:where(*&) {
     > .t-content {
         position: sticky;
         inset-block-start: 0;
-        inset-inline-start: calc(100% - var(--t-side, ~'0rem') - var(--t-end) + var(--t-padding) - var(--t-offset));
-        margin: 0;
-        gap: 0.25rem;
+        inset-inline-start: calc(100% - var(--t-side) - var(--t-end));
     }
 
     > .t-items input:not(:focus),
@@ -143,17 +131,9 @@ tui-textfield[multi][multi]:where(*&) {
 
     &[data-size='l'] {
         --t-vertical: 0.625rem;
-        --t-offset: calc(1rem - var(--t-end) / 4.5);
-
-        &::before {
-            margin-inline-end: 0.75rem;
-        }
 
         &::after {
-            // tuiChevron changes icon size to 1rem
-            inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
-            margin-inline-start: -0.75rem;
-            margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
+            inset-inline-start: calc(100% - var(--t-end) - var(--t-padding) + 0.25rem);
         }
 
         &._with-label {
@@ -167,19 +147,13 @@ tui-textfield[multi][multi]:where(*&) {
 
     &[data-size='m'] {
         --t-vertical: 0.5rem;
-        --t-offset: calc(0.75rem + var(--t-end) / 14);
 
         &::before {
             inset-inline-start: -0.125rem;
-            margin-inline-end: 0.375rem;
         }
 
         &::after {
             inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
-            border-width: 0.625rem;
-            // tuiChevron changes icon size to 1rem
-            margin-inline-start: -0.125rem;
-            margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
         }
 
         &._with-label {
@@ -189,30 +163,17 @@ tui-textfield[multi][multi]:where(*&) {
                 padding: 1.375rem 0 0.375rem;
             }
         }
-
-        > .t-content {
-            transform: translateX(0.125rem);
-        }
     }
 
     &[data-size='s'] {
         --t-vertical: 0.125rem;
-        --t-offset: calc(0.625rem + var(--t-end) / 12);
 
         &::before {
-            inset-inline-start: 0;
-            margin-inline-end: 0.375rem;
+            inset-inline-start: -0.25rem;
         }
 
         &::after {
             inset-inline-start: calc(100% - var(--t-end));
-            border-width: 0.5rem;
-            margin-inline: 0.25rem -0.5rem;
-        }
-
-        > .t-content {
-            gap: 0;
-            transform: translateX(calc(0.5rem - var(--t-end) / 12));
         }
     }
 
