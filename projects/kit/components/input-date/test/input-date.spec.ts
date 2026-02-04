@@ -2,9 +2,8 @@ import {ChangeDetectionStrategy, Component, type OnInit} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {provideTaiga, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
-import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiInputDateDirective', () => {
     @Component({
