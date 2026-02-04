@@ -87,7 +87,10 @@ export class TuiInputNumberStep {
                 this.mask.max(),
             ),
         );
-        this.el.setSelectionRange(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+
+        setTimeout((end = Number.MAX_SAFE_INTEGER) => {
+            this.el.setSelectionRange(end, end);
+        });
     }
 }
 
