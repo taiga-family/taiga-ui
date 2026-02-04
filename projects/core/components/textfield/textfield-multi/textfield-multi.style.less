@@ -17,10 +17,6 @@ tui-textfield[multi][multi]:where(*&) {
         block-size: var(--t-height);
     }
 
-    &::after {
-        inset-inline-start: calc(100% - var(--t-end) - var(--t-padding) + 0.25rem);
-    }
-
     > .t-scrollbar {
         transform: translateX(calc(var(--t-padding) * var(--tui-inline)));
         margin-inline-start: calc(-1 * var(--t-start));
@@ -136,6 +132,10 @@ tui-textfield[multi][multi]:where(*&) {
     &[data-size='l'] {
         --t-vertical: 0.625rem;
 
+        &::after {
+            inset-inline-start: calc(100% - var(--t-end) - var(--t-padding) + 0.25rem);
+        }
+
         &._with-label {
             --t-vertical: 1.125rem;
 
@@ -170,6 +170,10 @@ tui-textfield[multi][multi]:where(*&) {
 
         &::before {
             inset-inline-start: -0.25rem;
+        }
+
+        &::after {
+            inset-inline-start: calc(100% - var(--t-end));
         }
     }
 

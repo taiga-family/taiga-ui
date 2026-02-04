@@ -58,10 +58,8 @@ tui-textfield:where(*&) {
         &::after {
             position: relative;
             block-size: var(--t-height);
-            inline-size: 1.5rem;
+            inline-size: calc(1.5rem + 2 * var(--t-padding));
             cursor: pointer;
-            border: var(--t-padding) solid transparent;
-            border-block-width: 0;
             margin-inline-start: calc(0.25rem - var(--t-padding));
             margin-inline-end: calc(-1 * var(--t-padding));
         }
@@ -116,7 +114,8 @@ tui-textfield:where(*&) {
         }
 
         &::after {
-            margin-inline-end: calc(-0.25rem - var(--t-padding));
+            inline-size: calc(0.75rem + 2 * var(--t-padding));
+            margin-inline: 0 -0.5rem;
             font-size: 1rem;
         }
 
@@ -152,8 +151,7 @@ tui-textfield:where(*&) {
         }
 
         &::after {
-            border-width: calc(var(--t-padding) - 0.125rem);
-            border-block-width: 0;
+            inline-size: calc(1.25rem + 2 * var(--t-padding));
             margin-inline-start: calc(0.5rem - var(--t-padding));
         }
 

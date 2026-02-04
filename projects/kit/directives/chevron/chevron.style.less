@@ -10,10 +10,10 @@ tui-icon[tuiChevron]::before {
 
     cursor: pointer;
     /* scaling to avoid scrollbars and compensating mask size */
-    transform: rotate(0deg) scale(0.7);
-    font-size: calc(1rem / 0.7);
+    transform: rotate(0deg) scale(calc(2 / 3));
+    font-size: 1.5rem;
 
-    --tui-stroke-width: calc(var(--t-stroke) / 0.7);
+    --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
 }
 
 [tuiChevron][tuiIcons]::after {
