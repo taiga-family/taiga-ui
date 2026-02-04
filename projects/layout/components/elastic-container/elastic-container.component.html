@@ -3,7 +3,7 @@
     (transitioncancel)="onAnimation($any($event).propertyName, -1)"
     (transitionend)="onAnimation($any($event).propertyName, -1)"
     (transitionstart)="onAnimation($any($event).propertyName, 1)"
-    (tuiElasticContainer)="height = `${$event}px`"
+    (tuiElasticContainer)="updateHeight($event)"
 >
     <ng-content />
 </div>
