@@ -20,7 +20,7 @@ class Styles {}
     selector: 'tui-swipe-actions[onboarding]',
     host: {
         '[class._onboarding]': 'onboarding()',
-        '(animationend)': 'onboarding.set($event.animationName !== "onboarding-exit")',
+        '(animationend)': 'onboarding.set($event.animationName !== "tuiOnboardingExit")',
     },
 })
 export class TuiSwipeActionsOnboarding {
