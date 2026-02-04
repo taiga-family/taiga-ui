@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {shouldCall} from '@taiga-ui/event-plugins';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiElasticContainerDirective} from './elastic-container.directive';
 
@@ -10,17 +10,19 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     templateUrl: './elastic-container.component.html',
     styleUrls: ['./elastic-container.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[style.height.px]': 'height',
-        '[class._transitioning]': 'transitions',
-    },
+    host: {'[style.block-size]': 'transitions() ? "auto" : height()'},
 })
 export class TuiElasticContainer {
-    protected height = NaN;
-    protected transitions = 0;
+    protected height = signal('');
+    protected transitions = signal(0);
 
-    @shouldCall((name) => name === 'height')
-    protected onAnimation(_name: string, count: number): void {
-        this.transitions += count;
+    protected onAnimation(name: string, count: number): void {
+        if (name === 'height') {
+            this.transitions.update((value) => value + count);
+        }
+    }
+
+    protected updateHeight(height: number): void {
+        this.height.set(tuiPx(height));
     }
 }
