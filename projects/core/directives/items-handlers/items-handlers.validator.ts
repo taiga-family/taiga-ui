@@ -13,10 +13,16 @@ import {TuiItemsHandlersDirective} from './items-handlers.directive';
 })
 export class TuiItemsHandlersValidator extends TuiValidator {
     private readonly handlers = inject(TuiItemsHandlersDirective);
+    private initialized = false;
 
     protected readonly update = effect(() => {
         this.handlers.disabledItemHandler();
-        this.onChange();
+
+        if (this.initialized) {
+            this.onChange();
+        } else {
+            this.initialized = true;
+        }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     public disabledItemHandler: TuiBooleanHandler<any> = (value) =>
