@@ -31915,6 +31915,70 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 export default class Example {}
 ```
 
+#### Onboarding
+
+**Template:**
+```html
+<div>
+<button appearance="secondary-grayscale" iconEnd="@tui.play" size="m" tuiButton type="button" [disabled]="onboarding()" (click)="onboarding.set(true)" > Play </button>
+</div>
+<tui-swipe-actions [(onboarding)]="onboarding">
+<div appearance="floating" tuiCardLarge tuiCell >
+<div appearance="primary" tuiAvatar="@tui.dollar-sign" ></div>
+<div tuiTitle>
+<strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
+<div tuiSubtitle>Dollar account</div>
+</div>
+</div>
+<button iconStart="@tui.eye" size="m" tuiIconButton tuiSwipeAction type="button" > Show </button>
+<button iconStart="@tui.pencil-line" size="m" tuiIconButton tuiSwipeAction type="button" > Edit </button>
+<button appearance="secondary" iconStart="@tui.share" size="m" tuiIconButton tuiSwipeAction type="button" > Share </button>
+</tui-swipe-actions>
+<tui-swipe-actions [(onboarding)]="onboarding">
+<div appearance="floating" tuiCardLarge tuiCell >
+<div appearance="primary" tuiAvatar="@tui.gift" ></div>
+<div tuiTitle>
+<strong>{{ 23000 | tuiAmount: 'EUR' }}</strong>
+<div tuiSubtitle>Goal</div>
+</div>
+</div>
+<button iconStart="@tui.eye" size="m" tuiIconButton tuiSwipeAction type="button" > Show </button>
+</tui-swipe-actions>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiSwipeActions, TuiSwipeActionsOnboarding} from '@taiga-ui/addon-mobile';
+import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiCardLarge} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAmountPipe,
+        TuiAvatar,
+        TuiButton,
+        TuiCardLarge,
+        TuiCell,
+        TuiSwipeActions,
+        TuiSwipeActionsOnboarding,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly onboarding = signal(false);
+}
+```
+
 
 ### TypeScript
 
@@ -31928,7 +31992,16 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        'Basic',
+        'Custom',
+        'Autoclose',
+        'Dynamic actions',
+        'Fallback for desktop',
+        'Onboarding',
+    ];
+}
 ```
 
 ---
