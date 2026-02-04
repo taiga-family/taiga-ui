@@ -17,7 +17,7 @@ describe('TuiInputDateDirective', () => {
                         tuiInputDate
                         [formControl]="control"
                     />
-                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-calendar *tuiDropdown />
                 </tui-textfield>
             </tui-root>
         `,
