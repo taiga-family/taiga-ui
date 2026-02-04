@@ -1,11 +1,19 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+[tuiChevron] {
+    --t-stroke: var(--tui-stroke-width);
+}
+
 [tuiChevron][tuiIcons]::after,
 tui-icon[tuiChevron]::before {
     .transition(~'transform, color');
 
     cursor: pointer;
-    font-size: 1rem;
+    /* scaling to avoid scrollbars and compensating mask size */
+    transform: rotate(0deg) scale(0.7);
+    font-size: calc(1rem / 0.7);
+
+    --tui-stroke-width: calc(var(--t-stroke) / 0.7);
 }
 
 [tuiChevron][tuiIcons]::after {
@@ -16,5 +24,5 @@ tui-icon[tuiChevron]::before {
 
 [tuiChevron][tuiIcons]._chevron-rotated::after,
 tui-icon[tuiChevron]._chevron-rotated::before {
-    transform: rotate(180deg);
+    transform: rotate(180deg) scale(0.7);
 }
