@@ -7083,7 +7083,7 @@ export default class Example {
 <div tuiSubtitle>USD</div>
 <div appearance="neutral" tuiBadge > By default unless arrested </div>
 </div>
-<div tuiAccessories tuiTitle [style.white-space]="'nowrap'" [style.width]="0" > $123 456 <div tuiSubtitle>Careful, content may overlap</div>
+<div tuiAccessories tuiTitle [style.overflow]="'visible'" [style.white-space]="'nowrap'" [style.width]="0" > $123 456 <div tuiSubtitle>Careful, content may overlap</div>
 </div>
 </div>
 ```
@@ -7182,16 +7182,13 @@ export default class Example {
 </span>
 </button> } </div>
 <div tuiNotification>
-<code>DataList</code> already uses <code>Cell</code> for the options, but if you need to show it in value template as well – add a wrapping element with <code>Cell</code>
-</div>
+<code>Cell</code> is used inside <code>DataList</code> options and <code>Textfield</code> template by default. </div>
 <tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
 <input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 <ng-template #content let-item >
-<span tuiCell>
 <div appearance="primary" [tuiAvatar]="item.icon" ></div>
 <span tuiTitle> {{ item.title }} <span tuiSubtitle>{{ item.subtitle }}</span>
-</span>
 </span>
 </ng-template>
 </tui-textfield>
@@ -21131,7 +21128,6 @@ export default class Page {
 <input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 <ng-template #content let-item >
-<span tuiCell>
 <span tuiAvatar="@tui.star"></span>
 <span tuiTitle>
 <tui-items-with-more tuiSubtitle>
@@ -21140,7 +21136,6 @@ export default class Page {
 <div *tuiMore="let index"> @if (index < 0) { <span>{{ item.name }}</span> } <span>&nbsp;*{{ item.number.slice(-4) }}</span>
 </div>
 </tui-items-with-more> ${{ item.value | tuiFormatNumber }} </span>
-</span>
 </ng-template>
 </tui-textfield>
 ```
@@ -21150,7 +21145,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCell, TuiFormatNumberPipe, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiChevron,
@@ -21163,7 +21158,6 @@ import {
     imports: [
         FormsModule,
         TuiAvatar,
-        TuiCell,
         TuiChevron,
         TuiDataListWrapper,
         TuiFormatNumberPipe,
@@ -23868,7 +23862,7 @@ export default class Example {}
 <div tuiTitle> Alexander I. <div tuiSubtitle>USD</div>
 <span tuiMessage>Don't deny yourself anything</span>
 </div>
-<div tuiAccessories tuiTitle [style.white-space]="'nowrap'" [style.width]="0" > + $123 456 <div tuiSubtitle>June 2</div>
+<div tuiAccessories tuiTitle [style.overflow]="'visible'" [style.white-space]="'nowrap'" [style.width]="0" > + $123 456 <div tuiSubtitle>June 2</div>
 </div>
 </div>
 <div tuiCell>
@@ -38636,12 +38630,10 @@ export default class Example {
 <input prefix="$" tuiInputNumber [(ngModel)]="sum" />
 </tui-textfield>
 <ng-template #template let-user >
-<span tuiCell>
 <div [tuiAvatar]="user.name | tuiInitials"> @if (user.url) { <img alt="" [src]="user.url" /> } </div>
 <span tuiTitle>
 <span tuiFade>{{ user.name }}</span>
 <span tuiSubtitle> {{ user.balance | tuiAmount: '$' : 'start' }} </span>
-</span>
 </span>
 </ng-template>
 ```
@@ -38654,7 +38646,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiCell, TuiDropdown, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiAvatar,
@@ -38682,7 +38674,6 @@ interface User {
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
