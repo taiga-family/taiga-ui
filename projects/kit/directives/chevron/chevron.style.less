@@ -1,24 +1,28 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-[tuiChevron] {
-    --t-stroke: var(--tui-stroke-width);
-}
-
 [tuiChevron][tuiIcons]::after,
 tui-icon[tuiChevron]::before {
     .transition(~'transform, color');
 
     cursor: pointer;
-    /* scaling to avoid scrollbars and compensating mask size */
-    transform: rotate(0deg) scale(calc(2 / 3));
-    font-size: 1.5rem;
-
-    --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
+    font-size: 1rem;
 }
 
 [tuiChevron][tuiIcons]::after {
     [tuiButton][data-size='m']& {
         margin-inline-end: -0.125rem;
+    }
+
+    tui-textfield& {
+        --t-stroke: var(--tui-stroke-width);
+
+        &::after {
+            /* scaling to avoid scrollbars and compensating mask size */
+            transform: rotate(0deg) scale(calc(2 / 3));
+            font-size: 1.5rem;
+
+            --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
+        }
     }
 }
 
