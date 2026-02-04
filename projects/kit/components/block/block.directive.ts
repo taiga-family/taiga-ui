@@ -42,7 +42,7 @@ class TuiBlockStyles {}
     hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons],
     host: {
         tuiBlock: '',
-        '[attr.data-size]': 'size || "l"',
+        '[attr.data-size]': 'size || options.size || "l"',
         '[class._disabled]': '!!this.control?.disabled',
     },
 })
@@ -51,7 +51,8 @@ export class TuiBlock {
     protected readonly control?: NgControl;
 
     protected readonly nothing = tuiWithStyles(TuiBlockStyles);
+    protected readonly options = inject(TUI_BLOCK_OPTIONS);
 
     @Input('tuiBlock')
-    public size: TuiSizeL | TuiSizeS | '' = inject(TUI_BLOCK_OPTIONS).size;
+    public size: TuiSizeL | TuiSizeS | '' = this.options.size;
 }
