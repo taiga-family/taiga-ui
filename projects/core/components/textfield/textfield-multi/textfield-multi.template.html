@@ -54,7 +54,10 @@
 </span>
 
 @if (control()?.value != null) {
-    <span class="t-template">
+    <span
+        class="t-template"
+        [tuiCell]="options.size()"
+    >
         <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: control()?.value}">
             {{ text }}
         </ng-container>

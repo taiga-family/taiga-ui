@@ -10,7 +10,6 @@ import {
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
-    TuiCell,
     TuiRoot,
     TuiTextfield,
     TuiTitle,
@@ -43,7 +42,6 @@ interface User {
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiDataListWrapper,
         TuiDropdownMobile,
@@ -119,20 +117,18 @@ interface User {
                 #template
                 let-user
             >
-                <span tuiCell>
-                    <div [tuiAvatar]="user.name | tuiInitials">
-                        @if (user.url) {
-                            <img
-                                alt=""
-                                [src]="user.url"
-                            />
-                        }
-                    </div>
-                    <span tuiTitle>
-                        {{ user.name }}
-                        <span tuiSubtitle>
-                            {{ user.balance | tuiAmount: '$' : 'start' }}
-                        </span>
+                <div [tuiAvatar]="user.name | tuiInitials">
+                    @if (user.url) {
+                        <img
+                            alt=""
+                            [src]="user.url"
+                        />
+                    }
+                </div>
+                <span tuiTitle>
+                    {{ user.name }}
+                    <span tuiSubtitle>
+                        {{ user.balance | tuiAmount: '$' : 'start' }}
                     </span>
                 </span>
             </ng-template>

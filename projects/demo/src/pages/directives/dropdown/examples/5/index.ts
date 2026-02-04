@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiCell, TuiDropdown, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiAvatar,
@@ -33,7 +33,6 @@ interface User {
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
