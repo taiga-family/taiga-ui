@@ -12,21 +12,25 @@ tui-icon[tuiChevron]::before {
     [tuiButton][data-size='m']& {
         margin-inline-end: -0.125rem;
     }
-
-    tui-textfield& {
-        --t-stroke: var(--tui-stroke-width);
-
-        &::after {
-            /* scaling to avoid scrollbars and compensating mask size */
-            transform: rotate(0deg) scale(calc(2 / 3));
-            font-size: 1.5rem;
-
-            --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
-        }
-    }
 }
 
 [tuiChevron][tuiIcons]._chevron-rotated::after,
 tui-icon[tuiChevron]._chevron-rotated::before {
-    transform: rotate(180deg) scale(0.7);
+    transform: rotate(180deg);
+}
+
+tui-textfield[tuiChevron][tuiIcons] {
+    --t-stroke: var(--tui-stroke-width);
+
+    &::after {
+        /* scaling to avoid scrollbars and compensating mask size */
+        transform: rotate(0deg) scale(calc(2 / 3));
+        font-size: 1.5rem;
+
+        --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
+    }
+
+    &._chevron-rotated::after {
+        transform: rotate(180deg) scale(calc(2 / 3));
+    }
 }
