@@ -10,7 +10,18 @@ import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiAmountPipe, TuiAppearance, TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiSwipeActions, TuiSwipeActionsOnboarding, TuiTitle],
+    imports: [
+        AsyncPipe,
+        TuiAmountPipe,
+        TuiAppearance,
+        TuiAvatar,
+        TuiButton,
+        TuiCardLarge,
+        TuiCell,
+        TuiSwipeActions,
+        TuiSwipeActionsOnboarding,
+        TuiTitle,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
