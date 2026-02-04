@@ -108,6 +108,7 @@ export const TUI_USED_ICONS = [
     '@tui.pencil-line',
     '@tui.share',
     '@tui.briefcase',
+    '@tui.play',
     '@tui.code',
     '@tui.terminal',
     '@tui.image',
@@ -116,6 +117,5 @@ export const TUI_USED_ICONS = [
     '@tui.camera',
     '@tui.folder',
     '@tui.chevron-up',
-    '@tui.play',
     '@tui.pause',
 ] as const;
