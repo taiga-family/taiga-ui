@@ -37,7 +37,7 @@
     },
     "constants": {
         "description": "Configurable constants for the generation process",
-        "defaultModulesPath": "projects/demo/src/modules",
+        "defaultModulesPath": "projects/demo/src/pages",
         "defaultOutputFile": "projects/demo/src/llms-full.txt",
         "defaultOutputFileHtml": "projects/demo/src/llms-full.html",
         "headerSectionsPath": "projects/demo/src/llms-header-sections",
@@ -57,6 +57,6 @@
             "src",
             "test"
         ],
-        "childFolders": ["components", "directives", "tokens", "customization", "pipes", "light"]
+        "childFolders": ["components", "directives", "tokens", "customization", "pipes"]
     }
 }

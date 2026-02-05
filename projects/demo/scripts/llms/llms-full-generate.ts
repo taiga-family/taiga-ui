@@ -17,6 +17,8 @@ import {
     loadConfig,
     processMarkdownFile,
     readIndexHtml,
+    setFoldersToScan,
+    setPagesPath,
     shouldIncludeSection,
 } from './utils';
 import {saveImportMap} from './utils/generate-import-map';
@@ -185,6 +187,15 @@ async function main(): Promise<void> {
         config.constants?.defaultOutputFileHtml,
     );
 
+    // Initialize file system path from config
+    if (config.constants?.defaultModulesPath) {
+        setPagesPath(config.constants.defaultModulesPath);
+    }
+
+    if (config.constants?.childFolders && Array.isArray(config.constants.childFolders)) {
+        setFoldersToScan(config.constants.childFolders);
+    }
+
     // Apply defaults to cliOptions if not provided
     if (cliOptions.roots.length === 0) {
         cliOptions.roots = [DEFAULT_MODULES_PATH];
@@ -309,7 +320,7 @@ async function main(): Promise<void> {
     }
 
     async function scanAdditionalRoot(root: string): Promise<string[]> {
-        if (root === DEFAULT_PAGES_PATH) {
+        if (root === DEFAULT_MODULES_PATH) {
             return getAllFolders();
         }
 
