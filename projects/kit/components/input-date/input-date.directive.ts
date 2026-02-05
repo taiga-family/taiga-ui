@@ -27,9 +27,9 @@ import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
-    tuiTextfieldIcon,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     type TuiItemsHandlers,
     TuiItemsHandlersDirective,
@@ -66,12 +66,15 @@ export abstract class TuiInputDateBase<
         (x) => x instanceof TuiCalendar || x instanceof TuiCalendarRange,
     );
 
+    protected readonly options =
+        inject<Omit<TuiInputDateOptions, 'valueTransformer'>>(TUI_INPUT_DATE_OPTIONS);
+
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly input = inject(TuiInputDirective);
     protected readonly filler = tuiWithDateFiller();
     protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly open = inject(TuiDropdownOpen).open;
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS);
+    protected readonly icon = tuiIconEnd(this.options.icon);
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TuiItemsHandlersDirective);
     protected readonly format = inject(TUI_DATE_FORMAT);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -84,9 +87,6 @@ export abstract class TuiInputDateBase<
         (a: TuiDay, b: TuiDay) => a.daySame(b),
         {},
     );
-
-    protected readonly options: Omit<TuiInputDateOptions, 'valueTransformer'> =
-        inject(TUI_INPUT_DATE_OPTIONS);
 
     protected readonly valueEffect = effect(() => {
         const value =

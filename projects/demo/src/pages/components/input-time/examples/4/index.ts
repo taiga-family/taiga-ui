@@ -12,7 +12,7 @@ import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     changeDetection,
     providers: [
         tuiInputTimeOptionsProvider({
-            icon: () => '@tui.timer',
+            icon: '@tui.timer',
             mode: 'HH:MM:SS.MSS',
             timeSegmentMaxValues: {hours: 99},
         }),

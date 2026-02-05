@@ -6,9 +6,9 @@ import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
-    tuiTextfieldIcon,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
@@ -36,7 +36,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     private readonly months = inject(TUI_MONTHS);
     private readonly open = inject(TuiDropdownOpen).open;
 
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_OPTIONS);
+    protected readonly icon = tuiIconEnd(inject(TUI_INPUT_MONTH_OPTIONS).icon);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
