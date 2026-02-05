@@ -1,3 +1,3 @@
 ```bash
-$ ng update @taiga-ui/cdk
+ng update @taiga-ui/cdk
 ```
