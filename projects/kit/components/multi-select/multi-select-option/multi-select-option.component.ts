@@ -22,8 +22,12 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
         }
     `,
     styles: `
-        :host-context(tui-dropdown-mobile) input,
-        :host-context(tui-sheet-dialog) input {
+        :host[data-size='m'] input {
+            margin-inline-start: 0.25rem;
+        }
+
+        :host-context(tui-dropdown-mobile) [tuiCheckbox],
+        :host-context(tui-sheet-dialog) [tuiCheckbox] {
             order: 100;
             margin-inline-start: auto;
         }

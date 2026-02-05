@@ -27,17 +27,14 @@
             *tuiDropdown
             tuiMultiSelectGroup
         >
-            <tui-opt-group>
-                @for (item of items; track item) {
-                    <button
-                        tuiOption
-                        type="button"
-                        [value]="item"
-                    >
-                        {{ item }}
-                    </button>
-                }
-            </tui-opt-group>
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-data-list>
     </button>
 </form>

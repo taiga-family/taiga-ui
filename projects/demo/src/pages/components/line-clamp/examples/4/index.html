@@ -15,20 +15,18 @@
 </h3>
 
 <ng-template #template>
-    <tui-data-list tuiDataListDropdownManager>
-        <tui-opt-group>
-            @for (text of texts; track text) {
-                <button
-                    tuiOption
-                    type="button"
-                    class="dropdown-button"
-                >
-                    <tui-line-clamp
-                        [content]="text"
-                        [linesLimit]="2"
-                    />
-                </button>
-            }
-        </tui-opt-group>
+    <tui-data-list>
+        @for (text of texts; track text) {
+            <button
+                tuiOption
+                type="button"
+                class="dropdown-button"
+            >
+                <tui-line-clamp
+                    [content]="text"
+                    [linesLimit]="2"
+                />
+            </button>
+        }
     </tui-data-list>
 </ng-template>

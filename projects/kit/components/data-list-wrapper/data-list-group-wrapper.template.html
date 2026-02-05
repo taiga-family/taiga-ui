@@ -4,7 +4,10 @@
         [size]="size()"
     >
         @for (group of items(); track group) {
-            @if (multi) {
+            @if (!labels()[$index] && group.length) {
+                <hr />
+            }
+            @if (multi && group.length) {
                 <tui-opt-group
                     tuiMultiSelectGroup
                     [label]="labels()[$index] || ''"
@@ -23,7 +26,7 @@
                         </button>
                     }
                 </tui-opt-group>
-            } @else {
+            } @else if (group.length) {
                 <tui-opt-group [label]="labels()[$index]">
                     @for (item of group; track item) {
                         <button
@@ -39,6 +42,9 @@
                         </button>
                     }
                 </tui-opt-group>
+            }
+            @if (!labels()[$index] && group.length) {
+                <hr />
             }
         }
     </tui-data-list>

@@ -9,7 +9,6 @@
         />
     </tui-textfield>
 </div>
-<hr />
 <tui-data-list
     emptyContent="No results found"
     (keydown)="onKeyDown($event.key)"
@@ -35,6 +34,7 @@
                 </button>
             }
         </tui-opt-group>
+        <hr />
     }
     @for (item of items(); track item) {
         @let filtered = item.items | tuiFilter: filter : value;

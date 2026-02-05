@@ -54,9 +54,8 @@
         }
     }
 
-    ::ng-deep tui-data-list {
-        margin-inline-start: calc(-1 * var(--tui-data-list-padding));
-        margin-inline-end: calc(-1 * var(--tui-data-list-padding));
+    ::ng-deep tui-data-list[data-size] {
+        padding: 0;
 
         [tuiOption][data-size] {
             margin-inline: -0.5rem;

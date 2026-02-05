@@ -16,7 +16,7 @@ test.describe('DropdownHover', () => {
 
             test.beforeEach(({page}) => {
                 po = new TuiDocumentationPagePO(page);
-                example = po.getExample('#with--dropdown-mobile');
+                example = po.getExample('#mobile');
             });
 
             test('Opens mobile version of dropdown on the 1st time click', async ({

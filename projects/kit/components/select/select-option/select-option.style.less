@@ -1,15 +1,15 @@
-:host._value > .t-check,
-:host._value > .t-dummy {
+:host > .t-check,
+:host > .t-dummy {
     order: 100;
     margin-inline-start: auto;
     pointer-events: none;
 }
 
-:host._value._selected ~ ::ng-deep [tuiSelectOption] > .t-check::before {
-    opacity: 0;
+:host[data-size='m'] > .t-check,
+:host[data-size='m'] > .t-dummy {
+    margin-inline-end: 0.25rem;
 }
 
-:host:not(._value) > .t-check,
 :host-context(tui-dropdown-mobile) > .t-check {
     display: none;
 }

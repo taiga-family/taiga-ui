@@ -8,9 +8,11 @@ tui-textfield:where(*&) {
     --t-padding: var(--tui-padding-l);
     --t-label-y: -0.75rem;
     --t-label-font: var(--tui-font-body-s);
-    --t-end: ~'0rem';
-    --t-start: ~'0rem';
-    --t-side: ~'0rem';
+    --t-end: ~'0px';
+    --t-start: ~'0px';
+    --t-side: ~'0px';
+    --t-max: 0.75rem;
+    --t-space: ~'clamp(0px, calc(var(--t-side) + var(--t-end)), var(--t-max))';
 
     position: relative;
     display: flex;
@@ -95,6 +97,7 @@ tui-textfield:where(*&) {
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
         --t-padding: var(--tui-padding-s);
+        --t-max: ~'0px';
 
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-ui-s);
@@ -133,13 +136,14 @@ tui-textfield:where(*&) {
         --t-padding: var(--tui-padding-m);
         --t-label-font: var(--tui-font-body-xs);
         --t-label-y: -0.5625rem;
+        --t-max: 0.125rem;
 
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-ui-s);
         line-height: 1rem;
 
         &[data-icon-start] {
-            --t-start: 1.875rem;
+            --t-start: 2.125rem;
         }
 
         &[data-icon-end] {
@@ -147,7 +151,7 @@ tui-textfield:where(*&) {
         }
 
         &::before {
-            margin-inline: -0.125rem 0.5rem;
+            margin-inline: -0.125rem 0.75rem;
         }
 
         &::after {
@@ -215,7 +219,7 @@ tui-textfield:where(*&) {
         border-width: 0;
         overscroll-behavior: none;
         padding-inline-start: calc(var(--t-start) + var(--t-padding));
-        padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding));
+        padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding) + var(--t-space));
         white-space: nowrap;
         overflow: hidden;
 
