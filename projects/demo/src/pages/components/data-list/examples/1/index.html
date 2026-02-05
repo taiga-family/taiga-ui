@@ -8,10 +8,7 @@
     Menu
 </button>
 <ng-template #content>
-    <tui-data-list
-        role="menu"
-        size="m"
-    >
+    <tui-data-list role="menu">
         @for (group of groups; track group) {
             @if (!group.label) {
                 <hr />
