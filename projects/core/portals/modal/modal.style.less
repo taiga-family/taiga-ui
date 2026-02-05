@@ -41,7 +41,7 @@ tui-modal {
         }
     }
 
-    @supports (selector(:has(*))) and (selector(:nth-child(1 of *))) {
+    @supports (selector(:has(*))) {
         &:nth-last-child(1 of tui-modal:not(.tui-leave):not(:has(.tui-backdrop-hidden))) {
             backdrop-filter: brightness(0.25);
         }

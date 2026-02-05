@@ -189,7 +189,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.List,
-        loadComponent: async () => import('../directives/list'),
+        loadComponent: async () => import('../components/list'),
         title: 'List',
     }),
     route({

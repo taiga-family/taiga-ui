@@ -12,18 +12,6 @@ tui-icon[tuiChevron]::before {
     [tuiButton][data-size='m']& {
         margin-inline-end: -0.125rem;
     }
-
-    tui-textfield[data-size='s']& {
-        margin-inline-end: calc(-0.125rem - var(--t-padding));
-    }
-
-    tui-textfield[data-size='m']& {
-        margin-inline-end: calc(0.125rem - var(--t-padding));
-    }
-
-    tui-textfield[data-size='l']& {
-        margin-inline-end: calc(0.25rem - var(--t-padding));
-    }
 }
 
 [tuiChevron][tuiIcons]._chevron-rotated::after,
@@ -31,16 +19,18 @@ tui-icon[tuiChevron]._chevron-rotated::before {
     transform: rotate(180deg);
 }
 
-tui-textfield[tuiChevron][data-icon-end] {
-    &[data-size='l'] {
-        --t-end: 2.375rem;
+tui-textfield[tuiChevron][tuiIcons] {
+    --t-stroke: var(--tui-stroke-width);
+
+    &::after {
+        /* scaling to avoid scrollbars and compensating mask size */
+        transform: rotate(0deg) scale(calc(2 / 3));
+        font-size: 1.5rem;
+
+        --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
     }
 
-    &[data-size='m'] {
-        --t-end: 1.75rem;
-    }
-
-    &[data-size='s'] {
-        --t-end: 1.5rem;
+    &._chevron-rotated::after {
+        transform: rotate(180deg) scale(calc(2 / 3));
     }
 }

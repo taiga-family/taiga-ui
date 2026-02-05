@@ -21,6 +21,7 @@ import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiCell} from '@taiga-ui/core/components/cell';
 import {
     tuiAsDataListHost,
     type TuiDataListHost,
@@ -46,7 +47,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 
 @Component({
     selector: 'tui-textfield:not([multi])',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, WaResizeObserver],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, WaResizeObserver],
     templateUrl: './textfield.template.html',
     styles: '@import "@taiga-ui/core/styles/components/textfield.less";',
     encapsulation: ViewEncapsulation.None,

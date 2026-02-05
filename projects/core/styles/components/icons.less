@@ -37,14 +37,14 @@
     &::before {
         display: var(--t-icon-start);
         mask:
-            var(--t-icon-start) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
+            var(--t-icon-start) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width))
                 ~'min(1em, 100%)',
             100% padding-box;
     }
 
     &::after {
         display: var(--t-icon-end);
-        mask: var(--t-icon-end) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
+        mask: var(--t-icon-end) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width))
             ~'min(1em, 100%)' padding-box;
     }
 

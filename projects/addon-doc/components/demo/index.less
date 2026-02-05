@@ -17,8 +17,17 @@
     overflow: hidden;
     box-sizing: border-box;
 
+    &[tuiTheme='dark'] {
+        box-shadow: none;
+    }
+
     :host-context([tuiTheme='dark']) {
         background: var(--tui-background-elevation-2);
+        box-shadow: 0 0 1rem 0.5rem var(--tui-background-base);
+
+        &[tuiTheme='light'] {
+            box-shadow: none;
+        }
     }
 }
 
