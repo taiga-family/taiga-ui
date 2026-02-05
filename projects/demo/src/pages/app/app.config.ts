@@ -1,9 +1,4 @@
-import {
-    isPlatformBrowser,
-    LocationStrategy,
-    PathLocationStrategy,
-    ViewportScroller,
-} from '@angular/common';
+import {LocationStrategy, PathLocationStrategy, ViewportScroller} from '@angular/common';
 import {HttpClient, provideHttpClient, withFetch} from '@angular/common/http';
 import {
     type ApplicationConfig,
@@ -53,7 +48,7 @@ import {
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
-import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+import {provideHighlightOptions} from 'ngx-highlightjs';
 import {catchError, filter, map, merge, of} from 'rxjs';
 
 import {AuthService} from '../components/dialog/examples/5/service';
@@ -87,28 +82,16 @@ export const config: ApplicationConfig = {
             provide: TUI_PLATFORM,
             useValue: 'web',
         },
-        {
-            provide: HIGHLIGHT_OPTIONS,
-            useFactory: () => {
-                const isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-
-                return {
-                    coreLibraryLoader: async () => import('highlight.js/lib/core'),
-                    lineNumbersLoader: async () =>
-                        // SSR ReferenceError: window is not defined
-                        isBrowser
-                            ? import('ngx-highlightjs/line-numbers')
-                            : Promise.resolve(),
-                    languages: {
-                        typescript: async () =>
-                            import('highlight.js/lib/languages/typescript'),
-                        less: async () => import('highlight.js/lib/languages/less'),
-                        xml: async () => import('highlight.js/lib/languages/xml'),
-                        bash: async () => import('highlight.js/lib/languages/bash'),
-                    },
-                };
+        provideHighlightOptions({
+            coreLibraryLoader: async () => import('highlight.js/lib/core'),
+            lineNumbersLoader: async () => import('ngx-highlightjs/line-numbers'),
+            languages: {
+                typescript: async () => import('highlight.js/lib/languages/typescript'),
+                less: async () => import('highlight.js/lib/languages/less'),
+                xml: async () => import('highlight.js/lib/languages/xml'),
+                bash: async () => import('highlight.js/lib/languages/bash'),
             },
-        },
+        }),
         {
             provide: TUI_DOC_SOURCE_CODE,
             useValue: ({
