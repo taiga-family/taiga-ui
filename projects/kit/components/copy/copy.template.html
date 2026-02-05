@@ -1,6 +1,6 @@
 <span
     #content
-    tuiHintAppearance="dark"
+    tuiHintAppearance="floating"
     tuiHintDirection="top"
     class="t-content"
     [cdkCopyToClipboard]="content.textContent ?? ''"
@@ -18,7 +18,7 @@
     class="t-button"
     [attr.aria-label]="texts()[0]"
     [cdkCopyToClipboard]="content.textContent ?? ''"
-    [iconStart]="options.icon(size())"
+    [iconStart]="options.icon"
     (cdkCopyToClipboardCopied)="copied$.next($event)"
 ></button>
 <ng-template #template>
