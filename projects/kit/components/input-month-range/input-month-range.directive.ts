@@ -6,11 +6,8 @@ import {
     TuiMonthRange,
 } from '@taiga-ui/cdk/date-time';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
-import {
-    tuiInjectAuxiliary,
-    TuiSelectLike,
-    tuiTextfieldIcon,
-} from '@taiga-ui/core/components/textfield';
+import {tuiInjectAuxiliary, TuiSelectLike} from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
@@ -42,7 +39,7 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
         (x) => x instanceof TuiCalendarMonth,
     );
 
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_RANGE_OPTIONS);
+    protected readonly icon = tuiIconEnd(inject(TUI_INPUT_MONTH_RANGE_OPTIONS).icon);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly valueEffect = effect(() => {
         const value = this.value();

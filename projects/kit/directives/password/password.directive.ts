@@ -1,6 +1,5 @@
 import {computed, Directive, inject, signal} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,
@@ -41,13 +40,9 @@ export class TuiPassword {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly hidden = signal(true);
     protected readonly icon = tuiIconStart(
-        computed((size = this.textfield.options.size()) => {
-            const icon = this.hidden()
-                ? this.options.icons.show
-                : this.options.icons.hide;
-
-            return tuiIsString(icon) ? icon : icon(size);
-        }),
+        computed(() =>
+            this.hidden() ? this.options.icons.show : this.options.icons.hide,
+        ),
     );
 
     protected readonly hint = tuiDirectiveBinding(

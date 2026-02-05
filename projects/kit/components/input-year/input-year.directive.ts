@@ -4,7 +4,8 @@ import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
-import {tuiInjectAuxiliary, tuiTextfieldIcon} from '@taiga-ui/core/components/textfield';
+import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
@@ -38,7 +39,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     );
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_YEAR_OPTIONS);
+    protected readonly icon = tuiIconEnd(this.options.icon);
     protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
         (x) => x instanceof TuiCalendarYear,
     );

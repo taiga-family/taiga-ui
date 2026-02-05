@@ -10,9 +10,9 @@ import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
-    tuiTextfieldIcon,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
@@ -40,7 +40,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS);
 
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS);
+    protected readonly icon = tuiIconEnd(this.dateOptions.icon);
     protected readonly filler = tuiWithDateFiller();
     protected readonly format = inject(TUI_DATE_FORMAT);
 
