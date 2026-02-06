@@ -771,7 +771,7 @@ export function extractRequiredDirectives(content: string): string {
 
         for (const dir of tuiDirectives) {
             // Convert tuiDropdown -> TuiDropdown
-            const className = 'Tui' + dir.charAt(3).toUpperCase() + dir.slice(4);
+            const className = `Tui${dir.charAt(3).toUpperCase()}${dir.slice(4)}`;
 
             result.push(`// For *${dir}`);
 

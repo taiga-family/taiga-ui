@@ -273,8 +273,10 @@ async function main(): Promise<void> {
     if (headerFiles && Array.isArray(headerFiles)) {
         for (const headerFile of headerFiles) {
             const headerPath = path.join(headerSectionsPath, headerFile);
+
             try {
                 const headerContent = await fs.readFile(headerPath, 'utf-8');
+
                 output.push(headerContent);
                 output.push('\n---\n');
                 console.info(`  ✓ Added header section: ${headerFile}`);
