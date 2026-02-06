@@ -14,8 +14,7 @@
 [![Code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
-[Figma](https://www.figma.com/community/file/1220308188005380608)
+[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team)
 
 </div>
 
@@ -48,11 +47,19 @@ Read more about Taiga UI main features in
 
 ## Version compatibility
 
-| Taiga UI | Angular              | Supported              | Latest version (npm)                                                                               |
+| Taiga UI | Angular              | Supported              | Latest version                                                                                     |
 | -------- | -------------------- | ---------------------- | -------------------------------------------------------------------------------------------------- |
+| `5.x.y`  | `^19.0.0` - `latest` | ⚠️ Release candidate   | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/next?label=%40taiga-ui%2Fcdk%20~%20v5)   |
 | `4.x.y`  | `^16.0.0` - `latest` | ✅ Current             | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/latest?label=%40taiga-ui%2Fcdk%20~%20v4) |
 | `3.x.y`  | `^12.0.0` - `latest` | ⚠️ No longer supported | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/v3-lts?label=%40taiga-ui%2Fcdk%20~%20v3) |
 | `2.x.y`  | `^9.0.0` - `^15.0.0` | ⚠️ No longer supported | ![v2](https://img.shields.io/npm/v/@taiga-ui/cdk/v2-lts?label=%40taiga-ui%2Fcdk%20~%20v2)          |
+
+## Versions In This Repository
+
+- [main](https://github.com/taiga-family/taiga-ui/commits/main) - This is all of the current work, which is against v5
+- Previous major versions – [2.x](https://github.com/taiga-family/taiga-ui/tree/v2.x),
+  [3.x](https://github.com/taiga-family/taiga-ui/tree/v3.x), [4.x](https://github.com/taiga-family/taiga-ui/tree/v4.x)
+  and etc.
 
 ## How to start
 
@@ -60,12 +67,12 @@ See our [Getting started](https://taiga-ui.dev/getting-started) page to start wo
 
 You can also use our [StackBlitz starter](https://taiga-ui.dev/stackblitz) to create a quick sample with Taiga UI
 
-🎨 Check out [Taiga UI Figma library](https://www.figma.com/community/file/1220308188005380608) which you can use to
-design your app with Taiga UI components.
+🎨 Figma available only for 2.x and 3.x versions [here](https://www.figma.com/community/file/1220308188005380608). Next
+version of Figma library is in progress for the latest version of Taiga UI.
 
 ## Community
 
-💡 Your ideas are very welcome in Github issues or discussions
+💡 Your ideas are very welcome in GitHub issues or discussions
 
 🗨 For English live chat join [#taiga-ui](https://discord.gg/zrB2EdJjEy) channel in official Angular discord
 
