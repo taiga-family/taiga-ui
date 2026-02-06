@@ -8,15 +8,7 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatar,
-        TuiButton,
-        TuiCardLarge,
-        TuiCell,
-        TuiRepeatTimes,
-        TuiTitle,
-        TuiSurface,
-    ],
+    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiRepeatTimes, TuiSurface, TuiTitle],
     templateUrl: './index.html',
     styles: [':host { display: flex; flex-direction: column; gap: 2rem}'],
     encapsulation,

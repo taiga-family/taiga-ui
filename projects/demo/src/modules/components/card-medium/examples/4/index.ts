@@ -8,17 +8,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        TuiAutoColorPipe,
-        TuiAvatar,
-        TuiAvatarStack,
-        TuiCardMedium,
-        TuiFallbackSrcPipe,
-        TuiTitle,
-        TuiSurface,
-    ],
+    imports: [AsyncPipe, NgForOf, TuiAutoColorPipe, TuiAvatar, TuiAvatarStack, TuiCardMedium, TuiFallbackSrcPipe, TuiSurface, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

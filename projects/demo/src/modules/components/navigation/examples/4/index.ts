@@ -13,17 +13,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButton,
-        TuiCardLarge,
-        TuiChevron,
-        TuiFade,
-        TuiHeader,
-        TuiNavigation,
-        TuiRepeatTimes,
-        TuiTitle,
-        TuiSurface,
-    ],
+    imports: [TuiButton, TuiCardLarge, TuiChevron, TuiFade, TuiHeader, TuiNavigation, TuiRepeatTimes, TuiSurface, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

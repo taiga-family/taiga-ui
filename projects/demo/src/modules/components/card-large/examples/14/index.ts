@@ -10,20 +10,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        NgIf,
-        TuiAnimated,
-        TuiAutoFocus,
-        TuiButton,
-        TuiCardLarge,
-        TuiPopup,
-        TuiRating,
-        TuiTextarea,
-        TuiTextfield,
-        TuiTitle,
-        TuiSurface,
-    ],
+    imports: [FormsModule, NgIf, TuiAnimated, TuiAutoFocus, TuiButton, TuiCardLarge, TuiPopup, TuiRating, TuiSurface, TuiTextarea, TuiTextfield, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

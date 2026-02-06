@@ -8,21 +8,7 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        NgSwitch,
-        NgSwitchCase,
-        ReactiveFormsModule,
-        TuiButton,
-        TuiCardLarge,
-        TuiForm,
-        TuiHeader,
-        TuiSegmented,
-        TuiStepper,
-        TuiTabs,
-        TuiTextfield,
-        TuiTitle,
-        TuiSurface,
-    ],
+    imports: [NgSwitch, NgSwitchCase, ReactiveFormsModule, TuiButton, TuiCardLarge, TuiForm, TuiHeader, TuiSegmented, TuiStepper, TuiSurface, TuiTabs, TuiTextfield, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

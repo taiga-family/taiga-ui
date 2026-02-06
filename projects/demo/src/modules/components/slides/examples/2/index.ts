@@ -10,22 +10,7 @@ import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        KeyValuePipe,
-        NgForOf,
-        NgIf,
-        ReactiveFormsModule,
-        TuiAutoFocus,
-        TuiButton,
-        TuiCard,
-        TuiForm,
-        TuiHeader,
-        TuiSlides,
-        TuiStepper,
-        TuiTextfield,
-        TuiTitle,
-        TuiSurface,
-    ],
+    imports: [KeyValuePipe, NgForOf, NgIf, ReactiveFormsModule, TuiAutoFocus, TuiButton, TuiCard, TuiForm, TuiHeader, TuiSlides, TuiStepper, TuiSurface, TuiTextfield, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

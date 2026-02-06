@@ -10,21 +10,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        NgIf,
-        TuiAvatar,
-        TuiButton,
-        TuiCardLarge,
-        TuiCell,
-        TuiFloatingContainer,
-        TuiHeader,
-        TuiLabel,
-        TuiRadio,
-        TuiRepeatTimes,
-        TuiTitle,
-        TuiSurface,
-    ],
+    imports: [FormsModule, NgIf, TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiFloatingContainer, TuiHeader, TuiLabel, TuiRadio, TuiRepeatTimes, TuiSurface, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
