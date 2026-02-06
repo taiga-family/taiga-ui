@@ -20,7 +20,7 @@ import {TUI_BADGE_OPTIONS} from './badge.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/badge.less';
+            @import '@taiga-ui/styles/components/badge.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

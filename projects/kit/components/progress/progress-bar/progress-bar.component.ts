@@ -15,7 +15,7 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/progress-bar.less';
+            @import '@taiga-ui/styles/components/progress-bar.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

@@ -24,7 +24,7 @@ import {TUI_BLOCK_OPTIONS} from './block.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/block.less';
+            @import '@taiga-ui/styles/components/block.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

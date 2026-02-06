@@ -27,6 +27,7 @@ import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
+import {migrateStyles} from './steps/styles';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -52,6 +53,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateTemplates',
                     step: () => migrateTemplates(fileSystem, options),
+                },
+                {
+                    name: 'migrateStyles',
+                    step: migrateStyles,
                 },
             ],
             timings,

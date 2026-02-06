@@ -102,8 +102,8 @@ describe('ng-add [Standalone]', () => {
             "options": {
               "main": "test/main.ts",
               "styles": [
-                "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
+                "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+                "node_modules/@taiga-ui/styles/taiga-ui-fonts.less"
               ],
               "assets": [
                 {
@@ -141,8 +141,8 @@ describe('ng-add [Standalone]', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "some.style"
             ],
             "assets": [
@@ -181,8 +181,8 @@ describe('ng-add [Standalone]', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "some.style"
             ],
             "assets": [

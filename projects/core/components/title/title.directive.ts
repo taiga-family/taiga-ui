@@ -13,7 +13,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/title.less';
+            @import '@taiga-ui/styles/components/title.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
