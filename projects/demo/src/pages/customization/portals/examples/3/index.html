@@ -1,0 +1,39 @@
+@if (supported) {
+    <button
+        size="s"
+        tuiButton
+        type="button"
+        [disabled]="ref()"
+        (click)="openPopout()"
+    >
+        Picture in Picture mode
+    </button>
+
+    @if (ref()) {
+        <button
+            appearance="primary-destructive"
+            size="s"
+            tuiButton
+            type="button"
+            (click)="closePopout()"
+        >
+            Close PiP
+        </button>
+    }
+} @else {
+    <div
+        appearance="warning"
+        size="m"
+        tuiNotification
+    >
+        Document Picture-in-Picture is not supported in your browser. Check browser support
+        <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow"
+            target="_blank"
+            tuiLink
+        >
+            here
+        </a>
+        .
+    </div>
+}
