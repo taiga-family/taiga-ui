@@ -11,8 +11,8 @@ import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './ut
 
 const APP_COMP_META = {
     SELECTOR: 'app',
-    TEMPLATE_URL: './app.template.html',
-    STYLE_URL: './app.style.less',
+    TEMPLATE_URL: './app.html',
+    STYLE_URL: './app.less',
     CLASS_NAME: 'App',
 } as const;
 
@@ -49,9 +49,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
             files: {
                 ...(await this.getBaseAngularProjectFiles()),
                 ...modifiedSupportFiles,
-                [appPrefix`app.component.ts`]: appCompTs.toString(),
-                [appPrefix`app.template.html`]: content.HTML,
-                [appPrefix`app.style.less`]: prepareLess(content.LESS || ''),
+                [appPrefix`app.ts`]: appCompTs.toString(),
+                [appPrefix`app.html`]: content.HTML,
+                [appPrefix`app.less`]: prepareLess(content.LESS || ''),
             },
         });
     }
@@ -83,7 +83,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
             'angular.json': angularJson,
             'src/main.ts': mainTs,
             'src/index.html': indexHtml,
-            'src/global_styles.less': globalStyles,
+            'src/styles.less': globalStyles,
         };
     }
 
