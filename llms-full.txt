@@ -11702,8 +11702,8 @@ export default class Example {
 <p>
 <span tuiHintDirection="top" [tuiHint]="inkin" > Alexander Inkin </span>
 <ng-template #inkin>
-<button tuiButtonCopy="Alexander Inkin" tuiTheme="dark" type="button" > Name </button>
-<button tuiButtonCopy="@a.inkin" tuiTheme="dark" type="button" > Login </button>
+<button tuiButtonCopy="Alexander Inkin" type="button" > Name </button>
+<button tuiButtonCopy="@a.inkin" type="button" > Login </button>
 </ng-template>
 </p>
 <p>
