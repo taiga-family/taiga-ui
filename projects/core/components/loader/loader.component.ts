@@ -1,7 +1,6 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {isSafari, WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_LOADER_OPTIONS} from './loader.options';
@@ -18,11 +17,9 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     },
 })
 export class TuiLoader {
-    private readonly isIOS = inject(WA_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
-    protected readonly isApple = isSafari(tuiInjectElement()) || this.isIOS;
 
-    protected readonly isHorizontal = computed(() => !tuiSizeBigger(this.size()));
+    protected readonly isApple = isSafari(tuiInjectElement()) || inject(WA_IS_IOS);
 
     public readonly size = input(this.options.size);
     public readonly inheritColor = input(this.options.inheritColor);
