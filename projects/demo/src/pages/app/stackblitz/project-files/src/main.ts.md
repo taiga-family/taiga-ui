@@ -1,11 +1,10 @@
 ```ts
-import 'zone.js';
 import {provideRouter} from '@angular/router';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {Component} from '@angular/core';
 import {provideTaiga, tuiAssetsPathProvider, TuiRoot} from '@taiga-ui/core';
 
-import {App} from './app/app.component';
+import {App} from './app/app';
 
 @Component({
   standalone: true,

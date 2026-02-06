@@ -4,8 +4,8 @@ import {Component} from '@angular/core';
 @Component({
   standalone: true,
   selector: 'app',
-  templateUrl: './app.template.html',
-  styleUrl: './app.style.less',
+  templateUrl: './app.html',
+  styleUrl: './app.less',
 })
 export class App {}
 ```

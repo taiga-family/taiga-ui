@@ -2,8 +2,10 @@
 
 ```json
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "newProjectRoot": "projects",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "root": "",
+  "sourceRoot": "src",
+  "version": 1,
   "projects": {
     "demo": {
       "architect": {
@@ -11,51 +13,35 @@
           "builder": "@angular-devkit/build-angular:application",
           "configurations": {
             "development": {
-              "extractLicenses": false,
               "namedChunks": true,
               "optimization": false,
               "sourceMap": true
-            },
-            "production": {
-              "aot": true,
-              "extractLicenses": true,
-              "namedChunks": false,
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false
             }
           },
           "options": {
-            "assets": [],
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "outputPath": "dist/demo",
-            "scripts": [],
-            "styles": ["src/global_styles.less"],
+            "polyfills": ["zone.js"],
+            "styles": ["src/styles.less"],
             "tsConfig": "tsconfig.json"
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "prebundle": false
+          },
           "configurations": {
             "development": {
               "buildTarget": "demo:build:development"
-            },
-            "production": {
-              "buildTarget": "demo:build:production"
             }
           },
           "defaultConfiguration": "development"
         }
       },
-      "prefix": "app",
-      "projectType": "application",
-      "root": "",
-      "schematics": {},
-      "sourceRoot": "src"
+      "projectType": "application"
     }
-  },
-  "version": 1
+  }
 }
 ```
 
@@ -78,7 +64,7 @@
     "downlevelIteration": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2015",
+    "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"]
