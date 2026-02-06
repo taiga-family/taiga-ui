@@ -1,0 +1,80 @@
+@import '../../utils.less';
+
+[tuiAppearance][data-appearance='textfield'] {
+    .transition(~'box-shadow, background-color, outline-color, border-color, color');
+
+    --t-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+
+    background-color: var(--tui-background-base);
+    color: var(--tui-text-tertiary);
+    box-shadow: var(--t-shadow);
+    outline: 1px solid var(--tui-border-normal);
+    outline-offset: -1px;
+    border-width: 0;
+
+    &:is(input, textarea, select) {
+        color: var(--tui-text-primary) !important;
+    }
+
+    &::before,
+    &::after {
+        transition-property: transform;
+    }
+
+    &:not([data-mode~='readonly']) {
+        .appearance-hover({
+            --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+            color: var(--tui-text-secondary);
+        });
+    }
+
+    .appearance-focus({
+        box-shadow: none;
+        outline: 0.125rem solid var(--tui-background-accent-1);
+        outline-offset: -0.125rem;
+    });
+
+    .appearance-disabled({
+        box-shadow: none;
+    });
+
+    .appearance-invalid({
+        outline-color: var(--tui-status-negative);
+    });
+
+    &[data-mode~='readonly'],
+    &[data-state='disabled'],
+    &:disabled,
+    &._disabled {
+        background: transparent !important;
+        box-shadow: none !important;
+        outline-color: var(--tui-border-normal) !important;
+    }
+
+    [tuiInput][chrome-autofilled], /* Chrome on IOS */
+    [tuiInput]:-webkit-autofill {
+        -webkit-text-fill-color: var(--tui-text-primary) !important;
+        caret-color: var(--tui-text-primary) !important;
+        box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
+        transition: background-color 600000s 0s;
+        clip-path: inset(0.125rem round calc(var(--tui-radius-m) - 0.125rem));
+    }
+
+    &[data-size='l'] [tuiInput][chrome-autofilled], /* Chrome on IOS */
+    &[data-size='l'] [tuiInput]:-webkit-autofill {
+        clip-path: inset(0.125rem round calc(var(--tui-radius-l) - 0.125rem));
+    }
+}
+
+[tuiTheme='dark'] [tuiAppearance][data-appearance='textfield'],
+[tuiTheme='dark'][tuiAppearance][data-appearance='textfield'] {
+    background-color: var(--tui-background-neutral-1);
+
+    .appearance-hover({
+        background-color: var(--tui-background-neutral-1-hover);
+    });
+
+    .appearance-focus({
+        background-color: transparent !important;
+    });
+}

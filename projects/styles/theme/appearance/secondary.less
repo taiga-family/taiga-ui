@@ -1,0 +1,77 @@
+@import '../../utils.less';
+
+[tuiAppearance][data-appearance='secondary'],
+[tuiAppearance][data-appearance='secondary-destructive'],
+[tuiAppearance][data-appearance='secondary-grayscale'] {
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-action);
+
+    .appearance-hover({
+        background: var(--tui-background-neutral-1-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-background-neutral-1-pressed);
+    });
+
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'],
+    &[type='checkbox']:indeterminate:not([data-mode]) {
+        background: var(--tui-background-accent-1);
+        color: var(--tui-text-primary-on-accent-1);
+
+        .appearance-hover({
+            background: var(--tui-background-accent-1-hover);
+        });
+
+        .appearance-active({
+            background: var(--tui-background-accent-1-pressed);
+        });
+
+        .appearance-invalid({
+            background: var(--tui-status-negative);
+            color: #fff;
+
+            .appearance-hover({
+                background: var(--tui-status-negative);
+                color: #fff;
+            });
+
+            .appearance-active({
+                background: var(--tui-status-negative);
+                color: #fff;
+            });
+        });
+    }
+
+    .appearance-invalid({
+        color: var(--tui-text-negative);
+        background: var(--tui-status-negative-pale);
+
+        .appearance-hover({
+            color: var(--tui-text-negative-hover);
+            background: var(--tui-status-negative-pale-hover);
+        });
+
+        .appearance-active({
+            color: var(--tui-text-negative-hover);
+            background: var(--tui-status-negative-pale-hover);
+        });
+    });
+}
+
+[tuiAppearance][data-appearance='secondary-destructive'] {
+    color: var(--tui-text-negative);
+}
+
+[tuiAppearance][data-appearance='secondary-grayscale'] {
+    color: var(--tui-text-primary);
+}
+
+// Overriding to darker colors for small items
+input[type='checkbox'][data-appearance='secondary'],
+input[type='radio'][data-appearance='secondary'] {
+    --tui-background-neutral-1: var(--tui-background-neutral-2);
+    --tui-background-neutral-1-hover: var(--tui-background-neutral-2-hover);
+    --tui-background-neutral-1-pressed: var(--tui-background-neutral-2-pressed);
+}

@@ -1,0 +1,59 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Radio
+ * @selector [tuiRadio]
+ *
+ * @description
+ * A stylized input type="radio"
+ *
+ * @attributes
+ * data-size — size (default: 'm') ('s' | 'm')
+ *
+ * @example
+ * <input type="radio" tuiRadio />
+ *
+ * @see-also
+ * Checkbox, Switch, Appearance
+ */
+[tuiRadio]:where(*&) {
+    --t-size: 1.5rem;
+
+    .transition(~'background, box-shadow');
+
+    inline-size: var(--t-size);
+    block-size: var(--t-size);
+    cursor: pointer;
+    margin: 0;
+    flex-shrink: 0;
+    border-radius: 100%;
+    color: var(--tui-text-primary-on-accent-1);
+
+    &:disabled._readonly._readonly {
+        opacity: 1;
+    }
+
+    &::before {
+        .fullsize(absolute, inset);
+
+        content: '';
+        margin: auto;
+        border-radius: 100%;
+        background: currentColor;
+        transform: scale(0);
+        transition-property: transform;
+    }
+
+    &:checked::before {
+        transform: scale(0.5);
+    }
+
+    &[data-size='s'] {
+        --t-size: 1rem;
+    }
+
+    &:invalid:not([data-mode]),
+    &[data-mode~='invalid'] {
+        color: #fff;
+    }
+}

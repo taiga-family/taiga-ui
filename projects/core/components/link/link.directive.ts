@@ -21,7 +21,7 @@ export const [TUI_LINK_OPTIONS, tuiLinkOptionsProvider] = tuiCreateOptions({
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/link.less';
+            @import '@taiga-ui/styles/components/link.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
