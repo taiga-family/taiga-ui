@@ -135,7 +135,7 @@
 - [Slides](https://taiga-ui.dev/components/slides) — A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
 - [Status](https://taiga-ui.dev/components/status)
 - [Surface](https://taiga-ui.dev/components/surface) — General purpose container used in Taiga UI interfaces. Often used in conjunction with Card component.
-- [Swipe Actions](https://taiga-ui.dev/components/swipe-actions)
+- [Swipe Actions](https://taiga-ui.dev/components/swipe-actions) — Component should be used on mobile devices only.
 - [Switch](https://taiga-ui.dev/components/switch) — A switch component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 - [Table](https://taiga-ui.dev/components/table) — This module allows you to create various tables, both static and editable.
 - [Table Filters](https://taiga-ui.dev/components/table-filters) — This module allows you to filter table data in a flexible way.
