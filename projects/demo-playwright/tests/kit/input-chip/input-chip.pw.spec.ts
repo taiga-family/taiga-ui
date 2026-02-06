@@ -100,6 +100,22 @@ test.describe('InputChip', () => {
             await expect.soft(example).toHaveScreenshot('input-chip-unique.png');
         });
 
+        test('disable control', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputChip}/API`);
+
+            const api = new TuiDocumentationApiPagePO(page);
+            const inputChip = new TuiInputChipPO(api.demo);
+            const toggle = await api.getToggle(api.getRow('disabled'));
+
+            await inputChip.input.fill('1,2,3');
+            await inputChip.input.blur();
+            await expect.soft(api.demo).toHaveScreenshot('input-chip-writable.png');
+            await expect(inputChip.cleaner).toHaveCount(1);
+            await toggle?.click();
+            await expect.soft(api.demo).toHaveScreenshot('input-chip-disabled.png');
+            await expect(inputChip.cleaner).toHaveCount(0);
+        });
+
         test('readonly true', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const apiPage = new TuiDocumentationApiPagePO(page);
