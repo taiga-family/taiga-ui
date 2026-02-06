@@ -25,4 +25,8 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         from: {attrName: '*tuiTextfieldDropdown'},
         to: {attrName: '*tuiDropdown'},
     },
+    {
+        from: {attrName: 'tuiDropdownOpen', withTagNames: ['*']},
+        to: {attrName: 'tuiDropdownAuto'},
+    },
 ];
