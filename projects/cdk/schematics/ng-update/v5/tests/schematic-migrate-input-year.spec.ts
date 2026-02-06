@@ -78,13 +78,13 @@ export class MyComponent {}`,
 `,
         });
 
-        expect(component).toEqual(`import { TuiTextfield } from "@taiga-ui/core";
+        expect(component).toEqual(`import { TuiInput } from "@taiga-ui/core";
 import { TuiInputYear } from "@taiga-ui/kit";
 
 @NgModule({
   imports: [
     // ...
-    TuiInputYear, TuiTextfield,
+    TuiInputYear, TuiInput,
   ],
   // ...
 })
@@ -94,7 +94,7 @@ export class MyModule {}
   standalone: true,
   imports: [
     // ...
-    TuiInputYear, TuiTextfield,
+    TuiInputYear, TuiInput,
   ],
   templateUrl: './test.html',
   // ...

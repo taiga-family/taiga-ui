@@ -167,4 +167,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiTextfield',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiInput',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
