@@ -10,7 +10,18 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiAmountPipe, TuiAppearance, TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiSurface, TuiSwipeActions, TuiTitle],
+    imports: [
+        AsyncPipe,
+        TuiAmountPipe,
+        TuiAppearance,
+        TuiAvatar,
+        TuiButton,
+        TuiCardLarge,
+        TuiCell,
+        TuiSurface,
+        TuiSwipeActions,
+        TuiTitle,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

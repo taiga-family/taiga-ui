@@ -7,7 +7,15 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiHeader, TuiSurface, TuiTitle],
+    imports: [
+        TuiAvatar,
+        TuiButton,
+        TuiCardLarge,
+        TuiCell,
+        TuiHeader,
+        TuiSurface,
+        TuiTitle,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
