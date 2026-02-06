@@ -34,7 +34,6 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     hostDirectives: [TuiScrollIntoView],
     host: {
         tuiSelectOption: '',
-        '[class._value]': 'option',
         '[class._selected]': 'selected()',
     },
 })
@@ -43,12 +42,9 @@ export class TuiSelectOption<T> {
     private readonly value = tuiInjectValue<T>();
 
     protected readonly datalist = inject(TuiDataListComponent);
-    protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue, {
-        optional: true,
-    });
-
+    protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
     protected readonly selected = computed(
-        (controlValue = this.value(), optionValue = this.option?.value()) =>
+        (controlValue = this.value(), optionValue = this.option.value()) =>
             tuiIsPresent(optionValue) &&
             tuiIsPresent(controlValue) &&
             this.handlers.identityMatcher()(controlValue, optionValue),

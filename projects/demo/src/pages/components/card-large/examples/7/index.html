@@ -50,18 +50,13 @@
     <tui-data-list>
         <tui-opt-group>
             @for (item of ['Edit', 'Download', 'Rename', 'Delete']; track item) {
-                <button
-                    tuiOption
-                    type="button"
-                >
-                    {{ item }}
-                </button>
+                <button tuiOption>{{ item }}</button>
             }
         </tui-opt-group>
+        <hr />
         <tui-opt-group>
             <button
                 tuiOption
-                type="button"
                 (click)="close()"
             >
                 Nevermind

@@ -15,6 +15,14 @@ import {TuiRadioList} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiRadioList, TuiTitle],
     templateUrl: './index.html',
+    styles: `
+        hr {
+            block-size: 1px;
+            background: var(--tui-border-normal);
+            border: 0;
+            margin: 1rem 0;
+        }
+    `,
     encapsulation,
     changeDetection,
 })

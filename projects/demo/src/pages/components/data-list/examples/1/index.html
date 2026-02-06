@@ -10,6 +10,9 @@
 <ng-template #content>
     <tui-data-list role="menu">
         @for (group of groups; track group) {
+            @if (!group.label) {
+                <hr />
+            }
             <tui-opt-group [label]="group.label">
                 @for (item of group.items; track item) {
                     <a
@@ -18,12 +21,10 @@
                         routerLinkActive
                         tuiOption
                         [attr.aria-checked]="rla.isActive"
+                        [iconEnd]="rla.isActive ? '@tui.check' : ''"
                         [routerLink]="item.routerLink"
                     >
                         {{ item.label }}
-                        @if (rla.isActive) {
-                            <tui-icon icon="@tui.check" />
-                        }
                     </a>
                 }
             </tui-opt-group>

@@ -20,7 +20,13 @@ const GAP = 16;
 @Component({
     selector: 'tui-dropdown-mobile',
     imports: [PolymorpheusOutlet],
-    templateUrl: './dropdown-mobile.template.html',
+    template: `
+        <div class="t-container">
+            <ng-container *polymorpheusOutlet="dropdown.content() as text; context: ctx">
+                {{ text }}
+            </ng-container>
+        </div>
+    `,
     styleUrl: './dropdown-mobile.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,7 +47,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     private readonly observer = new ResizeObserver(() => this.refresh());
 
     protected readonly dropdown = inject(TuiDropdownDirective);
-    protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
+    protected readonly ctx = {$implicit: (): void => this.dropdown.toggle(false)};
 
     constructor() {
         this.observer.observe(this.dropdown.el);

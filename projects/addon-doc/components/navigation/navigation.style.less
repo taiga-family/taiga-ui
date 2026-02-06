@@ -83,6 +83,8 @@
 }
 
 .t-sublink {
+    display: inline-flex;
+    align-items: center;
     font: var(--tui-font-body-s);
     padding-block: 0.5rem;
     padding-inline-start: 0.4375rem;
@@ -158,8 +160,7 @@
     .transition(transform);
 
     font-size: 1rem;
-    margin-inline: -0.625rem 0.6875rem;
-    vertical-align: sub;
+    margin-inline: -0.625rem 0.875rem;
 
     &_active {
         transform: rotate(90deg);
