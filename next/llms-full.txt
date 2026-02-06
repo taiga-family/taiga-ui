@@ -6292,23 +6292,23 @@ export default class Example {
 
 **Template:**
 ```html
-<div tuiCardMedium tuiSurface class="poster" >
+<div tuiCardMedium class="poster" >
 <h2 tuiTitle> Poster <span tuiSubtitle>Cinema, concerts, theaters and sports up to 25%</span>
 </h2>
 <div tuiBadge class="badge" >
 <tui-icon icon="@tui.target" /> 10% </div>
 </div>
-<div tuiCardMedium tuiSurface class="fly" >
+<div tuiCardMedium class="fly" >
 <h2 tuiTitle>Flights</h2>
 <div tuiBadge class="badge" >
 <tui-icon icon="@tui.target" /> 10% </div>
 </div>
-<div tuiCardMedium tuiSurface class="google" >
+<div tuiCardMedium class="google" >
 <h2 tuiTitle> Google <span tuiSubtitle>-2.7%</span>
 </h2>
 <div tuiBadge class="money" > $3,605.2 </div>
 </div>
-<div tuiCardMedium tuiSurface class="microsoft" >
+<div tuiCardMedium class="microsoft" >
 <h2 tuiTitle> Microsoft <span tuiSubtitle>-12.44%</span>
 </h2>
 <div tuiBadge class="money" > $1,095.3 </div>
@@ -6349,12 +6349,12 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiHint, TuiTitle} from '@taiga-ui/core';
+import {TuiHint, TuiTitle} from '@taiga-ui/core';
 import {TuiFade} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAppearance, TuiCardMedium, TuiFade, TuiHint, TuiTitle],
+    imports: [TuiCardMedium, TuiFade, TuiHint, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -6367,7 +6367,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<label tuiCardMedium tuiSurface class="card" >
+<label tuiCardMedium class="card" >
 <img alt="google-pay" src="assets/taiga-ui/icons/google-pay.svg" />
 <div tuiFade class="cards" >
 <tui-thumbnail-card iconStart="@tui.lock" paymentSystem="mastercard" size="m" > 4572 </tui-thumbnail-card>
@@ -6377,7 +6377,7 @@ export default class Example {}
 <input tuiSurfaceLayer type="radio" class="selected" [value]="0" [(ngModel)]="value" />
 <div tuiRipple tuiSurfaceLayer [style.background-color]="'#fff6c7'" ></div>
 </label>
-<label tuiCardMedium tuiSurface class="card" >
+<label tuiCardMedium class="card" >
 <img alt="apple-pay" src="assets/taiga-ui/icons/apple-pay.svg" />
 <div tuiFade class="cards" >
 <tui-thumbnail-card paymentSystem="mir" size="m" class="mir" > 2222 </tui-thumbnail-card>
@@ -6395,17 +6395,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiRipple} from '@taiga-ui/addon-mobile';
 import {TuiFade} from '@taiga-ui/kit';
-import {TuiCardMedium, TuiSurface} from '@taiga-ui/layout';
+import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiCardMedium,
-        TuiFade,
-        TuiRipple,
-        TuiSurface,
-        TuiThumbnailCard,
-    ],
+    imports: [FormsModule, TuiCardMedium, TuiFade, TuiRipple, TuiThumbnailCard],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -31852,7 +31845,7 @@ export default class Example {
 ```
 
 ---
-# components/SwipeAction
+# components/SwipeActions
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
 Component should be used on mobile devices only.
@@ -31932,7 +31925,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-swipe-actions [style.--tui-actions-padding.rem]="0.5">
+<tui-swipe-actions [style.--tui-actions-padding.rem]="1">
 <div tuiSurface class="blur" >
 <div tuiAvatar="@tui.user">
 <img alt="" src="assets/images/avatar.jpg" />
@@ -31953,18 +31946,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
-import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiAvatar,
-        TuiButton,
-        TuiSurface,
-        TuiSwipeActions,
-        TuiSwitch,
-        TuiTitle,
-    ],
+    imports: [FormsModule, TuiAvatar, TuiButton, TuiSwipeActions, TuiSwitch, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -32144,7 +32128,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<div>
+<div [style.marginBottom.rem]="1.5">
 <button appearance="secondary-grayscale" iconEnd="@tui.play" size="m" tuiButton type="button" [disabled]="onboarding()" (click)="onboarding.set(true)" > Play </button>
 </div>
 <tui-swipe-actions [(onboarding)]="onboarding">
@@ -32215,6 +32199,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -32226,6 +32211,14 @@ export default class Page {
         'Fallback for desktop',
         'Onboarding',
     ];
+}
+```
+
+### LESS
+
+```less
+:host ::ng-deep tui-doc-example .t-demo {
+    overflow: hidden;
 }
 ```
 
