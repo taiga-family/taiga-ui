@@ -1,5 +1,6 @@
 import {type ApplicationRef, ErrorHandler, mergeApplicationConfig} from '@angular/core';
 import {bootstrapApplication, type BootstrapContext} from '@angular/platform-browser';
+import {provideNoopAnimations} from '@angular/platform-browser/animations';
 import {provideServerRendering} from '@angular/platform-server';
 import {provideServerRouting, RenderMode, type ServerRoute} from '@angular/ssr';
 import {DemoRoute} from '@demo/routes';
@@ -14,6 +15,7 @@ import {ServerErrorHandler} from './pages/app/server-error-handler';
 
 const serverConfig = mergeApplicationConfig(config, {
     providers: [
+        provideNoopAnimations(),
         provideServerRendering(),
         provideServerRouting(
             ROUTES.map((route) => {
