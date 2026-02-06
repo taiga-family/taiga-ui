@@ -10,7 +10,7 @@
             "executor": "nx:run-commands",
             "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
-                "command": "cd {projectRoot} && npx cpy ./* '../../dist/{projectName}'"
+                "command": "cd {projectRoot} && npx cpy ./* '!project.json' '../../dist/{projectName}'"
             }
         },
         "publish": {
