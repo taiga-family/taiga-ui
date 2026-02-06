@@ -84,7 +84,7 @@ import {WA_WINDOW} from '@ng-web-apis/common';
     ],
     host: {
         class: 'tui-interactive',
-        '[attr.data-state]': 'control?.disabled ? "disabled" : null',
+        '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows',
@@ -95,7 +95,7 @@ import {WA_WINDOW} from '@ng-web-apis/common';
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
-        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '[class._disabled]': 'disabled',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
     },

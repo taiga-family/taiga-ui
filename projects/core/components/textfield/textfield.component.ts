@@ -153,6 +153,15 @@ export class TuiTextfieldBaseComponent<T>
         return this.options.size();
     }
 
+    public get disabled(): boolean {
+        return (
+            this.cva?.disabled() ??
+            this.control?.disabled ??
+            this.input?.nativeElement?.disabled ??
+            false
+        );
+    }
+
     public ngAfterContentChecked(): void {
         this.contentReady$.next(true);
         this.inputQuery.set(this._input);
@@ -226,7 +235,7 @@ export class TuiTextfieldBaseComponent<T>
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
-        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '[class._disabled]': 'disabled',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
