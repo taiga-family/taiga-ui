@@ -5,7 +5,11 @@
 }
 @for (content of processor(); track content) {
     <pre class="t-code">
-    <code [lineNumbers]="lineNumbers()" [highlight]="content"></code>
+    @if (lineNumbers()) {
+      <code [highlightAuto]="content" lineNumbers></code>
+    } @else {
+      <code [highlightAuto]="content"></code>
+    }
     <div class="t-code-actions">
       <button
         tuiIconButton
