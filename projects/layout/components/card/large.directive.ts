@@ -9,6 +9,7 @@ import {
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiSurface} from '@taiga-ui/layout/components/surface';
 
 export const [TUI_CARD_OPTIONS, tuiCardOptionsProvider] = tuiCreateOptions({
     space: 'normal' as 'compact' | 'normal',
@@ -25,7 +26,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiCardLarge]',
-    hostDirectives: [TuiWithAppearance],
+    hostDirectives: [TuiWithAppearance, TuiSurface],
     host: {
         tuiCardLarge: '',
         '[attr.data-space]': 'tuiCardLarge() || this.options.space',

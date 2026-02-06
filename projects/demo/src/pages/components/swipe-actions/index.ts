@@ -5,6 +5,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

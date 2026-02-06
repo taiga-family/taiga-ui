@@ -224,7 +224,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.SwipeActions,
-        loadComponent: async () => import('../components/swipe-action'),
+        loadComponent: async () => import('../components/swipe-actions'),
         title: 'SwipeActions',
     }),
     route({

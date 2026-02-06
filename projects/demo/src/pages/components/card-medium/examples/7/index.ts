@@ -5,17 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiRipple} from '@taiga-ui/addon-mobile';
 import {TuiFade} from '@taiga-ui/kit';
-import {TuiCardMedium, TuiSurface} from '@taiga-ui/layout';
+import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiCardMedium,
-        TuiFade,
-        TuiRipple,
-        TuiSurface,
-        TuiThumbnailCard,
-    ],
+    imports: [FormsModule, TuiCardMedium, TuiFade, TuiRipple, TuiThumbnailCard],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
