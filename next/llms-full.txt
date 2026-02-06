@@ -374,6 +374,7 @@ It is an element on the bottom of screen to show actions by multiselect of some 
 <tui-icon icon="@tui.trash" class="tui-space_right-3" /> Delete </span>
 </button>
 </tui-opt-group>
+<hr />
 <tui-opt-group>
 <button role="menuitem" tuiOption type="button" [disabled]="selected === items.length" (click)="control.setValue(items)" >
 <span>
@@ -384,6 +385,7 @@ It is an element on the bottom of screen to show actions by multiselect of some 
 <tui-icon icon="@tui.x" class="tui-space_right-3" /> Select none and close </span>
 </button>
 </tui-opt-group>
+<hr />
 <tui-opt-group> @for (_ of '-'.repeat(5); track $index) { <button role="menuitem" tuiOption type="button" >
 <span>
 <tui-icon icon="@tui.star" class="tui-space_right-3" /> Action {{ $index + 1 }} </span>
@@ -5968,9 +5970,10 @@ export default class Example {}
 </div>
 <ng-template #dropdown let-close >
 <tui-data-list>
-<tui-opt-group> @for (item of ['Edit', 'Download', 'Rename', 'Delete']; track item) { <button tuiOption type="button" > {{ item }} </button> } </tui-opt-group>
+<tui-opt-group> @for (item of ['Edit', 'Download', 'Rename', 'Delete']; track item) { <button tuiOption>{{ item }}</button> } </tui-opt-group>
+<hr />
 <tui-opt-group>
-<button tuiOption type="button" (click)="close()" > Nevermind </button>
+<button tuiOption (click)="close()" > Nevermind </button>
 </tui-opt-group>
 </tui-data-list>
 </ng-template>
@@ -9261,7 +9264,7 @@ DataList allows to make lists or menus
 ```html
 <button tuiButton tuiChevron tuiDropdownAuto type="button" [tuiDropdown]="content" > Menu </button>
 <ng-template #content>
-<tui-data-list role="menu"> @for (group of groups; track group) { <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <a #rla="routerLinkActive" role="menuitemradio" routerLinkActive tuiOption [attr.aria-checked]="rla.isActive" [routerLink]="item.routerLink" > {{ item.label }} @if (rla.isActive) { <tui-icon icon="@tui.check" /> } </a> } </tui-opt-group> } </tui-data-list>
+<tui-data-list role="menu"> @for (group of groups; track group) { @if (!group.label) { <hr /> } <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <a #rla="routerLinkActive" role="menuitemradio" routerLinkActive tuiOption [attr.aria-checked]="rla.isActive" [iconEnd]="rla.isActive ? '@tui.check' : ''" [routerLink]="item.routerLink" > {{ item.label }} </a> } </tui-opt-group> } </tui-data-list>
 </ng-template>
 ```
 **TypeScript:**
@@ -9270,7 +9273,7 @@ import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
@@ -9281,10 +9284,8 @@ import {TuiChevron} from '@taiga-ui/kit';
         TuiChevron,
         TuiDataList,
         TuiDropdown,
-        TuiIcon,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -22311,11 +22312,9 @@ export default class Example {
 <h3 class="header"> Dropdown&nbsp;&mdash; <button tuiChevron tuiDropdownAlign="start" tuiDropdownLimitWidth="auto" tuiLink type="button" [tuiDropdown]="template" [(tuiDropdownOpen)]="open" > Open </button>
 </h3>
 <ng-template #template>
-<tui-data-list tuiDataListDropdownManager>
-<tui-opt-group> @for (text of texts; track text) { <button tuiOption type="button" class="dropdown-button" >
+<tui-data-list> @for (text of texts; track text) { <button tuiOption type="button" class="dropdown-button" >
 <tui-line-clamp [content]="text" [linesLimit]="2" />
-</button> } </tui-opt-group>
-</tui-data-list>
+</button> } </tui-data-list>
 </ng-template>
 ```
 **TypeScript:**
@@ -22324,7 +22323,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList, TuiDropdown, TuiLink} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListDropdownManager, TuiLineClamp} from '@taiga-ui/kit';
+import {TuiChevron, TuiLineClamp} from '@taiga-ui/kit';
 
 function randomString(len: number): string {
     const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -22341,14 +22340,7 @@ function randomString(len: number): string {
 }
 
 @Component({
-    imports: [
-        TuiChevron,
-        TuiDataList,
-        TuiDataListDropdownManager,
-        TuiDropdown,
-        TuiLineClamp,
-        TuiLink,
-    ],
+    imports: [TuiChevron, TuiDataList, TuiDropdown, TuiLineClamp, TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -24387,7 +24379,8 @@ Taiga UI is a low level component library with many atomic components that provi
 <header tuiNavigationHeader>
 <button portal title="Menu" tuiIconButton tuiNavigationDrawer type="button" [(open)]="open" >
 <tui-data-list> @for (group of drawer | keyvalue; track group) { <tui-opt-group [label]="group.key"> @for (item of group.value; track item) { <button tuiOption type="button" (click)="open = false" >
-<img alt="icon" [src]="item.icon" /> {{ item.name }} </button> } </tui-opt-group> } <tui-opt-group>
+<img alt="icon" [src]="item.icon" /> {{ item.name }} </button> } </tui-opt-group> } <hr />
+<tui-opt-group>
 <label tuiOption>
 <input size="s" tuiSwitch type="checkbox" [(ngModel)]="switch" /> Dark mode </label>
 </tui-opt-group>
@@ -27989,9 +27982,9 @@ export default class Example {
 <span tuiTitle> {{ data.name }} <span tuiSubtitle>{{ data.description }}</span>
 </span>
 </ng-template>
-<hr class="tui-space_vertical-4" />
+<hr />
 <tui-radio-list formControlName="disabled" [items]="strings" />
-<hr class="tui-space_vertical-4" />
+<hr />
 </form>
 <tui-radio-list size="s" [disabledItemHandler]="handler" [items]="strings" [style.flex-direction]="'row'" [style.width]="'max-content'" [(ngModel)]="horizontal" />
 ```
@@ -28014,6 +28007,14 @@ import {TuiRadioList} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiRadioList, TuiTitle],
     templateUrl: './index.html',
+    styles: `
+        hr {
+            block-size: 1px;
+            background: var(--tui-border-normal);
+            border: 0;
+            margin: 1rem 0;
+        }
+    `,
     encapsulation,
     changeDetection,
 })
@@ -29744,7 +29745,7 @@ export default class Example {
 }
 ```
 
-#### With DropdownMobile
+#### Mobile
 
 @if (!isMobile) { Use real mobile device or enable mobile emulation in DevTools to explore this example! } Put tuiDropdownSheet="Label" on &lt;tui-textfield /&gt; to enable sheet dialog (instead of default dropdown) with special appearance of options (similar to native controls) for mobile devices . This example demonstrates different appearances of options for different platforms (using TuiPlatform directive). By default, it detects ios / android / web platforms automatically (by parsing user agent) – it is not required to specify it explicitly.
 
@@ -39133,7 +39134,7 @@ import {TuiButton, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-#### With DropdownMobile
+#### Mobile
 
 **Template:**
 ```html
@@ -39179,8 +39180,15 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
     changeDetection,
 })
 export default class PageComponent {
-    protected showDelay = 200;
+    protected readonly examples = [
+        'Basic',
+        'With DropdownOpen',
+        'Nested',
+        'With custom host',
+        'Mobile',
+    ];
 
+    protected showDelay = 200;
     protected hideDelay = 500;
 }
 ```
@@ -39224,6 +39232,7 @@ DropdownOpen is a composite dropdown directive, similar to manual dropdown, but 
 <ng-template #dropdown let-close >
 <tui-data-list>
 <tui-opt-group> @for (item of items; track item) { <button tuiOption type="button" (click)="onClick()" > {{ item }} </button> } </tui-opt-group>
+<hr />
 <tui-opt-group>
 <button tuiOption type="button" (click)="close()" > Nevermind </button>
 </tui-opt-group>
@@ -39325,7 +39334,8 @@ export default class Example {
 ```html
 <button tuiChevron tuiDropdownAlign="end" tuiLink type="button" class="link" [iconStart]="ascending ? '@tui.chevron-up' : '@tui.chevron-down'" [textContent]="primary" [tuiDropdown]="dropdown" [(tuiDropdownOpen)]="open" ></button>
 <ng-template #dropdown>
-<tui-data-list> @for (group of items; track group) { <tui-opt-group> @for (item of group; track item) { <button tuiOption type="button" class="item" (click)="onClick(item)" > {{ item }} @if (itemIsActive(item)) { <tui-icon icon="@tui.check" /> } </button> } </tui-opt-group> } </tui-data-list>
+<tui-data-list> @for (group of items; track group) { <tui-opt-group> @for (item of group; track item) { <button tuiOption type="button" class="item" (click)="onClick(item)" > {{ item }} @if (itemIsActive(item)) { <tui-icon icon="@tui.check" /> } </button> } </tui-opt-group>
+<hr /> } </tui-data-list>
 </ng-template>
 ```
 **TypeScript:**
@@ -39381,9 +39391,7 @@ export default class Example {
 ```html
 <form [formGroup]="form">
 <button appearance="outline-grayscale" formControlName="control" tuiButton tuiButtonSelect type="button" [tuiAppearanceMode]="length ? 'checked' : null" [(open)]="open" (keydown.delete)="form.reset()" > {{ text }} <button appearance="icon" size="xs" tabindex="-1" tuiChevron tuiIconButton type="reset" [iconStart]="length ? '@tui.x' : ''" (mousedown.zoneless.prevent)="(0)" > Reset </button>
-<tui-data-list *tuiDropdown tuiMultiSelectGroup >
-<tui-opt-group> @for (item of items; track item) { <button tuiOption type="button" [value]="item" > {{ item }} </button> } </tui-opt-group>
-</tui-data-list>
+<tui-data-list *tuiDropdown tuiMultiSelectGroup > @for (item of items; track item) { <button tuiOption [value]="item" > {{ item }} </button> } </tui-data-list>
 </button>
 </form>
 ```
