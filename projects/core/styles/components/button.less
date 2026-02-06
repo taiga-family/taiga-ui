@@ -69,8 +69,8 @@
         font: var(--tui-font-body-s);
 
         tui-icon,
-        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance='link'])::before,
-        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance='link'])::after {
+        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance^='action-'])::before,
+        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance^='action-'])::after {
             font-size: 1rem;
         }
     }
