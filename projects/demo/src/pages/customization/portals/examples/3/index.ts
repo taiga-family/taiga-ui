@@ -7,7 +7,7 @@ import {type PopoutRef, PopoutService} from './popout.service';
 
 @Component({
     selector: 'tui-portals-example-3',
-    imports: [TuiButton, TuiNotification, TuiLink],
+    imports: [TuiButton, TuiLink, TuiNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
