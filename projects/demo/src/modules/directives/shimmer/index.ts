@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiAppearance, TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiShimmer} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
@@ -11,7 +11,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         FormsModule,
-        TuiAppearance,
         TuiAvatar,
         TuiAvatarStack,
         TuiButton,
@@ -20,6 +19,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiLink,
         TuiShimmer,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: './index.html',

@@ -3,6 +3,7 @@
 :host {
     display: flex;
     inline-size: 18rem;
+    margin: 2rem 0;
 }
 
 .fallback {
@@ -12,11 +13,19 @@
 }
 
 [tuiCardLarge] {
-    margin: 1.5rem 1rem;
+    margin: 3rem 1.5rem;
+}
+
+tui-swipe-actions {
+    margin: -3rem -1.5rem;
 }
 
 button[tuiSwipeAction] {
     border-radius: 100%;
+
+    &:last-child {
+        margin-inline-end: 0.5rem;
+    }
 }
 
 @media @tui-touch {
