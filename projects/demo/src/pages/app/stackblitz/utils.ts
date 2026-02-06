@@ -5,7 +5,7 @@ import {isLess, isPrimaryComponentFile} from '../utils';
 export const prepareLess = (content: string): string =>
     content.replaceAll(
         /@import.+taiga-ui-local(?:.less)?';/g,
-        "@import '@taiga-ui/styles/mixins.less';",
+        "@import '@taiga-ui/styles/utils.less';",
     );
 
 export const appPrefix = (stringsPart: TemplateStringsArray, path = ''): string =>

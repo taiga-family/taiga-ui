@@ -9,6 +9,10 @@ export function migrateStyles(): void {
             sourceFile.replaceWithText(
                 sourceFile
                     .getFullText()
+                    .replaceAll(
+                        '@taiga-ui/core/styles/taiga-ui-local',
+                        '@taiga-ui/styles/utils',
+                    )
                     .replaceAll('@taiga-ui/core/styles/', '@taiga-ui/styles/')
                     .replaceAll('@taiga-ui/kit/styles/', '@taiga-ui/styles/'),
             );

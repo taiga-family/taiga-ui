@@ -1,3 +1,3 @@
 ```less
-@import '@taiga-ui/styles/mixins.less';
+@import '@taiga-ui/styles/utils.less';
 ```
