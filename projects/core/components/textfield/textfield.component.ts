@@ -49,7 +49,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     selector: 'tui-textfield:not([multi])',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, WaResizeObserver],
     templateUrl: './textfield.template.html',
-    styles: '@import "@taiga-ui/core/styles/components/textfield.less";',
+    styles: '@import "@taiga-ui/styles/components/textfield.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

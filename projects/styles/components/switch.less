@@ -1,0 +1,103 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Switch
+ * @selector [tuiSwitch]
+ *
+ * @description
+ * A stylized input type="checkbox" switch
+ *
+ * @attributes
+ * data-size — size (default: 'm') ('s' | 'm')
+ *
+ * @vars
+ * --t-icon-start — checkmark icon
+ *
+ * @example
+ * <input type="checkbox" tuiSwitch tuiAppearance data-appearance="primary" />
+ *
+ * @see-also
+ * Checkbox, Radio
+ */
+[tuiSwitch]:where(*&) {
+    .transition(~'background, box-shadow');
+
+    display: inline-block;
+    inline-size: 3rem;
+    block-size: 1.5rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0;
+    flex-shrink: 0;
+    color: #fff !important;
+
+    &[data-size='s'] {
+        block-size: 1rem;
+        inline-size: 2rem;
+
+        &::before {
+            inline-size: 1rem;
+            transform: translateX(-1rem);
+            font-size: 0.75rem;
+        }
+
+        &::after {
+            inline-size: 1rem;
+            box-shadow: -2.625rem 0 0 0.5rem var(--tui-background-base);
+            outline-width: 0.167rem;
+            transform: scale(0.375);
+        }
+
+        &:checked::after {
+            transform: scale(0.375) translateX(2.625rem);
+        }
+    }
+
+    &:checked {
+        &::before {
+            transform: none;
+        }
+
+        &::after {
+            transform: scale(0.33333) translateX(4.5rem);
+        }
+    }
+
+    &:disabled._readonly._readonly {
+        opacity: 1;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        block-size: 100%;
+        inline-size: 1.5rem;
+        transition-property: transform;
+    }
+
+    &::before {
+        left: 0.125rem;
+        font-size: 1rem;
+        transform: translateX(-1.5rem);
+    }
+
+    &::after {
+        right: 0;
+        display: block;
+        border-radius: 100%;
+        background: none;
+        transform: scale(0.33333);
+        box-shadow: -4.5rem 0 0 0.75rem var(--tui-background-base);
+        outline: 0.375rem solid var(--tui-background-neutral-2-pressed);
+    }
+
+    &:not([data-icon-start])::after {
+        outline-offset: 20rem;
+    }
+
+    &:invalid:not([data-mode]),
+    &[data-mode~='invalid'] {
+        color: #fff;
+    }
+}

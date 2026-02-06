@@ -18,7 +18,7 @@ import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/appearance.less';
+            @import '@taiga-ui/styles/components/appearance.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

@@ -1,0 +1,57 @@
+@import 'miscellaneous';
+@import '../variables/media';
+
+@mixin appearance-hover {
+    @include interactive {
+        @media ($tui-mouse) {
+            &:hover:not([data-state]) {
+                @content;
+            }
+        }
+    }
+
+    &[data-state='hover'] {
+        @content;
+    }
+}
+
+@mixin appearance-active {
+    @include interactive {
+        &:active:not([data-state]) {
+            @content;
+        }
+    }
+
+    &[data-state='active'] {
+        @content;
+    }
+}
+
+@mixin appearance-disabled {
+    &:disabled:not([data-state]),
+    &[data-state='disabled'] {
+        @content;
+    }
+}
+
+@mixin appearance-focus {
+    &:focus-visible:not([data-focus='false']) {
+        @content;
+    }
+
+    &[data-focus='true'] {
+        @content;
+    }
+}
+
+@mixin appearance-invalid {
+    &:is([data-mode~='invalid'], .tui-invalid, :invalid):not(
+            [data-mode~='readonly'],
+            [data-mode~='valid'],
+            [data-state='disabled'],
+            :disabled,
+            ._disabled
+        ) {
+        @content;
+    }
+}

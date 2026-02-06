@@ -11,7 +11,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/compass.less';
+            @import '@taiga-ui/styles/components/compass.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

@@ -17,7 +17,7 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/switch.less';
+            @import '@taiga-ui/styles/components/switch.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

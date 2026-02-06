@@ -16,7 +16,7 @@ import {
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/comment.less';
+            @import '@taiga-ui/styles/components/comment.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

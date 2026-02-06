@@ -23,7 +23,7 @@ const OPT = {self: true, optional: true} as const;
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/icons.less';
+            @import '@taiga-ui/styles/components/icons.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

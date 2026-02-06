@@ -24,7 +24,7 @@ import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/radio.less';
+            @import '@taiga-ui/styles/components/radio.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

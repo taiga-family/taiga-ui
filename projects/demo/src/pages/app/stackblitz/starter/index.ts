@@ -43,8 +43,7 @@ export default class Page implements OnInit {
                 files: {
                     [appPrefix`app.html`]: appTemplate ?? '',
                     [appPrefix`app.ts`]: appComponent ?? '',
-                    [appPrefix`app.less`]:
-                        "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
+                    [appPrefix`app.less`]: "@import '@taiga-ui/styles/utils.less';",
                 },
             },
             {

@@ -25,7 +25,7 @@ import {TUI_CHIP_OPTIONS} from './chip.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/chip.less';
+            @import '@taiga-ui/styles/components/chip.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

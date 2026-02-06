@@ -24,7 +24,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/notification.less';
+            @import '@taiga-ui/styles/components/notification.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
