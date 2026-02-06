@@ -22,6 +22,16 @@ export interface LlmsConfig {
         includeUsageExamples: ConfigValue;
         includeAllExamples: ConfigValue;
     };
+    constants?: {
+        description: string;
+        defaultModulesPath: string;
+        defaultOutputFile: string;
+        defaultOutputFileHtml: string;
+        headerSectionsPath: string;
+        headerFiles: string[];
+        skipFolders: string[];
+        childFolders: string[];
+    };
 }
 
 const CONFIG_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-config.json');

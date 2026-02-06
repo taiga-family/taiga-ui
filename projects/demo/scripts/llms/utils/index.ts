@@ -1,12 +1,20 @@
 // Configuration utilities
 export * from './config';
 
+// Path configuration utilities
+export {getFoldersToScan, getPagesPath, setFoldersToScan, setPagesPath} from './paths';
+
 // Route-based component extraction
-export * from './routes';
+export {
+    type ComponentInfo,
+    extractComponentsFromRoutes,
+    shouldIncludeComponent,
+} from './routes';
 
 // File system operations - exclude fileExists to avoid conflict
 export {
     extractExampleDescriptions,
+    extractRequiredDirectives,
     getAllFolders,
     getComponentApiFromTable,
     getComponentApiFromTemplates,

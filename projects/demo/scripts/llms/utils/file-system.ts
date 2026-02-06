@@ -1,17 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+import {getFoldersToScan, getPagesPath} from './paths';
+
 export interface ComponentHeader {
     header: string | null;
     package: string | null;
     type: string | null;
     deprecated: boolean;
 }
-
-const PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
-
-// child folders of the main `pages` folder from which the content will be taken
-const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
 export async function fileExists(filePath: string): Promise<boolean> {
     try {
@@ -168,7 +165,8 @@ export function getComponentApiFromTable(content: string): string {
         return '';
     }
 
-    const rows: string[] = [];
+    const inputRows: string[] = [];
+    const outputRows: string[] = [];
 
     for (const row of apiRows) {
         const nameMatch = /name="([^"]+)"/i.exec(row);
@@ -180,15 +178,33 @@ export function getComponentApiFromTable(content: string): string {
             const type = typeMatch[1]?.trim();
             const description = descriptionMatch?.[1] ? descriptionMatch[1].trim() : '—';
 
-            rows.push(`| ${name} | \`${type}\` | ${description} |`);
+            // Check if it's an output (event): prioritize name starting with '(',
+            // then fall back to EventEmitter when it's not an input ('[').
+            const isOutput =
+                name?.startsWith('(') ||
+                (name?.startsWith('[') === false && type?.includes('EventEmitter'));
+
+            const rowContent = `| ${name} | \`${type}\` | ${description} |`;
+
+            if (isOutput) {
+                outputRows.push(rowContent);
+            } else {
+                inputRows.push(rowContent);
+            }
         }
     }
 
-    if (rows.length === 0) {
-        return '';
+    let result = '';
+
+    if (inputRows.length > 0) {
+        result += `\n### API - Inputs\n\n| Property | Type | Description |\n|----------|-----|----------|\n${inputRows.join('\n')}`;
     }
 
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    if (outputRows.length > 0) {
+        result += `\n\n### API - Outputs\n\n| Event | Type | Description |\n|-------|------|-------------|\n${outputRows.join('\n')}`;
+    }
+
+    return result;
 }
 
 // parse API properties from tui-doc-documentation
@@ -209,7 +225,8 @@ export function getComponentApiFromTemplates(content: string): string {
         return '';
     }
 
-    const rows: string[] = [];
+    const inputRows: string[] = [];
+    const outputRows: string[] = [];
 
     for (const row of templateRows) {
         const nameMatch = /documentationPropertyName="([^"]+)"/i.exec(row);
@@ -226,15 +243,31 @@ export function getComponentApiFromTemplates(content: string): string {
 
             description = description.replaceAll(/\s+/g, ' ');
 
-            rows.push(`| ${name} | \`${type}\` | ${description} |`);
+            // Check if it's an output (event)
+            const isOutput =
+                name?.startsWith('[') === false && type?.includes('EventEmitter');
+
+            const rowContent = `| ${name} | \`${type}\` | ${description} |`;
+
+            if (isOutput) {
+                outputRows.push(rowContent);
+            } else {
+                inputRows.push(rowContent);
+            }
         }
     }
 
-    if (rows.length === 0) {
-        return '';
+    let result = '';
+
+    if (inputRows.length > 0) {
+        result += `\n### API - Inputs\n\n| Property | Type | Description |\n|----------|-----|----------|\n${inputRows.join('\n')}`;
     }
 
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    if (outputRows.length > 0) {
+        result += `\n\n### API - Outputs\n\n| Event | Type | Description |\n|-------|------|-------------|\n${outputRows.join('\n')}`;
+    }
+
+    return result;
 }
 
 // parse example index.ts and index.less files
@@ -622,13 +655,13 @@ export async function getAllFolders(): Promise<string[]> {
         }
     }
 
-    for (const subFolder of FOLDERS_TO_SCAN) {
-        const dirPath = path.join(PAGES_PATH, subFolder);
+    for (const subFolder of getFoldersToScan()) {
+        const dirPath = path.join(getPagesPath(), subFolder);
 
         if (await fileExists(dirPath)) {
             await scanDir(dirPath, 0);
         } else {
-            console.warn(`Folder ${subFolder} not found in ${PAGES_PATH}`);
+            console.warn(`Folder ${subFolder} not found in ${getPagesPath()}`);
         }
     }
 
@@ -673,4 +706,101 @@ export async function processMarkdownFile(filePath: string): Promise<string> {
         .replaceAll(/\s+$/gm, ''); // Remove trailing spaces
 
     return `${title}\n\n${cleanContent}\n\n---`;
+}
+
+// Extract structural directives from component templates
+export function extractRequiredDirectives(content: string): string {
+    const directives = new Set<string>();
+
+    // Match structural directives in templates (*ngIf, *ngFor, *tuiDropdown, etc.)
+    const structuralDirectiveMatches = content.matchAll(/\*([a-z][a-z0-9]*)/gi);
+
+    for (const match of structuralDirectiveMatches) {
+        const directiveName = match[1];
+
+        if (directiveName) {
+            directives.add(directiveName);
+        }
+    }
+
+    if (directives.size === 0) {
+        return '';
+    }
+
+    const result: string[] = ['\n### Required Directive Imports\n'];
+
+    // Group Angular built-in directives
+    const angularDirectives: string[] = [];
+    const tuiDirectives: string[] = [];
+
+    for (const directive of directives) {
+        if (directive.startsWith('ng')) {
+            angularDirectives.push(directive);
+        } else if (directive.startsWith('tui')) {
+            tuiDirectives.push(directive);
+        }
+    }
+
+    if (angularDirectives.length > 0) {
+        result.push('**Angular Structural Directives:**\n```typescript');
+
+        for (const dir of angularDirectives) {
+            // Convert ngIf -> NgIf
+            const className = dir.charAt(0).toUpperCase() + dir.slice(1);
+
+            result.push(`// For *${dir}`);
+            result.push(`import {${className}} from '@angular/common';`);
+            result.push('// OR use Angular 17+ control flow instead:');
+
+            if (dir === 'ngIf') {
+                result.push('// @if (condition) { ... }');
+            } else if (dir === 'ngFor') {
+                result.push('// @for (item of items; track item.id) { ... }');
+            } else if (dir === 'ngSwitch') {
+                result.push('// @switch (value) { @case (x) { ... } }');
+            }
+
+            result.push('');
+        }
+
+        result.push('```\n');
+    }
+
+    if (tuiDirectives.length > 0) {
+        result.push('**Taiga UI Structural Directives:**\n```typescript');
+
+        for (const dir of tuiDirectives) {
+            // Convert tuiDropdown -> TuiDropdown
+            const className = `Tui${dir.charAt(3).toUpperCase()}${dir.slice(4)}`;
+
+            result.push(`// For *${dir}`);
+
+            // Map known directives to packages
+            if (dir === 'tuiDropdown') {
+                result.push("import {TuiDropdown} from '@taiga-ui/core';");
+            } else if (dir === 'tuiActionBar') {
+                result.push("import {TuiActionBar} from '@taiga-ui/kit';");
+            } else if (dir === 'tuiLet') {
+                result.push("import {TuiLet} from '@taiga-ui/cdk';");
+            } else if (dir === 'tuiFor') {
+                result.push("import {TuiFor} from '@taiga-ui/cdk';");
+            } else if (dir === 'tuiRepeatTimes') {
+                result.push("import {TuiRepeatTimes} from '@taiga-ui/cdk';");
+            } else if (dir === 'tuiItem') {
+                result.push("import {TuiItem} from '@taiga-ui/cdk';");
+            } else {
+                result.push(`import {${className}} from '@taiga-ui/...'; // Check docs`);
+            }
+
+            result.push('');
+        }
+
+        result.push('```\n');
+    }
+
+    result.push(
+        '> **Important**: Add these directives to your `@Component.imports` array.',
+    );
+
+    return result.join('\n');
 }

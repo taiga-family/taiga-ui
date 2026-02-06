@@ -34,5 +34,29 @@
             "value": true,
             "description": "Include all available examples per component (if multiple exist). When false, only includes first example."
         }
+    },
+    "constants": {
+        "description": "Configurable constants for the generation process",
+        "defaultModulesPath": "projects/demo/src/pages",
+        "defaultOutputFile": "projects/demo/src/llms-full.txt",
+        "defaultOutputFileHtml": "projects/demo/src/llms-full.html",
+        "headerSectionsPath": "projects/demo/src/llms-header-sections",
+        "headerFiles": ["import-map.md", "checklist.md", "cdk-types.md", "common-mistakes.md"],
+        "skipFolders": [
+            "__test__",
+            "assets",
+            "build",
+            "coverage",
+            "data",
+            "dist",
+            "docs",
+            "examples",
+            "lib",
+            "mocks",
+            "node_modules",
+            "src",
+            "test"
+        ],
+        "childFolders": ["components", "directives", "tokens", "customization", "pipes"]
     }
 }
