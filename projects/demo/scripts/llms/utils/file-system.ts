@@ -178,11 +178,11 @@ export function getComponentApiFromTable(content: string): string {
             const type = typeMatch[1]?.trim();
             const description = descriptionMatch?.[1] ? descriptionMatch[1].trim() : '—';
 
-            // Check if it's an output (event) - starts with '(' or contains 'EventEmitter'
+            // Check if it's an output (event): prioritize name starting with '(',
+            // then fall back to EventEmitter when it's not an input ('[').
             const isOutput =
                 name?.startsWith('(') ||
-                type?.includes('EventEmitter') ||
-                type?.includes('Observable');
+                (name?.startsWith('[') === false && type?.includes('EventEmitter'));
 
             const rowContent = `| ${name} | \`${type}\` | ${description} |`;
 
@@ -245,9 +245,7 @@ export function getComponentApiFromTemplates(content: string): string {
 
             // Check if it's an output (event)
             const isOutput =
-                name?.startsWith('(') ||
-                type?.includes('EventEmitter') ||
-                type?.includes('Observable');
+                name?.startsWith('[') === false && type?.includes('EventEmitter');
 
             const rowContent = `| ${name} | \`${type}\` | ${description} |`;
 
@@ -773,7 +771,7 @@ export function extractRequiredDirectives(content: string): string {
 
         for (const dir of tuiDirectives) {
             // Convert tuiDropdown -> TuiDropdown
-            const className = `Tui${dir.slice(3).charAt(0).toUpperCase()}${dir.slice(4)}`;
+            const className = 'Tui' + dir.charAt(3).toUpperCase() + dir.slice(4);
 
             result.push(`// For *${dir}`);
 

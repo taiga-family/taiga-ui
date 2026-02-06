@@ -65,13 +65,14 @@ const dayOfWeek = day.dayOfWeek();
 
 ```typescript
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiCalendar} from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-example',
   standalone: true,
-  imports: [TuiCalendar],
+  imports: [TuiCalendar, FormsModule],
   template: `
     <tui-calendar
       [(ngModel)]="selectedDate"
@@ -349,6 +350,7 @@ const preset = new TuiDayRangePeriod(weekRange, 'Last 7 days');
 
 ```typescript
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiCalendarRange, TuiDayRangePeriod} from '@taiga-ui/kit';
 

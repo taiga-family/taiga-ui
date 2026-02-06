@@ -266,20 +266,6 @@ export async function generateImportMap(): Promise<string> {
     output.push("import {AsyncPipe, DatePipe, DecimalPipe} from '@angular/common';\n");
     output.push('```\n');
 
-    // Add common mistakes section
-    output.push('\n---\n');
-    output.push('## Common Import Mistakes\n\n');
-    output.push('### ❌ Wrong:\n```typescript\n');
-    output.push("import {TuiButton} from '@taiga-ui/kit'; // Wrong package!\n");
-    output.push("import {TuiCalendar} from '@taiga-ui/core'; // Wrong package!\n");
-    output.push("import {TuiDay} from '@taiga-ui/core'; // Wrong package!\n");
-    output.push('```\n\n');
-    output.push('### ✅ Correct:\n```typescript\n');
-    output.push("import {TuiButton} from '@taiga-ui/core'; // Core component\n");
-    output.push("import {TuiCalendar} from '@taiga-ui/kit'; // Kit component\n");
-    output.push("import {TuiDay} from '@taiga-ui/cdk'; // CDK type\n");
-    output.push('```\n');
-
     return output.join('');
 }
 
