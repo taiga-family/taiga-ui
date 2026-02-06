@@ -1,4 +1,4 @@
-import {type Locator} from '@playwright/test';
+import {expect, type Locator} from '@playwright/test';
 
 export class TuiInputChipPO {
     public readonly input: Locator;
@@ -13,9 +13,12 @@ export class TuiInputChipPO {
     }
 
     public async addChip(value: string): Promise<void> {
+        const initialCount = await this.chips.count();
+
         await this.input.focus();
         await this.input.fill(value);
         await this.input.press('Enter');
-        await this.host.page().waitForTimeout(200);
+
+        await expect.poll(async () => this.chips.count()).toBeGreaterThan(initialCount);
     }
 }
