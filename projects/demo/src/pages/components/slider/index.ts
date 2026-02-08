@@ -11,7 +11,7 @@ import {TuiSlider} from '@taiga-ui/kit';
 })
 export default class Page {
     protected readonly examples = [
-        'Thumb radius',
+        'Thumb size',
         'Colors',
         'Segments',
         'Disabled',
