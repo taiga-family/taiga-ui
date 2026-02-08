@@ -31,6 +31,9 @@ const COMPONENT_BEFORE = `import { Component } from "@angular/core";
         <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness]="'10px'"/>
         <tui-input-range [formControl]="control" [style.--tui-thickness]="'12px'"/>
     \`,
+    host: {
+      '[style.--tui-thickness.rem]': '1.25',
+    }
 })
 export class Test {
 }`;
@@ -61,6 +64,9 @@ const COMPONENT_AFTER = `import { Component } from "@angular/core";
         <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
 <tui-input-range [formControl]="control" [style.--tui-thickness]="'12px'"/>
     \`,
+    host: {// TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size
+      '[style.--tui-thickness.rem]': '1.25',
+    }
 })
 export class Test {
 }`;
