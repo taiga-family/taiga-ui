@@ -8,7 +8,7 @@ import {
 } from 'ng-morph';
 
 import {type TuiSchema} from '../../../ng-add/schema';
-import {addComment} from '../../utils/add-comment';
+import {addCommentForStylesFiles} from '../../utils/add-comment-for-styles';
 import {getFileSystem} from '../../utils/get-file-system';
 import {replaceText} from '../../utils/replace-text';
 
@@ -44,7 +44,7 @@ export function migrateCssVariables(tree: Tree, options: TuiSchema): void {
     const fileSystem = getFileSystem(tree);
 
     replaceText(FONT_VARIABLES_REPLACEMENTS);
-    addComment(DEPRECATED_VARS_WITH_COMMENT);
+    addCommentForStylesFiles(DEPRECATED_VARS_WITH_COMMENT);
 
     fileSystem.commitEdits();
     saveActiveProject();

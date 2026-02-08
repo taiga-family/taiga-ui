@@ -18,10 +18,19 @@ const COMPONENT_BEFORE = `import { Component } from "@angular/core";
 
 @Component({
     standalone: true,
-    template: '',
-    host: {
-      '[style.--tui-thickness.rem]': '1.25',
-    }
+    template: \`
+        <tui-range [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
+        <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
+        <tui-input-range [formControl]="control" [style.--tui-thickness.rem]="0.25"/>
+
+        <tui-range [formControl]="control" [style.--tui-thickness.px]="8"/>
+        <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.px]="10"/>
+        <tui-input-range [formControl]="control" [style.--tui-thickness.px]="12"/>
+
+        <tui-range [formControl]="control" [style.--tui-thickness]="'8px'"/>
+        <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness]="'10px'"/>
+        <tui-input-range [formControl]="control" [style.--tui-thickness]="'12px'"/>
+    \`,
 })
 export class Test {
 }`;
@@ -30,11 +39,28 @@ const COMPONENT_AFTER = `import { Component } from "@angular/core";
 
 @Component({
     standalone: true,
-    template: '',
-    host: {
-// TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size
-      '[style.--tui-thickness.rem]': '1.25',
-    }
+    template: \`
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<tui-range [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<tui-input-range [formControl]="control" [style.--tui-thickness.rem]="0.25"/>
+
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<tui-range [formControl]="control" [style.--tui-thickness.px]="8"/>
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.px]="10"/>
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<tui-input-range [formControl]="control" [style.--tui-thickness.px]="12"/>
+
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<tui-range [formControl]="control" [style.--tui-thickness]="'8px'"/>
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<input tuiSlider type="range" [formControl]="control" [style.--tui-thickness]="'10px'"/>
+        <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#thumb-size -->
+<tui-input-range [formControl]="control" [style.--tui-thickness]="'12px'"/>
+    \`,
 })
 export class Test {
 }`;
