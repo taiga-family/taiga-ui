@@ -1,4 +1,3 @@
-import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {type HtmlComment} from '../../../interfaces';
 import {hasChild} from '../../../utils/templates/dom-traversal';
 import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
@@ -24,31 +23,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
             'tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion',
     },
     {
-        tag: 'tui-range',
+        tag: '*',
         withAttrs: [
             '[style.--tui-thickness.rem]',
             '[style.--tui-thickness.px]',
             '[style.--tui-thickness]',
         ],
         comment: TUI_THICKNESS_COMMENT,
-    },
-    {
-        tag: 'tui-input-range',
-        withAttrs: [
-            '[style.--tui-thickness.rem]',
-            '[style.--tui-thickness.px]',
-            '[style.--tui-thickness]',
-        ],
-        comment: TUI_THICKNESS_COMMENT,
-    },
-    {
-        tag: 'input',
-        withAttrs: [
-            '[style.--tui-thickness.rem]',
-            '[style.--tui-thickness.px]',
-            '[style.--tui-thickness]',
-        ],
-        comment: TUI_THICKNESS_COMMENT,
-        filterFn: (el) => hasElementAttribute(el, 'tuiSlider'),
     },
 ];
