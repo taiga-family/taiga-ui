@@ -1,8 +1,8 @@
-import {TUI_THICKNESS_COMMENT} from '@taiga-ui/cdk/schematics/ng-update/v5/steps/migrate-css-variables';
 import {hasElementAttribute} from '@taiga-ui/cdk/schematics/utils/templates/elements';
 
 import {type HtmlComment} from '../../../interfaces';
 import {hasChild} from '../../../utils/templates/dom-traversal';
+import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
 
 export const HTML_COMMENTS: HtmlComment[] = [
     {
