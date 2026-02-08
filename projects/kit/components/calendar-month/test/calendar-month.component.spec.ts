@@ -22,10 +22,10 @@ describe('CalendarMonth', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiCalendarMonth);
-        public year = new TuiYear(TODAY.year);
+        public year: TuiYear | undefined = new TuiYear(TODAY.year);
         public min = TODAY.append({year: -2});
         public max = TODAY.append({year: 2});
-        public value = TODAY;
+        public value: TuiMonth = TODAY;
         public month = TuiMonth.currentLocal();
         public disabledItemHandler = (item: TuiMonth): boolean => item.month === 10;
     }
@@ -93,23 +93,32 @@ describe('CalendarMonth', () => {
         it('append year by onNextYear', () => {
             const year = new TuiYear(TODAY.year);
 
-            component.year = year;
+            testComponent.year = year;
 
             component.onNextYear();
 
-            expect(component.year.year).toBe(year.year + 1);
             expect(testComponent.year.year).toBe(year.year + 1);
         });
 
         it('reduce year by onPreviousYear', () => {
             const year = new TuiYear(TODAY.year);
 
-            component.year = year;
+            testComponent.year = year;
 
             component.onPreviousYear();
 
-            expect(component.year.year).toBe(year.year - 1);
             expect(testComponent.year.year).toBe(year.year - 1);
+        });
+
+        it('use year from value', () => {
+            const year = new TuiYear(TODAY.year);
+
+            testComponent.year = undefined;
+            testComponent.value = new TuiMonth(year.year, 1);
+
+            component.onPreviousYear();
+
+            expect(testComponent.year).toEqual(year.append({year: -1}));
         });
     });
 });
