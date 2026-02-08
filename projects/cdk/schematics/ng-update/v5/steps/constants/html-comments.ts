@@ -1,5 +1,4 @@
-import {hasElementAttribute} from '@taiga-ui/cdk/schematics/utils/templates/elements';
-
+import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {type HtmlComment} from '../../../interfaces';
 import {hasChild} from '../../../utils/templates/dom-traversal';
 import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
