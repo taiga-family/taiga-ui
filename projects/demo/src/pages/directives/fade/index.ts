@@ -10,7 +10,13 @@ import {TuiFade} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic', 'Multiline', 'Vertical', 'Hyphens'];
+    protected readonly examples = [
+        'Basic',
+        'Multiline',
+        'Vertical',
+        'Hyphens',
+        'InputChip',
+    ];
 
     protected lineHeight = '100%';
     protected size = '1.5em';
