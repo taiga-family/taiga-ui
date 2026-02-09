@@ -1,6 +1,5 @@
-import {isPlatformBrowser} from '@angular/common';
+import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {DestroyRef, Directive, inject, InjectionToken, PLATFORM_ID} from '@angular/core';
-import {WA_WINDOW} from '@ng-web-apis/common';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiFontSizeWatcher} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -15,7 +14,7 @@ export class TuiFontSize {
         this.handler &&
             isPlatformBrowser(inject(PLATFORM_ID)) &&
             typeof ResizeObserver !== 'undefined'
-            ? tuiFontSizeWatcher(this.handler, inject(WA_WINDOW))
+            ? tuiFontSizeWatcher(this.handler, inject(DOCUMENT).createElement('iframe'))
             : EMPTY_FUNCTION,
     );
 }

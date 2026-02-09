@@ -1,39 +1,45 @@
-const IFRAME = 'position: fixed; visibility: hidden; pointer-events: none';
-const BODY = 'height: fit-content; line-height: 1em;';
-const CLASS = 'tui-font-size-watcher';
+const IFRAME: Partial<CSSStyleDeclaration> = {
+    position: 'fixed',
+    visibility: 'hidden',
+    pointerEvents: 'none',
+};
+
+const BODY: Partial<CSSStyleDeclaration> = {
+    height: 'fit-content',
+    lineHeight: '1em',
+    fontSize: 'calc(env(preferred-text-scale) * 1em)',
+};
 
 export function tuiFontSizeWatcher(
     callback: (fontSize: number) => void,
-    win: Window = window,
+    iframe: HTMLIFrameElement = globalThis.document.createElement('iframe'),
 ): () => void {
-    if (win.document.querySelector(`.${CLASS}`)) {
-        return () => {};
-    }
-
-    const iframe = win.document.createElement('iframe');
     const resize = (): void => {
-        const {innerWidth, outerWidth, devicePixelRatio} = win;
+        const {
+            innerWidth = 0,
+            outerWidth = 0,
+            devicePixelRatio = 0,
+        } = iframe.ownerDocument?.defaultView || {};
 
         iframe.width = `${innerWidth === outerWidth ? innerWidth : innerWidth / devicePixelRatio}`;
     };
 
-    win.document.body.append(iframe);
-    win.addEventListener('resize', resize);
+    iframe.ownerDocument?.body.append(iframe);
+    iframe.ownerDocument?.defaultView?.addEventListener('resize', resize);
 
-    const doc = iframe.contentWindow?.document;
+    const doc = iframe.contentDocument;
     const observer = new ResizeObserver(() => callback(doc?.body.offsetHeight || 0));
 
-    iframe.setAttribute('class', CLASS);
-    iframe.setAttribute('style', IFRAME);
+    Object.assign(iframe.style, IFRAME);
+    Object.assign(doc?.body.style || {}, BODY);
     doc?.documentElement.style.setProperty('font', '-apple-system-body');
-    doc?.body.setAttribute('style', BODY);
     doc?.body.insertAdjacentText('beforeend', '.'.repeat(1000));
     observer.observe(doc?.body || iframe);
     resize();
 
     return () => {
         observer.disconnect();
+        iframe.ownerDocument?.defaultView?.removeEventListener('resize', resize);
         iframe.remove();
-        win.removeEventListener('resize', resize);
     };
 }
