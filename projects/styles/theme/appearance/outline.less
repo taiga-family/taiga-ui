@@ -1,0 +1,78 @@
+@import '../../utils.less';
+
+[tuiAppearance][data-appearance='outline'],
+[tuiAppearance][data-appearance='outline-destructive'],
+[tuiAppearance][data-appearance='outline-grayscale'] {
+    --t-bs: var(--tui-border-normal);
+
+    color: var(--tui-text-action);
+    box-shadow: inset 0 0 0 1px var(--t-bs);
+
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
+        --t-bs: var(--tui-background-accent-1);
+
+        box-shadow: inset 0 0 0 2px var(--t-bs);
+
+        .appearance-hover({
+            --t-bs: var(--tui-background-accent-1-hover);
+        });
+
+        .appearance-active({
+            --t-bs: var(--tui-background-accent-1-pressed);
+        });
+    }
+
+    .appearance-invalid({
+        box-shadow: inset 0 0 0 1px var(--tui-status-negative-pale-hover);
+
+        &:checked,
+        &[data-mode~='checked'] {
+            box-shadow: inset 0 0 0 2px var(--tui-status-negative);
+        }
+    });
+
+    .appearance-hover({
+        cursor: pointer;
+        --t-bs: var(--tui-border-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-background-neutral-1);
+        --t-bs: var(--tui-border-hover);
+    });
+}
+
+[tuiAppearance][data-appearance='outline-grayscale'] {
+    color: var(--tui-text-primary);
+}
+
+[tuiAppearance][data-appearance='outline-destructive'] {
+    color: var(--tui-text-negative);
+}
+
+[tuiAppearance][data-appearance='icon'],
+[tuiAppearance][data-appearance='outline-grayscale'],
+[tuiAppearance][data-appearance='floating'] {
+    color: var(--tui-text-primary);
+
+    &::before,
+    &::after {
+        transition-property: color, transform;
+        color: var(--tui-text-tertiary);
+    }
+
+    .appearance-hover({
+        &:before,
+        &:after {
+            color: var(--tui-text-secondary);
+        }
+    });
+
+    .appearance-active({
+        &:before,
+        &:after {
+            color: var(--tui-text-primary);
+        }
+    });
+}

@@ -20,7 +20,7 @@ import {TUI_BUTTON_OPTIONS} from './button.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/button.less';
+            @import '@taiga-ui/styles/components/button.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

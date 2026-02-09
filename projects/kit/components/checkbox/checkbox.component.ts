@@ -16,7 +16,7 @@ import {TUI_CHECKBOX_OPTIONS, type TuiCheckboxOptions} from './checkbox.options'
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/checkbox.less';
+            @import '@taiga-ui/styles/components/checkbox.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

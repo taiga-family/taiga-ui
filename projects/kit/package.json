@@ -15,9 +15,6 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
-    "exports": {
-        "./styles/*": "./styles/*"
-    },
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
@@ -34,9 +31,9 @@
         "@ng-web-apis/resize-observer": "^5.1.0",
         "@taiga-ui/cdk": "^5.0.0-rc.2",
         "@taiga-ui/core": "^5.0.0-rc.2",
-        "@taiga-ui/design-tokens": "~0.277.0",
         "@taiga-ui/i18n": "^5.0.0-rc.2",
         "@taiga-ui/polymorpheus": "^5.0.0",
+        "@taiga-ui/styles": "^5.0.0-rc.2",
         "rxjs": ">=7.0.0",
         "tslib": ">=2.8.1"
     }

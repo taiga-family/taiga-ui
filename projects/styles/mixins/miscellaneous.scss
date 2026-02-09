@@ -1,0 +1,161 @@
+@import 'browsers';
+
+@mixin interactive {
+    &:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
+        @content;
+    }
+}
+
+// centering with translate
+@mixin center-left() {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@mixin center-top() {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+@mixin center-all() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//.fullsize
+@mixin fullsize($position: absolute, $mode: height) {
+    position: $position;
+    top: 0;
+    left: 0;
+
+    @if ($mode == height) {
+        width: 100%;
+        height: 100%;
+    }
+
+    @if ($mode == inset) {
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@mixin button-clear() {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+@mixin button-base() {
+    @include button-clear();
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    max-width: 100%;
+    gap: calc(var(--t-gap) - 2 * var(--t-margin));
+
+    > img,
+    > tui-icon,
+    > [tuiAvatar],
+    > tui-badge,
+    > [tuiBadge],
+    > [tuiRadio],
+    > [tuiSwitch],
+    > [tuiCheckbox],
+    &[tuiIcons]:before,
+    &[tuiIcons]:after {
+        margin: var(--t-margin);
+    }
+}
+
+// transition
+@mixin transition($param: all, $speed: var(--tui-duration, 300ms)) {
+    transition-property: $param;
+    transition-duration: $speed;
+    transition-timing-function: ease-in-out;
+}
+
+// gradient
+@mixin gradient($start-color, $end-color, $angle: 45deg) {
+    background-image: linear-gradient($angle, $start-color 0%, $end-color 100%);
+}
+
+// typical properties for text overflow with ellipsis
+@mixin text-overflow($type: nowrap) {
+    white-space: $type;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin scrollbar-hidden() {
+    /* stylelint-disable*/
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* stylelint-enable*/
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+        display: none;
+    }
+}
+
+// hide an element visually without hiding it from screen readers
+@mixin sr-only() {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+}
+
+// prevent scrolling to focused element on IOS
+@mixin tui-prevent-ios-scroll() {
+    &:focus {
+        animation: tuiPreventIOSScroll 0.001s;
+    }
+
+    @keyframes tuiPreventIOSScroll {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin text-truncate() {
+    @include text-overflow();
+    flex: 1;
+    min-inline-size: 0;
+    max-inline-size: max-content;
+}
+
+@mixin tui-line-clamp($count: 3) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $count;
+    line-clamp: $count;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin tui-mask($x, $y, $r) {
+    mask: radial-gradient(circle at $x $y, transparent $r, black $r);
+}

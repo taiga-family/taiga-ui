@@ -19,7 +19,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/toast.less';
+            @import '@taiga-ui/styles/components/toast.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

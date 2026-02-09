@@ -45,7 +45,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     templateUrl: './textfield-multi.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/textfield.less';
+            @import '@taiga-ui/styles/components/textfield.less';
             @import './textfield-multi.style.less';
         }
     `,

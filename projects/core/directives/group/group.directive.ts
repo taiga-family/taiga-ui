@@ -16,7 +16,7 @@ import {TUI_GROUP_OPTIONS} from './group.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/group.less';
+            @import '@taiga-ui/styles/components/group.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

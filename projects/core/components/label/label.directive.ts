@@ -16,7 +16,7 @@ import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/label.less';
+            @import '@taiga-ui/styles/components/label.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

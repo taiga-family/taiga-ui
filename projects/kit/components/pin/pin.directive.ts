@@ -12,7 +12,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/pin.less';
+            @import '@taiga-ui/styles/components/pin.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
