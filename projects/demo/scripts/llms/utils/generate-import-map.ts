@@ -155,19 +155,16 @@ function formatExportsSection(title: string, exports: Set<string>, perLine = 10)
         currentLine.push(exp);
 
         if (currentLine.length >= perLine) {
-            lines.push(`  ${currentLine.join(', ')},`);
+            lines.push(`  ${currentLine.join(', ')}`);
             currentLine = [];
         }
     }
 
     if (currentLine.length > 0) {
-        lines.push(`  ${currentLine.join(', ')});`);
-    } else {
-        // Remove trailing comma from last line and add closing paren
-        lines[lines.length - 1] = lines[lines.length - 1]!.replace(/,$/, ');');
+        lines.push(`  ${currentLine.join(', ')}`);
     }
 
-    return `**${title}:**\n\n\`\`\`typescript\n(${lines.join('\n')}\n\`\`\`\n`;
+    return `**${title}:**\n\n\`\`\`text\n${lines.join('\n')}\n\`\`\`\n`;
 }
 
 export async function generateImportMap(): Promise<string> {
