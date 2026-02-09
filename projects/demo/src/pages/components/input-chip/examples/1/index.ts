@@ -13,5 +13,5 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value: string[] = inject('Pythons' as any);
-    protected readonly separator = /[\s\n,;]/;
+    protected readonly separator = /[\s,;]/;
 }
