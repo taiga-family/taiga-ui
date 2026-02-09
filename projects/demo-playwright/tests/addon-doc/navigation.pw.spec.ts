@@ -18,11 +18,10 @@ test.describe('Navigation', () => {
         });
         const sideNavigation = page.locator('tui-doc-navigation');
 
-        await sideNavigation.isVisible();
-
-        await expect
-            .soft(sideNavigation)
-            .toHaveScreenshot('01-tui-doc-navigation-light-mode.png');
+        await expect(sideNavigation).toBeVisible();
+        await expect(sideNavigation).toHaveScreenshot(
+            '01-tui-doc-navigation-light-mode.png',
+        );
     });
 
     test('getting started / [dark mode]', async ({page, browserName}) => {
@@ -39,11 +38,11 @@ test.describe('Navigation', () => {
         });
         const sideNavigation = page.locator('tui-doc-navigation');
 
-        await sideNavigation.isVisible();
+        await expect(sideNavigation).toBeVisible();
 
-        await expect
-            .soft(sideNavigation)
-            .toHaveScreenshot('02-tui-doc-navigation-dark-mode.png');
+        await expect(sideNavigation).toHaveScreenshot(
+            '02-tui-doc-navigation-dark-mode.png',
+        );
     });
 
     test.describe('anchor links navigation works', () => {
@@ -62,23 +61,24 @@ test.describe('Navigation', () => {
         });
 
         test('scroll after click on link with anchor', async ({page, browserName}) => {
+            await page.setViewportSize({width: 1300, height: 500});
+
             test.skip(
                 browserName !== 'chromium',
                 // TODO: why does this test keep failing in safari
                 'This feature is only relevant in Chrome',
             );
 
-            await tuiGoto(page, `${DemoRoute.GettingStarted}/Manual`);
+            const isProprietary = process.env['PROPRIETARY'] === 'true';
+            const anchor = `a[href$="${isProprietary ? encodeURIComponent('Основной-компонент') : 'root-component'}"]`;
 
-            const handle = await page
-                .locator('a[href$="#root-component"]')
-                .first()
-                .elementHandle();
+            await tuiGoto(
+                page,
+                `${DemoRoute.GettingStarted}/${isProprietary ? 'Ручное' : 'Manual'}`,
+            );
 
-            await page.evaluate((el: any) => el?.click(), handle);
-            await handle?.dispose();
-
-            await expect(page.locator('#root-component')).toBeInViewport();
+            await page.locator(`tui-doc-toc ${anchor}`).click();
+            await expect(page.locator(`tui-doc-example ${anchor}`)).toBeInViewport();
         });
     });
 });
