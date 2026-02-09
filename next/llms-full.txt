@@ -264,8 +264,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayToggle} from '@taiga-ui/cdk';
-import {TuiCell, TuiTitle} from '@taiga-ui/core';
-import {TuiAccordion, TuiAvatar, TuiCheckbox, TuiConnected} from '@taiga-ui/kit';
+import {TuiCell, TuiCheckbox, TuiTitle} from '@taiga-ui/core';
+import {TuiAccordion, TuiAvatar, TuiConnected} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -2733,8 +2733,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiBlock, TuiCheckbox, TuiRadio, TuiTooltip} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiIcon, TuiRadio, TuiTitle} from '@taiga-ui/core';
+import {TuiBlock, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -2802,8 +2802,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiGroup} from '@taiga-ui/core';
-import {TuiBlock, TuiFade, TuiRadio} from '@taiga-ui/kit';
+import {TuiGroup, TuiRadio} from '@taiga-ui/core';
+import {TuiBlock, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiBlock, TuiFade, TuiGroup, TuiRadio],
@@ -2852,8 +2852,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiBlock, TuiCheckbox, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiBlock, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -3530,8 +3530,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiAccordion, TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox} from '@taiga-ui/core';
+import {TuiAccordion, TuiBlock} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -6926,14 +6926,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiCell, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiAvatarStack,
-    TuiBadge,
-    TuiCheckbox,
-    TuiProgress,
-} from '@taiga-ui/kit';
+import {TuiCell, TuiCheckbox, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiAvatarStack, TuiBadge, TuiProgress} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -7003,14 +6997,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCell, TuiIcon, TuiLoader, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiBadgeNotification,
-    TuiCheckbox,
-    TuiSensitive,
-    TuiTooltip,
-} from '@taiga-ui/kit';
+import {TuiCell, TuiCheckbox, TuiIcon, TuiLoader, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiBadgeNotification, TuiSensitive, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -7382,11 +7370,12 @@ import {
     TuiAppearance,
     TuiButton,
     TuiCell,
+    TuiCheckbox,
     TuiIcon,
     TuiLoader,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiBadgeNotification, TuiCheckbox, TuiTooltip} from '@taiga-ui/kit';
+import {TuiBadgeNotification, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -7466,7 +7455,7 @@ export default class Example {
 
 ---
 # components/Checkbox
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: components
 A checkbox component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 
@@ -7494,8 +7483,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {type TuiSizeS} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiCheckbox, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiCheckbox, TuiPlatform],
@@ -7546,8 +7534,7 @@ export default class Example implements OnInit {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiButton, TuiCheckbox],
@@ -7577,8 +7564,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiCheckbox],
@@ -7758,8 +7744,8 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
-import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox, TuiNotificationService} from '@taiga-ui/core';
+import {TuiChip} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiButton, TuiCheckbox, TuiChip],
@@ -9420,14 +9406,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import {
-    TuiButtonSelect,
-    TuiCheckbox,
-    TuiChevron,
-    TuiMultiSelect,
-    TuiSwitch,
-} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TuiButtonSelect, TuiChevron, TuiMultiSelect, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -11056,8 +11036,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiButton, TuiError, TuiInput} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox, TuiError, TuiInput} from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -12155,8 +12134,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiCell, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiRadio} from '@taiga-ui/kit';
+import {TuiButton, TuiCell, TuiLabel, TuiRadio, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -12587,16 +12566,17 @@ import {TuiCurrency, TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCheckbox,
     TuiError,
     TuiGroup,
     TuiIcon,
     TuiInput,
     TuiLabel,
+    TuiRadio,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
     TuiBlock,
-    TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
     TuiInputDate,
@@ -12604,7 +12584,6 @@ import {
     TuiInputPhone,
     TuiInputSlider,
     TuiPassword,
-    TuiRadio,
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
@@ -12972,8 +12951,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiGroup} from '@taiga-ui/core';
-import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
+import {TuiGroup, TuiRadio} from '@taiga-ui/core';
+import {TuiBlock} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiBlock, TuiGroup, TuiRadio],
@@ -13011,8 +12990,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiGroup, TuiTitle} from '@taiga-ui/core';
-import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
+import {TuiGroup, TuiRadio, TuiTitle} from '@taiga-ui/core';
+import {TuiBlock} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiBlock, TuiGroup, TuiRadio, TuiTitle],
@@ -14486,7 +14465,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value: string[] = inject('Pythons' as any);
-    protected readonly separator = /[\s\n,;]/;
+    protected readonly separator = /[\s,;]/;
 }
 ```
 
@@ -19470,7 +19449,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputRange, type TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiKeySteps} from '@taiga-ui/core';
+import {TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, JsonPipe, TuiInputRange],
@@ -19595,8 +19575,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiLoader, TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {TuiInputRange, type TuiKeySteps} from '@taiga-ui/kit';
+import {
+    type TuiKeySteps,
+    TuiLoader,
+    TuiNumberFormat,
+    TuiTextfield,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {TuiInputRange} from '@taiga-ui/kit';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -19844,7 +19830,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiKeySteps} from '@taiga-ui/core';
+import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiInputSlider],
@@ -19922,8 +19909,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
-import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
+import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -21252,8 +21239,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiCheckbox, TuiTooltip} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiCheckbox, TuiIcon, TuiLabel, TuiTitle, TuiTooltip],
@@ -21295,8 +21282,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLabel} from '@taiga-ui/core';
-import {TuiRadio} from '@taiga-ui/kit';
+import {TuiLabel, TuiRadio} from '@taiga-ui/core';
 
 @Component({
     imports: [ReactiveFormsModule, TuiLabel, TuiRadio],
@@ -21510,12 +21496,12 @@ import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiSum} from '@taiga-ui/cdk';
 import {
+    TuiCheckbox,
     tuiFormatNumber,
     TuiIcon,
     TuiNotification,
     TuiNotificationService,
 } from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -27864,7 +27850,7 @@ export default class Page {
 
 ---
 # components/Radio
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: components
 A radio component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation Due to internal Angular implementation of radio buttons, you are required to add name attribute to your input tag, unless you are using formControlName
 
@@ -27889,8 +27875,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {type TuiSizeS} from '@taiga-ui/core';
-import {TuiRadio} from '@taiga-ui/kit';
+import {TuiRadio, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiPlatform, TuiRadio],
@@ -27945,8 +27930,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiLabel} from '@taiga-ui/core';
-import {TuiRadio} from '@taiga-ui/kit';
+import {TuiButton, TuiLabel, TuiRadio} from '@taiga-ui/core';
 
 interface TestValue {
     test: string;
@@ -28181,7 +28165,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
+import {type TuiKeySteps} from '@taiga-ui/core';
+import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, JsonPipe, TuiRange],
@@ -28218,8 +28203,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiTitle} from '@taiga-ui/core';
-import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiTitle} from '@taiga-ui/core';
+import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiRange, TuiTitle],
@@ -30582,7 +30567,7 @@ export default class Page {
 
 ---
 # components/Slider
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: components
 Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs
 
@@ -30621,7 +30606,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [ReactiveFormsModule, TuiSlider],
@@ -30647,7 +30632,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiSlider],
@@ -30674,7 +30659,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [ReactiveFormsModule, TuiSlider],
@@ -30704,7 +30689,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiSlider],
@@ -30731,7 +30716,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiKeySteps, TuiSlider} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [DecimalPipe, ReactiveFormsModule, TuiSlider],
@@ -30776,8 +30761,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiButton, TuiHint, TuiSlider} from '@taiga-ui/core';
 import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from 'rxjs';
 
 @Component({
@@ -30826,8 +30810,7 @@ export default class Example {
 import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiButton, TuiDropdown, TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, TuiButton, TuiDropdown, TuiSlider],
@@ -30848,8 +30831,7 @@ export default class Example {
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
-import {TuiTitle} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiSlider, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiSlider, TuiTitle],
@@ -32043,8 +32025,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiCheckbox} from '@taiga-ui/kit';
+import {TuiButton, TuiCell, TuiCheckbox, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
@@ -32538,8 +32520,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiLabel, TuiPopup} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiLabel, TuiPopup} from '@taiga-ui/core';
 
 import TuiTabBarExample from './examples/1';
 
@@ -33010,6 +32991,7 @@ import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
 import {
     TuiButton,
     TuiCell,
+    TuiCheckbox,
     TuiDropdown,
     TuiIcon,
     TuiLink,
@@ -33019,7 +33001,6 @@ import {
     TuiAutoColorPipe,
     TuiAvatar,
     TuiBadge,
-    TuiCheckbox,
     TuiChip,
     TuiInitialsPipe,
     TuiItemsWithMore,
@@ -33438,13 +33419,14 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCheckbox,
     TuiDropdown,
     TuiInput,
     TuiLabel,
     TuiLoader,
     TuiNumberFormat,
 } from '@taiga-ui/core';
-import {TuiCheckbox, TuiChevron, TuiInputNumber} from '@taiga-ui/kit';
+import {TuiChevron, TuiInputNumber} from '@taiga-ui/kit';
 import {
     BehaviorSubject,
     combineLatest,
@@ -36356,8 +36338,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiHandler, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiLabel} from '@taiga-ui/core';
-import {TuiCheckbox, TuiTree} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiLabel} from '@taiga-ui/core';
+import {TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];
@@ -41009,8 +40991,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {SECONDS_IN_MINUTE, TuiMedia} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiButton, TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, TuiButton, TuiMedia, TuiSlider],
@@ -41065,8 +41046,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiMedia} from '@taiga-ui/cdk';
-import {TuiButton, TuiLink} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiButton, TuiLink, TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, TuiButton, TuiLink, TuiMedia, TuiSlider],
@@ -42761,10 +42741,11 @@ import {FormsModule} from '@angular/forms';
 import {
     TuiButton,
     tuiButtonOptionsProvider,
+    TuiCheckbox,
+    tuiCheckboxOptionsProvider,
     TuiInput,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
-import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-wrapper-example-1',
@@ -43060,8 +43041,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInput, TuiLabel} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiInput, TuiLabel} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
