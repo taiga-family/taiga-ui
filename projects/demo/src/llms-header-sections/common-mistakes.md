@@ -8,7 +8,8 @@ The #1 cause of compilation errors. Always check the **Import Map** section to f
 
 ## 2. Arrow Functions in Templates
 
-Angular templates do not support arrow functions in interpolation or property binding expressions. Move logic to the component class as getters or methods.
+Angular templates do not support arrow functions in interpolation or property binding expressions. Move logic to the
+component class as getters or methods.
 
 **Wrong:** `{{ items.map(x => x.name).join(', ') }}` **Right:** Create a getter `get itemNames(): string` in the
 component class and use `{{ itemNames }}` in the template.
