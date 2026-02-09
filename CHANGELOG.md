@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.70.0](https://github.com/taiga-family/taiga-ui/compare/v4.69.0...v4.70.0) (2026-02-09)
+
+### 🐞 Bug Fixes
+
+- **core:** `Surface` fix shadow for floating appearance
+  ([#13196](https://github.com/taiga-family/taiga-ui/issues/13196))
+  ([e0a3fd0](https://github.com/taiga-family/taiga-ui/commit/e0a3fd0851135189e3900317673dd48f36182783))
+- **core:** do not emit onChange on initialization of TuiItemsHandlersValidator
+  ([#13172](https://github.com/taiga-family/taiga-ui/issues/13172))
+  ([8bf0372](https://github.com/taiga-family/taiga-ui/commit/8bf03729d287f80a037d5cb5003e7371dd8d1da8))
+- **core:** incorrect browser render on `tuiFade` ([#13207](https://github.com/taiga-family/taiga-ui/issues/13207))
+  ([ef7f4fb](https://github.com/taiga-family/taiga-ui/commit/ef7f4fbb87482238b66aa35ffe9636a7669a41a9))
+- **core:** revert wrong display on `tui-textfield-item`
+  ([#13211](https://github.com/taiga-family/taiga-ui/issues/13211))
+  ([4f5b41f](https://github.com/taiga-family/taiga-ui/commit/4f5b41faa54afc57a087284399bac09ba404d855))
+- **core:** tui-textfield still has `_disabled` class after enabling a control
+  ([#13085](https://github.com/taiga-family/taiga-ui/issues/13085))
+  ([aa55275](https://github.com/taiga-family/taiga-ui/commit/aa552755e5086e37908aff3f17e183495e0c31de))
+- **kit:** add correct size behaviour for TuiBlock ([#13158](https://github.com/taiga-family/taiga-ui/issues/13158))
+  ([5efa89c](https://github.com/taiga-family/taiga-ui/commit/5efa89cdaecebb2440ff7c02077edac6f04b3b15))
+- **kit:** support dark mode in `tuiButtonCopy` ([#13150](https://github.com/taiga-family/taiga-ui/issues/13150))
+  ([a19b43a](https://github.com/taiga-family/taiga-ui/commit/a19b43a5b1173ffccd30e7d42cf2bfa4cd61f2f2))
+
+### 🚀 Features
+
+- **addon-mobile:** `SwipeActions` add onboarding animation
+  ([#13175](https://github.com/taiga-family/taiga-ui/issues/13175))
+  ([8e547c4](https://github.com/taiga-family/taiga-ui/commit/8e547c43b613e33387a1bd8ee1af10e743c28a21))
+- **layout:** use signals in `tui-elastic-container` ([#13170](https://github.com/taiga-family/taiga-ui/issues/13170))
+  ([f79d0b2](https://github.com/taiga-family/taiga-ui/commit/f79d0b2ba155e492e5f5e1f3b3a33830bc41cf94))
+
 ## [4.69.0](https://github.com/taiga-family/taiga-ui/compare/v4.68.0...v4.69.0) (2026-02-02)
 
 ### 🚀 Features
