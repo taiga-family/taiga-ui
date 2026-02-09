@@ -7,8 +7,12 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {provideTaiga} from '@taiga-ui/core';
-import {type TuiKeySteps, TuiSlider, TuiSliderComponent} from '@taiga-ui/kit';
+import {
+    provideTaiga,
+    type TuiKeySteps,
+    TuiSlider,
+    TuiSliderComponent,
+} from '@taiga-ui/core';
 
 describe('TuiSliderKeyStepsDirective', () => {
     @Component({

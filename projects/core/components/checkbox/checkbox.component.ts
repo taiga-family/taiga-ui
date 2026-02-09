@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/core/components/radio';
 import {tuiIconEnd, TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 import {TUI_CHECKBOX_OPTIONS, type TuiCheckboxOptions} from './checkbox.options';
 

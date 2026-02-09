@@ -2,6 +2,10 @@ import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/cor
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
+    TuiCheckbox,
+    tuiCheckboxOptionsProvider,
+} from '@taiga-ui/core/components/checkbox';
+import {
     TuiDataListComponent,
     TuiOptionWithValue,
 } from '@taiga-ui/core/components/data-list';
@@ -10,7 +14,6 @@ import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
-import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
 @Component({

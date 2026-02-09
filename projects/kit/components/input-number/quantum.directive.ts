@@ -1,8 +1,8 @@
 import {Directive, input} from '@angular/core';
 import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiIsSafeToRound, tuiRound} from '@taiga-ui/cdk/utils/math';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/core/components/slider';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 import {identity} from 'rxjs';
 
 @Directive()

@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInput, TuiLabel} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiInput, TuiLabel} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({

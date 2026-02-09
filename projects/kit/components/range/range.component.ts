@@ -17,7 +17,7 @@ import {
     tuiPercentageToKeyStepValue,
     TuiSlider,
     TuiSliderComponent,
-} from '@taiga-ui/kit/components/slider';
+} from '@taiga-ui/core/components/slider';
 
 import {TuiRangeChange} from './range-change.directive';
 

@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiKeySteps} from '@taiga-ui/core';
+import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiInputSlider],

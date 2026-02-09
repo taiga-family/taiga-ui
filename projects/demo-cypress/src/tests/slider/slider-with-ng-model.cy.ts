@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiRoot} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiRoot, TuiSlider} from '@taiga-ui/core';
 
 describe('Slider | With [(ngModel)]', () => {
     @Component({

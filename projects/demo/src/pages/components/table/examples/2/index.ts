@@ -6,6 +6,7 @@ import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
 import {
     TuiButton,
     TuiCell,
+    TuiCheckbox,
     TuiDropdown,
     TuiIcon,
     TuiLink,
@@ -15,7 +16,6 @@ import {
     TuiAutoColorPipe,
     TuiAvatar,
     TuiBadge,
-    TuiCheckbox,
     TuiChip,
     TuiInitialsPipe,
     TuiItemsWithMore,

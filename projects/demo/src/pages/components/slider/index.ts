@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
-import {TuiTitle} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiSlider, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiSlider, TuiTitle],

@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiLabel} from '@taiga-ui/core';
-import {TuiRadio} from '@taiga-ui/kit';
+import {TuiButton, TuiLabel, TuiRadio} from '@taiga-ui/core';
 
 interface TestValue {
     test: string;

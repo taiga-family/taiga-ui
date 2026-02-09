@@ -8,8 +8,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
-import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiNumberFormat, TuiTitle} from '@taiga-ui/core';
+import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
     imports: [
