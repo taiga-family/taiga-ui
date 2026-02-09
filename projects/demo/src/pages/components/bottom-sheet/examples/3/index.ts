@@ -3,8 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiAccordion, TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox} from '@taiga-ui/core';
+import {TuiAccordion, TuiBlock} from '@taiga-ui/kit';
 
 @Component({
     imports: [

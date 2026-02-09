@@ -13,12 +13,12 @@ import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiRadio} from '@taiga-ui/core/components/radio';
 import {
     TUI_ITEMS_HANDLERS,
     TuiWithItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiSizeS} from '@taiga-ui/core/types';
-import {TuiRadio} from '@taiga-ui/kit/components/radio';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});

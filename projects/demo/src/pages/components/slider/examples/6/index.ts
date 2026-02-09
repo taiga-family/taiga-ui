@@ -4,8 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiButton, TuiHint, TuiSlider} from '@taiga-ui/core';
 import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from 'rxjs';
 
 @Component({

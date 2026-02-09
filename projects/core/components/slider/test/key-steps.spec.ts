@@ -2,7 +2,7 @@ import {
     type TuiKeySteps,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/core';
 
 describe('KeySteps utils', () => {
     const keySteps: TuiKeySteps = [

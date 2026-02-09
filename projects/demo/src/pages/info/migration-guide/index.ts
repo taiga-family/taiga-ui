@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_VERSION} from '@taiga-ui/cdk';
-import {TuiLabel, TuiNotification} from '@taiga-ui/core';
-import {TuiAccordion, TuiBadge, TuiCheckbox} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiLabel, TuiNotification} from '@taiga-ui/core';
+import {TuiAccordion, TuiBadge} from '@taiga-ui/kit';
 
 import {TuiAccordionTarget} from './target';
 

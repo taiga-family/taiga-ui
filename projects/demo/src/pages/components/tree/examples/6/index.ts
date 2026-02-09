@@ -3,8 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiHandler, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiLabel} from '@taiga-ui/core';
-import {TuiCheckbox, TuiTree} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiLabel} from '@taiga-ui/core';
+import {TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];

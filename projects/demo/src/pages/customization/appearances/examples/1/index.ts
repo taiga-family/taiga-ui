@@ -7,11 +7,12 @@ import {
 import {FormsModule} from '@angular/forms';
 import {
     TuiButton,
+    TuiCheckbox,
     tuiButtonOptionsProvider,
+    tuiCheckboxOptionsProvider,
     TuiInput,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
-import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-wrapper-example-1',

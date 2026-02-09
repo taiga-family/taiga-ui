@@ -12,6 +12,7 @@ import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiSliderComponent} from '@taiga-ui/core/components/slider';
 import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
@@ -19,7 +20,6 @@ import {
     TuiNumberMask,
     TuiQuantumValueTransformer,
 } from '@taiga-ui/kit/components/input-number';
-import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent, switchMap, tap} from 'rxjs';
 
 @Component({

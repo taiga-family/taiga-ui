@@ -4,7 +4,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/core/components/slider';
 import {map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRange} from './range.component';

@@ -5,16 +5,17 @@ import {TuiCurrency, TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCheckbox,
     TuiError,
     TuiGroup,
     TuiIcon,
     TuiInput,
     TuiLabel,
+    TuiRadio,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
     TuiBlock,
-    TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
     TuiInputDate,
@@ -22,7 +23,6 @@ import {
     TuiInputPhone,
     TuiInputSlider,
     TuiPassword,
-    TuiRadio,
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';

@@ -16,6 +16,7 @@ import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {type TuiKeySteps} from '@taiga-ui/core/components/slider';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TUI_INPUT_NUMBER_OPTIONS,
@@ -24,7 +25,6 @@ import {
     TuiQuantumValueTransformerBase,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiRange} from '@taiga-ui/kit/components/range';
-import {type TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     type PolymorpheusContent,
     PolymorpheusOutlet,

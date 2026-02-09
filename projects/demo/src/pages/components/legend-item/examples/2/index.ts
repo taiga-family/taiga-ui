@@ -5,12 +5,12 @@ import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiSum} from '@taiga-ui/cdk';
 import {
+    TuiCheckbox,
     tuiFormatNumber,
     TuiIcon,
     TuiNotification,
     TuiNotificationService,
 } from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     imports: [

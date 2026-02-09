@@ -3,8 +3,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {type TuiSizeS} from '@taiga-ui/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiCheckbox, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiCheckbox, TuiPlatform],
