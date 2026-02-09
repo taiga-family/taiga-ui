@@ -6741,7 +6741,7 @@ export default class Example {
 ### LESS
 
 ```less
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .carousel {
     margin: 0 2.5rem;
@@ -11491,7 +11491,7 @@ export default class Page {
 ### LESS
 
 ```less
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .tooltip {
     position: relative;
@@ -14401,7 +14401,7 @@ export default class PageComponent {
 ### LESS
 
 ```less
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .form {
     display: flex;
@@ -18760,7 +18760,7 @@ export default class PageComponent {
 ### LESS
 
 ```less
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .item {
     display: flex;
@@ -26967,7 +26967,7 @@ export default class Page {
 ### LESS
 
 ```less
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .api-progress {
     inline-size: 50%;
@@ -35526,7 +35526,7 @@ export default class Page {
 ### LESS
 
 ```less
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .tiles {
     inline-size: 10rem;
@@ -36697,7 +36697,7 @@ export default class Page {
 ### LESS
 
 ```less
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .description-header {
     font: var(--tui-font-body-l);
