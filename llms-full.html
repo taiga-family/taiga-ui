@@ -7381,7 +7381,7 @@ export class Example {}
 ```html
 &lt;div tuiPlatform=&quot;web&quot;&gt;
 &lt;h4&gt;Desktop&lt;/h4&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt;Header&lt;/h2&gt;
 &lt;/header&gt;
@@ -7390,7 +7390,7 @@ export class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/div&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge class=&quot;tui-space_top-4&quot; &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; class=&quot;tui-space_top-4&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt;Header&lt;/h2&gt;
 &lt;aside tuiAccessories&gt;
@@ -7402,7 +7402,7 @@ export class Example {}
 &lt;/div&gt;
 &lt;div tuiPlatform=&quot;ios&quot;&gt;
 &lt;h4&gt;iOS/Android&lt;/h4&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt;Header&lt;/h2&gt;
 &lt;aside tuiAccessories&gt;
@@ -7414,7 +7414,7 @@ export class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/div&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge class=&quot;tui-space_top-4&quot; &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; class=&quot;tui-space_top-4&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt;Header&lt;/h2&gt;
 &lt;aside tuiAccessories&gt;
@@ -7431,20 +7431,20 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiLink, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiLink, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiBadge} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
-        TuiAppearance,
         TuiBadge,
         TuiButton,
         TuiCardLarge,
         TuiHeader,
         TuiLink,
         TuiPlatform,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -7500,7 +7500,7 @@ export default class Example {}
 ```html
 &lt;div tuiPlatform=&quot;ios&quot;&gt;
 &lt;h4&gt;iOS/Android&lt;/h4&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;compact&quot; tuiCell &gt;
+&lt;div tuiCardLarge=&quot;compact&quot; tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.star&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;div tuiFade tuiFadeHeight=&quot;1.2rem&quot; tuiFadeOffset=&quot;1.5em&quot; tuiFadeSize=&quot;1.5em&quot; [style.block-size.rem]=&quot;2.5&quot; &gt; Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. &lt;/div&gt;
@@ -7518,22 +7518,21 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiButtonClose, TuiFade} from &#039;@taiga-ui/kit&#039;;
-import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiButtonClose,
         TuiCardLarge,
         TuiCell,
         TuiFade,
-        TuiHeader,
         TuiPlatform,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -7550,7 +7549,7 @@ export default class Example {}
 ```html
 &lt;div tuiPlatform=&quot;web&quot;&gt;
 &lt;h4&gt;Desktop&lt;/h4&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;normal&quot; &gt;
+&lt;div tuiCardLarge=&quot;normal&quot; tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt; Normal &lt;span tuiSubtitle&gt;Radius: 24, padding: 24&lt;/span&gt;
 &lt;/h2&gt;
@@ -7571,7 +7570,7 @@ export default class Example {}
 &lt;/div&gt;
 &lt;div tuiPlatform=&quot;ios&quot;&gt;
 &lt;h4&gt;iOS/Android&lt;/h4&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;normal&quot; &gt;
+&lt;div tuiCardLarge=&quot;normal&quot; tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader=&quot;xs&quot;&gt;
 &lt;h2 tuiTitle&gt; Normal &lt;span tuiSubtitle&gt;Radius: 24, padding: 20&lt;/span&gt;
 &lt;/h2&gt;
@@ -7580,7 +7579,7 @@ export default class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/div&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;compact&quot; class=&quot;tui-space_top-4&quot; &gt;
+&lt;div tuiCardLarge=&quot;compact&quot; tuiSurface=&quot;floating&quot; class=&quot;tui-space_top-4&quot; &gt;
 &lt;header tuiHeader=&quot;xs&quot;&gt;
 &lt;h2 tuiTitle&gt; Compact &lt;span tuiSubtitle&gt;Radius: 16, padding: 16&lt;/span&gt;
 &lt;/h2&gt;
@@ -7597,12 +7596,20 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAppearance, TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [TuiAppearance, TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
+    imports: [
+        TuiAppearance,
+        TuiButton,
+        TuiCardLarge,
+        TuiHeader,
+        TuiPlatform,
+        TuiSurface,
+        TuiTitle,
+    ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -7614,7 +7621,7 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
@@ -7632,12 +7639,12 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [TuiAppearance, TuiButton, TuiCardLarge, TuiHeader, TuiTitle],
+    imports: [TuiButton, TuiCardLarge, TuiHeader, TuiSurface, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -7650,7 +7657,7 @@ export default class Example {}
 **Template:**
 ```html
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;step.set(step() || 1)&quot; &gt; Show popover &lt;/button&gt;
-&lt;div *tuiPopup=&quot;!!step()&quot; tuiAnimated tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;compact&quot; class=&quot;popover&quot; &gt;
+&lt;div *tuiPopup=&quot;!!step()&quot; tuiAnimated tuiCardLarge=&quot;compact&quot; tuiSurface=&quot;floating&quot; class=&quot;popover&quot; &gt;
 &lt;ng-container *ngIf=&quot;step() === 1&quot;&gt;
 &lt;h1 tuiTitle&gt; Leave your feedback &lt;span tuiSubtitle&gt;It will only take 3 minutes&lt;/span&gt;
 &lt;/h1&gt;
@@ -7677,7 +7684,7 @@ import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAnimated, TuiAutoFocus} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiPopup, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiPopup, TuiSurface, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiRating, TuiTextarea} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge} from &#039;@taiga-ui/layout&#039;;
 
@@ -7687,12 +7694,12 @@ import {TuiCardLarge} from &#039;@taiga-ui/layout&#039;;
         FormsModule,
         NgIf,
         TuiAnimated,
-        TuiAppearance,
         TuiAutoFocus,
         TuiButton,
         TuiCardLarge,
         TuiPopup,
         TuiRating,
+        TuiSurface,
         TuiTextarea,
         TuiTextfield,
         TuiTitle,
@@ -7721,7 +7728,7 @@ export default class Example {
 ```html
 &lt;div tuiPlatform=&quot;web&quot;&gt;
 &lt;h4&gt;Desktop&lt;/h4&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
@@ -7736,7 +7743,7 @@ export default class Example {
 &lt;/div&gt;
 &lt;div tuiPlatform=&quot;ios&quot;&gt;
 &lt;h4&gt;iOS/Android&lt;/h4&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;div tuiHeader&gt;
 &lt;h2 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h2&gt;
@@ -7756,21 +7763,13 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAppearance,
-        TuiAvatar,
-        TuiButton,
-        TuiCardLarge,
-        TuiHeader,
-        TuiPlatform,
-        TuiTitle,
-    ],
+    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -7842,7 +7841,7 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
@@ -7865,7 +7864,7 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAppearance, TuiButton, TuiIcon, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
@@ -7878,6 +7877,7 @@ import {TuiCardLarge, TuiCardMedium, TuiHeader} from &#039;@taiga-ui/layout&#039
         TuiHeader,
         TuiIcon,
         TuiRepeatTimes,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -7892,7 +7892,7 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
@@ -7940,7 +7940,7 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
@@ -7963,20 +7963,20 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
         TuiCell,
         TuiHeader,
         TuiRepeatTimes,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -7991,7 +7991,7 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
@@ -8028,6 +8028,7 @@ import {
     TuiDropdown,
     TuiIcon,
     TuiLink,
+    TuiSurface,
     TuiTitle,
 } from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
@@ -8047,6 +8048,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         TuiIcon,
         TuiLink,
         TuiRepeatTimes,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -8061,14 +8063,14 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;div *tuiRepeatTimes=&quot;let index of 3&quot; tuiCell=&quot;l&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.star&quot; /&gt;
 &lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;div tuiCell=&quot;l&quot;&gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.star&quot; /&gt;
 &lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
@@ -8083,19 +8085,19 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
         TuiCell,
         TuiRepeatTimes,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -8110,7 +8112,7 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt;Title&lt;/h2&gt;
 &lt;/header&gt;
@@ -8123,7 +8125,7 @@ export default class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/div&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt;Title&lt;/h2&gt;
 &lt;/header&gt; Some text &lt;footer&gt;
@@ -8136,19 +8138,19 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
         TuiCell,
         TuiHeader,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -8281,12 +8283,12 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardMedium &gt;
+&lt;div tuiCardMedium tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-icon icon=&quot;@tui.square-plus&quot; class=&quot;plus&quot; /&gt;
 &lt;h2 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h2&gt;
 &lt;/div&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardMedium &gt;
+&lt;div tuiCardMedium tuiSurface=&quot;floating&quot; &gt;
 &lt;h2 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h2&gt;
 &lt;tui-icon icon=&quot;@tui.square-plus&quot; class=&quot;plus&quot; /&gt;
@@ -8297,12 +8299,12 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAppearance, TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiIcon, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiCardMedium} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [TuiAppearance, TuiCardMedium, TuiIcon, TuiTitle],
+    imports: [TuiCardMedium, TuiIcon, TuiSurface, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
     encapsulation,
@@ -8352,14 +8354,14 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardMedium &gt;
+&lt;div tuiCardMedium tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar-stack direction=&quot;left&quot;&gt;
 &lt;tui-avatar *ngFor=&quot;let url of urls&quot; size=&quot;s&quot; [src]=&quot;url | tuiFallbackSrc: &#039;@tui.user&#039; | async&quot; [style.background]=&quot;url | tuiAutoColor&quot; /&gt;
 &lt;/tui-avatar-stack&gt;
 &lt;h2 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h2&gt;
 &lt;/div&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardMedium &gt;
+&lt;div tuiCardMedium tuiSurface=&quot;floating&quot; &gt;
 &lt;h2 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h2&gt;
 &lt;tui-avatar-stack direction=&quot;left&quot;&gt;
@@ -8373,12 +8375,7 @@ import {AsyncPipe, NgForOf} from &#039;@angular/common&#039;;
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {
-    TuiAppearance,
-    TuiAutoColorPipe,
-    TuiFallbackSrcPipe,
-    TuiTitle,
-} from &#039;@taiga-ui/core&#039;;
+import {TuiAutoColorPipe, TuiFallbackSrcPipe, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiAvatarStack} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardMedium} from &#039;@taiga-ui/layout&#039;;
 
@@ -8387,12 +8384,12 @@ import {TuiCardMedium} from &#039;@taiga-ui/layout&#039;;
     imports: [
         AsyncPipe,
         NgForOf,
-        TuiAppearance,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiAvatarStack,
         TuiCardMedium,
         TuiFallbackSrcPipe,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -9410,7 +9407,7 @@ export default class Example {
 ```html
 &lt;tui-notification&gt; Don&#039;t forget import &lt;code&gt;TuiCardLarge&lt;/code&gt;
 &lt;/tui-notification&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;h3 tuiTitle=&quot;m&quot;&gt;Inside a block&lt;/h3&gt;
 &lt;button *ngFor=&quot;let item of items&quot; tuiCell type=&quot;button&quot; &gt;
 &lt;tui-avatar appearance=&quot;accent&quot; [src]=&quot;item.icon&quot; /&gt;
@@ -9438,7 +9435,7 @@ import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAppearance, TuiNotification, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiNotification, TuiSurface, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiChevron, TuiDataListWrapper, TuiSelect} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
 
@@ -9447,7 +9444,6 @@ import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
     imports: [
         FormsModule,
         NgFor,
-        TuiAppearance,
         TuiAvatar,
         TuiCardLarge,
         TuiCell,
@@ -9455,6 +9451,7 @@ import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
         TuiDataListWrapper,
         TuiNotification,
         TuiSelect,
+        TuiSurface,
         TuiTextfield,
         TuiTitle,
     ],
@@ -9492,7 +9489,7 @@ export default class Example {
 ```html
 &lt;tui-notification&gt; Can be attached as host directive: &lt;code&gt;hostDirectives: [TuiConnected]&lt;/code&gt;
 &lt;/tui-notification&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiConnected &gt;
+&lt;div tuiCardLarge tuiConnected tuiSurface=&quot;floating&quot; &gt;
 &lt;h3 tuiTitle=&quot;m&quot;&gt;Inside a block&lt;/h3&gt;
 &lt;button *ngFor=&quot;let item of items&quot; tuiCell type=&quot;button&quot; &gt;
 &lt;tui-avatar appearance=&quot;accent&quot; [src]=&quot;item.icon&quot; /&gt;
@@ -9538,7 +9535,7 @@ import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAppearance, TuiIcon, TuiNotification, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiIcon, TuiNotification, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {
     TuiAvatar,
     TuiBadge,
@@ -9555,7 +9552,6 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from &#039;@taiga-ui/lega
     imports: [
         FormsModule,
         NgFor,
-        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiBadgedContent,
@@ -9566,6 +9562,7 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from &#039;@taiga-ui/lega
         TuiIcon,
         TuiNotification,
         TuiSelectModule,
+        TuiSurface,
         TuiSwitch,
         TuiTextfieldControllerModule,
         TuiTitle,
@@ -15557,7 +15554,7 @@ export default class Example {
 &lt;button appearance=&quot;accent&quot; tuiButton type=&quot;button&quot; &gt; Main action &lt;/button&gt;
 &lt;/footer&gt;
 &lt;footer *ngIf=&quot;value === &#039;card&#039;&quot; tuiFloatingContainer=&quot;transparent&quot; @tuiSlideInTop &gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;compact&quot; [style.margin-block-end.rem]=&quot;0.5&quot; &gt;
+&lt;div tuiCardLarge=&quot;compact&quot; tuiSurface=&quot;floating&quot; [style.margin-block-end.rem]=&quot;0.5&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;div tuiTitle&gt; 1000 $ &lt;div tuiSubtitle&gt;With price&lt;/div&gt;
 &lt;/div&gt;
@@ -15581,13 +15578,7 @@ import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
-import {
-    TuiAppearance,
-    TuiButton,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiLabel, tuiSlideInTop, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiFloatingContainer, TuiRadio} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
@@ -15596,7 +15587,6 @@ import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
     imports: [
         FormsModule,
         NgIf,
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
@@ -15606,6 +15596,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         TuiLabel,
         TuiRadio,
         TuiRepeatTimes,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -16253,7 +16244,7 @@ export default class Example {
 &lt;/ng-container&gt;
 &lt;ng-container [ngSwitch]=&quot;index()&quot;&gt;
 &lt;ng-container *ngSwitchCase=&quot;0&quot;&gt;
-&lt;form tuiAppearance=&quot;floating&quot; tuiCardLarge tuiForm=&quot;m&quot; [formGroup]=&quot;form&quot; &gt;
+&lt;form tuiCardLarge tuiForm=&quot;m&quot; tuiSurface=&quot;floating&quot; [formGroup]=&quot;form&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt; Registration form &lt;span tuiSubtitle&gt;Tell us about yourself&lt;/span&gt;
 &lt;/h2&gt;
@@ -16269,7 +16260,7 @@ export default class Example {
 &lt;/footer&gt;
 &lt;/ng-container&gt;
 &lt;ng-container *ngSwitchCase=&quot;1&quot;&gt;
-&lt;form tuiAppearance=&quot;floating&quot; tuiCardLarge tuiForm=&quot;m&quot; [formGroup]=&quot;form&quot; &gt;
+&lt;form tuiCardLarge tuiForm=&quot;m&quot; tuiSurface=&quot;floating&quot; [formGroup]=&quot;form&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt; Configuration network &lt;span tuiSubtitle&gt;Fill network settings&lt;/span&gt;
 &lt;/h2&gt;
@@ -16292,7 +16283,7 @@ import {NgSwitch, NgSwitchCase} from &#039;@angular/common&#039;;
 import {Component, signal} from &#039;@angular/core&#039;;
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
-import {TuiAppearance, TuiButton, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiSegmented, TuiStepper, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
@@ -16302,13 +16293,13 @@ import {TuiCardLarge, TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         NgSwitch,
         NgSwitchCase,
         ReactiveFormsModule,
-        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiForm,
         TuiHeader,
         TuiSegmented,
         TuiStepper,
+        TuiSurface,
         TuiTabs,
         TuiTextfield,
         TuiTitle,
@@ -30306,7 +30297,7 @@ export default class Example {
 &lt;/footer&gt;
 &lt;/aside&gt;
 &lt;main tuiNavigationMain&gt;
-&lt;div *tuiRepeatTimes=&quot;let index of 10&quot; tuiAppearance=&quot;floating&quot; tuiCardLarge tuiHeader &gt;
+&lt;div *tuiRepeatTimes=&quot;let index of 10&quot; tuiCardLarge tuiHeader tuiSurface=&quot;floating&quot; &gt;
 &lt;h2 tuiTitle&gt; Some random content &lt;span tuiSubtitle&gt;A subtitle&lt;/span&gt;
 &lt;/h2&gt;
 &lt;/div&gt;
@@ -30319,7 +30310,7 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {tuiAsPortal, TuiPortals, TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiDropdownService, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiDropdownService, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiChevron, TuiFade} from &#039;@taiga-ui/kit&#039;;
 import {
     TuiCardLarge,
@@ -30331,7 +30322,6 @@ import {
 @Component({
     standalone: true,
     imports: [
-        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiChevron,
@@ -30339,6 +30329,7 @@ import {
         TuiHeader,
         TuiNavigation,
         TuiRepeatTimes,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -37571,7 +37562,7 @@ export default class Example {
 &lt;/tui-stepper&gt;
 &lt;section [tuiSlides]=&quot;direction&quot;&gt;
 &lt;ng-container *ngFor=&quot;let form of forms; let i = index&quot;&gt;
-&lt;form *ngIf=&quot;i === index&quot; tuiAppearance=&quot;floating&quot; tuiCardLarge tuiForm [formGroup]=&quot;form&quot; [id]=&quot;&#039;form_&#039; + i&quot; (ngSubmit)=&quot;onSubmit()&quot; &gt;
+&lt;form *ngIf=&quot;i === index&quot; tuiCardLarge tuiForm tuiSurface=&quot;floating&quot; [formGroup]=&quot;form&quot; [id]=&quot;&#039;form_&#039; + i&quot; (ngSubmit)=&quot;onSubmit()&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt; Registration form &lt;span tuiSubtitle&gt;Tell us about yourself&lt;/span&gt;
 &lt;/h2&gt;
@@ -37596,7 +37587,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from &#039;@ang
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiSlides, TuiStepper} from &#039;@taiga-ui/kit&#039;;
 import {TuiCard, TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
@@ -37607,7 +37598,6 @@ import {TuiCard, TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         NgForOf,
         NgIf,
         ReactiveFormsModule,
-        TuiAppearance,
         TuiAutoFocus,
         TuiButton,
         TuiCard,
@@ -37615,6 +37605,7 @@ import {TuiCard, TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         TuiHeader,
         TuiSlides,
         TuiStepper,
+        TuiSurface,
         TuiTextfield,
         TuiTitle,
     ],
@@ -37736,7 +37727,7 @@ export default class Example {
 &lt;/div&gt;
 &lt;/section&gt;
 &lt;/div&gt;
-&lt;div *ngSwitchCase=&quot;3&quot; tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;div *ngSwitchCase=&quot;3&quot; tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
@@ -37762,7 +37753,7 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiSheetDialogService} from &#039;@taiga-ui/addon-mobile&#039;;
 import {TUI_IS_MOBILE, TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiDialogService} from &#039;@taiga-ui/experimental&#039;;
 import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from &#039;@taiga-ui/kit&#039;;
 import {TuiAppBar, TuiCard, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
@@ -37774,7 +37765,6 @@ import {TuiAppBar, TuiCard, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039
         NgSwitch,
         NgSwitchCase,
         TuiAppBar,
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCard,
@@ -37784,6 +37774,7 @@ import {TuiAppBar, TuiCard, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039
         TuiProgressBar,
         TuiRepeatTimes,
         TuiSlides,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -38619,7 +38610,7 @@ export class Example {}
 **Template:**
 ```html
 &lt;tui-swipe-actions&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;div tuiCardLarge tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.dollar-sign&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;strong&gt;{{ 10000 | tuiAmount: &#039;USD&#039; | async }}&lt;/strong&gt;
@@ -38631,7 +38622,7 @@ export class Example {}
 &lt;button appearance=&quot;secondary&quot; iconStart=&quot;@tui.share&quot; size=&quot;m&quot; tuiIconButton tuiSwipeAction type=&quot;button&quot; &gt; Share &lt;/button&gt;
 &lt;/tui-swipe-actions&gt;
 &lt;tui-swipe-actions&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;div tuiCardLarge tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.gift&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;strong&gt;{{ 23000 | tuiAmount: &#039;EUR&#039; | async }}&lt;/strong&gt;
@@ -38641,7 +38632,7 @@ export class Example {}
 &lt;button iconStart=&quot;@tui.eye&quot; size=&quot;m&quot; tuiIconButton tuiSwipeAction type=&quot;button&quot; &gt; Show &lt;/button&gt;
 &lt;/tui-swipe-actions&gt;
 &lt;tui-swipe-actions [style.--tui-action-gap]=&quot;16&quot; [style.--tui-item-size]=&quot;32&quot; &gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;div tuiCardLarge tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.briefcase&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;strong&gt;{{ 5000 | tuiAmount: &#039;EUR&#039; | async }}&lt;/strong&gt;
@@ -38662,7 +38653,7 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
 import {TuiSwipeActions} from &#039;@taiga-ui/addon-mobile&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAppearance, TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
 
@@ -38676,6 +38667,7 @@ import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
         TuiButton,
         TuiCardLarge,
         TuiCell,
+        TuiSurface,
         TuiSwipeActions,
         TuiTitle,
     ],
@@ -38737,7 +38729,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;tui-swipe-actions [autoClose]=&quot;true&quot;&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;div tuiCardLarge tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.dollar-sign&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;strong&gt;{{ 10000 | tuiAmount: &#039;USD&#039; | async }}&lt;/strong&gt;
@@ -38749,7 +38741,7 @@ export default class Example {
 &lt;button appearance=&quot;secondary&quot; iconStart=&quot;@tui.share&quot; size=&quot;m&quot; tuiIconButton tuiSwipeAction type=&quot;button&quot; &gt; Share &lt;/button&gt;
 &lt;/tui-swipe-actions&gt;
 &lt;tui-swipe-actions [autoClose]=&quot;true&quot;&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;div tuiCardLarge tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.gift&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;strong&gt;{{ 23000 | tuiAmount: &#039;EUR&#039; | async }}&lt;/strong&gt;
@@ -38769,7 +38761,7 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
 import {TuiSwipeActions, TuiSwipeActionsAutoClose} from &#039;@taiga-ui/addon-mobile&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
 
@@ -38778,11 +38770,11 @@ import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
     imports: [
         AsyncPipe,
         TuiAmountPipe,
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
         TuiCell,
+        TuiSurface,
         TuiSwipeActions,
         TuiSwipeActionsAutoClose,
         TuiTitle,
@@ -38800,7 +38792,7 @@ export default class Example {}
 **Template:**
 ```html
 &lt;tui-swipe-actions&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;div tuiCardLarge tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.dollar-sign&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;strong&gt;{{ 10000 | tuiAmount: &#039;USD&#039; | async }}&lt;/strong&gt;
@@ -38824,7 +38816,7 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
 import {TuiSwipeActions} from &#039;@taiga-ui/addon-mobile&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiCheckbox} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
 
@@ -38835,12 +38827,12 @@ import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
         FormsModule,
         NgIf,
         TuiAmountPipe,
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
         TuiCell,
         TuiCheckbox,
+        TuiSurface,
         TuiSwipeActions,
         TuiTitle,
     ],
@@ -38860,7 +38852,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;tui-swipe-actions&gt;
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;div tuiCardLarge tuiCell tuiSurface=&quot;floating&quot; &gt;
 &lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.dollar-sign&quot; /&gt;
 &lt;div tuiTitle&gt;
 &lt;strong&gt;{{ 10000 | tuiAmount: &#039;USD&#039; | async }}&lt;/strong&gt;
@@ -38886,15 +38878,74 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
 import {TuiSwipeActions} from &#039;@taiga-ui/addon-mobile&#039;;
-import {
-    TuiAppearance,
-    TuiButton,
-    TuiDataList,
-    TuiDropdown,
-    TuiTitle,
-} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiDataList, TuiDropdown, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        AsyncPipe,
+        TuiAmountPipe,
+        TuiAvatar,
+        TuiButton,
+        TuiCardLarge,
+        TuiCell,
+        TuiDataList,
+        TuiDropdown,
+        TuiSurface,
+        TuiSwipeActions,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Onboarding
+
+**Template:**
+```html
+&lt;div&gt;
+&lt;button appearance=&quot;secondary-grayscale&quot; iconEnd=&quot;@tui.play&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; [disabled]=&quot;onboarding&quot; (click)=&quot;onboarding = true&quot; &gt; Play &lt;/button&gt;
+&lt;/div&gt;
+&lt;tui-swipe-actions [(onboarding)]=&quot;onboarding&quot;&gt;
+&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.dollar-sign&quot; /&gt;
+&lt;div tuiTitle&gt;
+&lt;strong&gt;{{ 10000 | tuiAmount: &#039;USD&#039; | async }}&lt;/strong&gt;
+&lt;div tuiSubtitle&gt;Dollar account&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;button iconStart=&quot;@tui.eye&quot; size=&quot;m&quot; tuiIconButton tuiSwipeAction type=&quot;button&quot; &gt; Show &lt;/button&gt;
+&lt;button iconStart=&quot;@tui.pencil-line&quot; size=&quot;m&quot; tuiIconButton tuiSwipeAction type=&quot;button&quot; &gt; Edit &lt;/button&gt;
+&lt;button appearance=&quot;secondary&quot; iconStart=&quot;@tui.share&quot; size=&quot;m&quot; tuiIconButton tuiSwipeAction type=&quot;button&quot; &gt; Share &lt;/button&gt;
+&lt;/tui-swipe-actions&gt;
+&lt;tui-swipe-actions [(onboarding)]=&quot;onboarding&quot;&gt;
+&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiCell &gt;
+&lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.gift&quot; /&gt;
+&lt;div tuiTitle&gt;
+&lt;strong&gt;{{ 23000 | tuiAmount: &#039;EUR&#039; | async }}&lt;/strong&gt;
+&lt;div tuiSubtitle&gt;Goal&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;button iconStart=&quot;@tui.eye&quot; size=&quot;m&quot; tuiIconButton tuiSwipeAction type=&quot;button&quot; &gt; Show &lt;/button&gt;
+&lt;/tui-swipe-actions&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiSwipeActions, TuiSwipeActionsOnboarding} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
+import {AsyncPipe} from &#039;@angular/common&#039;;
+import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
     standalone: true,
@@ -38906,9 +38957,8 @@ import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
         TuiButton,
         TuiCardLarge,
         TuiCell,
-        TuiDataList,
-        TuiDropdown,
         TuiSwipeActions,
+        TuiSwipeActionsOnboarding,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -38916,7 +38966,9 @@ import {TuiCardLarge, TuiCell} from &#039;@taiga-ui/layout&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected onboarding = false;
+}
 ```
 
 
@@ -38933,7 +38985,16 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        &#039;Basic&#039;,
+        &#039;Custom&#039;,
+        &#039;Autoclose&#039;,
+        &#039;Dynamic actions&#039;,
+        &#039;Fallback for desktop&#039;,
+        &#039;Onboarding&#039;,
+    ];
+}
 ```
 
 ---
@@ -49066,6 +49127,37 @@ import {TuiFade} from &#039;@taiga-ui/kit&#039;;
 export default class Example {}
 ```
 
+#### InputChip
+
+**Template:**
+```html
+&lt;tui-textfield multi tuiTextfieldSize=&quot;s&quot; &gt;
+&lt;input placeholder=&quot;Enter&quot; tuiInputChip [unique]=&quot;false&quot; [(ngModel)]=&quot;value&quot; /&gt;
+&lt;tui-input-chip *tuiItem /&gt;
+&lt;/tui-textfield&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {TuiInputChip} from &#039;@taiga-ui/kit&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiInputChip, TuiTextfield],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: string[] = [&#039;3&#039;, &#039;4&#039;, &#039;5&#039;, &#039;Compartmentalization&#039;];
+}
+```
+
 
 ### TypeScript
 
@@ -49083,7 +49175,13 @@ import {TuiFade} from &#039;@taiga-ui/kit&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Multiline&#039;, &#039;Vertical&#039;, &#039;Hyphens&#039;];
+    protected readonly examples = [
+        &#039;Basic&#039;,
+        &#039;Multiline&#039;,
+        &#039;Vertical&#039;,
+        &#039;Hyphens&#039;,
+        &#039;InputChip&#039;,
+    ];
 
     protected lineHeight = &#039;100%&#039;;
     protected size = &#039;1.5em&#039;;
@@ -51549,7 +51647,7 @@ export class Example {
 ### Example
 
 ```html
-&lt;section tuiAppearance=&quot;floating&quot; tuiCardLarge &gt;
+&lt;section tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;hgroup tuiTitle [tuiShimmer]=&quot;shimmer&quot; &gt;
 &lt;h5&gt;You got $237&amp;nbsp;000,42 left&lt;/h5&gt;
@@ -51760,7 +51858,7 @@ import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {TuiAppearance, TuiButton, TuiLink, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiLink, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiAvatarStack, TuiShimmer} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
@@ -51768,7 +51866,6 @@ import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
     standalone: true,
     imports: [
         FormsModule,
-        TuiAppearance,
         TuiAvatar,
         TuiAvatarStack,
         TuiButton,
@@ -51777,6 +51874,7 @@ import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         TuiHeader,
         TuiLink,
         TuiShimmer,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
