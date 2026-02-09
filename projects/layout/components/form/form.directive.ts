@@ -22,7 +22,7 @@ import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
 
-const HEADER_SIZE = {s: 'body-m', m: 'h6', l: 'h5'} as const;
+const HEADER_SIZE = {s: 'body-l', m: 'h6', l: 'h5'} as const;
 
 @Component({
     template: '',

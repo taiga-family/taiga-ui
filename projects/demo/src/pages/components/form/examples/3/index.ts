@@ -1,7 +1,7 @@
 import {Component, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiInput, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCheckbox, TuiInput, TuiTitle} from '@taiga-ui/core';
 import {TuiSegmented, TuiStepper, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
@@ -10,6 +10,7 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
         ReactiveFormsModule,
         TuiButton,
         TuiCardLarge,
+        TuiCheckbox,
         TuiForm,
         TuiHeader,
         TuiInput,
