@@ -1,6 +1,6 @@
+import {isPlatformBrowser} from '@angular/common';
 import {Directive, inject, PLATFORM_ID} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {isPlatformBrowser} from '@angular/common';
 
 @Directive({
     selector: '[tuiTransitioned]',
