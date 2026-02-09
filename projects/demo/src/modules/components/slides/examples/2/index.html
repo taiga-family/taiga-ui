@@ -10,9 +10,9 @@
     <ng-container *ngFor="let form of forms; let i = index">
         <form
             *ngIf="i === index"
-            tuiAppearance="floating"
             tuiCardLarge
             tuiForm
+            tuiSurface="floating"
             [formGroup]="form"
             [id]="'form_' + i"
             (ngSubmit)="onSubmit()"

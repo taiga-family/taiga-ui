@@ -136,18 +136,18 @@ input[tuiSurfaceLayer] {
 
 // TODO: Drop elevated and box-shadow/background-color
 [tuiSurface][data-surface='elevated'] {
-    box-shadow: var(--tui-shadow-small);
+    box-shadow: var(--tui-shadow-medium);
     background-color: var(--tui-background-elevation-2);
 
     .interactive({
         &:active {
-            box-shadow: var(--tui-shadow-small);
+            box-shadow: var(--tui-shadow-medium);
             transform: scale(0.95);
         }
 
         @media @tui-mouse {
             &:hover {
-                box-shadow: var(--tui-shadow-small-hover);
+                box-shadow: var(--tui-shadow-medium-hover);
                 transform: translate3d(0, -0.25rem, 0);
                 background: var(--tui-background-elevation-2);
             }
@@ -174,16 +174,17 @@ input[tuiSurfaceLayer] {
 
 [tuiSurface][data-appearance='floating'] {
     background: var(--tui-background-elevation-1);
+    box-shadow: var(--tui-shadow-medium);
 
     .appearance-hover({
-        box-shadow: var(--tui-shadow-small-hover);
         transform: translate3d(0, -0.25rem, 0);
+        box-shadow: var(--tui-shadow-medium-hover);
     });
 
     .appearance-active({
-        box-shadow: var(--tui-shadow-small);
         transform: scale(0.95);
         background: var(--tui-background-elevation-1);
+        box-shadow: var(--tui-shadow-medium);
     });
 }
 
