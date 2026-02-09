@@ -8,8 +8,8 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
 import {
-    TuiLoader,
     type TuiKeySteps,
+    TuiLoader,
     TuiNumberFormat,
     TuiTextfield,
     TuiTitle,

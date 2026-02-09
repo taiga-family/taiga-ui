@@ -7,8 +7,8 @@ import {
 import {FormsModule} from '@angular/forms';
 import {
     TuiButton,
-    TuiCheckbox,
     tuiButtonOptionsProvider,
+    TuiCheckbox,
     tuiCheckboxOptionsProvider,
     TuiInput,
     tuiTextfieldOptionsProvider,
