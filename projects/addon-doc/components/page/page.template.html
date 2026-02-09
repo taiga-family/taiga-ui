@@ -29,7 +29,10 @@
                     </span>
                 }
             </h1>
-            <p class="t-navigation">
+            <p
+                tuiFade
+                class="t-navigation"
+            >
                 @if (tabConnectors().length > 1) {
                     <tui-segmented [(activeItemIndex)]="activeItemIndex">
                         @for (tab of tabConnectors(); track tab) {

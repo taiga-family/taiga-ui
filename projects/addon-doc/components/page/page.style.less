@@ -17,9 +17,12 @@
 }
 
 .t-navigation {
+    .scrollbar-hidden();
+
     display: flex;
     gap: 0.625rem;
     margin-block-start: 1rem;
+    overflow: auto;
 
     @media @tui-mobile {
         margin: 0.5rem 0 1rem;
