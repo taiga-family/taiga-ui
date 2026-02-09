@@ -3,13 +3,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
+    TuiCheckbox,
     TuiDataList,
     TuiRadio,
     TuiRoot,
     TuiTextfield,
 } from '@taiga-ui/core';
 import {
-    TuiCheckbox,
     TuiChevron,
     TuiFilterByInputPipe,
     TuiInputChip,
