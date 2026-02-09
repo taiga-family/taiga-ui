@@ -8,8 +8,7 @@ const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 const THRESHOLD = parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
 const MAX_DIFF_PIXEL_RATIO = parseFloat(process.env.PW_MAX_DIFF_PIXEL_RATIO ?? '');
 
-process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
-process.env['AXE_CONFIG'] = JSON.stringify({
+export const AXE_CONFIG = JSON.stringify({
     reporter: 'v2',
     rules: [
         {id: 'scrollable-region-focusable', enabled: false},
@@ -22,6 +21,9 @@ process.env['AXE_CONFIG'] = JSON.stringify({
         {id: 'empty-table-header', enabled: false},
     ],
 });
+
+process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
+process.env['AXE_CONFIG'] = AXE_CONFIG;
 
 const chromium = {
     name: 'chromium',
