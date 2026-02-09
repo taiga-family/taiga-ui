@@ -5,7 +5,8 @@
 <ng-content select="label" />
 <span
     class="t-content"
-    (pointerdown)="input?.nativeElement?.focus()"
+    (click)="input?.nativeElement?.focus()"
+    (pointerdown.zoneless.prevent)="(0)"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
@@ -19,7 +20,6 @@
         class="t-clear"
         [iconStart]="icons.close"
         (click)="accessor?.setValue(null)"
-        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
     >
         {{ clear() }}
     </button>
