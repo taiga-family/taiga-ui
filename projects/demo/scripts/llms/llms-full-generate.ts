@@ -327,7 +327,8 @@ async function main(): Promise<void> {
 
         const folders: string[] = [];
         const SKIP_FOLDERS = new Set(config.constants?.skipFolders);
-        const CHILD_FOLDERS = config.constants?.childFolders;
+        const rawChildFolders = config.constants?.childFolders;
+        const CHILD_FOLDERS = Array.isArray(rawChildFolders) ? rawChildFolders : [];
 
         async function fileExistsLocal(p: string): Promise<boolean> {
             try {
