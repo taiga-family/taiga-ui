@@ -19,15 +19,15 @@ export function tuiFontSizeWatcher(
             innerWidth = 0,
             outerWidth = 0,
             devicePixelRatio = 0,
-        } = iframe.contentDocument?.defaultView || {};
+        } = iframe.ownerDocument?.defaultView || {};
 
         iframe.width = `${innerWidth === outerWidth ? innerWidth : innerWidth / devicePixelRatio}`;
     };
 
-    iframe.contentDocument?.body.append(iframe);
-    iframe.contentDocument?.defaultView?.addEventListener('resize', resize);
+    iframe.ownerDocument?.body.append(iframe);
+    iframe.ownerDocument?.defaultView?.addEventListener('resize', resize);
 
-    const doc = iframe.contentWindow?.document;
+    const doc = iframe.contentDocument;
     const observer = new ResizeObserver(() => callback(doc?.body.offsetHeight || 0));
 
     Object.assign(iframe.style, IFRAME);
@@ -39,7 +39,7 @@ export function tuiFontSizeWatcher(
 
     return () => {
         observer.disconnect();
+        iframe.ownerDocument?.defaultView?.removeEventListener('resize', resize);
         iframe.remove();
-        iframe.contentDocument?.defaultView?.removeEventListener('resize', resize);
     };
 }
