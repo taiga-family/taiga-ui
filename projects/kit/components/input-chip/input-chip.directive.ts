@@ -78,8 +78,8 @@ export class TuiInputChipDirective<T>
         );
     }
 
-    protected onEnter(): void {
-        const value = this.textfield.value().trim();
+    protected onEnter(rawValue = this.textfield.value()): void {
+        const value = rawValue.trim();
         const items = this.separator() ? value.split(this.separator()) : [value];
 
         const valid = items
@@ -120,7 +120,7 @@ export class TuiInputChipDirective<T>
             input.nativeElement.value = value;
         }
 
-        this.onEnter();
+        this.onEnter(value);
     }
 
     protected onBackspace(key: string): void {
