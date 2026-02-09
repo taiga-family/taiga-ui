@@ -8,4 +8,13 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        'Basic',
+        'Custom',
+        'Autoclose',
+        'Dynamic actions',
+        'Fallback for desktop',
+        'Onboarding',
+    ];
+}
