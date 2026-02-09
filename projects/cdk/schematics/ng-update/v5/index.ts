@@ -17,11 +17,12 @@ import {
 } from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {runSteps} from '../../utils/run-steps';
-import {replaceIdentifiers} from '../steps/replace-identifier';
+import {replaceIdentifiers, showWarnings} from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceFunctions} from '../utils/replace-functions';
 import {REPLACE_FUNCTIONS} from './steps/constants/functions';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
+import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
 import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
@@ -52,6 +53,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateTemplates',
                     step: () => migrateTemplates(fileSystem, options),
+                },
+                {
+                    name: 'showWarnings',
+                    step: () => showWarnings(context, MIGRATION_WARNINGS),
                 },
             ],
             timings,
