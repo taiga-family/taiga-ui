@@ -1,14 +1,17 @@
-import {afterNextRender, Directive} from '@angular/core';
+import {Directive, inject, PLATFORM_ID} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {isPlatformBrowser} from '@angular/common';
 
 @Directive({
     selector: '[tuiTransitioned]',
     host: {'[style.transition]': '"none"'},
 })
 export class TuiTransitioned {
-    private readonly el = tuiInjectElement();
-
     constructor() {
-        afterNextRender(() => this.el.style.setProperty('transition', ''));
+        const el = tuiInjectElement();
+
+        if (isPlatformBrowser(inject(PLATFORM_ID))) {
+            requestAnimationFrame(() => el.style.setProperty('transition', ''));
+        }
     }
 }

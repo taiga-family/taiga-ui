@@ -12,6 +12,7 @@ import {TUI_DOC_DEFAULT_TABS, TUI_DOC_SUPPORT_LANGUAGE} from '@taiga-ui/addon-do
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
+import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {TuiAutoColorPipe} from '@taiga-ui/kit/pipes/auto-color';
 import {TuiHeader} from '@taiga-ui/layout/components/header';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -35,6 +36,7 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         TuiDocLanguageSwitcher,
         TuiDocSourceCode,
         TuiDocToc,
+        TuiFade,
         TuiHeader,
         TuiSegmented,
         TuiTitle,
