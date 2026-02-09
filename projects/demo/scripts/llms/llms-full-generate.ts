@@ -2,7 +2,6 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import {
-    extractRequiredDirectives,
     getAllFolders,
     getComponentApiFromTable,
     getComponentApiFromTemplates,
@@ -466,13 +465,6 @@ async function main(): Promise<void> {
             if (importExample) {
                 output.push(importExample);
             }
-        }
-
-        // Extract required directives from templates
-        const requiredDirectives = extractRequiredDirectives(content);
-
-        if (requiredDirectives) {
-            output.push(requiredDirectives);
         }
 
         if (getConfigValue(config.llmsFull.includeExamples)) {

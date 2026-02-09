@@ -14,7 +14,6 @@ export {
 // File system operations - exclude fileExists to avoid conflict
 export {
     extractExampleDescriptions,
-    extractRequiredDirectives,
     getAllFolders,
     getComponentApiFromTable,
     getComponentApiFromTemplates,
