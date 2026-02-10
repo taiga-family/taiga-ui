@@ -47,7 +47,7 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
             switchMap((control) =>
                 control.events.pipe(
                     startWith(null),
-                    map(() => control.touched && control.errors),
+                    map(() => !control.disabled && control.touched && control.errors),
                 ),
             ),
         ),
