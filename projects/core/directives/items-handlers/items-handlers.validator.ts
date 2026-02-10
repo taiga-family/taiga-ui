@@ -9,10 +9,16 @@ import {TuiItemsHandlersDirective} from './items-handlers.directive';
 @Directive({providers: [tuiProvide(NG_VALIDATORS, TuiItemsHandlersValidator, true)]})
 export class TuiItemsHandlersValidator extends TuiValidator {
     private readonly handlers = inject(TuiItemsHandlersDirective);
+    private initialized = false;
 
     protected readonly update = effect(() => {
         this.handlers.disabledItemHandler();
-        this.onChange();
+
+        if (this.initialized) {
+            this.onChange();
+        } else {
+            this.initialized = true;
+        }
     });
 
     public disabledItemHandler: TuiBooleanHandler<any> = (value) =>
