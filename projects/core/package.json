@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/core",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "Core library for creating Angular components and applications using Taiga UI",
     "keywords": [
         "angular",
@@ -26,11 +26,11 @@
         "@ng-web-apis/common": "^5.1.0",
         "@ng-web-apis/mutation-observer": "^5.1.0",
         "@ng-web-apis/platform": "^5.1.0",
-        "@taiga-ui/cdk": "^5.0.0-rc.2",
+        "@taiga-ui/cdk": "^5.0.0-rc.3",
         "@taiga-ui/event-plugins": "^5.0.0",
-        "@taiga-ui/i18n": "^5.0.0-rc.2",
+        "@taiga-ui/i18n": "^5.0.0-rc.3",
         "@taiga-ui/polymorpheus": "^5.0.0",
-        "@taiga-ui/styles": "^5.0.0-rc.2",
+        "@taiga-ui/styles": "^5.0.0-rc.3",
         "rxjs": ">=7.0.0",
         "tslib": ">=2.8.1"
     },

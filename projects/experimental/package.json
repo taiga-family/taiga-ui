@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/experimental",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "A package with Taiga UI experimental components",
     "keywords": [
         "angular",
@@ -16,11 +16,11 @@
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
-        "@taiga-ui/addon-commerce": "^5.0.0-rc.2",
-        "@taiga-ui/cdk": "^5.0.0-rc.2",
-        "@taiga-ui/core": "^5.0.0-rc.2",
-        "@taiga-ui/kit": "^5.0.0-rc.2",
-        "@taiga-ui/layout": "^5.0.0-rc.2",
+        "@taiga-ui/addon-commerce": "^5.0.0-rc.3",
+        "@taiga-ui/cdk": "^5.0.0-rc.3",
+        "@taiga-ui/core": "^5.0.0-rc.3",
+        "@taiga-ui/kit": "^5.0.0-rc.3",
+        "@taiga-ui/layout": "^5.0.0-rc.3",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "rxjs": ">=7.0.0",
         "tslib": ">=2.8.1"
