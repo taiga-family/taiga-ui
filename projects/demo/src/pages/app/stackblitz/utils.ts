@@ -4,7 +4,7 @@ import {isLess, isPrimaryComponentFile} from '../utils';
 
 export const prepareLess = (content: string): string =>
     content.replaceAll(
-        /@import.+taiga-ui-local(?:.less)?';/g,
+        /@import.+@taiga-ui\/styles\/utils(?:.less)?';/g,
         "@import '@taiga-ui/styles/utils.less';",
     );
 
