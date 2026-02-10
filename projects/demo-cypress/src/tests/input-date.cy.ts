@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
@@ -27,7 +27,6 @@ import {TuiInputDate} from '@taiga-ui/kit';
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestInputDate {
     protected readonly control = new FormControl(new TuiDay(2017, 0, 15));
