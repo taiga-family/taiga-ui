@@ -7,12 +7,7 @@ import {
     TuiDropdownSheet,
     TuiResponsiveDialog,
 } from '@taiga-ui/addon-mobile';
-import {
-    TuiButton,
-    TuiRoot,
-    TuiTextfield,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiRoot, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiChevron,
