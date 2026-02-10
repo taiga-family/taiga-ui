@@ -30,10 +30,7 @@
     <tbody tuiTbody>
         @for (item of data; track item) {
             <tr>
-                <td
-                    tuiTd
-                    [style.vertical-align]="'top'"
-                >
+                <td tuiTd>
                     {{ item.name }}
                 </td>
                 <td tuiTd>
@@ -50,6 +47,7 @@
                             placeholder="Value"
                             prefix="$"
                             tuiInputNumber
+                            [style.height.%]="100"
                             [(ngModel)]="item.balance"
                         />
                     </tui-textfield>
