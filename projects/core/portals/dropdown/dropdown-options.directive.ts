@@ -11,6 +11,8 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiVerticalDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils/miscellaneous';
 
+import {TuiDropdownDirective} from './dropdown.directive';
+
 export type TuiDropdownAlign = 'center' | 'end' | 'start';
 export type TuiDropdownWidth = 'auto' | 'fixed' | 'min';
 
@@ -66,6 +68,10 @@ export const tuiDropdownOptionsProvider: (
 })
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS, {skipSelf: true});
+    private readonly parentDropdown = inject(TuiDropdownDirective, {
+        optional: true,
+        skipSelf: true,
+    });
 
     public align = this.options.align;
     public appearance = this.options.appearance;
@@ -74,4 +80,19 @@ export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     public minHeight = this.options.minHeight;
     public maxHeight = this.options.maxHeight;
     public offset = this.options.offset;
+
+    constructor() {
+        if (ngDevMode && this.parentDropdown) {
+            throw new Error(
+                'Invalid usage of tuiDropdown options.\n\n' +
+                    'tuiDropdown* options must not be set on elements rendered inside *tuiDropdown.\n' +
+                    'Configure the dropdown on its host element or via a shared configuration.\n\n' +
+                    '❌ Invalid:\n' +
+                    '<tui-calendar *tuiDropdown tuiDropdownLimitWidth="auto" />\n\n' +
+                    '✅ Valid:\n' +
+                    '<button [tuiDropdown]="calendar" tuiDropdownLimitWidth="auto">Open</button>\n' +
+                    '<ng-template #calendar><tui-calendar /></ng-template>',
+            );
+        }
+    }
 }
