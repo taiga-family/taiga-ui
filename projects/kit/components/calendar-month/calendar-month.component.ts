@@ -6,8 +6,11 @@ import {
     inject,
     Input,
     input,
+    linkedSignal,
     Output,
+    output,
     signal,
+    untracked,
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
@@ -62,8 +65,28 @@ export class TuiCalendarMonth {
         ),
     );
 
-    @Input()
-    public year: TuiYear = TODAY;
+    protected readonly activeYear = linkedSignal<TuiYear>(() => {
+        const year = this.year();
+
+        if (year) {
+            return year;
+        }
+
+        const value = untracked(this.value);
+
+        if (value instanceof TuiMonth) {
+            return value;
+        }
+
+        if (value instanceof TuiMonthRange) {
+            return value.from;
+        }
+
+        return TODAY;
+    });
+
+    public readonly year = input<TuiYear>();
+    public readonly yearChange = output<TuiYear>();
 
     public readonly minLength = input<number | null>(null);
     public readonly maxLength = input<number | null>(null);
@@ -75,9 +98,6 @@ export class TuiCalendarMonth {
 
     @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiMonth | null>();
-
-    @Output()
-    public readonly yearChange = new EventEmitter<TuiYear>();
 
     public options = inject(TUI_CALENDAR_MONTH_OPTIONS);
     public readonly min = signal<TuiMonth>(TUI_FIRST_DAY);
@@ -104,11 +124,11 @@ export class TuiCalendarMonth {
     }
 
     public onNextYear(): void {
-        this.updateActiveYear(this.year.append({year: 1}));
+        this.updateActiveYear(this.activeYear().append({year: 1}));
     }
 
     public onPreviousYear(): void {
-        this.updateActiveYear(this.year.append({year: -1}));
+        this.updateActiveYear(this.activeYear().append({year: -1}));
     }
 
     public getItemRange(item: TuiMonth): 'active' | 'end' | 'middle' | 'start' | null {
@@ -159,7 +179,7 @@ export class TuiCalendarMonth {
     protected onPickerYearClick(year: number): void {
         this.isYearPickerShown = false;
 
-        if (this.year.year !== year) {
+        if (this.activeYear().year !== year) {
             this.updateActiveYear(new TuiYear(year));
         }
     }
@@ -223,7 +243,7 @@ export class TuiCalendarMonth {
     }
 
     private updateActiveYear(year: TuiYear): void {
-        this.year = year;
+        this.activeYear.set(year);
         this.yearChange.emit(year);
     }
 }
