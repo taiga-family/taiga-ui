@@ -12709,6 +12709,13 @@ export default class Example {
 <label tuiLabel>Name</label>
 <input formControlName="name" placeholder="John Wick" tuiInput />
 </tui-textfield>
+<fieldset>
+<legend>Optional features</legend>
+<label tuiLabel>
+<input checked tuiCheckbox type="checkbox" /> Newsletter </label>
+<label tuiLabel>
+<input tuiCheckbox type="checkbox" /> Sell your soul </label>
+</fieldset>
 </form>
 <footer>
 <button appearance="secondary" size="m" tuiButton type="button" > Cancel </button>
@@ -12733,7 +12740,7 @@ export default class Example {
 import {Component, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiInput, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCheckbox, TuiInput, TuiTitle} from '@taiga-ui/core';
 import {TuiSegmented, TuiStepper, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
@@ -12742,6 +12749,7 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
         ReactiveFormsModule,
         TuiButton,
         TuiCardLarge,
+        TuiCheckbox,
         TuiForm,
         TuiHeader,
         TuiInput,
