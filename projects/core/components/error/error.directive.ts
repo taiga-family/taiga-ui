@@ -2,10 +2,8 @@ import {
     computed,
     Directive,
     inject,
-    INJECTOR,
     input,
     isSignal,
-    type OnInit,
     type Signal,
     TemplateRef,
 } from '@angular/core';
@@ -15,7 +13,6 @@ import {
     type ControlValueAccessor,
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
-    NgControl,
     type ValidationErrors,
     type Validator,
 } from '@angular/forms';
@@ -28,7 +25,7 @@ import {
     type PolymorpheusContent,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map, ReplaySubject, startWith, switchMap} from 'rxjs';
+import {distinctUntilChanged, map, startWith, Subject, switchMap} from 'rxjs';
 
 import {TuiErrorComponent} from './error.component';
 
@@ -40,10 +37,9 @@ import {TuiErrorComponent} from './error.component';
         tuiProvide(NG_VALIDATORS, TuiErrorDirective, true),
     ],
 })
-export class TuiErrorDirective implements ControlValueAccessor, Validator, OnInit {
+export class TuiErrorDirective implements ControlValueAccessor, Validator {
     private readonly content = inject(TUI_VALIDATION_ERRORS);
-    private readonly control = new ReplaySubject<AbstractControl>(1);
-    private readonly injector = inject(INJECTOR);
+    private readonly control = new Subject<AbstractControl>();
 
     private readonly errors = toSignal(
         this.control.pipe(
@@ -51,7 +47,7 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator, OnIni
             switchMap((control) =>
                 control.events.pipe(
                     startWith(null),
-                    map(() => control.invalid && control.touched && control.errors),
+                    map(() => control.touched && control.errors),
                 ),
             ),
         ),
@@ -72,14 +68,6 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator, OnIni
         ),
         {self: true, optional: true},
     );
-
-    public ngOnInit(): void {
-        const control = this.injector.get(NgControl, null, {self: true})?.control;
-
-        if (control) {
-            this.control.next(control);
-        }
-    }
 
     public registerOnChange(): void {}
     public registerOnTouched(): void {}

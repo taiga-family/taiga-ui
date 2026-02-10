@@ -1,30 +1,8 @@
-<tui-tabs
-    [style.margin-block-end.rem]="2"
-    [(activeItemIndex)]="activeTabIndex"
->
-    <button tuiTab>Control 1 (Implicit get error)</button>
-    <button tuiTab>Control 2 (Explicit get error)</button>
-</tui-tabs>
-
-@switch (activeTabIndex()) {
-    @case (0) {
-        <tui-textfield>
-            <label tuiLabel>Control 1</label>
-            <input
-                tuiInput
-                [formControl]="controls[0]"
-            />
-        </tui-textfield>
-        <tui-error [formControl]="controls[0]" />
-    }
-    @case (1) {
-        <tui-textfield>
-            <label tuiLabel>Control 2</label>
-            <input
-                tuiInput
-                [formControl]="controls[1]"
-            />
-        </tui-textfield>
-        <tui-error [error]="getError(controls[1])" />
-    }
-}
+<tui-textfield>
+    <label tuiLabel>Initially touched control</label>
+    <input
+        tuiInput
+        [formControl]="control"
+    />
+</tui-textfield>
+<tui-error [formControl]="control" />
