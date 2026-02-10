@@ -40227,6 +40227,37 @@ import {TuiFade} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
+#### InputChip
+
+**Template:**
+```html
+<tui-textfield multi tuiTextfieldSize="s" >
+<input placeholder="Enter" tuiInputChip [unique]="false" [(ngModel)]="value" />
+<tui-input-chip *tuiItem />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputChip} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiInputChip, TuiTextfield],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: string[] = ['3', '4', '5', 'Compartmentalization'];
+}
+```
+
 
 ### TypeScript
 
@@ -40243,7 +40274,13 @@ import {TuiFade} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic', 'Multiline', 'Vertical', 'Hyphens'];
+    protected readonly examples = [
+        'Basic',
+        'Multiline',
+        'Vertical',
+        'Hyphens',
+        'InputChip',
+    ];
 
     protected lineHeight = '100%';
     protected size = '1.5em';
