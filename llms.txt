@@ -20,7 +20,6 @@
 - [Colors](https://taiga-ui.dev/colors)
 - [Getting Started](https://taiga-ui.dev/getting-started)
 - [I18n](https://taiga-ui.dev/i18n)
-- [List](https://taiga-ui.dev/list)
 - [Migration Guide](https://taiga-ui.dev/migration-guide)
 - [Portals](https://taiga-ui.dev/portals)
 - [Rtl](https://taiga-ui.dev/rtl)
@@ -107,6 +106,7 @@
 - [Like](https://taiga-ui.dev/components/like) — A like component based on native checkbox with icons and custom color for icon when :checked state.
 - [Line Clamp](https://taiga-ui.dev/components/line-clamp) — Component cuts overflown text with "..." and shows it by hover
 - [Link](https://taiga-ui.dev/components/link) — Link component. It has focus highlight and can be customized with an icon Use textContent binding or wrapping entire content with a span to avoid extra whitespace introduced by browser to a tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
+- [List](https://taiga-ui.dev/components/list)
 - [Loader](https://taiga-ui.dev/components/loader)
 - [Message](https://taiga-ui.dev/components/message) — Message component is used to display message block.
 - [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls on mobile devices if tuiMobileCalendar directive is applied. You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
@@ -135,7 +135,7 @@
 - [Slides](https://taiga-ui.dev/components/slides) — A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
 - [Status](https://taiga-ui.dev/components/status)
 - [Surface](https://taiga-ui.dev/components/surface) — General purpose container used in Taiga UI interfaces. Often used in conjunction with Card component.
-- [Swipe Actions](https://taiga-ui.dev/components/swipe-actions)
+- [Swipe Actions](https://taiga-ui.dev/components/swipe-actions) — Component should be used on mobile devices only.
 - [Switch](https://taiga-ui.dev/components/switch) — A switch component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 - [Table](https://taiga-ui.dev/components/table) — This module allows you to create various tables, both static and editable.
 - [Table Filters](https://taiga-ui.dev/components/table-filters) — This module allows you to filter table data in a flexible way.
