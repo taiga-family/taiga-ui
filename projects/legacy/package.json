@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/legacy",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "Legacy Taiga UI entities from the previous major release to simplify migration",
     "keywords": [
         "legacy",
@@ -15,8 +15,8 @@
     "license": "Apache-2.0",
     "peerDependencies": {
         "@angular/core": ">=19.0.0",
-        "@taiga-ui/cdk": "^5.0.0-rc.2",
-        "@taiga-ui/core": "^5.0.0-rc.2",
+        "@taiga-ui/cdk": "^5.0.0-rc.3",
+        "@taiga-ui/core": "^5.0.0-rc.3",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "tslib": ">=2.8.1"
     }
