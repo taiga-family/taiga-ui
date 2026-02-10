@@ -62,9 +62,9 @@ test.describe('Calendars', () => {
 
     test('Use initial year from value', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.CalendarMonth}/API?year=null&value$=2`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const {demo} = new TuiDocumentationPagePO(page);
 
-        const calendar = apiPageExample.locator('tui-calendar-month').first();
+        const calendar = demo.locator('tui-calendar-month').first();
 
         await expect(calendar).toBeVisible();
 
