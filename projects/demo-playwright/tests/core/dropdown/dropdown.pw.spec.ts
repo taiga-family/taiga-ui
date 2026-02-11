@@ -232,7 +232,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await page.locator('html').evaluate((element) => {
-            element.style.zoom = '0.5';
+            element.style.zoom = '1.5';
         });
 
         await example.locator('button').click();
