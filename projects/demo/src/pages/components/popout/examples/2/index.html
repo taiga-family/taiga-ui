@@ -1,17 +1,15 @@
 @if (supported) {
     <button
-        size="s"
         tuiButton
         type="button"
-        [disabled]="ref()"
-        (click)="openPopout()"
+        [disabled]="!!subscription()"
+        (click)="open()"
     >
-        Open a PiP mode
+        Open Picture-in-Picture
     </button>
 } @else {
     <div
         appearance="warning"
-        size="m"
         tuiNotification
     >
         Document Picture-in-Picture is not supported in your browser. Check browser support

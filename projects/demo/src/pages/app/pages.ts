@@ -564,6 +564,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Popout',
+        keywords: 'portal, window, pip, picture-in-picture, popup, новая вкладка',
+        route: DemoRoute.Popout,
+    },
+    {
+        section: 'Components',
         title: 'Progress',
         subPages: [
             {

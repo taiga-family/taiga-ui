@@ -1,32 +1,16 @@
-<tui-doc-page
-    header="Portals"
-    type="customization"
->
+<tui-doc-page header="Portals">
     <ng-template pageTab>
         <div>
             You can easily create your custom portals by extending our abstract classes and put your own portal-host on
             any layer
         </div>
 
-        @for (example of examples; track example) {
-            <tui-doc-example
-                [component]="$index + 1 | tuiComponent"
-                [content]="$index + 1 | tuiExample: 'html,ts,less' : this[$index]"
-                [description]="description"
-                [heading]="example"
-            >
-                <ng-template #description>
-                    @switch ($index) {
-                        @case (1) {
-                            Portals can also be used to render content in a separate browser window
-                        }
-                        @case (2) {
-                            Portals can also be used to render content in picture in picture mode
-                        }
-                    }
-                </ng-template>
-            </tui-doc-example>
-        }
+        <tui-doc-example
+            heading="Custom portals"
+            [content]="example1"
+        >
+            <tui-portals-example-1 />
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab="Setup">

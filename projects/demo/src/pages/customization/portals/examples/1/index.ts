@@ -5,12 +5,13 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {CustomPortalService} from './service';
 
 @Component({
+    selector: 'tui-portals-example-1',
     imports: [TuiButton, TuiIcon],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
 })
-export default class Example {
+export class TuiPortalsExample1 {
     private readonly customPortalService = inject(CustomPortalService);
 
     protected templates: Array<EmbeddedViewRef<unknown>> = [];
