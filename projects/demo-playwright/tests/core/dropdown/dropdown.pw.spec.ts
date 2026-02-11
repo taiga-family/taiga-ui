@@ -223,4 +223,19 @@ test.describe('Dropdown', () => {
             element.style.transform = '';
         });
     });
+
+    test('Dropdown aligned to host with root html zoom', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dropdown);
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.scrollIntoViewIfNeeded();
+        await page.locator('html').evaluate((element) => {
+            (element.style as any).zoom = '1.5';
+        });
+
+        await example.locator('button').click();
+        await page.waitForTimeout(300);
+
+        await expect.soft(page).toHaveScreenshot('21-dropdown-zoomed.png');
+    });
 });
