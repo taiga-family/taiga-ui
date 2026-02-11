@@ -16,11 +16,12 @@
 
     --tui-stroke-width: 0.09375rem;
 
+    &::before,
     &::after {
         content: '';
         position: fixed;
-        inset: 3.625rem 0 auto;
-        block-size: calc(100% - 3.625rem);
+        inset: auto 0;
+        block-size: 100vh;
         box-sizing: border-box;
         pointer-events: none;
         border-radius: var(--tui-radius-xl);
@@ -35,6 +36,14 @@
                 -5rem 0 var(--tui-background-elevation-2),
                 5rem 0 var(--tui-background-elevation-2);
         }
+    }
+
+    &::before {
+        inset-block-start: 3.625rem;
+    }
+
+    &::after {
+        inset-block-end: 0;
     }
 }
 
