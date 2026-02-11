@@ -19,7 +19,9 @@
     &::after {
         content: '';
         position: fixed;
-        inset: 3.625rem 0 0;
+        inset: 3.625rem 0 auto;
+        block-size: calc(100% - 3.625rem);
+        box-sizing: border-box;
         pointer-events: none;
         border-radius: var(--tui-radius-xl);
         border: 0.5rem solid var(--tui-background-base-alt);
