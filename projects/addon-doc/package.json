@@ -30,7 +30,7 @@
         "@taiga-ui/legacy": "^5.0.0-rc.3",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "@types/markdown-it": "^14.1.2",
-        "markdown-it": "^14.1.0",
+        "markdown-it": "^14.1.1",
         "ngx-highlightjs": "^14.0.1",
         "tslib": ">=2.8.1"
     }
