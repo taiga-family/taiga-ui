@@ -46,7 +46,7 @@
     });
 
     &[data-mode~='invalid'][data-mode~='invalid'],
-    &:invalid:not([data-mode]),
+    &:invalid:not([data-mode]):not(.ng-untouched),
     &.tui-invalid:not([data-mode]) {
         outline-color: var(--tui-status-negative);
     }
