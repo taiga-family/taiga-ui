@@ -7,6 +7,6 @@
         "./*": "./*"
     },
     "peerDependencies": {
-        "@taiga-ui/design-tokens": "~0.279.0"
+        "@taiga-ui/design-tokens": "~0.280.0"
     }
 }
