@@ -295,8 +295,8 @@ async function main(): Promise<void> {
             }
 
             const dirName = cliOptions.markdownDirs
-                ? cliOptions.markdownDirs[idx] || 'home'
-                : 'home';
+                ? cliOptions.markdownDirs[idx] || 'getting-started'
+                : 'getting-started';
 
             const examplesPath = path.join(rootCandidate, 'app', dirName, 'examples');
 
@@ -405,12 +405,17 @@ async function main(): Promise<void> {
         included: 0,
         skippedDeprecated: 0,
         skippedLegacy: 0,
+        skippedNoContent: 0,
+        skippedExcludedSection: 0,
+        skippedNoHeader: 0,
     };
 
     for (const folderPath of allFolders) {
         const content = await readIndexHtml(folderPath);
 
         if (!content) {
+            stats.skippedNoContent++;
+            console.warn(`[SKIPPED] No content: ${path.basename(folderPath)}`);
             continue;
         }
 
@@ -435,10 +440,16 @@ async function main(): Promise<void> {
         const parentFolder = path.basename(path.dirname(folderPath));
 
         if (!shouldIncludeSection(parentFolder, config.llmsFull.excludeSections)) {
+            stats.skippedExcludedSection++;
+            console.warn(
+                `[SKIPPED] Excluded section '${parentFolder}': ${path.basename(folderPath)}`,
+            );
             continue;
         }
 
         if (!headerData?.header) {
+            stats.skippedNoHeader++;
+            console.warn(`[SKIPPED] No header: ${path.basename(folderPath)}`);
             continue;
         }
 
@@ -520,6 +531,9 @@ async function main(): Promise<void> {
     console.info(`- Included in output: ${stats.included}`);
     console.info(`- Skipped (deprecated): ${stats.skippedDeprecated}`);
     console.info(`- Skipped (legacy): ${stats.skippedLegacy}`);
+    console.info(`- Skipped (no content): ${stats.skippedNoContent}`);
+    console.info(`- Skipped (excluded section): ${stats.skippedExcludedSection}`);
+    console.info(`- Skipped (no header): ${stats.skippedNoHeader}`);
     console.info('========================================');
 
     await fs.writeFile(cliOptions.output, output.join('\n'), 'utf-8');
