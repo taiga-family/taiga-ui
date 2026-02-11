@@ -46,8 +46,8 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(focusout)': 'setValue(transformer.fromControlValue(control.value))',
         '(focus)': 'onFocus()',
+        '(blur)': 'onBlur()',
     },
 })
 export class TuiInputNumberDirective extends TuiControl<number | null> {
@@ -178,6 +178,12 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         if (Number.isNaN(this.formatted()) && !this.readOnly()) {
             this.textfield.value.set(this.prefix() + this.postfix());
         }
+    }
+
+    protected onBlur(): void {
+        setTimeout(() =>
+            this.setValue(this.transformer.fromControlValue(this.control.value)),
+        );
     }
 
     private get maskParams(): MaskitoNumberParams {
