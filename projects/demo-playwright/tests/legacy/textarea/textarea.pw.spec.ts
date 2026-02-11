@@ -30,7 +30,7 @@ test.describe('Textarea', () => {
         await expect.soft(example).toHaveScreenshot('required-textarea-untouched.png');
         await textarea.click({button: 'middle'});
         await textarea.fill('123');
-        await textarea.fill('');
+        await textarea.clear();
         await textarea.blur();
         await expect.soft(example).toHaveScreenshot('required-textarea-touched.png');
     });
