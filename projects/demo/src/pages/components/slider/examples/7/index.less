@@ -11,6 +11,14 @@ tui-dropdown[data-appearance] {
         transform-origin: left;
         transform: rotate(-90deg) translate(-100%, 1rem);
 
-        --tui-thumb-cursor: ns-resize;
+        // chromium browsers
+        &::-webkit-slider-thumb {
+            cursor: ns-resize;
+        }
+
+        // firefox
+        &::-moz-range-thumb {
+            cursor: ns-resize;
+        }
     }
 }
