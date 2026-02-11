@@ -9,7 +9,7 @@
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
-                [content]="$index + 1 | tuiExample"
+                [content]="$index + 1 | tuiExample: 'html,ts,less' : this[$index]"
                 [heading]="example"
             />
         }

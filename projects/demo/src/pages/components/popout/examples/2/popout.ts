@@ -37,11 +37,6 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
             grid-template-rows: 11rem;
             gap: 0.5rem;
         }
-
-        [tuiTitle] {
-            text-align: center;
-            color: var(--tui-text-primary);
-        }
     `,
     changeDetection,
 })
