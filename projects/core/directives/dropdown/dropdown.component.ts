@@ -28,6 +28,8 @@ import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
+const MAX_WIDTH_GAP = 16; // 8px min gap from each side
+
 /**
  * @description:
  * This component is used to show template in a portal
@@ -94,6 +96,8 @@ export class TuiDropdownComponent implements AfterViewInit {
         const {left = 0, top = 0} = this.position === 'fixed' ? {} : parent;
         const rect = this.accessor.getClientRect();
         const viewport = this.viewport.getClientRect();
+        const zoom =
+            (this.directive.el as {currentCSSZoom?: number})?.currentCSSZoom || 1;
         const above = rect.top - viewport.top - 2 * offset;
         const below = viewport.top + viewport.height - y - offset;
         const available = y > rect.bottom ? below : above;
@@ -107,12 +111,12 @@ export class TuiDropdownComponent implements AfterViewInit {
 
         return {
             position: this.position,
-            top: tuiPx(Math.round(Math.max(y, offset - top))),
-            left: tuiPx(Math.round(x)),
-            maxHeight: tuiPx(Math.round(height)),
-            width: limitWidth === 'fixed' ? tuiPx(Math.round(rect.width)) : '',
-            minWidth: limitWidth === 'min' ? tuiPx(Math.round(rect.width)) : '',
-            maxWidth: tuiPx(Math.round(viewport.width) - 16), // 8px min gap from each side
+            top: tuiPx(Math.round(Math.max(y, offset - top) / zoom)),
+            left: tuiPx(Math.round(x / zoom)),
+            maxHeight: tuiPx(Math.round(height / zoom)),
+            width: limitWidth === 'fixed' ? tuiPx(Math.round(rect.width / zoom)) : '',
+            minWidth: limitWidth === 'min' ? tuiPx(Math.round(rect.width / zoom)) : '',
+            maxWidth: tuiPx(Math.round(viewport.width / zoom) - MAX_WIDTH_GAP),
         };
     }
 }
