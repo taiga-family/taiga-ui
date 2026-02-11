@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {TuiRoot} from '@taiga-ui/core/components';
+import {TuiRoot} from '@taiga-ui/core/components/root';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 export type TuiPopoutOptions =
