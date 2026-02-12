@@ -8,7 +8,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page extends Array {
-    protected readonly examples = ['Popout window', 'Picture in Picture'];
+    protected readonly examples = ['Popout window', 'Picture in Picture', 'Directive'];
     protected readonly [1] = {
         'popout.ts': import('./examples/2/popout.ts?raw', {with: {loader: 'text'}}),
     };

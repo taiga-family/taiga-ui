@@ -33,7 +33,11 @@ export default class Example {
                         top: 300,
                     },
                 })
-                .subscribe();
+                .subscribe({
+                    complete: () => {
+                        this.sub = null;
+                    },
+                });
         }
     }
 }
