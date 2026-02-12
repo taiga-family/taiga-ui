@@ -41,7 +41,7 @@
     vertical-align: middle;
     box-sizing: border-box;
     padding: 0.25rem;
-    font: var(--tui-font-body-l);
+    font: var(--tui-typography-body-l);
     font-weight: bold;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
@@ -60,11 +60,11 @@
         --t-size: var(--tui-height-xs);
         --t-radius: 0.5rem;
 
-        font: var(--tui-font-ui-2xs);
+        font: var(--tui-typography-ui-2xs);
         font-size: 0.5625rem;
 
         &._initials::before {
-            font: var(--tui-font-ui-2xs);
+            font: var(--tui-typography-ui-2xs);
             font-weight: bold;
         }
     }
@@ -73,11 +73,11 @@
         --t-size: var(--tui-height-s);
         --t-radius: 0.5rem;
 
-        font: var(--tui-font-ui-2xs);
+        font: var(--tui-typography-ui-2xs);
         font-weight: bold;
 
         &._initials::before {
-            font: var(--tui-font-body-s);
+            font: var(--tui-typography-body-s);
             font-weight: bold;
         }
     }
@@ -86,11 +86,11 @@
         --t-size: calc(var(--tui-height-m) - 0.25rem);
         --t-radius: 0.75rem;
 
-        font: var(--tui-font-ui-m);
+        font: var(--tui-typography-ui-m);
         font-weight: bold;
 
         &._initials::before {
-            font: var(--tui-font-body-m);
+            font: var(--tui-typography-body-m);
             font-weight: bold;
         }
     }
@@ -99,10 +99,10 @@
         --t-size: 5rem;
         --t-radius: 0.75rem;
 
-        font: var(--tui-font-heading-h4);
+        font: var(--tui-typography-heading-h4);
 
         &._initials::before {
-            font: var(--tui-font-heading-h3);
+            font: var(--tui-typography-heading-h3);
         }
     }
 
@@ -110,10 +110,10 @@
         --t-size: 6rem;
         --t-radius: 1rem;
 
-        font: var(--tui-font-heading-h3);
+        font: var(--tui-typography-heading-h3);
 
         &._initials::before {
-            font: var(--tui-font-heading-h3);
+            font: var(--tui-typography-heading-h3);
         }
     }
 
@@ -121,10 +121,10 @@
         --t-size: 8rem;
         --t-radius: 1.25rem;
 
-        font: var(--tui-font-heading-h3);
+        font: var(--tui-typography-heading-h3);
 
         &._initials::before {
-            font: var(--tui-font-heading-h2);
+            font: var(--tui-typography-heading-h2);
         }
     }
 
@@ -137,7 +137,7 @@
             content: attr(data-icon-start);
             mask: none;
             background: none;
-            font: var(--tui-font-heading-h6);
+            font: var(--tui-typography-heading-h6);
         }
     }
 

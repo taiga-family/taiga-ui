@@ -35,7 +35,7 @@ import {tuiTextareaOptionsProvider} from './textarea.options';
             text-align: end;
             pointer-events: none;
             padding-block-end: 0.75rem;
-            font: var(--tui-font-ui-2xs);
+            font: var(--tui-typography-ui-2xs);
             color: var(--tui-text-secondary);
         }
     `,

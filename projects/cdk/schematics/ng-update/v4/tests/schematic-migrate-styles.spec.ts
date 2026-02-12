@@ -80,7 +80,7 @@ const STYLES_AFTER = `@import '@taiga-ui/legacy/styles/taiga-ui-local';
     .text-overflow();
     margin-top: 1rem;
 margin-bottom: 1rem;
-    font: var(--tui-font-heading-h3);
+    font: var(--tui-typography-heading-h3);
     .customize-scroll();
     padding-top: 0.25rem * 2;
 }
