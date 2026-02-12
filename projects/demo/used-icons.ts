@@ -92,6 +92,8 @@ export const TUI_USED_ICONS = [
     '@tui.view',
     '@tui.download',
     '@tui.pen',
+    '@tui.headset',
+    '@tui.phone-off',
     '@tui.video',
     '@tui.arrow-up',
     '@tui.frown',
