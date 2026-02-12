@@ -1,25 +1,16 @@
-@if (supported) {
-    <button
-        tuiButton
-        type="button"
-        [disabled]="!!subscription()"
-        (click)="open()"
-    >
-        Open Picture-in-Picture
-    </button>
-} @else {
-    <div
+@if (!supported) {
+    <p
         appearance="warning"
         tuiNotification
     >
-        Document Picture-in-Picture is not supported in your browser. Check browser support
-        <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow"
-            target="_blank"
-            tuiLink
-        >
-            here
-        </a>
-        .
-    </div>
+        Document Picture-in-Picture is not supported in your browser, fallback to regular popout window will be used
+    </p>
 }
+<button
+    tuiButton
+    type="button"
+    [disabled]="!!subscription()"
+    (click)="open()"
+>
+    Open Picture-in-Picture
+</button>

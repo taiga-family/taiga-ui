@@ -28,7 +28,7 @@ export default class Example {
                     title: 'Page',
                     features: {
                         width: 320,
-                        height: 100,
+                        height: 160,
                         left: 600,
                         top: 300,
                     },

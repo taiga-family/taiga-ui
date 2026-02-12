@@ -30,10 +30,14 @@ class PopoutComponent implements OnInit, OnDestroy {
     private popout: Window | null = null;
 
     public ngOnInit(): void {
-        if (this.context.pip) {
+        if (this.context.pip && this.pip) {
             this.pip
-                ?.requestWindow(this.context.features)
-                .then((popout) => this.process(popout));
+                .requestWindow(this.context.features)
+                .then((popout) => this.process(popout))
+                .catch((error: unknown) => {
+                    this.context.$implicit.complete();
+                    throw error;
+                });
         } else {
             this.process(
                 this.doc.defaultView?.open(
@@ -41,6 +45,7 @@ class PopoutComponent implements OnInit, OnDestroy {
                     '_blank',
                     Object.entries(this.context.features)
                         .map(([key, value]) => `${key}=${value}`)
+                        .concat(this.context.pip ? 'popup' : [])
                         .join(','),
                 ),
             );
@@ -53,6 +58,8 @@ class PopoutComponent implements OnInit, OnDestroy {
 
     private process(popout?: Window | null): void {
         if (!popout) {
+            this.context.$implicit.complete();
+
             return;
         }
 
@@ -63,11 +70,11 @@ class PopoutComponent implements OnInit, OnDestroy {
             <head>
               <meta charset="utf-8" />
               <meta name="viewport" content="width=device-width,initial-scale=1" />
-              <title>${this.context.title}</title>
             </head>
             <body></body>
           </html>
         `);
+        this.popout.document.title = this.context.title;
         this.popout.document.close();
         this.doc.head
             .querySelectorAll('base, style, link[rel="stylesheet"]')
@@ -80,18 +87,23 @@ class PopoutComponent implements OnInit, OnDestroy {
             provideExperimentalZonelessChangeDetection(),
         ];
 
-        createApplication({providers}).then((app) => {
-            const ref = app.bootstrap(TuiPopoutComponent, this.popout?.document.body);
-            const cleanup = (): void => this.popout?.close();
+        createApplication({providers})
+            .then((app) => {
+                const ref = app.bootstrap(TuiPopoutComponent, this.popout?.document.body);
+                const cleanup = (): void => this.popout?.close();
 
-            this.doc.defaultView?.addEventListener('pagehide', cleanup);
-            this.popout?.addEventListener('pagehide', () => {
+                this.doc.defaultView?.addEventListener('pagehide', cleanup);
+                this.popout?.addEventListener('pagehide', () => {
+                    this.context.$implicit.complete();
+                    ref.destroy();
+                    app.destroy();
+                    this.doc.defaultView?.removeEventListener('pagehide', cleanup);
+                });
+            })
+            .catch((error: unknown) => {
                 this.context.$implicit.complete();
-                ref.destroy();
-                app.destroy();
-                this.doc.defaultView?.removeEventListener('pagehide', cleanup);
+                throw error;
             });
-        });
     }
 }
 
