@@ -1,0 +1,12 @@
+name: 🤖 Notify on PR opened
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/messenger/time/mr-notify@v1.186.0
+        with:
+          webhook: ${{ secrets.TAIGA_ANGULAR_MRS_WEBHOOK_URL }}
