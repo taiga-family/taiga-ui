@@ -76,6 +76,7 @@ export class TuiInputChipDirective<T>
         this.onChange(
             this.unique() ? Array.from(new Set(value.reverse())).reverse() : value,
         );
+        this.el.dispatchEvent(new Event('input', {bubbles: true}));
     }
 
     protected onEnter(rawValue = this.textfield.value()): void {

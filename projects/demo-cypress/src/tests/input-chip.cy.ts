@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, output} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiCheckbox, TuiDataList, TuiRadio, TuiRoot, TuiTextfield} from '@taiga-ui/core';
@@ -9,6 +9,7 @@ import {
     TuiMultiSelect,
     TuiSwitch,
 } from '@taiga-ui/kit';
+import {createOutputSpy} from 'cypress/angular';
 
 interface User {
     readonly name: string;
@@ -67,6 +68,7 @@ interface User {
                         tuiInputChip
                         [placeholder]="objects.length ? '' : 'Picking objects'"
                         [(ngModel)]="objects"
+                        (input)="inputEvent.emit($any($event.target).value)"
                     />
                     <tui-input-chip *tuiItem />
                     <tui-data-list *tuiDropdown>
@@ -110,14 +112,27 @@ export class TestInputDate {
     protected readonly strings = tuiIsString;
     protected readonly stringify = ({name}: User): string => name;
     protected readonly disabled = (item: string): boolean => !this.items.includes(item);
+
+    public readonly inputEvent = output<string>();
 }
 
 describe('InputChip', () => {
-    beforeEach(() => cy.mount(TestInputDate));
+    beforeEach(() => {
+        cy.mount(TestInputDate, {
+            componentProperties: {inputEvent: createOutputSpy('inputEvent')},
+        });
+    });
 
     it('verify dropdown functionality with interactive checkbox', () => {
         cy.get('tui-textfield').click();
 
         cy.compareSnapshot('input-chip-multi-select');
+    });
+
+    it('emits (input) event on datalist item click', () => {
+        cy.get('[tuiInputChip]').click().clear();
+        cy.get('[tuiOption]').first().click();
+
+        cy.get('@inputEvent').should('have.been.called');
     });
 });
