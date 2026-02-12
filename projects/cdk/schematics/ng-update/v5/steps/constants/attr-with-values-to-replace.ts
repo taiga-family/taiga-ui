@@ -8,12 +8,6 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         valueReplacer: (condition) =>
             condition === 's' || condition === "'s'" ? '0.5' : '0.75',
         withTagNames: ['tui-range', 'input'],
-        filterFn: (el) => {
-            if (el.tagName === 'input') {
-                return hasElementAttribute(el, 'tuiSlider');
-            }
-
-            return true;
-        },
+        filterFn: (el) => el.tagName !== 'input' || hasElementAttribute(el, 'tuiSlider'),
     },
 ];

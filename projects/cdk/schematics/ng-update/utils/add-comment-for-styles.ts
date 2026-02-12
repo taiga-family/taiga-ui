@@ -1,10 +1,10 @@
 import {getSourceFiles} from 'ng-morph';
 
-import {ALL_TS_AND_STYLES_FILES} from '../../constants';
+import {ALL_TS_FILES, ALL_STYLE_FILES} from '../../constants';
 
 export function addCommentForStylesFiles(
     replaceable: Array<{sourceText: RegExp | string; comment: string}>,
-    pattern = ALL_TS_AND_STYLES_FILES,
+    pattern = [ALL_STYLE_FILES, ...ALL_TS_FILES],
 ): void {
     const sourceFiles = getSourceFiles(pattern);
 

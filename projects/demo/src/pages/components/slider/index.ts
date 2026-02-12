@@ -10,7 +10,7 @@ import {TuiSlider, TuiTitle} from '@taiga-ui/core';
 })
 export default class Page {
     protected readonly examples = [
-        'Thumb size',
+        'Size',
         'Colors',
         'Segments',
         'Disabled',

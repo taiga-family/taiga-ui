@@ -41,7 +41,3 @@ export const ALL_FILES: Pattern = [
     `!(${EXCLUDE_FILE_PATTERNS}).{html,ts,less,sass,scss,css,json}`,
     `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS}).{html,ts,less,sass,scss,css,json}`,
 ];
-export const ALL_TS_AND_STYLES_FILES: Pattern = [
-    `!(${EXCLUDE_FILE_PATTERNS}).{ts,less,sass,scss,css}`,
-    `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS}).{ts,less,sass,scss,css}`,
-];

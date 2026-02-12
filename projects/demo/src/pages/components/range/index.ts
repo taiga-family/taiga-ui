@@ -16,7 +16,7 @@ import {TuiRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Thumb size', 'Segments', 'KeySteps'];
+    protected readonly examples = ['Size', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
 
     protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
