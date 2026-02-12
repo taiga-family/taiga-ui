@@ -6,7 +6,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiPopout, TuiHeader, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiHeader, TuiPopout, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
