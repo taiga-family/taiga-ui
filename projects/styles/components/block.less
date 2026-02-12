@@ -33,20 +33,20 @@
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
-    font: var(--tui-font-body-m);
+    font: var(--tui-typography-body-m);
     padding: var(--tui-padding-l);
     isolation: isolate;
 
     &[data-size='s'] {
         gap: 0.5rem;
-        font: var(--tui-font-ui-s);
+        font: var(--tui-typography-ui-s);
         padding: 0.5rem;
 
         --t-height: var(--tui-height-s);
         --t-radius: var(--tui-radius-m);
 
         [tuiSubtitle] {
-            font: var(--tui-font-ui-2xs);
+            font: var(--tui-typography-ui-2xs);
         }
 
         [tuiTooltip] {
@@ -56,7 +56,7 @@
 
     &[data-size='m'] {
         gap: 0.625rem;
-        font: var(--tui-font-ui-m);
+        font: var(--tui-typography-ui-m);
         padding: var(--tui-padding-m);
 
         --t-height: var(--tui-height-m);

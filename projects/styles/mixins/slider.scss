@@ -12,7 +12,7 @@ $track-thickness: max(calc($thumb-radius - 0.25rem), 0.125rem);
     --t-offset: $thumb-radius;
 
     display: flex;
-    font: var(--tui-font-body-s);
+    font: var(--tui-typography-body-s);
     color: var(--tui-text-secondary);
     margin: 0.25rem var(--t-offset) 0;
 
