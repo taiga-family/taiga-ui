@@ -126,6 +126,8 @@ test.describe('InputChip', () => {
             await toggle?.click();
             await expect.soft(api.demo).toHaveScreenshot('input-chip-disabled.png');
             await expect(inputChip.cleaner).toHaveCount(0);
+            await inputChip.chips.first().hover();
+            await expect.soft(api.demo).toHaveScreenshot('input-chip-disabled-hover.png');
         });
 
         test('readonly true', async ({page}) => {
