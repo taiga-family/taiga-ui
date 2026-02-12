@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 [tuiSurface] {
     .transition();
@@ -135,14 +135,17 @@ input[tuiSurfaceLayer] {
 
 [tuiSurface][data-appearance='floating'] {
     background: var(--tui-background-elevation-1);
+    box-shadow: var(--tui-shadow-medium);
 
     .appearance-hover({
         transform: translate3d(0, -0.25rem, 0);
+        box-shadow: var(--tui-shadow-medium-hover);
     });
 
     .appearance-active({
         transform: scale(0.95);
         background: var(--tui-background-elevation-1);
+        box-shadow: var(--tui-shadow-medium);
     });
 }
 

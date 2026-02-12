@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiCheckbox, TuiTooltip} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiIcon, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiCheckbox, TuiIcon, TuiLabel, TuiTitle, TuiTooltip],

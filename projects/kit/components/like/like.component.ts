@@ -20,7 +20,7 @@ import {TUI_LIKE_OPTIONS} from './like.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/like.less';
+            @import '@taiga-ui/styles/components/like.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

@@ -81,20 +81,18 @@
     #template
     let-user
 >
-    <span tuiCell>
-        <div [tuiAvatar]="user.name | tuiInitials">
-            @if (user.url) {
-                <img
-                    alt=""
-                    [src]="user.url"
-                />
-            }
-        </div>
-        <span tuiTitle>
-            <span tuiFade>{{ user.name }}</span>
-            <span tuiSubtitle>
-                {{ user.balance | tuiAmount: '$' : 'start' }}
-            </span>
+    <div [tuiAvatar]="user.name | tuiInitials">
+        @if (user.url) {
+            <img
+                alt=""
+                [src]="user.url"
+            />
+        }
+    </div>
+    <span tuiTitle>
+        <span tuiFade>{{ user.name }}</span>
+        <span tuiSubtitle>
+            {{ user.balance | tuiAmount: '$' : 'start' }}
         </span>
     </span>
 </ng-template>

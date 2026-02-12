@@ -1,0 +1,21 @@
+@import '../../utils.less';
+
+[tuiAppearance][data-appearance='floating'] {
+    background: var(--tui-background-elevation-2);
+    color: var(--tui-text-primary);
+    box-shadow: var(--tui-shadow-small);
+
+    &::before,
+    &::after {
+        transition-property: color;
+    }
+
+    .appearance-hover({
+        box-shadow: var(--tui-shadow-small-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-background-base-alt);
+        box-shadow: var(--tui-shadow-small);
+    });
+}

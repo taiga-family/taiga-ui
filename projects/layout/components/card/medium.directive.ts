@@ -7,6 +7,7 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
+import {TuiSurface} from '@taiga-ui/layout/components/surface';
 
 @Component({
     template: '',
@@ -20,7 +21,7 @@ class Styles {}
 @Directive({
     selector: '[tuiCardMedium]',
     providers: [tuiAvatarOptionsProvider({size: 'l'})],
-    hostDirectives: [TuiWithAppearance],
+    hostDirectives: [TuiWithAppearance, TuiSurface],
 })
 export class TuiCardMedium {
     protected readonly nothing = tuiWithStyles(Styles);

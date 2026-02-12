@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 tui-dropdown-mobile {
     .scrollbar-hidden();
@@ -35,8 +35,13 @@ tui-dropdown-mobile {
         top: 0;
         block-size: 100%;
         overflow: auto;
-        margin: 0 0.75rem;
+        padding: 0 1rem;
         touch-action: pan-y !important;
+
+        tui-data-list {
+            padding: 0;
+            margin: 0 -0.5rem;
+        }
     }
 
     [tuiDropdownButton][tuiDropdownButton] {

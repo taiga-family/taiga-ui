@@ -1,0 +1,164 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Pin
+ * @selector tui-pin,[tuiPin]
+ *
+ * @description
+ * A toggleable pin to be used on maps
+ *
+ * @example
+ * <button tuiPin><img src="avatar.jpg" /></button>
+ *
+ * @see-also
+ * Compass
+ */
+[tuiPin]:where(*&) {
+    --t-size: 2rem;
+
+    .transition(~'width, height, border, margin');
+    .button-clear();
+
+    position: relative;
+    display: flex;
+    inline-size: var(--t-size);
+    block-size: var(--t-size);
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 100%;
+    font: var(--tui-typography-body-s);
+    font-weight: bold;
+    box-sizing: border-box;
+    color: var(--tui-text-primary-on-accent-2);
+    background: var(--tui-background-accent-2);
+    box-shadow: 0 0 0 0.125rem var(--tui-background-elevation-2);
+    border: 0 solid var(--tui-background-accent-2);
+    transform: translate(-50%, -50%);
+
+    .interactive({
+        cursor: pointer;
+    });
+
+    &:empty {
+        --t-size: 0.75rem;
+
+        &::before {
+            display: none;
+        }
+    }
+
+    > input {
+        .fullsize();
+
+        appearance: none;
+        border-radius: 100%;
+    }
+
+    > img {
+        max-block-size: 100%;
+        box-sizing: border-box;
+        border-radius: 100%;
+        background: var(--tui-background-base);
+    }
+
+    > tui-icon {
+        .transition(~'width, height');
+
+        font-size: 1.25rem;
+        align-self: center;
+    }
+
+    &:has(:checked) {
+        --t-size: 3.5rem;
+
+        font: var(--tui-typography-body-m);
+        font-weight: bold;
+        border-width: 0;
+        margin-block-start: -2.75rem;
+
+        > img {
+            padding: 0.125rem;
+        }
+
+        > tui-icon {
+            font-size: 2.125rem;
+        }
+
+        &::before {
+            transform: scale(0.99) translate(-1.875rem, -1.875rem);
+            opacity: 1;
+        }
+
+        &::after {
+            top: 4.5rem;
+            opacity: 1;
+        }
+    }
+
+    // TODO: Fallback until Safari 15.4
+    &._open {
+        --t-size: 3.5rem;
+
+        font: var(--tui-typography-body-m);
+        font-weight: bold;
+        border-width: 0;
+        margin-block-start: -2.75rem;
+
+        > img {
+            padding: 0.125rem;
+        }
+
+        > tui-icon {
+            font-size: 2.125rem;
+        }
+
+        &::before {
+            transform: scale(0.99) translate(-1.875rem, -1.875rem);
+            opacity: 1;
+        }
+
+        &::after {
+            top: 4.5rem;
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        .transition(~'transform, opacity');
+
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        right: -0.25rem;
+        bottom: -0.625rem;
+        box-sizing: border-box;
+        border-width: 2.2rem 2rem;
+        border-style: solid;
+        border-color: inherit;
+        opacity: 0;
+        transform: scale(0.57) translate(-1.875rem, -1.875rem);
+        transform-origin: top left;
+        pointer-events: none;
+        mask: url('data:image/svg+xml,<svg width="60" height="66" viewBox="0 0 60 66" xmlns="http://www.w3.org/2000/svg"><path d="M0 30.0917C0 13.4726 13.4313 0 30.0002 0C46.5687 0 60 13.4726 60 30.0917C60 44.2105 50.4927 56.0529 37.4162 59.2986C32.5552 60.5551 31.0408 65.275 31.0408 65.275C30.8892 65.697 30.4909 66 30.0183 66C29.5453 66 29.147 65.697 28.9938 65.275C28.9938 65.275 27.481 60.5551 22.6199 59.2986C9.46433 56.0206 0 43.5901 0 30.0917ZM30 57.75C45.3259 57.75 57.75 45.3259 57.75 30C57.75 14.6741 45.3259 2.25 30 2.25C14.6741 2.25 2.25 14.6741 2.25 30C2.25 45.3259 14.6741 57.75 30 57.75Z" /></svg>')
+            no-repeat;
+    }
+
+    &::after {
+        .transition(~'top, opacity');
+
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border: 0.1875rem solid currentColor;
+        border-color: inherit;
+        border-radius: 100%;
+        box-sizing: border-box;
+        box-shadow: inherit;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+}

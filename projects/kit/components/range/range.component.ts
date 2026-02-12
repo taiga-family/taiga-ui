@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ElementRef,
     input,
     viewChildren,
 } from '@angular/core';
@@ -17,7 +16,7 @@ import {
     tuiPercentageToKeyStepValue,
     TuiSlider,
     TuiSliderComponent,
-} from '@taiga-ui/kit/components/slider';
+} from '@taiga-ui/core/components/slider';
 
 import {TuiRangeChange} from './range-change.directive';
 
@@ -49,6 +48,7 @@ import {TuiRangeChange} from './range-change.directive';
 })
 export class TuiRange extends TuiControl<[number, number]> {
     private readonly el = tuiInjectElement();
+    private readonly sliders = viewChildren(TuiSliderComponent);
 
     protected lastActiveThumb: 'end' | 'start' = 'end';
 
@@ -63,10 +63,9 @@ export class TuiRange extends TuiControl<[number, number]> {
 
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
-    public readonly sliders = viewChildren<
-        TuiSliderComponent,
-        ElementRef<HTMLInputElement>
-    >(TuiSliderComponent, {read: ElementRef});
+    public readonly thumbs = computed(
+        ([start, end] = this.sliders()) => [start!.el, end!.el] as const,
+    );
 
     protected readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
     protected readonly fractionStep = computed<number>((step = this.step()) => {
@@ -112,7 +111,7 @@ export class TuiRange extends TuiControl<[number, number]> {
     }
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {
-        const [startThumb, endThumb] = this.sliders().map((x) => x?.nativeElement);
+        const [startThumb, endThumb] = this.thumbs();
         const isEndThumb =
             target === this.el ? this.lastActiveThumb === 'end' : target === endThumb;
         const activeThumbElement = isEndThumb ? endThumb : startThumb;

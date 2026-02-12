@@ -30,7 +30,7 @@ test.describe('DropdownSelection', () => {
 
         await expect.soft(page).toHaveScreenshot('02-dropdown-selection.png');
 
-        await example.locator('textarea').fill('');
+        await example.locator('textarea').clear();
         await example.locator('textarea').fill('@');
         await api.waitStableState();
 
@@ -75,8 +75,19 @@ test.describe('DropdownSelection', () => {
         await example
             .locator('textarea')
             .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
-
+        await page.waitForTimeout(200);
         await expect(page.locator('tui-dropdown')).toBeVisible();
+
+        await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
+
+        await example.locator('textarea').clear();
+        await example
+            .locator('textarea')
+            .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
+        await page.waitForTimeout(200);
+        await expect(page.locator('tui-dropdown')).toBeVisible();
+
+        // note: expect the same position
         await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
     });
 

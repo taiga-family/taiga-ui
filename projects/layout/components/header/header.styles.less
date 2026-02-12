@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 [tuiHeader] {
     position: relative;
@@ -12,7 +12,7 @@
 
     p {
         margin: 0.25rem 0 0;
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
 
         &:empty {
             display: none;
@@ -51,11 +51,11 @@
     }
 
     [tuiLink] {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
     }
 
     [tuiCaption] {
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
         color: var(--tui-text-secondary);
         font-weight: 500;
         text-transform: uppercase;
@@ -63,31 +63,31 @@
     }
 
     &[data-size='h1'] {
-        font: var(--tui-font-heading-h1);
+        font: var(--tui-typography-heading-h1);
     }
 
     &[data-size='h2'] {
-        font: var(--tui-font-heading-h2);
+        font: var(--tui-typography-heading-h2);
     }
 
     &[data-size='h3'] {
-        font: var(--tui-font-heading-h3);
+        font: var(--tui-typography-heading-h3);
     }
 
     &[data-size='h4'] {
-        font: var(--tui-font-heading-h4);
+        font: var(--tui-typography-heading-h4);
     }
 
     &[data-size='h5'] {
-        font: var(--tui-font-heading-h5);
+        font: var(--tui-typography-heading-h5);
     }
 
     &[data-size='h6'] {
-        font: var(--tui-font-heading-h6);
+        font: var(--tui-typography-heading-h6);
     }
 
     &[data-size='body-l'] {
-        font: var(--tui-font-body-l);
+        font: var(--tui-typography-body-l);
 
         [tuiTitle] {
             font-weight: bold;
@@ -95,7 +95,7 @@
     }
 
     &[data-size='body-m'] {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
 
         [tuiTitle] {
             gap: 0.125rem;
@@ -107,7 +107,7 @@
     &[data-size='body-l'] {
         [tuiSubtitle],
         [tuiLink] {
-            font: var(--tui-font-body-s);
+            font: var(--tui-typography-body-s);
         }
     }
 
@@ -116,7 +116,7 @@
     &[data-size='h3'] {
         [tuiSubtitle],
         [tuiLink] {
-            font: var(--tui-font-body-l);
+            font: var(--tui-typography-body-l);
         }
     }
 
@@ -124,7 +124,7 @@
     &[data-size='h5'],
     &[data-size='h6'] {
         [tuiSubtitle] {
-            font: var(--tui-font-body-m);
+            font: var(--tui-typography-body-m);
         }
     }
 }

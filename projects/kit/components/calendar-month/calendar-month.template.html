@@ -1,7 +1,7 @@
 @if (isYearPickerShown) {
     <tui-scrollbar class="t-scrollbar">
         <tui-calendar-year
-            [initialItem]="year.year"
+            [initialItem]="activeYear().year"
             [max]="max().year"
             [min]="min().year"
             [rangeMode]="options.rangeMode"
@@ -13,8 +13,8 @@
     <tui-spin-button
         class="t-spin"
         [focusable]="false"
-        [leftDisabled]="year.yearSameOrBefore(min())"
-        [rightDisabled]="year.yearSameOrAfter(max())"
+        [leftDisabled]="activeYear().yearSameOrBefore(min())"
+        [rightDisabled]="activeYear().yearSameOrAfter(max())"
         (leftClick)="onPreviousYear()"
         (rightClick)="onNextYear()"
     >
@@ -25,14 +25,14 @@
             type="button"
             (click)="onYearClick()"
         >
-            {{ year.formattedYear }}
+            {{ activeYear().formattedYear }}
         </button>
     </tui-spin-button>
     @for (_ of '-'.repeat(3); track $index) {
         @let row = $index;
         <div class="t-row">
             @for (_ of '-'.repeat(4); track $index) {
-                @let item = getTuiMonth(row * 4 + $index, year.year);
+                @let item = getTuiMonth(row * 4 + $index, activeYear().year);
                 <div
                     class="t-cell"
                     [attr.data-range]="getItemRange(item)"

@@ -21,6 +21,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiCell} from '@taiga-ui/core/components/cell';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
@@ -37,13 +38,14 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
         AsyncPipe,
         PolymorpheusOutlet,
         TuiButtonX,
+        TuiCell,
         TuiScrollControls,
         WaResizeObserver,
     ],
     templateUrl: './textfield-multi.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/textfield.less';
+            @import '@taiga-ui/styles/components/textfield.less';
             @import './textfield-multi.style.less';
         }
     `,
@@ -56,7 +58,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
         tuiProvide(TUI_SCROLL_REF, ElementRef),
     ],
     host: {
-        '[attr.data-state]': 'control()?.disabled ? "disabled" : null',
+        '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!control()?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows()',

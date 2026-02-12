@@ -7,8 +7,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiLoader, TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {TuiInputRange, type TuiKeySteps} from '@taiga-ui/kit';
+import {
+    type TuiKeySteps,
+    TuiLoader,
+    TuiNumberFormat,
+    TuiTextfield,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {TuiInputRange} from '@taiga-ui/kit';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({

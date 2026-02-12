@@ -11,7 +11,7 @@ import {TuiInputTime, tuiInputTimeOptionsProvider, TuiTooltip} from '@taiga-ui/k
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiInputTimeOptionsProvider({icon: () => ''})],
+    providers: [tuiInputTimeOptionsProvider({icon: ''})],
 })
 export default class Example {
     protected value: TuiTime | null = new TuiTime(9, 0);

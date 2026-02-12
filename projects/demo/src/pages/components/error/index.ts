@@ -19,6 +19,7 @@ export default class Page {
         'Asynchronous',
         'Pipe',
         'Component',
+        'Initially touched',
     ];
 
     protected readonly errorVariants: readonly string[] = [

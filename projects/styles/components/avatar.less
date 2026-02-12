@@ -1,0 +1,188 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Avatar
+ * @selector [tuiAvatar]
+ *
+ * @description
+ * An avatar component which can be used with icons, text or images
+ * and is applicable to static elements as well as buttons and links
+ *
+ * @attributes
+ * data-size — size (default: 'l') ('xs' | 's' | 'm' | 'l' | 'xl' | 'xxl')
+ * data-shape — shape (default: 'round') ('round' | 'square')
+ *
+ * @example
+ * <span tuiAvatar tuiIcons style="--t-icon-start: url('icon.svg')"></span>
+ * <button tuiAvatar>
+ *   <img src="path/to/image" alt="Avatar" />
+ * </button>
+ *
+ * @see-also
+ * Icons, Icon, Appearance
+ */
+[tuiAvatar]:where(*&) {
+    --t-size: var(--tui-height-l);
+    --t-radius: 0.75rem;
+    --t-corner-offset: calc((var(--t-radius) * 1.4142 - var(--t-radius)) * 1 / 1.4142);
+
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    inline-size: var(--t-size);
+    block-size: var(--t-size);
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: var(--t-radius);
+    border: none;
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-secondary);
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0.25rem;
+    font: var(--tui-typography-body-l);
+    font-weight: bold;
+    opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
+
+    &::before {
+        inline-size: auto;
+        block-size: auto;
+    }
+
+    &:not(._initials)::before {
+        position: absolute;
+        inset: 0;
+        font-size: calc(var(--t-size) * 0.6);
+    }
+
+    &[data-size='xs'] {
+        --t-size: var(--tui-height-xs);
+        --t-radius: 0.5rem;
+
+        font: var(--tui-typography-ui-2xs);
+        font-size: 0.5625rem;
+
+        &._initials::before {
+            font: var(--tui-typography-ui-2xs);
+            font-weight: bold;
+        }
+    }
+
+    &[data-size='s'] {
+        --t-size: var(--tui-height-s);
+        --t-radius: 0.5rem;
+
+        font: var(--tui-typography-ui-2xs);
+        font-weight: bold;
+
+        &._initials::before {
+            font: var(--tui-typography-body-s);
+            font-weight: bold;
+        }
+    }
+
+    &[data-size='m'] {
+        --t-size: calc(var(--tui-height-m) - 0.25rem);
+        --t-radius: 0.75rem;
+
+        font: var(--tui-typography-ui-m);
+        font-weight: bold;
+
+        &._initials::before {
+            font: var(--tui-typography-body-m);
+            font-weight: bold;
+        }
+    }
+
+    &[data-size='xl'] {
+        --t-size: 5rem;
+        --t-radius: 0.75rem;
+
+        font: var(--tui-typography-heading-h4);
+
+        &._initials::before {
+            font: var(--tui-typography-heading-h3);
+        }
+    }
+
+    &[data-size='xxl'] {
+        --t-size: 6rem;
+        --t-radius: 1rem;
+
+        font: var(--tui-typography-heading-h3);
+
+        &._initials::before {
+            font: var(--tui-typography-heading-h3);
+        }
+    }
+
+    &[data-size='xxxl'] {
+        --t-size: 8rem;
+        --t-radius: 1.25rem;
+
+        font: var(--tui-typography-heading-h3);
+
+        &._initials::before {
+            font: var(--tui-typography-heading-h2);
+        }
+    }
+
+    &:not([data-shape='square']) {
+        --t-radius: calc(var(--t-size) / 2);
+    }
+
+    &._initials {
+        &::before {
+            content: attr(data-icon-start);
+            mask: none;
+            background: none;
+            font: var(--tui-typography-heading-h6);
+        }
+    }
+
+    &._badge {
+        mask: radial-gradient(
+            circle at calc(100% - var(--t-corner-offset)) calc(100% - var(--t-corner-offset)),
+            black 0.23rem,
+            transparent 0.25rem,
+            transparent 0.375rem,
+            black 0.39rem
+        );
+        mask-clip: no-clip;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: calc(100% - var(--t-corner-offset));
+            left: calc(100% - var(--t-corner-offset));
+            display: block;
+            inline-size: 0.55rem;
+            block-size: 0.55rem;
+            border-radius: 100%;
+            background: var(--t-badge);
+            transform: translate3d(-50%, -50%, 0);
+        }
+    }
+
+    &._fallback {
+        img,
+        video {
+            display: none;
+        }
+    }
+
+    img,
+    video,
+    picture {
+        .fullsize();
+
+        object-fit: cover;
+        box-sizing: border-box;
+        border-radius: inherit;
+    }
+
+    &:has(img, video):not(._fallback) {
+        background: none;
+    }
+}

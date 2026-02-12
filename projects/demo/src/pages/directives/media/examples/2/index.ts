@@ -3,8 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {SECONDS_IN_MINUTE, TuiMedia} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiButton, TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, TuiButton, TuiMedia, TuiSlider],

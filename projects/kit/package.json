@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/kit",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "Taiga UI Angular main components kit",
     "keywords": [
         "angular",
@@ -15,9 +15,6 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
-    "exports": {
-        "./styles/*": "./styles/*"
-    },
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
@@ -27,16 +24,16 @@
         "@maskito/core": "^5.1.0",
         "@maskito/kit": "^5.1.0",
         "@maskito/phone": "^5.1.0",
-        "@ng-web-apis/common": "^5.0.3",
-        "@ng-web-apis/intersection-observer": "^5.0.3",
-        "@ng-web-apis/mutation-observer": "^5.0.3",
-        "@ng-web-apis/platform": "^5.0.3",
-        "@ng-web-apis/resize-observer": "^5.0.3",
-        "@taiga-ui/cdk": "^5.0.0-rc.2",
-        "@taiga-ui/core": "^5.0.0-rc.2",
-        "@taiga-ui/design-tokens": "~0.277.0",
-        "@taiga-ui/i18n": "^5.0.0-rc.2",
+        "@ng-web-apis/common": "^5.1.0",
+        "@ng-web-apis/intersection-observer": "^5.1.0",
+        "@ng-web-apis/mutation-observer": "^5.1.0",
+        "@ng-web-apis/platform": "^5.1.0",
+        "@ng-web-apis/resize-observer": "^5.1.0",
+        "@taiga-ui/cdk": "^5.0.0-rc.3",
+        "@taiga-ui/core": "^5.0.0-rc.3",
+        "@taiga-ui/i18n": "^5.0.0-rc.3",
         "@taiga-ui/polymorpheus": "^5.0.0",
+        "@taiga-ui/styles": "^5.0.0-rc.3",
         "rxjs": ">=7.0.0",
         "tslib": ">=2.8.1"
     }

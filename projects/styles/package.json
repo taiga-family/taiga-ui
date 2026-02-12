@@ -1,0 +1,12 @@
+{
+    "name": "@taiga-ui/styles",
+    "version": "5.0.0-rc.3",
+    "description": "Framework-agnostic package with styles for Taiga UI",
+    "license": "Apache-2.0",
+    "exports": {
+        "./*": "./*"
+    },
+    "peerDependencies": {
+        "@taiga-ui/design-tokens": "~0.280.0"
+    }
+}

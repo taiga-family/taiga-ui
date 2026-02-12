@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/cdk",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "Base library for creating Angular components and applications using Taiga UI principles regarding of actual visual appearance",
     "keywords": [
         "angular",
@@ -34,11 +34,11 @@
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
         "@angular/forms": ">=19.0.0",
-        "@ng-web-apis/common": "^5.0.3",
-        "@ng-web-apis/mutation-observer": "^5.0.3",
-        "@ng-web-apis/platform": "^5.0.3",
-        "@ng-web-apis/resize-observer": "^5.0.3",
-        "@ng-web-apis/screen-orientation": "^5.0.3",
+        "@ng-web-apis/common": "^5.1.0",
+        "@ng-web-apis/mutation-observer": "^5.1.0",
+        "@ng-web-apis/platform": "^5.1.0",
+        "@ng-web-apis/resize-observer": "^5.1.0",
+        "@ng-web-apis/screen-orientation": "^5.1.0",
         "@taiga-ui/event-plugins": "^5.0.0",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "rxjs": ">=7.0.0"

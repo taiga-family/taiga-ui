@@ -32,10 +32,7 @@ export default class Page implements OnInit {
 
     protected async openStackblitz(): Promise<void> {
         const [appTemplate, appComponent] = await Promise.all(
-            [
-                import('./files/app.template.html.md'),
-                import('./files/app.component.ts.md'),
-            ].map(tuiRawLoad),
+            [import('./files/app.html.md'), import('./files/app.ts.md')].map(tuiRawLoad),
         ).then((markdowns) => markdowns.map((md) => tuiTryParseMarkdownCodeBlock(md)[0]));
 
         return this.stackblitz.openStarter(
@@ -44,15 +41,14 @@ export default class Page implements OnInit {
                 description:
                     'A starter with Taiga UI library\nDocumentation: https://taiga-ui.dev',
                 files: {
-                    [appPrefix`app.template.html`]: appTemplate ?? '',
-                    [appPrefix`app.component.ts`]: appComponent ?? '',
-                    [appPrefix`app.style.less`]:
-                        "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
+                    [appPrefix`app.html`]: appTemplate ?? '',
+                    [appPrefix`app.ts`]: appComponent ?? '',
+                    [appPrefix`app.less`]: "@import '@taiga-ui/styles/utils.less';",
                 },
             },
             {
                 newWindow: false,
-                openFile: appPrefix`app.template.html`,
+                openFile: appPrefix`app.html`,
                 hideExplorer: true,
             },
         );

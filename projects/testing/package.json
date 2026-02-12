@@ -1,10 +1,10 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "Utils functions for testing Taiga UI packages",
     "license": "Apache-2.0",
     "peerDependencies": {
-        "@taiga-ui/cdk": "^5.0.0-rc.2",
+        "@taiga-ui/cdk": "^5.0.0-rc.3",
         "resize-observer-polyfill": ">=1.5.1",
         "sharp": "^0.34.5",
         "tslib": ">=2.8.1"

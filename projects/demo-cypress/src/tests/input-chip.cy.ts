@@ -1,14 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiCheckbox, TuiDataList, TuiRadio, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {
-    TuiCheckbox,
     TuiChevron,
     TuiFilterByInputPipe,
     TuiInputChip,
     TuiMultiSelect,
-    TuiRadio,
     TuiSwitch,
 } from '@taiga-ui/kit';
 
@@ -92,7 +90,6 @@ interface User {
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestInputDate {
     protected checkbox = true;

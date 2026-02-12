@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 @top-m-label: calc(0.5rem + var(--t-height) / 3);
 @top-l-label: calc(0.625rem + var(--t-height) / 3);
@@ -25,7 +25,9 @@
     padding-block: 1.125rem 0.375rem;
 }
 
-:host {
+:host:host {
+    white-space: pre-wrap;
+    overflow: auto;
     word-break: break-word;
     border: 0 solid transparent;
 

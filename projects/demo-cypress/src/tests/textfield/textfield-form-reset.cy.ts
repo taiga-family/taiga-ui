@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiYear} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiRoot} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
@@ -121,7 +121,6 @@ import {
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class Sandbox {
     protected readonly year = new TuiYear(2020);

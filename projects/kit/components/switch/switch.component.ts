@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/core/components/radio';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
 
@@ -17,7 +17,7 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/switch.less';
+            @import '@taiga-ui/styles/components/switch.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

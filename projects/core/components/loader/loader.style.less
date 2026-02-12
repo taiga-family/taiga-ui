@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 // Safari doesn't support rem units for all properties of `<circle />`.
 // `<circle />`'s wrapper has `font-size: 1rem` to use em units as rem ones interchangeably
@@ -13,8 +13,7 @@
 
 :host {
     position: relative;
-    display: flex;
-    min-inline-size: 1.5rem;
+    display: grid;
 
     --tui-thickness: calc(var(--t-diameter) / 12);
 
@@ -48,40 +47,27 @@
 }
 
 .t-content {
-    z-index: 0;
-    min-inline-size: 100%;
-    block-size: 100%;
+    grid-area: 1 / 1;
     padding: 0;
     margin: 0;
     border: none;
-
-    &_has-overlay {
-        opacity: 0.3;
-    }
-
-    &_loading {
-        pointer-events: none;
-    }
+    isolation: inherit;
 }
 
 .t-loader {
     position: relative;
-    left: -100%;
     display: flex;
-    inset-inline-start: -100%;
+    grid-area: 1 / 1;
     flex-direction: column;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
-    min-inline-size: 100%;
-    min-block-size: var(--t-diameter);
-    flex-shrink: 0;
-    align-self: center;
     color: var(--tui-text-primary);
     stroke: var(--tui-background-accent-1);
-    animation: tuiFadeIn var(--tui-duration);
     font-size: 1rem; // to use em units as rem ones interchangeably (Safari)
 
-    &&_horizontal {
+    :host[data-size='xs'] &,
+    :host[data-size='s'] & {
         flex-direction: row;
     }
 
@@ -94,17 +80,10 @@
 .t-text {
     .text-overflow();
 
-    font: var(--tui-font-body-s);
-    margin-block-start: 1rem;
+    font: var(--tui-typography-body-s);
     color: inherit;
     max-inline-size: 100%;
     text-align: center;
-    stroke-width: 0; // for Safari 11
-
-    &_horizontal {
-        margin: 0;
-        margin-inline-start: 1rem;
-    }
 }
 
 @keyframes tuiLoaderRotate {
@@ -124,18 +103,8 @@
 }
 
 .t-icon {
-    .safari-only({
-        & {
-            overflow: visible;
-        }
-    });
-
-    display: block;
     inline-size: var(--t-diameter);
     block-size: var(--t-diameter);
-    margin: 0 calc(var(--t-diameter) / -2);
-    border-radius: 100%;
-    overflow: hidden;
     animation: tuiLoaderRotate 4s linear infinite;
 }
 
@@ -158,6 +127,8 @@
 
 .t-circle {
     r: @radius;
+    cx: 50%;
+    cy: 50%;
     stroke-dasharray: @circumference;
     fill: none;
     stroke: inherit;

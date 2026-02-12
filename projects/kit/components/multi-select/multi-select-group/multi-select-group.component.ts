@@ -24,7 +24,6 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     templateUrl: './multi-select-group.template.html',
     styleUrl: './multi-select-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[class._label]': 'label'},
 })
 export class TuiMultiSelectGroupComponent<T> {
     private readonly options = contentChildren(TuiOptionWithValue<T>);

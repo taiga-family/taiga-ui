@@ -16,21 +16,19 @@
         #content
         let-item
     >
-        <span tuiCell>
-            <span tuiAvatar="@tui.star"></span>
-            <span tuiTitle>
-                <tui-items-with-more tuiSubtitle>
-                    <span *tuiItem>{{ item.name }}</span>
-                    <span *tuiItem>&nbsp;• {{ item.number }}</span>
-                    <div *tuiMore="let index">
-                        @if (index < 0) {
-                            <span>{{ item.name }}</span>
-                        }
-                        <span>&nbsp;*{{ item.number.slice(-4) }}</span>
-                    </div>
-                </tui-items-with-more>
-                ${{ item.value | tuiFormatNumber }}
-            </span>
+        <span tuiAvatar="@tui.star"></span>
+        <span tuiTitle>
+            <tui-items-with-more tuiSubtitle>
+                <span *tuiItem>{{ item.name }}</span>
+                <span *tuiItem>&nbsp;• {{ item.number }}</span>
+                <div *tuiMore="let index">
+                    @if (index < 0) {
+                        <span>{{ item.name }}</span>
+                    }
+                    <span>&nbsp;*{{ item.number.slice(-4) }}</span>
+                </div>
+            </tui-items-with-more>
+            ${{ item.value | tuiFormatNumber }}
         </span>
     </ng-template>
 </tui-textfield>

@@ -1,0 +1,43 @@
+@import '@taiga-ui/styles/utils.less';
+
+.popout {
+    min-block-size: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    background: var(--tui-base-02);
+}
+
+:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+
+    @media @tui-mobile {
+        flex-direction: column;
+    }
+}
+
+[tuiTitle] {
+    text-align: center;
+    color: var(--tui-text-primary);
+}
+
+.legend {
+    margin: 0 0 0 2rem;
+    text-align: center;
+
+    @media @tui-mobile {
+        margin: 2rem 0 0;
+    }
+}
+
+.item {
+    margin: 0 0.5rem 0.75rem 0;
+}

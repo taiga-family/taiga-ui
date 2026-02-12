@@ -1,0 +1,117 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name ProgressBar
+ * @selector [tuiProgressBar]
+ *
+ * @description
+ * A stylized native progress element
+ *
+ * @attributes
+ * data-size — size (default: 'm') ('xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' )
+ *
+ * @example
+ * <progress tuiProgressBar value="33"></progress>
+ */
+.clearProgress() {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+
+/* used to style inner value bar */
+.progressValue(@ruleset) {
+    &::-webkit-progress-value {
+        @ruleset(); // Chromium Edge | Chrome | Opera | Safari
+    }
+
+    &::-moz-progress-bar {
+        @ruleset(); // Mozilla
+    }
+}
+
+/*
+* Edge and IE animate the progress bar right out of the box
+* Chrome | Opera | Safari animation is controlled by its mixins
+* No possibility for firefox animation (https://snook.ca/archives/html_and_css/animating-progress)
+*/
+.progressAnimation() {
+    &::-webkit-progress-value {
+        transition: inline-size var(--tui-duration) linear;
+    }
+}
+
+@keyframes tuiIndeterminateAnimation {
+    50% {
+        background-position: left;
+    }
+}
+
+[tuiProgressBar]:where(*&) {
+    @track-color: var(--tui-background-neutral-2);
+    @progress-color: var(--tui-progress-color, currentColor);
+
+    .clearProgress();
+    .progressAnimation();
+    .progressValue({ background: @progress-color; border-radius: inherit });
+
+    --t-height: 0.75rem;
+
+    display: block;
+    inline-size: 100%;
+    block-size: var(--t-height);
+    color: var(--tui-background-accent-1);
+    background: @track-color;
+    clip-path: inset(0 0.5px round var(--tui-radius-m)); // 0.5px is a hack to prevent jagged edges on low dpi screens
+    overflow: hidden;
+    border-radius: 1rem;
+    flex-shrink: 0;
+
+    &[data-size='xxs'] {
+        --t-height: 0.125rem;
+    }
+
+    &[data-size='xs'] {
+        --t-height: 0.25rem;
+    }
+
+    &[data-size='s'] {
+        --t-height: 0.5rem;
+    }
+
+    &[data-size='l'] {
+        --t-height: 1rem;
+    }
+
+    &[data-size='xl'] {
+        --t-height: 1.25rem;
+    }
+
+    &[data-size='xxl'] {
+        --t-height: 1.5rem;
+    }
+
+    &:indeterminate {
+        .progressValue({ background: transparent });
+
+        background: linear-gradient(to right, @track-color 0 45%, @progress-color 45% 55%, @track-color 55% 100%) right;
+        background-size: 225%;
+        animation: tuiIndeterminateAnimation 3s infinite ease-in-out;
+    }
+
+    &::-webkit-progress-inner-element {
+        border-radius: inherit;
+    }
+
+    &::-webkit-progress-bar {
+        background: transparent;
+        border-radius: inherit;
+    }
+
+    label[tuiProgressLabel] &:not(:first-child) {
+        .fullsize();
+
+        background: transparent;
+    }
+}

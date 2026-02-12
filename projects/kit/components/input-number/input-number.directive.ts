@@ -19,8 +19,8 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(focusout)': 'setValue(transformer.fromControlValue(control.value))',
         '(focus)': 'onFocus()',
+        '(blur)': 'onBlur()',
     },
 })
 export class TuiInputNumberDirective extends TuiControl<string> {
@@ -106,6 +106,12 @@ export class TuiInputNumberDirective extends TuiControl<string> {
         if (!this.input.value() && !this.readOnly()) {
             this.input.value.set(this.mask.prefix() + this.mask.postfix());
         }
+    }
+
+    protected onBlur(): void {
+        setTimeout(() =>
+            this.setValue(this.transformer.fromControlValue(this.control.value)),
+        );
     }
 
     private parse(value: string): bigint | number {

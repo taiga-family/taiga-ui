@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
 import {TuiTable} from '@taiga-ui/addon-table';
-import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less';
+import fileWithBreakpoints from '@taiga-ui/styles/variables/media.less';
 
 /**
  * Match all code comments.
@@ -41,8 +41,8 @@ export default class Page {
     protected readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
     protected readonly columnsNames = Object.keys(this.breakpoints[0]!);
 
-    protected readonly importTaigaUILocalLess =
-        import('./examples/import/import-taiga-ui-local-less.md');
+    protected readonly importTaigaStyleUtils =
+        import('./examples/import/import-taiga-style-utils.md');
 
     protected readonly exampleBaseUsage =
         import('./examples/import/base-breakpoint-usage.md');

@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     .scrollbar-hidden();
@@ -7,7 +7,7 @@
     scroll-behavior: var(--tui-scroll-behavior);
     overflow: auto;
     counter-reset: steps;
-    font: var(--tui-font-body-m);
+    font: var(--tui-typography-body-m);
 
     &[data-orientation='vertical'] {
         flex-direction: column;

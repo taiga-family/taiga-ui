@@ -11,12 +11,7 @@ import {TuiInputMonth, tuiInputMonthOptionsProvider, TuiTooltip} from '@taiga-ui
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputMonthOptionsProvider({
-            // Callback has the first argument – size of the textfield box ('s' | 'm' | 'l')
-            icon: () => '',
-        }),
-    ],
+    providers: [tuiInputMonthOptionsProvider({icon: ''})],
 })
 export default class Example {
     protected value: TuiMonth | null = null;

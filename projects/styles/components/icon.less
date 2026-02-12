@@ -1,0 +1,83 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Icon
+ * @selector tui-icon
+ *
+ * @description
+ * Container for displaying icons colored with CSS (color/background)
+ *
+ * @vars
+ * --t-icon — depending on the data-icon, it can serve as either a mask (`svg`),
+  a background (`img`), or content (`font`) for the icon.
+ * --t-icon-bg — mask for the background
+ *
+ * @example
+ * <tui-icon tuiIcons style="--t-icon: url('icon.svg')"></tui-icon>
+ *
+ * @see-also
+ * Icons
+ */
+tui-icon:where(*&) {
+    --tui-icon-size: 1em;
+
+    position: relative;
+    display: inline-flex;
+    inline-size: 1em;
+    block-size: 1em;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    border: 0 solid transparent;
+    vertical-align: middle;
+    box-sizing: border-box;
+    mask: var(--t-icon-bg) no-repeat center / calc(100% + 10 * var(--tui-stroke-width)) 100%;
+    zoom: ~'calc(100% * (min(max(var(--tui-typography-offset) - 10px, 0px), 1px) / 0.8px))';
+
+    @media @tui-mouse {
+        &[data-appearance='icon']:hover {
+            color: var(--tui-text-secondary);
+        }
+    }
+
+    &[data-icon-end] {
+        &::before {
+            mask-image:
+                var(--t-icon-start),
+                radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
+            mask-composite: intersect;
+        }
+
+        &[data-icon-start='img'],
+        &[data-icon-start='font'] {
+            &::before {
+                mask: radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
+            }
+        }
+
+        &::after {
+            .fullsize();
+        }
+    }
+
+    &[data-icon-start] {
+        &::before {
+            .fullsize();
+        }
+
+        &::after {
+            transform: translate(36%, 36%);
+
+            --tui-icon-size: 0.5715em;
+        }
+    }
+
+    &[data-icon-start='img']::before,
+    &[data-icon-end='img']::after {
+        zoom: 1;
+    }
+
+    &[data-icon-start='font']::before,
+    &[data-icon-end='font']::after {
+        zoom: 0.667;
+    }
+}

@@ -7,14 +7,7 @@ import {
     TuiDropdownSheet,
     TuiResponsiveDialog,
 } from '@taiga-ui/addon-mobile';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TuiButton,
-    TuiCell,
-    TuiRoot,
-    TuiTextfield,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiRoot, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiChevron,
@@ -43,7 +36,6 @@ interface User {
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiDataListWrapper,
         TuiDropdownMobile,
@@ -119,20 +111,18 @@ interface User {
                 #template
                 let-user
             >
-                <span tuiCell>
-                    <div [tuiAvatar]="user.name | tuiInitials">
-                        @if (user.url) {
-                            <img
-                                alt=""
-                                [src]="user.url"
-                            />
-                        }
-                    </div>
-                    <span tuiTitle>
-                        {{ user.name }}
-                        <span tuiSubtitle>
-                            {{ user.balance | tuiAmount: '$' : 'start' }}
-                        </span>
+                <div [tuiAvatar]="user.name | tuiInitials">
+                    @if (user.url) {
+                        <img
+                            alt=""
+                            [src]="user.url"
+                        />
+                    }
+                </div>
+                <span tuiTitle>
+                    {{ user.name }}
+                    <span tuiSubtitle>
+                        {{ user.balance | tuiAmount: '$' : 'start' }}
                     </span>
                 </span>
             </ng-template>
@@ -161,10 +151,7 @@ describe('DropdownMobile', () => {
     beforeEach(() => {
         cy.viewport(375, 660);
         cy.mount(TestDropdownMobile, {
-            providers: [
-                {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
-                {provide: WA_IS_MOBILE, useValue: true},
-            ],
+            providers: [{provide: WA_IS_MOBILE, useValue: true}],
         }).then(({fixture, component}) => {
             fixture.detectChanges();
             component.dialog.set(true);

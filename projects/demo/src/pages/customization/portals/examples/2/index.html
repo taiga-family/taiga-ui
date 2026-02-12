@@ -5,17 +5,5 @@
     [disabled]="ref()"
     (click)="openPopout()"
 >
-    Open a separate window
+    Open a window mode
 </button>
-
-@if (ref()) {
-    <button
-        appearance="primary-destructive"
-        size="s"
-        tuiButton
-        type="button"
-        (click)="closePopout()"
-    >
-        Close window
-    </button>
-}
