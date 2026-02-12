@@ -1,0 +1,21 @@
+import"./chunk-B4AJQJMI.js";var a=`.button {
+    display: flex;
+    inline-size: 20rem;
+    text-align: start;
+    gap: 1rem;
+    border-radius: 1rem;
+    padding: 1rem 1rem 1rem 1.25rem;
+    font: var(--tui-typography-body-m);
+}
+
+.title {
+    display: block;
+    font: var(--tui-typography-heading-h6);
+    margin-block-end: 0.25rem;
+}
+
+.bad {
+    margin-block-start: 1rem;
+    padding: 1.25rem;
+}
+`;export{a as default};

@@ -6750,7 +6750,7 @@ export default class Example {
 
 .plate {
     display: flex;
-    font: var(--tui-font-heading-h3);
+    font: var(--tui-typography-heading-h3);
     flex-direction: column;
     align-items: flex-start;
     inline-size: 100%;
@@ -9054,40 +9054,45 @@ export default class Example {}
 
 **Template:**
 ```html
-@for (font of fonts; track font) { <p>
-<tui-copy [size]="$index > 5 ? 'm' : 'l'" [style.font]="`var(--tui-${font})`" [style.white-space]="'nowrap'" > {{ font }} </tui-copy>
+@for (font of fonts | keyvalue: orderBy; track font) { <p>
+<tui-copy [size]="$index > 5 ? 'm' : 'l'" [style.font]="`var(${font.value})`" [style.white-space]="'nowrap'" > {{ font.key }} </tui-copy>
 </p> }
 ```
 **TypeScript:**
 ```ts
+import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCopy} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiCopy],
+    imports: [KeyValuePipe, TuiCopy],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly fonts = [
-        'font-heading-h1',
-        'font-heading-h2',
-        'font-heading-h3',
-        'font-heading-h4',
-        'font-heading-h5',
-        'font-heading-h6',
-        'font-body-l',
-        'font-body-m',
-        'font-body-s',
-        'font-body-xs',
-        'font-ui-l',
-        'font-ui-m',
-        'font-ui-s',
-        'font-ui-xs',
-    ];
+    protected readonly fonts = {
+        'heading-h1': '--tui-typography-heading-h1',
+        'heading-h2': '--tui-typography-heading-h2',
+        'heading-h3': '--tui-typography-heading-h3',
+        'heading-h4': '--tui-typography-heading-h4',
+        'heading-h5': '--tui-typography-heading-h5',
+        'heading-h6': '--tui-typography-heading-h6',
+        'body-l': '--tui-typography-body-l',
+        'body-m': '--tui-typography-body-m',
+        'body-s': '--tui-typography-body-s',
+        'body-xs': '--tui-typography-body-xs',
+        'ui-l': '--tui-typography-ui-l',
+        'ui-m': '--tui-typography-ui-m',
+        'ui-s': '--tui-typography-ui-s',
+        'ui-xs': '--tui-typography-ui-xs',
+    } as const;
+
+    protected orderBy(): number {
+        return 0;
+    }
 }
 ```
 
@@ -14443,7 +14448,7 @@ export default class PageComponent {
 }
 
 .title {
-    font: var(--tui-font-heading-h5);
+    font: var(--tui-typography-heading-h5);
 }
 
 .card {
@@ -18801,7 +18806,7 @@ export default class PageComponent {
 }
 
 .phone {
-    font: var(--tui-font-body-s);
+    font: var(--tui-typography-body-s);
     color: var(--tui-text-tertiary);
 }
 ```
@@ -23292,7 +23297,7 @@ export default class Page {
 **Template:**
 ```html
 <h2>Body L</h2>
-<h6 style="font: var(--tui-font-body-l)">List of Continents</h6>
+<h6 style="font: var(--tui-typography-body-l)">List of Continents</h6>
 <ul tuiList>
 <li>Eurasia</li>
 <li>Africa</li>
@@ -23302,7 +23307,7 @@ export default class Page {
 <li>South America</li>
 </ul>
 <h2>Body M</h2>
-<h6 style="font: var(--tui-font-body-m)">List of Continents</h6>
+<h6 style="font: var(--tui-typography-body-m)">List of Continents</h6>
 <ul tuiList="m">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -23312,7 +23317,7 @@ export default class Page {
 <li>South America</li>
 </ul>
 <h2>UI S</h2>
-<h6 style="font: var(--tui-font-ui-s)">List of Continents</h6>
+<h6 style="font: var(--tui-typography-ui-s)">List of Continents</h6>
 <ul tuiList="s">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -23344,7 +23349,7 @@ export default class Example {}
 **Template:**
 ```html
 <h2>Body L</h2>
-<h6 style="font: var(--tui-font-body-l)">List of Continents</h6>
+<h6 style="font: var(--tui-typography-body-l)">List of Continents</h6>
 <ol tuiList>
 <li>Eurasia</li>
 <li>Africa</li>
@@ -23354,7 +23359,7 @@ export default class Example {}
 <li>South America</li>
 </ol>
 <h2>Body M</h2>
-<h6 style="font: var(--tui-font-body-m)">List of Continents</h6>
+<h6 style="font: var(--tui-typography-body-m)">List of Continents</h6>
 <ol tuiList="m">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -23364,7 +23369,7 @@ export default class Example {}
 <li>South America</li>
 </ol>
 <h2>UI S</h2>
-<h6 style="font: var(--tui-font-ui-s)">List of Continents</h6>
+<h6 style="font: var(--tui-typography-ui-s)">List of Continents</h6>
 <ol tuiList="s">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -35670,7 +35675,7 @@ export default class Example {}
 <b>I am a title</b>
 <div tuiSubtitle [style.color]="'var(--tui-text-secondary)'" > I'm a subtitle </div>
 </h2>
-<a href="https://github.com/taiga-family/taiga-ui" tuiLink tuiTitle [style.font-size.rem]="1" [style.line-height.rem]="1.25" > Taiga UI — GitHub <div tuiSubtitle [style.font]="'var(--tui-font-body-s)'" > Drop us a star! </div>
+<a href="https://github.com/taiga-family/taiga-ui" tuiLink tuiTitle [style.font-size.rem]="1" [style.line-height.rem]="1.25" > Taiga UI — GitHub <div tuiSubtitle [style.font]="'var(--tui-typography-body-s)'" > Drop us a star! </div>
 </a>
 <label class="flex">
 <div size="s" tuiAvatar="@tui.user" >
@@ -36737,7 +36742,7 @@ export default class Page {
 @import '@taiga-ui/styles/utils';
 
 .description-header {
-    font: var(--tui-font-body-l);
+    font: var(--tui-typography-body-l);
     font-weight: bold;
     line-height: 2.875rem;
     block-size: 2.1875rem;
@@ -40148,7 +40153,7 @@ export default class Example {}
 **Template:**
 ```html
 <div class="wrapper">
-<div tuiFade tuiFadeHeight="calc(1.25rem + var(--tui-font-offset))" tuiFadeOffset="4.5rem" class="fade" [class.fade_expanded]="expanded" > Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. @if (expanded) { <button tuiLink type="button" (click)="toggle()" > Show less </button> } </div>
+<div tuiFade tuiFadeHeight="calc(1.25rem + var(--tui-typography-offset))" tuiFadeOffset="4.5rem" class="fade" [class.fade_expanded]="expanded" > Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. @if (expanded) { <button tuiLink type="button" (click)="toggle()" > Show less </button> } </div>
 <button tuiLink type="button" class="expand" [class.expand_hidden]="expanded" (click)="toggle()" > Read more </button>
 </div>
 ```
@@ -40292,7 +40297,7 @@ export default class Page {
 
 ```less
 .fade {
-    font: var(--tui-font-heading-h6);
+    font: var(--tui-typography-heading-h6);
     white-space: nowrap;
 }
 ```
@@ -43176,8 +43181,8 @@ export default class Page {
     };
 
     protected readonly vars: Record<string, string> = {
-        '--tui-font-family-display': 'font for headings',
-        '--tui-font-family-text': 'font for text',
+        '--tui-typography-family-display': 'font for headings',
+        '--tui-typography-family-text': 'font for text',
         '--tui-radius-xs': 'border radius for smallest items (i.e. small checkbox)',
         '--tui-radius-s': 'border radius for small elements (i.e. tags)',
         '--tui-radius-m': 'default border radius',
