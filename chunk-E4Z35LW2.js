@@ -1,0 +1,162 @@
+import"./chunk-B4AJQJMI.js";var a=`<tui-doc-page header="Typography">
+    <ng-template pageTab="Headings">
+        <table class="table">
+            <tr>
+                <th class="th">text</th>
+                <th class="th">var</th>
+                <th class="th">font-weight</th>
+                <th class="th">font-size</th>
+                <th class="th">line-height</th>
+            </tr>
+            <tr>
+                <td class="td tui-text_h1">Taiga UI</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-heading-h1)">
+                        --tui-typography-heading-h1
+                    </tui-doc-copy>
+                </td>
+                <td class="td">800</td>
+                <td class="td">{{ computedFontSize('tui-text_h1') ?? '50px' }}</td>
+                <td class="td">56px (1.12)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_h2">Taiga UI is a modern UI kit for Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-heading-h2)">
+                        --tui-typography-heading-h2
+                    </tui-doc-copy>
+                </td>
+                <td class="td">800</td>
+                <td class="td">{{ computedFontSize('tui-text_h2') ?? '44px' }}</td>
+                <td class="td">48px (1.1)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_h3">Taiga UI is a modern UI kit for Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-heading-h3)">
+                        --tui-typography-heading-h3
+                    </tui-doc-copy>
+                </td>
+                <td class="td">bold</td>
+                <td class="td">{{ computedFontSize('tui-text_h3') ?? '36px' }}</td>
+                <td class="td">40px (1.11)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_h4">Taiga UI is a modern UI kit for Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-heading-h4)">
+                        --tui-typography-heading-h4
+                    </tui-doc-copy>
+                </td>
+                <td class="td">bold</td>
+                <td class="td">{{ computedFontSize('tui-text_h4') ?? '28px' }}</td>
+                <td class="td">32px (1.14)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_h5">Taiga UI is a modern UI kit for Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-heading-h5)">
+                        --tui-typography-heading-h5
+                    </tui-doc-copy>
+                </td>
+                <td class="td">bold</td>
+                <td class="td">{{ computedFontSize('tui-text_h5') ?? '24px' }}</td>
+                <td class="td">28px (1.17)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_h6">Taiga UI is a modern UI kit for Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-heading-h6)">
+                        --tui-typography-heading-h6
+                    </tui-doc-copy>
+                </td>
+                <td class="td">bold</td>
+                <td class="td">{{ computedFontSize('tui-text_h6') ?? '20px' }}</td>
+                <td class="td">24px (1.2)</td>
+            </tr>
+        </table>
+    </ng-template>
+    <ng-template pageTab="Texts">
+        <table class="table">
+            <tr>
+                <th class="th">text</th>
+                <th class="th">var</th>
+                <th class="th">font-weight</th>
+                <th class="th">font-size</th>
+                <th class="th">line-height</th>
+            </tr>
+            <tr>
+                <td class="td tui-text_body-l">Taiga UI reveals all the potential of Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-body-l)">
+                        --tui-typography-body-l
+                    </tui-doc-copy>
+                </td>
+                <td class="td">normal</td>
+                <td class="td">{{ computedFontSize('tui-text_body-l') ?? '17px' }}</td>
+                <td class="td">28px (1.65)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_body-l-2">Taiga UI reveals all the potential of Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-ui-l)">--tui-typography-ui-l</tui-doc-copy>
+                </td>
+                <td class="td">normal</td>
+                <td class="td">{{ computedFontSize('tui-text_body-l-2') ?? '17px' }}</td>
+                <td class="td">24px (1.41)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_body-m">Taiga UI reveals all the potential of Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-body-m)">
+                        --tui-typography-body-m
+                    </tui-doc-copy>
+                </td>
+                <td class="td">normal</td>
+                <td class="td">{{ computedFontSize('tui-text_body-m') ?? '15px' }}</td>
+                <td class="td">24px (1.6)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_body-m-2">Taiga UI reveals all the potential of Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-ui-m)">--tui-typography-ui-m</tui-doc-copy>
+                </td>
+                <td class="td">normal</td>
+                <td class="td">{{ computedFontSize('tui-text_body-m-2') ?? '15px' }}</td>
+                <td class="td">20px (1.33)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_body-s">Taiga UI reveals all the potential of Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-body-s)">
+                        --tui-typography-body-s
+                    </tui-doc-copy>
+                </td>
+                <td class="td">normal</td>
+                <td class="td">{{ computedFontSize('tui-text_body-s') ?? '13px' }}</td>
+                <td class="td">20px (1.54)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_body-s-2">Taiga UI reveals all the potential of Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-ui-s)">--tui-typography-ui-s</tui-doc-copy>
+                </td>
+                <td class="td">normal</td>
+                <td class="td">{{ computedFontSize('tui-text_body-s-2') ?? '13px' }}</td>
+                <td class="td">16px (1.23)</td>
+            </tr>
+            <tr>
+                <td class="td tui-text_body-xs">Taiga UI reveals all the potential of Angular</td>
+                <td class="td">
+                    <tui-doc-copy cdkCopyToClipboard="var(--tui-typography-body-xs)">
+                        --tui-typography-body-xs
+                    </tui-doc-copy>
+                </td>
+                <td class="td">normal</td>
+                <td class="td">{{ computedFontSize('tui-text_body-xs') ?? '12px' }}</td>
+                <td class="td">19px (1.58)</td>
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};
