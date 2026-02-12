@@ -133,7 +133,7 @@ test.describe('DataList', () => {
         const money = page.locator('tui-dropdown').locator('[name="moneyValue"]').nth(0);
 
         await money.focus();
-        await money.fill('');
+        await money.clear();
         await money.fill('2000');
         await money.press('Enter');
 
@@ -147,7 +147,7 @@ test.describe('DataList', () => {
             .nth(0);
 
         await email.focus();
-        await email.fill('');
+        await email.clear();
         await email.fill('demo@taiga-ui.io');
         await email.press('Enter');
 
@@ -158,7 +158,7 @@ test.describe('DataList', () => {
         const range = page.locator('input[tuiInputDateRange]').nth(0);
 
         await range.focus();
-        await range.fill('');
+        await range.clear();
         await range.fill('04.02.2022 – 04.02.2023');
         await range.press('Enter');
 
