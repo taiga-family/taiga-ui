@@ -30,7 +30,7 @@ test.describe('DropdownSelection', () => {
 
         await expect.soft(page).toHaveScreenshot('02-dropdown-selection.png');
 
-        await example.locator('textarea').fill('');
+        await example.locator('textarea').clear();
         await example.locator('textarea').fill('@');
         await api.waitStableState();
 
@@ -80,7 +80,7 @@ test.describe('DropdownSelection', () => {
 
         await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
 
-        await example.locator('textarea').fill('');
+        await example.locator('textarea').clear();
         await example
             .locator('textarea')
             .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
