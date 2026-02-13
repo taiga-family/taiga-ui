@@ -667,6 +667,10 @@ export const pages: DocRoutePages = [
         title: 'Toast',
         keywords: 'toast, тост, нотификация',
         route: DemoRoute.Toast,
+        meta: {
+            name: 'tui-notification-toast',
+            figmaVersion: '1.2.1',
+        },
     },
     {
         section: 'Components',
