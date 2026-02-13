@@ -24,6 +24,7 @@ import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateInputRange} from './templates/migrate-input-range';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateTuiNotification} from './templates/migrate-notification';
+import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 
 export function getAction<T>({
     action,
@@ -68,6 +69,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateAccordionItem,
         migrateAvatarToDirective,
         migrateTuiNotification,
+        migrateRepeatTimes,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
