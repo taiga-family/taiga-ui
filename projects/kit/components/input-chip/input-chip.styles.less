@@ -2,7 +2,12 @@
     cursor: pointer;
     margin: 0.125rem 0;
     margin-inline-end: 0.25rem;
-    pointer-events: auto;
+
+    &,
+    &[data-state='disabled'],
+    :host-context(tui-textfield[data-state='disabled']) & {
+        pointer-events: auto;
+    }
 
     .t-input {
         padding: 0;
