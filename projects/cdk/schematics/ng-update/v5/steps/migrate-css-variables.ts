@@ -31,7 +31,6 @@ const FONT_VARIABLES_REPLACEMENTS = [
     {from: '--tui-font-ui-s', to: '--tui-typography-ui-s'},
     {from: '--tui-font-ui-xs', to: '--tui-typography-ui-xs'},
     {from: '--tui-font-ui-2xs', to: '--tui-typography-ui-2xs'},
-    {from: '--tui-font-icon', to: '--tui-typography-icon'},
 ];
 
 export function migrateCssVariables(tree: Tree, options: TuiSchema): void {
