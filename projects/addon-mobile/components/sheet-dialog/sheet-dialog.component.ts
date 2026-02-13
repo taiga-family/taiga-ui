@@ -13,6 +13,7 @@ import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -24,7 +25,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 
 @Component({
     selector: 'tui-sheet-dialog',
-    imports: [PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet, TuiButton],
     templateUrl: './sheet-dialog.template.html',
     styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
