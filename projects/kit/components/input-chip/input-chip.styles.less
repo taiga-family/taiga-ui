@@ -4,9 +4,9 @@
     margin-inline-end: 0.25rem;
     pointer-events: auto;
 
-    &[data-state='disabled'],
-    :host-context(tui-textfield[data-state='disabled']) & {
-        pointer-events: none;
+    &[tuiChip][tuiChip][data-state='disabled'],
+    :host-context(tui-textfield[data-state='disabled']) &[tuiChip][tuiChip] {
+        cursor: default;
     }
 
     .t-input {
