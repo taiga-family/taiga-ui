@@ -22,7 +22,7 @@ infoLog(JSON.stringify({ci, mode, newVersion, dryRun}, null, 4));
     } else {
         makeReleaseBranch(newVersion);
         runStandardVersion(newVersion, mode, dryRun);
-        await checkChangelogBeforePush();
-        gitCommitAndPush(newVersion);
+        // await checkChangelogBeforePush();
+        // gitCommitAndPush(newVersion);
     }
 })();
