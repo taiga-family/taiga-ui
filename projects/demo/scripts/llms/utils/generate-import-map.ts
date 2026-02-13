@@ -150,9 +150,7 @@ function formatEntitySection(entity: EntityExports, perLine = 10): string {
 
 async function getPackageEntities(packageName: string): Promise<PackageEntities> {
     const packagePath = path.resolve(process.cwd(), `projects/${packageName}`);
-    const result: PackageEntities = {
-        entities: [],
-    };
+    const result: PackageEntities = {entities: []};
 
     const categories = [
         'components',
@@ -169,44 +167,60 @@ async function getPackageEntities(packageName: string): Promise<PackageEntities>
         const categoryPath = path.join(packagePath, category);
 
         if (await fileExists(categoryPath)) {
-            const entries = await fs.readdir(categoryPath, {withFileTypes: true});
-            const categoryEntities: EntityExports[] = [];
-            const rootExports: string[] = [];
-
-            for (const entry of entries) {
-                const fullPath = path.join(categoryPath, entry.name);
-
-                if (entry.isDirectory()) {
-                    const exports = await scanDirectory(fullPath);
-                    const filtered = exports.filter((exp) => !exp.startsWith('_')).sort();
-
-                    if (filtered.length > 0) {
-                        categoryEntities.push({
-                            name: entry.name,
-                            category: singularizeCategory(category),
-                            exports: filtered,
-                        });
-                    }
-                } else if (entry.isFile() && entry.name.endsWith('.ts')) {
-                    const exports = await extractExportsFromFile(fullPath);
-
-                    rootExports.push(...exports.filter((exp) => !exp.startsWith('_')));
-                }
-            }
-
-            if (rootExports.length > 0) {
-                categoryEntities.push({
-                    name: 'root',
-                    category: singularizeCategory(category),
-                    exports: rootExports.sort(),
-                });
-            }
+            const categoryEntities = await collectCategoryEntities(
+                categoryPath,
+                category,
+            );
 
             result.entities.push(...categoryEntities);
         }
     }
 
     return result;
+}
+
+async function collectCategoryEntities(
+    categoryPath: string,
+    category: string,
+): Promise<EntityExports[]> {
+    const entries = await fs.readdir(categoryPath, {withFileTypes: true});
+    const categoryEntities: EntityExports[] = [];
+    const rootExports: string[] = [];
+
+    for (const entry of entries) {
+        const fullPath = path.join(categoryPath, entry.name);
+
+        if (entry.isDirectory()) {
+            const exports = await scanDirectory(fullPath);
+            const filtered = exports.filter((exp) => !exp.startsWith('_')).sort();
+
+            if (filtered.length > 0) {
+                categoryEntities.push({
+                    name: entry.name,
+                    category: singularizeCategory(category),
+                    exports: filtered,
+                });
+            }
+
+            continue;
+        }
+
+        if (entry.isFile() && entry.name.endsWith('.ts')) {
+            const exports = await extractExportsFromFile(fullPath);
+
+            rootExports.push(...exports.filter((exp) => !exp.startsWith('_')));
+        }
+    }
+
+    if (rootExports.length > 0) {
+        categoryEntities.push({
+            name: 'root',
+            category: singularizeCategory(category),
+            exports: rootExports.sort(),
+        });
+    }
+
+    return categoryEntities;
 }
 
 export async function generateImportMap(): Promise<string> {
