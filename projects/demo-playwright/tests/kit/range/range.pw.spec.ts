@@ -20,7 +20,7 @@ describe('TuiRange', () => {
 
         describe('change selected range on click', () => {
             beforeEach(({page}) => {
-                example = new TuiDocumentationPagePO(page).getExample('#thumb-radius');
+                example = new TuiDocumentationPagePO(page).getExample('#size');
                 range = new TuiRangePO(example.locator('tui-range').first());
             });
 
