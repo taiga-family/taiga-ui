@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.62.1](https://github.com/taiga-family/taiga-ui/compare/v4.62.0...v4.62.1) (2026-02-13)
+
+### 🐞 Bug Fixes
+
+- **core:** `Hint` fix flicker in iOS
+  ([73cf235](https://github.com/taiga-family/taiga-ui/commit/73cf23558df04fd8b0c1a41f0a66c51c395b503e))
+
 ## [4.62.0](https://github.com/taiga-family/taiga-ui/compare/v4.61.0...v4.62.0) (2025-11-24)
 
 ### ⚠ BREAKING CHANGES
