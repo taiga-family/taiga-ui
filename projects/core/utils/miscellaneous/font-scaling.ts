@@ -29,7 +29,7 @@ export function tuiEnableFontScaling(): Provider {
                 offset.set(current);
 
                 return documentElement.style.setProperty(
-                    '--tui-typography-offset',
+                    '--tui-font-offset',
                     tuiPx(current),
                 );
             };
