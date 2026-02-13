@@ -49,8 +49,6 @@ describe('ng-update font variables', () => {
                     <span style="font: var(--tui-font-ui-s)"></span>
                     <span style="font: var(--tui-font-ui-xs)"></span>
                     <span style="font: var(--tui-font-ui-2xs)"></span>
-
-                    <span style="font: var(--tui-font-icon)"></span>
                 </div>
             `,
         });
@@ -94,8 +92,6 @@ describe('ng-update font variables', () => {
                     <span style="font: var(--tui-typography-ui-s)"></span>
                     <span style="font: var(--tui-typography-ui-xs)"></span>
                     <span style="font: var(--tui-typography-ui-2xs)"></span>
-
-                    <span style="font: var(--tui-typography-icon)"></span>
                 </div>
             `);
     });
