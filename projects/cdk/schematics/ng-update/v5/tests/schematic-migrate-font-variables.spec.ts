@@ -33,7 +33,6 @@ describe('ng-update font variables', () => {
 
                     <p style="font: var(--tui-font-family-text)"></p>
                     <p style="font: var(--tui-font-family-display)"></p>
-                    <p style="--offset: var(--tui-font-offset)"></p>
                     <p style="font: var(--tui-font-heading-h1)"></p>
                     <p style="font: var(--tui-font-heading-h2)"></p>
                     <p style="font: var(--tui-font-heading-h3)"></p>
@@ -79,7 +78,6 @@ describe('ng-update font variables', () => {
 
                     <p style="font: var(--tui-typography-family-text)"></p>
                     <p style="font: var(--tui-typography-family-display)"></p>
-                    <p style="--offset: var(--tui-typography-offset)"></p>
                     <p style="font: var(--tui-typography-heading-h1)"></p>
                     <p style="font: var(--tui-typography-heading-h2)"></p>
                     <p style="font: var(--tui-typography-heading-h3)"></p>
