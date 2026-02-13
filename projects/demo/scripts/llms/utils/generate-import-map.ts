@@ -1,15 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-interface PackageExports {
-    components: Set<string>;
-    directives: Set<string>;
-    pipes: Set<string>;
-    services: Set<string>;
-    types: Set<string>;
-    tokens: Set<string>;
-    utils: Set<string>;
-    classes: Set<string>;
+interface EntityExports {
+    name: string;
+    category: string;
+    exports: string[];
+}
+
+interface PackageEntities {
+    entities: EntityExports[];
 }
 
 const PACKAGES = [
@@ -100,17 +99,59 @@ async function scanDirectory(dirPath: string, depth = 0): Promise<string[]> {
     return exports;
 }
 
-async function getPackageExports(packageName: string): Promise<PackageExports> {
+function singularizeCategory(category: string): string {
+    const map: Record<string, string> = {
+        components: 'component',
+        directives: 'directive',
+        pipes: 'pipe',
+        services: 'service',
+        types: 'type',
+        tokens: 'token',
+        utils: 'utility',
+        classes: 'class',
+    };
+
+    return map[category] || category;
+}
+
+function formatExportsList(exports: string[], perLine = 10): string {
+    if (exports.length === 0) {
+        return '';
+    }
+
+    const lines: string[] = [];
+    let currentLine: string[] = [];
+
+    for (const exp of exports) {
+        currentLine.push(exp);
+
+        if (currentLine.length >= perLine) {
+            lines.push(`  ${currentLine.join(', ')}`);
+            currentLine = [];
+        }
+    }
+
+    if (currentLine.length > 0) {
+        lines.push(`  ${currentLine.join(', ')}`);
+    }
+
+    return `\`\`\`text\n${lines.join('\n')}\n\`\`\``;
+}
+
+function formatEntitySection(entity: EntityExports, perLine = 10): string {
+    const exportsBlock = formatExportsList(entity.exports, perLine);
+
+    if (!exportsBlock) {
+        return '';
+    }
+
+    return `### ${entity.name}\n\n${exportsBlock}\n`;
+}
+
+async function getPackageEntities(packageName: string): Promise<PackageEntities> {
     const packagePath = path.resolve(process.cwd(), `projects/${packageName}`);
-    const result: PackageExports = {
-        components: new Set(),
-        directives: new Set(),
-        pipes: new Set(),
-        services: new Set(),
-        types: new Set(),
-        tokens: new Set(),
-        utils: new Set(),
-        classes: new Set(),
+    const result: PackageEntities = {
+        entities: [],
     };
 
     const categories = [
@@ -128,43 +169,44 @@ async function getPackageExports(packageName: string): Promise<PackageExports> {
         const categoryPath = path.join(packagePath, category);
 
         if (await fileExists(categoryPath)) {
-            const exports = await scanDirectory(categoryPath);
+            const entries = await fs.readdir(categoryPath, {withFileTypes: true});
+            const categoryEntities: EntityExports[] = [];
+            const rootExports: string[] = [];
 
-            exports.forEach((exp) => {
-                // Filter out internal/private exports (starting with underscore)
-                if (!exp.startsWith('_')) {
-                    result[category as keyof PackageExports].add(exp);
+            for (const entry of entries) {
+                const fullPath = path.join(categoryPath, entry.name);
+
+                if (entry.isDirectory()) {
+                    const exports = await scanDirectory(fullPath);
+                    const filtered = exports.filter((exp) => !exp.startsWith('_')).sort();
+
+                    if (filtered.length > 0) {
+                        categoryEntities.push({
+                            name: entry.name,
+                            category: singularizeCategory(category),
+                            exports: filtered,
+                        });
+                    }
+                } else if (entry.isFile() && entry.name.endsWith('.ts')) {
+                    const exports = await extractExportsFromFile(fullPath);
+
+                    rootExports.push(...exports.filter((exp) => !exp.startsWith('_')));
                 }
-            });
+            }
+
+            if (rootExports.length > 0) {
+                categoryEntities.push({
+                    name: 'root',
+                    category: singularizeCategory(category),
+                    exports: rootExports.sort(),
+                });
+            }
+
+            result.entities.push(...categoryEntities);
         }
     }
 
     return result;
-}
-
-function formatExportsSection(title: string, exports: Set<string>, perLine = 10): string {
-    if (exports.size === 0) {
-        return '';
-    }
-
-    const sortedExports = Array.from(exports).sort();
-    const lines: string[] = [];
-    let currentLine: string[] = [];
-
-    for (const exp of sortedExports) {
-        currentLine.push(exp);
-
-        if (currentLine.length >= perLine) {
-            lines.push(`  ${currentLine.join(', ')}`);
-            currentLine = [];
-        }
-    }
-
-    if (currentLine.length > 0) {
-        lines.push(`  ${currentLine.join(', ')}`);
-    }
-
-    return `**${title}:**\n\n\`\`\`text\n${lines.join('\n')}\n\`\`\`\n`;
 }
 
 export async function generateImportMap(): Promise<string> {
@@ -183,15 +225,13 @@ export async function generateImportMap(): Promise<string> {
 
         console.info(`Processing ${packageDisplayName}...`);
 
-        const exports = await getPackageExports(pkg);
+        const {entities} = await getPackageEntities(pkg);
 
         // Skip packages with no exports
-        const totalExports =
-            exports.components.size +
-            exports.directives.size +
-            exports.pipes.size +
-            exports.services.size +
-            exports.types.size;
+        const totalExports = entities.reduce(
+            (sum, entity) => sum + entity.exports.length,
+            0,
+        );
 
         if (totalExports === 0) {
             console.info('  ⚠ No exports found, skipping');
@@ -201,46 +241,114 @@ export async function generateImportMap(): Promise<string> {
         output.push('---\n');
         output.push(`## ${packageDisplayName}\n`);
 
-        // Components & Directives (combined for better readability)
-        const componentsAndDirectives = new Set([
-            ...exports.components,
-            ...exports.directives,
-        ]);
+        const perLineByCategory: Record<string, number> = {
+            component: 10,
+            directive: 10,
+            pipe: 10,
+            service: 10,
+            type: 5,
+            token: 5,
+            utility: 5,
+            class: 5,
+        };
 
-        if (componentsAndDirectives.size > 0) {
-            output.push(
-                formatExportsSection('Components & Directives', componentsAndDirectives),
-            );
-        }
+        const categoryOrder = [
+            'component',
+            'directive',
+            'pipe',
+            'service',
+            'type',
+            'token',
+            'utility',
+            'class',
+        ];
 
-        // Services
-        if (exports.services.size > 0) {
-            output.push(formatExportsSection('Services', exports.services));
-        }
+        const byCategory = entities.reduce<Record<string, EntityExports[]>>(
+            (acc, entity) => {
+                if (!acc[entity.category]) {
+                    acc[entity.category] = [];
+                }
 
-        // Pipes
-        if (exports.pipes.size > 0) {
-            output.push(formatExportsSection('Pipes', exports.pipes));
-        }
+                acc[entity.category]!.push(entity);
 
-        // Types
-        if (exports.types.size > 0) {
-            output.push(formatExportsSection('Types', exports.types, 5));
-        }
-
-        // Tokens
-        if (exports.tokens.size > 0) {
-            output.push(formatExportsSection('Tokens', exports.tokens, 5));
-        }
-
-        // Utils & Classes (if needed)
-        if (exports.utils.size > 0) {
-            output.push(formatExportsSection('Utilities', exports.utils, 5));
-        }
-
-        console.info(
-            `  ✓ Found ${componentsAndDirectives.size} components/directives, ${exports.services.size} services, ${exports.pipes.size} pipes, ${exports.types.size} types`,
+                return acc;
+            },
+            {},
         );
+
+        const sortedCategories = Object.keys(byCategory).sort((a, b) => {
+            const aIdx = categoryOrder.indexOf(a);
+            const bIdx = categoryOrder.indexOf(b);
+
+            if (aIdx === -1 && bIdx === -1) {
+                return a.localeCompare(b);
+            }
+
+            if (aIdx === -1) {
+                return 1;
+            }
+
+            if (bIdx === -1) {
+                return -1;
+            }
+
+            return aIdx - bIdx;
+        });
+
+        for (const category of sortedCategories) {
+            const categoryEntities = byCategory[category] || [];
+
+            if (categoryEntities.length === 0) {
+                continue;
+            }
+
+            const title = `${category[0]?.toUpperCase()}${category.slice(1)}s`;
+
+            output.push(`**${title}:**\n`);
+
+            const sortedEntities = categoryEntities.sort((a, b) =>
+                a.name.localeCompare(b.name),
+            );
+
+            for (const entity of sortedEntities) {
+                const perLine = perLineByCategory[entity.category] ?? 10;
+                const section = formatEntitySection(entity, perLine);
+
+                if (section) {
+                    output.push(section);
+                }
+            }
+        }
+
+        const categoryCounts = entities.reduce<Record<string, number>>((acc, entity) => {
+            acc[entity.category] = (acc[entity.category] || 0) + 1;
+
+            return acc;
+        }, {});
+
+        const countSummary = Object.entries(categoryCounts)
+            .sort(([a], [b]) => {
+                const aIdx = categoryOrder.indexOf(a);
+                const bIdx = categoryOrder.indexOf(b);
+
+                if (aIdx === -1 && bIdx === -1) {
+                    return a.localeCompare(b);
+                }
+
+                if (aIdx === -1) {
+                    return 1;
+                }
+
+                if (bIdx === -1) {
+                    return -1;
+                }
+
+                return aIdx - bIdx;
+            })
+            .map(([category, count]) => `${count} ${category}s`)
+            .join(', ');
+
+        console.info(`  ✓ Found ${entities.length} entities (${countSummary})`);
     }
 
     // Add Angular common imports section
