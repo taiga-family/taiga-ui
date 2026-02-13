@@ -1,0 +1,11 @@
+import"./chunk-2IDGPPFK.js";import"./chunk-JK5HT2AB.js";import"./chunk-KFMPOXNV.js";import"./chunk-TF24AHRB.js";import"./chunk-L6M7T63J.js";import"./chunk-IWKM7HB7.js";import"./chunk-MOCXYVGQ.js";import"./chunk-EGC2VL5L.js";import"./chunk-AMVXOCDN.js";import"./chunk-7ABCP53G.js";import"./chunk-ZWKWEEM2.js";import"./chunk-FTCBM4DE.js";import"./chunk-EBHFP2TI.js";import"./chunk-O6XMKD7H.js";import{fa as l}from"./chunk-6GXSYTJW.js";import"./chunk-LL2PODKS.js";import"./chunk-KFO6RLOG.js";import"./chunk-5PABLJY7.js";import"./chunk-SXUQLDLW.js";import"./chunk-FDI6E7EX.js";import"./chunk-XPB6YNIV.js";import"./chunk-XHQXVLHQ.js";import"./chunk-PIT57PTL.js";import"./chunk-OBPPGIVQ.js";import"./chunk-TQEODDI3.js";import"./chunk-KWZHGPWS.js";import"./chunk-TDHYON55.js";import"./chunk-GOJWO2R3.js";import{Mc as t,Tb as p,pc as e,qc as n}from"./chunk-2UPKG2B4.js";import"./chunk-B4AJQJMI.js";var i=class i{};i.\u0275fac=function(a){return new(a||i)},i.\u0275cmp=p({type:i,selectors:[["ng-component"]],decls:29,vars:0,consts:[["appearance","primary","tuiButton","","type","button"],["appearance","accent","tuiButton","","type","button"],["appearance","secondary","tuiButton","","type","button"],["appearance","flat","tuiButton","","type","button"],["appearance","outline","tuiButton","","type","button"],["appearance","floating","tuiButton","","type","button"],["appearance","primary","disabled","","tuiButton","","type","button"],["appearance","outline","tuiAppearanceMode","checked","tuiButton","","type","button"],["appearance","outline-grayscale","tuiAppearanceMode","checked invalid","tuiButton","","type","button"]],template:function(a,u){a&1&&(e(0,"button",0),t(1,` Primary
+`),n(),e(2,"button",1),t(3,` Accent
+`),n(),e(4,"button",2),t(5,` Secondary
+`),n(),e(6,"button",3),t(7,` Flat
+`),n(),e(8,"button",4),t(9,` Outline
+`),n(),e(10,"button",5),t(11,` Floating
+`),n(),e(12,"button",6),t(13,` Primary disabled
+`),n(),e(14,"div"),t(15," Use "),e(16,"code"),t(17,"tuiAppearanceMode"),n(),t(18," to emulate "),e(19,"code"),t(20,":checked"),n(),t(21," / "),e(22,"code"),t(23,":invalid"),n(),t(24,` CSS state for outline appearance:
+`),n(),e(25,"button",7),t(26,` Outline
+`),n(),e(27,"button",8),t(28,` Outline
+`),n())},dependencies:[l],styles:["[_nghost-%COMP%]{display:flex;gap:1rem;flex-wrap:wrap}"],changeDetection:0});var o=i;export{o as default};
