@@ -151,4 +151,21 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
             // Empty catch block - silently ignore showPicker errors
         }
     }
+
+    protected onFocus(): void {
+        setTimeout(() => this.scrollTo(true), 10);
+    }
+
+    public scrollTo(end = false): void {
+        const sign = this.el.matches('[dir="rtl"] :scope') ? -1 : 1;
+        const scrollLeft = end ? sign * Number.MAX_SAFE_INTEGER : 0;
+
+        // Allow change detection to run and placeholder to be rendered
+        setTimeout(() => {
+            this.el.scrollTo({
+                left: scrollLeft,
+                top: this.rows === 1 ? 0 : Number.MAX_SAFE_INTEGER,
+            });
+        }, 10);
+    }
 }

@@ -108,7 +108,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
 
     protected override onEnter(): void {
         this.onValueChange(this.textfield.value().trim());
-        this.scrollTo();
+        this.textfield.scrollTo(true);
     }
 
     private updateValue(day: TuiDay): void {

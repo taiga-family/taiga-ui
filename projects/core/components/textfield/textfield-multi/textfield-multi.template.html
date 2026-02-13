@@ -19,6 +19,7 @@
     }
     <span
         class="t-input"
+        (focus.capture)="onFocus()"
         (keydown.arrowLeft)="onLeft($event)"
     >
         <ng-content select="input" />
