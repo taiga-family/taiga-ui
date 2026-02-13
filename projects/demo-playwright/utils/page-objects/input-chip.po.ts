@@ -18,7 +18,7 @@ export class TuiInputChipPO {
         await this.input.focus();
         await this.input.fill(value);
         await this.input.press('Enter');
-
+        await this.host.page().waitForTimeout(500);
         await expect.poll(async () => this.chips.count()).toBeGreaterThan(initialCount);
     }
 }
