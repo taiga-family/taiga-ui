@@ -34,7 +34,7 @@ export class TuiHintHover extends TuiDriver {
         this.toggle$.pipe(
             switchMap((show) =>
                 this.isMobile
-                    ? of(show)
+                    ? of(show).pipe(delay(0))
                     : of(show).pipe(delay(show ? 0 : this.hideDelay())),
             ),
             takeUntil(this.hovered$),
