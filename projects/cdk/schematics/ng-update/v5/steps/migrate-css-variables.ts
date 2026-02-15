@@ -37,7 +37,7 @@ const FONT_VARIABLES_REPLACEMENTS = [
 ];
 
 export const TUI_THICKNESS_COMMENT =
-    'use --tui-thumb-size. Learn more: https://taiga-ui.dev/next/components/slider#size';
+    'use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size';
 
 const DEPRECATED_VARS_WITH_COMMENT = [
     {
