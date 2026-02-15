@@ -30,6 +30,7 @@
             tuiInputChip
             [placeholder]="pythons.length ? '' : 'Type for suggestions'"
             [(ngModel)]="pythons"
+            (input)="onInput($event)"
         />
         @if (!input.focused()) {
             <ng-template tuiItem />

@@ -51,4 +51,8 @@ export default class Example {
     protected readonly strings = tuiIsString;
     protected readonly stringify = ({name}: User): string => name;
     protected readonly disabled = (item: string): boolean => !this.items.includes(item);
+
+    public onInput({target}: Event): void {
+        console.info('(test) Input event:', (target as HTMLInputElement).value, target);
+    }
 }
