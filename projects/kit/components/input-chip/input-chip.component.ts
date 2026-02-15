@@ -104,6 +104,9 @@ export class TuiInputChipComponent<T> {
             this.textfield
                 .cva()
                 ?.onChange(this.value().filter((_, i) => i !== this.index));
+            this.textfield
+                .input()
+                ?.nativeElement.dispatchEvent(new Event('input', {bubbles: true}));
         }
 
         if (!this.mobile) {
@@ -123,6 +126,9 @@ export class TuiInputChipComponent<T> {
         );
 
         this.textfield.cva()?.onChange(value);
+        this.textfield
+            .input()
+            ?.nativeElement.dispatchEvent(new Event('input', {bubbles: true}));
         this.editing.set(false);
         this.textfield.input()?.nativeElement.focus({preventScroll: true});
     }

@@ -76,6 +76,7 @@ export class TuiInputChipDirective<T>
         this.onChange(
             this.unique() ? Array.from(new Set(value.reverse())).reverse() : value,
         );
+        this.el.dispatchEvent(new InputEvent('input', {bubbles: true}));
     }
 
     protected onEnter(rawValue = this.textfield.value()): void {
@@ -128,6 +129,7 @@ export class TuiInputChipDirective<T>
         if (key === 'Backspace' && !this.textfield.value() && this.interactive()) {
             if (this.mobile || !this.textfield.item()) {
                 this.onChange(this.value().slice(0, -1));
+                this.el.dispatchEvent(new InputEvent('input', {bubbles: true}));
             } else {
                 this.el.dispatchEvent(
                     new KeyboardEvent('keydown', {
