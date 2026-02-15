@@ -1,18 +1,7 @@
 import {join} from 'node:path';
 
-import {HostTree} from '@angular-devkit/schematics';
-import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import {type TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {runMigration} from '@taiga-ui/cdk/schematics/utils/run-migration';
-import {
-    createProject,
-    createSourceFile,
-    resetActiveProject,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
-
-const collectionPath = join(__dirname, '../../../migration.json');
+import {resetActiveProject} from 'ng-morph';
 
 const COMPONENT_BEFORE = `import { Component } from "@angular/core";
 
@@ -125,56 +114,31 @@ const TEMPLATE_AFTER = `
 `;
 
 describe('ng-update comment for --tui-thickness', () => {
-    describe('for styles and ts files', () => {
-        let host: UnitTestTree;
-        let runner: SchematicTestRunner;
+    const collection = join(__dirname, '../../../migration.json');
 
-        beforeEach(() => {
-            host = new UnitTestTree(new HostTree());
-            runner = new SchematicTestRunner('schematics', collectionPath);
-
-            setActiveProject(createProject(host));
-
-            createMainFiles();
-
-            saveActiveProject();
+    it('should add comment for --tui-thickness in styles', async () => {
+        const {styles} = await runMigration({
+            collection,
+            styles: STYLES_BEFORE,
         });
 
-        it('should add comment for --tui-thickness in styles', async () => {
-            const tree = await runner.runSchematic(
-                'updateToV5',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            );
-
-            expect(tree.readContent('test/app/test.style.less')).toEqual(STYLES_AFTER);
-        });
-
-        it('should add comment for --tui-thickness in ts files', async () => {
-            const tree = await runner.runSchematic(
-                'updateToV5',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            );
-
-            expect(tree.readContent('test/app/test.component.ts')).toEqual(
-                COMPONENT_AFTER,
-            );
-        });
-
-        afterEach(() => {
-            resetActiveProject();
-        });
+        expect(styles).toEqual(STYLES_AFTER);
     });
 
-    describe('for html files', () => {
-        const collection = join(__dirname, '../../../migration.json');
+    it('should add comment for --tui-thickness in ts files', async () => {
+        const {component} = await runMigration({
+            collection,
+            component: COMPONENT_BEFORE,
+        });
 
-        async function migrate(template: string): Promise<string> {
-            const {template: result} = await runMigration({
-                template,
-                collection,
-                component: `
+        expect(component).toEqual(COMPONENT_AFTER);
+    });
+
+    it('should add comment for --tui-thickness in html files', async () => {
+        const {template} = await runMigration({
+            collection,
+            template: TEMPLATE_BEFORE,
+            component: `
                 import {TuiInputRange} from '@taiga-ui/kit';
                 import {TuiRange} from '@taiga-ui/kit/components/range';
                 import {TuiSlider} from '@taiga-ui/kit/components/slider';
@@ -185,23 +149,10 @@ describe('ng-update comment for --tui-thickness', () => {
                 })
                 export class TestComponent {}
             `,
-            });
-
-            return result;
-        }
-
-        it('should add comment for --tui-thickness in html files', async () => {
-            expect(await migrate(TEMPLATE_BEFORE)).toEqual(TEMPLATE_AFTER);
         });
 
-        afterEach(() => resetActiveProject());
+        expect(template).toEqual(TEMPLATE_AFTER);
     });
+
+    afterEach(() => resetActiveProject());
 });
-
-function createMainFiles(): void {
-    createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-
-    createSourceFile('test/app/test.style.less', STYLES_BEFORE);
-
-    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
-}
