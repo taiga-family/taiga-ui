@@ -7,7 +7,6 @@ import {TuiInputDate} from '@taiga-ui/kit';
 
 describe('TuiInputDateDirective', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiInputDate, TuiRoot, TuiTextfield],
         template: `
             <tui-root>

@@ -5,7 +5,6 @@ import {TuiCopyProcessor} from '@taiga-ui/cdk';
 import {TuiCopy} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiCopy, TuiCopyProcessor],
     templateUrl: './index.html',
     encapsulation,
