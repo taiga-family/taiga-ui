@@ -4,13 +4,13 @@
     tuiButton
     type="button"
     class="t-button"
-    [tuiAppearanceState]="active() ? 'hover' : null"
+    [tuiAppearanceState]="active() ? 'active' : null"
 >
     <div class="t-wrapper">
         <ng-content select="[tuiCheckbox]" />
         <span
             class="t-dot"
-            [style.backgroundColor]="color() || 'var(--tui-background-accent-1)'"
+            [style.background-color]="color() || 'var(--tui-background-accent-1)'"
         ></span>
         <span class="t-text">{{ text() }}</span>
         <ng-content />

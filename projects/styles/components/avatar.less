@@ -45,6 +45,10 @@
     font-weight: bold;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
+    .interactive({
+        cursor: pointer;
+    });
+
     &::before {
         inline-size: auto;
         block-size: auto;
