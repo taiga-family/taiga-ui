@@ -10,13 +10,13 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiCheckboxOptionsProvider} from '@taiga-ui/core/components/checkbox';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
-import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
 import {TUI_CHIP_OPTIONS} from './chip.options';
@@ -25,7 +25,7 @@ import {TUI_CHIP_OPTIONS} from './chip.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/chip.less';
+            @import '@taiga-ui/styles/components/chip.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

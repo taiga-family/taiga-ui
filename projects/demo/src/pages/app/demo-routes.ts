@@ -12,6 +12,7 @@ export const DemoRoute = {
     Variables: '/variables',
     DialogRoutable: '/dialog/routable',
     Portals: '/portals',
+    Popout: '/components/popout',
     Viewport: '/viewport',
     Accordion: '/components/accordion',
     Avatar: '/components/avatar',

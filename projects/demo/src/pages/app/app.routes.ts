@@ -72,6 +72,11 @@ export const ROUTES: Routes = [
         loadChildren: async () => import('../components/dialog-routable/routes'),
     }),
     route({
+        path: DemoRoute.Popout,
+        title: 'Popout',
+        loadComponent: async () => import('../components/popout'),
+    }),
+    route({
         path: DemoRoute.Portals,
         title: 'Portals',
         loadComponent: async () => import('../customization/portals'),
@@ -224,7 +229,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.SwipeActions,
-        loadComponent: async () => import('../components/swipe-action'),
+        loadComponent: async () => import('../components/swipe-actions'),
         title: 'SwipeActions',
     }),
     route({

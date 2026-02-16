@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     border-color: var(--tui-border-normal);
@@ -47,7 +47,7 @@
     .transition(background);
 
     block-size: var(--tui-height-m);
-    font: var(--tui-font-body-s);
+    font: var(--tui-typography-body-s);
     padding: 0;
     background: var(--tui-background-neutral-1);
     border-block-end: 1px solid var(--tui-border-normal);
@@ -58,7 +58,7 @@
     }
 
     :host-context(table[data-size='l']) & {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
         block-size: var(--tui-height-l);
     }
 }

@@ -1,0 +1,35 @@
+{
+    "name": "styles",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/{projectName}",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "targets": {
+        "build": {
+            "executor": "nx:run-commands",
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
+            "options": {
+                "command": "cd {projectRoot} && npx cpy ./* '!project.json' '../../dist/{projectName}'"
+            }
+        },
+        "publish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "parallel": false,
+                "forwardAllArgs": false,
+                "commands": [
+                    "cp ./LICENSE ./dist/{projectName}",
+                    "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+                ]
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
+        }
+    }
+}

@@ -16,7 +16,7 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
                     import('./project-files/configs.md'),
                     import('./project-files/src/main.ts.md'),
                     import('./project-files/src/index.html.md'),
-                    import('./project-files/src/global_styles.less.md'),
+                    import('./project-files/src/styles.less.md'),
                 ].map(tuiRawLoad),
             );
 

@@ -1,9 +1,9 @@
 <fieldset
     class="t-content"
     [attr.inert]="loading() || null"
-    [class.t-content_has-overlay]="overlay() && loading()"
-    [class.t-content_loading]="loading()"
     [disabled]="loading() && !isApple"
+    [style.opacity]="overlay() && loading() ? 0.3 : null"
+    [style.pointer-events]="loading() ? 'none' : null"
 >
     <ng-content />
 </fieldset>
@@ -11,28 +11,17 @@
 @if (loading()) {
     <div
         class="t-loader"
-        [class.t-loader_horizontal]="isHorizontal()"
         [class.t-loader_inherit-color]="inheritColor()"
     >
         <svg
-            automation-id="tui-loader__loader"
-            focusable="false"
             height="100%"
             width="100%"
             class="t-icon"
         >
-            <circle
-                cx="50%"
-                cy="50%"
-                class="t-circle"
-            />
+            <circle class="t-circle" />
         </svg>
         @if (textContent()) {
-            <div
-                automation-id="tui-loader__text"
-                class="t-text"
-                [class.t-text_horizontal]="isHorizontal()"
-            >
+            <div class="t-text">
                 <ng-container *polymorpheusOutlet="textContent() as text">
                     {{ text }}
                 </ng-container>

@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/i18n",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "A package with tools for Taiga UI library i18n",
     "keywords": [
         "angular",
@@ -19,7 +19,7 @@
     "license": "Apache-2.0",
     "peerDependencies": {
         "@angular/core": ">=19.0.0",
-        "@ng-web-apis/common": "^5.0.3",
+        "@ng-web-apis/common": "^5.1.0",
         "rxjs": ">=7.0.0",
         "tslib": ">=2.8.1"
     }

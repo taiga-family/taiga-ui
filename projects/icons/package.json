@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/icons",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "Feather icons for Taiga UI",
     "keywords": [
         "angular",
@@ -15,6 +15,6 @@
     },
     "license": "Apache-2.0",
     "devDependencies": {
-        "lucide-static": "0.563.0"
+        "lucide-static": "0.564.0"
     }
 }

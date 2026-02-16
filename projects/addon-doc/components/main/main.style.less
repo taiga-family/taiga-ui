@@ -1,10 +1,9 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 @sidebar-width: 16.5rem;
 
-html,
-body {
-    background: var(--tui-background-base);
+html:has(body[tuiTheme='dark']) {
+    background: #222;
 }
 
 tui-doc-main {
@@ -28,7 +27,7 @@ code:not(pre code) {
         outline: 1px solid var(--tui-border-hover);
         font-size: 0.75rem;
         padding: 0 0.3125rem;
-        margin: 0.125rem 0.1875rem;
+        margin: 0 0.1875rem;
         //noinspection CssInvalidPropertyValue
         text-wrap: wrap;
 
@@ -45,12 +44,12 @@ a:focus code {
 
 .tui-doc-page {
     isolation: isolate;
-    padding-block-start: 4rem;
+    padding-block-start: 4.125rem;
 }
 
 tui-doc-navigation.tui-doc-navigation {
     position: fixed;
-    top: 4rem;
+    top: 4.125rem;
     bottom: 0;
     inline-size: @sidebar-width;
     box-sizing: border-box;
@@ -64,8 +63,8 @@ tui-doc-navigation.tui-doc-navigation {
         border-radius: var(--tui-radius-m);
         border: 0.25rem solid var(--tui-background-base-alt);
 
-        :host-context([tuiTheme='dark']) & {
-            border: 0.25rem solid var(--tui-background-elevation-2);
+        [tuiTheme='dark'] & {
+            border-color: var(--tui-background-elevation-2);
         }
     }
 

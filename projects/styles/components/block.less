@@ -1,0 +1,118 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Block
+ * @selector [tuiBlock]
+ *
+ * @description
+ * A general purpose container, typically used for labels and inputs
+ *
+ * @attributes
+ * data-size — size (default: 'l') ('s' | 'm' | 'l')
+ *
+ * @example
+ * <label tuiBlock>
+ *   Click me
+ *   <input tuiBlock />
+ * </label>
+ *
+ * @see-also
+ * Icons, Appearance, Link, Button
+ */
+[tuiBlock]:where(*&) {
+    --t-height: var(--tui-height-l);
+    --t-radius: var(--tui-radius-l);
+
+    position: relative;
+    display: inline-flex;
+    gap: 0.75rem;
+    color: var(--tui-text-primary);
+    border-radius: var(--t-radius);
+    min-block-size: var(--t-height);
+    margin: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    font: var(--tui-typography-body-m);
+    padding: var(--tui-padding-l);
+    isolation: isolate;
+
+    &[data-size='s'] {
+        gap: 0.5rem;
+        font: var(--tui-typography-ui-s);
+        padding: 0.5rem;
+
+        --t-height: var(--tui-height-s);
+        --t-radius: var(--tui-radius-m);
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-ui-2xs);
+        }
+
+        [tuiTooltip] {
+            margin: 0 0.125rem;
+        }
+    }
+
+    &[data-size='m'] {
+        gap: 0.625rem;
+        font: var(--tui-typography-ui-m);
+        padding: var(--tui-padding-m);
+
+        --t-height: var(--tui-height-m);
+        --t-radius: var(--tui-radius-m);
+
+        input:not([tuiBlock]) {
+            margin: 0.125rem;
+        }
+
+        [tuiTooltip] {
+            margin: 0.125rem;
+        }
+    }
+
+    &._disabled {
+        pointer-events: none;
+        opacity: var(--tui-disabled-opacity);
+
+        :focus {
+            visibility: hidden;
+        }
+    }
+
+    &[data-appearance=''] {
+        justify-content: center;
+    }
+
+    input[tuiBlock] {
+        .fullsize();
+
+        z-index: -1;
+        min-block-size: 0;
+        pointer-events: none;
+        border-radius: inherit;
+        padding: 0;
+    }
+
+    [tuiAvatar] {
+        margin: -0.25rem;
+    }
+
+    [tuiTitle] {
+        flex: 1;
+        gap: 0;
+        font: inherit;
+        color: var(--tui-text-primary);
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-secondary);
+    }
+
+    [tuiTooltip] {
+        vertical-align: bottom;
+        margin: 0.25rem;
+        font-size: 1rem;
+        border: none;
+    }
+}

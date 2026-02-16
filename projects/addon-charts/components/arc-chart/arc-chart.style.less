@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     position: relative;
@@ -39,11 +39,11 @@
     align-items: center;
     text-align: center;
     color: var(--tui-text-secondary);
-    font: var(--tui-font-body-xs);
+    font: var(--tui-typography-body-xs);
     pointer-events: none;
 
     :host[data-size='xl'] & {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
     }
 }
 
@@ -54,17 +54,17 @@
         color: var(--tui-text-primary);
 
         :host[data-size='m'] & {
-            font: var(--tui-font-body-s);
+            font: var(--tui-typography-body-s);
             font-weight: bold;
         }
 
         :host[data-size='l'] & {
-            font: var(--tui-font-body-m);
+            font: var(--tui-typography-body-m);
             font-weight: bold;
         }
 
         :host[data-size='xl'] & {
-            font: var(--tui-font-heading-h5);
+            font: var(--tui-typography-heading-h5);
         }
     }
 }
@@ -76,10 +76,10 @@
     inset-inline: 25% auto;
     inline-size: 50%;
     justify-content: space-between;
-    font: var(--tui-font-body-xs);
+    font: var(--tui-typography-body-xs);
     color: var(--tui-text-secondary);
 
     :host[data-size='xl'] & {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
     }
 }

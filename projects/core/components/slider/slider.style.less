@@ -1,0 +1,135 @@
+@import '@taiga-ui/styles/utils';
+
+/*
+*** Thumb – this is an element on the track that the user can move around to select varying range values.
+*** Track – this is the part of the slider that the thumb runs along.
+*** Ticks - tick marks along the length of the track.
+*/
+
+@hitbox: 1rem;
+@transform-noop: scale(1);
+@hitbox-padding: max(calc(@hitbox - @thumb-diameter), ~'0rem');
+@outline: 0 0 0 2px inset var(--tui-border-focus);
+
+/*
+The most left point of the track is the most left point of the thumb (at the zero-position).
+The first tick should start at the center of thumb to set correct position for all other ticks.
+*/
+@first-tick-offset: calc((@thumb-diameter - var(--t-tick-thickness)) / 2);
+
+.t-customize-thumb() {
+    .transition(transform);
+
+    isolation: isolate;
+    appearance: none;
+    background-color: currentColor;
+    box-shadow: none;
+    border-radius: 50%;
+    block-size: @thumb-diameter;
+    inline-size: @thumb-diameter;
+
+    /* Increase vertical hitbox by transparent borders */
+    box-sizing: content-box;
+    background-clip: content-box;
+    border: calc(@hitbox-padding / 2) solid transparent;
+    border-inline-start: 0;
+    border-inline-end: 0;
+    transform: var(--tui-slider-thumb-transform, @transform-noop);
+
+    :not(:disabled)& {
+        cursor: ew-resize;
+
+        &:hover,
+        :active& {
+            transform: var(--tui-slider-thumb-transform, @transform-noop) scale(1.333);
+        }
+    }
+}
+
+:host {
+    --t-tick-thickness: 0.25rem;
+
+    position: relative;
+    display: block;
+    inline-size: 100%;
+    color: var(--tui-background-accent-1); /* See currentColor inside this file */
+    cursor: pointer;
+    appearance: none;
+    block-size: max(@thumb-diameter, 1rem);
+    padding: calc((max(@thumb-diameter, 1rem) - @track-thickness) / 2) 0;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 1rem / 3rem;
+    background:
+        var(--tui-ticks-gradient) no-repeat @first-tick-offset / calc(100% - @thumb-diameter),
+        linear-gradient(
+            to var(--tui-inline-end),
+            currentColor calc(100% * var(--tui-slider-fill-ratio)),
+            transparent calc(100% * var(--tui-slider-fill-ratio))
+        ),
+        var(--tui-background-neutral-2);
+    background-clip: content-box;
+
+    &:active {
+        cursor: ew-resize;
+
+        &::before {
+            opacity: 0.2;
+            transform: var(--tui-slider-thumb-transform, @transform-noop) scale(2.33);
+        }
+    }
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
+
+    &::before {
+        .transition(~'transform, opacity');
+
+        content: '';
+        position: absolute;
+        top: calc(@hitbox-padding / 2);
+        inset-inline-start: var(--t-left);
+        inline-size: @thumb-diameter;
+        block-size: @thumb-diameter;
+        border-radius: 50%;
+        transform: var(--tui-slider-thumb-transform, @transform-noop);
+        background: currentColor;
+        opacity: 0;
+
+        --t-left: calc(var(--tui-slider-fill-ratio) * 100% - var(--tui-slider-fill-ratio) * @thumb-diameter);
+    }
+
+    &:focus-visible {
+        &::-webkit-slider-thumb {
+            box-shadow: @outline;
+        }
+
+        &::-moz-range-thumb {
+            box-shadow: @outline;
+        }
+    }
+
+    &::-webkit-slider-thumb {
+        .t-customize-thumb();
+    }
+
+    &::-moz-range-thumb {
+        .t-customize-thumb();
+    }
+
+    &::-moz-range-progress {
+        opacity: 0;
+    }
+}
+
+:host-context(tui-textfield) :host([type='range']) {
+    position: absolute;
+    inset: 100% var(--t-padding) 0;
+    inline-size: auto;
+    margin: calc(-0.5 * @track-thickness) 0 0;
+    transform: translateY(-50%);
+    background-color: transparent;
+    pointer-events: auto;
+}

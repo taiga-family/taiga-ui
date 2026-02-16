@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
+import {type TuiKeySteps} from '@taiga-ui/core';
+import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, JsonPipe, TuiRange],

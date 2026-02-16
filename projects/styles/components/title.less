@@ -1,0 +1,80 @@
+/**
+ * @name Title
+ * @selector [tuiTitle], [tuiSubtitle]
+ *
+ * @description
+ * Basic layout block for titles and subtitles
+ * Often used by other more complex elements
+ *
+ * @attributes
+ * data-size — optional size ('s' | 'm' | 'l')
+ *
+ * @example
+ * <h2 tuiTitle>
+ *   Title
+ *   <span tuiSubtitle>Subtitle</span>
+ * </h2>
+ *
+ * @see-also
+ * Label
+ */
+[tuiTitle]:where(*&) {
+    position: relative;
+    display: flex;
+    min-inline-size: 0;
+    flex-direction: column;
+    text-align: start;
+    gap: 0.25rem;
+    margin: 0;
+    font: var(--tui-typography-ui-m);
+
+    &[data-size='s'] {
+        gap: 0.125rem;
+        font: var(--tui-typography-body-s);
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-body-xs);
+        }
+    }
+
+    &[data-size='m'] {
+        gap: 0.125rem;
+        font: var(--tui-typography-heading-h5);
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-body-m);
+        }
+    }
+
+    &[data-size='l'] {
+        gap: 0.5rem;
+        font: var(--tui-typography-heading-h3);
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-body-m);
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font: inherit;
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-typography-ui-s);
+        margin: 0;
+    }
+}
+
+[tuiButton]:where(*&) [tuiTitle] {
+    margin-inline-end: auto;
+
+    [tuiSubtitle] {
+        color: var(--tui-text-secondary);
+    }
+}

@@ -1,11 +1,11 @@
-@for (font of fonts; track font) {
+@for (font of fonts | keyvalue: orderBy; track font) {
     <p>
         <tui-copy
             [size]="$index > 5 ? 'm' : 'l'"
-            [style.font]="`var(--tui-${font})`"
+            [style.font]="`var(${font.value})`"
             [style.white-space]="'nowrap'"
         >
-            {{ font }}
+            {{ font.key }}
         </tui-copy>
     </p>
 }

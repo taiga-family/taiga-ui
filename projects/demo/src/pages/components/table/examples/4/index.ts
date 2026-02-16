@@ -22,13 +22,14 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCheckbox,
     TuiDropdown,
     TuiInput,
     TuiLabel,
     TuiLoader,
     TuiNumberFormat,
 } from '@taiga-ui/core';
-import {TuiCheckbox, TuiChevron, TuiInputNumber} from '@taiga-ui/kit';
+import {TuiChevron, TuiInputNumber} from '@taiga-ui/kit';
 import {
     BehaviorSubject,
     combineLatest,

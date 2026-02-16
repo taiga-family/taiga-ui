@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     position: fixed;
@@ -17,7 +17,7 @@
     justify-content: center;
     padding: 0.75rem;
     text-indent: 0.75rem;
-    font: var(--tui-font-body-m);
+    font: var(--tui-typography-body-m);
     white-space: nowrap;
 
     &.tui-enter,
@@ -27,7 +27,7 @@
 
     &[data-size='s'] {
         border-radius: var(--tui-radius-l);
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
         padding: 0.5rem;
     }
 

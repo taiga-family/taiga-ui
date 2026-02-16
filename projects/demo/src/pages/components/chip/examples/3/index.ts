@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
-import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
+import {TuiButton, TuiCheckbox, TuiNotificationService} from '@taiga-ui/core';
+import {TuiChip} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiButton, TuiCheckbox, TuiChip],

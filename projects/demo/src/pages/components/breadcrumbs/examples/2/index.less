@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     display: block;
@@ -8,6 +8,12 @@
 hr,
 h3 {
     margin: 1rem 0;
+}
+
+hr {
+    block-size: 1px;
+    background: var(--tui-border-normal);
+    border: 0;
 }
 
 .link {

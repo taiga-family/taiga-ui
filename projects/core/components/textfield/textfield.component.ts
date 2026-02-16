@@ -49,7 +49,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     selector: 'tui-textfield:not([multi])',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, WaResizeObserver],
     templateUrl: './textfield.template.html',
-    styles: '@import "@taiga-ui/core/styles/components/textfield.less";',
+    styles: '@import "@taiga-ui/styles/components/textfield.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -70,7 +70,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel', // TODO :has([tuiLabel]
         '[class._with-template]': 'content() && control()?.value != null',
-        '[class._disabled]': 'input()?.nativeElement?.disabled', // TODO :has([tuiInput]:disabled)
+        '[class._disabled]': 'disabled', // TODO :has([tuiInput]:disabled)
         '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
         '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
         '(click.self.prevent)': '0',
@@ -126,6 +126,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public get id(): string {
         return this.input()?.nativeElement.id || this.autoId;
+    }
+
+    public get disabled(): boolean {
+        return this.control()?.disabled ?? this.input()?.nativeElement?.disabled ?? false;
     }
 
     public get size(): TuiSizeL | TuiSizeS {

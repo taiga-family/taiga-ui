@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 @size-xs: 3rem;
 @size-s: 4rem;
@@ -39,7 +39,7 @@
     .fullsize();
 
     display: flex;
-    font: var(--tui-font-body-m);
+    font: var(--tui-typography-body-m);
     max-block-size: 100%;
     flex-direction: column;
     justify-content: center;
@@ -53,7 +53,7 @@
     color: var(--tui-text-secondary);
 
     :host[data-size='m'] & {
-        font: var(--tui-font-body-xs);
+        font: var(--tui-typography-body-xs);
     }
 }
 
@@ -61,12 +61,12 @@
     color: var(--tui-text-primary);
 
     :host[data-size='l'] & {
-        font: var(--tui-font-body-l);
+        font: var(--tui-typography-body-l);
         font-weight: bold;
     }
 
     :host[data-size='m'] & {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
         font-weight: bold;
     }
 }

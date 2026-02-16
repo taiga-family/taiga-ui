@@ -1,0 +1,64 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Comment
+ * @selector [tuiComment]
+ *
+ * @description
+ * A comment bubble with an arrow
+ *
+ * @attributes
+ * data-direction — arrow direction (default: 'top') ('top' | 'bottom' | 'start' | 'end')
+ *
+ * @example
+ * <label data-direction="top" tuiComment>Amazing product!</label>
+ */
+[tuiComment]:where(*&) {
+    position: relative;
+    display: inline-flex;
+    font: var(--tui-typography-body-m);
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    min-inline-size: 2.5rem;
+    border-radius: 1rem;
+    line-height: 1.125rem;
+    background: var(--tui-background-accent-2);
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset-block-end: 100%;
+        inset-inline-start: 50%;
+        inline-size: 1.5625rem;
+        block-size: 0.5625rem;
+        background: inherit;
+        transform: translate(calc(-50% * var(--tui-inline)));
+        mask: url("data:image/svg+xml,%3Csvg width='25' height='9' viewBox='0 0 25 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.23309 6.67813L7.56191 3.83178C9.4546 1.5185 10.4009 0.361853 11.5998 0.10488C12.0834 0.00123882 12.5834 0.00123882 13.0669 0.10488C14.2658 0.361853 15.2121 1.5185 17.1048 3.83178L19.4337 6.67813C20.636 8.14771 22.4346 9 24.3334 9H0.333374C2.23217 9 4.0307 8.14772 5.23309 6.67813Z' fill='black'/%3E%3C/svg%3E%0A")
+            no-repeat;
+    }
+
+    &[data-direction='bottom'] {
+        &::before {
+            inset-block: 100% auto;
+            transform: translate(calc(-50% * var(--tui-inline))) rotate(180deg);
+        }
+    }
+
+    &[data-direction='start'] {
+        &::before {
+            inset-block: 50% 100%;
+            inset-inline: auto 100%;
+            transform: translate(calc(0.785rem * var(--tui-inline)), -50%) rotate(calc(-90deg * var(--tui-inline)));
+        }
+    }
+
+    &[data-direction='end'] {
+        &::before {
+            inset-block: 50% 100%;
+            inset-inline: 100% auto;
+            transform: translate(calc(-0.785rem * var(--tui-inline)), -50%) rotate(calc(90deg * var(--tui-inline)));
+        }
+    }
+}

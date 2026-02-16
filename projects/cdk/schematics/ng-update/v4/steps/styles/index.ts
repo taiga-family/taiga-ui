@@ -1,6 +1,7 @@
 /// <reference lib="es2021" />
 import {getActiveProject, saveActiveProject} from 'ng-morph';
 
+import {ALL_STYLE_FILES} from '../../../../constants';
 import {migrateLegacyMixins} from './migrate-legacy-mixins';
 import {migrateLessSCSSConstants} from './migrate-less-scss-constants';
 import {migrateMixins} from './migrate-mixins';
@@ -13,7 +14,7 @@ export const TUI_RATING_WARNING =
 
 export function migrateStyles(): void {
     getActiveProject()
-        ?.getSourceFiles('**/**.{less,sass,scss,css}')
+        ?.getSourceFiles(ALL_STYLE_FILES)
         .forEach((sourceFile) => {
             let fullText = sourceFile.getFullText();
 

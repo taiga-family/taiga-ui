@@ -45,7 +45,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     templateUrl: './textfield-multi.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/core/styles/components/textfield.less';
+            @import '@taiga-ui/styles/components/textfield.less';
             @import './textfield-multi.style.less';
         }
     `,
@@ -58,7 +58,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
         tuiProvide(TUI_SCROLL_REF, ElementRef),
     ],
     host: {
-        '[attr.data-state]': 'control()?.disabled ? "disabled" : null',
+        '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!control()?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows()',

@@ -50,7 +50,7 @@ export class TuiButtonCopy {
     protected readonly copied = signal(false);
     protected readonly copiedText = computed(() => this.copyTexts()[1]);
     protected readonly icon = tuiIconStart(
-        computed(() => (this.copied() ? this.check : this.options.icon('s'))),
+        computed(() => (this.copied() ? this.check : this.options.icon)),
     );
 
     public readonly tuiButtonCopy = input('');

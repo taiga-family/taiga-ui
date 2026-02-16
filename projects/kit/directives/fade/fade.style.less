@@ -1,4 +1,6 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
+
+@overlap: 1px; // https://github.com/taiga-family/taiga-ui/issues/13149
 
 // prettier-ignore
 [tuiFade] {
@@ -16,8 +18,8 @@
             linear-gradient(to left, transparent var(--t-fade-offset), #000 calc(var(--t-fade-size) + var(--t-fade-offset))),
             linear-gradient(#000, #000);
         mask-position:
-            calc(-1 * var(--t-fade-size) - var(--t-fade-offset)) bottom,
-            calc(100% + var(--t-fade-size) + var(--t-fade-offset)) bottom,
+            calc(-1 * var(--t-fade-size) - var(--t-fade-offset) + @overlap) bottom,
+            calc(100% + var(--t-fade-size) + var(--t-fade-offset) - @overlap) bottom,
             top;
         mask-size:
             calc(51% + var(--t-fade-size) + var(--t-fade-offset)) var(--t-line-height, 100%),
@@ -27,13 +29,13 @@
         &._start {
             mask-position:
                 left bottom,
-                calc(100% + var(--t-fade-size) + var(--t-fade-offset)) bottom,
+                calc(100% + var(--t-fade-size) + var(--t-fade-offset) - @overlap) bottom,
                 top;
         }
 
         &._end {
             mask-position:
-                calc(-1 * var(--t-fade-size) - var(--t-fade-offset)) bottom,
+                calc(-1 * var(--t-fade-size) - var(--t-fade-offset) + @overlap) bottom,
                 right bottom,
                 top;
         }
@@ -49,13 +51,13 @@
             &._end {
                 mask-position:
                     left bottom,
-                    calc(100% + var(--t-fade-size) + var(--t-fade-offset)) bottom,
+                    calc(100% + var(--t-fade-size) + var(--t-fade-offset) - @overlap) bottom,
                     top;
             }
 
             &._start {
                 mask-position:
-                    calc(-1 * var(--t-fade-size) - var(--t-fade-offset)) bottom,
+                    calc(-1 * var(--t-fade-size) - var(--t-fade-offset) + @overlap) bottom,
                     right bottom,
                     top;
             }
@@ -75,16 +77,16 @@
             linear-gradient(to bottom, transparent var(--t-fade-offset), #000 calc(var(--t-fade-size) + var(--t-fade-offset))),
             linear-gradient(to top, transparent var(--t-fade-offset), #000 calc(var(--t-fade-size) + var(--t-fade-offset)));
         mask-position:
-            left calc(-1 * var(--t-fade-size) - var(--t-fade-offset)),
-            left calc(100% + var(--t-fade-size) + var(--t-fade-offset));
+            left calc(-1 * var(--t-fade-size) - var(--t-fade-offset) + @overlap),
+            left calc(100% + var(--t-fade-size) + var(--t-fade-offset) - @overlap);
         mask-size: 100% calc(51% + var(--t-fade-size) + var(--t-fade-offset)); // +1% for Chrome issue https://github.com/taiga-family/taiga-ui/issues/6873
 
         &._start {
-            mask-position: left top, left calc(100% + var(--t-fade-size) + var(--t-fade-offset));
+            mask-position: left top, left calc(100% + var(--t-fade-size) + var(--t-fade-offset) - @overlap);
         }
 
         &._end {
-            mask-position: left calc(-1 * var(--t-fade-size) - var(--t-fade-offset)), left bottom;
+            mask-position: left calc(-1 * var(--t-fade-size) - var(--t-fade-offset) + @overlap), left bottom;
         }
 
         &._start._end {

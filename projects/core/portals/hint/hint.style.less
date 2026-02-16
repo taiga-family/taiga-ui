@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     position: absolute;
@@ -8,7 +8,7 @@
     border-radius: var(--tui-radius-l);
     color: var(--tui-text-primary-on-accent-1);
     box-sizing: border-box;
-    font: var(--tui-font-body-s);
+    font: var(--tui-typography-body-s);
     white-space: pre-line;
     overflow-wrap: break-word;
     transform-origin: var(--t-left) var(--t-top);
@@ -48,7 +48,7 @@
     }
 
     &._mobile {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
 
         &::before {
             inline-size: 1.5rem;

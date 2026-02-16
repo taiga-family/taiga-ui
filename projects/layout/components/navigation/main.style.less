@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 main[tuiNavigationMain] {
     .transition(max-width);
@@ -54,7 +54,7 @@ main[tuiNavigationMain] {
                 -webkit-line-clamp: 2;
                 white-space: normal;
                 word-break: break-word;
-                font: var(--tui-font-body-s);
+                font: var(--tui-typography-body-s);
                 overflow: hidden;
             }
         }
@@ -65,7 +65,7 @@ main[tuiNavigationMain] {
             display: flex;
             gap: 1rem;
             color: var(--tui-text-tertiary);
-            font: var(--tui-font-body-s);
+            font: var(--tui-typography-body-s);
             white-space: nowrap;
             text-transform: none;
             overflow: auto;

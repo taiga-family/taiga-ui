@@ -89,6 +89,8 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 - Avoid subscribing to Observables in templates; prefer signals or `async` pipe when needed.
 - Prefer structural directives like `*ngIf`, `*ngFor` for flow control, but keep them shallow.
 - Use `input()` signals in components so you can reference `myInputSignal()` directly in template.
+- Writable signals are valid with Angular two-way binding syntax (`[(...)]`). Example: `[(open)]="isOpen"` is allowed
+  when `isOpen` is a writable signal.
 
 ## Accessibility & Performance
 

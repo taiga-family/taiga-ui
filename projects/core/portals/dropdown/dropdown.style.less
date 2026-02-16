@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     position: absolute;
@@ -15,6 +15,10 @@
 
     --tui-from: translateY(-1rem);
 
+    &:has(tui-data-list[data-size='l']) {
+        border-radius: var(--tui-radius-l);
+    }
+
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiFade, tuiSlide;
@@ -27,9 +31,10 @@
 
 .t-scroll {
     flex-grow: 1;
-    max-inline-size: 100%;
+    max-inline-size: calc(100% + 2px);
     inline-size: max-content;
     overscroll-behavior: none;
+    margin: -1px;
 }
 
 .t-primitive {

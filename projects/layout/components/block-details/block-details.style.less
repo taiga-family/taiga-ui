@@ -2,12 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font: var(--tui-font-heading-h3);
+    font: var(--tui-typography-heading-h3);
     min-block-size: 2rem;
 
     [tuiTitle] {
         text-align: center;
-        font: var(--tui-font-body-l);
+        font: var(--tui-typography-body-l);
         gap: 0;
     }
 
@@ -16,12 +16,12 @@
         display: flex;
         align-items: center;
         gap: 0.25rem;
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
         color: var(--tui-text-secondary);
         margin-block-start: 0.25rem;
 
         :host-context(tui-root._mobile) & {
-            font: var(--tui-font-body-s);
+            font: var(--tui-typography-body-s);
         }
     }
 

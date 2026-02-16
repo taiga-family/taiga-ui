@@ -35,24 +35,21 @@ npm i @taiga-ui/addon-doc
    ```typescript
    import {Component} from '@angular/core';
    import {TuiDocMain} from '@taiga-ui/addon-doc';
-   import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+   import {provideHighlightOptions} from 'ngx-highlightjs';
    import {App} from './app.component';
 
    @Component({
      imports: [TuiDocMain],
      providers: [
-       {
-         provide: HIGHLIGHT_OPTIONS,
-         useValue: {
-           coreLibraryLoader: () => import('highlight.js/lib/core' as string),
-           lineNumbersLoader: () => import('highlightjs-line-numbers.js' as string), // Optional, only if you want the line numbers
-           languages: {
-             typescript: () => import('highlight.js/lib/languages/typescript' as string),
-             less: () => import('highlight.js/lib/languages/less' as string),
-             xml: () => import('highlight.js/lib/languages/xml' as string),
-           },
+       provideHighlightOptions({
+         coreLibraryLoader: () => import('highlight.js/lib/core' as string),
+         lineNumbersLoader: () => import('ngx-highlightjs/line-numbers' as string), // Optional, only if you want the line numbers
+         languages: {
+           typescript: () => import('highlight.js/lib/languages/typescript' as string),
+           less: () => import('highlight.js/lib/languages/less' as string),
+           xml: () => import('highlight.js/lib/languages/xml' as string),
          },
-       },
+       }),
      ],
    })
    export class App {}

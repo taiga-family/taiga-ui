@@ -10,7 +10,14 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
     changeDetection,
 })
 export default class PageComponent {
-    protected showDelay = 200;
+    protected readonly examples = [
+        'Basic',
+        'With DropdownOpen',
+        'Nested',
+        'With custom host',
+        'Mobile',
+    ];
 
+    protected showDelay = 200;
     protected hideDelay = 500;
 }

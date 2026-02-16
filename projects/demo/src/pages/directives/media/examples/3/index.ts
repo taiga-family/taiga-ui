@@ -2,8 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiMedia} from '@taiga-ui/cdk';
-import {TuiButton, TuiLink} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiButton, TuiLink, TuiSlider} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, TuiButton, TuiLink, TuiMedia, TuiSlider],

@@ -21,6 +21,19 @@ test.describe('Textarea', () => {
         await expect.soft(textarea).toHaveScreenshot('textarea-line-break-disabled.png');
     });
 
+    test('required textarea is not invalid before touched', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+        const example = new TuiDocumentationPagePO(page).getExample('#icons');
+        const textarea = example.locator('[tuiTextarea]');
+
+        await expect.soft(example).toHaveScreenshot('required-textarea-untouched.png');
+        await textarea.click({button: 'middle'});
+        await textarea.fill('123');
+        await textarea.clear();
+        await textarea.blur();
+        await expect.soft(example).toHaveScreenshot('required-textarea-touched.png');
+    });
+
     ['m', 'l'].forEach((size) => {
         test(`size of ${size}`, async ({page}) => {
             await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldSize=${size}`);

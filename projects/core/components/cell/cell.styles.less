@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 [tuiCell] {
     --t-pad: 0.125rem 1rem;
@@ -125,12 +125,12 @@
 
         [tuiTitle] {
             max-block-size: 100%;
-            font: var(--tui-font-ui-s);
+            font: var(--tui-typography-ui-s);
             gap: 0;
         }
 
         [tuiSubtitle] {
-            font: var(--tui-font-ui-xs);
+            font: var(--tui-typography-ui-2xs);
         }
 
         & > [tuiAvatar],
@@ -139,7 +139,7 @@
         & > [tuiAccessories] tui-avatar-stack [tuiAvatar] {
             --t-size: 1.5rem;
 
-            font: var(--tui-font-body-m);
+            font: var(--tui-typography-body-m);
             font-size: 0.5625rem;
         }
     }
@@ -160,12 +160,12 @@
         }
 
         [tuiTitle] {
-            font: var(--tui-font-ui-s);
+            font: var(--tui-typography-ui-s);
             gap: 0.125rem;
         }
 
         [tuiSubtitle] {
-            font: var(--tui-font-ui-xs);
+            font: var(--tui-typography-ui-2xs);
         }
 
         & > [tuiAvatar],
@@ -200,7 +200,7 @@
         & > [tuiAccessories] tui-avatar-stack [tuiAvatar] {
             --t-size: 2.5rem;
 
-            font: var(--tui-font-body-m);
+            font: var(--tui-typography-body-m);
             font-weight: bold;
             align-self: flex-start;
         }

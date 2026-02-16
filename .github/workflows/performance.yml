@@ -40,9 +40,9 @@ jobs:
         uses: actions/checkout@v4.3.1
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.184.0
-      - uses: taiga-family/ci/actions/setup/node@v1.184.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.184.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.186.0
+      - uses: taiga-family/ci/actions/setup/node@v1.186.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.186.0
       - name: Restore dist cache from parent workflow build
         uses: actions/cache/restore@v4.3.0
         with:
@@ -92,7 +92,7 @@ jobs:
         run: echo 'Skipping performance stress due to missing dist'
       - name: Serve feature build
         if: steps.dist-check.outputs.skip == 'false'
-        uses: taiga-family/ci/actions/run/serve@v1.184.0
+        uses: taiga-family/ci/actions/run/serve@v1.186.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -129,13 +129,13 @@ jobs:
           echo "Completed multi-run current collection"
       - name: Clone baseline snapshot build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/clone@v1.184.0
+        uses: taiga-family/ci/actions/run/clone@v1.186.0
         with:
           branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
       - name: Serve baseline build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/serve@v1.184.0
+        uses: taiga-family/ci/actions/run/serve@v1.186.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}

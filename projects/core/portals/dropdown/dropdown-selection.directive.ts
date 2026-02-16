@@ -32,7 +32,17 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils/dom';
-import {combineLatest, distinctUntilChanged, filter, map} from 'rxjs';
+import {
+    combineLatest,
+    distinctUntilChanged,
+    filter,
+    fromEvent,
+    map,
+    merge,
+    startWith,
+    tap,
+    throttleTime,
+} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
@@ -69,16 +79,29 @@ export class TuiDropdownSelection
                     x.commonAncestorContainer === y.commonAncestorContainer,
             ),
         ),
+        merge(fromEvent(this.el, 'scroll', {passive: true, capture: true})).pipe(
+            throttleTime(16),
+            startWith(0),
+        ),
     ]).pipe(
-        map(([handler, range]) => {
-            const contained = this.el.contains(range.commonAncestorContainer);
-
+        tap(([, range]) => {
             this.range =
-                contained && tuiIsTextNode(range.commonAncestorContainer)
+                this.el.contains(range.commonAncestorContainer) &&
+                tuiIsTextNode(range.commonAncestorContainer)
                     ? range
                     : this.range;
+        }),
+        map(([handler, range]) => {
+            const contained = this.el.contains(range.commonAncestorContainer);
+            const valid = contained && handler(this.range);
+            const visible = valid || this.inDropdown(range);
+            const active = tuiGetFocused(this.doc);
+            const textfield =
+                active && tuiIsTextfield(active) && this.el.contains(active);
 
-            return (contained && handler(this.range)) || this.inDropdown(range);
+            return visible && textfield
+                ? this.isCaretVisible(active as HTMLTextAreaElement)
+                : visible;
         }),
     );
 
@@ -212,5 +235,47 @@ export class TuiDropdownSelection
         this.ghost = ghost;
 
         return ghost;
+    }
+
+    private isCaretVisible(textarea: HTMLTextAreaElement): boolean {
+        const caret = textarea.selectionStart;
+        const div = this.doc.createElement('div');
+        const style = getComputedStyle(textarea);
+
+        div.style.position = 'absolute';
+        div.style.visibility = 'hidden';
+        div.style.whiteSpace = 'pre-wrap';
+        div.style.overflowWrap = 'break-word';
+        div.style.overflow = 'hidden';
+        div.style.font = style.font;
+        div.style.lineHeight = style.lineHeight;
+        div.style.letterSpacing = style.letterSpacing;
+        div.style.textTransform = style.textTransform;
+        div.style.padding = style.padding;
+        div.style.border = style.border;
+        div.style.width = style.width;
+        div.style.boxSizing = style.boxSizing;
+        div.textContent = textarea.value.slice(0, caret);
+
+        const span = this.doc.createElement('span');
+
+        span.textContent = '\u00A0';
+        div.appendChild(span);
+
+        this.doc.body.appendChild(div);
+
+        const caretTop = span.offsetTop;
+        const caretHeight = span.offsetHeight;
+
+        this.doc.body.removeChild(div);
+
+        const visibleTop = textarea.scrollTop;
+        const visibleBottom = visibleTop + textarea.clientHeight;
+        const paddingCompensation = 2;
+
+        return (
+            caretTop + paddingCompensation >= visibleTop &&
+            caretTop + caretHeight - paddingCompensation <= visibleBottom
+        );
     }
 }

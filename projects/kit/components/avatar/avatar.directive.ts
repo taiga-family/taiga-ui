@@ -21,7 +21,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/kit/styles/components/avatar.less';
+            @import '@taiga-ui/styles/components/avatar.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

@@ -1,0 +1,181 @@
+@import '@taiga-ui/styles/utils.less';
+
+/**
+ * @name Notification
+ * @selector [tuiNotification]
+ *
+ * @description
+ * A colored rounded block of information with optional icon, title, subtitle and actions
+ *
+ * @attributes
+ * data-size — size (default: 'l') ('s' | 'm' | 'l')
+ *
+ * @example
+ * <div tuiNotification tuiAppearance data-appearance="negative">
+ *   <span tuiTitle>
+ *     Error
+ *     <span tuiSubtitle>Something went wrong</span>
+ *   </span>
+ * </div>
+ *
+ * @see-also
+ * Icons, Appearance
+ */
+[tuiNotification]:where(*&) {
+    .button-clear();
+
+    position: relative;
+    display: flow-root;
+    max-block-size: 100%;
+    color: var(--tui-text-primary);
+    padding: 1rem;
+    font: var(--tui-typography-body-m);
+    border-radius: var(--tui-radius-l);
+    box-sizing: border-box;
+    text-align: start;
+    text-decoration: none;
+    border-inline-start: var(--t-start) solid transparent;
+    border-inline-end: var(--t-end) solid transparent;
+
+    .interactive({
+        cursor: pointer;
+    });
+
+    --t-start: 0;
+    --t-end: 0;
+
+    &[data-icon-start] {
+        --t-start: 2rem;
+    }
+
+    &[data-icon-end] {
+        --t-end: 1.5rem;
+    }
+
+    &::before {
+        position: absolute;
+        inset-inline-start: -1rem;
+    }
+
+    &::after {
+        .center-top();
+
+        inset-inline-end: -0.5rem;
+        font-size: 1rem;
+        margin: 0;
+        margin-inline-end: -0.25rem;
+        margin-inline-start: auto;
+        color: var(--tui-text-tertiary) !important;
+    }
+
+    &[data-size='s'] {
+        padding: 0.375rem 0.625rem;
+        font: var(--tui-typography-body-s);
+        border-radius: var(--tui-radius-m);
+
+        &[data-icon-start] {
+            --t-start: 1.5rem;
+        }
+
+        &::before {
+            inset-block-start: 0.5rem;
+            inset-inline-start: -0.875rem;
+            font-size: 1rem;
+        }
+
+        &::after {
+            inset-inline-end: -0.875rem;
+        }
+
+        tui-icon {
+            font-size: 1rem;
+        }
+
+        [tuiTitle] {
+            font: var(--tui-typography-body-s);
+            font-weight: bold;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-body-s);
+        }
+
+        [tuiSubtitle] + * {
+            gap: 1rem;
+            margin: 0.375rem 0 0.25rem;
+        }
+
+        > [tuiIconButton] {
+            inset-block-start: 0;
+            inset-inline-end: 0;
+        }
+    }
+
+    &[data-size='m'] {
+        padding: 0.75rem;
+        font: var(--tui-typography-body-s);
+        border-radius: var(--tui-radius-m);
+
+        &[data-icon-start] {
+            --t-start: 1.625rem;
+        }
+
+        &::before {
+            inset-inline-start: -0.875rem;
+            font-size: 1.25rem;
+        }
+
+        &::after {
+            inset-inline-end: -0.75rem;
+        }
+
+        tui-icon {
+            font-size: 1.25rem;
+        }
+
+        [tuiTitle] {
+            font: var(--tui-typography-ui-m);
+            font-weight: bold;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-body-s);
+        }
+
+        [tuiSubtitle] + * {
+            gap: 1rem;
+            margin: 0.625rem 0 0.25rem;
+        }
+
+        > [tuiIconButton] {
+            inset-block-start: 0.375rem;
+            inset-inline-end: 0.5rem;
+        }
+    }
+
+    [tuiTitle] {
+        gap: 0.125rem;
+        font: var(--tui-typography-ui-l);
+        font-weight: bold;
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-typography-body-m);
+
+        + * {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-block-start: 0.625rem;
+            font: var(--tui-typography-body-s);
+        }
+    }
+
+    > [tuiIconButton] {
+        position: absolute;
+        inset-block-start: 0.75rem;
+        inset-inline-end: 0.75rem;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+}

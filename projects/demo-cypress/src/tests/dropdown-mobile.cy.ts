@@ -7,13 +7,7 @@ import {
     TuiDropdownSheet,
     TuiResponsiveDialog,
 } from '@taiga-ui/addon-mobile';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TuiButton,
-    TuiRoot,
-    TuiTextfield,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiRoot, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiChevron,
@@ -157,10 +151,7 @@ describe('DropdownMobile', () => {
     beforeEach(() => {
         cy.viewport(375, 660);
         cy.mount(TestDropdownMobile, {
-            providers: [
-                {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
-                {provide: WA_IS_MOBILE, useValue: true},
-            ],
+            providers: [{provide: WA_IS_MOBILE, useValue: true}],
         }).then(({fixture, component}) => {
             fixture.detectChanges();
             component.dialog.set(true);

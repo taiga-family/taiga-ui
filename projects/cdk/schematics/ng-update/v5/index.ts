@@ -17,16 +17,19 @@ import {
 } from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {runSteps} from '../../utils/run-steps';
-import {replaceIdentifiers} from '../steps/replace-identifier';
+import {removeModules, replaceIdentifiers, showWarnings} from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceFunctions} from '../utils/replace-functions';
 import {REPLACE_FUNCTIONS} from './steps/constants/functions';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
+import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
+import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
+import {migrateStyles} from './steps/styles';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -46,12 +49,24 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => replaceFunctions(REPLACE_FUNCTIONS),
                 },
                 {
+                    name: 'removeModules',
+                    step: () => removeModules(options, MODULES_TO_REMOVE),
+                },
+                {
                     name: 'replaceIdentifiers',
                     step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
                 },
                 {
                     name: 'migrateTemplates',
                     step: () => migrateTemplates(fileSystem, options),
+                },
+                {
+                    name: 'showWarnings',
+                    step: () => showWarnings(context, MIGRATION_WARNINGS),
+                },
+                {
+                    name: 'migrateStyles',
+                    step: migrateStyles,
                 },
             ],
             timings,

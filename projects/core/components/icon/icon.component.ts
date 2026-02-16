@@ -12,7 +12,7 @@ import {TuiIcons} from '@taiga-ui/core/directives/icons';
     // :not([tuiBadge]) is required to avoid double matching of TuiIcons
     selector: 'tui-icon:not([tuiBadge])',
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/icon.less";',
+    styles: '@import "@taiga-ui/styles/components/icon.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [

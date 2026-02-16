@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 [tuiForm] {
     &[tuiForm] {
@@ -9,28 +9,46 @@
 
     &[data-size='s'] {
         gap: 0.75rem;
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
 
-        tui-error:not(.tui-space-top-none) {
+        tui-error {
             margin-block-start: -0.75rem;
+        }
+
+        > fieldset > legend {
+            font: var(--tui-typography-ui-m);
+            font-weight: bold;
+            padding: 0.5rem 0 0.75rem;
         }
     }
 
     &[data-size='m'] {
         gap: 1rem;
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
 
-        tui-error:not(.tui-space-top-none) {
+        tui-error {
             margin-block-start: -1rem;
+        }
+
+        > fieldset > legend {
+            font: var(--tui-typography-ui-l);
+            font-weight: bold;
+            padding: 0.75rem 0;
         }
     }
 
     &[data-size='l'] {
         gap: 1.25rem;
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
 
-        tui-error:not(.tui-space-top-none) {
+        tui-error {
             margin-block-start: -1.25rem;
+        }
+
+        > fieldset > legend {
+            font: var(--tui-typography-ui-l);
+            font-weight: bold;
+            padding: 0.5rem 0 0.75rem;
         }
     }
 

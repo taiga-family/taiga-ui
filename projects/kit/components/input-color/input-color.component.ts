@@ -18,9 +18,9 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiSlider} from '@taiga-ui/core/components/slider';
 import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';

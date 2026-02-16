@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/core",
-    "version": "5.0.0-rc.2",
+    "version": "5.0.0-rc.3",
     "description": "Core library for creating Angular components and applications using Taiga UI",
     "keywords": [
         "angular",
@@ -17,22 +17,20 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
-    "exports": {
-        "./styles/*": "./styles/*"
-    },
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
         "@angular/forms": ">=19.0.0",
         "@angular/platform-browser": ">=19.0.0",
         "@angular/router": ">=19.0.0",
-        "@ng-web-apis/common": "^5.0.3",
-        "@ng-web-apis/mutation-observer": "^5.0.3",
-        "@ng-web-apis/platform": "^5.0.3",
-        "@taiga-ui/cdk": "^5.0.0-rc.2",
+        "@ng-web-apis/common": "^5.1.0",
+        "@ng-web-apis/mutation-observer": "^5.1.0",
+        "@ng-web-apis/platform": "^5.1.0",
+        "@taiga-ui/cdk": "^5.0.0-rc.3",
         "@taiga-ui/event-plugins": "^5.0.0",
-        "@taiga-ui/i18n": "^5.0.0-rc.2",
+        "@taiga-ui/i18n": "^5.0.0-rc.3",
         "@taiga-ui/polymorpheus": "^5.0.0",
+        "@taiga-ui/styles": "^5.0.0-rc.3",
         "rxjs": ">=7.0.0",
         "tslib": ">=2.8.1"
     },
