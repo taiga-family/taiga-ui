@@ -26413,6 +26413,184 @@ export default class Page {
 ```
 
 ---
+# components/Popout
+- **Package**: `EXPERIMENTAL`
+- **Type**: components
+Using service to show content in a new window.
+
+### Usage Examples
+
+#### Popout window
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Bidirectional communication</label>
+<input tuiInput [(ngModel)]="value" />
+</tui-textfield>
+<p>
+<button tuiButton type="button" (click)="toggle(template)" > Toggle popout window </button>
+</p>
+<ng-template #template>
+<section tuiCardLarge>
+<tui-textfield>
+<label tuiLabel>Bidirectional communication</label>
+<input tuiAutoFocus tuiInput [(ngModel)]="value" />
+</tui-textfield>
+</section>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal, type TemplateRef} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiButton, TuiInput} from '@taiga-ui/core';
+import {TuiPopoutService} from '@taiga-ui/experimental';
+import {TuiCard} from '@taiga-ui/layout';
+import {type Subscription} from 'rxjs';
+
+@Component({
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiCard, TuiInput],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Example {
+    private readonly popout = inject(TuiPopoutService);
+    private sub: Subscription | null = null;
+
+    protected readonly value = signal('Value');
+
+    protected toggle(content: TemplateRef<any>): void {
+        if (this.sub) {
+            this.sub.unsubscribe();
+            this.sub = null;
+        } else {
+            this.sub = this.popout
+                .open(content, {
+                    title: 'Page',
+                    features: {
+                        width: 320,
+                        height: 160,
+                        left: 600,
+                        top: 300,
+                    },
+                })
+                .subscribe({
+                    complete: () => {
+                        this.sub = null;
+                    },
+                });
+        }
+    }
+}
+```
+
+#### Picture in Picture
+
+**Template:**
+```html
+@if (!supported) { <p appearance="warning" tuiNotification > Document Picture-in-Picture is not supported in your browser, fallback to regular popout window will be used </p> } <button tuiButton type="button" [disabled]="!!subscription()" (click)="open()" > Open Picture-in-Picture </button>
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {WA_DOCUMENT_PIP} from '@ng-web-apis/experimental';
+import {TuiButton, TuiNotification} from '@taiga-ui/core';
+import {TuiPopoutService} from '@taiga-ui/experimental';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {type Subscription} from 'rxjs';
+
+import {Popout} from './popout';
+
+@Component({
+    imports: [TuiButton, TuiNotification],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Example {
+    protected readonly popout = inject(TuiPopoutService);
+    protected readonly supported = !!inject(WA_DOCUMENT_PIP)?.requestWindow;
+    protected subscription = signal<Subscription | null>(null);
+
+    protected open(): void {
+        this.subscription.set(
+            this.popout
+                .open(new PolymorpheusComponent(Popout), {
+                    pip: true,
+                    features: {height: 480, width: 320},
+                })
+                .subscribe({complete: () => this.subscription.set(null)}),
+        );
+    }
+}
+```
+
+#### Directive
+
+**Template:**
+```html
+<button iconStart="@tui.phone" tuiButton type="button" (click)="open.set(true)" > Call us </button>
+<ng-template let-observer [tuiPopoutOptions]="{pip: true, features: {height: 480, width: 320}}" [(tuiPopout)]="open" >
+<main tuiTheme="dark">
+<div size="xl" tuiAvatar="@tui.user" ></div>
+<header tuiHeader="body-l">
+<hgroup tuiTitle>
+<h1>Taiga Headquarters</h1>
+<p tuiSubtitle>Calling...</p>
+</hgroup>
+</header>
+<section>
+<button appearance="warning" size="l" title="Headset" tuiAvatar="@tui.headset" type="button" ></button>
+<button appearance="negative" size="l" title="Hang up" tuiAvatar="@tui.phone-off" type="button" (click)="observer.complete()" ></button>
+</section>
+</main>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiPopout} from '@taiga-ui/experimental';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiAvatar, TuiButton, TuiHeader, TuiPopout, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    changeDetection,
+})
+export default class Example {
+    protected readonly open = signal(false);
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page extends Array {
+    protected readonly examples = ['Popout window', 'Picture in Picture', 'Directive'];
+    protected readonly [1] = {
+        'popout.ts': import('./examples/2/popout.ts?raw', {with: {loader: 'text'}}),
+    };
+}
+```
+
+---
 # components/Preview
 - **Package**: `KIT`
 - **Type**: components
@@ -42948,7 +43126,7 @@ export default class Page {
 ---
 # customization/Portals
 - **Package**: `null`
-- **Type**: customization
+- **Type**: null
 You can easily create your custom portals by extending our abstract classes and put your own portal-host on any layer
 
 ### Usage Examples
@@ -42975,12 +43153,13 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {CustomPortalService} from './service';
 
 @Component({
+    selector: 'tui-portals-example-1',
     imports: [TuiButton, TuiIcon],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
 })
-export default class Example {
+export class TuiPortalsExample1 {
     private readonly customPortalService = inject(CustomPortalService);
 
     protected templates: Array<EmbeddedViewRef<unknown>> = [];
@@ -42995,74 +43174,6 @@ export default class Example {
 }
 ```
 
-#### Popout window portals
-
-**Template:**
-```html
-<button size="s" tuiButton type="button" [disabled]="ref()" (click)="openPopout()" > Open a window mode </button>
-```
-**TypeScript:**
-```ts
-import {Component, inject, signal} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton} from '@taiga-ui/core';
-
-import {type PopoutRef, PopoutService} from './popout.service';
-
-@Component({
-    imports: [TuiButton],
-    templateUrl: './index.html',
-    changeDetection,
-    providers: [PopoutService],
-})
-export default class Example {
-    private readonly popout = inject(PopoutService);
-    protected ref = signal<PopoutRef | null>(null);
-
-    protected async openPopout(): Promise<void> {
-        const ref = await this.popout.open();
-
-        this.ref.set(ref);
-        this.ref()?.window.addEventListener('beforeunload', () => this.ref.set(null));
-    }
-}
-```
-
-#### Picture in Picture portals
-
-**Template:**
-```html
-@if (supported) { <button size="s" tuiButton type="button" [disabled]="ref()" (click)="openPopout()" > Open a PiP mode </button> } @else { <div appearance="warning" size="m" tuiNotification > Document Picture-in-Picture is not supported in your browser. Check browser support <a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow" target="_blank" tuiLink > here </a> . </div> }
-```
-**TypeScript:**
-```ts
-import {Component, inject, signal} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {WA_DOCUMENT_PIP} from '@ng-web-apis/experimental';
-import {TuiButton, TuiLink, TuiNotification} from '@taiga-ui/core';
-
-import {type PopoutRef, PopoutService} from './popout.service';
-
-@Component({
-    imports: [TuiButton, TuiLink, TuiNotification],
-    templateUrl: './index.html',
-    changeDetection,
-    providers: [PopoutService],
-})
-export default class Example {
-    private readonly popout = inject(PopoutService);
-    protected readonly supported = !!inject(WA_DOCUMENT_PIP)?.requestWindow;
-    protected ref = signal<PopoutRef | null>(null);
-
-    protected async openPopout(): Promise<void> {
-        const ref = await this.popout.open();
-
-        this.ref.set(ref);
-        this.ref()?.window.addEventListener('unload', () => this.ref.set(null));
-    }
-}
-```
-
 
 ### TypeScript
 
@@ -43071,43 +43182,24 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
+import {TuiPortalsExample1} from './examples/1';
+
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiPortalsExample1],
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page extends Array {
+export default class Page {
     protected host = import('./examples/setup/create-host.md');
     protected service = import('./examples/setup/create-service.md');
     protected insert = import('./examples/setup/insert-host.md');
 
-    protected readonly examples = [
-        'Custom portals',
-        'Popout window portals',
-        'Picture in Picture portals',
-    ];
-
-    protected readonly [0] = {
+    protected readonly example1 = {
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
         'portal.ts': import('./examples/1/portal.ts?raw', {with: {loader: 'text'}}),
         'service.ts': import('./examples/1/service.ts?raw', {with: {loader: 'text'}}),
-    };
-
-    protected readonly [1] = {
-        'popout.html': import('./examples/2/popout.html'),
-        'popout.ts': import('./examples/2/popout.ts?raw', {with: {loader: 'text'}}),
-        'popout.less': import('./examples/2/popout.less'),
-        'popout.service.ts': import('./examples/2/popout.service.ts?raw', {
-            with: {loader: 'text'},
-        }),
-    };
-
-    protected readonly [2] = {
-        'popout.html': import('./examples/3/popout.html'),
-        'popout.ts': import('./examples/3/popout.ts?raw', {with: {loader: 'text'}}),
-        'popout.less': import('./examples/3/popout.less'),
-        'popout.service.ts': import('./examples/3/popout.service.ts?raw', {
-            with: {loader: 'text'},
-        }),
     };
 }
 ```
