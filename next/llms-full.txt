@@ -28298,12 +28298,12 @@ A two-thumb slider for selecting a range of values
 
 ### Usage Examples
 
-#### Thumb radius
+#### Size
 
 **Template:**
 ```html
 <tui-range [(ngModel)]="value" />
-<p>Custom radius and thickness</p>
+<p>Custom</p>
 <tui-range [style.--tui-thumb-size.rem]="1" [(ngModel)]="value" />
 ```
 **TypeScript:**
@@ -28442,7 +28442,7 @@ import {TuiRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Thumb radius', 'Segments', 'KeySteps'];
+    protected readonly examples = ['Size', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
 
     protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
@@ -30817,12 +30817,12 @@ Taiga UI styling of native html tag '"> to choose a value from a limited range R
 
 ### Usage Examples
 
-#### Thumb radius
+#### Size
 
 **Template:**
 ```html
 <input tuiSlider type="range" [formControl]="formControl" />
-<p>Custom radius and thickness</p>
+<p>Custom</p>
 <input tuiSlider type="range" [formControl]="formControl" [style.--tui-thumb-size.rem]="1" />
 ```
 **TypeScript:**
@@ -31065,7 +31065,7 @@ import {TuiSlider, TuiTitle} from '@taiga-ui/core';
 })
 export default class Page {
     protected readonly examples = [
-        'Thumb radius',
+        'Size',
         'Colors',
         'Segments',
         'Disabled',
