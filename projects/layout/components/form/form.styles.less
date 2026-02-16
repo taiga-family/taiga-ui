@@ -17,8 +17,6 @@
 
         > fieldset > legend {
             font: var(--tui-typography-ui-m);
-            font-weight: bold;
-            padding: 0.5rem 0 0.75rem;
         }
     }
 
@@ -32,8 +30,7 @@
 
         > fieldset > legend {
             font: var(--tui-typography-ui-l);
-            font-weight: bold;
-            padding: 0.75rem 0;
+            padding: 0.75rem 0 0.5rem;
         }
     }
 
@@ -47,8 +44,6 @@
 
         > fieldset > legend {
             font: var(--tui-typography-ui-l);
-            font-weight: bold;
-            padding: 0.5rem 0 0.75rem;
         }
     }
 
@@ -58,11 +53,25 @@
 
     > fieldset {
         display: grid;
+        flex-wrap: wrap;
         gap: inherit;
         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
         border: none;
         padding: 0;
         margin: 0;
+
+        &:defined > legend {
+            position: relative;
+            padding: 0.5rem 0;
+            margin-block-end: 0.25rem;
+            font-weight: bold;
+        }
+
+        &:first-child > legend {
+            inset-block-start: -0.25rem;
+            padding-block-start: 0;
+            margin-block-end: 0;
+        }
     }
 
     > footer {

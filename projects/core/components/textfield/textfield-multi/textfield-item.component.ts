@@ -25,9 +25,7 @@ export interface TuiTextfieldItem<T> {
     template:
         '<ng-container *polymorpheusOutlet="content() as text; context: context">{{ text }}</ng-container>',
     styleUrl: './textfield-item.style.less',
-    // TODO: Set to OnPush in v5 when textfield.item becomes a signal
-    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._string]': '!textfield.item()',
         '[class._disabled]': 'handlers.disabledItemHandler()(context.$implicit.item)',
