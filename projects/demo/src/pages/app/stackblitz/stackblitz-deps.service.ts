@@ -52,6 +52,7 @@ export class StackblitzDepsService {
             '@taiga-ui/kit': version,
             '@taiga-ui/layout': version,
             '@taiga-ui/legacy': version,
+            '@taiga-ui/styles': version,
         };
     }
 
