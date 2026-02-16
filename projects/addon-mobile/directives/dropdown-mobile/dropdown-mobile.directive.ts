@@ -1,9 +1,10 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, Input, signal} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
 
 import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 
 @Directive({
     standalone: true,
@@ -17,13 +18,17 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
                     : inject(TUI_DROPDOWN_COMPONENT, {skipSelf: true}),
         },
     ],
+    hostDirectives: [{directive: TuiActiveZone, outputs: ['tuiActiveZoneChange']}],
     host: {
-        '[style.visibility]': '"visible"',
+        '[style.visibility]': 'visible()',
         '(mousedown)': 'onMouseDown($event)',
+        '(tuiActiveZoneChange)': 'visible.set($event ? "visible" : "")',
     },
 })
 export class TuiDropdownMobile {
     private readonly isMobile = inject(TUI_IS_MOBILE);
+
+    protected readonly visible = signal('');
 
     @Input()
     public tuiDropdownMobile = '';
