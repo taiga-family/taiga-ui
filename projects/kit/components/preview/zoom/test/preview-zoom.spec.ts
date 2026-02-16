@@ -8,7 +8,6 @@ describe('PreviewZoom', () => {
     let testComponent: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiPreviewZoom],
         template: `
             <tui-preview-zoom [(value)]="value" />

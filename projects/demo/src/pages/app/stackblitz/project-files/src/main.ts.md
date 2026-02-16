@@ -7,7 +7,6 @@ import {provideTaiga, tuiAssetsPathProvider, TuiRoot} from '@taiga-ui/core';
 import {App} from './app/app';
 
 @Component({
-  standalone: true,
   selector: 'root',
   imports: [App, TuiRoot],
   template: '<tui-root> <app/> </tui-root>',
