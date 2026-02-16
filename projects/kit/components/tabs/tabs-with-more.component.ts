@@ -182,8 +182,6 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         }
     }
 
-    // TODO drop comment after fix issue: https://github.com/typescript-eslint/typescript-eslint/issues/11771
-
     private get margin(): number {
         return this.size() === 'l' ? 24 : 16;
     }
