@@ -6,6 +6,7 @@ interface Input {
     collection: string;
     component?: string;
     template?: string;
+    styles?: string;
     packageJson?: string;
     schematicName?: string;
 }
@@ -13,6 +14,7 @@ interface Input {
 interface Output {
     component: string;
     template: string;
+    styles: string;
     packageJson: string;
 }
 
@@ -21,6 +23,7 @@ export async function runMigration(options: Input): Promise<Output> {
         collection,
         component = '',
         template = '',
+        styles = '',
         packageJson = '{}',
         schematicName = 'updateToV5',
     } = options;
@@ -32,6 +35,7 @@ export async function runMigration(options: Input): Promise<Output> {
 
     host.create('test/app/test.ts', component);
     host.create('test/app/test.html', template);
+    host.create('test/app/test.style.less', styles);
     host.create('package.json', packageJson);
 
     await runner.runSchematic(schematicName, {'skip-logs': true}, host);
@@ -41,6 +45,7 @@ export async function runMigration(options: Input): Promise<Output> {
     return {
         component: host.readContent('test/app/test.ts') ?? '',
         template: host.readContent('test/app/test.html') ?? '',
+        styles: host.readContent('test/app/test.style.less') ?? '',
         packageJson: host.readContent('package.json') ?? '{}',
     };
 }

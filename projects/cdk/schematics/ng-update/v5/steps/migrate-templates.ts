@@ -15,7 +15,13 @@ import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../interfaces/template-resource';
-import {addHTMLCommentTags, replaceAttrs, replaceTags} from '../../utils/templates';
+import {
+    addHTMLCommentTags,
+    replaceAttrs,
+    replaceAttrValues,
+    replaceTags,
+} from '../../utils/templates';
+import {ATTR_WITH_VALUES_TO_REPLACE} from './constants/attr-with-values-to-replace';
 import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
 import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
@@ -64,6 +70,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
         getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
+        getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
         migrateInputYear,
         migrateInputRange,
         migrateAccordionItem,

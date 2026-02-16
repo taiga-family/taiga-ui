@@ -8,6 +8,7 @@ import {
 } from 'ng-morph';
 
 import {type TuiSchema} from '../../../ng-add/schema';
+import {addCommentForStylesFiles} from '../../utils/add-comment-for-styles';
 import {getFileSystem} from '../../utils/get-file-system';
 import {replaceText} from '../../utils/replace-text';
 
@@ -33,6 +34,16 @@ const FONT_VARIABLES_REPLACEMENTS = [
     {from: '--tui-font-ui-2xs', to: '--tui-typography-ui-2xs'},
 ];
 
+export const TUI_THICKNESS_COMMENT =
+    'use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size';
+
+const DEPRECATED_VARS_WITH_COMMENT = [
+    {
+        sourceText: '--tui-thickness',
+        comment: `TODO: (Taiga UI migration) ${TUI_THICKNESS_COMMENT}`,
+    },
+];
+
 export function migrateCssVariables(tree: Tree, options: TuiSchema): void {
     if (!options['skip-logs']) {
         infoLog('Starting migration css variables...');
@@ -41,6 +52,7 @@ export function migrateCssVariables(tree: Tree, options: TuiSchema): void {
     const fileSystem = getFileSystem(tree);
 
     replaceText(FONT_VARIABLES_REPLACEMENTS);
+    addCommentForStylesFiles(DEPRECATED_VARS_WITH_COMMENT);
 
     fileSystem.commitEdits();
     saveActiveProject();
