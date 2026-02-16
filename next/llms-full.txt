@@ -9149,7 +9149,6 @@ import {TuiCopyProcessor} from '@taiga-ui/cdk';
 import {TuiCopy} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiCopy, TuiCopyProcessor],
     templateUrl: './index.html',
     encapsulation,
@@ -14632,7 +14631,6 @@ import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiChevron,
@@ -38050,8 +38048,7 @@ import {TuiAnimated} from '@taiga-ui/cdk';
 // ...
 
 @Component({
-  standalone: true,
-  import: [
+  imports: [
     // ...
     TuiAnimated,
   ],
@@ -40429,7 +40426,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
