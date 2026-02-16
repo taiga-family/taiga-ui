@@ -11,7 +11,7 @@
                 [disabled]="!input.interactive() || input.parsed() >= mask.max()"
                 [iconStart]="options.icons.increase"
                 (click.prevent)="onStep(step())"
-                (pointerdown.prevent)="step$.next(step())"
+                (pointerdown.prevent)="hold.next(step())"
             >
                 +
             </button>
@@ -25,7 +25,7 @@
                 [disabled]="!input.interactive() || input.parsed() <= mask.min()"
                 [iconStart]="options.icons.decrease"
                 (click.prevent)="onStep(-step())"
-                (pointerdown.prevent)="step$.next(-step())"
+                (pointerdown.prevent)="hold.next(-step())"
             >
                 -
             </button>

@@ -1,0 +1,20 @@
+@import '../variables/media';
+
+.tui-hitbox(@size) {
+    @media @tui-mobile {
+        position: relative;
+        overflow: visible;
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block !important;
+            inline-size: max(100%, @size);
+            block-size: max(100%, @size);
+            background: transparent;
+            inset: 50%;
+            margin: 0;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
