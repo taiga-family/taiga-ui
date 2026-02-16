@@ -4,7 +4,7 @@ import {TuiAnimated} from '@taiga-ui/cdk';
 // ...
 
 @Component({
-  import: [
+  imports: [
     // ...
     TuiAnimated,
   ],
