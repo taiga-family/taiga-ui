@@ -1,0 +1,1 @@
+import{a as e,b as n}from"./chunk-4P3ZHMST.js";import{a as i}from"./chunk-QSUUHGKY.js";import{a as c}from"./chunk-KZW4HLC7.js";import{d as o}from"./chunk-2UPKG2B4.js";function f(r){return e(r)?c:n(r)?i:o}function x(r){let s={};return Object.entries(r).forEach(([t,p])=>{let m=f(t);s[t]=m(p)}),s}export{x as a};
