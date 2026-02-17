@@ -139,6 +139,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiIsEdge',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'isEdge',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsFirefox',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'isFirefox',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsSafari',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'isSafari',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
             name: 'provideEventPlugins',
             moduleSpecifier: '@taiga-ui/event-plugins',
         },
