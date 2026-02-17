@@ -73,7 +73,7 @@ test.describe('InputChip', () => {
 
             await chip.chips.first().dblclick();
 
-            await expect.soft(example).toHaveScreenshot('input-chip-disabled.png');
+            await expect.soft(example).toHaveScreenshot('input-chip-disabled-2.png');
         });
     });
 
