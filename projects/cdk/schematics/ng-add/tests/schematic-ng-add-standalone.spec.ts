@@ -247,7 +247,7 @@ export class App {
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
+            .toBe(`import { provideTaiga } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -258,7 +258,7 @@ import { appRoutes } from './app/app.routes';
 import { App } from './app/app.component';
 
 bootstrapApplication(App, {
-  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule), provideEventPlugins()],
+  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule), provideTaiga()],
 }).catch((err) => console.error(err));
 `);
     });
@@ -274,7 +274,7 @@ bootstrapApplication(App, {
         );
 
         expect(tree.readContent('test/app/app.config.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
+            .toBe(`import { provideTaiga } from "@taiga-ui/core";
 
 import { ApplicationConfig } from '@angular/core';
 import {
@@ -285,7 +285,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations(), provideEventPlugins()],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations(), provideTaiga()],
 };`);
     });
 
@@ -300,7 +300,7 @@ export const appConfig: ApplicationConfig = {
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
+            .toBe(`import { provideTaiga } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -310,7 +310,7 @@ import { appRoutes } from './app/app.routes';
 import { App } from './app/app.component';
 
 bootstrapApplication(App, {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideEventPlugins()],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideTaiga()],
 }).catch((err) => console.error(err));
 `);
     });

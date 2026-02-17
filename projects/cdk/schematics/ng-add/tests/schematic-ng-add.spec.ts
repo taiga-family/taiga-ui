@@ -246,15 +246,14 @@ describe('ng-add', () => {
         );
 
         expect(tree.readContent('test/app/app.module.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
-import { TuiRoot } from "@taiga-ui/core";
+            .toBe(`import { TuiRoot, provideTaiga } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NgModule} from '@angular/core';
 import {App} from './app.component';
 
 @NgModule({declarations: [App],
     imports: [BrowserAnimationsModule, TuiRoot],
-    providers: [provideEventPlugins()]
+    providers: [provideTaiga()]
 })
 export class AppModule {}
 `);

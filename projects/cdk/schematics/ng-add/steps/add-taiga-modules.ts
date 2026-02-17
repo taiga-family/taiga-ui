@@ -46,8 +46,8 @@ function addTuiModules({
         addUniqueImport(mainModulePath, module.name, module.packageName);
     });
 
-    addProviderToNgModule(mainClass, 'provideEventPlugins()', {unique: true});
-    addUniqueImport(mainModulePath, 'provideEventPlugins', '@taiga-ui/event-plugins');
+    addProviderToNgModule(mainClass, 'provideTaiga()', {unique: true});
+    addUniqueImport(mainModulePath, 'provideTaiga', '@taiga-ui/core');
 
     context.logger.info(
         `${modules.map((module) => module.name)} was added to ${mainModulePath}`,
@@ -91,10 +91,10 @@ function addTuiEntitiesToStandalone({
 function addRootTuiProvidersToBootstrapFn(
     bootstrapOptions: ObjectLiteralExpression,
 ): void {
-    pushToObjectArrayProperty(bootstrapOptions, 'providers', 'provideEventPlugins()');
+    pushToObjectArrayProperty(bootstrapOptions, 'providers', 'provideTaiga()');
     const modules = [];
 
-    modules.push({name: 'provideEventPlugins', packageName: '@taiga-ui/event-plugins'});
+    modules.push({name: 'provideTaiga', packageName: '@taiga-ui/core'});
 
     modules.forEach(({name, packageName}) => {
         addUniqueImport(
