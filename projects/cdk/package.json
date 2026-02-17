@@ -40,6 +40,7 @@
         "@ng-web-apis/resize-observer": "^5.1.0",
         "@ng-web-apis/screen-orientation": "^5.1.0",
         "@taiga-ui/event-plugins": "^5.0.0",
+        "@taiga-ui/font-watcher": "~0.3.0",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "rxjs": ">=7.0.0"
     },
