@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[11153],{11153:e=>{e.exports='<tui-textfield iconStart="@tui.pencil">\n    <label tuiLabel>Your best thought</label>\n    <textarea\n        placeholder="Write something..."\n        tuiTextarea\n        [max]="4"\n        [min]="4"\n        [(ngModel)]="value"\n    ></textarea>\n</tui-textfield>\n'}}]);

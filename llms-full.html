@@ -36565,7 +36565,7 @@ export default class Example {
 
     protected onClick(): void {
         this.service
-            .open(&#039;Supports &lt;b&gt;basic&lt;/b&gt; HTML&#039;, {label: &#039;Simple sheet&#039;})
+            .open(&#039;Supports &lt;b&gt;basic&lt;/b&gt; HTML&#039;, {label: &#039;Simple sheet&#039;, data: &#039;OK&#039;})
             .subscribe();
     }
 }
@@ -42532,7 +42532,7 @@ export default class Example {
 ```html
 &lt;tui-textfield iconStart=&quot;@tui.pencil&quot;&gt;
 &lt;label tuiLabel&gt;Your best thought&lt;/label&gt;
-&lt;textarea placeholder=&quot;Write something...&quot; tuiTextarea [max]=&quot;4&quot; [min]=&quot;4&quot; [(ngModel)]=&quot;value&quot; &gt;&lt;/textarea&gt;
+&lt;textarea placeholder=&quot;Write something...&quot; required tuiTextarea [max]=&quot;4&quot; [min]=&quot;4&quot; [(ngModel)]=&quot;value&quot; &gt;&lt;/textarea&gt;
 &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
