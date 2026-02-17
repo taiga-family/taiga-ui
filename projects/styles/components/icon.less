@@ -31,12 +31,17 @@ tui-icon:where(*&) {
     vertical-align: middle;
     box-sizing: border-box;
     mask: var(--t-icon-bg) no-repeat center / calc(100% + 10 * var(--tui-stroke-width)) 100%;
-    zoom: ~'calc(100% * (min(max(var(--tui-font-offset) - 10px, 0px), 1px) / 0.8px))';
+    zoom: ~'calc(100% * (clamp(0px, var(--tui-font-offset) - 10px, 1px) / 0.8px))';
 
     @media @tui-mouse {
         &[data-appearance='icon']:hover {
             color: var(--tui-text-secondary);
         }
+    }
+
+    &[tuiIcons]::before,
+    &[tuiIcons]::after {
+        zoom: 1;
     }
 
     &[data-icon-end] {
@@ -69,11 +74,6 @@ tui-icon:where(*&) {
 
             --tui-icon-size: 0.5715em;
         }
-    }
-
-    &[data-icon-start='img']::before,
-    &[data-icon-end='img']::after {
-        zoom: 1;
     }
 
     &[data-icon-start='font']::before,

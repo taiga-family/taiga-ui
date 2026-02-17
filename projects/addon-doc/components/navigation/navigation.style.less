@@ -90,11 +90,12 @@
     text-decoration: none;
 
     .t-accordion > & {
+        block-size: 2.5rem;
         font: var(--tui-typography-body-s);
         font-weight: bold;
         color: var(--tui-text-primary);
         align-items: center;
-        padding: 0.625rem 1rem;
+        padding: 0 1rem;
         margin-inline-start: 1px;
 
         &::before {
@@ -113,6 +114,11 @@
 
     &_subsection {
         margin-inline-start: 0 !important;
+        text-indent: 1.25rem;
+
+        .t-chevron {
+            position: absolute;
+        }
 
         &::before {
             opacity: 0;
@@ -135,6 +141,7 @@
             margin-inline-start: -1px;
             border-radius: 1rem;
             background: var(--tui-text-primary);
+            zoom: 1;
         }
     }
 
@@ -151,6 +158,7 @@
             inline-size: 1px;
             padding: 0;
             background: var(--tui-border-normal);
+            zoom: 1;
         }
     }
 }
