@@ -47,6 +47,17 @@ test.describe('InputChip', () => {
 
             await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator-2.png');
         });
+
+        test('editing disabled chip', async ({page}) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const example = doc.getExample('#disabled-items');
+
+            const chip = new TuiInputChipPO(example);
+
+            await chip.chips.first().dblclick();
+
+            await expect.soft(example).toHaveScreenshot('input-chip-disabled-2.png');
+        });
     });
 
     test.describe('API', () => {

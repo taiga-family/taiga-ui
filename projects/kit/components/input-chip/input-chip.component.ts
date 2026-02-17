@@ -78,7 +78,8 @@ export class TuiInputChipComponent<T> {
         TuiAppearance,
         'tuiAppearanceState',
         computed(() =>
-            this.handlers.disabledItemHandler()(this.context.$implicit.item)
+            this.handlers.disabledItemHandler()(this.context.$implicit.item) ||
+            this.textfield.cva?.disabled()
                 ? 'disabled'
                 : null,
         ),
@@ -132,7 +133,8 @@ export class TuiInputChipComponent<T> {
         if (
             !this.editable ||
             !this.textfield.cva?.interactive() ||
-            !tuiIsString(this.internal())
+            !tuiIsString(this.internal()) ||
+            this.disabled()
         ) {
             return;
         }
