@@ -11,8 +11,8 @@ jobs:
       - uses: actions/checkout@v4.3.1
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@v1.186.0
-      - uses: taiga-family/ci/actions/setup/node@v1.186.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.187.0
+      - uses: taiga-family/ci/actions/setup/node@v1.187.0
       - name: Lucide icons
         run: |
           npx nx prebuild icons
@@ -25,7 +25,7 @@ jobs:
           npx prettier ./projects/demo/used-icons.ts --write || echo "no file matching"
           npx prettier ./projects/demo-playwright/used-icons.ts --write || echo "no file matching"
           npx prettier ./projects/cdk/constants/used-icons.ts --write || echo "no file matching"
-      - uses: taiga-family/ci/actions/auto/push@v1.186.0
+      - uses: taiga-family/ci/actions/auto/push@v1.187.0
         if: env.SUPPORT_AUTO_PUSH
         with:
           message: icons have changed
