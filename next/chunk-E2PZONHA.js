@@ -1,0 +1,1 @@
+import{b as i,c as o}from"./chunk-D2G2NJTO.js";var p=e=>e.replaceAll(/@import.+@taiga-ui\/styles\/utils(?:.less)?';/g,"@import '@taiga-ui/styles/utils.less';"),l=(e,r="")=>`src/app/${e.join("")}${r}`,c=e=>Object.entries(e).filter(([r,t])=>t&&!o(r)),g=e=>{let r={};return e.forEach(([t,s])=>{let n=l`${t}`;r[n]=i(t)?p(s):s}),r};export{p as a,l as b,c,g as d};
