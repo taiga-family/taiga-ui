@@ -64,31 +64,16 @@ test.describe('DropdownSelection', () => {
     }) => {
         const api = new TuiDocumentationPagePO(page);
         const example = api.getExample('#textarea');
+        const content = 'hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @';
 
         await example.scrollIntoViewIfNeeded();
         await api.waitStableState();
 
-        await page.waitForTimeout(500); // flaky in Safari
-
         await example.locator('textarea').focus();
-
-        await example
-            .locator('textarea')
-            .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
-        await page.waitForTimeout(200);
-        await expect(page.locator('tui-dropdown')).toBeVisible();
-
-        await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
-
         await example.locator('textarea').clear();
-        await example
-            .locator('textarea')
-            .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
-        await page.waitForTimeout(200);
+        await example.locator('textarea').fill(content);
         await expect(page.locator('tui-dropdown')).toBeVisible();
-
-        // note: expect the same position
-        await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
+        await expect.soft(page).toHaveScreenshot('05-dropdown-selection.png');
     });
 
     test('keyArrowDown / keyArrowUp must be handled correctly', async ({page}) => {

@@ -80,7 +80,7 @@ export class TuiDropdownSelection
             ),
         ),
         merge(fromEvent(this.el, 'scroll', {passive: true, capture: true})).pipe(
-            throttleTime(16),
+            throttleTime(16, undefined, {leading: false, trailing: true}),
             startWith(0),
         ),
     ]).pipe(
@@ -99,9 +99,7 @@ export class TuiDropdownSelection
             const textfield =
                 active && tuiIsTextfield(active) && this.el.contains(active);
 
-            return visible && textfield
-                ? this.isCaretVisible(active as HTMLTextAreaElement)
-                : visible;
+            return visible && textfield ? this.isCaretVisible(this.range) : visible;
         }),
     );
 
@@ -237,45 +235,17 @@ export class TuiDropdownSelection
         return ghost;
     }
 
-    private isCaretVisible(textarea: HTMLTextAreaElement): boolean {
-        const caret = textarea.selectionStart;
-        const div = this.doc.createElement('div');
-        const style = getComputedStyle(textarea);
+    private isCaretVisible(range: Range): boolean {
+        const caret = range.getBoundingClientRect();
+        const host = this.ghostHost.getBoundingClientRect();
+        const styles = getComputedStyle(this.ghostHost);
+        const fontSize = parseFloat(styles.fontSize) || 16;
+        const lineHeight = parseFloat(styles.lineHeight) || fontSize * 1.2;
+        const visibleTop = Math.max(caret.top, host.top);
+        const visibleBottom = Math.min(caret.bottom, host.bottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const threshold = lineHeight * 0.5;
 
-        div.style.position = 'absolute';
-        div.style.visibility = 'hidden';
-        div.style.whiteSpace = 'pre-wrap';
-        div.style.overflowWrap = 'break-word';
-        div.style.overflow = 'hidden';
-        div.style.font = style.font;
-        div.style.lineHeight = style.lineHeight;
-        div.style.letterSpacing = style.letterSpacing;
-        div.style.textTransform = style.textTransform;
-        div.style.padding = style.padding;
-        div.style.border = style.border;
-        div.style.width = style.width;
-        div.style.boxSizing = style.boxSizing;
-        div.textContent = textarea.value.slice(0, caret);
-
-        const span = this.doc.createElement('span');
-
-        span.textContent = '\u00A0';
-        div.appendChild(span);
-
-        this.doc.body.appendChild(div);
-
-        const caretTop = span.offsetTop;
-        const caretHeight = span.offsetHeight;
-
-        this.doc.body.removeChild(div);
-
-        const visibleTop = textarea.scrollTop;
-        const visibleBottom = visibleTop + textarea.clientHeight;
-        const paddingCompensation = 2;
-
-        return (
-            caretTop + paddingCompensation >= visibleTop &&
-            caretTop + caretHeight - paddingCompensation <= visibleBottom
-        );
+        return visibleHeight >= threshold;
     }
 }
