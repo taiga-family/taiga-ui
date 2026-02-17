@@ -115,5 +115,25 @@ describe('ng-update accordion item', () => {
         expect(await migrate(before)).toEqual(after);
     });
 
+    it('migrates standalone tui-expand content template', async () => {
+        const before = `
+<tui-expand [expanded]="expanded">
+    <ng-template tuiExpandContent>
+        <p>NOBODY expects the Spanish Inquisition!</p>
+    </ng-template>
+</tui-expand>
+        `;
+
+        const after = `
+<tui-expand [expanded]="expanded">
+    <ng-template tuiItem>
+        <p>NOBODY expects the Spanish Inquisition!</p>
+    </ng-template>
+</tui-expand>
+        `;
+
+        expect(await migrate(before)).toEqual(after);
+    });
+
     afterEach(() => resetActiveProject());
 });
