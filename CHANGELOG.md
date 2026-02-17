@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.71.0](https://github.com/taiga-family/taiga-ui/compare/v4.70.0...v4.71.0) (2026-02-17)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `DropdownMobile` fix visibility of inactive textfield
+  ([#13290](https://github.com/taiga-family/taiga-ui/issues/13290))
+  ([978f7cc](https://github.com/taiga-family/taiga-ui/commit/978f7cc858619b467533b5a616dd7da4c1fdf06f))
+- **core:** `Hint` fix flicker in iOS ([#13256](https://github.com/taiga-family/taiga-ui/issues/13256))
+  ([673aeae](https://github.com/taiga-family/taiga-ui/commit/673aeaed3486698407ec5e9b40df90d6a462c268))
+- **core:** changed behavior on clear button press ([#13103](https://github.com/taiga-family/taiga-ui/issues/13103))
+  ([8e70aef](https://github.com/taiga-family/taiga-ui/commit/8e70aeff811bb687ffcaeec2efdcf49eaed8999f))
+- **core:** do not mark input as invalid if it is not touched
+  ([#13244](https://github.com/taiga-family/taiga-ui/issues/13244))
+  ([9304526](https://github.com/taiga-family/taiga-ui/commit/9304526a348ac74e56860af98c2ff6e0229c08e5))
+
+### 🚀 Features
+
+- **addon-mobile:** `SheetDialog` add button to closable string content
+  ([#13262](https://github.com/taiga-family/taiga-ui/issues/13262))
+  ([09b9fab](https://github.com/taiga-family/taiga-ui/commit/09b9fab284565964b8ebf243086a1091be5e41db))
+- **core:** dropdown aligned to host with root html zoom
+  ([#13239](https://github.com/taiga-family/taiga-ui/issues/13239))
+  ([96306a8](https://github.com/taiga-family/taiga-ui/commit/96306a8e0c184bb06a3cf6f7eed809c18eb0348a))
+- **kit:** `InputChip` make chip hoverable in disabled mode
+  ([#13275](https://github.com/taiga-family/taiga-ui/issues/13275))
+  ([5cc40da](https://github.com/taiga-family/taiga-ui/commit/5cc40daf35779b6d1e686c053d3ed37955c76f18))
+- **kit:** compatibility `tuiInputNumber` with zoneless
+  ([#13240](https://github.com/taiga-family/taiga-ui/issues/13240))
+  ([e54b064](https://github.com/taiga-family/taiga-ui/commit/e54b064d4188ccd54334cacd132b3fa8c16374a6))
+
 ## [4.70.0](https://github.com/taiga-family/taiga-ui/compare/v4.69.0...v4.70.0) (2026-02-09)
 
 ### 🐞 Bug Fixes
