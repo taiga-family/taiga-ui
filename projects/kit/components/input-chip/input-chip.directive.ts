@@ -148,6 +148,6 @@ export class TuiInputChipDirective<T>
                 left: sign * Number.MAX_SAFE_INTEGER,
                 top: Number.MAX_SAFE_INTEGER,
             });
-        });
+        }, 100);
     }
 }
