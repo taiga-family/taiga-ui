@@ -31,7 +31,10 @@ const EXCLUDE_FILE_PATTERNS = [
     '*.d', // typings
 ].join('|');
 
-export const ALL_STYLE_FILES = '**/**.{less,sass,scss,css}';
+export const ALL_STYLE_FILES: Pattern = [
+    `!(${EXCLUDE_FILE_PATTERNS}).{less,sass,scss,css}`,
+    `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS}).{less,sass,scss,css}`,
+];
 
 export const ALL_TS_FILES: Pattern = [
     `!(${EXCLUDE_FILE_PATTERNS}).ts`,
