@@ -21,10 +21,11 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     template: `
         @if (selected()) {
             <input
+                aria-hidden="true"
+                checked
                 tuiCheckbox
                 type="checkbox"
                 class="t-check"
-                [checked]="selected()"
                 [size]="datalist.size() === 'l' ? 'm' : 's'"
             />
         } @else {
@@ -37,7 +38,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     hostDirectives: [TuiScrollIntoView],
     host: {
         tuiSelectOption: '',
-        '[class._selected]': 'selected()',
+        '[attr.aria-selected]': 'selected()',
     },
 })
 export class TuiSelectOption<T> {

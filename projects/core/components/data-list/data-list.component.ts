@@ -53,7 +53,6 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         },
     ],
     host: {
-        role: 'listbox',
         '[attr.data-size]': 'size()',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
         '(mousedown.prevent)': '(0)',
