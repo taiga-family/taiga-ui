@@ -23,12 +23,19 @@ interface Output {
 export async function runMigration(options: Input): Promise<Output> {
     const {
         collection,
-        component = '',
         template = '',
         styles = '',
         packageJson = '{}',
         projectJson = '{}',
         schematicName = 'updateToV5',
+        component = `
+            import {Component} from '@angular/core';
+
+            @Component({
+                templateUrl: './test.html',
+            })
+            export class Test {}
+        `,
     } = options;
 
     const host = new UnitTestTree(new HostTree());

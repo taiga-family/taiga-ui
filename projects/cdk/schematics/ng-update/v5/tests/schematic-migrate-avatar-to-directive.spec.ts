@@ -8,21 +8,7 @@ const collection = join(__dirname, '../../../migration.json');
 
 describe('ng-update avatar', () => {
     async function migrate(template: string): Promise<string> {
-        const {template: result} = await runMigration({
-            template,
-            collection,
-            component: `
-                import {Component} from '@angular/core';
-
-                @Component({
-                    standalone: true,
-                    templateUrl: './test.html',
-                })
-                export class TestComponent {}
-            `,
-        });
-
-        return result;
+        return (await runMigration({template, collection})).template;
     }
 
     it('replaces src attribute with tuiAvatar', async () => {

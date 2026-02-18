@@ -8,21 +8,7 @@ const collection = join(__dirname, '../../../migration.json');
 
 describe('ng-update tuiDropdownOpen to tuiDropdownAuto', () => {
     async function migrateTemplate(template: string): Promise<string> {
-        const result = await runMigration({
-            collection,
-            component: `
-import {Component} from '@angular/core';
-
-@Component({
-  standalone: true,
-  templateUrl: './test.html',
-})
-export class TestComponent {}
-`,
-            template,
-        });
-
-        return result.template;
+        return (await runMigration({collection, template})).template;
     }
 
     it('should rename tuiDropdownOpen to tuiDropdownAuto', async () => {
