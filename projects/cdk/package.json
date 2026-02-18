@@ -57,6 +57,7 @@
             "@taiga-ui/cdk",
             "@taiga-ui/core",
             "@taiga-ui/kit",
+            "@taiga-ui/styles",
             "@taiga-ui/testing",
             "@taiga-ui/addon-doc",
             "@taiga-ui/addon-charts",
