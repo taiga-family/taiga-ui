@@ -7763,13 +7763,21 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
-import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiTitle, TuiSurface} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
+    imports: [
+        TuiAvatar,
+        TuiButton,
+        TuiCardLarge,
+        TuiHeader,
+        TuiPlatform,
+        TuiSurface,
+        TuiTitle,
+    ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -7913,20 +7921,20 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
         TuiCell,
         TuiHeader,
         TuiRepeatTimes,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
