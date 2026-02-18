@@ -62,6 +62,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     protected readonly sync = effect(() => {
         this.activeItemIndex();
         this.maxIndex = this.getMaxIndex();
+        this.open = false;
     });
 
     public open = false;
