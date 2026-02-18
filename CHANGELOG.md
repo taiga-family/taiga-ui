@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.71.1](https://github.com/taiga-family/taiga-ui/compare/v4.71.0...v4.71.1) (2026-02-18)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `DropdownMobile` fix `_TuiActiveZone matches multiple times` error
+  ([#13314](https://github.com/taiga-family/taiga-ui/issues/13314))
+  ([adc7ea3](https://github.com/taiga-family/taiga-ui/commit/adc7ea38a0ff396e92a59493eac60ad1722fb5a4))
+
 ## [4.71.0](https://github.com/taiga-family/taiga-ui/compare/v4.70.0...v4.71.0) (2026-02-17)
 
 ### 🐞 Bug Fixes
