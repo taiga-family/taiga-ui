@@ -20,6 +20,8 @@ test.describe('InputChip', () => {
 
         const textfield = api.demo.locator('tui-textfield[multi]').first();
 
+        await page.waitForTimeout(200);
+
         await textfield.evaluate((el) => {
             el.scrollLeft = 50;
         });
