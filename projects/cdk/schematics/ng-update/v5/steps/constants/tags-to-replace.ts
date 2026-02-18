@@ -1,3 +1,4 @@
+import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {type ReplacementTag} from '../../../interfaces';
 
 export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
@@ -20,5 +21,15 @@ export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
         from: 'tui-island',
         to: 'div',
         addAttributes: ['tuiCardLarge'],
+    },
+    {
+        from: 'nav',
+        to: 'tui-stepper',
+        filterFn: (element) => hasElementAttribute(element, 'tuiStepper'),
+    },
+    {
+        from: 'nav',
+        to: 'tui-tabs',
+        filterFn: (element) => hasElementAttribute(element, 'tuiTabs'),
     },
 ];

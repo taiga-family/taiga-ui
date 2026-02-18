@@ -40,6 +40,12 @@ describe('ng-update chip and badge selectors', () => {
         );
     });
 
+    it('replaces nav[tuiStepper] with tui-stepper directive', async () => {
+        expect(await migrate('<nav tuiStepper></nav>')).toEqual(
+            '<tui-stepper ></tui-stepper>',
+        );
+    });
+
     it('preserves attributes and content on tui-badge', async () => {
         expect(
             await migrate(
