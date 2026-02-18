@@ -133,7 +133,7 @@
         "cpy-cli": "5.0.0",
         "glob": "11.1.0",
         "husky": "9.1.7",
-        "knip": "5.83.1",
+        "knip": "5.84.0",
         "ng-morph": "4.8.4",
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "14.0.1",
