@@ -4,7 +4,7 @@ import {ALL_STYLE_FILES, ALL_TS_FILES} from '../../constants';
 
 export function addCommentForStylesFiles(
     replaceable: Array<{sourceText: RegExp | string; comment: string}>,
-    pattern = [ALL_STYLE_FILES, ...ALL_TS_FILES],
+    pattern = [...ALL_STYLE_FILES, ...ALL_TS_FILES],
 ): void {
     const sourceFiles = getSourceFiles(pattern);
 
