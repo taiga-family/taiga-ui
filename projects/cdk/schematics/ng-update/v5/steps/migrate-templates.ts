@@ -17,6 +17,7 @@ import {getPathFromTemplateResource} from '../../../utils/templates/template-res
 import {type TemplateResource} from '../../interfaces/template-resource';
 import {
     addHTMLCommentTags,
+    removeInputs,
     replaceAttrs,
     replaceAttrValues,
     replaceTags,
@@ -24,6 +25,7 @@ import {
 import {ATTR_WITH_VALUES_TO_REPLACE} from './constants/attr-with-values-to-replace';
 import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
+import {INPUTS_TO_REMOVE} from './constants/inputs-to-remove';
 import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
 import {migrateAccordionItem} from './templates/migrate-accordion';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
@@ -71,6 +73,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
+        getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateInputYear,
         migrateInputRange,
         migrateAccordionItem,
