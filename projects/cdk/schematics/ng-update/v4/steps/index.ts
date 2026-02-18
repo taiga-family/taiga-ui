@@ -7,7 +7,6 @@ export * from './migrate-number-format-settings';
 export * from './migrate-option-providers';
 export * from './migrate-proprietary';
 export * from './migrate-templates';
-export * from './remove-duplicates';
 export * from './restore-tui-mapper';
 export * from './restore-tui-matcher';
 export * from './styles';

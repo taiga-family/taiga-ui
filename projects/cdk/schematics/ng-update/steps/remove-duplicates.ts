@@ -9,8 +9,8 @@ import {
     successLog,
 } from 'ng-morph';
 
-import {ALL_TS_FILES} from '../../../constants';
-import {type TuiSchema} from '../../../ng-add/schema';
+import {ALL_TS_FILES} from '../../constants';
+import {type TuiSchema} from '../../ng-add/schema';
 
 export function removeDuplicates(options: TuiSchema): void {
     !options['skip-logs'] &&

@@ -17,7 +17,12 @@ import {
 } from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {runSteps} from '../../utils/run-steps';
-import {removeModules, replaceIdentifiers, showWarnings} from '../steps';
+import {
+    removeDuplicates,
+    removeModules,
+    replaceIdentifiers,
+    showWarnings,
+} from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceFunctions} from '../utils/replace-functions';
 import {REPLACE_FUNCTIONS} from './steps/constants/functions';
@@ -72,6 +77,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateStyles',
                     step: migrateStyles,
+                },
+                {
+                    name: 'removeDuplicates',
+                    step: () => removeDuplicates(options),
                 },
             ],
             timings,
