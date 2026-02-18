@@ -18,7 +18,7 @@ describe('ng-update migrate @taiga-ui/kit imports to @taiga-ui/core', () => {
 
     it('migrates all identifiers from @taiga-ui/kit to @taiga-ui/core', async () => {
         const result = await migrate(`
-            import {TuiSlider, TuiSliderComponent, TuiCheckbox, TuiRadio, TuiKeySteps, tuiCheckboxOptionsProvider, TUI_FLOATING_PRECISION, TUI_CHECKBOX_OPTIONS, TUI_RADIO_OPTIONS} from '@taiga-ui/kit';
+            import {TuiSlider, TuiSliderComponent, TuiCheckbox, TuiRadio, TuiKeySteps, tuiCheckboxOptionsProvider, TUI_FLOATING_PRECISION, TUI_CHECKBOX_OPTIONS, TUI_RADIO_OPTIONS, TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
         `);
 
         expect(result).toContain('@taiga-ui/core');
@@ -32,6 +32,7 @@ describe('ng-update migrate @taiga-ui/kit imports to @taiga-ui/core', () => {
         expect(result).toContain('TUI_FLOATING_PRECISION');
         expect(result).toContain('TUI_CHECKBOX_OPTIONS');
         expect(result).toContain('TUI_RADIO_OPTIONS');
+        expect(result).toContain('TUI_VALIDATION_ERRORS');
     });
 
     it('migrates single identifier from @taiga-ui/kit to @taiga-ui/core', async () => {
