@@ -33,4 +33,12 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         from: {attrName: 'tuiDropdownOpen', withTagNames: ['*']},
         to: {attrName: 'tuiDropdownAuto'},
     },
+    {
+        from: {attrName: 'tuiExpandContent', withTagNames: ['ng-template']},
+        to: {attrName: 'tuiItem'},
+    },
+    {
+        from: {attrName: '*tuiExpandContent', withTagNames: ['*']},
+        to: {attrName: '*tuiItem'},
+    },
 ];
