@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/legacy",
-    "version": "4.71.0",
+    "version": "4.71.1",
     "description": "Legacy Taiga UI entities from the previous major release to simplify migration",
     "keywords": [
         "legacy",
