@@ -44,3 +44,10 @@ export const ALL_FILES: Pattern = [
     `!(${EXCLUDE_FILE_PATTERNS}).{html,ts,less,sass,scss,css,json}`,
     `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS}).{html,ts,less,sass,scss,css,json}`,
 ];
+
+export const PROJECT_JSON_FILES: Pattern = [
+    'project.json',
+    'angular.json',
+    `!(${EXCLUDE_DIRECTORIES})/**/project.json`,
+    `!(${EXCLUDE_DIRECTORIES})/**/angular.json`,
+];
