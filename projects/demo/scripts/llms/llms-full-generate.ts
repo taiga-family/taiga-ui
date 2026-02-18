@@ -16,18 +16,16 @@ import {
     loadConfig,
     processMarkdownFile,
     readIndexHtml,
+    setFoldersToScan,
+    setPagesPath,
     shouldIncludeSection,
 } from './utils';
+import {saveImportMap} from './utils/generate-import-map';
 
-const DEFAULT_PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
-const DEFAULT_OUTPUT_FILE = path.resolve(
-    process.cwd(),
-    'projects/demo/src/llms-full.txt',
-);
-const DEFAULT_OUTPUT_FILE_HTML = path.resolve(
-    process.cwd(),
-    'projects/demo/src/llms-full.html',
-);
+// These will be loaded from config
+let DEFAULT_MODULES_PATH: string;
+let DEFAULT_OUTPUT_FILE: string;
+let DEFAULT_OUTPUT_FILE_HTML: string;
 
 interface CliOptions {
     roots: string[];
@@ -43,8 +41,8 @@ interface CliOptions {
 function parseArgs(argv: string[]): CliOptions {
     const options: CliOptions = {
         roots: [],
-        output: DEFAULT_OUTPUT_FILE,
-        outputHtml: DEFAULT_OUTPUT_FILE_HTML,
+        output: '', // Will be set later from config
+        outputHtml: '', // Will be set later from config
         overrides: {},
     };
 
@@ -125,10 +123,6 @@ function parseArgs(argv: string[]): CliOptions {
         }
     }
 
-    if (options.roots.length === 0) {
-        options.roots = [DEFAULT_PAGES_PATH];
-    }
-
     return options;
 }
 
@@ -178,6 +172,42 @@ async function main(): Promise<void> {
         return fallback;
     })();
 
+    // Initialize constants from config
+    DEFAULT_MODULES_PATH = path.resolve(
+        process.cwd(),
+        config.constants?.defaultModulesPath,
+    );
+    DEFAULT_OUTPUT_FILE = path.resolve(
+        process.cwd(),
+        config.constants?.defaultOutputFile,
+    );
+    DEFAULT_OUTPUT_FILE_HTML = path.resolve(
+        process.cwd(),
+        config.constants?.defaultOutputFileHtml,
+    );
+
+    // Initialize file system path from config
+    if (config.constants?.defaultModulesPath) {
+        setPagesPath(config.constants.defaultModulesPath);
+    }
+
+    if (config.constants?.childFolders && Array.isArray(config.constants.childFolders)) {
+        setFoldersToScan(config.constants.childFolders);
+    }
+
+    // Apply defaults to cliOptions if not provided
+    if (cliOptions.roots.length === 0) {
+        cliOptions.roots = [DEFAULT_MODULES_PATH];
+    }
+
+    if (!cliOptions.output) {
+        cliOptions.output = DEFAULT_OUTPUT_FILE;
+    }
+
+    if (!cliOptions.outputHtml) {
+        cliOptions.outputHtml = DEFAULT_OUTPUT_FILE_HTML;
+    }
+
     const overrideKeysApplied: string[] = [];
 
     for (const [key, value] of Object.entries(cliOptions.overrides)) {
@@ -220,6 +250,41 @@ async function main(): Promise<void> {
 
     const output: string[] = [];
 
+    // Generate fresh import map from source code
+    console.info('Generating import map from Taiga UI source code...');
+
+    try {
+        await saveImportMap();
+        console.info('  ✓ Import map regenerated');
+    } catch (error) {
+        console.warn(`  ⚠ Could not generate import map: ${error}`);
+    }
+
+    // Add header sections with critical information
+    console.info('Adding header sections...');
+    const headerSectionsPath = path.resolve(
+        process.cwd(),
+        config.constants?.headerSectionsPath,
+    );
+
+    const headerFiles = config.constants?.headerFiles;
+
+    if (headerFiles && Array.isArray(headerFiles)) {
+        for (const headerFile of headerFiles) {
+            const headerPath = path.join(headerSectionsPath, headerFile);
+
+            try {
+                const headerContent = await fs.readFile(headerPath, 'utf-8');
+
+                output.push(headerContent);
+                output.push('\n---\n');
+                console.info(`  ✓ Added header section: ${headerFile}`);
+            } catch (error) {
+                console.warn(`  ⚠ Could not load header section ${headerFile}: ${error}`);
+            }
+        }
+    }
+
     if (getConfigValue(config.llmsFull.includeMarkdownFiles)) {
         for (const [idx, rootCandidate] of cliOptions.roots.entries()) {
             if (cliOptions.markdownDirs && !cliOptions.markdownDirs[idx]) {
@@ -230,8 +295,8 @@ async function main(): Promise<void> {
             }
 
             const dirName = cliOptions.markdownDirs
-                ? cliOptions.markdownDirs[idx] || 'home'
-                : 'home';
+                ? cliOptions.markdownDirs[idx] || 'getting-started'
+                : 'getting-started';
 
             const examplesPath = path.join(rootCandidate, 'app', dirName, 'examples');
 
@@ -256,34 +321,14 @@ async function main(): Promise<void> {
     }
 
     async function scanAdditionalRoot(root: string): Promise<string[]> {
-        if (root === DEFAULT_PAGES_PATH) {
+        if (root === DEFAULT_MODULES_PATH) {
             return getAllFolders();
         }
 
         const folders: string[] = [];
-        const SKIP_FOLDERS = new Set([
-            '__test__',
-            'assets',
-            'build',
-            'coverage',
-            'data',
-            'dist',
-            'docs',
-            'examples',
-            'lib',
-            'mocks',
-            'node_modules',
-            'src',
-            'test',
-        ]);
-        const CHILD_FOLDERS = [
-            'components',
-            'directives',
-            'tokens',
-            'customization',
-            'pipes',
-            'light',
-        ];
+        const SKIP_FOLDERS = new Set(config.constants?.skipFolders);
+        const rawChildFolders = config.constants?.childFolders;
+        const CHILD_FOLDERS = Array.isArray(rawChildFolders) ? rawChildFolders : [];
 
         async function fileExistsLocal(p: string): Promise<boolean> {
             try {
@@ -360,12 +405,17 @@ async function main(): Promise<void> {
         included: 0,
         skippedDeprecated: 0,
         skippedLegacy: 0,
+        skippedNoContent: 0,
+        skippedExcludedSection: 0,
+        skippedNoHeader: 0,
     };
 
     for (const folderPath of allFolders) {
         const content = await readIndexHtml(folderPath);
 
         if (!content) {
+            stats.skippedNoContent++;
+            console.warn(`[SKIPPED] No content: ${path.basename(folderPath)}`);
             continue;
         }
 
@@ -390,10 +440,16 @@ async function main(): Promise<void> {
         const parentFolder = path.basename(path.dirname(folderPath));
 
         if (!shouldIncludeSection(parentFolder, config.llmsFull.excludeSections)) {
+            stats.skippedExcludedSection++;
+            console.warn(
+                `[SKIPPED] Excluded section '${parentFolder}': ${path.basename(folderPath)}`,
+            );
             continue;
         }
 
         if (!headerData?.header) {
+            stats.skippedNoHeader++;
+            console.warn(`[SKIPPED] No header: ${path.basename(folderPath)}`);
             continue;
         }
 
@@ -475,6 +531,9 @@ async function main(): Promise<void> {
     console.info(`- Included in output: ${stats.included}`);
     console.info(`- Skipped (deprecated): ${stats.skippedDeprecated}`);
     console.info(`- Skipped (legacy): ${stats.skippedLegacy}`);
+    console.info(`- Skipped (no content): ${stats.skippedNoContent}`);
+    console.info(`- Skipped (excluded section): ${stats.skippedExcludedSection}`);
+    console.info(`- Skipped (no header): ${stats.skippedNoHeader}`);
     console.info('========================================');
 
     await fs.writeFile(cliOptions.output, output.join('\n'), 'utf-8');
