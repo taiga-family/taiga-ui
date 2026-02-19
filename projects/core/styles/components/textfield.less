@@ -333,7 +333,7 @@ tui-textfield {
             .appearance-focus({
                 &::placeholder,
                 &._empty {
-                    color: var(--tui-text-tertiary);
+                    color: var(--tui-text-secondary);
                 }
 
                 & ~ label {
@@ -365,6 +365,7 @@ tui-textfield {
         align-self: flex-start;
         font-size: inherit;
         line-height: var(--t-height);
+        letter-spacing: calc((max(1em, 0.75rem) - 1em) * 0.4);
         transition-duration: inherit;
     }
 
