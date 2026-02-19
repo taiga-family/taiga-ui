@@ -100,4 +100,37 @@ test.describe('DropdownSelection', () => {
         await expect(page.locator('tui-dropdown')).toBeVisible();
         await expect.soft(page).toHaveScreenshot('06-dropdown-selection-keydown.png');
     });
+
+    test('textarea with many line breaks and scroll', async ({page}) => {
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#textarea');
+        const textarea = example.locator('textarea');
+
+        await example.scrollIntoViewIfNeeded();
+        await textarea.focus();
+        await textarea.clear();
+
+        for (let i = 0; i < 20; i++) {
+            await page.keyboard.press('Enter');
+        }
+
+        await page.keyboard.type('@');
+        await page.waitForTimeout(200);
+        await api.waitStableState();
+
+        await expect
+            .soft(page)
+            .toHaveScreenshot('07-dropdown-selection-scrolled-bottom.png');
+
+        await textarea.evaluate((el) => {
+            el.scrollTop = 220;
+        });
+
+        await page.waitForTimeout(200);
+        await api.waitStableState();
+
+        await expect
+            .soft(page)
+            .toHaveScreenshot('08-dropdown-selection-scrolled-top.png');
+    });
 });
