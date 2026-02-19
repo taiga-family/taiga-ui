@@ -1,4 +1,3 @@
-/* eslint-disable @angular-eslint/no-experimental */
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
