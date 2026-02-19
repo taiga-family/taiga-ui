@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    input,
     type OnChanges,
     type OnInit,
     Output,
@@ -77,11 +78,8 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     @Input()
     public items: readonly TuiDayRangePeriod[] = [];
 
-    @Input()
-    public min: TuiDay | null = TUI_FIRST_DAY;
-
-    @Input()
-    public max: TuiDay | null = TUI_LAST_DAY;
+    public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
+    public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
 
     @Input()
     public minLength: TuiDayLike | null = null;
@@ -202,7 +200,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         if (!tuiIsString(item)) {
             this.selectedActivePeriod = item;
             this.itemChange.emit(item);
-            this.updateValue(item.range.dayLimit(this.min, this.max));
+            this.updateValue(item.range.dayLimit(this.min(), this.max()));
         } else if (this.activePeriod !== null) {
             this.selectedActivePeriod = null;
             this.itemChange.emit(null);
@@ -247,8 +245,8 @@ export class TuiCalendarRange implements OnInit, OnChanges {
                         : this.currentValue,
                     item.range,
                     (a, b) =>
-                        a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
-                        a.to.daySame(b.to.dayLimit(this.min, this.max)),
+                        a.from.daySame(b.from.dayLimit(this.min(), this.max())) &&
+                        a.to.daySame(b.to.dayLimit(this.min(), this.max())),
                 ),
             ) ||
                 null)
@@ -256,16 +254,19 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     private initDefaultViewedMonth(): void {
+        const min = this.min();
+        const max = this.max();
+
         if (this.currentValue instanceof TuiDay) {
             this.month = this.currentValue;
         } else if (this.currentValue) {
             this.month = this.items.length
                 ? this.currentValue.to
                 : this.currentValue.from;
-        } else if (this.max && this.month.monthSameOrAfter(this.max)) {
-            this.month = this.items.length ? this.max : this.max.append({month: -1});
-        } else if (this.min && this.month.monthSameOrBefore(this.min)) {
-            this.month = this.min;
+        } else if (max && this.month.monthSameOrAfter(max)) {
+            this.month = this.items.length ? max : max.append({month: -1});
+        } else if (min && this.month.monthSameOrBefore(min)) {
+            this.month = min;
         }
     }
 

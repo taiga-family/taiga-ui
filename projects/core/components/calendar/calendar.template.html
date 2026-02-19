@@ -6,8 +6,8 @@
         <tui-calendar-year
             automation-id="tui-calendar__year"
             [initialItem]="month.year"
-            [max]="computedMax.year"
-            [min]="computedMin.year"
+            [max]="max().year"
+            [min]="min().year"
             [rangeMode]="options.rangeMode"
             [value]="value"
             (yearClick)="onPickerYearClick($event)"
@@ -17,15 +17,15 @@
     <tui-calendar-spin
         automation-id="tui-calendar__pagination"
         class="t-pagination"
-        [max]="computedMaxViewedMonth"
-        [min]="computedMinViewedMonth"
+        [max]="computedMaxViewedMonth()"
+        [min]="computedMinViewedMonth()"
         [value]="month"
         (valueChange)="onPaginationValueChange($event)"
         (yearClick)="onPaginationYearClick()"
     />
     <tui-calendar-sheet
         automation-id="tui-calendar__calendar"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : computedMin : computedMax"
+        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : min() : max()"
         [hoveredItem]="hoveredItem"
         [markerHandler]="markerHandler"
         [month]="month"
