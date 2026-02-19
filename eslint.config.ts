@@ -38,6 +38,7 @@ export default process.env.HTML_ESLINT
                       {countVoidThis: true, max: 5},
                   ],
                   // TODO: fix later
+                  '@typescript-eslint/strict-void-return': 'off',
                   '@typescript-eslint/no-unused-private-class-members': 'off',
                   '@typescript-eslint/no-useless-default-assignment': 'off',
                   '@typescript-eslint/prefer-optional-chain': 'off',
@@ -50,6 +51,7 @@ export default process.env.HTML_ESLINT
               files: ['**/*.{json,html}'],
               rules: {
                   // TODO: fix later
+                  '@typescript-eslint/strict-void-return': 'off',
                   '@typescript-eslint/await-thenable': 'off',
                   '@typescript-eslint/consistent-return': 'off',
                   '@typescript-eslint/consistent-type-exports': 'off',

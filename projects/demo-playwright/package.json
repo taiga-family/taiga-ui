@@ -2,8 +2,8 @@
     "name": "@taiga-ui/demo-playwright",
     "private": true,
     "devDependencies": {
-        "@axe-core/playwright": "4.11.0",
-        "@playwright/test": "1.57.0",
+        "@axe-core/playwright": "4.11.1",
+        "@playwright/test": "1.58.2",
         "axe-playwright": "2.2.2"
     }
 }
