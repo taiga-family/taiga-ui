@@ -118,5 +118,7 @@ function findTuiIconNames(
 
     traverseDirectory(rootDir);
 
-    return Array.from(tuiIconNames);
+    return Array.from(tuiIconNames).sort((a, b) =>
+        a.localeCompare(b, undefined, {numeric: true}),
+    );
 }
