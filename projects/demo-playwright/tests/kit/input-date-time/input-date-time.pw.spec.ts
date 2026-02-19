@@ -196,7 +196,7 @@ test.describe('InputDateTime', () => {
 
             await expect
                 .soft(inputDateTime.host)
-                .toHaveScreenshot('03-timeMode=HH:MM.SS.MSS.png');
+                .toHaveScreenshot('03-timeMode=HH:MM:SS.MSS.png');
         });
 
         // TODO: remove skip after https://github.com/taiga-family/taiga-ui/issues/12707

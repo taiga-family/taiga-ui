@@ -21,7 +21,6 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'ЧЧ AA',
         HH: 'ЧЧ',
         'MM:SS.MSS': 'ММ:СС.МСС',
-        'MM.SS.MSS': 'ММ.СС.МСС',
         'SS.MSS': 'СС.МСС',
     },
     dateTexts: {

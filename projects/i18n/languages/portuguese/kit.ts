@@ -21,7 +21,6 @@ export const TUI_PORTUGUESE_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {

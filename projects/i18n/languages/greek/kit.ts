@@ -21,7 +21,6 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'ΩΩ π.μ./μ.μ.',
         HH: 'ΩΩ',
         'MM:SS.MSS': 'ΛΛ:ΔΔ.ΜΜΜ',
-        'MM.SS.MSS': 'ΛΛ.ΔΔ.ΜΜΜ',
         'SS.MSS': 'ΔΔ.ΜΜΜ',
     },
     dateTexts: {

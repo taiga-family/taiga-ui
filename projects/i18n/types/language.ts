@@ -109,7 +109,6 @@ export interface TuiLanguageKit {
         'HH AA': string;
         HH: string;
         'MM:SS.MSS': string;
-        'MM.SS.MSS': string; // TODO(v5): delete (exists only for Maskito@3 compatibility)
         'SS.MSS': string;
     };
     previewTexts: {
