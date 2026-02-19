@@ -8,20 +8,7 @@ const collection = join(__dirname, '../../../migration.json');
 
 describe('ng-update identifiers migration', () => {
     async function migrate(template: string): Promise<string> {
-        const {template: result} = await runMigration({
-            template,
-            collection,
-            component: `
-                import {Component} from '@angular/core';
-
-                @Component({
-                    templateUrl: './test.html',
-                })
-                export class Test {}
-            `,
-        });
-
-        return result;
+        return (await runMigration({template, collection})).template;
     }
 
     it('replaces tuiButtonClose with tuiButtonX', async () => {

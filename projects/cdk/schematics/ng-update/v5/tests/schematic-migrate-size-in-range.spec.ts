@@ -8,21 +8,7 @@ const collection = join(__dirname, '../../../migration.json');
 
 describe('ng-update size attribute for sliders', () => {
     async function migrate(template: string): Promise<string> {
-        const {template: result} = await runMigration({
-            template,
-            collection,
-            component: `
-                import {Component} from '@angular/core';
-
-                @Component({
-                    standalone: true,
-                    templateUrl: './test.html',
-                })
-                export class TestComponent {}
-            `,
-        });
-
-        return result;
+        return (await runMigration({template, collection})).template;
     }
 
     it('change size="s" attribute for tui-range', async () => {
