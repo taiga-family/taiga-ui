@@ -12,7 +12,11 @@ export function migrateStyles(): void {
                     '@taiga-ui/styles/utils',
                 )
                 .replaceAll('@taiga-ui/core/styles/', '@taiga-ui/styles/')
-                .replaceAll('@taiga-ui/kit/styles/', '@taiga-ui/styles/'),
+                .replaceAll('@taiga-ui/kit/styles/', '@taiga-ui/styles/')
+                .replaceAll(
+                    /tui-slider-ticks-labels\([^)]*\)/g,
+                    'tui-slider-ticks-labels()',
+                ),
         );
     });
 
