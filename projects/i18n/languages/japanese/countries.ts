@@ -1,6 +1,6 @@
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
-export const TUI_JAPAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
+export const TUI_JAPANESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     AD: 'Andorra',
     AE: 'United Arab Emirates',
     AF: 'Afghanistan',

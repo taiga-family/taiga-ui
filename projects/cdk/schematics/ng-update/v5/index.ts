@@ -25,6 +25,7 @@ import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
 import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateCssVariables} from './steps/migrate-css-variables';
+import {migratePackages} from './steps/migrate-packages';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
@@ -55,6 +56,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'replaceIdentifiers',
                     step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
+                },
+                {
+                    name: 'migratePackages',
+                    step: migratePackages,
                 },
                 {
                     name: 'migrateTemplates',

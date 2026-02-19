@@ -1,6 +1,6 @@
 import {type TuiLanguageEditor} from '@taiga-ui/i18n/types';
 
-export const TUI_JAPAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
+export const TUI_JAPANESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['ソリッドカラー', '勾配'],
     toolbarTools: {
         undo: '元に戻す',

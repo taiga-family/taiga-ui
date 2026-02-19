@@ -9,7 +9,7 @@ export type TuiLanguageName =
     | 'german'
     | 'hebrew'
     | 'italian'
-    | 'japan'
+    | 'japanese'
     | 'kazakh'
     | 'korean'
     | 'lithuanian'
