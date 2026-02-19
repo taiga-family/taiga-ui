@@ -65,10 +65,9 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
 
     protected readonly calendarInEffect = effect(() => {
         const calendar = this.calendar();
-        const initialItem = this.initialItem();
 
         if (calendar) {
-            initialItem && tuiSetSignal(calendar.initialItem, initialItem);
+            tuiSetSignal(calendar.initialItem, this.initialItem());
             tuiSetSignal(calendar.value, this.value());
             tuiSetSignal(calendar.min, this.min());
             tuiSetSignal(calendar.max, this.max());
