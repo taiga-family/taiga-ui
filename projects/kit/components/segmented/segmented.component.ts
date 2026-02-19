@@ -71,7 +71,7 @@ export class TuiSegmented implements OnChanges {
 
         el.classList.add('tui-segmented_active');
 
-        const {offsetWidth = 0, offsetLeft = 0, offsetTop = 0} = el;
+        const {offsetWidth, offsetLeft, offsetTop} = el;
 
         this.el.style.setProperty('--t-top', tuiPx(offsetTop));
         this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
