@@ -121,5 +121,6 @@ export const TUI_USED_ICONS = [
     '@tui.folder',
     '@tui.chevron-up',
     '@tui.pause',
+    '@tui.rss',
     '@tui.circle-question-mark',
 ] as const;
