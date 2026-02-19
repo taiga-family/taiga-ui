@@ -58,7 +58,7 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
                 },
                 {
-                    name: 'updatePackages',
+                    name: 'migratePackages',
                     step: migratePackages,
                 },
                 {
