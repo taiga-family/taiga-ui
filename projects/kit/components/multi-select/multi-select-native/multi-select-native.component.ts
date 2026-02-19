@@ -30,6 +30,7 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
     hostDirectives: [TuiInputChipDirective, TuiSelectLike],
     host: {
         multiple: '',
+        '[role]': 'null',
         '[size]': 'mobile ? 1 : 2',
         '(click.stop.zoneless)': '0',
         '(input)': 'onInput()',
