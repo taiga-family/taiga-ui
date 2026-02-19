@@ -5,7 +5,6 @@ export * from './count-filled-controls';
 export * from './default-sort';
 export * from './distance-between-touches';
 export * from './ease-in-out-quad';
-export * from './font-size-watcher';
 export * from './generate-id';
 export * from './is-control-empty';
 export * from './is-number';
