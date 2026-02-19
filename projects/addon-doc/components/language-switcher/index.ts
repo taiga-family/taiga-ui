@@ -48,7 +48,7 @@ export class TuiDocLanguageSwitcher {
         ['german', 'DE'],
         ['hebrew', 'IL'],
         ['italian', 'IT'],
-        ['japan', 'JP'],
+        ['japanese', 'JP'],
         ['kazakh', 'KZ'],
         ['korean', 'KR'],
         ['lithuanian', 'LT'],
