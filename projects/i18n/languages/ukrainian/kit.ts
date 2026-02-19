@@ -21,7 +21,6 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'ГГ АА',
         HH: 'ГГ',
         'MM:SS.MSS': 'ХХ:СС.МСС',
-        'MM.SS.MSS': 'ХХ.СС.МСС',
         'SS.MSS': 'СС.МСС',
     },
     dateTexts: {
