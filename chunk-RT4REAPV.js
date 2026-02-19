@@ -1,0 +1,2 @@
+import{g as p,i as s}from"./chunk-RNMUPALR.js";import{fa as c}from"./chunk-DANSFZDD.js";import{Mc as m,Tb as n,pc as i,qc as r,rc as a}from"./chunk-2UPKG2B4.js";var e=class e{};e.\u0275fac=function(t){return new(t||e)},e.\u0275cmp=n({type:e,selectors:[["tui-eager-example"]],decls:3,vars:0,consts:[["routerLink","path/to/eager","tuiButton","","type","button"]],template:function(t,l){t&1&&(i(0,"button",0),m(1,` Open dialog
+`),r(),a(2,"router-outlet"))},dependencies:[s,p,c],encapsulation:2,changeDetection:0});var o=e;export{o as a};
