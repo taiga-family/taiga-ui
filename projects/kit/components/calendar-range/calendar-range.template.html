@@ -3,9 +3,9 @@
     [class.t-calendar]="!mobile"
     [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledMapper : currentValue : minLength"
     [markerHandler]="markerHandler"
-    [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
+    [max]="max() | tuiMapper: capsMapper : currentValue : maxLength : false"
     [maxViewedMonth]="items.length || mobile ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
-    [min]="min | tuiMapper: capsMapper : currentValue : maxLength : true"
+    [min]="min() | tuiMapper: capsMapper : currentValue : maxLength : true"
     [month]="defaultViewedMonth"
     [showAdjacent]="!!items.length || mobile"
     [value]="currentValue"
@@ -17,8 +17,8 @@
     <tui-calendar
         [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledMapper : currentValue : minLength"
         [markerHandler]="markerHandler"
-        [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
-        [min]="min | tuiMapper: capsMapper : currentValue : maxLength : true"
+        [max]="max() | tuiMapper: capsMapper : currentValue : maxLength : false"
+        [min]="min() | tuiMapper: capsMapper : currentValue : maxLength : true"
         [minViewedMonth]="defaultViewedMonth | tuiMapper: monthOffset : 1"
         [month]="defaultViewedMonth | tuiMapper: monthOffset : 1"
         [showAdjacent]="false"
@@ -34,7 +34,7 @@
             role="menu"
             [style.flex]="1"
         >
-            @for (item of items | tuiMapper: mapper : min : max : minLength : otherDateText(); track item) {
+            @for (item of items | tuiMapper: mapper : min() : max() : minLength : otherDateText(); track item) {
                 <button
                     automation-id="tui-calendar-range__menu__item"
                     role="menuitemradio"

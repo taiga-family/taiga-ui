@@ -22,6 +22,7 @@ import {
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
@@ -142,8 +143,8 @@ export abstract class TuiInputDateBase<
             this.handlers.disabledItemHandler() as TuiBooleanHandler<
                 TuiDay | TuiDayRange
             >;
-        calendar.min = this.min();
-        calendar.max = this.max();
+        tuiSetSignal(calendar.min, this.min());
+        tuiSetSignal(calendar.max, this.max());
     }
 
     protected onClick(): void {

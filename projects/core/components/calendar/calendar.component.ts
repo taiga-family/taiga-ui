@@ -2,9 +2,11 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     EventEmitter,
     inject,
     Input,
+    input,
     Output,
 } from '@angular/core';
 import {
@@ -56,17 +58,30 @@ export class TuiCalendar {
     public disabledItemHandler: TuiBooleanHandler<TuiDay> =
         inject(TUI_ITEMS_HANDLERS).disabledItemHandler();
 
-    @Input()
-    public min: TuiDay | null = TUI_FIRST_DAY;
+    public readonly min = input(TUI_FIRST_DAY, {
+        transform: (x: TuiDay | null) => x ?? TUI_FIRST_DAY,
+    });
 
-    @Input()
-    public max: TuiDay | null = TUI_LAST_DAY;
+    public readonly max = input(TUI_LAST_DAY, {
+        transform: (x: TuiDay | null) => x ?? TUI_LAST_DAY,
+    });
 
-    @Input()
-    public minViewedMonth: TuiMonth | null = TUI_FIRST_DAY;
+    public readonly minViewedMonth = input<TuiMonth | null>(TUI_FIRST_DAY);
+    public readonly maxViewedMonth = input<TuiMonth | null>(TUI_LAST_DAY);
 
-    @Input()
-    public maxViewedMonth: TuiMonth | null = TUI_LAST_DAY;
+    protected readonly computedMinViewedMonth = computed(() => {
+        const min = this.min();
+        const minViewed = this.minViewedMonth() ?? TUI_FIRST_DAY;
+
+        return minViewed.monthSameOrAfter(min) ? minViewed : min;
+    });
+
+    protected readonly computedMaxViewedMonth = computed(() => {
+        const max = this.max();
+        const maxViewed = this.maxViewedMonth() ?? TUI_LAST_DAY;
+
+        return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
+    });
 
     @Input()
     public hoveredItem: TuiDay | null = null;
@@ -123,28 +138,6 @@ export class TuiCalendar {
 
     public onHoveredItemChange(day: TuiDay | null): void {
         this.updateHoveredDay(day);
-    }
-
-    protected get computedMin(): TuiDay {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiDay {
-        return this.max ?? TUI_LAST_DAY;
-    }
-
-    protected get computedMinViewedMonth(): TuiMonth {
-        const min = this.computedMin;
-        const minViewed = this.minViewedMonth ?? TUI_FIRST_DAY;
-
-        return minViewed.monthSameOrAfter(min) ? minViewed : min;
-    }
-
-    protected get computedMaxViewedMonth(): TuiMonth {
-        const max = this.computedMax;
-        const maxViewed = this.maxViewedMonth ?? TUI_LAST_DAY;
-
-        return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
     }
 
     protected get isInYearView(): boolean {
