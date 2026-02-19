@@ -1,7 +1,7 @@
 import {expect, type Locator} from '@playwright/test';
 
 export class TuiTextfieldWithDataListPO {
-    public readonly textfield: Locator = this.host.getByRole('textbox');
+    public readonly textfield: Locator = this.host.getByRole('combobox');
     public readonly dropdown = this.host
         .page()
         .locator('tui-dropdown,tui-dropdown-mobile,tui-sheet-dialog');

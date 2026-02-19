@@ -53,6 +53,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         },
     ],
     host: {
+        role: 'listbox',
         '[attr.data-size]': 'size()',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
         '(mousedown.prevent)': '(0)',
@@ -101,8 +102,12 @@ export class TuiDataListComponent<T>
         }
     }
 
-    // TODO: Refactor to :has after Safari support bumped to 15
     public ngAfterContentChecked(): void {
+        if (this.el.parentElement?.closest('[role="listbox"]')) {
+            this.el.removeAttribute('role');
+        }
+
+        // TODO: Refactor to :has after Safari support bumped to 15
         timer(0)
             .pipe(tuiZonefree(this.ngZone), tuiTakeUntilDestroyed(this.destroyRef))
             .subscribe(() => {

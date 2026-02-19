@@ -5,6 +5,7 @@ import {
     Directive,
     effect,
     ElementRef,
+    forwardRef,
     inject,
     input,
     model,
@@ -41,7 +42,7 @@ import {TuiDropdownClose} from './dropdown-close.directive';
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
         TuiObscured,
-        {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
+        {directive: forwardRef(() => TuiDropdownA11y), inputs: ['tuiDropdownRole']},
         {directive: TuiDropdownClose, outputs: ['tuiDropdownClose']},
         {
             directive: TuiActiveZone,
