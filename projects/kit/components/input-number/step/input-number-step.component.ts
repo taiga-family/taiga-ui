@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -82,7 +82,9 @@ export class TuiInputNumberStep {
                  * Without explicit conversion it throws
                  * TS2365: Operator + cannot be applied to types `number | bigint` and `number | bigint`
                  */
-                typeof value === 'bigint' ? value + BigInt(step) : value + Number(step),
+                typeof value === 'bigint'
+                    ? value + BigInt(step)
+                    : tuiSum(value, Number(step)),
                 this.mask.min(),
                 this.mask.max(),
             ),
