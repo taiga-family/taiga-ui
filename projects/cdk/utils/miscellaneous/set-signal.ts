@@ -1,8 +1,8 @@
-import {type InputSignal, type WritableSignal} from '@angular/core';
+import {type InputSignalWithTransform, type WritableSignal} from '@angular/core';
 import {SIGNAL} from '@angular/core/primitives/signals';
 
 export function tuiSetSignal<T>(
-    signal: InputSignal<T> | WritableSignal<T>,
+    signal: InputSignalWithTransform<any, T> | WritableSignal<T>,
     value: T,
 ): void {
     if ('set' in signal) {
