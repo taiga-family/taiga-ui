@@ -38,4 +38,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         withAttrs: ['size'],
         comment: 'use tui-pager instead',
     },
+    {
+        tag: 'timeline-steps',
+        withAttrs: [],
+        comment:
+            'timeline-steps has been removed. Use TuiStepper instead. See example https://taiga-ui.dev/navigation/stepper',
+    },
 ];

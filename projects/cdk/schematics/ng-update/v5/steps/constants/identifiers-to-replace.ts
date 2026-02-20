@@ -319,6 +319,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiInputDateOptionsProviderNew',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiInputDateOptionsProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInitialsPipe',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiInitialsPipe',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TUI_JAPAN_LANGUAGE',
             moduleSpecifier: '@taiga-ui/i18n',
         },
