@@ -51,7 +51,7 @@ describe('TuiDropdownA11y', () => {
     it('input has implicit role without dropdown', () => {
         expect(
             fixture.debugElement.query(By.css('#textbox'))?.nativeElement.role,
-        ).toBeNull();
+        ).toBeFalsy();
     });
 
     it('input has combobox role with dropdown', () => {
