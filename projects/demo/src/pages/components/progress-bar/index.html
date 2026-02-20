@@ -21,66 +21,34 @@
             .
         </p>
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
 
-        <tui-doc-example
-            heading="Multicolor"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Sizes"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="With label"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Stacked progress bars"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Indeterminate"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
-            [description]="indeterminateStateDescription"
-        >
-            <ng-template #indeterminateStateDescription>
-                <p>Indeterminate state expresses an unspecified amount of wait time.</p>
-                <p>
-                    If there is no
-                    <code>[value]</code>
-                    attribute, the
-                    <code>ProgressBar</code>
-                    is indeterminate.
-                </p>
+            <ng-template #description>
+                @switch ($index) {
+                    @case (5) {
+                        <p>Indeterminate state expresses an unspecified amount of wait time.</p>
+                        <p>
+                            If there is no
+                            <code>[value]</code>
+                            attribute, the
+                            <code>ProgressBar</code>
+                            is indeterminate.
+                        </p>
+                    }
+                    @case (6) {
+                        You can toggle off round corners of the progress bar by setting
+                        <code>border-radius: 0</code>
+                        .
+                    }
+                }
             </ng-template>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="Customizable corners"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
-            [description]="customizableCornersDescription"
-        >
-            <ng-template #customizableCornersDescription>
-                You can toggle off round corners of the progress bar by setting
-                <code>border-radius: 0</code>
-                .
-            </ng-template>
-        </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>

@@ -6,18 +6,14 @@
     <ng-template pageTab>
         <p>Line chart but for days</p>
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Complex"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [fullsize]="true"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [fullsize]="$index === 1"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>

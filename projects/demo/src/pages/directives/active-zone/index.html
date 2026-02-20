@@ -9,16 +9,12 @@
             allows to track a scope that user interacts with. For example, for closing dropdown on blur
         </p>
 
-        <tui-doc-example
-            heading="Composite zone"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Dialogs"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
     </ng-template>
 </tui-doc-page>

@@ -38,4 +38,15 @@ export default class Page {
     ];
 
     protected color = this.colorVariants[0]!;
+
+    protected readonly examples = [
+        'Basic',
+        'Sizes',
+        'With label',
+        'Colors',
+        'Dynamic color',
+        'Anti-clockwise direction',
+        'Thickness',
+        'Arc mode',
+    ];
 }

@@ -51,4 +51,11 @@ export default class Page {
             }
         }
     }
+
+    protected readonly examples = [
+        'With inherited background color',
+        'With content overlay',
+        'Options',
+        'Custom stroke width',
+    ];
 }

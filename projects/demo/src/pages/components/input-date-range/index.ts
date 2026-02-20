@@ -32,6 +32,16 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
 export default class Example {
     protected readonly control = new FormControl();
 
+    public readonly examples = [
+        'Basic',
+        'DataList',
+        'Validation',
+        'Value transformer',
+        'Format',
+        'Mobile',
+        'Limits',
+    ];
+
     protected readonly dates = [
         TUI_FIRST_DAY,
         TuiDay.currentLocal(),

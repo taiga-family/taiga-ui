@@ -28,6 +28,19 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(null);
 
+    protected readonly examples = [
+        'Mode',
+        '12-hour format with AM/PM',
+        'Form control validation',
+        'Options',
+        'Textfield customization',
+        'Strict mode',
+        'Dropdown with DataList',
+        'Transformer',
+        'Native picker',
+        'Native picker with suggestions',
+    ];
+
     protected readonly modeVariants = [
         'HH:MM',
         'HH:MM AA',

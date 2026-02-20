@@ -4,23 +4,16 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            description="Buttons/badges sizes according to the header size"
-            heading="Sizes"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 0 ? sizesDescription : null"
+                [fullsize]="$index === 0"
+                [heading]="example"
+            />
+        }
 
-        <tui-doc-example
-            heading="Accessories"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Interactive"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
+        <ng-template #sizesDescription>Buttons/badges sizes according to the header size</ng-template>
     </ng-template>
 </tui-doc-page>

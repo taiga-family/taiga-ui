@@ -39,6 +39,8 @@ export default class Page {
         ],
     ];
 
+    protected readonly examples = ['Basic', 'With badges', 'Custom', 'With all button'];
+
     protected badgeHandlerVariants: ReadonlyArray<TuiHandler<unknown, number>> = [
         (item) => Number(item),
         (item) => String(item).length,

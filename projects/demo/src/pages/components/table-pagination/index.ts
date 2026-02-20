@@ -11,6 +11,12 @@ import {TuiTablePagination, type TuiTablePaginationEvent} from '@taiga-ui/addon-
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = [
+        'Usage',
+        'Custom size-option content',
+        'Toggle pages label',
+    ];
+
     protected readonly itemsVariants = [
         [10, 20, 50, 100],
         [10, 100, 500],

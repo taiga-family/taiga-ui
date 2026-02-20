@@ -60,4 +60,13 @@ export default class PageComponent {
         Validators.required,
         Validators.minLength(9),
     ]);
+
+    protected readonly examples = [
+        'Choose metadata',
+        'Choose any countries',
+        'Mobile dropdown',
+        'Customize with icons',
+        'Customize separator',
+        'Use phone format helpers',
+    ];
 }

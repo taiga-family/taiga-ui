@@ -34,6 +34,18 @@ export default class Example {
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl();
 
+    public readonly examples = [
+        'Basic',
+        'Calendar customization',
+        'Custom dropdown',
+        'Validation',
+        'Value transformer',
+        'Date format',
+        'Mobile',
+        'Limits',
+        'Datalist',
+    ];
+
     protected readonly dates = [
         TUI_FIRST_DAY,
         TuiDay.currentLocal(),
