@@ -16,6 +16,7 @@ jobs:
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
       - name: Deploy preview
+        id: deploy-preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         if: env.IS_OWNER_MODE == 'true'
         with:
@@ -25,6 +26,83 @@ jobs:
           projectId: taiga-previews
           target: taiga-previews-demo
           expires: 1d
+
+      - name: Resolve preview URL
+        id: preview-url
+        if: env.IS_OWNER_MODE == 'true'
+        run: |
+          url=$(echo "${{ steps.deploy-preview.outputs.urls }}" \
+            | tr ', ' '\n' \
+            | sed -e 's/^\[//' -e 's/\]$//' -e '/^$/d' \
+            | head -n 1)
+
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Lighthouse audit
+        id: lighthouse
+        if: env.IS_OWNER_MODE == 'true' && steps.preview-url.outputs.url != ''
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ steps.preview-url.outputs.url }}
+            ${{ steps.preview-url.outputs.url }}/getting-started
+            ${{ steps.preview-url.outputs.url }}/components/table
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          runs: 2
+
+      - name: Comment lighthouse report
+        if: github.event_name == 'pull_request' && env.IS_OWNER_MODE == 'true' && steps.lighthouse.outputs.links != ''
+        uses: actions/github-script@v7
+        env:
+          LIGHTHOUSE_LINKS: ${{ steps.lighthouse.outputs.links }}
+          PREVIEW_URL: ${{ steps.preview-url.outputs.url }}
+        with:
+          script: |
+            const marker = '<!-- lighthouse-preview-report -->';
+            const linksRaw = process.env.LIGHTHOUSE_LINKS || 'null';
+            const links = JSON.parse(linksRaw);
+
+            let reports = [];
+
+            if (Array.isArray(links)) {
+                if (typeof links[0] === 'string') {
+                    reports = links;
+                } else if (links[0] && typeof links[0] === 'object') {
+                    reports = links.map((x) => x.report || x.html || x.url || '').filter(Boolean);
+                }
+            } else if (links && typeof links === 'object') {
+                reports = Object.values(links).filter(Boolean);
+            }
+
+            reportUrl = reports[0] || '';
+
+            const body = [
+                marker,
+                '## Lighthouse preview audit',
+                '',
+                `- Preview URL: ${process.env.PREVIEW_URL}`,
+                reports.length
+                ? `- Report:\n${reports.map((u) => `  - ${u}`).join('\n')}`
+              : '- Report: (no links parsed)',
+            ].join('\n');
+
+            const {owner, repo} = context.repo;
+            const issue_number = context.payload.pull_request.number;
+            const {data: comments} = await github.rest.issues.listComments({owner, repo, issue_number});
+            const previousComment = comments.find(comment => comment.body?.includes(marker));
+
+            if (previousComment) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: previousComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({owner, repo, issue_number, body});
+            }
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
