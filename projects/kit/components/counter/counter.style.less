@@ -18,6 +18,14 @@
     &[data-size='s'] {
         min-inline-size: min(6rem, 100%);
         border-radius: 2rem;
+
+        .t-button:first-child::after {
+            inset-inline-end: 0;
+        }
+
+        .t-button:last-child::after {
+            inset-inline-start: 0;
+        }
     }
 
     &[data-appearance='primary'] {
