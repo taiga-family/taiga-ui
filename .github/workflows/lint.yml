@@ -18,8 +18,6 @@ jobs:
           persist-credentials: false
       - uses: taiga-family/ci/actions/setup/variables@v1.187.0
       - uses: taiga-family/ci/actions/setup/node@v1.187.0
-        with:
-          audit: true
 
       - run: echo "$(git log -1 --pretty=format:"%s")" | npx commitlint --verbose
         if: github.event_name == 'pull_request'
