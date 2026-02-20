@@ -13,6 +13,7 @@ import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {type TuiSchema} from '../../ng-add/schema';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {
+    removeDuplicates,
     removeModules,
     renameTypes,
     replaceEnums,
@@ -33,7 +34,6 @@ import {
     migrateProprietary,
     migrateStyles,
     migrateTemplates,
-    removeDuplicates,
     restoreTuiMapper,
     restoreTuiMatcher,
     updatePackages,

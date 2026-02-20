@@ -308,6 +308,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
+        from: [
+            {
+                name: 'TuiFieldErrorPipe',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiFieldErrorContentPipe',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+        ],
+        to: {
+            name: 'TuiError',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
         from: {
             name: 'TUI_VALIDATION_ERRORS',
             moduleSpecifier: '@taiga-ui/kit',
