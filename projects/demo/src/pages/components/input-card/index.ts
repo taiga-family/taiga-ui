@@ -24,4 +24,6 @@ import {TuiInputCard} from '@taiga-ui/addon-commerce';
 })
 export default class Page {
     protected card = '';
+
+    protected readonly examples = ['Form', 'Card'];
 }

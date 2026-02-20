@@ -9,26 +9,15 @@
             is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
         </p>
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-            [fullsize]="true"
-        />
-
-        <tui-doc-example
-            description="With media query width control"
-            heading="Vertical"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Nested tiles"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-            [fullsize]="true"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 1 ? 'With media query width control' : null"
+                [fullsize]="!$index || $index === 2"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>

@@ -14,4 +14,14 @@ export default class Page {
     protected lineHeight = 24;
     protected maxWidth = 100;
     protected content = '';
+
+    protected readonly examples = [
+        'Styles change',
+        'Expanding',
+        'Resize parent container',
+        'Clamp inside dropdown',
+        'Custom content workaround',
+        'Virtual content',
+        'Custom font-size and line-height',
+    ];
 }

@@ -5,16 +5,12 @@
     type="directives"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Customization"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
     </ng-template>
 </tui-doc-page>

@@ -36,4 +36,13 @@ export default class Page {
 
     protected contentTypeVariants = ['text', 'with icon', 'image'];
     protected contentType = this.contentTypeVariants[0]!;
+
+    protected readonly examples = [
+        'Basic',
+        'Sizes',
+        'Content type (mobile platform)',
+        'Long value',
+        'Customization',
+        'Options with DI',
+    ];
 }

@@ -23,30 +23,14 @@
             .
         </div>
 
-        <tui-doc-example
-            heading="Inputs"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-            [fullsize]="true"
-        />
-
-        <tui-doc-example
-            heading="ButtonGroup"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Vertical group"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Directive"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [fullsize]="$index === 0"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>

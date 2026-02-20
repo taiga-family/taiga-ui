@@ -14,6 +14,13 @@ export default class Page {
     protected rounded = true;
     protected collapsed = false;
 
+    protected readonly examples = [
+        'Inputs',
+        'ButtonGroup',
+        'Vertical group',
+        'Directive',
+    ];
+
     protected readonly orientationVariants: readonly TuiOrientation[] = [
         'horizontal',
         'vertical',

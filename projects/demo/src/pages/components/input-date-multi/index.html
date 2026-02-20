@@ -14,54 +14,36 @@
         </a>
         to represent array of dates.
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
 
-        <tui-doc-example
-            heading="Chip"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [description]="chip"
-        />
-        <ng-template #chip>
-            <span>
-                Use
-                <code>*tuiItem</code>
-                directive to provide custom representation. You can use
-                <code>tui-input-chip</code>
-                out of the box or implement your own. The context is
-                <code>TuiContext&lt;&#123; item: T, index: number &#125;&gt;</code>
-            </span>
-        </ng-template>
-
-        <tui-doc-example
-            heading="Disabled items"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Format"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-            [description]="format"
-        />
-        <ng-template #format>
-            Formatting relies on
-            <code>TUI_DATE_FORMAT</code>
-            which you can override using
-            <code>tuiDateFormatProvider</code>
-            helper
-        </ng-template>
-
-        <tui-doc-example
-            heading="customization"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
-        />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (1) {
+                        <span>
+                            Use
+                            <code>*tuiItem</code>
+                            directive to provide custom representation. You can use
+                            <code>tui-input-chip</code>
+                            out of the box or implement your own. The context is
+                            <code>TuiContext&lt;&#123; item: T, index: number &#125;&gt;</code>
+                        </span>
+                    }
+                    @case (3) {
+                        Formatting relies on
+                        <code>TUI_DATE_FORMAT</code>
+                        which you can override using
+                        <code>tuiDateFormatProvider</code>
+                        helper
+                    }
+                }
+            </ng-template>
+        }
     </ng-template>
 
     <ng-template pageTab>

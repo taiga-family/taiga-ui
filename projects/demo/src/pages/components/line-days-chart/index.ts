@@ -14,7 +14,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export default class Page {
     protected readonly months = inject(TUI_MONTHS);
-
+    protected readonly examples = ['Basic', 'Complex'];
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         Array.from({length: 91}).reduce<ReadonlyArray<[TuiDay, number]>>(
             (array, _, i) => [

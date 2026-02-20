@@ -6,41 +6,13 @@
     <ng-template pageTab>
         <p>Component for displaying text, pictures and icons.</p>
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'html'"
-        />
-
-        <tui-doc-example
-            heading="Sizes"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample: 'html'"
-        />
-
-        <tui-doc-example
-            heading="Content type (mobile platform)"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample: 'html'"
-        />
-
-        <tui-doc-example
-            heading="Long value"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample: 'html,less'"
-        />
-
-        <tui-doc-example
-            heading="Customization"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample: 'html,less'"
-        />
-
-        <tui-doc-example
-            heading="Options with DI"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>

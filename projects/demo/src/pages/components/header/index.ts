@@ -9,4 +9,6 @@ import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Sizes', 'Accessories', 'Interactive'];
+}

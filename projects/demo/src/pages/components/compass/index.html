@@ -4,19 +4,25 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            description="Direction isn't present (direction is NaN)"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'ts'"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
 
-        <tui-doc-example
-            description="Following pointer on the page"
-            heading="Direction"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample: 'ts'"
-        />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Direction isn't present (direction is NaN)
+                    }
+                    @case (1) {
+                        Following pointer on the page
+                    }
+                }
+            </ng-template>
+        }
     </ng-template>
 
     <ng-template pageTab>

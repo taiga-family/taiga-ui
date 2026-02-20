@@ -6,23 +6,13 @@
     <ng-template pageTab>
         <p>Directive for declarative work with HTML5 video and audio</p>
 
-        <tui-doc-example
-            heading="Native controls"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Video"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Audio"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>

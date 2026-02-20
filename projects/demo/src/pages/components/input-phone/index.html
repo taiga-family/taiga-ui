@@ -9,38 +9,30 @@
             allows to input a phone number
         </p>
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-            [description]="description"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
 
-        <ng-template #description>
-            If you support Safari < 18, we recommend to set
-            <code>pattern</code>
-            for correct work of browser autofill
-        </ng-template>
-
-        <tui-doc-example
-            description="By number and by name"
-            heading="With autocomplete"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            description="You can provide custom transformer in options to store value in different format in form control"
-            heading="Value transformer"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="With flag"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        If you support Safari < 18, we recommend to set
+                        <code>pattern</code>
+                        for correct work of browser autofill
+                    }
+                    @case (1) {
+                        By number and by name
+                    }
+                    @case (2) {
+                        You can provide custom transformer in options to store value in different format in form control
+                    }
+                }
+            </ng-template>
+        }
     </ng-template>
 
     <ng-template pageTab>

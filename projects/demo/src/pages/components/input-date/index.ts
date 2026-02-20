@@ -30,6 +30,19 @@ import {TuiInputDate} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
+    // Example headings for the template loop
+    public readonly examples = [
+        'Basic',
+        'Calendar customization',
+        'Custom dropdown',
+        'Validation',
+        'Value transformer',
+        'Format',
+        'Mobile',
+        'Limits',
+        'Datalist',
+    ];
+
     protected readonly control = new FormControl();
     protected readonly routes = DemoRoute;
 

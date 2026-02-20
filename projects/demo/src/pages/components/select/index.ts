@@ -39,7 +39,20 @@ interface Country {
 })
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
+
     protected readonly routes = DemoRoute;
+    protected readonly examples = [
+        'Textfield customization',
+        'Items handlers',
+        'Customize content',
+        'With DataList',
+        'Choose form control output',
+        'Virtual scroll',
+        'Mobile',
+        'Native picker with disabled option',
+        'Native picker with grouping options',
+        'Override option component',
+    ];
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl<Country | null>({
