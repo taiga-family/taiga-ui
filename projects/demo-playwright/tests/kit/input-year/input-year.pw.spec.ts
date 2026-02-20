@@ -29,7 +29,7 @@ test.describe('InputYear', () => {
         });
 
         test('0000 => blur => 0', async ({page}) => {
-            await input.pressSequentially('0000');
+            await input.pressSequentially('0000', {delay: 100}); // Types slower, like a user
 
             await expect.soft(page).toHaveScreenshot('03-input-year.png');
 
