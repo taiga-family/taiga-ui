@@ -29,6 +29,7 @@ env:
   PERF_COMPONENT_ABS_MS_FLOOR: 12
   PERF_COMPONENT_METRIC_ABS_MS_FLOOR: 3
   PERF_NET_VISIBILITY_ABS_MS_FLOOR: 12
+  GITHUB_COMMENT_ENABLED: false
 
 jobs:
   performance-stress:
@@ -204,7 +205,7 @@ jobs:
           compression-level: 0
           retention-days: 3
       - name: Post performance stress comment
-        if: env.IS_OWNER_MODE == 'true'
+        if: env.IS_OWNER_MODE == 'true' && env.GITHUB_COMMENT_ENABLED == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

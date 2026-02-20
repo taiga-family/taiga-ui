@@ -20,3 +20,9 @@ coverage:
     patch:
       default:
         enabled: false
+
+comment:
+  enabled: false
+
+github_checks:
+  annotations: false
