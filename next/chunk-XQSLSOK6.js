@@ -1,0 +1,99 @@
+import"./chunk-HU6DUUP4.js";var i=`<tui-textfield
+    tuiChevron
+    tuiDropdownMobile
+>
+    <input
+        placeholder="Country"
+        tuiComboBox
+        [(ngModel)]="country"
+    />
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        [items]="countries | tuiFilterByInput"
+    />
+</tui-textfield>
+
+<tui-textfield
+    tuiChevron
+    tuiDropdownSheet="Select user"
+    class="tui-space_vertical-4"
+    [content]="template"
+>
+    <input
+        placeholder="Select user"
+        tuiSelect
+        [(ngModel)]="user"
+    />
+    <tui-data-list-wrapper
+        *tuiDropdown
+        [itemContent]="template"
+        [items]="users"
+    />
+</tui-textfield>
+
+<tui-textfield
+    multi
+    tuiChevron
+    tuiDropdownMobile
+    class="tui-space_vertical-4"
+    [open]="open()"
+    [stringify]="stringify"
+    (openChange)="open.set($event)"
+>
+    <input
+        placeholder="Pick more users"
+        tuiInputChip
+        [(ngModel)]="selected"
+    />
+
+    <tui-input-chip *tuiItem />
+
+    <ng-container *tuiDropdown>
+        <tui-data-list-wrapper
+            tuiMultiSelectGroup
+            [itemContent]="template"
+            [items]="users | tuiFilterByInput"
+        />
+        <button
+            appearance="accent"
+            size="m"
+            tuiButton
+            tuiDropdownButton
+            type="button"
+            (click)="open.set(false)"
+        >
+            Done
+        </button>
+    </ng-container>
+</tui-textfield>
+
+<tui-textfield class="tui-space_vertical-4">
+    <label tuiLabel>Sum</label>
+    <input
+        prefix="$"
+        tuiInputNumber
+        [(ngModel)]="sum"
+    />
+</tui-textfield>
+
+<ng-template
+    #template
+    let-user
+>
+    <div [tuiAvatar]="user.name | tuiInitials">
+        @if (user.url) {
+            <img
+                alt=""
+                [src]="user.url"
+            />
+        }
+    </div>
+    <span tuiTitle>
+        <span tuiFade>{{ user.name }}</span>
+        <span tuiSubtitle>
+            {{ user.balance | tuiAmount: '$' : 'start' }}
+        </span>
+    </span>
+</ng-template>
+`;export{i as default};

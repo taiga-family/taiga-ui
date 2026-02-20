@@ -1,0 +1,26 @@
+import"./chunk-HU6DUUP4.js";var i=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+[tuiAppearance][data-appearance='custom'] {
+    background: rgba(175, 242, 24, 1);
+}
+
+.container {
+    display: flex;
+    inline-size: 100%;
+}
+
+.incoming {
+    justify-content: flex-start;
+}
+
+.outgoing {
+    justify-content: flex-end;
+}
+`;export{i as default};

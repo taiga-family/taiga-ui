@@ -1,0 +1,41 @@
+import"./chunk-HU6DUUP4.js";var o=`<form [formGroup]="form">
+    <button
+        appearance="outline-grayscale"
+        formControlName="control"
+        tuiButton
+        tuiButtonSelect
+        type="button"
+        [tuiAppearanceMode]="length ? 'checked' : null"
+        [(open)]="open"
+        (keydown.delete)="form.reset()"
+    >
+        {{ text }}
+        <button
+            appearance="icon"
+            size="xs"
+            tabindex="-1"
+            tuiChevron
+            tuiIconButton
+            type="reset"
+            [iconStart]="length ? '@tui.x' : ''"
+            (mousedown.zoneless.prevent)="(0)"
+        >
+            Reset
+        </button>
+
+        <tui-data-list
+            *tuiDropdown
+            tuiMultiSelectGroup
+        >
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
+        </tui-data-list>
+    </button>
+</form>
+`;export{o as default};

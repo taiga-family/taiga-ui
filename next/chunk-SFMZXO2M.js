@@ -1,0 +1,94 @@
+import"./chunk-HU6DUUP4.js";var t=`<section class="content">
+    <tui-tabs
+        vertical="start"
+        class="left"
+    >
+        <button
+            tuiTab
+            type="button"
+        >
+            Item 1
+        </button>
+        <button
+            tuiTab
+            type="button"
+        >
+            Item 2
+        </button>
+        <button
+            tuiTab
+            type="button"
+        >
+            Item 3 with name so long it spans multiple lines
+        </button>
+    </tui-tabs>
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultricies enim, vel molestie orci. In
+            finibus diam ac nulla accumsan, vel condimentum lorem ultricies. In feugiat mauris sem, ac ultricies metus
+            aliquet nec. Ut a iaculis metus, id vestibulum justo. Nulla id ante semper, aliquam augue vitae,
+            sollicitudin massa. Sed congue nisi sed ullamcorper mollis. Vivamus volutpat non est a vestibulum. Sed in
+            elementum odio. Proin a lectus ac quam vulputate ornare nec id mi. Maecenas pharetra ultricies efficitur.
+            Etiam sit amet vulputate elit. Donec ut dapibus nunc. Nullam vestibulum diam eros, ac euismod velit porta
+            ac. Ut ut auctor velit. Nulla ac lobortis erat, ut tempor neque.
+        </p>
+        <p>
+            Donec quis lacus leo. Mauris quis vestibulum mauris. Sed hendrerit odio id blandit iaculis. Nulla ac gravida
+            ligula, tristique tempus eros. Mauris efficitur risus quis arcu pharetra, eu semper ex rutrum. Aenean justo
+            felis, imperdiet non justo vel, fringilla maximus nibh. Vestibulum ut imperdiet ex, vel varius odio. Nunc
+            nec lorem non odio mollis porta. In gravida accumsan lacus, vitae egestas lectus aliquet sed. Morbi justo
+            orci, fringilla sit amet consectetur vel, consectetur a nibh. Sed eu porttitor ante. Morbi imperdiet ligula
+            id velit dignissim malesuada. Vestibulum blandit posuere sem.
+        </p>
+    </div>
+</section>
+
+<section class="content">
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultricies enim, vel molestie orci. In
+            finibus diam ac nulla accumsan, vel condimentum lorem ultricies. In feugiat mauris sem, ac ultricies metus
+            aliquet nec. Ut a iaculis metus, id vestibulum justo. Nulla id ante semper, aliquam augue vitae,
+            sollicitudin massa. Sed congue nisi sed ullamcorper mollis. Vivamus volutpat non est a vestibulum. Sed in
+            elementum odio. Proin a lectus ac quam vulputate ornare nec id mi. Maecenas pharetra ultricies efficitur.
+            Etiam sit amet vulputate elit. Donec ut dapibus nunc. Nullam vestibulum diam eros, ac euismod velit porta
+            ac. Ut ut auctor velit. Nulla ac lobortis erat, ut tempor neque.
+        </p>
+        <p>
+            Donec quis lacus leo. Mauris quis vestibulum mauris. Sed hendrerit odio id blandit iaculis. Nulla ac gravida
+            ligula, tristique tempus eros. Mauris efficitur risus quis arcu pharetra, eu semper ex rutrum. Aenean justo
+            felis, imperdiet non justo vel, fringilla maximus nibh. Vestibulum ut imperdiet ex, vel varius odio. Nunc
+            nec lorem non odio mollis porta. In gravida accumsan lacus, vitae egestas lectus aliquet sed. Morbi justo
+            orci, fringilla sit amet consectetur vel, consectetur a nibh. Sed eu porttitor ante. Morbi imperdiet ligula
+            id velit dignissim malesuada. Vestibulum blandit posuere sem.
+        </p>
+    </div>
+    <tui-tabs
+        size="m"
+        vertical="end"
+        class="right"
+    >
+        <a
+            routerLinkActive
+            tuiTab
+            [routerLink]="routes.Button"
+        >
+            Button
+        </a>
+        <a
+            routerLinkActive
+            tuiTab
+            [routerLink]="routes.Tabs"
+        >
+            Tabs
+        </a>
+        <a
+            routerLinkActive
+            tuiTab
+            [routerLink]="routes.Input"
+        >
+            Input
+        </a>
+    </tui-tabs>
+</section>
+`;export{t as default};

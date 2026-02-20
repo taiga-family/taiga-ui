@@ -1,0 +1,19 @@
+import"./chunk-HU6DUUP4.js";var e=`<div class="wrapper">
+    <button
+        appearance="secondary"
+        iconStart="@tui.calendar"
+        tuiIconButton
+        type="button"
+        [style.border-radius.%]="100"
+        (click)="onClick()"
+    >
+        Calendar
+    </button>
+    <span
+        class="date"
+        [class.date_empty]="empty"
+    >
+        {{ date$ | async }}
+    </span>
+</div>
+`;export{e as default};

@@ -1,0 +1,58 @@
+import"./chunk-HU6DUUP4.js";var i=`@import '@taiga-ui/styles/utils';
+
+.dropdowns {
+    position: relative;
+    display: block;
+    block-size: 18.75rem;
+    inline-size: 50%;
+    resize: both;
+    overflow: hidden;
+    outline: 0.125rem dotted var(--tui-border-normal);
+
+    @media @tui-tablet {
+        inline-size: 100%;
+    }
+}
+
+.t1,
+.t2,
+.t3,
+.t4 {
+    position: absolute;
+    inline-size: 3.125rem;
+    block-size: 3.125rem;
+    background: var(--tui-background-accent-1);
+}
+
+.t1 {
+    top: 0.625rem;
+    left: 0.625rem;
+}
+
+.t2 {
+    top: 0.625rem;
+    right: 0.625rem;
+}
+
+.t3 {
+    right: 0.625rem;
+    bottom: 0.625rem;
+}
+
+.t4 {
+    left: 0.625rem;
+    bottom: 0.625rem;
+}
+
+.t-centered-axis-xy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.t-direction {
+    inline-size: max-content;
+    margin-block-end: 1rem;
+}
+`;export{i as default};

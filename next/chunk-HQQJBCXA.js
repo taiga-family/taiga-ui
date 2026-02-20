@@ -1,0 +1,1 @@
+import{Wb as n}from"./chunk-JYXVX5RO.js";var r=class r{transform(t,e,...i){return t.filter(p=>e(p,...i))}};r.\u0275fac=function(e){return new(e||r)},r.\u0275pipe=n({name:"tuiFilter",type:r,pure:!0});var o=r;export{o as a};

@@ -1,0 +1,43 @@
+import"./chunk-HU6DUUP4.js";var i=`<nav tuiTabBar>
+    <a
+        icon="@tui.ellipsis"
+        routerLinkActive
+        tuiTabBarItem
+        [routerLink]="routes.Breadcrumbs"
+    >
+        Breadcrumbs
+    </a>
+    <a
+        icon="@tui.code"
+        routerLinkActive
+        tuiTabBarItem
+        [routerLink]="routes.Pagination"
+    >
+        Pagination
+    </a>
+    <a
+        icon="@tui.terminal"
+        routerLinkActive
+        tuiTabBarItem
+        [routerLink]="routes.Stepper"
+    >
+        Stepper
+    </a>
+    <a
+        icon="@tui.minus"
+        routerLinkActive
+        tuiTabBarItem
+        [routerLink]="routes.TabBar"
+    >
+        TabBar
+    </a>
+    <a
+        icon="@tui.menu"
+        routerLinkActive
+        tuiTabBarItem
+        [routerLink]="routes.Tabs"
+    >
+        Tabs
+    </a>
+</nav>
+`;export{i as default};

@@ -1,0 +1,23 @@
+import"./chunk-HU6DUUP4.js";var o=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+}
+
+.wrapper {
+    box-shadow: var(--tui-shadow-small);
+    inline-size: 22.5rem;
+    max-inline-size: 100%;
+    border-radius: var(--tui-radius-l);
+    margin-block-end: 1rem;
+    background: var(--tui-background-elevation-2);
+}
+
+.push {
+    box-shadow: none;
+}
+
+.human {
+    color: var(--tui-text-positive);
+}
+`;export{o as default};

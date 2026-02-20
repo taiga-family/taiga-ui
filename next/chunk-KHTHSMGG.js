@@ -1,0 +1,43 @@
+import"./chunk-HU6DUUP4.js";var e=`<tui-tabs-with-more
+    class="custom"
+    [itemsLimit]="3"
+    [underline]="false"
+    [(activeItemIndex)]="activeItemIndex"
+>
+    <button
+        *tuiItem
+        tuiTab
+        type="button"
+    >
+        Maps
+    </button>
+    <button
+        *tuiItem
+        tuiTab
+        type="button"
+    >
+        Calls
+    </button>
+    <button
+        *tuiItem
+        tuiTab
+        type="button"
+    >
+        Settings
+    </button>
+    <button
+        *tuiItem
+        tuiTab
+        type="button"
+    >
+        Favorite
+    </button>
+    <button
+        *tuiItem
+        tuiTab
+        type="button"
+    >
+        Trash
+    </button>
+</tui-tabs-with-more>
+`;export{e as default};

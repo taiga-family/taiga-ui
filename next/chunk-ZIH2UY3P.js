@@ -1,0 +1,51 @@
+import"./chunk-HU6DUUP4.js";var t=`@for (platform of platforms; track $index) {
+    <div
+        class="wrapper"
+        [class.wrapper_web]="platform === 'web'"
+        [tuiPlatform]="platform"
+    >
+        {{ platform }}
+        <input
+            ngModel="checked"
+            tuiRadio
+            type="radio"
+            value="checked"
+            [size]="getSize($first)"
+        />
+        <input
+            ngModel="checked"
+            tuiRadio
+            type="radio"
+            value="checked"
+            [disabled]="true"
+            [size]="getSize($first)"
+        />
+        <input
+            tuiRadio
+            type="radio"
+            [size]="getSize($first)"
+        />
+        <input
+            ngModel="checked"
+            tuiRadio
+            type="radio"
+            [disabled]="true"
+            [size]="getSize($first)"
+        />
+        <input
+            tuiRadio
+            type="radio"
+            [formControl]="invalidTrue"
+            [size]="getSize($first)"
+            [value]="true"
+        />
+        <input
+            tuiRadio
+            type="radio"
+            [formControl]="invalidFalse"
+            [size]="getSize($first)"
+            [value]="true"
+        />
+    </div>
+}
+`;export{t as default};
