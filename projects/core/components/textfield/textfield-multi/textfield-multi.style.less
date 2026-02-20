@@ -235,7 +235,7 @@ tui-textfield[multi][multi] {
         }
 
         > .t-content {
-            transform: translateX(0.125rem);
+            transform: translateX(calc(0.125rem * var(--tui-inline)));
         }
     }
 
@@ -244,21 +244,19 @@ tui-textfield[multi][multi] {
         --t-offset: calc(0.625rem + var(--t-end) / 10);
 
         &::before {
-            left: -0.125rem;
-            inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
         &::after {
-            left: calc(100% - var(--t-end) - 0.125rem);
-            inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
-            border-width: 0.5rem;
+            left: calc(100% - var(--t-end) - 0.25rem);
+            inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
+            border-width: 0.625rem;
             margin-inline-end: calc(-1 * var(--t-padding));
         }
 
         > .t-content {
             gap: 0;
-            transform: translateX(calc(0.375rem - var(--t-end) / 10));
+            transform: translateX(calc(0.25rem * var(--tui-inline)));
         }
     }
 
