@@ -1,4 +1,4 @@
-@let sheet = month | tuiCalendarSheet;
+@let sheet = month() | tuiCalendarSheet;
 @for (_ of '-'.repeat(sheet.length); track $index) {
     @let rowIndex = $index;
     <div
@@ -15,9 +15,9 @@
                     tuiRipple
                     class="t-cell"
                     [attr.data-range]="getItemRange(item)"
-                    [class.t-cell_disabled]="disabledItemHandler(item)"
+                    [class.t-cell_disabled]="disabledItemHandler()(item)"
                     [class.t-cell_today]="itemIsToday(item)"
-                    (click)="onItemClick(item)"
+                    (click)="dayClick.emit(item)"
                 >
                     {{ item.day }}
                 </div>
