@@ -54,10 +54,10 @@ describe('ng-update remove | async from signal-based pipes', () => {
     it('should handle pipe inside element with attributes', async () => {
         expect(
             await migrate(
-                `<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal | async }}</span>`,
+                '<span [style.color]="\'var(--tui-text-secondary)\'">{{ 120.59 | tuiDecimal | async }}</span>',
             ),
         ).toEqual(
-            `<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal }}</span>`,
+            '<span [style.color]="\'var(--tui-text-secondary)\'">{{ 120.59 | tuiDecimal }}</span>',
         );
     });
 
