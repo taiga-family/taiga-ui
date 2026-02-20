@@ -1,0 +1,50 @@
+import"./chunk-HU6DUUP4.js";var n=`<span tuiChip>Default appearance is Neutral</span>
+<span
+    appearance="primary"
+    tuiChip
+>
+    Primary
+</span>
+<span
+    appearance="accent"
+    tuiChip
+>
+    Accent
+</span>
+<span
+    appearance="positive"
+    tuiChip
+>
+    Positive
+</span>
+<span
+    appearance="negative"
+    tuiChip
+>
+    Negative
+</span>
+<span
+    appearance="warning"
+    tuiChip
+>
+    Warning
+</span>
+<span
+    appearance="info"
+    tuiChip
+>
+    Info
+</span>
+<span
+    appearance="outline"
+    tuiChip
+>
+    Outline
+</span>
+<span
+    appearance="floating"
+    tuiChip
+>
+    Floating
+</span>
+`;export{n as default};

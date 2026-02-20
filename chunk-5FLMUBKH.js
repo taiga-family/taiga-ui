@@ -1,0 +1,34 @@
+import"./chunk-HU6DUUP4.js";var e=`<button
+    tuiButton
+    tuiChevron
+    tuiDropdownAuto
+    type="button"
+    [tuiDropdown]="content"
+>
+    Menu
+</button>
+<ng-template #content>
+    <tui-data-list role="menu">
+        @for (group of groups; track group) {
+            @if (!group.label) {
+                <hr />
+            }
+            <tui-opt-group [label]="group.label">
+                @for (item of group.items; track item) {
+                    <a
+                        #rla="routerLinkActive"
+                        role="menuitemradio"
+                        routerLinkActive
+                        tuiOption
+                        [attr.aria-checked]="rla.isActive"
+                        [iconEnd]="rla.isActive ? '@tui.check' : ''"
+                        [routerLink]="item.routerLink"
+                    >
+                        {{ item.label }}
+                    </a>
+                }
+            </tui-opt-group>
+        }
+    </tui-data-list>
+</ng-template>
+`;export{e as default};

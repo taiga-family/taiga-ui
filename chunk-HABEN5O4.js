@@ -1,0 +1,66 @@
+import"./chunk-HU6DUUP4.js";var n=`<tui-swipe-actions>
+    <div
+        appearance="floating"
+        tuiCardLarge
+        tuiCell
+    >
+        <div
+            appearance="primary"
+            tuiAvatar="@tui.dollar-sign"
+        ></div>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
+            <div tuiSubtitle>Dollar account</div>
+        </div>
+    </div>
+
+    <button
+        appearance="flat"
+        iconStart="@tui.ellipsis-vertical"
+        size="s"
+        tuiDropdownAuto
+        tuiIconButton
+        type="button"
+        class="fallback"
+        [tuiDropdown]="content"
+    >
+        Actions
+    </button>
+
+    <ng-template #content>
+        <tui-data-list>
+            <button
+                tuiOption
+                type="button"
+            >
+                Hide
+            </button>
+            <button
+                tuiOption
+                type="button"
+            >
+                Edit
+            </button>
+        </tui-data-list>
+    </ng-template>
+
+    <button
+        iconStart="@tui.eye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+        type="button"
+    >
+        Show
+    </button>
+    <button
+        iconStart="@tui.pencil-line"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+        type="button"
+    >
+        Edit
+    </button>
+</tui-swipe-actions>
+`;export{n as default};

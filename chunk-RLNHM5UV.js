@@ -1,0 +1,98 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="Pagination"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Pagination component enables the user to select a specific page from a range of pages</p>
+
+        <tui-doc-example
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            heading="Visible pages around active"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            heading="Visible edge pages"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            heading="Custom"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-pagination
+                [activePadding]="activePadding"
+                [focusable]="focusable"
+                [length]="length"
+                [sidePadding]="sidePadding"
+                [size]="size"
+                [(index)]="index"
+            />
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[focusable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="focusable"
+            >
+                Accepts focus with keyboard
+            </tr>
+            <tr
+                name="[(index)]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="index"
+            >
+                Active page index
+            </tr>
+            <tr
+                name="[length]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="length"
+            >
+                Total pages count
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[activePadding]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="activePadding"
+            >
+                Amount of visible pages around active page
+            </tr>
+            <tr
+                name="[sidePadding]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="sidePadding"
+            >
+                Amount of visible pages at the edges
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

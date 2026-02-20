@@ -1,0 +1,1 @@
+import{wa as a}from"./chunk-JYXVX5RO.js";var o=new a("",{factory:()=>({container:"#docsearch",appId:"9OC2BGR0BI",indexName:"taiga-ui",apiKey:"954fc3fb1ed14929de8006f229f545a6",askAi:{indexName:"taiga-ui-markdown",assistantId:"oYuUTDL7oItC"}})});export{o as a};

@@ -1,0 +1,17 @@
+import"./chunk-HU6DUUP4.js";var i=`@import '@taiga-ui/styles/utils';
+
+.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    background: var(--tui-background-base-alt);
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+
+p {
+    color: fade(#fff, 72%);
+    white-space: nowrap;
+}
+`;export{i as default};

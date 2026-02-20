@@ -1,0 +1,44 @@
+import"./chunk-HU6DUUP4.js";var o=`<button
+    tuiSurface
+    type="button"
+    class="scale"
+>
+    Scale
+</button>
+<button
+    tuiSurface
+    type="button"
+    class="overlay"
+>
+    Overlay
+</button>
+<button
+    tuiAppearance="primary"
+    tuiSurface
+    type="button"
+    class="highlight"
+>
+    Highlight
+</button>
+<button
+    tuiSurface
+    type="button"
+    class="offset"
+>
+    Offset
+</button>
+<button
+    tuiSurface
+    type="button"
+    class="background"
+>
+    Background
+</button>
+<button
+    tuiSurface
+    type="button"
+    class="shadow"
+>
+    Shadow
+</button>
+`;export{o as default};

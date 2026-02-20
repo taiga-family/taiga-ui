@@ -1,0 +1,67 @@
+import"./chunk-HU6DUUP4.js";var d=`<div
+    tuiCardMedium
+    class="poster"
+>
+    <h2 tuiTitle>
+        Poster
+        <span tuiSubtitle>Cinema, concerts, theaters and sports up to 25%</span>
+    </h2>
+
+    <div
+        tuiBadge
+        class="badge"
+    >
+        <tui-icon icon="@tui.target" />
+        10%
+    </div>
+</div>
+
+<div
+    tuiCardMedium
+    class="fly"
+>
+    <h2 tuiTitle>Flights</h2>
+
+    <div
+        tuiBadge
+        class="badge"
+    >
+        <tui-icon icon="@tui.target" />
+        10%
+    </div>
+</div>
+
+<div
+    tuiCardMedium
+    class="google"
+>
+    <h2 tuiTitle>
+        Google
+        <span tuiSubtitle>-2.7%</span>
+    </h2>
+
+    <div
+        tuiBadge
+        class="money"
+    >
+        $3,605.2
+    </div>
+</div>
+
+<div
+    tuiCardMedium
+    class="microsoft"
+>
+    <h2 tuiTitle>
+        Microsoft
+        <span tuiSubtitle>-12.44%</span>
+    </h2>
+
+    <div
+        tuiBadge
+        class="money"
+    >
+        $1,095.3
+    </div>
+</div>
+`;export{d as default};

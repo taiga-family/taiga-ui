@@ -1,0 +1,33 @@
+import"./chunk-HU6DUUP4.js";var l=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    align-items: center;
+
+    @media @tui-mobile {
+        font-size: 0;
+    }
+}
+
+.t-logo-link {
+    display: flex;
+}
+
+.t-logo-name {
+    display: flex;
+    color: var(--tui-text-primary);
+}
+
+.t-logo {
+    inline-size: 1.5rem;
+    margin-inline-end: 0.5rem;
+}
+
+.t-by {
+    margin-inline-start: 0.875rem;
+
+    @media @tui-mobile {
+        display: none;
+    }
+}
+`;export{l as default};

@@ -1,0 +1,25 @@
+import"./chunk-HU6DUUP4.js";var o=`tui-dropdown[data-appearance] {
+    min-block-size: 8rem;
+    background: var(--tui-background-neutral-1);
+    box-shadow: none;
+    border: none;
+    backdrop-filter: blur(1rem);
+
+    [tuiSlider] {
+        position: absolute;
+        inline-size: 7rem;
+        transform-origin: left;
+        transform: rotate(-90deg) translate(-100%, 1rem);
+
+        // chromium browsers
+        &::-webkit-slider-thumb {
+            cursor: ns-resize;
+        }
+
+        // firefox
+        &::-moz-range-thumb {
+            cursor: ns-resize;
+        }
+    }
+}
+`;export{o as default};

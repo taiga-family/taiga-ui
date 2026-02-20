@@ -1,0 +1,64 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-badged-content>
+    <tui-badge-notification
+        size="s"
+        tuiSlot="top"
+    >
+        99
+    </tui-badge-notification>
+    <div
+        size="s"
+        tuiAvatar="@tui.user"
+        [round]="false"
+    ></div>
+</tui-badged-content>
+
+<tui-badged-content>
+    <div
+        size="m"
+        tuiAvatar="@tui.user"
+        [round]="false"
+    ></div>
+    <tui-badge-notification
+        size="m"
+        tuiSlot="bottom"
+    >
+        120
+    </tui-badge-notification>
+</tui-badged-content>
+
+<tui-badged-content>
+    <tui-icon
+        appearance="primary"
+        iconStart="@tui.star"
+        size="l"
+        tuiBadge
+        tuiSlot="top"
+    />
+    <div
+        size="l"
+        tuiAvatar="@tui.user"
+        [round]="false"
+    ></div>
+</tui-badged-content>
+
+<tui-badged-content>
+    <tui-badge-notification
+        size="l"
+        tuiSlot="top"
+    >
+        99
+    </tui-badge-notification>
+    <div
+        size="xl"
+        tuiAvatar="@tui.user"
+        [round]="false"
+    ></div>
+    <tui-icon
+        appearance="accent"
+        iconStart="@tui.star"
+        size="l"
+        tuiBadge
+        tuiSlot="bottom"
+    />
+</tui-badged-content>
+`;export{a as default};

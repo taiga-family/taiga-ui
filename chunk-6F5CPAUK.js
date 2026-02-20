@@ -1,0 +1,12 @@
+import"./chunk-HU6DUUP4.js";var t=`@import '@taiga-ui/styles/utils.less';
+
+.custom-1 {
+    .gradient(#0094cf, #24c0ff);
+
+    box-shadow: var(--tui-shadow-small);
+}
+
+.custom-2 {
+    .gradient(#c86dd7, #3023ae);
+}
+`;export{t as default};

@@ -1,0 +1,52 @@
+import"./chunk-HU6DUUP4.js";var e=`@for (platform of platforms; track $index) {
+    <div
+        class="wrapper"
+        [class.wrapper_web]="platform === 'web'"
+        [tuiPlatform]="platform"
+    >
+        <input
+            tuiSwitch
+            type="checkbox"
+            [ngModel]="true"
+            [showIcons]="$first"
+            [size]="getSize($first)"
+        />
+        <input
+            tuiSwitch
+            type="checkbox"
+            [disabled]="true"
+            [ngModel]="true"
+            [showIcons]="$first"
+            [size]="getSize($first)"
+        />
+        <input
+            tuiSwitch
+            type="checkbox"
+            [showIcons]="$first"
+            [size]="getSize($first)"
+        />
+        <input
+            tuiSwitch
+            type="checkbox"
+            [disabled]="true"
+            [ngModel]="false"
+            [showIcons]="$first"
+            [size]="getSize($first)"
+        />
+        <input
+            tuiSwitch
+            type="checkbox"
+            [formControl]="invalidTrue"
+            [showIcons]="$first"
+            [size]="getSize($first)"
+        />
+        <input
+            tuiSwitch
+            type="checkbox"
+            [formControl]="invalidFalse"
+            [showIcons]="$first"
+            [size]="getSize($first)"
+        />
+    </div>
+}
+`;export{e as default};

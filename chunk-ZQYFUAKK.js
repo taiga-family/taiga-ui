@@ -1,0 +1,51 @@
+import"./chunk-HU6DUUP4.js";var t=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+}
+
+.cell {
+    inline-size: 21.25rem;
+}
+
+.img {
+    display: block;
+    margin: auto;
+    max-inline-size: ~'min(25rem, 100%)';
+}
+
+.img-min {
+    block-size: 5rem;
+}
+
+.title {
+    margin: 0;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 1.25rem;
+}
+
+.grid-container {
+    grid-template-columns: repeat(3, 2fr);
+    grid-auto-rows: max-content;
+
+    @media @tui-desktop {
+        grid-template-columns: repeat(1, 2fr);
+    }
+}
+
+.preview {
+    display: flex;
+    grid-column: 1 / -1;
+    background: #b3bdc8 !important;
+    border-radius: 1.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 0;
+    overflow: hidden;
+}
+`;export{t as default};
