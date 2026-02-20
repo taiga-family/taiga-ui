@@ -1,4 +1,3 @@
-/* eslint-disable @angular-eslint/no-experimental */
 import {LocationStrategy, PathLocationStrategy, ViewportScroller} from '@angular/common';
 import {HttpClient, provideHttpClient, withFetch} from '@angular/common/http';
 import {
