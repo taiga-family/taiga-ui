@@ -16,6 +16,7 @@ export * from '@taiga-ui/kit/components/comment';
 export * from '@taiga-ui/kit/components/compass';
 export * from '@taiga-ui/kit/components/confirm';
 export * from '@taiga-ui/kit/components/copy';
+export * from '@taiga-ui/kit/components/counter';
 export * from '@taiga-ui/kit/components/data-list-wrapper';
 export * from '@taiga-ui/kit/components/drawer';
 export * from '@taiga-ui/kit/components/files';
