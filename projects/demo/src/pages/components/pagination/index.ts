@@ -16,4 +16,11 @@ export default class Page {
     protected size = this.sizeVariants[1];
     protected activePadding = 1;
     protected sidePadding = 1;
+
+    protected readonly examples = [
+        'Basic',
+        'Visible pages around active',
+        'Visible edge pages',
+        'Custom',
+    ];
 }

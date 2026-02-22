@@ -7,4 +7,11 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    public readonly examples = [
+        'Show more',
+        'contenteditable',
+        'Add and remove content',
+        'With animations inside',
+    ];
+}

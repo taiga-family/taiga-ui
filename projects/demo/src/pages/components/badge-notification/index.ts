@@ -18,4 +18,6 @@ export default class Example {
     ];
 
     protected size: TuiSizeL | TuiSizeXS = this.sizeVariants[0]!;
+
+    protected readonly examples = ['Basic', 'Custom color'];
 }

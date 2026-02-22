@@ -15,4 +15,15 @@ export default class Page {
     };
 
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = [
+        'Manual',
+        'Array',
+        'Template',
+        'Programmatic control',
+        'Custom',
+        'Checkbox',
+        'Asynchronous',
+        'Drag and drop',
+    ];
 }

@@ -13,163 +13,137 @@
         <code>Slider</code>
         + ❤️
 
-        <tui-doc-example
-            heading="Textfield customization"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-            [description]="textfieldBasedDescription"
-        >
-            <ng-template #textfieldBasedDescription>
-                Use all powers of
-                <code>Textfield</code>
-                : put any number of
-                <a
-                    target="_blank"
-                    tuiLink
-                    [routerLink]="routes.Icon"
-                >
-                    <strong>Icons</strong>
-                </a>
-                and
-                <a
-                    target="_blank"
-                    tuiLink
-                    [routerLink]="routes.Tooltip"
-                >
-                    <strong>Tooltips</strong>
-                </a>
-                inside (and control their order and color), modify the size of the textbox and etc. Explore
-                <code>Textfield</code>
-                's documentation page for more customization options.
-            </ng-template>
-        </tui-doc-example>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            >
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            Use all powers of
+                            <code>Textfield</code>
+                            : put any number of
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.Icon"
+                            >
+                                <strong>Icons</strong>
+                            </a>
+                            and
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.Tooltip"
+                            >
+                                <strong>Tooltips</strong>
+                            </a>
+                            inside (and control their order and color), modify the size of the textbox and etc. Explore
+                            <code>Textfield</code>
+                            's documentation page for more customization options.
+                        }
+                        @case (1) {
+                            <code>InputSlider</code>
+                            is just a slight extension of
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.InputNumber"
+                            >
+                                <strong>InputNumber</strong>
+                            </a>
+                            – it has completely the same customization: add
+                            <code>[prefix]</code>
+                            /
+                            <code>[postfix]</code>
+                            , configure separators specific for your locale via
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.NumberFormat"
+                            >
+                                <strong>NumberFormat</strong>
+                            </a>
+                            directive or etc.
+                        }
+                        @case (2) {
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.Slider"
+                            >
+                                <strong>Slider</strong>
+                            </a>
+                            automatically inherits
+                            <code>[min]</code>
+                            /
+                            <code>[max]</code>
+                            properties from
+                            <code>[tuiInputSlider]</code>
+                            (don't set them for
+                            <code>Slider</code>
+                            to avoid any possible conflicts!). However, feel free to configure
+                            <code>Slider</code>
+                            's-specific properties:
+                            <code>[step]</code>
+                            ,
+                            <code>[keySteps]</code>
+                            and
+                            <code>[segments]</code>
+                            .
 
-        <tui-doc-example
-            heading="InputNumber customization"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [description]="inputNumberBasedDescription"
-        >
-            <ng-template #inputNumberBasedDescription>
-                <code>InputSlider</code>
-                is just a slight extension of
-                <a
-                    target="_blank"
-                    tuiLink
-                    [routerLink]="routes.InputNumber"
-                >
-                    <strong>InputNumber</strong>
-                </a>
-                – it has completely the same customization: add
-                <code>[prefix]</code>
-                /
-                <code>[postfix]</code>
-                , configure separators specific for your locale via
-                <a
-                    target="_blank"
-                    tuiLink
-                    [routerLink]="routes.NumberFormat"
-                >
-                    <strong>NumberFormat</strong>
-                </a>
-                directive or etc.
-            </ng-template>
-        </tui-doc-example>
+                            <p class="tui-space_bottom-0">
+                                Also, you can use mixin-helper
+                                <code>tui-slider-ticks-labels</code>
+                                to arrange ticks' labels (it places them strictly below ticks).
+                            </p>
+                        }
+                        @case (3) {
+                            <strong>Key steps</strong>
+                            – anchor points of non-uniform format between control's value and slider's position.
 
-        <tui-doc-example
-            heading="Slider customization"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-            [description]="sliderBasedDescription"
-        >
-            <ng-template #sliderBasedDescription>
-                <a
-                    target="_blank"
-                    tuiLink
-                    [routerLink]="routes.Slider"
-                >
-                    <strong>Slider</strong>
-                </a>
-                automatically inherits
-                <code>[min]</code>
-                /
-                <code>[max]</code>
-                properties from
-                <code>[tuiInputSlider]</code>
-                (don't set them for
-                <code>Slider</code>
-                to avoid any possible conflicts!). However, feel free to configure
-                <code>Slider</code>
-                's-specific properties:
-                <code>[step]</code>
-                ,
-                <code>[keySteps]</code>
-                and
-                <code>[segments]</code>
-                .
+                            <p class="tui-space_bottom-0">
+                                When
+                                <code>[keySteps]</code>
+                                property is enabled,
+                                <code>[step]</code>
+                                means percentage of total track length.
+                            </p>
+                        }
+                        @case (4) {
+                            Property
+                            <code>[quantum]</code>
+                            allows to set minimum indivisible value. Form control value never contains a number that is
+                            not divisible by value of this property. Even if user enters any invalid number, it will be
+                            rounded to the nearest valid one on
+                            <code>blur</code>
+                            event.
 
-                <p class="tui-space_bottom-0">
-                    Also, you can use mixin-helper
-                    <code>tui-slider-ticks-labels</code>
-                    to arrange ticks' labels (it places them strictly below ticks).
-                </p>
-            </ng-template>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="KeySteps"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-            [description]="keyStepsDescription"
-        >
-            <ng-template #keyStepsDescription>
-                <strong>Key steps</strong>
-                – anchor points of non-uniform format between control's value and slider's position.
-
-                <p class="tui-space_bottom-0">
-                    When
-                    <code>[keySteps]</code>
-                    property is enabled,
-                    <code>[step]</code>
-                    means percentage of total track length.
-                </p>
-            </ng-template>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="Quantum"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
-            [description]="quantumDescription"
-        >
-            <ng-template #quantumDescription>
-                Property
-                <code>[quantum]</code>
-                allows to set minimum indivisible value. Form control value never contains a number that is not
-                divisible by value of this property. Even if user enters any invalid number, it will be rounded to the
-                nearest valid one on
-                <code>blur</code>
-                event.
-
-                <p class="tui-space_bottom-0">
-                    In this example, form control value can only contain
-                    <code>0</code>
-                    ,
-                    <code>0.05</code>
-                    ,
-                    <code>0.1</code>
-                    ,
-                    <code>0.15</code>
-                    ...
-                    <code>0.9</code>
-                    ,
-                    <code>0.95</code>
-                    ,
-                    <code>1</code>
-                    .
-                </p>
-            </ng-template>
-        </tui-doc-example>
+                            <p class="tui-space_bottom-0">
+                                In this example, form control value can only contain
+                                <code>0</code>
+                                ,
+                                <code>0.05</code>
+                                ,
+                                <code>0.1</code>
+                                ,
+                                <code>0.15</code>
+                                ...
+                                <code>0.9</code>
+                                ,
+                                <code>0.95</code>
+                                ,
+                                <code>1</code>
+                                .
+                            </p>
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>

@@ -15,92 +15,52 @@
             </dd>
         </dl>
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
 
-        <tui-doc-example
-            heading="Sizes"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (5) {
+                        <p>
+                            Use power of CSS property
+                            <a
+                                href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform"
+                                rel="noreferrer"
+                                target="_blank"
+                                tuiLink
+                            >
+                                <code>transform</code>
+                            </a>
+                            to customize direction and starting point of progress circle.
+                        </p>
 
-        <tui-doc-example
-            heading="With label"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Colors"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Dynamic color"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Anti-clockwise direction"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
-            [description]="antiClockwiseDirectionDescription"
-        >
-            <ng-template #antiClockwiseDirectionDescription>
-                <p>
-                    Use power of CSS property
-                    <a
-                        href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform"
-                        rel="noreferrer"
-                        target="_blank"
-                        tuiLink
-                    >
-                        <code>transform</code>
-                    </a>
-                    to customize direction and starting point of progress circle.
-                </p>
-
-                <p>
-                    By default,
-                    <code>ProgressCircle</code>
-                    has clockwise direction and starts from the top (i.e. it already contains
-                    <code>transform: rotate(-90deg)</code>
-                    ).
-                </p>
+                        <p>
+                            By default,
+                            <code>ProgressCircle</code>
+                            has clockwise direction and starts from the top (i.e. it already contains
+                            <code>transform: rotate(-90deg)</code>
+                            ).
+                        </p>
+                    }
+                    @case (6) {
+                        Use css-variable
+                        <code>--tui-thickness</code>
+                        to customize width of the circle's stroke.
+                    }
+                    @case (7) {
+                        Set
+                        <code>arc</code>
+                        attribute to transform default circular shape into arc with small bottom open arc sector (gap
+                        between arc ends).
+                    }
+                }
             </ng-template>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="Thickness"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
-            [description]="thicknessDescription"
-        >
-            <ng-template #thicknessDescription>
-                Use css-variable
-                <code>--tui-thickness</code>
-                to customize width of the circle's stroke.
-            </ng-template>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="Arc mode"
-            [component]="8 | tuiComponent"
-            [content]="8 | tuiExample"
-            [description]="arcDescription"
-        >
-            <ng-template #arcDescription>
-                Set
-                <code>arc</code>
-                attribute to transform default circular shape into arc with small bottom open arc sector (gap between
-                arc ends).
-            </ng-template>
-        </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>

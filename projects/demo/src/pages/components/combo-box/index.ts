@@ -50,6 +50,21 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
+    protected readonly examples = [
+        'Basic',
+        'Non-strict mode',
+        'Client-side filtering',
+        'Textfield customization',
+        'Server-side filtering',
+        'Items handlers',
+        'Customize content',
+        'With DataList',
+        'Choose form control output',
+        'Virtual scroll',
+        'With DropdownMobile',
+        'Override option component',
+    ];
+
     protected readonly control = new FormControl<Country | null>(null);
 
     protected readonly countries = computed(() =>

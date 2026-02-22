@@ -9,4 +9,6 @@ import {TuiLink} from '@taiga-ui/core';
     styleUrl: './index.less',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Basic', 'iOS'];
+}

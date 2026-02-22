@@ -22,4 +22,6 @@ export default class Page {
         {id: 2, name: 'Eric Idle'},
         {id: 3, name: 'Graham Chapman'},
     ];
+
+    protected readonly examples = ['Basic', 'Vertical', 'Nested tiles'];
 }

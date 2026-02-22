@@ -13,5 +13,6 @@ import TuiTabBarExample from './examples/1';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Buttons', 'Links', 'Customization', 'Skeleton'];
     protected fixed = false;
 }

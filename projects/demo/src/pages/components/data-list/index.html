@@ -9,59 +9,39 @@
             allows to make lists or menus
         </p>
 
-        <tui-doc-example
-            heading="Links"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Submenu"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        >
-            <div
-                tuiNotification
-                class="tui-space_bottom-3"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
             >
-                Use
-                <code>TuiDataListDropdownManager</code>
-                for nested menus
-            </div>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="Form control"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Custom list"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample: 'html,ts' : customList"
-        />
-
-        <tui-doc-example
-            heading="Complex"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
-        >
-            <div
-                tuiNotification
-                class="tui-space_bottom-3"
-            >
-                Use
-                <code>TuiDataListDropdownManager</code>
-                for nested menus
-            </div>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="Options with long text"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
-        />
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (1) {
+                            <div
+                                tuiNotification
+                                class="tui-space_bottom-3"
+                            >
+                                Use
+                                <code>TuiDataListDropdownManager</code>
+                                for nested menus
+                            </div>
+                        }
+                        @case (4) {
+                            <div
+                                tuiNotification
+                                class="tui-space_bottom-3"
+                            >
+                                Use
+                                <code>TuiDataListDropdownManager</code>
+                                for nested menus
+                            </div>
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>

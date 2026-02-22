@@ -4,17 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            heading="sizes"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="With labels"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>

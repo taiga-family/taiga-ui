@@ -12,20 +12,15 @@ import {type TuiSizeS} from '@taiga-ui/core';
 })
 export default class Page {
     protected text = 'Text inside';
-
     protected active = false;
-
+    protected readonly examples = ['With a ring chart', 'Toggling'];
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
-
+    protected size = this.sizeVariants[0]!;
+    protected disabled = false;
+    protected color = '';
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-chart-categorical-04)',
         'var(--tui-background-accent-1)',
         'var(--tui-background-neutral-1)',
     ];
-
-    protected size = this.sizeVariants[0]!;
-
-    protected disabled = false;
-
-    protected color = '';
 }

@@ -34,4 +34,11 @@ export default class PageComponent {
     protected phoneMask = this.phoneMasks[0]!;
 
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
+
+    public readonly examples = [
+        'Basic',
+        'With autocomplete',
+        'Value transformer',
+        'With flag',
+    ];
 }

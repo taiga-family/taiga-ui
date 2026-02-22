@@ -9,4 +9,12 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly component = import('./examples/import/component.md');
+
+    protected readonly examples = [
+        'round',
+        'inRange',
+        'normalizeToIntNumber',
+        'quantize',
+        'clamp',
+    ];
 }

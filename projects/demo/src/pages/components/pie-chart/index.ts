@@ -15,6 +15,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Sizes', 'With labels'];
     protected readonly routes = DemoRoute;
     protected readonly valueVariants = [
         [0, 30, 20, 10],

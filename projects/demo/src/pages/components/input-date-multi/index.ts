@@ -35,6 +35,14 @@ export default class Example {
     protected readonly control = new FormControl();
     protected readonly routes = DemoRoute;
 
+    public readonly examples = [
+        'Basic',
+        'Chip',
+        'Disabled items',
+        'Format',
+        'customization',
+    ];
+
     protected readonly dates = [
         TUI_FIRST_DAY,
         TuiDay.currentLocal(),

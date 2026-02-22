@@ -24,4 +24,6 @@ export default class Page {
 
     protected readonly control = new FormControl(6432, Validators.required);
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = ['Basic', 'With Textfield'];
 }
