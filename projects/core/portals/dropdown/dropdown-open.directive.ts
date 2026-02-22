@@ -5,6 +5,7 @@ import {
     Directive,
     effect,
     ElementRef,
+    forwardRef,
     inject,
     input,
     model,
@@ -32,6 +33,7 @@ import {filter} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
+import {TuiDropdownA11y} from './dropdown-a11y.directive';
 import {TuiDropdownClose} from './dropdown-close.directive';
 
 @Directive({
@@ -40,10 +42,8 @@ import {TuiDropdownClose} from './dropdown-close.directive';
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
         TuiObscured,
-        {
-            directive: TuiDropdownClose,
-            outputs: ['tuiDropdownClose'],
-        },
+        {directive: forwardRef(() => TuiDropdownA11y), inputs: ['tuiDropdownRole']},
+        {directive: TuiDropdownClose, outputs: ['tuiDropdownClose']},
         {
             directive: TuiActiveZone,
             inputs: ['tuiActiveZoneParent'],

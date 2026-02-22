@@ -17,6 +17,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsVehicle,
     type TuiRectAccessor,
@@ -71,6 +72,7 @@ export class TuiDropdownDirective
         }
     });
 
+    public readonly id = tuiGenerateId();
     public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
@@ -114,8 +116,7 @@ export class TuiDropdownDirective
             ref.destroy();
         }
 
-        // TODO: Remove in v5, only needed in Angular 16
-        this.cdr.markForCheck();
+        this.ref()?.location.nativeElement.setAttribute('id', this.id);
         this.drivers.forEach((driver) => driver?.next(show));
     }
 }

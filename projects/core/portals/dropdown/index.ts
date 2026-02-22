@@ -4,6 +4,7 @@ export * from './dropdown.component';
 export * from './dropdown.directive';
 export * from './dropdown.driver';
 export * from './dropdown.providers';
+export * from './dropdown-a11y.directive';
 export * from './dropdown-close.directive';
 export * from './dropdown-content.directive';
 export * from './dropdown-context.directive';
