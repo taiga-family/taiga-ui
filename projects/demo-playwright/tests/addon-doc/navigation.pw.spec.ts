@@ -70,6 +70,7 @@ test.describe('Navigation', () => {
             );
 
             const isProprietary = process.env['PROPRIETARY'] === 'true';
+            // eslint-disable-next-line playwright/no-conditional-in-test
             const anchor = `a[href$="${isProprietary ? encodeURIComponent('Основной-компонент') : 'root-component'}"]`;
 
             await tuiGoto(
