@@ -28,6 +28,7 @@ import {HTML_COMMENTS} from './constants/html-comments';
 import {INPUTS_TO_REMOVE} from './constants/inputs-to-remove';
 import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
 import {migrateAccordionItem} from './templates/migrate-accordion';
+import {migrateAsyncPipes} from './templates/migrate-async-pipes';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateInputRange} from './templates/migrate-input-range';
@@ -82,6 +83,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateTuiNotification,
         migrateRepeatTimes,
         migrateFieldError,
+        migrateAsyncPipes,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
