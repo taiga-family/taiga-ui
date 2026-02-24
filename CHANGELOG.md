@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.72.0](https://github.com/taiga-family/taiga-ui/compare/v4.71.1...v4.72.0) (2026-02-24)
+
+### 🐞 Bug Fixes
+
+- **cdk:** watch font size only on root ([#13330](https://github.com/taiga-family/taiga-ui/issues/13330))
+  ([e377bf3](https://github.com/taiga-family/taiga-ui/commit/e377bf391ee5d1af21a95bb3457d1f7187d4126b))
+- **core:** selected text is not in the visible area, but the dropdown is still shown
+  ([#13329](https://github.com/taiga-family/taiga-ui/issues/13329))
+  ([54435c4](https://github.com/taiga-family/taiga-ui/commit/54435c4e6defee640a7881f3b16554d6bf0d495f))
+- **kit:** increase delay before scroll on `tuiInputChip`
+  ([#13331](https://github.com/taiga-family/taiga-ui/issues/13331))
+  ([be518e3](https://github.com/taiga-family/taiga-ui/commit/be518e33b0cce16934a78ce0f6e208d3cca9b300))
+
+### 🚀 Features
+
+- **cdk:** make `tuiSum` safe for decimal arithmetic ([#13352](https://github.com/taiga-family/taiga-ui/issues/13352))
+  ([029c64c](https://github.com/taiga-family/taiga-ui/commit/029c64c0657204c9a57876a8a727ad7c53c69eca))
+- **core:** `Textfield` fix icon placement in S size according to specs
+  ([#13342](https://github.com/taiga-family/taiga-ui/issues/13342))
+  ([69147eb](https://github.com/taiga-family/taiga-ui/commit/69147ebbcc3779f4b29bc86f749dbd3a67febc01))
+- **core:** `Textfield` fix placeholder color according to specs
+  ([#13343](https://github.com/taiga-family/taiga-ui/issues/13343))
+  ([6a2c207](https://github.com/taiga-family/taiga-ui/commit/6a2c2074f15a0ab2d8a3484d18f31b19fbee169b))
+
 ### [4.71.1](https://github.com/taiga-family/taiga-ui/compare/v4.71.0...v4.71.1) (2026-02-18)
 
 ### 🐞 Bug Fixes
