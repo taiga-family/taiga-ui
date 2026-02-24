@@ -9,4 +9,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiIconBadge',
         moduleSpecifier: '@taiga-ui/kit',
     },
+    {
+        name: 'TuiTimelineSteps',
+        moduleSpecifier: '@taiga-ui/proprietary',
+    },
 ];
