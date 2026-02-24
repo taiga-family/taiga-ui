@@ -17,6 +17,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiScrollService',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
-            'TuiScrollService has been removed. Use native scrolling APIs (window.scrollTo, Element.scrollTo, Element.scrollIntoView) instead',
+            'TuiScrollService has been removed because smooth scroll is natively supported by all modern browsers. Use native scrolling APIs (window.scrollTo, Element.scrollTo, Element.scrollIntoView) instead',
+    },
+    {
+        name: 'TuiFormatDatePipe',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiFormatDatePipe has been removed. Use Angular built-in Date pipe instead. See https://angular.dev/api/common/DatePipe',
     },
 ];
