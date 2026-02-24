@@ -8,8 +8,8 @@
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
-                [description]="$index === 0 ? sizesDescription : null"
-                [fullsize]="$index === 0"
+                [description]="$first ? sizesDescription : null"
+                [fullsize]="$first"
                 [heading]="example"
             />
         }
