@@ -342,11 +342,11 @@ describe('InputNumber', () => {
                 });
             });
 
-            describe('[step]=0.001 + [tuiNumberFormat]="{precision: 3, rounding: round}"', () => {
+            describe('[step]=0.001 + [tuiNumberFormat]="{precision: 3}"', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(
                         page,
-                        `${DemoRoute.InputNumber}/API?step=0.001&rounding=round&precision=3`,
+                        `${DemoRoute.InputNumber}/API?step=0.001&precision=3`,
                     );
                 });
 
