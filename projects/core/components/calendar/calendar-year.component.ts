@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     inject,
-    Input,
-    Output,
+    input,
+    output,
     signal,
 } from '@angular/core';
 import {
@@ -39,60 +38,57 @@ const CURRENT_YEAR = TuiMonth.currentLocal().year;
 })
 export class TuiCalendarYear {
     private readonly hoveredItem = signal<number | null>(null);
+    private readonly calculatedMin = computed(() => {
+        const initial = this.initialItem() - LIMIT;
+        const min = this.min() ?? MIN_YEAR;
+
+        return min > initial ? min : initial;
+    });
+
+    private readonly calculatedMax = computed(() => {
+        const initial = this.initialItem() + LIMIT;
+        const max = this.max() ?? MAX_YEAR;
+
+        return max < initial ? max + 1 : initial;
+    });
 
     protected readonly isRangePicking = computed(
         (x = this.value()) =>
-            this.rangeMode && (x instanceof TuiDay || x instanceof TuiMonth),
+            this.rangeMode() && (x instanceof TuiDay || x instanceof TuiMonth),
     );
 
-    @Input()
-    public rangeMode = false;
+    protected readonly rows = computed(() =>
+        Math.ceil((this.calculatedMax() - this.calculatedMin()) / ITEMS_IN_ROW),
+    );
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<number> =
-        inject(TUI_ITEMS_HANDLERS).disabledItemHandler();
+    public readonly rangeMode = input(false);
+    public readonly disabledItemHandler = input<TuiBooleanHandler<number>>(
+        inject(TUI_ITEMS_HANDLERS).disabledItemHandler(),
+    );
 
-    @Output()
-    public readonly yearClick = new EventEmitter<number>();
-
-    public readonly initialItem = signal<number>(CURRENT_YEAR);
-    public readonly min = signal(MIN_YEAR);
-    public readonly max = signal(MAX_YEAR);
-    public readonly value = signal<
+    public readonly value = input<
         TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null
     >(null);
 
-    // TODO(v5): use signal inputs
-    @Input({alias: 'initialItem', transform: (x: number | null) => x ?? CURRENT_YEAR})
-    public set initialItemSetter(x: number | null) {
-        this.initialItem.set(x ?? CURRENT_YEAR);
-    }
+    public readonly min = input(MIN_YEAR, {
+        transform: (x: number | null) => x ?? MIN_YEAR,
+    });
 
-    // TODO(v5): use signal inputs
-    @Input({alias: 'min', transform: (x: number | null) => x ?? MIN_YEAR})
-    public set minSetter(x: number) {
-        this.min.set(x);
-    }
+    public readonly max = input(MAX_YEAR, {
+        transform: (x: number | null) => x ?? MAX_YEAR,
+    });
 
-    // TODO(v5): use signal inputs
-    @Input({alias: 'max', transform: (x: number | null) => x ?? MAX_YEAR})
-    public set maxSetter(x: number) {
-        this.max.set(x);
-    }
+    public readonly initialItem = input(CURRENT_YEAR, {
+        transform: (x: number | null) => x ?? CURRENT_YEAR,
+    });
 
-    // TODO(v5): use signal inputs
-    @Input('value')
-    public set valueSetter(
-        x: TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null,
-    ) {
-        this.value.set(x);
-    }
+    public readonly yearClick = output<number>();
 
     public isDisabled(item: number): boolean {
         return (
             (this.max() && this.max() < item) ||
             (this.min() && this.min() > item) ||
-            this.disabledItemHandler(item)
+            this.disabledItemHandler()(item)
         );
     }
 
@@ -138,33 +134,15 @@ export class TuiCalendarYear {
         this.hoveredItem.set(hovered ? item : null);
     }
 
-    protected get rows(): number {
-        return Math.ceil((this.calculatedMax - this.calculatedMin) / ITEMS_IN_ROW);
-    }
-
     protected scrollItemIntoView(item: number): boolean {
         return this.initialItem() === item;
     }
 
     protected getItem(rowIndex: number, colIndex: number): number {
-        return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin;
+        return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin();
     }
 
     protected itemIsToday(item: number): boolean {
         return CURRENT_YEAR === item;
-    }
-
-    private get calculatedMin(): number {
-        const initial = this.initialItem() - LIMIT;
-        const min = this.min() ?? MIN_YEAR;
-
-        return min > initial ? min : initial;
-    }
-
-    private get calculatedMax(): number {
-        const initial = this.initialItem() + LIMIT;
-        const max = this.max() ?? MAX_YEAR;
-
-        return max < initial ? max + 1 : initial;
     }
 }
