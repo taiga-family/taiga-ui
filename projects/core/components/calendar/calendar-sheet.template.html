@@ -6,7 +6,7 @@
         ></div>
     }
 </div>
-@let sheet = month | tuiCalendarSheet: true;
+@let sheet = month() | tuiCalendarSheet: true;
 <div>
     @for (_ of '-'.repeat(sheet.length); track $index) {
         @let rowIndex = $index;
@@ -16,21 +16,21 @@
         >
             @for (_ of '-'.repeat(sheet[rowIndex]?.length ?? 0); track $index) {
                 @let item = sheet[rowIndex]?.[$index];
-                @if (item && (!itemIsUnavailable(item) || showAdjacent)) {
+                @if (item && (!itemIsUnavailable(item) || showAdjacent())) {
                     <div
                         automation-id="tui-calendar-sheet__cell"
                         class="t-cell"
                         [attr.data-range]="getItemRange(item)"
                         [attr.data-type]="item | tuiMapper: dayType"
-                        [class.t-cell_disabled]="disabledItemHandler(item)"
+                        [class.t-cell_disabled]="disabledItemHandler()(item)"
                         [class.t-cell_today]="itemIsToday(item)"
                         [class.t-cell_unavailable]="itemIsUnavailable(item)"
-                        (click)="onItemClick(item)"
+                        (click)="dayClick.emit(item)"
                         (tuiHoveredChange)="onItemHovered($event && item)"
                     >
                         {{ item.day }}
                         @if (
-                            item | tuiMapper: toMarkers : itemIsToday(item) : getItemRange(item) : markerHandler;
+                            item | tuiMapper: toMarkers : itemIsToday(item) : getItemRange(item) : markerHandler();
                             as markers
                         ) {
                             <div class="t-dots">
