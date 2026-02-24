@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/cdk",
-    "version": "4.71.1",
+    "version": "4.72.0",
     "description": "Base library for creating Angular components and applications using Taiga UI principles regarding of actual visual appearance",
     "keywords": [
         "angular",
