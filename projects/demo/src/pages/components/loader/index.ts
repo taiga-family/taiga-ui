@@ -17,6 +17,13 @@ export default class Page {
 
     protected readonly routes = DemoRoute;
 
+    protected readonly examples = [
+        'With inherited background color',
+        'With content overlay',
+        'Options',
+        'Custom stroke width',
+    ];
+
     protected showLoader = true;
 
     protected inheritColor = false;
@@ -51,11 +58,4 @@ export default class Page {
             }
         }
     }
-
-    protected readonly examples = [
-        'With inherited background color',
-        'With content overlay',
-        'Options',
-        'Custom stroke width',
-    ];
 }
