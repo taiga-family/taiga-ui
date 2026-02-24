@@ -39,6 +39,66 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiSurface',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiSurface',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCell',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TuiCell',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAutoColorPipe',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiAutoColorPipe',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFlagPipe',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiFlagPipe',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'tuiPure',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiPure',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'ResizeObserverService',
+            moduleSpecifier: '@ng-web-apis/resize-observer',
+        },
+        to: {
+            name: 'WaResizeObserverService',
+            moduleSpecifier: '@ng-web-apis/resize-observer',
+        },
+    },
+    {
+        from: {
             name: 'TuiSlides',
             moduleSpecifier: '@taiga-ui/kit',
         },

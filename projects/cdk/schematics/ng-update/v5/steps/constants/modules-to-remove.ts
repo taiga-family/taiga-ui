@@ -13,4 +13,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiTimelineSteps',
         moduleSpecifier: '@taiga-ui/proprietary',
     },
+    {
+        name: 'tuiProvideExperimentalHint',
+        moduleSpecifier: '@taiga-ui/experimental',
+    },
 ];

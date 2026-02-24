@@ -13,4 +13,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'All values inside TuiDateMode are renamed: DMY -> dd/mm/yyyy, MDY -> mm/dd/yyyy, YMD -> yyyy/mm/dd',
     },
+    {
+        name: 'TuiScrollService',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiScrollService has been removed. Use native scrolling APIs (window.scrollTo, Element.scrollTo, Element.scrollIntoView) instead',
+    },
 ];

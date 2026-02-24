@@ -41,6 +41,18 @@ export function removeModule(name: string, moduleSpecifier: string): void {
             const index = parent.getElements().findIndex((el) => el.getText() === name);
 
             parent.removeElement(index);
+        } else if (Node.isCallExpression(parent)) {
+            const array = parent.getParent();
+
+            if (!Node.isArrayLiteralExpression(array)) {
+                return;
+            }
+
+            const index = array
+                .getElements()
+                .findIndex((el) => el.getText() === parent.getText());
+
+            array.removeElement(index);
         }
     });
 }
