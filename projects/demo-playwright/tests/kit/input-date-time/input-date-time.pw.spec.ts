@@ -176,7 +176,7 @@ test.describe('InputDateTime', () => {
             await timeModeSelect.selectOptions([2]);
 
             await expect(
-                timeModeRow.locator('tui-textfield').getByRole('textbox'),
+                timeModeRow.locator('tui-textfield').getByRole('combobox'),
             ).toHaveValue('HH:MM:SS');
 
             await inputDateTime.textfield.focus();
@@ -189,7 +189,7 @@ test.describe('InputDateTime', () => {
             await timeModeSelect.selectOptions([4]);
 
             await expect(
-                timeModeRow.locator('tui-textfield').getByRole('textbox'),
+                timeModeRow.locator('tui-textfield').getByRole('combobox'),
             ).toHaveValue('HH:MM:SS.MSS');
 
             await inputDateTime.textfield.focus();

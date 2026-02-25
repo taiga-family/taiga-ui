@@ -2,13 +2,14 @@
     tuiButton
     tuiChevron
     tuiDropdownAuto
+    tuiDropdownRole="menu"
     type="button"
     [tuiDropdown]="content"
 >
     Menu
 </button>
 <ng-template #content>
-    <tui-data-list role="menu">
+    <tui-data-list>
         @for (group of groups; track group) {
             @if (!group.label) {
                 <hr />

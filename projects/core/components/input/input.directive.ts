@@ -18,6 +18,7 @@ import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 @Directive({
@@ -26,6 +27,7 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
     hostDirectives: [TuiNativeValidator],
     host: {
         tuiInput: '',
+        '[attr.role]': 'dropdown.content() && !el.matches("select") ? "combobox" : null',
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly()',
         '[class._empty]': 'value() === ""',
@@ -39,6 +41,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
     protected readonly s = tuiAppearanceState(computed(() => this.state()));
     protected readonly m = tuiAppearanceMode(computed(() => this.mode()));

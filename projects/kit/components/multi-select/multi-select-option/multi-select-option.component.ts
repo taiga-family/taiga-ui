@@ -14,6 +14,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     template: `
         @if (option) {
             <input
+                aria-hidden="true"
                 tuiCheckbox
                 type="checkbox"
                 [checked]="selected()"
@@ -33,6 +34,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
         }
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'[attr.aria-selected]': 'selected()'},
 })
 export class TuiMultiSelectOption<T> {
     protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue, {

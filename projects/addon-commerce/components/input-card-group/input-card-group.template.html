@@ -12,6 +12,7 @@
             class="t-input t-input_card"
             [attr.aria-invalid]="!cardPrefilled() && !(this.card() | tuiMapper: cardValidator())"
             [attr.id]="`${id()}_card`"
+            [attr.role]="dropdown.content() ? 'combobox' : null"
             [class.t-input_filled]="card().length"
             [class.t-input_inert]="cardPrefilled()"
             [disabled]="disabled()"
