@@ -28,7 +28,7 @@ describe('ng-update TuiScrollService warning', () => {
         `);
 
         expect(result).toContain(
-            '// TODO: (Taiga UI migration) TuiScrollService has been removed. Use native scrolling APIs (window.scrollTo, Element.scrollTo, Element.scrollIntoView) instead',
+            '// TODO: (Taiga UI migration) TuiScrollService has been removed because smooth scroll is natively supported by all modern browsers. Use native scrolling APIs (window.scrollTo, Element.scrollTo, Element.scrollIntoView) instead',
         );
         expect(result).toContain("import {TuiScrollService} from '@taiga-ui/cdk';");
     });
