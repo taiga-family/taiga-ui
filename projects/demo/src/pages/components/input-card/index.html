@@ -23,18 +23,18 @@
                 [content]="$index + 1 | tuiExample"
                 [description]="description"
                 [heading]="example"
-            >
-                <ng-template #description>
-                    @switch ($index) {
-                        @case (0) {
-                            <p>
-                                <code>form</code>
-                                tag is used for better autocomplete support
-                            </p>
-                        }
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        <p>
+                            <code>form</code>
+                            tag is used for better autocomplete support
+                        </p>
                     }
-                </ng-template>
-            </tui-doc-example>
+                }
+            </ng-template>
         }
     </ng-template>
 
