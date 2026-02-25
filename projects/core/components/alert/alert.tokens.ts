@@ -1,5 +1,6 @@
 import {type FactoryProvider, inject, InjectionToken} from '@angular/core';
-import {type TuiPopover, TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 import {BehaviorSubject, type Observable} from 'rxjs';
 

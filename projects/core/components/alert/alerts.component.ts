@@ -8,12 +8,10 @@ import {
     type Type,
     ViewEncapsulation,
 } from '@angular/core';
-import {
-    type TuiPopover,
-    TuiAnimatedParent,
-    TuiMapperPipe,
-    type TuiMapper,
-} from '@taiga-ui/cdk';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {type TuiMapper} from '@taiga-ui/cdk/types';
 // eslint-disable-next-line no-restricted-imports
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {combineLatest, identity, map, of} from 'rxjs';
