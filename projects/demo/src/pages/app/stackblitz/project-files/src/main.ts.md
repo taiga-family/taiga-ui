@@ -1,7 +1,7 @@
 ```ts
 import {provideRouter} from '@angular/router';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {Component, provideExperimentalZonelessChangeDetection} from '@angular/core';
+import {Component, provideZonelessChangeDetection} from '@angular/core';
 import {provideTaiga, tuiAssetsPathProvider, TuiRoot} from '@taiga-ui/core';
 
 import {App} from './app/app';
@@ -16,7 +16,7 @@ class Root {}
 bootstrapApplication(Root, {
   providers: [
     provideRouter([]),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     /**
      * A workaround for StackBlitz only (it does not support assets).
      * Don't use this approach in real-world applications!
