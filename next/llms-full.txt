@@ -10774,9 +10774,9 @@ DataList allows to make lists or menus
 
 **Template:**
 ```html
-<button tuiButton tuiChevron tuiDropdownAuto type="button" [tuiDropdown]="content" > Menu </button>
+<button tuiButton tuiChevron tuiDropdownAuto tuiDropdownRole="menu" type="button" [tuiDropdown]="content" > Menu </button>
 <ng-template #content>
-<tui-data-list role="menu"> @for (group of groups; track group) { @if (!group.label) { <hr /> } <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <a #rla="routerLinkActive" role="menuitemradio" routerLinkActive tuiOption [attr.aria-checked]="rla.isActive" [iconEnd]="rla.isActive ? '@tui.check' : ''" [routerLink]="item.routerLink" > {{ item.label }} </a> } </tui-opt-group> } </tui-data-list>
+<tui-data-list> @for (group of groups; track group) { @if (!group.label) { <hr /> } <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <a #rla="routerLinkActive" role="menuitemradio" routerLinkActive tuiOption [attr.aria-checked]="rla.isActive" [iconEnd]="rla.isActive ? '@tui.check' : ''" [routerLink]="item.routerLink" > {{ item.label }} </a> } </tui-opt-group> } </tui-data-list>
 </ng-template>
 ```
 **TypeScript:**
@@ -11531,10 +11531,7 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show dialog </button>
-<ng-template let-observer [(tuiDialog)]="open" >
-<header tuiHeader>
-<h2 tuiTitle>Let us know</h2>
-</header>
+<ng-template let-observer [tuiDialogOptions]="{label: 'Let us know'}" [(tuiDialog)]="open" >
 <form tuiForm (submit.prevent)="observer.complete()" >
 <tui-textfield>
 <label tuiLabel>Your name</label>
@@ -11553,11 +11550,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiDialog, TuiInput, TuiTitle} from '@taiga-ui/core';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiButton, TuiDialog, TuiInput} from '@taiga-ui/core';
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAutoFocus, TuiButton, TuiDialog, TuiForm, TuiHeader, TuiInput, TuiTitle],
+    imports: [TuiAutoFocus, TuiButton, TuiDialog, TuiForm, TuiInput],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -11685,11 +11682,11 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show dialog </button>
-<ng-template [tuiDialogOptions]="{size: 's'}" [(tuiDialog)]="open" >
+<ng-template let-id="id" [tuiDialogOptions]="{size: 's'}" [(tuiDialog)]="open" >
 <header tuiHeader>
 <hgroup tuiTitle>
-<h2>Hello!</h2>
-<p>Welcome to the website</p>
+<h2 [id]="id">Hello!</h2>
+<p>Don't forget to set ID for accessible label</p>
 </hgroup>
 </header>
 <footer>
@@ -11736,10 +11733,10 @@ export default class Example {
 <br />
 <br />
 <button tuiButton type="button" (click)="scrollable = true" > Show scrollable </button>
-<ng-template [tuiDialogOptions]="{appearance: 'fullscreen'}" [(tuiDialog)]="fullscreen" >
+<ng-template let-id="id" [tuiDialogOptions]="{appearance: 'fullscreen'}" [(tuiDialog)]="fullscreen" >
 <header tuiHeader>
 <hgroup tuiTitle>
-<h2>Fullscreen heading</h2>
+<h2 [id]="id">Fullscreen heading</h2>
 <p> This is shown fullscreen regardless of content height, you can use <code>margin-top: auto</code> to make sure footer is at the bottom of the page. </p>
 </hgroup>
 </header>
@@ -11806,16 +11803,16 @@ export default class Example {
 <br />
 <br />
 <button tuiButton type="button" (click)="custom = true" > Show custom </button>
-<ng-template [tuiDialogOptions]="{size: 's', appearance: 'taiga compact'}" [(tuiDialog)]="augmented" >
+<ng-template let-id="id" [tuiDialogOptions]="{size: 's', appearance: 'taiga compact'}" [(tuiDialog)]="augmented" >
 <header tuiHeader>
 <hgroup tuiTitle>
-<h2>Augmented design</h2>
+<h2 [id]="id">Augmented design</h2>
 <p>Using both built-in "taiga" appearance and custom "compact" appearance to alter built-in styles</p>
 </hgroup>
 </header>
 </ng-template>
-<ng-template [tuiDialogOptions]="{appearance: 'sheet'}" [(tuiDialog)]="custom" >
-<header>Custom design</header>
+<ng-template let-id="id" [tuiDialogOptions]="{appearance: 'sheet'}" [(tuiDialog)]="custom" >
+<header [id]="id">Custom design</header>
 <p> Overriding default appearance completely and taking the styles of dialog fully upon oneself, leaving only behavior like focus trap and closable/dismissible interactions to Taiga UI </p>
 </ng-template>
 ```
