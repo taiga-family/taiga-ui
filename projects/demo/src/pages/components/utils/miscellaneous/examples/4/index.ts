@@ -1,34 +1,27 @@
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {Component, type OnInit} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiIsPresent} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
+import {TuiError, TuiInput} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiSelect, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiError, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
-export default class Example {
-    protected readonly items = ['String', 'null', 'undefined'];
-    protected value: 'null' | 'String' | 'undefined' | null = null;
+export default class Example implements OnInit {
+    protected userDetailsForm = new FormGroup({
+        name: new FormControl('', Validators.required),
+        address: new FormGroup({
+            street: new FormControl('', Validators.required),
+            city: new FormControl('', Validators.required),
+            zipCode: new FormControl('', Validators.required),
+        }),
+    });
 
-    protected get isPresent(): boolean {
-        return tuiIsPresent(this.objectifyValue(this.value ?? 'null'));
-    }
-
-    private objectifyValue(value: string): string | null | undefined {
-        switch (value) {
-            case 'null':
-                return null;
-            case 'undefined':
-                return undefined;
-            default:
-                return value;
-        }
+    public ngOnInit(): void {
+        tuiMarkControlAsTouchedAndValidate(this.userDetailsForm);
     }
 }
