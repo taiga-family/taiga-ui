@@ -50,14 +50,18 @@ describe('TuiDropdownA11y', () => {
 
     it('input has implicit role without dropdown', () => {
         expect(
-            fixture.debugElement.query(By.css('#textbox'))?.nativeElement.role,
+            fixture.debugElement
+                .query(By.css('#textbox'))
+                ?.nativeElement.getAttribute('role'),
         ).toBeFalsy();
     });
 
     it('input has combobox role with dropdown', () => {
-        expect(fixture.debugElement.query(By.css('#combobox'))?.nativeElement.role).toBe(
-            'combobox',
-        );
+        expect(
+            fixture.debugElement
+                .query(By.css('#combobox'))
+                ?.nativeElement.getAttribute('role'),
+        ).toBe('combobox');
     });
 
     it('has no dropdown aria without dropdown content', () => {
