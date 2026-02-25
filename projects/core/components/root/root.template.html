@@ -10,8 +10,10 @@
     <ng-content select="tuiOverContent" />
     <tui-dialogs />
     <ng-content select="tuiOverDialogs" />
-    <tui-alerts />
-    <ng-content select="tuiOverAlerts" />
+    <ng-container *ngIf="alerts === ''">
+        <tui-alerts />
+        <ng-content select="tuiOverAlerts" />
+    </ng-container>
     <tui-dropdowns />
     <ng-content select="tuiOverDropdowns" />
     <tui-hints />

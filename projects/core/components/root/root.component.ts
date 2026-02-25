@@ -4,6 +4,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
+    Input,
     RendererFactory2,
     signal,
     ViewEncapsulation,
@@ -80,6 +81,9 @@ export class TuiRoot {
 
     protected readonly scrollbars =
         !this.nativeScrollbar && !inject(TUI_IS_MOBILE) && !this.isChildRoot;
+
+    @Input()
+    public readonly alerts: '' | 'none' = '';
 
     constructor() {
         // TODO move to provideTaiga in v5
