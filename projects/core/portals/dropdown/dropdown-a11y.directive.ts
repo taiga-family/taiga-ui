@@ -1,4 +1,4 @@
-import {Directive, effect, inject, input} from '@angular/core';
+import {Directive, effect, forwardRef, inject, input} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -8,7 +8,10 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
 export class TuiDropdownA11y {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly open = inject(TuiDropdownOpen, {self: true, optional: true});
+    private readonly open = inject(
+        forwardRef(() => TuiDropdownOpen),
+        {self: true, optional: true},
+    );
 
     public readonly tuiDropdownRole = input('listbox');
 
