@@ -355,6 +355,82 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiIsNativeFocused',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocused',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsNativeFocusedIn',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocusedIn',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiGetNativeFocused',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiGetFocused',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsNativeKeyboardFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiBlurNativeFocused',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiBlurFocused',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: [
+            {
+                name: 'tuiIsApple',
+                moduleSpecifier: '@taiga-ui/cdk',
+            },
+            {
+                name: 'tuiIsApple',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'isApple',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsIos',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'isIos',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
             name: 'TUI_JAPAN_LANGUAGE',
             moduleSpecifier: '@taiga-ui/i18n',
         },

@@ -2623,4 +2623,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             callExpression: true,
         },
     },
+    {
+        from: {
+            name: 'tuiDocLanguageSwitcher',
+            moduleSpecifier: '@taiga-ui/i18n',
+        },
+        to: {
+            name: 'tuiLanguageSwitcher',
+            moduleSpecifier: '@taiga-ui/i18n',
+        },
+    },
 ];

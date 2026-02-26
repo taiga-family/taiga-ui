@@ -25,9 +25,7 @@ import {
 } from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceFunctionParameters} from '../utils/replace-function-parameters';
-import {replaceFunctions} from '../utils/replace-functions';
 import {FUNCTION_PARAMETERS_TO_REPLACE} from './steps/constants/function-parameters-to-replace';
-import {REPLACE_FUNCTIONS} from './steps/constants/functions';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
 import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
@@ -52,10 +50,6 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateCssVariables',
                     step: () => migrateCssVariables(tree, options),
-                },
-                {
-                    name: 'replaceFunctions',
-                    step: () => replaceFunctions(REPLACE_FUNCTIONS),
                 },
                 {
                     name: 'replaceFunctionParameters',
