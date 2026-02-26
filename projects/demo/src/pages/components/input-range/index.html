@@ -181,7 +181,8 @@
                 <tr
                     name="[content]"
                     tuiDocAPIItem
-                    type="PolymorpheusContent"
+                    type="[PolymorpheusContent, PolymorpheusContent]"
+                    [items]="contentVariants"
                     [(value)]="content"
                 >
                     A template for custom view of the selected value.
