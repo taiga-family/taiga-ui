@@ -10,7 +10,6 @@ import {
     viewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
@@ -19,6 +18,7 @@ import {
 } from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {
+    tuiDropdown,
     TuiDropdownDirective,
     TuiDropdownHover,
     TuiDropdownOpen,
@@ -59,9 +59,7 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
         }
     });
 
-    protected readonly binding = tuiDirectiveBinding(
-        TuiDropdownDirective,
-        'tuiDropdown',
+    protected readonly binding = tuiDropdown(
         computed(() => (this.aside.expanded() ? null : this.datalist())),
     );
 
