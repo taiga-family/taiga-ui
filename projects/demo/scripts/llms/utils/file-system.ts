@@ -358,6 +358,7 @@ export async function getUsageExamples(
         name: string;
         html: string;
         ts: string;
+        less: string;
         heading: string;
         description: string;
     }> = [];
@@ -373,6 +374,7 @@ export async function getUsageExamples(
             const exampleFolder = path.join(examplesPath, entry.name);
             const htmlPath = path.join(exampleFolder, 'index.html');
             const tsPath = path.join(exampleFolder, 'index.ts');
+            const lessPath = path.join(exampleFolder, 'index.less');
 
             // Skip import folder as it's handled separately
             if (entry.name === 'import') {
@@ -381,6 +383,7 @@ export async function getUsageExamples(
 
             let html = '';
             let ts = '';
+            let less = '';
 
             if (await fileExists(htmlPath)) {
                 html = await fs.readFile(htmlPath, 'utf-8');
@@ -390,7 +393,11 @@ export async function getUsageExamples(
                 ts = await fs.readFile(tsPath, 'utf-8');
             }
 
-            if (html || ts) {
+            if (await fileExists(lessPath)) {
+                less = await fs.readFile(lessPath, 'utf-8');
+            }
+
+            if (html || ts || less) {
                 const exampleInfo = exampleDescriptions[entry.name] || {
                     heading: `Example ${entry.name}`,
                     description: '',
@@ -400,6 +407,7 @@ export async function getUsageExamples(
                     name: entry.name,
                     html: html.trim(),
                     ts: ts.trim(),
+                    less: less.trim(),
                     heading: exampleInfo.heading,
                     description: exampleInfo.description,
                 });
@@ -443,6 +451,10 @@ export async function getUsageExamples(
 
         if (example.ts) {
             result += `\n**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``;
+        }
+
+        if (example.less) {
+            result += `\n**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``;
         }
 
         result += '\n';
