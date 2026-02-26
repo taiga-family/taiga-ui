@@ -132,6 +132,7 @@ export const DemoRoute = {
     Toast: '/components/toast',
     Copy: '/components/copy',
     Tiles: '/components/tiles',
+    Timeline: '/components/timeline',
     Switch: '/components/switch',
     Tooltip: '/components/tooltip',
     Tree: '/components/tree',

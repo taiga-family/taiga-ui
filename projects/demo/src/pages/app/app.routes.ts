@@ -679,6 +679,11 @@ export const ROUTES: Routes = [
         title: 'Tiles',
     }),
     route({
+        path: DemoRoute.Timeline,
+        loadComponent: async () => import('../components/timeline'),
+        title: 'Timeline',
+    }),
+    route({
         path: DemoRoute.Switch,
         title: 'Switch',
         loadComponent: async () => import('../components/switch'),

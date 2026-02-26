@@ -1,0 +1,16 @@
+@for (_ of '-'.repeat(value().length + 1); track value()[$index]) {
+    @let gap = gaps()[$index] ?? [0, 0];
+    @if (gap[0] < gap[1]) {
+        <span
+            class="t-gap"
+            [style.inline-size.%]="(gap[1] - gap[0]) * this.d()"
+            [style.inset-inline-start.%]="gap[0] * this.d()"
+        >
+            <ng-container
+                [ngTemplateOutlet]="template() || null"
+                [ngTemplateOutletContext]="{$implicit: $index}"
+            />
+        </span>
+    }
+}
+<ng-content />
