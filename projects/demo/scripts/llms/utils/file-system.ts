@@ -1,5 +1,7 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+import {getFoldersToScan, getPagesPath} from './paths';
 
 export interface ComponentHeader {
     header: string | null;
@@ -7,11 +9,6 @@ export interface ComponentHeader {
     type: string | null;
     deprecated: boolean;
 }
-
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
-
-// child folders of the main `modules` folder from which the content will be taken
-const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
 export async function fileExists(filePath: string): Promise<boolean> {
     try {
@@ -35,14 +32,14 @@ export async function readIndexHtml(folderPath: string): Promise<string> {
 
 // parse metadata from tui-doc-page
 export function getComponentHeader(content: string): ComponentHeader {
-    const tagMatch = /<tui-doc-page\s+([^>]*)>/i.exec(content);
+    const tagMatch = /<tui-doc-page\b([^>]*)>/i.exec(content);
 
     if (!tagMatch?.[1]) {
         return {header: null, package: null, type: null, deprecated: false};
     }
 
     const tagContent = tagMatch[1];
-    const deprecated = /(^|\s)deprecated(\s|$)/i.test(tagContent);
+    const deprecated = /(?:^|\s)deprecated(?:\s|$)/i.test(tagContent);
 
     const headerMatch = /header="([^"]*)"/i.exec(tagContent);
     const header = headerMatch?.[1]?.trim() || null;
@@ -67,11 +64,21 @@ export function getComponentDescription(content: string): string | undefined {
 
     const templateContent = templateMatch[1];
 
-    const cleanContent = templateContent
-        ?.replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    // Remove control flow tags
+    const withoutControlFlow = (templateContent || '')
+        .split(/\n+/)
+        .filter(
+            (line) =>
+                !/^\s*@(?:for|if|switch|else|case|default|defer|empty)\b/.test(line),
+        )
+        .join('\n');
+
+    const cleanContent = withoutControlFlow
+        .replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
         .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
-        .replaceAll(/<((\/?)(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
+        .replaceAll(/<(\/?(?:p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
         .replaceAll(/<[^>]+>/g, '')
+        .replaceAll(/\s+/g, ' ')
         .trim();
 
     return cleanContent;
@@ -130,7 +137,7 @@ export function getComponentExample(content: string): string {
     }
 
     const html = match[1]
-        ?.replaceAll(/<(\/?(tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
+        ?.replaceAll(/<(\/?(?:tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
         .trim();
 
     // Clean up the HTML formatting for better LLM consumption
@@ -152,33 +159,52 @@ export function getComponentApiFromTable(content: string): string {
     }
 
     const tableContent = tableMatch[1];
-    const apiRows = tableContent?.match(/<tr[^>]+name="([^"]+)"[^>]*>[\s\S]*?<\/tr>/gi);
+    const apiRows = tableContent?.match(/<tr[^>]+name="[^"]+"[^>]*>[\s\S]*?<\/tr>/gi);
 
     if (!apiRows) {
         return '';
     }
 
-    const rows: string[] = [];
+    const inputRows: string[] = [];
+    const outputRows: string[] = [];
 
     for (const row of apiRows) {
         const nameMatch = /name="([^"]+)"/i.exec(row);
         const typeMatch = /type="([^"]+)"/i.exec(row);
-        const descriptionMatch = />([^<>]+?)<\/tr>/i.exec(row);
+        const descriptionMatch = />([^<>]+)<\/tr>/i.exec(row);
 
         if (nameMatch && typeMatch) {
             const name = nameMatch[1]?.trim();
             const type = typeMatch[1]?.trim();
             const description = descriptionMatch?.[1] ? descriptionMatch[1].trim() : '—';
 
-            rows.push(`| ${name} | \`${type}\` | ${description} |`);
+            // Check if it's an output (event): prioritize name starting with '(',
+            // then fall back to EventEmitter when it's not an input ('[').
+            const isOutput =
+                name?.startsWith('(') ||
+                (name?.startsWith('[') === false && type?.includes('EventEmitter'));
+
+            const rowContent = `| ${name} | \`${type}\` | ${description} |`;
+
+            if (isOutput) {
+                outputRows.push(rowContent);
+            } else {
+                inputRows.push(rowContent);
+            }
         }
     }
 
-    if (rows.length === 0) {
-        return '';
+    let result = '';
+
+    if (inputRows.length > 0) {
+        result += `\n### API - Inputs\n\n| Property | Type | Description |\n|----------|-----|----------|\n${inputRows.join('\n')}`;
     }
 
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    if (outputRows.length > 0) {
+        result += `\n\n### API - Outputs\n\n| Event | Type | Description |\n|-------|------|-------------|\n${outputRows.join('\n')}`;
+    }
+
+    return result;
 }
 
 // parse API properties from tui-doc-documentation
@@ -192,14 +218,15 @@ export function getComponentApiFromTemplates(content: string): string {
 
     const templatesContent = templateMatch[1];
     const templateRows = templatesContent?.match(
-        /<ng-template[^>]+documentationPropertyName="([^"]+)"[^>]+documentationPropertyType="([^"]+)"[^>]*>([\s\S]*?)<\/ng-template>/gi,
+        /<ng-template[^>]+documentationPropertyName="[^"]+"[^>]+documentationPropertyType="[^"]+"[^>]*>[\s\S]*?<\/ng-template>/gi,
     );
 
     if (!templateRows) {
         return '';
     }
 
-    const rows: string[] = [];
+    const inputRows: string[] = [];
+    const outputRows: string[] = [];
 
     for (const row of templateRows) {
         const nameMatch = /documentationPropertyName="([^"]+)"/i.exec(row);
@@ -216,15 +243,31 @@ export function getComponentApiFromTemplates(content: string): string {
 
             description = description.replaceAll(/\s+/g, ' ');
 
-            rows.push(`| ${name} | \`${type}\` | ${description} |`);
+            // Check if it's an output (event)
+            const isOutput =
+                name?.startsWith('[') === false && type?.includes('EventEmitter');
+
+            const rowContent = `| ${name} | \`${type}\` | ${description} |`;
+
+            if (isOutput) {
+                outputRows.push(rowContent);
+            } else {
+                inputRows.push(rowContent);
+            }
         }
     }
 
-    if (rows.length === 0) {
-        return '';
+    let result = '';
+
+    if (inputRows.length > 0) {
+        result += `\n### API - Inputs\n\n| Property | Type | Description |\n|----------|-----|----------|\n${inputRows.join('\n')}`;
     }
 
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    if (outputRows.length > 0) {
+        result += `\n\n### API - Outputs\n\n| Event | Type | Description |\n|-------|------|-------------|\n${outputRows.join('\n')}`;
+    }
+
+    return result;
 }
 
 // parse example index.ts and index.less files
@@ -612,13 +655,13 @@ export async function getAllFolders(): Promise<string[]> {
         }
     }
 
-    for (const subFolder of FOLDERS_TO_SCAN) {
-        const dirPath = path.join(MODULES_PATH, subFolder);
+    for (const subFolder of getFoldersToScan()) {
+        const dirPath = path.join(getPagesPath(), subFolder);
 
         if (await fileExists(dirPath)) {
             await scanDir(dirPath, 0);
         } else {
-            console.warn(`Folder ${subFolder} not found in ${MODULES_PATH}`);
+            console.warn(`Folder ${subFolder} not found in ${getPagesPath()}`);
         }
     }
 
