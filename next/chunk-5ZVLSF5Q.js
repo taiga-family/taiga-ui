@@ -1,0 +1,57 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="Compass"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Direction isn't present (direction is NaN)
+                    }
+                    @case (1) {
+                        Following pointer on the page
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-compass
+                [degrees]="degrees"
+                [style.color]="color"
+            />
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[degrees]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="degrees"
+            >
+                Pointer direction in degrees
+            </tr>
+            <h3>CSS customization</h3>
+            <tr
+                name="[style.color]"
+                tuiDocAPIItem
+                type="string"
+                [items]="colorVariants"
+                [(value)]="color"
+            >
+                Custom color
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};

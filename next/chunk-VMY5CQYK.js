@@ -1,0 +1,80 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="LegendItem"
+    package="ADDON-CHARTS"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>A button for a legend of ring or pie charts</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-legend-item
+                [active]="active"
+                [color]="color"
+                [disabled]="disabled"
+                [size]="size"
+                [text]="text"
+            >
+                <span>{{ 123456 | tuiAmount: 'RUB' }}</span>
+            </tui-legend-item>
+            <p>
+                <code>tuiAmount</code>
+                pipe is used to format currency and fraction
+            </p>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[active]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="active"
+            >
+                Active state from outside
+            </tr>
+            <tr
+                name="[color]"
+                tuiDocAPIItem
+                type="TuiColor | string | null"
+                [items]="colorVariants"
+                [(value)]="color"
+            >
+                Indicator color
+            </tr>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
+            >
+                Disabled item (i.e. hidden from the related chart)
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="text"
+            >
+                Text inside
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

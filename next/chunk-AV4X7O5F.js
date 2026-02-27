@@ -1,0 +1,139 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="InputDateMulti"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <code>InputDateMulti</code>
+        uses specifically modified
+        <a
+            tuiLink
+            [routerLink]="routes.InputChip"
+        >
+            InputChip
+        </a>
+        to represent array of dates.
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (1) {
+                        <span>
+                            Use
+                            <code>*tuiItem</code>
+                            directive to provide custom representation. You can use
+                            <code>tui-input-chip</code>
+                            out of the box or implement your own. The context is
+                            <code>TuiContext&lt;&#123; item: T, index: number &#125;&gt;</code>
+                        </span>
+                    }
+                    @case (3) {
+                        Formatting relies on
+                        <code>TUI_DATE_FORMAT</code>
+                        which you can override using
+                        <code>tuiDateFormatProvider</code>
+                        helper
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-textfield
+                    multi
+                    [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [iconStart]="icons.iconStart"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                    [(open)]="dropdown.open"
+                >
+                    <input
+                        placeholder="Choose date"
+                        tuiInputDateMulti
+                        [focused]="input.focused"
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [max]="max"
+                        [min]="min"
+                        [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+
+                    <tui-input-chip *tuiItem />
+                    <tui-calendar *tuiDropdown />
+                </tui-textfield>
+            </ng-template>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[min]"
+                tuiDocAPIItem
+                type="TuiDay"
+                [items]="dates"
+                [(value)]="min"
+            >
+                Min date
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="TuiDay"
+                [items]="dates"
+                [(value)]="max"
+            >
+                Max date
+            </tr>
+            <tbody
+                #itemsHandlers
+                tuiDocItemsHandlers
+                [disabledItemHandler]="handler"
+                [hiddenOptions]="['stringify', 'identityMatcher']"
+            ></tbody>
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
+            ></tbody>
+            <tbody
+                #input
+                tuiDocInput
+            ></tbody>
+            <tbody
+                #icons
+                tuiDocIcons
+                [hiddenOptions]="['iconEnd']"
+            ></tbody>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="[
+                    'tuiDropdownEnabled',
+                    'limitWidth',
+                    'appearance',
+                    'maxHeight',
+                    'minHeight',
+                    'offset',
+                    'direction',
+                    'dropdownSided',
+                    'dropdownSidedOffset',
+                ]"
+            ></tbody>
+            <tbody
+                #controlDoc
+                tuiDocControl
+            ></tbody>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};

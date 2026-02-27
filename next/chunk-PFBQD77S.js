@@ -1,0 +1,49 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="Miscellaneous"
+    package="CDK"
+    type="components/utils"
+>
+    <ng-template pageTab>
+        <p>Some utils to simplify the development process</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Logs assert into console in dev mode
+                    }
+                    @case (1) {
+                        Card number to its payment system
+                    }
+                    @case (2) {
+                        Checks value not to be null or undefined
+                    }
+                    @case (3) {
+                        Recursively marks form control as touched and triggers validation
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
+                <p>Import into component and use:</p>
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="component"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};

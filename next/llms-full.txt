@@ -3369,6 +3369,15 @@ export default class Page {
 
     protected contentTypeVariants = ['text', 'with icon', 'image'];
     protected contentType = this.contentTypeVariants[0]!;
+
+    protected readonly examples = [
+        'Basic',
+        'Sizes',
+        'Content type (mobile platform)',
+        'Long value',
+        'Customization',
+        'Options with DI',
+    ];
 }
 ```
 
@@ -3486,6 +3495,8 @@ export default class Example {
     ];
 
     protected size: TuiSizeL | TuiSizeXS = this.sizeVariants[0]!;
+
+    protected readonly examples = ['Basic', 'Custom color'];
 }
 ```
 
@@ -3821,7 +3832,7 @@ Bar chart that can be used as a content to axes .
 
 ### Usage Examples
 
-#### With axes
+#### Example 1
 
 **Template:**
 ```html
@@ -3859,7 +3870,7 @@ export default class Example {
 }
 ```
 
-#### Same values with collapsed mode
+#### Example 2
 
 **Template:**
 ```html
@@ -3944,6 +3955,8 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
+    public readonly examples = ['With axes', 'Same values with collapsed mode'];
+
     protected collapsed = false;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
@@ -4439,7 +4452,7 @@ Layout directive for describing details. For example, transaction details
 
 ### Usage Examples
 
-#### Full
+#### Example 1
 
 **Template:**
 ```html
@@ -4489,7 +4502,7 @@ export default class Example {
 }
 ```
 
-#### Customization
+#### Example 2
 
 **Template:**
 ```html
@@ -4545,7 +4558,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    public readonly examples = ['Full', 'Customization'];
+}
 ```
 
 ---
@@ -5839,7 +5854,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Basic', 'Multiselect'];
+}
 ```
 
 ---
@@ -8990,9 +9007,7 @@ A checkbox component that is able to imitate native control on mobile platforms.
 
 ### Usage Examples
 
-#### Platforms
-
-Add import of &#64;taiga-ui/addon-mobile/styles/taiga-ui-mobile.less to your encapsulated global styles to enable power of TuiPlatform directive.
+#### Example 1
 
 **Template:**
 ```html
@@ -9043,7 +9058,7 @@ export default class Example implements OnInit {
 }
 ```
 
-#### Decorative
+#### Example 2
 
 **Template:**
 ```html
@@ -9076,7 +9091,7 @@ export default class Example {
 }
 ```
 
-#### Form
+#### Example 3
 
 **Template:**
 ```html
@@ -9150,7 +9165,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    public readonly examples = ['Platforms', 'Decorative', 'Form'];
+}
 ```
 
 ---
@@ -9499,8 +9516,6 @@ ComboBox is a form control for selecting a single value from a set of options. I
 
 #### Basic
 
-The main helper you’ll use with almost every ComboBox is the tuiFilterByInput pipe. It enables item filtering based on the user’s input as they type.
-
 **Template:**
 ```html
 <tui-textfield tuiChevron>
@@ -9548,8 +9563,6 @@ export default class Example {
 ```
 
 #### Virtual scroll
-
-You can use ComboBox with virtual scrolling from &#64;angular/cdk/scrolling .
 
 **Template:**
 ```html
@@ -9605,8 +9618,6 @@ export default class Example {
 
 #### With DropdownMobile
 
-@if (!isMobile) { Use real mobile device or enable mobile emulation in DevTools to explore this example! } Put tuiDropdownMobile on &lt;tui-textfield /&gt; to enable a full-screen dialog instead of the default dropdown on mobile devices. By default, the full-screen dialog hides all other content using visibility: hidden and shifts the textfield to the top of the page. Use --tui-dropdown-mobile-offset css-variable option to control how far the textfield is shifted. If needed, manually set visibility: visible on any hidden elements (e.g., a sticky header) to make them visible again.
-
 **Template:**
 ```html
 <tui-textfield tuiChevron tuiDropdownMobile >
@@ -9652,8 +9663,6 @@ export default class Example {
 ```
 
 #### Override option component
-
-You can override default behavior and appearance of all options inside dropdown. Just provide your custom component by tuiAsOptionContent -utility. Double check if you really need this feature! For the most cases &lt;tui-data-list-wrapper [itemContent]="..." /&gt; can be enough for your task. Explore this example for more details.
 
 **Template:**
 ```html
@@ -9703,8 +9712,6 @@ export default class Example {
 
 #### Non-strict mode
 
-By default, strict mode is enabled. This means the input value must match one of the options from the data list. If the value doesn't match, the form control is not updated and the input is cleared on blur. In non-strict mode, the form control can contain any value — even if it doesn’t match any item in the data list.
-
 **Template:**
 ```html
 <tui-textfield tuiChevron>
@@ -9745,8 +9752,6 @@ export default class Example {
 ```
 
 #### Client-side filtering
-
-You can configure any filtering logic by passing a custom matcher function as an argument to the tuiFilterByInput pipe.
 
 **Template:**
 ```html
@@ -9819,8 +9824,6 @@ export default class Example {
 
 #### Textfield customization
 
-Take full advantage of Textfield : add any number of Icons and Tooltips (with control over their order and color), adjust the size of the textbox, and more. Explore Input documentation page for more customization options.
-
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.search" tuiChevron tuiTextfieldSize="m" [tuiTextfieldCleaner]="false" >
@@ -9874,8 +9877,6 @@ export default class Example {
 
 #### Server-side filtering
 
-Pass null as argument to tui-data-list-wrapper[items] to show loader inside the dropdown. Additionally, you can put Loader inside textfield's box. Pass empty array to tui-data-list-wrapper[items] to show tui-data-list-wrapper[emptyContent] (it accepts PolymorpheusContent ).
-
 **Template:**
 ```html
 @let items = items$ | async; <tui-textfield tuiChevron>
@@ -9928,8 +9929,6 @@ export default class Example {
 ```
 
 #### Items handlers
-
-Use tuiItemsHandlersProvider to override the default behavior of all ComboBox -s below the current DI scope. To customize a specific ComboBox , use the input properties [identityMatcher] / [stringify] / disabledItemHandler (inherited from Textfield ).
 
 **Template:**
 ```html
@@ -10004,8 +10003,6 @@ export default class Example {
 
 #### Customize content
 
-DataListWrapper lets you customize the appearance of options inside the dropdown by [itemContent] property. Also, Textfield has [content] property to customize appearance of selected option inside textbox. Both properties accept PolymorpheusContent – it empowers you with extremely large possibilities for customization.
-
 **Template:**
 ```html
 <tui-textfield #textfield tuiChevron [content]="value && !textfield.focused() ? content : ''" [stringify]="stringify" >
@@ -10074,8 +10071,6 @@ export default class Example {
 ```
 
 #### With DataList
-
-DataListWrapper is just a helper to solve most popular use cases. Use DataList for more complex cases when great flexibility is required. DataList documentation page for more customization options.
 
 **Template:**
 ```html
@@ -10156,8 +10151,6 @@ export default class Example {
 ```
 
 #### Choose form control output
-
-DataList exposes Option -directives – it provides you with an opportunity to decide which data type put inside its [value] . This example demonstrates how every option can be a complex object with any structure but form control contains a single id-property as number -type.
 
 **Template:**
 ```html
@@ -10283,6 +10276,21 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
+    protected readonly examples = [
+        'Basic',
+        'Non-strict mode',
+        'Client-side filtering',
+        'Textfield customization',
+        'Server-side filtering',
+        'Items handlers',
+        'Customize content',
+        'With DataList',
+        'Choose form control output',
+        'Virtual scroll',
+        'With DropdownMobile',
+        'Override option component',
+    ];
+
     protected readonly control = new FormControl<Country | null>(null);
 
     protected readonly countries = computed(() =>
@@ -10345,7 +10353,7 @@ export default class PageComponent {
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **TypeScript:**
 ```ts
@@ -10363,7 +10371,7 @@ import {TuiCompass} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
-#### Direction
+#### Example 2
 
 **TypeScript:**
 ```ts
@@ -10422,6 +10430,8 @@ export default class Page {
     protected color = this.colorVariants[0]!;
 
     protected degrees = 90;
+
+    public readonly examples = ['Basic', 'Direction'];
 }
 ```
 
@@ -11274,6 +11284,15 @@ export default class Page {
         }),
         'custom-list/index.html': import('./examples/4/custom-list/index.html'),
     };
+
+    protected readonly examples = [
+        'Links',
+        'Submenu',
+        'Form control',
+        'Custom list',
+        'Complex',
+        'Options with long text',
+    ];
 }
 ```
 
@@ -12191,7 +12210,7 @@ A wrapper component that changes its height with transition, depending on the co
 
 ### Usage Examples
 
-#### Show more
+#### Example 1
 
 **Template:**
 ```html
@@ -12227,7 +12246,7 @@ export default class Example {
 }
 ```
 
-#### contenteditable
+#### Example 2
 
 **Template:**
 ```html
@@ -12252,7 +12271,7 @@ import {TuiElasticContainer} from '@taiga-ui/layout';
 export default class Example {}
 ```
 
-#### Add and remove content
+#### Example 3
 
 **Template:**
 ```html
@@ -12288,7 +12307,7 @@ export default class Example {
 }
 ```
 
-#### With animations inside
+#### Example 4
 
 **Template:**
 ```html
@@ -12365,7 +12384,14 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    public readonly examples = [
+        'Show more',
+        'contenteditable',
+        'Add and remove content',
+        'With animations inside',
+    ];
+}
 ```
 
 ---
@@ -13395,6 +13421,8 @@ export default class Page {
             new ItemWithBadge('Accordion'),
         ],
     ];
+
+    protected readonly examples = ['Basic', 'With badges', 'Custom', 'With all button'];
 
     protected badgeHandlerVariants: ReadonlyArray<TuiHandler<unknown, number>> = [
         (item) => Number(item),
@@ -14607,6 +14635,13 @@ export default class Page {
     protected rounded = true;
     protected collapsed = false;
 
+    protected readonly examples = [
+        'Inputs',
+        'ButtonGroup',
+        'Vertical group',
+        'Directive',
+    ];
+
     protected readonly orientationVariants: readonly TuiOrientation[] = [
         'horizontal',
         'vertical',
@@ -14866,7 +14901,9 @@ import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Sizes', 'Accessories', 'Interactive'];
+}
 ```
 
 ---
@@ -15622,6 +15659,8 @@ import {TuiInputCard} from '@taiga-ui/addon-commerce';
 })
 export default class Page {
     protected card = '';
+
+    protected readonly examples = ['Form', 'Card'];
 }
 ```
 
@@ -16833,7 +16872,7 @@ InputDate = Textfield + Calendar + ❤️
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -16863,9 +16902,7 @@ export default class Example {
 }
 ```
 
-#### Calendar customization
-
-Feel free to configure Calendar specific properties: disable adjacent months days, adds circled colored markers to some days, control initial opened month and etc. Explore Calendar documentation page for more customization options. Don't set [min] / [max] and [disabledItemHandler] properties for &lt;tui-calendar /&gt; ! Calendar automatically inherits these properties from &lt;input tuiInputDate /&gt; and &lt;tui-textfield /&gt; .
+#### Example 2
 
 **Template:**
 ```html
@@ -16903,7 +16940,7 @@ export default class Example {
 }
 ```
 
-#### Custom dropdown
+#### Example 3
 
 **Template:**
 ```html
@@ -16939,9 +16976,7 @@ export default class Example {
 }
 ```
 
-#### Validation
-
-If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
+#### Example 4
 
 **Template:**
 ```html
@@ -17000,9 +17035,7 @@ export default class Example {
 }
 ```
 
-#### Value transformer
-
-By default component works with our internal type called TuiDay . If you prefer to use anything else, like a string or native Date you can provide custom transformer in options to store value in different format in form control
+#### Example 5
 
 **Template:**
 ```html
@@ -17044,9 +17077,7 @@ export default class Example {
 }
 ```
 
-#### Format
-
-Formatting relies on TUI_DATE_FORMAT which you can override using tuiDateFormatProvider helper
+#### Example 6
 
 **Template:**
 ```html
@@ -17079,9 +17110,7 @@ export default class Example {
 }
 ```
 
-#### Mobile
-
-You can use several different approaches to optimize UX on mobile devices when tapping the icon. Open this on a mobile device or enable emulation in DevTools and refresh the page
+#### Example 7
 
 **Template:**
 ```html
@@ -17135,9 +17164,7 @@ export default class Example {
 }
 ```
 
-#### Limits
-
-Individual disabled dates still can be typed in manually or picked on mobile in native picker but control will be automatically marked as invalid
+#### Example 8
 
 **Template:**
 ```html
@@ -17173,7 +17200,7 @@ export default class Example {
 }
 ```
 
-#### Datalist
+#### Example 9
 
 **Template:**
 ```html
@@ -17261,6 +17288,19 @@ import {TuiInputDate} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
+    // Example headings for the template loop
+    public readonly examples = [
+        'Basic',
+        'Calendar customization',
+        'Custom dropdown',
+        'Validation',
+        'Value transformer',
+        'Format',
+        'Mobile',
+        'Limits',
+        'Datalist',
+    ];
+
     protected readonly control = new FormControl();
     protected readonly routes = DemoRoute;
 
@@ -17306,7 +17346,7 @@ InputDateMulti uses specifically modified InputChip to represent array of dates.
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -17336,7 +17376,7 @@ export default class Example {
 }
 ```
 
-#### Chip
+#### Example 2
 
 **Template:**
 ```html
@@ -17367,7 +17407,7 @@ export default class Example {
 }
 ```
 
-#### Disabled items
+#### Example 3
 
 **Template:**
 ```html
@@ -17400,7 +17440,7 @@ export default class Example {
 }
 ```
 
-#### Format
+#### Example 4
 
 **Template:**
 ```html
@@ -17437,7 +17477,7 @@ export default class Example {
 }
 ```
 
-#### customization
+#### Example 5
 
 **Template:**
 ```html
@@ -17515,6 +17555,14 @@ export default class Example {
     protected readonly control = new FormControl();
     protected readonly routes = DemoRoute;
 
+    public readonly examples = [
+        'Basic',
+        'Chip',
+        'Disabled items',
+        'Format',
+        'customization',
+    ];
+
     protected readonly dates = [
         TUI_FIRST_DAY,
         TuiDay.currentLocal(),
@@ -17557,7 +17605,7 @@ InputDateRange = Textfield + CalendarRange + ❤️
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -17587,7 +17635,7 @@ export default class Example {
 }
 ```
 
-#### DataList
+#### Example 2
 
 **Template:**
 ```html
@@ -17626,9 +17674,7 @@ export default class Example {
 }
 ```
 
-#### Validation
-
-If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
+#### Example 3
 
 **Template:**
 ```html
@@ -17687,9 +17733,7 @@ export default class Example {
 }
 ```
 
-#### Value transformer
-
-By default component works with our internal type called TuiDayRange . If you prefer to use anything else, like a string you can provide custom transformer in options to store value in different format in form control
+#### Example 4
 
 **Template:**
 ```html
@@ -17729,9 +17773,7 @@ export default class Example {
 }
 ```
 
-#### Format
-
-Formatting relies on TUI_DATE_FORMAT which you can override using tuiDateFormatProvider helper
+#### Example 5
 
 **Template:**
 ```html
@@ -17763,9 +17805,7 @@ export default class Example {
 }
 ```
 
-#### Mobile
-
-You can enable a different picker to improve UX on mobile devices when tapping the icon. Open this on a mobile device or enable emulation in DevTools and refresh the page
+#### Example 6
 
 **Template:**
 ```html
@@ -17812,7 +17852,7 @@ export default class Example {
 }
 ```
 
-#### Limits
+#### Example 7
 
 **Template:**
 ```html
@@ -17886,6 +17926,16 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
 export default class Example {
     protected readonly control = new FormControl();
 
+    public readonly examples = [
+        'Basic',
+        'DataList',
+        'Validation',
+        'Value transformer',
+        'Format',
+        'Mobile',
+        'Limits',
+    ];
+
     protected readonly dates = [
         TUI_FIRST_DAY,
         TuiDay.currentLocal(),
@@ -17932,7 +17982,7 @@ InputDateTime = Textfield + Calendar + ❤️
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -17962,9 +18012,7 @@ export default class Example {
 }
 ```
 
-#### Calendar customization
-
-Feel free to configure Calendar specific properties: disable adjacent months days, adds circled colored markers to some days, control initial opened month and etc. Explore Calendar documentation page for more customization options. Don't set [min] / [max] and [disabledItemHandler] properties for &lt;tui-calendar /&gt; ! Calendar automatically inherits these properties from &lt;input tuiInputDateTime /&gt; and &lt;tui-textfield /&gt; .
+#### Example 2
 
 **Template:**
 ```html
@@ -18002,7 +18050,7 @@ export default class Example {
 }
 ```
 
-#### Custom dropdown
+#### Example 3
 
 **Template:**
 ```html
@@ -18047,9 +18095,7 @@ export default class Example {
 }
 ```
 
-#### Validation
-
-If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
+#### Example 4
 
 **Template:**
 ```html
@@ -18129,9 +18175,7 @@ export default class Example {
 }
 ```
 
-#### Value transformer
-
-By default component works with our internal types called TuiDay and TuiTime . If you prefer to use anything else, like a string or native Date you can provide custom transformer in options to store value in different format in form control
+#### Example 5
 
 **Template:**
 ```html
@@ -18181,9 +18225,7 @@ export default class Example {
 }
 ```
 
-#### Date format
-
-Formatting relies on TUI_DATE_FORMAT which you can override using tuiDateFormatProvider helper
+#### Example 6
 
 **Template:**
 ```html
@@ -18216,9 +18258,7 @@ export default class Example {
 }
 ```
 
-#### Mobile
-
-@if (!isMobile) { Open this on a mobile device or enable emulation in DevTools and refresh the page to explore this example! } You can use several different approaches to optimize UX on mobile devices when tapping the icon. Browser support limitations! IOS devices supports only HH:MM mode for native picker. Native picker supports only 24-hour format.
+#### Example 7
 
 **Template:**
 ```html
@@ -18275,9 +18315,7 @@ export default class Example {
 }
 ```
 
-#### Limits
-
-Individual disabled dates still can be typed in manually or picked on mobile in native picker but control will be automatically marked as invalid
+#### Example 8
 
 **Template:**
 ```html
@@ -18322,7 +18360,7 @@ export default class Example {
 }
 ```
 
-#### Datalist
+#### Example 9
 
 **Template:**
 ```html
@@ -18414,6 +18452,18 @@ export default class Example {
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl();
+
+    public readonly examples = [
+        'Basic',
+        'Calendar customization',
+        'Custom dropdown',
+        'Validation',
+        'Value transformer',
+        'Date format',
+        'Mobile',
+        'Limits',
+        'Datalist',
+    ];
 
     protected readonly dates = [
         TUI_FIRST_DAY,
@@ -19201,7 +19251,7 @@ InputMonth = Textfield + CalendarMonth + ❤️
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -19238,9 +19288,7 @@ export default class Example {
 }
 ```
 
-#### Form control value
-
-Form control value is TuiMonth or null when empty
+#### Example 2
 
 **Template:**
 ```html
@@ -19284,9 +19332,7 @@ export default class Example {
 }
 ```
 
-#### Textfield customization
-
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
+#### Example 3
 
 **Template:**
 ```html
@@ -19320,7 +19366,7 @@ export default class Example {
 }
 ```
 
-#### Dropdown customization
+#### Example 4
 
 **Template:**
 ```html
@@ -19360,9 +19406,7 @@ export default class Example {
 }
 ```
 
-#### Selected value customization
-
-Use [content] of Textfield to customize view of selected value inside textfield . To switch language inside calendar – read documentation page "Internationalization" .
+#### Example 5
 
 **Template:**
 ```html
@@ -19399,9 +19443,7 @@ export default class Example {
 }
 ```
 
-#### Native picker
-
-Add type="month" for &lt;input /&gt; to enable built-in browser picker for mobile devices. Browser support limitations! Native picker does not have [disabledItemHandler] feature. Also, we discourage to use [min] / [max] properties with enabled native picker – it has rather limited browser support.
+#### Example 6
 
 **Template:**
 ```html
@@ -19430,9 +19472,7 @@ export default class Example {
 }
 ```
 
-#### Range mode
-
-Use tuiInputMonthRange to enable possibility to select range of months. All features described above are applicable for it too. Moreover, it provides two additional features: minLength / maxLength – minimal / maximal length of the selected range. Form control value is TuiMonthRange or null (for uncompleted range or empty textfield) types.
+#### Example 7
 
 **Template:**
 ```html
@@ -19507,6 +19547,17 @@ const TAIGA_V4 = new TuiDay(2024, 7, 9);
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(null);
+
+    public readonly examples = [
+        'Basic',
+        'Form control value',
+        'Textfield customization',
+        'Dropdown customization',
+        'Selected value customization',
+        'Native picker',
+        'Range mode',
+    ];
+
     protected readonly monthVariants = [
         TuiDay.currentLocal().append({year: -100, month: -1}),
         TuiDay.currentLocal().append({year: -10, month: -1}),
@@ -19567,8 +19618,6 @@ InputNumber is a form field to provide numerical input.
 
 #### Number as form control value
 
-By default, form control value is number or null when empty
-
 **Template:**
 ```html
 <tui-textfield>
@@ -19608,8 +19657,6 @@ export default class Example {
 
 #### Quantum
 
-Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
-
 **Template:**
 ```html
 <tui-textfield>
@@ -19639,8 +19686,6 @@ export default class Example {
 ```
 
 #### Large integer and large decimal parts
-
-JavaScript’s built‑in number type loses precision when a value contains too many digits in either the integer part, the decimal part, or both. The built‑in bigint type avoids this issue but supports only integers. If you need to preserve all extremely large digits of both parts, you can override the built‑in TuiValueTransformer and store the number as an &#123;significand: bigint; exp: number&#125; instead.
 
 **Template:**
 ```html
@@ -19685,8 +19730,6 @@ export default class Example {
 ```
 
 #### BigInt as form control value
-
-Form control value type can be changed to bigint . Just put bigint attribute and set new values for min , max and precision properties.
 
 **Template:**
 ```html
@@ -19734,8 +19777,6 @@ export default class Example {
 
 #### Textfield-based
 
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore its documentation page for more customization options.
-
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.euro" tuiTextfieldSize="m" >
@@ -19766,8 +19807,6 @@ export default class Example {
 ```
 
 #### Localization
-
-TuiNumberFormat allows to customize separators specific for your locale.
 
 **Template:**
 ```html
@@ -19803,8 +19842,6 @@ export default class Example {
 
 #### Affixes
 
-Use prefix / postfix parameters to set non-removable text before / after the number. To get currency symbol use Currency pipe.
-
 **Template:**
 ```html
 <tui-textfield>
@@ -19833,8 +19870,6 @@ export default class Example {
 ```
 
 #### Step
-
-A positive value of the step property enables side buttons to increase / decrease the number by the specified step value. Additionally, the ArrowUp / ArrowDown keyboard keys provide the same functionality.
 
 **Template:**
 ```html
@@ -19899,8 +19934,6 @@ export default class Example {
 
 #### Fluid typography
 
-Use FluidTypography directive to adjusts font size for the textfield value to fit in the textfield box.
-
 **Template:**
 ```html
 <tui-textfield [style.width.rem]="10">
@@ -19927,8 +19960,6 @@ export default class Example {
 ```
 
 #### Value transformer
-
-TuiValueTransformer is a great opportunity to override default form control's value format without breaking component's internal logic. This example demonstrates how to use NaN -value for empty textfield instead of default null -value to keep type strictly "number" .
 
 **Template:**
 ```html
@@ -20005,6 +20036,21 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = [
+        'Number as form control value',
+        'BigInt as form control value',
+        'Textfield-based',
+        'Localization',
+        'Affixes',
+        'Step',
+        'Custom step buttons',
+        'Fluid typography',
+        'Value transformer',
+        'Quantum',
+        'Large integer and large decimal parts',
+    ];
+
     protected readonly control = new FormControl(null, Validators.required);
     protected readonly maxVariants: readonly number[] = [
         Number.MAX_SAFE_INTEGER,
@@ -20061,7 +20107,7 @@ InputPhone allows to input a phone number
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -20096,7 +20142,7 @@ export default class Example {
 }
 ```
 
-#### With autocomplete
+#### Example 2
 
 **Template:**
 ```html
@@ -20216,7 +20262,7 @@ export default class Example {
 }
 ```
 
-#### Value transformer
+#### Example 3
 
 **Template:**
 ```html
@@ -20252,7 +20298,7 @@ export default class Example {
 }
 ```
 
-#### With flag
+#### Example 4
 
 **Template:**
 ```html
@@ -20328,6 +20374,13 @@ export default class PageComponent {
     protected phoneMask = this.phoneMasks[0]!;
 
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
+
+    public readonly examples = [
+        'Basic',
+        'With autocomplete',
+        'Value transformer',
+        'With flag',
+    ];
 }
 ```
 
@@ -20385,8 +20438,6 @@ Allows to input phone number in international format InputPhoneInternational is 
 ### Usage Examples
 
 #### Choose metadata
-
-The first step is to choose the size of metadata Google uses the word "metadata" to refer to all information about phone numbering in a particular country - what the country code, international and national dialling prefixes are, what carrier codes are operational, which phone numbers are possible or valid for a particular country, how to optimally format them, which prefixes represent a particular geographical area, etc.
 
 **Template:**
 ```html
@@ -20451,8 +20502,6 @@ export default class Example {
 
 #### Choose any countries
 
-Parameter countries allows you to choose which countries user can select from the dropdown. You can even pick all possible countries by built-in utility getCountries from libphonenumber-js . Use TuiSortCountriesPipe to sort countries according to your current language.
-
 **Template:**
 ```html
 <tui-textfield>
@@ -20496,8 +20545,6 @@ export default class Example {
 ```
 
 #### Mobile dropdown
-
-You can enable mobile specific dropdown design on mobile devices by adding TuiDropdownMobile directive.
 
 **Template:**
 ```html
@@ -20548,8 +20595,6 @@ export default class Example {
 ```
 
 #### Customize with icons
-
-You can put static Icon or even interactive Tooltip at the right side of the textfield.
 
 **Template:**
 ```html
@@ -20604,8 +20649,6 @@ export default class Example {
 
 #### Customize separator
 
-Using tuiInputPhoneInternationalOptionsProvider you can provide custom separator for input instead of the default - .
-
 **Template:**
 ```html
 <tui-textfield>
@@ -20649,8 +20692,6 @@ export default class Example {
 ```
 
 #### Use phone format helpers
-
-InputPhoneInternational internally uses Maskito to format phone number. Don't hesitate to use it too to manually format any phone number.
 
 **TypeScript:**
 ```ts
@@ -20748,6 +20789,15 @@ export default class PageComponent {
         Validators.required,
         Validators.minLength(9),
     ]);
+
+    protected readonly examples = [
+        'Choose metadata',
+        'Choose any countries',
+        'Mobile dropdown',
+        'Customize with icons',
+        'Customize separator',
+        'Use phone format helpers',
+    ];
 }
 ```
 
@@ -20888,9 +20938,7 @@ InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 
 ### Usage Examples
 
-#### Override number format
-
-TuiNumberFormat allows to customize separators specific for your locale.
+#### Example 1
 
 **Template:**
 ```html
@@ -20924,9 +20972,7 @@ export default class Example {
 }
 ```
 
-#### Affixes
-
-Use prefix / postfix parameters to set non-removable text before / after the number. To get currency symbol use Currency pipe.
+#### Example 2
 
 **Template:**
 ```html
@@ -20952,9 +20998,7 @@ export default class Example {
 }
 ```
 
-#### Visual segments + labels for ticks
-
-Use mixin tui-slider-ticks-labels to arrange ticks' labels (it places them strictly below ticks).
+#### Example 3
 
 **Template:**
 ```html
@@ -20989,7 +21033,7 @@ export default class Example {
 }
 ```
 
-#### Custom value content
+#### Example 4
 
 **Template:**
 ```html
@@ -21022,9 +21066,7 @@ export default class Example {
 }
 ```
 
-#### KeySteps
-
-Key steps – anchor points of non-uniform format between control's value and slider's position. When [keySteps] property is enabled, [step] means percentage of total track length.
+#### Example 5
 
 **Template:**
 ```html
@@ -21073,9 +21115,7 @@ export default class Example {
 }
 ```
 
-#### Quantum
-
-Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
+#### Example 6
 
 **Template:**
 ```html
@@ -21112,7 +21152,7 @@ export default class Example {
 }
 ```
 
-#### Using negative values with hidden minus sign
+#### Example 7
 
 **Template:**
 ```html
@@ -21198,6 +21238,16 @@ import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymor
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl([0, 10]);
+
+    public readonly examples = [
+        'Override number format',
+        'Affixes',
+        'Visual segments + labels for ticks',
+        'Custom value content',
+        'KeySteps',
+        'Quantum',
+        'Using negative values with hidden minus sign',
+    ];
 
     protected readonly suffixVariants: Array<[string, string]> = [
         ['$', '$'],
@@ -21290,8 +21340,6 @@ InputSlider = Textfield + InputNumber + Slider + ❤️
 
 #### Textfield customization
 
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Textfield 's documentation page for more customization options.
-
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.euro" tuiTextfieldSize="m" >
@@ -21323,8 +21371,6 @@ export default class Example {
 
 #### InputNumber customization
 
-InputSlider is just a slight extension of InputNumber – it has completely the same customization: add [prefix] / [postfix] , configure separators specific for your locale via NumberFormat directive or etc.
-
 **Template:**
 ```html
 <tui-textfield>
@@ -21353,8 +21399,6 @@ export default class Example {
 ```
 
 #### Slider customization
-
-Slider automatically inherits [min] / [max] properties from [tuiInputSlider] (don't set them for Slider to avoid any possible conflicts!). However, feel free to configure Slider 's-specific properties: [step] , [keySteps] and [segments] . Also, you can use mixin-helper tui-slider-ticks-labels to arrange ticks' labels (it places them strictly below ticks).
 
 **Template:**
 ```html
@@ -21406,8 +21450,6 @@ export default class Example {
 
 #### KeySteps
 
-Key steps – anchor points of non-uniform format between control's value and slider's position. When [keySteps] property is enabled, [step] means percentage of total track length.
-
 **Template:**
 ```html
 <tui-textfield>
@@ -21454,8 +21496,6 @@ export default class Example {
 ```
 
 #### Quantum
-
-Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
 
 **Template:**
 ```html
@@ -21558,6 +21598,14 @@ export default class PageComponent {
         ({$implicit: val}: TuiContext<number>) => (val === this.min() ? 'MIN' : val),
         ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : val),
     ]);
+
+    protected readonly examples = [
+        'Textfield customization',
+        'InputNumber customization',
+        'Slider customization',
+        'KeySteps',
+        'Quantum',
+    ];
 }
 ```
 
@@ -21590,8 +21638,6 @@ InputTime allows users to enter and edit time values using a keyboard, dropdown 
 
 #### Mode
 
-InputTime supports all possible time segments: hours, minutes, seconds, and even milliseconds. Property mode allows to choose specific combination of the segments. Explore MaskitoTimeMode type to see all available modes.
-
 **Template:**
 ```html
 <tui-textfield>
@@ -21621,8 +21667,6 @@ export default class Example {
 ```
 
 #### Native picker with suggestions
-
-Link your &lt;input type="time" /&gt; to a &lt;datalist /&gt; by list attribute to show a list of suggestions inside native picker. The values provided are suggestions, not requirements: users can select from this predefined list or provide a different value. Browser support limitations! IOS devices does not support &lt;datalist /&gt; for time picker.
 
 **Template:**
 ```html
@@ -21657,8 +21701,6 @@ export default class Example {
 
 #### 12-hour format with AM/PM
 
-Any mode ending with AA is 12-hour time format with meridiem part.
-
 **Template:**
 ```html
 <tui-textfield>
@@ -21690,8 +21732,6 @@ export default class Example {
 ```
 
 #### Form control validation
-
-Form control value is TuiTime or null when empty If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
 
 **Template:**
 ```html
@@ -21786,8 +21826,6 @@ export default class Example {
 
 #### Textfield customization
 
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
-
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.alarm-clock" tuiTextfieldSize="m" [tuiTextfieldCleaner]="false" >
@@ -21818,8 +21856,6 @@ export default class Example {
 ```
 
 #### Strict mode
-
-Property accept allows to limit the set of allowed values. It is useful when you want to restrict user input to a specific set of time periods, for example, to allow only working hours with equally distant time intervals.
 
 **Template:**
 ```html
@@ -21855,8 +21891,6 @@ export default class Example {
 ```
 
 #### Dropdown with DataList
-
-Use tuiItemsHandlersProvider to override the default behavior of all InputTime -s below the current DI scope. To customize a specific InputTime , use the input properties [identityMatcher] / [stringify] / disabledItemHandler (inherited from Textfield ). Explore Dropdown and DataList documentation pages for more customization options.
 
 **Template:**
 ```html
@@ -21924,8 +21958,6 @@ export default class Example {
 
 #### Transformer
 
-TuiValueTransformer is a great opportunity to override default form control's value format without breaking component's internal logic. This example demonstrates how to use string -type instead of default TuiTime .
-
 **Template:**
 ```html
 <tui-textfield>
@@ -21968,8 +22000,6 @@ export default class Example {
 ```
 
 #### Native picker
-
-Add type="time" for &lt;input /&gt; to enable built-in browser picker for mobile devices . Touch clock icon to show the picker. Touch other parts of the textfield to show mobile device keyboard. Browser support limitations! IOS devices supports only HH:MM mode. Native picker supports only 24-hour format.
 
 **Template:**
 ```html
@@ -22042,6 +22072,19 @@ import {TuiInputTime} from '@taiga-ui/kit';
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(null);
+
+    protected readonly examples = [
+        'Mode',
+        '12-hour format with AM/PM',
+        'Form control validation',
+        'Options',
+        'Textfield customization',
+        'Strict mode',
+        'Dropdown with DataList',
+        'Transformer',
+        'Native picker',
+        'Native picker with suggestions',
+    ];
 
     protected readonly modeVariants = [
         'HH:MM',
@@ -23164,22 +23207,17 @@ import {type TuiSizeS} from '@taiga-ui/core';
 })
 export default class Page {
     protected text = 'Text inside';
-
     protected active = false;
-
+    protected readonly examples = ['With a ring chart', 'Toggling'];
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
-
+    protected size = this.sizeVariants[0]!;
+    protected disabled = false;
+    protected color = '';
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-chart-categorical-04)',
         'var(--tui-background-accent-1)',
         'var(--tui-background-neutral-1)',
     ];
-
-    protected size = this.sizeVariants[0]!;
-
-    protected disabled = false;
-
-    protected color = '';
 }
 ```
 
@@ -24282,6 +24320,16 @@ export default class Page {
     protected lineHeight = 24;
     protected maxWidth = 100;
     protected content = '';
+
+    protected readonly examples = [
+        'Styles change',
+        'Expanding',
+        'Resize parent container',
+        'Clamp inside dropdown',
+        'Custom content workaround',
+        'Virtual content',
+        'Custom font-size and line-height',
+    ];
 }
 ```
 
@@ -24635,7 +24683,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export default class Page {
     protected readonly months = inject(TUI_MONTHS);
-
+    protected readonly examples = ['Basic', 'Complex'];
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         Array.from({length: 91}).reduce<ReadonlyArray<[TuiDay, number]>>(
             (array, _, i) => [
@@ -25185,8 +25233,6 @@ export default class Example {}
 
 #### Custom stroke width
 
-Use css-variable --tui-thickness to customize width of the circle stroke. By default, it is 1/12 of diameter.
-
 **Template:**
 ```html
 <tui-loader />
@@ -25233,6 +25279,13 @@ export default class Page {
     protected readonly textTemplate: PolymorpheusContent;
 
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = [
+        'With inherited background color',
+        'With content overlay',
+        'Options',
+        'Custom stroke width',
+    ];
 
     protected showLoader = true;
 
@@ -25634,8 +25687,6 @@ export default class Example {
 
 #### Localization
 
-Use tuiCalendarOptionsProvider to change start day of the week (Monday by default)
-
 **Template:**
 ```html
 <tui-mobile-calendar [min]="min" />
@@ -25933,6 +25984,15 @@ export default class Page {
 
     protected stream = tuiControlValue<TuiDay>(this.control);
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = [
+        'Custom dropdown',
+        'Range',
+        'Localization',
+        'Custom dropdown (range)',
+        'Custom dropdown (multi)',
+        'Without header',
+    ];
 }
 ```
 
@@ -27509,6 +27569,13 @@ export default class Page {
     protected size = this.sizeVariants[1];
     protected activePadding = 1;
     protected sidePadding = 1;
+
+    protected readonly examples = [
+        'Basic',
+        'Visible pages around active',
+        'Visible edge pages',
+        'Custom',
+    ];
 }
 ```
 
@@ -27794,6 +27861,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Sizes', 'With labels'];
     protected readonly routes = DemoRoute;
     protected readonly valueVariants = [
         [0, 30, 20, 10],
@@ -28643,8 +28711,6 @@ export default class Example {}
 
 #### Indeterminate
 
-Indeterminate state expresses an unspecified amount of wait time. If there is no [value] attribute, the ProgressBar is indeterminate.
-
 **Template:**
 ```html
 <progress max="100" tuiProgressBar ></progress>
@@ -28666,8 +28732,6 @@ export default class Example {}
 ```
 
 #### Customizable corners
-
-You can toggle off round corners of the progress bar by setting border-radius: 0 .
 
 **Template:**
 ```html
@@ -28730,6 +28794,16 @@ export default class Page {
     ];
 
     protected color = this.colorVariants[0]!;
+
+    protected readonly examples = [
+        'Basic',
+        'Multicolor',
+        'Sizes',
+        'With label',
+        'Stacked progress bars',
+        'Indeterminate',
+        'Customizable corners',
+    ];
 }
 ```
 
@@ -28966,8 +29040,6 @@ export default class Example {
 
 #### Anti-clockwise direction
 
-Use power of CSS property transform to customize direction and starting point of progress circle. By default, ProgressCircle has clockwise direction and starts from the top (i.e. it already contains transform: rotate(-90deg) ).
-
 **Template:**
 ```html
 <tui-progress-circle size="xl" [max]="max" [value]="(value$ | async) || 0" />
@@ -29003,8 +29075,6 @@ export default class Example {
 
 #### Thickness
 
-Use css-variable --tui-thickness to customize width of the circle's stroke.
-
 **Template:**
 ```html
 @for (_ of '-'.repeat(4); track $index) { <tui-progress-circle size="l" [max]="100" [value]="60" /> }
@@ -29027,8 +29097,6 @@ export default class Example {}
 ```
 
 #### Arc mode
-
-Set arc attribute to transform default circular shape into arc with small bottom open arc sector (gap between arc ends).
 
 **Template:**
 ```html
@@ -29097,6 +29165,17 @@ export default class Page {
     ];
 
     protected color = this.colorVariants[0]!;
+
+    protected readonly examples = [
+        'Basic',
+        'Sizes',
+        'With label',
+        'Colors',
+        'Dynamic color',
+        'Anti-clockwise direction',
+        'Thickness',
+        'Arc mode',
+    ];
 }
 ```
 
@@ -30244,7 +30323,7 @@ export default class Page {}
 
 ### Usage Examples
 
-#### sizes
+#### Sizes
 
 **Template:**
 ```html
@@ -30333,6 +30412,7 @@ import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Sizes', 'With labels'];
     protected readonly valueVariants = [
         [40, 30, 20, 10],
         [13769, 10172, 3018, 2592],
@@ -31127,8 +31207,6 @@ Select is a form control for selecting a single value from a set of options, sim
 
 #### Textfield customization
 
-Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
-
 **Template:**
 ```html
 <label tuiLabel> I am a label <tui-textfield iconStart="@tui.user-round" tuiChevron tuiTextfieldSize="m" [tuiTextfieldCleaner]="false" >
@@ -31175,8 +31253,6 @@ export default class Example {
 
 #### Override option component
 
-You can override default behavior and appearance of all options inside dropdown. Just provide your custom component by tuiAsOptionContent -utility. Double check if you really need this feature! For the most cases &lt;tui-data-list-wrapper [itemContent]="..." /&gt; can be enough for your task. Explore this example for more details.
-
 **Template:**
 ```html
 <tui-textfield tuiChevron>
@@ -31216,8 +31292,6 @@ export default class Example {
 ```
 
 #### Items handlers
-
-Use tuiItemsHandlersProvider to override default behavior of all Select -s below the current DI scope. Use input properties [identityMatcher] / [stringify] / disabledItemHandler (from Textfield ) to do the same for the specific Select only.
 
 **Template:**
 ```html
@@ -31280,8 +31354,6 @@ export default class Example {
 
 #### Customize content
 
-DataListWrapper provides an opportunity to customize appearance of options inside dropdown by [itemContent] -property. Also, Textfield has [content] -property to customize appearance of selected option inside textbox. Both properties accept PolymorpheusContent – it empowers you with extremely large possibilities for customization.
-
 **Template:**
 ```html
 <tui-textfield tuiChevron [content]="value && content" [stringify]="stringify" >
@@ -31330,8 +31402,6 @@ export default class Example {
 ```
 
 #### With DataList
-
-DataListWrapper is just a helper to solve most popular use cases. Use DataList for more complex cases when great flexibility is required. DataList documentation page for more customization options.
 
 **Template:**
 ```html
@@ -31413,8 +31483,6 @@ export default class Example {
 
 #### Choose form control output
 
-DataList exposes Option -directives – it provides you with an opportunity to decide which data type put inside its [value] . This example demonstrates how every option can be a complex object with any structure but form control contains a single id-property as number -type.
-
 **Template:**
 ```html
 <tui-textfield tuiChevron [stringify]="stringify" >
@@ -31467,8 +31535,6 @@ export default class Example {
 
 #### Virtual scroll
 
-You can use Select with virtual scrolling from &#64;angular/cdk/scrolling .
-
 **Template:**
 ```html
 <tui-textfield tuiChevron>
@@ -31513,8 +31579,6 @@ export default class Example {
 
 #### Mobile
 
-@if (!isMobile) { Use real mobile device or enable mobile emulation in DevTools to explore this example! } Put tuiDropdownSheet="Label" on &lt;tui-textfield /&gt; to enable sheet dialog (instead of default dropdown) with special appearance of options (similar to native controls) for mobile devices . This example demonstrates different appearances of options for different platforms (using TuiPlatform directive). By default, it detects ios / android / web platforms automatically (by parsing user agent) – it is not required to specify it explicitly.
-
 **Template:**
 ```html
 <tui-textfield tuiChevron tuiDropdownSheet="Select platform" [disabledItemHandler]="disabledItemHandler" >
@@ -31555,8 +31619,6 @@ export default class Example {
 ```
 
 #### Native picker with disabled option
-
-Put &lt;select tuiSelect/&gt; (instead of &lt;input tuiSelect/&gt; ) to enable native browser picker. This example demonstrates how enable this feature for mobile devices only.
 
 **Template:**
 ```html
@@ -31679,7 +31741,20 @@ interface Country {
 })
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
+
     protected readonly routes = DemoRoute;
+    protected readonly examples = [
+        'Textfield customization',
+        'Items handlers',
+        'Customize content',
+        'With DataList',
+        'Choose form control output',
+        'Virtual scroll',
+        'Mobile',
+        'Native picker with disabled option',
+        'Native picker with grouping options',
+        'Override option component',
+    ];
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl<Country | null>({
@@ -34319,6 +34394,7 @@ import TuiTabBarExample from './examples/1';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Buttons', 'Links', 'Customization', 'Skeleton'];
     protected fixed = false;
 }
 ```
@@ -36054,7 +36130,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Basic', 'FormArray'];
+}
 ```
 
 ---
@@ -36119,8 +36197,6 @@ export default class Example {
 ```
 
 #### Custom size-option content
-
-You can customize the component via DI-token TUI_TABLE_PAGINATION_OPTIONS . Use function tuiTablePaginationOptionsProvider to provide new value of this token.
 
 **Template:**
 ```html
@@ -36209,6 +36285,12 @@ import {TuiTablePagination, type TuiTablePaginationEvent} from '@taiga-ui/addon-
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = [
+        'Usage',
+        'Custom size-option content',
+        'Toggle pages label',
+    ];
+
     protected readonly itemsVariants = [
         [10, 20, 50, 100],
         [10, 100, 500],
@@ -37313,6 +37395,8 @@ export default class Page {
         {id: 2, name: 'Eric Idle'},
         {id: 3, name: 'Graham Chapman'},
     ];
+
+    protected readonly examples = ['Basic', 'Vertical', 'Nested tiles'];
 }
 ```
 
@@ -37846,7 +37930,14 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        'Basic',
+        'Custom host',
+        'Repeating template',
+        'Options',
+    ];
+}
 ```
 
 ---
@@ -38450,6 +38541,17 @@ export default class Page {
     };
 
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = [
+        'Manual',
+        'Array',
+        'Template',
+        'Programmatic control',
+        'Custom',
+        'Checkbox',
+        'Asynchronous',
+        'Drag and drop',
+    ];
 }
 ```
 
@@ -38685,7 +38787,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['px', 'getCurrencySymbol', 'formatNumber'];
+}
 ```
 
 ---
@@ -38945,6 +39049,14 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly component = import('./examples/import/component.md');
+
+    protected readonly examples = [
+        'round',
+        'inRange',
+        'normalizeToIntNumber',
+        'quantize',
+        'clamp',
+    ];
 }
 ```
 
@@ -39171,6 +39283,13 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly component = import('./examples/import/component.md');
+
+    protected readonly examples = [
+        'assert',
+        'getPaymentSystem',
+        'isPresent',
+        'markControlAsTouchedAndValidate',
+    ];
 }
 ```
 
@@ -39448,7 +39567,16 @@ import {TUI_DOC_CODE_EDITOR} from '@taiga-ui/addon-doc';
         },
     ],
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        'TUI_BREAKPOINT',
+        'WA_IS_ANDROID',
+        'WA_IS_IOS',
+        'WA_IS_MOBILE',
+        'TUI_NUMBER_FORMAT',
+        'TUI_DATE_FORMAT',
+    ];
+}
 ```
 
 ---
@@ -39597,7 +39725,9 @@ import {TuiDemo} from '@demo/utils';
     styleUrl: './index.less',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Composite zone', 'Dialogs'];
+}
 ```
 
 ### LESS
@@ -40006,7 +40136,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Basic', 'Customization'];
+}
 ```
 
 ---
@@ -41784,7 +41916,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Basic', 'Dynamic inner content'];
+}
 ```
 
 ---
@@ -42936,6 +43070,8 @@ export default class Page {
     protected currentTime = 0;
     protected volume = this.volumeVariants[0]!;
     protected paused = true;
+
+    protected readonly examples = ['Native controls', 'Video', 'Audio'];
 }
 ```
 
@@ -43504,7 +43640,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly examples = ['Basic', 'Global Ripple'];
+}
 ```
 
 ---
@@ -43619,6 +43757,8 @@ import {TuiSensitive} from '@taiga-ui/kit';
 })
 export default class Page {
     protected sensitive = true;
+
+    protected readonly examples = ['Basic', 'Components'];
 }
 ```
 
@@ -43964,8 +44104,6 @@ export default class Example {
 
 #### Text
 
-You can pass boolean to toggle skeleton for elements. For multi line text you can use string to serve as a placeholder underneath the text skeleton or a number to generate this many random sized words, while your actual text is loading
-
 **Template:**
 ```html
 <label tuiLabel>
@@ -44008,7 +44146,9 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Components', 'Text'];
+}
 ```
 
 ---
@@ -45319,6 +45459,8 @@ export default class Page {
 
     protected readonly control = new FormControl(6432, Validators.required);
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = ['Basic', 'With Textfield'];
 }
 ```
 

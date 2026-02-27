@@ -1,0 +1,31 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="Skeleton"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (1) {
+                        You can pass
+                        <code>boolean</code>
+                        to toggle skeleton for elements. For multi line text you can use
+                        <code>string</code>
+                        to serve as a placeholder underneath the text skeleton or a
+                        <code>number</code>
+                        to generate this many random sized words, while your actual text is loading
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};
