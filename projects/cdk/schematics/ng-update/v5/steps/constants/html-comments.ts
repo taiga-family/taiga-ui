@@ -44,4 +44,14 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'timeline-steps has been removed. Use TuiStepper instead. See example https://taiga-ui.dev/navigation/stepper',
     },
+    {
+        tag: 'tui-tag',
+        withAttrs: [],
+        comment: 'tui-tag/tuiTag migrated to tuiChip. Check visuals and content manually',
+    },
+    {
+        tag: 'button',
+        withAttrs: ['tuiTag'],
+        comment: 'tui-tag/tuiTag migrated to tuiChip. Check visuals and content manually',
+    },
 ];
