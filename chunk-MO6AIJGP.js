@@ -1,0 +1,20 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="Header"
+    package="LAYOUT"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$first ? sizesDescription : null"
+                [fullsize]="$first"
+                [heading]="example"
+            />
+        }
+
+        <ng-template #sizesDescription>Buttons/badges sizes according to the header size</ng-template>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

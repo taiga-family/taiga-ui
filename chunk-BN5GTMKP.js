@@ -1,0 +1,43 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="BadgeNotification"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate notifications, such as new
+            messages
+        </p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-badge-notification [size]="size">11</tui-badge-notification>
+        </tui-doc-demo>
+        <label
+            tuiLabel="Content type"
+            class="tui-space_vertical-3"
+        ></label>
+
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

@@ -1,0 +1,34 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="format"
+    package="CDK / CORE"
+    path="cdk/utils/format"
+    type="components/utils"
+>
+    <ng-template pageTab>
+        <div>A set of format utils</div>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Adds 'px' to a number
+                    }
+                    @case (1) {
+                        Returns a currency symbol from its three letter code or ISO 4217
+                    }
+                    @case (2) {
+                        Formats a number with separators
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

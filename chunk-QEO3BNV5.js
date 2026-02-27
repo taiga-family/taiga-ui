@@ -1,0 +1,99 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="BarChart"
+    package="ADDON-CHARTS"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            Bar chart that can be used as a content to
+            <a
+                tuiLink
+                [routerLink]="['/components/axes']"
+            >
+                axes
+            </a>
+            .
+        </p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            >
+                @if ($index === 1) {
+                    <div
+                        tuiNotification
+                        class="tui-space_bottom-6"
+                    >
+                        Use
+
+                        <code>ChartHint</code>
+                        directive to enable hints with
+                        <code>tuiHintContent</code>
+                    </div>
+                }
+            </tui-doc-example>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-bar-chart
+                class="chart"
+                [collapsed]="collapsed"
+                [max]="max"
+                [size]="size"
+                [value]="value"
+                (tapColumn)="documentationPropertyTapColumn.emitEvent($event)"
+            />
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[collapsed]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="collapsed"
+            >
+                Shows data set in a single bar
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="max"
+            >
+                Sets chart max manually
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL | null"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size (use
+                <code>null</code>
+                for autosize)
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="ReadonlyArray<readonly number[]>"
+                [items]="valueVariants"
+                [(value)]="value"
+            >
+                Array of segments
+            </tr>
+            <tr
+                #documentationPropertyTapColumn
+                name="(tapColumn)"
+                tuiDocAPIItem
+                type="number"
+            >
+                Bar column click/enter event
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};
