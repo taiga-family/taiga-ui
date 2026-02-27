@@ -10,7 +10,7 @@ type C = PolymorpheusContent;
 export function tuiDropdown(value: C | WritableSignal<C>): WritableSignal<C>;
 export function tuiDropdown(value: Signal<C>): Signal<C>;
 export function tuiDropdown(value: C | Signal<C>): Signal<C> {
-    return tuiDirectiveBinding(TuiDropdownDirective, 'tuiDropdown', value, {});
+    return tuiDirectiveBinding(TuiDropdownDirective, 'content', value, {});
 }
 
 export function tuiDropdownEnabled(

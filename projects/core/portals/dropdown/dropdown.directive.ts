@@ -3,7 +3,6 @@ import {
     type AfterViewChecked,
     ChangeDetectorRef,
     type ComponentRef,
-    computed,
     Directive,
     effect,
     inject,
@@ -81,14 +80,15 @@ export class TuiDropdownDirective
         inject(INJECTOR),
     );
 
-    public readonly tuiDropdown = input<PolymorpheusContent<TuiContext<() => void>>>();
-    public readonly content = computed<PolymorpheusContent<TuiContext<() => void>>>(
-        (content = this.tuiDropdown()) => {
-            return content instanceof TemplateRef
+    public readonly content = input(null, {
+        alias: 'tuiDropdown',
+        transform: (
+            content: PolymorpheusContent<TuiContext<() => void>>,
+        ): PolymorpheusContent<TuiContext<() => void>> =>
+            content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
-                : content;
-        },
-    );
+                : content,
+    });
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
