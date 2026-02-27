@@ -22,7 +22,6 @@ tui-textfield:where(*&) {
     padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
     font: var(--tui-typography-ui-m);
-    line-height: 1.25rem;
     box-sizing: border-box;
     isolation: isolate;
 
@@ -101,7 +100,6 @@ tui-textfield:where(*&) {
 
         border-radius: var(--tui-radius-m);
         font: var(--tui-typography-ui-s);
-        line-height: 1rem;
 
         &[data-icon-start] {
             --t-start: 1.5rem;
@@ -140,7 +138,6 @@ tui-textfield:where(*&) {
 
         border-radius: var(--tui-radius-m);
         font: var(--tui-typography-ui-s);
-        line-height: 1rem;
 
         &[data-icon-start] {
             --t-start: 2.125rem;
@@ -265,6 +262,7 @@ tui-textfield:where(*&) {
 
         position: relative;
         display: block;
+        max-inline-size: calc(100% - var(--t-start));
         flex: 1;
         align-self: flex-start;
         font-size: inherit;
@@ -272,6 +270,10 @@ tui-textfield:where(*&) {
         line-height: var(--t-height);
         letter-spacing: calc((max(1em, 0.75rem) - 1em) * 0.4);
         transition-duration: inherit;
+
+        + .t-content {
+            margin-inline-start: 0;
+        }
     }
 
     [tuiLabel],
