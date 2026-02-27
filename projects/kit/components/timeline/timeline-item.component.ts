@@ -12,7 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiTimelineComponent} from './timeline.component';
 
 @Component({
-    selector: 'tui-timeline-item',
+    selector: 'label[tuiTimelineItem]',
     imports: [FormsModule],
     templateUrl: './timeline-item.template.html',
     styleUrl: './timeline-item.style.less',
@@ -25,23 +25,23 @@ import {TuiTimelineComponent} from './timeline.component';
 export class TuiTimelineItem {
     protected readonly timeline = inject(TuiTimelineComponent);
     protected readonly offset = linkedSignal(() => this.value()[0]);
-    protected readonly min = computed((array = this.timeline.value()) =>
+
+    public readonly draggable = input(true);
+    public readonly resizable = input(true);
+    public readonly value = model<[number, number]>([0, 0]);
+    public readonly min = computed((array = this.timeline.value()) =>
         array.reduce(
             (min, [_, end]) => (end <= this.value()[0] && end > min ? end : min),
             0,
         ),
     );
 
-    protected readonly max = computed((array = this.timeline.value()) =>
+    public readonly max = computed((array = this.timeline.value()) =>
         array.reduce(
             (max, [start]) => (start >= this.value()[1] && start < max ? start : max),
             this.timeline.total(),
         ),
     );
-
-    public readonly draggable = input(true);
-    public readonly resizable = input(true);
-    public readonly value = model<[number, number]>([0, 0]);
 
     protected update(input: HTMLInputElement): void {
         const length = this.value()[1] - this.value()[0];

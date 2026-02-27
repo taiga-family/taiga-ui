@@ -5,20 +5,24 @@
     [total]="total"
 >
     @for (_ of items(); track $index) {
-        <tui-timeline-item
+        <label
+            #item
             tuiHintAppearance="floating"
             tuiHintDirection="end"
+            tuiTimelineItem
             [resizable]="false"
             [tuiHint]="hint"
             [(value)]="items()[$index]!"
-        />
+        >
+            <span>Event #{{ $index + 1 }}</span>
+        </label>
         <ng-template #hint>
             <form tuiForm="s">
                 <tui-range
                     name="range"
                     [margin]="total / 5"
-                    [max]="timeline.gaps()[$index + 1]?.[1] ?? total"
-                    [min]="timeline.gaps()[$index]?.[0] ?? 0"
+                    [max]="item.max()"
+                    [min]="item.min()"
                     [ngModelOptions]="{updateOn: 'submit'}"
                     [(ngModel)]="items()[$index]"
                 />

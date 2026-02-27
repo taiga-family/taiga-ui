@@ -4,7 +4,7 @@
     pointer-events: none;
 }
 
-input {
+.t-input {
     position: fixed;
     inset: 0;
     margin: 0;
@@ -16,8 +16,16 @@ input {
 
     --drag: 1rem;
 
-    :host-context(tui-timeline[data-orientation='vertical']) & {
+    :host-context(tui-timeline[data-orientation='vertical']) &:not(.t-input_drag) {
         cursor: ns-resize;
+    }
+
+    &_drag {
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
     }
 
     &::-webkit-slider-runnable-track {
@@ -28,6 +36,8 @@ input {
         block-size: 100%;
         inline-size: var(--drag);
         appearance: none;
+        background: none;
+        border: none;
         pointer-events: auto;
         border-radius: var(--tui-radius-xs);
     }
@@ -35,8 +45,11 @@ input {
     &::-moz-range-thumb {
         block-size: 100%;
         inline-size: var(--drag);
-        opacity: 0;
+        appearance: none;
+        background: none;
+        border: none;
         pointer-events: auto;
+        border-radius: var(--tui-radius-xs);
     }
 
     &:focus-visible::-webkit-slider-thumb {

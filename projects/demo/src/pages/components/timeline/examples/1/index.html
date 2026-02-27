@@ -1,8 +1,9 @@
 <tui-timeline [total]="50">
     @for (_ of items; track $index) {
-        <tui-timeline-item
+        <label
+            tuiTimelineItem
             [style.background]="`var(--tui-chart-categorical-0${$index})`"
             [(value)]="items[$index]!"
-        />
+        ></label>
     }
 </tui-timeline>

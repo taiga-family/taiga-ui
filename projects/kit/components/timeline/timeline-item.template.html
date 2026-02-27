@@ -2,6 +2,7 @@
     <input
         #drag
         type="range"
+        class="t-input t-input_drag"
         [max]="timeline.total() - value()[1] + value()[0]"
         [style.--drag.%]="timeline.d() * (value()[1] - value()[0])"
         [(ngModel)]="offset"
@@ -11,6 +12,7 @@
 @if (resizable()) {
     <input
         type="range"
+        class="t-input"
         [max]="value()[1] - 1"
         [min]="min()"
         [style.inset-inline-end.%]="timeline.d() * (timeline.total() - value()[1])"
@@ -20,6 +22,7 @@
     />
     <input
         type="range"
+        class="t-input"
         [max]="max()"
         [min]="value()[0] + 1"
         [style.inset-inline-end.%]="timeline.d() * (timeline.total() - max())"

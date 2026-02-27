@@ -3,8 +3,8 @@
     @if (gap[0] < gap[1]) {
         <span
             class="t-gap"
-            [style.inline-size.%]="(gap[1] - gap[0]) * this.d()"
-            [style.inset-inline-start.%]="gap[0] * this.d()"
+            [style.inline-size.%]="(gap[1] - gap[0]) * d()"
+            [style.inset-inline-start.%]="gap[0] * d()"
         >
             <ng-container
                 [ngTemplateOutlet]="template() || null"
