@@ -1,6 +1,7 @@
 import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsInTemplateByFn} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -74,7 +75,7 @@ function migrateFieldErrorPipe({resource, recorder, fileSystem}: Input): void {
         if (tagName !== 'tui-error') {
             recorder.insertLeft(
                 templateOffset + sourceCodeLocation.startOffset,
-                '<!-- TODO: Could not migrate `tuiFieldError` automatically. The directive must be used on a <tui-error> element. Likely, you want to use `tuiError` pipe. -->',
+                `<!-- ${TODO_MARK} could not migrate \`tuiFieldError\` automatically. The directive must be used on a <tui-error> element. Likely, you want to use \`tuiError\` pipe. -->`,
             );
 
             return;

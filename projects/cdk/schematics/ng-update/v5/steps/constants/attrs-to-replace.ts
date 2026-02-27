@@ -18,6 +18,22 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '[iconStart]'},
     },
     {
+        from: {attrName: '[tuiAlert]', withTagNames: ['*']},
+        to: {attrName: '[tuiNotification]'},
+    },
+    {
+        from: {attrName: '[(tuiAlert)]', withTagNames: ['*']},
+        to: {attrName: '[(tuiNotification)]'},
+    },
+    {
+        from: {attrName: '(tuiAlertChange)', withTagNames: ['*']},
+        to: {attrName: '(tuiNotificationChange)'},
+    },
+    {
+        from: {attrName: '[tuiAlertOptions]', withTagNames: ['*']},
+        to: {attrName: '[tuiNotificationOptions]'},
+    },
+    {
         from: {attrName: 'tuiButtonClose', withTagNames: ['*']},
         to: {attrName: 'tuiButtonX'},
     },
