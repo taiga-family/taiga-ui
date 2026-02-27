@@ -16872,7 +16872,7 @@ InputDate = Textfield + Calendar + ❤️
 
 ### Usage Examples
 
-#### Example 1
+#### Basic
 
 **Template:**
 ```html
@@ -16902,7 +16902,7 @@ export default class Example {
 }
 ```
 
-#### Example 2
+#### Calendar customization
 
 **Template:**
 ```html
@@ -16940,7 +16940,7 @@ export default class Example {
 }
 ```
 
-#### Example 3
+#### Custom dropdown
 
 **Template:**
 ```html
@@ -16976,7 +16976,7 @@ export default class Example {
 }
 ```
 
-#### Example 4
+#### Validation
 
 **Template:**
 ```html
@@ -17035,7 +17035,7 @@ export default class Example {
 }
 ```
 
-#### Example 5
+#### Value transformer
 
 **Template:**
 ```html
@@ -17077,7 +17077,7 @@ export default class Example {
 }
 ```
 
-#### Example 6
+#### Format
 
 **Template:**
 ```html
@@ -17110,7 +17110,7 @@ export default class Example {
 }
 ```
 
-#### Example 7
+#### Mobile
 
 **Template:**
 ```html
@@ -17164,7 +17164,7 @@ export default class Example {
 }
 ```
 
-#### Example 8
+#### Limits
 
 **Template:**
 ```html
@@ -17200,7 +17200,7 @@ export default class Example {
 }
 ```
 
-#### Example 9
+#### Datalist
 
 **Template:**
 ```html
@@ -17288,8 +17288,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    // Example headings for the template loop
-    public readonly examples = [
+    protected readonly examples = [
         'Basic',
         'Calendar customization',
         'Custom dropdown',
