@@ -72,8 +72,7 @@ tui-textfield[multi][multi]:where(*&) {
             display: flex;
             align-items: center;
             flex: 1;
-            block-size: 1.25em;
-            max-block-size: 1.25rem;
+            block-size: var(--t-item-height, 1.25em);
             max-inline-size: 100%;
             pointer-events: none;
             transform: translateX(var(--t-scroll));
@@ -90,7 +89,7 @@ tui-textfield[multi][multi]:where(*&) {
                 white-space: pre;
                 text-overflow: clip;
                 padding-inline-end: 0.125rem;
-                min-block-size: var(--t-item-height, 1em);
+                block-size: 100%;
             }
 
             .t-filler_hidden {
