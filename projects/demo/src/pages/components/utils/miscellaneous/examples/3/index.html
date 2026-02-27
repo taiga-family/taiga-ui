@@ -1,20 +1,18 @@
-'{{ paymentSystem }}' = getPaymentSystem(cardNumber);
+{{ isPresent }} = isPresent(value);
 
-<form [formGroup]="parametersForm">
-    <tui-textfield
-        tuiChevron
-        class="parameters"
-        [tuiTextfieldCleaner]="false"
-    >
-        <input
-            formControlName="cardNumber"
-            placeholder="Choose card number"
-            tuiSelect
-        />
+<tui-textfield
+    tuiChevron
+    class="parameters"
+>
+    <label tuiLabel>value</label>
 
-        <tui-data-list-wrapper
-            *tuiDropdown
-            [items]="items"
-        />
-    </tui-textfield>
-</form>
+    <input
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        [items]="items"
+    />
+</tui-textfield>

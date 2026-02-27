@@ -87,35 +87,13 @@
         </article>
     </ng-template>
     <ng-template pageTab="Manual">
-        <tui-doc-example
-            heading="Install libraries"
-            [content]="libraries"
-            [preview]="false"
-        />
-
-        <tui-doc-example
-            heading="Include styles"
-            [content]="styles"
-            [preview]="false"
-        />
-
-        <tui-doc-example
-            heading="Add icons"
-            [content]="icons"
-            [preview]="false"
-        />
-
-        <tui-doc-example
-            heading="Root component"
-            [content]="root"
-            [preview]="false"
-        />
-
-        <tui-doc-example
-            heading="Provide config"
-            [content]="provide"
-            [preview]="false"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [content]="content[$index] || {}"
+                [heading]="example"
+                [preview]="false"
+            />
+        }
     </ng-template>
     <ng-template pageTab="Update">
         <div>

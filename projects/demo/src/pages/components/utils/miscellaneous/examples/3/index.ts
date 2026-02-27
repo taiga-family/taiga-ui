@@ -1,38 +1,34 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiDataListWrapper,
-        TuiSelect,
-        TuiTextfield,
-    ],
+    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiSelect, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly items = [
-        '6734567890123456',
-        '5536567890123456',
-        '2202567890123456',
-        '4405567890123456',
-        '4000567890123456',
-    ];
+    protected readonly items = ['String', 'null', 'undefined'];
+    protected value: 'null' | 'String' | 'undefined' | null = null;
 
-    protected parametersForm = new FormGroup({cardNumber: new FormControl('')});
+    protected get isPresent(): boolean {
+        return tuiIsPresent(this.objectifyValue(this.value ?? 'null'));
+    }
 
-    protected get paymentSystem(): string | null {
-        const {cardNumber} = this.parametersForm.value;
-
-        return tuiGetPaymentSystem(cardNumber ?? '');
+    private objectifyValue(value: string): string | null | undefined {
+        switch (value) {
+            case 'null':
+                return null;
+            case 'undefined':
+                return undefined;
+            default:
+                return value;
+        }
     }
 }

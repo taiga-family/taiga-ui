@@ -1,18 +1,47 @@
-{{ isPresent }} = isPresent(value);
+<form [formGroup]="userDetailsForm">
+    <p>
+        <tui-textfield>
+            <input
+                formControlName="name"
+                tuiInput
+            />
+            <label tuiLabel>Name</label>
+        </tui-textfield>
+        <tui-error formControlName="name" />
+    </p>
 
-<tui-textfield
-    tuiChevron
-    class="parameters"
->
-    <label tuiLabel>value</label>
+    <div formGroupName="address">
+        <p>
+            <tui-textfield>
+                <input
+                    formControlName="street"
+                    tuiInput
+                />
+                <label tuiLabel>Street</label>
+            </tui-textfield>
+            <tui-error formControlName="street" />
+        </p>
 
-    <input
-        tuiSelect
-        [(ngModel)]="value"
-    />
+        <p>
+            <tui-textfield>
+                <input
+                    formControlName="zipCode"
+                    tuiInput
+                />
+                <label tuiLabel>Zip code</label>
+            </tui-textfield>
+            <tui-error formControlName="zipCode" />
+        </p>
 
-    <tui-data-list-wrapper
-        *tuiDropdown
-        [items]="items"
-    />
-</tui-textfield>
+        <p>
+            <tui-textfield>
+                <input
+                    formControlName="city"
+                    tuiInput
+                />
+                <label tuiLabel>City</label>
+            </tui-textfield>
+            <tui-error formControlName="city" />
+        </p>
+    </div>
+</form>

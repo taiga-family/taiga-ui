@@ -58,4 +58,13 @@ export default class Page {
 
     protected stream = tuiControlValue<TuiDay>(this.control);
     protected readonly routes = DemoRoute;
+
+    protected readonly examples = [
+        'Custom dropdown',
+        'Range',
+        'Localization',
+        'Custom dropdown (range)',
+        'Custom dropdown (multi)',
+        'Without header',
+    ];
 }

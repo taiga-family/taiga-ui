@@ -15,28 +15,26 @@
             .
         </p>
 
-        <tui-doc-example
-            heading="With axes"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            heading="Same values with collapsed mode"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        >
-            <div
-                tuiNotification
-                class="tui-space_bottom-6"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
             >
-                Use
+                @if ($index === 1) {
+                    <div
+                        tuiNotification
+                        class="tui-space_bottom-6"
+                    >
+                        Use
 
-                <code>ChartHint</code>
-                directive to enable hints with
-                <code>tuiHintContent</code>
-            </div>
-        </tui-doc-example>
+                        <code>ChartHint</code>
+                        directive to enable hints with
+                        <code>tuiHintContent</code>
+                    </div>
+                }
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>

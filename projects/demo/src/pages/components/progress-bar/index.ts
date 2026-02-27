@@ -34,4 +34,14 @@ export default class Page {
     ];
 
     protected color = this.colorVariants[0]!;
+
+    protected readonly examples = [
+        'Basic',
+        'Multicolor',
+        'Sizes',
+        'With label',
+        'Stacked progress bars',
+        'Indeterminate',
+        'Customizable corners',
+    ];
 }

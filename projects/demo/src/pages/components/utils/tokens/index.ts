@@ -14,4 +14,13 @@ import {TUI_DOC_CODE_EDITOR} from '@taiga-ui/addon-doc';
         },
     ],
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        'TUI_BREAKPOINT',
+        'WA_IS_ANDROID',
+        'WA_IS_IOS',
+        'WA_IS_MOBILE',
+        'TUI_NUMBER_FORMAT',
+        'TUI_DATE_FORMAT',
+    ];
+}

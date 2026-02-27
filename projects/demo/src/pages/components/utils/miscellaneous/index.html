@@ -6,33 +6,31 @@
     <ng-template pageTab>
         <p>Some utils to simplify the development process</p>
 
-        <tui-doc-example
-            description="Logs assert into console in dev mode"
-            heading="assert"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
 
-        <tui-doc-example
-            description="Card number to its payment system"
-            heading="getPaymentSystem"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            description="Checks value not to be null or undefined"
-            heading="isPresent"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
-
-        <tui-doc-example
-            description="Recursively marks form control as touched and triggers validation"
-            heading="markControlAsTouchedAndValidate"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
-        />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Logs assert into console in dev mode
+                    }
+                    @case (1) {
+                        Card number to its payment system
+                    }
+                    @case (2) {
+                        Checks value not to be null or undefined
+                    }
+                    @case (3) {
+                        Recursively marks form control as touched and triggers validation
+                    }
+                }
+            </ng-template>
+        }
     </ng-template>
 
     <ng-template pageTab="Setup">

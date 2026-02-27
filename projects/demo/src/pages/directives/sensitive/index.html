@@ -9,28 +9,31 @@
             write-off amounts and any other content
         </p>
 
-        <tui-doc-example
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
 
-        <tui-doc-example
-            heading="Components"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        >
-            <div
-                tuiNotification
-                class="tui-space_bottom-4"
-            >
-                Buttons have
-                <code>gap</code>
-                style configured for icons, avatars and other similar content. Wrap your text in
-                <code>span</code>
-                so it does not affect you.
-            </div>
-        </tui-doc-example>
+            <ng-template #description>
+                @switch ($index) {
+                    @case (1) {
+                        <div
+                            tuiNotification
+                            class="tui-space_bottom-4"
+                        >
+                            Buttons have
+                            <code>gap</code>
+                            style configured for icons, avatars and other similar content. Wrap your text in
+                            <code>span</code>
+                            so it does not affect you.
+                        </div>
+                    }
+                }
+            </ng-template>
+        }
     </ng-template>
 
     <ng-template pageTab>

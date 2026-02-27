@@ -28,4 +28,13 @@ export default class Page {
         }),
         'custom-list/index.html': import('./examples/4/custom-list/index.html'),
     };
+
+    protected readonly examples = [
+        'Links',
+        'Submenu',
+        'Form control',
+        'Custom list',
+        'Complex',
+        'Options with long text',
+    ];
 }

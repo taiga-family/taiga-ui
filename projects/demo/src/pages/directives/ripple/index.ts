@@ -7,4 +7,6 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly examples = ['Basic', 'Global Ripple'];
+}

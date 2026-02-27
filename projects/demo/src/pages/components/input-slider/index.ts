@@ -62,4 +62,12 @@ export default class PageComponent {
         ({$implicit: val}: TuiContext<number>) => (val === this.min() ? 'MIN' : val),
         ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : val),
     ]);
+
+    protected readonly examples = [
+        'Textfield customization',
+        'InputNumber customization',
+        'Slider customization',
+        'KeySteps',
+        'Quantum',
+    ];
 }
