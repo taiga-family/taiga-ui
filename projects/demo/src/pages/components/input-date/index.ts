@@ -30,8 +30,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    // Example headings for the template loop
-    public readonly examples = [
+    protected readonly examples = [
         'Basic',
         'Calendar customization',
         'Custom dropdown',
