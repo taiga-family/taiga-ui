@@ -1674,6 +1674,26 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.accordion {
+    inline-size: 20rem;
+    border-radius: 0;
+
+    [tuiAccordion] {
+        border-block-start: 1px solid var(--tui-border-normal);
+        background: transparent !important;
+        mask: none;
+    }
+
+    tui-expand,
+    [tuiCell] {
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+        box-shadow: none;
+    }
+}
+```
 
 #### Single
 
@@ -1832,6 +1852,27 @@ export default class Example {
 
     protected orderBy(): number {
         return 0;
+    }
+}
+```
+**LESS:**
+```less
+.accordion {
+    inline-size: 20rem;
+    color: var(--tui-text-secondary);
+
+    [tuiAccordion] {
+        font: var(--tui-typography-heading-h6);
+        padding: 0;
+    }
+
+    tui-expand {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    [tuiCell] {
+        margin-inline-start: -1rem;
     }
 }
 ```
@@ -2047,6 +2088,13 @@ export default class Example {
     protected open = signal(false);
 }
 ```
+**LESS:**
+```less
+tui-action-bar {
+    top: ~'max(1rem, env(safe-area-inset-top))';
+    bottom: unset;
+}
+```
 
 
 ### TypeScript
@@ -2153,6 +2201,14 @@ import {TuiAppBar} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+tui-app-bar {
+    box-shadow: var(--tui-shadow-small);
+    inline-size: 20rem;
+    margin-block-end: 1rem;
+}
+```
 
 #### Desktop — large size
 
@@ -2194,6 +2250,14 @@ import {TuiAppBar} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+tui-app-bar {
+    box-shadow: var(--tui-shadow-small);
+    inline-size: 30rem;
+    margin-block-end: 1rem;
+}
 ```
 
 #### Variants
@@ -2256,6 +2320,40 @@ import {TuiAppBar} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+tui-app-bar {
+    box-shadow: var(--tui-shadow-small);
+    inline-size: 20rem;
+    margin-block-end: 1rem;
+}
+
+.gray {
+    box-shadow: none;
+    background: var(--tui-background-base-alt);
+
+    button {
+        color: var(--tui-text-primary);
+    }
+}
+
+.black {
+    color: var(--tui-background-base);
+    background: var(--tui-text-primary);
+
+    button {
+        color: var(--tui-status-warning);
+    }
+}
+
+section tui-app-bar [tuiTitle] {
+    .center-all();
+
+    text-align: center;
+}
 ```
 
 #### Dialog
@@ -2375,6 +2473,31 @@ export default class Example {
     protected activeItemIndex = 0;
 }
 ```
+**LESS:**
+```less
+.container {
+    max-block-size: 30rem;
+    inline-size: 20rem;
+    overflow: scroll;
+    overscroll-behavior: none;
+}
+
+tui-app-bar {
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+    background: var(--tui-background-base);
+}
+
+tui-segmented {
+    inline-size: 6rem;
+    margin-block-end: 1rem;
+}
+
+.content > [tuiHeader] {
+    padding: 0 1rem;
+}
+```
 
 
 ### TypeScript
@@ -2477,6 +2600,23 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-block-start: 1rem;
+
+    --tui-chart-categorical-00: var(--tui-chart-categorical-12);
+    --tui-chart-categorical-01: var(--tui-chart-categorical-01);
+    --tui-chart-categorical-02: var(--tui-chart-categorical-03);
+    --tui-chart-categorical-03: var(--tui-chart-categorical-09);
+}
+
+.index-controller {
+    max-inline-size: 20rem;
+}
+```
 
 #### Stacked
 
@@ -2506,6 +2646,23 @@ import {tuiSum} from '@taiga-ui/cdk';
 export default class Example {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.value);
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.wrapper {
+    position: relative;
+
+    --tui-chart-0: var(--tui-chart-categorical-03);
+}
+
+.stacked {
+    .fullsize();
+
+    --tui-background-neutral-1: transparent;
+    --tui-chart-0: var(--tui-chart-categorical-04);
 }
 ```
 
@@ -2666,6 +2823,18 @@ import {TuiAutoColorPipe, TuiAvatar, TuiFade} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.text {
+    background: var(--tui-background-accent-opposite-pressed);
+    color: var(--tui-background-base);
+}
+```
 
 #### Sizes
 
@@ -2694,6 +2863,19 @@ import {TuiAvatar} from '@taiga-ui/kit';
 export default class Example {
     protected readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs'] as const;
     protected readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+section {
+    display: flex;
+    gap: 0.5rem;
 }
 ```
 
@@ -2807,6 +2989,17 @@ import {TuiAvatar, TuiAvatarLabeled} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+[tuiAvatar] {
+    border: 1px solid var(--tui-border-normal);
+}
+```
 
 #### Outline
 
@@ -2833,6 +3026,13 @@ import {TuiAvatar, TuiAvatarOutline} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
 ```
 
 
@@ -2954,6 +3154,13 @@ export default class Example {
         (index && (index === total - 1 ? 'none' : 'dashed')) || 'solid';
 }
 ```
+**LESS:**
+```less
+.axes {
+    block-size: 18.75rem;
+    inline-size: 37.5rem;
+}
+```
 
 #### With bars
 
@@ -3023,6 +3230,56 @@ function getMax(value: ReadonlyArray<[number, number, number, number]>): number 
     );
 }
 ```
+**LESS:**
+```less
+:host,
+.hint {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+}
+
+.axes {
+    block-size: 18.75rem;
+    inline-size: 37.5rem;
+}
+
+.chart {
+    block-size: 100%;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: center;
+    block-size: 100%;
+    margin-block-end: -0.0625rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+
+.hint {
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    border-radius: 100%;
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    margin-inline-end: 0.5rem;
+}
+
+.name {
+    margin-inline-end: 0.5rem;
+}
+```
 
 #### With horizontal bars
 
@@ -3054,6 +3311,23 @@ export default class Example {
     protected getHeight(value: number): number {
         return Math.abs((value * 100) / this.largest);
     }
+}
+```
+**LESS:**
+```less
+.axes {
+    block-size: 18.75rem;
+    inline-size: 37.5rem;
+}
+
+.t-horizontal-bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    inline-size: 16.75rem;
+    block-size: 37.5rem;
+    transform-origin: bottom left;
+    transform: rotate(90deg) translate(-16.75rem, 0);
 }
 ```
 
@@ -3192,6 +3466,12 @@ import {TuiBadge, TuiStatus} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+[tuiBadge] {
+    margin: 0.5rem;
+}
+```
 
 #### Sizes
 
@@ -3261,6 +3541,13 @@ import {TuiBadge} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+    min-inline-size: 18rem;
+}
+```
 
 #### Long value
 
@@ -3289,6 +3576,17 @@ import {TuiBadge, TuiFade} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.badge {
+    max-inline-size: 10rem;
+}
+
+.t-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+```
 
 #### Customization
 
@@ -3312,6 +3610,20 @@ import {TuiBadge} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.custom-1 {
+    .gradient(#0094cf, #24c0ff);
+
+    box-shadow: var(--tui-shadow-small);
+}
+
+.custom-2 {
+    .gradient(#c86dd7, #3023ae);
+}
 ```
 
 #### Options with DI
@@ -3454,6 +3766,12 @@ import {TuiBadgeNotification} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+tui-badge-notification {
+    margin: 0.2rem;
+}
+```
 
 #### Custom color
 
@@ -3479,6 +3797,15 @@ import {TuiBadgeNotification} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+tui-badge-notification {
+    margin: 0.2rem;
+    .gradient(#c86dd7, #3023ae);
+}
 ```
 
 
@@ -3573,6 +3900,13 @@ import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taig
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
 
 #### Rounded content
 
@@ -3611,6 +3945,13 @@ import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taig
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
 
 #### With different components
 
@@ -3645,6 +3986,17 @@ import {TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+tui-textfield {
+    min-inline-size: 10rem;
+}
+```
 
 #### With image
 
@@ -3674,6 +4026,13 @@ import {TuiAvatar, TuiBadgedContent} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
 ```
 
 
@@ -3747,6 +4106,13 @@ import {TuiBar} from '@taiga-ui/addon-charts';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.bar {
+    block-size: 6.25rem;
+    background: var(--tui-background-accent-1);
+}
+```
 
 #### Segments
 
@@ -3770,6 +4136,16 @@ import {TuiBar} from '@taiga-ui/addon-charts';
 })
 export default class Example {
     protected readonly value = [30, 15, 10];
+}
+```
+**LESS:**
+```less
+.bar {
+    block-size: 6.25rem;
+
+    --tui-chart-categorical-00: #ffd700;
+    --tui-chart-categorical-01: #87ceeb;
+    --tui-chart-categorical-02: #ffc0cb;
 }
 ```
 
@@ -3879,6 +4255,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.axes {
+    block-size: 18.75rem;
+    inline-size: 37.5rem;
+}
+```
 
 #### Example 2
 
@@ -3944,6 +4327,32 @@ export default class Example {
                 '',
             )
             .trim();
+}
+```
+**LESS:**
+```less
+.axes {
+    block-size: 18.75rem;
+    inline-size: 37.5rem;
+
+    &:first-child {
+        --tui-chart-categorical-00: #ffd700;
+        --tui-chart-categorical-01: #800080;
+    }
+
+    &:last-child {
+        --tui-chart-categorical-00: #87ceeb;
+        --tui-chart-categorical-01: #ee82ee;
+    }
+}
+
+.flex {
+    display: flex;
+    min-inline-size: 31.25rem;
+}
+
+.select {
+    max-inline-size: 20rem;
 }
 ```
 
@@ -4046,6 +4455,14 @@ export default class Example {
     protected readonly value = [30, 15, 10];
 }
 ```
+**LESS:**
+```less
+.bars {
+    block-size: 6.25rem;
+    inline-size: 10rem;
+    box-shadow: 0 1px var(--tui-border-normal);
+}
+```
 
 #### Fixed size
 
@@ -4071,6 +4488,14 @@ export default class Example {
     protected readonly value = [30, 15, 10];
 }
 ```
+**LESS:**
+```less
+.bars {
+    block-size: 6.25rem;
+    inline-size: 10rem;
+    box-shadow: 0 1px var(--tui-border-normal);
+}
+```
 
 #### With negative values
 
@@ -4094,6 +4519,18 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 })
 export default class Example {
     protected readonly value = [30, -15];
+}
+```
+**LESS:**
+```less
+.bars {
+    block-size: 6.25rem;
+    inline-size: 3.75rem;
+    margin-block-end: 3.125rem;
+    box-shadow: 0 1px var(--tui-border-normal);
+
+    --tui-chart-categorical-00: var(--tui-background-accent-1);
+    --tui-chart-categorical-01: var(--tui-background-accent-1);
 }
 ```
 
@@ -4123,6 +4560,27 @@ export default class Example {
     protected readonly value = [30, 45, 12, 6, 20];
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    block-size: 6.25rem;
+}
+
+.bars {
+    block-size: 12.5rem;
+    inline-size: 6.25rem;
+    margin-block-end: 3.125rem;
+    box-shadow: 0 1px var(--tui-border-normal);
+    transform-origin: bottom left;
+    transform: rotate(90deg) translate(-12.5rem, 0);
+
+    --tui-chart-categorical-00: linear-gradient(#ffc500, #c21500);
+    --tui-chart-categorical-01: linear-gradient(#26a0da, #314755);
+    --tui-chart-categorical-02: linear-gradient(#f64f59, #c471ed, #12c2e9);
+    --tui-chart-categorical-03: linear-gradient(#c94b4b, #4b134f);
+    --tui-chart-categorical-04: linear-gradient(#114357, #f29492);
+}
+```
 
 #### With value label
 
@@ -4148,6 +4606,15 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
 export default class Example {
     protected readonly value = [451, 302, 203, 124, 65];
     protected readonly sum = this.value.reduce((a, b) => a + b, 0);
+}
+```
+**LESS:**
+```less
+.bars {
+    block-size: 7.5rem;
+    inline-size: 5rem;
+    margin-block-start: 2rem;
+    box-shadow: 0 1px var(--tui-border-normal);
 }
 ```
 
@@ -4298,6 +4765,16 @@ export default class Example {
     });
 }
 ```
+**LESS:**
+```less
+form {
+    display: flex;
+    inline-size: max-content;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-block-end: 1rem;
+}
+```
 
 #### Groups
 
@@ -4351,6 +4828,20 @@ import {TuiBlock, TuiFade} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly form = new FormGroup({value: new FormControl('orange')});
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.group {
+    max-inline-size: 33rem;
+    margin-block-end: 1.5rem;
+}
+
+.title {
+    font: var(--tui-typography-heading-h5);
+    margin: 0 0 1rem;
 }
 ```
 
@@ -4415,6 +4906,17 @@ export default class Example {
         testValue3: new FormControl(false),
         testValue4: new FormControl(false),
     });
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
 }
 ```
 
@@ -4552,6 +5054,19 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly isMobile = inject(WA_IS_MOBILE);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+[tuiSubtitle] {
+    white-space: nowrap;
+    max-inline-size: 11rem;
 }
 ```
 
@@ -4692,6 +5207,27 @@ export default class Example {
     );
 }
 ```
+**LESS:**
+```less
+.container {
+    display: flex;
+    gap: 1rem;
+
+    :host-context(tui-root._mobile) & {
+        flex-direction: column;
+    }
+}
+
+.image {
+    inline-size: 5.5rem;
+    block-size: 5.5rem;
+}
+
+.card {
+    background-color: var(--tui-background-base-alt);
+    block-size: auto;
+}
+```
 
 #### Customization
 
@@ -4744,6 +5280,28 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+.container {
+    display: flex;
+    gap: 1rem;
+
+    :host-context(tui-root._mobile) & {
+        flex-direction: column;
+    }
+}
+
+.card {
+    background-color: var(--tui-background-base-alt);
+    block-size: auto;
+}
+
+.avatar[tuiSlot='top'] {
+    inline-size: 6.25rem;
+    block-size: 6.25rem;
+    border-radius: 50%;
+}
+```
 
 #### Mobile
 
@@ -4776,6 +5334,19 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.container {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.card {
+    background-color: var(--tui-background-base-alt);
+    block-size: auto;
+}
 ```
 
 #### Desktop medium
@@ -4865,6 +5436,19 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.container {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.card {
+    background-color: var(--tui-background-base-alt);
+    block-size: auto;
+}
 ```
 
 
@@ -4983,6 +5567,51 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    block-size: 30rem;
+}
+
+.messages {
+    position: relative;
+    flex: 1;
+    padding-inline-start: 1rem;
+    overflow: hidden;
+}
+
+.message {
+    display: block;
+    margin: 1rem 1rem 1rem auto;
+    max-inline-size: 80%;
+    white-space: pre-wrap;
+
+    &:last-child {
+        margin-block-end: 4rem;
+    }
+}
+
+.form {
+    padding: 0 1rem 1rem;
+    background: var(--tui-background-elevation-1);
+}
+
+.textarea {
+    margin: 1rem 0;
+}
+
+.actions {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+    :last-child {
+        grid-column: span 2;
+    }
+}
+```
 
 #### Reacting to scroll
 
@@ -5048,6 +5677,51 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.map {
+    inline-size: 18rem;
+    block-size: 30rem;
+    border: none;
+}
+
+.buttons {
+    .fullsize();
+
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1rem 8rem;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    pointer-events: none;
+
+    & > * {
+        position: relative;
+        pointer-events: auto;
+    }
+}
+
+.sheet {
+    block-size: 25.75rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+```
 
 #### Stops
 
@@ -5088,6 +5762,33 @@ import {TuiAccordion, TuiBlock} from '@taiga-ui/kit';
 })
 export default class Example {
     protected show = true;
+}
+```
+**LESS:**
+```less
+:host {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    inline-size: 14rem;
+    block-size: 26rem;
+    padding: 2rem;
+    background: linear-gradient(45deg, #4158d0 0%, #c850c0 50%, #ffcc70 100%);
+    overflow: hidden;
+}
+
+.header {
+    position: sticky;
+    top: 2.25rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font: var(--tui-typography-heading-h5);
+    font-size: 1.25rem;
+    background: var(--tui-background-elevation-1);
+    box-shadow: 0 -1rem var(--tui-background-elevation-1);
 }
 ```
 
@@ -5238,6 +5939,35 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    max-inline-size: 30rem;
+}
+
+hr,
+h3 {
+    margin: 1rem 0;
+}
+
+hr {
+    block-size: 1px;
+    background: var(--tui-border-normal);
+    border: 0;
+}
+
+.link {
+    .text-truncate();
+
+    &_last {
+        font-weight: bold;
+        color: var(--tui-text-primary);
+    }
+}
+```
 
 
 ### TypeScript
@@ -5322,6 +6052,13 @@ import {TuiButton} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
 
 #### Appearance
 
@@ -5354,6 +6091,14 @@ import {TuiButton} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+```
 
 #### Icons
 
@@ -5384,6 +6129,15 @@ import {TuiAvatar, TuiChevron} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
 ```
 
 #### Loading
@@ -5503,6 +6257,13 @@ import {TuiFade} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.button {
+    inline-size: 15rem;
+    justify-content: space-between;
+}
+```
 
 
 ### TypeScript
@@ -5587,6 +6348,29 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 21.5625rem;
+
+    @media @tui-mobile {
+        inline-size: 100%;
+    }
+}
+
+.custom {
+    color: var(--tui-status-warning);
+
+    &::after {
+        color: var(--tui-text-action);
+    }
+}
+```
 
 #### Flat
 
@@ -5628,6 +6412,21 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 21.5625rem;
+
+    @media @tui-mobile {
+        inline-size: 100%;
+    }
+}
+```
 
 #### Dark
 
@@ -5668,6 +6467,29 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 21.5625rem;
+
+    @media @tui-mobile {
+        inline-size: 100%;
+    }
+}
+
+[tuiButtonGroup] {
+    background: linear-gradient(334.83deg, #7d8ca0 0%, #647382 100%);
+
+    button {
+        color: #fff;
+    }
+}
 ```
 
 #### Swiped animation
@@ -5743,6 +6565,45 @@ export default class Example {
             color: 'rgb(158 178 129)',
         },
     ];
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 21rem;
+    block-size: 21rem;
+
+    @media @tui-mobile {
+        inline-size: 100%;
+    }
+}
+
+[tuiButtonGroup] {
+    button {
+        color: #fff;
+    }
+}
+
+.card {
+    inline-size: 100%;
+    padding: 0.75rem;
+    color: #fff;
+    block-size: 8rem;
+}
+
+.money {
+    background: #ffdd2d;
+    color: #333;
+}
+
+tui-pager {
+    margin: 0 auto;
+    min-block-size: 0.5rem;
 }
 ```
 
@@ -5901,6 +6762,13 @@ import {TuiButtonX} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
 
 
 ### TypeScript
@@ -6045,6 +6913,12 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+}
+```
 
 #### With markers
 
@@ -6119,6 +6993,12 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+}
+```
 
 #### Localization
 
@@ -6176,6 +7056,12 @@ const dayType: TuiHandler<TuiDay, string> = (day) => {
     providers: [tuiCalendarOptionsProvider({dayType})],
 })
 export default class Example {}
+```
+**LESS:**
+```less
+tui-calendar-sheet [data-type='holiday']::before {
+    background-color: var(--tui-chart-categorical-09);
+}
 ```
 
 #### Select multiple dates
@@ -6945,6 +7831,25 @@ export default class Example {
     public readonly collapsed = signal(true);
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 32rem;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 100rem var(--tui-background-base-alt);
+}
+
+tui-icon {
+    color: var(--tui-status-warning);
+}
+
+td:last-child {
+    color: var(--tui-text-secondary);
+}
+```
 
 
 ### TypeScript
@@ -7048,6 +7953,22 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+section {
+    display: flex;
+    block-size: 3.125rem;
+    border-radius: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    color: var(--tui-text-secondary);
+    border: 1px dashed;
+}
+
+[tuiLink].label {
+    font: var(--tui-typography-body-l);
+}
+```
 
 #### Image
 
@@ -7084,6 +8005,35 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.image-1 {
+    background: url('/assets/images/illustration.jpg') no-repeat top right / 250%;
+}
+
+.image-2 {
+    background: url('/assets/images/road-illustration.jpg') no-repeat center / cover;
+}
+
+.image-2,
+:host-context([tuiTheme='dark']) .image-1 {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
 ```
 
 #### Cell with close
@@ -7130,6 +8080,12 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+[tuiCardLarge] {
+    max-inline-size: 21.4375rem;
+}
 ```
 
 #### Paddings and radii
@@ -7286,6 +8242,34 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.popover {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    inline-size: 20rem;
+
+    --tui-from: translateX(100%);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+```
 
 #### Avatar
 
@@ -7398,6 +8382,21 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    inline-size: 20rem;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+```
 
 #### Cards List
 
@@ -7434,6 +8433,22 @@ import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+section {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+    overflow: scroll;
+}
+
+.plus {
+    background: var(--tui-background-accent-1);
+    border-radius: 0.25rem;
+    color: #fff;
+}
 ```
 
 #### Cell List
@@ -7508,6 +8523,14 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: inherit;
+}
+```
 
 #### Cell List (actions)
 
@@ -7570,6 +8593,13 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.actions {
+    display: flex;
+    flex-direction: column;
+}
 ```
 
 #### Cell List (headless)
@@ -7652,6 +8682,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    inline-size: 30rem;
+}
+```
 
 
 ### TypeScript
@@ -7730,6 +8769,18 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.star {
+    background: rgb(66, 139, 250);
+    color: #fff;
+}
+```
 
 #### Icon
 
@@ -7762,6 +8813,19 @@ import {TuiCardMedium} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.plus {
+    background: #428bfa;
+    color: #fff;
+    border-radius: 0.25rem;
+}
 ```
 
 #### Badge
@@ -7798,6 +8862,18 @@ import {TuiCardMedium} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.badge {
+    background: #aff218;
+    color: #333;
+}
 ```
 
 #### Stacking
@@ -7841,6 +8917,13 @@ export default class Example {
         'https://avatars.githubusercontent.com/u/10106368',
         'https://avatars.githubusercontent.com/u/46284632',
     ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
 }
 ```
 
@@ -7888,6 +8971,92 @@ import {TuiCardMedium, TuiSurface} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.2rem;
+    min-inline-size: 40.625rem;
+}
+
+.badge {
+    background: #aff218;
+    color: #333;
+}
+
+.money {
+    background: #ffdd2d;
+    color: #333;
+}
+
+.poster {
+    background: rgb(88, 192, 190);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 13.9375rem;
+    block-size: 8rem;
+
+    [tuiSubtitle] {
+        color: #fff;
+    }
+
+    &::after {
+        background: url('/assets/images/poster.svg') bottom right no-repeat;
+    }
+
+    &:hover::after {
+        transform: scale(1.1);
+    }
+}
+
+.fly {
+    background: rgb(101, 174, 234);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 8rem;
+    block-size: 8rem;
+
+    &::after {
+        background: url('/assets/images/fly.svg') bottom right no-repeat;
+    }
+
+    &:hover::after {
+        transform: scale(1.1);
+    }
+}
+
+.google,
+.microsoft {
+    padding: 0.75rem;
+    background: var(--tui-background-base-alt);
+    block-size: 8rem;
+    inline-size: 8rem;
+
+    &:hover::after {
+        transform: scale(1.1);
+    }
+}
+
+.google {
+    [tuiSubtitle] {
+        color: #f00;
+    }
+
+    &::after {
+        background: url('/assets/images/google.svg') bottom right no-repeat;
+    }
+}
+
+.microsoft {
+    [tuiSubtitle] {
+        color: #00b92d;
+    }
+
+    &::after {
+        background: url('/assets/images/microsoft.svg') bottom right no-repeat;
+    }
+}
+```
 
 #### Long text
 
@@ -7917,6 +9086,34 @@ import {TuiCardMedium} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.fade {
+    inline-size: 100%;
+    block-size: 2rem;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.fade-vertical {
+    block-size: 5rem;
+    overflow: auto;
+}
+
+.nowrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-inline-size: 100%;
+}
 ```
 
 #### Selectable
@@ -7962,6 +9159,43 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 })
 export default class Example {
     protected value = 0;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.card {
+    block-size: 6.5rem;
+    inline-size: 6.5rem;
+}
+
+.mir {
+    background: #2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%);
+}
+
+.visa {
+    background: linear-gradient(45deg, rgba(255, 170, 0, 0.82), #fa0), url('/assets/taiga-ui/icons/star.svg');
+}
+
+img {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    inline-size: 100%;
+    margin: 0 -0.4375rem;
+    padding: 0 0.4375rem;
+    overflow: auto;
 }
 ```
 
@@ -8049,6 +9283,26 @@ export default class Example {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+}
+
+tui-pager {
+    margin: 0 auto;
+}
+
+.item {
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+}
+
+.title {
+    margin: 0 0 1rem;
+}
+```
 
 #### Multiple
 
@@ -8081,6 +9335,24 @@ export default class Example {
         'angular.svg',
         'avatar.jpg',
     ];
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.item {
+    .transition(~'box-shadow, transform');
+
+    display: block;
+    max-block-size: 6.25rem;
+    margin: 2rem auto;
+    border-radius: 100%;
+
+    &_active {
+        box-shadow: var(--tui-shadow-medium);
+        transform: scale(1.2);
+    }
 }
 ```
 
@@ -8129,6 +9401,28 @@ import {TuiAvatar, TuiCarousel} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.carousel {
+    inline-size: 25rem;
+    flex-shrink: 0;
+}
+
+.item {
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+}
+
+.title {
+    margin: 0 0 1rem;
+}
 ```
 
 #### Carousel inside dialog
@@ -8209,6 +9503,37 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin: 0 -5rem;
+
+    :host-context(tui-root._mobile) & {
+        margin: 0;
+
+        button {
+            display: none;
+        }
+    }
+}
+
+.header {
+    .transition(background);
+
+    block-size: 10rem;
+    flex: 1;
+    background: var(--tui-background-base) center;
+    background-size: cover;
+}
+
+tui-pager {
+    margin: 0 auto;
+}
+```
 
 #### Vertical alignment
 
@@ -8256,6 +9581,24 @@ export default class Example {
     protected onIndex(index: number): void {
         this.index = index * this.itemsCount;
     }
+}
+```
+**LESS:**
+```less
+.item {
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+    margin-block-end: auto;
+}
+
+.title {
+    margin: 0 0 1rem;
+}
+
+tui-pagination {
+    margin: 1rem auto 0;
+    min-block-size: 0.5rem;
 }
 ```
 
@@ -8374,6 +9717,18 @@ export default class Example {
     protected readonly sizes = ['s', 'm', 'l'] as const;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
+}
+```
 
 #### Label
 
@@ -8424,6 +9779,18 @@ import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiSwitch} from '@taiga-ui/kit';
 export default class Example {
     protected incoming = false;
     protected outgoing = true;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
 }
 ```
 
@@ -8508,6 +9875,18 @@ export default class Example {
     protected value = false;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
+}
+```
 
 #### Right side
 
@@ -8576,6 +9955,18 @@ import {TuiAvatar, TuiBadgeNotification, TuiSensitive, TuiTooltip} from '@taiga-
 })
 export default class Example {
     protected value = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
 }
 ```
 
@@ -8652,6 +10043,18 @@ import {TuiAvatar, TuiBadge, TuiBadgeNotification, TuiFade} from '@taiga-ui/kit'
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
+}
+```
 
 #### Actions
 
@@ -8708,6 +10111,18 @@ export default class Example {
             toString: () => 'Remove item',
         },
     ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
 }
 ```
 
@@ -8781,6 +10196,15 @@ export default class Example {
     ];
 
     protected value = this.items[0]!;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    max-inline-size: 20rem;
+    gap: 1rem;
 }
 ```
 
@@ -8887,6 +10311,15 @@ export default class Example {
     protected outgoing = true;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    max-inline-size: 20rem;
+    gap: 1rem;
+}
+```
 
 #### Disabled state
 
@@ -8953,6 +10386,21 @@ import {TuiBadgeNotification, TuiTooltip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cell,
+[tuiCell] {
+    inline-size: 100%;
+    max-inline-size: 25rem;
+    box-sizing: border-box;
 }
 ```
 
@@ -9067,6 +10515,34 @@ export default class Example implements OnInit {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+
+    --tui-background-accent-2: var(--tui-status-info);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+    padding: 1rem;
+
+    &_web {
+        border: 1px solid var(--tui-border-normal);
+        border-inline-start-width: 0;
+
+        &:first-child {
+            border-inline-end-width: 0;
+            border-inline-start-width: 1px;
+        }
+    }
+}
+```
 
 #### Example 2
 
@@ -9161,6 +10637,14 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+```
 
 
 ### TypeScript
@@ -9230,6 +10714,12 @@ import {TuiChip} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+[tuiChip] {
+    margin: 0.5rem;
+}
+```
 
 #### Sizes and content
 
@@ -9267,6 +10757,20 @@ import {TuiAvatar, TuiBadge, TuiChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly sizes = ['m', 's', 'xs', 'xxs'] as const;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 ```
 
@@ -9327,6 +10831,24 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+h3 {
+    margin: 0;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+```
 
 #### Use cases
 
@@ -9372,6 +10894,38 @@ import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-u
 })
 export default class Example {
     protected selected = false;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.fade {
+    max-inline-size: 11rem;
+}
+
+.ellipsis {
+    max-inline-size: 7rem;
+    .text-overflow();
+}
+
+[data-appearance='custom'] {
+    color: #fff;
+    background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    font-weight: bold;
+}
+
+.toggle {
+    .transition(transform);
+
+    color: inherit !important;
 }
 ```
 
@@ -9420,6 +10974,12 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+[tuiChip] {
+    margin: 0.5rem;
+}
+```
 
 #### Fade in complex designs
 
@@ -9461,6 +11021,19 @@ import {TuiAvatar, TuiChip, TuiFade} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+[tuiChip] {
+    margin: 0.5rem;
+    max-inline-size: 9rem;
+}
+
+.custom {
+    [tuiFade] {
+        flex: 1 1 auto;
+    }
+}
 ```
 
 
@@ -9625,6 +11198,16 @@ export default class Example {
     protected value = null;
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.scroll {
+    .scrollbar-hidden();
+
+    max-block-size: 100%;
+}
+```
 
 #### With DropdownMobile
 
@@ -9669,6 +11252,18 @@ export default class Example {
     );
 
     protected value: string | null = null;
+}
+```
+**LESS:**
+```less
+@sticky-header-height: 4.1875rem;
+
+:root {
+    --tui-dropdown-mobile-offset: @sticky-header-height + 1rem;
+}
+
+header[tuiDocHeader] {
+    visibility: visible;
 }
 ```
 
@@ -10079,6 +11674,14 @@ export default class Example {
     protected readonly stringify: TuiStringHandler<Card> = (x) => x.number;
 }
 ```
+**LESS:**
+```less
+.card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+```
 
 #### With DataList
 
@@ -10157,6 +11760,25 @@ export default class Example {
     protected selectedCategory = true;
 
     protected value: string | null = null;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.filters {
+    .scrollbar-hidden();
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    overflow: scroll;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-block-end: 1rem;
+    border-block-end: 1px solid var(--tui-border-normal);
+    background: var(--tui-background-elevation-3);
 }
 ```
 
@@ -10598,6 +12220,26 @@ import {TuiCopy} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 17rem;
+}
+
+[tuiSubtitle] {
+    color: var(--tui-text-secondary);
+}
+
+span {
+    display: inline-block;
+    max-inline-size: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: text-bottom;
+}
+```
 
 #### Sizes
 
@@ -10820,6 +12462,14 @@ export default class Example {
     protected value = 0;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 #### Appearances
 
@@ -10853,6 +12503,14 @@ export default class Example {
         '=1': ' pc',
         other: ' pcs',
     };
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 ```
 
@@ -10914,6 +12572,34 @@ import {TuiCard} from '@taiga-ui/layout';
 })
 export default class Example {
     protected value = 0;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.footer {
+    position: relative;
+    display: flex;
+    inline-size: 100%;
+    block-size: var(--tui-height-m);
+    align-items: center;
+    color: var(--tui-text-secondary);
+}
+
+.counter {
+    .transition(inline-size);
+
+    position: absolute;
+    inline-size: 100%;
+    min-inline-size: var(--tui-height-m);
+    inset-inline-end: 0;
+    overflow: hidden;
+
+    &_minimized {
+        inline-size: var(--tui-height-m);
+        color: transparent;
+    }
 }
 ```
 
@@ -11385,6 +13071,26 @@ export default class Example {
     protected onDayClick(day: TuiDay): void {
         this.dateValue = day;
     }
+}
+```
+**LESS:**
+```less
+.example {
+    margin-block-end: 0.5rem;
+    min-inline-size: 20.25rem;
+}
+
+.form {
+    min-inline-size: 18.75rem;
+    overflow: hidden;
+}
+
+.exchange {
+    margin: 1.5625rem;
+}
+
+.group {
+    max-inline-size: 30.25rem;
 }
 ```
 
@@ -12049,6 +13755,40 @@ export default class Example {
     protected custom = false;
 }
 ```
+**LESS:**
+```less
+[data-appearance~='compact'] {
+    padding: 1rem !important;
+    border-radius: var(--tui-radius-s) !important;
+}
+
+[data-appearance='sheet'] {
+    inline-size: 100vw;
+    align-self: flex-end;
+    padding: 1.25rem 1rem ~'max(1.25rem, env(safe-area-inset-bottom))';
+
+    --tui-from: translate3d(0, 100vh, 0);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiSlide;
+    }
+
+    > header,
+    > ng-component > header {
+        font: var(--tui-typography-heading-h6);
+    }
+
+    > p,
+    > ng-component > p {
+        margin: 1rem 0 0;
+    }
+
+    > button {
+        background: none !important;
+    }
+}
+```
 
 
 ### TypeScript
@@ -12354,6 +14094,16 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.drawer {
+    inline-size: 20rem;
+}
+
+.header {
+    position: sticky;
+}
+```
 
 
 ### TypeScript
@@ -12465,6 +14215,22 @@ import {TuiElasticContainer} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.container {
+    border: 2px solid var(--tui-text-tertiary);
+    overflow: visible;
+
+    &:focus-within {
+        border-color: var(--tui-background-accent-1);
+    }
+}
+
+.editable {
+    outline: none;
+    padding: 1rem;
+}
+```
 
 #### Example 3
 
@@ -12499,6 +14265,12 @@ export default class Example {
     protected remove(): void {
         this.content--;
     }
+}
+```
+**LESS:**
+```less
+.visible {
+    overflow: visible;
 }
 ```
 
@@ -12563,6 +14335,24 @@ export default class Example {
     protected remove(index: number): void {
         this.items = tuiArrayRemove(this.items, index);
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.wrapper:not(:last-child) {
+    margin-block-end: 1rem;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.remove {
+    margin-inline-start: auto;
 }
 ```
 
@@ -13374,6 +15164,27 @@ export default class Example {
     protected disabledItemHandler: TuiBooleanHandler<string> = (item) => item.length < 7;
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    max-inline-size: 34.375rem;
+}
+
+.title {
+    font: var(--tui-typography-heading-h5);
+    margin: 0 0 0.75rem;
+}
+
+.filters {
+    display: inline;
+}
+
+.tag {
+    margin: 0 0.25rem 0.25rem 0;
+}
+```
 
 #### With badges
 
@@ -13455,6 +15266,27 @@ export default class Example {
         item.operations.length;
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    max-inline-size: 34.375rem;
+}
+
+.title {
+    font: var(--tui-typography-heading-h5);
+    margin: 0 0 0.75rem;
+}
+
+.filters {
+    display: inline;
+}
+
+.tag {
+    margin: 0 0.25rem 0.25rem 0;
+}
+```
 
 #### Custom
 
@@ -13502,6 +15334,27 @@ export default class Example {
     protected getItemIcon(title: string): string {
         return getIcon[title] ?? '';
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    max-inline-size: 34.375rem;
+}
+
+.title {
+    font: var(--tui-typography-heading-h5);
+    margin: 0 0 0.75rem;
+}
+
+.filters {
+    display: inline;
+}
+
+.tag {
+    margin: 0 0.25rem 0.25rem 0;
 }
 ```
 
@@ -13569,6 +15422,15 @@ export default class Example {
             this.items.length === this.filters$.value.length ? [] : [...this.items],
         );
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.item {
+    display: inline;
+    vertical-align: bottom;
 }
 ```
 
@@ -13744,6 +15606,22 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.content {
+    position: relative;
+    display: block;
+    inline-size: 18rem;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+footer {
+    margin-inline: 1rem;
+}
+```
 
 #### Sheet
 
@@ -13828,6 +15706,22 @@ export default class Example {
     ) => TUI_DEFAULT_MATCHER(item.title, search);
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.content {
+    flex-grow: 1;
+    margin: 0 -1rem;
+}
+
+.input {
+    .tui-prevent-ios-scroll();
+
+    inline-size: 100%;
+    margin-block-start: 0.25rem;
+}
+```
 
 #### Text
 
@@ -13885,6 +15779,36 @@ import {TuiElasticContainer, TuiFloatingContainer, TuiSlides} from '@taiga-ui/la
 export default class Example {
     protected floating = true;
     protected additional = false;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.content {
+    position: relative;
+    display: block;
+    inline-size: 18rem;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+footer {
+    margin-inline: 1rem;
+}
+
+.clamp {
+    .tui-line-clamp();
+
+    margin-block-start: 0.5rem;
+    min-block-size: 2rem;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade;
+    }
 }
 ```
 
@@ -13955,6 +15879,26 @@ import {TuiCardLarge, TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {
     protected value = '';
+}
+```
+**LESS:**
+```less
+.content {
+    position: relative;
+    display: block;
+    inline-size: 18rem;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+.static {
+    animation: none;
+}
+
+footer {
+    margin-inline: 1rem;
 }
 ```
 
@@ -14037,6 +15981,28 @@ export default class Example {
     protected color = 'rgba(255, 221, 45, 0.8)';
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.content {
+    position: relative;
+    display: block;
+    inline-size: 18rem;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+footer {
+    margin-inline: 1rem;
+}
+
+.label {
+    .tui-slider-ticks-labels();
+}
+```
 
 #### Crossfade
 
@@ -14097,6 +16063,22 @@ export default class Example {
     protected floating = true;
     protected action = false;
     protected secondAction = false;
+}
+```
+**LESS:**
+```less
+.content {
+    position: relative;
+    display: block;
+    inline-size: 18rem;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+footer {
+    margin-inline: 1rem;
 }
 ```
 
@@ -14488,6 +16470,22 @@ export default class Example {
     });
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.stack {
+    display: flex;
+    gap: inherit;
+    flex-direction: column;
+}
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+
+    margin-block-start: -1rem;
+}
+```
 
 #### Grouped
 
@@ -14581,6 +16579,24 @@ export default class Example {
     protected next(): void {
         this.index.update((index) => index + 1);
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    max-inline-size: 32rem;
+}
+
+form {
+    margin: 1.25rem 0;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
 }
 ```
 
@@ -14716,6 +16732,12 @@ export default class Example {
     });
 }
 ```
+**LESS:**
+```less
+.group {
+    max-inline-size: 30.25rem;
+}
+```
 
 #### ButtonGroup
 
@@ -14742,6 +16764,13 @@ import {TuiButton, TuiGroup} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.group {
+    max-inline-size: 30rem;
+    white-space: nowrap;
+}
 ```
 
 #### Vertical group
@@ -14814,6 +16843,13 @@ import {TuiBlock} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly form = new FormGroup({value: new FormControl('')});
+}
+```
+**LESS:**
+```less
+.content {
+    padding: 0.5rem 0;
+    white-space: normal;
 }
 ```
 
@@ -14976,6 +17012,14 @@ import {TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+```
 
 #### Accessories
 
@@ -15057,6 +17101,20 @@ import {TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.description {
+    font: var(--tui-typography-body-l);
+    margin-block-start: 0.5rem;
+    max-inline-size: 30rem;
+}
+```
 
 #### Interactive
 
@@ -15086,6 +17144,28 @@ import {TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.interactive-title {
+    .transition(color);
+
+    cursor: pointer;
+
+    & > tui-icon {
+        .transition(transform);
+    }
+
+    &:hover {
+        color: var(--tui-text-action);
+
+        & > tui-icon {
+            transform: translate(0.25rem);
+        }
+    }
+}
 ```
 
 
@@ -15154,6 +17234,16 @@ import {TuiIcon} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+    color: var(--tui-text-action);
+
+    --tui-font-icon: 'Material Symbols Outlined';
+}
+```
 
 #### Parameters
 
@@ -15198,6 +17288,20 @@ export default class Example {
     protected thickness = 2;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+tui-icon {
+    margin: 1rem;
+    align-self: center;
+    box-shadow: 0 0 0 0.125rem var(--tui-border-normal);
+}
+```
 
 #### Features
 
@@ -15222,6 +17326,31 @@ import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+tui-icon {
+    color: var(--tui-text-action);
+
+    &:first-child {
+        color: var(--tui-status-negative);
+        background-color: var(--tui-status-negative-pale-hover);
+    }
+
+    &::after {
+        color: var(--tui-status-warning);
+    }
+}
+
+img {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+}
 ```
 
 #### Bundled
@@ -15254,6 +17383,14 @@ import search from '@taiga-ui/icons/src/search.svg';
     ],
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+    color: var(--tui-text-action);
+}
 ```
 
 #### Resolver
@@ -15292,6 +17429,14 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+    color: var(--tui-text-action);
+}
+```
 
 #### External
 
@@ -15319,6 +17464,16 @@ export default class Example {
     protected readonly icon = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>',
     )}`;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+    color: var(--tui-text-action);
+
+    --tui-stroke-width: ~'0px';
 }
 ```
 
@@ -15451,6 +17606,14 @@ export default class Example {
     protected value = '';
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 #### States
 
@@ -15490,6 +17653,14 @@ import {TuiTooltip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = 'Test';
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 ```
 
@@ -15549,6 +17720,14 @@ export default class Example {
     protected value = '';
 
     protected readonly items = inject<readonly string[]>('Pythons' as any);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 ```
 
@@ -15803,6 +17982,23 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+section {
+    display: flex;
+    gap: inherit;
+
+    tui-textfield {
+        flex: 1;
+    }
+}
+```
 
 #### Card
 
@@ -16017,6 +18213,28 @@ export default class Example {
 
     protected readonly card = new FormGroup({meta: new FormControl(this.items[0])});
     protected open = false;
+}
+```
+**LESS:**
+```less
+.new {
+    inline-size: 2.5rem;
+    block-size: 1.625rem;
+    border-radius: 0.25rem;
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-action);
+}
+
+.card {
+    background: var(--tui-chart-categorical-01);
+
+    button:nth-child(4) & {
+        background: var(--tui-chart-categorical-05);
+    }
+}
+
+.label {
+    margin: 0 auto 0 0.75rem;
 }
 ```
 
@@ -16301,6 +18519,15 @@ export default class Example {
     protected readonly separator = /[\s,;]/;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 19rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 #### Virtual scroll
 
@@ -16395,6 +18622,14 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+[tuiScrollable] {
+    .scrollbar-hidden();
+}
+```
 
 #### Stringify
 
@@ -16477,6 +18712,15 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value: string[] = ['I', 'love', 'Angular'];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 19rem;
+    flex-direction: column;
+    gap: 1rem;
 }
 ```
 
@@ -16604,6 +18848,15 @@ export default class Example {
     protected readonly disabled = (item: string): boolean => !this.items.includes(item);
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 19rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 #### Customization
 
@@ -16710,6 +18963,15 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 19rem;
+}
+```
 
 #### Mobile
 
@@ -16782,6 +19044,15 @@ export default class Example {
     protected readonly disabled = (item: string): boolean => !this.items.includes(item);
     protected readonly identity: TuiIdentityMatcher<User> = (a, b) => a.index === b.index;
     protected readonly stringify = ({name}: User): string => name;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 19rem;
+    flex-direction: column;
+    gap: 1rem;
 }
 ```
 
@@ -16857,6 +19128,14 @@ export default class Example {
     protected readonly multiControl2 = new FormControl(null, {
         validators: Validators.required,
     });
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 19rem;
+    flex-direction: column;
 }
 ```
 
@@ -17008,6 +19287,14 @@ import {TuiInputColor, tuiInputColorOptionsProvider} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = '#ff7f50cc';
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.label {
+    .tui-slider-ticks-labels();
 }
 ```
 
@@ -17175,6 +19462,14 @@ import {TuiInputDate} from '@taiga-ui/kit';
 export default class Example {
     protected readonly control = new FormControl<TuiDay | null>(null);
     protected readonly today = TuiDay.currentLocal();
+}
+```
+**LESS:**
+```less
+.button {
+    inline-size: 100%;
+    border-radius: 0;
+    box-shadow: 0 -1px var(--tui-border-normal);
 }
 ```
 
@@ -17453,6 +19748,17 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+section {
+    display: flex;
+}
+
+tui-data-list {
+    inline-size: 11rem;
+    box-shadow: -1px 0 var(--tui-border-normal);
+}
+```
 
 
 ### TypeScript
@@ -17607,6 +19913,13 @@ export default class Example {
     protected value = [new TuiDay(2025, 6, 6)];
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 20rem;
+}
+```
 
 #### Example 3
 
@@ -17638,6 +19951,13 @@ export default class Example {
     protected value = [new TuiDay(2025, 6, 6)];
 
     protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 20rem;
 }
 ```
 
@@ -17677,6 +19997,15 @@ export default class Example {
     protected value = [new TuiDay(2025, 6, 6)];
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    inline-size: 20rem;
+}
+```
 
 #### Example 5
 
@@ -17712,6 +20041,13 @@ export default class Example {
 
     protected readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =>
         day.isWeekend ? [] : DOT;
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 22rem;
 }
 ```
 
@@ -18295,6 +20631,14 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+button {
+    inline-size: 100%;
+    border-radius: 0;
+    box-shadow: 0 -1px var(--tui-border-normal);
+}
+```
 
 #### Example 4
 
@@ -18611,6 +20955,17 @@ export default class Example {
     protected asIs(): number {
         return 0;
     }
+}
+```
+**LESS:**
+```less
+section {
+    display: flex;
+}
+
+tui-data-list {
+    inline-size: 12rem;
+    box-shadow: -1px 0 var(--tui-border-normal);
 }
 ```
 
@@ -19025,6 +21380,17 @@ export default class Example {
     protected readonly file: TuiFileLike = {name: 'custom.txt'};
 }
 ```
+**LESS:**
+```less
+.content {
+    display: flex;
+    block-size: 10rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+```
 
 #### Camera capture
 
@@ -19248,6 +21614,40 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.input1,
+.input2,
+.input3 {
+    margin-inline-end: 0.625rem;
+}
+
+.input1 {
+    border: 2px solid var(--tui-status-negative);
+}
+
+.input2 {
+    background: var(--tui-background-accent-opposite);
+    padding: 0.625rem;
+    color: var(--tui-background-base);
+    letter-spacing: 0.625rem;
+    font-size: 1.25rem;
+}
+
+.input3 {
+    font-family: monospace;
+    font-weight: bold;
+    background: var(--tui-border-normal);
+}
+
+.input4 {
+    &_empty {
+        opacity: 0.3;
+    }
+}
+```
 
 #### Heading
 
@@ -19293,6 +21693,20 @@ export default class Example {
 
     private saveHeading(newHeading: string): void {
         this.alerts.open(newHeading, {label: 'New heading'}).subscribe();
+    }
+}
+```
+**LESS:**
+```less
+.header {
+    display: flex;
+    block-size: 1.5rem;
+    align-items: center;
+    white-space: nowrap;
+    line-height: 1.5rem;
+
+    &_empty {
+        opacity: 0.3;
     }
 }
 ```
@@ -19356,6 +21770,17 @@ export default class Example implements OnInit {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.input1 {
+    border: 2px solid var(--tui-status-negative);
+    padding: 0.625rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+```
 
 #### Inside text
 
@@ -19403,6 +21828,22 @@ import {TuiInputInline} from '@taiga-ui/kit';
 })
 export default class Example {
     protected answer = '';
+}
+```
+**LESS:**
+```less
+.task:first-child input:not(:placeholder-shown) {
+    text-decoration: underline;
+    text-align: center;
+}
+
+tui-input-inline._empty,
+tui-input-inline:has(input:placeholder-shown) {
+    color: var(--tui-text-tertiary);
+}
+
+tui-input-inline:has(input[placeholder]) {
+    min-inline-size: 3ch;
 }
 ```
 
@@ -19604,6 +22045,14 @@ export default class Example {
         this.value = new TuiMonth(1998, 2);
         this.open.set(false);
     }
+}
+```
+**LESS:**
+```less
+.option {
+    border-block-start: 1px solid var(--tui-border-normal);
+    inline-size: 100%;
+    block-size: 3rem;
 }
 ```
 
@@ -20130,6 +22579,13 @@ export default class Example {
     protected onStep(step: number): void {
         this.value = Math.max(0, (this.value ?? 0) + step);
     }
+}
+```
+**LESS:**
+```less
+[tuiButton] {
+    border-radius: 10rem;
+    margin-inline-start: 0.125rem;
 }
 ```
 
@@ -21233,6 +23689,19 @@ export default class Example {
     protected readonly control = new FormControl([20, 40]);
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+}
+
+tui-icon {
+    block-size: 1.25rem;
+    font-size: 1rem;
+}
+```
 
 #### Example 4
 
@@ -21313,6 +23782,14 @@ export default class Example {
         [75, 500_000],
         [100, this.max],
     ];
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
 }
 ```
 
@@ -21648,6 +24125,18 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.slider-ticks-labels {
+    .tui-slider-ticks-labels();
+}
+
+button {
+    margin: -0.125rem;
+}
+```
 
 #### KeySteps
 
@@ -21693,6 +24182,14 @@ export default class Example {
         [75, 500],
         [100, this.max],
     ];
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.slider-ticks-labels {
+    .tui-slider-ticks-labels();
 }
 ```
 
@@ -22239,6 +24736,14 @@ export default class Example {
     protected readonly initialValue = new TuiTime(23, 59, 59, 999);
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 
 ### TypeScript
@@ -22596,6 +25101,13 @@ export default class Example {
     protected selected = 'Wi-Fi';
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-inline-size: 30rem;
+}
+```
 
 #### Multiple choice
 
@@ -22640,6 +25152,13 @@ export default class Example {
     ];
 
     protected checked = this.chips.map(TUI_FALSE_HANDLER);
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-inline-size: 30rem;
 }
 ```
 
@@ -22692,6 +25211,13 @@ export default class Example {
     ];
 
     protected selected = 'Wi-Fi';
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-inline-size: 30rem;
 }
 ```
 
@@ -22851,6 +25377,22 @@ export default class Page {
     protected value = this.items.map(TUI_FALSE_HANDLER) as boolean[];
 }
 ```
+**LESS:**
+```less
+.item {
+    border-radius: inherit;
+    font-weight: normal;
+}
+
+._hidden {
+    visibility: hidden;
+}
+
+tui-icon {
+    inline-size: 1rem;
+    block-size: 1rem;
+}
+```
 
 #### Side
 
@@ -22934,6 +25476,41 @@ export default class Page {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    max-inline-size: 30rem;
+}
+
+.container {
+    max-block-size: 4.5rem;
+    overflow: hidden;
+
+    &_expanded {
+        max-block-size: 100%;
+    }
+}
+
+.item {
+    .transition(~'transform, opacity');
+
+    opacity: 0;
+    transform: scale(0.9);
+    margin: 0 0.25rem 0.25rem 0;
+
+    &_visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.more {
+    margin: 0 0.25rem 0.25rem 0;
+}
+```
 
 #### Cell
 
@@ -23006,6 +25583,22 @@ export default class Page {
     ];
 
     protected value = this.items[0];
+}
+```
+**LESS:**
+```less
+[tuiCell],
+[tuiTitle] {
+    flex: 1;
+}
+
+div {
+    display: flex;
+}
+
+span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 ```
 
@@ -23311,6 +25904,39 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+
+    @media @tui-mobile {
+        flex-direction: column;
+    }
+}
+
+.legend {
+    margin: 0 0 0 2rem;
+
+    @media @tui-mobile {
+        margin: 2rem 0 0;
+    }
+}
+
+.item {
+    margin: 0 0.5rem 0.75rem 0;
+}
+```
 
 #### Toggling
 
@@ -23387,6 +26013,66 @@ export default class Example {
             this.toggle(index);
         }
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
+}
+
+.chart {
+    pointer-events: none;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-block-start: 1rem;
+
+    @media @tui-mobile {
+        flex-direction: column;
+    }
+}
+
+.disable {
+    .transition(~'transform, color');
+
+    margin-inline-start: 0.5rem;
+    will-change: transform;
+    color: var(--tui-text-secondary);
+    pointer-events: auto;
+
+    &::before {
+        font-size: 1rem;
+    }
+
+    &:hover {
+        color: var(--tui-text-primary);
+    }
+
+    &_rotated {
+        transform: rotate(45deg);
+    }
+}
+
+.legend {
+    margin: 0 0 0 2rem;
+    justify-content: center;
+
+    @media @tui-mobile {
+        margin: 2rem 0 0;
+    }
+}
+
+.item {
+    margin: 0 0.5rem 0.75rem 0;
 }
 ```
 
@@ -23681,6 +26367,14 @@ export default class Example {
     }: TuiContext<readonly TuiPoint[]>): number => $implicit[0]?.[1] ?? 0;
 }
 ```
+**LESS:**
+```less
+.axes {
+    block-size: 12.5rem;
+    inline-size: 25rem;
+    color: #bc71c9;
+}
+```
 
 #### Smooth
 
@@ -23715,6 +26409,14 @@ export default class Example {
         [300, 190],
         [350, 90],
     ];
+}
+```
+**LESS:**
+```less
+.axes {
+    block-size: 12.5rem;
+    inline-size: 25rem;
+    color: #bc71c9;
 }
 ```
 
@@ -23761,6 +26463,28 @@ export default class Example {
         [300, 190],
         [350, 90],
     ];
+}
+```
+**LESS:**
+```less
+.axes {
+    block-size: 12.5rem;
+    inline-size: 25rem;
+    color: #bc71c9;
+}
+
+.chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &_dotted {
+        stroke-dasharray: 2;
+    }
+
+    &_dashed {
+        stroke-dasharray: 4;
+    }
 }
 ```
 
@@ -23811,6 +26535,14 @@ export default class Example {
 
     protected readonly hint: TuiStringHandler<TuiContext<TuiPoint>> = ({$implicit}) =>
         `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
+}
+```
+**LESS:**
+```less
+.axes {
+    block-size: 12.5rem;
+    inline-size: 25rem;
+    color: #bc71c9;
 }
 ```
 
@@ -23870,6 +26602,26 @@ export default class Example {
     protected readonly hint: TuiStringHandler<TuiContext<readonly TuiPoint[]>> = ({
         $implicit,
     }) => `${$implicit[0]?.[0]} items:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
+}
+```
+**LESS:**
+```less
+.axes {
+    block-size: 12.5rem;
+    inline-size: 25rem;
+}
+
+.chart {
+    position: absolute;
+    color: #ffb74c;
+
+    &:first-child {
+        color: #bc71c9;
+    }
+
+    &:last-child {
+        color: #4dc3f7;
+    }
 }
 ```
 
@@ -24036,6 +26788,49 @@ export default class Example {
     );
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.island {
+    inline-size: 20rem;
+    margin-block-end: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+    box-sizing: border-box;
+}
+
+.hint {
+    font: var(--tui-typography-body-s);
+    line-height: inherit;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    inline-size: 100%;
+    margin: 0 auto;
+    border: 1px solid var(--tui-border-normal);
+    background-color: var(--tui-background-base);
+}
+
+.result {
+    display: flex;
+    inline-size: 100%;
+    block-size: 3.5rem;
+    align-items: center;
+
+    .content {
+        padding: 0 1rem;
+    }
+}
+```
 
 #### Expanding
 
@@ -24071,6 +26866,19 @@ export default class Example {
     private get collapsed(): boolean {
         return this.linesLimit === 2;
     }
+}
+```
+**LESS:**
+```less
+.island {
+    max-inline-size: 20rem;
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1.75rem;
+}
+
+.clamp {
+    pointer-events: none;
 }
 ```
 
@@ -24120,6 +26928,23 @@ export default class Example {
         this.lineLimit = this.getDynamicLineLimit(element);
         this.cdr.detectChanges();
     }
+}
+```
+**LESS:**
+```less
+.example {
+    min-block-size: 15rem;
+    max-block-size: 15rem;
+}
+
+.line-clamp-box {
+    block-size: 5.75rem;
+    min-block-size: 1.5rem;
+    resize: both;
+    overflow: auto;
+    padding: 0.5rem;
+    border-radius: var(--tui-radius-l);
+    border: 1px solid var(--tui-border-normal);
 }
 ```
 
@@ -24173,6 +26998,12 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+.dropdown-button {
+    inline-size: 16rem;
+}
+```
 
 #### Custom content workaround
 
@@ -24222,6 +27053,24 @@ export default class Example {
         firstName: 'John',
         lastName: 'Doe',
     };
+}
+```
+**LESS:**
+```less
+.island {
+    inline-size: 20rem;
+    margin-block-end: 1rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+}
+
+.email {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 ```
 
@@ -24462,6 +27311,21 @@ export default class Example {
     });
 }
 ```
+**LESS:**
+```less
+cdk-virtual-scroll-viewport {
+    block-size: 12.5rem;
+    border: 1px solid;
+    overscroll-behavior: none;
+}
+
+div {
+    block-size: 3.125rem;
+    padding: 0.625rem;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+}
+```
 
 #### Custom font-size and line-height
 
@@ -24653,6 +27517,18 @@ export default class Example {
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
         `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 50rem;
+}
+
+.axes {
+    block-size: 12.5rem;
+    color: #bc71c9;
 }
 ```
 
@@ -24863,6 +27739,68 @@ function even<T>(array: readonly T[]): readonly T[] {
     return array.filter((_, i) => !(i % 2));
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.color() {
+    color: var(--tui-chart-categorical-01);
+
+    &:first-child {
+        color: var(--tui-chart-categorical-08);
+    }
+
+    &:last-child {
+        color: var(--tui-chart-categorical-12);
+    }
+}
+
+.axes {
+    block-size: 12.5rem;
+}
+
+.controls {
+    display: flex;
+
+    tui-textfield {
+        flex: 1;
+    }
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    .color();
+
+    display: flex;
+    align-items: center;
+    margin: 0 0.75rem;
+
+    &::before {
+        content: '';
+        border-block-end: 0.125rem solid;
+        inline-size: 1rem;
+        margin-inline-end: 0.5rem;
+    }
+}
+
+.name {
+    color: var(--tui-text-primary);
+}
+
+.value {
+    color: #fff;
+}
+
+.chart {
+    .color();
+    .fullsize();
+}
+```
 
 
 ### TypeScript
@@ -25045,6 +27983,15 @@ import {TuiLink} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+[tuiTheme='dark'] {
+    background: var(--tui-background-base);
+    color: var(--tui-text-secondary);
+    padding: 1rem;
+    margin: 1rem -1rem;
+}
+```
 
 #### Long text
 
@@ -25144,6 +28091,17 @@ import {TuiList} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+h2 {
+    padding-block-start: 0.3125rem;
+    padding-block-end: 0.3125rem;
+}
+
+h6 {
+    margin: 0;
+}
 ```
 
 #### Numbered
@@ -25271,6 +28229,14 @@ import {TuiHeader, TuiList} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 #### Long text
 
@@ -25302,6 +28268,15 @@ import {TuiList} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    max-inline-size: 20rem;
+    gap: 1rem;
+}
 ```
 
 
@@ -25378,6 +28353,15 @@ import {TuiLoader} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+    background: var(--tui-background-accent-1);
+    box-shadow: 0 0 0 100rem var(--tui-background-accent-1);
+    color: var(--tui-text-primary-on-accent-1);
+}
+```
 
 #### With content overlay
 
@@ -25400,6 +28384,15 @@ import {TuiLoader} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    background: #3e4757;
+    box-shadow: 0 0 0 100rem #3e4757;
+    color: var(--tui-background-base);
+}
 ```
 
 #### Options
@@ -25431,6 +28424,12 @@ import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.inline-flex {
+    display: inline-flex;
+}
+```
 
 #### Custom stroke width
 
@@ -25456,6 +28455,36 @@ import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
     providers: [tuiLoaderOptionsProvider({size: 'xl'})],
 })
 export default class Example {}
+```
+**LESS:**
+```less
+tui-loader {
+    min-inline-size: 3.5rem;
+
+    &:nth-child(1) {
+        /**
+        Don't use `rem` units if you support Safari.
+        Safari doesn't support `rem` units for `stroke-*` properties of `<circle />`.
+        Use `em` units => they will be interpreted as `rem` ones
+        (`<circle />` has `font-size: 1rem`).
+        Or just use simple `px` units.
+        */
+        --tui-thickness: 0.125em;
+    }
+
+    &:nth-child(2) {
+        --tui-thickness: 0.25rem;
+    }
+
+    &:nth-child(3) {
+        --tui-thickness: 0.5rem;
+    }
+}
+
+:host {
+    display: flex;
+    gap: 2rem;
+}
 ```
 
 
@@ -25571,6 +28600,13 @@ import {TuiMessage} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
 
 #### Custom color
 
@@ -25602,6 +28638,34 @@ import {TuiMessage} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+[tuiAppearance][data-appearance='custom'] {
+    background: rgba(175, 242, 24, 1);
+}
+
+.container {
+    display: flex;
+    inline-size: 100%;
+}
+
+.incoming {
+    justify-content: flex-start;
+}
+
+.outgoing {
+    justify-content: flex-end;
+}
 ```
 
 #### With link
@@ -25670,6 +28734,48 @@ import {TuiFade, TuiMessage} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.fade {
+    max-inline-size: 11rem;
+}
+
+.multiline {
+    white-space: initial;
+}
+
+.container {
+    display: flex;
+    inline-size: 100%;
+}
+
+.incoming {
+    justify-content: flex-start;
+
+    > [tuiMessage] {
+        margin-inline-start: 1rem;
+        margin-inline-end: 2rem;
+    }
+}
+
+.outgoing {
+    justify-content: flex-end;
+
+    > [tuiMessage] {
+        margin-inline-start: 2rem;
+        margin-inline-end: 1rem;
+    }
+}
+```
 
 #### Inside cells
 
@@ -25712,6 +28818,18 @@ import {TuiAvatar, TuiMessage} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
+}
 ```
 
 
@@ -25854,6 +28972,21 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    margin-inline-start: 1rem;
+
+    &_empty {
+        color: var(--tui-text-tertiary);
+    }
+}
+```
 
 #### Range
 
@@ -25885,6 +29018,12 @@ export default class Example {
     protected max = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 10);
 }
 ```
+**LESS:**
+```less
+.example {
+    block-size: 35rem;
+}
+```
 
 #### Localization
 
@@ -25911,6 +29050,13 @@ import {tuiCalendarOptionsProvider} from '@taiga-ui/core';
 })
 export default class Example {
     protected min = TuiDay.currentLocal();
+}
+```
+**LESS:**
+```less
+tui-mobile-calendar {
+    max-inline-size: 20rem;
+    block-size: 30rem;
 }
 ```
 
@@ -25996,6 +29142,21 @@ export default class Example {
 
     protected onClick(): void {
         this.dialog$.subscribe((value) => this.control.setValue(value));
+    }
+}
+```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    margin-inline-start: 1rem;
+
+    &_empty {
+        color: var(--tui-text-tertiary);
     }
 }
 ```
@@ -26086,6 +29247,21 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    margin-inline-start: 1rem;
+
+    &_empty {
+        color: var(--tui-text-tertiary);
+    }
+}
+```
 
 #### Without header
 
@@ -26118,6 +29294,13 @@ import {TUI_CHOOSE_DAY_OR_RANGE_TEXTS} from '@taiga-ui/kit';
 export default class Example {
     protected min = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 1);
     protected max = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 10);
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    block-size: 35rem;
 }
 ```
 
@@ -26706,6 +29889,27 @@ export default class Example extends TuiPortals {
     protected open = true;
 }
 ```
+**LESS:**
+```less
+:host {
+    // Use TuiThemeColorService instead, this is just for demo purposes
+    --tui-theme-color: #87ceeb;
+}
+
+.drawer {
+    // Unnecessary when TuiThemeColorService is instead
+    background: rgb(135, 206, 235);
+    color: var(--tui-text-primary);
+}
+
+aside::before {
+    display: none;
+}
+
+header::after {
+    display: none;
+}
+```
 
 #### InputSearch
 
@@ -26973,6 +30177,14 @@ import {TuiButton, TuiLink, TuiNotification, TuiTitle} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 #### Options
 
@@ -27034,6 +30246,22 @@ import {TuiNotification, TuiTitle} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly routes = DemoRoute;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+button[tuiNotification]::before {
+    .center-top();
+
+    color: var(--tui-text-negative);
 }
 ```
 
@@ -27551,6 +30779,21 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.progress {
+    .transition(~'color, inline-size');
+
+    inline-size: 1rem;
+
+    &:not(&_active) {
+        inline-size: 0.5rem;
+        color: transparent;
+    }
+}
+```
 
 
 ### TypeScript
@@ -27657,6 +30900,13 @@ export default class Page {
     }
 }
 ```
+**LESS:**
+```less
+.slider {
+    inline-size: 12.5rem;
+    margin-block-end: 1em;
+}
+```
 
 #### Visible pages around active
 
@@ -27689,6 +30939,13 @@ export default class Page {
     protected activePadding = 2;
 }
 ```
+**LESS:**
+```less
+.slider {
+    inline-size: 12.5rem;
+    margin-block-end: 1em;
+}
+```
 
 #### Visible edge pages
 
@@ -27719,6 +30976,13 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
 })
 export default class Page {
     protected sidePadding = 3;
+}
+```
+**LESS:**
+```less
+.slider {
+    inline-size: 12.5rem;
+    margin-block-end: 1em;
 }
 ```
 
@@ -28008,6 +31272,13 @@ export default class Example {
     protected index = 1;
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+```
 
 #### With labels
 
@@ -28038,6 +31309,16 @@ import {TuiHint} from '@taiga-ui/core';
 export default class Example {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
+}
+```
+**LESS:**
+```less
+:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
 }
 ```
 
@@ -28156,6 +31437,23 @@ import {TuiPin} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 2rem;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
+    padding: 1rem 0 0 1rem;
+    margin-block-end: -1rem;
+}
+
+.white {
+    background: var(--tui-background-base);
+    color: var(--tui-background-accent-2);
+    border-width: 0.125rem;
+}
+```
 
 #### Dot
 
@@ -28181,6 +31479,33 @@ import {TuiPin} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 2rem;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
+    padding: 0.375rem 0 0 0.375rem;
+    margin-block-end: -0.375rem;
+}
+
+.blue {
+    background: #428bf9;
+}
+
+.yellow {
+    background: #ffdd2d;
+}
+
+.green {
+    background: #00b92d;
+}
+
+.red {
+    background: #f52222;
+}
 ```
 
 #### Openable
@@ -28218,6 +31543,35 @@ export default class Example {
     protected b = false;
     protected c = true;
     protected d = false;
+}
+```
+**LESS:**
+```less
+:host {
+    position: relative;
+    display: block;
+    block-size: 5rem;
+    border-inline-start: 2rem solid transparent;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
+}
+
+[tuiPin] {
+    position: absolute;
+    top: 4rem;
+}
+
+.link {
+    border: 0.125rem solid var(--tui-text-action);
+    color: var(--tui-text-action);
+    background: var(--tui-background-base);
+}
+
+.crazy {
+    background: #ff9bda;
+    color: #0075ff;
+    border-color: #7b439e;
+    box-shadow: 0 0 0 0.125rem #b286ff;
 }
 ```
 
@@ -28395,6 +31749,29 @@ export default class Example {
     protected readonly open = signal(false);
 }
 ```
+**LESS:**
+```less
+main {
+    display: grid;
+    block-size: 100vh;
+    place-items: center;
+    place-content: center;
+    grid-auto-rows: min-content;
+    gap: 2rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    background: var(--tui-background-base);
+}
+
+section {
+    display: flex;
+    gap: 1rem;
+}
+
+[tuiTitle] {
+    text-align: center;
+}
+```
 
 
 ### TypeScript
@@ -28512,6 +31889,24 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.content {
+    font: var(--tui-typography-body-l);
+    background-color: var(--tui-background-base);
+    inline-size: 50rem;
+    block-size: 68.75rem;
+    padding: 3.75rem;
+    box-sizing: border-box;
+    border-radius: 0.75rem;
+}
+
+.polymorpheus {
+    padding: 2.5rem 10.375rem;
+}
+```
 
 #### Preview with directive
 
@@ -28590,6 +31985,13 @@ export default class Example {
     protected show(): void {
         this.previewDialogService.open(this.preview || '').subscribe();
     }
+}
+```
+**LESS:**
+```less
+.content {
+    inline-size: 80%;
+    block-size: 80%;
 }
 ```
 
@@ -28687,6 +32089,32 @@ export default class Example {
             map(() => 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg'),
         );
     }
+}
+```
+**LESS:**
+```less
+.content {
+    background-color: rgb(245, 241, 241);
+    inline-size: 25rem;
+    block-size: 37.5rem;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+}
+
+.t-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--tui-text-secondary);
+}
+
+.t-icon {
+    margin-block-end: 0.75rem;
+    font-size: 5rem;
+}
+
+.t-loader {
+    inline-size: 4rem;
 }
 ```
 
@@ -28818,6 +32246,22 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+.progress {
+    margin-block-end: 1rem;
+    color: var(--tui-chart-categorical-09);
+}
+
+.description {
+    font: var(--tui-typography-heading-h6);
+    margin-block-end: 1rem;
+
+    &:first-child {
+        margin-block-start: 0;
+    }
+}
+```
 
 #### Sizes
 
@@ -28845,6 +32289,14 @@ import {TuiProgress} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 ```
 
 #### With label
@@ -28883,6 +32335,14 @@ export default class Example {
               );
 }
 ```
+**LESS:**
+```less
+.label-wrapper {
+    inline-size: 100%;
+    text-shadow: 0 0 0.25rem #000;
+    color: var(--tui-text-primary-on-accent-1);
+}
+```
 
 #### Stacked progress bars
 
@@ -28908,6 +32368,22 @@ import {TuiProgress} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.label-wrapper {
+    inline-size: 100%;
+}
+
+.progress {
+    &:nth-child(1) {
+        color: #a3ecb3;
+    }
+
+    &:nth-child(2) {
+        color: #39b54a;
+    }
+}
 ```
 
 #### Indeterminate
@@ -28953,6 +32429,12 @@ import {TuiProgress} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+[tuiProgressBar] {
+    border-radius: 0;
+}
 ```
 
 
@@ -29112,6 +32594,20 @@ export default class Example {
     protected readonly sizes = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media @tui-desktop-min {
+        flex-direction: row-reverse;
+    }
+}
+```
 
 #### With label
 
@@ -29152,6 +32648,17 @@ export default class Example {
               );
 }
 ```
+**LESS:**
+```less
+.text {
+    font: var(--tui-typography-body-s);
+    color: var(--tui-text-tertiary);
+}
+
+.percent {
+    font: var(--tui-typography-heading-h6);
+}
+```
 
 #### Colors
 
@@ -29186,6 +32693,28 @@ import {TuiProgress} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.progress {
+    &[data-size='l'] {
+        color: var(--tui-chart-categorical-01);
+    }
+
+    &[data-size='m'] {
+        color: var(--tui-chart-categorical-03);
+    }
+
+    &[data-size='s'] {
+        color: var(--tui-chart-categorical-09);
+    }
+}
 ```
 
 #### Dynamic color
@@ -29238,6 +32767,12 @@ export default class Example {
     );
 }
 ```
+**LESS:**
+```less
+tui-progress-circle {
+    transition: color 2s;
+}
+```
 
 #### Anti-clockwise direction
 
@@ -29273,6 +32808,13 @@ export default class Example {
               );
 }
 ```
+**LESS:**
+```less
+tui-progress-circle {
+    transform: scaleX(-1) // reversed direction
+        rotate(-90deg); // top side starting point
+}
+```
 
 #### Thickness
 
@@ -29295,6 +32837,38 @@ import {TuiProgress} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+tui-progress-circle {
+    &:nth-child(1) {
+        --tui-thickness: 0.125rem;
+    }
+
+    &:nth-child(2) {
+        --tui-thickness: 0.25rem;
+    }
+
+    &:nth-child(3) {
+        --tui-thickness: 0.375rem;
+    }
+
+    &:nth-child(4) {
+        --tui-thickness: 0.5rem;
+    }
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media @tui-desktop-min {
+        flex-direction: row;
+    }
+}
 ```
 
 #### Arc mode
@@ -29319,6 +32893,21 @@ import {TuiProgress} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly sizes = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+
+    @media @tui-mobile {
+        flex-direction: column;
+        margin-block-end: 1rem;
+    }
 }
 ```
 
@@ -29599,6 +33188,18 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.example-viewport {
+    block-size: 12.5rem;
+    border: 1px solid;
+    overscroll-behavior: none;
+}
+
+.example-item {
+    block-size: 3.125rem;
+}
+```
 
 
 ### TypeScript
@@ -29716,6 +33317,38 @@ export default class Example {
     protected readonly step = signal(0);
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+tui-pulse {
+    color: var(--tui-background-accent-2);
+}
+
+.step-1 {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
+
+.step-2 {
+    position: absolute;
+    top: 25%;
+    right: 25%;
+}
+
+.avatar {
+    inline-size: 100%;
+    block-size: 12rem;
+    object-fit: cover;
+    object-position: top;
+}
+```
 
 
 ### TypeScript
@@ -29808,6 +33441,31 @@ export default class Example {
             .open('Close button is visible when you subscribe to (close) output')
             .subscribe();
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+}
+
+.wrapper {
+    box-shadow: var(--tui-shadow-small);
+    inline-size: 22.5rem;
+    max-inline-size: 100%;
+    border-radius: var(--tui-radius-l);
+    margin-block-end: 1rem;
+    background: var(--tui-background-elevation-2);
+}
+
+.push {
+    box-shadow: none;
+}
+
+.human {
+    color: var(--tui-text-positive);
 }
 ```
 
@@ -29970,6 +33628,34 @@ export default class Example implements OnInit {
 
     protected getSize(first: boolean): TuiSizeS {
         return first ? 'm' : 's';
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+
+    --tui-background-accent-2: var(--tui-status-info);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+    padding: 1rem;
+
+    &_web {
+        border: 1px solid var(--tui-border-normal);
+        border-inline-start-width: 0;
+
+        &:first-child {
+            border-inline-end-width: 0;
+            border-inline-start-width: 1px;
+        }
     }
 }
 ```
@@ -30214,6 +33900,28 @@ export default class Example {
     protected pluralMap = {'=0': '0', '=1': '# item', '=100': 'MAX', other: '# items'};
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.range {
+    z-index: 1;
+
+    /* (Optionally) expand clickable area as you wish */
+    &::after {
+        top: -0.5rem;
+        bottom: -1.5rem;
+    }
+}
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+}
+
+tui-icon::before {
+    font-size: 1rem;
+}
+```
 
 #### KeySteps
 
@@ -30260,6 +33968,24 @@ export default class Example {
         [75, 500_000],
         [100, 1_000_000],
     ];
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.range {
+    z-index: 1;
+
+    /* (Optionally) expand clickable area as you wish */
+    &::after {
+        top: -0.5rem;
+        bottom: -1.5rem;
+    }
+}
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
 }
 ```
 
@@ -30363,6 +34089,13 @@ export default class Example {
     protected value = 0;
 }
 ```
+**LESS:**
+```less
+.rating {
+    font-size: 1.5rem;
+    inline-size: 10rem;
+}
+```
 
 #### Custom icons
 
@@ -30401,6 +34134,38 @@ export default class Example {
                 return '@tui.smile';
         }
     };
+}
+```
+**LESS:**
+```less
+.rating,
+.button {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.rating {
+    color: var(--tui-status-info);
+
+    &[data-value='1'] {
+        color: var(--tui-status-negative);
+        background-color: var(--tui-status-negative-pale-hover);
+    }
+
+    &[data-value='2'] {
+        color: var(--tui-status-warning);
+        background-color: var(--tui-status-warning-pale-hover);
+    }
+
+    &[data-value='3'] {
+        color: var(--tui-status-positive);
+        background-color: var(--tui-status-positive-pale-hover);
+    }
+
+    &:hover {
+        color: var(--tui-status-info);
+        background-color: var(--tui-status-info-pale-hover);
+    }
 }
 ```
 
@@ -30486,6 +34251,12 @@ export default class Example {
     protected enabled = this.items;
 }
 ```
+**LESS:**
+```less
+.list {
+    inline-size: 12.5rem;
+}
+```
 
 
 ### TypeScript
@@ -30553,6 +34324,13 @@ export default class Example {
     protected readonly value = [40, 30, 20, 10];
 }
 ```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+```
 
 #### With labels
 
@@ -30593,6 +34371,16 @@ export default class Example {
     protected get label(): string {
         return (Number.isNaN(this.index) ? 'Total' : this.labels[this.index]) ?? '';
     }
+}
+```
+**LESS:**
+```less
+:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
 }
 ```
 
@@ -30695,6 +34483,18 @@ import {TuiScrollbar} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.box {
+    inline-size: 16rem;
+    block-size: 9.75rem;
+    border: 1px solid;
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+```
 
 #### Horizontal
 
@@ -30723,6 +34523,19 @@ import {TuiScrollbar} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    border: 1px solid;
+}
+
+.line {
+    padding: 0 0.6875rem;
+    white-space: nowrap;
+}
 ```
 
 #### All
@@ -30793,6 +34606,22 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    border: 1px solid;
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+
+p {
+    white-space: nowrap;
+}
+```
 
 #### Hidden
 
@@ -30830,6 +34659,22 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    border: 1px solid;
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+
+p {
+    white-space: nowrap;
+}
+```
 
 #### Light scrollbar
 
@@ -30865,6 +34710,25 @@ import {TuiScrollbar} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    background: var(--tui-background-base-alt);
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+
+p {
+    color: fade(#fff, 72%);
+    white-space: nowrap;
+}
 ```
 
 #### Virtual scroll
@@ -30911,6 +34775,17 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.example-viewport {
+    block-size: 12.5rem;
+    border: 1px solid;
+}
+
+.example-item {
+    block-size: 3.125rem;
+}
+```
 
 #### Show scroll bars on hover
 
@@ -30949,6 +34824,22 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    border: 1px solid;
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+
+p {
+    white-space: nowrap;
+}
+```
 
 #### Native scrollbar
 
@@ -30985,6 +34876,22 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
     providers: [tuiScrollbarOptionsProvider({mode: 'native'})],
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    border: 1px solid;
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+
+p {
+    white-space: nowrap;
+}
 ```
 
 
@@ -31222,6 +35129,15 @@ export default class Example {
     protected readonly sizes = ['s', 'm', 'l'] as const;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+```
 
 #### Width
 
@@ -31253,6 +35169,24 @@ import {TuiFade, TuiSegmented} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.full {
+    inline-size: 100%;
+
+    & > * {
+        flex: 1;
+        min-inline-size: 0;
+    }
+}
 ```
 
 #### Customization
@@ -31290,6 +35224,33 @@ import {TuiSegmented} from '@taiga-ui/kit';
 export default class Example {
     protected readonly buttons = ['Track active index', 'To color tabs', 'Differently'];
     protected active = 0;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+header {
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 -10rem 0 10.5rem var(--tui-background-base-alt);
+}
+
+.colors {
+    background: var(--tui-background-base);
+
+    &::before {
+        color: var(--tui-text-action);
+        box-shadow: none;
+    }
+
+    .active {
+        color: #fff;
+    }
 }
 ```
 
@@ -31368,6 +35329,22 @@ export default class Example {
     };
 
     protected readonly routes = DemoRoute;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+hr {
+    inline-size: 100%;
+    block-size: 1px;
+    background: var(--tui-border-normal);
+    border: 0;
 }
 ```
 
@@ -31601,6 +35578,14 @@ export default class Example {
     protected stringify: TuiStringHandler<Card> = (x) => x.name;
 }
 ```
+**LESS:**
+```less
+.card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+```
 
 #### With DataList
 
@@ -31775,6 +35760,16 @@ export default class Example {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected value = null;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.scroll {
+    .scrollbar-hidden();
+
+    block-size: 12.5rem;
 }
 ```
 
@@ -32248,6 +36243,28 @@ export default class Example {
     protected open = false;
 }
 ```
+**LESS:**
+```less
+.buttons {
+    display: flex;
+    margin: 0 0 1rem;
+    gap: 0.5rem;
+
+    & button {
+        flex: 1;
+    }
+}
+
+.footer {
+    padding: 1rem 0 1.25rem;
+    border-image: conic-gradient(var(--tui-background-base-alt) 0 0) fill 0/0/0 100vh 100vh;
+}
+
+.floating {
+    margin-block-start: -1rem;
+    padding-block-start: 1rem;
+}
+```
 
 #### Sticky elements
 
@@ -32337,6 +36354,33 @@ export default class Example {
             this.search.setValue('');
         }
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.header {
+    padding-block: 0.25rem 1rem;
+}
+
+.container {
+    flex-grow: 1;
+}
+
+.item {
+    all: unset;
+    display: flex;
+    block-size: 3rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.legal {
+    .tui-line-clamp();
+
+    margin-block-start: 0.5rem;
+    min-block-size: 2rem;
 }
 ```
 
@@ -32496,6 +36540,43 @@ export default class Example {
         item,
         search,
     ) => TUI_DEFAULT_MATCHER(item.name, search);
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.input {
+    .tui-prevent-ios-scroll();
+
+    inline-size: 100%;
+    margin-block-start: 0.75rem;
+}
+
+.favorites {
+    .scrollbar-hidden();
+
+    display: flex;
+    gap: 0.75rem;
+    margin: 1rem -1rem;
+    padding: 0 0.5rem;
+    overflow: auto;
+}
+
+.items {
+    min-block-size: calc(100 * var(--tui-viewport-vh) - var(--tui-offset) - 19.5rem);
+}
+
+.cell {
+    inline-size: 100%;
+    margin: 0 -1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 0;
+}
+
+.button {
+    .transition(bottom);
 }
 ```
 
@@ -32707,6 +36788,20 @@ import {TuiSlider} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.first {
+    color: var(--tui-chart-categorical-01);
+}
+
+.second {
+    color: var(--tui-chart-categorical-03);
+}
+
+.third {
+    color: var(--tui-chart-categorical-12);
+}
+```
 
 #### Segments
 
@@ -32739,6 +36834,21 @@ export default class Example {
     protected patchValue(newValue: number): void {
         this.formControl.patchValue(newValue);
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+}
+
+.tick-label {
+    .button-clear();
+
+    outline: 0;
+    cursor: pointer;
 }
 ```
 
@@ -32803,6 +36913,19 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    inline-size: 27rem;
+}
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+}
+```
 
 #### Complex
 
@@ -32861,6 +36984,40 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+@border-radius: 1rem;
+
+.zoom-controller {
+    display: flex;
+    border-radius: @border-radius;
+    background: var(--tui-background-neutral-1-pressed);
+    block-size: var(--tui-height-s);
+    justify-content: space-between;
+    align-items: center;
+    max-inline-size: 18rem;
+    padding: 0 0.25rem;
+    gap: 0.5rem;
+
+    @media @tui-mobile {
+        max-inline-size: 100%;
+    }
+}
+
+.slider-wrapper {
+    flex: 1;
+}
+
+.minus {
+    border-radius: @border-radius 0 0 @border-radius;
+}
+
+.plus {
+    border-radius: 0 @border-radius @border-radius 0;
+}
+```
 
 #### Vertical
 
@@ -32885,6 +37042,33 @@ import {TuiButton, TuiDropdown, TuiSlider} from '@taiga-ui/core';
 })
 export default class Example {
     protected value = 80;
+}
+```
+**LESS:**
+```less
+tui-dropdown[data-appearance] {
+    min-block-size: 8rem;
+    background: var(--tui-background-neutral-1);
+    box-shadow: none;
+    border: none;
+    backdrop-filter: blur(1rem);
+
+    [tuiSlider] {
+        position: absolute;
+        inline-size: 7rem;
+        transform-origin: left;
+        transform: rotate(-90deg) translate(-100%, 1rem);
+
+        // chromium browsers
+        &::-webkit-slider-thumb {
+            cursor: ns-resize;
+        }
+
+        // firefox
+        &::-moz-range-thumb {
+            cursor: ns-resize;
+        }
+    }
 }
 ```
 
@@ -33003,6 +37187,27 @@ export default class Example {
     protected index = 0;
 }
 ```
+**LESS:**
+```less
+[tuiGroup] {
+    inline-size: fit-content;
+    margin: 0 auto 1rem;
+}
+
+[tuiSubtitle] {
+    color: var(--tui-text-secondary);
+}
+
+[tuiTitle] {
+    --tui-duration: 0.6s;
+
+    animation-delay: 0.3s;
+
+    &.tui-leave {
+        animation-delay: 0s;
+    }
+}
+```
 
 #### Stepper
 
@@ -33101,6 +37306,18 @@ export default class Example {
         this.direction = 1;
         this.index = Math.min(this.index + 1, this.forms.length - 1);
     }
+}
+```
+**LESS:**
+```less
+tui-elastic-container {
+    padding: 2rem;
+    margin: 0 -2rem;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
 }
 ```
 
@@ -33489,6 +37706,13 @@ export default class Example {
     protected readonly steps = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
 }
 ```
+**LESS:**
+```less
+.stepper {
+    max-block-size: 10rem;
+    border: 1px solid var(--tui-border-normal);
+}
+```
 
 #### Vertical connected
 
@@ -33597,6 +37821,77 @@ import {TuiSurface} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.scale {
+    @media @tui-mouse {
+        &:hover {
+            transform: scale(1.15);
+        }
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.overlay {
+    &::after {
+        opacity: 0;
+        background: linear-gradient(
+            -45deg,
+            #a1a1b3 0.36%,
+            #d4d1d8 46.96%,
+            #f7fafa 67.14%,
+            #d4d1d8 83.19%,
+            #a1a1b3 93.03%
+        );
+    }
+
+    @media @tui-mouse {
+        &:hover::after {
+            opacity: 0.5;
+        }
+    }
+
+    &:active::after {
+        opacity: 1;
+    }
+}
+
+.highlight {
+    @media @tui-mouse {
+        &:hover::before {
+            backdrop-filter: brightness(1.1);
+        }
+    }
+
+    &:active::before {
+        backdrop-filter: brightness(0.9);
+    }
+}
+
+.offset:hover {
+    transform: translate3d(0, -0.25rem, 0);
+}
+
+.background {
+    &::after {
+        background: url('/assets/images/not-found.svg') top;
+        background-size: 300%;
+    }
+
+    &:hover::after {
+        transform: scale(1.15);
+    }
+}
+
+.shadow:hover {
+    box-shadow: var(--tui-shadow-small-hover);
+}
+```
 
 #### Presets
 
@@ -33622,6 +37917,19 @@ import {TuiSurface} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: grid;
+    grid-template-columns: repeat(3, 8rem);
+    gap: 1rem;
+}
+
+[tuiSurface] {
+    padding: 1.25rem;
+    border-radius: var(--tui-radius-l);
+}
+```
 
 #### Blur
 
@@ -33646,6 +37954,27 @@ import {TuiSurface} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    background: url('/assets/images/big-wallpaper.jpg');
+    background-size: cover;
+    padding: 2rem;
+}
+
+.blur {
+    backdrop-filter: blur(1rem);
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-primary);
+    padding: 1rem 1.25rem;
+}
+
+.title {
+    margin: 0;
+    font: var(--tui-typography-heading-h6);
+}
 ```
 
 #### Video
@@ -33677,6 +38006,23 @@ import {TuiSurface} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.surface {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    block-size: 18rem;
+    color: #fff;
+    font: var(--tui-typography-body-l);
+
+    &::after {
+        background: var(--tui-background-neutral-1);
+        box-shadow: inset 0 -7rem 6rem -6rem #000;
+        mix-blend-mode: multiply;
+    }
+}
+```
 
 #### Selectable
 
@@ -33704,6 +38050,18 @@ import {TuiSurface} from '@taiga-ui/layout';
 })
 export default class Example {
     protected value = null;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+    white-space: nowrap;
+
+    * > {
+        flex-shrink: 0;
+    }
 }
 ```
 
@@ -33739,6 +38097,29 @@ import {TuiSurface} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.button {
+    display: flex;
+    inline-size: 20rem;
+    text-align: start;
+    gap: 1rem;
+    border-radius: 1rem;
+    padding: 1rem 1rem 1rem 1.25rem;
+    font: var(--tui-typography-body-m);
+}
+
+.title {
+    display: block;
+    font: var(--tui-typography-heading-h6);
+    margin-block-end: 0.25rem;
+}
+
+.bad {
+    margin-block-start: 1rem;
+    padding: 1.25rem;
+}
 ```
 
 #### Examples
@@ -33857,6 +38238,183 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+:host {
+    display: grid;
+    grid-template-columns: repeat(6, 6.5rem);
+    grid-auto-rows: 7rem;
+    align-items: start;
+    gap: 1rem;
+}
+
+.card {
+    display: flex;
+    block-size: 7rem;
+    flex-direction: column;
+    font: var(--tui-typography-body-xs);
+
+    &:first-child {
+        grid-column: span 2;
+    }
+
+    .heading {
+        font: var(--tui-typography-body-s);
+        color: #fff;
+        font-weight: bold;
+        margin: -0.125rem 0 0;
+    }
+
+    .content {
+        max-inline-size: 50%;
+        color: #fff;
+    }
+
+    .badge {
+        margin: auto auto -0.125rem -0.125rem;
+    }
+}
+
+.restaurant {
+    display: flex;
+    block-size: 15rem;
+    grid-column: span 3;
+    grid-row: span 2;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 1.375rem;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 0.25rem;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.blur {
+    display: flex;
+    grid-column: span 3;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    font: var(--tui-typography-heading-h6);
+    color: #fff;
+
+    .button {
+        border-radius: 100%;
+        margin-inline-start: auto;
+    }
+}
+
+.reviews {
+    display: flex;
+    grid-column: span 3;
+    grid-row: span 3;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1.5rem;
+
+    .heading {
+        margin: -0.25rem 0 0;
+        font: var(--tui-typography-heading-h6);
+    }
+
+    .link {
+        float: right;
+        font: var(--tui-typography-body-m);
+
+        // Safari 15+
+        @supports (float: inline-end) {
+            float: inline-end;
+        }
+    }
+
+    .scrollbar {
+        margin: 0.75rem -1.25rem 1.25rem;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+    }
+
+    .wrapper {
+        display: flex;
+        padding: 0 1.25rem;
+        gap: 0.625rem;
+
+        &::after {
+            content: '';
+            min-inline-size: 0.625rem;
+        }
+    }
+
+    .review {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-inline-size: calc(100% - 0.75rem);
+        padding: 0.75rem 1rem 1rem;
+        border-radius: 1rem;
+        font: var(--tui-typography-body-l);
+        scroll-snap-align: start;
+        scroll-margin: 1.25rem;
+    }
+
+    .footer {
+        display: flex;
+        align-items: flex-end;
+        gap: 0.75rem;
+        margin-block-start: auto;
+        font: var(--tui-typography-body-s);
+    }
+
+    .label {
+        flex-direction: column-reverse;
+        font-weight: bold;
+    }
+}
+
+.mask {
+    grid-column: span 3;
+    grid-row: span 3;
+    padding: 4rem 2rem 7rem;
+    color: #fff;
+
+    .heading {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font: var(--tui-typography-heading-h6);
+        margin: 0;
+    }
+
+    .button {
+        border-radius: 100%;
+        transform: scale(0.75);
+    }
+
+    .sum {
+        font: var(--tui-typography-heading-h4);
+        margin-block-end: 4rem;
+    }
+
+    .footer {
+        display: flex;
+        gap: 0.75rem;
+        margin-block-start: 4rem;
+    }
+
+    .add {
+        inline-size: 3rem;
+        border-radius: var(--tui-radius-xs);
+    }
+}
+```
 
 
 ### TypeScript
@@ -33966,6 +38524,27 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 100%;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCardLarge] {
+    margin: 3rem 1.5rem;
+}
+
+tui-swipe-actions {
+    margin: -3rem -1.5rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
+}
+```
 
 #### Custom
 
@@ -34002,6 +38581,23 @@ import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
 })
 export default class Example {
     protected checkbox = false;
+}
+```
+**LESS:**
+```less
+.blur {
+    z-index: 1;
+    display: flex;
+    background-image: url('/assets/images/restaurant-2.jpg');
+    border-radius: 1rem;
+    padding: 1.25rem;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+
+    &::before {
+        backdrop-filter: blur(1rem);
+    }
 }
 ```
 
@@ -34063,6 +38659,26 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+tui-swipe-actions {
+    margin: -3rem -1.5rem;
+}
+
+[tuiCardLarge] {
+    margin: 3rem 1.5rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
+}
+```
 
 #### Dynamic actions
 
@@ -34113,6 +38729,35 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 export default class Example {
     protected shareButton = false;
     protected editButton = true;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+tui-swipe-actions {
+    margin: -3rem -1.5rem -1.5rem;
+}
+
+[tuiCardLarge] {
+    margin: 3rem 1.5rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-block-start: 0.5rem;
+}
+
+input[type='checkbox'] {
+    margin-inline-end: 0.5rem;
 }
 ```
 
@@ -34168,6 +38813,38 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+}
+
+.fallback {
+    .center-top();
+
+    right: 2rem;
+}
+
+tui-swipe-actions {
+    margin: -3rem -1.5rem;
+}
+
+[tuiCardLarge] {
+    margin: 3rem 1.5rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
+}
+
+@media @tui-touch {
+    .fallback {
+        display: none;
+    }
+}
 ```
 
 #### Onboarding
@@ -34231,6 +38908,26 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly onboarding = signal(false);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCardLarge] {
+    margin: 3rem 1.5rem;
+}
+
+tui-swipe-actions {
+    margin: -3rem -1.5rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
 }
 ```
 
@@ -34327,6 +39024,34 @@ export default class Example implements OnInit {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+
+    --tui-background-accent-2: #428bf9;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+    padding: 1rem;
+
+    &_web {
+        border: 1px solid var(--tui-border-normal);
+        border-inline-start-width: 0;
+
+        &:first-child {
+            border-inline-end-width: 0;
+            border-inline-start-width: 1px;
+        }
+    }
+}
+```
 
 #### Same color
 
@@ -34354,6 +39079,34 @@ import {TuiSwitch, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+
+    --tui-background-accent-2: var(--tui-status-info);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+    padding: 1rem;
+
+    &_web {
+        border: 1px solid var(--tui-border-normal);
+        border-inline-start-width: 0;
+
+        &:first-child {
+            border-inline-end-width: 0;
+            border-inline-start-width: 1px;
+        }
+    }
 }
 ```
 
@@ -34448,6 +39201,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.tabs {
+    min-inline-size: 25rem;
+    padding-block-end: env(safe-area-inset-bottom);
+}
+```
 
 #### Links
 
@@ -34516,6 +39276,15 @@ export default class Example {
             icon: '@tui.map-pin',
         },
     ];
+}
+```
+**LESS:**
+```less
+.tabs {
+    min-inline-size: 25rem;
+    color: var(--tui-text-action);
+
+    --tui-active-color: var(--tui-background-accent-2);
 }
 ```
 
@@ -34845,6 +39614,39 @@ export default class Example {
 
     protected customToggle(): void {
         this.customOpen = !this.customOpen;
+    }
+}
+```
+**LESS:**
+```less
+th {
+    white-space: nowrap;
+}
+
+.table {
+    inline-size: 36rem;
+}
+
+.chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.last-name-col {
+    inline-size: 10rem;
+}
+
+.expand-heading-row {
+    cursor: pointer;
+
+    td {
+        background: var(--tui-background-neutral-1);
+    }
+
+    &:hover td {
+        background: var(--tui-background-neutral-1-hover);
     }
 }
 ```
@@ -35189,6 +39991,19 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+[tuiTh],
+[tuiTd] {
+    border-inline-start: none;
+    border-inline-end: none;
+}
+
+[tuiTable][data-size='s'] [tuiTitle] {
+    flex-direction: row;
+    gap: 0.375rem;
+}
+```
 
 #### Editable
 
@@ -35423,6 +40238,45 @@ export default class Example {
                 ? this.starwars.map((item) => (item === current ? updated : item))
                 : this.starwars;
     }
+}
+```
+**LESS:**
+```less
+.table {
+    table-layout: fixed;
+}
+
+.number {
+    text-align: end;
+    flex-direction: row-reverse;
+}
+
+.first {
+    min-inline-size: 11rem;
+    max-inline-size: 11rem;
+}
+
+.second {
+    left: 11rem;
+}
+
+.text {
+    vertical-align: top;
+    padding-block-start: 1rem;
+}
+
+// Due to rowSpan this item appears to be the first child
+// but it shouldn't have the left border in reality
+.border {
+    border-inline-start: none;
+}
+
+.select {
+    inline-size: 6.25rem;
+}
+
+.scrollbar {
+    max-block-size: 18.75rem;
 }
 ```
 
@@ -35698,6 +40552,31 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.table {
+    inline-size: 100%;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    white-space: nowrap;
+    align-items: center;
+}
+
+.input {
+    flex: 1;
+}
+
+.columns {
+    inline-size: 10.625rem;
+}
+
+.match {
+    background: var(--tui-service-selection-background);
+}
+```
 
 #### Virtual scroll
 
@@ -35807,6 +40686,35 @@ export default class Example {
         getAge(a) - getAge(b);
 }
 ```
+**LESS:**
+```less
+table {
+    inline-size: 100%;
+
+    th {
+        inset-block-start: inherit;
+    }
+
+    tr {
+        block-size: 2.8125rem;
+    }
+
+    td {
+        &:first-child {
+            inline-size: 10rem;
+            font-weight: bold;
+        }
+
+        &:last-child {
+            inline-size: 3rem;
+        }
+    }
+}
+
+.viewport {
+    block-size: 15.625rem;
+}
+```
 
 #### Columns
 
@@ -35854,6 +40762,12 @@ export default class Example {
     protected addRows(): void {
         this.data = [...this.data, {...this.data[0], id: this.data.length + 1}];
     }
+}
+```
+**LESS:**
+```less
+.table {
+    inline-size: 100%;
 }
 ```
 
@@ -36073,6 +40987,35 @@ export default class Example {
     ] as const;
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+tui-table-expand {
+    td {
+        background: var(--tui-background-base-alt);
+    }
+
+    tr:hover td {
+        background: var(--tui-background-neutral-1-hover);
+    }
+}
+
+tr:hover td {
+    background: var(--tui-background-base-alt);
+}
+
+[tuiTh] {
+    border-top: none;
+}
+
+[tuiTh],
+[tuiTd] {
+    min-inline-size: 3rem;
+    border-inline: none;
+    white-space: nowrap;
+}
+```
 
 
 ### TypeScript
@@ -36192,6 +41135,20 @@ export default class Example {
             this.form.disable();
         }
     }
+}
+```
+**LESS:**
+```less
+.toggle {
+    display: flex;
+    align-items: center;
+    inline-size: fit-content;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.table {
+    inline-size: 100%;
 }
 ```
 
@@ -36315,6 +41272,20 @@ export default class Example {
             this.filterForm.disable();
         }
     }
+}
+```
+**LESS:**
+```less
+.toggle {
+    display: flex;
+    align-items: center;
+    inline-size: fit-content;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.table {
+    inline-size: 100%;
 }
 ```
 
@@ -36691,6 +41662,53 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    margin: -2rem;
+    background: #454e58;
+    color: #fff;
+
+    :host-context(tui-root._mobile) {
+        margin: -1rem;
+    }
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 2rem 2rem 0;
+    box-shadow: inset 0 -1px rgba(255, 255, 255, 0.24);
+}
+
+.content {
+    padding: 2rem 2rem 4rem;
+}
+
+.title {
+    min-inline-size: 15.625rem;
+    margin: 0;
+}
+
+.tabs {
+    inline-size: ~'calc(100% - 15.625rem)';
+    justify-content: flex-end;
+    box-shadow: none;
+}
+
+.icon {
+    .transition(transform);
+
+    margin-inline-start: 0.25rem;
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
+}
+```
 
 #### Stepper
 
@@ -36740,6 +41758,28 @@ export default class Example {
     protected onClick(item: string): void {
         this.alerts.open(item).subscribe();
     }
+}
+```
+**LESS:**
+```less
+.step {
+    margin: 0;
+    color: var(--tui-text-action);
+
+    &._active {
+        color: var(--tui-text-primary);
+    }
+
+    &:hover {
+        color: var(--tui-text-action-hover);
+    }
+}
+
+.separator {
+    align-self: center;
+    color: var(--tui-text-tertiary);
+    margin: 0 1rem;
+    font-size: 1rem;
 }
 ```
 
@@ -36848,6 +41888,25 @@ export default class Example {
     protected readonly routes = DemoRoute;
 }
 ```
+**LESS:**
+```less
+.content {
+    display: flex;
+    margin: 2rem 0;
+}
+
+.left {
+    margin-inline-end: 2rem;
+    min-inline-size: 10rem;
+    inline-size: 10rem;
+}
+
+.right {
+    margin-inline-start: 2rem;
+    min-inline-size: 10rem;
+    inline-size: 10rem;
+}
+```
 
 #### Styles
 
@@ -36877,6 +41936,13 @@ import {TuiTabs} from '@taiga-ui/kit';
 })
 export default class Example {
     protected activeItemIndex = 0;
+}
+```
+**LESS:**
+```less
+.custom {
+    font: var(--tui-typography-heading-h5);
+    box-shadow: none;
 }
 ```
 
@@ -37079,6 +42145,14 @@ import {TuiTextarea} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
 
 #### Limit
 
@@ -37152,6 +42226,18 @@ export default class Example {
         return text
             .replaceAll('width', '<span class="width">width</span>')
             .replaceAll('height', '<span class="height">height</span>');
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    ::ng-deep .width {
+        background: var(--tui-status-info-pale);
+    }
+
+    ::ng-deep .height {
+        background: var(--tui-status-positive-pale);
     }
 }
 ```
@@ -37268,6 +42354,13 @@ export default class Example {
     protected readonly sizes = ['xs', 's', 'm', 'l'] as const;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
 
 #### A cool one
 
@@ -37290,6 +42383,56 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@keyframes spinCard {
+    0% {
+        transform: rotateY(0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+
+    12% {
+        transform: rotateY(90deg) rotateZ(6deg) scale(1.7);
+        box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+    }
+
+    25% {
+        transform: rotateY(180deg);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+
+    50% {
+        transform: rotateY(180deg);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+
+    62% {
+        transform: rotateY(270deg) rotateZ(-8deg) scale(1.7);
+        box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+    }
+
+    80% {
+        transform: rotateY(720deg);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: rotateY(720deg);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+}
+
+:host {
+    perspective: 50rem;
+}
+
+.logo {
+    background-color: #7c48c3;
+    background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);
+    overflow: visible;
+    animation: spinCard 5s infinite;
+}
 ```
 
 #### Backgrounds
@@ -37317,6 +42460,49 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.star {
+    color: #000;
+    background:
+        linear-gradient(45deg, rgba(255, 170, 0, 0.82), #fa0), url('/assets/taiga-ui/icons/star.svg'),
+        url('/assets/taiga-ui/icons/star.svg');
+    background-size:
+        100%,
+        3rem 1.5rem,
+        3rem 1.5rem;
+    background-position:
+        0 0,
+        -0.75rem 0,
+        0.75rem;
+    background-color: #fff;
+}
+
+.gradient {
+    color: #fff;
+    background: #2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%);
+}
+
+.retrowave {
+    color: #ecb5ff;
+    background: url('/assets/images/avatar.jpg') no-repeat center/cover;
+
+    &::before {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(0.25rem);
+    }
+}
+
+.radial {
+    color: #fff;
+    background: radial-gradient(#c900ff, #0079be);
+}
+```
 
 #### External colored icon
 
@@ -37340,6 +42526,13 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
 ```
 
 #### Textfield
@@ -37373,6 +42566,14 @@ export default class Example {
     protected card = '1234123412341234';
     protected background =
         '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 ```
 
@@ -37497,6 +42698,69 @@ export default class Example {
     protected order = new Map();
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.tiles {
+    gap: 1rem;
+    grid-auto-rows: minmax(6.25rem, auto);
+}
+
+.tile::before {
+    content: 'Drop here';
+    display: flex;
+    block-size: 100%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    color: var(--tui-border-normal);
+    border-radius: var(--tui-radius-l);
+    border: 2px dashed var(--tui-border-normal);
+}
+
+.content {
+    .transition(box-shadow);
+
+    block-size: 100%;
+    padding: 1rem;
+    background: var(--tui-background-base);
+    box-sizing: border-box;
+    border-radius: var(--tui-radius-l);
+    border: 1px solid var(--tui-border-normal);
+    overflow: hidden;
+
+    tui-tile._dragged & {
+        box-shadow: var(--tui-shadow-small-hover);
+    }
+}
+
+.rick {
+    inline-size: 100%;
+    block-size: 100%;
+    padding: 0;
+}
+
+.title {
+    margin: 0 0 1rem;
+}
+
+.handle {
+    .transition(opacity);
+
+    position: absolute;
+    right: 0.75rem;
+    top: 1rem;
+    background: var(--tui-background-base);
+    opacity: 0;
+    cursor: move;
+
+    tui-tiles:not(._dragged) tui-tile:hover &,
+    tui-tile._dragged & {
+        opacity: 0.7;
+    }
+}
+```
 
 #### Vertical
 
@@ -37523,6 +42787,39 @@ import {TuiTiles} from '@taiga-ui/kit';
 export default class Example {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected order = new Map();
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.tiles {
+    inline-size: 10rem;
+    gap: 1rem;
+    grid-auto-rows: minmax(var(--tui-height-m), auto);
+}
+
+@media @tui-mobile {
+    .tile_tall {
+        --tui-height: 2;
+    }
+}
+
+.content {
+    .transition(box-shadow);
+
+    display: flex;
+    block-size: 100%;
+    align-items: center;
+    padding: 0 1rem;
+    background: var(--tui-background-base);
+    border-radius: var(--tui-radius-l);
+    border: 1px solid var(--tui-border-normal);
+    cursor: ns-resize;
+
+    tui-tile._dragged & {
+        box-shadow: var(--tui-shadow-small-hover);
+    }
 }
 ```
 
@@ -37565,6 +42862,54 @@ export default class Example {
     ];
 
     protected order = new Map();
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.tiles {
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 15rem;
+}
+
+.nested {
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 3.5rem;
+}
+
+.tile::before {
+    content: 'Drop here';
+    display: flex;
+    block-size: 100%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    color: var(--tui-border-normal);
+    border-radius: var(--tui-radius-l);
+    border: 2px dashed var(--tui-border-normal);
+}
+
+.content {
+    .transition(box-shadow);
+
+    block-size: 100%;
+    padding: 1rem;
+    background: var(--tui-background-base);
+    box-sizing: border-box;
+    border-radius: var(--tui-radius-l);
+    border: 1px solid var(--tui-border-normal);
+    overflow: hidden;
+
+    tui-tile._dragged & {
+        box-shadow: var(--tui-shadow-small-hover);
+    }
+
+    tui-tile._dragged tui-tile:not(._dragged) & {
+        box-shadow: none;
+    }
 }
 ```
 
@@ -37683,6 +43028,22 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+tui-timeline {
+    inline-size: 18rem;
+    block-size: 3rem;
+    box-sizing: border-box;
+    background: var(--tui-background-base-alt);
+    border: 0.125rem solid transparent;
+    border-radius: var(--tui-radius-s);
+}
+
+label {
+    clip-path: inset(0.125rem round var(--tui-radius-xs));
+    box-shadow: inset 0 0 0 0.375rem var(--tui-background-neutral-1-hover);
+}
+```
 
 #### Full-fledged
 
@@ -37739,6 +43100,52 @@ export default class Example {
 
         this.items.set(copy);
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+tui-timeline {
+    inline-size: 18rem;
+    block-size: 10rem;
+    box-shadow: inset 0 0 0 0.375rem var(--tui-background-neutral-1);
+    overflow: hidden;
+    border-radius: var(--tui-radius-s);
+    filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.25));
+
+    button {
+        .transition(opacity);
+
+        position: absolute;
+        inset: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover button,
+    button:focus-visible {
+        opacity: 1;
+    }
+}
+
+label {
+    border-radius: inherit;
+    background: var(--tui-border-normal);
+    box-shadow: inset 0 0 0 0.375rem var(--tui-background-elevation-3);
+}
+
+span {
+    display: flex;
+    writing-mode: horizontal-tb;
+    inline-size: 100%;
+    block-size: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+form footer {
+    inline-size: fit-content;
 }
 ```
 
@@ -37807,6 +43214,14 @@ import {TuiTitle} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+```
 
 #### Sizes
 
@@ -37835,6 +43250,14 @@ import {TuiTitle} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 ```
 
 #### Custom
@@ -37873,6 +43296,23 @@ import {TuiAvatar} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.flex {
+    display: flex;
+    gap: 0.5rem;
+
+    [tuiSubtitle] {
+        color: var(--tui-text-positive);
+    }
+}
 ```
 
 
@@ -37969,6 +43409,26 @@ export default class Example {
     protected readonly platforms = ['web', 'ios'] as const;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 100rem var(--tui-background-base-alt);
+}
+
+section {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+[tuiToast]::before {
+    color: var(--tui-background-accent-1);
+}
+```
 
 #### Customization
 
@@ -38018,6 +43478,21 @@ export default class Example {
             : this.trigger$.pipe(switchMap(() => timer(0, 200).pipe(take(100)))),
         {initialValue: 0},
     );
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 100rem var(--tui-background-base-alt);
+}
+
+section {
+    display: flex;
+    gap: 1rem;
 }
 ```
 
@@ -38078,6 +43553,13 @@ export default class Example {
     protected component(): void {
         this.toast.open(new PolymorpheusComponent(Toast), {closable: false}).subscribe();
     }
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
 }
 ```
 
@@ -38154,6 +43636,30 @@ export default class Example {
     );
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.tooltip {
+    block-size: 1.25rem;
+    min-inline-size: 6.25rem;
+}
+
+.wrapping-tooltip {
+    inline-size: fit-content;
+    max-inline-size: 11rem;
+    background: var(--tui-background-base-alt);
+    border-radius: 0.5rem;
+    line-height: 1.5rem;
+    padding: 0.375rem 1.875rem 0.375rem 0.5rem;
+    resize: horizontal;
+    overflow: auto;
+
+    & [tuiTooltip] {
+        position: absolute;
+    }
+}
+```
 
 #### Custom host
 
@@ -38187,6 +43693,15 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    background: #3e4757;
+    box-shadow: 0 0 0 100rem #3e4757;
+    color: var(--tui-background-base);
+}
 ```
 
 #### Repeating template
@@ -38223,6 +43738,24 @@ import {TuiTooltip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 25rem;
+}
+
+.primary {
+    color: var(--tui-background-accent-1);
+}
+
+.input {
+    display: inline-flex;
+    inline-size: 18.75rem;
+    margin: 0.75rem 0.75rem 0.75rem 0;
+    vertical-align: middle;
+}
 ```
 
 #### Options
@@ -38350,6 +43883,12 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+tui-tree {
+    margin-inline-start: -3.5rem;
+}
+```
 
 #### Template
 
@@ -38410,6 +43949,17 @@ export default class Example {
 
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
         item.children || [];
+}
+```
+**LESS:**
+```less
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.t-icon::before {
+    font-size: 1rem;
 }
 ```
 
@@ -38554,6 +44104,12 @@ export default class Example {
 
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
         item.children || [];
+}
+```
+**LESS:**
+```less
+tui-tree {
+    overflow: hidden;
 }
 ```
 
@@ -38733,6 +44289,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.loader {
+    inline-size: 2rem;
+    margin: 1rem 0;
+}
+```
 
 #### Drag and drop
 
@@ -38852,6 +44415,46 @@ function findParent(item: TreeNode, node: TreeNode): TreeNode | null {
     }
 
     return null;
+}
+```
+**LESS:**
+```less
+.tree._dragged {
+    .drop {
+        pointer-events: auto;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.wrapper {
+    position: relative;
+    inline-size: 100%;
+}
+
+.content {
+    display: flex;
+    inline-size: 100%;
+    align-items: center;
+}
+
+.tiles {
+    inline-size: 100%;
+    grid-template-rows: 1.5rem;
+}
+
+.drop {
+    position: absolute;
+    z-index: 1;
+    inline-size: 100%;
+    block-size: 0.5rem;
+    margin-block-start: -0.25rem;
+    background: #87ceeb;
+    border-radius: 1rem;
+    opacity: 0;
+    pointer-events: none;
 }
 ```
 
@@ -38985,6 +44588,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
+}
+```
 
 #### getCurrencySymbol
 
@@ -39047,6 +44657,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
+}
+```
 
 #### formatNumber
 
@@ -39106,6 +44723,13 @@ export default class Example {
             thousandSeparator: thousandSeparator ?? ' ',
         });
     }
+}
+```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
 }
 ```
 
@@ -39197,6 +44821,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
+}
+```
 
 #### inRange
 
@@ -39238,6 +44869,13 @@ export default class Example {
 
         return tuiInRange(value ?? 13, fromInclude ?? 5, toExclude ?? 42);
     }
+}
+```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
 }
 ```
 
@@ -39283,6 +44921,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
+}
+```
 
 #### quantize
 
@@ -39323,6 +44968,13 @@ export default class Example {
 
         return tuiQuantize(value ?? 3, quantum ?? 2);
     }
+}
+```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
 }
 ```
 
@@ -39366,6 +45018,13 @@ export default class Example {
 
         return tuiClamp(value ?? 0, min ?? 5, max ?? 42);
     }
+}
+```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
 }
 ```
 
@@ -39486,6 +45145,13 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 14rem;
+}
+```
 
 #### isPresent
 
@@ -39532,6 +45198,13 @@ export default class Example {
                 return value;
         }
     }
+}
+```
+**LESS:**
+```less
+.parameters {
+    margin-block-start: 0.75rem;
+    inline-size: 13.75rem;
 }
 ```
 
@@ -39672,6 +45345,68 @@ import {TUI_BREAKPOINT} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+}
+
+table {
+    inline-size: 100%;
+    border-spacing: 0;
+}
+
+th,
+td {
+    text-align: start;
+    border: 1px solid var(--tui-border-normal);
+    block-size: 3.375rem;
+    padding: 0 1rem;
+    vertical-align: middle;
+}
+
+.mobile {
+    display: block;
+}
+
+.desktop-small {
+    display: none;
+}
+
+.desktop-large {
+    display: none;
+}
+
+@media @tui-tablet-min {
+    .mobile {
+        display: none;
+    }
+
+    .desktop-small {
+        display: block;
+    }
+
+    .desktop-large {
+        display: none;
+    }
+}
+
+@media @tui-desktop-lg-min {
+    .mobile {
+        display: none;
+    }
+
+    .desktop-small {
+        display: none;
+    }
+
+    .desktop-large {
+        display: block;
+    }
 }
 ```
 
@@ -39990,6 +45725,17 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.active-zone {
+    padding: 1.25rem;
+    border: 2px solid;
+
+    &_active {
+        border-color: var(--tui-background-accent-1);
+    }
+}
+```
 
 #### Dialogs
 
@@ -40042,6 +45788,17 @@ export default class Example {
                 {label: "I'm inside", size: 's'},
             )
             .subscribe();
+    }
+}
+```
+**LESS:**
+```less
+.active-zone {
+    padding: 1.25rem;
+    border: 2px solid;
+
+    &_active {
+        border-color: var(--tui-background-accent-1);
     }
 }
 ```
@@ -40136,6 +45893,28 @@ export default class Example {
     protected isOpen = false;
 }
 ```
+**LESS:**
+```less
+@width: 15rem;
+
+.button {
+    inline-size: @width;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.container {
+    block-size: 6rem;
+    inline-size: @width;
+    overflow: hidden;
+    background: #222;
+    color: var(--tui-status-warning);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiScale;
+    }
+}
+```
 
 
 ### TypeScript
@@ -40207,6 +45986,25 @@ export default class Example {
     protected open = false;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: grid;
+    grid-auto-rows: 3rem;
+    gap: 1rem;
+    text-align: center;
+}
+
+div {
+    padding: 0.25rem 2rem;
+}
+
+button {
+    border: none;
+    inline-size: 100%;
+    block-size: 100%;
+}
+```
 
 #### Custom
 
@@ -40230,6 +46028,34 @@ import {TuiAppearance} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+button {
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+[tuiAppearance][data-appearance='acid'] {
+    color: var(--tui-chart-categorical-06);
+    background: var(--tui-chart-categorical-09);
+
+    --tui-border-focus: var(--tui-chart-categorical-06);
+
+    .appearance-hover({
+        color: var(--tui-chart-categorical-09);
+        background: var(--tui-chart-categorical-14);
+    });
+
+    .appearance-active({
+        color: var(--tui-chart-categorical-08);
+        background: var(--tui-chart-categorical-10);
+    });
+}
+```
 
 #### Checkbox
 
@@ -40252,6 +46078,30 @@ import {TuiAppearance} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.like {
+    inline-size: var(--tui-height-m);
+    block-size: var(--tui-height-m);
+    border-radius: 100%;
+    cursor: pointer;
+
+    &::before {
+        .fullsize();
+
+        content: '';
+        background: currentColor;
+        mask: url('/assets/taiga-ui/icons/heart.svg') no-repeat center / 3em 1.5em;
+    }
+
+    &:checked::before {
+        color: var(--tui-text-negative);
+        mask: url('/assets/taiga-ui/icons/heart-filled.svg') no-repeat center;
+    }
+}
 ```
 
 #### Bundled
@@ -40299,6 +46149,13 @@ export default class Example {
             .open(`Appearance ${name} copied`, {appearance: 'positive'})
             .subscribe();
     }
+}
+```
+**LESS:**
+```less
+.section {
+    display: flex;
+    gap: 1rem;
 }
 ```
 
@@ -40456,6 +46313,22 @@ import {TuiComment} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.success {
+    background: var(--tui-status-positive);
+}
+
+.primary {
+    background: var(--tui-background-accent-1);
+}
 ```
 
 
@@ -40727,6 +46600,15 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+tui-data-list {
+    gap: 0.25rem;
+    padding: 0.5rem;
+}
+```
 
 #### Interesting
 
@@ -40766,6 +46648,41 @@ import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
 })
 export default class Example {
     protected open = false;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.dropdown {
+    display: flex;
+    inline-size: 14rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.toggle {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.text {
+    padding: 0 0.75rem;
+}
+
+.label {
+    font: var(--tui-typography-body-m);
+    color: var(--tui-text-tertiary);
+}
+
+.name {
+    font: var(--tui-typography-heading-h6);
+}
+
+.account {
+    font: var(--tui-typography-body-s);
+    margin-block-start: 0.25rem;
+    color: var(--tui-text-secondary);
 }
 ```
 
@@ -40822,6 +46739,22 @@ export default class Example {
     protected showBigText$ = interval(3000).pipe(map((i) => !(i % 2)));
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-block-start: 1rem;
+}
+
+.dropdown {
+    max-inline-size: 20rem;
+    padding: 1rem;
+}
+```
 
 #### Appearance
 
@@ -40850,6 +46783,12 @@ import {TuiSwitch} from '@taiga-ui/kit';
 })
 export default class Example {
     protected open = false;
+}
+```
+**LESS:**
+```less
+tui-dropdown[data-appearance='round'] {
+    border-radius: 10rem;
 }
 ```
 
@@ -41066,6 +47005,17 @@ import {TuiButton, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.text {
+    display: inline-block;
+    margin: 0.4rem 1rem;
+}
+
+.icon {
+    cursor: context-menu;
+}
+```
 
 #### Context menu
 
@@ -41133,6 +47083,32 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.context-menu {
+    inline-size: 8rem;
+}
+
+[tuiTable] {
+    inline-size: 100%;
+}
+
+[tuiTh],
+[tuiTd] {
+    border-inline-start: none;
+    border-inline-end: none;
+}
+
+[tuiTh] {
+    border-block-start: none;
+}
+
+[tuiTd] {
+    font: var(--tui-typography-body-m) !important;
+}
+```
 
 #### Report mistake form
 
@@ -41172,6 +47148,19 @@ export default class Example {
     protected report(): void {
         console.info(this.form.value);
     }
+}
+```
+**LESS:**
+```less
+.container {
+    display: flex;
+    inline-size: 20rem;
+    margin: 1rem;
+    flex-direction: column;
+}
+
+.button {
+    margin: 1rem auto 0;
 }
 ```
 
@@ -41301,6 +47290,12 @@ export default class Example {
         this.open = false;
         this.index = 1;
     }
+}
+```
+**LESS:**
+```less
+.settings {
+    margin: 1rem;
 }
 ```
 
@@ -41515,6 +47510,12 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+[tuiButton]::after {
+    font-size: 1rem;
+}
+```
 
 #### With custom host
 
@@ -41579,6 +47580,17 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: max-content;
+}
+
+.margin {
+    margin: 1rem;
+}
+```
 
 #### With link
 
@@ -41634,6 +47646,23 @@ export default class Example {
             (!this.ascending && item === this.items[1]?.[1])
         );
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    text-align: end;
+}
+
+.link {
+    font-size: 1.0625rem;
+}
+
+.item {
+    min-inline-size: 12.5rem;
 }
 ```
 
@@ -41749,6 +47778,14 @@ class TopRightDirective extends TuiPositionAccessor {
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.dropdown {
+    inline-size: 13rem;
+    padding: 0 1rem 1rem;
+    line-height: 2;
+}
 ```
 
 
@@ -42095,6 +48132,37 @@ export default class Example implements AfterViewInit {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+}
+
+.scrollbar {
+    block-size: 12.5rem;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    block-size: 5.5rem;
+    pointer-events: none;
+}
+
+.wrapper {
+    color: var(--tui-background-base);
+    background: #bc71c9;
+    font-size: 2rem;
+    pointer-events: auto;
+}
+
+.money {
+    display: block;
+    line-height: 1em;
+    padding: 1em 1.5rem;
+}
+```
 
 #### Dynamic inner content
 
@@ -42366,6 +48434,24 @@ import {TuiFade} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.scrollbar {
+    inline-size: 20rem;
+}
+
+.fade {
+    .scrollbar-hidden();
+
+    inline-size: 100%;
+    block-size: 2rem;
+    font: var(--tui-typography-heading-h6);
+    white-space: nowrap;
+    overflow: auto;
+}
+```
 
 #### Multiline
 
@@ -42399,6 +48485,38 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.wrapper {
+    position: relative;
+}
+
+.fade {
+    .transition(max-block-size);
+
+    max-block-size: calc(3 * (1.25rem + var(--tui-font-offset)));
+
+    &_expanded {
+        max-block-size: 15rem;
+    }
+}
+
+.expand {
+    .transition(opacity, visibility);
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-delay: var(--tui-duration);
+
+    &_hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+```
 
 #### Vertical
 
@@ -42425,6 +48543,19 @@ import {TuiFade} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.fade {
+    .scrollbar-hidden();
+
+    inline-size: 17rem;
+    block-size: 10rem;
+    font: var(--tui-typography-body-l);
+    overflow: auto;
+}
+```
 
 #### Hyphens
 
@@ -42449,6 +48580,14 @@ import {TuiFade} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+[tuiFade] {
+    inline-size: 25rem;
+    block-size: 2.5rem;
+    hyphens: auto;
+}
 ```
 
 #### InputChip
@@ -42478,6 +48617,12 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value: string[] = ['3', '4', '5', 'Compartmentalization'];
+}
+```
+**LESS:**
+```less
+[tuiChip] {
+    max-inline-size: 6.25rem;
 }
 ```
 
@@ -42704,6 +48849,26 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+}
+
+table {
+    inline-size: 100%;
+    border-spacing: 0;
+}
+
+th,
+td {
+    text-align: start;
+    border: 1px solid var(--tui-border-normal);
+    block-size: 3.375rem;
+    padding: 0 1rem;
+    vertical-align: middle;
+}
+```
 
 
 ### TypeScript
@@ -42785,6 +48950,16 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    background: #3e4757;
+    box-shadow: 0 0 0 100rem #3e4757;
+}
+```
 
 #### Customizing
 
@@ -42809,6 +48984,18 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.hint {
+    color: #fff;
+    background: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    font-weight: bold;
+
+    &::before {
+        display: none;
+    }
+}
 ```
 
 #### Nested
@@ -42859,6 +49046,16 @@ import {TuiHint} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+div {
+    .text-overflow();
+
+    resize: horizontal;
+}
 ```
 
 #### Form
@@ -43085,6 +49282,12 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+}
+```
 
 
 ### TypeScript
@@ -43154,6 +49357,16 @@ import {TuiHint} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.block {
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+    padding: 5rem 3.125rem;
+    inline-size: 18.75rem;
+    text-align: center;
+}
+```
 
 
 ### TypeScript
@@ -43213,6 +49426,17 @@ export default class Example {
     protected onHovered(hovered: boolean): void {
         this.hovered = hovered;
     }
+}
+```
+**LESS:**
+```less
+.text-style {
+    font-size: 16px;
+    color: #f00;
+}
+
+.hidden {
+    display: none;
 }
 ```
 
@@ -43281,6 +49505,22 @@ export default class Example {
     protected paused = true;
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+}
+
+.video {
+    float: left;
+    margin-inline-end: 1.5rem;
+
+    // Safari 15+
+    @supports (float: inline-start) {
+        float: inline-start;
+    }
+}
+```
 
 #### Video
 
@@ -43342,6 +49582,44 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+:host {
+    display: block;
+}
+
+.video {
+    display: block;
+}
+
+.player {
+    position: relative;
+    inline-size: 20rem;
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    inline-size: 100%;
+    align-items: center;
+    padding: 0.75rem 0.75rem 0.5rem;
+    box-sizing: border-box;
+    color: var(--tui-background-base);
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.56));
+}
+
+.slider {
+    flex: 1;
+    margin-inline-start: 0.75rem;
+}
+
+.time {
+    flex-shrink: 0;
+    margin-inline-start: 0.75rem;
+    font-size: 0.8125rem;
+}
+```
 
 #### Audio
 
@@ -43380,6 +49658,24 @@ export default class Example {
 
     protected toggleState(): void {
         this.paused = !this.paused;
+    }
+}
+```
+**LESS:**
+```less
+.tui-player {
+    display: flex;
+    inline-size: 20rem;
+    border-radius: 6.25rem;
+    background: var(--tui-background-neutral-1);
+
+    --tui-background-accent-1: var(--tui-text-action);
+    --tui-background-accent-1-hover: var(--tui-text-action-hover);
+    --tui-background-accent-1-pressed: var(--tui-text-action-hover);
+
+    & > div {
+        flex: 1;
+        margin: 0.375rem 1.75rem 0 0.375rem;
     }
 }
 ```
@@ -43529,6 +49825,29 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: 12rem;
+    block-size: 12rem;
+    background-color: var(--tui-background-neutral-1);
+    overflow: hidden;
+}
+
+.circle {
+    inline-size: 6rem;
+    block-size: 6rem;
+    border-radius: 100%;
+    touch-action: none;
+    background-color: var(--tui-chart-categorical-01);
+    box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(34, 60, 80, 0.2);
+    cursor: move;
+    will-change: transform;
+}
+```
 
 
 ### TypeScript
@@ -43598,6 +49917,12 @@ export default class Example {
     protected onIf(visible: boolean): void {
         this.counterIf += visible ? 1 : -1;
     }
+}
+```
+**LESS:**
+```less
+.hidden {
+    display: none;
 }
 ```
 
@@ -43690,6 +50015,14 @@ import {TuiProgress} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+```
 
 #### Colors
 
@@ -43722,6 +50055,18 @@ export default class Example {
         '#f8a34d',
         '#e01f19',
     ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.green {
+    color: var(--tui-chart-categorical-20);
 }
 ```
 
@@ -43757,6 +50102,25 @@ import {TuiProgress} from '@taiga-ui/kit';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+.description {
+    display: flex;
+    justify-content: space-between;
+
+    & > *:first-child {
+        text-align: start;
+    }
+
+    & > *:last-child {
+        text-align: end;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-secondary);
+    }
+}
+```
 
 #### No round corners
 
@@ -43779,6 +50143,15 @@ import {TuiProgress} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+[tuiProgressBar]._segmented {
+    --tui-segment-gap: 0.25rem;
+
+    border-radius: 0;
+    mask-image: linear-gradient(to left, transparent 0 var(--tui-segment-gap), #999 var(--tui-segment-gap) 100%);
+}
 ```
 
 
@@ -43883,6 +50256,147 @@ import {TuiResizable, TuiResizer} from '@taiga-ui/cdk';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    position: relative;
+    display: block;
+    block-size: 30rem;
+}
+
+.item {
+    position: absolute;
+    display: flex;
+    background: #87ceeb;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    inline-size: 5rem;
+    block-size: 5rem;
+}
+
+.handle {
+    position: absolute;
+    background: #ffc0cb;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    transform: inherit;
+}
+
+.left-top {
+    left: 0;
+    top: 0;
+}
+
+.right-bottom-handle {
+    right: 0;
+    bottom: 0;
+}
+
+.top-middle {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top-middle-handle {
+    left: 50%;
+    bottom: 0;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+}
+
+.top-right-handle {
+    left: 0;
+    bottom: 0;
+}
+
+.middle-right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.middle-right-handle {
+    left: 0;
+    top: 50%;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.bottom-right-handle {
+    left: 0;
+    top: 0;
+}
+
+.middle-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.middle-bottom-handle {
+    left: 50%;
+    top: 0;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-left-handle {
+    right: 0;
+    top: 0;
+}
+
+.left-middle {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left-middle-handle {
+    right: 0;
+    top: 50%;
+}
+
+.middle-middle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.middle-middle-top-handle {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.middle-middle-right-handle {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.middle-middle-bottom-handle {
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.middle-middle-left-handle {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+```
 
 
 ### TypeScript
@@ -43934,6 +50448,18 @@ import {TuiRipple} from '@taiga-ui/addon-mobile';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+[tuiRipple] {
+    position: relative;
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+    user-select: none;
+    margin-block-end: 1rem;
+    overflow: hidden;
+}
+```
 
 #### Global Ripple
 
@@ -43960,6 +50486,21 @@ import {TuiButton} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {}
+```
+**LESS:**
+```less
+.block {
+    inline-size: 10rem;
+    block-size: 5rem;
+    margin-block-start: 2rem;
+    border: 1px solid var(--tui-background-accent-1);
+}
+
+.block,
+button {
+    position: relative;
+    overflow: hidden;
+}
 ```
 
 
@@ -44031,6 +50572,27 @@ import {TuiSensitive, TuiSwitch} from '@taiga-ui/kit';
 })
 export default class Example {
     protected sensitive = true;
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 30rem;
+}
+
+.small {
+    font: var(--tui-typography-body-s);
+}
+
+.medium {
+    font: var(--tui-typography-heading-h6);
+}
+
+.big {
+    font: var(--tui-typography-heading-h3);
 }
 ```
 
@@ -44223,6 +50785,28 @@ export default class Example {
     ];
 }
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+h3 {
+    font: var(--tui-typography-heading-h6);
+    margin: 0;
+}
+
+footer {
+    display: flex;
+    gap: 1.25rem;
+
+    button {
+        flex: 1;
+    }
+}
+```
 
 #### Disabled animations
 
@@ -44286,6 +50870,27 @@ export default class Example {
         'https://avatars.githubusercontent.com/marsibarsi',
         'https://avatars.githubusercontent.com/waterplea',
     ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+section {
+    --tui-duration: 0;
+}
+
+footer {
+    display: flex;
+    gap: 1.25rem;
+
+    button {
+        flex: 1;
+    }
 }
 ```
 
@@ -44436,6 +51041,15 @@ export default class Example {
     protected skeleton = false;
 }
 ```
+**LESS:**
+```less
+p {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+```
 
 #### Text
 
@@ -44523,6 +51137,35 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.box {
+    display: flex;
+    inline-size: 12.5rem;
+    block-size: 12.5rem;
+    background-color: var(--tui-background-accent-1);
+    transition: all 0.5s ease-out;
+    justify-content: center;
+    align-items: center;
+    touch-action: none;
+
+    &.left {
+        background-color: var(--tui-chart-categorical-12);
+    }
+
+    &.right {
+        background-color: var(--tui-chart-categorical-03);
+    }
+
+    &.top {
+        background-color: var(--tui-chart-categorical-08);
+    }
+
+    &.bottom {
+        background-color: var(--tui-chart-categorical-10);
+    }
+}
+```
 
 #### With sidebar
 
@@ -44561,6 +51204,20 @@ export default class Example {
             this.open.set(false);
         }
     }
+}
+```
+**LESS:**
+```less
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: 12.5rem;
+    block-size: 12.5rem;
+}
+
+.drawer {
+    inline-size: 17.25rem;
 }
 ```
 
@@ -44651,6 +51308,22 @@ export default class Example {
     protected money = 237;
 }
 ```
+**LESS:**
+```less
+.dark {
+    inline-size: 18.75rem;
+    padding: 0.625rem 1.25rem 1.25rem;
+    background: #454e58;
+    border-radius: 0.25rem;
+}
+
+.light {
+    padding: 0.625rem 1.25rem;
+    background: var(--tui-background-base);
+    border-radius: 0.25rem;
+    color: var(--tui-text-primary);
+}
+```
 
 #### Toggling
 
@@ -44689,6 +51362,17 @@ export default class Example {
         this.darkMode.set(this.media.matches);
         this.storage?.removeItem(this.key);
     }
+}
+```
+**LESS:**
+```less
+p {
+    display: flex;
+    gap: 1rem;
+}
+
+code {
+    white-space: nowrap !important;
 }
 ```
 
@@ -45012,6 +51696,28 @@ export default class Example {
     }
 }
 ```
+**LESS:**
+```less
+.t-container,
+.t-zoomable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t-container {
+    inline-size: 12rem;
+    block-size: 12rem;
+    background-color: var(--tui-background-neutral-1);
+}
+
+.t-zoomable {
+    inline-size: 3rem;
+    block-size: 3rem;
+    background-color: var(--tui-background-accent-1);
+    border-radius: var(--tui-radius-l);
+}
+```
 
 
 ### TypeScript
@@ -45087,6 +51793,130 @@ import {
 export class TuiWrapperExample1 {
     protected value = '';
     protected checkbox = false;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+tui-wrapper-example-1 {
+    --tui-background-accent-1: #6200ee;
+    --tui-background-accent-1-hover: #6e14ef;
+    --tui-background-accent-1-pressed: #6e14ef;
+    --tui-text-primary-on-accent-1: #fff;
+}
+
+[tuiAppearance][data-appearance='material-textfield'] {
+    .transition(~'background, box-shadow');
+
+    background: #f5f5f5;
+    outline: none;
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 0.25rem 0.25rem 0 0;
+    box-shadow: inset 0 -1px #8e8e8e;
+
+    .appearance-hover({
+        background: #ececec;
+        box-shadow: inset 0 -1px #1f1f1f;
+    });
+
+    .appearance-focus({
+        background: #dcdcdc;
+        box-shadow: inset 0 -2px var(--tui-background-accent-1) !important;
+
+        ~ label {
+            --tui-text-primary: var(--tui-background-accent-1);
+        }
+    });
+
+    &:invalid {
+        --tui-background-accent-1: #b00020;
+
+        box-shadow: inset 0 -1px var(--tui-background-accent-1) !important;
+
+        ~ label {
+            --tui-text-primary: #b00020 !important;
+        }
+    }
+}
+
+[tuiButton][tuiAppearance][data-appearance='material-button'] {
+    .transition(all);
+
+    border-radius: 0.25rem;
+    background: var(--tui-background-accent-1);
+    color: var(--tui-text-primary-on-accent-1);
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow:
+        0 0.1875rem 0.0625rem -0.125rem rgba(0, 0, 0, 0.2),
+        0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.0014),
+        0 0.0625rem 0.3125rem 0 rgba(0, 0, 0, 0.12);
+
+    .appearance-hover({
+        background: var(--tui-background-accent-1-hover);
+        box-shadow: 0 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.2), 0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+        0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12);
+    });
+
+    .appearance-active({
+        background: var(--tui-background-accent-1-pressed);
+        box-shadow: 0 0.3125rem 0.3125rem -0.1875rem rgba(0, 0, 0, 0.2),
+        0rem 0.5rem 0.625rem 0.0625rem rgba(0, 0, 0, 0.14), 0rem 0.1875rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
+    });
+
+    .appearance-focus({
+        background: #883df2;
+    });
+}
+
+[tuiAppearance][data-appearance='material-checkbox'] {
+    color: var(--tui-text-primary-on-accent-1);
+    border-radius: 0.125rem;
+    border: 0.125rem solid rgba(0, 0, 0, 0.54);
+    outline: none;
+
+    &::after {
+        .transition(all);
+
+        content: '';
+        position: absolute;
+        top: -0.625rem;
+        left: -0.625rem;
+        right: -0.625rem;
+        bottom: -0.625rem;
+        border-radius: 100%;
+        background: #000;
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    .appearance-hover({
+        &:after {
+            opacity: 0.05;
+            transform: none;
+        }
+    });
+
+    .appearance-active({
+        &:after {
+            opacity: 0.1;
+            transform: none;
+        }
+    });
+
+    .appearance-focus({
+        &:after {
+            opacity: 0.1;
+            transform: none;
+        }
+    });
+
+    &:checked {
+        background: var(--tui-background-accent-1);
+        border-color: transparent;
+    }
 }
 ```
 
@@ -45219,6 +52049,30 @@ export class TuiPortalsExample1 {
     }
 }
 ```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.template {
+    box-shadow: var(--tui-shadow-small);
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    animation: tuiFadeIn var(--tui-duration) var(--tui-duration);
+    animation-fill-mode: backwards;
+    background: var(--tui-chart-categorical-01);
+    font: var(--tui-typography-body-m);
+}
+
+.icon {
+    color: var(--tui-chart-categorical-10);
+}
+```
 
 
 ### TypeScript
@@ -45290,6 +52144,21 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 export class TuiVariablesExample1 {
     protected value = '';
     protected checkbox = true;
+}
+```
+**LESS:**
+```less
+:host {
+    --tui-typography-family-text: 'Comic Sans MS', cursive;
+    --tui-typography-body-m: bold 1rem/1.5rem var(--tui-typography-family-text);
+    --tui-typography-body-s: normal 0.5rem/1.25rem var(--tui-typography-family-text);
+    --tui-background-accent-1: #c86dd7;
+    --tui-background-accent-1-hover: #a456b1;
+    --tui-background-accent-1-pressed: #7f3b8a;
+    --tui-text-primary-on-accent-1: #fff;
+    --tui-radius-s: 0;
+    --tui-radius-m: 0.25rem;
+    --tui-height-l: 4.375rem;
 }
 ```
 
@@ -45382,6 +52251,66 @@ export default class Example extends TuiRectAccessor {
     public getClientRect(): DOMRect {
         return this.el.getBoundingClientRect();
     }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.dropdowns {
+    position: relative;
+    display: block;
+    block-size: 18.75rem;
+    inline-size: 50%;
+    resize: both;
+    overflow: hidden;
+    outline: 0.125rem dotted var(--tui-border-normal);
+
+    @media @tui-tablet {
+        inline-size: 100%;
+    }
+}
+
+.t1,
+.t2,
+.t3,
+.t4 {
+    position: absolute;
+    inline-size: 3.125rem;
+    block-size: 3.125rem;
+    background: var(--tui-background-accent-1);
+}
+
+.t1 {
+    top: 0.625rem;
+    left: 0.625rem;
+}
+
+.t2 {
+    top: 0.625rem;
+    right: 0.625rem;
+}
+
+.t3 {
+    right: 0.625rem;
+    bottom: 0.625rem;
+}
+
+.t4 {
+    left: 0.625rem;
+    bottom: 0.625rem;
+}
+
+.t-centered-axis-xy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.t-direction {
+    inline-size: max-content;
+    margin-block-end: 1rem;
 }
 ```
 
@@ -45664,6 +52593,12 @@ import {TuiNumberFormat} from '@taiga-ui/core';
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    font: var(--tui-typography-body-l);
+}
+```
 
 
 ### TypeScript
@@ -45944,6 +52879,19 @@ export default class Example {
 
     protected readonly matcher = (item: Item, search: number): boolean =>
         item.price > search;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+[tuiTh],
+[tuiTd] {
+    border: none;
+}
+
+[tuiTd] {
+    font: var(--tui-typography-body-m) !important;
 }
 ```
 
