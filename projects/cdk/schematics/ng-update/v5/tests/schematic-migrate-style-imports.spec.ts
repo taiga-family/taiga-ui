@@ -39,16 +39,25 @@ describe('ng-update migrate style imports', () => {
             collection,
             styles: `
 @import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/markup/tui-space.less';
+@import '@taiga-ui/styles/markup/tui-list';
 @import '@taiga-ui/core/styles/taiga-ui-fonts.less';
 @import '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less';
+@import '@taiga-ui/styles/taiga-ui-global.less';
 @import '@taiga-ui/core/styles/taiga-ui-theme.less';
 `,
         });
 
         expect(styles).toEqual(`
 @import '@taiga-ui/styles/utils';
+// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/markup/tui-space.less
+@import '@taiga-ui/styles/markup/tui-space.less';
+// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/markup/tui-list.less
+@import '@taiga-ui/styles/markup/tui-list';
 @import '@taiga-ui/styles/taiga-ui-fonts.less';
 @import '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less';
+// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/taiga-ui-global.less
+@import '@taiga-ui/styles/taiga-ui-global.less';
 @import '@taiga-ui/styles/taiga-ui-theme.less';
 `);
     });
@@ -65,6 +74,7 @@ describe('ng-update migrate style imports', () => {
                                 '@taiga-ui/core/styles/taiga-ui-theme.less',
                                 '@taiga-ui/core/styles/taiga-ui-fonts.less',
                                 '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less',
+                                '@taiga-ui/styles/taiga-ui-global.less',
                             ],
                         },
                     },
@@ -72,21 +82,28 @@ describe('ng-update migrate style imports', () => {
             }),
         });
 
+        /**
+         * Adding comments with //  syntax to JSON files will make them invalid JSON, yep
+         * However, it's okay because we need to explain how to migrate before developer deploys its application to production
+         */
         expect(projectJson).toEqual(
-            JSON.stringify({
-                name: 'test-project',
-                targets: {
-                    build: {
-                        options: {
-                            styles: [
-                                '@taiga-ui/styles/taiga-ui-theme.less',
-                                '@taiga-ui/styles/taiga-ui-fonts.less',
-                                '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less',
-                            ],
+            `// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/taiga-ui-global.less\n${JSON.stringify(
+                {
+                    name: 'test-project',
+                    targets: {
+                        build: {
+                            options: {
+                                styles: [
+                                    '@taiga-ui/styles/taiga-ui-theme.less',
+                                    '@taiga-ui/styles/taiga-ui-fonts.less',
+                                    '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less',
+                                    '@taiga-ui/styles/taiga-ui-global.less',
+                                ],
+                            },
                         },
                     },
                 },
-            }),
+            )}`,
         );
     });
 
