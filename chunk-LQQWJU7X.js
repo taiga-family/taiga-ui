@@ -1,0 +1,1 @@
+import{Pa as i,i as e,ta as r}from"./chunk-JYXVX5RO.js";var t=class t extends e{logout(){this.next()}};t.\u0275fac=(()=>{let o;return function(c){return(o||(o=i(t)))(c||t)}})(),t.\u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"});var a=t;export{a};

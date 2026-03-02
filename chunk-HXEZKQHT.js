@@ -1,0 +1,106 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="InputPhone"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>InputPhone</code>
+            allows to input a phone number
+        </p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        If you support Safari < 18, we recommend to set
+                        <code>pattern</code>
+                        for correct work of browser autofill
+                    }
+                    @case (1) {
+                        By number and by name
+                    }
+                    @case (2) {
+                        You can provide custom transformer in options to store value in different format in form control
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-textfield
+                    [filler]="filler"
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <label tuiLabel>Type a phone number</label>
+
+                    <input
+                        tuiInputPhone
+                        [focused]="input.focused"
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [mask]="phoneMask"
+                        [readOnly]="controlDoc.readonly"
+                        [state]="input.state"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                </tui-textfield>
+            </ng-template>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[mask]"
+                tuiDocAPIItem
+                type="string"
+                [items]="phoneMasks"
+                [(value)]="phoneMask"
+            >
+                Text mask. You can use # , - , brackets and spaces as a template symbol
+            </tr>
+
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
+            >
+                <tr
+                    name="[filler]"
+                    tuiDocAPIItem
+                    type="string"
+                    [(value)]="filler"
+                >
+                    Filler
+                </tr>
+                >
+            </tbody>
+
+            <tbody
+                #input
+                tuiDocInput
+            ></tbody>
+
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
+
+            <tbody
+                #controlDoc
+                tuiDocControl
+            ></tbody>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};

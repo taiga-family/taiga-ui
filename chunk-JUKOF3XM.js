@@ -1,1 +1,0 @@
-import{Mc as n,Tb as o}from"./chunk-2UPKG2B4.js";var e=class e{};e.\u0275fac=function(t){return new(t||e)},e.\u0275cmp=o({type:e,selectors:[["ng-component"]],decls:1,vars:0,template:function(t,c){t&1&&n(0,"Dialog content via named outlet")},encapsulation:2,changeDetection:0});var a=e;export{a};

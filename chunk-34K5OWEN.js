@@ -1,0 +1,29 @@
+import"./chunk-HU6DUUP4.js";var a=`@import '@taiga-ui/styles/utils';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin: 0 -5rem;
+
+    :host-context(tui-root._mobile) & {
+        margin: 0;
+
+        button {
+            display: none;
+        }
+    }
+}
+
+.header {
+    .transition(background);
+
+    block-size: 10rem;
+    flex: 1;
+    background: var(--tui-background-base) center;
+    background-size: cover;
+}
+
+tui-pager {
+    margin: 0 auto;
+}
+`;export{a as default};

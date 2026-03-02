@@ -1,0 +1,26 @@
+import"./chunk-HU6DUUP4.js";var c=`@import '@taiga-ui/styles/utils';
+
+button {
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+[tuiAppearance][data-appearance='acid'] {
+    color: var(--tui-chart-categorical-06);
+    background: var(--tui-chart-categorical-09);
+
+    --tui-border-focus: var(--tui-chart-categorical-06);
+
+    .appearance-hover({
+        color: var(--tui-chart-categorical-09);
+        background: var(--tui-chart-categorical-14);
+    });
+
+    .appearance-active({
+        color: var(--tui-chart-categorical-08);
+        background: var(--tui-chart-categorical-10);
+    });
+}
+`;export{c as default};

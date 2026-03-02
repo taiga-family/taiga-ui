@@ -1,0 +1,16 @@
+import"./chunk-HU6DUUP4.js";var o=`@import '@taiga-ui/styles/utils';
+
+.item {
+    .transition(~'box-shadow, transform');
+
+    display: block;
+    max-block-size: 6.25rem;
+    margin: 2rem auto;
+    border-radius: 100%;
+
+    &_active {
+        box-shadow: var(--tui-shadow-medium);
+        transform: scale(1.2);
+    }
+}
+`;export{o as default};

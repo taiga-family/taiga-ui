@@ -69,6 +69,7 @@
 - [Compass](https://taiga-ui.dev/components/compass)
 - [Confirm](https://taiga-ui.dev/components/confirm) — Confirm is a ready to use Dialog to ask user to confirm an action See this example to learn how to use confirm to prevent data loss on forms inside other modals
 - [Copy](https://taiga-ui.dev/components/copy) — This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied.
+- [Counter](https://taiga-ui.dev/components/counter)
 - [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
 - [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
 - [Dialog](https://taiga-ui.dev/components/dialog) — Customizable modal dialogs
@@ -116,6 +117,7 @@
 - [Pager](https://taiga-ui.dev/components/pager)
 - [Pdf Viewer](https://taiga-ui.dev/components/pdf-viewer) — Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on WA_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
 - [Pin](https://taiga-ui.dev/components/pin) — Pins are used to show a location on a 2D plane. Use color , background , border and box-shadow to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.
+- [Popout](https://taiga-ui.dev/components/popout) — Using service to show content in a new window.
 - [Preview](https://taiga-ui.dev/components/preview) — Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate etc) As a document you can provide images, embeds and other arbitrary content. The component automatically adjusts to the mobile device
 - [Progress Bar](https://taiga-ui.dev/components/progress-bar) — tuiProgressBar – attribute component for native html tag '"> . Usage: '"> .
 - [Progress Circle](https://taiga-ui.dev/components/progress-circle) — '"> is a component to visually represent the completion of a process or operation (as a partially filled circle/ring). It shows how much has been completed and how much remains.
@@ -143,6 +145,7 @@
 - [Textarea](https://taiga-ui.dev/components/textarea) — Textarea uses Textfield to create a multi-line string input.
 - [Thumbnail Card](https://taiga-ui.dev/components/thumbnail-card) — Customizable credit card thumbnail
 - [Tiles](https://taiga-ui.dev/components/tiles) — Tiles is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
+- [Timeline](https://taiga-ui.dev/components/timeline) — An interactive timeline component for arranging events on a linear axis with no built-in styles
 - [Title](https://taiga-ui.dev/components/title) — A directive for title with optional subtitle
 - [Toast](https://taiga-ui.dev/components/toast)
 - [Tooltip](https://taiga-ui.dev/components/tooltip) — Component to show icons with a hint by hover

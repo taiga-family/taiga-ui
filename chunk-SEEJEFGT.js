@@ -1,0 +1,17 @@
+import"./chunk-HU6DUUP4.js";var o=`@import '@taiga-ui/styles/utils';
+
+.filters {
+    .scrollbar-hidden();
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    overflow: scroll;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-block-end: 1rem;
+    border-block-end: 1px solid var(--tui-border-normal);
+    background: var(--tui-background-elevation-3);
+}
+`;export{o as default};

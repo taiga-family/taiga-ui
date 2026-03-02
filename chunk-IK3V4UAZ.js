@@ -1,1 +1,0 @@
-import"./chunk-B4AJQJMI.js";var a="@taiga-ui/styles",s="5.0.0-rc.3",n="Framework-agnostic package with styles for Taiga UI",t="Apache-2.0",r={"./*":"./*"},c={"@taiga-ui/design-tokens":"~0.277.0"},o={name:a,version:s,description:n,license:t,exports:r,peerDependencies:c};export{o as default,n as description,r as exports,t as license,a as name,c as peerDependencies,s as version};

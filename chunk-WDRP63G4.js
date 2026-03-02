@@ -1,0 +1,86 @@
+import"./chunk-HU6DUUP4.js";var n=`<tui-doc-page
+    header="LineClamp"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component cuts overflown text with "..." and shows it by hover</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-line-clamp
+                [content]="content || defaultExampleContent"
+                [lineHeight]="lineHeight"
+                [linesLimit]="linesLimit"
+                [style.maxWidth.px]="maxWidth"
+                (overflownChange)="overflownChange.emitEvent($event)"
+            />
+            <ng-template #defaultExampleContent>
+                Lorem ipsum
+                <br />
+                Gaudeamus igitur
+                <br />
+                <strong>Carpe diem</strong>
+                <br />
+                Veni, vidi, vici
+            </ng-template>
+        </tui-doc-demo>
+
+        <table tuiDocAPI>
+            <tr
+                name="[content]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [(value)]="content"
+            >
+                Content
+            </tr>
+            <tr
+                name="[lineHeight]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="lineHeight"
+            >
+                Height of single line. It used to limit component's height.
+            </tr>
+            <tr
+                name="[linesLimit]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="linesLimit"
+            >
+                Number of visible lines
+            </tr>
+            <tr
+                name="[style.max-width.px]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="maxWidth"
+            >
+                Value of max-width
+            </tr>
+            <tr
+                #overflownChange
+                name="(overflownChange)"
+                tuiDocAPIItem
+                type="boolean"
+            >
+                Emits
+                <code>true</code>
+                if there's extra content which isn't visible otherwise
+                <code>false</code>
+                when all content is visible.
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{n as default};

@@ -1,0 +1,58 @@
+import"./chunk-HU6DUUP4.js";var r=`@import '@taiga-ui/styles/utils';
+
+:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
+}
+
+.chart {
+    pointer-events: none;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-block-start: 1rem;
+
+    @media @tui-mobile {
+        flex-direction: column;
+    }
+}
+
+.disable {
+    .transition(~'transform, color');
+
+    margin-inline-start: 0.5rem;
+    will-change: transform;
+    color: var(--tui-text-secondary);
+    pointer-events: auto;
+
+    &::before {
+        font-size: 1rem;
+    }
+
+    &:hover {
+        color: var(--tui-text-primary);
+    }
+
+    &_rotated {
+        transform: rotate(45deg);
+    }
+}
+
+.legend {
+    margin: 0 0 0 2rem;
+    justify-content: center;
+
+    @media @tui-mobile {
+        margin: 2rem 0 0;
+    }
+}
+
+.item {
+    margin: 0 0.5rem 0.75rem 0;
+}
+`;export{r as default};

@@ -1,0 +1,92 @@
+import"./chunk-HU6DUUP4.js";var i=`<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="onClick()"
+>
+    Show dialog with carousel
+</button>
+
+<ng-template #header>
+    <div
+        class="header"
+        [style.background-image]="background"
+    ></div>
+</ng-template>
+<ng-template
+    [tuiDialogOptions]="{size: 's', header: header}"
+    [(tuiDialog)]="open"
+>
+    <div
+        tuiCarouselButtons
+        class="wrapper"
+        (touchstart.passive.stop)="(0)"
+    >
+        <button
+            appearance="neutral"
+            iconStart="@tui.chevron-left"
+            tuiIconButton
+            tuiTheme="dark"
+            type="button"
+            class="tui-space_right-4"
+            (click)="navigate(-1)"
+        >
+            Previous
+        </button>
+        <tui-carousel [(index)]="index">
+            <div *tuiItem>
+                <h2>Carousel is awesome</h2>
+                <p>It can show arbitrary content and it's very easy to control</p>
+            </div>
+            <div *tuiItem>
+                <h2>Pagination</h2>
+                <p>
+                    You can use
+                    <a
+                        tuiLink
+                        [routerLink]="routes.Pagination"
+                    >
+                        Pagination
+                    </a>
+                    component with size 's' together with it
+                </p>
+            </div>
+            <div *tuiItem>
+                <h2>Buttons</h2>
+                <p>
+                    Use
+                    <code>tuiCarouselButtons</code>
+                    directive to setup navigation buttons
+                </p>
+            </div>
+        </tui-carousel>
+        <button
+            appearance="neutral"
+            iconStart="@tui.chevron-right"
+            tuiIconButton
+            tuiTheme="dark"
+            type="button"
+            class="tui-space_left-4"
+            (click)="navigate(1)"
+        >
+            Next
+        </button>
+    </div>
+
+    <tui-pager
+        [count]="3"
+        [index]="index"
+    />
+
+    <div class="tui-space_top-4">
+        <button
+            appearance="primary"
+            tuiButton
+            type="button"
+            (click)="open = false"
+        >
+            Got it!
+        </button>
+    </div>
+</ng-template>
+`;export{i as default};

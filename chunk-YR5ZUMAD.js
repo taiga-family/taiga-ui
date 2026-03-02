@@ -1,0 +1,112 @@
+import"./chunk-HU6DUUP4.js";var i=`<label tuiLabel>
+    Arbitrary strings with suggestions
+    <tui-textfield multi>
+        <input
+            placeholder="Type something"
+            tuiInputChip
+            [(ngModel)]="arbitrary"
+        />
+        <tui-input-chip *tuiItem />
+        @if (items | tuiHideSelected | tuiFilterByInput; as items) {
+            @if (items.length) {
+                <ng-template tuiDropdown>
+                    <tui-data-list-wrapper [items]="items" />
+                </ng-template>
+            }
+        }
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Only allowing items from the list and hiding values when not focused behind a custom content
+    <tui-textfield
+        #input
+        multi
+        [content]="!input.focused() && pythons.length ? \`Selected \${pythons.length} out of \${items.length}\` : ''"
+        [disabledItemHandler]="disabled"
+    >
+        <label tuiLabel>Select Pythons</label>
+        <input
+            tuiInputChip
+            [placeholder]="pythons.length ? '' : 'Type for suggestions'"
+            [(ngModel)]="pythons"
+        />
+        @if (!input.focused()) {
+            <ng-template tuiItem />
+        }
+        @if (items | tuiHideSelected | tuiFilterByInput; as items) {
+            @if (items.length) {
+                <ng-template tuiDropdown>
+                    <tui-data-list-wrapper [items]="items" />
+                </ng-template>
+            }
+        }
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Using checkboxes in the dropdown and making the textfield non-writable
+    <tui-textfield
+        multi
+        tuiChevron
+    >
+        <label tuiLabel>Multi Select</label>
+        <input
+            tuiInputChip
+            tuiSelectLike
+            [placeholder]="multi.length ? '' : 'Pick from the list'"
+            [(ngModel)]="multi"
+        />
+        <tui-data-list-wrapper
+            *tuiDropdown
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Working with objects
+    <tui-textfield
+        multi
+        tuiChevron
+        [disabledItemHandler]="strings"
+        [stringify]="stringify"
+    >
+        <input
+            tuiInputChip
+            [placeholder]="objects.length ? '' : 'Picking objects'"
+            [(ngModel)]="objects"
+        />
+        <tui-input-chip *tuiItem />
+        <tui-data-list *tuiDropdown>
+            <tui-opt-group
+                label="Pythons"
+                tuiMultiSelectGroup
+            >
+                @for (user of users | tuiFilterByInput; track user) {
+                    <button
+                        tuiOption
+                        [value]="user"
+                    >
+                        {{ user.name }}
+                    </button>
+                }
+            </tui-opt-group>
+            <tui-opt-group
+                label="Collaborators"
+                tuiMultiSelectGroup
+            >
+                @for (user of more | tuiFilterByInput; track user) {
+                    <button
+                        tuiOption
+                        [value]="user"
+                    >
+                        {{ user.name }}
+                    </button>
+                }
+            </tui-opt-group>
+        </tui-data-list>
+    </tui-textfield>
+</label>
+`;export{i as default};

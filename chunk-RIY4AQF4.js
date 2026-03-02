@@ -1,0 +1,35 @@
+import"./chunk-HU6DUUP4.js";var e=`@import '@taiga-ui/styles/utils';
+
+.tooltip {
+    position: relative;
+
+    &:hover .bubble {
+        opacity: 1;
+    }
+}
+
+.bubble {
+    .transition(opacity);
+
+    position: absolute;
+    left: 3.125rem;
+    bottom: 1.875rem;
+    inline-size: 15.625rem;
+    background: var(--tui-text-primary);
+    color: var(--tui-background-base);
+    border-radius: 0.25rem;
+    padding: 0.625rem;
+    opacity: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -0.9375rem;
+        border-block-start: 0.9375rem solid var(--tui-text-primary);
+        border-inline-start: 0.625rem solid transparent;
+        border-inline-end: 0.625rem solid transparent;
+        transform: translate(-0.625rem, 0);
+    }
+}
+`;export{e as default};

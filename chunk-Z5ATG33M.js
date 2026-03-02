@@ -1,0 +1,68 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="PieChart"
+    package="ADDON-CHARTS"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (1) {
+                        Use
+                        <code>ChartHint</code>
+                        directive to enable hints with
+                        <code>tuiHintContent</code>
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-pie-chart
+                class="chart"
+                [size]="size"
+                [value]="value"
+                [(activeItemIndex)]="activeItemIndex"
+            />
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[(activeItemIndex)]"
+                tuiDocAPIItem
+                type="number"
+                [items]="activeItemIndexVariants"
+                [(value)]="activeItemIndex"
+            >
+                Active fragment
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeXL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="readonly number[]"
+                [items]="valueVariants"
+                [(value)]="value"
+            >
+                Value
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

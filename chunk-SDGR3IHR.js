@@ -1,0 +1,27 @@
+import"./chunk-HU6DUUP4.js";var i=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    max-inline-size: 30rem;
+}
+
+hr,
+h3 {
+    margin: 1rem 0;
+}
+
+hr {
+    block-size: 1px;
+    background: var(--tui-border-normal);
+    border: 0;
+}
+
+.link {
+    .text-truncate();
+
+    &_last {
+        font-weight: bold;
+        color: var(--tui-text-primary);
+    }
+}
+`;export{i as default};

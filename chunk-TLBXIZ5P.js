@@ -1,0 +1,19 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="Tooltip"
+    package="KIT"
+    path="kit/directives/tooltip"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component to show icons with a hint by hover</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};
