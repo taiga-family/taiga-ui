@@ -95,7 +95,9 @@ export class TuiDropdownDirective
     }
 
     public ngAfterViewChecked(): void {
-        this.refresh$.next();
+        if (this.ref()) {
+            this.refresh$.next();
+        }
     }
 
     public ngOnDestroy(): void {
