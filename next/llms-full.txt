@@ -267,6 +267,11 @@
 ```text
   TuiButtonCopy, TuiCopy, TuiCopyComponent, TuiCopyDirective, TuiCopyOptions
 ```
+### counter
+
+```text
+  TuiCounter, TuiCounterOptions
+```
 ### data-list-wrapper
 
 ```text
@@ -341,8 +346,8 @@
 ### input-number
 
 ```text
-  TuiBigIntQuantumValueTransformer, TuiBigIntValueTransformer, TuiInputNumber, TuiInputNumberDirective, TuiInputNumberOptions, TuiInputNumberStep, TuiNumberMask, TuiNumberValueTransformer, TuiQuantumValueTransformer, TuiQuantumValueTransformerBase
-  TuiWithNumberMask
+  TuiBigIntQuantumValueTransformer, TuiBigIntValueTransformer, TuiInputNumber, TuiInputNumberDirective, TuiInputNumberOptions, TuiInputNumberStep, TuiInputNumberStepService, TuiNumberMask, TuiNumberValueTransformer, TuiQuantumValueTransformer
+  TuiQuantumValueTransformerBase, TuiWithNumberMask
 ```
 ### input-phone
 
@@ -498,6 +503,11 @@
 
 ```text
   TuiReorderFunction, TuiTile, TuiTileHandle, TuiTileService, TuiTiles, TuiTilesComponent
+```
+### timeline
+
+```text
+  TuiTimeline, TuiTimelineComponent, TuiTimelineItem
 ```
 ### toast
 
@@ -10756,6 +10766,191 @@ export default class Example {
         'With CopyProcessor',
         'ButtonCopy',
     ];
+}
+```
+
+---
+# components/Counter
+- **Package**: `KIT`
+- **Type**: components
+
+### Example
+
+```html
+<tui-counter [appearance]="appearance" [max]="max" [min]="min" [size]="size" [step]="step" [(ngModel)]="value" > {{ content }} </tui-counter>
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [appearance] | `string` | Appearance |
+| [size] | `TuiSizeS | TuiSizeL` | Size |
+| [step] | `number` | Step |
+| [min] | `number` | Minimum value |
+| [max] | `number` | Maximum value |
+| ng-content | `string` | Text inside counter |
+
+### Usage Examples
+
+#### Sizes
+
+**Template:**
+```html
+<tui-counter size="l" [(ngModel)]="value" />
+<tui-counter size="m" [(ngModel)]="value" />
+<tui-counter size="s" [(ngModel)]="value" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCounter} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiCounter],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 0;
+}
+```
+
+#### Appearances
+
+**Template:**
+```html
+<tui-counter appearance="primary" [(ngModel)]="value" > {{ value | i18nPlural: pluralize }} </tui-counter>
+<tui-counter appearance="flat" [(ngModel)]="value" > {{ value | i18nPlural: pluralize }} </tui-counter>
+<tui-counter appearance="secondary" [(ngModel)]="value" > {{ value | i18nPlural: pluralize }} </tui-counter>
+```
+**TypeScript:**
+```ts
+import {I18nPluralPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCounter} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, I18nPluralPipe, TuiCounter],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 0;
+
+    protected readonly pluralize = {
+        '=0': '',
+        '=1': ' pc',
+        other: ' pcs',
+    };
+}
+```
+
+#### Adjusts font size
+
+**Template:**
+```html
+<tui-counter [step]="step" [style.inline-size.rem]="10" [(ngModel)]="value" >
+<span [style.order]="-1">$</span>
+</tui-counter>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCounter} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiCounter],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly step = 1_000;
+    protected value = 9_000;
+}
+```
+
+#### Animated
+
+**Template:**
+```html
+<section appearance="neutral" tuiCardMedium >
+<h3 tuiTitle> Steak <span tuiSubtitle>$25</span>
+</h3>
+<footer class="footer"> 250g <tui-counter size="m" class="counter" [class.counter_minimized]="!value" [(ngModel)]="value" />
+</footer>
+</section>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiCounter} from '@taiga-ui/kit';
+import {TuiCard} from '@taiga-ui/layout';
+
+@Component({
+    imports: [FormsModule, TuiCard, TuiCounter, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 0;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiCounter} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiCounter, TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [
+        'Sizes',
+        'Appearances',
+        'Adjusts font size',
+        'Animated',
+    ];
+
+    protected readonly value = 0;
+    protected readonly step = 1;
+    protected readonly content = '';
+    protected readonly sizeVariants = ['l', 'm', 's'] as const;
+    protected readonly size = this.sizeVariants[0];
+    protected readonly appearanceVariants = ['primary', 'flat', 'secondary'] as const;
+    protected readonly appearance = this.appearanceVariants[0];
+    protected readonly minVariants = [-Infinity, -5, 0] as const;
+    protected readonly maxVariants = [0, 5, Infinity] as const;
+    protected readonly min = this.minVariants[0];
+    protected readonly max = this.maxVariants[2];
 }
 ```
 
@@ -37431,6 +37626,140 @@ export default class Page {
     tui-tile._dragged & {
         box-shadow: var(--tui-shadow-small-hover);
     }
+}
+```
+
+---
+# components/Timeline
+- **Package**: `KIT`
+- **Type**: components
+An interactive timeline component for arranging events on a linear axis with no built-in styles
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [orientation] | `TuiOrientation` | Vertical/horizontal orientation |
+| [template] | `TemplateRef<TuiContext<number>>` | Template for gaps between items |
+| [max] | `number` | Upper limit of the timeline |
+| [draggable] | `boolean` | Allow moving this item around |
+| [resizable] | `boolean` | Allow resizing this item by dragging edges |
+| [(value)] | `[number, number]` | Beginning and end of the item |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+<tui-timeline [max]="50"> @for (_ of items; track $index) { <label tuiTimelineItem [style.background]="`var(--tui-chart-categorical-0${$index})`" [(value)]="items[$index]!" ></label> } </tui-timeline>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTimeline} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiTimeline],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items: ReadonlyArray<[number, number]> = [
+        [0, 5],
+        [12, 15],
+        [24, 40],
+    ];
+}
+```
+
+#### Full-fledged
+
+**Template:**
+```html
+<tui-timeline #timeline orientation="vertical" [max]="max" [template]="gap" > @for (_ of items(); track $index) { <label #item tuiHintAppearance="floating" tuiHintDirection="end" tuiTimelineItem [resizable]="false" [tuiHint]="hint" [(value)]="items()[$index]!" >
+<span>Event #{{ $index + 1 }}</span>
+</label>
+<ng-template #hint>
+<form tuiForm="s">
+<tui-range name="range" [margin]="max / 5" [max]="item.max()" [min]="item.min()" [ngModelOptions]="{updateOn: 'submit'}" [(ngModel)]="items()[$index]" />
+<footer>
+<button tuiButton type="submit" > Save </button>
+<button appearance="secondary-destructive" tuiButton type="button" (click)="remove($index)" > Remove </button>
+</footer>
+</form>
+</ng-template> } <ng-template #gap let-index > @let gap = timeline.gaps()[index] ?? [0, 0]; @if (gap[1] - gap[0] > max / 5) { <button appearance="secondary" iconStart="@tui.plus" size="xs" tuiIconButton type="button" (click)="add(index)" > Add </button> } </ng-template>
+</tui-timeline>
+```
+**TypeScript:**
+```ts
+import {Component, signal, type WritableSignal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiHint} from '@taiga-ui/core';
+import {TuiRange, TuiTimeline} from '@taiga-ui/kit';
+import {TuiForm} from '@taiga-ui/layout';
+
+@Component({
+    imports: [FormsModule, TuiButton, TuiForm, TuiHint, TuiRange, TuiTimeline],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly max = 50;
+    protected readonly items = signal<ReadonlyArray<WritableSignal<[number, number]>>>([
+        signal([0, 12]),
+        signal([24, 40]),
+    ]);
+
+    protected remove(index: number): void {
+        this.items.update((items) => items.filter((_, i) => i !== index));
+    }
+
+    protected add(index: number): void {
+        const start = this.items()[index - 1]?.()[1] || 0;
+        const end = this.items()[index]?.()[0] || this.max;
+        const copy = [...this.items()];
+
+        copy.splice(index, 0, signal([start, end]));
+
+        this.items.set(copy);
+    }
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiDemo, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = ['Basic', 'Full-fledged'];
+}
+```
+
+### LESS
+
+```less
+tr ::ng-deep td:last-child:not(:only-child) {
+    display: none;
 }
 ```
 
