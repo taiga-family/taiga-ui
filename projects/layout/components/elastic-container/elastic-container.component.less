@@ -5,9 +5,18 @@
 
     display: block;
     overflow: hidden;
+    flex-direction: inherit;
+    gap: inherit;
 }
 
 .t-wrapper {
+    display: inherit;
     padding-block-start: 1px;
     margin-block-start: -1px;
+    flex-direction: inherit;
+    gap: inherit;
+
+    &::before {
+        content: '';
+    }
 }

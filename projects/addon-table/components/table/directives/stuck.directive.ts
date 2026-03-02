@@ -9,13 +9,9 @@ import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
 
 // TODO: Consider making universal and moving to CDK
 @Directive({
-    selector: 'tui-stuck:never',
     providers: [
         WaIntersectionObserverService,
-        {
-            provide: WA_INTERSECTION_THRESHOLD,
-            useValue: [0, 1],
-        },
+        {provide: WA_INTERSECTION_THRESHOLD, useValue: [0, 1]},
     ],
     host: {'[class._stuck]': 'stuck()'},
 })
