@@ -69,6 +69,7 @@
 - [Compass](https://taiga-ui.dev/components/compass)
 - [Confirm](https://taiga-ui.dev/components/confirm) — Confirm is a ready to use Dialog to ask user to confirm an action See this example to learn how to use confirm to prevent data loss on forms inside other modals
 - [Copy](https://taiga-ui.dev/components/copy) — This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied.
+- [Counter](https://taiga-ui.dev/components/counter)
 - [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
 - [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
 - [Dialog](https://taiga-ui.dev/components/dialog) — Customizable modal dialogs
@@ -144,6 +145,7 @@
 - [Textarea](https://taiga-ui.dev/components/textarea) — Textarea uses Textfield to create a multi-line string input.
 - [Thumbnail Card](https://taiga-ui.dev/components/thumbnail-card) — Customizable credit card thumbnail
 - [Tiles](https://taiga-ui.dev/components/tiles) — Tiles is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
+- [Timeline](https://taiga-ui.dev/components/timeline) — An interactive timeline component for arranging events on a linear axis with no built-in styles
 - [Title](https://taiga-ui.dev/components/title) — A directive for title with optional subtitle
 - [Toast](https://taiga-ui.dev/components/toast)
 - [Tooltip](https://taiga-ui.dev/components/tooltip) — Component to show icons with a hint by hover
