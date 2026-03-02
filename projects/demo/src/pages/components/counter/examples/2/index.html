@@ -1,0 +1,20 @@
+<tui-counter
+    appearance="primary"
+    [(ngModel)]="value"
+>
+    {{ value | i18nPlural: pluralize }}
+</tui-counter>
+
+<tui-counter
+    appearance="flat"
+    [(ngModel)]="value"
+>
+    {{ value | i18nPlural: pluralize }}
+</tui-counter>
+
+<tui-counter
+    appearance="secondary"
+    [(ngModel)]="value"
+>
+    {{ value | i18nPlural: pluralize }}
+</tui-counter>

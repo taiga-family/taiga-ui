@@ -48,6 +48,7 @@ export const DemoRoute = {
     Button: '/components/button',
     ButtonX: '/components/button-x',
     ButtonGroup: '/components/button-group',
+    Counter: '/components/counter',
     ButtonSelect: '/components/button-select',
     Calendar: '/components/calendar',
     Carousel: '/components/carousel',

@@ -1,0 +1,85 @@
+<tui-doc-page
+    header="Counter"
+    package="KIT"
+    path="kit/components/counter"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-counter
+                [appearance]="appearance"
+                [max]="max"
+                [min]="min"
+                [size]="size"
+                [step]="step"
+                [(ngModel)]="value"
+            >
+                {{ content }}
+            </tui-counter>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
+            >
+                Appearance
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[step]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="step"
+            >
+                Step
+            </tr>
+            <tr
+                name="[min]"
+                tuiDocAPIItem
+                type="number"
+                [items]="minVariants"
+                [(value)]="min"
+            >
+                Minimum value
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [items]="maxVariants"
+                [(value)]="max"
+            >
+                Maximum value
+            </tr>
+            <tr
+                name="ng-content"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="content"
+            >
+                Text inside counter
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
