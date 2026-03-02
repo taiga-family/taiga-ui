@@ -48,6 +48,6 @@ export const HTML_COMMENTS: HtmlComment[] = [
         tag: 'tui-mobile-calendar',
         withAttrs: ['single'],
         comment:
-            'Use tuiCalendarSheetOptionsProvider({rangeMode: true}). See example https://taiga-ui.dev/components/mobile-calendar#range',
+            'Use tuiCalendarSheetOptionsProvider({rangeMode: boolean}) instead of [single] property. See example https://taiga-ui.dev/components/mobile-calendar#range',
     },
 ];

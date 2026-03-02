@@ -20,7 +20,7 @@ describe('ng-update MobileCalendar', () => {
         });
 
         expect(template).toBe(`
-<!-- TODO: (Taiga UI migration) Use tuiCalendarSheetOptionsProvider({rangeMode: true}). See example https://taiga-ui.dev/components/mobile-calendar#range -->
+<!-- TODO: (Taiga UI migration) Use tuiCalendarSheetOptionsProvider({rangeMode: boolean}) instead of [single] property. See example https://taiga-ui.dev/components/mobile-calendar#range -->
 <tui-mobile-calendar
     [max]="max"
     [min]="min"
