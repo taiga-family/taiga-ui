@@ -50,21 +50,19 @@ describe('ng-update identifiers migration', () => {
         `);
 
         expect(result).toEqual(
-            [
-                'import { tuiPure } from "@taiga-ui/legacy";',
-                'import { TuiAutoColorPipe } from "@taiga-ui/kit";',
-                '',
-                "            import { TuiCell } from '@taiga-ui/core';",
-                "            import { TuiSurface } from '@taiga-ui/layout';",
-                '',
-                '            export class TestComponent {',
-                '                protected readonly surface = TuiSurface;',
-                '                protected readonly cell = TuiCell;',
-                '                protected readonly autoColor = TuiAutoColorPipe;',
-                '                protected readonly pure = tuiPure;',
-                '            }',
-                '        ',
-            ].join('\n'),
+            `import { tuiPure } from "@taiga-ui/legacy";
+import { TuiAutoColorPipe } from "@taiga-ui/kit";
+
+            import { TuiCell } from '@taiga-ui/core';
+            import { TuiSurface } from '@taiga-ui/layout';
+
+            export class TestComponent {
+                protected readonly surface = TuiSurface;
+                protected readonly cell = TuiCell;
+                protected readonly autoColor = TuiAutoColorPipe;
+                protected readonly pure = tuiPure;
+            }
+        `,
         );
     });
 
@@ -78,14 +76,12 @@ describe('ng-update identifiers migration', () => {
         `);
 
         expect(result).toEqual(
-            [
-                'import { TuiFlagPipe } from "@taiga-ui/kit";',
-                '',
-                '                        export class TestComponent {',
-                '                protected readonly flag = TuiFlagPipe;',
-                '            }',
-                '        ',
-            ].join('\n'),
+            `import { TuiFlagPipe } from "@taiga-ui/kit";
+
+                        export class TestComponent {
+                protected readonly flag = TuiFlagPipe;
+            }
+        `,
         );
     });
 
@@ -99,14 +95,12 @@ describe('ng-update identifiers migration', () => {
         `);
 
         expect(result).toEqual(
-            [
-                'import { WaResizeObserverService } from "@ng-web-apis/resize-observer";',
-                '',
-                '                        export class TestComponent {',
-                '                protected readonly observer = WaResizeObserverService;',
-                '            }',
-                '        ',
-            ].join('\n'),
+            `import { WaResizeObserverService } from "@ng-web-apis/resize-observer";
+
+                        export class TestComponent {
+                protected readonly observer = WaResizeObserverService;
+            }
+        `,
         );
     });
 
