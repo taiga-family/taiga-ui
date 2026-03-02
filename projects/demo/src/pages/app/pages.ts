@@ -686,6 +686,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Timeline',
+        keywords: 'row, column, week, day, event, order',
+        route: DemoRoute.Timeline,
+    },
+    {
+        section: 'Components',
         title: 'Tree',
         keywords: 'tree, view, multi, recursive, folders, рекурсия, дерево, папки',
         route: DemoRoute.Tree,

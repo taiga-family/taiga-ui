@@ -1,0 +1,80 @@
+<tui-doc-page
+    header="Timeline"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <div>An interactive timeline component for arranging events on a linear axis with no built-in styles</div>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <table tuiDocAPI>
+            <tr>
+                <td colspan="2">
+                    <span tuiTitle>
+                        <strong>Timeline</strong>
+                        <span tuiSubtitle>Properties of a wrapping component</span>
+                    </span>
+                </td>
+            </tr>
+            <tr
+                name="[orientation]"
+                tuiDocAPIItem
+                type="TuiOrientation"
+            >
+                Vertical/horizontal orientation
+            </tr>
+            <tr
+                name="[template]"
+                tuiDocAPIItem
+                type="TemplateRef<TuiContext<number>>"
+            >
+                Template for gaps between items
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+            >
+                Upper limit of the timeline
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span tuiTitle>
+                        <strong>TimelineItem</strong>
+                        <span tuiSubtitle>Properties of individual items</span>
+                    </span>
+                </td>
+            </tr>
+            <tr
+                name="[draggable]"
+                tuiDocAPIItem
+                type="boolean"
+            >
+                Allow moving this item around
+            </tr>
+            <tr
+                name="[resizable]"
+                tuiDocAPIItem
+                type="boolean"
+            >
+                Allow resizing this item by dragging edges
+            </tr>
+            <tr
+                name="[(value)]"
+                tuiDocAPIItem
+                type="[number, number]"
+            >
+                Beginning and end of the item
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
