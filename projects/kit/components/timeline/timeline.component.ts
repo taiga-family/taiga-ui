@@ -22,16 +22,16 @@ import {TuiTimelineItem} from './timeline-item.component';
 })
 export class TuiTimelineComponent {
     public readonly items = contentChildren(TuiTimelineItem);
-    public readonly d = computed(() => 100 / this.total());
+    public readonly d = computed(() => 100 / this.max());
     public readonly value = computed(() => this.items().map(({value}) => value()));
     public readonly gaps = computed((value = this.value().slice()) =>
-        [[0, this.total()], ...value.sort(([a], [b]) => a - b)].map(
+        [[0, this.max()], ...value.sort(([a], [b]) => a - b)].map(
             ([_, end = 0], index, array) =>
-                [index ? end : 0, array[index + 1]?.[0] ?? this.total()] as const,
+                [index ? end : 0, array[index + 1]?.[0] ?? this.max()] as const,
         ),
     );
 
     public readonly orientation = input<TuiOrientation>('horizontal');
     public readonly template = input<TemplateRef<TuiContext<number>>>();
-    public readonly total = input(100);
+    public readonly max = input(100);
 }

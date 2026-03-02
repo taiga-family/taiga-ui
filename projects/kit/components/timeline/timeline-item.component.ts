@@ -28,7 +28,7 @@ export class TuiTimelineItem {
 
     public readonly draggable = input(true);
     public readonly resizable = input(true);
-    public readonly value = model<[number, number]>([0, 0]);
+    public readonly value = model<readonly [number, number]>([0, 0]);
     public readonly min = computed((array = this.timeline.value()) =>
         array.reduce(
             (min, [_, end]) => (end <= this.value()[0] && end > min ? end : min),
@@ -39,7 +39,7 @@ export class TuiTimelineItem {
     public readonly max = computed((array = this.timeline.value()) =>
         array.reduce(
             (max, [start]) => (start >= this.value()[1] && start < max ? start : max),
-            this.timeline.total(),
+            this.timeline.max(),
         ),
     );
 

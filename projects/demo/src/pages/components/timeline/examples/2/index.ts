@@ -14,7 +14,7 @@ import {TuiForm} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected readonly total = 50;
+    protected readonly max = 50;
     protected readonly items = signal<ReadonlyArray<WritableSignal<[number, number]>>>([
         signal([0, 12]),
         signal([24, 40]),
@@ -26,7 +26,7 @@ export default class Example {
 
     protected add(index: number): void {
         const start = this.items()[index - 1]?.()[1] || 0;
-        const end = this.items()[index]?.()[0] || this.total;
+        const end = this.items()[index]?.()[0] || this.max;
         const copy = [...this.items()];
 
         copy.splice(index, 0, signal([start, end]));
