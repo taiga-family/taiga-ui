@@ -11,7 +11,8 @@
         gap: 0.75rem;
         font: var(--tui-typography-body-s);
 
-        tui-error {
+        tui-error,
+        > tui-elastic-container {
             margin-block-start: -0.75rem;
         }
 
@@ -24,7 +25,8 @@
         gap: 1rem;
         font: var(--tui-typography-body-s);
 
-        tui-error {
+        tui-error,
+        > tui-elastic-container {
             margin-block-start: -1rem;
         }
 
@@ -38,7 +40,8 @@
         gap: 1.25rem;
         font: var(--tui-typography-body-m);
 
-        tui-error {
+        tui-error,
+        > tui-elastic-container {
             margin-block-start: -1.25rem;
         }
 
@@ -87,6 +90,10 @@
     > button,
     > a {
         align-self: flex-start;
+    }
+
+    > tui-elastic-container {
+        display: flex;
     }
 
     [tuiLabel]:not([data-orientation='vertical']) {

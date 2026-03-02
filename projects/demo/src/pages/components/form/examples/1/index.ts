@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAnimated} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiError,
@@ -11,13 +12,15 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiElasticContainer, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiAnimated,
         TuiButton,
         TuiCardLarge,
+        TuiElasticContainer,
         TuiError,
         TuiForm,
         TuiHeader,
@@ -30,6 +33,7 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
         TuiTooltip,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

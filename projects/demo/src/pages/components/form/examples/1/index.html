@@ -49,26 +49,31 @@
         />
     </tui-textfield>
     <tui-error formControlName="name" />
-    @if (!form.controls.basic.value) {
-        <tui-textfield>
-            <label tuiLabel>Email</label>
-            <input
-                formControlName="email"
-                placeholder="john@wick.com"
-                tuiInput
-                type="email"
-            />
-        </tui-textfield>
-        <label tuiLabel>
-            <input
-                formControlName="subscribe"
-                tuiSwitch
-                type="checkbox"
-            />
-            Subscribe for newsletter
-            <tui-icon tuiTooltip="We will not send you spam, pinky promise!" />
-        </label>
-    }
+    <tui-elastic-container>
+        @if (!form.controls.basic.value) {
+            <tui-textfield tuiAnimated>
+                <label tuiLabel>Email</label>
+                <input
+                    formControlName="email"
+                    placeholder="john@wick.com"
+                    tuiInput
+                    type="email"
+                />
+            </tui-textfield>
+            <label
+                tuiAnimated
+                tuiLabel
+            >
+                <input
+                    formControlName="subscribe"
+                    tuiSwitch
+                    type="checkbox"
+                />
+                Subscribe for newsletter
+                <tui-icon tuiTooltip="We will not send you spam, pinky promise!" />
+            </label>
+        }
+    </tui-elastic-container>
     <footer>
         <button
             appearance="secondary"
