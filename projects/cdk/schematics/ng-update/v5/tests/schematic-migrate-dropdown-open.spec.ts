@@ -23,5 +23,11 @@ describe('ng-update tuiDropdownOpen to tuiDropdownAuto', () => {
         ).toEqual('<button [tuiDropdownOpen]="open">Open</button>');
     });
 
+    it('should rename tuiDropdownMobile to tuiDropdownSheet', async () => {
+        expect(
+            await migrateTemplate('<button tuiDropdownMobile="selector">Open</button>'),
+        ).toEqual('<button tuiDropdownSheet="selector">Open</button>');
+    });
+
     afterEach(() => resetActiveProject());
 });

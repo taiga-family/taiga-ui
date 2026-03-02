@@ -89,6 +89,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiTagModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiChip',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'tuiTagOptionsProvider',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'tuiChipOptionsProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TUI_IS_ANDROID',
             moduleSpecifier: '@taiga-ui/cdk',
         },
