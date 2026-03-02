@@ -30,6 +30,7 @@ import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
 import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
+import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migratePackages} from './steps/migrate-packages';
 import {migrateTemplates} from './steps/migrate-templates';
@@ -66,6 +67,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateBreakpointService',
                     step: () => migrateBreakpointService(tree, options),
+                },
+                {
+                    name: 'migrateCloseable',
+                    step: () => migrateCloseable(tree, options),
                 },
                 {
                     name: 'migratePackages',

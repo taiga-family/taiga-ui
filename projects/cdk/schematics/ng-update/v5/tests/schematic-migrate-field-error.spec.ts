@@ -171,7 +171,7 @@ ${'                    '}
             `);
 
         const expected = `
-                <!-- TODO: Could not migrate \`tuiFieldError\` automatically. The directive must be used on a <tui-error> element. Likely, you want to use \`tuiError\` pipe. --><div [error]="['required'] | tuiFieldError | async"></div>
+                <!-- TODO: (Taiga UI migration) could not migrate \`tuiFieldError\` automatically. The directive must be used on a <tui-error> element. Likely, you want to use \`tuiError\` pipe. --><div [error]="['required'] | tuiFieldError | async"></div>
             `;
 
         expect(result).toEqual(expected);

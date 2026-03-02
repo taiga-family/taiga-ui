@@ -3,7 +3,7 @@ import {type ReplacementFunctionParameter} from '../../../interfaces/replacement
 export const FUNCTION_PARAMETERS_TO_REPLACE: ReplacementFunctionParameter[] = [
     {
         names: ['tuiAmountOptionsProvider'],
-        parameters: ['currencyAlign'],
+        parameterName: 'currencyAlign',
         valueReplacer: [
             {from: 'left', to: 'start'},
             {from: 'right', to: 'end'},
@@ -11,7 +11,7 @@ export const FUNCTION_PARAMETERS_TO_REPLACE: ReplacementFunctionParameter[] = [
     },
     {
         names: ['tuiDropdownOptionsProvider'],
-        parameters: ['align'],
+        parameterName: 'align',
         valueReplacer: [
             {from: 'left', to: 'start'},
             {from: 'right', to: 'end'},
@@ -19,7 +19,7 @@ export const FUNCTION_PARAMETERS_TO_REPLACE: ReplacementFunctionParameter[] = [
     },
     {
         names: ['tuiHintOptionsProvider'],
-        parameters: ['direction'],
+        parameterName: 'direction',
         valueReplacer: [
             {from: 'bottom-left', to: 'bottom-start'},
             {from: 'bottom-right', to: 'bottom-end'},
@@ -32,5 +32,15 @@ export const FUNCTION_PARAMETERS_TO_REPLACE: ReplacementFunctionParameter[] = [
             {from: 'right-top', to: 'end-top'},
             {from: 'right', to: 'end'},
         ],
+    },
+    {
+        names: [
+            'tuiDialogOptionsProvider',
+            'tuiSheetDialogOptionsProvider',
+            'tuiAlertOptionsProvider',
+            'tuiNotificationOptionsProvider',
+        ],
+        parameterName: 'closeable',
+        newParameterName: 'closable',
     },
 ];

@@ -31,13 +31,13 @@ function replaceFunctionParameter(item: ReplacementFunctionParameter): void {
             return;
         }
 
-        item.parameters.forEach((parameter) => {
-            const property = value.getProperty(parameter);
+        const property = value.getProperty(item.parameterName);
 
-            if (!property) {
-                return;
-            }
+        if (!property) {
+            return;
+        }
 
+        if (item.valueReplacer) {
             const replacement = property.getLastChildIfKind(SyntaxKind.StringLiteral);
 
             if (!replacement) {
@@ -49,6 +49,18 @@ function replaceFunctionParameter(item: ReplacementFunctionParameter): void {
                     replacement.setLiteralValue(to);
                 }
             });
-        });
+        }
+
+        if (item.newParameterName) {
+            if (Node.isPropertyAssignment(property)) {
+                property.rename(item.newParameterName);
+            }
+
+            if (Node.isShorthandPropertyAssignment(property)) {
+                property.replaceWithText(
+                    `${item.newParameterName}: ${item.parameterName}`,
+                );
+            }
+        }
     });
 }
