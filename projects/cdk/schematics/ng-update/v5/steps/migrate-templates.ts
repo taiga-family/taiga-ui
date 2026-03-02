@@ -31,6 +31,7 @@ import {migrateAccordionItem} from './templates/migrate-accordion';
 import {migrateAmountCurrencyAlign} from './templates/migrate-amount-currency-align';
 import {migrateAsyncPipes} from './templates/migrate-async-pipes';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
+import {migrateAxes} from './templates/migrate-axes';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateInputRange} from './templates/migrate-input-range';
 import {migrateInputYear} from './templates/migrate-input-year';
@@ -86,6 +87,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateFieldError,
         migrateAmountCurrencyAlign,
         migrateAsyncPipes,
+        migrateAxes,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
