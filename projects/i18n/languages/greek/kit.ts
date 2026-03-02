@@ -24,9 +24,9 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'ΔΔ.ΜΜΜ',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'ηη.μμ.εεεε',
-        'mm/dd/yyyy': 'μμ.ηη.εεεε',
-        'yyyy/mm/dd': 'εεεε.μμ.ηη',
+        'dd/mm/yyyy': 'ΗΗ.ΜΜ.ΕΕΕΕ',
+        'mm/dd/yyyy': 'ΜΜ.ΗΗ.ΕΕΕΕ',
+        'yyyy/mm/dd': 'ΕΕΕΕ.ΜΜ.ΗΗ',
     },
     digitalInformationUnits: ['Β', 'ΚιΒ', 'ΜιΒ'],
     passwordTexts: ['Εμφάνιση κωδικού', 'Απόκρυψη κωδικού'],

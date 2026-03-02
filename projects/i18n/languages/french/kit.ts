@@ -28,9 +28,9 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'jj.mm.aaaa',
-        'mm/dd/yyyy': 'mm.jj.aaaa',
-        'yyyy/mm/dd': 'aaaa.mm.jj',
+        'dd/mm/yyyy': 'JJ.MM.AAAA',
+        'mm/dd/yyyy': 'MM.JJ.AAAA',
+        'yyyy/mm/dd': 'AAAA.MM.JJ',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Afficher le mot de passe', 'Cacher le mot de passe'],
