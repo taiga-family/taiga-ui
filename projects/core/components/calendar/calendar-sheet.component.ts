@@ -2,8 +2,8 @@ import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
-    Input,
     input,
     model,
     output,
@@ -36,7 +36,7 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     templateUrl: './calendar-sheet.template.html',
     styleUrl: './calendar-sheet.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[class._picking]': 'isRangePicking'},
+    host: {'[class._picking]': 'isRangePicking()'},
 })
 export class TuiCalendarSheet {
     private readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
@@ -44,6 +44,9 @@ export class TuiCalendarSheet {
 
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
     protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
+    protected readonly isRangePicking = computed(
+        () => this.options.rangeMode && this.value() instanceof TuiDay,
+    );
 
     public readonly month = input(TuiMonth.currentLocal());
     public readonly disabledItemHandler =
@@ -56,16 +59,6 @@ export class TuiCalendarSheet {
 
     public readonly dayClick = output<TuiDay>();
 
-    /**
-     * @deprecated use static DI options instead
-     * ```
-     * tuiCalendarSheetOptionsProvider({rangeMode: true})
-     * ```
-     * TODO(v5): delete it
-     */
-    @Input()
-    public single = true;
-
     public onItemHovered(item: TuiDay | false): void {
         this.updateHoveredItem(item || null);
     }
@@ -77,7 +70,7 @@ export class TuiCalendarSheet {
             return null;
         }
 
-        if (value instanceof TuiDay && !this.computedRangeMode) {
+        if (value instanceof TuiDay && !this.options.rangeMode) {
             return value.daySame(item) ? 'active' : null;
         }
 
@@ -104,22 +97,6 @@ export class TuiCalendarSheet {
         }
 
         return range.from.dayBefore(item) && range.to.dayAfter(item) ? 'middle' : null;
-    }
-
-    protected get computedRangeMode(): boolean {
-        return !this.single || this.options.rangeMode;
-    }
-
-    protected get isRangePicking(): boolean {
-        const value = this.value();
-
-        return this.computedRangeMode
-            ? value instanceof TuiDay
-            : /**
-               * Only for backward compatibility!
-               * TODO(v5): replace with `this.options.rangeMode && this.value instanceof TuiDay`
-               */
-              value instanceof TuiDayRange && value.isSingleDay;
     }
 
     protected readonly toMarkers = (
