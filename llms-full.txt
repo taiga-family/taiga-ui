@@ -14208,13 +14208,15 @@ footer {
 <label tuiLabel>Name</label>
 <input formControlName="name" placeholder="John Wick" tuiInput />
 </tui-textfield>
-<tui-error formControlName="name" /> @if (!form.controls.basic.value) { <tui-textfield>
+<tui-error formControlName="name" />
+<tui-elastic-container> @if (!form.controls.basic.value) { <tui-textfield tuiAnimated>
 <label tuiLabel>Email</label>
 <input formControlName="email" placeholder="john@wick.com" tuiInput type="email" />
 </tui-textfield>
-<label tuiLabel>
+<label tuiAnimated tuiLabel >
 <input formControlName="subscribe" tuiSwitch type="checkbox" /> Subscribe for newsletter <tui-icon tuiTooltip="We will not send you spam, pinky promise!" />
-</label> } <footer>
+</label> } </tui-elastic-container>
+<footer>
 <button appearance="secondary" tuiButton type="button" > Cancel </button>
 <button tuiButton type="submit" > Submit </button>
 </footer>
@@ -14226,6 +14228,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAnimated} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiError,
@@ -14235,13 +14238,15 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiElasticContainer, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiAnimated,
         TuiButton,
         TuiCardLarge,
+        TuiElasticContainer,
         TuiError,
         TuiForm,
         TuiHeader,
@@ -14585,6 +14590,7 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
@@ -14594,6 +14600,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
+    protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic', 'Expansive', 'Grouped'];
 }
 ```
