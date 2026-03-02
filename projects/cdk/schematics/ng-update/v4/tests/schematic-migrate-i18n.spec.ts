@@ -15,9 +15,7 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 
-const COMPONENT_BEFORE = `
-import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n';
-
+const COMPONENT_BEFORE = `import { tuiDocLanguageSwitcher } from "@taiga-ui/i18n";
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
@@ -28,9 +26,7 @@ import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n';
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `
-import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
-
+const COMPONENT_AFTER = `import { tuiLanguageSwitcher } from "@taiga-ui/i18n";
 @Component({
     standalone: true,
     templateUrl: './test.template.html',

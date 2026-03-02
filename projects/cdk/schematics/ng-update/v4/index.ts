@@ -22,7 +22,6 @@ import {
 } from '../steps';
 import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
-import {replaceFunctions} from '../utils/replace-functions';
 import {
     migrateAlertService,
     migrateAllCountryIsoCodes,
@@ -45,7 +44,6 @@ import {
     SERVICES_TO_REPLACE,
 } from './steps/constants';
 import {ENUMS_TO_REPLACE} from './steps/constants/enums';
-import {REPLACE_FUNCTIONS} from './steps/constants/functions';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
 import {dropUniversalMock} from './steps/drop-universal-mock';
@@ -59,7 +57,6 @@ function main(options: TuiSchema): Rule {
         const fileSystem = getFileSystem(tree);
 
         migrateEditor(fileSystem, options);
-        replaceFunctions(REPLACE_FUNCTIONS);
         migrateImportProvidersFrom(options);
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateRoot(fileSystem, options);
