@@ -1,11 +1,13 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
+    effect,
     EventEmitter,
     inject,
     Input,
     input,
+    linkedSignal,
+    model,
     type OnChanges,
     type OnInit,
     Output,
@@ -57,9 +59,11 @@ export class TuiCalendarRange implements OnInit, OnChanges {
      * @deprecated use `item`
      */
     private selectedPeriod: TuiDayRangePeriod | null = null;
-    private readonly cdr = inject(ChangeDetectorRef);
 
-    protected currentValue: TuiDay | TuiDayRange | null = null;
+    protected readonly currentValue = linkedSignal<TuiDay | TuiDayRange | null>(() =>
+        this.value(),
+    );
+
     protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected month: TuiMonth = TuiMonth.currentLocal();
@@ -69,8 +73,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(WA_IS_MOBILE);
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
+    protected readonly valueChange = effect(() => this.initDefaultViewedMonth());
 
     @Input()
     public markerHandler: TuiMarkerHandler | null = null;
@@ -80,6 +83,10 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
     public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
+
+    public readonly value = model<TuiDayRange | null>(null);
 
     @Input()
     public minLength: TuiDayLike | null = null;
@@ -91,27 +98,13 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     public item: TuiDayRangePeriod | null = null;
 
     @Output()
-    public readonly valueChange = new EventEmitter<TuiDayRange | null>();
-
-    @Output()
     public readonly itemChange = new EventEmitter<TuiDayRangePeriod | null>();
-
-    @Input('value')
-    public set valueSetter(value: TuiDayRange | null) {
-        this.currentValue = value;
-    }
 
     @Input()
     public set defaultViewedMonth(month: TuiMonth) {
-        if (!this.currentValue) {
+        if (!this.currentValue()) {
             this.month = month;
         }
-    }
-
-    public set value(value: TuiDayRange | null) {
-        this.cdr.markForCheck();
-        this.currentValue = value;
-        this.initDefaultViewedMonth();
     }
 
     public get defaultViewedMonth(): TuiMonth {
@@ -133,7 +126,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     public ngOnChanges(): void {
-        if (!this.currentValue) {
+        if (!this.currentValue()) {
             this.initDefaultViewedMonth();
         }
     }
@@ -143,12 +136,12 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     protected onEsc(event: KeyboardEvent): void {
-        if (event.key !== 'Escape' || !(this.currentValue instanceof TuiDay)) {
+        if (event.key !== 'Escape' || !(this.currentValue() instanceof TuiDay)) {
             return;
         }
 
         event.stopPropagation();
-        this.currentValue = this.previousValue;
+        this.currentValue.set(this.previousValue);
     }
 
     protected readonly monthOffset: TuiMapper<[TuiMonth, number], TuiMonth> = (
@@ -200,11 +193,11 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         if (!tuiIsString(item)) {
             this.selectedActivePeriod = item;
             this.itemChange.emit(item);
-            this.updateValue(item.range.dayLimit(this.min(), this.max()));
+            this.value.set(item.range.dayLimit(this.min(), this.max()));
         } else if (this.activePeriod !== null) {
             this.selectedActivePeriod = null;
             this.itemChange.emit(null);
-            this.updateValue(null);
+            this.value.set(null);
         }
 
         this.initDefaultViewedMonth();
@@ -215,34 +208,31 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     protected onDayClick(day: TuiDay): void {
-        this.previousValue = this.currentValue;
+        const value = this.currentValue();
+
+        this.previousValue = value;
         this.selectedActivePeriod = null;
 
-        if (this.currentValue instanceof TuiDay) {
-            const range = TuiDayRange.sort(this.currentValue, day);
+        if (value instanceof TuiDay) {
+            const range = TuiDayRange.sort(value, day);
 
-            this.currentValue = range;
+            this.currentValue.set(range);
             this.itemChange.emit(this.findItemByDayRange(range));
-            this.updateValue(range);
+            this.value.set(range);
         } else {
-            this.currentValue = day;
+            this.currentValue.set(day);
         }
     }
 
-    protected updateValue(value: TuiDayRange | null): void {
-        this.currentValue = value;
-        this.valueChange.emit(value);
-    }
-
     private get activePeriod(): TuiDayRangePeriod | null {
+        const value = this.currentValue();
+
         return (
             this.item ??
             this.selectedActivePeriod ??
             (this.items.find((item) =>
                 tuiNullableSame<TuiDayRange>(
-                    this.currentValue instanceof TuiDay
-                        ? new TuiDayRange(this.currentValue, this.currentValue)
-                        : this.currentValue,
+                    value instanceof TuiDay ? new TuiDayRange(value, value) : value,
                     item.range,
                     (a, b) =>
                         a.from.daySame(b.from.dayLimit(this.min(), this.max())) &&
@@ -256,13 +246,12 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     private initDefaultViewedMonth(): void {
         const min = this.min();
         const max = this.max();
+        const value = this.currentValue();
 
-        if (this.currentValue instanceof TuiDay) {
-            this.month = this.currentValue;
-        } else if (this.currentValue) {
-            this.month = this.items.length
-                ? this.currentValue.to
-                : this.currentValue.from;
+        if (value instanceof TuiDay) {
+            this.month = value;
+        } else if (value) {
+            this.month = this.items.length ? value.to : value.from;
         } else if (max && this.month.monthSameOrAfter(max)) {
             this.month = this.items.length ? max : max.append({month: -1});
         } else if (min && this.month.monthSameOrBefore(min)) {
