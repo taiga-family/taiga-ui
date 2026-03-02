@@ -356,7 +356,7 @@ tui-textfield:where(*&) {
             [tuiLabel] {
                 color: var(--tui-text-primary) !important;
                 font: var(--t-label-font);
-                transform: translateY(var(--t-label-y));
+                transform: translateY(calc(var(--t-label-y) - var(--tui-font-offset) / 2));
             }
         });
     }
