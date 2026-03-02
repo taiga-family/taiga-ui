@@ -33,7 +33,6 @@ import {TuiCardLarge, TuiElasticContainer, TuiForm, TuiHeader} from '@taiga-ui/l
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -94,6 +94,15 @@
 
     > tui-elastic-container {
         display: flex;
+
+        > * > .tui-enter,
+        > * > .tui-leave {
+            animation-name: tuiFade;
+        }
+
+        &:not(:has(> * > *:not(.tui-leave))) {
+            block-size: 0 !important;
+        }
     }
 
     [tuiLabel]:not([data-orientation='vertical']) {
