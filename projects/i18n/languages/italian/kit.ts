@@ -24,9 +24,9 @@ export const TUI_ITALIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'gg.mm.aaaa',
-        'mm/dd/yyyy': 'mm.gg.aaaa',
-        'yyyy/mm/dd': 'aaaa.mm.gg',
+        'dd/mm/yyyy': 'GG.MM.AAAA',
+        'mm/dd/yyyy': 'MM.GG.AAAA',
+        'yyyy/mm/dd': 'AAAA.MM.GG',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Mostra password', 'Nascondi password'],

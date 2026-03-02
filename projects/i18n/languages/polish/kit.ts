@@ -24,9 +24,9 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd.mm.rrrr',
-        'mm/dd/yyyy': 'mm.dd.rrrr',
-        'yyyy/mm/dd': 'rrrr.mm.dd',
+        'dd/mm/yyyy': 'DD.MM.RRRR',
+        'mm/dd/yyyy': 'MM.DD.RRRR',
+        'yyyy/mm/dd': 'RRRR.MM.DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Pokaż hasło', 'Ukryj hasło'],

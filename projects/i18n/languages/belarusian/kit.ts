@@ -24,9 +24,9 @@ export const TUI_BELARUSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'SS.MSS': 'СС.МСС',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'дд.мм.гггг',
-        'mm/dd/yyyy': 'мм.дд.гггг',
-        'yyyy/mm/dd': 'гггг.мм.дд',
+        'dd/mm/yyyy': 'ДД.ММ.ГГГГ',
+        'mm/dd/yyyy': 'ММ.ДД.ГГГГ',
+        'yyyy/mm/dd': 'ГГГГ.ММ.ДД',
     },
     digitalInformationUnits: ['Б', 'КіБ', 'МіБ'],
     passwordTexts: ['Паказаць пароль', 'Схаваць пароль'],
