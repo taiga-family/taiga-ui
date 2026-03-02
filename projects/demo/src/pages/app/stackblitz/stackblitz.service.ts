@@ -42,18 +42,21 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.className = APP_COMP_META.CLASS_NAME;
         appCompTs.defaultExport = false;
 
-        stackblitz.openProject({
-            ...(await this.getStackblitzProjectConfig()),
-            title: `${component}-${sampleId}`,
-            description: `Taiga UI example of the component ${component}`,
-            files: {
-                ...(await this.getBaseAngularProjectFiles()),
-                ...modifiedSupportFiles,
-                [appPrefix`app.ts`]: appCompTs.toString(),
-                [appPrefix`app.html`]: content.HTML,
-                [appPrefix`app.less`]: prepareLess(content.LESS || ''),
+        stackblitz.openProject(
+            {
+                ...(await this.getStackblitzProjectConfig()),
+                title: `${component}-${sampleId}`,
+                description: `Taiga UI example of the component ${component}`,
+                files: {
+                    ...(await this.getBaseAngularProjectFiles()),
+                    ...modifiedSupportFiles,
+                    [appPrefix`app.ts`]: appCompTs.toString(),
+                    [appPrefix`app.html`]: content.HTML,
+                    [appPrefix`app.less`]: prepareLess(content.LESS || ''),
+                },
             },
-        });
+            {openFile: ['html', 'less', 'ts'].map((x) => appPrefix`app.${x}`).join(',')},
+        );
     }
 
     public async openStarter(
