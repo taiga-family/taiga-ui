@@ -3,18 +3,16 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
 import {tuiAsPopover, type TuiPopover, TuiPopoverService} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {
-    tuiCreateToken,
-    tuiCreateTokenFromFactory,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ALERTS} from '@taiga-ui/core/components/alert';
 import {BehaviorSubject, pairwise} from 'rxjs';
 
 import {TuiToastComponent} from './toast.component';
 import {TUI_TOAST_OPTIONS, type TuiToastOptions} from './toast.options';
 
-const TOASTS = tuiCreateToken(
-    new BehaviorSubject<ReadonlyArray<TuiPopover<TuiToastOptions<unknown>, any>>>([]),
+const TOASTS = tuiCreateTokenFromFactory(
+    () =>
+        new BehaviorSubject<ReadonlyArray<TuiPopover<TuiToastOptions<unknown>, any>>>([]),
 );
 
 export const TUI_TOASTS_CONCURRENCY = tuiCreateTokenFromFactory<number>(() =>
