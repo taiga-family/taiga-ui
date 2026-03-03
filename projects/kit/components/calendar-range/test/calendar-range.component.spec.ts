@@ -360,16 +360,15 @@ describe('rangeCalendarComponent', () => {
         });
 
         it('if value selected, updating defaultViewedMonth do not change viewed month', () => {
-            testComponent.value = new TuiDayRange(
-                TuiDay.currentLocal().append({month: 1}),
-                TuiDay.currentLocal().append({month: 1}),
-            );
+            const newValue = TuiDay.currentLocal().append({month: 1});
+
+            testComponent.value = new TuiDayRange(newValue, newValue);
             fixture.detectChanges();
 
             testComponent.defaultViewedMonth = updatedMonth;
             fixture.detectChanges();
 
-            expect(component.defaultViewedMonth.toString()).toBe(defaultMonth.toString());
+            expect(component.defaultViewedMonth.toString()).toBe(newValue.toString());
         });
 
         it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {

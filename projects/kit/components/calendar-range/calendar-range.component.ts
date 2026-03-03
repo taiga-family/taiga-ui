@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    effect,
     EventEmitter,
     inject,
     Input,
@@ -11,6 +10,7 @@ import {
     type OnChanges,
     type OnInit,
     Output,
+    untracked,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -60,10 +60,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
      */
     private selectedPeriod: TuiDayRangePeriod | null = null;
 
-    protected readonly currentValue = linkedSignal<TuiDay | TuiDayRange | null>(() =>
-        this.value(),
-    );
-
     protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected month: TuiMonth = TuiMonth.currentLocal();
@@ -72,8 +68,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(WA_IS_MOBILE);
-
-    protected readonly valueChange = effect(() => this.initDefaultViewedMonth());
 
     @Input()
     public markerHandler: TuiMarkerHandler | null = null;
@@ -87,6 +81,20 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
     public readonly value = model<TuiDayRange | null>(null);
+
+    protected readonly currentValue = linkedSignal<
+        TuiDayRange | null,
+        TuiDay | TuiDayRange | null
+    >({
+        source: this.value,
+        computation: (value, current) => {
+            if (value !== current?.value) {
+                untracked(() => this.initDefaultViewedMonth(value));
+            }
+
+            return value;
+        },
+    });
 
     @Input()
     public minLength: TuiDayLike | null = null;
@@ -243,10 +251,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         );
     }
 
-    private initDefaultViewedMonth(): void {
+    private initDefaultViewedMonth(value = this.currentValue()): void {
         const min = this.min();
         const max = this.max();
-        const value = this.currentValue();
 
         if (value instanceof TuiDay) {
             this.month = value;
