@@ -12,11 +12,11 @@
         font: var(--tui-typography-body-s);
 
         tui-error,
-        > tui-elastic-container {
+        tui-elastic-container {
             margin-block-start: -0.75rem;
         }
 
-        > fieldset > legend {
+        legend {
             font: var(--tui-typography-ui-m);
         }
     }
@@ -26,13 +26,12 @@
         font: var(--tui-typography-body-s);
 
         tui-error,
-        > tui-elastic-container {
+        tui-elastic-container {
             margin-block-start: -1rem;
         }
 
-        > fieldset > legend {
+        legend {
             font: var(--tui-typography-ui-l);
-            padding: 0.75rem 0 0.5rem;
         }
     }
 
@@ -41,20 +40,16 @@
         font: var(--tui-typography-body-m);
 
         tui-error,
-        > tui-elastic-container {
+        tui-elastic-container {
             margin-block-start: -1.25rem;
         }
 
-        > fieldset > legend {
+        legend {
             font: var(--tui-typography-ui-l);
         }
     }
 
-    > header {
-        padding-block-end: 0.25rem;
-    }
-
-    > fieldset {
+    fieldset {
         display: grid;
         flex-wrap: wrap;
         gap: inherit;
@@ -63,18 +58,20 @@
         padding: 0;
         margin: 0;
 
-        &:defined > legend {
+        legend:defined {
             position: relative;
-            padding: 0.5rem 0;
-            margin-block-end: 0.25rem;
+            padding: 0.5rem 0 0.75rem;
             font-weight: bold;
         }
+    }
 
-        &:first-child > legend {
-            inset-block-start: -0.25rem;
-            padding-block-start: 0;
-            margin-block-end: 0;
-        }
+    > fieldset:first-child > legend {
+        inset-block-start: -0.25rem;
+        padding: 0 0 0.5rem;
+    }
+
+    > header {
+        padding-block-end: 0.25rem;
     }
 
     > footer {
@@ -92,7 +89,7 @@
         align-self: flex-start;
     }
 
-    > tui-elastic-container {
+    tui-elastic-container {
         display: flex;
 
         > * > .tui-enter,
