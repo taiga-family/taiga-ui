@@ -122,4 +122,28 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         ],
         filterFn: (el) => hasElementAttribute(el, 'tuiInputColor'),
     },
+    {
+        attrNames: ['tuiHeader'],
+        valueReplacer: [
+            {from: 'xxl', to: 'h1'},
+            {from: 'xl', to: 'h2'},
+            {from: 'l', to: 'h3'},
+            {from: 'm', to: 'h4'},
+            {from: 's', to: 'h5'},
+            {from: 'xs', to: 'h6'},
+            {from: 'xxs', to: 'body-l'},
+        ],
+    },
+    {
+        attrNames: ['[tuiHeader]'],
+        valueReplacer: [
+            {from: "'xxl'", to: "'h1'"},
+            {from: "'xl'", to: "'h2'"},
+            {from: "'l'", to: "'h3'"},
+            {from: "'m'", to: "'h4'"},
+            {from: "'s'", to: "'h5'"},
+            {from: "'xs'", to: "'h6'"},
+            {from: "'xxs'", to: "'body-l'"},
+        ],
+    },
 ];
