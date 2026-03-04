@@ -26,7 +26,6 @@ export class StackblitzDepsService {
             '@angular/forms': ngVersion,
             '@angular/platform-browser': ngVersion,
             '@angular/router': ngVersion,
-            '@angular/animations': ngVersion,
             typescript: '5.9.x', // compatible with angular 21
         };
     }
