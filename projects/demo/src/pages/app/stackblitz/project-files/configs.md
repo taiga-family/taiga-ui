@@ -62,7 +62,7 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
