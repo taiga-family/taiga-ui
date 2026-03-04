@@ -43,7 +43,7 @@ import {TuiDropdownClose} from './dropdown-close.directive';
     hostDirectives: [
         TuiObscured,
         {directive: forwardRef(() => TuiDropdownA11y), inputs: ['tuiDropdownRole']},
-        {directive: forwardRef(() => TuiDropdownClose), outputs: ['tuiDropdownClose']},
+        {directive: TuiDropdownClose, outputs: ['tuiDropdownClose']},
         {
             directive: TuiActiveZone,
             inputs: ['tuiActiveZoneParent'],
