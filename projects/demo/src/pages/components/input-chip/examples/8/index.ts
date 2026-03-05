@@ -4,11 +4,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {TuiButton, TuiSelectLike} from '@taiga-ui/core';
+import {TuiButton, TuiFilterByInputPipe, TuiSelectLike} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';

@@ -13,5 +13,6 @@ export * from './media';
 export * from './number-format';
 export * from './reduced-motion';
 export * from './selection-stream';
+export * from './textfield';
 export * from './validation-errors';
 export * from './viewport';

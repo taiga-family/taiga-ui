@@ -3,13 +3,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiAutoFocus, TuiFilterPipe} from '@taiga-ui/cdk';
 import {
+    TUI_TEXTFIELD,
     tuiAsOptionContent,
     TuiDataList,
     TuiInput,
     TuiInputDirective,
     tuiIsEditingKey,
     tuiItemsHandlersProvider,
-    TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import {TuiMultiSelect, TuiSelectOption} from '@taiga-ui/kit';
 
@@ -47,7 +47,7 @@ export class CustomListComponent<T> {
         read: ElementRef<HTMLInputElement>,
     });
 
-    private readonly control = inject(TuiTextfieldComponent).control;
+    private readonly control = inject(TUI_TEXTFIELD).control;
 
     public readonly items = input<ReadonlyArray<Items<T>>>([]);
 

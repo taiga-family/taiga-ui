@@ -3,11 +3,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiDataList, TuiSelectLike} from '@taiga-ui/core';
+import {TuiDataList, TuiFilterByInputPipe, TuiSelectLike} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiHideSelectedPipe,
     TuiInputChip,
     TuiMultiSelect,

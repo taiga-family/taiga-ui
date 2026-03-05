@@ -1,12 +1,7 @@
 import {ChangeDetectionStrategy, Component, output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiRoot} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe, TuiRoot} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 const ITEMS = [

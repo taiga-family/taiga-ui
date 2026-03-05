@@ -7,15 +7,12 @@ import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
-import {
-    tuiAsTextfieldAccessor,
-    tuiInjectAuxiliary,
-} from '@taiga-ui/core/components/textfield';
+import {tuiAsTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
-import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT, tuiInjectAuxiliary} from '@taiga-ui/core/tokens';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
 import {
     TUI_INPUT_DATE_OPTIONS,

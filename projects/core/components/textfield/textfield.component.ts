@@ -39,7 +39,7 @@ import {
     TuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {TUI_AUXILIARY, TUI_CLEAR_WORD} from '@taiga-ui/core/tokens';
+import {TUI_AUXILIARY, TUI_CLEAR_WORD, tuiAsTextfield} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -60,6 +60,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     providers: [
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiAsDataListHost(TuiTextfieldComponent),
+        tuiAsTextfield(TuiTextfieldComponent),
     ],
     hostDirectives: [
         TuiAppearance,

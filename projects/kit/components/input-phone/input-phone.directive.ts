@@ -9,7 +9,7 @@ import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/k
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
@@ -38,7 +38,7 @@ function isText(value: string): boolean {
 })
 export class TuiInputPhoneDirective extends TuiControl<string | null> {
     private readonly input = inject(TuiInputDirective);
-    private readonly host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
+    private readonly host = inject(TUI_TEXTFIELD);
 
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();

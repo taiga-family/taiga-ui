@@ -1,12 +1,12 @@
 import {computed, Directive, inject, signal} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
+import {TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 
 import {TUI_PASSWORD_OPTIONS} from './password.options';
@@ -37,7 +37,7 @@ export class TuiPassword {
     private readonly options = inject(TUI_PASSWORD_OPTIONS);
     private readonly texts = inject(TUI_PASSWORD_TEXTS);
 
-    protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly textfield = inject(TUI_TEXTFIELD);
     protected readonly hidden = signal(true);
     protected readonly icon = tuiIconStart(
         computed(() =>

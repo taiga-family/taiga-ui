@@ -18,10 +18,9 @@ import {
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_COMMON_ICONS, TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -45,7 +44,7 @@ export class TuiInputSearch implements OnChanges {
     private readonly container = viewChild<ElementRef<HTMLElement>>('container');
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly service = inject(TuiPopupService);
-    private readonly textfield = inject(TuiTextfieldComponent);
+    private readonly textfield = inject(TUI_TEXTFIELD);
     private readonly i18n = inject(TUI_INPUT_SEARCH);
     private parent = this.textfield.el.parentElement;
     private neighbor = this.textfield.el.nextSibling;

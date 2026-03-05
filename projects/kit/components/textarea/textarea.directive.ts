@@ -17,10 +17,8 @@ import {
 } from '@angular/forms';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldComponent,
-} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {tuiTextareaOptionsProvider} from './textarea.options';
@@ -78,7 +76,7 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimit);
     host: {'[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75'},
 })
 export class TuiTextareaDirective implements Validator, DoCheck {
-    private readonly textfield = inject(TuiTextfieldComponent);
+    private readonly textfield = inject(TUI_TEXTFIELD);
     private readonly ref = inject(ViewContainerRef).createComponent(TuiTextareaCounter);
 
     public readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;

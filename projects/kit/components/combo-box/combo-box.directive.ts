@@ -18,9 +18,7 @@ import {
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
-    tuiInjectAuxiliary,
     type TuiTextfieldAccessor,
-    TuiTextfieldComponent,
 } from '@taiga-ui/core/components/textfield';
 import {
     TUI_ITEMS_HANDLERS,
@@ -31,6 +29,7 @@ import {
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
+import {TUI_TEXTFIELD, tuiInjectAuxiliary} from '@taiga-ui/core/tokens';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({
@@ -53,7 +52,7 @@ export class TuiComboBoxDirective<T>
     implements TuiTextfieldAccessor<T>
 {
     private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
+    private readonly host = inject(TUI_TEXTFIELD);
     private readonly input: TuiInputDirective<T> = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);

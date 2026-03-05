@@ -2,7 +2,6 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
@@ -10,6 +9,7 @@ import {
 import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
+import {TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -43,7 +43,7 @@ export class TuiCopyDirective {
     private readonly clipboard = inject(Clipboard);
     private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
 
-    protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly textfield = inject(TUI_TEXTFIELD);
     protected readonly icons = tuiIconEnd(inject(TUI_COPY_OPTIONS).icon);
     protected readonly copyTexts = inject(TUI_COPY_TEXTS);
     protected readonly hint = tuiDirectiveBinding(

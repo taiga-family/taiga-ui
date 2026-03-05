@@ -14,7 +14,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -26,6 +26,8 @@ import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {tuiFilterByInputOptionsProvider} from '@taiga-ui/core/pipes/filter-by-input';
+import {tuiAsTextfield} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent} from 'rxjs';
 
@@ -54,8 +56,13 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     providers: [
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiAsDataListHost(TuiTextfieldMultiComponent),
+        tuiAsTextfield(TuiTextfieldMultiComponent),
         tuiProvide(TuiTextfieldComponent, TuiTextfieldMultiComponent),
         tuiProvide(TUI_SCROLL_REF, ElementRef),
+        tuiFilterByInputOptionsProvider({
+            filter: (items, search, stringify) =>
+                items.filter((x) => TUI_DEFAULT_MATCHER(x, search, stringify)),
+        }),
     ],
     host: {
         '[attr.data-state]': 'disabled ? "disabled" : null',

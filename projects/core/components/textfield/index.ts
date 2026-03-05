@@ -3,7 +3,6 @@ export * from './textfield';
 export * from './textfield.component';
 export * from './textfield.options';
 export * from './textfield-accessor';
-export * from './textfield-auxiliary';
 export * from './textfield-content.directive';
 export * from './textfield-multi/textfield-item.component';
 export * from './textfield-multi/textfield-multi.component';

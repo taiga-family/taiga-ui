@@ -13,7 +13,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiSliderComponent} from '@taiga-ui/core/components/slider';
-import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
+import {tuiInjectAuxiliary} from '@taiga-ui/core/tokens';
 import {
     TuiInputNumberDirective,
     tuiInputNumberOptionsProvider,
