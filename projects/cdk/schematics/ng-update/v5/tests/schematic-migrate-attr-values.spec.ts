@@ -312,6 +312,58 @@ describe('ng-update start/end instead of left/right', () => {
         expect(result).toEqual(expected);
     });
 
+    it('replaces values for tuiHeader', async () => {
+        const result = await migrateTemplate(`
+            <h1 tuiHeader="xxl"></h1>
+            <h2 tuiHeader="xl"></h2>
+            <h3 tuiHeader="l"></h3>
+            <h4 tuiHeader="m"></h4>
+            <h5 tuiHeader="s"></h5>
+            <h6 tuiHeader="xs"></h6>
+            <p tuiHeader="xxs"></p>
+            <p tuiHeader="custom"></p>
+        `);
+
+        const expected = `
+            <h1 tuiHeader="h1"></h1>
+            <h2 tuiHeader="h2"></h2>
+            <h3 tuiHeader="h3"></h3>
+            <h4 tuiHeader="h4"></h4>
+            <h5 tuiHeader="h5"></h5>
+            <h6 tuiHeader="h6"></h6>
+            <p tuiHeader="body-l"></p>
+            <p tuiHeader="custom"></p>
+        `;
+
+        expect(result).toEqual(expected);
+    });
+
+    it('replaces values for [tuiHeader]', async () => {
+        const result = await migrateTemplate(`
+            <h1 [tuiHeader]="'xxl'"></h1>
+            <h2 [tuiHeader]="'xl'"></h2>
+            <h3 [tuiHeader]="'l'"></h3>
+            <h4 [tuiHeader]="'m'"></h4>
+            <h5 [tuiHeader]="'s'"></h5>
+            <h6 [tuiHeader]="'xs'"></h6>
+            <p [tuiHeader]="'xxs'"></p>
+            <p [tuiHeader]="headerSize"></p>
+        `);
+
+        const expected = `
+            <h1 [tuiHeader]="'h1'"></h1>
+            <h2 [tuiHeader]="'h2'"></h2>
+            <h3 [tuiHeader]="'h3'"></h3>
+            <h4 [tuiHeader]="'h4'"></h4>
+            <h5 [tuiHeader]="'h5'"></h5>
+            <h6 [tuiHeader]="'h6'"></h6>
+            <p [tuiHeader]="'body-l'"></p>
+            <p [tuiHeader]="headerSize"></p>
+        `;
+
+        expect(result).toEqual(expected);
+    });
+
     it('replaces for align on input with tuiInputColor', async () => {
         const result = await migrateTemplate(`
             <input tuiInputColor align="right" />
