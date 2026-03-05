@@ -147,5 +147,29 @@ describe('ng-update tuiRepeatTimes', () => {
         expect(component).toContain('imports: []');
     });
 
+    it('migrates @for block syntax with tuiRepeatTimes pipe', async () => {
+        const {template} = await migrate(
+            `<section class="list">
+  @for (n of 3 | tuiRepeatTimes; track n) {    <item />  }</section
+>`,
+        );
+
+        expect(template).toEqual(
+            `<section class="list">
+  @for (n of '-'.repeat(3); track n) {    <item />  }</section
+>`,
+        );
+    });
+
+    it('keeps @for tail params while replacing tuiRepeatTimes expression', async () => {
+        const {template} = await migrate(
+            '@for (n of config.count | tuiRepeatTimes; track n; let isOdd = $odd) { {{n}} }',
+        );
+
+        expect(template).toEqual(
+            "@for (n of '-'.repeat(config.count); track n; let isOdd = $odd) { {{n}} }",
+        );
+    });
+
     afterEach(() => resetActiveProject());
 });
