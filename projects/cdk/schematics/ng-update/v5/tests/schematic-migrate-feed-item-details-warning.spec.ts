@@ -28,10 +28,10 @@ describe('ng-update TuiFeedItemDetailsComponent warning', () => {
         `);
 
         expect(result).toContain(
-            `// TODO: (Taiga UI migration) TuiFeedItemDetailsComponent has been removed. Use BlockDetails instead. See https://taiga-ui.dev/layout/block-details`,
+            '// TODO: (Taiga UI migration) TuiFeedItemDetailsComponent has been removed. Use BlockDetails instead. See https://taiga-ui.dev/layout/block-details',
         );
         expect(result).toContain(
-            `import {TuiFeedItemDetailsComponent} from '@taiga-ui/proprietary';`,
+            "import {TuiFeedItemDetailsComponent} from '@taiga-ui/proprietary';",
         );
     });
 
