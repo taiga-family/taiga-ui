@@ -104,5 +104,35 @@ import { TuiAutoColorPipe } from "@taiga-ui/kit";
         );
     });
 
+    it('moves tuiCellOptionsProvider from layout to core', async () => {
+        const result = await migrateComponent(`
+            import {tuiCellOptionsProvider} from '@taiga-ui/layout';
+
+            export const providers = [tuiCellOptionsProvider({size: 'm'})];
+        `);
+
+        expect(result).toEqual(
+            `import { tuiCellOptionsProvider } from "@taiga-ui/core";
+
+                        export const providers = [tuiCellOptionsProvider({size: 'm'})];
+        `,
+        );
+    });
+
+    it('moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit', async () => {
+        const result = await migrateComponent(`
+            import {type TuiTimeMode} from '@taiga-ui/cdk';
+
+            export type Mode = TuiTimeMode;
+        `);
+
+        expect(result).toEqual(
+            `import { MaskitoTimeMode } from "@maskito/kit";
+
+                        export type Mode = MaskitoTimeMode;
+        `,
+        );
+    });
+
     afterEach(() => resetActiveProject());
 });

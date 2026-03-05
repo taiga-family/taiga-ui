@@ -69,6 +69,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiCellOptionsProvider',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'tuiCellOptionsProvider',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'TuiAutoColorPipe',
             moduleSpecifier: '@taiga-ui/core',
         },
@@ -95,6 +105,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'tuiPure',
             moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiTimeMode',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'MaskitoTimeMode',
+            moduleSpecifier: '@maskito/kit',
         },
     },
     {

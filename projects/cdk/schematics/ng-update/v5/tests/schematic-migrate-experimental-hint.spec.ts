@@ -34,5 +34,24 @@ describe('ng-update experimental hint provider', () => {
         `);
     });
 
+    it('removes TUI_SLIDER_OPTIONS from providers array and import', async () => {
+        const result = await migrate(`
+            import {ApplicationConfig} from '@angular/core';
+            import {TUI_SLIDER_OPTIONS} from '@taiga-ui/kit';
+
+            export const appConfig: ApplicationConfig = {
+                providers: [TUI_SLIDER_OPTIONS],
+            };
+        `);
+
+        expect(result).toEqual(`
+            import {ApplicationConfig} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
+            export const appConfig: ApplicationConfig = {
+                providers: [],
+            };
+        `);
+    });
+
     afterEach(() => resetActiveProject());
 });
