@@ -32,6 +32,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
     },
     {
+        name: 'tuiSliderOptionsProvider',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
+    },
+    {
         name: 'TuiFeedItemDetailsComponent',
         moduleSpecifier: '@taiga-ui/proprietary',
         message:

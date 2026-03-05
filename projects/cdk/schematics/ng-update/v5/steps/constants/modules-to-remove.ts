@@ -14,6 +14,10 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/kit',
     },
     {
+        name: 'tuiSliderOptionsProvider',
+        moduleSpecifier: '@taiga-ui/kit',
+    },
+    {
         name: 'TuiTimelineSteps',
         moduleSpecifier: '@taiga-ui/proprietary',
     },
