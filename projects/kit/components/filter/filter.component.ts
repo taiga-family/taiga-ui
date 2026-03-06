@@ -4,6 +4,7 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils';
 import {
     TUI_ITEMS_HANDLERS,
     TuiWithItemsHandlers,
@@ -28,10 +29,17 @@ export class TuiFilter<T> extends TuiControl<readonly T[]> {
 
     public readonly items = input<readonly T[]>([]);
     public readonly size = input(inject(TUI_BLOCK_OPTIONS).size || 'l');
-    public readonly badgeHandler = input<TuiHandler<T, number>>((item) => Number(item));
+    public readonly badgeHandler = input<TuiHandler<T, number | null>>(
+        TuiFilter.defaultBadgeHandler,
+    );
+
     public readonly content = input(TUI_STRINGIFY);
 
     public readonly toggledItem = output<T>();
+
+    public static defaultBadgeHandler<G>(item: G): number | null {
+        return tuiIsString(item) || tuiIsNumber(item) ? null : Number(item);
+    }
 
     public onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
