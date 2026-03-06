@@ -110,6 +110,7 @@ export const DemoRoute = {
     Range: '/components/range',
     CalendarRange: '/components/calendar-range',
     Select: '/components/select',
+    ShrinkWrap: '/components/shrink-wrap',
     Scrollbar: '/components/scrollbar',
     SheetDialog: '/components/sheet-dialog',
     Slider: '/components/slider',

@@ -3,10 +3,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiToast],
+    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiShrinkWrap, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

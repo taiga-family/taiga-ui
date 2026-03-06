@@ -1,5 +1,6 @@
 import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
@@ -19,4 +20,5 @@ export default class Example {
     protected content = 'Notification';
     protected appearance = '';
     protected closable = this.options.closable;
+    protected readonly routes = DemoRoute;
 }
