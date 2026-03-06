@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -80,8 +80,9 @@ export class TuiInputNumberStep {
 
     protected onStep(step: number): void {
         const current = this.input.value() ?? 0;
+        const value = tuiSum(current, step);
 
-        this.input.setValue(tuiClamp(current + step, this.input.min(), this.input.max()));
+        this.input.setValue(tuiClamp(value, this.input.min(), this.input.max()));
         this.el.setSelectionRange(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
     }
 }
