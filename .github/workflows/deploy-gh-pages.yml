@@ -11,6 +11,9 @@ on:
         required: false
         description: --dry-run
 
+permissions:
+  contents: read
+
 jobs:
   deploy-gh-pages:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}

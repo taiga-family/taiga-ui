@@ -3,8 +3,13 @@ on:
   pull_request:
     types: [closed]
 
+permissions: {}
+
 jobs:
   purge-cache:
+    permissions:
+      actions: write
+      contents: read
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
@@ -21,6 +26,8 @@ jobs:
           done
 
   delete-firebase-channels:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

@@ -3,6 +3,9 @@ on:
   push:
     branches: ['release/*']
 
+permissions:
+  contents: read
+
 env:
   NX_DISABLE_NX_CACHE: true
   NX_DISABLE_REMOTE_CACHE: true

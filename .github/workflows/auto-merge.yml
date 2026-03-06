@@ -2,6 +2,11 @@ name: 🤖 PR auto merge
 on:
   pull_request:
 
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
 env:
   PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Tests result", "E2E result" ]'
   RELEASE_JOBS_NAME: '[ "Publish" ]'
