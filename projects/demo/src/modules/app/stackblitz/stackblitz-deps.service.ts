@@ -69,6 +69,7 @@ export class StackblitzDepsService {
             '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
             '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
             '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
+            '@taiga-ui/font-watcher': cdkDeps['@taiga-ui/font-watcher'],
             '@ng-web-apis/intersection-observer':
                 kitDeps['@ng-web-apis/intersection-observer'],
             '@ng-web-apis/platform': cdkDeps['@ng-web-apis/platform'],
