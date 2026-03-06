@@ -25,4 +25,22 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiFormatDatePipe has been removed. Use Angular built-in Date pipe instead. See https://angular.dev/api/common/DatePipe',
     },
+    {
+        name: 'TUI_SLIDER_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
+    },
+    {
+        name: 'tuiSliderOptionsProvider',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
+    },
+    {
+        name: 'TuiFeedItemDetailsComponent',
+        moduleSpecifier: '@taiga-ui/proprietary',
+        message:
+            'TuiFeedItemDetailsComponent has been removed. Use BlockDetails instead. See https://taiga-ui.dev/layout/block-details',
+    },
 ];
