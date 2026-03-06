@@ -34,10 +34,10 @@ export function tuiLanguageSwitcher(loader: TuiLanguageLoader): Provider[] {
 
 @Injectable({providedIn: 'root'})
 export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLanguage>> {
-    private readonly fallback = inject(TUI_DEFAULT_LANGUAGE);
-    private readonly key = inject(TUI_LANGUAGE_STORAGE_KEY);
-    private readonly storage = inject(WA_LOCAL_STORAGE);
-    private readonly loader = inject(TUI_LANGUAGE_LOADER, {optional: true});
+    readonly #fallback = inject(TUI_DEFAULT_LANGUAGE);
+    readonly #key = inject(TUI_LANGUAGE_STORAGE_KEY);
+    readonly #storage = inject(WA_LOCAL_STORAGE);
+    readonly #loader = inject(TUI_LANGUAGE_LOADER, {optional: true});
 
     constructor() {
         super(
@@ -51,16 +51,16 @@ export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLa
     }
 
     public get language(): TuiLanguageName {
-        return this.storage?.getItem(this.key) || this.fallback.name;
+        return this.#storage?.getItem(this.#key) || this.#fallback.name;
     }
 
     public setLanguage(language: TuiLanguageName): void {
-        this.storage?.setItem(this.key, language);
-        this.next(tuiAsyncLoadLanguage(language, this.loader, this.fallback));
+        this.#storage?.setItem(this.#key, language);
+        this.next(tuiAsyncLoadLanguage(language, this.#loader, this.#fallback));
     }
 
     protected clear(): void {
-        this.storage?.removeItem(this.key);
-        this.next(of(this.fallback));
+        this.#storage?.removeItem(this.#key);
+        this.next(of(this.#fallback));
     }
 }

@@ -27,28 +27,28 @@ import {
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
-    private enabled = Array.from<unknown, boolean>({length: 5}, () => true);
+    readonly #alerts = inject(TuiNotificationService);
+    #enabled = Array.from<unknown, boolean>({length: 5}, () => true);
 
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
     protected readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
 
     protected get value(): readonly number[] {
-        return this.data.map((value, index) => (this.enabled[index] ? value : 0));
+        return this.data.map((value, index) => (this.#enabled[index] ? value : 0));
     }
 
     protected isEnabled(index: number): boolean {
-        return this.enabled[index] ?? false;
+        return this.#enabled[index] ?? false;
     }
 
     protected toggle(index: number): void {
-        this.enabled = this.enabled.map((value, i) => (i === index ? !value : value));
+        this.#enabled = this.#enabled.map((value, i) => (i === index ? !value : value));
     }
 
     protected onClick(index: number): void {
         if (this.isEnabled(index)) {
-            this.alerts
+            this.#alerts
                 .open(`Category spending: ${tuiFormatNumber(this.data[index] ?? 0)} ₽`, {
                     label: this.labels[index],
                 })

@@ -49,8 +49,8 @@ import {TuiHintPosition} from './hint-position.directive';
 export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiRectAccessor, TuiVehicle
 {
-    private readonly service = inject(TuiPopupService);
-    private ref?: ComponentRef<unknown>;
+    readonly #service = inject(TuiPopupService);
+    #ref?: ComponentRef<unknown>;
 
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
     public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
@@ -79,12 +79,12 @@ export class TuiHintDirective<C>
     }
 
     public toggle(show: boolean): void {
-        if (show && this.content() && !this.ref) {
-            this.ref = this.service.add(this.component);
+        if (show && this.content() && !this.#ref) {
+            this.#ref = this.#service.add(this.component);
             this.visible.emit(true);
-        } else if (this.ref) {
-            this.ref.destroy();
-            this.ref = undefined;
+        } else if (this.#ref) {
+            this.#ref.destroy();
+            this.#ref = undefined;
             this.visible.emit(false);
         }
     }

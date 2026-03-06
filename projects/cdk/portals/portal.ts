@@ -32,7 +32,7 @@ export abstract class TuiPortal<T, K = void> {
     protected abstract readonly component: Type<any>;
     protected abstract readonly options: T;
 
-    private readonly injector = inject(INJECTOR);
+    readonly #injector = inject(INJECTOR);
 
     // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(protected readonly service: TuiPortalService) {}
@@ -46,7 +46,7 @@ export abstract class TuiPortal<T, K = void> {
                 new PolymorpheusComponent(
                     this.component,
                     Injector.create({
-                        parent: this.injector,
+                        parent: this.#injector,
                         providers: [
                             {
                                 provide: POLYMORPHEUS_CONTEXT,

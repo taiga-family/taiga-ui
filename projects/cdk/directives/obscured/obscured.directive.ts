@@ -14,15 +14,15 @@ import {TuiObscuredService} from './obscured.service';
     providers: [TuiObscuredService],
 })
 export class TuiObscured {
-    private readonly activeZone = inject(TuiActiveZone, {optional: true});
-    private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(
-        map((by) => !!by?.every((el) => !this.activeZone?.contains(el))),
+    readonly #activeZone = inject(TuiActiveZone, {optional: true});
+    readonly #obscured$ = inject(TuiObscuredService, {self: true}).pipe(
+        map((by) => !!by?.every((el) => !this.#activeZone?.contains(el))),
     );
 
     public readonly tuiObscuredEnabled = input<boolean>();
 
     public readonly tuiObscured$ = toObservable(this.tuiObscuredEnabled).pipe(
-        tuiIfMap(() => this.obscured$),
+        tuiIfMap(() => this.#obscured$),
     );
 
     public readonly tuiObscured = outputFromObservable(this.tuiObscured$);

@@ -14,9 +14,9 @@ import {TuiPushService} from './push.service';
     ],
 })
 export class TuiPushDirective {
-    private readonly sub = inject(TuiPortalDirective).openChange.subscribe(() => {});
+    readonly #sub = inject(TuiPortalDirective).openChange.subscribe(() => {});
 
     constructor() {
-        inject(DestroyRef).onDestroy(() => this.sub.unsubscribe());
+        inject(DestroyRef).onDestroy(() => this.#sub.unsubscribe());
     }
 }

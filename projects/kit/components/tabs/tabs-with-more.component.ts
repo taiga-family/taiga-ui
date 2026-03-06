@@ -51,44 +51,45 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
 export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly moreButton = viewChild(TuiTab, {read: ElementRef});
     private readonly dir = viewChild(TuiTabsHorizontal, {read: ElementRef});
-    private readonly options = inject(TUI_TABS_OPTIONS);
-    private readonly refresh$ = inject(TUI_TABS_REFRESH);
-    private readonly el = tuiInjectElement();
-    private readonly cdr = inject(ChangeDetectorRef);
-    private maxIndex = Infinity;
+
+    readonly #options = inject(TUI_TABS_OPTIONS);
+    readonly #refresh$ = inject(TUI_TABS_REFRESH);
+    readonly #el = tuiInjectElement();
+    readonly #cdr = inject(ChangeDetectorRef);
+    #maxIndex = Infinity;
 
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
     protected readonly sync = effect(() => {
         this.activeItemIndex();
-        this.maxIndex = this.getMaxIndex();
+        this.#maxIndex = this.getMaxIndex();
         this.open = false;
     });
 
     public open = false;
     public readonly activeItemIndex = model(0);
-    public readonly size = input(this.options.size);
-    public readonly underline = input(this.options.underline);
-    public readonly itemsLimit = input(this.options.itemsLimit);
+    public readonly size = input(this.#options.size);
+    public readonly underline = input(this.#options.underline);
+    public readonly itemsLimit = input(this.#options.itemsLimit);
     public readonly moreContent = input<PolymorpheusContent>();
     public readonly dropdownContent =
         input<PolymorpheusContent<TuiContext<TuiActiveZone>>>();
 
     public get lastVisibleIndex(): number {
         if (this.itemsLimit() + 1 >= this.items().length) {
-            return this.maxIndex;
+            return this.#maxIndex;
         }
 
         const offset =
-            this.itemsLimit() - 1 > this.activeItemIndex() || !this.options.exposeActive
+            this.itemsLimit() - 1 > this.activeItemIndex() || !this.#options.exposeActive
                 ? 1
                 : 2;
 
-        return Math.min(this.itemsLimit() - offset, this.maxIndex);
+        return Math.min(this.itemsLimit() - offset, this.#maxIndex);
     }
 
     public isOverflown(index: number): boolean {
-        return index !== this.activeItemIndex() || !this.options.exposeActive;
+        return index !== this.activeItemIndex() || !this.#options.exposeActive;
     }
 
     public shouldShow(index: number): boolean {
@@ -96,15 +97,15 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        this.refresh$
+        this.#refresh$
             .pipe(
                 map(() => this.getMaxIndex()),
                 tap(() => this.refresh()),
-                filter((maxIndex) => this.maxIndex !== maxIndex),
+                filter((maxIndex) => this.#maxIndex !== maxIndex),
             )
             .subscribe((maxIndex) => {
-                this.maxIndex = maxIndex;
-                this.cdr.detectChanges();
+                this.#maxIndex = maxIndex;
+                this.#cdr.detectChanges();
             });
     }
 
@@ -114,7 +115,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     // TODO: Improve performance
     protected get tabs(): readonly HTMLElement[] {
-        return Array.from<HTMLElement>(this.el.querySelectorAll('[tuiTab]'));
+        return Array.from<HTMLElement>(this.#el.querySelectorAll('[tuiTab]'));
     }
 
     protected get activeElement(): HTMLElement | null {
@@ -125,7 +126,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get isMoreAlone(): boolean {
-        return this.lastVisibleIndex < 0 && !this.options.exposeActive;
+        return this.lastVisibleIndex < 0 && !this.#options.exposeActive;
     }
 
     protected get isMoreVisible(): boolean {
@@ -139,7 +140,8 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     protected get isMoreActive(): boolean {
         return (
             this.open ||
-            (!this.options.exposeActive && this.lastVisibleIndex < this.activeItemIndex())
+            (!this.#options.exposeActive &&
+                this.lastVisibleIndex < this.activeItemIndex())
         );
     }
 
@@ -198,8 +200,8 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
             return 0;
         }
 
-        const {exposeActive, minMoreWidth} = this.options;
-        const {clientWidth} = this.el;
+        const {exposeActive, minMoreWidth} = this.#options;
+        const {clientWidth} = this.#el;
         const active = tabs[activeItemIndex()];
         const activeWidth = active?.scrollWidth ?? 0;
         const moreWidth = Math.max(tabs[tabs.length - 1]?.scrollWidth ?? 0, minMoreWidth);
@@ -221,7 +223,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
             const activeOffset = activeDisplaced ? activeWidth + margin : 0;
             const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
-            const safetyOffset = tuiToInt(this.maxIndex === maxIndex - 1);
+            const safetyOffset = tuiToInt(this.#maxIndex === maxIndex - 1);
 
             if (currentWidth + safetyOffset < clientWidth) {
                 return maxIndex;
@@ -233,7 +235,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     private refresh(): void {
-        if ('anchorName' in this.el.style) {
+        if ('anchorName' in this.#el.style) {
             return;
         }
 

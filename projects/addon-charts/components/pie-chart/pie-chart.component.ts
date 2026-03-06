@@ -52,8 +52,8 @@ const TRANSFORM = {
     },
 })
 export class TuiPieChart {
-    private readonly hintOptions = inject(TuiChartHint, {optional: true});
-    private readonly autoId = tuiGenerateId();
+    readonly #hintOptions = inject(TuiChartHint, {optional: true});
+    readonly #autoId = tuiGenerateId();
 
     protected readonly getSum = computed(() => tuiSum(...this.value()));
     protected readonly segments = computed<ReadonlyArray<[number, number]>>(() =>
@@ -76,11 +76,11 @@ export class TuiPieChart {
     public readonly activeItemIndex = model(NaN);
 
     protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
-        return this.hintOptions?.content() || '';
+        return this.#hintOptions?.content() || '';
     }
 
     protected get maskId(): string {
-        return `tui-ring-chart-${this.autoId}`;
+        return `tui-ring-chart-${this.#autoId}`;
     }
 
     protected get mask(): string | null {

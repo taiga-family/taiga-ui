@@ -32,13 +32,14 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
 })
 export class TuiLineDaysChartHint implements AfterContentInit {
     private readonly charts = contentChildren(forwardRef(() => TuiLineDaysChart));
-    private readonly map = computed(() =>
+
+    readonly #map = computed(() =>
         this.getMap(...this.charts().map(({value}) => value())),
     );
 
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-    private readonly hovered$ = inject(TuiHoveredService);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #zone = inject(NgZone);
+    readonly #hovered$ = inject(TuiHoveredService);
 
     public readonly hint = input<PolymorpheusContent<TuiContext<readonly TuiPoint[]>>>(
         '',
@@ -48,12 +49,12 @@ export class TuiLineDaysChartHint implements AfterContentInit {
     public ngAfterContentInit(): void {
         combineLatest([
             ...this.charts().map(({charts}) => tuiLineChartDrivers(charts())),
-            this.hovered$,
+            this.#hovered$,
         ])
             .pipe(
                 filter((result) => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
+                tuiZonefree(this.#zone),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe(() => {
                 this.charts().forEach((chart) => chart.onHovered(NaN));
@@ -61,7 +62,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
     }
 
     public getContext(day: TuiDay): ReadonlyArray<[TuiDay, number]> {
-        return this.map().get(String(day)) || [];
+        return this.#map().get(String(day)) || [];
     }
 
     public raise(day: TuiDay): void {

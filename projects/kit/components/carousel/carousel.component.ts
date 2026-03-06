@@ -58,16 +58,16 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
     },
 })
 export class TuiCarouselComponent {
-    private readonly el = tuiInjectElement();
-    private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly directive = inject(TuiCarouselDirective);
-    private readonly translate = signal(0);
+    readonly #el = tuiInjectElement();
+    readonly #isMobile = inject(WA_IS_MOBILE);
+    readonly #directive = inject(TuiCarouselDirective);
+    readonly #translate = signal(0);
 
     protected readonly transitioned = signal(true);
     protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly computedDraggable = computed(
-        () => this.isMobile || this.draggable(),
+        () => this.#isMobile || this.draggable(),
     );
 
     protected readonly computedTranslate = computed(
@@ -75,12 +75,12 @@ export class TuiCarouselComponent {
     );
 
     protected readonly x = computed(() =>
-        this.transitioned() ? this.computedTranslate() : this.translate(),
+        this.transitioned() ? this.computedTranslate() : this.#translate(),
     );
 
     protected readonly resetDuration = effect(() => {
         this.index();
-        this.directive.restart();
+        this.#directive.restart();
     });
 
     public readonly draggable = input(false);
@@ -102,7 +102,7 @@ export class TuiCarouselComponent {
         this.transitioned.set(transitioned);
 
         if (!transitioned) {
-            this.translate.set(this.computedTranslate());
+            this.#translate.set(this.computedTranslate());
         }
 
         this.onShift();
@@ -121,7 +121,7 @@ export class TuiCarouselComponent {
     }
 
     protected onScroll(delta: number): void {
-        if (!this.isMobile) {
+        if (!this.#isMobile) {
             this.onSwipe(delta > 0 ? 'left' : 'right');
         }
     }
@@ -133,7 +133,9 @@ export class TuiCarouselComponent {
 
         const min = 1 - this.items().length / this.itemsCount();
 
-        this.translate.set(tuiClamp(x / this.el.clientWidth + this.translate(), min, 0));
+        this.#translate.set(
+            tuiClamp(x / this.#el.clientWidth + this.#translate(), min, 0),
+        );
         this.onShift();
     }
 

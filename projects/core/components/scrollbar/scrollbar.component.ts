@@ -37,14 +37,14 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     },
 })
 export class TuiScrollbar {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     protected readonly options = inject(TUI_SCROLLBAR_OPTIONS);
     protected readonly isIOS = inject(WA_IS_IOS);
-    protected readonly browserScrollRef = new ElementRef(this.el);
+    protected readonly browserScrollRef = new ElementRef(this.#el);
 
     protected get delegated(): boolean {
-        return this.scrollRef !== this.el || this.options.mode === 'native';
+        return this.scrollRef !== this.#el || this.options.mode === 'native';
     }
 
     protected get scrollRef(): HTMLElement {

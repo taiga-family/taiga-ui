@@ -12,11 +12,11 @@ import {type TuiPoint} from '@taiga-ui/core/types';
     providers: [tuiAsPositionAccessor(TuiLineClampPositionDirective)],
 })
 export class TuiLineClampPositionDirective extends TuiPositionAccessor {
-    private readonly accessor = inject<TuiRectAccessor>(TuiHintDirective);
+    readonly #accessor = inject<TuiRectAccessor>(TuiHintDirective);
     public readonly type = 'hint';
 
     public getPosition(): TuiPoint {
-        const {top, left} = this.accessor.getClientRect();
+        const {top, left} = this.#accessor.getClientRect();
 
         return [left, top];
     }

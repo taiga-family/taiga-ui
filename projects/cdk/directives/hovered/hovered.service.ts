@@ -16,21 +16,21 @@ function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
 
 @Injectable()
 export class TuiHoveredService extends Observable<boolean> {
-    private readonly el = tuiInjectElement();
-    private readonly zone = inject(NgZone);
+    readonly #el = tuiInjectElement();
+    readonly #zone = inject(NgZone);
 
-    private readonly stream$ = merge(
-        tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(TUI_TRUE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'mouseleave').pipe(map(TUI_FALSE_HANDLER)),
+    readonly #stream$ = merge(
+        tuiTypedFromEvent(this.#el, 'mouseenter').pipe(map(TUI_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'mouseleave').pipe(map(TUI_FALSE_HANDLER)),
         // Hello, Safari
-        tuiTypedFromEvent(this.el, 'mouseout').pipe(
+        tuiTypedFromEvent(this.#el, 'mouseout').pipe(
             filter(movedOut),
             map(TUI_FALSE_HANDLER),
         ),
-    ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
+    ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.#zone));
 
     constructor() {
-        super((subscriber) => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.#stream$.subscribe(subscriber));
     }
 }
 

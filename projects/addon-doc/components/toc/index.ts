@@ -29,10 +29,10 @@ import {TuiDocPage} from '../page/page.component';
     host: {'(document:tui-example)': 'onExample($event.detail)'},
 })
 export class TuiDocToc implements OnInit {
-    private readonly el = tuiInjectElement();
-    private readonly pages = inject(TUI_DOC_MAP_PAGES);
-    private examples: readonly string[] = [];
-    private active = '';
+    readonly #el = tuiInjectElement();
+    readonly #pages = inject(TUI_DOC_MAP_PAGES);
+    #examples: readonly string[] = [];
+    #active = '';
 
     protected readonly toc = signal<readonly string[]>([]);
     protected readonly route = inject(ActivatedRoute);
@@ -44,7 +44,7 @@ export class TuiDocToc implements OnInit {
 
     public ngOnInit(): void {
         setTimeout(() => {
-            const page = this.el.closest('tui-doc-page');
+            const page = this.#el.closest('tui-doc-page');
             const links = page?.querySelectorAll('tui-doc-example > header .t-link');
             const toc = Array.from(links || []).map((el) => el.textContent?.trim() || '');
 
@@ -53,19 +53,19 @@ export class TuiDocToc implements OnInit {
     }
 
     protected isActive(fragment: string): boolean {
-        return this.active ? fragment === this.active : fragment === this.toc()[0];
+        return this.#active ? fragment === this.#active : fragment === this.toc()[0];
     }
 
     protected getRouterLink(pageTitle: string): string {
-        return this.pages.get(pageTitle)?.route ?? '';
+        return this.#pages.get(pageTitle)?.route ?? '';
     }
 
     protected onExample(example: string): void {
         const toc = this.toc();
 
-        this.examples = tuiArrayToggle(this.examples, example);
-        this.active =
-            toc.find((item) => this.examples.includes(tuiToKebab(item))) ||
+        this.#examples = tuiArrayToggle(this.#examples, example);
+        this.#active =
+            toc.find((item) => this.#examples.includes(tuiToKebab(item))) ||
             toc[toc.length - 1] ||
             '';
     }

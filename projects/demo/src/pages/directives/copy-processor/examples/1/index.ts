@@ -14,7 +14,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     host: {'(copy)': 'onCopy($event)'},
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
@@ -26,7 +26,7 @@ export default class Example {
     );
 
     protected onCopy(event: ClipboardEvent): void {
-        this.alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
+        this.#alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
     }
 
     protected readonly textProcessor: TuiStringHandler<string> = (text) =>

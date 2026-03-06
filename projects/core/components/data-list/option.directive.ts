@@ -20,9 +20,9 @@ import {TuiDataListComponent} from './data-list.component';
     },
 })
 export class TuiOption<T = unknown> implements OnDestroy {
-    private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly el = tuiInjectElement();
-    private readonly datalist = inject<TuiDataListComponent<T>>(
+    readonly #isMobile = inject(WA_IS_MOBILE);
+    readonly #el = tuiInjectElement();
+    readonly #datalist = inject<TuiDataListComponent<T>>(
         forwardRef(() => TuiDataListComponent),
         {optional: true},
     );
@@ -36,17 +36,17 @@ export class TuiOption<T = unknown> implements OnDestroy {
 
     // Preventing focus loss upon focused option removal
     public ngOnDestroy(): void {
-        this.datalist?.handleFocusLossIfNecessary(this.el);
+        this.#datalist?.handleFocusLossIfNecessary(this.#el);
     }
 
     protected onMouseMove(): void {
         if (
-            !this.isMobile &&
-            !tuiIsFocused(this.el) &&
-            this.datalist &&
-            this.el.closest('[tuiDataListDropdownManager]')
+            !this.#isMobile &&
+            !tuiIsFocused(this.#el) &&
+            this.#datalist &&
+            this.#el.closest('[tuiDataListDropdownManager]')
         ) {
-            this.el.focus({preventScroll: true});
+            this.#el.focus({preventScroll: true});
         }
     }
 }

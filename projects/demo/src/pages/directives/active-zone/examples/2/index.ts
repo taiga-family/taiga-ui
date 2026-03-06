@@ -12,7 +12,7 @@ import {TuiButton, TuiDialogService, TuiInput} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly dialog = inject(TuiDialogService);
+    readonly #dialog = inject(TuiDialogService);
 
     protected active = false;
 
@@ -22,7 +22,7 @@ export default class Example {
     }
 
     protected onClick(): void {
-        this.dialog
+        this.#dialog
             .open(
                 'Dialogs automatically attach themselves to the currently active zone',
                 {label: "I'm inside", size: 's'},

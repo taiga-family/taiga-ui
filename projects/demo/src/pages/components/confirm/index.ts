@@ -12,8 +12,8 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Example implements TuiConfirmData {
-    private readonly dialogs = inject(TuiDialogService);
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #dialogs = inject(TuiDialogService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic'];
@@ -28,13 +28,13 @@ export default class Example implements TuiConfirmData {
         'This is <code>PolymorpheusContent</code>, so it can be anything you like!';
 
     protected onClick(): void {
-        this.dialogs
+        this.#dialogs
             .open<boolean>(TUI_CONFIRM, {
                 label: 'Are you sure?',
                 size: 's',
                 data: this,
             })
-            .pipe(switchMap((response) => this.alerts.open(String(response))))
+            .pipe(switchMap((response) => this.#alerts.open(String(response))))
             .subscribe();
     }
 }

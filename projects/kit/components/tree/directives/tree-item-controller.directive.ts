@@ -11,15 +11,15 @@ import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
     exportAs: 'tuiTreeController',
 })
 export class TuiTreeItemController implements TuiTreeController {
-    private readonly map = new WeakMap<TuiTreeItem, boolean>();
+    readonly #map = new WeakMap<TuiTreeItem, boolean>();
 
     public readonly fallback = input(true, {alias: 'tuiTreeController'});
 
     public isExpanded(item: TuiTreeItem): boolean {
-        return this.map.get(item) ?? this.fallback();
+        return this.#map.get(item) ?? this.fallback();
     }
 
     public toggle(item: TuiTreeItem): void {
-        this.map.set(item, !this.isExpanded(item));
+        this.#map.set(item, !this.isExpanded(item));
     }
 }

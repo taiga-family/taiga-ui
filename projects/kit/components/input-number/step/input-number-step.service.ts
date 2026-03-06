@@ -24,28 +24,28 @@ function getDelay(index: number): number {
 
 @Injectable()
 export class TuiInputNumberStepService<T> {
-    private readonly doc = inject(DOCUMENT);
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly start$ = new Subject<T>();
-    private readonly stop$ = merge(
-        fromEvent(this.doc, 'pointerup'),
-        fromEvent(this.doc, 'pointerleave'),
-        fromEvent(this.doc, 'pointercancel'),
+    readonly #doc = inject(DOCUMENT);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #start$ = new Subject<T>();
+    readonly #stop$ = merge(
+        fromEvent(this.#doc, 'pointerup'),
+        fromEvent(this.#doc, 'pointerleave'),
+        fromEvent(this.#doc, 'pointercancel'),
     );
 
-    public readonly steps$: Observable<T> = this.start$.pipe(
+    public readonly steps$: Observable<T> = this.#start$.pipe(
         switchMap((value) =>
             timer(INITIAL_DELAY).pipe(
                 expand((_, index) => timer(getDelay(index))),
                 map(() => value),
-                takeUntil(this.stop$),
+                takeUntil(this.#stop$),
             ),
         ),
-        takeUntilDestroyed(this.destroyRef),
+        takeUntilDestroyed(this.#destroyRef),
         share(),
     );
 
     public next(value: T): void {
-        this.start$.next(value);
+        this.#start$.next(value);
     }
 }

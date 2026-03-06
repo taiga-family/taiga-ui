@@ -25,13 +25,13 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected activeItemIndex = 0;
 
     protected readonly steps = ['Sales', 'Settings', 'News'];
 
     protected onClick(item: string): void {
-        this.alerts.open(item).subscribe();
+        this.#alerts.open(item).subscribe();
     }
 }

@@ -33,23 +33,23 @@ export class TuiSelectDirective<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly input = inject(TuiInputDirective);
-    private readonly open = inject(TuiDropdownOpen).open;
-    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    readonly #input = inject(TuiInputDirective);
+    readonly #open = inject(TuiDropdownOpen).open;
+    readonly #itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly valueEffect = effect(() => {
         const value = this.value();
-        const string = tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '';
+        const string = tuiIsPresent(value) ? this.#itemsHandlers.stringify()(value) : '';
 
-        this.input.value.set(string);
+        this.#input.value.set(string);
     });
 
     public setValue(value: T | null): void {
         this.onChange(value);
 
         if (!value) {
-            this.open.set(true);
+            this.#open.set(true);
         }
     }
 }

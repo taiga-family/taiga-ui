@@ -43,7 +43,7 @@ import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
     },
 })
 export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, OnInit {
-    private readonly destroyRef = inject(DestroyRef);
+    readonly #destroyRef = inject(DestroyRef);
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly options = inject<T>(TUI_RADIO_OPTIONS);
@@ -54,7 +54,7 @@ export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, On
 
     public ngOnInit(): void {
         tuiControlValue(this.control)
-            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.#destroyRef))
             .subscribe((value) => {
                 // https://github.com/angular/angular/issues/14988
                 const fix =

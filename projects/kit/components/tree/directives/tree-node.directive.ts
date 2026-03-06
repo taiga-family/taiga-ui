@@ -6,18 +6,16 @@ import {TUI_TREE_ACCESSOR} from '../misc/tree.tokens';
 
 @Directive({selector: 'tui-tree-item[tuiTreeNode]'})
 export class TuiTreeNode<T> implements OnChanges, OnDestroy {
-    private readonly component = inject(TuiTreeItem);
-    private readonly directive = inject<TuiTreeAccessor<T>>(TUI_TREE_ACCESSOR, {
-        optional: true,
-    });
+    readonly #component = inject(TuiTreeItem);
+    readonly #directive = inject<TuiTreeAccessor<T>>(TUI_TREE_ACCESSOR, {optional: true});
 
     public readonly value = input.required<T>({alias: 'tuiTreeNode'});
 
     public ngOnChanges(): void {
-        this.directive?.register(this.component, this.value());
+        this.#directive?.register(this.#component, this.value());
     }
 
     public ngOnDestroy(): void {
-        this.directive?.unregister(this.component);
+        this.#directive?.unregister(this.#component);
     }
 }

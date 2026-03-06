@@ -18,7 +18,7 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
+    readonly #dialogs = inject(TuiDialogService);
 
     protected dropdownOpen = false;
     protected size: TuiSizeL | TuiSizeS = 's';
@@ -35,6 +35,6 @@ export default class Example {
 
     protected selectOption(item: string): void {
         this.dropdownOpen = false;
-        this.dialogs.open(`You selected ${item}`).subscribe();
+        this.#dialogs.open(`You selected ${item}`).subscribe();
     }
 }

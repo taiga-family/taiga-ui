@@ -37,8 +37,8 @@ function isText(value: string): boolean {
     },
 })
 export class TuiInputPhoneDirective extends TuiControl<string | null> {
-    private readonly input = inject(TuiInputDirective);
-    private readonly host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
+    readonly #input = inject(TuiInputDirective);
+    readonly #host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
 
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
@@ -46,7 +46,7 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
     protected inputMode = computed(() => (this.allowText() ? 'text' : 'numeric'));
     protected readonly valueEffect = effect(() => {
         if (this.value()) {
-            this.input.value.set(maskitoTransform(this.value() ?? '', this.maskito()));
+            this.#input.value.set(maskitoTransform(this.value() ?? '', this.maskito()));
         }
     });
 
@@ -54,10 +54,10 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
         const incomplete = untracked(() => !this.value());
         const prefix = incomplete && this.interactive() && !this.allowText();
 
-        if (!this.host.focused() && incomplete) {
-            this.input.value.set('');
-        } else if (this.host.focused() && prefix) {
-            this.input.value.set(this.nonRemovablePrefix());
+        if (!this.#host.focused() && incomplete) {
+            this.#input.value.set('');
+        } else if (this.#host.focused() && prefix) {
+            this.#input.value.set(this.nonRemovablePrefix());
         }
     });
 
@@ -79,7 +79,7 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
 
     protected onInput(value: string): void {
         if (!value && !this.allowText()) {
-            this.input.value.set(this.nonRemovablePrefix());
+            this.#input.value.set(this.nonRemovablePrefix());
         }
 
         const parsed = isText(value)

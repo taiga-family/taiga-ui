@@ -20,9 +20,9 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page extends Array {
-    private readonly alerts = inject(TuiNotificationService);
-    private readonly dialogs = inject(TuiDialogService);
-    private readonly options = inject(TUI_DIALOG_OPTIONS);
+    readonly #alerts = inject(TuiNotificationService);
+    readonly #dialogs = inject(TuiDialogService);
+    readonly #options = inject(TUI_DIALOG_OPTIONS);
 
     protected readonly routes = DemoRoute;
     protected readonly examples = [
@@ -45,20 +45,20 @@ export default class Page extends Array {
 
     protected data = 'Data';
     protected label = 'Label';
-    protected closable = this.options.closable;
-    protected required = this.options.required;
-    protected dismissible = this.options.dismissible;
+    protected closable = this.#options.closable;
+    protected required = this.#options.required;
+    protected dismissible = this.#options.dismissible;
 
     protected readonly appearances = ['taiga', 'fullscreen'] as const;
-    protected appearance = this.options.appearance;
+    protected appearance = this.#options.appearance;
 
     protected readonly sizes = ['s', 'm', 'l'] as const;
-    protected size = this.options.size;
+    protected size = this.#options.size;
 
     protected showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
         const {data, label, required, closable, dismissible, size, appearance} = this;
 
-        this.dialogs
+        this.#dialogs
             .open<string>(content, {
                 data,
                 label,
@@ -68,7 +68,7 @@ export default class Page extends Array {
                 size,
                 appearance,
             })
-            .pipe(switchMap((response) => this.alerts.open(response)))
+            .pipe(switchMap((response) => this.#alerts.open(response)))
             .subscribe();
     }
 }

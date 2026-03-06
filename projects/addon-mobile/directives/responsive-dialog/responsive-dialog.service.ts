@@ -17,16 +17,16 @@ export interface TuiResponsiveDialogOptions<I = undefined>
  */
 @Injectable({providedIn: 'root'})
 export class TuiResponsiveDialogService {
-    private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly dialogs = inject(TuiDialogService);
-    private readonly sheets = inject(TuiSheetDialogService);
+    readonly #isMobile = inject(WA_IS_MOBILE);
+    readonly #dialogs = inject(TuiDialogService);
+    readonly #sheets = inject(TuiSheetDialogService);
 
     public open<G = void>(
         content: PolymorpheusContent<TuiPortalContext<TuiResponsiveDialogOptions, G>>,
         options: Partial<TuiResponsiveDialogOptions<any>> = {},
     ): Observable<G> {
-        return this.isMobile
-            ? this.sheets.open(content, options)
-            : this.dialogs.open(content, options);
+        return this.#isMobile
+            ? this.#sheets.open(content, options)
+            : this.#dialogs.open(content, options);
     }
 }

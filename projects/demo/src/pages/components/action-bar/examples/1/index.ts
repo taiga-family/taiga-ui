@@ -31,12 +31,12 @@ import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly breakpoint = inject(TUI_BREAKPOINT);
+    readonly #breakpoint = inject(TUI_BREAKPOINT);
     protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
 
-    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
+    protected readonly isMobile = computed(() => this.#breakpoint() === 'mobile');
 
     protected get value(): string[] {
         return this.control.value || [];

@@ -6,18 +6,19 @@ import {TuiPageObject} from './page-object';
 import {tuiReplaceNbsp} from './replace-nbsp';
 
 export class TuiNativeInputPO {
-    private readonly pageObject: TuiPageObject<unknown>;
+    readonly #pageObject: TuiPageObject<unknown>;
 
     constructor(
         private readonly fixture: ComponentFixture<unknown>,
         private readonly automationIdOrElement: DebugElement | string,
     ) {
-        this.pageObject = new TuiPageObject(fixture);
+        this.#pageObject = new TuiPageObject(fixture);
     }
 
     public get nativeElement(): HTMLInputElement | HTMLTextAreaElement | null {
         return typeof this.automationIdOrElement === 'string'
-            ? this.pageObject.getByAutomationId(this.automationIdOrElement)?.nativeElement
+            ? this.#pageObject.getByAutomationId(this.automationIdOrElement)
+                  ?.nativeElement
             : this.automationIdOrElement.nativeElement;
     }
 

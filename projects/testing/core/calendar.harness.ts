@@ -7,61 +7,57 @@ import {TuiCalendarYearHarness} from './calendar-year.harness';
 export class TuiCalendarHarness extends TuiComponentHarness {
     public static hostSelector = 'tui-calendar';
 
-    private readonly getCalendarYearHarness =
-        this.locatorForOptional(TuiCalendarYearHarness);
+    readonly #getCalendarYearHarness = this.locatorForOptional(TuiCalendarYearHarness);
 
-    private readonly getCalendarSpinHarness =
-        this.locatorForOptional(TuiCalendarSpinHarness);
+    readonly #getCalendarSpinHarness = this.locatorForOptional(TuiCalendarSpinHarness);
 
-    private readonly getCalendarSheetHarness = this.locatorForOptional(
-        TuiCalendarSheetHarness,
-    );
+    readonly #getCalendarSheetHarness = this.locatorForOptional(TuiCalendarSheetHarness);
 
     public async yearPickerShown(): Promise<boolean> {
-        return !!(await this.getCalendarYearHarness());
+        return !!(await this.#getCalendarYearHarness());
     }
 
     public async yearMonthPaginationShown(): Promise<boolean> {
-        return !!(await this.getCalendarSpinHarness());
+        return !!(await this.#getCalendarSpinHarness());
     }
 
     public async primitiveCalendarShown(): Promise<boolean> {
-        return !!(await this.getCalendarSheetHarness());
+        return !!(await this.#getCalendarSheetHarness());
     }
 
     public async isPaginationLeftDisabled(): Promise<boolean> {
-        return (await this.getCalendarSpinHarness())?.isLeftDisabled() ?? false;
+        return (await this.#getCalendarSpinHarness())?.isLeftDisabled() ?? false;
     }
 
     public async isPaginationRightDisabled(): Promise<boolean> {
-        return (await this.getCalendarSpinHarness())?.isRightDisabled() ?? false;
+        return (await this.#getCalendarSpinHarness())?.isRightDisabled() ?? false;
     }
 
     public async clickMonthLeft(): Promise<void> {
-        return (await this.getCalendarSpinHarness())?.clickLeft();
+        return (await this.#getCalendarSpinHarness())?.clickLeft();
     }
 
     public async getContentText(): Promise<string> {
-        return (await this.getCalendarSpinHarness())?.getContentText() ?? '';
+        return (await this.#getCalendarSpinHarness())?.getContentText() ?? '';
     }
 
     public async clickMonthRight(): Promise<void> {
-        return (await this.getCalendarSpinHarness())?.clickRight();
+        return (await this.#getCalendarSpinHarness())?.clickRight();
     }
 
     public async clickPaginationYear(): Promise<void> {
-        return (await this.getCalendarSpinHarness())?.clickYear();
+        return (await this.#getCalendarSpinHarness())?.clickYear();
     }
 
     public async clickPickerYear(year: string): Promise<void> {
-        return (await this.getCalendarYearHarness())?.clickYear(year);
+        return (await this.#getCalendarYearHarness())?.clickYear(year);
     }
 
     public async clickDay(day: number): Promise<void> {
-        return (await this.getCalendarSheetHarness())?.clickDay(day);
+        return (await this.#getCalendarSheetHarness())?.clickDay(day);
     }
 
     public async hoverDay(day: number): Promise<void> {
-        return (await this.getCalendarSheetHarness())?.hoverDay(day);
+        return (await this.#getCalendarSheetHarness())?.hoverDay(day);
     }
 }

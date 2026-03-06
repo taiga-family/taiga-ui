@@ -22,19 +22,19 @@ import {TuiAccordionComponent} from './accordion.component';
     },
 })
 export class TuiAccordionDirective implements OnChanges {
-    private readonly accordion = inject(TuiAccordionComponent);
+    readonly #accordion = inject(TuiAccordionComponent);
 
     public readonly open = model<boolean | ''>(false, {alias: 'tuiAccordion'});
 
-    public readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
+    public readonly size = tuiDirectiveBinding(TuiButton, 'size', this.#accordion.size);
     public readonly chevron = tuiDirectiveBinding(TuiChevron, 'rotated', this.open);
 
     public ngOnChanges(): void {
-        this.accordion.toggle(this);
+        this.#accordion.toggle(this);
     }
 
     public toggle(): void {
         this.open.set(!this.open());
-        this.accordion.toggle(this);
+        this.#accordion.toggle(this);
     }
 }

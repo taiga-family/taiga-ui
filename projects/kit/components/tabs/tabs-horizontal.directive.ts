@@ -41,20 +41,20 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     },
 })
 export class TuiTabsHorizontal implements AfterViewChecked {
-    private readonly el = tuiInjectElement();
-    private readonly options = inject(TUI_TABS_OPTIONS);
-    private readonly tabs = inject(TuiTabsDirective);
+    readonly #el = tuiInjectElement();
+    readonly #options = inject(TUI_TABS_OPTIONS);
+    readonly #tabs = inject(TuiTabsDirective);
 
     protected readonly sub = inject(WaMutationObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 
-    public readonly underline = input(this.options.underline);
+    public readonly underline = input(this.#options.underline);
 
     constructor() {
         effect(() => {
-            const index = this.tabs.activeItemIndex();
-            const element = this.tabs.tabs[index];
+            const index = this.#tabs.activeItemIndex();
+            const element = this.#tabs.tabs[index];
 
             if (!element) {
                 return;
@@ -62,12 +62,12 @@ export class TuiTabsHorizontal implements AfterViewChecked {
 
             const {offsetLeft, offsetWidth} = element;
 
-            if (offsetLeft < this.el.scrollLeft) {
-                this.el.scrollLeft = offsetLeft;
+            if (offsetLeft < this.#el.scrollLeft) {
+                this.#el.scrollLeft = offsetLeft;
             }
 
-            if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
-                this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
+            if (offsetLeft + offsetWidth > this.#el.scrollLeft + this.#el.offsetWidth) {
+                this.#el.scrollLeft = offsetLeft + offsetWidth - this.#el.offsetWidth;
             }
         });
     }
@@ -77,16 +77,16 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     }
 
     protected onKeyDownArrow(current: HTMLElement, step: number): void {
-        this.tabs.moveFocus(current, step);
+        this.#tabs.moveFocus(current, step);
     }
 
     // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     protected refresh(): void {
-        if ('anchorName' in this.el.style) {
+        if ('anchorName' in this.#el.style) {
             return;
         }
 
-        const {activeElement} = this.tabs;
+        const {activeElement} = this.#tabs;
 
         if (activeElement && !activeElement.isConnected) {
             return;
@@ -94,7 +94,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
 
         const {offsetLeft = 0, offsetWidth = 0} = activeElement || {};
 
-        this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
-        this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
+        this.#el.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.#el.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }

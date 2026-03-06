@@ -9,14 +9,14 @@ import {TuiOptionWithContent} from './option-with-content.directive';
     host: {'(click)': 'onClick()'},
 })
 export class TuiOptionWithValue<T = unknown> {
-    private readonly host = inject(TUI_DATA_LIST_HOST, {optional: true});
+    readonly #host = inject(TUI_DATA_LIST_HOST, {optional: true});
 
     public readonly disabled = input(false);
     public readonly value = input<T>();
 
     protected onClick(value = this.value()): void {
         if (value !== undefined) {
-            this.host?.handleOption?.(value);
+            this.#host?.handleOption?.(value);
         }
     }
 }

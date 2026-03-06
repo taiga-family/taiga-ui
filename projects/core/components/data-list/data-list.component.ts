@@ -69,15 +69,16 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 export class TuiDataListComponent<T>
     implements TuiDataListAccessor<T>, AfterContentChecked
 {
-    private origin?: HTMLElement;
-    private readonly ngZone = inject(NgZone);
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly el = tuiInjectElement();
-    private readonly cdr = inject(ChangeDetectorRef);
     private readonly optionsQuery = contentChildren<TuiOptionWithValue<T>>(
         forwardRef(() => TuiOptionWithValue),
         {descendants: true},
     );
+
+    #origin?: HTMLElement;
+    readonly #ngZone = inject(NgZone);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #el = tuiInjectElement();
+    readonly #cdr = inject(ChangeDetectorRef);
 
     protected readonly fallback = inject(TUI_NOTHING_FOUND_MESSAGE);
     protected readonly empty = signal(false);
@@ -97,35 +98,35 @@ export class TuiDataListComponent<T>
         tuiMoveFocus(elements.indexOf(current), elements, step);
     }
 
-    public handleFocusLossIfNecessary(element: Element = this.el): void {
+    public handleFocusLossIfNecessary(element: Element = this.#el): void {
         if (tuiIsFocusedIn(element)) {
-            this.origin?.focus({preventScroll: true});
+            this.#origin?.focus({preventScroll: true});
         }
     }
 
     public ngAfterContentChecked(): void {
         // TODO: Refactor to :has after Safari support bumped to 15
         timer(0)
-            .pipe(tuiZonefree(this.ngZone), tuiTakeUntilDestroyed(this.destroyRef))
+            .pipe(tuiZonefree(this.#ngZone), tuiTakeUntilDestroyed(this.#destroyRef))
             .subscribe(() => {
                 this.empty.set(!this.elements.length);
-                this.cdr.detectChanges();
+                this.#cdr.detectChanges();
             });
     }
 
     protected get role(): string | null {
-        return this.el.parentElement?.closest('[role="menu"],[role="listbox"]')
+        return this.#el.parentElement?.closest('[role="menu"],[role="listbox"]')
             ? null
-            : this.el.role;
+            : this.#el.role;
     }
 
     protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {
-        if (!currentTarget.contains(relatedTarget) && !this.origin) {
-            this.origin = relatedTarget;
+        if (!currentTarget.contains(relatedTarget) && !this.#origin) {
+            this.#origin = relatedTarget;
         }
     }
 
     private get elements(): readonly HTMLElement[] {
-        return Array.from(this.el.querySelectorAll('[tuiOption]:not(.t-empty)'));
+        return Array.from(this.#el.querySelectorAll('[tuiOption]:not(.t-empty)'));
     }
 }

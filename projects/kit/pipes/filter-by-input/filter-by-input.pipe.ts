@@ -14,17 +14,17 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Pipe({name: 'tuiFilterByInput', pure: false})
 export class TuiFilterByInputPipe implements PipeTransform {
-    private readonly textfield = inject(TuiTextfieldComponent);
-    private readonly handlers = inject(TUI_ITEMS_HANDLERS);
-    private readonly multi = this.textfield.el.matches('[multi]');
-    private readonly matcher = signal<TuiStringMatcher<any>>(TUI_DEFAULT_MATCHER);
-    private readonly items = signal<readonly any[] | null>([]);
-    private readonly filtered = computed(() =>
+    readonly #textfield = inject(TuiTextfieldComponent);
+    readonly #handlers = inject(TUI_ITEMS_HANDLERS);
+    readonly #multi = this.#textfield.el.matches('[multi]');
+    readonly #matcher = signal<TuiStringMatcher<any>>(TUI_DEFAULT_MATCHER);
+    readonly #items = signal<readonly any[] | null>([]);
+    readonly #filtered = computed(() =>
         this.filter(
-            this.items(),
-            this.matcher(),
-            this.handlers.stringify(),
-            this.textfield.value(),
+            this.#items(),
+            this.#matcher(),
+            this.#handlers.stringify(),
+            this.#textfield.value(),
         ),
     );
 
@@ -46,11 +46,11 @@ export class TuiFilterByInputPipe implements PipeTransform {
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
         untracked(() => {
-            this.items.set(items);
-            this.matcher.set(matcher);
+            this.#items.set(items);
+            this.#matcher.set(matcher);
         });
 
-        return this.filtered() as ReadonlyArray<readonly T[]> | readonly T[] | null;
+        return this.#filtered() as ReadonlyArray<readonly T[]> | readonly T[] | null;
     }
 
     private filter<T>(
@@ -97,7 +97,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): T | undefined {
-        return this.multi
+        return this.#multi
             ? undefined
             : items.find((item) => stringify(item).toLocaleLowerCase() === query);
     }

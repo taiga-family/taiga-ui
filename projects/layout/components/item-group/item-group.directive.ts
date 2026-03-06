@@ -28,7 +28,7 @@ class Styles {}
     },
 })
 export class TuiItemGroup implements AfterViewInit {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     protected readonly nothing = tuiWithStyles(Styles);
 
@@ -36,7 +36,7 @@ export class TuiItemGroup implements AfterViewInit {
     public readonly autoscroll = input(false);
 
     public ngAfterViewInit(): void {
-        this.el.classList.add('_initialized');
+        this.#el.classList.add('_initialized');
     }
 
     protected onClick(target: HTMLElement): void {

@@ -56,8 +56,8 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     /**
      * @deprecated use `item`
      */
-    private selectedPeriod: TuiDayRangePeriod | null = null;
-    private readonly cdr = inject(ChangeDetectorRef);
+    #selectedPeriod: TuiDayRangePeriod | null = null;
+    readonly #cdr = inject(ChangeDetectorRef);
 
     protected currentValue: TuiDay | TuiDayRange | null = null;
     protected previousValue: TuiDay | TuiDayRange | null = null;
@@ -109,7 +109,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     public set value(value: TuiDayRange | null) {
-        this.cdr.markForCheck();
+        this.#cdr.markForCheck();
         this.currentValue = value;
         this.initDefaultViewedMonth();
     }
@@ -122,14 +122,14 @@ export class TuiCalendarRange implements OnInit, OnChanges {
      * @deprecated use `item`
      */
     public get selectedActivePeriod(): TuiDayRangePeriod | null {
-        return this.selectedPeriod;
+        return this.#selectedPeriod;
     }
 
     /**
      * @deprecated use `item`
      */
     public set selectedActivePeriod(period: TuiDayRangePeriod | null) {
-        this.selectedPeriod = period;
+        this.#selectedPeriod = period;
     }
 
     public ngOnChanges(): void {

@@ -25,12 +25,12 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
     },
 })
 export class TuiDropdownMobile {
-    private readonly isMobile = inject(WA_IS_MOBILE);
+    readonly #isMobile = inject(WA_IS_MOBILE);
     protected readonly dropdown = inject(TuiDropdownDirective);
 
     protected onMouseDown(event: MouseEvent): void {
         if (
-            !this.isMobile ||
+            !this.#isMobile ||
             !tuiIsHTMLElement(event.target) ||
             !event.target.matches('input,textarea')
         ) {

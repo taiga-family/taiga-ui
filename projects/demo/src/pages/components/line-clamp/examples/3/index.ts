@@ -13,13 +13,13 @@ import {TuiLineClamp} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly win = inject(WA_WINDOW);
-    private readonly cdr = inject(ChangeDetectorRef);
+    readonly #win = inject(WA_WINDOW);
+    readonly #cdr = inject(ChangeDetectorRef);
     protected lineHeight = NaN;
     protected lineLimit = NaN;
 
     protected getDynamicLineHeight(element: HTMLDivElement): number {
-        return parseInt(this.win.getComputedStyle(element).lineHeight, 10);
+        return parseInt(this.#win.getComputedStyle(element).lineHeight, 10);
     }
 
     protected getDynamicLineLimit(element: HTMLDivElement): number {
@@ -29,6 +29,6 @@ export default class Example {
     protected onResize(element: HTMLDivElement): void {
         this.lineHeight = this.getDynamicLineHeight(element);
         this.lineLimit = this.getDynamicLineLimit(element);
-        this.cdr.detectChanges();
+        this.#cdr.detectChanges();
     }
 }

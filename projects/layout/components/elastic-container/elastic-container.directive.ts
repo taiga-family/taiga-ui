@@ -20,12 +20,12 @@ import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
     ],
 })
 export class TuiElasticContainerDirective {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     public readonly tuiElasticContainer = outputFromObservable(
         merge(inject(WaResizeObserverService), inject(WaMutationObserverService)).pipe(
             debounceTime(0),
-            map(() => this.el.clientHeight - 1),
+            map(() => this.#el.clientHeight - 1),
             distinctUntilChanged(),
         ),
     );

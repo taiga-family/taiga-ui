@@ -5,11 +5,11 @@ import {TUI_SCROLLABLE} from './scrollbar.component';
 
 @Directive({selector: '[tuiScrollable]'})
 export class TuiScrollable implements OnInit {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     public ngOnInit(): void {
-        this.el.dispatchEvent(
-            new CustomEvent(TUI_SCROLLABLE, {bubbles: true, detail: this.el}),
+        this.#el.dispatchEvent(
+            new CustomEvent(TUI_SCROLLABLE, {bubbles: true, detail: this.#el}),
         );
     }
 }

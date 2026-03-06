@@ -13,7 +13,7 @@ import {tuiSum} from '@taiga-ui/cdk';
     changeDetection,
 })
 export default class Example {
-    private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
+    readonly #labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
 
@@ -24,6 +24,6 @@ export default class Example {
     }
 
     protected get label(): string {
-        return (Number.isNaN(this.index) ? 'Total' : this.labels[this.index]) ?? '';
+        return (Number.isNaN(this.index) ? 'Total' : this.#labels[this.index]) ?? '';
     }
 }

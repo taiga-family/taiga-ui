@@ -15,19 +15,20 @@ import {TuiTableDirective} from './table.directive';
 
 @Directive({selector: 'table[tuiTable][tuiSortBy]'})
 export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
-    private readonly table = inject(TuiTableDirective<T>);
     private readonly sortables = contentChildren<TuiTableSortable<T>>(TuiTableSortable, {
         descendants: true,
     });
 
-    private readonly sortChange = computed<TuiSortChange<T>>(() => ({
-        sortKey: this.sortables().length ? this.getKey(this.table.sorter()) : null,
-        sortDirection: this.table.direction(),
+    readonly #table = inject(TuiTableDirective<T>);
+
+    readonly #sortChange = computed<TuiSortChange<T>>(() => ({
+        sortKey: this.sortables().length ? this.getKey(this.#table.sorter()) : null,
+        sortDirection: this.#table.direction(),
     }));
 
     protected readonly sortOutput = effect(() => {
         if (this.sortables().length) {
-            this.tuiSortChange.emit(this.sortChange());
+            this.tuiSortChange.emit(this.#sortChange());
         }
     });
 

@@ -17,14 +17,14 @@ import {delay, from, of, switchMap} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TuiRoutableDialog {
-    private readonly route = inject(ActivatedRoute);
-    private readonly router = inject(Router);
-    private readonly injector = inject(INJECTOR);
-    private readonly initialUrl = this.router.url;
-    private readonly dialog = inject(TuiDialogService);
+    readonly #route = inject(ActivatedRoute);
+    readonly #router = inject(Router);
+    readonly #injector = inject(INJECTOR);
+    readonly #initialUrl = this.#router.url;
+    readonly #dialog = inject(TuiDialogService);
 
     constructor() {
-        const {dialog} = this.route.snapshot.data;
+        const {dialog} = this.#route.snapshot.data;
 
         from(isClass(dialog) ? of(dialog) : dialog().then((m: any) => m.default ?? m))
             .pipe(
@@ -34,9 +34,9 @@ export default class TuiRoutableDialog {
                  */
                 delay(0),
                 switchMap((dialog: any) =>
-                    this.dialog.open(
-                        new PolymorpheusComponent<Type<any>>(dialog, this.injector),
-                        this.route.snapshot.data['dialogOptions'],
+                    this.#dialog.open(
+                        new PolymorpheusComponent<Type<any>>(dialog, this.#injector),
+                        this.#route.snapshot.data['dialogOptions'],
                     ),
                 ),
                 takeUntilDestroyed(),
@@ -45,21 +45,21 @@ export default class TuiRoutableDialog {
     }
 
     private get lazyLoadedBackUrl(): string {
-        return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
+        return (this.#route.parent?.snapshot.url || []).map(() => '..').join('/');
     }
 
     private onDialogClosing(): void {
-        if (this.initialUrl === this.router.url) {
+        if (this.#initialUrl === this.#router.url) {
             this.navigateToParent();
         }
     }
 
     private navigateToParent(): void {
-        const backUrl = this.route.snapshot.data['isLazy']
+        const backUrl = this.#route.snapshot.data['isLazy']
             ? this.lazyLoadedBackUrl
-            : this.route.snapshot.data['backUrl'];
+            : this.#route.snapshot.data['backUrl'];
 
-        void this.router.navigate([backUrl], {relativeTo: this.route});
+        void this.#router.navigate([backUrl], {relativeTo: this.#route});
     }
 }
 

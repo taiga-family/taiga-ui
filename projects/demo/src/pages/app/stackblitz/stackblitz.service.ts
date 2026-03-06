@@ -18,7 +18,7 @@ const APP_COMP_META = {
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
-    private readonly deps = inject(StackblitzDepsService);
+    readonly #deps = inject(StackblitzDepsService);
 
     public readonly name = 'Stackblitz';
     public readonly content = new PolymorpheusComponent(StackblitzEditButton);
@@ -95,7 +95,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     > {
         return {
             template: 'angular-cli',
-            dependencies: await this.deps.get(),
+            dependencies: await this.#deps.get(),
             tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
         };
     }

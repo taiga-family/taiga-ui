@@ -19,7 +19,7 @@ import {
     providers: [tuiTextfieldOptionsProvider({cleaner: signal(true)})],
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         card: new FormControl('', tuiCreateLuhnValidator('Card number is invalid')),
@@ -28,6 +28,6 @@ export default class Example {
     });
 
     protected onBinChange(bin: string | null): void {
-        this.alerts.open(String(bin), {label: '(binChange)'}).subscribe();
+        this.#alerts.open(String(bin), {label: '(binChange)'}).subscribe();
     }
 }

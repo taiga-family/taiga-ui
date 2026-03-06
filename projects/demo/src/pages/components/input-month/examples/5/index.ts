@@ -12,7 +12,7 @@ import {TuiInputMonth} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly formatter = Intl.DateTimeFormat(inject(LOCALE_ID), {
+    readonly #formatter = Intl.DateTimeFormat(inject(LOCALE_ID), {
         year: '2-digit',
         month: 'short',
     });
@@ -20,5 +20,5 @@ export default class Example {
     protected value: TuiMonth | null = TuiMonth.currentLocal().append({month: -1});
     protected readonly stringify: TuiStringHandler<TuiContext<TuiMonth>> = ({
         $implicit,
-    }) => this.formatter.format($implicit.toLocalNativeDate());
+    }) => this.#formatter.format($implicit.toLocalNativeDate());
 }

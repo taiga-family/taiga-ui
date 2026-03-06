@@ -82,15 +82,13 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     },
 })
 export class TuiDocExample implements OnChanges {
-    private readonly doc = inject(DOCUMENT);
-    private readonly clipboard = inject(Clipboard);
-    private readonly alerts = inject(TuiNotificationService);
-    private readonly location = inject(WA_LOCATION);
-    private readonly copyTexts = inject(TUI_COPY_TEXTS);
-    private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
-    private readonly rawLoader$$ = new BehaviorSubject<
-        Record<string, TuiRawLoaderContent>
-    >({});
+    readonly #doc = inject(DOCUMENT);
+    readonly #clipboard = inject(Clipboard);
+    readonly #alerts = inject(TuiNotificationService);
+    readonly #location = inject(WA_LOCATION);
+    readonly #copyTexts = inject(TUI_COPY_TEXTS);
+    readonly #processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
+    readonly #rawLoader$$ = new BehaviorSubject<Record<string, TuiRawLoaderContent>>({});
 
     protected readonly fullscreenEnabled = inject(DOCUMENT).fullscreenEnabled;
     protected readonly icons = inject(TUI_DOC_ICONS);
@@ -106,13 +104,13 @@ export class TuiDocExample implements OnChanges {
     protected readonly defaultTab = this.texts[0];
     protected activeItemIndex = 0;
     protected fullscreen = false;
-    protected readonly copy = computed(() => this.copyTexts()[0]);
+    protected readonly copy = computed(() => this.#copyTexts()[0]);
     protected readonly loading = signal(false);
     protected readonly id = computed(() => tuiToKebab(this.heading()));
     protected readonly processor = toSignal(
-        this.rawLoader$$.pipe(
+        this.#rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
-            map((value) => this.processContent(value)),
+            map((value) => this.#processContent(value)),
         ),
         {initialValue: {} as unknown as Record<string, string>},
     );
@@ -125,7 +123,7 @@ export class TuiDocExample implements OnChanges {
     public readonly preview = input(true);
 
     public ngOnChanges(): void {
-        this.rawLoader$$.next(this.content());
+        this.#rawLoader$$.next(this.content());
     }
 
     protected readonly visible = (files: Record<string, string>): boolean =>
@@ -136,8 +134,8 @@ export class TuiDocExample implements OnChanges {
     }
 
     protected copyExampleLink(target: EventTarget | null): void {
-        this.clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
-        this.alerts
+        this.#clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
+        this.#alerts
             .open(this.texts[1], {label: this.texts[2], appearance: 'positive'})
             .subscribe();
     }
@@ -145,11 +143,11 @@ export class TuiDocExample implements OnChanges {
     protected edit(files: Record<string, string>): void {
         this.loading.set(true);
         this.codeEditor
-            ?.edit(this.location.pathname.slice(1), this.id() || '', files)
+            ?.edit(this.#location.pathname.slice(1), this.id() || '', files)
             .finally(() => this.loading.set(false));
     }
 
     protected onIntersection(): void {
-        this.doc.dispatchEvent(new CustomEvent('tui-example', {detail: this.id()}));
+        this.#doc.dispatchEvent(new CustomEvent('tui-example', {detail: this.id()}));
     }
 }

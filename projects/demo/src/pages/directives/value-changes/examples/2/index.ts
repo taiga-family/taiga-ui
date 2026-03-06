@@ -13,7 +13,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         name: new FormControl('', {updateOn: 'blur'}),
@@ -21,6 +21,6 @@ export default class Example {
     });
 
     protected onChanges(value: string): void {
-        this.alerts.open(JSON.stringify(value)).subscribe();
+        this.#alerts.open(JSON.stringify(value)).subscribe();
     }
 }

@@ -25,14 +25,14 @@ export interface TuiConfirmData {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiConfirm {
-    private readonly isMobile = inject(WA_IS_MOBILE);
+    readonly #isMobile = inject(WA_IS_MOBILE);
     protected readonly words = inject(TUI_CONFIRM_WORDS);
 
     public readonly context =
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
     protected get appearance(): string {
-        return this.isMobile ? 'secondary' : 'flat';
+        return this.#isMobile ? 'secondary' : 'flat';
     }
 }
 

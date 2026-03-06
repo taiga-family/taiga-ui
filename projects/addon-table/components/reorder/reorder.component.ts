@@ -35,7 +35,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     },
 })
 export class TuiReorder<T> {
-    private dragging = false;
+    #dragging = false;
 
     protected order = new Map<number, number>();
     protected readonly unsortedItems = linkedSignal<readonly T[], readonly T[]>({
@@ -65,15 +65,15 @@ export class TuiReorder<T> {
         input<PolymorpheusContent<TuiContext<T> & {index: number}>>(TUI_STRINGIFY);
 
     protected onDrag(): void {
-        this.dragging = true;
+        this.#dragging = true;
     }
 
     protected onDrop(): void {
-        if (!this.dragging) {
+        if (!this.#dragging) {
             return;
         }
 
-        this.dragging = false;
+        this.#dragging = false;
         this.updateItems();
     }
 

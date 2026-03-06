@@ -71,11 +71,11 @@ class TuiDrawerComponent {
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class TuiDrawerDirective {
-    private readonly x = inject(TUI_COMMON_ICONS).close;
-    private readonly dropdown = tuiDropdown(null);
-    private readonly open = inject(TuiDropdownOpen).open;
+    readonly #x = inject(TUI_COMMON_ICONS).close;
+    readonly #dropdown = tuiDropdown(null);
+    readonly #open = inject(TuiDropdownOpen).open;
 
     protected readonly template = viewChild(TemplateRef);
-    protected readonly ef = effect(() => this.dropdown.set(this.template()));
-    protected readonly icon = tuiIconStart(computed(() => (this.open() ? this.x : '')));
+    protected readonly ef = effect(() => this.#dropdown.set(this.template()));
+    protected readonly icon = tuiIconStart(computed(() => (this.#open() ? this.#x : '')));
 }

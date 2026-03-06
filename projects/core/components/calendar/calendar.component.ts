@@ -46,9 +46,9 @@ import {TuiCalendarYear} from './calendar-year.component';
     host: {'(pointerdown.prevent.zoneless)': '0'},
 })
 export class TuiCalendar {
-    private readonly cdr = inject(ChangeDetectorRef);
-    private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
-    private view: 'month' | 'year' = 'month';
+    readonly #cdr = inject(ChangeDetectorRef);
+    #day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    #view: 'month' | 'year' = 'month';
     protected readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
 
     @Input()
@@ -106,8 +106,8 @@ export class TuiCalendar {
 
     @Input()
     public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
-        this.cdr.markForCheck();
-        this.day = value;
+        this.#cdr.markForCheck();
+        this.#day = value;
 
         if (
             this.showAdjacent &&
@@ -120,11 +120,11 @@ export class TuiCalendar {
 
     @Input()
     public set initialView(view: 'month' | 'year') {
-        this.view = view;
+        this.#view = view;
     }
 
     public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
-        return this.day;
+        return this.#day;
     }
 
     public onPaginationValueChange(month: TuiMonth): void {
@@ -141,7 +141,7 @@ export class TuiCalendar {
     }
 
     protected get isInYearView(): boolean {
-        return this.view === 'year';
+        return this.#view === 'year';
     }
 
     protected readonly disabledItemHandlerMapper: TuiMapper<
@@ -151,11 +151,11 @@ export class TuiCalendar {
         item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
 
     protected onPaginationYearClick(): void {
-        this.view = 'year';
+        this.#view = 'year';
     }
 
     protected onPickerYearClick(year: number): void {
-        this.view = 'month';
+        this.#view = 'month';
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 

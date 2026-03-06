@@ -42,24 +42,24 @@ export interface TuiMobileCalendarData {
 })
 export class TuiMobileCalendarDropdownComponent {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
-    private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
-    private readonly keyboard = inject(TuiKeyboardService);
-    private readonly context = injectContext<Record<string, any>>({optional: true});
-    private readonly observer?: Observer<unknown> = this.context?.$implicit;
-    private readonly data: TuiMobileCalendarData = this.context?.data || {};
+    readonly #dropdown = inject(TuiDropdownDirective, {optional: true});
+    readonly #keyboard = inject(TuiKeyboardService);
+    readonly #context = injectContext<Record<string, any>>({optional: true});
+    readonly #observer?: Observer<unknown> = this.#context?.$implicit;
+    readonly #data: TuiMobileCalendarData = this.#context?.data || {};
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
     protected selectedPeriod: TuiDayRange | null = null;
     protected readonly control: any = inject(TuiControl, {optional: true});
     protected readonly directive = inject(TuiMobileCalendarDropdown, {optional: true});
-    protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
+    protected readonly multi = this.#data.multi || this.is('tui-input-date[multiple]');
     protected readonly range =
         !!this.directive?.range() || this.is('tui-input-date-range');
 
     protected readonly single =
         !!this.directive?.single() ||
         !!this.directive?.dateTime() ||
-        this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
+        this.#data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
         this.is('tui-input-date:not([multiple])');
 
     protected readonly value = computed<TuiDay | TuiDayRange | null>(
@@ -68,13 +68,13 @@ export class TuiMobileCalendarDropdownComponent {
     );
 
     constructor() {
-        this.keyboard.hide();
+        this.#keyboard.hide();
     }
 
     public max(): TuiDay {
         return (
             this.directive?.date?.max() ??
-            (this.data.max ||
+            (this.#data.max ||
                 (this.range
                     ? TUI_DAY_CAPS_MAPPER(
                           this.control.max,
@@ -90,7 +90,7 @@ export class TuiMobileCalendarDropdownComponent {
     public min(): TuiDay {
         return (
             this.directive?.date?.min() ??
-            (this.data.min ||
+            (this.#data.min ||
                 (this.range
                     ? TUI_DAY_CAPS_MAPPER(
                           this.control.min,
@@ -118,16 +118,16 @@ export class TuiMobileCalendarDropdownComponent {
     protected get handler(): TuiBooleanHandler<TuiDay> {
         return (
             this.directive?.handlers.disabledItemHandler() ||
-            this.data.disabledItemHandler ||
+            this.#data.disabledItemHandler ||
             this.control?.disabledItemHandler ||
             TUI_FALSE_HANDLER
         );
     }
 
     protected close(): void {
-        this.dropdown?.toggle(false);
-        this.observer?.complete();
-        this.keyboard.show();
+        this.#dropdown?.toggle(false);
+        this.#observer?.complete();
+        this.#keyboard.show();
     }
 
     protected confirm(value: TuiDay | TuiDayRange | readonly TuiDay[]): void {
@@ -141,7 +141,7 @@ export class TuiMobileCalendarDropdownComponent {
             this.directive?.date?.setDate(normalizedValue);
         }
 
-        this.observer?.next(normalizedValue);
+        this.#observer?.next(normalizedValue);
         this.close();
     }
 
@@ -153,6 +153,6 @@ export class TuiMobileCalendarDropdownComponent {
         calculateDisabledItemHandler(disabledItemHandler, value, minLength);
 
     private is(selector: string): boolean {
-        return !!this.dropdown?.el.closest(selector);
+        return !!this.#dropdown?.el.closest(selector);
     }
 }

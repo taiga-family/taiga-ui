@@ -16,12 +16,12 @@ import {
     providers: [tuiAsPositionAccessor(TopRightDirective)],
 })
 class TopRightDirective extends TuiPositionAccessor {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     public readonly type = 'dropdown';
 
     public getPosition({height}: DOMRect): TuiPoint {
-        const {right, top} = this.el.getBoundingClientRect();
+        const {right, top} = this.#el.getBoundingClientRect();
 
         return [right, top - height];
     }

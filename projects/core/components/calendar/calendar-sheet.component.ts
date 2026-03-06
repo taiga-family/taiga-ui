@@ -39,8 +39,8 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     host: {'[class._picking]': 'isRangePicking'},
 })
 export class TuiCalendarSheet {
-    private readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
-    private readonly today = TuiDay.currentLocal();
+    readonly #options = inject(TUI_CALENDAR_SHEET_OPTIONS);
+    readonly #today = TuiDay.currentLocal();
 
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
     protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
@@ -107,7 +107,7 @@ export class TuiCalendarSheet {
     }
 
     protected get computedRangeMode(): boolean {
-        return !this.single || this.options.rangeMode;
+        return !this.single || this.#options.rangeMode;
     }
 
     protected get isRangePicking(): boolean {
@@ -138,7 +138,7 @@ export class TuiCalendarSheet {
     };
 
     protected itemIsToday(item: TuiDay): boolean {
-        return this.today.daySame(item);
+        return this.#today.daySame(item);
     }
 
     protected itemIsUnavailable(item: TuiDay): boolean {

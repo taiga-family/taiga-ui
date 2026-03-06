@@ -5,7 +5,7 @@ const EMPTY = {default: ''};
 
 @Pipe({name: 'tuiExample'})
 export class TuiExamplePipe implements PipeTransform {
-    private readonly page = inject(TuiDocPage);
+    readonly #page = inject(TuiDocPage);
 
     public transform(
         index: number,
@@ -17,7 +17,7 @@ export class TuiExamplePipe implements PipeTransform {
             | 'ts' = 'html,ts,less',
         additionalFiles?: Record<string, TuiRawLoaderContent>,
     ): Record<string, TuiRawLoaderContent> {
-        const directory = `${this.page.type()}/${tuiToKebab(this.page.header())}/examples/${index}`;
+        const directory = `${this.#page.type()}/${tuiToKebab(this.#page.header())}/examples/${index}`;
         const ts = import(`../pages/${directory}/index.ts`, {
             with: {loader: 'text'},
         }).catch(() => EMPTY);

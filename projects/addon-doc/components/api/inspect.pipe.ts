@@ -4,10 +4,10 @@ import {tuiInspect} from '@taiga-ui/addon-doc/utils';
 
 @Pipe({name: 'tuiInspect'})
 export class TuiInspectPipe implements PipeTransform {
-    private readonly isE2E = inject(WA_IS_E2E);
+    readonly #isE2E = inject(WA_IS_E2E);
 
     public transform(value: unknown, depth = 2): string {
-        if (this.isE2E && typeof value === 'function') {
+        if (this.#isE2E && typeof value === 'function') {
             /**
              * @description:
              * When developing in production mode the webpack bundler minify

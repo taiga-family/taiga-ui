@@ -44,7 +44,7 @@ class Styles {}
     host: {'[attr.data-size]': 'size()'},
 })
 export class TuiNotificationDirective {
-    private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
+    readonly #options = inject(TUI_NOTIFICATION_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly icons = tuiIconStart(
@@ -53,7 +53,7 @@ export class TuiNotificationDirective {
         ),
     );
 
-    public readonly appearance = input(this.options.appearance);
-    public readonly size = input(this.options.size);
-    public readonly icon = input<TuiStringHandler<string> | string>(this.options.icon);
+    public readonly appearance = input(this.#options.appearance);
+    public readonly size = input(this.#options.size);
+    public readonly icon = input<TuiStringHandler<string> | string>(this.#options.icon);
 }

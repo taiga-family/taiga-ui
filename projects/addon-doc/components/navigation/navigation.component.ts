@@ -88,8 +88,8 @@ export class TuiDocNavigation {
     private readonly searchInput: Signal<ElementRef<HTMLInputElement> | undefined> =
         viewChild(TuiInputDirective, {read: ElementRef});
 
-    private readonly router = inject(Router);
-    private readonly doc = inject(DOCUMENT);
+    readonly #router = inject(Router);
+    readonly #doc = inject(DOCUMENT);
 
     protected open = signal(false);
     protected menuOpen = false;
@@ -142,11 +142,11 @@ export class TuiDocNavigation {
             });
 
         combineLatest([
-            this.router.events.pipe(
+            this.#router.events.pipe(
                 filter((event): event is Scroll => event instanceof Scroll),
                 switchMap(({anchor}) =>
-                    'onscrollend' in this.doc
-                        ? fromEvent(this.doc, 'scrollend').pipe(map(() => anchor))
+                    'onscrollend' in this.#doc
+                        ? fromEvent(this.#doc, 'scrollend').pipe(map(() => anchor))
                         : of(anchor),
                 ),
             ),
@@ -197,7 +197,7 @@ export class TuiDocNavigation {
     protected onFocusSearch(event: KeyboardEvent): void {
         if (
             event.code === 'Slash' &&
-            !this.doc.activeElement?.matches('input,textarea,[contenteditable]')
+            !this.#doc.activeElement?.matches('input,textarea,[contenteditable]')
         ) {
             this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
@@ -232,7 +232,7 @@ export class TuiDocNavigation {
     }
 
     private isActiveRoute(route: string): boolean {
-        return this.router.isActive(route, {
+        return this.#router.isActive(route, {
             paths: 'subset',
             queryParams: 'subset',
             fragment: 'ignored',
@@ -262,7 +262,7 @@ export class TuiDocNavigation {
     }
 
     private navigateToAnchorLink(fragment: string): void {
-        const nodes = fragment ? this.doc.querySelectorAll(`#${fragment}`) : [];
+        const nodes = fragment ? this.#doc.querySelectorAll(`#${fragment}`) : [];
         const element = nodes.length && nodes[nodes.length - 1];
 
         if (!element) {
@@ -270,12 +270,12 @@ export class TuiDocNavigation {
         }
 
         // emulate :target event
-        const target = this.doc.createElement('a');
+        const target = this.#doc.createElement('a');
 
-        target.href = `${this.doc.location.pathname}#${fragment}`;
+        target.href = `${this.#doc.location.pathname}#${fragment}`;
         target.style.display = 'none';
         target.style.position = 'absolute';
-        this.doc.body.appendChild(target);
+        this.#doc.body.appendChild(target);
         target.click();
         target.remove();
     }

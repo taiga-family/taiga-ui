@@ -33,8 +33,8 @@ class Styles {}
     },
 })
 export class TuiTabsDirective implements AfterViewChecked {
-    private readonly el = tuiInjectElement();
-    private readonly injector = inject(INJECTOR);
+    readonly #el = tuiInjectElement();
+    readonly #injector = inject(INJECTOR);
 
     protected readonly nothing = tuiWithStyles(Styles);
 
@@ -42,7 +42,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     public readonly activeItemIndex = model(0);
 
     public get tabs(): readonly HTMLElement[] {
-        return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiTab]'));
+        return Array.from(this.#el.querySelectorAll<HTMLElement>('[tuiTab]'));
     }
 
     public get activeElement(): HTMLElement | null {
@@ -60,7 +60,7 @@ export class TuiTabsDirective implements AfterViewChecked {
             () => {
                 this.markTabAsActive();
             },
-            {injector: this.injector},
+            {injector: this.#injector},
         );
     }
 

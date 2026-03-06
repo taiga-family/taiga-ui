@@ -48,19 +48,18 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     },
 })
 export class TuiLineClamp implements DoCheck {
-    private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
-    private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
-    private readonly el = tuiInjectElement();
-    private readonly isOverflown$ = new Subject<boolean>();
-    private readonly maxHeight = computed(() => this.line() * this.linesLimit());
-
-    public readonly line = computed(() => this.lineHeight() + this.offset());
+    readonly #offset = inject(TUI_FONT_OFFSET);
+    readonly #options = inject(TUI_LINE_CLAMP_OPTIONS);
+    readonly #el = tuiInjectElement();
+    readonly #isOverflown$ = new Subject<boolean>();
+    readonly #maxHeight = computed(() => this.line() * this.linesLimit());
+    public readonly line = computed(() => this.lineHeight() + this.#offset());
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
     public readonly overflownChange = outputFromObservable(
-        this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
+        this.#isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
     );
 
     protected readonly lineClamp = toSignal(
@@ -70,7 +69,7 @@ export class TuiLineClamp implements DoCheck {
             switchMap(([prev, next]) =>
                 next >= prev
                     ? of(next)
-                    : fromEvent(this.el, 'transitionend').pipe(
+                    : fromEvent(this.#el, 'transitionend').pipe(
                           filter((e) => e.target === e.currentTarget),
                           map(() => next),
                       ),
@@ -81,23 +80,23 @@ export class TuiLineClamp implements DoCheck {
 
     public ngDoCheck(): void {
         this.update();
-        this.isOverflown$.next(this.overflown);
+        this.#isOverflown$.next(this.overflown);
     }
 
     protected get overflown(): boolean {
         const {scrollHeight, scrollWidth} = this.outlet().nativeElement;
-        const {clientWidth} = this.el;
+        const {clientWidth} = this.#el;
 
-        return scrollHeight > this.maxHeight() || scrollWidth > clientWidth;
+        return scrollHeight > this.#maxHeight() || scrollWidth > clientWidth;
     }
 
     protected get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.overflown ? this.content() : '';
+        return this.#options.showHint && this.overflown ? this.content() : '';
     }
 
     protected update(): void {
-        this.el.style.height = tuiPx(this.outlet().nativeElement.scrollHeight);
-        this.el.style.maxHeight = tuiPx(this.maxHeight());
-        this.el.classList.toggle('_overflown', this.overflown);
+        this.#el.style.height = tuiPx(this.outlet().nativeElement.scrollHeight);
+        this.#el.style.maxHeight = tuiPx(this.#maxHeight());
+        this.#el.classList.toggle('_overflown', this.overflown);
     }
 }

@@ -59,19 +59,19 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     },
 })
 export class TuiInputChipComponent<T> {
-    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
-    private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
-    private readonly value = tuiInjectValue<readonly T[]>();
     private readonly input: Signal<ElementRef<HTMLInputElement> | undefined> = viewChild(
         TuiChip,
         {read: ElementRef},
     );
 
+    readonly #options = inject(TUI_TEXTFIELD_OPTIONS);
+    readonly #context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
+    readonly #value = tuiInjectValue<readonly T[]>();
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly texts = inject(TUI_FILE_TEXTS);
 
-    protected readonly internal = signal(this.context.$implicit.item);
+    protected readonly internal = signal(this.#context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -80,7 +80,7 @@ export class TuiInputChipComponent<T> {
         TuiAppearance,
         'tuiAppearanceState',
         computed(() =>
-            this.handlers.disabledItemHandler()(this.context.$implicit.item) ||
+            this.handlers.disabledItemHandler()(this.#context.$implicit.item) ||
             this.textfield.cva()?.disabled()
                 ? 'disabled'
                 : null,
@@ -90,20 +90,20 @@ export class TuiInputChipComponent<T> {
     protected readonly size = tuiDirectiveBinding(
         TuiChip,
         'size',
-        computed(() => (this.options.size() === 'l' ? 's' : 'xs')),
+        computed(() => (this.#options.size() === 'l' ? 's' : 'xs')),
     );
 
     public readonly editable = input(true);
 
     protected get index(): number {
-        return this.context.$implicit.index;
+        return this.#context.$implicit.index;
     }
 
     protected delete(): void {
         if (this.textfield.cva()?.interactive()) {
             this.textfield
                 .cva()
-                ?.onChange(this.value().filter((_, i) => i !== this.index));
+                ?.onChange(this.#value().filter((_, i) => i !== this.index));
         }
 
         if (!this.mobile) {
@@ -118,7 +118,7 @@ export class TuiInputChipComponent<T> {
             return;
         }
 
-        const value = this.value().map((item, index) =>
+        const value = this.#value().map((item, index) =>
             index === this.index ? this.internal() : item,
         );
 
@@ -129,7 +129,7 @@ export class TuiInputChipComponent<T> {
 
     protected cancel(): void {
         this.editing.set(false);
-        this.internal.set(this.context.$implicit.item);
+        this.internal.set(this.#context.$implicit.item);
     }
 
     protected edit(): void {

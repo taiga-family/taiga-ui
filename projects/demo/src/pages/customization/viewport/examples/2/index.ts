@@ -19,12 +19,12 @@ import {
     providers: [tuiProvide(TuiPortalService, TuiPopupService), tuiAsViewport(PortalHost)],
 })
 class PortalHost extends TuiPortals implements TuiRectAccessor {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     public readonly type = 'viewport';
 
     public getClientRect(): DOMRect {
-        return this.el.getBoundingClientRect();
+        return this.#el.getBoundingClientRect();
     }
 }
 

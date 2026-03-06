@@ -14,7 +14,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Page {
-    private readonly doc = inject(DOCUMENT);
+    readonly #doc = inject(DOCUMENT);
 
     protected readonly automatic = {
         Angular: 'ng add taiga-ui',
@@ -55,12 +55,12 @@ export default class Page {
     ];
 
     protected toggle(section: string): void {
-        this.doc
+        this.#doc
             .querySelector<HTMLElement>('[tuiDocHeader] > button:first-child')
             ?.click();
 
         setTimeout(() =>
-            Array.from(this.doc.querySelectorAll('button'))
+            Array.from(this.#doc.querySelectorAll('button'))
                 .filter(({textContent}) => textContent?.trim() === section)
                 .forEach((button) => {
                     const expand = button.nextElementSibling as HTMLElement | null;

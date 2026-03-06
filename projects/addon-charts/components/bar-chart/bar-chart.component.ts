@@ -27,9 +27,9 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })
 export class TuiBarChart {
-    private readonly hintOptions = inject(TuiChartHint, {optional: true});
-    private readonly autoId = tuiGenerateId();
-    private readonly getMax = computed(() =>
+    readonly #hintOptions = inject(TuiChartHint, {optional: true});
+    readonly #autoId = tuiGenerateId();
+    readonly #getMax = computed(() =>
         this.collapsed()
             ? Math.max(
                   // eslint-disable-next-line no-restricted-syntax
@@ -56,7 +56,7 @@ export class TuiBarChart {
     public readonly collapsed = input(false);
     public readonly tapColumn = output<number>();
 
-    public readonly computedMax = computed(() => this.max() || this.getMax());
+    public readonly computedMax = computed(() => this.max() || this.#getMax());
     public readonly percentMapper: TuiMapper<
         [readonly number[], boolean, number],
         number
@@ -64,14 +64,14 @@ export class TuiBarChart {
         (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 
     protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
-        return this.hintOptions?.content() || '';
+        return this.#hintOptions?.content() || '';
     }
 
     protected get hintAppearance(): string {
-        return this.hintOptions?.appearance() || '';
+        return this.#hintOptions?.appearance() || '';
     }
 
     protected getHintId(index: number): string {
-        return `${this.autoId}_${index}`;
+        return `${this.#autoId}_${index}`;
     }
 }

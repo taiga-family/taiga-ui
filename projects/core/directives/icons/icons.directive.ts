@@ -43,7 +43,7 @@ class Styles {}
     },
 })
 export class TuiIcons {
-    private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+    readonly #resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));
@@ -60,7 +60,7 @@ export class TuiIcons {
         }
 
         return tuiGetIconMode(icon) === 'font'
-            ? `'${this.resolver(icon)}'`
-            : `url(${this.resolver(icon)})`;
+            ? `'${this.#resolver(icon)}'`
+            : `url(${this.#resolver(icon)})`;
     }
 }

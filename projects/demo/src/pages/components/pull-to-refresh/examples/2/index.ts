@@ -36,14 +36,14 @@ import {Subject} from 'rxjs';
     ],
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
-    private readonly loaded$ = inject<Subject<void>>(TUI_PULL_TO_REFRESH_LOADED);
+    readonly #alerts = inject(TuiNotificationService);
+    readonly #loaded$ = inject<Subject<void>>(TUI_PULL_TO_REFRESH_LOADED);
 
     protected onPull(): void {
-        this.alerts.open('Loading...').subscribe();
+        this.#alerts.open('Loading...').subscribe();
     }
 
     protected finishLoading(): void {
-        this.loaded$.next();
+        this.#loaded$.next();
     }
 }

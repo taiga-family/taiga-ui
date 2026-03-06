@@ -12,12 +12,12 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly previewDialogService = inject(TuiPreviewDialogService);
+    readonly #previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')
     protected readonly preview?: TemplateRef<TuiDialogContext>;
 
     protected show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.#previewDialogService.open(this.preview || '').subscribe();
     }
 }

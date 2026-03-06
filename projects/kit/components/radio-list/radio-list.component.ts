@@ -39,8 +39,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 })
 export class TuiRadioList<T> extends TuiControl<T> {
     private readonly controls = viewChildren(NgControl);
-    private readonly id = tuiGenerateId();
-
+    readonly #id = tuiGenerateId();
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly validator = computed(() =>
         this.invalid() ? ERROR : Validators.nullValidator,
@@ -52,7 +51,7 @@ export class TuiRadioList<T> extends TuiControl<T> {
         input<PolymorpheusContent<TuiContext<T> & {active: boolean}>>(TUI_STRINGIFY);
 
     protected get name(): string {
-        return `${this.control.name}-${this.id}`;
+        return `${this.control.name}-${this.#id}`;
     }
 
     protected onFocusOut(): void {

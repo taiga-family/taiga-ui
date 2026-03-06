@@ -25,20 +25,20 @@ export function tuiAsDriver(driver: Type<TuiDriver>): ExistingProvider {
 export abstract class TuiDriverDirective implements AfterViewInit {
     public abstract type: string;
 
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly drivers = coerceArray(
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #drivers = coerceArray(
         inject(TuiDriver, {self: true, optional: true}) || [],
     );
 
-    private readonly vehicles = coerceArray(
+    readonly #vehicles = coerceArray(
         inject(TuiVehicle, {self: true, optional: true}) || [],
     );
 
     public ngAfterViewInit(): void {
-        const vehicle = this.vehicles.find(({type}) => type === this.type);
+        const vehicle = this.#vehicles.find(({type}) => type === this.type);
 
-        merge(...this.drivers.filter(({type}) => type === this.type))
-            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+        merge(...this.#drivers.filter(({type}) => type === this.type))
+            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.#destroyRef))
             .subscribe((value) => {
                 vehicle?.toggle(value);
             });

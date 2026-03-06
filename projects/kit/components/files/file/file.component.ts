@@ -35,10 +35,10 @@ import {TUI_FILE_OPTIONS} from './file.options';
     host: {'[attr.data-delete]': 'showDelete()'},
 })
 export class TuiFile {
-    private readonly options = inject(TUI_FILE_OPTIONS);
-    private readonly locale = inject(LOCALE_ID);
-    private readonly units = inject(TUI_DIGITAL_INFORMATION_UNITS);
-    private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
+    readonly #options = inject(TUI_FILE_OPTIONS);
+    readonly #locale = inject(LOCALE_ID);
+    readonly #units = inject(TUI_DIGITAL_INFORMATION_UNITS);
+    readonly #win = inject(WA_WINDOW) as Window & {File: typeof File};
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts = inject(TUI_FILE_TEXTS);
@@ -49,7 +49,7 @@ export class TuiFile {
     );
 
     protected readonly fileSize = computed<string | null>(() =>
-        this.options.formatSize(this.units(), this.file().size, this.locale),
+        this.#options.formatSize(this.#units(), this.file().size, this.#locale),
     );
 
     protected readonly preview = computed(() =>
@@ -71,7 +71,7 @@ export class TuiFile {
     });
 
     protected readonly icon = computed((state = this.state()) =>
-        state === 'loading' ? '' : this.options.icons[state],
+        state === 'loading' ? '' : this.#options.icons[state],
     );
 
     public readonly file = input<TuiFileLike>({name: ''});
@@ -91,8 +91,8 @@ export class TuiFile {
             return file.src;
         }
 
-        return this.win.File &&
-            file instanceof this.win.File &&
+        return this.#win.File &&
+            file instanceof this.#win.File &&
             file.type?.startsWith('image/')
             ? URL.createObjectURL(file)
             : '';

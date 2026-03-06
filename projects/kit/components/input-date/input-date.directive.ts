@@ -63,7 +63,7 @@ export abstract class TuiInputDateBase<
     public abstract readonly max: Signal<TuiDay>;
     public abstract readonly min: Signal<TuiDay>;
 
-    private readonly calendar = tuiInjectAuxiliary<TuiCalendar | TuiCalendarRange>(
+    readonly #calendar = tuiInjectAuxiliary<TuiCalendar | TuiCalendarRange>(
         (x) => x instanceof TuiCalendar || x instanceof TuiCalendarRange,
     );
 
@@ -98,13 +98,13 @@ export abstract class TuiInputDateBase<
     });
 
     protected readonly calendarIn = effect(() => {
-        if (this.calendar()) {
-            this.processCalendar(this.calendar()!);
+        if (this.#calendar()) {
+            this.processCalendar(this.#calendar()!);
         }
     });
 
     protected readonly calendarOut = effect((onCleanup) => {
-        const subscription = this.calendar()?.valueChange.subscribe((value) =>
+        const subscription = this.#calendar()?.valueChange.subscribe((value) =>
             this.setDate(value),
         );
 

@@ -16,9 +16,9 @@ import {map, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(WA_IS_E2E);
+    readonly #isE2E = inject(WA_IS_E2E);
 
-    protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
+    protected value$ = timer(this.#isE2E ? 0 : 4000).pipe(
         map(() => `${'async fake value, '.repeat(10)}end!`),
         tuiWatch(),
     );

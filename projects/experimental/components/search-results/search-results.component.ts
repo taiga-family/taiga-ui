@@ -44,7 +44,7 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
     },
 })
 export class TuiSearchResultsComponent<T> implements OnChanges {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
     protected readonly i18n = inject(TUI_INPUT_SEARCH);
@@ -63,7 +63,7 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
     }
 
     protected onArrow(current: HTMLElement, step: number): void {
-        const elements = Array.from(this.el.querySelectorAll<HTMLElement>('[tuiCell]'));
+        const elements = Array.from(this.#el.querySelectorAll<HTMLElement>('[tuiCell]'));
 
         if (elements[0] === current && step < 0) {
             this.textfield.input()?.nativeElement.focus();

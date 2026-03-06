@@ -16,10 +16,10 @@ import {
     changeDetection,
 })
 export default class Example {
-    private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
+    readonly #options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
 
     protected value = 'I am a very long value';
-    protected range = signal([this.options.min * 16, this.options.max * 16]);
+    protected range = signal([this.#options.min * 16, this.#options.max * 16]);
     protected scale = computed<[number, number]>(() => [
         (this.range()[0] ?? 0) / 16,
         (this.range()[1] ?? 0) / 16,

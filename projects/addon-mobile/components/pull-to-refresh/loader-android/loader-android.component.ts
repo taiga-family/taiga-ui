@@ -23,26 +23,26 @@ const ROTATE_X_MULTIPLIER = 2.3;
     },
 })
 export class TuiMobileLoaderAndroid {
-    private readonly context = injectContext<TuiContext<number>>();
-    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
+    readonly #context = injectContext<TuiContext<number>>();
+    readonly #threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
     protected get percent(): number {
-        return (this.context.$implicit * 100) / this.threshold;
+        return (this.#context.$implicit * 100) / this.#threshold;
     }
 
     protected get dropped(): boolean {
         return (
-            this.context.$implicit <= MICRO_OFFSET ||
-            this.context.$implicit === this.threshold
+            this.#context.$implicit <= MICRO_OFFSET ||
+            this.#context.$implicit === this.#threshold
         );
     }
 
     protected get hostTransform(): string {
-        return `translateY(${Math.min(this.context.$implicit, this.threshold * 1.5)}px)`;
+        return `translateY(${Math.min(this.#context.$implicit, this.#threshold * 1.5)}px)`;
     }
 
     protected get opacity(): number {
-        return this.context.$implicit / (this.threshold * 1.5);
+        return this.#context.$implicit / (this.#threshold * 1.5);
     }
 
     protected get transform(): string {

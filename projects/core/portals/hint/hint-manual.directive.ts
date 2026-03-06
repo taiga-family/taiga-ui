@@ -9,19 +9,19 @@ import {TuiHintHover} from './hint-hover.directive';
     providers: [tuiAsDriver(TuiHintManual)],
 })
 export class TuiHintManual extends TuiDriver implements OnChanges {
-    private readonly hover = inject(TuiHintHover);
-    private readonly stream$ = new BehaviorSubject(false);
+    readonly #hover = inject(TuiHintHover);
+    readonly #stream$ = new BehaviorSubject(false);
 
     public readonly visible = input<boolean | null>(false, {alias: 'tuiHintManual'});
     public readonly type = 'hint';
 
     constructor() {
-        super((subscriber) => this.stream$.subscribe(subscriber));
-        this.hover.enabled = false;
+        super((subscriber) => this.#stream$.subscribe(subscriber));
+        this.#hover.enabled = false;
     }
 
     public ngOnChanges(): void {
-        this.stream$.next(!!this.visible());
-        this.hover.enabled = this.visible() === null;
+        this.#stream$.next(!!this.visible());
+        this.#hover.enabled = this.visible() === null;
     }
 }

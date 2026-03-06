@@ -17,8 +17,6 @@ import {TuiSegmented} from './segmented.component';
 
 @Directive({host: {'(click)': 'update($event.target)'}})
 export class TuiSegmentedDirective implements AfterContentChecked, AfterContentInit {
-    private readonly component = inject(TuiSegmented);
-    private readonly el = tuiInjectElement();
     private readonly links = contentChildren(RouterLinkActive);
     private readonly elements = contentChildren(RouterLinkActive, {read: ElementRef});
     private readonly controls = contentChildren(NgControl, {descendants: true});
@@ -27,6 +25,9 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
         descendants: true,
     });
 
+    readonly #component = inject(TuiSegmented);
+    readonly #el = tuiInjectElement();
+
     public ngAfterContentInit(): void {
         this.controls$
             .pipe(
@@ -34,7 +35,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
                 map((value) => this.radios().findIndex((c) => c.value === value)),
             )
             .subscribe((index) => {
-                this.component.update(index);
+                this.#component.update(index);
             });
     }
 
@@ -47,8 +48,8 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     }
 
     protected update(target: Element | null): void {
-        this.component.update(
-            Array.from(this.el.children).findIndex((tab) => tab.contains(target)),
+        this.#component.update(
+            Array.from(this.#el.children).findIndex((tab) => tab.contains(target)),
         );
     }
 }

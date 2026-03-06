@@ -13,8 +13,8 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiResponsiveDialogService);
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #dialogs = inject(TuiResponsiveDialogService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected onClick(): void {
         const data: TuiConfirmData = {
@@ -24,13 +24,13 @@ export default class Example {
             no: 'Who cares?',
         };
 
-        this.dialogs
+        this.#dialogs
             .open<boolean>(TUI_CONFIRM, {
                 label: 'Do you like Taiga UI?',
                 size: 's',
                 data,
             })
-            .pipe(switchMap((response) => this.alerts.open(String(response))))
+            .pipe(switchMap((response) => this.#alerts.open(String(response))))
             .subscribe();
     }
 }

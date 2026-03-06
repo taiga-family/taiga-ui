@@ -12,17 +12,17 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    private readonly doc = inject(DOCUMENT);
-    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
+    readonly #doc = inject(DOCUMENT);
+    readonly #isServer = isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly routes = DemoRoute;
 
     protected computedFontSize(className: string): string | null {
-        if (this.isServer) {
+        if (this.#isServer) {
             return null;
         }
 
-        const element = this.doc.querySelector(`.${className}`);
+        const element = this.#doc.querySelector(`.${className}`);
 
         return element ? getComputedStyle(element).fontSize : null;
     }

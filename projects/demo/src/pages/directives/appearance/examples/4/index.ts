@@ -13,7 +13,7 @@ import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected readonly appearances = {
         Primary: ['primary', 'primary-destructive', 'primary-grayscale'],
@@ -30,7 +30,7 @@ export default class Example {
     }
 
     protected onCopy(name: string): void {
-        this.alerts
+        this.#alerts
             .open(`Appearance ${name} copied`, {appearance: 'positive'})
             .subscribe();
     }

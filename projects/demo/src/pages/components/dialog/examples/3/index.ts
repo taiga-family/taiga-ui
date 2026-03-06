@@ -14,17 +14,17 @@ import {DialogComponent} from './component';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
-    private readonly dialogs = inject(TuiDialogService);
+    readonly #alerts = inject(TuiNotificationService);
+    readonly #dialogs = inject(TuiDialogService);
 
     protected click(): void {
-        this.dialogs
+        this.#dialogs
             .open<string>(new PolymorpheusComponent(DialogComponent), {
                 label: 'Edit info',
                 size: 's',
                 data: 'Alex Inkin',
             })
-            .pipe(switchMap((name) => this.alerts.open(name)))
+            .pipe(switchMap((name) => this.#alerts.open(name)))
             .subscribe();
     }
 }

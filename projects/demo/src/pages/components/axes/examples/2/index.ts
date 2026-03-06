@@ -19,7 +19,7 @@ import {tuiCeil} from '@taiga-ui/cdk';
     changeDetection,
 })
 export default class Example {
-    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
+    readonly #setNames = ['cdk', 'core', 'kit', 'charts'];
 
     protected readonly value: ReadonlyArray<[number, number, number, number]> = [
         [10, 20, 3, 7],
@@ -40,7 +40,7 @@ export default class Example {
     protected readonly verticalLinesHandler = TUI_ALWAYS_NONE;
 
     protected getSetName(index: number): string {
-        return this.setNames[index] ?? '';
+        return this.#setNames[index] ?? '';
     }
 }
 

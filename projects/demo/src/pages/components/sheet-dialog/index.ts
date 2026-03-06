@@ -17,10 +17,10 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    private readonly router = inject(Router);
-    private readonly route = inject(ActivatedRoute);
-    private readonly sheetDialogs = inject(TuiSheetDialogService);
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #router = inject(Router);
+    readonly #route = inject(ActivatedRoute);
+    readonly #sheetDialogs = inject(TuiSheetDialogService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected readonly exampleComponent = import('./examples/import/component.md');
     protected readonly examples = [
@@ -50,7 +50,7 @@ export default class Page {
     protected showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
         const {appearance, required, closable, stops, initial, bar, offset, label} = this;
 
-        this.sheetDialogs
+        this.#sheetDialogs
             .open(content, {
                 appearance,
                 label,
@@ -61,11 +61,11 @@ export default class Page {
                 required,
                 closable,
             })
-            .pipe(switchMap((response) => this.alerts.open(String(response))))
+            .pipe(switchMap((response) => this.#alerts.open(String(response))))
             .subscribe();
     }
 
     protected navigate(): void {
-        void this.router.navigate(['./'], {relativeTo: this.route});
+        void this.#router.navigate(['./'], {relativeTo: this.#route});
     }
 }

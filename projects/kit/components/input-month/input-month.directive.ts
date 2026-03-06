@@ -32,9 +32,9 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
     },
 })
 export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
-    private readonly input = inject(TuiInputDirective);
-    private readonly months = inject(TUI_MONTHS);
-    private readonly open = inject(TuiDropdownOpen).open;
+    readonly #input = inject(TuiInputDirective);
+    readonly #months = inject(TUI_MONTHS);
+    readonly #open = inject(TuiDropdownOpen).open;
 
     protected readonly icon = tuiIconEnd(inject(TUI_INPUT_MONTH_OPTIONS).icon);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -44,10 +44,10 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     protected readonly valueEffect = effect(() => {
         const value = this.value();
         const formatted = value
-            ? `${this.months()[value.month] ?? ''} ${value.formattedYear}`
+            ? `${this.#months()[value.month] ?? ''} ${value.formattedYear}`
             : '';
 
-        this.input.value.set(formatted);
+        this.#input.value.set(formatted);
     });
 
     protected readonly calendarIn = effect(() => {
@@ -57,7 +57,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     protected readonly calendarOut = effect((onCleanup) => {
         const subscription = this.calendar()?.monthClick.subscribe((month) => {
             this.onChange(month);
-            this.open.set(false);
+            this.#open.set(false);
         });
 
         onCleanup(() => subscription?.unsubscribe());
@@ -72,6 +72,6 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
 
     protected clear(): void {
         this.onChange(null);
-        this.open.set(this.dropdownEnabled());
+        this.#open.set(this.dropdownEnabled());
     }
 }

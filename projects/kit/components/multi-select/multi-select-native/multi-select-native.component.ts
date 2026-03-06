@@ -36,8 +36,8 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
     },
 })
 export class TuiMultiSelectNative<T> {
-    private readonly control: TuiControl<readonly T[]> = inject(TuiControl);
-    private readonly textfield = inject(TuiTextfieldMultiComponent);
+    readonly #control: TuiControl<readonly T[]> = inject(TuiControl);
+    readonly #textfield = inject(TuiTextfieldMultiComponent);
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -46,7 +46,7 @@ export class TuiMultiSelectNative<T> {
         inject(WA_IS_IOS) || (inject(WA_IS_ANDROID) && 'showPicker' in this.el);
 
     protected readonly isSelected = computed(
-        (value = this.control.value()) =>
+        (value = this.#control.value()) =>
             (x: T) =>
                 tuiIsPresent(value) &&
                 value.some((item) => this.handlers.identityMatcher()(x, item)),
@@ -67,6 +67,6 @@ export class TuiMultiSelectNative<T> {
         const items = this.items()?.flat() || [];
         const options = Array.from(this.el.selectedOptions).map(({index}) => index);
 
-        this.textfield.cva()?.onChange(items.filter((_, i) => options.includes(i)));
+        this.#textfield.cva()?.onChange(items.filter((_, i) => options.includes(i)));
     }
 }

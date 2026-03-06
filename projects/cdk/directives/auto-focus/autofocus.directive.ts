@@ -14,9 +14,9 @@ import {
     providers: TUI_AUTOFOCUS_PROVIDERS,
 })
 export class TuiAutoFocus implements AfterViewInit {
-    private readonly handler = inject(TUI_AUTOFOCUS_HANDLER);
-    private readonly options = inject(TUI_AUTOFOCUS_OPTIONS);
-    private readonly destroyRef = inject(DestroyRef);
+    readonly #handler = inject(TUI_AUTOFOCUS_HANDLER);
+    readonly #options = inject(TUI_AUTOFOCUS_OPTIONS);
+    readonly #destroyRef = inject(DestroyRef);
 
     public readonly autoFocus = input<BooleanInput, any>(undefined, {
         alias: 'tuiAutoFocus',
@@ -30,12 +30,12 @@ export class TuiAutoFocus implements AfterViewInit {
     }
 
     public focus(): void {
-        if (Number.isNaN(this.options.delay)) {
-            void Promise.resolve().then(() => this.handler.setFocus());
+        if (Number.isNaN(this.#options.delay)) {
+            void Promise.resolve().then(() => this.#handler.setFocus());
         } else {
-            timer(this.options.delay)
-                .pipe(takeUntilDestroyed(this.destroyRef))
-                .subscribe(() => this.handler.setFocus());
+            timer(this.#options.delay)
+                .pipe(takeUntilDestroyed(this.#destroyRef))
+                .subscribe(() => this.#handler.setFocus());
         }
     }
 }

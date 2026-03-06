@@ -65,13 +65,13 @@ export const tuiDropdownOptionsProvider: (
     providers: [tuiProvide(TUI_DROPDOWN_OPTIONS, TuiDropdownOptionsDirective)],
 })
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
-    private readonly options = inject(TUI_DROPDOWN_OPTIONS, {skipSelf: true});
+    readonly #options = inject(TUI_DROPDOWN_OPTIONS, {skipSelf: true});
 
-    public align = this.options.align;
-    public appearance = this.options.appearance;
-    public direction = this.options.direction;
-    public limitWidth = this.options.limitWidth;
-    public minHeight = this.options.minHeight;
-    public maxHeight = this.options.maxHeight;
-    public offset = this.options.offset;
+    public align = this.#options.align;
+    public appearance = this.#options.appearance;
+    public direction = this.#options.direction;
+    public limitWidth = this.#options.limitWidth;
+    public minHeight = this.#options.minHeight;
+    public maxHeight = this.#options.maxHeight;
+    public offset = this.#options.offset;
 }

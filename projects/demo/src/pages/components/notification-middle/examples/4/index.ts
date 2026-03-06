@@ -12,10 +12,10 @@ import {bufferTime, first, startWith, switchMap, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly notification = inject(TuiNotificationMiddleService);
+    readonly #notification = inject(TuiNotificationMiddleService);
 
     protected onClick(): void {
-        this.notification
+        this.#notification
             .open('Loading...')
             .pipe(
                 startWith(null),

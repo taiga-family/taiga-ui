@@ -86,8 +86,8 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
-    private readonly autoId = tuiGenerateId();
-    private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
+    readonly #autoId = tuiGenerateId();
+    readonly #focusedIn = tuiFocusedIn(tuiInjectElement());
 
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
@@ -119,7 +119,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly vcr = viewChild('vcr', {read: ViewContainerRef});
     public readonly control = contentChild(NgControl);
     public readonly auxiliaries = contentChildren(TUI_AUXILIARY, {descendants: true});
-    public readonly focused = computed(() => this.open.open() || this.focusedIn());
+    public readonly focused = computed(() => this.open.open() || this.#focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
     public readonly input: Signal<ElementRef<HTMLInputElement> | undefined> =
@@ -130,7 +130,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly value = tuiValue(this.input);
 
     public get id(): string {
-        return this.input()?.nativeElement.id || this.autoId;
+        return this.input()?.nativeElement.id || this.#autoId;
     }
 
     public get disabled(): boolean {

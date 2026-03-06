@@ -28,7 +28,7 @@ import {TuiStepperComponent} from './stepper.component';
     },
 })
 export class TuiStep {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly appearance = tuiAppearance(
         computed(() => (this.isActive() ? 'none' : 'action')),
@@ -71,7 +71,7 @@ export class TuiStep {
     );
 
     protected get index(): number {
-        return this.stepper.indexOf(this.el);
+        return this.stepper.indexOf(this.#el);
     }
 
     protected activate(): void {

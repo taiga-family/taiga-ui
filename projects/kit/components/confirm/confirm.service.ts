@@ -6,24 +6,24 @@ import {TUI_CONFIRM_DIALOG, type TuiConfirmData} from './confirm.component';
 
 @Injectable()
 export class TuiConfirmService {
-    private readonly dialogs = inject(TuiDialogService);
-    private readonly component = inject(TUI_CONFIRM_DIALOG);
-    private dirty = false;
+    readonly #dialogs = inject(TuiDialogService);
+    readonly #component = inject(TUI_CONFIRM_DIALOG);
+    #dirty = false;
 
     public markAsDirty(): void {
-        this.dirty = true;
+        this.#dirty = true;
     }
 
     public markAsPristine(): void {
-        this.dirty = false;
+        this.#dirty = false;
     }
 
     public withConfirm<T = TuiConfirmData>(
         options: Partial<TuiDialogOptions<NoInfer<T>>>,
     ): Observable<boolean> {
         return defer(() =>
-            this.dirty
-                ? this.dialogs.open<boolean>(this.component, {size: 's', ...options})
+            this.#dirty
+                ? this.#dialogs.open<boolean>(this.#component, {size: 's', ...options})
                 : of(true),
         );
     }

@@ -10,16 +10,16 @@ import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rx
  */
 @Injectable()
 export class TuiObscuredService extends Observable<readonly Element[] | null> {
-    private readonly el = tuiInjectElement();
-    private readonly obscured$ = inject(WA_ANIMATION_FRAME).pipe(
+    readonly #el = tuiInjectElement();
+    readonly #obscured$ = inject(WA_ANIMATION_FRAME).pipe(
         throttleTime(100, tuiZonefreeScheduler()),
-        map(() => tuiGetElementObscures(this.el)),
+        map(() => tuiGetElementObscures(this.#el)),
         startWith(null),
         distinctUntilChanged(),
         tuiZoneOptimized(),
     );
 
     constructor() {
-        super((subscriber) => this.obscured$.subscribe(subscriber));
+        super((subscriber) => this.#obscured$.subscribe(subscriber));
     }
 }

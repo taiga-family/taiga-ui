@@ -9,16 +9,16 @@ const CALENDAR_ROWS_COUNT = 6;
 
 @Pipe({name: 'tuiCalendarSheet'})
 export class TuiCalendarSheetPipe implements PipeTransform {
-    private readonly options = inject(TUI_CALENDAR_OPTIONS);
-    private currentMonth: TuiMonth | null = null;
-    private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
+    readonly #options = inject(TUI_CALENDAR_OPTIONS);
+    #currentMonth: TuiMonth | null = null;
+    #currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
 
     public transform(
         month: TuiMonth,
         showAdjacentDays = false,
     ): ReadonlyArray<readonly TuiDay[]> {
-        if (this.currentMonth?.monthSame(month)) {
-            return this.currentSheet;
+        if (this.#currentMonth?.monthSame(month)) {
+            return this.#currentSheet;
         }
 
         const sheet: Array<readonly TuiDay[]> = [];
@@ -31,7 +31,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                     month,
                     rowIndex,
                     colIndex,
-                    firstDayOfWeek: this.options.weekStart(),
+                    firstDayOfWeek: this.#options.weekStart(),
                 });
 
                 const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
@@ -54,10 +54,10 @@ export class TuiCalendarSheetPipe implements PipeTransform {
             sheet.push(row);
         }
 
-        this.currentSheet = sheet.filter((row) => row.length);
-        this.currentMonth = month;
+        this.#currentSheet = sheet.filter((row) => row.length);
+        this.#currentMonth = month;
 
-        return this.currentSheet;
+        return this.#currentSheet;
     }
 }
 

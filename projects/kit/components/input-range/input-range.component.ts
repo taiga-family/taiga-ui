@@ -48,11 +48,12 @@ const transform = (x?: readonly [string, string] | null): readonly [string, stri
     },
 })
 export class TuiInputRange extends TuiControl<readonly [number, number]> {
-    private readonly inputs = viewChildren(TuiInputNumberDirective, {read: ElementRef});
     private readonly range = viewChild(TuiRange);
-    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly quantumTransformer = computed(
+    private readonly inputs = viewChildren(TuiInputNumberDirective, {read: ElementRef});
+
+    readonly #options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    readonly #isMobile = inject(WA_IS_MOBILE);
+    readonly #quantumTransformer = computed(
         () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
 
@@ -84,11 +85,11 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();
     public readonly quantum = input(0);
-    public readonly prefix = input([this.options.prefix, this.options.prefix], {
+    public readonly prefix = input([this.#options.prefix, this.#options.prefix], {
         transform,
     });
 
-    public readonly postfix = input([this.options.postfix, this.options.postfix], {
+    public readonly postfix = input([this.#options.postfix, this.#options.postfix], {
         transform,
     });
 
@@ -148,7 +149,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     }
 
     protected focusToTextfield(): void {
-        if (!this.isMobile) {
+        if (!this.#isMobile) {
             this.activeTextfield?.focus();
         }
     }
@@ -182,7 +183,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     private valueGuard(value: readonly [number, number]): readonly [number, number] {
         const [prevStart, prevEnd] = this.value();
         const [start, end] = value.map(
-            (x) => this.quantumTransformer().toControlValue(x) ?? x,
+            (x) => this.#quantumTransformer().toControlValue(x) ?? x,
         ) as unknown as readonly [number, number];
 
         return [Math.min(start, prevEnd), Math.max(end, prevStart)];

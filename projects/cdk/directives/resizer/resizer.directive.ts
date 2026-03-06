@@ -14,7 +14,7 @@ import {TuiResizable} from './resizable.directive';
     },
 })
 export class TuiResizer {
-    private readonly resizable: ElementRef<HTMLElement> = inject(TuiResizable);
+    readonly #resizable: ElementRef<HTMLElement> = inject(TuiResizable);
 
     protected x = NaN;
     protected y = NaN;
@@ -46,8 +46,8 @@ export class TuiResizer {
     protected onPointerDown(x: number, y: number): void {
         this.x = x;
         this.y = y;
-        this.width = this.resizable.nativeElement.clientWidth;
-        this.height = this.resizable.nativeElement.clientHeight;
+        this.width = this.#resizable.nativeElement.clientWidth;
+        this.height = this.#resizable.nativeElement.clientHeight;
     }
 
     protected onPointerMove({x, y, buttons}: PointerEvent): void {
@@ -69,7 +69,7 @@ export class TuiResizer {
             return;
         }
 
-        const {style} = this.resizable.nativeElement;
+        const {style} = this.#resizable.nativeElement;
         const size = [
             this.width + tuiResizer[0] * (x - this.x),
             this.height + tuiResizer[1] * (y - this.y),

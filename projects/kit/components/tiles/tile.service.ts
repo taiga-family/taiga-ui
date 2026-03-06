@@ -21,48 +21,48 @@ import {TuiTilesComponent} from './tiles.component';
 
 @Injectable()
 export class TuiTileService implements OnDestroy {
-    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private readonly el = tuiInjectElement();
-    private readonly tiles = inject(TuiTilesComponent);
-    private readonly sub = new Subscription();
-    private readonly offset$ = new BehaviorSubject<readonly [number, number]>([NaN, NaN]);
-    private readonly position$: Observable<readonly [number, number]> = combineLatest([
-        this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
+    readonly #isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+    readonly #el = tuiInjectElement();
+    readonly #tiles = inject(TuiTilesComponent);
+    readonly #sub = new Subscription();
+    readonly #offset$ = new BehaviorSubject<readonly [number, number]>([NaN, NaN]);
+    readonly #position$: Observable<readonly [number, number]> = combineLatest([
+        this.#offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
         inject(WaResizeObserverService).pipe(startWith(null)),
         inject(WaMutationObserverService).pipe(startWith(null)),
-        toObservable(this.tiles.order).pipe(debounceTime(0, tuiZonefreeScheduler())),
+        toObservable(this.#tiles.order).pipe(debounceTime(0, tuiZonefreeScheduler())),
     ]).pipe(map(([offset]) => offset));
 
     public init(element?: HTMLElement): void {
-        if (this.isBrowser && element) {
-            this.sub.add(
-                this.position$.subscribe((offset) => {
+        if (this.#isBrowser && element) {
+            this.#sub.add(
+                this.#position$.subscribe((offset) => {
                     this.setPosition(element, offset);
                     this.setRect(element, offset);
                 }),
             );
         } else {
-            this.el.style.setProperty('position', 'relative');
+            this.#el.style.setProperty('position', 'relative');
         }
     }
 
     public setOffset(offset: readonly [number, number]): void {
-        this.offset$.next(offset);
+        this.#offset$.next(offset);
     }
 
     public ngOnDestroy(): void {
-        this.sub.unsubscribe();
+        this.#sub.unsubscribe();
     }
 
     private getRect([left, top]: readonly [number, number]): DOMRect {
-        const elTop = Number.isNaN(top) ? this.el.offsetTop : top;
-        const elLeft = Number.isNaN(left) ? this.el.offsetLeft : left;
+        const elTop = Number.isNaN(top) ? this.#el.offsetTop : top;
+        const elLeft = Number.isNaN(left) ? this.#el.offsetLeft : left;
 
         const rect = {
             top: elTop,
             left: elLeft,
-            width: this.el.clientWidth,
-            height: this.el.clientHeight,
+            width: this.#el.clientWidth,
+            height: this.#el.clientHeight,
             right: NaN,
             bottom: NaN,
             y: elTop,
@@ -94,14 +94,14 @@ export class TuiTileService implements OnDestroy {
 
         const {style} = element;
         const rect = element.getBoundingClientRect();
-        const host = this.el.getBoundingClientRect();
+        const host = this.#el.getBoundingClientRect();
 
         style.removeProperty('position');
         style.removeProperty('transition');
         style.removeProperty('top');
         style.removeProperty('left');
 
-        style.top = tuiPx(rect.top - host.top + this.el.offsetTop);
-        style.left = tuiPx(rect.left - host.left + this.el.offsetLeft);
+        style.top = tuiPx(rect.top - host.top + this.#el.offsetTop);
+        style.left = tuiPx(rect.left - host.left + this.#el.offsetLeft);
     }
 }

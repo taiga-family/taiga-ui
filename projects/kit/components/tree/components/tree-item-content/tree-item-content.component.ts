@@ -30,7 +30,7 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
     host: {'[class._expandable]': 'isExpandable'},
 })
 export class TuiTreeItemContent {
-    private readonly controller = inject<TuiTreeController>(
+    readonly #controller = inject<TuiTreeController>(
         forwardRef(() => TUI_TREE_CONTROLLER),
     );
 
@@ -41,12 +41,12 @@ export class TuiTreeItemContent {
     protected get isExpandable(): boolean {
         return (
             this.context.$implicit.isExpandable &&
-            this.controller !== TUI_DEFAULT_TREE_CONTROLLER
+            this.#controller !== TUI_DEFAULT_TREE_CONTROLLER
         );
     }
 
     protected onClick(): void {
-        this.controller.toggle(this.context.$implicit);
+        this.#controller.toggle(this.context.$implicit);
     }
 }
 

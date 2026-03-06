@@ -7,18 +7,18 @@ import {TUI_SCROLL_REF} from './scroll-ref.directive';
 
 @Injectable()
 export class TuiScrollbarService extends Observable<[number, number]> {
-    private readonly el = tuiInjectElement();
-    private readonly element = inject(TUI_SCROLL_REF).nativeElement;
-    private readonly scroll$ = merge(
-        tuiTypedFromEvent(this.el.parentElement!, 'mousedown').pipe(
-            filter(({target}) => target !== this.el),
+    readonly #el = tuiInjectElement();
+    readonly #element = inject(TUI_SCROLL_REF).nativeElement;
+    readonly #scroll$ = merge(
+        tuiTypedFromEvent(this.#el.parentElement!, 'mousedown').pipe(
+            filter(({target}) => target !== this.#el),
             map((event) => this.getScrolled(event, 0.5, 0.5)),
         ),
-        tuiTypedFromEvent(this.el, 'mousedown').pipe(
+        tuiTypedFromEvent(this.#el, 'mousedown').pipe(
             tuiZonefree(),
             switchMap((event) => {
-                const {ownerDocument} = this.el;
-                const rect = this.el.getBoundingClientRect();
+                const {ownerDocument} = this.#el;
+                const rect = this.#el.getBoundingClientRect();
                 const vertical = getOffsetVertical(event, rect);
                 const horizontal = getOffsetHorizontal(event, rect);
 
@@ -31,7 +31,7 @@ export class TuiScrollbarService extends Observable<[number, number]> {
     );
 
     constructor() {
-        super((subscriber) => this.scroll$.subscribe(subscriber));
+        super((subscriber) => this.#scroll$.subscribe(subscriber));
     }
 
     private getScrolled(
@@ -39,14 +39,14 @@ export class TuiScrollbarService extends Observable<[number, number]> {
         offsetY: number,
         offsetX: number,
     ): [number, number] {
-        const {offsetHeight, offsetWidth} = this.el;
+        const {offsetHeight, offsetWidth} = this.#el;
         const {top, left, right, width, height} =
-            this.el.parentElement!.getBoundingClientRect();
-        const rtl = this.el.matches('[dir="rtl"] :scope');
+            this.#el.parentElement!.getBoundingClientRect();
+        const rtl = this.#el.matches('[dir="rtl"] :scope');
         const inline = rtl ? right : left;
         const multiplier = rtl ? -1 : 1;
-        const maxTop = this.element.scrollHeight - height;
-        const maxLeft = this.element.scrollWidth - width;
+        const maxTop = this.#element.scrollHeight - height;
+        const maxLeft = this.#element.scrollWidth - width;
         const scrolledTop =
             (clientY - top - offsetHeight * offsetY) / (height - offsetHeight);
         const scrolledLeft =

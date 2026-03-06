@@ -6,13 +6,13 @@ import {NgControl} from '@angular/forms';
     inputs: ['tuiDisabled'],
 })
 export class TuiDisabledDirective {
-    private readonly control = inject(NgControl);
+    readonly #control = inject(NgControl);
 
     public set tuiDisabled(disabled: boolean) {
         if (disabled) {
-            this.control.control?.disable();
+            this.#control.control?.disable();
         } else {
-            this.control.control?.enable();
+            this.#control.control?.enable();
         }
     }
 }

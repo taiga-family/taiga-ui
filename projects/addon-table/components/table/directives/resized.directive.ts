@@ -8,22 +8,22 @@ import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({selector: '[tuiResized]'})
 export class TuiTableResized {
-    private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiInjectElement();
+    readonly #doc = inject(DOCUMENT);
+    readonly #el = tuiInjectElement();
 
-    private readonly tuiResized$ = tuiTypedFromEvent(this.el, 'mousedown').pipe(
+    readonly #tuiResized$ = tuiTypedFromEvent(this.#el, 'mousedown').pipe(
         tuiPreventDefault(),
         switchMap(() => {
             const {width, right} =
-                this.el.closest('th')?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
+                this.#el.closest('th')?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
 
-            return tuiTypedFromEvent(this.doc, 'mousemove').pipe(
+            return tuiTypedFromEvent(this.#doc, 'mousemove').pipe(
                 distinctUntilChanged(),
                 map(({clientX}) => width + clientX - right),
-                takeUntil(tuiTypedFromEvent(this.doc, 'mouseup')),
+                takeUntil(tuiTypedFromEvent(this.#doc, 'mouseup')),
             );
         }),
     );
 
-    public readonly tuiResized = outputFromObservable(this.tuiResized$);
+    public readonly tuiResized = outputFromObservable(this.#tuiResized$);
 }

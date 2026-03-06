@@ -29,8 +29,8 @@ export class TuiButtonSelect<T>
     extends TuiControl<T | T[]>
     implements TuiDataListHost<T>
 {
-    private readonly open = inject(TuiDropdownOpen).open;
-    private readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    readonly #open = inject(TuiDropdownOpen).open;
+    readonly #handlers = inject(TUI_ITEMS_HANDLERS);
 
     public readonly size = 's';
 
@@ -39,13 +39,13 @@ export class TuiButtonSelect<T>
             const result = tuiArrayToggle(
                 this.control.value as T[],
                 option,
-                this.handlers.identityMatcher(),
+                this.#handlers.identityMatcher(),
             );
 
             this.onChange(result);
         } else {
             this.onChange(option);
-            this.open.set(false);
+            this.#open.set(false);
         }
     }
 }

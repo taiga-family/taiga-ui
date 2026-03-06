@@ -19,15 +19,17 @@ import {map} from 'rxjs';
     host: {'[style.--tui-progress-color]': 'color()'},
 })
 export class TuiProgressColorSegments {
-    private readonly el = tuiInjectElement<HTMLProgressElement>();
-    private readonly position = toSignal(
-        inject(WaMutationObserverService, {self: true}).pipe(map(() => this.el.position)),
-        {initialValue: this.el.position},
+    readonly #el = tuiInjectElement<HTMLProgressElement>();
+    readonly #position = toSignal(
+        inject(WaMutationObserverService, {self: true}).pipe(
+            map(() => this.#el.position),
+        ),
+        {initialValue: this.#el.position},
     );
 
     protected readonly color = computed(() => {
         const colors = this.colors();
-        const position = this.position();
+        const position = this.#position();
 
         if (!colors.length || position <= 0) {
             return null;

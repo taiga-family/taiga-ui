@@ -17,13 +17,13 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     },
 })
 export class TuiLoader {
-    private readonly options = inject(TUI_LOADER_OPTIONS);
+    readonly #options = inject(TUI_LOADER_OPTIONS);
 
     protected readonly isApple = isSafari(tuiInjectElement()) || inject(WA_IS_IOS);
 
-    public readonly size = input(this.options.size);
-    public readonly inheritColor = input(this.options.inheritColor);
-    public readonly overlay = input(this.options.overlay);
+    public readonly size = input(this.#options.size);
+    public readonly inheritColor = input(this.#options.inheritColor);
+    public readonly overlay = input(this.#options.overlay);
     public readonly textContent = input<PolymorpheusContent>();
     public readonly loading = input(true);
 }

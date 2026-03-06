@@ -14,13 +14,13 @@ import {TuiHintDirective} from './hint.directive';
     host: {'(mouseenter)': 'onMouseEnter($event.currentTarget)'},
 })
 export class TuiHintOverflow {
-    private readonly hint = inject(TuiHintDirective);
+    readonly #hint = inject(TuiHintDirective);
 
     public readonly content = input<string | null>('', {alias: 'tuiHintOverflow'});
 
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {
         tuiSetSignal(
-            this.hint.content,
+            this.#hint.content,
             scrollWidth > clientWidth && this.content() !== null
                 ? this.content() || textContent
                 : '',

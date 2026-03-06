@@ -31,28 +31,27 @@ const ACTIVE_ITEM_LENGTH = 1;
 })
 export class TuiPagination {
     private readonly els = viewChildren('element', {read: ElementRef});
-    private readonly el = tuiInjectElement();
-    private readonly maxHalfLength = computed(
+
+    readonly #el = tuiInjectElement();
+    readonly #maxHalfLength = computed(
         () => this.sidePadding() + ELLIPSIS_ITEM_LENGTH + this.activePadding(),
     );
 
-    private readonly maxElementsLength = computed(
-        () => this.maxHalfLength() * 2 + ACTIVE_ITEM_LENGTH,
+    readonly #maxElementsLength = computed(
+        () => this.#maxHalfLength() * 2 + ACTIVE_ITEM_LENGTH,
     );
 
-    private readonly lastElementIndex = computed(() => this.elementsLength() - 1);
-    private readonly itemsFit = computed(() => this.length() <= this.maxElementsLength());
-    private readonly lastIndex = computed(() => this.length() - 1);
-    private readonly reverseIndex = computed(
-        (): number => this.lastIndex() - this.index(),
-    );
+    readonly #lastElementIndex = computed(() => this.elementsLength() - 1);
+    readonly #itemsFit = computed(() => this.length() <= this.#maxElementsLength());
+    readonly #lastIndex = computed(() => this.length() - 1);
+    readonly #reverseIndex = computed((): number => this.#lastIndex() - this.index());
 
     protected readonly texts = inject(TUI_PAGINATION_TEXTS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_PAGINATION_OPTIONS);
     protected readonly buttonSize = computed(() => (this.size() === 'm' ? 'xs' : 's'));
     protected readonly elementsLength = computed(() =>
-        this.itemsFit() ? this.length() : this.maxElementsLength(),
+        this.#itemsFit() ? this.length() : this.#maxElementsLength(),
     );
 
     public readonly length = input(1);
@@ -63,7 +62,7 @@ export class TuiPagination {
     public readonly sidePadding = input(1);
     public readonly content = input<PolymorpheusContent<TuiContext<number>>>();
     public readonly index = model(0);
-    public readonly arrowIsDisabledRight = computed(() => this.reverseIndex() === 0);
+    public readonly arrowIsDisabledRight = computed(() => this.#reverseIndex() === 0);
     public readonly arrowIsDisabledLeft = computed(() => this.index() === 0);
     public readonly nativeFocusableElement = computed((): HTMLElement | null => {
         if (this.disabled()) {
@@ -91,7 +90,7 @@ export class TuiPagination {
     });
 
     public get focused(): boolean {
-        return tuiIsFocusedIn(this.el);
+        return tuiIsFocusedIn(this.#el);
     }
 
     protected elementIsFocusable(index: number): boolean {
@@ -104,14 +103,14 @@ export class TuiPagination {
      * @returns index or null (for '…')
      */
     protected getItemIndexByElementIndex(elementIndex: number): number | null {
-        const reverseElementIndex = this.lastElementIndex() - elementIndex;
+        const reverseElementIndex = this.#lastElementIndex() - elementIndex;
 
         if (elementIndex < this.sidePadding()) {
             return elementIndex;
         }
 
         if (reverseElementIndex < this.sidePadding()) {
-            return this.lastIndex() - reverseElementIndex;
+            return this.#lastIndex() - reverseElementIndex;
         }
 
         if (elementIndex === this.sidePadding() && this.hasCollapsedItems(this.index())) {
@@ -120,17 +119,17 @@ export class TuiPagination {
 
         if (
             reverseElementIndex === this.sidePadding() &&
-            this.hasCollapsedItems(this.reverseIndex())
+            this.hasCollapsedItems(this.#reverseIndex())
         ) {
             return null;
         }
 
-        const computedIndex = this.index() - this.maxHalfLength() + elementIndex;
+        const computedIndex = this.index() - this.#maxHalfLength() + elementIndex;
 
         return tuiClamp(
             computedIndex,
             elementIndex,
-            this.lastIndex() - reverseElementIndex,
+            this.#lastIndex() - reverseElementIndex,
         );
     }
 
@@ -177,11 +176,11 @@ export class TuiPagination {
      * @returns there are collapsed items
      */
     private hasCollapsedItems(index: number): boolean {
-        return !this.itemsFit() && index > this.maxHalfLength();
+        return !this.#itemsFit() && index > this.#maxHalfLength();
     }
 
     private tryChangeTo(step: -1 | 1): void {
-        this.updateIndex(tuiClamp(this.index() + step, 0, this.lastIndex()));
+        this.updateIndex(tuiClamp(this.index() + step, 0, this.#lastIndex()));
     }
 
     private updateIndex(index: number): void {

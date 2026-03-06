@@ -13,11 +13,11 @@ import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from '@taiga-ui/core';
     providers: [tuiAsViewport(Example)],
 })
 export default class Example extends TuiRectAccessor {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     public readonly type = 'viewport';
 
     public getClientRect(): DOMRect {
-        return this.el.getBoundingClientRect();
+        return this.#el.getBoundingClientRect();
     }
 }

@@ -56,10 +56,10 @@ export abstract class TuiNativeTimePicker {
     host: {ngSkipHydration: 'true'},
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {
-    private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);
+    readonly #control: TuiControl<TuiTime | null> = inject(TuiControl);
 
     protected readonly host = inject(TuiInputTimeDirective);
-    protected readonly value = computed(() => this.toISOString(this.control.value()));
+    protected readonly value = computed(() => this.toISOString(this.#control.value()));
     protected readonly step = computed(() => this.getStep(this.host.timeMode()));
 
     protected setValue(value: string): void {

@@ -6,7 +6,7 @@ type IsoCode = TuiCountryIsoCode | string;
 
 @Pipe({name: 'tuiFlag'})
 export class TuiFlagPipe implements PipeTransform {
-    private readonly staticPath = inject(TUI_ASSETS_PATH);
+    readonly #staticPath = inject(TUI_ASSETS_PATH);
 
     public transform(countryIsoCode: IsoCode): string;
     public transform(countryIsoCode: IsoCode | undefined): string | null;
@@ -16,6 +16,6 @@ export class TuiFlagPipe implements PipeTransform {
             return null;
         }
 
-        return `${this.staticPath}/flags/${countryIsoCode.toLowerCase()}.svg`;
+        return `${this.#staticPath}/flags/${countryIsoCode.toLowerCase()}.svg`;
     }
 }

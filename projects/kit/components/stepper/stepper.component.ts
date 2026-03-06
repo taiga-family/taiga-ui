@@ -34,11 +34,12 @@ import {TuiStep} from './step.component';
     },
 })
 export class TuiStepperComponent implements OnChanges {
-    private readonly el = tuiInjectElement();
     private readonly steps = contentChildren(
         forwardRef(() => TuiStep),
         {read: ElementRef},
     );
+
+    readonly #el = tuiInjectElement();
 
     protected readonly $ = inject(WaResizeObserverService, {self: true})
         .pipe(takeUntilDestroyed())
@@ -106,7 +107,7 @@ export class TuiStepperComponent implements OnChanges {
             return;
         }
 
-        const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.el;
+        const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.#el;
         const {
             offsetHeight,
             offsetWidth,
@@ -116,6 +117,6 @@ export class TuiStepperComponent implements OnChanges {
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
         const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
 
-        this.el.scrollTo?.({left: Math.max(0, left), top: Math.max(0, top)});
+        this.#el.scrollTo?.({left: Math.max(0, left), top: Math.max(0, top)});
     }
 }

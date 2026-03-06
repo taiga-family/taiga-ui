@@ -27,8 +27,9 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 })
 export class TuiMultiSelectGroupComponent<T> {
     private readonly options = contentChildren(TuiOptionWithValue<T>);
-    private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
-    private readonly control =
+
+    readonly #handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
+    readonly #control =
         inject(TuiTextfieldComponent, {optional: true})?.control() ||
         inject(NgControl, {optional: true});
 
@@ -38,7 +39,7 @@ export class TuiMultiSelectGroupComponent<T> {
     protected readonly checked = computed(() =>
         this.values().every((item) =>
             this.value()?.some(
-                (v) => tuiIsPresent(item) && this.handlers.identityMatcher()(item, v),
+                (v) => tuiIsPresent(item) && this.#handlers.identityMatcher()(item, v),
             ),
         ),
     );
@@ -47,10 +48,10 @@ export class TuiMultiSelectGroupComponent<T> {
 
     protected toggle(): void {
         const values = this.values().filter(tuiIsPresent);
-        const matcher = this.handlers.identityMatcher();
+        const matcher = this.#handlers.identityMatcher();
         const value = this.value() || [];
         const others = value.filter((a) => values.every((b) => !matcher(a, b)));
 
-        this.control?.control?.setValue(this.checked() ? others : others.concat(values));
+        this.#control?.control?.setValue(this.checked() ? others : others.concat(values));
     }
 }

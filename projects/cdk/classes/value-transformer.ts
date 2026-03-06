@@ -16,18 +16,18 @@ export function tuiValueTransformerFrom<
 }
 
 export class TuiNonNullableValueTransformer<T> extends TuiValueTransformer<T | null, T> {
-    private prevValue!: T;
+    #prevValue!: T;
 
     public fromControlValue(value: T): T {
-        this.prevValue = value;
+        this.#prevValue = value;
 
         return value;
     }
 
     public toControlValue(value: T | null): T {
-        this.prevValue = value ?? this.prevValue;
+        this.#prevValue = value ?? this.#prevValue;
 
-        return this.prevValue;
+        return this.#prevValue;
     }
 }
 

@@ -12,10 +12,10 @@ import {TuiPush} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alert = inject(TuiNotificationService);
+    readonly #alert = inject(TuiNotificationService);
 
     protected onClose(): void {
-        this.alert
+        this.#alert
             .open('Close button is visible when you subscribe to (close) output')
             .subscribe();
     }

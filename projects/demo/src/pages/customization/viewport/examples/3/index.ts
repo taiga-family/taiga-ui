@@ -20,12 +20,12 @@ import {TuiSegmented} from '@taiga-ui/kit';
     providers: [tuiAsViewport(PortalHost)],
 })
 class PortalHost implements TuiRectAccessor {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     public readonly type = 'viewport';
 
     public getClientRect(): DOMRect {
-        return this.el.getBoundingClientRect();
+        return this.#el.getBoundingClientRect();
     }
 }
 

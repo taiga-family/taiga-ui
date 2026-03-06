@@ -20,12 +20,12 @@ export function provideStyles(useValue: Type<unknown>): ValueProvider {
 // Use it after this is fixed: https://github.com/angular/angular/issues/57846
 @Directive()
 export class TuiWithStyles implements OnDestroy {
-    private readonly injector = inject(EnvironmentInjector);
-    private readonly refs = inject(TUI_STYLES, {self: true}).map((component) =>
-        createComponent(component, {environmentInjector: this.injector}),
+    readonly #injector = inject(EnvironmentInjector);
+    readonly #refs = inject(TUI_STYLES, {self: true}).map((component) =>
+        createComponent(component, {environmentInjector: this.#injector}),
     );
 
     public ngOnDestroy(): void {
-        this.refs.forEach((ref) => ref.destroy());
+        this.#refs.forEach((ref) => ref.destroy());
     }
 }

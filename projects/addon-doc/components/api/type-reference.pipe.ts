@@ -6,19 +6,19 @@ import {
 
 @Pipe({name: 'tuiTypeReference'})
 export class TuiTypeReferencePipe implements PipeTransform {
-    private readonly parser = inject(TUI_DOC_TYPE_REFERENCE_PARSER);
-    private readonly linkHandler = inject(TUI_DOC_TYPE_REFERENCE_HANDLER);
+    readonly #parser = inject(TUI_DOC_TYPE_REFERENCE_PARSER);
+    readonly #linkHandler = inject(TUI_DOC_TYPE_REFERENCE_HANDLER);
 
     public transform(original: string): ReadonlyArray<{
         type: string;
         extracted: string;
         reference: string | null;
     }> {
-        return this.parser(original)
+        return this.#parser(original)
             .map(({type, extracted}) => ({
                 type,
                 extracted,
-                reference: this.linkHandler?.(extracted) ?? null,
+                reference: this.#linkHandler?.(extracted) ?? null,
             }))
             .sort((a, b) => b.reference?.localeCompare(a.reference ?? '') ?? -1);
     }

@@ -22,21 +22,21 @@ export const TUI_LEAVE = 'tui-leave';
 })
 export class TuiAnimated {
     // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
-    private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
-    private readonly el = tuiInjectElement();
+    readonly #renderer = inject(ViewContainerRef)._hostLView?.[11];
+    readonly #el = tuiInjectElement();
 
     constructor() {
         afterNextRender(() => this.remove());
 
-        if (this.renderer && isPlatformBrowser(inject(PLATFORM_ID))) {
+        if (this.#renderer && isPlatformBrowser(inject(PLATFORM_ID))) {
             // delegate is used in Angular Animations renderer
-            wrap(this.renderer.delegate || this.renderer);
+            wrap(this.#renderer.delegate || this.#renderer);
         }
     }
 
     protected remove(): void {
-        if (this.el.isConnected && !this.el.getAnimations?.().length) {
-            this.el.classList.remove(TUI_ENTER);
+        if (this.#el.isConnected && !this.#el.getAnimations?.().length) {
+            this.#el.classList.remove(TUI_ENTER);
         }
     }
 }

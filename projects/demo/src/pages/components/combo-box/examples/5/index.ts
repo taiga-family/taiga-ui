@@ -23,7 +23,7 @@ import {DatabaseServer} from './database';
     changeDetection,
 })
 export default class Example {
-    private readonly api = inject(DatabaseServer);
+    readonly #api = inject(DatabaseServer);
 
     protected readonly showLoader = signal(false);
     // Click on cleaner / datalist item triggers (input) events too
@@ -33,7 +33,7 @@ export default class Example {
         filter(() => !this.value), // click on datalist item should not trigger new api request
         tap(() => this.showLoader.set(true)),
         debounceTime(300),
-        switchMap((query) => (query.length >= 2 ? this.api.request$(query) : of(null))),
+        switchMap((query) => (query.length >= 2 ? this.#api.request$(query) : of(null))),
         tap(() => this.showLoader.set(false)),
     );
 

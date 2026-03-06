@@ -46,7 +46,7 @@ export class CustomListComponent<T> {
     @ViewChild(TuiInputDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
-    private readonly control = inject(TuiTextfieldComponent).control;
+    readonly #control = inject(TuiTextfieldComponent).control;
 
     public readonly items = input<ReadonlyArray<Items<T>>>([]);
 
@@ -61,6 +61,6 @@ export class CustomListComponent<T> {
     }
 
     protected select(value: readonly T[]): void {
-        this.control()?.control?.setValue(value);
+        this.#control()?.control?.setValue(value);
     }
 }

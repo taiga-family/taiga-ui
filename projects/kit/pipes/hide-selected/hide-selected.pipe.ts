@@ -13,20 +13,20 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Pipe({name: 'tuiHideSelected', pure: false})
 export class TuiHideSelectedPipe implements PipeTransform {
-    private readonly textfield = inject(TuiTextfieldMultiComponent);
-    private readonly handlers = inject(TUI_ITEMS_HANDLERS);
-    private readonly items = signal<readonly any[] | null>([]);
-    private readonly filtered = computed(() => {
-        const items = this.items();
-        const value = this.textfield.cva()?.value() || [];
+    readonly #textfield = inject(TuiTextfieldMultiComponent);
+    readonly #handlers = inject(TUI_ITEMS_HANDLERS);
+    readonly #items = signal<readonly any[] | null>([]);
+    readonly #filtered = computed(() => {
+        const items = this.#items();
+        const value = this.#textfield.cva()?.value() || [];
 
         if (!items) {
             return null;
         }
 
         return tuiIsFlat(items)
-            ? this.filter(items, value, this.handlers.identityMatcher())
-            : this.filter2d(items, value, this.handlers.identityMatcher());
+            ? this.filter(items, value, this.#handlers.identityMatcher())
+            : this.filter2d(items, value, this.#handlers.identityMatcher());
     });
 
     public transform<T>(items: readonly T[] | null): readonly T[] | null;
@@ -37,10 +37,10 @@ export class TuiHideSelectedPipe implements PipeTransform {
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
         untracked(() => {
-            this.items.set(items);
+            this.#items.set(items);
         });
 
-        return this.filtered() as ReadonlyArray<readonly T[]> | readonly T[] | null;
+        return this.#filtered() as ReadonlyArray<readonly T[]> | readonly T[] | null;
     }
 
     private filter2d<T>(

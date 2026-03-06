@@ -14,7 +14,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected heading = 'Page heading';
     protected editing = false;
@@ -29,6 +29,6 @@ export default class Example {
     }
 
     private saveHeading(newHeading: string): void {
-        this.alerts.open(newHeading, {label: 'New heading'}).subscribe();
+        this.#alerts.open(newHeading, {label: 'New heading'}).subscribe();
     }
 }

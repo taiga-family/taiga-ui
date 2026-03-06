@@ -37,8 +37,8 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 export class TuiTableExpand {
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
 
-    private readonly el = tuiInjectElement();
-    private readonly server = isPlatformServer(inject(PLATFORM_ID));
+    readonly #el = tuiInjectElement();
+    readonly #server = isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly transitioning = signal(false);
     protected readonly contentHeight = computed((_ = this.expanded()) =>
@@ -51,7 +51,7 @@ export class TuiTableExpand {
             switchMap((v) => (v ? timer(500).pipe(map(() => v)) : of(v))),
             takeUntilDestroyed(),
         )
-        .subscribe((visible) => this.el.classList.toggle('_visible', visible));
+        .subscribe((visible) => this.#el.classList.toggle('_visible', visible));
 
     public readonly expanded = model(inject(TUI_TABLE_OPTIONS).open);
     protected readonly transitioningEffect = effect((_, __ = this.expanded()) =>
@@ -63,7 +63,7 @@ export class TuiTableExpand {
     }
 
     private update(content: ElementRef<HTMLElement> | undefined): number {
-        if (!content || this.server) {
+        if (!content || this.#server) {
             return 0;
         }
 

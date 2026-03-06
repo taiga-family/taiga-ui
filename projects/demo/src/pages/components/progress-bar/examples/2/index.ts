@@ -14,11 +14,11 @@ import {of, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly animationDisabled =
+    readonly #animationDisabled =
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
-    protected readonly fastValue$ = this.animationDisabled ? of(80) : timer(500, 100);
-    protected readonly slowValue$ = this.animationDisabled ? of(4) : timer(500, 2000);
+    protected readonly fastValue$ = this.#animationDisabled ? of(80) : timer(500, 100);
+    protected readonly slowValue$ = this.#animationDisabled ? of(4) : timer(500, 2000);
     protected readonly colors = [
         'var(--tui-chart-categorical-01)',
         'var(--tui-chart-categorical-21)',

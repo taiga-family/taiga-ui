@@ -23,9 +23,9 @@ import {timer} from 'rxjs';
     changeDetection,
 })
 export default class Example implements OnInit {
-    private readonly cd = inject(ChangeDetectorRef);
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
+    readonly #cd = inject(ChangeDetectorRef);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #zone = inject(NgZone);
     protected readonly isE2E = inject(WA_IS_E2E);
 
     protected count = '0';
@@ -37,9 +37,9 @@ export default class Example implements OnInit {
 
         timer(0, 3000)
             .pipe(
-                tuiZoneOptimized(this.zone),
-                tuiWatch(this.cd),
-                takeUntilDestroyed(this.destroyRef),
+                tuiZoneOptimized(this.#zone),
+                tuiWatch(this.#cd),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe((value) => {
                 this.count = String(value);

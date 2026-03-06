@@ -22,8 +22,8 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(WA_IS_E2E);
-    private readonly months = inject(TUI_MONTHS);
+    readonly #isE2E = inject(WA_IS_E2E);
+    readonly #months = inject(TUI_MONTHS);
 
     protected readonly maxLength: TuiDayLike = {month: 12};
     protected readonly range = signal(
@@ -38,7 +38,7 @@ export default class Example {
                 ...array,
                 [
                     from.append({day: i}),
-                    this.isE2E
+                    this.#isE2E
                         ? 100
                         : (i ? (array[i - 1]?.[1] ?? 0) : 100) + Math.random() * 10 - 5,
                 ],
@@ -50,7 +50,7 @@ export default class Example {
     protected readonly labels = computed(({to, from} = this.range()) => [
         ...Array.from(
             {length: TuiMonth.lengthBetween(from, to) + 1},
-            (_, i) => this.months()[from.append({month: i}).month] ?? '',
+            (_, i) => this.#months()[from.append({month: i}).month] ?? '',
         ),
         null,
     ]);
@@ -58,7 +58,7 @@ export default class Example {
     protected readonly xStringify = computed<TuiStringHandler<TuiDay>>(
         () =>
             ({month, day}) =>
-                `${this.months()[month]}, ${day}`,
+                `${this.#months()[month]}, ${day}`,
     );
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>

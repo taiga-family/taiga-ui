@@ -46,7 +46,7 @@ interface Country {
     changeDetection,
 })
 export default class PageComponent {
-    private readonly countriesI18n = inject(TUI_COUNTRIES);
+    readonly #countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
@@ -68,7 +68,7 @@ export default class PageComponent {
     protected readonly control = new FormControl<Country | null>(null);
 
     protected readonly countries = computed(() =>
-        Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
+        Object.entries(this.#countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
     protected readonly matcherVariants: ReadonlyArray<TuiStringMatcher<Country>> = [

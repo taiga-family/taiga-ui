@@ -7,23 +7,23 @@ import {debounceTime, filter, ReplaySubject, switchMap, take} from 'rxjs';
 
 @Directive({selector: '[tuiDocScrollIntoViewLink]'})
 export class TuiDocScrollIntoViewLink implements OnChanges {
-    private readonly scroll$ = new ReplaySubject<boolean>(1);
-    private readonly el = tuiInjectElement();
+    readonly #scroll$ = new ReplaySubject<boolean>(1);
+    readonly #el = tuiInjectElement();
 
     protected readonly sub = inject(TUI_DOC_PAGE_LOADED)
         .pipe(
             filter(Boolean),
             take(1),
-            switchMap(() => this.scroll$),
+            switchMap(() => this.#scroll$),
             debounceTime(750, tuiZonefreeScheduler()),
-            filter((shallWe) => shallWe && !!tuiGetElementObscures(this.el)),
+            filter((shallWe) => shallWe && !!tuiGetElementObscures(this.#el)),
             takeUntilDestroyed(),
         )
-        .subscribe(() => this.el.scrollIntoView());
+        .subscribe(() => this.#el.scrollIntoView());
 
     public readonly tuiDocScrollIntoViewLink = input<boolean>(false);
 
     public ngOnChanges(): void {
-        this.scroll$.next(this.tuiDocScrollIntoViewLink());
+        this.#scroll$.next(this.tuiDocScrollIntoViewLink());
     }
 }

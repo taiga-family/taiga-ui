@@ -16,7 +16,7 @@ import {TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive
     host: {waIntersectionRootMargin: '-44px 0px 1000000% 0px'},
 })
 export class TuiDynamicHeaderContainerDirective {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     protected readonly headers = contentChildren(TuiDynamicHeaderAnchorDirective, {
         descendants: true,
@@ -25,7 +25,7 @@ export class TuiDynamicHeaderContainerDirective {
     public hiddenHeaders = signal<Array<TemplateRef<unknown>>>([]);
 
     public scrollDir = toSignal(
-        fromEvent(this.el, 'scroll').pipe(
+        fromEvent(this.#el, 'scroll').pipe(
             map(({target}) => (target as HTMLElement).scrollTop),
             pairwise(),
             map(([prev, next]) => (next > prev ? -1 : 1)),

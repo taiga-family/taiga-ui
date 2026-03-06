@@ -10,10 +10,10 @@ export type ControlValue = {significand: bigint; exp: number} | null;
     providers: [tuiProvide(TuiValueTransformer, BigIntWithDecimal)],
 })
 export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue> {
-    private readonly mask = inject(TuiNumberMask);
+    readonly #mask = inject(TuiNumberMask);
 
     public toControlValue(textfieldValue: string | null): ControlValue {
-        const params = this.mask.params();
+        const params = this.#mask.params();
         const {decimalSeparator} = params;
         const significand = maskitoParseNumber(
             textfieldValue?.replace(decimalSeparator, '') ?? '',
@@ -44,7 +44,7 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
             return '';
         }
 
-        const params = this.mask.params();
+        const params = this.#mask.params();
         const integer = maskitoStringifyNumber(
             BigInt(String(significand).slice(0, exp || Infinity)),
             {...params, postfix: ''},

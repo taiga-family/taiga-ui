@@ -19,7 +19,7 @@ interface Item {
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected activeItemIndex = 1;
 
@@ -51,6 +51,6 @@ export default class Example {
 
     protected onClick(item: Item): void {
         item.badge = 0;
-        this.alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
+        this.#alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
     }
 }

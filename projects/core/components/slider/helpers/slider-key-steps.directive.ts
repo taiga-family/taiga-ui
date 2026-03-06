@@ -34,8 +34,8 @@ import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
     },
 })
 export class TuiSliderKeyStepsBase implements OnInit {
-    private readonly injector = inject(INJECTOR);
-    private readonly control = inject(NgControl, {self: true, optional: true});
+    readonly #injector = inject(INJECTOR);
+    readonly #control = inject(NgControl, {self: true, optional: true});
 
     protected readonly min = signal<number | undefined>(undefined);
     protected readonly max = signal<number | undefined>(undefined);
@@ -56,7 +56,7 @@ export class TuiSliderKeyStepsBase implements OnInit {
 
     public controlValue = toSignal(
         timer(0) // https://github.com/angular/angular/issues/54418
-            .pipe(switchMap(() => tuiControlValue<number>(this.control))),
+            .pipe(switchMap(() => tuiControlValue<number>(this.#control))),
     );
 
     public readonly totalSteps = computed(() =>
@@ -71,7 +71,7 @@ export class TuiSliderKeyStepsBase implements OnInit {
     );
 
     public ngOnInit(): void {
-        this.slider = this.injector.get(TuiSliderComponent);
+        this.slider = this.#injector.get(TuiSliderComponent);
     }
 
     public takeStep(coefficient: number): number {

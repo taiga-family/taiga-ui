@@ -10,8 +10,8 @@ import {TUI_SCROLL_INTO_VIEW} from './scrollbar.component';
  */
 @Directive({selector: '[tuiScrollIntoView]'})
 export class TuiScrollIntoView {
-    private readonly el = tuiInjectElement();
-    private readonly destroyRef = inject(DestroyRef);
+    readonly #el = tuiInjectElement();
+    readonly #destroyRef = inject(DestroyRef);
 
     public readonly tuiScrollIntoView = input<boolean>();
 
@@ -25,12 +25,12 @@ export class TuiScrollIntoView {
         // Timeout is necessary in order to give element render cycle to get into its final spot
         // (for example if it is inside dropdown box which has to be positioned first)
         timer(0)
-            .pipe(takeUntilDestroyed(this.destroyRef))
+            .pipe(takeUntilDestroyed(this.#destroyRef))
             .subscribe(() => {
-                this.el.dispatchEvent(
+                this.#el.dispatchEvent(
                     new CustomEvent<Element>(TUI_SCROLL_INTO_VIEW, {
                         bubbles: true,
-                        detail: this.el,
+                        detail: this.#el,
                     }),
                 );
             });

@@ -28,48 +28,48 @@ interface ComputedDimension {
     providers: [TuiScrollbarService],
 })
 export class TuiScrollbarDirective {
-    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
-    private readonly style = tuiInjectElement().style;
+    readonly #el = inject(TUI_SCROLL_REF).nativeElement;
+    readonly #style = tuiInjectElement().style;
 
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntilDestroyed())
         .subscribe(([top, left]) => {
-            this.el.style.scrollBehavior = 'auto';
+            this.#el.style.scrollBehavior = 'auto';
 
             if (this.tuiScrollbar() === 'horizontal') {
-                this.el.scrollLeft = left;
+                this.#el.scrollLeft = left;
             } else {
-                this.el.scrollTop = top;
+                this.#el.scrollTop = top;
             }
 
-            this.el.style.scrollBehavior = '';
+            this.#el.style.scrollBehavior = '';
         });
 
     protected readonly styleSub = merge(
         inject(WA_ANIMATION_FRAME).pipe(throttleTime(100, tuiZonefreeScheduler())),
-        tuiScrollFrom(this.el),
+        tuiScrollFrom(this.#el),
     )
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => {
             const dimension: ComputedDimension = {
-                scrollTop: this.el.scrollTop,
-                scrollHeight: this.el.scrollHeight,
-                clientHeight: this.el.clientHeight,
-                scrollLeft: this.el.scrollLeft,
-                scrollWidth: this.el.scrollWidth,
-                clientWidth: this.el.clientWidth,
+                scrollTop: this.#el.scrollTop,
+                scrollHeight: this.#el.scrollHeight,
+                clientHeight: this.#el.clientHeight,
+                scrollLeft: this.#el.scrollLeft,
+                scrollWidth: this.#el.scrollWidth,
+                clientWidth: this.#el.clientWidth,
             };
 
             const thumb = `${this.getThumb(dimension) * 100}%`;
             const view = `${this.getView(dimension) * 100}%`;
 
             if (this.tuiScrollbar() === 'vertical') {
-                this.style.top = thumb;
-                this.style.height = view;
+                this.#style.top = thumb;
+                this.#style.height = view;
             } else {
-                this.style.left = thumb;
-                this.style.insetInlineStart = thumb;
-                this.style.width = view;
+                this.#style.left = thumb;
+                this.#style.insetInlineStart = thumb;
+                this.#style.width = view;
             }
         });
 

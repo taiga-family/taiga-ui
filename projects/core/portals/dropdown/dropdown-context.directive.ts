@@ -27,10 +27,10 @@ import {TuiDropdownDriver} from './dropdown.driver';
     },
 })
 export class TuiDropdownContext extends TuiRectAccessor {
-    private readonly isTouch = inject(WA_IS_TOUCH);
-    private currentRect = EMPTY_CLIENT_RECT;
+    readonly #isTouch = inject(WA_IS_TOUCH);
+    #currentRect = EMPTY_CLIENT_RECT;
 
-    protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));
+    protected readonly userSelect = computed(() => (this.#isTouch() ? 'none' : null));
     protected readonly activeZone = inject(TuiActiveZone);
     protected readonly driver = inject(TuiDropdownDriver);
     protected readonly doc = inject(DOCUMENT);
@@ -51,17 +51,17 @@ export class TuiDropdownContext extends TuiRectAccessor {
         )
         .subscribe(() => {
             this.driver.next(false);
-            this.currentRect = EMPTY_CLIENT_RECT;
+            this.#currentRect = EMPTY_CLIENT_RECT;
         });
 
     public readonly type = 'dropdown';
 
     public getClientRect(): DOMRect {
-        return this.currentRect;
+        return this.#currentRect;
     }
 
     protected onContextMenu(x: number, y: number): void {
-        this.currentRect = tuiPointToClientRect(x, y);
+        this.#currentRect = tuiPointToClientRect(x, y);
         this.driver.next(true);
     }
 }

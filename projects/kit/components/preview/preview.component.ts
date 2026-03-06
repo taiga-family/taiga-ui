@@ -45,7 +45,7 @@ const ROTATION_ANGLE = 90;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewComponent {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     protected minZoom = 1;
     protected width = 0;
@@ -60,14 +60,16 @@ export class TuiPreviewComponent {
     );
 
     protected readonly transitioned$ = merge(
-        tuiDragAndDropFrom(this.el).pipe(map(({stage}) => stage !== 'continues')),
-        tuiTypedFromEvent(this.el, 'touchmove', {
+        tuiDragAndDropFrom(this.#el).pipe(map(({stage}) => stage !== 'continues')),
+        tuiTypedFromEvent(this.#el, 'touchmove', {
             passive: true,
         }).pipe(map(TUI_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'wheel', {passive: true}).pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'wheel', {passive: true}).pipe(
+            map(TUI_FALSE_HANDLER),
+        ),
     );
 
-    protected readonly cursor$ = tuiDragAndDropFrom(this.el).pipe(
+    protected readonly cursor$ = tuiDragAndDropFrom(this.#el).pipe(
         map(({stage}) => (stage === 'continues' ? 'grabbing' : 'initial')),
         startWith('initial'),
     );
@@ -147,7 +149,7 @@ export class TuiPreviewComponent {
         const bigSize =
             contentHeight > boxHeight * this.initialScale() ||
             contentWidth > boxWidth * this.initialScale();
-        const {clientHeight, clientWidth} = this.el;
+        const {clientHeight, clientWidth} = this.#el;
 
         return bigSize
             ? tuiRound(
@@ -166,8 +168,8 @@ export class TuiPreviewComponent {
         this.minZoom = this.calculateMinZoom(
             height,
             width,
-            this.el.clientHeight,
-            this.el.clientWidth,
+            this.#el.clientHeight,
+            this.#el.clientWidth,
         );
         this.zoom$.next(this.minZoom);
         this.coordinates$.next(EMPTY_COORDINATES);
@@ -208,8 +210,8 @@ export class TuiPreviewComponent {
         scale: number,
     ): [number, number] {
         return [
-            (clientX - x - this.el.offsetWidth / 2) / scale,
-            (clientY - y - this.el.offsetHeight / 2) / scale,
+            (clientX - x - this.#el.offsetWidth / 2) / scale,
+            (clientY - y - this.#el.offsetHeight / 2) / scale,
         ];
     }
 }

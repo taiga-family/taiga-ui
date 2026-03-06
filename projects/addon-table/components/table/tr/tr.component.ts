@@ -24,7 +24,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>> {
         forwardRef(() => TuiTableCell),
     );
 
-    private readonly body = inject<TuiTableTbody<T>>(forwardRef(() => TuiTableTbody));
+    readonly #body = inject<TuiTableTbody<T>>(forwardRef(() => TuiTableTbody));
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -39,9 +39,8 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>> {
 
     protected readonly item = computed(
         () =>
-            this.body.data()[this.body.rows().findIndex((row) => row === this)] as Record<
-                string | keyof T,
-                unknown
-            >,
+            this.#body.data()[
+                this.#body.rows().findIndex((row) => row === this)
+            ] as Record<string | keyof T, unknown>,
     );
 }

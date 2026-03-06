@@ -30,15 +30,15 @@ const SLIDER_INTERACTION_KEYS = new Set([
     },
 })
 export class TuiSliderReadonly {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly doc = inject(DOCUMENT);
+    readonly #el = tuiInjectElement<HTMLInputElement>();
+    readonly #doc = inject(DOCUMENT);
 
     public readonly readonly = input(true, {transform: coerceBooleanProperty});
 
     constructor() {
-        const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {passive: false});
-        const touchMove$ = tuiTypedFromEvent(this.doc, 'touchmove', {passive: false});
-        const touchEnd$ = tuiTypedFromEvent(this.doc, 'touchend', {passive: true});
+        const touchStart$ = tuiTypedFromEvent(this.#el, 'touchstart', {passive: false});
+        const touchMove$ = tuiTypedFromEvent(this.#doc, 'touchmove', {passive: false});
+        const touchEnd$ = tuiTypedFromEvent(this.#doc, 'touchend', {passive: true});
 
         const shouldPreventMove$ = merge(
             touchStart$.pipe(

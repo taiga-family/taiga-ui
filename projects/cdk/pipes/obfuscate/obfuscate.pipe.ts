@@ -4,7 +4,7 @@ import {TUI_OBFUSCATE_OPTIONS} from './obfuscate.options';
 
 @Pipe({name: 'tuiObfuscate'})
 export class TuiObfuscatePipe implements PipeTransform {
-    private readonly option = inject(TUI_OBFUSCATE_OPTIONS);
+    readonly #option = inject(TUI_OBFUSCATE_OPTIONS);
 
     /**
      * Transforms the input value by obfuscating it according to the specified recipe or symbol.
@@ -20,20 +20,20 @@ export class TuiObfuscatePipe implements PipeTransform {
         }
 
         if (!recipe) {
-            return this.option.default(value);
+            return this.#option.default(value);
         }
 
-        const obfuscate = this.option.recipes[recipe];
+        const obfuscate = this.#option.recipes[recipe];
 
         if (obfuscate) {
             return obfuscate(value);
         }
 
         if (recipe.length === 1) {
-            return this.option.default(value, recipe[0]);
+            return this.#option.default(value, recipe[0]);
         }
 
-        const availableRecipes = Object.keys(this.option.recipes).sort();
+        const availableRecipes = Object.keys(this.#option.recipes).sort();
 
         throw new Error(
             `Obfuscate recipe "${recipe}" not found. Available recipes: [${availableRecipes}]`,

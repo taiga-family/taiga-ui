@@ -39,7 +39,7 @@ import {TuiInputNumberStepService} from './input-number-step.service';
     },
 })
 export class TuiInputNumberStep {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
+    readonly #el = tuiInjectElement<HTMLInputElement>();
     protected readonly hold = inject(TuiInputNumberStepService<bigint | number>);
     protected readonly $ = this.hold.steps$.subscribe((value) => this.onStep(value));
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
@@ -66,7 +66,7 @@ export class TuiInputNumberStep {
         );
 
         setTimeout((end = Number.MAX_SAFE_INTEGER) => {
-            this.el.setSelectionRange(end, end);
+            this.#el.setSelectionRange(end, end);
         });
     }
 }

@@ -65,19 +65,17 @@ export class TuiDropdownOpen {
         read: ElementRef,
     });
 
-    private readonly directive = inject(TuiDropdownDirective);
-    private readonly el = tuiInjectElement();
-    private readonly obscured = inject(TuiObscured);
-    private readonly driver = inject(TuiDropdownDriver);
-    private readonly dropdown = computed(
-        () => this.directive.ref()?.location.nativeElement,
-    );
+    readonly #directive = inject(TuiDropdownDirective);
+    readonly #el = tuiInjectElement();
+    readonly #obscured = inject(TuiObscured);
+    readonly #driver = inject(TuiDropdownDriver);
+    readonly #dropdown = computed(() => this.#directive.ref()?.location.nativeElement);
 
     public readonly enabled = input(true, {alias: 'tuiDropdownEnabled'});
     public readonly open = model(false, {alias: 'tuiDropdownOpen'});
 
     protected readonly driveEffect = effect(() => this.drive(this.open()));
-    protected readonly syncSub = this.driver
+    protected readonly syncSub = this.#driver
         .pipe(
             filter((open) => open !== this.open()),
             takeUntilDestroyed(),
@@ -89,12 +87,12 @@ export class TuiDropdownOpen {
         .subscribe((event) => this.onKeydown(event));
 
     public get host(): HTMLElement {
-        const initial = this.dropdownHost()?.nativeElement || this.el;
+        const initial = this.dropdownHost()?.nativeElement || this.#el;
         const focusable = tuiIsFocusable(initial)
             ? initial
-            : tuiGetClosestFocusable({initial, root: this.el});
+            : tuiGetClosestFocusable({initial, root: this.#el});
 
-        return this.dropdownHost()?.nativeElement || focusable || this.el;
+        return this.dropdownHost()?.nativeElement || focusable || this.#el;
     }
 
     public toggle(open: boolean): void {
@@ -116,7 +114,7 @@ export class TuiDropdownOpen {
             !tuiIsElement(event.target) ||
             !this.host.contains(event.target) ||
             !this.enabled() ||
-            !this.directive.content()
+            !this.#directive.content()
         ) {
             return;
         }
@@ -130,7 +128,7 @@ export class TuiDropdownOpen {
     }
 
     private get focused(): boolean {
-        return tuiIsFocusedIn(this.host) || tuiIsFocusedIn(this.dropdown());
+        return tuiIsFocusedIn(this.host) || tuiIsFocusedIn(this.#dropdown());
     }
 
     private onKeydown(event: KeyboardEvent): void {
@@ -158,12 +156,12 @@ export class TuiDropdownOpen {
     }
 
     private drive(open = this.open() && this.enabled()): void {
-        tuiSetSignal(this.obscured.tuiObscuredEnabled, open);
-        this.driver.next(open);
+        tuiSetSignal(this.#obscured.tuiObscuredEnabled, open);
+        this.#driver.next(open);
     }
 
     private focusDropdown(previous: boolean): void {
-        const root = this.dropdown();
+        const root = this.#dropdown();
 
         if (!root) {
             this.update(true);
@@ -171,7 +169,7 @@ export class TuiDropdownOpen {
             return;
         }
 
-        const doc = this.el.ownerDocument;
+        const doc = this.#el.ownerDocument;
         const child = root.appendChild(doc.createElement('div'));
         const initial = previous ? child : root;
         const focusable = tuiGetClosestFocusable({initial, previous, root});

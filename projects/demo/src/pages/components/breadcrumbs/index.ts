@@ -11,7 +11,7 @@ import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
+    readonly #options = inject(TUI_BREADCRUMBS_OPTIONS);
 
     protected readonly examples = ['Basic', 'Overflow'];
     protected readonly items = [
@@ -26,6 +26,6 @@ export default class Example {
     ];
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-    protected size: TuiSizeL = this.options.size;
-    protected itemsLimit = this.options.itemsLimit;
+    protected size: TuiSizeL = this.#options.size;
+    protected itemsLimit = this.#options.itemsLimit;
 }

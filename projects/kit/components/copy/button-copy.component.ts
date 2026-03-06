@@ -38,28 +38,28 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     },
 })
 export class TuiButtonCopy {
-    private readonly el = tuiInjectElement();
-    private readonly clipboard = inject(Clipboard);
-    private readonly options = inject(TUI_COPY_OPTIONS);
-    private readonly copyTexts = inject(TUI_COPY_TEXTS);
-    private readonly notification = inject(TUI_NOTIFICATION_OPTIONS);
-    private readonly check = tuiIsString(this.notification.icon)
-        ? this.notification.icon
-        : this.notification.icon('positive');
+    readonly #el = tuiInjectElement();
+    readonly #clipboard = inject(Clipboard);
+    readonly #options = inject(TUI_COPY_OPTIONS);
+    readonly #copyTexts = inject(TUI_COPY_TEXTS);
+    readonly #notification = inject(TUI_NOTIFICATION_OPTIONS);
+    readonly #check = tuiIsString(this.#notification.icon)
+        ? this.#notification.icon
+        : this.#notification.icon('positive');
 
     protected readonly copied = signal(false);
-    protected readonly copiedText = computed(() => this.copyTexts()[1]);
+    protected readonly copiedText = computed(() => this.#copyTexts()[1]);
     protected readonly icon = tuiIconStart(
-        computed(() => (this.copied() ? this.check : this.options.icon)),
+        computed(() => (this.copied() ? this.#check : this.#options.icon)),
     );
 
     public readonly tuiButtonCopy = input('');
 
     protected copy(target: HTMLElement): void {
-        const copied = this.el === target;
+        const copied = this.#el === target;
 
         if (copied) {
-            this.clipboard.copy(this.tuiButtonCopy());
+            this.#clipboard.copy(this.tuiButtonCopy());
         }
 
         this.copied.set(copied);

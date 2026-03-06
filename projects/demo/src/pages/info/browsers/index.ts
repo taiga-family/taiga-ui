@@ -97,21 +97,21 @@ const CONFIG_KEY_BY_BROWSER_ID: Record<string, string> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
-    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
-    private readonly http = inject(HttpClient);
+    readonly #isServer = isPlatformServer(inject(PLATFORM_ID));
+    readonly #http = inject(HttpClient);
 
-    private readonly config$ = from(import('@taiga-ui/browserslist-config')).pipe(
+    readonly #config$ = from(import('@taiga-ui/browserslist-config')).pipe(
         map((module) => module.default.modern),
         map((config) => encodeURIComponent(String(config))),
         distinctUntilChanged(),
         shareReplay({bufferSize: 1, refCount: true}),
     );
 
-    private readonly response$ = this.config$.pipe(
+    readonly #response$ = this.#config$.pipe(
         switchMap((config) =>
-            this.isServer
+            this.#isServer
                 ? of(null)
-                : this.http.get<ApiResponse<Record<string, number>>>(
+                : this.#http.get<ApiResponse<Record<string, number>>>(
                       `https://browsersl.ist/api/browsers?q=${config}`,
                   ),
         ),
@@ -142,7 +142,7 @@ export default class Page {
         catchError(() => of(null as ApiResponse<VersionItem[]> | null)),
     );
 
-    protected readonly response = toSignal(this.response$, {initialValue: null});
+    protected readonly response = toSignal(this.#response$, {initialValue: null});
 
     protected readonly columns = ['toggle', 'browser', 'min', 'total'] as const;
 

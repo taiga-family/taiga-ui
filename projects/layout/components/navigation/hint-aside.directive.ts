@@ -13,9 +13,9 @@ import {TuiAsideComponent} from './aside.component';
     hostDirectives: [TuiHintDirective],
 })
 export class TuiHintAsideDirective {
-    private readonly el = tuiInjectElement();
-    private readonly aside = inject(TuiAsideComponent);
-    private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
+    readonly #el = tuiInjectElement();
+    readonly #aside = inject(TuiAsideComponent);
+    readonly #dropdown = inject(TuiDropdownDirective, {optional: true});
     public readonly tuiHintAside = input<PolymorpheusContent>(null);
 
     protected readonly binding = tuiDirectiveBinding(
@@ -23,11 +23,11 @@ export class TuiHintAsideDirective {
         'content',
         computed(() => {
             const hint = this.tuiHintAside();
-            const expanded = this.aside.expanded();
+            const expanded = this.#aside.expanded();
 
-            return expanded || this.dropdown
+            return expanded || this.#dropdown
                 ? ''
-                : hint || (() => this.el.textContent?.trim());
+                : hint || (() => this.#el.textContent?.trim());
         }),
     );
 }

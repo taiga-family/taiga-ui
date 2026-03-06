@@ -12,14 +12,14 @@ import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly key = inject(TUI_DARK_MODE_KEY);
-    private readonly storage = inject(WA_LOCAL_STORAGE);
-    private readonly media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
+    readonly #key = inject(TUI_DARK_MODE_KEY);
+    readonly #storage = inject(WA_LOCAL_STORAGE);
+    readonly #media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
 
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
     protected reset(): void {
-        this.darkMode.set(this.media.matches);
-        this.storage?.removeItem(this.key);
+        this.darkMode.set(this.#media.matches);
+        this.#storage?.removeItem(this.#key);
     }
 }

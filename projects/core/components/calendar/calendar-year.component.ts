@@ -37,15 +37,15 @@ const CURRENT_YEAR = TuiMonth.currentLocal().year;
     host: {'[class._picking]': 'isRangePicking()'},
 })
 export class TuiCalendarYear {
-    private readonly hoveredItem = signal<number | null>(null);
-    private readonly calculatedMin = computed(() => {
+    readonly #hoveredItem = signal<number | null>(null);
+    readonly #calculatedMin = computed(() => {
         const initial = this.initialItem() - LIMIT;
         const min = this.min() ?? MIN_YEAR;
 
         return min > initial ? min : initial;
     });
 
-    private readonly calculatedMax = computed(() => {
+    readonly #calculatedMax = computed(() => {
         const initial = this.initialItem() + LIMIT;
         const max = this.max() ?? MAX_YEAR;
 
@@ -58,7 +58,7 @@ export class TuiCalendarYear {
     );
 
     protected readonly rows = computed(() =>
-        Math.ceil((this.calculatedMax() - this.calculatedMin()) / ITEMS_IN_ROW),
+        Math.ceil((this.#calculatedMax() - this.#calculatedMin()) / ITEMS_IN_ROW),
     );
 
     public readonly rangeMode = input(false);
@@ -94,7 +94,7 @@ export class TuiCalendarYear {
 
     public getItemRange(item: number): 'active' | 'end' | 'middle' | 'start' | null {
         const value = this.value();
-        const hoveredItem = this.hoveredItem();
+        const hoveredItem = this.#hoveredItem();
 
         if (value instanceof TuiYear && value.year === item) {
             return 'active';
@@ -131,7 +131,7 @@ export class TuiCalendarYear {
     }
 
     public onItemHovered(hovered: boolean, item: number): void {
-        this.hoveredItem.set(hovered ? item : null);
+        this.#hoveredItem.set(hovered ? item : null);
     }
 
     protected scrollItemIntoView(item: number): boolean {
@@ -139,7 +139,7 @@ export class TuiCalendarYear {
     }
 
     protected getItem(rowIndex: number, colIndex: number): number {
-        return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin();
+        return rowIndex * ITEMS_IN_ROW + colIndex + this.#calculatedMin();
     }
 
     protected itemIsToday(item: number): boolean {

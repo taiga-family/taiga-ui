@@ -22,10 +22,10 @@ export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
 
 @Injectable()
 export class TuiDialogCloseService extends Observable<unknown> {
-    private readonly win = inject(WA_WINDOW);
-    private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiInjectElement();
-    private readonly esc$ = tuiTypedFromEvent(this.doc, 'keydown').pipe(
+    readonly #win = inject(WA_WINDOW);
+    readonly #doc = inject(DOCUMENT);
+    readonly #el = tuiInjectElement();
+    readonly #esc$ = tuiTypedFromEvent(this.#doc, 'keydown').pipe(
         filter((event) => {
             const target = tuiGetActualTarget(event);
 
@@ -34,20 +34,20 @@ export class TuiDialogCloseService extends Observable<unknown> {
                 typeof CloseWatcher === 'undefined' &&
                 event.key?.toLowerCase() === 'escape' &&
                 !event.defaultPrevented &&
-                (this.el.contains(target) || this.isOutside(target))
+                (this.#el.contains(target) || this.isOutside(target))
             );
         }),
     );
 
-    private readonly mousedown$ = tuiTypedFromEvent(this.doc, 'mousedown').pipe(
+    readonly #mousedown$ = tuiTypedFromEvent(this.#doc, 'mousedown').pipe(
         filter(
             (event) =>
                 // Scrollbars
-                tuiGetViewportWidth(this.win) - event.clientX > 17 &&
+                tuiGetViewportWidth(this.#win) - event.clientX > 17 &&
                 this.isOutside(tuiGetActualTarget(event)),
         ),
         switchMap(() =>
-            tuiTypedFromEvent(this.doc, 'mouseup').pipe(
+            tuiTypedFromEvent(this.#doc, 'mouseup').pipe(
                 take(1),
                 map(tuiGetActualTarget),
                 filter((target) => this.isOutside(target)),
@@ -58,14 +58,14 @@ export class TuiDialogCloseService extends Observable<unknown> {
     constructor() {
         super((subscriber) =>
             merge(
-                this.esc$,
-                this.mousedown$,
+                this.#esc$,
+                this.#mousedown$,
                 tuiCloseWatcher().pipe(tuiZonefull()),
             ).subscribe(subscriber),
         );
     }
 
     private isOutside(target: EventTarget): boolean {
-        return tuiIsElement(target) && !tuiContainsOrAfter(this.el, target);
+        return tuiIsElement(target) && !tuiContainsOrAfter(this.#el, target);
     }
 }

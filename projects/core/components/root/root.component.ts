@@ -44,9 +44,9 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     },
 })
 export class TuiRoot {
-    private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiInjectElement();
-    private readonly child = !!inject(TuiRoot, {optional: true, skipSelf: true});
+    readonly #doc = inject(DOCUMENT);
+    readonly #el = tuiInjectElement();
+    readonly #child = !!inject(TuiRoot, {optional: true, skipSelf: true});
 
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
@@ -54,11 +54,11 @@ export class TuiRoot {
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly scrollbars =
         !inject(WA_IS_MOBILE) &&
-        !this.child &&
+        !this.#child &&
         inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
         inject(TUI_OPTIONS).scrollbars !== 'native';
 
     protected get parent(): boolean {
-        return this.doc.fullscreenElement === this.el || !this.child;
+        return this.#doc.fullscreenElement === this.#el || !this.#child;
     }
 }

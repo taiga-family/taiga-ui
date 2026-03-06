@@ -32,15 +32,15 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
     },
 })
 export class TuiInputYearDirective extends TuiControl<number | null> {
-    private readonly options = inject(TUI_INPUT_YEAR_OPTIONS);
-    private readonly input = inject(TuiInputDirective);
-    private readonly open = inject(TuiDropdownOpen).open;
-    private readonly initialItem = computed(
+    readonly #options = inject(TUI_INPUT_YEAR_OPTIONS);
+    readonly #input = inject(TuiInputDirective);
+    readonly #open = inject(TuiDropdownOpen).open;
+    readonly #initialItem = computed(
         () => this.value() ?? this.calendar()?.initialItem() ?? null,
     );
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    protected readonly icon = tuiIconEnd(this.options.icon);
+    protected readonly icon = tuiIconEnd(this.#options.icon);
     protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
         (x) => x instanceof TuiCalendarYear,
     );
@@ -50,7 +50,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
      * something wrong with change detection on host binding
      */
     protected readonly valueEffect = effect(() =>
-        this.input.value.set(this.value()?.toString() ?? ''),
+        this.#input.value.set(this.value()?.toString() ?? ''),
     );
 
     protected readonly mask = tuiMaskito(
@@ -67,7 +67,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         const calendar = this.calendar();
 
         if (calendar) {
-            tuiSetSignal(calendar.initialItem, this.initialItem());
+            tuiSetSignal(calendar.initialItem, this.#initialItem());
             tuiSetSignal(calendar.value, this.value());
             tuiSetSignal(calendar.min, this.min());
             tuiSetSignal(calendar.max, this.max());
@@ -77,18 +77,18 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     protected readonly calendarOutEffect = effect((onCleanup) => {
         const subscription = this.calendar()?.yearClick.subscribe((year) => {
             this.onChange(year);
-            this.open.set(false);
+            this.#open.set(false);
         });
 
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly min = input(this.options.min.year);
-    public readonly max = input(this.options.max.year);
+    public readonly min = input(this.#options.min.year);
+    public readonly max = input(this.#options.max.year);
 
     protected toggle(): void {
         if (this.interactive()) {
-            this.open.update((x) => !x);
+            this.#open.update((x) => !x);
         }
     }
 

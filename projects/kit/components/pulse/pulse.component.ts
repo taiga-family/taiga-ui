@@ -20,16 +20,16 @@ import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
     host: {'[class._playing]': 'playing()'},
 })
 export class TuiPulse extends TuiRectAccessor {
-    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private readonly el = tuiInjectElement();
+    readonly #isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+    readonly #el = tuiInjectElement();
 
     public readonly playing = input(true);
     public readonly type = 'hint';
 
     public getClientRect(): DOMRect {
-        const rect = this.el.getBoundingClientRect();
+        const rect = this.#el.getBoundingClientRect();
 
-        return this.isBrowser
+        return this.#isBrowser
             ? new DOMRect(rect.x - 4, rect.y - 4, rect.width + 8, rect.height + 8)
             : rect;
     }

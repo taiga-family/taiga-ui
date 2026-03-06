@@ -35,9 +35,9 @@ class Styles {}
     },
 })
 export class TuiRipple {
-    private readonly doc = inject(DOCUMENT);
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
+    readonly #doc = inject(DOCUMENT);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
 
     protected readonly nothing = tuiWithStyles(Styles);
 
@@ -59,7 +59,7 @@ export class TuiRipple {
 
         element.appendChild(ripple);
 
-        const animationEnd$ = fromEvent(ripple.animate(TO, this.duration), 'finish');
+        const animationEnd$ = fromEvent(ripple.animate(TO, this.#duration), 'finish');
 
         race(
             touchEnd$.pipe(switchMap(() => animationEnd$)),
@@ -67,10 +67,12 @@ export class TuiRipple {
         )
             .pipe(
                 first(),
-                switchMap(() => fromEvent(ripple.animate(FROM, this.duration), 'finish')),
+                switchMap(() =>
+                    fromEvent(ripple.animate(FROM, this.#duration), 'finish'),
+                ),
                 first(),
                 tap(() => element.removeChild(ripple)),
-                takeUntilDestroyed(this.destroyRef),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe();
     }
@@ -80,7 +82,7 @@ export class TuiRipple {
         clientY: number,
         {width, height, top, left}: DOMRect,
     ): HTMLElement {
-        const ripple: HTMLElement = this.doc.createElement('div');
+        const ripple: HTMLElement = this.#doc.createElement('div');
         const radius = Math.sqrt(width * width + height * height);
         const dimension = radius * 2;
         const x = clientX - left - radius;

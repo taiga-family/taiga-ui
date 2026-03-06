@@ -12,13 +12,13 @@ import {TuiAppBar, TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
+    readonly #dialogs = inject(TuiDialogService);
 
     protected step = 0;
 
     protected open(template: TemplateRef<any>): void {
         this.step = 0;
-        this.dialogs
+        this.#dialogs
             .open(template, {
                 appearance: 'fullscreen',
                 closable: false,

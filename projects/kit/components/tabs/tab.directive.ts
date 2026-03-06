@@ -17,34 +17,34 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
     host: {type: 'button'},
 })
 export class TuiTab implements OnDestroy {
-    private readonly el = tuiInjectElement();
-    private readonly rla = inject(RouterLinkActive, {optional: true});
-    private readonly observer =
-        this.rla &&
+    readonly #el = tuiInjectElement();
+    readonly #rla = inject(RouterLinkActive, {optional: true});
+    readonly #observer =
+        this.#rla &&
         inject(WaMutationObserverService, {optional: true})?.pipe(
-            filter(() => !!this.rla?.isActive),
+            filter(() => !!this.#rla?.isActive),
         );
 
     protected readonly sub = merge(
-        this.observer || EMPTY,
-        this.rla?.isActiveChange.pipe(filter(Boolean)) || EMPTY,
-        this.el.matches('button')
-            ? tuiTypedFromEvent(this.el, 'click').pipe(
+        this.#observer || EMPTY,
+        this.#rla?.isActiveChange.pipe(filter(Boolean)) || EMPTY,
+        this.#el.matches('button')
+            ? tuiTypedFromEvent(this.#el, 'click').pipe(
                   // Delaying execution until after all other click callbacks
                   switchMap(() =>
-                      tuiTypedFromEvent(this.el.parentElement!, 'click').pipe(take(1)),
+                      tuiTypedFromEvent(this.#el.parentElement!, 'click').pipe(take(1)),
                   ),
               )
             : EMPTY,
     )
         .pipe(takeUntilDestroyed())
         .subscribe(() =>
-            this.el.dispatchEvent(new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true})),
+            this.#el.dispatchEvent(new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true})),
         );
 
     public ngOnDestroy(): void {
-        if (tuiIsFocused(this.el)) {
-            this.el.blur();
+        if (tuiIsFocused(this.#el)) {
+            this.#el.blur();
         }
     }
 }

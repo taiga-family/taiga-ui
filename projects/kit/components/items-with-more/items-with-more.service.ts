@@ -10,19 +10,19 @@ import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 
 @Injectable()
 export class TuiItemsWithMoreService extends Observable<number> {
-    private readonly el = tuiInjectElement();
-    private readonly directive = inject(TuiItemsWithMoreDirective);
+    readonly #el = tuiInjectElement();
+    readonly #directive = inject(TuiItemsWithMoreDirective);
 
     protected readonly stream$ = merge(
-        this.directive.change$,
+        this.#directive.change$,
         inject(WaMutationObserverService, {self: true}),
         inject(WaResizeObserverService, {self: true}),
     ).pipe(
         debounceTime(0, tuiZonefreeScheduler()),
         map(() =>
-            this.directive.linesLimit() > 1
+            this.#directive.linesLimit() > 1
                 ? this.getOverflowIndexMultiline()
-                : this.getOverflowIndex(Array.from(this.el.children)),
+                : this.getOverflowIndex(Array.from(this.#el.children)),
         ),
         distinctUntilChanged(),
         tuiZoneOptimized(),
@@ -34,8 +34,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getOverflowIndex(children: Element[]): number {
-        const {align, itemsLimit} = this.directive;
-        const {clientWidth} = this.el;
+        const {align, itemsLimit} = this.#directive;
+        const {clientWidth} = this.#el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
         const index = align() === 'start' ? 0 : items.length - 1;
         const more = children[index]?.tagName === 'SPAN' ? (items[index] ?? 0) : 0;
@@ -51,8 +51,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getIndexStart(items: number[], total: number, more: number): number {
-        const {required, itemsLimit} = this.directive;
-        const {clientWidth} = this.el;
+        const {required, itemsLimit} = this.#directive;
+        const {clientWidth} = this.#el;
         const min = Number.isFinite(itemsLimit()) ? items.length - itemsLimit() - 1 : 0;
         const last = items.length - 1;
         const mandatory = required() === -1 ? last : required();
@@ -73,8 +73,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getIndexEnd(items: number[], total: number, more: number): number {
-        const {required, itemsLimit} = this.directive;
-        const {clientWidth} = this.el;
+        const {required, itemsLimit} = this.#directive;
+        const {clientWidth} = this.#el;
         const max = itemsLimit() > required() ? itemsLimit() - 1 : itemsLimit() - 2;
         const last = items.length - 1;
         const mandatory = required() === -1 ? 0 : required;
@@ -95,8 +95,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getOverflowIndexMultiline(): number {
-        const {children} = this.el;
-        const {linesLimit, itemsLimit} = this.directive;
+        const {children} = this.#el;
+        const {linesLimit, itemsLimit} = this.#directive;
         const items = Array.from(children) as HTMLElement[];
         const rows = new Set(items.map((item) => item.offsetTop));
         const offset = Array.from(rows)[linesLimit() - 1];

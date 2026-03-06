@@ -20,18 +20,18 @@ export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] = tuiCreateOpt
     },
 })
 export class TuiHighlight implements OnChanges {
-    private readonly el = tuiInjectElement();
-    private readonly options = inject(TUI_HIGHLIGHT_OPTIONS);
-    private readonly doc = inject(DOCUMENT);
-    private readonly highlight: HTMLElement = this.setUpHighlight();
-    private readonly treeWalker = this.doc.createTreeWalker(
-        this.el,
+    readonly #el = tuiInjectElement();
+    readonly #options = inject(TUI_HIGHLIGHT_OPTIONS);
+    readonly #doc = inject(DOCUMENT);
+    readonly #highlight: HTMLElement = this.setUpHighlight();
+    readonly #treeWalker = this.#doc.createTreeWalker(
+        this.#el,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
     );
 
     public readonly tuiHighlight = input('');
-    public readonly tuiHighlightColor = input(this.options.highlightColor);
+    public readonly tuiHighlightColor = input(this.#options.highlightColor);
 
     constructor() {
         inject(WaResizeObserverService, {self: true})
@@ -44,33 +44,36 @@ export class TuiHighlight implements OnChanges {
     }
 
     protected get match(): boolean {
-        return this.indexOf(this.el.textContent) !== -1;
+        return this.indexOf(this.#el.textContent) !== -1;
     }
 
     private updateStyles(): void {
-        this.highlight.style.display = 'none';
+        this.#highlight.style.display = 'none';
 
         if (!this.match) {
             return;
         }
 
-        this.treeWalker.currentNode = this.el;
+        this.#treeWalker.currentNode = this.#el;
 
         do {
-            const index = this.indexOf(this.treeWalker.currentNode.nodeValue);
+            const index = this.indexOf(this.#treeWalker.currentNode.nodeValue);
 
             if (index === -1) {
                 continue;
             }
 
-            const range = this.doc.createRange();
+            const range = this.#doc.createRange();
 
-            range.setStart(this.treeWalker.currentNode, index);
-            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight().length);
+            range.setStart(this.#treeWalker.currentNode, index);
+            range.setEnd(
+                this.#treeWalker.currentNode,
+                index + this.tuiHighlight().length,
+            );
 
-            const hostRect = this.el.getBoundingClientRect();
+            const hostRect = this.#el.getBoundingClientRect();
             const {left, top, width, height} = range.getBoundingClientRect();
-            const {style} = this.highlight;
+            const {style} = this.#highlight;
 
             style.background = this.tuiHighlightColor();
             style.left = tuiPx(left - hostRect.left);
@@ -80,7 +83,7 @@ export class TuiHighlight implements OnChanges {
             style.display = 'block';
 
             return;
-        } while (this.treeWalker.nextNode());
+        } while (this.#treeWalker.nextNode());
     }
 
     private indexOf(source: string | null): number {
@@ -90,13 +93,13 @@ export class TuiHighlight implements OnChanges {
     }
 
     private setUpHighlight(): HTMLElement {
-        const highlight = this.doc.createElement('div');
+        const highlight = this.#doc.createElement('div');
         const {style} = highlight;
 
-        style.background = this.options.highlightColor;
+        style.background = this.#options.highlightColor;
         style.zIndex = '-1';
         style.position = 'absolute';
-        this.el.appendChild(highlight);
+        this.#el.appendChild(highlight);
 
         return highlight;
     }

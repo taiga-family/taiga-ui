@@ -32,9 +32,9 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
-    private readonly options = inject(TUI_TABLE_OPTIONS);
+    readonly #options = inject(TUI_TABLE_OPTIONS);
 
-    private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {optional: true});
+    readonly #head = inject<TuiTableHead<T>>(TuiTableHead, {optional: true});
 
     protected readonly width = signal<number | null>(null);
 
@@ -48,21 +48,21 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     public readonly maxWidth = input(Infinity);
 
     public sorter = model<TuiComparator<T> | null>(
-        this.head ? (a, b) => tuiDefaultSort(a[this.key], b[this.key]) : null,
+        this.#head ? (a, b) => tuiDefaultSort(a[this.key], b[this.key]) : null,
     );
 
-    public readonly resizable = input(this.options.resizable);
+    public readonly resizable = input(this.#options.resizable);
 
-    public readonly sticky = input(this.options.sticky);
+    public readonly sticky = input(this.#options.sticky);
 
-    public readonly requiredSort = input(this.options.requiredSort);
+    public readonly requiredSort = input(this.#options.requiredSort);
 
     public get key(): keyof T {
-        if (!this.head) {
+        if (!this.#head) {
             throw new TuiTableSortKeyException();
         }
 
-        return this.head.tuiHead() as keyof T;
+        return this.#head.tuiHead() as keyof T;
     }
 
     protected get isCurrent(): boolean {
@@ -72,11 +72,11 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     protected get icon(): string {
         if (this.isCurrent) {
             return this.table?.direction() === TuiSortDirection.Asc
-                ? this.options.sortIcons.asc
-                : this.options.sortIcons.desc;
+                ? this.#options.sortIcons.asc
+                : this.#options.sortIcons.desc;
         }
 
-        return this.options.sortIcons.off;
+        return this.#options.sortIcons.off;
     }
 
     protected updateSorterAndDirection(): void {

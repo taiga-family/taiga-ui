@@ -5,7 +5,7 @@ import {waitIcons} from '../wait-icons';
 import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
-    private readonly loadedIcons = new Set<string>();
+    readonly #loadedIcons = new Set<string>();
 
     public readonly examples: Locator = this.page.locator('tui-doc-example');
     public readonly demo: Locator = this.page.locator('tui-doc-demo > .t-wrapper');
@@ -125,6 +125,6 @@ export class TuiDocumentationApiPagePO {
     public async waitTuiIcons(): Promise<void> {
         const icons = await this.page.locator('tui-icon').all();
 
-        await waitIcons({page: this.page, icons, cache: this.loadedIcons});
+        await waitIcons({page: this.page, icons, cache: this.#loadedIcons});
     }
 }

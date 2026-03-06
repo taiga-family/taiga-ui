@@ -14,14 +14,14 @@ import {distinctUntilChanged, map, type Observable, share, skip, startWith} from
     exportAs: 'tuiActiveZone',
 })
 export class TuiActiveZone implements OnDestroy {
-    private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
-    private tuiActiveZoneParent: TuiActiveZone | null = null;
-    private readonly parent = inject(TuiActiveZone, {skipSelf: true, optional: true});
-    private readonly el: HTMLElement =
+    readonly #active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
+    #tuiActiveZoneParent: TuiActiveZone | null = null;
+    readonly #parent = inject(TuiActiveZone, {skipSelf: true, optional: true});
+    readonly #el: HTMLElement =
         inject(ElementRef, {optional: true})?.nativeElement ??
         inject(DOCUMENT).documentElement;
 
-    public readonly tuiActiveZoneChange = this.active$.pipe(
+    public readonly tuiActiveZoneChange = this.#active$.pipe(
         map((element) => !!element && this.contains(element)),
         startWith(false),
         distinctUntilChanged(),
@@ -33,24 +33,28 @@ export class TuiActiveZone implements OnDestroy {
     public children: readonly TuiActiveZone[] = [];
 
     constructor() {
-        this.parent?.addSubActiveZone(this);
+        this.#parent?.addSubActiveZone(this);
     }
 
     public set tuiActiveZoneParentSetter(zone: TuiActiveZone | null) {
-        this.tuiActiveZoneParent?.removeSubActiveZone(this);
+        this.#tuiActiveZoneParent?.removeSubActiveZone(this);
         zone?.addSubActiveZone(this);
-        this.tuiActiveZoneParent = zone;
+        this.#tuiActiveZoneParent = zone;
     }
 
     public ngOnDestroy(): void {
-        this.parent?.removeSubActiveZone(this);
-        this.tuiActiveZoneParent?.removeSubActiveZone(this);
+        this.#parent?.removeSubActiveZone(this);
+        this.#tuiActiveZoneParent?.removeSubActiveZone(this);
     }
 
     public contains(node: Node): boolean {
         return (
-            this.el.contains(node) || this.children.some((item) => item.contains(node))
+            this.#el.contains(node) || this.children.some((item) => item.contains(node))
         );
+    }
+
+    public matches(selector: string): boolean {
+        return this.#el.matches(selector);
     }
 
     // issue: https://github.com/typescript-eslint/typescript-eslint/issues/11770

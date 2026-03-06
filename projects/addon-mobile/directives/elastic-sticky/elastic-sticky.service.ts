@@ -14,11 +14,11 @@ import {distinctUntilChanged, map, Observable, scan, Subscription} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
-    private readonly injector = inject(INJECTOR);
-    private readonly el = tuiInjectElement();
-    private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
+    readonly #injector = inject(INJECTOR);
+    readonly #el = tuiInjectElement();
+    readonly #scrollRef = inject(TUI_SCROLL_REF).nativeElement;
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #zone = inject(NgZone);
 
     constructor() {
         super((subscriber) => {
@@ -39,13 +39,13 @@ export class TuiElasticStickyService extends Observable<number> {
                                             Math.round(this.host.scrollTop) - top,
                                             0,
                                         ) /
-                                            this.el.offsetHeight,
+                                            this.#el.offsetHeight,
                                     0,
                                 ),
                             ),
                             distinctUntilChanged(),
-                            tuiZoneOptimized(this.zone),
-                            takeUntilDestroyed(this.destroyRef),
+                            tuiZoneOptimized(this.#zone),
+                            takeUntilDestroyed(this.#destroyRef),
                         )
                         .subscribe(subscriber);
 
@@ -55,7 +55,7 @@ export class TuiElasticStickyService extends Observable<number> {
                         teardown.unsubscribe();
                     }
                 },
-                {injector: this.injector},
+                {injector: this.#injector},
             );
 
             return subscription;
@@ -64,16 +64,16 @@ export class TuiElasticStickyService extends Observable<number> {
 
     private get host(): Element {
         // TODO: Test if we still need it now, that templates pass injector
-        return this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
+        return this.#el.closest(SCROLL_REF_SELECTOR) || this.#scrollRef;
     }
 
     private get offsetTop(): number {
-        return tuiGetElementOffset(this.host, this.el).offsetTop;
+        return tuiGetElementOffset(this.host, this.#el).offsetTop;
     }
 
     private get pinned(): boolean {
         return (
-            this.el.getBoundingClientRect().top -
+            this.#el.getBoundingClientRect().top -
                 this.host.getBoundingClientRect().top ===
             0
         );

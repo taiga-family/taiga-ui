@@ -26,7 +26,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class PageComponent {
-    private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
+    readonly #options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
 
     protected readonly examples = [
         'With validation',
@@ -47,7 +47,7 @@ export default class PageComponent {
     protected iconSelected: PolymorpheusContent = null;
 
     protected id = '';
-    protected placeholder = this.options.placeholder;
+    protected placeholder = this.#options.placeholder;
 
     protected readonly codeLengthVariants = [3, 4] as const;
     protected codeLength: 3 | 4 = this.codeLengthVariants[0];
@@ -59,7 +59,7 @@ export default class PageComponent {
         {cvc: true, expire: false},
     ];
 
-    protected inputs = this.options.inputs;
+    protected inputs = this.#options.inputs;
     protected compact = false;
 
     protected formControl = new FormControl<TuiCard | null>(null);

@@ -26,14 +26,14 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSearchHistory {
-    private readonly textfield = inject(TuiTextfieldComponent);
-    private readonly storage = inject(WA_LOCAL_STORAGE);
-    private readonly control = inject(NgControl);
+    readonly #textfield = inject(TuiTextfieldComponent);
+    readonly #storage = inject(WA_LOCAL_STORAGE);
+    readonly #control = inject(NgControl);
 
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly i18n = inject(TUI_INPUT_SEARCH);
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
-    protected readonly $ = this.control.valueChanges
+    protected readonly $ = this.#control.valueChanges
         ?.pipe(
             map(String),
             filter((item) => !!item && !this.popular().includes(item)),
@@ -48,7 +48,7 @@ export class TuiSearchHistory {
     public readonly popular = input<readonly string[]>([]);
 
     protected store(item: string): void {
-        this.storage?.setItem(
+        this.#storage?.setItem(
             this.options.key,
             JSON.stringify(
                 Array.from(new Set([item.trim(), ...this.items]))
@@ -59,20 +59,20 @@ export class TuiSearchHistory {
     }
 
     protected remove(item: string): void {
-        this.textfield.input()?.nativeElement.focus();
+        this.#textfield.input()?.nativeElement.focus();
         this.history = this.history.filter((v) => v !== item);
-        this.storage?.setItem(
+        this.#storage?.setItem(
             this.options.key,
             JSON.stringify(this.items.filter((v) => v !== item)),
         );
     }
 
     protected select(item: string): void {
-        this.control.control?.setValue(item);
-        this.textfield.input()?.nativeElement.focus();
+        this.#control.control?.setValue(item);
+        this.#textfield.input()?.nativeElement.focus();
     }
 
     private get items(): readonly string[] {
-        return JSON.parse(this.storage?.getItem(this.options.key) || '[]');
+        return JSON.parse(this.#storage?.getItem(this.options.key) || '[]');
     }
 }

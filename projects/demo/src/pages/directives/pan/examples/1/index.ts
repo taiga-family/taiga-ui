@@ -14,13 +14,13 @@ import {BehaviorSubject, map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly sanitizer = inject(DomSanitizer);
+    readonly #sanitizer = inject(DomSanitizer);
 
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     protected readonly transform$ = this.coordinates$.pipe(
         map((coords) =>
-            this.sanitizer.bypassSecurityTrustStyle(
+            this.#sanitizer.bypassSecurityTrustStyle(
                 `translate(${coords[0]}px, ${coords[1]}px)`,
             ),
         ),

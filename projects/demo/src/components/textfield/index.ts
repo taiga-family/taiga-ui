@@ -16,7 +16,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocTextfield {
-    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    readonly #options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
@@ -26,8 +26,8 @@ export class TuiDocTextfield {
         'rows',
     ]);
 
-    public cleaner: boolean = this.options.cleaner();
-    public size: TuiSizeL | TuiSizeS = this.options.size();
+    public cleaner: boolean = this.#options.cleaner();
+    public size: TuiSizeL | TuiSizeS = this.#options.size();
     public rows = 100;
     public content: PolymorpheusContent = '';
 }

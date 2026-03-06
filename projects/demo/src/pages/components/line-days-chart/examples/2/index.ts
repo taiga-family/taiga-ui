@@ -39,8 +39,8 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly isE2E = inject(WA_IS_E2E);
-    private readonly months = inject(TUI_MONTHS);
+    readonly #isE2E = inject(WA_IS_E2E);
+    readonly #months = inject(TUI_MONTHS);
 
     protected readonly data = signal(
         new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({month: 5})),
@@ -80,7 +80,7 @@ export default class Example {
     protected readonly labels = computed(() => {
         const {from, to} = this.show();
         const length = TuiDay.lengthBetween(from, to);
-        const months = this.months();
+        const months = this.#months();
 
         if (length > 90) {
             return [
@@ -140,7 +140,7 @@ export default class Example {
                     ...array,
                     [
                         from.append({day: i}),
-                        this.isE2E
+                        this.#isE2E
                             ? initial
                             : Math.max(
                                   (i ? (array[i - 1]?.[1] ?? 0) : initial) +

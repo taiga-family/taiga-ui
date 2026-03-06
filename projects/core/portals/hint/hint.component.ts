@@ -68,10 +68,10 @@ const GAP = 8;
     },
 })
 export class TuiHintComponent {
-    private readonly el = tuiInjectElement();
-    private readonly hover = inject(TuiHintHover);
-    private readonly vvs = inject(TuiVisualViewportService);
-    private readonly viewport = inject(TUI_VIEWPORT);
+    readonly #el = tuiInjectElement();
+    readonly #hover = inject(TuiHintHover);
+    readonly #vvs = inject(TuiVisualViewportService);
+    readonly #viewport = inject(TUI_VIEWPORT);
 
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
@@ -93,55 +93,55 @@ export class TuiHintComponent {
         inject(TuiPositionService)
             .pipe(
                 takeWhile(() => this.hint.el.isConnected),
-                map((point) => this.vvs.correct(point)),
+                map((point) => this.#vvs.correct(point)),
                 takeUntilDestroyed(),
             )
             .subscribe({
                 next: (point) => this.update(...point),
-                complete: () => this.hover.close(),
+                complete: () => this.#hover.close(),
             });
 
         inject(TuiHoveredService)
             .pipe(takeUntilDestroyed())
-            .subscribe((hover) => this.hover.toggle(hover));
+            .subscribe((hover) => this.#hover.toggle(hover));
     }
 
     protected onClick(target: HTMLElement): void {
         if (
-            (!target.closest(this.el.tagName) && !this.hint.el.contains(target)) ||
+            (!target.closest(this.#el.tagName) && !this.hint.el.contains(target)) ||
             tuiIsObscured(this.hint.el)
         ) {
-            this.hover.toggle(false);
+            this.#hover.toggle(false);
         }
     }
 
     private apply(top: string, left: string, beakTop: number, beakLeft: number): void {
-        this.el.style.setProperty('top', top);
-        this.el.style.setProperty('left', left);
-        this.el.style.setProperty('--t-top', `${beakTop}%`);
-        this.el.style.setProperty('--t-left', `${beakLeft}%`);
-        this.el.style.setProperty(
+        this.#el.style.setProperty('top', top);
+        this.#el.style.setProperty('left', left);
+        this.#el.style.setProperty('--t-top', `${beakTop}%`);
+        this.#el.style.setProperty('--t-left', `${beakLeft}%`);
+        this.#el.style.setProperty(
             '--t-rotate',
             !beakLeft || Math.ceil(beakLeft) === 100 ? '90deg' : '0deg',
         );
     }
 
     private update(left: number, top: number): void {
-        const {clientHeight, clientWidth} = this.el;
+        const {clientHeight, clientWidth} = this.#el;
         const rect = this.accessor.getClientRect();
 
         if (rect === EMPTY_CLIENT_RECT || !clientHeight || !clientWidth) {
             return;
         }
 
-        const viewport = this.viewport.getClientRect();
+        const viewport = this.#viewport.getClientRect();
         const safeLeft = tuiClamp(
             Math.max(GAP, left),
             viewport.left + GAP,
             Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
         );
 
-        const [beakTop, beakLeft] = this.vvs.correct([
+        const [beakTop, beakLeft] = this.#vvs.correct([
             rect.top + rect.height / 2 - top,
             rect.left + rect.width / 2 - safeLeft,
         ]);

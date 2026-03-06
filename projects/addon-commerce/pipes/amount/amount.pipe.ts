@@ -20,44 +20,46 @@ const DEFAULT_PRECISION = 2;
 
 @Pipe({name: 'tuiAmount', pure: false})
 export class TuiAmountPipe implements PipeTransform {
-    private readonly options = inject(TUI_AMOUNT_OPTIONS);
-    private readonly format = inject(TUI_NUMBER_FORMAT);
-    private readonly value = signal(NaN);
-    private readonly currency = signal(this.options.currency);
-    private readonly currencyAlign = signal(this.options.currencyAlign);
-    private readonly formatted = computed(() => {
-        const format = this.format();
-        const currencySymbol = tuiFormatCurrency(this.currency());
-        const formatted = tuiFormatNumber(Math.abs(this.value()), {
+    readonly #options = inject(TUI_AMOUNT_OPTIONS);
+    readonly #format = inject(TUI_NUMBER_FORMAT);
+    readonly #value = signal(NaN);
+    readonly #currency = signal(this.#options.currency);
+    readonly #currencyAlign = signal(this.#options.currencyAlign);
+    readonly #formatted = computed(() => {
+        const format = this.#format();
+        const currencySymbol = tuiFormatCurrency(this.#currency());
+        const formatted = tuiFormatNumber(Math.abs(this.#value()), {
             ...format,
             precision: Number.isNaN(format.precision)
                 ? DEFAULT_PRECISION
                 : format.precision,
         });
         const sign =
-            formatted === '0' ? '' : tuiFormatSignSymbol(this.value(), this.options.sign);
+            formatted === '0'
+                ? ''
+                : tuiFormatSignSymbol(this.#value(), this.#options.sign);
         const space =
             currencySymbol &&
-            (currencySymbol?.length > 1 || this.currencyAlign() === 'end')
+            (currencySymbol?.length > 1 || this.#currencyAlign() === 'end')
                 ? CHAR_NO_BREAK_SPACE
                 : '';
 
-        return this.currencyAlign() === 'end'
+        return this.#currencyAlign() === 'end'
             ? `${sign}${formatted}${space}${currencySymbol}`
             : `${sign}${currencySymbol}${space}${formatted}`;
     });
 
     public transform(
         value: number,
-        currency: TuiCurrencyVariants = this.options.currency,
-        currencyAlign: TuiHorizontalDirection = this.options.currencyAlign,
+        currency: TuiCurrencyVariants = this.#options.currency,
+        currencyAlign: TuiHorizontalDirection = this.#options.currencyAlign,
     ): string {
         untracked(() => {
-            this.value.set(value);
-            this.currency.set(currency);
-            this.currencyAlign.set(currencyAlign);
+            this.#value.set(value);
+            this.#currency.set(currency);
+            this.#currencyAlign.set(currencyAlign);
         });
 
-        return this.formatted();
+        return this.#formatted();
     }
 }

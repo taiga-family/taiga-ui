@@ -11,8 +11,8 @@ import {TuiActionBar} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly breakpoint = inject(TUI_BREAKPOINT);
+    readonly #breakpoint = inject(TUI_BREAKPOINT);
     protected open = signal(false);
 
-    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
+    protected readonly isMobile = computed(() => this.#breakpoint() === 'mobile');
 }

@@ -14,8 +14,8 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     changeDetection,
 })
 export default class Example {
-    private readonly previewService = inject(TuiPreviewDialogService);
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #previewService = inject(TuiPreviewDialogService);
+    readonly #alerts = inject(TuiNotificationService);
 
     @ViewChild('preview')
     protected readonly preview?: TemplateRef<TuiDialogContext>;
@@ -34,17 +34,17 @@ export default class Example {
     }
 
     protected show(): void {
-        this.previewService.open(this.preview || '').subscribe({
+        this.#previewService.open(this.preview || '').subscribe({
             complete: () => console.info('complete'),
         });
     }
 
     protected download(): void {
-        this.alerts.open('Downloading...').subscribe();
+        this.#alerts.open('Downloading...').subscribe();
     }
 
     protected delete(): void {
-        this.alerts.open('Deleting...').subscribe();
+        this.#alerts.open('Deleting...').subscribe();
     }
 
     protected onSwipe(swipe: TuiSwipeEvent): void {

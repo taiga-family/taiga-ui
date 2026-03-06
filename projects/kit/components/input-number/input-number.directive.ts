@@ -24,15 +24,15 @@ const DEFAULT_MAX_LENGTH = 18;
     },
 })
 export class TuiInputNumberDirective extends TuiControl<string> {
-    private readonly mask = inject(TuiNumberMask);
-    private readonly input = inject(TuiInputDirective);
-    private readonly isIOS = inject(WA_IS_IOS);
+    readonly #mask = inject(TuiNumberMask);
+    readonly #input = inject(TuiInputDirective);
+    readonly #isIOS = inject(WA_IS_IOS);
 
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
     protected readonly inputMode = computed(() => {
-        if (this.isIOS) {
-            return this.mask.min() < 0
+        if (this.#isIOS) {
+            return this.#mask.min() < 0
                 ? 'text' // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
                 : 'decimal';
         }
@@ -53,14 +53,14 @@ export class TuiInputNumberDirective extends TuiControl<string> {
             postfix,
             min,
             max,
-        } = this.mask.params();
+        } = this.#mask.params();
 
         if (!Number.isFinite(min) || !Number.isFinite(max)) {
             return -1;
         }
 
         const decimalPart =
-            !!maximumFractionDigits && this.input.value().includes(decimalSeparator);
+            !!maximumFractionDigits && this.#input.value().includes(decimalSeparator);
         const precision = decimalPart ? Math.min(maximumFractionDigits + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
         const affixes = prefix.length + postfix.length;
@@ -68,19 +68,20 @@ export class TuiInputNumberDirective extends TuiControl<string> {
         return DEFAULT_MAX_LENGTH + precision + takeThousand + affixes;
     });
 
-    public readonly parsed = computed(() => this.parse(this.input.value()));
+    public readonly parsed = computed(() => this.parse(this.#input.value()));
 
     protected readonly onChangeEffect = effect(() => {
         const changed = !Object.is(
-            this.input.value().replaceAll(/\D/g, ''),
+            this.#input.value().replaceAll(/\D/g, ''),
             untracked(() => this.value()?.replaceAll(/\D/g, '')) ?? '',
         );
         const value = this.parsed();
         const valid =
-            Number.isNaN(value) || (value >= this.mask.min() && value <= this.mask.max());
+            Number.isNaN(value) ||
+            (value >= this.#mask.min() && value <= this.#mask.max());
 
         if (changed && valid) {
-            this.onChange(this.input.value());
+            this.onChange(this.#input.value());
         }
     });
 
@@ -92,19 +93,19 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.input.value.set(this.value()));
+            untracked(() => this.#input.value.set(this.value()));
         }
     }
 
     public setValue(value: bigint | number | string | null): void {
-        this.input.value.set(
-            typeof value === 'string' ? value : this.mask.stringify(value),
+        this.#input.value.set(
+            typeof value === 'string' ? value : this.#mask.stringify(value),
         );
     }
 
     protected onFocus(): void {
-        if (!this.input.value() && !this.readOnly()) {
-            this.input.value.set(this.mask.prefix() + this.mask.postfix());
+        if (!this.#input.value() && !this.readOnly()) {
+            this.#input.value.set(this.#mask.prefix() + this.#mask.postfix());
         }
     }
 
@@ -115,9 +116,9 @@ export class TuiInputNumberDirective extends TuiControl<string> {
     }
 
     private parse(value: string): bigint | number {
-        const params = this.mask.params();
+        const params = this.#mask.params();
         const possibleTooBig =
-            !Number.isFinite(this.mask.min()) || !Number.isFinite(this.mask.max());
+            !Number.isFinite(this.#mask.min()) || !Number.isFinite(this.#mask.max());
 
         return (
             maskitoParseNumber(value, {

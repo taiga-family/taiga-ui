@@ -13,12 +13,12 @@ import {TuiPdfViewer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    private readonly sanitizer = inject(DomSanitizer);
+    readonly #sanitizer = inject(DomSanitizer);
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
-    protected readonly url = this.sanitizer.bypassSecurityTrustResourceUrl(
+    protected readonly url = this.#sanitizer.bypassSecurityTrustResourceUrl(
         this.isMobile
             ? `https://drive.google.com/viewerng/viewer?embedded=true&url=https://taiga-ui.dev/${this.pdf}`
             : this.pdf,

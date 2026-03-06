@@ -23,7 +23,7 @@ import {type TuiNotificationOptions} from './notification.options';
     host: {role: 'alert'},
 })
 export class TuiNotificationComponent<O, I> {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly close = inject(TUI_CLOSE_WORD);
@@ -37,8 +37,8 @@ export class TuiNotificationComponent<O, I> {
     )
         .pipe(
             switchMap((autoClose) => (autoClose ? timer(autoClose) : EMPTY)),
-            takeUntil(fromEvent(this.el, 'mouseenter')),
-            repeat({delay: () => fromEvent(this.el, 'mouseleave')}),
+            takeUntil(fromEvent(this.#el, 'mouseenter')),
+            repeat({delay: () => fromEvent(this.#el, 'mouseleave')}),
             takeUntilDestroyed(),
         )
         .subscribe(() => this.item.$implicit.complete());

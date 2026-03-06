@@ -36,24 +36,24 @@ import {type TuiToastOptions} from './toast.options';
 })
 export class TuiToastComponent<O, I> implements AfterViewInit {
     private readonly close = viewChild(TuiButton, {read: ElementRef});
-
-    private readonly el = tuiInjectElement();
-
+    readonly #el = tuiInjectElement();
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly context = injectContext<TuiPortalContext<TuiToastOptions<I>, O>>();
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly $ = of(this.context.autoClose)
         .pipe(
             switchMap((autoClose) => (autoClose ? timer(autoClose) : EMPTY)),
-            takeUntil(fromEvent(this.el, 'mouseenter')),
-            repeat({delay: () => fromEvent(this.el, 'mouseleave')}),
+            takeUntil(fromEvent(this.#el, 'mouseenter')),
+            repeat({delay: () => fromEvent(this.#el, 'mouseleave')}),
             takeUntilDestroyed(),
         )
         .subscribe(() => this.context.$implicit.complete());
 
     public ngAfterViewInit(): void {
         if (this.close()) {
-            this.el.querySelector('[tuiToast]')?.appendChild(this.close()?.nativeElement);
+            this.#el
+                .querySelector('[tuiToast]')
+                ?.appendChild(this.close()?.nativeElement);
         }
     }
 

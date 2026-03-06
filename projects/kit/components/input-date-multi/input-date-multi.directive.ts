@@ -38,9 +38,9 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     host: {'(keydown.enter.prevent)': '0'},
 })
 export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
-    private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS);
+    readonly #dateOptions = inject(TUI_INPUT_DATE_OPTIONS);
 
-    protected readonly icon = tuiIconEnd(this.dateOptions.icon);
+    protected readonly icon = tuiIconEnd(this.#dateOptions.icon);
     protected readonly filler = tuiWithDateFiller();
     protected readonly format = inject(TUI_DATE_FORMAT);
 
@@ -56,8 +56,8 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
             maskitoDateOptionsGenerator({
                 separator: this.format().separator,
                 mode: this.format().mode,
-                min: (this.min() ?? this.dateOptions.min).toLocalNativeDate(),
-                max: (this.max() ?? this.dateOptions.max).toLocalNativeDate(),
+                min: (this.min() ?? this.#dateOptions.min).toLocalNativeDate(),
+                max: (this.max() ?? this.#dateOptions.max).toLocalNativeDate(),
             }),
         ),
     );
@@ -80,8 +80,8 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly min = input<TuiDay | null>(this.dateOptions.min);
-    public readonly max = input<TuiDay | null>(this.dateOptions.max);
+    public readonly min = input<TuiDay | null>(this.#dateOptions.min);
+    public readonly max = input<TuiDay | null>(this.#dateOptions.max);
 
     protected processCalendar(calendar: TuiCalendar): void {
         calendar.value = this.value();

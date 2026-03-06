@@ -13,17 +13,17 @@ import {type Subscription} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly popout = inject(TuiPopoutService);
-    private sub: Subscription | null = null;
+    readonly #popout = inject(TuiPopoutService);
+    #sub: Subscription | null = null;
 
     protected readonly value = signal('Value');
 
     protected toggle(content: TemplateRef<any>): void {
-        if (this.sub) {
-            this.sub.unsubscribe();
-            this.sub = null;
+        if (this.#sub) {
+            this.#sub.unsubscribe();
+            this.#sub = null;
         } else {
-            this.sub = this.popout
+            this.#sub = this.#popout
                 .open(content, {
                     title: 'Page',
                     features: {
@@ -35,7 +35,7 @@ export default class Example {
                 })
                 .subscribe({
                     complete: () => {
-                        this.sub = null;
+                        this.#sub = null;
                     },
                 });
         }

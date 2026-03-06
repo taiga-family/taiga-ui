@@ -13,17 +13,17 @@ import {TuiChip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected readonly checked = [true, false, true];
     protected readonly values = ['test', 'Some text', 'WOW!'];
 
     protected onChip(index: number): void {
-        this.alerts.open(`Clicked chip ${index + 1}`).subscribe();
+        this.#alerts.open(`Clicked chip ${index + 1}`).subscribe();
     }
 
     protected onX(index: number): void {
-        this.alerts
+        this.#alerts
             .open(`Removed chip ${index + 1}`, {appearance: 'negative'})
             .subscribe();
     }

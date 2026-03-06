@@ -48,11 +48,11 @@ const SERIALIZED_SUFFIX = '$';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocAPIItem<T> implements OnInit {
-    private readonly locationRef = inject(Location);
-    private readonly activatedRoute = inject(ActivatedRoute);
-    private readonly urlSerializer = inject(UrlSerializer);
-    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
-    private readonly alerts = inject(TuiNotificationService);
+    readonly #locationRef = inject(Location);
+    readonly #activatedRoute = inject(ActivatedRoute);
+    readonly #urlSerializer = inject(UrlSerializer);
+    readonly #urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    readonly #alerts = inject(TuiNotificationService);
 
     protected readonly numberItem = inject(TuiDocAPINumberItem, {
         self: true,
@@ -73,7 +73,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     );
 
     public ngOnInit(): void {
-        this.parseParams(this.activatedRoute.snapshot.queryParams);
+        this.parseParams(this.#activatedRoute.snapshot.queryParams);
     }
 
     public onValueChange(value: T): void {
@@ -89,7 +89,7 @@ export class TuiDocAPIItem<T> implements OnInit {
                 ? tuiInspect(event, 2)
                 : (event as string);
 
-        this.alerts.open(alert, {label: this.name()}).subscribe();
+        this.#alerts.open(alert, {label: this.name()}).subscribe();
     }
 
     private clearBrackets(value: string): string {
@@ -120,7 +120,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     }
 
     private setQueryParam(value: T | boolean | number | string | null): void {
-        const tree = this.urlSerializer.parse(this.locationRef.path());
+        const tree = this.#urlSerializer.parse(this.#locationRef.path());
 
         const isValueAvailableByKey = value instanceof Object;
         const items = this.items();
@@ -135,6 +135,6 @@ export class TuiDocAPIItem<T> implements OnInit {
             [propName]: computedValue,
         };
 
-        this.locationRef.go(this.urlStateHandler(tree));
+        this.#locationRef.go(this.#urlStateHandler(tree));
     }
 }

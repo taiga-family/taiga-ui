@@ -21,11 +21,11 @@ import {SEARCH_CONFIG} from './env';
     host: {'[attr.id]': "'docsearch'"},
 })
 export class TuiAlgoliaSearch {
-    private readonly config = inject(SEARCH_CONFIG);
+    readonly #config = inject(SEARCH_CONFIG);
 
     protected readonly afterNextRender = afterNextRender(() =>
         docsearch({
-            ...this.config,
+            ...this.#config,
             maxResultsPerGroup: 7,
             transformSearchClient: (searchClient) => {
                 const search = searchClient.search.bind(searchClient);

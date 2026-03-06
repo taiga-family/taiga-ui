@@ -12,33 +12,33 @@ import {TuiTile} from './tile.component';
     host: {'(pointerdown.zoneless.prevent)': 'onStart($event)'},
 })
 export class TuiTileHandle {
-    private readonly doc = inject(DOCUMENT);
-    private readonly tile = inject(TuiTile);
-    private x = NaN;
-    private y = NaN;
+    readonly #doc = inject(DOCUMENT);
+    readonly #tile = inject(TuiTile);
+    #x = NaN;
+    #y = NaN;
 
     protected readonly pointerSub = merge(
-        tuiTypedFromEvent(this.doc, 'pointerup'),
-        tuiTypedFromEvent(this.doc, 'pointermove'),
+        tuiTypedFromEvent(this.#doc, 'pointerup'),
+        tuiTypedFromEvent(this.#doc, 'pointermove'),
     )
         .pipe(
-            filter(() => !Number.isNaN(this.x)),
+            filter(() => !Number.isNaN(this.#x)),
             takeUntilDestroyed(),
         )
         .subscribe(({x, y, type}) => {
             if (type === 'pointerup') {
                 this.onPointer();
             } else {
-                this.tile.onDrag([x - this.x, y - this.y]);
+                this.#tile.onDrag([x - this.#x, y - this.#y]);
             }
         });
 
     protected onPointer(x = NaN, y = NaN): void {
-        const {left, top} = this.tile.element.getBoundingClientRect();
+        const {left, top} = this.#tile.element.getBoundingClientRect();
 
-        this.x = x - left;
-        this.y = y - top;
-        this.tile.onDrag([NaN, NaN]);
+        this.#x = x - left;
+        this.#y = y - top;
+        this.#tile.onDrag([NaN, NaN]);
     }
 
     protected onStart(event: PointerEvent): void {

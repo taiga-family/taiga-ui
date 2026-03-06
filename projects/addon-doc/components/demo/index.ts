@@ -93,11 +93,11 @@ export class TuiDocDemo implements AfterViewInit {
     private readonly content: Signal<ElementRef<HTMLElement>> =
         viewChild.required<ElementRef<HTMLElement>>('content');
 
-    private readonly el = tuiInjectElement();
-    private readonly locationRef = inject(Location);
-    private readonly urlSerializer = inject(UrlSerializer);
-    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
-    private readonly darkMode = inject(TUI_DARK_MODE);
+    readonly #el = tuiInjectElement();
+    readonly #locationRef = inject(Location);
+    readonly #urlSerializer = inject(UrlSerializer);
+    readonly #urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    readonly #darkMode = inject(TUI_DARK_MODE);
 
     protected readonly template = contentChild(TemplateRef<Record<string, unknown>>);
 
@@ -106,10 +106,10 @@ export class TuiDocDemo implements AfterViewInit {
     protected theme = computed(() => (this.dark() ? 'dark' : 'light'));
 
     protected dark = signal(
-        tuiCoerceValueIsTrue(this.params.darkMode ?? this.darkMode()),
+        tuiCoerceValueIsTrue(this.params.darkMode ?? this.#darkMode()),
     );
 
-    protected readonly $ = toObservable(this.darkMode)
+    protected readonly $ = toObservable(this.#darkMode)
         .pipe(skip(1), takeUntilDestroyed())
         .subscribe((mode) => this.onModeChange(mode));
 
@@ -170,7 +170,7 @@ export class TuiDocDemo implements AfterViewInit {
         }
 
         const safe = width || this.resizable().nativeElement.clientWidth;
-        const total = this.el.clientWidth;
+        const total = this.#el.clientWidth;
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
         const validated = safe < total ? clamped : NaN;
 
@@ -200,7 +200,7 @@ export class TuiDocDemo implements AfterViewInit {
             ...tuiCleanObject({...params}),
         };
 
-        this.locationRef.go(this.urlStateHandler(tree));
+        this.#locationRef.go(this.#urlStateHandler(tree));
     }
 
     private createForm(): void {
@@ -212,6 +212,6 @@ export class TuiDocDemo implements AfterViewInit {
     }
 
     private getUrlTree(): UrlTree {
-        return this.urlSerializer.parse(this.locationRef.path());
+        return this.#urlSerializer.parse(this.#locationRef.path());
     }
 }

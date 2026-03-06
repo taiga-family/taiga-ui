@@ -8,29 +8,29 @@ import {combineLatest, EMPTY, interval, map, merge, Observable, Subject} from 'r
 
 @Directive()
 export class TuiCarouselDirective extends Observable<unknown> {
-    private readonly el = tuiInjectElement();
-    private readonly platform = inject(PLATFORM_ID);
-    private readonly visible$ = inject(WA_PAGE_VISIBILITY);
-    private readonly zone = inject(NgZone);
-    private readonly trigger$ = new Subject<void>();
-    private readonly running$ = merge(
-        tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(TUI_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'touchstart').pipe(map(TUI_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'touchend').pipe(map(TUI_TRUE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'mouseleave').pipe(map(TUI_TRUE_HANDLER)),
-        this.visible$,
+    readonly #el = tuiInjectElement();
+    readonly #platform = inject(PLATFORM_ID);
+    readonly #visible$ = inject(WA_PAGE_VISIBILITY);
+    readonly #zone = inject(NgZone);
+    readonly #trigger$ = new Subject<void>();
+    readonly #running$ = merge(
+        tuiTypedFromEvent(this.#el, 'mouseenter').pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'touchstart').pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'touchend').pipe(map(TUI_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.#el, 'mouseleave').pipe(map(TUI_TRUE_HANDLER)),
+        this.#visible$,
     );
 
     public readonly duration = input(0);
 
-    protected readonly output$ = isPlatformServer(this.platform)
+    protected readonly output$ = isPlatformServer(this.#platform)
         ? EMPTY
         : combineLatest([
-              this.trigger$.pipe(map(() => this.duration())),
-              this.running$,
+              this.#trigger$.pipe(map(() => this.duration())),
+              this.#running$,
           ]).pipe(
               tuiIfMap(
-                  ([duration]) => interval(duration).pipe(tuiZoneOptimized(this.zone)),
+                  ([duration]) => interval(duration).pipe(tuiZoneOptimized(this.#zone)),
                   (values) => values.every(Boolean),
               ),
           );
@@ -40,6 +40,6 @@ export class TuiCarouselDirective extends Observable<unknown> {
     }
 
     public restart(): void {
-        this.trigger$.next();
+        this.#trigger$.next();
     }
 }

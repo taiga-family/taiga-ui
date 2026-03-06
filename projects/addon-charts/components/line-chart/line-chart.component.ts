@@ -34,9 +34,9 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     host: {'(mouseleave)': 'onMouseLeave()'},
 })
 export class TuiLineChart {
-    private readonly options = inject(TUI_LINE_CHART_OPTIONS);
-    private readonly autoId = tuiGenerateId();
-    private readonly resize = toSignal(
+    readonly #options = inject(TUI_LINE_CHART_OPTIONS);
+    readonly #autoId = tuiGenerateId();
+    readonly #resize = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
             map(([e]) => e?.contentRect.height || NaN),
             filter((height) => !Number.isNaN(height)),
@@ -44,19 +44,19 @@ export class TuiLineChart {
         {initialValue: NaN},
     );
 
-    private readonly box = computed(
+    readonly #box = computed(
         () => `${this.x()} ${this.y()} ${this.width()} ${this.height()}`,
     );
 
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
     protected readonly hintOptions = inject(TuiChartHint, {optional: true});
     protected readonly viewBox = computed(() => {
-        if (Number.isNaN(this.resize())) {
+        if (Number.isNaN(this.#resize())) {
             return '0 0 0 0';
         }
 
-        const offset = this.height() / Math.max(this.resize(), 1);
-        const [x = 0, y = 0, width = 0, height = 0] = this.box().split(' ').map(Number);
+        const offset = this.height() / Math.max(this.#resize(), 1);
+        const [x = 0, y = 0, width = 0, height = 0] = this.#box().split(' ').map(Number);
 
         return `${x} ${y - offset} ${width} ${height + 2 * offset}`;
     });
@@ -84,13 +84,13 @@ export class TuiLineChart {
     public readonly y = input(0);
     public readonly width = input(0);
     public readonly height = input(0);
-    public readonly smoothingFactor = input(this.options.smoothingFactor);
+    public readonly smoothingFactor = input(this.#options.smoothingFactor);
 
     public xStringify = input<TuiStringHandler<number> | null>(null);
     public yStringify = input<TuiStringHandler<number> | null>(null);
 
-    public readonly filled = input(this.options.filled);
-    public readonly dots = input(this.options.dots);
+    public readonly filled = input(this.#options.filled);
+    public readonly dots = input(this.#options.dots);
 
     public value = input<readonly TuiPoint[], readonly TuiPoint[]>([], {
         transform: (value) => value.filter((item) => !item.some(Number.isNaN)),
@@ -107,7 +107,7 @@ export class TuiLineChart {
     }
 
     protected get fillId(): string {
-        return `tui-line-chart-${this.autoId}`;
+        return `tui-line-chart-${this.#autoId}`;
     }
 
     protected get fill(): string {
@@ -148,7 +148,7 @@ export class TuiLineChart {
     }
 
     protected getHintId(index: number): string {
-        return `${this.autoId}_${index}`;
+        return `${this.#autoId}_${index}`;
     }
 
     protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {

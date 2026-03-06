@@ -41,7 +41,7 @@ export abstract class AbstractDemo implements OnInit {
     protected abstract readonly storage: Storage | null;
     protected abstract readonly router: Router;
 
-    private readonly today = new Date();
+    readonly #today = new Date();
 
     public ngOnInit(): void {
         void this.replaceEnvInURI();
@@ -49,8 +49,8 @@ export abstract class AbstractDemo implements OnInit {
 
     protected get isChristmas(): boolean {
         return (
-            (!this.today.getMonth() && this.today.getDate() < 14) ||
-            (this.today.getMonth() === 11 && this.today.getDate() > 24)
+            (!this.#today.getMonth() && this.#today.getDate() < 14) ||
+            (this.#today.getMonth() === 11 && this.#today.getDate() > 24)
         );
     }
 

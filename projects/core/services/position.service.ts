@@ -9,8 +9,8 @@ import {finalize, map, Observable, startWith} from 'rxjs';
 
 @Injectable()
 export class TuiPositionService extends Observable<TuiPoint> {
-    private readonly el = tuiInjectElement();
-    private readonly accessor = inject(TuiPositionAccessor);
+    readonly #el = tuiInjectElement();
+    readonly #accessor = inject(TuiPositionAccessor);
 
     constructor() {
         const animationFrame$ = inject(WA_ANIMATION_FRAME);
@@ -20,9 +20,11 @@ export class TuiPositionService extends Observable<TuiPoint> {
             animationFrame$
                 .pipe(
                     startWith(null),
-                    map(() => this.accessor.getPosition(this.el.getBoundingClientRect())),
+                    map(() =>
+                        this.#accessor.getPosition(this.#el.getBoundingClientRect()),
+                    ),
                     tuiZonefree(zone),
-                    finalize(() => this.accessor.getPosition(EMPTY_CLIENT_RECT)),
+                    finalize(() => this.#accessor.getPosition(EMPTY_CLIENT_RECT)),
                 )
                 .subscribe(subscriber),
         );

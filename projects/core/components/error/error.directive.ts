@@ -38,11 +38,11 @@ import {TuiErrorComponent} from './error.component';
     ],
 })
 export class TuiErrorDirective implements ControlValueAccessor, Validator {
-    private readonly content = inject(TUI_VALIDATION_ERRORS);
-    private readonly control = new Subject<AbstractControl>();
+    readonly #content = inject(TUI_VALIDATION_ERRORS);
+    readonly #control = new Subject<AbstractControl>();
 
-    private readonly errors = toSignal(
-        this.control.pipe(
+    readonly #errors = toSignal(
+        this.#control.pipe(
             distinctUntilChanged(),
             switchMap((control) =>
                 control.events.pipe(
@@ -53,8 +53,8 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
         ),
     );
 
-    private readonly key = computed(
-        (errors = this.errors() || {}) =>
+    readonly #key = computed(
+        (errors = this.#errors() || {}) =>
             this.order().find((id) => errors[id]) || Object.keys(errors)[0] || '',
     );
 
@@ -63,8 +63,8 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
         TuiErrorComponent,
         'error',
         computed(
-            (errors = this.errors() || null) =>
-                errors && this.getError(errors[this.key()], this.content[this.key()]),
+            (errors = this.#errors() || null) =>
+                errors && this.getError(errors[this.#key()], this.#content[this.#key()]),
         ),
         {self: true, optional: true},
     );
@@ -73,7 +73,7 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
     public registerOnTouched(): void {}
     public writeValue(): void {}
     public validate(control: AbstractControl): ValidationErrors | null {
-        this.control.next(control);
+        this.#control.next(control);
 
         return null;
     }

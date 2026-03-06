@@ -42,9 +42,10 @@ import {TUI_TREE_CONTENT} from '../tree-item-content/tree-item-content.component
 })
 export class TuiTreeItem implements DoCheck {
     private readonly nested = contentChildren(TUI_TREE_NODE);
-    private readonly el = tuiInjectElement();
-    private readonly change$ = new Subject<void>();
-    private readonly controller = inject<TuiTreeController>(
+
+    readonly #el = tuiInjectElement();
+    readonly #change$ = new Subject<void>();
+    readonly #controller = inject<TuiTreeController>(
         forwardRef(() => TUI_TREE_CONTROLLER),
     );
 
@@ -54,15 +55,15 @@ export class TuiTreeItem implements DoCheck {
     );
 
     protected readonly attached = toSignal(
-        this.change$.pipe(
-            map(() => this.el.isConnected),
+        this.#change$.pipe(
+            map(() => this.#el.isConnected),
             distinctUntilChanged(),
         ),
-        {initialValue: this.el.isConnected},
+        {initialValue: this.#el.isConnected},
     );
 
     public readonly expanded = toSignal(
-        this.change$.pipe(
+        this.#change$.pipe(
             startWith(null),
             map(() => this.isExpanded),
             distinctUntilChanged(),
@@ -75,7 +76,7 @@ export class TuiTreeItem implements DoCheck {
     }
 
     public get isExpanded(): boolean {
-        return this.controller.isExpanded(this);
+        return this.#controller.isExpanded(this);
     }
 
     public ngDoCheck(): void {
@@ -83,6 +84,6 @@ export class TuiTreeItem implements DoCheck {
     }
 
     public checkChanges(): void {
-        this.change$.next();
+        this.#change$.next();
     }
 }

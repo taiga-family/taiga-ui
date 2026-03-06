@@ -14,17 +14,17 @@ import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 
 @Pipe({name: 'tuiDecimal', pure: false})
 export class TuiDecimalPipe implements PipeTransform {
-    private readonly format = inject(TUI_NUMBER_FORMAT);
-    private readonly amountPipe = Injector.create({
+    readonly #format = inject(TUI_NUMBER_FORMAT);
+    readonly #amountPipe = Injector.create({
         providers: [{provide: TuiAmountPipe}],
         parent: inject(INJECTOR),
     }).get(TuiAmountPipe);
 
-    private readonly value = signal(NaN);
-    private readonly currency = signal<TuiCurrencyVariants>('');
-    private readonly formatted = computed(() => {
-        const format = this.format();
-        const amount = this.amountPipe.transform(this.value(), this.currency());
+    readonly #value = signal(NaN);
+    readonly #currency = signal<TuiCurrencyVariants>('');
+    readonly #formatted = computed(() => {
+        const format = this.#format();
+        const amount = this.#amountPipe.transform(this.#value(), this.#currency());
         const [, decimal] = amount.split(format.decimalSeparator);
 
         return decimal ? `${format.decimalSeparator}${decimal}` : '';
@@ -32,10 +32,10 @@ export class TuiDecimalPipe implements PipeTransform {
 
     public transform(value: number, currency: TuiCurrencyVariants = ''): string {
         untracked(() => {
-            this.value.set(value);
-            this.currency.set(currency);
+            this.#value.set(value);
+            this.#currency.set(currency);
         });
 
-        return this.formatted();
+        return this.#formatted();
     }
 }

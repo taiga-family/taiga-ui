@@ -8,23 +8,23 @@ import {TuiItemsHandlersDirective} from './items-handlers.directive';
 
 @Directive({providers: [tuiProvide(NG_VALIDATORS, TuiItemsHandlersValidator, true)]})
 export class TuiItemsHandlersValidator extends TuiValidator {
-    private readonly handlers = inject(TuiItemsHandlersDirective);
-    private initialized = false;
+    readonly #handlers = inject(TuiItemsHandlersDirective);
+    #initialized = false;
 
     protected readonly update = effect(() => {
-        this.handlers.disabledItemHandler();
+        this.#handlers.disabledItemHandler();
 
-        if (this.initialized) {
+        if (this.#initialized) {
             this.onChange();
         } else {
-            this.initialized = true;
+            this.#initialized = true;
         }
     });
 
     public disabledItemHandler: TuiBooleanHandler<any> = (value) =>
         Array.isArray(value)
-            ? value.some((item) => this.handlers.disabledItemHandler()(item))
-            : Boolean(value) && this.handlers.disabledItemHandler()(value);
+            ? value.some((item) => this.#handlers.disabledItemHandler()(item))
+            : Boolean(value) && this.#handlers.disabledItemHandler()(value);
 
     public override validate: ValidatorFn = ({value}) =>
         this.disabledItemHandler(value) ? {tuiDisabledItem: value} : null;

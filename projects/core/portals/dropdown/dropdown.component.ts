@@ -59,18 +59,18 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
     },
 })
 export class TuiDropdownComponent implements AfterViewInit {
-    private readonly el = tuiInjectElement();
-    private readonly accessor = inject(TuiRectAccessor);
-    private readonly viewport = inject(TUI_VIEWPORT);
-    private readonly vvs = inject(TuiVisualViewportService);
+    readonly #el = tuiInjectElement();
+    readonly #accessor = inject(TuiRectAccessor);
+    readonly #viewport = inject(TUI_VIEWPORT);
+    readonly #vvs = inject(TuiVisualViewportService);
 
-    private readonly styles$ = inject(TuiPositionService).pipe(
+    readonly #styles$ = inject(TuiPositionService).pipe(
         takeWhile(
             () =>
                 this.directive.el.isConnected &&
                 !!this.directive.el.getBoundingClientRect().height,
         ),
-        map((v) => (this.position === 'fixed' ? this.vvs.correct(v) : v)),
+        map((v) => (this.position === 'fixed' ? this.#vvs.correct(v) : v)),
         map((point) => this.getStyles(...point)),
         takeUntilDestroyed(),
     );
@@ -85,8 +85,8 @@ export class TuiDropdownComponent implements AfterViewInit {
     );
 
     public ngAfterViewInit(): void {
-        this.styles$.subscribe({
-            next: (styles) => Object.assign(this.el.style, styles),
+        this.#styles$.subscribe({
+            next: (styles) => Object.assign(this.#el.style, styles),
             complete: () => this.close?.(),
         });
     }
@@ -95,16 +95,17 @@ export class TuiDropdownComponent implements AfterViewInit {
 
     private getStyles(x: number, y: number): Record<string, string> {
         const {maxHeight, minHeight, offset, limitWidth} = this.options;
-        const parent = this.el.offsetParent?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
+        const parent =
+            this.#el.offsetParent?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
         const {left = 0, top = 0} = this.position === 'fixed' ? {} : parent;
-        const rect = this.accessor.getClientRect();
-        const viewport = this.viewport.getClientRect();
+        const rect = this.#accessor.getClientRect();
+        const viewport = this.#viewport.getClientRect();
         const zoom = this.directive.el.currentCSSZoom || 1;
         const above = rect.top - viewport.top - 2 * offset;
         const below = viewport.top + viewport.height - y - offset;
         const available = y > rect.bottom ? below : above;
         const height =
-            this.el.getBoundingClientRect().right <= rect.left || x >= rect.right
+            this.#el.getBoundingClientRect().right <= rect.left || x >= rect.right
                 ? maxHeight
                 : tuiClamp(available, minHeight, maxHeight);
 

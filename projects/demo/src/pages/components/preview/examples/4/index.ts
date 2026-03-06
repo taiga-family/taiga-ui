@@ -24,7 +24,7 @@ import {
     changeDetection,
 })
 export default class Example {
-    private readonly previewDialogService = inject(TuiPreviewDialogService);
+    readonly #previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')
     protected readonly preview?: TemplateRef<TuiDialogContext>;
@@ -62,7 +62,7 @@ export default class Example {
     protected readonly loading$ = this.imageSrc$.pipe(map((src) => src === ''));
 
     protected show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.#previewDialogService.open(this.preview || '').subscribe();
     }
 
     protected download(): void {

@@ -5,32 +5,32 @@ import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Injectable()
 export abstract class TuiAlertService<T, K = void> extends TuiPortal<T, K> {
-    private readonly concurrency: number;
-    private readonly current = new Map<unknown, ComponentRef<unknown>>();
-    private readonly queue = new Set<PolymorpheusComponent<unknown>>();
+    readonly #concurrency: number;
+    readonly #current = new Map<unknown, ComponentRef<unknown>>();
+    readonly #queue = new Set<PolymorpheusComponent<unknown>>();
 
     constructor(concurrency: number) {
         super(inject(TuiPopupService));
-        this.concurrency = Math.min(concurrency, 5);
+        this.#concurrency = Math.min(concurrency, 5);
     }
 
     protected override add(component: PolymorpheusComponent<unknown>): () => void {
-        if (this.current.size < this.concurrency) {
-            this.current.set(component, this.service.add(component));
+        if (this.#current.size < this.#concurrency) {
+            this.#current.set(component, this.service.add(component));
         } else {
-            this.queue.add(component);
+            this.#queue.add(component);
         }
 
         return () => {
-            this.current.get(component)?.destroy();
-            this.current.delete(component);
-            this.queue.delete(component);
+            this.#current.get(component)?.destroy();
+            this.#current.delete(component);
+            this.#queue.delete(component);
 
-            const [next] = this.queue;
+            const [next] = this.#queue;
 
-            if (this.current.size < this.concurrency && next) {
-                this.current.set(next, this.service.add(next));
-                this.queue.delete(next);
+            if (this.#current.size < this.#concurrency && next) {
+                this.#current.set(next, this.service.add(next));
+                this.#queue.delete(next);
             }
         };
     }

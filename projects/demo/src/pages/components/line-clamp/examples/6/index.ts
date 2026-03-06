@@ -24,7 +24,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly names = [
+    readonly #names = [
         'Time',
         'Past',
         'Future',
@@ -200,9 +200,10 @@ export default class Example {
     ];
 
     protected readonly users = Array.from({length: 10_000}, (_, index) => {
-        const firstName = this.names[Math.floor(Math.random() * this.names.length)] ?? '';
+        const firstName =
+            this.#names[Math.floor(Math.random() * this.#names.length)] ?? '';
         const lastName =
-            this.names[Math.floor((Math.random() * this.names.length) / 2)] ?? '';
+            this.#names[Math.floor((Math.random() * this.#names.length) / 2)] ?? '';
 
         return {
             id: index + 1,

@@ -11,7 +11,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarSet {
-    private readonly largest = computed(() =>
+    readonly #largest = computed(() =>
         this.computedValue().some((a) => a > 0)
             ? this.computedValue().reduce((a, b) => (a > b ? a : b), 0)
             : Math.abs(this.computedValue().reduce((a, b) => (a < b ? a : b), 0)),
@@ -30,6 +30,6 @@ export class TuiBarSet {
     );
 
     protected getHeight(value: number): number {
-        return Math.abs((100 * value) / this.largest());
+        return Math.abs((100 * value) / this.#largest());
     }
 }

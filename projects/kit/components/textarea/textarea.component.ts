@@ -36,21 +36,22 @@ import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
     },
 })
 export class TuiTextareaComponent implements AfterViewInit {
-    private readonly template = viewChild.required(TemplateRef);
-    private readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    private readonly vcr = inject(ViewContainerRef);
     private readonly text = viewChild('text', {read: ElementRef});
+    private readonly template = viewChild.required(TemplateRef);
+
+    readonly #options = inject(TUI_TEXTAREA_OPTIONS);
+    readonly #vcr = inject(ViewContainerRef);
 
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
     protected readonly textfield = inject(TuiTextfieldComponent<string>);
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
-    public readonly min = input(this.options.min);
-    public readonly max = input(this.options.max);
-    public readonly content = input(this.options.content);
+    public readonly min = input(this.#options.min);
+    public readonly max = input(this.#options.max);
+    public readonly content = input(this.#options.content);
 
     public ngAfterViewInit(): void {
-        this.vcr.createEmbeddedView(this.template());
+        this.#vcr.createEmbeddedView(this.template());
     }
 
     protected onScroll(): void {

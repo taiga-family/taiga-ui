@@ -10,12 +10,12 @@ import {type TuiCheckboxRowDirective} from './checkbox-row.directive';
     providers: [tuiFallbackValueProvider([])],
 })
 export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {
-    private readonly children = signal<ReadonlyArray<TuiCheckboxRowDirective<T>>>([]);
+    readonly #children = signal<ReadonlyArray<TuiCheckboxRowDirective<T>>>([]);
 
     public readonly checked: Signal<boolean> = computed(
         () =>
-            !!this.children().length &&
-            this.children().every((i) => this.value().includes(i.tuiCheckboxRow())),
+            !!this.#children().length &&
+            this.#children().every((i) => this.value().includes(i.tuiCheckboxRow())),
     );
 
     public readonly indeterminate: Signal<boolean> = computed(
@@ -24,11 +24,11 @@ export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {
 
     public toggleAll(): void {
         this.onChange(
-            this.checked() ? [] : this.children().map((i) => i.tuiCheckboxRow()),
+            this.checked() ? [] : this.#children().map((i) => i.tuiCheckboxRow()),
         );
     }
 
     public process(checkbox: TuiCheckboxRowDirective<T>): void {
-        this.children.update((children) => tuiArrayToggle(children, checkbox));
+        this.#children.update((children) => tuiArrayToggle(children, checkbox));
     }
 }

@@ -46,31 +46,31 @@ function reduceCycle(
  * work for {@link TuiMobileCalendar} with years 1906 to 2102
  */
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
-    private readonly isIOS = inject(WA_IS_IOS);
-    private readonly destroy$ = new Subject<void>();
-    private readonly index$ = new Subject<number>();
-    private viewport: CdkVirtualScrollViewport | null = null;
+    readonly #isIOS = inject(WA_IS_IOS);
+    readonly #destroy$ = new Subject<void>();
+    readonly #index$ = new Subject<number>();
+    #viewport: CdkVirtualScrollViewport | null = null;
 
-    public readonly scrolledIndexChange = this.index$.pipe(distinctUntilChanged());
+    public readonly scrolledIndexChange = this.#index$.pipe(distinctUntilChanged());
 
     public attach(viewport: CdkVirtualScrollViewport): void {
-        const cycle = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
+        const cycle = this.#isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
 
-        this.viewport = viewport;
-        this.viewport.setTotalContentSize(cycle * 7);
-        this.updateRenderedRange(this.viewport);
+        this.#viewport = viewport;
+        this.#viewport.setTotalContentSize(cycle * 7);
+        this.updateRenderedRange(this.#viewport);
     }
 
     public detach(): void {
-        this.index$.complete();
-        this.viewport = null;
-        this.destroy$.next();
-        this.destroy$.complete();
+        this.#index$.complete();
+        this.#viewport = null;
+        this.#destroy$.next();
+        this.#destroy$.complete();
     }
 
     public onContentScrolled(): void {
-        if (this.viewport) {
-            this.updateRenderedRange(this.viewport);
+        if (this.#viewport) {
+            this.updateRenderedRange(this.#viewport);
         }
     }
 
@@ -80,7 +80,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     public onRenderedOffsetChanged(): void {}
 
     public scrollToIndex(index: number, behavior: ScrollBehavior): void {
-        this.viewport?.scrollToOffset(this.getOffsetForIndex(index), behavior);
+        this.#viewport?.scrollToOffset(this.getOffsetForIndex(index), behavior);
     }
 
     private getOffsetForIndex(index: number): number {
@@ -91,8 +91,8 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     }
 
     private getIndexForOffset(offset: number): number {
-        const cycle = this.isIOS ? IOS_CYCLE : ANDROID_CYCLE;
-        const cycleHeight = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
+        const cycle = this.#isIOS ? IOS_CYCLE : ANDROID_CYCLE;
+        const cycleHeight = this.#isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
         const remainder = offset % cycleHeight;
         const years = ((offset - remainder) / cycleHeight) * YEARLY_CYCLE;
 
@@ -112,11 +112,11 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     }
 
     private computeHeight(year: number, month?: number): number {
-        const cycle = this.isIOS ? IOS_CYCLE : ANDROID_CYCLE;
+        const cycle = this.#isIOS ? IOS_CYCLE : ANDROID_CYCLE;
         const remainder = year % YEARLY_CYCLE;
         const remainderHeight = reduceCycle(cycle, remainder, month);
         const fullCycles = (year - remainder) / YEARLY_CYCLE;
-        const fullCyclesHeight = this.isIOS
+        const fullCyclesHeight = this.#isIOS
             ? fullCycles * IOS_CYCLE_HEIGHT
             : fullCycles * ANDROID_CYCLE_HEIGHT;
 
@@ -152,6 +152,6 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
         viewport.setRenderedRange(newRange);
         viewport.setRenderedContentOffset(this.getOffsetForIndex(newRange.start));
-        this.index$.next(firstVisibleIndex);
+        this.#index$.next(firstVisibleIndex);
     }
 }

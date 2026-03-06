@@ -42,16 +42,16 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     },
 })
 export class TuiSelectOption<T> {
-    private readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-    private readonly value = tuiInjectValue<T>();
+    readonly #handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    readonly #value = tuiInjectValue<T>();
 
     protected readonly datalist = inject(TuiDataListComponent);
     protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
     protected readonly selected = computed(
-        (controlValue = this.value(), optionValue = this.option.value()) =>
+        (controlValue = this.#value(), optionValue = this.option.value()) =>
             tuiIsPresent(optionValue) &&
             tuiIsPresent(controlValue) &&
-            this.handlers.identityMatcher()(controlValue, optionValue),
+            this.#handlers.identityMatcher()(controlValue, optionValue),
     );
 
     protected readonly scrolled = tuiDirectiveBinding(

@@ -14,16 +14,16 @@ import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
     pure: false,
 })
 export class TuiFormatNumberPipe implements PipeTransform {
-    private readonly format = inject(TUI_NUMBER_FORMAT);
-    private readonly value = signal(NaN);
-    private readonly settings = signal<Partial<TuiNumberFormatSettings>>({});
-    private readonly formatted = computed(() =>
-        tuiFormatNumber(this.value(), {
-            ...this.format(),
-            precision: Number.isNaN(this.format().precision)
+    readonly #format = inject(TUI_NUMBER_FORMAT);
+    readonly #value = signal(NaN);
+    readonly #settings = signal<Partial<TuiNumberFormatSettings>>({});
+    readonly #formatted = computed(() =>
+        tuiFormatNumber(this.#value(), {
+            ...this.#format(),
+            precision: Number.isNaN(this.#format().precision)
                 ? Infinity
-                : this.format().precision,
-            ...this.settings(),
+                : this.#format().precision,
+            ...this.#settings(),
         }),
     );
 
@@ -38,10 +38,10 @@ export class TuiFormatNumberPipe implements PipeTransform {
         settings: Partial<TuiNumberFormatSettings> = {},
     ): string {
         untracked(() => {
-            this.value.set(value);
-            this.settings.set(settings);
+            this.#value.set(value);
+            this.#settings.set(settings);
         });
 
-        return this.formatted();
+        return this.#formatted();
     }
 }

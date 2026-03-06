@@ -38,9 +38,8 @@ export class TuiNativeSelect<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly input = inject(TuiInputDirective);
     private readonly options = viewChildren<HTMLOptionElement>('option');
-
+    readonly #input = inject(TuiInputDirective);
     protected readonly isFlat = tuiIsFlat;
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly stringified = computed((value = this.value()) =>
@@ -65,7 +64,7 @@ export class TuiNativeSelect<T>
          * (it breaks `tuiValue` utility logic)
          */
         if (this.options().length) {
-            this.input.value.set(this.stringified());
+            this.#input.value.set(this.stringified());
         }
     });
 

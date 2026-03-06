@@ -39,9 +39,9 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     },
 })
 export class TuiCopyDirective {
-    private readonly copied$ = new Subject<void>();
-    private readonly clipboard = inject(Clipboard);
-    private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
+    readonly #copied$ = new Subject<void>();
+    readonly #clipboard = inject(Clipboard);
+    readonly #stringify = inject(TUI_ITEMS_HANDLERS).stringify;
 
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly icons = tuiIconEnd(inject(TUI_COPY_OPTIONS).icon);
@@ -52,7 +52,7 @@ export class TuiCopyDirective {
         toSignal(
             toObservable(inject(TUI_COPY_TEXTS)).pipe(
                 switchMap(([copy, copied]) =>
-                    this.copied$.pipe(
+                    this.#copied$.pipe(
                         switchMap(() =>
                             timer(3000).pipe(
                                 map(() => copy),
@@ -75,15 +75,15 @@ export class TuiCopyDirective {
 
     protected copy(): void {
         if (this.multi) {
-            this.clipboard.copy(
-                this.textfield.control()?.value.map(this.stringify()).join(', '),
+            this.#clipboard.copy(
+                this.textfield.control()?.value.map(this.#stringify()).join(', '),
             );
         } else {
             this.textfield.input()?.nativeElement.select();
-            this.clipboard.copy(this.textfield.value());
+            this.#clipboard.copy(this.textfield.value());
         }
 
-        this.copied$.next();
+        this.#copied$.next();
     }
 
     private get multi(): boolean {

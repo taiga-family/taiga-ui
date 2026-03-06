@@ -14,8 +14,8 @@ const ROTATE_X_STEP = 30;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileLoaderIOS {
-    private readonly context = injectContext<TuiContext<number>>();
-    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
+    readonly #context = injectContext<TuiContext<number>>();
+    readonly #threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
     protected readonly steps = 12;
 
@@ -24,7 +24,7 @@ export class TuiMobileLoaderIOS {
     }
 
     protected get percent(): number {
-        return (this.context.$implicit * 100) / this.threshold;
+        return (this.#context.$implicit * 100) / this.#threshold;
     }
 
     protected isShown(index: number): boolean {

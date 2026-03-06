@@ -19,34 +19,34 @@ import {
 
 @Directive({hostDirectives: [MaskitoDirective]})
 export class TuiNumberMask {
-    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
-    private readonly input = inject(TuiInputDirective);
+    readonly #options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    readonly #numberFormat = inject(TUI_NUMBER_FORMAT);
+    readonly #input = inject(TuiInputDirective);
 
-    public readonly prefix = input(this.options.prefix);
-    public readonly postfix = input(this.options.postfix);
+    public readonly prefix = input(this.#options.prefix);
+    public readonly postfix = input(this.#options.postfix);
     public readonly maximumFractionDigits = computed(
-        (precision = this.numberFormat().precision) =>
+        (precision = this.#numberFormat().precision) =>
             Number.isNaN(precision) ? 2 : precision,
     );
 
     public readonly min = input<
         TuiInputNumberOptions['min'],
         TuiInputNumberOptions['min'] | null
-    >(this.options.min, {transform: (x) => x ?? this.options.min});
+    >(this.#options.min, {transform: (x) => x ?? this.#options.min});
 
     public readonly max = input<
         TuiInputNumberOptions['max'],
         TuiInputNumberOptions['max'] | null
-    >(this.options.max, {transform: (x) => x ?? this.options.max});
+    >(this.#options.max, {transform: (x) => x ?? this.#options.max});
 
     public readonly params = computed(() => {
-        const {decimalMode, ...numberFormat} = this.numberFormat();
+        const {decimalMode, ...numberFormat} = this.#numberFormat();
         const maximumFractionDigits = this.maximumFractionDigits();
 
         return {
             ...numberFormat,
-            ...this.options,
+            ...this.#options,
             maximumFractionDigits,
             min: this.min(),
             max: this.max(),
@@ -65,7 +65,7 @@ export class TuiNumberMask {
             max: Infinity,
         });
 
-        this.input.value.update((x) => maskitoTransform(x, options));
+        this.#input.value.update((x) => maskitoTransform(x, options));
     });
 
     public stringify(value: bigint | number | null | undefined): string {
@@ -78,7 +78,7 @@ export class TuiNumberMask {
                 ? tuiRoundWith({
                       value,
                       precision,
-                      method: this.numberFormat().rounding,
+                      method: this.#numberFormat().rounding,
                   })
                 : value;
 
@@ -86,7 +86,7 @@ export class TuiNumberMask {
             ...params,
             minimumFractionDigits:
                 String(rounded).includes(params.decimalSeparator) &&
-                this.numberFormat().decimalMode !== 'not-zero'
+                this.#numberFormat().decimalMode !== 'not-zero'
                     ? params.maximumFractionDigits
                     : 0,
         });

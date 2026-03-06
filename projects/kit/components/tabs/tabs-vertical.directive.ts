@@ -19,11 +19,11 @@ import {TuiTabsDirective} from './tabs.directive';
     },
 })
 export class TuiTabsVertical {
-    private readonly tabs = inject(TuiTabsDirective);
+    readonly #tabs = inject(TuiTabsDirective);
 
     public readonly vertical = input<TuiHorizontalDirection>('start');
 
     protected onKeyDownArrow(current: HTMLElement, step: number): void {
-        this.tabs.moveFocus(current, step);
+        this.#tabs.moveFocus(current, step);
     }
 }

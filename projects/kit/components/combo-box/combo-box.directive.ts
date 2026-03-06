@@ -52,45 +52,45 @@ export class TuiComboBoxDirective<T>
     extends TuiControl<T | string | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
-    private readonly input: TuiInputDirective<T> = inject(TuiInputDirective);
-    private readonly open = inject(TuiDropdownOpen).open;
-    private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
-    private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
+    readonly #el = tuiInjectElement<HTMLInputElement>();
+    readonly #host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
+    readonly #input: TuiInputDirective<T> = inject(TuiInputDirective);
+    readonly #open = inject(TuiDropdownOpen).open;
+    readonly #dropdownEnabled = tuiDropdownEnabled(this.interactive);
+    readonly #dropdown = inject(TuiDropdownDirective);
+    readonly #handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
+    readonly #datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
         (x) => 'options' in x && isSignal(x.options),
     );
 
-    private readonly options = computed(
+    readonly #options = computed(
         () =>
-            this.datalist()
+            this.#datalist()
                 ?.options()
-                .filter((x) => !this.handlers.disabledItemHandler()(x)) ?? [],
+                .filter((x) => !this.#handlers.disabledItemHandler()(x)) ?? [],
     );
 
     protected readonly nonStrictControlEffect = effect(() => {
         if (
-            !this.options().length &&
+            !this.#options().length &&
             !this.strict() &&
-            this.stringify(this.value()) !== this.input.value()
+            this.stringify(this.value()) !== this.#input.value()
         ) {
-            this.onChange(this.input.value() || null);
+            this.onChange(this.#input.value() || null);
         }
     });
 
     protected readonly matchingEffect = effect(() => {
-        const options = this.options();
+        const options = this.#options();
         const matcher = this.matcher();
 
         if (!options.length || !matcher) {
             return;
         }
 
-        const textfieldValue = this.input.value();
+        const textfieldValue = this.#input.value();
         const selectedOption = options.find((x) =>
-            matcher(x, textfieldValue, this.handlers.stringify()),
+            matcher(x, textfieldValue, this.#handlers.stringify()),
         );
         const value = untracked(() => this.value());
         const unchanged = this.stringify(value) === textfieldValue;
@@ -111,17 +111,17 @@ export class TuiComboBoxDirective<T>
     protected readonly newValueEffect = effect(() => {
         const stringified = this.stringify(this.value());
 
-        this.input.value.update((x) => stringified || x);
+        this.#input.value.update((x) => stringified || x);
     });
 
     protected readonly blurEffect = effect(() => {
         const incomplete = untracked(
-            () => this.strict() && this.input.value() && this.value() === null,
+            () => this.strict() && this.#input.value() && this.value() === null,
         );
 
-        if (!this.host.focused() && incomplete) {
-            this.el.value = '';
-            this.el.dispatchEvent(new Event('input', {bubbles: true}));
+        if (!this.#host.focused() && incomplete) {
+            this.#el.value = '';
+            this.#el.dispatchEvent(new Event('input', {bubbles: true}));
             this.toggleDropdown(false);
         }
     });
@@ -130,7 +130,7 @@ export class TuiComboBoxDirective<T>
     public readonly matcher = input<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
 
     public setValue(value: T | null): void {
-        this.input.setValue(value);
+        this.#input.setValue(value);
         this.onChange(value);
 
         if (!value) {
@@ -144,24 +144,24 @@ export class TuiComboBoxDirective<T>
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.input.value.set(this.stringify(value)));
+            untracked(() => this.#input.value.set(this.stringify(value)));
         }
     }
 
-    protected toggleDropdown(open = !this.open()): void {
-        if (this.dropdownEnabled() && this.dropdown.content()) {
-            this.open.set(open);
+    protected toggleDropdown(open = !this.#open()): void {
+        if (this.#dropdownEnabled() && this.#dropdown.content()) {
+            this.#open.set(open);
         }
     }
 
     protected keydownEnter(event: KeyboardEvent): void {
-        if (!this.open()) {
+        if (!this.#open()) {
             return;
         }
 
         event.preventDefault();
 
-        const options = this.options();
+        const options = this.#options();
 
         if (options.length === 1 && options[0]) {
             this.setValue(options[0]);
@@ -170,6 +170,6 @@ export class TuiComboBoxDirective<T>
     }
 
     private stringify(value?: T | string | null): string {
-        return value != null ? this.handlers.stringify()(value) : '';
+        return value != null ? this.#handlers.stringify()(value) : '';
     }
 }

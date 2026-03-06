@@ -20,7 +20,7 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocDropdown {
-    private readonly options = inject(TUI_DROPDOWN_OPTIONS);
+    readonly #options = inject(TUI_DROPDOWN_OPTIONS);
 
     protected readonly routes = DemoRoute;
 
@@ -34,12 +34,12 @@ export class TuiDocDropdown {
 
     public readonly hiddenOptions = input<Array<string | keyof TuiDropdownOptions>>([]);
 
-    public align: TuiDropdownAlign = this.options.align;
-    public direction: TuiVerticalDirection | null = this.options.direction;
-    public minHeight = this.options.minHeight;
-    public maxHeight = this.options.maxHeight;
-    public offset = this.options.offset;
-    public appearance = this.options.appearance;
+    public align: TuiDropdownAlign = this.#options.align;
+    public direction: TuiVerticalDirection | null = this.#options.direction;
+    public minHeight = this.#options.minHeight;
+    public maxHeight = this.#options.maxHeight;
+    public offset = this.#options.offset;
+    public appearance = this.#options.appearance;
     public limitWidth: TuiDropdownWidth = 'fixed';
     public tuiDropdownEnabled = false;
     public dropdownSided = false;

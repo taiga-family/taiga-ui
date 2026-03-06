@@ -29,7 +29,7 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
     },
 })
 export class TuiSliderComponent {
-    private readonly control = inject(NgControl, {self: true, optional: true});
+    readonly #control = inject(NgControl, {self: true, optional: true});
 
     protected readonly ticksGradient = computed((segments = this.segments()) =>
         this.getTicksGradient(segments),
@@ -48,7 +48,7 @@ export class TuiSliderComponent {
     });
 
     constructor() {
-        if (this.control instanceof NgModel) {
+        if (this.#control instanceof NgModel) {
             /**
              * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
              * when a control is bound using [(ngModel)], first time with a phantom null value.
@@ -56,7 +56,7 @@ export class TuiSliderComponent {
              * ___
              * See this {@link https://github.com/angular/angular/issues/14988 issue}
              */
-            this.control.valueChanges?.pipe(tuiWatch(), take(1)).subscribe();
+            this.#control.valueChanges?.pipe(tuiWatch(), take(1)).subscribe();
         }
     }
 
@@ -99,14 +99,14 @@ export class TuiSliderComponent {
          * (it will be updated only in next microtask).
          * @see https://github.com/angular/angular/issues/13568
          */
-        if (this.control instanceof NgModel) {
+        if (this.#control instanceof NgModel) {
             const transformer = this.keySteps?.transformer();
             const value =
                 this.keySteps && transformer
                     ? this.keySteps.toSliderValue(
-                          transformer.fromControlValue(this.control.value),
+                          transformer.fromControlValue(this.#control.value),
                       )
-                    : this.control.viewModel;
+                    : this.#control.viewModel;
 
             return this.step
                 ? tuiRound(

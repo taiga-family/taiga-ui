@@ -14,15 +14,15 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
     pure: false,
 })
 export class TuiSortCountriesPipe implements PipeTransform {
-    private readonly names = inject(TUI_COUNTRIES);
-    private readonly countries = signal<readonly TuiCountryIsoCode[]>([]);
-    private readonly result = computed((names = this.names()) =>
-        [...this.countries()].sort((a, b) => names[a].localeCompare(names[b])),
+    readonly #names = inject(TUI_COUNTRIES);
+    readonly #countries = signal<readonly TuiCountryIsoCode[]>([]);
+    readonly #result = computed((names = this.#names()) =>
+        [...this.#countries()].sort((a, b) => names[a].localeCompare(names[b])),
     );
 
     public transform(countries: readonly TuiCountryIsoCode[]): TuiCountryIsoCode[] {
-        untracked(() => this.countries.set(countries));
+        untracked(() => this.#countries.set(countries));
 
-        return this.result();
+        return this.#result();
     }
 }

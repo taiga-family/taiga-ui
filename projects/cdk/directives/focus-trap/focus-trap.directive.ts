@@ -16,9 +16,9 @@ import {tuiGetClosestFocusable, tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
     },
 })
 export class TuiFocusTrap implements OnDestroy {
-    private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiInjectElement();
-    private activeElement: Element | null = null;
+    readonly #doc = inject(DOCUMENT);
+    readonly #el = tuiInjectElement();
+    #activeElement: Element | null = null;
     protected initialized = false;
 
     constructor() {
@@ -35,24 +35,24 @@ export class TuiFocusTrap implements OnDestroy {
              * Don't enable any new event listeners before `initialized` is equal to `true`!
              */
             this.initialized = true;
-            this.activeElement = tuiGetFocused(this.doc);
-            this.el.focus();
+            this.#activeElement = tuiGetFocused(this.#doc);
+            this.#el.focus();
         });
     }
 
     public ngOnDestroy(): void {
         this.initialized = false;
 
-        if (tuiIsHTMLElement(this.activeElement)) {
-            this.activeElement.focus();
+        if (tuiIsHTMLElement(this.#activeElement)) {
+            this.#activeElement.focus();
         }
     }
 
     protected onFocusIn(node: Node): void {
-        const {firstElementChild} = this.el;
+        const {firstElementChild} = this.#el;
 
-        if (!tuiContainsOrAfter(this.el, node) && firstElementChild) {
-            tuiGetClosestFocusable({initial: firstElementChild, root: this.el})?.focus();
+        if (!tuiContainsOrAfter(this.#el, node) && firstElementChild) {
+            tuiGetClosestFocusable({initial: firstElementChild, root: this.#el})?.focus();
         }
     }
 }

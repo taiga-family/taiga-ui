@@ -34,7 +34,7 @@ interface PerformanceMetrics {
  * Based on the sophisticated CDP tracing from scrollbar-performance.pw.spec.ts
  */
 export class PerformanceCollector {
-    private static readonly activeCollections = new Map<
+    static readonly #activeCollections = new Map<
         string,
         {
             client: CDPSession;
@@ -44,14 +44,14 @@ export class PerformanceCollector {
         }
     >();
 
-    private static readonly outputDir = resolve(
+    static readonly #outputDir = resolve(
         process.cwd(),
         'projects/demo-playwright/tests-results',
         'performance',
     );
 
-    private static startStopLock: Promise<void> = Promise.resolve();
-    private static dirReady = false;
+    static #startStopLock: Promise<void> = Promise.resolve();
+    static #dirReady = false;
 
     public static async startTestCollection(
         page: Page,
@@ -104,7 +104,7 @@ export class PerformanceCollector {
 
                 await this.warmUpMeasurement(page);
 
-                this.activeCollections.set(testName, {
+                this.#activeCollections.set(testName, {
                     client,
                     events,
                     startTime: Date.now(),
@@ -138,7 +138,7 @@ export class PerformanceCollector {
         customExtras?: Record<string, unknown>,
     ): Promise<void> {
         try {
-            const collection = this.activeCollections.get(testName);
+            const collection = this.#activeCollections.get(testName);
 
             if (!collection) {
                 console.warn(`No active collection found for test: ${testName}`);
@@ -215,7 +215,7 @@ export class PerformanceCollector {
                 opsPerKEvents: Number(opsPerKEvents.toFixed(2)),
             });
 
-            this.activeCollections.delete(testName);
+            this.#activeCollections.delete(testName);
         } catch (error) {
             console.warn(
                 `Failed to stop performance collection for test ${testName}:`,
@@ -225,9 +225,9 @@ export class PerformanceCollector {
     }
 
     private static async withLock<T>(fn: () => Promise<T>): Promise<T> {
-        const run = this.startStopLock.then(fn, fn);
+        const run = this.#startStopLock.then(fn, fn);
 
-        this.startStopLock = run.then(
+        this.#startStopLock = run.then(
             () => undefined,
             () => undefined,
         );
@@ -379,20 +379,20 @@ export class PerformanceCollector {
         const filename = `test-${safeTestName}-${Date.now()}.json`;
 
         this.ensureDirOnce();
-        const outputPath = join(this.outputDir, filename);
+        const outputPath = join(this.#outputDir, filename);
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
         // console.log(`💾 Test performance data saved to: ${filename}`);
     }
 
     private static ensureDirOnce(): void {
-        if (this.dirReady) {
+        if (this.#dirReady) {
             return;
         }
 
         try {
-            mkdirSync(this.outputDir, {recursive: true});
-            this.dirReady = true;
+            mkdirSync(this.#outputDir, {recursive: true});
+            this.#dirReady = true;
         } catch {}
     }
 

@@ -51,19 +51,19 @@ export function tuiTextfieldOptionsProvider(
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
 export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
-    private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
+    readonly #options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
-    public readonly appearance = input(this.options.appearance(), {
+    public readonly appearance = input(this.#options.appearance(), {
         alias: 'tuiTextfieldAppearance',
     });
 
-    public readonly size = input(this.options.size(), {
+    public readonly size = input(this.#options.size(), {
         alias: 'tuiTextfieldSize',
         transform: (size: TuiSizeL | TuiSizeS | ''): TuiSizeL | TuiSizeS =>
             size || DEFAULT.size,
     });
 
-    public readonly cleaner = input(this.options.cleaner(), {
+    public readonly cleaner = input(this.#options.cleaner(), {
         alias: 'tuiTextfieldCleaner',
     });
 }

@@ -55,12 +55,12 @@ export class TuiInputTimeDirective
     extends TuiControl<TuiTime | null>
     implements TuiTextfieldAccessor<TuiTime | null>
 {
-    private readonly input = inject(TuiInputDirective);
-    private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly open = inject(TuiDropdownOpen).open;
-    private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
-    private readonly fillers = inject(TUI_TIME_TEXTS);
-    protected readonly icon = tuiIconEnd(this.options.icon);
+    readonly #input = inject(TuiInputDirective);
+    readonly #dropdown = inject(TuiDropdownDirective);
+    readonly #open = inject(TuiDropdownOpen).open;
+    readonly #options = inject(TUI_INPUT_TIME_OPTIONS);
+    readonly #fillers = inject(TUI_TIME_TEXTS);
+    protected readonly icon = tuiIconEnd(this.#options.icon);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
@@ -68,7 +68,7 @@ export class TuiInputTimeDirective
     protected readonly filler = tuiDirectiveBinding(
         TuiTextfieldComponent,
         'filler',
-        computed((filler = this.fillers()?.[this.timeMode()] ?? '') =>
+        computed((filler = this.#fillers()?.[this.timeMode()] ?? '') =>
             this.postfix() ? '' : this.prefix() + filler,
         ),
         {},
@@ -77,9 +77,9 @@ export class TuiInputTimeDirective
     protected readonly mask = tuiMaskito(
         computed(() =>
             this.computeMask({
-                ...this.options,
+                ...this.#options,
                 mode: this.timeMode(),
-                step: this.interactive() && !this.dropdown.content() ? 1 : 0,
+                step: this.interactive() && !this.#dropdown.content() ? 1 : 0,
                 prefix: this.prefix(),
                 postfix: this.postfix(),
             }),
@@ -87,7 +87,10 @@ export class TuiInputTimeDirective
     );
 
     public readonly accept = input<readonly TuiTime[]>([]);
-    public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
+    public readonly timeMode = input<MaskitoTimeMode>(this.#options.mode, {
+        alias: 'mode',
+    });
+
     public readonly prefix = input('');
     public readonly postfix = input('');
     public readonly native =
@@ -97,13 +100,13 @@ export class TuiInputTimeDirective
         this.onChange(value);
 
         if (value) {
-            this.input.value.set(this.stringify(value));
+            this.#input.value.set(this.stringify(value));
         } else {
-            this.input.setValue(value);
+            this.#input.setValue(value);
         }
 
         if (!value && this.dropdownEnabled()) {
-            this.open.set(true);
+            this.#open.set(true);
         }
     }
 
@@ -113,7 +116,7 @@ export class TuiInputTimeDirective
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.input.value.set(this.stringify(this.value())));
+            untracked(() => this.#input.value.set(this.stringify(this.value())));
         }
     }
 
@@ -132,12 +135,12 @@ export class TuiInputTimeDirective
         this.onChange(newValue);
 
         if (newValue && newValue !== time) {
-            this.input.value.set(this.stringify(newValue));
+            this.#input.value.set(this.stringify(newValue));
         }
     }
 
     protected toggle(): void {
-        this.open.update((x) => !x);
+        this.#open.update((x) => !x);
     }
 
     protected onBlur(valueWithAffixes: string): void {
@@ -156,7 +159,7 @@ export class TuiInputTimeDirective
             this.onChange(newValue);
 
             if (newValue) {
-                this.input.value.set(this.stringify(newValue));
+                this.#input.value.set(this.stringify(newValue));
             }
         }
     }

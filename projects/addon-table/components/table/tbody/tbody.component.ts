@@ -23,7 +23,7 @@ import {TuiTableTr} from '../tr/tr.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
-    private readonly options = inject(TUI_TABLE_OPTIONS);
+    readonly #options = inject(TUI_TABLE_OPTIONS);
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -37,7 +37,7 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     public readonly heading = input<PolymorpheusContent>();
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
-    public readonly open = model(this.options.open);
+    public readonly open = model(this.#options.open);
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
     protected onClick = (): void => {

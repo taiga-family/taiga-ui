@@ -15,8 +15,8 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBadgedContentComponent {
-    private readonly cdr = inject(ChangeDetectorRef);
-    private readonly el = tuiInjectElement();
+    readonly #cdr = inject(ChangeDetectorRef);
+    readonly #el = tuiInjectElement();
 
     public get imgTop(): string {
         return this.resolve('.t-badge_top img');
@@ -27,10 +27,10 @@ export class TuiBadgedContentComponent {
     }
 
     public onResize(): void {
-        this.cdr.detectChanges();
+        this.#cdr.detectChanges();
     }
 
     private resolve(selector: string): string {
-        return `url(${this.el.querySelector(selector)?.getAttribute('src') || ''})`;
+        return `url(${this.#el.querySelector(selector)?.getAttribute('src') || ''})`;
     }
 }

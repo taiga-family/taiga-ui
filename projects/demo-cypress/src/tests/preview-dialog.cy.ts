@@ -33,12 +33,12 @@ describe('TuiPreviewDialog Escape Key Behavior', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        private readonly previewService = inject(TuiPreviewDialogService);
+        readonly #previewService = inject(TuiPreviewDialogService);
 
         protected dialogOpen = false;
 
         protected openPreview(): void {
-            this.previewService.open('Preview content text').subscribe();
+            this.#previewService.open('Preview content text').subscribe();
         }
     }
 

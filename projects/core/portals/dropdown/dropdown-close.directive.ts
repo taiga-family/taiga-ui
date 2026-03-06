@@ -18,11 +18,11 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
 
 @Directive()
 export class TuiDropdownClose {
-    private readonly el = tuiInjectElement();
-    private readonly ref = inject(TuiDropdownDirective).ref;
-    private readonly open = inject(TuiDropdownOpen);
-    private readonly obscured = inject(TuiObscured);
-    private readonly activeZone = inject(TuiActiveZone);
+    readonly #el = tuiInjectElement();
+    readonly #ref = inject(TuiDropdownDirective).ref;
+    readonly #open = inject(TuiDropdownOpen);
+    readonly #obscured = inject(TuiObscured);
+    readonly #activeZone = inject(TuiActiveZone);
 
     protected readonly tuiDropdownClose = outputFromObservable(
         merge(
@@ -30,13 +30,14 @@ export class TuiDropdownClose {
                 tuiIfMap(() =>
                     merge(
                         tuiCloseWatcher(),
-                        this.obscured.tuiObscured$.pipe(filter(Boolean)),
-                        this.activeZone.tuiActiveZoneChange.pipe(filter((a) => !a)),
-                        tuiTypedFromEvent(this.el, 'focusin').pipe(
+                        this.#obscured.tuiObscured$.pipe(filter(Boolean)),
+                        this.#activeZone.tuiActiveZoneChange.pipe(filter((a) => !a)),
+                        tuiTypedFromEvent(this.#el, 'focusin').pipe(
                             filter(
                                 (event) =>
-                                    !this.open.host.contains(tuiGetActualTarget(event)) ||
-                                    !this.ref(),
+                                    !this.#open.host.contains(
+                                        tuiGetActualTarget(event),
+                                    ) || !this.#ref(),
                             ),
                         ),
                     ),
@@ -48,8 +49,8 @@ export class TuiDropdownClose {
                       filter(
                           ({key}) =>
                               key === 'Escape' &&
-                              this.open.open() &&
-                              !this.ref()?.location.nativeElement?.nextElementSibling,
+                              this.#open.open() &&
+                              !this.#ref()?.location.nativeElement?.nextElementSibling,
                       ),
                       tuiStopPropagation(),
                   )

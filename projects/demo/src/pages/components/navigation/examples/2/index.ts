@@ -29,11 +29,11 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    private readonly theme = inject(TuiThemeColorService);
+    readonly #theme = inject(TuiThemeColorService);
 
     protected color = false;
 
     protected onColor(color: boolean): void {
-        this.theme.color = color ? 'purple' : 'black';
+        this.#theme.color = color ? 'purple' : 'black';
     }
 }

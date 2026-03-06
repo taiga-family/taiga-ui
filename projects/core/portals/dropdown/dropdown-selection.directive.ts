@@ -57,7 +57,7 @@ export class TuiDropdownSelection
     extends TuiDriver
     implements TuiRectAccessor, OnDestroy
 {
-    private ghost?: HTMLElement;
+    #ghost?: HTMLElement;
 
     protected readonly doc = inject(DOCUMENT);
     protected readonly vcr = inject(ViewContainerRef);
@@ -137,8 +137,8 @@ export class TuiDropdownSelection
     }
 
     public ngOnDestroy(): void {
-        if (this.ghost) {
-            this.ghostHost.removeChild(this.ghost);
+        if (this.#ghost) {
+            this.ghostHost.removeChild(this.#ghost);
         }
     }
 
@@ -185,12 +185,12 @@ export class TuiDropdownSelection
         return (
             !this.el.contains(range.commonAncestorContainer) ||
             !this.el.closest('tui-textfield') ||
-            range.intersectsNode(this.ghost || this.el)
+            range.intersectsNode(this.#ghost || this.el)
         );
     }
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
-        const {ghost = this.initGhost(this.ghostHost)} = this;
+        const ghost = this.#ghost ?? this.initGhost(this.ghostHost);
         const {top, left, width, height} = this.ghostHost.getBoundingClientRect();
         const {selectionStart, selectionEnd, value} = element;
         const range = this.doc.createRange();
@@ -230,7 +230,7 @@ export class TuiDropdownSelection
         ghost.style.padding = padding;
 
         this.ghostHost.appendChild(ghost);
-        this.ghost = ghost;
+        this.#ghost = ghost;
 
         return ghost;
     }

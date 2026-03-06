@@ -39,8 +39,8 @@ import {
     },
 })
 export class TuiModalComponent<T> implements OnDestroy, OnInit {
-    private readonly current = inject(TuiActiveZone);
-    private readonly parent = findActive(
+    readonly #current = inject(TuiActiveZone);
+    readonly #parent = findActive(
         inject(TuiActiveZone, {skipSelf: true}),
         tuiGetFocused(inject(DOCUMENT)),
     );
@@ -49,11 +49,11 @@ export class TuiModalComponent<T> implements OnDestroy, OnInit {
     public readonly component = signal<PolymorpheusContent<TuiPortalContext<T>>>(null);
 
     public ngOnInit(): void {
-        this.current.tuiActiveZoneParentSetter = this.parent;
+        this.#current.tuiActiveZoneParentSetter = this.#parent;
     }
 
     public ngOnDestroy(): void {
-        this.current.tuiActiveZoneParentSetter = null;
+        this.#current.tuiActiveZoneParentSetter = null;
     }
 }
 
@@ -63,7 +63,7 @@ function findActive(zone: TuiActiveZone, el: Element | null): TuiActiveZone | nu
     }
 
     const active = zone.children.find(
-        (child) => !child['el'].matches('[tuiActiveZoneAdapter]') && child.contains(el),
+        (child) => !child.matches('[tuiActiveZoneAdapter]') && child.contains(el),
     );
 
     return active ? findActive(active, el) : zone;

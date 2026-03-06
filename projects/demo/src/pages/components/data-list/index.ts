@@ -11,10 +11,10 @@ import {delay, of} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    private readonly items = ['Foo', 'Bar', 'Baz'];
+    readonly #items = ['Foo', 'Bar', 'Baz'];
     protected readonly items$ = inject(WA_IS_E2E)
-        ? of(this.items)
-        : of(this.items).pipe(delay(1e3));
+        ? of(this.#items)
+        : of(this.#items).pipe(delay(1e3));
 
     protected readonly emptyContentVariants = ['Loading...', ''];
     protected emptyContent = this.emptyContentVariants[0];

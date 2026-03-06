@@ -35,12 +35,13 @@ import {TuiLineChart} from './line-chart.component';
 export class TuiLineChartHint implements AfterViewInit {
     private readonly charts = contentChildren(TuiLineChart);
     private readonly chartsRef = contentChildren(TuiLineChart, {read: ElementRef});
-    private readonly renderer = inject(Renderer2);
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-    private readonly hovered$ = inject(TuiHoveredService);
 
-    private readonly computedContext = computed<ReadonlyArray<readonly TuiPoint[]>>(
+    readonly #renderer = inject(Renderer2);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #zone = inject(NgZone);
+    readonly #hovered$ = inject(TuiHoveredService);
+
+    readonly #computedContext = computed<ReadonlyArray<readonly TuiPoint[]>>(
         (values = this.charts().map(({value}) => value())) =>
             (values[0] || []).map((_, index) =>
                 values.map((value) => value[index] ?? [0, 0]),
@@ -53,11 +54,11 @@ export class TuiLineChartHint implements AfterViewInit {
     );
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts()), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts()), this.#hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
+                tuiZonefree(this.#zone),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe(() => {
                 this.charts().forEach((chart) => chart.onHovered(NaN));
@@ -66,7 +67,7 @@ export class TuiLineChartHint implements AfterViewInit {
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
     public getContext(index: number, _chart: TuiLineChart): readonly TuiPoint[] {
-        return this.computedContext()[index] || [];
+        return this.#computedContext()[index] || [];
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
@@ -79,7 +80,7 @@ export class TuiLineChartHint implements AfterViewInit {
 
         this.charts().forEach((chart) => chart.onHovered(index));
         this.chartsRef().forEach(({nativeElement}, index) =>
-            this.renderer.setStyle(
+            this.#renderer.setStyle(
                 nativeElement,
                 'z-index',
                 sorted.indexOf(current[index] ?? [0, 0]),

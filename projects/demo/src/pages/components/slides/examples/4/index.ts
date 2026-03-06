@@ -34,7 +34,7 @@ export default class Example {
     @ViewChild(TemplateRef)
     private readonly template?: TemplateRef<any>;
 
-    private readonly dialogs = inject(WA_IS_MOBILE)
+    readonly #dialogs = inject(WA_IS_MOBILE)
         ? inject(TuiSheetDialogService)
         : inject(TuiDialogService);
 
@@ -44,7 +44,7 @@ export default class Example {
     protected onClick(): void {
         this.step = 1;
         this.direction = 0;
-        this.dialogs.open(this.template, {appearance: 'fullscreen'}).subscribe();
+        this.#dialogs.open(this.template, {appearance: 'fullscreen'}).subscribe();
     }
 
     protected onStep(step: number): void {

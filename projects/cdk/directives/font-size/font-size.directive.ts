@@ -9,15 +9,15 @@ export const TUI_FONT_SIZE_HANDLER = new InjectionToken<(size: number) => void>(
 
 @Directive()
 export class TuiFontSize {
-    private readonly handler = inject(TUI_FONT_SIZE_HANDLER, {optional: true});
-    private readonly enabled =
+    readonly #handler = inject(TUI_FONT_SIZE_HANDLER, {optional: true});
+    readonly #enabled =
         !inject(TuiFontSize, {optional: true, skipSelf: true}) &&
         isPlatformBrowser(inject(PLATFORM_ID)) &&
         typeof ResizeObserver !== 'undefined';
 
     protected readonly nothing = inject(DestroyRef).onDestroy(
-        this.enabled && this.handler
-            ? tuiFontSizeWatcher(this.handler, inject(DOCUMENT).createElement('iframe'))
+        this.#enabled && this.#handler
+            ? tuiFontSizeWatcher(this.#handler, inject(DOCUMENT).createElement('iframe'))
             : EMPTY_FUNCTION,
     );
 }

@@ -43,7 +43,7 @@ import {createOutputSpy} from 'cypress/angular';
     ],
 })
 export class Test implements OnInit {
-    private readonly destroyRef = inject(DestroyRef);
+    readonly #destroyRef = inject(DestroyRef);
 
     public readonly control = input(new FormControl<string>('', {nonNullable: true}));
 
@@ -62,7 +62,7 @@ export class Test implements OnInit {
 
     public ngOnInit(): void {
         this.control()
-            .valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
+            .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
             .subscribe((value) => {
                 this.valueChange.emit(value);
             });

@@ -20,20 +20,20 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
     },
 })
 export class TuiSelectLike {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly isAndroid = inject(WA_IS_ANDROID);
+    readonly #el = tuiInjectElement<HTMLInputElement>();
+    readonly #isAndroid = inject(WA_IS_ANDROID);
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected clear(): void {
-        this.el.value = '';
+        this.#el.value = '';
     }
 
     protected prevent(event: MouseEvent): void {
-        if (!this.isAndroid) {
+        if (!this.#isAndroid) {
             return;
         }
 
         event.preventDefault();
-        this.el.focus();
+        this.#el.focus();
     }
 }

@@ -15,13 +15,13 @@ import {TuiHintHover} from './hint-hover.directive';
     host: {'(mousemove.zoneless)': 'onMove($event)'},
 })
 export class TuiHintPointer extends TuiHintHover implements TuiRectAccessor {
-    private currentRect = EMPTY_CLIENT_RECT;
+    #currentRect = EMPTY_CLIENT_RECT;
 
     public getClientRect(): DOMRect {
-        return this.currentRect;
+        return this.#currentRect;
     }
 
     protected onMove({clientX, clientY}: MouseEvent): void {
-        this.currentRect = tuiPointToClientRect(clientX, clientY);
+        this.#currentRect = tuiPointToClientRect(clientX, clientY);
     }
 }

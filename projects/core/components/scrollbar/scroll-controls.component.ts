@@ -17,7 +17,7 @@ import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiScrollControls {
-    private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
+    readonly #scrollRef = inject(TUI_SCROLL_REF).nativeElement;
 
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
     protected readonly refresh$ = inject(WA_ANIMATION_FRAME).pipe(
@@ -29,7 +29,7 @@ export class TuiScrollControls {
     );
 
     private get scrollbars(): [boolean, boolean] {
-        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.scrollRef;
+        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.#scrollRef;
 
         return [
             Math.ceil((clientHeight / scrollHeight) * 100) < 100,

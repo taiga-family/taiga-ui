@@ -38,17 +38,17 @@ import {IconsGroupTemplate} from './icons-group.directive';
     changeDetection,
 })
 export class IconsGroup implements OnInit {
-    private readonly clipboard = inject(Clipboard);
-    private readonly alerts = inject(TuiNotificationService);
-    private readonly route = inject(ActivatedRoute);
-    private readonly router = inject(Router);
-    private readonly destroyRef = inject(DestroyRef);
+    readonly #clipboard = inject(Clipboard);
+    readonly #alerts = inject(TuiNotificationService);
+    readonly #route = inject(ActivatedRoute);
+    readonly #router = inject(Router);
+    readonly #destroyRef = inject(DestroyRef);
 
     protected readonly iconGroup = contentChild(IconsGroupTemplate);
     protected readonly matcher = TUI_DEFAULT_MATCHER;
     protected readonly control = new FormControl<string>('');
     protected readonly keys = computed(() => Object.keys(this.icons()));
-    protected readonly search$: Observable<string> = this.route.queryParams.pipe(
+    protected readonly search$: Observable<string> = this.#route.queryParams.pipe(
         map((queryParams) => queryParams['search'] ?? ''),
         distinctUntilChanged(),
     );
@@ -57,21 +57,23 @@ export class IconsGroup implements OnInit {
     public readonly color = input<string | null>(null);
 
     public ngOnInit(): void {
-        this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');
+        this.control.patchValue(this.#route.snapshot.queryParams['search'] ?? '');
         this.control.valueChanges
             .pipe(
                 debounceTime(500),
                 map((search) => search || ''),
                 filter((search) => search.length >= 2 || search.length === 0),
-                takeUntilDestroyed(this.destroyRef),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe((search) => {
-                void this.router.navigate([], {queryParams: {search}});
+                void this.#router.navigate([], {queryParams: {search}});
             });
     }
 
     protected copyPath = (name: string): void => {
-        this.clipboard.copy(name);
-        this.alerts.open(`The name ${name} copied`, {appearance: 'positive'}).subscribe();
+        this.#clipboard.copy(name);
+        this.#alerts
+            .open(`The name ${name} copied`, {appearance: 'positive'})
+            .subscribe();
     };
 }

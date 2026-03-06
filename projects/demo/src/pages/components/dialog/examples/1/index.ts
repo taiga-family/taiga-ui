@@ -10,10 +10,10 @@ import {TuiButton, TuiDialogService} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
+    readonly #dialogs = inject(TuiDialogService);
 
     protected default(): void {
-        this.dialogs
+        this.#dialogs
             .open(
                 'This is a plain string dialog.<br />It supports basic <strong>HTML</strong>',
                 {label: 'Heading', size: 's'},
@@ -22,7 +22,7 @@ export default class Example {
     }
 
     protected custom(): void {
-        this.dialogs
+        this.#dialogs
             .open('Good, Anakin, Good!', {
                 label: 'Star wars. Episode III',
                 size: 's',

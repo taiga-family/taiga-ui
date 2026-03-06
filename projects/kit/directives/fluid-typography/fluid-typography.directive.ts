@@ -26,8 +26,8 @@ const STEP = 1 / 16;
     host: {tuiFluidTypography: ''},
 })
 export class TuiFluidTypography {
-    private readonly el = tuiInjectElement();
-    private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
+    readonly #el = tuiInjectElement();
+    readonly #options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
 
     public readonly tuiFluidTypography = input<readonly [min: number, max: number] | ''>(
         '',
@@ -37,17 +37,17 @@ export class TuiFluidTypography {
         toObservable(this.tuiFluidTypography),
         inject(WaResizeObserverService, {self: true}),
         inject(WaMutationObserverService, {self: true}),
-        fromEvent(this.el, 'input'),
+        fromEvent(this.#el, 'input'),
     )
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => {
-            const min = Number(this.tuiFluidTypography()[0] || this.options.min);
-            const max = Number(this.tuiFluidTypography()[1] || this.options.max);
+            const min = Number(this.tuiFluidTypography()[0] || this.#options.min);
+            const max = Number(this.tuiFluidTypography()[1] || this.#options.max);
 
             for (let i = max; i >= min; i -= STEP) {
-                this.el.style.fontSize = `calc(${i}rem + var(--tui-font-offset))`;
+                this.#el.style.fontSize = `calc(${i}rem + var(--tui-font-offset))`;
 
-                if (this.el.scrollWidth <= this.el.clientWidth) {
+                if (this.#el.scrollWidth <= this.#el.clientWidth) {
                     break;
                 }
             }

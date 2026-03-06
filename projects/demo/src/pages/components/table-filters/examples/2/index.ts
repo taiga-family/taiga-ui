@@ -33,7 +33,7 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly testData = [
+    readonly #testData = [
         {name: 'James', balance: 10000},
         {name: 'Michael', balance: 20000},
         {name: 'Richard', balance: 30000},
@@ -55,8 +55,8 @@ export default class Example {
     protected readonly columns = ['name', 'balance'];
 
     public addRow(): void {
-        const name = this.testData[this.testIndex]?.name ?? '';
-        const balance = this.testData?.[this.testIndex]?.balance ?? 0;
+        const name = this.#testData[this.testIndex]?.name ?? '';
+        const balance = this.#testData?.[this.testIndex]?.balance ?? 0;
 
         this.array.push(
             new FormGroup({

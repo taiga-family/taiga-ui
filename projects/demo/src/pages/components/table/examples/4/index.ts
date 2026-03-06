@@ -129,7 +129,7 @@ function getAge(dob: TuiDay): number {
     changeDetection,
 })
 export default class Example {
-    private readonly size$ = new BehaviorSubject(10);
+    readonly #size$ = new BehaviorSubject(10);
     protected readonly page$ = new BehaviorSubject(0);
 
     protected readonly direction$ = new BehaviorSubject<TuiSortDirection>(
@@ -148,7 +148,7 @@ export default class Example {
         this.sortKey$,
         this.direction$,
         this.page$,
-        this.size$,
+        this.#size$,
         this.minAge$,
     ]).pipe(
         // zero time debounce for a case when both key and direction change
@@ -190,7 +190,7 @@ export default class Example {
 
     protected onPagination({page, size}: TuiTablePaginationEvent): void {
         this.page$.next(page);
-        this.size$.next(size);
+        this.#size$.next(size);
     }
 
     protected isMatch(value: unknown): boolean {

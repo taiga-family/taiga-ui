@@ -40,16 +40,16 @@ const FLAGS = {self: true, optional: true};
  */
 @Directive()
 export abstract class TuiControl<T> implements ControlValueAccessor {
-    private readonly fallback = inject(TUI_FALLBACK_VALUE, FLAGS) as T;
-    private readonly refresh$ = new Subject<void>();
-    private readonly internal = signal(this.fallback);
+    readonly #fallback = inject(TUI_FALLBACK_VALUE, FLAGS) as T;
+    readonly #refresh$ = new Subject<void>();
+    readonly #internal = signal(this.#fallback);
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
     protected transformer =
         inject(TuiValueTransformer, FLAGS) ?? TUI_IDENTITY_VALUE_TRANSFORMER;
 
-    public readonly value = computed(() => this.internal() ?? this.fallback);
+    public readonly value = computed(() => this.#internal() ?? this.#fallback);
     public readonly readOnly = input(false);
     public readonly pseudoInvalid = input<boolean | null>(null, {alias: 'invalid'});
     public readonly touched = signal(false);
@@ -72,7 +72,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     constructor() {
         this.control.valueAccessor = this;
-        this.refresh$
+        this.#refresh$
             .pipe(
                 delay(0),
                 startWith(null),
@@ -92,17 +92,17 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     }
 
     public registerOnChange(onChange: (value: unknown) => void): void {
-        this.refresh$.next();
+        this.#refresh$.next();
 
         this.onChange = (value: T) => {
-            const internal = untracked(() => this.internal());
+            const internal = untracked(() => this.#internal());
 
             if (value === internal) {
                 return;
             }
 
             onChange(this.transformer.toControlValue(value));
-            this.internal.set(value);
+            this.#internal.set(value);
             this.update();
         };
     }
@@ -122,7 +122,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         // TODO: https://github.com/angular/angular/issues/14988
         const safe = this.control instanceof NgModel ? this.control.model : value;
 
-        this.internal.set(this.transformer.fromControlValue(safe));
+        this.#internal.set(this.transformer.fromControlValue(safe));
         this.update();
     }
 

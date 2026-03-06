@@ -6,20 +6,20 @@ import {TuiDropdownDirective} from './dropdown.directive';
 
 @Directive({selector: 'ng-template[tuiDropdown]'})
 export class TuiDropdownContent implements OnDestroy {
-    private readonly directive = inject(TuiDropdownDirective);
+    readonly #directive = inject(TuiDropdownDirective);
 
     constructor() {
-        tuiSetSignal(this.directive.content, inject(TemplateRef));
+        tuiSetSignal(this.#directive.content, inject(TemplateRef));
 
         if (
             isPlatformBrowser(inject(PLATFORM_ID)) &&
-            this.directive.el.matches(':focus-within')
+            this.#directive.el.matches(':focus-within')
         ) {
-            this.directive.toggle(true);
+            this.#directive.toggle(true);
         }
     }
 
     public ngOnDestroy(): void {
-        tuiSetSignal(this.directive.content, null);
+        tuiSetSignal(this.#directive.content, null);
     }
 }

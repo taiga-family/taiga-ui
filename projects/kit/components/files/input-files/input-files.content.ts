@@ -18,26 +18,26 @@ import {TuiInputFiles} from './input-files.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputFilesContent {
-    private readonly texts = inject(TUI_INPUT_FILE_TEXTS);
-    private readonly component = inject(TuiInputFiles);
+    readonly #texts = inject(TUI_INPUT_FILE_TEXTS);
+    readonly #component = inject(TuiInputFiles);
 
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly context = injectContext<TuiContext<boolean>>();
     protected readonly link = computed(() =>
-        this.component.input()?.el.multiple
-            ? this.texts().defaultLinkMultiple
-            : this.texts().defaultLinkSingle,
+        this.#component.input()?.el.multiple
+            ? this.#texts().defaultLinkMultiple
+            : this.#texts().defaultLinkSingle,
     );
 
     protected readonly label = computed(() =>
-        this.component.input()?.el.multiple
-            ? this.texts().defaultLabelMultiple
-            : this.texts().defaultLabelSingle,
+        this.#component.input()?.el.multiple
+            ? this.#texts().defaultLabelMultiple
+            : this.#texts().defaultLabelSingle,
     );
 
     protected readonly dragged = computed(() =>
-        this.component.input()?.el.multiple
-            ? this.texts().dropMultiple
-            : this.texts().drop,
+        this.#component.input()?.el.multiple
+            ? this.#texts().dropMultiple
+            : this.#texts().drop,
     );
 }

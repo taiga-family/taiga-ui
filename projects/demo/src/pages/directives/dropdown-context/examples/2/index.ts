@@ -13,7 +13,7 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
+    readonly #dialogs = inject(TuiDialogService);
 
     protected readonly menuItems = [
         {title: 'View', iconName: '@tui.eye'},
@@ -39,6 +39,6 @@ export default class Example {
         Object.values(obj);
 
     protected printToConsole(action: string, contextInfo: unknown): void {
-        this.dialogs.open(`[${action}]: ${JSON.stringify(contextInfo)}`).subscribe();
+        this.#dialogs.open(`[${action}]: ${JSON.stringify(contextInfo)}`).subscribe();
     }
 }

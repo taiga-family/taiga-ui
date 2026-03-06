@@ -36,7 +36,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     host: {'[attr.data-size]': 'size()'},
 })
 export class TuiSegmented implements OnChanges {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     protected readonly sub = inject(WaResizeObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
@@ -59,13 +59,13 @@ export class TuiSegmented implements OnChanges {
     }
 
     private refresh(): void {
-        const el = this.el.children.item(this.activeItemIndex());
+        const el = this.#el.children.item(this.activeItemIndex());
 
         if (!tuiIsHTMLElement(el)) {
             return;
         }
 
-        Array.from(this.el.children).forEach((e) =>
+        Array.from(this.#el.children).forEach((e) =>
             e.classList.remove('tui-segmented_active'),
         );
 
@@ -73,8 +73,8 @@ export class TuiSegmented implements OnChanges {
 
         const {offsetWidth, offsetLeft, offsetTop} = el;
 
-        this.el.style.setProperty('--t-top', tuiPx(offsetTop));
-        this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
-        this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
+        this.#el.style.setProperty('--t-top', tuiPx(offsetTop));
+        this.#el.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.#el.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }

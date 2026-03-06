@@ -24,11 +24,11 @@ import {
     providers: [tuiAsDriver(TuiHintDescribe)],
 })
 export class TuiHintDescribe extends TuiDriver {
-    private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiInjectElement();
+    readonly #doc = inject(DOCUMENT);
+    readonly #el = tuiInjectElement();
 
     protected readonly element = computed((id = this.id()) =>
-        id ? this.doc.querySelector(`#${id}`) || this.el : this.el,
+        id ? this.#doc.querySelector(`#${id}`) || this.#el : this.#el,
     );
 
     public readonly id = input<string | null | undefined>('', {alias: 'tuiHintDescribe'});
@@ -36,12 +36,12 @@ export class TuiHintDescribe extends TuiDriver {
 
     protected readonly stream$ = toObservable(this.id).pipe(
         distinctUntilChanged(),
-        tuiIfMap(() => fromEvent(this.doc, 'keydown', {capture: true}), tuiIsPresent),
+        tuiIfMap(() => fromEvent(this.#doc, 'keydown', {capture: true}), tuiIsPresent),
         switchMap(() =>
             this.focused
                 ? of(false)
                 : merge(
-                      tuiTypedFromEvent(this.doc, 'keyup'),
+                      tuiTypedFromEvent(this.#doc, 'keyup'),
                       tuiTypedFromEvent(this.element(), 'blur'),
                   ).pipe(map(() => this.focused)),
         ),

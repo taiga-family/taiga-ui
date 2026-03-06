@@ -15,24 +15,21 @@ export class TuiBigIntValueTransformer extends TuiValueTransformer<
     string,
     bigint | null
 > {
-    private readonly quantumTransformer: TuiValueTransformer<
-        bigint | null,
-        bigint | null
-    > =
+    readonly #quantumTransformer: TuiValueTransformer<bigint | null, bigint | null> =
         inject(TuiBigIntQuantumValueTransformer, {optional: true}) ??
         TUI_IDENTITY_VALUE_TRANSFORMER;
 
-    private readonly optionsTransformer: TuiValueTransformer<bigint | null, any> =
+    readonly #optionsTransformer: TuiValueTransformer<bigint | null, any> =
         inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer ??
         TUI_IDENTITY_VALUE_TRANSFORMER;
 
-    private readonly mask = inject(TuiNumberMask);
+    readonly #mask = inject(TuiNumberMask);
 
     public toControlValue(textfieldValue: string | null): bigint | null {
-        return this.optionsTransformer.toControlValue(
-            this.quantumTransformer.toControlValue(
+        return this.#optionsTransformer.toControlValue(
+            this.#quantumTransformer.toControlValue(
                 maskitoParseNumber(textfieldValue ?? '', {
-                    ...this.mask.params(),
+                    ...this.#mask.params(),
                     bigint: true,
                 }),
             ),
@@ -40,8 +37,8 @@ export class TuiBigIntValueTransformer extends TuiValueTransformer<
     }
 
     public fromControlValue(controlValue: bigint | null): string {
-        return this.mask.stringify(
-            this.optionsTransformer.fromControlValue(controlValue),
+        return this.#mask.stringify(
+            this.#optionsTransformer.fromControlValue(controlValue),
         );
     }
 }

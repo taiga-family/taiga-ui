@@ -16,7 +16,7 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     },
 })
 export class TuiProgressCircle {
-    private readonly options = inject(TUI_PROGRESS_OPTIONS);
+    readonly #options = inject(TUI_PROGRESS_OPTIONS);
 
     protected readonly ratio = computed((ratio = this.value() / this.max()) =>
         Number.isFinite(ratio) ? ratio : 0,
@@ -24,7 +24,7 @@ export class TuiProgressCircle {
 
     public readonly value = input(0);
     public readonly max = input(1);
-    public readonly color = input<string | null>(this.options.color);
-    public readonly size = input(this.options.size);
+    public readonly color = input<string | null>(this.#options.color);
+    public readonly size = input(this.#options.size);
     public readonly arc = input(false, {transform: coerceBooleanProperty});
 }

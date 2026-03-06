@@ -51,14 +51,14 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 export class TuiDropdownDirective
     implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
 {
-    private readonly refresh$ = new Subject<void>();
-    private readonly service = inject(TuiPopupService);
-    private readonly cdr = inject(ChangeDetectorRef);
-    private readonly drivers = coerceArray(
+    readonly #refresh$ = new Subject<void>();
+    readonly #service = inject(TuiPopupService);
+    readonly #cdr = inject(ChangeDetectorRef);
+    readonly #drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );
 
-    protected readonly sub = this.refresh$
+    protected readonly sub = this.#refresh$
         .pipe(throttleTime(0, tuiZonefreeScheduler()), takeUntilDestroyed())
         .subscribe(() => {
             this.ref()?.changeDetectorRef.detectChanges();
@@ -86,7 +86,7 @@ export class TuiDropdownDirective
             content: PolymorpheusContent<TuiContext<() => void>>,
         ): PolymorpheusContent<TuiContext<() => void>> =>
             content instanceof TemplateRef
-                ? new PolymorpheusTemplate(content, this.cdr)
+                ? new PolymorpheusTemplate(content, this.#cdr)
                 : content,
     });
 
@@ -96,7 +96,7 @@ export class TuiDropdownDirective
 
     public ngAfterViewChecked(): void {
         if (this.ref()) {
-            this.refresh$.next();
+            this.#refresh$.next();
         }
     }
 
@@ -112,13 +112,13 @@ export class TuiDropdownDirective
         const ref = this.ref();
 
         if (show && this.content() && !ref) {
-            this.ref.set(this.service.add(this.component));
+            this.ref.set(this.#service.add(this.component));
         } else if (!show && ref) {
             this.ref.set(null);
             ref.destroy();
         }
 
         this.ref()?.location.nativeElement.setAttribute('id', this.id);
-        this.drivers.forEach((driver) => driver?.next(show));
+        this.#drivers.forEach((driver) => driver?.next(show));
     }
 }

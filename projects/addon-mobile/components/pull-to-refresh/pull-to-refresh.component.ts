@@ -27,40 +27,40 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     providers: [TuiPullToRefreshService],
 })
 export class TuiPullToRefresh {
-    private readonly isIOS = inject(WA_IS_IOS);
-    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
-    private readonly service = inject(TuiPullToRefreshService);
-    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
+    readonly #isIOS = inject(WA_IS_IOS);
+    readonly #threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
+    readonly #service = inject(TuiPullToRefreshService);
+    readonly #el = inject(TUI_SCROLL_REF).nativeElement;
 
-    protected readonly pulling = toSignal(this.service, {initialValue: 0});
+    protected readonly pulling = toSignal(this.#service, {initialValue: 0});
     protected readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
         TUI_PULL_TO_REFRESH_COMPONENT,
     );
 
     protected readonly style = computed(() => this.styleHandler()(this.pulling()));
     protected readonly dropped = toSignal(
-        this.service.pipe(
-            map((distance) => distance <= MICRO_OFFSET || distance === this.threshold),
+        this.#service.pipe(
+            map((distance) => distance <= MICRO_OFFSET || distance === this.#threshold),
             distinctUntilChanged(),
         ),
     );
 
     public readonly styleHandler = input<
         TuiHandler<number, Record<string, unknown> | null>
-    >(this.isIOS ? (distance) => ({top: tuiPx(distance / 2)}) : () => null);
+    >(this.#isIOS ? (distance) => ({top: tuiPx(distance / 2)}) : () => null);
 
     public readonly pulled = outputFromObservable(
-        this.service.pipe(filter((distance) => distance === this.threshold)),
+        this.#service.pipe(filter((distance) => distance === this.#threshold)),
     );
 
     constructor() {
         if (this.component) {
-            tuiScrollFrom(this.el)
+            tuiScrollFrom(this.#el)
                 .pipe(startWith(null), tuiZonefree(), takeUntilDestroyed())
                 .subscribe(() => {
-                    this.el.style.setProperty(
+                    this.#el.style.setProperty(
                         'touch-action',
-                        this.el.scrollTop ? '' : 'pan-down',
+                        this.#el.scrollTop ? '' : 'pan-down',
                     );
                 });
         }

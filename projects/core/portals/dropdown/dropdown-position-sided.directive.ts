@@ -12,10 +12,10 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     providers: [TuiDropdownPosition, tuiAsPositionAccessor(TuiDropdownPositionSided)],
 })
 export class TuiDropdownPositionSided extends TuiPositionAccessor {
-    private readonly options = inject(TUI_DROPDOWN_OPTIONS);
-    private readonly viewport = inject(TUI_VIEWPORT);
-    private readonly vertical = inject(TuiDropdownPosition);
-    private previous = this.options.direction || 'bottom';
+    readonly #options = inject(TUI_DROPDOWN_OPTIONS);
+    readonly #viewport = inject(TUI_VIEWPORT);
+    readonly #vertical = inject(TuiDropdownPosition);
+    #previous = this.#options.direction || 'bottom';
 
     public readonly tuiDropdownSided = input<boolean | string>('');
     public readonly tuiDropdownSidedOffset = input(4);
@@ -23,14 +23,14 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
 
     public getPosition(rect: DOMRect): TuiPoint {
         if (this.tuiDropdownSided() === false) {
-            return this.vertical.getPosition(rect);
+            return this.#vertical.getPosition(rect);
         }
 
         const {height, width} = rect;
-        const hostRect = this.vertical.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
-        const viewport = this.viewport.getClientRect();
-        const {direction, offset} = this.options;
-        const adjusted = this.vertical.getAlign(this.options.align);
+        const hostRect = this.#vertical.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
+        const viewport = this.#viewport.getClientRect();
+        const {direction, offset} = this.#options;
+        const adjusted = this.#vertical.getAlign(this.#options.align);
         const align = adjusted === 'center' ? 'left' : adjusted;
         const available = {
             top: hostRect.bottom - viewport.top,
@@ -49,16 +49,16 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
         const left = available[align] > width ? position[align] : maxLeft;
 
         if (
-            (available[this.previous] > height && direction) ||
-            this.previous === better
+            (available[this.#previous] > height && direction) ||
+            this.#previous === better
         ) {
-            this.vertical.direction.next(this.previous);
+            this.#vertical.direction.next(this.#previous);
 
-            return [left, position[this.previous]];
+            return [left, position[this.#previous]];
         }
 
-        this.previous = better;
-        this.vertical.direction.next(better);
+        this.#previous = better;
+        this.#vertical.direction.next(better);
 
         return [left, position[better]];
     }

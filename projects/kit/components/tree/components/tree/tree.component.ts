@@ -30,12 +30,12 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
     host: {role: 'tree'},
 })
 export class TuiTreeComponent<T> implements DoCheck {
-    private readonly check$ = new Subject<void>();
+    readonly #check$ = new Subject<void>();
 
     protected readonly item = viewChild(TuiTreeItem);
     protected readonly child = viewChild(TuiTreeComponent);
     protected readonly children = toSignal(
-        this.check$.pipe(
+        this.#check$.pipe(
             map(() => this.handler(this.value())),
             distinctUntilChanged(),
         ),
@@ -56,7 +56,7 @@ export class TuiTreeComponent<T> implements DoCheck {
     }
 
     protected checkChanges(): void {
-        this.check$.next();
+        this.#check$.next();
         this.item()?.checkChanges();
         this.child()?.checkChanges();
     }

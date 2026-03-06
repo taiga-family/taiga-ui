@@ -9,7 +9,7 @@ import {Subject} from 'rxjs';
     },
 })
 export class TuiItemsWithMoreDirective implements OnChanges {
-    private readonly el = tuiInjectElement();
+    readonly #el = tuiInjectElement();
 
     public readonly itemsLimit = input(Infinity);
     public readonly required = input(-1);
@@ -23,6 +23,6 @@ export class TuiItemsWithMoreDirective implements OnChanges {
     }
 
     protected maxWidth(): number {
-        return Math.max(...Array.from(this.el.children, ({clientWidth}) => clientWidth));
+        return Math.max(...Array.from(this.#el.children, ({clientWidth}) => clientWidth));
     }
 }

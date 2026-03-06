@@ -78,15 +78,15 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimit);
     host: {'[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75'},
 })
 export class TuiTextareaDirective implements Validator, DoCheck {
-    private readonly textfield = inject(TuiTextfieldComponent);
-    private readonly ref = inject(ViewContainerRef).createComponent(TuiTextareaCounter);
+    readonly #textfield = inject(TuiTextfieldComponent);
+    readonly #ref = inject(ViewContainerRef).createComponent(TuiTextareaCounter);
 
     public readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     public readonly limit = input(0);
 
     public ngDoCheck(): void {
-        this.ref.instance.length.set(this.textfield.value().length);
-        this.ref.instance.limit.set(this.limit());
+        this.#ref.instance.length.set(this.#textfield.value().length);
+        this.#ref.instance.limit.set(this.limit());
     }
 
     public validate(control: AbstractControl): ValidationErrors | null {

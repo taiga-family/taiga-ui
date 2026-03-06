@@ -28,8 +28,7 @@ import {TuiTilesComponent} from './tiles.component';
 })
 export class TuiTile implements OnDestroy, AfterViewInit {
     private readonly wrapper = viewChild('wrapper', {read: ElementRef});
-    private readonly service = inject(TuiTileService);
-
+    readonly #service = inject(TuiTileService);
     protected readonly tiles = inject(TuiTilesComponent);
     protected readonly dragged = signal(false);
 
@@ -43,7 +42,7 @@ export class TuiTile implements OnDestroy, AfterViewInit {
         this.dragged.set(this.dragged() || dragged);
 
         this.tiles.element.set(dragged ? this.element : null);
-        this.service.setOffset(offset);
+        this.#service.setOffset(offset);
 
         if (dragged) {
             this.tiles.el.classList.add('_dragged');
@@ -53,7 +52,7 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        this.service.init(this.wrapper()?.nativeElement);
+        this.#service.init(this.wrapper()?.nativeElement);
     }
 
     public ngOnDestroy(): void {

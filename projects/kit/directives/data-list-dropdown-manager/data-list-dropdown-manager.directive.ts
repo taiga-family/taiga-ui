@@ -24,22 +24,22 @@ import {
 
 @Directive({selector: 'tui-data-list[tuiDataListDropdownManager]'})
 export class TuiDataListDropdownManager implements AfterViewInit {
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly dropdowns = contentChildren(TuiDropdownDirective, {
-        descendants: true,
-    });
-
     private readonly els = contentChildren(TuiDropdownDirective, {
         read: ElementRef,
         descendants: true,
     });
 
-    private readonly elements$ = toObservable(this.els).pipe(
+    private readonly dropdowns = contentChildren(TuiDropdownDirective, {
+        descendants: true,
+    });
+
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #elements$ = toObservable(this.els).pipe(
         map((array) => array.map(({nativeElement}) => nativeElement)),
         shareReplay({bufferSize: 1, refCount: true}),
     );
 
-    private readonly right$ = this.elements$.pipe(
+    readonly #right$ = this.#elements$.pipe(
         switchMap((elements) =>
             merge(
                 ...elements.map((element, index) =>
@@ -53,7 +53,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
         ),
     );
 
-    private readonly immediate$ = this.elements$.pipe(
+    readonly #immediate$ = this.#elements$.pipe(
         switchMap((elements) =>
             merge(
                 ...elements.map((element, index) =>
@@ -63,7 +63,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
         ),
     );
 
-    private readonly debounce$ = this.elements$.pipe(
+    readonly #debounce$ = this.#elements$.pipe(
         switchMap((elements) =>
             merge(
                 ...elements.map((element, index) =>
@@ -83,11 +83,11 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     );
 
     public ngAfterViewInit(): void {
-        this.right$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((index) => {
+        this.#right$.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe((index) => {
             this.tryToFocus(index);
         });
 
-        merge(this.immediate$, this.debounce$)
+        merge(this.#immediate$, this.#debounce$)
             .pipe(
                 switchMap((active) => {
                     this.dropdowns().forEach((dropdown, index) => {
@@ -123,7 +123,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
                         }),
                     );
                 }),
-                takeUntilDestroyed(this.destroyRef),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe();
     }

@@ -21,22 +21,22 @@ import {combineLatest, map, type Observable} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
-    private readonly injector = inject(INJECTOR);
-    private readonly months$ = toObservable(inject(TUI_MONTHS));
-    private readonly control = new FormControl<readonly TuiDay[] | null>(null);
+    readonly #dialogs = inject(TuiDialogService);
+    readonly #injector = inject(INJECTOR);
+    readonly #months$ = toObservable(inject(TUI_MONTHS));
+    readonly #control = new FormControl<readonly TuiDay[] | null>(null);
 
-    private readonly dialog$: Observable<readonly TuiDay[]> = this.dialogs.open(
+    readonly #dialog$: Observable<readonly TuiDay[]> = this.#dialogs.open(
         new PolymorpheusComponent(
             TuiMobileCalendarDropdownComponent,
             Injector.create({
                 providers: [
                     {
                         provide: TUI_CALENDAR_DATE_STREAM,
-                        useValue: tuiControlValue(this.control),
+                        useValue: tuiControlValue(this.#control),
                     },
                 ],
-                parent: this.injector,
+                parent: this.#injector,
             }),
         ),
         {
@@ -50,8 +50,8 @@ export default class Example {
     );
 
     protected readonly date$ = combineLatest([
-        tuiControlValue<readonly TuiDay[]>(this.control),
-        this.months$,
+        tuiControlValue<readonly TuiDay[]>(this.#control),
+        this.#months$,
     ]).pipe(
         map(([value, months]) => {
             if (!value?.length) {
@@ -65,10 +65,10 @@ export default class Example {
     );
 
     protected get empty(): boolean {
-        return !this.control.value?.length;
+        return !this.#control.value?.length;
     }
 
     protected onClick(): void {
-        this.dialog$.subscribe((value) => this.control.setValue(value));
+        this.#dialog$.subscribe((value) => this.#control.setValue(value));
     }
 }

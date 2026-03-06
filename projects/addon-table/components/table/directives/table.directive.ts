@@ -65,7 +65,7 @@ class Styles {}
 export class TuiTableDirective<
     T extends Partial<Record<keyof T, unknown>>,
 > implements TuiTextfieldOptions {
-    private readonly options = inject(TUI_TABLE_OPTIONS);
+    readonly #options = inject(TUI_TABLE_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly computedSortChange = computed<TuiTableSortChange<T>>(() => ({
         sortComparator: this.sorter(),
@@ -77,8 +77,8 @@ export class TuiTableDirective<
     );
 
     public readonly columns = input<ReadonlyArray<string | keyof T>>([]);
-    public readonly size = input<TuiSizeL | TuiSizeS>(this.options.size);
-    public readonly direction = model(this.options.direction);
+    public readonly size = input<TuiSizeL | TuiSizeS>(this.#options.size);
+    public readonly direction = model(this.#options.direction);
     public readonly sorter = model<TuiComparator<T>>(EMPTY_COMPARATOR);
     public readonly sortChange = output<TuiTableSortChange<T>>();
 

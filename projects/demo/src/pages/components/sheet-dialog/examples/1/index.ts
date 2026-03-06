@@ -11,10 +11,10 @@ import {TuiButton} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly service = inject(TuiSheetDialogService);
+    readonly #service = inject(TuiSheetDialogService);
 
     protected onClick(): void {
-        this.service
+        this.#service
             .open('Supports <b>basic</b> HTML', {label: 'Simple sheet'})
             .subscribe();
     }

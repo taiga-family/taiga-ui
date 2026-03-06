@@ -12,8 +12,8 @@ import {tuiInjectValue} from '@taiga-ui/kit';
     host: {'[style.font-weight]': 'selected() ? "bold" : null'},
 })
 export class Option<T> {
-    private readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
-    private readonly value = tuiInjectValue<T>();
+    readonly #option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
+    readonly #value = tuiInjectValue<T>();
 
-    protected selected = computed(() => this.value() === this.option.value());
+    protected selected = computed(() => this.#value() === this.#option.value());
 }

@@ -60,13 +60,13 @@ class Styles {}
     },
 })
 export class TuiInputSliderDirective {
-    private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>(
+    readonly #isMobile = inject(WA_IS_MOBILE);
+    readonly #el = tuiInjectElement<HTMLInputElement>();
+    readonly #slider = tuiInjectAuxiliary<TuiSliderComponent>(
         (x) => x instanceof TuiSliderComponent,
     );
 
-    private readonly controlTransformer = inject<TuiValueTransformer<string, number>>(
+    readonly #controlTransformer = inject<TuiValueTransformer<string, number>>(
         TuiValueTransformer,
         {self: true},
     );
@@ -75,11 +75,11 @@ export class TuiInputSliderDirective {
     protected readonly mask = inject(TuiNumberMask, {self: true});
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly value = computed(() =>
-        this.controlTransformer.toControlValue(this.inputNumber.value()),
+        this.#controlTransformer.toControlValue(this.inputNumber.value()),
     );
 
     protected readonly textfieldToSliderSync = effect(() => {
-        const slider = this.slider();
+        const slider = this.#slider();
 
         if (!slider) {
             return;
@@ -98,7 +98,7 @@ export class TuiInputSliderDirective {
     });
 
     protected readonly sliderInit = effect((onCleanup) => {
-        const slider = this.slider();
+        const slider = this.#slider();
 
         if (!slider) {
             return;
@@ -117,18 +117,18 @@ export class TuiInputSliderDirective {
                         slider.keySteps?.getControlValue() ?? slider.el.valueAsNumber,
                     ),
                 ),
-                filter(() => !this.isMobile),
+                filter(() => !this.#isMobile),
                 switchMap(() =>
-                    fromEvent(this.el.ownerDocument, 'pointerup', {once: true}),
+                    fromEvent(this.#el.ownerDocument, 'pointerup', {once: true}),
                 ),
             )
-            .subscribe(() => this.el.focus());
+            .subscribe(() => this.#el.focus());
 
         onCleanup(() => subscription.unsubscribe());
     });
 
     protected onStep(coefficient: number): void {
-        const slider = this.slider();
+        const slider = this.#slider();
 
         if (slider && this.inputNumber.interactive()) {
             const newValue = tuiClamp(

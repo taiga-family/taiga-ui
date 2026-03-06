@@ -49,9 +49,9 @@ export class TuiInputChipDirective<T>
     extends TuiControl<T[]>
     implements TuiTextfieldAccessor<T[]>
 {
-    private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
-    private readonly mobile = inject(WA_IS_MOBILE);
-    private readonly dropdown = inject(TuiDropdownDirective);
+    readonly #options = inject(TUI_INPUT_CHIP_OPTIONS);
+    readonly #mobile = inject(WA_IS_MOBILE);
+    readonly #dropdown = inject(TuiDropdownDirective);
 
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
     protected readonly open = inject(TuiDropdownOpen).open;
@@ -67,8 +67,8 @@ export class TuiInputChipDirective<T>
             this.textfield.value.set('');
         });
 
-    public readonly separator = input(this.options.separator);
-    public readonly unique = input(this.options.unique);
+    public readonly separator = input(this.#options.separator);
+    public readonly unique = input(this.#options.unique);
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {
@@ -100,7 +100,7 @@ export class TuiInputChipDirective<T>
     }
 
     protected onInput(): void {
-        this.open.set(!!this.dropdown.content());
+        this.open.set(!!this.#dropdown.content());
 
         if (this.separator() && this.textfield.value().match(this.separator())) {
             this.onEnter();
@@ -126,7 +126,7 @@ export class TuiInputChipDirective<T>
     protected onBackspace(key: string): void {
         // (keydown.backspace) doesn't emit event on empty input in ios safari
         if (key === 'Backspace' && !this.textfield.value() && this.interactive()) {
-            if (this.mobile || !this.textfield.item()) {
+            if (this.#mobile || !this.textfield.item()) {
                 this.onChange(this.value().slice(0, -1));
             } else {
                 this.el.dispatchEvent(

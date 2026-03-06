@@ -4,7 +4,7 @@ import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
 export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness {
     public static hostSelector = 'tui-accordion-item';
 
-    private readonly header = this.locatorFor('.t-header');
+    readonly #header = this.locatorFor('.t-header');
 
     public async getTitle(): Promise<string> {
         return (await this.locatorFor('.t-title')()).text();
@@ -27,10 +27,10 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     public async focus(): Promise<void> {
-        return (await this.header()).focus();
+        return (await this.#header()).focus();
     }
 
     public async sendEscKey(): Promise<void> {
-        return (await this.header()).sendKeys(TestKey.ESCAPE);
+        return (await this.#header()).sendKeys(TestKey.ESCAPE);
     }
 }

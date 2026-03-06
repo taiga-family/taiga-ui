@@ -24,29 +24,29 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
     exportAs: 'tuiHintHover',
 })
 export class TuiHintHover extends TuiDriver {
-    private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly el = tuiInjectElement();
-    private readonly hovered$ = inject(TuiHoveredService);
-    private readonly options = inject(TUI_HINT_OPTIONS);
-    private visible = false;
-    private readonly toggle$ = new Subject<boolean>();
-    private readonly stream$ = merge(
-        this.toggle$.pipe(
+    readonly #isMobile = inject(WA_IS_MOBILE);
+    readonly #el = tuiInjectElement();
+    readonly #hovered$ = inject(TuiHoveredService);
+    readonly #options = inject(TUI_HINT_OPTIONS);
+    #visible = false;
+    readonly #toggle$ = new Subject<boolean>();
+    readonly #stream$ = merge(
+        this.#toggle$.pipe(
             switchMap((show) =>
-                this.isMobile
+                this.#isMobile
                     ? of(show).pipe(delay(0))
                     : of(show).pipe(delay(show ? 0 : this.hideDelay())),
             ),
-            takeUntil(this.hovered$),
+            takeUntil(this.#hovered$),
             repeat(),
         ),
-        this.hovered$.pipe(
+        this.#hovered$.pipe(
             switchMap((show) =>
-                this.isMobile
+                this.#isMobile
                     ? of(show).pipe(delay(0))
                     : of(show).pipe(delay(show ? this.showDelay() : this.hideDelay())),
             ),
-            takeUntil(this.toggle$),
+            takeUntil(this.#toggle$),
             repeat(),
         ),
     ).pipe(
@@ -54,23 +54,23 @@ export class TuiHintHover extends TuiDriver {
         map(
             (value) =>
                 value &&
-                (this.el.hasAttribute('tuiHintPointer') || !tuiIsObscured(this.el)),
+                (this.#el.hasAttribute('tuiHintPointer') || !tuiIsObscured(this.#el)),
         ),
         tap((visible) => {
-            this.visible = visible;
+            this.#visible = visible;
         }),
     );
 
-    private readonly parent = inject(TuiHintHover, {
+    readonly #parent = inject(TuiHintHover, {
         optional: true,
         skipSelf: true,
     });
 
-    public readonly showDelay = input(this.options.showDelay, {
+    public readonly showDelay = input(this.#options.showDelay, {
         alias: 'tuiHintShowDelay',
     });
 
-    public readonly hideDelay = input(this.options.hideDelay, {
+    public readonly hideDelay = input(this.#options.hideDelay, {
         alias: 'tuiHintHideDelay',
     });
 
@@ -79,15 +79,15 @@ export class TuiHintHover extends TuiDriver {
     public enabled = true;
 
     constructor() {
-        super((subscriber) => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.#stream$.subscribe(subscriber));
     }
 
-    public toggle(visible = !this.visible): void {
-        this.toggle$.next(visible);
-        this.parent?.toggle(visible);
+    public toggle(visible = !this.#visible): void {
+        this.#toggle$.next(visible);
+        this.#parent?.toggle(visible);
     }
 
     public close(): void {
-        this.toggle$.next(false);
+        this.#toggle$.next(false);
     }
 }
