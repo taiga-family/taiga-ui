@@ -258,6 +258,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Counter',
+        keywords: 'кнопка, button, counter, счетчик',
+        route: DemoRoute.Counter,
+        meta: {name: 'tui-counter'},
+    },
+    {
+        section: 'Components',
         title: 'Buttons',
         subPages: [
             {

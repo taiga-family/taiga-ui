@@ -293,6 +293,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/button-group'),
     }),
     route({
+        path: DemoRoute.Counter,
+        title: 'Counter',
+        loadComponent: async () => import('../components/counter'),
+    }),
+    route({
         path: DemoRoute.ButtonSelect,
         title: 'ButtonSelect',
         loadComponent: async () => import('../components/button-select'),
