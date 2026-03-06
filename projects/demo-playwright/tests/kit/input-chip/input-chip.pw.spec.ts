@@ -86,9 +86,9 @@ test.describe('InputChip', () => {
 
             await inputChip.input.fill('123-456-789');
             await inputChip.input.blur();
-            const chipCount = await inputChip.chips.count();
+            const chipCount = inputChip.chips;
 
-            expect(chipCount).toEqual(3);
+            await expect(chipCount).toHaveCount(3);
 
             await expect.soft(example).toHaveScreenshot('input-chip-separator.png');
         });
@@ -101,9 +101,9 @@ test.describe('InputChip', () => {
 
             await inputChip.input.fill('123,123,123');
             await inputChip.input.blur();
-            const chipCount = await inputChip.chips.count();
+            const chipCount = inputChip.chips;
 
-            expect(chipCount).toEqual(3);
+            await expect(chipCount).toHaveCount(3);
 
             await expect.soft(example).toHaveScreenshot('input-chip-not-unique.png');
         });
@@ -116,9 +116,9 @@ test.describe('InputChip', () => {
 
             await inputChip.input.fill('123,123,123');
             await inputChip.input.blur();
-            const chipCount = await inputChip.chips.count();
+            const chipCount = inputChip.chips;
 
-            expect(chipCount).toEqual(1);
+            await expect(chipCount).toHaveCount(1);
 
             await expect.soft(example).toHaveScreenshot('input-chip-unique.png');
         });
@@ -168,11 +168,11 @@ test.describe('InputChip', () => {
             await inputChip.input.blur();
             const chips = inputChip.chips;
 
-            expect(await chips.count()).toEqual(3);
+            await expect(chips).toHaveCount(3);
 
             await chips.first().locator('button', {hasText: 'Remove'}).click();
 
-            expect(await chips.count()).toEqual(2);
+            await expect(chips).toHaveCount(2);
 
             await expect.soft(example).toHaveScreenshot('input-chip-cleaner.png');
         });
@@ -188,7 +188,7 @@ test.describe('InputChip', () => {
 
             await inputChip.cleaner.click();
 
-            expect(await inputChip.chips.count()).toEqual(0);
+            await expect(inputChip.chips).toHaveCount(0);
 
             await expect
                 .soft(example)
@@ -216,7 +216,7 @@ test.describe('InputChip', () => {
                 await expect.soft(example).toHaveScreenshot('multiselect-any-value.png');
                 await multiselect.input.blur();
 
-                expect(await multiselect.chips.count()).toEqual(1);
+                await expect(multiselect.chips).toHaveCount(1);
             });
 
             test('value from list only', async () => {
@@ -231,7 +231,7 @@ test.describe('InputChip', () => {
                     .toHaveScreenshot('multiselect-value-from-list.png');
                 await multiselect.input.blur();
 
-                expect(await multiselect.chips.count()).toEqual(0);
+                await expect(multiselect.chips).toHaveCount(0);
             });
 
             test('select value from list', async () => {
