@@ -5,7 +5,7 @@ import {TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiShrinkWrap, TuiToast, TuiHeader],
+    imports: [TuiHeader, TuiShrinkWrap, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

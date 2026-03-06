@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMessage, TuiShrinkWrap} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiShrinkWrap, TuiMessage],
+    imports: [TuiMessage, TuiShrinkWrap],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
