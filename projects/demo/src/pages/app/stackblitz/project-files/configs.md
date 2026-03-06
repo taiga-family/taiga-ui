@@ -2,17 +2,16 @@
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "root": "",
-  "sourceRoot": "src",
-  "version": 1,
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "newProjectRoot": "projects",
   "projects": {
     "demo": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "configurations": {
             "development": {
+              "extractLicenses": false,
               "namedChunks": true,
               "optimization": false,
               "sourceMap": true
@@ -21,6 +20,7 @@
           "options": {
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "outputPath": "dist/demo",
             "polyfills": [],
             "styles": ["src/styles.less"],
             "tsConfig": "tsconfig.json"
@@ -28,9 +28,6 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "options": {
-            "prebundle": false
-          },
           "configurations": {
             "development": {
               "buildTarget": "demo:build:development"
@@ -39,9 +36,14 @@
           "defaultConfiguration": "development"
         }
       },
-      "projectType": "application"
+      "prefix": "app",
+      "projectType": "application",
+      "root": "",
+      "schematics": {},
+      "sourceRoot": "src"
     }
-  }
+  },
+  "version": 1
 }
 ```
 
