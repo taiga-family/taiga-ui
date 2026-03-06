@@ -2,6 +2,11 @@ name: ⚙️ E2E testing
 on:
   pull_request:
 
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
 env:
   RETRY_COUNT: 2
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}

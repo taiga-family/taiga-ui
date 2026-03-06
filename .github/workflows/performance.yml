@@ -2,6 +2,10 @@ name: 📈 Performance Stress Testing
 on:
   workflow_call:
 
+permissions:
+  actions: read
+  contents: read
+
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   PERF_BASELINE_FALLBACK_BRANCH: main

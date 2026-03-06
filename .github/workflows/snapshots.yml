@@ -9,6 +9,9 @@ on:
         required: false
         description: update main snapshots
 
+permissions:
+  contents: read
+
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 

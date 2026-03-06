@@ -3,6 +3,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
 jobs:
   build_and_preview:
     if: ${{ !contains(github.head_ref, 'release/') }}
