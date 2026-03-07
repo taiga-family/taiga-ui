@@ -4,7 +4,7 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils';
+import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_ITEMS_HANDLERS,
     TuiWithItemsHandlers,
