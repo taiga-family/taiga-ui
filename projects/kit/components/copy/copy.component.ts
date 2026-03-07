@@ -1,6 +1,10 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {
+    WaIntersectionObservee,
+    WaIntersectionObserverDirective,
+} from '@ng-web-apis/intersection-observer';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -19,9 +23,17 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     templateUrl: './copy.template.html',
     styleUrl: './copy.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        WaIntersectionObserverDirective,
+        {
+            directive: WaIntersectionObservee,
+            outputs: ['waIntersectionObservee'],
+        },
+    ],
     host: {
         '[attr.data-size]': 'size()',
         '(pointerdown)': 'copied$.next(false)',
+        '(waIntersectionObservee)': 'onIntersection($event)',
     },
 })
 export class TuiCopyComponent {
@@ -43,5 +55,10 @@ export class TuiCopyComponent {
         return tuiIsString(this.notification.icon)
             ? this.notification.icon
             : this.notification.icon('positive');
+    }
+    protected onIntersection(entries: IntersectionObserverEntry[]): void {
+        if (entries.some(({intersectionRatio}) => !intersectionRatio)) {
+            this.copied$.next(false);
+        }
     }
 }
