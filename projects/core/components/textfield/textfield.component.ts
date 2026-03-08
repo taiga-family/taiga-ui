@@ -79,7 +79,10 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
 
     // TODO: Added just to avoid breaking anything until we refactor to signal queries
-    @ContentChild(forwardRef(() => TuiTextfieldBase), {read: ElementRef})
+    @ContentChild(forwardRef(() => TuiTextfieldBase), {
+        read: ElementRef,
+        descendants: true,
+    })
     // eslint-disable-next-line @typescript-eslint/naming-convention
     protected readonly _input?: ElementRef<HTMLInputElement>;
 
@@ -109,16 +112,16 @@ export class TuiTextfieldBaseComponent<T>
     @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
-    @ContentChild(NgControl)
+    @ContentChild(NgControl, {descendants: true})
     public readonly control?: NgControl;
 
-    @ContentChild(TuiControl)
+    @ContentChild(TuiControl, {descendants: true})
     public readonly cva?: TuiControl<unknown>;
 
     // TODO: Replace with signal query when Angular is updated v5
     @ContentChild(forwardRef(() => TuiTextfieldBase), {
         read: ElementRef,
-        static: true,
+        descendants: true,
     })
     public readonly input?: ElementRef<HTMLInputElement>;
 
