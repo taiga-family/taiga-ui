@@ -65,7 +65,7 @@ test.describe('InputChip', () => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#multi-select');
             const block = example.locator('[tuiLabel]', {
-                hasText: 'Regression case: conditional input in textfield',
+                hasText: 'Conditional input in textfield',
             });
             const textfield = block.locator('tui-textfield');
             const toggle = block.locator(
