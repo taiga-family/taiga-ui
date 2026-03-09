@@ -69,6 +69,47 @@
     </tui-textfield>
 </label>
 
+<div
+    *ngIf="isE2E"
+    tuiLabel
+>
+    Conditional input in textfield
+    <label>
+        <input
+            type="checkbox"
+            [(ngModel)]="filter"
+        />
+        Enable filtering
+    </label>
+    <div data-automation-id="outside-click-target">Outside click target</div>
+    <tui-textfield
+        multi
+        tuiChevron
+    >
+        <label tuiLabel>Multi Select with if/else</label>
+        <input
+            *ngIf="filter; else readonly"
+            tuiInputChip
+            [placeholder]="multi.length ? '' : 'Pick from the list'"
+            [(ngModel)]="multi"
+        />
+        <ng-template #readonly>
+            <input
+                tuiInputChip
+                tuiSelectLike
+                [placeholder]="multi.length ? '' : 'Pick from the list'"
+                [(ngModel)]="multi"
+            />
+        </ng-template>
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </tui-textfield>
+</div>
+
 <label tuiLabel>
     Working with objects
     <tui-textfield

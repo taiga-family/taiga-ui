@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiIsString} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, tuiIsString} from '@taiga-ui/cdk';
 import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -41,10 +41,13 @@ interface User {
     changeDetection,
 })
 export default class Example {
+    protected readonly isE2E = inject(TUI_IS_E2E);
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
     protected objects: User[] = [];
+
+    protected filter = true;
 
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));
