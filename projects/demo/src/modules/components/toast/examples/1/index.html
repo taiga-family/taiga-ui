@@ -71,9 +71,13 @@
     <section [tuiPlatform]="platform">
         <div
             iconStart="@tui.alarm-clock"
+            tuiShrinkWrap="min(25rem, 100%)"
             tuiToast
         >
-            The text of the notification telling what happened is in three lines because there is a lot of information
+            <tui-shrink-wrap>
+                The text of the notification telling what happened is in three lines because there is a lot of
+                information
+            </tui-shrink-wrap>
             <button
                 tuiButton
                 type="button"

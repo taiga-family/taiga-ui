@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     Directive,
     ElementRef,
     inject,
+    Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
@@ -48,13 +51,22 @@ class TuiToastStyles {}
                     : '',
         },
     ],
-    hostDirectives: [TuiWithIcons, TuiShrinkWrapDirective],
+    hostDirectives: [
+        TuiWithIcons,
+        {
+            directive: TuiShrinkWrapDirective,
+            inputs: ['tuiShrinkWrap'],
+        },
+    ],
 })
 export class TuiToastDirective {
+    @Input()
+    public tuiShrinkWrap = 'min(calc(100vw - 2rem), 25rem)';
+
     protected readonly nothing = tuiWithStyles(TuiToastStyles);
     protected readonly width = tuiDirectiveBinding(
         TuiShrinkWrapDirective,
         'tuiShrinkWrap',
-        'min(calc(100vw - 2rem), 25rem, 100%)',
+        computed(() => this.tuiShrinkWrap),
     );
 }
