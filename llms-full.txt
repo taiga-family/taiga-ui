@@ -474,6 +474,11 @@
 ```text
   TuiNativeSelect, TuiSelect, TuiSelectDirective, TuiSelectOption
 ```
+### shrink-wrap
+
+```text
+  TuiShrinkWrap, TuiShrinkWrapComponent, TuiShrinkWrapDirective
+```
 ### status
 
 ```text
@@ -36711,6 +36716,180 @@ export default class Page {
 ```
 
 ---
+# components/ShrinkWrap
+- **Package**: `KIT`
+- **Type**: components
+A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiShrinkWrap] | `string` | Max size of the container, 100% by default |
+
+### Usage Examples
+
+#### Chat
+
+**Template:**
+```html
+<section tuiMessage class="incoming" > I'm a short message </section>
+<section tuiMessage class="incoming" > I'm a broken long message wrapping to a new line </section>
+<section tuiMessage tuiShrinkWrap class="incoming" >
+<tui-shrink-wrap>I'm a fixed long message wrapping to a new line</tui-shrink-wrap>
+</section>
+<section tuiMessage class="outgoing" > I'm a short message </section>
+<section tuiMessage class="outgoing" > I'm a broken long message wrapping to a new line </section>
+<section tuiMessage tuiShrinkWrap class="outgoing" >
+<tui-shrink-wrap>I'm a fixed long message wrapping to a new line</tui-shrink-wrap>
+</section>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiMessage, TuiShrinkWrap} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiMessage, TuiShrinkWrap],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 16rem;
+}
+
+.incoming {
+    background: var(--tui-background-neutral-1);
+    border-end-start-radius: 0;
+    white-space: normal;
+
+    & + .incoming {
+        margin-block-start: -0.5rem;
+    }
+}
+
+.outgoing {
+    background: var(--tui-background-accent-1);
+    color: var(--tui-text-primary-on-accent-1);
+    align-self: flex-end;
+    white-space: normal;
+    border-end-end-radius: 0;
+
+    & + .outgoing {
+        margin-block-start: -0.5rem;
+    }
+}
+```
+
+#### Toasts
+
+**Template:**
+```html
+<h4 tuiHeader="body-l">With ShrinkWrap</h4>
+<div tuiToast>
+<tui-shrink-wrap>Long messages are wrapping perfectly to fit into max width of the toast</tui-shrink-wrap>
+</div>
+<h4 tuiHeader="body-l">Without ShrinkWrap</h4>
+<div tuiToast>Long messages are wrapping perfectly to fit into max width of the toast</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiHeader, TuiShrinkWrap, TuiToast],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
+
+#### Custom width
+
+**Template:**
+```html
+<div tuiCell tuiShrinkWrap="15rem" >
+<div tuiAvatar="@tui.user"></div>
+<div tuiTitle>
+<strong>Title</strong>
+<tui-shrink-wrap>Long messages are wrapping perfectly to fit into max width of the cell</tui-shrink-wrap>
+</div>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiShrinkWrap} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiAvatar, TuiCell, TuiShrinkWrap, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    background: var(--tui-background-neutral-1);
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = ['Chat', 'Toasts', 'Custom width'];
+}
+```
+
+---
 # components/Slider
 - **Package**: `CORE`
 - **Type**: components
@@ -43385,7 +43564,9 @@ export default class Page {
 </div> Everything <button tuiButton type="button" > Action </button> @if (platform === 'web') { <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" > Close </button> } </div>
 </section>
 <section [tuiPlatform]="platform">
-<div iconStart="@tui.alarm-clock" tuiToast > The text of the notification telling what happened is in three lines because there is a lot of information <button tuiButton type="button" > Action </button>
+<div iconStart="@tui.alarm-clock" tuiToast >
+<tui-shrink-wrap> The text of the notification telling what happened is in three lines because there is a lot of information </tui-shrink-wrap>
+<button tuiButton type="button" > Action </button>
 </div>
 </section> }
 ```
@@ -43396,10 +43577,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiToast],
+    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiShrinkWrap, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -43546,7 +43727,10 @@ export default class Example {
 
     protected primitive(): void {
         this.toast
-            .open('Alarm saved', {autoClose: 0, data: '@tui.alarm-clock'})
+            .open('Alarm is set for next <b>Sunday</b>, March 8, 2026, 10:00', {
+                autoClose: 0,
+                data: '@tui.alarm-clock',
+            })
             .subscribe();
     }
 
@@ -43569,6 +43753,7 @@ export default class Example {
 ```ts
 import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
@@ -43588,6 +43773,7 @@ export default class Example {
     protected content = 'Notification';
     protected appearance = '';
     protected closable = this.options.closable;
+    protected readonly routes = DemoRoute;
 }
 ```
 
