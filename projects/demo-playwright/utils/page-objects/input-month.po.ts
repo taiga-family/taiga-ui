@@ -1,38 +1,12 @@
-import {expect, type Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
-export class TuiInputMonthPO {
-    public readonly cleaner = this.host.locator('[tuiButtonX]');
-    public readonly textfield: Locator = this.host.locator(
+import {TuiTextfieldPO} from './textfield.po';
+
+export class TuiInputMonthPO extends TuiTextfieldPO {
+    public override readonly textfield: Locator = this.host.locator(
         '[tuiInputMonth], [tuiInputMonthRange]',
     );
 
     public readonly calendar: Locator = this.host.page().locator('tui-calendar-month');
     public readonly nativePicker = this.host.locator('input[type="month"]');
-
-    constructor(public readonly host: Locator) {}
-
-    public async clickOnIcon(
-        options: Parameters<Locator['click']>[0] = {},
-    ): Promise<void> {
-        const box = (await this.host.boundingBox())!;
-        const padding = await this.host
-            .evaluate((el) =>
-                globalThis.getComputedStyle(el).getPropertyValue('padding-right'),
-            )
-            .then(parseInt);
-        const iconWidth = await this.host
-            .evaluate((el) =>
-                globalThis.getComputedStyle(el, '::after').getPropertyValue('width'),
-            )
-            .then(parseInt);
-
-        expect(box).not.toBeFalsy();
-        expect(padding).not.toBeFalsy();
-        expect(iconWidth).not.toBeFalsy();
-
-        await this.host.click({
-            ...options,
-            position: {x: box.width - padding - iconWidth, y: box.height / 2},
-        });
-    }
 }
