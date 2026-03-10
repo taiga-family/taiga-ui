@@ -177,5 +177,44 @@ ${'                    '}
         expect(result).toEqual(expected);
     });
 
+    it('migrates inline template in component', async () => {
+        const result = await migrateComponent(`
+import { Component } from '@angular/core'
+import {
+  TuiError,
+  TuiTextfield,
+} from '@taiga-ui/core'
+import { TuiFieldErrorPipe } from '@taiga-ui/kit'
+
+@Component({
+  template: \`
+    <section>
+      <tui-textfield>
+        <input tuiTextfield formControlName="fieldA" />
+      </tui-textfield>
+      <tui-error formControlName="fieldA" [error]="['required'] | tuiFieldError | async" />
+
+      <tui-textfield>
+        <input tuiTextfield formControlName="fieldB" />
+      </tui-textfield>
+      <tui-error formControlName="fieldB" [error]="[] | tuiFieldError | async" />
+    </section>
+  \`,
+  imports: [
+    TuiTextfield,
+    TuiError,
+    TuiFieldErrorPipe,
+  ],
+})
+export class DemoComponent {}
+        `);
+
+        expect(result).toContain('[order]="[\'required\']"');
+        expect(result).toContain('formControlName="fieldB"');
+        expect(result).not.toContain('tuiFieldError');
+        expect(result).not.toContain('[error]=');
+        expect(result).not.toContain('TuiFieldErrorPipe');
+    });
+
     afterEach(() => resetActiveProject());
 });
