@@ -103,12 +103,13 @@ export abstract class TuiInputDateBase<
         }
     });
 
-    protected readonly calendarOut = effect((onCleanup) => {
-        const subscription = this.calendar()?.valueChange.subscribe((value) =>
-            this.setDate(value),
-        );
+    protected readonly calendarOut = effect(() => {
+        const value = this.calendar()?.value();
+        const changed = untracked(() => value !== this.toCalendarValue(this.value()));
 
-        onCleanup(() => subscription?.unsubscribe());
+        if (value && changed) {
+            this.setDate(value);
+        }
     });
 
     public readonly native =
@@ -136,13 +137,13 @@ export abstract class TuiInputDateBase<
     }
 
     protected processCalendar(calendar: TuiCalendar | TuiCalendarRange): void {
-        const value = this.value();
-
-        calendar.value = Array.isArray(value) ? value[0] : value;
-        calendar.disabledItemHandler =
+        tuiSetSignal(calendar.value, this.toCalendarValue(this.value()));
+        tuiSetSignal(
+            calendar.disabledItemHandler,
             this.handlers.disabledItemHandler() as TuiBooleanHandler<
                 TuiDay | TuiDayRange
-            >;
+            >,
+        );
         tuiSetSignal(calendar.min, this.min());
         tuiSetSignal(calendar.max, this.max());
     }
@@ -155,6 +156,13 @@ export abstract class TuiInputDateBase<
 
     protected stringify(value: T | null): string {
         return value?.toString(this.format().mode, this.format().separator) ?? '';
+    }
+
+    private toCalendarValue(value: T | null): TuiDay | TuiDayRange | null {
+        return Array.isArray(value)
+            ? value[0]
+            : // https://github.com/microsoft/TypeScript/issues/17002
+              (value as TuiDay | TuiDayRange | null);
     }
 }
 

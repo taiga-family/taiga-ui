@@ -258,24 +258,21 @@ describe('rangeCalendarComponent', () => {
             );
         });
 
-        it('should fire itemChange before valueChange', () => {
+        it('should fire itemChange before value signal update', () => {
             const itemChangeSpy = jest.spyOn(
                 testComponent.component().itemChange,
                 'emit',
             );
-            const valueChangeSpy = jest.spyOn(
-                testComponent.component().valueChange,
-                'emit',
-            );
+            const valueSetSpy = jest.spyOn(testComponent.component().value, 'set');
 
             if (component.items[1]) {
                 component['onItemSelect'](component.items[1]);
             }
 
             const itemChangeOrder = itemChangeSpy.mock.invocationCallOrder[0] || 0;
-            const valueChangeOrder = valueChangeSpy.mock.invocationCallOrder[0] || 0;
+            const valueSetOrder = valueSetSpy.mock.invocationCallOrder[0] || 0;
 
-            expect(itemChangeOrder).toBeLessThan(valueChangeOrder);
+            expect(itemChangeOrder).toBeLessThan(valueSetOrder);
         });
 
         it('when min later than current month, defaultViewedMonth is next month after min', () => {
@@ -363,16 +360,15 @@ describe('rangeCalendarComponent', () => {
         });
 
         it('if value selected, updating defaultViewedMonth do not change viewed month', () => {
-            testComponent.value = new TuiDayRange(
-                TuiDay.currentLocal().append({month: 1}),
-                TuiDay.currentLocal().append({month: 1}),
-            );
+            const newValue = TuiDay.currentLocal().append({month: 1});
+
+            testComponent.value = new TuiDayRange(newValue, newValue);
             fixture.detectChanges();
 
             testComponent.defaultViewedMonth = updatedMonth;
             fixture.detectChanges();
 
-            expect(component.defaultViewedMonth.toString()).toBe(defaultMonth.toString());
+            expect(component.defaultViewedMonth.toString()).toBe(newValue.toString());
         });
 
         it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {
