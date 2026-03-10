@@ -57,6 +57,6 @@ export class TuiToastDirective {
     protected readonly width = tuiDirectiveBinding(
         TuiShrinkWrapDirective,
         'tuiShrinkWrap',
-        'min(calc(100vw - 2rem), 25rem)',
+        'min(calc(100vw - 2rem), 25rem, 100%)',
     );
 }
