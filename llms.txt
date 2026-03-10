@@ -75,6 +75,7 @@
 - [Compass](https://taiga-ui.dev/components/compass)
 - [Confirm](https://taiga-ui.dev/components/confirm) — Confirm is a ready to use Dialog to ask user to confirm an action See this example to learn how to use confirm to prevent data loss on forms inside other modals
 - [Copy](https://taiga-ui.dev/components/copy) — This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied.
+- [Counter](https://taiga-ui.dev/components/counter)
 - [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
 - [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
 - [Dialog](https://taiga-ui.dev/components/dialog) — Built-in implementation of Taiga UI modals If you want custom dialogs see this link on creating your own implementation Use TUI_DIALOGS_CLOSE token if you need to close dialog with from a stream. For example, this way you can close dialogs by logout

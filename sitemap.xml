@@ -163,6 +163,9 @@
     <loc>https://taiga-ui.dev/components/button-group/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/counter/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/button-select/</loc>
   </url>
   <url>
@@ -959,6 +962,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/button-group/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/counter/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/counter/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/button-select/API/</loc>
