@@ -544,6 +544,11 @@
 ```text
   TuiNativeSelect, TuiSelect, TuiSelectDirective, TuiSelectOption
 ```
+### shrink-wrap
+
+```text
+  TuiShrinkWrap, TuiShrinkWrapComponent, TuiShrinkWrapDirective
+```
 ### slider
 
 ```text
@@ -50520,7 +50525,13 @@ export default class Example {
 
     protected primitive(): void {
         this.toast
-            .open(&#039;Alarm saved&#039;, {autoClose: 0, data: &#039;@tui.alarm-clock&#039;})
+            .open(
+                &#039;Alarm is successfully set for next &lt;b&gt;Sunday&lt;/b&gt;, March 8, 2026, 10:00&#039;,
+                {
+                    autoClose: 0,
+                    data: &#039;@tui.alarm-clock&#039;,
+                },
+            )
             .subscribe();
     }
 
