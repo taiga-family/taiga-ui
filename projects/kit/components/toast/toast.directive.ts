@@ -7,12 +7,13 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
+import {TuiShrinkWrapDirective} from '@taiga-ui/kit/components/shrink-wrap';
 
 @Component({
     standalone: true,
@@ -47,8 +48,13 @@ class TuiToastStyles {}
                     : '',
         },
     ],
-    hostDirectives: [TuiWithIcons],
+    hostDirectives: [TuiWithIcons, TuiShrinkWrapDirective],
 })
 export class TuiToastDirective {
     protected readonly nothing = tuiWithStyles(TuiToastStyles);
+    protected readonly width = tuiDirectiveBinding(
+        TuiShrinkWrapDirective,
+        'tuiShrinkWrap',
+        'min(calc(100vw - 2rem), 25rem, 100%)',
+    );
 }
