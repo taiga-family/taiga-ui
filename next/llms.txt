@@ -133,6 +133,7 @@
 - [Search](https://taiga-ui.dev/components/search) — A wrapping component for search or filtering the table
 - [Select](https://taiga-ui.dev/components/select) — Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element.
 - [Sheet Dialog](https://taiga-ui.dev/components/sheet-dialog) — A mobile draggable sheet dialog
+- [Shrink Wrap](https://taiga-ui.dev/components/shrink-wrap) — A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.
 - [Slider](https://taiga-ui.dev/components/slider) — Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs
 - [Slides](https://taiga-ui.dev/components/slides) — A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
 - [Status](https://taiga-ui.dev/components/status)
