@@ -81,16 +81,20 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: migratePackages,
                 },
                 {
+                    name: 'removeDuplicates',
+                    step: () => removeDuplicates(options),
+                },
+                {
+                    name: 'saveProjectBeforeTemplateMigrations',
+                    step: () => saveActiveProject(),
+                },
+                {
                     name: 'migrateTemplates',
                     step: () => migrateTemplates(fileSystem, options),
                 },
                 {
                     name: 'migrateStyles',
                     step: migrateStyles,
-                },
-                {
-                    name: 'removeDuplicates',
-                    step: () => removeDuplicates(options),
                 },
             ],
             timings,
