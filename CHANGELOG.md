@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.74.0](https://github.com/taiga-family/taiga-ui/compare/v4.73.0...v4.74.0) (2026-03-10)
+
+### 🐞 Bug Fixes
+
+- **kit:** fix chevron readonly cursor ([#13436](https://github.com/taiga-family/taiga-ui/issues/13436))
+  ([f947b68](https://github.com/taiga-family/taiga-ui/commit/f947b68bb0a6cde1b1fda3a8439ff78e15664300))
+- **kit:** fix TOASTS leaking to other `root`s ([#13402](https://github.com/taiga-family/taiga-ui/issues/13402))
+  ([f074a02](https://github.com/taiga-family/taiga-ui/commit/f074a02a2f6a28c7b44551794ce18a006352c7ae))
+- **kit:** make `InputNumber` with `[step]` safe for decimal arithmetic
+  ([#13427](https://github.com/taiga-family/taiga-ui/issues/13427))
+  ([c77adc6](https://github.com/taiga-family/taiga-ui/commit/c77adc668e2c8d1fb24e039f6c7604510bdcd2e7))
+
+### 🚀 Features
+
+- **kit:** `ShrinkWrap` add component, use in `Toast` ([#13452](https://github.com/taiga-family/taiga-ui/issues/13452))
+  ([2a706c1](https://github.com/taiga-family/taiga-ui/commit/2a706c1d80279d5aa0dd94920ed971a0f01de1ce))
+- **kit:** add `tui-counter` ([#13433](https://github.com/taiga-family/taiga-ui/issues/13433))
+  ([ecaee54](https://github.com/taiga-family/taiga-ui/commit/ecaee547a12a38325982978be258da4d2c929a00))
+- **layout:** change `tui-app-bar` background inside `tui-dialog`
+  ([#13428](https://github.com/taiga-family/taiga-ui/issues/13428))
+  ([91d4849](https://github.com/taiga-family/taiga-ui/commit/91d4849b0476e0ac78e45908c99ce1dfcac50ebd))
+
 ## [4.73.0](https://github.com/taiga-family/taiga-ui/compare/v4.72.0...v4.73.0) (2026-03-02)
 
 ### 🚀 Features
