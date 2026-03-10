@@ -44,7 +44,7 @@ export class TuiFluidTypography implements OnChanges {
             const max = Number(this.tuiFluidTypography[1] || this.options.max);
 
             for (let i = max; i >= min; i -= STEP) {
-                this.el.style.fontSize = `${i}rem`;
+                this.el.style.fontSize = `calc(${i}rem + var(--tui-font-offset))`;
 
                 if (this.el.scrollWidth <= this.el.clientWidth) {
                     break;
