@@ -209,7 +209,7 @@ import { TuiFieldErrorPipe } from '@taiga-ui/kit'
 export class DemoComponent {}
         `);
 
-        expect(result).toContain(`[order]="['required']"`);
+        expect(result).toContain('[order]="[\'required\']"');
         expect(result).toContain('formControlName="fieldB"');
         expect(result).not.toContain('tuiFieldError');
         expect(result).not.toContain('[error]=');
