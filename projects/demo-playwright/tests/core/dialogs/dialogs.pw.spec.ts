@@ -77,4 +77,14 @@ test.describe('Dialog', () => {
         await example.locator('button').last().click();
         await expect.soft(page).toHaveScreenshot('06-dialog-2.png');
     });
+
+    test('Confirm', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Confirm);
+
+        const documentationPagePO = new TuiDocumentationPagePO(page);
+        const example = documentationPagePO.getExample('#basic');
+
+        await example.locator('button').first().click();
+        await expect.soft(page).toHaveScreenshot('07-dialog-1.png');
+    });
 });
