@@ -1,5 +1,5 @@
-import {type ReplacementAttribute} from '../../../interfaces';
 import {hasElementAttribute} from '../../../../utils/templates/elements';
+import {type ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
     {
