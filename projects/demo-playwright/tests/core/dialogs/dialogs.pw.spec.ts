@@ -84,8 +84,6 @@ test.describe('Dialog', () => {
         test.use(TUI_PLAYWRIGHT_MOBILE);
 
         test('Confirm', async ({page}) => {
-            test.use(TUI_PLAYWRIGHT_MOBILE);
-
             await tuiGoto(page, DemoRoute.Confirm);
 
             const documentationPagePO = new TuiDocumentationPagePO(page);
