@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 test.describe('Dialog', () => {
     test('String', async ({page}) => {
@@ -78,13 +79,19 @@ test.describe('Dialog', () => {
         await expect.soft(page).toHaveScreenshot('06-dialog-2.png');
     });
 
-    test('Confirm', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Confirm);
+    test.describe('Mobile', () => {
+        test.use(TUI_PLAYWRIGHT_MOBILE);
 
-        const documentationPagePO = new TuiDocumentationPagePO(page);
-        const example = documentationPagePO.getExample('#basic');
+        test('Confirm', async ({page}) => {
+            test.use(TUI_PLAYWRIGHT_MOBILE);
 
-        await example.locator('button').first().click();
-        await expect.soft(page).toHaveScreenshot('07-dialog-1.png');
+            await tuiGoto(page, DemoRoute.Confirm);
+
+            const documentationPagePO = new TuiDocumentationPagePO(page);
+            const example = documentationPagePO.getExample('#basic');
+
+            await example.locator('button').first().click();
+            await expect.soft(page).toHaveScreenshot('07-dialog-1.png');
+        });
     });
 });
