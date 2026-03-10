@@ -44,12 +44,31 @@ export class TuiFluidTypography {
             const min = Number(this.tuiFluidTypography()[0] || this.options.min);
             const max = Number(this.tuiFluidTypography()[1] || this.options.max);
 
-            for (let i = max; i >= min; i -= STEP) {
-                this.el.style.fontSize = `calc(${i}rem + var(--tui-font-offset))`;
+            let low = min;
+            let high = max;
+            let best = min;
+
+            while (high - low >= STEP) {
+                const middle = this.snap((low + high) / 2);
+
+                this.setFontSize(middle);
 
                 if (this.el.scrollWidth <= this.el.clientWidth) {
-                    break;
+                    best = middle;
+                    low = middle + STEP;
+                } else {
+                    high = middle - STEP;
                 }
             }
+
+            this.setFontSize(best);
         });
+
+    private setFontSize(size: number): void {
+        this.el.style.fontSize = `calc(${size}rem + var(--tui-font-offset))`;
+    }
+
+    private snap(value: number): number {
+        return Math.floor(value / STEP) * STEP;
+    }
 }
