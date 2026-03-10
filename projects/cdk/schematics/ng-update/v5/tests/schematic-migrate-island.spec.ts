@@ -43,5 +43,21 @@ describe('ng-update tui-island to tuiCardLarge', () => {
         expect(template).toEqual('<div tuiCardLarge ></div>');
     });
 
+    it('renames [tuiAppearance] to [appearance] for [tuiCardLarge]', async () => {
+        const {template} = await migrate(
+            '<div tuiCardLarge tuiAppearance="appearance"></div>',
+        );
+
+        expect(template).toEqual('<div tuiCardLarge appearance="appearance"></div>');
+    });
+
+    it('removes [tuiSurface] for [tuiCardLarge]', async () => {
+        const {template} = await migrate(
+            '<div [tuiCardLarge]="size" tuiSurface="surface"></div>',
+        );
+
+        expect(template).toEqual('<div [tuiCardLarge]="size" ></div>');
+    });
+
     afterEach(() => resetActiveProject());
 });
