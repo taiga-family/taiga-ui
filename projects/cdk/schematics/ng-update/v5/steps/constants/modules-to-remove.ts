@@ -18,6 +18,10 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/kit',
     },
     {
+        name: 'TuiFallbackSrcPipe',
+        moduleSpecifier: '@taiga-ui/core',
+    },
+    {
         name: 'TuiTimelineSteps',
         moduleSpecifier: '@taiga-ui/proprietary',
     },

@@ -23,6 +23,11 @@ export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
         addAttributes: ['tuiCardLarge'],
     },
     {
+        from: 'tui-doc-documentation',
+        to: 'table',
+        addAttributes: ['tuiDocAPI'],
+    },
+    {
         from: 'nav',
         to: 'tui-stepper',
         filterFn: (element) => hasElementAttribute(element, 'tuiStepper'),
