@@ -1,7 +1,8 @@
 import {Directive, input} from '@angular/core';
 
 @Directive({
-    selector: '[tuiShrinkWrap]',
+    // TODO: https://github.com/angular/angular/issues/57846
+    selector: '[tuiShrinkWrap]:not([tuiToast])',
     host: {
         tuiShrinkWrap: '',
         '[style.max-inline-size]':
