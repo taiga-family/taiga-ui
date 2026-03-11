@@ -13,10 +13,10 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 // cspell:disable
 const SIDEBAR_ATTR = '*tuisidebar';
-const SIDEBAR_DIRECTION_ATTRS = new Set(['tuisidebardirection', '[tuisidebardirection]']);
+const SIDEBAR_DIRECTION_ATTRS = new Set(['[tuisidebardirection]', 'tuisidebardirection']);
 const SIDEBAR_AUTO_WIDTH_ATTRS = new Set([
-    'tuisidebarautowidth',
     '[tuisidebarautowidth]',
+    'tuisidebarautowidth',
 ]);
 // cspell:enable
 

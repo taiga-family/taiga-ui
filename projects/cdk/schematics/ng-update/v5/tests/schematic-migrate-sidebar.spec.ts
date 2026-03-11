@@ -61,13 +61,13 @@ describe('ng-update sidebar to drawer', () => {
 
     it("migrates *tuiSidebar with direction: 'right' without extra comments", async () => {
         expect(
-            await migrate(`<div *tuiSidebar="open; direction: 'right'">Content</div>`),
+            await migrate('<div *tuiSidebar="open; direction: \'right\'">Content</div>'),
         ).toEqual('<tui-drawer *tuiPopup="open" direction="end">Content</tui-drawer>');
     });
 
     it("migrates *tuiSidebar with direction: 'left' without extra comments", async () => {
         expect(
-            await migrate(`<div *tuiSidebar="open; direction: 'left'">Content</div>`),
+            await migrate('<div *tuiSidebar="open; direction: \'left\'">Content</div>'),
         ).toEqual('<tui-drawer *tuiPopup="open" direction="start">Content</tui-drawer>');
     });
 
@@ -92,7 +92,7 @@ describe('ng-update sidebar to drawer', () => {
     it("migrates *tuiSidebar with direction: 'right' and autoWidth", async () => {
         expect(
             await migrate(
-                `<div *tuiSidebar="open; direction: 'right'; autoWidth: true">Content</div>`,
+                '<div *tuiSidebar="open; direction: \'right\'; autoWidth: true">Content</div>',
             ),
         ).toEqual(
             '<!-- TODO: (Taiga UI migration) tuiSidebarAutoWidth has no equivalent in TuiDrawer, adjust layout manually -->\n' +
@@ -131,7 +131,7 @@ describe('ng-update sidebar to drawer', () => {
     it('migrates ng-template with *tuiSidebar', async () => {
         expect(
             await migrate(
-                `<ng-template *tuiSidebar="open; direction: 'right'"><span>Content</span></ng-template>`,
+                '<ng-template *tuiSidebar="open; direction: \'right\'"><span>Content</span></ng-template>',
             ),
         ).toEqual(
             '<tui-drawer *tuiPopup="open" direction="end"><span>Content</span></tui-drawer>',
