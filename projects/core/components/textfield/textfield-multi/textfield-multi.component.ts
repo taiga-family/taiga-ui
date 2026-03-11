@@ -134,8 +134,8 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
     }
 
     protected get placeholder(): string {
-        const placeholder = this.input?.nativeElement.matches('input')
-            ? this.input.nativeElement.placeholder
+        const placeholder = this.interactiveInput?.nativeElement.matches('input')
+            ? this.interactiveInput.nativeElement.placeholder
             : this.computedFiller();
         const value = this.computedFiller() || this.value();
         const longer = value.length > placeholder.length ? value : placeholder;
@@ -167,7 +167,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
         const selection = this.win.getSelection();
 
         if (!selection?.rangeCount || selection.getRangeAt(0)?.collapsed) {
-            this.input?.nativeElement.focus();
+            this.interactiveInput?.nativeElement.focus();
         }
     }
 
@@ -185,7 +185,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
         this.open.update((open) => !open);
 
         try {
-            this.input?.nativeElement.showPicker?.();
+            this.interactiveInput?.nativeElement.showPicker?.();
         } catch {
             // Empty catch block - silently ignore showPicker errors
         }

@@ -47,7 +47,7 @@ export default class Example {
     protected multi: string[] = [];
     protected objects: User[] = [];
 
-    protected filter = true;
+    protected filter = false;
 
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));

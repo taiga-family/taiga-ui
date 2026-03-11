@@ -67,10 +67,8 @@ test.describe('InputChip', () => {
             const block = example.locator('[tuiLabel]', {
                 hasText: 'Conditional input in textfield',
             });
-            const textfield = block.locator('tui-textfield');
-            const toggle = block.locator(
-                'label:has-text("Enable filtering") input[type="checkbox"]',
-            );
+            const input = block.locator('tui-textfield input[tuiInputChip]');
+            const toggle = block.locator('input[type="checkbox"]');
             const outsideClickTarget = example.locator(
                 '[data-automation-id="outside-click-target"]',
             );
@@ -78,16 +76,18 @@ test.describe('InputChip', () => {
 
             await block.scrollIntoViewIfNeeded();
 
-            await expect(toggle).toBeChecked();
-            await textfield.click();
-            await expect(dropdown).toBeAttached();
-            await outsideClickTarget.click();
-            await expect(dropdown).toBeHidden();
+            const checkDropdown = async (): Promise<void> => {
+                for (let i = 0; i < 5; i++) {
+                    await input.click();
+                    await expect(dropdown).toBeAttached();
+                    await outsideClickTarget.click();
+                    await expect(dropdown).toBeHidden();
+                }
+            };
 
+            await checkDropdown();
             await toggle.click();
-            await expect(toggle).not.toBeChecked();
-            await textfield.click();
-            await expect(dropdown).toBeAttached();
+            await checkDropdown();
         });
     });
 

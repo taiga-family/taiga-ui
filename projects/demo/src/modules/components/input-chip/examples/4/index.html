@@ -71,43 +71,46 @@
 
 <div
     *ngIf="isE2E"
+    data-automation-id="conditional-input-regression"
     tuiLabel
 >
     Conditional input in textfield
-    <label>
-        <input
-            type="checkbox"
-            [(ngModel)]="filter"
-        />
-        Enable filtering
-    </label>
-    <div data-automation-id="outside-click-target">Outside click target</div>
-    <tui-textfield
-        multi
-        tuiChevron
-    >
-        <label tuiLabel>Multi Select with if/else</label>
-        <input
-            *ngIf="filter; else readonly"
-            tuiInputChip
-            [placeholder]="multi.length ? '' : 'Pick from the list'"
-            [(ngModel)]="multi"
-        />
-        <ng-template #readonly>
+    <div class="conditional-input-row">
+        <tui-textfield
+            multi
+            tuiChevron
+        >
+            <label tuiLabel>Multi Select with if/else</label>
             <input
+                *ngIf="filter; else readonly"
                 tuiInputChip
-                tuiSelectLike
                 [placeholder]="multi.length ? '' : 'Pick from the list'"
                 [(ngModel)]="multi"
             />
-        </ng-template>
-        <tui-data-list-wrapper
-            *tuiTextfieldDropdown
-            new
-            tuiMultiSelectGroup
-            [items]="items"
-        />
-    </tui-textfield>
+            <ng-template #readonly>
+                <input
+                    tuiInputChip
+                    tuiSelectLike
+                    [placeholder]="multi.length ? '' : 'Pick from the list'"
+                    [(ngModel)]="multi"
+                />
+            </ng-template>
+            <tui-data-list-wrapper
+                *tuiTextfieldDropdown
+                new
+                tuiMultiSelectGroup
+                [items]="items"
+            />
+        </tui-textfield>
+        <label>
+            <input
+                type="checkbox"
+                [(ngModel)]="filter"
+            />
+            filter
+        </label>
+        <div data-automation-id="outside-click-target">Outside</div>
+    </div>
 </div>
 
 <label tuiLabel>

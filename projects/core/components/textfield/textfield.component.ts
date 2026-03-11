@@ -121,7 +121,7 @@ export class TuiTextfieldBaseComponent<T>
     // TODO: Replace with signal query when Angular is updated v5
     @ContentChild(forwardRef(() => TuiTextfieldBase), {
         read: ElementRef,
-        descendants: true,
+        static: true,
     })
     public readonly input?: ElementRef<HTMLInputElement>;
 
@@ -183,13 +183,19 @@ export class TuiTextfieldBaseComponent<T>
         this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
     }
 
+    protected get interactiveInput(): ElementRef<HTMLInputElement> | undefined {
+        return this._input ?? this.input;
+    }
+
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
-        this.input?.nativeElement.focus();
+        this.interactiveInput?.nativeElement.focus();
 
         if (
             !this.dropdownOpen.tuiDropdownEnabled ||
-            this.input?.nativeElement.matches('input:read-only,textarea:read-only')
+            this.interactiveInput?.nativeElement.matches(
+                'input:read-only,textarea:read-only',
+            )
         ) {
             return;
         }
@@ -197,7 +203,7 @@ export class TuiTextfieldBaseComponent<T>
         this.open.update((open) => !open);
 
         try {
-            this.input?.nativeElement.showPicker?.();
+            this.interactiveInput?.nativeElement.showPicker?.();
         } catch {
             // Empty catch block - silently ignore showPicker errors
         }
