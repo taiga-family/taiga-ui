@@ -1,3 +1,4 @@
+import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {type ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
@@ -76,5 +77,21 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
     {
         from: {attrName: '*tuiExpandContent', withTagNames: ['*']},
         to: {attrName: '*tuiItem'},
+    },
+    {
+        from: {
+            attrName: '[tuiAppearance]',
+            withTagNames: ['*'],
+            filterFn: (element) => hasElementAttribute(element, 'tuiCardLarge'),
+        },
+        to: {attrName: '[appearance]'},
+    },
+    {
+        from: {
+            attrName: 'tuiAppearance',
+            withTagNames: ['*'],
+            filterFn: (element) => hasElementAttribute(element, 'tuiCardLarge'),
+        },
+        to: {attrName: 'appearance'},
     },
 ];
