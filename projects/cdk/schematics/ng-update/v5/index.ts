@@ -7,8 +7,6 @@ import {
     type Tree,
 } from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
-import {replaceAttrsInHost} from '@taiga-ui/cdk/schematics/ng-update/utils/replace-attrs-in-host';
-import {ATTRS_IN_HOST_TO_REPLACE} from '@taiga-ui/cdk/schematics/ng-update/v5/steps/constants/attrs-in-host-to-replace';
 import {FINISH_SYMBOL, saveActiveProject, START_SYMBOL, titleLog} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
@@ -26,7 +24,9 @@ import {
     showWarnings,
 } from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
+import {replaceAttrsInHost} from '../utils/replace-attrs-in-host';
 import {replaceFunctionParameters} from '../utils/replace-function-parameters';
+import {ATTRS_IN_HOST_TO_REPLACE} from './steps/constants/attrs-in-host-to-replace';
 import {FUNCTION_PARAMETERS_TO_REPLACE} from './steps/constants/function-parameters-to-replace';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
@@ -99,7 +99,7 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: migrateStyles,
                 },
                 {
-                    name: replaceAttrsInHost,
+                    name: 'replaceAttrsInHost',
                     step: () => replaceAttrsInHost(ATTRS_IN_HOST_TO_REPLACE),
                 },
             ],
