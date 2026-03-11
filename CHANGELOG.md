@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.74.1](https://github.com/taiga-family/taiga-ui/compare/v4.74.0...v4.74.1) (2026-03-11)
+
+### 🐞 Bug Fixes
+
+- **kit:** `Toast` fix size shrinking ([#13457](https://github.com/taiga-family/taiga-ui/issues/13457))
+  ([dfc9972](https://github.com/taiga-family/taiga-ui/commit/dfc997238848396f42835b0cc149d8fc021786f3))
+
 ## [4.74.0](https://github.com/taiga-family/taiga-ui/compare/v4.73.0...v4.74.0) (2026-03-10)
 
 ### 🐞 Bug Fixes
