@@ -13,9 +13,9 @@
     box-sizing: content-box;
 
     &:not(&_hoverable)::before {
-        .fullsize();
-
         content: '';
+        position: absolute;
+        inset: 0;
         box-sizing: border-box;
         border: 1px solid var(--tui-border-normal);
         border-radius: inherit;

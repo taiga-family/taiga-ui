@@ -40,9 +40,9 @@ tui-compass:where(*&) {
     }
 
     &::after {
-        .fullsize(absolute, inset);
-
         content: '';
+        position: absolute;
+        inset: 0;
         border-radius: inherit;
         background: currentColor linear-gradient(-45deg, rgba(0, 0, 0, 0.2), transparent);
     }

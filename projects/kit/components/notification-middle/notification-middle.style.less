@@ -15,12 +15,13 @@
     font: var(--tui-typography-body-m);
 
     &::before {
-        .fullsize();
         .transition(width);
         .center-all();
 
         content: '';
+        position: absolute;
         z-index: -1;
+        inset: 0;
         inline-size: var(--t-width);
         background: var(--tui-background-elevation-3);
         box-shadow: var(--tui-shadow-popup);

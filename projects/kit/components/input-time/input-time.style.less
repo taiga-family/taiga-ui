@@ -11,7 +11,9 @@ tui-textfield input[tuiInputTime] ~ .t-content input[type='time'] {
     padding: 0;
     pointer-events: auto;
 
+    // Extends clickable area for icon to open native picker
     &::-webkit-calendar-picker-indicator {
-        .fullsize(); // Extends clickable area for icon to open native picker
+        position: absolute;
+        inset: 0;
     }
 }

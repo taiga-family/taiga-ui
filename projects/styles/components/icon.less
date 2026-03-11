@@ -60,13 +60,15 @@ tui-icon:where(*&) {
         }
 
         &::after {
-            .fullsize();
+            position: absolute;
+            inset: 0;
         }
     }
 
     &[data-icon-start] {
         &::before {
-            .fullsize();
+            position: absolute;
+            inset: 0;
         }
 
         &::after {

@@ -48,11 +48,12 @@
     }
 
     &::before {
-        .fullsize(absolute, inset);
         .transition(background);
 
         content: '';
         position: absolute;
+        inset: 0;
+        // stylelint-disable-next-line
         left: -1rem;
         right: -1rem;
         z-index: -1;

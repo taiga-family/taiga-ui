@@ -43,11 +43,12 @@ button[tuiSurface] {
 [tuiSurface]::after,
 [tuiSurfaceLayer]::before,
 [tuiSurfaceLayer]::after {
-    .fullsize();
     .transition();
 
     content: '';
+    position: absolute;
     z-index: -1;
+    inset: 0;
     border-radius: inherit;
     pointer-events: none;
     background-size: cover;
@@ -57,10 +58,11 @@ button[tuiSurface] {
 
 [tuiSurfaceLayer] {
     .transition();
-    .fullsize();
 
+    position: absolute;
     position: absolute !important;
     z-index: -1;
+    inset: 0;
     object-fit: cover;
     border-radius: inherit;
     box-sizing: border-box;

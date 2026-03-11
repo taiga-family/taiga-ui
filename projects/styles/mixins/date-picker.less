@@ -43,10 +43,10 @@
 
         &::before,
         &::after {
-            .fullsize(absolute, inset);
-
             content: '';
+            position: absolute;
             z-index: -1;
+            inset: 0;
             border-radius: var(--tui-radius-m);
         }
 

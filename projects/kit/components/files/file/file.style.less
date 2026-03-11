@@ -35,9 +35,9 @@
         margin-inline-end: 1rem;
 
         &::before {
-            .fullsize();
-
             content: '';
+            position: absolute;
+            inset: 0;
             background: var(--tui-background-neutral-1);
         }
     }
@@ -49,12 +49,13 @@
 }
 
 .t-loader {
-    .fullsize();
+    position: absolute;
+    inset: 0;
 }
 
 .t-icon {
-    .fullsize(absolute, inset);
-
+    position: absolute;
+    inset: 0;
     color: var(--tui-status-positive);
     margin: auto;
 

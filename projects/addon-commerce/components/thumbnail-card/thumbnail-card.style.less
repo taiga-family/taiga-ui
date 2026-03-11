@@ -13,17 +13,17 @@
     --t-logo-height: 0.8125rem;
 
     &::before {
-        .fullsize();
-
         content: '';
+        position: absolute;
+        inset: 0;
         border-radius: inherit;
     }
 
     // card backface
     &::after {
-        .fullsize();
-
         content: '';
+        position: absolute;
+        inset: 0;
         backface-visibility: hidden;
         transform: rotateY(180deg) translate3d(0, 0, 1px);
         color: #b0b0b0;
@@ -108,11 +108,11 @@
     &::after {
         --tui-icon-size: 100%;
 
-        .fullsize(absolute, inset);
-
         content: '';
+        position: absolute;
         z-index: -1;
         display: block;
+        inset: 0;
         transform: none;
         border-radius: 100%;
         background: currentColor;

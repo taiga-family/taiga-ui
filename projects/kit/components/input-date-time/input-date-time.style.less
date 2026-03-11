@@ -12,7 +12,9 @@ tui-textfield input[tuiInputDateTime] ~ .t-content input[type='datetime-local'] 
     opacity: 0;
     pointer-events: auto;
 
+    // Extends clickable area for icon to open native calendar
     &::-webkit-calendar-picker-indicator {
-        .fullsize(); // Extends clickable area for icon to open native calendar
+        position: absolute;
+        inset: 0;
     }
 }
