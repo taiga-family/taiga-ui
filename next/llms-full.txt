@@ -43564,7 +43564,7 @@ export default class Page {
 </div> Everything <button tuiButton type="button" > Action </button> @if (platform === 'web') { <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" > Close </button> } </div>
 </section>
 <section [tuiPlatform]="platform">
-<div iconStart="@tui.alarm-clock" tuiToast >
+<div iconStart="@tui.alarm-clock" tuiShrinkWrap="min(25rem, 100%)" tuiToast >
 <tui-shrink-wrap> The text of the notification telling what happened is in three lines because there is a lot of information </tui-shrink-wrap>
 <button tuiButton type="button" > Action </button>
 </div>
