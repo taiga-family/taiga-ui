@@ -69,13 +69,9 @@
     </tui-textfield>
 </label>
 
-<div
-    *ngIf="isE2E"
-    data-automation-id="conditional-input-regression"
-    tuiLabel
->
-    Conditional input in textfield
-    <div class="conditional-input-row">
+<div>
+    <label tuiLabel>
+        Conditional input in textfield
         <tui-textfield
             multi
             tuiChevron
@@ -84,14 +80,14 @@
             <input
                 *ngIf="filter; else readonly"
                 tuiInputChip
-                [placeholder]="multi.length ? '' : 'Pick from the list'"
-                [(ngModel)]="multi"
+                [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
+                [(ngModel)]="conditionalMulti"
             />
             <ng-template #readonly>
                 <input
                     tuiInputChip
                     tuiSelectLike
-                    [placeholder]="multi.length ? '' : 'Pick from the list'"
+                    [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
                     [(ngModel)]="multi"
                 />
             </ng-template>
@@ -102,15 +98,15 @@
                 [items]="items"
             />
         </tui-textfield>
-        <label>
-            <input
-                type="checkbox"
-                [(ngModel)]="filter"
-            />
-            filter
-        </label>
-        <div data-automation-id="outside-click-target">Outside</div>
-    </div>
+    </label>
+    <label tuiLabel>
+        <input
+            tuiCheckbox
+            type="checkbox"
+            [(ngModel)]="filter"
+        />
+        Toggle filter
+    </label>
 </div>
 
 <label tuiLabel>

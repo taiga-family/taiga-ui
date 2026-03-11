@@ -3,9 +3,10 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, tuiIsString} from '@taiga-ui/cdk';
+import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
+    TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
@@ -25,6 +26,7 @@ interface User {
         FormsModule,
         NgForOf,
         NgIf,
+        TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -41,10 +43,10 @@ interface User {
     changeDetection,
 })
 export default class Example {
-    protected readonly isE2E = inject(TUI_IS_E2E);
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
+    protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
 
     protected filter = false;
