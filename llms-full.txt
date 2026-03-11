@@ -50335,7 +50335,9 @@ export class Example {}
 </div>
 </section>
 <section [tuiPlatform]="platform">
-<div iconStart="@tui.alarm-clock" tuiToast > The text of the notification telling what happened is in three lines because there is a lot of information <button tuiButton type="button" > Action </button>
+<div iconStart="@tui.alarm-clock" tuiShrinkWrap="min(25rem, 100%)" tuiToast >
+<tui-shrink-wrap> The text of the notification telling what happened is in three lines because there is a lot of information </tui-shrink-wrap>
+<button tuiButton type="button" > Action </button>
 </div>
 </section>
 </ng-container>
@@ -50348,7 +50350,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -50362,6 +50364,7 @@ import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
         TuiFallbackSrcPipe,
         TuiIcon,
         TuiPlatform,
+        TuiShrinkWrap,
         TuiToast,
     ],
     templateUrl: './index.html',
