@@ -175,16 +175,16 @@ export class TuiTextfieldBaseComponent<T>
         this.open.set(false);
     }
 
+    protected get interactiveInput(): ElementRef<HTMLInputElement> | undefined {
+        return this._input ?? this.input;
+    }
+
     protected get hasLabel(): boolean {
         return Boolean(this.label?.nativeElement?.childNodes.length);
     }
 
     protected onResize({contentRect}: ResizeObserverEntry): void {
         this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
-    }
-
-    protected get interactiveInput(): ElementRef<HTMLInputElement> | undefined {
-        return this._input ?? this.input;
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
