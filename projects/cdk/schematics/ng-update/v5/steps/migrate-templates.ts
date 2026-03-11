@@ -41,6 +41,7 @@ import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateTagToChip} from './templates/migrate-tag';
+import {migrateSidebar} from './templates/migrate-sidebar';
 
 export function getAction<T>({
     action,
@@ -96,6 +97,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateAxes,
         migrateChartHint,
         migrateCloseable,
+        migrateSidebar,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
