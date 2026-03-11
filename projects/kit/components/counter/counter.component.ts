@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiInputNumberStepService} from '@taiga-ui/kit/components/input-number';
@@ -14,7 +15,7 @@ import {TUI_COUNTER_OPTIONS} from './counter.options';
     templateUrl: './counter.template.html',
     styleUrl: './counter.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiInputNumberStepService],
+    providers: [TuiInputNumberStepService, tuiFallbackValueProvider(0)],
     host: {
         '[attr.data-size]': 'size()',
         '[attr.data-appearance]': 'appearance()',

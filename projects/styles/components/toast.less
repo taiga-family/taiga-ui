@@ -20,13 +20,15 @@
     max-inline-size: ~'min(calc(100vw - 2rem), 25rem)';
     border: inherit;
     text-decoration: none;
+    white-space: pre-line;
+    text-align: start;
     overflow: hidden;
 
     .interactive({
         cursor: pointer;
     });
 
-    > *,
+    > *:not(tui-shrink-wrap),
     &::after,
     &::before {
         max-inline-size: 50%;

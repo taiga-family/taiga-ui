@@ -618,6 +618,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'ShrinkWrap',
+        keywords: 'balance, wrap, перенос, tight, pretty',
+        route: DemoRoute.ShrinkWrap,
+    },
+    {
+        section: 'Components',
         title: 'Status',
         keywords: 'dot, точка, бейдж, badge, success, failure, error',
         route: DemoRoute.Status,

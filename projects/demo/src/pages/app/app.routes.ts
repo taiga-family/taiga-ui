@@ -598,6 +598,11 @@ export const ROUTES: Routes = [
         title: 'Slides',
     }),
     route({
+        path: DemoRoute.ShrinkWrap,
+        loadComponent: async () => import('../components/shrink-wrap'),
+        title: 'ShrinkWrap',
+    }),
+    route({
         path: DemoRoute.Status,
         loadComponent: async () => import('../components/status'),
         title: 'Status',
