@@ -29,5 +29,29 @@ describe('ng-update tuiDropdownOpen to tuiDropdownAuto', () => {
         ).toEqual('<button tuiDropdownSheet="selector">Open</button>');
     });
 
+    it('should rename [tuiSheet] to [tuiSheetDialog]', async () => {
+        expect(
+            await migrateTemplate('<button [tuiSheet]="content">Open</button>'),
+        ).toEqual('<button [tuiSheetDialog]="content">Open</button>');
+    });
+
+    it('should rename tuiSheetOptions to tuiSheetDialogOptions', async () => {
+        expect(
+            await migrateTemplate(
+                '<button [tuiSheet]="content" tuiSheetOptions="opts">Open</button>',
+            ),
+        ).toEqual(
+            '<button [tuiSheetDialog]="content" tuiSheetDialogOptions="opts">Open</button>',
+        );
+    });
+
+    it('should rename *tuiDataList to *tuiDropdown', async () => {
+        expect(
+            await migrateTemplate(
+                '<tui-data-list-wrapper *tuiDataList [items]="items" />',
+            ),
+        ).toEqual('<tui-data-list-wrapper *tuiDropdown [items]="items" />');
+    });
+
     afterEach(() => resetActiveProject());
 });

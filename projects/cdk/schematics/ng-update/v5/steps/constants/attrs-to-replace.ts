@@ -46,6 +46,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '*tuiDropdown'},
     },
     {
+        from: {attrName: '*tuiDataList', withTagNames: ['*']},
+        to: {attrName: '*tuiDropdown'},
+    },
+    {
         from: {attrName: 'tuiTextfield', withTagNames: ['*']},
         to: {attrName: 'tuiInput'},
     },
@@ -56,6 +60,14 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
     {
         from: {attrName: 'tuiDropdownMobile', withTagNames: ['*']},
         to: {attrName: 'tuiDropdownSheet'},
+    },
+    {
+        from: {attrName: '[tuiSheet]', withTagNames: ['*']},
+        to: {attrName: '[tuiSheetDialog]'},
+    },
+    {
+        from: {attrName: 'tuiSheetOptions', withTagNames: ['*']},
+        to: {attrName: 'tuiSheetDialogOptions'},
     },
     {
         from: {attrName: 'showLoader', withTagNames: ['tui-loader']},
