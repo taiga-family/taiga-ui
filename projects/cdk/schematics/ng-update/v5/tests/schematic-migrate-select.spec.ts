@@ -56,10 +56,9 @@ export class TestComponent {}
 	    <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
 <tui-textfield tuiChevron
         tuiTextfieldSize="s"
-        [formControl]="testValue"
     >
         Character
-        <input
+        <input [formControl]="testValue"
             placeholder="Choose your hero"
             tuiSelect
         />
@@ -105,16 +104,35 @@ export class TestComponent {}
         expect(template).toEqual(`
 	    <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
 <tui-textfield tuiChevron
-        formControlName="testValue"
         [content]="cardContent"
     >
-        Choose a card
-        <tui-data-list-wrapper
+<input placeholder="Choose a card" tuiSelect formControlName="testValue" />
+<tui-data-list-wrapper
             *tuiDropdown
             [itemContent]="cardContent"
             [items]="cards"
         />
     </tui-textfield>
+`);
+    });
+
+    it('moves [(ngModel)] to generated input when input is absent', async () => {
+        const {template} = await runMigration({
+            collection,
+            template: `
+<tui-select [(ngModel)]="value">
+    Choose an option
+    <tui-data-list-wrapper *tuiDataList [items]="items" />
+</tui-select>
+`,
+        });
+
+        expect(template).toEqual(`
+<!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron>
+<input placeholder="Choose an option" tuiSelect [(ngModel)]="value" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
+</tui-textfield>
 `);
     });
 
