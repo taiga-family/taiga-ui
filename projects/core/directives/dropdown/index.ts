@@ -11,6 +11,7 @@ export * from './dropdown-hover.options';
 export * from './dropdown-limit-width';
 export * from './dropdown-manual.directive';
 export * from './dropdown-open.directive';
+export * from './dropdown-a11y.directive';
 export * from './dropdown-open-legacy.directive';
 export * from './dropdown-options.directive';
 export * from './dropdown-portal.directive';

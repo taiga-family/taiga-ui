@@ -3,6 +3,7 @@ import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiDropdownA11y, TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {
     TuiAppearance,
     tuiAppearance,
@@ -24,8 +25,10 @@ import {tuiAsTextfieldAccessor, type TuiTextfieldAccessor} from './textfield-acc
 @Directive({
     standalone: true,
     providers: [tuiAsTextfieldAccessor(TuiTextfieldBase)],
+    hostDirectives: [TuiDropdownA11y],
     host: {
         tuiTextfield: '',
+        '[attr.role]': 'dropdown._content() && !el.matches("select") ? "combobox" : null',
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
         '[class._empty]': 'value() === ""',
@@ -51,6 +54,8 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly textfield: TuiTextfieldComponent<T> =
         inject(TuiTextfieldComponent);
+
+    protected readonly dropdown = inject(TuiDropdownDirective);
 
     @Input()
     public readOnly = false;

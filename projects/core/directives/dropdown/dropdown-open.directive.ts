@@ -37,6 +37,7 @@ import {filter, fromEvent, merge} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
+import {TuiDropdownA11y} from './dropdown-a11y.directive';
 
 function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
     return (
@@ -56,6 +57,10 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
         TuiObscured,
+        {
+            directive: TuiDropdownA11y,
+            inputs: ['tuiDropdownRole'],
+        },
         {
             directive: TuiActiveZone,
             inputs: ['tuiActiveZoneParent'],

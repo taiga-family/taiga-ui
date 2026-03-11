@@ -73,6 +73,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     ],
     host: {
         role: 'listbox',
+        '[attr.role]': 'role',
         '[attr.data-size]': 'size',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
         '(mousedown.prevent)': '(0)',
@@ -165,6 +166,12 @@ export class TuiDataListComponent<T>
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => (isSignal(value) ? value() : value))
             .filter(tuiIsPresent);
+    }
+
+    protected get role(): string | null {
+        return this.el.parentElement?.closest('[role="menu"],[role="listbox"]')
+            ? null
+            : this.el.role;
     }
 
     protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {
