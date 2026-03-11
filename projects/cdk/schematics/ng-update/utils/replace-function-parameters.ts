@@ -31,36 +31,38 @@ function replaceFunctionParameter(item: ReplacementFunctionParameter): void {
             return;
         }
 
-        const property = value.getProperty(item.parameterName);
+        item.parameters.forEach(({name, renameTo}) => {
+            const property = value.getProperty(name);
 
-        if (!property) {
-            return;
-        }
-
-        if (item.valueReplacer) {
-            const replacement = property.getLastChildIfKind(SyntaxKind.StringLiteral);
-
-            if (!replacement) {
+            if (!property) {
                 return;
             }
 
-            item.valueReplacer.forEach(({from, to}) => {
-                if (replacement.getLiteralValue() === from) {
-                    replacement.setLiteralValue(to);
-                }
-            });
-        }
+            if (item.valueReplacer) {
+                const replacement = property.getLastChildIfKind(SyntaxKind.StringLiteral);
 
-        if (item.newParameterName) {
+                if (!replacement) {
+                    return;
+                }
+
+                item.valueReplacer.forEach(({from, to}) => {
+                    if (replacement.getLiteralValue() === from) {
+                        replacement.setLiteralValue(to);
+                    }
+                });
+            }
+
+            if (!renameTo) {
+                return;
+            }
+
             if (Node.isPropertyAssignment(property)) {
-                property.rename(item.newParameterName);
+                property.rename(renameTo);
             }
 
             if (Node.isShorthandPropertyAssignment(property)) {
-                property.replaceWithText(
-                    `${item.newParameterName}: ${item.parameterName}`,
-                );
+                property.replaceWithText(`${renameTo}: ${name}`);
             }
-        }
+        });
     });
 }
