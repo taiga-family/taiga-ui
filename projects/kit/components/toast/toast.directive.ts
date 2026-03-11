@@ -3,6 +3,7 @@ import {
     Component,
     Directive,
     inject,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
@@ -53,10 +54,12 @@ class Styles {}
     hostDirectives: [TuiWithIcons, TuiShrinkWrapDirective],
 })
 export class TuiToastDirective {
+    public readonly tuiShrinkWrap = input('min(calc(100vw - 2rem), 25rem)');
+
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly width = tuiDirectiveBinding(
         TuiShrinkWrapDirective,
         'tuiShrinkWrap',
-        'min(calc(100vw - 2rem), 25rem, 100%)',
+        this.tuiShrinkWrap,
     );
 }
