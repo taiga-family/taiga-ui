@@ -34,25 +34,8 @@ describe('ng-update tuiLet', () => {
                 </test>
             `);
 
-        expect(template).toEqual(`
-                @let val = value;
-                <test>
-                    {{ val }}
-                </test>
-            `);
-
-        expect(component).toEqual(`
-                import {Component} from '@angular/core';
-
-                @Component({
-                    standalone: true,
-                    templateUrl: './test.html',
-                    imports: [],
-                })
-                export class Test {
-                    readonly value = 'foo';
-                }
-            `);
+        expect(template).toMatchSnapshot();
+        expect(component).toMatchSnapshot();
     });
 
     it('migrates nested case with additional attributes', async () => {
@@ -64,14 +47,7 @@ describe('ng-update tuiLet', () => {
                     </div>
                 `);
 
-        expect(template).toEqual(`
-                    <div>
-                        @let val2 = value;
-                        <test foo>
-                            {{ val2 }}
-                        </test>
-                    </div>
-                `);
+        expect(template).toMatchSnapshot();
     });
 
     it('migrates ng-container with tuiLet', async () => {
@@ -85,18 +61,25 @@ describe('ng-update tuiLet', () => {
                 </ng-container>
         `);
 
-        expect(template).toEqual(`
-                @let val = value;
-                ${''}
-                <div>
-                    @let val2 = value;
-                    ${''}
-                </div>
-                @let val3 = value;
-                ${''}
-                    {{ val3 }}
-                ${''}
+        expect(template).toMatchSnapshot();
+    });
+
+    it('migrates nested ng-container with tuiLet', async () => {
+        const {template} = await migrate(`
+            <ng-container *tuiLet="showRequisitesButton$ | async as showRequisitesButton">
+                <ng-container *tuiLet="companyRequisites$ | async as companyRequisites">
+                    <tui-panel [titleContent]="companyContent">
+                         <ng-template #companyContent>
+                            <label>Label</label>
+                        </ng-template>
+                    </tui-panel>
+
+                    <div>Hello world</div>
+                </ng-container>
+            </ng-container>
         `);
+
+        expect(template).toMatchSnapshot();
     });
 
     afterEach(() => resetActiveProject());
