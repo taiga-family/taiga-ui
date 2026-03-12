@@ -69,45 +69,43 @@
     </tui-textfield>
 </label>
 
-<div>
-    <label tuiLabel>
-        Conditional input in textfield
-        <tui-textfield
-            multi
-            tuiChevron
-        >
-            <label tuiLabel>Multi Select with if/else</label>
-            <input
-                *ngIf="filter; else readonly"
-                tuiInputChip
-                [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
-                [(ngModel)]="conditionalMulti"
-            />
-            <ng-template #readonly>
-                <input
-                    tuiInputChip
-                    tuiSelectLike
-                    [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
-                    [(ngModel)]="multi"
-                />
-            </ng-template>
-            <tui-data-list-wrapper
-                *tuiTextfieldDropdown
-                new
-                tuiMultiSelectGroup
-                [items]="items"
-            />
-        </tui-textfield>
-    </label>
-    <label tuiLabel>
+<label tuiLabel>
+    Conditional input in textfield
+    <tui-textfield
+        multi
+        tuiChevron
+    >
+        <label tuiLabel>Multi Select with if/else</label>
         <input
-            tuiCheckbox
-            type="checkbox"
-            [(ngModel)]="filter"
+            *ngIf="filter; else readonly"
+            tuiInputChip
+            [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
+            [(ngModel)]="conditionalMulti"
         />
-        Toggle filter
-    </label>
-</div>
+        <ng-template #readonly>
+            <input
+                tuiInputChip
+                tuiSelectLike
+                [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
+                [(ngModel)]="multi"
+            />
+        </ng-template>
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </tui-textfield>
+</label>
+<label tuiLabel>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="filter"
+    />
+    Toggle filter
+</label>
 
 <label tuiLabel>
     Working with objects
