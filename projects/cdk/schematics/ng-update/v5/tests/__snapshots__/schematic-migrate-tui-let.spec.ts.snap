@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiLet migrates nested case with additional attributes 1`] = `
+"
+                    <div>
+                        @let val2 = value;
+                        <test foo>
+                            {{ val2 }}
+                        </test>
+                    </div>
+                "
+`;
+
+exports[`ng-update tuiLet migrates nested ng-container with tuiLet 1`] = `
+"
+            @let showRequisitesButton = showRequisitesButton$ | async;
+            
+                @let companyRequisites = companyRequisites$ | async;
+                
+                    <tui-panel [titleContent]="companyContent">
+                         <ng-template #companyContent>
+                            <label>Label</label>
+                        </ng-template>
+                    </tui-panel>
+
+                    <div>Hello world</div>
+                
+            
+        "
+`;
+
+exports[`ng-update tuiLet migrates ng-container with tuiLet 1`] = `
+"
+                @let val = value;
+                
+                <div>
+                    @let val2 = value;
+                    
+                </div>
+                @let val3 = value;
+                
+                    {{ val3 }}
+                
+        "
+`;
+
+exports[`ng-update tuiLet migrates simple structural directive 1`] = `
+"
+                @let val = value;
+                <test>
+                    {{ val }}
+                </test>
+            "
+`;
+
+exports[`ng-update tuiLet migrates simple structural directive 2`] = `
+"
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [],
+                })
+                export class Test {
+                    readonly value = 'foo';
+                }
+            "
+`;
