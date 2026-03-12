@@ -1,32 +1,17 @@
-import {
-    ContentChild,
-    Directive,
-    effect,
-    ElementRef,
-    inject,
-    Input,
-    signal,
-} from '@angular/core';
-import {
-    tuiGetClosestFocusable,
-    tuiIsNativeKeyboardFocusable,
-} from '@taiga-ui/cdk/utils/focus';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {Directive, effect, inject, Input, signal} from '@angular/core';
 
 import {TuiDropdownDirective} from './dropdown.directive';
+import {TUI_DROPDOWN_HOST} from './dropdown.providers';
 
 @Directive({standalone: true, selector: '[tuiDropdownA11y]'})
 export class TuiDropdownA11y {
-    @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
-    private readonly dropdownHost?: ElementRef<HTMLElement>;
-
-    private readonly el = tuiInjectElement();
+    private readonly host = inject(TUI_DROPDOWN_HOST);
     private readonly dropdown = inject(TuiDropdownDirective);
 
     protected readonly sync = effect(() => {
         const content = this.dropdown._content();
         const dropdown = this.dropdown.ref();
-        const host = this.host || this.el;
+        const host = this.host.nativeElement;
 
         host.setAttribute('aria-expanded', String(!!dropdown));
         host.setAttribute('aria-controls', this.dropdown.id);
@@ -49,17 +34,5 @@ export class TuiDropdownA11y {
     @Input()
     public set tuiDropdownRole(role: string) {
         this._tuiDropdownRole.set(role);
-    }
-
-    // This code is copied from tuiDropdownOpen directive, as it's not possible to use
-    // forwardRef in host directives. https://github.com/angular/angular/issues/58485 this issue
-    // resolves it, but the code provided only in angular 18+.
-    private get host(): HTMLElement {
-        const initial = this.dropdownHost?.nativeElement || this.el;
-        const focusable = tuiIsNativeKeyboardFocusable(initial)
-            ? initial
-            : tuiGetClosestFocusable({initial, root: this.el});
-
-        return this.dropdownHost?.nativeElement || focusable || this.el;
     }
 }
