@@ -13,7 +13,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiObscured} from '@taiga-ui/cdk/directives/obscured';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     tuiGetActualTarget,
     tuiInjectElement,
