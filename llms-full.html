@@ -63414,26 +63414,38 @@ export default class Example&lt;T extends User = User&gt; {
 
 **Template:**
 ```html
-&lt;tui-multi-select placeholder=&quot;Ignored text&quot; [formControl]=&quot;control&quot; [tuiTextfieldLabelOutside]=&quot;true&quot; &gt; Star Wars persons &lt;tui-data-list-wrapper *tuiDataList tuiMultiSelectGroup [items]=&quot;items | tuiFilterByInput&quot; /&gt;
-&lt;/tui-multi-select&gt;
+&lt;tui-textfield multi tuiChevron &gt;
+&lt;label tuiLabel&gt;Star Wars persons&lt;/label&gt;
+&lt;input placeholder=&quot;Ignored text&quot; tuiInputChip [formControl]=&quot;control&quot; /&gt;
+&lt;tui-input-chip *tuiItem /&gt;
+&lt;tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]=&quot;items | tuiFilterByInput&quot; /&gt;
+&lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
 import {Component} from &#039;@angular/core&#039;;
 import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiInputChip,
+    TuiMultiSelect,
+} from &#039;@taiga-ui/kit&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiDataListWrapper, TuiFilterByInputPipe} from &#039;@taiga-ui/kit&#039;;
-import {TuiMultiSelectModule, TuiTextfieldControllerModule} from &#039;@taiga-ui/legacy&#039;;
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiMultiSelectModule,
-        TuiTextfieldControllerModule,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiTextfield,
     ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,

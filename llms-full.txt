@@ -63405,26 +63405,38 @@ export default class Example<T extends User = User> {
 
 **Template:**
 ```html
-<tui-multi-select placeholder="Ignored text" [formControl]="control" [tuiTextfieldLabelOutside]="true" > Star Wars persons <tui-data-list-wrapper *tuiDataList tuiMultiSelectGroup [items]="items | tuiFilterByInput" />
-</tui-multi-select>
+<tui-textfield multi tuiChevron >
+<label tuiLabel>Star Wars persons</label>
+<input placeholder="Ignored text" tuiInputChip [formControl]="control" />
+<tui-input-chip *tuiItem />
+<tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]="items | tuiFilterByInput" />
+</tui-textfield>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiInputChip,
+    TuiMultiSelect,
+} from '@taiga-ui/kit';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiMultiSelectModule,
-        TuiTextfieldControllerModule,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
