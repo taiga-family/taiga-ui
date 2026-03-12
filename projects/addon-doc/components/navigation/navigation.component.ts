@@ -91,7 +91,7 @@ export class TuiDocNavigation {
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected menuOpen = false;
 
     protected readonly drawer = inject(TuiDrawer, {optional: true});

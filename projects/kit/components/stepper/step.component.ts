@@ -50,7 +50,7 @@ export class TuiStep {
         () => this.stepper.activeItemIndex() === this.index,
     );
 
-    protected avatarAppearance = computed(() => {
+    protected readonly avatarAppearance = computed(() => {
         if (this.isActive()) {
             return 'primary';
         }

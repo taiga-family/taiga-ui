@@ -17,7 +17,7 @@ interface TreeNode {
     changeDetection,
 })
 export default class Example {
-    protected drag = signal<TreeNode | null>(null);
+    protected readonly drag = signal<TreeNode | null>(null);
 
     protected readonly cd = inject(ChangeDetectorRef);
 

@@ -15,5 +15,5 @@ export class Option<T> {
     private readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
     private readonly value = tuiInjectValue<T>();
 
-    protected selected = computed(() => this.value() === this.option.value());
+    protected readonly selected = computed(() => this.value() === this.option.value());
 }

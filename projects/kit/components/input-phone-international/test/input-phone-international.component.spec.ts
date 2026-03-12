@@ -39,7 +39,9 @@ describe('InputPhoneInternational', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        public component = viewChild.required(TuiInputPhoneInternationalComponent);
+        public readonly component = viewChild.required(
+            TuiInputPhoneInternationalComponent,
+        );
 
         public control = new FormControl('+79110330102');
 

@@ -43,7 +43,10 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly nonRemovablePrefix = computed(() => `${this.countryCode()} `);
-    protected inputMode = computed(() => (this.allowText() ? 'text' : 'numeric'));
+    protected readonly inputMode = computed(() =>
+        this.allowText() ? 'text' : 'numeric',
+    );
+
     protected readonly valueEffect = effect(() => {
         if (this.value()) {
             this.input.value.set(maskitoTransform(this.value() ?? '', this.maskito()));

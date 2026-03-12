@@ -26,7 +26,7 @@ export default class Page {
         'end',
     ];
 
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected overlay = false;
     protected direction: TuiHorizontalDirection = 'end';
 
