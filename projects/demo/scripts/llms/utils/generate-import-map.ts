@@ -1,14 +1,34 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
+
+type SymbolCategory =
+    | 'class'
+    | 'component'
+    | 'directive'
+    | 'pipe'
+    | 'service'
+    | 'token'
+    | 'type'
+    | 'utility';
 
 interface EntityExports {
     name: string;
-    category: string;
+    category: SymbolCategory;
     exports: string[];
 }
 
 interface PackageEntities {
     entities: EntityExports[];
+}
+
+interface ImportMapOptions {
+    roots?: string[];
+    extraPackageName?: string;
+}
+
+interface ParsedSymbol {
+    name: string;
+    hasTypeModifier: boolean;
 }
 
 const PACKAGES = [
@@ -21,7 +41,7 @@ const PACKAGES = [
     'addon-mobile',
     'addon-table',
     'addon-charts',
-];
+] as const;
 
 const PACKAGE_DISPLAY_NAMES: Record<string, string> = {
     core: '@taiga-ui/core',
@@ -35,6 +55,59 @@ const PACKAGE_DISPLAY_NAMES: Record<string, string> = {
     'addon-charts': '@taiga-ui/addon-charts',
 };
 
+const CATEGORY_ORDER: readonly SymbolCategory[] = [
+    'component',
+    'directive',
+    'pipe',
+    'service',
+    'type',
+    'token',
+    'utility',
+    'class',
+];
+
+const CATEGORY_SINGULAR_MAP: Record<string, SymbolCategory> = {
+    components: 'component',
+    directives: 'directive',
+    pipes: 'pipe',
+    services: 'service',
+    types: 'type',
+    tokens: 'token',
+    utils: 'utility',
+    classes: 'class',
+};
+
+const PER_LINE_BY_CATEGORY: Record<SymbolCategory, number> = {
+    component: 10,
+    directive: 10,
+    pipe: 10,
+    service: 10,
+    type: 5,
+    token: 5,
+    utility: 5,
+    class: 5,
+};
+
+const SKIP_DIRS = new Set([
+    '__snapshots__',
+    '__tests__',
+    '.cache',
+    '.git',
+    'dist',
+    'node_modules',
+]);
+
+const SOURCE_CATEGORIES = [
+    'components',
+    'directives',
+    'pipes',
+    'services',
+    'types',
+    'tokens',
+    'utils',
+    'classes',
+] as const;
+
 async function fileExists(filePath: string): Promise<boolean> {
     try {
         await fs.access(filePath);
@@ -45,20 +118,55 @@ async function fileExists(filePath: string): Promise<boolean> {
     }
 }
 
+async function collectTsFiles(dirPath: string, depth = 0): Promise<string[]> {
+    if (depth > 5) {
+        return [];
+    }
+
+    const files: string[] = [];
+
+    try {
+        const entries = await fs.readdir(dirPath, {withFileTypes: true});
+
+        for (const entry of entries) {
+            if (SKIP_DIRS.has(entry.name)) {
+                continue;
+            }
+
+            const fullPath = path.join(dirPath, entry.name);
+
+            if (entry.isDirectory()) {
+                files.push(...(await collectTsFiles(fullPath, depth + 1)));
+            } else if (
+                entry.isFile() &&
+                entry.name.endsWith('.ts') &&
+                !entry.name.endsWith('.spec.ts') &&
+                !entry.name.endsWith('.d.ts')
+            ) {
+                files.push(fullPath);
+            }
+        }
+    } catch (error) {
+        console.warn(`  ⚠ Could not read directory ${dirPath}: ${error}`);
+    }
+
+    return files;
+}
+
 async function extractExportsFromFile(filePath: string): Promise<string[]> {
     const content = await fs.readFile(filePath, 'utf-8');
     const exports: string[] = [];
 
-    // Match: export class ClassName, export interface InterfaceName, export const ConstName
-    const exportMatches = content.matchAll(
-        /export\s+(?:class|interface|const|function|enum|type)\s+([A-Z][a-zA-Z0-9]*)/g,
+    const exportMatches = Array.from(
+        content.matchAll(
+            /export\s+(?:class|interface|const|function|enum|type)\s+([A-Z][a-zA-Z0-9]*)/g,
+        ),
     );
 
     for (const match of exportMatches) {
         if (match[1]) {
             const name = match[1];
 
-            // Filter out all-caps constants (e.g., SCROLL, TUI, ANDROID, etc.)
             if (!/^[A-Z_0-9]+$/.test(name)) {
                 exports.push(name);
             }
@@ -68,50 +176,193 @@ async function extractExportsFromFile(filePath: string): Promise<string[]> {
     return exports;
 }
 
-async function scanDirectory(dirPath: string, depth = 0): Promise<string[]> {
-    if (depth > 5) {
-        return [];
-    }
-
+async function scanDirectory(dirPath: string): Promise<string[]> {
+    const tsFiles = await collectTsFiles(dirPath);
     const exports: string[] = [];
 
-    try {
-        const entries = await fs.readdir(dirPath, {withFileTypes: true});
+    for (const file of tsFiles) {
+        try {
+            const fileExports = await extractExportsFromFile(file);
 
-        for (const entry of entries) {
-            const fullPath = path.join(dirPath, entry.name);
-
-            if (entry.isDirectory()) {
-                const subExports = await scanDirectory(fullPath, depth + 1);
-
-                exports.push(...subExports);
-            } else if (entry.isFile() && entry.name.endsWith('.ts')) {
-                const fileExports = await extractExportsFromFile(fullPath);
-
-                exports.push(...fileExports);
-            }
+            exports.push(...fileExports);
+        } catch (error) {
+            console.warn(`  ⚠ Could not extract exports from ${file}: ${error}`);
         }
-    } catch (error) {
-        console.warn(`  ⚠ Warning: Could not read directory ${dirPath}: ${error}`);
-        // Ignore errors for directories we can't read
     }
 
     return exports;
 }
 
-function singularizeCategory(category: string): string {
-    const map: Record<string, string> = {
-        components: 'component',
-        directives: 'directive',
-        pipes: 'pipe',
-        services: 'service',
-        types: 'type',
-        tokens: 'token',
-        utils: 'utility',
-        classes: 'class',
-    };
+const TYPE_MODIFIER_RE = /^type\s+/;
 
-    return map[category] || category;
+function parseSymbols(raw: string): ParsedSymbol[] {
+    return raw
+        .split(',')
+        .map((segment) => {
+            const trimmed = segment.trim();
+            const hasTypeModifier = TYPE_MODIFIER_RE.test(trimmed);
+            const nameWithAlias = hasTypeModifier
+                ? trimmed.replace(TYPE_MODIFIER_RE, '')
+                : trimmed;
+            const name = nameWithAlias.split(/\s+as\s+/)[0]?.trim() ?? '';
+
+            return {name, hasTypeModifier};
+        })
+        .filter((sym): sym is ParsedSymbol => sym.name.length > 0);
+}
+
+function categorizeSymbol(
+    name: string,
+    isTypeImport: boolean,
+    folderHint?: SymbolCategory,
+): SymbolCategory {
+    if (/^[A-Z][A-Z0-9_]+$/.test(name)) {
+        return 'token';
+    }
+
+    if (isTypeImport) {
+        return 'type';
+    }
+
+    if (name.endsWith('Pipe')) {
+        return 'pipe';
+    }
+
+    if (name.endsWith('Directive')) {
+        return 'directive';
+    }
+
+    if (name.endsWith('Component')) {
+        return 'component';
+    }
+
+    if (/^[a-z]/.test(name)) {
+        return 'utility';
+    }
+
+    return folderHint ?? 'class';
+}
+
+function detectFolderCategory(
+    filePath: string,
+    rootPath: string,
+): SymbolCategory | undefined {
+    const relative = path.relative(rootPath, filePath);
+    const topFolder = relative.split(path.sep)[0] ?? '';
+
+    return CATEGORY_SINGULAR_MAP[topFolder];
+}
+
+function buildImportRegex(escapedPkg: string, typeOnly: boolean): RegExp {
+    const fromClause = String.raw`from\s*['"]${escapedPkg}(?:/[^'"]*)?['"]`;
+
+    if (typeOnly) {
+        return new RegExp(String.raw`import\s+type\s*\{([^}]+)\}\s*${fromClause}`, 'gs');
+    }
+
+    return new RegExp(String.raw`import\s+(?!type\s)\{([^}]+)\}\s*${fromClause}`, 'gs');
+}
+
+function processTypeImports(
+    content: string,
+    typeImportRe: RegExp,
+    symbolMap: Map<string, boolean>,
+): void {
+    const matches = Array.from(content.matchAll(typeImportRe));
+
+    for (const match of matches) {
+        for (const sym of parseSymbols(match[1] ?? '')) {
+            if (!symbolMap.has(sym.name)) {
+                symbolMap.set(sym.name, true);
+            }
+        }
+    }
+}
+
+function processValueImports(
+    content: string,
+    valueImportRe: RegExp,
+    symbolMap: Map<string, boolean>,
+): void {
+    const matches = Array.from(content.matchAll(valueImportRe));
+
+    for (const match of matches) {
+        for (const sym of parseSymbols(match[1] ?? '')) {
+            if (sym.hasTypeModifier) {
+                if (!symbolMap.has(sym.name)) {
+                    symbolMap.set(sym.name, true);
+                }
+            } else {
+                symbolMap.set(sym.name, false);
+            }
+        }
+    }
+}
+
+async function extractImportsFromDemoPages(
+    rootPath: string,
+    packageName: string,
+): Promise<EntityExports[]> {
+    const tsFiles = await collectTsFiles(rootPath);
+
+    const symbolMap = new Map<string, boolean>();
+    const symbolFolderHint = new Map<string, SymbolCategory | undefined>();
+
+    const escapedPkg = packageName.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
+    const typeImportRe = buildImportRegex(escapedPkg, true);
+    const valueImportRe = buildImportRegex(escapedPkg, false);
+
+    for (const file of tsFiles) {
+        let content: string;
+
+        try {
+            content = await fs.readFile(file, 'utf-8');
+        } catch {
+            continue;
+        }
+
+        const folderHint = detectFolderCategory(file, rootPath);
+        const prevSize = symbolMap.size;
+
+        processTypeImports(content, typeImportRe, symbolMap);
+        processValueImports(content, valueImportRe, symbolMap);
+
+        if (symbolMap.size > prevSize) {
+            for (const name of symbolMap.keys()) {
+                if (!symbolFolderHint.has(name)) {
+                    symbolFolderHint.set(name, folderHint);
+                }
+            }
+        }
+    }
+
+    const byCategory = new Map<SymbolCategory, string[]>();
+
+    const symbolEntries = Array.from(symbolMap.entries());
+
+    for (const [name, isTypeOnly] of symbolEntries) {
+        const category = categorizeSymbol(name, isTypeOnly, symbolFolderHint.get(name));
+        let arr = byCategory.get(category);
+
+        if (!arr) {
+            arr = [];
+            byCategory.set(category, arr);
+        }
+
+        arr.push(name);
+    }
+
+    const categoryEntries = Array.from(byCategory.entries());
+
+    return categoryEntries.map(([category, symbols]) => ({
+        name: 'all',
+        category,
+        exports: symbols.sort(),
+    }));
+}
+
+function singularizeCategory(category: string): SymbolCategory {
+    return CATEGORY_SINGULAR_MAP[category] ?? (category as SymbolCategory);
 }
 
 function formatExportsList(exports: string[], perLine = 10): string {
@@ -148,35 +399,20 @@ function formatEntitySection(entity: EntityExports, perLine = 10): string {
     return `### ${entity.name}\n\n${exportsBlock}\n`;
 }
 
-async function getPackageEntities(packageName: string): Promise<PackageEntities> {
-    const packagePath = path.resolve(process.cwd(), `projects/${packageName}`);
-    const result: PackageEntities = {entities: []};
+function sortByCategory<T extends {category: string}>(items: T[]): T[] {
+    return [...items].sort((a, b) => {
+        const aIdx = CATEGORY_ORDER.indexOf(a.category as SymbolCategory);
+        const bIdx = CATEGORY_ORDER.indexOf(b.category as SymbolCategory);
 
-    const categories = [
-        'components',
-        'directives',
-        'pipes',
-        'services',
-        'types',
-        'tokens',
-        'utils',
-        'classes',
-    ];
+        const aOrder = aIdx === -1 ? Infinity : aIdx;
+        const bOrder = bIdx === -1 ? Infinity : bIdx;
 
-    for (const category of categories) {
-        const categoryPath = path.join(packagePath, category);
+        return aOrder !== bOrder ? aOrder - bOrder : a.category.localeCompare(b.category);
+    });
+}
 
-        if (await fileExists(categoryPath)) {
-            const categoryEntities = await collectCategoryEntities(
-                categoryPath,
-                category,
-            );
-
-            result.entities.push(...categoryEntities);
-        }
-    }
-
-    return result;
+function categoriesToTitle(category: string): string {
+    return `${category[0]?.toUpperCase()}${category.slice(1)}s`;
 }
 
 async function collectCategoryEntities(
@@ -223,7 +459,132 @@ async function collectCategoryEntities(
     return categoryEntities;
 }
 
-export async function generateImportMap(): Promise<string> {
+async function getPackageEntities(packageName: string): Promise<PackageEntities> {
+    const packagePath = path.resolve(process.cwd(), `projects/${packageName}`);
+    const result: PackageEntities = {entities: []};
+
+    for (const category of SOURCE_CATEGORIES) {
+        const categoryPath = path.join(packagePath, category);
+
+        if (await fileExists(categoryPath)) {
+            const categoryEntities = await collectCategoryEntities(
+                categoryPath,
+                category,
+            );
+
+            result.entities.push(...categoryEntities);
+        }
+    }
+
+    return result;
+}
+
+function renderPackageSection(
+    packageDisplayName: string,
+    entities: EntityExports[],
+): string[] {
+    const output: string[] = [];
+
+    output.push('---\n');
+    output.push(`## ${packageDisplayName}\n`);
+
+    const byCategory = new Map<string, EntityExports[]>();
+
+    for (const entity of entities) {
+        let arr = byCategory.get(entity.category);
+
+        if (!arr) {
+            arr = [];
+            byCategory.set(entity.category, arr);
+        }
+
+        arr.push(entity);
+    }
+
+    const sortedCategories = Array.from(byCategory.keys()).sort((a, b) => {
+        const aIdx = CATEGORY_ORDER.indexOf(a as SymbolCategory);
+        const bIdx = CATEGORY_ORDER.indexOf(b as SymbolCategory);
+        const aOrder = aIdx === -1 ? Infinity : aIdx;
+        const bOrder = bIdx === -1 ? Infinity : bIdx;
+
+        return aOrder !== bOrder ? aOrder - bOrder : a.localeCompare(b);
+    });
+
+    for (const category of sortedCategories) {
+        const categoryEntities = byCategory.get(category) ?? [];
+
+        if (categoryEntities.length === 0) {
+            continue;
+        }
+
+        output.push(`**${categoriesToTitle(category)}:**\n`);
+
+        const sortedEntities = [...categoryEntities].sort((a, b) =>
+            a.name.localeCompare(b.name),
+        );
+
+        for (const entity of sortedEntities) {
+            const perLine = PER_LINE_BY_CATEGORY[entity.category] ?? 10;
+            const section = formatEntitySection(entity, perLine);
+
+            if (section) {
+                output.push(section);
+            }
+        }
+    }
+
+    return output;
+}
+
+function renderExtraPackageSection(
+    packageName: string,
+    entities: EntityExports[],
+): string[] {
+    const output: string[] = [];
+
+    output.push('---\n');
+    output.push(`## ${packageName}\n`);
+
+    const sorted = sortByCategory(entities);
+
+    for (const entity of sorted) {
+        output.push('\n');
+        output.push(`**${categoriesToTitle(entity.category)}:**\n`);
+
+        const perLine = PER_LINE_BY_CATEGORY[entity.category] ?? 10;
+        const exportsBlock = formatExportsList(entity.exports, perLine);
+
+        if (exportsBlock) {
+            output.push(exportsBlock);
+            output.push('');
+        }
+    }
+
+    return output;
+}
+
+function renderAngularCommonSection(): string[] {
+    return [
+        '---\n',
+        '## Angular Common Imports\n',
+        '**Structural Directives (consider using Angular 17+ control flow instead):**\n\n',
+        '```typescript\n',
+        "import {NgIf, NgFor, NgSwitch} from '@angular/common';\n",
+        '// Modern alternative: @if, @for, @switch\n',
+        '```\n\n',
+        '**Forms:**\n\n',
+        '```typescript\n',
+        "import {FormsModule, ReactiveFormsModule} from '@angular/forms';\n",
+        '```\n\n',
+        '**Other Common:**\n\n',
+        '```typescript\n',
+        "import {CommonModule} from '@angular/common';\n",
+        "import {AsyncPipe, DatePipe, DecimalPipe} from '@angular/common';\n",
+        '```\n',
+    ];
+}
+
+export async function generateImportMap(options?: ImportMapOptions): Promise<string> {
     const output: string[] = [];
 
     output.push('# Import Map - Package Exports Reference\n');
@@ -241,7 +602,6 @@ export async function generateImportMap(): Promise<string> {
 
         const {entities} = await getPackageEntities(pkg);
 
-        // Skip packages with no exports
         const totalExports = entities.reduce(
             (sum, entity) => sum + entity.exports.length,
             0,
@@ -252,87 +612,7 @@ export async function generateImportMap(): Promise<string> {
             continue;
         }
 
-        output.push('---\n');
-        output.push(`## ${packageDisplayName}\n`);
-
-        const perLineByCategory: Record<string, number> = {
-            component: 10,
-            directive: 10,
-            pipe: 10,
-            service: 10,
-            type: 5,
-            token: 5,
-            utility: 5,
-            class: 5,
-        };
-
-        const categoryOrder = [
-            'component',
-            'directive',
-            'pipe',
-            'service',
-            'type',
-            'token',
-            'utility',
-            'class',
-        ];
-
-        const byCategory = entities.reduce<Record<string, EntityExports[]>>(
-            (acc, entity) => {
-                if (!acc[entity.category]) {
-                    acc[entity.category] = [];
-                }
-
-                acc[entity.category]!.push(entity);
-
-                return acc;
-            },
-            {},
-        );
-
-        const sortedCategories = Object.keys(byCategory).sort((a, b) => {
-            const aIdx = categoryOrder.indexOf(a);
-            const bIdx = categoryOrder.indexOf(b);
-
-            if (aIdx === -1 && bIdx === -1) {
-                return a.localeCompare(b);
-            }
-
-            if (aIdx === -1) {
-                return 1;
-            }
-
-            if (bIdx === -1) {
-                return -1;
-            }
-
-            return aIdx - bIdx;
-        });
-
-        for (const category of sortedCategories) {
-            const categoryEntities = byCategory[category] || [];
-
-            if (categoryEntities.length === 0) {
-                continue;
-            }
-
-            const title = `${category[0]?.toUpperCase()}${category.slice(1)}s`;
-
-            output.push(`**${title}:**\n`);
-
-            const sortedEntities = categoryEntities.sort((a, b) =>
-                a.name.localeCompare(b.name),
-            );
-
-            for (const entity of sortedEntities) {
-                const perLine = perLineByCategory[entity.category] ?? 10;
-                const section = formatEntitySection(entity, perLine);
-
-                if (section) {
-                    output.push(section);
-                }
-            }
-        }
+        output.push(...renderPackageSection(packageDisplayName, entities));
 
         const categoryCounts = entities.reduce<Record<string, number>>((acc, entity) => {
             acc[entity.category] = (acc[entity.category] || 0) + 1;
@@ -342,22 +622,10 @@ export async function generateImportMap(): Promise<string> {
 
         const countSummary = Object.entries(categoryCounts)
             .sort(([a], [b]) => {
-                const aIdx = categoryOrder.indexOf(a);
-                const bIdx = categoryOrder.indexOf(b);
+                const aIdx = CATEGORY_ORDER.indexOf(a as SymbolCategory);
+                const bIdx = CATEGORY_ORDER.indexOf(b as SymbolCategory);
 
-                if (aIdx === -1 && bIdx === -1) {
-                    return a.localeCompare(b);
-                }
-
-                if (aIdx === -1) {
-                    return 1;
-                }
-
-                if (bIdx === -1) {
-                    return -1;
-                }
-
-                return aIdx - bIdx;
+                return (aIdx === -1 ? Infinity : aIdx) - (bIdx === -1 ? Infinity : bIdx);
             })
             .map(([category, count]) => `${count} ${category}s`)
             .join(', ');
@@ -365,31 +633,41 @@ export async function generateImportMap(): Promise<string> {
         console.info(`  ✓ Found ${entities.length} entities (${countSummary})`);
     }
 
-    // Add Angular common imports section
-    output.push('---\n');
-    output.push('## Angular Common Imports\n');
-    output.push(
-        '**Structural Directives (consider using Angular 17+ control flow instead):**\n\n',
-    );
-    output.push('```typescript\n');
-    output.push("import {NgIf, NgFor, NgSwitch} from '@angular/common';\n");
-    output.push('// Modern alternative: @if, @for, @switch\n');
-    output.push('```\n\n');
-    output.push('**Forms:**\n\n');
-    output.push('```typescript\n');
-    output.push("import {FormsModule, ReactiveFormsModule} from '@angular/forms';\n");
-    output.push('```\n\n');
-    output.push('**Other Common:**\n\n');
-    output.push('```typescript\n');
-    output.push("import {CommonModule} from '@angular/common';\n");
-    output.push("import {AsyncPipe, DatePipe, DecimalPipe} from '@angular/common';\n");
-    output.push('```\n');
+    if (options?.extraPackageName && options.roots && options.roots.length > 1) {
+        const extraRoot = options.roots[0]!;
+
+        console.info(
+            `Processing ${options.extraPackageName} from demo pages in ${extraRoot}...`,
+        );
+
+        const entities = await extractImportsFromDemoPages(
+            extraRoot,
+            options.extraPackageName,
+        );
+        const totalExports = entities.reduce((sum, e) => sum + e.exports.length, 0);
+
+        if (totalExports > 0) {
+            output.push(...renderExtraPackageSection(options.extraPackageName, entities));
+            console.info(
+                `  \u2713 Found ${totalExports} symbols in ${options.extraPackageName}`,
+            );
+        } else {
+            console.info(
+                `  \u26A0 No symbols found for ${options.extraPackageName} in ${extraRoot}`,
+            );
+        }
+    }
+
+    output.push(...renderAngularCommonSection());
 
     return output.join('');
 }
 
-export async function saveImportMap(outputPath?: string): Promise<void> {
-    const importMap = await generateImportMap();
+export async function saveImportMap(
+    outputPath?: string,
+    options?: ImportMapOptions,
+): Promise<void> {
+    const importMap = await generateImportMap(options);
     const filePath =
         outputPath ||
         path.resolve(
