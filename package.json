@@ -82,7 +82,6 @@
         ],
         "rules": {
             "property-disallowed-list": null,
-            "plugin/use-logical-properties-and-values": null,
             "selector-class-pattern": [
                 "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$",
                 {
