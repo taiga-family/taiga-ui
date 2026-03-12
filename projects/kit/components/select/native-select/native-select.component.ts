@@ -29,7 +29,6 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
     providers: [tuiAsTextfieldAccessor(TuiNativeSelect), tuiAsControl(TuiNativeSelect)],
     hostDirectives: [TuiWithInput],
     host: {
-        '[attr.aria-invalid]': 'invalid()',
         '[disabled]': '!interactive()',
         '(change)': 'selectOption($event.target.options.selectedIndex)',
     },
