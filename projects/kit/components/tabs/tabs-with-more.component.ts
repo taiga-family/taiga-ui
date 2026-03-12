@@ -239,7 +239,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
         const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
-        this.dir()?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.dir()?.nativeElement.style.setProperty('--t-start', tuiPx(offsetLeft));
         this.dir()?.nativeElement.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }

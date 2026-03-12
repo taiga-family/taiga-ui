@@ -94,7 +94,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
 
         const {offsetLeft = 0, offsetWidth = 0} = activeElement || {};
 
-        this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.el.style.setProperty('--t-start', tuiPx(offsetLeft));
         this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }
