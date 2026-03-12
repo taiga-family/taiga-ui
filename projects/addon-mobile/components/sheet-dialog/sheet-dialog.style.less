@@ -106,13 +106,12 @@
     background: var(--tui-background-elevation-1);
 
     &::after {
+        .center-left();
+
         content: '';
-        position: absolute;
         inset-block-start: 0.5rem;
-        inset-inline-start: 50%;
         inline-size: 2rem;
         block-size: 0.25rem;
-        transform: translateX(-50%);
         background: var(--tui-border-normal);
         border-radius: 1rem;
     }

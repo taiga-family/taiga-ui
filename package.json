@@ -52,7 +52,7 @@
         "start:shadow": "nx serve demo -c shadow",
         "start:ssl": "nx serve-ssl demo",
         "start:ssr": "nx serve demo -c production",
-        "stylelint": "stylelint '**/*.{less,css}' --config package.json",
+        "stylelint": "stylelint '**/*.{less,css,scss}' --config package.json",
         "pretest": "npx tsc --project tsconfig.spec.json",
         "test": "nx run-many --target test --all --output-style=stream",
         "test:e2e": "nx e2e-ui demo-playwright",
@@ -96,6 +96,16 @@
                 ],
                 "rules": {
                     "selector-class-pattern": null
+                }
+            },
+            {
+                "files": [
+                    "**/*.scss"
+                ],
+                "rules": {
+                    "at-rule-no-unknown": null,
+                    "at-rule-allowed-list": null,
+                    "function-no-unknown": null
                 }
             }
         ]

@@ -9,20 +9,21 @@
 // centering with translate
 .center-left() {
     position: absolute;
+    // stylelint-disable-next-line
     left: 50%;
     transform: translate(-50%, 0);
 }
 
 .center-top() {
     position: absolute;
+    // stylelint-disable-next-line
     top: 50%;
     transform: translate(0, -50%);
 }
 
 .center-all() {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    inset: 50% auto auto 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -30,8 +31,8 @@
 // @deprecated TODO remove in 5.0 in favor of inset: 0
 .fullsize(@position: absolute, @mode: height) {
     position: @position;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
 
     & when (@mode = height) {
         inline-size: 100%;
@@ -39,8 +40,8 @@
     }
 
     & when (@mode = inset) {
-        bottom: 0;
-        right: 0;
+        inset-block-end: 0;
+        inset-inline-end: 0;
     }
 }
 
