@@ -6,6 +6,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    NgZone,
     type OnChanges,
     Output,
 } from '@angular/core';
@@ -32,23 +33,10 @@ import {
 } from '@taiga-ui/cdk/utils/focus';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
-import {shouldCall} from '@taiga-ui/event-plugins';
 import {filter, fromEvent, merge} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
-
-function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
-    return (
-        // @ts-ignore
-        typeof CloseWatcher === 'undefined' &&
-        // ?. for auto fill events
-        event.key?.toLowerCase() === 'escape' &&
-        this.tuiDropdownEnabled &&
-        !!this.tuiDropdownOpen &&
-        !this['dropdown']()?.nextElementSibling
-    );
-}
 
 @Directive({
     standalone: true,
@@ -80,6 +68,7 @@ export class TuiDropdownOpen implements OnChanges {
     private readonly el = tuiInjectElement();
     private readonly obscured = inject(TuiObscured);
     private readonly activeZone = inject(TuiActiveZone);
+    private readonly zone = inject(NgZone);
 
     private readonly dropdown = computed(
         () => this.directive.ref()?.location.nativeElement,
@@ -137,10 +126,21 @@ export class TuiDropdownOpen implements OnChanges {
         this.update(open);
     }
 
-    @shouldCall(shouldClose)
     protected onEsc(event: KeyboardEvent): void {
-        event.preventDefault();
-        this.toggle(false);
+        if (
+            // @ts-ignore
+            typeof CloseWatcher === 'undefined' &&
+            // ?. for autofill events
+            event.key?.toLowerCase() === 'escape' &&
+            this.tuiDropdownEnabled &&
+            !!this.tuiDropdownOpen &&
+            !this.dropdown()?.nextElementSibling
+        ) {
+            this.zone.run(() => {
+                event.preventDefault();
+                this.toggle(false);
+            });
+        }
     }
 
     protected onClick(target: HTMLElement): void {
