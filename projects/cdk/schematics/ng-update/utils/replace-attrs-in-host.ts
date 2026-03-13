@@ -1,28 +1,41 @@
-import {getSourceFiles} from 'ng-morph';
+import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
 
 export function replaceAttrsInHost(
+    fileSystem: DevkitFileSystem,
     replaceable: Array<{from: string; to: string}>,
     pattern = ALL_TS_FILES,
 ): void {
-    const sourceFiles = getSourceFiles(pattern);
+    const classes = getClasses(pattern);
+    const components = getDecorators(classes, {name: 'Component'});
 
-    sourceFiles.forEach((file) => {
-        let text = file.getFullText();
+    components.forEach((component) => {
+        const argument = component.getArguments()[0];
+        const host = argument.getProperty('host');
 
-        replaceable.forEach(({from, to}) => {
-            const pattern = String.raw`(host:)(.|$|\n|)*(^|\n|\s)*(\'|\"|\`)(\[|\()(${from})(\]|\))(\'|\"|\`)`;
-            const wordRegex = new RegExp(pattern, 'g');
-            const oldText = text.match(wordRegex)?.[0];
+        if (host) {
+            const hostObject = host.getInitializer();
+            const sourceFile = component.getSourceFile();
+            const path = sourceFile.getFilePath();
+            const recorder = fileSystem.edit(path);
 
-            if (oldText) {
-                const newText = oldText.replaceAll(from, to);
+            replaceable.forEach(({from, to}) => {
+                const oldProperty =
+                    hostObject.getProperty(`'${from}'`) ||
+                    hostObject.getProperty(`"${from}"`);
 
-                text = text.replace(oldText, newText);
+                if (oldProperty) {
+                    const nameNode = oldProperty.getNameNode();
+                    const start = nameNode.getStart();
+                    const width = nameNode.getWidth();
 
-                file.replaceWithText(text);
-            }
-        });
+                    recorder.remove(start, width);
+                    recorder.insertLeft(start, `'${to}'`);
+                }
+            });
+        }
     });
+
+    fileSystem.commitEdits();
 }

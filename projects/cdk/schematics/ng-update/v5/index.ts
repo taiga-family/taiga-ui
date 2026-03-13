@@ -91,16 +91,16 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => saveActiveProject(),
                 },
                 {
+                    name: 'replaceAttrsInHost',
+                    step: () => replaceAttrsInHost(fileSystem, ATTRS_IN_HOST_TO_REPLACE),
+                },
+                {
                     name: 'migrateTemplates',
                     step: () => migrateTemplates(fileSystem, options),
                 },
                 {
                     name: 'migrateStyles',
                     step: migrateStyles,
-                },
-                {
-                    name: 'replaceAttrsInHost',
-                    step: () => replaceAttrsInHost(ATTRS_IN_HOST_TO_REPLACE),
                 },
             ],
             timings,
