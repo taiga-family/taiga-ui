@@ -18,7 +18,7 @@ import {TuiAccordionComponent} from './accordion.component';
         tuiButton: '',
         tuiAccordion: '',
         type: 'button',
-        '[attr.aria-expanded]': 'open()',
+        '[attr.aria-expanded]': 'open() || "false"',
         '[attr.aria-controls]': 'id',
         '(click)': 'toggle()',
     },
