@@ -24,7 +24,6 @@ import {
 } from '@taiga-ui/core/classes';
 import {type TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
-import {TuiIdService} from '@taiga-ui/cdk/services';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     PolymorpheusComponent,
@@ -86,8 +85,6 @@ export class TuiDropdownDirective
         inject(INJECTOR),
     );
 
-    public readonly id = inject(TuiIdService).generate();
-
     public ref = signal<ComponentRef<unknown> | null>(null);
     // TODO(v5): rename to `content`
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -143,8 +140,6 @@ export class TuiDropdownDirective
             this.ref.set(null);
             this.service.remove(ref);
         }
-
-        this.ref()?.location.nativeElement.setAttribute('id', this.id);
 
         this.drivers.forEach((driver) => driver?.next(show));
 
