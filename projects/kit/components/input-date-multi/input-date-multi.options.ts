@@ -26,7 +26,7 @@ export const TUI_INPUT_DATE_MULTI_OPTIONS = new InjectionToken<TuiInputDateMulti
                 valueTransformer: {
                     fromControlValue: (value: unknown): TuiDay[] | null => {
                         if (!Array.isArray(value)) {
-                            return null;
+                            return [];
                         }
 
                         const transformed = value.map((item) =>
@@ -35,17 +35,14 @@ export const TUI_INPUT_DATE_MULTI_OPTIONS = new InjectionToken<TuiInputDateMulti
 
                         return transformed.every((item): item is TuiDay => item !== null)
                             ? transformed
-                            : null;
+                            : [];
                     },
-                    toControlValue: (value: TuiDay[] | null): unknown => {
-                        if (!value) {
-                            return null;
-                        }
-
-                        return value.map((item) =>
-                            options.valueTransformer.toControlValue(item),
-                        );
-                    },
+                    toControlValue: (value: TuiDay[] | null): unknown =>
+                        value
+                            ? value.map((item) =>
+                                  options.valueTransformer.toControlValue(item),
+                              )
+                            : [],
                 },
             };
         },
