@@ -14,7 +14,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 export default class Example {
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected size = computed<TuiSizeL>(() =>
+    protected readonly size = computed<TuiSizeL>(() =>
         this.breakpoint() === 'mobile' ? 'm' : 'l',
     );
 }

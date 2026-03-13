@@ -17,7 +17,7 @@ export class TuiPieChartDirective {
     private readonly animationFrame$ = inject(WA_ANIMATION_FRAME);
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
 
-    public tuiPieChart = input<readonly [number, number]>([0, 0]);
+    public readonly tuiPieChart = input<readonly [number, number]>([0, 0]);
 
     protected readonly $ = toObservable(this.tuiPieChart)
         .pipe(

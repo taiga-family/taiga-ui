@@ -73,7 +73,7 @@ class Portal {}
     providers: [{provide: TuiPortalService, useClass: TuiPopupService}],
 })
 export default class Example extends TuiPortals {
-    protected expanded = signal(false);
+    protected readonly expanded = signal(false);
     protected open = false;
     protected switch = false;
     protected readonly routes = DemoRoute;

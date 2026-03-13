@@ -19,7 +19,7 @@ export default class Example {
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
 
-    protected numberProcessor = computed(
+    protected readonly numberProcessor = computed(
         ({decimalSeparator, thousandSeparator} = this.format()) =>
             (text: string) =>
                 text.replace(decimalSeparator, '.').replaceAll(thousandSeparator, ''),

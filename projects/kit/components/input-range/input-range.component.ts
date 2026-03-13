@@ -92,7 +92,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         transform,
     });
 
-    public content = input<
+    public readonly content = input<
         readonly [
             PolymorpheusContent<TuiContext<number>>,
             PolymorpheusContent<TuiContext<number>>,
