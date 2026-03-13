@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -16,8 +17,7 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type TextNode = DefaultTreeAdapterTypes.TextNode;
 
-const SELECT_MIGRATION_TODO =
-    '<!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->\n';
+const SELECT_MIGRATION_TODO = `<!-- ${TODO_MARK} tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->\n`;
 const VALUE_CONTENT_ATTR = 'valueContent';
 const CONTENT_ATTR = 'content';
 const TEXTFIELD_LABEL_OUTSIDE_ATTR = 'tuiTextfieldLabelOutside';
