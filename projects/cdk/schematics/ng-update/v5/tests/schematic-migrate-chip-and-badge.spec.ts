@@ -37,25 +37,18 @@ describe('ng-update chip and badge selectors', () => {
         }),
     );
 
-    it('migrates deprecated appearances for tui-badge', async () => {
-        expect(
-            await migrate(
-                [
-                    '<tui-badge appearance="error" size="s"><span>1</span></tui-badge>',
-                    '<tui-badge appearance="success" />',
-                    '<tui-badge [appearance]="\'error\'"></tui-badge>',
-                    '<tui-badge [appearance]="computedAppearance">123</tui-badge>',
-                ].join(''),
-            ),
-        ).toEqual(
-            [
-                '<span tuiBadge appearance="negative" size="s"><span>1</span></span>',
-                '<span tuiBadge appearance="positive" ></span>',
-                '<span tuiBadge [appearance]="\'negative\'"></span>',
-                "<span tuiBadge [appearance]=\"(computedAppearance) === 'success' ? 'positive' : (computedAppearance) === 'error' ? 'negative' : (computedAppearance)\">123</span>",
-            ].join(''),
-        );
-    });
+    it(
+        'migrates deprecated appearances for tui-badge',
+        migrate({
+            template: [
+                '',
+                '<tui-badge appearance="error" size="s"><span>1</span></tui-badge>',
+                '<tui-badge appearance="success" />',
+                '<tui-badge [appearance]="\'error\'"></tui-badge>',
+                '<tui-badge [appearance]="computedAppearance">123</tui-badge>',
+            ].join('\n'),
+        }),
+    );
 
     afterEach(() => resetActiveProject());
 });
