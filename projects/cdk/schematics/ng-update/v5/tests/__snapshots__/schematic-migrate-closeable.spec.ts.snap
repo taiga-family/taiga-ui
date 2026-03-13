@@ -1,0 +1,417 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update closeable does not change object properties named closeable outside dialog.open options: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = inject(TuiDialogService);
+
+                    open(): void {
+                        const x = {closeable: true};
+
+                        this.dialog.open('content', {
+                            closeable: false,
+                        });
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = inject(TuiDialogService);
+
+                    open(): void {
+                        const x = {closeable: true};
+
+                        this.dialog.open('content', {
+                            closable: false,
+                        });
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for TuiAlertService.open call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiAlertService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        inject(TuiAlertService).open('content', {
+                            closeable: true,
+                        });
+                    }
+                }
+            ",
+  "1. After": "import { TuiNotificationService } from "@taiga-ui/core";
+
+                import {Component, inject} from '@angular/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        inject(TuiNotificationService).open('content', {
+                            closable: true,
+                        });
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for TuiDialogService open options (class field inject): test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import type {TuiDialogContext} from '@taiga-ui/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+                import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+                import {BehaviorSubject} from 'rxjs';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialogService = inject(TuiDialogService);
+                    private readonly loading$ = new BehaviorSubject<boolean>(false);
+
+                    showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
+                        this.dialogService
+                            .open(content, {
+                                label: 'Test',
+                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                closeable: this.loading$.pipe(map((loading) => !loading)),
+                            })
+                            .subscribe();
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import type {TuiDialogContext} from '@taiga-ui/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+                import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+                import {BehaviorSubject} from 'rxjs';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialogService = inject(TuiDialogService);
+                    private readonly loading$ = new BehaviorSubject<boolean>(false);
+
+                    showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
+                        this.dialogService
+                            .open(content, {
+                                label: 'Test',
+                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                closable: this.loading$.pipe(map((loading) => !loading)),
+                            })
+                            .subscribe();
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for TuiNotificationService.open call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiNotificationService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        inject(TuiNotificationService).open('content', {
+                            closeable: true,
+                        });
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {TuiNotificationService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        inject(TuiNotificationService).open('content', {
+                            closable: true,
+                        });
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for TuiSheetDialogService.open call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        inject(TuiSheetDialogService).open('content', {
+                            closeable: true,
+                        });
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        inject(TuiSheetDialogService).open('content', {
+                            closable: true,
+                        });
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for direct inject(TuiDialogService).open(...) call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        const closeable = true;
+
+                        inject(TuiDialogService).open('content', {
+                            closeable,
+                        });
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        const closeable = true;
+
+                        inject(TuiDialogService).open('content', {
+                            closable: closeable,
+                        });
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for options in templates: test.html 1`] = `
+{
+  "0. Before": "
+                <ng-template
+                    [tuiDialogOptions]="{
+                        size: 's',
+                        closeable: true,
+                        header: header
+                    }"
+                    [(tuiDialog)]="open"
+                />
+                <ng-template
+                    [tuiAlertOptions]="{closeable: false, label: 'Directive', autoClose: 0}"
+                    [(tuiAlert)]="show"
+                />
+                <ng-template
+                    [tuiNotificationOptions]="{'closeable': false}"
+                    [(tuiNotification)]="show"
+                />
+            ",
+  "1. After": "
+                <ng-template
+                    [tuiDialogOptions]="{
+                        size: 's',
+                        closable: true,
+                        header: header
+                    }"
+                    [(tuiDialog)]="open"
+                />
+                <ng-template
+                    [tuiNotificationOptions]="{closable: false, label: 'Directive', autoClose: 0}"
+                    [(tuiNotification)]="show"
+                />
+                <ng-template
+                    [tuiNotificationOptions]="{'closable': false}"
+                    [(tuiNotification)]="show"
+                />
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for tuiAlertOptionsProvider call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiAlertOptionsProvider} from '@taiga-ui/core';
+
+                const closeable = false;
+
+                tuiAlertOptionsProvider({closeable});
+                tuiAlertOptionsProvider({closeable: true, appearance: 'negative'});
+            ",
+  "1. After": "import { tuiNotificationOptionsProvider } from "@taiga-ui/core";
+
+                                const closeable = false;
+
+                tuiNotificationOptionsProvider({closable: closeable});
+                tuiNotificationOptionsProvider({closable: true, appearance: 'negative'});
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for tuiDialog call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {tuiDialog} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = tuiDialog('content', {
+                        size: 'm',
+                        closeable: true,
+                        dismissible: true,
+                    });
+
+                    protected showDialog(): void {
+                        this.dialog().subscribe();
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {tuiDialog} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = tuiDialog('content', {
+                        size: 'm',
+                        closable: true,
+                        dismissible: true,
+                    });
+
+                    protected showDialog(): void {
+                        this.dialog().subscribe();
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for tuiDialogOptionsProvider call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiDialogOptionsProvider} from '@taiga-ui/core';
+
+                const closeable = false;
+
+                tuiDialogOptionsProvider({closeable});
+                tuiDialogOptionsProvider({size: 'm', closeable: true});
+            ",
+  "1. After": "
+                import {tuiDialogOptionsProvider} from '@taiga-ui/core';
+
+                const closeable = false;
+
+                tuiDialogOptionsProvider({closable: closeable});
+                tuiDialogOptionsProvider({size: 'm', closable: true});
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for tuiNotificationOptionsProvider call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
+
+                const closeable = false;
+
+                tuiNotificationOptionsProvider({closeable});
+                tuiNotificationOptionsProvider({closeable: true, appearance: 'negative'});
+            ",
+  "1. After": "
+                import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
+
+                const closeable = false;
+
+                tuiNotificationOptionsProvider({closable: closeable});
+                tuiNotificationOptionsProvider({closable: true, appearance: 'negative'});
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces closeable with closable for tuiSheetDialogOptionsProvider call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiSheetDialogOptionsProvider} from '@taiga-ui/addon-mobile';
+
+                const closeable = false;
+
+                tuiSheetDialogOptionsProvider({closeable});
+                tuiSheetDialogOptionsProvider({size: 'm', closeable: true});
+            ",
+  "1. After": "
+                import {tuiSheetDialogOptionsProvider} from '@taiga-ui/addon-mobile';
+
+                const closeable = false;
+
+                tuiSheetDialogOptionsProvider({closable: closeable});
+                tuiSheetDialogOptionsProvider({size: 'm', closable: true});
+            ",
+}
+`;
+
+exports[`ng-update closeable replaces string literal key "closeable" with "closable": test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = inject(TuiDialogService);
+
+                    open(): void {
+                        this.dialog.open('content', {
+                            "closeable": true,
+                        });
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = inject(TuiDialogService);
+
+                    open(): void {
+                        this.dialog.open('content', {
+                            "closable": true,
+                        });
+                    }
+                }
+            ",
+}
+`;

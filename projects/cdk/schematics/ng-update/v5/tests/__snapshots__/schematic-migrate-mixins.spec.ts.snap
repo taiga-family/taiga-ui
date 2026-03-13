@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update v5: migrate mixins should migrate slider-ticks-labels mixin in LESS: test.less 1`] = `
+{
+  "0. Before": "
+                @import '@taiga-ui/styles/utils';
+
+                .ticks-labels {
+                    .tui-slider-ticks-labels(l);
+                }
+
+                .another-class {
+                    .tui-slider-ticks-labels(m);
+                    color: red;
+                }
+
+                .with-important {
+                    .tui-slider-ticks-labels(s) !important;
+                }
+
+                .already-migrated {
+                    .tui-slider-ticks-labels();
+                }
+            ",
+  "1. After": "
+                @import '@taiga-ui/styles/utils';
+
+                .ticks-labels {
+                    .tui-slider-ticks-labels();
+                }
+
+                .another-class {
+                    .tui-slider-ticks-labels();
+                    color: red;
+                }
+
+                .with-important {
+                    .tui-slider-ticks-labels() !important;
+                }
+
+                .already-migrated {
+                    .tui-slider-ticks-labels();
+                }
+            ",
+}
+`;
+
+exports[`ng-update v5: migrate mixins should migrate slider-ticks-labels mixin with SCSS @include syntax: test.less 1`] = `
+{
+  "0. Before": "
+                @import '@taiga-ui/styles/utils';
+
+                .ticks-labels {
+                    @include tui-slider-ticks-labels(l);
+                }
+
+                .another-class {
+                    @include tui-slider-ticks-labels(m);
+                }
+            ",
+  "1. After": "
+                @import '@taiga-ui/styles/utils';
+
+                .ticks-labels {
+                    @include tui-slider-ticks-labels();
+                }
+
+                .another-class {
+                    @include tui-slider-ticks-labels();
+                }
+            ",
+}
+`;

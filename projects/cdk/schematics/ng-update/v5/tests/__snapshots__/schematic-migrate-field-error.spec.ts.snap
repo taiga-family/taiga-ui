@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiFieldError adds TODO comment when tuiFieldError is used on a non-tui-error element: test.html 1`] = `
+{
+  "0. Before": "
+                <div [error]="['required'] | tuiFieldError | async"></div>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) could not migrate \`tuiFieldError\` automatically. The directive must be used on a <tui-error> element. Likely, you want to use \`tuiError\` pipe. --><div [error]="['required'] | tuiFieldError | async"></div>
+            ",
+}
+`;
+
+exports[`ng-update tuiFieldError migrates inline template in component: test.ts 1`] = `
+{
+  "0. Before": "
+                import { Component } from '@angular/core'
+                import {
+                  TuiError,
+                  TuiTextfield,
+                } from '@taiga-ui/core'
+                import { TuiFieldErrorPipe } from '@taiga-ui/kit'
+
+                @Component({
+                  template: \`
+                    <section>
+                      <tui-textfield>
+                        <input tuiTextfield formControlName="fieldA" />
+                      </tui-textfield>
+                      <tui-error formControlName="fieldA" [error]="['required'] | tuiFieldError | async" />
+
+                      <tui-textfield>
+                        <input tuiTextfield formControlName="fieldB" />
+                      </tui-textfield>
+                      <tui-error formControlName="fieldB" [error]="[] | tuiFieldError | async" />
+                    </section>
+                  \`,
+                  imports: [
+                    TuiTextfield,
+                    TuiError,
+                    TuiFieldErrorPipe,
+                  ],
+                })
+                export class DemoComponent {}
+        ",
+  "1. After": "
+                import { Component } from '@angular/core'
+                import { TuiError, TuiInput } from '@taiga-ui/core'
+
+                @Component({
+                  template: \`
+                    <section>
+                      <tui-textfield>
+                        <input tuiInput formControlName="fieldA" />
+                      </tui-textfield>
+                      <tui-error formControlName="fieldA" [order]="['required']" />
+
+                      <tui-textfield>
+                        <input tuiInput formControlName="fieldB" />
+                      </tui-textfield>
+                      <tui-error formControlName="fieldB"  />
+                    </section>
+                  \`,
+                  imports: [
+                    TuiInput,
+                    TuiError
+                  ],
+                })
+                export class DemoComponent {}
+        ",
+}
+`;
+
+exports[`ng-update tuiFieldError removes TuiFieldErrorPipe and TuiFieldErrorContentPipe from imports and replaces with TuiError: test.ts 1`] = `
+{
+  "0. Before": "
+                import { Component } from "@angular/core";
+                import { TuiFieldErrorPipe, TuiFieldErrorContentPipe } from "@taiga-ui/kit";
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiFieldErrorPipe, TuiFieldErrorContentPipe],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiError } from "@taiga-ui/core";
+
+                import { Component } from "@angular/core";
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiError],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update tuiFieldError removes TuiFieldErrorPipe from imports and remains single TuiError: test.ts 1`] = `
+{
+  "0. Before": "
+                import { TuiError } from "@taiga-ui/core";
+
+                import { Component } from "@angular/core";
+                import { TuiFieldErrorPipe } from "@taiga-ui/kit";
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiFieldErrorPipe, TuiError],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import { TuiError } from "@taiga-ui/core";
+
+                import { Component } from "@angular/core";
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiError],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update tuiFieldError removes tuiFieldError pipe and changes error attribute to order for explicit array: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-error
+                    formControlName="testValue2"
+                    [error]="['required', 'inn'] | tuiFieldError | async"
+                />
+            ",
+  "1. After": "
+                <tui-error
+                    formControlName="testValue2"
+                    [order]="['required', 'inn']"
+                />
+            ",
+}
+`;
+
+exports[`ng-update tuiFieldError removes tuiFieldError pipe and changes error attribute to order for implicit array: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-error
+                    formControlName="testValue2"
+                    [error]="order$ | async | tuiFieldError | async"
+                />
+            ",
+  "1. After": "
+                <tui-error
+                    formControlName="testValue2"
+                    [order]="order$ | async"
+                />
+            ",
+}
+`;
+
+exports[`ng-update tuiFieldError removes tuiFieldError pipe and error attribute for empty order: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-error
+                    formControlName="testValue2"
+                    [error]="[] | tuiFieldError | async"
+                />
+            ",
+  "1. After": "
+                <tui-error
+                    formControlName="testValue2"
+                    
+                />
+            ",
+}
+`;
+
+exports[`ng-update tuiFieldError renames tuiFieldErrorContent pipe to tuiError - complex: test.html 1`] = `
+{
+  "0. Before": "
+                <input
+                    placeholder="Price"
+                    [tuiHint]="
+                        [
+                            'fieldA',
+                            'fieldB'
+                        ]
+                            | tuiFieldErrorContent
+                            | someOtherPipe"
+                />
+            ",
+  "1. After": "
+                <input
+                    placeholder="Price"
+                    [tuiHint]="
+                        [
+                            'fieldA',
+                            'fieldB'
+                        ]
+                            | tuiError
+                            | someOtherPipe"
+                />
+            ",
+}
+`;
+
+exports[`ng-update tuiFieldError renames tuiFieldErrorContent pipe to tuiError: test.html 1`] = `
+{
+  "0. Before": "
+                <input [tuiHint]="[] | tuiFieldErrorContent" />
+            ",
+  "1. After": "
+                <input [tuiHint]="[] | tuiError" />
+            ",
+}
+`;

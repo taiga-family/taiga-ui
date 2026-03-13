@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewer import from @taiga-ui/kit to @taiga-ui/legacy: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPdfViewer} from '@taiga-ui/kit';
+
+                @Component({})
+                export class Test {
+                    constructor(private readonly pdfViewer: TuiPdfViewer) {}
+
+                    public show(): void {
+                        // some usage
+                    }
+                }
+        ",
+  "1. After": "import { TuiPdfViewer } from "@taiga-ui/legacy";
+
+                                @Component({})
+                export class Test {
+                    constructor(private readonly pdfViewer: TuiPdfViewer) {}
+
+                    public show(): void {
+                        // some usage
+                    }
+                }
+        ",
+}
+`;
+
+exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewerComponent import from @taiga-ui/experimental to TuiPdfViewer in @taiga-ui/layout: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPdfViewerComponent} from '@taiga-ui/experimental';
+
+                @Component({})
+                export class Test {
+                    constructor(private readonly pdfViewer: TuiPdfViewerComponent) {}
+
+                    public show(): void {
+                        // some usage
+                    }
+                }
+            ",
+  "1. After": "import { TuiPdfViewer } from "@taiga-ui/layout";
+
+                                @Component({})
+                export class Test {
+                    constructor(private readonly pdfViewer: TuiPdfViewer) {}
+
+                    public show(): void {
+                        // some usage
+                    }
+                }
+            ",
+}
+`;

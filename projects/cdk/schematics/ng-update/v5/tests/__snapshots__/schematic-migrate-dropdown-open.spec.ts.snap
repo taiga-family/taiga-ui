@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename *tuiDataList to *tuiDropdown: test.html 1`] = `
+{
+  "0. Before": "<tui-data-list-wrapper *tuiDataList [items]="items" />",
+  "1. After": "<tui-data-list-wrapper *tuiDropdown [items]="items" />",
+}
+`;
+
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename [tuiSheet] to [tuiSheetDialog]: test.html 1`] = `
+{
+  "0. Before": "<button [tuiSheet]="content">Open</button>",
+  "1. After": "<button [tuiSheetDialog]="content">Open</button>",
+}
+`;
+
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename tuiDropdownMobile to tuiDropdownSheet: test.html 1`] = `
+{
+  "0. Before": "<button tuiDropdownMobile="selector">Open</button>",
+  "1. After": "<button tuiDropdownSheet="selector">Open</button>",
+}
+`;
+
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename tuiDropdownOpen to tuiDropdownAuto: test.html 1`] = `
+{
+  "0. Before": "<button tuiDropdownOpen>Open</button>",
+  "1. After": "<button tuiDropdownAuto>Open</button>",
+}
+`;
+
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename tuiSheetOptions to tuiSheetDialogOptions: test.html 1`] = `
+{
+  "0. Before": "<button [tuiSheet]="content" tuiSheetOptions="opts">Open</button>",
+  "1. After": "<button [tuiSheetDialog]="content" tuiSheetDialogOptions="opts">Open</button>",
+}
+`;
