@@ -199,6 +199,46 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiSelectModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSelect',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetDialogOptions',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialogOptions',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialogService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
             name: 'TUI_IS_ANDROID',
             moduleSpecifier: '@taiga-ui/cdk',
         },

@@ -134,5 +134,32 @@ import { TuiAutoColorPipe } from "@taiga-ui/kit";
         );
     });
 
+    it('migrates sheet identifiers from legacy to addon-mobile', async () => {
+        const result = await migrateComponent(`
+            import {
+                TuiSheetModule,
+                TuiSheetDialogOptions,
+                TuiSheetService,
+            } from '@taiga-ui/legacy';
+
+            export class TestComponent {
+                protected readonly moduleRef = TuiSheetModule;
+                protected readonly options: TuiSheetDialogOptions = {};
+                protected readonly service = TuiSheetService;
+            }
+        `);
+
+        expect(result).toEqual(
+            `import { TuiSheetDialog, TuiSheetDialogOptions, TuiSheetDialogService } from "@taiga-ui/addon-mobile";
+
+            export class TestComponent {
+                protected readonly moduleRef = TuiSheetDialog;
+                protected readonly options: TuiSheetDialogOptions = {};
+                protected readonly service = TuiSheetDialogService;
+            }
+        `,
+        );
+    });
+
     afterEach(() => resetActiveProject());
 });
