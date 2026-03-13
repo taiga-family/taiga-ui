@@ -1,3 +1,4 @@
+import {type Path} from '@angular-devkit/core';
 import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
@@ -11,9 +12,8 @@ export function replaceAttrsInHost(
     const components = getDecorators(classes, {name: 'Component'});
 
     components.forEach((component) => {
-        const argument = component.getArguments()[0];
-        const host =
-            argument && 'getProperty' in argument && argument.getProperty('host');
+        const argument = component.getArguments()[0] as any;
+        const host = argument?.getProperty?.('host');
 
         if (host) {
             const hostObject = host.getInitializer();
