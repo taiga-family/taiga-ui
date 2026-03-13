@@ -659,4 +659,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/i18n',
         },
     },
+    {
+        from: {
+            name: 'TuiSidebar',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: [
+            {
+                name: 'TuiDrawer',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiPopup',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
 ];
