@@ -12,12 +12,12 @@ export function replaceAttrsInHost(
 
     components.forEach((component) => {
         const argument = component.getArguments()[0];
-        const host = argument.getProperty('host');
+        const host = argument?.getProperty?.('host');
 
         if (host) {
             const hostObject = host.getInitializer();
             const sourceFile = component.getSourceFile();
-            const path = sourceFile.getFilePath();
+            const path = sourceFile.getFilePath() as Path;
             const recorder = fileSystem.edit(path);
 
             replaceable.forEach(({from, to}) => {
