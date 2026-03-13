@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tui-island to tuiCardLarge handles self-closing tui-island: test.html 1`] = `
+{
+  "0. Before": "<tui-island />",
+  "1. After": "<div tuiCardLarge ></div>",
+}
+`;
+
+exports[`ng-update tui-island to tuiCardLarge handles self-closing tui-island: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiIslandDirective} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiIslandDirective],
+            })
+            export class TestComponent {}
+        ",
+  "1. After": "import { TuiCardLarge } from "@taiga-ui/layout";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiCardLarge],
+            })
+            export class TestComponent {}
+        ",
+}
+`;
+
+exports[`ng-update tui-island to tuiCardLarge removes [tuiSurface] for [tuiCardLarge]: test.html 1`] = `
+{
+  "0. Before": "<div [tuiCardLarge]="size" tuiSurface="surface"></div>",
+  "1. After": "<div [tuiCardLarge]="size" ></div>",
+}
+`;
+
+exports[`ng-update tui-island to tuiCardLarge removes [tuiSurface] for [tuiCardLarge]: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiIslandDirective} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiIslandDirective],
+            })
+            export class TestComponent {}
+        ",
+  "1. After": "import { TuiCardLarge } from "@taiga-ui/layout";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiCardLarge],
+            })
+            export class TestComponent {}
+        ",
+}
+`;
+
+exports[`ng-update tui-island to tuiCardLarge renames [tuiAppearance] to [appearance] for [tuiCardLarge]: test.html 1`] = `
+{
+  "0. Before": "<div tuiCardLarge tuiAppearance="appearance"></div>",
+  "1. After": "<div tuiCardLarge appearance="appearance"></div>",
+}
+`;
+
+exports[`ng-update tui-island to tuiCardLarge renames [tuiAppearance] to [appearance] for [tuiCardLarge]: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiIslandDirective} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiIslandDirective],
+            })
+            export class TestComponent {}
+        ",
+  "1. After": "import { TuiCardLarge } from "@taiga-ui/layout";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiCardLarge],
+            })
+            export class TestComponent {}
+        ",
+}
+`;
+
+exports[`ng-update tui-island to tuiCardLarge replaces tui-island tag and import: test.html 1`] = `
+{
+  "0. Before": "<tui-island appearance="flat">Content</tui-island>",
+  "1. After": "<div tuiCardLarge appearance="flat">Content</div>",
+}
+`;
+
+exports[`ng-update tui-island to tuiCardLarge replaces tui-island tag and import: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiIslandDirective} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiIslandDirective],
+            })
+            export class TestComponent {}
+        ",
+  "1. After": "import { TuiCardLarge } from "@taiga-ui/layout";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiCardLarge],
+            })
+            export class TestComponent {}
+        ",
+}
+`;

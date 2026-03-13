@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate @taiga-ui/kit imports to @taiga-ui/core does not affect other @taiga-ui/kit imports: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiCheckbox} from '@taiga-ui/kit';
+                import {TuiSomethingElse} from '@taiga-ui/kit';
+            ",
+  "1. After": "import { TuiCheckbox } from "@taiga-ui/core";
+
+                                import {TuiSomethingElse} from '@taiga-ui/kit';
+            ",
+}
+`;
+
+exports[`ng-update migrate @taiga-ui/kit imports to @taiga-ui/core migrates all identifiers from @taiga-ui/kit to @taiga-ui/core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiSlider, TuiSliderComponent, TuiCheckbox, TuiRadio, TuiKeySteps, tuiCheckboxOptionsProvider, TUI_FLOATING_PRECISION, TUI_CHECKBOX_OPTIONS, TUI_RADIO_OPTIONS, TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+            ",
+  "1. After": "import { TuiSlider, TuiSliderComponent, TuiCheckbox, TuiRadio, TuiKeySteps, tuiCheckboxOptionsProvider, TUI_FLOATING_PRECISION, TUI_CHECKBOX_OPTIONS, TUI_RADIO_OPTIONS, TUI_VALIDATION_ERRORS } from "@taiga-ui/core";
+            ",
+}
+`;
+
+exports[`ng-update migrate @taiga-ui/kit imports to @taiga-ui/core migrates single identifier from @taiga-ui/kit to @taiga-ui/core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiCheckbox} from '@taiga-ui/kit';
+            ",
+  "1. After": "import { TuiCheckbox } from "@taiga-ui/core";
+
+                            ",
+}
+`;

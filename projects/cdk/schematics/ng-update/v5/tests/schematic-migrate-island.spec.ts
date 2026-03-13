@@ -2,62 +2,40 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {runMigration} from '../../../utils/run-migration';
-
-const collection = join(__dirname, '../../../migration.json');
+import {createMigration} from '../../../utils/run-migration';
 
 describe('ng-update tui-island to tuiCardLarge', () => {
-    async function migrate(template: string): Promise<ReturnType<typeof runMigration>> {
-        return runMigration({
-            template,
-            collection,
-            component: `
-                import {Component} from '@angular/core';
-                import {TuiIslandDirective} from '@taiga-ui/legacy';
+    const migrate = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
+        component: `
+            import {Component} from '@angular/core';
+            import {TuiIslandDirective} from '@taiga-ui/legacy';
 
-                @Component({
-                    standalone: true,
-                    templateUrl: './test.html',
-                    imports: [TuiIslandDirective],
-                })
-                export class TestComponent {}
-            `,
-        });
-    }
-
-    it('replaces tui-island tag and import', async () => {
-        const {template, component} = await migrate(
-            '<tui-island appearance="flat">Content</tui-island>',
-        );
-
-        expect(template).toEqual('<div tuiCardLarge appearance="flat">Content</div>');
-        expect(component).toContain('from "@taiga-ui/layout"');
-        expect(component).toContain('TuiCardLarge');
-        expect(component).not.toContain('TuiIslandDirective');
-        expect(component).toContain('imports: [TuiCardLarge]');
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiIslandDirective],
+            })
+            export class TestComponent {}
+        `,
     });
 
-    it('handles self-closing tui-island', async () => {
-        const {template} = await migrate('<tui-island />');
+    it(
+        'replaces tui-island tag and import',
+        migrate({template: '<tui-island appearance="flat">Content</tui-island>'}),
+    );
 
-        expect(template).toEqual('<div tuiCardLarge ></div>');
-    });
+    it('handles self-closing tui-island', migrate({template: '<tui-island />'}));
 
-    it('renames [tuiAppearance] to [appearance] for [tuiCardLarge]', async () => {
-        const {template} = await migrate(
-            '<div tuiCardLarge tuiAppearance="appearance"></div>',
-        );
+    it(
+        'renames [tuiAppearance] to [appearance] for [tuiCardLarge]',
+        migrate({template: '<div tuiCardLarge tuiAppearance="appearance"></div>'}),
+    );
 
-        expect(template).toEqual('<div tuiCardLarge appearance="appearance"></div>');
-    });
-
-    it('removes [tuiSurface] for [tuiCardLarge]', async () => {
-        const {template} = await migrate(
-            '<div [tuiCardLarge]="size" tuiSurface="surface"></div>',
-        );
-
-        expect(template).toEqual('<div [tuiCardLarge]="size" ></div>');
-    });
+    it(
+        'removes [tuiSurface] for [tuiCardLarge]',
+        migrate({template: '<div [tuiCardLarge]="size" tuiSurface="surface"></div>'}),
+    );
 
     afterEach(() => resetActiveProject());
 });

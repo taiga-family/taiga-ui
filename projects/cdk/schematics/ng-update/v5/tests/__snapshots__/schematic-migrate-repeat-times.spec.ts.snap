@@ -1,0 +1,439 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiRepeatTimes does not touch *ngFor without tuiRepeatTimes: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes full before/after comparison with nested content: test.html 1`] = `
+{
+  "0. Before": "
+                <div class="wrapper">
+                    <ul class="list">
+                        <li *ngFor="let index of items.length | tuiRepeatTimes" class="item" [class.active]="index === selected">
+                            <span>Item #{{ index }}</span>
+                            <button (click)="select(index)">Select</button>
+                        </li>
+                    </ul>
+                </div>
+            ",
+  "1. After": "
+                <div class="wrapper">
+                    <ul class="list">
+                        @for (_ of '-'.repeat(items.length); track $index) {
+                        <li class="item" [class.active]="$index === selected">
+                            <span>Item #{{ $index }}</span>
+                            <button (click)="select($index)">Select</button>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes full before/after comparison with nested content: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes keeps @for tail params while replacing tuiRepeatTimes expression: test.html 1`] = `
+{
+  "0. Before": "@for (n of config.count | tuiRepeatTimes; track n; let isOdd = $odd) { {{n}} }",
+  "1. After": "@for (n of '-'.repeat(config.count); track n; let isOdd = $odd) { {{n}} }",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes keeps @for tail params while replacing tuiRepeatTimes expression: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates *ngFor with tuiRepeatTimes to @for: test.html 1`] = `
+{
+  "0. Before": "<div *ngFor="let index of 5 | tuiRepeatTimes">{{ index }}</div>",
+  "1. After": "@for (_ of '-'.repeat(5); track $index) {
+<div>{{ $index }}</div>
+}",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates *ngFor with tuiRepeatTimes to @for: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates @for block syntax with tuiRepeatTimes pipe: test.html 1`] = `
+{
+  "0. Before": "
+                <section class="list">
+                  @for (n of 3 | tuiRepeatTimes; track n) {    <item />  }
+                </section>
+            ",
+  "1. After": "
+                <section class="list">
+                  @for (n of '-'.repeat(3); track n) {    <item />  }
+                </section>
+            ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates @for block syntax with tuiRepeatTimes pipe: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates multiple tuiRepeatTimes in same template: test.html 1`] = `
+{
+  "0. Before": "
+                <div *ngFor="let i of 2 | tuiRepeatTimes">{{ i }}</div>
+                <span *ngFor="let j of 5 | tuiRepeatTimes">{{ j }}</span>
+            ",
+  "1. After": "
+                @for (_ of '-'.repeat(2); track $index) {
+                <div>{{ $index }}</div>
+                }
+                @for (_ of '-'.repeat(5); track $index) {
+                <span>{{ $index }}</span>
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates multiple tuiRepeatTimes in same template: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates nested inside other elements: test.html 1`] = `
+{
+  "0. Before": "
+                <ul>
+                    <li *ngFor="let idx of 3 | tuiRepeatTimes">{{ idx }}</li>
+                </ul>
+            ",
+  "1. After": "
+                <ul>
+                    @for (_ of '-'.repeat(3); track $index) {
+                    <li>{{ $index }}</li>
+                    }
+                </ul>
+            ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates nested inside other elements: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates ng-container by unwrapping: test.html 1`] = `
+{
+  "0. Before": "<ng-container *ngFor="let i of 3 | tuiRepeatTimes"><span>{{ i }}</span></ng-container>",
+  "1. After": "@for (_ of '-'.repeat(3); track $index) {<span>{{ $index }}</span>}",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates ng-container by unwrapping: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates with member expression: test.html 1`] = `
+{
+  "0. Before": "<div *ngFor="let i of config.count | tuiRepeatTimes">{{ i }}</div>",
+  "1. After": "@for (_ of '-'.repeat(config.count); track $index) {
+<div>{{ $index }}</div>
+}",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates with member expression: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates with variable expression: test.html 1`] = `
+{
+  "0. Before": "<span *ngFor="let i of count | tuiRepeatTimes">{{ i }}</span>",
+  "1. After": "@for (_ of '-'.repeat(count); track $index) {
+<span>{{ $index }}</span>
+}",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates with variable expression: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes preserves other attributes on the element: test.html 1`] = `
+{
+  "0. Before": "<div *ngFor="let i of 4 | tuiRepeatTimes" class="item" [attr.data-index]="i">{{ i }}</div>",
+  "1. After": "@for (_ of '-'.repeat(4); track $index) {
+<div class="item" [attr.data-index]="$index">{{ $index }}</div>
+}",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes preserves other attributes on the element: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes removes TuiRepeatTimesPipe import and usage: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiRepeatTimesPipe],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {}
+        ",
+}
+`;

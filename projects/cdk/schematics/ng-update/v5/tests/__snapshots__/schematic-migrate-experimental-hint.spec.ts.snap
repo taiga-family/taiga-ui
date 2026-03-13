@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update experimental hint provider removes TUI_SLIDER_OPTIONS from providers array and import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ApplicationConfig} from '@angular/core';
+                import {TUI_SLIDER_OPTIONS} from '@taiga-ui/kit';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [TUI_SLIDER_OPTIONS],
+                };
+            ",
+  "1. After": "
+                import {ApplicationConfig} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
+                export const appConfig: ApplicationConfig = {
+                    providers: [],
+                };
+            ",
+}
+`;
+
+exports[`ng-update experimental hint provider removes tuiProvideExperimentalHint() from providers array and import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ApplicationConfig} from '@angular/core';
+                import {tuiProvideExperimentalHint} from '@taiga-ui/experimental';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [tuiProvideExperimentalHint()],
+                };
+            ",
+  "1. After": "
+                import {ApplicationConfig} from '@angular/core';
+                export const appConfig: ApplicationConfig = {
+                    providers: [],
+                };
+            ",
+}
+`;
+
+exports[`ng-update experimental hint provider removes tuiSliderOptionsProvider from providers array and import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ApplicationConfig} from '@angular/core';
+                import {tuiSliderOptionsProvider} from '@taiga-ui/kit';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [tuiSliderOptionsProvider({step: 2})],
+                };
+            ",
+  "1. After": "
+                import {ApplicationConfig} from '@angular/core';
+// TODO: (Taiga UI migration) tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
+                export const appConfig: ApplicationConfig = {
+                    providers: [],
+                };
+            ",
+}
+`;

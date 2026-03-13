@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update breakpoint service adds TODO comment for unsupported constructor injection usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    constructor(
+                        private readonly breakpointService: TuiBreakpointService,
+                    ) {}
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    constructor(
+// TODO: (Taiga UI migration) TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed
+                        private readonly breakpointService: TuiBreakpointService,
+                    ) {}
+                }
+            ",
+}
+`;
+
+exports[`ng-update breakpoint service migrates TuiBreakpointService inject usage to TUI_BREAKPOINT observable wrapper: test.ts 1`] = `
+{
+  "0. Before": "
+                import {AsyncPipe, NgIf} from '@angular/common';
+                import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+                import {TuiBreakpointService, TuiButton, type TuiSizeL} from '@taiga-ui/core';
+                import {TuiBlockStatus} from '@taiga-ui/layout';
+                import {map, type Observable} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    exportAs: 'Example2',
+                    imports: [AsyncPipe, NgIf, TuiBlockStatus, TuiButton],
+                    templateUrl: './test.html',
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                })
+                export default class Example {
+                    protected readonly breakpointService = inject(TuiBreakpointService);
+
+                    protected size$: Observable<TuiSizeL> = this.breakpointService.pipe(
+                        map((key) => (key === 'mobile' ? 'm' : 'l')),
+                    );
+                }
+            ",
+  "1. After": "import { toObservable } from "@angular/core/rxjs-interop";
+
+                import {AsyncPipe, NgIf} from '@angular/common';
+                import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+                import { TuiButton, type TuiSizeL, TUI_BREAKPOINT } from '@taiga-ui/core';
+                import {TuiBlockStatus} from '@taiga-ui/layout';
+                import {map, type Observable} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    exportAs: 'Example2',
+                    imports: [AsyncPipe, NgIf, TuiBlockStatus, TuiButton],
+                    templateUrl: './test.html',
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                })
+                export default class Example {
+                    protected readonly breakpointService = toObservable(inject(TUI_BREAKPOINT));
+
+                    protected size$: Observable<TuiSizeL> = this.breakpointService.pipe(
+                        map((key) => (key === 'mobile' ? 'm' : 'l')),
+                    );
+                }
+            ",
+}
+`;
+
+exports[`ng-update breakpoint service migrates inline inject(TuiBreakpointService).pipe(...) usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+                import {map} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly s$ = inject(TuiBreakpointService).pipe(
+                        map((breakpoint) => breakpoint === 'mobile'),
+                    );
+                }
+            ",
+  "1. After": "import { toObservable } from "@angular/core/rxjs-interop";
+
+                import {Component, inject} from '@angular/core';
+                import { TUI_BREAKPOINT } from '@taiga-ui/core';
+                import {map} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly s$ = toObservable(inject(TUI_BREAKPOINT)).pipe(
+                        map((breakpoint) => breakpoint === 'mobile'),
+                    );
+                }
+            ",
+}
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] handles self-closing tui-doc-documentation tag: test.html 1`] = `
+{
+  "0. Before": "<tui-doc-documentation />",
+  "1. After": "<table tuiDocAPI />",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] replaces tui-doc-documentation tag with table and adds tuiDocAPI attribute: test.html 1`] = `
+{
+  "0. Before": "<tui-doc-documentation></tui-doc-documentation>",
+  "1. After": "<table tuiDocAPI></table>",
+}
+`;

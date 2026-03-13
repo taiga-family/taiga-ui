@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiAlertService to TuiNotificationService renames imported service and its usages: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiAlertService} from '@taiga-ui/core';
+
+                @Component({})
+                export class Test {
+                    constructor(private readonly alerts: TuiAlertService) {}
+
+                    public show(): void {
+                        this.alerts.open('Hello');
+                    }
+                }
+            ",
+  "1. After": "import { TuiNotificationService } from "@taiga-ui/core";
+
+                                @Component({})
+                export class Test {
+                    constructor(private readonly alerts: TuiNotificationService) {}
+
+                    public show(): void {
+                        this.alerts.open('Hello');
+                    }
+                }
+            ",
+}
+`;
