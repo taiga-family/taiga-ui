@@ -1,15 +1,14 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     inject,
-    Input,
     input,
     linkedSignal,
     model,
     type OnChanges,
     type OnInit,
-    Output,
+    signal,
+    type SimpleChanges,
     untracked,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -62,25 +61,25 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
-    protected month: TuiMonth = TuiMonth.currentLocal();
+    protected readonly month = signal(TuiMonth.currentLocal());
 
     protected readonly otherDateText = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(WA_IS_MOBILE);
 
-    @Input()
-    public markerHandler: TuiMarkerHandler | null = null;
-
-    @Input()
-    public items: readonly TuiDayRangePeriod[] = [];
-
     public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
     public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
+    public readonly minLength = input<TuiDayLike | null>(null);
+    public readonly maxLength = input<TuiDayLike | null>(null);
+    public readonly items = input<readonly TuiDayRangePeriod[]>([]);
+    public readonly defaultViewedMonth = input<TuiMonth>(TuiMonth.currentLocal());
+    public readonly markerHandler = input<TuiMarkerHandler | null>(null);
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
     public readonly value = model<TuiDayRange | null>(null);
+    public readonly item = model<TuiDayRangePeriod | null>(null);
 
     protected readonly currentValue = linkedSignal<
         TuiDayRange | null,
@@ -96,29 +95,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         },
     });
 
-    @Input()
-    public minLength: TuiDayLike | null = null;
-
-    @Input()
-    public maxLength: TuiDayLike | null = null;
-
-    @Input()
-    public item: TuiDayRangePeriod | null = null;
-
-    @Output()
-    public readonly itemChange = new EventEmitter<TuiDayRangePeriod | null>();
-
-    @Input()
-    public set defaultViewedMonth(month: TuiMonth) {
-        if (!this.currentValue()) {
-            this.month = month;
-        }
-    }
-
-    public get defaultViewedMonth(): TuiMonth {
-        return this.month;
-    }
-
     /**
      * @deprecated use `item`
      */
@@ -133,8 +109,14 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         this.selectedPeriod = period;
     }
 
-    public ngOnChanges(): void {
-        if (!this.currentValue()) {
+    public ngOnChanges({defaultViewedMonth}: SimpleChanges): void {
+        if (this.currentValue()) {
+            return;
+        }
+
+        if (defaultViewedMonth) {
+            this.month.set(this.defaultViewedMonth());
+        } else {
             this.initDefaultViewedMonth();
         }
     }
@@ -200,19 +182,15 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
             this.selectedActivePeriod = item;
-            this.itemChange.emit(item);
+            this.item.set(item);
             this.value.set(item.range.dayLimit(this.min(), this.max()));
         } else if (this.activePeriod !== null) {
             this.selectedActivePeriod = null;
-            this.itemChange.emit(null);
+            this.item.set(null);
             this.value.set(null);
         }
 
         this.initDefaultViewedMonth();
-    }
-
-    protected onMonthChange(month: TuiMonth): void {
-        this.month = month;
     }
 
     protected onDayClick(day: TuiDay): void {
@@ -225,7 +203,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             const range = TuiDayRange.sort(value, day);
 
             this.currentValue.set(range);
-            this.itemChange.emit(this.findItemByDayRange(range));
+            this.item.set(this.findItemByDayRange(range));
             this.value.set(range);
         } else {
             this.currentValue.set(day);
@@ -236,9 +214,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         const value = this.currentValue();
 
         return (
-            this.item ??
+            this.item() ??
             this.selectedActivePeriod ??
-            (this.items.find((item) =>
+            (this.items().find((item) =>
                 tuiNullableSame<TuiDayRange>(
                     value instanceof TuiDay ? new TuiDayRange(value, value) : value,
                     item.range,
@@ -256,17 +234,17 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         const max = this.max();
 
         if (value instanceof TuiDay) {
-            this.month = value;
+            this.month.set(value);
         } else if (value) {
-            this.month = this.items.length ? value.to : value.from;
-        } else if (max && this.month.monthSameOrAfter(max)) {
-            this.month = this.items.length ? max : max.append({month: -1});
-        } else if (min && this.month.monthSameOrBefore(min)) {
-            this.month = min;
+            this.month.set(this.items().length ? value.to : value.from);
+        } else if (max && this.month().monthSameOrAfter(max)) {
+            this.month.set(this.items().length ? max : max.append({month: -1}));
+        } else if (min && this.month().monthSameOrBefore(min)) {
+            this.month.set(min);
         }
     }
 
     private findItemByDayRange(dayRange: TuiDayRange): TuiDayRangePeriod | null {
-        return this.items.find((item) => dayRange.daySame(item.range)) ?? null;
+        return this.items().find((item) => dayRange.daySame(item.range)) ?? null;
     }
 }
