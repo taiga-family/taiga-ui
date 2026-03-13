@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.html 1`] = `
+{
+  "0. Before": "
+                <form [formGroup]="form">
+                  <tui-input-phone formControlName="value">Phone number</tui-input-phone>
+                </form>
+
+                <tui-input-phone
+                    class="b-form"
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Enter phone
+                    <input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiTextfield
+                    />
+                </tui-input-phone>
+
+                <tui-input-phone
+                    formControlName="value"
+                    tuiTextfieldSize="s"
+                    class="tui-space_bottom-2"
+                >
+                    Enter phone
+                </tui-input-phone>
+
+                <tui-input-phone
+                    class="b-form"
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Enter phone
+                    <input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-phone>
+
+                <tui-input-phone
+                    [(ngModel)]="value"
+                >
+                </tui-input-phone>
+            ",
+  "1. After": "
+                <form [formGroup]="form">
+                  <tui-textfield >
+<label tuiLabel>Phone number</label>
+
+<input tuiInputPhone formControlName="value" />
+</tui-textfield>
+                </form>
+
+                <tui-textfield
+                    class="b-form"
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Enter phone
+                    </label>
+<input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiInputPhone [formControl]="control"
+                    />
+                </tui-textfield>
+
+                <tui-textfield
+                    
+                    tuiTextfieldSize="s"
+                    class="tui-space_bottom-2"
+                >
+<label tuiLabel>
+                    Enter phone
+                </label>
+
+<input tuiInputPhone formControlName="value" />
+</tui-textfield>
+
+                <tui-textfield
+                    class="b-form"
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Enter phone
+                    </label>
+<input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiInputPhone [formControl]="control"
+                    />
+                </tui-textfield>
+
+                <tui-textfield
+                    
+                >
+                
+<input tuiInputPhone [(ngModel)]="value" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputPhoneModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputPhoneModule,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputPhoneModule,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+import { TuiInputPhone } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputPhone, TuiInput,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputPhone, TuiInput,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;
