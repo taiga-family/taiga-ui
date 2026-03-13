@@ -1,10 +1,12 @@
 import {Directive, effect, inject, input} from '@angular/core';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_HOST} from './dropdown.providers';
 
 @Directive({selector: '[tuiDropdownA11y]'})
 export class TuiDropdownA11y {
+    private readonly id = tuiGenerateId();
     private readonly host = inject(TUI_DROPDOWN_HOST);
     private readonly dropdown = inject(TuiDropdownDirective);
 
@@ -16,8 +18,9 @@ export class TuiDropdownA11y {
         const host = this.host.nativeElement;
 
         host.setAttribute('aria-expanded', String(!!dropdown));
-        host.setAttribute('aria-controls', this.dropdown.id);
+        host.setAttribute('aria-controls', this.id);
         host.setAttribute('aria-haspopup', this.tuiDropdownRole());
+        dropdown?.location.nativeElement.setAttribute('id', this.id);
         dropdown?.location.nativeElement.setAttribute('role', this.tuiDropdownRole());
 
         if (content) {

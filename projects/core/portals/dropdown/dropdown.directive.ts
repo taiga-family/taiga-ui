@@ -18,7 +18,6 @@ import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsVehicle,
     type TuiRectAccessor,
@@ -78,7 +77,6 @@ export class TuiDropdownDirective
         }
     });
 
-    public readonly id = tuiGenerateId();
     public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
@@ -125,7 +123,6 @@ export class TuiDropdownDirective
             ref.destroy();
         }
 
-        this.ref()?.location.nativeElement.setAttribute('id', this.id);
         this.drivers.forEach((driver) => driver?.next(show));
     }
 }
