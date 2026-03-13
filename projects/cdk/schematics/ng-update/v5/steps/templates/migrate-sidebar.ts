@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsInTemplateByFn} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -11,19 +12,18 @@ import {type TemplateResource} from '../../../interfaces';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
-// cspell:disable
-const SIDEBAR_ATTR = '*tuisidebar';
-const SIDEBAR_DIRECTION_ATTRS = new Set(['[tuisidebardirection]', 'tuisidebardirection']);
-const SIDEBAR_AUTO_WIDTH_ATTRS = new Set([
-    '[tuisidebarautowidth]',
-    'tuisidebarautowidth',
+const SIDEBAR_ATTR = `*${'tuiSidebar'.toLowerCase()}`;
+const SIDEBAR_DIRECTION_ATTRS = new Set([
+    'tuiSidebarDirection'.toLowerCase(),
+    `[${'tuiSidebarDirection'.toLowerCase()}]`,
 ]);
-// cspell:enable
+const SIDEBAR_AUTO_WIDTH_ATTRS = new Set([
+    'tuiSidebarAutoWidth'.toLowerCase(),
+    `[${'tuiSidebarAutoWidth'.toLowerCase()}]`,
+]);
 
-const AUTO_WIDTH_MIGRATION_COMMENT =
-    '<!-- TODO: (Taiga UI migration) tuiSidebarAutoWidth has no equivalent in TuiDrawer, adjust layout manually -->\n';
-const DYNAMIC_DIRECTION_MIGRATION_COMMENT =
-    '<!-- TODO: (Taiga UI migration) Update direction variable values: left->start, right->end -->\n';
+const AUTO_WIDTH_MIGRATION_COMMENT = `<!-- ${TODO_MARK} tuiSidebarAutoWidth has no equivalent in TuiDrawer, adjust layout manually -->\n`;
+const DYNAMIC_DIRECTION_MIGRATION_COMMENT = `<!-- ${TODO_MARK} Update direction variable values: left->start, right->end -->\n`;
 
 interface ParsedBinding {
     binding: string;
@@ -145,8 +145,7 @@ function parseBinding(value: string): ParsedBinding {
 
         if (key === 'direction') {
             direction = val;
-            // cspell:disable-next-line
-        } else if (key === 'autowidth') {
+        } else if (key === 'autoWidth'.toLowerCase()) {
             autoWidth = val;
         }
     }
