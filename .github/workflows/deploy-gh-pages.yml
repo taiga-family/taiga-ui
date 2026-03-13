@@ -33,7 +33,7 @@ jobs:
         run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
 
       - name: Replace baseHref for next
-        uses: jacobtomlinson/gha-find-replace@v3.0.5
+        uses: jacobtomlinson/gha-find-replace@3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/next/">'
@@ -41,7 +41,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v2
-        uses: jacobtomlinson/gha-find-replace@v3.0.5
+        uses: jacobtomlinson/gha-find-replace@3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v2/">'
@@ -49,7 +49,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v3
-        uses: jacobtomlinson/gha-find-replace@v3.0.5
+        uses: jacobtomlinson/gha-find-replace@3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v3/">'
