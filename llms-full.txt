@@ -2049,7 +2049,7 @@ import {TuiActionBar} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
-    protected open = signal(false);
+    protected readonly open = signal(false);
 
     protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 }
@@ -2081,7 +2081,7 @@ import {TuiActionBar} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected open = signal(false);
+    protected readonly open = signal(false);
 }
 ```
 **LESS:**
@@ -5198,7 +5198,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 export default class Example {
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected size = computed<TuiSizeL>(() =>
+    protected readonly size = computed<TuiSizeL>(() =>
         this.breakpoint() === 'mobile' ? 'm' : 'l',
     );
 }
@@ -5521,7 +5521,7 @@ A non-modal draggable sheet
 ```
 **TypeScript:**
 ```ts
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -5546,15 +5546,14 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiBottomSheet, {read: ElementRef})
-    private readonly sheet?: ElementRef<HTMLElement>;
+    private readonly sheet = viewChild(TuiBottomSheet, {read: ElementRef<HTMLElement>});
 
     protected messages = ['Check that awesome bottom sheet out!'];
     protected value = '';
 
     protected onClick(message: string): void {
         this.messages = this.messages.concat(message);
-        this.sheet?.nativeElement.scrollTo({top: 0, behavior: 'smooth'});
+        this.sheet()?.nativeElement.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     protected onSubmit(): void {
@@ -5644,7 +5643,7 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, type ElementRef, ViewChild} from '@angular/core';
+import {Component, type ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
@@ -5659,8 +5658,7 @@ import {TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    @ViewChild('buttons')
-    protected readonly button?: ElementRef<HTMLElement>;
+    protected readonly button = viewChild<ElementRef<HTMLElement>>('buttons');
 
     protected readonly stops = ['112px'] as const;
 
@@ -5669,7 +5667,7 @@ export default class Example {
         const top = Math.min(scrollTop, clientHeight - offset);
         const transform = `translate3d(0, ${-top}px, 0)`;
 
-        this.button?.nativeElement.style.setProperty('transform', transform);
+        this.button()?.nativeElement.style.setProperty('transform', transform);
     }
 }
 ```
@@ -12003,7 +12001,7 @@ export default class Example {}
 
 **TypeScript:**
 ```ts
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
@@ -12017,14 +12015,13 @@ import {TuiCompass} from '@taiga-ui/kit';
     host: {'(document:mousemove)': 'calculate($event)'},
 })
 export default class Example {
-    @ViewChild(TuiCompass, {read: ElementRef})
-    private readonly compass?: ElementRef<HTMLElement>;
+    private readonly compass = viewChild(TuiCompass, {read: ElementRef<HTMLElement>});
 
     protected degrees = 0;
 
     protected calculate(event: MouseEvent): void {
         const rect =
-            this.compass?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
+            this.compass()?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
         const y = Math.ceil(event.clientY - (rect.top + rect.height / 2));
 
@@ -14133,7 +14130,7 @@ export default class Page {
         'end',
     ];
 
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected overlay = false;
     protected direction: TuiHorizontalDirection = 'end';
 
@@ -18555,7 +18552,7 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {Component, computed, ViewChild} from '@angular/core';
+import {Component, computed, viewChild} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -18592,8 +18589,7 @@ import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    @ViewChild('filter')
-    protected readonly filter?: TuiTextfieldComponent<string>;
+    protected readonly filter = viewChild<TuiTextfieldComponent<string>>('filter');
 
     protected readonly items: string[] = Array.from({length: 3000}).map(
         (_, i) => `Item #${i}`,
@@ -18601,7 +18597,7 @@ export default class Example {
 
     protected value: string[] = [];
 
-    protected readonly filtered = computed((value = this.filter?.value()) =>
+    protected readonly filtered = computed((value = this.filter()?.value()) =>
         value
             ? this.items.filter((item) => TUI_DEFAULT_MATCHER(item, value))
             : this.items,
@@ -24260,8 +24256,8 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(0);
 
-    protected min = signal(0);
-    protected max = signal(100);
+    protected readonly min = signal(0);
+    protected readonly max = signal(100);
     protected prefix = '';
     protected postfix = '';
     protected quantum = 0;
@@ -27348,7 +27344,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected hasOverflownContent = signal<boolean | null>(null);
+    protected readonly hasOverflownContent = signal<boolean | null>(null);
     protected linesLimit = 2;
 
     protected toggle(): void {
@@ -28487,7 +28483,7 @@ tui-loader {
 ### TypeScript
 
 ```ts
-import {Component, ViewChild} from '@angular/core';
+import {Component, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -28501,8 +28497,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class Page {
-    @ViewChild('textTemplate')
-    protected readonly textTemplate: PolymorpheusContent;
+    protected readonly textTemplate = viewChild<PolymorpheusContent>('textTemplate');
 
     protected readonly routes = DemoRoute;
 
@@ -28540,7 +28535,7 @@ export default class Page {
                 return 'string';
             }
             case 'template': {
-                return this.textTemplate || '';
+                return this.textTemplate() || '';
             }
             default: {
                 return '';
@@ -29590,7 +29585,7 @@ class Portal {}
     providers: [{provide: TuiPortalService, useClass: TuiPopupService}],
 })
 export default class Example extends TuiPortals {
-    protected expanded = signal(false);
+    protected readonly expanded = signal(false);
     protected open = false;
     protected switch = false;
     protected readonly routes = DemoRoute;
@@ -30755,7 +30750,7 @@ import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
 export default class Example {
     protected static = inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
     protected count = 10;
-    protected activeIndex = signal(0);
+    protected readonly activeIndex = signal(0);
 
     protected readonly toProgress = (active: boolean): Observable<number> =>
         active && !this.static
@@ -30795,7 +30790,7 @@ export default class Example {
 ### TypeScript
 
 ```ts
-import {Component, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
@@ -30807,8 +30802,7 @@ import {TuiPager} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    @ViewChild('templateRef')
-    protected templateRef?: TemplateRef<unknown>;
+    protected readonly templateRef = viewChild<TemplateRef<unknown>>('templateRef');
 
     protected readonly examples = ['Basic', 'Icons', 'Dynamic width'];
 
@@ -30828,7 +30822,9 @@ export default class Page {
     protected selectedTemplate = this.templateVariants[0]!;
 
     protected get valueContent(): TemplateRef<unknown> | undefined {
-        return this.templateRef && this.selectedTemplate ? this.templateRef : undefined;
+        const template = this.templateRef();
+
+        return template && this.selectedTemplate ? template : undefined;
     }
 }
 ```
@@ -31690,7 +31686,7 @@ import {Popout} from './popout';
 export default class Example {
     protected readonly popout = inject(TuiPopoutService);
     protected readonly supported = !!inject(WA_DOCUMENT_PIP)?.requestWindow;
-    protected subscription = signal<Subscription | null>(null);
+    protected readonly subscription = signal<Subscription | null>(null);
 
     protected open(): void {
         this.subscription.set(
@@ -31825,7 +31821,7 @@ Preview component allows to open modal for viewing some document and to work wit
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp, TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
@@ -31844,24 +31840,25 @@ export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
     private readonly alerts = inject(TuiNotificationService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
-    @ViewChild('contentSample')
-    protected readonly contentSample?: TemplateRef<Record<string, unknown>>;
+    protected readonly contentSample =
+        viewChild<TemplateRef<Record<string, unknown>>>('contentSample');
 
     protected index = 0;
     protected length = 2;
     protected titles = ['Transaction cert.jpg', 'My face.jpg'];
 
     protected get previewContent(): PolymorpheusContent {
-        return this.index === 0 && this.contentSample
-            ? this.contentSample
+        const content = this.contentSample();
+
+        return this.index === 0 && content
+            ? content
             : 'https://avatars.githubusercontent.com/u/10106368';
     }
 
     protected show(): void {
-        this.previewService.open(this.preview || '').subscribe({
+        this.previewService.open(this.preview() || '').subscribe({
             complete: () => console.info('complete'),
         });
     }
@@ -31959,7 +31956,7 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, type TuiDialogContext} from '@taiga-ui/core';
@@ -31975,11 +31972,10 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
     protected show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview() || '').subscribe();
     }
 }
 ```
@@ -32010,7 +32006,7 @@ export default class Example {
 **TypeScript:**
 ```ts
 import {AsyncPipe} from '@angular/common';
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsPresent} from '@taiga-ui/cdk';
@@ -32037,8 +32033,7 @@ import {
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
     protected readonly items = [
         {
@@ -32073,7 +32068,7 @@ export default class Example {
     protected readonly loading$ = this.imageSrc$.pipe(map((src) => src === ''));
 
     protected show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview() || '').subscribe();
     }
 
     protected download(): void {
@@ -34562,7 +34557,7 @@ export default class Example {}
 ```
 **TypeScript:**
 ```ts
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
@@ -34577,28 +34572,29 @@ const SOME_OFFSET_CONST = 20;
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiScrollbar, {read: ElementRef})
-    private readonly scrollBar?: ElementRef<HTMLElement>;
+    private readonly scrollBar = viewChild(TuiScrollbar, {read: ElementRef<HTMLElement>});
 
     protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
-        return this.scrollBar ? this.scrollBar.nativeElement.scrollTop : 0;
+        return this.scrollBar()?.nativeElement.scrollTop ?? 0;
     }
 
     protected get scrollLeft(): number {
-        return this.scrollBar ? this.scrollBar.nativeElement.scrollLeft : 0;
+        return this.scrollBar()?.nativeElement.scrollLeft ?? 0;
     }
 
     protected onClick(): void {
-        if (!this.scrollBar) {
+        const scrollbar = this.scrollBar();
+
+        if (!scrollbar) {
             return;
         }
 
-        const {nativeElement} = this.scrollBar;
-
-        nativeElement.scrollTop =
-            nativeElement.scrollTop < SOME_OFFSET_CONST ? nativeElement.scrollHeight : 0;
+        scrollbar.nativeElement.scrollTop =
+            scrollbar.nativeElement.scrollTop < SOME_OFFSET_CONST
+                ? scrollbar.nativeElement.scrollHeight
+                : 0;
     }
 }
 ```
@@ -36491,7 +36487,7 @@ import {TuiAppBar, TuiFloatingContainer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected search = '';
 
     protected readonly items = [
@@ -37578,7 +37574,7 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -37611,8 +37607,7 @@ import {
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TemplateRef)
-    private readonly template?: TemplateRef<any>;
+    private readonly template = viewChild(TemplateRef);
 
     private readonly dialogs = inject(WA_IS_MOBILE)
         ? inject(TuiSheetDialogService)
@@ -37624,7 +37619,7 @@ export default class Example {
     protected onClick(): void {
         this.step = 1;
         this.direction = 0;
-        this.dialogs.open(this.template, {appearance: 'fullscreen'}).subscribe();
+        this.dialogs.open(this.template(), {appearance: 'fullscreen'}).subscribe();
     }
 
     protected onStep(step: number): void {
@@ -44511,7 +44506,7 @@ interface TreeNode {
     changeDetection,
 })
 export default class Example {
-    protected drag = signal<TreeNode | null>(null);
+    protected readonly drag = signal<TreeNode | null>(null);
 
     protected readonly cd = inject(ChangeDetectorRef);
 
@@ -46567,7 +46562,7 @@ export default class Example {
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
 
-    protected numberProcessor = computed(
+    protected readonly numberProcessor = computed(
         ({decimalSeparator, thousandSeparator} = this.format()) =>
             (text: string) =>
                 text.replace(decimalSeparator, '.').replaceAll(thousandSeparator, ''),
@@ -48271,7 +48266,7 @@ Directive allows to scale "stuck" sticky heading. It can also be used as service
 **TypeScript:**
 ```ts
 import {AsyncPipe} from '@angular/common';
-import {type AfterViewInit, Component, ViewChild} from '@angular/core';
+import {type AfterViewInit, Component, viewChild} from '@angular/core';
 import {outputToObservable} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -48289,19 +48284,20 @@ import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
     changeDetection,
 })
 export default class Example implements AfterViewInit {
-    @ViewChild(TuiElasticSticky)
-    protected readonly elasticSticky?: TuiElasticSticky;
+    protected readonly elasticSticky = viewChild(TuiElasticSticky);
 
     protected scale$?: Observable<number>;
 
     public ngAfterViewInit(): void {
-        if (!this.elasticSticky) {
+        const sticky = this.elasticSticky();
+
+        if (!sticky) {
             return;
         }
 
         // If we use it like that instead of (tuiElasticSticky)="onElasticSticky($event)"
         // we will not trigger unnecessary change detection when scale is less than 0.5
-        this.scale$ = outputToObservable(this.elasticSticky.tuiElasticSticky).pipe(
+        this.scale$ = outputToObservable(sticky.tuiElasticSticky).pipe(
             map((scale) => tuiClamp(scale, 0.5, 1)),
             startWith(1),
             distinctUntilChanged(),
@@ -48945,8 +48941,8 @@ export default class Example {
     private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
 
     protected value = 'I am a very long value';
-    protected range = signal([this.options.min * 16, this.options.max * 16]);
-    protected scale = computed<[number, number]>(() => [
+    protected readonly range = signal([this.options.min * 16, this.options.max * 16]);
+    protected readonly scale = computed<[number, number]>(() => [
         (this.range()[0] ?? 0) / 16,
         (this.range()[1] ?? 0) / 16,
     ]);
