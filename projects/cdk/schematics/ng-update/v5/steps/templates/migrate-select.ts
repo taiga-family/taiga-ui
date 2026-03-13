@@ -1,8 +1,8 @@
 import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {TODO_MARK} from '../../../../utils/insert-todo';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
