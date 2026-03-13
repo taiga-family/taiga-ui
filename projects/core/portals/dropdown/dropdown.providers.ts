@@ -1,4 +1,4 @@
-import {InjectionToken, type Type} from '@angular/core';
+import {type ElementRef, InjectionToken, type Type} from '@angular/core';
 
 import {TuiDropdownComponent} from './dropdown.component';
 
@@ -12,4 +12,8 @@ export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
 
 export const TUI_DROPDOWN_CONTEXT = new InjectionToken<Record<any, any>>(
     ngDevMode ? 'TUI_DROPDOWN_CONTEXT' : '',
+);
+
+export const TUI_DROPDOWN_HOST = new InjectionToken<ElementRef<Element>>(
+    ngDevMode ? 'TUI_DROPDOWN_HOST' : '',
 );
