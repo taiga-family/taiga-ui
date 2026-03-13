@@ -1,4 +1,3 @@
-import {type Path} from '@angular-devkit/core';
 import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
@@ -18,7 +17,7 @@ export function replaceAttrsInHost(
         if (host) {
             const hostObject = host.getInitializer();
             const sourceFile = component.getSourceFile();
-            const path = sourceFile.getFilePath() as Path;
+            const path = sourceFile.getFilePath() as any;
             const recorder = fileSystem.edit(path);
 
             replaceable.forEach(({from, to}) => {
