@@ -55,7 +55,7 @@ describe('TuiInputDateMultiDirective', () => {
             fixture.detectChanges();
         });
 
-        it('Date[] format with transformer inherited from InputDate', () => {
+        it('format with transformer inherited from InputDate', () => {
             expect(fixture.componentInstance.value).toEqual([
                 new Date(2026, 2, 11),
                 new Date(2026, 2, 12),
@@ -112,7 +112,7 @@ describe('TuiInputDateMultiDirective', () => {
             fixture.detectChanges();
         });
 
-        it('Date[] format with tuiInputDateMultiOptionsProvider', () => {
+        it('format with custom tuiInputDateMultiOptionsProvider', () => {
             expect(fixture.componentInstance.value).toEqual([
                 new Date(2026, 2, 11),
                 new Date(2026, 2, 12),

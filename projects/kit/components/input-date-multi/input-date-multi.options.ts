@@ -12,7 +12,7 @@ export interface TuiInputDateMultiOptions extends Omit<
     TuiInputDateOptionsNew,
     'valueTransformer'
 > {
-    readonly valueTransformer: TuiValueTransformer<TuiDay[] | null, unknown>;
+    readonly valueTransformer: TuiValueTransformer<TuiDay[] | null>;
 }
 
 export const TUI_INPUT_DATE_MULTI_OPTIONS = new InjectionToken<TuiInputDateMultiOptions>(
