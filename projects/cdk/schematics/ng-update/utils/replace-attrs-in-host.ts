@@ -12,7 +12,8 @@ export function replaceAttrsInHost(
 
     components.forEach((component) => {
         const argument = component.getArguments()[0];
-        const host = argument?.getProperty?.('host');
+        const host =
+            argument && 'getProperty' in argument && argument.getProperty('host');
 
         if (host) {
             const hostObject = host.getInitializer();
