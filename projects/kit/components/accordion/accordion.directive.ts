@@ -1,5 +1,6 @@
 import {Directive, inject, model, type OnChanges} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
@@ -17,7 +18,8 @@ import {TuiAccordionComponent} from './accordion.component';
         tuiButton: '',
         tuiAccordion: '',
         type: 'button',
-        '[class._open]': 'open()',
+        '[attr.aria-expanded]': 'open() || "false"',
+        '[attr.aria-controls]': 'id',
         '(click)': 'toggle()',
     },
 })
@@ -25,7 +27,7 @@ export class TuiAccordionDirective implements OnChanges {
     private readonly accordion = inject(TuiAccordionComponent);
 
     public readonly open = model<boolean | ''>(false, {alias: 'tuiAccordion'});
-
+    public readonly id = tuiGenerateId();
     public readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
     public readonly chevron = tuiDirectiveBinding(TuiChevron, 'rotated', this.open);
 

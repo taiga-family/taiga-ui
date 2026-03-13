@@ -10,15 +10,6 @@ import {TuiAccordion} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [
-        'Basic',
-        'Custom',
-        'Single',
-        'Eager and Lazy',
-        'Nested',
-        'Connected',
-    ];
-
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[2]!;
     protected closeOthers = true;
