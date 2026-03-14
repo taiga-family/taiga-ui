@@ -25,6 +25,7 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.htm
                 <tui-textfield  multi>
                 
 <input tuiInputDateMulti />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 
                 <tui-textfield
@@ -36,6 +37,7 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.htm
                 </label>
 
 <input tuiInputDateMulti [formControl]="control" />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 
                 <tui-textfield
@@ -48,58 +50,8 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.htm
                 </label>
 
 <input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
-            ",
-}
-`;
-
-exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.ts 1`] = `
-{
-  "0. Before": "
-                import {TuiInputDateModule} from '@taiga-ui/legacy';
-
-                @NgModule({
-                  imports: [
-                    // ...
-                    TuiInputDateModule,
-                  ],
-                  // ...
-                })
-                export class MyModule {}
-
-                @Component({
-                  standalone: true,
-                  imports: [
-                    // ...
-                    TuiInputDateModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
-                })
-                export class MyComponent {}
-            ",
-  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
-import { TuiInputDate } from "@taiga-ui/kit";
-
-                                @NgModule({
-                  imports: [
-                    // ...
-                    TuiInputDate, TuiTextfield,
-                  ],
-                  // ...
-                })
-                export class MyModule {}
-
-                @Component({
-                  standalone: true,
-                  imports: [
-                    // ...
-                    TuiInputDate, TuiTextfield,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
-                })
-                export class MyComponent {}
             ",
 }
 `;
