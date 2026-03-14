@@ -36,6 +36,7 @@ import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-sin
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateFieldError} from './templates/migrate-field-error';
+import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
@@ -116,6 +117,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateCalendarSheetSingle,
         migrateCloseable,
         migrateSidebar,
+        migrateFormatPhonePipe,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});

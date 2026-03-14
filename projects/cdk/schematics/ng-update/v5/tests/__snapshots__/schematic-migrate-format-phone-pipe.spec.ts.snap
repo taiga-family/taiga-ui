@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone inside element binding: test.html 1`] = `
+{
+  "0. Before": "<span [title]="phone | tuiFormatPhone">{{ phone | tuiFormatPhone }}</span>",
+  "1. After": "<span [title]="phone | maskito">{{ phone | maskito }}</span>",
+}
+`;
+
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe to maskito in template: test.html 1`] = `
+{
+  "0. Before": "{{ phone | tuiFormatPhone }}",
+  "1. After": "{{ phone | maskito }}",
+}
+`;
+
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code and mask arguments: test.html 1`] = `
+{
+  "0. Before": "{{ phone | tuiFormatPhone:'+1':'(###) ###-####' }}",
+  "1. After": "{{ phone | maskito:'+1':'(###) ###-####' }}",
+}
+`;
+
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code argument: test.html 1`] = `
+{
+  "0. Before": "{{ phone | tuiFormatPhone:'+1' }}",
+  "1. After": "{{ phone | maskito:'+1' }}",
+}
+`;
+
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe replaces TuiFormatPhonePipe import with MaskitoPipe: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiFormatPhonePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiFormatPhonePipe],
+                    template: '{{ phone | tuiFormatPhone }}'
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { MaskitoPipe } from "@maskito/angular";
+
+                                @Component({
+                    standalone: true,
+                    imports: [MaskitoPipe],
+                    template: '{{ phone | maskito }}'
+                })
+                export class TestComponent {}
+            ",
+}
+`;
