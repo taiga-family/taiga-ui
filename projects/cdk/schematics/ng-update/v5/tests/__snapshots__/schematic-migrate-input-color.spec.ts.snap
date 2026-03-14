@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputColorModule to TuiInputColor: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-color>
+                </tui-input-color>
+
+                <tui-input-color
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Choose a color
+                </tui-input-color>
+
+                <tui-input-color
+                    formControlName="color"
+                >
+                    Pick color
+                </tui-input-color>
+
+                <tui-input-color
+                    [(ngModel)]="value"
+                >
+                    Color
+                </tui-input-color>
+            ",
+  "1. After": "
+                <tui-textfield>
+                
+<input tuiInputColor />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Choose a color
+                </label>
+
+<input tuiInputColor [formControl]="control" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                >
+<label tuiLabel>
+                    Pick color
+                </label>
+
+<input tuiInputColor formControlName="color" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                >
+<label tuiLabel>
+                    Color
+                </label>
+
+<input tuiInputColor [(ngModel)]="value" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputColorModule to TuiInputColor: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputColorModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputColorModule],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
+import { TuiInputColor } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInputColor, TuiTextfield],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;

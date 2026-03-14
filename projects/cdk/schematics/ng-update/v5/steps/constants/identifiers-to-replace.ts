@@ -703,4 +703,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             },
         ],
     },
+    {
+        from: {
+            name: 'TuiInputColorModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputColor',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];
