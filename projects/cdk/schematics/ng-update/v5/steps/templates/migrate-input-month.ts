@@ -87,8 +87,10 @@ export function migrateInputMonth({
         if (!inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputMonth${migrationAttrs} />\n`,
+                `\n<input tuiInputMonth${migrationAttrs} />\n<tui-calendar-month *tuiDropdown />\n`,
             );
+        } else {
+            recorder.insertRight(insertOffset, '\n<tui-calendar-month *tuiDropdown />\n');
         }
 
         for (const input of inputs) {
