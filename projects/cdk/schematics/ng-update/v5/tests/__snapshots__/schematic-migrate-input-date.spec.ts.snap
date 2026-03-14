@@ -32,7 +32,7 @@ exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.html 1`] = `
                 <tui-textfield>
                 
 <input tuiInputDate />
-<tui-calendar *tuiTextfieldDropdown />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 
                 <tui-textfield
@@ -46,7 +46,7 @@ exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.html 1`] = `
                         tuiInputDate [formControl]="control"
                     />
                 
-<tui-calendar *tuiTextfieldDropdown />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 
                 <tui-textfield
@@ -57,7 +57,7 @@ exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.html 1`] = `
                 </label>
 
 <input tuiInputDate formControlName="date" />
-<tui-calendar *tuiTextfieldDropdown />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 
                 <tui-textfield
@@ -68,7 +68,7 @@ exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.html 1`] = `
                 </label>
 
 <input tuiInputDate [(ngModel)]="value" />
-<tui-calendar *tuiTextfieldDropdown />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
             ",
 }
