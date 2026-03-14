@@ -109,8 +109,10 @@ export function migrateInputDateMulti({
         if (!inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputDateMulti${migrationAttrs} />\n`,
+                `\n<input tuiInputDateMulti${migrationAttrs} />\n<tui-calendar *tuiDropdown />\n`,
             );
+        } else {
+            recorder.insertRight(insertOffset, '\n<tui-calendar *tuiDropdown />\n');
         }
 
         for (const input of inputs) {
