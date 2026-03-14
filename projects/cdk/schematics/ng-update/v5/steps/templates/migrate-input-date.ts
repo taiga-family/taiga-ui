@@ -92,13 +92,10 @@ export function migrateInputDate({
         if (!inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputDate${migrationAttrs} />\n<tui-calendar *tuiTextfieldDropdown />\n`,
+                `\n<input tuiInputDate${migrationAttrs} />\n<tui-calendar *tuiDropdown />\n`,
             );
         } else {
-            recorder.insertRight(
-                insertOffset,
-                '\n<tui-calendar *tuiTextfieldDropdown />\n',
-            );
+            recorder.insertRight(insertOffset, '\n<tui-calendar *tuiDropdown />\n');
         }
 
         for (const input of inputs) {
