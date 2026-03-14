@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date>
+                </tui-input-date>
+
+                <tui-input-date
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Choose a date
+                    <input
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-date>
+
+                <tui-input-date
+                    formControlName="date"
+                >
+                    Pick date
+                </tui-input-date>
+
+                <tui-input-date
+                    [(ngModel)]="value"
+                >
+                    Date
+                </tui-input-date>
+            ",
+  "1. After": "
+                <tui-textfield>
+                
+<input tuiInputDate />
+<tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Choose a date
+                    </label>
+<input
+                        tuiInputDate [formControl]="control"
+                    />
+                
+<tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                >
+<label tuiLabel>
+                    Pick date
+                </label>
+
+<input tuiInputDate formControlName="date" />
+<tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                >
+<label tuiLabel>
+                    Date
+                </label>
+
+<input tuiInputDate [(ngModel)]="value" />
+<tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputDateModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputDateModule],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
+import { TuiInputDate } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInputDate, TuiTextfield],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;
