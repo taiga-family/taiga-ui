@@ -713,4 +713,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiIsoToCountryCodePipe',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'getCountryCallingCode',
+            moduleSpecifier: 'libphonenumber-js/core',
+        },
+    },
 ];

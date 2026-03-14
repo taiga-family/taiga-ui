@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode replaces TuiIsoToCountryCodePipe import with getCountryCallingCode: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiIsoToCountryCodePipe],
+                    template: '{{ isoCode | tuiIsoToCountryCode }}'
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { getCountryCallingCode } from "libphonenumber-js/core";
+
+                                @Component({
+                    standalone: true,
+                    imports: [getCountryCallingCode],
+                    template: '{{ isoCode | tuiIsoToCountryCode }}'
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode replaces TuiIsoToCountryCodePipe used programmatically: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @Injectable()
+                export class TestService {
+                    private readonly pipe = new TuiIsoToCountryCodePipe(countriesMasks);
+                }
+            ",
+  "1. After": "import { getCountryCallingCode } from "libphonenumber-js/core";
+
+                                @Injectable()
+                export class TestService {
+                    private readonly pipe = new getCountryCallingCode(countriesMasks);
+                }
+            ",
+}
+`;
