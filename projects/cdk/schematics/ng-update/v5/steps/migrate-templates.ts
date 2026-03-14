@@ -47,6 +47,7 @@ import {migrateInputPhoneInternational} from './templates/migrate-input-phone-in
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
+import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
@@ -103,6 +104,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputYear,
         migrateInputPhone,
         migrateInputDateRange,
+        migrateMultiSelect,
         migrateSelect,
         migrateAccordionItem,
         migrateAvatarToDirective,
