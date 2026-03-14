@@ -36,6 +36,7 @@ import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateInputDate} from './templates/migrate-input-date';
+import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
 import {migrateInputMonth} from './templates/migrate-input-month';
 import {migrateInputPassword} from './templates/migrate-input-password';
@@ -94,6 +95,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputDate,
         migrateInputTime,
         migrateInputPhoneInternational,
+        migrateInputDateMulti,
         migrateInputYear,
         migrateInputPhone,
         migrateInputDateRange,

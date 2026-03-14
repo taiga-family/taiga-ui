@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date multiple>
+                </tui-input-date>
+
+                <tui-input-date
+                    multiple
+                    [formControl]="control"
+                >
+                    Choose dates
+                </tui-input-date>
+
+                <tui-input-date
+                    multiple
+                    formControlName="dates"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Selected dates
+                </tui-input-date>
+            ",
+  "1. After": "
+                <tui-textfield  multi>
+                
+<input tuiInputDateMulti />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Choose dates
+                </label>
+
+<input tuiInputDateMulti [formControl]="control" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    
+                    [tuiTextfieldCleaner]="true"
+                 multi>
+<label tuiLabel>
+                    Selected dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputDateModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputDateModule,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputDateModule,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
+import { TuiInputDate } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputDate, TuiTextfield,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputDate, TuiTextfield,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;
