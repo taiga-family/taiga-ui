@@ -675,4 +675,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             },
         ],
     },
+    {
+        from: {
+            name: 'TuiInputPasswordModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiPassword',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiTextfield',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
 ];
