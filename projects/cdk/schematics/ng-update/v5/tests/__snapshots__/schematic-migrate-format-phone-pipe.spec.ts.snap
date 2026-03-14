@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone inside element binding: test.html 1`] = `
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone inside element binding without adding TODO for no-arg usage: test.html 1`] = `
 {
   "0. Before": "<span [title]="phone | tuiFormatPhone">{{ phone | tuiFormatPhone }}</span>",
   "1. After": "<span [title]="phone | maskito">{{ phone | maskito }}</span>",
@@ -14,17 +14,19 @@ exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPh
 }
 `;
 
-exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code and mask arguments: test.html 1`] = `
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code and mask arguments and adds TODO: test.html 1`] = `
 {
   "0. Before": "{{ phone | tuiFormatPhone:'+1':'(###) ###-####' }}",
-  "1. After": "{{ phone | maskito:'+1':'(###) ###-####' }}",
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone'. See: https://taiga-ui.dev/components/input-phone-international -->
+{{ phone | maskito:'+1':'(###) ###-####' }}",
 }
 `;
 
-exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code argument: test.html 1`] = `
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code argument and adds TODO: test.html 1`] = `
 {
   "0. Before": "{{ phone | tuiFormatPhone:'+1' }}",
-  "1. After": "{{ phone | maskito:'+1' }}",
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone'. See: https://taiga-ui.dev/components/input-phone-international -->
+{{ phone | maskito:'+1' }}",
 }
 `;
 

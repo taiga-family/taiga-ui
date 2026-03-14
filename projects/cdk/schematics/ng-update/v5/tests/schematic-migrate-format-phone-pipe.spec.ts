@@ -15,17 +15,17 @@ describe('ng-update migrate TuiFormatPhonePipe to MaskitoPipe', () => {
     );
 
     it(
-        'renames tuiFormatPhone pipe with country code argument',
+        'renames tuiFormatPhone pipe with country code argument and adds TODO',
         migrate({template: "{{ phone | tuiFormatPhone:'+1' }}"}),
     );
 
     it(
-        'renames tuiFormatPhone pipe with country code and mask arguments',
+        'renames tuiFormatPhone pipe with country code and mask arguments and adds TODO',
         migrate({template: "{{ phone | tuiFormatPhone:'+1':'(###) ###-####' }}"}),
     );
 
     it(
-        'renames tuiFormatPhone inside element binding',
+        'renames tuiFormatPhone inside element binding without adding TODO for no-arg usage',
         migrate({
             template:
                 '<span [title]="phone | tuiFormatPhone">{{ phone | tuiFormatPhone }}</span>',
