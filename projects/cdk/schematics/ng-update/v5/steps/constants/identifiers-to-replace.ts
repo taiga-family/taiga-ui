@@ -675,4 +675,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             },
         ],
     },
+    {
+        from: {
+            name: 'TuiToCountryCodePipe',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'maskitoGetCountryFromNumber',
+            moduleSpecifier: '@maskito/phone',
+        },
+    },
 ];
