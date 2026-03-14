@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag>
+                </tui-input-tag>
+
+                <tui-input-tag
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Enter tags
+                </tui-input-tag>
+
+                <tui-input-tag
+                    formControlName="tags"
+                >
+                    My tags
+                </tui-input-tag>
+
+                <tui-input-tag
+                    [(ngModel)]="value"
+                >
+                    Tags
+                </tui-input-tag>
+            ",
+  "1. After": "
+                <tui-textfield multi>
+                
+<input tuiInputChip />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    [tuiTextfieldCleaner]="true"
+                 multi>
+<label tuiLabel>
+                    Enter tags
+                </label>
+
+<input tuiInputChip [formControl]="control" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                 multi>
+<label tuiLabel>
+                    My tags
+                </label>
+
+<input tuiInputChip formControlName="tags" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                 multi>
+<label tuiLabel>
+                    Tags
+                </label>
+
+<input tuiInputChip [(ngModel)]="value" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputTagModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputTagModule],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
+import { TuiInputChip } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInputChip, TuiTextfield],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;
