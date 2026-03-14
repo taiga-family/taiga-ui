@@ -87,13 +87,10 @@ export function migrateInputDateRange({
         if (!inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputDateRange${migrationAttrs} />\n<tui-calendar-range *tuiTextfieldDropdown />\n`,
+                `\n<input tuiInputDateRange${migrationAttrs} />\n<tui-calendar-range *tuiDropdown />\n`,
             );
         } else {
-            recorder.insertRight(
-                insertOffset,
-                '\n<tui-calendar-range *tuiTextfieldDropdown />\n',
-            );
+            recorder.insertRight(insertOffset, '\n<tui-calendar-range *tuiDropdown />\n');
         }
 
         for (const input of inputs) {
