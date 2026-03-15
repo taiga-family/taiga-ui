@@ -111,5 +111,21 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'moves TuiStatus from legacy to kit',
+        migrate({
+            component: `
+                import {TuiStatus} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiStatus],
+                    template: '<span tuiStatus="var(--tui-status-positive)">OK</span>',
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

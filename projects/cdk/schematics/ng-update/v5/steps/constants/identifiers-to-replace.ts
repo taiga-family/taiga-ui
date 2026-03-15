@@ -675,4 +675,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             },
         ],
     },
+    {
+        from: {name: 'TuiStatus', moduleSpecifier: '@taiga-ui/legacy'},
+        to: {name: 'TuiStatus', moduleSpecifier: '@taiga-ui/kit'},
+    },
 ];

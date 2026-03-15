@@ -74,6 +74,30 @@ exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: tes
 }
 `;
 
+exports[`ng-update identifiers migration moves TuiStatus from legacy to kit: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiStatus} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiStatus],
+                    template: '<span tuiStatus="var(--tui-status-positive)">OK</span>',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiStatus } from "@taiga-ui/kit";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiStatus],
+                    template: '<span tuiStatus="var(--tui-status-positive)">OK</span>',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit: test.ts 1`] = `
 {
   "0. Before": "
