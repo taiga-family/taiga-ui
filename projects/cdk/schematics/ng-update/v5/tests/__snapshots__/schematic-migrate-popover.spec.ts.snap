@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiPopover migration TuiPopover → TuiPortalContext renames TuiPopover type to TuiPortalContext: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {Component} from '@angular/core';
+                    import {type TuiPopover} from '@taiga-ui/cdk';
+                    import {injectContext} from '@taiga-ui/polymorpheus';
+
+                    interface PromptOptions {
+                        heading: string;
+                    }
+
+                    @Component({template: ''})
+                    export class PromptComponent {
+                        protected readonly context = injectContext<TuiPopover<PromptOptions, boolean>>();
+                    }
+                ",
+  "1. After": "import { TuiPortalContext } from "@taiga-ui/cdk";
+
+                    import {Component} from '@angular/core';
+                    import {injectContext} from '@taiga-ui/polymorpheus';
+
+                    interface PromptOptions {
+                        heading: string;
+                    }
+
+                    @Component({template: ''})
+                    export class PromptComponent {
+                        protected readonly context = injectContext<TuiPortalContext<PromptOptions, boolean>>();
+                    }
+                ",
+}
+`;
+
+exports[`ng-update TuiPopover migration TuiPopover → TuiPortalContext renames TuiPopover used as type annotation: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {type TuiPopover} from '@taiga-ui/cdk';
+
+                    export function openDialog(context: TuiPopover<{label: string}, string>): void {}
+                ",
+  "1. After": "import { TuiPortalContext } from "@taiga-ui/cdk";
+
+                                        export function openDialog(context: TuiPortalContext<{label: string}, string>): void {}
+                ",
+}
+`;
+
+exports[`ng-update TuiPopover migration TuiPopoverContext → warning adds TODO comment for TuiPopoverContext (generic params changed): test.ts 1`] = `
+{
+  "0. Before": "
+                    import {Component} from '@angular/core';
+                    import {type TuiPopoverContext} from '@taiga-ui/cdk';
+                    import {injectContext} from '@taiga-ui/polymorpheus';
+
+                    @Component({template: ''})
+                    export class DialogComponent {
+                        protected readonly context = injectContext<TuiPopoverContext<boolean>>();
+                    }
+                ",
+  "1. After": "
+                    import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.
+// Before: injectContext<TuiPopoverContext<boolean>>()
+// After:  injectContext<TuiPortalContext<MyOptions, boolean>>()
+                    import {type TuiPopoverContext} from '@taiga-ui/cdk';
+                    import {injectContext} from '@taiga-ui/polymorpheus';
+
+                    @Component({template: ''})
+                    export class DialogComponent {
+                        protected readonly context = injectContext<TuiPopoverContext<boolean>>();
+                    }
+                ",
+}
+`;
+
+exports[`ng-update TuiPopover migration TuiPopoverDirective → TuiPortalDirective + warning renames TuiPopoverDirective to TuiPortalDirective and adds TODO comment: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {Directive} from '@angular/core';
+                    import {TuiPopoverDirective, TuiPopoverService} from '@taiga-ui/cdk';
+
+                    import {CustomDialogService} from './custom-dialog.service';
+
+                    @Directive({
+                        selector: 'ng-template[tuiCustomDialog]',
+                        inputs: ['open: tuiCustomDialog', 'options: tuiCustomDialogOptions'],
+                        outputs: ['openChange: tuiCustomDialogChange'],
+                        providers: [
+                            {provide: TuiPopoverService, useExisting: CustomDialogService},
+                        ],
+                    })
+                    export class CustomDialogDirective<T> extends TuiPopoverDirective<T> {}
+                ",
+  "1. After": "
+                    import {Directive} from '@angular/core';
+// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
+// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}
+// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }
+// See https://taiga-ui.dev/cdk/portal
+// TODO: (Taiga UI migration) TuiPopoverDirective → TuiPortalDirective: do not extend; use hostDirectives + tuiAsPortal() instead.
+// Before: @Directive({inputs:[...], outputs:[...], providers:[{provide:TuiPopoverService,useExisting:MyService}]}) class MyDirective<T> extends TuiPopoverDirective<T> {}
+// After:  @Directive({providers:[tuiAsPortal(MyService)], hostDirectives:[{directive:TuiPortalDirective,inputs:[...],outputs:[...]}]}) class MyDirective {}
+// See https://taiga-ui.dev/cdk/portal
+                    import { TuiPortal, TuiPortalDirective } from '@taiga-ui/cdk';
+
+                    import {CustomDialogService} from './custom-dialog.service';
+
+                    @Directive({
+                        selector: 'ng-template[tuiCustomDialog]',
+                        inputs: ['open: tuiCustomDialog', 'options: tuiCustomDialogOptions'],
+                        outputs: ['openChange: tuiCustomDialogChange'],
+                        providers: [
+                            {provide: TuiPortal, useExisting: CustomDialogService},
+                        ],
+                    })
+                    export class CustomDialogDirective<T> extends TuiPortalDirective<T> {}
+                ",
+}
+`;
+
+exports[`ng-update TuiPopover migration TuiPopoverService → TuiPortal + warning renames TuiPopoverService in inject() call: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {inject} from '@angular/core';
+                    import {TuiPopoverService} from '@taiga-ui/cdk';
+
+                    export const service = inject(TuiPopoverService);
+                ",
+  "1. After": "import { TuiPortal } from "@taiga-ui/cdk";
+
+                    import {inject} from '@angular/core';
+// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
+// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}
+// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }
+// See https://taiga-ui.dev/cdk/portal
+                    export const service = inject(TuiPortal);
+                ",
+}
+`;
+
+exports[`ng-update TuiPopover migration TuiPopoverService → TuiPortal + warning renames TuiPopoverService to TuiPortal and adds TODO comment: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {inject, Injectable} from '@angular/core';
+                    import {TuiPopoverService} from '@taiga-ui/cdk';
+                    import {TUI_DIALOGS} from '@taiga-ui/core';
+
+                    import {PromptComponent} from './prompt.component';
+                    import {type PromptOptions} from './prompt-options';
+
+                    @Injectable({
+                        providedIn: 'root',
+                        useFactory: () =>
+                            new PromptService(TUI_DIALOGS, PromptComponent, {heading: 'Are you sure?'}),
+                    })
+                    export class PromptService extends TuiPopoverService<PromptOptions, boolean> {}
+                ",
+  "1. After": "import { TuiPortal } from "@taiga-ui/cdk";
+
+                    import {inject, Injectable} from '@angular/core';
+// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
+// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}
+// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }
+// See https://taiga-ui.dev/cdk/portal
+                    import {TUI_DIALOGS} from '@taiga-ui/core';
+
+                    import {PromptComponent} from './prompt.component';
+                    import {type PromptOptions} from './prompt-options';
+
+                    @Injectable({
+                        providedIn: 'root',
+                        useFactory: () =>
+                            new PromptService(TUI_DIALOGS, PromptComponent, {heading: 'Are you sure?'}),
+                    })
+                    export class PromptService extends TuiPortal<PromptOptions, boolean> {}
+                ",
+}
+`;
+
+exports[`ng-update TuiPopover migration combined usage migrates all popover identifiers in one file: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {inject, Injectable} from '@angular/core';
+                    import {
+                        type TuiPopover,
+                        TuiPopoverDirective,
+                        TuiPopoverService,
+                        tuiAsPopover,
+                    } from '@taiga-ui/cdk';
+                    import {injectContext} from '@taiga-ui/polymorpheus';
+
+                    interface MyOptions {
+                        label: string;
+                    }
+
+                    @Injectable({providedIn: 'root'})
+                    export class MyService extends TuiPopoverService<MyOptions, string> {}
+
+                    export function getContext(): TuiPopover<MyOptions, string> {
+                        return injectContext<TuiPopover<MyOptions, string>>();
+                    }
+
+                    export const providers = [tuiAsPopover(MyService)];
+                ",
+  "1. After": "
+                    import {inject, Injectable} from '@angular/core';
+                    import { TuiPortalContext, TuiPortal, TuiPortalDirective, tuiAsPortal } from '@taiga-ui/cdk';
+                    import {injectContext} from '@taiga-ui/polymorpheus';
+
+                    interface MyOptions {
+                        label: string;
+                    }
+
+                    @Injectable({providedIn: 'root'})
+                    export class MyService extends TuiPortal<MyOptions, string> {}
+
+                    export function getContext(): TuiPortalContext<MyOptions, string> {
+                        return injectContext<TuiPortalContext<MyOptions, string>>();
+                    }
+
+                    export const providers = [tuiAsPortal(MyService)];
+                ",
+}
+`;
+
+exports[`ng-update TuiPopover migration tuiAsPopover → tuiAsPortal renames tuiAsPopover to tuiAsPortal: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {Directive} from '@angular/core';
+                    import {tuiAsPopover} from '@taiga-ui/cdk';
+
+                    import {CustomDialogService} from './custom-dialog.service';
+
+                    @Directive({
+                        selector: 'ng-template[tuiCustomDialog]',
+                        providers: [tuiAsPopover(CustomDialogService)],
+                    })
+                    export class CustomDialog {}
+                ",
+  "1. After": "import { tuiAsPortal } from "@taiga-ui/cdk";
+
+                    import {Directive} from '@angular/core';
+                    import {CustomDialogService} from './custom-dialog.service';
+
+                    @Directive({
+                        selector: 'ng-template[tuiCustomDialog]',
+                        providers: [tuiAsPortal(CustomDialogService)],
+                    })
+                    export class CustomDialog {}
+                ",
+}
+`;
