@@ -55,6 +55,7 @@ import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
+import {migrateTextarea} from './templates/migrate-textarea';
 
 export function getAction<T>({
     action,
@@ -124,6 +125,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateSidebar,
         migrateFormatPhonePipe,
         migrateInput,
+        migrateTextarea,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
