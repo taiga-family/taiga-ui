@@ -77,7 +77,8 @@ export class TestComponent {}
     it('removes expandable="false" and maps static rows to max', async () => {
         const {template} = await runMigration({
             collection,
-            template: `<tui-textarea formControlName="value" expandable="false" rows="5">Text</tui-textarea>`,
+            template:
+                '<tui-textarea formControlName="value" expandable="false" rows="5">Text</tui-textarea>',
         });
 
         expect(template).not.toContain('<textarea expandable');
@@ -88,7 +89,7 @@ export class TestComponent {}
     it('handles tui-textarea without text content', async () => {
         const {template} = await runMigration({
             collection,
-            template: `<tui-textarea formControlName="value"></tui-textarea>`,
+            template: '<tui-textarea formControlName="value"></tui-textarea>',
         });
 
         expect(template).toContain(

@@ -34,18 +34,18 @@ const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase(
  * Everything else goes to the inner <textarea>.
  */
 const TEXTFIELD_WRAPPER_ATTRS = new Set([
-    '[tuiTextfieldAppearance]'.toLowerCase(),
-    '[tuiTextfieldSize]'.toLowerCase(),
-    'tuiTextfieldAppearance'.toLowerCase(),
-    'tuiTextfieldSize'.toLowerCase(),
-    '[tuiTextfieldCleaner]'.toLowerCase(),
-    'tuiTextfieldCleaner'.toLowerCase(),
-    '[tuiHintContent]'.toLowerCase(),
-    'tuiHintContent'.toLowerCase(),
-    '[tuiHintDirection]'.toLowerCase(),
-    'tuiHintDirection'.toLowerCase(),
     '[tuiHintAppearance]'.toLowerCase(),
+    '[tuiHintContent]'.toLowerCase(),
+    '[tuiHintDirection]'.toLowerCase(),
+    '[tuiTextfieldAppearance]'.toLowerCase(),
+    '[tuiTextfieldCleaner]'.toLowerCase(),
+    '[tuiTextfieldSize]'.toLowerCase(),
     'tuiHintAppearance'.toLowerCase(),
+    'tuiHintContent'.toLowerCase(),
+    'tuiHintDirection'.toLowerCase(),
+    'tuiTextfieldAppearance'.toLowerCase(),
+    'tuiTextfieldCleaner'.toLowerCase(),
+    'tuiTextfieldSize'.toLowerCase(),
 ]);
 
 /**
@@ -245,8 +245,8 @@ function buildTodoComment(ctx: MigrationContext): string {
 }
 
 const LEGACY_TEXTAREA_ATTRS = new Set([
-    'tuiTextfieldLegacy'.toLowerCase(),
     'tuiTextfield'.toLowerCase(),
+    'tuiTextfieldLegacy'.toLowerCase(),
 ]);
 
 function buildInnerContent(
@@ -326,7 +326,7 @@ function migrateInnerTextarea(
         const relStart = legacyAttrLoc.startOffset - innerLoc.startTag.startOffset;
         const relEnd = legacyAttrLoc.endOffset - innerLoc.startTag.startOffset;
 
-        startTag = startTag.slice(0, relStart) + 'tuiTextarea' + startTag.slice(relEnd);
+        startTag = `${startTag.slice(0, relStart)}tuiTextarea${startTag.slice(relEnd)}`;
     }
 
     // Append form control / other attrs from the outer <tui-textarea> before the closing >
@@ -368,8 +368,6 @@ function getPlaceholderText(element: Element): string {
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
@@ -380,6 +378,8 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         default:
             return name;
     }
