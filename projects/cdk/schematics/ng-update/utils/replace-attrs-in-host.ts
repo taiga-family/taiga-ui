@@ -1,6 +1,6 @@
 import {normalize} from '@angular-devkit/core';
 import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
-import {SyntaxKind} from 'ts-morph';
+import {Node, SyntaxKind} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../constants';
 
@@ -38,7 +38,7 @@ export function replaceAttrsInHost(
                         initializer.getProperty(`'${from}'`) ||
                         initializer.getProperty(`"${from}"`);
 
-                    if (oldProperty) {
+                    if (Node.isPropertyAssignment(oldProperty)) {
                         const nameNode = oldProperty.getNameNode();
                         const start = nameNode.getStart();
                         const width = nameNode.getWidth();
