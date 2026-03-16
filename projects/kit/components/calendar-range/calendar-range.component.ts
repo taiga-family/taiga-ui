@@ -24,7 +24,6 @@ import {
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components';
 import {
     TuiCalendar,
     tuiCalendarSheetOptionsProvider,
@@ -32,6 +31,7 @@ import {
 } from '@taiga-ui/core/components/calendar';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TUI_COMMON_ICONS, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
