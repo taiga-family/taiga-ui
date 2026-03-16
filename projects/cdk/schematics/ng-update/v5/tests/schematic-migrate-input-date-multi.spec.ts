@@ -57,5 +57,67 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'moves [min] and [max] to <input tuiInputDateMulti>',
+        migrate({
+            template: `
+<tui-input-date
+    multiple
+    [min]="minDate"
+    [max]="maxDate"
+    formControlName="dates"
+>
+    Dates
+</tui-input-date>`,
+        }),
+    );
+
+    it(
+        'moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>',
+        migrate({
+            template: `
+<tui-input-date
+    multiple
+    [disabledItemHandler]="disabledHandler"
+    [markerHandler]="markerHandler"
+    formControlName="dates"
+>
+    Dates
+</tui-input-date>`,
+        }),
+    );
+
+    it(
+        'adds TODO for tag-like attrs ([rows], [tagValidator], [search], [defaultActiveYearMonth])',
+        migrate({
+            template: `
+<tui-input-date
+    multiple
+    [rows]="2"
+    [tagValidator]="myValidator"
+    [(search)]="searchValue"
+    [defaultActiveYearMonth]="initialMonth"
+    formControlName="dates"
+>
+    Dates
+</tui-input-date>`,
+        }),
+    );
+
+    it(
+        'silently removes [editable] and [inputHidden]',
+        migrate({
+            template: `
+<tui-input-date
+    multiple
+    [editable]="false"
+    [inputHidden]="true"
+    formControlName="dates"
+>
+    Dates
+</tui-input-date>`,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
