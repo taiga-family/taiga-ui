@@ -21,12 +21,12 @@ const DOCS_LINK = 'https://taiga-ui.dev/components/input-date-range';
 
 /** Attrs that move from <tui-input-date-range> to <input tuiInputDateRange> (same name in v5). */
 const INPUT_ATTRS = new Set([
-    '[min]'.toLowerCase(),
     '[max]'.toLowerCase(),
-    'min'.toLowerCase(),
-    'max'.toLowerCase(),
-    '[minLength]'.toLowerCase(),
     '[maxLength]'.toLowerCase(),
+    '[min]'.toLowerCase(),
+    '[minLength]'.toLowerCase(),
+    'max'.toLowerCase(),
+    'min'.toLowerCase(),
 ]);
 
 /** Attrs that move to <tui-calendar-range *tuiDropdown> (same name in v5). */
@@ -37,8 +37,8 @@ const CALENDAR_ATTRS = new Set([
 
 /** Attrs with no v5 equivalent — removed with a TODO. */
 const NO_EQUIVALENT_ATTRS = new Set([
-    '[items]'.toLowerCase(),
     '[defaultViewedMonth]'.toLowerCase(),
+    '[items]'.toLowerCase(),
     'defaultViewedMonth'.toLowerCase(),
 ]);
 
@@ -176,10 +176,12 @@ export function migrateInputDateRange({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[maxLength]'.toLowerCase():
+            return '[maxLength]';
+        case '[minLength]'.toLowerCase():
+            return '[minLength]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case 'formControl'.toLowerCase():
@@ -188,10 +190,8 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
-        case '[minLength]'.toLowerCase():
-            return '[minLength]';
-        case '[maxLength]'.toLowerCase():
-            return '[maxLength]';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         default:
             return name;
     }
