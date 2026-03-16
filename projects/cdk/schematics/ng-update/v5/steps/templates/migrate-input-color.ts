@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -15,6 +16,13 @@ type TextNode = DefaultTreeAdapterTypes.TextNode;
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
+
+const DOCS_LINK = 'https://taiga-ui.dev/components/input-color';
+
+/**
+ * Attrs that have no direct v5 equivalent and should be removed with a TODO.
+ */
+const NO_EQUIVALENT_ATTRS = new Set(['[colors]'.toLowerCase(), 'colors'.toLowerCase()]);
 
 export function migrateInputColor({
     resource,
@@ -41,11 +49,15 @@ export function migrateInputColor({
             templateOffset,
         );
 
-        const attrs = [...element.attrs].filter((attr) =>
+        const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
         );
 
-        for (const attr of attrs) {
+        const noEquivalentAttrs = [...element.attrs].filter((attr) =>
+            NO_EQUIVALENT_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        for (const attr of [...controlAttrs, ...noEquivalentAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -68,10 +80,21 @@ export function migrateInputColor({
             recorder.insertRight(labelTextEnd, '</label>\n');
         }
 
+        if (noEquivalentAttrs.length > 0) {
+            const todoComment = [
+                `<!-- ${TODO_MARK} tui-input-color migration (see ${DOCS_LINK}):`,
+                `     - [colors]: removed in v5. The color palette is no longer part of the input.`,
+                `       Use a separate <tui-color-picker> component if a palette is needed. -->`,
+            ].join('\n');
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(insertAt, `${todoComment}\n`);
+        }
+
         const insertOffset =
             (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
 
-        const migrationAttrs = attrs.reduce((result, attr) => {
+        const migrationAttrs = controlAttrs.reduce((result, attr) => {
             const name = attr.name
                 .replace(/ngmodel/i, 'ngModel')
                 .replace(/formcontrol/i, 'formControl')

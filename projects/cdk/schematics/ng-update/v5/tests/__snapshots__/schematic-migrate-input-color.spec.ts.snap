@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update adds TODO for [colors] and removes it from wrapper: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-color
+    [colors]="myPalette"
+    formControlName="color"
+>
+    Pick color
+</tui-input-color>",
+  "1. After": "
+<!-- TODO: (Taiga UI migration) tui-input-color migration (see https://taiga-ui.dev/components/input-color):
+     - [colors]: removed in v5. The color palette is no longer part of the input.
+       Use a separate <tui-color-picker> component if a palette is needed. -->
+<tui-textfield
+    
+    
+>
+<label tuiLabel>
+    Pick color
+</label>
+
+<input tuiInputColor formControlName="color" />
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update migrate TuiInputColorModule to TuiInputColor: test.html 1`] = `
 {
   "0. Before": "

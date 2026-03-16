@@ -48,5 +48,18 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'adds TODO for [colors] and removes it from wrapper',
+        migrate({
+            template: `
+<tui-input-color
+    [colors]="myPalette"
+    formControlName="color"
+>
+    Pick color
+</tui-input-color>`,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
