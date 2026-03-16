@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update adds TODO for [items] and [defaultActiveYearMonth]: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-date
+    [items]="namedDays"
+    [defaultActiveYearMonth]="initialMonth"
+    formControlName="date"
+>
+    Date
+</tui-input-date>",
+  "1. After": "
+<!-- TODO: (Taiga UI migration) tui-input-date migration (see https://taiga-ui.dev/components/input-date):
+     - [items], [defaultactiveyearmonth]: no direct equivalent in v5. Remove and update component logic. -->
+<tui-textfield
+    
+    
+    
+>
+<label tuiLabel>
+    Date
+</label>
+
+<input tuiInputDate formControlName="date" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.html 1`] = `
 {
   "0. Before": "
@@ -96,5 +124,57 @@ import { TuiInputDate } from "@taiga-ui/kit";
                 })
                 export class MyComponent {}
             ",
+}
+`;
+
+exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-date
+    [disabledItemHandler]="disabledHandler"
+    [markerHandler]="markerHandler"
+    formControlName="date"
+>
+    Date
+</tui-input-date>",
+  "1. After": "
+<tui-textfield
+    
+    
+    
+>
+<label tuiLabel>
+    Date
+</label>
+
+<input tuiInputDate formControlName="date" />
+<tui-calendar *tuiDropdown [disableditemhandler]="disabledHandler" [markerhandler]="markerHandler" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [min] and [max] to <input tuiInputDate>: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-date
+    [min]="minDate"
+    [max]="maxDate"
+    formControlName="date"
+>
+    Date
+</tui-input-date>",
+  "1. After": "
+<tui-textfield
+    
+    
+    
+>
+<label tuiLabel>
+    Date
+</label>
+
+<input tuiInputDate formControlName="date" [min]="minDate" [max]="maxDate" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
 }
 `;

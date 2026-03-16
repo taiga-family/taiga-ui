@@ -51,5 +51,47 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'moves [min] and [max] to <input tuiInputDate>',
+        migrate({
+            template: `
+<tui-input-date
+    [min]="minDate"
+    [max]="maxDate"
+    formControlName="date"
+>
+    Date
+</tui-input-date>`,
+        }),
+    );
+
+    it(
+        'moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>',
+        migrate({
+            template: `
+<tui-input-date
+    [disabledItemHandler]="disabledHandler"
+    [markerHandler]="markerHandler"
+    formControlName="date"
+>
+    Date
+</tui-input-date>`,
+        }),
+    );
+
+    it(
+        'adds TODO for [items] and [defaultActiveYearMonth]',
+        migrate({
+            template: `
+<tui-input-date
+    [items]="namedDays"
+    [defaultActiveYearMonth]="initialMonth"
+    formControlName="date"
+>
+    Date
+</tui-input-date>`,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
