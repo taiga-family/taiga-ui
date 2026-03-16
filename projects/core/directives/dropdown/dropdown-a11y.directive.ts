@@ -18,6 +18,11 @@ export class TuiDropdownA11y {
         host.setAttribute('aria-expanded', String(!!dropdown));
         host.setAttribute('aria-controls', this.id);
         host.setAttribute('aria-haspopup', this._tuiDropdownRole());
+
+        if (host.matches('input')) {
+            host.setAttribute('role', 'combobox');
+        }
+
         dropdown?.location.nativeElement.setAttribute('role', this._tuiDropdownRole());
         dropdown?.location.nativeElement.setAttribute('id', this.id);
 
