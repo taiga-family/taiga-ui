@@ -1,4 +1,5 @@
 import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
+import {SyntaxKind} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../constants';
 
@@ -11,13 +12,21 @@ export function replaceAttrsInHost(
     const components = getDecorators(classes, {name: 'Component'});
 
     components.forEach((component) => {
-        const argument = component.getArguments()[0] as any;
-        const host = argument?.getProperty?.('host');
+        const argument = component
+            .getArguments()[0]
+            ?.asKind(SyntaxKind.ObjectLiteralExpression);
+
+        if (!argument) {
+            return;
+        }
+
+        const host = argument
+            ?.getProperty?.('host')
+            ?.asKind(SyntaxKind.PropertyAssignment);
 
         if (host) {
             const hostObject = host.getInitializer();
-            const sourceFile = component.getSourceFile();
-            const path = sourceFile.getFilePath() as any;
+            const path: string = component.getSourceFile().getFilePath();
             const recorder = fileSystem.edit(path);
 
             replaceable.forEach(({from, to}) => {
