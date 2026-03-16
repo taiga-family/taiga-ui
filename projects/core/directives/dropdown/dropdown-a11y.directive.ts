@@ -19,7 +19,7 @@ export class TuiDropdownA11y {
         host.setAttribute('aria-controls', this.id);
         host.setAttribute('aria-haspopup', this._tuiDropdownRole());
 
-        if (host.matches('input')) {
+        if (host.matches('input') && content) {
             host.setAttribute('role', 'combobox');
         }
 
