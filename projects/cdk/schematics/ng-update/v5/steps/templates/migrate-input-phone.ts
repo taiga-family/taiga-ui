@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -15,6 +16,22 @@ type TextNode = DefaultTreeAdapterTypes.TextNode;
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
+
+const DOCS_LINK = 'https://taiga-ui.dev/components/input-phone';
+
+/**
+ * Attrs that move from <tui-input-phone> to <input tuiInputPhone> unchanged.
+ */
+const INPUT_ATTRS = new Set(['allowText'.toLowerCase()]);
+
+/**
+ * Attrs that have no direct v5 equivalent and need a TODO comment.
+ * In v5 countryCode + phoneMaskAfterCountryCode are replaced by a single [mask] input.
+ */
+const NO_EQUIVALENT_ATTRS = new Set([
+    'countryCode'.toLowerCase(),
+    'phoneMaskAfterCountryCode'.toLowerCase(),
+]);
 
 export function migrateInputPhone({
     resource,
@@ -41,11 +58,19 @@ export function migrateInputPhone({
             templateOffset,
         );
 
-        const attrs = [...element.attrs].filter((attr) =>
+        const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
         );
 
-        for (const attr of attrs) {
+        const inputAttrs = [...element.attrs].filter((attr) =>
+            INPUT_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        const noEquivalentAttrs = [...element.attrs].filter((attr) =>
+            NO_EQUIVALENT_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        for (const attr of [...controlAttrs, ...inputAttrs, ...noEquivalentAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -75,14 +100,25 @@ export function migrateInputPhone({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = attrs.reduce((result, attr) => {
-            const name = attr.name
-                .replace(/ngmodel/i, 'ngModel')
-                .replace(/formcontrol/i, 'formControl')
-                .replace(/formcontrolname/i, 'formControlName');
+        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+            const name = normalizeAttrName(attr.name);
 
-            return `${result} ${name}="${attr.value}"`;
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
+
+        if (noEquivalentAttrs.length > 0) {
+            const names = noEquivalentAttrs.map((a) => a.name).join(', ');
+            const todoComment = [
+                `<!-- ${TODO_MARK} tui-input-phone migration (see ${DOCS_LINK}):`,
+                `     - ${names} have no direct v5 equivalent.`,
+                `       In v5 both are replaced by a single [mask] input of type MaskitoOptions.`,
+                `       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where`,
+                `       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->`,
+            ].join('\n');
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(insertAt, `${todoComment}\n`);
+        }
 
         recorder.insertRight(
             inputInsertOffset,
@@ -108,4 +144,27 @@ export function migrateInputPhone({
             });
         }
     });
+}
+
+function normalizeAttrName(name: string): string {
+    switch (name.toLowerCase()) {
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
+        case '[formControl]'.toLowerCase():
+            return '[formControl]';
+        case '[ngModel]'.toLowerCase():
+            return '[ngModel]';
+        case 'formControl'.toLowerCase():
+            return 'formControl';
+        case 'formControlName'.toLowerCase():
+            return 'formControlName';
+        case 'ngModel'.toLowerCase():
+            return 'ngModel';
+        case 'allowText'.toLowerCase():
+            return 'allowText';
+        case '[allowText]'.toLowerCase():
+            return '[allowText]';
+        default:
+            return name;
+    }
 }
