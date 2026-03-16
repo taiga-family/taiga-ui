@@ -52,5 +52,46 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'moves [countries] to <input tuiInputPhoneInternational>',
+        migrate({
+            template: `
+<tui-input-phone-international
+    [countries]="allowedCountries"
+    formControlName="phone"
+>
+    Phone
+</tui-input-phone-international>`,
+        }),
+    );
+
+    it(
+        'moves [(countryIsoCode)] to <input tuiInputPhoneInternational>',
+        migrate({
+            template: `
+<tui-input-phone-international
+    [(countryIsoCode)]="isoCode"
+    formControlName="phone"
+>
+    Phone
+</tui-input-phone-international>`,
+        }),
+    );
+
+    it(
+        'moves [countries] and [(countryIsoCode)] together',
+        migrate({
+            template: `
+<tui-input-phone-international
+    [countries]="allowedCountries"
+    [(countryIsoCode)]="isoCode"
+    formControlName="phone"
+    [tuiTextfieldCleaner]="true"
+>
+    Phone
+</tui-input-phone-international>`,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

@@ -16,6 +16,19 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
+/**
+ * Attrs that move from <tui-input-phone-international> to
+ * <input tuiInputPhoneInternational> unchanged (same name in v5).
+ */
+const INPUT_ATTRS = new Set([
+    'countries'.toLowerCase(),
+    '[countries]'.toLowerCase(),
+    'countryIsoCode'.toLowerCase(),
+    '[countryIsoCode]'.toLowerCase(),
+    '[(countryIsoCode)]'.toLowerCase(),
+    '(countryIsoCodeChange)'.toLowerCase(),
+]);
+
 export function migrateInputPhoneInternational({
     resource,
     recorder,
@@ -41,11 +54,15 @@ export function migrateInputPhoneInternational({
             templateOffset,
         );
 
-        const attrs = [...element.attrs].filter((attr) =>
+        const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
         );
 
-        for (const attr of attrs) {
+        const inputAttrs = [...element.attrs].filter((attr) =>
+            INPUT_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        for (const attr of [...controlAttrs, ...inputAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -75,13 +92,10 @@ export function migrateInputPhoneInternational({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = attrs.reduce((result, attr) => {
-            const name = attr.name
-                .replace(/ngmodel/i, 'ngModel')
-                .replace(/formcontrol/i, 'formControl')
-                .replace(/formcontrolname/i, 'formControlName');
+        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+            const name = normalizeAttrName(attr.name);
 
-            return `${result} ${name}="${attr.value}"`;
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
         if (!inputs.length) {
@@ -110,4 +124,31 @@ export function migrateInputPhoneInternational({
             });
         }
     });
+}
+
+function normalizeAttrName(name: string): string {
+    switch (name.toLowerCase()) {
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
+        case '[formControl]'.toLowerCase():
+            return '[formControl]';
+        case '[ngModel]'.toLowerCase():
+            return '[ngModel]';
+        case 'formControl'.toLowerCase():
+            return 'formControl';
+        case 'formControlName'.toLowerCase():
+            return 'formControlName';
+        case 'ngModel'.toLowerCase():
+            return 'ngModel';
+        case 'countryIsoCode'.toLowerCase():
+            return 'countryIsoCode';
+        case '[countryIsoCode]'.toLowerCase():
+            return '[countryIsoCode]';
+        case '[(countryIsoCode)]'.toLowerCase():
+            return '[(countryIsoCode)]';
+        case '(countryIsoCodeChange)'.toLowerCase():
+            return '(countryIsoCodeChange)';
+        default:
+            return name;
+    }
 }

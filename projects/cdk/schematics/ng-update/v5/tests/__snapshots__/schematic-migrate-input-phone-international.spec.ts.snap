@@ -95,3 +95,76 @@ import { TuiInputPhoneInternational } from "@taiga-ui/kit";
             ",
 }
 `;
+
+exports[`ng-update moves [(countryIsoCode)] to <input tuiInputPhoneInternational>: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-phone-international
+    [(countryIsoCode)]="isoCode"
+    formControlName="phone"
+>
+    Phone
+</tui-input-phone-international>",
+  "1. After": "
+<tui-textfield
+    
+    
+>
+<label tuiLabel>
+    Phone
+</label>
+
+<input tuiInputPhoneInternational formControlName="phone" [(countryIsoCode)]="isoCode" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [countries] and [(countryIsoCode)] together: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-phone-international
+    [countries]="allowedCountries"
+    [(countryIsoCode)]="isoCode"
+    formControlName="phone"
+    [tuiTextfieldCleaner]="true"
+>
+    Phone
+</tui-input-phone-international>",
+  "1. After": "
+<tui-textfield
+    
+    
+    
+    [tuiTextfieldCleaner]="true"
+>
+<label tuiLabel>
+    Phone
+</label>
+
+<input tuiInputPhoneInternational formControlName="phone" [countries]="allowedCountries" [(countryIsoCode)]="isoCode" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [countries] to <input tuiInputPhoneInternational>: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-phone-international
+    [countries]="allowedCountries"
+    formControlName="phone"
+>
+    Phone
+</tui-input-phone-international>",
+  "1. After": "
+<tui-textfield
+    
+    
+>
+<label tuiLabel>
+    Phone
+</label>
+
+<input tuiInputPhoneInternational formControlName="phone" [countries]="allowedCountries" />
+</tui-textfield>",
+}
+`;
