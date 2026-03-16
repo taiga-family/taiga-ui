@@ -1,6 +1,6 @@
 import {normalize} from '@angular-devkit/core';
 import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
-import {SyntaxKind} from 'ts-morph';
+import {Expression, SyntaxKind} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../constants';
 
