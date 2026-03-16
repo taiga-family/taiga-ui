@@ -4,14 +4,18 @@ import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/c
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
-import {TuiSelectLike, TuiWithNativePicker} from '@taiga-ui/core/components/textfield';
+import {
+    tuiInjectAuxiliary,
+    TuiSelectLike,
+    TuiWithNativePicker,
+} from '@taiga-ui/core/components/textfield';
 import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {TUI_MONTHS, tuiInjectAuxiliary} from '@taiga-ui/core/tokens';
+import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 
 import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';

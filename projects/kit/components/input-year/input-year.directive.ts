@@ -5,13 +5,13 @@ import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/c
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
+import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {tuiInjectAuxiliary} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';

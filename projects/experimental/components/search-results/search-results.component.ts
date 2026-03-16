@@ -16,7 +16,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TuiBlockStatus} from '@taiga-ui/layout/components/block-status';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
@@ -48,7 +48,7 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
 
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
     protected readonly i18n = inject(TUI_INPUT_SEARCH);
-    protected readonly textfield = inject(TUI_TEXTFIELD);
+    protected readonly textfield = inject(TuiTextfieldComponent);
     protected active = 0;
     protected readonly empty = computed(
         (results = this.results() || {}) =>

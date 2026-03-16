@@ -6,6 +6,7 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
+    TuiTextfieldComponent,
 } from '@taiga-ui/core/components/textfield';
 import {
     tuiAppearance,
@@ -18,7 +19,6 @@ import {
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
-import {TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 @Directive({
@@ -40,7 +40,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-    protected readonly textfield = inject(TUI_TEXTFIELD);
+    protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
     protected readonly s = tuiAppearanceState(computed(() => this.state()));

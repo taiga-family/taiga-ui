@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {tuiIsFlat} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
+import {TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
 
 import {
     TUI_FILTER_BY_INPUT_OPTIONS,
@@ -18,7 +18,7 @@ import {
 @Pipe({name: 'tuiFilterByInput', pure: false})
 export class TuiFilterByInputPipe implements PipeTransform {
     private readonly options = inject(TUI_FILTER_BY_INPUT_OPTIONS);
-    private readonly textfield = inject(TUI_TEXTFIELD);
+    private readonly search = inject(TUI_TEXTFIELD_VALUE);
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
     private readonly filter = signal<TuiFilterByInputOptions['filter']>(
         this.options.filter,
@@ -27,7 +27,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
     private readonly filterFlat = computed(
         (
             filter = this.filter(),
-            search = this.textfield.value(),
+            search = this.search(),
             stringify = this.handlers.stringify(),
         ) =>
             (items: readonly unknown[]) =>

@@ -4,8 +4,9 @@ import {NgControl} from '@angular/forms';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {TuiTitle} from '@taiga-ui/core/components/title';
-import {TUI_CLOSE_WORD, TUI_TEXTFIELD} from '@taiga-ui/core/tokens';
+import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiAvatar} from '@taiga-ui/kit/components/avatar';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {filter, map} from 'rxjs';
@@ -25,7 +26,7 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSearchHistory {
-    private readonly textfield = inject(TUI_TEXTFIELD);
+    private readonly textfield = inject(TuiTextfieldComponent);
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly control = inject(NgControl);
 

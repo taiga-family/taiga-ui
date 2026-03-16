@@ -26,7 +26,10 @@ import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
-import {TuiWithNativePicker} from '@taiga-ui/core/components/textfield';
+import {
+    tuiInjectAuxiliary,
+    TuiWithNativePicker,
+} from '@taiga-ui/core/components/textfield';
 import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     type TuiItemsHandlers,
@@ -38,7 +41,7 @@ import {
     tuiDropdownEnabled,
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {TUI_DATE_FORMAT, tuiInjectAuxiliary} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {tuiMaskito} from '@taiga-ui/kit/utils';

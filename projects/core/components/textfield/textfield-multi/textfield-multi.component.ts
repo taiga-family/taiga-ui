@@ -27,7 +27,7 @@ import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrol
 import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiFilterByInputOptionsProvider} from '@taiga-ui/core/pipes/filter-by-input';
-import {tuiAsTextfield} from '@taiga-ui/core/tokens';
+import {TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent} from 'rxjs';
 
@@ -56,9 +56,12 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     providers: [
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiAsDataListHost(TuiTextfieldMultiComponent),
-        tuiAsTextfield(TuiTextfieldMultiComponent),
         tuiProvide(TuiTextfieldComponent, TuiTextfieldMultiComponent),
         tuiProvide(TUI_SCROLL_REF, ElementRef),
+        {
+            provide: TUI_TEXTFIELD_VALUE,
+            useFactory: () => inject(TuiTextfieldComponent).value,
+        },
         tuiFilterByInputOptionsProvider({
             filter: (items, search, stringify) =>
                 items.filter((x) => TUI_DEFAULT_MATCHER(x, search, stringify)),
