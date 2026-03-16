@@ -1,5 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update adds TODO for [tagValidator] and [search]: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-tag
+    [tagValidator]="myValidator"
+    [(search)]="searchValue"
+    formControlName="tags"
+>
+    Tags
+</tui-input-tag>",
+  "1. After": "
+<!-- TODO: (Taiga UI migration) tui-input-tag migration (see https://taiga-ui.dev/components/input-chip):
+     - [tagvalidator], [(search)]: no direct equivalent in v5. See docs for alternatives. -->
+<tui-textfield
+    
+    
+    
+ multi>
+<label tuiLabel>
+    Tags
+</label>
+
+<input tuiInputChip formControlName="tags" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update keeps [rows] on <tui-textfield multi>: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-tag
+    formControlName="tags"
+    [rows]="3"
+>
+    Tags
+</tui-input-tag>",
+  "1. After": "
+<tui-textfield
+    
+    [rows]="3"
+ multi>
+<label tuiLabel>
+    Tags
+</label>
+
+<input tuiInputChip formControlName="tags" />
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.html 1`] = `
 {
   "0. Before": "
@@ -87,5 +137,78 @@ import { TuiInputChip } from "@taiga-ui/kit";
                 })
                 export class MyComponent {}
             ",
+}
+`;
+
+exports[`ng-update moves [separator] and [uniqueTags] (→ [unique]) to <input tuiInputChip>: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-tag
+    [separator]="separatorRegex"
+    [uniqueTags]="true"
+    formControlName="tags"
+>
+    Tags
+</tui-input-tag>",
+  "1. After": "
+<tui-textfield
+    
+    
+    
+ multi>
+<label tuiLabel>
+    Tags
+</label>
+
+<input tuiInputChip formControlName="tags" [separator]="separatorRegex" [unique]="true" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves placeholder to <input tuiInputChip>: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-tag
+    placeholder="Add tag..."
+    formControlName="tags"
+>
+</tui-input-tag>",
+  "1. After": "
+<tui-textfield
+    
+    
+ multi>
+
+<input tuiInputChip formControlName="tags" placeholder="Add tag..." />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update silently removes [editable], [inputHidden], [autoColor], [removable]: test.html 1`] = `
+{
+  "0. Before": "
+<tui-input-tag
+    formControlName="tags"
+    [editable]="false"
+    [inputHidden]="true"
+    [autoColor]="true"
+    [removable]="false"
+>
+    Tags
+</tui-input-tag>",
+  "1. After": "
+<tui-textfield
+    
+    
+    
+    
+    
+ multi>
+<label tuiLabel>
+    Tags
+</label>
+
+<input tuiInputChip formControlName="tags" />
+</tui-textfield>",
 }
 `;

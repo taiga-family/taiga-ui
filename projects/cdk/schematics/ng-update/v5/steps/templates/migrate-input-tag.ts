@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -15,6 +16,46 @@ type TextNode = DefaultTreeAdapterTypes.TextNode;
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
+
+const DOCS_LINK = 'https://taiga-ui.dev/components/input-chip';
+
+/**
+ * Attrs that move to <input tuiInputChip> with optional renaming.
+ * Key = lowercased v4 attr name, Value = v5 attr name.
+ */
+const INPUT_ATTR_RENAMES = new Map<string, string>([
+    ['separator'.toLowerCase(), 'separator'],
+    ['[separator]'.toLowerCase(), '[separator]'],
+    ['uniqueTags'.toLowerCase(), 'unique'],
+    ['[uniqueTags]'.toLowerCase(), '[unique]'],
+    ['placeholder'.toLowerCase(), 'placeholder'],
+    ['[placeholder]'.toLowerCase(), '[placeholder]'],
+]);
+
+/**
+ * Attrs with no v5 equivalent that need a TODO comment.
+ */
+const TODO_ATTRS = new Set([
+    '[tagValidator]'.toLowerCase(),
+    '[search]'.toLowerCase(),
+    '[(search)]'.toLowerCase(),
+    '(searchChange)'.toLowerCase(),
+]);
+
+/**
+ * Attrs with no v5 equivalent that are silently removed.
+ */
+const DROPPED_ATTRS = new Set([
+    '[editable]'.toLowerCase(),
+    'editable'.toLowerCase(),
+    '[inputHidden]'.toLowerCase(),
+    'inputHidden'.toLowerCase(),
+    '[autoColor]'.toLowerCase(),
+    'autoColor'.toLowerCase(),
+    '[removable]'.toLowerCase(),
+    'removable'.toLowerCase(),
+    '[disabledItemHandler]'.toLowerCase(),
+]);
 
 export function migrateInputTag({
     resource,
@@ -46,11 +87,23 @@ export function migrateInputTag({
 
         recorder.insertRight(templateOffset + openTagEnd - 1, ' multi');
 
-        const attrs = [...element.attrs].filter((attr) =>
+        const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
         );
 
-        for (const attr of attrs) {
+        const inputAttrs = [...element.attrs].filter((attr) =>
+            INPUT_ATTR_RENAMES.has(attr.name.toLowerCase()),
+        );
+
+        const todoAttrs = [...element.attrs].filter((attr) =>
+            TODO_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        const droppedAttrs = [...element.attrs].filter((attr) =>
+            DROPPED_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        for (const attr of [...controlAttrs, ...inputAttrs, ...todoAttrs, ...droppedAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -73,18 +126,56 @@ export function migrateInputTag({
             recorder.insertRight(labelTextEnd, '</label>\n');
         }
 
+        if (todoAttrs.length > 0) {
+            const names = todoAttrs.map((a) => a.name).join(', ');
+            const todoComment = [
+                `<!-- ${TODO_MARK} tui-input-tag migration (see ${DOCS_LINK}):`,
+                `     - ${names}: no direct equivalent in v5. See docs for alternatives. -->`,
+            ].join('\n');
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(insertAt, `${todoComment}\n`);
+        }
+
         const insertOffset =
             (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
 
-        const migrationAttrs = attrs.reduce((result, attr) => {
-            const name = attr.name
-                .replace(/ngmodel/i, 'ngModel')
-                .replace(/formcontrol/i, 'formControl')
-                .replace(/formcontrolname/i, 'formControlName');
+        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce(
+            (result, attr) => {
+                const name = normalizeAttrName(attr.name);
 
-            return `${result} ${name}="${attr.value}"`;
-        }, '');
+                return attr.value
+                    ? `${result} ${name}="${attr.value}"`
+                    : `${result} ${name}`;
+            },
+            '',
+        );
 
         recorder.insertRight(insertOffset, `\n<input tuiInputChip${migrationAttrs} />\n`);
     });
+}
+
+function normalizeAttrName(name: string): string {
+    const renamed = INPUT_ATTR_RENAMES.get(name.toLowerCase());
+
+    if (renamed) {
+        return renamed;
+    }
+
+    switch (name.toLowerCase()) {
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
+        case '[formControl]'.toLowerCase():
+            return '[formControl]';
+        case '[ngModel]'.toLowerCase():
+            return '[ngModel]';
+        case 'formControl'.toLowerCase():
+            return 'formControl';
+        case 'formControlName'.toLowerCase():
+            return 'formControlName';
+        case 'ngModel'.toLowerCase():
+            return 'ngModel';
+        default:
+            return name;
+    }
 }

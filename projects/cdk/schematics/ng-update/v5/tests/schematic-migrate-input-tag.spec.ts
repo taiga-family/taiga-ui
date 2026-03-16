@@ -48,5 +48,74 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'moves [separator] and [uniqueTags] (→ [unique]) to <input tuiInputChip>',
+        migrate({
+            template: `
+<tui-input-tag
+    [separator]="separatorRegex"
+    [uniqueTags]="true"
+    formControlName="tags"
+>
+    Tags
+</tui-input-tag>`,
+        }),
+    );
+
+    it(
+        'moves placeholder to <input tuiInputChip>',
+        migrate({
+            template: `
+<tui-input-tag
+    placeholder="Add tag..."
+    formControlName="tags"
+>
+</tui-input-tag>`,
+        }),
+    );
+
+    it(
+        'adds TODO for [tagValidator] and [search]',
+        migrate({
+            template: `
+<tui-input-tag
+    [tagValidator]="myValidator"
+    [(search)]="searchValue"
+    formControlName="tags"
+>
+    Tags
+</tui-input-tag>`,
+        }),
+    );
+
+    it(
+        'silently removes [editable], [inputHidden], [autoColor], [removable]',
+        migrate({
+            template: `
+<tui-input-tag
+    formControlName="tags"
+    [editable]="false"
+    [inputHidden]="true"
+    [autoColor]="true"
+    [removable]="false"
+>
+    Tags
+</tui-input-tag>`,
+        }),
+    );
+
+    it(
+        'keeps [rows] on <tui-textfield multi>',
+        migrate({
+            template: `
+<tui-input-tag
+    formControlName="tags"
+    [rows]="3"
+>
+    Tags
+</tui-input-tag>`,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
