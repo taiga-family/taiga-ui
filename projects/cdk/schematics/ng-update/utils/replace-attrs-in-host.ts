@@ -1,6 +1,6 @@
 import {normalize} from '@angular-devkit/core';
 import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
-import {Expression, SyntaxKind} from 'ts-morph';
+import {SyntaxKind} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../constants';
 
@@ -26,7 +26,9 @@ export function replaceAttrsInHost(
             ?.asKind(SyntaxKind.PropertyAssignment);
 
         if (host) {
-            const initializer: Expression | undefined = host.getInitializer();
+            const initializer = host
+                .getInitializer()
+                ?.asKind(SyntaxKind.ObjectLiteralExpression);
             const path = normalize(component.getSourceFile().getFilePath());
             const recorder = fileSystem.edit(path);
 
