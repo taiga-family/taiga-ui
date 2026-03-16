@@ -106,4 +106,8 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         },
         to: {attrName: 'appearance'},
     },
+    {
+        from: {attrName: '(tuiPresentChange)', withTagNames: ['*']},
+        to: {attrName: '(tuiPresent)'},
+    },
 ];
