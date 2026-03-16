@@ -87,7 +87,7 @@ export function migrateInputPassword({
         if (!inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiTextfield type="password"${migrationAttrs} />\n<tui-icon tuiPassword />\n`,
+                `\n<input tuiInput type="password"${migrationAttrs} />\n<tui-icon tuiPassword />\n`,
             );
         }
 
@@ -104,7 +104,7 @@ export function migrateInputPassword({
 
                     recorder.insertRight(
                         templateOffset + startOffset,
-                        `tuiTextfield type="password"${migrationAttrs}`,
+                        `tuiInput type="password"${migrationAttrs}`,
                     );
 
                     // Insert tui-icon tuiPassword after the input element
