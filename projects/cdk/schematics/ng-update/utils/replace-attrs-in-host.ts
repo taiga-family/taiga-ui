@@ -26,15 +26,15 @@ export function replaceAttrsInHost(
             ?.asKind(SyntaxKind.PropertyAssignment);
 
         if (host) {
-            const hostObject = host.getInitializer();
+            const initializer: Expression | undefined = host.getInitializer();
             const path = normalize(component.getSourceFile().getFilePath());
             const recorder = fileSystem.edit(path);
 
-            if (hostObject) {
+            if (initializer) {
                 replaceable.forEach(({from, to}) => {
                     const oldProperty =
-                        hostObject.getProperty(`'${from}'`) ||
-                        hostObject.getProperty(`"${from}"`);
+                        initializer.getProperty(`'${from}'`) ||
+                        initializer.getProperty(`"${from}"`);
 
                     if (oldProperty) {
                         const nameNode = oldProperty.getNameNode();
