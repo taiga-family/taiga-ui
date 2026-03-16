@@ -1,5 +1,4 @@
 import {FormControl} from '@angular/forms';
-
 import {TUI_FORMAT_ERROR, tuiCreateFileFormatValidator} from '@taiga-ui/kit';
 
 function makeFile(name: string, type = ''): File {
