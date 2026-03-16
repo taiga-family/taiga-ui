@@ -21,10 +21,10 @@ const DOCS_LINK = 'https://taiga-ui.dev/components/input-date';
 
 /** Attrs that move from <tui-input-date> to <input tuiInputDate> (same name in v5). */
 const INPUT_ATTRS = new Set([
-    '[min]'.toLowerCase(),
     '[max]'.toLowerCase(),
-    'min'.toLowerCase(),
+    '[min]'.toLowerCase(),
     'max'.toLowerCase(),
+    'min'.toLowerCase(),
 ]);
 
 /** Attrs that move to <tui-calendar *tuiDropdown> (same name in v5). */
@@ -35,8 +35,8 @@ const CALENDAR_ATTRS = new Set([
 
 /** Attrs with no v5 equivalent — removed with a TODO. */
 const NO_EQUIVALENT_ATTRS = new Set([
-    '[items]'.toLowerCase(),
     '[defaultActiveYearMonth]'.toLowerCase(),
+    '[items]'.toLowerCase(),
     'defaultActiveYearMonth'.toLowerCase(),
 ]);
 
@@ -179,8 +179,6 @@ export function migrateInputDate({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
@@ -191,6 +189,8 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         default:
             return name;
     }
