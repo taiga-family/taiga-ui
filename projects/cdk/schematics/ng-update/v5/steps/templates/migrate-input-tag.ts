@@ -24,25 +24,25 @@ const DOCS_LINK = 'https://taiga-ui.dev/components/input-chip';
  * Key = lowercased v4 attr name, Value = v5 attr name.
  */
 const INPUT_ATTR_RENAMES = new Map<string, string>([
-    ['separator'.toLowerCase(), 'separator'],
-    ['[separator]'.toLowerCase(), '[separator]'],
-    ['uniqueTags'.toLowerCase(), 'unique'],
-    ['[uniqueTags]'.toLowerCase(), '[unique]'],
-    ['placeholder'.toLowerCase(), 'placeholder'],
-    ['[placeholder]'.toLowerCase(), '[placeholder]'],
-    ['maxLength'.toLowerCase(), 'maxlength'],
     ['[maxLength]'.toLowerCase(), '[maxlength]'],
+    ['[placeholder]'.toLowerCase(), '[placeholder]'],
+    ['[separator]'.toLowerCase(), '[separator]'],
+    ['[uniqueTags]'.toLowerCase(), '[unique]'],
+    ['maxLength'.toLowerCase(), 'maxlength'],
+    ['placeholder'.toLowerCase(), 'placeholder'],
+    ['separator'.toLowerCase(), 'separator'],
+    ['uniqueTags'.toLowerCase(), 'unique'],
 ]);
 
 /**
  * Attrs with no v5 equivalent that need a TODO comment.
  */
 const TODO_ATTRS = new Set([
-    '[tagValidator]'.toLowerCase(),
-    '[search]'.toLowerCase(),
-    '[(search)]'.toLowerCase(),
     '(searchChange)'.toLowerCase(),
+    '[(search)]'.toLowerCase(),
     '[rows]'.toLowerCase(),
+    '[search]'.toLowerCase(),
+    '[tagValidator]'.toLowerCase(),
     'rows'.toLowerCase(),
 ]);
 
@@ -50,15 +50,15 @@ const TODO_ATTRS = new Set([
  * Attrs with no v5 equivalent that are silently removed.
  */
 const DROPPED_ATTRS = new Set([
-    '[editable]'.toLowerCase(),
-    'editable'.toLowerCase(),
-    '[inputHidden]'.toLowerCase(),
-    'inputHidden'.toLowerCase(),
     '[autoColor]'.toLowerCase(),
-    'autoColor'.toLowerCase(),
-    '[removable]'.toLowerCase(),
-    'removable'.toLowerCase(),
     '[disabledItemHandler]'.toLowerCase(),
+    '[editable]'.toLowerCase(),
+    '[inputHidden]'.toLowerCase(),
+    '[removable]'.toLowerCase(),
+    'autoColor'.toLowerCase(),
+    'editable'.toLowerCase(),
+    'inputHidden'.toLowerCase(),
+    'removable'.toLowerCase(),
 ]);
 
 export function migrateInputTag({
@@ -107,7 +107,12 @@ export function migrateInputTag({
             DROPPED_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        for (const attr of [...controlAttrs, ...inputAttrs, ...todoAttrs, ...droppedAttrs]) {
+        for (const attr of [
+            ...controlAttrs,
+            ...inputAttrs,
+            ...todoAttrs,
+            ...droppedAttrs,
+        ]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -144,16 +149,11 @@ export function migrateInputTag({
         const insertOffset =
             (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
 
-        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce(
-            (result, attr) => {
-                const name = normalizeAttrName(attr.name);
+        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+            const name = normalizeAttrName(attr.name);
 
-                return attr.value
-                    ? `${result} ${name}="${attr.value}"`
-                    : `${result} ${name}`;
-            },
-            '',
-        );
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+        }, '');
 
         recorder.insertRight(insertOffset, `\n<input tuiInputChip${migrationAttrs} />\n`);
     });
@@ -167,22 +167,22 @@ function normalizeAttrName(name: string): string {
     }
 
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[maxLength]'.toLowerCase():
+            return '[maxlength]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case 'formControl'.toLowerCase():
             return 'formControl';
         case 'formControlName'.toLowerCase():
             return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[maxLength]'.toLowerCase():
-            return '[maxlength]';
         case 'maxLength'.toLowerCase():
             return 'maxlength';
+        case 'ngModel'.toLowerCase():
+            return 'ngModel';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         default:
             return name;
     }
