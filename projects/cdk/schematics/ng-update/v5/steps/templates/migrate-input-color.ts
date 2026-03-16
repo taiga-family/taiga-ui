@@ -83,8 +83,8 @@ export function migrateInputColor({
         if (noEquivalentAttrs.length > 0) {
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-color migration (see ${DOCS_LINK}):`,
-                `     - [colors]: removed in v5. The color palette is no longer part of the input.`,
-                `       Use a separate <tui-color-picker> component if a palette is needed. -->`,
+                '     - [colors]: removed in v5. The color palette is no longer part of the input.',
+                '       Use a separate <tui-color-picker> component if a palette is needed. -->',
             ].join('\n');
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
