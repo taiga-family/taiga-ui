@@ -30,6 +30,8 @@ const INPUT_ATTR_RENAMES = new Map<string, string>([
     ['[uniqueTags]'.toLowerCase(), '[unique]'],
     ['placeholder'.toLowerCase(), 'placeholder'],
     ['[placeholder]'.toLowerCase(), '[placeholder]'],
+    ['maxLength'.toLowerCase(), 'maxlength'],
+    ['[maxLength]'.toLowerCase(), '[maxlength]'],
 ]);
 
 /**
@@ -40,6 +42,8 @@ const TODO_ATTRS = new Set([
     '[search]'.toLowerCase(),
     '[(search)]'.toLowerCase(),
     '(searchChange)'.toLowerCase(),
+    '[rows]'.toLowerCase(),
+    'rows'.toLowerCase(),
 ]);
 
 /**
@@ -175,6 +179,10 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
+        case '[maxLength]'.toLowerCase():
+            return '[maxlength]';
+        case 'maxLength'.toLowerCase():
+            return 'maxlength';
         default:
             return name;
     }

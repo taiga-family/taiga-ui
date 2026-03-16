@@ -105,12 +105,25 @@ describe('ng-update', () => {
     );
 
     it(
-        'keeps [rows] on <tui-textfield multi>',
+        'adds TODO for [rows] (no v5 equivalent)',
         migrate({
             template: `
 <tui-input-tag
     formControlName="tags"
     [rows]="3"
+>
+    Tags
+</tui-input-tag>`,
+        }),
+    );
+
+    it(
+        'renames [maxLength] to [maxlength] on <input tuiInputChip>',
+        migrate({
+            template: `
+<tui-input-tag
+    formControlName="tags"
+    [maxLength]="50"
 >
     Tags
 </tui-input-tag>`,
