@@ -29,13 +29,13 @@ const INPUT_ATTRS = new Set(['[mode]'.toLowerCase(), 'mode'.toLowerCase()]);
  * In v5 tui-input-time is a plain text input (no dropdown).
  */
 const DROPPED_DROPDOWN_ATTRS = new Set([
-    '[items]'.toLowerCase(),
     '[disabledItemHandler]'.toLowerCase(),
+    '[items]'.toLowerCase(),
     '[itemsHidden]'.toLowerCase(),
-    'itemsHidden'.toLowerCase(),
     '[itemSize]'.toLowerCase(),
-    'itemSize'.toLowerCase(),
     '[strict]'.toLowerCase(),
+    'itemsHidden'.toLowerCase(),
+    'itemSize'.toLowerCase(),
     'strict'.toLowerCase(),
 ]);
 
@@ -108,8 +108,8 @@ export function migrateInputTime({
         if (needsTodo) {
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-time migration (see ${DOCS_LINK}):`,
-                `     - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.`,
-                `       Remove this binding and update your component logic accordingly. -->`,
+                '     - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.',
+                '       Remove this binding and update your component logic accordingly. -->',
             ].join('\n');
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
@@ -159,10 +159,10 @@ export function migrateInputTime({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[mode]'.toLowerCase():
+            return '[mode]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case 'formControl'.toLowerCase():
@@ -171,8 +171,8 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
-        case '[mode]'.toLowerCase():
-            return '[mode]';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         case 'mode':
             return 'mode';
         default:
