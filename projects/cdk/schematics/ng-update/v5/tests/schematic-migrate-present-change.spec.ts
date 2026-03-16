@@ -12,18 +12,18 @@ describe('ng-update tuiPresentChange attribute', () => {
         'should replace tuiPresentChange attribute to tuiPresent in ts files',
         migrate({
             component: `
-            import { Component } from "@angular/core";
+                import { Component } from "@angular/core";
 
-            @Component({
-                standalone: true,
-                template: \`<span (tuiPresentChange)="onChangeEvent($event)">I am a changeable component</span>\`,
-                host: {
-                  '[style.--tui-background-accent-2-pressed]': 'red',
-                  '(tuiPresentChange)': 'onChangeEvent($event)',
-                }
-            })
-            export class Test {
-            }`,
+                @Component({
+                    standalone: true,
+                    template: \`<span (tuiPresentChange)="onChangeEvent($event)">I am a changeable component</span>\`,
+                    host: {
+                      '[style.--tui-background-accent-2-pressed]': 'red',
+                      '(tuiPresentChange)': 'onChangeEvent($event)',
+                    }
+                })
+                export class Test {}
+            `,
         }),
     );
 
