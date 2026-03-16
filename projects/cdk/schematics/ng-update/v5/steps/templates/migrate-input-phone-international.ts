@@ -21,12 +21,12 @@ type Element = DefaultTreeAdapterTypes.Element;
  * <input tuiInputPhoneInternational> unchanged (same name in v5).
  */
 const INPUT_ATTRS = new Set([
-    'countries'.toLowerCase(),
-    '[countries]'.toLowerCase(),
-    'countryIsoCode'.toLowerCase(),
-    '[countryIsoCode]'.toLowerCase(),
-    '[(countryIsoCode)]'.toLowerCase(),
     '(countryIsoCodeChange)'.toLowerCase(),
+    '[(countryIsoCode)]'.toLowerCase(),
+    '[countries]'.toLowerCase(),
+    '[countryIsoCode]'.toLowerCase(),
+    'countries'.toLowerCase(),
+    'countryIsoCode'.toLowerCase(),
 ]);
 
 export function migrateInputPhoneInternational({
@@ -128,26 +128,26 @@ export function migrateInputPhoneInternational({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
+        case '(countryIsoCodeChange)'.toLowerCase():
+            return '(countryIsoCodeChange)';
+        case '[(countryIsoCode)]'.toLowerCase():
+            return '[(countryIsoCode)]';
+        case '[countryIsoCode]'.toLowerCase():
+            return '[countryIsoCode]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
+        case 'countryIsoCode'.toLowerCase():
+            return 'countryIsoCode';
         case 'formControl'.toLowerCase():
             return 'formControl';
         case 'formControlName'.toLowerCase():
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
-        case 'countryIsoCode'.toLowerCase():
-            return 'countryIsoCode';
-        case '[countryIsoCode]'.toLowerCase():
-            return '[countryIsoCode]';
-        case '[(countryIsoCode)]'.toLowerCase():
-            return '[(countryIsoCode)]';
-        case '(countryIsoCodeChange)'.toLowerCase():
-            return '(countryIsoCodeChange)';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         default:
             return name;
     }
