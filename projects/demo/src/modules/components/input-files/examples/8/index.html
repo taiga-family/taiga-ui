@@ -1,0 +1,24 @@
+<label tuiInputFiles>
+    <input
+        #validator="tuiInputFilesValidator"
+        tuiInputFiles
+        [formControl]="control"
+        [multiple]="true"
+        (reject)="onReject($event)"
+    />
+</label>
+
+<tui-files class="tui-space_top-1">
+    <tui-file
+        *ngFor="let file of accepted$ | async"
+        [file]="file"
+        (remove)="onRemove(file)"
+    />
+
+    <tui-file
+        *ngFor="let file of rejected"
+        state="error"
+        [file]="(file | tuiFileRejected: validator | async) || file"
+        (remove)="onRemove(file)"
+    />
+</tui-files>
