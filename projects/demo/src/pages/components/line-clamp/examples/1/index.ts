@@ -9,7 +9,7 @@ import {TuiChip, TuiFade, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiButton, TuiChip, TuiLineClamp, TuiNotification, TuiFade],
+    imports: [AsyncPipe, TuiButton, TuiChip, TuiFade, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
