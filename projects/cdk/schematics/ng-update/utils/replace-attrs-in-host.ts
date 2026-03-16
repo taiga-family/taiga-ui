@@ -1,3 +1,4 @@
+import {normalize} from '@angular-devkit/core';
 import {type DevkitFileSystem, getClasses, getDecorators} from 'ng-morph';
 import {SyntaxKind} from 'ts-morph';
 
@@ -26,23 +27,25 @@ export function replaceAttrsInHost(
 
         if (host) {
             const hostObject = host.getInitializer();
-            const path: string = component.getSourceFile().getFilePath();
+            const path = normalize(component.getSourceFile().getFilePath());
             const recorder = fileSystem.edit(path);
 
-            replaceable.forEach(({from, to}) => {
-                const oldProperty =
-                    hostObject.getProperty(`'${from}'`) ||
-                    hostObject.getProperty(`"${from}"`);
+            if (hostObject) {
+                replaceable.forEach(({from, to}) => {
+                    const oldProperty =
+                        hostObject.getProperty(`'${from}'`) ||
+                        hostObject.getProperty(`"${from}"`);
 
-                if (oldProperty) {
-                    const nameNode = oldProperty.getNameNode();
-                    const start = nameNode.getStart();
-                    const width = nameNode.getWidth();
+                    if (oldProperty) {
+                        const nameNode = oldProperty.getNameNode();
+                        const start = nameNode.getStart();
+                        const width = nameNode.getWidth();
 
-                    recorder.remove(start, width);
-                    recorder.insertLeft(start, `'${to}'`);
-                }
-            });
+                        recorder.remove(start, width);
+                        recorder.insertLeft(start, `'${to}'`);
+                    }
+                });
+            }
         }
     });
 
