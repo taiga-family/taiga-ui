@@ -111,9 +111,9 @@ export function migrateInputPhone({
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-phone migration (see ${DOCS_LINK}):`,
                 `     - ${names} have no direct v5 equivalent.`,
-                `       In v5 both are replaced by a single [mask] input of type MaskitoOptions.`,
-                `       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where`,
-                `       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->`,
+                '       In v5 both are replaced by a single [mask] input of type MaskitoOptions.',
+                '       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where',
+                "       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->",
             ].join('\n');
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
@@ -148,22 +148,22 @@ export function migrateInputPhone({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
+        case '[allowText]'.toLowerCase():
+            return '[allowText]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
+        case 'allowText'.toLowerCase():
+            return 'allowText';
         case 'formControl'.toLowerCase():
             return 'formControl';
         case 'formControlName'.toLowerCase():
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
-        case 'allowText'.toLowerCase():
-            return 'allowText';
-        case '[allowText]'.toLowerCase():
-            return '[allowText]';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         default:
             return name;
     }

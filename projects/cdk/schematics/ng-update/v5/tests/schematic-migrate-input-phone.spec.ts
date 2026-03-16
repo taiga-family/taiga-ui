@@ -83,21 +83,24 @@ describe('ng-update', () => {
     it(
         'moves [allowText] to <input tuiInputPhone>',
         migrate({
-            template: `<tui-input-phone [allowText]="true" formControlName="value">Phone</tui-input-phone>`,
+            template:
+                '<tui-input-phone [allowText]="true" formControlName="value">Phone</tui-input-phone>',
         }),
     );
 
     it(
         'adds TODO for countryCode and removes it from wrapper',
         migrate({
-            template: `<tui-input-phone countryCode="+7" formControlName="value">Phone</tui-input-phone>`,
+            template:
+                '<tui-input-phone countryCode="+7" formControlName="value">Phone</tui-input-phone>',
         }),
     );
 
     it(
         'adds TODO for phoneMaskAfterCountryCode and removes it from wrapper',
         migrate({
-            template: `<tui-input-phone phoneMaskAfterCountryCode="(###) ###-##-##" formControlName="value">Phone</tui-input-phone>`,
+            template:
+                '<tui-input-phone phoneMaskAfterCountryCode="(###) ###-##-##" formControlName="value">Phone</tui-input-phone>',
         }),
     );
 
