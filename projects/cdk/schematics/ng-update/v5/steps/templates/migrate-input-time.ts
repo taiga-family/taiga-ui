@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -15,6 +16,30 @@ type TextNode = DefaultTreeAdapterTypes.TextNode;
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
+
+const DOCS_LINK = 'https://taiga-ui.dev/components/input-time';
+
+/**
+ * Attrs that move from <tui-input-time> to <input tuiInputTime> unchanged.
+ */
+const INPUT_ATTRS = new Set(['[mode]'.toLowerCase(), 'mode'.toLowerCase()]);
+
+/**
+ * Attrs that had a dropdown-related purpose in v4 and have no equivalent in v5.
+ * In v5 tui-input-time is a plain text input (no dropdown).
+ */
+const DROPPED_DROPDOWN_ATTRS = new Set([
+    '[items]'.toLowerCase(),
+    '[disabledItemHandler]'.toLowerCase(),
+    '[itemsHidden]'.toLowerCase(),
+    'itemsHidden'.toLowerCase(),
+    '[itemSize]'.toLowerCase(),
+    'itemSize'.toLowerCase(),
+    '[strict]'.toLowerCase(),
+    'strict'.toLowerCase(),
+]);
+
+const TODO_ATTRS_WITH_MESSAGE = new Set(['[items]'.toLowerCase()]);
 
 export function migrateInputTime({
     resource,
@@ -41,11 +66,19 @@ export function migrateInputTime({
             templateOffset,
         );
 
-        const attrs = [...element.attrs].filter((attr) =>
+        const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
         );
 
-        for (const attr of attrs) {
+        const inputAttrs = [...element.attrs].filter((attr) =>
+            INPUT_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        const droppedAttrs = [...element.attrs].filter((attr) =>
+            DROPPED_DROPDOWN_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        for (const attr of [...controlAttrs, ...inputAttrs, ...droppedAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -68,6 +101,21 @@ export function migrateInputTime({
             recorder.insertRight(labelTextEnd, '</label>\n');
         }
 
+        const needsTodo = droppedAttrs.some((a) =>
+            TODO_ATTRS_WITH_MESSAGE.has(a.name.toLowerCase()),
+        );
+
+        if (needsTodo) {
+            const todoComment = [
+                `<!-- ${TODO_MARK} tui-input-time migration (see ${DOCS_LINK}):`,
+                `     - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.`,
+                `       Remove this binding and update your component logic accordingly. -->`,
+            ].join('\n');
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(insertAt, `${todoComment}\n`);
+        }
+
         const insertOffset =
             (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
 
@@ -75,13 +123,10 @@ export function migrateInputTime({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = attrs.reduce((result, attr) => {
-            const name = attr.name
-                .replace(/ngmodel/i, 'ngModel')
-                .replace(/formcontrol/i, 'formControl')
-                .replace(/formcontrolname/i, 'formControlName');
+        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+            const name = normalizeAttrName(attr.name);
 
-            return `${result} ${name}="${attr.value}"`;
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
         if (!inputs.length) {
@@ -110,4 +155,27 @@ export function migrateInputTime({
             });
         }
     });
+}
+
+function normalizeAttrName(name: string): string {
+    switch (name.toLowerCase()) {
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
+        case '[formControl]'.toLowerCase():
+            return '[formControl]';
+        case '[ngModel]'.toLowerCase():
+            return '[ngModel]';
+        case 'formControl'.toLowerCase():
+            return 'formControl';
+        case 'formControlName'.toLowerCase():
+            return 'formControlName';
+        case 'ngModel'.toLowerCase():
+            return 'ngModel';
+        case '[mode]'.toLowerCase():
+            return '[mode]';
+        case 'mode':
+            return 'mode';
+        default:
+            return name;
+    }
 }

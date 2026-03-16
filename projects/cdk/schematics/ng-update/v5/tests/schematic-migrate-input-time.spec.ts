@@ -54,5 +54,44 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'moves [mode] to <input tuiInputTime>',
+        migrate({
+            template: `
+<tui-input-time [mode]="'HH:MM'" formControlName="time">
+    Time
+</tui-input-time>`,
+        }),
+    );
+
+    it(
+        'removes [items] with TODO comment',
+        migrate({
+            template: `
+<tui-input-time
+    [items]="timeItems"
+    formControlName="time"
+>
+    Time
+</tui-input-time>`,
+        }),
+    );
+
+    it(
+        'silently removes strict, itemsHidden, [itemSize], [disabledItemHandler]',
+        migrate({
+            template: `
+<tui-input-time
+    formControlName="time"
+    [strict]="true"
+    [itemsHidden]="false"
+    [itemSize]="'s'"
+    [disabledItemHandler]="handler"
+>
+    Time
+</tui-input-time>`,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
