@@ -104,9 +104,9 @@
 ### dropdown
 
 ```text
-  TuiDropdown, TuiDropdownAlign, TuiDropdownAuto, TuiDropdownComponent, TuiDropdownContext, TuiDropdownDirective, TuiDropdownDriver, TuiDropdownDriverDirective, TuiDropdownFixed, TuiDropdownHover
-  TuiDropdownHoverOptions, TuiDropdownManual, TuiDropdownOpen, TuiDropdownOpenLegacy, TuiDropdownOptions, TuiDropdownOptionsDirective, TuiDropdownPortal, TuiDropdownPosition, TuiDropdownPositionSided, TuiDropdownSelection
-  TuiDropdownService, TuiDropdownWidth, TuiDropdowns, TuiWithDropdownOpen
+  TuiDropdown, TuiDropdownA11y, TuiDropdownAlign, TuiDropdownAuto, TuiDropdownComponent, TuiDropdownContext, TuiDropdownDirective, TuiDropdownDriver, TuiDropdownDriverDirective, TuiDropdownFixed
+  TuiDropdownHover, TuiDropdownHoverOptions, TuiDropdownManual, TuiDropdownOpen, TuiDropdownOpenLegacy, TuiDropdownOptions, TuiDropdownOptionsDirective, TuiDropdownPortal, TuiDropdownPosition, TuiDropdownPositionSided
+  TuiDropdownSelection, TuiDropdownService, TuiDropdownWidth, TuiDropdowns, TuiWithDropdownOpen
 ```
 ### group
 
@@ -14869,9 +14869,9 @@ export class Example {}
 
 **Template:**
 ```html
-<button tuiButton tuiChevron tuiDropdownOpen type="button" [tuiDropdown]="content" > Menu </button>
+<button tuiButton tuiChevron tuiDropdownOpen tuiDropdownRole="menu" type="button" [tuiDropdown]="content" > Menu </button>
 <ng-template #content>
-<tui-data-list role="menu">
+<tui-data-list>
 <tui-opt-group *ngFor="let group of groups" [label]="group.label" >
 <a *ngFor="let item of group.items" #rla="routerLinkActive" role="menuitemradio" routerLinkActive tuiOption [attr.aria-checked]="rla.isActive" [routerLink]="item.routerLink" > {{ item.label }} <tui-icon *ngIf="rla.isActive" icon="@tui.check" />
 </a>
@@ -16704,10 +16704,7 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show dialog </button>
-<ng-template let-observer [(tuiDialog)]="open" >
-<header tuiHeader>
-<h2 tuiTitle>Let us know</h2>
-</header>
+<ng-template let-observer [tuiDialogOptions]="{label: 'Let us know'}" [(tuiDialog)]="open" >
 <form tuiForm (submit.prevent)="observer.complete()" >
 <tui-textfield>
 <label tuiLabel>Your name</label>
@@ -16726,21 +16723,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiDialog} from '@taiga-ui/experimental';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAutoFocus,
-        TuiButton,
-        TuiDialog,
-        TuiForm,
-        TuiHeader,
-        TuiTextfield,
-        TuiTitle,
-    ],
+    imports: [TuiAutoFocus, TuiButton, TuiDialog, TuiForm, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -16839,11 +16828,11 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show dialog </button>
-<ng-template [tuiDialogOptions]="{size: 's'}" [(tuiDialog)]="open" >
+<ng-template let-id="id" [tuiDialogOptions]="{size: 's'}" [(tuiDialog)]="open" >
 <header tuiHeader>
 <hgroup tuiTitle>
-<h2>Hello!</h2>
-<p>Welcome to the website</p>
+<h2 [id]="id">Hello!</h2>
+<p>Don't forget to set ID for accessible label</p>
 </hgroup>
 </header>
 <footer>
@@ -16893,10 +16882,10 @@ export default class Example {
 <br />
 <br />
 <button tuiButton type="button" (click)="scrollable = true" > Show scrollable </button>
-<ng-template [tuiDialogOptions]="{appearance: 'fullscreen'}" [(tuiDialog)]="fullscreen" >
+<ng-template let-id="id" [tuiDialogOptions]="{appearance: 'fullscreen'}" [(tuiDialog)]="fullscreen" >
 <header tuiHeader>
 <hgroup tuiTitle>
-<h2>Fullscreen heading</h2>
+<h2 [id]="id">Fullscreen heading</h2>
 <p> This is shown fullscreen regardless of content height, you can use <code>margin-top: auto</code> to make sure footer is at the bottom of the page. </p>
 </hgroup>
 </header>
@@ -16968,16 +16957,16 @@ export default class Example {
 <br />
 <br />
 <button tuiButton type="button" (click)="custom = true" > Show custom </button>
-<ng-template [tuiDialogOptions]="{size: 's', appearance: 'taiga compact'}" [(tuiDialog)]="augmented" >
+<ng-template let-id="id" [tuiDialogOptions]="{size: 's', appearance: 'taiga compact'}" [(tuiDialog)]="augmented" >
 <header tuiHeader>
 <hgroup tuiTitle>
-<h2>Augmented design</h2>
+<h2 [id]="id">Augmented design</h2>
 <p>Using both built-in "taiga" appearance and custom "compact" appearance to alter built-in styles</p>
 </hgroup>
 </header>
 </ng-template>
-<ng-template [tuiDialogOptions]="{appearance: 'sheet'}" [(tuiDialog)]="custom" >
-<header>Custom design</header>
+<ng-template let-id="id" [tuiDialogOptions]="{appearance: 'sheet'}" [(tuiDialog)]="custom" >
+<header [id]="id">Custom design</header>
 <p> Overriding default appearance completely and taking the styles of dialog fully upon oneself, leaving only behavior like focus trap and closable/dismissible interactions to Taiga UI </p>
 </ng-template>
 ```
