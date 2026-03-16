@@ -31,17 +31,23 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
 } from '@taiga-ui/cdk/utils/focus';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {filter, fromEvent, merge} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
+import {TUI_DROPDOWN_HOST} from './dropdown.providers';
 
 @Directive({
     standalone: true,
     selector: '[tuiDropdown][tuiDropdownOpen],[tuiDropdown][tuiDropdownOpenChange]',
-    providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
+    providers: [
+        TuiDropdownDriver,
+        tuiAsDriver(TuiDropdownDriver),
+        tuiProvide(TUI_DROPDOWN_HOST, TuiDropdownOpen),
+    ],
     hostDirectives: [
         TuiObscured,
         {
@@ -60,7 +66,7 @@ import {TuiDropdownDriver} from './dropdown.driver';
         '(tuiActiveZoneChange)': '0',
     },
 })
-export class TuiDropdownOpen implements OnChanges {
+export class TuiDropdownOpen implements OnChanges, ElementRef<Element> {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
@@ -95,7 +101,7 @@ export class TuiDropdownOpen implements OnChanges {
                     fromEvent(this.el, 'focusin').pipe(
                         filter(
                             (event) =>
-                                !this.host.contains(tuiGetActualTarget(event)) ||
+                                !this.nativeElement.contains(tuiGetActualTarget(event)) ||
                                 !this.directive.ref(),
                         ),
                     ),
@@ -113,6 +119,15 @@ export class TuiDropdownOpen implements OnChanges {
         }
     });
 
+    public get nativeElement(): HTMLElement {
+        const initial = this.dropdownHost?.nativeElement || this.el;
+        const focusable = tuiIsNativeKeyboardFocusable(initial)
+            ? initial
+            : tuiGetClosestFocusable({initial, root: this.el});
+
+        return this.dropdownHost?.nativeElement || focusable || this.el;
+    }
+
     public ngOnChanges(): void {
         this.drive(!!this.tuiDropdownOpen);
         this.tuiDropdownOpenChange.emit(!!this.tuiDropdownOpen);
@@ -120,7 +135,7 @@ export class TuiDropdownOpen implements OnChanges {
 
     public toggle(open: boolean): void {
         if (this.focused && !open) {
-            this.host.focus({preventScroll: true});
+            this.nativeElement.focus({preventScroll: true});
         }
 
         this.update(open);
@@ -144,7 +159,7 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     protected onClick(target: HTMLElement): void {
-        if (!this.editable && this.host.contains(target)) {
+        if (!this.editable && this.nativeElement.contains(target)) {
             this.update(!this.tuiDropdownOpen);
         }
     }
@@ -152,7 +167,7 @@ export class TuiDropdownOpen implements OnChanges {
     protected onArrow(event: KeyboardEvent, up: boolean): void {
         if (
             !tuiIsElement(event.target) ||
-            !this.host.contains(event.target) ||
+            !this.nativeElement.contains(event.target) ||
             !this.tuiDropdownEnabled ||
             !this.directive._content()
         ) {
@@ -174,25 +189,19 @@ export class TuiDropdownOpen implements OnChanges {
             tuiIsHTMLElement(target) &&
             !tuiIsElementEditable(target)
         ) {
-            this.host.focus({preventScroll: true});
+            this.nativeElement.focus({preventScroll: true});
         }
     }
 
-    private get host(): HTMLElement {
-        const initial = this.dropdownHost?.nativeElement || this.el;
-        const focusable = tuiIsNativeKeyboardFocusable(initial)
-            ? initial
-            : tuiGetClosestFocusable({initial, root: this.el});
-
-        return this.dropdownHost?.nativeElement || focusable || this.el;
-    }
-
     private get editable(): boolean {
-        return tuiIsElementEditable(this.host);
+        return tuiIsElementEditable(this.nativeElement);
     }
 
     private get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown());
+        return (
+            tuiIsNativeFocusedIn(this.nativeElement) ||
+            tuiIsNativeFocusedIn(this.dropdown())
+        );
     }
 
     private update(open: boolean): void {

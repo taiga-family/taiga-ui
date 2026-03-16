@@ -15,12 +15,13 @@
     Show scrollable
 </button>
 <ng-template
+    let-id="id"
     [tuiDialogOptions]="{appearance: 'fullscreen'}"
     [(tuiDialog)]="fullscreen"
 >
     <header tuiHeader>
         <hgroup tuiTitle>
-            <h2>Fullscreen heading</h2>
+            <h2 [id]="id">Fullscreen heading</h2>
             <p>
                 This is shown fullscreen regardless of content height, you can use
                 <code>margin-top: auto</code>

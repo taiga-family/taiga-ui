@@ -4,6 +4,7 @@ import {
     ChangeDetectorRef,
     type ComponentRef,
     Directive,
+    ElementRef,
     inject,
     INJECTOR,
     Input,
@@ -23,6 +24,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {type TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     PolymorpheusComponent,
     type PolymorpheusContent,
@@ -31,9 +33,10 @@ import {
 import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
-import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
+import {TUI_DROPDOWN_COMPONENT, TUI_DROPDOWN_HOST} from './dropdown.providers';
 import {TuiDropdownService} from './dropdown.service';
 import {TuiDropdownPosition} from './dropdown-position.directive';
+import {TuiDropdownA11y} from './dropdown-a11y.directive';
 
 @Directive({
     standalone: true,
@@ -41,10 +44,12 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     providers: [
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
+        tuiProvide(TUI_DROPDOWN_HOST, ElementRef),
     ],
     exportAs: 'tuiDropdown',
     hostDirectives: [
         TuiDropdownDriverDirective,
+        {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
         {
             directive: TuiDropdownPosition,
             outputs: ['tuiDropdownDirectionChange'],

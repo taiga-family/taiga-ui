@@ -15,22 +15,24 @@
     Show custom
 </button>
 <ng-template
+    let-id="id"
     [tuiDialogOptions]="{size: 's', appearance: 'taiga compact'}"
     [(tuiDialog)]="augmented"
 >
     <header tuiHeader>
         <hgroup tuiTitle>
-            <h2>Augmented design</h2>
+            <h2 [id]="id">Augmented design</h2>
             <p>Using both built-in "taiga" appearance and custom "compact" appearance to alter built-in styles</p>
         </hgroup>
     </header>
 </ng-template>
 
 <ng-template
+    let-id="id"
     [tuiDialogOptions]="{appearance: 'sheet'}"
     [(tuiDialog)]="custom"
 >
-    <header>Custom design</header>
+    <header [id]="id">Custom design</header>
     <p>
         Overriding default appearance completely and taking the styles of dialog fully upon oneself, leaving only
         behavior like focus trap and closable/dismissible interactions to Taiga UI
