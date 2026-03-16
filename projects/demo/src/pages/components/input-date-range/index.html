@@ -83,7 +83,11 @@
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
-                    <tui-calendar-range *tuiDropdown />
+                    <tui-calendar-range
+                        *tuiDropdown
+                        [items]="selectedPeriodList ?? []"
+                        [periodListSize]="periodListSize"
+                    />
                 </tui-textfield>
             </ng-template>
         </tui-doc-demo>
@@ -123,6 +127,24 @@
                 [(value)]="maxLength"
             >
                 Max length of the range
+            </tr>
+            <tr
+                name="[items]"
+                tuiDocAPIItem
+                type="TuiDayRangePeriod[]"
+                [items]="periodListItems"
+                [(value)]="selectedPeriodList"
+            >
+                Period list items
+            </tr>
+            <tr
+                name="[periodListSize]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="periodListSize"
+            >
+                Period list size
             </tr>
             <tbody
                 #itemsHandlers
