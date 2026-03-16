@@ -1,7 +1,7 @@
 import {
+    type AfterViewChecked,
     ChangeDetectionStrategy,
     Component,
-    type DoCheck,
     ElementRef,
     inject,
     Input,
@@ -57,7 +57,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         '(resize)': 'update()',
     },
 })
-export class TuiLineClamp implements DoCheck {
+export class TuiLineClamp implements AfterViewChecked {
     @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
@@ -100,7 +100,7 @@ export class TuiLineClamp implements DoCheck {
         this.linesLimit$.next(linesLimit);
     }
 
-    public ngDoCheck(): void {
+    public ngAfterViewChecked(): void {
         this.update();
         this.isOverflown$.next(this.overflown);
     }
