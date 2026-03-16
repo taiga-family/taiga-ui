@@ -1,37 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update tuiPresentChange attribute should replace tuiPresentChange attribute to tuiPresent in html files: test.html 1`] = `
-{
-  "0. Before": "<span (tuiPresentChange)="onChangeEvent($event)">I am a changeable component</span>",
-  "1. After": "<span (tuiPresent)="onChangeEvent($event)">I am a changeable component</span>",
-}
-`;
-
 exports[`ng-update tuiPresentChange attribute should replace tuiPresentChange attribute to tuiPresent in ts files: test.ts 1`] = `
 {
-  "0. Before": "import { Component } from "@angular/core";
+  "0. Before": "
+            import { Component } from "@angular/core";
 
-@Component({
-    standalone: true,
-    template: \`<span (tuiPresentChange)="onChangeEvent($event)">I am a changeable component</span>\`,
-    host: {
-      '[style.--tui-background-accent-2-pressed]': 'red',
-      '(tuiPresentChange)': 'onChangeEvent($event)',
-    }
-})
-export class Test {
-}",
-  "1. After": "import { Component } from "@angular/core";
+            @Component({
+                standalone: true,
+                template: \`<span (tuiPresentChange)="onChangeEvent($event)">I am a changeable component</span>\`,
+                host: {
+                  '[style.--tui-background-accent-2-pressed]': 'red',
+                  '(tuiPresentChange)': 'onChangeEvent($event)',
+                }
+            })
+            export class Test {
+            }",
+  "1. After": "
+            import { Component } from "@angular/core";
 
-@Component({
-    standalone: true,
-    template: \`<span (tuiPresent)="onChangeEvent($event)">I am a changeable component</span>\`,
-    host: {
-      '[style.--tui-background-accent-2-pressed]': 'red',
-      '(tuiPresent)': 'onChangeEvent($event)',
-    }
-})
-export class Test {
-}",
+            @Component({
+                standalone: true,
+                template: \`<span (tuiPresent)="onChangeEvent($event)">I am a changeable component</span>\`,
+                host: {
+                  '[style.--tui-background-accent-2-pressed]': 'red',
+                  '(tuiPresent)': 'onChangeEvent($event)',
+                }
+            })
+            export class Test {
+            }",
 }
 `;
