@@ -22160,6 +22160,17 @@ export default class Example {
 &lt;tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
 &lt;/tui-textfield&gt;
 &lt;/label&gt;
+&lt;label tuiLabel&gt; Conditional input in textfield &lt;tui-textfield multi tuiChevron &gt;
+&lt;label tuiLabel&gt;Multi Select with if/else&lt;/label&gt;
+&lt;input *ngIf=&quot;filter; else readonly&quot; tuiInputChip [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;conditionalMulti&quot; /&gt;
+&lt;ng-template #readonly&gt;
+&lt;input tuiInputChip tuiSelectLike [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;multi&quot; /&gt;
+&lt;/ng-template&gt;
+&lt;tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/label&gt;
+&lt;label tuiLabel&gt;
+&lt;input tuiCheckbox type=&quot;checkbox&quot; [(ngModel)]=&quot;filter&quot; /&gt; Toggle filter &lt;/label&gt;
 &lt;label tuiLabel&gt; Working with objects &lt;tui-textfield multi tuiChevron [disabledItemHandler]=&quot;strings&quot; [stringify]=&quot;stringify&quot; &gt;
 &lt;input tuiInputChip [placeholder]=&quot;objects.length ? &#039;&#039; : &#039;Picking objects&#039;&quot; [(ngModel)]=&quot;objects&quot; /&gt;
 &lt;tui-input-chip *tuiItem /&gt;
@@ -22184,6 +22195,7 @@ import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {tuiIsString} from &#039;@taiga-ui/cdk&#039;;
 import {TuiDataList, TuiSelectLike, TuiTextfield} from &#039;@taiga-ui/core&#039;;
 import {
+    TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
@@ -22203,6 +22215,7 @@ interface User {
         FormsModule,
         NgForOf,
         NgIf,
+        TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -22222,7 +22235,10 @@ export default class Example {
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
+    protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
+
+    protected filter = false;
 
     protected readonly items: string[] = inject(&#039;Pythons&#039; as any);
     protected readonly users = this.items.map((name, index) =&gt; ({name, index}));

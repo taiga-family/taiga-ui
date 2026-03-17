@@ -22151,6 +22151,17 @@ export default class Example {
 <tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]="items" />
 </tui-textfield>
 </label>
+<label tuiLabel> Conditional input in textfield <tui-textfield multi tuiChevron >
+<label tuiLabel>Multi Select with if/else</label>
+<input *ngIf="filter; else readonly" tuiInputChip [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" />
+<ng-template #readonly>
+<input tuiInputChip tuiSelectLike [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="multi" />
+</ng-template>
+<tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]="items" />
+</tui-textfield>
+</label>
+<label tuiLabel>
+<input tuiCheckbox type="checkbox" [(ngModel)]="filter" /> Toggle filter </label>
 <label tuiLabel> Working with objects <tui-textfield multi tuiChevron [disabledItemHandler]="strings" [stringify]="stringify" >
 <input tuiInputChip [placeholder]="objects.length ? '' : 'Picking objects'" [(ngModel)]="objects" />
 <tui-input-chip *tuiItem />
@@ -22175,6 +22186,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
+    TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
@@ -22194,6 +22206,7 @@ interface User {
         FormsModule,
         NgForOf,
         NgIf,
+        TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -22213,7 +22226,10 @@ export default class Example {
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
+    protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
+
+    protected filter = false;
 
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));
