@@ -28,7 +28,7 @@ export class StackblitzDepsService {
             '@angular/core': ngVersion,
             '@angular/forms': ngVersion,
             '@angular/platform-browser': ngVersion,
-            '@angular/router': ngVersion,
+            '@angular/router': '20.3.17', // @angular/router@20.3.18 throws `The file '/turbo_modules/@angular/router@20.3.18/fesm2022/router.mjs' does not exist`
             typescript: '5.8.x', // compatible with angular 20
         };
     }
