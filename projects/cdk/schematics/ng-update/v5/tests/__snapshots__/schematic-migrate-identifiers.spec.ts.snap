@@ -74,26 +74,30 @@ exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: tes
 }
 `;
 
-exports[`ng-update identifiers migration moves TuiStatus from legacy to kit: test.ts 1`] = `
+exports[`ng-update identifiers migration adds TODO for TuiStatus type (cannot be auto-migrated to string literal): test.ts 1`] = `
 {
   "0. Before": "
-                import {TuiStatus} from '@taiga-ui/legacy';
+                import {type TuiStatus} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
-                    imports: [TuiStatus],
-                    template: '<span tuiStatus="var(--tui-status-positive)">OK</span>',
+                    template: '',
                 })
-                export class TestComponent {}
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
             ",
-  "1. After": "import { TuiStatus } from "@taiga-ui/kit";
+  "1. After": "
+// TODO: (Taiga UI migration) TuiStatus type has been removed. Replace with a plain string literal type: \\"default\\" | \\"error\\" | \\"info\\" | \\"neutral\\" | \\"primary\\" | \\"success\\" | \\"warning\\"
+                import {type TuiStatus} from '@taiga-ui/legacy';
 
-                                @Component({
+                @Component({
                     standalone: true,
-                    imports: [TuiStatus],
-                    template: '<span tuiStatus="var(--tui-status-positive)">OK</span>',
+                    template: '',
                 })
-                export class TestComponent {}
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
             ",
 }
 `;

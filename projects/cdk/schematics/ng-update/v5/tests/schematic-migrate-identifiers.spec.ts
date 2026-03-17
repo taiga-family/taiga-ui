@@ -112,17 +112,18 @@ describe('ng-update identifiers migration', () => {
     );
 
     it(
-        'moves TuiStatus from legacy to kit',
+        'adds TODO for TuiStatus type (cannot be auto-migrated to string literal)',
         migrate({
             component: `
-                import {TuiStatus} from '@taiga-ui/legacy';
+                import {type TuiStatus} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
-                    imports: [TuiStatus],
-                    template: '<span tuiStatus="var(--tui-status-positive)">OK</span>',
+                    template: '',
                 })
-                export class TestComponent {}
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
             `,
         }),
     );

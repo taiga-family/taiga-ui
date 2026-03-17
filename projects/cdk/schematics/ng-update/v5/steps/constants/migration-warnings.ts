@@ -49,4 +49,11 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiToCountryCodePipe has been removed. Replace pipe usage `phone | tuiToCountryCode` with the maskitoGetCountryFromNumber(phone) function from @maskito/phone.',
     },
+    {
+        name: 'TuiStatus',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiStatus type has been removed. Replace with a plain string literal type: ' +
+            '"default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"',
+    },
 ];
