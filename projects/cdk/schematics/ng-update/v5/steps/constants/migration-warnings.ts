@@ -56,4 +56,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiStatus type has been removed. Replace with a plain string literal type: ' +
             '"default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"',
     },
+    {
+        name: 'TuiIsoToCountryCodePipe',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiIsoToCountryCodePipe has been removed. Replace pipe usage `isoCode | tuiIsoToCountryCode` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.',
+    },
 ];

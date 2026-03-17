@@ -4,13 +4,13 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update migrate TuiIsoToCountryCodePipe', () => {
     it(
-        'replaces TuiIsoToCountryCodePipe import with getCountryCallingCode',
+        'adds TODO comment for TuiIsoToCountryCodePipe (no automatic rename)',
         migrate({
             component: `
                 import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
@@ -26,15 +26,15 @@ describe('ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode', (
     );
 
     it(
-        'replaces TuiIsoToCountryCodePipe used programmatically',
+        'adds TODO comment when TuiIsoToCountryCodePipe used in NgModule',
         migrate({
             component: `
                 import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
 
-                @Injectable()
-                export class TestService {
-                    private readonly pipe = new TuiIsoToCountryCodePipe(countriesMasks);
-                }
+                @NgModule({
+                    imports: [TuiIsoToCountryCodePipe],
+                })
+                export class AppModule {}
             `,
         }),
     );
