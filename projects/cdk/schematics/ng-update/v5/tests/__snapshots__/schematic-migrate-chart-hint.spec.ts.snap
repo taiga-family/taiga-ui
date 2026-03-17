@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update chart hint adds TuiChartHint import for bound tuiHintContent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiBarChart} from '@taiga-ui/addon-charts';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiBarChart],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+            import { TuiBarChart, TuiChartHint } from '@taiga-ui/addon-charts';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiBarChart, TuiChartHint],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update chart hint adds TuiChartHint import when tuiHintContent is used on chart: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiBarChart} from '@taiga-ui/addon-charts';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiBarChart],
+            })
+            export class Test {}
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+            import { TuiBarChart, TuiChartHint } from '@taiga-ui/addon-charts';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiBarChart, TuiChartHint],
+            })
+            export class Test {}
+        ",
+}
+`;

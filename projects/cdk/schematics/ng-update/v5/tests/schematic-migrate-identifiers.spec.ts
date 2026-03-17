@@ -2,137 +2,114 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {runMigration} from '../../../utils/run-migration';
-
-const collection = join(__dirname, '../../../migration.json');
+import {createMigration} from '../../../utils/run-migration';
 
 describe('ng-update identifiers migration', () => {
-    async function migrate(template: string): Promise<string> {
-        return (await runMigration({template, collection})).template;
-    }
-
-    async function migrateComponent(component: string): Promise<string> {
-        return (await runMigration({component, collection})).component;
-    }
-
-    it('replaces tuiButtonClose with tuiButtonX', async () => {
-        expect(await migrate('<button tuiButtonClose></button>')).toEqual(
-            '<button tuiButtonX></button>',
-        );
+    const migrate = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
     });
 
-    it('preserves attributes when replacing tuiButtonClose with tuiButtonX', async () => {
-        expect(
-            await migrate(
-                '<button tuiButtonClose appearance="primary" size="m"></button>',
-            ),
-        ).toEqual('<button tuiButtonX appearance="primary" size="m"></button>');
-    });
+    it(
+        'replaces tuiButtonClose with tuiButtonX',
+        migrate({template: '<button tuiButtonClose></button>'}),
+    );
 
-    it('does not affect other buttons', async () => {
-        expect(await migrate('<button tuiButton>Click me</button>')).toEqual(
-            '<button tuiButton>Click me</button>',
-        );
-    });
+    it(
+        'preserves attributes when replacing tuiButtonClose with tuiButtonX',
+        migrate({
+            template: '<button tuiButtonClose appearance="primary" size="m"></button>',
+        }),
+    );
 
-    it('migrates identifiers to new packages', async () => {
-        const result = await migrateComponent(`
-            import {TuiAutoColorPipe, TuiSurface} from '@taiga-ui/core';
-            import {tuiPure} from '@taiga-ui/cdk';
-            import {TuiCell} from '@taiga-ui/layout';
+    it(
+        'does not affect other buttons',
+        migrate({template: '<button tuiButton>Click me</button>'}),
+    );
 
-            export class TestComponent {
-                protected readonly surface = TuiSurface;
-                protected readonly cell = TuiCell;
-                protected readonly autoColor = TuiAutoColorPipe;
-                protected readonly pure = tuiPure;
-            }
-        `);
+    it(
+        'migrates identifiers to new packages',
+        migrate({
+            component: `
+                import {TuiAutoColorPipe, TuiSurface} from '@taiga-ui/core';
+                import {tuiPure} from '@taiga-ui/cdk';
+                import {TuiCell} from '@taiga-ui/layout';
 
-        expect(result).toEqual(
-            `import { tuiPure } from "@taiga-ui/legacy";
-import { TuiAutoColorPipe } from "@taiga-ui/kit";
+                export class TestComponent {
+                    protected readonly surface = TuiSurface;
+                    protected readonly cell = TuiCell;
+                    protected readonly autoColor = TuiAutoColorPipe;
+                    protected readonly pure = tuiPure;
+                }
+            `,
+        }),
+    );
 
-            import { TuiCell } from '@taiga-ui/core';
-            import { TuiSurface } from '@taiga-ui/layout';
+    it(
+        'moves TuiFlagPipe from core to kit',
+        migrate({
+            component: `
+                import {TuiFlagPipe} from '@taiga-ui/core';
 
-            export class TestComponent {
-                protected readonly surface = TuiSurface;
-                protected readonly cell = TuiCell;
-                protected readonly autoColor = TuiAutoColorPipe;
-                protected readonly pure = tuiPure;
-            }
-        `,
-        );
-    });
+                export class TestComponent {
+                    protected readonly flag = TuiFlagPipe;
+                }
+            `,
+        }),
+    );
 
-    it('moves TuiFlagPipe from core to kit', async () => {
-        const result = await migrateComponent(`
-            import {TuiFlagPipe} from '@taiga-ui/core';
+    it(
+        'renames ResizeObserverService to WaResizeObserverService',
+        migrate({
+            component: `
+                import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 
-            export class TestComponent {
-                protected readonly flag = TuiFlagPipe;
-            }
-        `);
+                export class TestComponent {
+                    protected readonly observer = ResizeObserverService;
+                }
+            `,
+        }),
+    );
 
-        expect(result).toEqual(
-            `import { TuiFlagPipe } from "@taiga-ui/kit";
+    it(
+        'moves tuiCellOptionsProvider from layout to core',
+        migrate({
+            component: `
+                import {tuiCellOptionsProvider} from '@taiga-ui/layout';
 
-                        export class TestComponent {
-                protected readonly flag = TuiFlagPipe;
-            }
-        `,
-        );
-    });
+                export const providers = [tuiCellOptionsProvider({size: 'm'})];
+            `,
+        }),
+    );
 
-    it('renames ResizeObserverService to WaResizeObserverService', async () => {
-        const result = await migrateComponent(`
-            import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+    it(
+        'moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit',
+        migrate({
+            component: `
+                import {type TuiTimeMode} from '@taiga-ui/cdk';
 
-            export class TestComponent {
-                protected readonly observer = ResizeObserverService;
-            }
-        `);
+                export type Mode = TuiTimeMode;
+            `,
+        }),
+    );
 
-        expect(result).toEqual(
-            `import { WaResizeObserverService } from "@ng-web-apis/resize-observer";
+    it(
+        'migrates sheet identifiers from legacy to addon-mobile',
+        migrate({
+            component: `
+                import {
+                    TuiSheetModule,
+                    TuiSheetDialogOptions,
+                    TuiSheetService,
+                } from '@taiga-ui/legacy';
 
-                        export class TestComponent {
-                protected readonly observer = WaResizeObserverService;
-            }
-        `,
-        );
-    });
-
-    it('moves tuiCellOptionsProvider from layout to core', async () => {
-        const result = await migrateComponent(`
-            import {tuiCellOptionsProvider} from '@taiga-ui/layout';
-
-            export const providers = [tuiCellOptionsProvider({size: 'm'})];
-        `);
-
-        expect(result).toEqual(
-            `import { tuiCellOptionsProvider } from "@taiga-ui/core";
-
-                        export const providers = [tuiCellOptionsProvider({size: 'm'})];
-        `,
-        );
-    });
-
-    it('moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit', async () => {
-        const result = await migrateComponent(`
-            import {type TuiTimeMode} from '@taiga-ui/cdk';
-
-            export type Mode = TuiTimeMode;
-        `);
-
-        expect(result).toEqual(
-            `import { MaskitoTimeMode } from "@maskito/kit";
-
-                        export type Mode = MaskitoTimeMode;
-        `,
-        );
-    });
+                export class TestComponent {
+                    protected readonly moduleRef = TuiSheetModule;
+                    protected readonly options: TuiSheetDialogOptions = {};
+                    protected readonly service = TuiSheetService;
+                }
+            `,
+        }),
+    );
 
     afterEach(() => resetActiveProject());
 });

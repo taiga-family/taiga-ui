@@ -22,7 +22,7 @@ describe('BarChart', () => {
         ];
 
         public max = NaN;
-        public collapsed = signal(false);
+        public readonly collapsed = signal(false);
     }
 
     let fixture: ComponentFixture<Test>;

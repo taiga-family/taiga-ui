@@ -11,9 +11,9 @@ jobs:
   assign:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: toshimaru/auto-author-assign@v2.1.2
+      - uses: toshimaru/auto-author-assign@v3.0.1
         continue-on-error: true
 
 concurrency:

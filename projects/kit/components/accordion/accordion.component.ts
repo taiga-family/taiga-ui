@@ -2,9 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     contentChildren,
+    effect,
+    ElementRef,
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
@@ -15,16 +18,29 @@ import {TuiAccordionDirective} from './accordion.directive';
 @Component({
     selector: 'tui-accordion',
     template: '<ng-content />',
-    styleUrl: './accordion.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './accordion.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiGroupOptionsProvider({orientation: 'vertical', collapsed: true})],
     hostDirectives: [TuiGroup],
-    host: {'[attr.data-size]': 'size()'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '[attr.data-size]': 'size()',
+    },
 })
 export class TuiAccordionComponent {
     protected readonly expands = contentChildren(TuiExpand);
     protected readonly directives = contentChildren(TuiAccordionDirective);
+    protected readonly elements = contentChildren(TuiExpand, {read: ElementRef});
+    protected readonly sync = effect(() =>
+        this.elements().forEach(({nativeElement}, index) => {
+            nativeElement.id = this.directives()[index]?.id;
+        }),
+    );
 
     public readonly closeOthers = input(true);
     public readonly size = input<TuiSizeL | TuiSizeS>('l');

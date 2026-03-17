@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update input-range removes label[tuiLabel] inside tui-input-range (with spaces): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-range
+                    [max]="max"
+                    [min]="min"
+                    [tuiNumberFormat]="numberFormat"
+                    [(ngModel)]="value"
+                >
+                    <label tuiLabel>
+                        Type number like a German
+                    </label>
+                </tui-input-range>
+            ",
+  "1. After": "
+                <tui-input-range
+                    [max]="max"
+                    [min]="min"
+                    [tuiNumberFormat]="numberFormat"
+                    [(ngModel)]="value"
+                >
+                    
+                        Type number like a German
+                    
+                </tui-input-range>
+            ",
+}
+`;
+
+exports[`ng-update input-range removes label[tuiLabel] inside tui-input-range: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-range
+                    [max]="max"
+                    [min]="min"
+                    [tuiNumberFormat]="numberFormat"
+                    [(ngModel)]="value"
+                >
+                    <label tuiLabel>Type number like a German</label>
+                </tui-input-range>
+            ",
+  "1. After": "
+                <tui-input-range
+                    [max]="max"
+                    [min]="min"
+                    [tuiNumberFormat]="numberFormat"
+                    [(ngModel)]="value"
+                >
+                    Type number like a German
+                </tui-input-range>
+            ",
+}
+`;

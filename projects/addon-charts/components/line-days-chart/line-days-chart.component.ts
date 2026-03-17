@@ -92,7 +92,7 @@ export class TuiLineDaysChart implements AfterViewInit {
 
     public zIndex = 0;
 
-    public value = input<
+    public readonly value = input<
         ReadonlyArray<[TuiDay, number]>,
         ReadonlyArray<[TuiDay, number]>
     >([], {
@@ -120,7 +120,7 @@ export class TuiLineDaysChart implements AfterViewInit {
         },
     });
 
-    public hint = computed<
+    public readonly hint = computed<
         | PolymorpheusContent<TuiContext<[TuiDay, number]>>
         | PolymorpheusContent<TuiContext<readonly TuiPoint[]>>
     >(() => this.hintDirective?.hint() ?? this.hintContent());

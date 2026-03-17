@@ -1,4 +1,4 @@
-<div class="t-left t-icon">
+<div class="t-start t-icon">
     <ng-content select="img">
         @if (iconStart()) {
             <tui-icon
@@ -11,7 +11,7 @@
 
 @if (iconEnd()) {
     <tui-icon
-        class="t-right t-icon"
+        class="t-end t-icon"
         [icon]="iconEnd()"
     />
 }

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate platform browser flags migrates browser flags from @taiga-ui/cdk to @ng-web-apis/platform: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
+
+                export const flags = [tuiIsEdge, tuiIsFirefox, tuiIsSafari];
+            ",
+  "1. After": "import { isEdge, isFirefox, isSafari } from "@ng-web-apis/platform";
+                export const flags = [isEdge, isFirefox, isSafari];
+            ",
+}
+`;

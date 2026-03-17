@@ -199,6 +199,46 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiSelectModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSelect',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetDialogOptions',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialogOptions',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialogService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
             name: 'TUI_IS_ANDROID',
             moduleSpecifier: '@taiga-ui/cdk',
         },
@@ -618,5 +658,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TUI_JAPANESE_LANGUAGE_LAYOUT',
             moduleSpecifier: '@taiga-ui/i18n',
         },
+    },
+    {
+        from: {
+            name: 'TuiSidebar',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: [
+            {
+                name: 'TuiDrawer',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiPopup',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
     },
 ];

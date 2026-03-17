@@ -29,11 +29,11 @@ export class TuiInputDateTimeComponent extends TuiNativeTimePicker {
     protected readonly step = computed(() => this.getStep(this.host.timeMode()));
     protected readonly value = computed(() => this.toISOString(this.host.value()));
 
-    protected min = computed(() =>
+    protected readonly min = computed(() =>
         this.toISOString([this.host.min(), this.host.minTime()]),
     );
 
-    protected max = computed(() =>
+    protected readonly max = computed(() =>
         this.toISOString([this.host.max(), this.host.maxTime()]),
     );
 

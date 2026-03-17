@@ -47,7 +47,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     public readonly maxWidth = input(Infinity);
 
-    public sorter = model<TuiComparator<T> | null>(
+    public readonly sorter = model<TuiComparator<T> | null>(
         this.head ? (a, b) => tuiDefaultSort(a[this.key], b[this.key]) : null,
     );
 

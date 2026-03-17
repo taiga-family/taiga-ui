@@ -18,7 +18,7 @@ import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
 export default class Example {
     protected static = inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
     protected count = 10;
-    protected activeIndex = signal(0);
+    protected readonly activeIndex = signal(0);
 
     protected readonly toProgress = (active: boolean): Observable<number> =>
         active && !this.static

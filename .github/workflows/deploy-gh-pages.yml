@@ -19,7 +19,7 @@ jobs:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0
 
       - name: Prepare demo before deploy from snapshots
@@ -33,7 +33,7 @@ jobs:
         run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
 
       - name: Replace baseHref for next
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: jacobtomlinson/gha-find-replace@3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/next/">'
@@ -41,7 +41,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v2
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: jacobtomlinson/gha-find-replace@3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v2/">'
@@ -49,7 +49,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v3
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: jacobtomlinson/gha-find-replace@3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v3/">'

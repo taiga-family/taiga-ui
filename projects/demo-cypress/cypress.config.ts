@@ -80,6 +80,7 @@ export default defineConfig({
                             'projects/styles/components/status.less',
                             'projects/styles/components/switch.less',
                             'projects/styles/components/toast.less',
+                            'projects/kit/components/accordion/accordion.style.less',
                         ],
                     },
                 },

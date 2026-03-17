@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Publish canary
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0
       - uses: taiga-family/ci/actions/setup/node@v1.189.0
       - uses: taiga-family/ci/actions/setup/config/npm@v1.189.0

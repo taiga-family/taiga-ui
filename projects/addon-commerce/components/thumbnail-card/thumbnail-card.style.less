@@ -62,31 +62,31 @@
     }
 }
 
-.t-left {
+.t-start {
     position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
-    transform-origin: top left;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    transform-origin: top var(--tui-inline-start);
 
     :host[data-size='xs'] &,
     :host[data-size='s'] & {
-        transform: translate(0.125rem, 0.125rem) scale(0.625);
+        transform: translate(calc(var(--tui-inline) * 0.125rem), 0.125rem) scale(0.625);
     }
 
     :host[data-size='m'] & {
-        transform: translate(0.1875rem, 0.1875rem) scale(0.75);
+        transform: translate(calc(var(--tui-inline) * 0.1875rem), 0.1875rem) scale(0.75);
     }
 
     :host[data-size='l'] & {
-        transform: translate(0.1875rem, 0.1875rem);
+        transform: translate(calc(var(--tui-inline) * 0.1875rem), 0.1875rem);
     }
 }
 
-.t-right {
+.t-end {
     position: absolute;
-    top: 0.1875rem;
-    right: 0.1875rem;
+    inset-block-start: 0.1875rem;
+    inset-inline-end: 0.1875rem;
 
     :host[data-size='xs'] &,
     :host[data-size='s'] & {
@@ -126,25 +126,25 @@
 
 .t-logo {
     position: absolute;
-    right: 0.25rem;
-    bottom: 0;
+    inset-inline-end: 0.25rem;
+    inset-block-end: 0;
     block-size: var(--t-logo-height);
-    transform-origin: right;
+    transform-origin: var(--tui-inline-end);
 
     :host[data-size='xs'] & {
-        right: 0.125rem;
+        inset-inline-end: 0.125rem;
     }
 
     :host[data-size='m'] &,
     :host[data-size='l'] & {
-        bottom: 0.0625rem;
+        inset-block-end: 0.0625rem;
     }
 
     &::before {
         block-size: 100%;
-        background-position: right;
+        background-position: var(--tui-inline-end);
         background-size: contain;
-        mask-position: right;
+        mask-position: var(--tui-inline-end);
         mask-size: contain;
     }
 }
@@ -153,13 +153,13 @@
     position: absolute;
 
     :host[data-size='m'] & {
-        left: 0.1875rem;
-        bottom: 0.0625rem;
+        inset-inline-start: 0.1875rem;
+        inset-block-end: 0.0625rem;
     }
 
     :host[data-size='l'] & {
-        left: 0.25rem;
-        bottom: 0.0625rem;
+        inset-inline-start: 0.25rem;
+        inset-block-end: 0.0625rem;
     }
 }
 

@@ -6,6 +6,10 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/cdk',
     },
     {
+        name: 'TuiTextfieldControllerModule',
+        moduleSpecifier: '@taiga-ui/legacy',
+    },
+    {
         name: 'TuiIconBadge',
         moduleSpecifier: '@taiga-ui/kit',
     },

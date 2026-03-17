@@ -39,6 +39,8 @@ import {migrateInputRange} from './templates/migrate-input-range';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
+import {migrateSelect} from './templates/migrate-select';
+import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
 
 export function getAction<T>({
@@ -82,6 +84,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateInputYear,
+        migrateSelect,
         migrateInputRange,
         migrateAccordionItem,
         migrateAvatarToDirective,
@@ -94,6 +97,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateAxes,
         migrateChartHint,
         migrateCloseable,
+        migrateSidebar,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});

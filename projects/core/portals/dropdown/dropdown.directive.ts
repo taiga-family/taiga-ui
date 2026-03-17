@@ -5,6 +5,7 @@ import {
     type ComponentRef,
     Directive,
     effect,
+    ElementRef,
     inject,
     INJECTOR,
     input,
@@ -15,8 +16,8 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsVehicle,
     type TuiRectAccessor,
@@ -32,15 +33,20 @@ import {
 import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
-import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
+import {TUI_DROPDOWN_COMPONENT, TUI_DROPDOWN_HOST} from './dropdown.providers';
+import {TuiDropdownA11y} from './dropdown-a11y.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
-    providers: [tuiAsVehicle(TuiDropdownDirective)],
+    providers: [
+        tuiAsVehicle(TuiDropdownDirective),
+        tuiProvide(TUI_DROPDOWN_HOST, ElementRef),
+    ],
     exportAs: 'tuiDropdown',
     hostDirectives: [
         TuiDropdownDriverDirective,
+        {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
         {
             directive: TuiDropdownPosition,
             outputs: ['tuiDropdownDirectionChange'],
@@ -71,7 +77,6 @@ export class TuiDropdownDirective
         }
     });
 
-    public readonly id = tuiGenerateId();
     public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
@@ -118,7 +123,6 @@ export class TuiDropdownDirective
             ref.destroy();
         }
 
-        this.ref()?.location.nativeElement.setAttribute('id', this.id);
         this.drivers.forEach((driver) => driver?.next(show));
     }
 }

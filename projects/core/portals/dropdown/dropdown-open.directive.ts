@@ -5,7 +5,6 @@ import {
     Directive,
     effect,
     ElementRef,
-    forwardRef,
     inject,
     input,
     model,
@@ -14,6 +13,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiObscured} from '@taiga-ui/cdk/directives/obscured';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     tuiGetActualTarget,
     tuiInjectElement,
@@ -33,16 +33,19 @@ import {filter} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
-import {TuiDropdownA11y} from './dropdown-a11y.directive';
+import {TUI_DROPDOWN_HOST} from './dropdown.providers';
 import {TuiDropdownClose} from './dropdown-close.directive';
 
 @Directive({
     selector:
         '[tuiDropdown][tuiDropdownAuto],[tuiDropdown][tuiDropdownOpen],[tuiDropdown][tuiDropdownOpenChange]',
-    providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
+    providers: [
+        TuiDropdownDriver,
+        tuiAsDriver(TuiDropdownDriver),
+        tuiProvide(TUI_DROPDOWN_HOST, TuiDropdownOpen),
+    ],
     hostDirectives: [
         TuiObscured,
-        {directive: forwardRef(() => TuiDropdownA11y), inputs: ['tuiDropdownRole']},
         {directive: TuiDropdownClose, outputs: ['tuiDropdownClose']},
         {
             directive: TuiActiveZone,
@@ -59,7 +62,7 @@ import {TuiDropdownClose} from './dropdown-close.directive';
         '(tuiDropdownClose)': 'toggle(false)',
     },
 })
-export class TuiDropdownOpen {
+export class TuiDropdownOpen implements ElementRef<Element> {
     private readonly dropdownHost = contentChild('tuiDropdownHost', {
         descendants: true,
         read: ElementRef,
@@ -88,7 +91,7 @@ export class TuiDropdownOpen {
         .pipe(takeUntilDestroyed())
         .subscribe((event) => this.onKeydown(event));
 
-    public get host(): HTMLElement {
+    public get nativeElement(): HTMLElement {
         const initial = this.dropdownHost()?.nativeElement || this.el;
         const focusable = tuiIsFocusable(initial)
             ? initial
@@ -99,14 +102,14 @@ export class TuiDropdownOpen {
 
     public toggle(open: boolean): void {
         if (this.focused && !open) {
-            this.host.focus({preventScroll: true});
+            this.nativeElement.focus({preventScroll: true});
         }
 
         this.update(open);
     }
 
     protected onClick(target: HTMLElement): void {
-        if (!this.editable && this.host.contains(target)) {
+        if (!this.editable && this.nativeElement.contains(target)) {
             this.update(!this.open());
         }
     }
@@ -114,7 +117,7 @@ export class TuiDropdownOpen {
     protected onArrow(event: KeyboardEvent, up: boolean): void {
         if (
             !tuiIsElement(event.target) ||
-            !this.host.contains(event.target) ||
+            !this.nativeElement.contains(event.target) ||
             !this.enabled() ||
             !this.directive.content()
         ) {
@@ -126,11 +129,11 @@ export class TuiDropdownOpen {
     }
 
     private get editable(): boolean {
-        return tuiIsElementEditable(this.host);
+        return tuiIsElementEditable(this.nativeElement);
     }
 
     private get focused(): boolean {
-        return tuiIsFocusedIn(this.host) || tuiIsFocusedIn(this.dropdown());
+        return tuiIsFocusedIn(this.nativeElement) || tuiIsFocusedIn(this.dropdown());
     }
 
     private onKeydown(event: KeyboardEvent): void {
@@ -144,7 +147,7 @@ export class TuiDropdownOpen {
             tuiIsHTMLElement(target) &&
             !tuiIsElementEditable(target)
         ) {
-            this.host.focus({preventScroll: true});
+            this.nativeElement.focus({preventScroll: true});
         }
     }
 
