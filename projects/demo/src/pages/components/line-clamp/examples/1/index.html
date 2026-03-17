@@ -30,7 +30,12 @@
     </div>
 </ng-template>
 <ng-template #mormont>
-    <div class="hint no-wrap">Jorah Mormont of House Mormont, Lord of Bear Island</div>
+    <div
+        tuiFade
+        class="hint no-wrap"
+    >
+        Jorah Mormont of House Mormont, Lord of Bear Island
+    </div>
 </ng-template>
 
 <div class="island">
@@ -47,6 +52,24 @@
 
         Davis, Julia
     </ng-template>
+</div>
+
+<div class="tui-space_bottom-4">
+    <tui-line-clamp
+        [content]="value()"
+        [linesLimit]="2"
+    />
+
+    @if (!value()) {
+        <button
+            size="s"
+            tuiButton
+            type="button"
+            (click)="update()"
+        >
+            Load dynamic value
+        </button>
+    }
 </div>
 
 @if (value$ | async; as value) {

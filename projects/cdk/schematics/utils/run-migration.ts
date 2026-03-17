@@ -63,16 +63,12 @@ export async function runMigration(options: Input): Promise<Output> {
     };
 }
 
-type MigrationResult = Awaited<ReturnType<typeof runMigration>>;
-
-type Assertion = (result: MigrationResult) => Promise<void> | void;
-
 type Overrides = Omit<Input, 'collection'>;
 
-type MigrationTest = (overrides: Overrides, assertion?: Assertion) => () => Promise<void>;
+type MigrationTest = (overrides: Overrides) => () => Promise<void>;
 
 export function createMigration(options: Input): MigrationTest {
-    return function migrate(overrides: Overrides, assertion?: Assertion) {
+    return function migrate(overrides: Overrides) {
         return async () => {
             const before = {...options, ...overrides};
             const after = await runMigration({...options, ...overrides});
@@ -106,8 +102,6 @@ export function createMigration(options: Input): MigrationTest {
                     beforeAfterSnapshot(before.template, after.template),
                 ).toMatchSnapshot('test.html');
             }
-
-            await assertion?.(after);
         };
     };
 }
