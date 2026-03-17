@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputPhoneInternationalModule to TuiInputPhoneInternational',
         migrate({
@@ -56,12 +56,12 @@ describe('ng-update', () => {
         'moves [countries] to <input tuiInputPhoneInternational>',
         migrate({
             template: `
-<tui-input-phone-international
-    [countries]="allowedCountries"
-    formControlName="phone"
->
-    Phone
-</tui-input-phone-international>`,
+                <tui-input-phone-international
+                    [countries]="allowedCountries"
+                    formControlName="phone"
+                >
+                    Phone
+                </tui-input-phone-international>`,
         }),
     );
 
@@ -69,12 +69,12 @@ describe('ng-update', () => {
         'moves [(countryIsoCode)] to <input tuiInputPhoneInternational>',
         migrate({
             template: `
-<tui-input-phone-international
-    [(countryIsoCode)]="isoCode"
-    formControlName="phone"
->
-    Phone
-</tui-input-phone-international>`,
+                <tui-input-phone-international
+                    [(countryIsoCode)]="isoCode"
+                    formControlName="phone"
+                >
+                    Phone
+                </tui-input-phone-international>`,
         }),
     );
 
@@ -82,14 +82,14 @@ describe('ng-update', () => {
         'moves [countries] and [(countryIsoCode)] together',
         migrate({
             template: `
-<tui-input-phone-international
-    [countries]="allowedCountries"
-    [(countryIsoCode)]="isoCode"
-    formControlName="phone"
-    [tuiTextfieldCleaner]="true"
->
-    Phone
-</tui-input-phone-international>`,
+                <tui-input-phone-international
+                    [countries]="allowedCountries"
+                    [(countryIsoCode)]="isoCode"
+                    formControlName="phone"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Phone
+                </tui-input-phone-international>`,
         }),
     );
 

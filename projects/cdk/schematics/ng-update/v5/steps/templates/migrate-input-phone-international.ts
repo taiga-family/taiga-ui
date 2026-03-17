@@ -16,10 +16,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
-/**
- * Attrs that move from <tui-input-phone-international> to
- * <input tuiInputPhoneInternational> unchanged (same name in v5).
- */
 const INPUT_ATTRS = new Set([
     '(countryIsoCodeChange)'.toLowerCase(),
     '[(countryIsoCode)]'.toLowerCase(),
