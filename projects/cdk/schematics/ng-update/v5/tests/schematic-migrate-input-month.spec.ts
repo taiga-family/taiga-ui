@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputMonthModule to TuiInputMonth',
         migrate({
@@ -69,13 +69,13 @@ describe('ng-update', () => {
         'moves [min] and [max] to <input tuiInputMonth>',
         migrate({
             template: `
-<tui-input-month
-    [min]="minMonth"
-    [max]="maxMonth"
-    formControlName="month"
->
-    Month
-</tui-input-month>`,
+                <tui-input-month
+                    [min]="minMonth"
+                    [max]="maxMonth"
+                    formControlName="month"
+                >
+                    Month
+                </tui-input-month>`,
         }),
     );
 
@@ -83,12 +83,12 @@ describe('ng-update', () => {
         'moves [disabledItemHandler] to <tui-calendar-month *tuiDropdown>',
         migrate({
             template: `
-<tui-input-month
-    [disabledItemHandler]="disabledHandler"
-    formControlName="month"
->
-    Month
-</tui-input-month>`,
+                <tui-input-month
+                    [disabledItemHandler]="disabledHandler"
+                    formControlName="month"
+                >
+                    Month
+                </tui-input-month>`,
         }),
     );
 
@@ -96,12 +96,12 @@ describe('ng-update', () => {
         'adds TODO for [defaultActiveYear]',
         migrate({
             template: `
-<tui-input-month
-    [defaultActiveYear]="initialYear"
-    formControlName="month"
->
-    Month
-</tui-input-month>`,
+                <tui-input-month
+                    [defaultActiveYear]="initialYear"
+                    formControlName="month"
+                >
+                    Month
+                </tui-input-month>`,
         }),
     );
 
