@@ -729,4 +729,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'tuiAsPopover', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'tuiAsPortal', moduleSpecifier: '@taiga-ui/cdk'},
     },
+    {
+        from: {
+            name: 'TuiInputDateModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDate',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

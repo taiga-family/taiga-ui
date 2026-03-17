@@ -19,7 +19,6 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-date';
 
-/** Attrs that move from <tui-input-date> to <input tuiInputDate> (same name in v5). */
 const INPUT_ATTRS = new Set([
     '[max]'.toLowerCase(),
     '[min]'.toLowerCase(),
@@ -27,13 +26,11 @@ const INPUT_ATTRS = new Set([
     'min'.toLowerCase(),
 ]);
 
-/** Attrs that move to <tui-calendar *tuiDropdown> (same name in v5). */
 const CALENDAR_ATTRS = new Set([
     '[disabledItemHandler]'.toLowerCase(),
     '[markerHandler]'.toLowerCase(),
 ]);
 
-/** Attrs with no v5 equivalent — removed with a TODO. */
 const NO_EQUIVALENT_ATTRS = new Set([
     '[defaultActiveYearMonth]'.toLowerCase(),
     '[items]'.toLowerCase(),

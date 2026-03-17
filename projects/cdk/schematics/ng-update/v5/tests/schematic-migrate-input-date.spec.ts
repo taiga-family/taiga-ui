@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputDateModule to TuiInputDate',
         migrate({
@@ -55,13 +55,13 @@ describe('ng-update', () => {
         'moves [min] and [max] to <input tuiInputDate>',
         migrate({
             template: `
-<tui-input-date
-    [min]="minDate"
-    [max]="maxDate"
-    formControlName="date"
->
-    Date
-</tui-input-date>`,
+                <tui-input-date
+                    [min]="minDate"
+                    [max]="maxDate"
+                    formControlName="date"
+                >
+                    Date
+                </tui-input-date>`,
         }),
     );
 
@@ -69,13 +69,13 @@ describe('ng-update', () => {
         'moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>',
         migrate({
             template: `
-<tui-input-date
-    [disabledItemHandler]="disabledHandler"
-    [markerHandler]="markerHandler"
-    formControlName="date"
->
-    Date
-</tui-input-date>`,
+                <tui-input-date
+                    [disabledItemHandler]="disabledHandler"
+                    [markerHandler]="markerHandler"
+                    formControlName="date"
+                >
+                    Date
+                </tui-input-date>`,
         }),
     );
 
@@ -83,13 +83,13 @@ describe('ng-update', () => {
         'adds TODO for [items] and [defaultActiveYearMonth]',
         migrate({
             template: `
-<tui-input-date
-    [items]="namedDays"
-    [defaultActiveYearMonth]="initialMonth"
-    formControlName="date"
->
-    Date
-</tui-input-date>`,
+                <tui-input-date
+                    [items]="namedDays"
+                    [defaultActiveYearMonth]="initialMonth"
+                    formControlName="date"
+                >
+                    Date
+                </tui-input-date>`,
         }),
     );
 
