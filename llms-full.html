@@ -113,9 +113,9 @@
 ### dropdown
 
 ```text
-  TuiDropdown, TuiDropdownAlign, TuiDropdownAuto, TuiDropdownComponent, TuiDropdownContext, TuiDropdownDirective, TuiDropdownDriver, TuiDropdownDriverDirective, TuiDropdownFixed, TuiDropdownHover
-  TuiDropdownHoverOptions, TuiDropdownManual, TuiDropdownOpen, TuiDropdownOpenLegacy, TuiDropdownOptions, TuiDropdownOptionsDirective, TuiDropdownPortal, TuiDropdownPosition, TuiDropdownPositionSided, TuiDropdownSelection
-  TuiDropdownService, TuiDropdownWidth, TuiDropdowns, TuiWithDropdownOpen
+  TuiDropdown, TuiDropdownA11y, TuiDropdownAlign, TuiDropdownAuto, TuiDropdownComponent, TuiDropdownContext, TuiDropdownDirective, TuiDropdownDriver, TuiDropdownDriverDirective, TuiDropdownFixed
+  TuiDropdownHover, TuiDropdownHoverOptions, TuiDropdownManual, TuiDropdownOpen, TuiDropdownOpenLegacy, TuiDropdownOptions, TuiDropdownOptionsDirective, TuiDropdownPortal, TuiDropdownPosition, TuiDropdownPositionSided
+  TuiDropdownSelection, TuiDropdownService, TuiDropdownWidth, TuiDropdowns, TuiWithDropdownOpen
 ```
 ### group
 
@@ -14878,9 +14878,9 @@ export class Example {}
 
 **Template:**
 ```html
-&lt;button tuiButton tuiChevron tuiDropdownOpen type=&quot;button&quot; [tuiDropdown]=&quot;content&quot; &gt; Menu &lt;/button&gt;
+&lt;button tuiButton tuiChevron tuiDropdownOpen tuiDropdownRole=&quot;menu&quot; type=&quot;button&quot; [tuiDropdown]=&quot;content&quot; &gt; Menu &lt;/button&gt;
 &lt;ng-template #content&gt;
-&lt;tui-data-list role=&quot;menu&quot;&gt;
+&lt;tui-data-list&gt;
 &lt;tui-opt-group *ngFor=&quot;let group of groups&quot; [label]=&quot;group.label&quot; &gt;
 &lt;a *ngFor=&quot;let item of group.items&quot; #rla=&quot;routerLinkActive&quot; role=&quot;menuitemradio&quot; routerLinkActive tuiOption [attr.aria-checked]=&quot;rla.isActive&quot; [routerLink]=&quot;item.routerLink&quot; &gt; {{ item.label }} &lt;tui-icon *ngIf=&quot;rla.isActive&quot; icon=&quot;@tui.check&quot; /&gt;
 &lt;/a&gt;
@@ -16713,10 +16713,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Show dialog &lt;/button&gt;
-&lt;ng-template let-observer [(tuiDialog)]=&quot;open&quot; &gt;
-&lt;header tuiHeader&gt;
-&lt;h2 tuiTitle&gt;Let us know&lt;/h2&gt;
-&lt;/header&gt;
+&lt;ng-template let-observer [tuiDialogOptions]=&quot;{label: &#039;Let us know&#039;}&quot; [(tuiDialog)]=&quot;open&quot; &gt;
 &lt;form tuiForm (submit.prevent)=&quot;observer.complete()&quot; &gt;
 &lt;tui-textfield&gt;
 &lt;label tuiLabel&gt;Your name&lt;/label&gt;
@@ -16735,21 +16732,13 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiAutoFocus} from &#039;@taiga-ui/cdk&#039;;
-import {TuiButton, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiTextfield} from &#039;@taiga-ui/core&#039;;
 import {TuiDialog} from &#039;@taiga-ui/experimental&#039;;
-import {TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+import {TuiForm} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAutoFocus,
-        TuiButton,
-        TuiDialog,
-        TuiForm,
-        TuiHeader,
-        TuiTextfield,
-        TuiTitle,
-    ],
+    imports: [TuiAutoFocus, TuiButton, TuiDialog, TuiForm, TuiTextfield],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -16848,11 +16837,11 @@ export default class Example {
 **Template:**
 ```html
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Show dialog &lt;/button&gt;
-&lt;ng-template [tuiDialogOptions]=&quot;{size: &#039;s&#039;}&quot; [(tuiDialog)]=&quot;open&quot; &gt;
+&lt;ng-template let-id=&quot;id&quot; [tuiDialogOptions]=&quot;{size: &#039;s&#039;}&quot; [(tuiDialog)]=&quot;open&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;hgroup tuiTitle&gt;
-&lt;h2&gt;Hello!&lt;/h2&gt;
-&lt;p&gt;Welcome to the website&lt;/p&gt;
+&lt;h2 [id]=&quot;id&quot;&gt;Hello!&lt;/h2&gt;
+&lt;p&gt;Don&#039;t forget to set ID for accessible label&lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;/header&gt;
 &lt;footer&gt;
@@ -16902,10 +16891,10 @@ export default class Example {
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;scrollable = true&quot; &gt; Show scrollable &lt;/button&gt;
-&lt;ng-template [tuiDialogOptions]=&quot;{appearance: &#039;fullscreen&#039;}&quot; [(tuiDialog)]=&quot;fullscreen&quot; &gt;
+&lt;ng-template let-id=&quot;id&quot; [tuiDialogOptions]=&quot;{appearance: &#039;fullscreen&#039;}&quot; [(tuiDialog)]=&quot;fullscreen&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;hgroup tuiTitle&gt;
-&lt;h2&gt;Fullscreen heading&lt;/h2&gt;
+&lt;h2 [id]=&quot;id&quot;&gt;Fullscreen heading&lt;/h2&gt;
 &lt;p&gt; This is shown fullscreen regardless of content height, you can use &lt;code&gt;margin-top: auto&lt;/code&gt; to make sure footer is at the bottom of the page. &lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;/header&gt;
@@ -16977,16 +16966,16 @@ export default class Example {
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;custom = true&quot; &gt; Show custom &lt;/button&gt;
-&lt;ng-template [tuiDialogOptions]=&quot;{size: &#039;s&#039;, appearance: &#039;taiga compact&#039;}&quot; [(tuiDialog)]=&quot;augmented&quot; &gt;
+&lt;ng-template let-id=&quot;id&quot; [tuiDialogOptions]=&quot;{size: &#039;s&#039;, appearance: &#039;taiga compact&#039;}&quot; [(tuiDialog)]=&quot;augmented&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;hgroup tuiTitle&gt;
-&lt;h2&gt;Augmented design&lt;/h2&gt;
+&lt;h2 [id]=&quot;id&quot;&gt;Augmented design&lt;/h2&gt;
 &lt;p&gt;Using both built-in &quot;taiga&quot; appearance and custom &quot;compact&quot; appearance to alter built-in styles&lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;/header&gt;
 &lt;/ng-template&gt;
-&lt;ng-template [tuiDialogOptions]=&quot;{appearance: &#039;sheet&#039;}&quot; [(tuiDialog)]=&quot;custom&quot; &gt;
-&lt;header&gt;Custom design&lt;/header&gt;
+&lt;ng-template let-id=&quot;id&quot; [tuiDialogOptions]=&quot;{appearance: &#039;sheet&#039;}&quot; [(tuiDialog)]=&quot;custom&quot; &gt;
+&lt;header [id]=&quot;id&quot;&gt;Custom design&lt;/header&gt;
 &lt;p&gt; Overriding default appearance completely and taking the styles of dialog fully upon oneself, leaving only behavior like focus trap and closable/dismissible interactions to Taiga UI &lt;/p&gt;
 &lt;/ng-template&gt;
 ```
@@ -22171,6 +22160,17 @@ export default class Example {
 &lt;tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
 &lt;/tui-textfield&gt;
 &lt;/label&gt;
+&lt;label tuiLabel&gt; Conditional input in textfield &lt;tui-textfield multi tuiChevron &gt;
+&lt;label tuiLabel&gt;Multi Select with if/else&lt;/label&gt;
+&lt;input *ngIf=&quot;filter; else readonly&quot; tuiInputChip [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;conditionalMulti&quot; /&gt;
+&lt;ng-template #readonly&gt;
+&lt;input tuiInputChip tuiSelectLike [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;multi&quot; /&gt;
+&lt;/ng-template&gt;
+&lt;tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/label&gt;
+&lt;label tuiLabel&gt;
+&lt;input tuiCheckbox type=&quot;checkbox&quot; [(ngModel)]=&quot;filter&quot; /&gt; Toggle filter &lt;/label&gt;
 &lt;label tuiLabel&gt; Working with objects &lt;tui-textfield multi tuiChevron [disabledItemHandler]=&quot;strings&quot; [stringify]=&quot;stringify&quot; &gt;
 &lt;input tuiInputChip [placeholder]=&quot;objects.length ? &#039;&#039; : &#039;Picking objects&#039;&quot; [(ngModel)]=&quot;objects&quot; /&gt;
 &lt;tui-input-chip *tuiItem /&gt;
@@ -22195,6 +22195,7 @@ import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {tuiIsString} from &#039;@taiga-ui/cdk&#039;;
 import {TuiDataList, TuiSelectLike, TuiTextfield} from &#039;@taiga-ui/core&#039;;
 import {
+    TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
@@ -22214,6 +22215,7 @@ interface User {
         FormsModule,
         NgForOf,
         NgIf,
+        TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -22233,7 +22235,10 @@ export default class Example {
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
+    protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
+
+    protected filter = false;
 
     protected readonly items: string[] = inject(&#039;Pythons&#039; as any);
     protected readonly users = this.items.map((name, index) =&gt; ({name, index}));
@@ -25232,6 +25237,66 @@ export default class Example {
 }
 ```
 
+#### Accept
+
+**Template:**
+```html
+&lt;label tuiInputFiles&gt;
+&lt;input #validator=&quot;tuiInputFilesValidator&quot; tuiInputFiles [formControl]=&quot;control&quot; [multiple]=&quot;true&quot; (reject)=&quot;onReject($event)&quot; /&gt;
+&lt;/label&gt;
+&lt;tui-files class=&quot;tui-space_top-1&quot;&gt;
+&lt;tui-file *ngFor=&quot;let file of accepted$ | async&quot; [file]=&quot;file&quot; (remove)=&quot;onRemove(file)&quot; /&gt;
+&lt;tui-file *ngFor=&quot;let file of rejected&quot; state=&quot;error&quot; [file]=&quot;(file | tuiFileRejected: validator | async) || file&quot; (remove)=&quot;onRemove(file)&quot; /&gt;
+&lt;/tui-files&gt;
+```
+**TypeScript:**
+```ts
+import {AsyncPipe, NgForOf} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiFiles, tuiFilesAccepted, tuiInputFilesOptionsProvider} from &#039;@taiga-ui/kit&#039;;
+import {map, startWith} from &#039;rxjs&#039;;
+
+@Component({
+    standalone: true,
+    imports: [AsyncPipe, NgForOf, ReactiveFormsModule, TuiFiles],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputFilesOptionsProvider({
+            accept: &#039;.jpeg, .jpg, .png, .pdf, .doc, .docx, .zip, .tif&#039;,
+        }),
+    ],
+})
+export default class Example {
+    protected readonly control = new FormControl&lt;File[]&gt;([
+        new File([&#039;mock zip content&#039;], &#039;valid.zip&#039;, {type: &#039;application/zip&#039;}),
+        new File([&#039;Lorem ipsum&#039;], &#039;wrong.txt&#039;, {type: &#039;application/txt&#039;}),
+    ]);
+
+    protected readonly accepted$ = this.control.valueChanges.pipe(
+        startWith(this.control.value),
+        map(() =&gt; tuiFilesAccepted(this.control)),
+    );
+
+    protected rejected: readonly File[] = [];
+
+    protected onReject(files: readonly File[]): void {
+        this.rejected = Array.from(new Set(this.rejected.concat(files)));
+    }
+
+    protected onRemove(file: File): void {
+        this.rejected = this.rejected.filter((current) =&gt; current !== file);
+        this.control.setValue(
+            this.control.value?.filter((current) =&gt; current !== file) ?? [],
+        );
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -25260,6 +25325,7 @@ export default class PageComponent {
         &#039;Custom content&#039;,
         &#039;Camera capture&#039;,
         &#039;Model&#039;,
+        &#039;Accept&#039;,
     ];
 
     protected multiple = true;
@@ -31676,6 +31742,10 @@ export class Example {}
 &lt;ng-template #content&gt;
 &lt;tui-chip appearance=&quot;negative&quot; size=&quot;xxs&quot; &gt; DRAFT &lt;/tui-chip&gt; Davis, Julia &lt;/ng-template&gt;
 &lt;/div&gt;
+&lt;div class=&quot;tui-space_bottom-4&quot;&gt;
+&lt;tui-line-clamp [content]=&quot;value()&quot; [linesLimit]=&quot;2&quot; /&gt;
+&lt;button *ngIf=&quot;!value()&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; (click)=&quot;update()&quot; &gt; Load dynamic value &lt;/button&gt;
+&lt;/div&gt;
 &lt;div *ngIf=&quot;value$ | async as value; else loading&quot; class=&quot;wrapper&quot; &gt;
 &lt;div class=&quot;result&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -31688,17 +31758,17 @@ export class Example {}
 **TypeScript:**
 ```ts
 import {AsyncPipe, NgIf} from &#039;@angular/common&#039;;
-import {Component, inject} from &#039;@angular/core&#039;;
+import {Component, inject, signal} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TUI_IS_E2E, tuiWatch} from &#039;@taiga-ui/cdk&#039;;
-import {TuiNotification} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiNotification} from &#039;@taiga-ui/core&#039;;
 import {TuiChip, TuiLineClamp} from &#039;@taiga-ui/kit&#039;;
 import {map, timer} from &#039;rxjs&#039;;
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, NgIf, TuiChip, TuiLineClamp, TuiNotification],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
     encapsulation,
@@ -31707,10 +31777,18 @@ import {map, timer} from &#039;rxjs&#039;;
 export default class Example {
     private readonly isE2E = inject(TUI_IS_E2E);
 
+    protected readonly value = signal(&#039;&#039;);
+
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
         map(() =&gt; `${&#039;async fake value, &#039;.repeat(10)}end!`),
         tuiWatch(),
     );
+
+    public update(): void {
+        this.value.set(
+            &#039;Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons&#039;,
+        );
+    }
 }
 ```
 **LESS:**
@@ -41917,7 +41995,10 @@ export default class Example {
 
     protected onClick(): void {
         this.service
-            .open(&#039;Supports &lt;b&gt;basic&lt;/b&gt; HTML&#039;, {label: &#039;Simple sheet&#039;, data: &#039;OK&#039;})
+            .open(&#039;Supports &lt;b&gt;basic&lt;/b&gt; HTML&#039;, {
+                label: &#039;Simple sheet&#039;,
+                data: {button: &#039;OK&#039;},
+            })
             .subscribe();
     }
 }
@@ -44813,6 +44894,8 @@ export default class Example {
 }
 
 tui-swipe-actions {
+    --tui-actions-padding: 1rem;
+
     margin: -3rem -1.5rem;
 }
 
@@ -63414,26 +63497,38 @@ export default class Example&lt;T extends User = User&gt; {
 
 **Template:**
 ```html
-&lt;tui-multi-select placeholder=&quot;Ignored text&quot; [formControl]=&quot;control&quot; [tuiTextfieldLabelOutside]=&quot;true&quot; &gt; Star Wars persons &lt;tui-data-list-wrapper *tuiDataList tuiMultiSelectGroup [items]=&quot;items | tuiFilterByInput&quot; /&gt;
-&lt;/tui-multi-select&gt;
+&lt;tui-textfield multi tuiChevron &gt;
+&lt;label tuiLabel&gt;Star Wars persons&lt;/label&gt;
+&lt;input placeholder=&quot;Ignored text&quot; tuiInputChip [formControl]=&quot;control&quot; /&gt;
+&lt;tui-input-chip *tuiItem /&gt;
+&lt;tui-data-list-wrapper *tuiTextfieldDropdown new tuiMultiSelectGroup [items]=&quot;items | tuiFilterByInput&quot; /&gt;
+&lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
 import {Component} from &#039;@angular/core&#039;;
 import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiInputChip,
+    TuiMultiSelect,
+} from &#039;@taiga-ui/kit&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiDataListWrapper, TuiFilterByInputPipe} from &#039;@taiga-ui/kit&#039;;
-import {TuiMultiSelectModule, TuiTextfieldControllerModule} from &#039;@taiga-ui/legacy&#039;;
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiMultiSelectModule,
-        TuiTextfieldControllerModule,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiTextfield,
     ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
