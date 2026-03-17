@@ -19,15 +19,8 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-time';
 
-/**
- * Attrs that move from <tui-input-time> to <input tuiInputTime> unchanged.
- */
 const INPUT_ATTRS = new Set(['[mode]'.toLowerCase(), 'mode'.toLowerCase()]);
 
-/**
- * Attrs that had a dropdown-related purpose in v4 and have no equivalent in v5.
- * In v5 tui-input-time is a plain text input (no dropdown).
- */
 const DROPPED_DROPDOWN_ATTRS = new Set([
     '[disabledItemHandler]'.toLowerCase(),
     '[items]'.toLowerCase(),

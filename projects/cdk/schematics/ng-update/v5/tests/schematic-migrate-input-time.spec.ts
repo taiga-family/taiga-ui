@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputTimeModule to TuiInputTime',
         migrate({
@@ -58,9 +58,9 @@ describe('ng-update', () => {
         'moves [mode] to <input tuiInputTime>',
         migrate({
             template: `
-<tui-input-time [mode]="'HH:MM'" formControlName="time">
-    Time
-</tui-input-time>`,
+                <tui-input-time [mode]="'HH:MM'" formControlName="time">
+                    Time
+                </tui-input-time>`,
         }),
     );
 
@@ -68,12 +68,12 @@ describe('ng-update', () => {
         'removes [items] with TODO comment',
         migrate({
             template: `
-<tui-input-time
-    [items]="timeItems"
-    formControlName="time"
->
-    Time
-</tui-input-time>`,
+                <tui-input-time
+                    [items]="timeItems"
+                    formControlName="time"
+                >
+                    Time
+                </tui-input-time>`,
         }),
     );
 
@@ -81,15 +81,15 @@ describe('ng-update', () => {
         'silently removes strict, itemsHidden, [itemSize], [disabledItemHandler]',
         migrate({
             template: `
-<tui-input-time
-    formControlName="time"
-    [strict]="true"
-    [itemsHidden]="false"
-    [itemSize]="'s'"
-    [disabledItemHandler]="handler"
->
-    Time
-</tui-input-time>`,
+                <tui-input-time
+                    formControlName="time"
+                    [strict]="true"
+                    [itemsHidden]="false"
+                    [itemSize]="'s'"
+                    [disabledItemHandler]="handler"
+                >
+                    Time
+                </tui-input-time>`,
         }),
     );
 
