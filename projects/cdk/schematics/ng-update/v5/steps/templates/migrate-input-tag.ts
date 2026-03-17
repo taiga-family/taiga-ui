@@ -19,10 +19,6 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-chip';
 
-/**
- * Attrs that move to <input tuiInputChip> with optional renaming.
- * Key = lowercased v4 attr name, Value = v5 attr name.
- */
 const INPUT_ATTR_RENAMES = new Map<string, string>([
     ['[maxLength]'.toLowerCase(), '[maxlength]'],
     ['[placeholder]'.toLowerCase(), '[placeholder]'],
@@ -34,9 +30,6 @@ const INPUT_ATTR_RENAMES = new Map<string, string>([
     ['uniqueTags'.toLowerCase(), 'unique'],
 ]);
 
-/**
- * Attrs with no v5 equivalent that need a TODO comment.
- */
 const TODO_ATTRS = new Set([
     '(searchChange)'.toLowerCase(),
     '[(search)]'.toLowerCase(),
@@ -46,9 +39,6 @@ const TODO_ATTRS = new Set([
     'rows'.toLowerCase(),
 ]);
 
-/**
- * Attrs with no v5 equivalent that are silently removed.
- */
 const DROPPED_ATTRS = new Set([
     '[autoColor]'.toLowerCase(),
     '[disabledItemHandler]'.toLowerCase(),

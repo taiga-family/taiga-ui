@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputTagModule to TuiInputChip',
         migrate({
@@ -52,13 +52,13 @@ describe('ng-update', () => {
         'moves [separator] and [uniqueTags] (→ [unique]) to <input tuiInputChip>',
         migrate({
             template: `
-<tui-input-tag
-    [separator]="separatorRegex"
-    [uniqueTags]="true"
-    formControlName="tags"
->
-    Tags
-</tui-input-tag>`,
+                <tui-input-tag
+                    [separator]="separatorRegex"
+                    [uniqueTags]="true"
+                    formControlName="tags"
+                >
+                    Tags
+                </tui-input-tag>`,
         }),
     );
 
@@ -66,11 +66,11 @@ describe('ng-update', () => {
         'moves placeholder to <input tuiInputChip>',
         migrate({
             template: `
-<tui-input-tag
-    placeholder="Add tag..."
-    formControlName="tags"
->
-</tui-input-tag>`,
+                <tui-input-tag
+                    placeholder="Add tag..."
+                    formControlName="tags"
+                >
+                </tui-input-tag>`,
         }),
     );
 
@@ -78,13 +78,13 @@ describe('ng-update', () => {
         'adds TODO for [tagValidator] and [search]',
         migrate({
             template: `
-<tui-input-tag
-    [tagValidator]="myValidator"
-    [(search)]="searchValue"
-    formControlName="tags"
->
-    Tags
-</tui-input-tag>`,
+                <tui-input-tag
+                    [tagValidator]="myValidator"
+                    [(search)]="searchValue"
+                    formControlName="tags"
+                >
+                    Tags
+                </tui-input-tag>`,
         }),
     );
 
@@ -92,15 +92,15 @@ describe('ng-update', () => {
         'silently removes [editable], [inputHidden], [autoColor], [removable]',
         migrate({
             template: `
-<tui-input-tag
-    formControlName="tags"
-    [editable]="false"
-    [inputHidden]="true"
-    [autoColor]="true"
-    [removable]="false"
->
-    Tags
-</tui-input-tag>`,
+                <tui-input-tag
+                    formControlName="tags"
+                    [editable]="false"
+                    [inputHidden]="true"
+                    [autoColor]="true"
+                    [removable]="false"
+                >
+                    Tags
+                </tui-input-tag>`,
         }),
     );
 
@@ -108,12 +108,12 @@ describe('ng-update', () => {
         'adds TODO for [rows] (no v5 equivalent)',
         migrate({
             template: `
-<tui-input-tag
-    formControlName="tags"
-    [rows]="3"
->
-    Tags
-</tui-input-tag>`,
+                <tui-input-tag
+                    formControlName="tags"
+                    [rows]="3"
+                >
+                    Tags
+                </tui-input-tag>`,
         }),
     );
 
@@ -121,12 +121,12 @@ describe('ng-update', () => {
         'renames [maxLength] to [maxlength] on <input tuiInputChip>',
         migrate({
             template: `
-<tui-input-tag
-    formControlName="tags"
-    [maxLength]="50"
->
-    Tags
-</tui-input-tag>`,
+                <tui-input-tag
+                    formControlName="tags"
+                    [maxLength]="50"
+                >
+                    Tags
+                </tui-input-tag>`,
         }),
     );
 
