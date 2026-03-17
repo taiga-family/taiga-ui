@@ -11,10 +11,13 @@ import {tuiInjectElement, tuiPx} from '@taiga-ui/cdk/utils';
 export class TuiVisualViewport {
     private readonly w = inject(WA_WINDOW);
     private readonly style = tuiInjectElement().style;
+    private minInnerHeight = Infinity;
 
     protected readonly $ = inject(ViewportService)
         .pipe(takeUntilDestroyed())
         .subscribe(({offsetLeft, offsetTop, height, width, scale}) => {
+            this.minInnerHeight = Math.min(this.minInnerHeight, this.w.innerHeight);
+
             this.style.setProperty('--tui-viewport-x', tuiPx(offsetLeft));
             this.style.setProperty('--tui-viewport-y', tuiPx(offsetTop));
             this.style.setProperty('--tui-viewport-height', tuiPx(height));
@@ -22,5 +25,6 @@ export class TuiVisualViewport {
             this.style.setProperty('--tui-viewport-scale', String(scale));
             this.style.setProperty('--tui-viewport-vh', tuiPx(this.w.innerHeight / 100));
             this.style.setProperty('--tui-viewport-vw', tuiPx(this.w.innerWidth / 100));
+            this.style.setProperty('--tui-viewport-svh', tuiPx(this.minInnerHeight));
         });
 }
