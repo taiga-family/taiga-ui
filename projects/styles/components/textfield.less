@@ -181,6 +181,7 @@ tui-textfield:where(*&) {
         & > .t-template,
         .t-filler,
         [tuiInput] {
+            inset-block-end: 0;
             padding-block-start: calc(var(--t-height) / 3);
             padding-block-end: 0;
         }
@@ -200,10 +201,9 @@ tui-textfield:where(*&) {
     .t-filler,
     [tuiInput] {
         position: absolute;
-        inset-block-start: 0;
         inset-inline: 0;
         inline-size: auto;
-        block-size: 100%;
+        block-size: var(--t-height);
         appearance: none;
         background: none;
         font: inherit;
@@ -267,7 +267,6 @@ tui-textfield:where(*&) {
         user-select: none;
         padding: calc(var(--t-height) / 2 - 0.625em) 0;
         line-height: 1.25 !important;
-        letter-spacing: calc((max(1em, 0.75rem) - 1em) * 0.4);
         transition-duration: inherit;
 
         + .t-content {
