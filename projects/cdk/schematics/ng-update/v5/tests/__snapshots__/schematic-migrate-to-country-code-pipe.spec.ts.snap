@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update migrate TuiToCountryCodePipe to maskitoGetCountryFromNumber replaces TuiToCountryCodePipe import with maskitoGetCountryFromNumber: test.ts 1`] = `
+exports[`ng-update migrate TuiToCountryCodePipe adds TODO comment for TuiToCountryCodePipe (no automatic rename): test.ts 1`] = `
 {
   "0. Before": "
                 import {TuiToCountryCodePipe} from '@taiga-ui/legacy';
@@ -8,38 +8,20 @@ exports[`ng-update migrate TuiToCountryCodePipe to maskitoGetCountryFromNumber r
                 @Component({
                     standalone: true,
                     imports: [TuiToCountryCodePipe],
-                    template: '{{ phone | tuiToCountryCode:countries }}'
+                    template: '{{ phone | tuiToCountryCode }}'
                 })
                 export class TestComponent {}
             ",
-  "1. After": "import { maskitoGetCountryFromNumber } from "@maskito/phone";
-
-                                @Component({
-                    standalone: true,
-                    imports: [maskitoGetCountryFromNumber],
-                    template: '{{ phone | tuiToCountryCode:countries }}'
-                })
-                export class TestComponent {}
-            ",
-}
-`;
-
-exports[`ng-update migrate TuiToCountryCodePipe to maskitoGetCountryFromNumber replaces TuiToCountryCodePipe used programmatically: test.ts 1`] = `
-{
-  "0. Before": "
+  "1. After": "
+// TODO: (Taiga UI migration) TuiToCountryCodePipe has been removed. Replace pipe usage \`phone | tuiToCountryCode\` with the maskitoGetCountryFromNumber(phone) function from @maskito/phone.
                 import {TuiToCountryCodePipe} from '@taiga-ui/legacy';
 
-                @Injectable()
-                export class TestService {
-                    private readonly pipe = new TuiToCountryCodePipe(countriesMasks);
-                }
-            ",
-  "1. After": "import { maskitoGetCountryFromNumber } from "@maskito/phone";
-
-                                @Injectable()
-                export class TestService {
-                    private readonly pipe = new maskitoGetCountryFromNumber(countriesMasks);
-                }
+                @Component({
+                    standalone: true,
+                    imports: [TuiToCountryCodePipe],
+                    template: '{{ phone | tuiToCountryCode }}'
+                })
+                export class TestComponent {}
             ",
 }
 `;
