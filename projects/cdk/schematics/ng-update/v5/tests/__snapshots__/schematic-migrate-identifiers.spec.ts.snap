@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update identifiers migration adds TODO for TuiStatus type (cannot be auto-migrated to string literal): test.ts 1`] = `
+{
+  "0. Before": "
+                import {type TuiStatus} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    template: '',
+                })
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
+            ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiStatus type has been removed. Replace with a plain string literal type: "default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"
+                import {type TuiStatus} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    template: '',
+                })
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration migrates identifiers to new packages: test.ts 1`] = `
 {
   "0. Before": "
@@ -69,34 +97,6 @@ exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: tes
 
                                 export class TestComponent {
                     protected readonly flag = TuiFlagPipe;
-                }
-            ",
-}
-`;
-
-exports[`ng-update identifiers migration adds TODO for TuiStatus type (cannot be auto-migrated to string literal): test.ts 1`] = `
-{
-  "0. Before": "
-                import {type TuiStatus} from '@taiga-ui/legacy';
-
-                @Component({
-                    standalone: true,
-                    template: '',
-                })
-                export class TestComponent {
-                    public status: TuiStatus = 'error';
-                }
-            ",
-  "1. After": "
-// TODO: (Taiga UI migration) TuiStatus type has been removed. Replace with a plain string literal type: \\"default\\" | \\"error\\" | \\"info\\" | \\"neutral\\" | \\"primary\\" | \\"success\\" | \\"warning\\"
-                import {type TuiStatus} from '@taiga-ui/legacy';
-
-                @Component({
-                    standalone: true,
-                    template: '',
-                })
-                export class TestComponent {
-                    public status: TuiStatus = 'error';
                 }
             ",
 }
