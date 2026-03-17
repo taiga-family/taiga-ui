@@ -1,7 +1,9 @@
-/// <reference types="jest" />
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {type expect as jestExpect} from '@jest/globals';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+
+declare const expect: typeof jestExpect;
 
 interface Input {
     collection: string;

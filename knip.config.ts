@@ -2,6 +2,7 @@ import {type KnipConfig} from 'knip';
 
 const config: KnipConfig = {
     ignoreDependencies: [
+        '@jest/.+',
         '@types/.+',
         '@taiga-ui/.+',
         '@ng-web-apis/.+',
