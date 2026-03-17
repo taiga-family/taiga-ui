@@ -107,7 +107,6 @@ export function migrateInputPassword({
                         `tuiInput type="password"${migrationAttrs}`,
                     );
 
-                    // Insert tui-icon tuiPassword after the input element
                     const inputEndOffset =
                         (input.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 

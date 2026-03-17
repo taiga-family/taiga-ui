@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputPasswordModule to TuiPassword',
         migrate({
