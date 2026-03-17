@@ -12,7 +12,7 @@ export interface TuiInputDateMultiOptions extends Omit<
     TuiInputDateOptionsNew,
     'valueTransformer'
 > {
-    readonly valueTransformer: TuiValueTransformer<TuiDay[] | null>;
+    readonly valueTransformer: TuiValueTransformer<TuiDay[]>;
 }
 
 export const TUI_INPUT_DATE_MULTI_OPTIONS = new InjectionToken<TuiInputDateMultiOptions>(
@@ -24,25 +24,19 @@ export const TUI_INPUT_DATE_MULTI_OPTIONS = new InjectionToken<TuiInputDateMulti
             return {
                 ...options,
                 valueTransformer: {
-                    fromControlValue: (value: unknown): TuiDay[] | null => {
-                        if (!Array.isArray(value)) {
-                            return [];
-                        }
-
-                        const transformed = value.map((item) =>
-                            options.valueTransformer.fromControlValue(item),
-                        );
-
-                        return transformed.every((item): item is TuiDay => item !== null)
-                            ? transformed
+                    fromControlValue: (value: unknown): TuiDay[] => {
+                        return Array.isArray(value)
+                            ? value
+                                  .map((item) =>
+                                      options.valueTransformer.fromControlValue(item),
+                                  )
+                                  .filter((item): item is TuiDay => item !== null)
                             : [];
                     },
-                    toControlValue: (value: TuiDay[] | null): unknown =>
-                        value
-                            ? value.map((item) =>
-                                  options.valueTransformer.toControlValue(item),
-                              )
-                            : [],
+                    toControlValue: (value: TuiDay[]): unknown =>
+                        value.map((item) =>
+                            options.valueTransformer.toControlValue(item),
+                        ),
                 },
             };
         },

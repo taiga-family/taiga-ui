@@ -16,10 +16,10 @@ import {TuiInputDateMulti, tuiInputDateMultiOptionsProvider} from '@taiga-ui/kit
     providers: [
         tuiInputDateMultiOptionsProvider({
             valueTransformer: {
-                fromControlValue: (value: Date[] | null): TuiDay[] | null =>
-                    value?.map((date) => TuiDay.fromUtcNativeDate(date)) ?? null,
-                toControlValue: (value: TuiDay[] | null): Date[] | null =>
-                    value?.map((day) => day.toUtcNativeDate()) ?? null,
+                fromControlValue: (value: Date[] | null): TuiDay[] =>
+                    value?.map((date) => TuiDay.fromUtcNativeDate(date)) ?? [],
+                toControlValue: (value: TuiDay[]): Date[] =>
+                    value?.map((day) => day.toUtcNativeDate()),
             },
         }),
     ],

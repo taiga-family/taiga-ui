@@ -85,10 +85,10 @@ describe('TuiInputDateMultiDirective', () => {
         providers: [
             tuiInputDateMultiOptionsProvider({
                 valueTransformer: {
-                    fromControlValue: (value: Date[] | null): TuiDay[] | null =>
-                        value?.map((date) => TuiDay.fromLocalNativeDate(date)) ?? null,
-                    toControlValue: (value: TuiDay[] | null): Date[] | null =>
-                        value?.map((day) => day.toLocalNativeDate()) ?? null,
+                    fromControlValue: (value: Date[] | null): TuiDay[] =>
+                        value?.map((date) => TuiDay.fromLocalNativeDate(date)) ?? [],
+                    toControlValue: (value: TuiDay[]): Date[] =>
+                        value.map((day) => day.toLocalNativeDate()),
                 },
             }),
         ],
