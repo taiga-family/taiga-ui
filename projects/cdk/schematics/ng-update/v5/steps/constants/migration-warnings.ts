@@ -43,4 +43,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiFeedItemDetailsComponent has been removed. Use BlockDetails instead. See https://taiga-ui.dev/layout/block-details',
     },
+    {
+        name: 'TuiToCountryCodePipe',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiToCountryCodePipe has been removed. Replace pipe usage `phone | tuiToCountryCode` with the maskitoGetCountryFromNumber(phone) function from @maskito/phone.',
+    },
 ];
