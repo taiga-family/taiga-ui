@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputDateRangeModule to TuiInputDateRange',
         migrate({
@@ -55,15 +55,15 @@ describe('ng-update', () => {
         'moves [min], [max], [minLength], [maxLength] to <input tuiInputDateRange>',
         migrate({
             template: `
-<tui-input-date-range
-    [min]="minDate"
-    [max]="maxDate"
-    [minLength]="{day: 3}"
-    [maxLength]="{month: 1}"
-    formControlName="range"
->
-    Range
-</tui-input-date-range>`,
+                <tui-input-date-range
+                    [min]="minDate"
+                    [max]="maxDate"
+                    [minLength]="{day: 3}"
+                    [maxLength]="{month: 1}"
+                    formControlName="range"
+                >
+                    Range
+                </tui-input-date-range>`,
         }),
     );
 
@@ -71,13 +71,13 @@ describe('ng-update', () => {
         'moves [disabledItemHandler] and [markerHandler] to <tui-calendar-range *tuiDropdown>',
         migrate({
             template: `
-<tui-input-date-range
-    [disabledItemHandler]="disabledHandler"
-    [markerHandler]="markerHandler"
-    formControlName="range"
->
-    Range
-</tui-input-date-range>`,
+                <tui-input-date-range
+                    [disabledItemHandler]="disabledHandler"
+                    [markerHandler]="markerHandler"
+                    formControlName="range"
+                >
+                    Range
+                </tui-input-date-range>`,
         }),
     );
 
@@ -85,13 +85,13 @@ describe('ng-update', () => {
         'adds TODO for [items] and [defaultViewedMonth]',
         migrate({
             template: `
-<tui-input-date-range
-    [items]="periods"
-    [defaultViewedMonth]="initialMonth"
-    formControlName="range"
->
-    Range
-</tui-input-date-range>`,
+                <tui-input-date-range
+                    [items]="periods"
+                    [defaultViewedMonth]="initialMonth"
+                    formControlName="range"
+                >
+                    Range
+                </tui-input-date-range>`,
         }),
     );
 
