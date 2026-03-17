@@ -29,10 +29,6 @@ const CONTROL_ATTR_NAMES = [
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
-/**
- * Attributes that stay on the outer <tui-textfield> wrapper.
- * Everything else goes to the inner <textarea>.
- */
 const TEXTFIELD_WRAPPER_ATTRS = new Set([
     '[tuiHintAppearance]'.toLowerCase(),
     '[tuiHintContent]'.toLowerCase(),
