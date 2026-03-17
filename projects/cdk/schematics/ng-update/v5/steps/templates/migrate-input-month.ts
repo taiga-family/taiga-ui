@@ -20,10 +20,10 @@ type Element = DefaultTreeAdapterTypes.Element;
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-month';
 
 const INPUT_ATTRS = new Set([
-    '[min]'.toLowerCase(),
     '[max]'.toLowerCase(),
-    'min'.toLowerCase(),
+    '[min]'.toLowerCase(),
     'max'.toLowerCase(),
+    'min'.toLowerCase(),
 ]);
 
 const CALENDAR_ATTRS = new Set(['[disabledItemHandler]'.toLowerCase()]);
@@ -120,16 +120,11 @@ export function migrateInputMonth({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce(
-            (result, attr) => {
-                const name = normalizeAttrName(attr.name);
+        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+            const name = normalizeAttrName(attr.name);
 
-                return attr.value
-                    ? `${result} ${name}="${attr.value}"`
-                    : `${result} ${name}`;
-            },
-            '',
-        );
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+        }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
             return attr.value
@@ -172,8 +167,6 @@ export function migrateInputMonth({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
@@ -184,6 +177,8 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         default:
             return name;
     }
