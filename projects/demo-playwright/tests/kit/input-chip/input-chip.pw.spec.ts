@@ -75,6 +75,34 @@ test.describe('InputChip', () => {
 
             await expect.soft(example).toHaveScreenshot('input-chip-disabled-2.png');
         });
+
+        test('multiselect with *ngIf input keeps dropdown behavior after toggling mode', async ({
+            page,
+        }) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const example = doc.getExample('#multi-select');
+            const block = example.locator('[tuiLabel]', {
+                hasText: 'Conditional input in textfield',
+            });
+            const input = block.locator('tui-textfield input[tuiInputChip]');
+            const toggle = example.locator('input[type="checkbox"]');
+            const dropdown = page.locator('tui-dropdown');
+
+            await block.scrollIntoViewIfNeeded();
+
+            const checkDropdown = async (): Promise<void> => {
+                for (let i = 0; i < 5; i++) {
+                    await input.click();
+                    await expect(dropdown).toBeAttached();
+                    await input.blur();
+                    await expect(dropdown).toBeHidden();
+                }
+            };
+
+            await checkDropdown();
+            await toggle.click();
+            await checkDropdown();
+        });
     });
 
     test.describe('API', () => {
