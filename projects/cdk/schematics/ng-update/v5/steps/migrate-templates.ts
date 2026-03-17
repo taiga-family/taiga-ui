@@ -35,6 +35,7 @@ import {migrateAxes} from './templates/migrate-axes';
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateFieldError} from './templates/migrate-field-error';
+import {migrateInputColor} from './templates/migrate-input-color';
 import {migrateInputMonth} from './templates/migrate-input-month';
 import {migrateInputPassword} from './templates/migrate-input-password';
 import {migrateInputRange} from './templates/migrate-input-range';
@@ -87,6 +88,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateInputPassword,
         migrateInputMonth,
+        migrateInputColor,
         migrateInputYear,
         migrateSelect,
         migrateInputRange,
