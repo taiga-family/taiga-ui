@@ -79,7 +79,10 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
 
     // TODO: Added just to avoid breaking anything until we refactor to signal queries
-    @ContentChild(forwardRef(() => TuiTextfieldBase), {read: ElementRef})
+    @ContentChild(forwardRef(() => TuiTextfieldBase), {
+        read: ElementRef,
+        descendants: true,
+    })
     // eslint-disable-next-line @typescript-eslint/naming-convention
     protected readonly _input?: ElementRef<HTMLInputElement>;
 
@@ -109,10 +112,10 @@ export class TuiTextfieldBaseComponent<T>
     @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
-    @ContentChild(NgControl)
+    @ContentChild(NgControl, {descendants: true})
     public readonly control?: NgControl;
 
-    @ContentChild(TuiControl)
+    @ContentChild(TuiControl, {descendants: true})
     public readonly cva?: TuiControl<unknown>;
 
     // TODO: Replace with signal query when Angular is updated v5
@@ -172,6 +175,10 @@ export class TuiTextfieldBaseComponent<T>
         this.open.set(false);
     }
 
+    protected get interactiveInput(): ElementRef<HTMLInputElement> | undefined {
+        return this._input ?? this.input;
+    }
+
     protected get hasLabel(): boolean {
         return Boolean(this.label?.nativeElement?.childNodes.length);
     }
@@ -182,11 +189,13 @@ export class TuiTextfieldBaseComponent<T>
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
-        this.input?.nativeElement.focus();
+        this.interactiveInput?.nativeElement.focus();
 
         if (
             !this.dropdownOpen.tuiDropdownEnabled ||
-            this.input?.nativeElement.matches('input:read-only,textarea:read-only')
+            this.interactiveInput?.nativeElement.matches(
+                'input:read-only,textarea:read-only',
+            )
         ) {
             return;
         }
@@ -194,7 +203,7 @@ export class TuiTextfieldBaseComponent<T>
         this.open.update((open) => !open);
 
         try {
-            this.input?.nativeElement.showPicker?.();
+            this.interactiveInput?.nativeElement.showPicker?.();
         } catch {
             // Empty catch block - silently ignore showPicker errors
         }

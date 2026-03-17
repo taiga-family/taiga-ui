@@ -6,6 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
+    TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
@@ -25,6 +26,7 @@ interface User {
         FormsModule,
         NgForOf,
         NgIf,
+        TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -44,7 +46,10 @@ export default class Example {
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
+    protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
+
+    protected filter = false;
 
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));
