@@ -4,9 +4,7 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-const migrate = createMigration({
-    collection: join(__dirname, '../../../migration.json'),
-});
+const migrate = createMigration({collection: join(__dirname, '../../../migration.json')});
 
 describe('ng-update migrate TuiIsoToCountryCodePipe', () => {
     it(
