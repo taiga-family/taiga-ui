@@ -4,9 +4,7 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-const migrate = createMigration({
-    collection: join(__dirname, '../../../migration.json'),
-});
+const migrate = createMigration({collection: join(__dirname, '../../../migration.json')});
 
 describe('ng-update legacy input', () => {
     it(
@@ -22,7 +20,7 @@ describe('ng-update legacy input', () => {
                 })
                 export class TestComponent {}
             `,
-            template: `<tui-input formControlName="value">Enter name</tui-input>`,
+            template: '<tui-input formControlName="value">Enter name</tui-input>',
         }),
     );
 
@@ -57,22 +55,22 @@ describe('ng-update legacy input', () => {
     it(
         'adds TODO for dynamic [tuiTextfieldLabelOutside] without wrapping',
         migrate({
-            template: `<tui-input formControlName="value" [tuiTextfieldLabelOutside]="isOutside">Label</tui-input>`,
+            template:
+                '<tui-input formControlName="value" [tuiTextfieldLabelOutside]="isOutside">Label</tui-input>',
         }),
     );
 
     it(
         'drops [tuiTextfieldLabelOutside]="false" without wrapping',
         migrate({
-            template: `<tui-input formControlName="value" [tuiTextfieldLabelOutside]="false">Label</tui-input>`,
+            template:
+                '<tui-input formControlName="value" [tuiTextfieldLabelOutside]="false">Label</tui-input>',
         }),
     );
 
     it(
         'handles tui-input without text content',
-        migrate({
-            template: `<tui-input formControlName="value"></tui-input>`,
-        }),
+        migrate({template: '<tui-input formControlName="value"></tui-input>'}),
     );
 
     it(
@@ -108,7 +106,8 @@ describe('ng-update legacy input', () => {
     it(
         'renames tuiTextfieldCustomContent to content and tuiTextfieldFiller to filler',
         migrate({
-            template: `<tui-input formControlName="value" [tuiTextfieldCustomContent]="myTpl" [tuiTextfieldFiller]="hint">Label</tui-input>`,
+            template:
+                '<tui-input formControlName="value" [tuiTextfieldCustomContent]="myTpl" [tuiTextfieldFiller]="hint">Label</tui-input>',
         }),
     );
 
