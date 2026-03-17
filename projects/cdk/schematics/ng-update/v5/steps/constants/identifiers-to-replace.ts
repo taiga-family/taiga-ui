@@ -691,4 +691,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             },
         ],
     },
+    {
+        from: {
+            name: 'TuiInputMonthModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiInputMonth',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+        ],
+    },
 ];

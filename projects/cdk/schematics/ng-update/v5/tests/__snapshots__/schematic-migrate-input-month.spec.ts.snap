@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update adds TODO for [defaultActiveYear]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month
+                    [defaultActiveYear]="initialYear"
+                    formControlName="month"
+                >
+                    Month
+                </tui-input-month>",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input-month migration (see https://taiga-ui.dev/components/input-month):
+     - [defaultactiveyear]: no direct equivalent in v5. Remove and update component logic. -->
+<tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Month
+                </label>
+
+<input tuiInputMonth formControlName="month" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month>
+                </tui-input-month>
+
+                <tui-input-month
+                    [formControl]="control"
+                >
+                    Choose month
+                </tui-input-month>
+
+                <tui-input-month
+                    formControlName="month"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Select month
+                    <input
+                        placeholder="MM.YYYY"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-month>
+
+                <tui-input-month
+                    [(ngModel)]="value"
+                >
+                    Your month
+                </tui-input-month>
+            ",
+  "1. After": "
+                <tui-textfield>
+                
+<input tuiInputMonth />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                >
+<label tuiLabel>
+                    Choose month
+                </label>
+
+<input tuiInputMonth [formControl]="control" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Select month
+                    </label>
+<input
+                        placeholder="MM.YYYY"
+                        tuiInputMonth formControlName="month"
+                    />
+                
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                >
+<label tuiLabel>
+                    Your month
+                </label>
+
+<input tuiInputMonth [(ngModel)]="value" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputMonthModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputMonthModule,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputMonthModule,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputMonth } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputMonth,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputMonth,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update moves [disabledItemHandler] to <tui-calendar-month *tuiDropdown>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month
+                    [disabledItemHandler]="disabledHandler"
+                    formControlName="month"
+                >
+                    Month
+                </tui-input-month>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Month
+                </label>
+
+<input tuiInputMonth formControlName="month" />
+<tui-calendar-month *tuiDropdown [disableditemhandler]="disabledHandler" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [min] and [max] to <input tuiInputMonth>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month
+                    [min]="minMonth"
+                    [max]="maxMonth"
+                    formControlName="month"
+                >
+                    Month
+                </tui-input-month>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Month
+                </label>
+
+<input tuiInputMonth formControlName="month" [min]="minMonth" [max]="maxMonth" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>",
+}
+`;
