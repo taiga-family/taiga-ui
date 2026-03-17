@@ -44,9 +44,6 @@ const TEXTFIELD_WRAPPER_ATTRS = new Set([
     'tuiTextfieldSize'.toLowerCase(),
 ]);
 
-/**
- * Attributes to drop (they have no equivalent or are controller-specific).
- */
 const ATTRS_TO_DROP = new Set([
     '[tuiTextfieldLabelOutside]'.toLowerCase(),
     'tuiTextfieldLabelOutside'.toLowerCase(),
@@ -78,11 +75,6 @@ export function migrateTextarea({
     });
 }
 
-/**
- * Extracts original attribute text from the template by source location.
- * parse5 lowercases all attribute names, so we need to read original text
- * to preserve camelCase Angular directive names (e.g. tuiTextfieldSize).
- */
 function getOriginalAttrText(
     template: string,
     element: Element,
