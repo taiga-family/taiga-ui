@@ -111,5 +111,22 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'adds TODO for TuiStatus type (cannot be auto-migrated to string literal)',
+        migrate({
+            component: `
+                import {type TuiStatus} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    template: '',
+                })
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
