@@ -12,13 +12,13 @@ exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment for TuiIsoT
                 })
                 export class TestComponent {}
             ",
-  "1. After": "import { getCountryCallingCode } from "libphonenumber-js/core";
-
+  "1. After": "
 // TODO: (Taiga UI migration) TuiIsoToCountryCodePipe has been removed. Replace pipe usage \`isoCode | tuiIsoToCountryCode\` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
-                    imports: [getCountryCallingCode],
+                    imports: [TuiIsoToCountryCodePipe],
                     template: '{{ isoCode | tuiIsoToCountryCode }}'
                 })
                 export class TestComponent {}
@@ -36,12 +36,12 @@ exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment when TuiIso
                 })
                 export class AppModule {}
             ",
-  "1. After": "import { getCountryCallingCode } from "libphonenumber-js/core";
-
+  "1. After": "
 // TODO: (Taiga UI migration) TuiIsoToCountryCodePipe has been removed. Replace pipe usage \`isoCode | tuiIsoToCountryCode\` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
 
                 @NgModule({
-                    imports: [getCountryCallingCode],
+                    imports: [TuiIsoToCountryCodePipe],
                 })
                 export class AppModule {}
             ",
