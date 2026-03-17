@@ -27,9 +27,6 @@ const CONTROL_ATTR_NAMES = [
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
-/**
- * Attributes that stay on the outer <tui-textfield> wrapper unchanged.
- */
 const TEXTFIELD_WRAPPER_ATTRS = new Set([
     '[tuiHintAppearance]'.toLowerCase(),
     '[tuiHintContent]'.toLowerCase(),
@@ -45,11 +42,6 @@ const TEXTFIELD_WRAPPER_ATTRS = new Set([
     'tuiTextfieldSize'.toLowerCase(),
 ]);
 
-/**
- * Attributes that move to <tui-textfield> with a name change.
- * Key: lowercased source attr name (including brackets for bindings).
- * Value: new attribute name to use in output.
- */
 const TEXTFIELD_WRAPPER_ATTR_RENAMES = new Map<string, string>([
     ['[tuiTextfieldCustomContent]'.toLowerCase(), '[content]'],
     ['[tuiTextfieldFiller]'.toLowerCase(), '[filler]'],
@@ -61,9 +53,6 @@ const TEXTFIELD_WRAPPER_ATTR_RENAMES = new Map<string, string>([
     ['tuiTextfieldIconLeft'.toLowerCase(), 'iconStart'],
 ]);
 
-/**
- * Attrs with no direct v5 equivalent — kept on wrapper with a TODO note.
- */
 const ATTRS_WITH_NO_EQUIVALENT = new Set([
     '[tuiTextfieldPostfix]'.toLowerCase(),
     '[tuiTextfieldPrefix]'.toLowerCase(),
@@ -81,7 +70,6 @@ const LEGACY_INPUT_ATTRS = new Set([
     'tuiTextfieldLegacy'.toLowerCase(),
 ]);
 
-/** Matches tuiDropdown* attrs (including event bindings). */
 function isDropdownAttr(nameLower: string): boolean {
     const prefix = 'tui' + 'dropdown';
     const stripped = nameLower.replaceAll(/^\[|\]$|\(|\)/g, '');
