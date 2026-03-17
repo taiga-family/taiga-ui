@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode replaces TuiIsoToCountryCodePipe import with getCountryCallingCode: test.ts 1`] = `
+exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment for TuiIsoToCountryCodePipe (no automatic rename): test.ts 1`] = `
 {
   "0. Before": "
                 import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
@@ -14,7 +14,9 @@ exports[`ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode repl
             ",
   "1. After": "import { getCountryCallingCode } from "libphonenumber-js/core";
 
-                                @Component({
+// TODO: (Taiga UI migration) TuiIsoToCountryCodePipe has been removed. Replace pipe usage \`isoCode | tuiIsoToCountryCode\` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.
+
+                @Component({
                     standalone: true,
                     imports: [getCountryCallingCode],
                     template: '{{ isoCode | tuiIsoToCountryCode }}'
@@ -24,22 +26,24 @@ exports[`ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode repl
 }
 `;
 
-exports[`ng-update migrate TuiIsoToCountryCodePipe to getCountryCallingCode replaces TuiIsoToCountryCodePipe used programmatically: test.ts 1`] = `
+exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment when TuiIsoToCountryCodePipe used in NgModule: test.ts 1`] = `
 {
   "0. Before": "
                 import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
 
-                @Injectable()
-                export class TestService {
-                    private readonly pipe = new TuiIsoToCountryCodePipe(countriesMasks);
-                }
+                @NgModule({
+                    imports: [TuiIsoToCountryCodePipe],
+                })
+                export class AppModule {}
             ",
   "1. After": "import { getCountryCallingCode } from "libphonenumber-js/core";
 
-                                @Injectable()
-                export class TestService {
-                    private readonly pipe = new getCountryCallingCode(countriesMasks);
-                }
+// TODO: (Taiga UI migration) TuiIsoToCountryCodePipe has been removed. Replace pipe usage \`isoCode | tuiIsoToCountryCode\` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.
+
+                @NgModule({
+                    imports: [getCountryCallingCode],
+                })
+                export class AppModule {}
             ",
 }
 `;
