@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputColorModule to TuiInputColor',
         migrate({
@@ -52,12 +52,12 @@ describe('ng-update', () => {
         'adds TODO for [colors] and removes it from wrapper',
         migrate({
             template: `
-<tui-input-color
-    [colors]="myPalette"
-    formControlName="color"
->
-    Pick color
-</tui-input-color>`,
+                <tui-input-color
+                    [colors]="myPalette"
+                    formControlName="color"
+                >
+                    Pick color
+                </tui-input-color>`,
         }),
     );
 

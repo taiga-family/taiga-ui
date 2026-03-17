@@ -19,9 +19,6 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-color';
 
-/**
- * Attrs that have no direct v5 equivalent and should be removed with a TODO.
- */
 const NO_EQUIVALENT_ATTRS = new Set(['[colors]'.toLowerCase(), 'colors'.toLowerCase()]);
 
 export function migrateInputColor({
