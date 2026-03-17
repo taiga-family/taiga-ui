@@ -4,9 +4,7 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-const migrate = createMigration({
-    collection: join(__dirname, '../../../migration.json'),
-});
+const migrate = createMigration({collection: join(__dirname, '../../../migration.json')});
 
 describe('ng-update legacy textarea', () => {
     it(
@@ -22,7 +20,8 @@ describe('ng-update legacy textarea', () => {
                 })
                 export class TestComponent {}
             `,
-            template: `<tui-textarea formControlName="testValue">Type a text</tui-textarea>`,
+            template:
+                '<tui-textarea formControlName="testValue">Type a text</tui-textarea>',
         }),
     );
 
@@ -58,15 +57,14 @@ describe('ng-update legacy textarea', () => {
     it(
         'removes expandable="false" and maps static rows to max',
         migrate({
-            template: `<tui-textarea formControlName="value" expandable="false" rows="5">Text</tui-textarea>`,
+            template:
+                '<tui-textarea formControlName="value" expandable="false" rows="5">Text</tui-textarea>',
         }),
     );
 
     it(
         'handles tui-textarea without text content',
-        migrate({
-            template: `<tui-textarea formControlName="value"></tui-textarea>`,
-        }),
+        migrate({template: '<tui-textarea formControlName="value"></tui-textarea>'}),
     );
 
     it(
