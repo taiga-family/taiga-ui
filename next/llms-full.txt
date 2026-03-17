@@ -21369,6 +21369,63 @@ export default class Example {
 }
 ```
 
+#### Accept
+
+**Template:**
+```html
+<label tuiInputFiles>
+<input #validator="tuiInputFilesValidator" tuiInputFiles [formControl]="control" [multiple]="true" (reject)="onReject($event)" />
+</label>
+<tui-files class="tui-space_top-1"> @for (file of accepted$ | async; track file) { <tui-file [file]="file" (remove)="onRemove(file)" /> } @for (file of rejected; track file) { <tui-file state="error" [file]="(file | tuiFileRejected: validator | async) || file" (remove)="onRemove(file)" /> } </tui-files>
+```
+**TypeScript:**
+```ts
+import {AsyncPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiFiles, tuiFilesAccepted, tuiInputFilesOptionsProvider} from '@taiga-ui/kit';
+import {map, startWith} from 'rxjs';
+
+@Component({
+    standalone: true,
+    imports: [AsyncPipe, ReactiveFormsModule, TuiFiles],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputFilesOptionsProvider({
+            accept: '.jpeg, .jpg, .png, .pdf, .doc, .docx, .zip, .tif',
+        }),
+    ],
+})
+export default class Example {
+    protected readonly control = new FormControl<File[]>([
+        new File(['mock zip content'], 'valid.zip', {type: 'application/zip'}),
+        new File(['Lorem ipsum'], 'wrong.txt', {type: 'application/txt'}),
+    ]);
+
+    protected readonly accepted$ = this.control.valueChanges.pipe(
+        startWith(this.control.value),
+        map(() => tuiFilesAccepted(this.control)),
+    );
+
+    protected rejected: readonly File[] = [];
+
+    protected onReject(files: readonly File[]): void {
+        this.rejected = Array.from(new Set(this.rejected.concat(files)));
+    }
+
+    protected onRemove(file: File): void {
+        this.rejected = this.rejected.filter((current) => current !== file);
+        this.control.setValue(
+            this.control.value?.filter((current) => current !== file) ?? [],
+        );
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -21396,6 +21453,7 @@ export default class PageComponent {
         'Custom content',
         'Camera capture',
         'Model',
+        'Accept',
     ];
 
     protected multiple = true;
@@ -26648,13 +26706,15 @@ Component cuts overflown text with "..." and shows it by hover
 <div class="hint"> Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons </div>
 </ng-template>
 <ng-template #mormont>
-<div class="hint no-wrap">Jorah Mormont of House Mormont, Lord of Bear Island</div>
+<div tuiFade class="hint no-wrap" > Jorah Mormont of House Mormont, Lord of Bear Island </div>
 </ng-template>
 <div class="island">
 <tui-line-clamp [content]="content" />
 <ng-template #content>
 <span appearance="negative" size="xxs" tuiChip > DRAFT </span> Davis, Julia </ng-template>
-</div> @if (value$ | async; as value) { <div class="wrapper">
+</div>
+<div class="tui-space_bottom-4">
+<tui-line-clamp [content]="value()" [linesLimit]="2" /> @if (!value()) { <button size="s" tuiButton type="button" (click)="update()" > Load dynamic value </button> } </div> @if (value$ | async; as value) { <div class="wrapper">
 <div class="result">
 <div class="content">
 <tui-line-clamp [content]="value" [lineHeight]="20" [linesLimit]="1" />
@@ -26665,17 +26725,17 @@ Component cuts overflown text with "..." and shows it by hover
 **TypeScript:**
 ```ts
 import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {tuiWatch} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core';
-import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
+import {TuiButton, TuiNotification} from '@taiga-ui/core';
+import {TuiChip, TuiFade, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiChip, TuiLineClamp, TuiNotification],
+    imports: [AsyncPipe, TuiButton, TuiChip, TuiFade, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -26684,10 +26744,18 @@ import {map, timer} from 'rxjs';
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
 
+    protected readonly value = signal('');
+
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
         map(() => `${'async fake value, '.repeat(10)}end!`),
         tuiWatch(),
     );
+
+    public update(): void {
+        this.value.set(
+            'Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons',
+        );
+    }
 }
 ```
 **LESS:**
