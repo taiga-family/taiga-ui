@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.75.0](https://github.com/taiga-family/taiga-ui/compare/v4.74.1...v4.75.0) (2026-03-17)
+
+### 🚀 Features
+
+- **core:** added dropdown a11y directive ([#13473](https://github.com/taiga-family/taiga-ui/issues/13473))
+  ([02473c7](https://github.com/taiga-family/taiga-ui/commit/02473c79b17a75fee871b71bd23beaa6037e721d))
+
+### 🐞 Bug Fixes
+
+- **core:** `TextfieldMulti` fix ghost memory leak ([#13525](https://github.com/taiga-family/taiga-ui/issues/13525))
+  ([87a8b53](https://github.com/taiga-family/taiga-ui/commit/87a8b53d445da7c273fd8d925e3b23b5f5b84280))
+- **core:** prevent dropdown focus break with conditional @if/[@else](https://github.com/else) inputs
+  ([#13446](https://github.com/taiga-family/taiga-ui/issues/13446))
+  ([8cb8f90](https://github.com/taiga-family/taiga-ui/commit/8cb8f903f30637983a500b3bd08c03ef5dbd7c64))
+- **kit:** `FilterByInputPipe` should not reset filter results on exact match for `InputChip`
+  ([#13462](https://github.com/taiga-family/taiga-ui/issues/13462))
+  ([ec603a9](https://github.com/taiga-family/taiga-ui/commit/ec603a9a31740f14d7821ad82faa8842ab62efd6))
+- **kit:** fix `toArray` in files validators to filter empty formats from trailing comma
+  ([#13523](https://github.com/taiga-family/taiga-ui/issues/13523))
+  ([a517e82](https://github.com/taiga-family/taiga-ui/commit/a517e8272622391f5f1d53f5dc1b9caf7f5c788d))
+- **kit:** update `tui-line-clamp` properly when toggling between empty and non-empty content
+  ([#13524](https://github.com/taiga-family/taiga-ui/issues/13524))
+  ([44c87c1](https://github.com/taiga-family/taiga-ui/commit/44c87c1f82563040decfb5c7335ae6cd7c9ea9c9))
+- pin all peer dependency versions ([#13477](https://github.com/taiga-family/taiga-ui/issues/13477))
+  ([8fa4c79](https://github.com/taiga-family/taiga-ui/commit/8fa4c79ff6fcc7176e5cc02fcfee30c1cd450173))
+- **schematics:** wrong `tuiLet` migration ([#13488](https://github.com/taiga-family/taiga-ui/issues/13488))
+  ([9b3b7a8](https://github.com/taiga-family/taiga-ui/commit/9b3b7a8da1c611a80e05f1738bddaf1a1f1bc16b))
+
 ### [4.74.1](https://github.com/taiga-family/taiga-ui/compare/v4.74.0...v4.74.1) (2026-03-11)
 
 ### 🐞 Bug Fixes
