@@ -4,11 +4,11 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+const migrate = createMigration({
+    collection: join(__dirname, '../../../migration.json'),
+});
 
+describe('ng-update', () => {
     it(
         'migrate TuiInputDate[multiple] to TuiInputDateMulti',
         migrate({
@@ -61,14 +61,14 @@ describe('ng-update', () => {
         'moves [min] and [max] to <input tuiInputDateMulti>',
         migrate({
             template: `
-<tui-input-date
-    multiple
-    [min]="minDate"
-    [max]="maxDate"
-    formControlName="dates"
->
-    Dates
-</tui-input-date>`,
+                <tui-input-date
+                    multiple
+                    [min]="minDate"
+                    [max]="maxDate"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>`,
         }),
     );
 
@@ -76,14 +76,14 @@ describe('ng-update', () => {
         'moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>',
         migrate({
             template: `
-<tui-input-date
-    multiple
-    [disabledItemHandler]="disabledHandler"
-    [markerHandler]="markerHandler"
-    formControlName="dates"
->
-    Dates
-</tui-input-date>`,
+                <tui-input-date
+                    multiple
+                    [disabledItemHandler]="disabledHandler"
+                    [markerHandler]="markerHandler"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>`,
         }),
     );
 
@@ -91,16 +91,16 @@ describe('ng-update', () => {
         'adds TODO for tag-like attrs ([rows], [tagValidator], [search], [defaultActiveYearMonth])',
         migrate({
             template: `
-<tui-input-date
-    multiple
-    [rows]="2"
-    [tagValidator]="myValidator"
-    [(search)]="searchValue"
-    [defaultActiveYearMonth]="initialMonth"
-    formControlName="dates"
->
-    Dates
-</tui-input-date>`,
+                <tui-input-date
+                    multiple
+                    [rows]="2"
+                    [tagValidator]="myValidator"
+                    [(search)]="searchValue"
+                    [defaultActiveYearMonth]="initialMonth"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>`,
         }),
     );
 
@@ -108,14 +108,14 @@ describe('ng-update', () => {
         'silently removes [editable] and [inputHidden]',
         migrate({
             template: `
-<tui-input-date
-    multiple
-    [editable]="false"
-    [inputHidden]="true"
-    formControlName="dates"
->
-    Dates
-</tui-input-date>`,
+                <tui-input-date
+                    multiple
+                    [editable]="false"
+                    [inputHidden]="true"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>`,
         }),
     );
 
