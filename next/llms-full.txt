@@ -2047,10 +2047,10 @@ Component for the main app header
 <button tuiButton tuiSlot="start" type="button" > Back </button> Taiga UI <button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 </tui-app-bar>
 <tui-app-bar>
-<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
@@ -2070,10 +2070,10 @@ Component for the main app header
 <tui-app-bar> Taiga UI <button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 </tui-app-bar>
 <tui-app-bar>
-<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button> Taiga UI <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
@@ -2192,12 +2192,12 @@ tui-app-bar {
 <tui-app-bar>
 <button tuiAppBarBack tuiSlot="start" type="button" > Back </button>
 <label tuiFade tuiTitle > Taiga UI — Components library </label>
-<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 </tui-app-bar>
 <tui-app-bar>
 <button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button>
 <label tuiTitle>Taiga UI</label>
-<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
