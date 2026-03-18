@@ -116,7 +116,7 @@ exports[`ng-update moves [mode] to <input tuiInputTime>: test.html 1`] = `
 }
 `;
 
-exports[`ng-update removes [items] with TODO comment: test.html 1`] = `
+exports[`ng-update renames [items] to [accept] on <input tuiInputTime>: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-time
@@ -126,10 +126,7 @@ exports[`ng-update removes [items] with TODO comment: test.html 1`] = `
                     Time
                 </tui-input-time>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-input-time migration (see https://taiga-ui.dev/components/input-time):
-     - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.
-       Remove this binding and update your component logic accordingly. -->
-<tui-textfield
+                <tui-textfield
                     
                     
                 >
@@ -137,7 +134,7 @@ exports[`ng-update removes [items] with TODO comment: test.html 1`] = `
                     Time
                 </label>
 
-<input tuiInputTime formControlName="time" />
+<input tuiInputTime formControlName="time" [accept]="timeItems" />
 </tui-textfield>",
 }
 `;

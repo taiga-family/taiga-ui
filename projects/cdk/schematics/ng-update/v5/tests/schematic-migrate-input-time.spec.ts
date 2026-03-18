@@ -63,7 +63,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'removes [items] with TODO comment',
+        'renames [items] to [accept] on <input tuiInputTime>',
         migrate({
             template: `
                 <tui-input-time

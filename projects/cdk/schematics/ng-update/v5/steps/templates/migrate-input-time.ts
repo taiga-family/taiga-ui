@@ -2,7 +2,6 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
-import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -17,13 +16,14 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
-const DOCS_LINK = 'https://taiga-ui.dev/components/input-time';
+const INPUT_ATTR_RENAMES = new Map([
+    ['[items]'.toLowerCase(), '[accept]'],
+    ['[mode]'.toLowerCase(), '[mode]'],
+    ['mode'.toLowerCase(), 'mode'],
+]);
 
-const INPUT_ATTRS = new Set(['[mode]'.toLowerCase(), 'mode'.toLowerCase()]);
-
-const DROPPED_DROPDOWN_ATTRS = new Set([
+const DROPPED_ATTRS = new Set([
     '[disabledItemHandler]'.toLowerCase(),
-    '[items]'.toLowerCase(),
     '[itemsHidden]'.toLowerCase(),
     '[itemSize]'.toLowerCase(),
     '[strict]'.toLowerCase(),
@@ -31,8 +31,6 @@ const DROPPED_DROPDOWN_ATTRS = new Set([
     'itemSize'.toLowerCase(),
     'strict'.toLowerCase(),
 ]);
-
-const TODO_ATTRS_WITH_MESSAGE = new Set(['[items]'.toLowerCase()]);
 
 export function migrateInputTime({
     resource,
@@ -64,11 +62,11 @@ export function migrateInputTime({
         );
 
         const inputAttrs = [...element.attrs].filter((attr) =>
-            INPUT_ATTRS.has(attr.name.toLowerCase()),
+            INPUT_ATTR_RENAMES.has(attr.name.toLowerCase()),
         );
 
         const droppedAttrs = [...element.attrs].filter((attr) =>
-            DROPPED_DROPDOWN_ATTRS.has(attr.name.toLowerCase()),
+            DROPPED_ATTRS.has(attr.name.toLowerCase()),
         );
 
         for (const attr of [...controlAttrs, ...inputAttrs, ...droppedAttrs]) {
@@ -94,21 +92,6 @@ export function migrateInputTime({
             recorder.insertRight(labelTextEnd, '</label>\n');
         }
 
-        const needsTodo = droppedAttrs.some((a) =>
-            TODO_ATTRS_WITH_MESSAGE.has(a.name.toLowerCase()),
-        );
-
-        if (needsTodo) {
-            const todoComment = [
-                `<!-- ${TODO_MARK} tui-input-time migration (see ${DOCS_LINK}):`,
-                '     - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.',
-                '       Remove this binding and update your component logic accordingly. -->',
-            ].join('\n');
-            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
-
-            recorder.insertLeft(insertAt, `${todoComment}\n`);
-        }
-
         const insertOffset =
             (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
 
@@ -117,7 +100,9 @@ export function migrateInputTime({
         );
 
         const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const name =
+                INPUT_ATTR_RENAMES.get(attr.name.toLowerCase()) ??
+                normalizeAttrName(attr.name);
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
@@ -154,8 +139,6 @@ function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
         case '[formControl]'.toLowerCase():
             return '[formControl]';
-        case '[mode]'.toLowerCase():
-            return '[mode]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case 'formControl'.toLowerCase():
@@ -166,8 +149,6 @@ function normalizeAttrName(name: string): string {
             return 'ngModel';
         case '[(ngmodel)]':
             return '[(ngModel)]';
-        case 'mode':
-            return 'mode';
         default:
             return name;
     }
