@@ -19,13 +19,12 @@ import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiInputChipBaseDirective} from '@taiga-ui/kit/components/input-chip';
-import {
-    TUI_DATE_ADAPTER,
-    TUI_INPUT_DATE_OPTIONS_NEW,
-    tuiWithDateFiller,
-} from '@taiga-ui/kit/components/input-date';
+import {TUI_DATE_ADAPTER, tuiWithDateFiller} from '@taiga-ui/kit/components/input-date';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
-import {TUI_INPUT_DATE_MULTI_OPTIONS} from './input-date-multi.options';
+import {
+    tuiInjectInputDateMultiOptions,
+    TUI_INPUT_DATE_MULTI_OPTIONS,
+} from './input-date-multi.options';
 
 @Directive({
     standalone: true,
@@ -33,6 +32,10 @@ import {TUI_INPUT_DATE_MULTI_OPTIONS} from './input-date-multi.options';
     providers: [
         tuiAsControl(TuiInputDateMultiDirective),
         tuiFallbackValueProvider([]),
+        {
+            provide: TUI_INPUT_DATE_MULTI_OPTIONS,
+            useFactory: tuiInjectInputDateMultiOptions,
+        },
         tuiValueTransformerFrom(TUI_INPUT_DATE_MULTI_OPTIONS),
         tuiAsTextfieldAccessor(TuiInputDateMultiDirective),
     ],
@@ -51,7 +54,6 @@ import {TUI_INPUT_DATE_MULTI_OPTIONS} from './input-date-multi.options';
 })
 export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay> {
     private readonly dateMultiOptions = inject(TUI_INPUT_DATE_MULTI_OPTIONS);
-    private readonly dateOption = inject(TUI_INPUT_DATE_OPTIONS_NEW);
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_MULTI_OPTIONS);
     protected readonly filler = tuiWithDateFiller();
@@ -59,8 +61,9 @@ export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay
         TuiItemsHandlersDirective,
         'stringify',
         (item) =>
-            this.getDay(item)?.toString(this.format().mode, this.format().separator) ??
-            '',
+            this.dateMultiOptions.valueTransformer
+                .fromControlValue([item])[0]
+                ?.toString(this.format().mode, this.format().separator) ?? '',
         {},
     );
 
@@ -138,24 +141,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay
         this.scrollTo();
     }
 
-    private getDay(item: unknown): TuiDay | null {
-        if (item instanceof TuiDay) {
-            return item;
-        }
-
-        const [day] =
-            this.dateMultiOptions.valueTransformer.fromControlValue([item]) ?? [];
-
-        if (day instanceof TuiDay) {
-            return day;
-        }
-
-        const transformed = this.dateOption.valueTransformer.fromControlValue(item);
-
-        return transformed instanceof TuiDay ? transformed : null;
-    }
-
     private updateValue(day: TuiDay): void {
-        this.setValue(tuiArrayToggle(this.value() ?? [], day, (a, b) => a.daySame(b)));
+        this.setValue(tuiArrayToggle(this.value(), day, (a, b) => a.daySame(b)));
     }
 }

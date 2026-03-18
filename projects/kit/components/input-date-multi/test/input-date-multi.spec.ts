@@ -37,7 +37,7 @@ describe('TuiInputDateMultiDirective', () => {
         ],
     })
     class InheritedProviderTest {
-        public value: Date[] | null = [new Date(2026, 2, 11), new Date(2026, 2, 12)];
+        public value: Date[] = [new Date(2026, 2, 11), new Date(2026, 2, 12)];
     }
 
     describe('inherited provider', () => {
@@ -94,7 +94,7 @@ describe('TuiInputDateMultiDirective', () => {
         ],
     })
     class CustomProviderTest {
-        public value: Date[] | null = [new Date(2026, 2, 11), new Date(2026, 2, 12)];
+        public value: Date[] = [new Date(2026, 2, 11), new Date(2026, 2, 12)];
     }
 
     describe('custom provider', () => {
@@ -116,6 +116,53 @@ describe('TuiInputDateMultiDirective', () => {
             expect(fixture.componentInstance.value).toEqual([
                 new Date(2026, 2, 11),
                 new Date(2026, 2, 12),
+            ]);
+        });
+
+        it('renders formatted values in items', () => {
+            expect(getItemsText(fixture)).toEqual(['11.03.2026', '12.03.2026']);
+        });
+    });
+
+    @Component({
+        standalone: true,
+        imports: [FormsModule, TuiInputDateMulti, TuiRoot, TuiTextfield],
+        template: `
+            <tui-root>
+                <tui-textfield multi>
+                    <input
+                        tuiInputDateMulti
+                        [(ngModel)]="value"
+                    />
+                    <tui-calendar *tuiTextfieldDropdown />
+                </tui-textfield>
+            </tui-root>
+        `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+    })
+    class NoProviderTest {
+        public value: TuiDay[] = [new TuiDay(2026, 2, 11), new TuiDay(2026, 2, 12)];
+    }
+
+    describe('no provider', () => {
+        let fixture: ComponentFixture<NoProviderTest>;
+
+        beforeEach(async () => {
+            TestBed.resetTestingModule();
+            TestBed.configureTestingModule({imports: [NoProviderTest]});
+
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(NoProviderTest);
+
+            fixture.detectChanges();
+            await fixture.whenStable();
+            fixture.detectChanges();
+        });
+
+        it('format with custom tuiInputDateMultiOptionsProvider', () => {
+            expect(fixture.componentInstance.value).toEqual([
+                new TuiDay(2026, 2, 11),
+                new TuiDay(2026, 2, 12),
             ]);
         });
 
