@@ -713,4 +713,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {name: 'TuiPopover', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalContext', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiPopoverService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortal', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiPopoverDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'tuiAsPopover', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'tuiAsPortal', moduleSpecifier: '@taiga-ui/cdk'},
+    },
 ];
