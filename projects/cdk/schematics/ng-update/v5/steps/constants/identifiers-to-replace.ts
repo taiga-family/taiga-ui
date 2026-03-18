@@ -19,6 +19,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiInputPhoneModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputPhone',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiButtonClose',
             moduleSpecifier: '@taiga-ui/kit',
         },
@@ -710,6 +720,42 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiInputColor',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {name: 'TuiPopover', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalContext', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiPopoverService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortal', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiPopoverDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'tuiAsPopover', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'tuiAsPortal', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {
+            name: 'TuiInputDateModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDate',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputTimeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputTime',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },

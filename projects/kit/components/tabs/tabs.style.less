@@ -98,11 +98,11 @@ tui-tabs {
     }
 
     &::before {
-        .transition(~'inline-size, left');
+        .transition(~'inline-size, inset-inline-start');
 
         position: absolute;
-        left: var(--t-left);
-        bottom: 0;
+        inset-block-end: 0;
+        inset-inline-start: var(--t-left);
         block-size: 0.125rem;
         inline-size: var(--t-width);
         background: var(--t-color);
@@ -110,7 +110,7 @@ tui-tabs {
         contain: strict;
 
         @supports (anchor-name: --tui-tab-active) {
-            left: anchor(left);
+            inset-inline-start: anchor(start);
             inline-size: anchor-size(inline);
             position-anchor: --tui-tab-active;
         }

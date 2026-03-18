@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputTimeModule to TuiInputTime: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-time>Pick a time</tui-input-time>
+
+                <tui-input-time
+                    [formControl]="control"
+                >
+                    Start time
+                </tui-input-time>
+
+                <tui-input-time
+                    formControlName="time"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    End time
+                </tui-input-time>
+
+                <tui-input-time [(ngModel)]="value">
+                    <input tuiTextfieldLegacy />
+                </tui-input-time>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>Pick a time</label>
+
+<input tuiInputTime />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                >
+<label tuiLabel>
+                    Start time
+                </label>
+
+<input tuiInputTime [formControl]="control" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    End time
+                </label>
+
+<input tuiInputTime formControlName="time" />
+</tui-textfield>
+
+                <tui-textfield >
+                    <input tuiInputTime [(ngModel)]="value" />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputTimeModule to TuiInputTime: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputTimeModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    TuiInputTimeModule,
+                  ],
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    TuiInputTimeModule,
+                  ],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputTime } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    TuiInputTime,
+                  ],
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    TuiInputTime,
+                  ],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update moves [mode] to <input tuiInputTime>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-time [mode]="'HH:MM'" formControlName="time">
+                    Time
+                </tui-input-time>",
+  "1. After": "
+                <tui-textfield  >
+<label tuiLabel>
+                    Time
+                </label>
+
+<input tuiInputTime formControlName="time" [mode]="'HH:MM'" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update removes [items] with TODO comment: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-time
+                    [items]="timeItems"
+                    formControlName="time"
+                >
+                    Time
+                </tui-input-time>",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input-time migration (see https://taiga-ui.dev/components/input-time):
+     - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.
+       Remove this binding and update your component logic accordingly. -->
+<tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Time
+                </label>
+
+<input tuiInputTime formControlName="time" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update silently removes strict, itemsHidden, [itemSize], [disabledItemHandler]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-time
+                    formControlName="time"
+                    [strict]="true"
+                    [itemsHidden]="false"
+                    [itemSize]="'s'"
+                    [disabledItemHandler]="handler"
+                >
+                    Time
+                </tui-input-time>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Time
+                </label>
+
+<input tuiInputTime formControlName="time" />
+</tui-textfield>",
+}
+`;
