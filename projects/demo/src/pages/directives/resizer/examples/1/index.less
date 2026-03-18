@@ -1,3 +1,5 @@
+@import '@taiga-ui/styles/utils';
+
 :host {
     position: relative;
     display: block;
@@ -34,9 +36,9 @@
 }
 
 .top-middle {
+    .center-left();
+
     inset-block-start: 0;
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
 }
 
 .top-middle-handle {
@@ -76,9 +78,9 @@
 }
 
 .middle-bottom {
+    .center-left();
+
     inset-block-end: 0;
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
 }
 
 .middle-bottom-handle {
@@ -108,31 +110,29 @@
 }
 
 .middle-middle {
-    inset-block-start: 50%;
-    inset-inline-start: 50%;
-    transform: translate(-50%, -50%);
+    .center-all();
 }
 
 .middle-middle-top-handle {
-    inset-inline-start: 50%;
+    .center-left();
+
     inset-block-start: 0;
-    transform: translateX(-50%);
 }
 
 .middle-middle-right-handle {
+    .center-top();
+
     inset-inline-end: 0;
-    inset-block-start: 50%;
-    transform: translateY(-50%);
 }
 
 .middle-middle-bottom-handle {
-    inset-inline-start: 50%;
+    .center-left();
+
     inset-block-end: 0;
-    transform: translateX(-50%);
 }
 
 .middle-middle-left-handle {
+    .center-top();
+
     inset-inline-start: 0;
-    inset-block-start: 50%;
-    transform: translateY(-50%);
 }
