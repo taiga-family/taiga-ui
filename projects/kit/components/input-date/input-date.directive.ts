@@ -130,6 +130,12 @@ export abstract class TuiInputDateBase<
     public setDate(value: TuiDay | TuiDayRange | readonly TuiDay[]): void {
         this.onChange(value as T);
         this.open.set(false);
+
+        if (!this.options.keepFocus && !this.el.closest('tui-dropdown')) {
+            this.el.blur();
+        } else if (this.options.keepFocus) {
+            setTimeout(() => this.el.focus());
+        }
     }
 
     protected processCalendar(calendar: TuiCalendar | TuiCalendarRange): void {
