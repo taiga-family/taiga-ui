@@ -61,15 +61,6 @@ tui-textfield[multi][multi]:where(*&) {
             }
         }
 
-        > label[tuiLabel] {
-            position: sticky;
-            inset-inline-start: 0;
-            min-inline-size: 100%;
-            margin-block: 0.5625rem;
-            margin-inline-end: -100%;
-            padding: 0;
-        }
-
         > .t-input {
             position: relative;
             display: flex;
@@ -105,14 +96,30 @@ tui-textfield[multi][multi]:where(*&) {
     &._with-label {
         &[data-size='l'] {
             --t-vertical: 0.5625rem;
+
+            > .t-items > label[tuiLabel] {
+                margin-block: 0.625rem;
+            }
         }
 
         &[data-size='m'] {
             --t-vertical: 0.4375rem;
+
+            > .t-items > label[tuiLabel] {
+                margin-block: 0.4375rem;
+            }
         }
 
         > .t-items {
             align-items: flex-end;
+
+            > label[tuiLabel] {
+                position: sticky;
+                inset-inline-start: 0;
+                min-inline-size: 100%;
+                margin-inline-end: -100%;
+                padding: 0;
+            }
         }
     }
 
@@ -163,10 +170,6 @@ tui-textfield[multi][multi]:where(*&) {
 
         &::after {
             inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
-        }
-
-        > .t-items > label[tuiLabel] {
-            margin-block: 0.4375rem;
         }
     }
 
