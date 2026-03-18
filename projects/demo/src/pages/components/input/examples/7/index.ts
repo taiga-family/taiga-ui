@@ -3,10 +3,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInput} from '@taiga-ui/core';
-import {TuiInputChip} from '@taiga-ui/kit';
+import {TuiFade, TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiInput, TuiInputChip],
+    imports: [FormsModule, TuiFade, TuiInput, TuiInputChip],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -14,5 +14,5 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = 'Single string';
-    protected chips = ['Multiple', 'Chips'];
+    protected chips = ['Single string'];
 }

@@ -1,13 +1,24 @@
 <tui-textfield>
-    <label tuiLabel>Very long label that you must display without truncating</label>
+    <label
+        tuiFade
+        tuiLabel
+    >
+        Very long label that you must display without truncating
+    </label>
     <input
+        tuiFade
         tuiInput
         [(ngModel)]="value"
     />
 </tui-textfield>
 
 <tui-textfield multi>
-    <label tuiLabel>Very long label that you must display without truncating</label>
+    <label
+        tuiFade
+        tuiLabel
+    >
+        Very long label that you must display without truncating
+    </label>
     <input
         tuiInputChip
         [(ngModel)]="chips"

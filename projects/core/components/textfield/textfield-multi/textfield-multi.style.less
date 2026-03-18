@@ -62,8 +62,10 @@ tui-textfield[multi][multi]:where(*&) {
         }
 
         > label[tuiLabel] {
+            position: sticky;
+            inset-inline-start: 0;
             min-inline-size: 100%;
-            margin-block: 0.625rem;
+            margin-block: 0.5625rem;
             margin-inline-end: -100%;
             padding: 0;
         }
@@ -80,8 +82,8 @@ tui-textfield[multi][multi]:where(*&) {
 
             .t-filler,
             [tuiInput] {
-                inset-block-start: -10%;
-                block-size: 120%;
+                inset-block-start: -5%;
+                block-size: 110%;
                 padding: 0;
                 pointer-events: auto;
             }
@@ -101,6 +103,14 @@ tui-textfield[multi][multi]:where(*&) {
     }
 
     &._with-label {
+        &[data-size='l'] {
+            --t-vertical: 0.5625rem;
+        }
+
+        &[data-size='m'] {
+            --t-vertical: 0.4375rem;
+        }
+
         > .t-items {
             align-items: flex-end;
         }
@@ -137,7 +147,7 @@ tui-textfield[multi][multi]:where(*&) {
     }
 
     &[data-size='l'] {
-        --t-vertical: 0.5625rem;
+        --t-vertical: 0.625rem;
 
         &::after {
             inset-inline-start: calc(100% - var(--t-end) - var(--t-padding) + 0.25rem);
@@ -145,7 +155,7 @@ tui-textfield[multi][multi]:where(*&) {
     }
 
     &[data-size='m'] {
-        --t-vertical: 0.4375rem;
+        --t-vertical: 0.5rem;
 
         &::before {
             inset-inline-start: -0.125rem;
