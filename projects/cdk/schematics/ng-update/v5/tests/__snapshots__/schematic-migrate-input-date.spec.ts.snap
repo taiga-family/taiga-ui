@@ -3,24 +3,24 @@
 exports[`ng-update adds TODO for [items] and [defaultActiveYearMonth]: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-date
-    [items]="namedDays"
-    [defaultActiveYearMonth]="initialMonth"
-    formControlName="date"
->
-    Date
-</tui-input-date>",
+                <tui-input-date
+                    [items]="namedDays"
+                    [defaultActiveYearMonth]="initialMonth"
+                    formControlName="date"
+                >
+                    Date
+                </tui-input-date>",
   "1. After": "
-<!-- TODO: (Taiga UI migration) tui-input-date migration (see https://taiga-ui.dev/components/input-date):
+                <!-- TODO: (Taiga UI migration) tui-input-date migration (see https://taiga-ui.dev/components/input-date):
      - [items], [defaultactiveyearmonth]: no direct equivalent in v5. Remove and update component logic. -->
 <tui-textfield
-    
-    
-    
->
+                    
+                    
+                    
+                >
 <label tuiLabel>
-    Date
-</label>
+                    Date
+                </label>
 
 <input tuiInputDate formControlName="date" />
 <tui-calendar *tuiDropdown />
@@ -114,12 +114,11 @@ exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.ts 1`] = `
                 })
                 export class MyComponent {}
             ",
-  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
-import { TuiInputDate } from "@taiga-ui/kit";
+  "1. After": "import { TuiInputDate } from "@taiga-ui/kit";
 
                                 @Component({
                   standalone: true,
-                  imports: [TuiInputDate, TuiTextfield],
+                  imports: [TuiInputDate],
                   templateUrl: './test.html',
                 })
                 export class MyComponent {}
@@ -130,22 +129,22 @@ import { TuiInputDate } from "@taiga-ui/kit";
 exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-date
-    [disabledItemHandler]="disabledHandler"
-    [markerHandler]="markerHandler"
-    formControlName="date"
->
-    Date
-</tui-input-date>",
+                <tui-input-date
+                    [disabledItemHandler]="disabledHandler"
+                    [markerHandler]="markerHandler"
+                    formControlName="date"
+                >
+                    Date
+                </tui-input-date>",
   "1. After": "
-<tui-textfield
-    
-    
-    
->
+                <tui-textfield
+                    
+                    
+                    
+                >
 <label tuiLabel>
-    Date
-</label>
+                    Date
+                </label>
 
 <input tuiInputDate formControlName="date" />
 <tui-calendar *tuiDropdown [disableditemhandler]="disabledHandler" [markerhandler]="markerHandler" />
@@ -156,22 +155,22 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
 exports[`ng-update moves [min] and [max] to <input tuiInputDate>: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-date
-    [min]="minDate"
-    [max]="maxDate"
-    formControlName="date"
->
-    Date
-</tui-input-date>",
+                <tui-input-date
+                    [min]="minDate"
+                    [max]="maxDate"
+                    formControlName="date"
+                >
+                    Date
+                </tui-input-date>",
   "1. After": "
-<tui-textfield
-    
-    
-    
->
+                <tui-textfield
+                    
+                    
+                    
+                >
 <label tuiLabel>
-    Date
-</label>
+                    Date
+                </label>
 
 <input tuiInputDate formControlName="date" [min]="minDate" [max]="maxDate" />
 <tui-calendar *tuiDropdown />
