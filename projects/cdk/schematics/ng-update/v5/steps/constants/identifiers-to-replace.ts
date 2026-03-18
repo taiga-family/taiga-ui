@@ -759,4 +759,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiInputPhoneInternationalModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputPhoneInternational',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];
