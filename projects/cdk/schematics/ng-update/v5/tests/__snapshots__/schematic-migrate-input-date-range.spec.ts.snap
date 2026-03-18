@@ -1,33 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update adds TODO for [items] and [defaultViewedMonth]: test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input-date-range
-                    [items]="periods"
-                    [defaultViewedMonth]="initialMonth"
-                    formControlName="range"
-                >
-                    Range
-                </tui-input-date-range>",
-  "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-input-date-range migration (see https://taiga-ui.dev/components/input-date-range):
-     - [items], [defaultviewedmonth]: no direct equivalent in v5. Remove and update component logic. -->
-<tui-textfield
-                    
-                    
-                    
-                >
-<label tuiLabel>
-                    Range
-                </label>
-
-<input tuiInputDateRange formControlName="range" />
-<tui-calendar-range *tuiDropdown />
-</tui-textfield>",
-}
-`;
-
 exports[`ng-update migrate TuiInputDateRangeModule to TuiInputDateRange: test.html 1`] = `
 {
   "0. Before": "
@@ -148,6 +120,32 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
 
 <input tuiInputDateRange formControlName="range" />
 <tui-calendar-range *tuiDropdown [disableditemhandler]="disabledHandler" [markerhandler]="markerHandler" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [items] and [defaultViewedMonth] to <tui-calendar-range *tuiDropdown>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-range
+                    [items]="periods"
+                    [defaultViewedMonth]="initialMonth"
+                    formControlName="range"
+                >
+                    Range
+                </tui-input-date-range>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Range
+                </label>
+
+<input tuiInputDateRange formControlName="range" />
+<tui-calendar-range *tuiDropdown [items]="periods" [defaultviewedmonth]="initialMonth" />
 </tui-textfield>",
 }
 `;

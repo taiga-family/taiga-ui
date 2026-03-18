@@ -82,7 +82,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'adds TODO for [items] and [defaultViewedMonth]',
+        'moves [items] and [defaultViewedMonth] to <tui-calendar-range *tuiDropdown>',
         migrate({
             template: `
                 <tui-input-date-range

@@ -2,7 +2,6 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
-import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -17,8 +16,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
-const DOCS_LINK = 'https://taiga-ui.dev/components/input-date-range';
-
 const INPUT_ATTRS = new Set([
     '[max]'.toLowerCase(),
     '[maxLength]'.toLowerCase(),
@@ -29,13 +26,10 @@ const INPUT_ATTRS = new Set([
 ]);
 
 const CALENDAR_ATTRS = new Set([
-    '[disabledItemHandler]'.toLowerCase(),
-    '[markerHandler]'.toLowerCase(),
-]);
-
-const NO_EQUIVALENT_ATTRS = new Set([
     '[defaultViewedMonth]'.toLowerCase(),
+    '[disabledItemHandler]'.toLowerCase(),
     '[items]'.toLowerCase(),
+    '[markerHandler]'.toLowerCase(),
     'defaultViewedMonth'.toLowerCase(),
 ]);
 
@@ -76,16 +70,7 @@ export function migrateInputDateRange({
             CALENDAR_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        const noEquivalentAttrs = [...element.attrs].filter((attr) =>
-            NO_EQUIVALENT_ATTRS.has(attr.name.toLowerCase()),
-        );
-
-        for (const attr of [
-            ...controlAttrs,
-            ...inputAttrs,
-            ...calendarAttrs,
-            ...noEquivalentAttrs,
-        ]) {
+        for (const attr of [...controlAttrs, ...inputAttrs, ...calendarAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -106,17 +91,6 @@ export function migrateInputDateRange({
 
             recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
             recorder.insertRight(labelTextEnd, '</label>\n');
-        }
-
-        if (noEquivalentAttrs.length > 0) {
-            const names = noEquivalentAttrs.map((a) => a.name).join(', ');
-            const todoComment = [
-                `<!-- ${TODO_MARK} tui-input-date-range migration (see ${DOCS_LINK}):`,
-                `     - ${names}: no direct equivalent in v5. Remove and update component logic. -->`,
-            ].join('\n');
-            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
-
-            recorder.insertLeft(insertAt, `${todoComment}\n`);
         }
 
         const insertOffset =
