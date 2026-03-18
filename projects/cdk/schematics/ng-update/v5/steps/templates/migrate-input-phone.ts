@@ -19,15 +19,8 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-phone';
 
-/**
- * Attrs that move from <tui-input-phone> to <input tuiInputPhone> unchanged.
- */
-const INPUT_ATTRS = new Set(['allowText'.toLowerCase()]);
+const INPUT_ATTRS = new Set(['allowText'.toLowerCase(), '[allowText]'.toLowerCase()]);
 
-/**
- * Attrs that have no direct v5 equivalent and need a TODO comment.
- * In v5 countryCode + phoneMaskAfterCountryCode are replaced by a single [mask] input.
- */
 const NO_EQUIVALENT_ATTRS = new Set([
     'countryCode'.toLowerCase(),
     'phoneMaskAfterCountryCode'.toLowerCase(),

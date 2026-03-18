@@ -108,13 +108,13 @@ describe('ng-update', () => {
         'adds single TODO when both countryCode and phoneMaskAfterCountryCode are present',
         migrate({
             template: `
-<tui-input-phone
-    countryCode="+7"
-    phoneMaskAfterCountryCode="(###) ###-##-##"
-    formControlName="value"
->
-    Phone
-</tui-input-phone>`,
+                <tui-input-phone
+                    countryCode="+7"
+                    phoneMaskAfterCountryCode="(###) ###-##-##"
+                    formControlName="value"
+                >
+                    Phone
+                </tui-input-phone>`,
         }),
     );
 
