@@ -769,4 +769,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiInputDateRangeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDateRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

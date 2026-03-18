@@ -35,13 +35,12 @@ import {migrateAxes} from './templates/migrate-axes';
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateFieldError} from './templates/migrate-field-error';
-import {migrateInputColor} from './templates/migrate-input-color';
 import {migrateInputDate} from './templates/migrate-input-date';
+import {migrateInputDateRange} from './templates/migrate-input-date-range';
 import {migrateInputMonth} from './templates/migrate-input-month';
 import {migrateInputPassword} from './templates/migrate-input-password';
 import {migrateInputPhone} from './templates/migrate-input-phone';
 import {migrateInputPhoneInternational} from './templates/migrate-input-phone-international';
-import {migrateInputRange} from './templates/migrate-input-range';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateTuiNotification} from './templates/migrate-notification';
@@ -92,14 +91,13 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateInputPassword,
         migrateInputMonth,
-        migrateInputColor,
         migrateInputDate,
         migrateInputTime,
         migrateInputPhoneInternational,
         migrateInputYear,
         migrateInputPhone,
+        migrateInputDateRange,
         migrateSelect,
-        migrateInputRange,
         migrateAccordionItem,
         migrateAvatarToDirective,
         migrateTuiNotification,
