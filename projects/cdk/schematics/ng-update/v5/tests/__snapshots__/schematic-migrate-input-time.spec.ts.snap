@@ -78,12 +78,11 @@ exports[`ng-update migrate TuiInputTimeModule to TuiInputTime: test.ts 1`] = `
                 })
                 export class MyComponent {}
             ",
-  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
-import { TuiInputTime } from "@taiga-ui/kit";
+  "1. After": "import { TuiInputTime } from "@taiga-ui/kit";
 
                                 @NgModule({
                   imports: [
-                    TuiInputTime, TuiTextfield,
+                    TuiInputTime,
                   ],
                 })
                 export class MyModule {}
@@ -91,7 +90,7 @@ import { TuiInputTime } from "@taiga-ui/kit";
                 @Component({
                   standalone: true,
                   imports: [
-                    TuiInputTime, TuiTextfield,
+                    TuiInputTime,
                   ],
                   templateUrl: './test.html',
                 })
@@ -103,14 +102,14 @@ import { TuiInputTime } from "@taiga-ui/kit";
 exports[`ng-update moves [mode] to <input tuiInputTime>: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-time [mode]="'HH:MM'" formControlName="time">
-    Time
-</tui-input-time>",
+                <tui-input-time [mode]="'HH:MM'" formControlName="time">
+                    Time
+                </tui-input-time>",
   "1. After": "
-<tui-textfield  >
+                <tui-textfield  >
 <label tuiLabel>
-    Time
-</label>
+                    Time
+                </label>
 
 <input tuiInputTime formControlName="time" [mode]="'HH:MM'" />
 </tui-textfield>",
@@ -120,23 +119,23 @@ exports[`ng-update moves [mode] to <input tuiInputTime>: test.html 1`] = `
 exports[`ng-update removes [items] with TODO comment: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-time
-    [items]="timeItems"
-    formControlName="time"
->
-    Time
-</tui-input-time>",
+                <tui-input-time
+                    [items]="timeItems"
+                    formControlName="time"
+                >
+                    Time
+                </tui-input-time>",
   "1. After": "
-<!-- TODO: (Taiga UI migration) tui-input-time migration (see https://taiga-ui.dev/components/input-time):
+                <!-- TODO: (Taiga UI migration) tui-input-time migration (see https://taiga-ui.dev/components/input-time):
      - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.
        Remove this binding and update your component logic accordingly. -->
 <tui-textfield
-    
-    
->
+                    
+                    
+                >
 <label tuiLabel>
-    Time
-</label>
+                    Time
+                </label>
 
 <input tuiInputTime formControlName="time" />
 </tui-textfield>",
@@ -146,26 +145,26 @@ exports[`ng-update removes [items] with TODO comment: test.html 1`] = `
 exports[`ng-update silently removes strict, itemsHidden, [itemSize], [disabledItemHandler]: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-time
-    formControlName="time"
-    [strict]="true"
-    [itemsHidden]="false"
-    [itemSize]="'s'"
-    [disabledItemHandler]="handler"
->
-    Time
-</tui-input-time>",
+                <tui-input-time
+                    formControlName="time"
+                    [strict]="true"
+                    [itemsHidden]="false"
+                    [itemSize]="'s'"
+                    [disabledItemHandler]="handler"
+                >
+                    Time
+                </tui-input-time>",
   "1. After": "
-<tui-textfield
-    
-    
-    
-    
-    
->
+                <tui-textfield
+                    
+                    
+                    
+                    
+                    
+                >
 <label tuiLabel>
-    Time
-</label>
+                    Time
+                </label>
 
 <input tuiInputTime formControlName="time" />
 </tui-textfield>",
