@@ -40,6 +40,7 @@ import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputMonth} from './templates/migrate-input-month';
 import {migrateInputPassword} from './templates/migrate-input-password';
 import {migrateInputRange} from './templates/migrate-input-range';
+import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
@@ -91,6 +92,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputMonth,
         migrateInputColor,
         migrateInputDate,
+        migrateInputTime,
         migrateInputYear,
         migrateSelect,
         migrateInputRange,
