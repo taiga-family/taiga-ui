@@ -1997,8 +1997,8 @@ export default class Example {
 **LESS:**
 ```less
 tui-action-bar {
-    top: ~'max(1rem, env(safe-area-inset-top))';
-    bottom: unset;
+    inset-block-start: ~'max(1rem, env(safe-area-inset-top))';
+    inset-block-end: unset;
 }
 ```
 
@@ -2390,8 +2390,8 @@ export default class Example {
 
 tui-app-bar {
     position: sticky;
-    top: -1px;
     z-index: 1;
+    inset-block-start: -1px;
     background: var(--tui-background-base);
 }
 
@@ -5684,9 +5684,9 @@ export default class Example {
 
 .header {
     position: sticky;
-    top: 2.25rem;
     z-index: 1;
     display: flex;
+    inset-block-start: 2.25rem;
     flex-direction: column;
     gap: 1rem;
     font: var(--tui-typography-heading-h5);
@@ -7931,8 +7931,8 @@ export default class Example {}
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         inline-size: 100%;
         block-size: 100%;
         background: rgba(0, 0, 0, 0.5);
@@ -8150,8 +8150,8 @@ export default class Example {
 ```less
 .popover {
     position: fixed;
-    right: 1.5rem;
-    bottom: 1.5rem;
+    inset-inline-end: 1.5rem;
+    inset-block-end: 1.5rem;
     inline-size: 20rem;
 
     --tui-from: translateX(100%);
@@ -8164,8 +8164,8 @@ export default class Example {
 
 .close {
     position: absolute;
-    top: 0.5rem;
-    right: 0.75rem;
+    inset-block-start: 0.5rem;
+    inset-inline-end: 0.75rem;
 }
 
 .footer {
@@ -11674,9 +11674,9 @@ export default class Example {
     .scrollbar-hidden();
 
     position: sticky;
-    top: 0;
     z-index: 1;
     display: flex;
+    inset-block-start: 0;
     overflow: scroll;
     gap: 0.5rem;
     padding: 0.5rem;
@@ -14967,8 +14967,8 @@ export default class Page {
     .transition(opacity);
 
     position: absolute;
-    left: 3.125rem;
-    bottom: 1.875rem;
+    inset-inline-start: 3.125rem;
+    inset-block-end: 1.875rem;
     inline-size: 15.625rem;
     background: var(--tui-text-primary);
     color: var(--tui-background-base);
@@ -14979,8 +14979,8 @@ export default class Page {
     &::after {
         content: '';
         position: absolute;
-        left: 50%;
-        bottom: -0.9375rem;
+        inset-inline-start: 50%;
+        inset-block-end: -0.9375rem;
         border-block-start: 0.9375rem solid var(--tui-text-primary);
         border-inline-start: 0.625rem solid transparent;
         border-inline-end: 0.625rem solid transparent;
@@ -26435,8 +26435,8 @@ export default class Example {
 
 .chart {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
 
     &_dotted {
         stroke-dasharray: 2;
@@ -26782,8 +26782,8 @@ export default class Example {
 
 .wrapper {
     position: relative;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     inline-size: 100%;
     margin: 0 auto;
     border: 1px solid var(--tui-border-normal);
@@ -30070,8 +30070,8 @@ export default class Page implements OnDestroy {
 
     .custom-portal {
         position: sticky;
-        top: 0;
         z-index: 10;
+        inset-block-start: 0;
         block-size: 30rem;
         margin-block-end: -30rem;
         transform: translate3d(0, 0, 0);
@@ -33301,14 +33301,14 @@ tui-pulse {
 
 .step-1 {
     position: absolute;
-    top: 20%;
-    right: 10%;
+    inset-block-start: 20%;
+    inset-inline-end: 10%;
 }
 
 .step-2 {
     position: absolute;
-    top: 25%;
-    right: 25%;
+    inset-block-start: 25%;
+    inset-inline-end: 25%;
 }
 
 .avatar {
@@ -33878,8 +33878,8 @@ export default class Example {
 
     /* (Optionally) expand clickable area as you wish */
     &::after {
-        top: -0.5rem;
-        bottom: -1.5rem;
+        inset-block-start: -0.5rem;
+        inset-block-end: -1.5rem;
     }
 }
 
@@ -33948,8 +33948,8 @@ export default class Example {
 
     /* (Optionally) expand clickable area as you wish */
     &::after {
-        top: -0.5rem;
-        bottom: -1.5rem;
+        inset-block-start: -0.5rem;
+        inset-block-end: -1.5rem;
     }
 }
 
@@ -36546,7 +36546,7 @@ export default class Example {
 }
 
 .button {
-    .transition(bottom);
+    .transition(inset-block-end);
 }
 ```
 
@@ -38968,7 +38968,7 @@ export default class Example {}
 .fallback {
     .center-top();
 
-    right: 2rem;
+    inset-inline-end: 2rem;
 }
 
 tui-swipe-actions {
@@ -39521,7 +39521,7 @@ export default class Page {
 
 .fixed {
     position: fixed;
-    bottom: 0;
+    inset-block-end: 0;
     inline-size: 100%;
 }
 ```
@@ -40400,7 +40400,7 @@ export default class Example {
 }
 
 .second {
-    left: 11rem;
+    inset-inline-start: 11rem;
 }
 
 .text {
@@ -41149,7 +41149,7 @@ tr:hover td {
 }
 
 [tuiTh] {
-    border-top: none;
+    border-block-start: none;
 }
 
 [tuiTh],
@@ -42892,8 +42892,8 @@ export default class Example {
     .transition(opacity);
 
     position: absolute;
-    right: 0.75rem;
-    top: 1rem;
+    inset-inline-end: 0.75rem;
+    inset-block-start: 1rem;
     background: var(--tui-background-base);
     opacity: 0;
     cursor: move;
@@ -48295,8 +48295,8 @@ export default class Example implements AfterViewInit {
 
 .header {
     position: sticky;
-    top: 0;
     z-index: 1;
+    inset-block-start: 0;
     block-size: 5.5rem;
     pointer-events: none;
 }
@@ -48658,8 +48658,8 @@ export default class Example {
     .transition(opacity, visibility);
 
     position: absolute;
-    bottom: 0;
-    right: 0;
+    inset-block-end: 0;
+    inset-inline-end: 0;
     transition-delay: var(--tui-duration);
 
     &_hidden {
@@ -49750,8 +49750,8 @@ export default class Example {
 
 .controls {
     position: absolute;
-    bottom: 0;
     display: flex;
+    inset-block-end: 0;
     inline-size: 100%;
     align-items: center;
     padding: 0.75rem 0.75rem 0.5rem;
@@ -50409,6 +50409,8 @@ export default class Example {}
 ```
 **LESS:**
 ```less
+@import '@taiga-ui/styles/utils';
+
 :host {
     position: relative;
     display: block;
@@ -50435,117 +50437,115 @@ export default class Example {}
 }
 
 .left-top {
-    left: 0;
-    top: 0;
+    inset-inline-start: 0;
+    inset-block-start: 0;
 }
 
 .right-bottom-handle {
-    right: 0;
-    bottom: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
 }
 
 .top-middle {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-start: 0;
 }
 
 .top-middle-handle {
-    left: 50%;
-    bottom: 0;
+    inset-inline-start: 50%;
+    inset-block-end: 0;
 }
 
 .top-right {
-    top: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
 }
 
 .top-right-handle {
-    left: 0;
-    bottom: 0;
+    inset-inline-start: 0;
+    inset-block-end: 0;
 }
 
 .middle-right {
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    .center-top();
+
+    inset-inline-end: 0;
 }
 
 .middle-right-handle {
-    left: 0;
-    top: 50%;
+    inset-inline-start: 0;
+    inset-block-start: 50%;
 }
 
 .bottom-right {
-    bottom: 0;
-    right: 0;
+    inset-block-end: 0;
+    inset-inline-end: 0;
 }
 
 .bottom-right-handle {
-    left: 0;
-    top: 0;
+    inset-inline-start: 0;
+    inset-block-start: 0;
 }
 
 .middle-bottom {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-end: 0;
 }
 
 .middle-bottom-handle {
-    left: 50%;
-    top: 0;
+    inset-inline-start: 50%;
+    inset-block-start: 0;
 }
 
 .bottom-left {
-    bottom: 0;
-    left: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
 }
 
 .bottom-left-handle {
-    right: 0;
-    top: 0;
+    inset-inline-end: 0;
+    inset-block-start: 0;
 }
 
 .left-middle {
-    left: 0;
-    top: 50%;
+    inset-inline-start: 0;
+    inset-block-start: 50%;
     transform: translateY(-50%);
 }
 
 .left-middle-handle {
-    right: 0;
-    top: 50%;
+    inset-inline-end: 0;
+    inset-block-start: 50%;
 }
 
 .middle-middle {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .center-all();
 }
 
 .middle-middle-top-handle {
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-start: 0;
 }
 
 .middle-middle-right-handle {
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    .center-top();
+
+    inset-inline-end: 0;
 }
 
 .middle-middle-bottom-handle {
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-end: 0;
 }
 
 .middle-middle-left-handle {
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    .center-top();
+
+    inset-inline-start: 0;
 }
 ```
 
@@ -52033,10 +52033,7 @@ tui-wrapper-example-1 {
 
         content: '';
         position: absolute;
-        top: -0.625rem;
-        left: -0.625rem;
-        right: -0.625rem;
-        bottom: -0.625rem;
+        inset: -0.625rem;
         border-radius: 100%;
         background: #000;
         opacity: 0;
@@ -52433,30 +52430,27 @@ export default class Example extends TuiRectAccessor {
 }
 
 .t1 {
-    top: 0.625rem;
-    left: 0.625rem;
+    inset-block-start: 0.625rem;
+    inset-inline-start: 0.625rem;
 }
 
 .t2 {
-    top: 0.625rem;
-    right: 0.625rem;
+    inset-block-start: 0.625rem;
+    inset-inline-end: 0.625rem;
 }
 
 .t3 {
-    right: 0.625rem;
-    bottom: 0.625rem;
+    inset-inline-end: 0.625rem;
+    inset-block-end: 0.625rem;
 }
 
 .t4 {
-    left: 0.625rem;
-    bottom: 0.625rem;
+    inset-inline-start: 0.625rem;
+    inset-block-end: 0.625rem;
 }
 
 .t-centered-axis-xy {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    .center-all();
 }
 
 .t-direction {

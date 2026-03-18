@@ -1,0 +1,26 @@
+import"./chunk-HU6DUUP4.js";var n=`.popover {
+    position: fixed;
+    inset-inline-end: 1.5rem;
+    inset-block-end: 1.5rem;
+    inline-size: 20rem;
+
+    --tui-from: translateX(100%);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+}
+
+.close {
+    position: absolute;
+    inset-block-start: 0.5rem;
+    inset-inline-end: 0.75rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+`;export{n as default};
