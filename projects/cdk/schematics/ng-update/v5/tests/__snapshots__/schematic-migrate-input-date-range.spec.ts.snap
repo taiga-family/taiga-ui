@@ -3,24 +3,24 @@
 exports[`ng-update adds TODO for [items] and [defaultViewedMonth]: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-date-range
-    [items]="periods"
-    [defaultViewedMonth]="initialMonth"
-    formControlName="range"
->
-    Range
-</tui-input-date-range>",
+                <tui-input-date-range
+                    [items]="periods"
+                    [defaultViewedMonth]="initialMonth"
+                    formControlName="range"
+                >
+                    Range
+                </tui-input-date-range>",
   "1. After": "
-<!-- TODO: (Taiga UI migration) tui-input-date-range migration (see https://taiga-ui.dev/components/input-date-range):
+                <!-- TODO: (Taiga UI migration) tui-input-date-range migration (see https://taiga-ui.dev/components/input-date-range):
      - [items], [defaultviewedmonth]: no direct equivalent in v5. Remove and update component logic. -->
 <tui-textfield
-    
-    
-    
->
+                    
+                    
+                    
+                >
 <label tuiLabel>
-    Range
-</label>
+                    Range
+                </label>
 
 <input tuiInputDateRange formControlName="range" />
 <tui-calendar-range *tuiDropdown />
@@ -114,12 +114,11 @@ exports[`ng-update migrate TuiInputDateRangeModule to TuiInputDateRange: test.ts
                 })
                 export class MyComponent {}
             ",
-  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
-import { TuiInputDateRange } from "@taiga-ui/kit";
+  "1. After": "import { TuiInputDateRange } from "@taiga-ui/kit";
 
                                 @Component({
                   standalone: true,
-                  imports: [TuiInputDateRange, TuiTextfield],
+                  imports: [TuiInputDateRange],
                   templateUrl: './test.html',
                 })
                 export class MyComponent {}
@@ -130,22 +129,22 @@ import { TuiInputDateRange } from "@taiga-ui/kit";
 exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calendar-range *tuiDropdown>: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-date-range
-    [disabledItemHandler]="disabledHandler"
-    [markerHandler]="markerHandler"
-    formControlName="range"
->
-    Range
-</tui-input-date-range>",
+                <tui-input-date-range
+                    [disabledItemHandler]="disabledHandler"
+                    [markerHandler]="markerHandler"
+                    formControlName="range"
+                >
+                    Range
+                </tui-input-date-range>",
   "1. After": "
-<tui-textfield
-    
-    
-    
->
+                <tui-textfield
+                    
+                    
+                    
+                >
 <label tuiLabel>
-    Range
-</label>
+                    Range
+                </label>
 
 <input tuiInputDateRange formControlName="range" />
 <tui-calendar-range *tuiDropdown [disableditemhandler]="disabledHandler" [markerhandler]="markerHandler" />
@@ -156,26 +155,26 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
 exports[`ng-update moves [min], [max], [minLength], [maxLength] to <input tuiInputDateRange>: test.html 1`] = `
 {
   "0. Before": "
-<tui-input-date-range
-    [min]="minDate"
-    [max]="maxDate"
-    [minLength]="{day: 3}"
-    [maxLength]="{month: 1}"
-    formControlName="range"
->
-    Range
-</tui-input-date-range>",
+                <tui-input-date-range
+                    [min]="minDate"
+                    [max]="maxDate"
+                    [minLength]="{day: 3}"
+                    [maxLength]="{month: 1}"
+                    formControlName="range"
+                >
+                    Range
+                </tui-input-date-range>",
   "1. After": "
-<tui-textfield
-    
-    
-    
-    
-    
->
+                <tui-textfield
+                    
+                    
+                    
+                    
+                    
+                >
 <label tuiLabel>
-    Range
-</label>
+                    Range
+                </label>
 
 <input tuiInputDateRange formControlName="range" [min]="minDate" [max]="maxDate" [minLength]="{day: 3}" [maxLength]="{month: 1}" />
 <tui-calendar-range *tuiDropdown />
