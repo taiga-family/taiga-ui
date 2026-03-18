@@ -1,0 +1,20 @@
+import"./chunk-HU6DUUP4.js";var t=`.axes {
+    block-size: 12.5rem;
+    inline-size: 25rem;
+    color: #bc71c9;
+}
+
+.chart {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+
+    &_dotted {
+        stroke-dasharray: 2;
+    }
+
+    &_dashed {
+        stroke-dasharray: 4;
+    }
+}
+`;export{t as default};
