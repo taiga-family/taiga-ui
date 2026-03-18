@@ -19,7 +19,7 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-phone';
 
-const INPUT_ATTRS = new Set(['allowText'.toLowerCase(), '[allowText]'.toLowerCase()]);
+const INPUT_ATTRS = new Set(['[allowText]'.toLowerCase(), 'allowText'.toLowerCase()]);
 
 const NO_EQUIVALENT_ATTRS = new Set([
     'countryCode'.toLowerCase(),
