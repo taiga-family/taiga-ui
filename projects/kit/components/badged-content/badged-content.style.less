@@ -20,13 +20,13 @@
     isolation: isolate;
 
     &_top {
-        top: var(--t-offset);
-        right: var(--t-offset);
+        inset-block-start: var(--t-offset);
+        inset-inline-end: var(--t-offset);
     }
 
     &_bottom {
-        bottom: var(--t-offset);
-        right: var(--t-offset);
+        inset-block-end: var(--t-offset);
+        inset-inline-end: var(--t-offset);
     }
 
     &::before {
