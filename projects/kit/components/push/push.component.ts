@@ -2,8 +2,8 @@ import {DatePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TuiButtonX} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-push',
