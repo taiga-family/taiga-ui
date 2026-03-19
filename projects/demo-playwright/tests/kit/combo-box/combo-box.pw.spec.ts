@@ -163,6 +163,66 @@ describe('ComboBox', () => {
         let example!: Locator;
         let comboBox!: TuiComboBoxPO;
 
+        describe('Client-side filtering', () => {
+            beforeEach(async ({page}) => {
+                await tuiGoto(page, DemoRoute.ComboBox);
+
+                example = new TuiDocumentationPagePO(page).getExample(
+                    '#client-side-filtering',
+                );
+                comboBox = new TuiComboBoxPO(
+                    example.locator('tui-textfield:has([tuiComboBox])'),
+                );
+            });
+
+            test('all items are visible for empty textfield', async () => {
+                await comboBox.textfield.click();
+
+                await expect(comboBox.dropdown).toBeVisible();
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(8);
+            });
+
+            test('filter works', async () => {
+                await comboBox.textfield.fill('george');
+
+                await expect(comboBox.dropdown).toBeVisible();
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(4);
+                await expect(comboBox.dropdown).toContainText('George VI');
+                await expect(comboBox.dropdown).toContainText('George V');
+                await expect(comboBox.dropdown).toContainText('George IV');
+                await expect(comboBox.dropdown).toContainText('George III');
+            });
+
+            test('custom matcher converts roman numeral to arabic digit', async () => {
+                await comboBox.textfield.fill('3');
+
+                await expect(comboBox.dropdown).toBeVisible();
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
+                await expect(comboBox.dropdown).toContainText('Charles III');
+                await expect(comboBox.dropdown).toContainText('George III');
+            });
+
+            test('continue filtering on exact match if there are partially matched options', async () => {
+                await comboBox.textfield.fill('George V');
+
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
+                await expect(
+                    comboBox.dropdown.locator('[tuiOption]', {hasText: /George V\b/}),
+                ).toBeVisible();
+                await expect(
+                    comboBox.dropdown.locator('[tuiOption]', {hasText: 'George VI'}),
+                ).toBeVisible();
+                await expect(comboBox.dropdown).toHaveScreenshot(
+                    'george-5-checked-two-options-only.png',
+                );
+
+                await comboBox.textfield.pressSequentially('I');
+
+                await expect(comboBox.textfield).toHaveValue('George VI');
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(8);
+            });
+        });
+
         describe('Choose form control output', () => {
             beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.ComboBox);

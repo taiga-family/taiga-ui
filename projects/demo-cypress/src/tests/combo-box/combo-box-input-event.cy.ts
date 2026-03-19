@@ -1,14 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiRoot} from '@taiga-ui/core';
-import {
-    TUI_COUNTRIES,
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe, TuiRoot} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 interface Country {

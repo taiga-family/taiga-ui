@@ -7,6 +7,7 @@ export * from './distance-between-touches';
 export * from './ease-in-out-quad';
 export * from './generate-id';
 export * from './is-control-empty';
+export * from './is-flat';
 export * from './is-number';
 export * from './is-object';
 export * from './is-present';

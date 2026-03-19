@@ -2,13 +2,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiStringMatcher} from '@taiga-ui/cdk';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TUI_DEFAULT_MATCHER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk';
+import {type TuiFilterByInputOptions, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 const ROMAN_TO_LATIN: Record<string, string> = {
     I: '1',
@@ -47,12 +43,25 @@ export default class Example {
 
     protected value: string | null = null;
 
-    protected readonly matcher: TuiStringMatcher<string> = (item, query) => {
-        const romanNumeral = item.split(' ').at(-1)!;
+    protected readonly filter: TuiFilterByInputOptions<string>['filter'] = (
+        items,
+        query,
+    ) => {
+        const filtered = items.filter((item) => {
+            const romanNumeral = item.split(' ').at(-1)!;
 
-        return (
-            query === ROMAN_TO_LATIN[romanNumeral] ||
-            item.toLowerCase().includes(query.toLowerCase())
-        );
+            return (
+                query === ROMAN_TO_LATIN[romanNumeral] || TUI_DEFAULT_MATCHER(item, query)
+            );
+        });
+
+        /**
+         * Query "George V" EXACTLY matches one option,
+         * but it also PARTIALLY matches another option "George VI"
+         * We should continue filtering for such ambiguous cases
+         */
+        return filtered.length === 1 && TUI_STRICT_MATCHER(filtered[0], query)
+            ? items // Reset filtering
+            : filtered;
     };
 }

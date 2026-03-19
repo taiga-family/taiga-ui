@@ -17,10 +17,8 @@ import {
 } from '@angular/forms';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldComponent,
-} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {tuiTextareaOptionsProvider} from './textarea.options';
@@ -78,14 +76,14 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimit);
     host: {'[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75'},
 })
 export class TuiTextareaDirective implements Validator, DoCheck {
-    private readonly textfield = inject(TuiTextfieldComponent);
+    private readonly value = inject(TUI_TEXTFIELD_VALUE);
     private readonly ref = inject(ViewContainerRef).createComponent(TuiTextareaCounter);
 
     public readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     public readonly limit = input(0);
 
     public ngDoCheck(): void {
-        this.ref.instance.length.set(this.textfield.value().length);
+        this.ref.instance.length.set(this.value().length);
         this.ref.instance.limit.set(this.limit());
     }
 

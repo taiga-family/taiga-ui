@@ -11,7 +11,7 @@
         (ngModelChange)="value.set($event)"
     />
 
-    @if (items | tuiFilterByInput: matcher; as filtered) {
+    @if (items | tuiFilterByInput: filter; as filtered) {
         @if (!user() && input.value && filtered.length) {
             <tui-data-list-wrapper
                 *tuiDropdown
