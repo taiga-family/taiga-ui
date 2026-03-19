@@ -40,8 +40,13 @@ test.describe('Deep / Toggle', () => {
                 }
 
                 const example = api.demo;
+                const query = decodeURIComponent(
+                    String(new URL(page.url()).searchParams),
+                );
                 const makeName = (dir: string): string =>
-                    `deep-${path}-${name}-row-${rowIndex}-toggled.${dir}.png`;
+                    `deep-${path}-${name}-row-${rowIndex}-toggled-${dir}-----${query}`
+                        .slice(0, 250)
+                        .concat('.png');
 
                 await expect.soft(example).toHaveScreenshot(makeName('ltr'));
                 await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
