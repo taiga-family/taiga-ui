@@ -24,12 +24,13 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'keeps TuiFilterByInputPipe usage in components array after migration',
         migrate({
-            component: `import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+            component: `
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
-@Component({
-    imports: [TuiFilterByInputPipe],
-})
-export class TestComponent {}
+                @Component({
+                    imports: [TuiFilterByInputPipe],
+                })
+                export class TestComponent {}
         `,
         }),
     );
@@ -38,35 +39,36 @@ export class TestComponent {}
         'migrates matcher (2nd argument of tuiFilterByInput) to new API',
         migrate({
             component: `
-import {TuiStringMatcher} from '@taiga-ui/core';
-import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+                import {TuiStringMatcher} from '@taiga-ui/core';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
-@Component({
-    template: \`
-<tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByDigit" />
-<tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByName" />
-    \`',
-})
-export class Example {
-    items = ['Charles III', 'Elizabeth II'];
-    value: string | null = null;
+                @Component({
+                    template: \`
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByDigit" />
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByName" />
+                    \`,
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
 
-    // to ensure schematics keeps it untouched
-    justAnotherMatcher: TuiStringMatcher<string> =
-        (item, query) => item.toLowerCase().includes(query.toLowerCase());
+                    // to ensure schematics keeps it untouched
+                    justAnotherMatcher: TuiStringMatcher<string> =
+                        (item, query) => item.toLowerCase().includes(query.toLowerCase());
 
-    matcherByDigit: TuiStringMatcher<string> = (item, query) => {
-        const romanNumeral = item.split(' ').at(-1);
+                    matcherByDigit: TuiStringMatcher<string> = (item, query) => {
+                        const romanNumeral = item.split(' ').at(-1);
 
-        return (
-            query === ROMAN_TO_LATIN[romanNumeral] ||
-            item.toLowerCase().includes(query.toLowerCase())
-        );
-    };
+                        return (
+                            query === ROMAN_TO_LATIN[romanNumeral] ||
+                            item.toLowerCase().includes(query.toLowerCase())
+                        );
+                    };
 
-    matcherByName =
-        (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
-}`,
+                    matcherByName =
+                        (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
+                }
+            `,
         }),
     );
 
@@ -74,32 +76,33 @@ export class Example {
         'migrates matcher (2nd argument of tuiFilterByInput) to new API — external template',
         migrate({
             component: `
-import {TuiStringMatcher} from '@taiga-ui/core';
-import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+                import {TuiStringMatcher} from '@taiga-ui/core';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
-@Component({
-    templateUrl: './test.html',
-})
-export class Example {
-    items = ['Charles III', 'Elizabeth II'];
-    value: string | null = null;
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
 
-    matcherByDigit: TuiStringMatcher<string> = (item, query) => {
-        const romanNumeral = item.split(' ').at(-1);
+                    matcherByDigit: TuiStringMatcher<string> = (item, query) => {
+                        const romanNumeral = item.split(' ').at(-1);
 
-        return (
-            query === ROMAN_TO_LATIN[romanNumeral] ||
-            item.toLowerCase().includes(query.toLowerCase())
-        );
-    };
+                        return (
+                            query === ROMAN_TO_LATIN[romanNumeral] ||
+                            item.toLowerCase().includes(query.toLowerCase())
+                        );
+                    };
 
-    matcherByName =
-        (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
-}`,
+                    matcherByName =
+                        (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
+                }
+            `,
             template: `
-<tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByDigit" />
-<tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByName" />
-`,
+                <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByDigit" />
+                <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByName" />
+            `,
         }),
     );
 
@@ -107,32 +110,35 @@ export class Example {
         'does not add filterWith wrapper when tuiFilterByInput has no second argument',
         migrate({
             component: `
-import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
-@Component({
-    template: \`<tui-data-list-wrapper [items]="items | tuiFilterByInput" />\`,
-})
-export class Example {
-    items = ['a', 'b'];
-}`,
+                @Component({
+                    template: \`<tui-data-list-wrapper [items]="items | tuiFilterByInput" />\`,
+                })
+                export class Example {
+                    items = ['a', 'b'];
+                }
+            `,
         }),
     );
 
     it(
         'does not duplicate filterWith wrapper when migration runs again (idempotent)',
         migrate({
-            component: `import { TuiFilterByInputPipe, TuiFilterByInputOptions } from '@taiga-ui/core';
+            component: `
+                import { TuiFilterByInputPipe, TuiFilterByInputOptions } from '@taiga-ui/core';
 
-@Component({
-    template: \`<tui-data-list-wrapper [items]="items | tuiFilterByInput: filterWithMatcher" />\`,
-})
-export class Example {
-    items = ['a', 'b'];
+                @Component({
+                    template: \`<tui-data-list-wrapper [items]="items | tuiFilterByInput: filterWithMatcher" />\`,
+                })
+                export class Example {
+                    items = ['a', 'b'];
 
-    matcher = (item: string, query: string) => item.includes(query);
+                    matcher = (item: string, query: string) => item.includes(query);
 
-    filterWithMatcher: TuiFilterByInputOptions['filter'] = (items, query, stringify) => items.filter((item) => this.matcher(item, query, stringify));
-}`,
+                    filterWithMatcher: TuiFilterByInputOptions['filter'] = (items, query, stringify) => items.filter((item) => this.matcher(item, query, stringify));
+                }
+            `,
         }),
     );
 
@@ -140,17 +146,18 @@ export class Example {
         'wraps a plain function reference (e.g. TUI_DEFAULT_MATCHER) used as second argument',
         migrate({
             component: `
-import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+                import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
-@Component({
-    template: \`<tui-data-list-wrapper [items]="items | tuiFilterByInput: defaultMatcher" />\`,
-})
-export class Example {
-    items = ['a', 'b'];
+                @Component({
+                    template: \`<tui-data-list-wrapper [items]="items | tuiFilterByInput: defaultMatcher" />\`,
+                })
+                export class Example {
+                    items = ['a', 'b'];
 
-    defaultMatcher = TUI_DEFAULT_MATCHER;
-}`,
+                    defaultMatcher = TUI_DEFAULT_MATCHER;
+                }
+            `,
         }),
     );
 });

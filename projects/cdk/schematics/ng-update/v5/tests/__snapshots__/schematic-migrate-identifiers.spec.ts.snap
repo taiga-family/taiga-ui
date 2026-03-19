@@ -31,21 +31,21 @@ exports[`ng-update identifiers migration adds TODO for TuiStatus type (cannot be
 exports[`ng-update identifiers migration keeps tuiIsFlat usages in source code when migrating from @taiga-ui/kit: test.ts 1`] = `
 {
   "0. Before": "
-import {tuiIsFlat} from '@taiga-ui/kit';
+                import {tuiIsFlat} from '@taiga-ui/kit';
 
-export class TestComponent {
-    filter(items: readonly unknown[]): boolean {
-        return tuiIsFlat(items);
-    }
-}
+                export class TestComponent {
+                    filter(items: readonly unknown[]): boolean {
+                        return tuiIsFlat(items);
+                    }
+                }
             ",
   "1. After": "import { tuiIsFlat } from "@taiga-ui/cdk";
 
-export class TestComponent {
-    filter(items: readonly unknown[]): boolean {
-        return tuiIsFlat(items);
-    }
-}
+                                export class TestComponent {
+                    filter(items: readonly unknown[]): boolean {
+                        return tuiIsFlat(items);
+                    }
+                }
             ",
 }
 `;

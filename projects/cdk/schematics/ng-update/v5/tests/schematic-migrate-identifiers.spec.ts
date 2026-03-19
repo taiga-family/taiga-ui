@@ -137,13 +137,13 @@ describe('ng-update identifiers migration', () => {
         'keeps tuiIsFlat usages in source code when migrating from @taiga-ui/kit',
         migrate({
             component: `
-import {tuiIsFlat} from '@taiga-ui/kit';
+                import {tuiIsFlat} from '@taiga-ui/kit';
 
-export class TestComponent {
-    filter(items: readonly unknown[]): boolean {
-        return tuiIsFlat(items);
-    }
-}
+                export class TestComponent {
+                    filter(items: readonly unknown[]): boolean {
+                        return tuiIsFlat(items);
+                    }
+                }
             `,
         }),
     );
