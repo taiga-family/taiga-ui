@@ -34,6 +34,7 @@ export default class Page {
         'InputPassword',
         'Custom cleaner',
         'Mask',
+        'Long label',
     ];
 
     protected value = '';
