@@ -49,6 +49,16 @@ describe('ng-update', () => {
     it(
         'adds TODO for [colors] and removes it from wrapper',
         migrate({
+            component: `
+                import {TuiInputColorModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputColorModule],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            `,
             template: `
                 <tui-input-color
                     [colors]="myPalette"

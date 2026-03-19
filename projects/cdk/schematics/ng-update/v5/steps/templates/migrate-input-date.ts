@@ -26,14 +26,7 @@ const INPUT_ATTRS = new Set([
     'min'.toLowerCase(),
 ]);
 
-const CALENDAR_ATTRS = new Set([
-    '[defaultActiveYearMonth]'.toLowerCase(),
-    '[disabledItemHandler]'.toLowerCase(),
-    '[markerHandler]'.toLowerCase(),
-    'defaultActiveYearMonth'.toLowerCase(),
-]);
-
-const CALENDAR_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
+const CALENDAR_ATTR_RENAMES = new Map([
     ['[defaultActiveYearMonth]'.toLowerCase(), '[month]'],
     ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
     ['[markerHandler]'.toLowerCase(), '[markerHandler]'],
@@ -81,7 +74,7 @@ export function migrateInputDate({
         );
 
         const calendarAttrs = [...element.attrs].filter((attr) =>
-            CALENDAR_ATTRS.has(attr.name.toLowerCase()),
+            CALENDAR_ATTR_RENAMES.has(attr.name.toLowerCase()),
         );
 
         const noEquivalentAttrs = [...element.attrs].filter((attr) =>
@@ -117,10 +110,10 @@ export function migrateInputDate({
         }
 
         if (noEquivalentAttrs.length > 0) {
-            const names = noEquivalentAttrs.map((a) => a.name).join(', ');
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-date migration (see ${DOCS_LINK}):`,
-                `     - ${names}: no direct equivalent in v5. Remove and update component logic. -->`,
+                '     - [items]: TuiNamedDay type is removed in v5. Use <datalist> + <section *tuiDropdown>',
+                `       for named dates. See example: ${DOCS_LINK}#datalist -->`,
             ].join('\n');
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
@@ -141,7 +134,7 @@ export function migrateInputDate({
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
-            const name = CALENDAR_ATTR_NAMES.get(attr.name.toLowerCase()) ?? attr.name;
+            const name = CALENDAR_ATTR_RENAMES.get(attr.name.toLowerCase()) ?? attr.name;
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
@@ -183,6 +176,10 @@ function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[max]'.toLowerCase():
+            return '[max]';
+        case '[min]'.toLowerCase():
+            return '[min]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case 'formControl'.toLowerCase():

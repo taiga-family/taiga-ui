@@ -1,13 +1,8 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiDataList, TuiRoot, TuiScrollable} from '@taiga-ui/core';
-import {
-    TUI_COUNTRIES,
-    TuiChevron,
-    TuiComboBox,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiDataList, TuiFilterByInputPipe, TuiRoot, TuiScrollable} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
