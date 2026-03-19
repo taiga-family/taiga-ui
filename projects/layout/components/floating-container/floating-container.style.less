@@ -26,17 +26,11 @@
     position: sticky;
     z-index: 1;
     display: grid;
-
-    --t-svh: ~'calc(100 * var(--tui-viewport-svh))';
-
-    inset-block-end: ~'max(0px, calc(var(--t-svh) - var(--tui-viewport-height) - var(--tui-viewport-y)))';
-
-    /* stylelint-disable plugin/no-unsupported-browser-features, plugin/use-baseline, unit-allowed-list */
-    @supports (height: 100svh) {
-        --t-svh: 100svh;
-    }
-    /* stylelint-enable plugin/no-unsupported-browser-features, plugin/use-baseline, unit-allowed-list */
-
+    // Fallback for browsers not supported svh unit
+    /* stylelint-disable-next-line */
+    inset-block-end: ~'max(0px, calc(100 * var(--tui-viewport-svh) - var(--tui-viewport-height) - var(--tui-viewport-y)))';
+    /* stylelint-disable-next-line */
+    inset-block-end: ~'max(0px, calc(100svh - var(--tui-viewport-height) - var(--tui-viewport-y)))';
     margin-block-start: 1rem;
     padding-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
     text-align: center;
