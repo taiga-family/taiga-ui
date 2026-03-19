@@ -17752,6 +17752,59 @@ export default class Example {
 }
 ```
 
+#### Long label
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiFade tuiLabel > Very long label that you must display without truncating </label>
+<input tuiFade tuiInput [(ngModel)]="value" />
+</tui-textfield>
+<tui-textfield multi>
+<label tuiFade tuiLabel > Very long label that you must display without truncating </label>
+<input tuiInputChip [(ngModel)]="chips" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInput} from '@taiga-ui/core';
+import {TuiFade, TuiInputChip} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiFade, TuiInput, TuiInputChip],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 'Single string';
+    protected chips = ['Single string'];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 17rem;
+    flex-direction: column;
+    gap: 1rem;
+
+    tui-textfield[data-focus='true'] {
+        align-items: center;
+
+        [tuiLabel] {
+            transition: none;
+            white-space: normal;
+        }
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -17792,6 +17845,7 @@ export default class Page {
         'InputPassword',
         'Custom cleaner',
         'Mask',
+        'Long label',
     ];
 
     protected value = '';
