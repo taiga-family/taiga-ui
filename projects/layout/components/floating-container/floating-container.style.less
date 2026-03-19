@@ -26,7 +26,9 @@
     position: sticky;
     z-index: 1;
     display: grid;
-    inset-block-end: calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y));
+    // Fallback for browsers not supported svh unit
+    inset-block-end: ~'max(0px, calc(100 * var(--tui-viewport-svh) - var(--tui-viewport-height) - var(--tui-viewport-y)))';
+    inset-block-end: ~'max(0px, calc(100svh - var(--tui-viewport-height) - var(--tui-viewport-y)))';
     margin-block-start: 1rem;
     padding-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
     text-align: center;
