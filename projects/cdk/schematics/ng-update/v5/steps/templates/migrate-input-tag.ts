@@ -178,18 +178,18 @@ function getHint(attrName: string): string {
     }
 
     if ('[(search)]'.toLowerCase() === lower || '[search]'.toLowerCase() === lower) {
-        return `use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes.`;
+        return 'use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes.';
     }
 
     if ('(searchChange)'.toLowerCase() === lower) {
-        return `use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">.`;
+        return 'use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">.';
     }
 
     if (
         '[disabledItemHandler]'.toLowerCase() === lower ||
         'disabledItemHandler'.toLowerCase() === lower
     ) {
-        return `provide via DI: providers: [tuiItemsHandlersProvider({disabledItemHandler: myHandler})].`;
+        return 'provide via DI: providers: [tuiItemsHandlersProvider({disabledItemHandler: myHandler})].';
     }
 
     if ('[editable]'.toLowerCase() === lower || 'editable'.toLowerCase() === lower) {
