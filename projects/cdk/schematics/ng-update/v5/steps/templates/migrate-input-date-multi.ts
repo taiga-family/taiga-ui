@@ -265,7 +265,7 @@ function getHint(attrName: string): string {
     const lower = attrName.toLowerCase();
 
     if (/tagvalidator/.test(lower)) {
-        return `use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See ${DOCS_LINK}`;
+        return `use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization`;
     }
 
     if (/search/.test(lower)) {

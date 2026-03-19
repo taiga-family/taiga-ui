@@ -13,7 +13,7 @@ exports[`ng-update adds TODO for removed attrs ([tagValidator], [(search)]): tes
                 </tui-input-date>",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input-date multiple migration (see https://taiga-ui.dev/components/input-date):
-     - [tagValidator]: use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-date
+     - [tagValidator]: use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization
      - [(search)]: use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead. -->
 <tui-textfield
                     
