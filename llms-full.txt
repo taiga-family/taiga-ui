@@ -990,7 +990,7 @@
 ### pdf-viewer
 
 ```text
-  TuiPdfViewerComponent
+  TuiPdfViewer
 ```
 ### search-results
 
