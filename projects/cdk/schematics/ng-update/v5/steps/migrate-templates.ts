@@ -32,6 +32,7 @@ import {migrateAmountCurrencyAlign} from './templates/migrate-amount-currency-al
 import {migrateAsyncPipes} from './templates/migrate-async-pipes';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateAxes} from './templates/migrate-axes';
+import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-single';
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateFieldError} from './templates/migrate-field-error';
@@ -110,6 +111,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateTagToChip,
         migrateAxes,
         migrateChartHint,
+        migrateCalendarSheetSingle,
         migrateCloseable,
         migrateSidebar,
     ] as const;

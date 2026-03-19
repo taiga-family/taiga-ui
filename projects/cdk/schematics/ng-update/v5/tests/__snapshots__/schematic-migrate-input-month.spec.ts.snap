@@ -1,31 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update adds TODO for [defaultActiveYear]: test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input-month
-                    [defaultActiveYear]="initialYear"
-                    formControlName="month"
-                >
-                    Month
-                </tui-input-month>",
-  "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-input-month migration (see https://taiga-ui.dev/components/input-month):
-     - [defaultactiveyear]: no direct equivalent in v5. Remove and update component logic. -->
-<tui-textfield
-                    
-                    
-                >
-<label tuiLabel>
-                    Month
-                </label>
-
-<input tuiInputMonth formControlName="month" />
-<tui-calendar-month *tuiDropdown />
-</tui-textfield>",
-}
-`;
-
 exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.html 1`] = `
 {
   "0. Before": "
@@ -152,11 +126,39 @@ exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.ts 1`] = `
 }
 `;
 
-exports[`ng-update moves [disabledItemHandler] to <tui-calendar-month *tuiDropdown>: test.html 1`] = `
+exports[`ng-update moves [min], [max], [disabledItemHandler] to <tui-calendar-month *tuiDropdown>: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-month
+                    [min]="minMonth"
+                    [max]="maxMonth"
                     [disabledItemHandler]="disabledHandler"
+                    formControlName="month"
+                >
+                    Month
+                </tui-input-month>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Month
+                </label>
+
+<input tuiInputMonth formControlName="month" />
+<tui-calendar-month *tuiDropdown [min]="minMonth" [max]="maxMonth" [disabledItemHandler]="disabledHandler" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update renames [defaultActiveYear] to [year] on <tui-calendar-month *tuiDropdown>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month
+                    [defaultActiveYear]="initialYear"
                     formControlName="month"
                 >
                     Month
@@ -171,33 +173,7 @@ exports[`ng-update moves [disabledItemHandler] to <tui-calendar-month *tuiDropdo
                 </label>
 
 <input tuiInputMonth formControlName="month" />
-<tui-calendar-month *tuiDropdown [disableditemhandler]="disabledHandler" />
-</tui-textfield>",
-}
-`;
-
-exports[`ng-update moves [min] and [max] to <input tuiInputMonth>: test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input-month
-                    [min]="minMonth"
-                    [max]="maxMonth"
-                    formControlName="month"
-                >
-                    Month
-                </tui-input-month>",
-  "1. After": "
-                <tui-textfield
-                    
-                    
-                    
-                >
-<label tuiLabel>
-                    Month
-                </label>
-
-<input tuiInputMonth formControlName="month" [min]="minMonth" [max]="maxMonth" />
-<tui-calendar-month *tuiDropdown />
+<tui-calendar-month *tuiDropdown [year]="initialYear" />
 </tui-textfield>",
 }
 `;

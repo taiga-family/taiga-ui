@@ -3,13 +3,8 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList, TuiScrollable} from '@taiga-ui/core';
-import {
-    TUI_COUNTRIES,
-    TuiChevron,
-    TuiComboBox,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiDataList, TuiFilterByInputPipe, TuiScrollable} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 
 @Component({
     imports: [

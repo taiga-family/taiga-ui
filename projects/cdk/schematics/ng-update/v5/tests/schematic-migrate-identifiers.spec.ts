@@ -128,5 +128,25 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'moves tuiIsFlat from @taiga-ui/kit to @taiga-ui/cdk',
+        migrate({component: "import {tuiIsFlat} from '@taiga-ui/kit';"}),
+    );
+
+    it(
+        'keeps tuiIsFlat usages in source code when migrating from @taiga-ui/kit',
+        migrate({
+            component: `
+                import {tuiIsFlat} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    filter(items: readonly unknown[]): boolean {
+                        return tuiIsFlat(items);
+                    }
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

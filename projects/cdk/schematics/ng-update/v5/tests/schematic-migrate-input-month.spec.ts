@@ -64,24 +64,12 @@ describe('ng-update', () => {
     );
 
     it(
-        'moves [min] and [max] to <input tuiInputMonth>',
+        'moves [min], [max], [disabledItemHandler] to <tui-calendar-month *tuiDropdown>',
         migrate({
             template: `
                 <tui-input-month
                     [min]="minMonth"
                     [max]="maxMonth"
-                    formControlName="month"
-                >
-                    Month
-                </tui-input-month>`,
-        }),
-    );
-
-    it(
-        'moves [disabledItemHandler] to <tui-calendar-month *tuiDropdown>',
-        migrate({
-            template: `
-                <tui-input-month
                     [disabledItemHandler]="disabledHandler"
                     formControlName="month"
                 >
@@ -91,7 +79,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'adds TODO for [defaultActiveYear]',
+        'renames [defaultActiveYear] to [year] on <tui-calendar-month *tuiDropdown>',
         migrate({
             template: `
                 <tui-input-month

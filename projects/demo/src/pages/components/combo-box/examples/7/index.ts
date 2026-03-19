@@ -3,13 +3,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiPaymentSystem, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiFilterByInputOptions, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 interface Card {
     name: string;
@@ -41,12 +37,12 @@ export default class Example {
 
     protected value: Card | null = null;
 
-    protected readonly matcher: TuiStringMatcher<Card> = (item, value) => {
-        return (
-            item.name.toLowerCase().includes(value.toLowerCase()) ||
-            item.number.includes(value)
+    protected readonly filter: TuiFilterByInputOptions<Card>['filter'] = (items, value) =>
+        items.filter(
+            (item) =>
+                item.name.toLowerCase().includes(value.toLowerCase()) ||
+                item.number.includes(value),
         );
-    };
 
     protected readonly stringify: TuiStringHandler<Card> = (x) => x.number;
 }

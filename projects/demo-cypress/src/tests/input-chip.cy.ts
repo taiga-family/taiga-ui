@@ -1,14 +1,15 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiCheckbox, TuiDataList, TuiRadio, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {
-    TuiChevron,
+    TuiCheckbox,
+    TuiDataList,
     TuiFilterByInputPipe,
-    TuiInputChip,
-    TuiMultiSelect,
-    TuiSwitch,
-} from '@taiga-ui/kit';
+    TuiRadio,
+    TuiRoot,
+    TuiTextfield,
+} from '@taiga-ui/core';
+import {TuiChevron, TuiInputChip, TuiMultiSelect, TuiSwitch} from '@taiga-ui/kit';
 
 interface User {
     readonly name: string;
