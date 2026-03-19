@@ -177,12 +177,12 @@ function getHint(attrName: string): string {
         return `use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See ${DOCS_LINK}#customization`;
     }
 
-    if ('[search]'.toLowerCase() === lower || '[(search)]'.toLowerCase() === lower) {
-        return `use [value] on <input tuiInputChip> to set initial search text.`;
+    if ('[(search)]'.toLowerCase() === lower || '[search]'.toLowerCase() === lower) {
+        return `use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes.`;
     }
 
     if ('(searchChange)'.toLowerCase() === lower) {
-        return `use (input) event on <input tuiInputChip (input)="onSearch($any($event).target.value)">.`;
+        return `use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">.`;
     }
 
     if (

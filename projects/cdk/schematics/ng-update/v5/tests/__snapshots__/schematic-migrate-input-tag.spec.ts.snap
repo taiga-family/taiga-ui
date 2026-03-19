@@ -13,7 +13,7 @@ exports[`ng-update adds TODO for [tagValidator] and [search]: test.html 1`] = `
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input-tag migration (see https://taiga-ui.dev/components/input-chip):
      - [tagvalidator]: use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization
-     - [(search)]: use [value] on <input tuiInputChip> to set initial search text. -->
+     - [(search)]: use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes. -->
 <tui-textfield
                     
                     
