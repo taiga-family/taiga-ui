@@ -103,7 +103,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'adds TODO for [rows] (no v5 equivalent)',
+        'moves [rows] to <tui-textfield multi>',
         migrate({
             template: `
                 <tui-input-tag

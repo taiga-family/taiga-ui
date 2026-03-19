@@ -30,23 +30,24 @@ const INPUT_ATTR_RENAMES = new Map<string, string>([
     ['uniqueTags'.toLowerCase(), 'unique'],
 ]);
 
+const TEXTFIELD_ATTRS = new Set(['[rows]'.toLowerCase(), 'rows'.toLowerCase()]);
+
 const TODO_ATTRS = new Set([
     '(searchChange)'.toLowerCase(),
     '[(search)]'.toLowerCase(),
-    '[rows]'.toLowerCase(),
+    '[disabledItemHandler]'.toLowerCase(),
+    '[editable]'.toLowerCase(),
     '[search]'.toLowerCase(),
     '[tagValidator]'.toLowerCase(),
-    'rows'.toLowerCase(),
+    'disabledItemHandler'.toLowerCase(),
+    'editable'.toLowerCase(),
 ]);
 
 const DROPPED_ATTRS = new Set([
     '[autoColor]'.toLowerCase(),
-    '[disabledItemHandler]'.toLowerCase(),
-    '[editable]'.toLowerCase(),
     '[inputHidden]'.toLowerCase(),
     '[removable]'.toLowerCase(),
     'autoColor'.toLowerCase(),
-    'editable'.toLowerCase(),
     'inputHidden'.toLowerCase(),
     'removable'.toLowerCase(),
 ]);
@@ -76,10 +77,7 @@ export function migrateInputTag({
             templateOffset,
         );
 
-        // Add `multi` attribute to the new opening tag
         const openTagEnd = sourceCodeLocation?.startTag?.endOffset ?? 0;
-
-        recorder.insertRight(templateOffset + openTagEnd - 1, ' multi');
 
         const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
@@ -87,6 +85,10 @@ export function migrateInputTag({
 
         const inputAttrs = [...element.attrs].filter((attr) =>
             INPUT_ATTR_RENAMES.has(attr.name.toLowerCase()),
+        );
+
+        const textfieldAttrs = [...element.attrs].filter((attr) =>
+            TEXTFIELD_ATTRS.has(attr.name.toLowerCase()),
         );
 
         const todoAttrs = [...element.attrs].filter((attr) =>
@@ -100,6 +102,7 @@ export function migrateInputTag({
         for (const attr of [
             ...controlAttrs,
             ...inputAttrs,
+            ...textfieldAttrs,
             ...todoAttrs,
             ...droppedAttrs,
         ]) {
@@ -108,6 +111,19 @@ export function migrateInputTag({
 
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         }
+
+        const textfieldAttrStr = textfieldAttrs.reduce(
+            (result, attr) =>
+                attr.value
+                    ? `${result} ${attr.name}="${attr.value}"`
+                    : `${result} ${attr.name}`,
+            '',
+        );
+
+        recorder.insertRight(
+            templateOffset + openTagEnd - 1,
+            ` multi${textfieldAttrStr}`,
+        );
 
         const labelIndex = element.childNodes.findIndex(
             (node: ChildNode) =>
@@ -126,10 +142,15 @@ export function migrateInputTag({
         }
 
         if (todoAttrs.length > 0) {
-            const names = todoAttrs.map((a) => a.name).join(', ');
+            const lines = todoAttrs.map((attr, index, arr) => {
+                const isLast = index === arr.length - 1;
+                const hint = getHint(attr.name);
+
+                return `     - ${attr.name}: ${hint}${isLast ? ' -->' : ''}`;
+            });
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-tag migration (see ${DOCS_LINK}):`,
-                `     - ${names}: no direct equivalent in v5. See docs for alternatives. -->`,
+                ...lines,
             ].join('\n');
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
@@ -147,6 +168,35 @@ export function migrateInputTag({
 
         recorder.insertRight(insertOffset, `\n<input tuiInputChip${migrationAttrs} />\n`);
     });
+}
+
+function getHint(attrName: string): string {
+    const lower = attrName.toLowerCase();
+
+    if ('[tagValidator]'.toLowerCase() === lower) {
+        return `use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See ${DOCS_LINK}#customization`;
+    }
+
+    if ('[search]'.toLowerCase() === lower || '[(search)]'.toLowerCase() === lower) {
+        return `use [value] on <input tuiInputChip> to set initial search text.`;
+    }
+
+    if ('(searchChange)'.toLowerCase() === lower) {
+        return `use (input) event on <input tuiInputChip (input)="onSearch($any($event).target.value)">.`;
+    }
+
+    if (
+        '[disabledItemHandler]'.toLowerCase() === lower ||
+        'disabledItemHandler'.toLowerCase() === lower
+    ) {
+        return `provide via DI: providers: [tuiItemsHandlersProvider({disabledItemHandler: myHandler})].`;
+    }
+
+    if ('[editable]'.toLowerCase() === lower || 'editable'.toLowerCase() === lower) {
+        return `[editable] on <tui-input-chip *tuiItem> now controls per-chip editing (not the whole field). See ${DOCS_LINK}.`;
+    }
+
+    return `no direct equivalent in v5. See ${DOCS_LINK}.`;
 }
 
 function normalizeAttrName(name: string): string {
