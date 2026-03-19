@@ -27,22 +27,43 @@ const INPUT_ATTRS = new Set([
 ]);
 
 const CALENDAR_ATTRS = new Set([
+    '[defaultActiveYearMonth]'.toLowerCase(),
+    'defaultActiveYearMonth'.toLowerCase(),
     '[disabledItemHandler]'.toLowerCase(),
     '[markerHandler]'.toLowerCase(),
+]);
+
+// cspell:disable
+const CALENDAR_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
+    ['[defaultactiveyearmonth]', '[month]'],
+    ['defaultactiveyearmonth', 'month'],
+    ['[disableditemhandler]', '[disabledItemHandler]'],
+    ['[markerhandler]', '[markerHandler]'],
+]);
+// cspell:enable
+
+const TEXTFIELD_ATTRS = new Set(['[rows]'.toLowerCase(), 'rows'.toLowerCase()]);
+
+const PLACEHOLDER_ATTRS = new Set([
+    '[placeholder]'.toLowerCase(),
+    'placeholder'.toLowerCase(),
 ]);
 
 const TODO_ATTRS = new Set([
     '(searchChange)'.toLowerCase(),
     '[(search)]'.toLowerCase(),
-    '[defaultActiveYearMonth]'.toLowerCase(),
-    '[placeholder]'.toLowerCase(),
-    '[rows]'.toLowerCase(),
     '[search]'.toLowerCase(),
     '[tagValidator]'.toLowerCase(),
-    'defaultActiveYearMonth'.toLowerCase(),
-    'placeholder'.toLowerCase(),
-    'rows'.toLowerCase(),
 ]);
+
+// cspell:disable
+const TODO_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
+    ['(searchchange)', '(searchChange)'],
+    ['[(search)]', '[(search)]'],
+    ['[search]', '[search]'],
+    ['[tagvalidator]', '[tagValidator]'],
+]);
+// cspell:enable
 
 const DROPPED_ATTRS = new Set([
     '[editable]'.toLowerCase(),
@@ -93,11 +114,6 @@ export function migrateInputDateMulti({
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         }
 
-        // Add `multi` to the new tui-textfield opening tag
-        const openTagEnd = sourceCodeLocation?.startTag?.endOffset ?? 0;
-
-        recorder.insertRight(templateOffset + openTagEnd - 1, ' multi');
-
         const controlAttrs = allAttrs.filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
         );
@@ -108,6 +124,29 @@ export function migrateInputDateMulti({
 
         const calendarAttrs = allAttrs.filter((attr) =>
             CALENDAR_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        const textfieldAttrs = allAttrs.filter((attr) =>
+            TEXTFIELD_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        // Add `multi` (and textfield-level attrs) to the new tui-textfield opening tag
+        const openTagEnd = sourceCodeLocation?.startTag?.endOffset ?? 0;
+        const textfieldAttrStr = textfieldAttrs.reduce(
+            (result, attr) =>
+                attr.value
+                    ? `${result} ${attr.name}="${attr.value}"`
+                    : `${result} ${attr.name}`,
+            '',
+        );
+
+        recorder.insertRight(
+            templateOffset + openTagEnd - 1,
+            ` multi${textfieldAttrStr}`,
+        );
+
+        const placeholderAttrs = allAttrs.filter((attr) =>
+            PLACEHOLDER_ATTRS.has(attr.name.toLowerCase()),
         );
 
         const todoAttrs = allAttrs.filter((attr) =>
@@ -122,6 +161,8 @@ export function migrateInputDateMulti({
             ...controlAttrs,
             ...inputAttrs,
             ...calendarAttrs,
+            ...textfieldAttrs,
+            ...placeholderAttrs,
             ...todoAttrs,
             ...droppedAttrs,
         ]) {
@@ -148,10 +189,16 @@ export function migrateInputDateMulti({
         }
 
         if (todoAttrs.length > 0) {
-            const names = todoAttrs.map((a) => a.name).join(', ');
+            const attrLines = todoAttrs.map((attr, index, arr) => {
+                const isLast = index === arr.length - 1;
+                const name = TODO_ATTR_NAMES.get(attr.name.toLowerCase()) ?? attr.name;
+                const hint = getHint(attr.name);
+
+                return `     - ${name}: ${hint}${isLast ? ' -->' : ''}`;
+            });
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-date multiple migration (see ${DOCS_LINK}):`,
-                `     - ${names}: no direct equivalent in v5. Update component logic manually. -->`,
+                ...attrLines,
             ].join('\n');
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
@@ -165,16 +212,20 @@ export function migrateInputDateMulti({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+        const migrationAttrs = [
+            ...controlAttrs,
+            ...inputAttrs,
+            ...placeholderAttrs,
+        ].reduce((result, attr) => {
             const name = normalizeAttrName(attr.name);
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
-            return attr.value
-                ? `${result} ${attr.name}="${attr.value}"`
-                : `${result} ${attr.name}`;
+            const name = CALENDAR_ATTR_NAMES.get(attr.name.toLowerCase()) ?? attr.name;
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
         if (!inputs.length) {
@@ -208,6 +259,20 @@ export function migrateInputDateMulti({
             });
         }
     });
+}
+
+function getHint(attrName: string): string {
+    const lower = attrName.toLowerCase();
+
+    if (/tagvalidator/.test(lower)) {
+        return `use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See ${DOCS_LINK}`;
+    }
+
+    if (/search/.test(lower)) {
+        return `use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.`;
+    }
+
+    return `no direct equivalent in v5. Update component logic manually.`;
 }
 
 function normalizeAttrName(name: string): string {

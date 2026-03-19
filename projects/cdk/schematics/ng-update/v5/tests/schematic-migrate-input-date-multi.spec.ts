@@ -86,15 +86,55 @@ describe('ng-update', () => {
     );
 
     it(
-        'adds TODO for tag-like attrs ([rows], [tagValidator], [search], [defaultActiveYearMonth])',
+        'moves [rows] to <tui-textfield multi>',
         migrate({
             template: `
                 <tui-input-date
                     multiple
                     [rows]="2"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>`,
+        }),
+    );
+
+    it(
+        'moves placeholder to <input tuiInputDateMulti>',
+        migrate({
+            template: `
+                <tui-input-date
+                    multiple
+                    placeholder="Select dates"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>`,
+        }),
+    );
+
+    it(
+        'moves [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>',
+        migrate({
+            template: `
+                <tui-input-date
+                    multiple
+                    [defaultActiveYearMonth]="initialMonth"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>`,
+        }),
+    );
+
+    it(
+        'adds TODO for removed attrs ([tagValidator], [(search)])',
+        migrate({
+            template: `
+                <tui-input-date
+                    multiple
                     [tagValidator]="myValidator"
                     [(search)]="searchValue"
-                    [defaultActiveYearMonth]="initialMonth"
                     formControlName="dates"
                 >
                     Dates

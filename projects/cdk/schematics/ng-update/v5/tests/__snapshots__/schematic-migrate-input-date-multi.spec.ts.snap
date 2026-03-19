@@ -1,24 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update adds TODO for tag-like attrs ([rows], [tagValidator], [search], [defaultActiveYearMonth]): test.html 1`] = `
+exports[`ng-update adds TODO for removed attrs ([tagValidator], [(search)]): test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-date
                     multiple
-                    [rows]="2"
                     [tagValidator]="myValidator"
                     [(search)]="searchValue"
-                    [defaultActiveYearMonth]="initialMonth"
                     formControlName="dates"
                 >
                     Dates
                 </tui-input-date>",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input-date multiple migration (see https://taiga-ui.dev/components/input-date):
-     - [rows], [tagvalidator], [(search)], [defaultactiveyearmonth]: no direct equivalent in v5. Update component logic manually. -->
+     - [tagValidator]: use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-date
+     - [(search)]: use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead. -->
 <tui-textfield
-                    
-                    
                     
                     
                     
@@ -90,6 +87,82 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.htm
 }
 `;
 
+exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputDateModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputDateModule,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputDateModule,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputDate } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputDate,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputDate,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update moves [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [defaultActiveYearMonth]="initialMonth"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown [month]="initialMonth" />
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>: test.html 1`] = `
 {
   "0. Before": "
@@ -113,7 +186,7 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
                 </label>
 
 <input tuiInputDateMulti formControlName="dates" />
-<tui-calendar *tuiDropdown [disableditemhandler]="disabledHandler" [markerhandler]="markerHandler" />
+<tui-calendar *tuiDropdown [disabledItemHandler]="disabledHandler" [markerHandler]="markerHandler" />
 </tui-textfield>",
 }
 `;
@@ -141,6 +214,58 @@ exports[`ng-update moves [min] and [max] to <input tuiInputDateMulti>: test.html
                 </label>
 
 <input tuiInputDateMulti formControlName="dates" [min]="minDate" [max]="maxDate" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [rows] to <tui-textfield multi>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [rows]="2"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                 multi [rows]="2">
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves placeholder to <input tuiInputDateMulti>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    placeholder="Select dates"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" placeholder="Select dates" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>",
 }
