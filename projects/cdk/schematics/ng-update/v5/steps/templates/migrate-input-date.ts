@@ -27,15 +27,20 @@ const INPUT_ATTRS = new Set([
 ]);
 
 const CALENDAR_ATTRS = new Set([
+    '[defaultActiveYearMonth]'.toLowerCase(),
     '[disabledItemHandler]'.toLowerCase(),
     '[markerHandler]'.toLowerCase(),
-]);
-
-const NO_EQUIVALENT_ATTRS = new Set([
-    '[defaultActiveYearMonth]'.toLowerCase(),
-    '[items]'.toLowerCase(),
     'defaultActiveYearMonth'.toLowerCase(),
 ]);
+
+const CALENDAR_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
+    ['[defaultActiveYearMonth]'.toLowerCase(), '[month]'],
+    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
+    ['[markerHandler]'.toLowerCase(), '[markerHandler]'],
+    ['defaultActiveYearMonth'.toLowerCase(), 'month'],
+]);
+
+const NO_EQUIVALENT_ATTRS = new Set(['[items]'.toLowerCase()]);
 
 export function migrateInputDate({
     resource,
@@ -136,9 +141,9 @@ export function migrateInputDate({
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
-            return attr.value
-                ? `${result} ${attr.name}="${attr.value}"`
-                : `${result} ${attr.name}`;
+            const name = CALENDAR_ATTR_NAMES.get(attr.name.toLowerCase()) ?? attr.name;
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
         if (!inputs.length) {

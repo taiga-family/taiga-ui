@@ -119,7 +119,7 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
                 </label>
 
 <input tuiInputDateRange formControlName="range" />
-<tui-calendar-range *tuiDropdown [disableditemhandler]="disabledHandler" [markerhandler]="markerHandler" />
+<tui-calendar-range *tuiDropdown [disabledItemHandler]="disabledHandler" [markerHandler]="markerHandler" />
 </tui-textfield>",
 }
 `;
@@ -145,7 +145,7 @@ exports[`ng-update moves [items] and [defaultViewedMonth] to <tui-calendar-range
                 </label>
 
 <input tuiInputDateRange formControlName="range" />
-<tui-calendar-range *tuiDropdown [items]="periods" [defaultviewedmonth]="initialMonth" />
+<tui-calendar-range *tuiDropdown [items]="periods" [defaultViewedMonth]="initialMonth" />
 </tui-textfield>",
 }
 `;

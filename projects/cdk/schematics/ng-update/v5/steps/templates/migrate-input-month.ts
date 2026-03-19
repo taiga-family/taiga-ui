@@ -28,6 +28,10 @@ const INPUT_ATTRS = new Set([
 
 const CALENDAR_ATTRS = new Set(['[disabledItemHandler]'.toLowerCase()]);
 
+const CALENDAR_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
+    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
+]);
+
 const NO_EQUIVALENT_ATTRS = new Set([
     '[defaultActiveYear]'.toLowerCase(),
     'defaultActiveYear'.toLowerCase(),
@@ -127,9 +131,9 @@ export function migrateInputMonth({
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
-            return attr.value
-                ? `${result} ${attr.name}="${attr.value}"`
-                : `${result} ${attr.name}`;
+            const name = CALENDAR_ATTR_NAMES.get(attr.name.toLowerCase()) ?? attr.name;
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
         if (!inputs.length) {
