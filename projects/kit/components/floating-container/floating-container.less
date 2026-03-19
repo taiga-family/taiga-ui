@@ -25,7 +25,7 @@
 
     position: sticky;
     // Fallback for browsers not supported svh unit
-    bottom: ~'max(0px, calc(var(--tui-viewport-svh) - var(--tui-viewport-height) - var(--tui-viewport-y)))';
+    bottom: ~'max(0px, calc(100 * var(--tui-viewport-svh) - var(--tui-viewport-height) - var(--tui-viewport-y)))';
     bottom: ~'max(0px, calc(100svh - var(--tui-viewport-height) - var(--tui-viewport-y)))';
     z-index: 1;
     margin-block-start: 1rem;

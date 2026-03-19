@@ -25,6 +25,9 @@ export class TuiVisualViewport {
             this.style.setProperty('--tui-viewport-scale', String(scale));
             this.style.setProperty('--tui-viewport-vh', tuiPx(this.w.innerHeight / 100));
             this.style.setProperty('--tui-viewport-vw', tuiPx(this.w.innerWidth / 100));
-            this.style.setProperty('--tui-viewport-svh', tuiPx(this.minInnerHeight));
+            this.style.setProperty(
+                '--tui-viewport-svh',
+                tuiPx(this.minInnerHeight / 100),
+            );
         });
 }
