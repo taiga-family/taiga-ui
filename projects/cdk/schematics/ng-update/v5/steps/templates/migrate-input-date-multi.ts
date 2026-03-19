@@ -28,19 +28,17 @@ const INPUT_ATTRS = new Set([
 
 const CALENDAR_ATTRS = new Set([
     '[defaultActiveYearMonth]'.toLowerCase(),
-    'defaultActiveYearMonth'.toLowerCase(),
     '[disabledItemHandler]'.toLowerCase(),
     '[markerHandler]'.toLowerCase(),
+    'defaultActiveYearMonth'.toLowerCase(),
 ]);
 
-// cspell:disable
 const CALENDAR_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
-    ['[defaultactiveyearmonth]', '[month]'],
-    ['defaultactiveyearmonth', 'month'],
-    ['[disableditemhandler]', '[disabledItemHandler]'],
-    ['[markerhandler]', '[markerHandler]'],
+    ['[defaultActiveYearMonth]'.toLowerCase(), '[month]'],
+    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
+    ['[markerHandler]'.toLowerCase(), '[markerHandler]'],
+    ['defaultActiveYearMonth'.toLowerCase(), 'month'],
 ]);
-// cspell:enable
 
 const TEXTFIELD_ATTRS = new Set(['[rows]'.toLowerCase(), 'rows'.toLowerCase()]);
 
@@ -56,14 +54,12 @@ const TODO_ATTRS = new Set([
     '[tagValidator]'.toLowerCase(),
 ]);
 
-// cspell:disable
 const TODO_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
-    ['(searchchange)', '(searchChange)'],
+    ['(searchChange)'.toLowerCase(), '(searchChange)'],
     ['[(search)]', '[(search)]'],
     ['[search]', '[search]'],
-    ['[tagvalidator]', '[tagValidator]'],
+    ['[tagValidator]'.toLowerCase(), '[tagValidator]'],
 ]);
-// cspell:enable
 
 const DROPPED_ATTRS = new Set([
     '[editable]'.toLowerCase(),
@@ -264,15 +260,15 @@ export function migrateInputDateMulti({
 function getHint(attrName: string): string {
     const lower = attrName.toLowerCase();
 
-    if (/tagvalidator/.test(lower)) {
-        return `use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization`;
+    if (lower.includes('tagValidator'.toLowerCase())) {
+        return 'use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? \'\' : \'negative\'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization';
     }
 
-    if (/search/.test(lower)) {
-        return `use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.`;
+    if (lower.includes('search')) {
+        return 'use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.';
     }
 
-    return `no direct equivalent in v5. Update component logic manually.`;
+    return 'no direct equivalent in v5. Update component logic manually.';
 }
 
 function normalizeAttrName(name: string): string {
