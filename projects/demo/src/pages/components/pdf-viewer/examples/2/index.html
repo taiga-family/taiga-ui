@@ -8,31 +8,27 @@
 
 <ng-template
     let-observer
-    [tuiResponsiveDialogOptions]="{appearance: 'fullscreen'}"
+    [tuiResponsiveDialogOptions]="{appearance: 'fullscreen', bar: false}"
     [(tuiResponsiveDialog)]="open"
 >
     <tui-pdf-viewer>
         <h2 tuiTitle>file.pdf</h2>
 
-        @if (!isMobile) {
-            <button
-                iconStart="@tui.pen"
-                title="download"
-                tuiButton
-                type="button"
-                [style.border-radius.rem]="5"
-                (click)="observer.complete(); alerts.open('Document signed').subscribe()"
-            >
-                Sign
-            </button>
-        }
+        <button
+            iconStart="@tui.pen"
+            tuiButton
+            type="button"
+            [title]="isMobile ? 'Sign' : ''"
+            (click)="observer.complete(); alerts.open('Document signed').subscribe()"
+        >
+            {{ isMobile ? '' : 'Sign' }}
+        </button>
 
         <button
             iconStart="@tui.download"
-            title="download"
             tuiButton
             type="button"
-            [style.border-radius.rem]="5"
+            [title]="isMobile ? 'Download' : ''"
             (click)="observer.complete()"
         >
             {{ isMobile ? '' : 'Download' }}

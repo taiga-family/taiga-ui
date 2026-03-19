@@ -23,9 +23,9 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider(() => ({
-            appearance: inject(WA_IS_MOBILE) ? 'action' : 'glass',
-            size: 's',
+        tuiButtonOptionsProvider((mobile = inject(WA_IS_MOBILE)) => ({
+            appearance: mobile ? 'action' : '',
+            size: mobile ? 'l' : 's',
         })),
     ],
     host: {'[attr.tuiTheme]': 'isMobile() ? "" : "dark"'},

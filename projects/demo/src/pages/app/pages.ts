@@ -521,6 +521,12 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Components',
+                title: 'BottomSheet',
+                keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
+                route: DemoRoute.BottomSheet,
+            },
+            {
+                section: 'Components',
                 title: 'MobileCalendar',
                 keywords:
                     'календарь, день, неделя, месяц, год, дата, calendar, datapicker, data, picker',
@@ -609,12 +615,6 @@ export const pages: DocRoutePages = [
         title: 'Scrollbar',
         keywords: 'scroll, scrollbar, скролл, скроллбар',
         route: DemoRoute.Scrollbar,
-    },
-    {
-        section: 'Components',
-        title: 'BottomSheet',
-        keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
-        route: DemoRoute.BottomSheet,
     },
     {
         section: 'Components',

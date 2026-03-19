@@ -14,7 +14,7 @@
     <span [style.width.%]="isMobile() ? 100 : null">Table bar opened</span>
 
     <button
-        appearance="glass"
+        appearance="secondary-grayscale"
         iconStart="@tui.trash"
         tuiButton
         type="button"
@@ -26,7 +26,7 @@
         iconStart="@tui.x"
         tuiIconButton
         type="button"
-        [appearance]="isMobile() ? 'glass' : 'icon'"
+        [appearance]="isMobile() ? 'secondary-grayscale' : 'icon'"
         (click)="open.set(false)"
     >
         Close
