@@ -16,24 +16,23 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
+const INPUT_ATTRS = new Set([
+    '[max]'.toLowerCase(),
+    '[min]'.toLowerCase(),
+    'max'.toLowerCase(),
+    'min'.toLowerCase(),
+]);
+
 const CALENDAR_ATTRS = new Set([
     '[defaultActiveYear]'.toLowerCase(),
     '[disabledItemHandler]'.toLowerCase(),
-    '[max]'.toLowerCase(),
-    '[min]'.toLowerCase(),
     'defaultActiveYear'.toLowerCase(),
-    'max'.toLowerCase(),
-    'min'.toLowerCase(),
 ]);
 
 const CALENDAR_ATTR_RENAMES = new Map([
     ['[defaultActiveYear]'.toLowerCase(), '[year]'],
     ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
-    ['[max]'.toLowerCase(), '[max]'],
-    ['[min]'.toLowerCase(), '[min]'],
     ['defaultActiveYear'.toLowerCase(), 'year'],
-    ['max'.toLowerCase(), 'max'],
-    ['min'.toLowerCase(), 'min'],
 ]);
 
 export function migrateInputMonth({
@@ -65,11 +64,15 @@ export function migrateInputMonth({
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
         );
 
+        const inputAttrs = [...element.attrs].filter((attr) =>
+            INPUT_ATTRS.has(attr.name.toLowerCase()),
+        );
+
         const calendarAttrs = [...element.attrs].filter((attr) =>
             CALENDAR_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        for (const attr of [...controlAttrs, ...calendarAttrs]) {
+        for (const attr of [...controlAttrs, ...inputAttrs, ...calendarAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -99,7 +102,7 @@ export function migrateInputMonth({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = controlAttrs.reduce((result, attr) => {
+        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
             const name = normalizeAttrName(attr.name);
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
