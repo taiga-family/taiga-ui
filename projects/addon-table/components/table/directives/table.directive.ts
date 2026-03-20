@@ -11,6 +11,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -39,7 +40,7 @@ const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
     styleUrl: './table.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-table-v5'},
+    exportAs: `tui-table-${TUI_VERSION}`,
 })
 class Styles {}
 

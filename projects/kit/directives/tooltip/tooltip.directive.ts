@@ -8,6 +8,7 @@ import {
     type Signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -35,7 +36,7 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
     styleUrl: './tooltip.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-tooltip-v5'},
+    exportAs: `tui-tooltip-${TUI_VERSION}`,
 })
 class Styles {}
 

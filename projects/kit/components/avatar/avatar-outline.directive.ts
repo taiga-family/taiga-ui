@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -13,7 +14,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './avatar-outline.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-avatar-outline-v5'},
+    exportAs: `tui-avatar-outline-${TUI_VERSION}`,
 })
 class Styles {}
 

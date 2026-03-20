@@ -9,6 +9,7 @@ import {
     PLATFORM_ID,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -19,7 +20,7 @@ const OPTIONS = {duration: 1500, iterations: Infinity};
     styleUrl: './shimmer.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-shimmer-v5'},
+    exportAs: `tui-shimmer-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -28,7 +28,7 @@ const OPT = {self: true, optional: true} as const;
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-icons-v5'},
+    exportAs: `tui-icons-${TUI_VERSION}`,
 })
 class Styles {}
 

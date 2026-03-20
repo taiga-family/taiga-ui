@@ -27,7 +27,7 @@ import {TuiShrinkWrapDirective} from '@taiga-ui/kit/components/shrink-wrap';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-toast-v5'},
+    exportAs: `tui-toast-${TUI_VERSION}`,
 })
 class Styles {}
 

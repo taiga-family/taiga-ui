@@ -8,6 +8,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -23,7 +24,7 @@ const FROM = [{opacity: '0.12'}, {opacity: '0'}];
     styleUrl: './ripple.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-ripple-v5'},
+    exportAs: `tui-ripple-${TUI_VERSION}`,
 })
 class Styles {}
 

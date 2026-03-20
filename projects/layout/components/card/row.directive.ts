@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -11,7 +12,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './row.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-card-row-v5'},
+    exportAs: `tui-card-row-${TUI_VERSION}`,
 })
 class Styles {}
 

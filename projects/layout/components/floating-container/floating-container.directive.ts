@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -13,7 +14,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './floating-container.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-floating-container-v5'},
+    exportAs: `tui-floating-container-${TUI_VERSION}`,
 })
 class Styles {}
 

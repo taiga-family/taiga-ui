@@ -7,6 +7,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     WA_MUTATION_OBSERVER_INIT,
@@ -26,7 +27,7 @@ const BUFFER = 1; // buffer for rounding issues
     styleUrl: './fade.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-fade-v5'},
+    exportAs: `tui-fade-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -12,7 +13,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './progress-fixed-gradient.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-fixed-gradient-v5'},
+    exportAs: `tui-fixed-gradient-${TUI_VERSION}`,
 })
 class Styles {}
 

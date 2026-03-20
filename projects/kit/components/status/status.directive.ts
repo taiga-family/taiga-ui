@@ -17,7 +17,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-status-v5'},
+    exportAs: `tui-status-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -26,7 +26,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-avatar-v5'},
+    exportAs: `tui-avatar-${TUI_VERSION}`,
 })
 class Styles {}
 

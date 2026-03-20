@@ -23,7 +23,7 @@ import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-appearance-v5'},
+    exportAs: `tui-appearance-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -15,7 +16,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './slides.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-slides-v5'},
+    exportAs: `tui-slides-${TUI_VERSION}`,
 })
 class Styles {}
 

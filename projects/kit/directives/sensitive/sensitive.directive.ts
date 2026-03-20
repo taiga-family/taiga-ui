@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
@@ -19,7 +20,7 @@ const rowsInSvg = 3;
     styleUrl: './sensitive.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-sensitive-v5'},
+    exportAs: `tui-sensitive-${TUI_VERSION}`,
 })
 class Styles {}
 

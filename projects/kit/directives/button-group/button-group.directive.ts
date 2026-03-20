@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -11,7 +12,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './button-group.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-button-group-v5'},
+    exportAs: `tui-button-group-${TUI_VERSION}`,
 })
 class Styles {}
 

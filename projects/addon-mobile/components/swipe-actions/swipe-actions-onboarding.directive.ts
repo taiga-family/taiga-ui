@@ -5,6 +5,7 @@ import {
     model,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -12,7 +13,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './swipe-actions-onboarding.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-swipe-actions-v5'},
+    exportAs: `tui-swipe-actions-${TUI_VERSION}`,
 })
 class Styles {}
 

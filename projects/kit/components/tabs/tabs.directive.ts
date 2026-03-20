@@ -10,6 +10,7 @@ import {
     model,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -22,7 +23,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     styleUrl: './tabs.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-tabs-v5'},
+    exportAs: `tui-tabs-${TUI_VERSION}`,
 })
 class Styles {}
 

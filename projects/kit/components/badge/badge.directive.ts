@@ -25,7 +25,7 @@ import {TUI_BADGE_OPTIONS} from './badge.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-badge-v5'},
+    exportAs: `tui-badge-${TUI_VERSION}`,
 })
 class Styles {}
 

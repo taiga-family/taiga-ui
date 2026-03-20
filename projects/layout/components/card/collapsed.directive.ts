@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -12,7 +13,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './collapsed.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-card-collapsed-v5'},
+    exportAs: `tui-card-collapsed-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -7,6 +7,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -32,7 +33,7 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
     ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-input-slider-v5'},
+    exportAs: `tui-input-slider-${TUI_VERSION}`,
 })
 class Styles {}
 

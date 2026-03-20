@@ -8,6 +8,7 @@ import {
     type Provider,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
@@ -29,7 +30,7 @@ const HEADER_SIZE = {s: 'body-l', m: 'h6', l: 'h5'} as const;
     styleUrl: './form.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-form-v5'},
+    exportAs: `tui-form-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 
@@ -16,7 +17,7 @@ import {TUI_CELL_OPTIONS} from './cell.options';
     styleUrl: './cell.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-cell-v5'},
+    exportAs: `tui-cell-${TUI_VERSION}`,
 })
 class Styles {}
 
