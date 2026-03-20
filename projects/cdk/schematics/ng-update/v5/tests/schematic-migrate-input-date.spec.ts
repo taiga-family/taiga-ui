@@ -78,11 +78,11 @@ describe('ng-update', () => {
     );
 
     it(
-        'adds TODO for [items] (no v5 equivalent)',
+        'renames [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>',
         migrate({
             template: `
                 <tui-input-date
-                    [items]="namedDays"
+                    [defaultActiveYearMonth]="initialMonth"
                     formControlName="date"
                 >
                     Date
@@ -91,11 +91,11 @@ describe('ng-update', () => {
     );
 
     it(
-        'renames [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>',
+        'adds TODO for [items] (no v5 equivalent)',
         migrate({
             template: `
                 <tui-input-date
-                    [defaultActiveYearMonth]="initialMonth"
+                    [items]="namedDays"
                     formControlName="date"
                 >
                     Date
