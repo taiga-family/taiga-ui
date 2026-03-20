@@ -94,9 +94,18 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
     protected readonly computedFiller = computed((value = this.value()) => {
-        const filler = value + this.filler().slice(value.length);
+        const filler = this.filler();
 
-        return filler.length > value.length ? filler : '';
+        if (filler.length <= value.length) {
+            return '';
+        }
+
+        const input =
+            this.inputQuery()?.nativeElement ?? this.input?.nativeElement ?? this.el;
+
+        return input.matches('[dir="rtl"] :scope')
+            ? filler.slice(0, filler.length - value.length) + value
+            : value + filler.slice(value.length);
     });
 
     protected readonly showFiller = computed<boolean>(
