@@ -33,6 +33,14 @@ const CALENDAR_ATTRS = new Set([
     'defaultViewedMonth'.toLowerCase(),
 ]);
 
+const CALENDAR_ATTR_NAMES: ReadonlyMap<string, string> = new Map([
+    ['[defaultViewedMonth]'.toLowerCase(), '[defaultViewedMonth]'],
+    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
+    ['[items]', '[items]'],
+    ['[markerHandler]'.toLowerCase(), '[markerHandler]'],
+    ['defaultViewedMonth'.toLowerCase(), 'defaultViewedMonth'],
+]);
+
 export function migrateInputDateRange({
     resource,
     recorder,
@@ -107,9 +115,9 @@ export function migrateInputDateRange({
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
-            return attr.value
-                ? `${result} ${attr.name}="${attr.value}"`
-                : `${result} ${attr.name}`;
+            const name = CALENDAR_ATTR_NAMES.get(attr.name.toLowerCase()) ?? attr.name;
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
         if (!inputs.length) {

@@ -126,7 +126,7 @@ exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.ts 1`] = `
 }
 `;
 
-exports[`ng-update moves [min], [max], [disabledItemHandler] to <tui-calendar-month *tuiDropdown>: test.html 1`] = `
+exports[`ng-update moves [min] and [max] to <input tuiInputMonth>, [disabledItemHandler] to <tui-calendar-month *tuiDropdown>: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-month
@@ -148,8 +148,8 @@ exports[`ng-update moves [min], [max], [disabledItemHandler] to <tui-calendar-mo
                     Month
                 </label>
 
-<input tuiInputMonth formControlName="month" />
-<tui-calendar-month *tuiDropdown [min]="minMonth" [max]="maxMonth" [disabledItemHandler]="disabledHandler" />
+<input tuiInputMonth formControlName="month" [min]="minMonth" [max]="maxMonth" />
+<tui-calendar-month *tuiDropdown [disabledItemHandler]="disabledHandler" />
 </tui-textfield>",
 }
 `;

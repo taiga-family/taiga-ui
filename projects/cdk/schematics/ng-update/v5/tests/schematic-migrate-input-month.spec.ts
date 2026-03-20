@@ -64,7 +64,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'moves [min], [max], [disabledItemHandler] to <tui-calendar-month *tuiDropdown>',
+        'moves [min] and [max] to <input tuiInputMonth>, [disabledItemHandler] to <tui-calendar-month *tuiDropdown>',
         migrate({
             template: `
                 <tui-input-month
