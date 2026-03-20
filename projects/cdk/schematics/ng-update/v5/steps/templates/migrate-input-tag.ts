@@ -191,7 +191,7 @@ function getHint(attrName: string): string {
     }
 
     if ('[autoColor]'.toLowerCase() === lower || 'autoColor'.toLowerCase() === lower) {
-        return `use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color`;
+        return 'use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color';
     }
 
     return `no direct equivalent in v5. See ${DOCS_LINK}.`;
