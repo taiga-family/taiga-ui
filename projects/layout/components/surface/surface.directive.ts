@@ -11,7 +11,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './surface.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-surface'},
+    host: {class: 'tui-surface-v5'},
 })
 class Styles {}
 

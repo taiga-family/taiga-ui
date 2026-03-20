@@ -19,7 +19,7 @@ export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
     styleUrl: './header.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-header'},
+    host: {class: 'tui-header-v5'},
 })
 class Styles {}
 

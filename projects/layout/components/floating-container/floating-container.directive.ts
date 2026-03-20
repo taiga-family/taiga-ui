@@ -13,7 +13,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './floating-container.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-floating-container'},
+    host: {class: 'tui-floating-container-v5'},
 })
 class Styles {}
 

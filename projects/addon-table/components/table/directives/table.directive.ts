@@ -39,7 +39,7 @@ const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
     styleUrl: './table.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-table'},
+    host: {class: 'tui-table-v5'},
 })
 class Styles {}
 

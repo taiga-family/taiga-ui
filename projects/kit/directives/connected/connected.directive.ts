@@ -11,7 +11,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './connected.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-connected'},
+    host: {class: 'tui-connected-v5'},
 })
 class Styles {}
 

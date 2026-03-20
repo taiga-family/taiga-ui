@@ -29,7 +29,7 @@ import {TUI_BLOCK_OPTIONS} from './block.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-block'},
+    host: {class: 'tui-block-v5'},
 })
 class Styles {}
 

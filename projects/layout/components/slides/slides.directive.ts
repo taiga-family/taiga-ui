@@ -15,7 +15,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './slides.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-slides'},
+    host: {class: 'tui-slides-v5'},
 })
 class Styles {}
 

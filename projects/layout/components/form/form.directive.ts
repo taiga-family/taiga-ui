@@ -29,7 +29,7 @@ const HEADER_SIZE = {s: 'body-l', m: 'h6', l: 'h5'} as const;
     styleUrl: './form.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-form'},
+    host: {class: 'tui-form-v5'},
 })
 class Styles {}
 

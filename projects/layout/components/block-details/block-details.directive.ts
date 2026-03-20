@@ -11,7 +11,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './block-details.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-block-details'},
+    host: {class: 'tui-block-details-v5'},
 })
 class Styles {}
 

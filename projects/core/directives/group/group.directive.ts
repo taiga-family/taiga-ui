@@ -21,7 +21,7 @@ import {TUI_GROUP_OPTIONS} from './group.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-group'},
+    host: {class: 'tui-group-v5'},
 })
 class Styles {}
 

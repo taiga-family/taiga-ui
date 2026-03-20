@@ -22,7 +22,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     styleUrl: './tabs.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-tabs'},
+    host: {class: 'tui-tabs-v5'},
 })
 class Styles {}
 

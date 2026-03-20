@@ -30,7 +30,7 @@ import {TUI_CHIP_OPTIONS} from './chip.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-chip'},
+    host: {class: 'tui-chip-v5'},
 })
 class Styles {}
 

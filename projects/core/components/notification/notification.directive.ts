@@ -29,7 +29,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-notification'},
+    host: {class: 'tui-notification-v5'},
 })
 class Styles {}
 

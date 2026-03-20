@@ -23,7 +23,7 @@ const FROM = [{opacity: '0.12'}, {opacity: '0'}];
     styleUrl: './ripple.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-ripple'},
+    host: {class: 'tui-ripple-v5'},
 })
 class Styles {}
 

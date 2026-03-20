@@ -22,7 +22,7 @@ export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
     styleUrl: './list.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-list'},
+    host: {class: 'tui-list-v5'},
 })
 class Styles {}
 

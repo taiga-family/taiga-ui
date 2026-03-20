@@ -12,7 +12,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './swipe-actions-onboarding.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-swipe-actions'},
+    host: {class: 'tui-swipe-actions-v5'},
 })
 class Styles {}
 

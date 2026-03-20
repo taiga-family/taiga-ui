@@ -25,7 +25,7 @@ import {TUI_BUTTON_OPTIONS} from './button.options';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-button'},
+    host: {class: 'tui-button-v5'},
 })
 class Styles {}
 

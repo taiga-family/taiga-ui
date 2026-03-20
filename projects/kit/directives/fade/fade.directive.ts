@@ -26,7 +26,7 @@ const BUFFER = 1; // buffer for rounding issues
     styleUrl: './fade.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-fade'},
+    host: {class: 'tui-fade-v5'},
 })
 class Styles {}
 

@@ -32,7 +32,7 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
     ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-input-slider'},
+    host: {class: 'tui-input-slider-v5'},
 })
 class Styles {}
 

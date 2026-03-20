@@ -20,7 +20,7 @@ export const [TUI_CARD_OPTIONS, tuiCardOptionsProvider] = tuiCreateOptions({
     styleUrls: ['./card.style.less', './large.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-card-large'},
+    host: {class: 'tui-card-large-v5'},
 })
 class Styles {}
 

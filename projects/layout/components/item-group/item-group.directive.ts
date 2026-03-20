@@ -16,7 +16,7 @@ const OPTIONS = {behavior: 'smooth', block: 'nearest', inline: 'center'} as cons
     styleUrl: './item-group.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-item-group'},
+    host: {class: 'tui-item-group-v5'},
 })
 class Styles {}
 

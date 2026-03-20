@@ -13,7 +13,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     styleUrl: './avatar-outline.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-avatar-outline'},
+    host: {class: 'tui-avatar-outline-v5'},
 })
 class Styles {}
 

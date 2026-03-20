@@ -19,7 +19,7 @@ const OPTIONS = {duration: 1500, iterations: Infinity};
     styleUrl: './shimmer.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-shimmer'},
+    host: {class: 'tui-shimmer-v5'},
 })
 class Styles {}
 

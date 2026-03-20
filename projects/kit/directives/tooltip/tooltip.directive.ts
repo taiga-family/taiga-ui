@@ -35,7 +35,7 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
     styleUrl: './tooltip.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-tooltip'},
+    host: {class: 'tui-tooltip-v5'},
 })
 class Styles {}
 

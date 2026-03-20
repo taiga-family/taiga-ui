@@ -17,7 +17,7 @@ export interface TuiPositionOptions {
     styleUrl: './alert.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-alert-styles'},
+    host: {class: 'tui-alert-v5'},
 })
 class Styles {}
 

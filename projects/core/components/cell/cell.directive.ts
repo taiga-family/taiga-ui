@@ -16,7 +16,7 @@ import {TUI_CELL_OPTIONS} from './cell.options';
     styleUrl: './cell.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-cell'},
+    host: {class: 'tui-cell-v5'},
 })
 class Styles {}
 

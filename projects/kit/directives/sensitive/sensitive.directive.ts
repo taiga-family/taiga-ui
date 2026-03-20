@@ -19,7 +19,7 @@ const rowsInSvg = 3;
     styleUrl: './sensitive.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-sensitive'},
+    host: {class: 'tui-sensitive-v5'},
 })
 class Styles {}
 

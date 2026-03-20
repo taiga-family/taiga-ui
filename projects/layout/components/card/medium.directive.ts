@@ -14,7 +14,7 @@ import {TuiSurface} from '@taiga-ui/layout/components/surface';
     styleUrls: ['./card.style.less', './medium.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-card-medium'},
+    host: {class: 'tui-card-medium-v5'},
 })
 class Styles {}
 
