@@ -40,13 +40,12 @@ describe('ng-update chip and badge selectors', () => {
     it(
         'migrates deprecated appearances for tui-badge',
         migrate({
-            template: [
-                '',
-                '<tui-badge appearance="error" size="s"><span>1</span></tui-badge>',
-                '<tui-badge appearance="success" />',
-                '<tui-badge [appearance]="\'error\'"></tui-badge>',
-                '<tui-badge [appearance]="computedAppearance">123</tui-badge>',
-            ].join('\n'),
+            template: `
+                <tui-badge appearance="error" size="s"><span>1</span></tui-badge>
+                <tui-badge appearance="success" />
+                <tui-badge [appearance]="'error'"></tui-badge>
+                <tui-badge [appearance]="computedAppearance">123</tui-badge>
+            `,
         }),
     );
 
