@@ -13,7 +13,7 @@ export interface TuiDocIcons {
     readonly link: string;
     readonly languages: string;
     readonly shrink: string;
-    readonly expand?: string;
+    readonly expand: string;
     readonly ltr: {
         readonly preview: string;
         readonly direction: string;
