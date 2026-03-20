@@ -118,10 +118,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get activeElement(): HTMLElement | null {
-        const {tabs} = this;
-        const activeElement = tabs.find((tab) => tab.classList.contains('_active'));
-
-        return activeElement || null;
+        return this.tabs.find((tab) => tab.classList.contains('_active')) ?? null;
     }
 
     protected get isMoreAlone(): boolean {
