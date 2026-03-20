@@ -105,9 +105,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
             return '';
         }
 
-        const input = this.input()?.nativeElement ?? this.el;
-
-        return input.matches('[dir="rtl"] :scope')
+        return this.input()?.nativeElement.matches('[dir="rtl"] :scope')
             ? filler.slice(0, filler.length - value.length) + value
             : value + filler.slice(value.length);
     });
