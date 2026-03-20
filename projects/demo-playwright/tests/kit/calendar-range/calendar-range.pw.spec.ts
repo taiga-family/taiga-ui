@@ -3,6 +3,7 @@ import {
     TuiCalendarRangePO,
     TuiDocumentationPagePO,
     tuiGoto,
+    TuiSelectPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -392,6 +393,67 @@ describe('CalendarRange', () => {
                     await startSheet.clickOnDay(17);
                     await expect(alert).toContainText('17.02.2018 – 17.03.2018');
                 });
+            });
+        });
+
+        describe('[max] property', () => {
+            test('shows [defaultViewedMonth] if max limit is not specified', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.CalendarRange}/API`, {
+                    date: new Date(2026, 2, 16),
+                });
+
+                await expect(calendarRange.host).toContainText('March 2026');
+                await expect(calendarRange.host).toContainText('April 2026');
+            });
+
+            test('shows [defaultViewedMonth] if it does not violate max limit', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.CalendarRange}/API?max$=3`, {
+                    date: new Date(2026, 2, 16),
+                });
+
+                await expect(calendarRange.host).toContainText('March 2026');
+                await expect(calendarRange.host).toContainText('April 2026');
+            });
+
+            test('shows max available month if [defaultViewedMonth] is more than max limit', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.CalendarRange}/API?max$=1`, {
+                    date: new Date(2026, 2, 16),
+                });
+
+                await expect(calendarRange.host).toContainText('September 2018');
+                await expect(calendarRange.host).toContainText('October 2018');
+            });
+
+            test('runtime changes of [max] property does not change already viewed VALID months', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.CalendarRange}/API`, {
+                    date: new Date(2026, 2, 16),
+                });
+
+                await calendarRange.previousMonth.click();
+                await calendarRange.previousMonth.click();
+
+                await expect(calendarRange.host).toContainText('January 2026');
+                await expect(calendarRange.host).toContainText('February 2026');
+
+                const pagePO = new TuiDocumentationPagePO(page);
+                const maxProperty = new TuiSelectPO(
+                    (await pagePO.getSelect(pagePO.getRow('max')))!,
+                );
+
+                await maxProperty.host.click();
+                await maxProperty.selectOptions([3]);
+                await expect(maxProperty.host).toHaveValue('01.01.2300');
+
+                await expect(calendarRange.host).toContainText('January 2026');
+                await expect(calendarRange.host).toContainText('February 2026');
             });
         });
     });
