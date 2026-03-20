@@ -799,4 +799,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
+    {
+        from: {
+            name: 'TuiInputTagModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputChip',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];
