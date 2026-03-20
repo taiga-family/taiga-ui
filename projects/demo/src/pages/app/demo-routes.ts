@@ -14,6 +14,7 @@ export const DemoRoute = {
     Portals: '/portals',
     Popout: '/components/popout',
     Viewport: '/viewport',
+    Truncate: '/directives/truncate',
     Accordion: '/components/accordion',
     Avatar: '/components/avatar',
     Badge: '/components/badge',
