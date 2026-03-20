@@ -40,17 +40,17 @@ const TEXTFIELD_ATTR_RENAMES = new Map([
 const TODO_ATTRS = new Set([
     '(searchChange)'.toLowerCase(),
     '[(search)]'.toLowerCase(),
+    '[autoColor]'.toLowerCase(),
     '[editable]'.toLowerCase(),
     '[search]'.toLowerCase(),
     '[tagValidator]'.toLowerCase(),
+    'autoColor'.toLowerCase(),
     'editable'.toLowerCase(),
 ]);
 
 const DROPPED_ATTRS = new Set([
-    '[autoColor]'.toLowerCase(),
     '[inputHidden]'.toLowerCase(),
     '[removable]'.toLowerCase(),
-    'autoColor'.toLowerCase(),
     'inputHidden'.toLowerCase(),
     'removable'.toLowerCase(),
 ]);
@@ -187,7 +187,11 @@ function getHint(attrName: string): string {
     }
 
     if ('[editable]'.toLowerCase() === lower || 'editable'.toLowerCase() === lower) {
-        return `[editable] on <tui-input-chip *tuiItem> now controls per-chip editing (not the whole field). See ${DOCS_LINK}.`;
+        return `move to <tui-input-chip *tuiItem="let ctx" [editable]="..."> inside <tui-textfield multi>. See ${DOCS_LINK}.`;
+    }
+
+    if ('[autoColor]'.toLowerCase() === lower || 'autoColor'.toLowerCase() === lower) {
+        return `use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color`;
     }
 
     return `no direct equivalent in v5. See ${DOCS_LINK}.`;

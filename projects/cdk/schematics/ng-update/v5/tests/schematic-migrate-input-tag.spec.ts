@@ -87,7 +87,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'silently removes [editable], [inputHidden], [autoColor], [removable]',
+        'adds TODO for [editable] and [autoColor], silently removes [inputHidden] and [removable]',
         migrate({
             template: `
                 <tui-input-tag

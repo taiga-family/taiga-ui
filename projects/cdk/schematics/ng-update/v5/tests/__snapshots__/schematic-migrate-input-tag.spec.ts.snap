@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update adds TODO for [editable] and [autoColor], silently removes [inputHidden] and [removable]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    formControlName="tags"
+                    [editable]="false"
+                    [inputHidden]="true"
+                    [autoColor]="true"
+                    [removable]="false"
+                >
+                    Tags
+                </tui-input-tag>",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input-tag migration (see https://taiga-ui.dev/components/input-chip):
+     - [editable]: move to <tui-input-chip *tuiItem="let ctx" [editable]="..."> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip.
+     - [autocolor]: use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->
+<tui-textfield
+                    
+                    
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Tags
+                </label>
+
+<input tuiInputChip formControlName="tags" />
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update adds TODO for [tagValidator] and [search]: test.html 1`] = `
 {
   "0. Before": "
@@ -226,37 +258,6 @@ exports[`ng-update renames [maxLength] to [maxlength] on <input tuiInputChip>: t
                 </label>
 
 <input tuiInputChip formControlName="tags" [maxlength]="50" />
-</tui-textfield>",
-}
-`;
-
-exports[`ng-update silently removes [editable], [inputHidden], [autoColor], [removable]: test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input-tag
-                    formControlName="tags"
-                    [editable]="false"
-                    [inputHidden]="true"
-                    [autoColor]="true"
-                    [removable]="false"
-                >
-                    Tags
-                </tui-input-tag>",
-  "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-input-tag migration (see https://taiga-ui.dev/components/input-chip):
-     - [editable]: [editable] on <tui-input-chip *tuiItem> now controls per-chip editing (not the whole field). See https://taiga-ui.dev/components/input-chip. -->
-<tui-textfield
-                    
-                    
-                    
-                    
-                    
-                 multi>
-<label tuiLabel>
-                    Tags
-                </label>
-
-<input tuiInputChip formControlName="tags" />
 </tui-textfield>",
 }
 `;
