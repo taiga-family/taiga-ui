@@ -6,8 +6,7 @@ test.describe('Input filler in RTL mode', () => {
     test('renders filler correctly in LTR and RTL', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Input}/API?filler=HH:MM`);
 
-        const api = new TuiDocumentationApiPagePO(page);
-        const example = api.demo;
+        const example = new TuiDocumentationApiPagePO(page).demo;
         const input = example.locator('[tuiInput]');
 
         await input.focus();
