@@ -15,7 +15,7 @@ test.describe('Textfield filler in RTL mode', () => {
         await input.clear();
         await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
         await input.focus();
-        await input.pressSequentially('123');
+        await input.pressSequentially('12:3');
         await expect.soft(example).toHaveScreenshot('input-filler-rtl.png');
     });
 });
