@@ -6,9 +6,9 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map} from 'rxjs';

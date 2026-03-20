@@ -8,9 +8,9 @@ import {
     type Signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';

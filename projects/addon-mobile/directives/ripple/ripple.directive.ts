@@ -8,8 +8,8 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';

@@ -7,13 +7,13 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     WA_MUTATION_OBSERVER_INIT,
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';

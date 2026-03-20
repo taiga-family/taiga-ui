@@ -7,9 +7,9 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';

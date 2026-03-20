@@ -11,9 +11,9 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
