@@ -8,6 +8,7 @@ export * from './doc-tab';
 export * from './example/example.component';
 export * from './example/example.options';
 export * from './example/example-get-tabs.pipe';
+export * from './example/example-placeholder.component';
 export * from './internal/header';
 export * from './internal/source-code/source-code.component';
 export * from './language-switcher';
