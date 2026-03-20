@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, linkedSignal, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiCarousel, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiBadge, TuiButtonGroup, TuiPager} from '@taiga-ui/kit';
 import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
@@ -22,9 +22,9 @@ import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected index = 0;
-    protected opacity = 1;
-
+    protected readonly index = signal(1);
+    protected readonly opacity = signal(1);
+    protected readonly effective = linkedSignal(this.index);
     protected readonly items = [
         {
             title: 'RUB Account',
@@ -45,4 +45,14 @@ export default class Example {
             color: 'rgb(158 178 129)',
         },
     ];
+
+    protected onScroll({scrollLeft, clientWidth}: HTMLElement): void {
+        const scrolled = ((scrollLeft - clientWidth) % clientWidth) / clientWidth;
+        const progress = this.index() || !scrolled ? scrolled : 1 + scrolled;
+
+        if (progress) {
+            this.opacity.set(4 * Math.abs(Math.abs(progress) - 0.5));
+            this.effective.set(this.index() + Math.round(progress));
+        }
+    }
 }

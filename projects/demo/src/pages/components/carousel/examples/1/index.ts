@@ -1,17 +1,15 @@
-import {Component, inject} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiButton, TuiCarousel} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiPager],
+    imports: [TuiButton, TuiCarousel],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected index = 2;
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly index = signal(0);
 }

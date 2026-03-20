@@ -1,71 +1,37 @@
-<div
-    tuiCarouselButtons
-    class="wrapper"
+<tui-carousel
+    #carousel="tuiCarousel"
+    [duration]="5000"
+    [(index)]="index"
 >
-    <button
-        iconStart="@tui.chevron-left"
-        tuiIconButton
-        type="button"
-        (click)="carousel.prev()"
+    <section
+        *tuiItem="let index"
+        appearance="neutral"
+        tuiCardMedium
     >
-        Previous
-    </button>
-    <tui-carousel
-        #carousel
-        class="carousel"
-    >
-        <div
-            *tuiItem
-            class="item"
-        >
-            <h2 class="title">Monty Python and the Holy Grail</h2>
-            <p>
-                King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy
-                Grail, encountering many, very silly obstacles.
-            </p>
-            <div>
-                <button
-                    appearance="primary"
-                    tuiButton
-                    type="button"
-                >
-                    Buy ${{ 12.99 | tuiAmount: 'RUB' }}
-                </button>
-                <button
-                    tuiButton
-                    type="button"
-                    class="tui-space_left-2"
-                >
-                    Rent ${{ 4.99 | tuiAmount: 'RUB' }}
-                </button>
-            </div>
-        </div>
-        <div
-            *tuiItem
-            class="item"
-        >
-            <tui-loader />
-        </div>
-        <div
-            *tuiItem
-            class="item"
-            [style.text-align]="'center'"
-        >
-            <h2 class="title">Failed to load</h2>
-            <p>
-                <span
-                    appearance="negative"
-                    tuiAvatar="@tui.x"
-                ></span>
-            </p>
-        </div>
-    </tui-carousel>
-    <button
-        iconStart="@tui.chevron-right"
-        tuiIconButton
-        type="button"
-        (click)="carousel.next()"
-    >
-        Next
-    </button>
-</div>
+        @let current = items.at(index % items.length);
+        <span [tuiAvatar]="current?.icon"></span>
+        <footer tuiTitle>
+            {{ current?.title }}
+            <span tuiSubtitle>{{ current?.subtitle }}</span>
+        </footer>
+    </section>
+</tui-carousel>
+<tui-pager
+    [count]="items.length"
+    [index]="clamped()"
+    [valueContent]="content"
+/>
+
+<ng-template
+    #content
+    let-current
+>
+    <progress
+        max="100"
+        size="s"
+        tuiProgressBar
+        class="progress"
+        [class.progress_active]="clamped() === current"
+        [value]="clamped() === current ? carousel.progress() : 0"
+    ></progress>
+</ng-template>

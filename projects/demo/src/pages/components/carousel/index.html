@@ -1,94 +1,68 @@
 <tui-doc-page
     header="Carousel"
-    package="KIT"
+    package="CORE"
     type="components"
 >
     <ng-template pageTab>
-        <div>Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.</div>
+        <p>Generic swipeable container to scroll through content</p>
 
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
+                [description]="description"
                 [heading]="example"
             />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Minimal implementation with limits.
+                    }
+                    @case (1) {
+                        Infinite loop with seamless transitions.
+                    }
+                    @case (2) {
+                        Scrolling to the next slide after timeout.
+                    }
+                    @case (3) {
+                        Multiple items per slide.
+                    }
+                }
+            </ng-template>
         }
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo>
-            <tui-carousel
-                class="carousel"
-                [draggable]="draggable"
-                [duration]="duration"
-                [itemsCount]="itemsCount"
-                [style.--tui-carousel-padding]="itemPadding"
-                [(index)]="index"
-                (touchstart.passive.stop)="(0)"
-            >
-                @for (_ of '-'.repeat(9); track $index) {
-                    <div
-                        *tuiItem
-                        class="plate"
-                    >
-                        {{ $index }}
-                        <button
-                            size="s"
-                            tuiButton
-                            type="button"
-                            class="button"
-                        >
-                            I'm focusable
-                        </button>
-                    </div>
-                }
-            </tui-carousel>
-        </tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[draggable]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="draggable"
-            >
-                Whether or not slider can be dragged by clicking and holding
-            </tr>
-            <tr
-                name="[duration]"
+                name="[min]"
                 tuiDocAPIItem
                 type="number"
-                [items]="durationVariants"
-                [(value)]="duration"
             >
-                Duration in milliseconds for each slide for automatic rotation (use 0 to disable automatic rotation)
+                Min index
             </tr>
             <tr
-                name="[itemsCount]"
+                name="[max]"
                 tuiDocAPIItem
                 type="number"
-                [(value)]="itemsCount"
             >
-                Number of slides shown at the same time
+                Max index
             </tr>
             <tr
                 name="[(index)]"
                 tuiDocAPIItem
                 type="number"
-                [(value)]="index"
             >
                 Current index
             </tr>
-        </table>
-        <h3>CSS customization</h3>
-        <table tuiDocAPI>
             <tr
-                name="[style.--tui-carousel-padding]"
+                name="*tuiItem='let index'"
                 tuiDocAPIItem
-                type="string"
-                [items]="itemPaddingVariants"
-                [(value)]="itemPadding"
+                type="TemplateRef<TuiContext<number>>"
             >
-                Custom color
+                Define template for items. Context
+                <code>$implicit</code>
+                is index of item in scroller.
             </tr>
         </table>
     </ng-template>

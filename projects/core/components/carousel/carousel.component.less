@@ -1,0 +1,22 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    .scrollbar-hidden();
+
+    display: flex;
+    max-inline-size: 100%;
+    overscroll-behavior: none;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.t-item {
+    position: relative;
+    display: flex;
+    min-inline-size: 100%;
+    block-size: 100%;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
