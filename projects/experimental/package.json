@@ -13,6 +13,20 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
+    "contributors": [
+        {
+            "name": "Alex Inkin",
+            "email": "alexander@inkin.ru"
+        },
+        {
+            "name": "Vladimir Potekhin",
+            "email": "vladimir.potekh@gmail.com"
+        },
+        {
+            "name": "Nikita Barsukov",
+            "email": "nikita.s.barsukov@gmail.com"
+        }
+    ],
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",

@@ -10,7 +10,7 @@
 // centering with translate
 .center-left() {
     position: absolute;
-    // stylelint-disable-next-line
+    // stylelint-disable-next-line -- TODO: fix later
     left: 50%;
     transform: translate(-50%, 0);
 }
@@ -18,7 +18,7 @@
 // TODO: rename to center-vertical
 .center-top() {
     position: absolute;
-    // stylelint-disable-next-line
+    // stylelint-disable-next-line -- TODO: fix later
     top: 50%;
     transform: translate(0, -50%);
 }
@@ -107,10 +107,8 @@
 }
 
 .scrollbar-hidden() {
-    /* stylelint-disable*/
     scrollbar-width: none;
     -ms-overflow-style: none;
-    /* stylelint-enable*/
 
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-thumb {

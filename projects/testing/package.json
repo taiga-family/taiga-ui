@@ -2,7 +2,25 @@
     "name": "@taiga-ui/testing",
     "version": "5.0.0-rc.4",
     "description": "Utils functions for testing Taiga UI packages",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/taiga-ui"
+    },
     "license": "Apache-2.0",
+    "contributors": [
+        {
+            "name": "Alex Inkin",
+            "email": "alexander@inkin.ru"
+        },
+        {
+            "name": "Vladimir Potekhin",
+            "email": "vladimir.potekh@gmail.com"
+        },
+        {
+            "name": "Nikita Barsukov",
+            "email": "nikita.s.barsukov@gmail.com"
+        }
+    ],
     "peerDependencies": {
         "@taiga-ui/cdk": "5.0.0-rc.4",
         "resize-observer-polyfill": ">=1.5.1",
