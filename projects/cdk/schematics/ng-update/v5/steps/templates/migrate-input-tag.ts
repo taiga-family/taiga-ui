@@ -30,16 +30,19 @@ const INPUT_ATTR_RENAMES = new Map<string, string>([
     ['uniqueTags'.toLowerCase(), 'unique'],
 ]);
 
-const TEXTFIELD_ATTRS = new Set(['[rows]'.toLowerCase(), 'rows'.toLowerCase()]);
+const TEXTFIELD_ATTR_RENAMES = new Map([
+    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
+    ['[rows]'.toLowerCase(), '[rows]'],
+    ['disabledItemHandler'.toLowerCase(), 'disabledItemHandler'],
+    ['rows'.toLowerCase(), 'rows'],
+]);
 
 const TODO_ATTRS = new Set([
     '(searchChange)'.toLowerCase(),
     '[(search)]'.toLowerCase(),
-    '[disabledItemHandler]'.toLowerCase(),
     '[editable]'.toLowerCase(),
     '[search]'.toLowerCase(),
     '[tagValidator]'.toLowerCase(),
-    'disabledItemHandler'.toLowerCase(),
     'editable'.toLowerCase(),
 ]);
 
@@ -88,7 +91,7 @@ export function migrateInputTag({
         );
 
         const textfieldAttrs = [...element.attrs].filter((attr) =>
-            TEXTFIELD_ATTRS.has(attr.name.toLowerCase()),
+            TEXTFIELD_ATTR_RENAMES.has(attr.name.toLowerCase()),
         );
 
         const todoAttrs = [...element.attrs].filter((attr) =>
@@ -112,13 +115,11 @@ export function migrateInputTag({
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         }
 
-        const textfieldAttrStr = textfieldAttrs.reduce(
-            (result, attr) =>
-                attr.value
-                    ? `${result} ${attr.name}="${attr.value}"`
-                    : `${result} ${attr.name}`,
-            '',
-        );
+        const textfieldAttrStr = textfieldAttrs.reduce((result, attr) => {
+            const name = TEXTFIELD_ATTR_RENAMES.get(attr.name.toLowerCase()) ?? attr.name;
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+        }, '');
 
         recorder.insertRight(
             templateOffset + openTagEnd - 1,
@@ -183,13 +184,6 @@ function getHint(attrName: string): string {
 
     if ('(searchChange)'.toLowerCase() === lower) {
         return 'use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">.';
-    }
-
-    if (
-        '[disabledItemHandler]'.toLowerCase() === lower ||
-        'disabledItemHandler'.toLowerCase() === lower
-    ) {
-        return 'provide via DI: providers: [tuiItemsHandlersProvider({disabledItemHandler: myHandler})].';
     }
 
     if ('[editable]'.toLowerCase() === lower || 'editable'.toLowerCase() === lower) {

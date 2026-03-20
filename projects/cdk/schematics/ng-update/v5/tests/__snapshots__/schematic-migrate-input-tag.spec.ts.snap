@@ -117,6 +117,29 @@ exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.ts 1`] = `
 }
 `;
 
+exports[`ng-update moves [disabledItemHandler] to <tui-textfield multi>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    formControlName="tags"
+                    [disabledItemHandler]="myHandler"
+                >
+                    Tags
+                </tui-input-tag>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                 multi [disabledItemHandler]="myHandler">
+<label tuiLabel>
+                    Tags
+                </label>
+
+<input tuiInputChip formControlName="tags" />
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update moves [rows] to <tui-textfield multi>: test.html 1`] = `
 {
   "0. Before": "

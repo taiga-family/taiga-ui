@@ -116,6 +116,19 @@ describe('ng-update', () => {
     );
 
     it(
+        'moves [disabledItemHandler] to <tui-textfield multi>',
+        migrate({
+            template: `
+                <tui-input-tag
+                    formControlName="tags"
+                    [disabledItemHandler]="myHandler"
+                >
+                    Tags
+                </tui-input-tag>`,
+        }),
+    );
+
+    it(
         'renames [maxLength] to [maxlength] on <input tuiInputChip>',
         migrate({
             template: `
