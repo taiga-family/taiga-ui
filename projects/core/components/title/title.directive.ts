@@ -18,7 +18,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-title'},
+    exportAs: `tui-title-${TUI_VERSION}`,
 })
 class Styles {}
 

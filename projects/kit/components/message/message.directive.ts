@@ -20,7 +20,7 @@ import {
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-message'},
+    exportAs: `tui-message-${TUI_VERSION}`,
 })
 class Styles {}
 

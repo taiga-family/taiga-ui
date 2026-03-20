@@ -21,7 +21,7 @@ import {
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-comment'},
+    exportAs: `tui-comment-${TUI_VERSION}`,
 })
 class Styles {}
 
