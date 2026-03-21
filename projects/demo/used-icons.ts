@@ -121,6 +121,9 @@ export const TUI_USED_ICONS = [
     '@tui.volume-2',
     '@tui.volume-x',
     '@tui.wallet',
+    '@tui.wifi',
+    '@tui.wifi-high',
+    '@tui.wifi-low',
     '@tui.x',
     '@tui.zap',
 ] as const;

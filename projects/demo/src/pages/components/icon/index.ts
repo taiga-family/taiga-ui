@@ -38,6 +38,7 @@ export default class Page {
         'Bundled',
         'Resolver',
         'External',
+        'Background',
     ];
 
     protected icon = '@tui.heart';
