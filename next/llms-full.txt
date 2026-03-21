@@ -17354,6 +17354,51 @@ export default class Example {
 }
 ```
 
+#### Background
+
+**Template:**
+```html
+<tui-icon background="@tui.wifi" icon="@tui.wifi" />
+<tui-icon background="@tui.wifi" icon="@tui.wifi-high" />
+<tui-icon background="@tui.wifi" icon="@tui.wifi-low" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiIcon],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+tui-icon {
+    background: var(--tui-border-normal);
+    color: var(--tui-status-warning);
+
+    &:first-child {
+        color: var(--tui-status-positive);
+    }
+
+    &:last-child {
+        color: var(--tui-status-negative);
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -17398,6 +17443,7 @@ export default class Page {
         'Bundled',
         'Resolver',
         'External',
+        'Background',
     ];
 
     protected icon = '@tui.heart';
