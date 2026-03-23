@@ -26,13 +26,17 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
+    TUI_COMMON_ICONS,
+    TUI_TEXTFIELD_OPTIONS,
+    tuiAsAuxiliary,
     TuiCalendar,
     tuiCalendarSheetOptionsProvider,
+    TuiDataList,
+    TuiIcon,
     type TuiMarkerHandler,
-} from '@taiga-ui/core/components/calendar';
-import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {TUI_COMMON_ICONS, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import {type Observable} from 'rxjs';
 
@@ -72,6 +76,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(TUI_IS_MOBILE);
+    protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
@@ -81,6 +86,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     @Input()
     public items: readonly TuiDayRangePeriod[] = [];
+
+    @Input()
+    public listSize: TuiSizeL | TuiSizeS = this.options.size();
 
     @Input()
     public min: TuiDay | null = TUI_FIRST_DAY;
