@@ -1,4 +1,4 @@
-@import '../variables/media';
+@import '../variables/media.scss';
 
 @mixin hitbox($size) {
     @media ($tui-mobile) {

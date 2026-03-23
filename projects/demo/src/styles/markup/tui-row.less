@@ -2,7 +2,6 @@
 @space-normal: 1.25rem;
 @space-large: 1.5rem;
 
-/* stylelint-disable order/order */
 .generate-columns(@infix, @n, @padding, @i: 1) when (@i =< @n) {
     &_@{infix}-@{i} {
         inline-size: (@i * 100% / @n);
@@ -40,7 +39,6 @@
 
     .generate-sme-offset-columns(@n, (@i + 1));
 }
-/* stylelint-enable order/order */
 
 .tui-row {
     display: flex;

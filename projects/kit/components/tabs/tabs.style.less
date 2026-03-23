@@ -15,8 +15,7 @@
     cursor: pointer;
     outline: none;
     color: inherit;
-    /* stylelint-disable-next-line */
-    margin-inline-start: var(--tui-tab-margin, 24px);
+    margin-inline-start: var(--tui-tab-margin, 1.5rem);
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
@@ -44,8 +43,7 @@
     }
 
     tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child {
-        /* stylelint-disable-next-line */
-        margin-inline-start: var(--tui-tab-margin, 24px);
+        margin-inline-start: var(--tui-tab-margin, 1.5rem);
     }
 
     &[tuiIcons]::before {
@@ -85,8 +83,8 @@ tui-tabs {
 
     &[data-size='m'] {
         font: var(--tui-typography-body-s);
-        /* stylelint-disable-next-line */
-        --tui-tab-margin: 16px;
+
+        --tui-tab-margin: 1rem;
     }
 
     &[data-size='l']:not([data-vertical]) {

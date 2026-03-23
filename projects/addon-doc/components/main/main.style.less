@@ -13,7 +13,6 @@ tui-doc-main {
 // prevent override styles
 // inside editor code block
 code:not(pre code) {
-    /* stylelint-disable-next-line */
     &:not(.hljs):not([class*='language-']) {
         .transition(background);
 
@@ -28,7 +27,6 @@ code:not(pre code) {
         font-size: 0.75rem;
         padding: 0 0.3125rem;
         margin: 0 0.1875rem;
-        //noinspection CssInvalidPropertyValue
         text-wrap: wrap;
 
         a & {
