@@ -1,0 +1,430 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update ComboBox [stringify] / [identityMatcher] / [disabledItemHandler]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [stringify]="stringifyFn"
+                    [identityMatcher]="matcherFn"
+                    [disabledItemHandler]="disabledFn"
+                >
+                    Label
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                    [stringify]="stringifyFn"
+                    [identityMatcher]="matcherFn"
+                    [disabledItemHandler]="disabledFn"
+                >
+<label tuiLabel>
+                    Label
+                </label>
+
+<input tuiComboBox [formControl]="control" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox [valueContent] => tui-textfield[content]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [valueContent]="myContent"
+                >
+                    Label
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield #textfieldRef [content]="textfieldRef.focused() ? '' : myContent"
+                >
+<label tuiLabel>
+                    Label
+                </label>
+
+<input tuiComboBox [formControl]="control" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox adds TODO for [search] and (searchChange): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [search]="searchValue"
+                    (searchChange)="onSearch($event)"
+                >
+                    Label
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-combo-box migration (see https://taiga-ui.dev/components/combo-box):
+     - [search] / (searchChange): use native (input) event on <input tuiComboBox>
+-->
+<tui-textfield
+                >
+<label tuiLabel>
+                    Label
+                </label>
+
+<input tuiComboBox [formControl]="control" (input)="onSearch($event.target.value)" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox handles multiple combo-boxes in the same template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box [formControl]="first">
+                    First
+                </tui-combo-box>
+
+                <tui-combo-box [(ngModel)]="second">
+                    Second
+                    <tui-data-list-wrapper *tuiDataList [items]="items" />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    First
+                </label>
+
+<input tuiComboBox [formControl]="first" />
+</tui-textfield>
+
+                <tui-textfield>
+<label tuiLabel>
+                    Second
+                    </label>
+
+<input tuiComboBox [(ngModel)]="second" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox keeps [strict] on input: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [strict]="false"
+                >
+                    Label
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+<label tuiLabel>
+                    Label
+                </label>
+
+<input tuiComboBox [formControl]="control" [strict]="false" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox migrates *tuiDataList to *tuiDropdown: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box [formControl]="control">
+                    Label
+                    <tui-data-list *tuiDataList>
+                        <button tuiOption [value]="item">{{ item }}</button>
+                    </tui-data-list>
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    Label
+                    </label>
+
+<input tuiComboBox [formControl]="control" />
+<tui-data-list *tuiDropdown>
+                        <button tuiOption [value]="item">{{ item }}</button>
+                    </tui-data-list>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox migrates TuiComboBoxModule import and basic tui-combo-box template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box [formControl]="control">
+                    Many words label
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    Many words label
+                    </label>
+
+<input tuiComboBox [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox migrates TuiComboBoxModule import and basic tui-combo-box template: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiComboBoxModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiComboBoxModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiComboBox } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiComboBox],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update ComboBox migrates combo-box with all properties combined: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [strictMatcher]="myMatcher"
+                    [strict]="false"
+                    [search]="search"
+                    (searchChange)="search = $event"
+                    [valueContent]="contentTpl"
+                >
+                    Choose a hero
+                    <input
+                        placeholder="Start typing..."
+                        tuiTextfieldLegacy
+                    />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="heroes"
+                        [itemContent]="contentTpl"
+                    />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-combo-box migration (see https://taiga-ui.dev/components/combo-box):
+     - [search] / (searchChange): use native (input) event on <input tuiComboBox>
+-->
+<tui-textfield #textfieldRef [content]="textfieldRef.focused() ? '' : contentTpl"
+                >
+<label tuiLabel>
+                    Choose a hero
+                    </label>
+<input tuiComboBox [formControl]="control" [matcher]="myMatcher" [strict]="false" (input)="search = $event.target.value"
+                        placeholder="Start typing..."
+                    />
+                    <tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="heroes"
+                        [itemContent]="contentTpl"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox migrates tui-combo-box with legacy textfield input: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box [formControl]="control">
+                    Label
+                    <input
+                        placeholder="Search..."
+                        tuiTextfieldLegacy
+                    />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    Label
+                    </label>
+<input tuiComboBox [formControl]="control"
+                        placeholder="Search..."
+                    />
+                    <tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox moves [(ngModel)] to generated input when input is absent: test.html 1`] = `
+{
+  "0. Before": "
+<tui-combo-box [(ngModel)]="value">
+    Choose an option
+    <tui-data-list-wrapper *tuiDataList [items]="items" />
+</tui-combo-box>
+",
+  "1. After": "
+<tui-textfield>
+<label tuiLabel>
+    Choose an option
+    </label>
+
+<input tuiComboBox [(ngModel)]="value" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
+</tui-textfield>
+",
+}
+`;
+
+exports[`ng-update ComboBox moves formControlName to generated input: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box formControlName="myField">
+                    Label
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    Label
+                    </label>
+
+<input tuiComboBox formControlName="myField" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox moves tuiTextfieldSize to tui-textfield wrapper: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    tuiTextfieldSize="s"
+                    [formControl]="control"
+                >
+                    Label
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                    tuiTextfieldSize="s"
+                >
+<label tuiLabel>
+                    Label
+                </label>
+
+<input tuiComboBox [formControl]="control" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Label
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+<label tuiLabel>
+                    Label
+                </label>
+
+<input tuiComboBox [formControl]="control" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside]: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiComboBox } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiComboBox],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update ComboBox renames [strictMatcher] to [matcher]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [strictMatcher]="myMatcher"
+                >
+                    Label
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+<label tuiLabel>
+                    Label
+                </label>
+
+<input tuiComboBox [formControl]="control" [matcher]="myMatcher" />
+</tui-textfield>
+            ",
+}
+`;
