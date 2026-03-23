@@ -23688,7 +23688,7 @@ export class Example {
 <tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
 <label *ngIf="textfieldDoc.size !== 's'" tuiLabel > Choose range </label>
 <input tuiInputDateRange [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-calendar-range *tuiTextfieldDropdown />
+<tui-calendar-range *tuiTextfieldDropdown [items]="selectedPeriodList ?? []" [listSize]="listSize" />
 </tui-textfield>
 </ng-template>
 ```
@@ -23701,6 +23701,8 @@ export class Example {
 | [max] | `TuiDay` | Max date |
 | [minLength] | `TuiDayLike | null` | Min length of the range |
 | [maxLength] | `TuiDayLike | null` | Max length of the range |
+| [items] | `TuiDayRangePeriod[]` | Period list items |
+| [listSize] | `TuiSizeL` | Period list size |
 
 ### Usage Examples
 
@@ -24031,8 +24033,12 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputDateRange} from '@taiga-ui/kit';
+import {TuiDropdown, type TuiSizeL, type TuiSizeS, TuiTextfield} from '@taiga-ui/core';
+import {
+    type TuiDayRangePeriod,
+    TuiInputDateRange,
+    tuiCreateDefaultDayRangePeriods,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -24062,10 +24068,18 @@ export default class Example {
         TUI_LAST_DAY,
     ] as const;
 
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected listSize: TuiSizeL | TuiSizeS = this.sizeVariants[2]!;
+
+    protected readonly items = tuiCreateDefaultDayRangePeriods();
+
     protected min = this.dates[0];
     protected max = this.dates[4];
 
     protected readonly limits = [{day: 3}, {day: 5}] as const;
+
+    protected readonly periodListItems = [null, this.items];
+    protected selectedPeriodList: readonly TuiDayRangePeriod[] | null = null;
 
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
