@@ -999,7 +999,7 @@
 ### pdf-viewer
 
 ```text
-  TuiPdfViewerComponent
+  TuiPdfViewer
 ```
 ### search-results
 
@@ -23697,7 +23697,7 @@ export class Example {
 &lt;tui-textfield [disabledItemHandler]=&quot;itemsHandlers.disabledItemHandler()&quot; [iconStart]=&quot;icons.iconStart&quot; [tuiDropdownAlign]=&quot;dropdown.align&quot; [tuiTextfieldCleaner]=&quot;textfieldDoc.cleaner&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; [(open)]=&quot;dropdown.open&quot; &gt;
 &lt;label *ngIf=&quot;textfieldDoc.size !== &#039;s&#039;&quot; tuiLabel &gt; Choose range &lt;/label&gt;
 &lt;input tuiInputDateRange [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [max]=&quot;max&quot; [maxLength]=&quot;maxLength&quot; [min]=&quot;min&quot; [minLength]=&quot;minLength&quot; [placeholder]=&quot;textfieldDoc.size === &#039;s&#039; ? &#039;Choose range&#039; : &#039;&#039;&quot; [readOnly]=&quot;controlDoc.readonly&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; /&gt;
-&lt;tui-calendar-range *tuiTextfieldDropdown /&gt;
+&lt;tui-calendar-range *tuiTextfieldDropdown [items]=&quot;selectedPeriodList ?? []&quot; [listSize]=&quot;listSize&quot; /&gt;
 &lt;/tui-textfield&gt;
 &lt;/ng-template&gt;
 ```
@@ -23710,6 +23710,8 @@ export class Example {
 | [max] | `TuiDay` | Max date |
 | [minLength] | `TuiDayLike | null` | Min length of the range |
 | [maxLength] | `TuiDayLike | null` | Max length of the range |
+| [items] | `TuiDayRangePeriod[]` | Period list items |
+| [listSize] | `TuiSizeL` | Period list size |
 
 ### Usage Examples
 
@@ -24040,8 +24042,12 @@ import {TuiDocTextfield} from &#039;@demo/components/textfield&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from &#039;@taiga-ui/cdk&#039;;
-import {TuiDropdown, TuiTextfield} from &#039;@taiga-ui/core&#039;;
-import {TuiInputDateRange} from &#039;@taiga-ui/kit&#039;;
+import {TuiDropdown, type TuiSizeL, type TuiSizeS, TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {
+    type TuiDayRangePeriod,
+    TuiInputDateRange,
+    tuiCreateDefaultDayRangePeriods,
+} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
     standalone: true,
@@ -24071,10 +24077,18 @@ export default class Example {
         TUI_LAST_DAY,
     ] as const;
 
+    protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
+    protected listSize: TuiSizeL | TuiSizeS = this.sizeVariants[2]!;
+
+    protected readonly items = tuiCreateDefaultDayRangePeriods();
+
     protected min = this.dates[0];
     protected max = this.dates[4];
 
     protected readonly limits = [{day: 3}, {day: 5}] as const;
+
+    protected readonly periodListItems = [null, this.items];
+    protected selectedPeriodList: readonly TuiDayRangePeriod[] | null = null;
 
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
