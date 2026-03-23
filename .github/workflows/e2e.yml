@@ -21,10 +21,10 @@ jobs:
       - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/run/rebase@v1.189.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.193.0
+      - uses: taiga-family/ci/actions/run/rebase@v1.193.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
+      - uses: taiga-family/ci/actions/setup/node@v1.193.0
 
       - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
@@ -57,8 +57,8 @@ jobs:
       - uses: actions/checkout@v6.0.2
         with:
           ref: ${{ github.base_ref }}
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.193.0
+      - uses: taiga-family/ci/actions/setup/node@v1.193.0
         with:
           validate-peer-deps: false
 
@@ -75,8 +75,8 @@ jobs:
           retention-days: 1
 
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.193.0
+      - uses: taiga-family/ci/actions/setup/node@v1.193.0
 
       - name: Download Cypress Baseline Snapshots
         uses: actions/download-artifact@v8.0.1
@@ -88,7 +88,7 @@ jobs:
       - name: Run tests for current state
         run: npx nx component-test demo-cypress
 
-      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@v1.189.0
+      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@v1.193.0
 
       - name: Debug output
         continue-on-error: true
@@ -135,14 +135,14 @@ jobs:
     runs-on: ${{ matrix.shard.os }}
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.193.0
 
       - name: Mac OS X building all dependencies
         if: ${{ contains( matrix.shard.os, 'macos') }}
         run: brew install pkg-config cairo pango libpng jpeg-turbo giflib librsvg --force || echo ''
 
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.189.0
+      - uses: taiga-family/ci/actions/setup/node@v1.193.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.193.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v5.0.4
@@ -150,7 +150,7 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.189.0
+      - uses: taiga-family/ci/actions/run/serve@v1.193.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -165,12 +165,12 @@ jobs:
       - run: tree ./projects/demo-playwright/snapshots
         continue-on-error: true
 
-      - uses: taiga-family/ci/actions/run/clone@v1.189.0
+      - uses: taiga-family/ci/actions/run/clone@v1.193.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.189.0
+      - uses: taiga-family/ci/actions/run/serve@v1.193.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -187,7 +187,7 @@ jobs:
       - run: tree ./projects/demo-playwright/tests-results
         continue-on-error: true
 
-      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.189.0
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.193.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v7.0.0
@@ -230,8 +230,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.193.0
+      - uses: taiga-family/ci/actions/setup/node@v1.193.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -286,7 +286,7 @@ jobs:
           report-file: ./all-blob-reports/results.json
           report-url: ${{ steps.e2e-report.outputs.details_url }}
 
-      - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.189.0
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.193.0
         with:
           pw-result: ./total
 
