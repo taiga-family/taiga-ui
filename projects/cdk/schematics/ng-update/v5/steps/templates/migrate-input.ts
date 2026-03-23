@@ -71,7 +71,7 @@ const LEGACY_INPUT_ATTRS = new Set([
 ]);
 
 function isDropdownAttr(nameLower: string): boolean {
-    const prefix = 'tui' + 'dropdown';
+    const prefix = 'TuiDropdown'.toLowerCase();
     const stripped = nameLower.replaceAll(/^\[|\]$|\(|\)/g, '');
 
     return stripped.startsWith(prefix);
