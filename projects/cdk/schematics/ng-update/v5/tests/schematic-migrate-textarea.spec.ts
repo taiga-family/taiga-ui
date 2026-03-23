@@ -26,7 +26,7 @@ describe('ng-update legacy textarea', () => {
     );
 
     it(
-        'migrates tui-textarea attributes: wrapper attrs, [maxLength], drops labelOutside',
+        'migrates tui-textarea attributes: wrapper attrs, [maxLength], labelOutside=true adds TODO',
         migrate({
             template: `
                 <tui-textarea
@@ -34,6 +34,19 @@ describe('ng-update legacy textarea', () => {
                     tuiTextfieldSize="s"
                     [maxLength]="150"
                     [tuiTextfieldLabelOutside]="true"
+                >
+                    Label
+                </tui-textarea>`,
+        }),
+    );
+
+    it(
+        'migrates tui-textarea with labelOutside=false: adds label tuiLabel inside tui-textfield',
+        migrate({
+            template: `
+                <tui-textarea
+                    formControlName="testValue"
+                    [tuiTextfieldLabelOutside]="false"
                 >
                     Label
                 </tui-textarea>`,

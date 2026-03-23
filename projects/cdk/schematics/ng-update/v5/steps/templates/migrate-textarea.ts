@@ -93,6 +93,10 @@ interface MigrationContext {
     expandableValue: string | null; // original value of expandable attr, null if absent
     rowsMigratedTo: string | null; // '[max]="N"' or 'max="N"' if rows was present
     placeholder: string;
+    // true  = [tuiTextfieldLabelOutside]="true" → label wraps <tui-textfield>
+    // false = absent or ="false" → <label tuiLabel> auto-added inside <tui-textfield>
+    // 'dynamic' = value was a bound expression, cannot determine statically
+    labelOutside: boolean | 'dynamic';
 }
 
 function buildReplacement(
@@ -113,6 +117,7 @@ function buildReplacement(
         expandableValue: null,
         rowsMigratedTo: null,
         placeholder: '',
+        labelOutside: false,
     };
 
     for (const attr of element.attrs) {
@@ -124,6 +129,12 @@ function buildReplacement(
         }
 
         if (ATTRS_TO_DROP.has(nameLower)) {
+            // All attrs in ATTRS_TO_DROP are labelOutside variants — capture value before dropping
+            const val = attr.value.trim();
+
+            ctx.labelOutside =
+                val === 'true' || val === '' ? true : val === 'false' ? false : 'dynamic';
+
             continue;
         }
 
@@ -184,13 +195,7 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
-    const innerContent = buildInnerContent(
-        element,
-        template,
-        textareaAttrs,
-        ctx.placeholder,
-        indent,
-    );
+    const innerContent = buildInnerContent(element, template, textareaAttrs, ctx, indent);
     const todoComment = buildTodoComment(ctx);
 
     const replacement = `${todoComment}${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
@@ -206,9 +211,19 @@ function buildTodoComment(ctx: MigrationContext): string {
     const notes: string[] = [];
 
     if (ctx.placeholder) {
-        notes.push(
-            `Text content "${ctx.placeholder}" became placeholder on <textarea>. Add <label tuiLabel>${ctx.placeholder}</label> inside <tui-textfield> if a floating label is needed.`,
-        );
+        if (ctx.labelOutside === true) {
+            notes.push(
+                `Text content "${ctx.placeholder}" became placeholder on <textarea>. Previously [tuiTextfieldLabelOutside]=true — for label-outside pattern, wrap <tui-textfield> with: <label tuiLabel>${ctx.placeholder}<tui-textfield>...</tui-textfield></label>.`,
+            );
+        } else if (ctx.labelOutside === 'dynamic') {
+            notes.push(
+                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. [tuiTextfieldLabelOutside] was dynamic — for label-outside pattern, move <label tuiLabel> to wrap <tui-textfield> instead.`,
+            );
+        } else {
+            notes.push(
+                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.`,
+            );
+        }
     }
 
     if (ctx.expandableValue !== null) {
@@ -221,7 +236,7 @@ function buildTodoComment(ctx: MigrationContext): string {
                 );
             } else {
                 notes.push(
-                    `expandable="false" was removed. New component always auto-resizes. To restore fixed height, set [min] and [max] to the same value on <textarea tuiTextarea> (legacy default was 20 rows).`,
+                    'expandable="false" was removed. New component always auto-resizes. To restore fixed height, set [min] and [max] to the same value on <textarea tuiTextarea> (legacy default was 20 rows).',
                 );
             }
         } else {
@@ -237,7 +252,7 @@ function buildTodoComment(ctx: MigrationContext): string {
     } else {
         // Neither expandable nor rows — legacy default was 20 rows fixed height
         notes.push(
-            `Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.`,
+            'Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.',
         );
     }
 
@@ -259,13 +274,21 @@ function buildInnerContent(
     element: Element,
     template: string,
     textareaAttrs: string[],
-    placeholder: string,
+    ctx: MigrationContext,
     indent: string,
 ): string {
+    const {placeholder, labelOutside} = ctx;
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
             node.nodeName !== '#text' && node.nodeName !== '#comment',
     );
+
+    // Auto-add <label tuiLabel> inside <tui-textfield> when text content is present
+    // and labelOutside is not true (label-outside pattern requires manual DOM restructure)
+    const labelEl =
+        placeholder && labelOutside !== true
+            ? `${indent}<label tuiLabel>${placeholder}</label>\n`
+            : '';
 
     // If user already put an explicit <textarea tuiTextfieldLegacy> inside,
     // reuse it instead of generating a new one.
@@ -276,13 +299,13 @@ function buildInnerContent(
     );
 
     if (legacyInnerTextarea) {
-        return migrateInnerTextarea(
+        return `${labelEl}${migrateInnerTextarea(
             legacyInnerTextarea,
             template,
             textareaAttrs,
             childElements,
             indent,
-        );
+        )}`;
     }
 
     const attrsStr = textareaAttrs.length > 0 ? ` ${textareaAttrs.join(' ')}` : '';
@@ -298,7 +321,7 @@ function buildInnerContent(
         })
         .join('');
 
-    return `${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}`;
+    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}`;
 }
 
 /**
