@@ -13,14 +13,14 @@ exports[`ng-update migrate style imports should handle multiple replacements in 
             ",
   "1. After": "
                 @import '@taiga-ui/styles/utils';
-// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/markup/tui-space.less
-                @import '@taiga-ui/styles/markup/tui-space.less';
-// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/markup/tui-list.less
-                @import '@taiga-ui/styles/markup/tui-list';
+// TODO: (Taiga UI migration) Global styles will be removed in next major release. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/main/projects/legacy/styles/markup/tui-space.less
+                @import '@taiga-ui/legacy/styles/markup/tui-space.less';
+// TODO: (Taiga UI migration) Global styles will be removed in next major release. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/main/projects/legacy/styles/markup/tui-list.less
+                @import '@taiga-ui/legacy/styles/markup/tui-list';
                 @import '@taiga-ui/styles/taiga-ui-fonts.less';
                 @import '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less';
-// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/taiga-ui-global.less
-                @import '@taiga-ui/styles/taiga-ui-global.less';
+// TODO: (Taiga UI migration) Global styles will be removed in next major release. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/main/projects/legacy/styles/taiga-ui-global.less
+                @import '@taiga-ui/legacy/styles/taiga-ui-global.less';
                 @import '@taiga-ui/styles/taiga-ui-theme.less';
             ",
 }
@@ -29,8 +29,8 @@ exports[`ng-update migrate style imports should handle multiple replacements in 
 exports[`ng-update migrate style imports should migrate style imports in project.json: project.json 1`] = `
 {
   "0. Before": "{"name":"test-project","targets":{"build":{"options":{"styles":["@taiga-ui/core/styles/taiga-ui-theme.less","@taiga-ui/core/styles/taiga-ui-fonts.less","@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less","@taiga-ui/styles/taiga-ui-global.less"]}}}}",
-  "1. After": "// TODO: (Taiga UI migration) Global styles have been removed. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/v4.x/projects/styles/taiga-ui-global.less
-{"name":"test-project","targets":{"build":{"options":{"styles":["@taiga-ui/styles/taiga-ui-theme.less","@taiga-ui/styles/taiga-ui-fonts.less","@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less","@taiga-ui/styles/taiga-ui-global.less"]}}}}",
+  "1. After": "// TODO: (Taiga UI migration) Global styles will be removed in next major release. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/main/projects/legacy/styles/taiga-ui-global.less
+{"name":"test-project","targets":{"build":{"options":{"styles":["@taiga-ui/styles/taiga-ui-theme.less","@taiga-ui/styles/taiga-ui-fonts.less","@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less","@taiga-ui/legacy/styles/taiga-ui-global.less"]}}}}",
 }
 `;
 
