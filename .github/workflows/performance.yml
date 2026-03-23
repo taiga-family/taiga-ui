@@ -49,7 +49,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.189.0
       - uses: taiga-family/ci/actions/setup/playwright@v1.189.0
       - name: Restore dist cache from parent workflow build
-        uses: actions/cache/restore@v5.0.3
+        uses: actions/cache/restore@v5.0.4
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
