@@ -12,11 +12,8 @@ export interface TuiDocIcons {
     readonly check: string;
     readonly link: string;
     readonly languages: string;
-    /**
-     * TODO: drop optional in v5
-     */
-    readonly shrink?: string;
-    readonly expand?: string;
+    readonly shrink: string;
+    readonly expand: string;
     readonly ltr: {
         readonly preview: string;
         readonly direction: string;
