@@ -132,8 +132,13 @@ function buildReplacement(
             // All attrs in ATTRS_TO_DROP are labelOutside variants — capture value before dropping
             const val = attr.value.trim();
 
-            ctx.labelOutside =
-                val === 'true' || val === '' ? true : val === 'false' ? false : 'dynamic';
+            if (val === 'true' || val === '') {
+                ctx.labelOutside = true;
+            } else if (val === 'false') {
+                ctx.labelOutside = false;
+            } else {
+                ctx.labelOutside = 'dynamic';
+            }
 
             continue;
         }
