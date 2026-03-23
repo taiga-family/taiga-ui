@@ -27,6 +27,9 @@
             "email": "nikita.s.barsukov@gmail.com"
         }
     ],
+    "exports": {
+        "./styles/*": "./styles/*"
+    },
     "peerDependencies": {
         "@angular/core": ">=19.0.0",
         "@taiga-ui/cdk": "5.0.0-rc.4",

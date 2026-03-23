@@ -13,7 +13,7 @@ describe('ng-update v5: migrate mixins', () => {
         'should migrate slider-ticks-labels mixin in LESS',
         migrate({
             styles: `
-                @import '@taiga-ui/styles/utils';
+                @import '@taiga-ui/core/styles/taiga-ui-local';
 
                 .ticks-labels {
                     .tui-slider-ticks-labels(l);
@@ -39,7 +39,7 @@ describe('ng-update v5: migrate mixins', () => {
         'should migrate slider-ticks-labels mixin with SCSS @include syntax',
         migrate({
             styles: `
-                @import '@taiga-ui/styles/utils';
+                @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
                 .ticks-labels {
                     @include tui-slider-ticks-labels(l);
