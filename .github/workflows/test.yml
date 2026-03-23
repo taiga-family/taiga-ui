@@ -20,7 +20,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0
       - uses: taiga-family/ci/actions/setup/node@v1.189.0
       - run: npm test
-      - uses: codecov/codecov-action@v5.5.2
+      - uses: codecov/codecov-action@v5.5.3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
