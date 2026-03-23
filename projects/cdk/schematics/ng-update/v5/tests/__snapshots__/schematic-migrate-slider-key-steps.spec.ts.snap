@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update input[tuiSlider][keySteps][max] add TODO if Slider uses both [max] and [keySteps]: test.html 1`] = `
+{
+  "0. Before": "
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="formControl"
+                    [keySteps]="keySteps"
+                    [max]="10 * segments"
+                    [segments]="segments"
+                />
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) dont use [max] property with [keySteps] – use [step]. When [keySteps] property is enabled, [step] means percentage of total track length. Learn more: https://taiga-ui.dev/next/components/slider#key-steps -->
+<input
+                    tuiSlider
+                    type="range"
+                    [formControl]="formControl"
+                    [keySteps]="keySteps"
+                    [max]="10 * segments"
+                    [segments]="segments"
+                />
+            ",
+}
+`;
+
+exports[`ng-update input[tuiSlider][keySteps][max] ignores [max] without [keySteps]: test.html 1`] = `
+{
+  "0. Before": "
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="formControl"
+                    [max]="100"
+                    [segments]="segments"
+                    [step]="20"
+                />
+            ",
+  "1. After": "
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="formControl"
+                    [max]="100"
+                    [segments]="segments"
+                    [step]="20"
+                />
+            ",
+}
+`;
