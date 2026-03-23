@@ -63,6 +63,14 @@ describe('ng-update legacy textarea', () => {
     );
 
     it(
+        'migrates rows without expandable and adds TODO about min',
+        migrate({
+            template:
+                '<tui-textarea formControlName="value" rows="5">Comment</tui-textarea>',
+        }),
+    );
+
+    it(
         'handles tui-textarea without text content',
         migrate({template: '<tui-textarea formControlName="value"></tui-textarea>'}),
     );

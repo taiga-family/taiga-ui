@@ -215,20 +215,30 @@ function buildTodoComment(ctx: MigrationContext): string {
         const wasFixed = ctx.expandableValue === 'false' || ctx.expandableValue === '';
 
         if (wasFixed) {
-            const maxVal = ctx.rowsMigratedTo ?? '[max]="N"';
-
-            notes.push(
-                `expandable="false" was removed. New component always auto-resizes. To restore fixed height set the same value for [min] and ${maxVal} on <textarea tuiTextarea>.`,
-            );
+            if (ctx.rowsMigratedTo) {
+                notes.push(
+                    `expandable="false" was removed. New component always auto-resizes. To restore fixed height, also add the same value for [min] on <textarea tuiTextarea> (${ctx.rowsMigratedTo} was already migrated).`,
+                );
+            } else {
+                notes.push(
+                    `expandable="false" was removed. New component always auto-resizes. To restore fixed height, set [min] and [max] to the same value on <textarea tuiTextarea> (legacy default was 20 rows).`,
+                );
+            }
         } else {
             notes.push(
                 `[expandable] was removed. New component always auto-resizes between [min] (default: 1) and [max] (default: 3) rows.${ctx.rowsMigratedTo ? ` [rows] was migrated to ${ctx.rowsMigratedTo}.` : ''}`,
             );
         }
-    }
-
-    if (notes.length === 0) {
-        return '';
+    } else if (ctx.rowsMigratedTo) {
+        // rows present but expandable not specified — legacy default was fixed height
+        notes.push(
+            `[rows] was migrated to ${ctx.rowsMigratedTo}. Legacy tui-textarea had fixed height by default (expandable=false). To restore fixed height, also add the same value for [min] on <textarea tuiTextarea>.`,
+        );
+    } else {
+        // Neither expandable nor rows — legacy default was 20 rows fixed height
+        notes.push(
+            `Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.`,
+        );
     }
 
     const lines = [
