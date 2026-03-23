@@ -55,7 +55,7 @@ export default class Example {
     ] as const;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-    protected periodListSize: TuiSizeL | TuiSizeS = this.sizeVariants[2]!;
+    protected listSize: TuiSizeL | TuiSizeS = this.sizeVariants[2]!;
 
     protected readonly items = tuiCreateDefaultDayRangePeriods();
 

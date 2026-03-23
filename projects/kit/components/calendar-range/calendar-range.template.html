@@ -32,7 +32,7 @@
         <tui-data-list
             automation-id="tui-calendar-range__menu"
             role="menu"
-            [size]="periodListSize"
+            [size]="listSize()"
             [style.flex]="1"
         >
             @for (item of items() | tuiMapper: mapper : min() : max() : minLength() : otherDateText(); track item) {

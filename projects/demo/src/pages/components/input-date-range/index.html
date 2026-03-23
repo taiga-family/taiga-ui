@@ -86,7 +86,7 @@
                     <tui-calendar-range
                         *tuiDropdown
                         [items]="selectedPeriodList ?? []"
-                        [periodListSize]="periodListSize"
+                        [listSize]="listSize"
                     />
                 </tui-textfield>
             </ng-template>
@@ -138,11 +138,11 @@
                 Period list items
             </tr>
             <tr
-                name="[periodListSize]"
+                name="[listSize]"
                 tuiDocAPIItem
                 type="TuiSizeL"
                 [items]="sizeVariants"
-                [(value)]="periodListSize"
+                [(value)]="listSize"
             >
                 Period list size
             </tr>

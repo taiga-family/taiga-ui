@@ -76,6 +76,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     public readonly minLength = input<TuiDayLike | null>(null);
     public readonly maxLength = input<TuiDayLike | null>(null);
     public readonly items = input<readonly TuiDayRangePeriod[]>([]);
+    public readonly listSize = input<TuiSizeL | TuiSizeS>(this.options.size());
     public readonly defaultViewedMonth = input<TuiMonth>(TuiMonth.currentLocal());
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
     public readonly disabledItemHandler =
