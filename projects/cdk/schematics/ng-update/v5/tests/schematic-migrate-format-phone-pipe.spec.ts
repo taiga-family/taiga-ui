@@ -10,7 +10,7 @@ describe('ng-update migrate TuiFormatPhonePipe to MaskitoPipe', () => {
     });
 
     it(
-        'renames tuiFormatPhone pipe to maskito in template',
+        'renames tuiFormatPhone pipe to maskito in template and adds TODO',
         migrate({template: '{{ phone | tuiFormatPhone }}'}),
     );
 
@@ -25,7 +25,7 @@ describe('ng-update migrate TuiFormatPhonePipe to MaskitoPipe', () => {
     );
 
     it(
-        'renames tuiFormatPhone inside element binding without adding TODO for no-arg usage',
+        'renames tuiFormatPhone inside element binding and adds TODO for no-arg usage',
         migrate({
             template:
                 '<span [title]="phone | tuiFormatPhone">{{ phone | tuiFormatPhone }}</span>',
@@ -38,7 +38,7 @@ describe('ng-update migrate TuiFormatPhonePipe to MaskitoPipe', () => {
     );
 
     it(
-        'replaces TuiFormatPhonePipe import with MaskitoPipe',
+        'replaces TuiFormatPhonePipe import with MaskitoPipe (single-quoted inline template)',
         migrate({
             component: `
                 import {TuiFormatPhonePipe} from '@taiga-ui/legacy';
@@ -47,6 +47,22 @@ describe('ng-update migrate TuiFormatPhonePipe to MaskitoPipe', () => {
                     standalone: true,
                     imports: [TuiFormatPhonePipe],
                     template: '{{ phone | tuiFormatPhone }}'
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'adds TODO inside backtick inline template with newline',
+        migrate({
+            component: `
+                import {TuiFormatPhonePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiFormatPhonePipe],
+                    template: \`{{ phone | tuiFormatPhone }}\`
                 })
                 export class TestComponent {}
             `,

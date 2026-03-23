@@ -10,7 +10,8 @@ import {type TemplateResource} from '../../../interfaces';
 
 const PIPE_RENAME_REGEX = /(\|\s*)tuiFormatPhone\b/g;
 
-const TODO_COMMENT = `<!-- ${TODO_MARK} \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone'. See: https://taiga-ui.dev/components/input-phone-international -->`;
+const TODO_COMMENT_WITH_ARGS = `<!-- ${TODO_MARK} \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' (note: countryIsoCode is ISO format e.g. 'US', not '+1'). See: https://taiga-ui.dev/components/input-phone-international -->`;
+const TODO_COMMENT_NO_ARGS = `<!-- ${TODO_MARK} \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international -->`;
 
 export function migrateFormatPhonePipe({
     resource,
@@ -24,6 +25,11 @@ export function migrateFormatPhonePipe({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
+    // For inline templates, getText() includes the opening quote character,
+    // so offset 0 points to the quote itself (in TS territory).
+    // We shift by 1 to insert inside the template string.
+    const isInlineTemplate = 'template' in resource;
+    const todoInsertedAtLines = new Set<number>();
     let match;
 
     while ((match = PIPE_RENAME_REGEX.exec(template)) !== null) {
@@ -34,10 +40,21 @@ export function migrateFormatPhonePipe({
         recorder.remove(templateOffset + pipeNameStart, 'tuiFormatPhone'.length);
         recorder.insertRight(templateOffset + pipeNameStart, 'maskito');
 
-        if (hasArgs) {
-            const lineStart = template.lastIndexOf('\n', match.index) + 1;
+        const lineStart = template.lastIndexOf('\n', match.index) + 1;
 
-            recorder.insertLeft(templateOffset + lineStart, `${TODO_COMMENT}\n`);
+        if (!todoInsertedAtLines.has(lineStart)) {
+            todoInsertedAtLines.add(lineStart);
+
+            const todoComment = hasArgs ? TODO_COMMENT_WITH_ARGS : TODO_COMMENT_NO_ARGS;
+
+            if (isInlineTemplate && lineStart === 0) {
+                // The template string includes the opening quote (offset 0 = quote char).
+                // Insert after the quote (position 1), without a trailing newline —
+                // single/double-quoted JS strings cannot contain literal newlines.
+                recorder.insertLeft(templateOffset + 1, `${todoComment} `);
+            } else {
+                recorder.insertLeft(templateOffset + lineStart, `${todoComment}\n`);
+            }
         }
     }
 }

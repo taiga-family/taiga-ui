@@ -1,23 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone inside element binding without adding TODO for no-arg usage: test.html 1`] = `
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe adds TODO inside backtick inline template with newline: test.ts 1`] = `
 {
-  "0. Before": "<span [title]="phone | tuiFormatPhone">{{ phone | tuiFormatPhone }}</span>",
-  "1. After": "<span [title]="phone | maskito">{{ phone | maskito }}</span>",
+  "0. Before": "
+                import {TuiFormatPhonePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiFormatPhonePipe],
+                    template: \`{{ phone | tuiFormatPhone }}\`
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { MaskitoPipe } from "@maskito/angular";
+
+                                @Component({
+                    standalone: true,
+                    imports: [MaskitoPipe],
+                    template: \`<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international --> {{ phone | maskito }}\`
+                })
+                export class TestComponent {}
+            ",
 }
 `;
 
-exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe to maskito in template: test.html 1`] = `
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone inside element binding and adds TODO for no-arg usage: test.html 1`] = `
+{
+  "0. Before": "<span [title]="phone | tuiFormatPhone">{{ phone | tuiFormatPhone }}</span>",
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international -->
+<span [title]="phone | maskito">{{ phone | maskito }}</span>",
+}
+`;
+
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe to maskito in template and adds TODO: test.html 1`] = `
 {
   "0. Before": "{{ phone | tuiFormatPhone }}",
-  "1. After": "{{ phone | maskito }}",
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international -->
+{{ phone | maskito }}",
 }
 `;
 
 exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code and mask arguments and adds TODO: test.html 1`] = `
 {
   "0. Before": "{{ phone | tuiFormatPhone:'+1':'(###) ###-####' }}",
-  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone'. See: https://taiga-ui.dev/components/input-phone-international -->
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' (note: countryIsoCode is ISO format e.g. 'US', not '+1'). See: https://taiga-ui.dev/components/input-phone-international -->
 {{ phone | maskito:'+1':'(###) ###-####' }}",
 }
 `;
@@ -25,12 +51,12 @@ exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPh
 exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe renames tuiFormatPhone pipe with country code argument and adds TODO: test.html 1`] = `
 {
   "0. Before": "{{ phone | tuiFormatPhone:'+1' }}",
-  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone'. See: https://taiga-ui.dev/components/input-phone-international -->
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' (note: countryIsoCode is ISO format e.g. 'US', not '+1'). See: https://taiga-ui.dev/components/input-phone-international -->
 {{ phone | maskito:'+1' }}",
 }
 `;
 
-exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe replaces TuiFormatPhonePipe import with MaskitoPipe: test.ts 1`] = `
+exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe replaces TuiFormatPhonePipe import with MaskitoPipe (single-quoted inline template): test.ts 1`] = `
 {
   "0. Before": "
                 import {TuiFormatPhonePipe} from '@taiga-ui/legacy';
@@ -47,7 +73,7 @@ exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe replaces TuiFormatP
                                 @Component({
                     standalone: true,
                     imports: [MaskitoPipe],
-                    template: '{{ phone | maskito }}'
+                    template: '<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was renamed to \`maskito\`. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international --> {{ phone | maskito }}'
                 })
                 export class TestComponent {}
             ",
