@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.76.0](https://github.com/taiga-family/taiga-ui/compare/v4.75.0...v4.76.0) (2026-03-23)
+
+### 🚀 Features
+
+- **experimental:** add `TuiPdfViewer` alias ([#13562](https://github.com/taiga-family/taiga-ui/issues/13562))
+  ([3d4824a](https://github.com/taiga-family/taiga-ui/commit/3d4824ada7574c4f184346a3f7366cc255cf4a5e))
+- **kit:** tui-calendar-range add period list size config
+  ([#13579](https://github.com/taiga-family/taiga-ui/issues/13579))
+  ([f6fff20](https://github.com/taiga-family/taiga-ui/commit/f6fff200034ac52ec08ca1ae6a2599388e10e1c8))
+
+### 🐞 Bug Fixes
+
+- **core:** `tuiDropdownHover` closes immediately when hovered and clicked simultaneously
+  ([#13542](https://github.com/taiga-family/taiga-ui/issues/13542))
+  ([488d449](https://github.com/taiga-family/taiga-ui/commit/488d44927a7729ae26f24caa875c326f1f4218b4))
+- **core:** ensure textfield filler respects RTL mode ([#13551](https://github.com/taiga-family/taiga-ui/issues/13551))
+  ([bdb075b](https://github.com/taiga-family/taiga-ui/commit/bdb075b012ad5ad1e4a6dad97390473f02d21a6a))
+- **kit:** `FloatingContainer` fix jank when address bar showing in Firefox mobile
+  ([#13545](https://github.com/taiga-family/taiga-ui/issues/13545))
+  ([84a1285](https://github.com/taiga-family/taiga-ui/commit/84a12857997627fdf5d18231885fbff9a4ff8035))
+
 ## [4.75.0](https://github.com/taiga-family/taiga-ui/compare/v4.74.1...v4.75.0) (2026-03-17)
 
 ### 🚀 Features
