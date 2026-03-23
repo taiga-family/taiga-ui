@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update chip and badge selectors migrates deprecated appearances for tui-badge: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-badge appearance="error" size="s"><span>1</span></tui-badge>
+                <tui-badge appearance="success" />
+                <tui-badge [appearance]="'error'"></tui-badge>
+                <tui-badge [appearance]="computedAppearance">123</tui-badge>
+            ",
+  "1. After": "
+                <span tuiBadge appearance="negative" size="s"><span>1</span></span>
+                <span tuiBadge appearance="positive" ></span>
+                <span tuiBadge [appearance]="'negative'"></span>
+                <span tuiBadge [appearance]="(computedAppearance) === 'success' ? 'positive' : (computedAppearance) === 'error' ? 'negative' : (computedAppearance)">123</span>
+            ",
+}
+`;
+
 exports[`ng-update chip and badge selectors preserves attributes and content on tui-badge: test.html 1`] = `
 {
   "0. Before": "<tui-badge appearance="neutral" size="s"><span>1</span></tui-badge>",
