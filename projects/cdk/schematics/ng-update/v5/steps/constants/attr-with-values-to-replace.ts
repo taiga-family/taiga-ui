@@ -151,6 +151,7 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         valueReplacer: [
             {from: 'error', to: 'negative'},
             {from: 'success', to: 'positive'},
+            {from: 'glass', to: 'secondary-grayscale'},
         ],
     },
     {
