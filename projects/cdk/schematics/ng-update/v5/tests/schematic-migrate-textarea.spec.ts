@@ -127,5 +127,13 @@ describe('ng-update legacy textarea', () => {
         }),
     );
 
+    it(
+        'places unknown attributes on tui-textfield and adds TODO',
+        migrate({
+            template:
+                '<tui-textarea formControlName="value" someCustomDirective [anotherDirective]="config">Label</tui-textarea>',
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

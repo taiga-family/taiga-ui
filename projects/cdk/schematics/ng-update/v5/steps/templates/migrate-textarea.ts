@@ -97,6 +97,7 @@ interface MigrationContext {
     // false = absent or ="false" → <label tuiLabel> auto-added inside <tui-textfield>
     // 'dynamic' = value was a bound expression, cannot determine statically
     labelOutside: boolean | 'dynamic';
+    unknownAttrs: string[]; // attrs not recognized — placed on <tui-textfield> with a TODO
 }
 
 function buildReplacement(
@@ -118,6 +119,7 @@ function buildReplacement(
         rowsMigratedTo: null,
         placeholder: '',
         labelOutside: false,
+        unknownAttrs: [],
     };
 
     for (const attr of element.attrs) {
@@ -181,10 +183,12 @@ function buildReplacement(
         }
 
         const original = getOriginalAttrText(template, element, nameLower);
+        const attrText =
+            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
 
-        textareaAttrs.push(
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-        );
+        // Unknown attrs go on <tui-textfield> (direct host replacement) with a TODO
+        textfieldAttrs.push(attrText);
+        ctx.unknownAttrs.push(attrText);
     }
 
     if (maxLengthAttrText !== null) {
@@ -258,6 +262,12 @@ function buildTodoComment(ctx: MigrationContext): string {
         // Neither expandable nor rows — legacy default was 20 rows fixed height
         notes.push(
             'Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.',
+        );
+    }
+
+    for (const attr of ctx.unknownAttrs) {
+        notes.push(
+            `Unrecognized attribute "${attr}" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.`,
         );
     }
 

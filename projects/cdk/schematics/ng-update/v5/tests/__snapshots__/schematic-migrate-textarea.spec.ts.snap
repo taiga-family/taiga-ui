@@ -155,6 +155,22 @@ exports[`ng-update legacy textarea migrates tui-textarea with labelOutside=false
 }
 `;
 
+exports[`ng-update legacy textarea places unknown attributes on tui-textfield and adds TODO: test.html 1`] = `
+{
+  "0. Before": "<tui-textarea formControlName="value" someCustomDirective [anotherDirective]="config">Label</tui-textarea>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Label" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+     - Unrecognized attribute "someCustomDirective" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+     - Unrecognized attribute "[anotherDirective]="config"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+-->
+<tui-textfield someCustomDirective [anotherDirective]="config">
+<label tuiLabel>Label</label>
+<textarea placeholder="Label" tuiTextarea formControlName="value"></textarea>
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update legacy textarea removes [expandable] and maps [rows] to [max]: test.html 1`] = `
 {
   "0. Before": "
