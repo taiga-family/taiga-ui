@@ -14,7 +14,6 @@ type Appearance =
     | 'flat-grayscale'
     | 'flat'
     | 'floating'
-    | 'glass'
     | 'icon'
     | 'info'
     | 'negative'
