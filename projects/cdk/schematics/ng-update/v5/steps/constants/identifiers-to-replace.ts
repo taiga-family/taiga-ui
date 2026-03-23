@@ -809,4 +809,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiFormatPhonePipe',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'MaskitoPipe',
+            moduleSpecifier: '@maskito/angular',
+        },
+    },
 ];
