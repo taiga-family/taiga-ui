@@ -25,18 +25,12 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TUI_COMMON_ICONS,
-    TUI_TEXTFIELD_OPTIONS,
-    tuiAsAuxiliary,
-    TuiCalendar,
-    tuiCalendarSheetOptionsProvider,
-    TuiDataList,
-    TuiIcon,
-    type TuiMarkerHandler,
-    type TuiSizeL,
-    type TuiSizeS,
-} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS,tuiAsAuxiliary} from '@taiga-ui/core/tokens';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import {TuiCalendar,tuiCalendarSheetOptionsProvider,type TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {type TuiSizeL,type TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import {type Observable} from 'rxjs';
 
