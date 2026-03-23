@@ -3,9 +3,7 @@
 exports[`ng-update legacy textarea handles tui-textarea without text content: test.html 1`] = `
 {
   "0. Before": "<tui-textarea formControlName="value"></tui-textarea>",
-  "1. After": "<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
--->
-<tui-textfield>
+  "1. After": "<tui-textfield>
 <textarea tuiTextarea formControlName="value"></textarea>
 </tui-textfield>",
 }
@@ -26,9 +24,9 @@ exports[`ng-update legacy textarea keeps tuiTextfieldCleaner and tuiHintContent 
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Label" became placeholder on <textarea>. Add <label tuiLabel>Label</label> inside <tui-textfield> if a floating label is needed.
 -->
-<tui-textfield [tuiTextfieldCleaner]="true" tuiHintContent="Hint text" tuiHintDirection="bottom-right">
-<textarea placeholder="Label" tuiTextarea formControlName="value"></textarea>
-</tui-textfield>",
+                <tui-textfield [tuiTextfieldCleaner]="true" tuiHintContent="Hint text" tuiHintDirection="bottom-right">
+                <textarea placeholder="Label" tuiTextarea formControlName="value"></textarea>
+                </tui-textfield>",
 }
 `;
 
@@ -77,15 +75,15 @@ exports[`ng-update legacy textarea migrates multiple tui-textarea elements in on
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "First" became placeholder on <textarea>. Add <label tuiLabel>First</label> inside <tui-textfield> if a floating label is needed.
 -->
-<tui-textfield>
-<textarea placeholder="First" tuiTextarea formControlName="a"></textarea>
-</tui-textfield>
+                <tui-textfield>
+                <textarea placeholder="First" tuiTextarea formControlName="a"></textarea>
+                </tui-textfield>
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Second" became placeholder on <textarea>. Add <label tuiLabel>Second</label> inside <tui-textfield> if a floating label is needed.
 -->
-<tui-textfield>
-<textarea placeholder="Second" tuiTextarea formControlName="b"></textarea>
-</tui-textfield>",
+                <tui-textfield>
+                <textarea placeholder="Second" tuiTextarea formControlName="b"></textarea>
+                </tui-textfield>",
 }
 `;
 
@@ -104,9 +102,9 @@ exports[`ng-update legacy textarea migrates tui-textarea attributes: wrapper att
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Label" became placeholder on <textarea>. Add <label tuiLabel>Label</label> inside <tui-textfield> if a floating label is needed.
 -->
-<tui-textfield tuiTextfieldSize="s">
-<textarea placeholder="Label" tuiTextarea formControlName="testValue" [limit]="150"></textarea>
-</tui-textfield>",
+                <tui-textfield tuiTextfieldSize="s">
+                <textarea placeholder="Label" tuiTextarea formControlName="testValue" [limit]="150"></textarea>
+                </tui-textfield>",
 }
 `;
 
@@ -125,9 +123,9 @@ exports[`ng-update legacy textarea removes [expandable] and maps [rows] to [max]
      - Text content "Type here" became placeholder on <textarea>. Add <label tuiLabel>Type here</label> inside <tui-textfield> if a floating label is needed.
      - [expandable] was removed. New component always auto-resizes between [min] (default: 1) and [max] (default: 3) rows. [rows] was migrated to [max]="10".
 -->
-<tui-textfield>
-<textarea placeholder="Type here" tuiTextarea formControlName="testValue" [max]="10"></textarea>
-</tui-textfield>",
+                <tui-textfield>
+                <textarea placeholder="Type here" tuiTextarea formControlName="testValue" [max]="10"></textarea>
+                </tui-textfield>",
 }
 `;
 
@@ -159,12 +157,11 @@ exports[`ng-update legacy textarea reuses inner <textarea tuiTextfieldLegacy> in
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Bio" became placeholder on <textarea>. Add <label tuiLabel>Bio</label> inside <tui-textfield> if a floating label is needed.
 -->
-<tui-textfield>
-<textarea
+                <tui-textfield>
+                <textarea
                         maxlength="97"
                         placeholder="Write a few words"
-                        tuiTextarea
-                     [(ngModel)]="value"></textarea>
-</tui-textfield>",
+                        tuiTextarea [(ngModel)]="value"></textarea>
+                </tui-textfield>",
 }
 `;

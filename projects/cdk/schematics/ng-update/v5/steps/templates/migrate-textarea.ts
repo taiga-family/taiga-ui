@@ -179,6 +179,9 @@ function buildReplacement(
 
     ctx.placeholder = getPlaceholderText(element);
 
+    const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
+    const indent = /^[ \t]*/.exec(template.slice(lineStart, loc.startOffset))?.[0] ?? '';
+
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
     const innerContent = buildInnerContent(
@@ -186,10 +189,11 @@ function buildReplacement(
         template,
         textareaAttrs,
         ctx.placeholder,
+        indent,
     );
     const todoComment = buildTodoComment(ctx);
 
-    const replacement = `${todoComment}<tui-textfield${wrapperAttrsStr}>\n${innerContent}</tui-textfield>`;
+    const replacement = `${todoComment}${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
 
     return {
         startOffset: loc.startOffset,
@@ -223,6 +227,10 @@ function buildTodoComment(ctx: MigrationContext): string {
         }
     }
 
+    if (notes.length === 0) {
+        return '';
+    }
+
     const lines = [
         `<!-- ${TODO_MARK} tui-textarea migration (see ${DOCS_LINK}):`,
         ...notes.map((n) => `     - ${n}`),
@@ -242,6 +250,7 @@ function buildInnerContent(
     template: string,
     textareaAttrs: string[],
     placeholder: string,
+    indent: string,
 ): string {
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
@@ -262,6 +271,7 @@ function buildInnerContent(
             template,
             textareaAttrs,
             childElements,
+            indent,
         );
     }
 
@@ -278,7 +288,7 @@ function buildInnerContent(
         })
         .join('');
 
-    return `<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}`;
+    return `${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}`;
 }
 
 /**
@@ -290,6 +300,7 @@ function migrateInnerTextarea(
     template: string,
     attrsToAdd: string[],
     allChildren: Element[],
+    indent: string,
 ): string {
     const innerLoc = inner.sourceCodeLocation;
 
@@ -322,7 +333,9 @@ function migrateInnerTextarea(
     const extraAttrs = attrsToAdd.filter((a) => a !== 'tuiTextarea').join(' ');
     const insertStr = extraAttrs ? ` ${extraAttrs}` : '';
 
-    startTag = startTag.slice(0, closeAngle) + insertStr + startTag.slice(closeAngle);
+    // trimEnd() removes trailing whitespace/newlines before '>' to avoid a visual gap
+    startTag =
+        startTag.slice(0, closeAngle).trimEnd() + insertStr + startTag.slice(closeAngle);
 
     // Reconstruct full inner element (self-closing or with end tag)
     const innerContent = innerLoc.endTag
@@ -339,7 +352,7 @@ function migrateInnerTextarea(
         })
         .join('');
 
-    return `${innerContent}\n${siblings}`;
+    return `${indent}${innerContent}\n${siblings}`;
 }
 
 function getPlaceholderText(element: Element): string {
