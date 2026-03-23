@@ -56,7 +56,7 @@
 - [Button](https://taiga-ui.dev/components/button) — Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to button and a tags. When used as tuiIconButton don't forget to still put text label within the tag for accessibility.
 - [Button Group](https://taiga-ui.dev/components/button-group)
 - [Button Select](https://taiga-ui.dev/components/button-select) — ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
-- [Button X](https://taiga-ui.dev/components/button-x)
+- [Button X](https://taiga-ui.dev/components/button-x) — A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.
 - [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar

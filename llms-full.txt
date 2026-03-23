@@ -1944,8 +1944,8 @@ export default class Example {
 <button size="m" tuiButton type="button" (click)="open.set(true)" > Show TableBar </button>
 <tui-action-bar *tuiPopup="open()" size="s" >
 <span [style.width.%]="isMobile() ? 100 : null">Table bar opened</span>
-<button appearance="glass" iconStart="@tui.trash" tuiButton type="button" (click)="open.set(false)" > Remove </button>
-<button iconStart="@tui.x" tuiIconButton type="button" [appearance]="isMobile() ? 'glass' : 'icon'" (click)="open.set(false)" > Close </button>
+<button appearance="secondary-grayscale" iconStart="@tui.trash" tuiButton type="button" (click)="open.set(false)" > Remove </button>
+<button iconStart="@tui.x" tuiIconButton type="button" [appearance]="isMobile() ? 'secondary-grayscale' : 'icon'" (click)="open.set(false)" > Close </button>
 </tui-action-bar>
 ```
 **TypeScript:**
@@ -6643,6 +6643,7 @@ export default class Page {
 # components/ButtonX
 - **Package**: `Core`
 - **Type**: components
+A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.
 
 ### Usage Examples
 
@@ -6651,9 +6652,9 @@ export default class Page {
 **Template:**
 ```html
 <button tuiButtonX>Close</button>
-<button appearance="glass" tuiButtonX > Close </button>
+<button appearance="action" tuiButtonX > Close </button>
 <button size="xs" tuiButtonX > Close </button>
-<button appearance="glass" size="xs" tuiButtonX > Close </button>
+<button appearance="icon" size="xs" tuiButtonX > Close </button>
 ```
 **TypeScript:**
 ```ts
@@ -7887,14 +7888,14 @@ section {
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 <aside tuiAccessories>
-<button appearance="glass" tuiButtonX type="button" > Close </button>
+<button appearance="secondary-grayscale" tuiButtonX tuiTheme="dark" > Close </button>
 </aside>
 </div>
 <div tuiCardLarge tuiHeader tuiTheme="dark" class="image-2" >
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 <aside tuiAccessories>
-<button appearance="glass" tuiButtonX type="button" > Close </button>
+<button appearance="secondary-grayscale" tuiButtonX > Close </button>
 </aside>
 </div>
 ```
@@ -7942,6 +7943,14 @@ export default class Example {}
         block-size: 100%;
         background: rgba(0, 0, 0, 0.5);
     }
+}
+
+[tuiButtonX] {
+    backdrop-filter: blur(1rem) brightness(1.25);
+}
+
+[tuiButtonX][tuiTheme='dark'] {
+    backdrop-filter: blur(1rem) brightness(0.5);
 }
 ```
 
@@ -31150,9 +31159,11 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Open </button>
-<ng-template let-observer [tuiResponsiveDialogOptions]="{appearance: 'fullscreen'}" [(tuiResponsiveDialog)]="open" >
+<ng-template let-observer [tuiResponsiveDialogOptions]="{appearance: 'fullscreen', bar: false}" [(tuiResponsiveDialog)]="open" >
 <tui-pdf-viewer>
-<h2 tuiTitle>file.pdf</h2> @if (!isMobile) { <button iconStart="@tui.pen" title="download" tuiButton type="button" [style.border-radius.rem]="5" (click)="observer.complete(); alerts.open('Document signed').subscribe()" > Sign </button> } <button iconStart="@tui.download" title="download" tuiButton type="button" [style.border-radius.rem]="5" (click)="observer.complete()" > {{ isMobile ? '' : 'Download' }} </button>
+<h2 tuiTitle>file.pdf</h2>
+<button iconStart="@tui.pen" tuiButton type="button" [title]="isMobile ? 'Sign' : ''" (click)="observer.complete(); alerts.open('Document signed').subscribe()" > {{ isMobile ? '' : 'Sign' }} </button>
+<button iconStart="@tui.download" tuiButton type="button" [title]="isMobile ? 'Download' : ''" (click)="observer.complete()" > {{ isMobile ? '' : 'Download' }} </button>
 <iframe [src]="url"></iframe>
 </tui-pdf-viewer>
 </ng-template>
@@ -38349,38 +38360,53 @@ export default class Example {}
 
 **Template:**
 ```html
-<button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/tickets.svg)'" [style.color]="'#d45d8c'" >
-<h3 class="heading">Tickets</h3>
-<div class="content">Concerts, theater, sports and movies</div>
-<div appearance="primary" size="s" tuiBadge class="badge" > 20% off </div>
+<button tuiSurface tuiTheme="dark" type="button" class="card" [style.background-image]="'url(/assets/images/tickets.svg)'" [style.color]="'#d45d8c'" >
+<span tuiTitle>
+<b>Tickets</b>
+<span tuiSubtitle>Concerts, theater, sports and movies</span>
+</span>
+<span appearance="primary" size="s" tuiBadge > 20% off </span>
 </button>
-<button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/gas.svg)'" [style.color]="'#7caeff'" >
-<h3 class="heading">Gas</h3>
-<div appearance="primary" size="s" tuiBadge class="badge" > +2000% </div>
+<button tuiSurface tuiTheme="dark" type="button" class="card" [style.background-image]="'url(/assets/images/gas.svg)'" [style.color]="'#7caeff'" >
+<span tuiTitle><b>Gas</b></span>
+<span appearance="primary" size="s" tuiBadge > +2000% </span>
 </button>
-<div tuiSurface class="restaurant" >
-<header tuiTheme="dark" class="header" >
-<label tuiTitle>
-<span tuiSubtitle>RESTAURANT</span> Eat all you can </label>
+<div tuiSurface tuiTheme="dark" class="restaurant" >
+<header tuiHeader="body-m">
+<hgroup tuiTitle>
+<h3>RESTAURANT</h3>
+<p tuiSubtitle>Eat all you can</p>
+</hgroup>
+<aside tuiAccessories>
 <button appearance="icon" iconStart="@tui.ellipsis" size="xs" tuiIconButton type="button" > More </button>
+</aside>
 </header>
 <footer class="footer">
-<button appearance="glass" size="m" tuiButton type="button" [style.border-radius.rem]="5" > Book a table </button>
-<button appearance="glass" iconStart="@tui.heart" size="m" tuiIconButton type="button" [style.border-radius.rem]="5" > Favorite </button>
+<button appearance="secondary-grayscale" size="m" tuiButton type="button" > Book a table </button>
+<button appearance="secondary-grayscale" iconStart="@tui.heart" size="m" tuiIconButton type="button" > Favorite </button>
 </footer>
 </div>
 <div tuiSurface tuiTheme="dark" class="blur" >
 <div tuiAvatar="@tui.user">
 <img alt="" src="assets/images/avatar.jpg" />
 </div>
-<label tuiLabel="Taiga UI">Alex Inkin</label>
-<button appearance="glass" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
+<label tuiTitle>
+<span tuiSubtitle>Taiga UI</span>
+<b>Alex Inkin</b>
+</label>
+<button appearance="secondary-grayscale" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
 </div>
-<div appearance="floating" tuiCardLarge tuiSurface class="reviews" >
-<h3 class="heading"> Taiga UI reviews <button tuiLink type="button" class="link" > Hide </button>
-</h3>
+<section appearance="floating" tuiCardLarge class="reviews" >
+<header tuiHeader="h6">
+<hgroup tuiTitle>
+<h2>Taiga UI reviews</h2>
+</hgroup>
+<aside tuiAccessories>
+<button tuiLink type="button" class="link" > Hide </button>
+</aside>
+</header>
 <tui-scrollbar class="scrollbar">
-<div class="wrapper"> @for (review of reviews; track review) { <div tuiAppearance="neutral" tuiSurface class="review" > {{ review.body }} <footer class="footer">
+<div class="wrapper"> @for (review of reviews; track review) { <div tuiAppearance="neutral" tuiSurface class="review" > {{ review.body }} <footer tuiCell>
 <div size="m" tuiAvatar="@tui.user" >
 <img alt="" src="assets/images/avatar.jpg" />
 </div>
@@ -38390,11 +38416,15 @@ export default class Example {}
 </div> } </div>
 </tui-scrollbar>
 <button appearance="secondary" size="m" tuiButton type="button" > See all </button>
-</div>
+</section>
 <div tuiSurface tuiTheme="dark" class="mask" >
-<h3 class="heading"> My bank account <button appearance="secondary" iconStart="@tui.pencil" size="s" tuiIconButton type="button" class="button" > Edit name </button>
-</h3>
-<span class="sum">{{ 23742 | tuiAmount: 'USD' : 'start' }}</span>
+<header tuiHeader="h4">
+<hgroup tuiTitle>
+<p tuiSubtitle> My bank account <button appearance="secondary" iconStart="@tui.pencil" size="xs" tuiIconButton type="button" [style.border-radius.%]="100" > Edit name </button>
+</p>
+<h3>{{ 23742 | tuiAmount: 'USD' : 'start' }}</h3>
+</hgroup>
+</header>
 <footer class="footer">
 <tui-thumbnail-card paymentSystem="mastercard" [style.background]="'#337'" > 1234 </tui-thumbnail-card>
 <tui-thumbnail-card paymentSystem="visa" [style.background]="'#e33'" > 5678 </tui-thumbnail-card>
@@ -38411,14 +38441,14 @@ import {TuiAmountPipe, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {
     TuiAppearance,
     TuiButton,
-    TuiLabel,
+    TuiCell,
     TuiLink,
     TuiScrollbar,
     tuiScrollbarOptionsProvider,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -38428,7 +38458,8 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
         TuiBadge,
         TuiButton,
         TuiCardLarge,
-        TuiLabel,
+        TuiCell,
+        TuiHeader,
         TuiLink,
         TuiScrollbar,
         TuiSurface,
@@ -38475,26 +38506,14 @@ export default class Example {
     display: flex;
     block-size: 7rem;
     flex-direction: column;
-    font: var(--tui-typography-body-xs);
 
     &:first-child {
         grid-column: span 2;
     }
 
-    .heading {
-        font: var(--tui-typography-body-s);
-        color: #fff;
-        font-weight: bold;
-        margin: -0.125rem 0 0;
-    }
-
-    .content {
-        max-inline-size: 50%;
-        color: #fff;
-    }
-
-    .badge {
-        margin: auto auto -0.125rem -0.125rem;
+    [tuiTitle] {
+        color: var(--tui-text-primary);
+        margin-block-end: auto;
     }
 }
 
@@ -38505,19 +38524,15 @@ export default class Example {
     grid-row: span 2;
     flex-direction: column;
     justify-content: space-between;
-    color: #fff;
-    font-size: 1.375rem;
-
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0 0.25rem;
-    }
 
     .footer {
         display: flex;
         justify-content: space-between;
+
+        button {
+            border-radius: 5rem;
+            backdrop-filter: blur(1rem) brightness(0.5);
+        }
     }
 }
 
@@ -38527,8 +38542,7 @@ export default class Example {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    font: var(--tui-typography-heading-h6);
-    color: #fff;
+    color: var(--tui-text-primary);
 
     .button {
         border-radius: 100%;
@@ -38537,37 +38551,18 @@ export default class Example {
 }
 
 .reviews {
-    display: flex;
     grid-column: span 3;
     grid-row: span 3;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 1.5rem;
-
-    .heading {
-        margin: -0.25rem 0 0;
-        font: var(--tui-typography-heading-h6);
-    }
-
-    .link {
-        float: right;
-        font: var(--tui-typography-body-m);
-
-        // Safari 15+
-        @supports (float: inline-end) {
-            float: inline-end;
-        }
-    }
 
     .scrollbar {
-        margin: 0.75rem -1.25rem 1.25rem;
+        margin: 0.75rem -1.5rem 1.25rem;
         scroll-snap-type: x mandatory;
         overscroll-behavior-x: contain;
     }
 
     .wrapper {
         display: flex;
-        padding: 0 1.25rem;
+        padding: 0 1.5rem;
         gap: 0.625rem;
 
         &::after {
@@ -38579,26 +38574,15 @@ export default class Example {
     .review {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
         min-inline-size: calc(100% - 0.75rem);
         padding: 0.75rem 1rem 1rem;
         border-radius: 1rem;
-        font: var(--tui-typography-body-l);
         scroll-snap-align: start;
-        scroll-margin: 1.25rem;
+        scroll-margin: 1.5rem;
     }
 
-    .footer {
-        display: flex;
-        align-items: flex-end;
-        gap: 0.75rem;
+    [tuiCell] {
         margin-block-start: auto;
-        font: var(--tui-typography-body-s);
-    }
-
-    .label {
-        flex-direction: column-reverse;
-        font-weight: bold;
     }
 }
 
@@ -38606,25 +38590,6 @@ export default class Example {
     grid-column: span 3;
     grid-row: span 3;
     padding: 4rem 2rem 7rem;
-    color: #fff;
-
-    .heading {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        font: var(--tui-typography-heading-h6);
-        margin: 0;
-    }
-
-    .button {
-        border-radius: 100%;
-        transform: scale(0.75);
-    }
-
-    .sum {
-        font: var(--tui-typography-heading-h4);
-        margin-block-end: 4rem;
-    }
 
     .footer {
         display: flex;
@@ -38647,9 +38612,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -38779,7 +38745,6 @@ button[tuiSwipeAction] {
 <img alt="" src="assets/images/avatar.jpg" />
 </div>
 <h3 tuiTitle="m">Alex Inkin</h3>
-<button appearance="glass" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
 </div>
 <input tuiSwipeAction tuiSwitch type="checkbox" [(ngModel)]="checkbox" />
 <button appearance="secondary-destructive" iconStart="@tui.trash" size="m" tuiIconButton tuiSwipeAction type="button" [style.borderRadius.%]="100" > Trash </button>
@@ -46367,7 +46332,7 @@ export default class Example {
         Outline: ['outline', 'outline-destructive', 'outline-grayscale'],
         Action: ['action', 'action-destructive', 'action-grayscale'],
         Status: ['neutral', 'negative', 'positive', 'warning', 'info'],
-        Others: ['icon', 'floating', 'textfield', 'glass', 'accent'],
+        Others: ['icon', 'floating', 'textfield', 'accent'],
     };
 
     protected asIs(): number {
@@ -49765,8 +49730,8 @@ export default class Example {
 <video #video tuiMedia width="320" class="video" [(currentTime)]="currentTime" [(paused)]="paused" (click)="toggleState()" >
 <source src="assets/media/bbb.mp4" type="video/mp4" />
 </video>
-<div class="controls">
-<button appearance="glass" size="s" title="Play/Pause" tuiIconButton tuiTheme="dark" type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
+<div tuiTheme="dark" class="controls" >
+<button appearance="secondary-grayscale" size="s" title="Play/Pause" tuiIconButton type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
 <input step="any" tuiSlider type="range" class="slider" [max]="video.duration" [(ngModel)]="currentTime" />
 <div class="time">
 <time [attr.datetime]="getTime(currentTime)"> {{ getTime(currentTime) }} </time> / <time [attr.datetime]="getTime(video.duration)"> {{ getTime(video.duration) }} </time>
@@ -49840,7 +49805,7 @@ export default class Example {
     align-items: center;
     padding: 0.75rem 0.75rem 0.5rem;
     box-sizing: border-box;
-    color: var(--tui-background-base);
+    color: var(--tui-text-primary);
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.56));
 }
 
@@ -49862,7 +49827,7 @@ export default class Example {
 ```html
 <div class="tui-player">
 <audio #audio src="assets/media/strays.mp3" tuiMedia [(currentTime)]="currentTime" [(paused)]="paused" ></audio>
-<button appearance="secondary" title="Play/Pause" tuiIconButton type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
+<button appearance="flat" title="Play/Pause" tuiIconButton type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
 <div>
 <a href="https://waterplea.bandcamp.com/" tuiLink > Waterplea </a> — Strays <input step="any" tuiSlider type="range" class="slider" [max]="audio.duration" [(ngModel)]="currentTime" />
 </div>
