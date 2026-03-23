@@ -71,7 +71,7 @@ const LEGACY_INPUT_ATTRS = new Set([
 ]);
 
 function isDropdownAttr(nameLower: string): boolean {
-    const prefix = 'tui' + 'dropdown';
+    const prefix = 'tuidropdown';
     const stripped = nameLower.replaceAll(/^\[|\]$|\(|\)/g, '');
 
     return stripped.startsWith(prefix);
@@ -125,6 +125,8 @@ interface MigrationContext {
     labelOutsideIsBinding: boolean;
     /** prefix/postfix attr names that have no v5 equivalent */
     noEquivalentAttrs: string[];
+    /** unrecognized attrs placed on <tui-textfield> that may need manual review */
+    unknownAttrs: string[];
 }
 
 function buildReplacement(
@@ -144,6 +146,7 @@ function buildReplacement(
         labelOutsideValue: null,
         labelOutsideIsBinding: false,
         noEquivalentAttrs: [],
+        unknownAttrs: [],
     };
 
     for (const attr of element.attrs) {
@@ -165,10 +168,11 @@ function buildReplacement(
         }
 
         if (ATTRS_WITH_NO_EQUIVALENT.has(nameLower)) {
-            ctx.noEquivalentAttrs.push(attr.name);
-            // Still place it on the wrapper so the code at least compiles with a warning
             const original = getOriginalAttrText(template, element, nameLower);
+            const originalName = original?.match(/^[\w[\]()]+/)?.[0] ?? attr.name;
 
+            ctx.noEquivalentAttrs.push(originalName);
+            // Still place it on the wrapper so the code at least compiles with a warning
             textfieldAttrs.push(
                 original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
             );
@@ -196,14 +200,20 @@ function buildReplacement(
             continue;
         }
 
+        // Unrecognized attr — place on <tui-textfield> (the host replacement) with TODO
         const original = getOriginalAttrText(template, element, nameLower);
+        const originalText =
+            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
+        const originalName = original?.match(/^[\w[\]()]+/)?.[0] ?? attr.name;
 
-        inputAttrs.push(
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-        );
+        ctx.unknownAttrs.push(originalName);
+        textfieldAttrs.push(originalText);
     }
 
     ctx.placeholder = getPlaceholderText(element);
+
+    const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
+    const indent = /^[ \t]*/.exec(template.slice(lineStart, loc.startOffset))?.[0] ?? '';
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
@@ -212,11 +222,12 @@ function buildReplacement(
         template,
         inputAttrs,
         ctx.placeholder,
+        indent,
     );
     const todoComment = buildTodoComment(ctx);
-    const core = `<tui-textfield${wrapperAttrsStr}>\n${innerContent}</tui-textfield>`;
+    const core = `${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
 
-    const replacement = `${todoComment}${wrapWithLabel(core, ctx)}`;
+    const replacement = `${todoComment}${wrapWithLabel(core, ctx, indent)}`;
 
     return {
         startOffset: loc.startOffset,
@@ -229,7 +240,7 @@ function buildReplacement(
  * Wraps the migrated <tui-textfield> in <label tuiLabel> when labelOutside was statically true.
  * Returns the string unchanged for false/absent/dynamic cases.
  */
-function wrapWithLabel(core: string, ctx: MigrationContext): string {
+function wrapWithLabel(core: string, ctx: MigrationContext, indent: string): string {
     if (ctx.labelOutsideValue === null || ctx.labelOutsideValue === 'false') {
         return core;
     }
@@ -243,9 +254,9 @@ function wrapWithLabel(core: string, ctx: MigrationContext): string {
         return core;
     }
 
-    const labelText = ctx.placeholder ? `${ctx.placeholder}\n` : '';
+    const labelText = ctx.placeholder ? `${indent}${ctx.placeholder}\n` : '';
 
-    return `<label tuiLabel>\n${labelText}${core}\n</label>`;
+    return `${indent}<label tuiLabel>\n${labelText}${core}\n${indent}</label>`;
 }
 
 function buildTodoComment(ctx: MigrationContext): string {
@@ -279,6 +290,16 @@ function buildTodoComment(ctx: MigrationContext): string {
         }
     }
 
+    for (const name of ctx.unknownAttrs) {
+        notes.push(
+            `"${name}" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.`,
+        );
+    }
+
+    if (notes.length === 0) {
+        return '';
+    }
+
     const lines = [
         `<!-- ${TODO_MARK} tui-input migration (see ${DOCS_LINK}):`,
         ...notes.map((n) => `     - ${n}`),
@@ -293,6 +314,7 @@ function buildInnerContent(
     template: string,
     inputAttrs: string[],
     placeholder: string,
+    indent: string,
 ): string {
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
@@ -306,7 +328,7 @@ function buildInnerContent(
     );
 
     if (legacyInnerInput) {
-        return migrateInnerInput(legacyInnerInput, template, inputAttrs, childElements);
+        return migrateInnerInput(legacyInnerInput, template, inputAttrs, childElements, indent);
     }
 
     const attrsStr = inputAttrs.length > 0 ? ` ${inputAttrs.join(' ')}` : '';
@@ -322,7 +344,7 @@ function buildInnerContent(
         })
         .join('');
 
-    return `<input${placeholderAttr}${attrsStr} />\n${otherChildren}`;
+    return `${indent}<input${placeholderAttr}${attrsStr} />\n${otherChildren}`;
 }
 
 /**
@@ -334,6 +356,7 @@ function migrateInnerInput(
     template: string,
     attrsToAdd: string[],
     allChildren: Element[],
+    indent: string,
 ): string {
     const innerLoc = inner.sourceCodeLocation;
 
@@ -361,11 +384,13 @@ function migrateInnerInput(
     }
 
     // <input> is a void element — insert extra attrs before the closing > or />
+    // trimEnd() removes trailing whitespace/newlines before '>' to avoid a visual gap
     const closePos = getVoidClosePos(startTag);
     const extraAttrs = attrsToAdd.filter((a) => a !== 'tuiInput').join(' ');
     const insertStr = extraAttrs ? ` ${extraAttrs}` : '';
 
-    startTag = startTag.slice(0, closePos) + insertStr + startTag.slice(closePos);
+    startTag =
+        startTag.slice(0, closePos).trimEnd() + insertStr + startTag.slice(closePos);
 
     const siblings = allChildren
         .filter((c) => c !== inner)
@@ -376,7 +401,7 @@ function migrateInnerInput(
         })
         .join('');
 
-    return `${startTag}\n${siblings}`;
+    return `${indent}${startTag}\n${siblings}`;
 }
 
 /**

@@ -28,9 +28,7 @@ exports[`ng-update legacy input drops [tuiTextfieldLabelOutside]="false" without
 exports[`ng-update legacy input handles tui-input without text content: test.html 1`] = `
 {
   "0. Before": "<tui-input formControlName="value"></tui-input>",
-  "1. After": "<!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
--->
-<tui-textfield>
+  "1. After": "<tui-textfield>
 <input tuiInput formControlName="value" />
 </tui-textfield>",
 }
@@ -81,15 +79,15 @@ exports[`ng-update legacy input migrates multiple tui-input elements in one temp
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
      - Text content "First" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
 -->
-<tui-textfield>
-<input placeholder="First" tuiInput formControlName="a" />
-</tui-textfield>
+                <tui-textfield>
+                <input placeholder="First" tuiInput formControlName="a" />
+                </tui-textfield>
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
      - Text content "Second" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
 -->
-<tui-textfield>
-<input placeholder="Second" tuiInput formControlName="b" />
-</tui-textfield>",
+                <tui-textfield>
+                <input placeholder="Second" tuiInput formControlName="b" />
+                </tui-textfield>",
 }
 `;
 
@@ -108,8 +106,22 @@ exports[`ng-update legacy input migrates tui-input wrapper attrs and routes them
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
      - Text content "Email" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
 -->
-<tui-textfield tuiTextfieldSize="s" [tuiTextfieldCleaner]="true" tuiHintContent="Hint">
-<input placeholder="Email" tuiInput formControlName="value" />
+                <tui-textfield tuiTextfieldSize="s" [tuiTextfieldCleaner]="true" tuiHintContent="Hint">
+                <input placeholder="Email" tuiInput formControlName="value" />
+                </tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy input places unrecognized attributes on <tui-textfield> with TODO per attr: test.html 1`] = `
+{
+  "0. Before": "<tui-input formControlName="value" someCustomDir [anotherDir]="config">Label</tui-input>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
+     - Text content "Label" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
+     - "someCustomDir" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.
+     - "[anotherDir]" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.
+-->
+<tui-textfield someCustomDir [anotherDir]="config">
+<input placeholder="Label" tuiInput formControlName="value" />
 </tui-textfield>",
 }
 `;
@@ -140,9 +152,9 @@ exports[`ng-update legacy input renames tuiTextfieldIconLeft to iconStart and tu
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
      - Text content "Label" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
 -->
-<tui-textfield [iconStart]="iconStart" [iconEnd]="iconEnd">
-<input placeholder="Label" tuiInput formControlName="value" />
-</tui-textfield>",
+                <tui-textfield [iconStart]="iconStart" [iconEnd]="iconEnd">
+                <input placeholder="Label" tuiInput formControlName="value" />
+                </tui-textfield>",
 }
 `;
 
@@ -162,14 +174,13 @@ exports[`ng-update legacy input reuses inner <input tuiTextfieldLegacy> and pres
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
      - Text content "Email" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
 -->
-<tui-textfield>
-<input
+                <tui-textfield>
+                <input
                         autocomplete="email"
                         placeholder="[Email]"
                         tuiInput
-                        type="email"
-                     formControlName="value"/>
-</tui-textfield>",
+                        type="email" formControlName="value"/>
+                </tui-textfield>",
 }
 `;
 
@@ -188,11 +199,11 @@ exports[`ng-update legacy input routes dropdown attrs to wrapper and adds TODO f
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
      - Text content "Amount" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
-     - tuitextfieldprefix, tuitextfieldpostfix has no direct equivalent in v5. Implement using custom content inside <tui-textfield>.
+     - tuiTextfieldPrefix, tuiTextfieldPostfix has no direct equivalent in v5. Implement using custom content inside <tui-textfield>.
 -->
-<tui-textfield tuiDropdownDirection="top" [tuiDropdownLimitWidth]="'fixed'" tuiTextfieldPrefix="$" tuiTextfieldPostfix="USD">
-<input placeholder="Amount" tuiInput formControlName="value" />
-</tui-textfield>",
+                <tui-textfield tuiDropdownDirection="top" [tuiDropdownLimitWidth]="'fixed'" tuiTextfieldPrefix="$" tuiTextfieldPostfix="USD">
+                <input placeholder="Amount" tuiInput formControlName="value" />
+                </tui-textfield>",
 }
 `;
 
@@ -210,11 +221,11 @@ exports[`ng-update legacy input wraps in <label tuiLabel> when [tuiTextfieldLabe
      - Text content "Email" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.
      - [tuiTextfieldLabelOutside]="true" was removed — wrapped in a tuiLabel element. Verify label text is correct.
 -->
-<label tuiLabel>
-Email
-<tui-textfield>
-<input placeholder="Email" tuiInput formControlName="value" />
-</tui-textfield>
-</label>",
+                <label tuiLabel>
+                Email
+                <tui-textfield>
+                <input placeholder="Email" tuiInput formControlName="value" />
+                </tui-textfield>
+                </label>",
 }
 `;

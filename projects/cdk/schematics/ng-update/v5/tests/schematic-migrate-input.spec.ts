@@ -128,6 +128,14 @@ describe('ng-update legacy input', () => {
     );
 
     it(
+        'places unrecognized attributes on <tui-textfield> with TODO per attr',
+        migrate({
+            template:
+                '<tui-input formControlName="value" someCustomDir [anotherDir]="config">Label</tui-input>',
+        }),
+    );
+
+    it(
         'migrates multiple tui-input elements in one template',
         migrate({
             template: `
