@@ -328,7 +328,13 @@ function buildInnerContent(
     );
 
     if (legacyInnerInput) {
-        return migrateInnerInput(legacyInnerInput, template, inputAttrs, childElements, indent);
+        return migrateInnerInput(
+            legacyInnerInput,
+            template,
+            inputAttrs,
+            childElements,
+            indent,
+        );
     }
 
     const attrsStr = inputAttrs.length > 0 ? ` ${inputAttrs.join(' ')}` : '';
