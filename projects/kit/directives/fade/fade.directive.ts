@@ -13,6 +13,7 @@ import {
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -26,7 +27,7 @@ const BUFFER = 1; // buffer for rounding issues
     styleUrl: './fade.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-fade'},
+    exportAs: `tui-fade-${TUI_VERSION}`,
 })
 class Styles {}
 

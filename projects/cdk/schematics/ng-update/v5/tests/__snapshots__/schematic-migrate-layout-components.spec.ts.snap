@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update layout components from kit to layout migrates TuiElasticContainer import from @taiga-ui/kit to @taiga-ui/layout: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiElasticContainer} from '@taiga-ui/kit';
+
+                @Component({})
+                export class Test {
+                    elastic = true;
+                }
+            ",
+  "1. After": "import { TuiElasticContainer } from "@taiga-ui/layout";
+
+                                @Component({})
+                export class Test {
+                    elastic = true;
+                }
+            ",
+}
+`;
+
+exports[`ng-update layout components from kit to layout migrates TuiFloatingContainer import from @taiga-ui/kit to @taiga-ui/layout: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiFloatingContainer} from '@taiga-ui/kit';
+
+                @Component({})
+                export class Test {
+                    floating = false;
+                }
+            ",
+  "1. After": "import { TuiFloatingContainer } from "@taiga-ui/layout";
+
+                                @Component({})
+                export class Test {
+                    floating = false;
+                }
+            ",
+}
+`;
+
+exports[`ng-update layout components from kit to layout migrates TuiSlides import from @taiga-ui/kit to @taiga-ui/layout: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiSlides} from '@taiga-ui/kit';
+
+                @Component({})
+                export class Test {
+                    slides = ['Slide 1', 'Slide 2'];
+                }
+            ",
+  "1. After": "import { TuiSlides } from "@taiga-ui/layout";
+
+                                @Component({})
+                export class Test {
+                    slides = ['Slide 1', 'Slide 2'];
+                }
+            ",
+}
+`;

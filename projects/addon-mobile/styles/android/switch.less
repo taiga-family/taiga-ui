@@ -11,8 +11,8 @@ input[tuiSwitch] {
 
     &::before {
         content: '';
-        left: 0;
         display: block;
+        inset-inline-start: 0;
         block-size: 100%;
         inline-size: 100%;
         border: 0.1875rem solid transparent;
@@ -28,7 +28,7 @@ input[tuiSwitch] {
     &::after {
         content: '';
         position: absolute;
-        top: 0;
+        inset-block-start: 0;
         inset-inline-start: 0;
         inline-size: 1.25rem;
         block-size: 1.25rem;

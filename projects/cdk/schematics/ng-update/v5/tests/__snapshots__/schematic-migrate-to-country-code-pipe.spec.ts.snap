@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiToCountryCodePipe adds TODO comment for TuiToCountryCodePipe (no automatic rename): test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiToCountryCodePipe],
+                    template: '{{ phone | tuiToCountryCode }}'
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiToCountryCodePipe has been removed. Replace pipe usage \`phone | tuiToCountryCode\` with the maskitoGetCountryFromNumber(phone) function from @maskito/phone.
+                import {TuiToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiToCountryCodePipe],
+                    template: '{{ phone | tuiToCountryCode }}'
+                })
+                export class TestComponent {}
+            ",
+}
+`;

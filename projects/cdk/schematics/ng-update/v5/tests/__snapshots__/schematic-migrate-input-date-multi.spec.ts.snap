@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update adds TODO for removed attrs ([tagValidator], [(search)]): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [tagValidator]="myValidator"
+                    [(search)]="searchValue"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input-date multiple migration (see https://taiga-ui.dev/components/input-date):
+     - [tagValidator]: use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization
+     - [(search)]: use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead. -->
+<tui-textfield
+                    
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date multiple>
+                </tui-input-date>
+
+                <tui-input-date
+                    multiple
+                    [formControl]="control"
+                >
+                    Choose dates
+                </tui-input-date>
+
+                <tui-input-date
+                    multiple
+                    formControlName="dates"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Selected dates
+                </tui-input-date>
+            ",
+  "1. After": "
+                <tui-textfield  multi>
+                
+<input tuiInputDateMulti />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Choose dates
+                </label>
+
+<input tuiInputDateMulti [formControl]="control" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    
+                    [tuiTextfieldCleaner]="true"
+                 multi>
+<label tuiLabel>
+                    Selected dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputDateModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputDateModule,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputDateModule,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputDate } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputDate,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputDate,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update moves [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [defaultActiveYearMonth]="initialMonth"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown [month]="initialMonth" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [disabledItemHandler]="disabledHandler"
+                    [markerHandler]="markerHandler"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown [disabledItemHandler]="disabledHandler" [markerHandler]="markerHandler" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [min] and [max] to <input tuiInputDateMulti>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [min]="minDate"
+                    [max]="maxDate"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" [min]="minDate" [max]="maxDate" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves [rows] to <tui-textfield multi>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [rows]="2"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                 multi [rows]="2">
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update moves placeholder to <input tuiInputDateMulti>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    placeholder="Select dates"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" placeholder="Select dates" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update silently removes [editable] and [inputHidden]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [editable]="false"
+                    [inputHidden]="true"
+                    formControlName="dates"
+                >
+                    Dates
+                </tui-input-date>",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Dates
+                </label>
+
+<input tuiInputDateMulti formControlName="dates" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;

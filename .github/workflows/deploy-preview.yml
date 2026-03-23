@@ -3,20 +3,25 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
 jobs:
   build_and_preview:
     if: ${{ !contains(github.head_ref, 'release/') }}
     name: Firebase
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0
       - uses: taiga-family/ci/actions/setup/node@v1.189.0
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
       - name: Deploy preview
-        uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: FirebaseExtended/action-hosting-deploy@v0.10.0
         if: env.IS_OWNER_MODE == 'true'
         with:
           channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo

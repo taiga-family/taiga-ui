@@ -33,6 +33,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     providers: [tuiAsControl(TuiRadioList)],
     hostDirectives: [TuiWithItemsHandlers],
     host: {
+        role: 'radiogroup',
         '[attr.data-size]': 'size()',
         '(focusout)': 'onFocusOut()',
     },

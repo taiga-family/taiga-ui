@@ -3,6 +3,9 @@ on:
   push:
     branches: ['release/*']
 
+permissions:
+  contents: read
+
 env:
   NX_DISABLE_NX_CACHE: true
   NX_DISABLE_REMOTE_CACHE: true
@@ -12,7 +15,7 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0

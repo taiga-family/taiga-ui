@@ -103,9 +103,9 @@ export class TuiDocDemo implements AfterViewInit {
 
     protected readonly rendered = signal(false);
 
-    protected theme = computed(() => (this.dark() ? 'dark' : 'light'));
+    protected readonly theme = computed(() => (this.dark() ? 'dark' : 'light'));
 
-    protected dark = signal(
+    protected readonly dark = signal(
         tuiCoerceValueIsTrue(this.params.darkMode ?? this.darkMode()),
     );
 

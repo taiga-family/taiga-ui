@@ -39,7 +39,7 @@ import {
     TuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {TUI_AUXILIARY, TUI_CLEAR_WORD} from '@taiga-ui/core/tokens';
+import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -60,6 +60,10 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     providers: [
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiAsDataListHost(TuiTextfieldComponent),
+        {
+            provide: TUI_TEXTFIELD_VALUE,
+            useFactory: () => inject(TuiTextfieldComponent).value,
+        },
     ],
     hostDirectives: [
         TuiAppearance,
@@ -99,9 +103,15 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     );
 
     protected readonly computedFiller = computed((value = this.value()) => {
-        const filler = value + this.filler().slice(value.length);
+        const filler = this.filler();
 
-        return filler.length > value.length ? filler : '';
+        if (filler.length <= value.length) {
+            return '';
+        }
+
+        return this.input()?.nativeElement.matches('[dir="rtl"] :scope')
+            ? filler.slice(0, filler.length - value.length) + value
+            : value + filler.slice(value.length);
     });
 
     protected readonly showFiller = computed<boolean>(

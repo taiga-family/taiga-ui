@@ -598,6 +598,11 @@ export const ROUTES: Routes = [
         title: 'Slides',
     }),
     route({
+        path: DemoRoute.ShrinkWrap,
+        loadComponent: async () => import('../components/shrink-wrap'),
+        title: 'ShrinkWrap',
+    }),
+    route({
         path: DemoRoute.Status,
         loadComponent: async () => import('../components/status'),
         title: 'Status',
@@ -891,6 +896,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.Touchable,
         loadComponent: async () => import('../directives/touchable'),
         title: 'Touchable',
+    }),
+    route({
+        path: DemoRoute.Truncate,
+        loadComponent: async () => import('../directives/truncate'),
+        title: 'Truncate',
     }),
     route({
         path: DemoRoute.Validator,

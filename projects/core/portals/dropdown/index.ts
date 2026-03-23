@@ -1,4 +1,3 @@
-export * from './dropdown';
 export * from './dropdown.bindings';
 export * from './dropdown.component';
 export * from './dropdown.directive';
@@ -18,3 +17,6 @@ export * from './dropdown-position.directive';
 export * from './dropdown-position-sided.directive';
 export * from './dropdown-selection.directive';
 export * from './with-dropdown-open.directive';
+
+// Must be exported last to ensure correct entrypoint initialization
+export * from './dropdown';

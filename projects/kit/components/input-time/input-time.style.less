@@ -3,12 +3,13 @@
 // TODO: replace with `tui-textfield:has([tuiInputTime]) input[type='time']` (when all browsers supports :has())
 tui-textfield input[tuiInputTime] ~ .t-content input[type='time'] {
     position: absolute;
-    right: 0;
-    left: auto;
+    inset-inline-end: 0;
+    inset-inline-start: auto;
     inline-size: calc(var(--t-right) + var(--t-padding));
     opacity: 0;
     margin: 0;
     padding: 0;
+    pointer-events: auto;
 
     &::-webkit-calendar-picker-indicator {
         .fullsize(); // Extends clickable area for icon to open native picker

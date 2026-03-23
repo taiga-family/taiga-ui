@@ -26,12 +26,9 @@
         <ng-container [ngTemplateOutlet]="actions" />
         @if ($any(context).closable || context.closable) {
             <button
-                appearance="glass"
-                size="s"
                 tuiIconButton
                 type="button"
                 [iconStart]="icons.close"
-                [style.border-radius.%]="100"
                 (click)="context.$implicit.complete()"
             >
                 {{ close() }}

@@ -1,4 +1,4 @@
-@import 'browsers';
+@import 'browsers.scss';
 
 @mixin interactive {
     &:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
@@ -6,40 +6,43 @@
     }
 }
 
+// TODO: rename to center-horizontal
 // centering with translate
 @mixin center-left() {
     position: absolute;
+    // stylelint-disable-next-line -- TODO: fix later
     left: 50%;
     transform: translate(-50%, 0);
 }
 
+// TODO: rename to center-vertical
 @mixin center-top() {
     position: absolute;
+    // stylelint-disable-next-line -- TODO: fix later
     top: 50%;
     transform: translate(0, -50%);
 }
 
 @mixin center-all() {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    inset: 50% auto auto 50%;
     transform: translate(-50%, -50%);
 }
 
 //.fullsize
 @mixin fullsize($position: absolute, $mode: height) {
     position: $position;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
 
     @if ($mode == height) {
-        width: 100%;
-        height: 100%;
+        inline-size: 100%;
+        block-size: 100%;
     }
 
     @if ($mode == inset) {
-        bottom: 0;
-        right: 0;
+        inset-block-end: 0;
+        inset-inline-end: 0;
     }
 }
 
@@ -64,7 +67,7 @@
     white-space: nowrap;
     overflow: hidden;
     vertical-align: middle;
-    max-width: 100%;
+    max-inline-size: 100%;
     gap: calc(var(--t-gap) - 2 * var(--t-margin));
 
     > img,
@@ -75,8 +78,8 @@
     > [tuiRadio],
     > [tuiSwitch],
     > [tuiCheckbox],
-    &[tuiIcons]:before,
-    &[tuiIcons]:after {
+    &[tuiIcons]::before,
+    &[tuiIcons]::after {
         margin: var(--t-margin);
     }
 }
@@ -101,10 +104,8 @@
 }
 
 @mixin scrollbar-hidden() {
-    /* stylelint-disable*/
     scrollbar-width: none;
     -ms-overflow-style: none;
-    /* stylelint-enable*/
 
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-thumb {
@@ -117,8 +118,8 @@
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
-    height: 1px;
-    width: 1px;
+    block-size: 1px;
+    inline-size: 1px;
     margin: -1px;
     overflow: hidden;
     padding: 0;
@@ -143,6 +144,7 @@
 
 @mixin text-truncate() {
     @include text-overflow();
+
     flex: 1;
     min-inline-size: 0;
     max-inline-size: max-content;
@@ -150,7 +152,7 @@
 
 @mixin tui-line-clamp($count: 3) {
     display: -webkit-box;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: block-axis;
     -webkit-line-clamp: $count;
     line-clamp: $count;
     overflow: hidden;

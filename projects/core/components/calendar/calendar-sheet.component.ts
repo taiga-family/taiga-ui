@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    Input,
     input,
     model,
     output,
@@ -56,16 +55,6 @@ export class TuiCalendarSheet {
 
     public readonly dayClick = output<TuiDay>();
 
-    /**
-     * @deprecated use static DI options instead
-     * ```
-     * tuiCalendarSheetOptionsProvider({rangeMode: true})
-     * ```
-     * TODO(v5): delete it
-     */
-    @Input()
-    public single = true;
-
     public onItemHovered(item: TuiDay | false): void {
         this.updateHoveredItem(item || null);
     }
@@ -107,19 +96,11 @@ export class TuiCalendarSheet {
     }
 
     protected get computedRangeMode(): boolean {
-        return !this.single || this.options.rangeMode;
+        return this.options.rangeMode;
     }
 
     protected get isRangePicking(): boolean {
-        const value = this.value();
-
-        return this.computedRangeMode
-            ? value instanceof TuiDay
-            : /**
-               * Only for backward compatibility!
-               * TODO(v5): replace with `this.options.rangeMode && this.value instanceof TuiDay`
-               */
-              value instanceof TuiDayRange && value.isSingleDay;
+        return this.options.rangeMode && this.value() instanceof TuiDay;
     }
 
     protected readonly toMarkers = (

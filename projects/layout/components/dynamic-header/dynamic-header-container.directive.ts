@@ -22,9 +22,9 @@ export class TuiDynamicHeaderContainerDirective {
         descendants: true,
     });
 
-    public hiddenHeaders = signal<Array<TemplateRef<unknown>>>([]);
+    public readonly hiddenHeaders = signal<Array<TemplateRef<unknown>>>([]);
 
-    public scrollDir = toSignal(
+    public readonly scrollDir = toSignal(
         fromEvent(this.el, 'scroll').pipe(
             map(({target}) => (target as HTMLElement).scrollTop),
             pairwise(),

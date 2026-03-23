@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
@@ -22,7 +23,7 @@ export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
     styleUrl: './list.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-list'},
+    exportAs: `tui-list-${TUI_VERSION}`,
 })
 class Styles {}
 

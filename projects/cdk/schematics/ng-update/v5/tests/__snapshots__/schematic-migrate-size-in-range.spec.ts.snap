@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update size attribute for sliders change [size]="'m'" attribute for tui-range: test.html 1`] = `
+{
+  "0. Before": "<tui-range [formControl]="control" [size]="'m'"/>",
+  "1. After": "<tui-range [formControl]="control" [style.--tui-thumb-size.rem]="0.75"/>",
+}
+`;
+
+exports[`ng-update size attribute for sliders change [size]="'s'" attribute for tui-range: test.html 1`] = `
+{
+  "0. Before": "<tui-range [formControl]="control" [size]="'s'"/>",
+  "1. After": "<tui-range [formControl]="control" [style.--tui-thumb-size.rem]="0.5"/>",
+}
+`;
+
+exports[`ng-update size attribute for sliders change [size]="m" attribute for tuiSlider: test.html 1`] = `
+{
+  "0. Before": "<input tuiSlider type="range" [formControl]="control" [size]="'m'"/>",
+  "1. After": "<input tuiSlider type="range" [formControl]="control" [style.--tui-thumb-size.rem]="0.75"/>",
+}
+`;
+
+exports[`ng-update size attribute for sliders change [size]="s" attribute for tuiSlider: test.html 1`] = `
+{
+  "0. Before": "<input tuiSlider type="range" [formControl]="control" [size]="'s'"/>",
+  "1. After": "<input tuiSlider type="range" [formControl]="control" [style.--tui-thumb-size.rem]="0.5"/>",
+}
+`;
+
+exports[`ng-update size attribute for sliders change size="m" attribute for tui-range: test.html 1`] = `
+{
+  "0. Before": "<tui-range [formControl]="control" size="m"/>",
+  "1. After": "<tui-range [formControl]="control" [style.--tui-thumb-size.rem]="0.75"/>",
+}
+`;
+
+exports[`ng-update size attribute for sliders change size="m" attribute for tuiSlider: test.html 1`] = `
+{
+  "0. Before": "<input tuiSlider type="range" [formControl]="control" size="m"/>",
+  "1. After": "<input tuiSlider type="range" [formControl]="control" [style.--tui-thumb-size.rem]="0.75"/>",
+}
+`;
+
+exports[`ng-update size attribute for sliders change size="s" attribute for tui-range: test.html 1`] = `
+{
+  "0. Before": "<tui-range [formControl]="control" size="s"/>",
+  "1. After": "<tui-range [formControl]="control" [style.--tui-thumb-size.rem]="0.5"/>",
+}
+`;
+
+exports[`ng-update size attribute for sliders change size="s" attribute for tuiSlider: test.html 1`] = `
+{
+  "0. Before": "<input tuiSlider type="range" [formControl]="control" size="s"/>",
+  "1. After": "<input tuiSlider type="range" [formControl]="control" [style.--tui-thumb-size.rem]="0.5"/>",
+}
+`;

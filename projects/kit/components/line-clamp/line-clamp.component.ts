@@ -1,8 +1,8 @@
 import {
+    type AfterViewChecked,
     ChangeDetectionStrategy,
     Component,
     computed,
-    type DoCheck,
     ElementRef,
     inject,
     input,
@@ -47,7 +47,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         '(resize)': 'update()',
     },
 })
-export class TuiLineClamp implements DoCheck {
+export class TuiLineClamp implements AfterViewChecked {
     private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
@@ -79,7 +79,7 @@ export class TuiLineClamp implements DoCheck {
         {initialValue: 0},
     );
 
-    public ngDoCheck(): void {
+    public ngAfterViewChecked(): void {
         this.update();
         this.isOverflown$.next(this.overflown);
     }

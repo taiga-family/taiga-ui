@@ -16,7 +16,7 @@ import {Popout} from './popout';
 export default class Example {
     protected readonly popout = inject(TuiPopoutService);
     protected readonly supported = !!inject(WA_DOCUMENT_PIP)?.requestWindow;
-    protected subscription = signal<Subscription | null>(null);
+    protected readonly subscription = signal<Subscription | null>(null);
 
     protected open(): void {
         this.subscription.set(

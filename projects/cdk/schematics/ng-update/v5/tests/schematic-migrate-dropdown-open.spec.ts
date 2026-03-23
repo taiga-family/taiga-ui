@@ -2,32 +2,44 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {runMigration} from '../../../utils/run-migration';
-
-const collection = join(__dirname, '../../../migration.json');
+import {createMigration} from '../../../utils/run-migration';
 
 describe('ng-update tuiDropdownOpen to tuiDropdownAuto', () => {
-    async function migrateTemplate(template: string): Promise<string> {
-        return (await runMigration({collection, template})).template;
-    }
-
-    it('should rename tuiDropdownOpen to tuiDropdownAuto', async () => {
-        expect(await migrateTemplate('<button tuiDropdownOpen>Open</button>')).toEqual(
-            '<button tuiDropdownAuto>Open</button>',
-        );
+    const migrate = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
     });
 
-    it('should not rename [tuiDropdownOpen] binding', async () => {
-        expect(
-            await migrateTemplate('<button [tuiDropdownOpen]="open">Open</button>'),
-        ).toEqual('<button [tuiDropdownOpen]="open">Open</button>');
-    });
+    it(
+        'should rename tuiDropdownOpen to tuiDropdownAuto',
+        migrate({template: '<button tuiDropdownOpen>Open</button>'}),
+    );
 
-    it('should rename tuiDropdownMobile to tuiDropdownSheet', async () => {
-        expect(
-            await migrateTemplate('<button tuiDropdownMobile="selector">Open</button>'),
-        ).toEqual('<button tuiDropdownSheet="selector">Open</button>');
-    });
+    it(
+        'should not rename [tuiDropdownOpen] binding',
+        migrate({template: '<button [tuiDropdownOpen]="open">Open</button>'}),
+    );
+
+    it(
+        'should rename tuiDropdownMobile to tuiDropdownSheet',
+        migrate({template: '<button tuiDropdownMobile="selector">Open</button>'}),
+    );
+
+    it(
+        'should rename [tuiSheet] to [tuiSheetDialog]',
+        migrate({template: '<button [tuiSheet]="content">Open</button>'}),
+    );
+
+    it(
+        'should rename tuiSheetOptions to tuiSheetDialogOptions',
+        migrate({
+            template: '<button [tuiSheet]="content" tuiSheetOptions="opts">Open</button>',
+        }),
+    );
+
+    it(
+        'should rename *tuiDataList to *tuiDropdown',
+        migrate({template: '<tui-data-list-wrapper *tuiDataList [items]="items" />'}),
+    );
 
     afterEach(() => resetActiveProject());
 });

@@ -21,7 +21,7 @@ import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-label'},
+    exportAs: `tui-label-${TUI_VERSION}`,
 })
 class Styles {}
 

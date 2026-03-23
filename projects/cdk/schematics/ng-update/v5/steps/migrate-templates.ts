@@ -32,12 +32,25 @@ import {migrateAmountCurrencyAlign} from './templates/migrate-amount-currency-al
 import {migrateAsyncPipes} from './templates/migrate-async-pipes';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateAxes} from './templates/migrate-axes';
+import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-single';
+import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateFieldError} from './templates/migrate-field-error';
-import {migrateInputRange} from './templates/migrate-input-range';
+import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
+import {migrateInputDate} from './templates/migrate-input-date';
+import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
+import {migrateInputDateRange} from './templates/migrate-input-date-range';
+import {migrateInputMonth} from './templates/migrate-input-month';
+import {migrateInputPassword} from './templates/migrate-input-password';
+import {migrateInputPhone} from './templates/migrate-input-phone';
+import {migrateInputPhoneInternational} from './templates/migrate-input-phone-international';
+import {migrateInputTag} from './templates/migrate-input-tag';
+import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
+import {migrateSelect} from './templates/migrate-select';
+import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
 
 export function getAction<T>({
@@ -80,8 +93,17 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
+        migrateInputPassword,
+        migrateInputMonth,
+        migrateInputDate,
+        migrateInputTime,
+        migrateInputPhoneInternational,
+        migrateInputDateMulti,
+        migrateInputTag,
         migrateInputYear,
-        migrateInputRange,
+        migrateInputPhone,
+        migrateInputDateRange,
+        migrateSelect,
         migrateAccordionItem,
         migrateAvatarToDirective,
         migrateTuiNotification,
@@ -91,7 +113,11 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateAsyncPipes,
         migrateTagToChip,
         migrateAxes,
+        migrateChartHint,
+        migrateCalendarSheetSingle,
         migrateCloseable,
+        migrateSidebar,
+        migrateFormatPhonePipe,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});

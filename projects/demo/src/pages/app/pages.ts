@@ -521,6 +521,12 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Components',
+                title: 'BottomSheet',
+                keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
+                route: DemoRoute.BottomSheet,
+            },
+            {
+                section: 'Components',
                 title: 'MobileCalendar',
                 keywords:
                     'календарь, день, неделя, месяц, год, дата, calendar, datapicker, data, picker',
@@ -612,9 +618,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'BottomSheet',
-        keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
-        route: DemoRoute.BottomSheet,
+        title: 'ShrinkWrap',
+        keywords: 'balance, wrap, перенос, tight, pretty',
+        route: DemoRoute.ShrinkWrap,
     },
     {
         section: 'Components',
@@ -1448,6 +1454,12 @@ export const pages: DocRoutePages = [
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: DemoRoute.Skeleton,
                 meta: {figmaVersion: '1.2.0'},
+            },
+            {
+                section: 'Tools',
+                title: 'Truncate',
+                keywords: 'truncate, middle, ellipsis, обрезка, по середине',
+                route: DemoRoute.Truncate,
             },
         ],
     },

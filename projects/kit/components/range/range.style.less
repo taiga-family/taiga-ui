@@ -41,7 +41,7 @@
         &::before {
             content: '';
             position: absolute;
-            top: 0;
+            inset-block-start: 0;
             inset-inline-start: calc(var(--t-start) - @thumb-diameter / 3);
             inset-inline-end: calc(var(--t-end) - @thumb-diameter / 3);
             block-size: 100%;
@@ -91,8 +91,8 @@
     .ignore-track-pointer-events();
 
     position: absolute;
-    z-index: 1;
     inset: 50% calc(-5 * @thumb-diameter / 12) auto;
+    z-index: 1;
     inline-size: auto;
     margin: 0;
     opacity: 1;

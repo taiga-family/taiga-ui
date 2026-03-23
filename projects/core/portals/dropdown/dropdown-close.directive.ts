@@ -35,8 +35,9 @@ export class TuiDropdownClose {
                         tuiTypedFromEvent(this.el, 'focusin').pipe(
                             filter(
                                 (event) =>
-                                    !this.open.host.contains(tuiGetActualTarget(event)) ||
-                                    !this.ref(),
+                                    !this.open.nativeElement.contains(
+                                        tuiGetActualTarget(event),
+                                    ) || !this.ref(),
                             ),
                         ),
                     ),

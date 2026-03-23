@@ -3,5 +3,19 @@
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
     "ignorePaths": ["**/projects/i18n/languages/**"],
     "files": ["*/*.*"],
-    "ignoreWords": ["yellin", "callin", "spittin", "protestin", "looooooooooooooooooooooooong", "Austri", "popout"]
+    "ignoreWords": [
+        "yellin",
+        "callin",
+        "spittin",
+        "protestin",
+        "looooooooooooooooooooooooong",
+        "Austri",
+        "popout",
+        "msdownload",
+        "msword",
+        "openxmlformats",
+        "officedocument",
+        "wordprocessingml",
+        "longname"
+    ]
 }

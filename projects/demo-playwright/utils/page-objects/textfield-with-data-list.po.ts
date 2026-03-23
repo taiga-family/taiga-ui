@@ -1,12 +1,11 @@
 import {expect, type Locator} from '@playwright/test';
 
-export class TuiTextfieldWithDataListPO {
-    public readonly textfield: Locator = this.host.locator('[tuiInput]');
+import {TuiTextfieldPO} from './textfield.po';
+
+export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
     public readonly dropdown = this.host
         .page()
         .locator('tui-dropdown,tui-dropdown-mobile,tui-sheet-dialog');
-
-    constructor(protected readonly host: Locator) {}
 
     public async getOptions(): Promise<Locator[]> {
         await expect(this.dropdown).toBeAttached();

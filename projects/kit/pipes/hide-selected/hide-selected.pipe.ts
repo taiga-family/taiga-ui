@@ -7,9 +7,9 @@ import {
     untracked,
 } from '@angular/core';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {tuiIsFlat} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldMultiComponent} from '@taiga-ui/core/components/textfield';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Pipe({name: 'tuiHideSelected', pure: false})
 export class TuiHideSelectedPipe implements PipeTransform {

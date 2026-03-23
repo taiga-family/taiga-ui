@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update adds TODO for [colors] and removes it from wrapper: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputColorModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputColorModule],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputColor } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInputColor],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputColorModule to TuiInputColor: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputColorModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputColorModule],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputColor } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInputColor],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;

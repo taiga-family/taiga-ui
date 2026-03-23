@@ -24,7 +24,9 @@ import {
     showWarnings,
 } from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
+import {replaceAttrsInHost} from '../utils/replace-attrs-in-host';
 import {replaceFunctionParameters} from '../utils/replace-function-parameters';
+import {ATTRS_IN_HOST_TO_REPLACE} from './steps/constants/attrs-in-host-to-replace';
 import {FUNCTION_PARAMETERS_TO_REPLACE} from './steps/constants/function-parameters-to-replace';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
@@ -33,6 +35,7 @@ import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
+import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migratePackages} from './steps/migrate-packages';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
@@ -58,6 +61,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => replaceFunctionParameters(FUNCTION_PARAMETERS_TO_REPLACE),
                 },
                 {
+                    name: 'showWarnings',
+                    step: () => showWarnings(context, MIGRATION_WARNINGS),
+                },
+                {
                     name: 'removeModules',
                     step: () => removeModules(options, MODULES_TO_REMOVE),
                 },
@@ -78,24 +85,32 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => migrateDialogLegacySizes(tree, options),
                 },
                 {
+                    name: 'migrateFilterByInput',
+                    step: () => migrateFilterByInput(tree, options),
+                },
+                {
                     name: 'migratePackages',
                     step: migratePackages,
+                },
+                {
+                    name: 'removeDuplicates',
+                    step: () => removeDuplicates(options),
+                },
+                {
+                    name: 'saveProjectBeforeTemplateMigrations',
+                    step: () => saveActiveProject(),
+                },
+                {
+                    name: 'replaceAttrsInHost',
+                    step: () => replaceAttrsInHost(fileSystem, ATTRS_IN_HOST_TO_REPLACE),
                 },
                 {
                     name: 'migrateTemplates',
                     step: () => migrateTemplates(fileSystem, options),
                 },
                 {
-                    name: 'showWarnings',
-                    step: () => showWarnings(context, MIGRATION_WARNINGS),
-                },
-                {
                     name: 'migrateStyles',
                     step: migrateStyles,
-                },
-                {
-                    name: 'removeDuplicates',
-                    step: () => removeDuplicates(options),
                 },
             ],
             timings,

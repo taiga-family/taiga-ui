@@ -30,10 +30,8 @@ describe('TuiSliderKeyStepsDirective', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        public inputElRef: Signal<ElementRef<HTMLInputElement>> = viewChild.required(
-            TuiSliderComponent,
-            {read: ElementRef},
-        );
+        public readonly inputElRef: Signal<ElementRef<HTMLInputElement>> =
+            viewChild.required(TuiSliderComponent, {read: ElementRef});
 
         public control = new FormControl(720_000);
 

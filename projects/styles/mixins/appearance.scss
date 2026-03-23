@@ -1,5 +1,5 @@
-@import 'miscellaneous';
-@import '../variables/media';
+@import 'miscellaneous.scss';
+@import '../variables/media.scss';
 
 @mixin appearance-hover {
     @include interactive {

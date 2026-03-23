@@ -12,8 +12,8 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     host: {'[style.block-size]': 'transitions() ? "auto" : height()'},
 })
 export class TuiElasticContainer {
-    protected height = signal('');
-    protected transitions = signal(0);
+    protected readonly height = signal('');
+    protected readonly transitions = signal(0);
 
     protected onAnimation(name: string, count: number): void {
         if (name === 'height') {

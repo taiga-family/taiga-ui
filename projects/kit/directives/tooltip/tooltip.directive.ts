@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -35,7 +36,7 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
     styleUrl: './tooltip.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-tooltip'},
+    exportAs: `tui-tooltip-${TUI_VERSION}`,
 })
 class Styles {}
 

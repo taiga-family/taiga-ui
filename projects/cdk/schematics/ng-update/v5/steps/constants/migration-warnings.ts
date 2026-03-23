@@ -25,4 +25,67 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiFormatDatePipe has been removed. Use Angular built-in Date pipe instead. See https://angular.dev/api/common/DatePipe',
     },
+    {
+        name: 'TUI_SLIDER_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
+    },
+    {
+        name: 'tuiSliderOptionsProvider',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
+    },
+    {
+        name: 'TuiFeedItemDetailsComponent',
+        moduleSpecifier: '@taiga-ui/proprietary',
+        message:
+            'TuiFeedItemDetailsComponent has been removed. Use BlockDetails instead. See https://taiga-ui.dev/layout/block-details',
+    },
+    {
+        name: 'TuiToCountryCodePipe',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiToCountryCodePipe has been removed. Replace pipe usage `phone | tuiToCountryCode` with the maskitoGetCountryFromNumber(phone) function from @maskito/phone.',
+    },
+    {
+        name: 'TuiStatus',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiStatus type has been removed. Replace with a plain string literal type: ' +
+            '"default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"',
+    },
+    {
+        name: 'TuiIsoToCountryCodePipe',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiIsoToCountryCodePipe has been removed. Replace pipe usage `isoCode | tuiIsoToCountryCode` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.',
+    },
+    {
+        name: 'TuiPopoverContext',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.\n' +
+            '// Before: injectContext<TuiPopoverContext<boolean>>()\n' +
+            '// After:  injectContext<TuiPortalContext<MyOptions, boolean>>()',
+    },
+    {
+        name: 'TuiPopoverService',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).\n' +
+            '// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}\n' +
+            '// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }\n' +
+            '// See https://taiga-ui.dev/cdk/portal',
+    },
+    {
+        name: 'TuiPopoverDirective',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiPopoverDirective → TuiPortalDirective: do not extend; use hostDirectives + tuiAsPortal() instead.\n' +
+            '// Before: @Directive({inputs:[...], outputs:[...], providers:[{provide:TuiPopoverService,useExisting:MyService}]}) class MyDirective<T> extends TuiPopoverDirective<T> {}\n' +
+            '// After:  @Directive({providers:[tuiAsPortal(MyService)], hostDirectives:[{directive:TuiPortalDirective,inputs:[...],outputs:[...]}]}) class MyDirective {}\n' +
+            '// See https://taiga-ui.dev/cdk/portal',
+    },
 ];

@@ -2,6 +2,11 @@ name: 🤖 PR auto merge
 on:
   pull_request:
 
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
 env:
   PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Tests result", "E2E result" ]'
   RELEASE_JOBS_NAME: '[ "Publish" ]'
@@ -12,7 +17,7 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0
       - id: matrix
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
@@ -40,7 +45,7 @@ jobs:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.189.0
       - uses: taiga-family/ci/actions/auto/approve/double@v1.189.0
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'

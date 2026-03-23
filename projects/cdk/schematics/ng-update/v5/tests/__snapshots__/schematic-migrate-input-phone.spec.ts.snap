@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update adds TODO for countryCode and removes it from wrapper: test.html 1`] = `
+{
+  "0. Before": "<tui-input-phone countryCode="+7" formControlName="value">Phone</tui-input-phone>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-input-phone migration (see https://taiga-ui.dev/components/input-phone):
+     - countrycode have no direct v5 equivalent.
+       In v5 both are replaced by a single [mask] input of type MaskitoOptions.
+       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where
+       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
+<tui-textfield  >
+<label tuiLabel>Phone</label>
+
+<input tuiInputPhone formControlName="value" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update adds TODO for phoneMaskAfterCountryCode and removes it from wrapper: test.html 1`] = `
+{
+  "0. Before": "<tui-input-phone phoneMaskAfterCountryCode="(###) ###-##-##" formControlName="value">Phone</tui-input-phone>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-input-phone migration (see https://taiga-ui.dev/components/input-phone):
+     - phonemaskaftercountrycode have no direct v5 equivalent.
+       In v5 both are replaced by a single [mask] input of type MaskitoOptions.
+       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where
+       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
+<tui-textfield  >
+<label tuiLabel>Phone</label>
+
+<input tuiInputPhone formControlName="value" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update adds single TODO when both countryCode and phoneMaskAfterCountryCode are present: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-phone
+                    countryCode="+7"
+                    phoneMaskAfterCountryCode="(###) ###-##-##"
+                    formControlName="value"
+                >
+                    Phone
+                </tui-input-phone>",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input-phone migration (see https://taiga-ui.dev/components/input-phone):
+     - countrycode, phonemaskaftercountrycode have no direct v5 equivalent.
+       In v5 both are replaced by a single [mask] input of type MaskitoOptions.
+       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where
+       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
+<tui-textfield
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Phone
+                </label>
+
+<input tuiInputPhone formControlName="value" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.html 1`] = `
+{
+  "0. Before": "
+                <form [formGroup]="form">
+                  <tui-input-phone formControlName="value">Phone number</tui-input-phone>
+                </form>
+
+                <tui-input-phone
+                    class="b-form"
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Enter phone
+                    <input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiTextfield
+                    />
+                </tui-input-phone>
+
+                <tui-input-phone
+                    formControlName="value"
+                    tuiTextfieldSize="s"
+                    class="tui-space_bottom-2"
+                >
+                    Enter phone
+                </tui-input-phone>
+
+                <tui-input-phone
+                    class="b-form"
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Enter phone
+                    <input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-phone>
+
+                <tui-input-phone
+                    [(ngModel)]="value"
+                >
+                </tui-input-phone>
+            ",
+  "1. After": "
+                <form [formGroup]="form">
+                  <tui-textfield >
+<label tuiLabel>Phone number</label>
+
+<input tuiInputPhone formControlName="value" />
+</tui-textfield>
+                </form>
+
+                <tui-textfield
+                    class="b-form"
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Enter phone
+                    </label>
+<input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiInputPhone [formControl]="control"
+                    />
+                </tui-textfield>
+
+                <tui-textfield
+                    
+                    tuiTextfieldSize="s"
+                    class="tui-space_bottom-2"
+                >
+<label tuiLabel>
+                    Enter phone
+                </label>
+
+<input tuiInputPhone formControlName="value" />
+</tui-textfield>
+
+                <tui-textfield
+                    class="b-form"
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Enter phone
+                    </label>
+<input
+                        placeholder="+7 (___) ___-__-__"
+                        tuiInputPhone [formControl]="control"
+                    />
+                </tui-textfield>
+
+                <tui-textfield
+                    
+                >
+                
+<input tuiInputPhone [(ngModel)]="value" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputPhoneModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputPhoneModule,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputPhoneModule,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputPhone } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputPhone,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputPhone,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update moves [allowText] to <input tuiInputPhone>: test.html 1`] = `
+{
+  "0. Before": "<tui-input-phone [allowText]="true" formControlName="value">Phone</tui-input-phone>",
+  "1. After": "<tui-textfield  >
+<label tuiLabel>Phone</label>
+
+<input tuiInputPhone formControlName="value" [allowText]="true" />
+</tui-textfield>",
+}
+`;

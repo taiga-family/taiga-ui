@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -19,7 +19,7 @@ interface Character {
 })
 export default class Example {
     protected readonly isMobile = inject(WA_IS_MOBILE);
-    protected readonly control = new FormControl(null);
+    protected readonly control = new FormControl(null, Validators.required);
     protected items: readonly Character[] = [
         {name: 'Luke Skywalker', id: 1},
         {name: 'Leia Organa Solo', id: 2},

@@ -238,6 +238,7 @@ test.describe('InputDateRange', () => {
                 await expect(inputDateRange.calendar).not.toBeAttached();
 
                 await inputDateRange.textfield.click();
+                await expect(inputDateRange.calendar).toBeAttached();
                 await calendarSheet.getCalendarDay(22).then(async (x) => x!.hover());
 
                 await expect
@@ -362,6 +363,7 @@ test.describe('InputDateRange', () => {
             await expect(inputDateRange.template).toHaveText('Today');
 
             await inputDateRange.textfield.click();
+            await expect(inputDateRange.calendar).toBeAttached();
             await calendarSheet.clickOnDay(21);
             await calendarSheet.clickOnDay(25);
 

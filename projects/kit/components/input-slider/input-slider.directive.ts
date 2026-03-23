@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -32,7 +33,7 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
     ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-input-slider'},
+    exportAs: `tui-input-slider-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -5,6 +5,7 @@ import {
     type TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk/date-time';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {tuiInjectAuxiliary, TuiSelectLike} from '@taiga-ui/core/components/textfield';
 import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
@@ -61,7 +62,10 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
     });
 
     protected readonly calendarSync = effect(() => {
-        this.calendar()?.value.set(this.intermediateValue() ?? this.value());
+        const calendar = this.calendar();
+
+        calendar &&
+            tuiSetSignal(calendar.value, this.intermediateValue() ?? this.value());
     });
 
     // TODO: use linked signal (Angular 19+)

@@ -46,7 +46,7 @@ function checkFormat({name, type}: File, formats: readonly string[]): boolean {
 
 function toArray(accept: string): readonly string[] {
     return accept
-        .toLowerCase()
         .split(',')
-        .map((format) => format.trim().toLowerCase());
+        .map((format) => format.trim().toLowerCase())
+        .filter(Boolean);
 }

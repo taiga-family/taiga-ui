@@ -287,20 +287,20 @@
                         size="l"
                         tuiNotification
                     >
-                        Command
-                        <code>ng migrate</code>
-                        has a known
+                        Nx < v22 has a known
                         <a
                             href="https://github.com/nrwl/nx/issues/26675"
                             rel="noreferrer noopener"
                             target="_blank"
                             tuiLink
-                            [textContent]="'issue'"
-                        ></a>
-                        . Just run
+                        >
+                            issue
+                        </a>
+                        with
+                        <code>ng migrate</code>
+                        command. Bump Nx version or just run
                         <code>npm install</code>
-                        again and run
-
+                        followed by
                         <tui-doc-code
                             code="npm_config_legacy_peer_deps=false nx migrate --run-migrations"
                             class="tui-space_top-2"

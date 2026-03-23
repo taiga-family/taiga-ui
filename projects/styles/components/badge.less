@@ -1,4 +1,4 @@
-@import '@taiga-ui/styles/utils.less';
+@import '../utils.less';
 
 /**
  * @name Badge
@@ -46,12 +46,10 @@
         font-size: var(--t-icon-size) !important;
     }
 
-    &[data-appearance='error'], /* TODO @deprecated remove in v5 */
     &[data-appearance='negative'] {
         --t-status: var(--tui-status-negative);
     }
 
-    &[data-appearance='success'], /* TODO @deprecated remove in v5 */
     &[data-appearance='positive'] {
         --t-status: var(--tui-status-positive);
     }
@@ -104,8 +102,6 @@
         }
     }
 
-    &[tuiAppearance][data-appearance='error'], /* TODO @deprecated remove in v5 */
-    &[tuiAppearance][data-appearance='success'], /* TODO @deprecated remove in v5 */
     &[tuiAppearance][data-appearance='negative'],
     &[tuiAppearance][data-appearance='positive'],
     &[tuiAppearance][data-appearance='warning'],

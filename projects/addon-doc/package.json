@@ -16,6 +16,20 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
+    "contributors": [
+        {
+            "name": "Alex Inkin",
+            "email": "alexander@inkin.ru"
+        },
+        {
+            "name": "Vladimir Potekhin",
+            "email": "vladimir.potekh@gmail.com"
+        },
+        {
+            "name": "Nikita Barsukov",
+            "email": "nikita.s.barsukov@gmail.com"
+        }
+    ],
     "peerDependencies": {
         "@angular/cdk": ">=19.0.0",
         "@angular/common": ">=19.0.0",
@@ -24,10 +38,10 @@
         "@angular/router": ">=19.0.0",
         "@ng-web-apis/common": "^5.1.0",
         "@ng-web-apis/platform": "^5.1.0",
-        "@taiga-ui/cdk": "^5.0.0-rc.4",
-        "@taiga-ui/core": "^5.0.0-rc.4",
-        "@taiga-ui/kit": "^5.0.0-rc.4",
-        "@taiga-ui/legacy": "^5.0.0-rc.4",
+        "@taiga-ui/cdk": "5.0.0-rc.4",
+        "@taiga-ui/core": "5.0.0-rc.4",
+        "@taiga-ui/kit": "5.0.0-rc.4",
+        "@taiga-ui/legacy": "5.0.0-rc.4",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "@types/markdown-it": "^14.1.2",
         "markdown-it": "^14.1.1",

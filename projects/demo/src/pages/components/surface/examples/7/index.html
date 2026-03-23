@@ -1,78 +1,78 @@
 <button
     tuiSurface
+    tuiTheme="dark"
     type="button"
     class="card"
     [style.background-image]="'url(/assets/images/tickets.svg)'"
     [style.color]="'#d45d8c'"
 >
-    <h3 class="heading">Tickets</h3>
-    <div class="content">Concerts, theater, sports and movies</div>
-    <div
+    <span tuiTitle>
+        <b>Tickets</b>
+        <span tuiSubtitle>Concerts, theater, sports and movies</span>
+    </span>
+    <span
         appearance="primary"
         size="s"
         tuiBadge
-        class="badge"
     >
         20% off
-    </div>
+    </span>
 </button>
 <button
     tuiSurface
+    tuiTheme="dark"
     type="button"
     class="card"
     [style.background-image]="'url(/assets/images/gas.svg)'"
     [style.color]="'#7caeff'"
 >
-    <h3 class="heading">Gas</h3>
-    <div
+    <span tuiTitle><b>Gas</b></span>
+    <span
         appearance="primary"
         size="s"
         tuiBadge
-        class="badge"
     >
         +2000%
-    </div>
+    </span>
 </button>
 
 <div
     tuiSurface
+    tuiTheme="dark"
     class="restaurant"
 >
-    <header
-        tuiTheme="dark"
-        class="header"
-    >
-        <label tuiTitle>
-            <span tuiSubtitle>RESTAURANT</span>
-            Eat all you can
-        </label>
-        <button
-            appearance="icon"
-            iconStart="@tui.ellipsis"
-            size="xs"
-            tuiIconButton
-            type="button"
-        >
-            More
-        </button>
+    <header tuiHeader="body-m">
+        <hgroup tuiTitle>
+            <h3>RESTAURANT</h3>
+            <p tuiSubtitle>Eat all you can</p>
+        </hgroup>
+        <aside tuiAccessories>
+            <button
+                appearance="icon"
+                iconStart="@tui.ellipsis"
+                size="xs"
+                tuiIconButton
+                type="button"
+            >
+                More
+            </button>
+        </aside>
     </header>
     <footer class="footer">
         <button
-            appearance="glass"
+            appearance="secondary-grayscale"
             size="m"
             tuiButton
             type="button"
-            [style.border-radius.rem]="5"
         >
             Book a table
         </button>
         <button
-            appearance="glass"
+            appearance="secondary-grayscale"
             iconStart="@tui.heart"
             size="m"
             tuiIconButton
             type="button"
-            [style.border-radius.rem]="5"
         >
             Favorite
         </button>
@@ -90,9 +90,12 @@
             src="assets/images/avatar.jpg"
         />
     </div>
-    <label tuiLabel="Taiga UI">Alex Inkin</label>
+    <label tuiTitle>
+        <span tuiSubtitle>Taiga UI</span>
+        <b>Alex Inkin</b>
+    </label>
     <button
-        appearance="glass"
+        appearance="secondary-grayscale"
         iconStart="@tui.mail"
         size="m"
         tuiIconButton
@@ -103,22 +106,25 @@
     </button>
 </div>
 
-<div
+<section
     appearance="floating"
     tuiCardLarge
-    tuiSurface
     class="reviews"
 >
-    <h3 class="heading">
-        Taiga UI reviews
-        <button
-            tuiLink
-            type="button"
-            class="link"
-        >
-            Hide
-        </button>
-    </h3>
+    <header tuiHeader="h6">
+        <hgroup tuiTitle>
+            <h2>Taiga UI reviews</h2>
+        </hgroup>
+        <aside tuiAccessories>
+            <button
+                tuiLink
+                type="button"
+                class="link"
+            >
+                Hide
+            </button>
+        </aside>
+    </header>
     <tui-scrollbar class="scrollbar">
         <div class="wrapper">
             @for (review of reviews; track review) {
@@ -128,7 +134,7 @@
                     class="review"
                 >
                     {{ review.body }}
-                    <footer class="footer">
+                    <footer tuiCell>
                         <div
                             size="m"
                             tuiAvatar="@tui.user"
@@ -155,27 +161,31 @@
     >
         See all
     </button>
-</div>
+</section>
 
 <div
     tuiSurface
     tuiTheme="dark"
     class="mask"
 >
-    <h3 class="heading">
-        My bank account
-        <button
-            appearance="secondary"
-            iconStart="@tui.pencil"
-            size="s"
-            tuiIconButton
-            type="button"
-            class="button"
-        >
-            Edit name
-        </button>
-    </h3>
-    <span class="sum">{{ 23742 | tuiAmount: 'USD' : 'start' }}</span>
+    <header tuiHeader="h4">
+        <hgroup tuiTitle>
+            <p tuiSubtitle>
+                My bank account
+                <button
+                    appearance="secondary"
+                    iconStart="@tui.pencil"
+                    size="xs"
+                    tuiIconButton
+                    type="button"
+                    [style.border-radius.%]="100"
+                >
+                    Edit name
+                </button>
+            </p>
+            <h3>{{ 23742 | tuiAmount: 'USD' : 'start' }}</h3>
+        </hgroup>
+    </header>
     <footer class="footer">
         <tui-thumbnail-card
             paymentSystem="mastercard"

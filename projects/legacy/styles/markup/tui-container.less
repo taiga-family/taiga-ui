@@ -1,0 +1,61 @@
+.tui-container {
+    margin-inline-end: auto;
+    margin-inline-start: auto;
+
+    &.tui-container_adaptive {
+        @media @tui-desktop-lg-min {
+            inline-size: 69rem;
+        }
+
+        @media @tui-desktop {
+            inline-size: 51.5rem;
+        }
+
+        @media @tui-mobile {
+            inline-size: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    @media @tui-desktop-lg-min {
+        inline-size: 69rem;
+    }
+
+    @media @tui-desktop {
+        inline-size: 51.5rem;
+        padding: 0 3rem;
+    }
+
+    &_menu {
+        @media @tui-desktop-lg-min {
+            inline-size: 69rem;
+        }
+
+        @media @tui-desktop-interval {
+            inline-size: 51.5rem;
+        }
+
+        @media @tui-mobile {
+            inline-size: auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    &_fullwidth {
+        inline-size: auto;
+        padding: 0 1.5rem;
+
+        @media @tui-mobile {
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    &_fixed {
+        @media @tui-desktop {
+            inline-size: 69rem;
+        }
+    }
+}

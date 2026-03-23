@@ -2,80 +2,54 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {runMigration} from '../../../utils/run-migration';
-
-const collection = join(__dirname, '../../../migration.json');
+import {createMigration} from '../../../utils/run-migration';
 
 describe('ng-update tuiLet', () => {
-    async function migrate(template: string): Promise<ReturnType<typeof runMigration>> {
-        return runMigration({
-            template,
-            component: `
-                import {Component} from '@angular/core';
-                import {TuiLet} from '@taiga-ui/cdk';
+    const migration = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
+        component: `
+            import {Component} from '@angular/core';
+            import {TuiLet} from '@taiga-ui/cdk';
 
-                @Component({
-                    standalone: true,
-                    templateUrl: './test.html',
-                    imports: [TuiLet],
-                })
-                export class Test {
-                    readonly value = 'foo';
-                }
-            `,
-            collection,
-        });
-    }
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiLet],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        `,
+    });
 
-    it('migrates simple structural directive', async () => {
-        const {template, component} = await migrate(`
+    it(
+        'migrates simple structural directive',
+        migration({
+            template: `
                 <test *tuiLet="value as val">
                     {{ val }}
                 </test>
-            `);
+            `,
+        }),
+    );
 
-        expect(template).toEqual(`
-                @let val = value;
-                <test>
-                    {{ val }}
-                </test>
-            `);
+    it(
+        'migrates nested case with additional attributes',
+        migration({
+            template: `
+                <div>
+                    <test *tuiLet="value as val2" foo>
+                        {{ val2 }}
+                    </test>
+                </div>
+            `,
+        }),
+    );
 
-        expect(component).toEqual(`
-                import {Component} from '@angular/core';
-
-                @Component({
-                    standalone: true,
-                    templateUrl: './test.html',
-                    imports: [],
-                })
-                export class Test {
-                    readonly value = 'foo';
-                }
-            `);
-    });
-
-    it('migrates nested case with additional attributes', async () => {
-        const {template} = await migrate(`
-                    <div>
-                        <test *tuiLet="value as val2" foo>
-                            {{ val2 }}
-                        </test>
-                    </div>
-                `);
-
-        expect(template).toEqual(`
-                    <div>
-                        @let val2 = value;
-                        <test foo>
-                            {{ val2 }}
-                        </test>
-                    </div>
-                `);
-    });
-
-    it('migrates ng-container with tuiLet', async () => {
-        const {template} = await migrate(`
+    it(
+        'migrates ng-container with tuiLet',
+        migration({
+            template: `
                 <ng-container *tuiLet="value as val"></ng-container>
                 <div>
                     <ng-container *tuiLet="value as val2"></ng-container>
@@ -83,21 +57,28 @@ describe('ng-update tuiLet', () => {
                 <ng-container *tuiLet="value as val3">
                     {{ val3 }}
                 </ng-container>
-        `);
+            `,
+        }),
+    );
 
-        expect(template).toEqual(`
-                @let val = value;
-                ${''}
-                <div>
-                    @let val2 = value;
-                    ${''}
-                </div>
-                @let val3 = value;
-                ${''}
-                    {{ val3 }}
-                ${''}
-        `);
-    });
+    it(
+        'migrates nested ng-container with tuiLet',
+        migration({
+            template: `
+                <ng-container *tuiLet="showRequisitesButton$ | async as showRequisitesButton">
+                    <ng-container *tuiLet="companyRequisites$ | async as companyRequisites">
+                        <tui-panel [titleContent]="companyContent">
+                             <ng-template #companyContent>
+                                <label>Label</label>
+                            </ng-template>
+                        </tui-panel>
+
+                        <div>Hello world</div>
+                    </ng-container>
+                </ng-container>
+            `,
+        }),
+    );
 
     afterEach(() => resetActiveProject());
 });

@@ -35,7 +35,10 @@ export default class Example {
 
     protected primitive(): void {
         this.toast
-            .open('Alarm saved', {autoClose: 0, data: '@tui.alarm-clock'})
+            .open('Alarm is set for next <b>Sunday</b>, March 8, 2026, 10:00', {
+                autoClose: 0,
+                data: '@tui.alarm-clock',
+            })
             .subscribe();
     }
 

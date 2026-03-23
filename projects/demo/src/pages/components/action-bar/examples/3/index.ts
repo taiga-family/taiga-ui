@@ -12,5 +12,5 @@ import {TuiActionBar} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected open = signal(false);
+    protected readonly open = signal(false);
 }

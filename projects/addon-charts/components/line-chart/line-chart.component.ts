@@ -86,13 +86,13 @@ export class TuiLineChart {
     public readonly height = input(0);
     public readonly smoothingFactor = input(this.options.smoothingFactor);
 
-    public xStringify = input<TuiStringHandler<number> | null>(null);
-    public yStringify = input<TuiStringHandler<number> | null>(null);
+    public readonly xStringify = input<TuiStringHandler<number> | null>(null);
+    public readonly yStringify = input<TuiStringHandler<number> | null>(null);
 
     public readonly filled = input(this.options.filled);
     public readonly dots = input(this.options.dots);
 
-    public value = input<readonly TuiPoint[], readonly TuiPoint[]>([], {
+    public readonly value = input<readonly TuiPoint[], readonly TuiPoint[]>([], {
         transform: (value) => value.filter((item) => !item.some(Number.isNaN)),
     });
 

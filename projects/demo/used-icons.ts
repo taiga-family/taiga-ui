@@ -93,6 +93,7 @@ export const TUI_USED_ICONS = [
     '@tui.puzzle',
     '@tui.rocket',
     '@tui.rotate-cw',
+    '@tui.rss',
     '@tui.scaling',
     '@tui.search',
     '@tui.send',
@@ -120,6 +121,9 @@ export const TUI_USED_ICONS = [
     '@tui.volume-2',
     '@tui.volume-x',
     '@tui.wallet',
+    '@tui.wifi',
+    '@tui.wifi-high',
+    '@tui.wifi-low',
     '@tui.x',
     '@tui.zap',
 ] as const;

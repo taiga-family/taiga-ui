@@ -6,8 +6,24 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/cdk',
     },
     {
+        name: 'TuiTextfieldControllerModule',
+        moduleSpecifier: '@taiga-ui/legacy',
+    },
+    {
         name: 'TuiIconBadge',
         moduleSpecifier: '@taiga-ui/kit',
+    },
+    {
+        name: 'TUI_SLIDER_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+    },
+    {
+        name: 'tuiSliderOptionsProvider',
+        moduleSpecifier: '@taiga-ui/kit',
+    },
+    {
+        name: 'TuiFallbackSrcPipe',
+        moduleSpecifier: '@taiga-ui/core',
     },
     {
         name: 'TuiTimelineSteps',

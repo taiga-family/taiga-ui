@@ -1,15 +1,15 @@
-@if (isInYearView) {
+@if (view() === 'year') {
     <tui-scrollbar
         automation-id="tui-calendar__scrollbar"
         class="t-scrollbar"
     >
         <tui-calendar-year
             automation-id="tui-calendar__year"
-            [initialItem]="month.year"
+            [initialItem]="month().year"
             [max]="max().year"
             [min]="min().year"
             [rangeMode]="options.rangeMode"
-            [value]="value"
+            [value]="value()"
             (yearClick)="onPickerYearClick($event)"
         />
     </tui-scrollbar>
@@ -19,18 +19,18 @@
         class="t-pagination"
         [max]="computedMaxViewedMonth()"
         [min]="computedMinViewedMonth()"
-        [value]="month"
+        [value]="month()"
         (valueChange)="onPaginationValueChange($event)"
-        (yearClick)="onPaginationYearClick()"
+        (yearClick)="view.set('year')"
     />
     <tui-calendar-sheet
         automation-id="tui-calendar__calendar"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : min() : max()"
-        [hoveredItem]="hoveredItem"
-        [markerHandler]="markerHandler"
-        [month]="month"
-        [showAdjacent]="showAdjacent"
-        [value]="value"
+        [disabledItemHandler]="disabledItemHandler() | tuiMapper: disabledItemHandlerMapper : min() : max()"
+        [hoveredItem]="hoveredItem()"
+        [markerHandler]="markerHandler()"
+        [month]="month()"
+        [showAdjacent]="showAdjacent()"
+        [value]="value()"
         (dayClick)="onDayClick($event)"
         (hoveredItemChange)="onHoveredItemChange($event)"
     />

@@ -238,5 +238,22 @@ describe('InputMonth', () => {
                 );
             });
         });
+
+        describe('Native picker', () => {
+            test.use(TUI_PLAYWRIGHT_MOBILE);
+
+            beforeEach(async ({page}) => {
+                await tuiGoto(page, DemoRoute.InputMonth);
+                example = new TuiDocumentationPagePO(page).getExample('#native-picker');
+                inputMonth = new TuiInputMonthPO(
+                    example.locator('tui-textfield:has([tuiInputMonth])'),
+                );
+            });
+
+            test('is clickable', async () => {
+                await inputMonth.nativePicker.click();
+                await expect(inputMonth.nativePicker).toBeFocused();
+            });
+        });
     });
 });

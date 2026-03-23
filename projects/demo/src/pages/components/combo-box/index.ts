@@ -12,14 +12,8 @@ import {TuiDemo} from '@demo/utils';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_STRICT_MATCHER, type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiDropdown} from '@taiga-ui/core';
-import {
-    TUI_COUNTRIES,
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiDropdown, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 interface Country {
     id: string;

@@ -56,7 +56,7 @@ export class TuiInputSearch implements OnChanges {
 
     public readonly tuiInputSearch = input<PolymorpheusContent>();
 
-    public searchOpen = model(false, {alias: 'tuiInputSearchOpen'});
+    public readonly searchOpen = model(false, {alias: 'tuiInputSearchOpen'});
 
     public ngOnChanges(): void {
         if (this.searchOpen()) {

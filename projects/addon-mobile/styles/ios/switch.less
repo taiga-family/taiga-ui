@@ -23,8 +23,8 @@ input[tuiSwitch]._native {
             .transition(background);
 
             position: absolute;
-            display: block;
             inset: 0;
+            display: block;
             border-radius: 10rem;
             inline-size: 100%;
             background-color: transparent;
@@ -62,7 +62,7 @@ input[tuiSwitch]:not(._native) {
     }
 
     &::after {
-        right: auto;
+        inset-inline-end: auto;
         transition-property: transform, inline-size;
         inline-size: 1.9375rem;
         block-size: 1.9375rem;

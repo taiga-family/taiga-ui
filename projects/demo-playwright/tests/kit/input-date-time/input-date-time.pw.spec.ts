@@ -7,7 +7,12 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+
 test.describe('InputDateTime', () => {
+    let example: Locator;
+    let inputDateTime: TuiInputDateTimePO;
+
     test.describe('API page', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
@@ -446,6 +451,23 @@ test.describe('InputDateTime', () => {
                 .toHaveScreenshot(
                     '06-input-date-time-calendar-calendar-customization.png',
                 );
+        });
+
+        test.describe('Mobile', () => {
+            test.use(TUI_PLAYWRIGHT_MOBILE);
+
+            test.beforeEach(async ({page}) => {
+                await tuiGoto(page, DemoRoute.InputDateTime);
+                example = new TuiDocumentationPagePO(page).getExample('#mobile');
+                inputDateTime = new TuiInputDateTimePO(
+                    example.locator('tui-textfield:has([tuiInputDateTime])'),
+                );
+            });
+
+            test('native picker is clickable', async () => {
+                await inputDateTime.nativePicker.click();
+                await expect(inputDateTime.nativePicker).toBeFocused();
+            });
         });
     });
 });

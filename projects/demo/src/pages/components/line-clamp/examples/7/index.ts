@@ -11,7 +11,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected hasOverflownContent = signal<boolean | null>(null);
+    protected readonly hasOverflownContent = signal<boolean | null>(null);
     protected linesLimit = 2;
 
     protected toggle(): void {

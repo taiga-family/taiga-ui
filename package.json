@@ -52,7 +52,7 @@
         "start:shadow": "nx serve demo -c shadow",
         "start:ssl": "nx serve-ssl demo",
         "start:ssr": "nx serve demo -c production",
-        "stylelint": "stylelint '**/*.{less,css}' --config package.json",
+        "stylelint": "stylelint '**/*.{less,css,scss}' --config package.json",
         "pretest": "npx tsc --project tsconfig.spec.json",
         "test": "nx run-many --target test --all --output-style=stream",
         "test:e2e": "nx e2e-ui demo-playwright",
@@ -82,7 +82,6 @@
         ],
         "rules": {
             "property-disallowed-list": null,
-            "plugin/use-logical-properties-and-values": null,
             "selector-class-pattern": [
                 "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$",
                 {
@@ -98,6 +97,16 @@
                 "rules": {
                     "selector-class-pattern": null
                 }
+            },
+            {
+                "files": [
+                    "**/*.scss"
+                ],
+                "rules": {
+                    "at-rule-no-unknown": null,
+                    "at-rule-allowed-list": null,
+                    "function-no-unknown": null
+                }
             }
         ]
     },
@@ -105,41 +114,39 @@
         "preset": "@taiga-ui/jest-config"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "19.2.19",
-        "@angular-devkit/core": "19.2.19",
-        "@angular-devkit/schematics": "19.2.19",
-        "@angular/build": "19.2.19",
+        "@angular-devkit/build-angular": "19.2.22",
+        "@angular-devkit/core": "19.2.22",
+        "@angular-devkit/schematics": "19.2.22",
+        "@angular/build": "19.2.22",
         "@angular/cdk": "19.2.19",
-        "@angular/cli": "19.2.19",
-        "@angular/common": "19.2.18",
-        "@angular/compiler": "19.2.18",
-        "@angular/compiler-cli": "19.2.18",
-        "@angular/core": "19.2.18",
-        "@angular/forms": "19.2.18",
-        "@angular/platform-browser": "19.2.18",
-        "@angular/platform-browser-dynamic": "19.2.18",
-        "@angular/router": "19.2.18",
+        "@angular/cli": "19.2.22",
+        "@angular/common": "19.2.19",
+        "@angular/compiler": "19.2.19",
+        "@angular/compiler-cli": "19.2.19",
+        "@angular/core": "19.2.19",
+        "@angular/forms": "19.2.19",
+        "@angular/platform-browser": "19.2.19",
+        "@angular/platform-browser-dynamic": "19.2.19",
+        "@angular/router": "19.2.19",
         "@nx/angular": "22.1.1",
         "@nx/jest": "22.1.1",
         "@nx/workspace": "22.1.1",
-        "@schematics/angular": "19.2.19",
-        "@taiga-ui/browserslist-config": "0.421.0",
-        "@taiga-ui/configs": "0.421.0",
+        "@schematics/angular": "19.2.22",
+        "@taiga-ui/browserslist-config": "0.437.0",
+        "@taiga-ui/configs": "0.437.0",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
         "@types/node": "24.10.11",
-        "@typescript/native-preview": "7.0.0-dev.20260302.1",
-        "browser-sync": "3.0.4",
+        "@typescript/native-preview": "7.0.0-dev.20260312.1",
         "cpy-cli": "5.0.0",
         "glob": "11.1.0",
         "husky": "9.1.7",
-        "knip": "5.85.0",
+        "knip": "5.86.0",
         "ng-morph": "4.8.4",
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "14.0.1",
         "nx": "22.1.1",
         "rxjs": "7.8.2",
-        "source-map": "0.7.6",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
