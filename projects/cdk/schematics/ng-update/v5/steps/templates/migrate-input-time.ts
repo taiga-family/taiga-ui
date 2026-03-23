@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -16,20 +17,26 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
+const DOCS_LINK = 'https://taiga-ui.dev/components/input-time';
+
 const INPUT_ATTR_RENAMES = new Map([
     ['[items]'.toLowerCase(), '[accept]'],
     ['[mode]'.toLowerCase(), '[mode]'],
     ['mode'.toLowerCase(), 'mode'],
 ]);
 
+// Silently dropped — no equivalent in v5
 const DROPPED_ATTRS = new Set([
-    '[disabledItemHandler]'.toLowerCase(),
-    '[itemsHidden]'.toLowerCase(),
     '[itemSize]'.toLowerCase(),
     '[strict]'.toLowerCase(),
-    'itemsHidden'.toLowerCase(),
     'itemSize'.toLowerCase(),
     'strict'.toLowerCase(),
+]);
+
+// Dropped but require a TODO comment pointing to the new dropdown pattern
+const TODO_DROPPED_ATTRS = new Set([
+    '[itemsHidden]'.toLowerCase(),
+    'itemsHidden'.toLowerCase(),
 ]);
 
 export function migrateInputTime({
@@ -69,7 +76,16 @@ export function migrateInputTime({
             DROPPED_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        for (const attr of [...controlAttrs, ...inputAttrs, ...droppedAttrs]) {
+        const todoDroppedAttrs = [...element.attrs].filter((attr) =>
+            TODO_DROPPED_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        for (const attr of [
+            ...controlAttrs,
+            ...inputAttrs,
+            ...droppedAttrs,
+            ...todoDroppedAttrs,
+        ]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -90,6 +106,36 @@ export function migrateInputTime({
 
             recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
             recorder.insertRight(labelTextEnd, '</label>\n');
+        }
+
+        // Build TODO notes for attrs that need manual follow-up
+        const todoNotes: string[] = [];
+        const hasItems = inputAttrs.some((attr) => attr.name.toLowerCase() === '[items]');
+        const itemsAttr = inputAttrs.find(
+            (attr) => attr.name.toLowerCase() === '[items]',
+        );
+
+        if (hasItems) {
+            todoNotes.push(
+                `[items] was renamed to [accept] on <input tuiInputTime>. For a dropdown list, also add <tui-data-list-wrapper *tuiDropdown [items]="${itemsAttr?.value ?? 'items'} | tuiFilterByInput: matcher" /> inside <tui-textfield>. See: ${DOCS_LINK}#dropdown-with--data-list`,
+            );
+        }
+
+        if (todoDroppedAttrs.length > 0) {
+            todoNotes.push(
+                `[itemsHidden] was removed. Dropdown visibility is now controlled by mounting/detaching <tui-data-list-wrapper *tuiDropdown> into/from DOM inside <tui-textfield>. See: ${DOCS_LINK}#dropdown-with--data-list`,
+            );
+        }
+
+        if (todoNotes.length > 0) {
+            const todoComment = [
+                `<!-- ${TODO_MARK} tui-input-time migration (see ${DOCS_LINK}):`,
+                ...todoNotes.map((n) => `     - ${n}`),
+                '-->',
+            ].join('\n');
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(insertAt, `${todoComment}\n`);
         }
 
         const insertOffset =

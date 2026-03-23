@@ -63,7 +63,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'renames [items] to [accept] on <input tuiInputTime>',
+        'renames [items] to [accept] and adds TODO about data-list-wrapper',
         migrate({
             template: `
                 <tui-input-time
@@ -76,7 +76,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'silently removes strict, itemsHidden, [itemSize], [disabledItemHandler]',
+        'keeps [disabledItemHandler] on tui-textfield, adds TODO for [itemsHidden], silently removes strict and [itemSize]',
         migrate({
             template: `
                 <tui-input-time

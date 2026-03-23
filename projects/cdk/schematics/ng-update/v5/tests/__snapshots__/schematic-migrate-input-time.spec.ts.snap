@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update keeps [disabledItemHandler] on tui-textfield, adds TODO for [itemsHidden], silently removes strict and [itemSize]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-time
+                    formControlName="time"
+                    [strict]="true"
+                    [itemsHidden]="false"
+                    [itemSize]="'s'"
+                    [disabledItemHandler]="handler"
+                >
+                    Time
+                </tui-input-time>",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input-time migration (see https://taiga-ui.dev/components/input-time):
+     - [itemsHidden] was removed. Dropdown visibility is now controlled by mounting/detaching <tui-data-list-wrapper *tuiDropdown> into/from DOM inside <tui-textfield>. See: https://taiga-ui.dev/components/input-time#dropdown-with--data-list
+-->
+<tui-textfield
+                    
+                    
+                    
+                    
+                    [disabledItemHandler]="handler"
+                >
+<label tuiLabel>
+                    Time
+                </label>
+
+<input tuiInputTime formControlName="time" />
+</tui-textfield>",
+}
+`;
+
 exports[`ng-update migrate TuiInputTimeModule to TuiInputTime: test.html 1`] = `
 {
   "0. Before": "
@@ -116,7 +148,7 @@ exports[`ng-update moves [mode] to <input tuiInputTime>: test.html 1`] = `
 }
 `;
 
-exports[`ng-update renames [items] to [accept] on <input tuiInputTime>: test.html 1`] = `
+exports[`ng-update renames [items] to [accept] and adds TODO about data-list-wrapper: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-time
@@ -126,7 +158,10 @@ exports[`ng-update renames [items] to [accept] on <input tuiInputTime>: test.htm
                     Time
                 </tui-input-time>",
   "1. After": "
-                <tui-textfield
+                <!-- TODO: (Taiga UI migration) tui-input-time migration (see https://taiga-ui.dev/components/input-time):
+     - [items] was renamed to [accept] on <input tuiInputTime>. For a dropdown list, also add <tui-data-list-wrapper *tuiDropdown [items]="timeItems | tuiFilterByInput: matcher" /> inside <tui-textfield>. See: https://taiga-ui.dev/components/input-time#dropdown-with--data-list
+-->
+<tui-textfield
                     
                     
                 >
@@ -135,35 +170,6 @@ exports[`ng-update renames [items] to [accept] on <input tuiInputTime>: test.htm
                 </label>
 
 <input tuiInputTime formControlName="time" [accept]="timeItems" />
-</tui-textfield>",
-}
-`;
-
-exports[`ng-update silently removes strict, itemsHidden, [itemSize], [disabledItemHandler]: test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input-time
-                    formControlName="time"
-                    [strict]="true"
-                    [itemsHidden]="false"
-                    [itemSize]="'s'"
-                    [disabledItemHandler]="handler"
-                >
-                    Time
-                </tui-input-time>",
-  "1. After": "
-                <tui-textfield
-                    
-                    
-                    
-                    
-                    
-                >
-<label tuiLabel>
-                    Time
-                </label>
-
-<input tuiInputTime formControlName="time" />
 </tui-textfield>",
 }
 `;
