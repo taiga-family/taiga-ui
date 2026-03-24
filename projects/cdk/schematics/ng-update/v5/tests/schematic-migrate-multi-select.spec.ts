@@ -4,9 +4,7 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-const migrate = createMigration({
-    collection: join(__dirname, '../../../migration.json'),
-});
+const migrate = createMigration({collection: join(__dirname, '../../../migration.json')});
 
 describe('ng-update legacy multi-select', () => {
     it(
@@ -52,7 +50,8 @@ describe('ng-update legacy multi-select', () => {
     it(
         'renames valueContent to content (non-binding form)',
         migrate({
-            template: `<tui-multi-select valueContent="tmpl" formControlName="items"></tui-multi-select>`,
+            template:
+                '<tui-multi-select valueContent="tmpl" formControlName="items"></tui-multi-select>',
         }),
     );
 
@@ -129,7 +128,8 @@ describe('ng-update legacy multi-select', () => {
     it(
         'adds tuiSelectLike to <input> when editable="false" (plain attribute)',
         migrate({
-            template: `<tui-multi-select editable="false" formControlName="items"></tui-multi-select>`,
+            template:
+                '<tui-multi-select editable="false" formControlName="items"></tui-multi-select>',
         }),
     );
 
@@ -204,7 +204,8 @@ describe('ng-update legacy multi-select', () => {
     it(
         'does not duplicate tuiChevron if already present',
         migrate({
-            template: `<tui-multi-select tuiChevron formControlName="items"></tui-multi-select>`,
+            template:
+                '<tui-multi-select tuiChevron formControlName="items"></tui-multi-select>',
         }),
     );
 

@@ -15,11 +15,13 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
-const MULTI_SELECT_MIGRATION_TODO = `<!-- ${TODO_MARK} tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->\n`;
+const DOCS_LINK = 'https://taiga-ui.dev/components/input-chip';
+const MULTI_SELECT_MIGRATION_TODO = `<!-- ${TODO_MARK} tui-multi-select was partially migrated. Complete migration manually. See examples: ${DOCS_LINK} -->\n`;
 const VALUE_CONTENT_ATTR = 'valueContent';
 const CONTENT_ATTR = 'content';
 const TEXTFIELD_LABEL_OUTSIDE_ATTR = 'tuiTextfieldLabelOutside';
 const AUTO_COLOR_ATTR = 'autoColor';
+const AUTO_COLOR_TODO = `<!-- ${TODO_MARK} [autoColor] was removed. Use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->\n`;
 const PLACEHOLDER_ATTR = 'placeholder';
 const PLACEHOLDER_BINDING_ATTR = '[placeholder]';
 const EDITABLE_ATTR = 'editable';
@@ -58,9 +60,13 @@ export function migrateMultiSelect({
         );
 
         if (typeof startOffset === 'number') {
+            const lineStart = template.lastIndexOf('\n', startOffset) + 1;
+            const indent =
+                /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
+
             recorder.insertLeft(
                 templateOffset + startOffset,
-                MULTI_SELECT_MIGRATION_TODO,
+                `${MULTI_SELECT_MIGRATION_TODO}${indent}`,
             );
         }
 
@@ -90,9 +96,24 @@ export function migrateMultiSelect({
             template,
         );
 
-        // Remove [autoColor]
+        // Remove [autoColor] and add TODO
+        const hasAutoColor = element.attrs.some((attr) =>
+            [`[${AUTO_COLOR_ATTR}]`, AUTO_COLOR_ATTR].includes(attr.name.toLowerCase()),
+        );
+
         removeAttr(recorder, templateOffset, element, `[${AUTO_COLOR_ATTR}]`, template);
         removeAttr(recorder, templateOffset, element, AUTO_COLOR_ATTR, template);
+
+        if (hasAutoColor && typeof startOffset === 'number') {
+            const lineStart = template.lastIndexOf('\n', startOffset) + 1;
+            const indent =
+                /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
+
+            recorder.insertLeft(
+                templateOffset + startOffset,
+                `${AUTO_COLOR_TODO}${indent}`,
+            );
+        }
 
         // Extract and remove placeholder (it will move to <input>)
         const placeholder = extractPlaceholder(element);
@@ -126,10 +147,16 @@ export function migrateMultiSelect({
             removeAttr(recorder, templateOffset, element, SEARCH_CHANGE_OUTPUT, template);
         }
 
-        // Check for [search] bindings with no template-level v5 equivalent
+        // [search] / [(search)] / search — no template-level v5 equivalent, remove from element
         const hasManualSearchAttrs = element.attrs.some((attr) =>
             MANUAL_SEARCH_BINDING_ATTRS.has(attr.name.toLowerCase()),
         );
+
+        if (hasManualSearchAttrs) {
+            for (const attrName of MANUAL_SEARCH_BINDING_ATTRS) {
+                removeAttr(recorder, templateOffset, element, attrName, template);
+            }
+        }
 
         // Remove form control attrs from element (they go on <input>)
         controlAttrs.forEach((attr) => {
@@ -201,10 +228,10 @@ export function migrateMultiSelect({
             ? ` (input)="${searchChangeExpr}(($event.target as HTMLInputElement).value)"`
             : '';
         const manualSearchTodo = hasManualSearchAttrs
-            ? `<!-- ${TODO_MARK} [search] has no template-level v5 equivalent. Use viewChild<TuiTextfieldMultiComponent> and set value signal imperatively. See: https://taiga-ui.dev/components/input-chip -->\n`
+            ? `<!-- ${TODO_MARK} [search] was removed. Use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes. See: ${DOCS_LINK} -->\n`
             : '';
         const searchChangeTodo = searchChangeExpr
-            ? `<!-- ${TODO_MARK} (searchChange) migrated to (input). Handler now receives string instead of string|null — update the handler signature accordingly -->\n`
+            ? `<!-- ${TODO_MARK} (searchChange) was replaced by (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">. See: ${DOCS_LINK} -->\n`
             : '';
         const firstElementChildOffset = element.childNodes.find(
             (node): node is Element => node.nodeName !== '#text',
