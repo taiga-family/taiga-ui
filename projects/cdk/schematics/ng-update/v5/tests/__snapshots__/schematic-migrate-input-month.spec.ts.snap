@@ -3,14 +3,9 @@
 exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.html 1`] = `
 {
   "0. Before": "
-                <tui-input-month>
-                </tui-input-month>
+                <tui-input-month></tui-input-month>
 
-                <tui-input-month
-                    [formControl]="control"
-                >
-                    Choose month
-                </tui-input-month>
+                <tui-input-month [formControl]="control">Choose month</tui-input-month>
 
                 <tui-input-month
                     formControlName="month"
@@ -23,25 +18,16 @@ exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.html 1`] =
                     />
                 </tui-input-month>
 
-                <tui-input-month
-                    [(ngModel)]="value"
-                >
-                    Your month
-                </tui-input-month>
+                <tui-input-month [(ngModel)]="value">Your month</tui-input-month>
             ",
   "1. After": "
                 <tui-textfield>
-                
 <input tuiInputMonth />
 <tui-calendar-month *tuiDropdown />
 </tui-textfield>
 
-                <tui-textfield
-                    
-                >
-<label tuiLabel>
-                    Choose month
-                </label>
+                <tui-textfield >
+<label tuiLabel>Choose month</label>
 
 <input tuiInputMonth [formControl]="control" />
 <tui-calendar-month *tuiDropdown />
@@ -62,12 +48,8 @@ exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.html 1`] =
 <tui-calendar-month *tuiDropdown />
 </tui-textfield>
 
-                <tui-textfield
-                    
-                >
-<label tuiLabel>
-                    Your month
-                </label>
+                <tui-textfield >
+<label tuiLabel>Your month</label>
 
 <input tuiInputMonth [(ngModel)]="value" />
 <tui-calendar-month *tuiDropdown />
@@ -130,13 +112,14 @@ exports[`ng-update moves [min] and [max] to <input tuiInputMonth>, [disabledItem
 {
   "0. Before": "
                 <tui-input-month
-                    [min]="minMonth"
-                    [max]="maxMonth"
-                    [disabledItemHandler]="disabledHandler"
                     formControlName="month"
+                    [disabledItemHandler]="disabledHandler"
+                    [max]="maxMonth"
+                    [min]="minMonth"
                 >
                     Month
-                </tui-input-month>",
+                </tui-input-month>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -148,9 +131,10 @@ exports[`ng-update moves [min] and [max] to <input tuiInputMonth>, [disabledItem
                     Month
                 </label>
 
-<input tuiInputMonth formControlName="month" [min]="minMonth" [max]="maxMonth" />
+<input tuiInputMonth formControlName="month" [max]="maxMonth" [min]="minMonth" />
 <tui-calendar-month *tuiDropdown [disabledItemHandler]="disabledHandler" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -158,11 +142,12 @@ exports[`ng-update renames [defaultActiveYear] to [year] on <tui-calendar-month 
 {
   "0. Before": "
                 <tui-input-month
-                    [defaultActiveYear]="initialYear"
                     formControlName="month"
+                    [defaultActiveYear]="initialYear"
                 >
                     Month
-                </tui-input-month>",
+                </tui-input-month>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -174,6 +159,7 @@ exports[`ng-update renames [defaultActiveYear] to [year] on <tui-calendar-month 
 
 <input tuiInputMonth formControlName="month" />
 <tui-calendar-month *tuiDropdown [year]="initialYear" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;

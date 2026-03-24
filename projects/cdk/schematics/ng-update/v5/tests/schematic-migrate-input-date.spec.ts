@@ -20,28 +20,32 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-date>
-                </tui-input-date>
+            template: /* HTML */ `
+                <tui-input-date></tui-input-date>
 
                 <tui-input-date
                     [formControl]="control"
                     [tuiTextfieldCleaner]="true"
                 >
                     Choose a date
-                    <input
-                        tuiTextfieldLegacy
-                    />
+                    <input tuiTextfieldLegacy />
                 </tui-input-date>
 
+                <tui-input-date formControlName="date">Pick date</tui-input-date>
+
+                <tui-input-date [(ngModel)]="value">Date</tui-input-date>
+            `,
+        }),
+    );
+
+    it(
+        'moves [min] and [max] to <input tuiInputDate>',
+        migrate({
+            template: /* HTML */ `
                 <tui-input-date
                     formControlName="date"
-                >
-                    Pick date
-                </tui-input-date>
-
-                <tui-input-date
-                    [(ngModel)]="value"
+                    [max]="maxDate"
+                    [min]="minDate"
                 >
                     Date
                 </tui-input-date>
@@ -50,56 +54,45 @@ describe('ng-update', () => {
     );
 
     it(
-        'moves [min] and [max] to <input tuiInputDate>',
-        migrate({
-            template: `
-                <tui-input-date
-                    [min]="minDate"
-                    [max]="maxDate"
-                    formControlName="date"
-                >
-                    Date
-                </tui-input-date>`,
-        }),
-    );
-
-    it(
         'moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
+                    formControlName="date"
                     [disabledItemHandler]="disabledHandler"
                     [markerHandler]="markerHandler"
-                    formControlName="date"
                 >
                     Date
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'renames [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
-                    [defaultActiveYearMonth]="initialMonth"
                     formControlName="date"
+                    [defaultActiveYearMonth]="initialMonth"
                 >
                     Date
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'adds TODO for [items] (no v5 equivalent)',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
-                    [items]="namedDays"
                     formControlName="date"
+                    [items]="namedDays"
                 >
                     Date
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 

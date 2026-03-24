@@ -4,19 +4,19 @@ exports[`ng-update ComboBox [stringify] / [identityMatcher] / [disabledItemHandl
 {
   "0. Before": "
                 <tui-combo-box
-                    [formControl]="control"
-                    [stringify]="stringifyFn"
-                    [identityMatcher]="matcherFn"
                     [disabledItemHandler]="disabledFn"
+                    [formControl]="control"
+                    [identityMatcher]="matcherFn"
+                    [stringify]="stringifyFn"
                 >
                     Label
                 </tui-combo-box>
             ",
   "1. After": "
                 <tui-textfield
-                    [stringify]="stringifyFn"
-                    [identityMatcher]="matcherFn"
                     [disabledItemHandler]="disabledFn"
+                    [identityMatcher]="matcherFn"
+                    [stringify]="stringifyFn"
                 >
 <label tuiLabel>
                     Label
@@ -81,20 +81,19 @@ exports[`ng-update ComboBox adds TODO for [search] and (searchChange): test.html
 exports[`ng-update ComboBox handles multiple combo-boxes in the same template: test.html 1`] = `
 {
   "0. Before": "
-                <tui-combo-box [formControl]="first">
-                    First
-                </tui-combo-box>
+                <tui-combo-box [formControl]="first">First</tui-combo-box>
 
                 <tui-combo-box [(ngModel)]="second">
                     Second
-                    <tui-data-list-wrapper *tuiDataList [items]="items" />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
                 </tui-combo-box>
             ",
   "1. After": "
                 <tui-textfield>
-<label tuiLabel>
-                    First
-                </label>
+<label tuiLabel>First</label>
 
 <input tuiComboBox [formControl]="first" />
 </tui-textfield>
@@ -105,7 +104,10 @@ exports[`ng-update ComboBox handles multiple combo-boxes in the same template: t
                     </label>
 
 <input tuiComboBox [(ngModel)]="second" />
-<tui-data-list-wrapper *tuiDropdown [items]="items" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
                 </tui-textfield>
             ",
 }
@@ -140,7 +142,12 @@ exports[`ng-update ComboBox migrates *tuiDataList to *tuiDropdown: test.html 1`]
                 <tui-combo-box [formControl]="control">
                     Label
                     <tui-data-list *tuiDataList>
-                        <button tuiOption [value]="item">{{ item }}</button>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
                     </tui-data-list>
                 </tui-combo-box>
             ",
@@ -152,7 +159,12 @@ exports[`ng-update ComboBox migrates *tuiDataList to *tuiDropdown: test.html 1`]
 
 <input tuiComboBox [formControl]="control" />
 <tui-data-list *tuiDropdown>
-                        <button tuiOption [value]="item">{{ item }}</button>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
                     </tui-data-list>
                 </tui-textfield>
             ",
@@ -215,11 +227,11 @@ exports[`ng-update ComboBox migrates combo-box with all properties combined: tes
   "0. Before": "
                 <tui-combo-box
                     [formControl]="control"
-                    [strictMatcher]="myMatcher"
-                    [strict]="false"
                     [search]="search"
-                    (searchChange)="search = $event"
+                    [strict]="false"
+                    [strictMatcher]="myMatcher"
                     [valueContent]="contentTpl"
+                    (searchChange)="search = $event"
                 >
                     Choose a hero
                     <input
@@ -228,8 +240,8 @@ exports[`ng-update ComboBox migrates combo-box with all properties combined: tes
                     />
                     <tui-data-list-wrapper
                         *tuiDataList
-                        [items]="heroes"
                         [itemContent]="contentTpl"
+                        [items]="heroes"
                     />
                 </tui-combo-box>
             ",
@@ -242,13 +254,13 @@ exports[`ng-update ComboBox migrates combo-box with all properties combined: tes
 <label tuiLabel>
                     Choose a hero
                     </label>
-<input tuiComboBox [formControl]="control" [matcher]="myMatcher" [strict]="false" (input)="search = $event.target.value"
+<input tuiComboBox [formControl]="control" [strict]="false" [matcher]="myMatcher" (input)="search = $event.target.value"
                         placeholder="Start typing..."
                     />
                     <tui-data-list-wrapper
                         *tuiDropdown
-                        [items]="heroes"
                         [itemContent]="contentTpl"
+                        [items]="heroes"
                     />
                 </tui-textfield>
             ",
@@ -290,21 +302,27 @@ exports[`ng-update ComboBox migrates tui-combo-box with legacy textfield input: 
 exports[`ng-update ComboBox moves [(ngModel)] to generated input when input is absent: test.html 1`] = `
 {
   "0. Before": "
-<tui-combo-box [(ngModel)]="value">
-    Choose an option
-    <tui-data-list-wrapper *tuiDataList [items]="items" />
-</tui-combo-box>
-",
+                <tui-combo-box [(ngModel)]="value">
+                    Choose an option
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            ",
   "1. After": "
-<tui-textfield>
+                <tui-textfield>
 <label tuiLabel>
-    Choose an option
-    </label>
+                    Choose an option
+                    </label>
 
 <input tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown [items]="items" />
-</tui-textfield>
-",
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -367,14 +385,20 @@ exports[`ng-update ComboBox put text node inside input[placeholder] when [tuiTex
                     [tuiTextfieldLabelOutside]="true"
                 >
                     City
-                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="cities"
+                    />
                 </tui-combo-box>
             ",
   "1. After": "
                 <tui-textfield
                 >
 <input tuiComboBox [formControl]="control" placeholder="City" />
-<tui-data-list-wrapper *tuiDropdown [items]="cities" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="cities"
+                    />
                 </tui-textfield>
             ",
 }
@@ -457,7 +481,10 @@ exports[`ng-update ComboBox wraps text node in label[tuiLabel] when [tuiTextfiel
                     [tuiTextfieldLabelOutside]="false"
                 >
                     City
-                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="cities"
+                    />
                 </tui-combo-box>
             ",
   "1. After": "
@@ -468,7 +495,10 @@ exports[`ng-update ComboBox wraps text node in label[tuiLabel] when [tuiTextfiel
                     </label>
 
 <input tuiComboBox [formControl]="control" />
-<tui-data-list-wrapper *tuiDropdown [items]="cities" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="cities"
+                    />
                 </tui-textfield>
             ",
 }

@@ -20,9 +20,8 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-color>
-                </tui-input-color>
+            template: /* HTML */ `
+                <tui-input-color></tui-input-color>
 
                 <tui-input-color
                     [formControl]="control"
@@ -31,17 +30,9 @@ describe('ng-update', () => {
                     Choose a color
                 </tui-input-color>
 
-                <tui-input-color
-                    formControlName="color"
-                >
-                    Pick color
-                </tui-input-color>
+                <tui-input-color formControlName="color">Pick color</tui-input-color>
 
-                <tui-input-color
-                    [(ngModel)]="value"
-                >
-                    Color
-                </tui-input-color>
+                <tui-input-color [(ngModel)]="value">Color</tui-input-color>
             `,
         }),
     );
@@ -59,13 +50,14 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <tui-input-color
-                    [colors]="myPalette"
                     formControlName="color"
+                    [colors]="myPalette"
                 >
                     Pick color
-                </tui-input-color>`,
+                </tui-input-color>
+            `,
         }),
     );
 

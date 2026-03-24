@@ -57,7 +57,7 @@ describe('ng-update avatar', () => {
     it(
         'picture inside tui-avatar',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-avatar class="tui-space_horizontal-4">
                     <picture>
                         <source
@@ -77,10 +77,13 @@ describe('ng-update avatar', () => {
     it(
         'complex templates',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <section *ngFor="let size of sizes">
                     <tui-avatar [size]="size">{{ size | uppercase }}</tui-avatar>
-                    <tui-avatar src="@tui.user" [size]="size" />
+                    <tui-avatar
+                        src="@tui.user"
+                        [size]="size"
+                    />
                 </section>
             `,
         }),

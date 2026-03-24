@@ -37,11 +37,12 @@ exports[`ng-update adds single TODO when both countryCode and phoneMaskAfterCoun
   "0. Before": "
                 <tui-input-phone
                     countryCode="+7"
-                    phoneMaskAfterCountryCode="(###) ###-##-##"
                     formControlName="value"
+                    phoneMaskAfterCountryCode="(###) ###-##-##"
                 >
                     Phone
-                </tui-input-phone>",
+                </tui-input-phone>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input-phone migration (see https://taiga-ui.dev/components/input-phone):
      - countrycode, phonemaskaftercountrycode have no direct v5 equivalent.
@@ -58,7 +59,8 @@ exports[`ng-update adds single TODO when both countryCode and phoneMaskAfterCoun
                 </label>
 
 <input tuiInputPhone formControlName="value" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -66,7 +68,9 @@ exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.html 1`] =
 {
   "0. Before": "
                 <form [formGroup]="form">
-                  <tui-input-phone formControlName="value">Phone number</tui-input-phone>
+                    <tui-input-phone formControlName="value">
+                        Phone number
+                    </tui-input-phone>
                 </form>
 
                 <tui-input-phone
@@ -101,15 +105,14 @@ exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.html 1`] =
                     />
                 </tui-input-phone>
 
-                <tui-input-phone
-                    [(ngModel)]="value"
-                >
-                </tui-input-phone>
+                <tui-input-phone [(ngModel)]="value"></tui-input-phone>
             ",
   "1. After": "
                 <form [formGroup]="form">
-                  <tui-textfield >
-<label tuiLabel>Phone number</label>
+                    <tui-textfield >
+<label tuiLabel>
+                        Phone number
+                    </label>
 
 <input tuiInputPhone formControlName="value" />
 </tui-textfield>
@@ -155,10 +158,7 @@ exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.html 1`] =
                     />
                 </tui-textfield>
 
-                <tui-textfield
-                    
-                >
-                
+                <tui-textfield >
 <input tuiInputPhone [(ngModel)]="value" />
 </tui-textfield>
             ",

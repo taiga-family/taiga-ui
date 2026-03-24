@@ -33,13 +33,10 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-password>
-                </tui-input-password>
+            template: /* HTML */ `
+                <tui-input-password></tui-input-password>
 
-                <tui-input-password
-                    [formControl]="control"
-                >
+                <tui-input-password [formControl]="control">
                     Enter password
                 </tui-input-password>
 
@@ -54,9 +51,7 @@ describe('ng-update', () => {
                     />
                 </tui-input-password>
 
-                <tui-input-password
-                    [(ngModel)]="value"
-                >
+                <tui-input-password [(ngModel)]="value">
                     Confirm password
                 </tui-input-password>
             `,

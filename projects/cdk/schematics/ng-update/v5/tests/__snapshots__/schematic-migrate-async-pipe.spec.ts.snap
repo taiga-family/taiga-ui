@@ -4,14 +4,14 @@ exports[`ng-update remove | async from signal-based pipes should handle multilin
 {
   "0. Before": "
                 <p>
-                    Formatted number with rounding:
-                    {{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} | async }}
+                    Formatted number with rounding: {{ 10500.334 | tuiFormatNumber:
+                    {precision: 2, decimalSeparator: '.', rounding: 'ceil'} | async }}
                 </p>
             ",
   "1. After": "
                 <p>
-                    Formatted number with rounding:
-                    {{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} }}
+                    Formatted number with rounding: {{ 10500.334 | tuiFormatNumber:
+                    {precision: 2, decimalSeparator: '.', rounding: 'ceil'} }}
                 </p>
             ",
 }

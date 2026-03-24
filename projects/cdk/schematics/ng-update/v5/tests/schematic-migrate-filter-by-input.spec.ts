@@ -99,9 +99,13 @@ describe('ng-update FilterByInput migration', () => {
                         (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
                 }
             `,
-            template: `
-                <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByDigit" />
-                <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByName" />
+            template: /* HTML */ `
+                <tui-data-list-wrapper
+                    [items]="items | tuiFilterByInput: matcherByDigit"
+                />
+                <tui-data-list-wrapper
+                    [items]="items | tuiFilterByInput: matcherByName"
+                />
             `,
         }),
     );

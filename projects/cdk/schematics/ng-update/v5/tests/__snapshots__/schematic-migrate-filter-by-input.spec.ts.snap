@@ -98,12 +98,20 @@ exports[`ng-update FilterByInput migration migrates TuiFilterByInputPipe from @t
 exports[`ng-update FilterByInput migration migrates matcher (2nd argument of tuiFilterByInput) to new API — external template: test.html 1`] = `
 {
   "0. Before": "
-                <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByDigit" />
-                <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcherByName" />
+                <tui-data-list-wrapper
+                    [items]="items | tuiFilterByInput: matcherByDigit"
+                />
+                <tui-data-list-wrapper
+                    [items]="items | tuiFilterByInput: matcherByName"
+                />
             ",
   "1. After": "
-                <tui-data-list-wrapper [items]="items | tuiFilterByInput: filterWithMatcherByDigit" />
-                <tui-data-list-wrapper [items]="items | tuiFilterByInput: filterWithMatcherByName" />
+                <tui-data-list-wrapper
+                    [items]="items | tuiFilterByInput: filterWithMatcherByDigit"
+                />
+                <tui-data-list-wrapper
+                    [items]="items | tuiFilterByInput: filterWithMatcherByName"
+                />
             ",
 }
 `;
