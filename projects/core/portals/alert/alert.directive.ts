@@ -15,7 +15,11 @@ export interface TuiPositionOptions {
 
 @Component({
     template: '',
-    styleUrl: './alert.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './alert.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-alert-${TUI_VERSION}`,

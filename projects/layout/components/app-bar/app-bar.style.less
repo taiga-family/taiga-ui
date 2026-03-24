@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-tui-app-bar {
+tui-app-bar:where(*&) {
     position: relative;
     display: flex;
     block-size: 2.75rem;
@@ -87,15 +87,15 @@ tui-app-bar {
     }
 }
 
-tui-dialog tui-app-bar[data-size='l'] {
+tui-dialog tui-app-bar[data-size='l']:where(*&) {
     margin: -3rem 0 2rem;
 }
 
-tui-dialog tui-app-bar[data-size='m'] {
+tui-dialog tui-app-bar[data-size='m']:where(*&) {
     margin: -1rem -1rem 0.75rem;
 }
 
-tui-sheet-dialog tui-app-bar {
+tui-sheet-dialog tui-app-bar:where(*&) {
     margin: -0.75rem -1rem;
     block-size: 3.5rem;
     background: none;

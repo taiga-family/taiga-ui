@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiTab] {
+[tuiTab]:where(*&) {
     .transition(~'color, box-shadow, opacity, background');
     .button-clear();
 
@@ -68,7 +68,7 @@
     }
 }
 
-tui-tabs {
+tui-tabs:where(*&) {
     .scrollbar-hidden();
 
     position: relative;
@@ -119,7 +119,7 @@ tui-tabs {
     }
 }
 
-tui-tabs[data-vertical] {
+tui-tabs[data-vertical]:where(*&) {
     flex-direction: column;
     box-shadow: inset calc(-1px * var(--tui-inline)) 0 var(--tui-border-normal);
 

@@ -3,7 +3,7 @@ TODO: if :has() is supported by all browsers
  - use tui-textfield:has([tuiInputNumber]) .t-input-number {...}
  - rename .t-input-number-buttons => .t-buttons
  */
-.t-input-number-buttons.t-input-number-buttons {
+.t-input-number-buttons.t-input-number-buttons:where(*&) {
     position: absolute;
     display: flex;
     inset-inline-end: 0;
@@ -57,7 +57,7 @@ TODO: if :has() is supported by all browsers
     }
 }
 
-[tuiInputNumber]._with-buttons {
+[tuiInputNumber]._with-buttons:where(*&) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -73,7 +73,7 @@ TODO: if :has() is supported by all browsers
  - use tui-textfield:has([tuiInputNumber]) {...}
  - rename --t-input-number-offset-end => --t-offset-end
  */
-tui-textfield {
+tui-textfield:where(*&) {
     &[data-size='l'] {
         --t-input-number-offset-end: calc(
             var(--tui-height-m) // width of step button
@@ -90,12 +90,12 @@ tui-textfield {
     }
 }
 
-[tuiInputNumber]._with-buttons,
+[tuiInputNumber]._with-buttons:where(*&),
 [tuiInputNumber]._with-buttons ~ .t-template {
     inline-size: calc(100% - var(--t-input-number-offset-end));
     margin-inline-end: var(--t-input-number-offset-end);
 }
 
-[tuiInputNumber]._with-buttons ~ .t-content {
+[tuiInputNumber]._with-buttons ~ .t-content:where(*&) {
     margin-inline-end: var(--t-input-number-offset-end);
 }

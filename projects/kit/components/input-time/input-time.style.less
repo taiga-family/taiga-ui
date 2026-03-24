@@ -1,7 +1,7 @@
 @import '@taiga-ui/styles/utils';
 
 // TODO: replace with `tui-textfield:has([tuiInputTime]) input[type='time']` (when all browsers supports :has())
-tui-textfield input[tuiInputTime] ~ .t-content input[type='time'] {
+tui-textfield input[tuiInputTime] ~ .t-content input[type='time']:where(*&) {
     position: absolute;
     inset-inline-end: 0;
     inset-inline-start: auto;

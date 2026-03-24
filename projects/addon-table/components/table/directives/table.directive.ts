@@ -37,7 +37,11 @@ const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
 
 @Component({
     template: '',
-    styleUrl: './table.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './table.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-table-${TUI_VERSION}`,
@@ -60,6 +64,7 @@ class Styles {}
     hostDirectives: [TuiStuck],
     host: {
         tuiTable: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
     },
 })

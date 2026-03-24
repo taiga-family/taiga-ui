@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -26,7 +27,11 @@ import {TuiInputNumberStepService} from './input-number-step.service';
     selector: 'input[tuiInputNumber][step]',
     imports: [TuiButton, TuiTextfieldContent],
     templateUrl: './input-number-step.template.html',
-    styleUrl: './input-number-step.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-number-step.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiInputNumberStepService],

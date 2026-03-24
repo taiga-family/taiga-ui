@@ -13,6 +13,7 @@ import {
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map} from 'rxjs';
@@ -21,7 +22,11 @@ import {TuiTruncateService} from './truncate.service';
 
 @Component({
     template: '',
-    styleUrl: './truncate.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './truncate.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

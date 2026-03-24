@@ -19,6 +19,7 @@ import {
     TuiWithItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});
@@ -27,13 +28,18 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     selector: 'tui-radio-list',
     imports: [FormsModule, PolymorpheusOutlet, TuiRadio, TuiValidator],
     templateUrl: './radio-list.template.html',
-    styleUrl: './radio-list.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './radio-list.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiRadioList)],
     hostDirectives: [TuiWithItemsHandlers],
     host: {
         role: 'radiogroup',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
         '(focusout)': 'onFocusOut()',
     },

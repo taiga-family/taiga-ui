@@ -9,7 +9,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './button-group.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './button-group.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-button-group-${TUI_VERSION}`,

@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils.less';
 
-[tuiTooltip] {
+[tuiTooltip]:where(*&) {
     border-width: 0.125rem;
     border-radius: 100%;
     cursor: pointer;
@@ -25,8 +25,8 @@
 }
 
 @media @tui-mouse {
-    tui-textfield:hover [tuiTooltip][data-appearance='icon']::before,
-    tui-textarea:hover [tuiTooltip][data-appearance='icon']::before {
+    tui-textfield:hover [tuiTooltip]:where(*&)[data-appearance='icon']::before,
+    tui-textarea:hover [tuiTooltip]:where(*&)[data-appearance='icon']::before {
         color: var(--tui-text-secondary);
     }
 }

@@ -17,7 +17,11 @@ const rowsInSvg = 3;
 
 @Component({
     template: '',
-    styleUrl: './sensitive.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './sensitive.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-sensitive-${TUI_VERSION}`,

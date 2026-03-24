@@ -20,7 +20,11 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Component({
     template: '',
-    styleUrl: './tabs.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './tabs.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-tabs-${TUI_VERSION}`,
@@ -29,6 +33,7 @@ class Styles {}
 
 @Directive({
     host: {
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
         [`(${TUI_TAB_ACTIVATE}.stop)`]: 'onActivate($event.target)',
     },

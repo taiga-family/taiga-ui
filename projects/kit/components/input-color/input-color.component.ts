@@ -24,6 +24,7 @@ import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 
 const REGEX = /[0-9a-f]/i;
 const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';
@@ -32,7 +33,11 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     selector: 'input[tuiInputColor]',
     imports: [FormsModule, TuiSlider, TuiTextfieldContent],
     templateUrl: './input-color.template.html',
-    styleUrl: './input-color.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-color.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiInputColorComponent), tuiFallbackValueProvider('')],

@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-header[tuiNavigationHeader][tuiNavigationHeader] {
+header[tuiNavigationHeader][tuiNavigationHeader]:where(*&) {
     position: sticky;
     z-index: 2;
     display: flex;
@@ -82,7 +82,7 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     }
 }
 
-tui-dropdown[data-appearance='dropdown-navigation'] {
+tui-dropdown[data-appearance='dropdown-navigation']:where(*&) {
     border: none;
     color: var(--tui-text-primary);
     background: var(--tui-background-elevation-3);

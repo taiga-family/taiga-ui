@@ -12,7 +12,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CARD} from '@taiga-ui/addon-commerce/constants';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
+import {CHAR_NO_BREAK_SPACE, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {TuiIconPipe} from '@taiga-ui/core/components/icon';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -33,7 +33,11 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
             />
         }
     `,
-    styleUrl: './input-card.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-card.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective, TuiWithInput],

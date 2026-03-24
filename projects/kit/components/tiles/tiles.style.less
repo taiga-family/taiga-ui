@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-tui-tiles {
+tui-tiles:where(*&) {
     position: relative;
     z-index: 0;
     display: grid;
@@ -19,7 +19,7 @@ tui-tiles {
     }
 }
 
-tui-tile {
+tui-tile:where(*&) {
     & > .t-wrapper {
         // don't use ".fullsize(absolute)" because it will break transition
         position: absolute;

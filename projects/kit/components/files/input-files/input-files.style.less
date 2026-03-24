@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-label[tuiInputFiles] {
+label[tuiInputFiles]:where(*&) {
     position: relative;
     display: flex;
     min-block-size: var(--tui-height-l);
@@ -37,11 +37,11 @@ label[tuiInputFiles] {
     }
 }
 
-*:disabled label[tuiInputFiles] {
+*:disabled label[tuiInputFiles]:where(*&) {
     pointer-events: none;
 }
 
-[tuiAppearance][data-appearance='file'] {
+[tuiAppearance][data-appearance='file']:where(*&) {
     .transition(background);
 
     border-radius: inherit;

@@ -4,6 +4,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/portals/dropdown';
@@ -15,7 +16,11 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
 @Component({
     selector: 'header[tuiNavigationHeader]',
     template: '<ng-content />',
-    styleUrl: './header.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './header.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -27,6 +32,6 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
         tuiTextfieldOptionsProvider({size: signal('s')}),
         tuiHintOptionsProvider({appearance: 'floating'}),
     ],
-    host: {tuiTheme: 'dark'},
+    host: {'data-tui-version': TUI_VERSION, tuiTheme: 'dark'},
 })
 export class TuiHeaderComponent {}

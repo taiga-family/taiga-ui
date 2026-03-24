@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiSurface] {
+[tuiSurface]:where(*&) {
     .transition();
 
     --tui-gap: 0.25rem;
@@ -30,19 +30,19 @@
     });
 }
 
-tui-dialog[data-appearance~='taiga'] [tuiSurface],
-tui-sheet-dialog [tuiSurface] {
+tui-dialog[data-appearance~='taiga'] [tuiSurface]:where(*&),
+tui-sheet-dialog [tuiSurface]:where(*&) {
     --tui-background-elevation-1: var(--tui-background-elevation-2);
 }
 
-button[tuiSurface] {
+button[tuiSurface]:where(*&) {
     cursor: pointer;
 }
 
-[tuiSurface]::before,
-[tuiSurface]::after,
-[tuiSurfaceLayer]::before,
-[tuiSurfaceLayer]::after {
+[tuiSurface]:where(*&)::before,
+[tuiSurface]:where(*&)::after,
+[tuiSurfaceLayer]:where(*&)::before,
+[tuiSurfaceLayer]:where(*&)::after {
     .fullsize();
     .transition();
 
@@ -55,7 +55,7 @@ button[tuiSurface] {
     transition-property: opacity, backdrop-filter, transform;
 }
 
-[tuiSurfaceLayer] {
+[tuiSurfaceLayer]:where(*&) {
     .transition();
     .fullsize();
 
@@ -88,7 +88,7 @@ button[tuiSurface] {
     }
 }
 
-input[tuiSurfaceLayer] {
+input[tuiSurfaceLayer]:where(*&) {
     color: var(--tui-background-accent-2);
     appearance: none;
     margin: 0;
@@ -133,7 +133,7 @@ input[tuiSurfaceLayer] {
     }
 }
 
-[tuiSurface][data-appearance='floating'] {
+[tuiSurface][data-appearance='floating']:where(*&) {
     background: var(--tui-background-elevation-1);
     box-shadow: var(--tui-shadow-medium);
 
@@ -149,7 +149,7 @@ input[tuiSurfaceLayer] {
     });
 }
 
-[tuiSurface][data-appearance='neutral'] {
+[tuiSurface][data-appearance='neutral']:where(*&) {
     background: conic-gradient(var(--tui-background-neutral-1) 0 0), conic-gradient(var(--tui-background-base) 0 0);
 
     [tuiTheme='dark'] &,

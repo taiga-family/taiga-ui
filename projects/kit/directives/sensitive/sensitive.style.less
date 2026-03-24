@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-.tui-sensitive {
+.tui-sensitive:where(*&) {
     position: relative;
     line-height: 1em;
     clip-path: inset(0 round 0.25rem);
@@ -22,7 +22,7 @@
     }
 }
 
-span.tui-sensitive,
-a.tui-sensitive {
+span.tui-sensitive:where(*&),
+a.tui-sensitive:where(*&) {
     display: inline-block;
 }

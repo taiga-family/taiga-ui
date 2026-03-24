@@ -11,7 +11,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './floating-container.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './floating-container.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-floating-container-${TUI_VERSION}`,
@@ -23,6 +27,7 @@ class Styles {}
     hostDirectives: [TuiAnimated],
     host: {
         tuiFloatingContainer: '',
+        'data-tui-version': TUI_VERSION,
         '[style.--t-background]': 'background()',
     },
 })

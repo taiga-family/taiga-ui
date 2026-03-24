@@ -9,7 +9,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './row.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './row.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-card-row-${TUI_VERSION}`,

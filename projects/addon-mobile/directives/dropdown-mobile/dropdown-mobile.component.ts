@@ -14,6 +14,7 @@ import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 
 const GAP = 16;
 
@@ -27,7 +28,11 @@ const GAP = 16;
             </ng-container>
         </div>
     `,
-    styleUrl: './dropdown-mobile.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './dropdown-mobile.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated, TuiActiveZone],

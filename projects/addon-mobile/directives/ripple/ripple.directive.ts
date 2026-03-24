@@ -21,7 +21,11 @@ const FROM = [{opacity: '0.12'}, {opacity: '0'}];
 
 @Component({
     template: '',
-    styleUrl: './ripple.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './ripple.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-ripple-${TUI_VERSION}`,

@@ -9,7 +9,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './connected.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './connected.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-connected-${TUI_VERSION}`,

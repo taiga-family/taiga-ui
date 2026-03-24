@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-tui-preview-dialog {
+tui-preview-dialog:where(*&) {
     inline-size: 100%;
     block-size: 100%;
     overflow: hidden;
@@ -11,7 +11,7 @@ tui-preview-dialog {
     }
 }
 
-[tuiAppearance][data-appearance='preview-action'] {
+[tuiAppearance][data-appearance='preview-action']:where(*&) {
     background: rgba(104, 104, 104, 0.96);
     color: #fff;
 

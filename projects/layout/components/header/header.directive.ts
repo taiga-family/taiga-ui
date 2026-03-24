@@ -17,7 +17,11 @@ export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
 
 @Component({
     template: '',
-    styleUrl: './header.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './header.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-header-${TUI_VERSION}`,
@@ -29,6 +33,7 @@ class Styles {}
     providers: [tuiButtonOptionsProvider({size: 's'})],
     host: {
         tuiHeader: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'tuiHeader() || options.size || "h5"',
     },
 })

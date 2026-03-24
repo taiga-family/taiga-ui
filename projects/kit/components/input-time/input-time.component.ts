@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
 import {
     TuiTextfieldContent,
@@ -49,7 +50,11 @@ export abstract class TuiNativeTimePicker {
     selector: 'input[tuiInputTime][type="time"]',
     imports: [TuiTextfieldContent],
     templateUrl: './input-time.template.html',
-    styleUrl: './input-time.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-time.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],

@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
 @Component({
@@ -18,7 +19,11 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
             }
         }
     `,
-    styleUrl: './avatar-labeled.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './avatar-labeled.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

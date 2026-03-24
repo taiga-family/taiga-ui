@@ -9,7 +9,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './surface.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './surface.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-surface-${TUI_VERSION}`,
@@ -18,7 +22,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiSurface]',
-    host: {tuiSurface: ''},
+    host: {'data-tui-version': TUI_VERSION, tuiSurface: ''},
 })
 export class TuiSurface {
     protected readonly nothing = tuiWithStyles(Styles);
