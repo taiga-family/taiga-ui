@@ -30,9 +30,12 @@ const CONTROL_ATTR_NAMES = [
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
-const INPUT_ATTRS = new Set(['[strict]', '[strictmatcher]']);
+const INPUT_ATTRS = new Set(['[strictMatcher]'.toLowerCase(), '[strict]']);
 
-const REMOVE_ATTRS = new Set(['[tuitextfieldlabeloutside]', 'tuitextfieldlabeloutside']);
+const REMOVE_ATTRS = new Set([
+    '[tuiTextfieldLabelOutside]'.toLowerCase(),
+    'tuiTextfieldLabelOutside'.toLowerCase(),
+]);
 
 export function migrateComboBox({
     resource,
@@ -67,11 +70,11 @@ export function migrateComboBox({
         );
 
         const searchChangeAttr = element.attrs.find(
-            (attr) => attr.name.toLowerCase() === '(searchchange)',
+            (attr) => attr.name.toLowerCase() === '(searchChange)'.toLowerCase(),
         );
 
         const valueContentAttr = element.attrs.find(
-            (attr) => attr.name.toLowerCase() === '[valuecontent]',
+            (attr) => attr.name.toLowerCase() === '[valueContent]'.toLowerCase(),
         );
 
         for (const attr of [...controlAttrs, ...inputAttrs, ...removeAttrs]) {
@@ -305,7 +308,7 @@ function formatInputAttrs(attrs: Array<{name: string; value: string}>): string {
     return attrs
         .map(({name, value}) => {
             const attrName =
-                name.toLowerCase() === '[strictmatcher]'
+                name.toLowerCase() === '[strictMatcher]'.toLowerCase()
                     ? '[matcher]'
                     : normalizeAttrName(name);
 
@@ -316,20 +319,20 @@ function formatInputAttrs(attrs: Array<{name: string; value: string}>): string {
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
+        case '[(ngModel)]'.toLowerCase():
             return '[(ngModel)]';
-        case '[formcontrol]':
+        case '[formControl]'.toLowerCase():
             return '[formControl]';
-        case '[ngmodel]':
+        case '[ngModel]'.toLowerCase():
             return '[ngModel]';
+        case 'formControl'.toLowerCase():
+            return 'formControl';
+        case 'formControlName'.toLowerCase():
+            return 'formControlName';
+        case 'ngModel'.toLowerCase():
+            return 'ngModel';
         case '[strict]':
             return '[strict]';
-        case 'formcontrol':
-            return 'formControl';
-        case 'formcontrolname':
-            return 'formControlName';
-        case 'ngmodel':
-            return 'ngModel';
         default:
             return name;
     }
