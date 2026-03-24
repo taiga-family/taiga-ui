@@ -16,12 +16,12 @@ type Element = DefaultTreeAdapterTypes.Element;
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-chip';
-const MULTI_SELECT_MIGRATION_TODO = `<!-- ${TODO_MARK} tui-multi-select was partially migrated. Complete migration manually. See examples: ${DOCS_LINK} -->\n`;
 const VALUE_CONTENT_ATTR = 'valueContent';
 const CONTENT_ATTR = 'content';
 const TEXTFIELD_LABEL_OUTSIDE_ATTR = 'tuiTextfieldLabelOutside';
 const AUTO_COLOR_ATTR = 'autoColor';
 const AUTO_COLOR_TODO = `<!-- ${TODO_MARK} [autoColor] was removed. Use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->\n`;
+const LABEL_OUTSIDE_TODO = `<!-- ${TODO_MARK} tuiTextfieldLabelOutside was removed. In v5, wrap <tui-textfield> in <label tuiLabel> for label-outside pattern. See: https://taiga-ui.dev/components/label -->\n`;
 const PLACEHOLDER_ATTR = 'placeholder';
 const PLACEHOLDER_BINDING_ATTR = '[placeholder]';
 const EDITABLE_ATTR = 'editable';
@@ -59,17 +59,6 @@ export function migrateMultiSelect({
             CONTROL_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        if (typeof startOffset === 'number') {
-            const lineStart = template.lastIndexOf('\n', startOffset) + 1;
-            const indent =
-                /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
-
-            recorder.insertLeft(
-                templateOffset + startOffset,
-                `${MULTI_SELECT_MIGRATION_TODO}${indent}`,
-            );
-        }
-
         // Rename [valueContent] → [content]
         renameAttr(
             recorder,
@@ -80,7 +69,17 @@ export function migrateMultiSelect({
         );
         renameAttr(recorder, templateOffset, element, VALUE_CONTENT_ATTR, CONTENT_ATTR);
 
-        // Remove tuiTextfieldLabelOutside
+        // Remove tuiTextfieldLabelOutside — add TODO when value is truthy or absent (plain attr)
+        const labelOutsideAttr = element.attrs.find((attr) =>
+            [
+                `[${TEXTFIELD_LABEL_OUTSIDE_ATTR}]`.toLowerCase(),
+                TEXTFIELD_LABEL_OUTSIDE_ATTR.toLowerCase(),
+            ].includes(attr.name.toLowerCase()),
+        );
+        // Plain boolean attr (value="") is truthy; only explicit binding ="false" is falsy
+        const labelOutsideTruthy =
+            labelOutsideAttr !== undefined && labelOutsideAttr.value !== 'false';
+
         removeAttr(
             recorder,
             templateOffset,
@@ -96,9 +95,23 @@ export function migrateMultiSelect({
             template,
         );
 
+        if (labelOutsideTruthy && typeof startOffset === 'number') {
+            const lineStart = template.lastIndexOf('\n', startOffset) + 1;
+            const indent =
+                /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
+
+            recorder.insertLeft(
+                templateOffset + startOffset,
+                `${LABEL_OUTSIDE_TODO}${indent}`,
+            );
+        }
+
         // Remove [autoColor] and add TODO
         const hasAutoColor = element.attrs.some((attr) =>
-            [`[${AUTO_COLOR_ATTR}]`, AUTO_COLOR_ATTR].includes(attr.name.toLowerCase()),
+            [
+                `[${AUTO_COLOR_ATTR}]`.toLowerCase(),
+                AUTO_COLOR_ATTR.toLowerCase(),
+            ].includes(attr.name.toLowerCase()),
         );
 
         removeAttr(recorder, templateOffset, element, `[${AUTO_COLOR_ATTR}]`, template);

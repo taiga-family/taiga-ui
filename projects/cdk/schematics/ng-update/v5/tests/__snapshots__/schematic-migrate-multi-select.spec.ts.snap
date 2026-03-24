@@ -6,7 +6,6 @@ exports[`ng-update legacy multi-select adds [readOnly] to <input> when [editable
                 <tui-multi-select [editable]="isEditable" formControlName="items">
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                 <input tuiInputChip [readOnly]="!isEditable" formControlName="items" />
 </tui-textfield>",
@@ -20,7 +19,6 @@ exports[`ng-update legacy multi-select adds TODO comment when [search] is presen
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <!-- TODO: (Taiga UI migration) [search] was removed. Use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes. See: https://taiga-ui.dev/components/input-chip -->
 <input tuiInputChip formControlName="items" />
@@ -36,7 +34,6 @@ exports[`ng-update legacy multi-select adds tuiInputChip to existing <input> ins
                     <input placeholder="Type here" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip formControlName="items" placeholder="Type here" />
                 </tui-textfield>",
@@ -49,7 +46,6 @@ exports[`ng-update legacy multi-select adds tuiSelectLike to <input> when [edita
                 <tui-multi-select [editable]="false" formControlName="items">
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                 <input tuiInputChip tuiSelectLike formControlName="items" />
 </tui-textfield>",
@@ -59,8 +55,7 @@ exports[`ng-update legacy multi-select adds tuiSelectLike to <input> when [edita
 exports[`ng-update legacy multi-select adds tuiSelectLike to <input> when editable="false" (plain attribute): test.html 1`] = `
 {
   "0. Before": "<tui-multi-select editable="false" formControlName="items"></tui-multi-select>",
-  "1. After": "<!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
-<tui-textfield multi tuiChevron><input tuiInputChip tuiSelectLike formControlName="items" />
+  "1. After": "<tui-textfield multi tuiChevron><input tuiInputChip tuiSelectLike formControlName="items" />
 </tui-textfield>",
 }
 `;
@@ -71,7 +66,6 @@ exports[`ng-update legacy multi-select does not add tuiSelectLike when [editable
                 <tui-multi-select [editable]="true" formControlName="items">
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                 <input tuiInputChip formControlName="items" />
 </tui-textfield>",
@@ -81,8 +75,7 @@ exports[`ng-update legacy multi-select does not add tuiSelectLike when [editable
 exports[`ng-update legacy multi-select does not duplicate tuiChevron if already present: test.html 1`] = `
 {
   "0. Before": "<tui-multi-select tuiChevron formControlName="items"></tui-multi-select>",
-  "1. After": "<!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
-<tui-textfield multi tuiChevron><input tuiInputChip formControlName="items" />
+  "1. After": "<tui-textfield multi tuiChevron><input tuiInputChip formControlName="items" />
 </tui-textfield>",
 }
 `;
@@ -94,7 +87,6 @@ exports[`ng-update legacy multi-select does not duplicate tuiInputChip if alread
                     <input tuiInputChip placeholder="Type here" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input formControlName="items" tuiInputChip placeholder="Type here" />
                 </tui-textfield>",
@@ -114,7 +106,6 @@ exports[`ng-update legacy multi-select keeps [stringify], [rows], [identityMatch
                 >
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron
                     [stringify]="fn"
                     [rows]="3"
@@ -134,7 +125,6 @@ exports[`ng-update legacy multi-select migrates (searchChange) to (input) on gen
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <!-- TODO: (Taiga UI migration) (searchChange) was replaced by (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">. See: https://taiga-ui.dev/components/input-chip -->
 <input tuiInputChip formControlName="items" (input)="onSearch(($event.target as HTMLInputElement).value)" />
@@ -150,7 +140,6 @@ exports[`ng-update legacy multi-select migrates [tagValidator] to <tui-input-chi
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip formControlName="items" />
 <tui-input-chip *tuiItem="let ctx" [appearance]="isValid(ctx.item) ? '' : 'negative'" />
@@ -166,7 +155,6 @@ exports[`ng-update legacy multi-select migrates basic tui-multi-select with form
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip formControlName="items" />
 <tui-data-list-wrapper *tuiDropdown [items]="items" />
@@ -193,7 +181,8 @@ exports[`ng-update legacy multi-select migrates full-featured tui-multi-select: 
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
+                <!-- TODO: (Taiga UI migration) tuiTextfieldLabelOutside was removed. In v5, wrap <tui-textfield> in <label tuiLabel> for label-outside pattern. See: https://taiga-ui.dev/components/label -->
+                <!-- TODO: (Taiga UI migration) [autoColor] was removed. Use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->
                 <tui-textfield multi tuiChevron
                     [stringify]="stringify"
                     [identityMatcher]="matcher"
@@ -218,12 +207,10 @@ exports[`ng-update legacy multi-select migrates multiple tui-multi-select elemen
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip formControlName="first" />
 <tui-data-list-wrapper *tuiDropdown [items]="items" />
                 </tui-textfield>
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip formControlName="second" />
 <tui-data-list-wrapper *tuiDropdown [items]="items" />
@@ -238,7 +225,6 @@ exports[`ng-update legacy multi-select migrates tui-multi-select with [(ngModel)
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip [(ngModel)]="value" />
 <tui-data-list-wrapper *tuiDropdown [items]="items" />
@@ -253,7 +239,6 @@ exports[`ng-update legacy multi-select migrates tui-multi-select with [formContr
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip [formControl]="ctrl" />
 <tui-data-list-wrapper *tuiDropdown [items]="items" />
@@ -267,7 +252,6 @@ exports[`ng-update legacy multi-select moves [placeholder] binding to generated 
                 <tui-multi-select [placeholder]="value.length ? '' : 'Pick'" formControlName="items">
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                 <input tuiInputChip [placeholder]="value.length ? '' : 'Pick'" formControlName="items" />
 </tui-textfield>",
@@ -281,7 +265,6 @@ exports[`ng-update legacy multi-select moves placeholder to generated <input>: t
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron>
                     <input tuiInputChip placeholder="Pick items" formControlName="items" />
 <tui-data-list-wrapper *tuiDropdown [items]="items" />
@@ -299,7 +282,7 @@ exports[`ng-update legacy multi-select removes [autoColor] and plain autoColor: 
                 >
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
+                <!-- TODO: (Taiga UI migration) [autoColor] was removed. Use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->
                 <tui-textfield multi tuiChevron
                 >
                 <input tuiInputChip formControlName="items" />
@@ -317,7 +300,7 @@ exports[`ng-update legacy multi-select removes tuiTextfieldLabelOutside and [tui
                 >
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
+                <!-- TODO: (Taiga UI migration) tuiTextfieldLabelOutside was removed. In v5, wrap <tui-textfield> in <label tuiLabel> for label-outside pattern. See: https://taiga-ui.dev/components/label -->
                 <tui-textfield multi tuiChevron
                 >
                 <input tuiInputChip formControlName="items" />
@@ -332,7 +315,6 @@ exports[`ng-update legacy multi-select renames [valueContent] to [content]: test
                     <tui-data-list-wrapper *tuiDataList [items]="items" />
                 </tui-multi-select>",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
                 <tui-textfield multi tuiChevron [content]="tmpl">
                     <input tuiInputChip formControlName="items" />
 <tui-data-list-wrapper *tuiDropdown [items]="items" />
@@ -343,8 +325,7 @@ exports[`ng-update legacy multi-select renames [valueContent] to [content]: test
 exports[`ng-update legacy multi-select renames valueContent to content (non-binding form): test.html 1`] = `
 {
   "0. Before": "<tui-multi-select valueContent="tmpl" formControlName="items"></tui-multi-select>",
-  "1. After": "<!-- TODO: (Taiga UI migration) tui-multi-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/input-chip -->
-<tui-textfield multi tuiChevron content="tmpl"><input tuiInputChip formControlName="items" />
+  "1. After": "<tui-textfield multi tuiChevron content="tmpl"><input tuiInputChip formControlName="items" />
 </tui-textfield>",
 }
 `;
