@@ -20,7 +20,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 })
 class Styles {}
 
-@Directive({selector: '[tuiCardRow]'})
+@Directive({selector: '[tuiCardRow]', host: {'data-tui-version': TUI_VERSION}})
 export class TuiCardRow {
     protected readonly nothing = tuiWithStyles(Styles);
 }

@@ -27,6 +27,7 @@ import {TuiInputDateDirective} from './input-date.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
     host: {
+        'data-tui-version': TUI_VERSION,
         ngSkipHydration: 'true',
         '[attr.list]': 'null',
     },

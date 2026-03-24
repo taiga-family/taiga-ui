@@ -37,6 +37,7 @@ const GAP = 16;
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated, TuiActiveZone],
     host: {
+        'data-tui-version': TUI_VERSION,
         '(pointerdown.prevent)': '0',
         '(document:click.zoneless.capture)': 'onClick($event)',
         '(window>scroll.zoneless.capture)': 'refresh()',
@@ -62,6 +63,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     public ngOnDestroy(): void {
         this.observer.disconnect();
         this.doc.body.classList.remove('t-dropdown-mobile');
+        this.doc.body.removeAttribute('data-tui-version');
         this.doc.body.style.removeProperty('--t-root-top');
         this.doc.documentElement.scrollTop = this.scrollTop;
         this.doc.documentElement.style.removeProperty('scroll-behavior');
@@ -104,6 +106,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         this.el.style.setProperty('top', `calc(${tuiPx(offsetTop)} + ${offset})`);
         this.el.style.setProperty('height', `calc(${tuiPx(height)} - ${offset})`);
         this.doc.body.classList.add('t-dropdown-mobile');
+        this.doc.body.setAttribute('data-tui-version', TUI_VERSION);
         this.doc.body.style.setProperty('--t-root-top', top);
     }
 

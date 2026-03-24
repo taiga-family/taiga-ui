@@ -41,8 +41,8 @@ button[tuiSurface]:where(*&) {
 
 [tuiSurface]:where(*&)::before,
 [tuiSurface]:where(*&)::after,
-[tuiSurfaceLayer]:where(*&)::before,
-[tuiSurfaceLayer]:where(*&)::after {
+[tuiSurfaceLayer]::before,
+[tuiSurfaceLayer]::after {
     .fullsize();
     .transition();
 
@@ -55,7 +55,7 @@ button[tuiSurface]:where(*&) {
     transition-property: opacity, backdrop-filter, transform;
 }
 
-[tuiSurfaceLayer]:where(*&) {
+[tuiSurfaceLayer] {
     .transition();
     .fullsize();
 
@@ -65,30 +65,30 @@ button[tuiSurface]:where(*&) {
     border-radius: inherit;
     box-sizing: border-box;
     transition-property: box-shadow, filter, padding;
+}
 
-    input[tuiSurfaceLayer] + & {
-        will-change: padding;
-        background-clip: content-box;
-        overflow: clip;
-        overflow-clip-margin: content-box;
-    }
+input[tuiSurfaceLayer] + [tuiSurfaceLayer] {
+    will-change: padding;
+    background-clip: content-box;
+    overflow: clip;
+    overflow-clip-margin: content-box;
+}
 
-    input[tuiSurfaceLayer]:checked + & {
+input[tuiSurfaceLayer]:checked + [tuiSurfaceLayer] {
+    padding: var(--tui-gap);
+}
+
+input[tuiSurfaceLayer]:focus-visible + [tuiSurfaceLayer] {
+    padding: var(--tui-gap);
+}
+
+@media @tui-mouse {
+    [tuiSurface]:hover input[tuiSurfaceLayer] + [tuiSurfaceLayer] {
         padding: var(--tui-gap);
-    }
-
-    input[tuiSurfaceLayer]:focus-visible + & {
-        padding: var(--tui-gap);
-    }
-
-    @media @tui-mouse {
-        [tuiSurface]:hover input[tuiSurfaceLayer] + & {
-            padding: var(--tui-gap);
-        }
     }
 }
 
-input[tuiSurfaceLayer]:where(*&) {
+input[tuiSurfaceLayer] {
     color: var(--tui-background-accent-2);
     appearance: none;
     margin: 0;
@@ -116,20 +116,20 @@ input[tuiSurfaceLayer]:where(*&) {
             inset 0 0 0 calc(var(--tui-gap) / 2),
             inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
     }
+}
 
-    @media @tui-mouse {
-        [tuiSurface]:hover & {
-            box-shadow:
-                inset 0 0,
-                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
-        }
+@media @tui-mouse {
+    [tuiSurface]:where(*&):hover input[tuiSurfaceLayer] {
+        box-shadow:
+            inset 0 0,
+            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
+    }
 
-        [tuiSurface]:hover &:checked {
-            filter: brightness(0.9);
-            box-shadow:
-                inset 0 0 0 calc(var(--tui-gap) / 2),
-                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
-        }
+    [tuiSurface]:where(*&):hover input[tuiSurfaceLayer]:checked {
+        filter: brightness(0.9);
+        box-shadow:
+            inset 0 0 0 calc(var(--tui-gap) / 2),
+            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
     }
 }
 

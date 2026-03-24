@@ -28,7 +28,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
-    host: {ngSkipHydration: 'true'},
+    host: {'data-tui-version': TUI_VERSION, ngSkipHydration: 'true'},
 })
 export class TuiInputMonthComponent {
     protected readonly host = inject(TuiInputMonthDirective);

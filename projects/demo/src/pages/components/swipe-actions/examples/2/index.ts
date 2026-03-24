@@ -5,9 +5,18 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [FormsModule, TuiAvatar, TuiButton, TuiSwipeActions, TuiSwitch, TuiTitle],
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiSwipeActions,
+        TuiSwitch,
+        TuiTitle,
+        TuiSurface,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

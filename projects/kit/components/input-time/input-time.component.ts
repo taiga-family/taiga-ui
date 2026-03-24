@@ -58,7 +58,7 @@ export abstract class TuiNativeTimePicker {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
-    host: {ngSkipHydration: 'true'},
+    host: {'data-tui-version': TUI_VERSION, ngSkipHydration: 'true'},
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {
     private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);

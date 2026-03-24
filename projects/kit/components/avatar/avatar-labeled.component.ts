@@ -26,6 +26,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiAvatarLabeled {
     public readonly label = input('');

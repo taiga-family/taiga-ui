@@ -27,7 +27,7 @@ export default defineConfig({
                     sourceRoot: preset.devServer?.options?.projectConfig.sourceRoot ?? '',
                     buildOptions: {
                         ...preset.devServer?.options?.projectConfig?.buildOptions,
-                        buildLibsFromSource: false,
+                        buildLibsFromSource: true,
                         progress: false,
                         optimization: false,
                         verbose: false,
@@ -81,6 +81,7 @@ export default defineConfig({
                             'projects/styles/components/switch.less',
                             'projects/styles/components/toast.less',
                             'projects/kit/components/accordion/accordion.style.less',
+                            'projects/core/portals/modal/modal.style.less',
                         ],
                     },
                 },

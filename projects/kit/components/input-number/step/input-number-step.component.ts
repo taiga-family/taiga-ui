@@ -38,6 +38,7 @@ import {TuiInputNumberStepService} from './input-number-step.service';
     hostDirectives: [TuiAppearanceProxy],
     host: {
         ngSkipHydration: 'true',
+        'data-tui-version': TUI_VERSION,
         '(keydown.arrowDown.prevent)': 'onStep(-step())',
         '(keydown.arrowUp.prevent)': 'onStep(step())',
         '[class._with-buttons]': 'step()',

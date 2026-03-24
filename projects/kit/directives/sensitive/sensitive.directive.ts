@@ -32,6 +32,7 @@ class Styles {}
     selector: '[tuiSensitive]',
     providers: [WaResizeObserverService],
     host: {
+        'data-tui-version': TUI_VERSION,
         '[style.--t-offset.px]': 'offset',
         '[style.--t-mask-height.px]': 'height()',
         '[class.tui-sensitive]': 'tuiSensitive()',

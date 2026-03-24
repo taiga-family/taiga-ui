@@ -17,7 +17,7 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[attr.data-direction]': 'direction()'},
+    host: {'data-tui-version': TUI_VERSION, '[attr.data-direction]': 'direction()'},
 })
 export class TuiAvatarStack {
     public readonly direction = input<TuiHorizontalDirection>('end');
