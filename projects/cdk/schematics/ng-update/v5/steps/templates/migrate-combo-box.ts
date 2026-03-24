@@ -98,7 +98,6 @@ export function migrateComboBox({
         const addAttributes: string[] = [];
 
         if (valueContentAttr) {
-            // Handle [valueContent] → #textfieldRef [content]="textfieldRef.focused() ? '' : VALUE"
             removeAttr(recorder, templateOffset, element, '[valueContent]', template);
             addAttributes.push(
                 '#textfieldRef',
