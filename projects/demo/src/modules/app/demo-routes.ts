@@ -211,6 +211,7 @@ export const DemoRoute = {
     Ripple: '/directives/ripple',
     Sidebar: '/directives/sidebar',
     Touchable: '/directives/touchable',
+    Truncate: '/directives/truncate',
     Validator: '/directives/validator',
     ValueChanges: '/directives/value-changes',
     Media: '/directives/media',

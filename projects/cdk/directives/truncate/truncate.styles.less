@@ -1,0 +1,22 @@
+[tuiTruncate] {
+    display: -webkit-box;
+    letter-spacing: -1rem;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-orient: block-axis;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    width: -webkit-fill-available;
+
+    &[data-lines='1']::before {
+        white-space: nowrap;
+    }
+
+    &::before {
+        content: attr(data-text);
+        inline-size: 100%;
+        letter-spacing: normal;
+        -webkit-text-fill-color: currentColor;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
