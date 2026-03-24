@@ -58,31 +58,48 @@ describe('ng-update onboarding-flow migration', () => {
     it(
         'renames [(tuiOnboarding)] to [(tuiResponsiveDialog)]',
         migrate({
-            template: '<ng-template [(tuiOnboarding)]="open">content</ng-template>',
+            template: /* HTML */ `
+                <ng-template [(tuiOnboarding)]="open">content</ng-template>
+            `,
         }),
     );
 
     it(
         'renames [tuiOnboardingOptions] to [tuiResponsiveDialogOptions]',
         migrate({
-            template:
-                '<ng-template [(tuiOnboarding)]="open" [tuiOnboardingOptions]="options">content</ng-template>',
+            template: /* HTML */ `
+                <ng-template
+                    [tuiOnboardingOptions]="options"
+                    [(tuiOnboarding)]="open"
+                >
+                    content
+                </ng-template>
+            `,
         }),
     );
 
     it(
         'renames (tuiOnboardingChange) to (tuiResponsiveDialogChange)',
         migrate({
-            template:
-                '<ng-template [tuiOnboarding]="open" (tuiOnboardingChange)="onOpen($event)">content</ng-template>',
+            template: /* HTML */ `
+                <ng-template
+                    [tuiOnboarding]="open"
+                    (tuiOnboardingChange)="onOpen($event)"
+                >
+                    content
+                </ng-template>
+            `,
         }),
     );
 
     it(
         'adds TODO comment to tui-onboarding-flow about footer restructure',
         migrate({
-            template:
-                '<tui-onboarding-flow [(index)]="index"><tui-onboarding-step *tuiItem>content</tui-onboarding-step></tui-onboarding-flow>',
+            template: /* HTML */ `
+                <tui-onboarding-flow [(index)]="index">
+                    <tui-onboarding-step *tuiItem>content</tui-onboarding-step>
+                </tui-onboarding-flow>
+            `,
         }),
     );
 
