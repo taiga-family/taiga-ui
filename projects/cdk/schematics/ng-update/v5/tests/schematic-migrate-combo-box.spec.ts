@@ -209,7 +209,7 @@ describe('ng-update ComboBox', () => {
     );
 
     it(
-        'removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside]',
+        'removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside] with adding TODO',
         migrate({
             component: `
                 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -224,7 +224,7 @@ describe('ng-update ComboBox', () => {
             template: `
                 <tui-combo-box
                     [formControl]="control"
-                    [tuiTextfieldLabelOutside]="true"
+                    [tuiTextfieldLabelOutside]="computedValue"
                 >
                     Label
                 </tui-combo-box>
@@ -233,12 +233,27 @@ describe('ng-update ComboBox', () => {
     );
 
     it(
-        'does not wrap text in label when [tuiTextfieldLabelOutside]="true"',
+        'put text node inside input[placeholder] when [tuiTextfieldLabelOutside] is explicitly set to `true`',
         migrate({
             template: `
                 <tui-combo-box
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="true"
+                >
+                    City
+                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                </tui-combo-box>
+            `,
+        }),
+    );
+
+    it(
+        'wraps text node in label[tuiLabel] when [tuiTextfieldLabelOutside] is explicitly set to `false`',
+        migrate({
+            template: `
+                <tui-combo-box
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="false"
                 >
                     City
                     <tui-data-list-wrapper *tuiDataList [items]="cities" />

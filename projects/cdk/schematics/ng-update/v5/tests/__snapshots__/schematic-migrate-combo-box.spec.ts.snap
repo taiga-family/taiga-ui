@@ -78,29 +78,6 @@ exports[`ng-update ComboBox adds TODO for [search] and (searchChange): test.html
 }
 `;
 
-exports[`ng-update ComboBox does not wrap text in label when [tuiTextfieldLabelOutside]="true": test.html 1`] = `
-{
-  "0. Before": "
-                <tui-combo-box
-                    [formControl]="control"
-                    [tuiTextfieldLabelOutside]="true"
-                >
-                    City
-                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
-                </tui-combo-box>
-            ",
-  "1. After": "
-                <tui-textfield
-                >
-                    City
-                    
-<input tuiComboBox [formControl]="control" />
-<tui-data-list-wrapper *tuiDropdown [items]="cities" />
-                </tui-textfield>
-            ",
-}
-`;
-
 exports[`ng-update ComboBox handles multiple combo-boxes in the same template: test.html 1`] = `
 {
   "0. Before": "
@@ -382,12 +359,33 @@ exports[`ng-update ComboBox moves tuiTextfieldSize to tui-textfield wrapper: tes
 }
 `;
 
-exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside]: test.html 1`] = `
+exports[`ng-update ComboBox put text node inside input[placeholder] when [tuiTextfieldLabelOutside] is explicitly set to \`true\`: test.html 1`] = `
 {
   "0. Before": "
                 <tui-combo-box
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="true"
+                >
+                    City
+                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+<input tuiComboBox [formControl]="control" placeholder="City" />
+<tui-data-list-wrapper *tuiDropdown [items]="cities" />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside] with adding TODO: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="computedValue"
                 >
                     Label
                 </tui-combo-box>
@@ -395,6 +393,7 @@ exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiT
   "1. After": "
                 <tui-textfield
                 >
+                <!-- TODO: (Taiga UI migration) Use <label tuiLabel> element inside <tui-textfield> for a floating label or input[placeholder] for empty value label -->
                     Label
                 
 <input tuiComboBox [formControl]="control" />
@@ -403,7 +402,7 @@ exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiT
 }
 `;
 
-exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside]: test.ts 1`] = `
+exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside] with adding TODO: test.ts 1`] = `
 {
   "0. Before": "
                 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -446,6 +445,31 @@ exports[`ng-update ComboBox renames [strictMatcher] to [matcher]: test.html 1`] 
 
 <input tuiComboBox [formControl]="control" [matcher]="myMatcher" />
 </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox wraps text node in label[tuiLabel] when [tuiTextfieldLabelOutside] is explicitly set to \`false\`: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="false"
+                >
+                    City
+                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+<label tuiLabel>
+                    City
+                    </label>
+
+<input tuiComboBox [formControl]="control" />
+<tui-data-list-wrapper *tuiDropdown [items]="cities" />
+                </tui-textfield>
             ",
 }
 `;
