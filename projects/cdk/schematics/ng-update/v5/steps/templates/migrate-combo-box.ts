@@ -65,9 +65,9 @@ export function migrateComboBox({
             REMOVE_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        // tuiTextfieldLabelOutside="true"/plain → label is managed externally, skip wrapTextInLabel
-        // tuiTextfieldLabelOutside="false" or absent → generate floating <label tuiLabel>
-        const labelOutside = removeAttrs.some((attr) => attr.value !== 'false');
+        const labelOutsideAttr = removeAttrs.find((attr) =>
+            REMOVE_ATTRS.has(attr.name.toLowerCase()),
+        );
 
         const searchAttr = element.attrs.find(
             (attr) => attr.name.toLowerCase() === '[search]',
@@ -149,7 +149,7 @@ export function migrateComboBox({
                 searchHandler,
             });
 
-            if (!labelOutside) {
+            if (!labelOutsideAttr || labelOutsideAttr.value === 'false') {
                 wrapTextInLabel(recorder, templateOffset, element);
             }
         } else {
@@ -161,7 +161,8 @@ export function migrateComboBox({
                 inputAttrs,
                 searchHandler,
                 sourceCodeLocation,
-                labelOutside,
+                labelOutside: labelOutsideAttr?.value ?? '',
+                template,
             });
         }
     });
@@ -226,27 +227,55 @@ function handleGeneratedInput({
     searchHandler,
     sourceCodeLocation,
     labelOutside,
+    template,
 }: {
     controlAttrs: Array<{name: string; value: string}>;
     element: Element;
     inputAttrs: Array<{name: string; value: string}>;
-    labelOutside: boolean;
+    labelOutside: string;
     recorder: UpdateRecorder;
     searchHandler: string;
     sourceCodeLocation: Element['sourceCodeLocation'];
+    template: string;
     templateOffset: number;
 }): void {
     const formAttrs = formatControlAttrs(controlAttrs);
     const inputAttrStr = formatInputAttrs(inputAttrs);
 
-    if (!labelOutside) {
-        wrapTextInLabel(recorder, templateOffset, element);
-    }
-
     const labelNode = element.childNodes.find(
         (node): node is TextNode =>
             node.nodeName === '#text' && !!(node as TextNode).value.trim(),
     );
+
+    if (labelOutside === 'true' && labelNode) {
+        const labelText = labelNode.value.trim();
+        const textStart = labelNode.sourceCodeLocation?.startOffset ?? 0;
+        const textEnd = labelNode.sourceCodeLocation?.endOffset ?? 0;
+
+        recorder.remove(templateOffset + textStart, textEnd - textStart);
+
+        recorder.insertRight(
+            templateOffset + textStart,
+            `\n<input tuiComboBox${formAttrs}${inputAttrStr}${searchHandler} placeholder="${labelText}" />\n`,
+        );
+
+        return;
+    }
+
+    if (!labelOutside || labelOutside === 'false') {
+        wrapTextInLabel(recorder, templateOffset, element);
+    } else if (labelNode) {
+        const elementStart = element.sourceCodeLocation?.startOffset ?? 0;
+        const lineStart = template.lastIndexOf('\n', elementStart - 1) + 1;
+        const indent = template.slice(lineStart, elementStart);
+        const textStart = labelNode.sourceCodeLocation?.startOffset ?? 0;
+
+        recorder.insertRight(
+            templateOffset + textStart + 1,
+            `${indent}<!-- ${TODO_MARK} Use <label tuiLabel> element inside <tui-textfield> for a floating label or input[placeholder] for empty value label -->\n`,
+        );
+    }
+
     const insertOffset = labelNode
         ? (labelNode.sourceCodeLocation?.endOffset ?? 0)
         : (sourceCodeLocation?.endTag?.startOffset ?? 0);
