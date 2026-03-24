@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update legacy select migrates TuiSelectModule import and tui-select template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select><input tuiTextfieldLegacy /></tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron><input tuiSelect /></tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy select migrates TuiSelectModule import and tui-select template: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiSelectModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiSelectModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiSelect } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiSelect],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update legacy select migrates complex tui-select template with legacy textfield input: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    tuiTextfieldSize="s"
+                    [formControl]="testValue"
+                >
+                    Character
+                    <input
+                        placeholder="Choose your hero"
+                        tuiTextfieldLegacy
+                    />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    tuiTextfieldSize="s"
+                >
+                    Character
+                    <input [formControl]="testValue"
+                        placeholder="Choose your hero"
+                        tuiSelect
+                    />
+                    <tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy select moves [(ngModel)] to generated input when input is absent: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select [(ngModel)]="value">
+                    Choose an option
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron>
+<input placeholder="Choose an option" tuiSelect [(ngModel)]="value" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy select renames valueContent to content, removes labelOutside and drops TuiTextfieldControllerModule: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    formControlName="testValue"
+                    [tuiTextfieldLabelOutside]="true"
+                    [valueContent]="cardContent"
+                >
+                    Choose a card
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [itemContent]="cardContent"
+                        [items]="cards"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    [content]="cardContent"
+                >
+<input placeholder="Choose a card" tuiSelect formControlName="testValue" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [itemContent]="cardContent"
+                        [items]="cards"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy select renames valueContent to content, removes labelOutside and drops TuiTextfieldControllerModule: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiSelectModule, TuiTextfieldControllerModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiSelect } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiSelect],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;

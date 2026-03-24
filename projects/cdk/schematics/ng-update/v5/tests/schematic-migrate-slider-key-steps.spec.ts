@@ -12,7 +12,7 @@ describe('ng-update input[tuiSlider][keySteps][max]', () => {
     it(
         'ignores [max] without [keySteps]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <input
                     tuiSlider
                     type="range"
@@ -28,7 +28,7 @@ describe('ng-update input[tuiSlider][keySteps][max]', () => {
     it(
         'add TODO if Slider uses both [max] and [keySteps]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <input
                     tuiSlider
                     type="range"

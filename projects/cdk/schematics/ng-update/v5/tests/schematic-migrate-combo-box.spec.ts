@@ -20,7 +20,7 @@ describe('ng-update ComboBox', () => {
                 })
                 export class TestComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box [formControl]="control">
                     Many words label
                     <tui-data-list-wrapper
@@ -35,7 +35,7 @@ describe('ng-update ComboBox', () => {
     it(
         'migrates tui-combo-box with legacy textfield input',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box [formControl]="control">
                     Label
                     <input
@@ -54,19 +54,22 @@ describe('ng-update ComboBox', () => {
     it(
         'moves [(ngModel)] to generated input when input is absent',
         migrate({
-            template: `
-<tui-combo-box [(ngModel)]="value">
-    Choose an option
-    <tui-data-list-wrapper *tuiDataList [items]="items" />
-</tui-combo-box>
-`,
+            template: /* HTML */ `
+                <tui-combo-box [(ngModel)]="value">
+                    Choose an option
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            `,
         }),
     );
 
     it(
         'moves formControlName to generated input',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box formControlName="myField">
                     Label
                     <tui-data-list-wrapper
@@ -81,7 +84,7 @@ describe('ng-update ComboBox', () => {
     it(
         'renames [strictMatcher] to [matcher]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
                     [strictMatcher]="myMatcher"
@@ -95,7 +98,7 @@ describe('ng-update ComboBox', () => {
     it(
         'keeps [strict] on input',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
                     [strict]="false"
@@ -109,12 +112,12 @@ describe('ng-update ComboBox', () => {
     it(
         '[stringify] / [identityMatcher] / [disabledItemHandler]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
-                    [formControl]="control"
-                    [stringify]="stringifyFn"
-                    [identityMatcher]="matcherFn"
                     [disabledItemHandler]="disabledFn"
+                    [formControl]="control"
+                    [identityMatcher]="matcherFn"
+                    [stringify]="stringifyFn"
                 >
                     Label
                 </tui-combo-box>
@@ -125,7 +128,7 @@ describe('ng-update ComboBox', () => {
     it(
         '[valueContent] => tui-textfield[content]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
                     [valueContent]="myContent"
@@ -139,7 +142,7 @@ describe('ng-update ComboBox', () => {
     it(
         'adds TODO for [search] and (searchChange)',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
                     [search]="searchValue"
@@ -154,11 +157,16 @@ describe('ng-update ComboBox', () => {
     it(
         'migrates *tuiDataList to *tuiDropdown',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box [formControl]="control">
                     Label
                     <tui-data-list *tuiDataList>
-                        <button tuiOption [value]="item">{{ item }}</button>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
                     </tui-data-list>
                 </tui-combo-box>
             `,
@@ -168,14 +176,15 @@ describe('ng-update ComboBox', () => {
     it(
         'handles multiple combo-boxes in the same template',
         migrate({
-            template: `
-                <tui-combo-box [formControl]="first">
-                    First
-                </tui-combo-box>
+            template: /* HTML */ `
+                <tui-combo-box [formControl]="first">First</tui-combo-box>
 
                 <tui-combo-box [(ngModel)]="second">
                     Second
-                    <tui-data-list-wrapper *tuiDataList [items]="items" />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
                 </tui-combo-box>
             `,
         }),
@@ -184,14 +193,14 @@ describe('ng-update ComboBox', () => {
     it(
         'migrates combo-box with all properties combined',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
-                    [strictMatcher]="myMatcher"
-                    [strict]="false"
                     [search]="search"
-                    (searchChange)="search = $event"
+                    [strict]="false"
+                    [strictMatcher]="myMatcher"
                     [valueContent]="contentTpl"
+                    (searchChange)="search = $event"
                 >
                     Choose a hero
                     <input
@@ -200,8 +209,8 @@ describe('ng-update ComboBox', () => {
                     />
                     <tui-data-list-wrapper
                         *tuiDataList
-                        [items]="heroes"
                         [itemContent]="contentTpl"
+                        [items]="heroes"
                     />
                 </tui-combo-box>
             `,
@@ -221,7 +230,7 @@ describe('ng-update ComboBox', () => {
                 })
                 export class TestComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="computedValue"
@@ -235,13 +244,16 @@ describe('ng-update ComboBox', () => {
     it(
         'put text node inside input[placeholder] when [tuiTextfieldLabelOutside] is explicitly set to `true`',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="true"
                 >
                     City
-                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="cities"
+                    />
                 </tui-combo-box>
             `,
         }),
@@ -250,13 +262,16 @@ describe('ng-update ComboBox', () => {
     it(
         'wraps text node in label[tuiLabel] when [tuiTextfieldLabelOutside] is explicitly set to `false`',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="false"
                 >
                     City
-                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="cities"
+                    />
                 </tui-combo-box>
             `,
         }),
@@ -265,7 +280,7 @@ describe('ng-update ComboBox', () => {
     it(
         'moves tuiTextfieldSize to tui-textfield wrapper',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-combo-box
                     tuiTextfieldSize="s"
                     [formControl]="control"

@@ -60,7 +60,7 @@ describe('ng-update tuiFieldError', () => {
     it(
         'renames tuiFieldErrorContent pipe to tuiError',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <input [tuiHint]="[] | tuiFieldErrorContent" />
             `,
         }),
@@ -69,7 +69,7 @@ describe('ng-update tuiFieldError', () => {
     it(
         'renames tuiFieldErrorContent pipe to tuiError - complex',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <input
                     placeholder="Price"
                     [tuiHint]="
@@ -87,7 +87,7 @@ describe('ng-update tuiFieldError', () => {
     it(
         'removes tuiFieldError pipe and error attribute for empty order',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-error
                     formControlName="testValue2"
                     [error]="[] | tuiFieldError | async"
@@ -99,7 +99,7 @@ describe('ng-update tuiFieldError', () => {
     it(
         'removes tuiFieldError pipe and changes error attribute to order for explicit array',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-error
                     formControlName="testValue2"
                     [error]="['required', 'inn'] | tuiFieldError | async"
@@ -111,7 +111,7 @@ describe('ng-update tuiFieldError', () => {
     it(
         'removes tuiFieldError pipe and changes error attribute to order for implicit array',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-error
                     formControlName="testValue2"
                     [error]="order$ | async | tuiFieldError | async"
@@ -123,7 +123,7 @@ describe('ng-update tuiFieldError', () => {
     it(
         'adds TODO comment when tuiFieldError is used on a non-tui-error element',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <div [error]="['required'] | tuiFieldError | async"></div>
             `,
         }),

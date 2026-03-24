@@ -12,7 +12,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for tuiHintDirection',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-icon tuiHintDirection="bottom-left" />
                 <tui-icon tuiHintDirection="bottom" />
                 <tui-icon tuiHintDirection="bottom-right" />
@@ -32,19 +32,55 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [tuiHintDirection]',
         migrate({
-            template: `
-                <div tuiHint [tuiHintDirection]="'bottom-left'"></div>
-                <div tuiHint [tuiHintDirection]="'bottom'"></div>
-                <div tuiHint [tuiHintDirection]="'bottom-right'"></div>
-                <div tuiHint [tuiHintDirection]="'top-left'"></div>
-                <div tuiHint [tuiHintDirection]="'top'"></div>
-                <div tuiHint [tuiHintDirection]="'top-right'"></div>
-                <div tuiHint [tuiHintDirection]="'left-top'"></div>
-                <div tuiHint [tuiHintDirection]="'left'"></div>
-                <div tuiHint [tuiHintDirection]="'left-bottom'"></div>
-                <div tuiHint [tuiHintDirection]="'right-top'"></div>
-                <div tuiHint [tuiHintDirection]="'right'"></div>
-                <div tuiHint [tuiHintDirection]="'right-bottom'"></div>
+            template: /* HTML */ `
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left-bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right-bottom'"
+                ></div>
             `,
         }),
     );
@@ -52,10 +88,19 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for tuiDropdownAlign',
         migrate({
-            template: `
-                <div tuiDropdownAlign="right" [tuiDropdown]="dropdown"></div>
-                <div tuiDropdownAlign="center" [tuiDropdown]="dropdown"></div>
-                <div tuiDropdownAlign="left" [tuiDropdown]="dropdown"></div>
+            template: /* HTML */ `
+                <div
+                    tuiDropdownAlign="right"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="center"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="left"
+                    [tuiDropdown]="dropdown"
+                ></div>
             `,
         }),
     );
@@ -63,10 +108,19 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [tuiDropdownAlign]',
         migrate({
-            template: `
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'right'"></div>
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'center'"></div>
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'left'"></div>
+            template: /* HTML */ `
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'right'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'center'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'left'"
+                ></div>
             `,
         }),
     );
@@ -74,7 +128,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for tuiSlot',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-item tuiSlot="right" />
                 <tui-item tuiSlot="left" />
             `,
@@ -84,7 +138,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [tuiSlot]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-item [tuiSlot]="'right'" />
                 <tui-item [tuiSlot]="'left'" />
             `,
@@ -94,7 +148,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for tuiComment',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <div tuiComment="right">Right comment</div>
                 <div tuiComment="left">Left comment</div>
             `,
@@ -104,7 +158,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [tuiComment]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <div [tuiComment]="'right'">Right comment</div>
                 <div [tuiComment]="'left'">Left comment</div>
             `,
@@ -114,7 +168,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for direction on tui-avatar-stack',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-avatar-stack direction="right" />
                 <tui-avatar-stack direction="left" />
 
@@ -127,7 +181,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [direction] on tui-avatar-stack',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-avatar-stack [direction]="'right'" />
                 <tui-avatar-stack [direction]="'left'" />
 
@@ -140,7 +194,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for direction on tui-drawer',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-drawer direction="right">Right drawer</tui-drawer>
                 <tui-drawer direction="left">Left drawer</tui-drawer>
 
@@ -153,7 +207,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [direction] on tui-drawer',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-drawer [direction]="'right'">Right drawer</tui-drawer>
                 <tui-drawer [direction]="'left'">Left drawer</tui-drawer>
 
@@ -166,12 +220,18 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for vertical on tui-tabs',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-tabs vertical="right" />
                 <tui-tabs vertical="left" />
 
-                <nav tuiTabs vertical="right" />
-                <nav tuiTabs vertical="left" />
+                <nav
+                    tuiTabs
+                    vertical="right"
+                />
+                <nav
+                    tuiTabs
+                    vertical="left"
+                />
 
                 <tui-item vertical="right" />
                 <tui-item vertical="left" />
@@ -182,12 +242,18 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [vertical] on tui-tabs',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-tabs [vertical]="'right'" />
                 <tui-tabs [vertical]="'left'" />
 
-                <nav tuiTabs [vertical]="'right'" />
-                <nav tuiTabs [vertical]="'left'" />
+                <nav
+                    tuiTabs
+                    [vertical]="'right'"
+                />
+                <nav
+                    tuiTabs
+                    [vertical]="'left'"
+                />
 
                 <tui-item [vertical]="'right'" />
                 <tui-item [vertical]="'left'" />
@@ -198,7 +264,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces values for tuiHeader',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <h1 tuiHeader="xxl"></h1>
                 <h2 tuiHeader="xl"></h2>
                 <h3 tuiHeader="l"></h3>
@@ -214,7 +280,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces values for [tuiHeader]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <h1 [tuiHeader]="'xxl'"></h1>
                 <h2 [tuiHeader]="'xl'"></h2>
                 <h3 [tuiHeader]="'l'"></h3>
@@ -230,9 +296,15 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for align on input with tuiInputColor',
         migrate({
-            template: `
-                <input tuiInputColor align="right" />
-                <input tuiInputColor align="left" />
+            template: /* HTML */ `
+                <input
+                    align="right"
+                    tuiInputColor
+                />
+                <input
+                    align="left"
+                    tuiInputColor
+                />
                 <input align="right" />
                 <input align="left" />
             `,
@@ -242,9 +314,15 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for [align] on input with tuiInputColor',
         migrate({
-            template: `
-                <input tuiInputColor [align]="'right'" />
-                <input tuiInputColor [align]="'left'" />
+            template: /* HTML */ `
+                <input
+                    tuiInputColor
+                    [align]="'right'"
+                />
+                <input
+                    tuiInputColor
+                    [align]="'left'"
+                />
 
                 <input [align]="'right'" />
                 <input [align]="'left'" />
@@ -255,7 +333,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for currencyAlign on tuiAmount pipe',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <li>{{ -12345.1 | tuiAmount: 'USD' : 'left' }}</li>
                 <li>{{ 100 | tuiAmount: '£' : 'right' | somePipe: 'left' }}</li>
             `,

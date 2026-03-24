@@ -20,29 +20,22 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-date-range>
-                </tui-input-date-range>
+            template: /* HTML */ `
+                <tui-input-date-range></tui-input-date-range>
 
                 <tui-input-date-range
                     [formControl]="control"
                     [tuiTextfieldCleaner]="true"
                 >
                     Choose a range
-                    <input
-                        tuiTextfieldLegacy
-                    />
+                    <input tuiTextfieldLegacy />
                 </tui-input-date-range>
 
-                <tui-input-date-range
-                    formControlName="range"
-                >
+                <tui-input-date-range formControlName="range">
                     Pick date range
                 </tui-input-date-range>
 
-                <tui-input-date-range
-                    [(ngModel)]="value"
-                >
+                <tui-input-date-range [(ngModel)]="value">
                     Date range
                 </tui-input-date-range>
             `,
@@ -52,44 +45,47 @@ describe('ng-update', () => {
     it(
         'moves [min], [max], [minLength], [maxLength] to <input tuiInputDateRange>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date-range
-                    [min]="minDate"
-                    [max]="maxDate"
-                    [minLength]="{day: 3}"
-                    [maxLength]="{month: 1}"
                     formControlName="range"
+                    [max]="maxDate"
+                    [maxLength]="{month: 1}"
+                    [min]="minDate"
+                    [minLength]="{day: 3}"
                 >
                     Range
-                </tui-input-date-range>`,
+                </tui-input-date-range>
+            `,
         }),
     );
 
     it(
         'moves [disabledItemHandler] and [markerHandler] to <tui-calendar-range *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date-range
+                    formControlName="range"
                     [disabledItemHandler]="disabledHandler"
                     [markerHandler]="markerHandler"
-                    formControlName="range"
                 >
                     Range
-                </tui-input-date-range>`,
+                </tui-input-date-range>
+            `,
         }),
     );
 
     it(
         'moves [items] and [defaultViewedMonth] to <tui-calendar-range *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date-range
-                    [items]="periods"
-                    [defaultViewedMonth]="initialMonth"
                     formControlName="range"
+                    [defaultViewedMonth]="initialMonth"
+                    [items]="periods"
                 >
                     Range
-                </tui-input-date-range>`,
+                </tui-input-date-range>
+            `,
         }),
     );
 

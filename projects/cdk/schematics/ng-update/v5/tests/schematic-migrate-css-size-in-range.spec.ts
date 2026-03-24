@@ -68,18 +68,51 @@ describe('ng-update comment for --tui-thickness', () => {
                 })
                 export class TestComponent {}
             `,
-            template: `
-                <tui-range [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
-                <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
-                <tui-input-range [formControl]="control" [style.--tui-thickness.rem]="0.25"/>
+            template: /* HTML */ `
+                <tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.5"
+                />
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.5"
+                />
+                <tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.25"
+                />
 
-                <tui-range [formControl]="control" [style.--tui-thickness.px]="8"/>
-                <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.px]="10"/>
-                <tui-input-range [formControl]="control" [style.--tui-thickness.px]="12"/>
+                <tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="8"
+                />
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="10"
+                />
+                <tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="12"
+                />
 
-                <tui-range [formControl]="control" [style.--tui-thickness]="'8px'"/>
-                <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness]="'10px'"/>
-                <tui-input-range [formControl]="control" [style.--tui-thickness]="'12px'"/>
+                <tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness]="'8px'"
+                />
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness]="'10px'"
+                />
+                <tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness]="'12px'"
+                />
             `,
         }),
     );

@@ -3,34 +3,26 @@
 exports[`ng-update migrate TuiInputDateRangeModule to TuiInputDateRange: test.html 1`] = `
 {
   "0. Before": "
-                <tui-input-date-range>
-                </tui-input-date-range>
+                <tui-input-date-range></tui-input-date-range>
 
                 <tui-input-date-range
                     [formControl]="control"
                     [tuiTextfieldCleaner]="true"
                 >
                     Choose a range
-                    <input
-                        tuiTextfieldLegacy
-                    />
+                    <input tuiTextfieldLegacy />
                 </tui-input-date-range>
 
-                <tui-input-date-range
-                    formControlName="range"
-                >
+                <tui-input-date-range formControlName="range">
                     Pick date range
                 </tui-input-date-range>
 
-                <tui-input-date-range
-                    [(ngModel)]="value"
-                >
+                <tui-input-date-range [(ngModel)]="value">
                     Date range
                 </tui-input-date-range>
             ",
   "1. After": "
                 <tui-textfield>
-                
 <input tuiInputDateRange />
 <tui-calendar-range *tuiDropdown />
 </tui-textfield>
@@ -42,16 +34,12 @@ exports[`ng-update migrate TuiInputDateRangeModule to TuiInputDateRange: test.ht
 <label tuiLabel>
                     Choose a range
                     </label>
-<input
-                        tuiInputDateRange [formControl]="control"
-                    />
+<input tuiInputDateRange [formControl]="control" />
                 
 <tui-calendar-range *tuiDropdown />
 </tui-textfield>
 
-                <tui-textfield
-                    
-                >
+                <tui-textfield >
 <label tuiLabel>
                     Pick date range
                 </label>
@@ -60,9 +48,7 @@ exports[`ng-update migrate TuiInputDateRangeModule to TuiInputDateRange: test.ht
 <tui-calendar-range *tuiDropdown />
 </tui-textfield>
 
-                <tui-textfield
-                    
-                >
+                <tui-textfield >
 <label tuiLabel>
                     Date range
                 </label>
@@ -102,12 +88,13 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
 {
   "0. Before": "
                 <tui-input-date-range
+                    formControlName="range"
                     [disabledItemHandler]="disabledHandler"
                     [markerHandler]="markerHandler"
-                    formControlName="range"
                 >
                     Range
-                </tui-input-date-range>",
+                </tui-input-date-range>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -120,7 +107,8 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
 
 <input tuiInputDateRange formControlName="range" />
 <tui-calendar-range *tuiDropdown [disabledItemHandler]="disabledHandler" [markerHandler]="markerHandler" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -128,12 +116,13 @@ exports[`ng-update moves [items] and [defaultViewedMonth] to <tui-calendar-range
 {
   "0. Before": "
                 <tui-input-date-range
-                    [items]="periods"
-                    [defaultViewedMonth]="initialMonth"
                     formControlName="range"
+                    [defaultViewedMonth]="initialMonth"
+                    [items]="periods"
                 >
                     Range
-                </tui-input-date-range>",
+                </tui-input-date-range>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -145,8 +134,9 @@ exports[`ng-update moves [items] and [defaultViewedMonth] to <tui-calendar-range
                 </label>
 
 <input tuiInputDateRange formControlName="range" />
-<tui-calendar-range *tuiDropdown [items]="periods" [defaultViewedMonth]="initialMonth" />
-</tui-textfield>",
+<tui-calendar-range *tuiDropdown [defaultViewedMonth]="initialMonth" [items]="periods" />
+</tui-textfield>
+            ",
 }
 `;
 
@@ -154,14 +144,15 @@ exports[`ng-update moves [min], [max], [minLength], [maxLength] to <input tuiInp
 {
   "0. Before": "
                 <tui-input-date-range
-                    [min]="minDate"
-                    [max]="maxDate"
-                    [minLength]="{day: 3}"
-                    [maxLength]="{month: 1}"
                     formControlName="range"
+                    [max]="maxDate"
+                    [maxLength]="{month: 1}"
+                    [min]="minDate"
+                    [minLength]="{day: 3}"
                 >
                     Range
-                </tui-input-date-range>",
+                </tui-input-date-range>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -174,8 +165,9 @@ exports[`ng-update moves [min], [max], [minLength], [maxLength] to <input tuiInp
                     Range
                 </label>
 
-<input tuiInputDateRange formControlName="range" [min]="minDate" [max]="maxDate" [minLength]="{day: 3}" [maxLength]="{month: 1}" />
+<input tuiInputDateRange formControlName="range" [max]="maxDate" [maxLength]="{month: 1}" [min]="minDate" [minLength]="{day: 3}" />
 <tui-calendar-range *tuiDropdown />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;

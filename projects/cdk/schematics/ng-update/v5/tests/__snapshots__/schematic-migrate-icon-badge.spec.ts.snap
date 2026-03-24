@@ -8,8 +8,8 @@ exports[`ng-update should migrate tui-icon badge icon input to iconStart: test.h
                     tuiBadge
                 />
                 <tui-icon
-                    [icon]="icon"
                     tuiBadge
+                    [icon]="icon"
                 />
                 <tui-icon icon="@tui.box"></tui-icon>
             ",
@@ -19,8 +19,8 @@ exports[`ng-update should migrate tui-icon badge icon input to iconStart: test.h
                     tuiBadge
                 />
                 <tui-icon
-                    [iconStart]="icon"
                     tuiBadge
+                    [iconStart]="icon"
                 />
                 <tui-icon icon="@tui.box"></tui-icon>
             ",

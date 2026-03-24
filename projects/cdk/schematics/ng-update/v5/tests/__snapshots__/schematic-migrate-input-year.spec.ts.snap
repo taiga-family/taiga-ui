@@ -4,7 +4,9 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.html 1`] = `
 {
   "0. Before": "
                 <form [formGroup]="form">
-                  <tui-input-year formControlName="value">Choose a month</tui-input-year>
+                    <tui-input-year formControlName="value">
+                        Choose a month
+                    </tui-input-year>
                 </form>
 
                 <tui-input-year
@@ -19,7 +21,7 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.html 1`] = `
                     />
                 </tui-input-year>
 
-                 <tui-input-year
+                <tui-input-year
                     formControlName="value"
                     tuiTextfieldSize="s"
                     class="tui-space_bottom-2"
@@ -40,16 +42,17 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.html 1`] = `
                 </tui-input-year>
 
                 <tui-input-year
-                    [(ngModel)]="value"
-                    [min]="minValue"
                     [max]="maxValue"
-                >
-                </tui-input-year>
+                    [min]="minValue"
+                    [(ngModel)]="value"
+                ></tui-input-year>
             ",
   "1. After": "
                 <form [formGroup]="form">
-                  <tui-textfield >
-<label tuiLabel>Choose a month</label>
+                    <tui-textfield >
+<label tuiLabel>
+                        Choose a month
+                    </label>
 
 <input tuiInputYear formControlName="value" />
 <tui-calendar-year *tuiDropdown />
@@ -72,7 +75,7 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.html 1`] = `
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 
-                 <tui-textfield
+                <tui-textfield
                     
                     tuiTextfieldSize="s"
                     class="tui-space_bottom-2"
@@ -106,8 +109,7 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.html 1`] = `
                     
                     
                 >
-                
-<input tuiInputYear [(ngModel)]="value" [min]="minValue" [max]="maxValue" />
+<input tuiInputYear [max]="maxValue" [min]="minValue" [(ngModel)]="value" />
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
             ",
