@@ -1,9 +1,19 @@
-import {hasElementAttributeWithValue} from '../../../../utils/templates/elements';
+import {
+    hasElementAttribute,
+    hasElementAttributeWithValue,
+} from '../../../../utils/templates/elements';
 import {type HtmlComment} from '../../../interfaces';
 import {hasChild} from '../../../utils/templates/dom-traversal';
 import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
 
 export const HTML_COMMENTS: HtmlComment[] = [
+    {
+        tag: 'input',
+        withAttrs: ['keySteps'],
+        filterFn: (element) => hasElementAttribute(element, 'max'),
+        comment:
+            'dont use [max] property with [keySteps] – use [step]. When [keySteps] property is enabled, [step] means percentage of total track length. Learn more: https://taiga-ui.dev/next/components/slider#key-steps',
+    },
     {
         tag: 'tui-range',
         withAttrs: ['(activeThumbChange)'],
