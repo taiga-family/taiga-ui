@@ -5,8 +5,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {NgControl} from '@angular/forms';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {switchMap} from 'rxjs';
 

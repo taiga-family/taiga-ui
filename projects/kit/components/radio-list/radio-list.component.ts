@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {FormsModule, NgControl, type ValidatorFn, Validators} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
+import {TUI_STRINGIFY, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -19,7 +19,6 @@ import {
     TuiWithItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiSizeS} from '@taiga-ui/core/types';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});

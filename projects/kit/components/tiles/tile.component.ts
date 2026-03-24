@@ -9,11 +9,11 @@ import {
     signal,
     viewChild,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiTileService} from './tile.service';
 import {TuiTilesComponent} from './tiles.component';
-import {TUI_VERSION} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-tile',

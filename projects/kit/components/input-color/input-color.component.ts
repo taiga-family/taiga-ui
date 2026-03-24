@@ -15,6 +15,7 @@ import {
     maskitoRemoveOnBlurPlugin,
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -24,7 +25,6 @@ import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';
-import {TUI_VERSION} from '@taiga-ui/cdk';
 
 const REGEX = /[0-9a-f]/i;
 const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';

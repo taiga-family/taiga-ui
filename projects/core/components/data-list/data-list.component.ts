@@ -13,8 +13,8 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';

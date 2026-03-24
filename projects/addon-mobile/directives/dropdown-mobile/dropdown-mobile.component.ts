@@ -7,6 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
@@ -14,7 +15,6 @@ import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {TUI_VERSION} from '@taiga-ui/cdk';
 
 const GAP = 16;
 
