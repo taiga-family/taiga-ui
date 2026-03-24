@@ -866,6 +866,11 @@
 ```text
   TuiTransitioned
 ```
+### truncate
+
+```text
+  TuiTruncate, TuiTruncateService
+```
 ### validator
 
 ```text
@@ -60505,6 +60510,176 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {}
+```
+
+---
+# directives/Truncate
+- **Package**: `CDK`
+- **Type**: directives
+Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.
+
+### Example
+
+```html
+&lt;div class=&quot;demo&quot; [style.font-size.px]=&quot;fontSize&quot; [style.padding.px]=&quot;padding&quot; [style.word-break]=&quot;wordBreak&quot; [tuiTruncate]=&quot;lines&quot; &gt; {{ content }} &lt;/div&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| &lt;ng-content /&gt; | `string` | Content |
+| [tuiTruncate] | `number` | Visible lines |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+&lt;div tuiCardMedium class=&quot;poster&quot; &gt;
+&lt;h2 tuiTitle&gt; Poster &lt;span tuiSubtitle [tuiTruncate]=&quot;2&quot; &gt; Look deep into nature, and then you will understand everything better: cinema, concerts, theaters and sports up to 25% &lt;/span&gt;
+&lt;/h2&gt;
+&lt;div tuiBadge class=&quot;badge&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.rss&quot; /&gt; 10% &lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiCardMedium class=&quot;fly&quot; &gt;
+&lt;div tuiBadge class=&quot;badge&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.timer&quot; /&gt; 50 min &lt;/div&gt;
+&lt;h2 tuiTitle&gt; Order #31 &lt;span tuiSubtitle tuiTruncate &gt; 8375 Brook Avenue Brooklyn, NY 11206 &lt;/span&gt;
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div tuiCardLarge=&quot;compact&quot; class=&quot;one-line&quot; &gt;
+&lt;div tuiCell&gt;
+&lt;tui-icon icon=&quot;@tui.file&quot; /&gt;
+&lt;div tuiTitle tuiTruncate &gt; filename_long_long_long_long_long_long_long_long_long_longname.doc &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiCardLarge=&quot;compact&quot; class=&quot;two-line&quot; &gt;
+&lt;div tuiCell&gt;
+&lt;tui-icon icon=&quot;@tui.file&quot; /&gt;
+&lt;div tuiTitle [tuiTruncate]=&quot;2&quot; &gt; filename_long_long_long_long_long_long_long_long_long_longname.doc &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTruncate} from &#039;@taiga-ui/cdk&#039;;
+import {TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiBadge} from &#039;@taiga-ui/kit&#039;;
+import {TuiCard, TuiCell} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiBadge,
+        TuiCard,
+        TuiCell,
+        TuiIcon,
+        TuiTitle,
+        TuiTruncate,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    inline-size: 23.25rem;
+}
+
+.badge {
+    background: #aff218;
+    color: #333;
+}
+
+[tuiSubtitle][tuiSubtitle] {
+    color: #fff;
+}
+
+.poster {
+    background: #4158d0 linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 13.9375rem;
+    block-size: 8rem;
+}
+
+.fly {
+    background: #0093e9 linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 8rem;
+    block-size: 8rem;
+}
+
+.one-line {
+    background: #00dbde linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+    inline-size: 100%;
+}
+
+.two-line {
+    background: #fbab7e linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+    inline-size: 15.9375rem;
+}
+
+[tuiCardLarge] [tuiCell],
+[tuiCardLarge] tui-icon {
+    color: #fff;
+}
+
+[tuiTruncate] {
+    flex-direction: row; // reset tuiTitle flex-direction
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiTruncate} from &#039;@taiga-ui/cdk&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiDemo, TuiTruncate],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    changeDetection,
+})
+export default class Page {
+    protected content = &#039;I am very very long text that gets truncated&#039;;
+    protected lines = 1;
+    protected padding = 16;
+    protected fontSize = 16;
+    protected wordBreakStyles = [&#039;break-word&#039;, &#039;break-all&#039;, &#039;normal&#039;];
+    protected wordBreak = this.wordBreakStyles[0];
+}
+```
+
+### LESS
+
+```less
+.demo {
+    background: #87ceeb;
+    overflow: hidden;
+    resize: horizontal;
+}
 ```
 
 ---

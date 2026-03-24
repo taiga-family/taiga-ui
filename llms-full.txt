@@ -857,6 +857,11 @@
 ```text
   TuiTransitioned
 ```
+### truncate
+
+```text
+  TuiTruncate, TuiTruncateService
+```
 ### validator
 
 ```text
@@ -60496,6 +60501,176 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {}
+```
+
+---
+# directives/Truncate
+- **Package**: `CDK`
+- **Type**: directives
+Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.
+
+### Example
+
+```html
+<div class="demo" [style.font-size.px]="fontSize" [style.padding.px]="padding" [style.word-break]="wordBreak" [tuiTruncate]="lines" > {{ content }} </div>
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| <ng-content /> | `string` | Content |
+| [tuiTruncate] | `number` | Visible lines |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+<div tuiCardMedium class="poster" >
+<h2 tuiTitle> Poster <span tuiSubtitle [tuiTruncate]="2" > Look deep into nature, and then you will understand everything better: cinema, concerts, theaters and sports up to 25% </span>
+</h2>
+<div tuiBadge class="badge" >
+<tui-icon icon="@tui.rss" /> 10% </div>
+</div>
+<div tuiCardMedium class="fly" >
+<div tuiBadge class="badge" >
+<tui-icon icon="@tui.timer" /> 50 min </div>
+<h2 tuiTitle> Order #31 <span tuiSubtitle tuiTruncate > 8375 Brook Avenue Brooklyn, NY 11206 </span>
+</h2>
+</div>
+<div tuiCardLarge="compact" class="one-line" >
+<div tuiCell>
+<tui-icon icon="@tui.file" />
+<div tuiTitle tuiTruncate > filename_long_long_long_long_long_long_long_long_long_longname.doc </div>
+</div>
+</div>
+<div tuiCardLarge="compact" class="two-line" >
+<div tuiCell>
+<tui-icon icon="@tui.file" />
+<div tuiTitle [tuiTruncate]="2" > filename_long_long_long_long_long_long_long_long_long_longname.doc </div>
+</div>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTruncate} from '@taiga-ui/cdk';
+import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiBadge} from '@taiga-ui/kit';
+import {TuiCard, TuiCell} from '@taiga-ui/layout';
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiBadge,
+        TuiCard,
+        TuiCell,
+        TuiIcon,
+        TuiTitle,
+        TuiTruncate,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    inline-size: 23.25rem;
+}
+
+.badge {
+    background: #aff218;
+    color: #333;
+}
+
+[tuiSubtitle][tuiSubtitle] {
+    color: #fff;
+}
+
+.poster {
+    background: #4158d0 linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 13.9375rem;
+    block-size: 8rem;
+}
+
+.fly {
+    background: #0093e9 linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 8rem;
+    block-size: 8rem;
+}
+
+.one-line {
+    background: #00dbde linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+    inline-size: 100%;
+}
+
+.two-line {
+    background: #fbab7e linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+    inline-size: 15.9375rem;
+}
+
+[tuiCardLarge] [tuiCell],
+[tuiCardLarge] tui-icon {
+    color: #fff;
+}
+
+[tuiTruncate] {
+    flex-direction: row; // reset tuiTitle flex-direction
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiTruncate} from '@taiga-ui/cdk';
+
+@Component({
+    standalone: true,
+    imports: [TuiDemo, TuiTruncate],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    changeDetection,
+})
+export default class Page {
+    protected content = 'I am very very long text that gets truncated';
+    protected lines = 1;
+    protected padding = 16;
+    protected fontSize = 16;
+    protected wordBreakStyles = ['break-word', 'break-all', 'normal'];
+    protected wordBreak = this.wordBreakStyles[0];
+}
+```
+
+### LESS
+
+```less
+.demo {
+    background: #87ceeb;
+    overflow: hidden;
+    resize: horizontal;
+}
 ```
 
 ---
