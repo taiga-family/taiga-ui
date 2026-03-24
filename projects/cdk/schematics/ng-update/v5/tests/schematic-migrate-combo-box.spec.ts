@@ -233,6 +233,21 @@ describe('ng-update ComboBox', () => {
     );
 
     it(
+        'does not wrap text in label when [tuiTextfieldLabelOutside]="true"',
+        migrate({
+            template: `
+                <tui-combo-box
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    City
+                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                </tui-combo-box>
+            `,
+        }),
+    );
+
+    it(
         'moves tuiTextfieldSize to tui-textfield wrapper',
         migrate({
             template: `

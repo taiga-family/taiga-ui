@@ -78,6 +78,29 @@ exports[`ng-update ComboBox adds TODO for [search] and (searchChange): test.html
 }
 `;
 
+exports[`ng-update ComboBox does not wrap text in label when [tuiTextfieldLabelOutside]="true": test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    City
+                    <tui-data-list-wrapper *tuiDataList [items]="cities" />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+                    City
+                    
+<input tuiComboBox [formControl]="control" />
+<tui-data-list-wrapper *tuiDropdown [items]="cities" />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update ComboBox handles multiple combo-boxes in the same template: test.html 1`] = `
 {
   "0. Before": "
@@ -372,10 +395,8 @@ exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiT
   "1. After": "
                 <tui-textfield
                 >
-<label tuiLabel>
                     Label
-                </label>
-
+                
 <input tuiComboBox [formControl]="control" />
 </tui-textfield>
             ",

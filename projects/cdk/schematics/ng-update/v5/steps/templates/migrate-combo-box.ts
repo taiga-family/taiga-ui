@@ -65,6 +65,10 @@ export function migrateComboBox({
             REMOVE_ATTRS.has(attr.name.toLowerCase()),
         );
 
+        // tuiTextfieldLabelOutside="true"/plain → label is managed externally, skip wrapTextInLabel
+        // tuiTextfieldLabelOutside="false" or absent → generate floating <label tuiLabel>
+        const labelOutside = removeAttrs.some((attr) => attr.value !== 'false');
+
         const searchAttr = element.attrs.find(
             (attr) => attr.name.toLowerCase() === '[search]',
         );
@@ -144,7 +148,10 @@ export function migrateComboBox({
                 inputAttrs,
                 searchHandler,
             });
-            wrapTextInLabel(recorder, templateOffset, element);
+
+            if (!labelOutside) {
+                wrapTextInLabel(recorder, templateOffset, element);
+            }
         } else {
             handleGeneratedInput({
                 element,
@@ -154,6 +161,7 @@ export function migrateComboBox({
                 inputAttrs,
                 searchHandler,
                 sourceCodeLocation,
+                labelOutside,
             });
         }
     });
@@ -217,10 +225,12 @@ function handleGeneratedInput({
     inputAttrs,
     searchHandler,
     sourceCodeLocation,
+    labelOutside,
 }: {
     controlAttrs: Array<{name: string; value: string}>;
     element: Element;
     inputAttrs: Array<{name: string; value: string}>;
+    labelOutside: boolean;
     recorder: UpdateRecorder;
     searchHandler: string;
     sourceCodeLocation: Element['sourceCodeLocation'];
@@ -229,7 +239,9 @@ function handleGeneratedInput({
     const formAttrs = formatControlAttrs(controlAttrs);
     const inputAttrStr = formatInputAttrs(inputAttrs);
 
-    wrapTextInLabel(recorder, templateOffset, element);
+    if (!labelOutside) {
+        wrapTextInLabel(recorder, templateOffset, element);
+    }
 
     const labelNode = element.childNodes.find(
         (node): node is TextNode =>
