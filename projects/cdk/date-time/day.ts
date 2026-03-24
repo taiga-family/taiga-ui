@@ -147,7 +147,6 @@ export class TuiDay extends TuiMonth {
         }
     }
 
-    // TODO: Move month and year related code corresponding classes
     /**
      * Parsing a string with date with normalization
      *
@@ -170,7 +169,7 @@ export class TuiDay extends TuiMonth {
      * @return date
      * @throws exceptions if any part of the date is invalid
      */
-    public static jsonParse(ymdString: string): TuiDay {
+    public static override jsonParse(ymdString: string): TuiDay {
         const {day, month, year} = this.parseRawDateString(ymdString, 'yyyy/mm/dd');
 
         if (

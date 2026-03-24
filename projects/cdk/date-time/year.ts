@@ -48,6 +48,22 @@ export class TuiYear implements TuiYearLike {
         return tuiNormalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
     }
 
+    /**
+     * Parsing a year stringified in a toJSON format
+     * @param yearString year string in format of YYYY
+     * @return year
+     * @throws exceptions if year is invalid
+     */
+    public static jsonParse(yearString: string): TuiYear {
+        const year = Number.parseInt(yearString, 10);
+
+        if (!TuiYear.isValidYear(year)) {
+            throw new TuiInvalidYearException(year);
+        }
+
+        return new TuiYear(year);
+    }
+
     public get formattedYear(): string {
         return String(this.year).padStart(4, '0');
     }
@@ -130,5 +146,11 @@ export class TuiYear implements TuiYearLike {
 
     public toJSON(): string {
         return this.formattedYear;
+    }
+}
+
+export class TuiInvalidYearException extends Error {
+    constructor(year: number) {
+        super(ngDevMode ? `Invalid year: ${year}` : '');
     }
 }

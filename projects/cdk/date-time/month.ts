@@ -81,6 +81,23 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     }
 
     /**
+     * Parsing a month stringified in a toJSON format
+     * @param ymString month string in format of YYYY-MM
+     * @return month
+     * @throws exceptions if year or month is invalid
+     */
+    public static override jsonParse(ymString: string): TuiMonth {
+        const year = Number.parseInt(ymString.slice(0, 4), 10);
+        const month = Number.parseInt(ymString.slice(5, 7), 10) - 1;
+
+        if (!TuiMonth.isValidMonth(year, month)) {
+            throw new TuiInvalidMonthException(year, month);
+        }
+
+        return new TuiMonth(year, month);
+    }
+
+    /**
      * Tests month for validity
      */
     private static isValidMonthPart(month: number): boolean {
@@ -189,5 +206,11 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     public toUtcNativeDate(): Date {
         return new Date(Date.UTC(this.year, this.month));
+    }
+}
+
+export class TuiInvalidMonthException extends Error {
+    constructor(year: number, month: number) {
+        super(ngDevMode ? `Invalid month: ${year}-${month}` : '');
     }
 }
