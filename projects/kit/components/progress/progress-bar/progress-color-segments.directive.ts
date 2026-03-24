@@ -5,7 +5,7 @@ import {
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {distinctUntilChanged, map, tap} from 'rxjs';
+import {distinctUntilChanged, map} from 'rxjs';
 
 @Directive({
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
@@ -13,7 +13,7 @@ import {distinctUntilChanged, map, tap} from 'rxjs';
         WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
-            useValue: {attributeOldValue: true}, // used?
+            useValue: {attributes: true},
         },
     ],
     host: {'[style.--tui-progress-color]': 'color()', '[style.--tui-duration]': '"0s"'},
@@ -24,7 +24,6 @@ export class TuiProgressColorSegments {
         inject(WaMutationObserverService, {self: true}).pipe(
             map(() => this.el.position),
             distinctUntilChanged(),
-            tap(console.info),
         ),
         {initialValue: this.el.position},
     );
