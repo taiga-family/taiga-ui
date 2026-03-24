@@ -78,5 +78,13 @@ describe('ng-update onboarding-flow migration', () => {
         }),
     );
 
+    it(
+        'adds TODO comment to tui-onboarding-flow about footer restructure',
+        migrate({
+            template:
+                '<tui-onboarding-flow [(index)]="index"><tui-onboarding-step *tuiItem>content</tui-onboarding-step></tui-onboarding-flow>',
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
