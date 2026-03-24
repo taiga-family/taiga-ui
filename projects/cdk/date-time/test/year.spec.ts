@@ -1,4 +1,5 @@
-import {TuiYear} from '@taiga-ui/cdk';
+import {TuiInvalidYearException, TuiYear} from '@taiga-ui/cdk';
+import {tuiSwitchNgDevMode} from '@taiga-ui/jest-config';
 
 describe('TuiYear', () => {
     describe('static method', () => {
@@ -114,6 +115,66 @@ describe('TuiYear', () => {
 
                 it('2104', () => {
                     expect(TuiYear.isLeapYear(2104)).toBe(true);
+                });
+            });
+        });
+
+        describe('normalizeParse', () => {
+            describe('returns parsed year from a valid string', () => {
+                it('2018', () => {
+                    expect(TuiYear.normalizeParse('2018').year).toBe(2018);
+                });
+
+                it('0000', () => {
+                    expect(TuiYear.normalizeParse('0000').year).toBe(0);
+                });
+
+                it('9999', () => {
+                    expect(TuiYear.normalizeParse('9999').year).toBe(9999);
+                });
+            });
+
+            describe('normalizes out-of-range values', () => {
+                it("clamps 'NaN' to 0", () => {
+                    expect(TuiYear.normalizeParse('test').year).toBe(0);
+                });
+            });
+        });
+
+        describe('jsonParse', () => {
+            describe('returns parsed year from a valid string', () => {
+                it('2018', () => {
+                    expect(TuiYear.jsonParse('2018').year).toBe(2018);
+                });
+
+                it('0000', () => {
+                    expect(TuiYear.jsonParse('0000').year).toBe(0);
+                });
+            });
+
+            describe('throws an exception', () => {
+                describe('dev mode', () => {
+                    beforeEach(() => tuiSwitchNgDevMode(true));
+
+                    it('test', () => {
+                        expect(() => TuiYear.jsonParse('test')).toThrow(
+                            'Invalid year: NaN',
+                        );
+                    });
+
+                    it('-1', () => {
+                        expect(() => TuiYear.jsonParse('-1')).toThrow('Invalid year: -1');
+                    });
+
+                    afterEach(() => tuiSwitchNgDevMode(false));
+                });
+
+                describe('production mode', () => {
+                    it('invalid string', () => {
+                        expect(() => TuiYear.jsonParse('test')).toThrow(
+                            new TuiInvalidYearException(NaN),
+                        );
+                    });
                 });
             });
         });

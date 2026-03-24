@@ -1,5 +1,6 @@
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
+import {MONTH_FILLER_LENGTH} from './date-fillers';
 import {MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
 import {TuiMonthNumber} from './month-number';
 import {type TuiMonthLike} from './types';
@@ -78,6 +79,57 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     public static normalizeMonthPart(month: number): number {
         return tuiNormalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
+    }
+
+    /**
+     * Parsing a raw month-year string
+     *
+     * @param date month string in format of MM/YYYY (7 characters)
+     * @return parsed month (0-based) and year
+     */
+    public static parseRawMonthString(date: string): {month: number; year: number} {
+        ngDevMode &&
+            console.assert(
+                date.length === MONTH_FILLER_LENGTH,
+                '[parseRawMonthString]: wrong month string length',
+            );
+
+        return {
+            month: parseInt(date.slice(0, 2), 10) - 1,
+            year: parseInt(date.slice(3, 7), 10),
+        };
+    }
+
+    /**
+     * Parsing a string with month-year with normalization
+     *
+     * @param rawMonth month string in format of MM/YYYY
+     * @return normalized month
+     */
+    public static override normalizeParse(rawMonth: string): TuiMonth {
+        const {month, year} = TuiMonth.parseRawMonthString(rawMonth);
+
+        return new TuiMonth(
+            TuiYear.normalizeYearPart(year),
+            TuiMonth.normalizeMonthPart(month),
+        );
+    }
+
+    /**
+     * Parsing a month stringified in a toJSON format
+     * @param ymString month string in format of YYYY-MM
+     * @return month
+     * @throws exceptions if year or month is invalid
+     */
+    public static override jsonParse(ymString: string): TuiMonth {
+        const year = parseInt(ymString.slice(0, 4), 10);
+        const month = parseInt(ymString.slice(5, 7), 10) - 1;
+
+        if (!TuiMonth.isValidMonth(year, month)) {
+            throw new TuiInvalidMonthException(year, month);
+        }
+
+        return new TuiMonth(year, month);
     }
 
     /**
@@ -189,5 +241,11 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     public toUtcNativeDate(): Date {
         return new Date(Date.UTC(this.year, this.month));
+    }
+}
+
+export class TuiInvalidMonthException extends Error {
+    constructor(year: number, month: number) {
+        super(ngDevMode ? `Invalid month: ${year}-${month}` : '');
     }
 }
