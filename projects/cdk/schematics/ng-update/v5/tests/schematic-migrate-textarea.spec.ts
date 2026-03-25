@@ -20,8 +20,9 @@ describe('ng-update legacy textarea', () => {
                 })
                 export class TestComponent {}
             `,
-            template:
-                '<tui-textarea formControlName="testValue">Type a text</tui-textarea>',
+            template: /* HTML */ `
+                <tui-textarea formControlName="testValue">Type a text</tui-textarea>
+            `,
         }),
     );
 
@@ -74,7 +75,7 @@ describe('ng-update legacy textarea', () => {
         'removes expandable="false" and maps static rows to max',
         migrate({
             template:
-                '<tui-textarea formControlName="value" expandable="false" rows="5">Text</tui-textarea>',
+                /* HTML */ '<tui-textarea formControlName="value" expandable="false" rows="5">Text</tui-textarea>',
         }),
     );
 
@@ -82,13 +83,17 @@ describe('ng-update legacy textarea', () => {
         'migrates rows without expandable and adds TODO about min',
         migrate({
             template:
-                '<tui-textarea formControlName="value" rows="5">Comment</tui-textarea>',
+                /* HTML */ '<tui-textarea formControlName="value" rows="5">Comment</tui-textarea>',
         }),
     );
 
     it(
         'handles tui-textarea without text content',
-        migrate({template: '<tui-textarea formControlName="value"></tui-textarea>'}),
+        migrate({
+            template: /* HTML */ `
+                <tui-textarea formControlName="value"></tui-textarea>
+            `,
+        }),
     );
 
     it(
@@ -137,7 +142,7 @@ describe('ng-update legacy textarea', () => {
         'places unknown attributes on tui-textfield and adds TODO',
         migrate({
             template:
-                '<tui-textarea formControlName="value" someCustomDirective [anotherDirective]="config">Label</tui-textarea>',
+                /* HTML */ '<tui-textarea formControlName="value" someCustomDirective [anotherDirective]="config">Label</tui-textarea>',
         }),
     );
 
