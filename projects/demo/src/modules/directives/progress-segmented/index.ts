@@ -33,9 +33,11 @@ export default class Page {
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-background-accent-1)'],
         ['#39b54a', '#ffd450', '#ffd450', '#fcc521', '#fab619', '#f8a34d', '#e01f19'],
-        new Array(20)
-            .fill('')
-            .map((_, index) => `var(--tui-chart-categorical-0${index + 1})`),
+        Array.from(
+            {length: 20},
+            (_, index) =>
+                `var(--tui-chart-categorical-${String(index + 1).padStart(2, '0')})`,
+        ),
     ];
 
     protected colors: string[] = this.colorsVariants[0] ?? [];
