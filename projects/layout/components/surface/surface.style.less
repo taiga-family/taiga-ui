@@ -83,7 +83,7 @@ input[tuiSurfaceLayer]:focus-visible + [tuiSurfaceLayer] {
 }
 
 @media @tui-mouse {
-    [tuiSurface]:hover input[tuiSurfaceLayer] + [tuiSurfaceLayer] {
+    [tuiSurface]:where(*&):hover input[tuiSurfaceLayer] + [tuiSurfaceLayer] {
         padding: var(--tui-gap);
     }
 }
