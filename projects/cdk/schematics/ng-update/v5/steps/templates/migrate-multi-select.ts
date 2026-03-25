@@ -412,8 +412,6 @@ function formatControlAttrs(attrs: Array<{name: string; value: string}>): string
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
@@ -422,6 +420,8 @@ function normalizeAttrName(name: string): string {
             return 'formControl';
         case 'formControlName'.toLowerCase():
             return 'formControlName';
+        case '[(ngmodel)]':
+            return '[(ngModel)]';
         case 'ngmodel':
             return 'ngModel';
         default:
