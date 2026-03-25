@@ -14,7 +14,7 @@ export class TuiProgressColorSegments {
 
     private readonly width = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
-            map(() => this.el.offsetWidth),
+            map(([x]) => x?.contentRect.width ?? 0),
             distinctUntilChanged(),
         ),
         {initialValue: this.el.offsetWidth},
