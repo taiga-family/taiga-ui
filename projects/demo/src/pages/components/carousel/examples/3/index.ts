@@ -1,6 +1,7 @@
-import {Component, computed, signal} from '@angular/core';
+import {Component, computed, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiCarousel, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiPager, TuiProgress} from '@taiga-ui/kit';
 import {TuiCard} from '@taiga-ui/layout';
@@ -13,6 +14,7 @@ import {TuiCard} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
+    protected readonly isE2E = inject(WA_IS_E2E);
     protected readonly index = signal(0);
     protected readonly items = [
         {

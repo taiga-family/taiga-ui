@@ -32,6 +32,6 @@
         tuiProgressBar
         class="progress"
         [class.progress_active]="clamped() === current"
-        [value]="clamped() === current ? carousel.progress() : 0"
+        [value]="clamped() === current && !isE2E ? carousel.progress() : 0"
     ></progress>
 </ng-template>

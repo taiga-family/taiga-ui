@@ -47,7 +47,7 @@ export default class Example {
     ];
 
     protected onScroll({scrollLeft, clientWidth}: HTMLElement): void {
-        const scrolled = ((scrollLeft - clientWidth) % clientWidth) / clientWidth;
+        const scrolled = ((Math.abs(scrollLeft) - clientWidth) / clientWidth) % 1;
         const progress = this.index() || !scrolled ? scrolled : 1 + scrolled;
 
         if (progress) {
