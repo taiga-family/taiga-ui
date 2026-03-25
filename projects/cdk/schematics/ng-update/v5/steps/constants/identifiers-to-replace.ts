@@ -859,4 +859,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
+    {
+        from: {
+            name: 'TuiInputModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInput',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
