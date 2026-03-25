@@ -25,7 +25,7 @@ export class TuiProgressColorSegments {
             return null;
         }
 
-        const segmentWidth = Math.ceil(this.width() / colors.length);
+        const segmentWidth = this.width() / colors.length;
         const colorsString = colors.reduce(
             (acc, color, i) =>
                 `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
