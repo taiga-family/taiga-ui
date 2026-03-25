@@ -230,7 +230,7 @@ function buildTodoComment(ctx: MigrationContext): string {
             );
         } else {
             notes.push(
-                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.`,
+                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.`,
             );
         }
     }
@@ -324,7 +324,10 @@ function buildInnerContent(
     }
 
     const attrsStr = textareaAttrs.length > 0 ? ` ${textareaAttrs.join(' ')}` : '';
-    const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
+    // placeholder is added only when labelOutside=true (text → hint inside field)
+    // when labelOutside=false/absent the text becomes <label tuiLabel> (floating label) instead
+    const placeholderAttr =
+        placeholder && labelOutside === true ? ` placeholder="${placeholder}"` : '';
 
     const otherChildren = childElements
         .map((child) => {
