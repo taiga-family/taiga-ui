@@ -141,6 +141,21 @@ describe('ng-update legacy input', () => {
     );
 
     it(
+        'migrates tuiHintDirection value alongside wrapper attrs',
+        migrate({
+            template: /* HTML */ `
+                <tui-input
+                    formControlName="value"
+                    tuiHintContent="Hint"
+                    tuiHintDirection="bottom-right"
+                >
+                    Label
+                </tui-input>
+            `,
+        }),
+    );
+
+    it(
         'migrates multiple tui-input elements in one template',
         migrate({
             template: /* HTML */ `
