@@ -20,7 +20,10 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 })
 class Styles {}
 
-@Directive({selector: '[tuiBlockDetails]', host: {'data-tui-version': TUI_VERSION}})
+@Directive({
+    selector: '[tuiBlockDetails]',
+    host: {'data-tui-version': TUI_VERSION},
+})
 export class TuiBlockDetails {
     protected readonly nothing = tuiWithStyles(Styles);
 }
