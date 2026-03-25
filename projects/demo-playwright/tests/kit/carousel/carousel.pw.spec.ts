@@ -8,15 +8,14 @@ test.describe('Carousel', () => {
     test('buttons work', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Carousel}`);
 
-        const document = new TuiDocumentationPagePO(page);
-        const example = page.locator('#basic');
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
         const prev = example.locator('button').first();
         const next = example.locator('button').last();
 
         await next.click();
-        await expect.soft(document.demo).toHaveScreenshot('01-carousel-next.png');
+        await expect.soft(example).toHaveScreenshot('01-carousel-next.png');
 
         await prev.click();
-        await expect.soft(document.demo).toHaveScreenshot('01-carousel-prev.png');
+        await expect.soft(example).toHaveScreenshot('01-carousel-prev.png');
     });
 });

@@ -20,6 +20,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-carousel',
@@ -34,6 +35,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly ios = inject(WA_IS_IOS);
+    private readonly behavior = inject(TUI_REDUCED_MOTION) ? 'auto' : 'smooth';
 
     protected readonly math = Math;
     protected readonly template = contentChild.required(TuiItem, {read: TemplateRef});
@@ -49,11 +51,11 @@ export class TuiCarouselComponent implements AfterViewInit {
     }
 
     public next(): void {
-        this.el.scrollTo({left: this.d * this.el.scrollWidth, behavior: 'smooth'});
+        this.el.scrollTo({left: this.d * this.el.scrollWidth, behavior: this.behavior});
     }
 
     public prev(): void {
-        this.el.scrollTo({left: 0, behavior: 'smooth'});
+        this.el.scrollTo({left: 0, behavior: this.behavior});
     }
 
     protected onIntersection(isIntersecting: boolean, step: number): void {
