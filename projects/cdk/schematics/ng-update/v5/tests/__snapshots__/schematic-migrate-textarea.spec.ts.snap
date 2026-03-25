@@ -17,21 +17,23 @@ exports[`ng-update legacy textarea keeps tuiTextfieldCleaner and tuiHintContent 
   "0. Before": "
                 <tui-textarea
                     formControlName="value"
-                    [tuiTextfieldCleaner]="true"
                     tuiHintContent="Hint text"
                     tuiHintDirection="bottom-right"
+                    [tuiTextfieldCleaner]="true"
                 >
                     Label
-                </tui-textarea>",
+                </tui-textarea>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Label" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.
      - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
 -->
-                <tui-textfield [tuiTextfieldCleaner]="true" tuiHintContent="Hint text" tuiHintDirection="bottom-right">
+                <tui-textfield tuiHintContent="Hint text" tuiHintDirection="bottom-right" [tuiTextfieldCleaner]="true">
                 <label tuiLabel>Label</label>
                 <textarea placeholder="Label" tuiTextarea formControlName="value"></textarea>
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -77,7 +79,8 @@ exports[`ng-update legacy textarea migrates multiple tui-textarea elements in on
 {
   "0. Before": "
                 <tui-textarea formControlName="a">First</tui-textarea>
-                <tui-textarea formControlName="b">Second</tui-textarea>",
+                <tui-textarea formControlName="b">Second</tui-textarea>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "First" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.
@@ -94,7 +97,8 @@ exports[`ng-update legacy textarea migrates multiple tui-textarea elements in on
                 <tui-textfield>
                 <label tuiLabel>Second</label>
                 <textarea placeholder="Second" tuiTextarea formControlName="b"></textarea>
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -122,7 +126,8 @@ exports[`ng-update legacy textarea migrates tui-textarea attributes: wrapper att
                     [tuiTextfieldLabelOutside]="true"
                 >
                     Label
-                </tui-textarea>",
+                </tui-textarea>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Label" became placeholder on <textarea>. Previously [tuiTextfieldLabelOutside]=true — for label-outside pattern, wrap <tui-textfield> with: <label tuiLabel>Label<tui-textfield>...</tui-textfield></label>.
@@ -130,7 +135,8 @@ exports[`ng-update legacy textarea migrates tui-textarea attributes: wrapper att
 -->
                 <tui-textfield tuiTextfieldSize="s">
                 <textarea placeholder="Label" tuiTextarea formControlName="testValue" [limit]="150"></textarea>
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -142,7 +148,8 @@ exports[`ng-update legacy textarea migrates tui-textarea with labelOutside=false
                     [tuiTextfieldLabelOutside]="false"
                 >
                     Label
-                </tui-textarea>",
+                </tui-textarea>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Label" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.
@@ -151,7 +158,8 @@ exports[`ng-update legacy textarea migrates tui-textarea with labelOutside=false
                 <tui-textfield>
                 <label tuiLabel>Label</label>
                 <textarea placeholder="Label" tuiTextarea formControlName="testValue"></textarea>
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -180,7 +188,8 @@ exports[`ng-update legacy textarea removes [expandable] and maps [rows] to [max]
                     [rows]="10"
                 >
                     Type here
-                </tui-textarea>",
+                </tui-textarea>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Type here" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.
@@ -189,7 +198,8 @@ exports[`ng-update legacy textarea removes [expandable] and maps [rows] to [max]
                 <tui-textfield>
                 <label tuiLabel>Type here</label>
                 <textarea placeholder="Type here" tuiTextarea formControlName="testValue" [max]="10"></textarea>
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -217,7 +227,8 @@ exports[`ng-update legacy textarea reuses inner <textarea tuiTextfieldLegacy> in
                         placeholder="Write a few words"
                         tuiTextfieldLegacy
                     ></textarea>
-                </tui-textarea>",
+                </tui-textarea>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
      - Text content "Bio" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. Adjust or remove placeholder if it should differ from the label.
@@ -229,6 +240,7 @@ exports[`ng-update legacy textarea reuses inner <textarea tuiTextfieldLegacy> in
                         maxlength="97"
                         placeholder="Write a few words"
                         tuiTextarea [(ngModel)]="value"></textarea>
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;

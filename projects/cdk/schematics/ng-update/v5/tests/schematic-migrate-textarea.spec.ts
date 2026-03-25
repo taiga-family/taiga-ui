@@ -28,7 +28,7 @@ describe('ng-update legacy textarea', () => {
     it(
         'migrates tui-textarea attributes: wrapper attrs, [maxLength], labelOutside=true adds TODO',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textarea
                     formControlName="testValue"
                     tuiTextfieldSize="s"
@@ -36,34 +36,37 @@ describe('ng-update legacy textarea', () => {
                     [tuiTextfieldLabelOutside]="true"
                 >
                     Label
-                </tui-textarea>`,
+                </tui-textarea>
+            `,
         }),
     );
 
     it(
         'migrates tui-textarea with labelOutside=false: adds label tuiLabel inside tui-textfield',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textarea
                     formControlName="testValue"
                     [tuiTextfieldLabelOutside]="false"
                 >
                     Label
-                </tui-textarea>`,
+                </tui-textarea>
+            `,
         }),
     );
 
     it(
         'removes [expandable] and maps [rows] to [max]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textarea
                     formControlName="testValue"
                     [expandable]="true"
                     [rows]="10"
                 >
                     Type here
-                </tui-textarea>`,
+                </tui-textarea>
+            `,
         }),
     );
 
@@ -91,7 +94,7 @@ describe('ng-update legacy textarea', () => {
     it(
         'reuses inner <textarea tuiTextfieldLegacy> instead of generating a new one',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textarea [(ngModel)]="value">
                     Bio
                     <textarea
@@ -99,31 +102,34 @@ describe('ng-update legacy textarea', () => {
                         placeholder="Write a few words"
                         tuiTextfieldLegacy
                     ></textarea>
-                </tui-textarea>`,
+                </tui-textarea>
+            `,
         }),
     );
 
     it(
         'keeps tuiTextfieldCleaner and tuiHintContent on tui-textfield wrapper',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textarea
                     formControlName="value"
-                    [tuiTextfieldCleaner]="true"
                     tuiHintContent="Hint text"
                     tuiHintDirection="bottom-right"
+                    [tuiTextfieldCleaner]="true"
                 >
                     Label
-                </tui-textarea>`,
+                </tui-textarea>
+            `,
         }),
     );
 
     it(
         'migrates multiple tui-textarea elements in one template',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textarea formControlName="a">First</tui-textarea>
-                <tui-textarea formControlName="b">Second</tui-textarea>`,
+                <tui-textarea formControlName="b">Second</tui-textarea>
+            `,
         }),
     );
 
