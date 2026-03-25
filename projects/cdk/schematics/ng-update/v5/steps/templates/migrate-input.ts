@@ -215,6 +215,10 @@ function buildReplacement(
     const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
     const indent = /^[ \t]*/.exec(template.slice(lineStart, loc.startOffset))?.[0] ?? '';
 
+    const isLabelOutsideTrue =
+        ctx.labelOutsideValue === 'true' ||
+        (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
+
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
     const innerContent = buildInnerContent(
@@ -223,11 +227,16 @@ function buildReplacement(
         inputAttrs,
         ctx.placeholder,
         indent,
+        isLabelOutsideTrue,
     );
     const todoComment = buildTodoComment(ctx);
-    const core = `${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
+    // `indent` is added before <tui-textfield> only when there is a TODO — in that case
+    // todoComment ends with `\n` so the tag would otherwise start at column 0.
+    // Without a TODO the preserved whitespace before startOffset already provides the indent.
+    const tagIndent = todoComment ? indent : '';
+    const core = `${tagIndent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
 
-    const replacement = `${todoComment}${wrapWithLabel(core, ctx, indent)}`;
+    const replacement = `${todoComment}${core}`;
 
     return {
         startOffset: loc.startOffset,
@@ -236,36 +245,20 @@ function buildReplacement(
     };
 }
 
-/**
- * Wraps the migrated <tui-textfield> in <label tuiLabel> when labelOutside was statically true.
- * Returns the string unchanged for false/absent/dynamic cases.
- */
-function wrapWithLabel(core: string, ctx: MigrationContext, indent: string): string {
-    if (ctx.labelOutsideValue === null || ctx.labelOutsideValue === 'false') {
-        return core;
-    }
-
-    const isStaticTrue =
-        ctx.labelOutsideValue === 'true' ||
-        (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
-
-    if (!isStaticTrue) {
-        // Dynamic binding — cannot wrap automatically, covered by TODO comment
-        return core;
-    }
-
-    const labelText = ctx.placeholder ? `${indent}${ctx.placeholder}\n` : '';
-
-    return `${indent}<label tuiLabel>\n${labelText}${core}\n${indent}</label>`;
-}
-
 function buildTodoComment(ctx: MigrationContext): string {
     const notes: string[] = [];
 
+    const isLabelOutsideTrue =
+        ctx.labelOutsideValue === 'true' ||
+        (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
+
     if (ctx.placeholder) {
-        notes.push(
-            `Text content "${ctx.placeholder}" became placeholder on <input>. Add tuiLabel element inside <tui-textfield> for a floating label.`,
-        );
+        if (isLabelOutsideTrue) {
+            notes.push(
+                `Text content "${ctx.placeholder}" became placeholder on <input> (labelOutside=true). Add <label tuiLabel> outside <tui-textfield> if a static label is needed.`,
+            );
+        }
+        // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed
     }
 
     if (ctx.noEquivalentAttrs.length > 0) {
@@ -274,20 +267,14 @@ function buildTodoComment(ctx: MigrationContext): string {
         );
     }
 
-    if (ctx.labelOutsideValue !== null && ctx.labelOutsideValue !== 'false') {
-        const isStaticTrue =
-            ctx.labelOutsideValue === 'true' ||
-            (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
-
-        if (isStaticTrue) {
-            notes.push(
-                '[tuiTextfieldLabelOutside]="true" was removed — wrapped in a tuiLabel element. Verify label text is correct.',
-            );
-        } else {
-            notes.push(
-                `[tuiTextfieldLabelOutside]="${ctx.labelOutsideValue}" is dynamic and cannot be migrated automatically. Wrap in a tuiLabel element manually when the value is true.`,
-            );
-        }
+    if (
+        ctx.labelOutsideValue !== null &&
+        ctx.labelOutsideValue !== 'false' &&
+        !isLabelOutsideTrue
+    ) {
+        notes.push(
+            `[tuiTextfieldLabelOutside]="${ctx.labelOutsideValue}" is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.`,
+        );
     }
 
     for (const name of ctx.unknownAttrs) {
@@ -315,6 +302,7 @@ function buildInnerContent(
     inputAttrs: string[],
     placeholder: string,
     indent: string,
+    labelOutsideIsTrue: boolean,
 ): string {
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
@@ -338,7 +326,6 @@ function buildInnerContent(
     }
 
     const attrsStr = inputAttrs.length > 0 ? ` ${inputAttrs.join(' ')}` : '';
-    const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
 
     const otherChildren = childElements
         .map((child) => {
@@ -350,7 +337,19 @@ function buildInnerContent(
         })
         .join('');
 
-    return `${indent}<input${placeholderAttr}${attrsStr} />\n${otherChildren}`;
+    if (labelOutsideIsTrue) {
+        // labelOutside=true: text → placeholder on <input>, no label inside
+        const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
+
+        return `${indent}<input${placeholderAttr}${attrsStr} />\n${otherChildren}`;
+    }
+
+    // labelOutside=false/absent: text → <label tuiLabel> inside (floating label)
+    const labelEl = placeholder
+        ? `${indent}<label tuiLabel>${placeholder}</label>\n`
+        : '';
+
+    return `${labelEl}${indent}<input${attrsStr} />\n${otherChildren}`;
 }
 
 /**
