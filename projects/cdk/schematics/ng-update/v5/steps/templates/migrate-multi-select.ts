@@ -59,7 +59,6 @@ export function migrateMultiSelect({
             CONTROL_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        // Rename [valueContent] → [content]
         renameAttr(
             recorder,
             templateOffset,
@@ -69,14 +68,12 @@ export function migrateMultiSelect({
         );
         renameAttr(recorder, templateOffset, element, VALUE_CONTENT_ATTR, CONTENT_ATTR);
 
-        // Remove tuiTextfieldLabelOutside — add TODO when value is truthy or absent (plain attr)
         const labelOutsideAttr = element.attrs.find((attr) =>
             [
                 `[${TEXTFIELD_LABEL_OUTSIDE_ATTR}]`.toLowerCase(),
                 TEXTFIELD_LABEL_OUTSIDE_ATTR.toLowerCase(),
             ].includes(attr.name.toLowerCase()),
         );
-        // Plain boolean attr (value="") is truthy; only explicit binding ="false" is falsy
         const labelOutsideTruthy =
             labelOutsideAttr !== undefined && labelOutsideAttr.value !== 'false';
 
@@ -106,7 +103,6 @@ export function migrateMultiSelect({
             );
         }
 
-        // Remove [autoColor] and add TODO
         const hasAutoColor = element.attrs.some((attr) =>
             [
                 `[${AUTO_COLOR_ATTR}]`.toLowerCase(),
@@ -128,13 +124,11 @@ export function migrateMultiSelect({
             );
         }
 
-        // Extract and remove placeholder (it will move to <input>)
         const placeholder = extractPlaceholder(element);
 
         removeAttr(recorder, templateOffset, element, PLACEHOLDER_ATTR, template);
         removeAttr(recorder, templateOffset, element, PLACEHOLDER_BINDING_ATTR, template);
 
-        // Handle [editable] → tuiSelectLike on <input>
         const selectLike = extractSelectLike(element);
 
         removeAttr(recorder, templateOffset, element, EDITABLE_ATTR, template);
@@ -177,7 +171,7 @@ export function migrateMultiSelect({
         });
 
         const hasChevron = element.attrs.some(
-            (attr) => attr.name.toLowerCase() === 'tuichevron',
+            (attr) => attr.name.toLowerCase() === 'tuiChevron'.toLowerCase(),
         );
 
         replaceTag(
@@ -198,7 +192,7 @@ export function migrateMultiSelect({
         if (existingInputs.length) {
             existingInputs.forEach((input) => {
                 const hasInputChip = input.attrs.some(
-                    (attr) => attr.name.toLowerCase() === 'tuiinputchip',
+                    (attr) => attr.name.toLowerCase() === 'tuiInputChip'.toLowerCase(),
                 );
 
                 if (!hasInputChip) {
@@ -420,13 +414,13 @@ function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
         case '[(ngmodel)]':
             return '[(ngModel)]';
-        case '[formcontrol]':
+        case '[formControl]'.toLowerCase():
             return '[formControl]';
-        case '[ngmodel]':
+        case '[ngModel]'.toLowerCase():
             return '[ngModel]';
-        case 'formcontrol':
+        case 'formControl'.toLowerCase():
             return 'formControl';
-        case 'formcontrolname':
+        case 'formControlName'.toLowerCase():
             return 'formControlName';
         case 'ngmodel':
             return 'ngModel';
