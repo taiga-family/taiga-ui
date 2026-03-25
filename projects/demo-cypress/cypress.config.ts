@@ -92,6 +92,7 @@ export default defineConfig({
                             'projects/core/components/data-list/data-list.style.less',
                             'projects/core/portals/dialog/dialog.style.less',
                             'projects/kit/directives/chevron/chevron.style.less',
+                            'projects/kit/components/input-slider/input-slider.styles.less',
                         ],
                     },
                 },

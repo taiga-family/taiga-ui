@@ -1,0 +1,8 @@
+// TODO: tui-textfield:has([tuiInputSlider]) [tuiButtonX]
+tui-textfield:where(*&) [tuiInputSlider] ~ .t-content [tuiButtonX] {
+    display: none !important;
+}
+// TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
+tui-textfield:where(*&) [tuiInputSlider] ~ [tuiSlider]:disabled {
+    display: none;
+}

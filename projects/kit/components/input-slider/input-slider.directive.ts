@@ -27,14 +27,7 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            // TODO: tui-textfield:has([tuiInputSlider]) [tuiButtonX]
-            tui-textfield [tuiInputSlider] ~ .t-content [tuiButtonX] {
-                display: none !important;
-            }
-            // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
-            tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {
-                display: none;
-            }
+            @import './input-slider.styles.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
