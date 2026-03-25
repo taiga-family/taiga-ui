@@ -1,0 +1,69 @@
+import"./chunk-HU6DUUP4.js";var e=`<tui-carousel
+    [max]="2"
+    [min]="0"
+    [(index)]="index"
+    (scroll)="onScroll($any($event.target))"
+>
+    <div
+        *tuiItem="let index"
+        tuiCardMedium
+        tuiTheme="dark"
+        [style.background]="items[index]?.gradient"
+    >
+        <h2 tuiTitle>
+            BANK
+            <span tuiSubtitle>{{ items[index]?.title }}</span>
+        </h2>
+        <div tuiBadge>
+            <tui-icon icon="@tui.wallet" />
+            {{ items[index]?.content }}
+        </div>
+    </div>
+</tui-carousel>
+
+<tui-pager
+    [count]="items.length"
+    [index]="effective()"
+/>
+
+<div
+    tuiButtonGroup
+    tuiTheme="dark"
+    [style.background-color]="items[effective()]?.color"
+>
+    <tui-elastic-container [style.opacity]="opacity() * 2">
+        @switch (effective()) {
+            @case (0) {
+                <button type="button">
+                    <tui-icon icon="@tui.circle-plus" />
+                    Create a payment
+                </button>
+                <button type="button">
+                    <tui-icon icon="@tui.circle-plus" />
+                    Pay the bill
+                </button>
+                <button type="button">
+                    <tui-icon icon="@tui.circle-plus" />
+                    Remove from favorites
+                </button>
+            }
+            @case (1) {
+                <button type="button">
+                    <tui-icon icon="@tui.circle-plus" />
+                    Remove from favorites
+                </button>
+            }
+            @case (2) {
+                <button type="button">
+                    <tui-icon icon="@tui.circle-plus" />
+                    Create a payment
+                </button>
+                <button type="button">
+                    <tui-icon icon="@tui.circle-plus" />
+                    Remove from favorites
+                </button>
+            }
+        }
+    </tui-elastic-container>
+</div>
+`;export{e as default};

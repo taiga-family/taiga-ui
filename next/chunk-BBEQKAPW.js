@@ -1,0 +1,38 @@
+import"./chunk-HU6DUUP4.js";var r=`<tui-carousel
+    #carousel="tuiCarousel"
+    [duration]="5000"
+    [(index)]="index"
+>
+    <section
+        *tuiItem="let index"
+        appearance="neutral"
+        tuiCardMedium
+    >
+        @let current = items.at(index % items.length);
+        <span [tuiAvatar]="current?.icon"></span>
+        <footer tuiTitle>
+            {{ current?.title }}
+            <span tuiSubtitle>{{ current?.subtitle }}</span>
+        </footer>
+    </section>
+</tui-carousel>
+<tui-pager
+    [count]="items.length"
+    [index]="clamped()"
+    [valueContent]="content"
+/>
+
+<ng-template
+    #content
+    let-current
+>
+    <progress
+        max="100"
+        size="s"
+        tuiProgressBar
+        class="progress"
+        [class.progress_active]="clamped() === current"
+        [value]="clamped() === current && !isE2E ? carousel.progress() : 0"
+    ></progress>
+</ng-template>
+`;export{r as default};

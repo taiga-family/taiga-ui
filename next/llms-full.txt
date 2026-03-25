@@ -14,6 +14,11 @@
 ```text
   TuiCalendar, TuiCalendarOptions, TuiCalendarSheet, TuiCalendarSheetOptions, TuiCalendarSheetPipe, TuiCalendarSpin, TuiCalendarYear, TuiMarkerHandler, TuiOrderWeekDaysPipe
 ```
+### carousel
+
+```text
+  TuiCarousel, TuiCarouselComponent, TuiCarouselDirective
+```
 ### cell
 
 ```text
@@ -236,11 +241,6 @@
 
 ```text
   TuiCalendarRange, TuiDayRangePeriod
-```
-### carousel
-
-```text
-  TuiCarousel, TuiCarouselAutoscroll, TuiCarouselButtons, TuiCarouselComponent, TuiCarouselDirective, TuiCarouselScroll
 ```
 ### chip
 
@@ -6405,33 +6405,35 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-carousel [draggable]="true" [itemsCount]="1" [(index)]="index" (shift)="opacity = $event" > @for (item of items; track item) { <div *tuiItem tuiCardMedium class="card" [style.background]="item.gradient" >
-<h2 tuiTitle> BANK <span tuiSubtitle>{{ item.title }}</span>
+<tui-carousel [max]="2" [min]="0" [(index)]="index" (scroll)="onScroll($any($event.target))" >
+<div *tuiItem="let index" tuiCardMedium tuiTheme="dark" [style.background]="items[index]?.gradient" >
+<h2 tuiTitle> BANK <span tuiSubtitle>{{ items[index]?.title }}</span>
 </h2>
-<div tuiBadge class="money" >
-<tui-icon icon="@tui.wallet" /> {{ item.content }} </div>
-</div> } </tui-carousel>
-<tui-pager [count]="items.length" [index]="index" />
-<div tuiButtonGroup [style.background-color]="items[index]?.color" >
-<tui-elastic-container [style.opacity]="opacity * 2"> @if (index === 0) { <button type="button">
+<div tuiBadge>
+<tui-icon icon="@tui.wallet" /> {{ items[index]?.content }} </div>
+</div>
+</tui-carousel>
+<tui-pager [count]="items.length" [index]="effective()" />
+<div tuiButtonGroup tuiTheme="dark" [style.background-color]="items[effective()]?.color" >
+<tui-elastic-container [style.opacity]="opacity() * 2"> @switch (effective()) { @case (0) { <button type="button">
 <tui-icon icon="@tui.circle-plus" /> Create a payment </button>
 <button type="button">
 <tui-icon icon="@tui.circle-plus" /> Pay the bill </button>
 <button type="button">
-<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @if (index === 1) { <button type="button">
-<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @if (index === 2) { <button type="button">
+<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @case (1) { <button type="button">
+<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @case (2) { <button type="button">
 <tui-icon icon="@tui.circle-plus" /> Create a payment </button>
 <button type="button">
-<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } </tui-elastic-container>
+<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } } </tui-elastic-container>
 </div>
 ```
 **TypeScript:**
 ```ts
-import {Component} from '@angular/core';
+import {Component, linkedSignal, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiCarousel, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiBadge, TuiButtonGroup, TuiPager} from '@taiga-ui/kit';
 import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
@@ -6451,9 +6453,9 @@ import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected index = 0;
-    protected opacity = 1;
-
+    protected readonly index = signal(1);
+    protected readonly opacity = signal(1);
+    protected readonly effective = linkedSignal(this.index);
     protected readonly items = [
         {
             title: 'RUB Account',
@@ -6474,6 +6476,16 @@ export default class Example {
             color: 'rgb(158 178 129)',
         },
     ];
+
+    protected onScroll({scrollLeft, clientWidth}: HTMLElement): void {
+        const scrolled = ((Math.abs(scrollLeft) - clientWidth) / clientWidth) % 1;
+        const progress = this.index() || !scrolled ? scrolled : 1 + scrolled;
+
+        if (progress) {
+            this.opacity.set(4 * Math.abs(Math.abs(progress) - 0.5));
+            this.effective.set(this.index() + Math.round(progress));
+        }
+    }
 }
 ```
 **LESS:**
@@ -6492,27 +6504,24 @@ export default class Example {
     }
 }
 
-[tuiButtonGroup] {
-    button {
-        color: #fff;
-    }
+[tuiButtonGroup] button {
+    color: var(--tui-text-primary);
 }
 
-.card {
-    inline-size: 100%;
+[tuiCardMedium] {
+    inline-size: calc(100% - 3rem);
     padding: 0.75rem;
-    color: #fff;
     block-size: 8rem;
-}
-
-.money {
-    background: #ffdd2d;
-    color: #333;
+    color: var(--tui-text-primary);
 }
 
 tui-pager {
-    margin: 0 auto;
-    min-block-size: 0.5rem;
+    margin-inline: auto;
+}
+
+[tuiBadge] {
+    background: #ffdd2d;
+    color: #333;
 }
 ```
 
@@ -9148,77 +9157,186 @@ export default class Example {
 
 ---
 # components/Carousel
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: components
-Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
-
-### Example
-
-```html
-<tui-carousel class="carousel" [draggable]="draggable" [duration]="duration" [itemsCount]="itemsCount" [style.--tui-carousel-padding]="itemPadding" [(index)]="index" (touchstart.passive.stop)="(0)" > @for (_ of '-'.repeat(9); track $index) { <div *tuiItem class="plate" > {{ $index }} <button size="s" tuiButton type="button" class="button" > I'm focusable </button>
-</div> } </tui-carousel>
-```
+Generic swipeable container to scroll through content
 
 ### API - Inputs
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [draggable] | `boolean` | Whether or not slider can be dragged by clicking and holding |
-| [duration] | `number` | Duration in milliseconds for each slide for automatic rotation (use 0 to disable automatic rotation) |
-| [itemsCount] | `number` | Number of slides shown at the same time |
+| [min] | `number` | Min index |
+| [max] | `number` | Max index |
 | [(index)] | `number` | Current index |
+| *tuiItem='let index' | `TemplateRef<TuiContext<number>>` | is index of item in scroller. |
 
 ### Usage Examples
 
-#### Single
+#### Basic
 
 **Template:**
 ```html
-<tui-carousel [duration]="4000" [(index)]="index" > @for (item of items; track $index) { <div *tuiItem class="item" >
-<h2 class="title">{{ item }}</h2>
-<!-- TODO: update documentation here -->
-<a tuiButton [attr.href]="`https://en.wikipedia.org/wiki/${item}`" > Wiki </a>
-</div> } </tui-carousel>
-<tui-pager [count]="items.length" [index]="index" />
+<button appearance="action" iconStart="@tui.chevron-left" tuiIconButton type="button" [disabled]="index() === 0" (click)="carousel.prev()" > Previous </button>
+<tui-carousel #carousel [max]="5" [min]="0" [(index)]="index" >
+<ng-container *tuiItem="let index">{{ index }}</ng-container>
+</tui-carousel>
+<button appearance="action" iconStart="@tui.chevron-right" tuiIconButton type="button" [disabled]="index() === 5" (click)="carousel.next()" > Next </button>
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiButton, TuiCarousel} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiPager],
+    imports: [TuiButton, TuiCarousel],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected index = 2;
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly index = signal(0);
 }
 ```
 **LESS:**
 ```less
 :host {
-    display: block;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: min-content 1fr min-content;
+    font: var(--tui-typography-heading-h3);
+}
+```
+
+#### Looped
+
+**Template:**
+```html
+<tui-carousel [style.inline-size.rem]="12">
+<section *tuiItem="let index" appearance="neutral" tuiCardMedium > @let current = items.at(index % items.length); <span [tuiAvatar]="current?.icon"></span>
+<footer tuiTitle> {{ current?.title }} <span tuiSubtitle>{{ current?.subtitle }}</span>
+</footer>
+</section>
+</tui-carousel>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCarousel, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiCard} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiAvatar, TuiCard, TuiCarousel, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items = [
+        {
+            title: 'Taiga UI',
+            subtitle: 'Angular UI Kit',
+            icon: '@img.assets/images/taiga.svg',
+        },
+        {
+            title: 'Maskito',
+            subtitle: 'Masking library',
+            icon: '@img.https://raw.githubusercontent.com/taiga-family/maskito/main/projects/demo/src/assets/icons/maskito.svg',
+        },
+        {
+            title: 'Editor',
+            subtitle: 'WYSIWYG',
+            icon: '@tui.pencil',
+        },
+    ];
+}
+```
+
+#### Automatic
+
+**Template:**
+```html
+<tui-carousel #carousel="tuiCarousel" [duration]="5000" [(index)]="index" >
+<section *tuiItem="let index" appearance="neutral" tuiCardMedium > @let current = items.at(index % items.length); <span [tuiAvatar]="current?.icon"></span>
+<footer tuiTitle> {{ current?.title }} <span tuiSubtitle>{{ current?.subtitle }}</span>
+</footer>
+</section>
+</tui-carousel>
+<tui-pager [count]="items.length" [index]="clamped()" [valueContent]="content" />
+<ng-template #content let-current >
+<progress max="100" size="s" tuiProgressBar class="progress" [class.progress_active]="clamped() === current" [value]="clamped() === current && !isE2E ? carousel.progress() : 0" ></progress>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, computed, inject, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiCarousel, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiPager, TuiProgress} from '@taiga-ui/kit';
+import {TuiCard} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiAvatar, TuiCard, TuiCarousel, TuiPager, TuiProgress, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly isE2E = inject(WA_IS_E2E);
+    protected readonly index = signal(0);
+    protected readonly items = [
+        {
+            title: 'Taiga UI',
+            subtitle: 'Angular UI Kit',
+            icon: '@img.assets/images/taiga.svg',
+        },
+        {
+            title: 'Maskito',
+            subtitle: 'Masking library',
+            icon: '@img.https://raw.githubusercontent.com/taiga-family/maskito/main/projects/demo/src/assets/icons/maskito.svg',
+        },
+        {
+            title: 'Editor',
+            subtitle: 'WYSIWYG',
+            icon: '@tui.pencil',
+        },
+    ];
+
+    protected readonly clamped = computed(
+        () =>
+            ((this.index() % this.items.length) + this.items.length) % this.items.length,
+    );
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    inline-size: 12rem;
 }
 
-tui-pager {
-    margin: 0 auto;
-}
+.progress {
+    .transition(all);
 
-.item {
-    padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
-    border-radius: 1rem;
-}
+    inline-size: 1rem;
 
-.title {
-    margin: 0 0 1rem;
+    &:not(&_active) {
+        inline-size: 0.5rem;
+        color: transparent;
+    }
 }
 ```
 
@@ -9226,297 +9344,64 @@ tui-pager {
 
 **Template:**
 ```html
-<tui-carousel [draggable]="true" [itemsCount]="3" [(index)]="index" > @for (item of items; track $index) { <img *tuiItem alt="" draggable="false" class="item" [class.item_active]="$index === index + 1" [src]="`assets/images/${item}`" /> } </tui-carousel>
+<tui-carousel>
+<ng-template let-index tuiItem > @for (_ of '-'.repeat(4); track $index) { @let item = items.at((index * 4 + $index) % this.items.length); <tui-avatar-labeled [label]="item?.label || ''">
+<span tuiAvatar>
+<img alt="" [src]="item?.avatar" />
+</span>
+</tui-avatar-labeled> } </ng-template>
+</tui-carousel>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCarousel} from '@taiga-ui/kit';
+import {TuiCarousel} from '@taiga-ui/core';
+import {TuiAvatar, TuiAvatarLabeled} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiCarousel],
+    imports: [TuiAvatar, TuiAvatarLabeled, TuiCarousel],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected index = 0;
-
     protected readonly items = [
-        'angular.svg',
-        'avatar.jpg',
-        'angular.svg',
-        'avatar.jpg',
-        'angular.svg',
-        'avatar.jpg',
+        {
+            label: 'Alex Inkin',
+            avatar: 'https://avatars.githubusercontent.com/u/11832552',
+        },
+        {
+            label: 'Vladimir Potekhin',
+            avatar: 'https://avatars.githubusercontent.com/u/46284632',
+        },
+        {
+            label: 'Nikita Barsukov',
+            avatar: 'https://avatars.githubusercontent.com/u/35179038',
+        },
+        {
+            label: 'Max Ivanov',
+            avatar: 'https://avatars.githubusercontent.com/u/12021443',
+        },
+        {
+            label: 'German Panov',
+            avatar: 'https://avatars.githubusercontent.com/u/87331898',
+        },
     ];
 }
 ```
 **LESS:**
 ```less
-@import '@taiga-ui/styles/utils';
-
-.item {
-    .transition(~'box-shadow, transform');
-
-    display: block;
-    max-block-size: 6.25rem;
-    margin: 2rem auto;
-    border-radius: 100%;
-
-    &_active {
-        box-shadow: var(--tui-shadow-medium);
-        transform: scale(1.2);
-    }
-}
-```
-
-#### Custom
-
-**Template:**
-```html
-<div tuiCarouselButtons class="wrapper" >
-<button iconStart="@tui.chevron-left" tuiIconButton type="button" (click)="carousel.prev()" > Previous </button>
-<tui-carousel #carousel class="carousel" >
-<div *tuiItem class="item" >
-<h2 class="title">Monty Python and the Holy Grail</h2>
-<p> King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering many, very silly obstacles. </p>
-<div>
-<button appearance="primary" tuiButton type="button" > Buy ${{ 12.99 | tuiAmount: 'RUB' }} </button>
-<button tuiButton type="button" class="tui-space_left-2" > Rent ${{ 4.99 | tuiAmount: 'RUB' }} </button>
-</div>
-</div>
-<div *tuiItem class="item" >
-<tui-loader />
-</div>
-<div *tuiItem class="item" [style.text-align]="'center'" >
-<h2 class="title">Failed to load</h2>
-<p>
-<span appearance="negative" tuiAvatar="@tui.x" ></span>
-</p>
-</div>
-</tui-carousel>
-<button iconStart="@tui.chevron-right" tuiIconButton type="button" (click)="carousel.next()" > Next </button>
-</div>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiLoader} from '@taiga-ui/core';
-import {TuiAvatar, TuiCarousel} from '@taiga-ui/kit';
-
-@Component({
-    imports: [TuiAmountPipe, TuiAvatar, TuiButton, TuiCarousel, TuiLoader],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-**LESS:**
-```less
-.wrapper {
-    display: flex;
-    align-items: center;
+tui-carousel {
+    inline-size: 16rem;
 }
 
-.carousel {
-    inline-size: 25rem;
-    flex-shrink: 0;
-}
-
-.item {
-    padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
-    border-radius: 1rem;
-}
-
-.title {
-    margin: 0 0 1rem;
-}
-```
-
-#### Carousel inside dialog
-
-**Template:**
-```html
-<button size="m" tuiButton type="button" (click)="onClick()" > Show dialog with carousel </button>
-<ng-template #header>
-<div class="header" [style.background-image]="background" ></div>
-</ng-template>
-<ng-template [tuiDialogOptions]="{size: 's', header: header}" [(tuiDialog)]="open" >
-<div tuiCarouselButtons class="wrapper" (touchstart.passive.stop)="(0)" >
-<button appearance="neutral" iconStart="@tui.chevron-left" tuiIconButton tuiTheme="dark" type="button" class="tui-space_right-4" (click)="navigate(-1)" > Previous </button>
-<tui-carousel [(index)]="index">
-<div *tuiItem>
-<h2>Carousel is awesome</h2>
-<p>It can show arbitrary content and it's very easy to control</p>
-</div>
-<div *tuiItem>
-<h2>Pagination</h2>
-<p> You can use <a tuiLink [routerLink]="routes.Pagination" > Pagination </a> component with size 's' together with it </p>
-</div>
-<div *tuiItem>
-<h2>Buttons</h2>
-<p> Use <code>tuiCarouselButtons</code> directive to setup navigation buttons </p>
-</div>
-</tui-carousel>
-<button appearance="neutral" iconStart="@tui.chevron-right" tuiIconButton tuiTheme="dark" type="button" class="tui-space_left-4" (click)="navigate(1)" > Next </button>
-</div>
-<tui-pager [count]="3" [index]="index" />
-<div class="tui-space_top-4">
-<button appearance="primary" tuiButton type="button" (click)="open = false" > Got it! </button>
-</div>
-</ng-template>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {DemoRoute} from '@demo/routes';
-import {TuiButton, TuiLink} from '@taiga-ui/core';
-import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
-import {TuiDialog} from '@taiga-ui/legacy';
-
-@Component({
-    imports: [RouterLink, TuiButton, TuiCarousel, TuiDialog, TuiLink, TuiPager],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly routes = DemoRoute;
-    protected open = false;
-
-    protected index = 0;
-
-    protected get background(): string {
-        switch (this.index) {
-            case 0:
-                return 'url(https://cdn.tvc.ru/pictures/mood/bw/194/22.jpg)';
-            case 1:
-                return 'url(https://ic.pics.livejournal.com/ruhtal/6943012/12468/12468_900.jpg)';
-            default:
-                return 'url(https://cdn.motor1.com/images/mgl/28bxz/s1/ford-carousel.jpg)';
-        }
-    }
-
-    protected onClick(): void {
-        this.index = 0;
-        this.open = true;
-    }
-
-    protected navigate(delta: number): void {
-        this.index = (this.index + delta) % 3;
-    }
-}
-```
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
-.wrapper {
-    display: flex;
-    align-items: center;
-    margin: 0 -5rem;
-
-    :host-context(tui-root._mobile) & {
-        margin: 0;
-
-        button {
-            display: none;
-        }
-    }
-}
-
-.header {
-    .transition(background);
-
-    block-size: 10rem;
-    flex: 1;
-    background: var(--tui-background-base) center;
-    background-size: cover;
-}
-
-tui-pager {
-    margin: 0 auto;
-}
-```
-
-#### Vertical alignment
-
-**Template:**
-```html
-<tui-carousel [itemsCount]="3" [(index)]="index" > @for (item of items; track $index) { <div *tuiItem class="item" >
-<h2 class="title">{{ item.title }}</h2> {{ item.content }} </div> } </tui-carousel>
-<tui-pagination [index]="rounded" [length]="items.length / itemsCount" (indexChange)="onIndex($event)" />
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
-
-@Component({
-    imports: [TuiCarousel, TuiPagination],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected index = 0;
-
-    protected readonly itemsCount = 3;
-
-    protected readonly items = [
-        {title: 'First', content: 'First content'},
-        {title: 'Title #2', content: 'Much more content here so the height is bigger'},
-        {title: 'Title III', content: 'Small item again'},
-        {title: 'Title four', content: 'Relatively ling content here'},
-        {title: 'Fifth item', content: 'Tiny text'},
-        {title: '6', content: "That one's short too"},
-        {title: 'Lucky 7', content: 'This takes about two lines or so'},
-        {title: 'Eighth card', content: 'Almost the last one'},
-        {title: 'X', content: 'This is the longest item there is in this list'},
-    ];
-
-    protected get rounded(): number {
-        return Math.floor(this.index / this.itemsCount);
-    }
-
-    protected onIndex(index: number): void {
-        this.index = index * this.itemsCount;
-    }
-}
-```
-**LESS:**
-```less
-.item {
-    padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
-    border-radius: 1rem;
-    margin-block-end: auto;
-}
-
-.title {
-    margin: 0 0 1rem;
-}
-
-tui-pagination {
-    margin: 1rem auto 0;
-    min-block-size: 0.5rem;
+tui-avatar-labeled {
+    inline-size: 4rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 ```
 
@@ -9527,58 +9412,23 @@ tui-pagination {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiDemo],
+    imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
 })
-export default class Example {
-    protected readonly examples = [
-        'Single',
-        'Multiple',
-        'Custom',
-        'Carousel inside dialog',
-        'Vertical alignment',
-    ];
-
-    protected readonly durationVariants = [0, 3000, 10000];
-    protected readonly itemPaddingVariants = [null, '0 10px', '0'];
-    protected draggable = false;
-    protected duration = this.durationVariants[0]!;
-    protected itemPadding: string | null = this.itemPaddingVariants[0]!;
-    protected index = 0;
-    protected itemsCount = 1;
+export default class Page {
+    protected readonly examples = ['Basic', 'Looped', 'Automatic', 'Multiple'];
 }
 ```
 
 ### LESS
 
 ```less
-@import '@taiga-ui/styles/utils';
-
-.carousel {
-    margin: 0 2.5rem;
-    border: 1px solid var(--tui-background-accent-1);
-}
-
-.plate {
-    display: flex;
-    font: var(--tui-typography-heading-h3);
-    flex-direction: column;
-    align-items: flex-start;
-    inline-size: 100%;
-    block-size: 7.5rem;
-    padding: 1.75rem;
-    box-sizing: border-box;
-    background: var(--tui-background-neutral-1);
-}
-
-.button {
-    margin-block-start: 0.5rem;
+.bar {
+    block-size: 6.25rem;
 }
 ```
 

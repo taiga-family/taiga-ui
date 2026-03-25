@@ -60,7 +60,7 @@
 - [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
-- [Carousel](https://taiga-ui.dev/components/carousel) — Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
+- [Carousel](https://taiga-ui.dev/components/carousel) — Generic swipeable container to scroll through content
 - [Cell](https://taiga-ui.dev/components/cell)
 - [Checkbox](https://taiga-ui.dev/components/checkbox) — A checkbox component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 - [Chip](https://taiga-ui.dev/components/chip) — Chip component is used to display array data and can also be interactive depending on the tag used.
