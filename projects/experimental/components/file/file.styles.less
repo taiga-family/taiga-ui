@@ -1,0 +1,149 @@
+@import '@taiga-ui/styles/utils';
+
+[tuiFile][data-orientation='horizontal'] {
+    position: relative;
+    display: flex;
+    border-radius: var(--tui-radius-l);
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--tui-duration);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--tui-background-neutral-1);
+    }
+
+    [tuiButtonX][data-appearance=''] {
+        color: var(--tui-text-secondary);
+    }
+
+    & > :first-child {
+        display: flex;
+        box-sizing: border-box;
+        background-color: var(--tui-background-neutral-1);
+        border-radius: var(--tui-radius-l);
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &[data-size='m'] > :first-child {
+        border-radius: var(--tui-radius-m);
+        inline-size: 2rem;
+        block-size: 2rem;
+
+        & tui-progress-circle {
+            --t-diameter: 1.5rem;
+        }
+    }
+
+    &[data-size='m'] [tuiProgressLabel] [tuiIconButton]::before {
+        font-size: 0.75rem;
+    }
+
+    &[data-size='s'] > :first-child {
+        border-radius: var(--tui-radius-s);
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        font-size: 0.875rem;
+
+        tui-progress-circle {
+            --t-diameter: 1rem;
+        }
+    }
+
+    & > img:first-child {
+        border: 1px solid var(--tui-background-neutral-1);
+    }
+}
+
+[tuiFile][data-orientation='vertical'] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    inline-size: max-content;
+    max-inline-size: 5rem;
+
+    [tuiButtonX][data-appearance=''] {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        block-size: 1.5rem;
+        inline-size: 1.5rem;
+        transform: translate3d(0.5rem, -0.5rem, 0);
+        transition: opacity var(--tui-duration);
+        border-radius: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        backdrop-filter: blur(1rem);
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.48);
+        }
+
+        [tuiTheme='dark'] & {
+            background: rgba(255, 255, 255, 0.3);
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.4);
+            }
+        }
+    }
+
+    & > :first-child {
+        position: relative;
+        display: flex;
+        inline-size: 5rem;
+        block-size: 5rem;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--tui-background-neutral-1);
+        border-radius: var(--tui-radius-l);
+
+        [data-platform='ios'] & {
+            inline-size: 6.25rem;
+            block-size: 6.25rem;
+        }
+
+        [data-platform='android'] & {
+            inline-size: 5.625rem;
+            block-size: 5.625rem;
+        }
+    }
+
+    [tuiTitle] {
+        align-items: center;
+        font: var(--tui-typography-ui-s);
+
+        [data-platform='android'] &,
+        [data-platform='ios'] & {
+            font: var(--tui-typography-ui-m);
+        }
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-typography-ui-xs);
+
+        [data-platform='ios'] &,
+        [data-platform='android'] & {
+            font: var(--tui-typography-ui-s);
+        }
+    }
+
+    [data-platform='ios'] & {
+        max-inline-size: 6.25rem;
+    }
+
+    [data-platform='android'] & {
+        max-inline-size: 5.625rem;
+    }
+
+    [data-platform='ios'] &:active,
+    [data-platform='android'] &:active {
+        transform: scale(0.95);
+    }
+}

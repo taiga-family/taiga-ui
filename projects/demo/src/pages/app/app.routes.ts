@@ -488,6 +488,11 @@ export const ROUTES: Routes = [
         title: 'InputYear',
     }),
     route({
+        path: DemoRoute.File,
+        loadComponent: async () => import('../components/file'),
+        title: 'File',
+    }),
+    route({
         path: DemoRoute.ItemsWithMore,
         loadComponent: async () => import('../components/items-with-more'),
         title: 'ItemsWithMore',
