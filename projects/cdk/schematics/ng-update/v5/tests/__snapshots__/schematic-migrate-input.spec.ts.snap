@@ -70,7 +70,8 @@ exports[`ng-update legacy input migrates multiple tui-input elements in one temp
 {
   "0. Before": "
                 <tui-input formControlName="a">First</tui-input>
-                <tui-input formControlName="b">Second</tui-input>",
+                <tui-input formControlName="b">Second</tui-input>
+            ",
   "1. After": "
                 <tui-textfield>
                 <label tuiLabel>First</label>
@@ -79,7 +80,8 @@ exports[`ng-update legacy input migrates multiple tui-input elements in one temp
                 <tui-textfield>
                 <label tuiLabel>Second</label>
                 <input tuiInput formControlName="b" />
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -88,17 +90,19 @@ exports[`ng-update legacy input migrates tui-input wrapper attrs and routes them
   "0. Before": "
                 <tui-input
                     formControlName="value"
+                    tuiHintContent="Hint"
                     tuiTextfieldSize="s"
                     [tuiTextfieldCleaner]="true"
-                    tuiHintContent="Hint"
                 >
                     Email
-                </tui-input>",
+                </tui-input>
+            ",
   "1. After": "
-                <tui-textfield tuiTextfieldSize="s" [tuiTextfieldCleaner]="true" tuiHintContent="Hint">
+                <tui-textfield tuiHintContent="Hint" tuiTextfieldSize="s" [tuiTextfieldCleaner]="true">
                 <label tuiLabel>Email</label>
                 <input tuiInput formControlName="value" />
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -131,16 +135,18 @@ exports[`ng-update legacy input renames tuiTextfieldIconLeft to iconStart and tu
   "0. Before": "
                 <tui-input
                     formControlName="value"
-                    [tuiTextfieldIconLeft]="iconStart"
                     [tuiTextfieldIcon]="iconEnd"
+                    [tuiTextfieldIconLeft]="iconStart"
                 >
                     Label
-                </tui-input>",
+                </tui-input>
+            ",
   "1. After": "
-                <tui-textfield [iconStart]="iconStart" [iconEnd]="iconEnd">
+                <tui-textfield [iconEnd]="iconEnd" [iconStart]="iconStart">
                 <label tuiLabel>Label</label>
                 <input tuiInput formControlName="value" />
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -155,7 +161,8 @@ exports[`ng-update legacy input reuses inner <input tuiTextfieldLegacy> and pres
                         tuiTextfieldLegacy
                         type="email"
                     />
-                </tui-input>",
+                </tui-input>
+            ",
   "1. After": "
                 <tui-textfield>
                 <input
@@ -163,7 +170,8 @@ exports[`ng-update legacy input reuses inner <input tuiTextfieldLegacy> and pres
                         placeholder="[Email]"
                         tuiInput
                         type="email" formControlName="value"/>
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -173,20 +181,22 @@ exports[`ng-update legacy input routes dropdown attrs to wrapper and adds TODO f
                 <tui-input
                     formControlName="value"
                     tuiDropdownDirection="top"
-                    [tuiDropdownLimitWidth]="'fixed'"
-                    tuiTextfieldPrefix="$"
                     tuiTextfieldPostfix="USD"
+                    tuiTextfieldPrefix="$"
+                    [tuiDropdownLimitWidth]="'fixed'"
                 >
                     Amount
-                </tui-input>",
+                </tui-input>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
-     - tuiTextfieldPrefix, tuiTextfieldPostfix has no direct equivalent in v5. Implement using custom content inside <tui-textfield>.
+     - tuiTextfieldPostfix, tuiTextfieldPrefix has no direct equivalent in v5. Implement using custom content inside <tui-textfield>.
 -->
-                <tui-textfield tuiDropdownDirection="top" [tuiDropdownLimitWidth]="'fixed'" tuiTextfieldPrefix="$" tuiTextfieldPostfix="USD">
+                <tui-textfield tuiDropdownDirection="top" tuiTextfieldPostfix="USD" tuiTextfieldPrefix="$" [tuiDropdownLimitWidth]="'fixed'">
                 <label tuiLabel>Amount</label>
                 <input tuiInput formControlName="value" />
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -198,13 +208,15 @@ exports[`ng-update legacy input wraps in <label tuiLabel> when [tuiTextfieldLabe
                     [tuiTextfieldLabelOutside]="true"
                 >
                     Email
-                </tui-input>",
+                </tui-input>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
      - Text content "Email" became placeholder on <input> (labelOutside=true). Add <label tuiLabel> outside <tui-textfield> if a static label is needed.
 -->
                 <tui-textfield>
                 <input placeholder="Email" tuiInput formControlName="value" />
-                </tui-textfield>",
+                </tui-textfield>
+            ",
 }
 `;

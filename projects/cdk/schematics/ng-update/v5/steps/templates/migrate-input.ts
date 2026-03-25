@@ -224,7 +224,7 @@ function buildReplacement(
     const innerContent = buildInnerContent(element, template, inputAttrs, {
         placeholder: ctx.placeholder,
         indent,
-        labelOutsideIsTrue,
+        labelOutsideIsTrue: isLabelOutsideTrue,
     });
     const todoComment = buildTodoComment(ctx);
     // `indent` is added before <tui-textfield> only when there is a TODO — in that case
