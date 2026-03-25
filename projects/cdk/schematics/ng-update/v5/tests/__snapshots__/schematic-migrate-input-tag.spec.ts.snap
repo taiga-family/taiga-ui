@@ -5,17 +5,18 @@ exports[`ng-update adds TODO for [editable] and [autoColor], silently removes [i
   "0. Before": "
                 <tui-input-tag
                     formControlName="tags"
+                    [autoColor]="true"
                     [editable]="false"
                     [inputHidden]="true"
-                    [autoColor]="true"
                     [removable]="false"
                 >
                     Tags
-                </tui-input-tag>",
+                </tui-input-tag>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input-tag migration (see https://taiga-ui.dev/components/input-chip):
-     - [editable]: move to <tui-input-chip *tuiItem="let ctx" [editable]="..."> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip.
-     - [autocolor]: use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->
+     - [autocolor]: use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color
+     - [editable]: move to <tui-input-chip *tuiItem="let ctx" [editable]="..."> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip. -->
 <tui-textfield
                     
                     
@@ -28,7 +29,8 @@ exports[`ng-update adds TODO for [editable] and [autoColor], silently removes [i
                 </label>
 
 <input tuiInputChip formControlName="tags" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -36,12 +38,13 @@ exports[`ng-update adds TODO for [tagValidator] and [search]: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-tag
+                    formControlName="tags"
                     [tagValidator]="myValidator"
                     [(search)]="searchValue"
-                    formControlName="tags"
                 >
                     Tags
-                </tui-input-tag>",
+                </tui-input-tag>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input-tag migration (see https://taiga-ui.dev/components/input-chip):
      - [tagvalidator]: use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization
@@ -56,15 +59,15 @@ exports[`ng-update adds TODO for [tagValidator] and [search]: test.html 1`] = `
                 </label>
 
 <input tuiInputChip formControlName="tags" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
 exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.html 1`] = `
 {
   "0. Before": "
-                <tui-input-tag>
-                </tui-input-tag>
+                <tui-input-tag></tui-input-tag>
 
                 <tui-input-tag
                     [formControl]="control"
@@ -73,21 +76,12 @@ exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.html 1`] = `
                     Enter tags
                 </tui-input-tag>
 
-                <tui-input-tag
-                    formControlName="tags"
-                >
-                    My tags
-                </tui-input-tag>
+                <tui-input-tag formControlName="tags">My tags</tui-input-tag>
 
-                <tui-input-tag
-                    [(ngModel)]="value"
-                >
-                    Tags
-                </tui-input-tag>
+                <tui-input-tag [(ngModel)]="value">Tags</tui-input-tag>
             ",
   "1. After": "
                 <tui-textfield multi>
-                
 <input tuiInputChip />
 </tui-textfield>
 
@@ -102,22 +96,14 @@ exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.html 1`] = `
 <input tuiInputChip [formControl]="control" />
 </tui-textfield>
 
-                <tui-textfield
-                    
-                 multi>
-<label tuiLabel>
-                    My tags
-                </label>
+                <tui-textfield  multi>
+<label tuiLabel>My tags</label>
 
 <input tuiInputChip formControlName="tags" />
 </tui-textfield>
 
-                <tui-textfield
-                    
-                 multi>
-<label tuiLabel>
-                    Tags
-                </label>
+                <tui-textfield  multi>
+<label tuiLabel>Tags</label>
 
 <input tuiInputChip [(ngModel)]="value" />
 </tui-textfield>
@@ -157,7 +143,8 @@ exports[`ng-update moves [disabledItemHandler] to <tui-textfield multi>: test.ht
                     [disabledItemHandler]="myHandler"
                 >
                     Tags
-                </tui-input-tag>",
+                </tui-input-tag>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -168,7 +155,8 @@ exports[`ng-update moves [disabledItemHandler] to <tui-textfield multi>: test.ht
                 </label>
 
 <input tuiInputChip formControlName="tags" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -180,7 +168,8 @@ exports[`ng-update moves [rows] to <tui-textfield multi>: test.html 1`] = `
                     [rows]="3"
                 >
                     Tags
-                </tui-input-tag>",
+                </tui-input-tag>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -191,7 +180,8 @@ exports[`ng-update moves [rows] to <tui-textfield multi>: test.html 1`] = `
                 </label>
 
 <input tuiInputChip formControlName="tags" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -199,12 +189,13 @@ exports[`ng-update moves [separator] and [uniqueTags] (→ [unique]) to <input t
 {
   "0. Before": "
                 <tui-input-tag
+                    formControlName="tags"
                     [separator]="separatorRegex"
                     [uniqueTags]="true"
-                    formControlName="tags"
                 >
                     Tags
-                </tui-input-tag>",
+                </tui-input-tag>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -216,7 +207,8 @@ exports[`ng-update moves [separator] and [uniqueTags] (→ [unique]) to <input t
                 </label>
 
 <input tuiInputChip formControlName="tags" [separator]="separatorRegex" [unique]="true" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -224,18 +216,18 @@ exports[`ng-update moves placeholder to <input tuiInputChip>: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-tag
-                    placeholder="Add tag..."
                     formControlName="tags"
-                >
-                </tui-input-tag>",
+                    placeholder="Add tag..."
+                ></tui-input-tag>
+            ",
   "1. After": "
                 <tui-textfield
                     
                     
                  multi>
-                
 <input tuiInputChip formControlName="tags" placeholder="Add tag..." />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -247,7 +239,8 @@ exports[`ng-update renames [maxLength] to [maxlength] on <input tuiInputChip>: t
                     [maxLength]="50"
                 >
                     Tags
-                </tui-input-tag>",
+                </tui-input-tag>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -258,6 +251,7 @@ exports[`ng-update renames [maxLength] to [maxlength] on <input tuiInputChip>: t
                 </label>
 
 <input tuiInputChip formControlName="tags" [maxlength]="50" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;

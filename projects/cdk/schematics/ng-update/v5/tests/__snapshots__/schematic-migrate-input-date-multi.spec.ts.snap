@@ -4,13 +4,14 @@ exports[`ng-update adds TODO for removed attrs ([tagValidator], [(search)]): tes
 {
   "0. Before": "
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [tagValidator]="myValidator"
                     [(search)]="searchValue"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>",
+                </tui-input-date>
+            ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-input-date multiple migration (see https://taiga-ui.dev/components/input-date):
      - [tagValidator]: use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? '' : 'negative'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization
@@ -27,15 +28,15 @@ exports[`ng-update adds TODO for removed attrs ([tagValidator], [(search)]): tes
 
 <input tuiInputDateMulti formControlName="dates" />
 <tui-calendar *tuiDropdown />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
 exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.html 1`] = `
 {
   "0. Before": "
-                <tui-input-date multiple>
-                </tui-input-date>
+                <tui-input-date multiple></tui-input-date>
 
                 <tui-input-date
                     multiple
@@ -45,8 +46,8 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.htm
                 </tui-input-date>
 
                 <tui-input-date
-                    multiple
                     formControlName="dates"
+                    multiple
                     [tuiTextfieldCleaner]="true"
                 >
                     Selected dates
@@ -54,7 +55,6 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.htm
             ",
   "1. After": "
                 <tui-textfield  multi>
-                
 <input tuiInputDateMulti />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
@@ -141,12 +141,13 @@ exports[`ng-update moves [defaultActiveYearMonth] to [month] on <tui-calendar *t
 {
   "0. Before": "
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [defaultActiveYearMonth]="initialMonth"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>",
+                </tui-input-date>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -159,7 +160,8 @@ exports[`ng-update moves [defaultActiveYearMonth] to [month] on <tui-calendar *t
 
 <input tuiInputDateMulti formControlName="dates" />
 <tui-calendar *tuiDropdown [month]="initialMonth" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -167,13 +169,14 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
 {
   "0. Before": "
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [disabledItemHandler]="disabledHandler"
                     [markerHandler]="markerHandler"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>",
+                </tui-input-date>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -187,7 +190,8 @@ exports[`ng-update moves [disabledItemHandler] and [markerHandler] to <tui-calen
 
 <input tuiInputDateMulti formControlName="dates" />
 <tui-calendar *tuiDropdown [disabledItemHandler]="disabledHandler" [markerHandler]="markerHandler" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -195,13 +199,14 @@ exports[`ng-update moves [min] and [max] to <input tuiInputDateMulti>: test.html
 {
   "0. Before": "
                 <tui-input-date
-                    multiple
-                    [min]="minDate"
-                    [max]="maxDate"
                     formControlName="dates"
+                    multiple
+                    [max]="maxDate"
+                    [min]="minDate"
                 >
                     Dates
-                </tui-input-date>",
+                </tui-input-date>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -213,9 +218,10 @@ exports[`ng-update moves [min] and [max] to <input tuiInputDateMulti>: test.html
                     Dates
                 </label>
 
-<input tuiInputDateMulti formControlName="dates" [min]="minDate" [max]="maxDate" />
+<input tuiInputDateMulti formControlName="dates" [max]="maxDate" [min]="minDate" />
 <tui-calendar *tuiDropdown />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -223,12 +229,13 @@ exports[`ng-update moves [rows] to <tui-textfield multi>: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [rows]="2"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>",
+                </tui-input-date>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -241,7 +248,8 @@ exports[`ng-update moves [rows] to <tui-textfield multi>: test.html 1`] = `
 
 <input tuiInputDateMulti formControlName="dates" />
 <tui-calendar *tuiDropdown />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -249,12 +257,13 @@ exports[`ng-update moves placeholder to <input tuiInputDateMulti>: test.html 1`]
 {
   "0. Before": "
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     placeholder="Select dates"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>",
+                </tui-input-date>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -267,7 +276,8 @@ exports[`ng-update moves placeholder to <input tuiInputDateMulti>: test.html 1`]
 
 <input tuiInputDateMulti formControlName="dates" placeholder="Select dates" />
 <tui-calendar *tuiDropdown />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -275,13 +285,14 @@ exports[`ng-update silently removes [editable] and [inputHidden]: test.html 1`] 
 {
   "0. Before": "
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [editable]="false"
                     [inputHidden]="true"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>",
+                </tui-input-date>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -295,6 +306,7 @@ exports[`ng-update silently removes [editable] and [inputHidden]: test.html 1`] 
 
 <input tuiInputDateMulti formControlName="dates" />
 <tui-calendar *tuiDropdown />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;

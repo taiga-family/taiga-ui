@@ -135,7 +135,7 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
                 })
                 export class TestComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <tui-calendar-sheet [single]="false" />
                 <tui-calendar-sheet [single]="true" />
             `,

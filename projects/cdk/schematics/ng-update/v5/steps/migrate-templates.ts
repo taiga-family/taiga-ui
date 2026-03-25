@@ -35,8 +35,10 @@ import {migrateAxes} from './templates/migrate-axes';
 import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-single';
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
+import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
+import {migrateInput} from './templates/migrate-input';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
@@ -106,6 +108,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputDateRange,
         migrateMultiSelect,
         migrateSelect,
+        migrateComboBox,
         migrateAccordionItem,
         migrateAvatarToDirective,
         migrateTuiNotification,
@@ -120,6 +123,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateCloseable,
         migrateSidebar,
         migrateFormatPhonePipe,
+        migrateInput,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});

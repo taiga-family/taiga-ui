@@ -4,7 +4,10 @@ exports[`ng-update tuiLet migrates nested case with additional attributes: test.
 {
   "0. Before": "
                 <div>
-                    <test *tuiLet="value as val2" foo>
+                    <test
+                        *tuiLet="value as val2"
+                        foo
+                    >
                         {{ val2 }}
                     </test>
                 </div>
@@ -12,7 +15,10 @@ exports[`ng-update tuiLet migrates nested case with additional attributes: test.
   "1. After": "
                 <div>
                     @let val2 = value;
-                    <test foo>
+                    <test
+                       
+                        foo
+                    >
                         {{ val2 }}
                     </test>
                 </div>
@@ -53,10 +59,14 @@ exports[`ng-update tuiLet migrates nested case with additional attributes: test.
 exports[`ng-update tuiLet migrates nested ng-container with tuiLet: test.html 1`] = `
 {
   "0. Before": "
-                <ng-container *tuiLet="showRequisitesButton$ | async as showRequisitesButton">
-                    <ng-container *tuiLet="companyRequisites$ | async as companyRequisites">
+                <ng-container
+                    *tuiLet="showRequisitesButton$ | async as showRequisitesButton"
+                >
+                    <ng-container
+                        *tuiLet="companyRequisites$ | async as companyRequisites"
+                    >
                         <tui-panel [titleContent]="companyContent">
-                             <ng-template #companyContent>
+                            <ng-template #companyContent>
                                 <label>Label</label>
                             </ng-template>
                         </tui-panel>
@@ -71,7 +81,7 @@ exports[`ng-update tuiLet migrates nested ng-container with tuiLet: test.html 1`
                     @let companyRequisites = companyRequisites$ | async;
                     
                         <tui-panel [titleContent]="companyContent">
-                             <ng-template #companyContent>
+                            <ng-template #companyContent>
                                 <label>Label</label>
                             </ng-template>
                         </tui-panel>
@@ -120,9 +130,7 @@ exports[`ng-update tuiLet migrates ng-container with tuiLet: test.html 1`] = `
                 <div>
                     <ng-container *tuiLet="value as val2"></ng-container>
                 </div>
-                <ng-container *tuiLet="value as val3">
-                    {{ val3 }}
-                </ng-container>
+                <ng-container *tuiLet="value as val3">{{ val3 }}</ng-container>
             ",
   "1. After": "
                 @let val = value;
@@ -132,9 +140,7 @@ exports[`ng-update tuiLet migrates ng-container with tuiLet: test.html 1`] = `
                     
                 </div>
                 @let val3 = value;
-                
-                    {{ val3 }}
-                
+                {{ val3 }}
             ",
 }
 `;
@@ -172,15 +178,11 @@ exports[`ng-update tuiLet migrates ng-container with tuiLet: test.ts 1`] = `
 exports[`ng-update tuiLet migrates simple structural directive: test.html 1`] = `
 {
   "0. Before": "
-                <test *tuiLet="value as val">
-                    {{ val }}
-                </test>
+                <test *tuiLet="value as val">{{ val }}</test>
             ",
   "1. After": "
                 @let val = value;
-                <test>
-                    {{ val }}
-                </test>
+                <test>{{ val }}</test>
             ",
 }
 `;

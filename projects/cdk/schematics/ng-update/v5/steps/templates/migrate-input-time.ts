@@ -19,20 +19,25 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-time';
 
-const INPUT_ATTRS = new Set(['[mode]'.toLowerCase(), 'mode'.toLowerCase()]);
+const INPUT_ATTR_RENAMES = new Map([
+    ['[items]'.toLowerCase(), '[accept]'],
+    ['[mode]'.toLowerCase(), '[mode]'],
+    ['mode'.toLowerCase(), 'mode'],
+]);
 
-const DROPPED_DROPDOWN_ATTRS = new Set([
-    '[disabledItemHandler]'.toLowerCase(),
-    '[items]'.toLowerCase(),
-    '[itemsHidden]'.toLowerCase(),
+// Silently dropped — no equivalent in v5
+const DROPPED_ATTRS = new Set([
     '[itemSize]'.toLowerCase(),
     '[strict]'.toLowerCase(),
-    'itemsHidden'.toLowerCase(),
     'itemSize'.toLowerCase(),
     'strict'.toLowerCase(),
 ]);
 
-const TODO_ATTRS_WITH_MESSAGE = new Set(['[items]'.toLowerCase()]);
+// Dropped but require a TODO comment pointing to the new dropdown pattern
+const TODO_DROPPED_ATTRS = new Set([
+    '[itemsHidden]'.toLowerCase(),
+    'itemsHidden'.toLowerCase(),
+]);
 
 export function migrateInputTime({
     resource,
@@ -64,14 +69,23 @@ export function migrateInputTime({
         );
 
         const inputAttrs = [...element.attrs].filter((attr) =>
-            INPUT_ATTRS.has(attr.name.toLowerCase()),
+            INPUT_ATTR_RENAMES.has(attr.name.toLowerCase()),
         );
 
         const droppedAttrs = [...element.attrs].filter((attr) =>
-            DROPPED_DROPDOWN_ATTRS.has(attr.name.toLowerCase()),
+            DROPPED_ATTRS.has(attr.name.toLowerCase()),
         );
 
-        for (const attr of [...controlAttrs, ...inputAttrs, ...droppedAttrs]) {
+        const todoDroppedAttrs = [...element.attrs].filter((attr) =>
+            TODO_DROPPED_ATTRS.has(attr.name.toLowerCase()),
+        );
+
+        for (const attr of [
+            ...controlAttrs,
+            ...inputAttrs,
+            ...droppedAttrs,
+            ...todoDroppedAttrs,
+        ]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
@@ -94,15 +108,30 @@ export function migrateInputTime({
             recorder.insertRight(labelTextEnd, '</label>\n');
         }
 
-        const needsTodo = droppedAttrs.some((a) =>
-            TODO_ATTRS_WITH_MESSAGE.has(a.name.toLowerCase()),
+        // Build TODO notes for attrs that need manual follow-up
+        const todoNotes: string[] = [];
+        const hasItems = inputAttrs.some((attr) => attr.name.toLowerCase() === '[items]');
+        const itemsAttr = inputAttrs.find(
+            (attr) => attr.name.toLowerCase() === '[items]',
         );
 
-        if (needsTodo) {
+        if (hasItems) {
+            todoNotes.push(
+                `[items] was renamed to [accept] on <input tuiInputTime>. For a dropdown list, also add <tui-data-list-wrapper *tuiDropdown [items]="${itemsAttr?.value ?? 'items'} | tuiFilterByInput: matcher" /> inside <tui-textfield>. See: ${DOCS_LINK}#dropdown-with--data-list`,
+            );
+        }
+
+        if (todoDroppedAttrs.length > 0) {
+            todoNotes.push(
+                `[itemsHidden] was removed. Dropdown visibility is now controlled by mounting/detaching <tui-data-list-wrapper *tuiDropdown> into/from DOM inside <tui-textfield>. See: ${DOCS_LINK}#dropdown-with--data-list`,
+            );
+        }
+
+        if (todoNotes.length > 0) {
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-time migration (see ${DOCS_LINK}):`,
-                '     - [items]: removed in v5. TuiInputTime is now a plain text input with no dropdown.',
-                '       Remove this binding and update your component logic accordingly. -->',
+                ...todoNotes.map((n) => `     - ${n}`),
+                '-->',
             ].join('\n');
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
@@ -117,7 +146,9 @@ export function migrateInputTime({
         );
 
         const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const name =
+                INPUT_ATTR_RENAMES.get(attr.name.toLowerCase()) ??
+                normalizeAttrName(attr.name);
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
@@ -154,8 +185,6 @@ function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
         case '[formControl]'.toLowerCase():
             return '[formControl]';
-        case '[mode]'.toLowerCase():
-            return '[mode]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case 'formControl'.toLowerCase():
@@ -166,8 +195,6 @@ function normalizeAttrName(name: string): string {
             return 'ngModel';
         case '[(ngmodel)]':
             return '[(ngModel)]';
-        case 'mode':
-            return 'mode';
         default:
             return name;
     }

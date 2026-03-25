@@ -21,14 +21,14 @@ describe('ng-update', () => {
                 })
                 export class TestComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <tui-icon
                     icon="@tui.box"
                     tuiBadge
                 />
                 <tui-icon
-                    [icon]="icon"
                     tuiBadge
+                    [icon]="icon"
                 />
                 <tui-icon icon="@tui.box"></tui-icon>
             `,

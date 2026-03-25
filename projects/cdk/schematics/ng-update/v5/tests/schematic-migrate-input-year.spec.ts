@@ -35,9 +35,11 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <form [formGroup]="form">
-                  <tui-input-year formControlName="value">Choose a month</tui-input-year>
+                    <tui-input-year formControlName="value">
+                        Choose a month
+                    </tui-input-year>
                 </form>
 
                 <tui-input-year
@@ -52,7 +54,7 @@ describe('ng-update', () => {
                     />
                 </tui-input-year>
 
-                 <tui-input-year
+                <tui-input-year
                     formControlName="value"
                     tuiTextfieldSize="s"
                     class="tui-space_bottom-2"
@@ -73,11 +75,10 @@ describe('ng-update', () => {
                 </tui-input-year>
 
                 <tui-input-year
-                    [(ngModel)]="value"
-                    [min]="minValue"
                     [max]="maxValue"
-                >
-                </tui-input-year>
+                    [min]="minValue"
+                    [(ngModel)]="value"
+                ></tui-input-year>
             `,
         }),
     );

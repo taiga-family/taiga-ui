@@ -4,19 +4,19 @@ exports[`ng-update migrate tui-pagination size adds TODO comment and removes [si
 {
   "0. Before": "
                 <tui-pagination
-                    [size]="'s'"
                     [index]="10"
                     [length]="64"
                     [sidePadding]="sidePadding"
+                    [size]="'s'"
                 />
             ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) use tui-pager instead -->
 <tui-pagination
-                    
                     [index]="10"
                     [length]="64"
                     [sidePadding]="sidePadding"
+                    
                 />
             ",
 }

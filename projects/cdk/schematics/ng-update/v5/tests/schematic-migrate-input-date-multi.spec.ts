@@ -33,9 +33,8 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-date multiple>
-                </tui-input-date>
+            template: /* HTML */ `
+                <tui-input-date multiple></tui-input-date>
 
                 <tui-input-date
                     multiple
@@ -45,8 +44,8 @@ describe('ng-update', () => {
                 </tui-input-date>
 
                 <tui-input-date
-                    multiple
                     formControlName="dates"
+                    multiple
                     [tuiTextfieldCleaner]="true"
                 >
                     Selected dates
@@ -58,102 +57,109 @@ describe('ng-update', () => {
     it(
         'moves [min] and [max] to <input tuiInputDateMulti>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
-                    multiple
-                    [min]="minDate"
-                    [max]="maxDate"
                     formControlName="dates"
+                    multiple
+                    [max]="maxDate"
+                    [min]="minDate"
                 >
                     Dates
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'moves [disabledItemHandler] and [markerHandler] to <tui-calendar *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [disabledItemHandler]="disabledHandler"
                     [markerHandler]="markerHandler"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'moves [rows] to <tui-textfield multi>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [rows]="2"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'moves placeholder to <input tuiInputDateMulti>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     placeholder="Select dates"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'moves [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [defaultActiveYearMonth]="initialMonth"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'adds TODO for removed attrs ([tagValidator], [(search)])',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [tagValidator]="myValidator"
                     [(search)]="searchValue"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 
     it(
         'silently removes [editable] and [inputHidden]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-date
+                    formControlName="dates"
                     multiple
                     [editable]="false"
                     [inputHidden]="true"
-                    formControlName="dates"
                 >
                     Dates
-                </tui-input-date>`,
+                </tui-input-date>
+            `,
         }),
     );
 

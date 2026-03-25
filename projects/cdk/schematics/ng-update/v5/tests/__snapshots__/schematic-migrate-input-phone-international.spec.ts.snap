@@ -3,12 +3,9 @@
 exports[`ng-update migrate TuiInputPhoneInternationalModule to TuiInputPhoneInternational: test.html 1`] = `
 {
   "0. Before": "
-                <tui-input-phone-international>
-                </tui-input-phone-international>
+                <tui-input-phone-international></tui-input-phone-international>
 
-                <tui-input-phone-international
-                    [formControl]="control"
-                >
+                <tui-input-phone-international [formControl]="control">
                     Choose a country
                 </tui-input-phone-international>
 
@@ -23,21 +20,16 @@ exports[`ng-update migrate TuiInputPhoneInternationalModule to TuiInputPhoneInte
                     />
                 </tui-input-phone-international>
 
-                <tui-input-phone-international
-                    [(ngModel)]="value"
-                >
+                <tui-input-phone-international [(ngModel)]="value">
                     Your phone
                 </tui-input-phone-international>
             ",
   "1. After": "
                 <tui-textfield>
-                
 <input tuiInputPhoneInternational />
 </tui-textfield>
 
-                <tui-textfield
-                    
-                >
+                <tui-textfield >
 <label tuiLabel>
                     Choose a country
                 </label>
@@ -58,9 +50,7 @@ exports[`ng-update migrate TuiInputPhoneInternationalModule to TuiInputPhoneInte
                     />
                 </tui-textfield>
 
-                <tui-textfield
-                    
-                >
+                <tui-textfield >
 <label tuiLabel>
                     Your phone
                 </label>
@@ -99,11 +89,12 @@ exports[`ng-update moves [(countryIsoCode)] to <input tuiInputPhoneInternational
 {
   "0. Before": "
                 <tui-input-phone-international
-                    [(countryIsoCode)]="isoCode"
                     formControlName="phone"
+                    [(countryIsoCode)]="isoCode"
                 >
                     Phone
-                </tui-input-phone-international>",
+                </tui-input-phone-international>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -114,7 +105,8 @@ exports[`ng-update moves [(countryIsoCode)] to <input tuiInputPhoneInternational
                 </label>
 
 <input tuiInputPhoneInternational formControlName="phone" [(countryIsoCode)]="isoCode" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -122,26 +114,28 @@ exports[`ng-update moves [countries] and [(countryIsoCode)] together: test.html 
 {
   "0. Before": "
                 <tui-input-phone-international
-                    [countries]="allowedCountries"
-                    [(countryIsoCode)]="isoCode"
                     formControlName="phone"
+                    [countries]="allowedCountries"
                     [tuiTextfieldCleaner]="true"
+                    [(countryIsoCode)]="isoCode"
                 >
                     Phone
-                </tui-input-phone-international>",
+                </tui-input-phone-international>
+            ",
   "1. After": "
                 <tui-textfield
                     
                     
-                    
                     [tuiTextfieldCleaner]="true"
+                    
                 >
 <label tuiLabel>
                     Phone
                 </label>
 
 <input tuiInputPhoneInternational formControlName="phone" [countries]="allowedCountries" [(countryIsoCode)]="isoCode" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;
 
@@ -149,11 +143,12 @@ exports[`ng-update moves [countries] to <input tuiInputPhoneInternational>: test
 {
   "0. Before": "
                 <tui-input-phone-international
-                    [countries]="allowedCountries"
                     formControlName="phone"
+                    [countries]="allowedCountries"
                 >
                     Phone
-                </tui-input-phone-international>",
+                </tui-input-phone-international>
+            ",
   "1. After": "
                 <tui-textfield
                     
@@ -164,6 +159,7 @@ exports[`ng-update moves [countries] to <input tuiInputPhoneInternational>: test
                 </label>
 
 <input tuiInputPhoneInternational formControlName="phone" [countries]="allowedCountries" />
-</tui-textfield>",
+</tui-textfield>
+            ",
 }
 `;

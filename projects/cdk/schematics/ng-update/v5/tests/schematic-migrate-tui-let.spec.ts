@@ -25,10 +25,8 @@ describe('ng-update tuiLet', () => {
     it(
         'migrates simple structural directive',
         migration({
-            template: `
-                <test *tuiLet="value as val">
-                    {{ val }}
-                </test>
+            template: /* HTML */ `
+                <test *tuiLet="value as val">{{ val }}</test>
             `,
         }),
     );
@@ -36,9 +34,12 @@ describe('ng-update tuiLet', () => {
     it(
         'migrates nested case with additional attributes',
         migration({
-            template: `
+            template: /* HTML */ `
                 <div>
-                    <test *tuiLet="value as val2" foo>
+                    <test
+                        *tuiLet="value as val2"
+                        foo
+                    >
                         {{ val2 }}
                     </test>
                 </div>
@@ -49,14 +50,12 @@ describe('ng-update tuiLet', () => {
     it(
         'migrates ng-container with tuiLet',
         migration({
-            template: `
+            template: /* HTML */ `
                 <ng-container *tuiLet="value as val"></ng-container>
                 <div>
                     <ng-container *tuiLet="value as val2"></ng-container>
                 </div>
-                <ng-container *tuiLet="value as val3">
-                    {{ val3 }}
-                </ng-container>
+                <ng-container *tuiLet="value as val3">{{ val3 }}</ng-container>
             `,
         }),
     );
@@ -64,11 +63,15 @@ describe('ng-update tuiLet', () => {
     it(
         'migrates nested ng-container with tuiLet',
         migration({
-            template: `
-                <ng-container *tuiLet="showRequisitesButton$ | async as showRequisitesButton">
-                    <ng-container *tuiLet="companyRequisites$ | async as companyRequisites">
+            template: /* HTML */ `
+                <ng-container
+                    *tuiLet="showRequisitesButton$ | async as showRequisitesButton"
+                >
+                    <ng-container
+                        *tuiLet="companyRequisites$ | async as companyRequisites"
+                    >
                         <tui-panel [titleContent]="companyContent">
-                             <ng-template #companyContent>
+                            <ng-template #companyContent>
                                 <label>Label</label>
                             </ng-template>
                         </tui-panel>

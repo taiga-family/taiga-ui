@@ -12,8 +12,11 @@ describe('ng-update tui-axes', () => {
     it(
         'removes axisX and axisY attributes',
         migrate({
-            template: `
-                <tui-axes axisX="solid" axisY="dashed" />
+            template: /* HTML */ `
+                <tui-axes
+                    axisX="solid"
+                    axisY="dashed"
+                />
             `,
         }),
     );
@@ -21,8 +24,11 @@ describe('ng-update tui-axes', () => {
     it(
         'adds one to [horizontalLines] and [verticalLines] attributes',
         migrate({
-            template: `
-                <tui-axes [horizontalLines]="1" [verticalLines]="2" />
+            template: /* HTML */ `
+                <tui-axes
+                    [horizontalLines]="1"
+                    [verticalLines]="2"
+                />
             `,
         }),
     );
@@ -30,7 +36,7 @@ describe('ng-update tui-axes', () => {
     it(
         'removes [axisX] and [axisY] attributes and adds one to [horizontalLines] and [verticalLines] attributes for complex template',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-axes
                     class="axes"
                     [axisX]="axisX"

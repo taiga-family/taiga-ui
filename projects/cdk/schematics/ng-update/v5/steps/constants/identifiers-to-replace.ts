@@ -209,6 +209,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiComboBoxModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiComboBox',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiSelectModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
@@ -817,6 +827,46 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'MaskitoPipe',
             moduleSpecifier: '@maskito/angular',
+        },
+    },
+    {
+        from: {
+            name: 'TuiOnboardingFlowDialog',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+        to: {
+            name: 'TuiResponsiveDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiOnboardingFlowDialogService',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+        to: {
+            name: 'TuiResponsiveDialogService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiOnboardingDialogDirective',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+        to: {
+            name: 'TuiResponsiveDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInput',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
 ];

@@ -60,7 +60,7 @@ describe('ng-update tuiRepeatTimes', () => {
     it(
         'migrates nested inside other elements',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <ul>
                     <li *ngFor="let idx of 3 | tuiRepeatTimes">{{ idx }}</li>
                 </ul>
@@ -71,7 +71,7 @@ describe('ng-update tuiRepeatTimes', () => {
     it(
         'migrates multiple tuiRepeatTimes in same template',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <div *ngFor="let i of 2 | tuiRepeatTimes">{{ i }}</div>
                 <span *ngFor="let j of 5 | tuiRepeatTimes">{{ j }}</span>
             `,
@@ -89,10 +89,14 @@ describe('ng-update tuiRepeatTimes', () => {
     it(
         'full before/after comparison with nested content',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <div class="wrapper">
                     <ul class="list">
-                        <li *ngFor="let index of items.length | tuiRepeatTimes" class="item" [class.active]="index === selected">
+                        <li
+                            *ngFor="let index of items.length | tuiRepeatTimes"
+                            class="item"
+                            [class.active]="index === selected"
+                        >
                             <span>Item #{{ index }}</span>
                             <button (click)="select(index)">Select</button>
                         </li>
@@ -105,9 +109,11 @@ describe('ng-update tuiRepeatTimes', () => {
     it(
         'migrates @for block syntax with tuiRepeatTimes pipe',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <section class="list">
-                  @for (n of 3 | tuiRepeatTimes; track n) {    <item />  }
+                    @for (n of 3 | tuiRepeatTimes; track n) {
+                    <item />
+                    }
                 </section>
             `,
         }),

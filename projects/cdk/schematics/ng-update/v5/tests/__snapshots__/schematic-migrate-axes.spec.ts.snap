@@ -3,10 +3,16 @@
 exports[`ng-update tui-axes adds one to [horizontalLines] and [verticalLines] attributes: test.html 1`] = `
 {
   "0. Before": "
-                <tui-axes [horizontalLines]="1" [verticalLines]="2" />
+                <tui-axes
+                    [horizontalLines]="1"
+                    [verticalLines]="2"
+                />
             ",
   "1. After": "
-                <tui-axes [horizontalLines]="2" [verticalLines]="3" />
+                <tui-axes
+                    [horizontalLines]="2"
+                    [verticalLines]="3"
+                />
             ",
 }
 `;
@@ -55,10 +61,16 @@ exports[`ng-update tui-axes removes [axisX] and [axisY] attributes and adds one 
 exports[`ng-update tui-axes removes axisX and axisY attributes: test.html 1`] = `
 {
   "0. Before": "
-                <tui-axes axisX="solid" axisY="dashed" />
+                <tui-axes
+                    axisX="solid"
+                    axisY="dashed"
+                />
             ",
   "1. After": "
-                <tui-axes   />
+                <tui-axes
+                    
+                    
+                />
             ",
 }
 `;

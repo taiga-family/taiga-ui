@@ -33,15 +33,10 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-month>
-                </tui-input-month>
+            template: /* HTML */ `
+                <tui-input-month></tui-input-month>
 
-                <tui-input-month
-                    [formControl]="control"
-                >
-                    Choose month
-                </tui-input-month>
+                <tui-input-month [formControl]="control">Choose month</tui-input-month>
 
                 <tui-input-month
                     formControlName="month"
@@ -54,11 +49,7 @@ describe('ng-update', () => {
                     />
                 </tui-input-month>
 
-                <tui-input-month
-                    [(ngModel)]="value"
-                >
-                    Your month
-                </tui-input-month>
+                <tui-input-month [(ngModel)]="value">Your month</tui-input-month>
             `,
         }),
     );
@@ -66,28 +57,30 @@ describe('ng-update', () => {
     it(
         'moves [min] and [max] to <input tuiInputMonth>, [disabledItemHandler] to <tui-calendar-month *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-month
-                    [min]="minMonth"
-                    [max]="maxMonth"
-                    [disabledItemHandler]="disabledHandler"
                     formControlName="month"
+                    [disabledItemHandler]="disabledHandler"
+                    [max]="maxMonth"
+                    [min]="minMonth"
                 >
                     Month
-                </tui-input-month>`,
+                </tui-input-month>
+            `,
         }),
     );
 
     it(
         'renames [defaultActiveYear] to [year] on <tui-calendar-month *tuiDropdown>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-month
-                    [defaultActiveYear]="initialYear"
                     formControlName="month"
+                    [defaultActiveYear]="initialYear"
                 >
                     Month
-                </tui-input-month>`,
+                </tui-input-month>
+            `,
         }),
     );
 

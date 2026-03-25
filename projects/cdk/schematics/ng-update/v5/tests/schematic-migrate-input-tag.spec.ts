@@ -20,9 +20,8 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-tag>
-                </tui-input-tag>
+            template: /* HTML */ `
+                <tui-input-tag></tui-input-tag>
 
                 <tui-input-tag
                     [formControl]="control"
@@ -31,14 +30,21 @@ describe('ng-update', () => {
                     Enter tags
                 </tui-input-tag>
 
+                <tui-input-tag formControlName="tags">My tags</tui-input-tag>
+
+                <tui-input-tag [(ngModel)]="value">Tags</tui-input-tag>
+            `,
+        }),
+    );
+
+    it(
+        'moves [separator] and [uniqueTags] (→ [unique]) to <input tuiInputChip>',
+        migrate({
+            template: /* HTML */ `
                 <tui-input-tag
                     formControlName="tags"
-                >
-                    My tags
-                </tui-input-tag>
-
-                <tui-input-tag
-                    [(ngModel)]="value"
+                    [separator]="separatorRegex"
+                    [uniqueTags]="true"
                 >
                     Tags
                 </tui-input-tag>
@@ -47,97 +53,88 @@ describe('ng-update', () => {
     );
 
     it(
-        'moves [separator] and [uniqueTags] (→ [unique]) to <input tuiInputChip>',
-        migrate({
-            template: `
-                <tui-input-tag
-                    [separator]="separatorRegex"
-                    [uniqueTags]="true"
-                    formControlName="tags"
-                >
-                    Tags
-                </tui-input-tag>`,
-        }),
-    );
-
-    it(
         'moves placeholder to <input tuiInputChip>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-tag
-                    placeholder="Add tag..."
                     formControlName="tags"
-                >
-                </tui-input-tag>`,
+                    placeholder="Add tag..."
+                ></tui-input-tag>
+            `,
         }),
     );
 
     it(
         'adds TODO for [tagValidator] and [search]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-tag
+                    formControlName="tags"
                     [tagValidator]="myValidator"
                     [(search)]="searchValue"
-                    formControlName="tags"
                 >
                     Tags
-                </tui-input-tag>`,
+                </tui-input-tag>
+            `,
         }),
     );
 
     it(
         'adds TODO for [editable] and [autoColor], silently removes [inputHidden] and [removable]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-tag
                     formControlName="tags"
+                    [autoColor]="true"
                     [editable]="false"
                     [inputHidden]="true"
-                    [autoColor]="true"
                     [removable]="false"
                 >
                     Tags
-                </tui-input-tag>`,
+                </tui-input-tag>
+            `,
         }),
     );
 
     it(
         'moves [rows] to <tui-textfield multi>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-tag
                     formControlName="tags"
                     [rows]="3"
                 >
                     Tags
-                </tui-input-tag>`,
+                </tui-input-tag>
+            `,
         }),
     );
 
     it(
         'moves [disabledItemHandler] to <tui-textfield multi>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-tag
                     formControlName="tags"
                     [disabledItemHandler]="myHandler"
                 >
                     Tags
-                </tui-input-tag>`,
+                </tui-input-tag>
+            `,
         }),
     );
 
     it(
         'renames [maxLength] to [maxlength] on <input tuiInputChip>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-tag
                     formControlName="tags"
                     [maxLength]="50"
                 >
                     Tags
-                </tui-input-tag>`,
+                </tui-input-tag>
+            `,
         }),
     );
 

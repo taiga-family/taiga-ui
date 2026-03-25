@@ -28,16 +28,15 @@ describe('ng-update tag to chip', () => {
                 })
                 export class Example {}
             `,
-            template: `
+            template: /* HTML */ `
                 <tui-tag
+                    removable
                     size="l"
                     status="primary"
-                    removable
                     value="Tag"
                 />
                 <button
                     size="l"
-                    [status]="status"
                     tuiTag
                     type="button"
                     value="Button"
@@ -45,6 +44,7 @@ describe('ng-update tag to chip', () => {
                     [autoColor]="true"
                     [editable]="true"
                     [hoverable]="true"
+                    [status]="status"
                 ></button>
             `,
         }),
