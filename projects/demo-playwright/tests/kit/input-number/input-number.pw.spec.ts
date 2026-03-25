@@ -637,6 +637,7 @@ describe('InputNumber', () => {
                     {prefix: '$', postfix: 'kg'},
                     {prefix: '', postfix: 'Even too long postfix changes nothing'},
                     {prefix: 'Enormous prefix is allowed too', postfix: ''},
+                    {prefix: '', postfix: 'cm3'},
                 ] as const
             ).forEach(({prefix, postfix}) => {
                 describe(`[prefix]="${prefix}" & [postfix]="${postfix}"`, () => {
@@ -823,6 +824,18 @@ describe('InputNumber', () => {
                     await inputNumber.textfield.blur();
                     await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}123`);
                 });
+            });
+
+            test('[postfix]="cm3" (contains digit) => Enter 0 => Blur', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.InputNumber}/API?postfix=cm3`);
+
+                await inputNumber.textfield.focus();
+                await inputNumber.textfield.pressSequentially('0');
+                await expect(inputNumber.textfield).toHaveValue('0cm3');
+                await inputNumber.textfield.blur();
+                await expect(inputNumber.textfield).toHaveValue('0cm3');
             });
         });
 
