@@ -1320,20 +1320,16 @@ export class PerformanceComparison {
 
             lines.push(
                 `- Overall layout duration: ${layoutPrefix}${layoutTotal.toFixed(1)}% ${layoutIcon}`,
-            );
-            lines.push(
                 `- Overall recalc duration: ${recalcPrefix}${recalcTotal.toFixed(1)}% ${recalcIcon}`,
             );
         }
 
         lines.push(
             formatAvg('Max layout duration change', summary.maxLayoutDurationChange),
-        );
-        lines.push(
             formatAvg('Max recalc duration change', summary.maxRecalcDurationChange),
+            formatAvg('Max layout ops change', summary.maxLayoutCountChange),
+            formatAvg('Max recalc ops change', summary.maxRecalcCountChange),
         );
-        lines.push(formatAvg('Max layout ops change', summary.maxLayoutCountChange));
-        lines.push(formatAvg('Max recalc ops change', summary.maxRecalcCountChange));
         const body = lines.join('\n');
 
         return [
@@ -2034,21 +2030,17 @@ export class PerformanceReportAggregator {
         const groupedRows = this.sortAndGroupRows(tableRows);
         const parts: string[] = [];
 
-        parts.push('## 📊 Aggregated Performance Results');
-        parts.push('');
+        parts.push('## 📊 Aggregated Performance Results', '');
 
         if (emptyShardCount > 0) {
-            parts.push(`_(${emptyShardCount} shard(s) produced no visible changes)_`);
-            parts.push('');
+            parts.push(`_(${emptyShardCount} shard(s) produced no visible changes)_`, '');
         }
 
         for (const [groupKey, rows] of Object.entries(groupedRows)) {
-            parts.push(`### ${groupKey}`);
-            parts.push('');
             parts.push(
+                `### ${groupKey}`,
+                '',
                 '| Test Name | Layout Ops | Layout ms | Recalc Ops | Recalc ms | Layout ms/op (median) | Recalc ms/op (median) | Net Δ ms | Net Δ % |',
-            );
-            parts.push(
                 '|-----------|------------|-----------|-----------|-----------|------------------------|-------------------------|---------|---------|',
             );
 

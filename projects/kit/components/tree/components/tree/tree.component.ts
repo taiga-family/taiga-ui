@@ -11,12 +11,11 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, Subject} from 'rxjs';
 
 import {TuiTreeChildren} from '../../directives/tree-children.directive';
 import {TuiTreeNode} from '../../directives/tree-node.directive';
-import {type TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItem} from '../tree-item/tree-item.component';
 
@@ -48,8 +47,7 @@ export class TuiTreeComponent<T> implements DoCheck {
 
     public readonly value = input.required<T>();
     public readonly trackBy = input<TrackByFunction<T>>((_: number, item) => item);
-    public readonly content =
-        input<PolymorpheusContent<TuiTreeContext<T>>>(TUI_STRINGIFY);
+    public readonly content = input(TUI_STRINGIFY);
 
     public ngDoCheck(): void {
         this.checkChanges();

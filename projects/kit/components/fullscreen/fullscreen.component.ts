@@ -23,7 +23,7 @@ export class TuiFullscreen {
     private readonly root = viewChild(TuiRoot, {read: ElementRef});
     private readonly doc = inject(DOCUMENT);
 
-    public readonly tuiFullscreen = model<boolean>(false);
+    public readonly tuiFullscreen = model(false);
     public readonly options = input<FullscreenOptions>(
         {navigationUI: 'auto'},
         {alias: 'tuiFullscreenOptions'},

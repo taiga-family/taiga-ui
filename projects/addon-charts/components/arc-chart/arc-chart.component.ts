@@ -39,7 +39,7 @@ export class TuiArcChart {
     public readonly minLabel = input('0%');
     public readonly maxLabel = input('100%');
 
-    public readonly activeItemIndex = model<number>(NaN);
+    public readonly activeItemIndex = model(NaN);
 
     protected get width(): number {
         return SIZE[this.size()];

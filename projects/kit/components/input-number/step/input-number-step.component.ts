@@ -58,11 +58,7 @@ export class TuiInputNumberStep {
         const value = this.input.parsed() || 0;
 
         this.input.setValue(
-            tuiClamp<bigint | number>(
-                /**
-                 * Without explicit conversion it throws
-                 * TS2365: Operator + cannot be applied to types `number | bigint` and `number | bigint`
-                 */
+            tuiClamp(
                 typeof value === 'bigint'
                     ? value + BigInt(step)
                     : tuiSum(value, Number(step)),

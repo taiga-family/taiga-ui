@@ -11,7 +11,6 @@ import {FormsModule, NgControl, type ValidatorFn, Validators} from '@angular/for
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_STRINGIFY, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
-import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiRadio} from '@taiga-ui/core/components/radio';
 import {
@@ -19,7 +18,7 @@ import {
     TuiWithItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiSizeS} from '@taiga-ui/core/types';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 
@@ -54,8 +53,7 @@ export class TuiRadioList<T> extends TuiControl<T> {
 
     public readonly items = input<readonly T[]>();
     public readonly size = input<TuiSizeS>('m');
-    public readonly itemContent =
-        input<PolymorpheusContent<TuiContext<T> & {active: boolean}>>(TUI_STRINGIFY);
+    public readonly itemContent = input(TUI_STRINGIFY);
 
     protected get name(): string {
         return `${this.control.name}-${this.id}`;

@@ -18,6 +18,6 @@ export class TuiThumbnailCard {
 
     public readonly size = input<TuiSizeL | TuiSizeXS>(this.options.size);
     public readonly paymentSystem = input<TuiPaymentSystem | null>(null);
-    public readonly iconStart = input<string>('');
-    public readonly iconEnd = input<string>('');
+    public readonly iconStart = input('');
+    public readonly iconEnd = input('');
 }

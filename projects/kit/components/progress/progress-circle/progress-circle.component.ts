@@ -24,7 +24,7 @@ export class TuiProgressCircle {
 
     public readonly value = input(0);
     public readonly max = input(1);
-    public readonly color = input<string | null>(this.options.color);
+    public readonly color = input(this.options.color);
     public readonly size = input(this.options.size);
     public readonly arc = input(false, {transform: coerceBooleanProperty});
 }

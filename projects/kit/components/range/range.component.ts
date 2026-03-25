@@ -68,9 +68,9 @@ export class TuiRange extends TuiControl<[number, number]> {
     );
 
     protected readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
-    protected readonly fractionStep = computed<number>((step = this.step()) => {
-        return this.keySteps() ? step / 100 : step / (this.max() - this.min());
-    });
+    protected readonly fractionStep = computed<number>((step = this.step()) =>
+        this.keySteps() ? step / 100 : step / (this.max() - this.min()),
+    );
 
     protected readonly computedKeySteps = computed<TuiKeySteps>(
         () =>
