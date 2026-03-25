@@ -1,28 +1,9 @@
-@import '@taiga-ui/styles/utils';
-
-.wrapper {
-    display: flex;
-    align-items: center;
-    margin: 0 -5rem;
-
-    :host-context(tui-root._mobile) & {
-        margin: 0;
-
-        button {
-            display: none;
-        }
-    }
+tui-carousel {
+    inline-size: 16rem;
 }
 
-.header {
-    .transition(background);
-
-    block-size: 10rem;
-    flex: 1;
-    background: var(--tui-background-base) center;
-    background-size: cover;
-}
-
-tui-pager {
-    margin: 0 auto;
+tui-avatar-labeled {
+    inline-size: 4rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }

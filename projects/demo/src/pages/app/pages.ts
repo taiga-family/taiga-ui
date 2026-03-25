@@ -1058,7 +1058,8 @@ export const pages: DocRoutePages = [
     {
         section: 'Layout',
         title: 'Slides',
-        keywords: 'слайды, слайдер, slider, carousel, карусель, слайд, slide, swiper',
+        keywords:
+            'слайды, слайдер, slider, carousel, карусель, слайд, slide, swiper, scroll',
         route: DemoRoute.Slides,
     },
     {

@@ -1,16 +1,14 @@
-<tui-carousel
-    [draggable]="true"
-    [itemsCount]="3"
-    [(index)]="index"
->
-    @for (item of items; track $index) {
-        <img
-            *tuiItem
-            alt=""
-            draggable="false"
-            class="item"
-            [class.item_active]="$index === index + 1"
-            [src]="`assets/images/${item}`"
-        />
-    }
+<tui-carousel [style.inline-size.rem]="12">
+    <section
+        *tuiItem="let index"
+        appearance="neutral"
+        tuiCardMedium
+    >
+        @let current = items.at(index % items.length);
+        <span [tuiAvatar]="current?.icon"></span>
+        <footer tuiTitle>
+            {{ current?.title }}
+            <span tuiSubtitle>{{ current?.subtitle }}</span>
+        </footer>
+    </section>
 </tui-carousel>

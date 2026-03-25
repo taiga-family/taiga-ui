@@ -6,6 +6,9 @@ import {TuiCarouselAutoscroll} from './carousel-autoscroll.directive';
 import {TuiCarouselButtons} from './carousel-buttons.directive';
 import {TuiCarouselScroll} from './carousel-scroll.directive';
 
+/**
+ * @deprecated: use {@link import("@taiga-ui/core").TuiCarousel} instead
+ */
 export const TuiCarousel = [
     TuiItem,
     TuiCarouselComponent,

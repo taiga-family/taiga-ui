@@ -1,0 +1,17 @@
+<span
+    class="t-item"
+    (waIntersectionObservee)="onIntersection(!!$event[0]?.isIntersecting, -1)"
+>
+    <ng-container *ngTemplateOutlet="template(); context: {$implicit: math.max(index() - 1, min())}" />
+</span>
+@if (index() !== min() && index() !== max()) {
+    <span class="t-item">
+        <ng-container *ngTemplateOutlet="template(); context: {$implicit: index()}" />
+    </span>
+}
+<span
+    class="t-item"
+    (waIntersectionObservee)="onIntersection(!!$event[0]?.isIntersecting, 1)"
+>
+    <ng-container *ngTemplateOutlet="template(); context: {$implicit: math.min(index() + 1, max())}" />
+</span>
