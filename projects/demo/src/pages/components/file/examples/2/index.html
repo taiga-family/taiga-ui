@@ -1,0 +1,46 @@
+@for (item of content; track $index) {
+    <div
+        orientation="vertical"
+        tuiFile
+    >
+        @switch (item) {
+            @case ('icon') {
+                <tui-icon icon="@tui.image" />
+            }
+            @case ('button') {
+                <button
+                    iconStart="@tui.rotate-cw"
+                    tuiIconButton
+                    type="button"
+                >
+                    Retry
+                </button>
+            }
+            @case ('progress') {
+                <tui-progress-circle [value]="0.6" />
+            }
+            @case ('loader') {
+                <tui-loader />
+            }
+            @case ('image') {
+                <img
+                    alt=""
+                    src="assets/images/avatar.jpg"
+                />
+            }
+            @case ('error') {
+                <tui-icon
+                    icon="@tui.circle-x"
+                    [style.color]="'var(--tui-text-negative)'"
+                />
+            }
+        }
+
+        <div tuiTitle>
+            file.png
+            <div tuiSubtitle>30 MB</div>
+        </div>
+
+        <button tuiButtonX>Close</button>
+    </div>
+}

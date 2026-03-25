@@ -1,0 +1,53 @@
+<tui-doc-page
+    header="File"
+    package="EXPERIMENTAL"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Cell view has 3 size presets, same as
+                        <a
+                            tuiLink
+                            [routerLink]="routes.Cell"
+                        >
+                            Cell
+                        </a>
+                        component it is built upon.
+                    }
+                    @case (1) {
+                        Card size adjusts to the grid with min/max width built-in.
+                    }
+                    @case (2) {
+                        Long file names are allowed by default but can be trimmed using
+                        <code>line-clamp</code>
+                        CSS.
+                    }
+                    @case (3) {
+                        Transitions are handled using
+                        <a
+                            tuiLink
+                            [routerLink]="routes.Slides"
+                        >
+                            Slides
+                        </a>
+                        component which is built-in for the content but needs to be manually applied for text.
+                    }
+                    @case (4) {
+                        Elements that follow an
+                        <code>IMG</code>
+                        tag automatically apply darkening and blur effect to the underlying image.
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+</tui-doc-page>

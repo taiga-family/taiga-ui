@@ -1,0 +1,38 @@
+@import '@taiga-ui/styles/utils.less';
+
+[tuiFile][data-orientation='horizontal'] {
+    padding-inline: 1rem;
+
+    &:has(> label:active) {
+        background: var(--tui-background-neutral-1);
+    }
+}
+
+[tuiFile][data-orientation='vertical'] {
+    .transition(transform, @tui-duration-fastest);
+
+    min-inline-size: 6rem;
+    max-inline-size: 10rem;
+
+    [tuiButtonX]::after {
+        position: absolute;
+        display: block;
+        inset-inline-end: -0.25rem;
+        inset-block-start: -0.25rem;
+        inline-size: 2.75rem;
+        block-size: 2.75rem;
+        opacity: 0;
+    }
+
+    [tuiTitle] {
+        font: var(--tui-typography-ui-m);
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-typography-ui-s);
+    }
+
+    &:has(> label:active) {
+        transform: scale(0.95);
+    }
+}
