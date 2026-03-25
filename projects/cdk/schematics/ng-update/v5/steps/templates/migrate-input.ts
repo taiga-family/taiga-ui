@@ -221,14 +221,11 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
-    const innerContent = buildInnerContent(
-        element,
-        template,
-        inputAttrs,
-        ctx.placeholder,
+    const innerContent = buildInnerContent(element, template, inputAttrs, {
+        placeholder: ctx.placeholder,
         indent,
-        isLabelOutsideTrue,
-    );
+        labelOutsideIsTrue,
+    });
     const todoComment = buildTodoComment(ctx);
     // `indent` is added before <tui-textfield> only when there is a TODO — in that case
     // todoComment ends with `\n` so the tag would otherwise start at column 0.
@@ -300,9 +297,11 @@ function buildInnerContent(
     element: Element,
     template: string,
     inputAttrs: string[],
-    placeholder: string,
-    indent: string,
-    labelOutsideIsTrue: boolean,
+    {
+        placeholder,
+        indent,
+        labelOutsideIsTrue,
+    }: {indent: string; labelOutsideIsTrue: boolean; placeholder: string},
 ): string {
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>

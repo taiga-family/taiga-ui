@@ -27,28 +27,30 @@ describe('ng-update legacy input', () => {
     it(
         'migrates tui-input wrapper attrs and routes them correctly',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input
                     formControlName="value"
+                    tuiHintContent="Hint"
                     tuiTextfieldSize="s"
                     [tuiTextfieldCleaner]="true"
-                    tuiHintContent="Hint"
                 >
                     Email
-                </tui-input>`,
+                </tui-input>
+            `,
         }),
     );
 
     it(
         'wraps in <label tuiLabel> when [tuiTextfieldLabelOutside]="true"',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input
                     formControlName="value"
                     [tuiTextfieldLabelOutside]="true"
                 >
                     Email
-                </tui-input>`,
+                </tui-input>
+            `,
         }),
     );
 
@@ -76,7 +78,7 @@ describe('ng-update legacy input', () => {
     it(
         'reuses inner <input tuiTextfieldLegacy> and preserves its attrs',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input formControlName="value">
                     Email
                     <input
@@ -85,21 +87,23 @@ describe('ng-update legacy input', () => {
                         tuiTextfieldLegacy
                         type="email"
                     />
-                </tui-input>`,
+                </tui-input>
+            `,
         }),
     );
 
     it(
         'renames tuiTextfieldIconLeft to iconStart and tuiTextfieldIcon to iconEnd on wrapper',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input
                     formControlName="value"
-                    [tuiTextfieldIconLeft]="iconStart"
                     [tuiTextfieldIcon]="iconEnd"
+                    [tuiTextfieldIconLeft]="iconStart"
                 >
                     Label
-                </tui-input>`,
+                </tui-input>
+            `,
         }),
     );
 
@@ -114,16 +118,17 @@ describe('ng-update legacy input', () => {
     it(
         'routes dropdown attrs to wrapper and adds TODO for prefix/postfix',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input
                     formControlName="value"
                     tuiDropdownDirection="top"
-                    [tuiDropdownLimitWidth]="'fixed'"
-                    tuiTextfieldPrefix="$"
                     tuiTextfieldPostfix="USD"
+                    tuiTextfieldPrefix="$"
+                    [tuiDropdownLimitWidth]="'fixed'"
                 >
                     Amount
-                </tui-input>`,
+                </tui-input>
+            `,
         }),
     );
 
@@ -138,9 +143,10 @@ describe('ng-update legacy input', () => {
     it(
         'migrates multiple tui-input elements in one template',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input formControlName="a">First</tui-input>
-                <tui-input formControlName="b">Second</tui-input>`,
+                <tui-input formControlName="b">Second</tui-input>
+            `,
         }),
     );
 
