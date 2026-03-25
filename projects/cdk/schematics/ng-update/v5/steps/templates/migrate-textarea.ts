@@ -149,11 +149,15 @@ function buildReplacement(
         if (TEXTFIELD_WRAPPER_ATTRS.has(nameLower)) {
             const original = getOriginalAttrText(template, element, nameLower);
             const migratedValue = migrateAttrValue(nameLower, attr.value);
-            const attrText = original
-                ? original.replace(`="${attr.value}"`, `="${migratedValue}"`)
-                : attr.value
-                  ? `${attr.name}="${migratedValue}"`
-                  : attr.name;
+            let attrText: string;
+
+            if (original) {
+                attrText = original.replace(`="${attr.value}"`, `="${migratedValue}"`);
+            } else if (attr.value) {
+                attrText = `${attr.name}="${migratedValue}"`;
+            } else {
+                attrText = attr.name;
+            }
 
             textfieldAttrs.push(attrText);
             continue;
