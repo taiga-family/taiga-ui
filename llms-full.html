@@ -24764,7 +24764,7 @@ export class Example {}
 ### Example
 
 ```html
-&lt;label tuiInputFiles&gt;
+&lt;label [tuiInputFiles]=&quot;size&quot;&gt;
 &lt;input #validator=&quot;tuiInputFilesValidator&quot; tuiInputFiles [accept]=&quot;accept&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [maxFileSize]=&quot;maxFileSize&quot; [multiple]=&quot;multiple&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; (reject)=&quot;updateRejected($event); reject.emitEvent($event)&quot; /&gt;
 &lt;/label&gt;
 &lt;tui-files class=&quot;tui-space_top-2&quot; [max]=&quot;maxFilesCount&quot; [(expanded)]=&quot;expanded&quot; &gt;
@@ -24784,6 +24784,7 @@ export class Example {}
 | [accept] | `string` | Allowed formats |
 | [maxFileSize] | `number` | Max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
 | [multiple] | `boolean` | Allows to upload several files |
+| [tuiInputFiles] | `TuiSizeL` | Drop zone size |
 
 ### API - Outputs
 
@@ -25108,21 +25109,20 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;label tuiInputFiles&gt;
+&lt;label tuiInputFiles=&quot;l&quot;&gt;
 &lt;input tuiInputFiles [formControl]=&quot;control&quot; /&gt;
 &lt;ng-template let-dragged&gt;
-&lt;div *ngIf=&quot;dragged; else base&quot; class=&quot;content&quot; &gt;
+&lt;ng-container *ngIf=&quot;dragged; else base&quot;&gt;
 &lt;tui-avatar appearance=&quot;secondary&quot; src=&quot;@tui.droplet&quot; /&gt;
 &lt;div&gt; Drop it like it&#039;s hot! &lt;br /&gt;
 &lt;br /&gt;
 &lt;/div&gt;
-&lt;/div&gt;
+&lt;/ng-container&gt;
 &lt;ng-template #base&gt;
-&lt;div class=&quot;content&quot;&gt;
 &lt;tui-avatar appearance=&quot;secondary&quot; src=&quot;@tui.cloud-upload&quot; /&gt;
 &lt;div&gt; Drag and drop file here or &lt;a tuiLink&gt;click to upload&lt;/a&gt;
 &lt;/div&gt;
-&lt;/div&gt;
+&lt;div class=&quot;types&quot;&gt;PNG, JPG, JPEG, PNG, etc&lt;/div&gt;
 &lt;/ng-template&gt;
 &lt;/ng-template&gt;
 &lt;/label&gt;
@@ -25163,13 +25163,14 @@ export default class Example {
 ```
 **LESS:**
 ```less
-.content {
-    display: flex;
-    block-size: 10rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+:host {
+    display: block;
+    min-inline-size: 25rem;
+}
+
+.types {
+    color: var(--tui-text-secondary);
+    font-size: 0.6875rem;
 }
 ```
 
