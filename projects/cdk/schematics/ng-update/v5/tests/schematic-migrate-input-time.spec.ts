@@ -29,14 +29,10 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <tui-input-time>Pick a time</tui-input-time>
 
-                <tui-input-time
-                    [formControl]="control"
-                >
-                    Start time
-                </tui-input-time>
+                <tui-input-time [formControl]="control">Start time</tui-input-time>
 
                 <tui-input-time
                     formControlName="time"
@@ -55,39 +51,45 @@ describe('ng-update', () => {
     it(
         'moves [mode] to <input tuiInputTime>',
         migrate({
-            template: `
-                <tui-input-time [mode]="'HH:MM'" formControlName="time">
+            template: /* HTML */ `
+                <tui-input-time
+                    formControlName="time"
+                    [mode]="'HH:MM'"
+                >
                     Time
-                </tui-input-time>`,
+                </tui-input-time>
+            `,
         }),
     );
 
     it(
         'renames [items] to [accept] and adds TODO about data-list-wrapper',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-time
-                    [items]="timeItems"
                     formControlName="time"
+                    [items]="timeItems"
                 >
                     Time
-                </tui-input-time>`,
+                </tui-input-time>
+            `,
         }),
     );
 
     it(
         'keeps [disabledItemHandler] on tui-textfield, adds TODO for [itemsHidden], silently removes strict and [itemSize]',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-time
                     formControlName="time"
-                    [strict]="true"
+                    [disabledItemHandler]="handler"
                     [itemsHidden]="false"
                     [itemSize]="'s'"
-                    [disabledItemHandler]="handler"
+                    [strict]="true"
                 >
                     Time
-                </tui-input-time>`,
+                </tui-input-time>
+            `,
         }),
     );
 

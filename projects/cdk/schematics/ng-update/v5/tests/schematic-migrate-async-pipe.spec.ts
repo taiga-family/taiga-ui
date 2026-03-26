@@ -53,10 +53,10 @@ describe('ng-update remove | async from signal-based pipes', () => {
     it(
         'should handle multiline template',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <p>
-                    Formatted number with rounding:
-                    {{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} | async }}
+                    Formatted number with rounding: {{ 10500.334 | tuiFormatNumber:
+                    {precision: 2, decimalSeparator: '.', rounding: 'ceil'} | async }}
                 </p>
             `,
         }),
@@ -65,7 +65,7 @@ describe('ng-update remove | async from signal-based pipes', () => {
     it(
         'should handle multiple pipes in the same template',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <li>{{ 10728.9 | tuiAmount | async }}</li>
                 <li>{{ 10728.9 | tuiAmount: 'RUB' | async }}</li>
                 <span>{{ 120.59 | tuiDecimal | async }}</span>

@@ -37,8 +37,7 @@ export class TuiDocItemsHandlers implements TuiItemsHandlers<unknown> {
     public readonly disabledItemHandler = signal(this.falseHandler);
     public readonly identityMatcher = signal(this.identityMatcherVariants[0]!);
 
-    public readonly providedDisabledItemHandler = input<TuiBooleanHandler<any>>(
-        this.disabledItemHandler(),
-        {alias: 'disabledItemHandler'},
-    );
+    public readonly providedDisabledItemHandler = input(this.disabledItemHandler(), {
+        alias: 'disabledItemHandler',
+    });
 }

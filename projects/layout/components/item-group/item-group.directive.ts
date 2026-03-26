@@ -14,7 +14,11 @@ const OPTIONS = {behavior: 'smooth', block: 'nearest', inline: 'center'} as cons
 
 @Component({
     template: '',
-    styleUrl: './item-group.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './item-group.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-item-group-${TUI_VERSION}`,
@@ -24,6 +28,7 @@ class Styles {}
 @Directive({
     selector: '[tuiItemGroup]',
     host: {
+        'data-tui-version': TUI_VERSION,
         '(click)': 'onClick($event.target)',
         '[class._horizontal]': 'horizontal()',
     },

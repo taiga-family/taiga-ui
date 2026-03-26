@@ -16,8 +16,8 @@ declare global {
     }
 }
 
-export const stableMount: typeof mount = (component, config) => {
-    return mount(component, {
+export const stableMount: typeof mount = (component, config) =>
+    mount(component, {
         ...config,
         providers: [
             ...(config?.providers || []),
@@ -41,6 +41,5 @@ export const stableMount: typeof mount = (component, config) => {
                 return mountResponse.fixture.whenStable().then(() => mountResponse);
             }),
     );
-};
 
 Cypress.Commands.add('mount', stableMount);

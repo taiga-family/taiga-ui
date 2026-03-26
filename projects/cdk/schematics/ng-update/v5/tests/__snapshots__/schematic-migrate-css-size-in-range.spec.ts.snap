@@ -3,39 +3,105 @@
 exports[`ng-update comment for --tui-thickness should add comment for --tui-thickness in html files: test.html 1`] = `
 {
   "0. Before": "
-                <tui-range [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
-                <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
-                <tui-input-range [formControl]="control" [style.--tui-thickness.rem]="0.25"/>
+                <tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.5"
+                />
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.5"
+                />
+                <tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.25"
+                />
 
-                <tui-range [formControl]="control" [style.--tui-thickness.px]="8"/>
-                <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.px]="10"/>
-                <tui-input-range [formControl]="control" [style.--tui-thickness.px]="12"/>
+                <tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="8"
+                />
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="10"
+                />
+                <tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="12"
+                />
 
-                <tui-range [formControl]="control" [style.--tui-thickness]="'8px'"/>
-                <input tuiSlider type="range" [formControl]="control" [style.--tui-thickness]="'10px'"/>
-                <tui-input-range [formControl]="control" [style.--tui-thickness]="'12px'"/>
+                <tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness]="'8px'"
+                />
+                <input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness]="'10px'"
+                />
+                <tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness]="'12px'"
+                />
             ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<tui-range [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
+<tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.5"
+                />
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.rem]="0.5"/>
+<input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.5"
+                />
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<tui-input-range [formControl]="control" [style.--tui-thickness.rem]="0.25"/>
+<tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness.rem]="0.25"
+                />
 
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<tui-range [formControl]="control" [style.--tui-thickness.px]="8"/>
+<tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="8"
+                />
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<input tuiSlider type="range" [formControl]="control" [style.--tui-thickness.px]="10"/>
+<input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="10"
+                />
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<tui-input-range [formControl]="control" [style.--tui-thickness.px]="12"/>
+<tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness.px]="12"
+                />
 
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<tui-range [formControl]="control" [style.--tui-thickness]="'8px'"/>
+<tui-range
+                    [formControl]="control"
+                    [style.--tui-thickness]="'8px'"
+                />
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<input tuiSlider type="range" [formControl]="control" [style.--tui-thickness]="'10px'"/>
+<input
+                    tuiSlider
+                    type="range"
+                    [formControl]="control"
+                    [style.--tui-thickness]="'10px'"
+                />
                 <!-- TODO: (Taiga UI migration) use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size -->
-<tui-input-range [formControl]="control" [style.--tui-thickness]="'12px'"/>
+<tui-input-range
+                    [formControl]="control"
+                    [style.--tui-thickness]="'12px'"
+                />
             ",
 }
 `;

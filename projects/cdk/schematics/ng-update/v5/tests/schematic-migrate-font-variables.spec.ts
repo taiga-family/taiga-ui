@@ -12,7 +12,7 @@ describe('ng-update font variables', () => {
     it(
         'should migrate heading and text font variables',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <div>
                     <p style="font: var(--tui-font-text)"></p>
                     <p style="font: var(--tui-font-heading-1)"></p>

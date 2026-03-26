@@ -9,9 +9,8 @@ import {
 } from '@angular/core';
 import {FormsModule, NgControl, type ValidatorFn, Validators} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
+import {TUI_STRINGIFY, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
-import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiRadio} from '@taiga-ui/core/components/radio';
 import {
@@ -19,7 +18,7 @@ import {
     TuiWithItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiSizeS} from '@taiga-ui/core/types';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 
@@ -27,13 +26,18 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     selector: 'tui-radio-list',
     imports: [FormsModule, PolymorpheusOutlet, TuiRadio, TuiValidator],
     templateUrl: './radio-list.template.html',
-    styleUrl: './radio-list.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './radio-list.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiRadioList)],
     hostDirectives: [TuiWithItemsHandlers],
     host: {
         role: 'radiogroup',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
         '(focusout)': 'onFocusOut()',
     },
@@ -49,8 +53,7 @@ export class TuiRadioList<T> extends TuiControl<T> {
 
     public readonly items = input<readonly T[]>();
     public readonly size = input<TuiSizeS>('m');
-    public readonly itemContent =
-        input<PolymorpheusContent<TuiContext<T> & {active: boolean}>>(TUI_STRINGIFY);
+    public readonly itemContent = input(TUI_STRINGIFY);
 
     protected get name(): string {
         return `${this.control.name}-${this.id}`;

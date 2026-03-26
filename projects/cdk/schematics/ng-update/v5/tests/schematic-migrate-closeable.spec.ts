@@ -12,7 +12,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for options in templates',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <ng-template
                     [tuiDialogOptions]="{
                         size: 's',

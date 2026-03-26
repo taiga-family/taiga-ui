@@ -7,10 +7,9 @@ export interface TuiPasswordOptions {
     }>;
 }
 
-export const [TUI_PASSWORD_OPTIONS, tuiPasswordOptionsProvider] =
-    tuiCreateOptions<TuiPasswordOptions>({
-        icons: {
-            hide: '@tui.eye-off',
-            show: '@tui.eye',
-        },
-    });
+export const [TUI_PASSWORD_OPTIONS, tuiPasswordOptionsProvider] = tuiCreateOptions({
+    icons: {
+        hide: '@tui.eye-off',
+        show: '@tui.eye',
+    },
+});

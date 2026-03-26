@@ -7,6 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -19,7 +20,11 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     selector: 'tui-pdf-viewer',
     imports: [NgTemplateOutlet, TuiAppBar, TuiButton],
     templateUrl: './pdf-viewer.template.html',
-    styleUrl: './pdf-viewer.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './pdf-viewer.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -28,7 +33,10 @@ import {injectContext} from '@taiga-ui/polymorpheus';
             size: mobile ? 'l' : 's',
         })),
     ],
-    host: {'[attr.tuiTheme]': 'isMobile() ? "" : "dark"'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '[attr.tuiTheme]': 'isMobile() ? "" : "dark"',
+    },
 })
 export class TuiPdfViewer<O, I> {
     private readonly breakpoint = inject(TUI_BREAKPOINT);

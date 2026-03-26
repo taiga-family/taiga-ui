@@ -37,13 +37,12 @@ export default class Example {
         {id: 999, name: 'Graham Chapman'},
     ];
 
-    protected readonly stringify: TuiStringHandler<Python | number> = (item) => {
-        return typeof item === 'number'
+    protected readonly stringify: TuiStringHandler<Python | number> = (item) =>
+        typeof item === 'number'
             ? // Number-type form control value => human-readable text inside textfield
               (this.items.find(({id}) => id === item)?.name ?? '')
             : // for `tuiFilterByInput` pipe
               item.name;
-    };
 
     protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
         const {name} = this.items.find((item) => item.id === id)!;

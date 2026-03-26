@@ -35,9 +35,11 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
+            template: /* HTML */ `
                 <form [formGroup]="form">
-                  <tui-input-phone formControlName="value">Phone number</tui-input-phone>
+                    <tui-input-phone formControlName="value">
+                        Phone number
+                    </tui-input-phone>
                 </form>
 
                 <tui-input-phone
@@ -72,10 +74,7 @@ describe('ng-update', () => {
                     />
                 </tui-input-phone>
 
-                <tui-input-phone
-                    [(ngModel)]="value"
-                >
-                </tui-input-phone>
+                <tui-input-phone [(ngModel)]="value"></tui-input-phone>
             `,
         }),
     );
@@ -107,14 +106,15 @@ describe('ng-update', () => {
     it(
         'adds single TODO when both countryCode and phoneMaskAfterCountryCode are present',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-phone
                     countryCode="+7"
-                    phoneMaskAfterCountryCode="(###) ###-##-##"
                     formControlName="value"
+                    phoneMaskAfterCountryCode="(###) ###-##-##"
                 >
                     Phone
-                </tui-input-phone>`,
+                </tui-input-phone>
+            `,
         }),
     );
 

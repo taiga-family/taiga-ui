@@ -1,9 +1,9 @@
 // Don't increase specificity. Otherwise, not compatible with [tuiHeader]
-[tuiCardLarge] {
+[tuiCardLarge]:where(*&) {
     font: var(--tui-typography-body-m);
 }
 
-[tuiCardLarge][data-space] {
+[tuiCardLarge][data-space]:where(*&) {
     --t-space: 0.75rem;
     --t-radius: var(--tui-radius-l);
     --t-comp: -0.25rem;

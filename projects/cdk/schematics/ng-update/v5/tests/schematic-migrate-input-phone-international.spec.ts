@@ -20,13 +20,10 @@ describe('ng-update', () => {
                 })
                 export class MyComponent {}
             `,
-            template: `
-                <tui-input-phone-international>
-                </tui-input-phone-international>
+            template: /* HTML */ `
+                <tui-input-phone-international></tui-input-phone-international>
 
-                <tui-input-phone-international
-                    [formControl]="control"
-                >
+                <tui-input-phone-international [formControl]="control">
                     Choose a country
                 </tui-input-phone-international>
 
@@ -41,9 +38,7 @@ describe('ng-update', () => {
                     />
                 </tui-input-phone-international>
 
-                <tui-input-phone-international
-                    [(ngModel)]="value"
-                >
+                <tui-input-phone-international [(ngModel)]="value">
                     Your phone
                 </tui-input-phone-international>
             `,
@@ -53,41 +48,44 @@ describe('ng-update', () => {
     it(
         'moves [countries] to <input tuiInputPhoneInternational>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-phone-international
-                    [countries]="allowedCountries"
                     formControlName="phone"
+                    [countries]="allowedCountries"
                 >
                     Phone
-                </tui-input-phone-international>`,
+                </tui-input-phone-international>
+            `,
         }),
     );
 
     it(
         'moves [(countryIsoCode)] to <input tuiInputPhoneInternational>',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-phone-international
-                    [(countryIsoCode)]="isoCode"
                     formControlName="phone"
+                    [(countryIsoCode)]="isoCode"
                 >
                     Phone
-                </tui-input-phone-international>`,
+                </tui-input-phone-international>
+            `,
         }),
     );
 
     it(
         'moves [countries] and [(countryIsoCode)] together',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-phone-international
-                    [countries]="allowedCountries"
-                    [(countryIsoCode)]="isoCode"
                     formControlName="phone"
+                    [countries]="allowedCountries"
                     [tuiTextfieldCleaner]="true"
+                    [(countryIsoCode)]="isoCode"
                 >
                     Phone
-                </tui-input-phone-international>`,
+                </tui-input-phone-international>
+            `,
         }),
     );
 

@@ -8,7 +8,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
@@ -55,5 +54,5 @@ export class TuiNotificationDirective {
 
     public readonly appearance = input(this.options.appearance);
     public readonly size = input(this.options.size);
-    public readonly icon = input<TuiStringHandler<string> | string>(this.options.icon);
+    public readonly icon = input(this.options.icon);
 }

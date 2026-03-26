@@ -18,7 +18,12 @@ export const [TUI_CARD_OPTIONS, tuiCardOptionsProvider] = tuiCreateOptions({
 
 @Component({
     template: '',
-    styleUrls: ['./card.style.less', './large.style.less'],
+    styleUrl: './card.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './large.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-card-large-${TUI_VERSION}`,

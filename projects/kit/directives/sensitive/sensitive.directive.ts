@@ -17,7 +17,11 @@ const rowsInSvg = 3;
 
 @Component({
     template: '',
-    styleUrl: './sensitive.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './sensitive.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-sensitive-${TUI_VERSION}`,
@@ -28,6 +32,7 @@ class Styles {}
     selector: '[tuiSensitive]',
     providers: [WaResizeObserverService],
     host: {
+        'data-tui-version': TUI_VERSION,
         '[style.--t-offset.px]': 'offset',
         '[style.--t-mask-height.px]': 'height()',
         '[class.tui-sensitive]': 'tuiSensitive()',

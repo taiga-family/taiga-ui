@@ -17,7 +17,7 @@ describe('ng-update migrate tui-pagination size', () => {
     it(
         'does not add TODO comment when no size attribute',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-pagination
                     [index]="10"
                     [length]="64"
@@ -30,12 +30,12 @@ describe('ng-update migrate tui-pagination size', () => {
     it(
         'adds TODO comment and removes [size] binding from tui-pagination',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-pagination
-                    [size]="'s'"
                     [index]="10"
                     [length]="64"
                     [sidePadding]="sidePadding"
+                    [size]="'s'"
                 />
             `,
         }),

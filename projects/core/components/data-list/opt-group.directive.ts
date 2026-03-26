@@ -1,9 +1,11 @@
 import {Directive, input} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Directive({
     selector: 'tui-opt-group',
     host: {
         role: 'group',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-label]': 'label() || ""',
     },
 })

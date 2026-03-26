@@ -3,15 +3,27 @@
 exports[`ng-update start/end instead of left/right replaces for [align] on input with tuiInputColor: test.html 1`] = `
 {
   "0. Before": "
-                <input tuiInputColor [align]="'right'" />
-                <input tuiInputColor [align]="'left'" />
+                <input
+                    tuiInputColor
+                    [align]="'right'"
+                />
+                <input
+                    tuiInputColor
+                    [align]="'left'"
+                />
 
                 <input [align]="'right'" />
                 <input [align]="'left'" />
             ",
   "1. After": "
-                <input tuiInputColor [align]="'end'" />
-                <input tuiInputColor [align]="'start'" />
+                <input
+                    tuiInputColor
+                    [align]="'end'"
+                />
+                <input
+                    tuiInputColor
+                    [align]="'start'"
+                />
 
                 <input [align]="'right'" />
                 <input [align]="'left'" />
@@ -73,14 +85,32 @@ exports[`ng-update start/end instead of left/right replaces for [tuiComment]: te
 exports[`ng-update start/end instead of left/right replaces for [tuiDropdownAlign]: test.html 1`] = `
 {
   "0. Before": "
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'right'"></div>
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'center'"></div>
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'left'"></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'right'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'center'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'left'"
+                ></div>
             ",
   "1. After": "
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'end'"></div>
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'center'"></div>
-                <div [tuiDropdown]="dropdown" [tuiDropdownAlign]="'start'"></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'end'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'center'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'start'"
+                ></div>
             ",
 }
 `;
@@ -88,32 +118,104 @@ exports[`ng-update start/end instead of left/right replaces for [tuiDropdownAlig
 exports[`ng-update start/end instead of left/right replaces for [tuiHintDirection]: test.html 1`] = `
 {
   "0. Before": "
-                <div tuiHint [tuiHintDirection]="'bottom-left'"></div>
-                <div tuiHint [tuiHintDirection]="'bottom'"></div>
-                <div tuiHint [tuiHintDirection]="'bottom-right'"></div>
-                <div tuiHint [tuiHintDirection]="'top-left'"></div>
-                <div tuiHint [tuiHintDirection]="'top'"></div>
-                <div tuiHint [tuiHintDirection]="'top-right'"></div>
-                <div tuiHint [tuiHintDirection]="'left-top'"></div>
-                <div tuiHint [tuiHintDirection]="'left'"></div>
-                <div tuiHint [tuiHintDirection]="'left-bottom'"></div>
-                <div tuiHint [tuiHintDirection]="'right-top'"></div>
-                <div tuiHint [tuiHintDirection]="'right'"></div>
-                <div tuiHint [tuiHintDirection]="'right-bottom'"></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left-bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right-bottom'"
+                ></div>
             ",
   "1. After": "
-                <div tuiHint [tuiHintDirection]="'bottom-start'"></div>
-                <div tuiHint [tuiHintDirection]="'bottom'"></div>
-                <div tuiHint [tuiHintDirection]="'bottom-end'"></div>
-                <div tuiHint [tuiHintDirection]="'top-start'"></div>
-                <div tuiHint [tuiHintDirection]="'top'"></div>
-                <div tuiHint [tuiHintDirection]="'top-end'"></div>
-                <div tuiHint [tuiHintDirection]="'start-top'"></div>
-                <div tuiHint [tuiHintDirection]="'start'"></div>
-                <div tuiHint [tuiHintDirection]="'start-bottom'"></div>
-                <div tuiHint [tuiHintDirection]="'end-top'"></div>
-                <div tuiHint [tuiHintDirection]="'end'"></div>
-                <div tuiHint [tuiHintDirection]="'end-bottom'"></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-start'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-end'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-start'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-end'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'start-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'start'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'start-bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'end-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'end'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'end-bottom'"
+                ></div>
             ",
 }
 `;
@@ -137,8 +239,14 @@ exports[`ng-update start/end instead of left/right replaces for [vertical] on tu
                 <tui-tabs [vertical]="'right'" />
                 <tui-tabs [vertical]="'left'" />
 
-                <nav tuiTabs [vertical]="'right'" />
-                <nav tuiTabs [vertical]="'left'" />
+                <nav
+                    tuiTabs
+                    [vertical]="'right'"
+                />
+                <nav
+                    tuiTabs
+                    [vertical]="'left'"
+                />
 
                 <tui-item [vertical]="'right'" />
                 <tui-item [vertical]="'left'" />
@@ -147,8 +255,14 @@ exports[`ng-update start/end instead of left/right replaces for [vertical] on tu
                 <tui-tabs [vertical]="'end'" />
                 <tui-tabs [vertical]="'start'" />
 
-                <tui-tabs  [vertical]="'end'" />
-                <tui-tabs  [vertical]="'start'" />
+                <tui-tabs
+                    
+                    [vertical]="'end'"
+                />
+                <tui-tabs
+                    
+                    [vertical]="'start'"
+                />
 
                 <tui-item [vertical]="'right'" />
                 <tui-item [vertical]="'left'" />
@@ -159,14 +273,26 @@ exports[`ng-update start/end instead of left/right replaces for [vertical] on tu
 exports[`ng-update start/end instead of left/right replaces for align on input with tuiInputColor: test.html 1`] = `
 {
   "0. Before": "
-                <input tuiInputColor align="right" />
-                <input tuiInputColor align="left" />
+                <input
+                    align="right"
+                    tuiInputColor
+                />
+                <input
+                    align="left"
+                    tuiInputColor
+                />
                 <input align="right" />
                 <input align="left" />
             ",
   "1. After": "
-                <input tuiInputColor align="end" />
-                <input tuiInputColor align="start" />
+                <input
+                    align="end"
+                    tuiInputColor
+                />
+                <input
+                    align="start"
+                    tuiInputColor
+                />
                 <input align="right" />
                 <input align="left" />
             ",
@@ -325,14 +451,32 @@ exports[`ng-update start/end instead of left/right replaces for tuiComment: test
 exports[`ng-update start/end instead of left/right replaces for tuiDropdownAlign: test.html 1`] = `
 {
   "0. Before": "
-                <div tuiDropdownAlign="right" [tuiDropdown]="dropdown"></div>
-                <div tuiDropdownAlign="center" [tuiDropdown]="dropdown"></div>
-                <div tuiDropdownAlign="left" [tuiDropdown]="dropdown"></div>
+                <div
+                    tuiDropdownAlign="right"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="center"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="left"
+                    [tuiDropdown]="dropdown"
+                ></div>
             ",
   "1. After": "
-                <div tuiDropdownAlign="end" [tuiDropdown]="dropdown"></div>
-                <div tuiDropdownAlign="center" [tuiDropdown]="dropdown"></div>
-                <div tuiDropdownAlign="start" [tuiDropdown]="dropdown"></div>
+                <div
+                    tuiDropdownAlign="end"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="center"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="start"
+                    [tuiDropdown]="dropdown"
+                ></div>
             ",
 }
 `;
@@ -389,8 +533,14 @@ exports[`ng-update start/end instead of left/right replaces for vertical on tui-
                 <tui-tabs vertical="right" />
                 <tui-tabs vertical="left" />
 
-                <nav tuiTabs vertical="right" />
-                <nav tuiTabs vertical="left" />
+                <nav
+                    tuiTabs
+                    vertical="right"
+                />
+                <nav
+                    tuiTabs
+                    vertical="left"
+                />
 
                 <tui-item vertical="right" />
                 <tui-item vertical="left" />
@@ -399,8 +549,14 @@ exports[`ng-update start/end instead of left/right replaces for vertical on tui-
                 <tui-tabs vertical="end" />
                 <tui-tabs vertical="start" />
 
-                <tui-tabs  vertical="end" />
-                <tui-tabs  vertical="start" />
+                <tui-tabs
+                    
+                    vertical="end"
+                />
+                <tui-tabs
+                    
+                    vertical="start"
+                />
 
                 <tui-item vertical="right" />
                 <tui-item vertical="left" />

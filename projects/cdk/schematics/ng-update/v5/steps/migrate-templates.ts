@@ -35,8 +35,10 @@ import {migrateAxes} from './templates/migrate-axes';
 import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-single';
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
+import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
+import {migrateInput} from './templates/migrate-input';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
@@ -47,11 +49,13 @@ import {migrateInputPhoneInternational} from './templates/migrate-input-phone-in
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
+import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
+import {migrateTextarea} from './templates/migrate-textarea';
 
 export function getAction<T>({
     action,
@@ -103,7 +107,9 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputYear,
         migrateInputPhone,
         migrateInputDateRange,
+        migrateMultiSelect,
         migrateSelect,
+        migrateComboBox,
         migrateAccordionItem,
         migrateAvatarToDirective,
         migrateTuiNotification,
@@ -118,6 +124,8 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateCloseable,
         migrateSidebar,
         migrateFormatPhonePipe,
+        migrateInput,
+        migrateTextarea,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});

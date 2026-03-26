@@ -1,25 +1,28 @@
+<button
+    appearance="action"
+    iconStart="@tui.chevron-left"
+    tuiIconButton
+    type="button"
+    [disabled]="index() === 0"
+    (click)="carousel.prev()"
+>
+    Previous
+</button>
 <tui-carousel
-    [duration]="4000"
+    #carousel
+    [max]="5"
+    [min]="0"
     [(index)]="index"
 >
-    @for (item of items; track $index) {
-        <div
-            *tuiItem
-            class="item"
-        >
-            <h2 class="title">{{ item }}</h2>
-            <!-- TODO: update documentation here -->
-            <a
-                tuiButton
-                [attr.href]="`https://en.wikipedia.org/wiki/${item}`"
-            >
-                Wiki
-            </a>
-        </div>
-    }
+    <ng-container *tuiItem="let index">{{ index }}</ng-container>
 </tui-carousel>
-
-<tui-pager
-    [count]="items.length"
-    [index]="index"
-/>
+<button
+    appearance="action"
+    iconStart="@tui.chevron-right"
+    tuiIconButton
+    type="button"
+    [disabled]="index() === 5"
+    (click)="carousel.next()"
+>
+    Next
+</button>

@@ -12,13 +12,19 @@ exports[`ng-update avatar complex templates: test.html 1`] = `
   "0. Before": "
                 <section *ngFor="let size of sizes">
                     <tui-avatar [size]="size">{{ size | uppercase }}</tui-avatar>
-                    <tui-avatar src="@tui.user" [size]="size" />
+                    <tui-avatar
+                        src="@tui.user"
+                        [size]="size"
+                    />
                 </section>
             ",
   "1. After": "
                 <section *ngFor="let size of sizes">
                     <span tuiAvatar [size]="size">{{ size | uppercase }}</span>
-                    <span tuiAvatar="@tui.user" [size]="size" ></span>
+                    <span tuiAvatar="@tui.user"
+                       
+                        [size]="size"
+                    ></span>
                 </section>
             ",
 }

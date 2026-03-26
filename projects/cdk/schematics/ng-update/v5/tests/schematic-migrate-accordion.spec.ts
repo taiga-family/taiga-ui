@@ -21,25 +21,32 @@ describe('ng-update accordion item', () => {
     it(
         'migrates nested accordion items',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-accordion>
                     <tui-accordion-item [open]="true">
                         Level 1
                         <ng-template tuiAccordionItemContent>
-                            Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular entities
+                            Development kit consisting of the low level tools and
+                            abstractions used to develop Taiga UI Angular entities
 
                             <tui-accordion>
-                                <tui-accordion-item [open]="true" borders="top-bottom" class="some">
+                                <tui-accordion-item
+                                    borders="top-bottom"
+                                    class="some"
+                                    [open]="true"
+                                >
                                     Level 2
                                     <ng-template tuiAccordionItemContent>
-                                        The main set of components used to build Taiga UI based Angular applications
+                                        The main set of components used to build Taiga UI
+                                        based Angular applications
 
                                         <tui-accordion>
                                             <tui-accordion-item [open]="true">
                                                 Level 3
                                                 <ng-template tuiAccordionItemContent>
-                                                    Basic elements needed to develop components, directives and more using Taiga UI
-                                                    design system
+                                                    Basic elements needed to develop
+                                                    components, directives and more using
+                                                    Taiga UI design system
                                                 </ng-template>
                                             </tui-accordion-item>
                                         </tui-accordion>
@@ -56,7 +63,7 @@ describe('ng-update accordion item', () => {
     it(
         'replaces standalone accordion item with new structure',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-accordion-item>
                     Taiga UI lazy
                     <ng-template tuiAccordionItemContent>I'm lazy content</ng-template>
@@ -73,7 +80,7 @@ describe('ng-update accordion item', () => {
     it(
         'migrates standalone tui-expand content template',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-expand [expanded]="expanded">
                     <ng-template tuiExpandContent>
                         <p>NOBODY expects the Spanish Inquisition!</p>

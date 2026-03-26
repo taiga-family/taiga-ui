@@ -24,7 +24,7 @@ import {
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {CHAR_PLUS, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
+import {CHAR_PLUS, TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {
     TuiAutoFocus,
@@ -71,7 +71,11 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiTitle,
     ],
     templateUrl: './input-phone-international.template.html',
-    styleUrl: './input-phone-international.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-phone-international.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -102,7 +106,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly change = effect(() => this.onChange(this.unmask(this.masked())));
-    protected readonly search = signal<string>('');
+    protected readonly search = signal('');
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected readonly masked = tuiValue(this.el);
     protected readonly mask = tuiMaskito(

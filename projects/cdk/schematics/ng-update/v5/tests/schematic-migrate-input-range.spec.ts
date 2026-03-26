@@ -21,7 +21,7 @@ describe('ng-update input-range', () => {
     it(
         'removes label[tuiLabel] inside tui-input-range',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-range
                     [max]="max"
                     [min]="min"
@@ -37,16 +37,14 @@ describe('ng-update input-range', () => {
     it(
         'removes label[tuiLabel] inside tui-input-range (with spaces)',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-input-range
                     [max]="max"
                     [min]="min"
                     [tuiNumberFormat]="numberFormat"
                     [(ngModel)]="value"
                 >
-                    <label tuiLabel>
-                        Type number like a German
-                    </label>
+                    <label tuiLabel>Type number like a German</label>
                 </tui-input-range>
             `,
         }),

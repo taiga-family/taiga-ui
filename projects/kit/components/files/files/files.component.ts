@@ -9,6 +9,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
@@ -19,7 +20,11 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
     selector: 'tui-files',
     imports: [NgTemplateOutlet, TuiButton, TuiExpand, TuiGroup],
     templateUrl: './files.template.html',
-    styleUrl: './files.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './files.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

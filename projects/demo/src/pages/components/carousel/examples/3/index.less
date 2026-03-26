@@ -1,19 +1,20 @@
-.wrapper {
+@import '@taiga-ui/styles/utils';
+
+:host {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 1rem;
+    inline-size: 12rem;
 }
 
-.carousel {
-    inline-size: 25rem;
-    flex-shrink: 0;
-}
+.progress {
+    .transition(all);
 
-.item {
-    padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
-    border-radius: 1rem;
-}
+    inline-size: 1rem;
 
-.title {
-    margin: 0 0 1rem;
+    &:not(&_active) {
+        inline-size: 0.5rem;
+        color: transparent;
+    }
 }
