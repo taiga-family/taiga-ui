@@ -37623,7 +37623,7 @@ Indeterminate state expresses an unspecified amount of wait time. If there is no
 
 **Template:**
 ```html
-&lt;progress max=&quot;100&quot; tuiProgressBar &gt;&lt;/progress&gt;
+&lt;progress tuiProgressBar&gt;&lt;/progress&gt;
 ```
 **TypeScript:**
 ```ts
@@ -58863,9 +58863,11 @@ export default class Page {
     protected readonly colorsVariants: readonly string[][] = [
         [&#039;var(--tui-background-accent-1)&#039;],
         [&#039;#39b54a&#039;, &#039;#ffd450&#039;, &#039;#ffd450&#039;, &#039;#fcc521&#039;, &#039;#fab619&#039;, &#039;#f8a34d&#039;, &#039;#e01f19&#039;],
-        new Array(20)
-            .fill(&#039;&#039;)
-            .map((_, index) =&gt; `var(--tui-chart-categorical-0${index + 1})`),
+        Array.from(
+            {length: 20},
+            (_, index) =&gt;
+                `var(--tui-chart-categorical-${String(index + 1).padStart(2, &#039;0&#039;)})`,
+        ),
     ];
 
     protected colors: string[] = this.colorsVariants[0] ?? [];
