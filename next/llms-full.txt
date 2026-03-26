@@ -11579,13 +11579,12 @@ export default class Example {
         {id: 999, name: 'Graham Chapman'},
     ];
 
-    protected readonly stringify: TuiStringHandler<Python | number> = (item) => {
-        return typeof item === 'number'
+    protected readonly stringify: TuiStringHandler<Python | number> = (item) =>
+        typeof item === 'number'
             ? // Number-type form control value => human-readable text inside textfield
               (this.items.find(({id}) => id === item)?.name ?? '')
             : // for `tuiFilterByInput` pipe
               item.name;
-    };
 
     protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
         const {name} = this.items.find((item) => item.id === id)!;
@@ -20902,7 +20901,7 @@ An input for uploading one or several files using native input file capabilities
 ### Example
 
 ```html
-<label tuiInputFiles>
+<label [tuiInputFiles]="size">
 <input #validator="tuiInputFilesValidator" tuiInputFiles [accept]="accept" [formControl]="control" [invalid]="controlDoc.invalid" [maxFileSize]="maxFileSize" [multiple]="multiple" [tuiDisabled]="controlDoc.disabled" (reject)="updateRejected($event); reject.emitEvent($event)" />
 </label>
 <tui-files class="tui-space_top-2" [max]="maxFilesCount" [(expanded)]="expanded" > @for (file of files$ | async; track file) { <tui-file *tuiItem [file]="file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" /> } @for (file of rejected; track file) { <tui-file *tuiItem state="error" [file]="(file | tuiFileRejected: validator | async) || file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" /> } </tui-files>
@@ -20915,6 +20914,7 @@ An input for uploading one or several files using native input file capabilities
 | [accept] | `string` | Allowed formats |
 | [maxFileSize] | `number` | Max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
 | [multiple] | `boolean` | Allows to upload several files |
+| [tuiInputFiles] | `TuiSizeL` | Drop zone size |
 
 ### API - Outputs
 
@@ -21186,16 +21186,13 @@ export default class Example {
 ```html
 <label tuiInputFiles>
 <input tuiInputFiles [formControl]="control" />
-<ng-template let-dragged> @if (dragged) { <div class="content">
-<div appearance="secondary" size="l" tuiAvatar="@tui.droplet" ></div>
+<ng-template let-dragged> @if (dragged) { <div appearance="secondary" size="l" tuiAvatar="@tui.droplet" ></div>
 <div> Drop it like it's hot! <br />
 <br />
-</div>
-</div> } @else { <div class="content">
-<div appearance="secondary" size="l" tuiAvatar="@tui.cloud-upload" ></div>
+</div> } @else { <div appearance="secondary" size="l" tuiAvatar="@tui.cloud-upload" ></div>
 <div> Drag and drop file here or <a tuiLink>click to upload</a>
 </div>
-</div> } </ng-template>
+<div class="types">PNG, JPG, JPEG, PNG, etc</div> } </ng-template>
 </label>
 <tui-files class="tui-space_top-4">
 <tui-file [file]="file" [leftContent]="content" >
@@ -21230,13 +21227,14 @@ export default class Example {
 ```
 **LESS:**
 ```less
-.content {
-    display: flex;
-    block-size: 10rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+:host {
+    display: block;
+    min-inline-size: 25rem;
+}
+
+.types {
+    color: var(--tui-text-secondary);
+    font-size: 0.6875rem;
 }
 ```
 
@@ -21347,7 +21345,7 @@ import {map, startWith} from 'rxjs';
     ],
 })
 export default class Example {
-    protected readonly control = new FormControl<File[]>([
+    protected readonly control = new FormControl([
         new File(['mock zip content'], 'valid.zip', {type: 'application/zip'}),
         new File(['Lorem ipsum'], 'wrong.txt', {type: 'application/txt'}),
     ]);
@@ -31979,7 +31977,7 @@ export default class Example {
         },
     ];
 
-    protected readonly index$$ = new BehaviorSubject<number>(0);
+    protected readonly index$$ = new BehaviorSubject(0);
 
     protected readonly item$ = this.index$$.pipe(
         map((index) => this.items[index]),
