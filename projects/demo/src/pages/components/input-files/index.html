@@ -48,7 +48,7 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <label tuiInputFiles>
+            <label [tuiInputFiles]="size">
                 <input
                     #validator="tuiInputFilesValidator"
                     tuiInputFiles
@@ -118,6 +118,15 @@
                 (valueChange)="multipleChange($event ?? false)"
             >
                 Allows to upload several files
+            </tr>
+            <tr
+                name="[tuiInputFiles]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Drop zone size
             </tr>
             <tr
                 #reject
