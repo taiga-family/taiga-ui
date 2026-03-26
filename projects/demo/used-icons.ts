@@ -118,4 +118,5 @@ export const TUI_USED_ICONS = [
     '@tui.folder',
     '@tui.chevron-up',
     '@tui.pause',
+    '@tui.rss',
 ] as const;
