@@ -16,5 +16,6 @@ export default class Page {
         'separate decimal part',
         'options (without DI)',
     ];
+
     protected readonly routes = DemoRoute;
 }
