@@ -132,3 +132,15 @@
         </dl>
     </tr>
 }
+
+@if (!hiddenOptions().includes('negativePattern')) {
+    <tr
+        name="[negativePattern]"
+        tuiDocAPIItem
+        type="'minusFirst' | 'prefixFirst'"
+        [items]="['minusFirst', 'prefixFirst']"
+        [(value)]="negativePattern"
+    >
+        Order of prefix and minus sign
+    </tr>
+}

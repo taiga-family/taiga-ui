@@ -78,23 +78,38 @@
                         <code>prefix</code>
                         /
                         <code>postfix</code>
-                        parameters to set non-removable text before\u00A0/\u00A0after the number.
-                        <br />
-                        To get currency symbol use
-                        <a
-                            target="_blank"
-                            tuiLink
-                            [routerLink]="routes.Currency"
-                        >
-                            <strong>Currency</strong>
-                        </a>
-                        pipe.
+                        parameters to set non-removable text before / after the number.
+
+                        <p>
+                            For currency symbols, use the
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.Currency"
+                            >
+                                <strong>Currency</strong>
+                            </a>
+                            pipe.
+                        </p>
+
+                        <p>
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.NumberFormat"
+                            >
+                                <strong>TuiNumberFormat</strong>
+                            </a>
+                            with
+                            <code>negativePattern: 'minusFirst'</code>
+                            allow to position the minus sign before the currency symbol.
+                        </p>
                     }
                     @case (5) {
                         A positive value of the
                         <code>step</code>
-                        property enables side buttons to increase\u00A0/\u00A0decrease the number by the specified step
-                        value. Additionally, the
+                        property enables side buttons to increase / decrease the number by the specified step value.
+                        Additionally, the
                         <code>ArrowUp</code>
                         /
                         <code>ArrowDown</code>
@@ -109,7 +124,7 @@
                         >
                             <strong>FluidTypography</strong>
                         </a>
-                        directive to adjusts font size for the textfield value to fit in the textfield\u00A0box.
+                        directive to adjusts font size for the textfield value to fit in the textfield box.
                     }
                     @case (8) {
                         <code>TuiValueTransformer</code>
@@ -211,6 +226,7 @@
                             precision: numberFormatDoc.precision(),
                             decimalMode: numberFormatDoc.decimalMode(),
                             rounding: numberFormatDoc.rounding(),
+                            negativePattern: numberFormatDoc.negativePattern(),
                         }"
                     />
                 </tui-textfield>
