@@ -14,16 +14,21 @@ import {
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BUTTON_OPTIONS} from './button.options';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {tuiSetAttributes} from './set-attributes';
 
 @Component({
     standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/button.less";'],
+    styles: [
+        `
+            @version: '${TUI_VERSION}';
+            @import '@taiga-ui/core/styles/components/button.less';
+        `,
+    ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-button',
-    },
+    exportAs: `tui-button-${TUI_VERSION}`,
 })
 class TuiButtonStyles {}
 
@@ -38,8 +43,8 @@ class TuiButtonStyles {}
 })
 export class TuiButton {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
-
     protected readonly nothing = tuiWithStyles(TuiButtonStyles);
+    protected readonly attrs = tuiSetAttributes();
 
     @Input()
     public size = this.options.size;
