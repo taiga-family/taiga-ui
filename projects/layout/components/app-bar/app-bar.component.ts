@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
@@ -23,11 +24,15 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
     selector: 'tui-app-bar',
     imports: [AsyncPipe, TuiFade],
     templateUrl: './app-bar.template.html',
-    styleUrl: './app-bar.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './app-bar.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_APP_BAR_PROVIDERS,
-    host: {'[attr.data-size]': 'size()'},
+    host: {'data-tui-version': TUI_VERSION, '[attr.data-size]': 'size()'},
 })
 export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');

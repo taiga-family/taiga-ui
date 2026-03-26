@@ -17,7 +17,11 @@ const OPTIONS = {duration: 1500, iterations: Infinity};
 
 @Component({
     template: '',
-    styleUrl: './shimmer.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './shimmer.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-shimmer-${TUI_VERSION}`,

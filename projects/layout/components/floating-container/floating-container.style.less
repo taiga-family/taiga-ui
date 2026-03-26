@@ -20,7 +20,7 @@
  * @see-also
  * Block, SheetDialog
  */
-[tuiFloatingContainer] {
+[tuiFloatingContainer]:where(*&) {
     .transition(inset-block-end);
 
     position: sticky;
@@ -62,6 +62,6 @@
     }
 }
 
-tui-sheet-dialog [tuiFloatingContainer] {
+tui-sheet-dialog [tuiFloatingContainer]:where(*&) {
     margin-block-end: ~'calc(-1* max(1.5rem, env(safe-area-inset-bottom)))';
 }

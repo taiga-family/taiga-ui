@@ -12,7 +12,12 @@ import {TuiSurface} from '@taiga-ui/layout/components/surface';
 
 @Component({
     template: '',
-    styleUrls: ['./card.style.less', './medium.style.less'],
+    styleUrl: './card.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './medium.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-card-medium-${TUI_VERSION}`,

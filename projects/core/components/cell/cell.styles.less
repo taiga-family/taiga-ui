@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiCell] {
+[tuiCell]:where(*&) {
     --t-pad: 0.125rem 1rem;
     --t-radius: var(--tui-radius-s);
 
@@ -223,16 +223,16 @@
 }
 
 @media @tui-mouse {
-    a[tuiCell]:hover,
-    button[tuiCell]:hover,
-    label[tuiCell]:hover {
+    a[tuiCell]:where(*&):hover,
+    button[tuiCell]:where(*&):hover,
+    label[tuiCell]:where(*&):hover {
         &:not(:disabled, [data-state='disabled']) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;
         }
     }
 
-    label[tuiCell]:hover {
+    label[tuiCell]:where(*&):hover {
         &:not(:has(input:disabled)) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;

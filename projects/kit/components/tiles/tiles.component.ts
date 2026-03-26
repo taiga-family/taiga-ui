@@ -13,6 +13,7 @@ import {
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounce, filter, map, Subject, timer} from 'rxjs';
 
@@ -21,7 +22,11 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
 @Component({
     selector: 'tui-tiles',
     template: '<ng-content />',
-    styleUrl: './tiles.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './tiles.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -32,7 +37,7 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
             useValue: {childList: true},
         },
     ],
-    host: {'(pointerleave.zoneless)': 'rearrange()'},
+    host: {'data-tui-version': TUI_VERSION, '(pointerleave.zoneless)': 'rearrange()'},
 })
 export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();

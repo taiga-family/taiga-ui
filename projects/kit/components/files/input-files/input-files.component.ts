@@ -5,6 +5,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -25,10 +26,15 @@ import {TuiInputFilesDirective} from './input-files.directive';
             {{ text }}
         </span>
     `,
-    styleUrl: './input-files.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-files.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        'data-tui-version': TUI_VERSION,
         '(dragover.prevent.zoneless)': '0',
         '(drop.prevent)': 'onDropped($event)',
         '(dragenter)': 'onDrag($event.dataTransfer)',

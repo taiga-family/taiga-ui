@@ -10,7 +10,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './progress-fixed-gradient.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './progress-fixed-gradient.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-fixed-gradient-${TUI_VERSION}`,

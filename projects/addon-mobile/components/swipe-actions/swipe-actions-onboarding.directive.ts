@@ -10,7 +10,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './swipe-actions-onboarding.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './swipe-actions-onboarding.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-swipe-actions-${TUI_VERSION}`,

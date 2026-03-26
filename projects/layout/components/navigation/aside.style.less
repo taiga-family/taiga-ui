@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-aside[tuiNavigationAside] {
+aside[tuiNavigationAside]:where(*&) {
     .transition(width);
 
     position: sticky;
@@ -96,7 +96,7 @@ aside[tuiNavigationAside] {
     }
 }
 
-[tuiAsideItem][tuiAsideItem] {
+[tuiAsideItem][tuiAsideItem]:where(*&) {
     inline-size: 100%;
     justify-content: flex-start;
     gap: 0.625rem;

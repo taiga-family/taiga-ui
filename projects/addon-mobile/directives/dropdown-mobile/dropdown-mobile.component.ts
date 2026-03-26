@@ -7,6 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
@@ -27,11 +28,16 @@ const GAP = 16;
             </ng-container>
         </div>
     `,
-    styleUrl: './dropdown-mobile.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './dropdown-mobile.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated, TuiActiveZone],
     host: {
+        'data-tui-version': TUI_VERSION,
         '(pointerdown.prevent)': '0',
         '(document:click.zoneless.capture)': 'onClick($event)',
         '(window>scroll.zoneless.capture)': 'refresh()',
@@ -57,6 +63,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     public ngOnDestroy(): void {
         this.observer.disconnect();
         this.doc.body.classList.remove('t-dropdown-mobile');
+        this.doc.body.removeAttribute('data-tui-version');
         this.doc.body.style.removeProperty('--t-root-top');
         this.doc.documentElement.scrollTop = this.scrollTop;
         this.doc.documentElement.style.removeProperty('scroll-behavior');
@@ -99,6 +106,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         this.el.style.setProperty('top', `calc(${tuiPx(offsetTop)} + ${offset})`);
         this.el.style.setProperty('height', `calc(${tuiPx(height)} - ${offset})`);
         this.doc.body.classList.add('t-dropdown-mobile');
+        this.doc.body.setAttribute('data-tui-version', TUI_VERSION);
         this.doc.body.style.setProperty('--t-root-top', top);
     }
 

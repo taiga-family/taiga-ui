@@ -24,7 +24,11 @@ const BUFFER = 1; // buffer for rounding issues
 
 @Component({
     template: '',
-    styleUrl: './fade.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './fade.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-fade-${TUI_VERSION}`,
@@ -42,6 +46,7 @@ class Styles {}
         },
     ],
     host: {
+        'data-tui-version': TUI_VERSION,
         '[style.line-height]': 'lineHeight()',
         '[style.--t-line-height]': 'lineHeight()',
         '[style.--t-fade-size]': 'size()',

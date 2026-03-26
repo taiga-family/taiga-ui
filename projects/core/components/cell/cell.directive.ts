@@ -14,7 +14,11 @@ import {TUI_CELL_OPTIONS} from './cell.options';
 
 @Component({
     template: '',
-    styleUrl: './cell.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './cell.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-cell-${TUI_VERSION}`,
@@ -26,6 +30,7 @@ class Styles {}
     providers: [tuiButtonOptionsProvider({size: 's'})],
     host: {
         tuiCell: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size() || options.size || "l"',
         '[attr.data-height]': 'height()',
     },

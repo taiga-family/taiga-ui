@@ -24,7 +24,7 @@ import {
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {CHAR_PLUS, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
+import {CHAR_PLUS, TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {
     TuiAutoFocus,
@@ -71,7 +71,11 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiTitle,
     ],
     templateUrl: './input-phone-international.template.html',
-    styleUrl: './input-phone-international.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-phone-international.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
