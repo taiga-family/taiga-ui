@@ -108,7 +108,7 @@
         > ng-component > tui-app-bar {
             margin: calc(-1 * env(safe-area-inset-top)) -1rem 1rem;
             padding-block-start: env(safe-area-inset-top);
-            box-sizing: content-box;
+            box-sizing: content-box; /* This is necessary due to padding on webview */
         }
 
         > header,

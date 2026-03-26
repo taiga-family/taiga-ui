@@ -25,11 +25,9 @@ The first tick should start at the center of thumb to set correct position for a
     background-color: currentColor;
     box-shadow: none;
     border-radius: 50%;
-    block-size: @thumb-diameter;
+    block-size: calc(@thumb-diameter + @hitbox-padding);
     inline-size: @thumb-diameter;
-
-    /* Increase vertical hitbox by transparent borders */
-    box-sizing: content-box;
+    box-sizing: border-box;
     background-clip: content-box;
     border: calc(@hitbox-padding / 2) solid transparent;
     border-inline-start: 0;
