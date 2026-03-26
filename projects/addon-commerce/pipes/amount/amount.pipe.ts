@@ -14,8 +14,8 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 
 import {TUI_AMOUNT_OPTIONS} from './amount.options';
+import {type TuiAmountSign} from './amount.types';
 import {tuiFormatSignSymbol} from './amount.utils';
-import {TuiAmountSign} from './amount.types';
 
 const DEFAULT_PRECISION = 2;
 

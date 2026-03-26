@@ -9,6 +9,12 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['base', 'format', 'options', 'separate decimal part'];
+    protected readonly examples = [
+        'base',
+        'format',
+        'options (DI)',
+        'separate decimal part',
+        'options (without DI)',
+    ];
     protected readonly routes = DemoRoute;
 }
