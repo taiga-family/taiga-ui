@@ -20,7 +20,12 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 @Component({
     standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/button.less";'],
+    styles: [
+        `
+            @version: '${TUI_VERSION}';
+            @import '@taiga-ui/core/styles/components/button.less';
+        `,
+    ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-button-${TUI_VERSION}`,
