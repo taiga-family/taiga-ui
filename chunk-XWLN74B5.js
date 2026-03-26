@@ -1,0 +1,29 @@
+import"./chunk-HU6DUUP4.js";var a=`:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 16rem;
+}
+
+.incoming {
+    background: var(--tui-background-neutral-1);
+    border-end-start-radius: 0;
+    white-space: normal;
+
+    & + .incoming {
+        margin-block-start: -0.5rem;
+    }
+}
+
+.outgoing {
+    background: var(--tui-background-accent-1);
+    color: var(--tui-text-primary-on-accent-1);
+    align-self: flex-end;
+    white-space: normal;
+    border-end-end-radius: 0;
+
+    & + .outgoing {
+        margin-block-start: -0.5rem;
+    }
+}
+`;export{a as default};

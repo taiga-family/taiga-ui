@@ -56,11 +56,11 @@
 - [Button](https://taiga-ui.dev/components/button) — Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to button and a tags. When used as tuiIconButton don't forget to still put text label within the tag for accessibility.
 - [Button Group](https://taiga-ui.dev/components/button-group)
 - [Button Select](https://taiga-ui.dev/components/button-select) — ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
-- [Button X](https://taiga-ui.dev/components/button-x)
+- [Button X](https://taiga-ui.dev/components/button-x) — A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.
 - [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
-- [Carousel](https://taiga-ui.dev/components/carousel) — Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
+- [Carousel](https://taiga-ui.dev/components/carousel) — Generic swipeable container to scroll through content
 - [Cell](https://taiga-ui.dev/components/cell)
 - [Checkbox](https://taiga-ui.dev/components/checkbox) — A checkbox component that is able to imitate native control on mobile platforms. Use --tui-background-accent-2 CSS variable to customize color of native control emulation
 - [Chip](https://taiga-ui.dev/components/chip) — Chip component is used to display array data and can also be interactive depending on the tag used.
@@ -133,6 +133,7 @@
 - [Search](https://taiga-ui.dev/components/search) — A wrapping component for search or filtering the table
 - [Select](https://taiga-ui.dev/components/select) — Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element.
 - [Sheet Dialog](https://taiga-ui.dev/components/sheet-dialog) — A mobile draggable sheet dialog
+- [Shrink Wrap](https://taiga-ui.dev/components/shrink-wrap) — A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.
 - [Slider](https://taiga-ui.dev/components/slider) — Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs
 - [Slides](https://taiga-ui.dev/components/slides) — A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
 - [Status](https://taiga-ui.dev/components/status)
@@ -191,6 +192,7 @@
 - [Textfield Controller](https://taiga-ui.dev/directives/textfield-controller)
 - [Theme](https://taiga-ui.dev/directives/theme) — tuiTheme allows to set style for a DOM branch. By default dark and light are included. Importing is not required.
 - [Touchable](https://taiga-ui.dev/directives/touchable) — Directive to emulate native iOS touches
+- [Truncate](https://taiga-ui.dev/directives/truncate) — Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.
 - [Validator](https://taiga-ui.dev/directives/validator) — tuiValidator allows set validators for form control on the fly
 - [Value Changes](https://taiga-ui.dev/directives/value-changes) — This directive allows you to access reactive control or container value changes as an output
 - [Zoom](https://taiga-ui.dev/directives/zoom) — tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below

@@ -14,6 +14,11 @@
 ```text
   TuiCalendar, TuiCalendarOptions, TuiCalendarSheet, TuiCalendarSheetOptions, TuiCalendarSheetPipe, TuiCalendarSpin, TuiCalendarYear, TuiMarkerHandler, TuiOrderWeekDaysPipe
 ```
+### carousel
+
+```text
+  TuiCarousel, TuiCarouselComponent, TuiCarouselDirective
+```
 ### cell
 
 ```text
@@ -142,6 +147,11 @@
   TuiNumberFormat
 ```
 **Pipes:**
+### filter-by-input
+
+```text
+  TuiFilterByInputOptions, TuiFilterByInputPipe
+```
 ### format-number
 
 ```text
@@ -231,11 +241,6 @@
 
 ```text
   TuiCalendarRange, TuiDayRangePeriod
-```
-### carousel
-
-```text
-  TuiCarousel, TuiCarouselAutoscroll, TuiCarouselButtons, TuiCarouselComponent, TuiCarouselDirective, TuiCarouselScroll
 ```
 ### chip
 
@@ -474,6 +479,11 @@
 ```text
   TuiNativeSelect, TuiSelect, TuiSelectDirective, TuiSelectOption
 ```
+### shrink-wrap
+
+```text
+  TuiShrinkWrap, TuiShrinkWrapComponent, TuiShrinkWrapDirective
+```
 ### status
 
 ```text
@@ -617,11 +627,6 @@
 ```text
   TuiEmailsPipe
 ```
-### filter-by-input
-
-```text
-  TuiFilterByInputPipe
-```
 ### flag
 
 ```text
@@ -749,6 +754,11 @@
 
 ```text
   TuiTransitioned
+```
+### truncate
+
+```text
+  TuiTruncate, TuiTruncateService
 ```
 ### validator
 
@@ -1205,96 +1215,6 @@ import {AsyncPipe, DatePipe, DecimalPipe} from '@angular/common';
 
 ---
 
-# CDK Types Reference
-
-> **Critical**: Taiga UI uses its own immutable date/time types instead of native `Date`. All types below are imported
-> from `@taiga-ui/cdk` (except `TuiDayRangePeriod` which is from `@taiga-ui/kit`). Always consult the **Import Map**
-> section to verify the correct package.
-
----
-
-## TuiDay
-
-Immutable class representing a calendar date (without time). Month is **0-based** (0 = January).
-
-**Creation:**
-
-- `TuiDay.currentLocal()` — current date in local timezone
-- `new TuiDay(year, month, day)` — specific date (month is 0-based)
-- `TuiDay.fromLocalNativeDate(new Date())` — from native Date
-- `TuiDay.jsonParse('2024-01-15')` — from ISO string
-
-**Key methods:** `append({day, month, year})`, `toString()`, `toLocalNativeDate()`, `daySame()`, `dayBefore()`,
-`dayAfter()`, `dayLimit(min, max)`, `dayOfWeek()`
-
-## TuiMonth
-
-Immutable class representing a month and year. Extends `TuiYear`.
-
-**Creation:**
-
-- `TuiMonth.currentLocal()` — current month
-- `new TuiMonth(year, month)` — specific month (0-based)
-
-**Key methods:** `append({month, year})`, `monthSame()`, `monthBefore()`, `monthAfter()`, `daysCount`
-
-## TuiYear
-
-Immutable class representing a year.
-
-**Creation:** `new TuiYear(year)`
-
-**Key properties:** `isLeapYear`
-
-## TuiTime
-
-Immutable class representing time (hours, minutes, seconds, milliseconds).
-
-**Creation:**
-
-- `TuiTime.currentLocal()` — current time
-- `new TuiTime(hours, minutes, seconds, ms)` — specific time
-- `TuiTime.fromString('14:30')` — from string
-
-**Key methods:** `toString()`, `toAbsoluteMilliseconds()`
-
-## TuiDayRange
-
-Immutable class representing a date range (from-to). Dates are auto-sorted (start <= end).
-
-**Creation:** `new TuiDayRange(from, to)` where `from` and `to` are `TuiDay`
-
-**Key properties/methods:** `from`, `to`, `isSingleDay`, `daysCount()`, `daySame()`, `toString()`
-
-## TuiDayRangePeriod
-
-Predefined range preset with a label. Imported from `@taiga-ui/kit` (not `@taiga-ui/cdk`).
-
-**Creation:** `new TuiDayRangePeriod(range, 'Label')` where `range` is `TuiDayRange`
-
----
-
-## Common Mistakes with CDK Types
-
-- **Using plain numbers instead of type instances:** `year = 2024` will not have `.append()`. Use `new TuiYear(2024)`.
-- **Wrong event handler parameter type:** Output events emit CDK types (e.g. `TuiDay`, `TuiDayRange`), not DOM `Event`.
-- **Forgetting to import:** All CDK types must be explicitly imported from `@taiga-ui/cdk`.
-- **Mutating immutable objects:** These classes are immutable — methods like `append()` return new instances.
-
-## Quick Reference
-
-| Type                | Package         | Purpose       | Key API                                        |
-| ------------------- | --------------- | ------------- | ---------------------------------------------- |
-| `TuiDay`            | `@taiga-ui/cdk` | Calendar date | `currentLocal()`, `append()`, `daySame()`      |
-| `TuiMonth`          | `@taiga-ui/cdk` | Month + year  | `currentLocal()`, `append()`, `daysCount`      |
-| `TuiYear`           | `@taiga-ui/cdk` | Year          | `isLeapYear`                                   |
-| `TuiTime`           | `@taiga-ui/cdk` | Time          | `currentLocal()`, `fromString()`, `toString()` |
-| `TuiDayRange`       | `@taiga-ui/cdk` | Date range    | `from`, `to`, `daysCount()`, `isSingleDay`     |
-| `TuiDayRangePeriod` | `@taiga-ui/kit` | Range preset  | constructor(range, label)                      |
-
-
----
-
 # Common Mistakes
 
 > **These are the most frequent errors when using Taiga UI. Avoid them.**
@@ -1542,7 +1462,7 @@ npm install css-vars-ponyfill
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -1575,7 +1495,7 @@ export default class Example {
 }
 ```
 
-#### Custom
+#### Example 2
 
 **Template:**
 ```html
@@ -1695,7 +1615,7 @@ export default class Example {
 }
 ```
 
-#### Single
+#### Example 3
 
 **Template:**
 ```html
@@ -1720,7 +1640,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
-#### Eager and Lazy
+#### Example 4
 
 **Template:**
 ```html
@@ -1751,7 +1671,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
-#### Nested
+#### Example 5
 
 **Template:**
 ```html
@@ -1784,7 +1704,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
-#### Connected
+#### Example 6
 
 **Template:**
 ```html
@@ -1893,15 +1813,6 @@ import {TuiAccordion} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [
-        'Basic',
-        'Custom',
-        'Single',
-        'Eager and Lazy',
-        'Nested',
-        'Connected',
-    ];
-
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[2]!;
     protected closeOthers = true;
@@ -2033,8 +1944,8 @@ export default class Example {
 <button size="m" tuiButton type="button" (click)="open.set(true)" > Show TableBar </button>
 <tui-action-bar *tuiPopup="open()" size="s" >
 <span [style.width.%]="isMobile() ? 100 : null">Table bar opened</span>
-<button appearance="glass" iconStart="@tui.trash" tuiButton type="button" (click)="open.set(false)" > Remove </button>
-<button iconStart="@tui.x" tuiIconButton type="button" [appearance]="isMobile() ? 'glass' : 'icon'" (click)="open.set(false)" > Close </button>
+<button appearance="secondary-grayscale" iconStart="@tui.trash" tuiButton type="button" (click)="open.set(false)" > Remove </button>
+<button iconStart="@tui.x" tuiIconButton type="button" [appearance]="isMobile() ? 'secondary-grayscale' : 'icon'" (click)="open.set(false)" > Close </button>
 </tui-action-bar>
 ```
 **TypeScript:**
@@ -2053,7 +1964,7 @@ import {TuiActionBar} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
-    protected open = signal(false);
+    protected readonly open = signal(false);
 
     protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 }
@@ -2085,14 +1996,14 @@ import {TuiActionBar} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected open = signal(false);
+    protected readonly open = signal(false);
 }
 ```
 **LESS:**
 ```less
 tui-action-bar {
-    top: ~'max(1rem, env(safe-area-inset-top))';
-    bottom: unset;
+    inset-block-start: ~'max(1rem, env(safe-area-inset-top))';
+    inset-block-end: unset;
 }
 ```
 
@@ -2141,10 +2052,10 @@ Component for the main app header
 <button tuiButton tuiSlot="start" type="button" > Back </button> Taiga UI <button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 </tui-app-bar>
 <tui-app-bar>
-<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
@@ -2164,10 +2075,10 @@ Component for the main app header
 <tui-app-bar> Taiga UI <button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
 <tui-app-bar>
-<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 </tui-app-bar>
 <tui-app-bar>
-<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button> Taiga UI <a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button> Taiga UI <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
@@ -2286,12 +2197,12 @@ tui-app-bar {
 <tui-app-bar>
 <button tuiAppBarBack tuiSlot="start" type="button" > Back </button>
 <label tuiFade tuiTitle > Taiga UI — Components library </label>
-<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 </tui-app-bar>
 <tui-app-bar>
 <button iconStart="@tui.x" title="Settings" tuiIconButton tuiSlot="start" type="button" ></button>
 <label tuiTitle>Taiga UI</label>
-<a iconStart="@tui.user" title="User" tuiIconButton tuiSlot="end" ></a>
+<button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
@@ -2484,8 +2395,8 @@ export default class Example {
 
 tui-app-bar {
     position: sticky;
-    top: -1px;
     z-index: 1;
+    inset-block-start: -1px;
     background: var(--tui-background-base);
 }
 
@@ -5202,7 +5113,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 export default class Example {
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected size = computed<TuiSizeL>(() =>
+    protected readonly size = computed<TuiSizeL>(() =>
         this.breakpoint() === 'mobile' ? 'm' : 'l',
     );
 }
@@ -5525,7 +5436,7 @@ A non-modal draggable sheet
 ```
 **TypeScript:**
 ```ts
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -5550,15 +5461,14 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiBottomSheet, {read: ElementRef})
-    private readonly sheet?: ElementRef<HTMLElement>;
+    private readonly sheet = viewChild(TuiBottomSheet, {read: ElementRef<HTMLElement>});
 
     protected messages = ['Check that awesome bottom sheet out!'];
     protected value = '';
 
     protected onClick(message: string): void {
         this.messages = this.messages.concat(message);
-        this.sheet?.nativeElement.scrollTo({top: 0, behavior: 'smooth'});
+        this.sheet()?.nativeElement.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     protected onSubmit(): void {
@@ -5648,7 +5558,7 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, type ElementRef, ViewChild} from '@angular/core';
+import {Component, type ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
@@ -5663,8 +5573,7 @@ import {TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    @ViewChild('buttons')
-    protected readonly button?: ElementRef<HTMLElement>;
+    protected readonly button = viewChild<ElementRef<HTMLElement>>('buttons');
 
     protected readonly stops = ['112px'] as const;
 
@@ -5673,7 +5582,7 @@ export default class Example {
         const top = Math.min(scrollTop, clientHeight - offset);
         const transform = `translate3d(0, ${-top}px, 0)`;
 
-        this.button?.nativeElement.style.setProperty('transform', transform);
+        this.button()?.nativeElement.style.setProperty('transform', transform);
     }
 }
 ```
@@ -5780,9 +5689,9 @@ export default class Example {
 
 .header {
     position: sticky;
-    top: 2.25rem;
     z-index: 1;
     display: flex;
+    inset-block-start: 2.25rem;
     flex-direction: column;
     gap: 1rem;
     font: var(--tui-typography-heading-h5);
@@ -6496,33 +6405,35 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-carousel [draggable]="true" [itemsCount]="1" [(index)]="index" (shift)="opacity = $event" > @for (item of items; track item) { <div *tuiItem tuiCardMedium class="card" [style.background]="item.gradient" >
-<h2 tuiTitle> BANK <span tuiSubtitle>{{ item.title }}</span>
+<tui-carousel [max]="2" [min]="0" [(index)]="index" (scroll)="onScroll($any($event.target))" >
+<div *tuiItem="let index" tuiCardMedium tuiTheme="dark" [style.background]="items[index]?.gradient" >
+<h2 tuiTitle> BANK <span tuiSubtitle>{{ items[index]?.title }}</span>
 </h2>
-<div tuiBadge class="money" >
-<tui-icon icon="@tui.wallet" /> {{ item.content }} </div>
-</div> } </tui-carousel>
-<tui-pager [count]="items.length" [index]="index" />
-<div tuiButtonGroup [style.background-color]="items[index]?.color" >
-<tui-elastic-container [style.opacity]="opacity * 2"> @if (index === 0) { <button type="button">
+<div tuiBadge>
+<tui-icon icon="@tui.wallet" /> {{ items[index]?.content }} </div>
+</div>
+</tui-carousel>
+<tui-pager [count]="items.length" [index]="effective()" />
+<div tuiButtonGroup tuiTheme="dark" [style.background-color]="items[effective()]?.color" >
+<tui-elastic-container [style.opacity]="opacity() * 2"> @switch (effective()) { @case (0) { <button type="button">
 <tui-icon icon="@tui.circle-plus" /> Create a payment </button>
 <button type="button">
 <tui-icon icon="@tui.circle-plus" /> Pay the bill </button>
 <button type="button">
-<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @if (index === 1) { <button type="button">
-<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @if (index === 2) { <button type="button">
+<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @case (1) { <button type="button">
+<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } @case (2) { <button type="button">
 <tui-icon icon="@tui.circle-plus" /> Create a payment </button>
 <button type="button">
-<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } </tui-elastic-container>
+<tui-icon icon="@tui.circle-plus" /> Remove from favorites </button> } } </tui-elastic-container>
 </div>
 ```
 **TypeScript:**
 ```ts
-import {Component} from '@angular/core';
+import {Component, linkedSignal, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiCarousel, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiBadge, TuiButtonGroup, TuiPager} from '@taiga-ui/kit';
 import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
 
 @Component({
@@ -6542,9 +6453,9 @@ import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected index = 0;
-    protected opacity = 1;
-
+    protected readonly index = signal(1);
+    protected readonly opacity = signal(1);
+    protected readonly effective = linkedSignal(this.index);
     protected readonly items = [
         {
             title: 'RUB Account',
@@ -6565,6 +6476,16 @@ export default class Example {
             color: 'rgb(158 178 129)',
         },
     ];
+
+    protected onScroll({scrollLeft, clientWidth}: HTMLElement): void {
+        const scrolled = ((Math.abs(scrollLeft) - clientWidth) / clientWidth) % 1;
+        const progress = this.index() || !scrolled ? scrolled : 1 + scrolled;
+
+        if (progress) {
+            this.opacity.set(4 * Math.abs(Math.abs(progress) - 0.5));
+            this.effective.set(this.index() + Math.round(progress));
+        }
+    }
 }
 ```
 **LESS:**
@@ -6583,27 +6504,24 @@ export default class Example {
     }
 }
 
-[tuiButtonGroup] {
-    button {
-        color: #fff;
-    }
+[tuiButtonGroup] button {
+    color: var(--tui-text-primary);
 }
 
-.card {
-    inline-size: 100%;
+[tuiCardMedium] {
+    inline-size: calc(100% - 3rem);
     padding: 0.75rem;
-    color: #fff;
     block-size: 8rem;
-}
-
-.money {
-    background: #ffdd2d;
-    color: #333;
+    color: var(--tui-text-primary);
 }
 
 tui-pager {
-    margin: 0 auto;
-    min-block-size: 0.5rem;
+    margin-inline: auto;
+}
+
+[tuiBadge] {
+    background: #ffdd2d;
+    color: #333;
 }
 ```
 
@@ -6734,6 +6652,7 @@ export default class Page {
 # components/ButtonX
 - **Package**: `Core`
 - **Type**: components
+A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.
 
 ### Usage Examples
 
@@ -6742,9 +6661,9 @@ export default class Page {
 **Template:**
 ```html
 <button tuiButtonX>Close</button>
-<button appearance="glass" tuiButtonX > Close </button>
+<button appearance="action" tuiButtonX > Close </button>
 <button size="xs" tuiButtonX > Close </button>
-<button appearance="glass" size="xs" tuiButtonX > Close </button>
+<button appearance="icon" size="xs" tuiButtonX > Close </button>
 ```
 **TypeScript:**
 ```ts
@@ -7978,14 +7897,14 @@ section {
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 <aside tuiAccessories>
-<button appearance="glass" tuiButtonX type="button" > Close </button>
+<button appearance="secondary-grayscale" tuiButtonX tuiTheme="dark" > Close </button>
 </aside>
 </div>
 <div tuiCardLarge tuiHeader tuiTheme="dark" class="image-2" >
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 <aside tuiAccessories>
-<button appearance="glass" tuiButtonX type="button" > Close </button>
+<button appearance="secondary-grayscale" tuiButtonX > Close </button>
 </aside>
 </div>
 ```
@@ -8027,12 +7946,20 @@ export default class Example {}
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         inline-size: 100%;
         block-size: 100%;
         background: rgba(0, 0, 0, 0.5);
     }
+}
+
+[tuiButtonX] {
+    backdrop-filter: blur(1rem) brightness(1.25);
+}
+
+[tuiButtonX][tuiTheme='dark'] {
+    backdrop-filter: blur(1rem) brightness(0.5);
 }
 ```
 
@@ -8246,8 +8173,8 @@ export default class Example {
 ```less
 .popover {
     position: fixed;
-    right: 1.5rem;
-    bottom: 1.5rem;
+    inset-inline-end: 1.5rem;
+    inset-block-end: 1.5rem;
     inline-size: 20rem;
 
     --tui-from: translateX(100%);
@@ -8260,8 +8187,8 @@ export default class Example {
 
 .close {
     position: absolute;
-    top: 0.5rem;
-    right: 0.75rem;
+    inset-block-start: 0.5rem;
+    inset-inline-end: 0.75rem;
 }
 
 .footer {
@@ -9230,77 +9157,186 @@ export default class Example {
 
 ---
 # components/Carousel
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: components
-Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
-
-### Example
-
-```html
-<tui-carousel class="carousel" [draggable]="draggable" [duration]="duration" [itemsCount]="itemsCount" [style.--tui-carousel-padding]="itemPadding" [(index)]="index" (touchstart.passive.stop)="(0)" > @for (_ of '-'.repeat(9); track $index) { <div *tuiItem class="plate" > {{ $index }} <button size="s" tuiButton type="button" class="button" > I'm focusable </button>
-</div> } </tui-carousel>
-```
+Generic swipeable container to scroll through content
 
 ### API - Inputs
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [draggable] | `boolean` | Whether or not slider can be dragged by clicking and holding |
-| [duration] | `number` | Duration in milliseconds for each slide for automatic rotation (use 0 to disable automatic rotation) |
-| [itemsCount] | `number` | Number of slides shown at the same time |
+| [min] | `number` | Min index |
+| [max] | `number` | Max index |
 | [(index)] | `number` | Current index |
+| *tuiItem='let index' | `TemplateRef<TuiContext<number>>` | is index of item in scroller. |
 
 ### Usage Examples
 
-#### Single
+#### Basic
 
 **Template:**
 ```html
-<tui-carousel [duration]="4000" [(index)]="index" > @for (item of items; track $index) { <div *tuiItem class="item" >
-<h2 class="title">{{ item }}</h2>
-<!-- TODO: update documentation here -->
-<a tuiButton [attr.href]="`https://en.wikipedia.org/wiki/${item}`" > Wiki </a>
-</div> } </tui-carousel>
-<tui-pager [count]="items.length" [index]="index" />
+<button appearance="action" iconStart="@tui.chevron-left" tuiIconButton type="button" [disabled]="index() === 0" (click)="carousel.prev()" > Previous </button>
+<tui-carousel #carousel [max]="5" [min]="0" [(index)]="index" >
+<ng-container *tuiItem="let index">{{ index }}</ng-container>
+</tui-carousel>
+<button appearance="action" iconStart="@tui.chevron-right" tuiIconButton type="button" [disabled]="index() === 5" (click)="carousel.next()" > Next </button>
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
+import {TuiButton, TuiCarousel} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiPager],
+    imports: [TuiButton, TuiCarousel],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected index = 2;
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly index = signal(0);
 }
 ```
 **LESS:**
 ```less
 :host {
-    display: block;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: min-content 1fr min-content;
+    font: var(--tui-typography-heading-h3);
+}
+```
+
+#### Looped
+
+**Template:**
+```html
+<tui-carousel [style.inline-size.rem]="12">
+<section *tuiItem="let index" appearance="neutral" tuiCardMedium > @let current = items.at(index % items.length); <span [tuiAvatar]="current?.icon"></span>
+<footer tuiTitle> {{ current?.title }} <span tuiSubtitle>{{ current?.subtitle }}</span>
+</footer>
+</section>
+</tui-carousel>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCarousel, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiCard} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiAvatar, TuiCard, TuiCarousel, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items = [
+        {
+            title: 'Taiga UI',
+            subtitle: 'Angular UI Kit',
+            icon: '@img.assets/images/taiga.svg',
+        },
+        {
+            title: 'Maskito',
+            subtitle: 'Masking library',
+            icon: '@img.https://raw.githubusercontent.com/taiga-family/maskito/main/projects/demo/src/assets/icons/maskito.svg',
+        },
+        {
+            title: 'Editor',
+            subtitle: 'WYSIWYG',
+            icon: '@tui.pencil',
+        },
+    ];
+}
+```
+
+#### Automatic
+
+**Template:**
+```html
+<tui-carousel #carousel="tuiCarousel" [duration]="5000" [(index)]="index" >
+<section *tuiItem="let index" appearance="neutral" tuiCardMedium > @let current = items.at(index % items.length); <span [tuiAvatar]="current?.icon"></span>
+<footer tuiTitle> {{ current?.title }} <span tuiSubtitle>{{ current?.subtitle }}</span>
+</footer>
+</section>
+</tui-carousel>
+<tui-pager [count]="items.length" [index]="clamped()" [valueContent]="content" />
+<ng-template #content let-current >
+<progress max="100" size="s" tuiProgressBar class="progress" [class.progress_active]="clamped() === current" [value]="clamped() === current && !isE2E ? carousel.progress() : 0" ></progress>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, computed, inject, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiCarousel, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiPager, TuiProgress} from '@taiga-ui/kit';
+import {TuiCard} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiAvatar, TuiCard, TuiCarousel, TuiPager, TuiProgress, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly isE2E = inject(WA_IS_E2E);
+    protected readonly index = signal(0);
+    protected readonly items = [
+        {
+            title: 'Taiga UI',
+            subtitle: 'Angular UI Kit',
+            icon: '@img.assets/images/taiga.svg',
+        },
+        {
+            title: 'Maskito',
+            subtitle: 'Masking library',
+            icon: '@img.https://raw.githubusercontent.com/taiga-family/maskito/main/projects/demo/src/assets/icons/maskito.svg',
+        },
+        {
+            title: 'Editor',
+            subtitle: 'WYSIWYG',
+            icon: '@tui.pencil',
+        },
+    ];
+
+    protected readonly clamped = computed(
+        () =>
+            ((this.index() % this.items.length) + this.items.length) % this.items.length,
+    );
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    inline-size: 12rem;
 }
 
-tui-pager {
-    margin: 0 auto;
-}
+.progress {
+    .transition(all);
 
-.item {
-    padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
-    border-radius: 1rem;
-}
+    inline-size: 1rem;
 
-.title {
-    margin: 0 0 1rem;
+    &:not(&_active) {
+        inline-size: 0.5rem;
+        color: transparent;
+    }
 }
 ```
 
@@ -9308,297 +9344,64 @@ tui-pager {
 
 **Template:**
 ```html
-<tui-carousel [draggable]="true" [itemsCount]="3" [(index)]="index" > @for (item of items; track $index) { <img *tuiItem alt="" draggable="false" class="item" [class.item_active]="$index === index + 1" [src]="`assets/images/${item}`" /> } </tui-carousel>
+<tui-carousel>
+<ng-template let-index tuiItem > @for (_ of '-'.repeat(4); track $index) { @let item = items.at((index * 4 + $index) % this.items.length); <tui-avatar-labeled [label]="item?.label || ''">
+<span tuiAvatar>
+<img alt="" [src]="item?.avatar" />
+</span>
+</tui-avatar-labeled> } </ng-template>
+</tui-carousel>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCarousel} from '@taiga-ui/kit';
+import {TuiCarousel} from '@taiga-ui/core';
+import {TuiAvatar, TuiAvatarLabeled} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiCarousel],
+    imports: [TuiAvatar, TuiAvatarLabeled, TuiCarousel],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected index = 0;
-
     protected readonly items = [
-        'angular.svg',
-        'avatar.jpg',
-        'angular.svg',
-        'avatar.jpg',
-        'angular.svg',
-        'avatar.jpg',
+        {
+            label: 'Alex Inkin',
+            avatar: 'https://avatars.githubusercontent.com/u/11832552',
+        },
+        {
+            label: 'Vladimir Potekhin',
+            avatar: 'https://avatars.githubusercontent.com/u/46284632',
+        },
+        {
+            label: 'Nikita Barsukov',
+            avatar: 'https://avatars.githubusercontent.com/u/35179038',
+        },
+        {
+            label: 'Max Ivanov',
+            avatar: 'https://avatars.githubusercontent.com/u/12021443',
+        },
+        {
+            label: 'German Panov',
+            avatar: 'https://avatars.githubusercontent.com/u/87331898',
+        },
     ];
 }
 ```
 **LESS:**
 ```less
-@import '@taiga-ui/styles/utils';
-
-.item {
-    .transition(~'box-shadow, transform');
-
-    display: block;
-    max-block-size: 6.25rem;
-    margin: 2rem auto;
-    border-radius: 100%;
-
-    &_active {
-        box-shadow: var(--tui-shadow-medium);
-        transform: scale(1.2);
-    }
-}
-```
-
-#### Custom
-
-**Template:**
-```html
-<div tuiCarouselButtons class="wrapper" >
-<button iconStart="@tui.chevron-left" tuiIconButton type="button" (click)="carousel.prev()" > Previous </button>
-<tui-carousel #carousel class="carousel" >
-<div *tuiItem class="item" >
-<h2 class="title">Monty Python and the Holy Grail</h2>
-<p> King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering many, very silly obstacles. </p>
-<div>
-<button appearance="primary" tuiButton type="button" > Buy ${{ 12.99 | tuiAmount: 'RUB' }} </button>
-<button tuiButton type="button" class="tui-space_left-2" > Rent ${{ 4.99 | tuiAmount: 'RUB' }} </button>
-</div>
-</div>
-<div *tuiItem class="item" >
-<tui-loader />
-</div>
-<div *tuiItem class="item" [style.text-align]="'center'" >
-<h2 class="title">Failed to load</h2>
-<p>
-<span appearance="negative" tuiAvatar="@tui.x" ></span>
-</p>
-</div>
-</tui-carousel>
-<button iconStart="@tui.chevron-right" tuiIconButton type="button" (click)="carousel.next()" > Next </button>
-</div>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiLoader} from '@taiga-ui/core';
-import {TuiAvatar, TuiCarousel} from '@taiga-ui/kit';
-
-@Component({
-    imports: [TuiAmountPipe, TuiAvatar, TuiButton, TuiCarousel, TuiLoader],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-**LESS:**
-```less
-.wrapper {
-    display: flex;
-    align-items: center;
+tui-carousel {
+    inline-size: 16rem;
 }
 
-.carousel {
-    inline-size: 25rem;
-    flex-shrink: 0;
-}
-
-.item {
-    padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
-    border-radius: 1rem;
-}
-
-.title {
-    margin: 0 0 1rem;
-}
-```
-
-#### Carousel inside dialog
-
-**Template:**
-```html
-<button size="m" tuiButton type="button" (click)="onClick()" > Show dialog with carousel </button>
-<ng-template #header>
-<div class="header" [style.background-image]="background" ></div>
-</ng-template>
-<ng-template [tuiDialogOptions]="{size: 's', header: header}" [(tuiDialog)]="open" >
-<div tuiCarouselButtons class="wrapper" (touchstart.passive.stop)="(0)" >
-<button appearance="neutral" iconStart="@tui.chevron-left" tuiIconButton tuiTheme="dark" type="button" class="tui-space_right-4" (click)="navigate(-1)" > Previous </button>
-<tui-carousel [(index)]="index">
-<div *tuiItem>
-<h2>Carousel is awesome</h2>
-<p>It can show arbitrary content and it's very easy to control</p>
-</div>
-<div *tuiItem>
-<h2>Pagination</h2>
-<p> You can use <a tuiLink [routerLink]="routes.Pagination" > Pagination </a> component with size 's' together with it </p>
-</div>
-<div *tuiItem>
-<h2>Buttons</h2>
-<p> Use <code>tuiCarouselButtons</code> directive to setup navigation buttons </p>
-</div>
-</tui-carousel>
-<button appearance="neutral" iconStart="@tui.chevron-right" tuiIconButton tuiTheme="dark" type="button" class="tui-space_left-4" (click)="navigate(1)" > Next </button>
-</div>
-<tui-pager [count]="3" [index]="index" />
-<div class="tui-space_top-4">
-<button appearance="primary" tuiButton type="button" (click)="open = false" > Got it! </button>
-</div>
-</ng-template>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {DemoRoute} from '@demo/routes';
-import {TuiButton, TuiLink} from '@taiga-ui/core';
-import {TuiCarousel, TuiPager} from '@taiga-ui/kit';
-import {TuiDialog} from '@taiga-ui/legacy';
-
-@Component({
-    imports: [RouterLink, TuiButton, TuiCarousel, TuiDialog, TuiLink, TuiPager],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly routes = DemoRoute;
-    protected open = false;
-
-    protected index = 0;
-
-    protected get background(): string {
-        switch (this.index) {
-            case 0:
-                return 'url(https://cdn.tvc.ru/pictures/mood/bw/194/22.jpg)';
-            case 1:
-                return 'url(https://ic.pics.livejournal.com/ruhtal/6943012/12468/12468_900.jpg)';
-            default:
-                return 'url(https://cdn.motor1.com/images/mgl/28bxz/s1/ford-carousel.jpg)';
-        }
-    }
-
-    protected onClick(): void {
-        this.index = 0;
-        this.open = true;
-    }
-
-    protected navigate(delta: number): void {
-        this.index = (this.index + delta) % 3;
-    }
-}
-```
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
-.wrapper {
-    display: flex;
-    align-items: center;
-    margin: 0 -5rem;
-
-    :host-context(tui-root._mobile) & {
-        margin: 0;
-
-        button {
-            display: none;
-        }
-    }
-}
-
-.header {
-    .transition(background);
-
-    block-size: 10rem;
-    flex: 1;
-    background: var(--tui-background-base) center;
-    background-size: cover;
-}
-
-tui-pager {
-    margin: 0 auto;
-}
-```
-
-#### Vertical alignment
-
-**Template:**
-```html
-<tui-carousel [itemsCount]="3" [(index)]="index" > @for (item of items; track $index) { <div *tuiItem class="item" >
-<h2 class="title">{{ item.title }}</h2> {{ item.content }} </div> } </tui-carousel>
-<tui-pagination [index]="rounded" [length]="items.length / itemsCount" (indexChange)="onIndex($event)" />
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
-
-@Component({
-    imports: [TuiCarousel, TuiPagination],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected index = 0;
-
-    protected readonly itemsCount = 3;
-
-    protected readonly items = [
-        {title: 'First', content: 'First content'},
-        {title: 'Title #2', content: 'Much more content here so the height is bigger'},
-        {title: 'Title III', content: 'Small item again'},
-        {title: 'Title four', content: 'Relatively ling content here'},
-        {title: 'Fifth item', content: 'Tiny text'},
-        {title: '6', content: "That one's short too"},
-        {title: 'Lucky 7', content: 'This takes about two lines or so'},
-        {title: 'Eighth card', content: 'Almost the last one'},
-        {title: 'X', content: 'This is the longest item there is in this list'},
-    ];
-
-    protected get rounded(): number {
-        return Math.floor(this.index / this.itemsCount);
-    }
-
-    protected onIndex(index: number): void {
-        this.index = index * this.itemsCount;
-    }
-}
-```
-**LESS:**
-```less
-.item {
-    padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
-    border-radius: 1rem;
-    margin-block-end: auto;
-}
-
-.title {
-    margin: 0 0 1rem;
-}
-
-tui-pagination {
-    margin: 1rem auto 0;
-    min-block-size: 0.5rem;
+tui-avatar-labeled {
+    inline-size: 4rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 ```
 
@@ -9609,58 +9412,23 @@ tui-pagination {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiCarousel, TuiDemo],
+    imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
 })
-export default class Example {
-    protected readonly examples = [
-        'Single',
-        'Multiple',
-        'Custom',
-        'Carousel inside dialog',
-        'Vertical alignment',
-    ];
-
-    protected readonly durationVariants = [0, 3000, 10000];
-    protected readonly itemPaddingVariants = [null, '0 10px', '0'];
-    protected draggable = false;
-    protected duration = this.durationVariants[0]!;
-    protected itemPadding: string | null = this.itemPaddingVariants[0]!;
-    protected index = 0;
-    protected itemsCount = 1;
+export default class Page {
+    protected readonly examples = ['Basic', 'Looped', 'Automatic', 'Multiple'];
 }
 ```
 
 ### LESS
 
 ```less
-@import '@taiga-ui/styles/utils';
-
-.carousel {
-    margin: 0 2.5rem;
-    border: 1px solid var(--tui-background-accent-1);
-}
-
-.plate {
-    display: flex;
-    font: var(--tui-typography-heading-h3);
-    flex-direction: column;
-    align-items: flex-start;
-    inline-size: 100%;
-    block-size: 7.5rem;
-    padding: 1.75rem;
-    box-sizing: border-box;
-    background: var(--tui-background-neutral-1);
-}
-
-.button {
-    margin-block-start: 0.5rem;
+.bar {
+    block-size: 6.25rem;
 }
 ```
 
@@ -11112,12 +10880,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -11169,13 +10933,8 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList, TuiScrollable} from '@taiga-ui/core';
-import {
-    TUI_COUNTRIES,
-    TuiChevron,
-    TuiComboBox,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiDataList, TuiFilterByInputPipe, TuiScrollable} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -11224,13 +10983,8 @@ import {Component, computed, inject, type Signal, ViewEncapsulation} from '@angu
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
-import {
-    TUI_COUNTRIES,
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -11282,13 +11036,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {tuiAsOptionContent, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 import {Option} from './option';
 
@@ -11362,7 +11111,7 @@ export default class Example {
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="British monarchs" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: matcher" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: filter" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -11371,13 +11120,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiStringMatcher} from '@taiga-ui/cdk';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TUI_DEFAULT_MATCHER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk';
+import {type TuiFilterByInputOptions, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 const ROMAN_TO_LATIN: Record<string, string> = {
     I: '1',
@@ -11416,13 +11161,26 @@ export default class Example {
 
     protected value: string | null = null;
 
-    protected readonly matcher: TuiStringMatcher<string> = (item, query) => {
-        const romanNumeral = item.split(' ').at(-1)!;
+    protected readonly filter: TuiFilterByInputOptions<string>['filter'] = (
+        items,
+        query,
+    ) => {
+        const filtered = items.filter((item) => {
+            const romanNumeral = item.split(' ').at(-1)!;
 
-        return (
-            query === ROMAN_TO_LATIN[romanNumeral] ||
-            item.toLowerCase().includes(query.toLowerCase())
-        );
+            return (
+                query === ROMAN_TO_LATIN[romanNumeral] || TUI_DEFAULT_MATCHER(item, query)
+            );
+        });
+
+        /**
+         * Query "George V" EXACTLY matches one option,
+         * but it also PARTIALLY matches another option "George VI"
+         * We should continue filtering for such ambiguous cases
+         */
+        return filtered.length === 1 && TUI_STRICT_MATCHER(filtered[0], query)
+            ? items // Reset filtering
+            : filtered;
     };
 }
 ```
@@ -11443,14 +11201,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-    TuiTooltip,
-} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe, TuiIcon} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -11548,13 +11300,8 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiItemsHandlersProvider} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe, tuiItemsHandlersProvider} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 interface Character {
     readonly id: number;
@@ -11612,7 +11359,7 @@ export default class Example {
 ```html
 <tui-textfield #textfield tuiChevron [content]="value && !textfield.focused() ? content : ''" [stringify]="stringify" >
 <input placeholder="Choose a card" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="cards | tuiFilterByInput: matcher" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="cards | tuiFilterByInput: filter" />
 </tui-textfield>
 <ng-template #content let-card >
 <div class="card">
@@ -11626,13 +11373,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiPaymentSystem, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiFilterByInputOptions, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 interface Card {
     name: string;
@@ -11664,12 +11407,12 @@ export default class Example {
 
     protected value: Card | null = null;
 
-    protected readonly matcher: TuiStringMatcher<Card> = (item, value) => {
-        return (
-            item.name.toLowerCase().includes(value.toLowerCase()) ||
-            item.number.includes(value)
+    protected readonly filter: TuiFilterByInputOptions<Card>['filter'] = (items, value) =>
+        items.filter(
+            (item) =>
+                item.name.toLowerCase().includes(value.toLowerCase()) ||
+                item.number.includes(value),
         );
-    };
 
     protected readonly stringify: TuiStringHandler<Card> = (x) => x.number;
 }
@@ -11701,8 +11444,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList} from '@taiga-ui/core';
-import {TuiChevron, TuiChip, TuiComboBox, TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiDataList, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiChip, TuiComboBox} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -11770,9 +11513,9 @@ export default class Example {
     .scrollbar-hidden();
 
     position: sticky;
-    top: 0;
     z-index: 1;
     display: flex;
+    inset-block-start: 0;
     overflow: scroll;
     gap: 0.5rem;
     padding: 0.5rem;
@@ -11803,8 +11546,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiDataList} from '@taiga-ui/core';
-import {TuiChevron, TuiComboBox, TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiDataList, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 
 interface Python {
     readonly id: number;
@@ -11870,14 +11613,8 @@ import {TuiDemo} from '@demo/utils';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_STRICT_MATCHER, type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiDropdown} from '@taiga-ui/core';
-import {
-    TUI_COUNTRIES,
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiDropdown, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 interface Country {
     id: string;
@@ -12007,7 +11744,7 @@ export default class Example {}
 
 **TypeScript:**
 ```ts
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
@@ -12021,14 +11758,13 @@ import {TuiCompass} from '@taiga-ui/kit';
     host: {'(document:mousemove)': 'calculate($event)'},
 })
 export default class Example {
-    @ViewChild(TuiCompass, {read: ElementRef})
-    private readonly compass?: ElementRef<HTMLElement>;
+    private readonly compass = viewChild(TuiCompass, {read: ElementRef<HTMLElement>});
 
     protected degrees = 0;
 
     protected calculate(event: MouseEvent): void {
         const rect =
-            this.compass?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
+            this.compass()?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
         const y = Math.ceil(event.clientY - (rect.top + rect.height / 2));
 
@@ -13237,8 +12973,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiInput} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiDropdown, TuiFilterByInputPipe, TuiInput} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -13277,11 +13013,11 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiFilterByInputPipe} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 
@@ -14137,7 +13873,7 @@ export default class Page {
         'end',
     ];
 
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected overlay = false;
     protected direction: TuiHorizontalDirection = 'end';
 
@@ -15064,8 +14800,8 @@ export default class Page {
     .transition(opacity);
 
     position: absolute;
-    left: 3.125rem;
-    bottom: 1.875rem;
+    inset-inline-start: 3.125rem;
+    inset-block-end: 1.875rem;
     inline-size: 15.625rem;
     background: var(--tui-text-primary);
     color: var(--tui-background-base);
@@ -15076,8 +14812,8 @@ export default class Page {
     &::after {
         content: '';
         position: absolute;
-        left: 50%;
-        bottom: -0.9375rem;
+        inset-inline-start: 50%;
+        inset-block-end: -0.9375rem;
         border-block-start: 0.9375rem solid var(--tui-text-primary);
         border-inline-start: 0.625rem solid transparent;
         border-inline-end: 0.625rem solid transparent;
@@ -17477,6 +17213,51 @@ export default class Example {
 }
 ```
 
+#### Background
+
+**Template:**
+```html
+<tui-icon background="@tui.wifi" icon="@tui.wifi" />
+<tui-icon background="@tui.wifi" icon="@tui.wifi-high" />
+<tui-icon background="@tui.wifi" icon="@tui.wifi-low" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiIcon],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+tui-icon {
+    background: var(--tui-border-normal);
+    color: var(--tui-status-warning);
+
+    &:first-child {
+        color: var(--tui-status-positive);
+    }
+
+    &:last-child {
+        color: var(--tui-status-negative);
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -17521,6 +17302,7 @@ export default class Page {
         'Bundled',
         'Resolver',
         'External',
+        'Background',
     ];
 
     protected icon = '@tui.heart';
@@ -17691,13 +17473,14 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdown, TuiIcon, TuiInput, TuiSelectLike} from '@taiga-ui/core';
 import {
-    TuiChevron,
-    TuiDataListWrapper,
+    TuiDropdown,
     TuiFilterByInputPipe,
-    TuiTooltip,
-} from '@taiga-ui/kit';
+    TuiIcon,
+    TuiInput,
+    TuiSelectLike,
+} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -17849,6 +17632,59 @@ export default class Example {
 }
 ```
 
+#### Long label
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiFade tuiLabel > Very long label that you must display without truncating </label>
+<input tuiFade tuiInput [(ngModel)]="value" />
+</tui-textfield>
+<tui-textfield multi>
+<label tuiFade tuiLabel > Very long label that you must display without truncating </label>
+<input tuiInputChip [(ngModel)]="chips" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInput} from '@taiga-ui/core';
+import {TuiFade, TuiInputChip} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiFade, TuiInput, TuiInputChip],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 'Single string';
+    protected chips = ['Single string'];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    inline-size: 17rem;
+    flex-direction: column;
+    gap: 1rem;
+
+    tui-textfield[data-focus='true'] {
+        align-items: center;
+
+        [tuiLabel] {
+            transition: none;
+            white-space: normal;
+        }
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -17889,6 +17725,7 @@ export default class Page {
         'InputPassword',
         'Custom cleaner',
         'Mask',
+        'Long label',
     ];
 
     protected value = '';
@@ -18559,7 +18396,7 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {Component, computed, ViewChild} from '@angular/core';
+import {Component, computed, viewChild} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -18596,8 +18433,7 @@ import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    @ViewChild('filter')
-    protected readonly filter?: TuiTextfieldComponent<string>;
+    protected readonly filter = viewChild<TuiTextfieldComponent<string>>('filter');
 
     protected readonly items: string[] = Array.from({length: 3000}).map(
         (_, i) => `Item #${i}`,
@@ -18605,7 +18441,7 @@ export default class Example {
 
     protected value: string[] = [];
 
-    protected readonly filtered = computed((value = this.filter?.value()) =>
+    protected readonly filtered = computed((value = this.filter()?.value()) =>
         value
             ? this.items.filter((item) => TUI_DEFAULT_MATCHER(item, value))
             : this.items,
@@ -18798,11 +18634,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiDataList, TuiSelectLike} from '@taiga-ui/core';
+import {TuiDataList, TuiFilterByInputPipe, TuiSelectLike} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiHideSelectedPipe,
     TuiInputChip,
     TuiMultiSelect,
@@ -19001,11 +18836,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {TuiButton, TuiSelectLike} from '@taiga-ui/core';
+import {TuiButton, TuiFilterByInputPipe, TuiSelectLike} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
@@ -20126,7 +19960,7 @@ InputDateRange = Textfield + CalendarRange + ❤️
 ```html
 <ng-template>
 <tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose range</label> } <input tuiInputDateRange [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
-<tui-calendar-range *tuiDropdown />
+<tui-calendar-range *tuiDropdown [items]="selectedPeriodList ?? []" [listSize]="listSize" />
 </tui-textfield>
 </ng-template>
 ```
@@ -20139,6 +19973,8 @@ InputDateRange = Textfield + CalendarRange + ❤️
 | [max] | `TuiDay` | Max date |
 | [minLength] | `TuiDayLike | null` | Min length of the range |
 | [maxLength] | `TuiDayLike | null` | Max length of the range |
+| [items] | `TuiDayRangePeriod[]` | Period list items |
+| [listSize] | `TuiSizeL` | Period list size |
 
 ### Usage Examples
 
@@ -20440,8 +20276,12 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiInput} from '@taiga-ui/core';
-import {TuiInputDateRange} from '@taiga-ui/kit';
+import {TuiDropdown, TuiInput, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import {
+    tuiCreateDefaultDayRangePeriods,
+    type TuiDayRangePeriod,
+    TuiInputDateRange,
+} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -20481,10 +20321,18 @@ export default class Example {
         TUI_LAST_DAY,
     ] as const;
 
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected listSize: TuiSizeL | TuiSizeS = this.sizeVariants[2]!;
+
+    protected readonly items = tuiCreateDefaultDayRangePeriods();
+
     protected min = this.dates[0];
     protected max = this.dates[4];
 
     protected readonly limits = [{day: 3}, {day: 5}] as const;
+
+    protected readonly periodListItems = [null, this.items];
+    protected selectedPeriodList: readonly TuiDayRangePeriod[] | null = null;
 
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
@@ -21467,6 +21315,63 @@ export default class Example {
 }
 ```
 
+#### Accept
+
+**Template:**
+```html
+<label tuiInputFiles>
+<input #validator="tuiInputFilesValidator" tuiInputFiles [formControl]="control" [multiple]="true" (reject)="onReject($event)" />
+</label>
+<tui-files class="tui-space_top-1"> @for (file of accepted$ | async; track file) { <tui-file [file]="file" (remove)="onRemove(file)" /> } @for (file of rejected; track file) { <tui-file state="error" [file]="(file | tuiFileRejected: validator | async) || file" (remove)="onRemove(file)" /> } </tui-files>
+```
+**TypeScript:**
+```ts
+import {AsyncPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiFiles, tuiFilesAccepted, tuiInputFilesOptionsProvider} from '@taiga-ui/kit';
+import {map, startWith} from 'rxjs';
+
+@Component({
+    standalone: true,
+    imports: [AsyncPipe, ReactiveFormsModule, TuiFiles],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputFilesOptionsProvider({
+            accept: '.jpeg, .jpg, .png, .pdf, .doc, .docx, .zip, .tif',
+        }),
+    ],
+})
+export default class Example {
+    protected readonly control = new FormControl<File[]>([
+        new File(['mock zip content'], 'valid.zip', {type: 'application/zip'}),
+        new File(['Lorem ipsum'], 'wrong.txt', {type: 'application/txt'}),
+    ]);
+
+    protected readonly accepted$ = this.control.valueChanges.pipe(
+        startWith(this.control.value),
+        map(() => tuiFilesAccepted(this.control)),
+    );
+
+    protected rejected: readonly File[] = [];
+
+    protected onReject(files: readonly File[]): void {
+        this.rejected = Array.from(new Set(this.rejected.concat(files)));
+    }
+
+    protected onRemove(file: File): void {
+        this.rejected = this.rejected.filter((current) => current !== file);
+        this.control.setValue(
+            this.control.value?.filter((current) => current !== file) ?? [],
+        );
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -21494,6 +21399,7 @@ export default class PageComponent {
         'Custom content',
         'Camera capture',
         'Model',
+        'Accept',
     ];
 
     protected multiple = true;
@@ -22805,7 +22711,7 @@ export default class Example {
 ```html
 <tui-textfield>
 <label tuiLabel>{{ user() || 'Phone number or name' }}</label>
-<input #input mask="+1 (###)###-####" tuiInputPhone [allowText]="true" [ngModel]="value()" (input)="onInput(input.value)" (ngModelChange)="value.set($event)" /> @if (items | tuiFilterByInput: matcher; as filtered) { @if (!user() && input.value && filtered.length) { <tui-data-list-wrapper *tuiDropdown [itemContent]="template" [items]="filtered" (itemClick)="selectUser($event)" /> } } </tui-textfield>
+<input #input mask="+1 (###)###-####" tuiInputPhone [allowText]="true" [ngModel]="value()" (input)="onInput(input.value)" (ngModelChange)="value.set($event)" /> @if (items | tuiFilterByInput: filter; as filtered) { @if (!user() && input.value && filtered.length) { <tui-data-list-wrapper *tuiDropdown [itemContent]="template" [items]="filtered" (itemClick)="selectUser($event)" /> } } </tui-textfield>
 <ng-template #template let-user >
 <div tuiCell>
 <div tuiAvatar="@tui.user">
@@ -22823,14 +22729,14 @@ import {Component, computed, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER, type TuiMatcher} from '@taiga-ui/cdk';
-import {TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {
-    TuiAvatar,
-    TuiDataListWrapper,
+    TuiCell,
+    type TuiFilterByInputOptions,
     TuiFilterByInputPipe,
-    TuiInputPhone,
-} from '@taiga-ui/kit';
+    TuiTitle,
+} from '@taiga-ui/core';
+import {TuiAvatar, TuiDataListWrapper, TuiInputPhone} from '@taiga-ui/kit';
 
 class User {
     constructor(
@@ -22905,17 +22811,23 @@ export default class Example {
     }
 
     protected onInput(value: string): void {
-        const user = this.items.find((user) => this.matcher(user, value));
+        const [user] = this.filter(this.items, value);
 
         if (value === user?.toString() || value === user?.phone) {
             this.value.set(user.phone);
         }
     }
 
-    protected readonly matcher: TuiMatcher<[User, string]> = (item, search) =>
-        (search.startsWith('+') &&
-            TUI_DEFAULT_MATCHER(item.phone, search.replaceAll(/\D/g, ''))) ||
-        TUI_DEFAULT_MATCHER(item.toString(), search);
+    protected readonly filter: TuiFilterByInputOptions<User>['filter'] = (
+        items,
+        search,
+    ) =>
+        items.filter(
+            (item) =>
+                (search.startsWith('+') &&
+                    TUI_DEFAULT_MATCHER(item.phone, search.replaceAll(/\D/g, ''))) ||
+                TUI_DEFAULT_MATCHER(item.toString(), search),
+        );
 }
 ```
 
@@ -24264,8 +24176,8 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(0);
 
-    protected min = signal(0);
-    protected max = signal(100);
+    protected readonly min = signal(0);
+    protected readonly max = signal(100);
     protected prefix = '';
     protected postfix = '';
     protected quantum = 0;
@@ -24594,7 +24506,7 @@ export default class Example {
 ```html
 <tui-textfield [disabledItemHandler]="disabledItemHandler">
 <input placeholder="Click me to open dropdown" tuiInputTime [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: matcher" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: filter" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -24603,14 +24515,13 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiBooleanHandler, type TuiStringMatcher, TuiTime} from '@taiga-ui/cdk';
-import {tuiItemsHandlersProvider} from '@taiga-ui/core';
+import {type TuiBooleanHandler, TuiTime} from '@taiga-ui/cdk';
 import {
-    tuiCreateTimePeriods,
-    TuiDataListWrapper,
+    type TuiFilterByInputOptions,
     TuiFilterByInputPipe,
-    TuiInputTime,
-} from '@taiga-ui/kit';
+    tuiItemsHandlersProvider,
+} from '@taiga-ui/core';
+import {tuiCreateTimePeriods, TuiDataListWrapper, TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiDataListWrapper, TuiFilterByInputPipe, TuiInputTime],
@@ -24649,8 +24560,10 @@ export default class Example {
     protected readonly disabledItemHandler: TuiBooleanHandler<TuiTime> = (x) =>
         x?.valueOf() === this.items[0]!.valueOf();
 
-    protected readonly matcher: TuiStringMatcher<TuiTime> = (item, query) =>
-        item.toString('HH:MM').startsWith(query);
+    protected readonly filter: TuiFilterByInputOptions<TuiTime>['filter'] = (
+        items,
+        query,
+    ) => items.filter((time) => time.toString('HH:MM').startsWith(query));
 }
 ```
 
@@ -26475,8 +26388,8 @@ export default class Example {
 
 .chart {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
 
     &_dotted {
         stroke-dasharray: 2;
@@ -26746,13 +26659,15 @@ Component cuts overflown text with "..." and shows it by hover
 <div class="hint"> Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons </div>
 </ng-template>
 <ng-template #mormont>
-<div class="hint no-wrap">Jorah Mormont of House Mormont, Lord of Bear Island</div>
+<div tuiFade class="hint no-wrap" > Jorah Mormont of House Mormont, Lord of Bear Island </div>
 </ng-template>
 <div class="island">
 <tui-line-clamp [content]="content" />
 <ng-template #content>
 <span appearance="negative" size="xxs" tuiChip > DRAFT </span> Davis, Julia </ng-template>
-</div> @if (value$ | async; as value) { <div class="wrapper">
+</div>
+<div class="tui-space_bottom-4">
+<tui-line-clamp [content]="value()" [linesLimit]="2" /> @if (!value()) { <button size="s" tuiButton type="button" (click)="update()" > Load dynamic value </button> } </div> @if (value$ | async; as value) { <div class="wrapper">
 <div class="result">
 <div class="content">
 <tui-line-clamp [content]="value" [lineHeight]="20" [linesLimit]="1" />
@@ -26763,17 +26678,17 @@ Component cuts overflown text with "..." and shows it by hover
 **TypeScript:**
 ```ts
 import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {tuiWatch} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core';
-import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
+import {TuiButton, TuiNotification} from '@taiga-ui/core';
+import {TuiChip, TuiFade, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiChip, TuiLineClamp, TuiNotification],
+    imports: [AsyncPipe, TuiButton, TuiChip, TuiFade, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -26782,10 +26697,18 @@ import {map, timer} from 'rxjs';
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
 
+    protected readonly value = signal('');
+
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
         map(() => `${'async fake value, '.repeat(10)}end!`),
         tuiWatch(),
     );
+
+    public update(): void {
+        this.value.set(
+            'Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons',
+        );
+    }
 }
 ```
 **LESS:**
@@ -26812,8 +26735,8 @@ export default class Example {
 
 .wrapper {
     position: relative;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     inline-size: 100%;
     margin: 0 auto;
     border: 1px solid var(--tui-border-normal);
@@ -27352,7 +27275,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected hasOverflownContent = signal<boolean | null>(null);
+    protected readonly hasOverflownContent = signal<boolean | null>(null);
     protected linesLimit = 2;
 
     protected toggle(): void {
@@ -28491,7 +28414,7 @@ tui-loader {
 ### TypeScript
 
 ```ts
-import {Component, ViewChild} from '@angular/core';
+import {Component, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -28505,8 +28428,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class Page {
-    @ViewChild('textTemplate')
-    protected readonly textTemplate: PolymorpheusContent;
+    protected readonly textTemplate = viewChild<PolymorpheusContent>('textTemplate');
 
     protected readonly routes = DemoRoute;
 
@@ -28544,7 +28466,7 @@ export default class Page {
                 return 'string';
             }
             case 'template': {
-                return this.textTemplate || '';
+                return this.textTemplate() || '';
             }
             default: {
                 return '';
@@ -29594,7 +29516,7 @@ class Portal {}
     providers: [{provide: TuiPortalService, useClass: TuiPopupService}],
 })
 export default class Example extends TuiPortals {
-    protected expanded = signal(false);
+    protected readonly expanded = signal(false);
     protected open = false;
     protected switch = false;
     protected readonly routes = DemoRoute;
@@ -30101,8 +30023,8 @@ export default class Page implements OnDestroy {
 
     .custom-portal {
         position: sticky;
-        top: 0;
         z-index: 10;
+        inset-block-start: 0;
         block-size: 30rem;
         margin-block-end: -30rem;
         transform: translate3d(0, 0, 0);
@@ -30759,7 +30681,7 @@ import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
 export default class Example {
     protected static = inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
     protected count = 10;
-    protected activeIndex = signal(0);
+    protected readonly activeIndex = signal(0);
 
     protected readonly toProgress = (active: boolean): Observable<number> =>
         active && !this.static
@@ -30799,7 +30721,7 @@ export default class Example {
 ### TypeScript
 
 ```ts
-import {Component, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
@@ -30811,8 +30733,7 @@ import {TuiPager} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    @ViewChild('templateRef')
-    protected templateRef?: TemplateRef<unknown>;
+    protected readonly templateRef = viewChild<TemplateRef<unknown>>('templateRef');
 
     protected readonly examples = ['Basic', 'Icons', 'Dynamic width'];
 
@@ -30832,7 +30753,9 @@ export default class Page {
     protected selectedTemplate = this.templateVariants[0]!;
 
     protected get valueContent(): TemplateRef<unknown> | undefined {
-        return this.templateRef && this.selectedTemplate ? this.templateRef : undefined;
+        const template = this.templateRef();
+
+        return template && this.selectedTemplate ? template : undefined;
     }
 }
 ```
@@ -31100,9 +31023,11 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Open </button>
-<ng-template let-observer [tuiResponsiveDialogOptions]="{appearance: 'fullscreen'}" [(tuiResponsiveDialog)]="open" >
+<ng-template let-observer [tuiResponsiveDialogOptions]="{appearance: 'fullscreen', bar: false}" [(tuiResponsiveDialog)]="open" >
 <tui-pdf-viewer>
-<h2 tuiTitle>file.pdf</h2> @if (!isMobile) { <button iconStart="@tui.pen" title="download" tuiButton type="button" [style.border-radius.rem]="5" (click)="observer.complete(); alerts.open('Document signed').subscribe()" > Sign </button> } <button iconStart="@tui.download" title="download" tuiButton type="button" [style.border-radius.rem]="5" (click)="observer.complete()" > {{ isMobile ? '' : 'Download' }} </button>
+<h2 tuiTitle>file.pdf</h2>
+<button iconStart="@tui.pen" tuiButton type="button" [title]="isMobile ? 'Sign' : ''" (click)="observer.complete(); alerts.open('Document signed').subscribe()" > {{ isMobile ? '' : 'Sign' }} </button>
+<button iconStart="@tui.download" tuiButton type="button" [title]="isMobile ? 'Download' : ''" (click)="observer.complete()" > {{ isMobile ? '' : 'Download' }} </button>
 <iframe [src]="url"></iframe>
 </tui-pdf-viewer>
 </ng-template>
@@ -31558,7 +31483,7 @@ export default class Example {
 
 [tuiPin] {
     position: absolute;
-    top: 4rem;
+    inset-block-start: 4rem;
 }
 
 .link {
@@ -31694,7 +31619,7 @@ import {Popout} from './popout';
 export default class Example {
     protected readonly popout = inject(TuiPopoutService);
     protected readonly supported = !!inject(WA_DOCUMENT_PIP)?.requestWindow;
-    protected subscription = signal<Subscription | null>(null);
+    protected readonly subscription = signal<Subscription | null>(null);
 
     protected open(): void {
         this.subscription.set(
@@ -31829,7 +31754,7 @@ Preview component allows to open modal for viewing some document and to work wit
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp, TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
@@ -31848,24 +31773,25 @@ export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
     private readonly alerts = inject(TuiNotificationService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
-    @ViewChild('contentSample')
-    protected readonly contentSample?: TemplateRef<Record<string, unknown>>;
+    protected readonly contentSample =
+        viewChild<TemplateRef<Record<string, unknown>>>('contentSample');
 
     protected index = 0;
     protected length = 2;
     protected titles = ['Transaction cert.jpg', 'My face.jpg'];
 
     protected get previewContent(): PolymorpheusContent {
-        return this.index === 0 && this.contentSample
-            ? this.contentSample
+        const content = this.contentSample();
+
+        return this.index === 0 && content
+            ? content
             : 'https://avatars.githubusercontent.com/u/10106368';
     }
 
     protected show(): void {
-        this.previewService.open(this.preview || '').subscribe({
+        this.previewService.open(this.preview() || '').subscribe({
             complete: () => console.info('complete'),
         });
     }
@@ -31963,7 +31889,7 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, type TuiDialogContext} from '@taiga-ui/core';
@@ -31979,11 +31905,10 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
     protected show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview() || '').subscribe();
     }
 }
 ```
@@ -32014,7 +31939,7 @@ export default class Example {
 **TypeScript:**
 ```ts
 import {AsyncPipe} from '@angular/common';
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsPresent} from '@taiga-ui/cdk';
@@ -32041,8 +31966,7 @@ import {
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
     protected readonly items = [
         {
@@ -32077,7 +32001,7 @@ export default class Example {
     protected readonly loading$ = this.imageSrc$.pipe(map((src) => src === ''));
 
     protected show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview() || '').subscribe();
     }
 
     protected download(): void {
@@ -32390,7 +32314,7 @@ export default class Example {}
 
 **Template:**
 ```html
-<progress max="100" tuiProgressBar ></progress>
+<progress tuiProgressBar></progress>
 ```
 **TypeScript:**
 ```ts
@@ -33332,14 +33256,14 @@ tui-pulse {
 
 .step-1 {
     position: absolute;
-    top: 20%;
-    right: 10%;
+    inset-block-start: 20%;
+    inset-inline-end: 10%;
 }
 
 .step-2 {
     position: absolute;
-    top: 25%;
-    right: 25%;
+    inset-block-start: 25%;
+    inset-inline-end: 25%;
 }
 
 .avatar {
@@ -33909,8 +33833,8 @@ export default class Example {
 
     /* (Optionally) expand clickable area as you wish */
     &::after {
-        top: -0.5rem;
-        bottom: -1.5rem;
+        inset-block-start: -0.5rem;
+        inset-block-end: -1.5rem;
     }
 }
 
@@ -33979,8 +33903,8 @@ export default class Example {
 
     /* (Optionally) expand clickable area as you wish */
     &::after {
-        top: -0.5rem;
-        bottom: -1.5rem;
+        inset-block-start: -0.5rem;
+        inset-block-end: -1.5rem;
     }
 }
 
@@ -34566,7 +34490,7 @@ export default class Example {}
 ```
 **TypeScript:**
 ```ts
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
@@ -34581,28 +34505,29 @@ const SOME_OFFSET_CONST = 20;
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiScrollbar, {read: ElementRef})
-    private readonly scrollBar?: ElementRef<HTMLElement>;
+    private readonly scrollBar = viewChild(TuiScrollbar, {read: ElementRef<HTMLElement>});
 
     protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
-        return this.scrollBar ? this.scrollBar.nativeElement.scrollTop : 0;
+        return this.scrollBar()?.nativeElement.scrollTop ?? 0;
     }
 
     protected get scrollLeft(): number {
-        return this.scrollBar ? this.scrollBar.nativeElement.scrollLeft : 0;
+        return this.scrollBar()?.nativeElement.scrollLeft ?? 0;
     }
 
     protected onClick(): void {
-        if (!this.scrollBar) {
+        const scrollbar = this.scrollBar();
+
+        if (!scrollbar) {
             return;
         }
 
-        const {nativeElement} = this.scrollBar;
-
-        nativeElement.scrollTop =
-            nativeElement.scrollTop < SOME_OFFSET_CONST ? nativeElement.scrollHeight : 0;
+        scrollbar.nativeElement.scrollTop =
+            scrollbar.nativeElement.scrollTop < SOME_OFFSET_CONST
+                ? scrollbar.nativeElement.scrollHeight
+                : 0;
     }
 }
 ```
@@ -35823,7 +35748,7 @@ export default class Example {
 **TypeScript:**
 ```ts
 import {Component, inject} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -35843,7 +35768,7 @@ interface Character {
 })
 export default class Example {
     protected readonly isMobile = inject(WA_IS_MOBILE);
-    protected readonly control = new FormControl(null);
+    protected readonly control = new FormControl(null, Validators.required);
     protected items: readonly Character[] = [
         {name: 'Luke Skywalker', id: 1},
         {name: 'Leia Organa Solo', id: 2},
@@ -36495,7 +36420,7 @@ import {TuiAppBar, TuiFloatingContainer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected search = '';
 
     protected readonly items = [
@@ -36576,7 +36501,7 @@ export default class Example {
 }
 
 .button {
-    .transition(bottom);
+    .transition(inset-block-end);
 }
 ```
 
@@ -36707,6 +36632,180 @@ export default class Page {
 .label {
     display: flex;
     gap: 0.75rem;
+}
+```
+
+---
+# components/ShrinkWrap
+- **Package**: `KIT`
+- **Type**: components
+A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiShrinkWrap] | `string` | Max size of the container, 100% by default |
+
+### Usage Examples
+
+#### Chat
+
+**Template:**
+```html
+<section tuiMessage class="incoming" > I'm a short message </section>
+<section tuiMessage class="incoming" > I'm a broken long message wrapping to a new line </section>
+<section tuiMessage tuiShrinkWrap class="incoming" >
+<tui-shrink-wrap>I'm a fixed long message wrapping to a new line</tui-shrink-wrap>
+</section>
+<section tuiMessage class="outgoing" > I'm a short message </section>
+<section tuiMessage class="outgoing" > I'm a broken long message wrapping to a new line </section>
+<section tuiMessage tuiShrinkWrap class="outgoing" >
+<tui-shrink-wrap>I'm a fixed long message wrapping to a new line</tui-shrink-wrap>
+</section>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiMessage, TuiShrinkWrap} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiMessage, TuiShrinkWrap],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 16rem;
+}
+
+.incoming {
+    background: var(--tui-background-neutral-1);
+    border-end-start-radius: 0;
+    white-space: normal;
+
+    & + .incoming {
+        margin-block-start: -0.5rem;
+    }
+}
+
+.outgoing {
+    background: var(--tui-background-accent-1);
+    color: var(--tui-text-primary-on-accent-1);
+    align-self: flex-end;
+    white-space: normal;
+    border-end-end-radius: 0;
+
+    & + .outgoing {
+        margin-block-start: -0.5rem;
+    }
+}
+```
+
+#### Toasts
+
+**Template:**
+```html
+<h4 tuiHeader="body-l">With ShrinkWrap</h4>
+<div tuiToast>
+<tui-shrink-wrap>Long messages are wrapping perfectly to fit into max width of the toast</tui-shrink-wrap>
+</div>
+<h4 tuiHeader="body-l">Without ShrinkWrap</h4>
+<div tuiToast>Long messages are wrapping perfectly to fit into max width of the toast</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiHeader, TuiShrinkWrap, TuiToast],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+```
+
+#### Custom width
+
+**Template:**
+```html
+<div tuiCell tuiShrinkWrap="15rem" >
+<div tuiAvatar="@tui.user"></div>
+<div tuiTitle>
+<strong>Title</strong>
+<tui-shrink-wrap>Long messages are wrapping perfectly to fit into max width of the cell</tui-shrink-wrap>
+</div>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiShrinkWrap} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiAvatar, TuiCell, TuiShrinkWrap, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+[tuiCell] {
+    background: var(--tui-background-neutral-1);
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = ['Chat', 'Toasts', 'Custom width'];
 }
 ```
 
@@ -37408,7 +37507,7 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -37441,8 +37540,7 @@ import {
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TemplateRef)
-    private readonly template?: TemplateRef<any>;
+    private readonly template = viewChild(TemplateRef);
 
     private readonly dialogs = inject(WA_IS_MOBILE)
         ? inject(TuiSheetDialogService)
@@ -37454,7 +37552,7 @@ export default class Example {
     protected onClick(): void {
         this.step = 1;
         this.direction = 0;
-        this.dialogs.open(this.template, {appearance: 'fullscreen'}).subscribe();
+        this.dialogs.open(this.template(), {appearance: 'fullscreen'}).subscribe();
     }
 
     protected onStep(step: number): void {
@@ -38126,38 +38224,53 @@ export default class Example {}
 
 **Template:**
 ```html
-<button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/tickets.svg)'" [style.color]="'#d45d8c'" >
-<h3 class="heading">Tickets</h3>
-<div class="content">Concerts, theater, sports and movies</div>
-<div appearance="primary" size="s" tuiBadge class="badge" > 20% off </div>
+<button tuiSurface tuiTheme="dark" type="button" class="card" [style.background-image]="'url(/assets/images/tickets.svg)'" [style.color]="'#d45d8c'" >
+<span tuiTitle>
+<b>Tickets</b>
+<span tuiSubtitle>Concerts, theater, sports and movies</span>
+</span>
+<span appearance="primary" size="s" tuiBadge > 20% off </span>
 </button>
-<button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/gas.svg)'" [style.color]="'#7caeff'" >
-<h3 class="heading">Gas</h3>
-<div appearance="primary" size="s" tuiBadge class="badge" > +2000% </div>
+<button tuiSurface tuiTheme="dark" type="button" class="card" [style.background-image]="'url(/assets/images/gas.svg)'" [style.color]="'#7caeff'" >
+<span tuiTitle><b>Gas</b></span>
+<span appearance="primary" size="s" tuiBadge > +2000% </span>
 </button>
-<div tuiSurface class="restaurant" >
-<header tuiTheme="dark" class="header" >
-<label tuiTitle>
-<span tuiSubtitle>RESTAURANT</span> Eat all you can </label>
+<div tuiSurface tuiTheme="dark" class="restaurant" >
+<header tuiHeader="body-m">
+<hgroup tuiTitle>
+<h3>RESTAURANT</h3>
+<p tuiSubtitle>Eat all you can</p>
+</hgroup>
+<aside tuiAccessories>
 <button appearance="icon" iconStart="@tui.ellipsis" size="xs" tuiIconButton type="button" > More </button>
+</aside>
 </header>
 <footer class="footer">
-<button appearance="glass" size="m" tuiButton type="button" [style.border-radius.rem]="5" > Book a table </button>
-<button appearance="glass" iconStart="@tui.heart" size="m" tuiIconButton type="button" [style.border-radius.rem]="5" > Favorite </button>
+<button appearance="secondary-grayscale" size="m" tuiButton type="button" > Book a table </button>
+<button appearance="secondary-grayscale" iconStart="@tui.heart" size="m" tuiIconButton type="button" > Favorite </button>
 </footer>
 </div>
 <div tuiSurface tuiTheme="dark" class="blur" >
 <div tuiAvatar="@tui.user">
 <img alt="" src="assets/images/avatar.jpg" />
 </div>
-<label tuiLabel="Taiga UI">Alex Inkin</label>
-<button appearance="glass" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
+<label tuiTitle>
+<span tuiSubtitle>Taiga UI</span>
+<b>Alex Inkin</b>
+</label>
+<button appearance="secondary-grayscale" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
 </div>
-<div appearance="floating" tuiCardLarge tuiSurface class="reviews" >
-<h3 class="heading"> Taiga UI reviews <button tuiLink type="button" class="link" > Hide </button>
-</h3>
+<section appearance="floating" tuiCardLarge class="reviews" >
+<header tuiHeader="h6">
+<hgroup tuiTitle>
+<h2>Taiga UI reviews</h2>
+</hgroup>
+<aside tuiAccessories>
+<button tuiLink type="button" class="link" > Hide </button>
+</aside>
+</header>
 <tui-scrollbar class="scrollbar">
-<div class="wrapper"> @for (review of reviews; track review) { <div tuiAppearance="neutral" tuiSurface class="review" > {{ review.body }} <footer class="footer">
+<div class="wrapper"> @for (review of reviews; track review) { <div tuiAppearance="neutral" tuiSurface class="review" > {{ review.body }} <footer tuiCell>
 <div size="m" tuiAvatar="@tui.user" >
 <img alt="" src="assets/images/avatar.jpg" />
 </div>
@@ -38167,11 +38280,15 @@ export default class Example {}
 </div> } </div>
 </tui-scrollbar>
 <button appearance="secondary" size="m" tuiButton type="button" > See all </button>
-</div>
+</section>
 <div tuiSurface tuiTheme="dark" class="mask" >
-<h3 class="heading"> My bank account <button appearance="secondary" iconStart="@tui.pencil" size="s" tuiIconButton type="button" class="button" > Edit name </button>
-</h3>
-<span class="sum">{{ 23742 | tuiAmount: 'USD' : 'start' }}</span>
+<header tuiHeader="h4">
+<hgroup tuiTitle>
+<p tuiSubtitle> My bank account <button appearance="secondary" iconStart="@tui.pencil" size="xs" tuiIconButton type="button" [style.border-radius.%]="100" > Edit name </button>
+</p>
+<h3>{{ 23742 | tuiAmount: 'USD' : 'start' }}</h3>
+</hgroup>
+</header>
 <footer class="footer">
 <tui-thumbnail-card paymentSystem="mastercard" [style.background]="'#337'" > 1234 </tui-thumbnail-card>
 <tui-thumbnail-card paymentSystem="visa" [style.background]="'#e33'" > 5678 </tui-thumbnail-card>
@@ -38188,14 +38305,14 @@ import {TuiAmountPipe, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {
     TuiAppearance,
     TuiButton,
-    TuiLabel,
+    TuiCell,
     TuiLink,
     TuiScrollbar,
     tuiScrollbarOptionsProvider,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -38205,7 +38322,8 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
         TuiBadge,
         TuiButton,
         TuiCardLarge,
-        TuiLabel,
+        TuiCell,
+        TuiHeader,
         TuiLink,
         TuiScrollbar,
         TuiSurface,
@@ -38252,26 +38370,14 @@ export default class Example {
     display: flex;
     block-size: 7rem;
     flex-direction: column;
-    font: var(--tui-typography-body-xs);
 
     &:first-child {
         grid-column: span 2;
     }
 
-    .heading {
-        font: var(--tui-typography-body-s);
-        color: #fff;
-        font-weight: bold;
-        margin: -0.125rem 0 0;
-    }
-
-    .content {
-        max-inline-size: 50%;
-        color: #fff;
-    }
-
-    .badge {
-        margin: auto auto -0.125rem -0.125rem;
+    [tuiTitle] {
+        color: var(--tui-text-primary);
+        margin-block-end: auto;
     }
 }
 
@@ -38282,19 +38388,15 @@ export default class Example {
     grid-row: span 2;
     flex-direction: column;
     justify-content: space-between;
-    color: #fff;
-    font-size: 1.375rem;
-
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0 0.25rem;
-    }
 
     .footer {
         display: flex;
         justify-content: space-between;
+
+        button {
+            border-radius: 5rem;
+            backdrop-filter: blur(1rem) brightness(0.5);
+        }
     }
 }
 
@@ -38304,8 +38406,7 @@ export default class Example {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    font: var(--tui-typography-heading-h6);
-    color: #fff;
+    color: var(--tui-text-primary);
 
     .button {
         border-radius: 100%;
@@ -38314,37 +38415,18 @@ export default class Example {
 }
 
 .reviews {
-    display: flex;
     grid-column: span 3;
     grid-row: span 3;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 1.5rem;
-
-    .heading {
-        margin: -0.25rem 0 0;
-        font: var(--tui-typography-heading-h6);
-    }
-
-    .link {
-        float: right;
-        font: var(--tui-typography-body-m);
-
-        // Safari 15+
-        @supports (float: inline-end) {
-            float: inline-end;
-        }
-    }
 
     .scrollbar {
-        margin: 0.75rem -1.25rem 1.25rem;
+        margin: 0.75rem -1.5rem 1.25rem;
         scroll-snap-type: x mandatory;
         overscroll-behavior-x: contain;
     }
 
     .wrapper {
         display: flex;
-        padding: 0 1.25rem;
+        padding: 0 1.5rem;
         gap: 0.625rem;
 
         &::after {
@@ -38356,26 +38438,15 @@ export default class Example {
     .review {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
         min-inline-size: calc(100% - 0.75rem);
         padding: 0.75rem 1rem 1rem;
         border-radius: 1rem;
-        font: var(--tui-typography-body-l);
         scroll-snap-align: start;
-        scroll-margin: 1.25rem;
+        scroll-margin: 1.5rem;
     }
 
-    .footer {
-        display: flex;
-        align-items: flex-end;
-        gap: 0.75rem;
+    [tuiCell] {
         margin-block-start: auto;
-        font: var(--tui-typography-body-s);
-    }
-
-    .label {
-        flex-direction: column-reverse;
-        font-weight: bold;
     }
 }
 
@@ -38383,25 +38454,6 @@ export default class Example {
     grid-column: span 3;
     grid-row: span 3;
     padding: 4rem 2rem 7rem;
-    color: #fff;
-
-    .heading {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        font: var(--tui-typography-heading-h6);
-        margin: 0;
-    }
-
-    .button {
-        border-radius: 100%;
-        transform: scale(0.75);
-    }
-
-    .sum {
-        font: var(--tui-typography-heading-h4);
-        margin-block-end: 4rem;
-    }
 
     .footer {
         display: flex;
@@ -38424,9 +38476,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -38556,7 +38609,6 @@ button[tuiSwipeAction] {
 <img alt="" src="assets/images/avatar.jpg" />
 </div>
 <h3 tuiTitle="m">Alex Inkin</h3>
-<button appearance="glass" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
 </div>
 <input tuiSwipeAction tuiSwitch type="checkbox" [(ngModel)]="checkbox" />
 <button appearance="secondary-destructive" iconStart="@tui.trash" size="m" tuiIconButton tuiSwipeAction type="button" [style.borderRadius.%]="100" > Trash </button>
@@ -38571,9 +38623,18 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [FormsModule, TuiAvatar, TuiButton, TuiSwipeActions, TuiSwitch, TuiTitle],
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiSurface,
+        TuiSwipeActions,
+        TuiSwitch,
+        TuiTitle,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -38825,7 +38886,7 @@ export default class Example {}
 .fallback {
     .center-top();
 
-    right: 2rem;
+    inset-inline-end: 2rem;
 }
 
 tui-swipe-actions {
@@ -39378,7 +39439,7 @@ export default class Page {
 
 .fixed {
     position: fixed;
-    bottom: 0;
+    inset-block-end: 0;
     inline-size: 100%;
 }
 ```
@@ -40257,7 +40318,7 @@ export default class Example {
 }
 
 .second {
-    left: 11rem;
+    inset-inline-start: 11rem;
 }
 
 .text {
@@ -41006,7 +41067,7 @@ tr:hover td {
 }
 
 [tuiTh] {
-    border-top: none;
+    border-block-start: none;
 }
 
 [tuiTh],
@@ -42749,8 +42810,8 @@ export default class Example {
     .transition(opacity);
 
     position: absolute;
-    right: 0.75rem;
-    top: 1rem;
+    inset-inline-end: 0.75rem;
+    inset-block-start: 1rem;
     background: var(--tui-background-base);
     opacity: 0;
     cursor: move;
@@ -43385,7 +43446,9 @@ export default class Page {
 </div> Everything <button tuiButton type="button" > Action </button> @if (platform === 'web') { <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" > Close </button> } </div>
 </section>
 <section [tuiPlatform]="platform">
-<div iconStart="@tui.alarm-clock" tuiToast > The text of the notification telling what happened is in three lines because there is a lot of information <button tuiButton type="button" > Action </button>
+<div iconStart="@tui.alarm-clock" tuiShrinkWrap="min(25rem, 100%)" tuiToast >
+<tui-shrink-wrap> The text of the notification telling what happened is in three lines because there is a lot of information </tui-shrink-wrap>
+<button tuiButton type="button" > Action </button>
 </div>
 </section> }
 ```
@@ -43396,10 +43459,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiToast],
+    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiShrinkWrap, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -43546,7 +43609,10 @@ export default class Example {
 
     protected primitive(): void {
         this.toast
-            .open('Alarm saved', {autoClose: 0, data: '@tui.alarm-clock'})
+            .open('Alarm is set for next <b>Sunday</b>, March 8, 2026, 10:00', {
+                autoClose: 0,
+                data: '@tui.alarm-clock',
+            })
             .subscribe();
     }
 
@@ -43569,6 +43635,7 @@ export default class Example {
 ```ts
 import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
@@ -43588,6 +43655,7 @@ export default class Example {
     protected content = 'Notification';
     protected appearance = '';
     protected closable = this.options.closable;
+    protected readonly routes = DemoRoute;
 }
 ```
 
@@ -44334,7 +44402,7 @@ interface TreeNode {
     changeDetection,
 })
 export default class Example {
-    protected drag = signal<TreeNode | null>(null);
+    protected readonly drag = signal<TreeNode | null>(null);
 
     protected readonly cd = inject(ChangeDetectorRef);
 
@@ -46137,7 +46205,7 @@ export default class Example {
         Outline: ['outline', 'outline-destructive', 'outline-grayscale'],
         Action: ['action', 'action-destructive', 'action-grayscale'],
         Status: ['neutral', 'negative', 'positive', 'warning', 'info'],
-        Others: ['icon', 'floating', 'textfield', 'glass', 'accent'],
+        Others: ['icon', 'floating', 'textfield', 'accent'],
     };
 
     protected asIs(): number {
@@ -46390,7 +46458,7 @@ export default class Example {
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
 
-    protected numberProcessor = computed(
+    protected readonly numberProcessor = computed(
         ({decimalSeparator, thousandSeparator} = this.format()) =>
             (text: string) =>
                 text.replace(decimalSeparator, '.').replaceAll(thousandSeparator, ''),
@@ -46833,7 +46901,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiDropdown, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiFilterByInputPipe, TuiTitle} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiAvatar,
@@ -46841,7 +46909,6 @@ import {
     TuiComboBox,
     TuiDataListWrapper,
     TuiFade,
-    TuiFilterByInputPipe,
     TuiInitialsPipe,
     TuiInputChip,
     TuiInputNumber,
@@ -48094,7 +48161,7 @@ Directive allows to scale "stuck" sticky heading. It can also be used as service
 **TypeScript:**
 ```ts
 import {AsyncPipe} from '@angular/common';
-import {type AfterViewInit, Component, ViewChild} from '@angular/core';
+import {type AfterViewInit, Component, viewChild} from '@angular/core';
 import {outputToObservable} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -48112,19 +48179,20 @@ import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
     changeDetection,
 })
 export default class Example implements AfterViewInit {
-    @ViewChild(TuiElasticSticky)
-    protected readonly elasticSticky?: TuiElasticSticky;
+    protected readonly elasticSticky = viewChild(TuiElasticSticky);
 
     protected scale$?: Observable<number>;
 
     public ngAfterViewInit(): void {
-        if (!this.elasticSticky) {
+        const sticky = this.elasticSticky();
+
+        if (!sticky) {
             return;
         }
 
         // If we use it like that instead of (tuiElasticSticky)="onElasticSticky($event)"
         // we will not trigger unnecessary change detection when scale is less than 0.5
-        this.scale$ = outputToObservable(this.elasticSticky.tuiElasticSticky).pipe(
+        this.scale$ = outputToObservable(sticky.tuiElasticSticky).pipe(
             map((scale) => tuiClamp(scale, 0.5, 1)),
             startWith(1),
             distinctUntilChanged(),
@@ -48144,8 +48212,8 @@ export default class Example implements AfterViewInit {
 
 .header {
     position: sticky;
-    top: 0;
     z-index: 1;
+    inset-block-start: 0;
     block-size: 5.5rem;
     pointer-events: none;
 }
@@ -48507,8 +48575,8 @@ export default class Example {
     .transition(opacity, visibility);
 
     position: absolute;
-    bottom: 0;
-    right: 0;
+    inset-block-end: 0;
+    inset-inline-end: 0;
     transition-delay: var(--tui-duration);
 
     &_hidden {
@@ -48768,8 +48836,8 @@ export default class Example {
     private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
 
     protected value = 'I am a very long value';
-    protected range = signal([this.options.min * 16, this.options.max * 16]);
-    protected scale = computed<[number, number]>(() => [
+    protected readonly range = signal([this.options.min * 16, this.options.max * 16]);
+    protected readonly scale = computed<[number, number]>(() => [
         (this.range()[0] ?? 0) / 16,
         (this.range()[1] ?? 0) / 16,
     ]);
@@ -49086,11 +49154,16 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint, TuiIcon, TuiLink, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiFilterByInputPipe,
+    TuiHint,
+    TuiIcon,
+    TuiLink,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiSelect,
     TuiStringifyContentPipe,
     TuiTooltip,
@@ -49530,8 +49603,8 @@ export default class Example {
 <video #video tuiMedia width="320" class="video" [(currentTime)]="currentTime" [(paused)]="paused" (click)="toggleState()" >
 <source src="assets/media/bbb.mp4" type="video/mp4" />
 </video>
-<div class="controls">
-<button appearance="glass" size="s" title="Play/Pause" tuiIconButton tuiTheme="dark" type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
+<div tuiTheme="dark" class="controls" >
+<button appearance="secondary-grayscale" size="s" title="Play/Pause" tuiIconButton type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
 <input step="any" tuiSlider type="range" class="slider" [max]="video.duration" [(ngModel)]="currentTime" />
 <div class="time">
 <time [attr.datetime]="getTime(currentTime)"> {{ getTime(currentTime) }} </time> / <time [attr.datetime]="getTime(video.duration)"> {{ getTime(video.duration) }} </time>
@@ -49599,13 +49672,13 @@ export default class Example {
 
 .controls {
     position: absolute;
-    bottom: 0;
     display: flex;
+    inset-block-end: 0;
     inline-size: 100%;
     align-items: center;
     padding: 0.75rem 0.75rem 0.5rem;
     box-sizing: border-box;
-    color: var(--tui-background-base);
+    color: var(--tui-text-primary);
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.56));
 }
 
@@ -49627,7 +49700,7 @@ export default class Example {
 ```html
 <div class="tui-player">
 <audio #audio src="assets/media/strays.mp3" tuiMedia [(currentTime)]="currentTime" [(paused)]="paused" ></audio>
-<button appearance="secondary" title="Play/Pause" tuiIconButton type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
+<button appearance="flat" title="Play/Pause" tuiIconButton type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
 <div>
 <a href="https://waterplea.bandcamp.com/" tuiLink > Waterplea </a> — Strays <input step="any" tuiSlider type="range" class="slider" [max]="audio.duration" [(ngModel)]="currentTime" />
 </div>
@@ -50194,7 +50267,8 @@ export default class Page {
         ['#39b54a', '#ffd450', '#ffd450', '#fcc521', '#fab619', '#f8a34d', '#e01f19'],
         Array.from(
             {length: 20},
-            (_, index) => `var(--tui-chart-categorical-0${index + 1})`,
+            (_, index) =>
+                `var(--tui-chart-categorical-${String(index + 1).padStart(2, '0')})`,
         ),
     ];
 
@@ -50258,6 +50332,8 @@ export default class Example {}
 ```
 **LESS:**
 ```less
+@import '@taiga-ui/styles/utils';
+
 :host {
     position: relative;
     display: block;
@@ -50284,117 +50360,115 @@ export default class Example {}
 }
 
 .left-top {
-    left: 0;
-    top: 0;
+    inset-inline-start: 0;
+    inset-block-start: 0;
 }
 
 .right-bottom-handle {
-    right: 0;
-    bottom: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
 }
 
 .top-middle {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-start: 0;
 }
 
 .top-middle-handle {
-    left: 50%;
-    bottom: 0;
+    inset-inline-start: 50%;
+    inset-block-end: 0;
 }
 
 .top-right {
-    top: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
 }
 
 .top-right-handle {
-    left: 0;
-    bottom: 0;
+    inset-inline-start: 0;
+    inset-block-end: 0;
 }
 
 .middle-right {
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    .center-top();
+
+    inset-inline-end: 0;
 }
 
 .middle-right-handle {
-    left: 0;
-    top: 50%;
+    inset-inline-start: 0;
+    inset-block-start: 50%;
 }
 
 .bottom-right {
-    bottom: 0;
-    right: 0;
+    inset-block-end: 0;
+    inset-inline-end: 0;
 }
 
 .bottom-right-handle {
-    left: 0;
-    top: 0;
+    inset-inline-start: 0;
+    inset-block-start: 0;
 }
 
 .middle-bottom {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-end: 0;
 }
 
 .middle-bottom-handle {
-    left: 50%;
-    top: 0;
+    inset-inline-start: 50%;
+    inset-block-start: 0;
 }
 
 .bottom-left {
-    bottom: 0;
-    left: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
 }
 
 .bottom-left-handle {
-    right: 0;
-    top: 0;
+    inset-inline-end: 0;
+    inset-block-start: 0;
 }
 
 .left-middle {
-    left: 0;
-    top: 50%;
+    inset-inline-start: 0;
+    inset-block-start: 50%;
     transform: translateY(-50%);
 }
 
 .left-middle-handle {
-    right: 0;
-    top: 50%;
+    inset-inline-end: 0;
+    inset-block-start: 50%;
 }
 
 .middle-middle {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .center-all();
 }
 
 .middle-middle-top-handle {
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-start: 0;
 }
 
 .middle-middle-right-handle {
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    .center-top();
+
+    inset-inline-end: 0;
 }
 
 .middle-middle-bottom-handle {
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+    .center-left();
+
+    inset-block-end: 0;
 }
 
 .middle-middle-left-handle {
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    .center-top();
+
+    inset-inline-start: 0;
 }
 ```
 
@@ -51448,6 +51522,178 @@ export default class Page {}
 ```
 
 ---
+# directives/Truncate
+- **Package**: `CDK`
+- **Type**: directives
+Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.
+
+### Example
+
+```html
+<div class="demo" [style.font-size.px]="fontSize" [style.padding.px]="padding" [style.word-break]="wordBreak" [tuiTruncate]="lines" > {{ content }} </div>
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| <ng-content /> | `string` | Content |
+| [tuiTruncate] | `number` | Visible lines |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+<div tuiCardMedium class="poster" >
+<h2 tuiTitle> Poster @let text = `Look deep into nature, and then you will understand everything better: cinema, concerts, theaters and sports up to 25%`; <span tuiSubtitle tuiTruncate="2" [attr.title]="text" [textContent]="text" ></span>
+</h2>
+<div tuiBadge class="badge" >
+<tui-icon icon="@tui.rss" /> 10% </div>
+</div>
+<div tuiCardMedium class="fly" >
+<div tuiBadge class="badge" >
+<tui-icon icon="@tui.timer" /> 50 min </div>
+<h2 tuiTitle> Order #31 <span tuiSubtitle tuiTruncate > 8375 Brook Avenue Brooklyn, NY 11206 </span>
+</h2>
+</div>
+<div tuiCardLarge="compact" class="one-line" >
+<div tuiCell>
+<tui-icon icon="@tui.file" />
+<div tuiTruncate>filename_long_long_long_long_long_long_long_long_long_longname.doc</div>
+</div>
+</div> @let filename = `filename_long_long_long_long_long_long_long_long_long_longname.doc`; <div tuiCardLarge="compact" tuiHintDirection="top-end" class="two-line" [tuiHint]="filename" >
+<div tuiCell>
+<tui-icon icon="@tui.file" />
+<div tuiTruncate="2"> {{ filename }} </div>
+</div>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTruncate} from '@taiga-ui/cdk';
+import {TuiCell, TuiHint, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiBadge} from '@taiga-ui/kit';
+import {TuiCard} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiBadge,
+        TuiCard,
+        TuiCell,
+        TuiHint,
+        TuiIcon,
+        TuiTitle,
+        TuiTruncate,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    inline-size: 23.25rem;
+}
+
+.badge {
+    background: #aff218;
+    color: #333;
+}
+
+[tuiTruncate] {
+    inline-size: 100%;
+}
+
+[tuiSubtitle][tuiSubtitle] {
+    color: #fff;
+}
+
+h2 {
+    inline-size: 100%;
+}
+
+.poster {
+    background: #4158d0 linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 13.9375rem;
+    block-size: 8rem;
+}
+
+.fly {
+    background: #0093e9 linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 8rem;
+    block-size: 8rem;
+}
+
+.one-line {
+    background: #00dbde linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+    inline-size: 100%;
+}
+
+.two-line {
+    background: #fbab7e linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+    inline-size: 15.9375rem;
+}
+
+[tuiCardLarge] [tuiCell],
+[tuiCardLarge] tui-icon {
+    color: #fff;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiTruncate} from '@taiga-ui/cdk';
+
+@Component({
+    imports: [TuiDemo, TuiTruncate],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    changeDetection,
+})
+export default class Page {
+    protected content = 'I am very very long text that gets truncated';
+    protected lines = 1;
+    protected padding = 16;
+    protected fontSize = 16;
+    protected wordBreakStyles = ['break-word', 'break-all', 'normal'];
+    protected wordBreak = this.wordBreakStyles[0];
+}
+```
+
+### LESS
+
+```less
+.demo {
+    background: #87ceeb;
+    overflow: hidden;
+    resize: horizontal;
+}
+```
+
+---
 # directives/Validator
 - **Package**: `CDK`
 - **Type**: directives
@@ -51882,10 +52128,7 @@ tui-wrapper-example-1 {
 
         content: '';
         position: absolute;
-        top: -0.625rem;
-        left: -0.625rem;
-        right: -0.625rem;
-        bottom: -0.625rem;
+        inset: -0.625rem;
         border-radius: 100%;
         background: #000;
         opacity: 0;
@@ -52282,30 +52525,27 @@ export default class Example extends TuiRectAccessor {
 }
 
 .t1 {
-    top: 0.625rem;
-    left: 0.625rem;
+    inset-block-start: 0.625rem;
+    inset-inline-start: 0.625rem;
 }
 
 .t2 {
-    top: 0.625rem;
-    right: 0.625rem;
+    inset-block-start: 0.625rem;
+    inset-inline-end: 0.625rem;
 }
 
 .t3 {
-    right: 0.625rem;
-    bottom: 0.625rem;
+    inset-inline-end: 0.625rem;
+    inset-block-end: 0.625rem;
 }
 
 .t4 {
-    left: 0.625rem;
-    bottom: 0.625rem;
+    inset-inline-start: 0.625rem;
+    inset-block-end: 0.625rem;
 }
 
 .t-centered-axis-xy {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    .center-all();
 }
 
 .t-direction {
@@ -52935,8 +53175,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInput, TuiLabel} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe, TuiInput, TuiLabel} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -52964,12 +53204,12 @@ export default class Example {
 <tui-textfield tuiChevron [tuiTextfieldCleaner]="false" >
 <label tuiLabel>Search by last name</label>
 <input formControlName="user" tuiComboBox />
-<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: matcherString" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput: bySurname" />
 </tui-textfield>
 <tui-textfield tuiChevron class="tui-space_top-5" [stringify]="stringify" [tuiTextfieldCleaner]="false" >
 <label tuiLabel>With ids</label>
 <input formControlName="user2" tuiComboBox />
-<tui-data-list-wrapper *tuiDropdown [itemContent]="stringify | tuiStringifyContent" [items]="users | tuiFilterByInput: matcherUser" />
+<tui-data-list-wrapper *tuiDropdown [itemContent]="stringify | tuiStringifyContent" [items]="users | tuiFilterByInput: byId" />
 </tui-textfield>
 </form>
 ```
@@ -52979,12 +53219,12 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiStringMatcher} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {type TuiFilterByInputOptions, TuiFilterByInputPipe} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 
@@ -53010,11 +53250,11 @@ export default class Example<T extends User = User> {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
 
     protected readonly users = [
-        {id: 1, name: 'John Cleese'},
-        {id: 2, name: 'Eric Idle'},
-        {id: 3, name: 'Graham Chapman'},
-        {id: 4, name: 'Michael Palin'},
-        {id: 5, name: 'Terry Gilliam'},
+        {id: 42, name: 'John Cleese'},
+        {id: 0, name: 'Eric Idle'},
+        {id: 444, name: 'Graham Chapman'},
+        {id: 222, name: 'Michael Palin'},
+        {id: 404, name: 'Terry Gilliam'},
     ] as unknown as readonly T[];
 
     protected readonly form = new FormGroup({
@@ -53024,11 +53264,22 @@ export default class Example<T extends User = User> {
 
     protected readonly stringify = ({name}: T): string => name;
 
-    protected readonly matcherString = (name: string, search: string): boolean =>
-        name.split(' ').pop()?.toLowerCase().startsWith(search.toLowerCase()) ?? false;
+    protected readonly bySurname: TuiFilterByInputOptions<string>['filter'] = (
+        items,
+        search,
+    ) =>
+        items.filter((name) =>
+            name.split(' ').pop()?.toLowerCase().startsWith(search.toLowerCase()),
+        );
 
-    protected readonly matcherUser: TuiStringMatcher<T> = (user, search): boolean =>
-        user.name.toLowerCase().startsWith(search.toLowerCase());
+    protected readonly byId: TuiFilterByInputOptions<T>['filter'] = (users, search) =>
+        users.find((x) => String(x.id) === search)
+            ? users
+            : users.filter(
+                  (user) =>
+                      String(user.id).includes(search) ||
+                      TUI_DEFAULT_MATCHER(user, search, this.stringify),
+              );
 }
 ```
 
@@ -53049,11 +53300,10 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
+import {TuiFilterByInputPipe, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
@@ -53103,8 +53353,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInput} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe, TuiInput} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {delay, of, startWith} from 'rxjs';
 
 @Component({
@@ -53504,11 +53754,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiFilterByInputPipe} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiStringifyContentPipe,
     TuiStringifyPipe,
 } from '@taiga-ui/kit';
@@ -53586,11 +53836,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiFilterByInputPipe} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 
