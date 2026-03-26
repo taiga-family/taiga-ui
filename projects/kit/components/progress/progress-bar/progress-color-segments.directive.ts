@@ -9,7 +9,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {map, tap} from 'rxjs';
+import {distinctUntilChanged, map, tap} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -24,6 +24,7 @@ export class TuiProgressColorSegments {
     private readonly width = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
             map(([x]) => x?.contentRect.width ?? 0),
+            distinctUntilChanged(),
             // Angular 16 bug
             // Otherwise, host: {'[style.--tui-progress-color]': 'gradient()'} will not recomputed
             tap(() => this.cdr.markForCheck()),
