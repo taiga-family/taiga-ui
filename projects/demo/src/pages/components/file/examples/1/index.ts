@@ -7,7 +7,16 @@ import {TuiFile} from '@taiga-ui/experimental';
 import {TuiProgressCircle, TuiProgressLabel} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButtonX, TuiFile, TuiIcon, TuiTitle, UpperCasePipe, TuiButton, TuiProgressCircle, TuiProgressLabel],
+    imports: [
+        TuiButton,
+        TuiButtonX,
+        TuiFile,
+        TuiIcon,
+        TuiProgressCircle,
+        TuiProgressLabel,
+        TuiTitle,
+        UpperCasePipe,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
