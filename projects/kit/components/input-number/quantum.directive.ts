@@ -44,7 +44,7 @@ export class TuiBigIntQuantumValueTransformer extends TuiValueTransformer<
     bigint | null,
     bigint | null
 > {
-    public readonly quantum = input<bigint>(BigInt(0));
+    public readonly quantum = input(BigInt(0));
     public override fromControlValue = identity;
 
     public toControlValue(value: bigint | null): bigint | null {

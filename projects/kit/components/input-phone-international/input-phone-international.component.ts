@@ -106,7 +106,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly change = effect(() => this.onChange(this.unmask(this.masked())));
-    protected readonly search = signal<string>('');
+    protected readonly search = signal('');
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected readonly masked = tuiValue(this.el);
     protected readonly mask = tuiMaskito(

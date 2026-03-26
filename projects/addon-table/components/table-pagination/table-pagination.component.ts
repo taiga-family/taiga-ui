@@ -44,14 +44,12 @@ export class TuiTablePagination {
     );
 
     protected readonly rightDisabled = computed(() => this.end() === this.total());
-    protected readonly pagination = computed<TuiTablePaginationEvent>(() => {
-        return {
-            page: this.page(),
-            size: this.size(),
-        };
-    });
+    protected readonly pagination = computed<TuiTablePaginationEvent>(() => ({
+        page: this.page(),
+        size: this.size(),
+    }));
 
-    public readonly items = input<readonly number[]>(this.options.items);
+    public readonly items = input(this.options.items);
     public readonly total = input(0);
     public readonly page = model(0);
     public readonly size = model(this.options.size);

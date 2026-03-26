@@ -53,8 +53,8 @@ export class TuiPreviewComponent {
     protected readonly texts = inject(TUI_PREVIEW_TEXTS);
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly cdr = inject(ChangeDetectorRef);
-    protected readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
-    protected readonly rotation$ = new BehaviorSubject<number>(0);
+    protected readonly zoom$ = new BehaviorSubject(this.minZoom);
+    protected readonly rotation$ = new BehaviorSubject(0);
     protected readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
         EMPTY_COORDINATES,
     );

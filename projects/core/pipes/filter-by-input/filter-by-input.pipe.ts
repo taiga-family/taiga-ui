@@ -20,9 +20,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
     private readonly options = inject(TUI_FILTER_BY_INPUT_OPTIONS);
     private readonly search = inject(TUI_TEXTFIELD_VALUE);
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
-    private readonly filter = signal<TuiFilterByInputOptions['filter']>(
-        this.options.filter,
-    );
+    private readonly filter = signal(this.options.filter);
 
     private readonly filterFlat = computed(
         (

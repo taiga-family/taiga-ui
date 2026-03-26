@@ -96,7 +96,7 @@ export class TuiLineChart {
         transform: (value) => value.filter((item) => !item.some(Number.isNaN)),
     });
 
-    public readonly hovered = signal<number>(NaN);
+    public readonly hovered = signal(NaN);
 
     public onHovered(index: number): void {
         this.hovered.set(index);
