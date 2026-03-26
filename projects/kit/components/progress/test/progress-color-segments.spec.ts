@@ -90,5 +90,22 @@ describe('TuiProgressColorSegments', () => {
                 'linear-gradient(to right, color1 0px 20px, color2 20px 40px, color3 40px 60px, color4 60px 80px, color5 80px 100px)',
             );
         });
+
+        it('changes color when width changes', () => {
+            testComponent.colors.set(['color1', 'color2']);
+            observerServiceMock.next([{contentRect: {width: 500}}]);
+            fixture.detectChanges();
+
+            expect(getTuiProgressColor()).toBe(
+                'linear-gradient(to right, color1 0px 250px, color2 250px 500px)',
+            );
+
+            observerServiceMock.next([{contentRect: {width: 300}}]);
+            fixture.detectChanges();
+
+            expect(getTuiProgressColor()).toBe(
+                'linear-gradient(to right, color1 0px 150px, color2 150px 300px)',
+            );
+        });
     });
 });
