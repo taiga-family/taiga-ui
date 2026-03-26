@@ -2,7 +2,7 @@ import {computed, Directive, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {distinctUntilChanged, map} from 'rxjs';
+import {map} from 'rxjs';
 
 @Directive({
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
@@ -15,7 +15,6 @@ export class TuiProgressColorSegments {
     private readonly width = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
             map(([x]) => x?.contentRect.width ?? 0),
-            distinctUntilChanged(),
         ),
         {initialValue: this.el.offsetWidth},
     );
