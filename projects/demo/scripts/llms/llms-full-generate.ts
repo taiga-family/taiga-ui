@@ -412,8 +412,7 @@ async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]
             console.info(`Found .md files in examples: ${mdFiles.length}`);
 
             if (mdFiles.length > 0 && !hasMarkdownContent) {
-                output.push('# Getting Started');
-                output.push('');
+                output.push('# Getting Started', '');
                 hasMarkdownContent = true;
             }
 
