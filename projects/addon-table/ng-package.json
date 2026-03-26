@@ -4,6 +4,7 @@
         "."
     ],
     "dest": "../../dist/addon-table",
+    "inlineStyleLanguage": "less",
     "lib": {
         "entryFile": "index.ts"
     }
