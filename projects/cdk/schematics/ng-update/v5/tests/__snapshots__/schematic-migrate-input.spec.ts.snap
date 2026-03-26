@@ -106,6 +106,26 @@ exports[`ng-update legacy input migrates tui-input wrapper attrs and routes them
 }
 `;
 
+exports[`ng-update legacy input migrates tuiHintDirection value alongside wrapper attrs: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    formControlName="value"
+                    tuiHintContent="Hint"
+                    tuiHintDirection="bottom-right"
+                >
+                    Label
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield tuiHintContent="Hint" tuiHintDirection="bottom-end">
+                <label tuiLabel>Label</label>
+                <input tuiInput formControlName="value" />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update legacy input places unrecognized attributes on <tui-textfield> with TODO per attr: test.html 1`] = `
 {
   "0. Before": "<tui-input formControlName="value" someCustomDir [anotherDir]="config">Label</tui-input>",
