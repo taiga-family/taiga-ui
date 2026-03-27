@@ -37,39 +37,52 @@
     }
 
     &[tuiHeader] {
-        padding: var(--t-dim) var(--t-dim) var(--t-dim) var(--t-padding);
+        padding: var(--t-dim) var(--t-padding);
 
-        [tuiLink]:last-child {
-            margin-inline-end: calc(-1 * var(--t-comp));
+        [tuiButton]:last-child,
+        [tuiAvatar]:last-child,
+        [tuiSwitch]:last-child {
+            margin-inline-end: var(--t-comp);
         }
     }
 
     > [tuiHeader] {
-        margin: var(--t-comp) var(--t-comp) calc(1.5 * var(--t-comp)) 0;
+        margin: var(--t-comp) 0 calc(2 * var(--t-comp));
 
-        [tuiLink]:last-child {
-            margin-inline-end: calc(-1 * var(--t-comp));
+        [tuiButton]:last-child,
+        [tuiAvatar]:last-child,
+        [tuiSwitch]:last-child {
+            margin-inline-end: var(--t-comp);
         }
     }
 
     [tuiCell] {
         inline-size: 100%;
-        padding: 0.5rem;
         margin: -0.5rem -0.5rem -0.75rem;
         border-radius: var(--tui-radius-l);
+
+        --t-pad: 0.5rem;
 
         &:last-of-type {
             margin-block-end: -0.5rem;
         }
     }
 
-    > [tuiLink]:last-child {
-        display: block;
-        inline-size: fit-content;
-        margin-block-end: var(--t-comp);
+    [tuiHeader] + [tuiCell] {
+        margin-block-start: var(--t-comp);
     }
 
     [tuiAccessories] > [tuiButtonX] {
         align-self: flex-start;
+
+        --t-size: 1.5rem;
+    }
+
+    > footer {
+        margin-block-end: var(--t-comp);
+
+        > [tuiButton] {
+            margin-block-end: calc(-1 * var(--t-comp));
+        }
     }
 }
