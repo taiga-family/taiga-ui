@@ -35,6 +35,7 @@ import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
+import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migratePackages} from './steps/migrate-packages';
 import {migrateTemplates} from './steps/migrate-templates';
@@ -111,6 +112,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateStyles',
                     step: migrateStyles,
+                },
+                {
+                    name: 'migrateDocI18nTokens',
+                    step: () => migrateDocI18nTokens(tree, options),
                 },
             ],
             timings,

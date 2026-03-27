@@ -7,7 +7,7 @@
             [ngModel]="dark()"
             (ngModelChange)="onModeChange($event)"
         />
-        <small>{{ texts[0] }}</small>
+        <small>{{ texts()[0] }}</small>
     </label>
     <label tuiLabel>
         <input
@@ -17,7 +17,7 @@
             [ngModel]="opaque"
             (ngModelChange)="changeOpaque($event)"
         />
-        <small>{{ texts[1] }}</small>
+        <small>{{ texts()[1] }}</small>
     </label>
 </div>
 <div
@@ -67,7 +67,7 @@
             [tuiChevron]="expanded"
             (click)="toggleDetails()"
         >
-            {{ texts[2] }}
+            {{ texts()[2] }}
         </button>
         <tui-textfield
             tuiChevron

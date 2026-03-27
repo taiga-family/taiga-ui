@@ -4,6 +4,7 @@ import {
     type ApplicationConfig,
     inject,
     provideExperimentalZonelessChangeDetection,
+    signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
@@ -305,7 +306,7 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_SOURCE_CODE_TEXT,
-            useValue: 'GitHub',
+            useValue: signal('GitHub'),
         },
         tuiDocIconsProvider({code: '@tui.github'}),
     ],

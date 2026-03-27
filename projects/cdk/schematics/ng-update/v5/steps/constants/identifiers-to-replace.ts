@@ -879,4 +879,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TUI_DOC_EXAMPLE_TEXTS',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TUI_DOC_PREVIEW_TEXT',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];
