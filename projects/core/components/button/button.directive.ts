@@ -20,12 +20,7 @@ import {tuiSetAttributes} from './set-attributes';
 @Component({
     standalone: true,
     template: '',
-    styles: [
-        `
-            @version: '${TUI_VERSION}';
-            @import '@taiga-ui/core/styles/components/button.less';
-        `,
-    ],
+    styles: ['@import "@taiga-ui/core/styles/components/button.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-button-${TUI_VERSION}`,
