@@ -1264,7 +1264,9 @@ component's `imports` array. Check the **Import Map** for the correct package.
 
 ---
 
-# addons.md
+# Getting Started
+
+## addons.md
 
 ```bash
 npm i @taiga-ui/addon-charts    // Components for various charts, graphs and visualizations
@@ -1276,7 +1278,7 @@ npm i @taiga-ui/layout          // Layout components
 ```
 
 ---
-# angular-json-styles.md
+## angular-json-styles.md
 
 ```json
 {
@@ -1299,7 +1301,7 @@ npm i @taiga-ui/layout          // Layout components
 ```
 
 ---
-# app-standalone.md
+## app-standalone.md
 
 ```ts
 import {TuiRoot} from '@taiga-ui/core';
@@ -1316,7 +1318,7 @@ export class App {}
 ```
 
 ---
-# app-template.md
+## app-template.md
 
 ```html
 <tui-root>
@@ -1328,7 +1330,7 @@ export class App {}
 ```
 
 ---
-# assets.md
+## assets.md
 
 ```json
 {
@@ -1352,7 +1354,7 @@ export class App {}
 ```
 
 ---
-# main-standalone.md
+## main-standalone.md
 
 ```ts
 import {provideTaiga} from '@taiga-ui/core';
@@ -1366,14 +1368,14 @@ bootstrapApplication(App, {
 ```
 
 ---
-# main.md
+## main.md
 
 ```bash
 npm i @taiga-ui/{cdk,core,kit,icons}
 ```
 
 ---
-# nx-add.md
+## nx-add.md
 
 ```bash
 npm i taiga-ui
@@ -1381,7 +1383,7 @@ nx g taiga-ui:ng-add
 ```
 
 ---
-# nx-assets.md
+## nx-assets.md
 
 ```json
 {
@@ -1403,7 +1405,7 @@ nx g taiga-ui:ng-add
 ```
 
 ---
-# nx-migrate.md
+## nx-migrate.md
 
 ```bash
 nx migrate @taiga-ui/cdk
@@ -1411,14 +1413,14 @@ nx migrate --run-migrations=migrations.json
 ```
 
 ---
-# ponyfill.md
+## ponyfill.md
 
 ```bash
 npm install css-vars-ponyfill
 ```
 
 ---
-# project-json-styles.md
+## project-json-styles.md
 
 ```json
 {
