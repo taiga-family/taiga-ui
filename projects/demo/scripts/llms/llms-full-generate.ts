@@ -391,6 +391,7 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
 
 async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]> {
     const output: string[] = [];
+    let hasMarkdownContent = false;
 
     const entries = Array.from(cliOptions.roots.entries());
 
@@ -402,23 +403,37 @@ async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]
             continue;
         }
 
-        const dirName = cliOptions.markdownDirs?.[idx] ?? 'getting-started';
-        const examplesPath = path.join(rootCandidate, 'app', dirName, 'examples');
+        const configuredDir = cliOptions.markdownDirs?.[idx];
+        const scanDirs = configuredDir ? [configuredDir] : ['getting-started', 'home'];
+        const markdownFiles = new Set<string>();
 
-        console.info(`Search .md files in: ${examplesPath}`);
+        for (const dirName of scanDirs) {
+            const examplesPath = path.join(rootCandidate, 'app', dirName, 'examples');
 
-        try {
-            const mdFiles = await getMarkdownFiles(examplesPath);
+            console.info(`Search .md files in: ${examplesPath}`);
 
-            console.info(`Found .md files in examples: ${mdFiles.length}`);
+            try {
+                const mdFiles = await getMarkdownFiles(examplesPath);
 
-            for (const mdFile of mdFiles) {
-                output.push(await processMarkdownFile(mdFile));
+                console.info(`Found .md files in examples: ${mdFiles.length}`);
+
+                for (const mdFile of mdFiles) {
+                    markdownFiles.add(mdFile);
+                }
+            } catch (error) {
+                console.warn(
+                    `Warning: Could not process markdown files from ${examplesPath}: ${error}`,
+                );
             }
-        } catch (error) {
-            console.warn(
-                `Warning: Could not process markdown files from ${examplesPath}: ${error}`,
-            );
+        }
+
+        if (markdownFiles.size > 0 && !hasMarkdownContent) {
+            output.push('# Getting Started', '');
+            hasMarkdownContent = true;
+        }
+
+        for (const mdFile of markdownFiles) {
+            output.push(await processMarkdownFile(mdFile, 2));
         }
     }
 
