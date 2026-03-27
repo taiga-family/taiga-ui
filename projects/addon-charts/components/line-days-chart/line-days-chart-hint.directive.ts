@@ -2,22 +2,15 @@ import {
     type AfterContentInit,
     computed,
     contentChildren,
-    DestroyRef,
     Directive,
     forwardRef,
-    inject,
-    input,
-    NgZone,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
+import {
+    tuiLineChartDrivers,
+    TuiLineChartHintDirective,
+} from '@taiga-ui/addon-charts/components/line-chart';
 import {type TuiDay} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {type TuiContext} from '@taiga-ui/cdk/types';
-import {type TuiPoint} from '@taiga-ui/core/types';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChart} from './line-days-chart.component';
 
@@ -25,39 +18,24 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
     return value.find(([day]) => day.daySame(current)) || [current, NaN];
 }
 
-// TODO: Consider extending TuiLineChartHintDirective
 @Directive({
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
 })
-export class TuiLineDaysChartHint implements AfterContentInit {
+export class TuiLineDaysChartHint
+    extends TuiLineChartHintDirective
+    implements AfterContentInit
+{
     private readonly charts = contentChildren(forwardRef(() => TuiLineDaysChart));
     private readonly map = computed(() =>
         this.getMap(...this.charts().map(({value}) => value())),
     );
 
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-    private readonly hovered$ = inject(TuiHoveredService);
-
-    public readonly hint = input<PolymorpheusContent<TuiContext<readonly TuiPoint[]>>>(
-        '',
-        {alias: 'tuiLineChartHint'},
-    );
-
     public ngAfterContentInit(): void {
-        combineLatest([
-            ...this.charts().map(({charts}) => tuiLineChartDrivers(charts())),
-            this.hovered$,
-        ])
-            .pipe(
-                filter((result) => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
-            )
-            .subscribe(() => {
-                this.charts().forEach((chart) => chart.onHovered(NaN));
-            });
+        this.syncHoverState(
+            this.charts().map(({charts}) => tuiLineChartDrivers(charts())),
+            () => this.charts().forEach((chart) => chart.onHovered(NaN)),
+        );
     }
 
     public getContext(day: TuiDay): ReadonlyArray<[TuiDay, number]> {

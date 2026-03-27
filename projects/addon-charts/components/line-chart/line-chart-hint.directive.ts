@@ -28,17 +28,39 @@ import {
 
 import {TuiLineChart} from './line-chart.component';
 
+@Directive()
+export abstract class TuiLineChartHintDirective {
+    protected readonly destroyRef = inject(DestroyRef);
+    protected readonly zone = inject(NgZone);
+    protected readonly hovered$ = inject(TuiHoveredService);
+
+    public readonly hint = input<PolymorpheusContent<TuiContext<readonly TuiPoint[]>>>(
+        '',
+        {alias: 'tuiLineChartHint'},
+    );
+
+    protected syncHoverState(
+        drivers: ReadonlyArray<Observable<boolean>>,
+        onHide: () => void,
+    ): void {
+        combineLatest([...drivers, this.hovered$])
+            .pipe(
+                filter((result) => !result.some(Boolean)),
+                tuiZonefree(this.zone),
+                takeUntilDestroyed(this.destroyRef),
+            )
+            .subscribe(onHide);
+    }
+}
+
 @Directive({
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
 })
-export class TuiLineChartHint implements AfterViewInit {
+export class TuiLineChartHint extends TuiLineChartHintDirective implements AfterViewInit {
     private readonly charts = contentChildren(TuiLineChart);
     private readonly chartsRef = contentChildren(TuiLineChart, {read: ElementRef});
     private readonly renderer = inject(Renderer2);
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-    private readonly hovered$ = inject(TuiHoveredService);
 
     private readonly computedContext = computed<ReadonlyArray<readonly TuiPoint[]>>(
         (values = this.charts().map(({value}) => value())) =>
@@ -47,21 +69,10 @@ export class TuiLineChartHint implements AfterViewInit {
             ),
     );
 
-    public readonly hint = input<PolymorpheusContent<TuiContext<readonly TuiPoint[]>>>(
-        '',
-        {alias: 'tuiLineChartHint'},
-    );
-
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts()), this.hovered$])
-            .pipe(
-                filter((result) => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
-            )
-            .subscribe(() => {
-                this.charts().forEach((chart) => chart.onHovered(NaN));
-            });
+        this.syncHoverState([tuiLineChartDrivers(this.charts())], () =>
+            this.charts().forEach((chart) => chart.onHovered(NaN)),
+        );
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
