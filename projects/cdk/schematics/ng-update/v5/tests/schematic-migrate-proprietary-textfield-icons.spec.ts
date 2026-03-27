@@ -16,7 +16,7 @@ describe('ng-update proprietary textfield icons', () => {
     it(
         'changes medium icons to small when size is absent in proprietary project',
         proprietaryMigrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textfield
                     iconEnd="@tui.foo.medium.settings"
                     iconStart="@tui.pragmatic.medium.magnifier"
@@ -28,11 +28,11 @@ describe('ng-update proprietary textfield icons', () => {
     it(
         'changes medium icons to small when tuiTextfieldSize is l in proprietary project',
         proprietaryMigrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textfield
-                    tuiTextfieldSize="l"
                     iconEnd="@tui.pragmatic.medium.settings"
                     iconStart="@tui.foo.medium.magnifier"
+                    tuiTextfieldSize="l"
                 />
             `,
         }),
@@ -41,7 +41,7 @@ describe('ng-update proprietary textfield icons', () => {
     it(
         'does not change icons without proprietary dependency',
         migrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textfield
                     iconEnd="@tui.pragmatic.medium.settings"
                     iconStart="@tui.foo.medium.magnifier"
@@ -53,11 +53,11 @@ describe('ng-update proprietary textfield icons', () => {
     it(
         'does not change icons when tuiTextfieldSize is m in proprietary project',
         proprietaryMigrate({
-            template: `
+            template: /* HTML */ `
                 <tui-textfield
-                    tuiTextfieldSize="m"
                     iconEnd="@tui.pragmatic.medium.settings"
                     iconStart="@tui.foo.medium.magnifier"
+                    tuiTextfieldSize="m"
                 />
             `,
         }),
