@@ -707,9 +707,13 @@ export async function getMarkdownFiles(startPath: string): Promise<string[]> {
 }
 
 // parse markdown files content
-export async function processMarkdownFile(filePath: string): Promise<string> {
+export async function processMarkdownFile(
+    filePath: string,
+    headingLevel = 1,
+): Promise<string> {
     const content = await fs.readFile(filePath, 'utf-8');
-    const title = `# ${path.basename(filePath)}`;
+    const normalizedHeadingLevel = Math.max(1, headingLevel);
+    const title = `${'#'.repeat(normalizedHeadingLevel)} ${path.basename(filePath)}`;
 
     // Clean up the content for better formatting
     const cleanContent = content

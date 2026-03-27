@@ -389,6 +389,7 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
 
 async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]> {
     const output: string[] = [];
+    let hasMarkdownContent = false;
 
     const entries = Array.from(cliOptions.roots.entries());
 
@@ -410,8 +411,13 @@ async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]
 
             console.info(`Found .md files in examples: ${mdFiles.length}`);
 
+            if (mdFiles.length > 0 && !hasMarkdownContent) {
+                output.push('# Getting Started', '');
+                hasMarkdownContent = true;
+            }
+
             for (const mdFile of mdFiles) {
-                output.push(await processMarkdownFile(mdFile));
+                output.push(await processMarkdownFile(mdFile, 2));
             }
         } catch (error) {
             console.warn(
