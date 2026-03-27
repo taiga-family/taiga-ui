@@ -19,8 +19,8 @@ jobs:
       - uses: actions/checkout@v6.0.2
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@v1.193.0
-      - uses: taiga-family/ci/actions/setup/node@v1.193.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.194.0
+      - uses: taiga-family/ci/actions/setup/node@v1.194.0
 
       - run: echo "$(git log -1 --pretty=format:"%s")" | npx commitlint --verbose
         if: github.event_name == 'pull_request'
@@ -39,7 +39,7 @@ jobs:
               npm run lint
               HTML_ESLINT=true npm run lint
           fi
-      - uses: taiga-family/ci/actions/auto/push@v1.193.0
+      - uses: taiga-family/ci/actions/auto/push@v1.194.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
