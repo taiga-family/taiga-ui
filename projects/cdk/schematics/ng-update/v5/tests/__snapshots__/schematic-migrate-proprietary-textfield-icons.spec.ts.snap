@@ -21,16 +21,16 @@ exports[`ng-update proprietary textfield icons changes medium icons to small whe
 {
   "0. Before": "
                 <tui-textfield
-                    tuiTextfieldSize="l"
                     iconEnd="@tui.pragmatic.medium.settings"
                     iconStart="@tui.foo.medium.magnifier"
+                    tuiTextfieldSize="l"
                 />
             ",
   "1. After": "
                 <tui-textfield
-                    tuiTextfieldSize="l"
                     iconEnd="@tui.pragmatic.small.settings"
                     iconStart="@tui.foo.small.magnifier"
+                    tuiTextfieldSize="l"
                 />
             ",
 }
