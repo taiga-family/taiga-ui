@@ -41,8 +41,10 @@ test.describe('Demo', () => {
                 await example.scrollIntoViewIfNeeded();
                 await documentation.waitStableState(); // note: load lazy loading images
 
-                // e2e flaky: wait more time for charts graphics
-                await page.waitForTimeout(path.includes('charts') ? 1000 : 150);
+                const preventFlaky =
+                    path.includes('charts') || path.includes('line-clamp');
+
+                await page.waitForTimeout(preventFlaky ? 1000 : 150);
 
                 const makeName = (mode: string): string[] => [
                     path.replace('/', '').replaceAll('/', '-'),
