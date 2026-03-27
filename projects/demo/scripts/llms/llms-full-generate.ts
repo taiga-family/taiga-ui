@@ -428,8 +428,7 @@ async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]
         }
 
         if (markdownFiles.size > 0 && !hasMarkdownContent) {
-            output.push('# Getting Started');
-            output.push('');
+            output.push('# Getting Started', '');
             hasMarkdownContent = true;
         }
 
