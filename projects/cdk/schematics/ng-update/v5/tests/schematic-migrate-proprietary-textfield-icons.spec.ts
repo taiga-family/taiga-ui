@@ -7,11 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update proprietary textfield icons', () => {
     const proprietaryMigrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        packageJson: JSON.stringify({
-            dependencies: {
-                '@taiga-ui/proprietary': '^4.0.0',
-            },
-        }),
+        packageJson: JSON.stringify({dependencies: {'@taiga-ui/proprietary': '^4.0.0'}}),
     });
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
