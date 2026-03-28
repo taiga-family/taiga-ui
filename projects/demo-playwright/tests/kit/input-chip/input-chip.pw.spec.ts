@@ -248,9 +248,11 @@ test.describe('InputChip', () => {
             });
 
             test('value from list only', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(1),
-                );
+                const block = example.locator('label[tuiLabel]').filter({
+                    hasText:
+                        'Only allowing items from the list and hiding values when not focused behind a custom content',
+                });
+                const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
@@ -263,9 +265,11 @@ test.describe('InputChip', () => {
             });
 
             test('select value from list', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(1),
-                );
+                const block = example.locator('label[tuiLabel]').filter({
+                    hasText:
+                        'Only allowing items from the list and hiding values when not focused behind a custom content',
+                });
+                const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
@@ -279,11 +283,13 @@ test.describe('InputChip', () => {
             });
 
             test('checkboxes', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(2),
-                );
+                const block = example.locator('label[tuiLabel]').filter({
+                    hasText:
+                        'Using checkboxes in the dropdown and making the textfield non-writable',
+                });
+                const multiselect = new TuiMultiSelectPO(block);
 
-                await example.locator('tui-textfield').nth(2).click();
+                await block.locator('tui-textfield').click();
                 await expect(multiselect.dropdown).toBeAttached();
                 const options = multiselect.dropdown.locator('[tuiOption]');
 
@@ -295,11 +301,13 @@ test.describe('InputChip', () => {
             });
 
             test('working with objects', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(3),
-                );
+                const block = example
+                    .locator('label[tuiLabel]')
+                    .filter({hasText: 'Working with objects'});
 
-                await example.locator('tui-textfield').nth(3).click();
+                const multiselect = new TuiMultiSelectPO(block);
+
+                await block.locator('tui-textfield').click();
                 await expect(multiselect.dropdown).toBeAttached();
                 await multiselect.dropdown
                     .getByRole('button', {name: 'Select all'})
