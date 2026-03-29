@@ -1,14 +1,19 @@
 import {
-    type AfterViewChecked,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
+    DestroyRef,
+    effect,
     ElementRef,
     inject,
     input,
+    output,
+    signal,
+    untracked,
     viewChild,
 } from '@angular/core';
-import {outputFromObservable, toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -17,14 +22,13 @@ import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     debounceTime,
-    distinctUntilChanged,
     filter,
     fromEvent,
     map,
+    merge,
     of,
     pairwise,
     startWith,
-    Subject,
     switchMap,
 } from 'rxjs';
 
@@ -40,28 +44,24 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox}],
     hostDirectives: [TuiTransitioned],
-    host: {
-        '[style.line-height.px]': 'line()',
-        '(transitionend)': 'update()',
-        '(mouseenter)': 'update()',
-        '(resize)': 'update()',
-    },
+    host: {'[style.line-height.px]': 'line()'},
 })
-export class TuiLineClamp implements AfterViewChecked {
+export class TuiLineClamp {
+    private readonly destroyRef = inject(DestroyRef);
+
     private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-    private readonly isOverflown$ = new Subject<boolean>();
+
+    private readonly isOverflowing = signal(false);
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
 
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
-    public readonly overflownChange = outputFromObservable(
-        this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
-    );
+    public readonly overflownChange = output<boolean>();
 
     protected readonly lineClamp = toSignal(
         toObservable(this.linesLimit).pipe(
@@ -79,25 +79,54 @@ export class TuiLineClamp implements AfterViewChecked {
         {initialValue: 0},
     );
 
-    public ngAfterViewChecked(): void {
-        this.update();
-        this.isOverflown$.next(this.overflown);
-    }
+    constructor() {
+        afterNextRender({
+            write: () => {
+                this.update();
+                this.setupListeners();
+            },
+        });
 
-    protected get overflown(): boolean {
-        const {scrollHeight, scrollWidth} = this.outlet().nativeElement;
-        const {clientWidth} = this.el;
+        effect(() => {
+            this.lineHeight();
+            this.linesLimit();
 
-        return scrollHeight > this.maxHeight() || scrollWidth > clientWidth;
+            untracked(() => {
+                this.el.style.maxHeight = tuiPx(this.maxHeight());
+                this.update();
+            });
+        });
     }
 
     protected get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.overflown ? this.content() : '';
+        return this.options.showHint && this.isOverflowing() ? this.content() : '';
     }
 
-    protected update(): void {
-        this.el.style.height = tuiPx(this.outlet().nativeElement.scrollHeight);
-        this.el.style.maxHeight = tuiPx(this.maxHeight());
-        this.el.classList.toggle('_overflown', this.overflown);
+    private setupListeners(): void {
+        merge(
+            fromEvent(this.el, 'mouseenter'),
+            fromEvent(window, 'resize').pipe(debounceTime(100)),
+            fromEvent(this.el, 'transitionend').pipe(
+                filter((e: Event) => e.target === e.currentTarget),
+            ),
+        )
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => this.update());
+    }
+
+    private update(): void {
+        const outlet = this.outlet().nativeElement;
+
+        const overflowing =
+            outlet.scrollHeight > this.maxHeight() ||
+            outlet.scrollWidth > this.el.clientWidth;
+
+        this.el.style.height = tuiPx(outlet.scrollHeight);
+        this.el.classList.toggle('_overflown', overflowing);
+
+        if (this.isOverflowing() !== overflowing) {
+            this.overflownChange.emit(overflowing);
+            this.isOverflowing.set(overflowing);
+        }
     }
 }
