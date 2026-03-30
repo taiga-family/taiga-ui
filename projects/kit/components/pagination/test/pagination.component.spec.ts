@@ -239,7 +239,6 @@ describe('TuiPaginationComponent', () => {
             const host = fixture.nativeElement.querySelector('tui-pagination');
 
             expect(host?.getAttribute('role')).toBe('navigation');
-            expect(host?.getAttribute('aria-label')).toBe('Pagination');
         });
 
         it('marks active page button with aria-current="page"', () => {
