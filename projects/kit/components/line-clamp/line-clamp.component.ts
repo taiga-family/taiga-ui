@@ -56,6 +56,7 @@ export class TuiLineClamp {
 
     private readonly isOverflowing = signal(false);
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
+    private readonly rendered = signal(false);
 
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
@@ -82,6 +83,7 @@ export class TuiLineClamp {
     constructor() {
         afterNextRender({
             write: () => {
+                this.rendered.set(true);
                 this.update();
                 this.setupListeners();
             },
@@ -93,13 +95,18 @@ export class TuiLineClamp {
 
             untracked(() => {
                 this.el.style.maxHeight = tuiPx(this.maxHeight());
-                this.update();
+
+                if (this.rendered()) {
+                    this.update();
+                }
             });
         });
     }
 
     protected get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.isOverflowing() ? this.content() : '';
+        return this.rendered() && this.options.showHint && this.isOverflowing()
+            ? this.content()
+            : '';
     }
 
     private setupListeners(): void {
@@ -116,10 +123,9 @@ export class TuiLineClamp {
 
     private update(): void {
         const outlet = this.outlet().nativeElement;
-
+        const {scrollHeight, scrollWidth} = outlet;
         const overflowing =
-            outlet.scrollHeight > this.maxHeight() ||
-            outlet.scrollWidth > this.el.clientWidth;
+            scrollHeight > this.maxHeight() || scrollWidth > this.el.clientWidth;
 
         this.el.style.height = tuiPx(outlet.scrollHeight);
         this.el.classList.toggle('_overflown', overflowing);
