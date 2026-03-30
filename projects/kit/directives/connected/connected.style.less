@@ -4,8 +4,19 @@
     --t-image-size: 2.5rem;
     --t-connected-height: calc(100% - var(--t-image-size) - 0.5rem);
 
+    > [tuiCell] {
+        padding: 1rem;
+    }
+
     &[tuiCardLarge] {
-        --t-connected-height: calc(100% - var(--t-image-size) - 0.25rem);
+        &[data-space] [tuiCell] {
+            padding: 1rem;
+            margin: -1rem -1rem -0.5rem;
+
+            &:last-of-type {
+                margin-block-end: -1rem;
+            }
+        }
     }
 
     tui-accordion& {
