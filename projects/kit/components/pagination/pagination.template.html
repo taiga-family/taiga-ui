@@ -23,6 +23,9 @@
                 type="button"
                 class="t-button"
                 [appearance]="getElementMode(index)"
+                [attr.aria-current]="this.index() === index ? 'page' : null"
+                [attr.aria-posinset]="index + 1"
+                [attr.aria-setsize]="length()"
                 [disabled]="disabled()"
                 [size]="buttonSize()"
                 [tabIndex]="elementIsFocusable(index) ? 0 : -1"
@@ -36,6 +39,7 @@
             </button>
         } @else {
             <div
+                aria-hidden="true"
                 automation-id="tui-pagination__element"
                 class="t-ellipsis"
                 [class.t-ellipsis_small]="size() === 'm'"

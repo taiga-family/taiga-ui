@@ -233,4 +233,25 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(false);
         });
     });
+
+    describe('Accessibility', () => {
+        it('exposes navigation landmark semantics on host', () => {
+            const host = fixture.nativeElement.querySelector('tui-pagination');
+
+            expect(host?.getAttribute('role')).toBe('navigation');
+            expect(host?.getAttribute('aria-label')).toBe('Pagination');
+        });
+
+        it('marks active page button with aria-current="page"', () => {
+            setParams({length: 5, index: 2});
+
+            const items = pageObject.getAllByAutomationId(`${testContext.prefix}element`);
+            const activeButton = items[2]?.nativeElement;
+
+            expect(activeButton?.getAttribute('aria-current')).toBe('page');
+            expect(activeButton?.getAttribute('aria-posinset')).toBe('3');
+            expect(activeButton?.getAttribute('aria-setsize')).toBe('5');
+            expect(items[1]?.nativeElement.getAttribute('aria-current')).toBeNull();
+        });
+    });
 });

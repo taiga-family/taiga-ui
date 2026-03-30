@@ -28,6 +28,10 @@ const ACTIVE_ITEM_LENGTH = 1;
     templateUrl: './pagination.template.html',
     styleUrl: './pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        role: 'navigation',
+        'aria-label': 'Pagination',
+    },
 })
 export class TuiPagination {
     private readonly els = viewChildren('element', {read: ElementRef});
