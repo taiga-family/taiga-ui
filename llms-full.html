@@ -40668,6 +40668,88 @@ p {
 }
 ```
 
+#### Nested scrollbar
+
+**Template:**
+```html
+&lt;tui-scrollbar&gt;
+&lt;p&gt;Parent&lt;/p&gt;
+&lt;child /&gt;
+&lt;/tui-scrollbar&gt;
+```
+**TypeScript:**
+```ts
+import {ChangeDetectionStrategy, Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiScrollbar, tuiScrollbarOptionsProvider} from &#039;@taiga-ui/core&#039;;
+import {NgForOf} from &#039;@angular/common&#039;;
+import {TuiFade} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    selector: &#039;child&#039;,
+    imports: [NgForOf, TuiFade, TuiScrollbar],
+    template: `
+        &lt;tui-scrollbar&gt;
+            &lt;div tuiFade=&quot;vertical&quot;&gt;
+                &lt;ng-container
+                    *ngFor=&quot;
+                        let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                    &quot;
+                &gt;
+                    &lt;div [style.padding]=&quot;&#039;1rem&#039;&quot;&gt;
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Praesentium tempore sapiente nostrum, nulla autem, iste amet
+                        ratione incidunt, quam obcaecati ipsa reiciendis modi quibusdam
+                        at. Neque culpa excepturi repellat natus!
+                    &lt;/div&gt;
+                &lt;/ng-container&gt;
+            &lt;/div&gt;
+        &lt;/tui-scrollbar&gt;
+    `,
+    styles: [
+        `
+            :host {
+                display: block;
+                margin: 1.125rem;
+            }
+
+            tui-scrollbar {
+                inline-size: 30rem;
+                block-size: 30rem;
+                outline: 1px solid;
+            }
+        `,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiScrollbarOptionsProvider({mode: &#039;hover&#039;})],
+})
+export class Child {}
+
+@Component({
+    standalone: true,
+    imports: [Child, TuiScrollbar],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: &#039;always&#039;})],
+})
+export default class Parent {}
+```
+**LESS:**
+```less
+p {
+    margin: 1.125rem;
+}
+
+tui-scrollbar {
+    outline: 1px solid;
+    resize: block;
+}
+```
+
 
 ### TypeScript
 
@@ -40692,6 +40774,7 @@ export default class Page {
         &#039;Virtual scroll&#039;,
         &#039;Show scroll bars on hover&#039;,
         &#039;Native scrollbar&#039;,
+        &#039;Nested scrollbar&#039;,
     ];
 }
 ```
