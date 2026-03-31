@@ -50,8 +50,8 @@ import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {
     getCountryCallingCode,
-    validatePhoneNumberLength,
     type MetadataJson,
+    validatePhoneNumberLength,
 } from 'libphonenumber-js/core';
 import {filter, from} from 'rxjs';
 
