@@ -7,7 +7,21 @@
         <strong>InputNumber</strong>
         is a form field to provide numerical input.
 
-        @for (example of examples; track example) {
+        @for (
+            example of [
+                'Number as form control value',
+                'BigInt as form control value',
+                'Textfield-based',
+                'Localization',
+                'Affixes',
+                'Step',
+                'Custom step buttons',
+                'Fluid typography',
+                'Value transformer',
+                'Quantum',
+            ];
+            track example
+        ) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
@@ -151,30 +165,37 @@
                             .
                         </p>
                     }
-                    @case (10) {
-                        JavaScript’s built‑in
-                        <code>number</code>
-                        type loses precision when a value contains too many digits in either the integer part, the
-                        decimal part, or both.
-
-                        <p>
-                            The built‑in
-                            <code>bigint</code>
-                            type avoids this issue but supports only integers.
-                        </p>
-
-                        <p>
-                            If you need to preserve all extremely large digits of both parts, you can override the
-                            built‑in
-                            <code>TuiValueTransformer</code>
-                            and store the number as an
-                            <code>&#123;significand: bigint; exp: number&#125;</code>
-                            instead.
-                        </p>
-                    }
                 }
             </ng-template>
         }
+
+        <tui-doc-example
+            heading="Large integer and large decimal parts"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample: 'html,ts' : {'transformer.ts': bigIntWithDecimalTransformer}"
+            [description]="largeIntDecimalPartsDescription"
+        >
+            <ng-template #largeIntDecimalPartsDescription>
+                JavaScript’s built‑in
+                <code>number</code>
+                type loses precision when a value contains too many digits in either the integer part, the decimal part,
+                or both.
+
+                <p>
+                    The built‑in
+                    <code>bigint</code>
+                    type avoids this issue but supports only integers.
+                </p>
+
+                <p>
+                    If you need to preserve all extremely large digits of both parts, you can override the built‑in
+                    <code>TuiValueTransformer</code>
+                    and store the number as an
+                    <code>&#123;significand: bigint; exp: number&#125;</code>
+                    instead.
+                </p>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
