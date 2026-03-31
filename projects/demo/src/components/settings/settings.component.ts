@@ -12,7 +12,6 @@ import {
     TuiDataList,
     TuiDropdown,
     TuiDropdownDirective,
-    TuiDropdownHover,
     tuiDropdownOptionsProvider,
     TuiGroup,
     tuiGroupOptionsProvider,
@@ -60,7 +59,7 @@ import {TuiForm} from '@taiga-ui/layout';
         tuiDropdownOptionsProvider({align: 'end'}),
         tuiGroupOptionsProvider({size: 'm', collapsed: true}),
     ],
-    hostDirectives: [TuiDropdownDirective, TuiDropdownHover, TuiWithDropdownOpen],
+    hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class SettingsComponent {
     private readonly doc = inject(DOCUMENT);

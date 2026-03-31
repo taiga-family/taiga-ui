@@ -1,7 +1,7 @@
 @if (isLanding()) {
     <router-outlet />
 } @else {
-    <tui-doc-main #main>
+    <tui-doc-main>
         <div
             ngProjectAs="tuiDocHeader"
             class="app-links"
@@ -26,6 +26,7 @@
                 title="Taiga UI source code on GitHub"
                 tuiIconButton
                 class="app-link"
+                [style.margin-inline-end.rem]="-0.25"
             >
                 GitHub
             </a>
