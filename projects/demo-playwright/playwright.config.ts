@@ -53,7 +53,7 @@ export default defineConfig({
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? Number(process.env.RETRY_COUNT ?? 2) : 0,
-    workers: process.env.CI ? '100%' : '50%',
+    workers: process.env.CI ? 1 : '50%',
     snapshotPathTemplate:
         process.env.SNAPSHOT_PATH_TEMPLATE ??
         '{testDir}/snapshots/{platform}-{projectName}/{testFilePath}/{arg}{ext}',
