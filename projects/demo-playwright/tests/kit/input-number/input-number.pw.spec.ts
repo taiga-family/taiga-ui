@@ -1189,7 +1189,7 @@ describe('InputNumber', () => {
             });
 
             describe('minus sign is erasable but prefix is non-removable', () => {
-                test('Select all + Backspace => "-$" (only digits erased)', async ({
+                test('Select all + Backspace => everything except non-erasable prefix is removed', async ({
                     page,
                 }) => {
                     await inputNumber.textfield.pressSequentially('-123');
