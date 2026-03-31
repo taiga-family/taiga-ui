@@ -53,6 +53,8 @@
             z-index: 2;
 
             --t-group-mask: none;
+            --t-group-mask-end: none;
+            --t-group-mask-start: none;
         }
 
         &:has(:invalid:not([data-mode])),
@@ -60,18 +62,24 @@
             z-index: 2;
 
             --t-group-mask: none;
+            --t-group-mask-end: none;
+            --t-group-mask-start: none;
         }
 
         &:has(:focus-visible) {
             z-index: 3;
 
             --t-group-mask: none;
+            --t-group-mask-end: none;
+            --t-group-mask-start: none;
         }
 
         &:has([data-focus='true']) {
             z-index: 3;
 
             --t-group-mask: none;
+            --t-group-mask-end: none;
+            --t-group-mask-start: none;
         }
 
         &:checked:not([data-mode]),
@@ -79,12 +87,16 @@
             z-index: 4;
 
             --t-group-mask: none;
+            --t-group-mask-end: none;
+            --t-group-mask-start: none;
         }
 
         &:has([tuiBlock]:checked) {
             z-index: 4;
 
             --t-group-mask: none;
+            --t-group-mask-end: none;
+            --t-group-mask-start: none;
         }
 
         &:not(:last-child) {
