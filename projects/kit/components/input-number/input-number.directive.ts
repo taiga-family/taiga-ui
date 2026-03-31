@@ -71,9 +71,13 @@ export class TuiInputNumberDirective extends TuiControl<string> {
     public readonly parsed = computed(() => this.parse(this.input.value()));
 
     protected readonly onChangeEffect = effect(() => {
+        const decorations = untracked(
+            ({decimalSeparator, minusSign} = this.mask.params()) =>
+                new RegExp(`[^\\d\\${minusSign}\\${decimalSeparator}]`, 'g'),
+        );
         const changed = !Object.is(
-            this.input.value().replaceAll(/\D/g, ''),
-            untracked(() => this.value()?.replaceAll(/\D/g, '')) ?? '',
+            this.input.value().replaceAll(decorations, ''),
+            untracked(() => this.value()?.replaceAll(decorations, '')) ?? '',
         );
         const value = this.parsed();
         const valid =
