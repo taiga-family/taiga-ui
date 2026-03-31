@@ -41,8 +41,7 @@ test.describe('Demo', () => {
                 await example.scrollIntoViewIfNeeded();
                 await documentation.waitStableState(); // note: load lazy loading images
 
-                const preventFlaky =
-                    path.includes('charts') || path.includes('line-clamp');
+                const preventFlaky = path.includes('charts');
 
                 await page.waitForTimeout(preventFlaky ? 1000 : 150);
 

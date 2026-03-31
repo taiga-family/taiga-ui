@@ -5,11 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {tuiWatch} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotification} from '@taiga-ui/core';
-import {TuiChip, TuiFade, TuiLineClamp} from '@taiga-ui/kit';
+import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiButton, TuiChip, TuiFade, TuiLineClamp, TuiNotification],
+    imports: [AsyncPipe, TuiButton, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
