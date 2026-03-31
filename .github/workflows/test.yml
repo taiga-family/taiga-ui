@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.194.0
-      - uses: taiga-family/ci/actions/setup/node@v1.194.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.195.0
+      - uses: taiga-family/ci/actions/setup/node@v1.195.0
       - run: npm test
       - uses: codecov/codecov-action@v6.0.0
         env:
