@@ -17,6 +17,10 @@
     margin: ~'max(var(--tui-offset), env(safe-area-inset-top))' auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
 
+    .ios-only({
+        overscroll-behavior: contain;
+    });
+
     --t-top: 0;
 
     &.tui-enter,

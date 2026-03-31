@@ -17,5 +17,6 @@ export default class Page {
         'Virtual scroll',
         'Show scroll bars on hover',
         'Native scrollbar',
+        'Nested scrollbar',
     ];
 }
