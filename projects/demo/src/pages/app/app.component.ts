@@ -25,10 +25,19 @@ import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
 import {TuiAlgoliaSearch} from './search';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
+import {SettingsComponent} from '@demo/components/settings/settings.component';
 
 @Component({
     selector: 'app',
-    imports: [CustomHost, TuiAlgoliaSearch, TuiButton, TuiDataList, TuiDemo, TuiDropdown],
+    imports: [
+        CustomHost,
+        TuiAlgoliaSearch,
+        TuiButton,
+        TuiDataList,
+        TuiDemo,
+        TuiDropdown,
+        SettingsComponent,
+    ],
     templateUrl: './app.template.html',
     styleUrl: './app.style.less',
     encapsulation: ViewEncapsulation.None,
