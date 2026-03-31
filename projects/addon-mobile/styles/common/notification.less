@@ -1,6 +1,8 @@
 [tuiNotification] {
     &[data-size='l'],
     &[data-size='l'] [tuiSubtitle] {
+        font: var(--tui-typography-ui-l);
+
         &[data-icon-start] {
             --t-start: 2.25rem;
         }
@@ -12,7 +14,7 @@
 
     &[data-size='m'],
     &[data-size='m'] [tuiSubtitle] {
-        font: var(--tui-typography-body-m);
+        font: var(--tui-typography-ui-m);
 
         &[data-icon-start] {
             --t-start: 2.25rem;
@@ -20,6 +22,7 @@
 
         &::before {
             font-size: 1.5rem;
+            inset-block-start: 0.625rem;
             inset-inline-start: -1.5rem;
         }
     }
