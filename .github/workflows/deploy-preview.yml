@@ -17,19 +17,102 @@ jobs:
       - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.195.0
       - uses: taiga-family/ci/actions/setup/node@v1.195.0
-      - run: npx nx build demo
-      - name: Debug output
-        run: tree dist/demo/browser -P '*.html'
-      - name: Deploy preview
-        uses: FirebaseExtended/action-hosting-deploy@v0.10.0
+
+      - name: Prepare safe branch name
+        shell: bash
+        run: |
+          SAFE_BRANCH="${GITHUB_HEAD_REF:-manual}"
+          SAFE_BRANCH="${SAFE_BRANCH//\//-}"
+          SAFE_BRANCH="${SAFE_BRANCH// /-}"
+          echo "SAFE_BRANCH=$SAFE_BRANCH" >> "$GITHUB_ENV"
+
+      - name: Build demo with stats
+        run: npx nx build demo -- --stats-json
+
+      - name: Build esbuild visualizer
+        run: npx --yes esbuild-visualizer --metadata dist/demo/stats.json --filename dist/esbuild-stats/index.html
+        continue-on-error: true
+
+      - name: Deploy demo preview
+        id: demo_preview
         if: env.IS_OWNER_MODE == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0.10.0
         with:
-          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
+          channelId: pr${{ github.event.number }}-${{ env.SAFE_BRANCH }}-demo
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           projectId: taiga-previews
           target: taiga-previews-demo
           expires: 1d
+          disableComment: true
+
+      - name: Deploy esbuild stats
+        id: esbuild_preview
+        if: env.IS_OWNER_MODE == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0.10.0
+        continue-on-error: true
+        with:
+          channelId: pr${{ github.event.number }}-${{ env.SAFE_BRANCH }}-esbuild-stats
+          firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          projectId: taiga-previews
+          target: taiga-previews-esbuild-stats
+          expires: 1d
+          disableComment: true
+
+      - name: Create or update PR comment
+        if: github.event_name == 'pull_request' && env.IS_OWNER_MODE == 'true'
+        uses: actions/github-script@v8
+        env:
+          DEMO_URL: ${{ steps.demo_preview.outputs.details_url }}
+          STATS_URL: ${{ steps.esbuild_preview.outputs.details_url }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const marker = '<!-- firebase-preview-links -->';
+            const demoUrl = process.env.DEMO_URL || '';
+            const statsUrl = process.env.STATS_URL || '';
+
+            const body = [
+              marker,
+              '## Preview links',
+              '',
+              demoUrl ? `- Demo: ${demoUrl}` : '- Demo: deployment failed or URL is unavailable',
+              statsUrl ? `- Esbuild stats: ${statsUrl}` : '- Esbuild stats: deployment failed or URL is unavailable',
+            ].join('\n');
+
+            const {owner, repo} = context.repo;
+            const issue_number = context.issue.number;
+
+            const comments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner,
+                repo,
+                issue_number,
+                per_page: 100,
+              }
+            );
+
+            const existing = comments.find(comment =>
+              comment.user?.type === 'Bot' && comment.body?.includes(marker)
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body,
+              });
+            }
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

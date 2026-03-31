@@ -8,6 +8,9 @@
         ],
         "taiga-previews-demo-e2e-report": [
           "taiga-previews-demo-e2e-report"
+        ],
+        "taiga-previews-esbuild-stats": [
+          "taiga-previews-esbuild-stats"
         ]
       }
     }

@@ -22,6 +22,17 @@
                     "destination": "/index.html"
                 }
             ]
+        },
+        {
+            "target": "taiga-previews-esbuild-stats",
+            "public": "dist/esbuild-stats",
+            "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+            "rewrites": [
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ]
         }
     ]
 }
