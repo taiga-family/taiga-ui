@@ -51175,12 +51175,12 @@ footer {
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="skeleton" /> Show skeleton </label>
 <p>
-<span tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
-<span tuiAvatar="@tui.user" [tuiSkeleton]="skeleton" >
+<span size="l" tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="@tui.user" [tuiSkeleton]="skeleton" >
 <img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
 </span>
-<span tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
-<span appearance="primary" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
+<span appearance="primary" size="l" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
 </p>
 <section appearance="neutral" tuiCardLarge [tuiSkeleton]="skeleton" >
 <h2 tuiHeader>
@@ -51190,10 +51190,12 @@ footer {
 <p>
 <tui-progress-circle [tuiSkeleton]="skeleton" [value]="0.33" />
 <tui-avatar-stack>
-<span tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
-<span tuiAvatar="https://avatars.githubusercontent.com/u/11832552" [tuiSkeleton]="skeleton" ></span>
-<span tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
-<span appearance="primary" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="@tui.user" [tuiSkeleton]="skeleton" >
+<img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
+</span>
+<span size="l" tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
+<span appearance="primary" size="l" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
 </tui-avatar-stack>
 </p>
 <p>
