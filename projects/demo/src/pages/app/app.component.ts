@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router} from '@angular/router';
+import {SettingsComponent} from '@demo/components/settings/settings.component';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {environment} from '@demo/environments/environment';
 import {DemoRoute} from '@demo/routes';
@@ -25,18 +26,17 @@ import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
 import {TuiAlgoliaSearch} from './search';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
-import {SettingsComponent} from '@demo/components/settings/settings.component';
 
 @Component({
     selector: 'app',
     imports: [
         CustomHost,
+        SettingsComponent,
         TuiAlgoliaSearch,
         TuiButton,
         TuiDataList,
         TuiDemo,
         TuiDropdown,
-        SettingsComponent,
     ],
     templateUrl: './app.template.html',
     styleUrl: './app.style.less',

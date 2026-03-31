@@ -16,7 +16,7 @@ import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TUI_COPY_OPTIONS} from '@taiga-ui/kit/components';
+import {TUI_COPY_OPTIONS} from '@taiga-ui/kit/components/copy';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {HighlightAuto} from 'ngx-highlightjs';
 import {HighlightLineNumbers} from 'ngx-highlightjs/line-numbers';
