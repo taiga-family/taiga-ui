@@ -160,11 +160,11 @@ test.describe('InputChip', () => {
 
             await inputChip.input.fill('1,2,3');
             await inputChip.input.blur();
-            await expect.soft(api.demo).toHaveScreenshot('input-chip-writable.png');
             await expect(inputChip.cleaner).toHaveCount(1);
+            await expect.soft(api.demo).toHaveScreenshot('input-chip-writable.png');
             await toggle?.click();
-            await expect.soft(api.demo).toHaveScreenshot('input-chip-disabled.png');
             await expect(inputChip.cleaner).toHaveCount(0);
+            await expect.soft(api.demo).toHaveScreenshot('input-chip-disabled.png');
         });
 
         test('readonly true', async ({page}) => {
@@ -304,16 +304,18 @@ test.describe('InputChip', () => {
                 const block = example
                     .locator('label[tuiLabel]')
                     .filter({hasText: 'Working with objects'});
-
                 const multiselect = new TuiMultiSelectPO(block);
 
+                await example.scrollIntoViewIfNeeded();
                 await block.locator('tui-textfield').click();
                 await expect(multiselect.dropdown).toBeAttached();
+
                 await multiselect.dropdown
                     .getByRole('button', {name: 'Select all'})
                     .first()
                     .click();
 
+                await expect(multiselect.dropdown).toBeAttached();
                 await expect
                     .soft(example)
                     .toHaveScreenshot('multiselect-select-objects.png');
