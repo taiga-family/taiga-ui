@@ -34,6 +34,7 @@ class Styles {}
     selector: '[tuiSkeleton]',
     host: {
         tuiSkeleton: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.inert]': '!!tuiSkeleton() || null',
         '[class._skeleton]': 'tuiSkeleton()',
         '[attr.data-tui-skeleton]': 'placeholder()',
