@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.77.0](https://github.com/taiga-family/taiga-ui/compare/v4.76.0...v4.77.0) (2026-04-01)
+
+### 🚀 Features
+
+- **cdk:** add `tuiTruncate` ([#13595](https://github.com/taiga-family/taiga-ui/issues/13595))
+  ([ab351be](https://github.com/taiga-family/taiga-ui/commit/ab351be85ffccd76cf221249d937c7a9111f016a))
+- **kit:** update `tuiInputFiles` spec ([#13586](https://github.com/taiga-family/taiga-ui/issues/13586))
+  ([ec56543](https://github.com/taiga-family/taiga-ui/commit/ec56543873341171e1438e24553fce3457f5304e))
+
+### 🐞 Bug Fixes
+
+- **core:** `Notification` fix mobile styles according to specs
+  ([#13655](https://github.com/taiga-family/taiga-ui/issues/13655))
+  ([f571aa2](https://github.com/taiga-family/taiga-ui/commit/f571aa229e5d889518bc813935bdcfc60d511fdb))
+- **core:** use child combinator for hover mode to prevent nested scrollbar activation
+  ([#13652](https://github.com/taiga-family/taiga-ui/issues/13652))
+  ([25107d5](https://github.com/taiga-family/taiga-ui/commit/25107d54cd90ba96e430ac465bac42e7c1d63d4b))
+- **kit:** `InputPhoneInternational` use imports from libphonenumber-js/core
+  ([#13676](https://github.com/taiga-family/taiga-ui/issues/13676))
+  ([c604626](https://github.com/taiga-family/taiga-ui/commit/c604626310c9c2a58167367ace123dc328cc038f))
+- **kit:** `ProgressBar` + `ProgressColorSegments` has jittering segments
+  ([#13626](https://github.com/taiga-family/taiga-ui/issues/13626))
+  ([111ac46](https://github.com/taiga-family/taiga-ui/commit/111ac460a95c7a45aaf547400a8cfcc705db9c91))
+- **kit:** `TuiConnected` padding 1rem for `tuiCell` ([#13658](https://github.com/taiga-family/taiga-ui/issues/13658))
+  ([00e980d](https://github.com/taiga-family/taiga-ui/commit/00e980d102aa74ca6190287bacc25c732edce774))
+- **kit:** `tuiConnected` vertical line gap on android/ios
+  ([#13664](https://github.com/taiga-family/taiga-ui/issues/13664))
+  ([704cd30](https://github.com/taiga-family/taiga-ui/commit/704cd309f81925f734a3764970dd9522b9436fe8))
+- **kit:** numeric names causes badge visibility with same number
+  ([#13388](https://github.com/taiga-family/taiga-ui/issues/13388))
+  ([#13636](https://github.com/taiga-family/taiga-ui/issues/13636))
+  ([9f76350](https://github.com/taiga-family/taiga-ui/commit/9f763504acd88e86b6672063e82b135c06449461))
+- **layout:** `Card` fix styles according to specs ([#13681](https://github.com/taiga-family/taiga-ui/issues/13681))
+  ([12b3a04](https://github.com/taiga-family/taiga-ui/commit/12b3a04f2dcefa5c43d338d565fe0e44e4eb8005))
+- **layout:** `Card` fix title gap on mobile ([#13661](https://github.com/taiga-family/taiga-ui/issues/13661))
+  ([3524d6e](https://github.com/taiga-family/taiga-ui/commit/3524d6ee2f81ec6c471919c6f03d1f707f8fb7d9))
+
 ## [4.76.0](https://github.com/taiga-family/taiga-ui/compare/v4.75.0...v4.76.0) (2026-03-23)
 
 ### 🚀 Features
