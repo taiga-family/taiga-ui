@@ -209,6 +209,7 @@
 - [Textfield Controller](https://taiga-ui.dev/directives/textfield-controller) — Directive allows to customize TuiPrimitiveTextfield with parameters that it adds into DI tree. That means that you can use the directive on any root element and it will customize all textfields in this scope. Most Taiga UI form controls are based on TuiPrimitiveTextfield and thus accept these options. If there are several controllers above textfield, their values will be merged. The nearest directives are in priority.
 - [Theme](https://taiga-ui.dev/directives/theme) — tuiTheme allows to set style for a DOM branch. By default dark and light are included. Importing is not required.
 - [Touchable](https://taiga-ui.dev/directives/touchable) — Directive to emulate native iOS touches
+- [Truncate](https://taiga-ui.dev/directives/truncate) — Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.
 - [Validator](https://taiga-ui.dev/directives/validator) — tuiValidator allows set validators for form control on the fly
 - [Value Changes](https://taiga-ui.dev/directives/value-changes) — This directive allows you to access reactive control or container value changes as an output
 - [Zoom](https://taiga-ui.dev/directives/zoom) — tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
