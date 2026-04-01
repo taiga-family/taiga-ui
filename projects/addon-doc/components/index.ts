@@ -10,7 +10,6 @@ export * from './example/example.options';
 export * from './example/example-get-tabs.pipe';
 export * from './internal/header';
 export * from './internal/source-code/source-code.component';
-export * from './language-switcher';
 export * from './main/main.component';
 export * from './navigation/navigation.component';
 export * from './navigation/navigation.providers';
