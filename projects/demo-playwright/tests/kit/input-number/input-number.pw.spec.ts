@@ -1095,7 +1095,10 @@ describe('InputNumber', () => {
 
                     await expect(inputNumber.textfield).toHaveValue('−$1_234');
 
-                    await page.keyboard.press(`${CMD}+ArrowLeft`);
+                    for (let i = 0; i < '−$1_234'.length; i++) {
+                        await page.keyboard.press('ArrowLeft', {delay: i});
+                    }
+
                     await expect(inputNumber.textfield).toHaveJSProperty(
                         'selectionStart',
                         0,
