@@ -48,8 +48,11 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
-import {validatePhoneNumberLength} from 'libphonenumber-js';
-import {getCountryCallingCode, type MetadataJson} from 'libphonenumber-js/core';
+import {
+    getCountryCallingCode,
+    type MetadataJson,
+    validatePhoneNumberLength,
+} from 'libphonenumber-js/core';
 import {filter, from} from 'rxjs';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
@@ -217,7 +220,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         const metadata = this.metadata();
         const phone = value.startsWith(CHAR_PLUS) ? value : CHAR_PLUS + value;
 
-        return metadata && validatePhoneNumberLength(phone) !== 'TOO_SHORT'
+        return metadata && validatePhoneNumberLength(phone, metadata) !== 'TOO_SHORT'
             ? (maskitoGetCountryFromNumber(phone, metadata) ?? null)
             : null;
     }
