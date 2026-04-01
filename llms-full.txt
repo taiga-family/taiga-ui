@@ -1264,7 +1264,9 @@ component's `imports` array. Check the **Import Map** for the correct package.
 
 ---
 
-# addons.md
+# Getting Started
+
+## addons.md
 
 ```bash
 npm i @taiga-ui/addon-charts    // Components for various charts, graphs and visualizations
@@ -1276,7 +1278,7 @@ npm i @taiga-ui/layout          // Layout components
 ```
 
 ---
-# angular-json-styles.md
+## angular-json-styles.md
 
 ```json
 {
@@ -1299,7 +1301,7 @@ npm i @taiga-ui/layout          // Layout components
 ```
 
 ---
-# app-standalone.md
+## app-standalone.md
 
 ```ts
 import {TuiRoot} from '@taiga-ui/core';
@@ -1316,7 +1318,7 @@ export class App {}
 ```
 
 ---
-# app-template.md
+## app-template.md
 
 ```html
 <tui-root>
@@ -1328,7 +1330,7 @@ export class App {}
 ```
 
 ---
-# assets.md
+## assets.md
 
 ```json
 {
@@ -1352,7 +1354,7 @@ export class App {}
 ```
 
 ---
-# main-standalone.md
+## main-standalone.md
 
 ```ts
 import {provideTaiga} from '@taiga-ui/core';
@@ -1366,14 +1368,14 @@ bootstrapApplication(App, {
 ```
 
 ---
-# main.md
+## main.md
 
 ```bash
 npm i @taiga-ui/{cdk,core,kit,icons}
 ```
 
 ---
-# nx-add.md
+## nx-add.md
 
 ```bash
 npm i taiga-ui
@@ -1381,7 +1383,7 @@ nx g taiga-ui:ng-add
 ```
 
 ---
-# nx-assets.md
+## nx-assets.md
 
 ```json
 {
@@ -1403,7 +1405,7 @@ nx g taiga-ui:ng-add
 ```
 
 ---
-# nx-migrate.md
+## nx-migrate.md
 
 ```bash
 nx migrate @taiga-ui/cdk
@@ -1411,14 +1413,14 @@ nx migrate --run-migrations=migrations.json
 ```
 
 ---
-# ponyfill.md
+## ponyfill.md
 
 ```bash
 npm install css-vars-ponyfill
 ```
 
 ---
-# project-json-styles.md
+## project-json-styles.md
 
 ```json
 {
@@ -8590,18 +8592,44 @@ export default class Example {}
 <button appearance="secondary" size="m" tuiButton type="button" > Label </button>
 </footer>
 </div>
+<div appearance="floating" tuiCardLarge >
+<header tuiHeader>
+<h2 tuiTitle>Footer that ends with text</h2>
+<aside tuiAccessories>
+<tui-icon tuiTooltip="It's strange, I know" />
+</aside>
+</header>
+<div tuiCell> Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. </div>
+<footer>
+<div tuiTitle>
+<div tuiSubtitle>Remaining $25 120.23</div>
+<progress tuiProgressBar value="0.75" ></progress>
+<div tuiSubtitle>out of $100 000</div>
+</div>
+</footer>
+</div>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiButton, TuiCell, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiProgressBar, TuiTooltip} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiHeader, TuiTitle],
+    imports: [
+        TuiAvatar,
+        TuiButton,
+        TuiCardLarge,
+        TuiCell,
+        TuiHeader,
+        TuiIcon,
+        TuiProgressBar,
+        TuiTitle,
+        TuiTooltip,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -8614,8 +8642,21 @@ export default class Example {}
 :host {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content 1fr;
     gap: 1rem;
     inline-size: 30rem;
+
+    > :last-child {
+        grid-column: span 2;
+    }
+}
+
+[tuiCell] {
+    padding-block: 0;
+}
+
+[tuiSubtitle] {
+    font: var(--tui-typography-body-m);
 }
 ```
 
@@ -11579,13 +11620,12 @@ export default class Example {
         {id: 999, name: 'Graham Chapman'},
     ];
 
-    protected readonly stringify: TuiStringHandler<Python | number> = (item) => {
-        return typeof item === 'number'
+    protected readonly stringify: TuiStringHandler<Python | number> = (item) =>
+        typeof item === 'number'
             ? // Number-type form control value => human-readable text inside textfield
               (this.items.find(({id}) => id === item)?.name ?? '')
             : // for `tuiFilterByInput` pipe
               item.name;
-    };
 
     protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
         const {name} = this.items.find((item) => item.id === id)!;
@@ -18617,6 +18657,12 @@ export default class Example {
 <tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 </tui-textfield>
 </label>
+<label tuiLabel> Conditional input in textfield <tui-textfield multi tuiChevron >
+<label tuiLabel>Multi Select with if/else</label> @if (filter) { <input tuiInputChip [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } @else { <input tuiInputChip tuiSelectLike [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } <tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
+</tui-textfield>
+</label>
+<label tuiLabel>
+<input tuiCheckbox type="checkbox" [(ngModel)]="filter" /> Toggle filter </label>
 <label tuiLabel> Working with objects <tui-textfield multi tuiChevron [disabledItemHandler]="strings" [stringify]="stringify" >
 <input tuiInputChip [placeholder]="objects.length ? '' : 'Picking objects'" [(ngModel)]="objects" />
 <tui-input-chip *tuiItem />
@@ -18634,7 +18680,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiDataList, TuiFilterByInputPipe, TuiSelectLike} from '@taiga-ui/core';
+import {
+    TuiCheckbox,
+    TuiDataList,
+    TuiFilterByInputPipe,
+    TuiSelectLike,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -18651,6 +18703,7 @@ interface User {
 @Component({
     imports: [
         FormsModule,
+        TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -18659,6 +18712,7 @@ interface User {
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -18669,7 +18723,10 @@ export default class Example {
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
+    protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
+
+    protected filter = false;
 
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));
@@ -20902,7 +20959,7 @@ An input for uploading one or several files using native input file capabilities
 ### Example
 
 ```html
-<label tuiInputFiles>
+<label [tuiInputFiles]="size">
 <input #validator="tuiInputFilesValidator" tuiInputFiles [accept]="accept" [formControl]="control" [invalid]="controlDoc.invalid" [maxFileSize]="maxFileSize" [multiple]="multiple" [tuiDisabled]="controlDoc.disabled" (reject)="updateRejected($event); reject.emitEvent($event)" />
 </label>
 <tui-files class="tui-space_top-2" [max]="maxFilesCount" [(expanded)]="expanded" > @for (file of files$ | async; track file) { <tui-file *tuiItem [file]="file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" /> } @for (file of rejected; track file) { <tui-file *tuiItem state="error" [file]="(file | tuiFileRejected: validator | async) || file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" /> } </tui-files>
@@ -20915,6 +20972,7 @@ An input for uploading one or several files using native input file capabilities
 | [accept] | `string` | Allowed formats |
 | [maxFileSize] | `number` | Max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
 | [multiple] | `boolean` | Allows to upload several files |
+| [tuiInputFiles] | `TuiSizeL` | Drop zone size |
 
 ### API - Outputs
 
@@ -21186,16 +21244,13 @@ export default class Example {
 ```html
 <label tuiInputFiles>
 <input tuiInputFiles [formControl]="control" />
-<ng-template let-dragged> @if (dragged) { <div class="content">
-<div appearance="secondary" size="l" tuiAvatar="@tui.droplet" ></div>
+<ng-template let-dragged> @if (dragged) { <div appearance="secondary" size="l" tuiAvatar="@tui.droplet" ></div>
 <div> Drop it like it's hot! <br />
 <br />
-</div>
-</div> } @else { <div class="content">
-<div appearance="secondary" size="l" tuiAvatar="@tui.cloud-upload" ></div>
+</div> } @else { <div appearance="secondary" size="l" tuiAvatar="@tui.cloud-upload" ></div>
 <div> Drag and drop file here or <a tuiLink>click to upload</a>
 </div>
-</div> } </ng-template>
+<div class="types">PNG, JPG, JPEG, PNG, etc</div> } </ng-template>
 </label>
 <tui-files class="tui-space_top-4">
 <tui-file [file]="file" [leftContent]="content" >
@@ -21230,13 +21285,14 @@ export default class Example {
 ```
 **LESS:**
 ```less
-.content {
-    display: flex;
-    block-size: 10rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+:host {
+    display: block;
+    min-inline-size: 25rem;
+}
+
+.types {
+    color: var(--tui-text-secondary);
+    font-size: 0.6875rem;
 }
 ```
 
@@ -21347,7 +21403,7 @@ import {map, startWith} from 'rxjs';
     ],
 })
 export default class Example {
-    protected readonly control = new FormControl<File[]>([
+    protected readonly control = new FormControl([
         new File(['mock zip content'], 'valid.zip', {type: 'application/zip'}),
         new File(['Lorem ipsum'], 'wrong.txt', {type: 'application/txt'}),
     ]);
@@ -26659,7 +26715,7 @@ Component cuts overflown text with "..." and shows it by hover
 <div class="hint"> Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons </div>
 </ng-template>
 <ng-template #mormont>
-<div tuiFade class="hint no-wrap" > Jorah Mormont of House Mormont, Lord of Bear Island </div>
+<div class="hint no-wrap">Jorah Mormont of House Mormont, Lord of Bear Island</div>
 </ng-template>
 <div class="island">
 <tui-line-clamp [content]="content" />
@@ -26684,11 +26740,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {tuiWatch} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotification} from '@taiga-ui/core';
-import {TuiChip, TuiFade, TuiLineClamp} from '@taiga-ui/kit';
+import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiButton, TuiChip, TuiFade, TuiLineClamp, TuiNotification],
+    imports: [AsyncPipe, TuiButton, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -31979,7 +32035,7 @@ export default class Example {
         },
     ];
 
-    protected readonly index$$ = new BehaviorSubject<number>(0);
+    protected readonly index$$ = new BehaviorSubject(0);
 
     protected readonly item$ = this.index$$.pipe(
         map((index) => this.items[index]),
@@ -34819,6 +34875,82 @@ p {
 }
 ```
 
+#### Nested scrollbar
+
+**Template:**
+```html
+<tui-scrollbar>
+<p>Parent</p>
+<child />
+</tui-scrollbar>
+```
+**TypeScript:**
+```ts
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
+import {TuiFade} from '@taiga-ui/kit';
+
+@Component({
+    selector: 'child',
+    imports: [TuiFade, TuiScrollbar],
+    template: `
+        <tui-scrollbar>
+            <div tuiFade="vertical">
+                @for (
+                    item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+                    track $index
+                ) {
+                    <div [style.padding]="'1rem'">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Praesentium tempore sapiente nostrum, nulla autem, iste amet
+                        ratione incidunt, quam obcaecati ipsa reiciendis modi quibusdam
+                        at. Neque culpa excepturi repellat natus!
+                    </div>
+                }
+            </div>
+        </tui-scrollbar>
+    `,
+    styles: `
+        :host {
+            display: block;
+            margin: 1.125rem;
+        }
+
+        tui-scrollbar {
+            inline-size: 30rem;
+            block-size: 30rem;
+            outline: 1px solid;
+        }
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
+})
+export class Child {}
+
+@Component({
+    imports: [Child, TuiScrollbar],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: 'always'})],
+})
+export default class Parent {}
+```
+**LESS:**
+```less
+p {
+    margin: 1.125rem;
+}
+
+tui-scrollbar {
+    outline: 1px solid;
+    resize: block;
+}
+```
+
 
 ### TypeScript
 
@@ -34842,6 +34974,7 @@ export default class Page {
         'Virtual scroll',
         'Show scroll bars on hover',
         'Native scrollbar',
+        'Nested scrollbar',
     ];
 }
 ```
@@ -51042,12 +51175,12 @@ footer {
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="skeleton" /> Show skeleton </label>
 <p>
-<span tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
-<span tuiAvatar="@tui.user" [tuiSkeleton]="skeleton" >
+<span size="l" tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="@tui.user" [tuiSkeleton]="skeleton" >
 <img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
 </span>
-<span tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
-<span appearance="primary" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
+<span appearance="primary" size="l" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
 </p>
 <section appearance="neutral" tuiCardLarge [tuiSkeleton]="skeleton" >
 <h2 tuiHeader>
@@ -51057,10 +51190,12 @@ footer {
 <p>
 <tui-progress-circle [tuiSkeleton]="skeleton" [value]="0.33" />
 <tui-avatar-stack>
-<span tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
-<span tuiAvatar="https://avatars.githubusercontent.com/u/11832552" [tuiSkeleton]="skeleton" ></span>
-<span tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
-<span appearance="primary" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="AI" [tuiSkeleton]="skeleton" ></span>
+<span size="l" tuiAvatar="@tui.user" [tuiSkeleton]="skeleton" >
+<img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
+</span>
+<span size="l" tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
+<span appearance="primary" size="l" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
 </tui-avatar-stack>
 </p>
 <p>
@@ -52205,19 +52340,89 @@ export default class Page {
 - **Package**: `null`
 - **Type**: null
 
+### Usage Examples
+
+#### Language Switcher
+
+**Template:**
+```html
+<button appearance="secondary-grayscale" size="s" tuiButton tuiButtonSelect tuiChevron type="button" [(ngModel)]="language" (ngModelChange)="switcher.setLanguage($event)" > {{ language }} <tui-data-list-wrapper *tuiDropdown [items]="languages" />
+</button>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiLanguageSwitcherService} from '@taiga-ui/i18n';
+import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
+
+@Component({
+    selector: 'tui-i18n-example-1',
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonSelect,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdown,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    changeDetection,
+})
+export class TuiI18nExample1 {
+    protected readonly switcher = inject(TuiLanguageSwitcherService);
+    protected language = this.switcher.language;
+    protected readonly languages = [
+        'arabic',
+        'belarusian',
+        'chinese',
+        'dutch',
+        'english',
+        'french',
+        'german',
+        'hebrew',
+        'italian',
+        'japanese',
+        'kazakh',
+        'korean',
+        'lithuanian',
+        'malay',
+        'polish',
+        'portuguese',
+        'russian',
+        'spanish',
+        'turkish',
+        'ukrainian',
+        'vietnamese',
+    ];
+}
+```
+**LESS:**
+```less
+[tuiButton],
+tui-data-list-wrapper {
+    text-transform: capitalize;
+}
+```
+
+
 ### TypeScript
 
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiTablePagination} from '@taiga-ui/addon-table';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
+import {TuiI18nExample1} from './examples/1';
+
 @Component({
-    imports: [TuiAccordion, TuiDemo, TuiDocLanguageSwitcher, TuiLink, TuiTablePagination],
+    imports: [TuiAccordion, TuiDemo, TuiI18nExample1, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -52229,15 +52434,10 @@ export default class Page {
         custom: import('./custom.md'),
     };
 
-    protected example1 = {
-        'language-switcher.html':
-            import('../../../../../addon-doc/components/language-switcher/index.html'),
-        'language-switcher.ts': import(
-            '../../../../../addon-doc/components/language-switcher/index.ts?raw',
-            {with: {loader: 'text'}}
-        ),
-        'language-switcher.less':
-            import('../../../../../addon-doc/components/language-switcher/index.less'),
+    protected readonly example1 = {
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
     };
 }
 ```
