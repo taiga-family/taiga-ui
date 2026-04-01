@@ -112,6 +112,7 @@
         "@angular/core": "$@angular/core",
         "@angular/platform-browser": "$@angular/platform-browser",
         "@angular/platform-browser-dynamic": "$@angular/platform-browser-dynamic",
+        "axios": "$axios",
         "rxjs": "$rxjs"
     },
     "devDependencies": {
@@ -148,6 +149,7 @@
         "@types/markdown-it": "14.1.2",
         "@types/node": "22.18.0",
         "@types/webpack-env": "1.18.8",
+        "axios": "1.14.0",
         "cpy-cli": "5.0.0",
         "glob": "11.0.3",
         "husky": "9.1.7",
