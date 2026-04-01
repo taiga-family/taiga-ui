@@ -10590,14 +10590,30 @@ export default class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/div&gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
+&lt;header tuiHeader&gt;
+&lt;h2 tuiTitle&gt;Footer that ends with text&lt;/h2&gt;
+&lt;aside tuiAccessories&gt;
+&lt;tui-icon tuiTooltip=&quot;It&#039;s strange, I know&quot; /&gt;
+&lt;/aside&gt;
+&lt;/header&gt;
+&lt;div tuiCell&gt; Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. &lt;/div&gt;
+&lt;footer&gt;
+&lt;div tuiTitle&gt;
+&lt;div tuiSubtitle&gt;Remaining $25 120.23&lt;/div&gt;
+&lt;progress tuiProgressBar value=&quot;0.75&quot; &gt;&lt;/progress&gt;
+&lt;div tuiSubtitle&gt;out of $100 000&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
-import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
+import {TuiButton, TuiIcon, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiProgress, TuiTooltip} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
@@ -10608,8 +10624,11 @@ import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         TuiCardLarge,
         TuiCell,
         TuiHeader,
+        TuiIcon,
+        TuiProgress,
         TuiSurface,
         TuiTitle,
+        TuiTooltip,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
@@ -10623,8 +10642,21 @@ export default class Example {}
 :host {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content 1fr;
     gap: 1rem;
     inline-size: 30rem;
+
+    &gt; :last-child {
+        grid-column: span 2;
+    }
+}
+
+[tuiCell] {
+    padding-block: 0 !important;
+}
+
+[tuiSubtitle] {
+    font: var(--tui-font-text-m);
 }
 ```
 
