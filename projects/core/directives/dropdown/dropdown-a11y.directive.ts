@@ -41,7 +41,7 @@ export class TuiDropdownA11y {
 
     // TODO: refactor to signal inputs after Angular update
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    public readonly _tuiDropdownRole = signal<string>('listbox');
+    public readonly _tuiDropdownRole = signal('listbox');
 
     @Input()
     public set tuiDropdownRole(role: string) {

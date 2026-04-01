@@ -46,7 +46,7 @@ export class TuiNativeSelect<T>
 {
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly options =
-        signal<QueryList<ElementRef<HTMLOptionElement>>>(EMPTY_QUERY);
+        signal(EMPTY_QUERY);
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly placeholder = signal('');

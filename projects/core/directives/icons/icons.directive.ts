@@ -61,7 +61,7 @@ export class TuiIcons {
         inject(TUI_ICON_START, {self: true, optional: true}) || '',
     );
 
-    public readonly iconEnd = signal<string>(
+    public readonly iconEnd = signal(
         inject(TUI_ICON_END, {self: true, optional: true}) || '',
     );
 

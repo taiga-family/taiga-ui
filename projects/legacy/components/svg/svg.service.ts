@@ -17,7 +17,7 @@ export class TuiSvgService {
     private readonly sanitizer = inject(DomSanitizer);
     private originals: Record<string, string> = {};
 
-    public readonly items$ = new BehaviorSubject<Map<string, SafeHtml>>(new Map());
+    public readonly items$ = new BehaviorSubject(new Map());
 
     constructor() {
         this.define(inject(TUI_ICON_STARTS));

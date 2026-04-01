@@ -43,7 +43,7 @@ export class TuiSliderComponent {
     private readonly control = inject(NgControl, {self: true, optional: true});
 
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
-    protected readonly segments = signal<number[]>([1]);
+    protected readonly segments = signal([1]);
     protected readonly ticksGradient = computed((segments = this.segments()) =>
         this.getTicksGradient(segments),
     );

@@ -59,7 +59,7 @@ export class IconsGroup implements OnInit {
 
     protected matcher: (item: string, search: string) => boolean = TUI_DEFAULT_MATCHER;
 
-    protected control = new FormControl<string>('');
+    protected control = new FormControl('');
 
     protected search$: Observable<string> = this.route.queryParams.pipe(
         map((queryParams) => queryParams['search'] ?? ''),

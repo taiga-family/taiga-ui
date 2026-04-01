@@ -56,7 +56,7 @@ export class TuiScrollService {
         const deltaTop = scrollTop - initialTop;
         const deltaLeft = scrollLeft - initialLeft;
         const observable = !duration
-            ? of<[number, number]>([scrollTop, scrollLeft])
+            ? of([scrollTop, scrollLeft])
             : defer(() => of(this.performanceRef.now())).pipe(
                   switchMap((start) =>
                       this.animationFrame$.pipe(map((now) => now - start)),

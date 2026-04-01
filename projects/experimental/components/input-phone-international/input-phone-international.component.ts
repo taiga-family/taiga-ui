@@ -112,7 +112,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly metadata = toSignal(from(this.options.metadata));
     protected readonly names = toSignal(inject(TUI_COUNTRIES));
     protected readonly open = tuiDropdownOpen();
-    protected readonly search = signal<string>('');
+    protected readonly search = signal('');
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
 
     protected readonly mask = tuiMaskito(

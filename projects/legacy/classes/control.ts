@@ -112,19 +112,19 @@ export abstract class AbstractTuiControl<T>
     }
 
     public get invalid(): boolean {
-        return this.safeNgControlData<boolean>(({invalid}) => invalid, false);
+        return this.safeNgControlData(({invalid}) => invalid, false);
     }
 
     public get valid(): boolean {
-        return this.safeNgControlData<boolean>(({valid}) => valid, false);
+        return this.safeNgControlData(({valid}) => valid, false);
     }
 
     public get touched(): boolean {
-        return this.safeNgControlData<boolean>(({touched}) => touched, false);
+        return this.safeNgControlData(({touched}) => touched, false);
     }
 
     public get disabled(): boolean {
-        return this.safeNgControlData<boolean>(({disabled}) => disabled, false);
+        return this.safeNgControlData(({disabled}) => disabled, false);
     }
 
     public get interactive(): boolean {

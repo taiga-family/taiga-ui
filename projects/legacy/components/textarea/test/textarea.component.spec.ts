@@ -43,7 +43,7 @@ describe('Textarea', () => {
         @ViewChild(TuiTextareaComponent, {static: true})
         public component!: TuiTextareaComponent;
 
-        public control = new FormControl<string>('');
+        public control = new FormControl('');
 
         public readOnly = false;
 

@@ -54,7 +54,7 @@ export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
 
     @Input()
-    public control = new FormControl<string>('', {nonNullable: true});
+    public control = new FormControl('', {nonNullable: true});
 
     @Input()
     public countryIsoCode: TuiCountryIsoCode = 'RU';

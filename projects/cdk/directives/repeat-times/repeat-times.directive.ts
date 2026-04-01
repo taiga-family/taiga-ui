@@ -38,7 +38,7 @@ export class TuiRepeatTimes {
 
     private addContainers(count: number): void {
         for (let index = this.viewContainer.length; index < count; index++) {
-            this.viewContainer.createEmbeddedView<TuiRepeatTimesContext>(
+            this.viewContainer.createEmbeddedView(
                 this.templateRef,
                 new TuiRepeatTimesContext(index),
             );

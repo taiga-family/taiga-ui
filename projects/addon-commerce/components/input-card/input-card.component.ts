@@ -57,7 +57,7 @@ export class TuiInputCard implements OnInit {
         {initialValue: ''},
     );
 
-    private readonly icon = signal<string | null>(this.options.icon);
+    private readonly icon = signal(this.options.icon);
 
     private readonly accessor = inject(DefaultValueAccessor, {
         self: true,

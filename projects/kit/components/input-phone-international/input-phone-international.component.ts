@@ -123,7 +123,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly countryIsoCode = signal(this.options.countryIsoCode);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly label = toSignal(inject(TUI_INTERNATIONAL_SEARCH));
-    protected readonly search = signal<string>('');
+    protected readonly search = signal('');
     protected readonly separator = signal(this.options.separator);
 
     protected readonly filtered = computed(() =>

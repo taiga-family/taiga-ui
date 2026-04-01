@@ -60,7 +60,7 @@ export class TuiCalendarYear {
     @Output()
     public readonly yearClick = new EventEmitter<number>();
 
-    public readonly initialItem = signal<number>(CURRENT_YEAR);
+    public readonly initialItem = signal(CURRENT_YEAR);
     public readonly min = signal(MIN_YEAR);
     public readonly max = signal(MAX_YEAR);
     public readonly value = signal<

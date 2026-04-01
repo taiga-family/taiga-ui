@@ -9,4 +9,4 @@ export const TUI_DEFAULT_SCROLLBAR_OPTIONS: TuiScrollbarOptions = {
 };
 
 export const [TUI_SCROLLBAR_OPTIONS, tuiScrollbarOptionsProvider] =
-    tuiCreateOptions<TuiScrollbarOptions>(TUI_DEFAULT_SCROLLBAR_OPTIONS);
+    tuiCreateOptions(TUI_DEFAULT_SCROLLBAR_OPTIONS);

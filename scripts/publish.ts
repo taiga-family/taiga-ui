@@ -10,11 +10,11 @@ import {parseVersion} from './shared/parse-version';
 
 const isDryRun =
     getValueByFlag<'false' | 'true' | 'undefined'>('--dry-run', 'false') === 'true';
-const path = getValueByFlag<string>('--path', '');
+const path = getValueByFlag('--path', '');
 
 (async function main(): Promise<void> {
     const packageJson = await import(resolve(path, 'package.json'));
-    const version = getValueByFlag<string>('--customVersion', packageJson.version);
+    const version = getValueByFlag('--customVersion', packageJson.version);
     const versions: string[] = getAllVersions(packageJson.name);
 
     if (versions.includes(version) && !isDryRun) {
@@ -39,7 +39,7 @@ const path = getValueByFlag<string>('--path', '');
 })();
 
 function makeTag(version: string): string {
-    const customTag = getValueByFlag<string>('--customTag', '');
+    const customTag = getValueByFlag('--customTag', '');
 
     if (customTag !== '') {
         return `--tag ${customTag}`;

@@ -262,7 +262,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             this.item ??
             this.selectedActivePeriod ??
             (this.items.find((item) =>
-                tuiNullableSame<TuiDayRange>(
+                tuiNullableSame(
                     this.currentValue instanceof TuiDay
                         ? new TuiDayRange(this.currentValue, this.currentValue)
                         : this.currentValue,

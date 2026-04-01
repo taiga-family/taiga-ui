@@ -51,7 +51,7 @@ export class TuiInputCopyComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly copied$ = new BehaviorSubject<boolean>(false);
+    private readonly copied$ = new BehaviorSubject(false);
     private readonly doc = inject(DOCUMENT);
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly options = inject(TUI_INPUT_COPY_OPTIONS);

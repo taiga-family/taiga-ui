@@ -19,7 +19,7 @@ import {map, startWith} from 'rxjs';
     ],
 })
 export default class Example {
-    protected readonly control = new FormControl<File[]>([
+    protected readonly control = new FormControl([
         new File(['mock zip content'], 'valid.zip', {type: 'application/zip'}),
         new File(['Lorem ipsum'], 'wrong.txt', {type: 'application/txt'}),
     ]);
