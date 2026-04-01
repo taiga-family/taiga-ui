@@ -637,6 +637,9 @@
     <loc>https://taiga-ui.dev/directives/touchable/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/directives/truncate/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/directives/validator/</loc>
   </url>
   <url>
@@ -1862,6 +1865,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/directives/touchable/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/directives/truncate/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/directives/truncate/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/directives/validator/API/</loc>

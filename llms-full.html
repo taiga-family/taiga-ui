@@ -866,6 +866,11 @@
 ```text
   TuiTransitioned
 ```
+### truncate
+
+```text
+  TuiTruncate, TuiTruncateService
+```
 ### validator
 
 ```text
@@ -1428,6 +1433,218 @@ component&#039;s `imports` array. Check the **Import Map** for the correct packa
 
 ---
 
+# Getting Started
+
+## addons.md
+
+```bash
+npm i @taiga-ui/addon-charts    // Components for various charts, graphs and visualizations
+npm i @taiga-ui/addon-commerce  // Money-related extension with currencies, credit card inputs and validators
+npm i @taiga-ui/addon-mobile    // Components and tools specific to mobile version of the app
+npm i @taiga-ui/addon-table     // Interactive table component and related utilities
+npm i @taiga-ui/addon-doc       // Taiga UI based library for developing documentation portals for Angular libraries
+npm i @taiga-ui/layout          // Layout components
+```
+
+---
+## angular-json-styles.md
+
+```json
+{
+  &quot;projects&quot;: {
+    &quot;my-project&quot;: {
+      &quot;architect&quot;: {
+        &quot;build&quot;: {
+          &quot;options&quot;: {
+            &quot;styles&quot;: [
+              &quot;@taiga-ui/core/styles/taiga-ui-theme.less&quot;,
+              &quot;@taiga-ui/core/styles/taiga-ui-fonts.less&quot;,
+              &quot;@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less&quot; // optional
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+---
+## app-standalone.md
+
+```ts
+import {TuiRoot} from &#039;@taiga-ui/core&#039;;
+// ..
+@Component({
+  standalone: true,
+  selector: &#039;app-root&#039;,
+  imports: [
+    TuiRoot,
+    // ...
+  ],
+  templateUrl: &#039;./app.component.html&#039;,
+})
+export class App {}
+```
+
+---
+## app-template.md
+
+```html
+&lt;tui-root&gt;
+  &lt;!-- content of your app --&gt;
+  &lt;!--
+     If you need, you can add something between Taiga portal layers:
+    --&gt;
+  &lt;ng-container ngProjectAs=&quot;tuiOverContent&quot;&gt;
+    &lt;!-- Content over app content --&gt;
+  &lt;/ng-container&gt;
+  &lt;ng-container ngProjectAs=&quot;tuiOverDialogs&quot;&gt;
+    &lt;!-- Content over dialogs --&gt;
+  &lt;/ng-container&gt;
+  &lt;ng-container ngProjectAs=&quot;tuiOverAlerts&quot;&gt;
+    &lt;!-- Content over alerts --&gt;
+  &lt;/ng-container&gt;
+  &lt;ng-container ngProjectAs=&quot;tuiOverDropdowns&quot;&gt;
+    &lt;!-- Content over dropdowns --&gt;
+  &lt;/ng-container&gt;
+  &lt;ng-container ngProjectAs=&quot;tuiOverHints&quot;&gt;
+    &lt;!-- Content over hints --&gt;
+  &lt;/ng-container&gt;
+&lt;/tui-root&gt;
+```
+
+---
+## assets.md
+
+```json
+{
+  &quot;projects&quot;: {
+    &quot;my-project&quot;: {
+      &quot;architect&quot;: {
+        &quot;build&quot;: {
+          // ...
+          &quot;assets&quot;: [
+            {
+              &quot;glob&quot;: &quot;**/*&quot;,
+              &quot;input&quot;: &quot;node_modules/@taiga-ui/icons/src&quot;,
+              &quot;output&quot;: &quot;assets/taiga-ui/icons&quot;
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+---
+## components-styles.md
+
+```ts
+@Component({
+  //...,
+  styleUrls: [&#039;./my.component.scss&#039;, &#039;./my.component.less&#039;],
+})
+export class Example {}
+```
+
+---
+## import-local-less.md
+
+```less
+@import &#039;@taiga-ui/core/styles/taiga-ui-local.less&#039;;
+// other styles
+```
+
+---
+## main-standalone.md
+
+```ts
+import {provideAnimations} from &#039;@angular/platform-browser/animations&#039;;
+import {provideEventPlugins} from &#039;@taiga-ui/event-plugins&#039;;
+// ...
+bootstrapApplication(App, {
+  providers: [
+    provideAnimations(),
+    provideEventPlugins(),
+    //...
+  ],
+}).catch((err) =&gt; console.error(err));
+```
+
+---
+## main.md
+
+```bash
+npm i @taiga-ui/{cdk,core,kit,icons}
+```
+
+---
+## nx-add.md
+
+```bash
+npm i taiga-ui
+nx g taiga-ui:ng-add
+```
+
+---
+## nx-assets.md
+
+```json
+{
+  &quot;targets&quot;: {
+    &quot;build&quot;: {
+      &quot;options&quot;: {
+        // ...
+        &quot;assets&quot;: [
+          {
+            &quot;glob&quot;: &quot;**/*&quot;,
+            &quot;input&quot;: &quot;node_modules/@taiga-ui/icons/src&quot;,
+            &quot;output&quot;: &quot;assets/taiga-ui/icons&quot;
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+---
+## nx-migrate.md
+
+```bash
+nx migrate @taiga-ui/cdk
+nx migrate --run-migrations=migrations.json
+```
+
+---
+## ponyfill.md
+
+```bash
+npm install css-vars-ponyfill
+```
+
+---
+## project-json-styles.md
+
+```json
+{
+  &quot;targets&quot;: {
+    &quot;build&quot;: {
+      &quot;options&quot;: {
+        &quot;styles&quot;: [
+          &quot;@taiga-ui/core/styles/taiga-ui-theme.less&quot;,
+          &quot;@taiga-ui/core/styles/taiga-ui-fonts.less&quot;,
+          &quot;@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less&quot; // optional
+        ]
+      }
+    }
+  }
+}
+```
+
+---
 # components/Accordion
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
@@ -10373,14 +10590,30 @@ export default class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/div&gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
+&lt;header tuiHeader&gt;
+&lt;h2 tuiTitle&gt;Footer that ends with text&lt;/h2&gt;
+&lt;aside tuiAccessories&gt;
+&lt;tui-icon tuiTooltip=&quot;It&#039;s strange, I know&quot; /&gt;
+&lt;/aside&gt;
+&lt;/header&gt;
+&lt;div tuiCell&gt; Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. &lt;/div&gt;
+&lt;footer&gt;
+&lt;div tuiTitle&gt;
+&lt;div tuiSubtitle&gt;Remaining $25 120.23&lt;/div&gt;
+&lt;progress tuiProgressBar value=&quot;0.75&quot; &gt;&lt;/progress&gt;
+&lt;div tuiSubtitle&gt;out of $100 000&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
-import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
+import {TuiButton, TuiIcon, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiProgress, TuiTooltip} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
@@ -10391,8 +10624,11 @@ import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         TuiCardLarge,
         TuiCell,
         TuiHeader,
+        TuiIcon,
+        TuiProgress,
         TuiSurface,
         TuiTitle,
+        TuiTooltip,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
@@ -10406,8 +10642,21 @@ export default class Example {}
 :host {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content 1fr;
     gap: 1rem;
     inline-size: 30rem;
+
+    &gt; :last-child {
+        grid-column: span 2;
+    }
+}
+
+[tuiCell] {
+    padding-block: 0 !important;
+}
+
+[tuiSubtitle] {
+    font: var(--tui-font-text-m);
 }
 ```
 
@@ -24759,7 +25008,7 @@ export class Example {}
 ### Example
 
 ```html
-&lt;label tuiInputFiles&gt;
+&lt;label [tuiInputFiles]=&quot;size&quot;&gt;
 &lt;input #validator=&quot;tuiInputFilesValidator&quot; tuiInputFiles [accept]=&quot;accept&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [maxFileSize]=&quot;maxFileSize&quot; [multiple]=&quot;multiple&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; (reject)=&quot;updateRejected($event); reject.emitEvent($event)&quot; /&gt;
 &lt;/label&gt;
 &lt;tui-files class=&quot;tui-space_top-2&quot; [max]=&quot;maxFilesCount&quot; [(expanded)]=&quot;expanded&quot; &gt;
@@ -24779,6 +25028,7 @@ export class Example {}
 | [accept] | `string` | Allowed formats |
 | [maxFileSize] | `number` | Max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
 | [multiple] | `boolean` | Allows to upload several files |
+| [tuiInputFiles] | `TuiSizeL` | Drop zone size |
 
 ### API - Outputs
 
@@ -25103,21 +25353,20 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;label tuiInputFiles&gt;
+&lt;label tuiInputFiles=&quot;l&quot;&gt;
 &lt;input tuiInputFiles [formControl]=&quot;control&quot; /&gt;
 &lt;ng-template let-dragged&gt;
-&lt;div *ngIf=&quot;dragged; else base&quot; class=&quot;content&quot; &gt;
+&lt;ng-container *ngIf=&quot;dragged; else base&quot;&gt;
 &lt;tui-avatar appearance=&quot;secondary&quot; src=&quot;@tui.droplet&quot; /&gt;
 &lt;div&gt; Drop it like it&#039;s hot! &lt;br /&gt;
 &lt;br /&gt;
 &lt;/div&gt;
-&lt;/div&gt;
+&lt;/ng-container&gt;
 &lt;ng-template #base&gt;
-&lt;div class=&quot;content&quot;&gt;
 &lt;tui-avatar appearance=&quot;secondary&quot; src=&quot;@tui.cloud-upload&quot; /&gt;
 &lt;div&gt; Drag and drop file here or &lt;a tuiLink&gt;click to upload&lt;/a&gt;
 &lt;/div&gt;
-&lt;/div&gt;
+&lt;div class=&quot;types&quot;&gt;PNG, JPG, JPEG, PNG, etc&lt;/div&gt;
 &lt;/ng-template&gt;
 &lt;/ng-template&gt;
 &lt;/label&gt;
@@ -25158,13 +25407,14 @@ export default class Example {
 ```
 **LESS:**
 ```less
-.content {
-    display: flex;
-    block-size: 10rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+:host {
+    display: block;
+    min-inline-size: 25rem;
+}
+
+.types {
+    color: var(--tui-text-secondary);
+    font-size: 0.6875rem;
 }
 ```
 
@@ -37617,7 +37867,7 @@ Indeterminate state expresses an unspecified amount of wait time. If there is no
 
 **Template:**
 ```html
-&lt;progress max=&quot;100&quot; tuiProgressBar &gt;&lt;/progress&gt;
+&lt;progress tuiProgressBar&gt;&lt;/progress&gt;
 ```
 **TypeScript:**
 ```ts
@@ -40450,6 +40700,88 @@ p {
 }
 ```
 
+#### Nested scrollbar
+
+**Template:**
+```html
+&lt;tui-scrollbar&gt;
+&lt;p&gt;Parent&lt;/p&gt;
+&lt;child /&gt;
+&lt;/tui-scrollbar&gt;
+```
+**TypeScript:**
+```ts
+import {ChangeDetectionStrategy, Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiScrollbar, tuiScrollbarOptionsProvider} from &#039;@taiga-ui/core&#039;;
+import {NgForOf} from &#039;@angular/common&#039;;
+import {TuiFade} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    selector: &#039;child&#039;,
+    imports: [NgForOf, TuiFade, TuiScrollbar],
+    template: `
+        &lt;tui-scrollbar&gt;
+            &lt;div tuiFade=&quot;vertical&quot;&gt;
+                &lt;ng-container
+                    *ngFor=&quot;
+                        let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                    &quot;
+                &gt;
+                    &lt;div [style.padding]=&quot;&#039;1rem&#039;&quot;&gt;
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Praesentium tempore sapiente nostrum, nulla autem, iste amet
+                        ratione incidunt, quam obcaecati ipsa reiciendis modi quibusdam
+                        at. Neque culpa excepturi repellat natus!
+                    &lt;/div&gt;
+                &lt;/ng-container&gt;
+            &lt;/div&gt;
+        &lt;/tui-scrollbar&gt;
+    `,
+    styles: [
+        `
+            :host {
+                display: block;
+                margin: 1.125rem;
+            }
+
+            tui-scrollbar {
+                inline-size: 30rem;
+                block-size: 30rem;
+                outline: 1px solid;
+            }
+        `,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiScrollbarOptionsProvider({mode: &#039;hover&#039;})],
+})
+export class Child {}
+
+@Component({
+    standalone: true,
+    imports: [Child, TuiScrollbar],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    providers: [tuiScrollbarOptionsProvider({mode: &#039;always&#039;})],
+})
+export default class Parent {}
+```
+**LESS:**
+```less
+p {
+    margin: 1.125rem;
+}
+
+tui-scrollbar {
+    outline: 1px solid;
+    resize: block;
+}
+```
+
 
 ### TypeScript
 
@@ -40474,6 +40806,7 @@ export default class Page {
         &#039;Virtual scroll&#039;,
         &#039;Show scroll bars on hover&#039;,
         &#039;Native scrollbar&#039;,
+        &#039;Nested scrollbar&#039;,
     ];
 }
 ```
@@ -58857,9 +59190,11 @@ export default class Page {
     protected readonly colorsVariants: readonly string[][] = [
         [&#039;var(--tui-background-accent-1)&#039;],
         [&#039;#39b54a&#039;, &#039;#ffd450&#039;, &#039;#ffd450&#039;, &#039;#fcc521&#039;, &#039;#fab619&#039;, &#039;#f8a34d&#039;, &#039;#e01f19&#039;],
-        new Array(20)
-            .fill(&#039;&#039;)
-            .map((_, index) =&gt; `var(--tui-chart-categorical-0${index + 1})`),
+        Array.from(
+            {length: 20},
+            (_, index) =&gt;
+                `var(--tui-chart-categorical-${String(index + 1).padStart(2, &#039;0&#039;)})`,
+        ),
     ];
 
     protected colors: string[] = this.colorsVariants[0] ?? [];
@@ -60505,6 +60840,176 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {}
+```
+
+---
+# directives/Truncate
+- **Package**: `CDK`
+- **Type**: directives
+Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.
+
+### Example
+
+```html
+&lt;div class=&quot;demo&quot; [style.font-size.px]=&quot;fontSize&quot; [style.padding.px]=&quot;padding&quot; [style.word-break]=&quot;wordBreak&quot; [tuiTruncate]=&quot;lines&quot; &gt; {{ content }} &lt;/div&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| &lt;ng-content /&gt; | `string` | Content |
+| [tuiTruncate] | `number` | Visible lines |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+&lt;div tuiCardMedium class=&quot;poster&quot; &gt;
+&lt;h2 tuiTitle&gt; Poster &lt;span tuiSubtitle [tuiTruncate]=&quot;2&quot; &gt; Look deep into nature, and then you will understand everything better: cinema, concerts, theaters and sports up to 25% &lt;/span&gt;
+&lt;/h2&gt;
+&lt;div tuiBadge class=&quot;badge&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.rss&quot; /&gt; 10% &lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiCardMedium class=&quot;fly&quot; &gt;
+&lt;div tuiBadge class=&quot;badge&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.timer&quot; /&gt; 50 min &lt;/div&gt;
+&lt;h2 tuiTitle&gt; Order #31 &lt;span tuiSubtitle tuiTruncate &gt; 8375 Brook Avenue Brooklyn, NY 11206 &lt;/span&gt;
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div tuiCardLarge=&quot;compact&quot; class=&quot;one-line&quot; &gt;
+&lt;div tuiCell&gt;
+&lt;tui-icon icon=&quot;@tui.file&quot; /&gt;
+&lt;div tuiTitle tuiTruncate &gt; filename_long_long_long_long_long_long_long_long_long_longname.doc &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiCardLarge=&quot;compact&quot; class=&quot;two-line&quot; &gt;
+&lt;div tuiCell&gt;
+&lt;tui-icon icon=&quot;@tui.file&quot; /&gt;
+&lt;div tuiTitle [tuiTruncate]=&quot;2&quot; &gt; filename_long_long_long_long_long_long_long_long_long_longname.doc &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTruncate} from &#039;@taiga-ui/cdk&#039;;
+import {TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiBadge} from &#039;@taiga-ui/kit&#039;;
+import {TuiCard, TuiCell} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiBadge,
+        TuiCard,
+        TuiCell,
+        TuiIcon,
+        TuiTitle,
+        TuiTruncate,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    inline-size: 23.25rem;
+}
+
+.badge {
+    background: #aff218;
+    color: #333;
+}
+
+[tuiSubtitle][tuiSubtitle] {
+    color: #fff;
+}
+
+.poster {
+    background: #4158d0 linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 13.9375rem;
+    block-size: 8rem;
+}
+
+.fly {
+    background: #0093e9 linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+    padding: 0.75rem;
+    color: #fff;
+    inline-size: 8rem;
+    block-size: 8rem;
+}
+
+.one-line {
+    background: #00dbde linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+    inline-size: 100%;
+}
+
+.two-line {
+    background: #fbab7e linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+    inline-size: 15.9375rem;
+}
+
+[tuiCardLarge] [tuiCell],
+[tuiCardLarge] tui-icon {
+    color: #fff;
+}
+
+[tuiTruncate] {
+    flex-direction: row; // reset tuiTitle flex-direction
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiTruncate} from &#039;@taiga-ui/cdk&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiDemo, TuiTruncate],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    changeDetection,
+})
+export default class Page {
+    protected content = &#039;I am very very long text that gets truncated&#039;;
+    protected lines = 1;
+    protected padding = 16;
+    protected fontSize = 16;
+    protected wordBreakStyles = [&#039;break-word&#039;, &#039;break-all&#039;, &#039;normal&#039;];
+    protected wordBreak = this.wordBreakStyles[0];
+}
+```
+
+### LESS
+
+```less
+.demo {
+    background: #87ceeb;
+    overflow: hidden;
+    resize: horizontal;
+}
 ```
 
 ---
