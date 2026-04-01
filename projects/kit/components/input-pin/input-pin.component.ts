@@ -25,7 +25,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         spellcheck: 'false',
         '(pointerdown.prevent)': 'onClick(0)',
         '(selectionchange)': 'onSelection()',
-        '(keydown.arrowLeft)': 'onArrow()',
     },
 })
 export class TuiInputPinComponent {
@@ -48,16 +47,7 @@ export class TuiInputPinComponent {
 
     public onSelection(): void {
         if (this.el.selectionStart === this.el.maxLength) {
-            this.el.setSelectionRange(this.el.maxLength - 1, this.el.maxLength);
-        }
-    }
-
-    public onArrow(): void {
-        if (
-            this.el.selectionStart === this.el.maxLength - 1 &&
-            this.el.selectionEnd === this.el.maxLength
-        ) {
-            this.el.setSelectionRange(this.el.maxLength - 2, this.el.maxLength - 2);
+            this.el.setSelectionRange(this.el.maxLength - 1, this.el.maxLength - 1);
         }
     }
 
