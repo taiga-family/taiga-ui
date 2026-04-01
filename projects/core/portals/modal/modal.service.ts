@@ -36,5 +36,5 @@ export abstract class TuiModalService<T, K = void> extends TuiPortal<T, K> {
 }
 
 function getAnimations(el: Element | null): ReadonlyArray<Promise<unknown>> {
-    return el?.getAnimations().map(async ({finished}) => finished) || [];
+    return el?.getAnimations?.().map(async ({finished}) => finished) || [];
 }
