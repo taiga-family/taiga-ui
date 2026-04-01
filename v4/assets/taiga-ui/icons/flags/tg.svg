@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <rect width="40" height="7.77778" fill="#496E2D" />
+    <rect y="7.77783" width="40" height="7.77778" fill="#FFDA44" />
+    <rect y="32.2222" width="40" height="7.77778" fill="#496E2D" />
+    <rect y="24.4445" width="40" height="7.77778" fill="#FFDA44" />
+    <rect y="15.5555" width="40" height="8.88889" fill="#496E2D" />
+    <rect width="20" height="24.4444" fill="#D80027" />
+    <path
+        d="M9.92889 6.66663L11.2233 10.6522H15.4144L12.0256 13.1155L13.32 17.1L9.93111 14.6366L6.53778 17.1L7.83333 13.1144L4.44444 10.6511H8.63555L9.92889 6.66663Z"
+        fill="#F0F0F0"
+    />
+</svg>

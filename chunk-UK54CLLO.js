@@ -1,0 +1,11 @@
+import"./chunk-HU6DUUP4.js";var r=`<div
+    tuiCell
+    tuiShrinkWrap="15rem"
+>
+    <div tuiAvatar="@tui.user"></div>
+    <div tuiTitle>
+        <strong>Title</strong>
+        <tui-shrink-wrap>Long messages are wrapping perfectly to fit into max width of the cell</tui-shrink-wrap>
+    </div>
+</div>
+`;export{r as default};

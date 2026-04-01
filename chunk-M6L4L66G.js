@@ -1,0 +1,19 @@
+import"./chunk-HU6DUUP4.js";var t=`<tui-doc-page
+    header="TableFilters"
+    package="ADDON-TABLE"
+    path="addon-table/directives/table-filters"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>This module allows you to filter table data in a flexible way.</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{t as default};

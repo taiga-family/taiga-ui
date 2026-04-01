@@ -5,19 +5,22 @@
     viewBox="0 0 24 24"
     fill="currentColor"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="calc((100vw - 100vh) / 10)"
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path
-        vector-effect="non-scaling-stroke"
-        d="M4 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2"
-    />
-    <path vector-effect="non-scaling-stroke" d="M10 22H8" />
-    <path vector-effect="non-scaling-stroke" d="M16 22h-2" />
-    <circle vector-effect="non-scaling-stroke" cx="8" cy="8" r="2" />
-    <path vector-effect="non-scaling-stroke" d="M9.414 9.414 12 12" />
-    <path vector-effect="non-scaling-stroke" d="M14.8 14.8 18 18" />
-    <circle vector-effect="non-scaling-stroke" cx="8" cy="16" r="2" />
-    <path vector-effect="non-scaling-stroke" d="m18 6-8.586 8.586" />
+    <line vector-effect="non-scaling-stroke" x1="5" y1="3" x2="19" y2="3" />
+    <line vector-effect="non-scaling-stroke" x1="3" y1="5" x2="3" y2="19" />
+    <line vector-effect="non-scaling-stroke" x1="21" y1="5" x2="21" y2="19" />
+    <line vector-effect="non-scaling-stroke" x1="9" y1="21" x2="10" y2="21" />
+    <line vector-effect="non-scaling-stroke" x1="14" y1="21" x2="15" y2="21" />
+    <path vector-effect="non-scaling-stroke" d="M 3 5 A2 2 0 0 1 5 3" />
+    <path vector-effect="non-scaling-stroke" d="M 19 3 A2 2 0 0 1 21 5" />
+    <path vector-effect="non-scaling-stroke" d="M 5 21 A2 2 0 0 1 3 19" />
+    <path vector-effect="non-scaling-stroke" d="M 21 19 A2 2 0 0 1 19 21" />
+    <circle vector-effect="non-scaling-stroke" cx="8.5" cy="8.5" r="1.5" />
+    <line vector-effect="non-scaling-stroke" x1="9.56066" y1="9.56066" x2="12" y2="12" />
+    <line vector-effect="non-scaling-stroke" x1="17" y1="17" x2="14.82" y2="14.82" />
+    <circle vector-effect="non-scaling-stroke" cx="8.5" cy="15.5" r="1.5" />
+    <line vector-effect="non-scaling-stroke" x1="9.56066" y1="14.43934" x2="17" y2="7" />
 </svg>

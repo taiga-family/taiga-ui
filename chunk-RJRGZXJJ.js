@@ -1,0 +1,30 @@
+import"./chunk-HU6DUUP4.js";var e=`@import '@taiga-ui/styles/utils';
+
+.wrapper {
+    position: relative;
+}
+
+.fade {
+    .transition(max-block-size);
+
+    max-block-size: calc(3 * (1.25rem + var(--tui-font-offset)));
+
+    &_expanded {
+        max-block-size: 15rem;
+    }
+}
+
+.expand {
+    .transition(opacity, visibility);
+
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    transition-delay: var(--tui-duration);
+
+    &_hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+`;export{e as default};

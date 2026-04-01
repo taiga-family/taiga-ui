@@ -5,21 +5,18 @@
     viewBox="0 0 24 24"
     fill="currentColor"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="calc((100vw - 100vh) / 10)"
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M12 19h.01" />
-    <path vector-effect="non-scaling-stroke" d="M12 3h.01" />
-    <path vector-effect="non-scaling-stroke" d="M16 19h.01" />
-    <path vector-effect="non-scaling-stroke" d="M16 3h.01" />
-    <path vector-effect="non-scaling-stroke" d="M2 13h.01" />
-    <path vector-effect="non-scaling-stroke" d="M2 17v4.286a.71.71 0 0 0 1.212.502l2.202-2.202A2 2 0 0 1 6.828 19H8" />
-    <path vector-effect="non-scaling-stroke" d="M2 5a2 2 0 0 1 2-2" />
-    <path vector-effect="non-scaling-stroke" d="M2 9h.01" />
-    <path vector-effect="non-scaling-stroke" d="M20 3a2 2 0 0 1 2 2" />
-    <path vector-effect="non-scaling-stroke" d="M22 13h.01" />
-    <path vector-effect="non-scaling-stroke" d="M22 17a2 2 0 0 1-2 2" />
-    <path vector-effect="non-scaling-stroke" d="M22 9h.01" />
-    <path vector-effect="non-scaling-stroke" d="M8 3h.01" />
+    <path vector-effect="non-scaling-stroke" d="M14 3h2" />
+    <path vector-effect="non-scaling-stroke" d="M16 19h-2" />
+    <path vector-effect="non-scaling-stroke" d="M2 12v-2" />
+    <path vector-effect="non-scaling-stroke" d="M2 16v5.286a.71.71 0 0 0 1.212.502l1.149-1.149" />
+    <path vector-effect="non-scaling-stroke" d="M20 19a2 2 0 0 0 2-2v-1" />
+    <path vector-effect="non-scaling-stroke" d="M22 10v2" />
+    <path vector-effect="non-scaling-stroke" d="M22 6V5a2 2 0 0 0-2-2" />
+    <path vector-effect="non-scaling-stroke" d="M4 3a2 2 0 0 0-2 2v1" />
+    <path vector-effect="non-scaling-stroke" d="M8 19h2" />
+    <path vector-effect="non-scaling-stroke" d="M8 3h2" />
 </svg>

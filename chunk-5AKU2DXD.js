@@ -1,0 +1,26 @@
+import"./chunk-HU6DUUP4.js";var o=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.fade {
+    inline-size: 100%;
+    block-size: 2rem;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.fade-vertical {
+    block-size: 5rem;
+    overflow: auto;
+}
+
+.nowrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-inline-size: 100%;
+}
+`;export{o as default};

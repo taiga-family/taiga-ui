@@ -1,0 +1,58 @@
+import"./chunk-HU6DUUP4.js";var e=`<tui-swipe-actions>
+    <div
+        appearance="floating"
+        tuiCardLarge
+        tuiCell
+    >
+        <div
+            appearance="primary"
+            tuiAvatar="@tui.dollar-sign"
+        ></div>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
+            <div tuiSubtitle>Dollar account</div>
+        </div>
+    </div>
+
+    @if (editButton) {
+        <button
+            iconStart="@tui.pencil-line"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+            type="button"
+        >
+            Edit
+        </button>
+    }
+    @if (shareButton) {
+        <button
+            appearance="secondary"
+            iconStart="@tui.share"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+            type="button"
+        >
+            Share
+        </button>
+    }
+</tui-swipe-actions>
+
+<label>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="shareButton"
+    />
+    Share button
+</label>
+<label>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="editButton"
+    />
+    Edit button
+</label>
+`;export{e as default};

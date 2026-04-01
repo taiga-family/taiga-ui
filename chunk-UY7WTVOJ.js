@@ -1,0 +1,22 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="ButtonSelect"
+    package="KIT"
+    path="kit/directives/button-select"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>ButtonSelect</code>
+            is a form control for selecting one or multiple values, similar to a standard select element but with a
+            button-based interface.
+        </p>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

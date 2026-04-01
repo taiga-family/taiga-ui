@@ -1,0 +1,44 @@
+import"./chunk-HU6DUUP4.js";var i=`<button
+    iconStart="@tui.phone"
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Call us
+</button>
+<ng-template
+    let-observer
+    [tuiPopoutOptions]="{pip: true, features: {height: 480, width: 320}}"
+    [(tuiPopout)]="open"
+>
+    <main tuiTheme="dark">
+        <div
+            size="xl"
+            tuiAvatar="@tui.user"
+        ></div>
+        <header tuiHeader="body-l">
+            <hgroup tuiTitle>
+                <h1>Taiga Headquarters</h1>
+                <p tuiSubtitle>Calling...</p>
+            </hgroup>
+        </header>
+        <section>
+            <button
+                appearance="warning"
+                size="l"
+                title="Headset"
+                tuiAvatar="@tui.headset"
+                type="button"
+            ></button>
+            <button
+                appearance="negative"
+                size="l"
+                title="Hang up"
+                tuiAvatar="@tui.phone-off"
+                type="button"
+                (click)="observer.complete()"
+            ></button>
+        </section>
+    </main>
+</ng-template>
+`;export{i as default};

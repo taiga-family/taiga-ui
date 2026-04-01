@@ -1,0 +1,21 @@
+import"./chunk-HU6DUUP4.js";var n=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    inline-size: 12rem;
+}
+
+.progress {
+    .transition(all);
+
+    inline-size: 1rem;
+
+    &:not(&_active) {
+        inline-size: 0.5rem;
+        color: transparent;
+    }
+}
+`;export{n as default};

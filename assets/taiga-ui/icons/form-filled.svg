@@ -1,0 +1,16 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    stroke="currentColor"
+    stroke-width="calc((100vw - 100vh) / 10)"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path vector-effect="non-scaling-stroke" d="M4 14h6" />
+    <path vector-effect="non-scaling-stroke" d="M4 2h10" />
+    <rect x="4" y="18" vector-effect="non-scaling-stroke" width="16" height="4" rx="1" />
+    <rect x="4" y="6" vector-effect="non-scaling-stroke" width="16" height="4" rx="1" />
+</svg>

@@ -1,0 +1,78 @@
+import"./chunk-HU6DUUP4.js";var e=`<div>
+    <div>
+        Using
+        <strong>TUI_NUMBER_FORMAT</strong>
+        injection token you can customize numbers formatting.
+    </div>
+    <div>For example: 10 500,33</div>
+    <div>Can be customized as: 10/500.33</div>
+
+    <section>
+        <h3>Defaults:</h3>
+        <ul class="tui-list tui-list_small">
+            <li class="tui-list__item">
+                decimalSeparator =
+                <code>,</code>
+            </li>
+            <li class="tui-list__item">
+                thousandSeparator =
+                <code>CHAR_NO_BREAK_SPACE</code>
+            </li>
+            <li class="tui-list__item">
+                zeroPadding =
+                <code>true</code>
+            </li>
+            <li class="tui-list__item">
+                rounding =
+                <code>truncate</code>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Components that are customizable:</h3>
+        <ul class="tui-list tui-list_small">
+            <li class="tui-list__item">
+                <a
+                    tuiLink
+                    [routerLink]="routes.Amount"
+                >
+                    TuiAmount
+                </a>
+            </li>
+            <li class="tui-list__item">
+                <a
+                    tuiLink
+                    [routerLink]="routes.FormatNumber"
+                >
+                    TuiFormatNumberPipe
+                </a>
+            </li>
+            <li class="tui-list__item">
+                <a
+                    tuiLink
+                    [routerLink]="routes.InputNumber"
+                >
+                    TuiInputNumberComponent
+                </a>
+            </li>
+            <li class="tui-list__item">
+                <a
+                    tuiLink
+                    [routerLink]="routes.InputSlider"
+                >
+                    TuiInputSliderComponent
+                </a>
+            </li>
+            <li class="tui-list__item">
+                <a
+                    tuiLink
+                    [routerLink]="routes.InputRange"
+                >
+                    TuiInputRangeComponent
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>
+`;export{e as default};

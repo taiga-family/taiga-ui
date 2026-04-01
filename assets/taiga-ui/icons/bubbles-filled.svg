@@ -5,11 +5,11 @@
     viewBox="0 0 24 24"
     fill="currentColor"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="calc((100vw - 100vh) / 10)"
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M7.2 14.8a2 2 0 0 1 2 2" />
+    <path vector-effect="non-scaling-stroke" d="M7.001 15.085A1.5 1.5 0 0 1 9 16.5" />
     <circle vector-effect="non-scaling-stroke" cx="18.5" cy="8.5" r="3.5" />
     <circle vector-effect="non-scaling-stroke" cx="7.5" cy="16.5" r="5.5" />
     <circle vector-effect="non-scaling-stroke" cx="7.5" cy="4.5" r="2.5" />

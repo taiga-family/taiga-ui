@@ -1,0 +1,50 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="TabBar"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component for creating mobile navigation.</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        <label tuiLabel>
+                            <input
+                                tuiCheckbox
+                                type="checkbox"
+                                [(ngModel)]="fixed"
+                            />
+                            Fixed
+                        </label>
+                        <tui-tab-bar-example
+                            *tuiPopup="fixed"
+                            class="fixed"
+                        />
+                    }
+                    @case (1) {
+                        If you use
+                        <code>routerLink</code>
+                        you must also add
+                        <code>routerLinkActive</code>
+                        directive.
+                    }
+                    @case (3) {
+                        When there are no
+                        <code>TabBarItem</code>
+                        children, the component shows skeleton for 4 items
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};

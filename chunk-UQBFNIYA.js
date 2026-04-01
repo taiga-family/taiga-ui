@@ -1,0 +1,43 @@
+import"./chunk-HU6DUUP4.js";var n=`<button
+    appearance="flat"
+    iconEnd="@tui.chevron-right"
+    size="m"
+    tuiButton
+    tuiDropdownAlign="end"
+    type="button"
+    [tuiAppearanceState]="open ? 'active' : null"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownSided]="true"
+    [(tuiDropdownOpen)]="open"
+>
+    Button
+</button>
+<ng-template
+    #dropdown
+    let-close
+>
+    <tui-data-list>
+        <tui-opt-group>
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    (click)="onClick()"
+                >
+                    {{ item }}
+                </button>
+            }
+        </tui-opt-group>
+        <hr />
+        <tui-opt-group>
+            <button
+                tuiOption
+                type="button"
+                (click)="close()"
+            >
+                Nevermind
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>
+`;export{n as default};

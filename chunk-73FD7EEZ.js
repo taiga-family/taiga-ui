@@ -1,0 +1,16 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="ButtonX"
+    package="Core"
+    path="core/directives/button-x"
+    type="components"
+>
+    <ng-template pageTab>
+        <div>A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.</div>
+        <tui-doc-example
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};

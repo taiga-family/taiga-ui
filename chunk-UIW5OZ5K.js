@@ -1,0 +1,33 @@
+import"./chunk-HU6DUUP4.js";var i=`@import '@taiga-ui/styles/utils';
+
+.examples {
+    display: flex;
+    gap: 2.5rem;
+    inline-size: 20rem;
+    flex-direction: column;
+}
+
+[tuiCardLarge] {
+    .transition(box-shadow);
+
+    cursor: pointer;
+    gap: 0;
+    box-shadow: var(--tui-shadow-medium);
+
+    &:hover {
+        box-shadow: var(--tui-shadow-medium-hover);
+    }
+
+    &:first-child {
+        box-shadow: var(--tui-shadow-small);
+
+        &:hover {
+            box-shadow: var(--tui-shadow-small-hover);
+        }
+    }
+
+    &:last-child {
+        box-shadow: var(--tui-shadow-popup) !important;
+    }
+}
+`;export{i as default};

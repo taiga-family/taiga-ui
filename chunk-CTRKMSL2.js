@@ -1,0 +1,65 @@
+import"./chunk-HU6DUUP4.js";var t=`<tui-doc-page
+    header="Media"
+    package="CDK"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>Directive for declarative work with HTML5 video and audio</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <audio
+            controls
+            src="assets/media/strays.mp3"
+            tuiMedia
+            [playbackRate]="playbackRate"
+            [(currentTime)]="currentTime"
+            [(paused)]="paused"
+            [(volume)]="volume"
+        ></audio>
+        <table tuiDocAPI>
+            <tr
+                name="[(currentTime)]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="currentTime"
+            >
+                Current time (seconds)
+            </tr>
+            <tr
+                name="[(paused)]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="paused"
+            >
+                Paused state
+            </tr>
+            <tr
+                name="[playbackRate]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="playbackRate"
+            >
+                Playback speed
+            </tr>
+            <tr
+                name="[(volume)]"
+                tuiDocAPIItem
+                type="number"
+                [items]="volumeVariants"
+                [(value)]="volume"
+            >
+                Volume
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{t as default};

@@ -1,0 +1,19 @@
+import"./chunk-HU6DUUP4.js";var e=`@import '@taiga-ui/styles/utils';
+
+:host {
+    max-inline-size: 34.375rem;
+}
+
+.title {
+    font: var(--tui-typography-heading-h5);
+    margin: 0 0 0.75rem;
+}
+
+.filters {
+    display: inline;
+}
+
+.tag {
+    margin: 0 0.25rem 0.25rem 0;
+}
+`;export{e as default};

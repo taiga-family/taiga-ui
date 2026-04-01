@@ -1,0 +1,92 @@
+import"./chunk-HU6DUUP4.js";var i=`<tui-doc-page
+    header="Accordion"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected']; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Default use case for an accordion with exclusive expanded item.
+                    }
+                    @case (1) {
+                        Customizing appearance of the accordion with CSS.
+                    }
+                    @case (2) {
+                        Using accordion with a single item akin to
+                        <code>details</code>
+                        +
+                        <code>summary</code>
+                        tags.
+                    }
+                    @case (3) {
+                        Choosing between eagerly instantiated and lazy instantiated content.
+                    }
+                    @case (4) {
+                        Showing multiple nested accordion blocks.
+                    }
+                    @case (5) {
+                        Using
+                        <code>Connected</code>
+                        directive to implement stepper-like UI.
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-accordion
+                [closeOthers]="closeOthers"
+                [size]="size"
+            >
+                <button tuiAccordion>Taiga UI cdk</button>
+                <tui-expand>
+                    Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular
+                    entities
+                </tui-expand>
+                <button [(tuiAccordion)]="open">Taiga UI core</button>
+                <tui-expand>
+                    Basic elements needed to develop components, directives and more using Taiga UI design system
+                </tui-expand>
+            </tui-accordion>
+        </tui-doc-demo>
+
+        <table tuiDocAPI>
+            <tr
+                name="[closeOthers]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closeOthers"
+            >
+                Other sections are closed when user opens one
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[(tuiAccordion)]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="open"
+            >
+                Individual item open state
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{i as default};
