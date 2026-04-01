@@ -300,7 +300,7 @@ test.describe('InputChip', () => {
                     .toHaveScreenshot('multiselect-select-checkboxes.png');
             });
 
-            test('working with objects', async () => {
+            test('working with objects', async ({page}) => {
                 const block = example
                     .locator('label[tuiLabel]')
                     .filter({hasText: 'Working with objects'});
@@ -308,7 +308,8 @@ test.describe('InputChip', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await block.locator('tui-textfield').click();
-                await expect(multiselect.dropdown).toBeAttached();
+
+                await multiselect.dropdown.scrollIntoViewIfNeeded();
 
                 await multiselect.dropdown
                     .getByRole('button', {name: 'Select all'})
@@ -316,9 +317,16 @@ test.describe('InputChip', () => {
                     .click();
 
                 await expect(multiselect.dropdown).toBeAttached();
+
                 await expect
-                    .soft(example)
-                    .toHaveScreenshot('multiselect-select-objects.png');
+                    .soft(multiselect.dropdown)
+                    .toHaveScreenshot('multiselect-select-objects-dropdown.png');
+
+                await page.mouse.click(0, 0);
+
+                await expect
+                    .soft(block.locator('tui-textfield'))
+                    .toHaveScreenshot('multiselect-select-objects-block.png');
             });
         });
     });
