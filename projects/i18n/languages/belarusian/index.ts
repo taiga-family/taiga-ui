@@ -1,4 +1,5 @@
 export * from './addon-commerce';
+export * from './addon-doc';
 export * from './addon-editor';
 export * from './addon-table';
 export * from './belarusian';

@@ -30,7 +30,7 @@
     class="t-example"
     [(tuiFullscreen)]="fullscreen"
 >
-    @if (processor() | tuiDocExampleGetTabs: defaultTab; as all) {
+    @if (processor() | tuiDocExampleGetTabs: defaultTab(); as all) {
         @let tabs = preview() ? all : all.slice(1);
         @if (tabs.length) {
             <div class="t-header">

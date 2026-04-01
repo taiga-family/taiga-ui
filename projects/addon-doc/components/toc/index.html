@@ -1,6 +1,6 @@
 @if (toc().length > 1) {
     <h2 tuiTitle="s">
-        <b>{{ text.toc }}</b>
+        <b>{{ text.toc() }}</b>
     </h2>
     <nav>
         @for (item of toc(); track $index) {
@@ -19,7 +19,7 @@
     </nav>
     @if (seeAlso.length) {
         <h2 tuiTitle="s">
-            <b>{{ text.seeAlso }}</b>
+            <b>{{ text.seeAlso() }}</b>
         </h2>
         @for (item of seeAlso; track $index) {
             <a
