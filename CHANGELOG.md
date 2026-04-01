@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/taiga-family/taiga-ui/compare/v5.0.0-rc.5...v5.0.0) (2026-04-01)
+
+### ⚠ BREAKING CHANGES
+
+- **addon-doc:** drop RTL and theme switch, move it to demo (#13675)
+
+### 🚀 Features
+
+- **i18n:** add `addon-doc` translations to `@taiga-ui/i18n` package
+  ([#13641](https://github.com/taiga-family/taiga-ui/issues/13641))
+  ([8b3debb](https://github.com/taiga-family/taiga-ui/commit/8b3debbe6331d2068610fc93b1828635ead6f259))
+- **icons:** bump lucide-static pack to v1.7.0 ([#13620](https://github.com/taiga-family/taiga-ui/issues/13620))
+  ([da47b2c](https://github.com/taiga-family/taiga-ui/commit/da47b2c69801a5159ae182281b43f2d71e69fa00))
+- **kit:** update `tuiInputFiles` spec ([#13615](https://github.com/taiga-family/taiga-ui/issues/13615))
+  ([8eb6c82](https://github.com/taiga-family/taiga-ui/commit/8eb6c825befde3c113df2bd5bcfb1031ef651b34))
+
+### 🐞 Bug Fixes
+
+- **core:** `Group` fix mask ([#13671](https://github.com/taiga-family/taiga-ui/issues/13671))
+  ([f4f53a9](https://github.com/taiga-family/taiga-ui/commit/f4f53a91bb7a4c349ed3d80190a83d2ddc2882e5))
+- **core:** `ModalService` throws SSR error `TypeError: el?.getAnimations is not a function`
+  ([#13687](https://github.com/taiga-family/taiga-ui/issues/13687))
+  ([233f1cd](https://github.com/taiga-family/taiga-ui/commit/233f1cd0dd507763534ac952226be7e910abfc9f))
+- **core:** `Notification` fix mobile styles according to specs
+  ([#13654](https://github.com/taiga-family/taiga-ui/issues/13654))
+  ([7e5844f](https://github.com/taiga-family/taiga-ui/commit/7e5844fe6feae84578eaa918450f3d4646538ad9))
+- **core:** use child combinator for hover mode to prevent nested scrollbar activation
+  ([#13651](https://github.com/taiga-family/taiga-ui/issues/13651))
+  ([7fbd06b](https://github.com/taiga-family/taiga-ui/commit/7fbd06b61ad90b771378643ebc76ac6bb6fe823f))
+- **kit:** `InputNumber` fails to update control value on insertion of decimal separator or negative sign
+  ([#13669](https://github.com/taiga-family/taiga-ui/issues/13669))
+  ([5592075](https://github.com/taiga-family/taiga-ui/commit/5592075395e55324fa5edca72f099dfcc131b005))
+- **kit:** `InputPhoneInternational` use imports from libphonenumber-js/core
+  ([#13678](https://github.com/taiga-family/taiga-ui/issues/13678))
+  ([c7b505f](https://github.com/taiga-family/taiga-ui/commit/c7b505f7b776dfa0a38c7c569ea9877dcd07a6b5))
+- **kit:** `InputPin`: caret jumps two characters when the `ArrowLeft` event is triggered
+  ([#13684](https://github.com/taiga-family/taiga-ui/issues/13684))
+  ([11a5c17](https://github.com/taiga-family/taiga-ui/commit/11a5c17b047b0421a9e22019c22e6093c46c5b98))
+- **kit:** `TuiConnected` padding 1rem for `tuiCell` ([#13659](https://github.com/taiga-family/taiga-ui/issues/13659))
+  ([9bb6cf2](https://github.com/taiga-family/taiga-ui/commit/9bb6cf20b2b83aefcb0f01b94f02fe0002f77383))
+- **kit:** `tuiConnected` vertical line gap on android/ios
+  ([#13665](https://github.com/taiga-family/taiga-ui/issues/13665))
+  ([e05bd4c](https://github.com/taiga-family/taiga-ui/commit/e05bd4cd1df0c0aa359f4b2966bb8b76ab440c30))
+- **kit:** fix text `Skeleton` ([#13656](https://github.com/taiga-family/taiga-ui/issues/13656))
+  ([2aef133](https://github.com/taiga-family/taiga-ui/commit/2aef1337e4cf3f48fe5bfb42006f6077b3323abb))
+- **layout:** `Card` fix styles ([#13650](https://github.com/taiga-family/taiga-ui/issues/13650))
+  ([1f97be1](https://github.com/taiga-family/taiga-ui/commit/1f97be1d13c7d98b72b0e72705d3d290724320b2))
+- **layout:** `Card` fix title gap on mobile ([#13660](https://github.com/taiga-family/taiga-ui/issues/13660))
+  ([8272109](https://github.com/taiga-family/taiga-ui/commit/827210981ca213943d9ef15cbb805581801937d5))
+
+### refactor
+
+- **addon-doc:** drop RTL and theme switch, move it to demo
+  ([#13675](https://github.com/taiga-family/taiga-ui/issues/13675))
+  ([a739e04](https://github.com/taiga-family/taiga-ui/commit/a739e0478e54a52a65aed5a15636c2e201b43738))
+
 ## [4.52.0](https://github.com/taiga-family/taiga-ui/compare/v4.51.0...v4.52.0) (2025-09-01)
 
 ### 🐞 Bug Fixes
