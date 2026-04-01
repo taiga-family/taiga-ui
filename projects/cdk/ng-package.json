@@ -4,6 +4,7 @@
         "."
     ],
     "dest": "../../dist/cdk",
+    "inlineStyleLanguage": "less",
     "lib": {
         "entryFile": "index.ts"
     }
