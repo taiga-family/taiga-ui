@@ -129,9 +129,9 @@ test.describe('InputChip', () => {
 
             await inputChip.input.fill('123,123,123');
             await inputChip.input.blur();
-            const chipCount = inputChip.chips;
+            const chips = inputChip.chips;
 
-            await expect(chipCount).toHaveCount(3);
+            await expect(chips).toHaveCount(3);
 
             await expect.soft(example).toHaveScreenshot('input-chip-not-unique.png');
         });
@@ -144,9 +144,9 @@ test.describe('InputChip', () => {
 
             await inputChip.input.fill('123,123,123');
             await inputChip.input.blur();
-            const chipCount = inputChip.chips;
+            const chips = inputChip.chips;
 
-            await expect(chipCount).toHaveCount(1);
+            await expect(chips).toHaveCount(1);
 
             await expect.soft(example).toHaveScreenshot('input-chip-unique.png');
         });
