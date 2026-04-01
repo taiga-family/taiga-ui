@@ -52340,19 +52340,89 @@ export default class Page {
 - **Package**: `null`
 - **Type**: null
 
+### Usage Examples
+
+#### Language Switcher
+
+**Template:**
+```html
+<button appearance="secondary-grayscale" size="s" tuiButton tuiButtonSelect tuiChevron type="button" [(ngModel)]="language" (ngModelChange)="switcher.setLanguage($event)" > {{ language }} <tui-data-list-wrapper *tuiDropdown [items]="languages" />
+</button>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiLanguageSwitcherService} from '@taiga-ui/i18n';
+import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
+
+@Component({
+    selector: 'tui-i18n-example-1',
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonSelect,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdown,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    changeDetection,
+})
+export class TuiI18nExample1 {
+    protected readonly switcher = inject(TuiLanguageSwitcherService);
+    protected language = this.switcher.language;
+    protected readonly languages = [
+        'arabic',
+        'belarusian',
+        'chinese',
+        'dutch',
+        'english',
+        'french',
+        'german',
+        'hebrew',
+        'italian',
+        'japanese',
+        'kazakh',
+        'korean',
+        'lithuanian',
+        'malay',
+        'polish',
+        'portuguese',
+        'russian',
+        'spanish',
+        'turkish',
+        'ukrainian',
+        'vietnamese',
+    ];
+}
+```
+**LESS:**
+```less
+[tuiButton],
+tui-data-list-wrapper {
+    text-transform: capitalize;
+}
+```
+
+
 ### TypeScript
 
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiTablePagination} from '@taiga-ui/addon-table';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
+import {TuiI18nExample1} from './examples/1';
+
 @Component({
-    imports: [TuiAccordion, TuiDemo, TuiDocLanguageSwitcher, TuiLink, TuiTablePagination],
+    imports: [TuiAccordion, TuiDemo, TuiI18nExample1, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -52364,15 +52434,10 @@ export default class Page {
         custom: import('./custom.md'),
     };
 
-    protected example1 = {
-        'language-switcher.html':
-            import('../../../../../addon-doc/components/language-switcher/index.html'),
-        'language-switcher.ts': import(
-            '../../../../../addon-doc/components/language-switcher/index.ts?raw',
-            {with: {loader: 'text'}}
-        ),
-        'language-switcher.less':
-            import('../../../../../addon-doc/components/language-switcher/index.less'),
+    protected readonly example1 = {
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
     };
 }
 ```
