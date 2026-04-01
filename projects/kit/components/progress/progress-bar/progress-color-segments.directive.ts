@@ -1,8 +1,15 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    computed,
+    Directive,
+    inject,
+    Input,
+    signal,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {map} from 'rxjs';
+import {distinctUntilChanged, map, tap} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -11,11 +18,16 @@ import {map} from 'rxjs';
     host: {'[style.--tui-progress-color]': 'gradient()'},
 })
 export class TuiProgressColorSegments {
+    private readonly cdr = inject(ChangeDetectorRef, {skipSelf: true});
     private readonly colors = signal<readonly string[]>([]);
     private readonly el = tuiInjectElement<HTMLProgressElement>();
     private readonly width = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
             map(([x]) => x?.contentRect.width ?? 0),
+            distinctUntilChanged(),
+            // Angular 16 bug
+            // Otherwise, host: {'[style.--tui-progress-color]': 'gradient()'} will not recomputed
+            tap(() => this.cdr.markForCheck()),
         ),
         {initialValue: this.el.offsetWidth},
     );

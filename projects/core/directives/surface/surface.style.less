@@ -14,10 +14,13 @@
     isolation: isolate;
     appearance: none;
     border: 0;
-    font-size: inherit;
-    line-height: inherit;
     text-decoration: none;
     transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform !important;
+
+    &:not([tuiCardLarge]) {
+        font-size: inherit;
+        line-height: inherit;
+    }
 
     &:focus-visible {
         outline-color: var(--tui-border-focus);
