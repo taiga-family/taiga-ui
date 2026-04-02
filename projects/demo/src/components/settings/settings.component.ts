@@ -13,8 +13,6 @@ import {
     TuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOptionsProvider,
-    TuiGroup,
-    tuiGroupOptionsProvider,
     TuiIcon,
     TuiTitle,
     TuiWithDropdownOpen,
@@ -26,10 +24,11 @@ import {
 } from '@taiga-ui/i18n';
 import {
     TuiBadge,
-    TuiBlock,
     TuiButtonSelect,
     TuiChevron,
     TuiFlagPipe,
+    TuiSegmented,
+    tuiSegmentedOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
@@ -39,7 +38,6 @@ import {TuiForm} from '@taiga-ui/layout';
         ReactiveFormsModule,
         TitleCasePipe,
         TuiBadge,
-        TuiBlock,
         TuiButton,
         TuiButtonSelect,
         TuiChevron,
@@ -47,17 +45,17 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiDropdown,
         TuiFlagPipe,
         TuiForm,
-        TuiGroup,
         TuiIcon,
         TuiTitle,
+        TuiSegmented,
     ],
     templateUrl: './settings.component.html',
     styleUrl: './settings.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiSegmentedOptionsProvider({size: 's'}),
         tuiButtonOptionsProvider({appearance: '', size: 's'}),
         tuiDropdownOptionsProvider({align: 'end'}),
-        tuiGroupOptionsProvider({size: 'm', collapsed: true}),
     ],
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
