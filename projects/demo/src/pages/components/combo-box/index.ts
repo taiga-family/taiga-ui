@@ -10,7 +10,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_STRICT_MATCHER, type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiFilterByInputPipe} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
@@ -39,7 +38,7 @@ interface Country {
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class PageComponent extends Array {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
@@ -58,6 +57,14 @@ export default class PageComponent {
         'With DropdownMobile',
         'Override option component',
     ];
+
+    protected readonly [4] = {
+        'database.ts': import('./examples/5/database.ts?raw', {with: {loader: 'text'}}),
+    };
+
+    protected readonly [11] = {
+        'option.ts': import('./examples/12/option.ts?raw', {with: {loader: 'text'}}),
+    };
 
     protected readonly control = new FormControl<Country | null>(null);
 
@@ -85,16 +92,6 @@ export default class PageComponent {
     ];
 
     protected strict = true;
-
-    protected readonly databaseExample: TuiRawLoaderContent = import(
-        './examples/5/database.ts?raw',
-        {with: {loader: 'text'}}
-    );
-
-    protected readonly selectOptionExample: TuiRawLoaderContent = import(
-        './examples/12/option.ts?raw',
-        {with: {loader: 'text'}}
-    );
 
     protected readonly handler = (item: Country): boolean =>
         item.id.charCodeAt(1) % 3 === 0;
