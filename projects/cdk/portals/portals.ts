@@ -1,5 +1,6 @@
 import {
     type ComponentRef,
+    computed,
     Directive,
     type EmbeddedViewRef,
     inject,
@@ -10,12 +11,17 @@ import {
 } from '@angular/core';
 import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
+import {TuiPortalAnchor} from './portal-anchor';
 import {TuiPortalService} from './service';
 
 @Directive()
 export abstract class TuiPortals {
-    private readonly vcr = viewChild.required('vcr', {read: ViewContainerRef});
     private readonly injector = inject(INJECTOR);
+    // TODO(v6): use viewChild.required
+    private readonly anchor = viewChild(TuiPortalAnchor);
+    // TODO(v6): delete
+    private readonly legacyApproach = viewChild('vcr', {read: ViewContainerRef});
+    private readonly vcr = computed(() => this.anchor()?.vcr ?? this.legacyApproach()!);
 
     constructor() {
         inject(TuiPortalService).attach(this);

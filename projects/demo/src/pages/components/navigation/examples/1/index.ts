@@ -5,7 +5,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {TuiPortalAnchor, TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -63,6 +63,7 @@ class Portal {}
         TuiInput,
         TuiLink,
         TuiNavigation,
+        TuiPortalAnchor,
         TuiSwitch,
         TuiTabs,
         TuiTitle,
