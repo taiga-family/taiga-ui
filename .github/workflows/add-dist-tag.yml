@@ -1,0 +1,55 @@
+name: 🤖 Add npm dist-tag
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Package version
+        required: true
+      tag:
+        description: Dist-tag to assign
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  add-dist-tag:
+    name: Add dist-tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: taiga-family/ci/actions/setup/node@v1.195.0
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.195.0
+        with:
+          token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
+
+      - name: Add dist-tag for all packages
+        env:
+          VERSION: ${{ inputs.version }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          packages=(
+            addon-charts
+            addon-commerce
+            addon-doc
+            addon-mobile
+            addon-table
+            cdk
+            core
+            experimental
+            i18n
+            icons
+            kit
+            layout
+            legacy
+            styles
+            testing
+          )
+
+          for pkg in "${packages[@]}"; do
+            echo "Add dist-tag '$TAG' for @taiga-ui/$pkg@$VERSION"
+            npm dist-tag add "@taiga-ui/$pkg@$VERSION" "$TAG"
+          done
+
+          echo "Add dist-tag '$TAG' for taiga-ui@$VERSION"
+          npm dist-tag add "taiga-ui@$VERSION" "$TAG"
