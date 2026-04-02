@@ -1,4 +1,4 @@
-import {isPlatformServer} from '@angular/common';
+import {isPlatformServer, NgTemplateOutlet} from '@angular/common';
 import {
     Component,
     DestroyRef,
@@ -17,7 +17,7 @@ import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_SEARCH_ENABLED, TuiDocMain} from '@taiga-ui/addon-doc';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiNotification, TuiTitle} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
@@ -36,6 +36,10 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TuiAlgoliaSearch,
         TuiButton,
         TuiDocMain,
+        TuiNotification,
+        TuiTitle,
+        TuiLink,
+        NgTemplateOutlet,
     ],
     templateUrl: './app.template.html',
     styleUrl: './app.style.less',
