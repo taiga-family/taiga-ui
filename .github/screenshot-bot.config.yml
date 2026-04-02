@@ -1,0 +1,6 @@
+diff-paths: [
+    '.*__diff_output__.*', # it is default cypress folder name into which snapshot diffs are put
+    '.*.diff.png',
+  ]
+
+failed-report-description: '<h3 align="center">After (local) ← Diff → Before (v3.x)</h3>'
