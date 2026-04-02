@@ -18,6 +18,7 @@ import {
     setPagesPath,
 } from './utils';
 import {getConfigValue, loadConfig, shouldIncludeSection} from './utils/config';
+import {escapeHTML} from './utils/escaped-html';
 import {saveImportMap} from './utils/generate-import-map';
 
 interface CliOptions {
@@ -686,8 +687,26 @@ async function main(): Promise<void> {
     logProcessingSummary(allFolders.length, stats);
 
     await fs.writeFile(cliOptions.output, output.join('\n'), 'utf-8');
+    await fs.writeFile(
+        cliOptions.outputHtml!,
+        `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>llms-full</title>
+</head>
+<body>
+  <main>
+    <pre>${output.map(escapeHTML).join('\n')}</pre>
+  </main>
+</body>
+</html>`,
+        'utf-8',
+    );
 
     console.info(`Successfully saved: ${cliOptions.output}`);
+    console.info(`Successfully saved: ${cliOptions.outputHtml}`);
     console.info(`Total components in output: ${stats.included}`);
 }
 
