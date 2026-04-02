@@ -91,6 +91,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: 'loading'},
     },
     {
+        from: {attrName: '[showLoader]', withTagNames: ['tui-loader']},
+        to: {attrName: '[loading]'},
+    },
+    {
         from: {attrName: 'tuiStepper', withTagNames: ['nav']},
         to: {attrName: ''},
     },

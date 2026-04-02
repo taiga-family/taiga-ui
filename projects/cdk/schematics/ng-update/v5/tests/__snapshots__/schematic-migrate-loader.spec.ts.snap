@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tui-loader showLoader to loading should rename [showLoader] binding to [loading] on tui-loader: test.html 1`] = `
+{
+  "0. Before": "<tui-loader [showLoader]="isLoading">content</tui-loader>",
+  "1. After": "<tui-loader [loading]="isLoading">content</tui-loader>",
+}
+`;
+
+exports[`ng-update tui-loader showLoader to loading should rename showLoader to loading on tui-loader: test.html 1`] = `
+{
+  "0. Before": "<tui-loader showLoader>content</tui-loader>",
+  "1. After": "<tui-loader loading>content</tui-loader>",
+}
+`;
