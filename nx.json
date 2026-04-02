@@ -1,7 +1,6 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "defaultProject": "demo",
-    "nxCloudAccessToken": "NWEyY2I2MGUtYjZhNS00ODQ3LTg2OTgtZDQyMDA5YmQyMjNifHJlYWQtd3JpdGU=",
     "parallel": 1,
     "canTrackAnalytics": true,
     "showUsageWarnings": true,
