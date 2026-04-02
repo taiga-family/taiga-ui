@@ -23,7 +23,7 @@ export default class Page {
         'Custom stroke width',
     ];
 
-    protected showLoader = true;
+    protected loading = true;
 
     protected inheritColor = false;
 
