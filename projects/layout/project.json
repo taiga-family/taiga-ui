@@ -1,53 +1,50 @@
 {
-    "name": "layout",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/{projectName}",
-    "projectType": "library",
-    "prefix": "tui",
+    "name": "layout",
     "implicitDependencies": ["!testing"],
+    "prefix": "tui",
+    "projectType": "library",
+    "sourceRoot": "projects/{projectName}",
     "targets": {
         "build": {
-            "executor": "@angular/build:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/{projectName}"],
-            "options": {
-                "tsConfig": "tsconfig.build.json",
-                "project": "{projectRoot}/ng-package.json"
-            },
             "dependsOn": [
                 {
-                    "target": "build",
+                    "dependencies": true,
                     "params": "ignore",
-                    "dependencies": true
+                    "target": "build"
                 }
-            ]
+            ],
+            "executor": "@angular/build:ng-packagr",
+            "options": {
+                "project": "{projectRoot}/ng-package.json",
+                "tsConfig": "tsconfig.build.json"
+            },
+            "outputs": ["{workspaceRoot}/dist/{projectName}"]
+        },
+        "publish": {
+            "dependsOn": [
+                {
+                    "dependencies": false,
+                    "params": "ignore",
+                    "target": "build"
+                }
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": ["cp ./LICENSE ./dist/{projectName}", "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"],
+                "forwardAllArgs": false,
+                "parallel": false
+            }
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
-                "jestConfig": "package.json",
-                "coverageDirectory": "coverage/{projectName}",
                 "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "coverageDirectory": "coverage/{projectName}",
+                "jestConfig": "package.json",
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
-            }
-        },
-        "publish": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "forwardAllArgs": false,
-                "commands": [
-                    "cp ./LICENSE ./dist/{projectName}",
-                    "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-                ]
             },
-            "dependsOn": [
-                {
-                    "target": "build",
-                    "params": "ignore",
-                    "dependencies": false
-                }
-            ]
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"]
         }
     }
 }

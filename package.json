@@ -25,9 +25,7 @@
         "Vladimir Potekhin <vladimir.potekh@gmail.com>",
         "Nikita Barsukov <nikita.s.barsukov@gmail.com>"
     ],
-    "workspaces": [
-        "projects/*"
-    ],
+    "workspaces": ["projects/*"],
     "scripts": {
         "build:demo": "nx build demo",
         "build:demo:next": "nx build demo -c next",
@@ -59,26 +57,31 @@
         "typecheck": "tsc --noEmit --strict --incremental false --tsBuildInfoFile null --project tsconfig.spec.json"
     },
     "commitlint": {
-        "extends": [
-            "@taiga-ui/commitlint-config"
-        ]
+        "extends": ["@taiga-ui/commitlint-config"]
     },
     "lint-staged": {
-        "*.less": [
-            "stylelint --fix"
-        ],
-        "*.{js,ts,html,svg,yml,md,less,json}": [
-            "prettier --write",
-            "cspell --no-must-find-files"
-        ]
+        "*.less": ["stylelint --fix"],
+        "*.{js,ts,html,svg,yml,md,less,json}": ["prettier --write", "cspell --no-must-find-files"]
     },
-    "browserslist": [
-        "extends @taiga-ui/browserslist-config"
-    ],
+    "browserslist": ["extends @taiga-ui/browserslist-config"],
     "prettier": "@taiga-ui/prettier-config",
     "stylelint": {
-        "extends": [
-            "@taiga-ui/stylelint-config"
+        "extends": ["@taiga-ui/stylelint-config"],
+        "overrides": [
+            {
+                "files": ["**/demo/**/*.{less,css,scss}"],
+                "rules": {
+                    "selector-class-pattern": null
+                }
+            },
+            {
+                "files": ["**/*.scss"],
+                "rules": {
+                    "at-rule-allowed-list": null,
+                    "at-rule-no-unknown": null,
+                    "function-no-unknown": null
+                }
+            }
         ],
         "rules": {
             "property-disallowed-list": null,
@@ -88,27 +91,7 @@
                     "resolveNestedSelectors": true
                 }
             ]
-        },
-        "overrides": [
-            {
-                "files": [
-                    "**/demo/**/*.{less,css,scss}"
-                ],
-                "rules": {
-                    "selector-class-pattern": null
-                }
-            },
-            {
-                "files": [
-                    "**/*.scss"
-                ],
-                "rules": {
-                    "at-rule-no-unknown": null,
-                    "at-rule-allowed-list": null,
-                    "function-no-unknown": null
-                }
-            }
-        ]
+        }
     },
     "jest": {
         "preset": "@taiga-ui/jest-config"
@@ -174,27 +157,24 @@
         "yarn": "Please use npm instead of yarn to install dependencies"
     },
     "engineStrict": true,
-    "authors": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
+    "authors": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
     "standard-version": {
         "scripts": {
-            "postchangelog": "ts-node ./scripts/postchangelog.ts",
-            "postbump": "ts-node ./scripts/postbump.ts"
+            "postbump": "ts-node ./scripts/postbump.ts",
+            "postchangelog": "ts-node ./scripts/postchangelog.ts"
         },
         "types": [
             {
-                "type": "feat",
-                "section": "🚀 Features"
+                "section": "🚀 Features",
+                "type": "feat"
             },
             {
-                "type": "fix",
-                "section": "🐞 Bug Fixes"
+                "section": "🐞 Bug Fixes",
+                "type": "fix"
             },
             {
-                "type": "deprecate",
-                "section": "⚠️ Deprecations"
+                "section": "⚠️ Deprecations",
+                "type": "deprecate"
             }
         ]
     }

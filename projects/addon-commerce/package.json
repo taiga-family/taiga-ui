@@ -18,16 +18,16 @@
     "license": "Apache-2.0",
     "contributors": [
         {
-            "name": "Alex Inkin",
-            "email": "alexander@inkin.ru"
+            "email": "alexander@inkin.ru",
+            "name": "Alex Inkin"
         },
         {
-            "name": "Vladimir Potekhin",
-            "email": "vladimir.potekh@gmail.com"
+            "email": "vladimir.potekh@gmail.com",
+            "name": "Vladimir Potekhin"
         },
         {
-            "name": "Nikita Barsukov",
-            "email": "nikita.s.barsukov@gmail.com"
+            "email": "nikita.s.barsukov@gmail.com",
+            "name": "Nikita Barsukov"
         }
     ],
     "peerDependencies": {
