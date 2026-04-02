@@ -11651,7 +11651,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_STRICT_MATCHER, type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiFilterByInputPipe} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
@@ -11680,7 +11679,7 @@ interface Country {
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class PageComponent extends Array {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
@@ -11699,6 +11698,14 @@ export default class PageComponent {
         'With DropdownMobile',
         'Override option component',
     ];
+
+    protected readonly [4] = {
+        'database.ts': import('./examples/5/database.ts?raw', {with: {loader: 'text'}}),
+    };
+
+    protected readonly [11] = {
+        'option.ts': import('./examples/12/option.ts?raw', {with: {loader: 'text'}}),
+    };
 
     protected readonly control = new FormControl<Country | null>(null);
 
@@ -11726,16 +11733,6 @@ export default class PageComponent {
     ];
 
     protected strict = true;
-
-    protected readonly databaseExample: TuiRawLoaderContent = import(
-        './examples/5/database.ts?raw',
-        {with: {loader: 'text'}}
-    );
-
-    protected readonly selectOptionExample: TuiRawLoaderContent = import(
-        './examples/12/option.ts?raw',
-        {with: {loader: 'text'}}
-    );
 
     protected readonly handler = (item: Country): boolean =>
         item.id.charCodeAt(1) % 3 === 0;
@@ -22204,7 +22201,7 @@ export default class PageComponent {
 # components/InputNumber
 - **Package**: `KIT`
 - **Type**: components
-InputNumber is a form field to provide numerical input.
+InputNumber is a form field to provide numerical input. example of [ 'Number as form control value', 'BigInt as form control value', 'Textfield-based', 'Localization', 'Affixes', 'Step', 'Custom step buttons', 'Fluid typography', 'Value transformer', 'Quantum', ]; track example ) {
 
 ### Example
 
@@ -22228,7 +22225,7 @@ InputNumber is a form field to provide numerical input.
 
 ### Usage Examples
 
-#### Number as form control value
+#### Example 1
 
 **Template:**
 ```html
@@ -22267,7 +22264,7 @@ export default class Example {
 }
 ```
 
-#### Quantum
+#### Example 10
 
 **Template:**
 ```html
@@ -22298,6 +22295,8 @@ export default class Example {
 ```
 
 #### Large integer and large decimal parts
+
+JavaScript’s built‑in number type loses precision when a value contains too many digits in either the integer part, the decimal part, or both. The built‑in bigint type avoids this issue but supports only integers. If you need to preserve all extremely large digits of both parts, you can override the built‑in TuiValueTransformer and store the number as an &#123;significand: bigint; exp: number&#125; instead.
 
 **Template:**
 ```html
@@ -22341,7 +22340,7 @@ export default class Example {
 }
 ```
 
-#### BigInt as form control value
+#### Example 2
 
 **Template:**
 ```html
@@ -22387,7 +22386,7 @@ export default class Example {
 }
 ```
 
-#### Textfield-based
+#### Example 3
 
 **Template:**
 ```html
@@ -22418,7 +22417,7 @@ export default class Example {
 }
 ```
 
-#### Localization
+#### Example 4
 
 **Template:**
 ```html
@@ -22452,7 +22451,7 @@ export default class Example {
 }
 ```
 
-#### Affixes
+#### Example 5
 
 **Template:**
 ```html
@@ -22481,7 +22480,7 @@ export default class Example {
 }
 ```
 
-#### Step
+#### Example 6
 
 **Template:**
 ```html
@@ -22509,7 +22508,7 @@ export default class Example {
 }
 ```
 
-#### Custom step buttons
+#### Example 7
 
 **Template:**
 ```html
@@ -22551,7 +22550,7 @@ export default class Example {
 }
 ```
 
-#### Fluid typography
+#### Example 8
 
 **Template:**
 ```html
@@ -22578,7 +22577,7 @@ export default class Example {
 }
 ```
 
-#### Value transformer
+#### Example 9
 
 **Template:**
 ```html
@@ -22655,20 +22654,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
-
-    protected readonly examples = [
-        'Number as form control value',
-        'BigInt as form control value',
-        'Textfield-based',
-        'Localization',
-        'Affixes',
-        'Step',
-        'Custom step buttons',
-        'Fluid typography',
-        'Value transformer',
-        'Quantum',
-        'Large integer and large decimal parts',
-    ];
 
     protected readonly control = new FormControl(null, Validators.required);
     protected readonly maxVariants: readonly number[] = [
@@ -35428,7 +35413,7 @@ export default class Example {
 # components/Select
 - **Package**: `KIT`
 - **Type**: components
-Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element.
+Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element. example of [ 'Textfield customization', 'Items handlers', 'Customize content', 'With DataList', 'Choose form control output', 'Virtual scroll', 'Mobile', 'Native picker with disabled option', 'Native picker with grouping options', ]; track example ) {
 
 ### Example
 
@@ -35441,7 +35426,7 @@ Select is a form control for selecting a single value from a set of options, sim
 
 ### Usage Examples
 
-#### Textfield customization
+#### Example 1
 
 **Template:**
 ```html
@@ -35489,6 +35474,8 @@ export default class Example {
 
 #### Override option component
 
+You can override default behavior and appearance of all options inside dropdown. Just provide your custom component by tuiAsOptionContent -utility. Double check if you really need this feature! For the most cases &lt;tui-data-list-wrapper [itemContent]="..." /&gt; can be enough for your task. Explore this example for more details.
+
 **Template:**
 ```html
 <tui-textfield tuiChevron>
@@ -35527,7 +35514,7 @@ export default class Example {
 }
 ```
 
-#### Items handlers
+#### Example 2
 
 **Template:**
 ```html
@@ -35588,7 +35575,7 @@ export default class Example {
 }
 ```
 
-#### Customize content
+#### Example 3
 
 **Template:**
 ```html
@@ -35645,7 +35632,7 @@ export default class Example {
 }
 ```
 
-#### With DataList
+#### Example 4
 
 **Template:**
 ```html
@@ -35725,7 +35712,7 @@ export default class Example {
 }
 ```
 
-#### Choose form control output
+#### Example 5
 
 **Template:**
 ```html
@@ -35777,7 +35764,7 @@ export default class Example {
 }
 ```
 
-#### Virtual scroll
+#### Example 6
 
 **Template:**
 ```html
@@ -35831,7 +35818,7 @@ export default class Example {
 }
 ```
 
-#### Mobile
+#### Example 7
 
 **Template:**
 ```html
@@ -35872,7 +35859,7 @@ export default class Example {
 }
 ```
 
-#### Native picker with disabled option
+#### Example 8
 
 **Template:**
 ```html
@@ -35917,7 +35904,7 @@ export default class Example {
 }
 ```
 
-#### Native picker with grouping options
+#### Example 9
 
 **Template:**
 ```html
@@ -35997,18 +35984,6 @@ export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
 
     protected readonly routes = DemoRoute;
-    protected readonly examples = [
-        'Textfield customization',
-        'Items handlers',
-        'Customize content',
-        'With DataList',
-        'Choose form control output',
-        'Virtual scroll',
-        'Mobile',
-        'Native picker with disabled option',
-        'Native picker with grouping options',
-        'Override option component',
-    ];
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl<Country | null>({
