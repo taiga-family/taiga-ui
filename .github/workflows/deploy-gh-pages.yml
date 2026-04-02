@@ -57,6 +57,14 @@ jobs:
           include: '${{ env.DIST }}/v3/**/index.html'
           regex: false
 
+      - name: Replace baseHref for v4
+        uses: jacobtomlinson/gha-find-replace@3.0.5
+        with:
+          find: '<base href="/">'
+          replace: '<base href="/v4/">'
+          include: '${{ env.DIST }}/v4/**/index.html'
+          regex: false
+
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'
 
