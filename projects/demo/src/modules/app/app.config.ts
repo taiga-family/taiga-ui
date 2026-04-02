@@ -4,7 +4,7 @@ import {
     PathLocationStrategy,
     ViewportScroller,
 } from '@angular/common';
-import { provideHttpClient} from '@angular/common/http';
+import {provideHttpClient} from '@angular/common/http';
 import {
     type ApplicationConfig,
     inject,
@@ -38,7 +38,7 @@ import {
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import { TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
     TUI_DIALOGS_CLOSE,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
@@ -51,7 +51,7 @@ import {
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
-import { filter, merge} from 'rxjs';
+import {filter, merge} from 'rxjs';
 
 import {AuthService} from '../components/dialog-experimental/examples/5/service';
 import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
