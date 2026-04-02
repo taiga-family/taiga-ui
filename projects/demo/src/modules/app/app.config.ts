@@ -165,26 +165,6 @@ export const config: ApplicationConfig = {
             useValue: true,
         },
         {
-            provide: TUI_DOC_SEARCH_ENABLED,
-            deps: [HttpClient, SEARCH_CONFIG],
-            useFactory: (
-                client: HttpClient,
-                {appId, apiKey}: {appId: string; apiKey: string},
-            ) =>
-                toSignal(
-                    client
-                        .post(
-                            `https://${appId}-dsn.algolia.net/1/indexes/*/queries?&x-algolia-api-key=${apiKey}&x-algolia-application-id=${appId.toUpperCase()}`,
-                            {requests: []},
-                        )
-                        .pipe(
-                            map(TUI_FALSE_HANDLER),
-                            catchError(() => of(true)),
-                        ),
-                    {initialValue: false},
-                ),
-        },
-        {
             provide: TUI_DOC_CODE_EDITOR,
             useClass: TuiStackblitzService,
         },
