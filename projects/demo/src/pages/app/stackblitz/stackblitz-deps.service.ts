@@ -7,6 +7,14 @@ import {TUI_VERSION} from '@taiga-ui/cdk';
 export class StackblitzDepsService {
     private readonly location = inject(WA_LOCATION);
 
+    public get isCanary(): boolean {
+        return (
+            this.location.pathname.startsWith('/next/') ||
+            this.location.host.endsWith('web.app') ||
+            !environment.production
+        );
+    }
+
     public async get(): Promise<Record<string, string>> {
         return {
             ...this.getAngularPackages(),
@@ -31,12 +39,7 @@ export class StackblitzDepsService {
     }
 
     private getTaigaPackages(): Record<string, string> {
-        const version =
-            this.location.pathname.startsWith('/next/') ||
-            this.location.host.endsWith('web.app') ||
-            !environment.production
-                ? 'canary'
-                : `${TUI_VERSION.split('.')[0]}.x.x`;
+        const version = this.isCanary ? 'canary' : `${TUI_VERSION.split('.')[0]}.x.x`;
 
         return {
             '@taiga-ui/addon-charts': version,
@@ -55,19 +58,40 @@ export class StackblitzDepsService {
         };
     }
 
+    private npmTarball(name: string, version: string): string {
+        const exact = version.replace(/^\D+/, '');
+        const bare = name.split('/').pop();
+
+        return `https://registry.npmjs.org/${name}/-/${bare}-${exact}.tgz`;
+    }
+
     private async getCommonPackages(): Promise<Record<string, string>> {
         const {peerDependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
         const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
         const {devDependencies: rootDevDeps} = await import('@demo/root-package');
+        const npmOnly = (name: string, version: string): string =>
+            this.isCanary ? this.npmTarball(name, version) : version;
 
         return {
-            '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
-            '@taiga-ui/design-tokens': await import('@taiga-ui/styles/package.json').then(
-                (x) => x.peerDependencies['@taiga-ui/design-tokens'],
+            '@taiga-ui/polymorpheus': npmOnly(
+                '@taiga-ui/polymorpheus',
+                cdkDeps['@taiga-ui/polymorpheus'],
+            ),
+            '@taiga-ui/design-tokens': npmOnly(
+                '@taiga-ui/design-tokens',
+                (await import('@taiga-ui/styles/package.json')).peerDependencies[
+                    '@taiga-ui/design-tokens'
+                ],
             ),
             '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
-            '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
-            '@taiga-ui/font-watcher': cdkDeps['@taiga-ui/font-watcher'],
+            '@taiga-ui/event-plugins': npmOnly(
+                '@taiga-ui/event-plugins',
+                cdkDeps['@taiga-ui/event-plugins'],
+            ),
+            '@taiga-ui/font-watcher': npmOnly(
+                '@taiga-ui/font-watcher',
+                cdkDeps['@taiga-ui/font-watcher'],
+            ),
             '@ng-web-apis/intersection-observer':
                 kitDeps['@ng-web-apis/intersection-observer'],
             '@ng-web-apis/platform': cdkDeps['@ng-web-apis/platform'],

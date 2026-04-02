@@ -87,6 +87,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
             'src/main.ts': mainTs,
             'src/index.html': indexHtml,
             'src/styles.less': globalStyles,
+            ...(this.deps.isCanary && {
+                '.npmrc': '@taiga-ui:registry=https://npm.pkg.github.com\n',
+            }),
         };
     }
 
