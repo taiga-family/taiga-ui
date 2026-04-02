@@ -372,7 +372,7 @@
 ### input-date-multi
 
 ```text
-  TuiInputDateMulti, TuiInputDateMultiDirective
+  TuiInputDateMulti, TuiInputDateMultiDirective, TuiInputDateMultiOptions
 ```
 ### input-date-range
 
@@ -23837,6 +23837,50 @@ export default class Example {
 :host {
     display: block;
     inline-size: 22rem;
+}
+```
+
+#### Value transformer
+
+**Template:**
+```html
+&lt;tui-textfield multi&gt;
+&lt;label tuiLabel&gt;Choose a date&lt;/label&gt;
+&lt;input tuiInputDateMulti [(ngModel)]=&quot;value&quot; /&gt;
+&lt;tui-calendar *tuiTextfieldDropdown /&gt;
+&lt;/tui-textfield&gt;
+&lt;p&gt;{{ value | json }}&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {JsonPipe} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {TuiInputDateMulti, tuiInputDateMultiOptionsProvider} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, JsonPipe, TuiInputDateMulti, TuiTextfield],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputDateMultiOptionsProvider({
+            valueTransformer: {
+                fromControlValue: (value: Date[] | null): TuiDay[] =&gt;
+                    value?.map((date) =&gt; TuiDay.fromUtcNativeDate(date)) ?? [],
+                toControlValue: (value: TuiDay[]): Date[] =&gt;
+                    value?.map((day) =&gt; day.toUtcNativeDate()),
+            },
+        }),
+    ],
+})
+export default class Example {
+    protected value: Date[] | null = null;
 }
 ```
 
