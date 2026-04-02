@@ -264,8 +264,7 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'Calendar',
                 keywords:
-                    'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker' +
-                    'date, day, week, month, year',
+                    'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker, date, day, week, month, year',
                 route: DemoRoute.Calendar,
             },
             {
@@ -346,8 +345,7 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'Preview',
                 keywords:
-                    'popup, dialog, диалог, попап, модалка, modal, просмотр, превью, предпросмотр, ' +
-                    'предпоказ, показ, pdf, jpg, png, viewer, файл',
+                    'popup, dialog, диалог, попап, модалка, modal, просмотр, превью, предпросмотр, предпоказ, показ, pdf, jpg, png, viewer, файл',
                 route: DemoRoute.Preview,
             },
         ],
@@ -360,16 +358,14 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'DataList',
                 keywords:
-                    'контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,' +
-                    'optGroup, опции, tuiOption, варианты, dropdown, menu',
+                    'контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option, optGroup, опции, tuiOption, варианты, dropdown, menu',
                 route: DemoRoute.DataList,
             },
             {
                 section: 'Components',
                 title: 'DataListWrapper',
                 keywords:
-                    'контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,' +
-                    'optGroup, опции, tuiOption, варианты, dropdown, menu',
+                    'контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option, optGroup, опции, tuiOption, варианты, dropdown, menu',
                 route: DemoRoute.DataListWrapper,
             },
             {
@@ -803,16 +799,14 @@ export const pages: DocRoutePages = [
                 section: 'Form',
                 title: 'InputDate',
                 keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar',
+                    'поле, инпут, форма, ввод, input, календарь, день, неделя, месяц, год, дата, calendar',
                 route: DemoRoute.InputDate,
             },
             {
                 section: 'Form',
                 title: 'InputDateMulti',
                 keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar, multiple',
+                    'поле, инпут, форма, ввод, input, календарь, день, неделя, месяц, год, дата, calendar, multiple',
                 route: DemoRoute.InputDateMulti,
             },
             {
@@ -825,8 +819,7 @@ export const pages: DocRoutePages = [
                 section: 'Form',
                 title: 'InputDateTime',
                 keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
+                    'поле, инпут, форма, ввод, input, календарь, день, неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
                 route: DemoRoute.InputDateTime,
             },
             {
@@ -1394,8 +1387,7 @@ export const pages: DocRoutePages = [
                 section: 'Tools',
                 title: 'TextfieldController',
                 keywords:
-                    'контроллер, ввод, параметры, настройка, cleaner, autocomplete, exampleText, inputMode, ' +
-                    'inputMode, labelOutside, size, type, нативные, инпут',
+                    'контроллер, ввод, параметры, настройка, cleaner, autocomplete, exampleText, inputMode, inputMode, labelOutside, size, type, нативные, инпут',
                 route: DemoRoute.TextfieldController,
             },
             {
