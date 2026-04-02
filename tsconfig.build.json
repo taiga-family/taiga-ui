@@ -1,14 +1,12 @@
 {
     "extends": "./tsconfig.json",
-    "exclude": ["**/*.spec.ts"],
     "compilerOptions": {
-        "outDir": "./dist/out-tsc/lib",
         "declaration": true,
-        "sourceMap": true,
         "inlineSourceMap": true,
         "inlineSources": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
+        "outDir": "./dist/out-tsc/lib",
         "paths": {
             "@taiga-ui/cdk/*": ["./dist/cdk/*"],
             "@taiga-ui/cdk": ["./dist/cdk/index"],
@@ -35,6 +33,8 @@
             "@taiga-ui/addon-doc/*": ["./dist/addon-doc/*"],
             "@taiga-ui/experimental": ["./dist/experimental"],
             "@taiga-ui/experimental/*": ["./dist/experimental/*"]
-        }
-    }
+        },
+        "sourceMap": true
+    },
+    "exclude": ["**/*.spec.ts"]
 }
