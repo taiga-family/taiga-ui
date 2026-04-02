@@ -17,7 +17,20 @@
         </a>
         element.
 
-        @for (example of examples; track example) {
+        @for (
+            example of [
+                'Textfield customization',
+                'Items handlers',
+                'Customize content',
+                'With DataList',
+                'Choose form control output',
+                'Virtual scroll',
+                'Mobile',
+                'Native picker with disabled option',
+                'Native picker with grouping options',
+            ];
+            track example
+        ) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
@@ -185,41 +198,49 @@
 
                         <p>This example demonstrates how enable this feature for mobile devices only.</p>
                     }
-                    @case (9) {
-                        You can override default behavior and appearance of all options inside dropdown. Just provide
-                        your custom component by
-                        <code>tuiAsOptionContent</code>
-                        -utility.
-
-                        <div
-                            appearance="warning"
-                            tuiNotification
-                            class="tui-space_top-2"
-                        >
-                            <strong>Double check if you really need this feature!</strong>
-
-                            <div>
-                                For the most cases
-                                <code>&lt;tui-data-list-wrapper [itemContent]="..." /&gt;</code>
-                                can be enough for your task.
-                            </div>
-
-                            <div>
-                                Explore
-                                <a
-                                    fragment="content-customization"
-                                    routerLink="."
-                                    tuiLink
-                                >
-                                    this example
-                                </a>
-                                for more details.
-                            </div>
-                        </div>
-                    }
                 }
             </ng-template>
         }
+
+        <tui-doc-example
+            heading="Override option component"
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
+            [description]="optionDescription"
+        >
+            <ng-template #optionDescription>
+                You can override default behavior and appearance of all options inside dropdown. Just provide your
+                custom component by
+                <code>tuiAsOptionContent</code>
+                -utility.
+
+                <div
+                    appearance="warning"
+                    tuiNotification
+                    class="tui-space_top-2"
+                >
+                    <strong>Double check if you really need this feature!</strong>
+
+                    <div>
+                        For the most cases
+                        <code>&lt;tui-data-list-wrapper [itemContent]="..." /&gt;</code>
+                        can be enough for your task.
+                    </div>
+
+                    <div>
+                        Explore
+                        <a
+                            fragment="content-customization"
+                            routerLink="."
+                            tuiLink
+                        >
+                            this example
+                        </a>
+                        for more details.
+                    </div>
+                </div>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
