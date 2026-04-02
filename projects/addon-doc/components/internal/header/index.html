@@ -17,7 +17,9 @@
     [overlay]="true"
     (click.self)="open.set(false)"
 >
-    <tui-doc-navigation />
+    <tui-doc-navigation>
+        <ng-content select="tuiDocMobileNavigation" />
+    </tui-doc-navigation>
 </tui-drawer>
 
 <div class="t-logo">

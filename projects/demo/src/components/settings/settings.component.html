@@ -6,57 +6,41 @@
 >
     <fieldset>
         <legend>Theme</legend>
-        <div tuiGroup>
-            <label
-                appearance=""
-                iconStart="@tui.moon"
-                tuiBlock
-            >
+        <tui-segmented>
+            <label>
+                <tui-icon icon="@tui.moon" />
                 Dark
                 <input
                     formControlName="theme"
-                    tuiBlock
                     type="radio"
                     [value]="true"
                 />
             </label>
-            <label
-                appearance=""
-                iconStart="@tui.sun"
-                tuiBlock
-            >
+            <label>
+                <tui-icon icon="@tui.sun" />
                 Light
                 <input
                     formControlName="theme"
-                    tuiBlock
                     type="radio"
                     [value]="false"
                 />
             </label>
-            <label
-                appearance=""
-                iconStart="@tui.sun-moon"
-                tuiBlock
-            >
+            <label>
+                <tui-icon icon="@tui.sun-moon" />
                 Auto
                 <input
                     formControlName="theme"
-                    tuiBlock
                     type="radio"
                     [value]="null"
                 />
             </label>
-        </div>
+        </tui-segmented>
     </fieldset>
 
     <fieldset>
         <legend>Direction</legend>
-
-        <div tuiGroup>
-            <label
-                appearance=""
-                tuiBlock
-            >
+        <tui-segmented>
+            <label>
                 <tui-icon
                     badge="@tui.arrow-right"
                     icon="@tui.case-upper"
@@ -64,15 +48,11 @@
                 LTR
                 <input
                     formControlName="direction"
-                    tuiBlock
                     type="radio"
                     value="ltr"
                 />
             </label>
-            <label
-                appearance=""
-                tuiBlock
-            >
+            <label>
                 <tui-icon
                     badge="@tui.arrow-left"
                     icon="@tui.case-upper"
@@ -80,12 +60,11 @@
                 RTL
                 <input
                     formControlName="direction"
-                    tuiBlock
                     type="radio"
                     value="rtl"
                 />
             </label>
-        </div>
+        </tui-segmented>
     </fieldset>
 
     <fieldset>
@@ -94,7 +73,7 @@
             <div tuiSubtitle>For the components with built-in texts</div>
         </legend>
         <button
-            appearance="outline-grayscale"
+            appearance="neutral"
             formControlName="language"
             tuiButton
             tuiButtonSelect
@@ -132,46 +111,34 @@
             Platform
             <div tuiSubtitle>For optional mobile styles</div>
         </legend>
-        <div tuiGroup>
-            <label
-                appearance=""
-                iconStart="@tui.monitor"
-                tuiBlock
-            >
+        <tui-segmented>
+            <label>
+                <tui-icon icon="@tui.monitor" />
                 Web
                 <input
                     formControlName="platform"
-                    tuiBlock
                     type="radio"
                     value="web"
                 />
             </label>
-            <label
-                appearance=""
-                iconStart="@tui.apple"
-                tuiBlock
-            >
+            <label>
+                <tui-icon icon="@tui.apple" />
                 iOS
                 <input
                     formControlName="platform"
-                    tuiBlock
                     type="radio"
                     value="ios"
                 />
             </label>
-            <label
-                appearance=""
-                iconStart="@tui.bot"
-                tuiBlock
-            >
+            <label>
+                <tui-icon icon="@tui.bot" />
                 Android
                 <input
                     formControlName="platform"
-                    tuiBlock
                     type="radio"
                     value="android"
                 />
             </label>
-        </div>
+        </tui-segmented>
     </fieldset>
 </form>

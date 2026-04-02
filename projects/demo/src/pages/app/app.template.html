@@ -2,6 +2,36 @@
     <router-outlet />
 } @else {
     <tui-doc-main>
+        <ng-container
+            *ngTemplateOutlet="banner"
+            ngProjectAs="tuiDocNavigation"
+        />
+        <ng-container
+            *ngTemplateOutlet="banner"
+            ngProjectAs="tuiDocMobileNavigation"
+        />
+        <ng-template #banner>
+            <div
+                size="s"
+                tuiNotification
+                class="app-new"
+            >
+                <div tuiTitle>
+                    Taiga UI 5.0 is out!
+                    <div tuiSubtitle>
+                        See
+                        <a
+                            href="https://github.com/taiga-family/taiga-ui/releases/tag/v5.0.0"
+                            rel="noreferrer noopener"
+                            target="_blank"
+                            tuiLink
+                        >
+                            what's new
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
         <div
             ngProjectAs="tuiDocHeader"
             class="app-links"

@@ -8,6 +8,10 @@
         </div>
     </div>
     <header tuiDocHeader>
+        <ng-content
+            ngProjectAs="tuiDocMobileNavigation"
+            select="tuiDocMobileNavigation"
+        />
         <ng-content select="tuiDocHeader" />
     </header>
     <ng-container ngProjectAs="tuiOverContent">
