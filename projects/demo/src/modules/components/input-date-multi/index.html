@@ -67,6 +67,24 @@
             [component]="5 | tuiComponent"
             [content]="5 | tuiExample"
         />
+
+        <tui-doc-example
+            id="value-transformer"
+            heading="Value transformer"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+            [description]="transformer"
+        />
+        <ng-template #transformer>
+            By default component works with
+            <code>TuiDay</code>
+            values. You can override
+            <code>InputDate</code>
+            transformer once to reuse it here, or provide
+            <code>tuiInputDateMultiOptionsProvider</code>
+            to customize only
+            <code>InputDateMulti</code>
+        </ng-template>
     </ng-template>
 
     <ng-template pageTab>
