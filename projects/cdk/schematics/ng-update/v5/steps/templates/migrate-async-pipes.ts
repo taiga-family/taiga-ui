@@ -21,8 +21,8 @@ const SIGNAL_BASED_PIPES = ['tuiAmount', 'tuiDecimal', 'tuiFormatNumber'];
  * whitespace with the `\s*` that follows.
  */
 const PIPE_ASYNC_REGEX = new RegExp(
-    String.raw`(\|\s*(?:${SIGNAL_BASED_PIPES.join('|')})(?::[^|]*\S)?)\s*\|\s*async`,
-    'g',
+    String.raw`(\|\s*(?:${SIGNAL_BASED_PIPES.join('|')})(?::[^|]*?|(?:\s*:[^|]*?)*))\s*\|\s*async`,
+    'gi',
 );
 
 export function migrateAsyncPipes({
