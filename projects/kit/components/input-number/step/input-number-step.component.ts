@@ -2,30 +2,20 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldContent,
-} from '@taiga-ui/core/components/textfield';
-import {TuiAppearanceProxy} from '@taiga-ui/kit/directives/appearance-proxy';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
-import {
-    TUI_INPUT_NUMBER_OPTIONS,
-    type TuiInputNumberOptions,
-} from '../input-number.options';
+import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 import {TuiNumberMask} from '../number-mask.directive';
 import {TuiInputNumberStepService} from './input-number-step.service';
+import {TuiInputNumberStep} from './input-number-step.directive';
 
 @Component({
-    selector: 'input[tuiInputNumber][step]',
-    imports: [TuiButton, TuiTextfieldContent],
+    imports: [TuiButton],
     templateUrl: './input-number-step.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -35,40 +25,20 @@ import {TuiInputNumberStepService} from './input-number-step.service';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiInputNumberStepService],
-    hostDirectives: [TuiAppearanceProxy],
     host: {
-        ngSkipHydration: 'true',
         'data-tui-version': TUI_VERSION,
-        '(keydown.arrowDown.prevent)': 'onStep(-step())',
-        '(keydown.arrowUp.prevent)': 'onStep(step())',
-        '[class._with-buttons]': 'step()',
+        '[style.display]': '"contents"',
+        '[style.border-radius]': '"inherit"',
     },
 })
-export class TuiInputNumberStep {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly hold = inject(TuiInputNumberStepService<bigint | number>);
-    protected readonly $ = this.hold.steps$.subscribe((value) => this.onStep(value));
+export class TuiInputNumberStepComponent {
+    protected readonly mask = inject(TuiNumberMask);
+    protected readonly input = inject(TuiInputNumberDirective);
+    protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    protected readonly directive = inject(TuiInputNumberStep);
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
-    protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
-    protected readonly mask = inject(TuiNumberMask, {self: true});
-    protected readonly input = inject(TuiInputNumberDirective, {self: true});
-    public readonly step = input(this.options.step);
-
-    protected onStep(step: bigint | number): void {
-        const value = this.input.parsed() || 0;
-
-        this.input.setValue(
-            tuiClamp(
-                typeof value === 'bigint'
-                    ? value + BigInt(step)
-                    : tuiSum(value, Number(step)),
-                this.mask.min(),
-                this.mask.max(),
-            ),
-        );
-
-        setTimeout((end = Number.MAX_SAFE_INTEGER) => {
-            this.el.setSelectionRange(end, end);
-        });
-    }
+    protected readonly hold = inject(TuiInputNumberStepService<bigint | number>);
+    protected readonly $ = this.hold.steps$.subscribe((value) =>
+        this.directive.onStep(value),
+    );
 }

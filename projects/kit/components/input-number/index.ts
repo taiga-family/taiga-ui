@@ -4,6 +4,7 @@ export * from './input-number.options';
 export * from './number-mask.directive';
 export * from './quantum.directive';
 export * from './step/input-number-step.component';
+export * from './step/input-number-step.directive';
 export * from './step/input-number-step.service';
 export * from './transformers/bigint.value-transformer';
 export * from './transformers/number.value-transformer';
