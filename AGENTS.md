@@ -53,7 +53,7 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
   ```ts
   import {input} from '@angular/core';
   export class MyComponent {
-    readonly items = input.required<Item[]>().signal;
+    readonly items = input.required<Item[]>();
   }
   ```
 - Use signals inside the component for internal state:
