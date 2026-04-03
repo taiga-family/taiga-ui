@@ -93,7 +93,7 @@
 - [Input Files](https://taiga-ui.dev/components/input-files) — An input for uploading one or several files using native input file capabilities
 - [Input Inline](https://taiga-ui.dev/components/input-inline) — Inline input field
 - [Input Month](https://taiga-ui.dev/components/input-month) — InputMonth = Textfield + CalendarMonth + ❤️
-- [Input Number](https://taiga-ui.dev/components/input-number) — InputNumber is a form field to provide numerical input.
+- [Input Number](https://taiga-ui.dev/components/input-number) — InputNumber is a form field to provide numerical input. example of [ 'Number as form control value', 'BigInt as form control value', 'Textfield-based', 'Localization', 'Affixes', 'Step', 'Custom step buttons', 'Fluid typography', 'Value transformer', 'Quantum', ]; track example ) {
 - [Input Phone](https://taiga-ui.dev/components/input-phone) — InputPhone allows to input a phone number
 - [Input Phone International](https://taiga-ui.dev/components/input-phone-international) — Allows to input phone number in international format InputPhoneInternational is based on &#64;maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that InputPhoneInternational has the robust source of truth!
 - [Input Pin](https://taiga-ui.dev/components/input-pin)
@@ -131,7 +131,7 @@
 - [Reorder](https://taiga-ui.dev/components/reorder) — Component to change order of elements in an array
 - [Scrollbar](https://taiga-ui.dev/components/scrollbar) — Scrollbar implements a custom scrollbar in Taiga UI style. Native scrollbar is hidden to keep native platform scroll experience Use TUI_SCROLL_REF token to get a scrollable container. For example, when working with virtual scroll.
 - [Search](https://taiga-ui.dev/components/search) — A wrapping component for search or filtering the table
-- [Select](https://taiga-ui.dev/components/select) — Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element.
+- [Select](https://taiga-ui.dev/components/select) — Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element. example of [ 'Textfield customization', 'Items handlers', 'Customize content', 'With DataList', 'Choose form control output', 'Virtual scroll', 'Mobile', 'Native picker with disabled option', 'Native picker with grouping options', ]; track example ) {
 - [Sheet Dialog](https://taiga-ui.dev/components/sheet-dialog) — A mobile draggable sheet dialog
 - [Shrink Wrap](https://taiga-ui.dev/components/shrink-wrap) — A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.
 - [Slider](https://taiga-ui.dev/components/slider) — Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs
