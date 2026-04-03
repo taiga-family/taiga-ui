@@ -1,17 +1,22 @@
 [tuiHeader] {
-    &[data-size='xxl'],
-    &[data-size='xl'],
-    &[data-size='l'],
     &[data-size='h1'],
     &[data-size='h2'],
     &[data-size='h3'] {
         [tuiTitle] {
             gap: 1rem;
         }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-body-m);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 1rem;
+        }
     }
 
-    &[data-size='m'],
-    &[data-size='h4'] {
+    &[data-size='h4'],
+    &[data-size='h5'] {
         [tuiTitle] {
             gap: 0.5rem;
         }
@@ -25,13 +30,17 @@
         }
     }
 
-    &[data-size='xxs'],
     &[data-size='h6'],
     &[data-size='body-l'],
-    &[data-size='body-m'] {
+    &[data-size='body-m'],
+    &[data-size='body-s'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-typography-heading-h6);
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-ui-s);
         }
     }
 }
