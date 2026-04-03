@@ -96,6 +96,8 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 
 - Use semantic HTML elements.
 - Use `aria‑*` attributes appropriately for accessibility.
+- Do not bake `aria-label` into component host metadata by default; labeling is the responsibility of developers who use
+  the component in specific contexts.
 - Avoid unnecessary re‑rendering by leveraging signals and OnPush.
 - Optimise bundle size via lazy loading, tree‑shaking, standalone components.
 - Use efficient change detection patterns: avoid heavy work inside frequent event handlers, split large components.
