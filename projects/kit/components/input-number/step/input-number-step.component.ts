@@ -9,7 +9,10 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
-import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
+import {
+    TUI_INPUT_NUMBER_OPTIONS,
+    type TuiInputNumberOptions,
+} from '../input-number.options';
 import {TuiNumberMask} from '../number-mask.directive';
 import {TuiInputNumberStepService} from './input-number-step.service';
 import {TuiInputNumberStep} from './input-number-step.directive';
@@ -34,7 +37,7 @@ import {TuiInputNumberStep} from './input-number-step.directive';
 export class TuiInputNumberStepComponent {
     protected readonly mask = inject(TuiNumberMask);
     protected readonly input = inject(TuiInputNumberDirective);
-    protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    protected readonly options: TuiInputNumberOptions = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly directive = inject(TuiInputNumberStep);
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly hold = inject(TuiInputNumberStepService<bigint | number>);
