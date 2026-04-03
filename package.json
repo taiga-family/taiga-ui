@@ -133,7 +133,7 @@
         "@types/express": "4.17.25",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "25.5.0",
+        "@types/node": "25.5.2",
         "@typescript/native-preview": "7.0.0-dev.20260401.1",
         "cpy-cli": "5.0.0",
         "date-fns": "4.1.0",
