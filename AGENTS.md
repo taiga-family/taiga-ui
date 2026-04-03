@@ -33,7 +33,7 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 - Use the new functional input/output APIs when appropriate (e.g., `input.required<T>()`, `input.optional<T>()`) to
   strongly type and enforce component inputs.
 - Use signals for reactive state management: local component state with `signal()`, derived state with `computed()`,
-  avoid `mutate()`, prefer `update()` or `set()`.
+  prefer `update()` or `set()` over in‑place mutations.
 - Design components with `changeDetection: ChangeDetectionStrategy.OnPush` (though with signals the change‑detection
   model is improved).
 - Do NOT use `@HostBinding` and `@HostListener` decorators; instead use the `host` object inside the `@Component` (or
