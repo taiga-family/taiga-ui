@@ -17,11 +17,11 @@
                 </a>
             </h3>
             @if (description()) {
-                <p>
+                <div class="t-description">
                     <ng-container *polymorpheusOutlet="description() as text">
                         {{ text }}
                     </ng-container>
-                </p>
+                </div>
             }
         </hgroup>
     </header>
