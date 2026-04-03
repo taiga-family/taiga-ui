@@ -540,7 +540,7 @@ export const pages: DocRoutePages = [
                 title: 'SwipeActions',
                 keywords: 'swipe, action, свайп, card, действие',
                 route: DemoRoute.SwipeActions,
-                meta: {version: '1.1.0'},
+                meta: {figmaVersion: '1.1.0'},
             },
         ],
     },
