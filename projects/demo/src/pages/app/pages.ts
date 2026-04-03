@@ -1517,7 +1517,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
                 route: DemoRoute.Amount,
-                meta: {scheme: 'taiga', version: '1.1.1'},
+                meta: {scheme: 'taiga', figmaVersion: '1.1.1'},
             },
             {
                 section: 'Tools',
