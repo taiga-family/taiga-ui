@@ -14,14 +14,14 @@ const SIGNAL_BASED_PIPES = ['tuiAmount', 'tuiDecimal', 'tuiFormatNumber'];
  *
  * Breakdown:
  *   \|\s*(tuiAmount|tuiDecimal|tuiFormatNumber) — pipe name
- *   (?::[^|]*\S)? — optional arguments (ends on non-whitespace)
+ *   (?:[^|]*[^|\s])? — optional arguments (greedy, ends on non-whitespace)
  *   \s*\|\s*async — trailing `| async` to remove
  *
- * The arguments group ends on `\S` so it cannot exchange trailing
- * whitespace with the `\s*` that follows.
+ * `[^|]*[^|\s]` is backtracking-safe: `[^|\s]` anchors the boundary so
+ * the greedy `[^|]*` cannot exchange trailing whitespace with `\s*`.
  */
 const PIPE_ASYNC_REGEX = new RegExp(
-    String.raw`(\|\s*(?:${SIGNAL_BASED_PIPES.join('|')})(?::[^|]*?|(?:\s*:[^|]*?)*))\s*\|\s*async`,
+    String.raw`(\|\s*(?:${SIGNAL_BASED_PIPES.join('|')})(?:[^|]*[^|\s])?)\s*\|\s*async`,
     'gi',
 );
 
