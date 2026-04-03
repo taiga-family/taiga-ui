@@ -6,20 +6,35 @@ on:
         type: choice
         description: release type
         required: true
-        default: 'minor'
+        default: minor
         options:
           - patch
           - minor
           - prerelease
           - major
+      dry_run:
+        type: boolean
+        description: dry run
+        required: true
+        default: false
 
 jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
+    environment:
+      name: release
+    permissions:
+      contents: write
+      pull-requests: write
     env:
-      IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
+      IS_PRERELEASE_MODE: ${{ inputs.mode == 'prerelease' }}
+      DRY_RUN: ${{ inputs.dry_run }}
     steps:
+      - name: Print selected mode
+        run: |
+          echo "mode=${{ inputs.mode }}"
+          echo "dry_run=${{ inputs.dry_run }}"
       - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
@@ -31,27 +46,36 @@ jobs:
 
       - name: Run release
         id: run-release
+        shell: bash
         run: |
-          npx ts-node ./scripts/release.ts --ci-mode --release-as ${{ github.event.inputs.mode }}
-          echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+          npx ts-node ./scripts/release.ts \
+                --ci-mode \
+                --release-as ${{ inputs.mode }} \
+                ${{ inputs.dry_run && '--dry-run true' || '' }}
+
+          echo "new_version=$(node -p 'require(\"./package.json\").version')" >> "$GITHUB_OUTPUT"
 
       - name: Generate Release Body
-        if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
+        if: ${{ !inputs.dry_run && !env.IS_PRERELEASE_MODE }}
         id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
-          echo "tag_name=$(git describe --abbrev=0 --tags)" >> $GITHUB_OUTPUT
+          echo "tag_name=$(git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
 
-      - id: get-pr-body
-        if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
+      - name: Get PR body
+        if: ${{ !inputs.dry_run && !env.IS_PRERELEASE_MODE }}
+        id: get-pr-body
+        shell: bash
         run: |
-          body=$(cat RELEASE_BODY.md)
           delimiter="$(openssl rand -hex 8)"
-          echo "body<<$delimiter" >> $GITHUB_OUTPUT
-          echo "$body" >> $GITHUB_OUTPUT
-          echo "$delimiter" >> $GITHUB_OUTPUT
+          {
+            echo "body<<${delimiter}"
+            cat RELEASE_BODY.md
+            echo "${delimiter}"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Create Pull Request
+        if: ${{ !inputs.dry_run }}
         uses: peter-evans/create-pull-request@v8
         with:
           delete-branch: true
@@ -64,24 +88,25 @@ jobs:
             ---
 
             > **DO NOT SQUASH OR REBASE ME**
-
-            > if user merges this PR via rebasing or using squash, it will cause lost of the tag. It happens because tag is already
-            > attached to the initial release commit SHA. If we use rebase or squash, the commit sha changes and already created tag
-            > points to not-existing commit.
+            >
+            > If this PR is merged with squash or rebase, the tag may be lost because the tag is already attached to the original release commit SHA.
 
       - name: Create GitHub Release
-        if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
+        if: ${{ !inputs.dry_run && !env.IS_PRERELEASE_MODE }}
         uses: ncipollo/release-action@v1.21.0
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
           tag: ${{ steps.generate_body.outputs.tag_name }}
           commit: ${{ github.head_ref || github.ref_name }}
-          bodyFile: 'RELEASE_BODY.md'
+          bodyFile: RELEASE_BODY.md
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push tag
-        run: git push origin tag v${{ steps.run-release.outputs.new_version }} || echo ""
+        if: ${{ !inputs.dry_run }}
+        run: git push origin "tag" "v${{ steps.run-release.outputs.new_version }}" || echo ""
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+      - name: Dry run summary
+        if: ${{ inputs.dry_run }}
+        run: |
+          echo "Dry run completed"
+          echo "Calculated version: ${{ steps.run-release.outputs.new_version }}"
