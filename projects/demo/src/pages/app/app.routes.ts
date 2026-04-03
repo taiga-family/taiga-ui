@@ -199,7 +199,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Comment,
-        loadComponent: async () => import('../directives/comment'),
+        loadComponent: async () => import('../components/comment'),
         title: 'Comment',
     }),
     route({
