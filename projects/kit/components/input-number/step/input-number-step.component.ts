@@ -14,8 +14,8 @@ import {
     type TuiInputNumberOptions,
 } from '../input-number.options';
 import {TuiNumberMask} from '../number-mask.directive';
-import {TuiInputNumberStepService} from './input-number-step.service';
 import {TuiInputNumberStep} from './input-number-step.directive';
+import {TuiInputNumberStepService} from './input-number-step.service';
 
 @Component({
     imports: [TuiButton],

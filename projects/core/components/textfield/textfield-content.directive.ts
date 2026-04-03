@@ -8,7 +8,7 @@ import {
     type OnDestroy,
     TemplateRef,
     type Type,
-    ValueProvider,
+    type ValueProvider,
 } from '@angular/core';
 
 import {TuiTextfieldComponent} from './textfield.component';
