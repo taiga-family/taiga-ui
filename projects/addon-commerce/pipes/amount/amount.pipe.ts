@@ -14,6 +14,7 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 
 import {TUI_AMOUNT_OPTIONS} from './amount.options';
+import {type TuiAmountSign} from './amount.types';
 import {tuiFormatSignSymbol} from './amount.utils';
 
 const DEFAULT_PRECISION = 2;
@@ -25,6 +26,7 @@ export class TuiAmountPipe implements PipeTransform {
     private readonly value = signal(NaN);
     private readonly currency = signal(this.options.currency);
     private readonly currencyAlign = signal(this.options.currencyAlign);
+    private readonly sign = signal(this.options.sign);
     private readonly formatted = computed(() => {
         const format = this.format();
         const currencySymbol = tuiFormatCurrency(this.currency());
@@ -35,7 +37,7 @@ export class TuiAmountPipe implements PipeTransform {
                 : format.precision,
         });
         const sign =
-            formatted === '0' ? '' : tuiFormatSignSymbol(this.value(), this.options.sign);
+            formatted === '0' ? '' : tuiFormatSignSymbol(this.value(), this.sign());
         const space =
             currencySymbol &&
             (currencySymbol?.length > 1 || this.currencyAlign() === 'end')
@@ -51,11 +53,13 @@ export class TuiAmountPipe implements PipeTransform {
         value: number,
         currency: TuiCurrencyVariants = this.options.currency,
         currencyAlign: TuiHorizontalDirection = this.options.currencyAlign,
+        sign: TuiAmountSign = this.options.sign,
     ): string {
         untracked(() => {
             this.value.set(value);
             this.currency.set(currency);
             this.currencyAlign.set(currencyAlign);
+            this.sign.set(sign);
         });
 
         return this.formatted();
