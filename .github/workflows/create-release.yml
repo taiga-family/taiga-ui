@@ -53,7 +53,7 @@ jobs:
                 --release-as ${{ inputs.mode }} \
                 ${{ inputs.dry_run && '--dry-run true' || '' }}
 
-          echo "new_version=$(node -p 'require(\"./package.json\").version')" >> "$GITHUB_OUTPUT"
+          echo "new_version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Generate Release Body
         if: ${{ !inputs.dry_run && !env.IS_PRERELEASE_MODE }}
