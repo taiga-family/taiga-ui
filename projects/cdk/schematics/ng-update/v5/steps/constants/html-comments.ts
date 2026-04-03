@@ -2,11 +2,32 @@ import {
     hasElementAttribute,
     hasElementAttributeWithValue,
 } from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {type HtmlComment} from '../../../interfaces';
 import {hasChild} from '../../../utils/templates/dom-traversal';
 import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
 
+const STRING_LITERAL_RE = /^'[^']*'$/;
+
 export const HTML_COMMENTS: HtmlComment[] = [
+    {
+        tag: '*',
+        withAttrs: ['[appearance]'],
+        filterFn: (element) => {
+            const value = findAttr(element.attrs, '[appearance]')?.value?.trim();
+
+            if (!value) {
+                return false;
+            }
+
+            const alreadyMigrated =
+                value.includes('positive') || value.includes('negative');
+
+            return !STRING_LITERAL_RE.test(value) && !alreadyMigrated;
+        },
+        comment:
+            '[appearance] binding uses a dynamic expression. If it can produce "error"/"success"/"glass", replace with "negative"/"positive"/"secondary-grayscale"',
+    },
     {
         tag: 'input',
         withAttrs: ['keySteps'],
