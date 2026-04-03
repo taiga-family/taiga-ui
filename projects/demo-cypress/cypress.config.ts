@@ -19,6 +19,12 @@ export default defineConfig({
         ...preset,
         devServer: {
             ...preset.devServer,
+            webpackConfig: {
+                optimization: {
+                    runtimeChunk: false,
+                    splitChunks: false,
+                },
+            },
             options: {
                 ...preset.devServer?.options,
                 projectConfig: {
