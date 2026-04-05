@@ -2506,10 +2506,10 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 export default class Example {
     protected readonly value = [40, 30, 20, 10];
 
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 
     public onTextfieldChange(value: number | null): void {
-        this.activeItemIndex = value ?? NaN;
+        this.activeItemIndex = value ?? Number.NaN;
     }
 }
 ```
@@ -2618,7 +2618,7 @@ export default class Page {
 
     protected maxLabel = '100%';
 
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 }
 ```
 
@@ -14424,7 +14424,7 @@ import {TuiInputPhone} from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 function phoneValidator({value}: AbstractControl): ValidationErrors | null {
-    return value.length !== 12 ? {length: 'Invalid phone number length'} : null;
+    return value.length === 12 ? null : {length: 'Invalid phone number length'};
 }
 
 @Component({
@@ -22602,7 +22602,7 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
     }
 
     public override toControlValue(value: number | null): number {
-        return value ?? NaN;
+        return value ?? Number.NaN;
     }
 }
 
@@ -22614,7 +22614,7 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
     providers: [tuiInputNumberOptionsProvider({valueTransformer: new NaNTransformer()})],
 })
 export default class Example {
-    protected value = NaN;
+    protected value = Number.NaN;
 }
 ```
 
@@ -25843,7 +25843,7 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
     changeDetection,
 })
 export default class Example {
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.value);
@@ -25854,7 +25854,7 @@ export default class Example {
     }
 
     protected onHover(index: number, hovered: boolean): void {
-        this.activeItemIndex = hovered ? index : NaN;
+        this.activeItemIndex = hovered ? index : Number.NaN;
     }
 }
 ```
@@ -26876,11 +26876,11 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 export default class Example {
     private readonly win = inject(WA_WINDOW);
     private readonly cdr = inject(ChangeDetectorRef);
-    protected lineHeight = NaN;
-    protected lineLimit = NaN;
+    protected lineHeight = Number.NaN;
+    protected lineLimit = Number.NaN;
 
     protected getDynamicLineHeight(element: HTMLDivElement): number {
-        return parseInt(this.win.getComputedStyle(element).lineHeight, 10);
+        return Number.parseInt(this.win.getComputedStyle(element).lineHeight, 10);
     }
 
     protected getDynamicLineLimit(element: HTMLDivElement): number {
@@ -28920,9 +28920,9 @@ export default class Example {
         this.months$,
     ]).pipe(
         map(([value, months]) =>
-            !value
-                ? 'Choose a date'
-                : `${months[value.month]} ${value.day}, ${value.year}`,
+            value
+                ? `${months[value.month]} ${value.day}, ${value.year}`
+                : 'Choose a date',
         ),
     );
 
@@ -30004,7 +30004,7 @@ export default class ExampleComponent {
             (result, [key, value]) => ({
                 ...result,
                 [key]: value.filter(({title, href, subtitle = ''}) =>
-                    TUI_DEFAULT_MATCHER(title + href + subtitle, query),
+                    TUI_DEFAULT_MATCHER(`${title}${href}${subtitle}`, query),
                 ),
             }),
             {},
@@ -31319,7 +31319,7 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
 
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
@@ -34327,7 +34327,7 @@ export default class Example {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
 
-    protected index = NaN;
+    protected index = Number.NaN;
 
     protected get sum(): number {
         return (Number.isNaN(this.index) ? this.total : this.value[this.index]) ?? 0;
@@ -34374,7 +34374,7 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
 
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
