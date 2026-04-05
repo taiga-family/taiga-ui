@@ -8,7 +8,7 @@ describe('tuiArrayRemove', () => {
     it('ignores invalid indices', () => {
         expect(tuiArrayRemove([1, 2, 3], -1)).toEqual([1, 2, 3]);
         expect(tuiArrayRemove([1, 2, 3], -10)).toEqual([1, 2, 3]);
-        expect(tuiArrayRemove([1, 2, 3], NaN)).toEqual([1, 2, 3]);
+        expect(tuiArrayRemove([1, 2, 3], Number.NaN)).toEqual([1, 2, 3]);
         expect(tuiArrayRemove([1, 2, 3], -Infinity)).toEqual([1, 2, 3]);
         expect(tuiArrayRemove([1, 2, 3], Infinity)).toEqual([1, 2, 3]);
     });

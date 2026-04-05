@@ -19,7 +19,7 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
 
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 

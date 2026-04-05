@@ -5,7 +5,7 @@ describe('normalizeToIntNumber', () => {
     const max = 10;
 
     it('NaN', () => {
-        expect(tuiNormalizeToIntNumber(NaN, min, max)).toBe(min);
+        expect(tuiNormalizeToIntNumber(Number.NaN, min, max)).toBe(min);
     });
 
     it('0.1', () => {

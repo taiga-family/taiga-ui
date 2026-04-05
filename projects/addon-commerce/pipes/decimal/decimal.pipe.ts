@@ -20,7 +20,7 @@ export class TuiDecimalPipe implements PipeTransform {
         parent: inject(INJECTOR),
     }).get(TuiAmountPipe);
 
-    private readonly value = signal(NaN);
+    private readonly value = signal(Number.NaN);
     private readonly currency = signal<TuiCurrencyVariants>('');
     private readonly formatted = computed(() => {
         const format = this.format();

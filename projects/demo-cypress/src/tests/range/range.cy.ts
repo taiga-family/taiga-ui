@@ -337,7 +337,7 @@ describe('TuiRange', () => {
         ] as const;
 
         testsContexts.forEach(({value, leftOffset, rightOffset}) => {
-            it(`${JSON.stringify(value)}`, () => {
+            it(JSON.stringify(value), () => {
                 component.control.setValue(value as unknown as number[]);
                 fixture.detectChanges();
 

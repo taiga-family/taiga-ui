@@ -33,7 +33,7 @@ test.describe('Routable', () => {
     });
 
     test('should open dialog in named outlet example', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.DialogRoutable}`);
+        await tuiGoto(page, DemoRoute.DialogRoutable);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#named-outlet');

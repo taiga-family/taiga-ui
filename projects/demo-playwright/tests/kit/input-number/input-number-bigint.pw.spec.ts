@@ -48,7 +48,7 @@ describe('InputNumber | BigInt', () => {
 
             describe('rejects decimal separators', () => {
                 ['.', ','].forEach((separator) => {
-                    test(`${separator}`, async () => {
+                    test(separator, async () => {
                         await inputNumber.textfield.focus();
                         await inputNumber.textfield.clear();
                         await inputNumber.textfield.pressSequentially(

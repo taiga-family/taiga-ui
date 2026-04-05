@@ -14,12 +14,12 @@ export class TuiTextfieldPO {
             .evaluate((el) =>
                 globalThis.getComputedStyle(el).getPropertyValue('padding-right'),
             )
-            .then(parseInt);
+            .then(Number.parseInt);
         const iconWidth = await this.host
             .evaluate((el) =>
                 globalThis.getComputedStyle(el, '::after').getPropertyValue('width'),
             )
-            .then(parseInt);
+            .then(Number.parseInt);
 
         expect(box).not.toBeFalsy();
         expect(padding).not.toBeFalsy();

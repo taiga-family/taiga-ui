@@ -539,7 +539,7 @@ describe('InputRange', () => {
 
         describe('different textfield sizes', () => {
             ['s', 'm', 'l'].forEach((size) => {
-                test(`${size}`, async ({page}) => {
+                test(size, async ({page}) => {
                     await tuiGoto(
                         page,
                         `${DemoRoute.InputRange}/API?content$=2&tuiTextfieldSize=${size}`,

@@ -407,7 +407,7 @@ function sortByCategory<T extends {category: string}>(items: T[]): T[] {
         const aOrder = aIdx === -1 ? Infinity : aIdx;
         const bOrder = bIdx === -1 ? Infinity : bIdx;
 
-        return aOrder !== bOrder ? aOrder - bOrder : a.category.localeCompare(b.category);
+        return aOrder === bOrder ? a.category.localeCompare(b.category) : aOrder - bOrder;
     });
 }
 
@@ -506,7 +506,7 @@ function renderPackageSection(
         const aOrder = aIdx === -1 ? Infinity : aIdx;
         const bOrder = bIdx === -1 ? Infinity : bIdx;
 
-        return aOrder !== bOrder ? aOrder - bOrder : a.localeCompare(b);
+        return aOrder === bOrder ? a.localeCompare(b) : aOrder - bOrder;
     });
 
     for (const category of sortedCategories) {

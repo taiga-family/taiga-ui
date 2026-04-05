@@ -108,7 +108,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
     protected onFocus(): void {
         if (!this.input.value() && !this.readOnly()) {
-            this.input.value.set(this.mask.prefix() + this.mask.postfix());
+            this.input.value.set(`${this.mask.prefix()}${this.mask.postfix()}`);
         }
     }
 
@@ -127,7 +127,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
             maskitoParseNumber(value, {
                 ...params,
                 bigint: !value.includes(params.decimalSeparator) && possibleTooBig,
-            }) ?? NaN
+            }) ?? Number.NaN
         );
     }
 }

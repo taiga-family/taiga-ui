@@ -95,7 +95,7 @@ export default class ExampleComponent {
             (result, [key, value]) => ({
                 ...result,
                 [key]: value.filter(({title, href, subtitle = ''}) =>
-                    TUI_DEFAULT_MATCHER(title + href + subtitle, query),
+                    TUI_DEFAULT_MATCHER(`${title}${href}${subtitle}`, query),
                 ),
             }),
             {},

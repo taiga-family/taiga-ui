@@ -25,7 +25,11 @@ export class TuiTileService implements OnDestroy {
     private readonly el = tuiInjectElement();
     private readonly tiles = inject(TuiTilesComponent);
     private readonly sub = new Subscription();
-    private readonly offset$ = new BehaviorSubject<readonly [number, number]>([NaN, NaN]);
+    private readonly offset$ = new BehaviorSubject<readonly [number, number]>([
+        Number.NaN,
+        Number.NaN,
+    ]);
+
     private readonly position$: Observable<readonly [number, number]> = combineLatest([
         this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
         inject(WaResizeObserverService).pipe(startWith(null)),
@@ -63,8 +67,8 @@ export class TuiTileService implements OnDestroy {
             left: elLeft,
             width: this.el.clientWidth,
             height: this.el.clientHeight,
-            right: NaN,
-            bottom: NaN,
+            right: Number.NaN,
+            bottom: Number.NaN,
             y: elTop,
             x: elLeft,
         };

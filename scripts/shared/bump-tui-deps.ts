@@ -25,7 +25,7 @@ export function bumpTuiDeps({
                           prevVersion,
                           newVersion,
                       ) ?? '')
-                    : `${newVersion}`;
+                    : newVersion;
             } else if (deps[key]?.hasOwnProperty('requires')) {
                 bumpTuiDeps({
                     deps:

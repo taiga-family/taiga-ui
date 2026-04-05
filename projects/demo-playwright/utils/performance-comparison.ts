@@ -664,7 +664,7 @@ export class PerformanceComparison {
                     : cur.avgFirstOption;
 
             const deltaMs =
-                baselineMedian !== undefined ? currentMedian - baselineMedian : undefined;
+                baselineMedian === undefined ? undefined : currentMedian - baselineMedian;
             const deltaPct =
                 baselineMedian && baselineMedian !== 0
                     ? (deltaMs! / baselineMedian) * 100
@@ -672,15 +672,15 @@ export class PerformanceComparison {
             let badge = '';
             let curStr = currentMedian.toFixed(2);
             const baseStr =
-                baselineMedian !== undefined ? baselineMedian.toFixed(2) : '—';
+                baselineMedian === undefined ? '—' : baselineMedian.toFixed(2);
             let deltaMsStr =
-                deltaMs !== undefined
-                    ? `${deltaMs >= 0 ? '+' : ''}${deltaMs.toFixed(2)}`
-                    : 'new';
+                deltaMs === undefined
+                    ? 'new'
+                    : `${deltaMs >= 0 ? '+' : ''}${deltaMs.toFixed(2)}`;
             let deltaPctStr =
-                deltaPct !== undefined
-                    ? `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(1)}%`
-                    : 'new';
+                deltaPct === undefined
+                    ? 'new'
+                    : `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(1)}%`;
 
             if (deltaPct !== undefined) {
                 const absPct = Math.abs(deltaPct);
@@ -707,10 +707,10 @@ export class PerformanceComparison {
             // Unified format: one metric column showing current (deltaMs, deltaPct) and baseline value in parentheses
             let combined: string;
 
-            if (baselineMedian !== undefined) {
-                combined = `${curStr} (${baseStr}, ${deltaMsStr}, ${deltaPctStr})`;
-            } else {
+            if (baselineMedian === undefined) {
                 combined = `${curStr} (new)`;
+            } else {
+                combined = `${curStr} (${baseStr}, ${deltaMsStr}, ${deltaPctStr})`;
             }
 
             rows.push(`| ${d.testName} | ${combined} | ${runs} |`);
@@ -726,7 +726,7 @@ export class PerformanceComparison {
                 const curCol = parts[3];
                 const match = /\d+(?:\.\d+)?/.exec(curCol || '');
 
-                return match ? parseFloat(match[0]) : Number.POSITIVE_INFINITY;
+                return match ? Number.parseFloat(match[0]) : Number.POSITIVE_INFINITY;
             };
 
             return extract(a) - extract(b);
@@ -1495,7 +1495,7 @@ export class PerformanceComparison {
             }
 
             const diff = cur - base;
-            const pct = base !== 0 ? (diff / base) * 100 : 0;
+            const pct = base === 0 ? 0 : (diff / base) * 100;
             const pctSign = pct > 0 ? '+' : '';
             const pctStr = `${pctSign}${pct.toFixed(1)}%`;
             const diffAbs = Math.abs(diff);
@@ -2111,9 +2111,7 @@ async function main(): Promise<void> {
 
         if (!baselinePath || !currentPath || !outputPath) {
             console.error(
-                'Usage:\n' +
-                    '  npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path>\n' +
-                    '  npx ts-node performance-comparison.ts aggregate-md [input-dir] [output-file]',
+                'Usage:\n  npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path>\n  npx ts-node performance-comparison.ts aggregate-md [input-dir] [output-file]',
             );
             process.exit(1);
         }

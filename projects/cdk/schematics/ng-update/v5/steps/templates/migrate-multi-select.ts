@@ -248,9 +248,9 @@ export function migrateMultiSelect({
             element.sourceCodeLocation?.endTag?.startOffset ??
             0;
         const chipItemTemplate =
-            tagValidatorExpr !== null
-                ? `<tui-input-chip *tuiItem="let ctx" [appearance]="${tagValidatorExpr}(ctx.item) ? '' : 'negative'" />\n`
-                : '';
+            tagValidatorExpr === null
+                ? ''
+                : `<tui-input-chip *tuiItem="let ctx" [appearance]="${tagValidatorExpr}(ctx.item) ? '' : 'negative'" />\n`;
         const inputTemplate = `${manualSearchTodo}${searchChangeTodo}<input tuiInputChip${selectLikeAttr}${readonlyAttr}${placeholderAttr ? ` ${placeholderAttr}` : ''}${formAttrs ? ` ${formAttrs}` : ''}${searchChangeAttr} />\n${chipItemTemplate}`;
 
         recorder.insertRight(templateOffset + insertOffset, inputTemplate);

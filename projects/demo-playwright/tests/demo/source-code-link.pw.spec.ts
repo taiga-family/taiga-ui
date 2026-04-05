@@ -47,7 +47,7 @@ test.describe('Source code button', () => {
     const {repositoryUrl, targetBranch} = getRepositoryInfo();
 
     (proprietary ? [] : demoPaths).forEach((path) => {
-        test(`${path}`, async ({page, request}) => {
+        test(path, async ({page, request}) => {
             const sourceCodeLink = new TuiDocumentationPagePO(page).sourceCodeLink;
 
             await tuiGoto(page, path);

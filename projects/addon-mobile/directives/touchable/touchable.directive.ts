@@ -68,10 +68,10 @@ export class TuiTouchable {
     }
 
     private onTouchStart(): void {
-        if (this.style() !== 'transform') {
-            this.el.style.removeProperty('transition');
-        } else {
+        if (this.style() === 'transform') {
             this.el.style.setProperty('transition', 'transform 0.2s');
+        } else {
+            this.el.style.removeProperty('transition');
         }
 
         this.el.style.setProperty(this.style(), STYLE[this.style()]);

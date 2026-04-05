@@ -77,7 +77,7 @@ function addGeneric(typeName: string, generics: TypeNode[]): string {
     const typeArgs = generics.map((t) => t.getType().getText());
     const genericType = typeArgs.length ? `<${typeArgs.join(', ')}>` : '';
 
-    return typeName + genericType;
+    return `${typeName}${genericType}`;
 }
 
 export function renameTypes(options: TuiSchema, types: readonly ReplacementType[]): void {

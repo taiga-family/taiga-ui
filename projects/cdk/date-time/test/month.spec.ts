@@ -7,7 +7,7 @@ describe('TuiMonth', () => {
         describe('isValidMonth', () => {
             describe('invalid month', () => {
                 it('NaN', () => {
-                    expect(TuiMonth.isValidMonth(2000, NaN)).toBe(false);
+                    expect(TuiMonth.isValidMonth(2000, Number.NaN)).toBe(false);
                 });
 
                 it('6.1', () => {

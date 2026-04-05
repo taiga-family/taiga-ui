@@ -122,7 +122,7 @@ export class TuiDocDemo implements AfterViewInit {
 
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
-    protected sandboxWidth = parseInt(this.params.sandboxWidth, 10);
+    protected sandboxWidth = Number.parseInt(this.params.sandboxWidth, 10);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     public readonly control = input<AbstractControl | null>(null);
@@ -164,7 +164,7 @@ export class TuiDocDemo implements AfterViewInit {
         this.createForm();
     }
 
-    protected updateWidth(width = NaN): void {
+    protected updateWidth(width = Number.NaN): void {
         if (!this.resizable() || !this.content()) {
             return;
         }
@@ -172,7 +172,7 @@ export class TuiDocDemo implements AfterViewInit {
         const safe = width || this.resizable().nativeElement.clientWidth;
         const total = this.el.clientWidth;
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
-        const validated = safe < total ? clamped : NaN;
+        const validated = safe < total ? clamped : Number.NaN;
 
         this.resizable().nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;

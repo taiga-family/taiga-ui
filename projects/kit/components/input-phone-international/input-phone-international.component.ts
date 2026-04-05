@@ -123,7 +123,9 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
                 name: this.names()?.[iso] || '',
                 code: getCallingCode(iso, this.metadata()),
             }))
-            .filter(({name, code}) => TUI_DEFAULT_MATCHER(name + code, this.search())),
+            .filter(({name, code}) =>
+                TUI_DEFAULT_MATCHER(`${name}${code}`, this.search()),
+            ),
     );
 
     protected readonly $ = inject(TuiActiveZone)
@@ -218,7 +220,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
 
     private getCountryCode(value: string): TuiCountryIsoCode | null {
         const metadata = this.metadata();
-        const phone = value.startsWith(CHAR_PLUS) ? value : CHAR_PLUS + value;
+        const phone = value.startsWith(CHAR_PLUS) ? value : `${CHAR_PLUS}${value}`;
 
         return metadata && validatePhoneNumberLength(phone, metadata) !== 'TOO_SHORT'
             ? (maskitoGetCountryFromNumber(phone, metadata) ?? null)

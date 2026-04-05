@@ -38,10 +38,10 @@ export class TuiLineChart {
     private readonly autoId = tuiGenerateId();
     private readonly resize = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
-            map(([e]) => e?.contentRect.height || NaN),
+            map(([e]) => e?.contentRect.height || Number.NaN),
             filter((height) => !Number.isNaN(height)),
         ),
-        {initialValue: NaN},
+        {initialValue: Number.NaN},
     );
 
     private readonly box = computed(
@@ -96,7 +96,7 @@ export class TuiLineChart {
         transform: (value) => value.filter((item) => !item.some(Number.isNaN)),
     });
 
-    public readonly hovered = signal(NaN);
+    public readonly hovered = signal(Number.NaN);
 
     public onHovered(index: number): void {
         this.hovered.set(index);
@@ -129,7 +129,7 @@ export class TuiLineChart {
 
     protected onMouseLeave(): void {
         if (!this.hintDirective) {
-            this.onHovered(NaN);
+            this.onHovered(Number.NaN);
         }
     }
 

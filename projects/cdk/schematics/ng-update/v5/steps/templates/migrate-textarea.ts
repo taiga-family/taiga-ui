@@ -394,12 +394,11 @@ function migrateInnerTextarea(
     const insertStr = extraAttrs ? ` ${extraAttrs}` : '';
 
     // trimEnd() removes trailing whitespace/newlines before '>' to avoid a visual gap
-    startTag =
-        startTag.slice(0, closeAngle).trimEnd() + insertStr + startTag.slice(closeAngle);
+    startTag = `${startTag.slice(0, closeAngle).trimEnd()}${insertStr}${startTag.slice(closeAngle)}`;
 
     // Reconstruct full inner element (self-closing or with end tag)
     const innerContent = innerLoc.endTag
-        ? startTag + template.slice(innerLoc.startTag.endOffset, innerLoc.endOffset)
+        ? `${startTag}${template.slice(innerLoc.startTag.endOffset, innerLoc.endOffset)}`
         : startTag;
 
     // Include other sibling elements (e.g. tui-data-list-wrapper, tui-error)

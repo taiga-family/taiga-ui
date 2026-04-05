@@ -13,5 +13,5 @@ import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 export class TuiRingChart {
     public readonly value = input<readonly number[]>([]);
     public readonly size = input<TuiSizeXL | TuiSizeXS>('m');
-    public readonly activeItemIndex = model(NaN);
+    public readonly activeItemIndex = model(Number.NaN);
 }

@@ -6,7 +6,7 @@ test.describe('Carousel', () => {
     test.use({viewport: {width: 500, height: 400}});
 
     test('buttons work', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.Carousel}`);
+        await tuiGoto(page, DemoRoute.Carousel);
 
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
         const prev = example.locator('button').first();

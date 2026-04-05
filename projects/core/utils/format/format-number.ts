@@ -50,7 +50,7 @@ export function tuiFormatNumber(
 
     const remainder = integerPartString.length % 3;
     const sign = value < 0 ? CHAR_HYPHEN : '';
-    let result = sign + integerPartString.charAt(0);
+    let result = `${sign}${integerPartString.charAt(0)}`;
 
     for (let i = 1; i < integerPartString.length; i++) {
         if (i % 3 === remainder && integerPartString.length > 3) {
@@ -60,5 +60,7 @@ export function tuiFormatNumber(
         result += integerPartString.charAt(i);
     }
 
-    return fractionPartPadded ? result + decimalSeparator + fractionPartPadded : result;
+    return fractionPartPadded
+        ? `${result}${decimalSeparator}${fractionPartPadded}`
+        : result;
 }

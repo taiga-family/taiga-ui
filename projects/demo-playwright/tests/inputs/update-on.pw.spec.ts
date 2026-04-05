@@ -18,7 +18,7 @@ test.describe('Inputs - updateOn', () => {
         let option: Locator;
         let submit: Locator;
 
-        test.describe(`${title}`, () => {
+        test.describe(title, () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, `${route}/API`);
 

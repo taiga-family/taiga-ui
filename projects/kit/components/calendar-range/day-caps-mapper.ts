@@ -28,7 +28,7 @@ export const TUI_DAY_CAPS_MAPPER: TuiMapper<
     const from = value instanceof TuiDay ? value : value.from;
     const dateShift = from
         .append(backwards ? negativeMaxLength : maxLength)
-        .append({day: !backwards ? -1 : 1});
+        .append({day: backwards ? 1 : -1});
 
     if (backwards) {
         return dateShift.dayBefore(current || TUI_FIRST_DAY)

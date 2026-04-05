@@ -55,7 +55,9 @@ export function migrateTextMixins(fileContent: string): string {
         MIXIN_RE,
         (originalString: string, mixinName: keyof typeof MAPPING, important = '') =>
             MAPPING[mixinName]
-                ? `${MAPPING[mixinName].map((newValue) => `${newValue}${important};`).join('\n')}`
+                ? MAPPING[mixinName]
+                      .map((newValue) => `${newValue}${important};`)
+                      .join('\n')
                 : `${originalString} // TODO: this mixin was deleted. Replace it with inline styles. Find it source code in https://github.com/taiga-family/taiga-ui/blob/v3.x/projects/core/styles/mixins/text.less`,
     );
 }
