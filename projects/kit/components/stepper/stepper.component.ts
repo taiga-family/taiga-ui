@@ -54,7 +54,7 @@ export class TuiStepperComponent implements OnChanges {
     public indexOf(step: HTMLElement): number {
         const index = this.steps().findIndex(({nativeElement}) => nativeElement === step);
 
-        return index < 0 ? NaN : index;
+        return index < 0 ? Number.NaN : index;
     }
 
     public isActive(index: number): boolean {

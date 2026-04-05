@@ -114,7 +114,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
 
     private getDurationTimeBeforeFocus(): number {
         return (
-            parseFloat(
+            Number.parseFloat(
                 this.win
                     .getComputedStyle(this.element)
                     .getPropertyValue('--tui-duration'),

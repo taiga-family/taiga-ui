@@ -22,7 +22,7 @@ import {combineLatest, filter} from 'rxjs';
 import {TuiLineDaysChart} from './line-days-chart.component';
 
 function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay, number] {
-    return value.find(([day]) => day.daySame(current)) || [current, NaN];
+    return value.find(([day]) => day.daySame(current)) || [current, Number.NaN];
 }
 
 // TODO: Consider extending TuiLineChartHintDirective
@@ -56,7 +56,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.charts().forEach((chart) => chart.onHovered(NaN));
+                this.charts().forEach((chart) => chart.onHovered(Number.NaN));
             });
     }
 

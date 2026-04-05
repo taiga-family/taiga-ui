@@ -28,7 +28,7 @@ import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartHint} from './line-days-chart-hint.directive';
 
-const DUMMY: TuiPoint = [NaN, NaN];
+const DUMMY: TuiPoint = [Number.NaN, Number.NaN];
 
 @Component({
     selector: 'tui-line-days-chart',
@@ -113,7 +113,7 @@ export class TuiLineDaysChart implements AfterViewInit {
                     startMutable && currentDay?.daySame(startMutable)
                         ? mutable.shift()
                         : null;
-                const currentValue = shifted ? shifted[1] : NaN;
+                const currentValue = shifted ? shifted[1] : Number.NaN;
 
                 return [currentDay, currentValue] as [TuiDay, number];
             });
@@ -133,13 +133,13 @@ export class TuiLineDaysChart implements AfterViewInit {
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.onHovered(NaN);
+                this.onHovered(Number.NaN);
             });
     }
 
     public onHovered(day: TuiDay | number): void {
         if (tuiIsNumber(day)) {
-            this.charts().forEach((chart) => chart.onHovered(NaN));
+            this.charts().forEach((chart) => chart.onHovered(Number.NaN));
 
             return;
         }
@@ -153,7 +153,7 @@ export class TuiLineDaysChart implements AfterViewInit {
             if (chart === current) {
                 current.onHovered(current.value().findIndex((point) => point[0] === x));
             } else {
-                chart.onHovered(NaN);
+                chart.onHovered(Number.NaN);
             }
         });
     }

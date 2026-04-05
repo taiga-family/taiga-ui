@@ -10,7 +10,7 @@ test.describe('Demo', () => {
     const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 
     demoPaths.forEach((path) => {
-        test(`${path}`, async ({page, browserName}) => {
+        test(path, async ({page, browserName}) => {
             const documentation = new TuiDocumentationPagePO(page);
 
             await tuiMockImages(page);

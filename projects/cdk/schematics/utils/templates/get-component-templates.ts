@@ -51,7 +51,7 @@ function getFullTemplatePath(
     return path.join(
         componentPath.dir,
         templatePath.dir,
-        templatePath.name + templatePath.ext,
+        `${templatePath.name}${templatePath.ext}`,
     );
 }
 

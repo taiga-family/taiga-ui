@@ -139,15 +139,15 @@ export function migrateInputDate({
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
-        if (!inputs.length) {
+        if (inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputDate${migrationAttrs} />\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
+                `\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
             );
         } else {
             recorder.insertRight(
                 insertOffset,
-                `\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
+                `\n<input tuiInputDate${migrationAttrs} />\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
             );
         }
 

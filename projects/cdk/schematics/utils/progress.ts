@@ -28,7 +28,7 @@ export function setupProgressLogger({
 
         clearLine(process.stdout, 0);
         cursorTo(process.stdout, 0);
-        process.stdout.write(SMALL_TAB_SYMBOL.repeat(tabs) + progressLog);
+        process.stdout.write(`${SMALL_TAB_SYMBOL.repeat(tabs)}${progressLog}`);
 
         if (isLast && incrementIndex) {
             process.stdout.write('\n');

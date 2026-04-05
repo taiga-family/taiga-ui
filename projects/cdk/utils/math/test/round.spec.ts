@@ -27,7 +27,7 @@ describe('round', () => {
         });
 
         it('if value is NaN returns NaN', () => {
-            expect(tuiRound(NaN, 1)).toBeNaN();
+            expect(tuiRound(Number.NaN, 1)).toBeNaN();
         });
 
         it('if value is Infinity returns Infinity', () => {

@@ -131,7 +131,7 @@ describe('InputPhoneInternational', () => {
 
         describe('should set KZ country code on paste event', () => {
             ['+7 777 777-7777', '+7 7272 588300'].forEach((phone) => {
-                it(`${phone}`, async () => {
+                it(phone, async () => {
                     await paste(phone);
 
                     expect(testComponent.countryIsoCode).toBe('KZ');

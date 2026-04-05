@@ -120,15 +120,15 @@ export function migrateInputDateRange({
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
-        if (!inputs.length) {
+        if (inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputDateRange${migrationAttrs} />\n<tui-calendar-range *tuiDropdown${calendarAttrStr} />\n`,
+                `\n<tui-calendar-range *tuiDropdown${calendarAttrStr} />\n`,
             );
         } else {
             recorder.insertRight(
                 insertOffset,
-                `\n<tui-calendar-range *tuiDropdown${calendarAttrStr} />\n`,
+                `\n<input tuiInputDateRange${migrationAttrs} />\n<tui-calendar-range *tuiDropdown${calendarAttrStr} />\n`,
             );
         }
 

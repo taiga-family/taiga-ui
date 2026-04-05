@@ -307,7 +307,7 @@ export async function measureMobileCountryOpen(
     const trigger = example.locator(':scope > *').first();
 
     if (!(await trigger.isVisible().catch(falseHandler))) {
-        return {firstOption: NaN};
+        return {firstOption: Number.NaN};
     }
 
     await trigger.click({timeout: 2000}).catch(() => {});
@@ -320,7 +320,7 @@ export async function measureMobileCountryOpen(
         const start = (window as any).__tuiPerfStart as number | undefined;
         const now = performance.now();
 
-        return {firstOption: start != null ? now - start : NaN};
+        return {firstOption: start == null ? Number.NaN : now - start};
     });
 }
 
@@ -367,7 +367,7 @@ export async function measureColdOpen(
         await page.keyboard.press('Escape').catch(falseHandler);
     }
 
-    return NaN;
+    return Number.NaN;
 }
 
 export async function runScenarioLoop(

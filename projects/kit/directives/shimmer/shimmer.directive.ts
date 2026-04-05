@@ -52,7 +52,7 @@ export class TuiShimmer implements OnChanges {
             return;
         }
 
-        this.disabled = !parseFloat(
+        this.disabled = !Number.parseFloat(
             getComputedStyle(this.el).getPropertyValue('--tui-duration'),
         );
 

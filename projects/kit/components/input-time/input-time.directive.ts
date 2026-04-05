@@ -69,7 +69,7 @@ export class TuiInputTimeDirective
         TuiTextfieldComponent,
         'filler',
         computed((filler = this.fillers()?.[this.timeMode()] ?? '') =>
-            this.postfix() ? '' : this.prefix() + filler,
+            this.postfix() ? '' : `${this.prefix()}${filler}`,
         ),
         {},
     );
@@ -177,8 +177,8 @@ export class TuiInputTimeDirective
             ...options,
             plugins: options.plugins.concat(
                 caretGuardPlugin,
-                maskitoAddOnFocusPlugin(prefix + postfix),
-                maskitoRemoveOnBlurPlugin(prefix + postfix),
+                maskitoAddOnFocusPlugin(`${prefix}${postfix}`),
+                maskitoRemoveOnBlurPlugin(`${prefix}${postfix}`),
                 mode.includes('AA') ? inputModeSwitchPlugin : [],
             ),
         };
@@ -195,6 +195,6 @@ export class TuiInputTimeDirective
     }
 
     private stringify(time: TuiTime | null): string {
-        return this.prefix() + (time?.toString(this.timeMode()) || '') + this.postfix();
+        return `${this.prefix()}${time?.toString(this.timeMode()) || ''}${this.postfix()}`;
     }
 }

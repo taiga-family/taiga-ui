@@ -104,9 +104,7 @@ function buildReplacement(template: string, element: Element): Replacement | nul
     ];
     const attrsStr = newAttrs.length > 0 ? ` ${newAttrs.join(' ')}` : '';
 
-    const comments =
-        (hasAutoWidth ? AUTO_WIDTH_MIGRATION_COMMENT : '') +
-        (mappedDirection?.isDynamic ? DYNAMIC_DIRECTION_MIGRATION_COMMENT : '');
+    const comments = `${hasAutoWidth ? AUTO_WIDTH_MIGRATION_COMMENT : ''}${mappedDirection?.isDynamic ? DYNAMIC_DIRECTION_MIGRATION_COMMENT : ''}`;
 
     const endTag = loc?.endTag;
 

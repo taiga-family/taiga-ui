@@ -170,6 +170,6 @@ export class TuiComboBoxDirective<T>
     }
 
     private stringify(value?: T | string | null): string {
-        return value != null ? this.handlers.stringify()(value) : '';
+        return value == null ? '' : this.handlers.stringify()(value);
     }
 }

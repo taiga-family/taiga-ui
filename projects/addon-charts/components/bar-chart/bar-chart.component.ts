@@ -51,7 +51,7 @@ export class TuiBarChart {
     protected readonly drivers = viewChildren(TuiHintHover);
 
     public readonly value = input<ReadonlyArray<readonly number[]>>([]);
-    public readonly max = input(NaN);
+    public readonly max = input(Number.NaN);
     public readonly size = input<TuiSizeL | TuiSizeS | null>('m');
     public readonly collapsed = input(false);
     public readonly tapColumn = output<number>();

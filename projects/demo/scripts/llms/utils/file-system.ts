@@ -566,7 +566,7 @@ export function extractExampleDescriptions(
                     // Convert kebab-case to Title Case
                     heading = idMatch[1]
                         .split('-')
-                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                        .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
                         .join(' ');
                 }
             }

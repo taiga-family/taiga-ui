@@ -115,7 +115,7 @@ export function migrateInputPhone({
 
         recorder.insertRight(
             inputInsertOffset,
-            !inputs.length ? `\n<input tuiInputPhone${migrationAttrs} />\n` : '',
+            inputs.length ? '' : `\n<input tuiInputPhone${migrationAttrs} />\n`,
         );
 
         for (const input of inputs) {

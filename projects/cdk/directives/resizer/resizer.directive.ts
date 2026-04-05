@@ -16,8 +16,8 @@ import {TuiResizable} from './resizable.directive';
 export class TuiResizer {
     private readonly resizable: ElementRef<HTMLElement> = inject(TuiResizable);
 
-    protected x = NaN;
-    protected y = NaN;
+    protected x = Number.NaN;
+    protected y = Number.NaN;
     protected width = 0;
     protected height = 0;
 
@@ -51,15 +51,15 @@ export class TuiResizer {
     }
 
     protected onPointerMove({x, y, buttons}: PointerEvent): void {
-        if (!buttons) {
-            this.onPointerUp();
-        } else {
+        if (buttons) {
             this.onMove(x, y);
+        } else {
+            this.onPointerUp();
         }
     }
 
     protected onPointerUp(): void {
-        this.x = NaN;
+        this.x = Number.NaN;
     }
 
     protected onMove(x: number, y: number): void {

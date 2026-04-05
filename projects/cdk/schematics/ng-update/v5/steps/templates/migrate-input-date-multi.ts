@@ -224,15 +224,15 @@ export function migrateInputDateMulti({
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
 
-        if (!inputs.length) {
+        if (inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputDateMulti${migrationAttrs} />\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
+                `\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
             );
         } else {
             recorder.insertRight(
                 insertOffset,
-                `\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
+                `\n<input tuiInputDateMulti${migrationAttrs} />\n<tui-calendar *tuiDropdown${calendarAttrStr} />\n`,
             );
         }
 

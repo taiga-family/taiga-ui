@@ -54,9 +54,9 @@ export default class Example {
         this.months$,
     ]).pipe(
         map(([value, months]) =>
-            !value
-                ? 'Choose a date'
-                : `${months[value.month]} ${value.day}, ${value.year}`,
+            value
+                ? `${months[value.month]} ${value.day}, ${value.year}`
+                : 'Choose a date',
         ),
     );
 

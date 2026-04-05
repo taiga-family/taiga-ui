@@ -86,7 +86,7 @@ export async function extractComponentsFromRoutes(): Promise<ComponentInfo[]> {
         // Convert component name to title (camelCase to Title Case)
         const title = componentName
             .split('-')
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
             .join(' ');
 
         components.push({

@@ -85,13 +85,13 @@ export class TuiInputSliderDirective {
             return;
         }
 
-        if (!slider.keySteps?.transformer()) {
+        if (slider.keySteps?.transformer()) {
+            slider.keySteps?.setControlValue(this.value());
+        } else {
             // Native <input type="range" /> does not support BigInt
             slider.min = Number(this.mask.min());
             slider.max = Number(this.mask.max());
             slider.value = this.value();
-        } else {
-            slider.keySteps?.setControlValue(this.value());
         }
 
         slider.el.disabled = !this.inputNumber.interactive();

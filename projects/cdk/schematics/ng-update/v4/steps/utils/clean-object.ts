@@ -7,7 +7,7 @@ type EmptyValue = '' | null | undefined;
 function checkValueIsEmpty<T>(value: EmptyValue | T): value is EmptyValue {
     const nextValue: any = typeof value === 'string' ? value.trim() : value;
 
-    return ['', NaN, null, undefined].includes(nextValue);
+    return ['', null, Number.NaN, undefined].includes(nextValue);
 }
 
 export function cleanObject<T>(object: T): TuiDeepPartial<T> {

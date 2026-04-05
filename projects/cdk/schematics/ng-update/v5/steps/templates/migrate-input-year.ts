@@ -86,9 +86,9 @@ export function migrateInputYear({
 
         recorder.insertRight(
             calendarInsertOffset,
-            !inputs.length
-                ? `\n<input tuiInputYear${migrationAttrs} />\n<tui-calendar-year *tuiDropdown />\n`
-                : '\n<tui-calendar-year *tuiDropdown />\n',
+            inputs.length
+                ? '\n<tui-calendar-year *tuiDropdown />\n'
+                : `\n<input tuiInputYear${migrationAttrs} />\n<tui-calendar-year *tuiDropdown />\n`,
         );
 
         for (const input of inputs) {

@@ -402,8 +402,7 @@ function migrateInnerInput(
     const extraAttrs = attrsToAdd.filter((a) => a !== 'tuiInput').join(' ');
     const insertStr = extraAttrs ? ` ${extraAttrs}` : '';
 
-    startTag =
-        startTag.slice(0, closePos).trimEnd() + insertStr + startTag.slice(closePos);
+    startTag = `${startTag.slice(0, closePos).trimEnd()}${insertStr}${startTag.slice(closePos)}`;
 
     const siblings = allChildren
         .filter((c) => c !== inner)
