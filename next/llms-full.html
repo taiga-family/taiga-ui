@@ -28352,7 +28352,7 @@ export default class Page {
 
 ```html
 &lt;div class=&quot;example&quot;&gt;
-&lt;tui-loader [inheritColor]=&quot;inheritColor&quot; [loading]=&quot;showLoader&quot; [overlay]=&quot;overlay&quot; [size]=&quot;size&quot; [textContent]=&quot;template&quot; &gt;
+&lt;tui-loader [inheritColor]=&quot;inheritColor&quot; [loading]=&quot;loading&quot; [overlay]=&quot;overlay&quot; [size]=&quot;size&quot; [textContent]=&quot;template&quot; &gt;
 &lt;div&gt;
 &lt;b&gt;Colonel Trautman:&lt;/b&gt; It&#039;s over Johnny. It&#039;s over! &lt;/div&gt;
 &lt;div&gt;
@@ -28369,7 +28369,7 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [showLoader] | `boolean` | Show/hide loader |
+| [loading] | `boolean` | Show/hide loader |
 | [inheritColor] | `boolean` | Inherit parent color |
 | [overlay] | `boolean` | Content overlay when loader is showed |
 | [size] | `TuiSizeXS | TuiSizeXL` | Size |
@@ -28562,7 +28562,7 @@ export default class Page {
         &#039;Custom stroke width&#039;,
     ];
 
-    protected showLoader = true;
+    protected loading = true;
 
     protected inheritColor = false;
 
@@ -29541,7 +29541,7 @@ Taiga UI is a low level component library with many atomic components that provi
 &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; &gt; Secondary &lt;/button&gt;
 &lt;button tuiButton type=&quot;button&quot; &gt; Primary &lt;/button&gt;
 &lt;/nav&gt;
-&lt;ng-container&gt; @for (_ of &#039;-&#039;.repeat(10); track $index) { &lt;form appearance=&quot;floating&quot; tuiCardLarge tuiForm=&quot;m&quot; [style.grid-column]=&quot;&#039;2 / span 7&#039;&quot; [style.margin-block-start.rem]=&quot;1&quot; &gt;
+&lt;ng-container&gt; @for (_ of &#039;-&#039;.repeat(10); track $index) { &lt;form appearance=&quot;floating&quot; tuiCardLarge tuiForm=&quot;m&quot; [style.grid-column]=&quot;&#039;2 / span 7&#039;&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt; Registration form &lt;span tuiSubtitle&gt;Tell us about yourself&lt;/span&gt;
 &lt;/h2&gt;
@@ -29555,7 +29555,7 @@ Taiga UI is a low level component library with many atomic components that provi
 &lt;button tuiButton type=&quot;submit&quot; &gt; Ok &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/form&gt;
-&lt;div appearance=&quot;outline-grayscale&quot; tuiCardLarge [style.grid-column]=&quot;&#039;span 3&#039;&quot; [style.margin-block-start.rem]=&quot;1&quot; &gt;
+&lt;div appearance=&quot;outline-grayscale&quot; tuiCardLarge [style.grid-column]=&quot;&#039;span 3&#039;&quot; &gt;
 &lt;h2 tuiTitle&gt; Sidebar content &lt;span tuiSubtitle&gt;Use CSS grid to position&lt;/span&gt;
 &lt;/h2&gt;
 &lt;/div&gt; } &lt;/ng-container&gt;
@@ -29951,6 +29951,10 @@ export default class Example extends TuiPortals {
 
 aside::before {
     display: none;
+}
+
+main::before {
+    content: &#039;&#039;;
 }
 
 header::after {

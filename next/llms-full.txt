@@ -28343,7 +28343,7 @@ export default class Page {
 
 ```html
 <div class="example">
-<tui-loader [inheritColor]="inheritColor" [loading]="showLoader" [overlay]="overlay" [size]="size" [textContent]="template" >
+<tui-loader [inheritColor]="inheritColor" [loading]="loading" [overlay]="overlay" [size]="size" [textContent]="template" >
 <div>
 <b>Colonel Trautman:</b> It's over Johnny. It's over! </div>
 <div>
@@ -28360,7 +28360,7 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [showLoader] | `boolean` | Show/hide loader |
+| [loading] | `boolean` | Show/hide loader |
 | [inheritColor] | `boolean` | Inherit parent color |
 | [overlay] | `boolean` | Content overlay when loader is showed |
 | [size] | `TuiSizeXS | TuiSizeXL` | Size |
@@ -28553,7 +28553,7 @@ export default class Page {
         'Custom stroke width',
     ];
 
-    protected showLoader = true;
+    protected loading = true;
 
     protected inheritColor = false;
 
@@ -29532,7 +29532,7 @@ Taiga UI is a low level component library with many atomic components that provi
 <button appearance="secondary" tuiButton type="button" > Secondary </button>
 <button tuiButton type="button" > Primary </button>
 </nav>
-<ng-container> @for (_ of '-'.repeat(10); track $index) { <form appearance="floating" tuiCardLarge tuiForm="m" [style.grid-column]="'2 / span 7'" [style.margin-block-start.rem]="1" >
+<ng-container> @for (_ of '-'.repeat(10); track $index) { <form appearance="floating" tuiCardLarge tuiForm="m" [style.grid-column]="'2 / span 7'" >
 <header tuiHeader>
 <h2 tuiTitle> Registration form <span tuiSubtitle>Tell us about yourself</span>
 </h2>
@@ -29546,7 +29546,7 @@ Taiga UI is a low level component library with many atomic components that provi
 <button tuiButton type="submit" > Ok </button>
 </footer>
 </form>
-<div appearance="outline-grayscale" tuiCardLarge [style.grid-column]="'span 3'" [style.margin-block-start.rem]="1" >
+<div appearance="outline-grayscale" tuiCardLarge [style.grid-column]="'span 3'" >
 <h2 tuiTitle> Sidebar content <span tuiSubtitle>Use CSS grid to position</span>
 </h2>
 </div> } </ng-container>
@@ -29942,6 +29942,10 @@ export default class Example extends TuiPortals {
 
 aside::before {
     display: none;
+}
+
+main::before {
+    content: '';
 }
 
 header::after {
