@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/taiga-family/taiga-ui/compare/v5.0.0...v5.1.0) (2026-04-06)
+
+### 🚀 Features
+
+- **cdk:** `WindowSize` add signal util ([#13731](https://github.com/taiga-family/taiga-ui/issues/13731))
+  ([43ec25a](https://github.com/taiga-family/taiga-ui/commit/43ec25acc396ee2776de8931aae04e23f83c05e8))
+- **layout:** `Header` add `Description` block ([#13730](https://github.com/taiga-family/taiga-ui/issues/13730))
+  ([ff662e3](https://github.com/taiga-family/taiga-ui/commit/ff662e3153cc9adf57b69cf7a5c78639057389a8))
+
+### 🐞 Bug Fixes
+
+- **cdk:** fix loader migration ([#13711](https://github.com/taiga-family/taiga-ui/issues/13711))
+  ([86852c9](https://github.com/taiga-family/taiga-ui/commit/86852c9a9499b1529ebba4f790d0871626778aa8))
+- **core:** portals is incompatible with client hydration
+  ([#13733](https://github.com/taiga-family/taiga-ui/issues/13733))
+  ([fab72bb](https://github.com/taiga-family/taiga-ui/commit/fab72bb52627c848e87cb4be2bbc1b95db3bc5d6))
+- **core:** remove `overflow` in `[tuiTitle]` ([#13716](https://github.com/taiga-family/taiga-ui/issues/13716))
+  ([cd88b6c](https://github.com/taiga-family/taiga-ui/commit/cd88b6c88a94dca7262c18de246049eff7c56eb2))
+- **kit:** `InputFiles` fix touched state ([#13745](https://github.com/taiga-family/taiga-ui/issues/13745))
+  ([0889324](https://github.com/taiga-family/taiga-ui/commit/08893247c12d13488789f120a5836476ae45ed34))
+- **kit:** `InputNumber` fix hydration ([#13743](https://github.com/taiga-family/taiga-ui/issues/13743))
+  ([730c4ff](https://github.com/taiga-family/taiga-ui/commit/730c4ffe6901a29b71ac794854605ea54b9207e0))
+- **layout:** `Navigation` fix styles for transparency ([#13749](https://github.com/taiga-family/taiga-ui/issues/13749))
+  ([8d92409](https://github.com/taiga-family/taiga-ui/commit/8d92409ebcb1bd5dd70e3e9c6cdfcba125f879cc))
+
 ## [5.0.0](https://github.com/taiga-family/taiga-ui/compare/v4.52.0...v5.0.0) (2026-04-01)
 
 ### ⚠ BREAKING CHANGES
