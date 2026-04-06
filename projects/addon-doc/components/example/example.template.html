@@ -16,15 +16,16 @@
                     {{ heading() }}
                 </a>
             </h3>
-            @if (description()) {
-                <div class="t-description">
-                    <ng-container *polymorpheusOutlet="description() as text">
-                        {{ text }}
-                    </ng-container>
-                </div>
-            }
         </hgroup>
     </header>
+
+    @if (description()) {
+        <div class="t-description">
+            <ng-container *polymorpheusOutlet="description() as text">
+                {{ text }}
+            </ng-container>
+        </div>
+    }
 }
 <div
     class="t-example"
