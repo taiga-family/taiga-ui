@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     inject,
     input,
     model,
@@ -37,7 +38,11 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
         tuiBadgeNotificationOptionsProvider({size: 's'}),
     ],
     hostDirectives: [TuiSegmentedDirective],
-    host: {'data-tui-version': TUI_VERSION, '[attr.data-size]': 'size()'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '[attr.data-size]': 'size()',
+        '[attr.inert]': 'disabled() ? "" : null',
+    },
 })
 export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();
@@ -48,6 +53,7 @@ export class TuiSegmented implements OnChanges {
 
     public readonly size = input(inject(TUI_SEGMENTED_OPTIONS).size);
     public readonly activeItemIndex = model(0);
+    public readonly disabled = input(false);
 
     public ngOnChanges(): void {
         this.refresh();
