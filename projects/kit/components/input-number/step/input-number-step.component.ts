@@ -4,6 +4,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
@@ -34,14 +35,14 @@ import {TuiInputNumberStepService} from './input-number-step.service';
         '[style.border-radius]': '"inherit"',
     },
 })
-export class TuiInputNumberStepComponent {
+export class TuiInputNumberStepButtons {
     protected readonly mask = inject(TuiNumberMask);
     protected readonly input = inject(TuiInputNumberDirective);
     protected readonly options: TuiInputNumberOptions = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly directive = inject(TuiInputNumberStep);
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly hold = inject(TuiInputNumberStepService<bigint | number>);
-    protected readonly $ = this.hold.steps$.subscribe((value) =>
-        this.directive.onStep(value),
-    );
+    protected readonly $ = this.hold.steps$
+        .pipe(takeUntilDestroyed())
+        .subscribe((value) => this.directive.onStep(value));
 }

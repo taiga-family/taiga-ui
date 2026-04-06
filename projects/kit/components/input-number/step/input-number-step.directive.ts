@@ -11,11 +11,11 @@ import {TuiAppearanceProxy} from '@taiga-ui/kit/directives/appearance-proxy';
 import {TuiInputNumberDirective} from '../input-number.directive';
 import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 import {TuiNumberMask} from '../number-mask.directive';
-import {TuiInputNumberStepComponent} from './input-number-step.component';
+import {TuiInputNumberStepButtons} from './input-number-step.component';
 
 @Directive({
     selector: 'input[tuiInputNumber][step]',
-    providers: [tuiAsTextfieldContent(TuiInputNumberStepComponent)],
+    providers: [tuiAsTextfieldContent(TuiInputNumberStepButtons)],
     hostDirectives: [TuiAppearanceProxy, TuiTextfieldContent],
     host: {
         'data-tui-version': TUI_VERSION,
