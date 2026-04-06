@@ -1,9 +1,9 @@
 ```ts
 @Component({
   selector: 'my-portal-host',
-  template: '<ng-container tuiPortalAnchor />',
+  template: '<ng-container tuiVCR />',
   styleUrl: './my-portal-host.style.less',
-  hostDirectives: [TuiPortalAnchor],
+  imports: [TuiVCR],
   providers: [tuiProvide(TuiPortalService, MyPortalService)],
 })
 export class MyPortalHost extends TuiPortals {}
