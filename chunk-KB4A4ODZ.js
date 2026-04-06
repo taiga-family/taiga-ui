@@ -1,0 +1,111 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="Loader"
+    package="CORE"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            >
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (3) {
+                            Use css-variable
+                            <code>--tui-thickness</code>
+                            to customize width of the circle stroke. By default, it is 1/12 of diameter.
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <div class="example">
+                <tui-loader
+                    [inheritColor]="inheritColor"
+                    [loading]="loading"
+                    [overlay]="overlay"
+                    [size]="size"
+                    [textContent]="template"
+                >
+                    <div>
+                        <b>Colonel Trautman:</b>
+                        It's over Johnny. It's over!
+                    </div>
+                    <div>
+                        <b>Rambo:</b>
+                        Nothing is over! Nothing! You just don't turn it off! It wasn't my war! You asked me I didn't
+                        ask you! And I did what I had to do to win, for somebody who wouldn't let us win! Then I come
+                        back to the world, and I see all those maggots at the airport, protestin' me, spittin', callin'
+                        me a baby killer and all kinds of vile crap! Who are they to protest me?! Huh?! Who are they?!
+                        Unless they been me and been there and know what the hell they yellin' about!
+                    </div>
+                </tui-loader>
+                <ng-template #textTemplate>
+                    <div>Loading</div>
+                    <div>
+                        You can use a template with
+                        <a
+                            tuiLink
+                            [routerLink]="routes.Notification"
+                        >
+                            HTML
+                        </a>
+                        here
+                    </div>
+                </ng-template>
+            </div>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[loading]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="loading"
+            >
+                Show/hide loader
+            </tr>
+            <tr
+                name="[inheritColor]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="inheritColor"
+            >
+                Inherit parent color
+            </tr>
+            <tr
+                name="[overlay]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="overlay"
+            >
+                Content overlay when loader is showed
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXS | TuiSizeXL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[textContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="textVariants"
+                [(value)]="selectedTemplate"
+            >
+                Custom content under loader
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};
