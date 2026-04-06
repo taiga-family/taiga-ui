@@ -8608,12 +8608,12 @@ export default class Example {}
 &lt;/div&gt;
 &lt;div appearance=&quot;floating&quot; tuiCardLarge &gt;
 &lt;header tuiHeader&gt;
-&lt;h2 tuiTitle&gt;Footer that ends with text&lt;/h2&gt;
+&lt;h2 tuiTitle&gt;Card with text content&lt;/h2&gt;
 &lt;aside tuiAccessories&gt;
 &lt;tui-icon tuiTooltip=&quot;It&#039;s strange, I know&quot; /&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;div tuiCell&gt; Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. &lt;/div&gt;
+&lt;div tuiDescription&gt;Use description for text content of a card with spacings according to the specs.&lt;/div&gt;
 &lt;footer&gt;
 &lt;div tuiTitle&gt;
 &lt;div tuiSubtitle&gt;Remaining $25 120.23&lt;/div&gt;
@@ -8663,10 +8663,6 @@ export default class Example {}
     &gt; :last-child {
         grid-column: span 2;
     }
-}
-
-[tuiCell] {
-    padding-block: 0;
 }
 
 [tuiSubtitle] {
@@ -16810,111 +16806,79 @@ export default class Page {
 
 **Template:**
 ```html
-&lt;header tuiHeader=&quot;h1&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h1&gt;Title&lt;/h1&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;l&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h2&quot;&gt;
+@for (size of sizes; track $index) { &lt;header [tuiHeader]=&quot;size&quot;&gt;
 &lt;hgroup tuiTitle&gt;
 &lt;h2&gt;Title&lt;/h2&gt;
 &lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
+&lt;tui-badge-notification [size]=&quot;toBadgeSize(size)&quot;&gt;1&lt;/tui-badge-notification&gt;
+&lt;button tuiButton type=&quot;button&quot; [size]=&quot;toButtonSize(size)&quot; &gt; Button &lt;/button&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;header tuiHeader=&quot;h3&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h3&gt;Title&lt;/h3&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h4&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h4&gt;Title&lt;/h4&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h5&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h5&gt;Title&lt;/h5&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h6&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h6&gt;Title&lt;/h6&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification size=&quot;s&quot;&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;xs&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;body-l&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h6&gt;Title&lt;/h6&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification size=&quot;s&quot;&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;xs&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;body-m&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h6&gt;Title&lt;/h6&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification size=&quot;s&quot;&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;xs&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
+&lt;div tuiDescription&gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s. &lt;/div&gt;
+&lt;br /&gt;
+&lt;br /&gt; }
 ```
 **TypeScript:**
 ```ts
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {
+    TuiButton,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiSizeXS,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
 import {TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
 import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     imports: [TuiBadgeNotification, TuiButton, TuiHeader, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
-    styleUrl: &#039;./index.less&#039;,
     encapsulation,
     changeDetection,
 })
-export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+export default class Example {
+    protected readonly sizes = [
+        &#039;h1&#039;,
+        &#039;h2&#039;,
+        &#039;h3&#039;,
+        &#039;h4&#039;,
+        &#039;h5&#039;,
+        &#039;h6&#039;,
+        &#039;body-l&#039;,
+        &#039;body-m&#039;,
+        &#039;body-s&#039;,
+    ] as const;
+
+    protected toBadgeSize(size: string): TuiSizeS {
+        switch (size) {
+            case &#039;body-l&#039;:
+            case &#039;body-m&#039;:
+            case &#039;h6&#039;:
+                return &#039;s&#039;;
+            default:
+                return &#039;m&#039;;
+        }
+    }
+
+    protected toButtonSize(size: string): TuiSizeL | TuiSizeXS {
+        switch (size) {
+            case &#039;h1&#039;:
+                return &#039;l&#039;;
+            case &#039;h2&#039;:
+            case &#039;h3&#039;:
+                return &#039;m&#039;;
+            case &#039;h4&#039;:
+            case &#039;h5&#039;:
+                return &#039;s&#039;;
+            default:
+                return &#039;xs&#039;;
+        }
+    }
 }
 ```
 
@@ -16935,7 +16899,7 @@ export default class Example {}
 &lt;div appearance=&quot;accent&quot; tuiAvatar=&quot;@tui.star&quot; &gt;&lt;/div&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;p class=&quot;description&quot;&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
+&lt;p tuiDescription&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
 &lt;/section&gt;
 &lt;section&gt;
 &lt;header tuiHeader&gt;
@@ -16950,7 +16914,7 @@ export default class Example {}
 &lt;a href=&quot;https://maskito.dev/&quot; rel=&quot;noreferrer&quot; target=&quot;_blank&quot; tuiButton &gt; Support &lt;/a&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;p class=&quot;description&quot;&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
+&lt;p tuiDescription&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
 &lt;/section&gt;
 &lt;header tuiHeader&gt;
 &lt;hgroup tuiTitle&gt;
@@ -17004,12 +16968,6 @@ export default class Example {}
     display: flex;
     flex-direction: column;
     gap: 3rem;
-}
-
-.description {
-    font: var(--tui-typography-body-l);
-    margin-block-start: 0.5rem;
-    max-inline-size: 30rem;
 }
 ```
 
