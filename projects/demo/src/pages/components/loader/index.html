@@ -29,7 +29,7 @@
             <div class="example">
                 <tui-loader
                     [inheritColor]="inheritColor"
-                    [loading]="showLoader"
+                    [loading]="loading"
                     [overlay]="overlay"
                     [size]="size"
                     [textContent]="template"
@@ -64,10 +64,10 @@
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[showLoader]"
+                name="[loading]"
                 tuiDocAPIItem
                 type="boolean"
-                [(value)]="showLoader"
+                [(value)]="loading"
             >
                 Show/hide loader
             </tr>
