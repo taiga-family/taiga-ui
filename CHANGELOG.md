@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.78.0](https://github.com/taiga-family/taiga-ui/compare/v4.77.0...v4.78.0) (2026-04-06)
+
+### 🚀 Features
+
+- **kit:** `InputDateMulti` add ability to use valueTransformer
+  ([#13497](https://github.com/taiga-family/taiga-ui/issues/13497))
+  ([48368f1](https://github.com/taiga-family/taiga-ui/commit/48368f16ca0c57170ef6a50ed9455ea1024ebecb))
+- **layout:** `Header` add `Description` block ([#13753](https://github.com/taiga-family/taiga-ui/issues/13753))
+  ([ec77cc4](https://github.com/taiga-family/taiga-ui/commit/ec77cc4634bc5beacc8a856de5f41009899fa7b0))
+
+### 🐞 Bug Fixes
+
+- **core:** increase specificity for legacy textfield ([#13758](https://github.com/taiga-family/taiga-ui/issues/13758))
+  ([9058e60](https://github.com/taiga-family/taiga-ui/commit/9058e6098832b132215458e5486a4f900b09642a))
+- **kit:** `InputFiles` fix touched state ([#13746](https://github.com/taiga-family/taiga-ui/issues/13746))
+  ([c48ae49](https://github.com/taiga-family/taiga-ui/commit/c48ae49be2a0ba14e7cbd7e2fc8d471ef609483a))
+- **layout:** wrong css variables in `tuiList` ([#13737](https://github.com/taiga-family/taiga-ui/issues/13737))
+  ([51359f9](https://github.com/taiga-family/taiga-ui/commit/51359f9a795072398aa73331ba1dbfcdf180c0b3))
+
 ## [4.77.0](https://github.com/taiga-family/taiga-ui/compare/v4.76.0...v4.77.0) (2026-04-01)
 
 ### 🚀 Features
