@@ -36,7 +36,7 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
         title: '',
         type: 'file',
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
+        '(blur)': 'onBlur()',
         '(click)': 'onClick($event)',
     },
 })
@@ -68,6 +68,12 @@ export class TuiInputFilesDirective extends TuiControl<
     protected onClick(event: MouseEvent): void {
         if (this.el.readOnly) {
             event.preventDefault();
+        }
+    }
+
+    protected onBlur(): void {
+        if (this.el !== this.el.ownerDocument.activeElement) {
+            this.onTouched();
         }
     }
 }
