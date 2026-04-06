@@ -8,10 +8,19 @@
         [tuiTitle] {
             gap: 1rem;
         }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-body-m);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 1rem;
+        }
     }
 
     &[data-size='m'],
-    &[data-size='h4'] {
+    &[data-size='h4'],
+    &[data-size='h5'] {
         [tuiTitle] {
             gap: 0.5rem;
         }
@@ -28,10 +37,15 @@
     &[data-size='xxs'],
     &[data-size='h6'],
     &[data-size='body-l'],
-    &[data-size='body-m'] {
+    &[data-size='body-m'],
+    &[data-size='body-s'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-6);
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-ui-s);
         }
     }
 }
