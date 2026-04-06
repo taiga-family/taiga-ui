@@ -363,7 +363,7 @@
 ### input-date-multi
 
 ```text
-  TuiInputDateMulti, TuiInputDateMultiDirective
+  TuiInputDateMulti, TuiInputDateMultiDirective, TuiInputDateMultiOptions
 ```
 ### input-date-range
 
@@ -10583,12 +10583,12 @@ export default class Example {}
 </div>
 <div tuiCardLarge tuiSurface="floating" >
 <header tuiHeader>
-<h2 tuiTitle>Footer that ends with text</h2>
+<h2 tuiTitle>Card with text content</h2>
 <aside tuiAccessories>
 <tui-icon tuiTooltip="It's strange, I know" />
 </aside>
 </header>
-<div tuiCell> Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. </div>
+<div tuiDescription>Use description for text content of a card with spacings according to the specs.</div>
 <footer>
 <div tuiTitle>
 <div tuiSubtitle>Remaining $25 120.23</div>
@@ -10640,10 +10640,6 @@ export default class Example {}
     > :last-child {
         grid-column: span 2;
     }
-}
-
-[tuiCell] {
-    padding-block: 0 !important;
 }
 
 [tuiSubtitle] {
@@ -20624,7 +20620,7 @@ export default class Example {}
 <tui-avatar appearance="accent" src="@tui.star" />
 </aside>
 </header>
-<p class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
+<p tuiDescription> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
 </section>
 <section>
 <header tuiHeader>
@@ -20639,7 +20635,7 @@ export default class Example {}
 <a href="https://maskito.dev/" rel="noreferrer" target="_blank" tuiButton > Support </a>
 </aside>
 </header>
-<p class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
+<p tuiDescription> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
 </section>
 <header tuiHeader>
 <hgroup tuiTitle>
@@ -20694,12 +20690,6 @@ export default class Example {}
     display: flex;
     flex-direction: column;
     gap: 3rem;
-}
-
-.description {
-    font: var(--tui-font-text-l);
-    margin-block-start: 0.5rem;
-    max-inline-size: 30rem;
 }
 ```
 
@@ -23828,6 +23818,50 @@ export default class Example {
 :host {
     display: block;
     inline-size: 22rem;
+}
+```
+
+#### Value transformer
+
+**Template:**
+```html
+<tui-textfield multi>
+<label tuiLabel>Choose a date</label>
+<input tuiInputDateMulti [(ngModel)]="value" />
+<tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
+<p>{{ value | json }}</p>
+```
+**TypeScript:**
+```ts
+import {JsonPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDay} from '@taiga-ui/cdk';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputDateMulti, tuiInputDateMultiOptionsProvider} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, JsonPipe, TuiInputDateMulti, TuiTextfield],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputDateMultiOptionsProvider({
+            valueTransformer: {
+                fromControlValue: (value: Date[] | null): TuiDay[] =>
+                    value?.map((date) => TuiDay.fromUtcNativeDate(date)) ?? [],
+                toControlValue: (value: TuiDay[]): Date[] =>
+                    value?.map((day) => day.toUtcNativeDate()),
+            },
+        }),
+    ],
+})
+export default class Example {
+    protected value: Date[] | null = null;
 }
 ```
 

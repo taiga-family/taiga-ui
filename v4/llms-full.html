@@ -372,7 +372,7 @@
 ### input-date-multi
 
 ```text
-  TuiInputDateMulti, TuiInputDateMultiDirective
+  TuiInputDateMulti, TuiInputDateMultiDirective, TuiInputDateMultiOptions
 ```
 ### input-date-range
 
@@ -10592,12 +10592,12 @@ export default class Example {}
 &lt;/div&gt;
 &lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
 &lt;header tuiHeader&gt;
-&lt;h2 tuiTitle&gt;Footer that ends with text&lt;/h2&gt;
+&lt;h2 tuiTitle&gt;Card with text content&lt;/h2&gt;
 &lt;aside tuiAccessories&gt;
 &lt;tui-icon tuiTooltip=&quot;It&#039;s strange, I know&quot; /&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;div tuiCell&gt; Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. &lt;/div&gt;
+&lt;div tuiDescription&gt;Use description for text content of a card with spacings according to the specs.&lt;/div&gt;
 &lt;footer&gt;
 &lt;div tuiTitle&gt;
 &lt;div tuiSubtitle&gt;Remaining $25 120.23&lt;/div&gt;
@@ -10649,10 +10649,6 @@ export default class Example {}
     &gt; :last-child {
         grid-column: span 2;
     }
-}
-
-[tuiCell] {
-    padding-block: 0 !important;
 }
 
 [tuiSubtitle] {
@@ -20633,7 +20629,7 @@ export default class Example {}
 &lt;tui-avatar appearance=&quot;accent&quot; src=&quot;@tui.star&quot; /&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;p class=&quot;description&quot;&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
+&lt;p tuiDescription&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
 &lt;/section&gt;
 &lt;section&gt;
 &lt;header tuiHeader&gt;
@@ -20648,7 +20644,7 @@ export default class Example {}
 &lt;a href=&quot;https://maskito.dev/&quot; rel=&quot;noreferrer&quot; target=&quot;_blank&quot; tuiButton &gt; Support &lt;/a&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;p class=&quot;description&quot;&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
+&lt;p tuiDescription&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
 &lt;/section&gt;
 &lt;header tuiHeader&gt;
 &lt;hgroup tuiTitle&gt;
@@ -20703,12 +20699,6 @@ export default class Example {}
     display: flex;
     flex-direction: column;
     gap: 3rem;
-}
-
-.description {
-    font: var(--tui-font-text-l);
-    margin-block-start: 0.5rem;
-    max-inline-size: 30rem;
 }
 ```
 
@@ -23837,6 +23827,50 @@ export default class Example {
 :host {
     display: block;
     inline-size: 22rem;
+}
+```
+
+#### Value transformer
+
+**Template:**
+```html
+&lt;tui-textfield multi&gt;
+&lt;label tuiLabel&gt;Choose a date&lt;/label&gt;
+&lt;input tuiInputDateMulti [(ngModel)]=&quot;value&quot; /&gt;
+&lt;tui-calendar *tuiTextfieldDropdown /&gt;
+&lt;/tui-textfield&gt;
+&lt;p&gt;{{ value | json }}&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {JsonPipe} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiTextfield} from &#039;@taiga-ui/core&#039;;
+import {TuiInputDateMulti, tuiInputDateMultiOptionsProvider} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, JsonPipe, TuiInputDateMulti, TuiTextfield],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiInputDateMultiOptionsProvider({
+            valueTransformer: {
+                fromControlValue: (value: Date[] | null): TuiDay[] =&gt;
+                    value?.map((date) =&gt; TuiDay.fromUtcNativeDate(date)) ?? [],
+                toControlValue: (value: TuiDay[]): Date[] =&gt;
+                    value?.map((day) =&gt; day.toUtcNativeDate()),
+            },
+        }),
+    ],
+})
+export default class Example {
+    protected value: Date[] | null = null;
 }
 ```
 
