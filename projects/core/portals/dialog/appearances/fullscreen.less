@@ -34,7 +34,7 @@
 
     // Replace with :has when it's supported
     //&:has(tui-app-bar) [tuiButtonX] {
-    &.tui-app-bar [tuiButtonX] {
+    &.tui-app-bar > [tuiButtonX] {
         display: none;
     }
 
@@ -98,7 +98,7 @@
 
         --tui-from: translateY(4rem);
 
-        [tuiButtonX] {
+        > [tuiButtonX] {
             align-self: flex-start;
             block-size: 3.5rem;
             margin-block-end: 1rem;
