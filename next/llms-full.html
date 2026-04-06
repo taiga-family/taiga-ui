@@ -11749,6 +11749,116 @@ export default class PageComponent extends Array {
 ```
 
 ---
+# components/Comment
+- **Package**: `KIT`
+- **Type**: components
+
+### Example
+
+```html
+&lt;span [tuiComment]=&quot;direction&quot;&gt;Birthday gift&lt;/span&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiComment] | `TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039;` | Direction of the comment mark |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+&lt;span tuiComment&gt;Birthday gift&lt;/span&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiComment} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiComment],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Customization
+
+**Template:**
+```html
+&lt;div tuiComment=&quot;top&quot;&gt;Good job&lt;/div&gt;
+&lt;div tuiComment=&quot;bottom&quot; class=&quot;success&quot; &gt; Cashback &lt;/div&gt;
+&lt;div tuiComment=&quot;start&quot; class=&quot;primary&quot; &gt; Extra payment &lt;/div&gt;
+&lt;div tuiComment=&quot;end&quot;&gt;Check it out&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiComment} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiComment],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.success {
+    background: var(--tui-status-positive);
+}
+
+.primary {
+    background: var(--tui-background-accent-1);
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {type TuiHorizontalDirection, type TuiVerticalDirection} from &#039;@taiga-ui/core&#039;;
+import {TuiComment} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiComment, TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;];
+
+    protected readonly directions: ReadonlyArray&lt;
+        TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039;
+    &gt; = [&#039;&#039;, &#039;top&#039;, &#039;bottom&#039;, &#039;start&#039;, &#039;end&#039;];
+
+    protected direction: TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039; = &#039;top&#039;;
+}
+```
+
+---
 # components/Compass
 - **Package**: `KIT`
 - **Type**: components
@@ -46442,95 +46552,6 @@ export default class Page {}
 ```less
 .t-image {
     inline-size: 100%;
-}
-```
-
----
-# directives/Comment
-- **Package**: `KIT`
-- **Type**: directives
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-&lt;span tuiComment&gt;Birthday gift&lt;/span&gt;
-```
-**TypeScript:**
-```ts
-import {Component} from &#039;@angular/core&#039;;
-import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
-import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiComment} from &#039;@taiga-ui/kit&#039;;
-
-@Component({
-    imports: [TuiComment],
-    templateUrl: &#039;./index.html&#039;,
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-#### Customization
-
-**Template:**
-```html
-&lt;div tuiComment=&quot;top&quot;&gt;Good job&lt;/div&gt;
-&lt;div tuiComment=&quot;bottom&quot; class=&quot;success&quot; &gt; Cashback &lt;/div&gt;
-&lt;div tuiComment=&quot;start&quot; class=&quot;primary&quot; &gt; Extra payment &lt;/div&gt;
-&lt;div tuiComment=&quot;end&quot;&gt;Check it out&lt;/div&gt;
-```
-**TypeScript:**
-```ts
-import {Component} from &#039;@angular/core&#039;;
-import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
-import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiComment} from &#039;@taiga-ui/kit&#039;;
-
-@Component({
-    imports: [TuiComment],
-    templateUrl: &#039;./index.html&#039;,
-    styleUrl: &#039;./index.less&#039;,
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-}
-
-.success {
-    background: var(--tui-status-positive);
-}
-
-.primary {
-    background: var(--tui-background-accent-1);
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from &#039;@angular/core&#039;;
-import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
-import {TuiDemo} from &#039;@demo/utils&#039;;
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: &#039;./index.html&#039;,
-    changeDetection,
-})
-export default class Page {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;];
 }
 ```
 
