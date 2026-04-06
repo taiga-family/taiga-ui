@@ -63,11 +63,20 @@
         margin: 0;
     }
 
+    + [tuiDescription] {
+        margin-block-start: 0.5rem;
+        font: var(--tui-font-text-m);
+    }
+
     &[data-size='xxl'],
     &[data-size='h1'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-1);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 0.75rem;
         }
     }
 
@@ -162,7 +171,8 @@
     &[data-size='h2'],
     &[data-size='h3'] {
         [tuiSubtitle],
-        [tuiLink] {
+        [tuiLink],
+        + [tuiDescription] {
             font: var(--tui-font-text-l);
         }
     }
