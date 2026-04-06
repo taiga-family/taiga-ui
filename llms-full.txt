@@ -8599,12 +8599,12 @@ export default class Example {}
 </div>
 <div appearance="floating" tuiCardLarge >
 <header tuiHeader>
-<h2 tuiTitle>Footer that ends with text</h2>
+<h2 tuiTitle>Card with text content</h2>
 <aside tuiAccessories>
 <tui-icon tuiTooltip="It's strange, I know" />
 </aside>
 </header>
-<div tuiCell> Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. </div>
+<div tuiDescription>Use description for text content of a card with spacings according to the specs.</div>
 <footer>
 <div tuiTitle>
 <div tuiSubtitle>Remaining $25 120.23</div>
@@ -8654,10 +8654,6 @@ export default class Example {}
     > :last-child {
         grid-column: span 2;
     }
-}
-
-[tuiCell] {
-    padding-block: 0;
 }
 
 [tuiSubtitle] {
@@ -16801,111 +16797,79 @@ export default class Page {
 
 **Template:**
 ```html
-<header tuiHeader="h1">
-<hgroup tuiTitle>
-<h1>Title</h1>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification>1</tui-badge-notification>
-<button size="l" tuiButton type="button" > Button </button>
-</aside>
-</header>
-<header tuiHeader="h2">
+@for (size of sizes; track $index) { <header [tuiHeader]="size">
 <hgroup tuiTitle>
 <h2>Title</h2>
 <p tuiSubtitle>Subtitle</p>
 </hgroup>
 <aside tuiAccessories>
-<tui-badge-notification>1</tui-badge-notification>
-<button size="m" tuiButton type="button" > Button </button>
+<tui-badge-notification [size]="toBadgeSize(size)">1</tui-badge-notification>
+<button tuiButton type="button" [size]="toButtonSize(size)" > Button </button>
 </aside>
 </header>
-<header tuiHeader="h3">
-<hgroup tuiTitle>
-<h3>Title</h3>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification>1</tui-badge-notification>
-<button size="m" tuiButton type="button" > Button </button>
-</aside>
-</header>
-<header tuiHeader="h4">
-<hgroup tuiTitle>
-<h4>Title</h4>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification>1</tui-badge-notification>
-<button tuiButton type="button" > Button </button>
-</aside>
-</header>
-<header tuiHeader="h5">
-<hgroup tuiTitle>
-<h5>Title</h5>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification>1</tui-badge-notification>
-<button tuiButton type="button" > Button </button>
-</aside>
-</header>
-<header tuiHeader="h6">
-<hgroup tuiTitle>
-<h6>Title</h6>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification size="s">1</tui-badge-notification>
-<button size="xs" tuiButton type="button" > Button </button>
-</aside>
-</header>
-<header tuiHeader="body-l">
-<hgroup tuiTitle>
-<h6>Title</h6>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification size="s">1</tui-badge-notification>
-<button size="xs" tuiButton type="button" > Button </button>
-</aside>
-</header>
-<header tuiHeader="body-m">
-<hgroup tuiTitle>
-<h6>Title</h6>
-<p tuiSubtitle>Subtitle</p>
-</hgroup>
-<aside tuiAccessories>
-<tui-badge-notification size="s">1</tui-badge-notification>
-<button size="xs" tuiButton type="button" > Button </button>
-</aside>
-</header>
+<div tuiDescription> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </div>
+<br />
+<br /> }
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiButton,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiSizeXS,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiBadgeNotification, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
-export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+export default class Example {
+    protected readonly sizes = [
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'body-l',
+        'body-m',
+        'body-s',
+    ] as const;
+
+    protected toBadgeSize(size: string): TuiSizeS {
+        switch (size) {
+            case 'body-l':
+            case 'body-m':
+            case 'h6':
+                return 's';
+            default:
+                return 'm';
+        }
+    }
+
+    protected toButtonSize(size: string): TuiSizeL | TuiSizeXS {
+        switch (size) {
+            case 'h1':
+                return 'l';
+            case 'h2':
+            case 'h3':
+                return 'm';
+            case 'h4':
+            case 'h5':
+                return 's';
+            default:
+                return 'xs';
+        }
+    }
 }
 ```
 
@@ -16926,7 +16890,7 @@ export default class Example {}
 <div appearance="accent" tuiAvatar="@tui.star" ></div>
 </aside>
 </header>
-<p class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
+<p tuiDescription> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
 </section>
 <section>
 <header tuiHeader>
@@ -16941,7 +16905,7 @@ export default class Example {}
 <a href="https://maskito.dev/" rel="noreferrer" target="_blank" tuiButton > Support </a>
 </aside>
 </header>
-<p class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
+<p tuiDescription> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
 </section>
 <header tuiHeader>
 <hgroup tuiTitle>
@@ -16995,12 +16959,6 @@ export default class Example {}
     display: flex;
     flex-direction: column;
     gap: 3rem;
-}
-
-.description {
-    font: var(--tui-typography-body-l);
-    margin-block-start: 0.5rem;
-    max-inline-size: 30rem;
 }
 ```
 
