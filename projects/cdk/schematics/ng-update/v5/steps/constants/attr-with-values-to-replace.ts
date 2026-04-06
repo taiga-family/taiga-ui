@@ -156,15 +156,10 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     },
     {
         attrNames: ['[appearance]'],
-        valueReplacer: (condition) => {
-            switch (condition) {
-                case "'error'":
-                    return "'negative'";
-                case "'success'":
-                    return "'positive'";
-                default:
-                    return `(${condition}) === 'success' ? 'positive' : (${condition}) === 'error' ? 'negative' : (${condition})`;
-            }
-        },
+        valueReplacer: [
+            {from: "'error'", to: "'negative'"},
+            {from: "'success'", to: "'positive'"},
+            {from: "'glass'", to: "'secondary-grayscale'"},
+        ],
     },
 ];

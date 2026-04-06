@@ -50,6 +50,10 @@ describe('ng-update chip and badge selectors', () => {
                 <tui-badge appearance="success" />
                 <tui-badge [appearance]="'error'"></tui-badge>
                 <tui-badge [appearance]="computedAppearance">123</tui-badge>
+                <button
+                    tuiIconButton
+                    [appearance]="'icon'"
+                ></button>
             `,
         }),
     );

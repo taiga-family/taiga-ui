@@ -12,6 +12,10 @@ exports[`ng-update chip and badge selectors migrates deprecated appearances for 
                 <tui-badge appearance="success" />
                 <tui-badge [appearance]="'error'"></tui-badge>
                 <tui-badge [appearance]="computedAppearance">123</tui-badge>
+                <button
+                    tuiIconButton
+                    [appearance]="'icon'"
+                ></button>
             ",
   "1. After": "
                 <span tuiBadge
@@ -22,7 +26,12 @@ exports[`ng-update chip and badge selectors migrates deprecated appearances for 
                 </span>
                 <span tuiBadge appearance="positive" ></span>
                 <span tuiBadge [appearance]="'negative'"></span>
-                <span tuiBadge [appearance]="(computedAppearance) === 'success' ? 'positive' : (computedAppearance) === 'error' ? 'negative' : (computedAppearance)">123</span>
+                <!-- TODO: (Taiga UI migration) [appearance] binding uses a dynamic expression. If it can produce "error"/"success"/"glass", replace with "negative"/"positive"/"secondary-grayscale" -->
+<span tuiBadge [appearance]="computedAppearance">123</span>
+                <button
+                    tuiIconButton
+                    [appearance]="'icon'"
+                ></button>
             ",
 }
 `;
