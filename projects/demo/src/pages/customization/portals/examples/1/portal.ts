@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
 
 import {CustomPortalService} from './service';
 
 @Component({
     selector: 'custom-host',
-    template: '<ng-container #vcr />',
+    imports: [TuiVCR],
+    template: '<ng-container tuiVCR />',
     styles: `
         :host {
             position: fixed;
