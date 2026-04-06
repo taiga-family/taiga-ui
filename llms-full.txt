@@ -770,6 +770,11 @@
 ```text
   TuiValueChanges
 ```
+### vcr
+
+```text
+  TuiVCR
+```
 ### visual-viewport
 
 ```text
@@ -29475,7 +29480,7 @@ Taiga UI is a low level component library with many atomic components that provi
 ```html
 <!-- Ignore this part, it is only here to position drawer inside the example block -->
 <div class="custom-portal">
-<ng-container #vcr />
+<ng-container tuiVCR />
 </div>
 <header tuiNavigationHeader>
 <button portal title="Menu" tuiIconButton tuiNavigationDrawer type="button" [(open)]="open" >
@@ -29599,7 +29604,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -29660,6 +29665,7 @@ class Portal {}
         TuiSwitch,
         TuiTabs,
         TuiTitle,
+        TuiVCR,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -29880,7 +29886,7 @@ export default class Example {
 ```html
 <!-- Ignore this part, it is only here to position drawer inside the example block -->
 <div class="custom-portal">
-<ng-container #vcr />
+<ng-container tuiVCR />
 </div>
 <header tuiNavigationHeader tuiTheme="light" >
 <button title="Menu" tuiIconButton tuiNavigationDrawer type="button" >
@@ -29927,7 +29933,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
 import {TuiButton, TuiPopupService, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron, TuiFade} from '@taiga-ui/kit';
 import {
@@ -29946,6 +29952,7 @@ import {
         TuiHeader,
         TuiNavigation,
         TuiTitle,
+        TuiVCR,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -52769,7 +52776,13 @@ export default class Example extends TuiRectAccessor {
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiInjectElement, TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {
+    tuiInjectElement,
+    TuiPortals,
+    TuiPortalService,
+    tuiProvide,
+    TuiVCR,
+} from '@taiga-ui/cdk';
 import {
     tuiAsViewport,
     TuiDropdown,
@@ -52779,9 +52792,10 @@ import {
 
 @Component({
     selector: 'portal-host',
+    imports: [TuiVCR],
     template: `
         <ng-content />
-        <ng-container #vcr />
+        <ng-container tuiVCR />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TuiPortalService, TuiPopupService), tuiAsViewport(PortalHost)],
