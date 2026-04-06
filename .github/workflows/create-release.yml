@@ -27,9 +27,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    env:
-      IS_PRERELEASE_MODE: ${{ inputs.mode == 'prerelease' }}
-      DRY_RUN: ${{ inputs.dry_run }}
     steps:
       - name: Print selected mode
         run: |
@@ -49,21 +46,21 @@ jobs:
         shell: bash
         run: |
           npx ts-node ./scripts/release.ts \
-                --ci-mode \
-                --release-as ${{ inputs.mode }} \
-                ${{ inputs.dry_run && '--dry-run true' || '' }}
+            --ci-mode \
+            --release-as ${{ inputs.mode }} \
+            ${{ inputs.dry_run && '--dry-run true' || '' }}
 
           echo "new_version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Generate Release Body
-        if: ${{ !inputs.dry_run && !env.IS_PRERELEASE_MODE }}
+        if: ${{ !inputs.dry_run && inputs.mode != 'prerelease' }}
         id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
           echo "tag_name=$(git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
 
       - name: Get PR body
-        if: ${{ !inputs.dry_run && !env.IS_PRERELEASE_MODE }}
+        if: ${{ !inputs.dry_run && inputs.mode != 'prerelease' }}
         id: get-pr-body
         shell: bash
         run: |
@@ -92,7 +89,7 @@ jobs:
             > If this PR is merged with squash or rebase, the tag may be lost because the tag is already attached to the original release commit SHA.
 
       - name: Create GitHub Release
-        if: ${{ !inputs.dry_run && !env.IS_PRERELEASE_MODE }}
+        if: ${{ !inputs.dry_run && inputs.mode != 'prerelease' }}
         uses: ncipollo/release-action@v1.21.0
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
