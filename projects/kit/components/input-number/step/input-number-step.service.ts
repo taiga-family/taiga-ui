@@ -1,13 +1,11 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     expand,
     fromEvent,
     map,
     merge,
     type Observable,
-    share,
     Subject,
     switchMap,
     takeUntil,
