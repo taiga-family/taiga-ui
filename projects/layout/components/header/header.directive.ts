@@ -12,7 +12,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 
 export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
-    size: '' | 'body-l' | 'body-m' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    size: '' | 'body-l' | 'body-m' | 'body-s' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }>({size: 'h5'});
 
 @Component({
