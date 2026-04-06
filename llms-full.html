@@ -360,8 +360,8 @@
 ### input-number
 
 ```text
-  TuiBigIntQuantumValueTransformer, TuiBigIntValueTransformer, TuiInputNumber, TuiInputNumberDirective, TuiInputNumberOptions, TuiInputNumberStep, TuiInputNumberStepService, TuiNumberMask, TuiNumberValueTransformer, TuiQuantumValueTransformer
-  TuiQuantumValueTransformerBase, TuiWithNumberMask
+  TuiBigIntQuantumValueTransformer, TuiBigIntValueTransformer, TuiInputNumber, TuiInputNumberDirective, TuiInputNumberOptions, TuiInputNumberStep, TuiInputNumberStepButtons, TuiInputNumberStepService, TuiNumberMask, TuiNumberValueTransformer
+  TuiQuantumValueTransformer, TuiQuantumValueTransformerBase, TuiWithNumberMask
 ```
 ### input-phone
 
@@ -778,6 +778,11 @@
 
 ```text
   TuiValueChanges
+```
+### vcr
+
+```text
+  TuiVCR
 ```
 ### visual-viewport
 
@@ -2515,10 +2520,10 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     protected readonly value = [40, 30, 20, 10];
 
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 
     public onTextfieldChange(value: number | null): void {
-        this.activeItemIndex = value ?? NaN;
+        this.activeItemIndex = value ?? Number.NaN;
     }
 }
 ```
@@ -2627,7 +2632,7 @@ export default class Page {
 
     protected maxLabel = &#039;100%&#039;;
 
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 }
 ```
 
@@ -8603,12 +8608,12 @@ export default class Example {}
 &lt;/div&gt;
 &lt;div appearance=&quot;floating&quot; tuiCardLarge &gt;
 &lt;header tuiHeader&gt;
-&lt;h2 tuiTitle&gt;Footer that ends with text&lt;/h2&gt;
+&lt;h2 tuiTitle&gt;Card with text content&lt;/h2&gt;
 &lt;aside tuiAccessories&gt;
 &lt;tui-icon tuiTooltip=&quot;It&#039;s strange, I know&quot; /&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;div tuiCell&gt; Use cell with reset vertical padding to put plain text inside a card with spacings according to the specs. &lt;/div&gt;
+&lt;div tuiDescription&gt;Use description for text content of a card with spacings according to the specs.&lt;/div&gt;
 &lt;footer&gt;
 &lt;div tuiTitle&gt;
 &lt;div tuiSubtitle&gt;Remaining $25 120.23&lt;/div&gt;
@@ -8658,10 +8663,6 @@ export default class Example {}
     &gt; :last-child {
         grid-column: span 2;
     }
-}
-
-[tuiCell] {
-    padding-block: 0;
 }
 
 [tuiSubtitle] {
@@ -11749,6 +11750,116 @@ export default class PageComponent extends Array {
 ```
 
 ---
+# components/Comment
+- **Package**: `KIT`
+- **Type**: components
+
+### Example
+
+```html
+&lt;span [tuiComment]=&quot;direction&quot;&gt;Birthday gift&lt;/span&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiComment] | `TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039;` | Direction of the comment mark |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+&lt;span tuiComment&gt;Birthday gift&lt;/span&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiComment} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiComment],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Customization
+
+**Template:**
+```html
+&lt;div tuiComment=&quot;top&quot;&gt;Good job&lt;/div&gt;
+&lt;div tuiComment=&quot;bottom&quot; class=&quot;success&quot; &gt; Cashback &lt;/div&gt;
+&lt;div tuiComment=&quot;start&quot; class=&quot;primary&quot; &gt; Extra payment &lt;/div&gt;
+&lt;div tuiComment=&quot;end&quot;&gt;Check it out&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiComment} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiComment],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.success {
+    background: var(--tui-status-positive);
+}
+
+.primary {
+    background: var(--tui-background-accent-1);
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {type TuiHorizontalDirection, type TuiVerticalDirection} from &#039;@taiga-ui/core&#039;;
+import {TuiComment} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiComment, TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;];
+
+    protected readonly directions: ReadonlyArray&lt;
+        TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039;
+    &gt; = [&#039;&#039;, &#039;top&#039;, &#039;bottom&#039;, &#039;start&#039;, &#039;end&#039;];
+
+    protected direction: TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039; = &#039;top&#039;;
+}
+```
+
+---
 # components/Compass
 - **Package**: `KIT`
 - **Type**: components
@@ -14433,7 +14544,7 @@ import {TuiInputPhone} from &#039;@taiga-ui/kit&#039;;
 import {TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 function phoneValidator({value}: AbstractControl): ValidationErrors | null {
-    return value.length !== 12 ? {length: &#039;Invalid phone number length&#039;} : null;
+    return value.length === 12 ? null : {length: &#039;Invalid phone number length&#039;};
 }
 
 @Component({
@@ -16695,111 +16806,79 @@ export default class Page {
 
 **Template:**
 ```html
-&lt;header tuiHeader=&quot;h1&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h1&gt;Title&lt;/h1&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;l&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h2&quot;&gt;
+@for (size of sizes; track $index) { &lt;header [tuiHeader]=&quot;size&quot;&gt;
 &lt;hgroup tuiTitle&gt;
 &lt;h2&gt;Title&lt;/h2&gt;
 &lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
+&lt;tui-badge-notification [size]=&quot;toBadgeSize(size)&quot;&gt;1&lt;/tui-badge-notification&gt;
+&lt;button tuiButton type=&quot;button&quot; [size]=&quot;toButtonSize(size)&quot; &gt; Button &lt;/button&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;header tuiHeader=&quot;h3&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h3&gt;Title&lt;/h3&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h4&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h4&gt;Title&lt;/h4&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h5&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h5&gt;Title&lt;/h5&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
-&lt;button tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;h6&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h6&gt;Title&lt;/h6&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification size=&quot;s&quot;&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;xs&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;body-l&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h6&gt;Title&lt;/h6&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification size=&quot;s&quot;&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;xs&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
-&lt;header tuiHeader=&quot;body-m&quot;&gt;
-&lt;hgroup tuiTitle&gt;
-&lt;h6&gt;Title&lt;/h6&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
-&lt;/hgroup&gt;
-&lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification size=&quot;s&quot;&gt;1&lt;/tui-badge-notification&gt;
-&lt;button size=&quot;xs&quot; tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
+&lt;div tuiDescription&gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s. &lt;/div&gt;
+&lt;br /&gt;
+&lt;br /&gt; }
 ```
 **TypeScript:**
 ```ts
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {
+    TuiButton,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiSizeXS,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
 import {TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
 import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     imports: [TuiBadgeNotification, TuiButton, TuiHeader, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
-    styleUrl: &#039;./index.less&#039;,
     encapsulation,
     changeDetection,
 })
-export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+export default class Example {
+    protected readonly sizes = [
+        &#039;h1&#039;,
+        &#039;h2&#039;,
+        &#039;h3&#039;,
+        &#039;h4&#039;,
+        &#039;h5&#039;,
+        &#039;h6&#039;,
+        &#039;body-l&#039;,
+        &#039;body-m&#039;,
+        &#039;body-s&#039;,
+    ] as const;
+
+    protected toBadgeSize(size: string): TuiSizeS {
+        switch (size) {
+            case &#039;body-l&#039;:
+            case &#039;body-m&#039;:
+            case &#039;h6&#039;:
+                return &#039;s&#039;;
+            default:
+                return &#039;m&#039;;
+        }
+    }
+
+    protected toButtonSize(size: string): TuiSizeL | TuiSizeXS {
+        switch (size) {
+            case &#039;h1&#039;:
+                return &#039;l&#039;;
+            case &#039;h2&#039;:
+            case &#039;h3&#039;:
+                return &#039;m&#039;;
+            case &#039;h4&#039;:
+            case &#039;h5&#039;:
+                return &#039;s&#039;;
+            default:
+                return &#039;xs&#039;;
+        }
+    }
 }
 ```
 
@@ -16820,7 +16899,7 @@ export default class Example {}
 &lt;div appearance=&quot;accent&quot; tuiAvatar=&quot;@tui.star&quot; &gt;&lt;/div&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;p class=&quot;description&quot;&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
+&lt;p tuiDescription&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
 &lt;/section&gt;
 &lt;section&gt;
 &lt;header tuiHeader&gt;
@@ -16835,7 +16914,7 @@ export default class Example {}
 &lt;a href=&quot;https://maskito.dev/&quot; rel=&quot;noreferrer&quot; target=&quot;_blank&quot; tuiButton &gt; Support &lt;/a&gt;
 &lt;/aside&gt;
 &lt;/header&gt;
-&lt;p class=&quot;description&quot;&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
+&lt;p tuiDescription&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
 &lt;/section&gt;
 &lt;header tuiHeader&gt;
 &lt;hgroup tuiTitle&gt;
@@ -16889,12 +16968,6 @@ export default class Example {}
     display: flex;
     flex-direction: column;
     gap: 3rem;
-}
-
-.description {
-    font: var(--tui-typography-body-l);
-    margin-block-start: 0.5rem;
-    max-inline-size: 30rem;
 }
 ```
 
@@ -22611,7 +22684,7 @@ class NaNTransformer extends TuiValueTransformer&lt;number | null, number&gt; {
     }
 
     public override toControlValue(value: number | null): number {
-        return value ?? NaN;
+        return value ?? Number.NaN;
     }
 }
 
@@ -22623,7 +22696,7 @@ class NaNTransformer extends TuiValueTransformer&lt;number | null, number&gt; {
     providers: [tuiInputNumberOptionsProvider({valueTransformer: new NaNTransformer()})],
 })
 export default class Example {
-    protected value = NaN;
+    protected value = Number.NaN;
 }
 ```
 
@@ -25852,7 +25925,7 @@ import {TuiHovered, tuiSum} from &#039;@taiga-ui/cdk&#039;;
     changeDetection,
 })
 export default class Example {
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.value);
@@ -25863,7 +25936,7 @@ export default class Example {
     }
 
     protected onHover(index: number, hovered: boolean): void {
-        this.activeItemIndex = hovered ? index : NaN;
+        this.activeItemIndex = hovered ? index : Number.NaN;
     }
 }
 ```
@@ -26885,11 +26958,11 @@ import {TuiLineClamp} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly win = inject(WA_WINDOW);
     private readonly cdr = inject(ChangeDetectorRef);
-    protected lineHeight = NaN;
-    protected lineLimit = NaN;
+    protected lineHeight = Number.NaN;
+    protected lineLimit = Number.NaN;
 
     protected getDynamicLineHeight(element: HTMLDivElement): number {
-        return parseInt(this.win.getComputedStyle(element).lineHeight, 10);
+        return Number.parseInt(this.win.getComputedStyle(element).lineHeight, 10);
     }
 
     protected getDynamicLineLimit(element: HTMLDivElement): number {
@@ -28279,7 +28352,7 @@ export default class Page {
 
 ```html
 &lt;div class=&quot;example&quot;&gt;
-&lt;tui-loader [inheritColor]=&quot;inheritColor&quot; [loading]=&quot;showLoader&quot; [overlay]=&quot;overlay&quot; [size]=&quot;size&quot; [textContent]=&quot;template&quot; &gt;
+&lt;tui-loader [inheritColor]=&quot;inheritColor&quot; [loading]=&quot;loading&quot; [overlay]=&quot;overlay&quot; [size]=&quot;size&quot; [textContent]=&quot;template&quot; &gt;
 &lt;div&gt;
 &lt;b&gt;Colonel Trautman:&lt;/b&gt; It&#039;s over Johnny. It&#039;s over! &lt;/div&gt;
 &lt;div&gt;
@@ -28296,7 +28369,7 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [showLoader] | `boolean` | Show/hide loader |
+| [loading] | `boolean` | Show/hide loader |
 | [inheritColor] | `boolean` | Inherit parent color |
 | [overlay] | `boolean` | Content overlay when loader is showed |
 | [size] | `TuiSizeXS | TuiSizeXL` | Size |
@@ -28489,7 +28562,7 @@ export default class Page {
         &#039;Custom stroke width&#039;,
     ];
 
-    protected showLoader = true;
+    protected loading = true;
 
     protected inheritColor = false;
 
@@ -28929,9 +29002,9 @@ export default class Example {
         this.months$,
     ]).pipe(
         map(([value, months]) =&gt;
-            !value
-                ? &#039;Choose a date&#039;
-                : `${months[value.month]} ${value.day}, ${value.year}`,
+            value
+                ? `${months[value.month]} ${value.day}, ${value.year}`
+                : &#039;Choose a date&#039;,
         ),
     );
 
@@ -29374,7 +29447,7 @@ Taiga UI is a low level component library with many atomic components that provi
 ```html
 &lt;!-- Ignore this part, it is only here to position drawer inside the example block --&gt;
 &lt;div class=&quot;custom-portal&quot;&gt;
-&lt;ng-container #vcr /&gt;
+&lt;ng-container tuiVCR /&gt;
 &lt;/div&gt;
 &lt;header tuiNavigationHeader&gt;
 &lt;button portal title=&quot;Menu&quot; tuiIconButton tuiNavigationDrawer type=&quot;button&quot; [(open)]=&quot;open&quot; &gt;
@@ -29468,7 +29541,7 @@ Taiga UI is a low level component library with many atomic components that provi
 &lt;button appearance=&quot;secondary&quot; tuiButton type=&quot;button&quot; &gt; Secondary &lt;/button&gt;
 &lt;button tuiButton type=&quot;button&quot; &gt; Primary &lt;/button&gt;
 &lt;/nav&gt;
-&lt;ng-container&gt; @for (_ of &#039;-&#039;.repeat(10); track $index) { &lt;form appearance=&quot;floating&quot; tuiCardLarge tuiForm=&quot;m&quot; [style.grid-column]=&quot;&#039;2 / span 7&#039;&quot; [style.margin-block-start.rem]=&quot;1&quot; &gt;
+&lt;ng-container&gt; @for (_ of &#039;-&#039;.repeat(10); track $index) { &lt;form appearance=&quot;floating&quot; tuiCardLarge tuiForm=&quot;m&quot; [style.grid-column]=&quot;&#039;2 / span 7&#039;&quot; &gt;
 &lt;header tuiHeader&gt;
 &lt;h2 tuiTitle&gt; Registration form &lt;span tuiSubtitle&gt;Tell us about yourself&lt;/span&gt;
 &lt;/h2&gt;
@@ -29482,7 +29555,7 @@ Taiga UI is a low level component library with many atomic components that provi
 &lt;button tuiButton type=&quot;submit&quot; &gt; Ok &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/form&gt;
-&lt;div appearance=&quot;outline-grayscale&quot; tuiCardLarge [style.grid-column]=&quot;&#039;span 3&#039;&quot; [style.margin-block-start.rem]=&quot;1&quot; &gt;
+&lt;div appearance=&quot;outline-grayscale&quot; tuiCardLarge [style.grid-column]=&quot;&#039;span 3&#039;&quot; &gt;
 &lt;h2 tuiTitle&gt; Sidebar content &lt;span tuiSubtitle&gt;Use CSS grid to position&lt;/span&gt;
 &lt;/h2&gt;
 &lt;/div&gt; } &lt;/ng-container&gt;
@@ -29498,7 +29571,7 @@ import {RouterLink} from &#039;@angular/router&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
-import {TuiPortals, TuiPortalService, tuiProvide} from &#039;@taiga-ui/cdk&#039;;
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from &#039;@taiga-ui/cdk&#039;;
 import {
     TuiButton,
     TuiDataList,
@@ -29559,6 +29632,7 @@ class Portal {}
         TuiSwitch,
         TuiTabs,
         TuiTitle,
+        TuiVCR,
     ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
@@ -29779,7 +29853,7 @@ export default class Example {
 ```html
 &lt;!-- Ignore this part, it is only here to position drawer inside the example block --&gt;
 &lt;div class=&quot;custom-portal&quot;&gt;
-&lt;ng-container #vcr /&gt;
+&lt;ng-container tuiVCR /&gt;
 &lt;/div&gt;
 &lt;header tuiNavigationHeader tuiTheme=&quot;light&quot; &gt;
 &lt;button title=&quot;Menu&quot; tuiIconButton tuiNavigationDrawer type=&quot;button&quot; &gt;
@@ -29826,7 +29900,7 @@ export default class Example {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiPortals, TuiPortalService, tuiProvide} from &#039;@taiga-ui/cdk&#039;;
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from &#039;@taiga-ui/cdk&#039;;
 import {TuiButton, TuiPopupService, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiChevron, TuiFade} from &#039;@taiga-ui/kit&#039;;
 import {
@@ -29845,6 +29919,7 @@ import {
         TuiHeader,
         TuiNavigation,
         TuiTitle,
+        TuiVCR,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -29876,6 +29951,10 @@ export default class Example extends TuiPortals {
 
 aside::before {
     display: none;
+}
+
+main::before {
+    content: &#039;&#039;;
 }
 
 header::after {
@@ -30013,7 +30092,7 @@ export default class ExampleComponent {
             (result, [key, value]) =&gt; ({
                 ...result,
                 [key]: value.filter(({title, href, subtitle = &#039;&#039;}) =&gt;
-                    TUI_DEFAULT_MATCHER(title + href + subtitle, query),
+                    TUI_DEFAULT_MATCHER(`${title}${href}${subtitle}`, query),
                 ),
             }),
             {},
@@ -31328,7 +31407,7 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
 
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
@@ -34336,7 +34415,7 @@ export default class Example {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
 
-    protected index = NaN;
+    protected index = Number.NaN;
 
     protected get sum(): number {
         return (Number.isNaN(this.index) ? this.total : this.value[this.index]) ?? 0;
@@ -34383,7 +34462,7 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
 
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
@@ -46446,95 +46525,6 @@ export default class Page {}
 ```
 
 ---
-# directives/Comment
-- **Package**: `KIT`
-- **Type**: directives
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-&lt;span tuiComment&gt;Birthday gift&lt;/span&gt;
-```
-**TypeScript:**
-```ts
-import {Component} from &#039;@angular/core&#039;;
-import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
-import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiComment} from &#039;@taiga-ui/kit&#039;;
-
-@Component({
-    imports: [TuiComment],
-    templateUrl: &#039;./index.html&#039;,
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-#### Customization
-
-**Template:**
-```html
-&lt;div tuiComment=&quot;top&quot;&gt;Good job&lt;/div&gt;
-&lt;div tuiComment=&quot;bottom&quot; class=&quot;success&quot; &gt; Cashback &lt;/div&gt;
-&lt;div tuiComment=&quot;start&quot; class=&quot;primary&quot; &gt; Extra payment &lt;/div&gt;
-&lt;div tuiComment=&quot;end&quot;&gt;Check it out&lt;/div&gt;
-```
-**TypeScript:**
-```ts
-import {Component} from &#039;@angular/core&#039;;
-import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
-import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiComment} from &#039;@taiga-ui/kit&#039;;
-
-@Component({
-    imports: [TuiComment],
-    templateUrl: &#039;./index.html&#039;,
-    styleUrl: &#039;./index.less&#039;,
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-}
-
-.success {
-    background: var(--tui-status-positive);
-}
-
-.primary {
-    background: var(--tui-background-accent-1);
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from &#039;@angular/core&#039;;
-import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
-import {TuiDemo} from &#039;@demo/utils&#039;;
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: &#039;./index.html&#039;,
-    changeDetection,
-})
-export default class Page {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;];
-}
-```
-
----
 # directives/CopyProcessor
 - **Package**: `CDK`
 - **Type**: directives
@@ -52757,7 +52747,13 @@ export default class Example extends TuiRectAccessor {
 import {ChangeDetectionStrategy, Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {tuiInjectElement, TuiPortals, TuiPortalService, tuiProvide} from &#039;@taiga-ui/cdk&#039;;
+import {
+    tuiInjectElement,
+    TuiPortals,
+    TuiPortalService,
+    tuiProvide,
+    TuiVCR,
+} from &#039;@taiga-ui/cdk&#039;;
 import {
     tuiAsViewport,
     TuiDropdown,
@@ -52767,9 +52763,10 @@ import {
 
 @Component({
     selector: &#039;portal-host&#039;,
+    imports: [TuiVCR],
     template: `
         &lt;ng-content /&gt;
-        &lt;ng-container #vcr /&gt;
+        &lt;ng-container tuiVCR /&gt;
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TuiPortalService, TuiPopupService), tuiAsViewport(PortalHost)],
