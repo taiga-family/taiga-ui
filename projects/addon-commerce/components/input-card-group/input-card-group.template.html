@@ -47,14 +47,20 @@
                 ></span>
             </span>
         </span>
-        <div
-            tuiTransitioned
-            class="t-label"
-            [attr.data-label]="texts().cardNumberText"
-            [class.t-label_raised]="labelRaised()"
-        >
+
+        @let cardNumberText = texts().cardNumberText;
+        @if (cardNumberText) {
+            <div
+                tuiTransitioned
+                class="t-label"
+                [attr.data-label]="cardNumberText"
+                [class.t-label_raised]="labelRaised()"
+            >
+                <ng-content />
+            </div>
+        } @else {
             <ng-content />
-        </div>
+        }
     </label>
 </div>
 <div
@@ -84,13 +90,16 @@
             (focus)="(0)"
             (ngModelChange)="onExpireChange($event)"
         />
-        <div
-            tuiTransitioned
-            class="t-label"
-            [class.t-label_raised]="labelRaised()"
-        >
-            {{ texts().expiryText }}
-        </div>
+        @let expiryText = texts().expiryText;
+        @if (expiryText) {
+            <div
+                tuiTransitioned
+                class="t-label"
+                [class.t-label_raised]="labelRaised()"
+            >
+                {{ expiryText }}
+            </div>
+        }
     </label>
 </div>
 <div
@@ -119,13 +128,17 @@
             (focus)="(0)"
             (ngModelChange)="onCVCChange($event)"
         />
-        <div
-            tuiTransitioned
-            class="t-label"
-            [class.t-label_raised]="labelRaised()"
-        >
-            {{ texts().cvcText }}
-        </div>
+
+        @let cvcText = texts().cvcText;
+        @if (cvcText) {
+            <div
+                tuiTransitioned
+                class="t-label"
+                [class.t-label_raised]="labelRaised()"
+            >
+                {{ cvcText }}
+            </div>
+        }
     </label>
 </div>
 <div class="t-icons">

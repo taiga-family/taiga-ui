@@ -15,9 +15,9 @@ import {
         {
             provide: TUI_INPUT_CARD_GROUP_TEXTS,
             useValue: signal({
-                cardNumberText: 'Number',
-                expiryText: 'MM/YY',
-                cvcText: 'Code',
+                cardNumberText: '',
+                expiryText: '',
+                cvcText: '',
             }),
         },
     ],
