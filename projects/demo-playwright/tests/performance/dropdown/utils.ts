@@ -260,7 +260,7 @@ export function formatLatencyTable(data: {
     firstOptionSamples: number[];
     medianFirstOption?: number;
 }): string {
-    const rows: Array<[string, ...number[]]> = [
+    const rows = [
         ['Run', ...data.firstOptionSamples.map((_, i) => i + 1)],
         ['FirstOption', ...data.firstOptionSamples],
     ];

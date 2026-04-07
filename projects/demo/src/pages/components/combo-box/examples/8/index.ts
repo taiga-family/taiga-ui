@@ -53,7 +53,7 @@ export default class Example {
         ],
     };
 
-    protected categories: string[] = Object.keys(this.filmDatabase);
+    protected categories = Object.keys(this.filmDatabase);
     protected filters: Record<string, boolean> = this.categories.reduce(
         (acc, category, i) => ({...acc, [category]: i % 2 === 0}),
         {},

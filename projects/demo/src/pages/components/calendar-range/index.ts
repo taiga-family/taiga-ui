@@ -85,8 +85,8 @@ export default class Example {
     ];
 
     protected markerHandler: TuiMarkerHandler | null = null;
-    protected min: TuiDay = this.minVariants[0]!;
-    protected max: TuiDay = this.maxVariants[0]!;
+    protected min = this.minVariants[0]!;
+    protected max = this.maxVariants[0]!;
     protected cleaner = false;
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
     protected items = this.itemsVariants[0]!;

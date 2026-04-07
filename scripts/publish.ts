@@ -15,7 +15,7 @@ const path = getValueByFlag('--path', '');
 (async function main(): Promise<void> {
     const packageJson = await import(resolve(path, 'package.json'));
     const version = getValueByFlag('--customVersion', packageJson.version);
-    const versions: string[] = getAllVersions(packageJson.name);
+    const versions = getAllVersions(packageJson.name);
 
     if (versions.includes(version) && !isDryRun) {
         errorLog(`${packageJson.name}@${version} is already published`);

@@ -27,7 +27,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiSizeXXL | TuiSizeXXS = this.sizeVariants[2]!;
+    protected size = this.sizeVariants[2]!;
 
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-background-accent-1)'],
@@ -39,7 +39,7 @@ export default class Page {
         ),
     ];
 
-    protected colors: string[] = this.colorsVariants[0] ?? [];
+    protected colors = this.colorsVariants[0] ?? [];
 
     protected get computedColors(): string[] {
         return this.colors.slice(0, this.segments);

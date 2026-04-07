@@ -90,8 +90,7 @@ export class TuiDocDemo implements AfterViewInit {
         {read: ElementRef},
     );
 
-    private readonly content: Signal<ElementRef<HTMLElement>> =
-        viewChild.required<ElementRef<HTMLElement>>('content');
+    private readonly content = viewChild.required<ElementRef<HTMLElement>>('content');
 
     private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);

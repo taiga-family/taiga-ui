@@ -35,7 +35,7 @@ describe('Range | With segments + tick labels', () => {
         cy.viewport(300, 75);
     });
 
-    const cases: Array<[number, number]> = [
+    const cases = [
         [0, 0],
         [0, 25],
         [0, 50],

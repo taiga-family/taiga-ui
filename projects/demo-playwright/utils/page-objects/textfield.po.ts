@@ -1,7 +1,7 @@
 import {expect, type Locator} from '@playwright/test';
 
 export class TuiTextfieldPO {
-    public readonly textfield: Locator = this.host.locator('[tuiInput]');
+    public readonly textfield = this.host.locator('[tuiInput]');
     public readonly cleaner = this.host.locator('[tuiButtonX]');
 
     constructor(public readonly host: Locator) {}

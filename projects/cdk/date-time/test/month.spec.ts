@@ -452,14 +452,14 @@ describe('TuiMonth', () => {
 
             describe('append returns', () => {
                 it('TuiMonth {year: 2000, month: 6} if passed value was {}', () => {
-                    const result: TuiMonth = y2000m6.append({});
+                    const result = y2000m6.append({});
 
                     expect(result.year).toBe(2000);
                     expect(result.month).toBe(6);
                 });
 
                 it('TuiMonth {year: 2000, month: 6} if passed value was {year: 0, month: 0}', () => {
-                    const result: TuiMonth = y2000m6.append({
+                    const result = y2000m6.append({
                         year: 0,
                         month: 0,
                     });
@@ -469,35 +469,35 @@ describe('TuiMonth', () => {
                 });
 
                 it('TuiMonth {year: 2001, month: 6} if passed value was {year: 1}', () => {
-                    const result: TuiMonth = y2000m6.append({year: 1});
+                    const result = y2000m6.append({year: 1});
 
                     expect(result.year).toBe(2001);
                     expect(result.month).toBe(6);
                 });
 
                 it('TuiMonth {year: 1999 month: 6} if passed value was {year: -1}', () => {
-                    const result: TuiMonth = y2000m6.append({year: -1});
+                    const result = y2000m6.append({year: -1});
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(6);
                 });
 
                 it('TuiMonth {year: 2001, month: 6} if passed value was {month: 12}', () => {
-                    const result: TuiMonth = y2000m6.append({month: 12});
+                    const result = y2000m6.append({month: 12});
 
                     expect(result.year).toBe(2001);
                     expect(result.month).toBe(6);
                 });
 
                 it('TuiMonth {year: 1999, month: 6} if passed value was {month: -12}', () => {
-                    const result: TuiMonth = y2000m6.append({month: -12});
+                    const result = y2000m6.append({month: -12});
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(6);
                 });
 
                 it('TuiMonth {year: 2001, month: 7} if passed value was {year: 1, month: 1}', () => {
-                    const result: TuiMonth = y2000m6.append({
+                    const result = y2000m6.append({
                         year: 1,
                         month: 1,
                     });
@@ -507,7 +507,7 @@ describe('TuiMonth', () => {
                 });
 
                 it('TuiMonth {year: 1999, month: 5} if passed value was {year: -1, month: -1}', () => {
-                    const result: TuiMonth = y2000m6.append({
+                    const result = y2000m6.append({
                         year: -1,
                         month: -1,
                     });

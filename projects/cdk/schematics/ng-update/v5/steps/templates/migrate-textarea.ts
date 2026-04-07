@@ -112,7 +112,7 @@ function buildReplacement(
     }
 
     const textfieldAttrs: string[] = [];
-    const textareaAttrs: string[] = ['tuiTextarea'];
+    const textareaAttrs = ['tuiTextarea'];
     let maxLengthAttrText: string | null = null;
     let maxLengthIsBinding = false;
     const ctx: MigrationContext = {

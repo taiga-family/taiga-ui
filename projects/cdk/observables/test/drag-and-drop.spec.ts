@@ -4,7 +4,7 @@ import {skip, take} from 'rxjs';
 describe('tuiDragAndDropFrom', () => {
     it('throws an error if there is no document', () => {
         let result: unknown;
-        const element: Element = {ownerDocument: undefined} as unknown as Element;
+        const element = {ownerDocument: undefined} as unknown as Element;
 
         try {
             tuiDragAndDropFrom(element).subscribe();

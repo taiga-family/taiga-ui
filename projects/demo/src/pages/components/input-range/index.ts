@@ -46,7 +46,7 @@ export default class PageComponent {
         'Using negative values with hidden minus sign',
     ];
 
-    protected readonly suffixVariants: Array<[string, string]> = [
+    protected readonly suffixVariants = [
         ['$', '$'],
         ['€', '€'],
         [' ₽', ' ₽'],
