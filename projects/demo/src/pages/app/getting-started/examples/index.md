@@ -4,6 +4,9 @@
   <head>
     ...
   </head>
+  <body>
+    ...
+  </body>
   <script>
     // Or whatever key you provided to TUI_DARK_MODE_KEY
     const theme = localStorage?.getItem('tuiDark');
@@ -12,8 +15,5 @@
       document.body.setAttribute('tuiTheme', 'dark');
     }
   </script>
-  <body>
-    ...
-  </body>
 </html>
 ```
