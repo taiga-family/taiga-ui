@@ -3,7 +3,7 @@
 exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directive adds TuiVCR to imports array when #viewContainer is migrated in external template: test.html 1`] = `
 {
   "0. Before": "<ng-container #viewContainer />",
-  "1. After": "<ng-container #viewContainer />",
+  "1. After": "<ng-container tuiVCR />",
 }
 `;
 
@@ -24,13 +24,13 @@ exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directi
                 ",
   "1. After": "
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
-                    import {TuiPortals} from '@taiga-ui/cdk';
+                    import { TuiPortals, TuiVCR } from '@taiga-ui/cdk';
 
                     @Component({
                         standalone: true,
                         selector: 'custom-host',
                         templateUrl: './test.html',
-                        imports: [],
+                        imports: [TuiVCR],
                         changeDetection: ChangeDetectionStrategy.OnPush,
                     })
                     export class CustomHost extends TuiPortals {}
@@ -55,77 +55,16 @@ exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directi
                 ",
   "1. After": "
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
-                    import {TuiPortals} from '@taiga-ui/cdk';
+                    import { TuiPortals, TuiVCR } from '@taiga-ui/cdk';
 
                     @Component({
                         standalone: true,
                         selector: 'custom-host',
-                        template: '<ng-container #viewContainer />',
-                        imports: [],
+                        template: '<ng-container tuiVCR />',
+                        imports: [TuiVCR],
                         changeDetection: ChangeDetectionStrategy.OnPush,
                     })
                     export class CustomHost extends TuiPortals {}
-                ",
-}
-`;
-
-exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directive does not change #viewContainer in component not extending TuiPortals: test.ts 1`] = `
-{
-  "0. Before": "
-                    import {ChangeDetectionStrategy, Component} from '@angular/core';
-
-                    @Component({
-                        standalone: true,
-                        selector: 'regular-component',
-                        template: '<ng-container #viewContainer />',
-                        changeDetection: ChangeDetectionStrategy.OnPush,
-                    })
-                    export class RegularComponent {}
-                ",
-  "1. After": "
-                    import {ChangeDetectionStrategy, Component} from '@angular/core';
-
-                    @Component({
-                        standalone: true,
-                        selector: 'regular-component',
-                        template: '<ng-container #viewContainer />',
-                        changeDetection: ChangeDetectionStrategy.OnPush,
-                    })
-                    export class RegularComponent {}
-                ",
-}
-`;
-
-exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directive does not change #viewContainer in external template of non-TuiPortals component: test.html 1`] = `
-{
-  "0. Before": "<ng-container #viewContainer />",
-  "1. After": "<ng-container #viewContainer />",
-}
-`;
-
-exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directive does not change #viewContainer in external template of non-TuiPortals component: test.ts 1`] = `
-{
-  "0. Before": "
-                    import {ChangeDetectionStrategy, Component} from '@angular/core';
-
-                    @Component({
-                        standalone: true,
-                        selector: 'regular-component',
-                        templateUrl: './test.html',
-                        changeDetection: ChangeDetectionStrategy.OnPush,
-                    })
-                    export class RegularComponent {}
-                ",
-  "1. After": "
-                    import {ChangeDetectionStrategy, Component} from '@angular/core';
-
-                    @Component({
-                        standalone: true,
-                        selector: 'regular-component',
-                        templateUrl: './test.html',
-                        changeDetection: ChangeDetectionStrategy.OnPush,
-                    })
-                    export class RegularComponent {}
                 ",
 }
 `;
@@ -153,8 +92,9 @@ exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directi
                     @Component({
                         standalone: true,
                         selector: 'custom-host',
-                        template: '<ng-container #viewContainer />',
+                        template: '<ng-container tuiVCR />',
                         changeDetection: ChangeDetectionStrategy.OnPush,
+                        imports: [TuiVCR]
                     })
                     export class CustomHost extends TuiPortals {}
                 ",
@@ -164,7 +104,7 @@ exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directi
 exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directive replaces #viewContainer with tuiVCR in external template of TuiPortals subclass: test.html 1`] = `
 {
   "0. Before": "<ng-container #viewContainer />",
-  "1. After": "<ng-container #viewContainer />",
+  "1. After": "<ng-container tuiVCR />",
 }
 `;
 
@@ -185,7 +125,7 @@ exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directi
                 ",
   "1. After": "
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
-                    import {TuiPortals} from '@taiga-ui/cdk';
+                    import { TuiPortals, TuiVCR } from '@taiga-ui/cdk';
                     import {CustomPortalService} from './service';
 
                     @Component({
@@ -193,6 +133,7 @@ exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directi
                         selector: 'custom-host',
                         templateUrl: './test.html',
                         changeDetection: ChangeDetectionStrategy.OnPush,
+                        imports: [TuiVCR]
                     })
                     export class CustomHost extends TuiPortals {}
                 ",
