@@ -69,16 +69,11 @@ function migrateSourceFile(sourceFile: SourceFile, tree: Tree): void {
                 continue;
             }
 
-            const hasExistingImports = !!metadata.getProperty('imports');
-
             initializer.replaceWithText(
                 text.replaceAll(VIEW_CONTAINER_REF, TUI_VCR_DIRECTIVE),
             );
             pushToObjectArrayProperty(metadata, 'imports', TUI_VCR_CLASS, {unique: true});
-
-            if (hasExistingImports) {
-                addUniqueImport(sourceFile.getFilePath(), TUI_VCR_CLASS, TAIGA_CDK);
-            }
+            addUniqueImport(sourceFile.getFilePath(), TUI_VCR_CLASS, TAIGA_CDK);
         } else if (Node.isPropertyAssignment(templateUrlProp)) {
             const templateUrlInit = templateUrlProp.getInitializer();
 

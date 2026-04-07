@@ -86,7 +86,7 @@ exports[`ng-update TuiPortalService TuiVCR — #viewContainer → tuiVCR directi
                 ",
   "1. After": "
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
-                    import {TuiPortals} from '@taiga-ui/cdk';
+                    import { TuiPortals, TuiVCR } from '@taiga-ui/cdk';
                     import {CustomPortalService} from './service';
 
                     @Component({
