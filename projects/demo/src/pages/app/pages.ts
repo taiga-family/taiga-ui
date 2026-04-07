@@ -540,7 +540,7 @@ export const pages: DocRoutePages = [
                 title: 'SwipeActions',
                 keywords: 'swipe, action, свайп, card, действие',
                 route: DemoRoute.SwipeActions,
-                meta: {version: '1.1.0'},
+                meta: {figmaVersion: '1.1.0'},
             },
         ],
     },
@@ -1517,7 +1517,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
                 route: DemoRoute.Amount,
-                meta: {scheme: 'taiga', version: '1.1.1'},
+                meta: {scheme: 'taiga', figmaVersion: '1.1.1'},
             },
             {
                 section: 'Tools',
