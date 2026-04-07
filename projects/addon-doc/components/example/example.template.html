@@ -20,7 +20,7 @@
     </header>
 
     @if (description()) {
-        <div class="t-description">
+        <div tuiDescription>
             <ng-container *polymorpheusOutlet="description() as text">
                 {{ text }}
             </ng-container>
