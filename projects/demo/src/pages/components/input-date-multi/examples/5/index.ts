@@ -6,7 +6,7 @@ import {TuiDay} from '@taiga-ui/cdk';
 import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiInputDateMulti} from '@taiga-ui/kit';
 
-const DOT: [string] = ['var(--tui-status-positive)'];
+const DOT = ['var(--tui-status-positive)'];
 
 @Component({
     imports: [FormsModule, TuiInputDateMulti],

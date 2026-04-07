@@ -26,10 +26,10 @@ export default class Page {
         'vertical',
     ];
 
-    protected orientation: TuiOrientation = this.orientationVariants[0]!;
+    protected orientation = this.orientationVariants[0]!;
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    protected size: TuiSizeL = this.sizeVariants[1]!;
+    protected size = this.sizeVariants[1]!;
     protected readonly routes = DemoRoute;
 }

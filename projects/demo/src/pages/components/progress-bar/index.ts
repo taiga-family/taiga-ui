@@ -23,7 +23,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2]!;
+    protected size = this.sizeVariants[2]!;
 
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-background-accent-1)',

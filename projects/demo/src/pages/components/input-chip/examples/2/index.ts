@@ -12,5 +12,5 @@ import {TuiInputChip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value: string[] = ['I', 'love', 'Angular'];
+    protected value = ['I', 'love', 'Angular'];
 }

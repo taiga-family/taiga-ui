@@ -37,7 +37,7 @@ describe('TuiDayRange', () => {
 
         describe('normalizeParse returns', () => {
             it('corresponding range in normal case', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `12.03.4567${RANGE_SEPARATOR_CHAR}07.06.9321`,
                 );
 
@@ -50,9 +50,7 @@ describe('TuiDayRange', () => {
             });
 
             it('corresponding range ignoring wrong delimiters', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
-                    '12#03#4567#!#07#06#9321',
-                );
+                const result = TuiDayRange.normalizeParse('12#03#4567#!#07#06#9321');
 
                 expect(result.from.day).toBe(12);
                 expect(result.from.month).toBe(2);
@@ -63,7 +61,7 @@ describe('TuiDayRange', () => {
             });
 
             it('properly normalized range', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `00.00.0000${RANGE_SEPARATOR_CHAR}99.99.9999`,
                 );
 
@@ -76,7 +74,7 @@ describe('TuiDayRange', () => {
             });
 
             it('sorted range if the order is wrong', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `07.06.9321${RANGE_SEPARATOR_CHAR}12.03.4567`,
                 );
 
@@ -89,7 +87,7 @@ describe('TuiDayRange', () => {
             });
 
             it('one day range if rangeString is not long enough', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `07.06.9321${RANGE_SEPARATOR_CHAR}12.03.4`,
                 );
 
@@ -102,7 +100,7 @@ describe('TuiDayRange', () => {
             });
 
             it('correctly works with dateMode="YMD" + separator = "-"', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `2021-12-14${RANGE_SEPARATOR_CHAR}2022-06-19`,
                     'yyyy/mm/dd',
                 );
@@ -116,7 +114,7 @@ describe('TuiDayRange', () => {
             });
 
             it('correctly works with dateMode="MDY" + separator = "/"', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `12/14/2021${RANGE_SEPARATOR_CHAR}06/19/2022`,
                     'mm/dd/yyyy',
                 );

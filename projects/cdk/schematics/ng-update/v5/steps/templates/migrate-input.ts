@@ -141,7 +141,7 @@ function buildReplacement(
     }
 
     const textfieldAttrs: string[] = [];
-    const inputAttrs: string[] = ['tuiInput'];
+    const inputAttrs = ['tuiInput'];
     const ctx: MigrationContext = {
         placeholder: '',
         labelOutsideValue: null,

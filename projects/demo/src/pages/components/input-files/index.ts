@@ -32,11 +32,7 @@ export default class PageComponent {
     protected accept = '';
     protected acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
 
-    protected readonly showDeleteVariants: Array<boolean | 'always'> = [
-        true,
-        false,
-        'always',
-    ];
+    protected readonly showDeleteVariants = [true, false, 'always'];
 
     protected readonly maxFileSizeVariants = [
         100,

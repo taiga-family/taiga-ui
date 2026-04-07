@@ -8,7 +8,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_ICON_END,
@@ -43,7 +42,7 @@ class Styles {}
     },
 })
 export class TuiIcons {
-    private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+    private readonly resolver = tuiInjectIconResolver();
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));

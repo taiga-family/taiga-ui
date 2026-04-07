@@ -51,7 +51,7 @@ export default class Example {
     }
 
     protected toggleLevel(index: number): void {
-        const nodes: readonly TreeNode[] = this.data.children || [];
+        const nodes = this.data.children || [];
         const key = nodes[index];
 
         if (key) {

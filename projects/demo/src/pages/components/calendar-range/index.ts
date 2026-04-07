@@ -18,11 +18,8 @@ import {
     type TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 
-const TWO_DOTS: [string, string] = [
-    'var(--tui-background-accent-1)',
-    'var(--tui-status-info)',
-];
-const ONE_DOT: [string] = ['var(--tui-status-positive)'];
+const TWO_DOTS = ['var(--tui-background-accent-1)', 'var(--tui-status-info)'];
+const ONE_DOT = ['var(--tui-status-positive)'];
 
 @Component({
     imports: [TuiCalendarRange, TuiDemo],
@@ -85,8 +82,8 @@ export default class Example {
     ];
 
     protected markerHandler: TuiMarkerHandler | null = null;
-    protected min: TuiDay = this.minVariants[0]!;
-    protected max: TuiDay = this.maxVariants[0]!;
+    protected min = this.minVariants[0]!;
+    protected max = this.maxVariants[0]!;
     protected cleaner = false;
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
     protected items = this.itemsVariants[0]!;

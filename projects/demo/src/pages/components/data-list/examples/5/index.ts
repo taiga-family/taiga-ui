@@ -34,7 +34,7 @@ import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
 })
 export default class Example {
     protected dropdownOpen = false;
-    protected dateValue: TuiDay = new TuiDay(2020, 0, 1);
+    protected dateValue = new TuiDay(2020, 0, 1);
     protected euro = 87; // 1 euro = 87 rub
     protected dollar = 75; // 1 dollar = 75 rub
 

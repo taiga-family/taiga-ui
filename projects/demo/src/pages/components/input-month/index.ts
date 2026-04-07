@@ -73,7 +73,7 @@ export default class PageComponent {
 
     protected min: TuiMonth | null = null;
     protected max: TuiMonth | null = null;
-    protected year: TuiYear = this.yearVariants[0];
+    protected year = this.yearVariants[0];
     protected disabledItemHandler: TuiBooleanHandler<TuiMonth> =
         this.disabledItemHandlerVariants[0];
 }

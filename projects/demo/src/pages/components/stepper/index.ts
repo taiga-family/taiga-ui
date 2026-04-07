@@ -24,7 +24,7 @@ export default class Page {
         'vertical',
     ];
 
-    protected orientation: TuiOrientation = this.orientationVariants[0]!;
+    protected orientation = this.orientationVariants[0]!;
 
     protected readonly iconVariants = ['', '@tui.clock', '@tui.heart'];
 

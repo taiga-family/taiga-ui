@@ -4,11 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import {TuiCalendar, type TuiMarkerHandler} from '@taiga-ui/core';
 
-const TWO_DOTS: [string, string] = [
-    'var(--tui-background-accent-1)',
-    'var(--tui-status-info)',
-];
-const ONE_DOT: [string] = ['var(--tui-status-positive)'];
+const TWO_DOTS = ['var(--tui-background-accent-1)', 'var(--tui-status-info)'];
+const ONE_DOT = ['var(--tui-status-positive)'];
 
 @Component({
     imports: [TuiCalendar],

@@ -24,7 +24,7 @@ import {TuiPreviewAction} from './action/preview-action.directive';
 import {TUI_PREVIEW_ICONS} from './preview.options';
 import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 
-const EMPTY_COORDINATES: [number, number] = [0, 0];
+const EMPTY_COORDINATES = [0, 0];
 const ROTATION_ANGLE = 90;
 
 @Component({

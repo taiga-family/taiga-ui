@@ -6,7 +6,7 @@ import {type TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
-const CHEAPEST_TICKET: [string] = ['var(--tui-status-positive)'];
+const CHEAPEST_TICKET = ['var(--tui-status-positive)'];
 
 @Component({
     imports: [FormsModule, TuiInputDate],
