@@ -25,6 +25,6 @@
         "./*": "./*"
     },
     "peerDependencies": {
-        "@taiga-ui/design-tokens": "~0.291.0"
+        "@taiga-ui/design-tokens": "~0.292.0"
     }
 }
