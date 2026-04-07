@@ -1359,6 +1359,44 @@ export class App {}
 ```
 
 ---
+## config.md
+
+```ts
+export interface TuiOptions {
+  // Omit to use OS theme, this is the default
+  readonly mode?: 'dark' | 'light';
+  // Scale text with OS font size, enabled by default
+  readonly fontScaling: boolean;
+  // Global window scrollbars, 'custom' by default
+  readonly scrollbars: 'custom' | 'native';
+  // Opt-in to experimental features as they are introduced, 'stable' by default
+  readonly apis: 'stable' | {all: boolean} | Record<string, boolean>;
+}
+```
+
+---
+## index.md
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    ...
+  </body>
+  <script>
+    // Or whatever key you provided to TUI_DARK_MODE_KEY
+    const theme = localStorage?.getItem('tuiDark');
+    if (theme === 'true' || (!theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.body.setAttribute('tuiTheme', 'dark');
+    }
+  </script>
+</html>
+```
+
+---
 ## main-standalone.md
 
 ```ts
