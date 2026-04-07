@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.78.1](https://github.com/taiga-family/taiga-ui/compare/v4.78.0...v4.78.1) (2026-04-07)
+
 ## [4.78.0](https://github.com/taiga-family/taiga-ui/compare/v4.77.0...v4.78.0) (2026-04-06)
 
 ### 🚀 Features
