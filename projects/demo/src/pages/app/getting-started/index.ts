@@ -26,6 +26,9 @@ export default class Page {
         Nx: import('./examples/nx-migrate.md'),
     };
 
+    protected readonly config = {provideTaiga: import('./examples/config.md')};
+    protected readonly index = {'index.html': import('./examples/index.md')};
+
     protected readonly examples = [
         'Install libraries',
         'Include styles',
