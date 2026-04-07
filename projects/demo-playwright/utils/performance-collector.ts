@@ -50,7 +50,7 @@ export class PerformanceCollector {
         'performance',
     );
 
-    private static startStopLock: Promise<void> = Promise.resolve();
+    private static startStopLock = Promise.resolve();
     private static dirReady = false;
 
     public static async startTestCollection(

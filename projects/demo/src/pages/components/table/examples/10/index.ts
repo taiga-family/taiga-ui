@@ -67,10 +67,7 @@ export default class Example {
         },
     ];
 
-    protected readonly customContentData: Item[] = [
-        ...this.basicData,
-        ...this.manualOpenData,
-    ];
+    protected readonly customContentData = [...this.basicData, ...this.manualOpenData];
 
     protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
 

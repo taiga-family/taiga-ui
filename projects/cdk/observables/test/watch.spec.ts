@@ -7,9 +7,7 @@ describe('tuiWatch operator function', () => {
     let $: Subject<unknown>;
     let called = 0;
 
-    const chrStub: ChangeDetectorRef = {
-        markForCheck: () => called++,
-    } as unknown as ChangeDetectorRef;
+    const chrStub = {markForCheck: () => called++} as unknown as ChangeDetectorRef;
 
     beforeEach(() => {
         $ = new Subject<unknown>();

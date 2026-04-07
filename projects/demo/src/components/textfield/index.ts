@@ -23,8 +23,8 @@ export class TuiDocTextfield {
 
     public readonly hiddenOptions = input(['rows']);
 
-    public cleaner: boolean = this.options.cleaner();
-    public size: TuiSizeL | TuiSizeS = this.options.size();
+    public cleaner = this.options.cleaner();
+    public size = this.options.size();
     public rows = 100;
     public content: PolymorpheusContent = '';
 }

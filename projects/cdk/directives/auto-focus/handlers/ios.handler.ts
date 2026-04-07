@@ -37,7 +37,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     }
 
     private iosWebkitAutofocus(): void {
-        const fakeInput: HTMLInputElement = this.makeFakeInput();
+        const fakeInput = this.makeFakeInput();
         const duration = this.getDurationTimeBeforeFocus();
         let fakeFocusTimeoutId = 0;
         let elementFocusTimeoutId = 0;
@@ -91,7 +91,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      */
     private makeFakeInput(): HTMLInputElement {
         const fakeInput: HTMLInputElement = this.renderer.createElement('input');
-        const rect: DOMRect = this.element.getBoundingClientRect();
+        const rect = this.element.getBoundingClientRect();
 
         this.patchFakeInputFromFocusableElement(fakeInput);
 

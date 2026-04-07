@@ -3,7 +3,7 @@ import {type ErrorHandler, inject, Injectable} from '@angular/core';
 import {errorLog} from 'ng-morph';
 
 // TODO
-const KNOWN_ISSUES: string[] = [
+const KNOWN_ISSUES = [
     /**
      * ```
      * // example.ts

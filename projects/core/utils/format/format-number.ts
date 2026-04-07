@@ -36,10 +36,7 @@ export function tuiFormatNumber(
 
     if (Number.isFinite(precision)) {
         if (decimalMode === 'always' || (hasFraction && decimalMode === 'pad')) {
-            const zeroPaddingSize: number = Math.max(
-                precision - fractionPartPadded.length,
-                0,
-            );
+            const zeroPaddingSize = Math.max(precision - fractionPartPadded.length, 0);
             const zeroPartString = '0'.repeat(zeroPaddingSize);
 
             fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;

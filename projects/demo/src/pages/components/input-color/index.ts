@@ -28,5 +28,5 @@ export default class PageComponent {
     protected align = this.options.align;
 
     protected readonly formats = ['hex', 'hexa'] as const;
-    protected format: 'hex' | 'hexa' = this.options.format;
+    protected format = this.options.format;
 }

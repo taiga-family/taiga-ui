@@ -7,7 +7,6 @@ export class TuiAutoColorPipe implements PipeTransform {
     }
 }
 
-/* eslint-disable no-bitwise */
 /**
  * Converts a string to an HSL color
  * @param value string to convert

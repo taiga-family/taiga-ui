@@ -12,7 +12,7 @@ import {TuiSlider} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected readonly labels: number[] = [0, 250, 500, 750, 1000];
+    protected readonly labels = [0, 250, 500, 750, 1000];
     protected readonly formControl = new FormControl(250);
 
     protected patchValue(newValue: number): void {
