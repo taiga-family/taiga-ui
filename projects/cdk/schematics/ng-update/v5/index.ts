@@ -38,6 +38,7 @@ import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migratePackages} from './steps/migrate-packages';
+import {migratePortals} from './steps/migrate-portals';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
@@ -76,6 +77,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateBreakpointService',
                     step: () => migrateBreakpointService(tree, options),
+                },
+                {
+                    name: 'migratePortalService',
+                    step: () => migratePortals(tree, options),
                 },
                 {
                     name: 'migrateCloseable',
