@@ -3643,7 +3643,7 @@ export default class Page {
         'xl',
     ];
 
-    protected size: TuiSizeS | TuiSizeXL = this.sizeVariants[1]!;
+    protected size = this.sizeVariants[1]!;
 
     protected contentTypeVariants = ['text', 'with icon', 'image'];
     protected contentType = this.contentTypeVariants[0]!;
@@ -3787,7 +3787,7 @@ export default class Example {
         'xs',
     ];
 
-    protected size: TuiSizeL | TuiSizeXS = this.sizeVariants[0]!;
+    protected size = this.sizeVariants[0]!;
 
     protected readonly examples = ['Basic', 'Custom color'];
 }
@@ -5427,7 +5427,7 @@ export default class Example {
 
     protected readonly sizes: TuiSizeL[] = ['l', 'm'];
 
-    protected size: TuiSizeL = this.sizes[0] || 'l';
+    protected size = this.sizes[0] || 'l';
 
     protected readonly examples = [
         'Basic',
@@ -5955,7 +5955,7 @@ export default class Example {
     ];
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-    protected size: TuiSizeL = this.options.size;
+    protected size = this.options.size;
     protected itemsLimit = this.options.itemsLimit;
 }
 ```
@@ -7687,8 +7687,8 @@ export default class Example {
     ];
 
     protected markerHandler: TuiMarkerHandler | null = null;
-    protected min: TuiDay = this.minVariants[0]!;
-    protected max: TuiDay = this.maxVariants[0]!;
+    protected min = this.minVariants[0]!;
+    protected max = this.maxVariants[0]!;
     protected cleaner = false;
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
     protected items = this.itemsVariants[0]!;
@@ -11574,7 +11574,7 @@ export default class Example {
         ],
     };
 
-    protected categories: string[] = Object.keys(this.filmDatabase);
+    protected categories = Object.keys(this.filmDatabase);
     protected filters: Record<string, boolean> = this.categories.reduce(
         (acc, category, i) => ({...acc, [category]: i % 2 === 0}),
         {},
@@ -12978,7 +12978,7 @@ import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
 })
 export default class Example {
     protected dropdownOpen = false;
-    protected dateValue: TuiDay = new TuiDay(2020, 0, 1);
+    protected dateValue = new TuiDay(2020, 0, 1);
     protected euro = 87; // 1 euro = 87 rub
     protected dollar = 75; // 1 dollar = 75 rub
 
@@ -16807,11 +16807,11 @@ export default class Page {
         'vertical',
     ];
 
-    protected orientation: TuiOrientation = this.orientationVariants[0]!;
+    protected orientation = this.orientationVariants[0]!;
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    protected size: TuiSizeL = this.sizeVariants[1]!;
+    protected size = this.sizeVariants[1]!;
     protected readonly routes = DemoRoute;
 }
 ```
@@ -18695,7 +18695,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value: string[] = ['I', 'love', 'Angular'];
+    protected value = ['I', 'love', 'Angular'];
 }
 ```
 **LESS:**
@@ -19331,7 +19331,7 @@ export default class PageComponent {
     protected align = this.options.align;
 
     protected readonly formats = ['hex', 'hexa'] as const;
-    protected format: 'hex' | 'hexa' = this.options.format;
+    protected format = this.options.format;
 }
 ```
 
@@ -20487,7 +20487,7 @@ export default class Example {
     ] as const;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-    protected listSize: TuiSizeL | TuiSizeS = this.sizeVariants[2]!;
+    protected listSize = this.sizeVariants[2]!;
 
     protected readonly items = tuiCreateDefaultDayRangePeriods();
 
@@ -21280,7 +21280,7 @@ export default class Example {
         src: 'https://tools.ietf.org/html/rfc675',
     };
 
-    protected removedFiles: TuiFileLike[] = [this.loadingFile as unknown as TuiFileLike];
+    protected removedFiles = [this.loadingFile as unknown as TuiFileLike];
     protected restoredFiles: TuiFileLike[] = [];
 
     protected removeLoading(): void {
@@ -21574,11 +21574,7 @@ export default class PageComponent {
     protected accept = '';
     protected acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
 
-    protected readonly showDeleteVariants: Array<boolean | 'always'> = [
-        true,
-        false,
-        'always',
-    ];
+    protected readonly showDeleteVariants = [true, false, 'always'];
 
     protected readonly maxFileSizeVariants = [
         100,
@@ -22302,7 +22298,7 @@ export default class PageComponent {
 
     protected min: TuiMonth | null = null;
     protected max: TuiMonth | null = null;
-    protected year: TuiYear = this.yearVariants[0];
+    protected year = this.yearVariants[0];
     protected disabledItemHandler: TuiBooleanHandler<TuiMonth> =
         this.disabledItemHandlerVariants[0];
 }
@@ -23991,7 +23987,7 @@ export default class PageComponent {
         'Using negative values with hidden minus sign',
     ];
 
-    protected readonly suffixVariants: Array<[string, string]> = [
+    protected readonly suffixVariants = [
         ['$', '$'],
         ['€', '€'],
         [' ₽', ' ₽'],
@@ -24337,13 +24333,7 @@ export default class PageComponent {
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
     protected thumbSize = 12;
-    protected readonly segmentsVariants: Array<number[] | number> = [
-        1,
-        5,
-        3,
-        [0.2, 0.5],
-        [0.1, 0.3],
-    ];
+    protected readonly segmentsVariants = [1, 5, 3, [0.2, 0.5], [0.1, 0.3]];
 
     protected readonly keyStepsVariants: Signal<readonly TuiKeySteps[]> = computed(() => [
         [
@@ -28610,7 +28600,7 @@ export default class Page {
 
     protected selectedTemplate = '';
 
-    protected readonly textVariants: string[] = ['', 'template', 'string'];
+    protected readonly textVariants = ['', 'template', 'string'];
 
     protected get template(): PolymorpheusContent {
         switch (this.selectedTemplate) {
@@ -32548,7 +32538,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2]!;
+    protected size = this.sizeVariants[2]!;
 
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-background-accent-1)',
@@ -37152,7 +37142,7 @@ import {TuiSlider} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected readonly labels: number[] = [0, 250, 500, 750, 1000];
+    protected readonly labels = [0, 250, 500, 750, 1000];
     protected readonly formControl = new FormControl(250);
 
     protected patchValue(newValue: number): void {
@@ -37224,7 +37214,7 @@ import {type TuiKeySteps, TuiSlider} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected readonly labels: string[] = ['5 000', '100 000', '300 000', '1 000 000'];
+    protected readonly labels = ['5 000', '100 000', '300 000', '1 000 000'];
     protected readonly formControl = new FormControl(720_000);
     protected readonly segments = this.labels.length - 1;
     protected readonly steps = this.segments * 10;
@@ -37421,13 +37411,7 @@ export default class Page {
         'Vertical',
     ];
 
-    protected readonly segmentsVariants: Array<number[] | number> = [
-        1,
-        5,
-        3,
-        [0.2, 0.5],
-        [0.1, 0.3],
-    ];
+    protected readonly segmentsVariants = [1, 5, 3, [0.2, 0.5], [0.1, 0.3]];
 
     protected readonly control = new FormControl(1);
 
@@ -38096,7 +38080,7 @@ export default class Page {
         'vertical',
     ];
 
-    protected orientation: TuiOrientation = this.orientationVariants[0]!;
+    protected orientation = this.orientationVariants[0]!;
 
     protected readonly iconVariants = ['', '@tui.clock', '@tui.heart'];
 
@@ -39876,10 +39860,7 @@ export default class Example {
         },
     ];
 
-    protected readonly customContentData: Item[] = [
-        ...this.basicData,
-        ...this.manualOpenData,
-    ];
+    protected readonly customContentData = [...this.basicData, ...this.manualOpenData];
 
     protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
 
@@ -44325,7 +44306,7 @@ export default class Example {
     }
 
     protected toggleLevel(index: number): void {
-        const nodes: readonly TreeNode[] = this.data.children || [];
+        const nodes = this.data.children || [];
         const key = nodes[index];
 
         if (key) {
@@ -48820,7 +48801,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value: string[] = ['3', '4', '5', 'Compartmentalization'];
+    protected value = ['3', '4', '5', 'Compartmentalization'];
 }
 ```
 **LESS:**
@@ -50396,7 +50377,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiSizeXXL | TuiSizeXXS = this.sizeVariants[2]!;
+    protected size = this.sizeVariants[2]!;
 
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-background-accent-1)'],
@@ -50408,7 +50389,7 @@ export default class Page {
         ),
     ];
 
-    protected colors: string[] = this.colorsVariants[0] ?? [];
+    protected colors = this.colorsVariants[0] ?? [];
 
     protected get computedColors(): string[] {
         return this.colors.slice(0, this.segments);
