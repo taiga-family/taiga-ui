@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NonNullableFormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
-import {tuiIsString} from '@taiga-ui/cdk';
+import {tuiIsString, TuiPlatform, tuiSetSignal} from '@taiga-ui/cdk';
 import {
     TUI_DARK_MODE,
     TUI_DARK_MODE_KEY,
@@ -61,6 +61,7 @@ import {TuiForm} from '@taiga-ui/layout';
 })
 export class SettingsComponent {
     private readonly doc = inject(DOCUMENT);
+    private readonly platform = inject(TuiPlatform);
     private readonly switcher = inject(TuiLanguageSwitcherService);
     private readonly theme = inject(TUI_DARK_MODE);
     private readonly stored = inject(WA_LOCAL_STORAGE)?.getItem(
@@ -106,7 +107,7 @@ export class SettingsComponent {
 
             this.switcher.setLanguage(language);
             this.doc.documentElement.setAttribute('dir', direction);
-            this.doc.documentElement.setAttribute('data-platform', platform);
+            tuiSetSignal(this.platform.tuiPlatform, platform);
 
             if (theme === null) {
                 this.theme.reset();

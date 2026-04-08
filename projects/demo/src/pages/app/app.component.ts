@@ -26,6 +26,7 @@ import {YaMetrikaService} from './metrika/metrika.service';
 import {News} from './news/news.component';
 import {TuiAlgoliaSearch} from './search';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
+import {TuiPlatform} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'app',
@@ -43,6 +44,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     styleUrl: './app.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
+    hostDirectives: [TuiPlatform],
     providers: [
         WaResizeObserverService,
         DEMO_PAGE_LOADED_PROVIDER,
