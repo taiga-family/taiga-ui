@@ -184,4 +184,14 @@ describe('tuiCreateFileFormatValidator', () => {
             expect(error?.$implicit).toEqual([invalidFile]);
         });
     });
+
+    describe('MIME type case insensitivity', () => {
+        const validator = tuiCreateFileFormatValidator('image/jpeg');
+
+        it('should accept file when MIME type differs only by case', () => {
+            const control = new FormControl([makeFile('photo.jpg', 'IMAGE/JPEG')]);
+
+            expect(validator(control)).toBeNull();
+        });
+    });
 });
