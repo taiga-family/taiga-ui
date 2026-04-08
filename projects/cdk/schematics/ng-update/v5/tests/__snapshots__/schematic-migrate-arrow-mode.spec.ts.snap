@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update arrow mode adds TODO above TUI_ARROW_MODE inject usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {inject} from '@angular/core';
+                import {TUI_ARROW_MODE} from '@taiga-ui/legacy';
+
+                export class TestComponent {
+                    private readonly arrowMode = inject(TUI_ARROW_MODE);
+                }
+            ",
+  "1. After": "
+                import {inject} from '@angular/core';
+                import {TUI_ARROW_MODE} from '@taiga-ui/legacy';
+
+                export class TestComponent {
+// TODO: (Taiga UI migration) TUI_ARROW_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead
+                    private readonly arrowMode = inject(TUI_ARROW_MODE);
+                }
+            ",
+}
+`;
+
+exports[`ng-update arrow mode adds TODO above TUI_ARROW_MODE usage in providers: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_ARROW, TUI_ARROW_MODE} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [
+                        {
+                            provide: TUI_ARROW_MODE,
+                            useValue: {interactive: TUI_ARROW, disabled: ''},
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TUI_ARROW, TUI_ARROW_MODE} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [
+                        {
+// TODO: (Taiga UI migration) TUI_ARROW_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead
+                            provide: TUI_ARROW_MODE,
+                            useValue: {interactive: TUI_ARROW, disabled: ''},
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update arrow mode adds TODO above TuiArrowMode type usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Inject} from '@angular/core';
+                import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/legacy';
+
+                export class TestComponent {
+                    constructor(
+                        @Inject(TUI_ARROW_MODE) readonly arrowMode: TuiArrowMode,
+                    ) {}
+                }
+            ",
+  "1. After": "
+                import {Inject} from '@angular/core';
+                import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/legacy';
+
+                export class TestComponent {
+                    constructor(
+// TODO: (Taiga UI migration) TUI_ARROW_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead
+                        @Inject(TUI_ARROW_MODE) readonly arrowMode: TuiArrowMode,
+                    ) {}
+                }
+            ",
+}
+`;
+
+exports[`ng-update arrow mode adds TODO above tuiArrowModeProvider usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_ARROW, tuiArrowModeProvider} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [
+                        tuiArrowModeProvider({interactive: TUI_ARROW, disabled: ''}),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TUI_ARROW, tuiArrowModeProvider} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [
+// TODO: (Taiga UI migration) TUI_ARROW_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead
+                        tuiArrowModeProvider({interactive: TUI_ARROW, disabled: ''}),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
