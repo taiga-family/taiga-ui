@@ -1,0 +1,906 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update hint on legacy controls basic tuiHintContent migration moves [tuiHintContent] to tui-icon with tuiTooltip: test.html 1`] = `
+{
+  "0. Before": "<tui-input [tuiHintContent]="hint" />",
+  "1. After": "<tui-input><tui-icon [tuiTooltip]="hint" /></tui-input>",
+}
+`;
+
+exports[`ng-update hint on legacy controls basic tuiHintContent migration moves [tuiHintContent] to tui-icon with tuiTooltip: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls basic tuiHintContent migration moves static tuiHintContent to tui-icon with tuiTooltip: test.html 1`] = `
+{
+  "0. Before": "<tui-input tuiHintContent="Some hint text" />",
+  "1. After": "<tui-input><tui-icon tuiTooltip="Some hint text" /></tui-input>",
+}
+`;
+
+exports[`ng-update hint on legacy controls basic tuiHintContent migration moves static tuiHintContent to tui-icon with tuiTooltip: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-combo-box: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-combo-box
+                        tuiHintAppearance="dark"
+                        [tuiHintContent]="hint"
+                        [(ngModel)]="value"
+                    >
+                        Label
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items | tuiFilterByInput"
+                        />
+                    </tui-combo-box>
+                ",
+  "1. After": "
+                    <tui-textfield
+                    >
+<label tuiLabel>
+                        Label
+                        </label>
+
+<input tuiComboBox [(ngModel)]="value" />
+<tui-data-list-wrapper
+                            *tuiDropdown
+                            [items]="items | tuiFilterByInput"
+                        />
+                    <tui-icon [tuiTooltip]="hint" tuiHintAppearance="dark" />
+</tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-combo-box: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-date: test.html 1`] = `
+{
+  "0. Before": "<tui-input-date [tuiHintContent]="hint" tuiHintDirection="bottom">Label</tui-input-date>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Label</label>
+
+<input tuiInputDate />
+<tui-calendar *tuiDropdown />
+<tui-icon [tuiTooltip]="hint" tuiHintDirection="bottom" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-date: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-date-range: test.html 1`] = `
+{
+  "0. Before": "<tui-input-date-range [tuiHintContent]="hint">Label</tui-input-date-range>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Label</label>
+
+<input tuiInputDateRange />
+<tui-calendar-range *tuiDropdown />
+<tui-icon [tuiTooltip]="hint" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-date-range: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-number: test.html 1`] = `
+{
+  "0. Before": "<tui-input-number [tuiHintContent]="hint" tuiHintDirection="top" />",
+  "1. After": "<tui-input-number><tui-icon [tuiTooltip]="hint" tuiHintDirection="top" /></tui-input-number>",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-number: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-phone: test.html 1`] = `
+{
+  "0. Before": "<tui-input-phone [tuiHintContent]="hint">Label</tui-input-phone>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Label</label>
+
+<input tuiInputPhone />
+<tui-icon [tuiTooltip]="hint" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-phone: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-tag: test.html 1`] = `
+{
+  "0. Before": "<tui-input-tag [tuiHintContent]="hint">Label</tui-input-tag>",
+  "1. After": "<tui-textfield multi>
+<label tuiLabel>Label</label>
+
+<input tuiInputChip />
+<tui-icon [tuiTooltip]="hint" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-tag: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-time: test.html 1`] = `
+{
+  "0. Before": "<tui-input-time [tuiHintContent]="hint">Label</tui-input-time>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Label</label>
+
+<input tuiInputTime />
+<tui-icon [tuiTooltip]="hint" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-input-time: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-multi-select: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-multi-select
+                        tuiHintDirection="right"
+                        [formControl]="control"
+                        [tuiHintContent]="hint"
+                        [(search)]="search"
+                    >
+                        Star Wars persons
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            tuiMultiSelectGroup
+                            [items]="filter(search)"
+                        />
+                    </tui-multi-select>
+                ",
+  "1. After": "
+                    <tui-textfield multi tuiChevron
+                    >
+                        Star Wars persons
+                        <!-- TODO: (Taiga UI migration) [search] was removed. Use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes. See: https://taiga-ui.dev/components/input-chip -->
+<input tuiInputChip [formControl]="control" />
+<tui-data-list-wrapper
+                            *tuiDropdown
+                            tuiMultiSelectGroup
+                            [items]="filter(search)"
+                        />
+                    <tui-icon [tuiTooltip]="hint" tuiHintDirection="end" />
+</tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-multi-select: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-select: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-select
+                        [tuiHintContent]="hint"
+                        [(ngModel)]="value"
+                    >
+                        Select user
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items"
+                        />
+                    </tui-select>
+                ",
+  "1. After": "
+                    <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    >
+<input placeholder="Select user" tuiSelect [(ngModel)]="value" />
+<tui-data-list-wrapper
+                            *tuiDropdown
+                            [items]="items"
+                        />
+                    <tui-icon [tuiTooltip]="hint" />
+</tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-select: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-textarea: test.html 1`] = `
+{
+  "0. Before": "<tui-textarea [tuiHintContent]="hint" />",
+  "1. After": "<tui-textarea><tui-icon [tuiTooltip]="hint" /></tui-textarea>",
+}
+`;
+
+exports[`ng-update hint on legacy controls different legacy controls migrates tuiHintContent on tui-textarea: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves all tuiHint* directives to tui-icon: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        tuiHintAppearance="dark"
+                        tuiHintDirection="left"
+                        [tuiHintContent]="hint"
+                    >
+                        Label
+                    </tui-input>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <label tuiLabel>Label</label>
+                    <input tuiInput />
+<tui-icon [tuiTooltip]="hint" tuiHintAppearance="dark" tuiHintDirection="start" />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves all tuiHint* directives to tui-icon: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves bound tuiHintDirection and tuiHintAppearance to tui-icon: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        [tuiHintAppearance]="appearance"
+                        [tuiHintContent]="hint"
+                        [tuiHintDirection]="direction"
+                    />
+                ",
+  "1. After": "
+                    <tui-input><tui-icon [tuiTooltip]="hint" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" /></tui-input>",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves bound tuiHintDirection and tuiHintAppearance to tui-icon: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves tuiHintAppearance to tui-icon alongside tuiTooltip: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        tuiHintAppearance="dark"
+                        [tuiHintContent]="hint"
+                    />
+                ",
+  "1. After": "
+                    <tui-input><tui-icon [tuiTooltip]="hint" tuiHintAppearance="dark" /></tui-input>",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves tuiHintAppearance to tui-icon alongside tuiTooltip: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves tuiHintDirection to tui-icon alongside tuiTooltip: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        tuiHintDirection="left"
+                        [tuiHintContent]="hint"
+                    >
+                        Label
+                    </tui-input>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <label tuiLabel>Label</label>
+                    <input tuiInput />
+<tui-icon [tuiTooltip]="hint" tuiHintDirection="start" />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls hint with additional directives moves tuiHintDirection to tui-icon alongside tuiTooltip: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls import additions adds TuiTooltip and TuiIcon imports when tuiHintContent is present: test.html 1`] = `
+{
+  "0. Before": "<tui-input [tuiHintContent]="hint" />",
+  "1. After": "<tui-input><tui-icon [tuiTooltip]="hint" /></tui-input>",
+}
+`;
+
+exports[`ng-update hint on legacy controls import additions adds TuiTooltip and TuiIcon imports when tuiHintContent is present: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {Component} from '@angular/core';
+                    import {TuiInputModule} from '@taiga-ui/legacy';
+
+                    @Component({
+                        standalone: true,
+                        templateUrl: './test.html',
+                        imports: [TuiInputModule],
+                    })
+                    export class Test {}
+                ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+                    import {Component} from '@angular/core';
+
+                    @Component({
+                        standalone: true,
+                        templateUrl: './test.html',
+                        imports: [TuiInput, TuiIcon, TuiTooltip],
+                    })
+                    export class Test {}
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls import additions does not duplicate TuiIcon import if already present: test.html 1`] = `
+{
+  "0. Before": "<tui-input [tuiHintContent]="hint" />",
+  "1. After": "<tui-input><tui-icon [tuiTooltip]="hint" /></tui-input>",
+}
+`;
+
+exports[`ng-update hint on legacy controls import additions does not duplicate TuiIcon import if already present: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {Component} from '@angular/core';
+                    import {TuiIcon} from '@taiga-ui/core';
+                    import {TuiInputModule} from '@taiga-ui/legacy';
+
+                    @Component({
+                        standalone: true,
+                        templateUrl: './test.html',
+                        imports: [TuiInputModule, TuiIcon],
+                    })
+                    export class Test {}
+                ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+
+                    import {Component} from '@angular/core';
+                    import { TuiIcon, TuiInput } from '@taiga-ui/core';
+
+                    @Component({
+                        standalone: true,
+                        templateUrl: './test.html',
+                        imports: [TuiInput, TuiIcon, TuiTooltip],
+                    })
+                    export class Test {}
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls multiple occurrences migrates multiple elements with tuiHintContent in one template: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        tuiHintDirection="left"
+                        [tuiHintContent]="hint1"
+                    ></tui-input>
+                    <tui-select
+                        tuiHintAppearance="dark"
+                        [tuiHintContent]="hint2"
+                    ></tui-select>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <input tuiInput />
+<tui-icon [tuiTooltip]="hint1" tuiHintDirection="start" />
+                    </tui-textfield>
+                    <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    >
+<input tuiSelect />
+<tui-icon [tuiTooltip]="hint2" tuiHintAppearance="dark" />
+</tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls multiple occurrences migrates multiple elements with tuiHintContent in one template: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls should not change does not touch legacy control without tuiHintContent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update hint on legacy controls should not change does not touch tui-icon that already has tuiTooltip: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-textfield>
+                        <input tuiInput />
+                        <tui-icon
+                            tuiHintDirection="left"
+                            [tuiTooltip]="hint"
+                        />
+                    </tui-textfield>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                        <input tuiInput />
+                        <tui-icon
+                            tuiHintDirection="start"
+                            [tuiTooltip]="hint"
+                        />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update hint on legacy controls should not change does not touch tui-icon that already has tuiTooltip: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
