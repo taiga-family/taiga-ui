@@ -49,6 +49,6 @@ export class TuiFont {
 
     protected readonly ratio = computed(
         ({fontSize, lineHeight} = this.styles()) =>
-            parseInt(lineHeight) / parseInt(fontSize),
+            Number.parseInt(lineHeight) / Number.parseInt(fontSize),
     );
 }
