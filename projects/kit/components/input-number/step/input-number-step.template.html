@@ -1,34 +1,32 @@
-<ng-container *tuiTextfieldContent>
-    @if (step()) {
-        <section class="t-input-number-buttons">
-            <button
-                size="s"
-                tabindex="-1"
-                tuiIconButton
-                type="button"
-                class="t-button"
-                [appearance]="appearance()"
-                [disabled]="!input.interactive() || input.parsed() >= mask.max()"
-                [iconStart]="options.icons.increase"
-                (click.prevent)="onStep(step())"
-                (pointerdown.prevent)="hold.next(step())"
-            >
-                +
-            </button>
-            <button
-                size="s"
-                tabindex="-1"
-                tuiIconButton
-                type="button"
-                class="t-button"
-                [appearance]="appearance()"
-                [disabled]="!input.interactive() || input.parsed() <= mask.min()"
-                [iconStart]="options.icons.decrease"
-                (click.prevent)="onStep(-step())"
-                (pointerdown.prevent)="hold.next(-step())"
-            >
-                -
-            </button>
-        </section>
-    }
-</ng-container>
+@if (directive.step()) {
+    <section class="t-input-number-buttons">
+        <button
+            size="s"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            class="t-button"
+            [appearance]="appearance()"
+            [disabled]="!input.interactive() || input.parsed() >= mask.max()"
+            [iconStart]="options.icons.increase"
+            (click.prevent)="directive.onStep(directive.step())"
+            (pointerdown.prevent)="hold.next(directive.step())"
+        >
+            +
+        </button>
+        <button
+            size="s"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            class="t-button"
+            [appearance]="appearance()"
+            [disabled]="!input.interactive() || input.parsed() <= mask.min()"
+            [iconStart]="options.icons.decrease"
+            (click.prevent)="directive.onStep(-directive.step())"
+            (pointerdown.prevent)="hold.next(-directive.step())"
+        >
+            -
+        </button>
+    </section>
+}

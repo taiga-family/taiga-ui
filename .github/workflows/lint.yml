@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
@@ -13,11 +16,11 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.196.0
+      - uses: taiga-family/ci/actions/setup/node@v1.196.0
 
       - run: echo "$(git log -1 --pretty=format:"%s")" | npx commitlint --verbose
         if: github.event_name == 'pull_request'
@@ -36,7 +39,7 @@ jobs:
               npm run lint
               HTML_ESLINT=true npm run lint
           fi
-      - uses: taiga-family/ci/actions/auto/push@v1.189.0
+      - uses: taiga-family/ci/actions/auto/push@v1.196.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 

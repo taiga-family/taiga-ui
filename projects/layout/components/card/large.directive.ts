@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
@@ -17,10 +18,15 @@ export const [TUI_CARD_OPTIONS, tuiCardOptionsProvider] = tuiCreateOptions({
 
 @Component({
     template: '',
-    styleUrls: ['./card.style.less', './large.style.less'],
+    styleUrl: './card.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './large.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-card-large'},
+    exportAs: `tui-card-large-${TUI_VERSION}`,
 })
 class Styles {}
 

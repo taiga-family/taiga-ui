@@ -34,7 +34,7 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
             // DemoRoute.InputMonthLegacy,
         ].forEach((path) => {
             describe('opens dropdown for readOnly=false', () => {
-                test(`${path}`, async ({page}) => {
+                test(path, async ({page}) => {
                     await tuiGoto(page, `${path}/API?readOnly=false`);
                     await expect(documentation.getRow('[readOnly]')).toBeAttached();
                     await input.click();
@@ -44,7 +44,7 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
             });
 
             describe('does not open dropdown for readOnly=true', () => {
-                test(`${path}`, async ({page}) => {
+                test(path, async ({page}) => {
                     await tuiGoto(page, `${path}/API?readOnly=true`);
                     await expect(documentation.getRow('[readOnly]')).toBeAttached();
                     await input.click();

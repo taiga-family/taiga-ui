@@ -8,27 +8,37 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
-import {NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
+import {SettingsComponent} from '@demo/components/settings/settings.component';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {environment} from '@demo/environments/environment';
 import {DemoRoute} from '@demo/routes';
-import {TuiDemo} from '@demo/utils';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
-import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TUI_DOC_SEARCH_ENABLED, TuiDocMain} from '@taiga-ui/addon-doc';
+import {TuiButton} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
 import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
+import {News} from './news/news.component';
 import {TuiAlgoliaSearch} from './search';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
 @Component({
     selector: 'app',
-    imports: [CustomHost, TuiAlgoliaSearch, TuiButton, TuiDataList, TuiDemo, TuiDropdown],
+    imports: [
+        CustomHost,
+        News,
+        RouterLink,
+        RouterOutlet,
+        SettingsComponent,
+        TuiAlgoliaSearch,
+        TuiButton,
+        TuiDocMain,
+    ],
     templateUrl: './app.template.html',
     styleUrl: './app.style.less',
     encapsulation: ViewEncapsulation.None,

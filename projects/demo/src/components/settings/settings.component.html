@@ -1,0 +1,144 @@
+<ng-content />
+<form
+    *tuiDropdown
+    tuiForm="s"
+    [formGroup]="form"
+>
+    <fieldset>
+        <legend>Theme</legend>
+        <tui-segmented>
+            <label>
+                <tui-icon icon="@tui.moon" />
+                Dark
+                <input
+                    formControlName="theme"
+                    type="radio"
+                    [value]="true"
+                />
+            </label>
+            <label>
+                <tui-icon icon="@tui.sun" />
+                Light
+                <input
+                    formControlName="theme"
+                    type="radio"
+                    [value]="false"
+                />
+            </label>
+            <label>
+                <tui-icon icon="@tui.sun-moon" />
+                Auto
+                <input
+                    formControlName="theme"
+                    type="radio"
+                    [value]="null"
+                />
+            </label>
+        </tui-segmented>
+    </fieldset>
+
+    <fieldset>
+        <legend>Direction</legend>
+        <tui-segmented>
+            <label>
+                <tui-icon
+                    badge="@tui.arrow-right"
+                    icon="@tui.case-upper"
+                />
+                LTR
+                <input
+                    formControlName="direction"
+                    type="radio"
+                    value="ltr"
+                />
+            </label>
+            <label>
+                <tui-icon
+                    badge="@tui.arrow-left"
+                    icon="@tui.case-upper"
+                />
+                RTL
+                <input
+                    formControlName="direction"
+                    type="radio"
+                    value="rtl"
+                />
+            </label>
+        </tui-segmented>
+    </fieldset>
+
+    <fieldset>
+        <legend tuiTitle>
+            Language
+            <div tuiSubtitle>For the components with built-in texts</div>
+        </legend>
+        <button
+            appearance="neutral"
+            formControlName="language"
+            tuiButton
+            tuiButtonSelect
+            tuiChevron
+            tuiDropdownLimitWidth="fixed"
+            type="button"
+        >
+            <img
+                alt=""
+                size="s"
+                tuiBadge
+                [src]="flags.get(form.value.language ?? '') | tuiFlag"
+            />
+            {{ form.value.language | titlecase }}
+            <tui-data-list *tuiDropdown>
+                @for (name of names; track $index) {
+                    <button
+                        tuiOption
+                        [value]="name"
+                    >
+                        <img
+                            alt=""
+                            size="s"
+                            tuiBadge
+                            [src]="flags.get(name) | tuiFlag"
+                        />
+                        {{ name | titlecase }}
+                    </button>
+                }
+            </tui-data-list>
+        </button>
+    </fieldset>
+    <fieldset>
+        <legend tuiTitle>
+            Platform
+            <div tuiSubtitle>For optional mobile styles</div>
+        </legend>
+        <tui-segmented>
+            <label>
+                <tui-icon icon="@tui.monitor" />
+                Web
+                <input
+                    formControlName="platform"
+                    type="radio"
+                    value="web"
+                />
+            </label>
+            <label>
+                <tui-icon icon="@tui.apple" />
+                iOS
+                <input
+                    formControlName="platform"
+                    type="radio"
+                    value="ios"
+                />
+            </label>
+            <label>
+                <tui-icon icon="@tui.bot" />
+                Android
+                <input
+                    formControlName="platform"
+                    type="radio"
+                    value="android"
+                />
+            </label>
+        </tui-segmented>
+    </fieldset>
+</form>

@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider adds TODO comment and removes dynamic [single]="expr" binding: test.html 1`] = `
+{
+  "0. Before": "<tui-calendar-sheet [single]="isSingle" />",
+  "1. After": "<!-- TODO: (Taiga UI migration) [single] binding removed: use tuiCalendarSheetOptionsProvider({rangeMode: boolean}) in the component providers instead -->
+<tui-calendar-sheet  />",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider handles multiple tui-calendar-sheet elements in one template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-calendar-sheet [single]="false" />
+                <tui-calendar-sheet [single]="true" />
+            ",
+  "1. After": "
+                <tui-calendar-sheet  />
+                <tui-calendar-sheet  />
+            ",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider handles multiple tui-calendar-sheet elements in one template: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiCalendarSheet} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import { TuiCalendarSheet, tuiCalendarSheetOptionsProvider } from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                    providers: [tuiCalendarSheetOptionsProvider({rangeMode: true})]
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="false" and adds rangeMode: true to existing tuiCalendarSheetOptionsProvider call: test.html 1`] = `
+{
+  "0. Before": "<tui-calendar-sheet [single]="false" />",
+  "1. After": "<tui-calendar-sheet  />",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="false" and adds rangeMode: true to existing tuiCalendarSheetOptionsProvider call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                    providers: [tuiCalendarSheetOptionsProvider({someOption: 'x'})],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                    providers: [tuiCalendarSheetOptionsProvider({someOption: 'x',
+                        rangeMode: true
+                    })],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="false" and adds tuiCalendarSheetOptionsProvider({rangeMode: true}) to providers: test.html 1`] = `
+{
+  "0. Before": "<tui-calendar-sheet [single]="false" />",
+  "1. After": "<tui-calendar-sheet  />",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="false" and adds tuiCalendarSheetOptionsProvider({rangeMode: true}) to providers: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiCalendarSheet} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import { TuiCalendarSheet, tuiCalendarSheetOptionsProvider } from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                    providers: [tuiCalendarSheetOptionsProvider({rangeMode: true})]
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="false" and updates rangeMode in existing tuiCalendarSheetOptionsProvider call: test.html 1`] = `
+{
+  "0. Before": "<tui-calendar-sheet [single]="false" />",
+  "1. After": "<tui-calendar-sheet  />",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="false" and updates rangeMode in existing tuiCalendarSheetOptionsProvider call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                    providers: [tuiCalendarSheetOptionsProvider({rangeMode: false})],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCalendarSheet],
+                    templateUrl: './test.html',
+                    providers: [tuiCalendarSheetOptionsProvider({rangeMode: true})],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="true" without adding provider (default behavior): test.html 1`] = `
+{
+  "0. Before": "<tui-calendar-sheet [single]="true" />",
+  "1. After": "<tui-calendar-sheet  />",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes [single]="true" without touching existing tuiCalendarSheetOptionsProvider({rangeMode: true}): test.html 1`] = `
+{
+  "0. Before": "<tui-calendar-sheet [single]="true" />",
+  "1. After": "<tui-calendar-sheet  />",
+}
+`;
+
+exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider removes plain single attribute without adding provider: test.html 1`] = `
+{
+  "0. Before": "<tui-calendar-sheet single />",
+  "1. After": "<tui-calendar-sheet  />",
+}
+`;

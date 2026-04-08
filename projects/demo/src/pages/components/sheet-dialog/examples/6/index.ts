@@ -31,7 +31,7 @@ import {TuiAppBar, TuiFloatingContainer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected search = '';
 
     protected readonly items = [

@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiCell] {
+[tuiCell]:where(*&) {
     --t-pad: 0.125rem 1rem;
     --t-radius: var(--tui-radius-s);
 
@@ -52,8 +52,8 @@
     // Specificity artificially increased for disabled state
     [tuiCellActions][tuiCellActions] {
         position: absolute;
-        right: 0;
         z-index: 1;
+        inset-inline-end: 0;
         padding-inline-end: inherit;
 
         --t-group-mask: none;
@@ -88,7 +88,6 @@
         margin-inline-end: auto;
         align-items: normal;
         text-align: start;
-        overflow: hidden;
     }
 
     [tuiTitle] ~ [tuiTitle] {
@@ -105,7 +104,7 @@
     tui-badge-notification[data-size='xs'] {
         .center-top();
 
-        left: -0.625rem;
+        inset-inline-start: -0.625rem;
     }
 
     &[data-size='s'] {
@@ -223,16 +222,16 @@
 }
 
 @media @tui-mouse {
-    a[tuiCell]:hover,
-    button[tuiCell]:hover,
-    label[tuiCell]:hover {
+    a[tuiCell]:where(*&):hover,
+    button[tuiCell]:where(*&):hover,
+    label[tuiCell]:where(*&):hover {
         &:not(:disabled, [data-state='disabled']) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;
         }
     }
 
-    label[tuiCell]:hover {
+    label[tuiCell]:where(*&):hover {
         &:not(:has(input:disabled)) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;

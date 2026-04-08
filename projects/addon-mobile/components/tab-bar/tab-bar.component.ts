@@ -23,7 +23,7 @@ export class TuiTabBarComponent {
     private readonly tabs = contentChildren(TuiTabBarItem, {read: ElementRef});
 
     public readonly quantity = input(4);
-    public readonly activeItemIndex = model(NaN);
+    public readonly activeItemIndex = model(Number.NaN);
 
     public setActive(tab: Element): void {
         this.updateIndex(this.tabs().findIndex((el) => el.nativeElement === tab));

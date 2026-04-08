@@ -22,7 +22,7 @@ describe('Button[loading]', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        protected loading = signal(false);
+        protected readonly loading = signal(false);
         public count = 0;
 
         protected increase(): void {

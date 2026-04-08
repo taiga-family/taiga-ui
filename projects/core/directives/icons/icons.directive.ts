@@ -8,7 +8,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_ICON_END,
@@ -28,7 +27,7 @@ const OPT = {self: true, optional: true} as const;
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-icons'},
+    exportAs: `tui-icons-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -43,7 +42,7 @@ class Styles {}
     },
 })
 export class TuiIcons {
-    private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+    private readonly resolver = tuiInjectIconResolver();
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));

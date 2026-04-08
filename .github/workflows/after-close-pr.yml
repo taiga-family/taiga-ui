@@ -3,14 +3,19 @@ on:
   pull_request:
     types: [closed]
 
+permissions: {}
+
 jobs:
   purge-cache:
+    permissions:
+      actions: write
+      contents: read
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
       BRANCH: refs/pull/${{ github.event.number }}/merge
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - continue-on-error: true
         run: |
           gh cache list --ref $BRANCH > cache.log && cat cache.log
@@ -21,14 +26,16 @@ jobs:
           done
 
   delete-firebase-channels:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
       channel: pr${{ github.event.number }}-${{ github.head_ref }}
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v6.0.2
       - name: Drop e2e report site
-        uses: w9jds/firebase-action@v13.35.1
+        uses: w9jds/firebase-action@v15.13.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-e2e --site taiga-previews-demo-e2e-report -f
@@ -36,7 +43,7 @@ jobs:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           PROJECT_ID: taiga-previews
       - name: Drop preview demo site
-        uses: w9jds/firebase-action@v13.35.1
+        uses: w9jds/firebase-action@v15.13.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-demo --site taiga-previews-demo -f

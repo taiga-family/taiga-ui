@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-doc",
-    "version": "5.0.0-rc.4",
+    "version": "5.1.0",
     "description": "Taiga UI based library for developing documentation portals for Angular libraries.",
     "keywords": [
         "angular",
@@ -16,18 +16,32 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
+    "contributors": [
+        {
+            "email": "alexander@inkin.ru",
+            "name": "Alex Inkin"
+        },
+        {
+            "email": "vladimir.potekh@gmail.com",
+            "name": "Vladimir Potekhin"
+        },
+        {
+            "email": "nikita.s.barsukov@gmail.com",
+            "name": "Nikita Barsukov"
+        }
+    ],
     "peerDependencies": {
         "@angular/cdk": ">=19.0.0",
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
         "@angular/forms": ">=19.0.0",
         "@angular/router": ">=19.0.0",
-        "@ng-web-apis/common": "^5.1.0",
-        "@ng-web-apis/platform": "^5.1.0",
-        "@taiga-ui/cdk": "^5.0.0-rc.4",
-        "@taiga-ui/core": "^5.0.0-rc.4",
-        "@taiga-ui/kit": "^5.0.0-rc.4",
-        "@taiga-ui/legacy": "^5.0.0-rc.4",
+        "@ng-web-apis/common": "^5.2.0",
+        "@ng-web-apis/platform": "^5.2.0",
+        "@taiga-ui/cdk": "5.1.0",
+        "@taiga-ui/core": "5.1.0",
+        "@taiga-ui/kit": "5.1.0",
+        "@taiga-ui/legacy": "5.1.0",
         "@taiga-ui/polymorpheus": "^5.0.0",
         "@types/markdown-it": "^14.1.2",
         "markdown-it": "^14.1.1",

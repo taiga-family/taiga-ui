@@ -2,13 +2,8 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiItemsHandlersProvider} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe, tuiItemsHandlersProvider} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 interface Character {
     readonly id: number;

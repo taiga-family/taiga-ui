@@ -5,6 +5,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
 import {
     TuiTextfieldContent,
@@ -18,22 +19,26 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
     selector: 'input[tuiInputDateTime][type="datetime-local"]',
     imports: [TuiTextfieldContent],
     templateUrl: './input-date-time.template.html',
-    styleUrl: './input-date-time.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-date-time.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
-    host: {ngSkipHydration: 'true'},
+    host: {'data-tui-version': TUI_VERSION, ngSkipHydration: 'true'},
 })
 export class TuiInputDateTimeComponent extends TuiNativeTimePicker {
     protected readonly host = inject(TuiInputDateTimeDirective);
     protected readonly step = computed(() => this.getStep(this.host.timeMode()));
     protected readonly value = computed(() => this.toISOString(this.host.value()));
 
-    protected min = computed(() =>
+    protected readonly min = computed(() =>
         this.toISOString([this.host.min(), this.host.minTime()]),
     );
 
-    protected max = computed(() =>
+    protected readonly max = computed(() =>
         this.toISOString([this.host.max(), this.host.maxTime()]),
     );
 

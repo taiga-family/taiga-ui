@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList} from '@taiga-ui/core';
-import {TuiChevron, TuiChip, TuiComboBox, TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiDataList, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiChip, TuiComboBox} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -53,7 +53,7 @@ export default class Example {
         ],
     };
 
-    protected categories: string[] = Object.keys(this.filmDatabase);
+    protected categories = Object.keys(this.filmDatabase);
     protected filters: Record<string, boolean> = this.categories.reduce(
         (acc, category, i) => ({...acc, [category]: i % 2 === 0}),
         {},

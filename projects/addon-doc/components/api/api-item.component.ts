@@ -128,7 +128,7 @@ export class TuiDocAPIItem<T> implements OnInit {
             isValueAvailableByKey && items ? items.indexOf(value as T) : value;
 
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
-        const propName = this.clearBrackets(this.name()) + suffix;
+        const propName = `${this.clearBrackets(this.name())}${suffix}`;
 
         tree.queryParams = {
             ...tree.queryParams,

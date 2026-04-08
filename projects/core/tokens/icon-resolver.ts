@@ -27,7 +27,7 @@ export function tuiInjectIconResolver(): TuiStringHandler<string> {
 
     return (icon) => {
         if (!icon || icon.includes('/')) {
-            return icon;
+            return icon.replace(/@[a-z]+\./i, '');
         }
 
         return icon.startsWith('@font.')

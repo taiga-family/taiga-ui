@@ -1,11 +1,22 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiConnected] {
+[tuiConnected]:where(*&) {
     --t-image-size: 2.5rem;
     --t-connected-height: calc(100% - var(--t-image-size) - 0.5rem);
 
+    > [tuiCell] {
+        padding: 1rem;
+    }
+
     &[tuiCardLarge] {
-        --t-connected-height: calc(100% - var(--t-image-size) - 0.25rem);
+        &[data-space] [tuiCell] {
+            padding: 1rem;
+            margin: -1rem -1rem calc(1rem - var(--t-space));
+
+            &:last-of-type {
+                margin-block-end: -1rem;
+            }
+        }
     }
 
     tui-accordion& {
@@ -17,9 +28,8 @@
     > [tuiStep]:not(:last-of-type)::before {
         content: '';
         position: absolute;
-        top: calc(var(--t-image-size) + 0.25rem);
-        left: calc(var(--t-image-size) / 2);
         display: block;
+        inset-block-start: calc(var(--t-image-size) + 0.25rem);
         inset-inline-start: calc(var(--t-image-size) / 2);
         block-size: var(--t-connected-height);
         inline-size: 1px;
@@ -35,8 +45,7 @@
         --t-margin: 0;
 
         &::before {
-            top: 0;
-            left: calc(var(--t-image-size) / 2);
+            inset-block-start: 0;
             inset-inline-start: calc(var(--t-image-size) / 2);
             block-size: 100%;
             margin: 0;
@@ -76,8 +85,7 @@
         &:not(:last-child)::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: calc(var(--t-image-size) / 2);
+            inset-block-start: 0;
             inset-inline-start: calc(var(--t-image-size) / 2);
             block-size: 100%;
             inline-size: 1px;

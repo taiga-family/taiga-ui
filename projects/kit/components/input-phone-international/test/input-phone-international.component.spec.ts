@@ -39,7 +39,9 @@ describe('InputPhoneInternational', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        public component = viewChild.required(TuiInputPhoneInternationalComponent);
+        public readonly component = viewChild.required(
+            TuiInputPhoneInternationalComponent,
+        );
 
         public control = new FormControl('+79110330102');
 
@@ -129,7 +131,7 @@ describe('InputPhoneInternational', () => {
 
         describe('should set KZ country code on paste event', () => {
             ['+7 777 777-7777', '+7 7272 588300'].forEach((phone) => {
-                it(`${phone}`, async () => {
+                it(phone, async () => {
                     await paste(phone);
 
                     expect(testComponent.countryIsoCode).toBe('KZ');

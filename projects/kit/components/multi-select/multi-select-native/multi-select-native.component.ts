@@ -4,7 +4,7 @@ import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsFlat, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {
     TuiSelectLike,
@@ -16,7 +16,6 @@ import {
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
-import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 import {TuiMultiSelectGroupComponent} from '../multi-select-group/multi-select-group.component';
 import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.component';

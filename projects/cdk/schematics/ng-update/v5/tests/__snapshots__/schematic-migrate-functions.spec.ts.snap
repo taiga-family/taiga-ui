@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate tuiBlurNativeFocused to tuiBlurFocused: test.ts 1`] = `
+{
+  "0. Before": "
+                import { tuiBlurNativeFocused } from "@taiga-ui/cdk";
+
+                tuiBlurNativeFocused(document);
+            ",
+  "1. After": "import { tuiBlurFocused } from "@taiga-ui/cdk";
+
+                                tuiBlurFocused(document);
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiGetNativeFocused to tuiGetFocused: test.ts 1`] = `
+{
+  "0. Before": "
+                import { tuiGetNativeFocused } from "@taiga-ui/cdk";
+
+                @Component({})
+                export class Test {
+                    private get focused(): boolean {
+                        return this.dropdown.el.contains(tuiGetNativeFocused(this.doc));
+                    }
+                }
+            ",
+  "1. After": "import { tuiGetFocused } from "@taiga-ui/cdk";
+
+                                @Component({})
+                export class Test {
+                    private get focused(): boolean {
+                        return this.dropdown.el.contains(tuiGetFocused(this.doc));
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiIsApple from @taiga-ui/cdk to isApple: test.ts 1`] = `
+{
+  "0. Before": "
+                import { tuiIsApple } from "@taiga-ui/cdk";
+
+                tuiIsApple(navigator);
+            ",
+  "1. After": "import { isApple } from "@ng-web-apis/platform";
+
+                                isApple(navigator);
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiIsApple from @taiga-ui/legacy to isApple: test.ts 1`] = `
+{
+  "0. Before": "
+                import { tuiIsApple } from "@taiga-ui/legacy";
+
+                tuiIsApple(navigator);
+            ",
+  "1. After": "import { isApple } from "@ng-web-apis/platform";
+
+                                isApple(navigator);
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiIsIos from @taiga-ui/cdk to isIos: test.ts 1`] = `
+{
+  "0. Before": "
+                import { tuiIsIos } from "@taiga-ui/cdk";
+
+                tuiIsIos(navigator);
+            ",
+  "1. After": "import { isIos } from "@ng-web-apis/platform";
+
+                                isIos(navigator);
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiIsNativeFocused to tuiIsFocused: test.ts 1`] = `
+{
+  "0. Before": "
+                import { tuiIsNativeFocused } from "@taiga-ui/cdk";
+
+                @Component({})
+                export class Test {
+                    public ngOnDestroy(): void {
+                        if (tuiIsNativeFocused(this.el)) {
+                            this.el.blur();
+                        }
+                    }
+                }
+            ",
+  "1. After": "import { tuiIsFocused } from "@taiga-ui/cdk";
+
+                                @Component({})
+                export class Test {
+                    public ngOnDestroy(): void {
+                        if (tuiIsFocused(this.el)) {
+                            this.el.blur();
+                        }
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiIsNativeFocusedIn to tuiIsFocusedIn: test.ts 1`] = `
+{
+  "0. Before": "
+                import { tuiIsNativeFocusedIn } from "@taiga-ui/cdk";
+
+                @Component({})
+                export class Test {
+                    public handleFocusLossIfNecessary(element: Element = this.el): void {
+                        if (tuiIsNativeFocusedIn(element)) {
+                            this.origin?.focus({preventScroll: true});
+                        }
+                    }
+                }
+            ",
+  "1. After": "import { tuiIsFocusedIn } from "@taiga-ui/cdk";
+
+                                @Component({})
+                export class Test {
+                    public handleFocusLossIfNecessary(element: Element = this.el): void {
+                        if (tuiIsFocusedIn(element)) {
+                            this.origin?.focus({preventScroll: true});
+                        }
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiIsNativeKeyboardFocusable to tuiIsFocusable: test.ts 1`] = `
+{
+  "0. Before": "
+            import { tuiIsNativeKeyboardFocusable } from "@taiga-ui/cdk";
+
+            tuiIsNativeKeyboardFocusable(document.createElement('div'));
+            ",
+  "1. After": "import { tuiIsFocusable } from "@taiga-ui/cdk";
+
+                        tuiIsFocusable(document.createElement('div'));
+            ",
+}
+`;

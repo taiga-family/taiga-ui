@@ -69,8 +69,8 @@
         font: var(--tui-typography-body-s);
 
         tui-icon,
-        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance^='action-'])::before,
-        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance^='action-'])::after {
+        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance^='action'])::before,
+        &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance^='action'])::after {
             font-size: 1rem;
         }
     }
@@ -120,6 +120,11 @@
             max-block-size: calc(var(--t-line-height) * 2);
         }
     }
+
+    &:is(a):not([href]) {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
 }
 
 [tuiIconButton]:where(*&) {
@@ -127,6 +132,7 @@
     inline-size: var(--t-size);
     min-inline-size: var(--t-size);
     font-size: 0 !important;
+    font-variant-ligatures: none !important;
     padding: 0;
 
     &&[data-icon-start]::after {

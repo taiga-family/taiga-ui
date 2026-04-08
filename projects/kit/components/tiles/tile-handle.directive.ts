@@ -14,8 +14,8 @@ import {TuiTile} from './tile.component';
 export class TuiTileHandle {
     private readonly doc = inject(DOCUMENT);
     private readonly tile = inject(TuiTile);
-    private x = NaN;
-    private y = NaN;
+    private x = Number.NaN;
+    private y = Number.NaN;
 
     protected readonly pointerSub = merge(
         tuiTypedFromEvent(this.doc, 'pointerup'),
@@ -33,12 +33,12 @@ export class TuiTileHandle {
             }
         });
 
-    protected onPointer(x = NaN, y = NaN): void {
+    protected onPointer(x = Number.NaN, y = Number.NaN): void {
         const {left, top} = this.tile.element.getBoundingClientRect();
 
         this.x = x - left;
         this.y = y - top;
-        this.tile.onDrag([NaN, NaN]);
+        this.tile.onDrag([Number.NaN, Number.NaN]);
     }
 
     protected onStart(event: PointerEvent): void {

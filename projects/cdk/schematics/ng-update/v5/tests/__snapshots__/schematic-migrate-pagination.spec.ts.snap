@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate tui-pagination size adds TODO comment and removes [size] binding from tui-pagination: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-pagination
+                    [index]="10"
+                    [length]="64"
+                    [sidePadding]="sidePadding"
+                    [size]="'s'"
+                />
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) use tui-pager instead -->
+<tui-pagination
+                    [index]="10"
+                    [length]="64"
+                    [sidePadding]="sidePadding"
+                    
+                />
+            ",
+}
+`;
+
+exports[`ng-update migrate tui-pagination size adds TODO comment and removes size="s" from tui-pagination: test.html 1`] = `
+{
+  "0. Before": "<tui-pagination size="s" />",
+  "1. After": "<!-- TODO: (Taiga UI migration) use tui-pager instead -->
+<tui-pagination  />",
+}
+`;

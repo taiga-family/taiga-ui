@@ -21,7 +21,7 @@ export class TuiDocScrollIntoViewLink implements OnChanges {
         )
         .subscribe(() => this.el.scrollIntoView());
 
-    public readonly tuiDocScrollIntoViewLink = input<boolean>(false);
+    public readonly tuiDocScrollIntoViewLink = input(false);
 
     public ngOnChanges(): void {
         this.scroll$.next(this.tuiDocScrollIntoViewLink());

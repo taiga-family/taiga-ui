@@ -2,6 +2,10 @@ name: 📈 Performance Stress Testing
 on:
   workflow_call:
 
+permissions:
+  actions: read
+  contents: read
+
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   PERF_BASELINE_FALLBACK_BRANCH: main
@@ -38,21 +42,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout feature branch
-        uses: actions/checkout@v4.3.1
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.189.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.196.0
+      - uses: taiga-family/ci/actions/setup/node@v1.196.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.196.0
       - name: Restore dist cache from parent workflow build
-        uses: actions/cache/restore@v4.3.0
+        uses: actions/cache/restore@v5.0.4
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
       - name: Attempt download of demo dist artifact (fallback)
         if: ${{ !cancelled() }}
         continue-on-error: true
-        uses: actions/download-artifact@v4.3.0
+        uses: actions/download-artifact@v8.0.1
         with:
           name: demo-dist-${{ github.sha }}
           path: dist/demo
@@ -93,7 +97,7 @@ jobs:
         run: echo 'Skipping performance stress due to missing dist'
       - name: Serve feature build
         if: steps.dist-check.outputs.skip == 'false'
-        uses: taiga-family/ci/actions/run/serve@v1.189.0
+        uses: taiga-family/ci/actions/run/serve@v1.196.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -130,13 +134,13 @@ jobs:
           echo "Completed multi-run current collection"
       - name: Clone baseline snapshot build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/clone@v1.189.0
+        uses: taiga-family/ci/actions/run/clone@v1.196.0
         with:
           branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
       - name: Serve baseline build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/serve@v1.189.0
+        uses: taiga-family/ci/actions/run/serve@v1.196.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -197,7 +201,7 @@ jobs:
             echo 'Missing baseline or current metrics.' >> ./performance-stress/diff/report.md
           fi
       - name: Upload performance stress artifacts
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@v7.0.0
         with:
           path: ./performance-stress/**
           name: performance-stress-artifacts_${{ github.sha }}

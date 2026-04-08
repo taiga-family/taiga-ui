@@ -13,6 +13,7 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const NGFOR_REPEAT_TIMES_PATTERN =
     /let\s+(\w+)\s+of\s+([^\s|]+)\s*\|\s*tuiRepeatTimes\s*/;
+const FOR_BLOCK_PATTERN = /@for\s*\(/g;
 
 export function migrateRepeatTimes({
     resource,
@@ -30,6 +31,8 @@ export function migrateRepeatTimes({
     for (const element of elements) {
         migrateNgForRepeatTimes(element, template, recorder, templateOffset);
     }
+
+    migrateAtForRepeatTimes(template, recorder, templateOffset);
 }
 
 function migrateNgForRepeatTimes(
@@ -137,4 +140,93 @@ function computeIndent(template: string, pos: number): number {
     const lastNewLine = template.lastIndexOf('\n', pos);
 
     return pos - (lastNewLine + 1);
+}
+
+function migrateAtForRepeatTimes(
+    template: string,
+    recorder: UpdateRecorder,
+    offset: number,
+): void {
+    const replacements: Array<{start: number; end: number; replacement: string}> = [];
+
+    for (const match of template.matchAll(FOR_BLOCK_PATTERN)) {
+        const start = match.index;
+
+        if (start === undefined) {
+            continue;
+        }
+
+        const openParen = start + (match[0]?.length ?? 0) - 1;
+        const closeParen = findMatchingParen(template, openParen);
+
+        if (closeParen === -1) {
+            continue;
+        }
+
+        const header = template.slice(openParen + 1, closeParen);
+        const replacementHeader = replaceRepeatTimesInForHeader(header);
+
+        if (!replacementHeader) {
+            continue;
+        }
+
+        replacements.push({
+            start: openParen + 1,
+            end: closeParen,
+            replacement: replacementHeader,
+        });
+    }
+
+    replacements
+        .sort((a, b) => b.start - a.start)
+        .forEach(({start, end, replacement}) => {
+            recorder.remove(offset + start, end - start);
+            recorder.insertRight(offset + start, replacement);
+        });
+}
+
+function replaceRepeatTimesInForHeader(header: string): string | null {
+    const pipeMatch = /\|\s*tuiRepeatTimes\b/.exec(header);
+
+    if (pipeMatch?.index === undefined) {
+        return null;
+    }
+
+    const beforePipe = header.slice(0, pipeMatch.index);
+    const ofIndex = beforePipe.lastIndexOf(' of ');
+
+    if (ofIndex === -1) {
+        return null;
+    }
+
+    const expression = beforePipe.slice(ofIndex + ' of '.length).trim();
+
+    if (!expression) {
+        return null;
+    }
+
+    const beforeExpression = beforePipe.slice(0, ofIndex + ' of '.length);
+    const afterPipe = header.slice(pipeMatch.index + pipeMatch[0].length);
+
+    return `${beforeExpression}'-'.repeat(${expression})${afterPipe}`;
+}
+
+function findMatchingParen(template: string, openParen: number): number {
+    let depth = 0;
+
+    for (let i = openParen; i < template.length; i++) {
+        const char = template[i];
+
+        if (char === '(') {
+            depth++;
+        } else if (char === ')') {
+            depth--;
+
+            if (depth === 0) {
+                return i;
+            }
+        }
+    }
+
+    return -1;
 }

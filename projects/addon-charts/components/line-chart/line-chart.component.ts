@@ -38,10 +38,10 @@ export class TuiLineChart {
     private readonly autoId = tuiGenerateId();
     private readonly resize = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
-            map(([e]) => e?.contentRect.height || NaN),
+            map(([e]) => e?.contentRect.height || Number.NaN),
             filter((height) => !Number.isNaN(height)),
         ),
-        {initialValue: NaN},
+        {initialValue: Number.NaN},
     );
 
     private readonly box = computed(
@@ -86,17 +86,17 @@ export class TuiLineChart {
     public readonly height = input(0);
     public readonly smoothingFactor = input(this.options.smoothingFactor);
 
-    public xStringify = input<TuiStringHandler<number> | null>(null);
-    public yStringify = input<TuiStringHandler<number> | null>(null);
+    public readonly xStringify = input<TuiStringHandler<number> | null>(null);
+    public readonly yStringify = input<TuiStringHandler<number> | null>(null);
 
     public readonly filled = input(this.options.filled);
     public readonly dots = input(this.options.dots);
 
-    public value = input<readonly TuiPoint[], readonly TuiPoint[]>([], {
+    public readonly value = input<readonly TuiPoint[], readonly TuiPoint[]>([], {
         transform: (value) => value.filter((item) => !item.some(Number.isNaN)),
     });
 
-    public readonly hovered = signal<number>(NaN);
+    public readonly hovered = signal(Number.NaN);
 
     public onHovered(index: number): void {
         this.hovered.set(index);
@@ -129,7 +129,7 @@ export class TuiLineChart {
 
     protected onMouseLeave(): void {
         if (!this.hintDirective) {
-            this.onHovered(NaN);
+            this.onHovered(Number.NaN);
         }
     }
 

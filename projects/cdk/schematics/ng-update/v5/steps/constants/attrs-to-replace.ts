@@ -1,3 +1,4 @@
+import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {type ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
@@ -34,6 +35,22 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '[tuiNotificationOptions]'},
     },
     {
+        from: {attrName: '[tuiOnboarding]', withTagNames: ['*']},
+        to: {attrName: '[tuiResponsiveDialog]'},
+    },
+    {
+        from: {attrName: '[(tuiOnboarding)]', withTagNames: ['*']},
+        to: {attrName: '[(tuiResponsiveDialog)]'},
+    },
+    {
+        from: {attrName: '(tuiOnboardingChange)', withTagNames: ['*']},
+        to: {attrName: '(tuiResponsiveDialogChange)'},
+    },
+    {
+        from: {attrName: '[tuiOnboardingOptions]', withTagNames: ['*']},
+        to: {attrName: '[tuiResponsiveDialogOptions]'},
+    },
+    {
         from: {attrName: 'tuiButtonClose', withTagNames: ['*']},
         to: {attrName: 'tuiButtonX'},
     },
@@ -43,6 +60,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
     },
     {
         from: {attrName: '*tuiTextfieldDropdown', withTagNames: ['*']},
+        to: {attrName: '*tuiDropdown'},
+    },
+    {
+        from: {attrName: '*tuiDataList', withTagNames: ['*']},
         to: {attrName: '*tuiDropdown'},
     },
     {
@@ -58,8 +79,20 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: 'tuiDropdownSheet'},
     },
     {
+        from: {attrName: '[tuiSheet]', withTagNames: ['*']},
+        to: {attrName: '[tuiSheetDialog]'},
+    },
+    {
+        from: {attrName: 'tuiSheetOptions', withTagNames: ['*']},
+        to: {attrName: 'tuiSheetDialogOptions'},
+    },
+    {
         from: {attrName: 'showLoader', withTagNames: ['tui-loader']},
         to: {attrName: 'loading'},
+    },
+    {
+        from: {attrName: '[showLoader]', withTagNames: ['tui-loader']},
+        to: {attrName: '[loading]'},
     },
     {
         from: {attrName: 'tuiStepper', withTagNames: ['nav']},
@@ -76,5 +109,25 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
     {
         from: {attrName: '*tuiExpandContent', withTagNames: ['*']},
         to: {attrName: '*tuiItem'},
+    },
+    {
+        from: {
+            attrName: '[tuiAppearance]',
+            withTagNames: ['*'],
+            filterFn: (element) => hasElementAttribute(element, 'tuiCardLarge'),
+        },
+        to: {attrName: '[appearance]'},
+    },
+    {
+        from: {
+            attrName: 'tuiAppearance',
+            withTagNames: ['*'],
+            filterFn: (element) => hasElementAttribute(element, 'tuiCardLarge'),
+        },
+        to: {attrName: 'appearance'},
+    },
+    {
+        from: {attrName: '(tuiPresentChange)', withTagNames: ['*']},
+        to: {attrName: '(tuiPresent)'},
     },
 ];

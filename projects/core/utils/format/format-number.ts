@@ -36,10 +36,7 @@ export function tuiFormatNumber(
 
     if (Number.isFinite(precision)) {
         if (decimalMode === 'always' || (hasFraction && decimalMode === 'pad')) {
-            const zeroPaddingSize: number = Math.max(
-                precision - fractionPartPadded.length,
-                0,
-            );
+            const zeroPaddingSize = Math.max(precision - fractionPartPadded.length, 0);
             const zeroPartString = '0'.repeat(zeroPaddingSize);
 
             fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
@@ -50,7 +47,7 @@ export function tuiFormatNumber(
 
     const remainder = integerPartString.length % 3;
     const sign = value < 0 ? CHAR_HYPHEN : '';
-    let result = sign + integerPartString.charAt(0);
+    let result = `${sign}${integerPartString.charAt(0)}`;
 
     for (let i = 1; i < integerPartString.length; i++) {
         if (i % 3 === remainder && integerPartString.length > 3) {
@@ -60,5 +57,7 @@ export function tuiFormatNumber(
         result += integerPartString.charAt(i);
     }
 
-    return fractionPartPadded ? result + decimalSeparator + fractionPartPadded : result;
+    return fractionPartPadded
+        ? `${result}${decimalSeparator}${fractionPartPadded}`
+        : result;
 }

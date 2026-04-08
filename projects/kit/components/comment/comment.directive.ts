@@ -21,13 +21,14 @@ import {
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-comment'},
+    exportAs: `tui-comment-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
     selector: '[tuiComment]',
     host: {
+        tuiComment: '',
         'data-tui-version': TUI_VERSION,
         '[attr.data-direction]': 'direction()',
     },

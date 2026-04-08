@@ -49,6 +49,24 @@
     </ng-template>
 </div>
 
+<div class="tui-space_bottom-4">
+    <tui-line-clamp
+        [content]="value()"
+        [linesLimit]="2"
+    />
+
+    @if (!value()) {
+        <button
+            size="s"
+            tuiButton
+            type="button"
+            (click)="update()"
+        >
+            Load dynamic value
+        </button>
+    }
+</div>
+
 @if (value$ | async; as value) {
     <div class="wrapper">
         <div class="result">

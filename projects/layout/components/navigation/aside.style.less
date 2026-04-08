@@ -1,13 +1,12 @@
 @import '@taiga-ui/styles/utils';
 
-aside[tuiNavigationAside] {
+aside[tuiNavigationAside]:where(*&) {
     .transition(width);
 
     position: sticky;
-    top: 3rem;
-    left: 0;
     z-index: 1;
     display: flex;
+    inset-block-start: 3rem;
     inset-inline-start: 0;
     inline-size: 3rem;
     flex-direction: column;
@@ -19,9 +18,8 @@ aside[tuiNavigationAside] {
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 100%;
         z-index: -1;
+        inset-block-start: 0;
         inset-inline-start: 100%;
         block-size: 3rem;
         inline-size: 3rem;
@@ -29,18 +27,7 @@ aside[tuiNavigationAside] {
         border-top-left-radius: 1.25rem;
         box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
         transform: scaleX(var(--tui-inline));
-    }
-
-    &::after {
-        content: '';
-        position: fixed;
-        top: inherit;
-        left: 0;
-        bottom: -3rem;
-        z-index: -1;
-        inset-inline-start: 0;
-        inline-size: 3rem;
-        background: inherit;
+        clip-path: inset(0);
     }
 
     &._expanded {
@@ -99,7 +86,7 @@ aside[tuiNavigationAside] {
     }
 }
 
-[tuiAsideItem][tuiAsideItem] {
+[tuiAsideItem][tuiAsideItem]:where(*&) {
     inline-size: 100%;
     justify-content: flex-start;
     gap: 0.625rem;

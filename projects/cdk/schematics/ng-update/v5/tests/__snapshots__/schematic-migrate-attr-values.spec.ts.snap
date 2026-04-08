@@ -1,0 +1,615 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update start/end instead of left/right replaces for [align] on input with tuiInputColor: test.html 1`] = `
+{
+  "0. Before": "
+                <input
+                    tuiInputColor
+                    [align]="'right'"
+                />
+                <input
+                    tuiInputColor
+                    [align]="'left'"
+                />
+
+                <input [align]="'right'" />
+                <input [align]="'left'" />
+            ",
+  "1. After": "
+                <input
+                    tuiInputColor
+                    [align]="'end'"
+                />
+                <input
+                    tuiInputColor
+                    [align]="'start'"
+                />
+
+                <input [align]="'right'" />
+                <input [align]="'left'" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for [direction] on tui-avatar-stack: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-avatar-stack [direction]="'right'" />
+                <tui-avatar-stack [direction]="'left'" />
+
+                <tui-item [direction]="'right'" />
+                <tui-item [direction]="'left'" />
+            ",
+  "1. After": "
+                <tui-avatar-stack [direction]="'end'" />
+                <tui-avatar-stack [direction]="'start'" />
+
+                <tui-item [direction]="'right'" />
+                <tui-item [direction]="'left'" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for [direction] on tui-drawer: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-drawer [direction]="'right'">Right drawer</tui-drawer>
+                <tui-drawer [direction]="'left'">Left drawer</tui-drawer>
+
+                <tui-item [direction]="'right'" />
+                <tui-item [direction]="'left'" />
+            ",
+  "1. After": "
+                <tui-drawer [direction]="'end'">Right drawer</tui-drawer>
+                <tui-drawer [direction]="'start'">Left drawer</tui-drawer>
+
+                <tui-item [direction]="'right'" />
+                <tui-item [direction]="'left'" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for [tuiComment]: test.html 1`] = `
+{
+  "0. Before": "
+                <div [tuiComment]="'right'">Right comment</div>
+                <div [tuiComment]="'left'">Left comment</div>
+            ",
+  "1. After": "
+                <div [tuiComment]="'end'">Right comment</div>
+                <div [tuiComment]="'start'">Left comment</div>
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for [tuiDropdownAlign]: test.html 1`] = `
+{
+  "0. Before": "
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'right'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'center'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'left'"
+                ></div>
+            ",
+  "1. After": "
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'end'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'center'"
+                ></div>
+                <div
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownAlign]="'start'"
+                ></div>
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for [tuiHintDirection]: test.html 1`] = `
+{
+  "0. Before": "
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'left-bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'right-bottom'"
+                ></div>
+            ",
+  "1. After": "
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-start'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'bottom-end'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-start'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'top-end'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'start-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'start'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'start-bottom'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'end-top'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'end'"
+                ></div>
+                <div
+                    tuiHint
+                    [tuiHintDirection]="'end-bottom'"
+                ></div>
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for [tuiSlot]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-item [tuiSlot]="'right'" />
+                <tui-item [tuiSlot]="'left'" />
+            ",
+  "1. After": "
+                <tui-item [tuiSlot]="'end'" />
+                <tui-item [tuiSlot]="'start'" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for [vertical] on tui-tabs: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-tabs [vertical]="'right'" />
+                <tui-tabs [vertical]="'left'" />
+
+                <nav
+                    tuiTabs
+                    [vertical]="'right'"
+                />
+                <nav
+                    tuiTabs
+                    [vertical]="'left'"
+                />
+
+                <tui-item [vertical]="'right'" />
+                <tui-item [vertical]="'left'" />
+            ",
+  "1. After": "
+                <tui-tabs [vertical]="'end'" />
+                <tui-tabs [vertical]="'start'" />
+
+                <tui-tabs
+                    
+                    [vertical]="'end'"
+                />
+                <tui-tabs
+                    
+                    [vertical]="'start'"
+                />
+
+                <tui-item [vertical]="'right'" />
+                <tui-item [vertical]="'left'" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for align on input with tuiInputColor: test.html 1`] = `
+{
+  "0. Before": "
+                <input
+                    align="right"
+                    tuiInputColor
+                />
+                <input
+                    align="left"
+                    tuiInputColor
+                />
+                <input align="right" />
+                <input align="left" />
+            ",
+  "1. After": "
+                <input
+                    align="end"
+                    tuiInputColor
+                />
+                <input
+                    align="start"
+                    tuiInputColor
+                />
+                <input align="right" />
+                <input align="left" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for align on tuiDropdownOptionsProvider: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
+
+                tuiDropdownOptionsProvider({align: 'left'});
+                tuiDropdownOptionsProvider({
+                    limitWidth: 'fixed',
+                    align: 'right',
+                });
+            ",
+  "1. After": "
+                import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
+
+                tuiDropdownOptionsProvider({align: 'start'});
+                tuiDropdownOptionsProvider({
+                    limitWidth: 'fixed',
+                    align: 'end',
+                });
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for currencyAlign on tuiAmount pipe: test.html 1`] = `
+{
+  "0. Before": "
+                <li>{{ -12345.1 | tuiAmount: 'USD' : 'left' }}</li>
+                <li>{{ 100 | tuiAmount: '£' : 'right' | somePipe: 'left' }}</li>
+            ",
+  "1. After": "
+                <li>{{ -12345.1 | tuiAmount: 'USD' : 'start' }}</li>
+                <li>{{ 100 | tuiAmount: '£' : 'end' | somePipe: 'left' }}</li>
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for currencyAlign on tuiAmountOptionsProvider: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiAmountOptionsProvider} from '@taiga-ui/addon-commerce';
+
+                tuiAmountOptionsProvider({currencyAlign: 'left'});
+                tuiAmountOptionsProvider({
+                    sign: 'always',
+                    currency: 'USD',
+                    currencyAlign: 'right',
+                });
+            ",
+  "1. After": "
+                import {tuiAmountOptionsProvider} from '@taiga-ui/addon-commerce';
+
+                tuiAmountOptionsProvider({currencyAlign: 'start'});
+                tuiAmountOptionsProvider({
+                    sign: 'always',
+                    currency: 'USD',
+                    currencyAlign: 'end',
+                });
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for direction on tui-avatar-stack: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-avatar-stack direction="right" />
+                <tui-avatar-stack direction="left" />
+
+                <tui-item direction="right" />
+                <tui-item direction="left" />
+            ",
+  "1. After": "
+                <tui-avatar-stack direction="end" />
+                <tui-avatar-stack direction="start" />
+
+                <tui-item direction="right" />
+                <tui-item direction="left" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for direction on tui-drawer: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-drawer direction="right">Right drawer</tui-drawer>
+                <tui-drawer direction="left">Left drawer</tui-drawer>
+
+                <tui-item direction="right" />
+                <tui-item direction="left" />
+            ",
+  "1. After": "
+                <tui-drawer direction="end">Right drawer</tui-drawer>
+                <tui-drawer direction="start">Left drawer</tui-drawer>
+
+                <tui-item direction="right" />
+                <tui-item direction="left" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for direction on tuiHintOptionsProvider: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiHintOptionsProvider} from '@taiga-ui/core';
+
+                tuiHintOptionsProvider({direction: 'bottom-left'});
+                tuiHintOptionsProvider({direction: 'bottom'});
+                tuiHintOptionsProvider({direction: 'bottom-right'});
+                tuiHintOptionsProvider({direction: 'top-left'});
+                tuiHintOptionsProvider({direction: 'top'});
+                tuiHintOptionsProvider({direction: 'top-right'});
+                tuiHintOptionsProvider({direction: 'left-top'});
+                tuiHintOptionsProvider({direction: 'left'});
+                tuiHintOptionsProvider({direction: 'left-bottom'});
+                tuiHintOptionsProvider({direction: 'right-top'});
+                tuiHintOptionsProvider({direction: 'right'});
+                tuiHintOptionsProvider({direction: 'right-bottom'});
+            ",
+  "1. After": "
+                import {tuiHintOptionsProvider} from '@taiga-ui/core';
+
+                tuiHintOptionsProvider({direction: 'bottom-start'});
+                tuiHintOptionsProvider({direction: 'bottom'});
+                tuiHintOptionsProvider({direction: 'bottom-end'});
+                tuiHintOptionsProvider({direction: 'top-start'});
+                tuiHintOptionsProvider({direction: 'top'});
+                tuiHintOptionsProvider({direction: 'top-end'});
+                tuiHintOptionsProvider({direction: 'start-top'});
+                tuiHintOptionsProvider({direction: 'start'});
+                tuiHintOptionsProvider({direction: 'start-bottom'});
+                tuiHintOptionsProvider({direction: 'end-top'});
+                tuiHintOptionsProvider({direction: 'end'});
+                tuiHintOptionsProvider({direction: 'end-bottom'});
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for tuiComment: test.html 1`] = `
+{
+  "0. Before": "
+                <div tuiComment="right">Right comment</div>
+                <div tuiComment="left">Left comment</div>
+            ",
+  "1. After": "
+                <div tuiComment="end">Right comment</div>
+                <div tuiComment="start">Left comment</div>
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for tuiDropdownAlign: test.html 1`] = `
+{
+  "0. Before": "
+                <div
+                    tuiDropdownAlign="right"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="center"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="left"
+                    [tuiDropdown]="dropdown"
+                ></div>
+            ",
+  "1. After": "
+                <div
+                    tuiDropdownAlign="end"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="center"
+                    [tuiDropdown]="dropdown"
+                ></div>
+                <div
+                    tuiDropdownAlign="start"
+                    [tuiDropdown]="dropdown"
+                ></div>
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for tuiHintDirection: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-icon tuiHintDirection="bottom-left" />
+                <tui-icon tuiHintDirection="bottom" />
+                <tui-icon tuiHintDirection="bottom-right" />
+                <tui-icon tuiHintDirection="top-left" />
+                <tui-icon tuiHintDirection="top" />
+                <tui-icon tuiHintDirection="top-right" />
+                <tui-icon tuiHintDirection="left-top" />
+                <tui-icon tuiHintDirection="left" />
+                <tui-icon tuiHintDirection="left-bottom" />
+                <tui-icon tuiHintDirection="right-top" />
+                <tui-icon tuiHintDirection="right" />
+                <tui-icon tuiHintDirection="right-bottom" />
+            ",
+  "1. After": "
+                <tui-icon tuiHintDirection="bottom-start" />
+                <tui-icon tuiHintDirection="bottom" />
+                <tui-icon tuiHintDirection="bottom-end" />
+                <tui-icon tuiHintDirection="top-start" />
+                <tui-icon tuiHintDirection="top" />
+                <tui-icon tuiHintDirection="top-end" />
+                <tui-icon tuiHintDirection="start-top" />
+                <tui-icon tuiHintDirection="start" />
+                <tui-icon tuiHintDirection="start-bottom" />
+                <tui-icon tuiHintDirection="end-top" />
+                <tui-icon tuiHintDirection="end" />
+                <tui-icon tuiHintDirection="end-bottom" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for tuiSlot: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-item tuiSlot="right" />
+                <tui-item tuiSlot="left" />
+            ",
+  "1. After": "
+                <tui-item tuiSlot="end" />
+                <tui-item tuiSlot="start" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces for vertical on tui-tabs: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-tabs vertical="right" />
+                <tui-tabs vertical="left" />
+
+                <nav
+                    tuiTabs
+                    vertical="right"
+                />
+                <nav
+                    tuiTabs
+                    vertical="left"
+                />
+
+                <tui-item vertical="right" />
+                <tui-item vertical="left" />
+            ",
+  "1. After": "
+                <tui-tabs vertical="end" />
+                <tui-tabs vertical="start" />
+
+                <tui-tabs
+                    
+                    vertical="end"
+                />
+                <tui-tabs
+                    
+                    vertical="start"
+                />
+
+                <tui-item vertical="right" />
+                <tui-item vertical="left" />
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces values for [tuiHeader]: test.html 1`] = `
+{
+  "0. Before": "
+                <h1 [tuiHeader]="'xxl'"></h1>
+                <h2 [tuiHeader]="'xl'"></h2>
+                <h3 [tuiHeader]="'l'"></h3>
+                <h4 [tuiHeader]="'m'"></h4>
+                <h5 [tuiHeader]="'s'"></h5>
+                <h6 [tuiHeader]="'xs'"></h6>
+                <p [tuiHeader]="'xxs'"></p>
+                <p [tuiHeader]="headerSize"></p>
+            ",
+  "1. After": "
+                <h1 [tuiHeader]="'h1'"></h1>
+                <h2 [tuiHeader]="'h2'"></h2>
+                <h3 [tuiHeader]="'h3'"></h3>
+                <h4 [tuiHeader]="'h4'"></h4>
+                <h5 [tuiHeader]="'h5'"></h5>
+                <h6 [tuiHeader]="'h6'"></h6>
+                <p [tuiHeader]="'body-l'"></p>
+                <p [tuiHeader]="headerSize"></p>
+            ",
+}
+`;
+
+exports[`ng-update start/end instead of left/right replaces values for tuiHeader: test.html 1`] = `
+{
+  "0. Before": "
+                <h1 tuiHeader="xxl"></h1>
+                <h2 tuiHeader="xl"></h2>
+                <h3 tuiHeader="l"></h3>
+                <h4 tuiHeader="m"></h4>
+                <h5 tuiHeader="s"></h5>
+                <h6 tuiHeader="xs"></h6>
+                <p tuiHeader="xxs"></p>
+                <p tuiHeader="custom"></p>
+            ",
+  "1. After": "
+                <h1 tuiHeader="h1"></h1>
+                <h2 tuiHeader="h2"></h2>
+                <h3 tuiHeader="h3"></h3>
+                <h4 tuiHeader="h4"></h4>
+                <h5 tuiHeader="h5"></h5>
+                <h6 tuiHeader="h6"></h6>
+                <p tuiHeader="body-l"></p>
+                <p tuiHeader="custom"></p>
+            ",
+}
+`;

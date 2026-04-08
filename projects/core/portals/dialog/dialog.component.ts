@@ -5,7 +5,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TUI_TRUE_HANDLER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -39,7 +39,11 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     selector: 'tui-dialog',
     imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiButtonX, TuiTitle],
     templateUrl: './dialog.template.html',
-    styleUrl: './dialog.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './dialog.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -47,6 +51,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     providers: [TuiDialogCloseService],
     hostDirectives: [TuiAnimated],
     host: {
+        'data-tui-version': TUI_VERSION,
         '[attr.data-appearance]': 'context.appearance',
         '[attr.data-size]': 'context.size',
         '[class._closable]': 'context.closable',

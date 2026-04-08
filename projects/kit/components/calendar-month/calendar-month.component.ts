@@ -2,14 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     inject,
-    Input,
     input,
     linkedSignal,
-    Output,
+    model,
     output,
-    signal,
     untracked,
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -45,6 +42,8 @@ const TODAY = TuiDay.currentLocal();
     host: {'[class._picking]': 'isRangePicking()'},
 })
 export class TuiCalendarMonth {
+    private hoveredItem: TuiMonth | null = null;
+
     protected isYearPickerShown = false;
     protected readonly months = inject(TUI_CALENDAR_MONTHS);
     protected readonly isRangePicking = computed(
@@ -85,43 +84,26 @@ export class TuiCalendarMonth {
         return TODAY;
     });
 
-    public readonly year = input<TuiYear>();
-    public readonly yearChange = output<TuiYear>();
-
+    public readonly value = input<TuiMonth | TuiMonthRange | null>(null);
     public readonly minLength = input<number | null>(null);
     public readonly maxLength = input<number | null>(null);
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiMonth>>(TUI_FALSE_HANDLER);
 
-    @Output()
-    public readonly monthClick = new EventEmitter<TuiMonth>();
+    public readonly min = input(TUI_FIRST_DAY, {
+        transform: (x: TuiMonth | null) => x ?? TUI_FIRST_DAY,
+    });
 
-    @Output()
-    public readonly hoveredItemChange = new EventEmitter<TuiMonth | null>();
+    public readonly max = input(TUI_LAST_DAY, {
+        transform: (x: TuiMonth | null) => x ?? TUI_LAST_DAY,
+    });
 
-    public options = inject(TUI_CALENDAR_MONTH_OPTIONS);
-    public readonly min = signal<TuiMonth>(TUI_FIRST_DAY);
-    public readonly max = signal<TuiMonth>(TUI_LAST_DAY);
-    public readonly value = signal<TuiMonth | TuiMonthRange | null>(null);
-    public hoveredItem: TuiMonth | null = null;
+    public readonly year = model<TuiYear>();
 
-    // TODO(v5): use signal inputs
-    @Input({alias: 'min', transform: (x: TuiMonth | null) => x ?? TUI_FIRST_DAY})
-    public set minSetter(x: TuiMonth) {
-        this.min.set(x);
-    }
+    public readonly monthClick = output<TuiMonth>();
+    public readonly hoveredItemChange = output<TuiMonth | null>();
 
-    // TODO(v5): use signal inputs
-    @Input({alias: 'max', transform: (x: TuiMonth | null) => x ?? TUI_LAST_DAY})
-    public set maxSetter(x: TuiMonth) {
-        this.max.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('value')
-    public set valueSetter(x: TuiMonth | TuiMonthRange | null) {
-        this.value.set(x);
-    }
+    public readonly options = inject(TUI_CALENDAR_MONTH_OPTIONS);
 
     public onNextYear(): void {
         this.updateActiveYear(this.activeYear().append({year: 1}));
@@ -244,6 +226,6 @@ export class TuiCalendarMonth {
 
     private updateActiveYear(year: TuiYear): void {
         this.activeYear.set(year);
-        this.yearChange.emit(year);
+        this.year.set(year);
     }
 }

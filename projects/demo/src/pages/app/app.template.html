@@ -1,7 +1,16 @@
 @if (isLanding()) {
     <router-outlet />
 } @else {
-    <tui-doc-main #main>
+    <tui-doc-main>
+        <news
+            ngProjectAs="tuiDocNavigation"
+            class="news"
+        />
+        <news
+            ngProjectAs="tuiDocMobileNavigation"
+            class="news"
+        />
+
         <div
             ngProjectAs="tuiDocHeader"
             class="app-links"
@@ -16,48 +25,6 @@
             @if (!defaultSearchEnabled()) {
                 <tui-algolia-search />
             }
-            <button
-                appearance="flat-grayscale"
-                iconStart="@tui.ellipsis"
-                size="s"
-                tuiDropdownAuto
-                tuiIconButton
-                type="button"
-                class="app-links-dropdown"
-                [tuiDropdown]="more"
-            >
-                More
-                <ng-template #more>
-                    <tui-data-list size="m">
-                        <a
-                            iconStart="@tui.arrow-right-left"
-                            tuiOption
-                            class="app-link-dropdown"
-                            (click)="main.changeTextDirection()"
-                        >
-                            RTL / LTR
-                        </a>
-                        <a
-                            href="https://github.com/taiga-family/taiga-ui"
-                            iconStart="@tui.github"
-                            rel="noreferrer"
-                            target="_blank"
-                            tuiOption
-                            class="app-link-dropdown"
-                        >
-                            GitHub
-                        </a>
-                        <a
-                            iconStart="@tui.zap"
-                            tuiOption
-                            class="app-link-dropdown"
-                            [routerLink]="routes.StackblitzStarter"
-                        >
-                            StackBlitz
-                        </a>
-                    </tui-data-list>
-                </ng-template>
-            </button>
             <a
                 appearance=""
                 href="https://github.com/taiga-family/taiga-ui"
@@ -68,6 +35,7 @@
                 title="Taiga UI source code on GitHub"
                 tuiIconButton
                 class="app-link"
+                [style.margin-inline-end.rem]="-0.25"
             >
                 GitHub
             </a>
@@ -82,6 +50,14 @@
             >
                 StackBlitz
             </a>
+            <button
+                appSettings
+                iconStart="@tui.settings"
+                tuiIconButton
+                type="button"
+            >
+                Settings
+            </button>
         </div>
         <custom-host ngProjectAs="tuiOverContent" />
     </tui-doc-main>

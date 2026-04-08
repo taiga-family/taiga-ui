@@ -5,7 +5,7 @@ export function tuiToKebab(str: string): string {
         .replaceAll(' ', '-')
         .replaceAll(
             /[A-Z]+(?![a-z])|[A-Z]/g,
-            ($, ofs) => (ofs ? '-' : '') + $.toLowerCase(),
+            ($, ofs) => `${ofs ? '-' : ''}${$.toLowerCase()}`,
         );
 }
 

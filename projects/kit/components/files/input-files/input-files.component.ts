@@ -2,14 +2,19 @@ import {
     ChangeDetectionStrategy,
     Component,
     contentChild,
+    inject,
+    input,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiInputFilesContent} from './input-files.content';
 import {TuiInputFilesDirective} from './input-files.directive';
+import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 
 @Component({
     selector: 'label[tuiInputFiles]',
@@ -25,10 +30,17 @@ import {TuiInputFilesDirective} from './input-files.directive';
             {{ text }}
         </span>
     `,
-    styleUrl: './input-files.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-files.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiInputFiles: '',
+        'data-tui-version': TUI_VERSION,
+        '[attr.data-size]': 'size() || options.size',
         '(dragover.prevent.zoneless)': '0',
         '(drop.prevent)': 'onDropped($event)',
         '(dragenter)': 'onDrag($event.dataTransfer)',
@@ -39,11 +51,16 @@ import {TuiInputFilesDirective} from './input-files.directive';
 })
 export class TuiInputFiles {
     protected files?: FileList | null;
+    protected readonly options = inject(TUI_INPUT_FILES_OPTIONS);
     protected readonly content = new PolymorpheusComponent(TuiInputFilesContent);
     protected readonly template =
         contentChild<TemplateRef<TuiContext<boolean>>>(TemplateRef);
 
     public readonly input = contentChild(TuiInputFilesDirective);
+
+    public readonly size = input<TuiSizeL | ''>(this.options.size, {
+        alias: 'tuiInputFiles',
+    });
 
     protected get fileDragged(): boolean {
         return !!this.files && !this.input()?.disabled();

@@ -217,6 +217,16 @@ export interface TuiLanguageEditor {
     };
 }
 
+export interface TuiLanguageDoc {
+    demoTexts: [darkMode: string, background: string, value: string];
+    preview: string;
+    menuText: string;
+    searchText: string;
+    seeAlsoText: string;
+    tocText: string;
+    sourceCodeText: string;
+}
+
 export interface TuiLanguageMeta {
     name: TuiLanguageName;
 }
@@ -229,4 +239,5 @@ export interface TuiLanguage
         TuiLanguageCommerce,
         TuiLanguageTable,
         TuiLanguageEditor,
+        TuiLanguageDoc,
         TuiLanguageMeta {}

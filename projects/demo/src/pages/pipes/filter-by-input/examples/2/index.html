@@ -12,7 +12,7 @@
 
         <tui-data-list-wrapper
             *tuiDropdown
-            [items]="items | tuiFilterByInput: matcherString"
+            [items]="items | tuiFilterByInput: bySurname"
         />
     </tui-textfield>
 
@@ -32,7 +32,7 @@
         <tui-data-list-wrapper
             *tuiDropdown
             [itemContent]="stringify | tuiStringifyContent"
-            [items]="users | tuiFilterByInput: matcherUser"
+            [items]="users | tuiFilterByInput: byId"
         />
     </tui-textfield>
 </form>

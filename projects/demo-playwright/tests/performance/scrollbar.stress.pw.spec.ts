@@ -370,9 +370,9 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 'scrollbar-memory-pressure-stress',
             );
 
-            const isScrollable = await scrollbar.evaluate((el) => {
-                return el.scrollHeight > el.clientHeight;
-            });
+            const isScrollable = await scrollbar.evaluate(
+                (el) => el.scrollHeight > el.clientHeight,
+            );
 
             expect(isScrollable).toBe(true);
         });
@@ -450,9 +450,9 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 'scrollbar-theme-switching-stress',
             );
 
-            const computedStyle = await scrollbar.evaluate((el) => {
-                return getComputedStyle(el).display;
-            });
+            const computedStyle = await scrollbar.evaluate(
+                (el) => getComputedStyle(el).display,
+            );
 
             expect(computedStyle).not.toBe('none');
         });
@@ -531,9 +531,9 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 'scrollbar-resize-stress',
             );
 
-            const hasScroll = await scrollbar.evaluate((el) => {
-                return el.scrollHeight > el.clientHeight;
-            });
+            const hasScroll = await scrollbar.evaluate(
+                (el) => el.scrollHeight > el.clientHeight,
+            );
 
             await expect(scrollbar).toBeVisible();
             expect(hasScroll).toBe(true);
@@ -566,15 +566,11 @@ test.describe('TuiScrollbar Stress Tests', () => {
 
                     batchOperations.push(
                         scrollbar.evaluate(
-                            async (
-                                el: HTMLElement,
-                                args: {top: number; delay: number},
-                            ) => {
-                                return new Promise<void>((resolve) => {
+                            async (el: HTMLElement, args: {top: number; delay: number}) =>
+                                new Promise<void>((resolve) => {
                                     el.scrollTo({top: args.top, behavior: 'auto'});
                                     setTimeout(resolve, args.delay);
-                                });
-                            },
+                                }),
                             {top: scrollTop, delay},
                         ),
                     );

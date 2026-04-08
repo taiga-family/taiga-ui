@@ -13,7 +13,7 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
     changeDetection,
 })
 export default class Example {
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.value);
@@ -24,6 +24,6 @@ export default class Example {
     }
 
     protected onHover(index: number, hovered: boolean): void {
-        this.activeItemIndex = hovered ? index : NaN;
+        this.activeItemIndex = hovered ? index : Number.NaN;
     }
 }

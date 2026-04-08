@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update legacy textarea handles tui-textarea without text content: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea formControlName="value"></tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield>
+                <textarea tuiTextarea formControlName="value"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea keeps tuiTextfieldCleaner and tuiHintContent on tui-textfield wrapper: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea
+                    formControlName="value"
+                    tuiHintContent="Hint text"
+                    tuiHintDirection="bottom-right"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Label
+                </tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Label" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield tuiHintContent="Hint text" tuiHintDirection="bottom-end" [tuiTextfieldCleaner]="true">
+                <label tuiLabel>Label</label>
+                <textarea tuiTextarea formControlName="value"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea migrates TuiTextareaModule import and simple tui-textarea template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea formControlName="testValue">Type a text</tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Type a text" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield>
+                <label tuiLabel>Type a text</label>
+                <textarea tuiTextarea formControlName="testValue"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea migrates TuiTextareaModule import and simple tui-textarea template: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiTextareaModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiTextareaModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiTextarea } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiTextarea],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea migrates multiple tui-textarea elements in one template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea formControlName="a">First</tui-textarea>
+                <tui-textarea formControlName="b">Second</tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "First" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield>
+                <label tuiLabel>First</label>
+                <textarea tuiTextarea formControlName="a"></textarea>
+                </tui-textfield>
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Second" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield>
+                <label tuiLabel>Second</label>
+                <textarea tuiTextarea formControlName="b"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea migrates rows without expandable and adds TODO about min: test.html 1`] = `
+{
+  "0. Before": "<tui-textarea formControlName="value" rows="5">Comment</tui-textarea>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Comment" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - [rows] was migrated to max="5". Legacy tui-textarea had fixed height by default (expandable=false). To restore fixed height, also add the same value for [min] on <textarea tuiTextarea>.
+-->
+<tui-textfield>
+<label tuiLabel>Comment</label>
+<textarea tuiTextarea formControlName="value" max="5"></textarea>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy textarea migrates tui-textarea attributes: wrapper attrs, [maxLength], labelOutside=true adds TODO: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea
+                    formControlName="testValue"
+                    tuiTextfieldSize="s"
+                    [maxLength]="150"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Label
+                </tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Label" became placeholder on <textarea>. Previously [tuiTextfieldLabelOutside]=true — for label-outside pattern, wrap <tui-textfield> with: <label tuiLabel>Label<tui-textfield>...</tui-textfield></label>.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield tuiTextfieldSize="s">
+                <textarea placeholder="Label" tuiTextarea formControlName="testValue" [limit]="150"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea migrates tui-textarea with labelOutside=false: adds label tuiLabel inside tui-textfield: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea
+                    formControlName="testValue"
+                    [tuiTextfieldLabelOutside]="false"
+                >
+                    Label
+                </tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Label" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield>
+                <label tuiLabel>Label</label>
+                <textarea tuiTextarea formControlName="testValue"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea places unknown attributes on tui-textfield and adds TODO: test.html 1`] = `
+{
+  "0. Before": "<tui-textarea formControlName="value" someCustomDirective [anotherDirective]="config">Label</tui-textarea>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Label" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+     - Unrecognized attribute "someCustomDirective" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+     - Unrecognized attribute "[anotherDirective]="config"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+-->
+<tui-textfield someCustomDirective [anotherDirective]="config">
+<label tuiLabel>Label</label>
+<textarea tuiTextarea formControlName="value"></textarea>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy textarea removes [expandable] and maps [rows] to [max]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea
+                    formControlName="testValue"
+                    [expandable]="true"
+                    [rows]="10"
+                >
+                    Type here
+                </tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Type here" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - [expandable] was removed. New component always auto-resizes between [min] (default: 1) and [max] (default: 3) rows. [rows] was migrated to [max]="10".
+-->
+                <tui-textfield>
+                <label tuiLabel>Type here</label>
+                <textarea tuiTextarea formControlName="testValue" [max]="10"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea removes expandable="false" and maps static rows to max: test.html 1`] = `
+{
+  "0. Before": "<tui-textarea formControlName="value" expandable="false" rows="5">Text</tui-textarea>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Text" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - expandable="false" was removed. New component always auto-resizes. To restore fixed height, also add the same value for [min] on <textarea tuiTextarea> (max="5" was already migrated).
+-->
+<tui-textfield>
+<label tuiLabel>Text</label>
+<textarea tuiTextarea formControlName="value" max="5"></textarea>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy textarea reuses inner <textarea tuiTextfieldLegacy> instead of generating a new one: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea [(ngModel)]="value">
+                    Bio
+                    <textarea
+                        maxlength="97"
+                        placeholder="Write a few words"
+                        tuiTextfieldLegacy
+                    ></textarea>
+                </tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Text content "Bio" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                <tui-textfield>
+                <label tuiLabel>Bio</label>
+                <textarea
+                        maxlength="97"
+                        placeholder="Write a few words"
+                        tuiTextarea [(ngModel)]="value"></textarea>
+                </tui-textfield>
+            ",
+}
+`;

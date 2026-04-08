@@ -1,11 +1,14 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/utils';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 
 test.describe('InputDate and mobile user agent', () => {
     const date = new Date(2023, 10, 1);
+
+    let example: Locator;
+    let inputDate: TuiInputDatePO;
 
     test.use({
         viewport: {width: 430, height: 932},
@@ -13,7 +16,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDate mobile dropdown', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.InputDate}`, {date});
+        await tuiGoto(page, DemoRoute.InputDate, {date});
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
@@ -37,7 +40,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDate mobile calendar', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.InputDate}`, {date});
+        await tuiGoto(page, DemoRoute.InputDate, {date});
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
@@ -62,5 +65,20 @@ test.describe('InputDate and mobile user agent', () => {
         await expect
             .soft(page)
             .toHaveScreenshot('03-input-date-range-mobile-calendar-2.png');
+    });
+
+    test.describe('Native picker', () => {
+        test.beforeEach(async ({page}) => {
+            await tuiGoto(page, DemoRoute.InputDate);
+            example = new TuiDocumentationPagePO(page).getExample('#mobile');
+            inputDate = new TuiInputDatePO(
+                example.locator('tui-textfield:has([tuiInputDate])'),
+            );
+        });
+
+        test('is clickable', async () => {
+            await inputDate.nativePicker.click();
+            await expect(inputDate.nativePicker).toBeFocused();
+        });
     });
 });

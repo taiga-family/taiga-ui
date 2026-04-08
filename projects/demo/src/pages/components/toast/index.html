@@ -15,7 +15,14 @@
                 <ng-template #description>
                     @switch ($index) {
                         @case (0) {
-                            Using inline with various content
+                            Using inline with various content. Use
+                            <a
+                                tuiLink
+                                [routerLink]="routes.ShrinkWrap"
+                            >
+                                <code>ShrinkWrap</code>
+                            </a>
+                            for balanced tight wrapping.
                         }
                         @case (1) {
                             Custom styles and more component

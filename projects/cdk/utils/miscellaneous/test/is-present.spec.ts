@@ -15,7 +15,7 @@ describe('isPresent', () => {
         });
 
         it('value === NaN', () => {
-            expect(tuiIsPresent(NaN)).toBe(true);
+            expect(tuiIsPresent(Number.NaN)).toBe(true);
         });
 
         it("value === ''", () => {

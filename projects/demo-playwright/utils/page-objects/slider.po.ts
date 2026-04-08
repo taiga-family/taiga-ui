@@ -10,7 +10,7 @@ export class TuiSliderPO {
     public get fillPercentage(): Promise<number> {
         return this.host.evaluate((el) =>
             Math.round(
-                parseFloat(
+                Number.parseFloat(
                     globalThis
                         .getComputedStyle(el)
                         .getPropertyValue('--tui-slider-fill-ratio'),

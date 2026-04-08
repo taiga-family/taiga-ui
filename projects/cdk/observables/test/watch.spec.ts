@@ -7,9 +7,7 @@ describe('tuiWatch operator function', () => {
     let $: Subject<unknown>;
     let called = 0;
 
-    const chrStub: ChangeDetectorRef = {
-        markForCheck: () => called++,
-    } as unknown as ChangeDetectorRef;
+    const chrStub = {markForCheck: () => called++} as unknown as ChangeDetectorRef;
 
     beforeEach(() => {
         $ = new Subject<unknown>();
@@ -19,7 +17,7 @@ describe('tuiWatch operator function', () => {
     it('initially emits nothing, after event emits "true" and after a tick emits "false"', fakeAsync(() => {
         $.pipe(tuiWatch(chrStub)).subscribe();
 
-        $.next(undefined);
+        $.next(null);
         tick();
 
         expect(called).toBe(1);

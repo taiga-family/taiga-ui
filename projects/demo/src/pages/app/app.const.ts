@@ -19,17 +19,3 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Table', 'TablePagination', 'TableFilters'],
     ['SheetDialog', 'Dialog', 'BottomSheet'],
 ];
-
-export const DEFAULT_LANGUAGE_PAGE = new Set([
-    'Calendar',
-    'CalendarMonth',
-    'CalendarRange',
-    'InputCardGroup',
-    'InputFiles',
-    'InputMonth',
-    'InputPhoneInternational',
-    'InputTime',
-    'MobileCalendar',
-    'Table',
-    'TablePagination',
-]);

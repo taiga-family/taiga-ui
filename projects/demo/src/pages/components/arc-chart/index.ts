@@ -33,5 +33,5 @@ export default class Page {
 
     protected maxLabel = '100%';
 
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 }

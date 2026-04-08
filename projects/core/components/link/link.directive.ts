@@ -26,7 +26,7 @@ export const [TUI_LINK_OPTIONS, tuiLinkOptionsProvider] = tuiCreateOptions({
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-link'},
+    exportAs: `tui-link-${TUI_VERSION}`,
 })
 class Styles {}
 

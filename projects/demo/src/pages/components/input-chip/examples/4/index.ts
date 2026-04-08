@@ -3,11 +3,16 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiDataList, TuiSelectLike} from '@taiga-ui/core';
+import {
+    TuiCheckbox,
+    TuiDataList,
+    TuiFilterByInputPipe,
+    TuiSelectLike,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiHideSelectedPipe,
     TuiInputChip,
     TuiMultiSelect,
@@ -21,6 +26,7 @@ interface User {
 @Component({
     imports: [
         FormsModule,
+        TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -29,6 +35,7 @@ interface User {
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -39,7 +46,10 @@ export default class Example {
     protected arbitrary: string[] = [];
     protected pythons: string[] = [];
     protected multi: string[] = [];
+    protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
+
+    protected filter = false;
 
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));

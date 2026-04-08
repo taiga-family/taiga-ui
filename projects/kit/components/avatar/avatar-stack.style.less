@@ -1,7 +1,6 @@
-/* stylelint-disable */
-// prettier-ignore
-tui-avatar-stack {
+tui-avatar-stack:where(*&) {
     display: flex;
+
     --t-gap: 0.125rem;
 
     [tuiAvatar] {
@@ -28,9 +27,12 @@ tui-avatar-stack {
         }
     }
 
-
     [tuiAvatar]._round {
-        mask-image: radial-gradient(circle at calc(50% - calc(var(--tui-inline) * (var(--t-size) - var(--t-offset)))) 50%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px));
+        mask-image: radial-gradient(
+            circle at calc(50% - calc(var(--tui-inline) * (var(--t-size) - var(--t-offset)))) 50%,
+            transparent calc(var(--t-radius) + var(--t-gap)),
+            #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)
+        );
     }
 
     &[data-direction='end'] [tuiAvatar]._round {
@@ -54,9 +56,21 @@ tui-avatar-stack {
     &[data-direction='start'] [tuiAvatar]:not(._round):not(:first-child),
     [dir='rtl'] &[data-direction='end'] [tuiAvatar]:not(._round):not(:last-child) {
         mask-image:
-            radial-gradient(circle at 0% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
-            radial-gradient(circle at 0% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
-            linear-gradient(to right, transparent calc(var(--t-offset) + var(--t-gap)), #000 calc(var(--t-offset) + var(--t-gap)));
+            radial-gradient(
+                circle at 0% 100%,
+                transparent calc(var(--t-radius) + var(--t-gap)),
+                #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)
+            ),
+            radial-gradient(
+                circle at 0% 0%,
+                transparent calc(var(--t-radius) + var(--t-gap)),
+                #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)
+            ),
+            linear-gradient(
+                to right,
+                transparent calc(var(--t-offset) + var(--t-gap)),
+                #000 calc(var(--t-offset) + var(--t-gap))
+            );
         mask-position:
             calc(var(--t-offset) - var(--t-radius)) calc(-1 * (var(--t-size) - var(--t-radius))),
             calc(var(--t-offset) - var(--t-radius)) calc(var(--t-size) - var(--t-radius)),
@@ -66,12 +80,26 @@ tui-avatar-stack {
     &[data-direction='end'] [tuiAvatar]:not(._round):not(:last-child),
     [dir='rtl'] &[data-direction='start'] [tuiAvatar]:not(._round):not(:first-child) {
         mask-image:
-            radial-gradient(circle at 150% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
-            radial-gradient(circle at 150% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
-            linear-gradient(to left, transparent calc(var(--t-offset) + var(--t-gap)), #000 calc(var(--t-offset) + var(--t-gap)));
+            radial-gradient(
+                circle at 150% 100%,
+                transparent calc(var(--t-radius) + var(--t-gap)),
+                #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)
+            ),
+            radial-gradient(
+                circle at 150% 0%,
+                transparent calc(var(--t-radius) + var(--t-gap)),
+                #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)
+            ),
+            linear-gradient(
+                to left,
+                transparent calc(var(--t-offset) + var(--t-gap)),
+                #000 calc(var(--t-offset) + var(--t-gap))
+            );
         mask-position:
-            calc((var(--t-offset) - var(--t-size) + var(--t-radius) / 2 + var(--t-gap) + 1px) * -1) calc(-1 * var(--t-gap)),
-            calc((var(--t-offset) - var(--t-size) + var(--t-radius) / 2 + var(--t-gap) + 1px) * -1) calc(100% + var(--t-gap)),
+            calc((var(--t-offset) - var(--t-size) + var(--t-radius) / 2 + var(--t-gap) + 1px) * -1)
+                calc(-1 * var(--t-gap)),
+            calc((var(--t-offset) - var(--t-size) + var(--t-radius) / 2 + var(--t-gap) + 1px) * -1)
+                calc(100% + var(--t-gap)),
             bottom;
     }
 
@@ -80,7 +108,7 @@ tui-avatar-stack {
     }
 
     [dir='rtl'] &[data-direction='start'] [tuiAvatar]:not(._round),
-    &[data-direction='end'] [tuiAvatar]:not(._round){
+    &[data-direction='end'] [tuiAvatar]:not(._round) {
         mask-size:
             calc(var(--t-radius) + var(--t-gap)) calc(var(--t-radius) + var(--t-gap)),
             calc(var(--t-radius) + var(--t-gap)) calc(var(--t-radius) + var(--t-gap)),

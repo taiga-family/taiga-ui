@@ -406,9 +406,11 @@ async function main(): Promise<void> {
             );
         }
 
-        output.push(`- **Package**: \`${headerData.package}\``);
-        output.push(`- **Type**: ${headerData.type}`);
-        output.push('');
+        output.push(
+            `- **Package**: \`${headerData.package}\``,
+            `- **Type**: ${headerData.type}`,
+            '',
+        );
 
         const description = getComponentDescription(content);
 

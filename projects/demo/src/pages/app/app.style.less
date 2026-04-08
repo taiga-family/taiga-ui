@@ -1,7 +1,12 @@
 @import '@taiga-ui/styles/utils';
 
-app {
+:host {
     display: block;
+}
+
+.news {
+    order: -1;
+    margin: 0.75rem 0.75rem 0 1rem;
 }
 
 .app-links {
@@ -12,34 +17,6 @@ app {
 
 .app-link {
     color: var(--tui-text-primary);
-}
-
-.app-stackblitz {
-    .transition(background);
-
-    background: var(--tui-text-tertiary);
-    font-size: 1.25rem !important;
-
-    a:hover & {
-        background: var(--tui-text-secondary);
-    }
-
-    a:active & {
-        background: var(--tui-text-primary);
-    }
-
-    &::before {
-        color: var(--tui-background-base);
-        transform: scale(0.6);
-    }
-}
-
-.app-links-dropdown {
-    display: none !important;
-}
-
-.app-link-dropdown {
-    justify-content: flex-start !important;
 }
 
 .app-christmas {
@@ -56,19 +33,6 @@ app {
     }
 }
 
-@media @tui-mobile {
-    // Increasing specificity
-    .app-link.app-link,
-    .tui-doc-switch-direction.tui-doc-switch-direction {
-        display: none;
-    }
-
-    .app-links-dropdown {
-        display: flex !important;
-    }
-}
-
 html {
-    /* stylelint-disable-next-line */
     font-size: 16px;
 }

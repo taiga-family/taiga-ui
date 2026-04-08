@@ -2,30 +2,26 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {runMigration} from '../../../utils/run-migration';
-
-const collection = join(__dirname, '../../../migration.json');
+import {createMigration} from '../../../utils/run-migration';
 
 describe('ng-update tui-pin tag to div tuiPin', () => {
-    async function migrate(template: string): Promise<string> {
-        return (await runMigration({template, collection})).template;
-    }
-
-    it('replaces tui-pin with div and tuiPin directive', async () => {
-        expect(await migrate('<tui-pin></tui-pin>')).toEqual('<div tuiPin></div>');
+    const migrate = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
     });
 
-    it('preserves attributes and content on tui-pin', async () => {
-        expect(
-            await migrate(
-                '<tui-pin appearance="primary" size="m"><span>1</span></tui-pin>',
-            ),
-        ).toEqual('<div tuiPin appearance="primary" size="m"><span>1</span></div>');
-    });
+    it(
+        'replaces tui-pin with div and tuiPin directive',
+        migrate({template: '<tui-pin></tui-pin>'}),
+    );
 
-    it('migrates self-closed tui-pin', async () => {
-        expect(await migrate('<tui-pin/>')).toEqual('<div tuiPin></div>');
-    });
+    it(
+        'preserves attributes and content on tui-pin',
+        migrate({
+            template: '<tui-pin appearance="primary" size="m"><span>1</span></tui-pin>',
+        }),
+    );
+
+    it('migrates self-closed tui-pin', migrate({template: '<tui-pin/>'}));
 
     afterEach(() => resetActiveProject());
 });

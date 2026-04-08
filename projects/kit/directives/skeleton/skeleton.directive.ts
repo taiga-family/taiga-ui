@@ -9,7 +9,7 @@ import {
     type SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core';
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
+import {CHAR_NO_BREAK_SPACE, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
@@ -19,10 +19,14 @@ const FADE = [{opacity: 0.06}, {opacity: 1}];
 
 @Component({
     template: '',
-    styleUrl: './skeleton.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './skeleton.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-skeleton'},
+    exportAs: `tui-skeleton-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -30,6 +34,7 @@ class Styles {}
     selector: '[tuiSkeleton]',
     host: {
         tuiSkeleton: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.inert]': '!!tuiSkeleton() || null',
         '[class._skeleton]': 'tuiSkeleton()',
         '[attr.data-tui-skeleton]': 'placeholder()',

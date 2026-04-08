@@ -11,7 +11,7 @@ import {
     TuiBigIntQuantumValueTransformer,
     TuiQuantumValueTransformer,
 } from './quantum.directive';
-import {TuiInputNumberStep} from './step/input-number-step.component';
+import {TuiInputNumberStep} from './step/input-number-step.directive';
 import {TuiBigIntValueTransformer} from './transformers/bigint.value-transformer';
 
 export const TuiInputNumber = [

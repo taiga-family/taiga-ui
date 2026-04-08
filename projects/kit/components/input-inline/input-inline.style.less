@@ -2,7 +2,7 @@
 
 @safari-safe-space: 1px;
 
-tui-input-inline {
+tui-input-inline:where(*&) {
     position: relative;
     display: inline-block;
     white-space: nowrap;
@@ -23,8 +23,8 @@ tui-input-inline {
 
     > input {
         position: absolute;
-        top: 0;
-        left: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         background-color: transparent;
         padding: inherit;
         font: inherit;

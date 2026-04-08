@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -36,10 +37,14 @@ const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
 
 @Component({
     template: '',
-    styleUrl: './table.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './table.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-table'},
+    exportAs: `tui-table-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -59,6 +64,7 @@ class Styles {}
     hostDirectives: [TuiStuck],
     host: {
         tuiTable: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
     },
 })

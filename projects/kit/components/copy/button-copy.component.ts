@@ -8,6 +8,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -26,7 +27,11 @@ import {TUI_COPY_OPTIONS} from './copy.options';
             <ng-content />
         }
     `,
-    styleUrl: './button-copy.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './button-copy.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({appearance: 'flat-grayscale', size: 's'})],

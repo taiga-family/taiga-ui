@@ -13,6 +13,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
@@ -39,7 +40,11 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     selector: 'tui-data-list',
     imports: [PolymorpheusOutlet, TuiCell],
     templateUrl: './data-list.template.html',
-    styleUrl: './data-list.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './data-list.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -54,6 +59,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     ],
     host: {
         role: 'listbox',
+        'data-tui-version': TUI_VERSION,
         '[attr.role]': 'role',
         '[attr.data-size]': 'size()',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',

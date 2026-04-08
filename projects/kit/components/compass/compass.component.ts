@@ -22,5 +22,5 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
     },
 })
 export class TuiCompass {
-    public readonly degrees = input(NaN);
+    public readonly degrees = input(Number.NaN);
 }

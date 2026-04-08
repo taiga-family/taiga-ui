@@ -9,6 +9,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
@@ -20,10 +21,14 @@ const FROM = [{opacity: '0.12'}, {opacity: '0'}];
 
 @Component({
     template: '',
-    styleUrl: './ripple.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './ripple.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-ripple'},
+    exportAs: `tui-ripple-${TUI_VERSION}`,
 })
 class Styles {}
 

@@ -14,7 +14,7 @@ export class TuiEmailsPipe implements PipeTransform {
             ? suggestions
                   .map(
                       (item) =>
-                          query.slice(0, Math.max(0, query.indexOf('@') + 1)) + item,
+                          `${query.slice(0, Math.max(0, query.indexOf('@') + 1))}${item}`,
                   )
                   .filter((item) => item.startsWith(query))
             : [];

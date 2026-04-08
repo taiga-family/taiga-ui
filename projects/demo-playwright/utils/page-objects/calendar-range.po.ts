@@ -11,7 +11,7 @@ export class TuiCalendarRangePO {
         .locator('tui-calendar-spin tui-spin-button > button')
         .last();
 
-    constructor(private readonly host: Locator) {}
+    constructor(public readonly host: Locator) {}
 
     public async getCalendars(): Promise<
         [TuiCalendarPO, TuiCalendarPO] | [TuiCalendarPO]

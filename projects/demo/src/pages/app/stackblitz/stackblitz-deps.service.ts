@@ -26,7 +26,6 @@ export class StackblitzDepsService {
             '@angular/forms': ngVersion,
             '@angular/platform-browser': ngVersion,
             '@angular/router': ngVersion,
-            '@angular/animations': ngVersion,
             typescript: '5.9.x', // compatible with angular 21
         };
     }
@@ -63,9 +62,8 @@ export class StackblitzDepsService {
 
         return {
             '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
-            '@taiga-ui/design-tokens': await import('@taiga-ui/styles/package.json').then(
-                (x) => x.peerDependencies['@taiga-ui/design-tokens'],
-            ),
+            '@taiga-ui/design-tokens': (await import('@taiga-ui/styles/package.json'))
+                .peerDependencies['@taiga-ui/design-tokens'],
             '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
             '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
             '@taiga-ui/font-watcher': cdkDeps['@taiga-ui/font-watcher'],

@@ -37,6 +37,9 @@
                         @case (6) {
                             Using template driven forms
                         }
+                        @case (7) {
+                            Uploading files with accept attribute containing multiple extensions separated by spaces
+                        }
                     }
                 </ng-template>
             </tui-doc-example>
@@ -45,7 +48,7 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <label tuiInputFiles>
+            <label [tuiInputFiles]="size">
                 <input
                     #validator="tuiInputFilesValidator"
                     tuiInputFiles
@@ -115,6 +118,15 @@
                 (valueChange)="multipleChange($event ?? false)"
             >
                 Allows to upload several files
+            </tr>
+            <tr
+                name="[tuiInputFiles]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Drop zone size
             </tr>
             <tr
                 #reject

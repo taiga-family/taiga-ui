@@ -42,9 +42,12 @@ export class TuiDocNumberFormat implements Record<
         [],
     );
 
-    public thousandSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.thousandSeparator);
-    public decimalSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalSeparator);
-    public precision = signal(TUI_DEFAULT_NUMBER_FORMAT.precision);
-    public decimalMode = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalMode);
-    public rounding = signal(TUI_DEFAULT_NUMBER_FORMAT.rounding);
+    public readonly thousandSeparator = signal(
+        TUI_DEFAULT_NUMBER_FORMAT.thousandSeparator,
+    );
+
+    public readonly decimalSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalSeparator);
+    public readonly precision = signal(TUI_DEFAULT_NUMBER_FORMAT.precision);
+    public readonly decimalMode = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalMode);
+    public readonly rounding = signal(TUI_DEFAULT_NUMBER_FORMAT.rounding);
 }

@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsPresent} from '@taiga-ui/cdk';
@@ -26,8 +26,7 @@ import {
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
-    @ViewChild('preview')
-    protected readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
     protected readonly items = [
         {
@@ -40,7 +39,7 @@ export default class Example {
         },
     ];
 
-    protected readonly index$$ = new BehaviorSubject<number>(0);
+    protected readonly index$$ = new BehaviorSubject(0);
 
     protected readonly item$ = this.index$$.pipe(
         map((index) => this.items[index]),
@@ -62,7 +61,7 @@ export default class Example {
     protected readonly loading$ = this.imageSrc$.pipe(map((src) => src === ''));
 
     protected show(): void {
-        this.previewDialogService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview() || '').subscribe();
     }
 
     protected download(): void {

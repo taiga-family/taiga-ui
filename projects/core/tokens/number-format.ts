@@ -42,7 +42,7 @@ export interface TuiNumberFormatSettings {
 }
 
 export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
-    precision: NaN,
+    precision: Number.NaN,
     decimalSeparator: '.',
     thousandSeparator: CHAR_NO_BREAK_SPACE,
     rounding: 'truncate',

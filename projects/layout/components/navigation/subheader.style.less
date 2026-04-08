@@ -1,15 +1,23 @@
-[tuiSubheader][compact] {
-    top: 3rem;
+[tuiSubheader][compact]:where(*&) {
     z-index: 1;
+    inset-block-start: 3rem;
     block-size: var(--tui-height-m);
     padding-block-start: 0.25rem;
+    border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0/0/0 100vw;
+
+    &::before {
+        content: '';
+        display: block;
+        block-size: 100%;
+        border-image: linear-gradient(0deg, var(--tui-border-normal) 1px, transparent 0) fill 0/0/0 100vw;
+    }
 
     .t-nav-subheader {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
         display: flex;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
         block-size: inherit;
         align-items: center;
         gap: 0.5rem;
@@ -17,7 +25,6 @@
         white-space: nowrap;
         overflow: hidden;
         padding: inherit;
-        border-image: linear-gradient(0deg, var(--tui-border-normal) 1px, var(--tui-background-base) 0) fill 0/0/0 100vw;
 
         tui-breadcrumbs {
             flex: 1;
@@ -39,7 +46,7 @@
     }
 }
 
-[tuiSubheader]:not([compact]) {
+[tuiSubheader]:not([compact]):where(*&) {
     margin-block-start: 0.875rem;
 
     [tuiHeader] {

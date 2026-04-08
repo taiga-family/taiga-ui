@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiSurface] {
+[tuiSurface]:where(*&) {
     .transition();
 
     --tui-gap: 0.25rem;
@@ -30,17 +30,17 @@
     });
 }
 
-tui-dialog[data-appearance~='taiga'] [tuiSurface],
-tui-sheet-dialog [tuiSurface] {
+tui-dialog[data-appearance~='taiga'] [tuiSurface]:where(*&),
+tui-sheet-dialog [tuiSurface]:where(*&) {
     --tui-background-elevation-1: var(--tui-background-elevation-2);
 }
 
-button[tuiSurface] {
+button[tuiSurface]:where(*&) {
     cursor: pointer;
 }
 
-[tuiSurface]::before,
-[tuiSurface]::after,
+[tuiSurface]:where(*&)::before,
+[tuiSurface]:where(*&)::after,
 [tuiSurfaceLayer]::before,
 [tuiSurfaceLayer]::after {
     .fullsize();
@@ -65,26 +65,26 @@ button[tuiSurface] {
     border-radius: inherit;
     box-sizing: border-box;
     transition-property: box-shadow, filter, padding;
+}
 
-    input[tuiSurfaceLayer] + & {
-        will-change: padding;
-        background-clip: content-box;
-        overflow: clip;
-        overflow-clip-margin: content-box;
-    }
+input[tuiSurfaceLayer] + [tuiSurfaceLayer] {
+    will-change: padding;
+    background-clip: content-box;
+    overflow: clip;
+    overflow-clip-margin: content-box;
+}
 
-    input[tuiSurfaceLayer]:checked + & {
+input[tuiSurfaceLayer]:checked + [tuiSurfaceLayer] {
+    padding: var(--tui-gap);
+}
+
+input[tuiSurfaceLayer]:focus-visible + [tuiSurfaceLayer] {
+    padding: var(--tui-gap);
+}
+
+@media @tui-mouse {
+    [tuiSurface]:where(*&):hover input[tuiSurfaceLayer] + [tuiSurfaceLayer] {
         padding: var(--tui-gap);
-    }
-
-    input[tuiSurfaceLayer]:focus-visible + & {
-        padding: var(--tui-gap);
-    }
-
-    @media @tui-mouse {
-        [tuiSurface]:hover input[tuiSurfaceLayer] + & {
-            padding: var(--tui-gap);
-        }
     }
 }
 
@@ -116,24 +116,24 @@ input[tuiSurfaceLayer] {
             inset 0 0 0 calc(var(--tui-gap) / 2),
             inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
     }
+}
 
-    @media @tui-mouse {
-        [tuiSurface]:hover & {
-            box-shadow:
-                inset 0 0,
-                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
-        }
+@media @tui-mouse {
+    [tuiSurface]:where(*&):hover input[tuiSurfaceLayer] {
+        box-shadow:
+            inset 0 0,
+            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
+    }
 
-        [tuiSurface]:hover &:checked {
-            filter: brightness(0.9);
-            box-shadow:
-                inset 0 0 0 calc(var(--tui-gap) / 2),
-                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
-        }
+    [tuiSurface]:where(*&):hover input[tuiSurfaceLayer]:checked {
+        filter: brightness(0.9);
+        box-shadow:
+            inset 0 0 0 calc(var(--tui-gap) / 2),
+            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
     }
 }
 
-[tuiSurface][data-appearance='floating'] {
+[tuiSurface][data-appearance='floating']:where(*&) {
     background: var(--tui-background-elevation-1);
     box-shadow: var(--tui-shadow-medium);
 
@@ -149,7 +149,7 @@ input[tuiSurfaceLayer] {
     });
 }
 
-[tuiSurface][data-appearance='neutral'] {
+[tuiSurface][data-appearance='neutral']:where(*&) {
     background: conic-gradient(var(--tui-background-neutral-1) 0 0), conic-gradient(var(--tui-background-base) 0 0);
 
     [tuiTheme='dark'] &,

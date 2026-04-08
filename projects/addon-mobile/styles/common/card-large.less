@@ -10,7 +10,21 @@
         --t-comp: -0.125rem;
     }
 
-    [tuiAccessories] > [tuiButtonX] {
-        --t-size: 1.5rem;
+    [tuiHeader] {
+        margin-block-end: -0.5rem;
+
+        + [tuiCell] {
+            margin-block-start: 0;
+        }
+
+        + [tuiDescription] {
+            margin-block: -0.25rem -0.5rem;
+            font: var(--tui-typography-body-l);
+        }
+    }
+
+    [tuiHeader] [tuiTitle],
+    &[tuiHeader] [tuiTitle] {
+        gap: 0.5rem;
     }
 }

@@ -39,7 +39,7 @@ export class TuiArcChart {
     public readonly minLabel = input('0%');
     public readonly maxLabel = input('100%');
 
-    public readonly activeItemIndex = model<number>(NaN);
+    public readonly activeItemIndex = model(Number.NaN);
 
     protected get width(): number {
         return SIZE[this.size()];
@@ -50,7 +50,7 @@ export class TuiArcChart {
     }
 
     protected onHovered(hovered: boolean, index: number): void {
-        this.activeItemIndex.set(hovered ? index : NaN);
+        this.activeItemIndex.set(hovered ? index : Number.NaN);
     }
 
     protected isInactive(index: number): boolean {

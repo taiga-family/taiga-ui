@@ -21,6 +21,8 @@ export function migrateSpaceMixins(fileContent: string): string {
     return fileContent.replaceAll(
         MIXIN_RE,
         (_, direction: keyof typeof DIRECTION_MAPPING, size: string, important = '') =>
-            `${DIRECTION_MAPPING[direction].map((property) => `${property}: ${Number(size) * SPACE}rem${important};`).join('\n')}`,
+            DIRECTION_MAPPING[direction]
+                .map((property) => `${property}: ${Number(size) * SPACE}rem${important};`)
+                .join('\n'),
     );
 }

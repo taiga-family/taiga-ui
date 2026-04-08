@@ -8,38 +8,11 @@
         </div>
     </div>
     <header tuiDocHeader>
+        <ng-content
+            ngProjectAs="tuiDocMobileNavigation"
+            select="tuiDocMobileNavigation"
+        />
         <ng-content select="tuiDocHeader" />
-
-        @if (dir) {
-            <button
-                appearance=""
-                aria-label="Switch directionality of the element's text"
-                size="s"
-                tuiIconButton
-                type="button"
-                class="tui-doc-switch-direction"
-                [style.border-radius.%]="100"
-                (click)="changeTextDirection()"
-            >
-                <tui-icon
-                    [badge]="icons.ltr.direction"
-                    [icon]="icons.ltr.preview"
-                />
-            </button>
-        }
-
-        <button
-            appearance=""
-            aria-label="Switch between dark and light mode"
-            size="s"
-            tuiIconButton
-            type="button"
-            class="tui-doc-dark-mode-switch"
-            [style.border-radius.%]="100"
-            (click)="darkMode.set(!darkMode())"
-        >
-            <tui-icon [icon]="icon()" />
-        </button>
     </header>
     <ng-container ngProjectAs="tuiOverContent">
         <ng-content select="tuiOverContent" />

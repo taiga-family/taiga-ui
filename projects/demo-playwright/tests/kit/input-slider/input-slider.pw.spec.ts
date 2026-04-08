@@ -144,7 +144,7 @@ describe('InputSlider', () => {
 
             describe('allows to enter number which IS NOT divisible by quantum value', () => {
                 ['3', '5', '7', '9', '11', '14', '19'].forEach((value) => {
-                    test(`${value}`, async () => {
+                    test(value, async () => {
                         await inputSlider.textfield.fill(value);
                         await expect(inputSlider.textfield).toHaveValue(value);
                     });
@@ -153,7 +153,7 @@ describe('InputSlider', () => {
 
             describe('allows to enter number which IS divisible by quantum value', () => {
                 ['0', '10', '20', '30', '60', '90', '100'].forEach((value) => {
-                    test(`${value}`, async () => {
+                    test(value, async () => {
                         await inputSlider.textfield.fill(value);
                         await expect(inputSlider.textfield).toHaveValue(value);
                     });

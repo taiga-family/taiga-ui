@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/icons",
-    "version": "5.0.0-rc.4",
+    "version": "5.1.0",
     "description": "Feather icons for Taiga UI",
     "keywords": [
         "angular",
@@ -14,7 +14,24 @@
         "url": "https://github.com/taiga-family/taiga-ui"
     },
     "license": "Apache-2.0",
+    "contributors": [
+        {
+            "email": "alexander@inkin.ru",
+            "name": "Alex Inkin"
+        },
+        {
+            "email": "vladimir.potekh@gmail.com",
+            "name": "Vladimir Potekhin"
+        },
+        {
+            "email": "nikita.s.barsukov@gmail.com",
+            "name": "Nikita Barsukov"
+        }
+    ],
+    "exports": {
+        "./*": "./*"
+    },
     "devDependencies": {
-        "lucide-static": "0.576.0"
+        "lucide-static": "1.7.0"
     }
 }

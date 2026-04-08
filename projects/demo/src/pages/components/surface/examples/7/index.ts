@@ -5,14 +5,14 @@ import {TuiAmountPipe, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {
     TuiAppearance,
     TuiButton,
-    TuiLabel,
+    TuiCell,
     TuiLink,
     TuiScrollbar,
     tuiScrollbarOptionsProvider,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -22,7 +22,8 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
         TuiBadge,
         TuiButton,
         TuiCardLarge,
-        TuiLabel,
+        TuiCell,
+        TuiHeader,
         TuiLink,
         TuiScrollbar,
         TuiSurface,

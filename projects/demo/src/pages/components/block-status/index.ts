@@ -14,7 +14,7 @@ export default class Example {
 
     protected readonly sizes: TuiSizeL[] = ['l', 'm'];
 
-    protected size: TuiSizeL = this.sizes[0] || 'l';
+    protected size = this.sizes[0] || 'l';
 
     protected readonly examples = [
         'Basic',

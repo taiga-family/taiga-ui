@@ -1,13 +1,11 @@
 import {DOCUMENT} from '@angular/common';
-import {DestroyRef, inject, Injectable} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {inject, Injectable} from '@angular/core';
 import {
     expand,
     fromEvent,
     map,
     merge,
     type Observable,
-    share,
     Subject,
     switchMap,
     takeUntil,
@@ -25,7 +23,6 @@ function getDelay(index: number): number {
 @Injectable()
 export class TuiInputNumberStepService<T> {
     private readonly doc = inject(DOCUMENT);
-    private readonly destroyRef = inject(DestroyRef);
     private readonly start$ = new Subject<T>();
     private readonly stop$ = merge(
         fromEvent(this.doc, 'pointerup'),
@@ -41,8 +38,6 @@ export class TuiInputNumberStepService<T> {
                 takeUntil(this.stop$),
             ),
         ),
-        takeUntilDestroyed(this.destroyRef),
-        share(),
     );
 
     public next(value: T): void {

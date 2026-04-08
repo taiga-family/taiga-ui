@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
@@ -11,10 +12,15 @@ import {TuiSurface} from '@taiga-ui/layout/components/surface';
 
 @Component({
     template: '',
-    styleUrls: ['./card.style.less', './medium.style.less'],
+    styleUrl: './card.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './medium.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-card-medium'},
+    exportAs: `tui-card-medium-${TUI_VERSION}`,
 })
 class Styles {}
 

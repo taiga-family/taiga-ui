@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiTab] {
+[tuiTab]:where(*&) {
     .transition(~'color, box-shadow, opacity, background');
     .button-clear();
 
@@ -15,8 +15,7 @@
     cursor: pointer;
     outline: none;
     color: inherit;
-    /* stylelint-disable-next-line */
-    margin-inline-start: var(--tui-tab-margin, 24px);
+    margin-inline-start: var(--tui-tab-margin, 1.5rem);
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
@@ -44,8 +43,7 @@
     }
 
     tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child {
-        /* stylelint-disable-next-line */
-        margin-inline-start: var(--tui-tab-margin, 24px);
+        margin-inline-start: var(--tui-tab-margin, 1.5rem);
     }
 
     &[tuiIcons]::before {
@@ -70,7 +68,7 @@
     }
 }
 
-tui-tabs {
+tui-tabs:where(*&) {
     .scrollbar-hidden();
 
     position: relative;
@@ -85,8 +83,8 @@ tui-tabs {
 
     &[data-size='m'] {
         font: var(--tui-typography-body-s);
-        /* stylelint-disable-next-line */
-        --tui-tab-margin: 16px;
+
+        --tui-tab-margin: 1rem;
     }
 
     &[data-size='l']:not([data-vertical]) {
@@ -98,11 +96,11 @@ tui-tabs {
     }
 
     &::before {
-        .transition(~'inline-size, left');
+        .transition(~'inline-size, inset-inline-start');
 
         position: absolute;
-        left: var(--t-left);
-        bottom: 0;
+        inset-block-end: 0;
+        inset-inline-start: var(--t-left);
         block-size: 0.125rem;
         inline-size: var(--t-width);
         background: var(--t-color);
@@ -110,7 +108,7 @@ tui-tabs {
         contain: strict;
 
         @supports (anchor-name: --tui-tab-active) {
-            left: anchor(left);
+            inset-inline-start: anchor(start);
             inline-size: anchor-size(inline);
             position-anchor: --tui-tab-active;
         }
@@ -121,7 +119,7 @@ tui-tabs {
     }
 }
 
-tui-tabs[data-vertical] {
+tui-tabs[data-vertical]:where(*&) {
     flex-direction: column;
     box-shadow: inset calc(-1px * var(--tui-inline)) 0 var(--tui-border-normal);
 

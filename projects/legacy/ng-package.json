@@ -1,8 +1,7 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-    "allowedNonPeerDependencies": [
-        "."
-    ],
+    "assets": ["styles"],
+    "allowedNonPeerDependencies": ["."],
     "dest": "../../dist/legacy",
     "lib": {
         "entryFile": "index.ts"

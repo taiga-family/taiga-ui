@@ -30,8 +30,8 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(0);
 
-    protected min = signal(0);
-    protected max = signal(100);
+    protected readonly min = signal(0);
+    protected readonly max = signal(100);
     protected prefix = '';
     protected postfix = '';
     protected quantum = 0;
@@ -39,13 +39,7 @@ export default class PageComponent {
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
     protected thumbSize = 12;
-    protected readonly segmentsVariants: Array<number[] | number> = [
-        1,
-        5,
-        3,
-        [0.2, 0.5],
-        [0.1, 0.3],
-    ];
+    protected readonly segmentsVariants = [1, 5, 3, [0.2, 0.5], [0.1, 0.3]];
 
     protected readonly keyStepsVariants: Signal<readonly TuiKeySteps[]> = computed(() => [
         [

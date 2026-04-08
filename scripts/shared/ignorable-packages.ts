@@ -12,4 +12,5 @@ export const IGNORABLE_TAIGA_PACKAGES = [
     '@taiga-ui/prettier-config',
     '@taiga-ui/stylelint-config',
     '@taiga-ui/tsconfig',
+    '@taiga-ui/dompurify',
 ] as const;

@@ -31,7 +31,7 @@ import {TuiErrorComponent} from './error.component';
 
 @Directive({
     selector:
-        'tui-error[ngModel], tui-error[formControlName], tui-error[formControl], tui-error[formGroup], tui-error[formGroupName], tui-error[formArrayName]',
+        'tui-error[ngModel], tui-error[formControlName], tui-error[formControl], tui-error[formGroup], tui-error[formGroupName], tui-error[formArrayName], tui-error[formArray]',
     providers: [
         tuiProvide(NG_VALUE_ACCESSOR, TuiErrorDirective, true),
         tuiProvide(NG_VALIDATORS, TuiErrorDirective, true),

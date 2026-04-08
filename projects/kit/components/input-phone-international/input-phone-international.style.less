@@ -1,7 +1,7 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiInputPhoneInternational][tuiInputPhoneInternational] {
-    left: var(--t-offset);
+[tuiInputPhoneInternational][tuiInputPhoneInternational]:where(*&) {
+    inset-inline-start: var(--t-offset);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     inline-size: calc(100% - var(--t-offset));
@@ -11,7 +11,7 @@
     }
 }
 
-tui-textfield[data-size='s'] {
+tui-textfield[data-size='s']:where(*&) {
     --t-offset: 4.125rem;
 
     .t-ipi-flag {
@@ -19,7 +19,7 @@ tui-textfield[data-size='s'] {
     }
 }
 
-tui-textfield[data-size='m'] {
+tui-textfield[data-size='m']:where(*&) {
     --t-offset: 4.875rem;
 
     .t-ipi-flag {
@@ -27,7 +27,7 @@ tui-textfield[data-size='m'] {
     }
 }
 
-tui-textfield[data-size='l'] {
+tui-textfield[data-size='l']:where(*&) {
     --t-offset: 5.25rem;
 
     .t-ipi-flag {
@@ -35,9 +35,9 @@ tui-textfield[data-size='l'] {
     }
 }
 
-tui-textfield .t-ipi-select {
+.t-ipi-select {
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     border-radius: inherit;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -51,11 +51,11 @@ tui-textfield .t-ipi-select {
     inline-size: 1.75rem;
     block-size: 1.75rem;
     border-radius: 100%;
+}
 
-    &_small {
-        inline-size: 1.25rem;
-        block-size: 1.25rem;
-    }
+.t-ipi-flag_small {
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
 }
 
 .t-ipi-code {
@@ -64,8 +64,8 @@ tui-textfield .t-ipi-select {
 
 .t-ipi-search {
     position: sticky;
-    top: 0;
     z-index: 1;
+    inset-block-start: 0;
     background: var(--tui-background-elevation-3);
     padding: 0.375rem 0.375rem 0;
 
@@ -87,7 +87,7 @@ tui-sheet-dialog {
 
 tui-sheet-dialog {
     .t-ipi-search {
-        top: 4.5rem;
+        inset-block-start: 4.5rem;
         padding-inline-start: 0;
         padding-inline-end: 0;
     }

@@ -38,7 +38,6 @@ export class TuiDocAppearance {
         'icon',
         'floating',
         'textfield',
-        'glass',
         'accent',
     ] as const;
 

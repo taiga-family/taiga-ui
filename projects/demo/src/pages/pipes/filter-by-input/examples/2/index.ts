@@ -2,12 +2,12 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiStringMatcher} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {type TuiFilterByInputOptions, TuiFilterByInputPipe} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 
@@ -33,11 +33,11 @@ export default class Example<T extends User = User> {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
 
     protected readonly users = [
-        {id: 1, name: 'John Cleese'},
-        {id: 2, name: 'Eric Idle'},
-        {id: 3, name: 'Graham Chapman'},
-        {id: 4, name: 'Michael Palin'},
-        {id: 5, name: 'Terry Gilliam'},
+        {id: 42, name: 'John Cleese'},
+        {id: 0, name: 'Eric Idle'},
+        {id: 444, name: 'Graham Chapman'},
+        {id: 222, name: 'Michael Palin'},
+        {id: 404, name: 'Terry Gilliam'},
     ] as unknown as readonly T[];
 
     protected readonly form = new FormGroup({
@@ -47,9 +47,20 @@ export default class Example<T extends User = User> {
 
     protected readonly stringify = ({name}: T): string => name;
 
-    protected readonly matcherString = (name: string, search: string): boolean =>
-        name.split(' ').pop()?.toLowerCase().startsWith(search.toLowerCase()) ?? false;
+    protected readonly bySurname: TuiFilterByInputOptions<string>['filter'] = (
+        items,
+        search,
+    ) =>
+        items.filter((name) =>
+            name.split(' ').pop()?.toLowerCase().startsWith(search.toLowerCase()),
+        );
 
-    protected readonly matcherUser: TuiStringMatcher<T> = (user, search): boolean =>
-        user.name.toLowerCase().startsWith(search.toLowerCase());
+    protected readonly byId: TuiFilterByInputOptions<T>['filter'] = (users, search) =>
+        users.find((x) => String(x.id) === search)
+            ? users
+            : users.filter(
+                  (user) =>
+                      String(user.id).includes(search) ||
+                      TUI_DEFAULT_MATCHER(user, search, this.stringify),
+              );
 }

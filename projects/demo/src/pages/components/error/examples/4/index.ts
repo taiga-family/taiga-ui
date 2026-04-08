@@ -15,7 +15,7 @@ import {TuiInputPhone} from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 function phoneValidator({value}: AbstractControl): ValidationErrors | null {
-    return value.length !== 12 ? {length: 'Invalid phone number length'} : null;
+    return value.length === 12 ? null : {length: 'Invalid phone number length'};
 }
 
 @Component({

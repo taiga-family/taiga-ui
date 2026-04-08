@@ -45,7 +45,7 @@ import {createOutputSpy} from 'cypress/angular';
 export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
 
-    public readonly control = input(new FormControl<string>('', {nonNullable: true}));
+    public readonly control = input(new FormControl('', {nonNullable: true}));
 
     public readonly countryIsoCode = model<TuiCountryIsoCode>('RU');
 
@@ -255,9 +255,7 @@ describe('InputPhoneInternational', () => {
                 control.patchValue('+77777777777');
                 cy.wait(1);
 
-                cy.get('@input')
-                    .focus() // TODO: remove after update to Angular 17+ (https://github.com/taiga-family/taiga-ui/issues/9389#issuecomment-2551055582)
-                    .should('have.value', '+7 777 777-7777');
+                cy.get('@input').should('have.value', '+7 777 777-7777');
                 cy.get('tui-textfield').compareSnapshot({
                     name: 'phone-18n-formatted-value',
                     cypressScreenshotOptions: {padding: 8},

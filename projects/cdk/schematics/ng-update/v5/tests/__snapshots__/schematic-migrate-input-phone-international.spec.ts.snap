@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputPhoneInternationalModule to TuiInputPhoneInternational: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-phone-international></tui-input-phone-international>
+
+                <tui-input-phone-international [formControl]="control">
+                    Choose a country
+                </tui-input-phone-international>
+
+                <tui-input-phone-international
+                    formControlName="phone"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Phone number
+                    <input
+                        placeholder="+7 000 000-00-00"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-phone-international>
+
+                <tui-input-phone-international [(ngModel)]="value">
+                    Your phone
+                </tui-input-phone-international>
+            ",
+  "1. After": "
+                <tui-textfield>
+<input tuiInputPhoneInternational />
+</tui-textfield>
+
+                <tui-textfield >
+<label tuiLabel>
+                    Choose a country
+                </label>
+
+<input tuiInputPhoneInternational [formControl]="control" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Phone number
+                    </label>
+<input
+                        placeholder="+7 000 000-00-00"
+                        tuiInputPhoneInternational formControlName="phone"
+                    />
+                </tui-textfield>
+
+                <tui-textfield >
+<label tuiLabel>
+                    Your phone
+                </label>
+
+<input tuiInputPhoneInternational [(ngModel)]="value" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputPhoneInternationalModule to TuiInputPhoneInternational: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputPhoneInternationalModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputPhoneInternationalModule],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInputPhoneInternational } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInputPhoneInternational],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update moves [(countryIsoCode)] to <input tuiInputPhoneInternational>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-phone-international
+                    formControlName="phone"
+                    [(countryIsoCode)]="isoCode"
+                >
+                    Phone
+                </tui-input-phone-international>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Phone
+                </label>
+
+<input tuiInputPhoneInternational formControlName="phone" [(countryIsoCode)]="isoCode" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update moves [countries] and [(countryIsoCode)] together: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-phone-international
+                    formControlName="phone"
+                    [countries]="allowedCountries"
+                    [tuiTextfieldCleaner]="true"
+                    [(countryIsoCode)]="isoCode"
+                >
+                    Phone
+                </tui-input-phone-international>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    [tuiTextfieldCleaner]="true"
+                    
+                >
+<label tuiLabel>
+                    Phone
+                </label>
+
+<input tuiInputPhoneInternational formControlName="phone" [countries]="allowedCountries" [(countryIsoCode)]="isoCode" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update moves [countries] to <input tuiInputPhoneInternational>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-phone-international
+                    formControlName="phone"
+                    [countries]="allowedCountries"
+                >
+                    Phone
+                </tui-input-phone-international>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Phone
+                </label>
+
+<input tuiInputPhoneInternational formControlName="phone" [countries]="allowedCountries" />
+</tui-textfield>
+            ",
+}
+`;

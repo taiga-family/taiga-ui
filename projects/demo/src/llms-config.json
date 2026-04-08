@@ -41,7 +41,7 @@
         "defaultOutputFile": "projects/demo/src/llms-full.txt",
         "defaultOutputFileHtml": "projects/demo/src/llms-full.html",
         "headerSectionsPath": "projects/demo/src/llms-header-sections",
-        "headerFiles": ["import-map.md", "checklist.md", "cdk-types.md", "common-mistakes.md"],
+        "headerFiles": ["import-map.md", "checklist.md", "common-mistakes.md"],
         "skipFolders": [
             "__test__",
             "assets",

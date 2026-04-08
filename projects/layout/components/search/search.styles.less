@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-search[tuiSearch] {
+search[tuiSearch]:where(*&) {
     form {
         display: flex;
         flex-direction: column;
@@ -37,6 +37,8 @@ search[tuiSearch] {
         hr {
             inline-size: 1px;
             block-size: 1rem;
+            border: none;
+            margin: 0;
             background: var(--tui-border-normal);
         }
 

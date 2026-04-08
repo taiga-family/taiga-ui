@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
@@ -13,9 +16,9 @@ jobs:
     name: Build packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
+      - uses: actions/checkout@v6.0.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.196.0
+      - uses: taiga-family/ci/actions/setup/node@v1.196.0
       - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/check-dist.ts
 
@@ -23,9 +26,9 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.189.0
-      - uses: taiga-family/ci/actions/setup/node@v1.189.0
+      - uses: actions/checkout@v6.0.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.196.0
+      - uses: taiga-family/ci/actions/setup/node@v1.196.0
       - run: npx nx build demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
         continue-on-error: true

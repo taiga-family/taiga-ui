@@ -80,12 +80,12 @@ function buildReplacement(
     const headerRaw = template.slice(startTag.endOffset, contentStart);
     const header = normalizePlainText(normalizeBlock(headerRaw));
     const contentRaw =
-        contentEnd !== undefined
-            ? template.slice(
+        contentEnd === undefined
+            ? ''
+            : template.slice(
                   contentElement.sourceCodeLocation.startTag.endOffset,
                   contentElement.sourceCodeLocation.endTag?.startOffset ?? contentEnd,
-              )
-            : '';
+              );
     const contentBlock = normalizeBlock(transformAccordionItems(contentRaw));
     const content = normalizePlainText(contentBlock);
     const forceBlock = contentBlock.includes('\n');

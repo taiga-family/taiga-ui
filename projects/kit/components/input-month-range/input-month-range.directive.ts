@@ -5,6 +5,7 @@ import {
     type TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk/date-time';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {tuiInjectAuxiliary, TuiSelectLike} from '@taiga-ui/core/components/textfield';
 import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
@@ -48,7 +49,9 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
             `${months[month] ?? ''} ${formattedYear}`;
 
         this.input.value.set(
-            value ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to) : '',
+            value
+                ? `${format(value.from)}${RANGE_SEPARATOR_CHAR}${format(value.to)}`
+                : '',
         );
     });
 
@@ -61,7 +64,10 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
     });
 
     protected readonly calendarSync = effect(() => {
-        this.calendar()?.value.set(this.intermediateValue() ?? this.value());
+        const calendar = this.calendar();
+
+        calendar &&
+            tuiSetSignal(calendar.value, this.intermediateValue() ?? this.value());
     });
 
     // TODO: use linked signal (Angular 19+)
@@ -73,11 +79,11 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
         const subscription = this.calendar()?.monthClick.subscribe((month) => {
             const intermediateValue = this.intermediateValue();
 
-            if (!intermediateValue) {
-                this.intermediateValue.set(month);
-            } else {
+            if (intermediateValue) {
                 this.onChange(TuiMonthRange.sort(intermediateValue, month));
                 this.open.set(false);
+            } else {
+                this.intermediateValue.set(month);
             }
         });
 

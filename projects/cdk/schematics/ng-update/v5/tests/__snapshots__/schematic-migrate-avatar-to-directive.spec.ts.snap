@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update avatar adds tuiAvatar attribute when element wraps img: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar><img [src]="avatarUrl" alt="User" /></tui-avatar>",
+  "1. After": "<span tuiAvatar><img [src]="avatarUrl" alt="User" /></span>",
+}
+`;
+
+exports[`ng-update avatar complex templates: test.html 1`] = `
+{
+  "0. Before": "
+                <section *ngFor="let size of sizes">
+                    <tui-avatar [size]="size">{{ size | uppercase }}</tui-avatar>
+                    <tui-avatar
+                        src="@tui.user"
+                        [size]="size"
+                    />
+                </section>
+            ",
+  "1. After": "
+                <section *ngFor="let size of sizes">
+                    <span tuiAvatar [size]="size">{{ size | uppercase }}</span>
+                    <span tuiAvatar="@tui.user"
+                       
+                        [size]="size"
+                    ></span>
+                </section>
+            ",
+}
+`;
+
+exports[`ng-update avatar moves src value to tuiAvatar attribute on host element: test.html 1`] = `
+{
+  "0. Before": "<a tuiAvatar src="avatar.png"></a>",
+  "1. After": "<a tuiAvatar="avatar.png"></a>",
+}
+`;
+
+exports[`ng-update avatar picture inside tui-avatar: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-avatar class="tui-space_horizontal-4">
+                    <picture>
+                        <source
+                            media="(min-width: 600px)"
+                            srcset="/assets/images/angular.svg"
+                        />
+                        <img
+                            alt="Alex Inkin"
+                            src="/assets/images/avatar.jpg"
+                        />
+                    </picture>
+                </tui-avatar>
+            ",
+  "1. After": "
+                <span tuiAvatar class="tui-space_horizontal-4">
+                    <picture>
+                        <source
+                            media="(min-width: 600px)"
+                            srcset="/assets/images/angular.svg"
+                        />
+                        <img
+                            alt="Alex Inkin"
+                            src="/assets/images/avatar.jpg"
+                        />
+                    </picture>
+                </span>
+            ",
+}
+`;
+
+exports[`ng-update avatar replaces bound src attribute with bound tuiAvatar: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar [src]="avatarUrl" size="m"></tui-avatar>",
+  "1. After": "<span [tuiAvatar]="avatarUrl" size="m"></span>",
+}
+`;
+
+exports[`ng-update avatar replaces src attribute with tuiAvatar: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar src="tuiIconUser"></tui-avatar>",
+  "1. After": "<span tuiAvatar="tuiIconUser"></span>",
+}
+`;
+
+exports[`ng-update avatar simulates content: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar>99+</tui-avatar>",
+  "1. After": "<span tuiAvatar>99+</span>",
+}
+`;
+
+exports[`ng-update avatar sometimes it has class and style: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar src="AI" class="text" [style.background]="'AI' | tuiAutoColor" />",
+  "1. After": "<span tuiAvatar="AI" class="text" [style.background]="'AI' | tuiAutoColor" ></span>",
+}
+`;
+
+exports[`ng-update avatar tuiIcon binding is moved to tuiAvatar attribute: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar [src]="'@tui.mastercard' | tuiIcon" />",
+  "1. After": "<span [tuiAvatar]="'@tui.mastercard' | tuiIcon" ></span>",
+}
+`;
+
+exports[`ng-update avatar unwraps tuiFallbackSrc binding into tuiAvatar with image inside: test.html 1`] = `
+{
+  "0. Before": "<a [tuiAvatar]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async"></a>",
+  "1. After": "<a tuiAvatar="@tui.user"><img [src]="'https://avatars.githubusercontent.com/u/11832552'" /></a>",
+}
+`;

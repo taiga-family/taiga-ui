@@ -8,7 +8,7 @@ export function tuiIsCardNumberValid(value: number | string): boolean {
 
     const {length} = cardNumber;
     const arr = cardNumber.split('').map((char, index) => {
-        const digit = parseInt(char, 10);
+        const digit = Number.parseInt(char, 10);
 
         if ((index + length) % 2 === 0) {
             const digitX2 = digit * 2;

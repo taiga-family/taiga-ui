@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPreviewZoom} from '@taiga-ui/kit';
@@ -12,12 +12,10 @@ describe('PreviewZoom', () => {
         template: `
             <tui-preview-zoom [(value)]="value" />
         `,
-        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-        changeDetection: ChangeDetectionStrategy.Default,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiPreviewZoom, {static: true})
-        public component!: TuiPreviewZoom;
+        public readonly component = viewChild.required(TuiPreviewZoom);
 
         public value = 1;
     }
@@ -45,6 +43,6 @@ describe('PreviewZoom', () => {
         input.triggerEventHandler('ngModelChange', 3);
         fixture.detectChanges();
 
-        expect(testComponent.value).toBe(testComponent.component.max());
+        expect(testComponent.value).toBe(testComponent.component().max());
     });
 });

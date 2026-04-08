@@ -13,7 +13,9 @@ test.describe('Tree', () => {
         await example.locator('button.programmatic').nth(0).click();
         await example.locator('button.programmatic').nth(1).click();
         await example.locator('button.programmatic').nth(2).click();
-        await page.click('body'); // (flaky) clear focus from programmatic button
+
+        // (flaky) clear focus from programmatic button
+        await page.locator('body').click({position: {x: 0, y: 0}});
 
         await expect.soft(example).toHaveScreenshot('01-programmatic-control.png');
     });

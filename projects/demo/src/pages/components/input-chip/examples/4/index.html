@@ -66,6 +66,43 @@
 </label>
 
 <label tuiLabel>
+    Conditional input in textfield
+    <tui-textfield
+        multi
+        tuiChevron
+    >
+        <label tuiLabel>Multi Select with if/else</label>
+        @if (filter) {
+            <input
+                tuiInputChip
+                [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
+                [(ngModel)]="conditionalMulti"
+            />
+        } @else {
+            <input
+                tuiInputChip
+                tuiSelectLike
+                [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'"
+                [(ngModel)]="conditionalMulti"
+            />
+        }
+        <tui-data-list-wrapper
+            *tuiDropdown
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </tui-textfield>
+</label>
+<label tuiLabel>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="filter"
+    />
+    Toggle filter
+</label>
+
+<label tuiLabel>
     Working with objects
     <tui-textfield
         multi

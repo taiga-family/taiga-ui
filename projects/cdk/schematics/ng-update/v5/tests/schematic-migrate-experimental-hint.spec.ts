@@ -2,37 +2,54 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {runMigration} from '../../../utils/run-migration';
-
-const collection = join(__dirname, '../../../migration.json');
+import {createMigration} from '../../../utils/run-migration';
 
 describe('ng-update experimental hint provider', () => {
-    async function migrate(component: string): Promise<string> {
-        const {component: result} = await runMigration({
-            collection,
-            component,
-        });
-
-        return result;
-    }
-
-    it('removes tuiProvideExperimentalHint() from providers array and import', async () => {
-        const result = await migrate(`
-            import {ApplicationConfig} from '@angular/core';
-            import {tuiProvideExperimentalHint} from '@taiga-ui/experimental';
-
-            export const appConfig: ApplicationConfig = {
-                providers: [tuiProvideExperimentalHint()],
-            };
-        `);
-
-        expect(result).toEqual(`
-            import {ApplicationConfig} from '@angular/core';
-            export const appConfig: ApplicationConfig = {
-                providers: [],
-            };
-        `);
+    const migrate = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
     });
+
+    it(
+        'removes tuiProvideExperimentalHint() from providers array and import',
+        migrate({
+            component: `
+                import {ApplicationConfig} from '@angular/core';
+                import {tuiProvideExperimentalHint} from '@taiga-ui/experimental';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [tuiProvideExperimentalHint()],
+                };
+            `,
+        }),
+    );
+
+    it(
+        'removes TUI_SLIDER_OPTIONS from providers array and import',
+        migrate({
+            component: `
+                import {ApplicationConfig} from '@angular/core';
+                import {TUI_SLIDER_OPTIONS} from '@taiga-ui/kit';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [TUI_SLIDER_OPTIONS],
+                };
+            `,
+        }),
+    );
+
+    it(
+        'removes tuiSliderOptionsProvider from providers array and import',
+        migrate({
+            component: `
+                import {ApplicationConfig} from '@angular/core';
+                import {tuiSliderOptionsProvider} from '@taiga-ui/kit';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [tuiSliderOptionsProvider({step: 2})],
+                };
+            `,
+        }),
+    );
 
     afterEach(() => resetActiveProject());
 });

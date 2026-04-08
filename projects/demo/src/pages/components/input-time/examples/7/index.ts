@@ -2,14 +2,13 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiBooleanHandler, type TuiStringMatcher, TuiTime} from '@taiga-ui/cdk';
-import {tuiItemsHandlersProvider} from '@taiga-ui/core';
+import {type TuiBooleanHandler, TuiTime} from '@taiga-ui/cdk';
 import {
-    tuiCreateTimePeriods,
-    TuiDataListWrapper,
+    type TuiFilterByInputOptions,
     TuiFilterByInputPipe,
-    TuiInputTime,
-} from '@taiga-ui/kit';
+    tuiItemsHandlersProvider,
+} from '@taiga-ui/core';
+import {tuiCreateTimePeriods, TuiDataListWrapper, TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiDataListWrapper, TuiFilterByInputPipe, TuiInputTime],
@@ -48,6 +47,8 @@ export default class Example {
     protected readonly disabledItemHandler: TuiBooleanHandler<TuiTime> = (x) =>
         x?.valueOf() === this.items[0]!.valueOf();
 
-    protected readonly matcher: TuiStringMatcher<TuiTime> = (item, query) =>
-        item.toString('HH:MM').startsWith(query);
+    protected readonly filter: TuiFilterByInputOptions<TuiTime>['filter'] = (
+        items,
+        query,
+    ) => items.filter((time) => time.toString('HH:MM').startsWith(query));
 }

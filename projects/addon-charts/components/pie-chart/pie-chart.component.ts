@@ -73,7 +73,7 @@ export class TuiPieChart {
     public readonly value = input<readonly number[]>([]);
     public readonly size = input<TuiSizeXL | TuiSizeXS>('m');
     public readonly masked = input(false);
-    public readonly activeItemIndex = model(NaN);
+    public readonly activeItemIndex = model(Number.NaN);
 
     protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content() || '';
@@ -100,7 +100,7 @@ export class TuiPieChart {
     }
 
     protected onHovered(hovered: boolean, index: number): void {
-        this.activeItemIndex.set(hovered ? index : NaN);
+        this.activeItemIndex.set(hovered ? index : Number.NaN);
     }
 
     private getDeg(value: number): number {

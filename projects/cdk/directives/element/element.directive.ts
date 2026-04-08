@@ -23,6 +23,6 @@ export class TuiElement<T extends Element = HTMLElement> implements ElementRef<T
          * This way we can instantiate object creation
          * without additional prototype chain for possible fix bug.
          */
-        return new ElementRef<T>(this.nativeElement);
+        return new ElementRef(this.nativeElement);
     }
 }

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
 import {TuiButton, TuiPopupService, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron, TuiFade} from '@taiga-ui/kit';
 import {
@@ -20,6 +20,7 @@ import {
         TuiHeader,
         TuiNavigation,
         TuiTitle,
+        TuiVCR,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate packages @taiga-ui/i18n/languages/japan => @taiga-ui/i18n/languages/japanese: test.ts 1`] = `
+{
+  "0. Before": "import('@taiga-ui/i18n/languages/japan')",
+  "1. After": "import('@taiga-ui/i18n/languages/japanese')",
+}
+`;

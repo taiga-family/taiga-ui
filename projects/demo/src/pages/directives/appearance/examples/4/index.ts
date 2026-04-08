@@ -22,7 +22,7 @@ export default class Example {
         Outline: ['outline', 'outline-destructive', 'outline-grayscale'],
         Action: ['action', 'action-destructive', 'action-grayscale'],
         Status: ['neutral', 'negative', 'positive', 'warning', 'info'],
-        Others: ['icon', 'floating', 'textfield', 'glass', 'accent'],
+        Others: ['icon', 'floating', 'textfield', 'accent'],
     };
 
     protected asIs(): number {

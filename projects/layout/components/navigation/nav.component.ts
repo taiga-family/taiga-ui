@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
@@ -6,7 +7,11 @@ import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
 @Component({
     selector: 'nav[tuiNavigationNav]',
     template: '<ng-content />',
-    styleUrl: './nav.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './nav.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -14,5 +19,6 @@ import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
         tuiButtonOptionsProvider({size: 's'}),
         tuiTabsOptionsProvider({size: 'm'}),
     ],
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiNavComponent {}

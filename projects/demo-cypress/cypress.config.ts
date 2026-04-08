@@ -19,6 +19,12 @@ export default defineConfig({
         ...preset,
         devServer: {
             ...preset.devServer,
+            webpackConfig: {
+                optimization: {
+                    runtimeChunk: false,
+                    splitChunks: false,
+                },
+            },
             options: {
                 ...preset.devServer?.options,
                 projectConfig: {
@@ -27,7 +33,7 @@ export default defineConfig({
                     sourceRoot: preset.devServer?.options?.projectConfig.sourceRoot ?? '',
                     buildOptions: {
                         ...preset.devServer?.options?.projectConfig?.buildOptions,
-                        buildLibsFromSource: false,
+                        buildLibsFromSource: true,
                         progress: false,
                         optimization: false,
                         verbose: false,
@@ -80,6 +86,19 @@ export default defineConfig({
                             'projects/styles/components/status.less',
                             'projects/styles/components/switch.less',
                             'projects/styles/components/toast.less',
+                            'projects/kit/components/accordion/accordion.style.less',
+                            'projects/kit/components/input-date/input-date.style.less',
+                            'projects/kit/components/input-number/step/input-number-step.style.less',
+                            'projects/kit/components/input-phone-international/input-phone-international.style.less',
+                            'projects/kit/components/preview/dialog/preview-dialog.style.less',
+                            'projects/kit/components/tabs/tabs.style.less',
+                            'projects/addon-mobile/directives/dropdown-mobile/dropdown-mobile.style.less',
+                            'projects/core/portals/modal/modal.style.less',
+                            'projects/core/components/cell/cell.styles.less',
+                            'projects/core/components/data-list/data-list.style.less',
+                            'projects/core/portals/dialog/dialog.style.less',
+                            'projects/kit/directives/chevron/chevron.style.less',
+                            'projects/kit/components/input-slider/input-slider.styles.less',
                         ],
                     },
                 },

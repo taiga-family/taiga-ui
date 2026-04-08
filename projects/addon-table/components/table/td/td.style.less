@@ -9,17 +9,9 @@
     border: 1px solid var(--tui-border-normal);
     border-block-start: none;
     box-sizing: border-box;
-    // TODO: Remove in v5 after we drop all legacy controls
-    // Create new viewport for fixed positioning
-    filter: opacity(1);
-
-    // TODO: Remove in v5 after we drop all legacy controls
-    .safari-only({
-        transform: translate3d(0, 0, 0);
-    });
 
     &:first-child {
-        left: 0;
+        inset-inline-start: 0;
     }
 
     &:not(:first-child) {
@@ -41,9 +33,9 @@
 
         content: '';
         position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 100%;
+        inset-block-start: 0;
+        inset-block-end: 0;
+        inset-inline-start: 100%;
         inline-size: 0.3125rem;
         pointer-events: none;
         background: rgba(237, 237, 237, 0.7);

@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {
     type ComponentRef,
     Directive,
@@ -7,27 +6,24 @@ import {
     INJECTOR,
     type TemplateRef,
     viewChild,
-    ViewContainerRef,
 } from '@angular/core';
-// eslint-disable-next-line no-restricted-imports
-import {POLYMORPHEUS_CONTEXT, type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {TuiVCR} from '@taiga-ui/cdk/directives/vcr';
+import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiPortalService} from './service';
 
 @Directive()
 export abstract class TuiPortals {
-    private readonly vcr = viewChild.required('vcr', {read: ViewContainerRef});
     private readonly injector = inject(INJECTOR);
+    private readonly anchor = viewChild.required(TuiVCR);
 
     constructor() {
         inject(TuiPortalService).attach(this);
     }
 
     public addComponent<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
-        // TODO: Remove after updating to polymorpheus v5
-        const context = component['i'].get(POLYMORPHEUS_CONTEXT, {optional: true});
-        const injector = component.createInjector(this.injector, context || undefined);
-        const ref = this.vcr().createComponent(component.component, {injector});
+        const injector = component.createInjector(this.injector);
+        const ref = this.anchor().vcr.createComponent(component.component, {injector});
 
         ref.changeDetectorRef.detectChanges();
 
@@ -35,6 +31,6 @@ export abstract class TuiPortals {
     }
 
     public addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
-        return this.vcr().createEmbeddedView(templateRef, context);
+        return this.anchor().vcr.createEmbeddedView(templateRef, context);
     }
 }

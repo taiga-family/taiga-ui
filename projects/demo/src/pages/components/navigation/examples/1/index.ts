@@ -5,7 +5,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -66,6 +66,7 @@ class Portal {}
         TuiSwitch,
         TuiTabs,
         TuiTitle,
+        TuiVCR,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -73,7 +74,7 @@ class Portal {}
     providers: [{provide: TuiPortalService, useClass: TuiPopupService}],
 })
 export default class Example extends TuiPortals {
-    protected expanded = signal(false);
+    protected readonly expanded = signal(false);
     protected open = false;
     protected switch = false;
     protected readonly routes = DemoRoute;

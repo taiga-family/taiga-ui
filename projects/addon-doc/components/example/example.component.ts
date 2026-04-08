@@ -21,8 +21,8 @@ import {
     TUI_DOC_CODE_ACTIONS,
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
-    TUI_DOC_EXAMPLE_TEXTS,
     TUI_DOC_ICONS,
+    TUI_DOC_PREVIEW_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord, tuiToKebab} from '@taiga-ui/addon-doc/utils';
@@ -35,7 +35,7 @@ import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
-import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_COPY_TEXTS, TUI_DONE_WORD} from '@taiga-ui/kit/tokens';
 import {TuiHeader} from '@taiga-ui/layout/components/header';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
@@ -87,6 +87,7 @@ export class TuiDocExample implements OnChanges {
     private readonly alerts = inject(TuiNotificationService);
     private readonly location = inject(WA_LOCATION);
     private readonly copyTexts = inject(TUI_COPY_TEXTS);
+    private readonly doneWord = inject(TUI_DONE_WORD);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
     private readonly rawLoader$$ = new BehaviorSubject<
         Record<string, TuiRawLoaderContent>
@@ -95,7 +96,7 @@ export class TuiDocExample implements OnChanges {
     protected readonly fullscreenEnabled = inject(DOCUMENT).fullscreenEnabled;
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
-    protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
+    protected readonly defaultTab = inject(TUI_DOC_PREVIEW_TEXT);
     protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
     protected readonly codeActions =
         inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
@@ -103,7 +104,6 @@ export class TuiDocExample implements OnChanges {
         );
 
     protected readonly route = inject(ActivatedRoute);
-    protected readonly defaultTab = this.texts[0];
     protected activeItemIndex = 0;
     protected fullscreen = false;
     protected readonly copy = computed(() => this.copyTexts()[0]);
@@ -138,7 +138,7 @@ export class TuiDocExample implements OnChanges {
     protected copyExampleLink(target: EventTarget | null): void {
         this.clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
         this.alerts
-            .open(this.texts[1], {label: this.texts[2], appearance: 'positive'})
+            .open(this.copyTexts()[1], {label: this.doneWord(), appearance: 'positive'})
             .subscribe();
     }
 

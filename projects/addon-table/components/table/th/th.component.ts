@@ -9,7 +9,6 @@ import {
     model,
     signal,
 } from '@angular/core';
-import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
@@ -47,8 +46,8 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     public readonly maxWidth = input(Infinity);
 
-    public sorter = model<TuiComparator<T> | null>(
-        this.head ? (a, b) => tuiDefaultSort(a[this.key], b[this.key]) : null,
+    public readonly sorter = model(
+        this.head ? (a: T, b: T) => tuiDefaultSort(a[this.key], b[this.key]) : null,
     );
 
     public readonly resizable = input(this.options.resizable);

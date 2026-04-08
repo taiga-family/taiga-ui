@@ -8,6 +8,47 @@ test.describe('DropdownHover', () => {
     test.describe('Examples', () => {
         test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.DropdownHover));
 
+        test.describe('With DropdownOpen', () => {
+            let example!: Locator;
+
+            test.beforeEach(async ({page}) => {
+                example = new TuiDocumentationPagePO(page).getExample(
+                    '#with--dropdown-open',
+                );
+
+                await example.scrollIntoViewIfNeeded();
+            });
+
+            test('opens dropdown after hover and hide after click', async ({page}) => {
+                const button = example.locator('button', {hasText: 'Hoverable'});
+                const dropdown = page.locator('tui-dropdown');
+
+                await button.hover();
+                await page.waitForTimeout(300);
+                await expect(dropdown).toBeAttached();
+
+                await button.click();
+                await expect(dropdown).not.toBeAttached();
+            });
+
+            test('opens dropdown after hover and instantly click', async ({page}) => {
+                const button = example.locator('button', {hasText: 'Hoverable'});
+                const dropdown = page.locator('tui-dropdown');
+
+                await button.evaluate((el) => {
+                    el.dispatchEvent(new MouseEvent('mouseover', {bubbles: true}));
+                    el.dispatchEvent(new PointerEvent('pointerdown', {bubbles: true}));
+                    el.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+                });
+
+                await expect(dropdown).toBeAttached();
+
+                await page.waitForTimeout(300);
+                await button.click();
+                await expect(dropdown).not.toBeAttached();
+            });
+        });
+
         test.describe('With DropdownMobile', () => {
             let example!: Locator;
             let po!: TuiDocumentationPagePO;

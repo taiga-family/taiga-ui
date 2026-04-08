@@ -6,20 +6,25 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 
 export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
-    size: '' | 'body-l' | 'body-m' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    size: '' | 'body-l' | 'body-m' | 'body-s' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }>({size: 'h5'});
 
 @Component({
     template: '',
-    styleUrl: './header.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './header.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-header'},
+    exportAs: `tui-header-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -28,6 +33,7 @@ class Styles {}
     providers: [tuiButtonOptionsProvider({size: 's'})],
     host: {
         tuiHeader: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'tuiHeader() || options.size || "h5"',
     },
 })

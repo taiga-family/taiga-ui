@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-tui-accordion {
+tui-accordion:where(*&) {
     inline-size: 100%;
     border-radius: var(--t-group-radius);
     font: var(--tui-typography-body-m);
@@ -10,7 +10,7 @@ tui-accordion {
         text-align: start;
         justify-content: flex-start;
 
-        &:last-of-type:not(._open) {
+        &:last-of-type:not([aria-expanded='true']) {
             mask-image: var(--t-group-mask-end);
             border-bottom-left-radius: inherit;
             border-bottom-right-radius: inherit;
@@ -20,17 +20,13 @@ tui-accordion {
             border-top-left-radius: inherit !important;
             border-top-right-radius: inherit !important;
 
-            &:last-of-type:not(._open) {
+            &:last-of-type:not([aria-expanded='true']) {
                 mask: none;
             }
         }
 
         &::after {
             margin-inline-start: auto !important;
-        }
-
-        &._open + tui-expand {
-            visibility: visible;
         }
 
         > [tuiAvatar] {

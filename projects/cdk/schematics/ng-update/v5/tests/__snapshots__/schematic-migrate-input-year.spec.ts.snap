@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.html 1`] = `
+{
+  "0. Before": "
+                <form [formGroup]="form">
+                    <tui-input-year formControlName="value">
+                        Choose a month
+                    </tui-input-year>
+                </form>
+
+                <tui-input-year
+                    class="b-form"
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Choose a year
+                    <input
+                        placeholder="Not 2022 please"
+                        tuiTextfield
+                    />
+                </tui-input-year>
+
+                <tui-input-year
+                    formControlName="value"
+                    tuiTextfieldSize="s"
+                    class="tui-space_bottom-2"
+                >
+                    Choose a year
+                </tui-input-year>
+
+                <tui-input-year
+                    class="b-form"
+                    [formControl]="control"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Choose a year
+                    <input
+                        placeholder="Not 2022 please"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-year>
+
+                <tui-input-year
+                    [max]="maxValue"
+                    [min]="minValue"
+                    [(ngModel)]="value"
+                ></tui-input-year>
+            ",
+  "1. After": "
+                <form [formGroup]="form">
+                    <tui-textfield >
+<label tuiLabel>
+                        Choose a month
+                    </label>
+
+<input tuiInputYear formControlName="value" />
+<tui-calendar-year *tuiDropdown />
+</tui-textfield>
+                </form>
+
+                <tui-textfield
+                    class="b-form"
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Choose a year
+                    </label>
+<input
+                        placeholder="Not 2022 please"
+                        tuiInputYear [formControl]="control"
+                    />
+                
+<tui-calendar-year *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    tuiTextfieldSize="s"
+                    class="tui-space_bottom-2"
+                >
+<label tuiLabel>
+                    Choose a year
+                </label>
+
+<input tuiInputYear formControlName="value" />
+<tui-calendar-year *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    class="b-form"
+                    
+                    [tuiTextfieldCleaner]="true"
+                >
+<label tuiLabel>
+                    Choose a year
+                    </label>
+<input
+                        placeholder="Not 2022 please"
+                        tuiInputYear [formControl]="control"
+                    />
+                
+<tui-calendar-year *tuiDropdown />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    
+                    
+                >
+<input tuiInputYear [max]="maxValue" [min]="minValue" [(ngModel)]="value" />
+<tui-calendar-year *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputYearModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputYearModule,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputYearModule,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+import { TuiInputYear } from "@taiga-ui/kit";
+
+                                @NgModule({
+                  imports: [
+                    // ...
+                    TuiInputYear, TuiInput,
+                  ],
+                  // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                  standalone: true,
+                  imports: [
+                    // ...
+                    TuiInputYear, TuiInput,
+                  ],
+                  templateUrl: './test.html',
+                  // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;

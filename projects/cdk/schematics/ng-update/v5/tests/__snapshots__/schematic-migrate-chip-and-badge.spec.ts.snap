@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update chip and badge selectors migrates deprecated appearances for tui-badge: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-badge
+                    appearance="error"
+                    size="s"
+                >
+                    <span>1</span>
+                </tui-badge>
+                <tui-badge appearance="success" />
+                <tui-badge [appearance]="'error'"></tui-badge>
+                <tui-badge [appearance]="computedAppearance">123</tui-badge>
+                <button
+                    tuiIconButton
+                    [appearance]="'icon'"
+                ></button>
+            ",
+  "1. After": "
+                <span tuiBadge
+                    appearance="negative"
+                    size="s"
+                >
+                    <span>1</span>
+                </span>
+                <span tuiBadge appearance="positive" ></span>
+                <span tuiBadge [appearance]="'negative'"></span>
+                <!-- TODO: (Taiga UI migration) [appearance] binding uses a dynamic expression. If it can produce "error"/"success"/"glass", replace with "negative"/"positive"/"secondary-grayscale" -->
+<span tuiBadge [appearance]="computedAppearance">123</span>
+                <button
+                    tuiIconButton
+                    [appearance]="'icon'"
+                ></button>
+            ",
+}
+`;
+
+exports[`ng-update chip and badge selectors preserves attributes and content on tui-badge: test.html 1`] = `
+{
+  "0. Before": "<tui-badge appearance="neutral" size="s"><span>1</span></tui-badge>",
+  "1. After": "<span tuiBadge appearance="neutral" size="s"><span>1</span></span>",
+}
+`;
+
+exports[`ng-update chip and badge selectors preserves attributes on tui-chip: test.html 1`] = `
+{
+  "0. Before": "<tui-chip appearance="primary" size="s">Content</tui-chip>",
+  "1. After": "<span tuiChip appearance="primary" size="s">Content</span>",
+}
+`;
+
+exports[`ng-update chip and badge selectors replaces nav[tuiStepper] with tui-stepper directive: test.html 1`] = `
+{
+  "0. Before": "<nav tuiStepper></nav>",
+  "1. After": "<tui-stepper ></tui-stepper>",
+}
+`;
+
+exports[`ng-update chip and badge selectors replaces tui-badge with span and tuiBadge directive: test.html 1`] = `
+{
+  "0. Before": "<tui-badge></tui-badge>",
+  "1. After": "<span tuiBadge></span>",
+}
+`;
+
+exports[`ng-update chip and badge selectors replaces tui-chip with span and tuiChip directive: test.html 1`] = `
+{
+  "0. Before": "<tui-chip></tui-chip>",
+  "1. After": "<span tuiChip></span>",
+}
+`;

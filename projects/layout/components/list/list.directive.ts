@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
@@ -19,16 +20,20 @@ export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
 
 @Component({
     template: '',
-    styleUrl: './list.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './list.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-list'},
+    exportAs: `tui-list-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
     selector: 'ul[tuiList], ol[tuiList]',
-    host: {'[attr.data-size]': 'size() || options.size'},
+    host: {'data-tui-version': TUI_VERSION, '[attr.data-size]': 'size() || options.size'},
 })
 export class TuiList {
     protected readonly nothing = tuiWithStyles(Styles);

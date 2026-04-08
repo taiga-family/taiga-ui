@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update identifiers migration adds TODO for TuiStatus type (cannot be auto-migrated to string literal): test.ts 1`] = `
+{
+  "0. Before": "
+                import {type TuiStatus} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    template: '',
+                })
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
+            ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiStatus type has been removed. Replace with a plain string literal type: "default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"
+                import {type TuiStatus} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    template: '',
+                })
+                export class TestComponent {
+                    public status: TuiStatus = 'error';
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration keeps tuiIsFlat usages in source code when migrating from @taiga-ui/kit: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiIsFlat} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    filter(items: readonly unknown[]): boolean {
+                        return tuiIsFlat(items);
+                    }
+                }
+            ",
+  "1. After": "import { tuiIsFlat } from "@taiga-ui/cdk";
+
+                                export class TestComponent {
+                    filter(items: readonly unknown[]): boolean {
+                        return tuiIsFlat(items);
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration migrates identifiers to new packages: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiAutoColorPipe, TuiSurface} from '@taiga-ui/core';
+                import {tuiPure} from '@taiga-ui/cdk';
+                import {TuiCell} from '@taiga-ui/layout';
+
+                export class TestComponent {
+                    protected readonly surface = TuiSurface;
+                    protected readonly cell = TuiCell;
+                    protected readonly autoColor = TuiAutoColorPipe;
+                    protected readonly pure = tuiPure;
+                }
+            ",
+  "1. After": "import { tuiPure } from "@taiga-ui/legacy";
+import { TuiAutoColorPipe } from "@taiga-ui/kit";
+
+                import { TuiCell } from '@taiga-ui/core';
+                import { TuiSurface } from '@taiga-ui/layout';
+
+                export class TestComponent {
+                    protected readonly surface = TuiSurface;
+                    protected readonly cell = TuiCell;
+                    protected readonly autoColor = TuiAutoColorPipe;
+                    protected readonly pure = tuiPure;
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration migrates sheet identifiers from legacy to addon-mobile: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TuiSheetModule,
+                    TuiSheetDialogOptions,
+                    TuiSheetService,
+                } from '@taiga-ui/legacy';
+
+                export class TestComponent {
+                    protected readonly moduleRef = TuiSheetModule;
+                    protected readonly options: TuiSheetDialogOptions = {};
+                    protected readonly service = TuiSheetService;
+                }
+            ",
+  "1. After": "import { TuiSheetDialog, TuiSheetDialogOptions, TuiSheetDialogService } from "@taiga-ui/addon-mobile";
+
+                export class TestComponent {
+                    protected readonly moduleRef = TuiSheetDialog;
+                    protected readonly options: TuiSheetDialogOptions = {};
+                    protected readonly service = TuiSheetDialogService;
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiFlagPipe} from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly flag = TuiFlagPipe;
+                }
+            ",
+  "1. After": "import { TuiFlagPipe } from "@taiga-ui/kit";
+
+                                export class TestComponent {
+                    protected readonly flag = TuiFlagPipe;
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit: test.ts 1`] = `
+{
+  "0. Before": "
+                import {type TuiTimeMode} from '@taiga-ui/cdk';
+
+                export type Mode = TuiTimeMode;
+            ",
+  "1. After": "import { MaskitoTimeMode } from "@maskito/kit";
+
+                                export type Mode = MaskitoTimeMode;
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration moves tuiCellOptionsProvider from layout to core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiCellOptionsProvider} from '@taiga-ui/layout';
+
+                export const providers = [tuiCellOptionsProvider({size: 'm'})];
+            ",
+  "1. After": "import { tuiCellOptionsProvider } from "@taiga-ui/core";
+
+                                export const providers = [tuiCellOptionsProvider({size: 'm'})];
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration moves tuiIsFlat from @taiga-ui/kit to @taiga-ui/cdk: test.ts 1`] = `
+{
+  "0. Before": "import {tuiIsFlat} from '@taiga-ui/kit';",
+  "1. After": "import { tuiIsFlat } from "@taiga-ui/cdk";
+",
+}
+`;
+
+exports[`ng-update identifiers migration preserves attributes when replacing tuiButtonClose with tuiButtonX: test.html 1`] = `
+{
+  "0. Before": "<button tuiButtonClose appearance="primary" size="m"></button>",
+  "1. After": "<button tuiButtonX appearance="primary" size="m"></button>",
+}
+`;
+
+exports[`ng-update identifiers migration renames ResizeObserverService to WaResizeObserverService: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+
+                export class TestComponent {
+                    protected readonly observer = ResizeObserverService;
+                }
+            ",
+  "1. After": "import { WaResizeObserverService } from "@ng-web-apis/resize-observer";
+
+                                export class TestComponent {
+                    protected readonly observer = WaResizeObserverService;
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration replaces tuiButtonClose with tuiButtonX: test.html 1`] = `
+{
+  "0. Before": "<button tuiButtonClose></button>",
+  "1. After": "<button tuiButtonX></button>",
+}
+`;

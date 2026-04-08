@@ -46,11 +46,11 @@ export function syncVersions(
 
         const updatedJSON = JSON.stringify(packageJson, null, INDENTATION);
 
-        if (originalJSON !== updatedJSON) {
+        if (originalJSON === updatedJSON) {
+            processLog(`[no changes]: ${file}`);
+        } else {
             writeFileSync(file, `${updatedJSON}\n`);
             successLog(`[synchronized]: ${file}`);
-        } else {
-            processLog(`[no changes]: ${file}`);
         }
     }
 }

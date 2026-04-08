@@ -2,14 +2,14 @@ import {Component, computed, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER, type TuiMatcher} from '@taiga-ui/cdk';
-import {TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {
-    TuiAvatar,
-    TuiDataListWrapper,
+    TuiCell,
+    type TuiFilterByInputOptions,
     TuiFilterByInputPipe,
-    TuiInputPhone,
-} from '@taiga-ui/kit';
+    TuiTitle,
+} from '@taiga-ui/core';
+import {TuiAvatar, TuiDataListWrapper, TuiInputPhone} from '@taiga-ui/kit';
 
 class User {
     constructor(
@@ -84,15 +84,21 @@ export default class Example {
     }
 
     protected onInput(value: string): void {
-        const user = this.items.find((user) => this.matcher(user, value));
+        const [user] = this.filter(this.items, value);
 
         if (value === user?.toString() || value === user?.phone) {
             this.value.set(user.phone);
         }
     }
 
-    protected readonly matcher: TuiMatcher<[User, string]> = (item, search) =>
-        (search.startsWith('+') &&
-            TUI_DEFAULT_MATCHER(item.phone, search.replaceAll(/\D/g, ''))) ||
-        TUI_DEFAULT_MATCHER(item.toString(), search);
+    protected readonly filter: TuiFilterByInputOptions<User>['filter'] = (
+        items,
+        search,
+    ) =>
+        items.filter(
+            (item) =>
+                (search.startsWith('+') &&
+                    TUI_DEFAULT_MATCHER(item.phone, search.replaceAll(/\D/g, ''))) ||
+                TUI_DEFAULT_MATCHER(item.toString(), search),
+        );
 }

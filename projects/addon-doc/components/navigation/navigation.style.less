@@ -35,6 +35,7 @@
 
 :host-context(tui-drawer) {
     margin: -1.25rem -1.5rem;
+    padding-inline-start: 0;
 
     // tui-drawer already have tui-scrollbar, need pass navigation scrollbar content to outer layer
     .t-scrollbar {
@@ -114,10 +115,11 @@
 
     &_subsection {
         margin-inline-start: 0 !important;
-        text-indent: 1.25rem;
+        padding-inline-start: 1.6875rem;
 
         .t-chevron {
             position: absolute;
+            inset-inline-start: 0.4375rem;
         }
 
         &::before {
@@ -150,9 +152,9 @@
 
         &::before {
             position: absolute;
-            top: 0;
-            bottom: 0;
             display: block;
+            inset-block-start: 0;
+            inset-block-end: 0;
             inset-inline-start: -1rem;
             block-size: auto;
             inline-size: 1px;

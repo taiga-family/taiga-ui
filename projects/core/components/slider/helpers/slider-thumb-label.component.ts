@@ -27,8 +27,7 @@ export class TuiSliderThumbLabel implements AfterContentInit {
         ngDevMode &&
             console.assert(
                 Boolean(this.control()?.valueChanges),
-                '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n' +
-                    'Use [(ngModel)] or [formControl] or formControlName for correct work.',
+                '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\nUse [(ngModel)] or [formControl] or formControlName for correct work.',
             );
     }
 

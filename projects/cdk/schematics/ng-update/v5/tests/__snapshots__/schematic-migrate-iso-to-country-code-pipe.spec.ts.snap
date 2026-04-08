@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment for TuiIsoToCountryCodePipe (no automatic rename): test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiIsoToCountryCodePipe],
+                    template: '{{ isoCode | tuiIsoToCountryCode }}'
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiIsoToCountryCodePipe has been removed. Replace pipe usage \`isoCode | tuiIsoToCountryCode\` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiIsoToCountryCodePipe],
+                    template: '{{ isoCode | tuiIsoToCountryCode }}'
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment when TuiIsoToCountryCodePipe used in NgModule: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @NgModule({
+                    imports: [TuiIsoToCountryCodePipe],
+                })
+                export class AppModule {}
+            ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiIsoToCountryCodePipe has been removed. Replace pipe usage \`isoCode | tuiIsoToCountryCode\` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.
+                import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
+
+                @NgModule({
+                    imports: [TuiIsoToCountryCodePipe],
+                })
+                export class AppModule {}
+            ",
+}
+`;

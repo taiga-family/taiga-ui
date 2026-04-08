@@ -12,6 +12,7 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {
     delay,
     distinctUntilChanged,
+    EMPTY,
     filter,
     fromEvent,
     map,
@@ -69,6 +70,7 @@ export class TuiDropdownHover extends TuiDriver {
         switchMap((v) =>
             of(v).pipe(
                 delay(v ? this.tuiDropdownShowDelay() : this.tuiDropdownHideDelay()),
+                takeUntil(this.open ? fromEvent(this.el, 'pointerdown') : EMPTY),
             ),
         ),
         tuiZoneOptimized(),

@@ -118,10 +118,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get activeElement(): HTMLElement | null {
-        const {tabs} = this;
-        const activeElement = tabs.find((tab) => tab.classList.contains('_active'));
-
-        return activeElement || null;
+        return this.tabs.find((tab) => tab.classList.contains('_active')) ?? null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -175,7 +172,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         wrapper: HTMLElement,
         previous: boolean,
     ): void {
-        const button: HTMLButtonElement = event.target as HTMLButtonElement;
+        const button = event.target as HTMLButtonElement;
         const target = tuiGetClosestFocusable({initial: button, root: wrapper, previous});
 
         if (target) {

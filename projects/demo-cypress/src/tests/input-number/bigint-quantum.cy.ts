@@ -30,7 +30,7 @@ class SandBox {
     public readonly control = new FormControl<bigint | null>(null);
     public readonly max = input<bigint | number>(Infinity);
     public readonly min = input<bigint | number>(-Infinity);
-    public readonly quantum = input<bigint>(0n);
+    public readonly quantum = input(0n);
 }
 
 describe('InputNumber | [bigint] + [step]', () => {

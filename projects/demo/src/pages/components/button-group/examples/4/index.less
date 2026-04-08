@@ -12,25 +12,22 @@
     }
 }
 
-[tuiButtonGroup] {
-    button {
-        color: #fff;
-    }
+[tuiButtonGroup] button {
+    color: var(--tui-text-primary);
 }
 
-.card {
-    inline-size: 100%;
+[tuiCardMedium] {
+    inline-size: calc(100% - 3rem);
     padding: 0.75rem;
-    color: #fff;
     block-size: 8rem;
-}
-
-.money {
-    background: #ffdd2d;
-    color: #333;
+    color: var(--tui-text-primary);
 }
 
 tui-pager {
-    margin: 0 auto;
-    min-block-size: 0.5rem;
+    margin-inline: auto;
+}
+
+[tuiBadge] {
+    background: #ffdd2d;
+    color: #333;
 }

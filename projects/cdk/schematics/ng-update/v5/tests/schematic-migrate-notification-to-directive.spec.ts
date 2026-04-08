@@ -2,40 +2,36 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {runMigration} from '../../../utils/run-migration';
-
-const collection = join(__dirname, '../../../migration.json');
+import {createMigration} from '../../../utils/run-migration';
 
 describe('ng-update notification directive', () => {
-    async function migrate(template: string): Promise<string> {
-        return (await runMigration({template, collection})).template;
-    }
-
-    it('replaces component tag with div and directive', async () => {
-        expect(
-            await migrate('<tui-notification appearance="positive"></tui-notification>'),
-        ).toEqual('<div tuiNotification appearance="positive"></div>');
+    const migrate = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
     });
 
-    it('handles nested content inside notification', async () => {
-        expect(
-            await migrate(
-                '<tui-notification size="s"><span>Hello</span></tui-notification>',
-            ),
-        ).toEqual('<div tuiNotification size="s"><span>Hello</span></div>');
-    });
+    it(
+        'replaces component tag with div and directive',
+        migrate({
+            template: '<tui-notification appearance="positive"></tui-notification>',
+        }),
+    );
 
-    it('handles self-closing notifications', async () => {
-        expect(await migrate('<tui-notification size="s" />')).toEqual(
-            '<div tuiNotification size="s"></div>',
-        );
-    });
+    it(
+        'handles nested content inside notification',
+        migrate({
+            template: '<tui-notification size="s"><span>Hello</span></tui-notification>',
+        }),
+    );
 
-    it('does not duplicate directive attribute', async () => {
-        expect(
-            await migrate('<tui-notification tuiNotification></tui-notification>'),
-        ).toEqual('<div tuiNotification></div>');
-    });
+    it(
+        'handles self-closing notifications',
+        migrate({template: '<tui-notification size="s" />'}),
+    );
+
+    it(
+        'does not duplicate directive attribute',
+        migrate({template: '<tui-notification tuiNotification></tui-notification>'}),
+    );
 
     afterEach(() => resetActiveProject());
 });

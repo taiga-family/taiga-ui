@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
@@ -14,10 +15,14 @@ export interface TuiPositionOptions {
 
 @Component({
     template: '',
-    styleUrl: './alert.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './alert.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-alert-styles'},
+    exportAs: `tui-alert-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -25,6 +30,7 @@ class Styles {}
     host: {
         role: 'alert',
         tuiAlert: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-block]': 'context.block',
         '[attr.data-inline]': 'context.inline',
     },

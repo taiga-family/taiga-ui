@@ -8,6 +8,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
@@ -21,17 +22,24 @@ import {
 
 @Component({
     selector: 'tui-modal',
-    imports: [PolymorpheusOutlet, TuiScrollControls],
+    imports: [PolymorpheusOutlet, TuiScrollControls, TuiScrollRef],
     template: `
-        <ng-container *polymorpheusOutlet="component(); context: context" />
-        <tui-scroll-controls class="t-scrollbars" />
+        <div tuiScrollRef>
+            <ng-container *polymorpheusOutlet="component(); context: context" />
+            <tui-scroll-controls class="t-scrollbars" />
+        </div>
     `,
-    styleUrl: './modal.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './modal.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiActiveZone, TuiFocusTrap, TuiScrollRef],
+    hostDirectives: [TuiActiveZone, TuiFocusTrap],
     host: {
         role: 'dialog',
+        'data-tui-version': TUI_VERSION,
         class: 'tui-enter',
         'aria-modal': 'true',
         '[attr.aria-labelledby]': 'context.id',

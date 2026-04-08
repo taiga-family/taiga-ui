@@ -19,6 +19,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiInputPhoneModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputPhone',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiButtonClose',
             moduleSpecifier: '@taiga-ui/kit',
         },
@@ -69,6 +79,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiCellOptionsProvider',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'tuiCellOptionsProvider',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'TuiAutoColorPipe',
             moduleSpecifier: '@taiga-ui/core',
         },
@@ -95,6 +115,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'tuiPure',
             moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiTimeMode',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'MaskitoTimeMode',
+            moduleSpecifier: '@maskito/kit',
         },
     },
     {
@@ -175,6 +205,56 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'tuiChipOptionsProvider',
             moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiComboBoxModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiComboBox',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSelectModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSelect',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetDialogOptions',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialogOptions',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiSheetDialogService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
     {
@@ -597,6 +677,216 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TUI_JAPANESE_LANGUAGE_LAYOUT',
             moduleSpecifier: '@taiga-ui/i18n',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSidebar',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: [
+            {
+                name: 'TuiDrawer',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiPopup',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiInputPasswordModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiPassword',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiTextfield',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiInputMonthModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiInputMonth',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiInputColorModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputColor',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {name: 'TuiPopover', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalContext', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiPopoverService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortal', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiPopoverDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'tuiAsPopover', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'tuiAsPortal', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {
+            name: 'TuiInputDateModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDate',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputTimeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputTime',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputPhoneInternationalModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputPhoneInternational',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputDateRangeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDateRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFilterByInputPipe',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiFilterByInputPipe',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsFlat',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiIsFlat',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputTagModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputChip',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFormatPhonePipe',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'MaskitoPipe',
+            moduleSpecifier: '@maskito/angular',
+        },
+    },
+    {
+        from: {
+            name: 'TuiOnboardingFlowDialog',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+        to: {
+            name: 'TuiResponsiveDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiOnboardingFlowDialogService',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+        to: {
+            name: 'TuiResponsiveDialogService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiOnboardingDialogDirective',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+        to: {
+            name: 'TuiResponsiveDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInput',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiTextareaModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiTextarea',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_DOC_EXAMPLE_TEXTS',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TUI_DOC_PREVIEW_TEXT',
+            moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
 ];

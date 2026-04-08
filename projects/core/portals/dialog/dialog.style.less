@@ -1,6 +1,7 @@
-tui-dialog {
+tui-dialog:where(*&) {
     position: relative;
     box-sizing: border-box;
+    overflow-wrap: break-word;
     font: var(--tui-typography-body-m);
     background: var(--tui-background-elevation-1);
     box-shadow: var(--tui-shadow-popup);
@@ -34,8 +35,8 @@ tui-dialog {
 
     > [tuiButtonX] {
         position: absolute;
-        top: 1rem;
         z-index: 1;
+        inset-block-start: 1rem;
         inset-inline-end: 1rem;
     }
 

@@ -9,7 +9,7 @@ import {
     viewChildren,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsFlat, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
@@ -19,7 +19,6 @@ import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
-import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Component({
     selector: 'select[tuiSelect]',
@@ -29,7 +28,6 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
     providers: [tuiAsTextfieldAccessor(TuiNativeSelect), tuiAsControl(TuiNativeSelect)],
     hostDirectives: [TuiWithInput],
     host: {
-        '[attr.aria-invalid]': 'invalid()',
         '[disabled]': '!interactive()',
         '(change)': 'selectOption($event.target.options.selectedIndex)',
     },

@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update remove | async from signal-based pipes should handle multiline template: test.html 1`] = `
+{
+  "0. Before": "
+                <p>
+                    Formatted number with rounding: {{ 10500.334 | tuiFormatNumber:
+                    {precision: 2, decimalSeparator: '.', rounding: 'ceil'} | async }}
+                </p>
+            ",
+  "1. After": "
+                <p>
+                    Formatted number with rounding: {{ 10500.334 | tuiFormatNumber:
+                    {precision: 2, decimalSeparator: '.', rounding: 'ceil'} }}
+                </p>
+            ",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should handle multiple pipes in the same template: test.html 1`] = `
+{
+  "0. Before": "
+                <li>{{ 10728.9 | tuiAmount | async }}</li>
+                <li>{{ 10728.9 | tuiAmount: 'RUB' | async }}</li>
+                <span>{{ 120.59 | tuiDecimal | async }}</span>
+                <p>{{ 10500.33 | tuiFormatNumber | async }}</p>
+            ",
+  "1. After": "
+                <li>{{ 10728.9 | tuiAmount }}</li>
+                <li>{{ 10728.9 | tuiAmount: 'RUB' }}</li>
+                <span>{{ 120.59 | tuiDecimal }}</span>
+                <p>{{ 10500.33 | tuiFormatNumber }}</p>
+            ",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should handle pipe inside element with attributes: test.html 1`] = `
+{
+  "0. Before": "<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal | async }}</span>",
+  "1. After": "<span [style.color]="'var(--tui-text-secondary)'">{{ 120.59 | tuiDecimal }}</span>",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should migrate complex example tuiAmount pipe: test.html 1`] = `
+{
+  "0. Before": "<span class="colorPositive">{{ (item.time / 80) * item.price | tuiAmount : "RUB" : "end" | async }}</span>",
+  "1. After": "<span class="colorPositive">{{ (item.time / 80) * item.price | tuiAmount : "RUB" : "end" }}</span>",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiAmount with currency argument: test.html 1`] = `
+{
+  "0. Before": "{{ 10728.9 | tuiAmount: 'RUB' | async }}",
+  "1. After": "{{ 10728.9 | tuiAmount: 'RUB' }}",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiAmount with multiple arguments: test.html 1`] = `
+{
+  "0. Before": "{{ 54000.643 | tuiAmount: 'USD' : 'left' | async }}",
+  "1. After": "{{ 54000.643 | tuiAmount: 'USD' : 'left' }}",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiAmount: test.html 1`] = `
+{
+  "0. Before": "{{ 10728.9 | tuiAmount | async }}",
+  "1. After": "{{ 10728.9 | tuiAmount }}",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiDecimal: test.html 1`] = `
+{
+  "0. Before": "{{ 120.59 | tuiDecimal | async }}",
+  "1. After": "{{ 120.59 | tuiDecimal }}",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiFormatNumber with object argument: test.html 1`] = `
+{
+  "0. Before": "{{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} | async }}",
+  "1. After": "{{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} }}",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiFormatNumber: test.html 1`] = `
+{
+  "0. Before": "{{ 10500.33 | tuiFormatNumber | async }}",
+  "1. After": "{{ 10500.33 | tuiFormatNumber }}",
+}
+`;

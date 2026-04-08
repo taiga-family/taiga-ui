@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -24,15 +25,14 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
 
 @Component({
     template: '',
-    styles: [
-        // TODO: tui-textfield:has([tuiInputSlider]) [tuiButtonX]
-        'tui-textfield [tuiInputSlider] ~ .t-content [tuiButtonX] {display: none !important}',
-        // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
-        'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
-    ],
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-slider.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-input-slider'},
+    exportAs: `tui-input-slider-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -85,13 +85,13 @@ export class TuiInputSliderDirective {
             return;
         }
 
-        if (!slider.keySteps?.transformer()) {
+        if (slider.keySteps?.transformer()) {
+            slider.keySteps?.setControlValue(this.value());
+        } else {
             // Native <input type="range" /> does not support BigInt
             slider.min = Number(this.mask.min());
             slider.max = Number(this.mask.max());
             slider.value = this.value();
-        } else {
-            slider.keySteps?.setControlValue(this.value());
         }
 
         slider.el.disabled = !this.inputNumber.interactive();
