@@ -43,6 +43,7 @@ import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
+import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migrateStyles} from './steps/styles';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
@@ -121,6 +122,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateDocI18nTokens',
                     step: () => migrateDocI18nTokens(tree, options),
+                },
+                {
+                    name: 'migrateI18nLanguageSignal',
+                    step: () => migrateI18nLanguageSignal(tree, options),
                 },
             ],
             timings,
