@@ -17,6 +17,7 @@ import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_SEARCH_ENABLED, TuiDocMain} from '@taiga-ui/addon-doc';
+import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
@@ -26,7 +27,6 @@ import {YaMetrikaService} from './metrika/metrika.service';
 import {News} from './news/news.component';
 import {TuiAlgoliaSearch} from './search';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
-import {TuiPlatform} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'app',
@@ -44,7 +44,6 @@ import {TuiPlatform} from '@taiga-ui/cdk';
     styleUrl: './app.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
-    hostDirectives: [TuiPlatform],
     providers: [
         WaResizeObserverService,
         DEMO_PAGE_LOADED_PROVIDER,
@@ -61,6 +60,7 @@ import {TuiPlatform} from '@taiga-ui/cdk';
             ],
         },
     ],
+    hostDirectives: [TuiPlatform],
 })
 export class App extends AbstractDemo implements OnInit {
     private readonly isE2E = inject(WA_IS_E2E);
