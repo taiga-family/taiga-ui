@@ -16,5 +16,8 @@ app {
   align-items: center;
   border-bottom: 1px solid var(--tui-border-normal);
   padding-left: 20px;
+  font: var(--tui-typography-body-s);
+  color: var(--tui-text-primary);
+  background: var(--tui-background-base-alt);
 }
 ```
