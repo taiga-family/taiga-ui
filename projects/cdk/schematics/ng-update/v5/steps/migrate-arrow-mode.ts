@@ -1,5 +1,5 @@
 import {type Tree} from '@angular-devkit/schematics';
-import {type Node, Node as MorphNode} from 'ng-morph';
+import {Node as MorphNode, type Node} from 'ng-morph';
 
 import {type TuiSchema} from '../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
