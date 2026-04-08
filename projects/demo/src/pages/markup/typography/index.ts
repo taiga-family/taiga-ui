@@ -1,11 +1,10 @@
-import {ClipboardModule} from '@angular/cdk/clipboard';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo, TuiFont} from '@demo/utils';
 import {TuiTable} from '@taiga-ui/addon-table';
 
 @Component({
-    imports: [ClipboardModule, TuiDemo, TuiFont, TuiTable],
+    imports: [TuiDemo, TuiFont, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

@@ -7,13 +7,13 @@ import {TuiTable} from '@taiga-ui/addon-table';
 import {tuiInjectElement} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tr[appFont]',
+    selector: 'tr[tuiFont]',
     imports: [ClipboardModule, TuiDocCopy, TuiTable],
     template: `
         <td tuiTd><ng-content /></td>
         <td tuiTd>
-            <tui-doc-copy [cdkCopyToClipboard]="appFont()">
-                {{ appFont() }}
+            <tui-doc-copy [cdkCopyToClipboard]="tuiFont()">
+                {{ tuiFont() }}
             </tui-doc-copy>
         </td>
         <td tuiTd>{{ weight() }}</td>
@@ -26,15 +26,15 @@ import {tuiInjectElement} from '@taiga-ui/cdk';
         }
     `,
     changeDetection,
-    host: {'[style.font]': '`var(${appFont()})`'},
+    host: {'[style.font]': '`var(${tuiFont()})`'},
 })
 export class TuiFont {
-    public readonly appFont = input('');
+    public readonly tuiFont = input('');
 
     protected readonly el = tuiInjectElement();
     protected readonly styles = isPlatformServer(inject(PLATFORM_ID))
         ? signal(this.el.style)
-        : computed((_ = this.appFont()) => getComputedStyle(this.el));
+        : computed((_ = this.tuiFont()) => getComputedStyle(this.el));
 
     protected readonly weight = computed((weight = this.styles().fontWeight) => {
         switch (weight) {
