@@ -25,7 +25,7 @@ bootstrapApplication(Root, {
      * A workaround for StackBlitz only (it does not support assets).
      * Don't use this approach in real-world applications!
      */
-    tuiAssetsPathProvider('https://taiga-ui.dev/assets/taiga-ui/icons'),
+    tuiAssetsPathProvider('https://taiga-ui.dev/v4/assets/taiga-ui/icons'),
     NG_EVENT_PLUGINS,
     {
       provide: 'Pythons',
