@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update Angular animations warning adds TODO for TuiDurationOptions type usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {type TuiDurationOptions} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    readonly options: TuiDurationOptions = {value: '', params: {duration: 300}};
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiDurationOptions has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated
+                import {type TuiDurationOptions} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    readonly options: TuiDurationOptions = {value: '', params: {duration: 300}};
+                }
+            ",
+}
+`;
+
+exports[`ng-update Angular animations warning adds TODO for multiple animations in one import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiFadeIn, tuiHeightCollapse, tuiScaleIn} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                    animations: [tuiFadeIn, tuiHeightCollapse, tuiScaleIn],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) tuiHeightCollapse has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated
+// TODO: (Taiga UI migration) tuiFadeIn has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated
+// TODO: (Taiga UI migration) tuiScaleIn has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated
+                import {tuiFadeIn, tuiHeightCollapse, tuiScaleIn} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                    animations: [tuiFadeIn, tuiHeightCollapse, tuiScaleIn],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update Angular animations warning adds TODO for tuiFadeIn usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiFadeIn} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                    animations: [tuiFadeIn],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) tuiFadeIn has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated
+                import {tuiFadeIn} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                    animations: [tuiFadeIn],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update Angular animations warning adds TODO for tuiSlideInTop usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiSlideInTop} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                    animations: [tuiSlideInTop],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) tuiSlideInTop has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated
+                import {tuiSlideInTop} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                    animations: [tuiSlideInTop],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
