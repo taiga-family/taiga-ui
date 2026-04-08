@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, effect, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {Router} from '@angular/router';
+import {NavigationStart, Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiPopup} from '@taiga-ui/core/portals/popup';
@@ -26,6 +26,12 @@ export class TuiDocHeader {
     protected readonly open = signal(false);
 
     constructor() {
-        effect(() => this.routeEvents() && this.open.set(false));
+        effect(() => {
+            const event = this.routeEvents();
+
+            if (event instanceof NavigationStart) {
+                this.open.set(false);
+            }
+        });
     }
 }
