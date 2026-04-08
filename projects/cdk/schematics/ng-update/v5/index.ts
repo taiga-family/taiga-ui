@@ -31,7 +31,6 @@ import {FUNCTION_PARAMETERS_TO_REPLACE} from './steps/constants/function-paramet
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
 import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
-import {migrateArrowMode} from './steps/migrate-arrow-mode';
 import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
@@ -74,10 +73,6 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'replaceIdentifiers',
                     step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
-                },
-                {
-                    name: 'migrateArrowMode',
-                    step: () => migrateArrowMode(tree, options),
                 },
                 {
                     name: 'migrateBreakpointService',
