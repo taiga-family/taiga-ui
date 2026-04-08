@@ -4,7 +4,7 @@ import {Component, computed, inject, input, PLATFORM_ID, signal} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocCopy} from '@taiga-ui/addon-doc';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement, TuiPlatform} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tr[tuiFont]',
@@ -32,9 +32,12 @@ export class TuiFont {
     public readonly tuiFont = input('');
 
     protected readonly el = tuiInjectElement();
+    protected readonly platform = inject(TuiPlatform);
     protected readonly styles = isPlatformServer(inject(PLATFORM_ID))
         ? signal(this.el.style)
-        : computed((_ = this.tuiFont()) => getComputedStyle(this.el));
+        : computed((_ = this.tuiFont(), __ = this.platform.tuiPlatform()) =>
+              getComputedStyle(this.el),
+          );
 
     protected readonly weight = computed((weight = this.styles().fontWeight) => {
         switch (weight) {
