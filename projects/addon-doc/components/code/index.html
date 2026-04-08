@@ -6,9 +6,9 @@
 @for (content of processor(); track content) {
     <pre class="t-code">
     @if (lineNumbers()) {
-      <code [highlightAuto]="content" lineNumbers></code>
+      <code [highlightAuto]="content" lineNumbers>{{isServer ? content : ''}}</code>
     } @else {
-      <code [highlightAuto]="content"></code>
+      <code [highlightAuto]="content">{{isServer ? content : ''}}</code>
     }
     <div class="t-code-actions">
       <button
