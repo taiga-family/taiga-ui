@@ -40,6 +40,7 @@ import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateInput} from './templates/migrate-input';
+import {migrateLink} from './templates/migrate-link';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
@@ -131,6 +132,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateSidebar,
         migrateFormatPhonePipe,
         ...(hasProprietaryPackage ? [migrateProprietaryTextfieldIcons] : []),
+        migrateLink,
         migrateInput,
         migrateTextarea,
     ] as const;
