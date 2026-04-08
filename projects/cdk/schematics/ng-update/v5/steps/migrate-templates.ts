@@ -40,7 +40,6 @@ import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateInput} from './templates/migrate-input';
-import {migrateLink} from './templates/migrate-link';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
@@ -51,6 +50,7 @@ import {migrateInputPhoneInternational} from './templates/migrate-input-phone-in
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
+import {migrateLink} from './templates/migrate-link';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateProprietaryTextfieldIcons} from './templates/migrate-proprietary-textfield-icons';
