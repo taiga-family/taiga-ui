@@ -1,29 +1,38 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {DOCUMENT, isPlatformServer} from '@angular/common';
-import {Component, inject, PLATFORM_ID} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
-import {TuiDemo} from '@demo/utils';
+import {TuiDemo, TuiFont} from '@demo/utils';
+import {TuiTable} from '@taiga-ui/addon-table';
 
 @Component({
-    imports: [ClipboardModule, TuiDemo],
+    imports: [ClipboardModule, TuiDemo, TuiFont, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
-    private readonly doc = inject(DOCUMENT);
-    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
-
-    protected readonly routes = DemoRoute;
-
-    protected computedFontSize(className: string): string | null {
-        if (this.isServer) {
-            return null;
-        }
-
-        const element = this.doc.querySelector(`.${className}`);
-
-        return element ? getComputedStyle(element).fontSize : null;
-    }
+    protected readonly tabs = ['Headings', 'Body', 'UI'] as const;
+    protected readonly groups = {
+        Headings: [
+            '--tui-typography-heading-h1',
+            '--tui-typography-heading-h2',
+            '--tui-typography-heading-h3',
+            '--tui-typography-heading-h4',
+            '--tui-typography-heading-h5',
+            '--tui-typography-heading-h6',
+        ],
+        Body: [
+            '--tui-typography-body-l',
+            '--tui-typography-body-m',
+            '--tui-typography-body-s',
+            '--tui-typography-body-xs',
+        ],
+        UI: [
+            '--tui-typography-ui-l',
+            '--tui-typography-ui-m',
+            '--tui-typography-ui-s',
+            '--tui-typography-ui-xs',
+            '--tui-typography-ui-2xs',
+        ],
+    };
 }
