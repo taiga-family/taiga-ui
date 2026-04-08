@@ -2,8 +2,8 @@ import {type Tree} from '@angular-devkit/schematics';
 import {infoLog, Node, saveActiveProject} from 'ng-morph';
 
 import {type TuiSchema} from '../../../ng-add/schema';
-import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {addUniqueImport} from '../../../utils/add-unique-import';
+import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
 const ANGULAR_CORE = '@angular/core';
 const SIGNAL = 'signal';

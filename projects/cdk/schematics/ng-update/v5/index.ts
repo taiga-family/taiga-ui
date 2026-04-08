@@ -37,13 +37,13 @@ import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
+import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
-import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migrateStyles} from './steps/styles';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
