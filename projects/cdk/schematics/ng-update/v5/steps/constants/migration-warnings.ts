@@ -79,4 +79,28 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiPopoverDirective → TuiPortalDirective: do not extend; use hostDirectives + tuiAsPortal() instead.\n// Before: @Directive({inputs:[...], outputs:[...], providers:[{provide:TuiPopoverService,useExisting:MyService}]}) class MyDirective<T> extends TuiPopoverDirective<T> {}\n// After:  @Directive({providers:[tuiAsPortal(MyService)], hostDirectives:[{directive:TuiPortalDirective,inputs:[...],outputs:[...]}]}) class MyDirective {}\n// See https://taiga-ui.dev/cdk/portal',
     },
+    {
+        name: 'TUI_ARROW_MODE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_ARROW_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
+    {
+        name: 'TuiArrowMode',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiArrowMode has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
+    {
+        name: 'TUI_ARROW_DEFAULT_MODE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_ARROW_DEFAULT_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
+    {
+        name: 'tuiArrowModeProvider',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'tuiArrowModeProvider has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
 ];
