@@ -24,6 +24,42 @@ import {tuiInjectElement, TuiPlatform} from '@taiga-ui/cdk';
         [tuiTd]:first-child {
             font: inherit;
         }
+
+        :host-context(tui-root._mobile) {
+            display: grid;
+            box-shadow: inset 0 0 0 1px var(--tui-border-normal);
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto 1fr 1fr;
+            margin-bottom: -1px;
+            clip-path: inset(0 0 1px 0);
+
+            &:last-child {
+                margin-bottom: 1rem;
+                clip-path: none;
+            }
+
+            [tuiTd] {
+                background: none;
+                border: none;
+
+                &:nth-child(1) {
+                    block-size: auto;
+                    grid-column: span 3;
+                    background: var(--tui-background-neutral-1);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                &:nth-child(2) {
+                    block-size: auto;
+                    grid-column: span 3;
+                    text-align: center;
+
+                    --tui-background-base: var(--tui-background-base-alt);
+                }
+            }
+        }
     `,
     changeDetection,
     host: {'[style.font]': '`var(${tuiFont()})`'},
