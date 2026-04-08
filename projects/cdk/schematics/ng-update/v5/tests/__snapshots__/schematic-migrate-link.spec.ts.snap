@@ -1,6 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update link pseudo adds text-decoration-line underline for non-empty appearance: test.html 1`] = `
+exports[`ng-update link pseudo migrates [pseudo]="true" to [style.text-decoration-line]: test.html 1`] = `
+{
+  "0. Before": "
+                <a
+                    href="/some-link"
+                    tuiLink
+                    [pseudo]="true"
+                >
+                    Pseudo link
+                </a>
+            ",
+  "1. After": "
+                <a
+                    href="/some-link"
+                    tuiLink
+                    
+                >
+                    Pseudo link
+                </a>
+            ",
+}
+`;
+
+exports[`ng-update link pseudo migrates [pseudo]="true" with appearance: test.html 1`] = `
 {
   "0. Before": "
                 <a
@@ -17,57 +40,9 @@ exports[`ng-update link pseudo adds text-decoration-line underline for non-empty
                     appearance="custom"
                     href="/link"
                     tuiLink
-                    [style.text-decoration-line]="'underline'"
+                    
                 >
                     Has custom appearance
-                </a>
-            ",
-}
-`;
-
-exports[`ng-update link pseudo adds text-decoration-style dashed for empty appearance: test.html 1`] = `
-{
-  "0. Before": "
-                <a
-                    appearance=""
-                    href="/link"
-                    tuiLink
-                    [pseudo]="true"
-                >
-                    Has empty appearance
-                </a>
-            ",
-  "1. After": "
-                <a
-                    appearance=""
-                    href="/link"
-                    tuiLink
-                    [style.text-decoration-style]="'dashed'"
-                >
-                    Has empty appearance
-                </a>
-            ",
-}
-`;
-
-exports[`ng-update link pseudo migrates [pseudo]="true" to appearance="": test.html 1`] = `
-{
-  "0. Before": "
-                <a
-                    href="/some-link"
-                    tuiLink
-                    [pseudo]="true"
-                >
-                    Pseudo link
-                </a>
-            ",
-  "1. After": "
-                <a
-                    href="/some-link"
-                    tuiLink
-                    appearance="" [style.text-decoration-style]="'dashed'"
-                >
-                    Pseudo link
                 </a>
             ",
 }
@@ -88,33 +63,10 @@ exports[`ng-update link pseudo migrates button with tuiLink and [pseudo]: test.h
                 <button
                     tuiLink
                     type="button"
-                    appearance="" [style.text-decoration-style]="'dashed'"
+                    
                 >
                     Button pseudo link
                 </button>
-            ",
-}
-`;
-
-exports[`ng-update link pseudo migrates pseudo without binding: test.html 1`] = `
-{
-  "0. Before": "
-                <a
-                    href="/some-link"
-                    pseudo
-                    tuiLink
-                >
-                    Static pseudo link
-                </a>
-            ",
-  "1. After": "
-                <a
-                    href="/some-link"
-                    appearance="" [style.text-decoration-style]="'dashed'"
-                    tuiLink
-                >
-                    Static pseudo link
-                </a>
             ",
 }
 `;
@@ -141,6 +93,29 @@ exports[`ng-update link pseudo removes [pseudo]="false" without adding styles: t
                     
                 >
                     External link
+                </a>
+            ",
+}
+`;
+
+exports[`ng-update link pseudo removes pseudo without binding: test.html 1`] = `
+{
+  "0. Before": "
+                <a
+                    href="/some-link"
+                    pseudo
+                    tuiLink
+                >
+                    Static pseudo link
+                </a>
+            ",
+  "1. After": "
+                <a
+                    href="/some-link"
+                    
+                    tuiLink
+                >
+                    Static pseudo link
                 </a>
             ",
 }

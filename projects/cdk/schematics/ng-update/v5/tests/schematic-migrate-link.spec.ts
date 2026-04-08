@@ -19,7 +19,7 @@ describe('ng-update link pseudo', () => {
     });
 
     it(
-        'migrates [pseudo]="true" to appearance=""',
+        'migrates [pseudo]="true" to [style.text-decoration-line]',
         migrate({
             template: /* HTML */ `
                 <a
@@ -34,7 +34,7 @@ describe('ng-update link pseudo', () => {
     );
 
     it(
-        'migrates pseudo without binding',
+        'removes pseudo without binding',
         migrate({
             template: /* HTML */ `
                 <a
@@ -64,7 +64,7 @@ describe('ng-update link pseudo', () => {
     );
 
     it(
-        'adds text-decoration-line underline for non-empty appearance',
+        'migrates [pseudo]="true" with appearance',
         migrate({
             template: /* HTML */ `
                 <a
@@ -74,22 +74,6 @@ describe('ng-update link pseudo', () => {
                     [pseudo]="true"
                 >
                     Has custom appearance
-                </a>
-            `,
-        }),
-    );
-
-    it(
-        'adds text-decoration-style dashed for empty appearance',
-        migrate({
-            template: /* HTML */ `
-                <a
-                    appearance=""
-                    href="/link"
-                    tuiLink
-                    [pseudo]="true"
-                >
-                    Has empty appearance
                 </a>
             `,
         }),

@@ -3,6 +3,15 @@ import {type ReplacementAttributeValue} from '../../../interfaces';
 
 export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     {
+        attrNames: ['[pseudo]'],
+        newAttrName: '[style.text-decoration-line]',
+        valueReplacer: () => "'underline'",
+        withTagNames: ['a', 'button'],
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiLink') &&
+            el.attrs.find((attr) => attr.name === '[pseudo]')?.value !== 'false',
+    },
+    {
         attrNames: ['size', '[size]'],
         newAttrName: '[style.--tui-thumb-size.rem]',
         valueReplacer: (condition) =>

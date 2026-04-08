@@ -50,7 +50,6 @@ import {migrateInputPhoneInternational} from './templates/migrate-input-phone-in
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
-import {migrateLink} from './templates/migrate-link';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateProprietaryTextfieldIcons} from './templates/migrate-proprietary-textfield-icons';
@@ -132,7 +131,6 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateSidebar,
         migrateFormatPhonePipe,
         ...(hasProprietaryPackage ? [migrateProprietaryTextfieldIcons] : []),
-        migrateLink,
         migrateInput,
         migrateTextarea,
     ] as const;
