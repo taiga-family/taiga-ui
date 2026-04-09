@@ -29701,6 +29701,22 @@ export default class Example extends TuiPortals {
 &lt;label tuiNavigationLogo&gt; Custom color &lt;input tuiSwitch type=&quot;checkbox&quot; [ngModel]=&quot;color&quot; (ngModelChange)=&quot;onColor($event)&quot; /&gt;
 &lt;/label&gt;
 &lt;button tuiButton tuiChevron tuiDropdown=&quot;Use TuiThemeColorService to control color&quot; tuiDropdownAuto type=&quot;button&quot; &gt; How to? &lt;/button&gt;
+&lt;div tuiDropdown tuiDropdownAppearance=&quot;&quot; tuiDropdownAuto [attr.tuiTheme]=&quot;dark() ? &#039;dark&#039; : &#039;light&#039;&quot; &gt;
+&lt;button tuiButton tuiChevron tuiTheme=&quot;dark&quot; type=&quot;button&quot; &gt; Keep dropdowns color? &lt;/button&gt;
+&lt;ol *tuiDropdown tuiList=&quot;s&quot; [style.padding-inline.rem]=&quot;1&quot; &gt;
+&lt;li&gt;Wrap your button in another tag&lt;/li&gt;
+&lt;li&gt;Move dropdown directives to that tag&lt;/li&gt;
+&lt;li&gt; Reset navigation appearance by &lt;code&gt;tuiDropdownAppearance=&quot;&quot;&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt; Set &lt;code&gt;tuiTheme=&quot;dark&quot;&lt;/code&gt; on the button so it fits the header &lt;/li&gt;
+&lt;li&gt; Get app theme: &lt;code&gt;readonly dark = inject(TUI_DARK_MODE)&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt; Use it to set theme on the wrapping tag: &lt;p&gt;
+&lt;code&gt;[attr.tuiTheme]=&quot;dark() ? &#039;dark&#039; : &#039;light&#039;&quot;&lt;/code&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 &lt;/header&gt;
 &lt;main tuiNavigationMain&gt;
 &lt;nav compact tuiSubheader &gt;
@@ -29733,9 +29749,16 @@ import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiThemeColorService} from &#039;@taiga-ui/addon-mobile&#039;;
-import {TuiButton, TuiDataList, TuiDropdown, TuiLink, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {
+    TUI_DARK_MODE,
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiLink,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from &#039;@taiga-ui/kit&#039;;
-import {TuiCardLarge, TuiHeader, TuiNavigation} from &#039;@taiga-ui/layout&#039;;
+import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     imports: [
@@ -29749,6 +29772,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from &#039;@taiga-ui/layout&#039
         TuiFade,
         TuiHeader,
         TuiLink,
+        TuiList,
         TuiNavigation,
         TuiSwitch,
         TuiTabs,
@@ -29761,6 +29785,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from &#039;@taiga-ui/layout&#039
 export default class Example {
     private readonly theme = inject(TuiThemeColorService);
 
+    protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
 
     protected onColor(color: boolean): void {
