@@ -7,11 +7,12 @@
         }
 
         [tuiSubtitle] {
-            font: var(--tui-typography-body-m);
+            font: var(--tui-typography-ui-m);
         }
 
         + [tuiDescription] {
             margin-block-start: 1rem;
+            font: var(--tui-typography-ui-l);
         }
     }
 
@@ -20,13 +21,9 @@
         [tuiTitle] {
             gap: 0.5rem;
         }
-    }
 
-    [tuiAccessories] {
-        gap: 1rem;
-
-        [tuiLink] {
-            font: var(--tui-typography-body-l);
+        [tuiSubtitle] {
+            font: var(--tui-typography-ui-m);
         }
     }
 
@@ -34,13 +31,31 @@
     &[data-size='body-l'],
     &[data-size='body-m'],
     &[data-size='body-s'] {
+        font: var(--tui-typography-heading-h6);
+
         [tuiTitle],
         [tuiAccessories] {
-            font: var(--tui-typography-heading-h6);
+            font: inherit;
+        }
+
+        [tuiTitle] {
+            gap: 0.25rem;
         }
 
         [tuiSubtitle] {
             font: var(--tui-typography-ui-s);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 0.5rem;
+        }
+    }
+
+    [tuiAccessories] {
+        gap: 1rem;
+
+        [tuiLink] {
+            font: var(--tui-typography-ui-l);
         }
     }
 }

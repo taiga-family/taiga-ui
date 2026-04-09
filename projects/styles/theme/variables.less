@@ -58,10 +58,15 @@
     --tui-stroke-width: 0.125rem;
     --tui-duration: 0.3s;
     --tui-disabled-opacity: 0.56;
+    --tui-lh: 1.4em;
     // logical
     --tui-inline-start: left;
     --tui-inline-end: right;
     --tui-inline: 1;
+
+    @supports (font-size: 1lh) {
+        --tui-lh: 1lh;
+    }
 }
 
 [dir='rtl'] {
