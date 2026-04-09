@@ -243,7 +243,7 @@ describe('TuiMonth', () => {
                 describe('production mode', () => {
                     it('2018-aa', () => {
                         expect(() => TuiMonth.jsonParse('2018-aa')).toThrow(
-                            new TuiInvalidMonthException(2018, NaN),
+                            new TuiInvalidMonthException(2018, Number.NaN),
                         );
                     });
 

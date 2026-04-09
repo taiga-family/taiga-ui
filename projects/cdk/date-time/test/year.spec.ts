@@ -172,7 +172,7 @@ describe('TuiYear', () => {
                 describe('production mode', () => {
                     it('invalid string', () => {
                         expect(() => TuiYear.jsonParse('test')).toThrow(
-                            new TuiInvalidYearException(NaN),
+                            new TuiInvalidYearException(Number.NaN),
                         );
                     });
                 });

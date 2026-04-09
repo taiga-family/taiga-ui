@@ -95,8 +95,8 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
             );
 
         return {
-            month: parseInt(date.slice(0, 2), 10) - 1,
-            year: parseInt(date.slice(3, 7), 10),
+            month: Number.parseInt(date.slice(0, 2), 10) - 1,
+            year: Number.parseInt(date.slice(3, 7), 10),
         };
     }
 
@@ -122,8 +122,8 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * @throws exceptions if year or month is invalid
      */
     public static override jsonParse(ymString: string): TuiMonth {
-        const year = parseInt(ymString.slice(0, 4), 10);
-        const month = parseInt(ymString.slice(5, 7), 10) - 1;
+        const year = Number.parseInt(ymString.slice(0, 4), 10);
+        const month = Number.parseInt(ymString.slice(5, 7), 10) - 1;
 
         if (!TuiMonth.isValidMonth(year, month)) {
             throw new TuiInvalidMonthException(year, month);

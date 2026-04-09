@@ -62,7 +62,7 @@ export class TuiYear implements TuiYearLike {
                 '[normalizeParse]: wrong year string length',
             );
 
-        return new TuiYear(TuiYear.normalizeYearPart(parseInt(rawYear, 10)));
+        return new TuiYear(TuiYear.normalizeYearPart(Number.parseInt(rawYear, 10)));
     }
 
     /**
@@ -72,7 +72,7 @@ export class TuiYear implements TuiYearLike {
      * @throws exceptions if year is invalid
      */
     public static jsonParse(yearString: string): TuiYear {
-        const year = parseInt(yearString, 10);
+        const year = Number.parseInt(yearString, 10);
 
         if (!TuiYear.isValidYear(year)) {
             throw new TuiInvalidYearException(year);
