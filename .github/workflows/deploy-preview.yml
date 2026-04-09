@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.197.0
-      - uses: taiga-family/ci/actions/setup/node@v1.197.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.198.0
+      - uses: taiga-family/ci/actions/setup/node@v1.198.0
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
