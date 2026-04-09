@@ -1,7 +1,20 @@
-import {hasElementAttribute} from '../../../../utils/templates/elements';
+import {
+    hasElementAttribute,
+    hasElementAttributeWithValue,
+} from '../../../../utils/templates/elements';
 import {type ReplacementAttributeValue} from '../../../interfaces';
 
 export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
+    {
+        attrNames: ['[pseudo]'],
+        newAttrName: '[style.text-decoration-style]',
+        valueReplacer: () => "'dashed'",
+        withTagNames: ['a', 'button'],
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiLink') &&
+            el.attrs.find((attr) => attr.name === '[pseudo]')?.value !== 'false' &&
+            hasElementAttributeWithValue(el, 'appearance', ''),
+    },
     {
         attrNames: ['[pseudo]'],
         newAttrName: '[style.text-decoration-line]',
@@ -9,7 +22,8 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         withTagNames: ['a', 'button'],
         filterFn: (el) =>
             hasElementAttribute(el, 'tuiLink') &&
-            el.attrs.find((attr) => attr.name === '[pseudo]')?.value !== 'false',
+            el.attrs.find((attr) => attr.name === '[pseudo]')?.value !== 'false' &&
+            !hasElementAttributeWithValue(el, 'appearance', ''),
     },
     {
         attrNames: ['size', '[size]'],

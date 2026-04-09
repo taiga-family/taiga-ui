@@ -80,6 +80,22 @@ describe('ng-update link pseudo', () => {
     );
 
     it(
+        'migrates [pseudo]="true" with empty appearance to dashed style',
+        migrate({
+            template: /* HTML */ `
+                <a
+                    appearance=""
+                    href="/link"
+                    tuiLink
+                    [pseudo]="true"
+                >
+                    Inherited link
+                </a>
+            `,
+        }),
+    );
+
+    it(
         'removes [pseudo]="false" without adding styles',
         migrate({
             template: /* HTML */ `

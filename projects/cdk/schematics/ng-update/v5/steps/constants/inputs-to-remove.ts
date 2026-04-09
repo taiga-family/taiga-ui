@@ -8,7 +8,9 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
     {
         inputName: 'pseudo',
         tags: ['a', 'button'],
-        filterFn: (el) => hasElementAttribute(el, 'tuiLink'),
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiLink') &&
+            !el.attrs.some((attr) => attr.name === '[pseudo]' && attr.value !== 'false'),
     },
     {
         inputName: 'size',

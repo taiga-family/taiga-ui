@@ -15,7 +15,7 @@ exports[`ng-update link pseudo migrates [pseudo]="true" to [style.text-decoratio
                 <a
                     href="/some-link"
                     tuiLink
-                    
+                    [style.text-decoration-line]="'underline'"
                 >
                     Pseudo link
                 </a>
@@ -40,9 +40,34 @@ exports[`ng-update link pseudo migrates [pseudo]="true" with appearance: test.ht
                     appearance="custom"
                     href="/link"
                     tuiLink
-                    
+                    [style.text-decoration-line]="'underline'"
                 >
                     Has custom appearance
+                </a>
+            ",
+}
+`;
+
+exports[`ng-update link pseudo migrates [pseudo]="true" with empty appearance to dashed style: test.html 1`] = `
+{
+  "0. Before": "
+                <a
+                    appearance=""
+                    href="/link"
+                    tuiLink
+                    [pseudo]="true"
+                >
+                    Inherited link
+                </a>
+            ",
+  "1. After": "
+                <a
+                    appearance=""
+                    href="/link"
+                    tuiLink
+                    [style.text-decoration-style]="'dashed'"
+                >
+                    Inherited link
                 </a>
             ",
 }
@@ -63,7 +88,7 @@ exports[`ng-update link pseudo migrates button with tuiLink and [pseudo]: test.h
                 <button
                     tuiLink
                     type="button"
-                    
+                    [style.text-decoration-line]="'underline'"
                 >
                     Button pseudo link
                 </button>
