@@ -861,6 +861,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiMobileCalendarDropdownNew',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileCalendarDropdown',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
