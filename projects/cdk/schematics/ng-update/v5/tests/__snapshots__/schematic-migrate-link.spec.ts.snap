@@ -96,6 +96,29 @@ exports[`ng-update link pseudo migrates button with tuiLink and [pseudo]: test.h
 }
 `;
 
+exports[`ng-update link pseudo migrates dynamic [pseudo] to conditional expression: test.html 1`] = `
+{
+  "0. Before": "
+                <a
+                    href="/link"
+                    tuiLink
+                    [pseudo]="isPseudo"
+                >
+                    Dynamic pseudo
+                </a>
+            ",
+  "1. After": "
+                <a
+                    href="/link"
+                    tuiLink
+                    [style.text-decoration-line]="isPseudo ? 'underline' : null"
+                >
+                    Dynamic pseudo
+                </a>
+            ",
+}
+`;
+
 exports[`ng-update link pseudo removes [pseudo]="false" without adding styles: test.html 1`] = `
 {
   "0. Before": "

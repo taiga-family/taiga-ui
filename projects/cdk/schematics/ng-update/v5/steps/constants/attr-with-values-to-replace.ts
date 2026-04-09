@@ -8,7 +8,8 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     {
         attrNames: ['[pseudo]'],
         newAttrName: '[style.text-decoration-style]',
-        valueReplacer: () => "'dashed'",
+        valueReplacer: (value) =>
+            value === 'true' ? "'dashed'" : `${value} ? 'dashed' : null`,
         withTagNames: ['a', 'button'],
         filterFn: (el) =>
             hasElementAttribute(el, 'tuiLink') &&
@@ -18,7 +19,8 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     {
         attrNames: ['[pseudo]'],
         newAttrName: '[style.text-decoration-line]',
-        valueReplacer: () => "'underline'",
+        valueReplacer: (value) =>
+            value === 'true' ? "'underline'" : `${value} ? 'underline' : null`,
         withTagNames: ['a', 'button'],
         filterFn: (el) =>
             hasElementAttribute(el, 'tuiLink') &&

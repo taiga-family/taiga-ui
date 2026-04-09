@@ -113,6 +113,21 @@ describe('ng-update link pseudo', () => {
     );
 
     it(
+        'migrates dynamic [pseudo] to conditional expression',
+        migrate({
+            template: /* HTML */ `
+                <a
+                    href="/link"
+                    tuiLink
+                    [pseudo]="isPseudo"
+                >
+                    Dynamic pseudo
+                </a>
+            `,
+        }),
+    );
+
+    it(
         'does not touch link without pseudo',
         migrate({
             template: /* HTML */ `
