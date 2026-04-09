@@ -34,11 +34,12 @@ export function tuiCreateFileFormatValidator(accept: string): ValidatorFn {
 
 function checkFormat({name, type}: File, formats: readonly string[]): boolean {
     const extension = `.${(name.split('.').pop() || '').toLowerCase()}`;
+    const normalizedType = type.toLowerCase();
 
     return formats.some(
         (format) =>
             format === extension ||
-            format === type ||
+            format === normalizedType ||
             (format.split('/')[1] === '*' &&
                 type?.split('/')[0] === format.split('/')[0]),
     );
