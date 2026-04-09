@@ -891,6 +891,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiCarousel',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCarousel',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
             name: 'TUI_DOC_EXAMPLE_TEXTS',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },

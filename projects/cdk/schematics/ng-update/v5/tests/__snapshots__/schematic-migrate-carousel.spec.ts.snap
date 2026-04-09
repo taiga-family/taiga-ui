@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiCarousel moves TuiCarousel import from @taiga-ui/kit to @taiga-ui/legacy and adds TODO: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiCarousel} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCarousel],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "// TODO: (Taiga UI migration) TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel
+import { TuiCarousel } from "@taiga-ui/legacy";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiCarousel],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
