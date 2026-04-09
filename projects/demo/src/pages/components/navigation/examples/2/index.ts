@@ -3,9 +3,16 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiDataList, TuiDropdown, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {
+    TUI_DARK_MODE,
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -23,6 +30,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiSwitch,
         TuiTabs,
         TuiTitle,
+        TuiList,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -31,6 +39,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 export default class Example {
     private readonly theme = inject(TuiThemeColorService);
 
+    protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
 
     protected onColor(color: boolean): void {
