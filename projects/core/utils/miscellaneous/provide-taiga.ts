@@ -7,7 +7,7 @@ import {
     provideAppInitializer,
     type Provider,
 } from '@angular/core';
-import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
+import {Meta, REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
@@ -49,6 +49,7 @@ export function provideTaiga(
         provideEventPlugins(),
         provideAppInitializer(() => {
             const doc = inject(DOCUMENT);
+            const meta = inject(Meta);
             const mode = inject(TUI_DARK_MODE);
 
             if (options.scrollbars === 'custom') {
@@ -57,6 +58,10 @@ export function provideTaiga(
 
             if (tuiIsPresent(options.mode)) {
                 mode.set(options.mode === 'dark');
+            }
+
+            if (options.fontScaling && !meta.getTag('name="text-scale"')) {
+                meta.addTag({name: 'text-scale', content: 'scale'});
             }
 
             effect(() => {
