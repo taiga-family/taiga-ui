@@ -29,10 +29,7 @@ import {replaceFunctionParameters} from '../utils/replace-function-parameters';
 import {ATTRS_IN_HOST_TO_REPLACE} from './steps/constants/attrs-in-host-to-replace';
 import {FUNCTION_PARAMETERS_TO_REPLACE} from './steps/constants/function-parameters-to-replace';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
-import {
-    MIGRATION_WARNINGS,
-    POST_REPLACE_WARNINGS,
-} from './steps/constants/migration-warnings';
+import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
 import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
@@ -67,20 +64,12 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => replaceFunctionParameters(FUNCTION_PARAMETERS_TO_REPLACE),
                 },
                 {
-                    name: 'showWarnings',
-                    step: () => showWarnings(context, MIGRATION_WARNINGS),
-                },
-                {
                     name: 'removeModules',
                     step: () => removeModules(options, MODULES_TO_REMOVE),
                 },
                 {
                     name: 'replaceIdentifiers',
                     step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
-                },
-                {
-                    name: 'showPostReplaceWarnings',
-                    step: () => showWarnings(context, POST_REPLACE_WARNINGS),
                 },
                 {
                     name: 'migrateBreakpointService',
@@ -133,6 +122,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateI18nLanguageSignal',
                     step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'showWarnings',
+                    step: () => showWarnings(context, MIGRATION_WARNINGS),
                 },
             ],
             timings,
