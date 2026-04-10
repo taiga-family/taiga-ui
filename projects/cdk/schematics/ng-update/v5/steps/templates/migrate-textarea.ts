@@ -241,14 +241,14 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
-    const innerContent = buildInnerContent(
+    const innerContent = buildInnerContent({
         element,
         template,
         textareaAttrs,
         ctx,
         indent,
         hintIconStr,
-    );
+    });
     const todoComment = buildTodoComment(ctx);
 
     const replacement = `${todoComment}${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
@@ -329,14 +329,21 @@ const LEGACY_TEXTAREA_ATTRS = new Set([
     'tuiTextfieldLegacy'.toLowerCase(),
 ]);
 
-function buildInnerContent(
-    element: Element,
-    template: string,
-    textareaAttrs: string[],
-    ctx: MigrationContext,
-    indent: string,
+function buildInnerContent({
+    element,
+    template,
+    textareaAttrs,
+    ctx,
+    indent,
     hintIconStr = '',
-): string {
+}: {
+    ctx: MigrationContext;
+    element: Element;
+    hintIconStr?: string;
+    indent: string;
+    template: string;
+    textareaAttrs: string[];
+}): string {
     const {placeholder, labelOutside} = ctx;
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
@@ -361,14 +368,14 @@ function buildInnerContent(
     );
 
     if (legacyInnerTextarea) {
-        return `${labelEl}${migrateInnerTextarea(
-            legacyInnerTextarea,
+        return `${labelEl}${migrateInnerTextarea({
+            inner: legacyInnerTextarea,
             template,
-            textareaAttrs,
-            childElements,
+            attrsToAdd: textareaAttrs,
+            allChildren: childElements,
             indent,
             hintIconLine,
-        )}`;
+        })}`;
     }
 
     const attrsStr = textareaAttrs.length > 0 ? ` ${textareaAttrs.join(' ')}` : '';
@@ -394,14 +401,21 @@ function buildInnerContent(
  * Rewrites an existing <textarea tuiTextfieldLegacy> to <textarea tuiTextarea ...>
  * by replacing the legacy directive attr and appending form control attrs.
  */
-function migrateInnerTextarea(
-    inner: Element,
-    template: string,
-    attrsToAdd: string[],
-    allChildren: Element[],
-    indent: string,
+function migrateInnerTextarea({
+    inner,
+    template,
+    attrsToAdd,
+    allChildren,
+    indent,
     hintIconLine = '',
-): string {
+}: {
+    allChildren: Element[];
+    attrsToAdd: string[];
+    hintIconLine?: string;
+    indent: string;
+    inner: Element;
+    template: string;
+}): string {
     const innerLoc = inner.sourceCodeLocation;
 
     if (!innerLoc?.startTag) {

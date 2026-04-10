@@ -258,7 +258,10 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
-    const innerContent = buildInnerContent(element, template, inputAttrs, {
+    const innerContent = buildInnerContent({
+        element,
+        template,
+        inputAttrs,
         placeholder: ctx.placeholder,
         indent,
         labelOutsideIsTrue: isLabelOutsideTrue,
@@ -331,22 +334,23 @@ function buildTodoComment(ctx: MigrationContext): string {
     return `${lines.join('\n')}\n`;
 }
 
-function buildInnerContent(
-    element: Element,
-    template: string,
-    inputAttrs: string[],
-    {
-        placeholder,
-        indent,
-        labelOutsideIsTrue,
-        hintIconStr,
-    }: {
-        hintIconStr: string;
-        indent: string;
-        labelOutsideIsTrue: boolean;
-        placeholder: string;
-    },
-): string {
+function buildInnerContent({
+    element,
+    template,
+    inputAttrs,
+    placeholder,
+    indent,
+    labelOutsideIsTrue,
+    hintIconStr,
+}: {
+    element: Element;
+    hintIconStr: string;
+    indent: string;
+    inputAttrs: string[];
+    labelOutsideIsTrue: boolean;
+    placeholder: string;
+    template: string;
+}): string {
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
             node.nodeName !== '#text' && node.nodeName !== '#comment',
@@ -361,14 +365,14 @@ function buildInnerContent(
     const hintIconLine = hintIconStr ? `${hintIconStr}\n` : '';
 
     if (legacyInnerInput) {
-        return migrateInnerInput(
-            legacyInnerInput,
+        return migrateInnerInput({
+            inner: legacyInnerInput,
             template,
-            inputAttrs,
-            childElements,
+            attrsToAdd: inputAttrs,
+            allChildren: childElements,
             indent,
             hintIconLine,
-        );
+        });
     }
 
     const attrsStr = inputAttrs.length > 0 ? ` ${inputAttrs.join(' ')}` : '';
@@ -402,14 +406,21 @@ function buildInnerContent(
  * Rewrites an existing <input tuiTextfieldLegacy> to <input tuiInput ...>
  * by replacing the legacy directive attr and appending form control attrs.
  */
-function migrateInnerInput(
-    inner: Element,
-    template: string,
-    attrsToAdd: string[],
-    allChildren: Element[],
-    indent: string,
+function migrateInnerInput({
+    inner,
+    template,
+    attrsToAdd,
+    allChildren,
+    indent,
     hintIconLine = '',
-): string {
+}: {
+    allChildren: Element[];
+    attrsToAdd: string[];
+    hintIconLine?: string;
+    indent: string;
+    inner: Element;
+    template: string;
+}): string {
     const innerLoc = inner.sourceCodeLocation;
 
     if (!innerLoc?.startTag) {
