@@ -10400,7 +10400,7 @@ export default class Example implements OnInit {
 <input checked tuiCheckbox type="checkbox" />
 </p>
 <p>
-<input tuiCheckbox type="checkbox" />
+<input tuiCheckbox type="checkbox" [indeterminate]="true" />
 </p>
 <p>
 <input tuiCheckbox type="checkbox" [checked]="checked" />
@@ -10463,22 +10463,18 @@ export default class Example {
     ];
 
     protected currentQuestion = 0;
-
     protected results: boolean[][] = [];
-
     protected form = new FormGroup({
-        0: new FormControl(false),
+        0: new FormControl(true),
         1: new FormControl(false),
-        2: new FormControl(false),
+        2: new FormControl(),
     });
 
     protected nextQuestion(): void {
         this.currentQuestion++;
-
         this.results.push(Object.values(this.form.value).map(Boolean));
-
         this.form = new FormGroup({
-            0: new FormControl(false),
+            0: new FormControl(true),
             1: new FormControl(false),
             2: new FormControl(false),
         });
@@ -16836,15 +16832,14 @@ export default class Page {
 **Template:**
 ```html
 @for (size of sizes; track $index) { <header [tuiHeader]="size">
-<hgroup tuiTitle>
+<!-- Giving [tuiHeader] binding time to apply and provide proper default size for children --> @if (true) { <hgroup tuiTitle>
 <h2>Title</h2>
 <p tuiSubtitle>Subtitle</p>
 </hgroup>
 <aside tuiAccessories>
-<tui-badge-notification [size]="toBadgeSize(size)">1</tui-badge-notification>
-<button tuiButton type="button" [size]="toButtonSize(size)" > Button </button>
-</aside>
-</header>
+<tui-badge-notification>1</tui-badge-notification>
+<button tuiButton type="button" > Button </button>
+</aside> } </header>
 <div tuiDescription> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </div>
 <br />
 <br /> }
@@ -16854,13 +16849,7 @@ export default class Page {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXS,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
@@ -16882,32 +16871,6 @@ export default class Example {
         'body-m',
         'body-s',
     ] as const;
-
-    protected toBadgeSize(size: string): TuiSizeS {
-        switch (size) {
-            case 'body-l':
-            case 'body-m':
-            case 'h6':
-                return 's';
-            default:
-                return 'm';
-        }
-    }
-
-    protected toButtonSize(size: string): TuiSizeL | TuiSizeXS {
-        switch (size) {
-            case 'h1':
-                return 'l';
-            case 'h2':
-            case 'h3':
-                return 'm';
-            case 'h4':
-            case 'h5':
-                return 's';
-            default:
-                return 'xs';
-        }
-    }
 }
 ```
 
@@ -16931,7 +16894,7 @@ export default class Example {
 <p tuiDescription> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
 </section>
 <section>
-<header tuiHeader>
+<header tuiHeader="h4">
 <hgroup tuiTitle>
 <h5>Maskito</h5>
 <p tuiSubtitle> Awesome <span [tuiSensitive]="true">one</span>
