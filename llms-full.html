@@ -22323,7 +22323,7 @@ InputNumber is a form field to provide numerical input. example of [ &#039;Numbe
 
 ```html
 &lt;ng-template&gt;
-&lt;tui-textfield [iconEnd]=&quot;icons.iconEnd&quot; [iconStart]=&quot;icons.iconStart&quot; [tuiTextfieldCleaner]=&quot;textfieldDoc.cleaner&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; &gt; @if (textfieldDoc.size !== &#039;s&#039;) { &lt;label tuiLabel&gt;Enter a number&lt;/label&gt; } &lt;input tuiInputNumber [focused]=&quot;input.focused&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [placeholder]=&quot;textfieldDoc.size === &#039;s&#039; ? &#039;Enter a number&#039; : &#039;&#039;&quot; [postfix]=&quot;postfix&quot; [prefix]=&quot;prefix&quot; [quantum]=&quot;quantum&quot; [readOnly]=&quot;controlDoc.readonly&quot; [state]=&quot;input.state&quot; [step]=&quot;step&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; [tuiNumberFormat]=&quot;{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }&quot; /&gt;
+&lt;tui-textfield [iconEnd]=&quot;icons.iconEnd&quot; [iconStart]=&quot;icons.iconStart&quot; [tuiTextfieldCleaner]=&quot;textfieldDoc.cleaner&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; &gt; @if (textfieldDoc.size !== &#039;s&#039;) { &lt;label tuiLabel&gt;Enter a number&lt;/label&gt; } &lt;input tuiInputNumber [focused]=&quot;input.focused&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [placeholder]=&quot;textfieldDoc.size === &#039;s&#039; ? &#039;Enter a number&#039; : &#039;&#039;&quot; [postfix]=&quot;postfix&quot; [prefix]=&quot;prefix&quot; [quantum]=&quot;quantum&quot; [readOnly]=&quot;controlDoc.readonly&quot; [state]=&quot;input.state&quot; [step]=&quot;step&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; [tuiNumberFormat]=&quot;{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }&quot; /&gt;
 &lt;/tui-textfield&gt;
 &lt;/ng-template&gt;
 ```
@@ -22572,8 +22572,8 @@ export default class Example {
 **Template:**
 ```html
 &lt;tui-textfield&gt;
-&lt;label tuiLabel&gt;Price&lt;/label&gt;
-&lt;input tuiInputNumber [min]=&quot;0&quot; [prefix]=&quot;&#039;USD&#039; | tuiCurrency&quot; [(ngModel)]=&quot;value&quot; /&gt;
+&lt;label tuiLabel&gt;Balance&lt;/label&gt;
+&lt;input tuiInputNumber [prefix]=&quot;&#039;USD&#039; | tuiCurrency&quot; [tuiNumberFormat]=&quot;{negativePattern: &#039;minusFirst&#039;}&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
@@ -22583,16 +22583,17 @@ import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiCurrencyPipe} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiNumberFormat} from &#039;@taiga-ui/core&#039;;
 import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [FormsModule, TuiCurrencyPipe, TuiInputNumber],
+    imports: [FormsModule, TuiCurrencyPipe, TuiInputNumber, TuiNumberFormat],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value: number | null = null;
+    protected value: number | null = -42;
 }
 ```
 
@@ -23643,7 +23644,7 @@ InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 
 ```html
 &lt;ng-template&gt;
-&lt;tui-input-range [content]=&quot;content&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [keySteps]=&quot;keySteps || undefined&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [postfix]=&quot;postfix&quot; [prefix]=&quot;prefix&quot; [quantum]=&quot;quantum&quot; [readOnly]=&quot;controlDoc.readonly&quot; [segments]=&quot;segments&quot; [step]=&quot;step&quot; [style.--tui-thumb-size.px]=&quot;thumbSize&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; [tuiNumberFormat]=&quot;{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), }&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; /&gt;
+&lt;tui-input-range [content]=&quot;content&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [keySteps]=&quot;keySteps || undefined&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [postfix]=&quot;postfix&quot; [prefix]=&quot;prefix&quot; [quantum]=&quot;quantum&quot; [readOnly]=&quot;controlDoc.readonly&quot; [segments]=&quot;segments&quot; [step]=&quot;step&quot; [style.--tui-thumb-size.px]=&quot;thumbSize&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; [tuiNumberFormat]=&quot;{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), negativePattern: numberFormatDoc.negativePattern(), }&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; /&gt;
 &lt;/ng-template&gt;
 ```
 
@@ -24063,7 +24064,7 @@ InputSlider = Textfield + InputNumber + Slider + ❤️
 ```html
 &lt;ng-template&gt;
 &lt;tui-textfield #textfield [content]=&quot;textfield.focused() ? &#039;&#039; : textfieldDoc.content&quot; [iconEnd]=&quot;icons.iconEnd&quot; [iconStart]=&quot;icons.iconStart&quot; [tuiTextfieldCleaner]=&quot;textfieldDoc.cleaner&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; &gt;
-&lt;input tuiInputSlider [attr.placeholder]=&quot;`Form control value is still ${control.value}`&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [max]=&quot;max()&quot; [min]=&quot;min()&quot; [postfix]=&quot;postfix&quot; [prefix]=&quot;prefix&quot; [quantum]=&quot;quantum&quot; [readOnly]=&quot;controlDoc.readonly&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; [tuiNumberFormat]=&quot;{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }&quot; /&gt;
+&lt;input tuiInputSlider [attr.placeholder]=&quot;`Form control value is still ${control.value}`&quot; [formControl]=&quot;control&quot; [invalid]=&quot;controlDoc.invalid&quot; [max]=&quot;max()&quot; [min]=&quot;min()&quot; [postfix]=&quot;postfix&quot; [prefix]=&quot;prefix&quot; [quantum]=&quot;quantum&quot; [readOnly]=&quot;controlDoc.readonly&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; [tuiNumberFormat]=&quot;{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }&quot; /&gt;
 &lt;input tuiSlider type=&quot;range&quot; [keySteps]=&quot;keySteps || undefined&quot; [segments]=&quot;segments&quot; [step]=&quot;step&quot; [style.--tui-thumb-size.px]=&quot;thumbSize&quot; /&gt;
 &lt;/tui-textfield&gt;
 &lt;/ng-template&gt;
