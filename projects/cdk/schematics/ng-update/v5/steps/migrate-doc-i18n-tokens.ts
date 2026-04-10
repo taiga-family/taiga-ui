@@ -7,10 +7,10 @@ import {
     setActiveProject,
     titleLog,
 } from 'ng-morph';
-import {type SourceFile} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
 import {type TuiSchema} from '../../../ng-add/schema';
+import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
 const ANGULAR_CORE = '@angular/core';
@@ -90,7 +90,7 @@ export function migrateDocI18nTokens(tree: Tree, options: TuiSchema): void {
             }
 
             useValueProp.setInitializer(`${SIGNAL}(${initText})`);
-            addSignalImport(ref.getSourceFile());
+            addUniqueImport(ref.getSourceFile().getFilePath(), SIGNAL, ANGULAR_CORE);
         }
     }
 
@@ -98,30 +98,5 @@ export function migrateDocI18nTokens(tree: Tree, options: TuiSchema): void {
 
     if (!options['skip-logs']) {
         titleLog('addon-doc i18n token migration completed!');
-    }
-}
-
-function addSignalImport(sourceFile: SourceFile): void {
-    const coreImports = sourceFile
-        .getImportDeclarations()
-        .filter((decl) => decl.getModuleSpecifierValue() === ANGULAR_CORE);
-
-    const alreadyImported = coreImports.some((decl) =>
-        decl
-            .getNamedImports()
-            .some((named) => named.getName() === SIGNAL && !named.isTypeOnly()),
-    );
-
-    if (alreadyImported) {
-        return;
-    }
-
-    if (coreImports.length > 0) {
-        coreImports[0]!.addNamedImport(SIGNAL);
-    } else {
-        sourceFile.addImportDeclaration({
-            moduleSpecifier: ANGULAR_CORE,
-            namedImports: [SIGNAL],
-        });
     }
 }

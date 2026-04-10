@@ -7,7 +7,7 @@ bootstrapApplication(App, {
     // ...
     {
       provide: TUI_LANGUAGE,
-      useValue: of(TUI_SERBIAN_LANGUAGE),
+      useValue: signal(TUI_SERBIAN_LANGUAGE),
     },
   ],
 }).catch((err: unknown) => console.error(err));

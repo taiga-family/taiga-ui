@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrateI18nLanguageSignal does not add signal import if already present: test.ts 1`] = `
+{
+  "0. Before": "
+import {signal} from '@angular/core';
+import {TUI_LANGUAGE, TUI_CHINESE_LANGUAGE} from '@taiga-ui/i18n';
+import {of} from 'rxjs';
+
+bootstrapApplication(App, {
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: of(TUI_CHINESE_LANGUAGE),
+    },
+  ],
+});
+",
+  "1. After": "
+import {signal} from '@angular/core';
+import {TUI_LANGUAGE, TUI_CHINESE_LANGUAGE} from '@taiga-ui/i18n';
+import {of} from 'rxjs';
+
+bootstrapApplication(App, {
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: signal(TUI_CHINESE_LANGUAGE),
+    },
+  ],
+});
+",
+}
+`;
+
+exports[`ng-update migrateI18nLanguageSignal replaces of(TUI_CHINESE_LANGUAGE) with signal(TUI_CHINESE_LANGUAGE) and adds signal import: test.ts 1`] = `
+{
+  "0. Before": "
+import {TUI_LANGUAGE, TUI_CHINESE_LANGUAGE} from '@taiga-ui/i18n';
+import {of} from 'rxjs';
+
+bootstrapApplication(App, {
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: of(TUI_CHINESE_LANGUAGE),
+    },
+  ],
+}).catch((err: unknown) => console.error(err));
+",
+  "1. After": "import { signal } from "@angular/core";
+
+import {TUI_LANGUAGE, TUI_CHINESE_LANGUAGE} from '@taiga-ui/i18n';
+import {of} from 'rxjs';
+
+bootstrapApplication(App, {
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: signal(TUI_CHINESE_LANGUAGE),
+    },
+  ],
+}).catch((err: unknown) => console.error(err));
+",
+}
+`;
+
+exports[`ng-update migrateI18nLanguageSignal replaces of(TUI_ENGLISH_LANGUAGE) with signal(TUI_ENGLISH_LANGUAGE): test.ts 1`] = `
+{
+  "0. Before": "
+import {TUI_LANGUAGE, TUI_ENGLISH_LANGUAGE} from '@taiga-ui/i18n';
+import {of} from 'rxjs';
+
+bootstrapApplication(App, {
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: of(TUI_ENGLISH_LANGUAGE),
+    },
+  ],
+});
+",
+  "1. After": "import { signal } from "@angular/core";
+
+import {TUI_LANGUAGE, TUI_ENGLISH_LANGUAGE} from '@taiga-ui/i18n';
+import {of} from 'rxjs';
+
+bootstrapApplication(App, {
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: signal(TUI_ENGLISH_LANGUAGE),
+    },
+  ],
+});
+",
+}
+`;
