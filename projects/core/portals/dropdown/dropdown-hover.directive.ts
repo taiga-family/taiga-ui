@@ -41,6 +41,9 @@ export class TuiDropdownHover extends TuiDriver {
     });
 
     private hovered = false;
+    public get hoveredState(): boolean {
+        return this.hovered;
+    }
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
