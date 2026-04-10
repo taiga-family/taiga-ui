@@ -111,7 +111,8 @@
         }
     },
     "jest": {
-        "preset": "@taiga-ui/jest-config"
+        "preset": "@taiga-ui/jest-config",
+        "workerIdleMemoryLimit": "256MB"
     },
     "overrides": {
         "rxjs": "$rxjs"
