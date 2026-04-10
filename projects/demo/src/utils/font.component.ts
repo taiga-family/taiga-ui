@@ -18,7 +18,7 @@ import {tuiInjectElement, TuiPlatform} from '@taiga-ui/cdk';
         </td>
         <td tuiTd>{{ weight() }}</td>
         <td tuiTd>{{ styles().fontSize }}</td>
-        <td tuiTd>{{ styles().lineHeight }} ({{ ratio().toFixed(2) }})</td>
+        <td tuiTd>{{ styles().lineHeight }} ({{ ratio() }})</td>
     `,
     styles: `
         [tuiTd]:first-child {
@@ -86,8 +86,7 @@ export class TuiFont {
         }
     });
 
-    protected readonly ratio = computed(
-        ({fontSize, lineHeight} = this.styles()) =>
-            Number.parseInt(lineHeight) / Number.parseInt(fontSize),
+    protected readonly ratio = computed(({fontSize, lineHeight} = this.styles()) =>
+        (Number.parseInt(lineHeight) / Number.parseInt(fontSize)).toFixed(2),
     );
 }

@@ -1,13 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXS,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
@@ -29,30 +23,4 @@ export default class Example {
         'body-m',
         'body-s',
     ] as const;
-
-    protected toBadgeSize(size: string): TuiSizeS {
-        switch (size) {
-            case 'body-l':
-            case 'body-m':
-            case 'h6':
-                return 's';
-            default:
-                return 'm';
-        }
-    }
-
-    protected toButtonSize(size: string): TuiSizeL | TuiSizeXS {
-        switch (size) {
-            case 'h1':
-                return 'l';
-            case 'h2':
-            case 'h3':
-                return 'm';
-            case 'h4':
-            case 'h5':
-                return 's';
-            default:
-                return 'xs';
-        }
-    }
 }
