@@ -16,7 +16,10 @@ exports[`ng-update TuiPopover migration TuiPopover → TuiPortalContext renames 
                         protected readonly context = injectContext<TuiPopover<PromptOptions, boolean>>();
                     }
                 ",
-  "1. After": "import { TuiPortalContext } from "@taiga-ui/cdk";
+  "1. After": "// TODO: (Taiga UI migration) TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.
+// Before: injectContext<TuiPopoverContext<boolean>>()
+// After:  injectContext<TuiPortalContext<MyOptions, boolean>>()
+import { TuiPortalContext } from "@taiga-ui/cdk";
 
                     import {Component} from '@angular/core';
                     import {injectContext} from '@taiga-ui/polymorpheus';
@@ -40,37 +43,12 @@ exports[`ng-update TuiPopover migration TuiPopover → TuiPortalContext renames 
 
                     export function openDialog(context: TuiPopover<{label: string}, string>): void {}
                 ",
-  "1. After": "import { TuiPortalContext } from "@taiga-ui/cdk";
-
-                                        export function openDialog(context: TuiPortalContext<{label: string}, string>): void {}
-                ",
-}
-`;
-
-exports[`ng-update TuiPopover migration TuiPopoverContext → warning adds TODO comment for TuiPopoverContext (generic params changed): test.ts 1`] = `
-{
-  "0. Before": "
-                    import {Component} from '@angular/core';
-                    import {type TuiPopoverContext} from '@taiga-ui/cdk';
-                    import {injectContext} from '@taiga-ui/polymorpheus';
-
-                    @Component({template: ''})
-                    export class DialogComponent {
-                        protected readonly context = injectContext<TuiPopoverContext<boolean>>();
-                    }
-                ",
-  "1. After": "
-                    import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.
+  "1. After": "// TODO: (Taiga UI migration) TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.
 // Before: injectContext<TuiPopoverContext<boolean>>()
 // After:  injectContext<TuiPortalContext<MyOptions, boolean>>()
-                    import {type TuiPopoverContext} from '@taiga-ui/cdk';
-                    import {injectContext} from '@taiga-ui/polymorpheus';
+import { TuiPortalContext } from "@taiga-ui/cdk";
 
-                    @Component({template: ''})
-                    export class DialogComponent {
-                        protected readonly context = injectContext<TuiPopoverContext<boolean>>();
-                    }
+                                        export function openDialog(context: TuiPortalContext<{label: string}, string>): void {}
                 ",
 }
 `;
@@ -128,13 +106,13 @@ exports[`ng-update TuiPopover migration TuiPopoverService → TuiPortal + warnin
 
                     export const service = inject(TuiPopoverService);
                 ",
-  "1. After": "import { TuiPortal } from "@taiga-ui/cdk";
-
-                    import {inject} from '@angular/core';
-// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
+  "1. After": "// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
 // Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}
 // After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }
 // See https://taiga-ui.dev/cdk/portal
+import { TuiPortal } from "@taiga-ui/cdk";
+
+                    import {inject} from '@angular/core';
                     export const service = inject(TuiPortal);
                 ",
 }
@@ -157,13 +135,13 @@ exports[`ng-update TuiPopover migration TuiPopoverService → TuiPortal + warnin
                     })
                     export class PromptService extends TuiPopoverService<PromptOptions, boolean> {}
                 ",
-  "1. After": "import { TuiPortal } from "@taiga-ui/cdk";
-
-                    import {inject, Injectable} from '@angular/core';
-// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
+  "1. After": "// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
 // Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}
 // After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }
 // See https://taiga-ui.dev/cdk/portal
+import { TuiPortal } from "@taiga-ui/cdk";
+
+                    import {inject, Injectable} from '@angular/core';
                     import {TUI_DIALOGS} from '@taiga-ui/core';
 
                     import {PromptComponent} from './prompt.component';
@@ -206,6 +184,17 @@ exports[`ng-update TuiPopover migration combined usage migrates all popover iden
                 ",
   "1. After": "
                     import {inject, Injectable} from '@angular/core';
+// TODO: (Taiga UI migration) TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.
+// Before: injectContext<TuiPopoverContext<boolean>>()
+// After:  injectContext<TuiPortalContext<MyOptions, boolean>>()
+// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
+// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}
+// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }
+// See https://taiga-ui.dev/cdk/portal
+// TODO: (Taiga UI migration) TuiPopoverDirective → TuiPortalDirective: do not extend; use hostDirectives + tuiAsPortal() instead.
+// Before: @Directive({inputs:[...], outputs:[...], providers:[{provide:TuiPopoverService,useExisting:MyService}]}) class MyDirective<T> extends TuiPopoverDirective<T> {}
+// After:  @Directive({providers:[tuiAsPortal(MyService)], hostDirectives:[{directive:TuiPortalDirective,inputs:[...],outputs:[...]}]}) class MyDirective {}
+// See https://taiga-ui.dev/cdk/portal
                     import { TuiPortalContext, TuiPortal, TuiPortalDirective, tuiAsPortal } from '@taiga-ui/cdk';
                     import {injectContext} from '@taiga-ui/polymorpheus';
 
