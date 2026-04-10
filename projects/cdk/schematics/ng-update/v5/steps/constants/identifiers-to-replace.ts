@@ -929,4 +929,84 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
+    {
+        from: {
+            name: 'TuiDialogService',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogService',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogContext',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogContext',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogOptions',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialog',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialog',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogComponent',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogComponent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'tuiDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_DIALOG_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TUI_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TUI_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
