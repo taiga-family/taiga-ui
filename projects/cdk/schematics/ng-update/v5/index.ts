@@ -45,6 +45,7 @@ import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
 import {migrateStyles} from './steps/styles';
+import {updatePackages} from './steps/update-packages';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -126,6 +127,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'showWarnings',
                     step: () => showWarnings(context, MIGRATION_WARNINGS),
+                },
+                {
+                    name: 'updatePackages',
+                    step: () => updatePackages(fileSystem),
                 },
             ],
             timings,
