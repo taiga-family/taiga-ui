@@ -46,6 +46,44 @@ describe('ng-update', () => {
     );
 
     it(
+        'migrate TuiInputPhoneInternational from experimental to TuiInputPhoneInternational',
+        migrate({
+            component: `
+                import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputPhoneInternational],
+                  templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            `,
+            template: /* HTML */ `
+                <tui-input-phone-international></tui-input-phone-international>
+
+                <tui-input-phone-international [formControl]="control">
+                    Choose a country
+                </tui-input-phone-international>
+
+                <tui-input-phone-international
+                    formControlName="phone"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Phone number
+                    <input
+                        placeholder="+7 000 000-00-00"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-phone-international>
+
+                <tui-input-phone-international [(ngModel)]="value">
+                    Your phone
+                </tui-input-phone-international>
+            `,
+        }),
+    );
+
+    it(
         'moves [countries] to <input tuiInputPhoneInternational>',
         migrate({
             template: /* HTML */ `
