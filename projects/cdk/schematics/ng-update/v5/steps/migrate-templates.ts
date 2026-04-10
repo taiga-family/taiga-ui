@@ -39,6 +39,7 @@ import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
+import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
 import {migrateInput} from './templates/migrate-input';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
@@ -131,6 +132,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateSidebar,
         migrateFormatPhonePipe,
         ...(hasProprietaryPackage ? [migrateProprietaryTextfieldIcons] : []),
+        migrateHintOnLegacyControls,
         migrateInput,
         migrateTextarea,
     ] as const;

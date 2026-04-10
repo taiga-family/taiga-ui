@@ -98,9 +98,10 @@ exports[`ng-update legacy input migrates tui-input wrapper attrs and routes them
                 </tui-input>
             ",
   "1. After": "
-                <tui-textfield tuiHintContent="Hint" tuiTextfieldSize="s" [tuiTextfieldCleaner]="true">
+                <tui-textfield tuiTextfieldSize="s" [tuiTextfieldCleaner]="true">
                 <label tuiLabel>Email</label>
                 <input tuiInput formControlName="value" />
+<tui-icon tuiTooltip="Hint" />
                 </tui-textfield>
             ",
 }
@@ -118,9 +119,10 @@ exports[`ng-update legacy input migrates tuiHintDirection value alongside wrappe
                 </tui-input>
             ",
   "1. After": "
-                <tui-textfield tuiHintContent="Hint" tuiHintDirection="bottom-end">
+                <tui-textfield>
                 <label tuiLabel>Label</label>
                 <input tuiInput formControlName="value" />
+<tui-icon tuiTooltip="Hint" tuiHintDirection="bottom-end" />
                 </tui-textfield>
             ",
 }
