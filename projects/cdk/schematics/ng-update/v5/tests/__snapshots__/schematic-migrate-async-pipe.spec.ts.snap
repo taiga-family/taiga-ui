@@ -89,3 +89,10 @@ exports[`ng-update remove | async from signal-based pipes should remove | async 
   "1. After": "{{ 10500.33 | tuiFormatNumber }}",
 }
 `;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiSortCountries: test.html 1`] = `
+{
+  "0. Before": "{{ countries | tuiSortCountries | async }}",
+  "1. After": "{{ countries | tuiSortCountries }}",
+}
+`;
