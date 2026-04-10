@@ -42,4 +42,10 @@
     // Misc
     --tui-duration: 0.3s;
     --tui-disabled-opacity: 0.56;
+    --tui-lh: 1.4em;
+
+    @supports (font-size: 1lh) {
+        // stylelint-disable-next-line -- used under @supports
+        --tui-lh: 1lh;
+    }
 }
