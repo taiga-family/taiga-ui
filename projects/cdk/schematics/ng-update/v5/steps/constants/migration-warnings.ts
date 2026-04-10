@@ -142,15 +142,3 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
     },
 ];
-
-/**
- * Warnings that depend on identifier replacements and must run AFTER replaceIdentifiers step.
- */
-export const POST_REPLACE_WARNINGS: MigrationWarning[] = [
-    {
-        name: 'TuiCarousel',
-        moduleSpecifier: '@taiga-ui/legacy',
-        message:
-            'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
-    },
-];
