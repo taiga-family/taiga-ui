@@ -3,14 +3,15 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
+import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiCurrencyPipe, TuiInputNumber],
+    imports: [FormsModule, TuiCurrencyPipe, TuiInputNumber, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value: number | null = null;
+    protected value: number | null = -42;
 }

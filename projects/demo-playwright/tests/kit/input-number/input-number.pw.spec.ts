@@ -986,6 +986,332 @@ describe('InputNumber', () => {
             });
         });
 
+        describe('[negativePattern]="minusFirst" with [prefix]="$"', () => {
+            beforeEach(async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputNumber}/API?prefix=$&negativePattern=minusFirst`,
+                );
+            });
+
+            describe('adds minus before prefix even if caret is placed after prefix', () => {
+                test('focus empty input => type "-" => "-$"', async () => {
+                    await inputNumber.textfield.focus();
+
+                    await expect(inputNumber.textfield).toHaveValue('$');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+
+                    await inputNumber.textfield.pressSequentially('-');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$'.length,
+                    );
+                });
+
+                test('$|100 => type "-" => -$|100 (caret stays before digits)', async ({
+                    page,
+                }) => {
+                    await inputNumber.textfield.pressSequentially('100');
+
+                    await expect(inputNumber.textfield).toHaveValue('$100');
+
+                    await page.keyboard.press(`${CMD}+ArrowLeft`);
+
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+
+                    await inputNumber.textfield.pressSequentially('-');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$100');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$'.length,
+                    );
+                });
+
+                describe('works with pseudo minus signs', () => {
+                    [CHAR_MINUS, CHAR_EN_DASH, CHAR_EM_DASH].forEach((minus) => {
+                        test(`"${minus}" (unicode ${minus.codePointAt(0)?.toString(16)})`, async () => {
+                            await inputNumber.textfield.focus();
+
+                            await expect(inputNumber.textfield).toHaveValue('$');
+
+                            await inputNumber.textfield.pressSequentially(minus);
+
+                            await expect(inputNumber.textfield).toHaveValue('−$');
+                            await expect(inputNumber.textfield).toHaveJSProperty(
+                                'selectionStart',
+                                '-$'.length,
+                            );
+                        });
+                    });
+                });
+            });
+
+            describe('thousand separators work correctly with leading minus + prefix', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?prefix=$&negativePattern=minusFirst&thousandSeparator=_`,
+                    );
+                });
+
+                test('type -123456789 => -$123_456_789', async () => {
+                    await inputNumber.textfield.pressSequentially('-123456789');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$123_456_789');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$123_456_789'.length,
+                    );
+                });
+
+                test('-$123_456_789 => Backspace => -$12_345_678, then Backspace x2 => -$123_456', async () => {
+                    await inputNumber.textfield.pressSequentially('-123456789');
+                    await expect(inputNumber.textfield).toHaveValue('−$123_456_789');
+                    await inputNumber.textfield.press('Backspace');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$12_345_678');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$12_345_678'.length,
+                    );
+
+                    await inputNumber.textfield.press('Backspace');
+                    await inputNumber.textfield.press('Backspace');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$123_456');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$123_456'.length,
+                    );
+                });
+
+                test('-$|1_234 => Delete => -$|234', async ({page}) => {
+                    await inputNumber.textfield.pressSequentially('-1234');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$1_234');
+
+                    for (let i = 0; i < '−$1_234'.length; i++) {
+                        await page.keyboard.press('ArrowLeft', {delay: i});
+                    }
+
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        0,
+                    );
+                    await page.keyboard.press('ArrowRight');
+                    await page.keyboard.press('ArrowRight');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$'.length,
+                    );
+                    await inputNumber.textfield.press('Delete');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$234');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$'.length,
+                    );
+                });
+
+                test('-$1_2|34 => Backspace => -$1|34', async () => {
+                    await inputNumber.textfield.pressSequentially('-1234');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$1_234');
+
+                    await inputNumber.textfield.press('ArrowLeft');
+                    await inputNumber.textfield.press('ArrowLeft');
+                    await inputNumber.textfield.press('Backspace');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$134');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$1'.length,
+                    );
+                });
+            });
+
+            describe('decimal handling', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?prefix=$&negativePattern=minusFirst&precision=2&decimalSeparator=.`,
+                    );
+                });
+
+                test('type "-." => "-$0." then type "42" => "-$0.42"', async () => {
+                    await inputNumber.textfield.pressSequentially('-.');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$0.');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$0.'.length,
+                    );
+
+                    await inputNumber.textfield.pressSequentially('42');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$0.42');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$0.42'.length,
+                    );
+                });
+
+                test('[precision] is respected: type "-.12345678" => "-$0.12"', async () => {
+                    await inputNumber.textfield.pressSequentially('-.12345678');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$0.12');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$0.12'.length,
+                    );
+                });
+            });
+
+            describe('leading zeroes are removed on blur', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?prefix=$&negativePattern=minusFirst&thousandSeparator=_`,
+                    );
+                });
+
+                test('type -000005 => blur => -$5', async () => {
+                    await inputNumber.textfield.pressSequentially('-000005');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$000_005');
+
+                    await inputNumber.textfield.blur();
+
+                    await expect(inputNumber.textfield).toHaveValue('−$5');
+                });
+            });
+
+            describe('minus sign is erasable but prefix is non-removable', () => {
+                test('Select all + Backspace => everything except non-erasable prefix is removed', async ({
+                    page,
+                }) => {
+                    await inputNumber.textfield.pressSequentially('-123');
+                    await page.keyboard.press(`${CMD}+A`);
+                    await page.keyboard.press('Backspace');
+
+                    await expect(inputNumber.textfield).toHaveValue('$');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '$'.length,
+                    );
+                });
+
+                test('-$|42 => Backspace => $|42', async ({page}) => {
+                    await inputNumber.textfield.pressSequentially('-42');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$42');
+
+                    await page.keyboard.press('ArrowLeft');
+                    await page.keyboard.press('ArrowLeft');
+
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$'.length,
+                    );
+
+                    await inputNumber.textfield.press('Backspace');
+
+                    await expect(inputNumber.textfield).toHaveValue('$42');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+                });
+
+                test('$|42 => Backspace x5 => $|42 (prefix is non-removable)', async ({
+                    page,
+                }) => {
+                    await inputNumber.textfield.pressSequentially('42');
+
+                    await expect(inputNumber.textfield).toHaveValue('$42');
+
+                    await page.keyboard.press(`${CMD}+ArrowLeft`);
+
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+
+                    for (let i = 0; i < 5; i++) {
+                        await inputNumber.textfield.press('Backspace');
+                    }
+
+                    await expect(inputNumber.textfield).toHaveValue('$42');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+                });
+
+                test('$| => Backspace x5 => $| (empty input with prefix is stable)', async () => {
+                    await inputNumber.textfield.focus();
+
+                    await expect(inputNumber.textfield).toHaveValue('$');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+
+                    for (let i = 0; i < 5; i++) {
+                        await inputNumber.textfield.press('Backspace');
+                    }
+
+                    await expect(inputNumber.textfield).toHaveValue('$');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+                });
+
+                test('-$| => Backspace => $|', async () => {
+                    await inputNumber.textfield.focus();
+                    await inputNumber.textfield.pressSequentially('-');
+
+                    await expect(inputNumber.textfield).toHaveValue('−$');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '-$'.length,
+                    );
+
+                    await inputNumber.textfield.press('Backspace');
+
+                    await expect(inputNumber.textfield).toHaveValue('$');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+                });
+            });
+
+            test('-$42 => ArrowLeft x3 => allows to put caret before prefix (e.g. user wants to erase minus)', async ({
+                page,
+            }) => {
+                await inputNumber.textfield.pressSequentially('-42');
+
+                await expect(inputNumber.textfield).toHaveValue('−$42');
+
+                await page.keyboard.press('ArrowLeft');
+                await page.keyboard.press('ArrowLeft');
+                await page.keyboard.press('ArrowLeft');
+
+                await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 1);
+            });
+        });
+
         describe('Caret navigation', () => {
             describe('if user tries to erase padded decimal zeroes (decimalMode="always"), mask triggers caret navigation', () => {
                 beforeEach(async ({page}) => {

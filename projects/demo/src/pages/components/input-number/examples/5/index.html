@@ -1,10 +1,10 @@
 <tui-textfield>
-    <label tuiLabel>Price</label>
+    <label tuiLabel>Balance</label>
 
     <input
         tuiInputNumber
-        [min]="0"
         [prefix]="'USD' | tuiCurrency"
+        [tuiNumberFormat]="{negativePattern: 'minusFirst'}"
         [(ngModel)]="value"
     />
 </tui-textfield>
