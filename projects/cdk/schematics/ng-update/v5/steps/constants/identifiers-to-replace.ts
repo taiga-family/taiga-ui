@@ -349,6 +349,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'NG_EVENT_PLUGINS',
+            moduleSpecifier: '@taiga-ui/event-plugins',
+        },
+        to: {
+            name: 'provideTaiga',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'TuiIslandDirective',
             moduleSpecifier: '@taiga-ui/legacy',
         },
