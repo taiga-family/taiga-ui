@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiProvideMobileCalendar warning adds TODO for tuiProvideMobileCalendar usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [tuiProvideMobileCalendar()],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) tuiProvideMobileCalendar has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile
+                import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [tuiProvideMobileCalendar()],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
