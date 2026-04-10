@@ -62,19 +62,19 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiIsoToCountryCodePipe has been removed. Replace pipe usage `isoCode | tuiIsoToCountryCode` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.',
     },
     {
-        name: 'TuiPopoverContext',
+        name: 'TuiPortalContext',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.\n// Before: injectContext<TuiPopoverContext<boolean>>()\n// After:  injectContext<TuiPortalContext<MyOptions, boolean>>()',
     },
     {
-        name: 'TuiPopoverService',
+        name: 'TuiPortal',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).\n// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}\n// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }\n// See https://taiga-ui.dev/cdk/portal',
     },
     {
-        name: 'TuiPopoverDirective',
+        name: 'TuiPortalDirective',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'TuiPopoverDirective → TuiPortalDirective: do not extend; use hostDirectives + tuiAsPortal() instead.\n// Before: @Directive({inputs:[...], outputs:[...], providers:[{provide:TuiPopoverService,useExisting:MyService}]}) class MyDirective<T> extends TuiPopoverDirective<T> {}\n// After:  @Directive({providers:[tuiAsPortal(MyService)], hostDirectives:[{directive:TuiPortalDirective,inputs:[...],outputs:[...]}]}) class MyDirective {}\n// See https://taiga-ui.dev/cdk/portal',
@@ -135,4 +135,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/core',
         message: `${name} has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated`,
     })),
+    {
+        name: 'TuiCarousel',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
+    },
 ];

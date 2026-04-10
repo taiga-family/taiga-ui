@@ -13,8 +13,10 @@ exports[`ng-update experimental hint provider removes TUI_SLIDER_OPTIONS from pr
   "1. After": "
                 import {ApplicationConfig} from '@angular/core';
 // TODO: (Taiga UI migration) TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
+                import {TUI_SLIDER_OPTIONS} from '@taiga-ui/kit';
+
                 export const appConfig: ApplicationConfig = {
-                    providers: [],
+                    providers: [TUI_SLIDER_OPTIONS],
                 };
             ",
 }
@@ -52,8 +54,10 @@ exports[`ng-update experimental hint provider removes tuiSliderOptionsProvider f
   "1. After": "
                 import {ApplicationConfig} from '@angular/core';
 // TODO: (Taiga UI migration) tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
+                import {tuiSliderOptionsProvider} from '@taiga-ui/kit';
+
                 export const appConfig: ApplicationConfig = {
-                    providers: [],
+                    providers: [tuiSliderOptionsProvider({step: 2})],
                 };
             ",
 }

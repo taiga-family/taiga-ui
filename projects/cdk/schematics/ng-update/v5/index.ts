@@ -64,10 +64,6 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => replaceFunctionParameters(FUNCTION_PARAMETERS_TO_REPLACE),
                 },
                 {
-                    name: 'showWarnings',
-                    step: () => showWarnings(context, MIGRATION_WARNINGS),
-                },
-                {
                     name: 'removeModules',
                     step: () => removeModules(options, MODULES_TO_REMOVE),
                 },
@@ -126,6 +122,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateI18nLanguageSignal',
                     step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'showWarnings',
+                    step: () => showWarnings(context, MIGRATION_WARNINGS),
                 },
             ],
             timings,
