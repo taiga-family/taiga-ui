@@ -10409,7 +10409,7 @@ export default class Example implements OnInit {
 &lt;input checked tuiCheckbox type=&quot;checkbox&quot; /&gt;
 &lt;/p&gt;
 &lt;p&gt;
-&lt;input tuiCheckbox type=&quot;checkbox&quot; /&gt;
+&lt;input tuiCheckbox type=&quot;checkbox&quot; [indeterminate]=&quot;true&quot; /&gt;
 &lt;/p&gt;
 &lt;p&gt;
 &lt;input tuiCheckbox type=&quot;checkbox&quot; [checked]=&quot;checked&quot; /&gt;
@@ -10472,22 +10472,18 @@ export default class Example {
     ];
 
     protected currentQuestion = 0;
-
     protected results: boolean[][] = [];
-
     protected form = new FormGroup({
-        0: new FormControl(false),
+        0: new FormControl(true),
         1: new FormControl(false),
-        2: new FormControl(false),
+        2: new FormControl(),
     });
 
     protected nextQuestion(): void {
         this.currentQuestion++;
-
         this.results.push(Object.values(this.form.value).map(Boolean));
-
         this.form = new FormGroup({
-            0: new FormControl(false),
+            0: new FormControl(true),
             1: new FormControl(false),
             2: new FormControl(false),
         });
@@ -16845,15 +16841,14 @@ export default class Page {
 **Template:**
 ```html
 @for (size of sizes; track $index) { &lt;header [tuiHeader]=&quot;size&quot;&gt;
-&lt;hgroup tuiTitle&gt;
+&lt;!-- Giving [tuiHeader] binding time to apply and provide proper default size for children --&gt; @if (true) { &lt;hgroup tuiTitle&gt;
 &lt;h2&gt;Title&lt;/h2&gt;
 &lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;aside tuiAccessories&gt;
-&lt;tui-badge-notification [size]=&quot;toBadgeSize(size)&quot;&gt;1&lt;/tui-badge-notification&gt;
-&lt;button tuiButton type=&quot;button&quot; [size]=&quot;toButtonSize(size)&quot; &gt; Button &lt;/button&gt;
-&lt;/aside&gt;
-&lt;/header&gt;
+&lt;tui-badge-notification&gt;1&lt;/tui-badge-notification&gt;
+&lt;button tuiButton type=&quot;button&quot; &gt; Button &lt;/button&gt;
+&lt;/aside&gt; } &lt;/header&gt;
 &lt;div tuiDescription&gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s. &lt;/div&gt;
 &lt;br /&gt;
 &lt;br /&gt; }
@@ -16863,13 +16858,7 @@ export default class Page {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {
-    TuiButton,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXS,
-    TuiTitle,
-} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
 import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
@@ -16891,32 +16880,6 @@ export default class Example {
         &#039;body-m&#039;,
         &#039;body-s&#039;,
     ] as const;
-
-    protected toBadgeSize(size: string): TuiSizeS {
-        switch (size) {
-            case &#039;body-l&#039;:
-            case &#039;body-m&#039;:
-            case &#039;h6&#039;:
-                return &#039;s&#039;;
-            default:
-                return &#039;m&#039;;
-        }
-    }
-
-    protected toButtonSize(size: string): TuiSizeL | TuiSizeXS {
-        switch (size) {
-            case &#039;h1&#039;:
-                return &#039;l&#039;;
-            case &#039;h2&#039;:
-            case &#039;h3&#039;:
-                return &#039;m&#039;;
-            case &#039;h4&#039;:
-            case &#039;h5&#039;:
-                return &#039;s&#039;;
-            default:
-                return &#039;xs&#039;;
-        }
-    }
 }
 ```
 
@@ -16940,7 +16903,7 @@ export default class Example {
 &lt;p tuiDescription&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet &lt;/p&gt;
 &lt;/section&gt;
 &lt;section&gt;
-&lt;header tuiHeader&gt;
+&lt;header tuiHeader=&quot;h4&quot;&gt;
 &lt;hgroup tuiTitle&gt;
 &lt;h5&gt;Maskito&lt;/h5&gt;
 &lt;p tuiSubtitle&gt; Awesome &lt;span [tuiSensitive]=&quot;true&quot;&gt;one&lt;/span&gt;
