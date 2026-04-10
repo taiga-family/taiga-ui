@@ -11,8 +11,8 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core/types';
-import {tuiAvatarOptionsProvider} from "@taiga-ui/kit/components/avatar";
-import {tuiBadgeNotificationOptionsProvider} from "@taiga-ui/kit/components/badge-notification";
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
+import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
 export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
     size: '' | 'body-l' | 'body-m' | 'body-s' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -34,9 +34,13 @@ class Styles {}
 @Directive({
     selector: '[tuiHeader]',
     providers: [
-        tuiAvatarOptionsProvider({ size: 'm'}),
-        tuiBadgeNotificationOptionsProvider(() => ({size: toBadgeSize(inject(TuiHeader).tuiHeader())})),
-        tuiButtonOptionsProvider(() => ({size: toButtonSize(inject(TuiHeader).tuiHeader())}))
+        tuiAvatarOptionsProvider({size: 'm'}),
+        tuiBadgeNotificationOptionsProvider(() => ({
+            size: toBadgeSize(inject(TuiHeader).tuiHeader()),
+        })),
+        tuiButtonOptionsProvider(() => ({
+            size: toButtonSize(inject(TuiHeader).tuiHeader()),
+        })),
     ],
     host: {
         tuiHeader: '',
