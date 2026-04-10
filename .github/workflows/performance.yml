@@ -201,7 +201,7 @@ jobs:
             echo 'Missing baseline or current metrics.' >> ./performance-stress/diff/report.md
           fi
       - name: Upload performance stress artifacts
-        uses: actions/upload-artifact@v7.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           path: ./performance-stress/**
           name: performance-stress-artifacts_${{ github.sha }}
