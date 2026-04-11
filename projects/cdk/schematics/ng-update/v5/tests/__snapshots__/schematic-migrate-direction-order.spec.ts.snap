@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiTableDirectionOrder warning adds TODO for TuiTableDirectionOrder import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTableDirectionOrder],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiTableDirectionOrder has been removed. Use (tuiSortChange) output from TuiSortBy directive with TuiSortDirection instead
+                import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTableDirectionOrder],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
