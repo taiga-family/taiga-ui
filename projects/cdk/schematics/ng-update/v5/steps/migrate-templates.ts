@@ -51,6 +51,7 @@ import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
+import {migrateOptionNewAttribute} from './templates/migrate-option-new';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migrateProprietaryTextfieldIcons} from './templates/migrate-proprietary-textfield-icons';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
@@ -130,6 +131,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateCloseable,
         migrateSidebar,
         migrateFormatPhonePipe,
+        migrateOptionNewAttribute,
         ...(hasProprietaryPackage ? [migrateProprietaryTextfieldIcons] : []),
         migrateInput,
         migrateTextarea,

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiOptionNew handles multiple options in template: test.html 1`] = `
+{
+  "0. Before": "
+                <button tuiOption new>Option 1</button>
+                <button tuiOption new>Option 2</button>
+                <button new>No option</button>
+            ",
+  "1. After": "
+                <button tuiOption>Option 1</button>
+                <button tuiOption>Option 2</button>
+                <button new>No option</button>
+            ",
+}
+`;
+
+exports[`ng-update TuiOptionNew removes new attribute from a with tuiOption: test.html 1`] = `
+{
+  "0. Before": "<a tuiOption new>Option</a>",
+  "1. After": "<a tuiOption>Option</a>",
+}
+`;
+
+exports[`ng-update TuiOptionNew removes new attribute from button with tuiOption: test.html 1`] = `
+{
+  "0. Before": "<button tuiOption new>Option</button>",
+  "1. After": "<button tuiOption>Option</button>",
+}
+`;
+
+exports[`ng-update TuiOptionNew removes new attribute from label with tuiOption: test.html 1`] = `
+{
+  "0. Before": "<label tuiOption new>Option</label>",
+  "1. After": "<label tuiOption>Option</label>",
+}
+`;
+
+exports[`ng-update TuiOptionNew removes new attribute with other attributes: test.html 1`] = `
+{
+  "0. Before": "<button tuiOption new class="custom" [disabled]="isDisabled">Option</button>",
+  "1. After": "<button tuiOption class="custom" [disabled]="isDisabled">Option</button>",
+}
+`;

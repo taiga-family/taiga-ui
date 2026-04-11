@@ -148,5 +148,18 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'migrates TuiOptionNew to TuiOption',
+        migrate({
+            component: `
+                import {TuiOptionNew} from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly option = TuiOptionNew;
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
