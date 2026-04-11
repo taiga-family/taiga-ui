@@ -14,6 +14,14 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'All values inside TuiDateMode are renamed: DMY -> dd/mm/yyyy, MDY -> mm/dd/yyyy, YMD -> yyyy/mm/dd',
     },
     {
+        name: 'TuiIdService',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk/utils/miscellaneous instead.\n' +
+            '// Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }\n' +
+            '// After:  import {tuiGenerateId} from "@taiga-ui/cdk/utils/miscellaneous"; const id = tuiGenerateId();',
+    },
+    {
         name: 'TuiScrollService',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
