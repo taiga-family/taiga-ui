@@ -9,12 +9,12 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiValuesPipe} from '@taiga-u
 @Component({
     imports: [
         FormsModule,
-        TuiTextfield,
+        JsonPipe,
         TuiChevron,
         TuiDataListWrapper,
         TuiSelect,
+        TuiTextfield,
         TuiValuesPipe,
-        JsonPipe,
     ],
     templateUrl: './index.html',
     encapsulation,
