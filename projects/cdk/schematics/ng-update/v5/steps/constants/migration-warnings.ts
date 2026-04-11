@@ -17,9 +17,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiIdService',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
-            'TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk/utils/miscellaneous instead.\n' +
-            '// Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }\n' +
-            '// After:  import {tuiGenerateId} from "@taiga-ui/cdk/utils/miscellaneous"; const id = tuiGenerateId();',
+            'TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk/utils/miscellaneous instead.\n// Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }\n// After:  import {tuiGenerateId} from "@taiga-ui/cdk/utils/miscellaneous"; const id = tuiGenerateId();',
     },
     {
         name: 'TuiScrollService',
