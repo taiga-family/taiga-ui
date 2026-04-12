@@ -54,7 +54,7 @@ Focus on what impacts users most:
 
 ## Step 3: Choose the migration mechanism
 
-```
+```text
 Is it a TypeScript IMPORT?
 |-- 1:1 rename or package move?           --> identifiers-to-replace
 |-- Removal with no replacement?          --> modules-to-remove
@@ -294,6 +294,9 @@ export const STYLE_COMMENTS = {
 
 **When**: None of the above mechanisms are sufficient (complex DOM restructuring, conditional logic, multi-element
 transformations).
+
+> **Before writing a custom function**, go through the decision tree above and verify that no existing mechanism covers
+> the case.
 
 **File**: Create `vN/steps/templates/migrate-<name>.ts`
 
