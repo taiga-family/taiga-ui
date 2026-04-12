@@ -82,6 +82,20 @@ describe('ng-update TuiOptionNew', () => {
     );
 
     it(
+        'removes new attribute when tuiOption comes before new',
+        migrate({
+            template: /* HTML */ `
+                <button
+                    new
+                    tuiOption
+                >
+                    Option
+                </button>
+            `,
+        }),
+    );
+
+    it(
         'does not remove new attribute without tuiOption',
         migrate({
             template: /* HTML */ `
