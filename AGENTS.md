@@ -127,6 +127,18 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 - Use CLI migrations to convert existing code.
 - Gradually migrate rather than big‑bang: convert shared/utility components first.
 
+## Taiga UI Schematics Migrations
+
+When writing or modifying Taiga UI schematics migrations, always follow the step-by-step guide in
+[projects/cdk/schematics/MIGRATION_GUIDE.md](projects/cdk/schematics/MIGRATION_GUIDE.md).
+
+It covers:
+
+- How to analyze the change and choose the right migration strategy
+- Which mechanism to use (`identifiers-to-replace`, `modules-to-remove`, `migration-warnings`, `attrs-to-replace`, etc.)
+- How to write and run migration tests
+- Common pitfalls (pipeline order, `filterFn` edge cases, post-rename `moduleSpecifier` in warnings)
+
 ## Summary
 
 By following these updated guidelines you will build modern Angular applications that are:
