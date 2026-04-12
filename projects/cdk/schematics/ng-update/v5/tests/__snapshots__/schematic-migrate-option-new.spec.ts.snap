@@ -123,16 +123,16 @@ exports[`ng-update TuiOptionNew removes new attribute when tuiOption comes befor
 {
   "0. Before": "
                 <button
-                    tuiOption
                     new
+                    tuiOption
                 >
                     Option
                 </button>
             ",
   "1. After": "
                 <button
-                    tuiOption
                     
+                    tuiOption
                 >
                     Option
                 </button>
