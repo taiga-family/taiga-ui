@@ -171,3 +171,29 @@ exports[`ng-update moves [min], [max], [minLength], [maxLength] to <input tuiInp
             ",
 }
 `;
+
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date-range: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-range
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a range
+                </tui-input-date-range>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a range
+                </label>
+
+<input tuiInputDateRange [formControl]="control" />
+<tui-calendar-range *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;

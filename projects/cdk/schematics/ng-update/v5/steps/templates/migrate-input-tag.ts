@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type TextNode = DefaultTreeAdapterTypes.TextNode;
@@ -79,6 +80,8 @@ export function migrateInputTag({
             template,
             templateOffset,
         );
+
+        removeAttr(element, 'tuiTextfieldLabelOutside', recorder, templateOffset);
 
         const openTagEnd = sourceCodeLocation?.startTag?.endOffset ?? 0;
 

@@ -231,6 +231,31 @@ exports[`ng-update moves placeholder to <input tuiInputChip>: test.html 1`] = `
 }
 `;
 
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-tag: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Enter tags
+                </tui-input-tag>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                 multi>
+<label tuiLabel>
+                    Enter tags
+                </label>
+
+<input tuiInputChip [formControl]="control" />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update renames [maxLength] to [maxlength] on <input tuiInputChip>: test.html 1`] = `
 {
   "0. Before": "

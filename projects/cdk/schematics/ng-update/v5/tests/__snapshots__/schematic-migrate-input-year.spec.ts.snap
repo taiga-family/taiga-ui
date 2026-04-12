@@ -166,3 +166,29 @@ import { TuiInputYear } from "@taiga-ui/kit";
             ",
 }
 `;
+
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-year: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-year
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a year
+                </tui-input-year>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a year
+                </label>
+
+<input tuiInputYear [formControl]="control" />
+<tui-calendar-year *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;

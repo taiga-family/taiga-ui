@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type TextNode = DefaultTreeAdapterTypes.TextNode;
@@ -63,6 +64,8 @@ export function migrateInputTime({
             template,
             templateOffset,
         );
+
+        removeAttr(element, 'tuiTextfieldLabelOutside', recorder, templateOffset);
 
         const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),

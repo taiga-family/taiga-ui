@@ -83,5 +83,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-year',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-year
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a year
+                </tui-input-year>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

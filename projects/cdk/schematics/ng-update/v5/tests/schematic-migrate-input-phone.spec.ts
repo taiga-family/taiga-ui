@@ -118,5 +118,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-phone',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-phone
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Phone number
+                </tui-input-phone>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

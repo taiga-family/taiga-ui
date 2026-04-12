@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
@@ -16,11 +17,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 type TextNode = DefaultTreeAdapterTypes.TextNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
-
-const LABEL_OUTSIDE_ATTRS = new Set([
-    '[tuiTextfieldLabelOutside]'.toLowerCase(),
-    'tuiTextfieldLabelOutside'.toLowerCase(),
-]);
 
 export function migrateInputPassword({
     resource,
@@ -58,24 +54,12 @@ export function migrateInputPassword({
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         }
 
-        // --- Handle tuiTextfieldLabelOutside ---
-        let labelOutsideValue: string | null = null;
-        let labelOutsideIsBinding = false;
-
-        for (const attr of element.attrs) {
-            const nameLower = attr.name.toLowerCase();
-
-            if (LABEL_OUTSIDE_ATTRS.has(nameLower)) {
-                labelOutsideValue = attr.value || 'true';
-                labelOutsideIsBinding = nameLower.startsWith('[');
-
-                const {startOffset = 0, endOffset = 0} =
-                    element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
-
-                recorder.remove(templateOffset + startOffset, endOffset - startOffset);
-                break;
-            }
-        }
+        const {value: labelOutsideValue, isBinding: labelOutsideIsBinding} = removeAttr(
+            element,
+            'tuiTextfieldLabelOutside',
+            recorder,
+            templateOffset,
+        );
 
         const isLabelOutsideTrue =
             labelOutsideValue === 'true' ||
