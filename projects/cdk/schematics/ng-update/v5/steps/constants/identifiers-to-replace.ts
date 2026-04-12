@@ -712,6 +712,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: [
             {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+            {
                 name: 'TuiPassword',
                 moduleSpecifier: '@taiga-ui/kit',
             },
