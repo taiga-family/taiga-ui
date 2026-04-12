@@ -81,4 +81,6 @@ export function saveAddedImports(options: TuiSchema): void {
                 );
         }
     });
+
+    importsToAdd.clear();
 }

@@ -4,6 +4,10 @@ import {
 } from '../../../../utils/templates/elements';
 import {type ReplacementAttributeValue} from '../../../interfaces';
 
+function hasNoHintContent(el: Parameters<typeof hasElementAttribute>[0]): boolean {
+    return !hasElementAttribute(el, 'tuiHintContent');
+}
+
 export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     {
         attrNames: ['[pseudo]'],
@@ -37,6 +41,7 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     },
     {
         attrNames: ['tuiHintDirection'],
+        filterFn: hasNoHintContent,
         valueReplacer: [
             {from: 'bottom-left', to: 'bottom-start'},
             {from: 'bottom-right', to: 'bottom-end'},
@@ -52,6 +57,7 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     },
     {
         attrNames: ['[tuiHintDirection]'],
+        filterFn: hasNoHintContent,
         valueReplacer: [
             {from: "'bottom-left'", to: "'bottom-start'"},
             {from: "'bottom-right'", to: "'bottom-end'"},

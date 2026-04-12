@@ -31,24 +31,46 @@ const CONTROL_ATTR_NAMES = [
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
 const TEXTFIELD_WRAPPER_ATTRS = new Set([
-    '[tuiHintAppearance]'.toLowerCase(),
-    '[tuiHintContent]'.toLowerCase(),
-    '[tuiHintDirection]'.toLowerCase(),
     '[tuiTextfieldAppearance]'.toLowerCase(),
     '[tuiTextfieldCleaner]'.toLowerCase(),
     '[tuiTextfieldSize]'.toLowerCase(),
-    'tuiHintAppearance'.toLowerCase(),
-    'tuiHintContent'.toLowerCase(),
-    'tuiHintDirection'.toLowerCase(),
     'tuiTextfieldAppearance'.toLowerCase(),
     'tuiTextfieldCleaner'.toLowerCase(),
     'tuiTextfieldSize'.toLowerCase(),
+]);
+
+const HINT_ATTRS = new Set([
+    '[tuiHintAppearance]'.toLowerCase(),
+    '[tuiHintContent]'.toLowerCase(),
+    '[tuiHintDirection]'.toLowerCase(),
+    'tuiHintAppearance'.toLowerCase(),
+    'tuiHintContent'.toLowerCase(),
+    'tuiHintDirection'.toLowerCase(),
 ]);
 
 const ATTRS_TO_DROP = new Set([
     '[tuiTextfieldLabelOutside]'.toLowerCase(),
     'tuiTextfieldLabelOutside'.toLowerCase(),
 ]);
+
+function hasHintContent(element: Element): boolean {
+    return element.attrs.some((attr) => {
+        const lower = attr.name.toLowerCase();
+
+        return (
+            lower === 'tuiHintContent'.toLowerCase() ||
+            lower === '[tuiHintContent]'.toLowerCase()
+        );
+    });
+}
+
+export function buildTuiTextareaReplacement(
+    template: string,
+    element: Element,
+    hintIconStr = '',
+): {startOffset: number; endOffset: number; replacement: string} | null {
+    return buildReplacement(template, element, hintIconStr);
+}
 
 export function migrateTextarea({
     resource,
@@ -64,6 +86,7 @@ export function migrateTextarea({
     const elements = findElementsByTagName(template, 'tui-textarea');
 
     const replacements = elements
+        .filter((element) => !hasHintContent(element))
         .map((element) => buildReplacement(template, element))
         .filter((x): x is {startOffset: number; endOffset: number; replacement: string} =>
             Boolean(x),
@@ -104,6 +127,7 @@ interface MigrationContext {
 function buildReplacement(
     template: string,
     element: Element,
+    hintIconStr = '',
 ): {startOffset: number; endOffset: number; replacement: string} | null {
     const loc = element.sourceCodeLocation;
 
@@ -143,6 +167,10 @@ function buildReplacement(
                 ctx.labelOutside = 'dynamic';
             }
 
+            continue;
+        }
+
+        if (HINT_ATTRS.has(nameLower)) {
             continue;
         }
 
@@ -213,7 +241,14 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
-    const innerContent = buildInnerContent(element, template, textareaAttrs, ctx, indent);
+    const innerContent = buildInnerContent({
+        element,
+        template,
+        textareaAttrs,
+        ctx,
+        indent,
+        hintIconStr,
+    });
     const todoComment = buildTodoComment(ctx);
 
     const replacement = `${todoComment}${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
@@ -294,13 +329,21 @@ const LEGACY_TEXTAREA_ATTRS = new Set([
     'tuiTextfieldLegacy'.toLowerCase(),
 ]);
 
-function buildInnerContent(
-    element: Element,
-    template: string,
-    textareaAttrs: string[],
-    ctx: MigrationContext,
-    indent: string,
-): string {
+function buildInnerContent({
+    element,
+    template,
+    textareaAttrs,
+    ctx,
+    indent,
+    hintIconStr = '',
+}: {
+    ctx: MigrationContext;
+    element: Element;
+    hintIconStr?: string;
+    indent: string;
+    template: string;
+    textareaAttrs: string[];
+}): string {
     const {placeholder, labelOutside} = ctx;
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
@@ -314,6 +357,8 @@ function buildInnerContent(
             ? `${indent}<label tuiLabel>${placeholder}</label>\n`
             : '';
 
+    const hintIconLine = hintIconStr ? `${hintIconStr}\n` : '';
+
     // If user already put an explicit <textarea tuiTextfieldLegacy> inside,
     // reuse it instead of generating a new one.
     const legacyInnerTextarea = childElements.find(
@@ -323,13 +368,14 @@ function buildInnerContent(
     );
 
     if (legacyInnerTextarea) {
-        return `${labelEl}${migrateInnerTextarea(
-            legacyInnerTextarea,
+        return `${labelEl}${migrateInnerTextarea({
+            inner: legacyInnerTextarea,
             template,
-            textareaAttrs,
-            childElements,
+            attrsToAdd: textareaAttrs,
+            allChildren: childElements,
             indent,
-        )}`;
+            hintIconLine,
+        })}`;
     }
 
     const attrsStr = textareaAttrs.length > 0 ? ` ${textareaAttrs.join(' ')}` : '';
@@ -348,20 +394,28 @@ function buildInnerContent(
         })
         .join('');
 
-    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}`;
+    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}${hintIconLine}`;
 }
 
 /**
  * Rewrites an existing <textarea tuiTextfieldLegacy> to <textarea tuiTextarea ...>
  * by replacing the legacy directive attr and appending form control attrs.
  */
-function migrateInnerTextarea(
-    inner: Element,
-    template: string,
-    attrsToAdd: string[],
-    allChildren: Element[],
-    indent: string,
-): string {
+function migrateInnerTextarea({
+    inner,
+    template,
+    attrsToAdd,
+    allChildren,
+    indent,
+    hintIconLine = '',
+}: {
+    allChildren: Element[];
+    attrsToAdd: string[];
+    hintIconLine?: string;
+    indent: string;
+    inner: Element;
+    template: string;
+}): string {
     const innerLoc = inner.sourceCodeLocation;
 
     if (!innerLoc?.startTag) {
@@ -411,7 +465,7 @@ function migrateInnerTextarea(
         })
         .join('');
 
-    return `${indent}${innerContent}\n${siblings}`;
+    return `${indent}${innerContent}\n${siblings}${hintIconLine}`;
 }
 
 function getPlaceholderText(element: Element): string {
