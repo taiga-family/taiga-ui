@@ -30,21 +30,28 @@ export function replacePackageName(
     saveActiveProject();
 }
 
-export function replaceInPackageJson(
-    oldPackage: string,
-    newPackage: {name: string; version: string},
-    tree: Tree,
-    removeOnly = false,
-): void {
+interface Options {
+    name: string;
+    tree: Tree;
+    remove: boolean;
+    nameTo?: string;
+    versionTo?: string;
+}
+
+export function replaceInPackageJson(options: Options): void {
+    const {tree, name, remove, nameTo, versionTo} = options;
     const fileSystem = getFileSystem(tree);
+    const match = getPackageJsonDependency(tree, name);
 
-    const old = getPackageJsonDependency(tree, oldPackage);
+    if (match) {
+        removePackageJsonDependency(tree, name);
 
-    if (old) {
-        removePackageJsonDependency(tree, oldPackage);
-
-        if (!removeOnly) {
-            addPackageJsonDependency(tree, {...newPackage, type: old.type});
+        if (!remove) {
+            addPackageJsonDependency(tree, {
+                type: match.type,
+                name: nameTo ?? name,
+                version: versionTo ?? match.version,
+            });
         }
     }
 

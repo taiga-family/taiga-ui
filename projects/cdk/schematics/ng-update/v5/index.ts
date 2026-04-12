@@ -53,6 +53,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
 
         runSteps(
             [
+                {
+                    name: 'updatePackages',
+                    step: () => updatePackages(fileSystem),
+                },
                 {name: 'tuiLetMigration', step: () => tuiLetMigration(tree, options)},
                 {name: 'migrateTokens', step: () => migrateTokens(tree, options)},
                 {name: 'updateTsConfig', step: () => updateTsConfig(tree, options)},
@@ -127,10 +131,6 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'showWarnings',
                     step: () => showWarnings(context, MIGRATION_WARNINGS),
-                },
-                {
-                    name: 'updatePackages',
-                    step: () => updatePackages(fileSystem),
                 },
             ],
             timings,

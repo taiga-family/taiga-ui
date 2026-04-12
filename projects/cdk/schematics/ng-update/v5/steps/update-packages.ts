@@ -1,4 +1,3 @@
-/// <reference lib="es2021" />
 import {type DevkitFileSystem} from 'ng-morph';
 
 import {replaceInPackageJson} from '../../steps';
@@ -10,76 +9,20 @@ export const NG_WEB_APIS = '^5.0.0';
 export const MASKITO_VERSION = '^5.0.0';
 
 export function updatePackages({tree}: DevkitFileSystem): void {
-    replaceInPackageJson(
-        '@taiga-ui/polymorpheus',
-        {
-            name: '@taiga-ui/polymorpheus',
-            version: TUI_POLYMORPHEUS_VERSION,
-        },
-        tree,
-        true,
-    );
-    replaceInPackageJson(
-        '@taiga-ui/event-plugins',
-        {
-            name: '@taiga-ui/event-plugins',
-            version: TUI_EVENT_PLUGINS_VERSION,
-        },
-        tree,
-        true,
-    );
-    replaceInPackageJson(
-        '@maskito/core',
-        {
-            name: '@maskito/core',
-            version: MASKITO_VERSION,
-        },
-        tree,
-        true,
-    );
-    replaceInPackageJson(
-        '@maskito/angular',
-        {
-            name: '@maskito/angular',
-            version: MASKITO_VERSION,
-        },
-        tree,
-        true,
-    );
-    replaceInPackageJson(
-        '@maskito/kit',
-        {
-            name: '@maskito/kit',
-            version: MASKITO_VERSION,
-        },
-        tree,
-        true,
-    );
-    replaceInPackageJson(
-        '@ng-web-apis/common',
-        {
-            name: '@ng-web-apis/common',
-            version: NG_WEB_APIS,
-        },
-        tree,
-        true,
-    );
-    replaceInPackageJson(
-        '@ng-web-apis/intersection-observer',
-        {
-            name: '@ng-web-apis/intersection-observer',
-            version: NG_WEB_APIS,
-        },
-        tree,
-        true,
-    );
-    replaceInPackageJson(
-        '@ng-web-apis/mutation-observer',
-        {
-            name: '@ng-web-apis/mutation-observer',
-            version: NG_WEB_APIS,
-        },
-        tree,
-        true,
-    );
+    for (const {name, remove, versionTo} of [
+        {name: '@taiga-ui/polymorpheus', remove: true},
+        {name: '@taiga-ui/event-plugins', remove: true},
+        {name: '@maskito/core', remove: true},
+        {name: '@maskito/angular', remove: true},
+        {name: '@maskito/kit', remove: true},
+        {name: '@ng-web-apis/mutation-observer', remove: true},
+        {name: '@ng-web-apis/resize-observer', remove: true},
+        {name: '@ng-web-apis/screen-orientation', remove: true},
+        {name: '@ng-web-apis/common', remove: true},
+        {name: '@ng-web-apis/intersection-observer', remove: true},
+        {name: '@taiga-ui/dompurify', remove: false, versionTo: TUI_DOMPURIFY_VERSION},
+        {name: '@ng-web-apis/universal', remove: false, versionTo: NG_WEB_APIS},
+    ]) {
+        replaceInPackageJson({tree, name, remove, versionTo});
+    }
 }
