@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -61,7 +62,16 @@ export function migrateInputMonth({
             templateOffset,
         );
 
-        removeAttr(element, 'tuiTextfieldLabelOutside', recorder, templateOffset);
+        const {value: labelOutside, isBinding: labelOutsideIsBinding} = removeAttr(
+            element,
+            'tuiTextfieldLabelOutside',
+            recorder,
+            templateOffset,
+        );
+        const isLabelOutsideTrue =
+            labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+        const isDynamic =
+            labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
         const controlAttrs = [...element.attrs].filter((attr) =>
             /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
@@ -87,15 +97,32 @@ export function migrateInputMonth({
                 node.nodeName === '#text' && (node as TextNode)?.value.trim(),
         );
 
+        let placeholderAttr = '';
+
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
+            const labelText = (labelNode as TextNode).value.trim();
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
-            recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
-            recorder.insertRight(labelTextEnd, '</label>\n');
+            if (isLabelOutsideTrue) {
+                recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
+                placeholderAttr = ` placeholder="${labelText}"`;
+            } else {
+                recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
+                recorder.insertRight(labelTextEnd, '</label>\n');
+            }
+        }
+
+        if (isDynamic) {
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(
+                insertAt,
+                `<!-- ${TODO_MARK} [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.\n-->\n`,
+            );
         }
 
         const insertOffset =
@@ -125,7 +152,7 @@ export function migrateInputMonth({
         } else {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInputMonth${migrationAttrs} />\n<tui-calendar-month *tuiDropdown${calendarAttrStr} />\n`,
+                `\n<input tuiInputMonth${migrationAttrs}${placeholderAttr} />\n<tui-calendar-month *tuiDropdown${calendarAttrStr} />\n`,
             );
         }
 
@@ -142,7 +169,7 @@ export function migrateInputMonth({
 
                     recorder.insertRight(
                         templateOffset + startOffset,
-                        `tuiInputMonth${migrationAttrs}`,
+                        `tuiInputMonth${migrationAttrs}${placeholderAttr}`,
                     );
                 }
             });

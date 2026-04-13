@@ -182,11 +182,7 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-year: test.
                     
                     
                 >
-<label tuiLabel>
-                    Choose a year
-                </label>
-
-<input tuiInputYear [formControl]="control" />
+<input tuiInputYear [formControl]="control" placeholder="Choose a year" />
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
             ",

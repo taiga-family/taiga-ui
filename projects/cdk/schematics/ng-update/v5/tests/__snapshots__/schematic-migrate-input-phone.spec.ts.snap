@@ -241,11 +241,7 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-phone: test
                     
                     
                 >
-<label tuiLabel>
-                    Phone number
-                </label>
-
-<input tuiInputPhone [formControl]="control" />
+<input tuiInputPhone [formControl]="control" placeholder="Phone number" />
 </tui-textfield>
             ",
 }

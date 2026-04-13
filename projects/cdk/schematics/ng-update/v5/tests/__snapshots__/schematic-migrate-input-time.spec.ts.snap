@@ -165,11 +165,7 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-time: test.
                     
                     
                 >
-<label tuiLabel>
-                    Choose time
-                </label>
-
-<input tuiInputTime [formControl]="control" />
+<input tuiInputTime [formControl]="control" placeholder="Choose time" />
 </tui-textfield>
             ",
 }

@@ -187,11 +187,7 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date-range:
                     
                     
                 >
-<label tuiLabel>
-                    Choose a range
-                </label>
-
-<input tuiInputDateRange [formControl]="control" />
+<input tuiInputDateRange [formControl]="control" placeholder="Choose a range" />
 <tui-calendar-range *tuiDropdown />
 </tui-textfield>
             ",

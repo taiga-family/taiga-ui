@@ -246,11 +246,7 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-tag: test.h
                     
                     
                  multi>
-<label tuiLabel>
-                    Enter tags
-                </label>
-
-<input tuiInputChip [formControl]="control" />
+<input tuiInputChip [formControl]="control" placeholder="Enter tags" />
 </tui-textfield>
             ",
 }

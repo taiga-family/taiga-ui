@@ -298,11 +298,7 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date (multi
                     
                     
                  multi>
-<label tuiLabel>
-                    Choose dates
-                </label>
-
-<input tuiInputDateMulti [formControl]="control" />
+<input tuiInputDateMulti [formControl]="control" placeholder="Choose dates" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
             ",
