@@ -7,8 +7,6 @@ description: >
   whenever asked to add, fix, or review a migration in projects/cdk/schematics/.
 ---
 
-# Writing Taiga UI Migrations
-
 ## Where to find the previous major version's source
 
 To understand what existed before the migration, use one of these two approaches (in order of preference):
@@ -419,9 +417,9 @@ describe('ng-update <description>', () => {
 });
 ```
 
-Run tests: `npx nx test cdk -- --testPathPattern="schematic-migrate-<name>" --updateSnapshot`
+Run tests: `npx jest schematic-migrate-<name> --updateSnapshot`
 
-Run all vN tests: `npx nx test cdk -- --testPathPattern="ng-update/vN"`
+Run all vN tests: `npx jest ng-update/vN`
 
 ## Step 5: Know the pitfalls
 

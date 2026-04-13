@@ -133,7 +133,7 @@ and a negative case — where the migration should NOT fire.
 Run tests with snapshot update and verify the result manually:
 
 ```bash
-npx nx test cdk -- --testPathPattern="schematic-migrate-{name}" --updateSnapshot
+npx jest schematic-migrate-{name} --updateSnapshot
 ```
 
 ## Common LLM mistakes
