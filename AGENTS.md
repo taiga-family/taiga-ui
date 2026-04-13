@@ -127,17 +127,6 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 - Use CLI migrations to convert existing code.
 - Gradually migrate rather than big‑bang: convert shared/utility components first.
 
-## Taiga UI Schematics Migrations
-
-When writing or modifying Taiga UI schematics migrations, use the `write-migration` skill:
-
-```
-/write-migration <describe the change>
-```
-
-The skill covers the full step-by-step process: analyzing the change, choosing the right mechanism
-(`identifiers-to-replace`, `attrs-to-replace`, `inputs-to-remove`, etc.), writing tests, and avoiding common pitfalls.
-
 ## Summary
 
 By following these updated guidelines you will build modern Angular applications that are:
