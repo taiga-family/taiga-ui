@@ -248,3 +248,24 @@ exports[`ng-update moves [countries] to <input tuiInputPhoneInternational>: test
             ",
 }
 `;
+
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-phone-international: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-phone-international
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Phone number
+                </tui-input-phone-international>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<input tuiInputPhoneInternational [formControl]="control" placeholder="Phone number" />
+</tui-textfield>
+            ",
+}
+`;

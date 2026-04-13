@@ -255,6 +255,10 @@ function buildReplacement(
     const isLabelOutsideTrue =
         ctx.labelOutsideValue === 'true' ||
         (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
+    const isLabelOutsideDynamic =
+        ctx.labelOutsideValue !== null &&
+        !isLabelOutsideTrue &&
+        ctx.labelOutsideValue !== 'false';
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
@@ -265,6 +269,7 @@ function buildReplacement(
         placeholder: ctx.placeholder,
         indent,
         labelOutsideIsTrue: isLabelOutsideTrue,
+        labelOutsideIsDynamic: isLabelOutsideDynamic,
         hintIconStr,
     });
     const todoComment = buildTodoComment(ctx);
@@ -341,12 +346,14 @@ function buildInnerContent({
     placeholder,
     indent,
     labelOutsideIsTrue,
+    labelOutsideIsDynamic,
     hintIconStr,
 }: {
     element: Element;
     hintIconStr: string;
     indent: string;
     inputAttrs: string[];
+    labelOutsideIsDynamic: boolean;
     labelOutsideIsTrue: boolean;
     placeholder: string;
     template: string;
@@ -395,9 +402,11 @@ function buildInnerContent({
     }
 
     // labelOutside=false/absent: text → <label tuiLabel> inside (floating label)
-    const labelEl = placeholder
-        ? `${indent}<label tuiLabel>${placeholder}</label>\n`
-        : '';
+    // dynamic: text left as-is, only TODO comment is added
+    const labelEl =
+        placeholder && !labelOutsideIsDynamic
+            ? `${indent}<label tuiLabel>${placeholder}</label>\n`
+            : '';
 
     return `${labelEl}${indent}<input${attrsStr} />\n${otherChildren}${hintIconLine}`;
 }

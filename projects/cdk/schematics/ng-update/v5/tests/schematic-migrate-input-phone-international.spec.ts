@@ -127,5 +127,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-phone-international',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-phone-international
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Phone number
+                </tui-input-phone-international>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

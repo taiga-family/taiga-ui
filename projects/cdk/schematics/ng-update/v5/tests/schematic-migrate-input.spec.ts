@@ -41,7 +41,7 @@ describe('ng-update legacy input', () => {
     );
 
     it(
-        'wraps in <label tuiLabel> when [tuiTextfieldLabelOutside]="true"',
+        'converts text to placeholder when [tuiTextfieldLabelOutside]="true"',
         migrate({
             template: /* HTML */ `
                 <tui-input

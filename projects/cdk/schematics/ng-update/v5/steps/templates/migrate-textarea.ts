@@ -351,9 +351,9 @@ function buildInnerContent({
     );
 
     // Auto-add <label tuiLabel> inside <tui-textfield> when text content is present
-    // and labelOutside is not true (label-outside pattern requires manual DOM restructure)
+    // and labelOutside is false/absent (dynamic: left as-is with only TODO comment)
     const labelEl =
-        placeholder && labelOutside !== true
+        placeholder && labelOutside === false
             ? `${indent}<label tuiLabel>${placeholder}</label>\n`
             : '';
 
