@@ -1,0 +1,35 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page header="Typography">
+    @for (tab of tabs; track $index) {
+        <ng-template [pageTab]="tab">
+            <table tuiTable>
+                <thead>
+                    <tr>
+                        <th tuiTh>
+                            @switch (tab) {
+                                @case ('Headings') {
+                                    Section titles
+                                }
+                                @case ('Body') {
+                                    Regular content
+                                }
+                                @case ('UI') {
+                                    Reduced line height
+                                }
+                            }
+                        </th>
+                        <th tuiTh>Variable name</th>
+                        <th tuiTh>font-weight</th>
+                        <th tuiTh>font-size</th>
+                        <th tuiTh>line-height</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (font of groups[tab]; track $index) {
+                        <tr [tuiFont]="font">Taiga UI is a modern UI kit for Angular</tr>
+                    }
+                </tbody>
+            </table>
+        </ng-template>
+    }
+</tui-doc-page>
+`;export{a as default};

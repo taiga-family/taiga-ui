@@ -1,0 +1,14 @@
+import"./chunk-HU6DUUP4.js";var o=`\`\`\`ts
+import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
+
+bootstrapApplication(App, {
+  providers: [
+    // ...
+    {
+      provide: TUI_LANGUAGE,
+      useValue: signal(TUI_RUSSIAN_LANGUAGE),
+    },
+  ],
+}).catch((err: unknown) => console.error(err));
+\`\`\`
+`;export{o as default};
