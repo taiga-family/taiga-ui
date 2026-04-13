@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/taiga-family/taiga-ui/compare/v5.1.0...v5.2.0) (2026-04-13)
+
+### 🚀 Features
+
+- **core:** add factory provider for tuiValidationErrorsProvider
+  ([#13606](https://github.com/taiga-family/taiga-ui/issues/13606))
+  ([eb7c152](https://github.com/taiga-family/taiga-ui/commit/eb7c1525fe5c9ca76340fabbf04593d705214928))
+- **kit:** `InputNumber` supports `[tuiNumberFormat]="{negativePattern: 'minusFirst'}"`
+  ([#13673](https://github.com/taiga-family/taiga-ui/issues/13673))
+  ([09b77d3](https://github.com/taiga-family/taiga-ui/commit/09b77d30e85b9297660681a9f0ccadb4bf068544))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `DocExample` has hydration problems ([#13736](https://github.com/taiga-family/taiga-ui/issues/13736))
+  ([cfa05ad](https://github.com/taiga-family/taiga-ui/commit/cfa05ad1042dcb18a5b0679e80b2c1bcfa616553))
+- **addon-table:** `TableTr` has hydration problems ([#13791](https://github.com/taiga-family/taiga-ui/issues/13791))
+  ([e16f116](https://github.com/taiga-family/taiga-ui/commit/e16f116d476d861120395139ebd4c4a9e31fe3b3))
+- **cdk:** `FontSize` fix on Android WebView ([#13806](https://github.com/taiga-family/taiga-ui/issues/13806))
+  ([ec81d96](https://github.com/taiga-family/taiga-ui/commit/ec81d966c001ac111b7c616180ed75fa60ade1c9))
+- **cdk:** `Truncate` fix styles ([#13848](https://github.com/taiga-family/taiga-ui/issues/13848))
+  ([046e957](https://github.com/taiga-family/taiga-ui/commit/046e9571217bca97dc4ab2ceb6dbd850e91cc0b9))
+- **core:** `Carousel` fix selection drag ([#13781](https://github.com/taiga-family/taiga-ui/issues/13781))
+  ([4585382](https://github.com/taiga-family/taiga-ui/commit/4585382e48f8c586a593e17355c265240da8dc83))
+- **core:** fix animating label in textfield multi caused chrome to crash
+  ([#13808](https://github.com/taiga-family/taiga-ui/issues/13808))
+  ([84bf47f](https://github.com/taiga-family/taiga-ui/commit/84bf47f81847a7bd45ec9751bb0148e40116911c))
+- **kit:** `checkFormat` fix equality file type ([#13783](https://github.com/taiga-family/taiga-ui/issues/13783))
+  ([f57f5c0](https://github.com/taiga-family/taiga-ui/commit/f57f5c03a4eef371b2b22d9970c75614d6f8571b))
+- **kit:** fix native color picker in input-color ([#13814](https://github.com/taiga-family/taiga-ui/issues/13814))
+  ([dbb8d1e](https://github.com/taiga-family/taiga-ui/commit/dbb8d1ed1d54d72232054d088af8503334f281be))
+- **layout:** fix line heights in some components ([#13813](https://github.com/taiga-family/taiga-ui/issues/13813))
+  ([aa72801](https://github.com/taiga-family/taiga-ui/commit/aa72801f8fc15f38d798cb5b6d021895a5b5baec))
+- **legacy:** missed deprecated global styles ([#13772](https://github.com/taiga-family/taiga-ui/issues/13772))
+  ([7ebc9ba](https://github.com/taiga-family/taiga-ui/commit/7ebc9bad272a530dcd6fd7eca3ce7dcf01608afb))
+- **styles:** fix h1 font-size/line-height ([#13790](https://github.com/taiga-family/taiga-ui/issues/13790))
+  ([8c964a2](https://github.com/taiga-family/taiga-ui/commit/8c964a265cc7752d89384480c15f8529b350a2dc))
+
 ## [5.1.0](https://github.com/taiga-family/taiga-ui/compare/v5.0.0...v5.1.0) (2026-04-06)
 
 ### 🚀 Features
