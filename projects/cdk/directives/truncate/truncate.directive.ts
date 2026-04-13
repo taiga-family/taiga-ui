@@ -29,6 +29,7 @@ import {TuiTruncateService} from './truncate.service';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs: `tui-truncate-${TUI_VERSION}`,
 })
 class Styles {}
 
