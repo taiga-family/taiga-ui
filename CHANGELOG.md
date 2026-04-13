@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.79.0](https://github.com/taiga-family/taiga-ui/compare/v4.78.1...v4.79.0) (2026-04-13)
+
+### 🐞 Bug Fixes
+
+- **kit:** `checkFormat` fix equality file type ([#13782](https://github.com/taiga-family/taiga-ui/issues/13782))
+  ([812185d](https://github.com/taiga-family/taiga-ui/commit/812185de53bf6b2794fc65632ba56fda0a60783d))
+- **layout:** fix some line heights ([#13820](https://github.com/taiga-family/taiga-ui/issues/13820))
+  ([3c0e9b2](https://github.com/taiga-family/taiga-ui/commit/3c0e9b2acdad02c31c5523c725b3f6b7a25f18f3))
+
 ### [4.78.1](https://github.com/taiga-family/taiga-ui/compare/v4.78.0...v4.78.1) (2026-04-07)
 
 ## [4.78.0](https://github.com/taiga-family/taiga-ui/compare/v4.77.0...v4.78.0) (2026-04-06)
