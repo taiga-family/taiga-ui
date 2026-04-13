@@ -21,9 +21,9 @@ exports[`ng-update TuiIdService adds TODO comment for TuiIdService constructor i
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk/utils/miscellaneous instead.
+// TODO: (Taiga UI migration) TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk instead.
 // Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }
-// After:  import {tuiGenerateId} from "@taiga-ui/cdk/utils/miscellaneous"; const id = tuiGenerateId();
+// After:  import {tuiGenerateId} from "@taiga-ui/cdk"; const id = tuiGenerateId();
                 import {TuiIdService} from '@taiga-ui/cdk';
 
                 @Component({
@@ -61,9 +61,9 @@ exports[`ng-update TuiIdService adds TODO comment for TuiIdService in constructo
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk/utils/miscellaneous instead.
+// TODO: (Taiga UI migration) TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk instead.
 // Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }
-// After:  import {tuiGenerateId} from "@taiga-ui/cdk/utils/miscellaneous"; const id = tuiGenerateId();
+// After:  import {tuiGenerateId} from "@taiga-ui/cdk"; const id = tuiGenerateId();
                 import {TuiIdService} from '@taiga-ui/cdk';
                 import {OtherService} from './other.service';
 
@@ -99,9 +99,9 @@ exports[`ng-update TuiIdService adds TODO comment for inject(TuiIdService) usage
             ",
   "1. After": "
                 import {Component, inject} from '@angular/core';
-// TODO: (Taiga UI migration) TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk/utils/miscellaneous instead.
+// TODO: (Taiga UI migration) TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk instead.
 // Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }
-// After:  import {tuiGenerateId} from "@taiga-ui/cdk/utils/miscellaneous"; const id = tuiGenerateId();
+// After:  import {tuiGenerateId} from "@taiga-ui/cdk"; const id = tuiGenerateId();
                 import {TuiIdService} from '@taiga-ui/cdk';
 
                 @Component({
