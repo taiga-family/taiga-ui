@@ -10400,7 +10400,7 @@ export default class Example implements OnInit {
 <input checked tuiCheckbox type="checkbox" />
 </p>
 <p>
-<input tuiCheckbox type="checkbox" />
+<input tuiCheckbox type="checkbox" [indeterminate]="true" />
 </p>
 <p>
 <input tuiCheckbox type="checkbox" [checked]="checked" />
@@ -10463,22 +10463,18 @@ export default class Example {
     ];
 
     protected currentQuestion = 0;
-
     protected results: boolean[][] = [];
-
     protected form = new FormGroup({
-        0: new FormControl(false),
+        0: new FormControl(true),
         1: new FormControl(false),
-        2: new FormControl(false),
+        2: new FormControl(),
     });
 
     protected nextQuestion(): void {
         this.currentQuestion++;
-
         this.results.push(Object.values(this.form.value).map(Boolean));
-
         this.form = new FormGroup({
-            0: new FormControl(false),
+            0: new FormControl(true),
             1: new FormControl(false),
             2: new FormControl(false),
         });
@@ -16836,15 +16832,14 @@ export default class Page {
 **Template:**
 ```html
 @for (size of sizes; track $index) { <header [tuiHeader]="size">
-<hgroup tuiTitle>
+<!-- Giving [tuiHeader] binding time to apply and provide proper default size for children --> @if (true) { <hgroup tuiTitle>
 <h2>Title</h2>
 <p tuiSubtitle>Subtitle</p>
 </hgroup>
 <aside tuiAccessories>
-<tui-badge-notification [size]="toBadgeSize(size)">1</tui-badge-notification>
-<button tuiButton type="button" [size]="toButtonSize(size)" > Button </button>
-</aside>
-</header>
+<tui-badge-notification>1</tui-badge-notification>
+<button tuiButton type="button" > Button </button>
+</aside> } </header>
 <div tuiDescription> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </div>
 <br />
 <br /> }
@@ -16854,13 +16849,7 @@ export default class Page {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXS,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
@@ -16882,32 +16871,6 @@ export default class Example {
         'body-m',
         'body-s',
     ] as const;
-
-    protected toBadgeSize(size: string): TuiSizeS {
-        switch (size) {
-            case 'body-l':
-            case 'body-m':
-            case 'h6':
-                return 's';
-            default:
-                return 'm';
-        }
-    }
-
-    protected toButtonSize(size: string): TuiSizeL | TuiSizeXS {
-        switch (size) {
-            case 'h1':
-                return 'l';
-            case 'h2':
-            case 'h3':
-                return 'm';
-            case 'h4':
-            case 'h5':
-                return 's';
-            default:
-                return 'xs';
-        }
-    }
 }
 ```
 
@@ -16931,7 +16894,7 @@ export default class Example {
 <p tuiDescription> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores atque autem consequatur cumque cupiditate delectus doloremque doloribus ea earum eius eos error esse est eum eveniet </p>
 </section>
 <section>
-<header tuiHeader>
+<header tuiHeader="h4">
 <hgroup tuiTitle>
 <h5>Maskito</h5>
 <p tuiSubtitle> Awesome <span [tuiSensitive]="true">one</span>
@@ -22314,7 +22277,7 @@ InputNumber is a form field to provide numerical input. example of [ 'Number as 
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Enter a number</label> } <input tuiInputNumber [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [state]="input.state" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Enter a number</label> } <input tuiInputNumber [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [state]="input.state" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
 </tui-textfield>
 </ng-template>
 ```
@@ -22563,8 +22526,8 @@ export default class Example {
 **Template:**
 ```html
 <tui-textfield>
-<label tuiLabel>Price</label>
-<input tuiInputNumber [min]="0" [prefix]="'USD' | tuiCurrency" [(ngModel)]="value" />
+<label tuiLabel>Balance</label>
+<input tuiInputNumber [prefix]="'USD' | tuiCurrency" [tuiNumberFormat]="{negativePattern: 'minusFirst'}" [(ngModel)]="value" />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -22574,16 +22537,17 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
+import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiCurrencyPipe, TuiInputNumber],
+    imports: [FormsModule, TuiCurrencyPipe, TuiInputNumber, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value: number | null = null;
+    protected value: number | null = -42;
 }
 ```
 
@@ -23634,7 +23598,7 @@ InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 
 ```html
 <ng-template>
-<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps || undefined" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [segments]="segments" [step]="step" [style.--tui-thumb-size.px]="thumbSize" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), }" [tuiTextfieldSize]="textfieldDoc.size" />
+<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps || undefined" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [segments]="segments" [step]="step" [style.--tui-thumb-size.px]="thumbSize" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), negativePattern: numberFormatDoc.negativePattern(), }" [tuiTextfieldSize]="textfieldDoc.size" />
 </ng-template>
 ```
 
@@ -24054,7 +24018,7 @@ InputSlider = Textfield + InputNumber + Slider + ❤️
 ```html
 <ng-template>
 <tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldDoc.content" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
+<input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
 <input tuiSlider type="range" [keySteps]="keySteps || undefined" [segments]="segments" [step]="step" [style.--tui-thumb-size.px]="thumbSize" />
 </tui-textfield>
 </ng-template>
@@ -29692,6 +29656,22 @@ export default class Example extends TuiPortals {
 <label tuiNavigationLogo> Custom color <input tuiSwitch type="checkbox" [ngModel]="color" (ngModelChange)="onColor($event)" />
 </label>
 <button tuiButton tuiChevron tuiDropdown="Use TuiThemeColorService to control color" tuiDropdownAuto type="button" > How to? </button>
+<div tuiDropdown tuiDropdownAppearance="" tuiDropdownAuto [attr.tuiTheme]="dark() ? 'dark' : 'light'" >
+<button tuiButton tuiChevron tuiTheme="dark" type="button" > Keep dropdowns color? </button>
+<ol *tuiDropdown tuiList="s" [style.padding-inline.rem]="1" >
+<li>Wrap your button in another tag</li>
+<li>Move dropdown directives to that tag</li>
+<li> Reset navigation appearance by <code>tuiDropdownAppearance=""</code>
+</li>
+<li> Set <code>tuiTheme="dark"</code> on the button so it fits the header </li>
+<li> Get app theme: <code>readonly dark = inject(TUI_DARK_MODE)</code>
+</li>
+<li> Use it to set theme on the wrapping tag: <p>
+<code>[attr.tuiTheme]="dark() ? 'dark' : 'light'"</code>
+</p>
+</li>
+</ol>
+</div>
 </header>
 <main tuiNavigationMain>
 <nav compact tuiSubheader >
@@ -29724,9 +29704,16 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiDataList, TuiDropdown, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {
+    TUI_DARK_MODE,
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -29740,6 +29727,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiFade,
         TuiHeader,
         TuiLink,
+        TuiList,
         TuiNavigation,
         TuiSwitch,
         TuiTabs,
@@ -29752,6 +29740,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 export default class Example {
     private readonly theme = inject(TuiThemeColorService);
 
+    protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
 
     protected onColor(color: boolean): void {
