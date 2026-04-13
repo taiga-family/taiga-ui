@@ -64,12 +64,11 @@ jobs:
         id: get-pr-body
         shell: bash
         run: |
+          body=$(cat RELEASE_BODY.md)
           delimiter="$(openssl rand -hex 8)"
-          {
-            echo "body<<${delimiter}"
-            cat RELEASE_BODY.md
-            echo "${delimiter}"
-          } >> "$GITHUB_OUTPUT"
+          echo "body<<$delimiter" >> $GITHUB_OUTPUT
+          echo "$body" >> $GITHUB_OUTPUT
+          echo "$delimiter" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
         if: ${{ !inputs.dry_run }}
