@@ -1,1 +1,1 @@
-export const TUI_VERSION = '4.78.1';
+export const TUI_VERSION = '4.79.0';
