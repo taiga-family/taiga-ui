@@ -49,6 +49,7 @@ class Styles {}
     ],
     host: {
         tuiTruncate: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-lines]': 'lines()',
         '[attr.data-text]': 'truncated()',
         '[style.-webkit-line-clamp]': 'lines()',
