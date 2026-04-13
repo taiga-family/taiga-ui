@@ -136,6 +136,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message: `${name} has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated`,
     })),
     {
+        name: 'tuiProvideMobileCalendar',
+        moduleSpecifier: '@taiga-ui/addon-mobile',
+        message:
+            'tuiProvideMobileCalendar has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
+    },
+    {
         name: 'TuiCarousel',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
