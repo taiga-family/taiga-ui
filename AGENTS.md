@@ -129,15 +129,14 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 
 ## Taiga UI Schematics Migrations
 
-When writing or modifying Taiga UI schematics migrations, always follow the step-by-step guide in
-[projects/cdk/schematics/MIGRATION_GUIDE.md](projects/cdk/schematics/MIGRATION_GUIDE.md).
+When writing or modifying Taiga UI schematics migrations, use the `write-migration` skill:
 
-It covers:
+```
+/write-migration <describe the change>
+```
 
-- How to analyze the change and choose the right migration strategy
-- Which mechanism to use (`identifiers-to-replace`, `modules-to-remove`, `migration-warnings`, `attrs-to-replace`, etc.)
-- How to write and run migration tests
-- Common pitfalls (pipeline order, `filterFn` edge cases, post-rename `moduleSpecifier` in warnings)
+The skill covers the full step-by-step process: analyzing the change, choosing the right mechanism
+(`identifiers-to-replace`, `attrs-to-replace`, `inputs-to-remove`, etc.), writing tests, and avoiding common pitfalls.
 
 ## Summary
 
