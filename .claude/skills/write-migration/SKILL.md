@@ -5,7 +5,6 @@ description: >
   versions, choosing the right migration mechanism (attrs-to-replace, inputs-to-remove, identifiers-to-replace,
   tags-to-replace, custom migration functions, etc.), writing tests with snapshots, and avoiding common pitfalls. Invoke
   whenever asked to add, fix, or review a migration in projects/cdk/schematics/.
-argument-hint: '[change description]'
 ---
 
 # Writing Taiga UI Migrations
