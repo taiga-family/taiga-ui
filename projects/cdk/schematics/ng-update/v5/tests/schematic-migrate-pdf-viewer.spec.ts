@@ -45,5 +45,20 @@ describe('ng-update TuiPdfViewer migration', () => {
         }),
     );
 
+    it(
+        'should migrate TuiPdfViewerService import from @taiga-ui/kit to @taiga-ui/legacy',
+        migrate({
+            component: `
+                import {inject} from '@angular/core';
+                import {TuiPdfViewerService} from '@taiga-ui/kit';
+
+                @Component({})
+                export class Test {
+                    private readonly pdfViewerService = inject(TuiPdfViewerService);
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
