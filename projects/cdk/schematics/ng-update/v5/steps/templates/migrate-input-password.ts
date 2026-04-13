@@ -99,12 +99,6 @@ export function migrateInputPassword({
         // --- Build TODO comment ---
         const todoNotes: string[] = [];
 
-        if (isLabelOutsideTrue && labelIndex !== -1) {
-            todoNotes.push(
-                'tuiTextfieldLabelOutside was true — text became placeholder. Wrap <tui-textfield> in <label tuiLabel> for label-outside pattern if needed.',
-            );
-        }
-
         if (isDynamic) {
             todoNotes.push(
                 `[tuiTextfieldLabelOutside]="${labelOutsideValue}" is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.`,

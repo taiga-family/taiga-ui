@@ -134,7 +134,6 @@ exports[`ng-update legacy textarea migrates tui-textarea attributes: wrapper att
             ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
-     - tuiTextfieldLabelOutside was true — text became placeholder. Wrap <tui-textfield> in <label tuiLabel> for label-outside pattern if needed.
      - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
 -->
                 <tui-textfield tuiTextfieldSize="s">

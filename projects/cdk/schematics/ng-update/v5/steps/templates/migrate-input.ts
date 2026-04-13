@@ -295,12 +295,7 @@ function buildTodoComment(ctx: MigrationContext): string {
         ctx.labelOutsideValue === 'true' ||
         (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
 
-    if (ctx.placeholder) {
-        if (isLabelOutsideTrue) {
-            notes.push(
-                'tuiTextfieldLabelOutside was true — text became placeholder. Wrap <tui-textfield> in <label tuiLabel> for label-outside pattern if needed.',
-            );
-        }
+    if (ctx.placeholder && !isLabelOutsideTrue) {
         // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed
     }
 

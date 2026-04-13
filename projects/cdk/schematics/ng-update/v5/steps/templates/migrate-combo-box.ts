@@ -162,7 +162,6 @@ export function migrateComboBox({
                 searchHandler,
                 sourceCodeLocation,
                 labelOutside: labelOutsideAttr?.value ?? '',
-                template,
             });
         }
     });
@@ -227,7 +226,6 @@ function handleGeneratedInput({
     searchHandler,
     sourceCodeLocation,
     labelOutside,
-    template,
 }: {
     controlAttrs: Array<{name: string; value: string}>;
     element: Element;
@@ -236,7 +234,6 @@ function handleGeneratedInput({
     recorder: UpdateRecorder;
     searchHandler: string;
     sourceCodeLocation: Element['sourceCodeLocation'];
-    template: string;
     templateOffset: number;
 }): void {
     const formAttrs = formatControlAttrs(controlAttrs);
@@ -264,17 +261,8 @@ function handleGeneratedInput({
 
     if (!labelOutside || labelOutside === 'false') {
         wrapTextInLabel(recorder, templateOffset, element);
-    } else if (labelNode) {
-        const elementStart = element.sourceCodeLocation?.startOffset ?? 0;
-        const lineStart = template.lastIndexOf('\n', elementStart - 1) + 1;
-        const indent = template.slice(lineStart, elementStart);
-        const textStart = labelNode.sourceCodeLocation?.startOffset ?? 0;
-
-        recorder.insertRight(
-            templateOffset + textStart + 1,
-            `${indent}<!-- ${TODO_MARK} Use <label tuiLabel> element inside <tui-textfield> for a floating label or input[placeholder] for empty value label -->\n`,
-        );
     }
+    // labelOutside === 'true': text → placeholder on <input> — fully automatic, no TODO needed
 
     const insertOffset = labelNode
         ? (labelNode.sourceCodeLocation?.endOffset ?? 0)

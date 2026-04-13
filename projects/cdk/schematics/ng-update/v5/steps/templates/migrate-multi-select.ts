@@ -21,7 +21,6 @@ const CONTENT_ATTR = 'content';
 const TEXTFIELD_LABEL_OUTSIDE_ATTR = 'tuiTextfieldLabelOutside';
 const AUTO_COLOR_ATTR = 'autoColor';
 const AUTO_COLOR_TODO = `<!-- ${TODO_MARK} [autoColor] was removed. Use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->\n`;
-const LABEL_OUTSIDE_TODO = `<!-- ${TODO_MARK} tuiTextfieldLabelOutside was removed. In v5, wrap <tui-textfield> in <label tuiLabel> for label-outside pattern. See: https://taiga-ui.dev/components/label -->\n`;
 const PLACEHOLDER_ATTR = 'placeholder';
 const PLACEHOLDER_BINDING_ATTR = '[placeholder]';
 const EDITABLE_ATTR = 'editable';
@@ -68,15 +67,6 @@ export function migrateMultiSelect({
         );
         renameAttr(recorder, templateOffset, element, VALUE_CONTENT_ATTR, CONTENT_ATTR);
 
-        const labelOutsideAttr = element.attrs.find((attr) =>
-            [
-                `[${TEXTFIELD_LABEL_OUTSIDE_ATTR}]`.toLowerCase(),
-                TEXTFIELD_LABEL_OUTSIDE_ATTR.toLowerCase(),
-            ].includes(attr.name.toLowerCase()),
-        );
-        const labelOutsideTruthy =
-            labelOutsideAttr !== undefined && labelOutsideAttr.value !== 'false';
-
         removeAttr(
             recorder,
             templateOffset,
@@ -91,17 +81,6 @@ export function migrateMultiSelect({
             TEXTFIELD_LABEL_OUTSIDE_ATTR,
             template,
         );
-
-        if (labelOutsideTruthy && typeof startOffset === 'number') {
-            const lineStart = template.lastIndexOf('\n', startOffset) + 1;
-            const indent =
-                /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
-
-            recorder.insertLeft(
-                templateOffset + startOffset,
-                `${LABEL_OUTSIDE_TODO}${indent}`,
-            );
-        }
 
         const hasAutoColor = element.attrs.some((attr) =>
             [

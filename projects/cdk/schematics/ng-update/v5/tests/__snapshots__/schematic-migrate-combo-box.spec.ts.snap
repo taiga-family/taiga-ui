@@ -417,7 +417,6 @@ exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiT
   "1. After": "
                 <tui-textfield
                 >
-                <!-- TODO: (Taiga UI migration) Use <label tuiLabel> element inside <tui-textfield> for a floating label or input[placeholder] for empty value label -->
                     Label
                 
 <input tuiComboBox [formControl]="control" />

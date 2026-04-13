@@ -263,18 +263,13 @@ function buildReplacement(
 function buildTodoComment(ctx: MigrationContext): string {
     const notes: string[] = [];
 
-    if (ctx.placeholder) {
-        if (ctx.labelOutside === true) {
-            notes.push(
-                'tuiTextfieldLabelOutside was true — text became placeholder. Wrap <tui-textfield> in <label tuiLabel> for label-outside pattern if needed.',
-            );
-        } else if (ctx.labelOutside === 'dynamic') {
-            notes.push(
-                '[tuiTextfieldLabelOutside] was dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.',
-            );
-        }
-        // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed
+    if (ctx.placeholder && ctx.labelOutside === 'dynamic') {
+        notes.push(
+            '[tuiTextfieldLabelOutside] was dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.',
+        );
     }
+    // labelOutside=true: text → placeholder — fully automatic, no note needed
+    // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed
 
     if (ctx.expandableValue !== null) {
         const wasFixed = ctx.expandableValue === 'false' || ctx.expandableValue === '';

@@ -23,9 +23,6 @@ exports[`ng-update legacy input converts text to placeholder when [tuiTextfieldL
                 </tui-input>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
-     - tuiTextfieldLabelOutside was true — text became placeholder. Wrap <tui-textfield> in <label tuiLabel> for label-outside pattern if needed.
--->
                 <tui-textfield>
                 <input placeholder="Email" tuiInput formControlName="value" />
                 </tui-textfield>

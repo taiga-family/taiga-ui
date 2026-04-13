@@ -251,7 +251,6 @@ exports[`ng-update legacy multi-select migrates full-featured tui-multi-select: 
                 </tui-multi-select>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tuiTextfieldLabelOutside was removed. In v5, wrap <tui-textfield> in <label tuiLabel> for label-outside pattern. See: https://taiga-ui.dev/components/label -->
                 <!-- TODO: (Taiga UI migration) [autoColor] was removed. Use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color -->
                 <tui-textfield multi tuiChevron
                     [identityMatcher]="matcher"
@@ -420,7 +419,6 @@ exports[`ng-update legacy multi-select removes tuiTextfieldLabelOutside and [tui
                 ></tui-multi-select>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tuiTextfieldLabelOutside was removed. In v5, wrap <tui-textfield> in <label tuiLabel> for label-outside pattern. See: https://taiga-ui.dev/components/label -->
                 <tui-textfield multi tuiChevron
                 ><input tuiInputChip formControlName="items" />
 </tui-textfield>
