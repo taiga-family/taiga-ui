@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update experimental dialog replaces experimental TUI_DIALOG_DEFAULT_OPTIONS import to @taiga-ui/core and replace to TUI_DIALOG_OPTIONS: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_DIALOG_DEFAULT_OPTIONS} from '@taiga-ui/experimental';
+            ",
+  "1. After": "import { TUI_DIALOG_OPTIONS } from "@taiga-ui/core";
+
+                            ",
+}
+`;
+
+exports[`ng-update experimental dialog replaces experimental TUI_DIALOG_OPTIONS import to @taiga-ui/core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_DIALOG_OPTIONS} from '@taiga-ui/experimental';
+            ",
+  "1. After": "import { TUI_DIALOG_OPTIONS } from "@taiga-ui/core";
+
+                            ",
+}
+`;
+
+exports[`ng-update experimental dialog replaces experimental TuiDialog import to @taiga-ui/core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiDialog} from '@taiga-ui/experimental';
+            ",
+  "1. After": "import { TuiDialog } from "@taiga-ui/core";
+
+                            ",
+}
+`;
+
+exports[`ng-update experimental dialog replaces experimental TuiDialogComponent import to @taiga-ui/core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiDialogComponent} from '@taiga-ui/experimental';
+            ",
+  "1. After": "import { TuiDialogComponent } from "@taiga-ui/core";
+
+                            ",
+}
+`;
+
+exports[`ng-update experimental dialog replaces experimental TuiDialogService, TuiDialogOptions and TuiDialogContext import to @taiga-ui/core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import type {TuiDialogContext, TuiDialogOptions} from '@taiga-ui/experimental';
+                import {TuiDialogService} from '@taiga-ui/experimental';
+                import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+                import {BehaviorSubject} from 'rxjs';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialogService = inject(TuiDialogService);
+                    private readonly loading$ = new BehaviorSubject<boolean>(false);
+
+                    showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
+                        this.dialogService
+                            .open(content, {
+                                label: 'Test',
+                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                closable: this.loading$.pipe(map((loading) => !loading)),
+                            } as TuiDialogOptions<any>)
+                            .subscribe();
+                    }
+                }
+            ",
+  "1. After": "import { TuiDialogService, TuiDialogContext, TuiDialogOptions } from "@taiga-ui/core";
+
+                import {Component, inject} from '@angular/core';
+                import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+                import {BehaviorSubject} from 'rxjs';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialogService = inject(TuiDialogService);
+                    private readonly loading$ = new BehaviorSubject<boolean>(false);
+
+                    showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
+                        this.dialogService
+                            .open(content, {
+                                label: 'Test',
+                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                closable: this.loading$.pipe(map((loading) => !loading)),
+                            } as TuiDialogOptions<any>)
+                            .subscribe();
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update experimental dialog replaces experimental tuiDialogOptionsProvider import to @taiga-ui/core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiDialogOptionsProvider} from '@taiga-ui/experimental';
+
+                const closable = false;
+
+                tuiDialogOptionsProvider({closable});
+                tuiDialogOptionsProvider({size: 'm', closable: true});
+            ",
+  "1. After": "import { tuiDialogOptionsProvider } from "@taiga-ui/core";
+
+                                const closable = false;
+
+                tuiDialogOptionsProvider({closable});
+                tuiDialogOptionsProvider({size: 'm', closable: true});
+            ",
+}
+`;
