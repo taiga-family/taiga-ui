@@ -50,6 +50,24 @@ exports[`ng-update identifiers migration keeps tuiIsFlat usages in source code w
 }
 `;
 
+exports[`ng-update identifiers migration migrates TuiOptionNew to TuiOption: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiOptionNew} from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly option = TuiOptionNew;
+                }
+            ",
+  "1. After": "import { TuiOption } from "@taiga-ui/core";
+
+                                export class TestComponent {
+                    protected readonly option = TuiOption;
+                }
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration migrates identifiers to new packages: test.ts 1`] = `
 {
   "0. Before": "

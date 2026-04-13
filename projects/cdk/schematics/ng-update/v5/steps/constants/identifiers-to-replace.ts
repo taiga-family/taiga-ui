@@ -935,6 +935,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiOptionNew',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiOption',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'TUI_DOC_EXAMPLE_TEXTS',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
