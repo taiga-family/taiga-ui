@@ -298,7 +298,7 @@ function buildTodoComment(ctx: MigrationContext): string {
     if (ctx.placeholder) {
         if (isLabelOutsideTrue) {
             notes.push(
-                `Text content "${ctx.placeholder}" became placeholder on <input> (labelOutside=true). Add <label tuiLabel> outside <tui-textfield> if a static label is needed.`,
+                'tuiTextfieldLabelOutside was true — text became placeholder. Wrap <tui-textfield> in <label tuiLabel> for label-outside pattern if needed.',
             );
         }
         // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed

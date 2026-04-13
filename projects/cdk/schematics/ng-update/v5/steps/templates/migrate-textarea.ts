@@ -266,17 +266,14 @@ function buildTodoComment(ctx: MigrationContext): string {
     if (ctx.placeholder) {
         if (ctx.labelOutside === true) {
             notes.push(
-                `Text content "${ctx.placeholder}" became placeholder on <textarea>. Previously [tuiTextfieldLabelOutside]=true — for label-outside pattern, wrap <tui-textfield> with: <label tuiLabel>${ctx.placeholder}<tui-textfield>...</tui-textfield></label>.`,
+                'tuiTextfieldLabelOutside was true — text became placeholder. Wrap <tui-textfield> in <label tuiLabel> for label-outside pattern if needed.',
             );
         } else if (ctx.labelOutside === 'dynamic') {
             notes.push(
-                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. [tuiTextfieldLabelOutside] was dynamic — for label-outside pattern, move <label tuiLabel> to wrap <tui-textfield> instead.`,
-            );
-        } else {
-            notes.push(
-                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.`,
+                '[tuiTextfieldLabelOutside] was dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.',
             );
         }
+        // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed
     }
 
     if (ctx.expandableValue !== null) {
