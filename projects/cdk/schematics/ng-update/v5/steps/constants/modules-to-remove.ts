@@ -25,4 +25,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'tuiProvideExperimentalHint',
         moduleSpecifier: '@taiga-ui/experimental',
     },
+    {
+        name: 'TuiTextareaLimit',
+        moduleSpecifier: '@taiga-ui/kit',
+    },
 ];
