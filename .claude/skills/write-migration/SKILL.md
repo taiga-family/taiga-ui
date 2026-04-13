@@ -1,6 +1,14 @@
-# Writing Taiga UI Migrations
+---
+name: write-migration
+description: >
+  Use this skill when writing or reviewing Taiga UI schematics migrations. Covers: analyzing API changes between major
+  versions, choosing the right migration mechanism (attrs-to-replace, inputs-to-remove, identifiers-to-replace,
+  tags-to-replace, custom migration functions, etc.), writing tests with snapshots, and avoiding common pitfalls. Invoke
+  whenever asked to add, fix, or review a migration in projects/cdk/schematics/.
+argument-hint: "[describe the change, e.g. 'rename TuiInputPhone to TuiPhone in @taiga-ui/kit']"
+---
 
-Guide for writing schematics migrations (for AI and developers).
+# Writing Taiga UI Migrations
 
 ## Where to find the previous major version's source
 

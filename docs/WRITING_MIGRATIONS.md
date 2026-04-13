@@ -4,12 +4,13 @@ A guide for developers: how to effectively use an LLM to write Taiga UI schemati
 
 ## Before you start
 
-1. Make sure the LLM has [`MIGRATION_GUIDE.md`](./MIGRATION_GUIDE.md) in its context. With Claude Code and `CLAUDE.md`
-   in the repo root, it is already included automatically. In other tools, paste the file contents into the prompt
-   explicitly.
+1. Load the `write-migration` skill from
+   [`.claude/skills/write-migration/SKILL.md`](../.claude/skills/write-migration/SKILL.md) into your LLM tool. Most
+   modern agents (Claude Code, GitHub Copilot, etc.) pick it up automatically from the repo. In other tools, paste the
+   skill contents into the prompt explicitly.
 
 2. Give the LLM access to the previous major version source — it does not know what changed on its own. Options are
-   described in the "Where to find the previous major version's source" section of `MIGRATION_GUIDE.md`.
+   described in the "Where to find the previous major version's source" section of the skill.
 
 ## Scenarios
 
