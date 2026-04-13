@@ -83,7 +83,7 @@ export function migrateInputYear({
             if (isLabelOutsideTrue) {
                 recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
                 placeholderAttr = ` placeholder="${labelText}"`;
-            } else {
+            } else if (!isDynamic) {
                 recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
                 recorder.insertRight(labelTextEnd, '</label>\n');
             }

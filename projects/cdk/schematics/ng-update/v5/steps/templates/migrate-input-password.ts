@@ -88,11 +88,9 @@ export function migrateInputPassword({
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
             if (isLabelOutsideTrue) {
-                // labelOutside=true: remove text, it will become placeholder on <input>
                 recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
                 placeholderAttr = ` placeholder="${labelText}"`;
-            } else {
-                // labelOutside=false/absent/dynamic: text → <label tuiLabel> inside
+            } else if (!isDynamic) {
                 recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
                 recorder.insertRight(labelTextEnd, '</label>\n');
             }
