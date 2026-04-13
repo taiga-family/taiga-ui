@@ -92,5 +92,10 @@ describe('ng-update remove | async from signal-based pipes', () => {
         migrate({template: '{{ 10728.9 | tuiAmount }}'}),
     );
 
+    it(
+        'should remove | async after tuiSortCountries',
+        migrate({template: '{{ countries | tuiSortCountries | async }}'}),
+    );
+
     afterEach(() => resetActiveProject());
 });

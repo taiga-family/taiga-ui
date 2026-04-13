@@ -7,7 +7,12 @@ import {
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces';
 
-const SIGNAL_BASED_PIPES = ['tuiAmount', 'tuiDecimal', 'tuiFormatNumber'];
+const SIGNAL_BASED_PIPES = [
+    'tuiAmount',
+    'tuiDecimal',
+    'tuiFormatNumber',
+    'tuiSortCountries',
+];
 
 /**
  * Matches `| tuiPipeName` (with optional args) followed by `| async`.
