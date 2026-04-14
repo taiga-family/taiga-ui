@@ -1,34 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update TuiTableDirectionOrder warning adds TODO for TuiTableDirectionOrder import: test.ts 1`] = `
-{
-  "0. Before": "
-                import {Component} from '@angular/core';
-                import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
-
-                @Component({
-                    standalone: true,
-                    imports: [TuiTableDirectionOrder],
-                    templateUrl: './test.html',
-                })
-                export class TestComponent {}
-            ",
-  "1. After": "
-                import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TuiTableDirectionOrder has been removed. Use (tuiSortChange) output from TuiSortBy directive with TuiSortDirection instead
-                import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
-
-                @Component({
-                    standalone: true,
-                    imports: [TuiTableDirectionOrder],
-                    templateUrl: './test.html',
-                })
-                export class TestComponent {}
-            ",
-}
-`;
-
-exports[`ng-update TuiTableDirectionOrder warning migrates dynamic [directionOrder] binding and removes tuiDirectionOrder marker: test.html 1`] = `
+exports[`ng-update TuiTableDirectionOrder migrates dynamic [directionOrder] binding and removes tuiDirectionOrder marker: test.html 1`] = `
 {
   "0. Before": "
                 <table
@@ -41,8 +13,7 @@ exports[`ng-update TuiTableDirectionOrder warning migrates dynamic [directionOrd
                 </table>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
-<table
+                <table
                     
                     tuiTable
                     [direction]="directionOrder"
@@ -54,7 +25,7 @@ exports[`ng-update TuiTableDirectionOrder warning migrates dynamic [directionOrd
 }
 `;
 
-exports[`ng-update TuiTableDirectionOrder warning migrates static [directionOrder] values to TuiSortDirection numbers: test.html 1`] = `
+exports[`ng-update TuiTableDirectionOrder migrates static [directionOrder] values to TuiSortDirection numbers: test.html 1`] = `
 {
   "0. Before": "
                 <table
@@ -73,16 +44,14 @@ exports[`ng-update TuiTableDirectionOrder warning migrates static [directionOrde
                 </table>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
-<table
+                <table
                     
                     tuiTable
                     [direction]="1"
                 >
                     <tbody></tbody>
                 </table>
-                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
-<table
+                <table
                     
                     tuiTable
                     [direction]="-1"
@@ -93,7 +62,7 @@ exports[`ng-update TuiTableDirectionOrder warning migrates static [directionOrde
 }
 `;
 
-exports[`ng-update TuiTableDirectionOrder warning migrates two-way [(directionOrder)] binding: test.html 1`] = `
+exports[`ng-update TuiTableDirectionOrder migrates two-way [(directionOrder)] binding: test.html 1`] = `
 {
   "0. Before": "
                 <table
@@ -105,8 +74,7 @@ exports[`ng-update TuiTableDirectionOrder warning migrates two-way [(directionOr
                 </table>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
-<table
+                <table
                     
                     tuiTable
                     [(direction)]="directionOrder"

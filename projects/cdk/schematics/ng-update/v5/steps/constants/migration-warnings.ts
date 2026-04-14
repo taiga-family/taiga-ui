@@ -62,12 +62,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiStatus type has been removed. Replace with a plain string literal type: "default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"',
     },
     {
-        name: 'TuiTableDirectionOrder',
-        moduleSpecifier: '@taiga-ui/addon-table',
-        message:
-            'TuiTableDirectionOrder has been removed. Use (tuiSortChange) output from TuiSortBy directive with TuiSortDirection instead',
-    },
-    {
         name: 'TuiIsoToCountryCodePipe',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
