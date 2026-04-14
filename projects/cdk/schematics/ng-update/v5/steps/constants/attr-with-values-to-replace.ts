@@ -198,8 +198,13 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         newAttrName: '[direction]',
         withTagNames: ['table'],
         valueReplacer: (value) => {
-            if (value === "'asc'") return '1';
-            if (value === "'desc'") return '-1';
+            if (value === "'asc'") {
+                return '1';
+            }
+
+            if (value === "'desc'") {
+                return '-1';
+            }
 
             return value;
         },
