@@ -27,7 +27,7 @@ describe('ng-update TuiTableDirectionOrder warning', () => {
     );
 
     it(
-        'adds HTML TODO comment for tuiDirectionOrder template attribute',
+        'migrates dynamic [directionOrder] binding and removes tuiDirectionOrder marker',
         migrate({
             template: /* HTML */ `
                 <table
@@ -35,6 +35,43 @@ describe('ng-update TuiTableDirectionOrder warning', () => {
                     tuiTable
                     [directionOrder]="directionOrder"
                     (directionOrderChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            `,
+        }),
+    );
+
+    it(
+        'migrates static [directionOrder] values to TuiSortDirection numbers',
+        migrate({
+            template: /* HTML */ `
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="'asc'"
+                >
+                    <tbody></tbody>
+                </table>
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="'desc'"
+                >
+                    <tbody></tbody>
+                </table>
+            `,
+        }),
+    );
+
+    it(
+        'migrates two-way [(directionOrder)] binding',
+        migrate({
+            template: /* HTML */ `
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [(directionOrder)]="directionOrder"
                 >
                     <tbody></tbody>
                 </table>

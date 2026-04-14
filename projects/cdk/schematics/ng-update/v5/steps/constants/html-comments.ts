@@ -79,7 +79,7 @@ export const HTML_COMMENTS: HtmlComment[] = [
         tag: '*',
         withAttrs: ['tuiDirectionOrder'],
         comment:
-            'tuiDirectionOrder has been removed. Remove [directionOrder] and (directionOrderChange). Use [tuiSortBy] with (tuiSortChange) output and TuiSortDirection enum instead',
+            'tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange)',
     },
     {
         tag: 'tui-tag',

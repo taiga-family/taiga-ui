@@ -1,31 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update TuiTableDirectionOrder warning adds HTML TODO comment for tuiDirectionOrder template attribute: test.html 1`] = `
-{
-  "0. Before": "
-                <table
-                    tuiDirectionOrder
-                    tuiTable
-                    [directionOrder]="directionOrder"
-                    (directionOrderChange)="onOrderChange($event)"
-                >
-                    <tbody></tbody>
-                </table>
-            ",
-  "1. After": "
-                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. Remove [directionOrder] and (directionOrderChange). Use [tuiSortBy] with (tuiSortChange) output and TuiSortDirection enum instead -->
-<table
-                    tuiDirectionOrder
-                    tuiTable
-                    [directionOrder]="directionOrder"
-                    (directionOrderChange)="onOrderChange($event)"
-                >
-                    <tbody></tbody>
-                </table>
-            ",
-}
-`;
-
 exports[`ng-update TuiTableDirectionOrder warning adds TODO for TuiTableDirectionOrder import: test.ts 1`] = `
 {
   "0. Before": "
@@ -50,6 +24,71 @@ exports[`ng-update TuiTableDirectionOrder warning adds TODO for TuiTableDirectio
                     templateUrl: './test.html',
                 })
                 export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update TuiTableDirectionOrder warning migrates dynamic [directionOrder] binding and removes tuiDirectionOrder marker: test.html 1`] = `
+{
+  "0. Before": "
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="directionOrder"
+                    (directionOrderChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
+<table
+                    
+                    tuiTable
+                    [direction]="directionOrder"
+                    (directionChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update TuiTableDirectionOrder warning migrates static [directionOrder] values to TuiSortDirection numbers: test.html 1`] = `
+{
+  "0. Before": "
+                <table tuiTable tuiDirectionOrder [directionOrder]="'asc'">
+                    <tbody></tbody>
+                </table>
+                <table tuiTable tuiDirectionOrder [directionOrder]="'desc'">
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
+<table tuiTable  [direction]="1">
+                    <tbody></tbody>
+                </table>
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
+<table tuiTable  [direction]="-1">
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update TuiTableDirectionOrder warning migrates two-way [(directionOrder)] binding: test.html 1`] = `
+{
+  "0. Before": "
+                <table tuiTable tuiDirectionOrder [(directionOrder)]="directionOrder">
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
+<table tuiTable  [(direction)]="directionOrder">
+                    <tbody></tbody>
+                </table>
             ",
 }
 `;
