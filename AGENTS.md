@@ -203,7 +203,11 @@ By following these updated guidelines you will build modern Angular applications
 
 Here are some links to the essentials for building Angular applications. Use these to understand core functionality:
 
-- [Angular Components Essentials](https://angular.dev/essentials/components): Learn how to build and structure components.
-- [Angular Signals Essentials](https://angular.dev/essentials/signals): Understand reactive state management with signals.
-- [Angular Templates Essentials](https://angular.dev/essentials/templates): Review template syntax and rendering patterns.
-- [Angular Dependency Injection Essentials](https://angular.dev/essentials/dependency-injection): Learn how to provide and consume dependencies.
+- [Angular Components Essentials](https://angular.dev/essentials/components): Learn how to build and structure
+  components.
+- [Angular Signals Essentials](https://angular.dev/essentials/signals): Understand reactive state management with
+  signals.
+- [Angular Templates Essentials](https://angular.dev/essentials/templates): Review template syntax and rendering
+  patterns.
+- [Angular Dependency Injection Essentials](https://angular.dev/essentials/dependency-injection): Learn how to provide
+  and consume dependencies.
