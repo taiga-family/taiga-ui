@@ -28,10 +28,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[style.visibility]': 'isServer ? "hidden" : "visible"',
-        '[class._has-filename]': 'hasFilename',
-    },
+    host: {'[class._has-filename]': 'hasFilename'},
 })
 export class TuiDocCode implements OnChanges {
     private readonly copy = inject(TUI_COPY_OPTIONS).icon;
