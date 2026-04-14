@@ -76,6 +76,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
             'timeline-steps has been removed. Use TuiStepper instead. See example https://taiga-ui.dev/navigation/stepper',
     },
     {
+        tag: '*',
+        withAttrs: ['[directionOrder]', '(directionOrderChange)', '[(directionOrder)]'],
+        comment:
+            'tuiDirectionOrder removed. Update types: TuiSortDirection (1 | -1) instead of "asc" | "desc"',
+    },
+    {
         tag: 'tui-tag',
         withAttrs: [],
         comment: 'tui-tag/tuiTag migrated to tuiChip. Check visuals and content manually',

@@ -10,6 +10,23 @@ describe('ng-update TuiTableDirectionOrder', () => {
     });
 
     it(
+        'adds TODO for TuiTableDirectionOrder import',
+        migrate({
+            component: `
+                import {Component} from '@angular/core';
+                import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTableDirectionOrder],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
         'migrates dynamic [directionOrder] binding and removes tuiDirectionOrder marker',
         migrate({
             template: /* HTML */ `
@@ -40,6 +57,21 @@ describe('ng-update TuiTableDirectionOrder', () => {
                     tuiDirectionOrder
                     tuiTable
                     [directionOrder]="'desc'"
+                >
+                    <tbody></tbody>
+                </table>
+            `,
+        }),
+    );
+
+    it(
+        'adds TODO comment for dynamic [directionOrder] binding',
+        migrate({
+            template: /* HTML */ `
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="myOrder"
                 >
                     <tbody></tbody>
                 </table>
