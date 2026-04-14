@@ -14,17 +14,15 @@ To understand what existed before the migration, use one of these two approaches
 **Option A — Local checkout** (fastest, works offline): Look for a sibling directory named `../taiga-ui-vN` (e.g.,
 `../taiga-ui-v{N-1}` when writing vN migrations). If it exists, read files directly from there.
 
-**Option B — GitHub via `gh` CLI** (when local checkout is absent): The previous major is kept in the `vN.x` branch of
-the same repo (`taiga-family/taiga-ui`).
+**Option B — GitHub via `gh` CLI** (when local checkout is absent): Use the scripts in [scripts/](scripts/) — they read
+the current major from `package.json` and resolve the correct branch automatically.
 
 ```bash
-# Browse exports of a package in the previous major
-gh api repos/taiga-family/taiga-ui/contents/projects/kit/index.ts?ref=v{N-1}.x \
-  | jq -r '.content' | base64 -d
+# Browse a file from the previous major
+.claude/skills/write-migration/scripts/browse-exports.sh projects/kit/index.ts
 
 # Search for a specific symbol
-gh api "search/code?q=TuiInputPhone+repo:taiga-family/taiga-ui+ref:v{N-1}.x" \
-  | jq '.items[].path'
+.claude/skills/write-migration/scripts/search-symbol.sh TuiInputPhone
 ```
 
 ## Step 1: Analyze the change
