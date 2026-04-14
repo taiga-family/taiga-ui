@@ -215,59 +215,7 @@ transformations).
 
 **File**: Create `vN/steps/templates/migrate-<name>.ts`
 
-```ts
-import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {type DevkitFileSystem} from 'ng-morph';
-import {type DefaultTreeAdapterTypes} from 'parse5';
-
-import {findElementsByTagName} from '../../../../utils/templates/elements';
-import {getTemplateFromTemplateResource, getTemplateOffset} from '../../../../utils/templates/template-resource';
-import {type TemplateResource} from '../../../interfaces';
-
-type Element = DefaultTreeAdapterTypes.Element;
-
-interface Replacement {
-  startOffset: number;
-  endOffset: number;
-  replacement: string;
-}
-
-export function migrateName({
-  resource,
-  recorder,
-  fileSystem,
-}: {
-  fileSystem: DevkitFileSystem;
-  recorder: UpdateRecorder;
-  resource: TemplateResource;
-}): void {
-  const template = getTemplateFromTemplateResource(resource, fileSystem);
-  const templateOffset = getTemplateOffset(resource);
-
-  const replacements = findElementsByTagName(template, 'tui-name')
-    .map((element) => buildReplacement(template, element))
-    .filter((x): x is Replacement => Boolean(x))
-    .sort((a, b) => b.startOffset - a.startOffset);
-
-  replacements.forEach(({startOffset, endOffset, replacement}) => {
-    recorder.remove(templateOffset + startOffset, endOffset - startOffset);
-    recorder.insertRight(templateOffset + startOffset, replacement);
-  });
-}
-
-function buildReplacement(template: string, element: Element): Replacement | null {
-  const loc = element.sourceCodeLocation;
-
-  if (!loc?.startTag || !loc.endTag) {
-    return null;
-  }
-
-  // Build replacement string...
-  const replacement = '';
-
-  return {startOffset: loc.startOffset, endOffset: loc.endOffset, replacement};
-}
-```
+For reference, look at existing custom migrations: `projects/cdk/schematics/ng-update/vN/steps/templates/migrate-*.ts`
 
 **Register in**: `vN/steps/migrate-templates.ts` — import and add to the `actions` array as a **bare function
 reference** (no wrapper).
