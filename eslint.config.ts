@@ -19,7 +19,6 @@ export default process.env.HTML_ESLINT
           },
       ]
     : [
-          globalIgnores(['.claude/**']),
           ...taiga.configs.recommended,
           ...taiga.configs['taiga-specific'],
           {
