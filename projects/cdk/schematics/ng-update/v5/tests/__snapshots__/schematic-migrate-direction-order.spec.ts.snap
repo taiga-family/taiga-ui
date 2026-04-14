@@ -4,8 +4,8 @@ exports[`ng-update TuiTableDirectionOrder warning adds HTML TODO comment for tui
 {
   "0. Before": "
                 <table
-                    tuiTable
                     tuiDirectionOrder
+                    tuiTable
                     [directionOrder]="directionOrder"
                     (directionOrderChange)="onOrderChange($event)"
                 >
@@ -15,8 +15,8 @@ exports[`ng-update TuiTableDirectionOrder warning adds HTML TODO comment for tui
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. Remove [directionOrder] and (directionOrderChange). Use [tuiSortBy] with (tuiSortChange) output and TuiSortDirection enum instead -->
 <table
-                    tuiTable
                     tuiDirectionOrder
+                    tuiTable
                     [directionOrder]="directionOrder"
                     (directionOrderChange)="onOrderChange($event)"
                 >
