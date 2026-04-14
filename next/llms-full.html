@@ -6074,6 +6074,7 @@ export default class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt;
 &lt;tui-icon icon=&quot;@tui.users&quot; /&gt; Users &lt;/button&gt;
 &lt;button appearance=&quot;outline&quot; size=&quot;s&quot; tuiButton tuiChevron type=&quot;button&quot; &gt; More &lt;/button&gt;
+&lt;button iconStart=&quot;@font.help_outline&quot; size=&quot;m&quot; tuiIconButton type=&quot;button&quot; &gt; Help &lt;/button&gt;
 &lt;button appearance=&quot;secondary-destructive&quot; iconStart=&quot;@tui.heart&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [style.border-radius.%]=&quot;100&quot; &gt; Favorite &lt;/button&gt;
 ```
 **TypeScript:**
@@ -6100,6 +6101,8 @@ export default class Example {}
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+
+    --tui-font-icon: &#039;Material Symbols Outlined&#039;;
 }
 ```
 
