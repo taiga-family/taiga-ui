@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update TuiTableDirectionOrder warning adds HTML TODO comment for tuiDirectionOrder template attribute: test.html 1`] = `
+{
+  "0. Before": "
+                <table
+                    tuiTable
+                    tuiDirectionOrder
+                    [directionOrder]="directionOrder"
+                    (directionOrderChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. Remove [directionOrder] and (directionOrderChange). Use [tuiSortBy] with (tuiSortChange) output and TuiSortDirection enum instead -->
+<table
+                    tuiTable
+                    tuiDirectionOrder
+                    [directionOrder]="directionOrder"
+                    (directionOrderChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;
+
 exports[`ng-update TuiTableDirectionOrder warning adds TODO for TuiTableDirectionOrder import: test.ts 1`] = `
 {
   "0. Before": "

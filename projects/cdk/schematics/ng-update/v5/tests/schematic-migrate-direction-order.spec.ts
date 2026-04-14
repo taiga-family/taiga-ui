@@ -26,5 +26,21 @@ describe('ng-update TuiTableDirectionOrder warning', () => {
         }),
     );
 
+    it(
+        'adds HTML TODO comment for tuiDirectionOrder template attribute',
+        migrate({
+            template: /* HTML */ `
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="directionOrder"
+                    (directionOrderChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
