@@ -60,6 +60,29 @@ match the **final** import path (after all renames).
 },
 ```
 
+## attrs-to-directive-replace
+
+**When**: An `@Input()` on a component should become a directive attribute instead (e.g. `prefix` on `tui-input` →
+`tuiTextfieldPrefix` directive).
+
+**File**: `vN/steps/constants/attr-to-directive-replace.ts`
+
+```ts
+{
+    componentSelector: ['tui-input', 'tui-input-number'],
+    inputProperty: 'prefix',
+    directive: 'tuiTextfieldPrefix',
+    directiveModule: {
+        name: 'TuiTextfieldControllerModule',
+        moduleSpecifier: '@taiga-ui/core',
+    },
+    filterFn: (el) => hasElementAttribute(el, 'tuiLink'), // optional
+},
+```
+
+**Register** by passing `ATTRS_TO_DIRECTIVE_REPLACE` into
+`getAction({action: replaceAttrsByDirective, requiredData: ATTRS_TO_DIRECTIVE_REPLACE})` inside `migrate-templates.ts`.
+
 ## attrs-to-replace
 
 **When**: Template attribute renamed. Handles both `attr` and `[attr]` forms.
@@ -240,7 +263,7 @@ const actions = [
   non-zero; for external `.html` files it's 0. Forgetting this breaks inline template migrations.
 - **Available utilities** for searching elements: `findElementsByTagName`, `findElementsWithAttribute`,
   `findElementsWithAttributeOnTag`, `hasElementAttribute`, `hasElementAttributeWithValue` (from
-  `../../utils/templates/elements`). For DOM navigation: `hasAncestor`, `hasChild` (from
-  `../utils/templates/dom-traversal`).
+  `../../../../utils/templates/elements`). For DOM navigation: `hasAncestor`, `hasChild` (from
+  `'../../../utils/templates'`).
 - **`filterFn`** in constant-driven utilities has access to the full Parse5 element — you can inspect `el.attrs`,
   `el.tagName`, `el.childNodes`, `el.sourceCodeLocation`.
