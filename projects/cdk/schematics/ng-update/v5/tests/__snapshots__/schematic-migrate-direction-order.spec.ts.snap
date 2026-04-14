@@ -57,20 +57,36 @@ exports[`ng-update TuiTableDirectionOrder warning migrates dynamic [directionOrd
 exports[`ng-update TuiTableDirectionOrder warning migrates static [directionOrder] values to TuiSortDirection numbers: test.html 1`] = `
 {
   "0. Before": "
-                <table tuiTable tuiDirectionOrder [directionOrder]="'asc'">
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="'asc'"
+                >
                     <tbody></tbody>
                 </table>
-                <table tuiTable tuiDirectionOrder [directionOrder]="'desc'">
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="'desc'"
+                >
                     <tbody></tbody>
                 </table>
             ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
-<table tuiTable  [direction]="1">
+<table
+                    
+                    tuiTable
+                    [direction]="1"
+                >
                     <tbody></tbody>
                 </table>
                 <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
-<table tuiTable  [direction]="-1">
+<table
+                    
+                    tuiTable
+                    [direction]="-1"
+                >
                     <tbody></tbody>
                 </table>
             ",
@@ -80,13 +96,21 @@ exports[`ng-update TuiTableDirectionOrder warning migrates static [directionOrde
 exports[`ng-update TuiTableDirectionOrder warning migrates two-way [(directionOrder)] binding: test.html 1`] = `
 {
   "0. Before": "
-                <table tuiTable tuiDirectionOrder [(directionOrder)]="directionOrder">
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [(directionOrder)]="directionOrder"
+                >
                     <tbody></tbody>
                 </table>
             ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tuiDirectionOrder has been removed. [directionOrder] → [direction] (TuiSortDirection enum: Asc=1, Desc=-1). (directionOrderChange) → (directionChange) -->
-<table tuiTable  [(direction)]="directionOrder">
+<table
+                    
+                    tuiTable
+                    [(direction)]="directionOrder"
+                >
                     <tbody></tbody>
                 </table>
             ",
