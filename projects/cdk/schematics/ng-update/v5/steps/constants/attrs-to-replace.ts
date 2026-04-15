@@ -134,4 +134,12 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         from: {attrName: 'new', withAttrsNames: ['tuiOption']},
         to: {attrName: ''},
     },
+    {
+        from: {attrName: '(directionOrderChange)', withTagNames: ['table']},
+        to: {attrName: '(directionChange)'},
+    },
+    {
+        from: {attrName: '[(directionOrder)]', withTagNames: ['table']},
+        to: {attrName: '[(direction)]'},
+    },
 ];

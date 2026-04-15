@@ -22,4 +22,8 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
         tags: ['*'],
         filterFn: (el) => hasElementAttribute(el, 'tuiCardLarge'),
     },
+    {
+        inputName: 'tuiDirectionOrder',
+        tags: ['table'],
+    },
 ];
