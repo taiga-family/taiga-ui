@@ -70,7 +70,7 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 
 ## Components
 
-- Each component should have its logic in `.ts`, styles in `.less` (or `.css`) and template in `.html`, unless
+- Each component should have its logic in `.ts`, styles in `.less` (or `.css`), and template in `.html`, unless
   explicitly agreed otherwise.
 - Define inputs with the new `input()` API when practical:
   ```ts
