@@ -21,7 +21,7 @@ describe('BarChart', () => {
             [4, 5, 6],
         ];
 
-        public max = NaN;
+        public max = Number.NaN;
         public readonly collapsed = signal(false);
     }
 

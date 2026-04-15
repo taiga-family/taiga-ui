@@ -50,4 +50,5 @@ export class TuiDocNumberFormat implements Record<
     public readonly precision = signal(TUI_DEFAULT_NUMBER_FORMAT.precision);
     public readonly decimalMode = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalMode);
     public readonly rounding = signal(TUI_DEFAULT_NUMBER_FORMAT.rounding);
+    public readonly negativePattern = signal(TUI_DEFAULT_NUMBER_FORMAT.negativePattern);
 }

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tui-loader migrates showLoader to [loading]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-loader
+                    [overlay]="true"
+                    [showLoader]="loading"
+                ></tui-loader>
+                <tui-loader showLoader="true"></tui-loader>
+                <tui-loader [showLoader]="true"></tui-loader>
+            ",
+  "1. After": "
+                <tui-loader
+                    [overlay]="true"
+                    [loading]="loading"
+                ></tui-loader>
+                <tui-loader loading="true"></tui-loader>
+                <tui-loader [loading]="true"></tui-loader>
+            ",
+}
+`;

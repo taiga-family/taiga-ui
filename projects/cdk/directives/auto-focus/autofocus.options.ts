@@ -19,7 +19,7 @@ export interface TuiAutofocusOptions {
 
 export const [TUI_AUTOFOCUS_OPTIONS, tuiAutoFocusOptionsProvider] =
     tuiCreateOptions<TuiAutofocusOptions>({
-        delay: NaN, // NaN = no delay/sync
+        delay: Number.NaN, // NaN = no delay/sync
         query: 'input, textarea, select, [contenteditable]',
         preventScroll: false,
     });

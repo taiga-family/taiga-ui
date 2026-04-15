@@ -6,7 +6,7 @@ test.describe('Deep / Toggle', () => {
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     deepPaths.forEach((path) =>
-        test(`${path}`, async ({page, browserName}) => {
+        test(path, async ({page, browserName}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 

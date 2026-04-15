@@ -172,7 +172,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         wrapper: HTMLElement,
         previous: boolean,
     ): void {
-        const button: HTMLButtonElement = event.target as HTMLButtonElement;
+        const button = event.target as HTMLButtonElement;
         const target = tuiGetClosestFocusable({initial: button, root: wrapper, previous});
 
         if (target) {

@@ -1,4 +1,4 @@
-export const ATTRS_IN_HOST_TO_REPLACE: Array<{from: string; to: string}> = [
+export const ATTRS_IN_HOST_TO_REPLACE = [
     {
         from: '(tuiPresentChange)',
         to: '(tuiPresent)',

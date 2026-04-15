@@ -93,7 +93,7 @@ export class TuiNumberMask {
     }
 
     private computeMask(params: MaskitoNumberParams): MaskitoOptions {
-        const {prefix = '', postfix = ''} = params;
+        const {prefix = '', postfix = '', negativePattern, minusSign} = params;
         const {plugins, ...options} = maskitoNumberOptionsGenerator(params);
 
         return {
@@ -101,7 +101,11 @@ export class TuiNumberMask {
             plugins: [
                 ...plugins,
                 maskitoCaretGuard((value) => [
-                    prefix.length,
+                    minusSign &&
+                    value.includes(minusSign) &&
+                    negativePattern === 'minusFirst'
+                        ? 0
+                        : prefix.length,
                     value.length - postfix.length,
                 ]),
             ],

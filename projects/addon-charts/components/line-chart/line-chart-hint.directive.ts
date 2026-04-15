@@ -60,7 +60,7 @@ export class TuiLineChartHint implements AfterViewInit {
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.charts().forEach((chart) => chart.onHovered(NaN));
+                this.charts().forEach((chart) => chart.onHovered(Number.NaN));
             });
     }
 

@@ -1,7 +1,36 @@
-import {hasElementAttribute} from '../../../../utils/templates/elements';
+import {
+    hasElementAttribute,
+    hasElementAttributeWithValue,
+} from '../../../../utils/templates/elements';
 import {type ReplacementAttributeValue} from '../../../interfaces';
 
+function hasNoHintContent(el: Parameters<typeof hasElementAttribute>[0]): boolean {
+    return !hasElementAttribute(el, 'tuiHintContent');
+}
+
 export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
+    {
+        attrNames: ['[pseudo]'],
+        newAttrName: '[style.text-decoration-style]',
+        valueReplacer: (value) =>
+            value === 'true' ? "'dashed'" : `${value} ? 'dashed' : null`,
+        withTagNames: ['a', 'button'],
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiLink') &&
+            el.attrs.find((attr) => attr.name === '[pseudo]')?.value !== 'false' &&
+            hasElementAttributeWithValue(el, 'appearance', ''),
+    },
+    {
+        attrNames: ['[pseudo]'],
+        newAttrName: '[style.text-decoration-line]',
+        valueReplacer: (value) =>
+            value === 'true' ? "'underline'" : `${value} ? 'underline' : null`,
+        withTagNames: ['a', 'button'],
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiLink') &&
+            el.attrs.find((attr) => attr.name === '[pseudo]')?.value !== 'false' &&
+            !hasElementAttributeWithValue(el, 'appearance', ''),
+    },
     {
         attrNames: ['size', '[size]'],
         newAttrName: '[style.--tui-thumb-size.rem]',
@@ -12,6 +41,7 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     },
     {
         attrNames: ['tuiHintDirection'],
+        filterFn: hasNoHintContent,
         valueReplacer: [
             {from: 'bottom-left', to: 'bottom-start'},
             {from: 'bottom-right', to: 'bottom-end'},
@@ -27,6 +57,7 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     },
     {
         attrNames: ['[tuiHintDirection]'],
+        filterFn: hasNoHintContent,
         valueReplacer: [
             {from: "'bottom-left'", to: "'bottom-start'"},
             {from: "'bottom-right'", to: "'bottom-end'"},
@@ -156,15 +187,26 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     },
     {
         attrNames: ['[appearance]'],
-        valueReplacer: (condition) => {
-            switch (condition) {
-                case "'error'":
-                    return "'negative'";
-                case "'success'":
-                    return "'positive'";
-                default:
-                    return `(${condition}) === 'success' ? 'positive' : (${condition}) === 'error' ? 'negative' : (${condition})`;
+        valueReplacer: [
+            {from: "'error'", to: "'negative'"},
+            {from: "'success'", to: "'positive'"},
+            {from: "'glass'", to: "'secondary-grayscale'"},
+        ],
+    },
+    {
+        attrNames: ['[directionOrder]'],
+        newAttrName: '[direction]',
+        withTagNames: ['table'],
+        valueReplacer: (value) => {
+            if (value === "'asc'") {
+                return '1';
             }
+
+            if (value === "'desc'") {
+                return '-1';
+            }
+
+            return value;
         },
     },
 ];

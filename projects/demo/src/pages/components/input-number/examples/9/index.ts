@@ -11,7 +11,7 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
     }
 
     public override toControlValue(value: number | null): number {
-        return value ?? NaN;
+        return value ?? Number.NaN;
     }
 }
 
@@ -23,5 +23,5 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
     providers: [tuiInputNumberOptionsProvider({valueTransformer: new NaNTransformer()})],
 })
 export default class Example {
-    protected value = NaN;
+    protected value = Number.NaN;
 }

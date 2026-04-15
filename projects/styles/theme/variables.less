@@ -8,7 +8,7 @@
     --tui-typography-family-display: 'Manrope', system-ui, sans-serif;
     --tui-font-offset: ~'0rem';
     // Heading
-    --tui-typography-heading-h1: bold calc(var(--tui-font-offset) + 3.125rem) / calc(50 / 56)
+    --tui-typography-heading-h1: bold calc(var(--tui-font-offset) + 3.125rem) / calc(56 / 50)
         var(--tui-typography-family-display);
     --tui-typography-heading-h2: bold calc(var(--tui-font-offset) + 2.75rem) / calc(48 / 44)
         var(--tui-typography-family-display);
@@ -58,10 +58,15 @@
     --tui-stroke-width: 0.125rem;
     --tui-duration: 0.3s;
     --tui-disabled-opacity: 0.56;
+    --tui-lh: 1.4em;
     // logical
     --tui-inline-start: left;
     --tui-inline-end: right;
     --tui-inline: 1;
+
+    @supports (font-size: 1lh) {
+        --tui-lh: 1lh;
+    }
 }
 
 [dir='rtl'] {

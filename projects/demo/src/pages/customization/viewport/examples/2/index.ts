@@ -1,7 +1,13 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiInjectElement, TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
+import {
+    tuiInjectElement,
+    TuiPortals,
+    TuiPortalService,
+    tuiProvide,
+    TuiVCR,
+} from '@taiga-ui/cdk';
 import {
     tuiAsViewport,
     TuiDropdown,
@@ -11,9 +17,10 @@ import {
 
 @Component({
     selector: 'portal-host',
+    imports: [TuiVCR],
     template: `
         <ng-content />
-        <ng-container #vcr />
+        <ng-container tuiVCR />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TuiPortalService, TuiPopupService), tuiAsViewport(PortalHost)],

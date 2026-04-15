@@ -200,7 +200,7 @@ export class TuiDropdownSelection
         ghost.style.left = tuiPx(left - hostRect.left);
         ghost.style.width = tuiPx(width);
         ghost.style.height = tuiPx(height);
-        ghost.textContent = CHAR_ZERO_WIDTH_SPACE + value + CHAR_NO_BREAK_SPACE;
+        ghost.textContent = `${CHAR_ZERO_WIDTH_SPACE}${value}${CHAR_NO_BREAK_SPACE}`;
 
         range.setStart(ghost.firstChild as Node, selectionStart || 0);
         range.setEnd(ghost.firstChild as Node, selectionEnd || 0);
@@ -239,8 +239,8 @@ export class TuiDropdownSelection
         const caret = range.getBoundingClientRect();
         const host = this.ghostHost.getBoundingClientRect();
         const styles = getComputedStyle(this.ghostHost);
-        const fontSize = parseFloat(styles.fontSize) || 16;
-        const lineHeight = parseFloat(styles.lineHeight) || fontSize * 1.2;
+        const fontSize = Number.parseFloat(styles.fontSize) || 16;
+        const lineHeight = Number.parseFloat(styles.lineHeight) || fontSize * 1.2;
         const visibleTop = Math.max(caret.top, host.top);
         const visibleBottom = Math.min(caret.bottom, host.bottom);
         const visibleHeight = Math.max(0, visibleBottom - visibleTop);

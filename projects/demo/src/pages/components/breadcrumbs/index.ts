@@ -26,6 +26,6 @@ export default class Example {
     ];
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-    protected size: TuiSizeL = this.options.size;
+    protected size = this.options.size;
     protected itemsLimit = this.options.itemsLimit;
 }

@@ -16,7 +16,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDate mobile dropdown', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.InputDate}`, {date});
+        await tuiGoto(page, DemoRoute.InputDate, {date});
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
@@ -40,7 +40,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDate mobile calendar', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.InputDate}`, {date});
+        await tuiGoto(page, DemoRoute.InputDate, {date});
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');

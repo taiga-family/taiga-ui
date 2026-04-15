@@ -49,10 +49,10 @@ export class TuiElasticStickyService extends Observable<number> {
                         )
                         .subscribe(subscriber);
 
-                    if (!subscription.closed) {
-                        subscription.add(teardown);
-                    } else {
+                    if (subscription.closed) {
                         teardown.unsubscribe();
+                    } else {
+                        subscription.add(teardown);
                     }
                 },
                 {injector: this.injector},

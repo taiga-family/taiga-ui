@@ -43,6 +43,11 @@
         }
     }
 
+    &[data-icon-start='font']::before,
+    &[data-icon-end='font']::after {
+        font-size: 1.5rem;
+    }
+
     &[data-size='xs'] {
         --t-size: var(--tui-height-xs);
         --t-radius: var(--tui-radius-xs);
@@ -73,6 +78,11 @@
         &:not([tuiIconButton][data-appearance='icon'], [tuiIconButton][data-appearance^='action'])::after {
             font-size: 1rem;
         }
+
+        &[data-icon-start='font']::before,
+        &[data-icon-end='font']::after {
+            font-size: 1rem;
+        }
     }
 
     &[data-size='m'] {
@@ -84,6 +94,11 @@
 
         font: var(--tui-typography-body-m);
         font-weight: bold;
+
+        &[data-icon-start='font']::before,
+        &[data-icon-end='font']::after {
+            font-size: 1.5rem;
+        }
     }
 
     &._loading {

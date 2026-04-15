@@ -37,7 +37,9 @@ import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
+import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migratePackages} from './steps/migrate-packages';
+import {migratePortals} from './steps/migrate-portals';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
@@ -62,10 +64,6 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => replaceFunctionParameters(FUNCTION_PARAMETERS_TO_REPLACE),
                 },
                 {
-                    name: 'showWarnings',
-                    step: () => showWarnings(context, MIGRATION_WARNINGS),
-                },
-                {
                     name: 'removeModules',
                     step: () => removeModules(options, MODULES_TO_REMOVE),
                 },
@@ -76,6 +74,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateBreakpointService',
                     step: () => migrateBreakpointService(tree, options),
+                },
+                {
+                    name: 'migratePortalService',
+                    step: () => migratePortals(tree, options),
                 },
                 {
                     name: 'migrateCloseable',
@@ -116,6 +118,14 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateDocI18nTokens',
                     step: () => migrateDocI18nTokens(tree, options),
+                },
+                {
+                    name: 'migrateI18nLanguageSignal',
+                    step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'showWarnings',
+                    step: () => showWarnings(context, MIGRATION_WARNINGS),
                 },
             ],
             timings,

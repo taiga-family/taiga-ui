@@ -39,7 +39,7 @@ export default class Example {
         src: 'https://tools.ietf.org/html/rfc675',
     };
 
-    protected removedFiles: TuiFileLike[] = [this.loadingFile as unknown as TuiFileLike];
+    protected removedFiles = [this.loadingFile as unknown as TuiFileLike];
     protected restoredFiles: TuiFileLike[] = [];
 
     protected removeLoading(): void {

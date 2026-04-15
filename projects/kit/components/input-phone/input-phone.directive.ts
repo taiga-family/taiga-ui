@@ -19,7 +19,7 @@ import {tuiCreatePhoneMaskExpression} from './utils/create-phone-mask-expression
 const MASK_SYMBOLS = /[ \-_()]/g;
 
 function isText(value: string): boolean {
-    return Number.isNaN(parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
+    return Number.isNaN(Number.parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
 }
 
 @Directive({

@@ -179,6 +179,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiPdfViewerService',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiPdfViewerService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
             name: 'TuiPdfViewerComponent',
             moduleSpecifier: '@taiga-ui/experimental',
         },
@@ -340,6 +350,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
             name: 'provideEventPlugins',
+            moduleSpecifier: '@taiga-ui/event-plugins',
+        },
+        to: {
+            name: 'provideTaiga',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'NG_EVENT_PLUGINS',
             moduleSpecifier: '@taiga-ui/event-plugins',
         },
         to: {
@@ -702,11 +722,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: [
             {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+            {
                 name: 'TuiPassword',
                 moduleSpecifier: '@taiga-ui/kit',
             },
             {
-                name: 'TuiTextfield',
+                name: 'TuiInput',
                 moduleSpecifier: '@taiga-ui/core',
             },
         ],
@@ -773,6 +797,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {
             name: 'TuiInputPhoneInternationalModule',
             moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputPhoneInternational',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputPhoneInternational',
+            moduleSpecifier: '@taiga-ui/experimental',
         },
         to: {
             name: 'TuiInputPhoneInternational',
@@ -861,6 +895,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiMobileCalendarDropdownNew',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileCalendarDropdown',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
@@ -881,12 +925,112 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiCarousel',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCarousel',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiOptionNew',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiOption',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'TUI_DOC_EXAMPLE_TEXTS',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
         to: {
             name: 'TUI_DOC_PREVIEW_TEXT',
             moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogService',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogService',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogContext',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogContext',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogOptions',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialog',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialog',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogComponent',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiDialogComponent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'tuiDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_DIALOG_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TUI_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TUI_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
 ];

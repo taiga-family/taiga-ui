@@ -14,7 +14,14 @@
         </div>
 
         <tui-doc-example
+            heading="Install Taiga UI"
             [content]="automatic"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            heading="Update to the latest version"
+            [content]="update"
             [preview]="false"
             [style.margin-block-end.rem]="2"
         />
@@ -95,15 +102,20 @@
             />
         }
     </ng-template>
-    <ng-template pageTab="Update">
-        <div>
-            Update
-            <strong>Taiga UI</strong>
-            packages to the latest version.
-        </div>
+    <ng-template pageTab="Config">
+        Taiga UI is configured with the
+        <code>provideTaiga</code>
+        helper that you add to your global providers. It accepts the following object:
 
         <tui-doc-example
-            [content]="update"
+            [content]="config"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            description="To keep your theme consistent, especially with SSR, add the following script to your index.html"
+            heading="Dark theme"
+            [content]="index"
             [preview]="false"
         />
     </ng-template>

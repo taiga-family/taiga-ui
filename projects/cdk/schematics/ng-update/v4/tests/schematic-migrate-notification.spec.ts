@@ -78,7 +78,7 @@ describe('ng-migrate', () => {
 
     describe('keeps untouched "size" attribute (if it is already exists)', () => {
         ['size="l"', '[size]="computedSize"'].forEach((sizeAttr) => {
-            it(`${sizeAttr}`, async () => {
+            it(sizeAttr, async () => {
                 const {template} = await runMigration({
                     component: COMPONENT_BEFORE,
                     template: `<button tuiNotification ${sizeAttr}>Text</button>`,
@@ -176,8 +176,7 @@ describe('ng-migrate', () => {
             });
 
             expect(template).toBe(
-                '<!-- TODO: (Taiga UI migration) "hasIcon" is deleted. Use icon="" to hide icon. Or pass TUI_NOTIFICATION_DEFAULT_OPTIONS["icon"] to show it again. Learn more: https://taiga-ui.dev/components/notification -->\n' +
-                    '<tui-notification size="m" [hasIcon]="complexCondition">Text</tui-notification>',
+                '<!-- TODO: (Taiga UI migration) "hasIcon" is deleted. Use icon="" to hide icon. Or pass TUI_NOTIFICATION_DEFAULT_OPTIONS["icon"] to show it again. Learn more: https://taiga-ui.dev/components/notification -->\n<tui-notification size="m" [hasIcon]="complexCondition">Text</tui-notification>',
             );
         });
     });

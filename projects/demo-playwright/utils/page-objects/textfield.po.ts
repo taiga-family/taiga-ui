@@ -1,7 +1,7 @@
 import {expect, type Locator} from '@playwright/test';
 
 export class TuiTextfieldPO {
-    public readonly textfield: Locator = this.host.locator('[tuiInput]');
+    public readonly textfield = this.host.locator('[tuiInput]');
     public readonly cleaner = this.host.locator('[tuiButtonX]');
 
     constructor(public readonly host: Locator) {}
@@ -14,12 +14,12 @@ export class TuiTextfieldPO {
             .evaluate((el) =>
                 globalThis.getComputedStyle(el).getPropertyValue('padding-right'),
             )
-            .then(parseInt);
+            .then(Number.parseInt);
         const iconWidth = await this.host
             .evaluate((el) =>
                 globalThis.getComputedStyle(el, '::after').getPropertyValue('width'),
             )
-            .then(parseInt);
+            .then(Number.parseInt);
 
         expect(box).not.toBeFalsy();
         expect(padding).not.toBeFalsy();

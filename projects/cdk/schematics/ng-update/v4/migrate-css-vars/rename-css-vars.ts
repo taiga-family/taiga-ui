@@ -36,7 +36,7 @@ export function renameCssVars(pattern = ALL_FILES): void {
         Object.entries(DEPRECATED_VARS)
             .sort(([prev], [next]) => (prev.length < next.length ? 1 : -1))
             .map(([from, to]) => ({
-                from: new RegExp(`${from}`, 'g'),
+                from: new RegExp(from, 'g'),
                 to,
             }))
             .forEach(({from}) => {
@@ -55,7 +55,7 @@ export function renameCssVars(pattern = ALL_FILES): void {
 
         Object.entries(DEPRECATED_NUMERIC_VARS)
             .map(([from, to]) => ({
-                from: new RegExp(`${from}`, 'g'),
+                from: new RegExp(from, 'g'),
                 to,
             }))
             .forEach(({from, to}) => {

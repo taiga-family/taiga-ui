@@ -14,6 +14,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'All values inside TuiDateMode are renamed: DMY -> dd/mm/yyyy, MDY -> mm/dd/yyyy, YMD -> yyyy/mm/dd',
     },
     {
+        name: 'TuiIdService',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk instead.\n// Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }\n// After:  import {tuiGenerateId} from "@taiga-ui/cdk"; const id = tuiGenerateId();',
+    },
+    {
         name: 'TuiScrollService',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
@@ -53,8 +59,13 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiStatus',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiStatus type has been removed. Replace with a plain string literal type: ' +
-            '"default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"',
+            'TuiStatus type has been removed. Replace with a plain string literal type: "default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"',
+    },
+    {
+        name: 'TuiTableDirectionOrder',
+        moduleSpecifier: '@taiga-ui/addon-table',
+        message:
+            'TuiTableDirectionOrder has been removed. Use [direction] and (directionChange) from TuiTableDirective. Update your types: TuiSortDirection (1 | -1) instead of "asc" | "desc"',
     },
     {
         name: 'TuiIsoToCountryCodePipe',
@@ -63,29 +74,89 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiIsoToCountryCodePipe has been removed. Replace pipe usage `isoCode | tuiIsoToCountryCode` with the getCountryCallingCode(isoCode, metadata) function from libphonenumber-js/core.',
     },
     {
-        name: 'TuiPopoverContext',
+        name: 'TuiPortalContext',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
-            'TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.\n' +
-            '// Before: injectContext<TuiPopoverContext<boolean>>()\n' +
-            '// After:  injectContext<TuiPortalContext<MyOptions, boolean>>()',
+            'TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.\n// Before: injectContext<TuiPopoverContext<boolean>>()\n// After:  injectContext<TuiPortalContext<MyOptions, boolean>>()',
     },
     {
-        name: 'TuiPopoverService',
+        name: 'TuiPortal',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
-            'TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).\n' +
-            '// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}\n' +
-            '// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }\n' +
-            '// See https://taiga-ui.dev/cdk/portal',
+            'TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).\n// Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}\n// After:  @Injectable({providedIn: "root"}) class MyService extends TuiPortal<T, K> { protected readonly component = MyComponent; protected readonly options = defaultOpts; constructor() { super(inject(TuiPopupService)); } }\n// See https://taiga-ui.dev/cdk/portal',
     },
     {
-        name: 'TuiPopoverDirective',
+        name: 'TuiPortalDirective',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
-            'TuiPopoverDirective → TuiPortalDirective: do not extend; use hostDirectives + tuiAsPortal() instead.\n' +
-            '// Before: @Directive({inputs:[...], outputs:[...], providers:[{provide:TuiPopoverService,useExisting:MyService}]}) class MyDirective<T> extends TuiPopoverDirective<T> {}\n' +
-            '// After:  @Directive({providers:[tuiAsPortal(MyService)], hostDirectives:[{directive:TuiPortalDirective,inputs:[...],outputs:[...]}]}) class MyDirective {}\n' +
-            '// See https://taiga-ui.dev/cdk/portal',
+            'TuiPopoverDirective → TuiPortalDirective: do not extend; use hostDirectives + tuiAsPortal() instead.\n// Before: @Directive({inputs:[...], outputs:[...], providers:[{provide:TuiPopoverService,useExisting:MyService}]}) class MyDirective<T> extends TuiPopoverDirective<T> {}\n// After:  @Directive({providers:[tuiAsPortal(MyService)], hostDirectives:[{directive:TuiPortalDirective,inputs:[...],outputs:[...]}]}) class MyDirective {}\n// See https://taiga-ui.dev/cdk/portal',
+    },
+    {
+        name: 'TUI_ARROW_MODE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_ARROW_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
+    {
+        name: 'TuiArrowMode',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiArrowMode has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
+    {
+        name: 'TUI_ARROW_DEFAULT_MODE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_ARROW_DEFAULT_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
+    {
+        name: 'tuiArrowModeProvider',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'tuiArrowModeProvider has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
+    },
+    ...[
+        'tuiParentAnimation',
+        'tuiParentStop',
+        'tuiHost',
+        'tuiHeightCollapse',
+        'tuiHeightCollapseList',
+        'tuiWidthCollapse',
+        'tuiWidthCollapseList',
+        'tuiCrossFade',
+        'tuiFadeIn',
+        'tuiFadeInList',
+        'tuiFadeInTop',
+        'tuiFadeInBottom',
+        'tuiDropdownAnimation',
+        'tuiScaleIn',
+        'tuiPop',
+        'tuiScaleInList',
+        'tuiSlideIn',
+        'tuiSlideInLeft',
+        'tuiSlideInLeftList',
+        'tuiSlideInRight',
+        'tuiSlideInRightList',
+        'tuiSlideInTop',
+        'tuiSlideInTopList',
+        'tuiSlideInBottom',
+        'tuiSlideInBottomList',
+        'TuiDurationOptions',
+    ].map((name) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/core',
+        message: `${name} has been removed. Angular animations are replaced with CSS animations + TuiAnimated directive from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated`,
+    })),
+    {
+        name: 'tuiProvideMobileCalendar',
+        moduleSpecifier: '@taiga-ui/addon-mobile',
+        message:
+            'tuiProvideMobileCalendar has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
+    },
+    {
+        name: 'TuiCarousel',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
     },
 ];

@@ -29,6 +29,7 @@ import {TuiTruncateService} from './truncate.service';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs: `tui-truncate-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -49,6 +50,7 @@ class Styles {}
     ],
     host: {
         tuiTruncate: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-lines]': 'lines()',
         '[attr.data-text]': 'truncated()',
         '[style.-webkit-line-clamp]': 'lines()',

@@ -110,8 +110,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         }
 
         return this.input()?.nativeElement.matches('[dir="rtl"] :scope')
-            ? filler.slice(0, filler.length - value.length) + value
-            : value + filler.slice(value.length);
+            ? `${filler.slice(0, filler.length - value.length)}${value}`
+            : `${value}${filler.slice(value.length)}`;
     });
 
     protected readonly showFiller = computed<boolean>(

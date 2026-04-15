@@ -91,6 +91,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: 'loading'},
     },
     {
+        from: {attrName: '[showLoader]', withTagNames: ['tui-loader']},
+        to: {attrName: '[loading]'},
+    },
+    {
         from: {attrName: 'tuiStepper', withTagNames: ['nav']},
         to: {attrName: ''},
     },
@@ -125,5 +129,17 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
     {
         from: {attrName: '(tuiPresentChange)', withTagNames: ['*']},
         to: {attrName: '(tuiPresent)'},
+    },
+    {
+        from: {attrName: 'new', withAttrsNames: ['tuiOption']},
+        to: {attrName: ''},
+    },
+    {
+        from: {attrName: '(directionOrderChange)', withTagNames: ['table']},
+        to: {attrName: '(directionChange)'},
+    },
+    {
+        from: {attrName: '[(directionOrder)]', withTagNames: ['table']},
+        to: {attrName: '[(direction)]'},
     },
 ];

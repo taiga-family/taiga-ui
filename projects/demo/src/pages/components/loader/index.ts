@@ -23,7 +23,7 @@ export default class Page {
         'Custom stroke width',
     ];
 
-    protected showLoader = true;
+    protected loading = true;
 
     protected inheritColor = false;
 
@@ -42,7 +42,7 @@ export default class Page {
 
     protected selectedTemplate = '';
 
-    protected readonly textVariants: string[] = ['', 'template', 'string'];
+    protected readonly textVariants = ['', 'template', 'string'];
 
     protected get template(): PolymorpheusContent {
         switch (this.selectedTemplate) {

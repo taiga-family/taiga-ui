@@ -14,14 +14,6 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/kit',
     },
     {
-        name: 'TUI_SLIDER_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-    },
-    {
-        name: 'tuiSliderOptionsProvider',
-        moduleSpecifier: '@taiga-ui/kit',
-    },
-    {
         name: 'TuiFallbackSrcPipe',
         moduleSpecifier: '@taiga-ui/core',
     },
@@ -32,5 +24,9 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
     {
         name: 'tuiProvideExperimentalHint',
         moduleSpecifier: '@taiga-ui/experimental',
+    },
+    {
+        name: 'TuiTextareaLimit',
+        moduleSpecifier: '@taiga-ui/kit',
     },
 ];

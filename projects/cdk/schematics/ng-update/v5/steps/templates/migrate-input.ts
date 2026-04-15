@@ -28,16 +28,19 @@ const CONTROL_ATTR_NAMES = [
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
-const TEXTFIELD_WRAPPER_ATTRS = new Set([
+const HINT_ATTRS = new Set([
     '[tuiHintAppearance]'.toLowerCase(),
     '[tuiHintContent]'.toLowerCase(),
     '[tuiHintDirection]'.toLowerCase(),
-    '[tuiTextfieldAppearance]'.toLowerCase(),
-    '[tuiTextfieldCleaner]'.toLowerCase(),
-    '[tuiTextfieldSize]'.toLowerCase(),
     'tuiHintAppearance'.toLowerCase(),
     'tuiHintContent'.toLowerCase(),
     'tuiHintDirection'.toLowerCase(),
+]);
+
+const TEXTFIELD_WRAPPER_ATTRS = new Set([
+    '[tuiTextfieldAppearance]'.toLowerCase(),
+    '[tuiTextfieldCleaner]'.toLowerCase(),
+    '[tuiTextfieldSize]'.toLowerCase(),
     'tuiTextfieldAppearance'.toLowerCase(),
     'tuiTextfieldCleaner'.toLowerCase(),
     'tuiTextfieldSize'.toLowerCase(),
@@ -78,6 +81,17 @@ function isDropdownAttr(nameLower: string): boolean {
     return stripped.startsWith(prefix);
 }
 
+function hasHintContent(element: Element): boolean {
+    return element.attrs.some((attr) => {
+        const lower = attr.name.toLowerCase();
+
+        return (
+            lower === 'tuiHintContent'.toLowerCase() ||
+            lower === '[tuiHintContent]'.toLowerCase()
+        );
+    });
+}
+
 export function migrateInput({
     resource,
     recorder,
@@ -92,7 +106,8 @@ export function migrateInput({
     const elements = findElementsByTagName(template, 'tui-input');
 
     const replacements = elements
-        .map((element) => buildReplacement(template, element))
+        .filter((element) => !hasHintContent(element))
+        .map((element) => buildTuiInputReplacement(template, element))
         .filter((x): x is {startOffset: number; endOffset: number; replacement: string} =>
             Boolean(x),
         )
@@ -102,6 +117,14 @@ export function migrateInput({
         recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         recorder.insertRight(templateOffset + startOffset, replacement);
     });
+}
+
+export function buildTuiInputReplacement(
+    template: string,
+    element: Element,
+    hintIconStr = '',
+): {startOffset: number; endOffset: number; replacement: string} | null {
+    return buildReplacement(template, element, hintIconStr);
 }
 
 function getOriginalAttrText(
@@ -133,6 +156,7 @@ interface MigrationContext {
 function buildReplacement(
     template: string,
     element: Element,
+    hintIconStr = '',
 ): {startOffset: number; endOffset: number; replacement: string} | null {
     const loc = element.sourceCodeLocation;
 
@@ -141,7 +165,7 @@ function buildReplacement(
     }
 
     const textfieldAttrs: string[] = [];
-    const inputAttrs: string[] = ['tuiInput'];
+    const inputAttrs = ['tuiInput'];
     const ctx: MigrationContext = {
         placeholder: '',
         labelOutsideValue: null,
@@ -197,6 +221,10 @@ function buildReplacement(
             continue;
         }
 
+        if (HINT_ATTRS.has(nameLower)) {
+            continue;
+        }
+
         if (CONTROL_ATTRS.has(nameLower)) {
             const original = getOriginalAttrText(template, element, nameLower);
 
@@ -230,10 +258,14 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
-    const innerContent = buildInnerContent(element, template, inputAttrs, {
+    const innerContent = buildInnerContent({
+        element,
+        template,
+        inputAttrs,
         placeholder: ctx.placeholder,
         indent,
         labelOutsideIsTrue: isLabelOutsideTrue,
+        hintIconStr,
     });
     const todoComment = buildTodoComment(ctx);
     // `indent` is added before <tui-textfield> only when there is a TODO — in that case
@@ -302,16 +334,23 @@ function buildTodoComment(ctx: MigrationContext): string {
     return `${lines.join('\n')}\n`;
 }
 
-function buildInnerContent(
-    element: Element,
-    template: string,
-    inputAttrs: string[],
-    {
-        placeholder,
-        indent,
-        labelOutsideIsTrue,
-    }: {indent: string; labelOutsideIsTrue: boolean; placeholder: string},
-): string {
+function buildInnerContent({
+    element,
+    template,
+    inputAttrs,
+    placeholder,
+    indent,
+    labelOutsideIsTrue,
+    hintIconStr,
+}: {
+    element: Element;
+    hintIconStr: string;
+    indent: string;
+    inputAttrs: string[];
+    labelOutsideIsTrue: boolean;
+    placeholder: string;
+    template: string;
+}): string {
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
             node.nodeName !== '#text' && node.nodeName !== '#comment',
@@ -323,14 +362,17 @@ function buildInnerContent(
             node.attrs.some((a) => LEGACY_INPUT_ATTRS.has(a.name.toLowerCase())),
     );
 
+    const hintIconLine = hintIconStr ? `${hintIconStr}\n` : '';
+
     if (legacyInnerInput) {
-        return migrateInnerInput(
-            legacyInnerInput,
+        return migrateInnerInput({
+            inner: legacyInnerInput,
             template,
-            inputAttrs,
-            childElements,
+            attrsToAdd: inputAttrs,
+            allChildren: childElements,
             indent,
-        );
+            hintIconLine,
+        });
     }
 
     const attrsStr = inputAttrs.length > 0 ? ` ${inputAttrs.join(' ')}` : '';
@@ -349,7 +391,7 @@ function buildInnerContent(
         // labelOutside=true: text → placeholder on <input>, no label inside
         const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
 
-        return `${indent}<input${placeholderAttr}${attrsStr} />\n${otherChildren}`;
+        return `${indent}<input${placeholderAttr}${attrsStr} />\n${otherChildren}${hintIconLine}`;
     }
 
     // labelOutside=false/absent: text → <label tuiLabel> inside (floating label)
@@ -357,20 +399,28 @@ function buildInnerContent(
         ? `${indent}<label tuiLabel>${placeholder}</label>\n`
         : '';
 
-    return `${labelEl}${indent}<input${attrsStr} />\n${otherChildren}`;
+    return `${labelEl}${indent}<input${attrsStr} />\n${otherChildren}${hintIconLine}`;
 }
 
 /**
  * Rewrites an existing <input tuiTextfieldLegacy> to <input tuiInput ...>
  * by replacing the legacy directive attr and appending form control attrs.
  */
-function migrateInnerInput(
-    inner: Element,
-    template: string,
-    attrsToAdd: string[],
-    allChildren: Element[],
-    indent: string,
-): string {
+function migrateInnerInput({
+    inner,
+    template,
+    attrsToAdd,
+    allChildren,
+    indent,
+    hintIconLine = '',
+}: {
+    allChildren: Element[];
+    attrsToAdd: string[];
+    hintIconLine?: string;
+    indent: string;
+    inner: Element;
+    template: string;
+}): string {
     const innerLoc = inner.sourceCodeLocation;
 
     if (!innerLoc?.startTag) {
@@ -402,8 +452,7 @@ function migrateInnerInput(
     const extraAttrs = attrsToAdd.filter((a) => a !== 'tuiInput').join(' ');
     const insertStr = extraAttrs ? ` ${extraAttrs}` : '';
 
-    startTag =
-        startTag.slice(0, closePos).trimEnd() + insertStr + startTag.slice(closePos);
+    startTag = `${startTag.slice(0, closePos).trimEnd()}${insertStr}${startTag.slice(closePos)}`;
 
     const siblings = allChildren
         .filter((c) => c !== inner)
@@ -414,7 +463,7 @@ function migrateInnerInput(
         })
         .join('');
 
-    return `${indent}${startTag}\n${siblings}`;
+    return `${indent}${startTag}\n${siblings}${hintIconLine}`;
 }
 
 /**

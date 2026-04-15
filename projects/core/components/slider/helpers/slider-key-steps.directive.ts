@@ -39,6 +39,7 @@ export class TuiSliderKeyStepsBase implements OnInit {
 
     protected readonly min = signal<number | undefined>(undefined);
     protected readonly max = signal<number | undefined>(undefined);
+
     protected readonly sync = effect(() => {
         const steps = this.keySteps();
 

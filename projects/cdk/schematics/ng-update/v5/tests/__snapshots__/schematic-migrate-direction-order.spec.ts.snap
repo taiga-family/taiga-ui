@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiTableDirectionOrder adds TODO comment for dynamic [directionOrder] binding: test.html 1`] = `
+{
+  "0. Before": "
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="myOrder"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder removed. Update types: TuiSortDirection (1 | -1) instead of "asc" | "desc" -->
+<table
+                    
+                    tuiTable
+                    [direction]="myOrder"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update TuiTableDirectionOrder adds TODO for TuiTableDirectionOrder import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTableDirectionOrder],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiTableDirectionOrder has been removed. Use [direction] and (directionChange) from TuiTableDirective. Update your types: TuiSortDirection (1 | -1) instead of "asc" | "desc"
+                import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTableDirectionOrder],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update TuiTableDirectionOrder migrates dynamic [directionOrder] binding and removes tuiDirectionOrder marker: test.html 1`] = `
+{
+  "0. Before": "
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="directionOrder"
+                    (directionOrderChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder removed. Update types: TuiSortDirection (1 | -1) instead of "asc" | "desc" -->
+<table
+                    
+                    tuiTable
+                    [direction]="directionOrder"
+                    (directionChange)="onOrderChange($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update TuiTableDirectionOrder migrates static [directionOrder] values to TuiSortDirection numbers: test.html 1`] = `
+{
+  "0. Before": "
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="'asc'"
+                >
+                    <tbody></tbody>
+                </table>
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [directionOrder]="'desc'"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder removed. Update types: TuiSortDirection (1 | -1) instead of "asc" | "desc" -->
+<table
+                    
+                    tuiTable
+                    [direction]="1"
+                >
+                    <tbody></tbody>
+                </table>
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder removed. Update types: TuiSortDirection (1 | -1) instead of "asc" | "desc" -->
+<table
+                    
+                    tuiTable
+                    [direction]="-1"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update TuiTableDirectionOrder migrates two-way [(directionOrder)] binding: test.html 1`] = `
+{
+  "0. Before": "
+                <table
+                    tuiDirectionOrder
+                    tuiTable
+                    [(directionOrder)]="directionOrder"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiDirectionOrder removed. Update types: TuiSortDirection (1 | -1) instead of "asc" | "desc" -->
+<table
+                    
+                    tuiTable
+                    [(direction)]="directionOrder"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;

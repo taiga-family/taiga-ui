@@ -111,7 +111,7 @@ export function migrateAvatar({
         recorder.insertRight(
             insertTo + templateOffset,
             ` [src]="${mainSrc}${fallbackSrc ? ` ${fallbackSrc}` : ''}"${
-                !roundedAttr ? ' [round]="false"' : ''
+                roundedAttr ? '' : ' [round]="false"'
             }${autoColorValue === 'true' ? ` [style.background]="${textAttrValue} | tuiAutoColor"` : ''}`,
         );
 

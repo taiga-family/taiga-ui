@@ -24,9 +24,9 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 export default class Example {
     protected readonly value = [40, 30, 20, 10];
 
-    protected activeItemIndex = NaN;
+    protected activeItemIndex = Number.NaN;
 
     public onTextfieldChange(value: number | null): void {
-        this.activeItemIndex = value ?? NaN;
+        this.activeItemIndex = value ?? Number.NaN;
     }
 }

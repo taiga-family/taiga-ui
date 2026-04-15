@@ -8,8 +8,19 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBadgeNotification, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly sizes = [
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'body-l',
+        'body-m',
+        'body-s',
+    ] as const;
+}

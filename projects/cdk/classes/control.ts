@@ -57,9 +57,9 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     public readonly disabled = computed(() => this.status() === 'DISABLED');
     public readonly interactive = computed(() => !this.disabled() && !this.readOnly());
     public readonly invalid = computed(() =>
-        this.pseudoInvalid() !== null
-            ? !!this.pseudoInvalid() && this.interactive()
-            : this.interactive() && this.touched() && this.status() === 'INVALID',
+        this.pseudoInvalid() === null
+            ? this.interactive() && this.touched() && this.status() === 'INVALID'
+            : !!this.pseudoInvalid() && this.interactive(),
     );
 
     public readonly mode = computed(() =>

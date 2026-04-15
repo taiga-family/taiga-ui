@@ -52,7 +52,15 @@ export async function tuiGoto(
         await tuiMockDate(page, date);
     }
 
-    await page.route('https://fonts.gstatic.com/**', async (route) =>
+    await page.route(
+        'https://fonts.gstatic.com/s/materialsymbolsoutlined/**',
+        async (route) =>
+            route.fulfill({
+                path: `${__dirname}/../stubs/material-symbols-outlined.woff2`,
+            }),
+    );
+
+    await page.route('https://fonts.gstatic.com/s/manrope/**', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
     );
 

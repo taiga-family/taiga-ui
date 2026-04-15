@@ -20,8 +20,8 @@ export class TuiTruncateService {
         const fontFamily = style.fontFamily || 'sans-serif';
         const fontSize = style.fontSize || '14px';
         const fontWeight = style.fontWeight || '400';
-        const paddingLeft = parseFloat(style.paddingLeft) || 0;
-        const paddingRight = parseFloat(style.paddingRight) || 0;
+        const paddingLeft = Number.parseFloat(style.paddingLeft) || 0;
+        const paddingRight = Number.parseFloat(style.paddingRight) || 0;
         const availableWidth = this.el.clientWidth - paddingLeft - paddingRight;
         const safeWidth = Math.max(1, availableWidth - 4);
 
@@ -84,7 +84,7 @@ export class TuiTruncateService {
             let chunk = '';
 
             for (const char of word) {
-                const nextChunk = chunk + char;
+                const nextChunk = `${chunk}${char}`;
 
                 if (this.ctx.measureText(nextChunk).width <= maxWidth) {
                     chunk = nextChunk;

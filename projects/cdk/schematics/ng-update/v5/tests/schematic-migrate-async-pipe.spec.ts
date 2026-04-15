@@ -80,8 +80,21 @@ describe('ng-update remove | async from signal-based pipes', () => {
     );
 
     it(
+        'should migrate complex example tuiAmount pipe',
+        migrate({
+            template:
+                '<span class="colorPositive">{{ (item.time / 80) * item.price | tuiAmount : "RUB" : "end" | async }}</span>',
+        }),
+    );
+
+    it(
         'should not touch pipes without | async',
         migrate({template: '{{ 10728.9 | tuiAmount }}'}),
+    );
+
+    it(
+        'should remove | async after tuiSortCountries',
+        migrate({template: '{{ countries | tuiSortCountries | async }}'}),
     );
 
     afterEach(() => resetActiveProject());

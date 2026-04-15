@@ -27,17 +27,7 @@ aside[tuiNavigationAside]:where(*&) {
         border-top-left-radius: 1.25rem;
         box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
         transform: scaleX(var(--tui-inline));
-    }
-
-    &::after {
-        content: '';
-        position: fixed;
-        z-index: -1;
-        inset-block-start: inherit;
-        inset-block-end: -3rem;
-        inset-inline-start: 0;
-        inline-size: 3rem;
-        background: inherit;
+        clip-path: inset(0);
     }
 
     &._expanded {

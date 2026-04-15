@@ -33,9 +33,10 @@ exports[`ng-update legacy textarea keeps tuiTextfieldCleaner and tuiHintContent 
      - Text content "Label" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.
      - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
 -->
-                <tui-textfield tuiHintContent="Hint text" tuiHintDirection="bottom-end" [tuiTextfieldCleaner]="true">
+                <tui-textfield [tuiTextfieldCleaner]="true">
                 <label tuiLabel>Label</label>
                 <textarea tuiTextarea formControlName="value"></textarea>
+<tui-icon tuiTooltip="Hint text" tuiHintDirection="bottom-end" />
                 </tui-textfield>
             ",
 }

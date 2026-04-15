@@ -7,7 +7,7 @@ export interface TuiVersionMeta {
     title: string;
 }
 
-export const TUI_CURRENT_MAJOR_VERSION = parseInt(TUI_VERSION, 10);
+export const TUI_CURRENT_MAJOR_VERSION = Number.parseInt(TUI_VERSION, 10);
 
 export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {

@@ -34,8 +34,8 @@ export class TuiDocDropdown {
 
     public readonly hiddenOptions = input<Array<string | keyof TuiDropdownOptions>>([]);
 
-    public align: TuiDropdownAlign = this.options.align;
-    public direction: TuiVerticalDirection | null = this.options.direction;
+    public align = this.options.align;
+    public direction = this.options.direction;
     public minHeight = this.options.minHeight;
     public maxHeight = this.options.maxHeight;
     public offset = this.options.offset;

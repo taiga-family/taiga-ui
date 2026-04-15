@@ -23,7 +23,7 @@ const DEFAULT_PRECISION = 2;
 export class TuiAmountPipe implements PipeTransform {
     private readonly options = inject(TUI_AMOUNT_OPTIONS);
     private readonly format = inject(TUI_NUMBER_FORMAT);
-    private readonly value = signal(NaN);
+    private readonly value = signal(Number.NaN);
     private readonly currency = signal(this.options.currency);
     private readonly currencyAlign = signal(this.options.currencyAlign);
     private readonly sign = signal(this.options.sign);

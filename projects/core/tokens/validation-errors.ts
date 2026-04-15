@@ -1,10 +1,14 @@
 import {InjectionToken, type Provider, type Signal} from '@angular/core';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/di';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-export const TUI_VALIDATION_ERRORS = new InjectionToken<
-    Record<string, PolymorpheusContent | Signal<PolymorpheusContent>>
->(ngDevMode ? 'TUI_VALIDATION_ERRORS' : '', {factory: () => ({})});
+type ValidationValue = Record<string, PolymorpheusContent | Signal<PolymorpheusContent>>;
+
+export const TUI_VALIDATION_ERRORS = new InjectionToken<ValidationValue>(
+    ngDevMode ? 'TUI_VALIDATION_ERRORS' : '',
+    {factory: () => ({})},
+);
 
 export const tuiValidationErrorsProvider = (
-    useValue: Record<string, PolymorpheusContent | Signal<PolymorpheusContent>>,
-): Provider => ({provide: TUI_VALIDATION_ERRORS, useValue});
+    valueOrFactory: ValidationValue | (() => ValidationValue),
+): Provider => tuiProvideOptions(TUI_VALIDATION_ERRORS, valueOrFactory, {});

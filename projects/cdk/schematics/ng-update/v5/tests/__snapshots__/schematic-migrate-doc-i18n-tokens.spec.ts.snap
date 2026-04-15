@@ -15,7 +15,7 @@ exports[`ng-update migrateDocI18nTokens adds signal import from @angular/core wh
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component, signal } from '@angular/core';
+                import { Component, signal } from '@angular/core';
                 import {TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
@@ -73,42 +73,13 @@ exports[`ng-update migrateDocI18nTokens wraps array useValue with signal() for T
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component, signal } from '@angular/core';
+                import { Component, signal } from '@angular/core';
                 import {TUI_DOC_DEMO_TEXTS} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
                     providers: [
                         {provide: TUI_DOC_DEMO_TEXTS, useValue: signal(['Night', 'BG', 'Val'])},
-                    ],
-                })
-                export class TestComponent {}
-            ",
-}
-`;
-
-exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal() for TUI_DOC_PREVIEW_TEXT: test.ts 1`] = `
-{
-  "0. Before": "
-                import {Component} from '@angular/core';
-                import {TUI_DOC_PREVIEW_TEXT} from '@taiga-ui/addon-doc';
-
-                @Component({
-                    standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_PREVIEW_TEXT, useValue: 'Preview'},
-                    ],
-                })
-                export class TestComponent {}
-            ",
-  "1. After": "
-                import {Component, signal } from '@angular/core';
-                import {TUI_DOC_PREVIEW_TEXT} from '@taiga-ui/addon-doc';
-
-                @Component({
-                    standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_PREVIEW_TEXT, useValue: signal('Preview')},
                     ],
                 })
                 export class TestComponent {}
@@ -131,13 +102,42 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component, signal } from '@angular/core';
+                import { Component, signal } from '@angular/core';
                 import {TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
                     providers: [
                         {provide: TUI_DOC_MENU_TEXT, useValue: signal('Navigation')},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal() for TUI_DOC_PREVIEW_TEXT: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_DOC_PREVIEW_TEXT} from '@taiga-ui/addon-doc';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DOC_PREVIEW_TEXT, useValue: 'Preview'},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import { Component, signal } from '@angular/core';
+                import {TUI_DOC_PREVIEW_TEXT} from '@taiga-ui/addon-doc';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DOC_PREVIEW_TEXT, useValue: signal('Preview')},
                     ],
                 })
                 export class TestComponent {}
@@ -160,7 +160,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component, signal } from '@angular/core';
+                import { Component, signal } from '@angular/core';
                 import {TUI_DOC_SEARCH_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
@@ -189,7 +189,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component, signal } from '@angular/core';
+                import { Component, signal } from '@angular/core';
                 import {TUI_DOC_SEE_ALSO_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
@@ -218,7 +218,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component, signal } from '@angular/core';
+                import { Component, signal } from '@angular/core';
                 import {TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
@@ -247,7 +247,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component, signal } from '@angular/core';
+                import { Component, signal } from '@angular/core';
                 import {TUI_DOC_TOC_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({

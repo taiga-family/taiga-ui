@@ -17,7 +17,7 @@ export default class Example {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
 
-    protected index = NaN;
+    protected index = Number.NaN;
 
     protected get sum(): number {
         return (Number.isNaN(this.index) ? this.total : this.value[this.index]) ?? 0;

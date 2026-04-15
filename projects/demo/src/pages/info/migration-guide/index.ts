@@ -25,7 +25,7 @@ import {TuiAccordionTarget} from './target';
     changeDetection,
 })
 export default class Page {
-    protected tuiMajor = parseInt(TUI_VERSION);
+    protected tuiMajor = Number.parseInt(TUI_VERSION);
 
     protected readonly routes = DemoRoute;
 

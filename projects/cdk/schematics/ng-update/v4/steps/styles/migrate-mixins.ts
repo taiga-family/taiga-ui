@@ -17,7 +17,9 @@ export function migrateMixins(fileContent: string): string {
         return file.replaceAll(
             MIXIN_RE,
             (_, mixinName: keyof typeof MAPPING, important = '') =>
-                `${MAPPING[mixinName].map((newValue) => `${newValue}${important};`).join('\n')}`,
+                MAPPING[mixinName]
+                    .map((newValue) => `${newValue}${important};`)
+                    .join('\n'),
         );
     }, fileContent);
 }

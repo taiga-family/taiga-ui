@@ -10,7 +10,12 @@ import {TuiAsideComponent} from './aside.component';
 @Directive({
     selector: '[tuiHintAside]',
     providers: [tuiHintOptionsProvider({direction: 'end'})],
-    hostDirectives: [TuiHintDirective],
+    hostDirectives: [
+        {
+            directive: TuiHintDirective,
+            inputs: ['tuiHintAppearance'],
+        },
+    ],
 })
 export class TuiHintAsideDirective {
     private readonly el = tuiInjectElement();

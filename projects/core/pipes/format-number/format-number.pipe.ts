@@ -15,7 +15,7 @@ import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 })
 export class TuiFormatNumberPipe implements PipeTransform {
     private readonly format = inject(TUI_NUMBER_FORMAT);
-    private readonly value = signal(NaN);
+    private readonly value = signal(Number.NaN);
     private readonly settings = signal<Partial<TuiNumberFormatSettings>>({});
     private readonly formatted = computed(() =>
         tuiFormatNumber(this.value(), {

@@ -1,8 +1,6 @@
-import {inject, InjectionToken, type Signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk/tokens';
-import {distinctUntilChanged, map} from 'rxjs';
+import {computed, inject, InjectionToken, type Signal} from '@angular/core';
+import {WA_WINDOW} from '@ng-web-apis/common';
+import {tuiWindowSize} from '@taiga-ui/cdk/utils/dom';
 
 import {TUI_MEDIA, type TuiMedia} from './media';
 
@@ -12,6 +10,7 @@ export const TUI_BREAKPOINT = new InjectionToken<Signal<TuiBreakpointMediaKey>>(
     ngDevMode ? 'TUI_BREAKPOINT' : '',
     {
         factory: () => {
+            const size = tuiWindowSize(inject(WA_WINDOW));
             const media = inject(TUI_MEDIA);
             const sorted: number[] = Object.values(media).sort((a, b) => a - b);
             const invert: Record<number, TuiBreakpointMediaKey> = Object.keys(
@@ -24,17 +23,13 @@ export const TUI_BREAKPOINT = new InjectionToken<Signal<TuiBreakpointMediaKey>>(
                 {},
             );
 
-            const stream$ = inject(TUI_WINDOW_SIZE).pipe(
-                map(({width}) => sorted.find((size) => size > width)),
-                map(
-                    (key) =>
-                        invert[key || sorted[sorted.length - 1] || 0] ?? 'desktopLarge',
-                ),
-                distinctUntilChanged(),
-                tuiZoneOptimized(),
-            );
+            return computed(() => {
+                const {width} = size();
+                const key = sorted.find((size) => size > width);
+                const index = key || sorted[sorted.length - 1] || 0;
 
-            return toSignal(stream$, {initialValue: 'desktopLarge'});
+                return invert[index] ?? 'desktopLarge';
+            });
         },
     },
 );

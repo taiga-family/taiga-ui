@@ -1,4 +1,3 @@
-/* eslint-disable no-bitwise */
 export function tuiContainsOrAfter(current: Node, node: Node): boolean {
     try {
         return (

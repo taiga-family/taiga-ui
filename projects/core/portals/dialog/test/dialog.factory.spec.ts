@@ -11,7 +11,7 @@ const tuiDialogMock: typeof tuiDialog = jest.fn(() => jest.fn(() => EMPTY));
     const dialog = tuiDialogMock(TestComponent);
 
     dialog().subscribe((_value: void) => {});
-    dialog(undefined).subscribe((_value: void) => {});
+    dialog().subscribe((_value: void) => {});
     // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `void`
     dialog('test').subscribe((_value: void) => {});
     // @ts-expect-error TS2769: Type `void` is not assignable to type `string`

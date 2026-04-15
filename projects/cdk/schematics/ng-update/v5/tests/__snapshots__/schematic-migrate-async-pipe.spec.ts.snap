@@ -41,6 +41,13 @@ exports[`ng-update remove | async from signal-based pipes should handle pipe ins
 }
 `;
 
+exports[`ng-update remove | async from signal-based pipes should migrate complex example tuiAmount pipe: test.html 1`] = `
+{
+  "0. Before": "<span class="colorPositive">{{ (item.time / 80) * item.price | tuiAmount : "RUB" : "end" | async }}</span>",
+  "1. After": "<span class="colorPositive">{{ (item.time / 80) * item.price | tuiAmount : "RUB" : "end" }}</span>",
+}
+`;
+
 exports[`ng-update remove | async from signal-based pipes should remove | async after tuiAmount with currency argument: test.html 1`] = `
 {
   "0. Before": "{{ 10728.9 | tuiAmount: 'RUB' | async }}",
@@ -80,5 +87,12 @@ exports[`ng-update remove | async from signal-based pipes should remove | async 
 {
   "0. Before": "{{ 10500.33 | tuiFormatNumber | async }}",
   "1. After": "{{ 10500.33 | tuiFormatNumber }}",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes should remove | async after tuiSortCountries: test.html 1`] = `
+{
+  "0. Before": "{{ countries | tuiSortCountries | async }}",
+  "1. After": "{{ countries | tuiSortCountries }}",
 }
 `;

@@ -74,7 +74,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
                         filter(({relatedTarget}) =>
                             this.notInDropdown(relatedTarget, index),
                         ),
-                        map(({type}) => (type === 'focus' ? index : NaN)),
+                        map(({type}) => (type === 'focus' ? index : Number.NaN)),
                     ),
                 ),
             ),
