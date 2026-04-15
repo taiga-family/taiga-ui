@@ -39,7 +39,7 @@ tui-notification,
     border-inline-start: var(--t-start) solid transparent;
     border-inline-end: var(--t-end) solid transparent;
 
-    --t-offset: calc((var(--t-height) - var(--tui-lh)) / 2);
+    --t-offset: calc((var(--t-height) - 1.4em) / 2);
     --t-height: var(--tui-height-l);
     --t-start: 0;
     --t-end: 0;
@@ -54,7 +54,7 @@ tui-notification,
 
     &::before {
         position: absolute;
-        top: calc(var(--t-offset) + var(--tui-lh));
+        top: calc(var(--t-offset) + 1.4em);
         left: -1rem;
         inset-inline-start: -1rem;
         transform: translateY(-100%);
