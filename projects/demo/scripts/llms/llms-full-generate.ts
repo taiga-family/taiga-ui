@@ -388,6 +388,26 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
     return output;
 }
 
+async function collectMigrationGuide(config: AppConfig): Promise<string | null> {
+    const headerSectionsPath = path.resolve(
+        process.cwd(),
+        config.constants.headerSectionsPath,
+    );
+    const migrationGuidePath = path.join(headerSectionsPath, 'migration-guide.md');
+
+    try {
+        const content = await fs.readFile(migrationGuidePath, 'utf-8');
+
+        console.info('  ✓ Added migration guide at end of file');
+
+        return content;
+    } catch (error) {
+        console.warn(`  ⚠ Could not load migration guide: ${error}`);
+
+        return null;
+    }
+}
+
 async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]> {
     const output: string[] = [];
     let hasMarkdownContent = false;
@@ -588,6 +608,12 @@ async function main(): Promise<void> {
 
     if (getConfigValue(config.llmsFull.includeMarkdownFiles)) {
         output.push(...(await collectMarkdownSections(cliOptions)));
+    }
+
+    const migrationGuide = await collectMigrationGuide(config);
+
+    if (migrationGuide) {
+        output.push(migrationGuide);
     }
 
     const collectedFolders: string[] = [];
