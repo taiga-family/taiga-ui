@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update legacy select handles dynamic [tuiTextfieldLabelOutside] expression: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="computedValue"
+                >
+                    Choose an option
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<!-- TODO: (Taiga UI migration) [tuiTextfieldLabelOutside] is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or input[placeholder] for outside label -->
+                <tui-textfield tuiChevron
+                >
+                    Choose an option
+                    
+<input tuiSelect [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update legacy select migrates TuiSelectModule import and tui-select template: test.html 1`] = `
 {
   "0. Before": "
@@ -59,8 +90,10 @@ exports[`ng-update legacy select migrates complex tui-select template with legac
 <tui-textfield tuiChevron
                     tuiTextfieldSize="s"
                 >
+<label tuiLabel>
                     Character
-                    <input [formControl]="testValue"
+                    </label>
+<input [formControl]="testValue"
                         placeholder="Choose your hero"
                         tuiSelect
                     />
@@ -87,7 +120,11 @@ exports[`ng-update legacy select moves [(ngModel)] to generated input when input
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
 <tui-textfield tuiChevron>
-<input placeholder="Choose an option" tuiSelect [(ngModel)]="value" />
+<label tuiLabel>
+                    Choose an option
+                    </label>
+
+<input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper
                         *tuiDropdown
                         [items]="items"
@@ -152,6 +189,38 @@ exports[`ng-update legacy select renames valueContent to content, removes labelO
                   templateUrl: './test.html',
                 })
                 export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update legacy select wraps text in label when [tuiTextfieldLabelOutside] is false: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="false"
+                >
+                    Choose an option
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                >
+<label tuiLabel>
+                    Choose an option
+                    </label>
+
+<input tuiSelect [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
             ",
 }
 `;

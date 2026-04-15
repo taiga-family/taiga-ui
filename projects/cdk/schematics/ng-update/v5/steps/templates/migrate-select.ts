@@ -62,6 +62,21 @@ export function migrateSelect({
             `[${CONTENT_ATTR}]`,
         );
         renameAttr(recorder, templateOffset, element, VALUE_CONTENT_ATTR, CONTENT_ATTR);
+        const labelOutsideAttr = element.attrs.find(
+            (attr) =>
+                attr.name.toLowerCase() ===
+                    `[${TEXTFIELD_LABEL_OUTSIDE_ATTR}]`.toLowerCase() ||
+                attr.name.toLowerCase() === TEXTFIELD_LABEL_OUTSIDE_ATTR.toLowerCase(),
+        );
+        const isBinding = labelOutsideAttr?.name.startsWith('[') ?? false;
+        const isLabelOutsideTrue =
+            labelOutsideAttr?.value === 'true' ||
+            (!!labelOutsideAttr && !isBinding && labelOutsideAttr.value === '');
+        const isLabelOutsideDynamic =
+            !!labelOutsideAttr &&
+            !isLabelOutsideTrue &&
+            labelOutsideAttr.value !== 'false';
+
         removeAttr(
             recorder,
             templateOffset,
@@ -94,12 +109,13 @@ export function migrateSelect({
             hasChevron ? [] : ['tuiChevron'],
         );
 
+        const placeholder = getPlaceholderText(element);
+
         const inputs = element.childNodes.filter(
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
         if (!inputs.length) {
-            const placeholder = getPlaceholderText(element);
             const formAttrs = formatControlAttrs(controlAttrs);
             const firstElementChildOffset = element.childNodes.find(
                 (node): node is Element => node.nodeName !== '#text',
@@ -108,38 +124,69 @@ export function migrateSelect({
                 firstElementChildOffset ??
                 element.sourceCodeLocation?.endTag?.startOffset ??
                 0;
-            const inputTemplate = `\n<input${placeholder ? ` placeholder="${placeholder}"` : ''} tuiSelect${formAttrs ? ` ${formAttrs}` : ''} />\n`;
+            const placeholderAttr =
+                isLabelOutsideTrue && placeholder ? ` placeholder="${placeholder}"` : '';
+            const inputTemplate = `\n<input${placeholderAttr} tuiSelect${formAttrs ? ` ${formAttrs}` : ''} />\n`;
 
-            removeTextContent(recorder, templateOffset, element);
-            recorder.insertRight(templateOffset + insertOffset, inputTemplate);
-
-            return;
-        }
-
-        inputs.forEach((input) => {
-            input.attrs.forEach((attr) => {
-                if (!/^tuitextfieldlegacy$|^tuitextfield$/i.test(attr.name)) {
-                    return;
-                }
-
-                const {startOffset = 0, endOffset = 0} =
-                    input.sourceCodeLocation?.attrs?.[attr.name] ?? {};
-
-                recorder.remove(templateOffset + startOffset, endOffset - startOffset);
-                recorder.insertRight(templateOffset + startOffset, 'tuiSelect');
-            });
-
-            const formAttrs = formatControlAttrs(controlAttrs);
-
-            if (!formAttrs) {
-                return;
+            if (isLabelOutsideTrue) {
+                removeTextContent(recorder, templateOffset, element);
+            } else if (!isLabelOutsideDynamic) {
+                wrapTextInLabel(recorder, templateOffset, element);
             }
 
-            const insertOffset =
-                (input.sourceCodeLocation?.startTag?.startOffset ?? 0) + '<input'.length;
+            recorder.insertRight(templateOffset + insertOffset, inputTemplate);
+        } else {
+            if (isLabelOutsideTrue && placeholder) {
+                removeTextContent(recorder, templateOffset, element);
+            } else if (!isLabelOutsideDynamic && !isLabelOutsideTrue) {
+                wrapTextInLabel(recorder, templateOffset, element);
+            }
 
-            recorder.insertRight(templateOffset + insertOffset, ` ${formAttrs}`);
-        });
+            inputs.forEach((input) => {
+                input.attrs.forEach((attr) => {
+                    if (!/^tuitextfieldlegacy$|^tuitextfield$/i.test(attr.name)) {
+                        return;
+                    }
+
+                    const {startOffset = 0, endOffset = 0} =
+                        input.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+
+                    recorder.remove(
+                        templateOffset + startOffset,
+                        endOffset - startOffset,
+                    );
+                    recorder.insertRight(templateOffset + startOffset, 'tuiSelect');
+                });
+
+                const formAttrs = formatControlAttrs(controlAttrs);
+                const placeholderAttr =
+                    isLabelOutsideTrue && placeholder
+                        ? ` placeholder="${placeholder}"`
+                        : '';
+
+                const insertOffset =
+                    (input.sourceCodeLocation?.startTag?.startOffset ?? 0) +
+                    '<input'.length;
+
+                if (formAttrs || placeholderAttr) {
+                    recorder.insertRight(
+                        templateOffset + insertOffset,
+                        `${placeholderAttr}${formAttrs ? ` ${formAttrs}` : ''}`,
+                    );
+                }
+            });
+        }
+
+        if (isLabelOutsideDynamic && typeof startOffset === 'number') {
+            const lineStart = template.lastIndexOf('\n', startOffset - 1) + 1;
+            const indent =
+                /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
+
+            recorder.insertRight(
+                templateOffset + startOffset,
+                `<!-- ${TODO_MARK} [tuiTextfieldLabelOutside] is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or input[placeholder] for outside label -->\n${indent}`,
+            );
+        }
     });
 }
 
@@ -247,6 +294,26 @@ function normalizeAttrName(name: string): string {
         default:
             return name;
     }
+}
+
+function wrapTextInLabel(
+    recorder: UpdateRecorder,
+    templateOffset: number,
+    element: Element,
+): void {
+    const textNode = element.childNodes.find(
+        (node): node is TextNode => isTextNode(node) && !!node.value.trim(),
+    );
+
+    if (!textNode) {
+        return;
+    }
+
+    const start = (textNode.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+    const end = (textNode.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
+
+    recorder.insertRight(start, '\n<label tuiLabel>');
+    recorder.insertRight(end, '</label>\n');
 }
 
 function isTextNode(node: ChildNode): node is TextNode {

@@ -90,9 +90,9 @@ exports[`ng-update hint on legacy controls different legacy controls migrates tu
                     >
 <label tuiLabel>
                         Label
-                        </label>
-
+                        
 <input tuiComboBox [(ngModel)]="value" />
+</label>
 <tui-data-list-wrapper
                             *tuiDropdown
                             [items]="items | tuiFilterByInput"
@@ -448,7 +448,11 @@ exports[`ng-update hint on legacy controls different legacy controls migrates tu
                     <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
 <tui-textfield tuiChevron
                     >
-<input placeholder="Select user" tuiSelect [(ngModel)]="value" />
+<label tuiLabel>
+                        Select user
+                        </label>
+
+<input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper
                             *tuiDropdown
                             [items]="items"
