@@ -115,27 +115,7 @@ export function migrateSelect({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        if (!inputs.length) {
-            const formAttrs = formatControlAttrs(controlAttrs);
-            const firstElementChildOffset = element.childNodes.find(
-                (node): node is Element => node.nodeName !== '#text',
-            )?.sourceCodeLocation?.startOffset;
-            const insertOffset =
-                firstElementChildOffset ??
-                element.sourceCodeLocation?.endTag?.startOffset ??
-                0;
-            const placeholderAttr =
-                isLabelOutsideTrue && placeholder ? ` placeholder="${placeholder}"` : '';
-            const inputTemplate = `\n<input${placeholderAttr} tuiSelect${formAttrs ? ` ${formAttrs}` : ''} />\n`;
-
-            if (isLabelOutsideTrue) {
-                removeTextContent(recorder, templateOffset, element);
-            } else if (!isLabelOutsideDynamic) {
-                wrapTextInLabel(recorder, templateOffset, element);
-            }
-
-            recorder.insertRight(templateOffset + insertOffset, inputTemplate);
-        } else {
+        if (inputs.length) {
             if (isLabelOutsideTrue && placeholder) {
                 removeTextContent(recorder, templateOffset, element);
             } else if (!isLabelOutsideDynamic && !isLabelOutsideTrue) {
@@ -175,6 +155,26 @@ export function migrateSelect({
                     );
                 }
             });
+        } else {
+            const formAttrs = formatControlAttrs(controlAttrs);
+            const firstElementChildOffset = element.childNodes.find(
+                (node): node is Element => node.nodeName !== '#text',
+            )?.sourceCodeLocation?.startOffset;
+            const insertOffset =
+                firstElementChildOffset ??
+                element.sourceCodeLocation?.endTag?.startOffset ??
+                0;
+            const placeholderAttr =
+                isLabelOutsideTrue && placeholder ? ` placeholder="${placeholder}"` : '';
+            const inputTemplate = `\n<input${placeholderAttr} tuiSelect${formAttrs ? ` ${formAttrs}` : ''} />\n`;
+
+            if (isLabelOutsideTrue) {
+                removeTextContent(recorder, templateOffset, element);
+            } else if (!isLabelOutsideDynamic) {
+                wrapTextInLabel(recorder, templateOffset, element);
+            }
+
+            recorder.insertRight(templateOffset + insertOffset, inputTemplate);
         }
 
         if (isLabelOutsideDynamic && typeof startOffset === 'number') {
