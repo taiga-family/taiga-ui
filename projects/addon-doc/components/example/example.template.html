@@ -66,7 +66,7 @@
                                 tuiButton
                                 type="button"
                             >
-                                Edit on {{ codeEditor!.name }}
+                                Edit on {{ codeEditor?.name }}
                             </button>
                         }
                     </tui-loader>
@@ -97,7 +97,7 @@
                         <ng-container *ngComponentOutlet="component() | async" />
                     </section>
                 }
-                @let code = processor()[tabs[$index] || 0] || '';
+                @let code = processor()[tabs[$index] ?? 0] || '';
                 <tui-doc-code
                     [code]="code"
                     [style.display]="activeItemIndex === $index && ($index || !preview()) ? 'block' : 'none'"
