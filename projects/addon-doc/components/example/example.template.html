@@ -97,7 +97,7 @@
                         <ng-container *ngComponentOutlet="component() | async" />
                     </section>
                 }
-                @let code = processor()[tabs[$index] ?? 0] || '';
+                @let code = processor()[tab] || '';
                 <tui-doc-code
                     [code]="code"
                     [style.display]="activeItemIndex === $index && ($index || !preview()) ? 'block' : 'none'"
