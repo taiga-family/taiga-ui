@@ -87,6 +87,7 @@ export function tuiValue(
              * revert to the previous position
              */
             element.value = v;
+
             try {
                 element.setSelectionRange(selectionStart, selectionEnd);
             } catch {
