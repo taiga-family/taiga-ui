@@ -365,6 +365,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'provideTaiga',
             moduleSpecifier: '@taiga-ui/core',
+            callExpression: true,
         },
     },
     {
