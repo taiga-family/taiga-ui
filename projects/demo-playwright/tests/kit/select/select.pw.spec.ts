@@ -52,7 +52,7 @@ describe('Select', () => {
 
             beforeEach(async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.Select}/API?tuiTextfieldCleaner=true`);
-                example = new TuiDocumentationPagePO(page).demo;
+                example = new TuiDocumentationPagePO(page).apiPageExample;
                 select = new TuiSelectPO(
                     example.locator('tui-textfield:has([tuiSelect])'),
                 );
