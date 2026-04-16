@@ -46,3 +46,7 @@ sitemap.xml
 blob-report
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+projects/demo-playwright/stubs/fonts.css
+projects/demo-playwright/stubs/*.woff2
+projects/demo-playwright/stubs/*.ttf
+!projects/demo-playwright/stubs/blank.ttf

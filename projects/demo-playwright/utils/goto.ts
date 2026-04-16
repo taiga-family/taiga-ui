@@ -52,9 +52,20 @@ export async function tuiGoto(
         await tuiMockDate(page, date);
     }
 
-    await page.route('https://fonts.gstatic.com/**', async (route) =>
-        route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
+    await page.route(
+        /fonts\.googleapis\.com|cdn\..*\/design-tokens\/.*\/fonts\.css/,
+        async (route) =>
+            route.fulfill({
+                path: `${__dirname}/../stubs/fonts.css`,
+                contentType: 'text/css',
+            }),
     );
+
+    await page.route(/\.(woff2?|ttf)$/, async (route) => {
+        const filename = new URL(route.request().url()).pathname.split('/').pop()!;
+
+        return route.fulfill({path: `${__dirname}/../stubs/${filename}`});
+    });
 
     await page.route('blank.ttf', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/blank.ttf`}),
