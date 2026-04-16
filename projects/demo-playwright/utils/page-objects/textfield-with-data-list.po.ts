@@ -11,7 +11,7 @@ export class TuiTextfieldWithDataListPO {
         .page()
         .locator('tui-dropdown,tui-dropdown-mobile');
 
-    constructor(protected readonly host: Locator) {}
+    constructor(public readonly host: Locator) {}
 
     public async getOptions(): Promise<Locator[]> {
         await expect(this.dropdown).toBeAttached();
