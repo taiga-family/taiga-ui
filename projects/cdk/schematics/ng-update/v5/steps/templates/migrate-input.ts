@@ -398,10 +398,11 @@ function buildInnerContent({
 
     // labelOutside=false/absent: text → <label tuiLabel> inside (floating label)
     // dynamic: text left as-is, only TODO comment is added
-    const labelEl =
-        placeholder && !labelOutsideIsDynamic
-            ? `${indent}<label tuiLabel>${placeholder}</label>\n`
-            : '';
+    const labelEl = !placeholder
+        ? ''
+        : labelOutsideIsDynamic
+          ? `${indent}${placeholder}\n`
+          : `${indent}<label tuiLabel>${placeholder}</label>\n`;
 
     return `${labelEl}${indent}<input${attrsStr} />\n${otherChildren}${hintIconLine}`;
 }

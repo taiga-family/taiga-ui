@@ -90,9 +90,9 @@ exports[`ng-update hint on legacy controls different legacy controls migrates tu
                     >
 <label tuiLabel>
                         Label
-                        
+                        </label>
+
 <input tuiComboBox [(ngModel)]="value" />
-</label>
 <tui-data-list-wrapper
                             *tuiDropdown
                             [items]="items | tuiFilterByInput"

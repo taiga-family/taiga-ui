@@ -7,6 +7,7 @@ exports[`ng-update legacy input adds TODO for dynamic [tuiTextfieldLabelOutside]
      - [tuiTextfieldLabelOutside]="isOutside" is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.
 -->
 <tui-textfield>
+Label
 <input tuiInput formControlName="value" />
 </tui-textfield>",
 }

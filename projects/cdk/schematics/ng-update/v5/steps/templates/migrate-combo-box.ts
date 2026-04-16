@@ -158,7 +158,21 @@ export function migrateComboBox({
                 searchHandler,
                 placeholder: isLabelOutsideTrue ? getPlaceholderText(element) : '',
             });
+
+            if (!labelOutsideAttr || labelOutsideAttr.value === 'false') {
+                wrapTextInLabel(recorder, templateOffset, element);
+            } else if (isLabelOutsideTrue) {
+                removeTextNode(recorder, templateOffset, element);
+            } else if (isLabelOutsideDynamic) {
+                addLabelOutsideTodo(recorder, templateOffset, element, template);
+            }
         } else {
+            if (!labelOutsideAttr || labelOutsideAttr.value === 'false') {
+                wrapTextInLabel(recorder, templateOffset, element);
+            } else if (isLabelOutsideDynamic) {
+                addLabelOutsideTodo(recorder, templateOffset, element, template);
+            }
+
             handleGeneratedInput({
                 element,
                 recorder,
@@ -168,16 +182,7 @@ export function migrateComboBox({
                 searchHandler,
                 sourceCodeLocation,
                 isLabelOutsideTrue,
-                template,
             });
-        }
-
-        if (!labelOutsideAttr || labelOutsideAttr.value === 'false') {
-            wrapTextInLabel(recorder, templateOffset, element);
-        } else if (isLabelOutsideTrue && inputs.length) {
-            removeTextNode(recorder, templateOffset, element);
-        } else if (isLabelOutsideDynamic) {
-            addLabelOutsideTodo(recorder, templateOffset, element, template);
         }
     });
 }

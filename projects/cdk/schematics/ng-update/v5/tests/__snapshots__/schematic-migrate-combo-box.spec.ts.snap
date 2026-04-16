@@ -20,9 +20,9 @@ exports[`ng-update ComboBox [stringify] / [identityMatcher] / [disabledItemHandl
                 >
 <label tuiLabel>
                     Label
-                
+                </label>
+
 <input tuiComboBox [formControl]="control" />
-</label>
 </tui-textfield>
             ",
 }
@@ -43,9 +43,9 @@ exports[`ng-update ComboBox [valueContent] => tui-textfield[content]: test.html 
                 >
 <label tuiLabel>
                     Label
-                
+                </label>
+
 <input tuiComboBox [formControl]="control" />
-</label>
 </tui-textfield>
             ",
 }
@@ -70,9 +70,9 @@ exports[`ng-update ComboBox adds TODO for [search] and (searchChange): test.html
                 >
 <label tuiLabel>
                     Label
-                
+                </label>
+
 <input tuiComboBox [formControl]="control" (input)="onSearch($event.target.value)" />
-</label>
 </tui-textfield>
             ",
 }
@@ -93,17 +93,17 @@ exports[`ng-update ComboBox handles multiple combo-boxes in the same template: t
             ",
   "1. After": "
                 <tui-textfield>
-<label tuiLabel>First
+<label tuiLabel>First</label>
+
 <input tuiComboBox [formControl]="first" />
-</label>
 </tui-textfield>
 
                 <tui-textfield>
 <label tuiLabel>
                     Second
-                    
+                    </label>
+
 <input tuiComboBox [(ngModel)]="second" />
-</label>
 <tui-data-list-wrapper
                         *tuiDropdown
                         [items]="items"
@@ -128,9 +128,9 @@ exports[`ng-update ComboBox keeps [strict] on input: test.html 1`] = `
                 >
 <label tuiLabel>
                     Label
-                
+                </label>
+
 <input tuiComboBox [formControl]="control" [strict]="false" />
-</label>
 </tui-textfield>
             ",
 }
@@ -155,9 +155,9 @@ exports[`ng-update ComboBox migrates *tuiDataList to *tuiDropdown: test.html 1`]
                 <tui-textfield>
 <label tuiLabel>
                     Label
-                    
+                    </label>
+
 <input tuiComboBox [formControl]="control" />
-</label>
 <tui-data-list *tuiDropdown>
                         <button
                             tuiOption
@@ -186,9 +186,9 @@ exports[`ng-update ComboBox migrates TuiComboBoxModule import and basic tui-comb
                 <tui-textfield>
 <label tuiLabel>
                     Many words label
-                    
+                    </label>
+
 <input tuiComboBox [formControl]="control" />
-</label>
 <tui-data-list-wrapper
                         *tuiDropdown
                         [items]="items"
@@ -314,9 +314,9 @@ exports[`ng-update ComboBox moves [(ngModel)] to generated input when input is a
                 <tui-textfield>
 <label tuiLabel>
                     Choose an option
-                    
+                    </label>
+
 <input tuiComboBox [(ngModel)]="value" />
-</label>
 <tui-data-list-wrapper
                         *tuiDropdown
                         [items]="items"
@@ -341,9 +341,9 @@ exports[`ng-update ComboBox moves formControlName to generated input: test.html 
                 <tui-textfield>
 <label tuiLabel>
                     Label
-                    
+                    </label>
+
 <input tuiComboBox formControlName="myField" />
-</label>
 <tui-data-list-wrapper
                         *tuiDropdown
                         [items]="items"
@@ -369,9 +369,9 @@ exports[`ng-update ComboBox moves tuiTextfieldSize to tui-textfield wrapper: tes
                 >
 <label tuiLabel>
                     Label
-                
+                </label>
+
 <input tuiComboBox [formControl]="control" />
-</label>
 </tui-textfield>
             ",
 }
@@ -465,9 +465,9 @@ exports[`ng-update ComboBox renames [strictMatcher] to [matcher]: test.html 1`] 
                 >
 <label tuiLabel>
                     Label
-                
+                </label>
+
 <input tuiComboBox [formControl]="control" [matcher]="myMatcher" />
-</label>
 </tui-textfield>
             ",
 }
@@ -492,9 +492,9 @@ exports[`ng-update ComboBox wraps text node in label[tuiLabel] when [tuiTextfiel
                 >
 <label tuiLabel>
                     City
-                    
+                    </label>
+
 <input tuiComboBox [formControl]="control" />
-</label>
 <tui-data-list-wrapper
                         *tuiDropdown
                         [items]="cities"
