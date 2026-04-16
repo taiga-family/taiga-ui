@@ -15,6 +15,8 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         '(beforeinput)':
             'options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear()',
+        '(keydown.backspace)': 'options.cleaner() && clear()', // No (input) event if caret is at the beginning
+        '(keydown.delete)': 'options.cleaner() && clear()', // No (input) event if caret is at the end
         // Hide Android text select handle (bubble marker below transparent caret)
         '(mousedown)': 'prevent($event)',
     },
