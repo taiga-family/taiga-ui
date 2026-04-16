@@ -163,5 +163,20 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-date (multi)',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-date
+                    multiple
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose dates
+                </tui-input-date>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

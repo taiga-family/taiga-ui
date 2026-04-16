@@ -281,6 +281,30 @@ exports[`ng-update moves placeholder to <input tuiInputDateMulti>: test.html 1`]
 }
 `;
 
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date (multi): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    multiple
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose dates
+                </tui-input-date>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                 multi>
+<input tuiInputDateMulti [formControl]="control" placeholder="Choose dates" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update silently removes [editable] and [inputHidden]: test.html 1`] = `
 {
   "0. Before": "

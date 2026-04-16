@@ -138,6 +138,15 @@ export function migrateComboBox({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
+        const isBinding = labelOutsideAttr?.name.startsWith('[') ?? false;
+        const isLabelOutsideTrue =
+            labelOutsideAttr?.value === 'true' ||
+            (!!labelOutsideAttr && !isBinding && labelOutsideAttr.value === '');
+        const isLabelOutsideDynamic =
+            !!labelOutsideAttr &&
+            !isLabelOutsideTrue &&
+            labelOutsideAttr.value !== 'false';
+
         if (inputs.length) {
             handleExistingInput({
                 inputs,
@@ -147,12 +156,23 @@ export function migrateComboBox({
                 controlAttrs,
                 inputAttrs,
                 searchHandler,
+                placeholder: isLabelOutsideTrue ? getPlaceholderText(element) : '',
             });
 
             if (!labelOutsideAttr || labelOutsideAttr.value === 'false') {
                 wrapTextInLabel(recorder, templateOffset, element);
+            } else if (isLabelOutsideTrue) {
+                removeTextNode(recorder, templateOffset, element);
+            } else if (isLabelOutsideDynamic) {
+                addLabelOutsideTodo(recorder, templateOffset, element, template);
             }
         } else {
+            if (!labelOutsideAttr || labelOutsideAttr.value === 'false') {
+                wrapTextInLabel(recorder, templateOffset, element);
+            } else if (isLabelOutsideDynamic) {
+                addLabelOutsideTodo(recorder, templateOffset, element, template);
+            }
+
             handleGeneratedInput({
                 element,
                 recorder,
@@ -161,8 +181,7 @@ export function migrateComboBox({
                 inputAttrs,
                 searchHandler,
                 sourceCodeLocation,
-                labelOutside: labelOutsideAttr?.value ?? '',
-                template,
+                isLabelOutsideTrue,
             });
         }
     });
@@ -176,10 +195,12 @@ function handleExistingInput({
     controlAttrs,
     inputAttrs,
     searchHandler,
+    placeholder,
 }: {
     controlAttrs: Array<{name: string; value: string}>;
     inputAttrs: Array<{name: string; value: string}>;
     inputs: Element[];
+    placeholder: string;
     recorder: UpdateRecorder;
     searchHandler: string;
     template: string;
@@ -210,10 +231,11 @@ function handleExistingInput({
             (input.sourceCodeLocation?.startTag?.startOffset ?? 0) + '<input'.length;
         const formAttrs = formatControlAttrs(controlAttrs);
         const inputAttrStr = formatInputAttrs(inputAttrs);
+        const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
 
         recorder.insertRight(
             templateOffset + insertOffset,
-            ` tuiComboBox${formAttrs}${inputAttrStr}${searchHandler}`,
+            ` tuiComboBox${formAttrs}${inputAttrStr}${searchHandler}${placeholderAttr}`,
         );
     });
 }
@@ -226,28 +248,23 @@ function handleGeneratedInput({
     inputAttrs,
     searchHandler,
     sourceCodeLocation,
-    labelOutside,
-    template,
+    isLabelOutsideTrue,
 }: {
     controlAttrs: Array<{name: string; value: string}>;
     element: Element;
     inputAttrs: Array<{name: string; value: string}>;
-    labelOutside: string;
+    isLabelOutsideTrue: boolean;
     recorder: UpdateRecorder;
     searchHandler: string;
     sourceCodeLocation: Element['sourceCodeLocation'];
-    template: string;
     templateOffset: number;
 }): void {
     const formAttrs = formatControlAttrs(controlAttrs);
     const inputAttrStr = formatInputAttrs(inputAttrs);
 
-    const labelNode = element.childNodes.find(
-        (node): node is TextNode =>
-            node.nodeName === '#text' && !!(node as TextNode).value.trim(),
-    );
+    const labelNode = findTextNode(element);
 
-    if (labelOutside === 'true' && labelNode) {
+    if (isLabelOutsideTrue && labelNode) {
         const labelText = labelNode.value.trim();
         const textStart = labelNode.sourceCodeLocation?.startOffset ?? 0;
         const textEnd = labelNode.sourceCodeLocation?.endOffset ?? 0;
@@ -262,20 +279,6 @@ function handleGeneratedInput({
         return;
     }
 
-    if (!labelOutside || labelOutside === 'false') {
-        wrapTextInLabel(recorder, templateOffset, element);
-    } else if (labelNode) {
-        const elementStart = element.sourceCodeLocation?.startOffset ?? 0;
-        const lineStart = template.lastIndexOf('\n', elementStart - 1) + 1;
-        const indent = template.slice(lineStart, elementStart);
-        const textStart = labelNode.sourceCodeLocation?.startOffset ?? 0;
-
-        recorder.insertRight(
-            templateOffset + textStart + 1,
-            `${indent}<!-- ${TODO_MARK} Use <label tuiLabel> element inside <tui-textfield> for a floating label or input[placeholder] for empty value label -->\n`,
-        );
-    }
-
     const insertOffset = labelNode
         ? (labelNode.sourceCodeLocation?.endOffset ?? 0)
         : (sourceCodeLocation?.endTag?.startOffset ?? 0);
@@ -286,15 +289,56 @@ function handleGeneratedInput({
     );
 }
 
+function findTextNode(element: Element): TextNode | undefined {
+    return element.childNodes.find(
+        (node: ChildNode): node is TextNode =>
+            node.nodeName === '#text' && !!(node as TextNode).value.trim(),
+    );
+}
+
+function getPlaceholderText(element: Element): string {
+    return findTextNode(element)?.value.trim() ?? '';
+}
+
+function removeTextNode(
+    recorder: UpdateRecorder,
+    templateOffset: number,
+    element: Element,
+): void {
+    const labelNode = findTextNode(element);
+
+    if (!labelNode) {
+        return;
+    }
+
+    const textStart = labelNode.sourceCodeLocation?.startOffset ?? 0;
+    const textEnd = labelNode.sourceCodeLocation?.endOffset ?? 0;
+
+    recorder.remove(templateOffset + textStart, textEnd - textStart);
+}
+
+function addLabelOutsideTodo(
+    recorder: UpdateRecorder,
+    templateOffset: number,
+    element: Element,
+    template: string,
+): void {
+    const elementStart = element.sourceCodeLocation?.startOffset ?? 0;
+    const lineStart = template.lastIndexOf('\n', elementStart - 1) + 1;
+    const indent = template.slice(lineStart, elementStart);
+
+    recorder.insertRight(
+        templateOffset + elementStart,
+        `<!-- ${TODO_MARK} [tuiTextfieldLabelOutside] is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or input[placeholder] for outside label -->\n${indent}`,
+    );
+}
+
 function wrapTextInLabel(
     recorder: UpdateRecorder,
     templateOffset: number,
     element: Element,
 ): void {
-    const labelNode = element.childNodes.find(
-        (node: ChildNode): node is TextNode =>
-            node.nodeName === '#text' && !!(node as TextNode).value.trim(),
-    );
+    const labelNode = findTextNode(element);
 
     if (!labelNode) {
         return;

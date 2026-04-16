@@ -93,5 +93,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-time',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-time
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose time
+                </tui-input-time>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

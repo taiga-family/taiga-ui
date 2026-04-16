@@ -263,21 +263,13 @@ function buildReplacement(
 function buildTodoComment(ctx: MigrationContext): string {
     const notes: string[] = [];
 
-    if (ctx.placeholder) {
-        if (ctx.labelOutside === true) {
-            notes.push(
-                `Text content "${ctx.placeholder}" became placeholder on <textarea>. Previously [tuiTextfieldLabelOutside]=true — for label-outside pattern, wrap <tui-textfield> with: <label tuiLabel>${ctx.placeholder}<tui-textfield>...</tui-textfield></label>.`,
-            );
-        } else if (ctx.labelOutside === 'dynamic') {
-            notes.push(
-                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. [tuiTextfieldLabelOutside] was dynamic — for label-outside pattern, move <label tuiLabel> to wrap <tui-textfield> instead.`,
-            );
-        } else {
-            notes.push(
-                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.`,
-            );
-        }
+    if (ctx.placeholder && ctx.labelOutside === 'dynamic') {
+        notes.push(
+            '[tuiTextfieldLabelOutside] was dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.',
+        );
     }
+    // labelOutside=true: text → placeholder — fully automatic, no note needed
+    // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed
 
     if (ctx.expandableValue !== null) {
         const wasFixed = ctx.expandableValue === 'false' || ctx.expandableValue === '';
@@ -351,9 +343,9 @@ function buildInnerContent({
     );
 
     // Auto-add <label tuiLabel> inside <tui-textfield> when text content is present
-    // and labelOutside is not true (label-outside pattern requires manual DOM restructure)
+    // and labelOutside is false/absent (dynamic: left as-is with only TODO comment)
     const labelEl =
-        placeholder && labelOutside !== true
+        placeholder && labelOutside === false
             ? `${indent}<label tuiLabel>${placeholder}</label>\n`
             : '';
 

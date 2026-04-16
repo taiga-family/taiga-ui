@@ -84,5 +84,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-month',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-month
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a month
+                </tui-input-month>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

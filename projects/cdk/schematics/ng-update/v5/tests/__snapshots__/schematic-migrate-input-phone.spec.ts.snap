@@ -225,3 +225,24 @@ exports[`ng-update moves [allowText] to <input tuiInputPhone>: test.html 1`] = `
 </tui-textfield>",
 }
 `;
+
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-phone: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-phone
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Phone number
+                </tui-input-phone>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<input tuiInputPhone [formControl]="control" placeholder="Phone number" />
+</tui-textfield>
+            ",
+}
+`;

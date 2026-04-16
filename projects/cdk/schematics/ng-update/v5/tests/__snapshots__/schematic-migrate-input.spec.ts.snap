@@ -7,9 +7,27 @@ exports[`ng-update legacy input adds TODO for dynamic [tuiTextfieldLabelOutside]
      - [tuiTextfieldLabelOutside]="isOutside" is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.
 -->
 <tui-textfield>
-<label tuiLabel>Label</label>
+Label
 <input tuiInput formControlName="value" />
 </tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy input converts text to placeholder when [tuiTextfieldLabelOutside]="true": test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    formControlName="value"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Email
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield>
+                <input placeholder="Email" tuiInput formControlName="value" />
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -217,27 +235,6 @@ exports[`ng-update legacy input routes dropdown attrs to wrapper and adds TODO f
                 <tui-textfield tuiDropdownDirection="top" tuiTextfieldPostfix="USD" tuiTextfieldPrefix="$" [tuiDropdownLimitWidth]="'fixed'">
                 <label tuiLabel>Amount</label>
                 <input tuiInput formControlName="value" />
-                </tui-textfield>
-            ",
-}
-`;
-
-exports[`ng-update legacy input wraps in <label tuiLabel> when [tuiTextfieldLabelOutside]="true": test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input
-                    formControlName="value"
-                    [tuiTextfieldLabelOutside]="true"
-                >
-                    Email
-                </tui-input>
-            ",
-  "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
-     - Text content "Email" became placeholder on <input> (labelOutside=true). Add <label tuiLabel> outside <tui-textfield> if a static label is needed.
--->
-                <tui-textfield>
-                <input placeholder="Email" tuiInput formControlName="value" />
                 </tui-textfield>
             ",
 }

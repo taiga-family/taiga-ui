@@ -89,5 +89,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-date-range',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-date-range
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a range
+                </tui-input-date-range>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
