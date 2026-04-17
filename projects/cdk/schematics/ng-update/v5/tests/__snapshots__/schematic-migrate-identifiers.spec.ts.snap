@@ -50,6 +50,24 @@ exports[`ng-update identifiers migration keeps tuiIsFlat usages in source code w
 }
 `;
 
+exports[`ng-update identifiers migration migrates NG_EVENT_PLUGINS to provideTaiga: test.ts 1`] = `
+{
+  "0. Before": "
+                import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [NG_EVENT_PLUGINS];
+                };
+            ",
+  "1. After": "import { provideTaiga } from "@taiga-ui/core";
+
+                                export const appConfig: ApplicationConfig = {
+                    providers: [provideTaiga()];
+                };
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration migrates TuiOptionNew to TuiOption: test.ts 1`] = `
 {
   "0. Before": "
@@ -94,6 +112,24 @@ import { TuiAutoColorPipe } from "@taiga-ui/kit";
                     protected readonly autoColor = TuiAutoColorPipe;
                     protected readonly pure = tuiPure;
                 }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration migrates provideEventPlugins to provideTaiga: test.ts 1`] = `
+{
+  "0. Before": "
+                import {provideEventPlugins} from '@taiga-ui/event-plugins';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [provideEventPlugins()];
+                };
+            ",
+  "1. After": "import { provideTaiga } from "@taiga-ui/core";
+
+                                export const appConfig: ApplicationConfig = {
+                    providers: [provideTaiga()];
+                };
             ",
 }
 `;

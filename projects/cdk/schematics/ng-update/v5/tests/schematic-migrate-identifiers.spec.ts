@@ -161,5 +161,31 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'migrates provideEventPlugins to provideTaiga',
+        migrate({
+            component: `
+                import {provideEventPlugins} from '@taiga-ui/event-plugins';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [provideEventPlugins()];
+                };
+            `,
+        }),
+    );
+
+    it(
+        'migrates NG_EVENT_PLUGINS to provideTaiga',
+        migrate({
+            component: `
+                import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+
+                export const appConfig: ApplicationConfig = {
+                    providers: [NG_EVENT_PLUGINS];
+                };
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
