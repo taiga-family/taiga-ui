@@ -21,6 +21,7 @@ export default class Page {
         'Options with DI',
         'Vertical',
         'Two labels',
+        'Link',
     ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
