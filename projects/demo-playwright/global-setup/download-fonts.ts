@@ -23,7 +23,7 @@ function resolveUrls(cssText: string, cssUrl: string): string[] {
 export async function downloadFonts(cssUrl: string): Promise<void> {
     const cssTexts = await Promise.all(
         USER_AGENTS.map(async (ua) =>
-            fetch(cssUrl, {headers: {'User-Agent': ua}}).then(async (response) =>
+            fetchWithRetry(cssUrl, {headers: {'User-Agent': ua}}).then(async (response) =>
                 response.text(),
             ),
         ),
@@ -31,10 +31,10 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
 
     const fontUrls = [...new Set(cssTexts.flatMap((css) => resolveUrls(css, cssUrl)))];
 
-    await Promise.all(
+    await Promise.allSettled(
         fontUrls.map(async (url) => {
             const filename = new URL(url).pathname.split('/').pop() ?? '';
-            const response = await fetch(url);
+            const response = await fetchWithRetry(url);
             const buffer = Buffer.from(await response.arrayBuffer());
 
             fs.writeFileSync(path.join(STUBS_DIR, filename), buffer);
@@ -42,4 +42,22 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
     );
 
     fs.writeFileSync(path.join(STUBS_DIR, 'fonts.css'), cssTexts[0]!);
+}
+
+async function fetchWithRetry(
+    url: string,
+    options?: RequestInit,
+    retries = 5,
+): Promise<Response> {
+    const response = await fetch(url, options).catch(() => null);
+
+    if (response?.ok) {
+        return response;
+    }
+
+    if (retries <= 0) {
+        throw new Error(`Failed to fetch ${url}`);
+    }
+
+    return fetchWithRetry(url, options, retries - 1);
 }
