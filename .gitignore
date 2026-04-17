@@ -33,10 +33,6 @@ RELEASE_BODY.md
 .nx
 .history
 /projects/demo-cypress/tests-results/
-/projects/demo-playwright/tests-results/
-/projects/demo-playwright/tests-report/
-/projects/demo-playwright/snapshots/
-/projects/demo-playwright/playwright/.cache/
 projects/demo/routes.txt
 projects/demo/src/llms.txt
 projects/demo/src/llms-full.txt
@@ -46,7 +42,3 @@ sitemap.xml
 blob-report
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
-projects/demo-playwright/stubs/fonts.css
-projects/demo-playwright/stubs/*.woff2
-projects/demo-playwright/stubs/*.ttf
-!projects/demo-playwright/stubs/blank.ttf

@@ -33,7 +33,7 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
 
     await Promise.all(
         fontUrls.map(async (url) => {
-            const filename = new URL(url).pathname.split('/').pop()!;
+            const filename = new URL(url).pathname.split('/').pop() ?? '';
             const response = await fetch(url);
             const buffer = Buffer.from(await response.arrayBuffer());
 

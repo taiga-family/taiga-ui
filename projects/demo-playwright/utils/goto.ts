@@ -62,7 +62,7 @@ export async function tuiGoto(
     );
 
     await page.route(/\.(woff2?|ttf)$/, async (route) => {
-        const filename = new URL(route.request().url()).pathname.split('/').pop()!;
+        const filename = new URL(route.request().url()).pathname.split('/').pop() ?? '';
 
         return route.fulfill({path: `${__dirname}/../stubs/${filename}`});
     });
