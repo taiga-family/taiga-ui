@@ -28,13 +28,18 @@ tui-textfield[multi][multi]:where(*&) {
         }
     }
 
+    &:not(._empty) {
+        > .t-items {
+            min-block-size: fit-content;
+        }
+    }
+
     > .t-items {
         position: sticky;
         display: flex;
         inset-inline-start: var(--t-start);
         min-inline-size: 0;
         max-block-size: var(--t-height);
-        min-block-size: fit-content;
         flex: 1;
         align-items: center;
         flex-wrap: wrap;
@@ -100,6 +105,10 @@ tui-textfield[multi][multi]:where(*&) {
             > .t-items > label[tuiLabel] {
                 margin-block: 0.625rem;
             }
+
+            tui-textfield-item:not(._string):first-of-type {
+                margin-block-start: 1.25rem;
+            }
         }
 
         &[data-size='m'] {
@@ -107,6 +116,10 @@ tui-textfield[multi][multi]:where(*&) {
 
             > .t-items > label[tuiLabel] {
                 margin-block: 0.4375rem;
+            }
+
+            tui-textfield-item:not(._string):first-of-type {
+                margin-block-start: 1rem;
             }
         }
 
