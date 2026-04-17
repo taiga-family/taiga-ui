@@ -87,7 +87,12 @@ export function tuiValue(
              * revert to the previous position
              */
             element.value = v;
-            element.setSelectionRange(selectionStart, selectionEnd);
+
+            try {
+                element.setSelectionRange(selectionStart, selectionEnd);
+            } catch {
+                // Only certain types of inputs support setSelectionRange, so we need to catch the error for unsupported ones
+            }
         } else if (element) {
             element.value = v;
         }
