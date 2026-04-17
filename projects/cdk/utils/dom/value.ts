@@ -102,14 +102,18 @@ export function tuiValue(
 }
 
 function patch(prototype: WithValue): void {
-    const {set} = Object.getOwnPropertyDescriptor(prototype, 'value')!;
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, 'value');
+
+    if (!descriptor?.set) {
+        return;
+    }
 
     Object.defineProperty(prototype, 'value', {
         set(this: WithValue, detail: string) {
             const value = this.value;
             const event = new CustomEvent('tui-input', {detail, bubbles: true});
 
-            set!.call(this, detail);
+            descriptor.set.call(this, detail);
 
             if (value !== detail) {
                 this.dispatchEvent(event);
