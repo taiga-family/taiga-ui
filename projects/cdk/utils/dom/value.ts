@@ -25,7 +25,7 @@ export function tuiValue(
         | WithValue,
     injector = inject(INJECTOR),
 ): WritableSignal<string> {
-    const win = injector.get<any>(WA_WINDOW);
+    const win = injector.get<Window & {tuiInputPatched?: boolean}>(WA_WINDOW);
 
     if (!win.tuiInputPatched && isPlatformBrowser(injector.get(PLATFORM_ID))) {
         win.tuiInputPatched = true;
