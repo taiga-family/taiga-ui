@@ -1,6 +1,3 @@
-tests-results/
-tests-report/
-snapshots/
 playwright/.cache/
 stubs/fonts.css
 stubs/*.woff2
