@@ -1,4 +1,5 @@
 import {expect, type Page} from '@playwright/test';
+import {existsSync} from 'node:fs';
 
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
@@ -63,8 +64,9 @@ export async function tuiGoto(
 
     await page.route(/\.(woff2?|ttf)$/, async (route) => {
         const filename = new URL(route.request().url()).pathname.split('/').pop() ?? '';
+        const filePath = `${__dirname}/../stubs/${filename}`;
 
-        return route.fulfill({path: `${__dirname}/../stubs/${filename}`});
+        return existsSync(filePath) ? route.fulfill({path: filePath}) : route.continue();
     });
 
     await page.route('blank.ttf', async (route) =>
