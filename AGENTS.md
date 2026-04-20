@@ -6,7 +6,7 @@ standalone components for streamlined architecture. Performance is paramount to 
 change detection and improve user experience through these modern Angular paradigms. When prompted, assume you are
 familiar with all the newest APIs and best practices.
 
-When you update a component, be sure to put the logic in the `.ts` file, the styles in the `.less` (or `.css`) file and
+When you update a component, be sure to put the logic in the `.ts` file, the styles in the `.less` (or `.css`) file, and
 the HTML template in the `.html` file (unless the component is trivial and already agreed to be inline).
 
 ## Basic guideline
@@ -70,7 +70,7 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 
 ## Components
 
-- Each component should have its logic in `.ts`, styles in `.less` (or `.css`) and template in `.html`, unless
+- Each component should have its logic in `.ts`, styles in `.less` (or `.css`), and template in `.html`, unless
   explicitly agreed otherwise.
 - Define inputs with the new `input()` API when practical:
   ```ts
