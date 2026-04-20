@@ -65,6 +65,7 @@
                                 size="s"
                                 tuiButton
                                 type="button"
+                                [attr.aria-label]="'Edit example on ' + (codeEditor?.name || 'external editor')"
                             >
                                 Edit on {{ codeEditor?.name }}
                             </button>
