@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-combo-box: test.html 1`] = `
+{
+  "0. Before": "<tui-combo-box formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-combo-box>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Label</label>
+
+<input tuiComboBox formControlName="value" />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-input-date: test.html 1`] = `
+{
+  "0. Before": "<tui-input-date formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-input-date>",
+  "1. After": "<tui-textfield >
+<label tuiLabel>Label</label>
+
+<input tuiInputDate formControlName="value" />
+<tui-calendar *tuiDropdown />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-input-date-range: test.html 1`] = `
+{
+  "0. Before": "<tui-input-date-range formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-input-date-range>",
+  "1. After": "<tui-textfield >
+<label tuiLabel>Label</label>
+
+<input tuiInputDateRange formControlName="value" />
+<tui-calendar-range *tuiDropdown />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-input-phone: test.html 1`] = `
+{
+  "0. Before": "<tui-input-phone formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-input-phone>",
+  "1. After": "<tui-textfield >
+<label tuiLabel>Label</label>
+
+<input tuiInputPhone formControlName="value" />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-input-tag: test.html 1`] = `
+{
+  "0. Before": "<tui-input-tag formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-input-tag>",
+  "1. After": "<tui-textfield  multi>
+<label tuiLabel>Label</label>
+
+<input tuiInputChip formControlName="value" />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-input-time: test.html 1`] = `
+{
+  "0. Before": "<tui-input-time formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-input-time>",
+  "1. After": "<tui-textfield >
+<label tuiLabel>Label</label>
+
+<input tuiInputTime formControlName="value" />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-multi-select: test.html 1`] = `
+{
+  "0. Before": "<tui-multi-select formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-multi-select>",
+  "1. After": "<tui-textfield multi tuiChevron>Label<input tuiInputChip formControlName="value" />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls binding form adds <tui-icon *polymorpheusOutlet> tui-select: test.html 1`] = `
+{
+  "0. Before": "<tui-select formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-select>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron>
+<label tuiLabel>Label</label>
+
+<input tuiSelect formControlName="value" />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are registered adds TuiIcon and PolymorpheusOutlet imports for tui-select binding: test.html 1`] = `
+{
+  "0. Before": "<tui-select formControlName="value" [tuiTextfieldCustomContent]="myTpl">Label</tui-select>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron>
+<label tuiLabel>Label</label>
+
+<input tuiSelect formControlName="value" />
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are registered adds TuiIcon and PolymorpheusOutlet imports for tui-select binding: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {TuiSelectModule} from '@taiga-ui/legacy';
+
+                    @Component({
+                      standalone: true,
+                      imports: [TuiSelectModule],
+                      templateUrl: './test.html',
+                    })
+                    export class TestComponent {}
+                ",
+  "1. After": "import { PolymorpheusOutlet } from "@taiga-ui/polymorpheus";
+import { TuiIcon } from "@taiga-ui/core";
+import { TuiSelect } from "@taiga-ui/kit";
+
+                                        @Component({
+                      standalone: true,
+                      imports: [TuiSelect, TuiIcon, PolymorpheusOutlet],
+                      templateUrl: './test.html',
+                    })
+                    export class TestComponent {}
+                ",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are registered adds only TuiIcon for tui-select static string: test.html 1`] = `
+{
+  "0. Before": "<tui-select formControlName="value" tuiTextfieldCustomContent="@tui.calendar">Label</tui-select>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron>
+<label tuiLabel>Label</label>
+
+<input tuiSelect formControlName="value" />
+<tui-icon icon="@tui.calendar" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are registered adds only TuiIcon for tui-select static string: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {TuiSelectModule} from '@taiga-ui/legacy';
+
+                    @Component({
+                      standalone: true,
+                      imports: [TuiSelectModule],
+                      templateUrl: './test.html',
+                    })
+                    export class TestComponent {}
+                ",
+  "1. After": "import { TuiIcon } from "@taiga-ui/core";
+import { TuiSelect } from "@taiga-ui/kit";
+
+                                        @Component({
+                      standalone: true,
+                      imports: [TuiSelect, TuiIcon],
+                      templateUrl: './test.html',
+                    })
+                    export class TestComponent {}
+                ",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls static string form adds <tui-icon icon="..."> tui-input-date: test.html 1`] = `
+{
+  "0. Before": "<tui-input-date formControlName="value" tuiTextfieldCustomContent="@tui.calendar">Label</tui-input-date>",
+  "1. After": "<tui-textfield >
+<label tuiLabel>Label</label>
+
+<input tuiInputDate formControlName="value" />
+<tui-calendar *tuiDropdown />
+<tui-icon icon="@tui.calendar" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls static string form adds <tui-icon icon="..."> tui-select: test.html 1`] = `
+{
+  "0. Before": "<tui-select formControlName="value" tuiTextfieldCustomContent="@tui.calendar">Label</tui-select>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron>
+<label tuiLabel>Label</label>
+
+<input tuiSelect formControlName="value" />
+<tui-icon icon="@tui.calendar" />
+</tui-textfield>",
+}
+`;

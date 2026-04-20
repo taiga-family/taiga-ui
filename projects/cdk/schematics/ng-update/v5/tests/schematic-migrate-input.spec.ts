@@ -108,10 +108,63 @@ describe('ng-update legacy input', () => {
     );
 
     it(
-        'renames tuiTextfieldCustomContent to content and tuiTextfieldFiller to filler',
+        'converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet> and renames tuiTextfieldFiller to filler',
         migrate({
+            component: `
+                import {TuiInputModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            `,
             template:
                 '<tui-input formControlName="value" [tuiTextfieldCustomContent]="myTpl" [tuiTextfieldFiller]="hint">Label</tui-input>',
+        }),
+    );
+
+    it(
+        'converts static tuiTextfieldCustomContent string to <tui-icon icon="...">',
+        migrate({
+            component: `
+                import {TuiInputModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            `,
+            template:
+                '<tui-input formControlName="value" tuiTextfieldCustomContent="@tui.calendar">Label</tui-input>',
+        }),
+    );
+
+    it(
+        'keeps tuiTextfieldCustomContent migration working alongside hint content',
+        migrate({
+            component: `
+                import {TuiInputModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            `,
+            template: /* HTML */ `
+                <tui-input
+                    formControlName="value"
+                    tuiHintContent="Hint"
+                    [tuiTextfieldCustomContent]="myTpl"
+                >
+                    Label
+                </tui-input>
+            `,
         }),
     );
 
