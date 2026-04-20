@@ -78,6 +78,7 @@
                         tuiIconButton
                         type="button"
                         [iconStart]="fullscreen ? icons.shrink : icons.expand"
+                        [attr.aria-label]="fullscreen ? 'Exit fullscreen' : 'Enter fullscreen'"
                         (click)="fullscreen = !fullscreen"
                     >
                         Fullscreen
