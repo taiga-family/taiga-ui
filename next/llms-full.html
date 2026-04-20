@@ -11062,12 +11062,12 @@ export default class Example {
 ```html
 &lt;tui-textfield tuiChevron tuiDropdownMobile &gt;
 &lt;input placeholder=&quot;Select destination&quot; tuiComboBox [(ngModel)]=&quot;value&quot; /&gt;
-&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;countries() | tuiFilterByInput&quot; /&gt;
+&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;countries | tuiFilterByInput&quot; /&gt;
 &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, inject, type Signal, ViewEncapsulation} from &#039;@angular/core&#039;;
+import {Component, inject, ViewEncapsulation} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDropdownMobile} from &#039;@taiga-ui/addon-mobile&#039;;
@@ -11089,10 +11089,7 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from &#039;@
     changeDetection,
 })
 export default class Example {
-    protected readonly countries: Signal&lt;string[]&gt; = computed(() =&gt;
-        Object.values(inject(TUI_COUNTRIES)),
-    );
-
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
     protected value: string | null = null;
 }
 ```
