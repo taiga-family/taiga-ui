@@ -37,6 +37,7 @@ import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-sin
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateComboBox} from './templates/migrate-combo-box';
+import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
@@ -129,6 +130,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateChartHint,
         migrateCalendarSheetSingle,
         migrateCloseable,
+        migrateDocDocumentation,
         migrateSidebar,
         migrateFormatPhonePipe,
         ...(hasProprietaryPackage ? [migrateProprietaryTextfieldIcons] : []),
