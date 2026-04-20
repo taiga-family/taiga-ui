@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update legacy textarea converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet>: test.html 1`] = `
+{
+  "0. Before": "<tui-textarea formControlName="value" [tuiTextfieldCustomContent]="myTpl">Bio</tui-textarea>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+<tui-textfield>
+<label tuiLabel>Bio</label>
+<textarea tuiTextarea formControlName="value"></textarea>
+
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy textarea converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet>: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiTextareaModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiTextareaModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { PolymorpheusOutlet } from "@taiga-ui/polymorpheus";
+import { TuiIcon } from "@taiga-ui/core";
+import { TuiTextarea } from "@taiga-ui/kit";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiTextarea, TuiIcon, PolymorpheusOutlet],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update legacy textarea handles tui-textarea without text content: test.html 1`] = `
 {
   "0. Before": "

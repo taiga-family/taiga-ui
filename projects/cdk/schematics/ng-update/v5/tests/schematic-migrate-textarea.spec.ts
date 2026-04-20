@@ -146,5 +146,23 @@ describe('ng-update legacy textarea', () => {
         }),
     );
 
+    it(
+        'converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet>',
+        migrate({
+            component: `
+                import {TuiTextareaModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiTextareaModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            `,
+            template:
+                '<tui-textarea formControlName="value" [tuiTextfieldCustomContent]="myTpl">Bio</tui-textarea>',
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

@@ -10,6 +10,12 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    buildCustomContentIconStr,
+    CUSTOM_CONTENT_ATTRS,
+    type CustomContent,
+    registerCustomContentImports,
+} from './migrate-legacy-custom-content';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
@@ -84,9 +90,11 @@ export function migrateTextarea({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
     const elements = findElementsByTagName(template, 'tui-textarea');
+    const processable = elements.filter((element) => !hasHintContent(element));
 
-    const replacements = elements
-        .filter((element) => !hasHintContent(element))
+    registerCustomContentImports(resource, processable);
+
+    const replacements = processable
         .map((element) => buildReplacement(template, element))
         .filter((x): x is {startOffset: number; endOffset: number; replacement: string} =>
             Boolean(x),
@@ -122,6 +130,7 @@ interface MigrationContext {
     // 'dynamic' = value was a bound expression, cannot determine statically
     labelOutside: boolean | 'dynamic';
     unknownAttrs: string[]; // attrs not recognized — placed on <tui-textfield> with a TODO
+    customContent: CustomContent | null;
 }
 
 function buildReplacement(
@@ -145,10 +154,19 @@ function buildReplacement(
         placeholder: '',
         labelOutside: false,
         unknownAttrs: [],
+        customContent: null,
     };
 
     for (const attr of element.attrs) {
         const nameLower = attr.name.toLowerCase();
+
+        if (CUSTOM_CONTENT_ATTRS.has(nameLower)) {
+            ctx.customContent = {
+                value: attr.value,
+                isBinding: nameLower.startsWith('['),
+            };
+            continue;
+        }
 
         if (nameLower === 'expandable' || nameLower === '[expandable]') {
             ctx.expandableValue = attr.value || 'true';
@@ -248,6 +266,7 @@ function buildReplacement(
         ctx,
         indent,
         hintIconStr,
+        customContentIconStr: buildCustomContentIconStr(ctx.customContent, indent),
     });
     const todoComment = buildTodoComment(ctx);
 
@@ -328,8 +347,10 @@ function buildInnerContent({
     ctx,
     indent,
     hintIconStr = '',
+    customContentIconStr = '',
 }: {
     ctx: MigrationContext;
+    customContentIconStr?: string;
     element: Element;
     hintIconStr?: string;
     indent: string;
@@ -350,6 +371,7 @@ function buildInnerContent({
             : '';
 
     const hintIconLine = hintIconStr ? `${hintIconStr}\n` : '';
+    const customContentLine = customContentIconStr ? `${customContentIconStr}\n` : '';
 
     // If user already put an explicit <textarea tuiTextfieldLegacy> inside,
     // reuse it instead of generating a new one.
@@ -367,6 +389,7 @@ function buildInnerContent({
             allChildren: childElements,
             indent,
             hintIconLine,
+            customContentLine,
         })}`;
     }
 
@@ -386,7 +409,7 @@ function buildInnerContent({
         })
         .join('');
 
-    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}${hintIconLine}`;
+    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}${hintIconLine}${customContentLine}`;
 }
 
 /**
@@ -400,9 +423,11 @@ function migrateInnerTextarea({
     allChildren,
     indent,
     hintIconLine = '',
+    customContentLine = '',
 }: {
     allChildren: Element[];
     attrsToAdd: string[];
+    customContentLine?: string;
     hintIconLine?: string;
     indent: string;
     inner: Element;
@@ -457,7 +482,7 @@ function migrateInnerTextarea({
         })
         .join('');
 
-    return `${indent}${innerContent}\n${siblings}${hintIconLine}`;
+    return `${indent}${innerContent}\n${siblings}${hintIconLine}${customContentLine}`;
 }
 
 function getPlaceholderText(element: Element): string {

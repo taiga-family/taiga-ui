@@ -11,6 +11,7 @@ import {
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
 import {buildTuiInputReplacement} from './migrate-input';
+import {registerCustomContentImports} from './migrate-legacy-custom-content';
 import {buildTuiTextareaReplacement} from './migrate-textarea';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -198,6 +199,12 @@ export function migrateHintOnLegacyControls({
 
     addImportToClosestModule(resource.componentPath, 'TuiIcon', '@taiga-ui/core');
     addImportToClosestModule(resource.componentPath, 'TuiTooltip', '@taiga-ui/kit');
+    registerCustomContentImports(
+        resource,
+        elements.filter(
+            (el) => el.tagName === 'tui-input' || el.tagName === 'tui-textarea',
+        ),
+    );
 
     elements.forEach((element) => {
         const loc = element.sourceCodeLocation;
