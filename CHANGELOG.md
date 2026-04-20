@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.80.0](https://github.com/taiga-family/taiga-ui/compare/v4.79.0...v4.80.0) (2026-04-20)
+
+### 🐞 Bug Fixes
+
+- **core:** `SelectLike` fails to clear value on Backspace/Delete if caret is at the beginning/end
+  ([#13874](https://github.com/taiga-family/taiga-ui/issues/13874))
+  ([cd4ce72](https://github.com/taiga-family/taiga-ui/commit/cd4ce721d6f3a1a7316c00d9360038b0934a8fa9))
+
 ## [4.79.0](https://github.com/taiga-family/taiga-ui/compare/v4.78.1...v4.79.0) (2026-04-13)
 
 ### 🐞 Bug Fixes
