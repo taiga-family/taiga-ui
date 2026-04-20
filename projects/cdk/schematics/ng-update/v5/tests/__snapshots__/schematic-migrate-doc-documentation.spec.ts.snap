@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] extracts [heading] from tui-doc-documentation into a separate h3 above the table: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation heading="TuiInputFiles">
+                    <ng-template
+                        documentationPropertyName="disabled"
+                        documentationPropertyType="boolean"
+                        [(documentationPropertyValue)]="disabled"
+                    >
+                        Disabled state
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <h3>TuiInputFiles</h3>
+                <table tuiDocAPI>
+                    <tr
+                        name="disabled"
+                        tuiDocAPIItem
+                        type="boolean"
+                        [(value)]="disabled"
+                    >
+                        Disabled state
+                    </tr>
+                </table>
+            ",
+}
+`;
+
 exports[`ng-update tui-doc-documentation to table[tuiDocAPI] handles self-closing tui-doc-documentation tag: test.html 1`] = `
 {
   "0. Before": "<tui-doc-documentation />",
@@ -7,9 +36,260 @@ exports[`ng-update tui-doc-documentation to table[tuiDocAPI] handles self-closin
 }
 `;
 
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] keeps property name bare when documentationPropertyMode is absent: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyName="content"
+                        documentationPropertyType="PolymorpheusContent"
+                    >
+                        Content of the confirm
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="content"
+                        tuiDocAPIItem
+                        type="PolymorpheusContent"
+                    >
+                        Content of the confirm
+                    </tr>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] migrates input ng-template row to tr[tuiDocAPIItem] (happy path): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="tuiSensitive"
+                        documentationPropertyType="boolean"
+                        [(documentationPropertyValue)]="sensitive"
+                    >
+                        Sensitive mode
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="[tuiSensitive]"
+                        tuiDocAPIItem
+                        type="boolean"
+                        [(value)]="sensitive"
+                    >
+                        Sensitive mode
+                    </tr>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] migrates multiple ng-template rows inside a single tui-doc-documentation: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="total"
+                        documentationPropertyType="number"
+                        [(documentationPropertyValue)]="total"
+                    >
+                        Total amount of items
+                    </ng-template>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="size"
+                        documentationPropertyType="number"
+                        [(documentationPropertyValue)]="size"
+                    >
+                        Items per page
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="[total]"
+                        tuiDocAPIItem
+                        type="number"
+                        [(value)]="total"
+                    >
+                        Total amount of items
+                    </tr>
+                    <tr
+                        name="[size]"
+                        tuiDocAPIItem
+                        type="number"
+                        [(value)]="size"
+                    >
+                        Items per page
+                    </tr>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames [documentationPropertyValues] to [items]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="error"
+                        documentationPropertyType="TuiValidationError | string | null"
+                        [documentationPropertyValues]="errorVariants"
+                        [(documentationPropertyValue)]="selectedError"
+                    >
+                        Error value
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="[error]"
+                        tuiDocAPIItem
+                        type="TuiValidationError | string | null"
+                        [items]="errorVariants"
+                        [(value)]="selectedError"
+                    >
+                        Error value
+                    </tr>
+                </table>
+            ",
+}
+`;
+
 exports[`ng-update tui-doc-documentation to table[tuiDocAPI] replaces tui-doc-documentation tag with table and adds tuiDocAPI attribute: test.html 1`] = `
 {
   "0. Before": "<tui-doc-documentation></tui-doc-documentation>",
   "1. After": "<table tuiDocAPI></table>",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames one-way [documentationPropertyValue] + (documentationPropertyValueChange) to [value] + (valueChange): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="multiple"
+                        documentationPropertyType="boolean"
+                        [documentationPropertyValue]="multiple"
+                        (documentationPropertyValueChange)="multipleChange($event)"
+                    >
+                        Allows to upload several files
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="[multiple]"
+                        tuiDocAPIItem
+                        type="boolean"
+                        [value]="multiple"
+                        (valueChange)="multipleChange($event)"
+                    >
+                        Allows to upload several files
+                    </tr>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] wraps input property name with square brackets: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="appearance"
+                        documentationPropertyType="string"
+                        [documentationPropertyValues]="appearances"
+                        [(documentationPropertyValue)]="appearance"
+                    >
+                        Appearance of the confirming button
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="[appearance]"
+                        tuiDocAPIItem
+                        type="string"
+                        [items]="appearances"
+                        [(value)]="appearance"
+                    >
+                        Appearance of the confirming button
+                    </tr>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] wraps input-output property name with two-way binding brackets: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input-output"
+                        documentationPropertyName="expanded"
+                        documentationPropertyType="boolean"
+                        [(documentationPropertyValue)]="expanded"
+                    >
+                        Expanded/collapsed state
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="[(expanded)]"
+                        tuiDocAPIItem
+                        type="boolean"
+                        [(value)]="expanded"
+                    >
+                        Expanded/collapsed state
+                    </tr>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] wraps output property name with parentheses and strips documentationProperty export from template reference variable: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        #documentationPropertyReject="documentationProperty"
+                        documentationPropertyMode="output"
+                        documentationPropertyName="reject"
+                        documentationPropertyType="TuiFileLike[]"
+                    >
+                        Emits files that were rejected.
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        #documentationPropertyReject
+                        name="(reject)"
+                        tuiDocAPIItem
+                        type="TuiFileLike[]"
+                    >
+                        Emits files that were rejected.
+                    </tr>
+                </table>
+            ",
 }
 `;
