@@ -866,36 +866,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiOnboardingFlowDialog',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-        to: {
-            name: 'TuiResponsiveDialog',
-            moduleSpecifier: '@taiga-ui/addon-mobile',
-        },
-    },
-    {
-        from: {
-            name: 'TuiOnboardingFlowDialogService',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-        to: {
-            name: 'TuiResponsiveDialogService',
-            moduleSpecifier: '@taiga-ui/addon-mobile',
-        },
-    },
-    {
-        from: {
-            name: 'TuiOnboardingDialogDirective',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-        to: {
-            name: 'TuiResponsiveDialog',
-            moduleSpecifier: '@taiga-ui/addon-mobile',
-        },
-    },
-    {
-        from: {
             name: 'TuiMobileCalendarDropdownNew',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },

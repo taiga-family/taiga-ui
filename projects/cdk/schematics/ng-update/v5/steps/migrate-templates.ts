@@ -1,6 +1,5 @@
 import {
     type DevkitFileSystem,
-    getPackageJsonDependency,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
@@ -53,7 +52,6 @@ import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
-import {migrateProprietaryTextfieldIcons} from './templates/migrate-proprietary-textfield-icons';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
@@ -93,10 +91,6 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
-    const hasProprietaryPackage = !!getPackageJsonDependency(
-        fileSystem.tree,
-        '@taiga-ui/proprietary',
-    );
 
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
@@ -131,7 +125,6 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateCloseable,
         migrateSidebar,
         migrateFormatPhonePipe,
-        ...(hasProprietaryPackage ? [migrateProprietaryTextfieldIcons] : []),
         migrateHintOnLegacyControls,
         migrateInput,
         migrateTextarea,
