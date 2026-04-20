@@ -152,21 +152,6 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.200.0
-        with:
-          port: ${{ env.NG_SERVER_PORT }}
-          directory: ${{ env.DIST }}
-          replaceBaseUrl: false
-
-      - name: Run screenshot tests on ${{ env.DIST }}
-        run: |
-          npx nx e2e demo-playwright -- \
-            --update-snapshots \
-            --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
-      - run: tree ./projects/demo-playwright/snapshots
-        continue-on-error: true
-
       - uses: taiga-family/ci/actions/run/clone@v1.200.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
@@ -179,6 +164,21 @@ jobs:
           replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
+        run: |
+          npx nx e2e demo-playwright -- \
+            --update-snapshots \
+            --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+      - run: tree ./projects/demo-playwright/snapshots
+        continue-on-error: true
+
+      - uses: taiga-family/ci/actions/run/serve@v1.200.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrl: false
+
+      - name: Run screenshot tests on ${{ env.DIST }}
         continue-on-error: true
         run: |
           npx nx e2e demo-playwright -- \
@@ -189,7 +189,10 @@ jobs:
       - run: tree ./projects/demo-playwright/tests-results
         continue-on-error: true
 
-      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.200.0
+      #      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.200.0
+      - run:
+          npx ts-node -O '{"moduleResolution":"node10"}' -e "import { tuiCombinePlaywrightFailedScreenshots as run }
+          from '@taiga-ui/testing/visual-testing'; run();"
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v7.0.0

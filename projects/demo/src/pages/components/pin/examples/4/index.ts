@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
+import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [],
     templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
     changeDetection,
 })
-export default class Page {
-    protected readonly examples = ['Default', 'Dot', 'Openable', 'Test'];
-}
+export default class Example {}
