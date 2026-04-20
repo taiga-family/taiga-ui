@@ -5,9 +5,9 @@ import {
     ElementRef,
     inject,
     input,
+    type Signal,
     signal,
-    Signal,
-    WritableSignal,
+    type WritableSignal,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -49,12 +49,12 @@ export class TuiDropdownHover extends TuiDriver {
         read: ElementRef,
     });
 
-    public readonly hovered: Signal<boolean> = signal(false);
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
     private readonly activeZone = inject(TuiActiveZone);
     private readonly open = inject(TuiDropdownOpen, {optional: true});
+
     private readonly stream$ = merge(
         /**
          * Dropdown can be removed not only via click/touch –
@@ -90,6 +90,7 @@ export class TuiDropdownHover extends TuiDriver {
         share(),
     );
 
+    public readonly hovered: Signal<boolean> = signal(false);
     public readonly tuiDropdownShowDelay = input(this.options.showDelay);
     public readonly tuiDropdownHideDelay = input(this.options.hideDelay);
     public readonly type = 'dropdown';
