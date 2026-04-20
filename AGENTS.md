@@ -52,7 +52,7 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 ## Angular Best Practices
 
 - Use standalone components and standalone directives/pipes by default. With Angular 19 components, directives and pipes
-  are standalone by default. Do not use standalone flag for each class, because it is already the default.
+  are standalone by default. Do not use the standalone flag for each class, because it is already the default.
 - Use the new functional input/output APIs when appropriate (e.g., `input.required<T>()`, `input.optional<T>()`) to
   strongly type and enforce component inputs.
 - Use signals for reactive state management: local component state with `signal()`, derived state with `computed()`,
