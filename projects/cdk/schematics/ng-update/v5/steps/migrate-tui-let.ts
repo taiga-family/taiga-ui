@@ -1,9 +1,9 @@
 import {findElementsWithAttribute} from '@angular/cdk/schematics';
 import {type Tree, type UpdateRecorder} from '@angular-devkit/schematics';
-import {createProject, errorLog, saveActiveProject, setActiveProject} from 'ng-morph';
+import {errorLog, saveActiveProject} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
-import {ALL_FILES, ALL_TS_FILES} from '../../../constants/file-globs';
+import {ALL_FILES} from '../../../constants/file-globs';
 import {type TuiSchema} from '../../../ng-add/schema';
 import {removeModule} from '../../../utils/remove-module';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
@@ -21,9 +21,7 @@ const STRUCTURAL_ATTR = '*tuiLet';
 
 export function tuiLetMigration(tree: Tree, options: TuiSchema): void {
     const fileSystem = getFileSystem(tree);
-    const project = createProject(tree, '/', ALL_TS_FILES);
 
-    setActiveProject(project);
     removeModule('TuiLet', '@taiga-ui/cdk');
 
     const resources = getComponentTemplates(ALL_FILES);

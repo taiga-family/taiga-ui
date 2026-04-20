@@ -3,6 +3,14 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Breakpoint token', () => {
+    test('Breakpoints table', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Breakpoints);
+
+        await expect
+            .soft(page.locator('[tuiTable]').first())
+            .toHaveScreenshot('breakpoints-table.png');
+    });
+
     [
         // smartphone (mobile)
         {width: 320, height: 480},
