@@ -65,7 +65,7 @@
                                 size="s"
                                 tuiButton
                                 type="button"
-                                [attr.aria-label]="'Edit example on ' + (codeEditor?.name || 'external editor')"
+                                [attr.aria-label]="`Edit example on ${codeEditor?.name || 'external editor'}`"
                             >
                                 Edit on {{ codeEditor?.name }}
                             </button>
@@ -78,8 +78,8 @@
                         size="xs"
                         tuiIconButton
                         type="button"
-                        [iconStart]="fullscreen ? icons.shrink : icons.expand"
                         [attr.aria-label]="fullscreen ? 'Exit fullscreen' : 'Enter fullscreen'"
+                        [iconStart]="fullscreen ? icons.shrink : icons.expand"
                         (click)="fullscreen = !fullscreen"
                     >
                         Fullscreen
