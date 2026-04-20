@@ -114,8 +114,8 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 - Preserve existing legacy `*ngIf` / `*ngFor` code when touching older templates unless there is a clear reason to
   migrate it as part of the change.
 - Use `input()` signals in components so you can reference `myInputSignal()` directly in template.
-- Writable signals are valid with Angular two-way binding syntax (`[(property)]`). Example: `[(open)]="isOpen"` is allowed
-  when `isOpen` is a writable signal.
+- Writable signals are valid with Angular two-way binding syntax (`[(property)]`). Example: `[(open)]="isOpen"` is
+  allowed when `isOpen` is a writable signal.
 
 ## Readability
 
