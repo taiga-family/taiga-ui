@@ -44,12 +44,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
     },
     {
-        name: 'TuiFeedItemDetailsComponent',
-        moduleSpecifier: '@taiga-ui/proprietary',
-        message:
-            'TuiFeedItemDetailsComponent has been removed. Use BlockDetails instead. See https://taiga-ui.dev/layout/block-details',
-    },
-    {
         name: 'TuiToCountryCodePipe',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
