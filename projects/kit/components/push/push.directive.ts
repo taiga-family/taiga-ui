@@ -1,4 +1,4 @@
-import {DestroyRef, Directive, inject} from '@angular/core';
+import {Directive} from '@angular/core';
 import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 
 import {TuiPushService} from './push.service';
@@ -13,10 +13,4 @@ import {TuiPushService} from './push.service';
         },
     ],
 })
-export class TuiPushDirective {
-    private readonly sub = inject(TuiPortalDirective).openChange.subscribe(() => {});
-
-    constructor() {
-        inject(DestroyRef).onDestroy(() => this.sub.unsubscribe());
-    }
-}
+export class TuiPushDirective {}
