@@ -88,7 +88,6 @@ jobs:
 
       - name: Run tests for current state
         run: npx nx component-test demo-cypress
-        continue-on-error: true
 
       - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@v1.200.0
 
