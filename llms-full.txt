@@ -6065,6 +6065,7 @@ export default class Example {}
 <button appearance="secondary" size="m" tuiButton type="button" >
 <tui-icon icon="@tui.users" /> Users </button>
 <button appearance="outline" size="s" tuiButton tuiChevron type="button" > More </button>
+<button iconStart="@font.help_outline" size="m" tuiIconButton type="button" > Help </button>
 <button appearance="secondary-destructive" iconStart="@tui.heart" size="xs" tuiIconButton type="button" [style.border-radius.%]="100" > Favorite </button>
 ```
 **TypeScript:**
@@ -6091,6 +6092,8 @@ export default class Example {}
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+
+    --tui-font-icon: 'Material Symbols Outlined';
 }
 ```
 
@@ -11050,12 +11053,12 @@ export default class Example {
 ```html
 <tui-textfield tuiChevron tuiDropdownMobile >
 <input placeholder="Select destination" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown [items]="countries() | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown [items]="countries | tuiFilterByInput" />
 </tui-textfield>
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, inject, type Signal, ViewEncapsulation} from '@angular/core';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
@@ -11077,10 +11080,7 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga
     changeDetection,
 })
 export default class Example {
-    protected readonly countries: Signal<string[]> = computed(() =>
-        Object.values(inject(TUI_COUNTRIES)),
-    );
-
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
     protected value: string | null = null;
 }
 ```
@@ -23202,7 +23202,7 @@ import {
     tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,
 } from '@taiga-ui/kit';
-import {getCountries} from 'libphonenumber-js';
+import {getCountries} from 'libphonenumber-js/max';
 import {defer} from 'rxjs';
 
 @Component({
@@ -23247,7 +23247,7 @@ import {
     tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,
 } from '@taiga-ui/kit';
-import {getCountries} from 'libphonenumber-js';
+import {getCountries} from 'libphonenumber-js/max';
 import {defer} from 'rxjs';
 
 @Component({
@@ -23348,7 +23348,7 @@ import {
     TuiInputPhoneInternational,
     tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
-import {getCountries} from 'libphonenumber-js';
+import {getCountries} from 'libphonenumber-js/max';
 import {defer} from 'rxjs';
 
 @Component({
