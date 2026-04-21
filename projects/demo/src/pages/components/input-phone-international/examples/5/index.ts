@@ -7,7 +7,7 @@ import {
     TuiInputPhoneInternational,
     tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
-import {getCountries} from 'libphonenumber-js';
+import {getCountries} from 'libphonenumber-js/max';
 import {defer} from 'rxjs';
 
 @Component({

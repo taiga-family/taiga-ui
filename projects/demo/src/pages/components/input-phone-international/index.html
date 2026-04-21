@@ -136,6 +136,25 @@
                             .
                         </p>
 
+                        <div
+                            tuiNotification
+                            class="tui-space_top-4"
+                        >
+                            <strong>Note:</strong>
+                            Importing utilities directly from the root of
+                            <code>libphonenumber-js</code>
+                            automatically includes the default (min) metadata in your bundle. To optimize bundle size
+                            and ensure consistency, it is recommended to import from specific entry points like
+                            <code>libphonenumber-js/min</code>
+                            ,
+                            <code>libphonenumber-js/max</code>
+                            , or
+                            <code>libphonenumber-js/mobile</code>
+                            . Alternatively, you can use
+                            <code>libphonenumber-js/core</code>
+                            and provide the required metadata explicitly to the utility functions.
+                        </div>
+
                         <p class="tui-space_bottom-0">
                             Use
                             <code>TuiSortCountriesPipe</code>
