@@ -6074,6 +6074,7 @@ export default class Example {}
 &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; &gt;
 &lt;tui-icon icon=&quot;@tui.users&quot; /&gt; Users &lt;/button&gt;
 &lt;button appearance=&quot;outline&quot; size=&quot;s&quot; tuiButton tuiChevron type=&quot;button&quot; &gt; More &lt;/button&gt;
+&lt;button iconStart=&quot;@font.help_outline&quot; size=&quot;m&quot; tuiIconButton type=&quot;button&quot; &gt; Help &lt;/button&gt;
 &lt;button appearance=&quot;secondary-destructive&quot; iconStart=&quot;@tui.heart&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [style.border-radius.%]=&quot;100&quot; &gt; Favorite &lt;/button&gt;
 ```
 **TypeScript:**
@@ -6100,6 +6101,8 @@ export default class Example {}
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+
+    --tui-font-icon: &#039;Material Symbols Outlined&#039;;
 }
 ```
 
@@ -11059,12 +11062,12 @@ export default class Example {
 ```html
 &lt;tui-textfield tuiChevron tuiDropdownMobile &gt;
 &lt;input placeholder=&quot;Select destination&quot; tuiComboBox [(ngModel)]=&quot;value&quot; /&gt;
-&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;countries() | tuiFilterByInput&quot; /&gt;
+&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;countries | tuiFilterByInput&quot; /&gt;
 &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, inject, type Signal, ViewEncapsulation} from &#039;@angular/core&#039;;
+import {Component, inject, ViewEncapsulation} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDropdownMobile} from &#039;@taiga-ui/addon-mobile&#039;;
@@ -11086,10 +11089,7 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from &#039;@
     changeDetection,
 })
 export default class Example {
-    protected readonly countries: Signal&lt;string[]&gt; = computed(() =&gt;
-        Object.values(inject(TUI_COUNTRIES)),
-    );
-
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
     protected value: string | null = null;
 }
 ```
@@ -23211,7 +23211,7 @@ import {
     tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,
 } from &#039;@taiga-ui/kit&#039;;
-import {getCountries} from &#039;libphonenumber-js&#039;;
+import {getCountries} from &#039;libphonenumber-js/max&#039;;
 import {defer} from &#039;rxjs&#039;;
 
 @Component({
@@ -23256,7 +23256,7 @@ import {
     tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,
 } from &#039;@taiga-ui/kit&#039;;
-import {getCountries} from &#039;libphonenumber-js&#039;;
+import {getCountries} from &#039;libphonenumber-js/max&#039;;
 import {defer} from &#039;rxjs&#039;;
 
 @Component({
@@ -23357,7 +23357,7 @@ import {
     TuiInputPhoneInternational,
     tuiInputPhoneInternationalOptionsProvider,
 } from &#039;@taiga-ui/kit&#039;;
-import {getCountries} from &#039;libphonenumber-js&#039;;
+import {getCountries} from &#039;libphonenumber-js/max&#039;;
 import {defer} from &#039;rxjs&#039;;
 
 @Component({
