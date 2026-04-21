@@ -209,4 +209,13 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
             return value;
         },
     },
+    {
+        attrNames: ['tuiSurface', '[tuiSurface]'],
+        filterFn: (el) => hasElementAttribute(el, 'tuiCardLarge'),
+        newAttrName: 'appearance',
+        valueReplacer: [
+            {from: "'elevated'", to: 'floating'},
+            {from: 'elevated', to: 'floating'},
+        ],
+    },
 ];
