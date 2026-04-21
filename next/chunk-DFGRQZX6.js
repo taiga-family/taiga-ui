@@ -1,1 +1,0 @@
-import{gb as a}from"./chunk-O6PPQ2JJ.js";import{Pa as o,ta as e}from"./chunk-K67SBWLP.js";var t=class t extends a{};t.\u0275fac=(()=>{let r;return function(c){return(r||(r=o(t)))(c||t)}})(),t.\u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"});var i=t;export{i as a};
