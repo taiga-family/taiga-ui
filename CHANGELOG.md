@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/taiga-family/taiga-ui/compare/v5.2.0...v5.3.0) (2026-04-21)
+
+### 🚀 Features
+
+- **styles:** change weight fonts ([#13871](https://github.com/taiga-family/taiga-ui/issues/13871))
+  ([9673e73](https://github.com/taiga-family/taiga-ui/commit/9673e73b7810e494032e963d6fad9bbe655aebbc))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `DocCode` displays raw content as a fallback during SSR
+  ([#13797](https://github.com/taiga-family/taiga-ui/issues/13797))
+  ([f7f0471](https://github.com/taiga-family/taiga-ui/commit/f7f047133cec1da3b11b015db632b2eb5fd8c32c))
+- **addon-table:** `Table` does not display cell with default plain template
+  ([#13888](https://github.com/taiga-family/taiga-ui/issues/13888))
+  ([2850155](https://github.com/taiga-family/taiga-ui/commit/2850155360ff9f33f05b5752143fbf14565a7ad5))
+- **core:** `IconButton` fix displaying font icons ([#13833](https://github.com/taiga-family/taiga-ui/issues/13833))
+  ([ff72eb0](https://github.com/taiga-family/taiga-ui/commit/ff72eb08f76fcadc110bde024f8f3e8abc936608))
+- **core:** `SelectLike` fails to clear value on Backspace/Delete if caret is at the beginning/end
+  ([#13873](https://github.com/taiga-family/taiga-ui/issues/13873))
+  ([2d922d7](https://github.com/taiga-family/taiga-ui/commit/2d922d7d274ba4b820511c4e5d2fa643f9de40ed))
+- **core:** fix textfield-multi with label and chip ([#13884](https://github.com/taiga-family/taiga-ui/issues/13884))
+  ([0d083ce](https://github.com/taiga-family/taiga-ui/commit/0d083cebe2bf2364bac8fe257147dc283b921041))
+- **kit:** `InputNumber` is incompatible with postfix containing digits
+  ([#13631](https://github.com/taiga-family/taiga-ui/issues/13631))
+  ([8c1260f](https://github.com/taiga-family/taiga-ui/commit/8c1260f055448acc617935d2e34d58d0c3db24d9))
+- **kit:** failed to execute setSelectionRange on HTMLInputElement
+  ([#13878](https://github.com/taiga-family/taiga-ui/issues/13878))
+  ([0c869ac](https://github.com/taiga-family/taiga-ui/commit/0c869acd9cdbbdb74fce4062869820b74a2862bb))
+- **layout:** reset vertical margin on `tuiList` ([#13882](https://github.com/taiga-family/taiga-ui/issues/13882))
+  ([c88cf43](https://github.com/taiga-family/taiga-ui/commit/c88cf435055f68aef7d1541520eff5602f8bc96d))
+- **schematics:** incomplete migration for `tui-doc-documentation` => `table[tuiDocAPI]`
+  ([#13897](https://github.com/taiga-family/taiga-ui/issues/13897))
+  ([57e32f9](https://github.com/taiga-family/taiga-ui/commit/57e32f9f3012bd4aaab5bc8baa932dc9c838eb0a))
+- **schematics:** invalid migration for `tuiTextfieldCustomContent`
+  ([#13899](https://github.com/taiga-family/taiga-ui/issues/13899))
+  ([66fe57b](https://github.com/taiga-family/taiga-ui/commit/66fe57bf72df492decdbf9b546c9706670570c55))
+
 ## [5.2.0](https://github.com/taiga-family/taiga-ui/compare/v5.1.0...v5.2.0) (2026-04-13)
 
 ### 🚀 Features
