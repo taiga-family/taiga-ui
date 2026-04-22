@@ -15,7 +15,7 @@ const imageDiffConfig = {
         FILENAME: 'report-summary',
         OVERWRITE: true,
     },
-    RETRY_OPTIONS: {doNotFail: process.env.CI !== 'true'},
+    RETRY_OPTIONS: {doNotFail: process.env.CI || false},
 };
 
 export default defineConfig({
