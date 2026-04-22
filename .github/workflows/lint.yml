@@ -20,8 +20,8 @@ jobs:
       - uses: actions/checkout@v6.0.2
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@v1.200.0
-      - uses: taiga-family/ci/actions/setup/node@v1.200.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.205.0
+      - uses: taiga-family/ci/actions/setup/node@v1.205.0
         with:
           audit: true
 
@@ -42,7 +42,7 @@ jobs:
               npm run lint
               HTML_ESLINT=true npm run lint
           fi
-      - uses: taiga-family/ci/actions/auto/push@v1.200.0
+      - uses: taiga-family/ci/actions/auto/push@v1.205.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
