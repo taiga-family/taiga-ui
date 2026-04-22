@@ -200,6 +200,185 @@ import { TuiSelect } from "@taiga-ui/kit";
 }
 `;
 
+exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are registered works with inline template (dynamic content => TuiInput + TuiIcon + PolymorpheusOutlet): test.ts 1`] = `
+{
+  "0. Before": "
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import {MaskitoDirective} from '@maskito/angular';
+                    import {TuiFlagPipe} from '@taiga-ui/core';
+                    import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+
+                    import mask from './mask';
+
+                    @Component({
+                        selector: 'placeholder-doc-example-2',
+                        imports: [
+                            FormsModule,
+                            MaskitoDirective,
+                            TuiFlagPipe,
+                            TuiInputModule,
+                            TuiTextfieldControllerModule,
+                        ],
+                        template: \`
+                            <tui-input
+                                [style.max-width.rem]="20"
+                                [tuiTextfieldCustomContent]="usFlag"
+                                [(ngModel)]="value"
+                            >
+                                Enter US phone number
+                                <input
+                                    inputmode="tel"
+                                    tuiTextfieldLegacy
+                                    [maskito]="maskitoOptions"
+                                />
+
+                                <ng-template #usFlag>
+                                    <img
+                                        alt="Flag of the United States"
+                                        width="28"
+                                        [src]="'US' | tuiFlag"
+                                        [style.border-radius.%]="50"
+                                    />
+                                </ng-template>
+                            </tui-input>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class PlaceholderDocExample2 {
+                        protected readonly maskitoOptions = mask;
+                        protected value = '';
+                    }
+                ",
+  "1. After": "import { PolymorpheusOutlet } from "@taiga-ui/polymorpheus";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+import { TuiFlagPipe } from "@taiga-ui/kit";
+
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import {MaskitoDirective} from '@maskito/angular';
+                    import mask from './mask';
+
+                    @Component({
+                        selector: 'placeholder-doc-example-2',
+                        imports: [
+                            FormsModule,
+                            MaskitoDirective,
+                            TuiFlagPipe,
+                            TuiInput,
+                            TuiIcon,
+                            PolymorpheusOutlet
+                        ],
+                        template: \`
+                            <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
+     - "[style" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.
+-->
+                            <tui-textfield [style.max-width.rem]="20">
+                            <input
+                                    inputmode="tel"
+                                    tuiInput
+                                    [maskito]="maskitoOptions" [(ngModel)]="value"/>
+<ng-template #usFlag>
+                                    <img
+                                        alt="Flag of the United States"
+                                        width="28"
+                                        [src]="'US' | tuiFlag"
+                                        [style.border-radius.%]="50"
+                                    />
+                                </ng-template>
+                            <tui-icon
+                                *polymorpheusOutlet="usFlag as src"
+                                [icon]="src"
+                            />
+                            </tui-textfield>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class PlaceholderDocExample2 {
+                        protected readonly maskitoOptions = mask;
+                        protected value = '';
+                    }
+                ",
+}
+`;
+
+exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are registered works with inline template (static icon => TuiInput + TuiIcon): test.ts 1`] = `
+{
+  "0. Before": "
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import {MaskitoDirective} from '@maskito/angular';
+                    import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+
+                    import mask from './mask';
+
+                    @Component({
+                        selector: 'placeholder-doc-example-3',
+                        imports: [
+                            FormsModule,
+                            MaskitoDirective,
+                            TuiInputModule,
+                            TuiTextfieldControllerModule,
+                        ],
+                        template: \`
+                            <tui-input
+                                tuiTextfieldCustomContent="@tui.calendar"
+                                [style.max-width.rem]="20"
+                                [(ngModel)]="value"
+                            >
+                                Enter date
+                                <input
+                                    inputmode="numeric"
+                                    tuiTextfieldLegacy
+                                    [maskito]="maskitoOptions"
+                                />
+                            </tui-input>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class PlaceholderDocExample3 {
+                        protected readonly maskitoOptions = mask;
+                        protected value = '';
+                    }
+                ",
+  "1. After": "import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import {MaskitoDirective} from '@maskito/angular';
+                    import mask from './mask';
+
+                    @Component({
+                        selector: 'placeholder-doc-example-3',
+                        imports: [
+                            FormsModule,
+                            MaskitoDirective,
+                            TuiInput,
+                            TuiIcon
+                        ],
+                        template: \`
+                            <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
+     - "[style" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.
+-->
+                            <tui-textfield [style.max-width.rem]="20">
+                            <input
+                                    inputmode="numeric"
+                                    tuiInput
+                                    [maskito]="maskitoOptions" [(ngModel)]="value"/>
+
+                            <tui-icon icon="@tui.calendar" />
+                            </tui-textfield>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class PlaceholderDocExample3 {
+                        protected readonly maskitoOptions = mask;
+                        protected value = '';
+                    }
+                ",
+}
+`;
+
 exports[`ng-update legacy tuiTextfieldCustomContent across controls static string form adds <tui-icon icon="..."> tui-input-date: test.html 1`] = `
 {
   "0. Before": "<tui-input-date formControlName="value" tuiTextfieldCustomContent="@tui.calendar">Label</tui-input-date>",
