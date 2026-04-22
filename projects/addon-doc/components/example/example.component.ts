@@ -7,6 +7,7 @@ import {
     inject,
     input,
     type OnChanges,
+    Signal,
     signal,
     type Type,
 } from '@angular/core';
@@ -109,12 +110,12 @@ export class TuiDocExample implements OnChanges {
     protected readonly copy = computed(() => this.copyTexts()[0]);
     protected readonly loading = signal(false);
     protected readonly id = computed(() => tuiToKebab(this.heading()));
-    protected readonly processor = toSignal(
+    protected readonly processor: Signal<Record<string, string>> = toSignal(
         this.rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
             map((value) => this.processContent(value)),
         ),
-        {initialValue: {} as unknown as Record<string, string>},
+        {initialValue: {}},
     );
 
     public readonly heading = input('');
