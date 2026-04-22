@@ -1,5 +1,9 @@
 import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {type Attribute, type ElementLocation} from 'parse5/dist/common/token';
+import {type Token} from 'parse5';
+
+type Attribute = Token.Attribute;
+
+type ElementLocation = Token.ElementLocation;
 
 export function removeAttrs(
     attrs: Attribute[],
