@@ -7,7 +7,7 @@ import {
     inject,
     input,
     type OnChanges,
-    Signal,
+    type Signal,
     signal,
     type Type,
 } from '@angular/core';
