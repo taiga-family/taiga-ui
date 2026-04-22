@@ -114,7 +114,7 @@ export class TuiDocExample implements OnChanges {
             switchMap(tuiRawLoadRecord),
             map((value) => this.processContent(value)),
         ),
-        {initialValue: {} as unknown as Record<string, string>},
+        {initialValue: {}},
     );
 
     public readonly heading = input('');

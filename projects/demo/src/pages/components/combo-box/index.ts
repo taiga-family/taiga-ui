@@ -73,7 +73,7 @@ export default class PageComponent extends Array {
     );
 
     protected readonly matcherVariants: ReadonlyArray<TuiStringMatcher<Country>> = [
-        TUI_STRICT_MATCHER as TuiStringMatcher<Country>,
+        TUI_STRICT_MATCHER,
         (item: Country, search: string) => item.id === search,
     ];
 

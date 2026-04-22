@@ -140,7 +140,7 @@ export function tuiPure(
                 value: patched,
             });
 
-            return patched as unknown;
+            return patched;
         },
     };
 }

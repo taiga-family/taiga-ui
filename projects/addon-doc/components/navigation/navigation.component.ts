@@ -172,7 +172,7 @@ export class TuiDocNavigation {
     }
 
     protected $pages<T extends TuiDocRoutePage[]>(pages: T): readonly TuiDocRoutePage[] {
-        return pages as TuiDocRoutePage[];
+        return pages;
     }
 
     protected isActive(route: string): boolean {

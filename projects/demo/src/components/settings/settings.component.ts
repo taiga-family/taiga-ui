@@ -96,7 +96,7 @@ export class SettingsComponent {
         theme: tuiIsString(this.stored) ? this.theme() : null,
         direction: 'ltr',
         language: this.switcher.language,
-        platform: 'web' as 'android' | 'ios' | 'web',
+        platform: 'web',
     });
 
     protected readonly sync = this.form.valueChanges

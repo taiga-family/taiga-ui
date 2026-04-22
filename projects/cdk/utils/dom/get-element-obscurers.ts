@@ -39,7 +39,5 @@ export function tuiGetElementObscures(element: Element): readonly Element[] | nu
         (el) => !element.contains(el) && !el.contains(element),
     );
 
-    return filtered.length === 4
-        ? (filtered as [Element, Element, Element, Element])
-        : null;
+    return filtered.length === 4 ? filtered : null;
 }
