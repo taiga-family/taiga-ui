@@ -23,6 +23,10 @@ export class TuiDropdownA11y {
         dropdown?.location.nativeElement.setAttribute('id', this.id);
         dropdown?.location.nativeElement.setAttribute('role', this.tuiDropdownRole());
 
+        if (host.tagName.toLowerCase() === 'a') {
+            host.setAttribute('role', 'button');
+        }
+
         if (content) {
             return;
         }

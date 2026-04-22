@@ -28,6 +28,17 @@ describe('TuiDropdownA11y', () => {
                         </button>
                     </tui-data-list>
                 </tui-textfield>
+                <a
+                    id="anchor"
+                    [tuiDropdown]="dropdown"
+                >
+                    Anchor
+                </a>
+                <ng-template #dropdown>
+                    <tui-data-list>
+                        <button tuiOption>Option</button>
+                    </tui-data-list>
+                </ng-template>
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -86,5 +97,12 @@ describe('TuiDropdownA11y', () => {
         expect(host.getAttribute('aria-expanded')).toBe('true');
         expect(host.getAttribute('aria-controls')).toBe(dropdown.id);
         expect(host.getAttribute('aria-haspopup')).toBe(dropdown.getAttribute('role'));
+    });
+
+    it('anchor element gets role="button" when used with dropdown', () => {
+        const anchor = fixture.debugElement.query(By.css('#anchor')).nativeElement;
+
+        expect(anchor.getAttribute('role')).toBe('button');
+        expect(anchor.getAttribute('aria-haspopup')).toBe('listbox');
     });
 });
