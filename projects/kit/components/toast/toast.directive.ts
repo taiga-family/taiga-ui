@@ -54,7 +54,7 @@ class Styles {}
     hostDirectives: [TuiWithIcons, TuiShrinkWrapDirective],
 })
 export class TuiToastDirective {
-    public readonly tuiShrinkWrap = input('min(calc(100vw - 2rem), 25rem)');
+    public readonly tuiShrinkWrap = input('min(calc(100vw - 4rem), 25rem)');
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly width = tuiDirectiveBinding(
