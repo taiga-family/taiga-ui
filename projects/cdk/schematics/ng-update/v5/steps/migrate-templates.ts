@@ -1,16 +1,15 @@
+import {type DevkitFileSystem, type UpdateRecorder} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../../constants';
+import {type TuiSchema} from '../../../ng-add/schema';
+import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
 import {
-    type DevkitFileSystem,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-    type UpdateRecorder,
-} from 'ng-morph';
-
-import {ALL_TS_FILES} from '../../../constants';
-import {type TuiSchema} from '../../../ng-add/schema';
-import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
+} from '../../../utils/colored-log';
 import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';

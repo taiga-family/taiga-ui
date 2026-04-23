@@ -2,17 +2,16 @@ import {type Tree} from '@angular-devkit/schematics';
 import {
     createProject,
     getSourceFiles,
-    infoLog,
     Node,
     saveActiveProject,
     setActiveProject,
     SyntaxKind,
-    titleLog,
 } from 'ng-morph';
 import {type CallExpression, type ImportDeclaration} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../../../constants';
 import {type TuiSchema} from '../../../../ng-add/schema';
+import {infoLog, titleLog} from '../../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../../utils/get-named-import-references';
 import {removeImport} from '../../../../utils/import-manipulations';
 import {insertTodo} from '../../../../utils/insert-todo';

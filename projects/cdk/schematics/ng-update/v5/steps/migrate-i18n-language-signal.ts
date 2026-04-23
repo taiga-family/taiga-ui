@@ -1,8 +1,9 @@
 import {type Tree} from '@angular-devkit/schematics';
-import {infoLog, Node, saveActiveProject} from 'ng-morph';
+import {Node, saveActiveProject} from 'ng-morph';
 
 import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
+import {infoLog} from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
 const ANGULAR_CORE = '@angular/core';

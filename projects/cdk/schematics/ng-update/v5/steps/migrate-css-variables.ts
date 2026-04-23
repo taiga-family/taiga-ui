@@ -1,13 +1,13 @@
 import {type Tree} from '@angular-devkit/schematics';
+import {saveActiveProject} from 'ng-morph';
+
+import {type TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
-    saveActiveProject,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-} from 'ng-morph';
-
-import {type TuiSchema} from '../../../ng-add/schema';
+} from '../../../utils/colored-log';
 import {addCommentForStylesFiles} from '../../utils/add-comment-for-styles';
 import {getFileSystem} from '../../utils/get-file-system';
 import {replaceText} from '../../utils/replace-text';

@@ -1,16 +1,14 @@
+import {getClasses, getDecorators, Node} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../constants';
+import {type TuiSchema} from '../../ng-add/schema';
 import {
-    getClasses,
-    getDecorators,
     infoLog,
-    Node,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-} from 'ng-morph';
-
-import {ALL_TS_FILES} from '../../constants';
-import {type TuiSchema} from '../../ng-add/schema';
+} from '../../utils/colored-log';
 
 export function removeDuplicates(options: TuiSchema): void {
     !options['skip-logs'] &&
