@@ -1,7 +1,7 @@
 import {type Tree} from '@angular-devkit/schematics';
-import {infoLog} from 'ng-morph';
 
 import {type TuiSchema} from '../../../../ng-add/schema';
+import {infoLog} from '../../../../utils/colored-log';
 
 const TAIGA_TS_CONFIG_PATH = 'node_modules/@taiga-ui/tsconfig';
 

@@ -1,10 +1,11 @@
 import {findElementsWithAttribute} from '@angular/cdk/schematics';
 import {type Tree, type UpdateRecorder} from '@angular-devkit/schematics';
-import {errorLog, saveActiveProject} from 'ng-morph';
+import {saveActiveProject} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
 import {ALL_FILES} from '../../../constants/file-globs';
 import {type TuiSchema} from '../../../ng-add/schema';
+import {errorLog} from '../../../utils/colored-log';
 import {removeModule} from '../../../utils/remove-module';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {

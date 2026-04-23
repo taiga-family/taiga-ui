@@ -1,8 +1,7 @@
 import {resolve} from 'node:path';
 
-import {infoLog} from 'ng-morph';
-
 import {version} from '../package.json';
+import {infoLog} from '../projects/cdk/schematics/utils/colored-log';
 import {execute} from './shared/execute';
 import {IGNORABLE_TAIGA_PACKAGES} from './shared/ignorable-packages';
 import {overwriteVersion} from './shared/overwrite-version';
