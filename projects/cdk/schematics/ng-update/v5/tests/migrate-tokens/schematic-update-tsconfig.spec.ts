@@ -1,9 +1,8 @@
 import {join} from 'node:path';
 
-import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 
-import {type TuiSchema} from '../../../../ng-add/schema';
+import {TuiHostTree} from '../../../../utils/host';
 
 const collectionPath = join(__dirname, '../../../../migration.json');
 
@@ -18,18 +17,14 @@ interface TsConfig {
 
 describe('Update tsconfig.json', () => {
     const runTsConfigMigration = async (tsConfigContent: string): Promise<TsConfig> => {
-        const host = new UnitTestTree(new HostTree());
+        const host = new UnitTestTree(new TuiHostTree());
         const runner = new SchematicTestRunner('schematics', collectionPath);
 
         host.create('tsconfig.json', tsConfigContent);
         host.create('package.json', '{}');
         host.create('test/app/tokens.ts', 'export const FOO = 1;');
 
-        await runner.runSchematic(
-            'updateToV5',
-            {'skip-logs': true} as Partial<TuiSchema>,
-            host,
-        );
+        await runner.runSchematic('updateToV5', {'skip-logs': true}, host);
 
         return JSON.parse(host.readContent('tsconfig.json'));
     };

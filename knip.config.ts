@@ -9,6 +9,7 @@ const config: KnipConfig = {
         '@maskito/.+',
         'libphonenumber-js',
         'ts-morph',
+        'minimatch',
         'jest',
     ],
     ignoreUnresolved: ['ng-dev-mode'],

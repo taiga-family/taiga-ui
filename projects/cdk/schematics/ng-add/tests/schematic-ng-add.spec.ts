@@ -1,6 +1,5 @@
 import {join} from 'node:path';
 
-import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {
     createProject,
@@ -11,6 +10,7 @@ import {
 } from 'ng-morph';
 
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TuiHostTree} from '../../utils/host';
 import {TAIGA_VERSION} from '../constants/versions';
 import {type TuiSchema} from '../schema';
 
@@ -21,7 +21,7 @@ describe('ng-add', () => {
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
-        host = new UnitTestTree(new HostTree());
+        host = new UnitTestTree(new TuiHostTree());
         runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
@@ -110,7 +110,7 @@ describe('ng-add', () => {
     it('should add assets and styles in angular.json', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -149,7 +149,7 @@ describe('ng-add', () => {
 
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -226,7 +226,7 @@ describe('ng-add', () => {
     it('should wrap main template with tui-root', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -238,7 +238,7 @@ describe('ng-add', () => {
     it('should add root and provider to main module', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 

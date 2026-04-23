@@ -1,7 +1,8 @@
-import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {type expect as jestExpect} from '@jest/globals';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+
+import {TuiHostTree} from './host';
 
 declare const expect: typeof jestExpect;
 
@@ -41,7 +42,7 @@ export async function runMigration(options: Input): Promise<Output> {
         `,
     } = options;
 
-    const host = new UnitTestTree(new HostTree());
+    const host = new UnitTestTree(new TuiHostTree());
     const runner = new SchematicTestRunner('schematics', collection);
 
     setActiveProject(createProject(host));
