@@ -9966,13 +9966,13 @@ export default class Example {}
 &lt;tui-data-list-wrapper [items]=&quot;items&quot; (itemClick)=&quot;close()&quot; /&gt;
 &lt;/ng-template&gt;
 &lt;/div&gt;
-&lt;button tuiCell type=&quot;button&quot; &gt;
+&lt;div tuiCell type=&quot;button&quot; &gt;
 &lt;div tuiTitle&gt; Multiple actions &lt;div tuiSubtitle&gt;When there&#039;s content on the right&lt;/div&gt;
 &lt;/div&gt;
 &lt;div tuiCellActions tuiGroup tuiTheme=&quot;dark&quot; [collapsed]=&quot;true&quot; &gt; @for (item of items; track item) { &lt;button appearance=&quot;primary-grayscale&quot; tuiIconButton type=&quot;button&quot; [iconStart]=&quot;item.icon&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/div&gt;
 &lt;div tuiTitle&gt; Hover over &lt;div tuiSubtitle&gt;Put it before the right side&lt;/div&gt;
 &lt;/div&gt;
-&lt;/button&gt;
+&lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
@@ -10232,14 +10232,14 @@ export default class Example {
 &lt;tui-icon tuiTooltip=&quot;Hint enabled&quot; /&gt;
 &lt;/label&gt;
 &lt;tui-loader class=&quot;cell&quot;&gt;
-&lt;button tuiCell type=&quot;button&quot; &gt;
+&lt;div tuiCell&gt;
 &lt;div tuiTitle&gt;Disabled cell&lt;/div&gt;
 &lt;div tuiCellActions tuiTheme=&quot;dark&quot; &gt;
 &lt;button appearance=&quot;primary-grayscale&quot; iconStart=&quot;@tui.phone&quot; tuiIconButton type=&quot;button&quot; &gt; Call me &lt;/button&gt;
 &lt;/div&gt;
 &lt;div tuiTitle&gt; Hover over &lt;div tuiSubtitle&gt;Put it before the right side&lt;/div&gt;
 &lt;/div&gt;
-&lt;/button&gt;
+&lt;/div&gt;
 &lt;/tui-loader&gt;
 ```
 **TypeScript:**
