@@ -11,8 +11,8 @@ import {saveActiveProject} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {type TuiSchema} from '../../ng-add/schema';
-import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {saveAddedImports} from '../../utils/add-import-to-closest-module';
+import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {
     formatMigrationStats,
     type MigrationStepTiming,
