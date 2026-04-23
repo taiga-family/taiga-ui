@@ -6222,6 +6222,38 @@ export default class Example {}
 }
 ```
 
+#### Link
+
+**Template:**
+```html
+<a href="https://taiga-ui.dev" rel="noopener noreferrer" target="_blank" tuiButton > Documents </a>
+<a appearance="outline" href="https://taiga-ui.dev" iconStart="@tui.music" rel="noopener noreferrer" target="_blank" tuiButton > Music </a>
+<a appearance="accent" href="https://taiga-ui.dev" iconEnd="@tui.book-open" rel="noopener noreferrer" target="_blank" tuiButton > Library </a>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -6249,6 +6281,7 @@ export default class Page {
         'Options with DI',
         'Vertical',
         'Two labels',
+        'Link',
     ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
