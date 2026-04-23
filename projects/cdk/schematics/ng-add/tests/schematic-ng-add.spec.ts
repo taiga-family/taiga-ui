@@ -256,6 +256,32 @@ export class AppModule {}
 `);
     });
 
+    it('should add styles package if pnpm is used', async () => {
+        createSourceFile('pnpm-lock.yaml', '');
+        saveActiveProject();
+
+        const options: TuiSchema = {
+            addons: [],
+            project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
+        };
+
+        const tree = await runner.runSchematic('ng-add', options, host);
+
+        expect(tree.readContent('package.json')).toBe(
+            `{
+  "dependencies": {
+    "@angular/core": "~13.0.0",
+    "@taiga-ui/cdk": "${TAIGA_VERSION}",
+    "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/icons": "${TAIGA_VERSION}",
+    "@taiga-ui/kit": "${TAIGA_VERSION}",
+    "@taiga-ui/styles": "${TAIGA_VERSION}"
+  }
+}`,
+        );
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
