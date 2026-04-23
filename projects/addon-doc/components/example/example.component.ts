@@ -118,10 +118,24 @@ export class TuiDocExample implements OnChanges {
         {initialValue: {}},
     );
 
+    protected readonly lazyComponent = computed(async () => {
+        const promise = this.component();
+
+        if (!promise) {
+            return null;
+        }
+
+        const component = await promise;
+
+        return 'default' in component ? component.default : component;
+    });
+
     public readonly heading = input('');
     public readonly description = input<PolymorpheusContent>();
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
-    public readonly component = input<Promise<Type<unknown>>>();
+    public readonly component =
+        input<Promise<Type<unknown> | {default: Type<unknown>}>>();
+
     public readonly content = input<Record<string, TuiRawLoaderContent>>({});
     public readonly preview = input(true);
 

@@ -94,7 +94,7 @@
                         [style.display]="activeItemIndex === $index ? 'block' : 'none'"
                     >
                         <ng-container *ngTemplateOutlet="content" />
-                        <ng-container *ngComponentOutlet="component() | async" />
+                        <ng-container *ngComponentOutlet="lazyComponent() | async" />
                     </section>
                 }
                 @let code = processor()[tab] || '';

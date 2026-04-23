@@ -8,6 +8,6 @@ export class TuiComponentPipe implements PipeTransform {
     public async transform(index: number): Promise<Type<unknown>> {
         return import(
             `../pages/${this.page.type()}/${tuiToKebab(this.page.header())}/examples/${index}/index.ts`
-        ).then((module) => module.default);
+        );
     }
 }
