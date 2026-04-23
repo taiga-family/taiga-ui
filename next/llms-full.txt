@@ -9957,13 +9957,13 @@ export default class Example {}
 <tui-data-list-wrapper [items]="items" (itemClick)="close()" />
 </ng-template>
 </div>
-<button tuiCell type="button" >
+<div tuiCell type="button" >
 <div tuiTitle> Multiple actions <div tuiSubtitle>When there's content on the right</div>
 </div>
 <div tuiCellActions tuiGroup tuiTheme="dark" [collapsed]="true" > @for (item of items; track item) { <button appearance="primary-grayscale" tuiIconButton type="button" [iconStart]="item.icon" > {{ item }} </button> } </div>
 <div tuiTitle> Hover over <div tuiSubtitle>Put it before the right side</div>
 </div>
-</button>
+</div>
 ```
 **TypeScript:**
 ```ts
@@ -10223,14 +10223,14 @@ export default class Example {
 <tui-icon tuiTooltip="Hint enabled" />
 </label>
 <tui-loader class="cell">
-<button tuiCell type="button" >
+<div tuiCell>
 <div tuiTitle>Disabled cell</div>
 <div tuiCellActions tuiTheme="dark" >
 <button appearance="primary-grayscale" iconStart="@tui.phone" tuiIconButton type="button" > Call me </button>
 </div>
 <div tuiTitle> Hover over <div tuiSubtitle>Put it before the right side</div>
 </div>
-</button>
+</div>
 </tui-loader>
 ```
 **TypeScript:**
