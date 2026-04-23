@@ -1,6 +1,7 @@
 import {Location} from '@angular/common';
 import {type ErrorHandler, inject, Injectable} from '@angular/core';
-import {errorLog} from 'ng-morph';
+
+import {errorLog} from '../../../../cdk/schematics/utils/colored-log';
 
 // TODO
 const KNOWN_ISSUES = [
