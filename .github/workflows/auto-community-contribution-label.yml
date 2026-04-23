@@ -11,7 +11,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: taiga-family/ci/actions/auto/label-community-contribution@v1.200.0
+      - uses: taiga-family/ci/actions/auto/label-community-contribution@v1.206.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ github.event.pull_request.number }}
