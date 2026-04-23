@@ -53,8 +53,13 @@ function replaceEnumWithString(
 }
 
 function containTypeRef(node: ImportSpecifier): boolean {
-    return node
-        .getNameNode()
+    const nameNode = node.getNameNode();
+
+    if (!Node.isIdentifier(nameNode)) {
+        return false;
+    }
+
+    return nameNode
         .findReferencesAsNodes()
         .some((ref) => Node.isTypeReference(ref.getParent()));
 }
