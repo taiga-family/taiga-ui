@@ -87,6 +87,110 @@ exports[`ng-update FilterByInput migration keeps TuiFilterByInputPipe usage in c
 }
 `;
 
+exports[`ng-update FilterByInput migration matcher is a callable function: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiStringMatcher} from '@taiga-ui/core';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+
+                @Component({
+                    template: \`
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: getMatcher($index)" />
+                    \`,
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
+
+                    getMatcher(index: number): TuiStringMatcher<string> {
+                        return (item: string, query: string) => item.includes(query);
+                    }
+                }
+            ",
+  "1. After": "
+                import { TuiStringMatcher, TuiFilterByInputPipe, TuiFilterByInputOptions } from '@taiga-ui/core';
+
+                @Component({
+                    template: \`
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: filterWithGetMatcher($index)" />
+                    \`,
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
+
+                    getMatcher(index: number): TuiStringMatcher<string> {
+                        return (item: string, query: string) => item.includes(query);
+                    }
+                
+    filterWithGetMatcher = (..args: any[]): TuiFilterByInputOptions['filter'] => (items, query, stringify) => items.filter((item) => this.getMatcher(...args)(item, query, stringify));
+}
+            ",
+}
+`;
+
+exports[`ng-update FilterByInput migration matcher is a signal: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiStringMatcher} from '@taiga-ui/core';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+
+                @Component({
+                    template: \`
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcher()" />
+                    \`,
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
+
+                    matcher = computed<TuiStringMatcher<string>>(() => {
+                        // read signals
+                        // [...]
+
+                        return (item, query) => {
+                            const romanNumeral = item.split(' ').at(-1);
+
+                            return (
+                                query === ROMAN_TO_LATIN[romanNumeral] ||
+                                item.toLowerCase().includes(query.toLowerCase())
+                            );
+                        }
+                    });
+                }
+            ",
+  "1. After": "
+                import { TuiStringMatcher, TuiFilterByInputPipe, TuiFilterByInputOptions } from '@taiga-ui/core';
+
+                @Component({
+                    template: \`
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: filterWithMatcher()" />
+                    \`,
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
+
+                    matcher = computed<TuiStringMatcher<string>>(() => {
+                        // read signals
+                        // [...]
+
+                        return (item, query) => {
+                            const romanNumeral = item.split(' ').at(-1);
+
+                            return (
+                                query === ROMAN_TO_LATIN[romanNumeral] ||
+                                item.toLowerCase().includes(query.toLowerCase())
+                            );
+                        }
+                    });
+                
+    filterWithMatcher = (): TuiFilterByInputOptions['filter'] => (items, query, stringify) => items.filter((item) => this.matcher()(item, query, stringify));
+}
+            ",
+}
+`;
+
 exports[`ng-update FilterByInput migration migrates TuiFilterByInputPipe from @taiga-ui/kit to @taiga-ui/core: test.ts 1`] = `
 {
   "0. Before": "import {TuiFilterByInputPipe} from '@taiga-ui/kit';",

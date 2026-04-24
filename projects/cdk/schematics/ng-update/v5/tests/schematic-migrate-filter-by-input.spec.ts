@@ -164,4 +164,62 @@ describe('ng-update FilterByInput migration', () => {
             `,
         }),
     );
+
+    it(
+        'matcher is a signal',
+        migrate({
+            component: `
+                import {TuiStringMatcher} from '@taiga-ui/core';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+
+                @Component({
+                    template: \`
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: matcher()" />
+                    \`,
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
+
+                    matcher = computed<TuiStringMatcher<string>>(() => {
+                        // read signals
+                        // [...]
+
+                        return (item, query) => {
+                            const romanNumeral = item.split(' ').at(-1);
+
+                            return (
+                                query === ROMAN_TO_LATIN[romanNumeral] ||
+                                item.toLowerCase().includes(query.toLowerCase())
+                            );
+                        }
+                    });
+                }
+            `,
+        }),
+    );
+
+    it(
+        'matcher is a callable function',
+        migrate({
+            component: `
+                import {TuiStringMatcher} from '@taiga-ui/core';
+                import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+
+                @Component({
+                    template: \`
+                        <tui-data-list-wrapper [items]="items | tuiFilterByInput: getMatcher($index)" />
+                    \`,
+                })
+                export class Example {
+                    items = ['Charles III', 'Elizabeth II'];
+                    value: string | null = null;
+
+                    getMatcher(index: number): TuiStringMatcher<string> {
+                        return (item: string, query: string) => item.includes(query);
+                    }
+                }
+            `,
+        }),
+    );
 });
