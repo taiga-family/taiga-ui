@@ -194,6 +194,41 @@ describe('ng-update legacy input', () => {
     );
 
     it(
+        'passes class/style bindings through to <tui-textfield> without TODO',
+        migrate({
+            template: /* HTML */ `
+                <tui-input
+                    formControlName="cardNumber"
+                    class="number"
+                    style="color: red"
+                    [class.active]="isActive"
+                    [style.max-width.rem]="20"
+                    [ngClass]="classMap"
+                    [ngStyle]="styleMap"
+                >
+                    Card number
+                </tui-input>
+            `,
+        }),
+    );
+
+    it(
+        'mixes known class/style attrs with a single unrecognized attr, TODO lists only the unrecognized one',
+        migrate({
+            template: /* HTML */ `
+                <tui-input
+                    formControlName="cardNumber"
+                    class="number"
+                    [style.max-width.rem]="20"
+                    someCustomDir
+                >
+                    Card number
+                </tui-input>
+            `,
+        }),
+    );
+
+    it(
         'migrates tuiHintDirection value alongside wrapper attrs',
         migrate({
             template: /* HTML */ `
