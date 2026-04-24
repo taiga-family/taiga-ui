@@ -123,7 +123,7 @@ exports[`ng-update FilterByInput migration matcher is a callable function: test.
                         return (item: string, query: string) => item.includes(query);
                     }
                 
-    filterWithGetMatcher = (..args: any[]): TuiFilterByInputOptions['filter'] => (items, query, stringify) => items.filter((item) => this.getMatcher(...args)(item, query, stringify));
+    filterWithGetMatcher = (...args: any[]): TuiFilterByInputOptions['filter'] => (items, query, stringify) => items.filter((item) => this.getMatcher(...args)(item, query, stringify));
 }
             ",
 }
