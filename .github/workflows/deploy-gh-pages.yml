@@ -19,8 +19,8 @@ jobs:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.206.0
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: taiga-family/ci/actions/setup/variables@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
 
       - name: Prepare demo before deploy from snapshots
         run: |
@@ -34,7 +34,7 @@ jobs:
         run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
 
       - name: Replace baseHref for next
-        uses: jacobtomlinson/gha-find-replace@3.0.5
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/next/">'
@@ -42,7 +42,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v2
-        uses: jacobtomlinson/gha-find-replace@3.0.5
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v2/">'
@@ -50,7 +50,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v3
-        uses: jacobtomlinson/gha-find-replace@3.0.5
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v3/">'
@@ -58,7 +58,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v4
-        uses: jacobtomlinson/gha-find-replace@3.0.5
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v4/">'
@@ -69,7 +69,7 @@ jobs:
         run: tree ${{ env.DIST }} -P '*.html'
 
       - name: Deploy to taiga-ui.dev
-        uses: peaceiris/actions-gh-pages@v4.0.0
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
         if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           github_token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
