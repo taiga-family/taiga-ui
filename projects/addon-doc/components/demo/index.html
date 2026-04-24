@@ -47,7 +47,7 @@
         [tuiResizer]="[1, 0]"
         (tuiSizeChange)="updateWidth($event[0])"
     >
-        <tui-icon icon="@tui.grip-vertical" />
+        <tui-icon [icon]="icons.resizer" />
     </div>
 </div>
 @if (form) {
