@@ -10223,14 +10223,14 @@ export default class Example {
 <tui-icon tuiTooltip="Hint enabled" />
 </label>
 <tui-loader class="cell">
-<div tuiCell>
+<label tuiAppearance tuiAppearanceState="disabled" tuiCell >
 <div tuiTitle>Disabled cell</div>
 <div tuiCellActions tuiTheme="dark" >
 <button appearance="primary-grayscale" iconStart="@tui.phone" tuiIconButton type="button" > Call me </button>
 </div>
 <div tuiTitle> Hover over <div tuiSubtitle>Put it before the right side</div>
 </div>
-</div>
+</label>
 </tui-loader>
 ```
 **TypeScript:**
