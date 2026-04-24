@@ -150,7 +150,7 @@
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
         "@types/node": "25.6.0",
-        "@typescript/native-preview": "7.0.0-dev.20260409.1",
+        "@typescript/native-preview": "7.0.0-dev.20260410.1",
         "cpy-cli": "5.0.0",
         "date-fns": "4.1.0",
         "express": "4.22.1",
