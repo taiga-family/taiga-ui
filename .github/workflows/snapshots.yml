@@ -21,14 +21,14 @@ jobs:
     if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.206.0
-      - uses: taiga-family/ci/actions/setup/node@v1.206.0
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: taiga-family/ci/actions/setup/variables@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
+      - uses: taiga-family/ci/actions/setup/node@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
 
       - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
-      - uses: s0/git-publish-subdir-action@v2.6.0
+      - uses: s0/git-publish-subdir-action@92faf786f11dfa44fc366ac3eb274d193ca1af7e # v2.6.0
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}
@@ -40,15 +40,15 @@ jobs:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.206.0
-      - uses: taiga-family/ci/actions/setup/node@v1.206.0
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: taiga-family/ci/actions/setup/variables@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
+      - uses: taiga-family/ci/actions/setup/node@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
         id: nodejs-workspace
 
       - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
-      - uses: s0/git-publish-subdir-action@v2.6.0
+      - uses: s0/git-publish-subdir-action@92faf786f11dfa44fc366ac3eb274d193ca1af7e # v2.6.0
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}

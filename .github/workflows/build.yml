@@ -16,9 +16,9 @@ jobs:
     name: Build packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.206.0
-      - uses: taiga-family/ci/actions/setup/node@v1.206.0
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: taiga-family/ci/actions/setup/variables@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
+      - uses: taiga-family/ci/actions/setup/node@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
       - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/check-dist.ts
 
@@ -26,9 +26,9 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.206.0
-      - uses: taiga-family/ci/actions/setup/node@v1.206.0
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: taiga-family/ci/actions/setup/variables@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
+      - uses: taiga-family/ci/actions/setup/node@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
       - run: npx nx build demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
         continue-on-error: true
