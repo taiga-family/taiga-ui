@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.81.0](https://github.com/taiga-family/taiga-ui/compare/v4.80.1...v4.81.0) (2026-04-27)
+
+### 🐞 Bug Fixes
+
+- **core:** `tuiPresent` fix dummy animation ([#13939](https://github.com/taiga-family/taiga-ui/issues/13939))
+  ([37a5401](https://github.com/taiga-family/taiga-ui/commit/37a54015bb123e9190ffd8ac5ebe806e90d8ffa5))
+
 ### [4.80.1](https://github.com/taiga-family/taiga-ui/compare/v4.80.0...v4.80.1) (2026-04-21)
 
 ## [4.80.0](https://github.com/taiga-family/taiga-ui/compare/v4.79.0...v4.80.0) (2026-04-20)
