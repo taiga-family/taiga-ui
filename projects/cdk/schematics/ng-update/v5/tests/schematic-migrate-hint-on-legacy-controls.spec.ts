@@ -255,6 +255,43 @@ describe('ng-update hint on legacy controls', () => {
                 template: '<tui-input [tuiHintContent]="hint" />',
             }),
         );
+
+        it(
+            'inline template',
+            migrate({
+                component: `
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import {TuiHint} from '@taiga-ui/core';
+                    import {TuiInputModule} from '@taiga-ui/legacy';
+
+                    @Component({
+                        selector: 'date-range-mask-doc-example-3',
+                        imports: [
+                            FormsModule,
+                            TuiHint,
+                            TuiInputModule,
+                        ],
+                        template: \`
+                            <tui-input
+                                [tuiHintContent]="hint"
+                                [(ngModel)]="value"
+                            >
+                                <input
+                                    inputmode="decimal"
+                                    tuiTextfieldLegacy
+                                />
+                            </tui-input>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class DateRangeMaskDocExample3 {
+                        value = '01.01.2023 – 05.01.2023';
+                        hint = 'any content';
+                    }
+                `,
+            }),
+        );
     });
 
     describe('should not change', () => {
