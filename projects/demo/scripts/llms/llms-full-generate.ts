@@ -612,7 +612,7 @@ async function main(): Promise<void> {
 
     const migrationGuide = await collectMigrationGuide(config);
 
-    if (migrationGuide) {
+    if (migrationGuide !== null) {
         output.push(migrationGuide);
     }
 
