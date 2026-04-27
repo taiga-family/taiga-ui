@@ -2,20 +2,20 @@ import {type Tree} from '@angular-devkit/schematics';
 import {
     createProject,
     getSourceFiles,
-    infoLog,
     Node,
     saveActiveProject,
     setActiveProject,
     SyntaxKind,
-    titleLog,
 } from 'ng-morph';
 import {type CallExpression, type ImportDeclaration} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../../../constants';
 import {type TuiSchema} from '../../../../ng-add/schema';
+import {infoLog, titleLog} from '../../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../../utils/get-named-import-references';
 import {removeImport} from '../../../../utils/import-manipulations';
 import {insertTodo} from '../../../../utils/insert-todo';
+import {projectRoot} from '../../../../utils/project-root';
 
 const TOKEN_FUNCTIONS = ['tuiCreateToken', 'tuiCreateTokenFromFactory'];
 const ANGULAR_CORE = '@angular/core';
@@ -36,7 +36,7 @@ export function migrateTokens(tree: Tree, options: TuiSchema): void {
         infoLog('Starting token migration to InjectionToken...');
     }
 
-    const project = createProject(tree, '/', ALL_TS_FILES);
+    const project = createProject(tree, projectRoot(), ALL_TS_FILES);
 
     setActiveProject(project);
 

@@ -1,14 +1,14 @@
+import {Node} from 'ng-morph';
+
+import {type TuiSchema} from '../ng-add/schema';
+import {type RemovedModule} from '../ng-update/interfaces/removed-module';
 import {
     infoLog,
-    Node,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-} from 'ng-morph';
-
-import {type TuiSchema} from '../ng-add/schema';
-import {type RemovedModule} from '../ng-update/interfaces/removed-module';
+} from './colored-log';
 import {getNamedImportReferences} from './get-named-import-references';
 import {removeImport} from './import-manipulations';
 

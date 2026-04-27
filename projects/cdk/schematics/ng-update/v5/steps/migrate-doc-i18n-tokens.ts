@@ -1,17 +1,12 @@
 import {type Tree} from '@angular-devkit/schematics';
-import {
-    createProject,
-    infoLog,
-    Node,
-    saveActiveProject,
-    setActiveProject,
-    titleLog,
-} from 'ng-morph';
+import {createProject, Node, saveActiveProject, setActiveProject} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
 import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
+import {infoLog, titleLog} from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
+import {projectRoot} from '../../../utils/project-root';
 
 const ANGULAR_CORE = '@angular/core';
 const SIGNAL = 'signal';
@@ -43,7 +38,7 @@ export function migrateDocI18nTokens(tree: Tree, options: TuiSchema): void {
         infoLog('Migrating addon-doc i18n token providers to signal-based values...');
     }
 
-    const project = createProject(tree, '/', ALL_TS_FILES);
+    const project = createProject(tree, projectRoot(), ALL_TS_FILES);
 
     setActiveProject(project);
 

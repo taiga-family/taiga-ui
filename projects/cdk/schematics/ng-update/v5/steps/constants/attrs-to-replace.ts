@@ -35,22 +35,6 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '[tuiNotificationOptions]'},
     },
     {
-        from: {attrName: '[tuiOnboarding]', withTagNames: ['*']},
-        to: {attrName: '[tuiResponsiveDialog]'},
-    },
-    {
-        from: {attrName: '[(tuiOnboarding)]', withTagNames: ['*']},
-        to: {attrName: '[(tuiResponsiveDialog)]'},
-    },
-    {
-        from: {attrName: '(tuiOnboardingChange)', withTagNames: ['*']},
-        to: {attrName: '(tuiResponsiveDialogChange)'},
-    },
-    {
-        from: {attrName: '[tuiOnboardingOptions]', withTagNames: ['*']},
-        to: {attrName: '[tuiResponsiveDialogOptions]'},
-    },
-    {
         from: {attrName: 'tuiButtonClose', withTagNames: ['*']},
         to: {attrName: 'tuiButtonX'},
     },
@@ -133,5 +117,13 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
     {
         from: {attrName: 'new', withAttrsNames: ['tuiOption']},
         to: {attrName: ''},
+    },
+    {
+        from: {attrName: '(directionOrderChange)', withTagNames: ['table']},
+        to: {attrName: '(directionChange)'},
+    },
+    {
+        from: {attrName: '[(directionOrder)]', withTagNames: ['table']},
+        to: {attrName: '[(direction)]'},
     },
 ];

@@ -42,6 +42,7 @@ const options = Object.fromEntries(
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+    globalSetup: require.resolve('./global-setup'),
     testDir: __dirname,
     testMatch: '**/*.pw.spec.ts',
     outputDir: 'tests-results',

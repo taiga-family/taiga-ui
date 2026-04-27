@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
@@ -16,11 +17,13 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@v1.200.0
-      - uses: taiga-family/ci/actions/setup/node@v1.200.0
+      - uses: taiga-family/ci/actions/setup/variables@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
+      - uses: taiga-family/ci/actions/setup/node@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
+        with:
+          audit: true
 
       - run: echo "$(git log -1 --pretty=format:"%s")" | npx commitlint --verbose
         if: github.event_name == 'pull_request'
@@ -32,14 +35,12 @@ jobs:
               npm run stylelint -- --fix
               npm run prettier -- --write
               npm run lint -- --fix
-              HTML_ESLINT=true npm run lint -- --fix
           else
               npm run stylelint
               npm run prettier -- --check
               npm run lint
-              HTML_ESLINT=true npm run lint
           fi
-      - uses: taiga-family/ci/actions/auto/push@v1.200.0
+      - uses: taiga-family/ci/actions/auto/push@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 

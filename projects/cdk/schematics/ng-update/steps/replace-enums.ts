@@ -1,15 +1,13 @@
+import {type ImportSpecifier, Node, type VariableDeclaration} from 'ng-morph';
+
+import {type TuiSchema} from '../../ng-add/schema';
 import {
-    type ImportSpecifier,
     infoLog,
-    Node,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-    type VariableDeclaration,
-} from 'ng-morph';
-
-import {type TuiSchema} from '../../ng-add/schema';
+} from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
 import {type ReplacementEnum} from '../interfaces/replacement-enum';
@@ -53,8 +51,13 @@ function replaceEnumWithString(
 }
 
 function containTypeRef(node: ImportSpecifier): boolean {
-    return node
-        .getNameNode()
+    const nameNode = node.getNameNode();
+
+    if (!Node.isIdentifier(nameNode)) {
+        return false;
+    }
+
+    return nameNode
         .findReferencesAsNodes()
         .some((ref) => Node.isTypeReference(ref.getParent()));
 }

@@ -365,6 +365,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'provideTaiga',
             moduleSpecifier: '@taiga-ui/core',
+            callExpression: true,
         },
     },
     {
@@ -865,36 +866,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiOnboardingFlowDialog',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-        to: {
-            name: 'TuiResponsiveDialog',
-            moduleSpecifier: '@taiga-ui/addon-mobile',
-        },
-    },
-    {
-        from: {
-            name: 'TuiOnboardingFlowDialogService',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-        to: {
-            name: 'TuiResponsiveDialogService',
-            moduleSpecifier: '@taiga-ui/addon-mobile',
-        },
-    },
-    {
-        from: {
-            name: 'TuiOnboardingDialogDirective',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-        to: {
-            name: 'TuiResponsiveDialog',
-            moduleSpecifier: '@taiga-ui/addon-mobile',
-        },
-    },
-    {
-        from: {
             name: 'TuiMobileCalendarDropdownNew',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
@@ -1030,6 +1001,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TUI_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiValidationErrorsProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiValidationErrorsProvider',
             moduleSpecifier: '@taiga-ui/core',
         },
     },

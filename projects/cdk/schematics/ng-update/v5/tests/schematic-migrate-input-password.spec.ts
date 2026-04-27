@@ -58,5 +58,79 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside]="true" and converts text to placeholder',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-password
+                    [tuiTextfieldLabelOutside]="true"
+                    [(ngModel)]="value"
+                >
+                    Enter password
+                </tui-input-password>
+            `,
+        }),
+    );
+
+    it(
+        'removes bare tuiTextfieldLabelOutside and converts text to placeholder',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-password
+                    tuiTextfieldLabelOutside
+                    [(ngModel)]="value"
+                >
+                    Enter password
+                </tui-input-password>
+            `,
+        }),
+    );
+
+    it(
+        'removes [tuiTextfieldLabelOutside]="false" and keeps label inside',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-password
+                    [tuiTextfieldLabelOutside]="false"
+                    [(ngModel)]="value"
+                >
+                    Enter password
+                </tui-input-password>
+            `,
+        }),
+    );
+
+    it(
+        'handles dynamic [tuiTextfieldLabelOutside] with TODO',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-password
+                    [tuiTextfieldLabelOutside]="isOutside"
+                    [(ngModel)]="value"
+                >
+                    Enter password
+                </tui-input-password>
+            `,
+        }),
+    );
+
+    it(
+        'removes [tuiTextfieldLabelOutside]="true" with inner input',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-password
+                    [tuiTextfieldLabelOutside]="true"
+                    [(ngModel)]="value"
+                >
+                    Enter password
+                    <input
+                        tuiTextfieldLegacy
+                        type="password"
+                    />
+                </tui-input-password>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

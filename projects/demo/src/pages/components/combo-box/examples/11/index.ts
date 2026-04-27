@@ -1,4 +1,4 @@
-import {Component, computed, inject, type Signal, ViewEncapsulation} from '@angular/core';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
@@ -20,9 +20,6 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga
     changeDetection,
 })
 export default class Example {
-    protected readonly countries: Signal<string[]> = computed(() =>
-        Object.values(inject(TUI_COUNTRIES)),
-    );
-
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
     protected value: string | null = null;
 }

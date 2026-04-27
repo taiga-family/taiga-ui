@@ -193,4 +193,29 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
             {from: "'glass'", to: "'secondary-grayscale'"},
         ],
     },
+    {
+        attrNames: ['[directionOrder]'],
+        newAttrName: '[direction]',
+        withTagNames: ['table'],
+        valueReplacer: (value) => {
+            if (value === "'asc'") {
+                return '1';
+            }
+
+            if (value === "'desc'") {
+                return '-1';
+            }
+
+            return value;
+        },
+    },
+    {
+        attrNames: ['tuiSurface', '[tuiSurface]'],
+        filterFn: (el) => hasElementAttribute(el, 'tuiCardLarge'),
+        newAttrName: 'appearance',
+        valueReplacer: [
+            {from: "'elevated'", to: 'floating'},
+            {from: 'elevated', to: 'floating'},
+        ],
+    },
 ];

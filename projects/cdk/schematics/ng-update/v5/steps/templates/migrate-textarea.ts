@@ -10,6 +10,12 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    buildCustomContentIconStr,
+    CUSTOM_CONTENT_ATTRS,
+    type CustomContent,
+    registerCustomContentImports,
+} from './migrate-legacy-custom-content';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
@@ -84,9 +90,11 @@ export function migrateTextarea({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
     const elements = findElementsByTagName(template, 'tui-textarea');
+    const processable = elements.filter((element) => !hasHintContent(element));
 
-    const replacements = elements
-        .filter((element) => !hasHintContent(element))
+    registerCustomContentImports(resource, processable);
+
+    const replacements = processable
         .map((element) => buildReplacement(template, element))
         .filter((x): x is {startOffset: number; endOffset: number; replacement: string} =>
             Boolean(x),
@@ -122,6 +130,7 @@ interface MigrationContext {
     // 'dynamic' = value was a bound expression, cannot determine statically
     labelOutside: boolean | 'dynamic';
     unknownAttrs: string[]; // attrs not recognized — placed on <tui-textfield> with a TODO
+    customContent: CustomContent | null;
 }
 
 function buildReplacement(
@@ -145,10 +154,19 @@ function buildReplacement(
         placeholder: '',
         labelOutside: false,
         unknownAttrs: [],
+        customContent: null,
     };
 
     for (const attr of element.attrs) {
         const nameLower = attr.name.toLowerCase();
+
+        if (CUSTOM_CONTENT_ATTRS.has(nameLower)) {
+            ctx.customContent = {
+                value: attr.value,
+                isBinding: nameLower.startsWith('['),
+            };
+            continue;
+        }
 
         if (nameLower === 'expandable' || nameLower === '[expandable]') {
             ctx.expandableValue = attr.value || 'true';
@@ -248,6 +266,7 @@ function buildReplacement(
         ctx,
         indent,
         hintIconStr,
+        customContentIconStr: buildCustomContentIconStr(ctx.customContent, indent),
     });
     const todoComment = buildTodoComment(ctx);
 
@@ -263,21 +282,13 @@ function buildReplacement(
 function buildTodoComment(ctx: MigrationContext): string {
     const notes: string[] = [];
 
-    if (ctx.placeholder) {
-        if (ctx.labelOutside === true) {
-            notes.push(
-                `Text content "${ctx.placeholder}" became placeholder on <textarea>. Previously [tuiTextfieldLabelOutside]=true — for label-outside pattern, wrap <tui-textfield> with: <label tuiLabel>${ctx.placeholder}<tui-textfield>...</tui-textfield></label>.`,
-            );
-        } else if (ctx.labelOutside === 'dynamic') {
-            notes.push(
-                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield> and placeholder on <textarea>. [tuiTextfieldLabelOutside] was dynamic — for label-outside pattern, move <label tuiLabel> to wrap <tui-textfield> instead.`,
-            );
-        } else {
-            notes.push(
-                `Text content "${ctx.placeholder}" became <label tuiLabel> inside <tui-textfield>. Add placeholder on <textarea tuiTextarea> separately if hint text is needed.`,
-            );
-        }
+    if (ctx.placeholder && ctx.labelOutside === 'dynamic') {
+        notes.push(
+            '[tuiTextfieldLabelOutside] was dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.',
+        );
     }
+    // labelOutside=true: text → placeholder — fully automatic, no note needed
+    // labelOutside=false/absent: text → <label tuiLabel> inside — fully automatic, no note needed
 
     if (ctx.expandableValue !== null) {
         const wasFixed = ctx.expandableValue === 'false' || ctx.expandableValue === '';
@@ -336,8 +347,10 @@ function buildInnerContent({
     ctx,
     indent,
     hintIconStr = '',
+    customContentIconStr = '',
 }: {
     ctx: MigrationContext;
+    customContentIconStr?: string;
     element: Element;
     hintIconStr?: string;
     indent: string;
@@ -351,13 +364,14 @@ function buildInnerContent({
     );
 
     // Auto-add <label tuiLabel> inside <tui-textfield> when text content is present
-    // and labelOutside is not true (label-outside pattern requires manual DOM restructure)
+    // and labelOutside is false/absent (dynamic: left as-is with only TODO comment)
     const labelEl =
-        placeholder && labelOutside !== true
+        placeholder && labelOutside === false
             ? `${indent}<label tuiLabel>${placeholder}</label>\n`
             : '';
 
     const hintIconLine = hintIconStr ? `${hintIconStr}\n` : '';
+    const customContentLine = customContentIconStr ? `${customContentIconStr}\n` : '';
 
     // If user already put an explicit <textarea tuiTextfieldLegacy> inside,
     // reuse it instead of generating a new one.
@@ -375,6 +389,7 @@ function buildInnerContent({
             allChildren: childElements,
             indent,
             hintIconLine,
+            customContentLine,
         })}`;
     }
 
@@ -394,7 +409,7 @@ function buildInnerContent({
         })
         .join('');
 
-    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}${hintIconLine}`;
+    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}${hintIconLine}${customContentLine}`;
 }
 
 /**
@@ -408,9 +423,11 @@ function migrateInnerTextarea({
     allChildren,
     indent,
     hintIconLine = '',
+    customContentLine = '',
 }: {
     allChildren: Element[];
     attrsToAdd: string[];
+    customContentLine?: string;
     hintIconLine?: string;
     indent: string;
     inner: Element;
@@ -465,7 +482,7 @@ function migrateInnerTextarea({
         })
         .join('');
 
-    return `${indent}${innerContent}\n${siblings}${hintIconLine}`;
+    return `${indent}${innerContent}\n${siblings}${hintIconLine}${customContentLine}`;
 }
 
 function getPlaceholderText(element: Element): string {

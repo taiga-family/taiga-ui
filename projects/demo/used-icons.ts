@@ -17,6 +17,7 @@ export const TUI_USED_ICONS = [
     '@tui.badge-check',
     '@tui.bell',
     '@tui.bell-off',
+    '@tui.book-open',
     '@tui.bot',
     '@tui.box',
     '@tui.briefcase',

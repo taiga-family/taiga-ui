@@ -34,14 +34,14 @@ exports[`ng-update tui-island to tuiCardLarge handles self-closing tui-island: t
 }
 `;
 
-exports[`ng-update tui-island to tuiCardLarge removes [tuiSurface] for [tuiCardLarge]: test.html 1`] = `
+exports[`ng-update tui-island to tuiCardLarge renames [tuiAppearance] to [appearance] for [tuiCardLarge]: test.html 1`] = `
 {
-  "0. Before": "<div [tuiCardLarge]="size" tuiSurface="surface"></div>",
-  "1. After": "<div [tuiCardLarge]="size" ></div>",
+  "0. Before": "<div tuiCardLarge tuiAppearance="appearance"></div>",
+  "1. After": "<div tuiCardLarge appearance="appearance"></div>",
 }
 `;
 
-exports[`ng-update tui-island to tuiCardLarge removes [tuiSurface] for [tuiCardLarge]: test.ts 1`] = `
+exports[`ng-update tui-island to tuiCardLarge renames [tuiAppearance] to [appearance] for [tuiCardLarge]: test.ts 1`] = `
 {
   "0. Before": "
             import {Component} from '@angular/core';
@@ -68,14 +68,32 @@ exports[`ng-update tui-island to tuiCardLarge removes [tuiSurface] for [tuiCardL
 }
 `;
 
-exports[`ng-update tui-island to tuiCardLarge renames [tuiAppearance] to [appearance] for [tuiCardLarge]: test.html 1`] = `
+exports[`ng-update tui-island to tuiCardLarge replace [tuiCardLarge][tuiSurface="elevated"] to [tuiCardLarge][appearance="floating"]: test.html 1`] = `
 {
-  "0. Before": "<div tuiCardLarge tuiAppearance="appearance"></div>",
-  "1. After": "<div tuiCardLarge appearance="appearance"></div>",
+  "0. Before": "
+                <div
+                    [tuiCardLarge]="size"
+                    tuiSurface="elevated"
+                ></div>
+                <p
+                    tuiCardLarge
+                    [tuiSurface]="'elevated'"
+                ></p>
+            ",
+  "1. After": "
+                <div
+                    [tuiCardLarge]="size"
+                    appearance="floating"
+                ></div>
+                <p
+                    tuiCardLarge
+                    appearance="floating"
+                ></p>
+            ",
 }
 `;
 
-exports[`ng-update tui-island to tuiCardLarge renames [tuiAppearance] to [appearance] for [tuiCardLarge]: test.ts 1`] = `
+exports[`ng-update tui-island to tuiCardLarge replace [tuiCardLarge][tuiSurface="elevated"] to [tuiCardLarge][appearance="floating"]: test.ts 1`] = `
 {
   "0. Before": "
             import {Component} from '@angular/core';

@@ -12,8 +12,8 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces';
+import {removeAttrs} from '../../../utils/remove-attrs';
 import {replaceTag} from '../../../utils/templates/replace-tag';
-import {removeAttrs} from '../../../v4/steps/utils/remove-attrs';
 
 type Attribute = Token.Attribute;
 

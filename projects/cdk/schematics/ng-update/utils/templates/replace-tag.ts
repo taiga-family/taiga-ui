@@ -1,5 +1,7 @@
 import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {type ElementLocation} from 'parse5/dist/common/token';
+import {type Token} from 'parse5';
+
+type ElementLocation = Token.ElementLocation;
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;

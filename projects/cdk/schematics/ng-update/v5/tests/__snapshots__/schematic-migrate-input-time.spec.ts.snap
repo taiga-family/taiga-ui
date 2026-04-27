@@ -150,6 +150,27 @@ exports[`ng-update moves [mode] to <input tuiInputTime>: test.html 1`] = `
 }
 `;
 
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-time: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-time
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose time
+                </tui-input-time>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<input tuiInputTime [formControl]="control" placeholder="Choose time" />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update renames [items] to [accept] and adds TODO about data-list-wrapper: test.html 1`] = `
 {
   "0. Before": "

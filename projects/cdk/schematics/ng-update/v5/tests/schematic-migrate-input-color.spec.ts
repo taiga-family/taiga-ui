@@ -61,5 +61,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-color',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-color
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Pick color
+                </tui-input-color>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

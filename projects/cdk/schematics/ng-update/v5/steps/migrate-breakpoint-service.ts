@@ -77,13 +77,16 @@ function cleanupBreakpointServiceImport(sourceFile: SourceFile): void {
                 return;
             }
 
-            const refs = specifier
-                .getNameNode()
-                .findReferencesAsNodes()
-                .filter(
-                    (ref) =>
-                        ref.getSourceFile().getFilePath() === sourceFile.getFilePath(),
-                );
+            const nameNode = specifier.getNameNode();
+            const refs = Node.isIdentifier(nameNode)
+                ? nameNode
+                      .findReferencesAsNodes()
+                      .filter(
+                          (ref) =>
+                              ref.getSourceFile().getFilePath() ===
+                              sourceFile.getFilePath(),
+                      )
+                : [];
 
             if (refs.length <= 1) {
                 removeImport(specifier);
@@ -104,13 +107,16 @@ function addTodoForUnsupportedUsages(sourceFile: SourceFile): void {
                 return;
             }
 
-            const refs = specifier
-                .getNameNode()
-                .findReferencesAsNodes()
-                .filter(
-                    (ref) =>
-                        ref.getSourceFile().getFilePath() === sourceFile.getFilePath(),
-                );
+            const nameNode = specifier.getNameNode();
+            const refs = Node.isIdentifier(nameNode)
+                ? nameNode
+                      .findReferencesAsNodes()
+                      .filter(
+                          (ref) =>
+                              ref.getSourceFile().getFilePath() ===
+                              sourceFile.getFilePath(),
+                      )
+                : [];
 
             refs.forEach((ref) => {
                 if (Node.isImportSpecifier(ref.getParent())) {

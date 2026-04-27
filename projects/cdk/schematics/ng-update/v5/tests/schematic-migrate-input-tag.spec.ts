@@ -138,5 +138,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'removes [tuiTextfieldLabelOutside] from tui-input-tag',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-tag
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Enter tags
+                </tui-input-tag>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

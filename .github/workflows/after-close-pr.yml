@@ -15,7 +15,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       BRANCH: refs/pull/${{ github.event.number }}/merge
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - continue-on-error: true
         run: |
           gh cache list --ref $BRANCH > cache.log && cat cache.log
@@ -33,23 +33,23 @@ jobs:
     env:
       channel: pr${{ github.event.number }}-${{ github.head_ref }}
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Drop e2e report site
-        uses: w9jds/firebase-action@v15.14.0
+        uses: w9jds/firebase-action@46a04d83eb19539c893cc86fce57ecbd82ba3111 # v15.14.0
         continue-on-error: true
         with:
-          args: hosting:channel:delete ${{ env.channel }}-e2e --site taiga-previews-demo-e2e-report -f
+          args: hosting:channel:delete ${{ env.channel }}-e2e --site taiga-preview-demo-e2e -f
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          PROJECT_ID: taiga-previews
+          PROJECT_ID: taiga-preview-demo
       - name: Drop preview demo site
-        uses: w9jds/firebase-action@v15.14.0
+        uses: w9jds/firebase-action@46a04d83eb19539c893cc86fce57ecbd82ba3111 # v15.14.0
         continue-on-error: true
         with:
-          args: hosting:channel:delete ${{ env.channel }}-demo --site taiga-previews-demo -f
+          args: hosting:channel:delete ${{ env.channel }}-demo --site taiga-preview-demo -f
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          PROJECT_ID: taiga-previews
+          PROJECT_ID: taiga-preview-demo
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

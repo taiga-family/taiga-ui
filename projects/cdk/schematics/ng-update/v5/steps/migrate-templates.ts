@@ -1,17 +1,14 @@
+import {type DevkitFileSystem, type UpdateRecorder} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../../constants';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {
-    type DevkitFileSystem,
-    getPackageJsonDependency,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-    type UpdateRecorder,
-} from 'ng-morph';
-
-import {ALL_TS_FILES} from '../../../constants';
-import {type TuiSchema} from '../../../ng-add/schema';
-import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
+} from '../../../utils/colored-log';
 import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
@@ -37,6 +34,7 @@ import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-sin
 import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateComboBox} from './templates/migrate-combo-box';
+import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
@@ -51,9 +49,9 @@ import {migrateInputPhoneInternational} from './templates/migrate-input-phone-in
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
+import {migrateLegacyCustomContent} from './templates/migrate-legacy-custom-content';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
-import {migrateProprietaryTextfieldIcons} from './templates/migrate-proprietary-textfield-icons';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
@@ -93,10 +91,6 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
-    const hasProprietaryPackage = !!getPackageJsonDependency(
-        fileSystem.tree,
-        '@taiga-ui/proprietary',
-    );
 
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
@@ -129,10 +123,11 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateChartHint,
         migrateCalendarSheetSingle,
         migrateCloseable,
+        migrateDocDocumentation,
         migrateSidebar,
         migrateFormatPhonePipe,
-        ...(hasProprietaryPackage ? [migrateProprietaryTextfieldIcons] : []),
         migrateHintOnLegacyControls,
+        migrateLegacyCustomContent,
         migrateInput,
         migrateTextarea,
     ] as const;
@@ -152,8 +147,6 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
     });
 
     fileSystem.commitEdits();
-
-    saveAddedImports(options);
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);

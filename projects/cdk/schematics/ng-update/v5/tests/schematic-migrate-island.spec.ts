@@ -33,8 +33,19 @@ describe('ng-update tui-island to tuiCardLarge', () => {
     );
 
     it(
-        'removes [tuiSurface] for [tuiCardLarge]',
-        migrate({template: '<div [tuiCardLarge]="size" tuiSurface="surface"></div>'}),
+        'replace [tuiCardLarge][tuiSurface="elevated"] to [tuiCardLarge][appearance="floating"]',
+        migrate({
+            template: /* HTML */ `
+                <div
+                    [tuiCardLarge]="size"
+                    tuiSurface="elevated"
+                ></div>
+                <p
+                    tuiCardLarge
+                    [tuiSurface]="'elevated'"
+                ></p>
+            `,
+        }),
     );
 
     afterEach(() => resetActiveProject());

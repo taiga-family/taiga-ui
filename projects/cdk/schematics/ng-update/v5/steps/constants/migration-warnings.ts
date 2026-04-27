@@ -44,12 +44,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
     },
     {
-        name: 'TuiFeedItemDetailsComponent',
-        moduleSpecifier: '@taiga-ui/proprietary',
-        message:
-            'TuiFeedItemDetailsComponent has been removed. Use BlockDetails instead. See https://taiga-ui.dev/layout/block-details',
-    },
-    {
         name: 'TuiToCountryCodePipe',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -60,6 +54,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiStatus type has been removed. Replace with a plain string literal type: "default" | "error" | "info" | "neutral" | "primary" | "success" | "warning"',
+    },
+    {
+        name: 'TuiTableDirectionOrder',
+        moduleSpecifier: '@taiga-ui/addon-table',
+        message:
+            'TuiTableDirectionOrder has been removed. Use [direction] and (directionChange) from TuiTableDirective. Update your types: TuiSortDirection (1 | -1) instead of "asc" | "desc"',
     },
     {
         name: 'TuiIsoToCountryCodePipe',

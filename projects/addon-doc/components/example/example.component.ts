@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {AsyncPipe, DOCUMENT, NgComponentOutlet, NgTemplateOutlet} from '@angular/common';
+import {DOCUMENT, NgComponentOutlet, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,6 +7,8 @@ import {
     inject,
     input,
     type OnChanges,
+    resource,
+    type Signal,
     signal,
     type Type,
 } from '@angular/core';
@@ -47,7 +49,6 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 @Component({
     selector: 'tui-doc-example',
     imports: [
-        AsyncPipe,
         NgComponentOutlet,
         NgTemplateOutlet,
         PolymorpheusOutlet,
@@ -109,18 +110,33 @@ export class TuiDocExample implements OnChanges {
     protected readonly copy = computed(() => this.copyTexts()[0]);
     protected readonly loading = signal(false);
     protected readonly id = computed(() => tuiToKebab(this.heading()));
-    protected readonly processor = toSignal(
+    protected readonly processor: Signal<Record<string, string>> = toSignal(
         this.rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
             map((value) => this.processContent(value)),
         ),
-        {initialValue: {} as unknown as Record<string, string>},
+        {initialValue: {}},
     );
+
+    protected readonly lazyComponent = resource({
+        request: async () => this.component(),
+        loader: async ({request}) => {
+            if (!request) {
+                return null;
+            }
+
+            const component = await request;
+
+            return component && 'default' in component ? component.default : component;
+        },
+    });
 
     public readonly heading = input('');
     public readonly description = input<PolymorpheusContent>();
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
-    public readonly component = input<Promise<Type<unknown>>>();
+    public readonly component =
+        input<Promise<Type<unknown> | {default: Type<unknown>}>>();
+
     public readonly content = input<Record<string, TuiRawLoaderContent>>({});
     public readonly preview = input(true);
 

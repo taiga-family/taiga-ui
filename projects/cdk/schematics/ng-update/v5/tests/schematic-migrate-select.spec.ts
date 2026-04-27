@@ -96,5 +96,41 @@ describe('ng-update legacy select', () => {
         }),
     );
 
+    it(
+        'wraps text in label when [tuiTextfieldLabelOutside] is false',
+        migrate({
+            template: /* HTML */ `
+                <tui-select
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="false"
+                >
+                    Choose an option
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            `,
+        }),
+    );
+
+    it(
+        'handles dynamic [tuiTextfieldLabelOutside] expression',
+        migrate({
+            template: /* HTML */ `
+                <tui-select
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="computedValue"
+                >
+                    Choose an option
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

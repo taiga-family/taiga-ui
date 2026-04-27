@@ -161,6 +161,28 @@ exports[`ng-update moves [min] and [max] to <input tuiInputDate>: test.html 1`] 
 }
 `;
 
+exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    [formControl]="control"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a date
+                </tui-input-date>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<input tuiInputDate [formControl]="control" placeholder="Choose a date" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update renames [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>: test.html 1`] = `
 {
   "0. Before": "

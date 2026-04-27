@@ -7,9 +7,103 @@ exports[`ng-update legacy input adds TODO for dynamic [tuiTextfieldLabelOutside]
      - [tuiTextfieldLabelOutside]="isOutside" is dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or outside for static label.
 -->
 <tui-textfield>
-<label tuiLabel>Label</label>
+Label
 <input tuiInput formControlName="value" />
 </tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy input converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet> and renames tuiTextfieldFiller to filler: test.html 1`] = `
+{
+  "0. Before": "<tui-input formControlName="value" [tuiTextfieldCustomContent]="myTpl" [tuiTextfieldFiller]="hint">Label</tui-input>",
+  "1. After": "<tui-textfield [filler]="hint">
+<label tuiLabel>Label</label>
+<input tuiInput formControlName="value" />
+
+<tui-icon
+    *polymorpheusOutlet="myTpl as src"
+    [icon]="src"
+/>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy input converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet> and renames tuiTextfieldFiller to filler: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { PolymorpheusOutlet } from "@taiga-ui/polymorpheus";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInput, TuiIcon, PolymorpheusOutlet],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update legacy input converts static tuiTextfieldCustomContent string to <tui-icon icon="...">: test.html 1`] = `
+{
+  "0. Before": "<tui-input formControlName="value" tuiTextfieldCustomContent="@tui.calendar">Label</tui-input>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Label</label>
+<input tuiInput formControlName="value" />
+
+<tui-icon icon="@tui.calendar" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy input converts static tuiTextfieldCustomContent string to <tui-icon icon="...">: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInput, TuiIcon],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update legacy input converts text to placeholder when [tuiTextfieldLabelOutside]="true": test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    formControlName="value"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Email
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield>
+                <input placeholder="Email" tuiInput formControlName="value" />
+                </tui-textfield>
+            ",
 }
 `;
 
@@ -29,6 +123,58 @@ exports[`ng-update legacy input handles tui-input without text content: test.htm
   "1. After": "<tui-textfield>
 <input tuiInput formControlName="value" />
 </tui-textfield>",
+}
+`;
+
+exports[`ng-update legacy input keeps tuiTextfieldCustomContent migration working alongside hint content: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    formControlName="value"
+                    tuiHintContent="Hint"
+                    [tuiTextfieldCustomContent]="myTpl"
+                >
+                    Label
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield>
+                <label tuiLabel>Label</label>
+                <input tuiInput formControlName="value" />
+<tui-icon tuiTooltip="Hint" />
+
+                <tui-icon
+                    *polymorpheusOutlet="myTpl as src"
+                    [icon]="src"
+                />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy input keeps tuiTextfieldCustomContent migration working alongside hint content: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputModule} from '@taiga-ui/legacy';
+
+                @Component({
+                  standalone: true,
+                  imports: [TuiInputModule],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { PolymorpheusOutlet } from "@taiga-ui/polymorpheus";
+import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+                                @Component({
+                  standalone: true,
+                  imports: [TuiInput, TuiIcon, TuiTooltip, PolymorpheusOutlet],
+                  templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
 }
 `;
 
@@ -142,16 +288,6 @@ exports[`ng-update legacy input places unrecognized attributes on <tui-textfield
 }
 `;
 
-exports[`ng-update legacy input renames tuiTextfieldCustomContent to content and tuiTextfieldFiller to filler: test.html 1`] = `
-{
-  "0. Before": "<tui-input formControlName="value" [tuiTextfieldCustomContent]="myTpl" [tuiTextfieldFiller]="hint">Label</tui-input>",
-  "1. After": "<tui-textfield [content]="myTpl" [filler]="hint">
-<label tuiLabel>Label</label>
-<input tuiInput formControlName="value" />
-</tui-textfield>",
-}
-`;
-
 exports[`ng-update legacy input renames tuiTextfieldIconLeft to iconStart and tuiTextfieldIcon to iconEnd on wrapper: test.html 1`] = `
 {
   "0. Before": "
@@ -217,27 +353,6 @@ exports[`ng-update legacy input routes dropdown attrs to wrapper and adds TODO f
                 <tui-textfield tuiDropdownDirection="top" tuiTextfieldPostfix="USD" tuiTextfieldPrefix="$" [tuiDropdownLimitWidth]="'fixed'">
                 <label tuiLabel>Amount</label>
                 <input tuiInput formControlName="value" />
-                </tui-textfield>
-            ",
-}
-`;
-
-exports[`ng-update legacy input wraps in <label tuiLabel> when [tuiTextfieldLabelOutside]="true": test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input
-                    formControlName="value"
-                    [tuiTextfieldLabelOutside]="true"
-                >
-                    Email
-                </tui-input>
-            ",
-  "1. After": "
-                <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
-     - Text content "Email" became placeholder on <input> (labelOutside=true). Add <label tuiLabel> outside <tui-textfield> if a static label is needed.
--->
-                <tui-textfield>
-                <input placeholder="Email" tuiInput formControlName="value" />
                 </tui-textfield>
             ",
 }
