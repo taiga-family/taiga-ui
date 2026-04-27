@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 function decorateMethod(
     originalMethod: (...args: unknown[]) => unknown,
 ): (this: object, ...args: unknown[]) => unknown {

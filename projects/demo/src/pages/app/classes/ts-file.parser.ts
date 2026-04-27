@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 export class TsFileParser {
     protected rawFileContent: string;
 

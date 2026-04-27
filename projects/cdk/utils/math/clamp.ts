@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 /**
  * Clamps a value between two inclusive limits
  */

@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {type TuiMonth} from './month';
 
