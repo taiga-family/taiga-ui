@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 export function tuiEaseInOutQuad(t: number): number {
     ngDevMode &&
         console.assert(

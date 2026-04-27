@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {AsyncPipe} from '@angular/common';
 import {
     type AfterContentInit,

@@ -44,7 +44,6 @@ import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
-import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
 import {migrateStyles} from './steps/styles';
 
@@ -56,7 +55,6 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
             [
                 {name: 'tuiLetMigration', step: () => tuiLetMigration(tree, options)},
                 {name: 'migrateTokens', step: () => migrateTokens(tree, options)},
-                {name: 'updateTsConfig', step: () => updateTsConfig(tree, options)},
                 {
                     name: 'migrateCssVariables',
                     step: () => migrateCssVariables(tree, options),

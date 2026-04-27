@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {
     type ComponentRef,
     type EmbeddedViewRef,

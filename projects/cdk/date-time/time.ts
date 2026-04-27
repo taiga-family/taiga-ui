@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
