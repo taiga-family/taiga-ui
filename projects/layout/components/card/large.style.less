@@ -58,7 +58,8 @@
         }
     }
 
-    [tuiCell] {
+    :not(tui-textfield) [tuiCell],
+    > [tuiCell] {
         inline-size: 100%;
         margin: -0.5rem -0.5rem -0.75rem;
         border-radius: var(--tui-radius-l);
