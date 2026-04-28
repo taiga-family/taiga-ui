@@ -6222,6 +6222,38 @@ export default class Example {}
 }
 ```
 
+#### Link
+
+**Template:**
+```html
+<a href="https://taiga-ui.dev" rel="noopener noreferrer" target="_blank" tuiButton > Documents </a>
+<a appearance="outline" href="https://taiga-ui.dev" iconStart="@tui.music" rel="noopener noreferrer" target="_blank" tuiButton > Music </a>
+<a appearance="accent" href="https://taiga-ui.dev" iconEnd="@tui.book-open" rel="noopener noreferrer" target="_blank" tuiButton > Library </a>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -6249,6 +6281,7 @@ export default class Page {
         'Options with DI',
         'Vertical',
         'Two labels',
+        'Link',
     ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
@@ -9924,13 +9957,13 @@ export default class Example {}
 <tui-data-list-wrapper [items]="items" (itemClick)="close()" />
 </ng-template>
 </div>
-<button tuiCell type="button" >
+<div tuiCell type="button" >
 <div tuiTitle> Multiple actions <div tuiSubtitle>When there's content on the right</div>
 </div>
 <div tuiCellActions tuiGroup tuiTheme="dark" [collapsed]="true" > @for (item of items; track item) { <button appearance="primary-grayscale" tuiIconButton type="button" [iconStart]="item.icon" > {{ item }} </button> } </div>
 <div tuiTitle> Hover over <div tuiSubtitle>Put it before the right side</div>
 </div>
-</button>
+</div>
 ```
 **TypeScript:**
 ```ts
@@ -10190,14 +10223,14 @@ export default class Example {
 <tui-icon tuiTooltip="Hint enabled" />
 </label>
 <tui-loader class="cell">
-<button tuiCell type="button" >
+<label tuiAppearance tuiAppearanceState="disabled" tuiCell >
 <div tuiTitle>Disabled cell</div>
 <div tuiCellActions tuiTheme="dark" >
 <button appearance="primary-grayscale" iconStart="@tui.phone" tuiIconButton type="button" > Call me </button>
 </div>
 <div tuiTitle> Hover over <div tuiSubtitle>Put it before the right side</div>
 </div>
-</button>
+</label>
 </tui-loader>
 ```
 **TypeScript:**
@@ -52895,7 +52928,7 @@ Pipe to format number values to show money sums Number formatting can be customi
 <li>{{ 10728.9 | tuiAmount: 'USD' }}</li>
 <li>{{ 10728.9 | tuiAmount: 'GBP' }}</li>
 <li>{{ -12345.1 | tuiAmount: 'USD' : 'start' }}</li>
-<li>{{ 100 | tuiAmount: '£' : 'start' }}</li>
+<li>{{ 100 | tuiAmount: '£' : 'start' : 'force-negative' }}</li>
 <li>{{ 200 | tuiAmount: 'AED' : 'start' }}</li>
 </ol>
 <hr class="tui-space_top-1 tui-space_bottom-1" />
