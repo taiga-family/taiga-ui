@@ -18,6 +18,7 @@
 - [Appearances](https://taiga-ui.dev/appearances)
 - [Breakpoints](https://taiga-ui.dev/breakpoints)
 - [Colors](https://taiga-ui.dev/colors)
+- [Dark Mode](https://taiga-ui.dev/dark-mode)
 - [Getting Started](https://taiga-ui.dev/getting-started)
 - [I18n](https://taiga-ui.dev/i18n)
 - [Migration Guide](https://taiga-ui.dev/migration-guide)

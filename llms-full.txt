@@ -52342,6 +52342,73 @@ export default class Page {
 ```
 
 ---
+# customization/Dark mode
+- **Package**: `null`
+- **Type**: customization
+
+### Usage Examples
+
+#### Toggle & Reset
+
+**Template:**
+```html
+<p> Dark mode: <code>{{ darkMode() }}</code>
+</p>
+<div class="buttons">
+<button size="s" tuiButton type="button" (click)="darkMode.set(true)" > Enable dark </button>
+<button size="s" tuiButton type="button" (click)="darkMode.set(false)" > Enable light </button>
+<button appearance="outline" size="s" tuiButton type="button" (click)="darkMode.reset()" > Reset to system </button>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_DARK_MODE, TuiButton} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly darkMode = inject(TUI_DARK_MODE);
+}
+```
+**LESS:**
+```less
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-block-start: 1rem;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = ['Toggle & Reset'];
+    protected readonly setup = import('./setup.md');
+    protected readonly usage = import('./usage.md');
+}
+```
+
+---
 # customization/Internationalization (i18n)
 - **Package**: `null`
 - **Type**: null

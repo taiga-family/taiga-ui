@@ -52351,6 +52351,73 @@ export default class Page {
 ```
 
 ---
+# customization/Dark mode
+- **Package**: `null`
+- **Type**: customization
+
+### Usage Examples
+
+#### Toggle &amp; Reset
+
+**Template:**
+```html
+&lt;p&gt; Dark mode: &lt;code&gt;{{ darkMode() }}&lt;/code&gt;
+&lt;/p&gt;
+&lt;div class=&quot;buttons&quot;&gt;
+&lt;button size=&quot;s&quot; tuiButton type=&quot;button&quot; (click)=&quot;darkMode.set(true)&quot; &gt; Enable dark &lt;/button&gt;
+&lt;button size=&quot;s&quot; tuiButton type=&quot;button&quot; (click)=&quot;darkMode.set(false)&quot; &gt; Enable light &lt;/button&gt;
+&lt;button appearance=&quot;outline&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; (click)=&quot;darkMode.reset()&quot; &gt; Reset to system &lt;/button&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TUI_DARK_MODE, TuiButton} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly darkMode = inject(TUI_DARK_MODE);
+}
+```
+**LESS:**
+```less
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-block-start: 1rem;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [&#039;Toggle &amp; Reset&#039;];
+    protected readonly setup = import(&#039;./setup.md&#039;);
+    protected readonly usage = import(&#039;./usage.md&#039;);
+}
+```
+
+---
 # customization/Internationalization (i18n)
 - **Package**: `null`
 - **Type**: null
