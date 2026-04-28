@@ -45,8 +45,6 @@ All notable changes to this project will be documented in this file. See
 - **addon-doc:** unwrap default module for component outlet
   ([#13957](https://github.com/taiga-family/taiga-ui/issues/13957))
   ([c2165ee](https://github.com/taiga-family/taiga-ui/commit/c2165eef030c1827837eaca911294f0ee49dae8a))
-- **cdk:** `tuiSum` supports `bigint` ([#13890](https://github.com/taiga-family/taiga-ui/issues/13890))
-  ([7b21438](https://github.com/taiga-family/taiga-ui/commit/7b21438a4c35a695fddf0489f4ae4a40fe61aa41))
 
 ## [5.3.0](https://github.com/taiga-family/taiga-ui/compare/v5.2.0...v5.3.0) (2026-04-21)
 
