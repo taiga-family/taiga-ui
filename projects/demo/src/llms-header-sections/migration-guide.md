@@ -1,108 +1,114 @@
 # Migration Guide
 
-> **Guide to update Taiga UI v4 → v5**
+> **Guide to update Taiga UI v{CURRENT_MAJOR} -> v{NEXT_MAJOR}**
 
 ## Before You Update
 
-- [ ] Use Node.js LTS, NPM v10 or higher
-- [ ] Update Taiga UI version to the latest v4 LTS
-- [ ] Update Angular version to v19 or higher
-- [ ] Ensure Prettier's `endOfLine` option is set to `auto` to fix some issues with end of line after migration
+- [ ] Use Node.js LTS, NPM v10 or higher.
+- [ ] Update Taiga UI version to latest v{CURRENT_MAJOR}-lts.
+- [ ] Update Angular version to v19 or higher.
+- [ ] Ensure Prettier endOfLine option is set to auto for fix some issues with end of line after migration.
 
 ## Updating
 
-### Step 1: Run Migration Schematics
+### 1. Run migration schematics
 
-Run the migration schematics to automatically update your codebase:
+Use your package manager:
 
-```bash
-ng update @taiga-ui/cdk --migrate-only --from=4 --to=5
-```
-
-Or with Nx:
+**Angular CLI:**
 
 ```bash
-nx migrate @taiga-ui/cdk --from=4 --to=5
-nx migrate --run-migrations
+ng update @taiga-ui/cdk
 ```
 
-### Step 2: Review Changed Code
+**Nx CLI:**
 
-Review all changed code lines. Some contain new code comments like:
-
-```typescript
-// TODO: (Taiga UI migration)
+```bash
+nx migrate @taiga-ui/cdk
+nx migrate --run-migrations=migrations.json
 ```
 
-In most cases, these comments contain instructions for manually migrating deleted entities to their new alternatives.
+### 2. Review changed code
 
-### Step 3: Handle Legacy Package
+- [ ] Look for new TODO comments from migration (e.g., `// TODO: (Taiga UI migration)`)
+- They contain instructions to manually migrate deleted entities to new alternatives
 
-You may find imports from `@taiga-ui/legacy`. This package is transitional for outdated entities before their full
-removal.
+### 3. Update @taiga-ui/legacy imports
 
-- Everything in this package in v5 will be removed in v6
-- Components with `@deprecated` tag have modern alternatives (IDEs display them as strikethrough)
-- **Recommendation**: Replace deprecated components with new alternatives as soon as possible
+- [ ] Your code may now contain imports from `@taiga-ui/legacy`
+- This is a transitional package for outdated entities
+- Everything in this package will be removed in the next major release
+- [ ] Prefer modern alternatives marked with `@deprecated` tag (shown as stricken-through in IDEs)
+- Replace legacy imports with new alternatives as soon as possible
 
 ## Troubleshooting
 
-### Unused Imports After Migration
+### Unused imports after migration
 
-**Problem**: After running migration schematics, you have many
-`TS6133: <entityName> is declared but its value is never read` errors.
+**Problem:** TypeScript errors after migration: `TS6133: <entityName> is declared but its value is never read`
 
-**Solution**: The schematics don't include code formatting on purpose (to maintain speed). Use your IDE's import
-optimization:
+**Solution:** Taiga UI schematics skip code formatting to avoid slowdown. Use these tools:
 
-- **WebStorm**: Right-click on root folder → "Optimize imports"
-- **VS Code**: Use "Folder source actions" extension to trigger "Organize Imports" recursively
+- **WebStorm:** Right-click root folder → "Optimize imports"
+- **VS Code:** Install "Folder source actions" extension → trigger "Organize Imports" recursively
 
-### Missing Transitive Peer Dependencies
+### Missing transitive peer dependencies
 
-**Problem**: Using Yarn or `legacy-peer-deps` and getting `Could not resolve dependency` errors for packages like
-`ng-web-apis`, `maskito`, `ng-polymorpheus`, or `ng-event-plugins`.
+**Problem:** npm install fails with errors for `ng-web-apis`, `maskito`, `ng-polymorpheus`, or `ng-event-plugins`
 
-**Solution**: Yarn and NPM with `legacy-peer-deps` don't automatically install transitive peer dependencies. You must:
+**Solution:** Yarn and NPM with `legacy-peer-deps` don't install transitive peer dependencies automatically.
 
-1. Explore `package.json` of every used Taiga UI package
+Install manually:
+
+1. Check `package.json` of each Taiga UI package
 2. Find their `peerDependencies`
-3. Ensure they are installed and versions are compatible with Taiga UI constraints
+3. Ensure they're installed and versions satisfy constraints
 
-### Nx Legacy-Peer-Deps Bug
+### Nx legacy-peer-deps bug
 
-**Problem**: Running `nx migrate --run-migrations` fails with `Cannot find module 'ts-morph'` error.
+**Problem:** `nx migrate --run-migrations` fails: "Cannot find module 'ts-morph'"
 
-**Solution**: Nx < v22 has a known issue with `ng migrate` command. Either:
+**Solution:** Nx < v22 has a known issue with ng migrate:
 
-- Bump Nx version to v22+
-- Or run: `npm_config_legacy_peer_deps=false nx migrate --run-migrations`
+- Upgrade Nx to v22+, or
+- Run with npm config:
 
-### Heap Out of Memory
+```bash
+npm install
+npm_config_legacy_peer_deps=false nx migrate --run-migrations
+```
 
-**Problem**: Migration fails with `FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory`.
+### Heap out of memory
 
-**Solution**: Migration schematics are memory-intensive. Increase Node.js memory limit:
+**Problem:** Migration fails with "FATAL ERROR: Reached heap limit — JavaScript heap out of memory"
+
+**Solution:** Migration schematics are memory-intensive. Increase Node.js heap size:
 
 ```bash
 NODE_OPTIONS=--max-old-space-size=8192 nx migrate --run-migrations
 ```
 
-### Manual Schematics Execution
+Adjust `8192` based on your system. The syntax varies by OS and shell.
 
-**Problem**: Need to run schematics manually due to issues with `ng update` / `ng migrate`.
+### Manual run of schematics
 
-**Solution**:
+**Problem:** Can't use `ng update` / `ng migrate` directly; need to run schematics manually
 
-1. Manually update all Taiga UI packages to v5 in `package.json`
+**Solution:**
+
+1. Update Taiga UI packages to v{NEXT_MAJOR} in `package.json`
 2. Run `npm install`
-3. Verify `node_modules/@taiga-ui/cdk/package.json` contains v5
-4. Execute:
-   ```bash
-   ng update @taiga-ui/cdk --migrate-only --from=4 --to=5
-   ```
-   Or with Nx:
-   ```bash
-   nx migrate @taiga-ui/cdk --from=4 --to=5
-   nx migrate --run-migrations
-   ```
+3. Verify `node_modules/@taiga-ui/cdk/package.json` has v{NEXT_MAJOR}
+
+**Option A — Angular CLI:**
+
+```bash
+ng update @taiga-ui/cdk --migrate-only --from={CURRENT_MAJOR} --to={NEXT_MAJOR}
+```
+
+**Option B — Nx CLI:**
+
+```bash
+nx migrate @taiga-ui/cdk --from="@taiga-ui/cdk@{CURRENT_MAJOR}.0.0"
+nx migrate --run-migrations
+```
