@@ -6231,6 +6231,38 @@ export default class Example {}
 }
 ```
 
+#### Link
+
+**Template:**
+```html
+&lt;a href=&quot;https://taiga-ui.dev&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; tuiButton &gt; Documents &lt;/a&gt;
+&lt;a appearance=&quot;outline&quot; href=&quot;https://taiga-ui.dev&quot; iconStart=&quot;@tui.music&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; tuiButton &gt; Music &lt;/a&gt;
+&lt;a appearance=&quot;accent&quot; href=&quot;https://taiga-ui.dev&quot; iconEnd=&quot;@tui.book-open&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; tuiButton &gt; Library &lt;/a&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -6258,6 +6290,7 @@ export default class Page {
         &#039;Options with DI&#039;,
         &#039;Vertical&#039;,
         &#039;Two labels&#039;,
+        &#039;Link&#039;,
     ];
 
     protected readonly sizes: ReadonlyArray&lt;TuiSizeL | TuiSizeXS&gt; = [&#039;xs&#039;, &#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
@@ -9933,13 +9966,13 @@ export default class Example {}
 &lt;tui-data-list-wrapper [items]=&quot;items&quot; (itemClick)=&quot;close()&quot; /&gt;
 &lt;/ng-template&gt;
 &lt;/div&gt;
-&lt;button tuiCell type=&quot;button&quot; &gt;
+&lt;div tuiCell type=&quot;button&quot; &gt;
 &lt;div tuiTitle&gt; Multiple actions &lt;div tuiSubtitle&gt;When there&#039;s content on the right&lt;/div&gt;
 &lt;/div&gt;
 &lt;div tuiCellActions tuiGroup tuiTheme=&quot;dark&quot; [collapsed]=&quot;true&quot; &gt; @for (item of items; track item) { &lt;button appearance=&quot;primary-grayscale&quot; tuiIconButton type=&quot;button&quot; [iconStart]=&quot;item.icon&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/div&gt;
 &lt;div tuiTitle&gt; Hover over &lt;div tuiSubtitle&gt;Put it before the right side&lt;/div&gt;
 &lt;/div&gt;
-&lt;/button&gt;
+&lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
@@ -10199,14 +10232,14 @@ export default class Example {
 &lt;tui-icon tuiTooltip=&quot;Hint enabled&quot; /&gt;
 &lt;/label&gt;
 &lt;tui-loader class=&quot;cell&quot;&gt;
-&lt;button tuiCell type=&quot;button&quot; &gt;
+&lt;label tuiAppearance tuiAppearanceState=&quot;disabled&quot; tuiCell &gt;
 &lt;div tuiTitle&gt;Disabled cell&lt;/div&gt;
 &lt;div tuiCellActions tuiTheme=&quot;dark&quot; &gt;
 &lt;button appearance=&quot;primary-grayscale&quot; iconStart=&quot;@tui.phone&quot; tuiIconButton type=&quot;button&quot; &gt; Call me &lt;/button&gt;
 &lt;/div&gt;
 &lt;div tuiTitle&gt; Hover over &lt;div tuiSubtitle&gt;Put it before the right side&lt;/div&gt;
 &lt;/div&gt;
-&lt;/button&gt;
+&lt;/label&gt;
 &lt;/tui-loader&gt;
 ```
 **TypeScript:**
@@ -52904,7 +52937,7 @@ Pipe to format number values to show money sums Number formatting can be customi
 &lt;li&gt;{{ 10728.9 | tuiAmount: &#039;USD&#039; }}&lt;/li&gt;
 &lt;li&gt;{{ 10728.9 | tuiAmount: &#039;GBP&#039; }}&lt;/li&gt;
 &lt;li&gt;{{ -12345.1 | tuiAmount: &#039;USD&#039; : &#039;start&#039; }}&lt;/li&gt;
-&lt;li&gt;{{ 100 | tuiAmount: &#039;£&#039; : &#039;start&#039; }}&lt;/li&gt;
+&lt;li&gt;{{ 100 | tuiAmount: &#039;£&#039; : &#039;start&#039; : &#039;force-negative&#039; }}&lt;/li&gt;
 &lt;li&gt;{{ 200 | tuiAmount: &#039;AED&#039; : &#039;start&#039; }}&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr class=&quot;tui-space_top-1 tui-space_bottom-1&quot; /&gt;

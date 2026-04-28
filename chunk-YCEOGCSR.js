@@ -1,0 +1,31 @@
+import"./chunk-HU6DUUP4.js";var r=`<a
+    href="https://taiga-ui.dev"
+    rel="noopener noreferrer"
+    target="_blank"
+    tuiButton
+>
+    Documents
+</a>
+
+<a
+    appearance="outline"
+    href="https://taiga-ui.dev"
+    iconStart="@tui.music"
+    rel="noopener noreferrer"
+    target="_blank"
+    tuiButton
+>
+    Music
+</a>
+
+<a
+    appearance="accent"
+    href="https://taiga-ui.dev"
+    iconEnd="@tui.book-open"
+    rel="noopener noreferrer"
+    target="_blank"
+    tuiButton
+>
+    Library
+</a>
+`;export{r as default};
