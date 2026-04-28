@@ -14,7 +14,6 @@ export class TuiRangeChange {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly range = inject(TuiRange);
-
     public readonly activeThumbChange = output<'end' | 'start'>();
 
     constructor() {

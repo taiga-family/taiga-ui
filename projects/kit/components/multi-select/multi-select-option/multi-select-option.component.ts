@@ -44,6 +44,7 @@ export class TuiMultiSelectOption<T> {
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     protected readonly value = tuiInjectValue<readonly T[]>();
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
+
     protected readonly selected = computed(
         (controlValue = this.value(), optionValue = this.option?.value()) =>
             tuiIsPresent(optionValue) &&

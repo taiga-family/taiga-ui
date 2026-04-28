@@ -34,6 +34,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
+
     protected readonly controls = [
         new FormControl(null, [Validators.required, Validators.max(6)]),
         new FormControl(null, [Validators.required, Validators.max(5)]),

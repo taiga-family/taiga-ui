@@ -34,7 +34,6 @@ import {TuiInputDateDirective} from './input-date.directive';
 })
 export class TuiInputDateComponent {
     protected readonly host = inject(TuiInputDateDirective);
-
     public readonly list = input<string>();
 
     protected onInput(value: string): void {

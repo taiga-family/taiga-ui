@@ -35,7 +35,6 @@ export class TuiDocCode implements OnChanges {
     private readonly icons = inject(TUI_COMMON_ICONS);
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
     private readonly texts = inject(TUI_COPY_TEXTS);
-
     protected readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly markdownCodeProcessor: TuiHandler<string, readonly string[]> =
@@ -65,7 +64,6 @@ export class TuiDocCode implements OnChanges {
     );
 
     public readonly filename = input('');
-
     public readonly code = input<TuiRawLoaderContent>('');
     public readonly lineNumbers = input(true);
 

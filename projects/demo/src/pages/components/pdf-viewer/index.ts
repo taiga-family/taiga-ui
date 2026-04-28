@@ -10,6 +10,5 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly routes = DemoRoute;
-
     protected examples = ['Basic', 'With responsive dialog', 'Loading and error states'];
 }

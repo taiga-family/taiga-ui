@@ -36,7 +36,6 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 })
 export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');
-
     private readonly el = tuiInjectElement();
 
     protected readonly width$ = merge(

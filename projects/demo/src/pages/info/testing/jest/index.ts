@@ -8,7 +8,6 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly install = {Terminal: import('./examples/install.md')};
-
     protected readonly config = {'jest.config.ts': import('./examples/jest-config.md')};
 
     protected readonly manual = {

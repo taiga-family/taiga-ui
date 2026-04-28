@@ -32,20 +32,20 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     ],
     host: {
         style: 'cursor: pointer',
-        '(click)': 'copy()',
-        '[style.pointer-events]': 'hasValue ? null : "none"',
-        '[style.opacity]': 'hasValue ? null : "var(--tui-disabled-opacity)"',
         '[style.border-width.rem]': 'textfield.options.size() === "l" ? null : 0.25',
+        '[style.opacity]': 'hasValue ? null : "var(--tui-disabled-opacity)"',
+        '[style.pointer-events]': 'hasValue ? null : "none"',
+        '(click)': 'copy()',
     },
 })
 export class TuiCopyDirective {
     private readonly copied$ = new Subject<void>();
     private readonly clipboard = inject(Clipboard);
     private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
-
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly icons = tuiIconEnd(inject(TUI_COPY_OPTIONS).icon);
     protected readonly copyTexts = inject(TUI_COPY_TEXTS);
+
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
         'content',

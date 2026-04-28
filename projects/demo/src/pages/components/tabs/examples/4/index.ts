@@ -26,9 +26,7 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected activeItemIndex = 0;
-
     protected readonly steps = ['Sales', 'Settings', 'News'];
 
     protected onClick(item: string): void {

@@ -24,13 +24,11 @@ class Styles {}
 
 @Directive({
     selector: '[tuiAvatarOutline]',
-    host: {
-        '[style.--t-fill]': 'value()',
-        '[class._outline]': 'value()',
-    },
+    host: {'[class._outline]': 'value()', '[style.--t-fill]': 'value()'},
 })
 export class TuiAvatarOutline {
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly value = computed((value = this.tuiAvatarOutline()) =>
         value === '' ? 'var(--tui-background-accent-1)' : value,
     );

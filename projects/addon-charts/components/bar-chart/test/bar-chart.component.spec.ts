@@ -16,6 +16,7 @@ describe('BarChart', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiBarChart);
+
         public readonly value = [
             [1, 2, 3],
             [4, 5, 6],

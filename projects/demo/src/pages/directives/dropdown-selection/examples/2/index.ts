@@ -49,6 +49,7 @@ export default class Example {
     protected readonly options = viewChildren(TuiOption, {read: ElementRef});
     protected readonly driver = viewChild(TuiDriver);
     protected value = 'Type @ to see a dropdown';
+
     protected readonly items = [
         {
             name: 'Alexander Inkin',

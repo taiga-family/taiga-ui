@@ -24,6 +24,7 @@ export default class Example {
 
     protected currentQuestion = 0;
     protected results: boolean[][] = [];
+
     protected form = new FormGroup({
         0: new FormControl(true),
         1: new FormControl(false),

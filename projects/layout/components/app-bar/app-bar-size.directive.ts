@@ -7,6 +7,7 @@ import {TuiAppBarComponent} from './app-bar.component';
 @Directive({selector: 'tui-app-bar[tuiAppBarSize]'})
 export class TuiAppBarSizeDirective {
     private readonly platform = inject(TUI_PLATFORM);
+
     protected readonly size = tuiDirectiveBinding(
         TuiAppBarComponent,
         'size',

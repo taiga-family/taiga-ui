@@ -14,6 +14,7 @@ import {TUI_OPTION_CONTENT} from './option-content.directive';
 export class TuiOptionWithContent {
     private readonly vcr = inject(ViewContainerRef);
     private readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
+
     private readonly ref =
         this.content &&
         createComponent(this.content, {

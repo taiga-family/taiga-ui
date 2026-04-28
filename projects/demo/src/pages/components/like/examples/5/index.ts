@@ -14,7 +14,6 @@ import {TuiLike} from '@taiga-ui/kit';
 })
 export default class Example {
     protected liked = false;
-
     protected likeForm = new FormGroup({liked: new FormControl(false)});
 
     protected changeValue(): void {

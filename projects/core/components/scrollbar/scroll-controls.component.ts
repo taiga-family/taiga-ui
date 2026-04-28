@@ -18,8 +18,8 @@ import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 })
 export class TuiScrollControls {
     private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
-
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
+
     protected readonly refresh$ = inject(WA_ANIMATION_FRAME).pipe(
         throttleTime(300, tuiZonefreeScheduler()),
         map(() => this.scrollbars),

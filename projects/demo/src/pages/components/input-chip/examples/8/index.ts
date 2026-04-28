@@ -38,11 +38,9 @@ interface User {
 export default class Example {
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));
-
     protected writable: string[] = [];
     protected sheet: string[] = [];
     protected native: User[] = [{name: this.items[0] || '', index: 0}];
-
     protected readonly disabled = (item: string): boolean => !this.items.includes(item);
     protected readonly identity: TuiIdentityMatcher<User> = (a, b) => a.index === b.index;
     protected readonly stringify = ({name}: User): string => name;

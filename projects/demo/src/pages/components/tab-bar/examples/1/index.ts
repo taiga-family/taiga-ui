@@ -20,7 +20,6 @@ interface Item {
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected activeItemIndex = 1;
 
     protected readonly items = [

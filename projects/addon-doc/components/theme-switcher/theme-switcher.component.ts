@@ -30,7 +30,6 @@ export class TuiDocThemeSwitcher {
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly key = inject(TUI_THEME_KEY);
     private readonly location = inject(WA_LOCATION);
-
     protected readonly theme = inject(TUI_THEME);
     protected readonly themes = inject(TUI_THEMES);
     protected readonly keys = Object.keys(this.themes);

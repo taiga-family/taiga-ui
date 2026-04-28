@@ -54,8 +54,8 @@ const TRANSFORM = {
 export class TuiPieChart {
     private readonly hintOptions = inject(TuiChartHint, {optional: true});
     private readonly autoId = tuiGenerateId();
-
     protected readonly getSum = computed(() => tuiSum(...this.value()));
+
     protected readonly segments = computed<ReadonlyArray<[number, number]>>(() =>
         this.value()
             .map((initial, i, array) =>

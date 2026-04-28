@@ -104,8 +104,8 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
     host: {
-        '[class._ios]': 'isIOS',
         '[class._initialized]': 'initialized',
+        '[class._ios]': 'isIOS',
         '(mousedown.prevent)': '0',
     },
 })
@@ -119,6 +119,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     private readonly doc = inject(DOCUMENT);
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly ngZone = inject(NgZone);
+
     private readonly getYearsViewportSize = computed(
         () => this.yearsScroll()?.getViewportSize() || 0,
     );
@@ -167,11 +168,13 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly doneWord = inject(TUI_DONE_WORD);
     protected readonly monthNames = inject(TUI_MONTHS);
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
+
     protected readonly chooseDayOrRangeTexts = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
         optional: true,
     });
 
     protected readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
+
     protected readonly months = Array.from(
         {length: RANGE * 12},
         (_, i) =>
@@ -189,20 +192,15 @@ export class TuiMobileCalendar implements AfterViewInit {
      * TODO(v5): delete it
      */
     public readonly single = input(!inject(TUI_CALENDAR_SHEET_OPTIONS).rangeMode);
-
     public readonly multi = input(false);
-
     public readonly min = input(TUI_FIRST_DAY);
-
     public readonly max = input(TUI_LAST_DAY);
 
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
     public readonly cancel = output();
-
     public readonly confirm = output<TuiDay | TuiDayRange | readonly TuiDay[]>();
-
     public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
 
     constructor() {

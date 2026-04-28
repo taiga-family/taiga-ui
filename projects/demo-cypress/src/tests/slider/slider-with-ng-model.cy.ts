@@ -27,7 +27,6 @@ describe('Slider | With [(ngModel)]', () => {
     })
     class Test {
         public readonly value = model<number>();
-
         public readonly step = input(1);
     }
 

@@ -13,7 +13,7 @@ import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiSurface} from '@taiga-ui/layout/components/surface';
 
 export const [TUI_CARD_OPTIONS, tuiCardOptionsProvider] = tuiCreateOptions({
-    space: 'normal' as 'compact' | 'normal',
+    space: 'normal',
 });
 
 @Component({
@@ -41,6 +41,5 @@ class Styles {}
 export class TuiCardLarge {
     protected readonly options = inject(TUI_CARD_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly tuiCardLarge = input<'' | 'compact' | 'normal'>('');
 }

@@ -72,11 +72,7 @@ export function tuiGetPaymentSystem(
 }
 
 export function tuiIsMaestro(three: number, two: number, one: number): boolean {
-    if (one === 6) {
-        return true;
-    }
-
-    if (two === 50 || (two > 55 && two < 59)) {
+    if (one === 6 || two === 50 || (two > 55 && two < 59)) {
         return true;
     }
 

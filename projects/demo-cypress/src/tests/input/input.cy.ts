@@ -23,11 +23,8 @@ import {TuiInput, TuiRoot} from '@taiga-ui/core';
 })
 export class TestTextfield {
     public readonly initialValue = model('');
-
     public readonly filler = input('');
-
     public readonly content = input('');
-
     public readonly placeholder = input('');
 }
 

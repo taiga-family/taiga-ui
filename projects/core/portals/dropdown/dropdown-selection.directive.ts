@@ -58,11 +58,11 @@ export class TuiDropdownSelection
     implements TuiRectAccessor, OnDestroy
 {
     private ghost?: HTMLElement;
-
     protected readonly doc = inject(DOCUMENT);
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly el = tuiInjectElement();
+
     protected readonly handler = computed((visible = this.tuiDropdownSelection()) =>
         tuiIsString(visible) ? TUI_TRUE_HANDLER : visible,
     );
@@ -109,6 +109,7 @@ export class TuiDropdownSelection
 
     public readonly type = 'dropdown';
     public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>('');
+
     public readonly tuiDropdownSelectionPosition = input<'selection' | 'tag' | 'word'>(
         'selection',
     );

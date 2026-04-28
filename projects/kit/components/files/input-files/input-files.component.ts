@@ -38,21 +38,22 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        tuiInputFiles: '',
         'data-tui-version': TUI_VERSION,
+        tuiInputFiles: '',
         '[attr.data-size]': 'size() || options.size',
-        '(dragover.prevent.zoneless)': '0',
-        '(drop.prevent)': 'onDropped($event)',
-        '(dragenter)': 'onDrag($event.dataTransfer)',
-        '(dragleave)': 'onDrag(null)',
         '[class._dragged]': 'fileDragged',
         '(change)': 'onFilesSelected($event.target)',
+        '(dragenter)': 'onDrag($event.dataTransfer)',
+        '(dragleave)': 'onDrag(null)',
+        '(dragover.prevent.zoneless)': '0',
+        '(drop.prevent)': 'onDropped($event)',
     },
 })
 export class TuiInputFiles {
     protected files?: FileList | null;
     protected readonly options = inject(TUI_INPUT_FILES_OPTIONS);
     protected readonly content = new PolymorpheusComponent(TuiInputFilesContent);
+
     protected readonly template =
         contentChild<TemplateRef<TuiContext<boolean>>>(TemplateRef);
 

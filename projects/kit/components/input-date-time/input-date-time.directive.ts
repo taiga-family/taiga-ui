@@ -60,14 +60,15 @@ export class TuiInputDateTimeDirective
     implements TuiTextfieldAccessor<readonly [TuiDay, TuiTime | null]>
 {
     private readonly timeFillers = inject(TUI_TIME_TEXTS);
-
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
+
     protected override readonly filler = tuiWithDateFiller(
         (date) =>
             `${date}${this.options.dateTimeSeparator}${this.timeFillers()?.[this.timeMode()] ?? ''}`,
     );
 
     protected override readonly valueEffect = effect(noop);
+
     protected override readonly identity = tuiDirectiveBinding(
         TuiItemsHandlersDirective,
         'identityMatcher',

@@ -31,7 +31,6 @@ export type TuiPortalContext<T, O = void> = T &
 export abstract class TuiPortal<T, K = void> {
     protected abstract readonly component: Type<any>;
     protected abstract readonly options: T;
-
     private readonly injector = inject(INJECTOR);
 
     // eslint-disable-next-line @angular-eslint/prefer-inject

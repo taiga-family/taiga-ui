@@ -52,11 +52,12 @@ export function migrateDocI18nTokens(tree: Tree, options: TuiSchema): void {
 
             const parent = ref.getParent();
 
-            if (!parent || Node.isImportSpecifier(parent)) {
-                continue;
-            }
-
-            if (!Node.isPropertyAssignment(parent) || parent.getName() !== 'provide') {
+            if (
+                !parent ||
+                Node.isImportSpecifier(parent) ||
+                !Node.isPropertyAssignment(parent) ||
+                parent.getName() !== 'provide'
+            ) {
                 continue;
             }
 

@@ -51,9 +51,7 @@ describe('Filter', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiFilter);
-
         public disabledItemHandler: TuiBooleanHandler<any> = TUI_FALSE_HANDLER;
-
         public control = new FormControl<string[]>([]);
 
         public items: readonly ItemWithBadge[] | readonly number[] | readonly string[] =

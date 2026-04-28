@@ -4,8 +4,8 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 @Directive({
     selector: 'tui-opt-group',
     host: {
-        role: 'group',
         'data-tui-version': TUI_VERSION,
+        role: 'group',
         '[attr.data-label]': 'label() || ""',
     },
 })

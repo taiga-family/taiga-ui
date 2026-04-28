@@ -20,8 +20,8 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective],
     host: {
-        ngSkipHydration: 'true',
         inputmode: 'numeric',
+        ngSkipHydration: 'true',
         spellcheck: 'false',
         '(pointerdown.prevent)': 'onClick(0)',
         '(selectionchange)': 'onSelection()',
@@ -31,6 +31,7 @@ export class TuiInputPinComponent {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly control = inject(NgControl);
+
     protected readonly maskito = tuiMaskito(
         computed(() => ({mask: this.mask(), overwriteMode: 'replace'})),
     );

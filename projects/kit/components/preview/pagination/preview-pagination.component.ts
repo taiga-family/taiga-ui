@@ -13,14 +13,13 @@ import {TUI_PREVIEW_ICONS, type TuiPreviewIcons} from '../preview.options';
     styleUrl: './preview-pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '(document:keydown.arrowRight.prevent)': 'onArrowClick(1)',
         '(document:keydown.arrowLeft.prevent)': 'onArrowClick(-1)',
+        '(document:keydown.arrowRight.prevent)': 'onArrowClick(1)',
     },
 })
 export class TuiPreviewPagination {
     protected readonly icons: TuiPreviewIcons = inject(TUI_PREVIEW_ICONS);
     protected readonly texts = inject(TUI_PAGINATION_TEXTS);
-
     public readonly length = input(1);
     public readonly index = model(0);
 

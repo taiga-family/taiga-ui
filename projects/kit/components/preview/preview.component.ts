@@ -46,7 +46,6 @@ const ROTATION_ANGLE = 90;
 })
 export class TuiPreviewComponent {
     private readonly el = tuiInjectElement();
-
     protected minZoom = 1;
     protected width = 0;
     protected height = 0;
@@ -55,6 +54,7 @@ export class TuiPreviewComponent {
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly zoom$ = new BehaviorSubject(this.minZoom);
     protected readonly rotation$ = new BehaviorSubject(0);
+
     protected readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
         EMPTY_COORDINATES,
     );

@@ -25,12 +25,12 @@ describe('InputCardGroup', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiInputCardGroup);
+
         public readonly customIconTemplate = viewChild.required('customIconTemplate', {
             read: TemplateRef,
         });
 
         public control = new FormControl<Partial<TuiCard>>({card: ''});
-
         public onBinChange: (event: string | null) => void = jest.fn();
     }
 

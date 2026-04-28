@@ -30,7 +30,6 @@ describe('InputRange | With segments + tick labels', () => {
     })
     class SandBox {
         public readonly value = model<[number, number]>();
-
         public readonly size = input.required<'l' | 'm' | 's'>();
     }
 

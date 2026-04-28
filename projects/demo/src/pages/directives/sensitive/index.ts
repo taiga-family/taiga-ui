@@ -10,6 +10,5 @@ import {TuiSensitive} from '@taiga-ui/kit';
 })
 export default class Page {
     protected sensitive = true;
-
     protected readonly examples = ['Basic', 'Components'];
 }

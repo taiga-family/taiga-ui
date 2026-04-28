@@ -55,6 +55,5 @@ export default class Example {
 
     protected min = this.dates[0];
     protected max = this.dates[4];
-
     protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }

@@ -15,6 +15,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
 })
 export default class Example {
     protected readonly max = 100;
+
     protected readonly value$ =
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)

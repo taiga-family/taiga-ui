@@ -36,6 +36,7 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
 export class TuiLineChart {
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly autoId = tuiGenerateId();
+
     private readonly resize = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
             map(([e]) => e?.contentRect.height || Number.NaN),
@@ -50,6 +51,7 @@ export class TuiLineChart {
 
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
     protected readonly hintOptions = inject(TuiChartHint, {optional: true});
+
     protected readonly viewBox = computed(() => {
         if (Number.isNaN(this.resize())) {
             return '0 0 0 0';
@@ -79,16 +81,13 @@ export class TuiLineChart {
 
     public readonly drivers = viewChildren(TuiHintHover);
     public readonly drivers$ = toObservable(this.drivers);
-
     public readonly x = input(0);
     public readonly y = input(0);
     public readonly width = input(0);
     public readonly height = input(0);
     public readonly smoothingFactor = input(this.options.smoothingFactor);
-
     public readonly xStringify = input<TuiStringHandler<number> | null>(null);
     public readonly yStringify = input<TuiStringHandler<number> | null>(null);
-
     public readonly filled = input(this.options.filled);
     public readonly dots = input(this.options.dots);
 

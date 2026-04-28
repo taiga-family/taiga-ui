@@ -57,12 +57,8 @@ export default class Page {
     ];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
-
     protected items = this.itemsVariants[0]!;
-
     protected control = new FormControl(this.initialItems);
-
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-
     protected size = this.sizeVariants[2]!;
 }

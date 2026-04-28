@@ -45,8 +45,8 @@ export class TuiInputFilesDirective extends TuiControl<
 > {
     protected readonly host = inject(forwardRef(() => TuiInputFiles));
     protected readonly m = tuiAppearanceMode(this.mode);
-
     public readonly el = tuiInjectElement<HTMLInputElement>();
+
     public readonly reject = outputFromObservable(
         timer(0, tuiZonefreeScheduler()).pipe(
             switchMap(() => tuiControlValue(this.control.control)),

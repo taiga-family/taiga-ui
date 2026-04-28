@@ -17,6 +17,7 @@ import {
 })
 export default class Example {
     protected readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
+
     protected readonly sizes: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xxl',
         'xl',

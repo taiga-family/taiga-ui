@@ -22,6 +22,5 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
-
     protected value = null;
 }

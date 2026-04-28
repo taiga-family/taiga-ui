@@ -31,18 +31,18 @@ function isText(value: string): boolean {
     hostDirectives: [TuiWithInput, MaskitoDirective],
     host: {
         type: 'tel',
-        '[inputMode]': 'inputMode()',
         '[disabled]': 'disabled()',
+        '[inputMode]': 'inputMode()',
         '(input)': 'onInput($event.target.value)',
     },
 })
 export class TuiInputPhoneDirective extends TuiControl<string | null> {
     private readonly input = inject(TuiInputDirective);
     private readonly host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
-
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly nonRemovablePrefix = computed(() => `${this.countryCode()} `);
+
     protected readonly inputMode = computed(() =>
         this.allowText() ? 'text' : 'numeric',
     );
@@ -60,12 +60,13 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
         if (!this.host.focused() && incomplete) {
             this.input.value.set('');
         } else if (this.host.focused() && prefix) {
-            this.input.value.set(this.nonRemovablePrefix());
+            this.input.value.set(untracked(this.nonRemovablePrefix));
         }
     });
 
     protected readonly countryCode = computed(() => extractCode(this.mask()));
     protected readonly phoneMask = computed(() => extractMask(this.mask()));
+
     protected readonly maskito = tuiMaskito(
         computed(() =>
             this.calculateMask(

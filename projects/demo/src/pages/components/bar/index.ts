@@ -12,9 +12,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 })
 export default class Page {
     protected readonly examples = ['Basic', 'Segments'];
-
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-
     protected size = this.sizeVariants[1]!;
 
     protected readonly valueVariants = [

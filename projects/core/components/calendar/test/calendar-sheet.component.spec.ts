@@ -41,11 +41,8 @@ describe('CalendarSheet', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiCalendarSheet);
-
         public month = new TuiMonth(2018, 1);
-
         public value: TuiDayRange | null = null;
-
         public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
         public onDayClick(_: TuiDay): void {}

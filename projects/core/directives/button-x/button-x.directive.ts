@@ -19,9 +19,9 @@ import {TUI_COMMON_ICONS, TUI_ICON_START} from '@taiga-ui/core/tokens';
     ],
     hostDirectives: [{directive: TuiButton, inputs: ['size']}],
     host: {
+        tabindex: '-1',
         tuiIconButton: '',
         type: 'button',
-        tabindex: '-1',
         '[style.--t-radius.%]': '100',
         '(pointerdown.prevent.zoneless)': '(0)',
     },

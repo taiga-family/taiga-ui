@@ -39,7 +39,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 })
 export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS);
-
     protected readonly icon = tuiIconEnd(this.dateOptions.icon);
     protected readonly filler = tuiWithDateFiller();
     protected readonly format = inject(TUI_DATE_FORMAT);

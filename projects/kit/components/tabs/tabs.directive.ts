@@ -41,9 +41,7 @@ class Styles {}
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
-
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly size = input(inject(TUI_TABS_OPTIONS).size);
     public readonly activeItemIndex = model(0);
 

@@ -49,12 +49,12 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         },
     ],
     host: {
-        '[class._transitioned]': 'transitioned()',
         '[class._draggable]': 'draggable()',
-        '(touchstart)': 'onTransitioned(false)',
-        '(touchend)': 'onTransitioned(true)',
-        '(mousedown)': 'onTransitioned(false)',
+        '[class._transitioned]': 'transitioned()',
         '(document:mouseup.zoneless)': 'onTransitioned(true)',
+        '(mousedown)': 'onTransitioned(false)',
+        '(touchend)': 'onTransitioned(true)',
+        '(touchstart)': 'onTransitioned(false)',
     },
 })
 export class TuiCarouselComponent {
@@ -62,10 +62,10 @@ export class TuiCarouselComponent {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
     private readonly translate = signal(0);
-
     protected readonly transitioned = signal(true);
     protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
+
     protected readonly computedDraggable = computed(
         () => this.isMobile || this.draggable(),
     );

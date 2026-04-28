@@ -16,6 +16,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export default class Example {
     protected readonly secret = viewChild<PolymorpheusContent>('secretError');
     protected readonly company = viewChild<PolymorpheusContent>('companyError');
+
     protected readonly form = new FormGroup({
         secret: new FormControl('', [
             ({value}) => (/^\d{10}$/.test(value || '') ? null : {secret: this.secret}),

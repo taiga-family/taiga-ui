@@ -34,7 +34,6 @@ describe('TuiPreviewDialog Escape Key Behavior', () => {
     })
     class Test {
         private readonly previewService = inject(TuiPreviewDialogService);
-
         protected dialogOpen = false;
 
         protected openPreview(): void {

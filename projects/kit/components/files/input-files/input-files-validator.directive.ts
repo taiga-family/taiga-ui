@@ -17,7 +17,6 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 })
 export class TuiInputFilesValidator extends TuiValidator implements OnInit, OnChanges {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);
-
     public accept = this.options.accept;
     public maxFileSize = this.options.maxFileSize;
 

@@ -25,18 +25,17 @@ import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
 @Directive({
     selector: 'input[tuiSlider][keySteps]',
     host: {
+        '[attr.aria-valuemax]': 'max()',
+        '[attr.aria-valuemin]': 'min()',
+        '[attr.aria-valuenow]': 'controlValue()',
+        '[attr.max]': 'transformer() ? totalSteps() : slider?.max',
         '[attr.min]': 'transformer() ? 0 : slider?.min',
         '[attr.step]': 'transformer() ? 1 : step()',
-        '[attr.max]': 'transformer() ? totalSteps() : slider?.max',
-        '[attr.aria-valuemin]': 'min()',
-        '[attr.aria-valuemax]': 'max()',
-        '[attr.aria-valuenow]': 'controlValue()',
     },
 })
 export class TuiSliderKeyStepsBase implements OnInit {
     private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
-
     protected readonly min = signal<number | undefined>(undefined);
     protected readonly max = signal<number | undefined>(undefined);
 
@@ -51,6 +50,7 @@ export class TuiSliderKeyStepsBase implements OnInit {
     public slider!: TuiSliderComponent;
     public readonly step = input(1);
     public readonly keySteps = input<TuiKeySteps>();
+
     public readonly transformer = signal<TuiValueTransformer<number, number> | undefined>(
         undefined,
     );
@@ -109,11 +109,11 @@ export class TuiSliderKeyStepsBase implements OnInit {
     inputs: ['keySteps'],
     providers: [tuiFallbackValueProvider(0)],
     host: {
-        '[value]': 'base.toSliderValue(value())',
         '[disabled]': 'disabled()',
+        '[value]': 'base.toSliderValue(value())',
         '(blur)': 'onTouched()',
-        '(input)': 'setValue($event.target.value)',
         '(change)': 'setValue($event.target.value)',
+        '(input)': 'setValue($event.target.value)',
     },
 })
 export class TuiSliderKeySteps extends TuiControl<number> {

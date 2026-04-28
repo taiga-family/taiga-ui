@@ -17,6 +17,7 @@ export class TuiActiveZone implements OnDestroy {
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private tuiActiveZoneParent: TuiActiveZone | null = null;
     private readonly parent = inject(TuiActiveZone, {skipSelf: true, optional: true});
+
     private readonly el: HTMLElement =
         inject(ElementRef, {optional: true})?.nativeElement ??
         inject(DOCUMENT).documentElement;

@@ -24,10 +24,10 @@ import {DatabaseServer} from './database';
 })
 export default class Example {
     private readonly api = inject(DatabaseServer);
-
     protected readonly showLoader = signal(false);
     // Click on cleaner / datalist item triggers (input) events too
     protected readonly search$ = new Subject<string>();
+
     protected readonly items$ = this.search$.pipe(
         debounceTime(0), // ensure form control is updated after last input
         filter(() => !this.value), // click on datalist item should not trigger new api request

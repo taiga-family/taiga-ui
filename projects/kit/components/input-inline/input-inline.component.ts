@@ -24,6 +24,7 @@ import {switchMap} from 'rxjs';
 })
 export class TuiInputInline {
     protected readonly control = contentChild(NgControl);
+
     protected readonly value = toSignal(
         toObservable(this.control).pipe(switchMap(tuiControlValue)),
     );

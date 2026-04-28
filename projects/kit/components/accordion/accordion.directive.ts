@@ -15,17 +15,16 @@ import {TuiAccordionComponent} from './accordion.component';
     ],
     hostDirectives: [TuiButton, TuiChevron],
     host: {
-        tuiButton: '',
         tuiAccordion: '',
+        tuiButton: '',
         type: 'button',
-        '[attr.aria-expanded]': 'open() || "false"',
         '[attr.aria-controls]': 'id',
+        '[attr.aria-expanded]': 'open() || "false"',
         '(click)': 'toggle()',
     },
 })
 export class TuiAccordionDirective implements OnChanges {
     private readonly accordion = inject(TuiAccordionComponent);
-
     public readonly open = model<boolean | ''>(false, {alias: 'tuiAccordion'});
     public readonly id = tuiGenerateId();
     public readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);

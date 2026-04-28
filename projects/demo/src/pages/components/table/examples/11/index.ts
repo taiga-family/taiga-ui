@@ -48,7 +48,6 @@ export default class Example {
     protected slider = null;
     protected range = null;
     protected card = null;
-
     protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
     protected readonly isMobile = inject(WA_IS_MOBILE);
 }

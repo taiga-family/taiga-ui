@@ -32,9 +32,7 @@ export class TuiAxes {
     public readonly horizontalLinesHandler = input(TUI_ALWAYS_SOLID);
     public readonly verticalLines = input(1);
     public readonly verticalLinesHandler = input(TUI_ALWAYS_DASHED);
-
     public readonly fallbackLabel = CHAR_NO_BREAK_SPACE;
-
     public readonly hasXLabels = computed(() => !!this.axisXLabels().length);
 
     public readonly hasYLabels = computed(

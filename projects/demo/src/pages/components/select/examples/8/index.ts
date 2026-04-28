@@ -20,6 +20,7 @@ interface Character {
 export default class Example {
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl(null, Validators.required);
+
     protected items: readonly Character[] = [
         {name: 'Luke Skywalker', id: 1},
         {name: 'Leia Organa Solo', id: 2},
@@ -30,6 +31,7 @@ export default class Example {
     ];
 
     protected stringify: TuiStringHandler<Character> = (item) => item.name;
+
     protected readonly disabledItemHandler: TuiBooleanHandler<Character> = (item) =>
         item.name === 'Darth Vader';
 }

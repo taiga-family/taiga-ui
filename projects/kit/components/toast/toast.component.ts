@@ -31,18 +31,17 @@ import {type TuiToastOptions} from './toast.options';
     hostDirectives: [TuiAnimated, TuiAlertDirective],
     host: {
         role: 'status',
-        '[class._mobile]': 'isMobile',
         '[attr.data-appearance]': 'context.appearance',
+        '[class._mobile]': 'isMobile',
     },
 })
 export class TuiToastComponent<O, I> implements AfterViewInit {
     private readonly close = viewChild(TuiButton, {read: ElementRef});
-
     private readonly el = tuiInjectElement();
-
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly context = injectContext<TuiPortalContext<TuiToastOptions<I>, O>>();
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected readonly $ = of(this.context.autoClose)
         .pipe(
             switchMap((autoClose) => (autoClose ? timer(autoClose) : EMPTY)),

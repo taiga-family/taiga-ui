@@ -32,7 +32,6 @@ export default class Example {
     protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar', ''];
     protected readonly labelsY = ['0', '10 000'];
     protected readonly appearances = ['floating', 'accent'];
-
     protected appearance = this.appearances[0]!;
 
     protected readonly hint = ({$implicit}: TuiContext<number>): string =>

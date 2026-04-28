@@ -32,6 +32,7 @@ const ACTIVE_ITEM_LENGTH = 1;
 export class TuiPagination {
     private readonly els = viewChildren('element', {read: ElementRef});
     private readonly el = tuiInjectElement();
+
     private readonly maxHalfLength = computed(
         () => this.sidePadding() + ELLIPSIS_ITEM_LENGTH + this.activePadding(),
     );
@@ -43,6 +44,7 @@ export class TuiPagination {
     private readonly lastElementIndex = computed(() => this.elementsLength() - 1);
     private readonly itemsFit = computed(() => this.length() <= this.maxElementsLength());
     private readonly lastIndex = computed(() => this.length() - 1);
+
     private readonly reverseIndex = computed(
         (): number => this.lastIndex() - this.index(),
     );
@@ -51,6 +53,7 @@ export class TuiPagination {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_PAGINATION_OPTIONS);
     protected readonly buttonSize = computed(() => (this.size() === 'm' ? 'xs' : 's'));
+
     protected readonly elementsLength = computed(() =>
         this.itemsFit() ? this.length() : this.maxElementsLength(),
     );
@@ -65,6 +68,7 @@ export class TuiPagination {
     public readonly index = model(0);
     public readonly arrowIsDisabledRight = computed(() => this.reverseIndex() === 0);
     public readonly arrowIsDisabledLeft = computed(() => this.index() === 0);
+
     public readonly nativeFocusableElement = computed((): HTMLElement | null => {
         if (this.disabled()) {
             return null;
@@ -114,13 +118,11 @@ export class TuiPagination {
             return this.lastIndex() - reverseElementIndex;
         }
 
-        if (elementIndex === this.sidePadding() && this.hasCollapsedItems(this.index())) {
-            return null;
-        }
-
         if (
-            reverseElementIndex === this.sidePadding() &&
-            this.hasCollapsedItems(this.reverseIndex())
+            (elementIndex === this.sidePadding() &&
+                this.hasCollapsedItems(this.index())) ||
+            (reverseElementIndex === this.sidePadding() &&
+                this.hasCollapsedItems(this.reverseIndex()))
         ) {
             return null;
         }

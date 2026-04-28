@@ -12,8 +12,8 @@ import {TuiDataListComponent} from './data-list.component';
     selector: 'button[tuiOption], a[tuiOption], label[tuiOption]',
     hostDirectives: [TuiWithIcons, TuiCell],
     host: {
-        type: 'button',
         role: 'option',
+        type: 'button',
         '[attr.disabled]': 'disabled() || null',
         '[class._with-dropdown]': 'dropdown?.()',
         '(mousemove.zoneless)': 'onMouseMove()',
@@ -22,6 +22,7 @@ import {TuiDataListComponent} from './data-list.component';
 export class TuiOption<T = unknown> implements OnDestroy {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement();
+
     private readonly datalist = inject<TuiDataListComponent<T>>(
         forwardRef(() => TuiDataListComponent),
         {optional: true},

@@ -24,7 +24,6 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly sheet = viewChild(TuiBottomSheet, {read: ElementRef<HTMLElement>});
-
     protected messages = ['Check that awesome bottom sheet out!'];
     protected value = '';
 

@@ -15,6 +15,7 @@ import metadata from 'libphonenumber-js/max/metadata';
 })
 export default class Example {
     protected rawValue = '12125552368';
+
     protected readonly mask = maskitoPhoneOptionsGenerator({
         metadata,
         countryIsoCode: 'US',

@@ -1868,11 +1868,11 @@ export class PerformanceReportAggregator {
      * Checks if a line is a table data row (not header or separator)
      */
     private static isTableDataRow(line: string): boolean {
-        if (!line.startsWith('|')) {
-            return false;
-        }
-
-        if (this.isTableHeaderRow(line) || this.isTableSeparatorRow(line)) {
+        if (
+            !line.startsWith('|') ||
+            this.isTableHeaderRow(line) ||
+            this.isTableSeparatorRow(line)
+        ) {
             return false;
         }
 

@@ -59,6 +59,7 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
     );
 
     public readonly order = input<readonly string[]>([]);
+
     public readonly error = tuiDirectiveBinding(
         TuiErrorComponent,
         'error',

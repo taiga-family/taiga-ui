@@ -27,6 +27,7 @@ export class TuiAmountPipe implements PipeTransform {
     private readonly currency = signal(this.options.currency);
     private readonly currencyAlign = signal(this.options.currencyAlign);
     private readonly sign = signal(this.options.sign);
+
     private readonly formatted = computed(() => {
         const format = this.format();
         const currencySymbol = tuiFormatCurrency(this.currency());

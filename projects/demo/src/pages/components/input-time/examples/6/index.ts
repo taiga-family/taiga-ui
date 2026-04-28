@@ -14,6 +14,7 @@ import {tuiCreateTimePeriods, TuiInputTime, TuiTooltip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value: TuiTime | null = null;
+
     protected acceptableValues = [
         // Array of TuiTime from 10:00 to 18:00 every half of hour
         ...tuiCreateTimePeriods(10, 18, [0, 30]),

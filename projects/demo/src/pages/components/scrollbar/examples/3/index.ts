@@ -14,7 +14,6 @@ const SOME_OFFSET_CONST = 20;
 })
 export default class Example {
     private readonly scrollBar = viewChild(TuiScrollbar, {read: ElementRef<HTMLElement>});
-
     protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {

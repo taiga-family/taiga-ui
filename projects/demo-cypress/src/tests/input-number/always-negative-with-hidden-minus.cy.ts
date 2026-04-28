@@ -39,6 +39,7 @@ import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 })
 class SandBox {
     protected min = -30;
+
     protected readonly pluralize = {
         '=-1': ' day ago',
         other: ' days ago',

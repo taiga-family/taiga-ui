@@ -89,9 +89,7 @@ export default class Example {
     ];
 
     protected value: TuiDay | TuiDayRange | null = null;
-
     protected month = TuiMonth.currentLocal();
-
     protected hoveredItem: TuiDay | null = null;
     protected readonly routes = DemoRoute;
 }

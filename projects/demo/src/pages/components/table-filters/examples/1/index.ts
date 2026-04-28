@@ -36,7 +36,6 @@ export default class Example {
     ] as const;
 
     protected readonly columns = Object.keys(this.data[0]);
-
     protected readonly filter = (item: number, value: number): boolean => item >= value;
 
     protected onToggle(enabled: boolean): void {

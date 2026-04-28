@@ -35,6 +35,7 @@ export interface TuiNotificationMiddleOptions {
 })
 export class TuiNotificationMiddleComponent {
     protected readonly el = tuiInjectElement();
+
     protected readonly context =
         injectContext<TuiPortalContext<TuiNotificationMiddleOptions>>();
 

@@ -30,6 +30,5 @@ class Styles {}
 })
 export class TuiSwipeActionsOnboarding {
     public readonly onboarding = model(true);
-
     protected readonly nothing = tuiWithStyles(Styles);
 }

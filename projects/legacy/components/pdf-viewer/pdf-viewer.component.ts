@@ -19,6 +19,7 @@ import {type TuiPdfViewerOptions} from './pdf-viewer.options';
 export class TuiPdfViewerComponent<I, O> {
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected readonly context =
         injectContext<TuiPortalContext<TuiPdfViewerOptions<I>, O>>();
 

@@ -26,7 +26,6 @@ describe('TuiRange', () => {
     })
     class Test {
         protected readonly component = viewChild.required(TuiRange);
-
         public readonly el = viewChild.required(TuiRange, {read: ElementRef});
         public control = new FormControl([3, 5]);
         public max = 11;

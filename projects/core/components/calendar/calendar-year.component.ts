@@ -38,6 +38,7 @@ const CURRENT_YEAR = TuiMonth.currentLocal().year;
 })
 export class TuiCalendarYear {
     private readonly hoveredItem = signal<number | null>(null);
+
     private readonly calculatedMin = computed(() => {
         const initial = this.initialItem() - LIMIT;
         const min = this.min() ?? MIN_YEAR;
@@ -62,6 +63,7 @@ export class TuiCalendarYear {
     );
 
     public readonly rangeMode = input(false);
+
     public readonly disabledItemHandler = input<TuiBooleanHandler<number>>(
         inject(TUI_ITEMS_HANDLERS).disabledItemHandler(),
     );

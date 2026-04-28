@@ -17,7 +17,6 @@ import {
 })
 class TopRightDirective extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = 'dropdown';
 
     public getPosition({height}: DOMRect): TuiPoint {

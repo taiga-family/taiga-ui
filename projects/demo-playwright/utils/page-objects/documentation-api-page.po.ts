@@ -6,7 +6,6 @@ import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
-
     public readonly examples = this.page.locator('tui-doc-example');
     public readonly demo = this.page.locator('tui-doc-demo > .t-wrapper');
     public readonly value = this.page.locator('tui-doc-demo > tui-expand pre');

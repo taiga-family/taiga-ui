@@ -27,7 +27,6 @@ export default class Example implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     protected readonly isE2E = inject(WA_IS_E2E);
-
     protected count = '0';
 
     public ngOnInit(): void {

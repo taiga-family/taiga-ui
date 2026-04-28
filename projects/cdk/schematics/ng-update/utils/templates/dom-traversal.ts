@@ -22,11 +22,10 @@ export function hasChild(element: Element, tagName: string): boolean {
     }
 
     for (const child of element.childNodes) {
-        if ((child as Element).tagName === tagName) {
-            return true;
-        }
-
-        if (hasChild(child as Element, tagName)) {
+        if (
+            (child as Element).tagName === tagName ||
+            hasChild(child as Element, tagName)
+        ) {
             return true;
         }
     }

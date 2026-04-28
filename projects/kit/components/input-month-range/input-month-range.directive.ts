@@ -36,12 +36,14 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
     private readonly months = inject(TUI_MONTHS);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly intermediateValue = signal<TuiMonth | null>(null);
+
     private readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
         (x) => x instanceof TuiCalendarMonth,
     );
 
     protected readonly icon = tuiIconEnd(inject(TUI_INPUT_MONTH_RANGE_OPTIONS).icon);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
+
     protected readonly valueEffect = effect(() => {
         const value = this.value();
         const months = this.months();

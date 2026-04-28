@@ -31,6 +31,7 @@ export class TuiDocNumberFormat implements Record<
 > {
     protected readonly routes = DemoRoute;
     protected readonly decimalVariants: TuiDecimalMode[] = ['always', 'pad', 'not-zero'];
+
     protected readonly roundingVariants: TuiRounding[] = [
         'truncate',
         'round',

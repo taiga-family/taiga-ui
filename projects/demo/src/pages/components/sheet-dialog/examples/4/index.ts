@@ -48,9 +48,7 @@ const USERS = [
 })
 export default class Example {
     protected open = false;
-
     protected readonly offset = 16;
-
     protected readonly search = new FormControl('');
 
     protected readonly users$ = tuiControlValue<string>(this.search).pipe(

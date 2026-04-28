@@ -50,6 +50,7 @@ export class TuiItemsWithMoreComponent {
     protected readonly service = inject(TuiItemsWithMoreService);
     protected readonly directive = inject(TuiItemsWithMoreDirective);
     protected readonly more = contentChild(TuiMore, {read: TemplateRef});
+
     protected readonly items = contentChildren(TuiItem, {
         read: TemplateRef,
         descendants: true,

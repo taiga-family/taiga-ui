@@ -32,7 +32,6 @@ const SLIDER_INTERACTION_KEYS = new Set([
 export class TuiSliderReadonly {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly doc = inject(DOCUMENT);
-
     public readonly readonly = input(true, {transform: coerceBooleanProperty});
 
     constructor() {

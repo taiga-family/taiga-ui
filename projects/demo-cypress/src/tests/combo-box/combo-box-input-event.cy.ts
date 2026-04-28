@@ -42,12 +42,12 @@ interface Country {
 })
 export class Sandbox {
     protected readonly control = new FormControl<Country | string | null>(null);
+
     protected readonly countries = Object.entries(inject(TUI_COUNTRIES)()).map(
         ([id, name]) => ({id, name}),
     );
 
     public readonly inputEvent = output<string>();
-
     protected readonly stringify: TuiStringHandler<Country> = (x) => x.name ?? x;
 }
 

@@ -15,7 +15,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
 

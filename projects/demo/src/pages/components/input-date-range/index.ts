@@ -56,19 +56,13 @@ export default class Example {
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected listSize = this.sizeVariants[2]!;
-
     protected readonly items = tuiCreateDefaultDayRangePeriods();
-
     protected min = this.dates[0];
     protected max = this.dates[4];
-
     protected readonly limits = [{day: 3}, {day: 5}] as const;
-
     protected readonly periodListItems = [null, this.items];
     protected selectedPeriodList: readonly TuiDayRangePeriod[] | null = null;
-
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
-
     protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }

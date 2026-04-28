@@ -31,16 +31,17 @@ class Styles {}
     selector: '[tuiAppearance]',
     hostDirectives: [TuiTransitioned],
     host: {
-        tuiAppearance: '',
         'data-tui-version': TUI_VERSION,
+        tuiAppearance: '',
         '[attr.data-appearance]': 'tuiAppearance()',
-        '[attr.data-state]': 'tuiAppearanceState()',
         '[attr.data-focus]': 'tuiAppearanceFocus()',
         '[attr.data-mode]': 'modes()',
+        '[attr.data-state]': 'tuiAppearanceState()',
     },
 })
 export class TuiAppearance {
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly modes = computed((mode = this.tuiAppearanceMode()) =>
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );

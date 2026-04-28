@@ -12,13 +12,13 @@ import {delay, of} from 'rxjs';
 })
 export default class Page {
     private readonly items = ['Foo', 'Bar', 'Baz'];
+
     protected readonly items$ = inject(WA_IS_E2E)
         ? of(this.items)
         : of(this.items).pipe(delay(1e3));
 
     protected readonly emptyContentVariants = ['Loading...', ''];
     protected emptyContent = this.emptyContentVariants[0];
-
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[0]!;
 

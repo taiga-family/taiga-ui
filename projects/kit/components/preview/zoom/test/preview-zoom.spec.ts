@@ -16,7 +16,6 @@ describe('PreviewZoom', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiPreviewZoom);
-
         public value = 1;
     }
 

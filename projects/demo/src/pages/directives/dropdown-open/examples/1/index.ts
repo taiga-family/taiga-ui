@@ -12,7 +12,6 @@ import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
-
     protected open = false;
 
     protected onClick(): void {

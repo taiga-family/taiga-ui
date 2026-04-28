@@ -13,7 +13,6 @@ import {TuiTiles} from '@taiga-ui/kit';
 export default class Page {
     protected debounce = 0;
     protected order = new Map<number, number>();
-
     protected width = 1;
     protected height = 1;
 

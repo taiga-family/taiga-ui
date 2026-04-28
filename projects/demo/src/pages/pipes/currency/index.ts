@@ -21,9 +21,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 export default class Page {
     protected readonly currencyVariants = [null, 826, 840, 'EUR', 'RUB', 'UGX', 'USD'];
     protected currency = this.currencyVariants[0];
-
     protected readonly control = new FormControl(6432, Validators.required);
     protected readonly routes = DemoRoute;
-
     protected readonly examples = ['Basic', 'With Textfield'];
 }

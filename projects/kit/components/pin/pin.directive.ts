@@ -23,14 +23,9 @@ class Styles {}
 
 @Directive({
     selector: '[tuiPin]',
-    host: {
-        tuiPin: '',
-        'data-tui-version': TUI_VERSION,
-        '[class._open]': 'open()',
-    },
+    host: {'data-tui-version': TUI_VERSION, tuiPin: '', '[class._open]': 'open()'},
 })
 export class TuiPin {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly open = input<boolean | ''>('', {alias: 'tuiPin'});
 }

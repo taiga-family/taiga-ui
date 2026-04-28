@@ -39,10 +39,9 @@ interface Country {
 })
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
-
     protected readonly routes = DemoRoute;
-
     protected readonly isMobile = inject(WA_IS_MOBILE);
+
     protected readonly control = new FormControl<Country | null>({
         id: 'US',
         name: 'USA',

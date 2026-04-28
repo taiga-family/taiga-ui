@@ -30,6 +30,5 @@ class Styles {}
 })
 export class TuiProgressSegmented {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly segments = input(1);
 }

@@ -7,10 +7,10 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 @Directive({
     selector: '[tuiSelectLike]',
     host: {
-        tuiSelectLike: '',
+        autocomplete: 'off',
         inputmode: 'none',
         spellcheck: 'false',
-        autocomplete: 'off',
+        tuiSelectLike: '',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
         '(beforeinput)':
             'options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',

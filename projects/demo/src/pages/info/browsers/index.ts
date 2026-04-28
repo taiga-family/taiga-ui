@@ -143,9 +143,7 @@ export default class Page {
     );
 
     protected readonly response = toSignal(this.response$, {initialValue: null});
-
     protected readonly columns = ['toggle', 'browser', 'min', 'total'] as const;
-
     protected readonly rowState: Record<string, boolean> = {};
 
     protected readonly data = computed<BrowserRow[]>(() => {

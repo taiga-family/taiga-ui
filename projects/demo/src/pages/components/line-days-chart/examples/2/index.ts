@@ -49,6 +49,7 @@ export default class Example {
     protected readonly show = signal(this.data());
     protected readonly days = computed(() => this.random(this.data()));
     protected readonly maxLength: TuiDayLike = {month: 6};
+
     protected readonly range = computed(() => {
         const range = this.show();
         const {from, to} = range;

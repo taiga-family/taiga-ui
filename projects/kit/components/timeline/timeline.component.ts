@@ -24,6 +24,7 @@ export class TuiTimelineComponent {
     public readonly items = contentChildren(TuiTimelineItem);
     public readonly d = computed(() => 100 / this.max());
     public readonly value = computed(() => this.items().map(({value}) => value()));
+
     public readonly gaps = computed((value = this.value().slice()) =>
         [[0, this.max()], ...value.sort(([a], [b]) => a - b)].map(
             ([_, end = 0], index, array) =>

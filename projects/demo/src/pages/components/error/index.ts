@@ -11,6 +11,7 @@ import {TuiError} from '@taiga-ui/core';
 })
 export default class Page {
     protected readonly errorContent = viewChild<TemplateRef<unknown>>('errorContent');
+
     protected readonly examples = [
         'Basic',
         'DI',

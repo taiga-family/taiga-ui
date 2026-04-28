@@ -60,6 +60,7 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
+
     private readonly drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );
@@ -80,6 +81,7 @@ export class TuiDropdownDirective
     public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
+
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),
         inject(INJECTOR),
