@@ -7,6 +7,8 @@ export interface TuiDocIcons {
     readonly link: string;
     readonly shrink: string;
     readonly expand: string;
+    // TODO: drop optional in v6
+    readonly resizer?: string;
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
@@ -16,6 +18,7 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     link: '@tui.link',
     shrink: '@tui.shrink',
     expand: '@tui.expand',
+    resizer: '@tui.grip-vertical',
 };
 
 export const [TUI_DOC_ICONS, tuiDocIconsProvider] =

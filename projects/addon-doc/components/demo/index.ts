@@ -23,7 +23,11 @@ import {
     ReactiveFormsModule,
 } from '@angular/forms';
 import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
-import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_DEMO_TEXTS,
+    TUI_DOC_ICONS,
+    TUI_DOC_URL_STATE_HANDLER,
+} from '@taiga-ui/addon-doc/tokens';
 import {type TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
@@ -103,6 +107,8 @@ export class TuiDocDemo implements AfterViewInit {
     protected readonly rendered = signal(false);
 
     protected readonly theme = computed(() => (this.dark() ? 'dark' : 'light'));
+
+    protected readonly icons = inject(TUI_DOC_ICONS);
 
     protected readonly dark = signal(
         tuiCoerceValueIsTrue(this.params.darkMode ?? this.darkMode()),
