@@ -44,7 +44,6 @@ export default class Page {
     ];
 
     protected max = this.maxVariants[0]!;
-
     protected single = true;
     protected multi = false;
 
@@ -53,9 +52,7 @@ export default class Page {
     > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
-
     protected control = new FormControl<TuiDay | TuiDayRange | null>(null);
-
     protected stream = tuiControlValue<TuiDay>(this.control);
     protected readonly routes = DemoRoute;
 

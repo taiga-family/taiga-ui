@@ -44,9 +44,7 @@ const WIDTH = 12;
 })
 export class TuiSearchFiltersComponent {
     private readonly rem = viewChild<ElementRef<HTMLDivElement>>('rem');
-
     private readonly button = viewChild(TuiButton, {read: ElementRef});
-
     private readonly controls = contentChildren(NgControl, {descendants: true});
 
     protected readonly templates = contentChildren(TuiItem, {

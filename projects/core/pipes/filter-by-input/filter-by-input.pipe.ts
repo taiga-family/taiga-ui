@@ -33,6 +33,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
     );
 
     private readonly items = signal<readonly any[] | null>([]);
+
     private readonly filtered = computed(
         (items = this.items(), filter = this.filterFlat()) =>
             items && (tuiIsFlat(items) ? filter(items) : this.filter2d(items)),

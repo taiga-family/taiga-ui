@@ -62,7 +62,6 @@ export class TuiDocAPIItem<T> implements OnInit {
     protected readonly isBananaBox = computed(() => this.name().startsWith('[('));
     protected readonly isInput = computed(() => this.name().startsWith('['));
     protected readonly isOutput = computed(() => this.name().startsWith('('));
-
     public readonly name = input('');
     public readonly type = input('');
     public readonly value = model<T>();

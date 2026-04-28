@@ -9,6 +9,7 @@ import {TUI_SCROLL_REF} from './scroll-ref.directive';
 export class TuiScrollbarService extends Observable<[number, number]> {
     private readonly el = tuiInjectElement();
     private readonly element = inject(TUI_SCROLL_REF).nativeElement;
+
     private readonly scroll$ = merge(
         tuiTypedFromEvent(this.el.parentElement!, 'mousedown').pipe(
             filter(({target}) => target !== this.el),

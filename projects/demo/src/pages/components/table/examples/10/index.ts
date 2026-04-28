@@ -68,9 +68,7 @@ export default class Example {
     ];
 
     protected readonly customContentData = [...this.basicData, ...this.manualOpenData];
-
     protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
-
     protected manualOpen = false;
     protected customOpen = false;
 

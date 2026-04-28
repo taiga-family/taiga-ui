@@ -27,14 +27,15 @@ import {TuiStep} from './step.component';
     providers: [WaResizeObserverService],
     host: {
         '[attr.data-orientation]': 'orientation()',
-        '(keydown.arrowRight)': 'onHorizontal($event, 1)',
-        '(keydown.arrowLeft)': 'onHorizontal($event, -1)',
         '(keydown.arrowDown)': 'onVertical($event, 1)',
+        '(keydown.arrowLeft)': 'onHorizontal($event, -1)',
+        '(keydown.arrowRight)': 'onHorizontal($event, 1)',
         '(keydown.arrowUp)': 'onVertical($event, -1)',
     },
 })
 export class TuiStepperComponent implements OnChanges {
     private readonly el = tuiInjectElement();
+
     private readonly steps = contentChildren(
         forwardRef(() => TuiStep),
         {read: ElementRef},

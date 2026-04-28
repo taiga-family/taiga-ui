@@ -19,7 +19,6 @@ import {TuiDocNavigation} from '../../navigation/navigation.component';
 export class TuiDocHeader {
     private readonly router = inject(Router);
     private readonly routeEvents = toSignal(this.router.events, {initialValue: null});
-
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly logo = inject(TUI_DOC_LOGO);
     protected readonly menu = inject(TUI_DOC_MENU_TEXT);

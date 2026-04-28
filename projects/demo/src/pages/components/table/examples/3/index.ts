@@ -54,7 +54,6 @@ interface Item {
 })
 export default class Example {
     protected readonly options = {updateOn: 'blur'} as const;
-
     protected readonly units = ['items', 'kg', 'm'];
 
     protected pythons: readonly Item[] = [

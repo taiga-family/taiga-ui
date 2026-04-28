@@ -31,6 +31,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 })
 export default class Example {
     protected enabled = false;
+
     protected readonly form = new FormGroup(
         {
             answer: new FormControl('', [Validators.required, superComputerValidator]),

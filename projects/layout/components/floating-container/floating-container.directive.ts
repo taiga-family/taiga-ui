@@ -26,13 +26,12 @@ class Styles {}
     selector: '[tuiFloatingContainer]',
     hostDirectives: [TuiAnimated],
     host: {
-        tuiFloatingContainer: '',
         'data-tui-version': TUI_VERSION,
+        tuiFloatingContainer: '',
         '[style.--t-background]': 'background()',
     },
 })
 export class TuiFloatingContainer {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly background = input('', {alias: 'tuiFloatingContainer'});
 }

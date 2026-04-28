@@ -32,6 +32,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
 })
 export class TuiInputMonthComponent {
     protected readonly host = inject(TuiInputMonthDirective);
+
     protected readonly calendarSync = effect(() => {
         const calendar = this.host.calendar();
 

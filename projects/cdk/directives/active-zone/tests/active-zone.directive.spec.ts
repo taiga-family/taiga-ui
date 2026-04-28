@@ -74,9 +74,7 @@ describe('TuiActiveZone', () => {
     })
     class Test {
         public readonly control = new FormControl();
-
         public childActive = false;
-
         public parentActive = false;
 
         public onParentActiveZone(active: boolean): void {

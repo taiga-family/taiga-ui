@@ -20,16 +20,15 @@ import {TuiDropdownDriver} from './dropdown.driver';
         tuiAsRectAccessor(TuiDropdownContext),
     ],
     host: {
-        '[style.user-select]': 'userSelect()',
-        '[style.-webkit-user-select]': 'userSelect()',
         '[style.-webkit-touch-callout]': 'userSelect()',
+        '[style.-webkit-user-select]': 'userSelect()',
+        '[style.user-select]': 'userSelect()',
         '(longtap)': 'onContextMenu($event.detail.clientX, $event.detail.clientY)',
     },
 })
 export class TuiDropdownContext extends TuiRectAccessor {
     private readonly isTouch = inject(WA_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
-
     protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));
     protected readonly activeZone = inject(TuiActiveZone);
     protected readonly driver = inject(TuiDropdownDriver);

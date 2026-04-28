@@ -139,6 +139,7 @@ export class TestDropdownMobile {
     protected selected: readonly User[] = [];
     protected user: User | null = null;
     protected readonly open = signal(false);
+
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
         {name: 'Roman Sedov', balance: 523242},
@@ -148,7 +149,6 @@ export class TestDropdownMobile {
     ];
 
     public readonly dialog = signal(false);
-
     protected readonly stringify = ({name}: User): string => name;
 }
 

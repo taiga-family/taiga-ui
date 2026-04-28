@@ -29,15 +29,13 @@ class Styles {}
     selector: '[tuiItemGroup]',
     host: {
         'data-tui-version': TUI_VERSION,
-        '(click)': 'onClick($event.target)',
         '[class._horizontal]': 'horizontal()',
+        '(click)': 'onClick($event.target)',
     },
 })
 export class TuiItemGroup implements AfterViewInit {
     private readonly el = tuiInjectElement();
-
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly horizontal = input(false);
     public readonly autoscroll = input(false);
 

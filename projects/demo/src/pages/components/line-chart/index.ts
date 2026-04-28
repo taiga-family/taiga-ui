@@ -39,20 +39,12 @@ export default class Page {
     ];
 
     protected yStringify: TuiStringHandler<number> | null = null;
-
     protected xStringify: TuiStringHandler<number> | null = null;
-
     protected x = 0;
-
     protected y = 0;
-
     protected width = 400;
-
     protected height = 200;
-
     protected smoothingFactor = 0;
-
     protected filled = false;
-
     protected dots = false;
 }

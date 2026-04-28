@@ -13,7 +13,6 @@ import {TuiButton, TuiDialogService, TuiInput} from '@taiga-ui/core';
 })
 export default class Example {
     private readonly dialog = inject(TuiDialogService);
-
     protected active = false;
 
     protected onZone(active: boolean): void {

@@ -25,7 +25,6 @@ export default class Example {
     });
 
     protected open = false;
-
     protected readonly items = ['Drafts', 'In Progress', 'Completed'];
 
     protected get length(): number {

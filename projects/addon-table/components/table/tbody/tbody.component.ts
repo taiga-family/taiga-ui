@@ -30,7 +30,6 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     );
 
     public readonly rows = contentChildren<TuiTableTr<T>>(forwardRef(() => TuiTableTr));
-
     public readonly data = input<readonly T[]>([]);
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */

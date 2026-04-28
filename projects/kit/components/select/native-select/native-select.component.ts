@@ -6,6 +6,7 @@ import {
     effect,
     inject,
     input,
+    untracked,
     viewChildren,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
@@ -38,9 +39,9 @@ export class TuiNativeSelect<T>
 {
     private readonly input = inject(TuiInputDirective);
     private readonly options = viewChildren<HTMLOptionElement>('option');
-
     protected readonly isFlat = tuiIsFlat;
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+
     protected readonly stringified = computed((value = this.value()) =>
         tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
     );
@@ -63,7 +64,7 @@ export class TuiNativeSelect<T>
          * (it breaks `tuiValue` utility logic)
          */
         if (this.options().length) {
-            this.input.value.set(this.stringified());
+            this.input.value.set(untracked(this.stringified));
         }
     });
 

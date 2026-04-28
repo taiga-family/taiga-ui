@@ -13,7 +13,6 @@ import {TuiCompass} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly compass = viewChild(TuiCompass, {read: ElementRef<HTMLElement>});
-
     protected degrees = 0;
 
     protected calculate(event: MouseEvent): void {

@@ -29,10 +29,10 @@ export class TuiSearchHistory {
     private readonly textfield = inject(TuiTextfieldComponent);
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly control = inject(NgControl);
-
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly i18n = inject(TUI_INPUT_SEARCH);
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
+
     protected readonly $ = this.control.valueChanges
         ?.pipe(
             map(String),
@@ -44,7 +44,6 @@ export class TuiSearchHistory {
         });
 
     protected history = this.items;
-
     public readonly popular = input<readonly string[]>([]);
 
     protected store(item: string): void {

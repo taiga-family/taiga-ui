@@ -20,7 +20,6 @@ export default class Example {
     ];
 
     protected primary = 'By genre';
-
     protected ascending = false;
 
     protected onClick(item: string): void {

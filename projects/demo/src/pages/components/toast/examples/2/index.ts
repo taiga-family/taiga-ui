@@ -18,6 +18,7 @@ import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
 })
 export default class Example {
     protected readonly trigger$ = new BehaviorSubject(0);
+
     protected readonly value = toSignal(
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)

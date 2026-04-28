@@ -24,13 +24,12 @@ class Styles {}
 @Directive({
     selector: '[tuiStatus]',
     host: {
-        tuiStatus: '',
         'data-tui-version': TUI_VERSION,
+        tuiStatus: '',
         '[style.--t-status]': 'tuiStatus() || null',
     },
 })
 export class TuiStatus {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly tuiStatus = input('');
 }

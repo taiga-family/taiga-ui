@@ -15,7 +15,6 @@ import {TuiAvatar} from '@taiga-ui/kit';
 export default class Example {
     protected sizes = ['l', 'm', 's'] as const;
     protected size: TuiCellOptions['size'] = this.sizes[0];
-
     protected heights = ['normal', 'compact', 'spacious'] as const;
     protected height: TuiCellOptions['height'] = this.heights[0];
 

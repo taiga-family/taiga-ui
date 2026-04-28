@@ -24,8 +24,8 @@ export function tuiAsDriver(driver: Type<TuiDriver>): ExistingProvider {
 @Directive()
 export abstract class TuiDriverDirective implements AfterViewInit {
     public abstract type: string;
-
     private readonly destroyRef = inject(DestroyRef);
+
     private readonly drivers = coerceArray(
         inject(TuiDriver, {self: true, optional: true}) || [],
     );

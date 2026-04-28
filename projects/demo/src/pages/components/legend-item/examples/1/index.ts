@@ -14,7 +14,6 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 })
 export default class Example {
     protected activeItemIndex = Number.NaN;
-
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.value);
     protected readonly labels = ['Food', 'Cafe', 'OSS', 'Taxi', 'Other'];

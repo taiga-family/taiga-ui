@@ -20,7 +20,6 @@ describe('PreviewPagination', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiPreviewPagination);
-
         public index = 0;
         public length = 11;
     }

@@ -15,7 +15,6 @@ export default class Example {
     private readonly key = inject(TUI_DARK_MODE_KEY);
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
-
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
     protected reset(): void {

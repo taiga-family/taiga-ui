@@ -26,11 +26,9 @@ import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 })
 export class TuiCalendarSpin {
     protected readonly months = inject(TUI_MONTHS);
-
     public readonly value = model(TuiMonth.currentLocal());
     public readonly min = input<TuiMonth>(TUI_FIRST_DAY);
     public readonly max = input<TuiMonth>(TUI_LAST_DAY);
-
     public readonly yearClick = output<TuiYear>();
 
     protected append(date: TuiMonthLike): void {

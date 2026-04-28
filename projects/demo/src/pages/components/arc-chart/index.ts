@@ -20,18 +20,11 @@ export default class Page {
     ];
 
     protected value = this.valueVariants[0]!;
-
     protected readonly maxVariants = [100, 10000, 50000];
-
     protected max = this.maxVariants[0]!;
-
     protected readonly sizeVariants: readonly TuiSizeXL[] = ['m', 'l', 'xl'];
-
     protected size = this.sizeVariants[0]!;
-
     protected minLabel = '0%';
-
     protected maxLabel = '100%';
-
     protected activeItemIndex = Number.NaN;
 }

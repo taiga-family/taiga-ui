@@ -51,6 +51,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
     protected readonly end = signal(0);
     protected readonly left = signal(0);
     protected readonly gap = computed(() => (this.size() === 'm' ? 9 : 7));
+
     protected readonly maxWidth = toSignal(
         inject(WaMutationObserverService, {self: true}).pipe(
             delay(0),

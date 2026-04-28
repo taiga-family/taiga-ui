@@ -16,7 +16,6 @@ const ROTATE_X_STEP = 30;
 export class TuiMobileLoaderIOS {
     private readonly context = injectContext<TuiContext<number>>();
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
-
     protected readonly steps = 12;
 
     protected get finished(): boolean {

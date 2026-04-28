@@ -26,7 +26,6 @@ describe('InputInline', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiInputInline);
-
         public control = new FormControl('');
     }
 

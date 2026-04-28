@@ -23,7 +23,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly value = [40, 30, 20, 10];
-
     protected activeItemIndex = Number.NaN;
 
     public onTextfieldChange(value: number | null): void {

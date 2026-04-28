@@ -88,13 +88,13 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     ],
     hostDirectives: [MaskitoDirective, TuiWithInput, TuiAppearanceProxy],
     host: {
-        type: 'tel',
         ngSkipHydration: 'true',
+        type: 'tel',
         '[attr.inputmode]': '!ios && open() ? "none" : null',
         '[disabled]': 'disabled()',
-        '(input)': 'masked.set($event.target.value)',
-        '(click)': 'open.set(false)',
         '(beforeinput.capture)': 'onPaste($event)',
+        '(click)': 'open.set(false)',
+        '(input)': 'masked.set($event.target.value)',
     },
 })
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
@@ -112,6 +112,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     protected readonly search = signal('');
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected readonly masked = tuiValue(this.el);
+
     protected readonly mask = tuiMaskito(
         computed(() => this.computeMask(this.countryIsoCode(), this.metadata())),
     );

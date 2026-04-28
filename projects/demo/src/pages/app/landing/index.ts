@@ -34,9 +34,7 @@ export default class Page implements OnInit {
     private readonly activatedRoute = inject(ActivatedRoute);
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
-
     protected current = 0;
-
     protected intersected = false;
 
     public ngOnInit(): void {

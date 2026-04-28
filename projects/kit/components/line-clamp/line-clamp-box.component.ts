@@ -12,10 +12,7 @@ import {TuiLineClamp} from './line-clamp.component';
     styleUrl: './line-clamp-box.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_HINT_PROVIDERS,
-    host: {
-        '[style.min-width.px]': 'width',
-        '[style.line-height.px]': 'host.line()',
-    },
+    host: {'[style.line-height.px]': 'host.line()', '[style.min-width.px]': 'width'},
 })
 export class TuiLineClampBox extends TuiHintComponent {
     protected readonly host = inject(TuiLineClamp);

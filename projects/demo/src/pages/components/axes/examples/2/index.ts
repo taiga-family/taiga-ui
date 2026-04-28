@@ -29,6 +29,7 @@ export default class Example {
     ];
 
     protected readonly maxValue = 40;
+
     protected readonly axisYSecondaryLabels = [
         '',
         `${getMax(this.value) / 2} k`,

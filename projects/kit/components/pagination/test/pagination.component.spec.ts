@@ -31,13 +31,9 @@ describe('TuiPaginationComponent', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiPagination);
-
         public index = 0;
-
         public length = 50;
-
         public activePadding = 1;
-
         public sidePadding = 1;
     }
 

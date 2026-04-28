@@ -45,10 +45,8 @@ export default class PageComponent {
 
     protected iconVariants: readonly string[] = Object.keys(this.cards);
     protected iconSelected: PolymorpheusContent = null;
-
     protected id = '';
     protected placeholder = this.options.placeholder;
-
     protected readonly codeLengthVariants = [3, 4] as const;
     protected codeLength: 3 | 4 = this.codeLengthVariants[0];
 
@@ -61,7 +59,6 @@ export default class PageComponent {
 
     protected inputs = this.options.inputs;
     protected compact = false;
-
     protected formControl = new FormControl<TuiCard | null>(null);
 
     protected get icon(): PolymorpheusContent {

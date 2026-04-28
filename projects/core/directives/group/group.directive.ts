@@ -28,21 +28,20 @@ class Styles {}
 @Directive({
     selector: '[tuiGroup]:not(ng-container)',
     host: {
+        'data-tui-version': TUI_VERSION,
         tuiGroup: '',
         '[attr.data-orientation]': 'orientation()',
         '[attr.data-size]': 'size()',
-        '[style.--t-group-radius]': 'rounded() ? null : 0',
         '[style.--t-group-margin.rem]': 'collapsed() ? null : 0.125',
-        '[style.--t-group-mask]': 'collapsed() ? null : "none"',
-        '[style.--t-group-mask-start]': 'collapsed() ? null : "none"',
         '[style.--t-group-mask-end]': 'collapsed() ? null : "none"',
-        'data-tui-version': TUI_VERSION,
+        '[style.--t-group-mask-start]': 'collapsed() ? null : "none"',
+        '[style.--t-group-mask]': 'collapsed() ? null : "none"',
+        '[style.--t-group-radius]': 'rounded() ? null : 0',
     },
 })
 export class TuiGroup {
     protected readonly options = inject(TUI_GROUP_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly orientation = input<TuiOrientation>(this.options.orientation);
     public readonly collapsed = input(this.options.collapsed);
     public readonly rounded = input(this.options.rounded);

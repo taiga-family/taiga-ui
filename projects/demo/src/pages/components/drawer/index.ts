@@ -21,6 +21,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 })
 export default class Page {
     protected readonly examples = ['Full', 'Modal'];
+
     protected readonly directionVariants: readonly TuiHorizontalDirection[] = [
         'start',
         'end',

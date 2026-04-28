@@ -33,14 +33,14 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     hostDirectives: [TuiAnimated],
     host: {
         '[attr.data-appearance]': 'context.appearance',
-        '[style.--tui-offset.px]': 'context.offset',
         '[class._bar]': 'context.bar',
         '[class._closeable]': 'context.closable',
-        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
-        '(document:touchend.zoneless)': 'onPointerChange(-1)',
-        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
-        '(scroll.zoneless)': 'onPointerChange(0)',
+        '[style.--tui-offset.px]': 'context.offset',
         '(click.self)': 'close$.next()',
+        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
+        '(document:touchend.zoneless)': 'onPointerChange(-1)',
+        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
+        '(scroll.zoneless)': 'onPointerChange(0)',
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
@@ -52,6 +52,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
+
     protected readonly $ = merge(
         this.close$,
         tuiCloseWatcher(),

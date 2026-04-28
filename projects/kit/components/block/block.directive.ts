@@ -50,6 +50,5 @@ export class TuiBlock {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_BLOCK_OPTIONS);
     protected readonly control = contentChild(NgControl);
-
     public readonly size = input(this.options.size, {alias: 'tuiBlock'});
 }

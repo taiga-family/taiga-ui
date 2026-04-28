@@ -18,9 +18,9 @@ const GAP = {m: 0.125, l: 0.1875, xl: 0.25} as const;
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size()',
-        '[style.width.rem]': 'width',
         '[style.height.rem]': 'width',
         '[style.strokeWidth.rem]': 'strokeWidth',
+        '[style.width.rem]': 'width',
     },
 })
 export class TuiArcChart {
@@ -38,7 +38,6 @@ export class TuiArcChart {
     public readonly max = input(100);
     public readonly minLabel = input('0%');
     public readonly maxLabel = input('100%');
-
     public readonly activeItemIndex = model(Number.NaN);
 
     protected get width(): number {

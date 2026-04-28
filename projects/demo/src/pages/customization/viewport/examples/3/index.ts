@@ -21,7 +21,6 @@ import {TuiSegmented} from '@taiga-ui/kit';
 })
 class PortalHost implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = 'viewport';
 
     public getClientRect(): DOMRect {
@@ -38,9 +37,7 @@ class PortalHost implements TuiRectAccessor {
 })
 export default class Example {
     protected hintShown = false;
-
     protected directions: TuiHintDirection[] = ['top', 'start', 'end', 'bottom'];
-
     protected selected = this.directions[0]!;
 
     protected toggleHint(): void {

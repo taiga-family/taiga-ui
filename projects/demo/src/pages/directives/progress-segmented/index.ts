@@ -15,7 +15,6 @@ export default class Page {
     protected value = 3;
     protected max = 5;
     protected segments = this.max;
-
     protected examples = ['Basic', 'Sizes', 'Colors', 'With labels', 'No round corners'];
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [

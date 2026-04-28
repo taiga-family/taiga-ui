@@ -50,18 +50,19 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     host: {
         tuiChip: '',
         class: 'tui-interactive',
-        '[class._edit]': 'editing()',
         '[attr.tabIndex]': 'disabled() ? null : -1',
+        '[class._edit]': 'editing()',
         '(click)': 'editing() && $event.stopPropagation()',
+        '(dblclick)': 'edit()',
         '(keydown.backspace.prevent)': 'delete()',
         '(keydown.enter.prevent)': 'edit()',
-        '(dblclick)': 'edit()',
     },
 })
 export class TuiInputChipComponent<T> {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     private readonly value = tuiInjectValue<readonly T[]>();
+
     private readonly input: Signal<ElementRef<HTMLInputElement> | undefined> = viewChild(
         TuiChip,
         {read: ElementRef},
@@ -70,12 +71,12 @@ export class TuiInputChipComponent<T> {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly texts = inject(TUI_FILE_TEXTS);
-
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
+
     protected readonly disabled = tuiDirectiveBinding(
         TuiAppearance,
         'tuiAppearanceState',

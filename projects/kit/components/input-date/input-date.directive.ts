@@ -53,8 +53,8 @@ import {TUI_INPUT_DATE_OPTIONS, type TuiInputDateOptions} from './input-date.opt
     host: {
         '[attr.inputmode]': 'mobile && open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
-        '(input)': 'onValueChange($event.target.value)',
         '(click.capture.stop)': 'onClick()',
+        '(input)': 'onValueChange($event.target.value)',
     },
 })
 export abstract class TuiInputDateBase<
@@ -78,6 +78,7 @@ export abstract class TuiInputDateBase<
     protected readonly icon = tuiIconEnd(this.options.icon);
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TuiItemsHandlersDirective);
     protected readonly format = inject(TUI_DATE_FORMAT);
+
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );

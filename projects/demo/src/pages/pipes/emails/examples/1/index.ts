@@ -19,6 +19,5 @@ import {TuiDataListWrapper, TuiEmailsPipe} from '@taiga-ui/kit';
 export default class Example {
     protected default = '';
     protected custom = '';
-
     protected readonly emails = ['google.com', 'github.com', 'taiga-ui.dev'];
 }

@@ -19,7 +19,6 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
-
     protected dropdownOpen = false;
     protected size: TuiSizeL | TuiSizeS = 's';
 
@@ -30,7 +29,6 @@ export default class Example {
     ];
 
     protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
-
     protected open = false;
 
     protected selectOption(item: string): void {

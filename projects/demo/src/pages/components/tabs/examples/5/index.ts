@@ -22,7 +22,6 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 export default class Example {
     protected open = false;
     protected activeItemIndex = 0;
-
     protected items = Array.from({length: 5}, (_, i) => `Item #${i}`);
 
     protected add(): void {

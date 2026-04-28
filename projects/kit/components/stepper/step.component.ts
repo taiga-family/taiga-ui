@@ -21,22 +21,23 @@ import {TuiStepperComponent} from './stepper.component';
     hostDirectives: [TuiCell, TuiWithAppearance],
     host: {
         type: 'button',
-        '[tabIndex]': 'isActive() ? 0 : -1',
         '[class._active]': 'isActive()',
         '[class._vertical]': 'stepper.orientation() === "vertical"',
+        '[tabIndex]': 'isActive() ? 0 : -1',
         '(click)': 'activate()',
     },
 })
 export class TuiStep {
     private readonly el = tuiInjectElement();
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected readonly appearance = tuiAppearance(
         computed(() => (this.isActive() ? 'none' : 'action')),
     );
 
     protected readonly size = tuiDirectiveBinding(TuiCell, 'size', 'm');
-
     protected readonly stepper = inject(TuiStepperComponent);
+
     protected readonly $ = (
         inject(RouterLinkActive, {optional: true})?.isActiveChange.asObservable() ?? EMPTY
     )

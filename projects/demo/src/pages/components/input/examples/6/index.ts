@@ -28,6 +28,7 @@ const numberOptions = maskitoNumberOptionsGenerator({
 })
 export default class Example {
     protected value = Math.PI.toFixed(8);
+
     protected readonly options: MaskitoOptions = {
         ...numberOptions,
         plugins: [

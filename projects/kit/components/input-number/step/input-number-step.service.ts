@@ -24,6 +24,7 @@ function getDelay(index: number): number {
 export class TuiInputNumberStepService<T> {
     private readonly doc = inject(DOCUMENT);
     private readonly start$ = new Subject<T>();
+
     private readonly stop$ = merge(
         fromEvent(this.doc, 'pointerup'),
         fromEvent(this.doc, 'pointerleave'),

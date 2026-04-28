@@ -14,6 +14,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly required = ['Required', 'Obligatory'];
+
     protected readonly control = new FormControl(this.required.concat('Removable'), {
         nonNullable: true,
     });

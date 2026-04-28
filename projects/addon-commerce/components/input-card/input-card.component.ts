@@ -42,15 +42,16 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
-        inputmode: 'numeric',
-        placeholder: '0000 0000 0000 0000',
-        ngSkipHydration: 'true',
         autocomplete: 'cc-number',
+        inputmode: 'numeric',
+        ngSkipHydration: 'true',
+        placeholder: '0000 0000 0000 0000',
     },
 })
 export class TuiInputCardComponent implements OnInit {
     private readonly icons = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly control = inject(NgControl);
+
     private readonly value = toSignal(
         timer(0).pipe(switchMap(() => tuiControlValue<string>(this.control))),
         {initialValue: ''},
@@ -62,6 +63,7 @@ export class TuiInputCardComponent implements OnInit {
     });
 
     protected readonly mask = tuiMaskito(TUI_MASK_CARD);
+
     protected readonly image = computed(
         (s = tuiGetPaymentSystem(this.value())) => (s && this.icons[s]) || '',
     );

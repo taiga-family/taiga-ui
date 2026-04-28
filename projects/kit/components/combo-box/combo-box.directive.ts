@@ -59,6 +59,7 @@ export class TuiComboBoxDirective<T>
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
+
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
         (x) => 'options' in x && isSignal(x.options),
     );
@@ -92,7 +93,7 @@ export class TuiComboBoxDirective<T>
         const selectedOption = options.find((x) =>
             matcher(x, textfieldValue, this.handlers.stringify()),
         );
-        const value = untracked(() => this.value());
+        const value = untracked(this.value);
         const unchanged = this.stringify(value) === textfieldValue;
         const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
 

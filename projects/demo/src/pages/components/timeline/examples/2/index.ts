@@ -15,6 +15,7 @@ import {TuiForm} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly max = 50;
+
     protected readonly items = signal<ReadonlyArray<WritableSignal<[number, number]>>>([
         signal([0, 12]),
         signal([24, 40]),

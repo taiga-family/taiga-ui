@@ -57,7 +57,6 @@ class TreeLoader implements TuiTreeLoader<Item> {
 export default class Example {
     protected readonly loading = inject(TUI_TREE_LOADING);
     protected readonly service = inject(TuiTreeService<Item>);
-
     protected map = new Map<Item, boolean>();
 
     protected childrenHandler: TuiHandler<Item, readonly Item[]> = (item) =>

@@ -13,6 +13,7 @@ import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 })
 export default class Page implements OnDestroy {
     protected readonly theme = inject(TuiThemeColorService);
+
     protected readonly examples = [
         'Full',
         'Subheader compact',

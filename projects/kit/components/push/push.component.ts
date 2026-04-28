@@ -18,7 +18,6 @@ export class TuiPushComponent {
     protected readonly isString = tuiIsString;
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-
     public readonly heading = input('');
     public readonly type = input('');
     public readonly lines = input(2);

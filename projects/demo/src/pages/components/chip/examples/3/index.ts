@@ -14,7 +14,6 @@ import {TuiChip} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected readonly checked = [true, false, true];
     protected readonly values = ['test', 'Some text', 'WOW!'];
 

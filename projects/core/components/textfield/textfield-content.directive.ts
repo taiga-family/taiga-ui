@@ -25,6 +25,7 @@ export function tuiAsTextfieldContent(useValue: Type<any>): ValueProvider {
 export class TuiTextfieldContent implements DoCheck, OnDestroy {
     private readonly vcr = inject(TuiTextfieldComponent).vcr;
     private readonly options = {injector: inject(INJECTOR)};
+
     private readonly content =
         inject(TUI_TEXTFIELD_CONTENT, {optional: true}) || inject(TemplateRef);
 

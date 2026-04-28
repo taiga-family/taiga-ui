@@ -33,23 +33,21 @@ class Styles {}
 
 @Directive({
     host: {
-        tuiIcons: '',
-        '[style.--t-icon-start]': 'start()',
-        '[style.--t-icon-end]': 'end()',
-        '[attr.data-icon-start]': 'startMode()',
-        '[attr.data-icon-end]': 'endMode()',
         'data-tui-version': TUI_VERSION,
+        tuiIcons: '',
+        '[attr.data-icon-end]': 'endMode()',
+        '[attr.data-icon-start]': 'startMode()',
+        '[style.--t-icon-end]': 'end()',
+        '[style.--t-icon-start]': 'start()',
     },
 })
 export class TuiIcons {
     private readonly resolver = tuiInjectIconResolver();
-
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));
     protected readonly end = computed(() => this.resolve(this.iconEnd()));
     protected readonly startMode = computed(() => tuiGetIconMode(this.iconStart()));
     protected readonly endMode = computed(() => tuiGetIconMode(this.iconEnd()));
-
     public readonly iconEnd = input(inject<string | undefined>(TUI_ICON_END, OPT));
     public readonly iconStart = input(inject<string | undefined>(TUI_ICON_START, OPT));
 

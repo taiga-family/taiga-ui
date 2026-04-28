@@ -12,7 +12,6 @@ import {TUI_SCROLL_INTO_VIEW} from './scrollbar.component';
 export class TuiScrollIntoView {
     private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
-
     public readonly tuiScrollIntoView = input<boolean>();
 
     protected readonly dispatchEvent = effect(() => {

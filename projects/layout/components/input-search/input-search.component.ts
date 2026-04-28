@@ -36,8 +36,8 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     host: {
         ngSkipHydration: 'true',
         '(focus)': 'open()',
-        '(keydown.tab.prevent)': '0',
         '(keydown.arrowDown.prevent)': 'onArrow()',
+        '(keydown.tab.prevent)': '0',
     },
 })
 export class TuiInputSearch implements OnChanges {
@@ -51,11 +51,8 @@ export class TuiInputSearch implements OnChanges {
     private neighbor = this.textfield.el.nextSibling;
     private placeholder = '';
     private ref?: EmbeddedViewRef<unknown>;
-
     protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search, {});
-
     public readonly tuiInputSearch = input<PolymorpheusContent>();
-
     public readonly searchOpen = model(false, {alias: 'tuiInputSearchOpen'});
 
     public ngOnChanges(): void {

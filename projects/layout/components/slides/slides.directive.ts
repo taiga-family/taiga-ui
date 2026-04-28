@@ -28,8 +28,8 @@ class Styles {}
     selector: '[tuiSlides]',
     hostDirectives: [TuiAnimated],
     host: {
-        tuiSlides: '',
         'data-tui-version': TUI_VERSION,
+        tuiSlides: '',
         '[attr.data-direction]': 'sign()',
         '(animationend)': 'onAnimation($event.target)',
     },
@@ -38,7 +38,6 @@ export class TuiSlides {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly el = tuiInjectElement();
     protected readonly sign = computed(() => Math.sign(this.direction() || 0));
-
     public readonly direction = input<number | ''>('', {alias: 'tuiSlides'});
 
     protected onAnimation(target: Element): void {

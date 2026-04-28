@@ -17,6 +17,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 export default class Example {
     protected readonly today = TuiDay.currentLocal();
     protected value: TuiDay | null = this.today;
+
     protected dates = {
         Today: this.today,
         Tomorrow: this.today.append({day: 1}),

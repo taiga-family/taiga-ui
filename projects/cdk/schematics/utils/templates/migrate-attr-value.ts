@@ -12,11 +12,10 @@ import {ATTR_WITH_VALUES_TO_REPLACE} from '../../ng-update/v5/steps/constants/at
  */
 export function migrateAttrValue(attrNameLower: string, currentValue: string): string {
     for (const entry of ATTR_WITH_VALUES_TO_REPLACE) {
-        if (!entry.attrNames.some((n) => n.toLowerCase() === attrNameLower)) {
-            continue;
-        }
-
-        if (!Array.isArray(entry.valueReplacer)) {
+        if (
+            !entry.attrNames.some((n) => n.toLowerCase() === attrNameLower) ||
+            !Array.isArray(entry.valueReplacer)
+        ) {
             continue;
         }
 

@@ -25,12 +25,8 @@ export default class Page {
     ];
 
     protected orientation = this.orientationVariants[0]!;
-
     protected readonly iconVariants = ['', '@tui.clock', '@tui.heart'];
-
     protected icon = this.iconVariants[0]!;
-
     protected readonly stateVariants = ['normal', 'pass', 'error'] as const;
-
     protected state: 'error' | 'normal' | 'pass' = this.stateVariants[0];
 }

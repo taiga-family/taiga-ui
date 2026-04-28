@@ -15,6 +15,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export default class Page {
     protected readonly months = inject(TUI_MONTHS);
     protected readonly examples = ['Basic', 'Complex'];
+
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         Array.from({length: 91}).reduce<ReadonlyArray<[TuiDay, number]>>(
             (array, _, i) => [
@@ -59,16 +60,10 @@ export default class Page {
     ]);
 
     protected yStringify: TuiStringHandler<number> | null = null;
-
     protected xStringify: TuiStringHandler<TuiDay> | null = null;
-
     protected hintContent: PolymorpheusContent<TuiContext<[TuiDay, number]>> = '';
-
     protected dots = false;
-
     protected smoothingFactor = 0;
-
     protected y = 0;
-
     protected height = 200;
 }

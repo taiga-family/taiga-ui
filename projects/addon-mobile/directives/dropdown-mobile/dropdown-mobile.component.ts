@@ -38,11 +38,11 @@ const GAP = 16;
     hostDirectives: [TuiAnimated, TuiActiveZone],
     host: {
         'data-tui-version': TUI_VERSION,
-        '(pointerdown.prevent)': '0',
         '(document:click.zoneless.capture)': 'onClick($event)',
-        '(window>scroll.zoneless.capture)': 'refresh()',
+        '(pointerdown.prevent)': '0',
         '(visualViewport>resize.zoneless)': 'refresh()',
         '(visualViewport>scroll.zoneless)': 'refresh()',
+        '(window>scroll.zoneless.capture)': 'refresh()',
     },
 })
 export class TuiDropdownMobileComponent implements OnDestroy {
@@ -51,7 +51,6 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly scrollTop = this.doc.documentElement.scrollTop;
     private readonly observer = new ResizeObserver(() => this.refresh());
-
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly ctx = {$implicit: (): void => this.dropdown.toggle(false)};
 

@@ -9,9 +9,9 @@ import {TuiPortal, type TuiPortalContext} from './portal';
 @Directive()
 export class TuiPortalDirective<T> extends PolymorpheusTemplate<TuiPortalContext<T>> {
     private readonly service = inject(TuiPortal<T>);
-
     public readonly options = input<Partial<T>>({});
     public readonly open = input(false);
+
     public readonly openChange = outputFromObservable(
         toObservable(this.open).pipe(
             tuiIfMap(() =>

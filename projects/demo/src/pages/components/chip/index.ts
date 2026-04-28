@@ -23,6 +23,5 @@ export default class Example {
     ];
 
     protected readonly sizes: readonly TuiSizeXXS[] = ['xxs', 'xs', 's', 'm'];
-
     protected size = this.sizes[2]!;
 }

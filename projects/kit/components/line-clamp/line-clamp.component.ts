@@ -42,9 +42,9 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     hostDirectives: [TuiTransitioned],
     host: {
         '[style.line-height.px]': 'line()',
-        '(transitionend)': 'update()',
         '(mouseenter)': 'update()',
         '(resize)': 'update()',
+        '(transitionend)': 'update()',
     },
 })
 export class TuiLineClamp implements AfterViewChecked {
@@ -54,11 +54,11 @@ export class TuiLineClamp implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly isOverflown$ = new Subject<boolean>();
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
-
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
+
     public readonly overflownChange = outputFromObservable(
         this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
     );

@@ -27,7 +27,6 @@ import {
 })
 class PortalHost extends TuiPortals implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = 'viewport';
 
     public getClientRect(): DOMRect {

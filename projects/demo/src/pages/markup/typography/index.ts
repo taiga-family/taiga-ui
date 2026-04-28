@@ -11,6 +11,7 @@ import {TuiTable} from '@taiga-ui/addon-table';
 })
 export default class Page {
     protected readonly tabs = ['Headings', 'Body', 'UI'] as const;
+
     protected readonly groups = {
         Headings: [
             '--tui-typography-heading-h1',

@@ -20,6 +20,7 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
     protected readonly examples = [
         'Basic',
         'Interesting',

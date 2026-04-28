@@ -11,21 +11,13 @@ import {TuiPager} from '@taiga-ui/kit';
 })
 export default class Page {
     protected readonly templateRef = viewChild<TemplateRef<unknown>>('templateRef');
-
     protected readonly examples = ['Basic', 'Icons', 'Dynamic width'];
-
     protected index = 0;
-
     protected max = 6;
-
     protected sizes: TuiSizeS[] = ['m', 's'];
-
     protected size = this.sizes[0]!;
-
     protected countVariants = [10, 15, 1, 2, 3, 4, 5, 6, 8, 100];
-
     protected count = this.countVariants[0]!;
-
     protected templateVariants = ['', 'Template'];
     protected selectedTemplate = this.templateVariants[0]!;
 

@@ -34,24 +34,22 @@ import {TuiRangeChange} from './range-change.directive';
         },
     ],
     host: {
-        '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'disabled()',
-        '[style.--t-start.%]': 'start()',
-        '[style.--t-end.%]': 'end()',
+        '[attr.tabindex]': '-1',
         '[class._disabled]': 'disabled()',
+        '[style.--t-end.%]': 'end()',
+        '[style.--t-start.%]': 'start()',
         '(focusout)': 'onTouched()',
-        '(keydown.arrowUp.prevent)': 'changeByStep(1, $event.target)',
         '(keydown.arrowDown.prevent)': 'changeByStep(-1, $event.target)',
-        '(keydown.arrowRight.prevent)': 'changeByStep(rtl ? -1 : 1, $event.target)',
         '(keydown.arrowLeft.prevent)': 'changeByStep(rtl ? 1 : -1, $event.target)',
+        '(keydown.arrowRight.prevent)': 'changeByStep(rtl ? -1 : 1, $event.target)',
+        '(keydown.arrowUp.prevent)': 'changeByStep(1, $event.target)',
     },
 })
 export class TuiRange extends TuiControl<[number, number]> {
     private readonly el = tuiInjectElement();
     private readonly sliders = viewChildren(TuiSliderComponent);
-
     protected lastActiveThumb: 'end' | 'start' = 'end';
-
     public readonly min = input(0);
     public readonly max = input(100);
     public readonly step = input(1);
@@ -60,14 +58,15 @@ export class TuiRange extends TuiControl<[number, number]> {
     public readonly focusable = input(true);
     public readonly margin = input(0);
     public readonly limit = input(Infinity);
-
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
+
     public readonly thumbs = computed(
         ([start, end] = this.sliders()) => [start!.el, end!.el] as const,
     );
 
     protected readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
+
     protected readonly fractionStep = computed<number>((step = this.step()) =>
         this.keySteps() ? step / 100 : step / (this.max() - this.min()),
     );

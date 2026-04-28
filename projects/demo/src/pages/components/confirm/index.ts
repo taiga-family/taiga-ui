@@ -14,11 +14,9 @@ import {switchMap} from 'rxjs';
 export default class Example implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiNotificationService);
-
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic'];
     protected readonly exampleService = import('./examples/import/service.md');
-
     public readonly appearances = ['primary', 'accent', 'secondary'];
     public appearance = this.appearances[0]!;
     public no = 'No';

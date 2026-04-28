@@ -28,12 +28,12 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
     host: {
         tuiInput: '',
         '[attr.role]': 'dropdown.content() && !el.matches("select") ? "combobox" : null',
+        '[class._empty]': 'value() === ""',
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly()',
-        '[class._empty]': 'value() === ""',
-        '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
+        '(input)': '0',
     },
 })
 export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
@@ -45,6 +45,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
     protected readonly s = tuiAppearanceState(computed(() => this.state()));
     protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
+
     protected readonly f = tuiAppearanceFocus(
         computed(() => this.focused() ?? this.textfield.focused()),
     );
@@ -53,8 +54,8 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     public readonly invalid = input<boolean | null>(null);
     public readonly focused = input<boolean | null>(null);
     public readonly state = input<TuiInteractiveState | null>(null);
-
     public readonly value = tuiValue(this.el);
+
     public readonly mode = computed<string | null>(() => {
         if (this.readOnly()) {
             return 'readonly';

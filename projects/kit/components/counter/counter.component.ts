@@ -24,15 +24,13 @@ const LIMIT: Record<TuiSizeL | TuiSizeS, number> = {
     styleUrl: './counter.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiInputNumberStepService, tuiFallbackValueProvider(0)],
-    host: {
-        '[attr.data-size]': 'size()',
-        '[attr.data-appearance]': 'appearance()',
-    },
+    host: {'[attr.data-appearance]': 'appearance()', '[attr.data-size]': 'size()'},
 })
 export class TuiCounter extends TuiControl<number> {
     protected readonly hold = inject(TuiInputNumberStepService<number>);
     protected readonly options = inject(TUI_COUNTER_OPTIONS);
     protected readonly limit = computed(() => LIMIT[this.size()]);
+
     protected readonly $ = this.hold.steps$
         .pipe(takeUntilDestroyed())
         .subscribe((value) => this.onStep(value));

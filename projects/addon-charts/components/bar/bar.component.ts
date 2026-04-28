@@ -11,7 +11,6 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 })
 export class TuiBar {
     private readonly sum = computed(() => tuiSum(...this.value()));
-
     public readonly value = input<readonly number[]>([]);
     public readonly size = input<TuiSizeL | TuiSizeS>('m');
 

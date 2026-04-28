@@ -7,6 +7,7 @@ const ELLIPSIS = '\u2026';
 @Injectable()
 export class TuiTruncateService {
     private readonly el = tuiInjectElement();
+
     private readonly ctx = isPlatformBrowser(inject(PLATFORM_ID))
         ? inject(DOCUMENT).createElement('canvas').getContext('2d')
         : null;

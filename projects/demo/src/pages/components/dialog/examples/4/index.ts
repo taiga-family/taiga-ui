@@ -26,7 +26,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export default class Example {
     private readonly confirm = inject(TuiConfirmService);
     private readonly dialogs = inject(TuiDialogService);
-
     protected value = '';
 
     protected onModelChange(value: string): void {

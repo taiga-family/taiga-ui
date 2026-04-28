@@ -43,9 +43,9 @@ const TODAY = TuiDay.currentLocal();
 })
 export class TuiCalendarMonth {
     private hoveredItem: TuiMonth | null = null;
-
     protected isYearPickerShown = false;
     protected readonly months = inject(TUI_CALENDAR_MONTHS);
+
     protected readonly isRangePicking = computed(
         (x = this.value()) =>
             (!this.options.rangeMode && x instanceof TuiMonthRange && x.isSingleMonth) || // TODO(v5): remove this condition
@@ -87,6 +87,7 @@ export class TuiCalendarMonth {
     public readonly value = input<TuiMonth | TuiMonthRange | null>(null);
     public readonly minLength = input<number | null>(null);
     public readonly maxLength = input<number | null>(null);
+
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiMonth>>(TUI_FALSE_HANDLER);
 
@@ -99,10 +100,8 @@ export class TuiCalendarMonth {
     });
 
     public readonly year = model<TuiYear>();
-
     public readonly monthClick = output<TuiMonth>();
     public readonly hoveredItemChange = output<TuiMonth | null>();
-
     public readonly options = inject(TUI_CALENDAR_MONTH_OPTIONS);
 
     public onNextYear(): void {

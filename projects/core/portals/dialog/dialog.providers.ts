@@ -25,6 +25,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
     private readonly win = inject(WA_WINDOW);
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
+
     private readonly esc$ = tuiTypedFromEvent(this.doc, 'keydown').pipe(
         filter((event) => {
             const target = tuiGetActualTarget(event);

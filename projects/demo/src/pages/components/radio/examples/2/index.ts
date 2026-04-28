@@ -16,6 +16,7 @@ interface TestValue {
 })
 export default class Example {
     protected value: TestValue | null = null;
+
     protected identityMatcher = (a: TestValue, b: TestValue): boolean =>
         a?.test === b?.test;
 }

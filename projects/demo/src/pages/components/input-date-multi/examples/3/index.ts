@@ -14,6 +14,5 @@ import {TuiInputDateMulti} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = [new TuiDay(2025, 6, 6)];
-
     protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }

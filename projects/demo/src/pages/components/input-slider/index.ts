@@ -29,7 +29,6 @@ import {TuiInputSlider} from '@taiga-ui/kit';
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(0);
-
     protected readonly min = signal(0);
     protected readonly max = signal(100);
     protected prefix = '';
