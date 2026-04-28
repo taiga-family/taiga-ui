@@ -38,7 +38,7 @@ describe('InputRange | With segments + tick labels', () => {
         cy.viewport(300, 110);
     });
 
-    const cases = [
+    const cases: ReadonlyArray<[number, number]> = [
         [0, 0],
         [0, 25],
         [0, 50],

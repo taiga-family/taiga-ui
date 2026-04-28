@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 /**
  * Normalizes any number to an integer within inclusive range
  *

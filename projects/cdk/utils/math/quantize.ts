@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 /**
  * Rounds a number to the closest value in a fixed discrete series
  *

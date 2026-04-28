@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 
 function assertTitle(page: TuiDocRoutePage, map: Map<string, TuiDocRoutePage>): void {

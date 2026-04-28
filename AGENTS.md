@@ -52,7 +52,7 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 ## Angular Best Practices
 
 - Use standalone components and standalone directives/pipes by default. With Angular 19 components, directives and pipes
-  are standalone by default. Do not use standalone flag for each class, because it is already the default.
+  are standalone by default. Do not use the standalone flag for each class, because it is already the default.
 - Use the new functional input/output APIs when appropriate (e.g., `input.required<T>()`, `input.optional<T>()`) to
   strongly type and enforce component inputs.
 - Use signals for reactive state management: local component state with `signal()`, derived state with `computed()`,
@@ -114,8 +114,8 @@ the HTML template in the `.html` file (unless the component is trivial and alrea
 - Preserve existing legacy `*ngIf` / `*ngFor` code when touching older templates unless there is a clear reason to
   migrate it as part of the change.
 - Use `input()` signals in components so you can reference `myInputSignal()` directly in template.
-- Writable signals are valid with Angular two-way binding syntax (`[(...)]`). Example: `[(open)]="isOpen"` is allowed
-  when `isOpen` is a writable signal.
+- Writable signals are valid with Angular two-way binding syntax (`[(property)]`). Example: `[(open)]="isOpen"` is
+  allowed when `isOpen` is a writable signal.
 
 ## Readability
 

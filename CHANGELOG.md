@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/taiga-family/taiga-ui/compare/v5.3.0...v5.4.0) (2026-04-28)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** use fallback to `heading` when `id` is not defined
+  ([#13968](https://github.com/taiga-family/taiga-ui/issues/13968))
+  ([7f9536c](https://github.com/taiga-family/taiga-ui/commit/7f9536c686316a8a48ef338f09573a4e1ad553be))
+- **cdk:** `ng-add` add styles package for pnpm ([#13958](https://github.com/taiga-family/taiga-ui/issues/13958))
+  ([17a2d96](https://github.com/taiga-family/taiga-ui/commit/17a2d96f98aa9f80a2eddfee487640204a355ce1))
+- **cdk:** missed imports during `tui-input[tuiHintContent]` migration for inline templates
+  ([#13963](https://github.com/taiga-family/taiga-ui/issues/13963))
+  ([6057bad](https://github.com/taiga-family/taiga-ui/commit/6057badfbf21b33e98efc38db3755a9ae07507b3))
+- **core:** `tuiPresent` fix dummy animation ([#13938](https://github.com/taiga-family/taiga-ui/issues/13938))
+  ([9c8ba13](https://github.com/taiga-family/taiga-ui/commit/9c8ba13c07942389a1bf3c9c2b27b7921671cf1f))
+- **core:** expose dropdown hover state via public getter
+  ([#13815](https://github.com/taiga-family/taiga-ui/issues/13815))
+  ([792730d](https://github.com/taiga-family/taiga-ui/commit/792730da8127cf2a1d11b8a6273604164387fedc))
+- **kit:** `Toast` fix positioning on mobile ([#13936](https://github.com/taiga-family/taiga-ui/issues/13936))
+  ([0bfb447](https://github.com/taiga-family/taiga-ui/commit/0bfb44753b9fb2f67af3860b56bff0676f0842d8))
+- **layout:** fix textfield multi inside `CardLarge` ([#13979](https://github.com/taiga-family/taiga-ui/issues/13979))
+  ([3d05842](https://github.com/taiga-family/taiga-ui/commit/3d058427abc69e0663739728ef605fd036203002))
+- **schematics:** drop `@taiga-ui/tsconfig/ng-dev-mode` migration dependency
+  ([#13977](https://github.com/taiga-family/taiga-ui/issues/13977))
+  ([bccd09f](https://github.com/taiga-family/taiga-ui/commit/bccd09f7e2a28d72ebce26c6b679d9fcc5e1c89b))
+- **schematics:** invalid migration for `[tuiCardLarge][tuiSurface="elevated"]`
+  ([#13932](https://github.com/taiga-family/taiga-ui/issues/13932))
+  ([8d0e4af](https://github.com/taiga-family/taiga-ui/commit/8d0e4af1718bc6d5f6e2ab45741fc23edc06a5ff))
+- **schematics:** missed import `TuiIcon` during migration of `tuiTextfieldCustomContent`
+  ([#13951](https://github.com/taiga-family/taiga-ui/issues/13951))
+  ([59f7f59](https://github.com/taiga-family/taiga-ui/commit/59f7f59ad1839dcafe9c4f3b664b026008497872))
+- **styles:** revert fonts ([#13916](https://github.com/taiga-family/taiga-ui/issues/13916))
+  ([b03c8cd](https://github.com/taiga-family/taiga-ui/commit/b03c8cdc5b6a9e6a9749cb9de464b94b7bb6ffca))
+
+### 🚀 Features
+
+- **addon-commerce:** add sign parameter to tuiAmount ([#13744](https://github.com/taiga-family/taiga-ui/issues/13744))
+  ([794c0cd](https://github.com/taiga-family/taiga-ui/commit/794c0cdabca3452e3c747539ad573d3088f58c9f))
+- **addon-doc:** resize icon should be configurable ([#13967](https://github.com/taiga-family/taiga-ui/issues/13967))
+  ([5bc122f](https://github.com/taiga-family/taiga-ui/commit/5bc122fdaceb5c7208216ec12b363fceecd5ad0d))
+- **addon-doc:** unwrap default module for component outlet
+  ([#13957](https://github.com/taiga-family/taiga-ui/issues/13957))
+  ([c2165ee](https://github.com/taiga-family/taiga-ui/commit/c2165eef030c1827837eaca911294f0ee49dae8a))
+- **cdk:** `tuiSum` supports `bigint` ([#13890](https://github.com/taiga-family/taiga-ui/issues/13890))
+  ([7b21438](https://github.com/taiga-family/taiga-ui/commit/7b21438a4c35a695fddf0489f4ae4a40fe61aa41))
+
 ## [5.3.0](https://github.com/taiga-family/taiga-ui/compare/v5.2.0...v5.3.0) (2026-04-21)
 
 ### 🚀 Features

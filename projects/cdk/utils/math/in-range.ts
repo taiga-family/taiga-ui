@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 export function tuiInRange(
     value: number,
     fromInclude: number,

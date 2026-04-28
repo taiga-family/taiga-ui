@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {DAYS_IN_WEEK, TuiDay, type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';

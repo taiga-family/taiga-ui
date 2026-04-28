@@ -77,7 +77,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     host: {
         waIntersectionThreshold: '1',
         waIntersectionRootMargin: '-40px 0px 1000000% 0px',
-        '[attr.id]': 'id()',
+        '[attr.id]': 'resolvedId()',
         '[class._fullsize]': 'fullsize()',
         '(waIntersectionObservee)': 'onIntersection()',
     },
@@ -109,7 +109,11 @@ export class TuiDocExample implements OnChanges {
     protected fullscreen = false;
     protected readonly copy = computed(() => this.copyTexts()[0]);
     protected readonly loading = signal(false);
-    protected readonly id = computed(() => tuiToKebab(this.heading()));
+
+    protected readonly resolvedId = computed(
+        () => this.id() || tuiToKebab(this.heading()),
+    );
+
     protected readonly processor: Signal<Record<string, string>> = toSignal(
         this.rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
@@ -132,6 +136,7 @@ export class TuiDocExample implements OnChanges {
     });
 
     public readonly heading = input('');
+    public readonly id = input('');
     public readonly description = input<PolymorpheusContent>();
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
     public readonly component =
@@ -161,11 +166,13 @@ export class TuiDocExample implements OnChanges {
     protected edit(files: Record<string, string>): void {
         this.loading.set(true);
         this.codeEditor
-            ?.edit(this.location.pathname.slice(1), this.id() || '', files)
+            ?.edit(this.location.pathname.slice(1), this.resolvedId() || '', files)
             .finally(() => this.loading.set(false));
     }
 
     protected onIntersection(): void {
-        this.doc.dispatchEvent(new CustomEvent('tui-example', {detail: this.id()}));
+        this.doc.dispatchEvent(
+            new CustomEvent('tui-example', {detail: this.resolvedId()}),
+        );
     }
 }

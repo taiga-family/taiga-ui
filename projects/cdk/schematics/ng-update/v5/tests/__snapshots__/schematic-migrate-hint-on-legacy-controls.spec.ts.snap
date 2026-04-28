@@ -777,6 +777,72 @@ exports[`ng-update hint on legacy controls import additions does not duplicate T
 }
 `;
 
+exports[`ng-update hint on legacy controls import additions inline template: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import {TuiHint} from '@taiga-ui/core';
+                    import {TuiInputModule} from '@taiga-ui/legacy';
+
+                    @Component({
+                        selector: 'date-range-mask-doc-example-3',
+                        imports: [
+                            FormsModule,
+                            TuiHint,
+                            TuiInputModule,
+                        ],
+                        template: \`
+                            <tui-input
+                                [tuiHintContent]="hint"
+                                [(ngModel)]="value"
+                            >
+                                <input
+                                    inputmode="decimal"
+                                    tuiTextfieldLegacy
+                                />
+                            </tui-input>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class DateRangeMaskDocExample3 {
+                        value = '01.01.2023 – 05.01.2023';
+                        hint = 'any content';
+                    }
+                ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import { TuiHint, TuiInput, TuiIcon } from '@taiga-ui/core';
+
+                    @Component({
+                        selector: 'date-range-mask-doc-example-3',
+                        imports: [
+                            FormsModule,
+                            TuiHint,
+                            TuiInput,
+                            TuiIcon,
+                            TuiTooltip
+                        ],
+                        template: \`
+                            <tui-textfield>
+                            <input
+                                    inputmode="decimal"
+                                    tuiInput [(ngModel)]="value"/>
+<tui-icon [tuiTooltip]="hint" />
+                            </tui-textfield>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class DateRangeMaskDocExample3 {
+                        value = '01.01.2023 – 05.01.2023';
+                        hint = 'any content';
+                    }
+                ",
+}
+`;
+
 exports[`ng-update hint on legacy controls multiple occurrences migrates multiple elements with tuiHintContent in one template: test.html 1`] = `
 {
   "0. Before": "
