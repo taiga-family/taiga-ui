@@ -7,17 +7,6 @@ const preset = {
     devServerPublicPathRoute: '/',
 };
 
-const imageDiffConfig = {
-    ROOT_DIR: 'tests-results',
-    SCREENSHOTS_DIR: 'snapshots',
-    REPORT_DIR: '.',
-    JSON_REPORT: {
-        FILENAME: 'report-summary',
-        OVERWRITE: true,
-    },
-    RETRY_OPTIONS: {doNotFail: process.env.CI || false},
-};
-
 export default defineConfig({
     video: false,
     fixturesFolder: 'src/fixtures',
@@ -122,8 +111,6 @@ export default defineConfig({
         experimentalSingleTabRunMode: true,
         justInTimeCompile: false,
         setupNodeEvents(on, config) {
-            config.env.cypressImageDiff = imageDiffConfig;
-
             getCompareSnapshotsPlugin(on, config);
 
             on('before:browser:launch', (browser, launchOptions) => {
