@@ -129,6 +129,13 @@ export const pages: DocRoutePages = [
                     'viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown',
                 route: DemoRoute.Viewport,
             },
+            {
+                section: 'Documentation',
+                title: 'Dark Mode',
+                keywords:
+                    'dark, light, theme, mode, night, темная тема, тема, переключение',
+                route: DemoRoute.DarkMode,
+            },
         ],
     },
     {
