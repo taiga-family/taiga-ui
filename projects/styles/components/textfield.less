@@ -52,6 +52,7 @@ tui-textfield:where(*&) {
         &::before {
             z-index: 1;
             block-size: var(--t-height);
+            block-size: calc(var(--t-height) * (1 - 0.2 * var(--t-zoom)));
             inline-size: 1.5rem;
             margin-inline-end: 1rem;
             pointer-events: none;
@@ -60,6 +61,7 @@ tui-textfield:where(*&) {
         &::after {
             position: relative;
             block-size: var(--t-height);
+            block-size: calc(var(--t-height) * (1 - 0.2 * var(--t-zoom)));
             inline-size: calc(1.5rem + 2 * var(--t-padding));
             cursor: pointer;
             margin-inline-start: calc(0.25rem - var(--t-padding));

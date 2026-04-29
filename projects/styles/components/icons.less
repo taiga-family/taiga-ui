@@ -20,6 +20,7 @@
 [tuiIcons]:where(*&) {
     --t-icon-start: none;
     --t-icon-end: none;
+    --t-zoom: ~'calc(clamp(0px, var(--tui-font-offset) - 10px, 1px) / 1px)';
 
     &::before,
     &::after {
@@ -31,7 +32,7 @@
         flex-shrink: 0;
         box-sizing: content-box;
         background: currentColor;
-        zoom: ~'calc(100% * (clamp(0px, var(--tui-font-offset) - 10px, 1px) / 0.8px))';
+        zoom: calc(100% + 25% * var(--t-zoom));
     }
 
     &::before {
