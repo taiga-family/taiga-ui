@@ -407,33 +407,6 @@ exports[`ng-update disabled on legacy controls different legacy controls moves [
 }
 `;
 
-exports[`ng-update disabled on legacy controls different legacy controls moves [disabled] on tui-input-number to <input tuiInputNumber>: test.ts 1`] = `
-{
-  "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiInputModule} from '@taiga-ui/legacy';
-
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiInputModule],
-            })
-            export class Test {}
-        ",
-  "1. After": "import { TuiInput } from "@taiga-ui/core";
-
-            import {Component} from '@angular/core';
-
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiInput],
-            })
-            export class Test {}
-        ",
-}
-`;
-
 exports[`ng-update disabled on legacy controls different legacy controls moves [disabled] on tui-input-phone to <input tuiInputPhone>: test.html 1`] = `
 {
   "0. Before": "<tui-input-phone [disabled]="!show">Phone</tui-input-phone>",
