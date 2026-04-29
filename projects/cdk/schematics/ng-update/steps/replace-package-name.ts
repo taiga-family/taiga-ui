@@ -29,3 +29,32 @@ export function replacePackageName(
     fileSystem.commitEdits();
     saveActiveProject();
 }
+
+interface Options {
+    name: string;
+    tree: Tree;
+    remove: boolean;
+    nameTo?: string;
+    versionTo?: string;
+}
+
+export function replaceInPackageJson(options: Options): void {
+    const {tree, name, remove, nameTo, versionTo} = options;
+    const fileSystem = getFileSystem(tree);
+    const match = getPackageJsonDependency(tree, name);
+
+    if (match) {
+        removePackageJsonDependency(tree, name);
+
+        if (!remove) {
+            addPackageJsonDependency(tree, {
+                type: match.type,
+                name: nameTo ?? name,
+                version: versionTo ?? match.version,
+            });
+        }
+    }
+
+    fileSystem.commitEdits();
+    saveActiveProject();
+}

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate packages update packages from v4: package.json 1`] = `
+{
+  "0. Before": "
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@maskito/angular": "3.11.1",
+                    "@maskito/core": "3.11.1",
+                    "@maskito/kit": "3.11.1",
+                    "@ng-web-apis/common": "4.0.0",
+                    "@ng-web-apis/intersection-observer": "4.0.0",
+                    "@ng-web-apis/mutation-observer": "4.0.0",
+                    "@ng-web-apis/screen-orientation": "4.0.0",
+                    "@ng-web-apis/resize-observer": "4.0.0",
+                    "@ng-web-apis/universal": "4.0.0",
+                    "@taiga-ui/cdk": "5.1.0",
+                    "@taiga-ui/core": "5.1.0",
+                    "@taiga-ui/icons": "5.1.0",
+                    "@taiga-ui/dompurify": "4.0.0",
+                    "@taiga-ui/event-plugins": "4.0.0",
+                    "@taiga-ui/i18n": "5.1.0",
+                    "@taiga-ui/addon-table": "5.1.0",
+                    "@taiga-ui/addon-mobile": "5.1.0",
+                    "@taiga-ui/polymorpheus": "4.0.0",
+                    "@taiga-ui/proprietary": "5.1.0"
+                 }
+             }
+            ",
+  "1. After": "
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@ng-web-apis/universal": "^5.0.0",
+                    "@taiga-ui/cdk": "5.1.0",
+                    "@taiga-ui/core": "5.1.0",
+                    "@taiga-ui/icons": "5.1.0",
+                    "@taiga-ui/dompurify": "^5.0.0",
+                    "@taiga-ui/i18n": "5.1.0",
+                    "@taiga-ui/addon-table": "5.1.0",
+                    "@taiga-ui/addon-mobile": "5.1.0",
+                    "@taiga-ui/proprietary": "5.1.0"
+                 }
+             }
+            ",
+}
+`;
+
+exports[`ng-update migrate packages update packages from v5 to v5: package.json 1`] = `
+{
+  "0. Before": "
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@maskito/angular": "^5.0.0",
+                    "@maskito/core": "^5.0.0",
+                    "@maskito/kit": "^5.0.0",
+                    "@ng-web-apis/common": "^5.0.0",
+                    "@ng-web-apis/intersection-observer": "^5.0.0",
+                    "@ng-web-apis/mutation-observer": "^5.0.0",
+                    "@ng-web-apis/universal": "^5.0.0",
+                    "@taiga-ui/cdk": "5.1.0",
+                    "@taiga-ui/core": "5.1.0",
+                    "@taiga-ui/icons": "5.1.0",
+                    "@taiga-ui/dompurify": "^5.0.0",
+                    "@taiga-ui/i18n": "5.1.0",
+                    "@taiga-ui/event-plugins": "^5.0.0",
+                    "@taiga-ui/addon-table": "5.1.0",
+                    "@taiga-ui/addon-mobile": "5.1.0",
+                    "@taiga-ui/polymorpheus": "^5.0.0",
+                    "@taiga-ui/proprietary": "5.1.0"
+                 }
+             }
+            ",
+  "1. After": "
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@ng-web-apis/universal": "^5.0.0",
+                    "@taiga-ui/cdk": "5.1.0",
+                    "@taiga-ui/core": "5.1.0",
+                    "@taiga-ui/icons": "5.1.0",
+                    "@taiga-ui/i18n": "5.1.0",
+                    "@taiga-ui/dompurify": "^5.0.0",
+                    "@taiga-ui/addon-table": "5.1.0",
+                    "@taiga-ui/addon-mobile": "5.1.0",
+                    "@taiga-ui/proprietary": "5.1.0"
+                 }
+             }
+            ",
+}
+`;
