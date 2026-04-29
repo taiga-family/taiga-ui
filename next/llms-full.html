@@ -1965,7 +1965,6 @@ export default class Example {
     protected items = [&#039;one&#039;, &#039;two&#039;, &#039;three&#039;, &#039;four&#039;];
     protected control = new FormControl&lt;string[]&gt;([]);
     protected expanded = false;
-
     protected readonly isMobile = computed(() =&gt; this.breakpoint() === &#039;mobile&#039;);
 
     protected get value(): string[] {
@@ -2019,7 +2018,6 @@ import {TuiActionBar} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly open = signal(false);
-
     protected readonly isMobile = computed(() =&gt; this.breakpoint() === &#039;mobile&#039;);
 }
 ```
@@ -2356,7 +2354,6 @@ import {TuiAppBar, TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
-
     protected step = 0;
 
     protected open(template: TemplateRef&lt;any&gt;): void {
@@ -2557,7 +2554,6 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly value = [40, 30, 20, 10];
-
     protected activeItemIndex = Number.NaN;
 
     public onTextfieldChange(value: number | null): void {
@@ -2657,19 +2653,12 @@ export default class Page {
     ];
 
     protected value = this.valueVariants[0]!;
-
     protected readonly maxVariants = [100, 10000, 50000];
-
     protected max = this.maxVariants[0]!;
-
     protected readonly sizeVariants: readonly TuiSizeXL[] = [&#039;m&#039;, &#039;l&#039;, &#039;xl&#039;];
-
     protected size = this.sizeVariants[0]!;
-
     protected minLabel = &#039;0%&#039;;
-
     protected maxLabel = &#039;100%&#039;;
-
     protected activeItemIndex = Number.NaN;
 }
 ```
@@ -2872,6 +2861,7 @@ import {
 })
 export default class Example {
     protected readonly names = [&#039;Jason Statham&#039;, &#039;Silvester Stallone&#039;, &#039;Jackie Chan&#039;];
+
     protected readonly sizes: ReadonlyArray&lt;TuiSizeXS | TuiSizeXXL&gt; = [
         &#039;xxl&#039;,
         &#039;xl&#039;,
@@ -3055,7 +3045,6 @@ export default class Page {
     ];
 
     protected badge = this.badgeVariants[0]!;
-
     protected round = true;
 }
 ```
@@ -3115,6 +3104,7 @@ export default class Example {
     protected readonly axisXLabels = [&#039;Jan 2019&#039;, &#039;Feb&#039;, &#039;Mar&#039;, &#039;&#039;];
     protected readonly axisYLabels = [&#039;&#039;, &#039;25%&#039;, &#039;50%&#039;, &#039;75%&#039;, &#039;100%&#039;];
     protected readonly axisYSecondaryLabels = [&#039;80 k&#039;, &#039;100 k&#039;, &#039;120 k&#039;];
+
     protected readonly verticalLinesHandler: TuiLineHandler = (index, total) =&gt;
         (index &amp;&amp; (index === total - 1 ? &#039;none&#039; : &#039;dashed&#039;)) || &#039;solid&#039;;
 }
@@ -3173,6 +3163,7 @@ export default class Example {
     ];
 
     protected readonly maxValue = 40;
+
     protected readonly axisYSecondaryLabels = [
         &#039;&#039;,
         `${getMax(this.value) / 2} k`,
@@ -3348,7 +3339,6 @@ export default class Page {
     ];
 
     protected centeredXLabels = false;
-
     protected axisXLabels = this.labelsXVariants[0]!;
     protected axisYInset = false;
     protected axisYLabels = this.labelsYVariants[0]!;
@@ -3653,7 +3643,6 @@ export default class Page {
     ];
 
     protected size = this.sizeVariants[1]!;
-
     protected contentTypeVariants = [&#039;text&#039;, &#039;with icon&#039;, &#039;image&#039;];
     protected contentType = this.contentTypeVariants[0]!;
 
@@ -3797,7 +3786,6 @@ export default class Example {
     ];
 
     protected size = this.sizeVariants[0]!;
-
     protected readonly examples = [&#039;Basic&#039;, &#039;Custom color&#039;];
 }
 ```
@@ -4132,9 +4120,7 @@ import {type TuiSizeL, type TuiSizeS} from &#039;@taiga-ui/core&#039;;
 })
 export default class Page {
     protected readonly examples = [&#039;Basic&#039;, &#039;Segments&#039;];
-
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
-
     protected size = this.sizeVariants[1]!;
 
     protected readonly valueVariants = [
@@ -4282,7 +4268,6 @@ export default class Example {
     protected readonly labelsX = [&#039;Jan 2021&#039;, &#039;Feb&#039;, &#039;Mar&#039;, &#039;&#039;];
     protected readonly labelsY = [&#039;0&#039;, &#039;10 000&#039;];
     protected readonly appearances = [&#039;floating&#039;, &#039;accent&#039;];
-
     protected appearance = this.appearances[0]!;
 
     protected readonly hint = ({$implicit}: TuiContext&lt;number&gt;): string =&gt;
@@ -4340,13 +4325,9 @@ import {type TuiSizeL, type TuiSizeS} from &#039;@taiga-ui/core&#039;;
 })
 export default class Page {
     public readonly examples = [&#039;With axes&#039;, &#039;Same values with collapsed mode&#039;];
-
     protected collapsed = false;
-
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
-
     protected size: TuiSizeL | TuiSizeS | null = null;
-
     protected max = 0;
 
     protected readonly valueVariants = [
@@ -4609,9 +4590,7 @@ export default class Page {
     ];
 
     protected collapsed = false;
-
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
-
     protected size: TuiSizeL | TuiSizeS | null = null;
 
     protected readonly valueVariants = [
@@ -4915,7 +4894,6 @@ export default class Example {
     protected readonly examples = [&#039;Sizes&#039;, &#039;Groups&#039;, &#039;Custom&#039;];
     protected readonly sizes: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
     protected readonly appearances = [&#039;outline-grayscale&#039;, &#039;secondary&#039;];
-
     protected value = false;
     protected size = this.sizes[2]!;
 }
@@ -5433,9 +5411,7 @@ import {TuiBlockStatus} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     protected card = false;
-
     protected readonly sizes: TuiSizeL[] = [&#039;l&#039;, &#039;m&#039;];
-
     protected size = this.sizes[0] || &#039;l&#039;;
 
     protected readonly examples = [
@@ -5516,7 +5492,6 @@ import {TuiCardLarge} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sheet = viewChild(TuiBottomSheet, {read: ElementRef&lt;HTMLElement&gt;});
-
     protected messages = [&#039;Check that awesome bottom sheet out!&#039;];
     protected value = &#039;&#039;;
 
@@ -5628,7 +5603,6 @@ import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     protected readonly button = viewChild&lt;ElementRef&lt;HTMLElement&gt;&gt;(&#039;buttons&#039;);
-
     protected readonly stops = [&#039;112px&#039;] as const;
 
     protected onScroll({clientHeight, scrollTop}: HTMLElement): void {
@@ -5894,6 +5868,7 @@ import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from &#039;@taig
 })
 export default class Example {
     protected readonly fade = DemoRoute.Fade;
+
     protected readonly items = [
         &#039;First item&#039;,
         &#039;Very very long second item that must overflow&#039;,
@@ -5950,8 +5925,8 @@ import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
-
     protected readonly examples = [&#039;Basic&#039;, &#039;Overflow&#039;];
+
     protected readonly items = [
         &#039;Item 1&#039;,
         &#039;Item 2&#039;,
@@ -6131,6 +6106,7 @@ import {map, startWith, Subject, switchMap, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected readonly trigger$ = new Subject&lt;void&gt;();
+
     protected readonly loading$ = this.trigger$.pipe(
         switchMap(() =&gt; timer(2000).pipe(map(TUI_FALSE_HANDLER), startWith(&#039;Loading&#039;))),
     );
@@ -6546,6 +6522,7 @@ export default class Example {
     protected readonly index = signal(1);
     protected readonly opacity = signal(1);
     protected readonly effective = linkedSignal(this.index);
+
     protected readonly items = [
         {
             title: &#039;RUB Account&#039;,
@@ -6665,7 +6642,6 @@ import {TuiButtonSelect, TuiDataListWrapper} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly items: string[] = inject(&#039;Pythons&#039; as any);
-
     protected value = this.items[0];
 }
 ```
@@ -6886,13 +6862,9 @@ import {TuiCalendar} from &#039;@taiga-ui/core&#039;;
 })
 export default class Example {
     protected value: TuiDayRange | null = null;
-
     protected firstMonth = TuiMonth.currentLocal();
-
     protected middleMonth = TuiMonth.currentLocal().append({month: 1});
-
     protected lastMonth = TuiMonth.currentLocal().append({month: 2});
-
     protected hoveredItem: TuiDay | null = null;
 
     protected onDayClick(day: TuiDay): void {
@@ -6962,13 +6934,9 @@ const ONE_DOT: [string] = [&#039;var(--tui-status-positive)&#039;];
 })
 export default class Example {
     protected value: TuiDayRange | null = null;
-
     protected firstMonth = TuiMonth.currentLocal();
-
     protected middleMonth = TuiMonth.currentLocal().append({month: 1});
-
     protected lastMonth = TuiMonth.currentLocal().append({month: 2});
-
     protected hoveredItem: TuiDay | null = null;
 
     protected readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =&gt;
@@ -7229,9 +7197,7 @@ export default class Example {
     ];
 
     protected value: TuiDay | TuiDayRange | null = null;
-
     protected month = TuiMonth.currentLocal();
-
     protected hoveredItem: TuiDay | null = null;
     protected readonly routes = DemoRoute;
 }
@@ -7329,7 +7295,6 @@ import {TuiCalendarMonth, tuiCalendarMonthOptionsProvider} from &#039;@taiga-ui/
 })
 export default class Example {
     protected value: TuiMonth | TuiMonthRange | null = null;
-
     protected max = TuiMonth.currentLocal().append({year: 1});
     protected min = new TuiMonth(2019, 7);
 
@@ -9417,6 +9382,7 @@ import {TuiCard} from &#039;@taiga-ui/layout&#039;;
 export default class Example {
     protected readonly isE2E = inject(WA_IS_E2E);
     protected readonly index = signal(0);
+
     protected readonly items = [
         {
             title: &#039;Taiga UI&#039;,
@@ -10199,7 +10165,6 @@ export default class Example {
     ];
 
     protected value = this.items[0]!;
-
     protected incoming = false;
     protected outgoing = true;
 }
@@ -10318,7 +10283,6 @@ import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     protected sizes = [&#039;l&#039;, &#039;m&#039;, &#039;s&#039;] as const;
     protected size: TuiCellOptions[&#039;size&#039;] = this.sizes[0];
-
     protected heights = [&#039;normal&#039;, &#039;compact&#039;, &#039;spacious&#039;] as const;
     protected height: TuiCellOptions[&#039;height&#039;] = this.heights[0];
 
@@ -10509,6 +10473,7 @@ export default class Example {
 
     protected currentQuestion = 0;
     protected results: boolean[][] = [];
+
     protected form = new FormGroup({
         0: new FormControl(true),
         1: new FormControl(false),
@@ -10705,7 +10670,6 @@ import {TuiChip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected readonly checked = [true, false, true];
     protected readonly values = [&#039;test&#039;, &#039;Some text&#039;, &#039;WOW!&#039;];
 
@@ -10954,7 +10918,6 @@ export default class Example {
     ];
 
     protected readonly sizes: readonly TuiSizeXXS[] = [&#039;xxs&#039;, &#039;xs&#039;, &#039;s&#039;, &#039;m&#039;];
-
     protected size = this.sizes[2]!;
 }
 ```
@@ -11074,7 +11037,6 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
-
     protected value = null;
 }
 ```
@@ -11386,10 +11348,10 @@ import {DatabaseServer} from &#039;./database&#039;;
 })
 export default class Example {
     private readonly api = inject(DatabaseServer);
-
     protected readonly showLoader = signal(false);
     // Click on cleaner / datalist item triggers (input) events too
     protected readonly search$ = new Subject&lt;string&gt;();
+
     protected readonly items$ = this.search$.pipe(
         debounceTime(0), // ensure form control is updated after last input
         filter(() =&gt; !this.value), // click on datalist item should not trigger new api request
@@ -11613,13 +11575,13 @@ export default class Example {
     };
 
     protected categories = Object.keys(this.filmDatabase);
+
     protected filters: Record&lt;string, boolean&gt; = this.categories.reduce(
         (acc, category, i) =&gt; ({...acc, [category]: i % 2 === 0}),
         {},
     );
 
     protected selectedCategory = true;
-
     protected value: string | null = null;
 }
 ```
@@ -11791,7 +11753,7 @@ export default class PageComponent extends Array {
     );
 
     protected readonly matcherVariants: ReadonlyArray&lt;TuiStringMatcher&lt;Country&gt;&gt; = [
-        TUI_STRICT_MATCHER as TuiStringMatcher&lt;Country&gt;,
+        TUI_STRICT_MATCHER,
         (item: Country, search: string) =&gt; item.id === search,
     ];
 
@@ -11983,7 +11945,6 @@ import {TuiCompass} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly compass = viewChild(TuiCompass, {read: ElementRef&lt;HTMLElement&gt;});
-
     protected degrees = 0;
 
     protected calculate(event: MouseEvent): void {
@@ -12020,9 +11981,7 @@ export default class Page {
     ];
 
     protected color = this.colorVariants[0]!;
-
     protected degrees = 90;
-
     public readonly examples = [&#039;Basic&#039;, &#039;Direction&#039;];
 }
 ```
@@ -12116,11 +12075,9 @@ import {switchMap} from &#039;rxjs&#039;;
 export default class Example implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiNotificationService);
-
     protected readonly routes = DemoRoute;
     protected readonly examples = [&#039;Basic&#039;];
     protected readonly exampleService = import(&#039;./examples/import/service.md&#039;);
-
     public readonly appearances = [&#039;primary&#039;, &#039;accent&#039;, &#039;secondary&#039;];
     public appearance = this.appearances[0]!;
     public no = &#039;No&#039;;
@@ -12279,7 +12236,6 @@ import {TuiCopy, TuiInputChip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected value = &#039;&#039;;
-
     protected multiValue = [&#039;I&#039;, &#039;love&#039;, &#039;Taiga UI&#039;];
 }
 ```
@@ -12739,7 +12695,6 @@ import {TuiDataListDropdownManager} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
-
     protected dropdownOpen = false;
     protected size: TuiSizeL | TuiSizeS = &#039;s&#039;;
 
@@ -12750,7 +12705,6 @@ export default class Example {
     ];
 
     protected readonly drinks = [&#039;Cola&#039;, &#039;Tea&#039;, &#039;Coffee&#039;, &#039;Slurm&#039;];
-
     protected open = false;
 
     protected selectOption(item: string): void {
@@ -12814,11 +12768,8 @@ export default class Example {
     protected second = true;
     protected open = false;
     protected label = false;
-
     protected value = [];
-
     protected readonly burgers = [&#039;Hamburger&#039;, &#039;Cheeseburger&#039;];
-
     protected readonly drinks = [&#039;Cola&#039;, &#039;Tea&#039;, &#039;Coffee&#039;, &#039;Slurm&#039;];
 }
 ```
@@ -12890,7 +12841,6 @@ const EXPENSES = {
 })
 export default class Example {
     protected value: string[] = [];
-
     protected readonly items = [INCOME, EXPENSES];
 
     protected readonly valueContent: TuiStringHandler&lt;TuiContext&lt;readonly string[]&gt;&gt; = ({
@@ -13106,7 +13056,6 @@ export default class Example {
     ];
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
-
     public control = new FormControl(&#039;&#039;);
 }
 ```
@@ -13129,13 +13078,13 @@ import {delay, of} from &#039;rxjs&#039;;
 })
 export default class Page {
     private readonly items = [&#039;Foo&#039;, &#039;Bar&#039;, &#039;Baz&#039;];
+
     protected readonly items$ = inject(WA_IS_E2E)
         ? of(this.items)
         : of(this.items).pipe(delay(1e3));
 
     protected readonly emptyContentVariants = [&#039;Loading...&#039;, &#039;&#039;];
     protected emptyContent = this.emptyContentVariants[0];
-
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
     protected size = this.sizeVariants[0]!;
 
@@ -13531,7 +13480,6 @@ import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 export default class Example {
     private readonly confirm = inject(TuiConfirmService);
     private readonly dialogs = inject(TuiDialogService);
-
     protected value = &#039;&#039;;
 
     protected onModelChange(value: string): void {
@@ -13779,8 +13727,8 @@ export default class Page extends Array {
     private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
-
     protected readonly routes = DemoRoute;
+
     protected readonly examples = [
         &#039;String&#039;,
         &#039;Directive&#039;,
@@ -13804,10 +13752,8 @@ export default class Page extends Array {
     protected closable = this.options.closable;
     protected required = this.options.required;
     protected dismissible = this.options.dismissible;
-
     protected readonly appearances = [&#039;taiga&#039;, &#039;fullscreen&#039;] as const;
     protected appearance = this.options.appearance;
-
     protected readonly sizes = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;] as const;
     protected size = this.options.size;
 
@@ -14092,6 +14038,7 @@ import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Page {
     protected readonly examples = [&#039;Full&#039;, &#039;Modal&#039;];
+
     protected readonly directionVariants: readonly TuiHorizontalDirection[] = [
         &#039;start&#039;,
         &#039;end&#039;,
@@ -14419,6 +14366,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 })
 export default class Example {
     protected enabled = false;
+
     protected readonly form = new FormGroup(
         {
             answer: new FormControl(&#039;&#039;, [Validators.required, superComputerValidator]),
@@ -14555,6 +14503,7 @@ import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 export default class Example {
     protected readonly secret = viewChild&lt;PolymorpheusContent&gt;(&#039;secretError&#039;);
     protected readonly company = viewChild&lt;PolymorpheusContent&gt;(&#039;companyError&#039;);
+
     protected readonly form = new FormGroup({
         secret: new FormControl(&#039;&#039;, [
             ({value}) =&gt; (/^\d{10}$/.test(value || &#039;&#039;) ? null : {secret: this.secret}),
@@ -14765,6 +14714,7 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly data = [{name: &#039;Latte&#039;}, {name: &#039;Cappuccino&#039;}] as const;
+
     protected readonly controls = [
         new FormControl(null, [Validators.required, Validators.max(6)]),
         new FormControl(null, [Validators.required, Validators.max(5)]),
@@ -14864,6 +14814,7 @@ import {TuiError} from &#039;@taiga-ui/core&#039;;
 })
 export default class Page {
     protected readonly errorContent = viewChild&lt;TemplateRef&lt;unknown&gt;&gt;(&#039;errorContent&#039;);
+
     protected readonly examples = [
         &#039;Basic&#039;,
         &#039;DI&#039;,
@@ -15288,7 +15239,6 @@ const getIcon: Record&lt;string, string&gt; = {
 })
 export default class Example {
     protected items = [&#039;Calendar&#039;, &#039;Favorite&#039;, &#039;Messages&#039;, &#039;FAQ&#039;, &#039;Settings&#039;];
-
     protected form = new FormGroup({filters: new FormControl&lt;string[]&gt;([])});
 
     protected getItemIcon(title: string): string {
@@ -15457,13 +15407,9 @@ export default class Page {
     ];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
-
     protected items = this.itemsVariants[0]!;
-
     protected control = new FormControl(this.initialItems);
-
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
-
     protected size = this.sizeVariants[2]!;
 }
 ```
@@ -16076,6 +16022,7 @@ export default class Example {
     protected floating = true;
     protected secondAction = false;
     protected readonly routes = DemoRoute;
+
     protected readonly examples = [
         &#039;Basic&#039;,
         &#039;Sheet&#039;,
@@ -16524,7 +16471,6 @@ import {TuiCardLarge, TuiForm, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     protected readonly index = signal(0);
-
     protected segmentedIndex = 0;
 
     protected readonly form = new FormGroup({
@@ -16685,6 +16631,7 @@ import {
 })
 export default class Example {
     protected readonly items = [&#039;Option 1&#039;, &#039;Option 2&#039;, &#039;Option 3&#039;];
+
     protected readonly form = new FormGroup({
         value: new FormControl(&#039;&#039;, Validators.required),
         multi: new FormControl&lt;string[]&gt;([], Validators.required),
@@ -16846,9 +16793,7 @@ export default class Page {
     ];
 
     protected orientation = this.orientationVariants[0]!;
-
     protected readonly sizeVariants: readonly TuiSizeL[] = [&#039;m&#039;, &#039;l&#039;];
-
     protected size = this.sizeVariants[1]!;
     protected readonly routes = DemoRoute;
 }
@@ -17654,7 +17599,6 @@ import {TuiChevron, TuiDataListWrapper, TuiTooltip} from &#039;@taiga-ui/kit&#03
 })
 export default class Example {
     protected value = &#039;&#039;;
-
     protected readonly items = inject&lt;readonly string[]&gt;(&#039;Pythons&#039; as any);
 }
 ```
@@ -17769,6 +17713,7 @@ const numberOptions = maskitoNumberOptionsGenerator({
 })
 export default class Example {
     protected value = Math.PI.toFixed(8);
+
     protected readonly options: MaskitoOptions = {
         ...numberOptions,
         plugins: [
@@ -17871,6 +17816,7 @@ import {TuiTooltip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Page {
     protected routes = DemoRoute;
+
     protected readonly examples = [
         &#039;Basic&#039;,
         &#039;States&#039;,
@@ -18047,7 +17993,6 @@ import {TuiInputCard} from &#039;@taiga-ui/addon-commerce&#039;;
 })
 export default class Page {
     protected card = &#039;&#039;;
-
     protected readonly examples = [&#039;Form&#039;, &#039;Card&#039;];
 }
 ```
@@ -18385,10 +18330,8 @@ export default class PageComponent {
 
     protected iconVariants: readonly string[] = Object.keys(this.cards);
     protected iconSelected: PolymorpheusContent = null;
-
     protected id = &#039;&#039;;
     protected placeholder = this.options.placeholder;
-
     protected readonly codeLengthVariants = [3, 4] as const;
     protected codeLength: 3 | 4 = this.codeLengthVariants[0];
 
@@ -18401,7 +18344,6 @@ export default class PageComponent {
 
     protected inputs = this.options.inputs;
     protected compact = false;
-
     protected formControl = new FormControl&lt;TuiCard | null&gt;(null);
 
     protected get icon(): PolymorpheusContent {
@@ -18739,6 +18681,7 @@ import {TuiInputChip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly required = [&#039;Required&#039;, &#039;Obligatory&#039;];
+
     protected readonly control = new FormControl(this.required.concat(&#039;Removable&#039;), {
         nonNullable: true,
     });
@@ -18838,11 +18781,10 @@ export default class Example {
     protected multi: string[] = [];
     protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
-
     protected filter = false;
-
     protected readonly items: string[] = inject(&#039;Pythons&#039; as any);
     protected readonly users = this.items.map((name, index) =&gt; ({name, index}));
+
     protected readonly more = [
         {name: &#039;Carol Cleveland&#039;, index: -1},
         {name: &#039;Neil Innes&#039;, index: -2},
@@ -19040,11 +18982,9 @@ interface User {
 export default class Example {
     protected readonly items: string[] = inject(&#039;Pythons&#039; as any);
     protected readonly users = this.items.map((name, index) =&gt; ({name, index}));
-
     protected writable: string[] = [];
     protected sheet: string[] = [];
     protected native: User[] = [{name: this.items[0] || &#039;&#039;, index: 0}];
-
     protected readonly disabled = (item: string): boolean =&gt; !this.items.includes(item);
     protected readonly identity: TuiIdentityMatcher&lt;User&gt; = (a, b) =&gt; a.index === b.index;
     protected readonly stringify = ({name}: User): string =&gt; name;
@@ -19331,10 +19271,8 @@ export default class PageComponent {
     protected readonly control = new FormControl();
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly examples = [&#039;Basic&#039;, &#039;Opacity&#039;];
-
     protected readonly aligns = [&#039;start&#039;, &#039;end&#039;] as const;
     protected align = this.options.align;
-
     protected readonly formats = [&#039;hex&#039;, &#039;hexa&#039;] as const;
     protected format = this.options.format;
 }
@@ -19425,7 +19363,6 @@ const CHEAPEST_TICKET: [string] = [&#039;var(--tui-status-positive)&#039;];
 })
 export default class Example {
     protected value: TuiDay | null = null;
-
     protected readonly defaultActiveMonth = signal(new TuiMonth(2000, 0));
 
     protected readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =&gt;
@@ -19692,11 +19629,9 @@ import {TuiInputDate} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected value: TuiDay | null = null;
-
     protected readonly today = TuiDay.currentLocal();
     protected readonly min = new TuiDay(this.today.year, this.today.month, 1);
     protected readonly max = this.min.append({month: 1, day: -1});
-
     protected readonly handler = (day: TuiDay): boolean =&gt; day.daySame(this.today);
 }
 ```
@@ -19736,6 +19671,7 @@ import {TuiInputDate} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     protected readonly today = TuiDay.currentLocal();
     protected value: TuiDay | null = this.today;
+
     protected dates = {
         Today: this.today,
         Tomorrow: this.today.append({day: 1}),
@@ -19825,7 +19761,6 @@ export default class Example {
 
     protected min = this.dates[0];
     protected max = this.dates[4];
-
     protected readonly handler = (item: TuiDay): boolean =&gt; item.dayOfWeek() &gt; 4;
 }
 ```
@@ -19953,7 +19888,6 @@ import {TuiInputDateMulti} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected value = [new TuiDay(2025, 6, 6)];
-
     protected readonly handler = (item: TuiDay): boolean =&gt; item.dayOfWeek() &gt; 4;
 }
 ```
@@ -20114,7 +20048,6 @@ export default class Example {
 
     protected min = this.dates[0];
     protected max = this.dates[4];
-
     protected readonly handler = (item: TuiDay): boolean =&gt; item.dayOfWeek() &gt; 4;
 }
 ```
@@ -20422,11 +20355,9 @@ import {TuiInputDateRange} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected value: TuiDay | null = null;
-
     protected readonly today = TuiDay.currentLocal();
     protected readonly min = new TuiDay(this.today.year, this.today.month, 1);
     protected readonly max = this.min.append({month: 2, day: -1});
-
     protected readonly handler = (day: TuiDay): boolean =&gt; day.dayOfWeek() &gt; 4;
 }
 ```
@@ -20493,20 +20424,14 @@ export default class Example {
 
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
     protected listSize = this.sizeVariants[2]!;
-
     protected readonly items = tuiCreateDefaultDayRangePeriods();
-
     protected min = this.dates[0];
     protected max = this.dates[4];
-
     protected readonly limits = [{day: 3}, {day: 5}] as const;
-
     protected readonly periodListItems = [null, this.items];
     protected selectedPeriodList: readonly TuiDayRangePeriod[] | null = null;
-
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
-
     protected readonly handler = (item: TuiDay): boolean =&gt; item.dayOfWeek() &gt; 4;
 }
 ```
@@ -20597,7 +20522,6 @@ const CHEAPEST_TICKET: [string] = [&#039;var(--tui-status-positive)&#039;];
 })
 export default class Example {
     protected value: [TuiDay, TuiTime] | null = null;
-
     protected readonly defaultActiveMonth = signal(new TuiMonth(2000, 0));
 
     protected readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =&gt;
@@ -20639,6 +20563,7 @@ type ControlValue = [TuiDay, TuiTime | null] | null;
 export default class Example {
     protected readonly open = signal(false);
     protected readonly control = new FormControl&lt;ControlValue&gt;(null);
+
     protected readonly tomorrow: ControlValue = [
         TuiDay.currentLocal().append({day: 1}),
         new TuiTime(9, 0),
@@ -21127,6 +21052,7 @@ export default class Example {
 
     protected readonly failedFiles$ = new Subject&lt;TuiFileLike | null&gt;();
     protected readonly loadingFiles$ = new Subject&lt;TuiFileLike | null&gt;();
+
     protected readonly loadedFiles$ = this.control.valueChanges.pipe(
         switchMap((file) =&gt; this.processFile(file)),
     );
@@ -21195,6 +21121,7 @@ import {map} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected readonly control = new FormControl&lt;File[]&gt;([], [maxFilesLength(5)]);
+
     protected readonly accepted$ = this.control.valueChanges.pipe(
         map(() =&gt; tuiFilesAccepted(this.control)),
     );
@@ -21261,7 +21188,6 @@ import {type TuiFileLike, TuiFiles} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly isE2E = inject(WA_IS_E2E);
-
     protected readonly control = new FormControl&lt;TuiFileLike | null&gt;(null);
 
     protected readonly files: readonly TuiFileLike[] = [
@@ -21392,7 +21318,6 @@ import {TuiAvatar, type TuiFileLike, TuiFiles} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly control = new FormControl&lt;TuiFileLike | null&gt;(null);
-
     protected readonly file: TuiFileLike = {name: &#039;custom.txt&#039;};
 }
 ```
@@ -21578,7 +21503,6 @@ export default class PageComponent {
     protected maxFilesCount = 3;
     protected accept = &#039;&#039;;
     protected acceptVariants = [&#039;image/*&#039;, &#039;application/pdf&#039;, &#039;image/*,application/pdf&#039;];
-
     protected readonly showDeleteVariants = [true, false, &#039;always&#039;];
 
     protected readonly maxFileSizeVariants = [
@@ -21590,10 +21514,10 @@ export default class PageComponent {
 
     protected rejected: readonly File[] = [];
     protected maxFileSize = this.maxFileSizeVariants[2]!;
-
     protected readonly sizeVariants: readonly TuiSizeL[] = [&#039;m&#039;, &#039;l&#039;];
     protected size = this.sizeVariants[0]!;
     protected readonly control = new FormControl&lt;File[] | null&gt;(null);
+
     protected readonly files$ = this.control.valueChanges.pipe(
         map(() =&gt; tuiFilesAccepted(this.control)),
     );
@@ -21749,7 +21673,6 @@ import {TuiInputInline} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected heading = &#039;Page heading&#039;;
     protected editing = false;
 
@@ -21821,7 +21744,6 @@ export default class Example implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     protected readonly isE2E = inject(WA_IS_E2E);
-
     protected count = &#039;0&#039;;
 
     public ngOnInit(): void {
@@ -22158,6 +22080,7 @@ export default class Example {
     });
 
     protected value: TuiMonth | null = TuiMonth.currentLocal().append({month: -1});
+
     protected readonly stringify: TuiStringHandler&lt;TuiContext&lt;TuiMonth&gt;&gt; = ({
         $implicit,
     }) =&gt; this.formatter.format($implicit.toLocalNativeDate());
@@ -22304,6 +22227,7 @@ export default class PageComponent {
     protected min: TuiMonth | null = null;
     protected max: TuiMonth | null = null;
     protected year = this.yearVariants[0];
+
     protected disabledItemHandler: TuiBooleanHandler&lt;TuiMonth&gt; =
         this.disabledItemHandlerVariants[0];
 }
@@ -22437,6 +22361,7 @@ import {BigIntWithDecimal, type ControlValue} from &#039;./transformer&#039;;
 })
 export default class Example {
     protected readonly infinity = Infinity;
+
     protected readonly value = signal&lt;ControlValue&gt;({
         significand: 123456700042n,
         exp: -5,
@@ -22556,6 +22481,7 @@ import {TuiInputNumber, TuiTooltip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected value: number | null = 1_234_567.89;
+
     protected numberFormat: Partial&lt;TuiNumberFormatSettings&gt; = {
         decimalSeparator: &#039;,&#039;,
         thousandSeparator: &#039;.&#039;,
@@ -22767,8 +22693,8 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
-
     protected readonly control = new FormControl(null, Validators.required);
+
     protected readonly maxVariants: readonly number[] = [
         Number.MAX_SAFE_INTEGER,
         Infinity,
@@ -22850,7 +22776,6 @@ import {TuiInputPhone} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly isIos = inject(WA_IS_IOS);
-
     public value = &#039;+71234567890&#039;;
 
     protected get pattern(): string | null {
@@ -22956,6 +22881,7 @@ const DATA: readonly User[] = [
 export default class Example {
     public readonly value = signal(&#039;&#039;);
     public readonly items = DATA;
+
     public readonly user = computed(() =&gt;
         this.items.find(({phone}) =&gt; phone === this.value()),
     );
@@ -23093,9 +23019,7 @@ export default class PageComponent {
     ];
 
     protected filler = &#039;&#039;;
-
     protected phoneMask = this.phoneMasks[0]!;
-
     public control = new FormControl(&#039;&#039;, [Validators.required, Validators.minLength(12)]);
 
     public readonly examples = [
@@ -23435,6 +23359,7 @@ import metadata from &#039;libphonenumber-js/max/metadata&#039;;
 })
 export default class Example {
     protected rawValue = &#039;12125552368&#039;;
+
     protected readonly mask = maskitoPhoneOptionsGenerator({
         metadata,
         countryIsoCode: &#039;US&#039;,
@@ -23491,6 +23416,7 @@ import {getCountries} from &#039;libphonenumber-js&#039;;
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
     protected readonly countriesVariants: ReadonlyArray&lt;readonly TuiCountryIsoCode[]&gt; = [
         [&#039;RU&#039;, &#039;KZ&#039;, &#039;UA&#039;, &#039;BY&#039;],
         getCountries(),
@@ -24329,7 +24255,6 @@ import {TuiInputSlider} from &#039;@taiga-ui/kit&#039;;
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(0);
-
     protected readonly min = signal(0);
     protected readonly max = signal(100);
     protected prefix = &#039;&#039;;
@@ -24640,6 +24565,7 @@ import {tuiCreateTimePeriods, TuiInputTime, TuiTooltip} from &#039;@taiga-ui/kit
 })
 export default class Example {
     protected value: TuiTime | null = null;
+
     protected acceptableValues = [
         // Array of TuiTime from 10:00 to 18:00 every half of hour
         ...tuiCreateTimePeriods(10, 18, [0, 30]),
@@ -24698,6 +24624,7 @@ import {tuiCreateTimePeriods, TuiDataListWrapper, TuiInputTime} from &#039;@taig
 })
 export default class Example {
     protected value: TuiTime | null = null;
+
     protected items: readonly TuiTime[] = [
         new TuiTime(16, 20),
         new TuiTime(16, 45),
@@ -25041,14 +24968,12 @@ import {TuiInputYear} from &#039;@taiga-ui/kit&#039;;
 })
 export default class PageComponent {
     protected readonly examples = [&#039;Basic&#039;, &#039;Limits&#039;, &#039;Transformer&#039;];
-
     protected readonly value = new FormControl&lt;number | null&gt;(null);
     protected readonly minVariants = [TUI_FIRST_DAY.year, 2019, 2007];
     protected readonly maxVariants = [TUI_LAST_DAY.year, 2020, 2023];
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
     protected readonly routes = DemoRoute;
-
     public control = new FormControl&lt;number | null&gt;(null, Validators.required);
     protected readonly handler = (year: number): boolean =&gt; year % 3 === 0;
 }
@@ -25434,7 +25359,6 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Page {
     protected readonly items = inject&lt;readonly string[]&gt;(&#039;Pythons&#039; as any);
-
     protected value = this.items.map(TUI_FALSE_HANDLER) as boolean[];
 }
 ```
@@ -25951,7 +25875,6 @@ import {TuiHovered, tuiSum} from &#039;@taiga-ui/cdk&#039;;
 })
 export default class Example {
     protected activeItemIndex = Number.NaN;
-
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.value);
     protected readonly labels = [&#039;Food&#039;, &#039;Cafe&#039;, &#039;OSS&#039;, &#039;Taxi&#039;, &#039;Other&#039;];
@@ -26046,7 +25969,6 @@ import {
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
     private enabled = Array.from&lt;unknown, boolean&gt;({length: 5}, () =&gt; true);
-
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
     protected readonly labels = [&#039;Axes&#039;, &#039;Faxes&#039;, &#039;Taxes&#039;, &#039;Saxes&#039;, &#039;Other&#039;];
@@ -26161,6 +26083,7 @@ export default class Page {
     protected size = this.sizeVariants[0]!;
     protected disabled = false;
     protected color = &#039;&#039;;
+
     protected readonly colorVariants: readonly string[] = [
         &#039;var(--tui-chart-categorical-04)&#039;,
         &#039;var(--tui-background-accent-1)&#039;,
@@ -26322,7 +26245,6 @@ import {TuiLike} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected liked = false;
-
     protected likeForm = new FormGroup({liked: new FormControl(false)});
 
     protected changeValue(): void {
@@ -26731,21 +26653,13 @@ export default class Page {
     ];
 
     protected yStringify: TuiStringHandler&lt;number&gt; | null = null;
-
     protected xStringify: TuiStringHandler&lt;number&gt; | null = null;
-
     protected x = 0;
-
     protected y = 0;
-
     protected width = 400;
-
     protected height = 200;
-
     protected smoothingFactor = 0;
-
     protected filled = false;
-
     protected dots = false;
 }
 ```
@@ -26844,7 +26758,6 @@ import {map, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
-
     protected readonly value = signal(&#039;&#039;);
 
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
@@ -27062,6 +26975,7 @@ function randomString(len: number): string {
 })
 export default class Example {
     protected open = false;
+
     protected texts = [
         randomString(100),
         &quot;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&quot;,
@@ -27549,8 +27463,8 @@ import {TuiInputDateRange} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
     private readonly months = inject(TUI_MONTHS);
-
     protected readonly maxLength: TuiDayLike = {month: 12};
+
     protected readonly range = signal(
         new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({year: 1})),
     );
@@ -27687,6 +27601,7 @@ export default class Example {
     protected readonly show = signal(this.data());
     protected readonly days = computed(() =&gt; this.random(this.data()));
     protected readonly maxLength: TuiDayLike = {month: 6};
+
     protected readonly range = computed(() =&gt; {
         const range = this.show();
         const {from, to} = range;
@@ -27894,6 +27809,7 @@ import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 export default class Page {
     protected readonly months = inject(TUI_MONTHS);
     protected readonly examples = [&#039;Basic&#039;, &#039;Complex&#039;];
+
     protected readonly valueVariants: ReadonlyArray&lt;ReadonlyArray&lt;[TuiDay, number]&gt;&gt; = [
         Array.from({length: 91}).reduce&lt;ReadonlyArray&lt;[TuiDay, number]&gt;&gt;(
             (array, _, i) =&gt; [
@@ -27938,17 +27854,11 @@ export default class Page {
     ]);
 
     protected yStringify: TuiStringHandler&lt;number&gt; | null = null;
-
     protected xStringify: TuiStringHandler&lt;TuiDay&gt; | null = null;
-
     protected hintContent: PolymorpheusContent&lt;TuiContext&lt;[TuiDay, number]&gt;&gt; = &#039;&#039;;
-
     protected dots = false;
-
     protected smoothingFactor = 0;
-
     protected y = 0;
-
     protected height = 200;
 }
 ```
@@ -28577,7 +28487,6 @@ import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 })
 export default class Page {
     protected readonly textTemplate = viewChild&lt;PolymorpheusContent&gt;(&#039;textTemplate&#039;);
-
     protected readonly routes = DemoRoute;
 
     protected readonly examples = [
@@ -28588,9 +28497,7 @@ export default class Page {
     ];
 
     protected loading = true;
-
     protected inheritColor = false;
-
     protected overlay = false;
 
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeXS | TuiSizeXXL&gt; = [
@@ -28603,9 +28510,7 @@ export default class Page {
     ];
 
     protected size = this.sizeVariants[2]!;
-
     protected selectedTemplate = &#039;&#039;;
-
     protected readonly textVariants = [&#039;&#039;, &#039;template&#039;, &#039;string&#039;];
 
     protected get template(): PolymorpheusContent {
@@ -29424,7 +29329,6 @@ export default class Page {
     ];
 
     protected max = this.maxVariants[0]!;
-
     protected single = true;
     protected multi = false;
 
@@ -29433,9 +29337,7 @@ export default class Page {
     &gt; = [TUI_FALSE_HANDLER, ({day}) =&gt; day % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
-
     protected control = new FormControl&lt;TuiDay | TuiDayRange | null&gt;(null);
-
     protected stream = tuiControlValue&lt;TuiDay&gt;(this.control);
     protected readonly routes = DemoRoute;
 
@@ -29781,7 +29683,6 @@ import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from &#039;@taiga-ui/la
 })
 export default class Example {
     private readonly theme = inject(TuiThemeColorService);
-
     protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
 
@@ -30122,7 +30023,6 @@ const DATA: Record&lt;string, readonly Result[]&gt; = {
 })
 export default class ExampleComponent {
     protected readonly popular = [&#039;Taiga UI&#039;, &#039;Maskito&#039;, &#039;Web APIs for Angular&#039;];
-
     protected readonly control = new FormControl(&#039;&#039;);
 
     protected readonly results$ = this.control.valueChanges.pipe(
@@ -30170,6 +30070,7 @@ import {TuiThemeColorService} from &#039;@taiga-ui/addon-mobile&#039;;
 })
 export default class Page implements OnDestroy {
     protected readonly theme = inject(TuiThemeColorService);
+
     protected readonly examples = [
         &#039;Full&#039;,
         &#039;Subheader compact&#039;,
@@ -30463,6 +30364,7 @@ class Alert {
 })
 export default class Example {
     protected readonly notifications = inject(TuiNotificationService);
+
     protected readonly notification = this.notifications
         .open&lt;number&gt;(new PolymorpheusComponent(Alert), {
             label: &#039;Heading is so long that it should be shown in two lines of text&#039;,
@@ -30511,6 +30413,7 @@ export default class Page {
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
     protected readonly inlineVariants = [&#039;start&#039;, &#039;center&#039;, &#039;end&#039;] as const;
     protected readonly blockVariants = [&#039;start&#039;, &#039;end&#039;] as const;
+
     protected readonly examples = [
         &#039;Basic&#039;,
         &#039;Options&#039;,
@@ -30635,6 +30538,7 @@ import {filter, map, startWith, switchMap, take, tap, timer} from &#039;rxjs&#03
 })
 export default class Example {
     protected readonly open = signal(false);
+
     protected readonly loading = toSignal(
         toObservable(this.open).pipe(
             filter(Boolean),
@@ -30717,7 +30621,6 @@ export default class Page {
     protected routes = DemoRoute;
     protected readonly examples = [&#039;Default&#039;, &#039;Content&#039;, &#039;Transition&#039;, &#039;Service&#039;];
     protected readonly open = signal(false);
-
     protected closable = false;
 }
 ```
@@ -30913,21 +30816,13 @@ import {TuiPager} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Page {
     protected readonly templateRef = viewChild&lt;TemplateRef&lt;unknown&gt;&gt;(&#039;templateRef&#039;);
-
     protected readonly examples = [&#039;Basic&#039;, &#039;Icons&#039;, &#039;Dynamic width&#039;];
-
     protected index = 0;
-
     protected max = 6;
-
     protected sizes: TuiSizeS[] = [&#039;m&#039;, &#039;s&#039;];
-
     protected size = this.sizes[0]!;
-
     protected countVariants = [10, 15, 1, 2, 3, 4, 5, 6, 8, 100];
-
     protected count = this.countVariants[0]!;
-
     protected templateVariants = [&#039;&#039;, &#039;Template&#039;];
     protected selectedTemplate = this.templateVariants[0]!;
 
@@ -30993,7 +30888,6 @@ import {TuiInputSlider, TuiPagination} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Page {
     protected length = 64;
-
     protected index = 10;
 
     protected goToPage(index: number): void {
@@ -31319,7 +31213,6 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
 })
 export default class Page {
     protected readonly routes = DemoRoute;
-
     protected examples = [&#039;Basic&#039;, &#039;With responsive dialog&#039;, &#039;Loading and error states&#039;];
 }
 ```
@@ -31449,6 +31342,7 @@ import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 export default class Page {
     protected readonly examples = [&#039;Sizes&#039;, &#039;With labels&#039;];
     protected readonly routes = DemoRoute;
+
     protected readonly valueVariants = [
         [0, 30, 20, 10],
         [40, 30, 20, 10],
@@ -31456,9 +31350,7 @@ export default class Page {
     ];
 
     protected value = this.valueVariants[0]!;
-
     protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
-
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeXL | TuiSizeXS&gt; = [
@@ -31744,7 +31636,6 @@ import {type Subscription} from &#039;rxjs&#039;;
 export default class Example {
     private readonly popout = inject(TuiPopoutService);
     private sub: Subscription | null = null;
-
     protected readonly value = signal(&#039;Value&#039;);
 
     protected toggle(content: TemplateRef&lt;any&gt;): void {
@@ -31892,6 +31783,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
 })
 export default class Page extends Array {
     protected readonly examples = [&#039;Popout window&#039;, &#039;Picture in Picture&#039;, &#039;Directive&#039;];
+
     protected readonly [1] = {
         &#039;popout.ts&#039;: import(&#039;./examples/2/popout.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
     };
@@ -31951,7 +31843,6 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from &#039;@taiga-ui/polym
 export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
     private readonly alerts = inject(TuiNotificationService);
-
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected readonly contentSample =
@@ -32047,6 +31938,7 @@ export default class Example {
     protected index = 0;
     protected length = 2;
     protected titles = [&#039;pic_1.jpg&#039;, &#039;pic_2.jpg&#039;];
+
     protected content = [
         &#039;https://picsum.photos/600/500&#039;,
         &#039;https://picsum.photos/500/600&#039;,
@@ -32083,7 +31975,6 @@ import {TuiPreview, TuiPreviewDialogService} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
-
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected show(): void {
@@ -32144,7 +32035,6 @@ import {
 })
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
-
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected readonly items = [
@@ -32340,6 +32230,7 @@ export default class Example {
 
     protected readonly fastValue$ = this.animationDisabled ? of(80) : timer(500, 100);
     protected readonly slowValue$ = this.animationDisabled ? of(4) : timer(500, 2000);
+
     protected readonly colors = [
         &#039;var(--tui-chart-categorical-01)&#039;,
         &#039;var(--tui-chart-categorical-21)&#039;,
@@ -32428,6 +32319,7 @@ import {map, of, startWith, takeWhile, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected readonly max = 100;
+
     protected readonly value$ =
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
@@ -32662,6 +32554,7 @@ import {map, of, startWith, takeWhile, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected readonly max = 100;
+
     protected readonly value$ =
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
@@ -32741,6 +32634,7 @@ import {map, of, startWith, takeWhile, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected readonly max = 100;
+
     protected readonly value$ =
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
@@ -32902,6 +32796,7 @@ import {of, repeat, takeWhile, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected readonly max = 100;
+
     protected readonly value$ =
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
@@ -33283,7 +33178,6 @@ import {Subject} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected items = Array.from({length: 10000}).map((_, i) =&gt; `Item #${i}`);
 
     protected onPull(): void {
@@ -33670,7 +33564,6 @@ export default class Page {
     protected heading = &#039;&#039;;
     protected type = &#039;&#039;;
     protected lines = 2;
-
     protected readonly timestampVars = [&#039;&#039;, &#039;A moment ago&#039;, 123456789];
     protected timestamp = this.timestampVars[0]!;
     protected readonly routes = DemoRoute;
@@ -33801,6 +33694,7 @@ interface TestValue {
 })
 export default class Example {
     protected value: TestValue | null = null;
+
     protected identityMatcher = (a: TestValue, b: TestValue): boolean =&gt;
         a?.test === b?.test;
 }
@@ -33874,7 +33768,6 @@ export default class Example {
     ];
 
     protected readonly strings = [&#039;King Arthur&#039;, &quot;It&#039;s Man&quot;, &#039;Silly Walks&#039;];
-
     protected horizontal = this.strings[0]!;
 
     protected readonly handler: TuiBooleanHandler&lt;string&gt; = (item) =&gt;
@@ -33992,6 +33885,7 @@ export default class Example {
     protected readonly max = 100;
     protected readonly step = 25;
     protected readonly segments = 4;
+
     protected readonly labels = Array.from(
         {length: this.segments + 1},
         (_, i) =&gt; this.min + this.step * i,
@@ -34060,7 +33954,6 @@ export default class Example {
 
     // 12.5% (of total distance) per step
     protected readonly stepPercentage = 100 / (2 * this.segments);
-
     protected value = [0, 100_000];
 
     protected readonly keySteps: TuiKeySteps = [
@@ -34116,21 +34009,13 @@ import {TuiRange} from &#039;@taiga-ui/kit&#039;;
 export default class Page {
     protected readonly examples = [&#039;Size&#039;, &#039;Segments&#039;, &#039;KeySteps&#039;];
     protected readonly control = new FormControl([0, 0]);
-
     protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
-
     protected min = 0;
-
     protected max = 100;
-
     protected margin = 0;
-
     protected limit = Infinity;
-
     protected step = 1;
-
     protected segments = 1;
-
     protected thumbSize = 12;
 
     protected readonly keyStepsVariants: readonly TuiKeySteps[] = [
@@ -34464,7 +34349,6 @@ export default class Example {
     private readonly labels = [&#039;Food&#039;, &#039;Cafe&#039;, &#039;Open Source&#039;, &#039;Taxi&#039;, &#039;other&#039;];
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
-
     protected index = Number.NaN;
 
     protected get sum(): number {
@@ -34505,15 +34389,14 @@ import {type TuiSizeXL, type TuiSizeXS} from &#039;@taiga-ui/core&#039;;
 })
 export default class Page {
     protected readonly examples = [&#039;Sizes&#039;, &#039;With labels&#039;];
+
     protected readonly valueVariants = [
         [40, 30, 20, 10],
         [13769, 10172, 3018, 2592],
     ];
 
     protected value = this.valueVariants[0]!;
-
     protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
-
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeXL | TuiSizeXS&gt; = [
@@ -34685,7 +34568,6 @@ const SOME_OFFSET_CONST = 20;
 })
 export default class Example {
     private readonly scrollBar = viewChild(TuiScrollbar, {read: ElementRef&lt;HTMLElement&gt;});
-
     protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
@@ -35941,7 +35823,6 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
-
     protected value = null;
 }
 ```
@@ -35992,6 +35873,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from &#039;@taiga-ui/kit&#039
 export default class Example {
     protected readonly platforms = [&#039;web&#039;, &#039;ios&#039;, &#039;android&#039;] as const;
     protected value: &#039;android&#039; | &#039;ios&#039; | &#039;web&#039; | null = &#039;ios&#039;;
+
     protected readonly disabledItemHandler: TuiBooleanHandler&lt;string&gt; = (x) =&gt;
         x === &#039;web&#039;;
 }
@@ -36027,6 +35909,7 @@ interface Character {
 export default class Example {
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly control = new FormControl(null, Validators.required);
+
     protected items: readonly Character[] = [
         {name: &#039;Luke Skywalker&#039;, id: 1},
         {name: &#039;Leia Organa Solo&#039;, id: 2},
@@ -36037,6 +35920,7 @@ export default class Example {
     ];
 
     protected stringify: TuiStringHandler&lt;Character&gt; = (item) =&gt; item.name;
+
     protected readonly disabledItemHandler: TuiBooleanHandler&lt;Character&gt; = (item) =&gt;
         item.name === &#039;Darth Vader&#039;;
 }
@@ -36120,10 +36004,9 @@ interface Country {
 })
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
-
     protected readonly routes = DemoRoute;
-
     protected readonly isMobile = inject(WA_IS_MOBILE);
+
     protected readonly control = new FormControl&lt;Country | null&gt;({
         id: &#039;US&#039;,
         name: &#039;USA&#039;,
@@ -36509,9 +36392,7 @@ const USERS = [
 })
 export default class Example {
     protected open = false;
-
     protected readonly offset = 16;
-
     protected readonly search = new FormControl(&#039;&#039;);
 
     protected readonly users$ = tuiControlValue&lt;string&gt;(this.search).pipe(
@@ -36822,8 +36703,8 @@ export default class Page {
     private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiNotificationService);
-
     protected readonly exampleComponent = import(&#039;./examples/import/component.md&#039;);
+
     protected readonly examples = [
         &#039;String&#039;,
         &#039;Basic&#039;,
@@ -36842,9 +36723,7 @@ export default class Page {
     protected label = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.label;
     protected offset = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.offset;
     protected required = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.required;
-
     protected open = false;
-
     protected readonly stopsVariants = [this.stops, [&#039;100px&#039;], [&#039;10rem&#039;, &#039;20rem&#039;]];
     protected readonly appearanceVariants = [this.appearance, &#039;fullscreen&#039;];
 
@@ -37303,16 +37182,16 @@ import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from &
     encapsulation,
     changeDetection,
     host: {
-        &#039;(pointerdown)&#039;: &#039;onKeydown(true)&#039;,
         &#039;(document:pointerup)&#039;: &#039;onKeydown(false)&#039;,
+        &#039;(pointerdown)&#039;: &#039;onKeydown(true)&#039;,
     },
 })
 export default class Example {
     protected min = 0.5;
     protected max = 2;
     protected value = 1;
-
     protected readonly active$ = new BehaviorSubject(false);
+
     protected readonly showHint$ = this.active$.pipe(
         distinctUntilChanged(),
         switchMap((active) =&gt;
@@ -37443,9 +37322,7 @@ export default class Page {
     ];
 
     protected readonly segmentsVariants = [1, 5, 3, [0.2, 0.5], [0.1, 0.3]];
-
     protected readonly control = new FormControl(1);
-
     protected max = 5;
     protected min = 0;
     protected step = 1;
@@ -37522,7 +37399,6 @@ import {TuiElasticContainer, TuiSlides} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     protected readonly items = [&#039;First slide &#039;, &#039;Second slide &#039;, &#039;Third slide &#039;];
-
     protected index = 0;
 }
 ```
@@ -37842,7 +37718,6 @@ export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly examples = [&#039;Crossfade&#039;, &#039;Stepper&#039;, &#039;Routing&#039;, &#039;Dialog&#039;];
     protected readonly directions = [-1, 0, 1];
-
     protected direction = 0;
     protected current = 0;
 
@@ -38112,13 +37987,9 @@ export default class Page {
     ];
 
     protected orientation = this.orientationVariants[0]!;
-
     protected readonly iconVariants = [&#039;&#039;, &#039;@tui.clock&#039;, &#039;@tui.heart&#039;];
-
     protected icon = this.iconVariants[0]!;
-
     protected readonly stateVariants = [&#039;normal&#039;, &#039;pass&#039;, &#039;error&#039;] as const;
-
     protected state: &#039;error&#039; | &#039;normal&#039; | &#039;pass&#039; = this.stateVariants[0];
 }
 ```
@@ -39467,7 +39338,6 @@ interface Item {
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected activeItemIndex = 1;
 
     protected readonly items = [
@@ -39892,9 +39762,7 @@ export default class Example {
     ];
 
     protected readonly customContentData = [...this.basicData, ...this.manualOpenData];
-
     protected readonly columns = [&#039;action&#039;, &#039;firstName&#039;, &#039;lastName&#039;, &#039;role&#039;, &#039;balance&#039;];
-
     protected manualOpen = false;
     protected customOpen = false;
 
@@ -40081,7 +39949,6 @@ export default class Example {
     protected slider = null;
     protected range = null;
     protected card = null;
-
     protected readonly items = [&#039;One&#039;, &#039;Two&#039;, &#039;Three&#039;, &#039;Four&#039;, &#039;Five&#039;];
     protected readonly isMobile = inject(WA_IS_MOBILE);
 }
@@ -40218,7 +40085,6 @@ import {TuiItemGroup} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     protected readonly sizes = [&#039;l&#039;, &#039;m&#039;, &#039;s&#039;] as const;
-
     protected size = this.sizes[0];
     protected selected = [];
 
@@ -40444,7 +40310,6 @@ interface Item {
 })
 export default class Example {
     protected readonly options = {updateOn: &#039;blur&#039;} as const;
-
     protected readonly units = [&#039;items&#039;, &#039;kg&#039;, &#039;m&#039;];
 
     protected pythons: readonly Item[] = [
@@ -40764,8 +40629,8 @@ export default class Example {
     );
 
     protected readonly sortKey$ = new BehaviorSubject&lt;keyof User&gt;(&#039;name&#039;);
-
     protected readonly minAge = new FormControl(21);
+
     protected readonly minAge$ = tuiControlValue&lt;number&gt;(this.minAge).pipe(
         debounceTime(1000),
         tap(() =&gt; this.page$.next(0)),
@@ -40785,15 +40650,10 @@ export default class Example {
     );
 
     protected initial: readonly string[] = [&#039;Name&#039;, &#039;Date of Birth&#039;, &#039;Age&#039;];
-
     protected enabled = this.initial;
-
     protected columns = [&#039;name&#039;, &#039;dob&#039;, &#039;age&#039;];
-
     protected dob = false;
-
     protected search = &#039;&#039;;
-
     protected readonly loading$ = this.request$.pipe(map((v) =&gt; !v));
 
     protected readonly total$ = this.request$.pipe(
@@ -40980,6 +40840,7 @@ function getAge({dob}: User): number {
 export default class Example {
     protected readonly data = DATA;
     protected readonly getAge = getAge;
+
     protected readonly ageSorter: TuiComparator&lt;User&gt; = (a: User, b: User) =&gt;
         getAge(a) - getAge(b);
 }
@@ -41134,6 +40995,7 @@ export default class Example {
     protected length = 10;
     protected size = 10;
     protected readonly items = [10, 50, 100];
+
     protected readonly content: TuiStringHandler&lt;TuiContext&lt;number&gt;&gt; = ({$implicit}) =&gt;
         `${$implicit} items per page`;
 }
@@ -41252,6 +41114,7 @@ import {TuiChevron} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly state: Record&lt;number, boolean&gt; = {};
+
     protected readonly data = [
         {
             dob: new TuiDay(1947, 6, 30),
@@ -41423,7 +41286,6 @@ export default class Example {
     ] as const;
 
     protected readonly columns = Object.keys(this.data[0]);
-
     protected readonly filter = (item: number, value: number): boolean =&gt; item &gt;= value;
 
     protected onToggle(enabled: boolean): void {
@@ -41533,7 +41395,6 @@ export default class Example {
     ] as const;
 
     protected readonly filterForm = new FormGroup({balance: new FormControl(0)});
-
     protected readonly array = new FormArray&lt;FormGroup&gt;([]);
 
     protected readonly items = toSignal(
@@ -41542,7 +41403,6 @@ export default class Example {
     );
 
     protected testIndex = 0;
-
     protected readonly columns = [&#039;name&#039;, &#039;balance&#039;];
 
     public addRow(): void {
@@ -41838,7 +41698,6 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected activeItemIndex = 0;
 
     protected onClick(item: string): void {
@@ -41880,7 +41739,6 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected activeItemIndex = 0;
 
     protected onClick(item: string): void {
@@ -42048,9 +41906,7 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected activeItemIndex = 0;
-
     protected readonly steps = [&#039;Sales&#039;, &#039;Settings&#039;, &#039;News&#039;];
 
     protected onClick(item: string): void {
@@ -42120,7 +41976,6 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     protected open = false;
     protected activeItemIndex = 0;
-
     protected items = Array.from({length: 5}, (_, i) =&gt; `Item #${i}`);
 
     protected add(): void {
@@ -42361,19 +42216,12 @@ export default class Page {
     ];
 
     protected buttons = [&#039;Button 1&#039;, &#039;Button 2&#039;, &#039;Button 3&#039;, &#039;Button 4&#039;];
-
     protected readonly moreContentVariants = [&#039;&#039;, &#039;And more&#039;];
-
     protected moreContent = this.moreContentVariants[0]!;
-
     protected underline = true;
-
     protected activeItemIndex = 0;
-
     protected itemsLimit = 999;
-
     protected sizes: readonly TuiSizeL[] = [&#039;m&#039;, &#039;l&#039;];
-
     protected size = this.sizes[1]!;
 }
 ```
@@ -42601,7 +42449,6 @@ export default class PageComponent {
     protected readonly options = inject(TUI_TEXTAREA_OPTIONS);
     protected readonly examples = [&#039;Basic&#039;, &#039;Limit&#039;, &#039;Custom highlight&#039;, &#039;Icons&#039;];
     protected readonly control = new FormControl(null);
-
     protected min = this.options.min;
     protected max = this.options.max;
 }
@@ -42862,6 +42709,7 @@ export default class Example {
     protected statuses = [&#039;normal&#039;, &#039;disabled&#039;, &#039;readOnly&#039;, &#039;invalid&#039;] as const;
     protected status: string = this.statuses[0];
     protected card = &#039;1234123412341234&#039;;
+
     protected background =
         &#039;#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)&#039;;
 }
@@ -42918,6 +42766,7 @@ export default class Example {
     protected size = this.sizeVariants[0]!;
     protected paymentSystem = this.paymentSystemVariants[0]!;
     protected contentProjection = &#039;1234&#039;;
+
     protected background =
         &#039;#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)&#039;;
 }
@@ -43230,7 +43079,6 @@ import {TuiTiles} from &#039;@taiga-ui/kit&#039;;
 export default class Page {
     protected debounce = 0;
     protected order = new Map&lt;number, number&gt;();
-
     protected width = 1;
     protected height = 1;
 
@@ -43380,6 +43228,7 @@ import {TuiForm} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     protected readonly max = 50;
+
     protected readonly items = signal&lt;ReadonlyArray&lt;WritableSignal&lt;[number, number]&gt;&gt;&gt;([
         signal([0, 12]),
         signal([24, 40]),
@@ -43772,6 +43621,7 @@ import {BehaviorSubject, of, switchMap, take, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected readonly trigger$ = new BehaviorSubject(0);
+
     protected readonly value = toSignal(
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
@@ -43884,7 +43734,6 @@ import {TUI_TOAST_OPTIONS, TuiToast} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly options = inject(TUI_TOAST_OPTIONS);
-
     protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;, &#039;Service&#039;];
     protected readonly toast = signal(false);
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
@@ -44583,7 +44432,6 @@ class TreeLoader implements TuiTreeLoader&lt;Item&gt; {
 export default class Example {
     protected readonly loading = inject(TUI_TREE_LOADING);
     protected readonly service = inject(TuiTreeService&lt;Item&gt;);
-
     protected map = new Map&lt;Item, boolean&gt;();
 
     protected childrenHandler: TuiHandler&lt;Item, readonly Item[]&gt; = (item) =&gt;
@@ -44640,7 +44488,6 @@ interface TreeNode {
 })
 export default class Example {
     protected readonly drag = signal&lt;TreeNode | null&gt;(null);
-
     protected readonly cd = inject(ChangeDetectorRef);
 
     protected readonly data: TreeNode = {
@@ -46010,11 +45857,8 @@ import {TuiButton, TuiInput} from &#039;@taiga-ui/core&#039;;
 })
 export default class Example {
     protected readonly control = new FormControl(&#039;&#039;);
-
     protected childActive = false;
-
     protected parentActive = false;
-
     protected items = [1, 2, 3];
 
     protected onParentActiveZone(active: boolean): void {
@@ -46078,7 +45922,6 @@ import {TuiButton, TuiDialogService, TuiInput} from &#039;@taiga-ui/core&#039;;
 })
 export default class Example {
     private readonly dialog = inject(TuiDialogService);
-
     protected active = false;
 
     protected onZone(active: boolean): void {
@@ -46236,9 +46079,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
 })
 export default class Page {
     protected readonly exampleImport = import(&#039;./examples/import/import.md&#039;);
-
     protected readonly exampleTemplate = import(&#039;./examples/import/template.md&#039;);
-
     protected readonly exampleStyle = import(&#039;./examples/import/style.md&#039;);
 }
 ```
@@ -46480,6 +46321,7 @@ import {TuiButton, type TuiInteractiveState} from &#039;@taiga-ui/core&#039;;
 })
 export default class Page {
     protected examples = [&#039;Basic&#039;, &#039;Custom&#039;, &#039;Checkbox&#039;, &#039;Bundled&#039;];
+
     protected descriptions = [
         &#039;Interactive elements react to pointer natively but you can override state with inputs&#039;,
         &#039;Use LESS or SCSS mixins to create your own appearances in global styles&#039;,
@@ -46489,10 +46331,8 @@ export default class Page {
 
     protected appearances = [&#039;primary&#039;, &#039;secondary&#039;, &#039;flat&#039;];
     protected appearance = this.appearances[0]!;
-
     protected states: readonly TuiInteractiveState[] = [&#039;hover&#039;, &#039;active&#039;, &#039;disabled&#039;];
     protected state: TuiInteractiveState | null = null;
-
     protected focus: boolean | null = null;
 }
 ```
@@ -46602,7 +46442,6 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
-
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
 
@@ -46949,9 +46788,7 @@ import {interval, map} from &#039;rxjs&#039;;
 })
 export default class Example {
     protected open = false;
-
     protected value = &#039;some data&#039;;
-
     protected showBigText$ = interval(3000).pipe(map((i) =&gt; !(i % 2)));
 }
 ```
@@ -47100,9 +46937,7 @@ export default class Example {
     protected selected: readonly User[] = [];
     protected sum = null;
     protected user: User | null = null;
-
     protected readonly open = signal(false);
-
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected readonly users: readonly User[] = [
@@ -47143,6 +46978,7 @@ import {TuiButton, TuiDropdown} from &#039;@taiga-ui/core&#039;;
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
     protected readonly examples = [
         &#039;Basic&#039;,
         &#039;Interesting&#039;,
@@ -47287,7 +47123,6 @@ export default class Example {
     ] as const;
 
     protected readonly tableColumns = Object.keys(this.tableData[0]);
-
     protected readonly moreOptions = [&#039;Option 1&#039;, &#039;Option 2&#039;, &#039;Option 3&#039;];
 
     protected getObjectValues = (obj: Record&lt;string, unknown&gt;): unknown[] =&gt;
@@ -47495,10 +47330,8 @@ import {TuiChevron, TuiSwitch, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly form = new FormGroup({option: new FormControl(false)});
-
     protected open = false;
     protected openSettings = false;
-
     protected index = 0;
 
     protected onClick(): void {
@@ -47562,11 +47395,8 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from &#039;@taiga-ui/kit&#039
 })
 export default class Example {
     protected readonly items = [&#039;Edit&#039;, &#039;Download&#039;, &#039;Rename&#039;, &#039;Delete&#039;];
-
     protected readonly selectItems = [&#039;Item 1&#039;, &#039;Item 2&#039;];
-
     protected open = false;
-
     protected selected = new FormControl&lt;string | null&gt;(null);
 }
 ```
@@ -47717,7 +47547,6 @@ import {TuiButton, TuiDataList, TuiDropdown} from &#039;@taiga-ui/core&#039;;
 })
 export default class Example {
     protected readonly items = [&#039;Edit&#039;, &#039;Download&#039;, &#039;Rename&#039;, &#039;Delete&#039;];
-
     protected open = false;
 
     protected onClick(): void {
@@ -47783,11 +47612,8 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from &#039;@taiga-ui/kit&#039
 })
 export default class Example {
     protected readonly items = [&#039;Edit&#039;, &#039;Download&#039;, &#039;Rename&#039;, &#039;Delete&#039;];
-
     protected readonly selectItems = [&#039;Item 1&#039;, &#039;Item 2&#039;];
-
     protected open = false;
-
     protected selected = null;
 
     protected onClick(): void {
@@ -47841,7 +47667,6 @@ export default class Example {
     ];
 
     protected primary = &#039;By genre&#039;;
-
     protected ascending = false;
 
     protected onClick(item: string): void {
@@ -47920,7 +47745,6 @@ export default class Example {
     });
 
     protected open = false;
-
     protected readonly items = [&#039;Drafts&#039;, &#039;In Progress&#039;, &#039;Completed&#039;];
 
     protected get length(): number {
@@ -47975,7 +47799,6 @@ import {
 })
 class TopRightDirective extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = &#039;dropdown&#039;;
 
     public getPosition({height}: DOMRect): TuiPoint {
@@ -48022,15 +47845,10 @@ import {TuiButton, TuiDropdown, TuiInput} from &#039;@taiga-ui/core&#039;;
 })
 export default class PageComponent {
     protected open = false;
-
     protected input = &#039;&#039;;
-
     protected enabledVariants = [true, &#039;getter this.input.length &gt; 2&#039;];
-
     protected enabledSelected = this.enabledVariants[0]!;
-
     protected readonly contentVariants = [&#039;Template&#039;, &#039;Custom string&#039;];
-
     protected content = this.contentVariants[0]!;
 
     protected get template(): boolean {
@@ -48191,6 +48009,7 @@ export default class Example {
     protected readonly options = viewChildren(TuiOption, {read: ElementRef});
     protected readonly driver = viewChild(TuiDriver);
     protected value = &#039;Type @ to see a dropdown&#039;;
+
     protected readonly items = [
         {
             name: &#039;Alexander Inkin&#039;,
@@ -48263,7 +48082,6 @@ import {TuiButton, TuiDropdown} from &#039;@taiga-ui/core&#039;;
 })
 export default class PageComponent {
     protected positionVariants = [&#039;selection&#039;, &#039;word&#039;, &#039;tag&#039;] as const;
-
     protected position: &#039;selection&#039; | &#039;tag&#039; | &#039;word&#039; = this.positionVariants[0];
 }
 ```
@@ -48328,7 +48146,6 @@ import {distinctUntilChanged, map, type Observable, startWith} from &#039;rxjs&#
 })
 export default class Example implements AfterViewInit {
     protected readonly elasticSticky = viewChild(TuiElasticSticky);
-
     protected scale$?: Observable&lt;number&gt;;
 
     public ngAfterViewInit(): void {
@@ -48982,9 +48799,9 @@ import {
 })
 export default class Example {
     private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
-
     protected value = &#039;I am a very long value&#039;;
     protected readonly range = signal([this.options.min * 16, this.options.max * 16]);
+
     protected readonly scale = computed&lt;[number, number]&gt;(() =&gt; [
         (this.range()[0] ?? 0) / 16,
         (this.range()[1] ?? 0) / 16,
@@ -49370,7 +49187,6 @@ import {TuiHint} from &#039;@taiga-ui/core&#039;;
 })
 export default class PageComponent {
     protected readonly examples = [&#039;Basic&#039;, &#039;Customizing&#039;, &#039;Nested&#039;, &#039;Auto&#039;, &#039;Form&#039;];
-
     protected showDelay = 500;
     protected hideDelay = 200;
     protected readonly routes = DemoRoute;
@@ -49917,12 +49733,10 @@ import {TuiMedia} from &#039;@taiga-ui/cdk&#039;;
 })
 export default class Page {
     protected readonly volumeVariants: readonly number[] = [1, 0.5, 0.25, 0];
-
     protected playbackRate = 1;
     protected currentTime = 0;
     protected volume = this.volumeVariants[0]!;
     protected paused = true;
-
     protected readonly examples = [&#039;Native controls&#039;, &#039;Video&#039;, &#039;Audio&#039;];
 }
 ```
@@ -50023,7 +49837,6 @@ import {BehaviorSubject, map} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
-
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     protected readonly transform$ = this.coordinates$.pipe(
@@ -50122,9 +49935,7 @@ import {TuiBadge, TuiPresent} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected counterCSS = 0;
-
     protected counterIf = 0;
-
     protected hovered = false;
 
     protected onHovered(hovered: boolean): void {
@@ -50396,7 +50207,6 @@ export default class Page {
     protected value = 3;
     protected max = 5;
     protected segments = this.max;
-
     protected examples = [&#039;Basic&#039;, &#039;Sizes&#039;, &#039;Colors&#039;, &#039;With labels&#039;, &#039;No round corners&#039;];
 
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeXXL | TuiSizeXXS&gt; = [
@@ -50876,7 +50686,6 @@ import {TuiSensitive} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Page {
     protected sensitive = true;
-
     protected readonly examples = [&#039;Basic&#039;, &#039;Components&#039;];
 }
 ```
@@ -51579,7 +51388,6 @@ export default class Example {
     private readonly key = inject(TUI_DARK_MODE_KEY);
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly media = inject(WA_WINDOW).matchMedia(&#039;(prefers-color-scheme: dark)&#039;);
-
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
     protected reset(): void {
@@ -51905,7 +51713,6 @@ import {TuiChevron, TuiDataListWrapper, TuiInputPhone, TuiSelect} from &#039;@ta
 })
 export default class Example {
     protected readonly items = [&#039;Email&#039;, &#039;Phone&#039;];
-
     protected type = this.items[0]!;
 
     protected readonly group = new FormGroup({
@@ -52457,6 +52264,7 @@ import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from &#039;@taiga-ui/ki
 export class TuiI18nExample1 {
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected language = this.switcher.language;
+
     protected readonly languages = [
         &#039;arabic&#039;,
         &#039;belarusian&#039;,
@@ -52562,7 +52370,6 @@ import {CustomPortalService} from &#039;./service&#039;;
 })
 export class TuiPortalsExample1 {
     private readonly customPortalService = inject(CustomPortalService);
-
     protected templates: Array&lt;EmbeddedViewRef&lt;unknown&gt;&gt; = [];
 
     protected addTemplate(template: TemplateRef&lt;unknown&gt;): void {
@@ -52770,7 +52577,6 @@ import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from &#039;@taiga-ui/core&#
 })
 export default class Example extends TuiRectAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -52881,7 +52687,6 @@ import {
 })
 class PortalHost extends TuiPortals implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -52937,7 +52742,6 @@ import {TuiSegmented} from &#039;@taiga-ui/kit&#039;;
 })
 class PortalHost implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -52954,9 +52758,7 @@ class PortalHost implements TuiRectAccessor {
 })
 export default class Example {
     protected hintShown = false;
-
     protected directions: TuiHintDirection[] = [&#039;top&#039;, &#039;start&#039;, &#039;end&#039;, &#039;bottom&#039;];
-
     protected selected = this.directions[0]!;
 
     protected toggleHint(): void {
@@ -52980,7 +52782,6 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
 })
 export default class Page {
     protected readonly providers = import(&#039;./examples/import/providers.md&#039;);
-
     protected examples = [&#039;Dropdown&#039;, &#039;Dropdown and custom portal&#039;, &#039;Hint&#039;];
 }
 ```
@@ -53255,10 +53056,8 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 export default class Page {
     protected readonly currencyVariants = [null, 826, 840, &#039;EUR&#039;, &#039;RUB&#039;, &#039;UGX&#039;, &#039;USD&#039;];
     protected currency = this.currencyVariants[0];
-
     protected readonly control = new FormControl(6432, Validators.required);
     protected readonly routes = DemoRoute;
-
     protected readonly examples = [&#039;Basic&#039;, &#039;With Textfield&#039;];
 }
 ```
@@ -53305,7 +53104,6 @@ import {TuiDataListWrapper, TuiEmailsPipe} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     protected default = &#039;&#039;;
     protected custom = &#039;&#039;;
-
     protected readonly emails = [&#039;google.com&#039;, &#039;github.com&#039;, &#039;taiga-ui.dev&#039;];
 }
 ```
