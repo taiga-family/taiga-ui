@@ -25,7 +25,7 @@ class TuiLabelStyles {}
 // TODO: Replace TUI_DATA_LIST_HOST with proper token once we refactor textfields
 @Directive({
     standalone: true,
-    selector: `label[tuiLabel]`,
+    selector: 'label[tuiLabel]',
     host: {
         tuiLabelV: `${TUI_VERSION}`,
         '[attr.for]': 'el.htmlFor || parent?.id',
