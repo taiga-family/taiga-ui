@@ -289,6 +289,11 @@
         content: attr(data-label);
     }
 
+    &[data-label='']:empty,
+    &:not([data-label]):empty {
+        display: none;
+    }
+
     input[chrome-autofilled] ~ &,
     input:-webkit-autofill ~ &,
     &_raised {
