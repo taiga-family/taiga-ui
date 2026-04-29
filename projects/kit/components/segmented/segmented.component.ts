@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    effect,
     inject,
     input,
     model,
