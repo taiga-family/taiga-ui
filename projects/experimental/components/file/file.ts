@@ -20,12 +20,12 @@ import {TUI_FILE_OPTIONS_OPTIONS} from './file.options';
     hostDirectives: [TuiCell],
     host: {
         tuiFile: '',
-        '[tabIndex]': '0',
-        '[attr.data-size]': 'size() || options.size',
         '[attr.data-orientation]': 'orientation() || options.orientation',
+        '[attr.data-size]': 'size() || options.size',
         '[class._longtapped]': 'longtapped()',
-        '(longtap)': 'longtapped.set(true)',
+        '[tabIndex]': '0',
         '(focusout)': 'longtapped.set(false)',
+        '(longtap)': 'longtapped.set(true)',
     },
 })
 export class TuiFile {
