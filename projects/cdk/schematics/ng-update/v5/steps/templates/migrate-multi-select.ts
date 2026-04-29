@@ -156,7 +156,6 @@ export function migrateMultiSelect({
             removeAttr(recorder, templateOffset, element, attr.name, template);
         });
 
-        // Remove control-state attrs from element (they go on <input>)
         removeControlStateAttrs(
             recorder,
             templateOffset,
