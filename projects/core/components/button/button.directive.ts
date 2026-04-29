@@ -39,7 +39,7 @@ class TuiButtonStyles {}
 export class TuiButton {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
     protected readonly nothing = tuiWithStyles(TuiButtonStyles);
-    protected readonly attrs = tuiSetAttributes();
+    protected readonly attrs = tuiSetAttributes(['tuiButton', 'tuiIconButton']);
 
     @Input()
     public size = this.options.size;

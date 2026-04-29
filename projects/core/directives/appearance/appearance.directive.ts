@@ -10,7 +10,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import {TUI_ALLOW_SIGNAL_WRITES, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -24,9 +24,7 @@ import {TUI_APPEARANCE_OPTIONS, type TuiAppearanceOptions} from './appearance.op
     styles: ['@import "@taiga-ui/core/styles/components/appearance.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-appearance',
-    },
+    exportAs: `tui-appearance-${TUI_VERSION}`,
 })
 class TuiAppearanceStyles {}
 
@@ -36,6 +34,7 @@ class TuiAppearanceStyles {}
     hostDirectives: [TuiTransitioned],
     host: {
         tuiAppearance: '',
+        tuiAppearanceV: `${TUI_VERSION}`,
         '[attr.data-appearance]': 'appearance()',
         '[attr.data-state]': 'state()',
         '[attr.data-focus]': 'focus()',
