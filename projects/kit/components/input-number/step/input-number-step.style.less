@@ -51,10 +51,8 @@ TODO: if :has() is supported by all browsers
             }
         }
 
-        --t-input-number-offset-end: calc(
-            var(--tui-height-m) // width of step button
-            + 0.125rem
-        );
+        // var(--tui-height-m) ~ width of step button
+        --t-input-number-offset-end: calc(var(--tui-height-m) + 0.125rem);
     }
 
     &[data-size='m'] {
