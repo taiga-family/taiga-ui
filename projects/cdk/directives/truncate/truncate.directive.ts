@@ -20,6 +20,7 @@ import {map} from 'rxjs';
 
 import {TuiTruncateService} from './truncate.service';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Component({
     standalone: true,
@@ -48,6 +49,7 @@ class Styles {}
     ],
     host: {
         tuiTruncate: '',
+        tuiTruncateV: `${TUI_VERSION}`,
         '[attr.data-lines]': 'lines()',
         '[attr.data-text]': 'truncated()',
         '[style.-webkit-line-clamp]': 'lines()',
