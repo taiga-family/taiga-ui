@@ -133,7 +133,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'does not duplicates already existing type="password"',
+        'does not duplicate already existing type="password"',
         migrate({
             template: /* HTML */ `
                 <tui-input-password [(ngModel)]="value">
