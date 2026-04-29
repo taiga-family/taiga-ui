@@ -21,8 +21,8 @@ export default class Page {
     private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiNotificationService);
-
     protected readonly exampleComponent = import('./examples/import/component.md');
+
     protected readonly examples = [
         'String',
         'Basic',
@@ -41,9 +41,7 @@ export default class Page {
     protected label = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.label;
     protected offset = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.offset;
     protected required = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.required;
-
     protected open = false;
-
     protected readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
     protected readonly appearanceVariants = [this.appearance, 'fullscreen'];
 

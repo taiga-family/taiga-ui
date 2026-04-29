@@ -17,8 +17,8 @@ const ROTATE_X_MULTIPLIER = 2.3;
     styleUrl: './loader-android.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._visible]': 'percent',
         '[class._dropped]': 'dropped',
+        '[class._visible]': 'percent',
         '[style.transform]': 'hostTransform',
     },
 })

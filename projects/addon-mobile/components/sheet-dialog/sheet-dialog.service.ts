@@ -16,7 +16,6 @@ export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions
     private readonly theme = inject(TuiThemeColorService);
     private readonly initial = this.theme.color;
     private count = 0;
-
     protected readonly options = inject(TUI_SHEET_DIALOG_OPTIONS);
     protected readonly content = TuiSheetDialogComponent;
 

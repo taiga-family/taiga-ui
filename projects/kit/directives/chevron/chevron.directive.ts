@@ -40,8 +40,8 @@ class Styles {}
 export class TuiChevron {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
-
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',

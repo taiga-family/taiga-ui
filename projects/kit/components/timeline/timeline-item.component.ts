@@ -18,17 +18,17 @@ import {TuiTimelineComponent} from './timeline.component';
     styleUrl: './timeline-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.inset-inline-start.%]': 'timeline.d() * offset()',
         '[style.inline-size.%]': 'timeline.d() * (value()[1] - value()[0])',
+        '[style.inset-inline-start.%]': 'timeline.d() * offset()',
     },
 })
 export class TuiTimelineItem {
     protected readonly timeline = inject(TuiTimelineComponent);
     protected readonly offset = linkedSignal(() => this.value()[0]);
-
     public readonly draggable = input(true);
     public readonly resizable = input(true);
     public readonly value = model<readonly [number, number]>([0, 0]);
+
     public readonly min = computed((array = this.timeline.value()) =>
         array.reduce(
             (min, [_, end]) => (end <= this.value()[0] && end > min ? end : min),

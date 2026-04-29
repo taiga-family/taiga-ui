@@ -15,6 +15,7 @@ import {TuiChevron} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly state: Record<number, boolean> = {};
+
     protected readonly data = [
         {
             dob: new TuiDay(1947, 6, 30),

@@ -58,7 +58,6 @@ export class Sandbox {
     }));
 
     protected readonly control = new FormControl(this.options[0]!);
-
     public readonly itemClick = output<User>();
 
     public readonly content = input<PolymorpheusContent<TuiContext<User>>>(

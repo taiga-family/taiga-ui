@@ -28,8 +28,8 @@ class Styles {}
 @Directive({
     selector: '[tuiComment]',
     host: {
-        tuiComment: '',
         'data-tui-version': TUI_VERSION,
+        tuiComment: '',
         '[attr.data-direction]': 'direction()',
     },
 })

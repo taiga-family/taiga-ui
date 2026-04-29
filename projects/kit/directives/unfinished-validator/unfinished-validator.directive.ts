@@ -16,6 +16,7 @@ export class TuiUnfinishedValidator implements Validator {
     private readonly default = inject(TUI_DEFAULT_ERROR_MESSAGE);
     private readonly error = inject(TUI_VALIDATION_ERRORS)['tuiUnfinished'];
     private readonly fallback = this.error ? signal(this.error) : this.default;
+
     private readonly message = isObservable(this.error)
         ? toSignal(this.error)
         : this.fallback;

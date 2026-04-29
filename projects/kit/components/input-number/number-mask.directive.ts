@@ -22,9 +22,9 @@ export class TuiNumberMask {
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
     private readonly input = inject(TuiInputDirective);
-
     public readonly prefix = input(this.options.prefix);
     public readonly postfix = input(this.options.postfix);
+
     public readonly maximumFractionDigits = computed(
         (precision = this.numberFormat().precision) =>
             Number.isNaN(precision) ? 2 : precision,

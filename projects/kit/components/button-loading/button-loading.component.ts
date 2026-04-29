@@ -29,7 +29,6 @@ import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 })
 export class TuiButtonLoading {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
-
     public readonly size = input(this.options.size);
     public readonly loading = input<boolean | string | null>(false);
 

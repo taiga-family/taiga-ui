@@ -31,10 +31,8 @@ import {TuiTilesComponent} from './tiles.component';
 export class TuiTile implements OnDestroy, AfterViewInit {
     private readonly wrapper = viewChild('wrapper', {read: ElementRef});
     private readonly service = inject(TuiTileService);
-
     protected readonly tiles = inject(TuiTilesComponent);
     protected readonly dragged = signal(false);
-
     public readonly width = input(1);
     public readonly height = input(1);
     public readonly element = tuiInjectElement();

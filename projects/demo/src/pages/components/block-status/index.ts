@@ -11,9 +11,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 })
 export default class Example {
     protected card = false;
-
     protected readonly sizes: TuiSizeL[] = ['l', 'm'];
-
     protected size = this.sizes[0] || 'l';
 
     protected readonly examples = [

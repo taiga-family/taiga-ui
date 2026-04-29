@@ -56,9 +56,7 @@ export default class Example {
     protected selected: readonly User[] = [];
     protected sum = null;
     protected user: User | null = null;
-
     protected readonly open = signal(false);
-
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected readonly users: readonly User[] = [

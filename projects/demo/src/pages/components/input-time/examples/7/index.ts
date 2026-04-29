@@ -37,6 +37,7 @@ import {tuiCreateTimePeriods, TuiDataListWrapper, TuiInputTime} from '@taiga-ui/
 })
 export default class Example {
     protected value: TuiTime | null = null;
+
     protected items: readonly TuiTime[] = [
         new TuiTime(16, 20),
         new TuiTime(16, 45),

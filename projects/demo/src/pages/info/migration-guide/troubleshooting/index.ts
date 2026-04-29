@@ -25,7 +25,6 @@ import {TuiAccordionTarget} from '../target';
 })
 export default class MigrationGuideTroubleshooting {
     protected tuiMajor = Number.parseInt(TUI_VERSION);
-
     protected readonly routes = DemoRoute;
 
     protected readonly manuallyTriggerNxMigration =

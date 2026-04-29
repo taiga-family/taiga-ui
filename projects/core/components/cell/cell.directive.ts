@@ -29,16 +29,15 @@ class Styles {}
     selector: '[tuiCell]:not(ng-template)',
     providers: [tuiButtonOptionsProvider({size: 's'})],
     host: {
-        tuiCell: '',
         'data-tui-version': TUI_VERSION,
-        '[attr.data-size]': 'size() || options.size || "l"',
+        tuiCell: '',
         '[attr.data-height]': 'height()',
+        '[attr.data-size]': 'size() || options.size || "l"',
     },
 })
 export class TuiCell {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_CELL_OPTIONS);
-
     public readonly size = input(this.options.size, {alias: 'tuiCell'});
     public readonly height = input(this.options.height, {alias: 'tuiCellHeight'});
 }

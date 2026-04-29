@@ -23,18 +23,11 @@ export default class Page {
     ];
 
     protected buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
-
     protected readonly moreContentVariants = ['', 'And more'];
-
     protected moreContent = this.moreContentVariants[0]!;
-
     protected underline = true;
-
     protected activeItemIndex = 0;
-
     protected itemsLimit = 999;
-
     protected sizes: readonly TuiSizeL[] = ['m', 'l'];
-
     protected size = this.sizes[1]!;
 }

@@ -64,11 +64,9 @@ export class TuiCalendar {
     public readonly showAdjacent = input(true);
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
     public readonly initialView = input<'month' | 'year'>('month');
-
     public readonly month = model(TuiMonth.currentLocal());
     public readonly hoveredItem = model<TuiDay | null>(null);
     public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
-
     public readonly dayClick = output<TuiDay>();
 
     protected readonly computedMinViewedMonth = computed(() => {

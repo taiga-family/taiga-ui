@@ -24,15 +24,14 @@ const OPTIONS = {
     host: {
         '[style.--t-initial]': 'stops()[0]',
         '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
-        '(scroll.zoneless)': 'onScroll()',
         '(resize)': 'onScroll()',
+        '(scroll.zoneless)': 'onScroll()',
     },
 })
 export class TuiBottomSheet {
     private readonly elements = viewChildren<ElementRef<HTMLElement>>('stops');
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
-
     public readonly stops = input<readonly string[]>(['1.5rem']);
 
     protected onScroll(): void {

@@ -32,6 +32,7 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
 })
 export class TuiLineDaysChartHint implements AfterContentInit {
     private readonly charts = contentChildren(forwardRef(() => TuiLineDaysChart));
+
     private readonly map = computed(() =>
         this.getMap(...this.charts().map(({value}) => value())),
     );

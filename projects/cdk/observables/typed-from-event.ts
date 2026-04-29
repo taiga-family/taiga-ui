@@ -62,5 +62,5 @@ export function tuiTypedFromEvent<E extends Event>(
      * @note:
      * in RxJS 7 type signature `TuiTypedEventTarget<E>` !== `HasEventTargetAddRemove<E>`
      */
-    return fromEvent<E>(target as any, event, options) as unknown as Observable<E>;
+    return fromEvent<E>(target as any, event, options);
 }

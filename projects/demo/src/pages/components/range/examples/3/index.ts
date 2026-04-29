@@ -19,7 +19,6 @@ export default class Example {
 
     // 12.5% (of total distance) per step
     protected readonly stepPercentage = 100 / (2 * this.segments);
-
     protected value = [0, 100_000];
 
     protected readonly keySteps: TuiKeySteps = [

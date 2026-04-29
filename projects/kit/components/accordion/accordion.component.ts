@@ -36,6 +36,7 @@ export class TuiAccordionComponent {
     protected readonly expands = contentChildren(TuiExpand);
     protected readonly directives = contentChildren(TuiAccordionDirective);
     protected readonly elements = contentChildren(TuiExpand, {read: ElementRef});
+
     protected readonly sync = effect(() =>
         this.elements().forEach(({nativeElement}, index) => {
             nativeElement.id = this.directives()[index]?.id;

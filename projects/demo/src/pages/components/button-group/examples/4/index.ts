@@ -25,6 +25,7 @@ export default class Example {
     protected readonly index = signal(1);
     protected readonly opacity = signal(1);
     protected readonly effective = linkedSignal(this.index);
+
     protected readonly items = [
         {
             title: 'RUB Account',

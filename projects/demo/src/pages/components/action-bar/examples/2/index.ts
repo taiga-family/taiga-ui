@@ -13,6 +13,5 @@ import {TuiActionBar} from '@taiga-ui/kit';
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly open = signal(false);
-
     protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 }

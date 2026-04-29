@@ -33,14 +33,15 @@ class Styles {}
     providers: [WaResizeObserverService],
     host: {
         'data-tui-version': TUI_VERSION,
-        '[style.--t-offset.px]': 'offset',
-        '[style.--t-mask-height.px]': 'height()',
         '[class.tui-sensitive]': 'tuiSensitive()',
+        '[style.--t-mask-height.px]': 'height()',
+        '[style.--t-offset.px]': 'offset',
     },
 })
 export class TuiSensitive {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
+
     protected readonly height = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
             map((entry): [number, number] => {

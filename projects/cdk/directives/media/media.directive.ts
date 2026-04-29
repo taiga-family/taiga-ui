@@ -10,10 +10,10 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
         '(ended)': 'onPausedChange(true)',
         '(pause)': 'onPausedChange(true)',
         '(play)': 'onPausedChange(false)',
-        '(volumechange)': 'onVolumeChange()',
-        '(timeupdate)': 'onCurrentTimeChange()',
-        '(seeking)': 'onCurrentTimeChange()',
         '(seeked)': 'onCurrentTimeChange()',
+        '(seeking)': 'onCurrentTimeChange()',
+        '(timeupdate)': 'onCurrentTimeChange()',
+        '(volumechange)': 'onVolumeChange()',
     },
 })
 export class TuiMedia {
@@ -42,11 +42,8 @@ export class TuiMedia {
     });
 
     public readonly playbackRate = input(1);
-
     public readonly volume = model(1);
-
     public readonly currentTime = model(this.el.currentTime ?? 0);
-
     public readonly paused = model(this.el.paused);
 
     protected onPausedChange(paused: boolean): void {

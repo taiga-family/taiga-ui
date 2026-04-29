@@ -20,7 +20,6 @@ export class TuiDocIcons {
     ];
 
     public readonly hiddenOptions = input<Array<string | keyof TuiDocIcons>>([]);
-
     public iconStart = '';
     public iconEnd = '';
 }

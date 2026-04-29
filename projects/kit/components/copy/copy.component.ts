@@ -29,6 +29,7 @@ export class TuiCopyComponent {
     protected readonly options = inject(TUI_COPY_OPTIONS);
     protected readonly copied$ = new BehaviorSubject(false);
     protected readonly texts = inject(TUI_COPY_TEXTS);
+
     protected readonly hint = toSignal(
         this.copied$.pipe(
             switchMap((copied) =>

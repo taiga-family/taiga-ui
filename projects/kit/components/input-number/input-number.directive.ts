@@ -15,19 +15,18 @@ const DEFAULT_MAX_LENGTH = 18;
     providers: [tuiAsControl(TuiInputNumberDirective)],
     hostDirectives: [TuiWithInput, TuiWithNumberMask, TuiNumberValueTransformer],
     host: {
-        '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(focus)': 'onFocus()',
+        '[disabled]': 'disabled()',
         '(blur)': 'onBlur()',
+        '(focus)': 'onFocus()',
     },
 })
 export class TuiInputNumberDirective extends TuiControl<string> {
     private readonly mask = inject(TuiNumberMask);
     private readonly input = inject(TuiInputDirective);
     private readonly isIOS = inject(WA_IS_IOS);
-
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
     protected readonly inputMode = computed(() => {

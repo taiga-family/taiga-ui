@@ -24,8 +24,8 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
     ],
     hostDirectives: [TuiWithInput, MaskitoDirective, TuiDropdownAuto],
     host: {
-        maxlength: '4',
         inputmode: 'numeric',
+        maxlength: '4',
         '[disabled]': 'disabled()',
         '(click)': 'toggle()',
         '(input)': 'onInput($event.target.value)',
@@ -35,12 +35,14 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_YEAR_OPTIONS);
     private readonly input = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
+
     private readonly initialItem = computed(
         () => this.value() ?? this.calendar()?.initialItem() ?? null,
     );
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly icon = tuiIconEnd(this.options.icon);
+
     protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
         (x) => x instanceof TuiCalendarYear,
     );

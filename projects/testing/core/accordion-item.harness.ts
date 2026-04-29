@@ -3,7 +3,6 @@ import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness {
     public static hostSelector = 'tui-accordion-item';
-
     private readonly header = this.locatorFor('.t-header');
 
     public async getTitle(): Promise<string> {

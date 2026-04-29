@@ -18,7 +18,6 @@ interface TreeNode {
 })
 export default class Example {
     protected readonly drag = signal<TreeNode | null>(null);
-
     protected readonly cd = inject(ChangeDetectorRef);
 
     protected readonly data: TreeNode = {

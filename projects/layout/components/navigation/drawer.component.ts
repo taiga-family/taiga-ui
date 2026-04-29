@@ -41,6 +41,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 })
 class TuiDrawerComponent {
     protected readonly directive = inject(TuiDropdownDirective);
+
     protected readonly top =
         tuiIsHTMLElement(this.directive.el.offsetParent) &&
         tuiIsHTMLElement(this.directive.el.offsetParent.offsetParent)
@@ -74,7 +75,6 @@ export class TuiDrawerDirective {
     private readonly x = inject(TUI_COMMON_ICONS).close;
     private readonly dropdown = tuiDropdown(null);
     private readonly open = inject(TuiDropdownOpen).open;
-
     protected readonly template = viewChild(TemplateRef);
     protected readonly ef = effect(() => this.dropdown.set(this.template()));
     protected readonly icon = tuiIconStart(computed(() => (this.open() ? this.x : '')));

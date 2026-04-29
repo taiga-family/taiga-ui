@@ -66,7 +66,6 @@ export const tuiDropdownOptionsProvider: (
 })
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS, {skipSelf: true});
-
     public align = this.options.align;
     public appearance = this.options.appearance;
     public direction = this.options.direction;

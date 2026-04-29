@@ -18,6 +18,7 @@ export default class Page {
     protected size = this.sizeVariants[0]!;
     protected disabled = false;
     protected color = '';
+
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-chart-categorical-04)',
         'var(--tui-background-accent-1)',

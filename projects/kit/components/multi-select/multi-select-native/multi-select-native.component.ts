@@ -37,10 +37,10 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
 export class TuiMultiSelectNative<T> {
     private readonly control: TuiControl<readonly T[]> = inject(TuiControl);
     private readonly textfield = inject(TuiTextfieldMultiComponent);
-
     protected readonly isFlat = tuiIsFlat;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly el = tuiInjectElement<HTMLSelectElement>();
+
     protected readonly mobile =
         inject(WA_IS_IOS) || (inject(WA_IS_ANDROID) && 'showPicker' in this.el);
 

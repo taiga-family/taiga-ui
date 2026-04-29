@@ -23,10 +23,8 @@ export default class PageComponent {
     protected readonly control = new FormControl();
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
     protected readonly examples = ['Basic', 'Opacity'];
-
     protected readonly aligns = ['start', 'end'] as const;
     protected align = this.options.align;
-
     protected readonly formats = ['hex', 'hexa'] as const;
     protected format = this.options.format;
 }

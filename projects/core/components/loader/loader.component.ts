@@ -11,16 +11,11 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     templateUrl: './loader.template.html',
     styleUrl: './loader.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._loading]': 'loading()',
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()', '[class._loading]': 'loading()'},
 })
 export class TuiLoader {
     private readonly options = inject(TUI_LOADER_OPTIONS);
-
     protected readonly isApple = isSafari(tuiInjectElement()) || inject(WA_IS_IOS);
-
     public readonly size = input(this.options.size);
     public readonly inheritColor = input(this.options.inheritColor);
     public readonly overlay = input(this.options.overlay);

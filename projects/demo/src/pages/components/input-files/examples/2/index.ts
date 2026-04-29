@@ -21,6 +21,7 @@ import {map} from 'rxjs';
 })
 export default class Example {
     protected readonly control = new FormControl<File[]>([], [maxFilesLength(5)]);
+
     protected readonly accepted$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),
     );

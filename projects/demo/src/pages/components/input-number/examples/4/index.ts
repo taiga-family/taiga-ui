@@ -13,6 +13,7 @@ import {TuiInputNumber, TuiTooltip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value: number | null = 1_234_567.89;
+
     protected numberFormat: Partial<TuiNumberFormatSettings> = {
         decimalSeparator: ',',
         thousandSeparator: '.',

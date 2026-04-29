@@ -30,14 +30,12 @@ import {TuiInputYear} from '@taiga-ui/kit';
 })
 export default class PageComponent {
     protected readonly examples = ['Basic', 'Limits', 'Transformer'];
-
     protected readonly value = new FormControl<number | null>(null);
     protected readonly minVariants = [TUI_FIRST_DAY.year, 2019, 2007];
     protected readonly maxVariants = [TUI_LAST_DAY.year, 2020, 2023];
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
     protected readonly routes = DemoRoute;
-
     public control = new FormControl<number | null>(null, Validators.required);
     protected readonly handler = (year: number): boolean => year % 3 === 0;
 }

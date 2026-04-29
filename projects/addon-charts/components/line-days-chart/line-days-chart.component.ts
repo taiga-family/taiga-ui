@@ -83,13 +83,13 @@ export class TuiLineDaysChart implements AfterViewInit {
     public readonly y = input(0);
     public readonly height = input(0);
     public readonly smoothingFactor = input(this.options.smoothingFactor);
+
     public readonly hintContent =
         input<PolymorpheusContent<TuiContext<[TuiDay, number]>>>();
 
     public readonly xStringify = input<TuiStringHandler<TuiDay> | null>(null);
     public readonly yStringify = input<TuiStringHandler<number> | null>(null);
     public readonly dots = input(this.options.dots);
-
     public zIndex = 0;
 
     public readonly value = input<

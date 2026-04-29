@@ -41,7 +41,6 @@ export class Sandbox {
     protected readonly control = new FormControl<string | null>(null);
     protected labels = ['Salad', 'Soup'] as const;
     protected readonly items = ITEMS;
-
     public readonly valueChanges = output<string | null>();
 
     constructor() {

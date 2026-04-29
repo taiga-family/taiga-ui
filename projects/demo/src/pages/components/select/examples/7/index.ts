@@ -22,6 +22,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 export default class Example {
     protected readonly platforms = ['web', 'ios', 'android'] as const;
     protected value: 'android' | 'ios' | 'web' | null = 'ios';
+
     protected readonly disabledItemHandler: TuiBooleanHandler<string> = (x) =>
         x === 'web';
 }

@@ -18,7 +18,6 @@ export class TuiTreeControllerDirective<T>
     implements TuiTreeController, TuiTreeAccessor<T>
 {
     protected readonly items = new Map<TuiTreeItem, T>();
-
     public readonly fallback = input(true, {alias: 'tuiTreeController'});
     public readonly map = input(new Map<T, boolean>());
     public readonly toggled = output<T>();

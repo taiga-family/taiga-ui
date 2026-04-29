@@ -28,6 +28,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 export class TuiMultiSelectGroupComponent<T> {
     private readonly options = contentChildren(TuiOptionWithValue<T>);
     private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
+
     private readonly control =
         inject(TuiTextfieldComponent, {optional: true})?.control() ||
         inject(NgControl, {optional: true});
@@ -35,6 +36,7 @@ export class TuiMultiSelectGroupComponent<T> {
     protected readonly values = computed(() => this.options().map(({value}) => value()));
     protected readonly texts = inject(TUI_MULTI_SELECT_TEXTS);
     protected readonly value = tuiInjectValue<readonly T[] | null>();
+
     protected readonly checked = computed(() =>
         this.values().every((item) =>
             this.value()?.some(

@@ -13,6 +13,7 @@ export class TuiNumberValueTransformer extends TuiValueTransformer<
     number | null
 > {
     private readonly mask = inject(TuiNumberMask);
+
     private readonly quantumTransformer: TuiValueTransformer<
         number | null,
         number | null

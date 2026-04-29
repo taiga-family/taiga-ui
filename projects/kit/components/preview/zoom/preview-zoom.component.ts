@@ -31,6 +31,7 @@ import {TUI_PREVIEW_ICONS, type TuiPreviewIcons} from '../preview.options';
 export class TuiPreviewZoom {
     protected readonly icons: TuiPreviewIcons = inject(TUI_PREVIEW_ICONS);
     protected readonly texts = inject(TUI_PREVIEW_ZOOM_TEXTS);
+
     protected readonly sliderLabel = computed(
         () => `${this.texts().zoomOut} / ${this.texts().zoomIn}`,
     );

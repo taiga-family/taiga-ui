@@ -45,7 +45,6 @@ const ITEMS = [
 })
 export class Sandbox implements OnInit {
     protected items: readonly Item[] = ITEMS;
-
     public readonly placeholder = input('');
     public readonly control = input(new FormControl<Item | null>(null));
     public readonly valueChanges = output<Item | null>();
@@ -55,6 +54,7 @@ export class Sandbox implements OnInit {
     }
 
     protected readonly stringify: TuiStringHandler<Item> = (item) => item.name;
+
     protected readonly disabledItemHandler: TuiBooleanHandler<Item> = (item) =>
         item.name === 'DisabledItem';
 }

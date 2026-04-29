@@ -16,8 +16,8 @@ export const TUI_LEAVE = 'tui-leave';
     selector: '[tuiAnimated]',
     host: {
         class: TUI_ENTER,
-        '(animationend.self)': 'remove()',
         '(animationcancel.self)': 'remove()',
+        '(animationend.self)': 'remove()',
     },
 })
 export class TuiAnimated {

@@ -15,7 +15,6 @@ import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly isE2E = inject(WA_IS_E2E);
-
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 
     protected readonly files: readonly TuiFileLike[] = [

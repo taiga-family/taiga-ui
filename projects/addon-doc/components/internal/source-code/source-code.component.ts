@@ -18,7 +18,6 @@ export class TuiDocSourceCode {
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
     protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
-
     public readonly header = input('');
     public readonly package = input('');
     public readonly type = input('');

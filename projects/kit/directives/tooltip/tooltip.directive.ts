@@ -77,8 +77,8 @@ export class TuiTooltip implements DoCheck {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly describe = inject(TuiHintDescribe);
     private readonly driver = inject(TuiHintHover);
-
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(

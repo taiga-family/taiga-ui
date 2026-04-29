@@ -14,7 +14,6 @@ import {TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly button = viewChild<ElementRef<HTMLElement>>('buttons');
-
     protected readonly stops = ['112px'] as const;
 
     protected onScroll({clientHeight, scrollTop}: HTMLElement): void {

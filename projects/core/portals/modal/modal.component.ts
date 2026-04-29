@@ -38,16 +38,17 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiFocusTrap],
     host: {
-        role: 'dialog',
-        'data-tui-version': TUI_VERSION,
-        class: 'tui-enter',
         'aria-modal': 'true',
+        'data-tui-version': TUI_VERSION,
+        role: 'dialog',
+        class: 'tui-enter',
         '[attr.aria-labelledby]': 'context.id',
         '(animationend.self)': '$event.target.classList.remove("tui-enter")',
     },
 })
 export class TuiModalComponent<T> implements OnDestroy, OnInit {
     private readonly current = inject(TuiActiveZone);
+
     private readonly parent = findActive(
         inject(TuiActiveZone, {skipSelf: true}),
         tuiGetFocused(inject(DOCUMENT)),

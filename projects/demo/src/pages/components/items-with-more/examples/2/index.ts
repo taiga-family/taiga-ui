@@ -26,6 +26,5 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
 })
 export default class Page {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
-
     protected value = this.items.map(TUI_FALSE_HANDLER) as boolean[];
 }

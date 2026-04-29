@@ -34,7 +34,6 @@ export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Crossfade', 'Stepper', 'Routing', 'Dialog'];
     protected readonly directions = [-1, 0, 1];
-
     protected direction = 0;
     protected current = 0;
 

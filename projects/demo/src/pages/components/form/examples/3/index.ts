@@ -25,7 +25,6 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly index = signal(0);
-
     protected segmentedIndex = 0;
 
     protected readonly form = new FormGroup({

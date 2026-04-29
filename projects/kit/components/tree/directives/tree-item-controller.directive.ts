@@ -12,7 +12,6 @@ import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 })
 export class TuiTreeItemController implements TuiTreeController {
     private readonly map = new WeakMap<TuiTreeItem, boolean>();
-
     public readonly fallback = input(true, {alias: 'tuiTreeController'});
 
     public isExpanded(item: TuiTreeItem): boolean {

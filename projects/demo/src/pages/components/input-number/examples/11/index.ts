@@ -15,6 +15,7 @@ import {BigIntWithDecimal, type ControlValue} from './transformer';
 })
 export default class Example {
     protected readonly infinity = Infinity;
+
     protected readonly value = signal<ControlValue>({
         significand: 123456700042n,
         exp: -5,

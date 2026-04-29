@@ -105,9 +105,7 @@ export class TestInputDate {
     ];
 
     protected readonly users = this.items.map((name, index) => ({name, index}));
-
     protected objects: User[] = this.users;
-
     protected readonly strings = tuiIsString;
     protected readonly stringify = ({name}: User): string => name;
     protected readonly disabled = (item: string): boolean => !this.items.includes(item);

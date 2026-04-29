@@ -19,6 +19,6 @@ export class TuiPdfViewerService extends TuiModalService<TuiPdfViewerOptions<unk
         content: Content<G> | SafeResourceUrl,
         options: Partial<TuiPdfViewerOptions<any>> = {},
     ): Observable<G> {
-        return super.open(content as Content<G>, options);
+        return super.open(content, options);
     }
 }

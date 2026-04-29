@@ -48,11 +48,10 @@ export default class Example {
     protected multi: string[] = [];
     protected conditionalMulti: string[] = [];
     protected objects: User[] = [];
-
     protected filter = false;
-
     protected readonly items: string[] = inject('Pythons' as any);
     protected readonly users = this.items.map((name, index) => ({name, index}));
+
     protected readonly more = [
         {name: 'Carol Cleveland', index: -1},
         {name: 'Neil Innes', index: -2},

@@ -137,8 +137,8 @@ export default class Example {
     );
 
     protected readonly sortKey$ = new BehaviorSubject<keyof User>('name');
-
     protected readonly minAge = new FormControl(21);
+
     protected readonly minAge$ = tuiControlValue<number>(this.minAge).pipe(
         debounceTime(1000),
         tap(() => this.page$.next(0)),
@@ -158,15 +158,10 @@ export default class Example {
     );
 
     protected initial: readonly string[] = ['Name', 'Date of Birth', 'Age'];
-
     protected enabled = this.initial;
-
     protected columns = ['name', 'dob', 'age'];
-
     protected dob = false;
-
     protected search = '';
-
     protected readonly loading$ = this.request$.pipe(map((v) => !v));
 
     protected readonly total$ = this.request$.pipe(

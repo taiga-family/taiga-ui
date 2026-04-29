@@ -18,6 +18,7 @@ type ControlValue = [TuiDay, TuiTime | null] | null;
 export default class Example {
     protected readonly open = signal(false);
     protected readonly control = new FormControl<ControlValue>(null);
+
     protected readonly tomorrow: ControlValue = [
         TuiDay.currentLocal().append({day: 1}),
         new TuiTime(9, 0),

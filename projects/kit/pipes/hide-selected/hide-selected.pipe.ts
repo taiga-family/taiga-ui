@@ -16,6 +16,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
     private readonly textfield = inject(TuiTextfieldMultiComponent);
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
     private readonly items = signal<readonly any[] | null>([]);
+
     private readonly filtered = computed(() => {
         const items = this.items();
         const value = this.textfield.cva()?.value() || [];

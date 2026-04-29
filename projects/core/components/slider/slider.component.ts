@@ -17,6 +17,8 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiSliderComponent)],
     host: {
+        '[style.--tui-slider-fill-ratio]': 'valueRatio',
+        '[style.--tui-ticks-gradient]': 'ticksGradient()',
         /**
          * For change detection.
          * Webkit does not have built-in method for customization of filling progress (as Firefox).
@@ -24,8 +26,6 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
          * This function triggers change detection (for {@link valueRatio} getter) when we drag thumb of the input.
          */
         '(input)': '0',
-        '[style.--tui-ticks-gradient]': 'ticksGradient()',
-        '[style.--tui-slider-fill-ratio]': 'valueRatio',
     },
 })
 export class TuiSliderComponent {
@@ -42,6 +42,7 @@ export class TuiSliderComponent {
     });
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
+
     public readonly keySteps = inject(TuiSliderKeyStepsBase, {
         self: true,
         optional: true,

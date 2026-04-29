@@ -6,6 +6,7 @@ import {filter, fromEvent, merge} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class TuiKeyboardService implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
+
     private readonly sub = merge(
         fromEvent(this.doc, 'focusout'),
         fromEvent(this.doc, 'mousedown').pipe(

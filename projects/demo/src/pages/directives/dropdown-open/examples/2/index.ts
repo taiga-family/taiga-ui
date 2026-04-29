@@ -30,11 +30,8 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
-
     protected readonly selectItems = ['Item 1', 'Item 2'];
-
     protected open = false;
-
     protected selected = null;
 
     protected onClick(): void {

@@ -17,6 +17,7 @@ import {type TuiMobileDialogOptions} from './mobile-dialog.options';
 })
 export class TuiMobileDialog<I> {
     protected readonly isIOS = inject(WA_IS_IOS);
+
     protected readonly context =
         injectContext<TuiPortalContext<TuiMobileDialogOptions<I>, number>>();
 

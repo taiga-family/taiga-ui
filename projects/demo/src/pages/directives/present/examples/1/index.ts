@@ -13,9 +13,7 @@ import {TuiBadge, TuiPresent} from '@taiga-ui/kit';
 })
 export default class Example {
     protected counterCSS = 0;
-
     protected counterIf = 0;
-
     protected hovered = false;
 
     protected onHovered(hovered: boolean): void {

@@ -36,8 +36,8 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     providers: [tuiAsControl(TuiRadioList)],
     hostDirectives: [TuiWithItemsHandlers],
     host: {
-        role: 'radiogroup',
         'data-tui-version': TUI_VERSION,
+        role: 'radiogroup',
         '[attr.data-size]': 'size()',
         '(focusout)': 'onFocusOut()',
     },
@@ -45,8 +45,8 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 export class TuiRadioList<T> extends TuiControl<T> {
     private readonly controls = viewChildren(NgControl);
     private readonly id = tuiGenerateId();
-
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
+
     protected readonly validator = computed(() =>
         this.invalid() ? ERROR : Validators.nullValidator,
     );

@@ -21,10 +21,8 @@ import {TuiChevron, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly form = new FormGroup({option: new FormControl(false)});
-
     protected open = false;
     protected openSettings = false;
-
     protected index = 0;
 
     protected onClick(): void {

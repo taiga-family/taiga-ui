@@ -23,17 +23,15 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[class._sticky]': 'sticky()',
+        '[style.max-width.px]': 'width() || maxWidth()',
         '[style.min-width.px]': 'width() || minWidth()',
         '[style.width.px]': 'width() || minWidth()',
-        '[style.max-width.px]': 'width() || maxWidth()',
-        '[class._sticky]': 'sticky()',
     },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
-
     private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {optional: true});
-
     protected readonly width = signal<number | null>(null);
 
     protected readonly table = inject<TuiTableDirective<T>>(
@@ -42,7 +40,6 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     );
 
     public readonly minWidth = input(-Infinity);
-
     public readonly maxWidth = input(Infinity);
 
     public readonly sorter = model(
@@ -50,9 +47,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     );
 
     public readonly resizable = input(this.options.resizable);
-
     public readonly sticky = input(this.options.sticky);
-
     public readonly requiredSort = input(this.options.requiredSort);
 
     public get key(): keyof T {

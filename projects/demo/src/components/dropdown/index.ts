@@ -21,11 +21,10 @@ import {
 })
 export class TuiDocDropdown {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
-
     protected readonly routes = DemoRoute;
-
     protected readonly aligns: readonly TuiDropdownAlign[] = ['start', 'end', 'center'];
     protected readonly directions: TuiVerticalDirection[] = ['bottom', 'top'];
+
     protected readonly limitWidths: readonly TuiDropdownWidth[] = [
         'auto',
         'min',
@@ -33,7 +32,6 @@ export class TuiDocDropdown {
     ];
 
     public readonly hiddenOptions = input<Array<string | keyof TuiDropdownOptions>>([]);
-
     public align = this.options.align;
     public direction = this.options.direction;
     public minHeight = this.options.minHeight;

@@ -44,9 +44,9 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
         }),
     ],
     host: {
+        'data-tui-version': TUI_VERSION,
         tuiNavigationAside: '',
         tuiTheme: 'dark',
-        'data-tui-version': TUI_VERSION,
         '[class._expanded]': 'expanded()',
     },
 })

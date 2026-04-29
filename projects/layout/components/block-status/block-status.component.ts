@@ -19,12 +19,11 @@ import {type TuiSizeL} from '@taiga-ui/core/types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         'data-tui-version': TUI_VERSION,
-        '[class._card]': 'card()',
         '[attr.data-size]': 'size()',
+        '[class._card]': 'card()',
     },
 })
 export class TuiBlockStatusComponent {
     public readonly card = input(false);
-
     public readonly size = input<TuiSizeL>('l');
 }

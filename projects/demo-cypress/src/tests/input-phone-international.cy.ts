@@ -44,9 +44,7 @@ import {createOutputSpy} from 'cypress/angular';
 })
 export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
-
     public readonly control = input(new FormControl('', {nonNullable: true}));
-
     public readonly countryIsoCode = model<TuiCountryIsoCode>('RU');
 
     public readonly countries = input<readonly TuiCountryIsoCode[]>([
@@ -57,7 +55,6 @@ export class Test implements OnInit {
     ]);
 
     public readonly valueChange = output<string>();
-
     public readonly countryIsoCodeChange = output<string>();
 
     public ngOnInit(): void {

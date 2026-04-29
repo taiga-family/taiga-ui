@@ -22,13 +22,12 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         'data-tui-version': TUI_VERSION,
-        '[style.--tui-progress-color]': 'color()',
         '[attr.data-size]': 'size()',
+        '[style.--tui-progress-color]': 'color()',
     },
 })
 export class TuiProgressBar {
     private readonly options = inject(TUI_PROGRESS_OPTIONS);
-
     public readonly color = input(this.options.color);
     public readonly size = input<TuiSizeXXL | TuiSizeXXS>(this.options.size);
 }

@@ -10,6 +10,7 @@ import {TuiButton, type TuiInteractiveState} from '@taiga-ui/core';
 })
 export default class Page {
     protected examples = ['Basic', 'Custom', 'Checkbox', 'Bundled'];
+
     protected descriptions = [
         'Interactive elements react to pointer natively but you can override state with inputs',
         'Use LESS or SCSS mixins to create your own appearances in global styles',
@@ -19,9 +20,7 @@ export default class Page {
 
     protected appearances = ['primary', 'secondary', 'flat'];
     protected appearance = this.appearances[0]!;
-
     protected states: readonly TuiInteractiveState[] = ['hover', 'active', 'disabled'];
     protected state: TuiInteractiveState | null = null;
-
     protected focus: boolean | null = null;
 }

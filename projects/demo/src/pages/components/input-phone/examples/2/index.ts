@@ -75,6 +75,7 @@ const DATA: readonly User[] = [
 export default class Example {
     public readonly value = signal('');
     public readonly items = DATA;
+
     public readonly user = computed(() =>
         this.items.find(({phone}) => phone === this.value()),
     );

@@ -20,9 +20,7 @@ describe('TuiValidator directive', () => {
     })
     class Test {
         public show = false;
-
         public readonly control = new FormControl();
-
         public readonly validator = Validators.required;
     }
 

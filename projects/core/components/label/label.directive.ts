@@ -30,14 +30,15 @@ class Styles {}
     selector: 'label[tuiLabel]',
     host: {
         'data-tui-version': TUI_VERSION,
-        '[attr.for]': 'el.htmlFor || parent?.id',
         '[attr.data-orientation]': 'textfield() ? "vertical" : "horizontal"',
+        '[attr.for]': 'el.htmlFor || parent?.id',
     },
 })
 export class TuiLabel {
     protected readonly textfield = contentChild(forwardRef(() => TUI_DATA_LIST_HOST));
     protected readonly el = tuiInjectElement<HTMLLabelElement>();
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly parent = inject(
         forwardRef(() => TUI_DATA_LIST_HOST),
         {optional: true},

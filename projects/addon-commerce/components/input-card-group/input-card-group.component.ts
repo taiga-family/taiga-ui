@@ -124,9 +124,9 @@ export class TuiInputCardGroup
     private readonly el = tuiInjectElement();
     private readonly hover = tuiHovered();
     private readonly focusedIn = tuiFocusedIn(this.el);
-
     protected readonly cvcMask = computed(() => TUI_MASK_CVC(this.codeLength() ?? 3));
     protected readonly cvcHidden = this.options.cvcHidden;
+
     protected readonly cvcPlaceholder = computed((length = this.codeLength()) =>
         length ? '0'.repeat(length) : this.options.cvcPlaceholder,
     );
@@ -156,6 +156,7 @@ export class TuiInputCardGroup
     protected readonly textfield = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly texts = inject(TUI_INPUT_CARD_GROUP_TEXTS);
     protected readonly open = inject(TuiDropdownOpen).open;
+
     protected readonly $ = this.isWebkit
         ? this.focus$
               .pipe(
@@ -169,6 +170,7 @@ export class TuiInputCardGroup
     protected readonly expire = computed(() => this.value()?.expire || '');
     protected readonly cvc = computed(() => this.value()?.cvc || '');
     protected readonly m = tuiAppearanceMode(this.mode);
+
     protected readonly appearance = tuiAppearance(
         inject(TUI_TEXTFIELD_OPTIONS).appearance,
     );

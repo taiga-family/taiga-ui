@@ -30,6 +30,5 @@ import {TuiChevron, TuiDataListWrapper, TuiTooltip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = '';
-
     protected readonly items = inject<readonly string[]>('Pythons' as any);
 }

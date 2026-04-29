@@ -21,6 +21,7 @@ export function provideStyles(useValue: Type<unknown>): ValueProvider {
 @Directive()
 export class TuiWithStyles implements OnDestroy {
     private readonly injector = inject(EnvironmentInjector);
+
     private readonly refs = inject(TUI_STYLES, {self: true}).map((component) =>
         createComponent(component, {environmentInjector: this.injector}),
     );

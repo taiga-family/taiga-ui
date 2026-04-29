@@ -37,7 +37,6 @@ describe('InputSlider | With segments + tick labels', () => {
     })
     class SandBox {
         public readonly value = model<number>();
-
         public readonly size = input.required<'l' | 'm' | 's'>();
     }
 

@@ -77,11 +77,11 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     host: {
         class: 'tui-interactive',
         '[attr.data-size]': 'options.size()',
+        '[class._disabled]': 'disabled', // TODO :has([tuiInput]:disabled)
         '[class._with-label]': 'hasLabel', // TODO :has([tuiLabel]
         '[class._with-template]': 'content() && control()?.value != null',
-        '[class._disabled]': 'disabled', // TODO :has([tuiInput]:disabled)
-        '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
         '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
+        '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
         '(click.self.prevent)': '0',
         // TODO preventing breaks resize: both, but not preventing breaks focus, fix
         '(pointerdown.self.prevent)': 'onIconClick()',
@@ -92,11 +92,11 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
-
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);
     protected readonly clear = inject(TUI_CLEAR_WORD);
+
     protected readonly label = contentChild(
         forwardRef(() => TuiLabel),
         {read: ElementRef},
@@ -132,6 +132,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
+
     public readonly input: Signal<ElementRef<HTMLInputElement> | undefined> =
         contentChild(TUI_TEXTFIELD_ACCESSOR, {read: ElementRef});
 

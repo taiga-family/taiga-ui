@@ -12,7 +12,6 @@ import {TuiHint} from '@taiga-ui/core';
 })
 export default class PageComponent {
     protected readonly examples = ['Basic', 'Customizing', 'Nested', 'Auto', 'Form'];
-
     protected showDelay = 500;
     protected hideDelay = 200;
     protected readonly routes = DemoRoute;

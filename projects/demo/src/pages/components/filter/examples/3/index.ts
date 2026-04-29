@@ -23,7 +23,6 @@ const getIcon: Record<string, string> = {
 })
 export default class Example {
     protected items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
-
     protected form = new FormGroup({filters: new FormControl<string[]>([])});
 
     protected getItemIcon(title: string): string {

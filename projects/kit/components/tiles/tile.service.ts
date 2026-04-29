@@ -25,6 +25,7 @@ export class TuiTileService implements OnDestroy {
     private readonly el = tuiInjectElement();
     private readonly tiles = inject(TuiTilesComponent);
     private readonly sub = new Subscription();
+
     private readonly offset$ = new BehaviorSubject<readonly [number, number]>([
         Number.NaN,
         Number.NaN,

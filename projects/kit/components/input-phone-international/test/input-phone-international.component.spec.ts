@@ -44,11 +44,8 @@ describe('InputPhoneInternational', () => {
         );
 
         public control = new FormControl('+79110330102');
-
         public countries: TuiCountryIsoCode[] = ['RU', 'KZ', 'UA', 'BY', 'TW', 'BD'];
-
         public countryIsoCode: TuiCountryIsoCode = 'RU';
-
         public readOnly = false;
     }
 

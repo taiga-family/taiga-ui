@@ -72,14 +72,15 @@ export class TuiDropdownOpen implements ElementRef<Element> {
     private readonly el = tuiInjectElement();
     private readonly obscured = inject(TuiObscured);
     private readonly driver = inject(TuiDropdownDriver);
+
     private readonly dropdown = computed(
         () => this.directive.ref()?.location.nativeElement,
     );
 
     public readonly enabled = input(true, {alias: 'tuiDropdownEnabled'});
     public readonly open = model(false, {alias: 'tuiDropdownOpen'});
-
     protected readonly driveEffect = effect(() => this.drive(this.open()));
+
     protected readonly syncSub = this.driver
         .pipe(
             filter((open) => open !== this.open()),

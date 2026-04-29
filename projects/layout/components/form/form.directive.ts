@@ -61,15 +61,14 @@ class Styles {}
         },
     ],
     host: {
-        tuiForm: '',
         'data-tui-version': TUI_VERSION,
+        tuiForm: '',
         '[attr.data-size]': 'size() || options.size || "l"',
     },
 })
 export class TuiForm {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_FORM_OPTIONS);
-
     public readonly size = input(this.options.size, {alias: 'tuiForm'});
 }
 

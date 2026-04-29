@@ -16,6 +16,7 @@ import {TuiTableDirective} from '../directives/table.directive';
 export class TuiTableSortPipe implements PipeTransform {
     private readonly table = inject(TuiTableDirective<any>);
     private readonly data = signal<readonly any[]>([]);
+
     private readonly sorted = computed(
         (direction = this.table.direction(), sorter = this.table.sorter()) =>
             [...this.data()].sort((a, b) => direction * sorter(a, b)),

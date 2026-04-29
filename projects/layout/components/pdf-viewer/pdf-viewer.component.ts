@@ -44,6 +44,7 @@ export class TuiPdfViewer<O, I> {
     protected readonly el = tuiInjectElement();
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected readonly context =
         injectContext<TuiPortalContext<TuiDialogOptions<I>, O>>();
 }

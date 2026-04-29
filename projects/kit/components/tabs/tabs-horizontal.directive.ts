@@ -36,8 +36,8 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
         '[style.--t-color]':
             "underline() === true ? 'var(--tui-background-accent-1)' : underline()",
         '(animationend)': 'refresh()',
-        '(keydown.arrowRight.prevent)': 'onKeyDownArrow($event.target, 1)',
         '(keydown.arrowLeft.prevent)': 'onKeyDownArrow($event.target, -1)',
+        '(keydown.arrowRight.prevent)': 'onKeyDownArrow($event.target, 1)',
     },
 })
 export class TuiTabsHorizontal implements AfterViewChecked {

@@ -37,19 +37,17 @@ import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
         TuiNativeValidator,
     ],
     host: {
-        '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size()',
         '[class._readonly]': '!control',
+        '[disabled]': '!control || control.disabled',
     },
 })
 export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, OnInit {
     private readonly destroyRef = inject(DestroyRef);
-
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly options = inject<T>(TUI_RADIO_OPTIONS);
     protected readonly appearance = tuiAppearance(this.options.appearance(this.el));
     protected readonly control = inject(NgControl, {self: true, optional: true});
-
     public readonly size = input(this.options.size);
 
     public ngOnInit(): void {

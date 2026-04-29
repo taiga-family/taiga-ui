@@ -16,9 +16,7 @@ export class TuiDocInput {
     ];
 
     protected readonly focuses = [true, false];
-
     public readonly hiddenOptions = input<ReadonlyArray<'focused' | 'state'>>([]);
-
     public state: TuiInteractiveState | null = null;
     public focused: boolean | null = null;
 }

@@ -42,21 +42,13 @@ describe('rangeCalendarComponent', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiCalendarRange);
-
         public items: readonly TuiDayRangePeriod[] = [];
-
         public min = new TuiDay(1900, 0, 1);
-
         public max = TUI_LAST_DAY;
-
         public minLength: TuiDayLike | null = null;
-
         public maxLength: TuiDayLike | null = null;
-
         public value: TuiDayRange | null = null;
-
         public defaultViewedMonth = TuiMonth.currentLocal();
-
         public markerHandler: TuiMarkerHandler | null = null;
     }
 

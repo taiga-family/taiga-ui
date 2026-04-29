@@ -39,7 +39,6 @@ const tuiDialogMock: typeof tuiDialog = jest.fn(() => jest.fn(() => EMPTY));
     // component with context and some other property
     class TestComponent {
         public readonly someContextProp!: TuiDialogContext<string, number>;
-
         public readonly someOtherProperty!: string;
     }
 
@@ -58,7 +57,6 @@ const tuiDialogMock: typeof tuiDialog = jest.fn(() => jest.fn(() => EMPTY));
     // component with context and some other property that any
     class TestComponent {
         public readonly someContextProp!: TuiDialogContext<string, number>;
-
         public readonly someOtherProperty!: any;
     }
 

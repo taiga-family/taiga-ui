@@ -28,9 +28,9 @@ class Styles {}
 
 @Directive({
     host: {
+        'data-tui-version': TUI_VERSION,
         role: 'alert',
         tuiAlert: '',
-        'data-tui-version': TUI_VERSION,
         '[attr.data-block]': 'context.block',
         '[attr.data-inline]': 'context.inline',
     },

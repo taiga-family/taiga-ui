@@ -15,7 +15,6 @@ import {type Subscription} from 'rxjs';
 export default class Example {
     private readonly popout = inject(TuiPopoutService);
     private sub: Subscription | null = null;
-
     protected readonly value = signal('Value');
 
     protected toggle(content: TemplateRef<any>): void {

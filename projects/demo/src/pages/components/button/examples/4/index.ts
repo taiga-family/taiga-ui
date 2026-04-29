@@ -15,6 +15,7 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 })
 export default class Example {
     protected readonly trigger$ = new Subject<void>();
+
     protected readonly loading$ = this.trigger$.pipe(
         switchMap(() => timer(2000).pipe(map(TUI_FALSE_HANDLER), startWith('Loading'))),
     );

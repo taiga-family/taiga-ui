@@ -45,8 +45,8 @@ import {TUI_LIKE_OPTIONS} from './like.options';
     ],
     host: {
         tuiLike: '',
-        '[attr.data-size]': 'size()',
         '[attr.data-mode]': '""',
+        '[attr.data-size]': 'size()',
         '[style.--t-icon-color]': 'color()',
     },
 })

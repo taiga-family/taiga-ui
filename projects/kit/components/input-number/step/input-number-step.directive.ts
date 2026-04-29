@@ -19,16 +19,15 @@ import {TuiInputNumberStepButtons} from './input-number-step.component';
     hostDirectives: [TuiAppearanceProxy, TuiTextfieldContent],
     host: {
         'data-tui-version': TUI_VERSION,
+        '[class._with-buttons]': 'step()',
         '(keydown.arrowDown.prevent)': 'onStep(-step())',
         '(keydown.arrowUp.prevent)': 'onStep(step())',
-        '[class._with-buttons]': 'step()',
     },
 })
 export class TuiInputNumberStep {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly input = inject(TuiInputNumberDirective, {self: true});
     private readonly mask = inject(TuiNumberMask, {self: true});
-
     public readonly step = input(inject(TUI_INPUT_NUMBER_OPTIONS).step);
 
     public onStep(step: bigint | number): void {

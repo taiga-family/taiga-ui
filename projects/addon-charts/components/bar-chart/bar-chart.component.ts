@@ -29,6 +29,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export class TuiBarChart {
     private readonly hintOptions = inject(TuiChartHint, {optional: true});
     private readonly autoId = tuiGenerateId();
+
     private readonly getMax = computed(() =>
         this.collapsed()
             ? Math.max(
@@ -49,14 +50,13 @@ export class TuiBarChart {
     );
 
     protected readonly drivers = viewChildren(TuiHintHover);
-
     public readonly value = input<ReadonlyArray<readonly number[]>>([]);
     public readonly max = input(Number.NaN);
     public readonly size = input<TuiSizeL | TuiSizeS | null>('m');
     public readonly collapsed = input(false);
     public readonly tapColumn = output<number>();
-
     public readonly computedMax = computed(() => this.max() || this.getMax());
+
     public readonly percentMapper: TuiMapper<
         [readonly number[], boolean, number],
         number

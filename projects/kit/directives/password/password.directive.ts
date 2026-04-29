@@ -28,17 +28,17 @@ import {TUI_PASSWORD_OPTIONS} from './password.options';
     ],
     host: {
         style: 'cursor: pointer',
-        '(click)': 'toggle()',
         '[style.border]':
             'textfield.options.size() === "s" ? "0.25rem solid transparent" : null',
+        '(click)': 'toggle()',
     },
 })
 export class TuiPassword {
     private readonly options = inject(TUI_PASSWORD_OPTIONS);
     private readonly texts = inject(TUI_PASSWORD_TEXTS);
-
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly hidden = signal(true);
+
     protected readonly icon = tuiIconStart(
         computed(() =>
             this.hidden() ? this.options.icons.show : this.options.icons.hide,

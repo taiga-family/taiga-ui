@@ -18,6 +18,7 @@ export default class Example {
     });
 
     protected value: TuiMonth | null = TuiMonth.currentLocal().append({month: -1});
+
     protected readonly stringify: TuiStringHandler<TuiContext<TuiMonth>> = ({
         $implicit,
     }) => this.formatter.format($implicit.toLocalNativeDate());

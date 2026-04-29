@@ -45,9 +45,7 @@ export class TuiBreadcrumbs {
     protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly more = inject(TUI_MORE_WORD);
-
     public readonly size = input<TuiBreadcrumbsOptions['size']>(this.options.size);
     public readonly itemsLimit = input(this.options.itemsLimit);
-
     protected readonly offset = computed(() => (this.itemsLimit() === 2 ? 1 : 0));
 }

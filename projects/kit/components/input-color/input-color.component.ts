@@ -45,9 +45,9 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     host: {
         ngSkipHydration: 'true',
         spellcheck: 'false',
+        '[attr.list]': 'null',
         '[disabled]': 'disabled()',
         '[value]': 'value()',
-        '[attr.list]': 'null',
         '(input)': 'onChange($event.target.value)',
     },
 })
@@ -56,6 +56,7 @@ export class TuiInputColorComponent extends TuiControl<string> {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
     protected readonly start = inject(TuiIcons).iconStart() || '';
+
     protected readonly icon = tuiIconStart(
         computed(() => (this.align() === 'start' ? EMPTY : this.start)),
         {},

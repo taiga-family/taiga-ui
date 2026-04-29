@@ -31,13 +31,14 @@ export class TuiPullToRefresh {
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
     private readonly service = inject(TuiPullToRefreshService);
     private readonly el = inject(TUI_SCROLL_REF).nativeElement;
-
     protected readonly pulling = toSignal(this.service, {initialValue: 0});
+
     protected readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
         TUI_PULL_TO_REFRESH_COMPONENT,
     );
 
     protected readonly style = computed(() => this.styleHandler()(this.pulling()));
+
     protected readonly dropped = toSignal(
         this.service.pipe(
             map((distance) => distance <= MICRO_OFFSET || distance === this.threshold),

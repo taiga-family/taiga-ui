@@ -18,7 +18,6 @@ import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
 })
 export default class Example implements AfterViewInit {
     protected readonly elasticSticky = viewChild(TuiElasticSticky);
-
     protected scale$?: Observable<number>;
 
     public ngAfterViewInit(): void {

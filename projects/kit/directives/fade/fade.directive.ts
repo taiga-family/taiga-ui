@@ -47,11 +47,11 @@ class Styles {}
     ],
     host: {
         'data-tui-version': TUI_VERSION,
-        '[style.line-height]': 'lineHeight()',
-        '[style.--t-line-height]': 'lineHeight()',
-        '[style.--t-fade-size]': 'size()',
-        '[style.--t-fade-offset]': 'offset()',
         '[attr.data-orientation]': 'orientation()',
+        '[style.--t-fade-offset]': 'offset()',
+        '[style.--t-fade-size]': 'size()',
+        '[style.--t-line-height]': 'lineHeight()',
+        '[style.line-height]': 'lineHeight()',
         '[style.transition]': '"none"',
     },
 })
@@ -62,6 +62,7 @@ export class TuiFade {
     public readonly lineHeight = input<string | null>(null, {alias: 'tuiFadeHeight'});
     public readonly size = input('1.5em', {alias: 'tuiFadeSize'});
     public readonly offset = input('0em', {alias: 'tuiFadeOffset'});
+
     public readonly orientation = input<TuiOrientation | ''>('horizontal', {
         alias: 'tuiFade',
     });

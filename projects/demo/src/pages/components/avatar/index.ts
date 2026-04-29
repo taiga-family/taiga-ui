@@ -49,6 +49,5 @@ export default class Page {
     ];
 
     protected badge = this.badgeVariants[0]!;
-
     protected round = true;
 }

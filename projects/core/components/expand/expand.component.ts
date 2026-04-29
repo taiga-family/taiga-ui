@@ -32,7 +32,6 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 export class TuiExpand implements OnInit {
     protected readonly content = contentChild(TuiItem, {read: TemplateRef});
     protected readonly open = signal(false);
-
     public readonly expanded = input(false);
 
     public ngOnInit(): void {

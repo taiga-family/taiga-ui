@@ -59,7 +59,6 @@ describe('Slider', () => {
 
         public ngModelValue = 5;
         public formController = new FormControl(5);
-
         public max = 11;
         public min = 0;
     }

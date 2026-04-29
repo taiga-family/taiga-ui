@@ -15,6 +15,7 @@ import {TuiCarouselComponent} from './carousel.component';
 export class TuiCarouselDirective {
     private readonly el = tuiInjectElement();
     private readonly carousel = inject(TuiCarouselComponent);
+
     private readonly running$ = merge(
         fromEvent(this.el, 'mouseenter').pipe(map(TUI_FALSE_HANDLER)),
         fromEvent(this.el, 'touchstart').pipe(map(TUI_FALSE_HANDLER)),
@@ -24,6 +25,7 @@ export class TuiCarouselDirective {
     );
 
     public readonly duration = input(0);
+
     public readonly progress = toSignal(
         combineLatest([
             toObservable(this.duration),

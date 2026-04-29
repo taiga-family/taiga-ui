@@ -75,7 +75,6 @@ const DATA: Record<string, readonly Result[]> = {
 })
 export default class ExampleComponent {
     protected readonly popular = ['Taiga UI', 'Maskito', 'Web APIs for Angular'];
-
     protected readonly control = new FormControl('');
 
     protected readonly results$ = this.control.valueChanges.pipe(

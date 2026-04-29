@@ -14,7 +14,6 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
 })
 export default class Page {
     protected length = 64;
-
     protected index = 10;
 
     protected goToPage(index: number): void {

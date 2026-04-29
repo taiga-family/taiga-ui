@@ -18,6 +18,7 @@ export default class Example {
     protected readonly max = 100;
     protected readonly step = 25;
     protected readonly segments = 4;
+
     protected readonly labels = Array.from(
         {length: this.segments + 1},
         (_, i) => this.min + this.step * i,
