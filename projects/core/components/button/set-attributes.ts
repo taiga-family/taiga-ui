@@ -6,7 +6,7 @@ export function tuiSetAttributes(selectors: string[]): undefined {
 
     el.getAttributeNames()
         .filter((name) => selectors.some((selector) => name === selector.toLowerCase()))
-        .forEach((name) => el.setAttribute(name, TUI_VERSION));
+        .forEach((name) => el.setAttribute(`${name}V`, TUI_VERSION));
 
     return undefined;
 }
