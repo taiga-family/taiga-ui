@@ -9,6 +9,11 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    getControlStateAttrs,
+    removeControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -114,6 +119,8 @@ export function migrateInputTag({
             DROPPED_ATTRS.has(attr.name.toLowerCase()),
         );
 
+        const controlStateAttrs = getControlStateAttrs(element);
+
         for (const attr of [
             ...controlAttrs,
             ...inputAttrs,
@@ -126,6 +133,14 @@ export function migrateInputTag({
 
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         }
+
+        removeControlStateAttrs(
+            recorder,
+            templateOffset,
+            element,
+            template,
+            controlStateAttrs,
+        );
 
         const textfieldAttrStr = textfieldAttrs.reduce((result, attr) => {
             const name = TEXTFIELD_ATTR_RENAMES.get(attr.name.toLowerCase()) ?? attr.name;
@@ -190,11 +205,12 @@ export function migrateInputTag({
         const insertOffset =
             (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
 
-        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+        const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
             const name = normalizeAttrName(attr.name);
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
+        const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
 
         recorder.insertRight(
             insertOffset,

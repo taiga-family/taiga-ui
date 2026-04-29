@@ -9,6 +9,11 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    getControlStateAttrs,
+    removeControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -49,6 +54,7 @@ export function migrateSelect({
         const controlAttrs = element.attrs.filter((attr) =>
             CONTROL_ATTRS.has(attr.name.toLowerCase()),
         );
+        const controlStateAttrs = getControlStateAttrs(element);
 
         if (typeof startOffset === 'number') {
             recorder.insertLeft(templateOffset + startOffset, SELECT_MIGRATION_TODO);
@@ -94,6 +100,13 @@ export function migrateSelect({
         controlAttrs.forEach((attr) => {
             removeAttr(recorder, templateOffset, element, attr.name, template);
         });
+        removeControlStateAttrs(
+            recorder,
+            templateOffset,
+            element,
+            template,
+            controlStateAttrs,
+        );
 
         const hasChevron = element.attrs.some(
             (attr) => attr.name.toLowerCase() === 'tuiChevron'.toLowerCase(),
@@ -139,6 +152,7 @@ export function migrateSelect({
                 });
 
                 const formAttrs = formatControlAttrs(controlAttrs);
+                const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
                 const placeholderAttr =
                     isLabelOutsideTrue && placeholder
                         ? ` placeholder="${placeholder}"`
@@ -148,15 +162,16 @@ export function migrateSelect({
                     (input.sourceCodeLocation?.startTag?.startOffset ?? 0) +
                     '<input'.length;
 
-                if (formAttrs || placeholderAttr) {
+                if (formAttrs || placeholderAttr || controlStateStr) {
                     recorder.insertRight(
                         templateOffset + insertOffset,
-                        `${placeholderAttr}${formAttrs ? ` ${formAttrs}` : ''}`,
+                        `${placeholderAttr}${formAttrs ? ` ${formAttrs}` : ''}${controlStateStr}`,
                     );
                 }
             });
         } else {
             const formAttrs = formatControlAttrs(controlAttrs);
+            const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
             const firstElementChildOffset = element.childNodes.find(
                 (node): node is Element => node.nodeName !== '#text',
             )?.sourceCodeLocation?.startOffset;
@@ -166,7 +181,7 @@ export function migrateSelect({
                 0;
             const placeholderAttr =
                 isLabelOutsideTrue && placeholder ? ` placeholder="${placeholder}"` : '';
-            const inputTemplate = `\n<input${placeholderAttr} tuiSelect${formAttrs ? ` ${formAttrs}` : ''} />\n`;
+            const inputTemplate = `\n<input${placeholderAttr} tuiSelect${formAttrs ? ` ${formAttrs}` : ''}${controlStateStr} />\n`;
 
             if (isLabelOutsideTrue) {
                 removeTextContent(recorder, templateOffset, element);

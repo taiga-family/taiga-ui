@@ -11,6 +11,10 @@ import {
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
 import {
+    getControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
+import {
     buildCustomContentIconStr,
     CUSTOM_CONTENT_ATTRS,
     type CustomContent,
@@ -146,6 +150,10 @@ function buildReplacement(
 
     const textfieldAttrs: string[] = [];
     const textareaAttrs = ['tuiTextarea'];
+    const controlStateAttrs = getControlStateAttrs(element);
+    const controlStateAttrsLower = new Set(
+        controlStateAttrs.map((a) => a.name.toLowerCase()),
+    );
     let maxLengthAttrText: string | null = null;
     let maxLengthIsBinding = false;
     const ctx: MigrationContext = {
@@ -159,6 +167,10 @@ function buildReplacement(
 
     for (const attr of element.attrs) {
         const nameLower = attr.name.toLowerCase();
+
+        if (controlStateAttrsLower.has(nameLower)) {
+            continue;
+        }
 
         if (CUSTOM_CONTENT_ATTRS.has(nameLower)) {
             ctx.customContent = {
@@ -252,6 +264,8 @@ function buildReplacement(
         textareaAttrs.push(`${attrName}="${maxLengthAttrText}"`);
     }
 
+    const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+
     ctx.placeholder = getPlaceholderText(element);
 
     const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
@@ -263,6 +277,7 @@ function buildReplacement(
         element,
         template,
         textareaAttrs,
+        controlStateStr,
         ctx,
         indent,
         hintIconStr,
@@ -344,11 +359,13 @@ function buildInnerContent({
     element,
     template,
     textareaAttrs,
+    controlStateStr,
     ctx,
     indent,
     hintIconStr = '',
     customContentIconStr = '',
 }: {
+    controlStateStr: string;
     ctx: MigrationContext;
     customContentIconStr?: string;
     element: Element;
@@ -386,6 +403,7 @@ function buildInnerContent({
             inner: legacyInnerTextarea,
             template,
             attrsToAdd: textareaAttrs,
+            controlStateStr,
             allChildren: childElements,
             indent,
             hintIconLine,
@@ -409,7 +427,7 @@ function buildInnerContent({
         })
         .join('');
 
-    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}></textarea>\n${otherChildren}${hintIconLine}${customContentLine}`;
+    return `${labelEl}${indent}<textarea${placeholderAttr}${attrsStr}${controlStateStr}></textarea>\n${otherChildren}${hintIconLine}${customContentLine}`;
 }
 
 /**
@@ -420,6 +438,7 @@ function migrateInnerTextarea({
     inner,
     template,
     attrsToAdd,
+    controlStateStr,
     allChildren,
     indent,
     hintIconLine = '',
@@ -427,6 +446,7 @@ function migrateInnerTextarea({
 }: {
     allChildren: Element[];
     attrsToAdd: string[];
+    controlStateStr: string;
     customContentLine?: string;
     hintIconLine?: string;
     indent: string;
@@ -462,7 +482,7 @@ function migrateInnerTextarea({
     // Append form control / other attrs from the outer <tui-textarea> before the closing >
     const closeAngle = startTag.lastIndexOf('>');
     const extraAttrs = attrsToAdd.filter((a) => a !== 'tuiTextarea').join(' ');
-    const insertStr = extraAttrs ? ` ${extraAttrs}` : '';
+    const insertStr = `${extraAttrs ? ` ${extraAttrs}` : ''}${controlStateStr}`;
 
     // trimEnd() removes trailing whitespace/newlines before '>' to avoid a visual gap
     startTag = `${startTag.slice(0, closeAngle).trimEnd()}${insertStr}${startTag.slice(closeAngle)}`;

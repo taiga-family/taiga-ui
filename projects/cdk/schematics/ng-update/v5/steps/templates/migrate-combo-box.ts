@@ -9,6 +9,11 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    getControlStateAttrs,
+    removeControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -65,6 +70,8 @@ export function migrateComboBox({
             REMOVE_ATTRS.has(attr.name.toLowerCase()),
         );
 
+        const controlStateAttrs = getControlStateAttrs(element);
+
         const labelOutsideAttr = removeAttrs.find((attr) =>
             REMOVE_ATTRS.has(attr.name.toLowerCase()),
         );
@@ -84,6 +91,14 @@ export function migrateComboBox({
         for (const attr of [...controlAttrs, ...inputAttrs, ...removeAttrs]) {
             removeAttr(recorder, templateOffset, element, attr.name, template);
         }
+
+        removeControlStateAttrs(
+            recorder,
+            templateOffset,
+            element,
+            template,
+            controlStateAttrs,
+        );
 
         if (searchAttr) {
             removeAttr(recorder, templateOffset, element, searchAttr.name, template);
@@ -155,6 +170,7 @@ export function migrateComboBox({
                 template,
                 controlAttrs,
                 inputAttrs,
+                controlStateAttrs,
                 searchHandler,
                 placeholder: isLabelOutsideTrue ? getPlaceholderText(element) : '',
             });
@@ -179,6 +195,7 @@ export function migrateComboBox({
                 templateOffset,
                 controlAttrs,
                 inputAttrs,
+                controlStateAttrs,
                 searchHandler,
                 sourceCodeLocation,
                 isLabelOutsideTrue,
@@ -194,10 +211,12 @@ function handleExistingInput({
     template,
     controlAttrs,
     inputAttrs,
+    controlStateAttrs,
     searchHandler,
     placeholder,
 }: {
     controlAttrs: Array<{name: string; value: string}>;
+    controlStateAttrs: Array<{name: string; value: string}>;
     inputAttrs: Array<{name: string; value: string}>;
     inputs: Element[];
     placeholder: string;
@@ -232,10 +251,11 @@ function handleExistingInput({
         const formAttrs = formatControlAttrs(controlAttrs);
         const inputAttrStr = formatInputAttrs(inputAttrs);
         const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
+        const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
 
         recorder.insertRight(
             templateOffset + insertOffset,
-            ` tuiComboBox${formAttrs}${inputAttrStr}${searchHandler}${placeholderAttr}`,
+            ` tuiComboBox${formAttrs}${inputAttrStr}${searchHandler}${placeholderAttr}${controlStateStr}`,
         );
     });
 }
@@ -246,11 +266,13 @@ function handleGeneratedInput({
     templateOffset,
     controlAttrs,
     inputAttrs,
+    controlStateAttrs,
     searchHandler,
     sourceCodeLocation,
     isLabelOutsideTrue,
 }: {
     controlAttrs: Array<{name: string; value: string}>;
+    controlStateAttrs: Array<{name: string; value: string}>;
     element: Element;
     inputAttrs: Array<{name: string; value: string}>;
     isLabelOutsideTrue: boolean;
@@ -261,6 +283,7 @@ function handleGeneratedInput({
 }): void {
     const formAttrs = formatControlAttrs(controlAttrs);
     const inputAttrStr = formatInputAttrs(inputAttrs);
+    const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
 
     const labelNode = findTextNode(element);
 
@@ -273,7 +296,7 @@ function handleGeneratedInput({
 
         recorder.insertRight(
             templateOffset + textStart,
-            `\n<input tuiComboBox${formAttrs}${inputAttrStr}${searchHandler} placeholder="${labelText}" />\n`,
+            `\n<input tuiComboBox${formAttrs}${inputAttrStr}${searchHandler} placeholder="${labelText}"${controlStateStr} />\n`,
         );
 
         return;
@@ -285,7 +308,7 @@ function handleGeneratedInput({
 
     recorder.insertRight(
         templateOffset + insertOffset,
-        `\n<input tuiComboBox${formAttrs}${inputAttrStr}${searchHandler} />\n`,
+        `\n<input tuiComboBox${formAttrs}${inputAttrStr}${searchHandler}${controlStateStr} />\n`,
     );
 }
 

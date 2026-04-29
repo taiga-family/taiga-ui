@@ -9,6 +9,11 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    getControlStateAttrs,
+    removeControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -91,12 +96,22 @@ export function migrateInputDateRange({
             CALENDAR_ATTRS.has(attr.name.toLowerCase()),
         );
 
+        const controlStateAttrs = getControlStateAttrs(element);
+
         for (const attr of [...controlAttrs, ...inputAttrs, ...calendarAttrs]) {
             const {startOffset = 0, endOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
 
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         }
+
+        removeControlStateAttrs(
+            recorder,
+            templateOffset,
+            element,
+            template,
+            controlStateAttrs,
+        );
 
         const labelIndex = element.childNodes.findIndex(
             (node: ChildNode) =>
@@ -138,11 +153,12 @@ export function migrateInputDateRange({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+        const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
             const name = normalizeAttrName(attr.name);
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
+        const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
             const name = CALENDAR_ATTR_NAMES.get(attr.name.toLowerCase()) ?? attr.name;
