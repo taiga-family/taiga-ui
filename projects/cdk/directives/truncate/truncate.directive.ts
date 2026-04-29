@@ -49,8 +49,8 @@ class Styles {}
         },
     ],
     host: {
-        tuiTruncate: '',
         'data-tui-version': TUI_VERSION,
+        tuiTruncate: '',
         '[attr.data-lines]': 'lines()',
         '[attr.data-text]': 'truncated()',
         '[style.-webkit-line-clamp]': 'lines()',
@@ -59,6 +59,7 @@ class Styles {}
 export class TuiTruncate {
     private readonly service = inject(TuiTruncateService);
     private readonly el = tuiInjectElement();
+
     private readonly width = toSignal(
         inject(WaResizeObserverService).pipe(map(([e]) => e?.contentRect.width ?? 0)),
         {initialValue: 0},

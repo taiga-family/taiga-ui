@@ -15,7 +15,6 @@ import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 })
 export class TuiThumbnailCard {
     protected readonly options = inject(TUI_THUMBNAIL_CARD_OPTIONS);
-
     public readonly size = input<TuiSizeL | TuiSizeXS>(this.options.size);
     public readonly paymentSystem = input<TuiPaymentSystem | null>(null);
     public readonly iconStart = input('');

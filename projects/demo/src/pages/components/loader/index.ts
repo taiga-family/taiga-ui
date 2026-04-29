@@ -13,7 +13,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export default class Page {
     protected readonly textTemplate = viewChild<PolymorpheusContent>('textTemplate');
-
     protected readonly routes = DemoRoute;
 
     protected readonly examples = [
@@ -24,9 +23,7 @@ export default class Page {
     ];
 
     protected loading = true;
-
     protected inheritColor = false;
-
     protected overlay = false;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
@@ -39,9 +36,7 @@ export default class Page {
     ];
 
     protected size = this.sizeVariants[2]!;
-
     protected selectedTemplate = '';
-
     protected readonly textVariants = ['', 'template', 'string'];
 
     protected get template(): PolymorpheusContent {

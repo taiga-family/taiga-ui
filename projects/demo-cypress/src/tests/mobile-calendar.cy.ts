@@ -49,7 +49,6 @@ describe('Mobile calendar', () => {
         protected min = TUI_FIRST_DAY;
         protected max = TUI_LAST_DAY;
         protected disabledItemHandler = TUI_FALSE_HANDLER;
-
         public readonly calendar = viewChild.required(TuiMobileCalendar);
         public readonly single = input(true);
         public readonly cancel = output<boolean>();

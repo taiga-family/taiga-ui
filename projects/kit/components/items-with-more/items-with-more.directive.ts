@@ -10,7 +10,6 @@ import {Subject} from 'rxjs';
 })
 export class TuiItemsWithMoreDirective implements OnChanges {
     private readonly el = tuiInjectElement();
-
     public readonly itemsLimit = input(Infinity);
     public readonly required = input(-1);
     public readonly linesLimit = input(1);

@@ -22,7 +22,6 @@ import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 export class TuiPulse extends TuiRectAccessor {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly el = tuiInjectElement();
-
     public readonly playing = input(true);
     public readonly type = 'hint';
 

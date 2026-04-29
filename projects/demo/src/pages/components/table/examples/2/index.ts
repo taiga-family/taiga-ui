@@ -55,7 +55,6 @@ import {TuiItemGroup} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly sizes = ['l', 'm', 's'] as const;
-
     protected size = this.sizes[0];
     protected selected = [];
 

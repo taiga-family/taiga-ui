@@ -17,6 +17,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export default class Page {
     protected readonly examples = ['Sizes', 'With labels'];
     protected readonly routes = DemoRoute;
+
     protected readonly valueVariants = [
         [0, 30, 20, 10],
         [40, 30, 20, 10],
@@ -24,9 +25,7 @@ export default class Page {
     ];
 
     protected value = this.valueVariants[0]!;
-
     protected readonly activeItemIndexVariants = [Number.NaN, 0, 1, 2];
-
     protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [

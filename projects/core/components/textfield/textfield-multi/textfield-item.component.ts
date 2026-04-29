@@ -27,11 +27,11 @@ export interface TuiTextfieldItem<T> {
     styleUrl: './textfield-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._string]': '!textfield.item()',
         '[class._disabled]': 'handlers.disabledItemHandler()(context.$implicit.item)',
-        '(pointerdown.self)': 'prevent($event)',
+        '[class._string]': '!textfield.item()',
         '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
         '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
+        '(pointerdown.self)': 'prevent($event)',
     },
 })
 export class TuiTextfieldItemComponent<T> {
@@ -39,6 +39,7 @@ export class TuiTextfieldItemComponent<T> {
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
+
     protected readonly content = computed(
         () =>
             this.textfield.item() ??

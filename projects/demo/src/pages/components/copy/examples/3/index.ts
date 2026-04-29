@@ -13,6 +13,5 @@ import {TuiCopy, TuiInputChip} from '@taiga-ui/kit';
 })
 export default class Example {
     protected value = '';
-
     protected multiValue = ['I', 'love', 'Taiga UI'];
 }

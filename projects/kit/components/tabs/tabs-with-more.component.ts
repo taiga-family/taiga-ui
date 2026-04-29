@@ -56,9 +56,9 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
-
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
+
     protected readonly sync = effect(() => {
         this.activeItemIndex();
         this.maxIndex = this.getMaxIndex();
@@ -71,6 +71,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     public readonly underline = input(this.options.underline);
     public readonly itemsLimit = input(this.options.itemsLimit);
     public readonly moreContent = input<PolymorpheusContent>();
+
     public readonly dropdownContent =
         input<PolymorpheusContent<TuiContext<TuiActiveZone>>>();
 

@@ -14,11 +14,8 @@ import {TuiButton, TuiInput} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly control = new FormControl('');
-
     protected childActive = false;
-
     protected parentActive = false;
-
     protected items = [1, 2, 3];
 
     protected onParentActiveZone(active: boolean): void {

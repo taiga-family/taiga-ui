@@ -11,8 +11,8 @@ import {tuiGetClosestFocusable, tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
     selector: '[tuiFocusTrap]',
     host: {
         tabIndex: '0',
-        '(window:focusin.zoneless)': 'initialized && onFocusIn($event.target)',
         '(pointerdown)': '$event.currentTarget?.removeAttribute("tabindex")',
+        '(window:focusin.zoneless)': 'initialized && onFocusIn($event.target)',
     },
 })
 export class TuiFocusTrap implements OnDestroy {

@@ -23,6 +23,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 export class TestInputNumberWithPostfix {
     protected value: number | null = null;
+
     protected pluralMap = {
         one: ' секунда',
         few: ' секунды',

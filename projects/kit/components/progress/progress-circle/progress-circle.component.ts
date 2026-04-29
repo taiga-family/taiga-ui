@@ -10,9 +10,9 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size()',
-        '[style.--tui-progress-color]': 'color()',
-        '[style.--t-progress-ratio]': 'ratio()',
         '[class._arc]': 'arc()',
+        '[style.--t-progress-ratio]': 'ratio()',
+        '[style.--tui-progress-color]': 'color()',
     },
 })
 export class TuiProgressCircle {

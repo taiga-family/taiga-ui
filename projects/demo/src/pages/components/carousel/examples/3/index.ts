@@ -16,6 +16,7 @@ import {TuiCard} from '@taiga-ui/layout';
 export default class Example {
     protected readonly isE2E = inject(WA_IS_E2E);
     protected readonly index = signal(0);
+
     protected readonly items = [
         {
             title: 'Taiga UI',

@@ -24,8 +24,6 @@ import {interval, map} from 'rxjs';
 })
 export default class Example {
     protected open = false;
-
     protected value = 'some data';
-
     protected showBigText$ = interval(3000).pipe(map((i) => !(i % 2)));
 }

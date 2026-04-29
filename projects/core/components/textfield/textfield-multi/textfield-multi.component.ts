@@ -81,6 +81,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component = TUI_TEXTFIELD_ITEM;
+
     protected readonly sub = fromEvent(this.el, 'scroll')
         .pipe(
             filter(() => this.rows() === 1),

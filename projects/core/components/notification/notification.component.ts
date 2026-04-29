@@ -24,9 +24,9 @@ import {type TuiNotificationOptions} from './notification.options';
 })
 export class TuiNotificationComponent<O, I> {
     private readonly el = tuiInjectElement();
-
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly close = inject(TUI_CLOSE_WORD);
+
     protected readonly item =
         injectContext<TuiPortalContext<TuiNotificationOptions<I>, O>>();
 

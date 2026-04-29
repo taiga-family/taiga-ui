@@ -12,8 +12,8 @@ import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
-
     protected readonly examples = ['Basic', 'Overflow'];
+
     protected readonly items = [
         'Item 1',
         'Item 2',

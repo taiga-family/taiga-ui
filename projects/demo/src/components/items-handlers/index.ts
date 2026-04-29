@@ -16,6 +16,7 @@ import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers, TuiTitle} from '@taiga-ui/cor
 })
 export class TuiDocItemsHandlers implements TuiItemsHandlers<unknown> {
     protected readonly options = inject(TUI_ITEMS_HANDLERS);
+
     protected readonly stringifyVariants: Array<TuiStringHandler<any>> = [
         (x) => x.name,
         (x) => String(x),

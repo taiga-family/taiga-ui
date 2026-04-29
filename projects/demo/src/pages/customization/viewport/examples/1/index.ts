@@ -14,7 +14,6 @@ import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from '@taiga-ui/core';
 })
 export default class Example extends TuiRectAccessor {
     private readonly el = tuiInjectElement();
-
     public readonly type = 'viewport';
 
     public getClientRect(): DOMRect {

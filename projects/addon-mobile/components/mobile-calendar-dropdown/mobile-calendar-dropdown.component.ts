@@ -53,6 +53,7 @@ export class TuiMobileCalendarDropdownComponent {
     protected readonly control: any = inject(TuiControl, {optional: true});
     protected readonly directive = inject(TuiMobileCalendarDropdown, {optional: true});
     protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
+
     protected readonly range =
         !!this.directive?.range() || this.is('tui-input-date-range');
 

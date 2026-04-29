@@ -37,12 +37,12 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
     host: {
         enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
-        '(keydown.enter.prevent)': 'onEnter()',
-        '(keydown.zoneless)': 'onBackspace($event.key)',
-        '(input)': 'onInput()',
-        '(paste.prevent)': 'onPaste($event)',
         '(drop.prevent)': 'onPaste($event)',
         '(focus)': 'scrollTo()',
+        '(input)': 'onInput()',
+        '(keydown.enter.prevent)': 'onEnter()',
+        '(keydown.zoneless)': 'onBackspace($event.key)',
+        '(paste.prevent)': 'onPaste($event)',
     },
 })
 export class TuiInputChipDirective<T>
@@ -52,11 +52,11 @@ export class TuiInputChipDirective<T>
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly mobile = inject(WA_IS_MOBILE);
     private readonly dropdown = inject(TuiDropdownDirective);
-
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
+
     protected readonly sub = inject(TuiActiveZone)
         .tuiActiveZoneChange.pipe(
             filter((active) => !active && !this.el.matches('select')),

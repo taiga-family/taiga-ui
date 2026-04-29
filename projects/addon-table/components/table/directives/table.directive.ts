@@ -62,17 +62,14 @@ class Styles {}
         tuiProgressOptionsProvider({size: 's', color: 'var(--tui-text-action)'}),
     ],
     hostDirectives: [TuiStuck],
-    host: {
-        tuiTable: '',
-        'data-tui-version': TUI_VERSION,
-        '[attr.data-size]': 'size()',
-    },
+    host: {'data-tui-version': TUI_VERSION, tuiTable: '', '[attr.data-size]': 'size()'},
 })
 export class TuiTableDirective<
     T extends Partial<Record<keyof T, unknown>>,
 > implements TuiTextfieldOptions {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly computedSortChange = computed<TuiTableSortChange<T>>(() => ({
         sortComparator: this.sorter(),
         sortDirection: this.direction(),
@@ -87,7 +84,6 @@ export class TuiTableDirective<
     public readonly direction = model(this.options.direction);
     public readonly sorter = model<TuiComparator<T>>(EMPTY_COMPARATOR);
     public readonly sortChange = output<TuiTableSortChange<T>>();
-
     public readonly appearance = signal('table');
     public readonly cleaner = signal(false);
 

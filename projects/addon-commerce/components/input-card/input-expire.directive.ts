@@ -8,12 +8,12 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     selector: 'input[tuiInputExpire]',
     hostDirectives: [MaskitoDirective, TuiWithInput],
     host: {
+        autocomplete: 'cc-exp',
         inputmode: 'numeric',
-        placeholder: '00/00',
-        translate: 'no',
         maxlength: '5',
         name: 'ccexpiryyear',
-        autocomplete: 'cc-exp',
+        placeholder: '00/00',
+        translate: 'no',
     },
 })
 export class TuiInputExpireDirective {

@@ -41,12 +41,12 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
         },
     ],
     host: {
+        tuiAsideItem: '',
         tuiButton: '',
         tuiOption: '',
-        tuiAsideItem: '',
-        '[class._link]': 'link',
         '[class._active]': 'active()',
         '[class._custom]': 'icon !== icons.iconEnd()',
+        '[class._link]': 'link',
     },
 })
 export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
@@ -54,7 +54,6 @@ export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
     protected readonly icons = inject(TuiIcons);
     protected readonly link = inject(RouterLink, {self: true, optional: true});
     protected readonly active = toSignal(inject(RouterLinkActive).isActiveChange);
-
     public readonly size = 's';
 }
 

@@ -7,12 +7,15 @@ import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {type TemplateResource} from '../../interfaces/template-resource';
 
-const FILTER_BY_INPUT_PIPE_RE = /\|\s*tuiFilterByInput:\s*(\w+)/g;
+const FILTER_BY_INPUT_PIPE_RE = /\|\s*tuiFilterByInput:\s*(\w+)(\s*\(([^)]*)\))?/g;
 const TUI_STRING_MATCHER_GENERIC_RE = /TuiStringMatcher<([^>]+)>/;
+
+type MatcherKind = 'call-no-args' | 'call-with-args' | 'reference';
 
 interface FilterPropDescriptor {
     readonly filterWithName: string;
     readonly generic: string;
+    readonly kind: MatcherKind;
     readonly matcherName: string;
 }
 
@@ -32,9 +35,9 @@ function migrateResource(resource: TemplateResource, tree: Tree): void {
         return;
     }
 
-    const matcherNames = collectMatcherNames(templateText);
+    const matcherUsages = collectMatcherUsages(templateText);
 
-    if (matcherNames.size === 0) {
+    if (matcherUsages.size === 0) {
         return;
     }
 
@@ -52,7 +55,7 @@ function migrateResource(resource: TemplateResource, tree: Tree): void {
         return;
     }
 
-    const propsToAdd = buildFilterProps(matcherNames, componentClass);
+    const propsToAdd = buildFilterProps(matcherUsages, componentClass);
 
     if (propsToAdd.length === 0) {
         return;
@@ -70,26 +73,38 @@ function migrateResource(resource: TemplateResource, tree: Tree): void {
     addUniqueImport(resource.componentPath, 'TuiFilterByInputOptions', '@taiga-ui/core');
 }
 
-function collectMatcherNames(templateText: string): Set<string> {
+function collectMatcherUsages(templateText: string): Map<string, MatcherKind> {
     FILTER_BY_INPUT_PIPE_RE.lastIndex = 0;
 
-    const matcherNames = new Set<string>();
+    const usages = new Map<string, MatcherKind>();
     let match: RegExpExecArray | null;
 
     while ((match = FILTER_BY_INPUT_PIPE_RE.exec(templateText)) !== null) {
-        matcherNames.add(match[1]!);
+        const name = match[1]!;
+        const callSuffix = match[2];
+        const args = match[3];
+
+        let kind: MatcherKind = 'reference';
+
+        if (callSuffix !== undefined) {
+            kind = args?.trim() ? 'call-with-args' : 'call-no-args';
+        }
+
+        if (!usages.has(name)) {
+            usages.set(name, kind);
+        }
     }
 
-    return matcherNames;
+    return usages;
 }
 
 function buildFilterProps(
-    matcherNames: Set<string>,
+    matcherUsages: Map<string, MatcherKind>,
     componentClass: ClassDeclaration,
 ): FilterPropDescriptor[] {
     const result: FilterPropDescriptor[] = [];
 
-    for (const matcherName of matcherNames) {
+    for (const [matcherName, kind] of matcherUsages) {
         const filterWithName = `filterWith${matcherName[0]!.toUpperCase()}${matcherName.slice(1)}`;
 
         if (componentClass.getProperty(filterWithName)) {
@@ -101,7 +116,7 @@ function buildFilterProps(
         const genericMatch = TUI_STRING_MATCHER_GENERIC_RE.exec(typeText);
         const generic = genericMatch ? `<${genericMatch[1]}>` : '';
 
-        result.push({filterWithName, matcherName, generic});
+        result.push({filterWithName, matcherName, generic, kind});
     }
 
     return result;
@@ -150,12 +165,21 @@ function addFilterWrapperProperties(
     }
 
     const indent = '    ';
-    const propsText = `\n${propsToAdd
-        .map(
-            ({filterWithName, matcherName, generic}) =>
-                `${indent}${filterWithName}: TuiFilterByInputOptions${generic}['filter'] = (items, query, stringify) => items.filter((item) => this.${matcherName}(item, query, stringify));`,
-        )
-        .join('\n')}\n`;
+    const propsText = `\n${propsToAdd.map((prop) => buildFilterPropLine(prop, indent)).join('\n')}\n`;
 
     closeBrace.getSourceFile().insertText(closeBrace.getStart(), propsText);
+}
+
+function buildFilterPropLine(
+    {filterWithName, matcherName, generic, kind}: FilterPropDescriptor,
+    indent: string,
+): string {
+    switch (kind) {
+        case 'call-no-args':
+            return `${indent}${filterWithName} = (): TuiFilterByInputOptions${generic}['filter'] => (items, query, stringify) => items.filter((item) => this.${matcherName}()(item, query, stringify));`;
+        case 'call-with-args':
+            return `${indent}${filterWithName} = (...args: any[]): TuiFilterByInputOptions${generic}['filter'] => (items, query, stringify) => items.filter((item) => this.${matcherName}(...args)(item, query, stringify));`;
+        default:
+            return `${indent}${filterWithName}: TuiFilterByInputOptions${generic}['filter'] = (items, query, stringify) => items.filter((item) => this.${matcherName}(item, query, stringify));`;
+    }
 }

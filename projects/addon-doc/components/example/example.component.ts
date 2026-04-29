@@ -75,8 +75,8 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         },
     ],
     host: {
-        waIntersectionThreshold: '1',
         waIntersectionRootMargin: '-40px 0px 1000000% 0px',
+        waIntersectionThreshold: '1',
         '[attr.id]': 'resolvedId()',
         '[class._fullsize]': 'fullsize()',
         '(waIntersectionObservee)': 'onIntersection()',
@@ -90,6 +90,7 @@ export class TuiDocExample implements OnChanges {
     private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly doneWord = inject(TUI_DONE_WORD);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
+
     private readonly rawLoader$$ = new BehaviorSubject<
         Record<string, TuiRawLoaderContent>
     >({});
@@ -99,6 +100,7 @@ export class TuiDocExample implements OnChanges {
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
     protected readonly defaultTab = inject(TUI_DOC_PREVIEW_TEXT);
     protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
+
     protected readonly codeActions =
         inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
             TUI_DOC_CODE_ACTIONS,
@@ -139,6 +141,7 @@ export class TuiDocExample implements OnChanges {
     public readonly id = input('');
     public readonly description = input<PolymorpheusContent>();
     public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
+
     public readonly component =
         input<Promise<Type<unknown> | {default: Type<unknown>}>>();
 

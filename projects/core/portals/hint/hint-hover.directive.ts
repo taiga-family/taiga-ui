@@ -30,6 +30,7 @@ export class TuiHintHover extends TuiDriver {
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
     private readonly toggle$ = new Subject<boolean>();
+
     private readonly stream$ = merge(
         this.toggle$.pipe(
             switchMap((show) =>
@@ -75,7 +76,6 @@ export class TuiHintHover extends TuiDriver {
     });
 
     public readonly type = 'hint';
-
     public enabled = true;
 
     constructor() {

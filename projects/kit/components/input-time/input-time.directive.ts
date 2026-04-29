@@ -46,9 +46,9 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     host: {
         inputmode: 'numeric',
         '[disabled]': 'disabled()',
+        '(blur)': 'onBlur($event.target.value)',
         '(click)': 'toggle()',
         '(input)': 'onInput($event.target.value)',
-        '(blur)': 'onBlur($event.target.value)',
     },
 })
 export class TuiInputTimeDirective
@@ -61,6 +61,7 @@ export class TuiInputTimeDirective
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = inject(TUI_TIME_TEXTS);
     protected readonly icon = tuiIconEnd(this.options.icon);
+
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
@@ -90,6 +91,7 @@ export class TuiInputTimeDirective
     public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
     public readonly prefix = input('');
     public readonly postfix = input('');
+
     public readonly native =
         !!inject(TuiWithNativePicker, {optional: true}) && inject(WA_IS_MOBILE);
 

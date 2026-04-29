@@ -9,6 +9,5 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly providers = import('./examples/import/providers.md');
-
     protected examples = ['Dropdown', 'Dropdown and custom portal', 'Hint'];
 }

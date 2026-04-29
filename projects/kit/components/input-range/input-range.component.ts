@@ -52,6 +52,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     private readonly range = viewChild(TuiRange);
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly isMobile = inject(WA_IS_MOBILE);
+
     private readonly quantumTransformer = computed(
         () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
@@ -60,6 +61,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     protected start = this.value()[0];
     protected end = this.value()[1];
     protected side: 'end' | 'start' = 'start';
+
     protected readonly contentStart = computed(() => {
         const [start, end] = this.content().map((x, i) => {
             const value = this.value()[i]!;
@@ -84,6 +86,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();
     public readonly quantum = input(0);
+
     public readonly prefix = input([this.options.prefix, this.options.prefix], {
         transform,
     });

@@ -36,10 +36,8 @@ export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly ios = inject(WA_IS_IOS);
     private readonly behavior = inject(TUI_REDUCED_MOTION) ? 'auto' : 'smooth';
-
     protected readonly math = Math;
     protected readonly template = contentChild.required(TuiItem, {read: TemplateRef});
-
     public readonly index = model(0);
     public readonly min = input(-Infinity);
     public readonly max = input(Infinity);

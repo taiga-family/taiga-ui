@@ -22,6 +22,7 @@ import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
 export class TuiI18nExample1 {
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected language = this.switcher.language;
+
     protected readonly languages = [
         'arabic',
         'belarusian',

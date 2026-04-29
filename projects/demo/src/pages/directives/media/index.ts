@@ -10,11 +10,9 @@ import {TuiMedia} from '@taiga-ui/cdk';
 })
 export default class Page {
     protected readonly volumeVariants: readonly number[] = [1, 0.5, 0.25, 0];
-
     protected playbackRate = 1;
     protected currentTime = 0;
     protected volume = this.volumeVariants[0]!;
     protected paused = true;
-
     protected readonly examples = ['Native controls', 'Video', 'Audio'];
 }

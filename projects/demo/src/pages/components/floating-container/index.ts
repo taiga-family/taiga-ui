@@ -28,6 +28,7 @@ export default class Example {
     protected floating = true;
     protected secondAction = false;
     protected readonly routes = DemoRoute;
+
     protected readonly examples = [
         'Basic',
         'Sheet',

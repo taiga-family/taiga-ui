@@ -32,7 +32,6 @@ export default class Example {
     ] as const;
 
     protected readonly tableColumns = Object.keys(this.tableData[0]);
-
     protected readonly moreOptions = ['Option 1', 'Option 2', 'Option 3'];
 
     protected getObjectValues = (obj: Record<string, unknown>): unknown[] =>

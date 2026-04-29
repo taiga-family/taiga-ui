@@ -23,8 +23,8 @@ export default class Page extends Array {
     private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
-
     protected readonly routes = DemoRoute;
+
     protected readonly examples = [
         'String',
         'Directive',
@@ -48,10 +48,8 @@ export default class Page extends Array {
     protected closable = this.options.closable;
     protected required = this.options.required;
     protected dismissible = this.options.dismissible;
-
     protected readonly appearances = ['taiga', 'fullscreen'] as const;
     protected appearance = this.options.appearance;
-
     protected readonly sizes = ['s', 'm', 'l'] as const;
     protected size = this.options.size;
 

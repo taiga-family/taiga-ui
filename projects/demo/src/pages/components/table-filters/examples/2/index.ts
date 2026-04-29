@@ -42,7 +42,6 @@ export default class Example {
     ] as const;
 
     protected readonly filterForm = new FormGroup({balance: new FormControl(0)});
-
     protected readonly array = new FormArray<FormGroup>([]);
 
     protected readonly items = toSignal(
@@ -51,7 +50,6 @@ export default class Example {
     );
 
     protected testIndex = 0;
-
     protected readonly columns = ['name', 'balance'];
 
     public addRow(): void {

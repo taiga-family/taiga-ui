@@ -54,7 +54,6 @@ export class TuiTilesComponent {
 
     public readonly debounce = input(0);
     public readonly order = model(new Map<number, number>());
-
     public readonly element = signal<Element | null>(null);
     public readonly el = tuiInjectElement();
 

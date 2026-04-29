@@ -16,6 +16,7 @@ import {TuiTableDirective} from './table.directive';
 @Directive({selector: 'table[tuiTable][tuiSortBy]'})
 export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     private readonly table = inject(TuiTableDirective<T>);
+
     private readonly sortables = contentChildren<TuiTableSortable<T>>(TuiTableSortable, {
         descendants: true,
     });

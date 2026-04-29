@@ -11,6 +11,6 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {tuiNavigationMain: '', 'data-tui-version': TUI_VERSION},
+    host: {'data-tui-version': TUI_VERSION, tuiNavigationMain: ''},
 })
 export class TuiMainComponent {}

@@ -24,6 +24,7 @@ export class TuiHighlight implements OnChanges {
     private readonly options = inject(TUI_HIGHLIGHT_OPTIONS);
     private readonly doc = inject(DOCUMENT);
     private readonly highlight = this.setUpHighlight();
+
     private readonly treeWalker = this.doc.createTreeWalker(
         this.el,
         NodeFilter.SHOW_TEXT,

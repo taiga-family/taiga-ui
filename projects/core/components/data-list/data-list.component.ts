@@ -58,18 +58,18 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         },
     ],
     host: {
-        role: 'listbox',
         'data-tui-version': TUI_VERSION,
-        '[attr.role]': 'role',
+        role: 'listbox',
         '[attr.data-size]': 'size()',
+        '[attr.role]': 'role',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
-        '(mousedown.prevent)': '(0)',
-        '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
-        '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
-        '(keydown.tab)': 'handleFocusLossIfNecessary()',
-        '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',
         '(keydown.arrowDown.prevent)': 'onKeyDownArrow($event.target, 1)',
         '(keydown.arrowUp.prevent)': 'onKeyDownArrow($event.target, -1)',
+        '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',
+        '(keydown.tab)': 'handleFocusLossIfNecessary()',
+        '(mousedown.prevent)': '(0)',
+        '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
+        '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
     },
 })
 export class TuiDataListComponent<T>
@@ -80,6 +80,7 @@ export class TuiDataListComponent<T>
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
+
     private readonly optionsQuery = contentChildren<TuiOptionWithValue<T>>(
         forwardRef(() => TuiOptionWithValue),
         {descendants: true},
@@ -87,7 +88,6 @@ export class TuiDataListComponent<T>
 
     protected readonly fallback = inject(TUI_NOTHING_FOUND_MESSAGE);
     protected readonly empty = signal(false);
-
     public readonly emptyContent = input<PolymorpheusContent>();
     public readonly size = input(tuiInjectDataListSize());
 

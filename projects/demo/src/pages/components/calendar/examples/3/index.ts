@@ -19,13 +19,9 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 })
 export default class Example {
     protected value: TuiDayRange | null = null;
-
     protected firstMonth = TuiMonth.currentLocal();
-
     protected middleMonth = TuiMonth.currentLocal().append({month: 1});
-
     protected lastMonth = TuiMonth.currentLocal().append({month: 2});
-
     protected hoveredItem: TuiDay | null = null;
 
     protected readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =>

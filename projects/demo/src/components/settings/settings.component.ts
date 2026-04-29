@@ -63,6 +63,7 @@ export class SettingsComponent {
     private readonly doc = inject(DOCUMENT);
     private readonly switcher = inject(TuiLanguageSwitcherService);
     private readonly theme = inject(TUI_DARK_MODE);
+
     private readonly stored = inject(WA_LOCAL_STORAGE)?.getItem(
         inject(TUI_DARK_MODE_KEY),
     );
@@ -92,11 +93,12 @@ export class SettingsComponent {
     ]);
 
     protected readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
+
     protected readonly form = inject(NonNullableFormBuilder).group({
         theme: tuiIsString(this.stored) ? this.theme() : null,
         direction: 'ltr',
         language: this.switcher.language,
-        platform: 'web' as 'android' | 'ios' | 'web',
+        platform: 'web',
     });
 
     protected readonly sync = this.form.valueChanges

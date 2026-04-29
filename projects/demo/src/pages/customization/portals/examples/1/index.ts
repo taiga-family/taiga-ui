@@ -13,7 +13,6 @@ import {CustomPortalService} from './service';
 })
 export class TuiPortalsExample1 {
     private readonly customPortalService = inject(CustomPortalService);
-
     protected templates: Array<EmbeddedViewRef<unknown>> = [];
 
     protected addTemplate(template: TemplateRef<unknown>): void {

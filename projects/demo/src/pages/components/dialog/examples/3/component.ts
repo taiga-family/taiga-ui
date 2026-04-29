@@ -41,6 +41,5 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 })
 export class DialogComponent {
     protected readonly context = injectContext<TuiDialogContext<string, string>>();
-
     protected value = this.context.data;
 }

@@ -10,7 +10,6 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 })
 export class TuiValidator implements Validator, OnChanges {
     protected onChange = EMPTY_FUNCTION;
-
     public validate = Validators.nullValidator;
 
     public registerOnValidatorChange(onChange: (...args: any[]) => void): void {

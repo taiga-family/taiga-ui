@@ -13,7 +13,6 @@ import {TuiInputPhone} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly isIos = inject(WA_IS_IOS);
-
     public value = '+71234567890';
 
     protected get pattern(): string | null {

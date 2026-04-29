@@ -36,7 +36,6 @@ export class TuiFilesComponent {
     protected readonly hideText = inject(TUI_HIDE_TEXT);
     protected readonly showAllText = inject(TUI_SHOW_ALL_TEXT);
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
-
     public readonly max = input(0);
     public readonly expanded = model(false);
 }

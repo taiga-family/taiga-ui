@@ -51,7 +51,6 @@ export default class Example {
     ];
 
     protected value = this.items[0]!;
-
     protected incoming = false;
     protected outgoing = true;
 }

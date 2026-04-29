@@ -27,6 +27,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly directionChange = new Subject<TuiHintDirection>();
+
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
         inject<any>(TuiRectAccessor, {optional: true}),
         {getClientRect: () => this.el.getBoundingClientRect()},

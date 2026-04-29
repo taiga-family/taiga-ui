@@ -53,7 +53,6 @@ const EXPENSES = {
 })
 export default class Example {
     protected value: string[] = [];
-
     protected readonly items = [INCOME, EXPENSES];
 
     protected readonly valueContent: TuiStringHandler<TuiContext<readonly string[]>> = ({

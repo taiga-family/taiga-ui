@@ -26,10 +26,7 @@ export default class Example {
     protected second = true;
     protected open = false;
     protected label = false;
-
     protected value = [];
-
     protected readonly burgers = ['Hamburger', 'Cheeseburger'];
-
     protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
 }

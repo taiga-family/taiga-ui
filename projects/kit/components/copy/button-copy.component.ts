@@ -48,12 +48,14 @@ export class TuiButtonCopy {
     private readonly options = inject(TUI_COPY_OPTIONS);
     private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly notification = inject(TUI_NOTIFICATION_OPTIONS);
+
     private readonly check = tuiIsString(this.notification.icon)
         ? this.notification.icon
         : this.notification.icon('positive');
 
     protected readonly copied = signal(false);
     protected readonly copiedText = computed(() => this.copyTexts()[1]);
+
     protected readonly icon = tuiIconStart(
         computed(() => (this.copied() ? this.check : this.options.icon)),
     );

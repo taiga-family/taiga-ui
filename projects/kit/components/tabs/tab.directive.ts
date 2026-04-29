@@ -19,6 +19,7 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
 export class TuiTab implements OnDestroy {
     private readonly el = tuiInjectElement();
     private readonly rla = inject(RouterLinkActive, {optional: true});
+
     private readonly observer =
         this.rla &&
         inject(WaMutationObserverService, {optional: true})?.pipe(

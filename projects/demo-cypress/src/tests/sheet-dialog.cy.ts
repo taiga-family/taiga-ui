@@ -39,7 +39,6 @@ describe('TuiSheetDialog', () => {
     })
     class Test {
         protected open = false;
-
         protected readonly options: Partial<TuiSheetDialogOptions> = {closable: false};
     }
 

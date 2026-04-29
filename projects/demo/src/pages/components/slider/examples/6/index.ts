@@ -14,16 +14,16 @@ import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from '
     encapsulation,
     changeDetection,
     host: {
-        '(pointerdown)': 'onKeydown(true)',
         '(document:pointerup)': 'onKeydown(false)',
+        '(pointerdown)': 'onKeydown(true)',
     },
 })
 export default class Example {
     protected min = 0.5;
     protected max = 2;
     protected value = 1;
-
     protected readonly active$ = new BehaviorSubject(false);
+
     protected readonly showHint$ = this.active$.pipe(
         distinctUntilChanged(),
         switchMap((active) =>

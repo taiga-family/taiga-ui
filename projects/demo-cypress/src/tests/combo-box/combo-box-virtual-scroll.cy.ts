@@ -55,9 +55,7 @@ import {createOutputSpy} from 'cypress/angular';
 })
 export class Sandbox {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
-
     protected readonly control = new FormControl<string | null>(null);
-
     public readonly valueChanges = output<string | null>();
 
     constructor() {

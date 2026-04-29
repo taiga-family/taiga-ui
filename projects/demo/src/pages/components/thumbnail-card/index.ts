@@ -37,6 +37,7 @@ export default class Example {
     protected size = this.sizeVariants[0]!;
     protected paymentSystem = this.paymentSystemVariants[0]!;
     protected contentProjection = '1234';
+
     protected background =
         '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
 }

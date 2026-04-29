@@ -49,7 +49,6 @@ describe('InputSlider | Patch form control value', () => {
     class SandBox {
         protected value = 0;
         protected readonly control = new FormControl(0);
-
         public readonly formApproach = input<'formControl' | 'ngModel'>('ngModel');
     }
 

@@ -43,15 +43,14 @@ class Styles {}
         })),
     ],
     host: {
-        tuiHeader: '',
         'data-tui-version': TUI_VERSION,
+        tuiHeader: '',
         '[attr.data-size]': 'tuiHeader() || options.size || "h5"',
     },
 })
 export class TuiHeader {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_HEADER_OPTIONS);
-
     public readonly tuiHeader = input(this.options.size);
 }
 

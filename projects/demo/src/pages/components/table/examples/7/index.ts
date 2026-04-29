@@ -38,6 +38,7 @@ export default class Example {
     protected length = 10;
     protected size = 10;
     protected readonly items = [10, 50, 100];
+
     protected readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
         `${$implicit} items per page`;
 }

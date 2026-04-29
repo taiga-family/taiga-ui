@@ -39,6 +39,7 @@ import {getCountries} from 'libphonenumber-js';
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         ['RU', 'KZ', 'UA', 'BY'],
         getCountries(),

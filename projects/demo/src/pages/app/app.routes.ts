@@ -86,6 +86,11 @@ export const ROUTES: Routes = [
         title: 'Viewport',
         loadComponent: async () => import('../customization/viewport'),
     }),
+    route({
+        path: DemoRoute.DarkMode,
+        title: 'Dark Mode',
+        loadComponent: async () => import('../customization/dark-mode'),
+    }),
     // COMPONENTS
     route({
         path: DemoRoute.Accordion,

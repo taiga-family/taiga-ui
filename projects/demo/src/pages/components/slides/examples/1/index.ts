@@ -13,6 +13,5 @@ import {TuiElasticContainer, TuiSlides} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly items = ['First slide ', 'Second slide ', 'Third slide '];
-
     protected index = 0;
 }

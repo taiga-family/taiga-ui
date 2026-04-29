@@ -51,6 +51,5 @@ class Styles {}
 })
 export class TuiChip {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly size = input(inject(TUI_CHIP_OPTIONS).size);
 }

@@ -49,7 +49,6 @@ export class TuiDocPage {
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
     protected readonly from = / /g;
     protected readonly to = '_';
-
     public readonly header = input('');
     public readonly package = input('');
     public readonly type = input('');

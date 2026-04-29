@@ -17,6 +17,7 @@ import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/
 })
 export default class Example {
     protected readonly fade = DemoRoute.Fade;
+
     protected readonly items = [
         'First item',
         'Very very long second item that must overflow',

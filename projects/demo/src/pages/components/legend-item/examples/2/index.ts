@@ -29,7 +29,6 @@ import {
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
     private enabled = Array.from<unknown, boolean>({length: 5}, () => true);
-
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
     protected readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];

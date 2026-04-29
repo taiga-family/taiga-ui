@@ -19,7 +19,6 @@ const APP_COMP_META = {
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
     private readonly deps = inject(StackblitzDepsService);
-
     public readonly name = 'Stackblitz';
     public readonly content = new PolymorpheusComponent(StackblitzEditButton);
 

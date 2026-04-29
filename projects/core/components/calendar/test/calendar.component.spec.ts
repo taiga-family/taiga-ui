@@ -36,16 +36,12 @@ describe('Calendar', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiCalendar);
-
         public value = TuiDay.currentLocal();
         public month = new TuiMonth(2019, 2);
-
         public min = new TuiDay(2019, 2, 1);
         public minViewedMonth = new TuiDay(2019, 1, 1);
-
         public max = new TuiDay(2019, 2, 1);
         public maxViewedMonth = new TuiDay(2019, 3, 1);
-
         public dayClick: any = jest.fn();
         public hoveredItemChange: any = jest.fn();
     }

@@ -25,13 +25,12 @@ class Styles {}
 @Directive({
     selector: '[tuiTitle]',
     host: {
-        tuiTitle: '',
         'data-tui-version': TUI_VERSION,
+        tuiTitle: '',
         '[attr.data-size]': 'tuiTitle() || null',
     },
 })
 export class TuiTitle {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly tuiTitle = input<TuiSizeL | TuiSizeS | ''>('');
 }

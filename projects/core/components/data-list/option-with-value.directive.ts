@@ -10,7 +10,6 @@ import {TuiOptionWithContent} from './option-with-content.directive';
 })
 export class TuiOptionWithValue<T = unknown> {
     private readonly host = inject(TUI_DATA_LIST_HOST, {optional: true});
-
     public readonly disabled = input(false);
     public readonly value = input<T>();
 

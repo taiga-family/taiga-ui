@@ -10,6 +10,7 @@ export const TUI_FONT_SIZE_HANDLER = new InjectionToken<(size: number) => void>(
 @Directive()
 export class TuiFontSize {
     private readonly handler = inject(TUI_FONT_SIZE_HANDLER, {optional: true});
+
     private readonly enabled =
         !inject(TuiFontSize, {optional: true, skipSelf: true}) &&
         isPlatformBrowser(inject(PLATFORM_ID)) &&

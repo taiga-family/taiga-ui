@@ -18,6 +18,5 @@ export default class Example {
     ];
 
     protected size = this.sizeVariants[0]!;
-
     protected readonly examples = ['Basic', 'Custom color'];
 }

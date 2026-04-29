@@ -35,7 +35,6 @@ export default class Example {
     protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
-
     protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 
     protected get value(): string[] {

@@ -13,15 +13,10 @@ import {TuiButton, TuiDropdown, TuiInput} from '@taiga-ui/core';
 })
 export default class PageComponent {
     protected open = false;
-
     protected input = '';
-
     protected enabledVariants = [true, 'getter this.input.length > 2'];
-
     protected enabledSelected = this.enabledVariants[0]!;
-
     protected readonly contentVariants = ['Template', 'Custom string'];
-
     protected content = this.contentVariants[0]!;
 
     protected get template(): boolean {

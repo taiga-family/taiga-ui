@@ -18,21 +18,13 @@ import {TuiRange} from '@taiga-ui/kit';
 export default class Page {
     protected readonly examples = ['Size', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
-
     protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
-
     protected min = 0;
-
     protected max = 100;
-
     protected margin = 0;
-
     protected limit = Infinity;
-
     protected step = 1;
-
     protected segments = 1;
-
     protected thumbSize = 12;
 
     protected readonly keyStepsVariants: readonly TuiKeySteps[] = [

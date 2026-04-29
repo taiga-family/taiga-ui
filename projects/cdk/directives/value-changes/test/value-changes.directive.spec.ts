@@ -23,7 +23,6 @@ describe('TuiValueChangesDirective', () => {
     })
     class Test {
         public readonly form = new FormGroup({control: new FormControl('Loremipsum')});
-
         public formSpy = jest.fn();
         public controlSpy = jest.fn();
     }

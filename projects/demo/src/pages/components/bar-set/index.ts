@@ -20,9 +20,7 @@ export default class Page {
     ];
 
     protected collapsed = false;
-
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-
     protected size: TuiSizeL | TuiSizeS | null = null;
 
     protected readonly valueVariants = [

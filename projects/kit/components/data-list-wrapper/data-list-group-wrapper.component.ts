@@ -23,6 +23,5 @@ export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperCompo
     readonly T[]
 > {
     protected readonly multi = inject(TuiMultiSelectGroupDirective, {optional: true});
-
     public readonly labels = input<readonly string[]>([]);
 }

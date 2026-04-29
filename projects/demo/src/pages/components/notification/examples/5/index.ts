@@ -59,6 +59,7 @@ class Alert {
 })
 export default class Example {
     protected readonly notifications = inject(TuiNotificationService);
+
     protected readonly notification = this.notifications
         .open<number>(new PolymorpheusComponent(Alert), {
             label: 'Heading is so long that it should be shown in two lines of text',

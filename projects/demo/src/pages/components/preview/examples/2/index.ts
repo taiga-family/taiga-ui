@@ -16,6 +16,7 @@ export default class Example {
     protected index = 0;
     protected length = 2;
     protected titles = ['pic_1.jpg', 'pic_2.jpg'];
+
     protected content = [
         'https://picsum.photos/600/500',
         'https://picsum.photos/500/600',

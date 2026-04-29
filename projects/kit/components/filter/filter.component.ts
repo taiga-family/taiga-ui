@@ -26,15 +26,14 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 })
 export class TuiFilter<T> extends TuiControl<readonly T[]> {
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
-
     public readonly items = input<readonly T[]>([]);
     public readonly size = input(inject(TUI_BLOCK_OPTIONS).size || 'l');
+
     public readonly badgeHandler = input<TuiHandler<T, number | null>>((item) =>
         tuiIsString(item) || tuiIsNumber(item) ? null : Number(item),
     );
 
     public readonly content = input(TUI_STRINGIFY);
-
     public readonly toggledItem = output<T>();
 
     public onCheckbox(value: boolean, item: T): void {

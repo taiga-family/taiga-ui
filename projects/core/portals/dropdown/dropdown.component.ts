@@ -80,6 +80,7 @@ export class TuiDropdownComponent implements AfterViewInit {
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
     protected readonly darkMode = inject(TUI_DARK_MODE);
     protected readonly position = this.directive.position;
+
     protected readonly theme = computed((_ = this.darkMode()) =>
         this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
     );

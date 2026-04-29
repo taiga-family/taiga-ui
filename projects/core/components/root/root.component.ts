@@ -35,23 +35,23 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
     host: {
         'data-tui-version': TUI_VERSION,
+        '[class._mobile]': 'breakpoint() === "mobile"',
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
-        '[class._mobile]': 'breakpoint() === "mobile"',
+        '(document:fullscreenchange)': 'top.set(parent)',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
         '(touchstart.passive.zoneless)': '0',
-        '(document:fullscreenchange)': 'top.set(parent)',
     },
 })
 export class TuiRoot {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly child = !!inject(TuiRoot, {optional: true, skipSelf: true});
-
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected readonly scrollbars =
         !inject(WA_IS_MOBILE) &&
         !this.child &&

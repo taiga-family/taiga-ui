@@ -16,6 +16,7 @@ export default class Example {
     protected statuses = ['normal', 'disabled', 'readOnly', 'invalid'] as const;
     protected status: string = this.statuses[0];
     protected card = '1234123412341234';
+
     protected background =
         '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
 }

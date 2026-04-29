@@ -29,7 +29,6 @@ import {TuiChevron, TuiDataListWrapper, TuiInputPhone, TuiSelect} from '@taiga-u
 })
 export default class Example {
     protected readonly items = ['Email', 'Phone'];
-
     protected type = this.items[0]!;
 
     protected readonly group = new FormGroup({

@@ -31,7 +31,6 @@ export default class PageComponent {
     protected maxFilesCount = 3;
     protected accept = '';
     protected acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
-
     protected readonly showDeleteVariants = [true, false, 'always'];
 
     protected readonly maxFileSizeVariants = [
@@ -43,10 +42,10 @@ export default class PageComponent {
 
     protected rejected: readonly File[] = [];
     protected maxFileSize = this.maxFileSizeVariants[2]!;
-
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
     protected size = this.sizeVariants[0]!;
     protected readonly control = new FormControl<File[] | null>(null);
+
     protected readonly files$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),
     );

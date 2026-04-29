@@ -46,7 +46,6 @@ export default class Page {
     ];
 
     protected centeredXLabels = false;
-
     protected axisXLabels = this.labelsXVariants[0]!;
     protected axisYInset = false;
     protected axisYLabels = this.labelsYVariants[0]!;

@@ -33,6 +33,7 @@ export const [YA_METRIKA_OPTIONS, metrikaOptionsProvider] =
 export class YaMetrikaService {
     private readonly options = inject(YA_METRIKA_OPTIONS);
     private readonly doc = inject(DOCUMENT);
+
     private readonly support =
         !!this.options.id &&
         (this.options.debug ||

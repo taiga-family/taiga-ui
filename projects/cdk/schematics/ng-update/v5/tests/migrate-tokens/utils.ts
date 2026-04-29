@@ -9,8 +9,6 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
-import {type TuiSchema} from '../../../../ng-add/schema';
-
 const collectionPath = join(__dirname, '../../../../migration.json');
 
 export async function runMigration(before: string): Promise<string> {
@@ -24,7 +22,7 @@ export async function runMigration(before: string): Promise<string> {
 
     const tree = await runner.runSchematic(
         'updateToV5',
-        {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+        {'skip-logs': process.env['TUI_CI'] === 'true'},
         host,
     );
 

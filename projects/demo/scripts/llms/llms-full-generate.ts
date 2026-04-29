@@ -252,13 +252,10 @@ function shouldIncludeComponent(
     headerData: ComponentHeader,
     excludeSections: string[],
 ): boolean {
-    if (headerData.deprecated && excludeSections.includes('deprecated')) {
-        return false;
-    }
-
     if (
-        (headerData.package ?? '').toUpperCase() === 'LEGACY' &&
-        excludeSections.includes('legacy')
+        (headerData.deprecated && excludeSections.includes('deprecated')) ||
+        ((headerData.package ?? '').toUpperCase() === 'LEGACY' &&
+            excludeSections.includes('legacy'))
     ) {
         return false;
     }

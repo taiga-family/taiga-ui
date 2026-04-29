@@ -37,6 +37,5 @@ class Styles {}
 })
 export class TuiButton {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly size = input(inject(TUI_BUTTON_OPTIONS).size);
 }

@@ -15,6 +15,7 @@ import {filter, map, startWith, switchMap, take, tap, timer} from 'rxjs';
 })
 export default class Example {
     protected readonly open = signal(false);
+
     protected readonly loading = toSignal(
         toObservable(this.open).pipe(
             filter(Boolean),

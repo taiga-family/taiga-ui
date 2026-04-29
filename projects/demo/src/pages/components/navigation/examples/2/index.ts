@@ -38,7 +38,6 @@ import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from '@taiga-ui/layout'
 })
 export default class Example {
     private readonly theme = inject(TuiThemeColorService);
-
     protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
 

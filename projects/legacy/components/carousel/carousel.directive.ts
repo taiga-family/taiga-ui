@@ -13,6 +13,7 @@ export class TuiCarouselDirective extends Observable<unknown> {
     private readonly visible$ = inject(WA_PAGE_VISIBILITY);
     private readonly zone = inject(NgZone);
     private readonly trigger$ = new Subject<void>();
+
     private readonly running$ = merge(
         tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(TUI_FALSE_HANDLER)),
         tuiTypedFromEvent(this.el, 'touchstart').pipe(map(TUI_FALSE_HANDLER)),

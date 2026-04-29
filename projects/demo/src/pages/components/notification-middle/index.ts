@@ -16,6 +16,5 @@ export default class Page {
     protected routes = DemoRoute;
     protected readonly examples = ['Default', 'Content', 'Transition', 'Service'];
     protected readonly open = signal(false);
-
     protected closable = false;
 }

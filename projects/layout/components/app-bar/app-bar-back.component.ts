@@ -18,6 +18,5 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 })
 export class TuiAppBarBack implements TuiAppearanceOptions {
     protected readonly icons = inject(TUI_COMMON_ICONS);
-
     public readonly appearance = 'link';
 }

@@ -12,6 +12,5 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 })
 export default class PageComponent {
     protected positionVariants = ['selection', 'word', 'tag'] as const;
-
     protected position: 'selection' | 'tag' | 'word' = this.positionVariants[0];
 }

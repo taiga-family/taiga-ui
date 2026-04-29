@@ -90,10 +90,8 @@ export class TuiDocNavigation {
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
-
     protected readonly open = signal(false);
     protected menuOpen = false;
-
     protected readonly drawer = inject(TuiDrawer, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
@@ -102,6 +100,7 @@ export class TuiDocNavigation {
     protected readonly docIcons = inject(TUI_DOC_ICONS);
     protected readonly pagesIcons = inject(TUI_DOC_PAGES_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected readonly flat = this.items.reduce<
         ReadonlyArray<readonly TuiDocRoutePage[]>
     >(
@@ -119,7 +118,6 @@ export class TuiDocNavigation {
     protected openPagesArr: boolean[] = [];
     protected openPagesGroupsArr: boolean[] = [];
     protected active = '';
-
     protected readonly search = new FormControl('');
 
     protected readonly filtered = toSignal(
@@ -172,7 +170,7 @@ export class TuiDocNavigation {
     }
 
     protected $pages<T extends TuiDocRoutePage[]>(pages: T): readonly TuiDocRoutePage[] {
-        return pages as TuiDocRoutePage[];
+        return pages;
     }
 
     protected isActive(route: string): boolean {

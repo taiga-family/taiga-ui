@@ -30,9 +30,9 @@ import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
     host: {
         ngSkipHydration: 'true',
         '[class._mobile]': 'isMobile',
-        '(scroll.zoneless)': 'onScroll()',
         // To trigger CD for #text
         '(scroll.once)': 'onScroll()',
+        '(scroll.zoneless)': 'onScroll()',
     },
 })
 export class TuiTextareaComponent implements AfterViewInit {
@@ -40,11 +40,9 @@ export class TuiTextareaComponent implements AfterViewInit {
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
     private readonly vcr = inject(ViewContainerRef);
     private readonly text = viewChild('text', {read: ElementRef});
-
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
     protected readonly textfield = inject(TuiTextfieldComponent<string>);
     protected readonly isMobile = inject(WA_IS_MOBILE);
-
     public readonly min = input(this.options.min);
     public readonly max = input(this.options.max);
     public readonly content = input(this.options.content);

@@ -61,9 +61,9 @@ const GAP = 8;
     hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone],
     host: {
         role: 'tooltip',
-        '[class._untouchable]': 'pointer',
-        '[class._mobile]': 'isMobile',
         '[attr.tuiTheme]': 'theme',
+        '[class._mobile]': 'isMobile',
+        '[class._untouchable]': 'pointer',
         '(document:click)': 'onClick($event.target)',
     },
 })
@@ -72,7 +72,6 @@ export class TuiHintComponent {
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
-
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);

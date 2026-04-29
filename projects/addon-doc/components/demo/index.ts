@@ -82,10 +82,10 @@ export class TuiJsonPipe implements PipeTransform {
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._sticky]': 'sticky()',
         '[attr.tuiTheme]': 'theme()',
-        '(window:resize)': 'onResize()',
+        '[class._sticky]': 'sticky()',
         '(document:mouseup.zoneless)': 'onMouseUp()',
+        '(window:resize)': 'onResize()',
     },
 })
 export class TuiDocDemo implements AfterViewInit {
@@ -95,19 +95,14 @@ export class TuiDocDemo implements AfterViewInit {
     );
 
     private readonly content = viewChild.required<ElementRef<HTMLElement>>('content');
-
     private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly darkMode = inject(TUI_DARK_MODE);
-
     protected readonly template = contentChild(TemplateRef<Record<string, unknown>>);
-
     protected readonly rendered = signal(false);
-
     protected readonly theme = computed(() => (this.dark() ? 'dark' : 'light'));
-
     protected readonly icons = inject(TUI_DOC_ICONS);
 
     protected readonly dark = signal(
@@ -119,7 +114,6 @@ export class TuiDocDemo implements AfterViewInit {
         .subscribe((mode) => this.onModeChange(mode));
 
     protected form?: FormGroup;
-
     protected readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
     protected updateOn: 'blur' | 'change' | 'submit' =
@@ -129,7 +123,6 @@ export class TuiDocDemo implements AfterViewInit {
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
     protected sandboxWidth = Number.parseInt(this.params.sandboxWidth, 10);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
-
     public readonly control = input<AbstractControl | null>(null);
     public readonly sticky = input(true);
 

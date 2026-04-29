@@ -55,13 +55,14 @@ class Styles {}
     ],
     host: {
         '(blur)': 'inputNumber.setValue(value() ?? null)',
-        '(keydown.arrowUp)': 'onStep(1)',
         '(keydown.arrowDown)': 'onStep(-1)',
+        '(keydown.arrowUp)': 'onStep(1)',
     },
 })
 export class TuiInputSliderDirective {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement<HTMLInputElement>();
+
     private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>(
         (x) => x instanceof TuiSliderComponent,
     );
@@ -74,6 +75,7 @@ export class TuiInputSliderDirective {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly mask = inject(TuiNumberMask, {self: true});
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
+
     protected readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),
     );

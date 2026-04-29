@@ -274,6 +274,54 @@ exports[`ng-update legacy input migrates tuiHintDirection value alongside wrappe
 }
 `;
 
+exports[`ng-update legacy input mixes known class/style attrs with a single unrecognized attr, TODO lists only the unrecognized one: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    formControlName="cardNumber"
+                    class="number"
+                    [style.max-width.rem]="20"
+                    someCustomDir
+                >
+                    Card number
+                </tui-input>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
+     - "someCustomDir" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.
+-->
+                <tui-textfield class="number" [style.max-width.rem]="20" someCustomDir>
+                <label tuiLabel>Card number</label>
+                <input tuiInput formControlName="cardNumber" />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy input passes class/style bindings through to <tui-textfield> without TODO: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    formControlName="cardNumber"
+                    class="number"
+                    style="color: red"
+                    [class.active]="isActive"
+                    [style.max-width.rem]="20"
+                    [ngClass]="classMap"
+                    [ngStyle]="styleMap"
+                >
+                    Card number
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield class="number" style="color: red" [class.active]="isActive" [style.max-width.rem]="20" [ngClass]="classMap" [ngStyle]="styleMap">
+                <label tuiLabel>Card number</label>
+                <input tuiInput formControlName="cardNumber" />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update legacy input places unrecognized attributes on <tui-textfield> with TODO per attr: test.html 1`] = `
 {
   "0. Before": "<tui-input formControlName="value" someCustomDir [anotherDir]="config">Label</tui-input>",
