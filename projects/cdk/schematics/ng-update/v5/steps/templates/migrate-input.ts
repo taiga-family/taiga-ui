@@ -85,6 +85,19 @@ function isDropdownAttr(nameLower: string): boolean {
     return stripped.startsWith(prefix);
 }
 
+function isClassOrStyleAttr(nameLower: string): boolean {
+    const stripped = nameLower.replaceAll(/^\[|\]$/g, '');
+
+    return (
+        stripped === 'class' ||
+        stripped === 'style' ||
+        stripped === 'ngclass' ||
+        stripped === 'ngstyle' ||
+        stripped.startsWith('class.') ||
+        stripped.startsWith('style.')
+    );
+}
+
 function hasHintContent(element: Element): boolean {
     return element.attrs.some((attr) => {
         const lower = attr.name.toLowerCase();
@@ -215,6 +228,15 @@ function buildReplacement(
 
             ctx.noEquivalentAttrs.push(originalName);
             // Still place it on the wrapper so the code at least compiles with a warning
+            textfieldAttrs.push(
+                original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
+            );
+            continue;
+        }
+
+        if (isClassOrStyleAttr(nameLower)) {
+            const original = getOriginalAttrText(template, element, nameLower);
+
             textfieldAttrs.push(
                 original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
             );
