@@ -114,6 +114,15 @@
     block-size: 2rem;
 }
 
+.t-input,
+.t-collapsed {
+    :host:has(.t-label[data-label='']:empty) &,
+    :host:has(.t-label:not([data-label]):empty) & {
+        padding-block-start: 0;
+        line-height: var(--t-height);
+    }
+}
+
 .t-collapsed {
     .fullsize();
 
