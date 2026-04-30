@@ -11,6 +11,10 @@ import {
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
 import {
+    getControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
+import {
     buildCustomContentIconStr,
     CUSTOM_CONTENT_ATTRS,
     type CustomContent,
@@ -187,6 +191,10 @@ function buildReplacement(
 
     const textfieldAttrs: string[] = [];
     const inputAttrs = ['tuiInput'];
+    const controlStateAttrs = getControlStateAttrs(element);
+    const controlStateAttrsLower = new Set(
+        controlStateAttrs.map((a) => a.name.toLowerCase()),
+    );
     const ctx: MigrationContext = {
         placeholder: '',
         labelOutsideValue: null,
@@ -198,6 +206,10 @@ function buildReplacement(
 
     for (const attr of element.attrs) {
         const nameLower = attr.name.toLowerCase();
+
+        if (controlStateAttrsLower.has(nameLower)) {
+            continue;
+        }
 
         if (CUSTOM_CONTENT_ATTRS.has(nameLower)) {
             ctx.customContent = {
@@ -286,6 +298,8 @@ function buildReplacement(
         textfieldAttrs.push(originalText);
     }
 
+    const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+
     ctx.placeholder = getPlaceholderText(element);
 
     const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
@@ -305,6 +319,7 @@ function buildReplacement(
         element,
         template,
         inputAttrs,
+        controlStateStr,
         placeholder: ctx.placeholder,
         indent,
         labelOutsideIsTrue: isLabelOutsideTrue,
@@ -378,6 +393,7 @@ function buildInnerContent({
     element,
     template,
     inputAttrs,
+    controlStateStr,
     placeholder,
     indent,
     labelOutsideIsTrue,
@@ -385,6 +401,7 @@ function buildInnerContent({
     hintIconStr,
     customContentIconStr,
 }: {
+    controlStateStr: string;
     customContentIconStr: string;
     element: Element;
     hintIconStr: string;
@@ -414,6 +431,7 @@ function buildInnerContent({
             inner: legacyInnerInput,
             template,
             attrsToAdd: inputAttrs,
+            controlStateStr,
             allChildren: childElements,
             indent,
             hintIconLine,
@@ -437,7 +455,7 @@ function buildInnerContent({
         // labelOutside=true: text → placeholder on <input>, no label inside
         const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
 
-        return `${indent}<input${placeholderAttr}${attrsStr} />\n${otherChildren}${hintIconLine}${customContentLine}`;
+        return `${indent}<input${placeholderAttr}${attrsStr}${controlStateStr} />\n${otherChildren}${hintIconLine}${customContentLine}`;
     }
 
     // labelOutside=false/absent: text → <label tuiLabel> inside (floating label)
@@ -450,7 +468,7 @@ function buildInnerContent({
         labelEl = `${indent}<label tuiLabel>${placeholder}</label>\n`;
     }
 
-    return `${labelEl}${indent}<input${attrsStr} />\n${otherChildren}${hintIconLine}${customContentLine}`;
+    return `${labelEl}${indent}<input${attrsStr}${controlStateStr} />\n${otherChildren}${hintIconLine}${customContentLine}`;
 }
 
 /**
@@ -461,6 +479,7 @@ function migrateInnerInput({
     inner,
     template,
     attrsToAdd,
+    controlStateStr,
     allChildren,
     indent,
     hintIconLine = '',
@@ -468,6 +487,7 @@ function migrateInnerInput({
 }: {
     allChildren: Element[];
     attrsToAdd: string[];
+    controlStateStr: string;
     customContentLine?: string;
     hintIconLine?: string;
     indent: string;
@@ -503,7 +523,7 @@ function migrateInnerInput({
     // trimEnd() removes trailing whitespace/newlines before '>' to avoid a visual gap
     const closePos = getVoidClosePos(startTag);
     const extraAttrs = attrsToAdd.filter((a) => a !== 'tuiInput').join(' ');
-    const insertStr = extraAttrs ? ` ${extraAttrs}` : '';
+    const insertStr = `${extraAttrs ? ` ${extraAttrs}` : ''}${controlStateStr}`;
 
     startTag = `${startTag.slice(0, closePos).trimEnd()}${insertStr}${startTag.slice(closePos)}`;
 

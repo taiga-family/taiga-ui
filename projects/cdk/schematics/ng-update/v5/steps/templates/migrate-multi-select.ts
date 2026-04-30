@@ -9,6 +9,11 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    getControlStateAttrs,
+    removeControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -57,6 +62,8 @@ export function migrateMultiSelect({
         const controlAttrs = element.attrs.filter((attr) =>
             CONTROL_ATTRS.has(attr.name.toLowerCase()),
         );
+
+        const controlStateAttrs = getControlStateAttrs(element);
 
         renameAttr(
             recorder,
@@ -149,6 +156,14 @@ export function migrateMultiSelect({
             removeAttr(recorder, templateOffset, element, attr.name, template);
         });
 
+        removeControlStateAttrs(
+            recorder,
+            templateOffset,
+            element,
+            template,
+            controlStateAttrs,
+        );
+
         const hasChevron = element.attrs.some(
             (attr) => attr.name.toLowerCase() === 'tuiChevron'.toLowerCase(),
         );
@@ -187,8 +202,10 @@ export function migrateMultiSelect({
                 }
 
                 const formAttrs = formatControlAttrs(controlAttrs);
+                const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+                const extras = `${formAttrs ? ` ${formAttrs}` : ''}${controlStateStr}`;
 
-                if (!formAttrs) {
+                if (!extras) {
                     return;
                 }
 
@@ -197,7 +214,7 @@ export function migrateMultiSelect({
                         input.sourceCodeLocation?.startOffset ??
                         0) + '<input'.length;
 
-                recorder.insertRight(templateOffset + insertOffset, ` ${formAttrs}`);
+                recorder.insertRight(templateOffset + insertOffset, extras);
             });
 
             return;
@@ -230,7 +247,8 @@ export function migrateMultiSelect({
             tagValidatorExpr === null
                 ? ''
                 : `<tui-input-chip *tuiItem="let ctx" [appearance]="${tagValidatorExpr}(ctx.item) ? '' : 'negative'" />\n`;
-        const inputTemplate = `${manualSearchTodo}${searchChangeTodo}<input tuiInputChip${selectLikeAttr}${readonlyAttr}${placeholderAttr ? ` ${placeholderAttr}` : ''}${formAttrs ? ` ${formAttrs}` : ''}${searchChangeAttr} />\n${chipItemTemplate}`;
+        const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+        const inputTemplate = `${manualSearchTodo}${searchChangeTodo}<input tuiInputChip${selectLikeAttr}${readonlyAttr}${placeholderAttr ? ` ${placeholderAttr}` : ''}${formAttrs ? ` ${formAttrs}` : ''}${searchChangeAttr}${controlStateStr} />\n${chipItemTemplate}`;
 
         recorder.insertRight(templateOffset + insertOffset, inputTemplate);
     });

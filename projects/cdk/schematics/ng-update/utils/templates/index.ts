@@ -1,3 +1,4 @@
+export * from './control-state-attrs';
 export * from './dom-traversal';
 export * from './remove-inputs';
 export * from './replace-attr-values';
