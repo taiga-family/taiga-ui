@@ -428,11 +428,11 @@ function buildInnerContent({
 
     if (legacyInnerInput) {
         return migrateInnerInput({
+            parent: element,
             inner: legacyInnerInput,
             template,
             attrsToAdd: inputAttrs,
             controlStateStr,
-            allChildren: childElements,
             indent,
             hintIconLine,
             customContentLine,
@@ -476,22 +476,22 @@ function buildInnerContent({
  * by replacing the legacy directive attr and appending form control attrs.
  */
 function migrateInnerInput({
+    parent,
     inner,
     template,
     attrsToAdd,
     controlStateStr,
-    allChildren,
     indent,
     hintIconLine = '',
     customContentLine = '',
 }: {
-    allChildren: Element[];
     attrsToAdd: string[];
     controlStateStr: string;
     customContentLine?: string;
     hintIconLine?: string;
     indent: string;
     inner: Element;
+    parent: Element;
     template: string;
 }): string {
     const innerLoc = inner.sourceCodeLocation;
@@ -527,8 +527,22 @@ function migrateInnerInput({
 
     startTag = `${startTag.slice(0, closePos).trimEnd()}${insertStr}${startTag.slice(closePos)}`;
 
-    const siblings = allChildren
-        .filter((c) => c !== inner)
+    const labelContent = buildLabelContent(parent, inner, template);
+    const labelHtml = labelContent
+        ? `${indent}<label tuiLabel>${labelContent}</label>\n`
+        : '';
+
+    const innerStart = innerLoc.startOffset;
+    const siblingsAfter = parent.childNodes
+        .filter((c): c is Element => {
+            if (c === inner || c.nodeName === '#text' || c.nodeName === '#comment') {
+                return false;
+            }
+
+            const loc = (c as Element).sourceCodeLocation;
+
+            return !!loc && loc.startOffset > innerStart;
+        })
         .map((c) => {
             const loc = c.sourceCodeLocation;
 
@@ -536,7 +550,38 @@ function migrateInnerInput({
         })
         .join('');
 
-    return `${indent}${startTag}\n${siblings}${hintIconLine}${customContentLine}`;
+    return `${labelHtml}${indent}${startTag}\n${siblingsAfter}${hintIconLine}${customContentLine}`;
+}
+
+function buildLabelContent(parent: Element, inner: Element, template: string): string {
+    const innerStart = inner.sourceCodeLocation?.startOffset;
+
+    if (innerStart === undefined) {
+        return '';
+    }
+
+    return parent.childNodes
+        .filter((c) => {
+            if (c === inner || c.nodeName === '#comment') {
+                return false;
+            }
+
+            const loc = c.sourceCodeLocation;
+
+            return !!loc && loc.startOffset < innerStart;
+        })
+        .map((c) => {
+            if (c.nodeName === '#text') {
+                return (c as DefaultTreeAdapterTypes.TextNode).value;
+            }
+
+            const loc = (c as Element).sourceCodeLocation;
+
+            return loc ? template.slice(loc.startOffset, loc.endOffset) : '';
+        })
+        .join('')
+        .replaceAll(/\s+/g, ' ')
+        .trim();
 }
 
 /**

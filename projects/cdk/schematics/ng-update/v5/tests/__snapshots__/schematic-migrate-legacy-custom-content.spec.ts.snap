@@ -271,6 +271,7 @@ import { TuiFlagPipe } from "@taiga-ui/kit";
                         ],
                         template: \`
                             <tui-textfield [style.max-width.rem]="20">
+                            <label tuiLabel>Enter US phone number</label>
                             <input
                                     inputmode="tel"
                                     tuiInput
@@ -355,6 +356,7 @@ exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are 
                         ],
                         template: \`
                             <tui-textfield [style.max-width.rem]="20">
+                            <label tuiLabel>Enter date</label>
                             <input
                                     inputmode="numeric"
                                     tuiInput
