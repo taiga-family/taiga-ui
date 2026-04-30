@@ -35160,7 +35160,7 @@ Segmented is used for links and buttons to navigate within the application. It c
 
 ### Usage Examples
 
-#### Sizes
+#### Example 1
 
 **Template:**
 ```html
@@ -35202,7 +35202,7 @@ export default class Example {
 }
 ```
 
-#### Width
+#### Example 2
 
 **Template:**
 ```html
@@ -35252,7 +35252,7 @@ export default class Example {}
 }
 ```
 
-#### Customization
+#### Example 3
 
 **Template:**
 ```html
@@ -35317,7 +35317,7 @@ header {
 }
 ```
 
-#### Content
+#### Example 4
 
 **Template:**
 ```html
@@ -35411,6 +35411,55 @@ hr {
 }
 ```
 
+#### Example 5
+
+**Template:**
+```html
+&lt;tui-segmented [disabled]=&quot;true&quot;&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;/tui-segmented&gt;
+&lt;tui-segmented&gt;
+&lt;button type=&quot;button&quot; [disabled]=&quot;true&quot; &gt; Label &lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;button type=&quot;button&quot; [disabled]=&quot;true&quot; &gt; Label &lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;/tui-segmented&gt;
+&lt;tui-segmented inert&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Label&lt;/button&gt;
+&lt;/tui-segmented&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSegmented} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiSegmented],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -35424,9 +35473,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
-export default class Example {
-    protected readonly examples = [&#039;Sizes&#039;, &#039;Width&#039;, &#039;Customization&#039;, &#039;Content&#039;];
-}
+export default class Example {}
 ```
 
 ---
