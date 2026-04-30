@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update label on legacy controls preserves HTML label content and keeps existing placeholder on inner <input tuiTextfieldLegacy>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    [style.max-width.rem]="30"
+                    [(ngModel)]="value"
+                >
+                    <strong>&pi;</strong>
+                    -value
+                    <input
+                        inputmode="decimal"
+                        placeholder="3,141..."
+                        tuiTextfieldLegacy
+                        [maskito]="maskitoOptions"
+                    />
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield [style.max-width.rem]="30">
+                <label tuiLabel><strong>&pi;</strong> -value</label>
+                <input
+                        inputmode="decimal"
+                        placeholder="3,141..."
+                        tuiInput
+                        [maskito]="maskitoOptions" [(ngModel)]="value"/>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update label on legacy controls preserves HTML label content and keeps existing placeholder on inner <input tuiTextfieldLegacy>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update label on legacy controls preserves plain text label when inner <input tuiTextfieldLegacy> has no placeholder: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    [maskito]="maskitoOptions"
+                    [style.max-width.rem]="20"
+                    [(ngModel)]="value"
+                >
+                    Enter number
+
+                    <input
+                        tuiTextfieldLegacy
+                        [maskito]="maskitoOptions"
+                        (change)="log($event)"
+                    />
+                </tui-input>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
+     - "[maskito]" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.
+-->
+                <tui-textfield [maskito]="maskitoOptions" [style.max-width.rem]="20">
+                <label tuiLabel>Enter number</label>
+                <input
+                        tuiInput
+                        [maskito]="maskitoOptions"
+                        (change)="log($event)" [(ngModel)]="value"/>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update label on legacy controls preserves plain text label when inner <input tuiTextfieldLegacy> has no placeholder: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update label on legacy controls preserves plain text label and keeps existing placeholder on inner <input tuiTextfieldLegacy>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    [style.max-width.rem]="30"
+                    [(ngModel)]="value"
+                >
+                    Japanese yen
+                    <input
+                        inputmode="decimal"
+                        placeholder="¥1,2345,6789"
+                        tuiTextfieldLegacy
+                        [maskito]="maskitoOptions"
+                    />
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield [style.max-width.rem]="30">
+                <label tuiLabel>Japanese yen</label>
+                <input
+                        inputmode="decimal"
+                        placeholder="¥1,2345,6789"
+                        tuiInput
+                        [maskito]="maskitoOptions" [(ngModel)]="value"/>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update label on legacy controls preserves plain text label and keeps existing placeholder on inner <input tuiTextfieldLegacy>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
