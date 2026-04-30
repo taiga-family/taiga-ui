@@ -101,12 +101,10 @@
     background: transparent;
 
     &:first-of-type {
-        --tui-slider-thumb-transform: translateX(calc(var(--tui-inline) * -50%))
-            translateX(calc(var(--tui-inline) * @thumb-diameter / -12));
+        --tui-slider-thumb-transform: translateX(calc(var(--tui-inline) * -50%)) translateX(calc(var(--tui-inline) * @thumb-diameter / -12));
     }
 
     &:last-of-type {
-        --tui-slider-thumb-transform: translateX(calc(var(--tui-inline) * 50%))
-            translateX(calc(var(--tui-inline) * @thumb-diameter / 12));
+        --tui-slider-thumb-transform: translateX(calc(var(--tui-inline) * 50%)) translateX(calc(var(--tui-inline) * @thumb-diameter / 12));
     }
 }
