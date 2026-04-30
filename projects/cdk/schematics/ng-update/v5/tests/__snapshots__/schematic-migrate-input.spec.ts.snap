@@ -371,6 +371,7 @@ exports[`ng-update legacy input reuses inner <input tuiTextfieldLegacy> and pres
             ",
   "1. After": "
                 <tui-textfield>
+                <label tuiLabel>Email</label>
                 <input
                         autocomplete="email"
                         placeholder="[Email]"
