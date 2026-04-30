@@ -137,6 +137,11 @@ export function migrateInputPassword({
         }
 
         for (const input of inputs) {
+            const hasTypePassword = input.attrs.some(
+                (attr) => attr.name === 'type' && attr.value === 'password',
+            );
+            const typeAttr = hasTypePassword ? '' : ' type="password"';
+
             input.attrs.forEach((attr) => {
                 if (/^tuiTextfield$|^tuiTextfieldLegacy$/i.exec(attr.name)) {
                     const {startOffset = 0, endOffset = 0} =
@@ -149,7 +154,7 @@ export function migrateInputPassword({
 
                     recorder.insertRight(
                         templateOffset + startOffset,
-                        `tuiInput type="password"${migrationAttrs}${placeholderAttr}`,
+                        `tuiInput${typeAttr}${migrationAttrs}${placeholderAttr}`,
                     );
 
                     const inputEndOffset =

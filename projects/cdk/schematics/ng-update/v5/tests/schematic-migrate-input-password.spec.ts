@@ -132,5 +132,20 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'does not duplicate already existing type="password"',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-password [(ngModel)]="value">
+                    <input
+                        tuiTextfieldLegacy
+                        type="password"
+                        [maskito]="maskitoOptions"
+                    />
+                </tui-input-password>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
