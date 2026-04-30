@@ -33,7 +33,7 @@ class TuiLinkStyles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         tuiLink: '',
-        tuiLinkV: `${TUI_VERSION}`,
+        tuiLinkV: TUI_VERSION,
         '[style.text-decoration-line]': 'pseudo ? "underline" : null',
     },
 })

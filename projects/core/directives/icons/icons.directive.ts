@@ -38,7 +38,7 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
-        tuiIconsV: `${TUI_VERSION}`,
+        tuiIconsV: TUI_VERSION,
         '[style.--t-icon-start]': 'startResource()',
         '[style.--t-icon-end]': 'endResource()',
         '[attr.data-icon-start]': 'startMode()',

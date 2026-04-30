@@ -47,7 +47,7 @@ class TuiNotificationStyles {}
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
     host: {
-        tuiNotificationV: `${TUI_VERSION}`,
+        tuiNotificationV: TUI_VERSION,
         '[attr.data-size]': 'size',
     },
 })

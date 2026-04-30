@@ -34,7 +34,7 @@ class TuiAppearanceStyles {}
     hostDirectives: [TuiTransitioned],
     host: {
         tuiAppearance: '',
-        tuiAppearanceV: `${TUI_VERSION}`,
+        tuiAppearanceV: TUI_VERSION,
         '[attr.data-appearance]': 'appearance()',
         '[attr.data-state]': 'state()',
         '[attr.data-focus]': 'focus()',

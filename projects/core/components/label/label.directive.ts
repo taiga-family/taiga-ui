@@ -27,7 +27,7 @@ class TuiLabelStyles {}
     standalone: true,
     selector: 'label[tuiLabel]',
     host: {
-        tuiLabelV: `${TUI_VERSION}`,
+        tuiLabelV: TUI_VERSION,
         '[attr.for]': 'el.htmlFor || parent?.id',
         '[attr.data-orientation]': 'textfield ? "vertical" : "horizontal"',
     },

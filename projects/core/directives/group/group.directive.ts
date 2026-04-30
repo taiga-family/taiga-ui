@@ -27,7 +27,7 @@ class TuiGroupStyles {}
     selector: '[tuiGroup]:not(ng-container)',
     host: {
         tuiGroup: '',
-        tuiGroupV: `${TUI_VERSION}`,
+        tuiGroupV: TUI_VERSION,
         '[attr.data-orientation]': 'orientation',
         '[attr.data-size]': 'size',
         '[style.--t-group-radius]': 'rounded ? null : 0',
