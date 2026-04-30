@@ -1,6 +1,5 @@
 import {nxComponentTestingPreset} from '@nx/angular/plugins/component-testing';
 import {defineConfig} from 'cypress';
-import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin';
 
 const preset = {
     ...nxPreset(),
@@ -111,6 +110,16 @@ export default defineConfig({
         experimentalSingleTabRunMode: true,
         justInTimeCompile: false,
         setupNodeEvents(on, config) {
+            // NOTE: new nx version sets process.cwd() to workspace root, but the plugin reads
+            // cypress-image-diff.config.js relative to cwd at module load time.
+            // Changing cwd before require() ensures the project-level config is found:
+            process.chdir(__dirname);
+
+            const getCompareSnapshotsPlugin: (
+                on: Cypress.PluginEvents,
+                config: Cypress.PluginConfigOptions,
+            ) => Cypress.PluginConfigOptions = require('cypress-image-diff-js/plugin');
+
             getCompareSnapshotsPlugin(on, config);
 
             on('before:browser:launch', (browser, launchOptions) => {

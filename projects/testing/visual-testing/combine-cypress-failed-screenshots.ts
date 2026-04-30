@@ -3,8 +3,7 @@ import {readFileSync} from 'node:fs';
 import {tuiCombineSnapshots} from './combine-snapshots';
 
 const ROOT_PATH = process.env.ROOT_PATH ?? 'projects/demo-cypress';
-const TEST_RESULTS_PATH =
-    process.env.TEST_RESULTS_PATH ?? `${ROOT_PATH}/cypress-image-diff-screenshots`;
+const TEST_RESULTS_PATH = process.env.TEST_RESULTS_PATH ?? `${ROOT_PATH}/tests-results`;
 
 interface TestResult {
     status: 'fail' | 'pass';
@@ -33,7 +32,7 @@ export function tuiCombineCypressFailedScreenshots(): void {
 
     for (const {baselinePath, diffPath, comparisonPath, name} of failedTestSnapshots) {
         const output = `${TEST_RESULTS_PATH}/${name}.diff.png`;
-        const inputs = [comparisonPath, diffPath, baselinePath].map(
+        const inputs = [baselinePath, diffPath, comparisonPath].map(
             (x) => `${ROOT_PATH}/${x}`,
         );
 
