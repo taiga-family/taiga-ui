@@ -19,7 +19,9 @@ interface Report {
 
 // noinspection JSUnusedGlobalSymbols
 export function tuiCombineCypressFailedScreenshots(): void {
-    const reportSummary = readJSON<Report>(`${TEST_RESULTS_PATH}/report-summary.json`);
+    const reportSummary = readJSON<Report>(
+        `${TEST_RESULTS_PATH}/report/report-summary.json`,
+    );
 
     if (!reportSummary) {
         return;
@@ -32,7 +34,7 @@ export function tuiCombineCypressFailedScreenshots(): void {
 
     for (const {baselinePath, diffPath, comparisonPath, name} of failedTestSnapshots) {
         const output = `${TEST_RESULTS_PATH}/${name}.diff.png`;
-        const inputs = [baselinePath, diffPath, comparisonPath].map(
+        const inputs = [comparisonPath, diffPath, baselinePath].map(
             (x) => `${ROOT_PATH}/${x}`,
         );
 
