@@ -347,7 +347,7 @@ exports[`ng-update label on legacy controls tui-input-password preserves plain t
                         Password
                         </label>
 <input
-                            tuiInput type="password" [(ngModel)]="value"
+                            tuiInput [(ngModel)]="value"
                             type="password"
                         />
 <tui-icon tuiPassword />
