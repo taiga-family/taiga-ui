@@ -1,3 +1,4 @@
+import {execSync} from 'node:child_process';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
@@ -385,12 +386,30 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
     return output;
 }
 
+function generateMigrationGuideFiles(): void {
+    try {
+        console.info('Generating migration guide files...');
+        execSync('npx ts-node ./projects/demo/scripts/migration-guide-parser.ts', {
+            stdio: 'inherit',
+        });
+        execSync('npx ts-node ./projects/demo/scripts/llms/parse-migration-guide.ts', {
+            stdio: 'inherit',
+        });
+        console.info('  ✓ Migration guide files generated');
+    } catch (error) {
+        console.warn(`  ⚠ Could not generate migration guide files: ${error}`);
+    }
+}
+
 async function collectMigrationGuide(config: AppConfig): Promise<string | null> {
     const headerSectionsPath = path.resolve(
         process.cwd(),
         config.constants.headerSectionsPath,
     );
-    const migrationGuidePath = path.join(headerSectionsPath, 'migration-guide.md');
+    const migrationGuidePath = path.join(
+        headerSectionsPath,
+        'migration-guide-generated.md',
+    );
 
     try {
         const content = await fs.readFile(migrationGuidePath, 'utf-8');
@@ -606,6 +625,8 @@ async function main(): Promise<void> {
     if (getConfigValue(config.llmsFull.includeMarkdownFiles)) {
         output.push(...(await collectMarkdownSections(cliOptions)));
     }
+
+    generateMigrationGuideFiles();
 
     const migrationGuide = await collectMigrationGuide(config);
 
