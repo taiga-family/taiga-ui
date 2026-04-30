@@ -288,6 +288,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/calendar'),
     }),
     route({
+        path: DemoRoute.DatePicker,
+        title: 'DatePicker',
+        loadComponent: async () => import('../components/date-picker'),
+    }),
+    route({
         path: DemoRoute.Carousel,
         title: 'Carousel',
         loadComponent: async () => import('../components/carousel'),

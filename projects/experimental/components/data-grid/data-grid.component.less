@@ -1,0 +1,37 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: grid;
+    inline-size: 100%;
+    grid-template-columns: repeat(3, calc(33% - 0.625rem));
+    gap: 1rem 0.5rem;
+    place-content: center;
+}
+
+.t-item {
+    .transition(background);
+
+    display: block;
+    block-size: 2.5rem;
+    border-radius: 10rem;
+    border: none;
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-primary);
+    font: var(--tui-typography-ui-s);
+    cursor: pointer;
+
+    @media @tui-mouse {
+        &:hover {
+            background: var(--tui-background-neutral-1-hover);
+        }
+
+        &_active:hover {
+            background: var(--tui-background-accent-2-hover);
+        }
+    }
+
+    &_active {
+        background: var(--tui-background-accent-2);
+        color: var(--tui-text-primary-on-accent-2);
+    }
+}

@@ -1,0 +1,29 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: block;
+    min-inline-size: 17.5rem;
+}
+
+.t-header {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.5rem 0.75rem 1rem;
+}
+
+.t-button {
+    .transition(opacity);
+
+    font: var(--tui-typography-ui-l);
+    font-weight: bold;
+    text-decoration: none;
+    margin-inline-end: auto;
+
+    @media @tui-mouse {
+        &:hover {
+            opacity: var(--tui-disabled-opacity);
+        }
+    }
+}
