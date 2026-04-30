@@ -35151,7 +35151,7 @@ Segmented is used for links and buttons to navigate within the application. It c
 
 ### Usage Examples
 
-#### Sizes
+#### Example 1
 
 **Template:**
 ```html
@@ -35193,7 +35193,7 @@ export default class Example {
 }
 ```
 
-#### Width
+#### Example 2
 
 **Template:**
 ```html
@@ -35243,7 +35243,7 @@ export default class Example {}
 }
 ```
 
-#### Customization
+#### Example 3
 
 **Template:**
 ```html
@@ -35308,7 +35308,7 @@ header {
 }
 ```
 
-#### Content
+#### Example 4
 
 **Template:**
 ```html
@@ -35402,6 +35402,55 @@ hr {
 }
 ```
 
+#### Example 5
+
+**Template:**
+```html
+<tui-segmented [disabled]="true">
+<button type="button">Label</button>
+<button type="button">Label</button>
+<button type="button">Label</button>
+<button type="button">Label</button>
+</tui-segmented>
+<tui-segmented>
+<button type="button" [disabled]="true" > Label </button>
+<button type="button">Label</button>
+<button type="button" [disabled]="true" > Label </button>
+<button type="button">Label</button>
+</tui-segmented>
+<tui-segmented inert>
+<button type="button">Label</button>
+<button type="button">Label</button>
+<button type="button">Label</button>
+<button type="button">Label</button>
+</tui-segmented>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSegmented} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiSegmented],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -35415,9 +35464,7 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Example {
-    protected readonly examples = ['Sizes', 'Width', 'Customization', 'Content'];
-}
+export default class Example {}
 ```
 
 ---
