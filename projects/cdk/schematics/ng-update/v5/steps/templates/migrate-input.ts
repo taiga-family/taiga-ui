@@ -534,12 +534,16 @@ function migrateInnerInput({
 
     const innerStart = innerLoc.startOffset;
     const siblingsAfter = parent.childNodes
-        .filter((c): c is Element => {
-            if (c === inner || c.nodeName === '#text' || c.nodeName === '#comment') {
+        .filter((child): child is Element => {
+            if (
+                child === inner ||
+                child.nodeName === '#text' ||
+                child.nodeName === '#comment'
+            ) {
                 return false;
             }
 
-            const loc = (c as Element).sourceCodeLocation;
+            const loc = (child as Element).sourceCodeLocation;
 
             return !!loc && loc.startOffset > innerStart;
         })
