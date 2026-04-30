@@ -1,10 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiSegmented],
     templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
     changeDetection,
 })
 export default class Example {}
