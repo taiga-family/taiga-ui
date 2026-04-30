@@ -17,7 +17,7 @@
  * @see-also
  * Button, Icon, Link
  */
-[tuiIcons]:where(*&) {
+:where([tuiIcons]&) {
     --t-icon-start: none;
     --t-icon-end: none;
 
@@ -48,18 +48,18 @@
             ~'min(1em, 100%)' padding-box;
     }
 
-    &[data-icon-start='img']::before {
+    &:where([data-icon-start='img'])::before {
         mask: none;
         background: var(--t-icon-start) no-repeat center / 1em padding-box;
     }
 
-    &[data-icon-end='img']::after {
+    &:where([data-icon-end='img'])::after {
         mask: none;
         background: var(--t-icon-end) no-repeat center / 1em padding-box;
     }
 
-    &[data-icon-start='font']::before,
-    &[data-icon-end='font']::after {
+    &:where([data-icon-start='font'])::before,
+    &:where([data-icon-end='font'])::after {
         display: grid;
         mask: none;
         background: none;
@@ -69,11 +69,11 @@
         text-transform: none;
     }
 
-    &[data-icon-start='font']::before {
+    &:where([data-icon-start='font'])::before {
         content: var(--t-icon-start);
     }
 
-    &[data-icon-end='font']::after {
+    &:where([data-icon-end='font'])::after {
         content: var(--t-icon-end);
     }
 }

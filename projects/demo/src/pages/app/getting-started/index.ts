@@ -58,9 +58,13 @@ export default class Page {
     ];
 
     protected toggle(section: string): void {
-        this.doc
-            .querySelector<HTMLElement>('[tuiDocHeader] > button:first-child')
-            ?.click();
+        const button = this.doc.querySelector<HTMLElement>(
+            '[tuiDocHeader] > button:first-child',
+        );
+
+        if (button?.offsetWidth) {
+            button.click();
+        }
 
         setTimeout(() =>
             Array.from(this.doc.querySelectorAll('button'))
