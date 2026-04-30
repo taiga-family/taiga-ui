@@ -176,6 +176,35 @@ function removeAttr(
     );
 }
 
+export function extractHintToTooltipIcon({
+    element,
+    template,
+    recorder,
+    templateOffset,
+    resource,
+}: {
+    element: Element;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
+    template: string;
+    templateOffset: number;
+}): string {
+    const tuiIconStr = buildTuiIconStr(element, template);
+
+    if (!tuiIconStr) {
+        return '';
+    }
+
+    addImportToClosestModule(resource.componentPath, 'TuiIcon', '@taiga-ui/core');
+    addImportToClosestModule(resource.componentPath, 'TuiTooltip', '@taiga-ui/kit');
+
+    for (const attrName of HINT_ATTR_NAMES) {
+        removeAttr(recorder, templateOffset, element, attrName, template);
+    }
+
+    return tuiIconStr;
+}
+
 export function migrateHintOnLegacyControls({
     resource,
     recorder,
@@ -285,9 +314,13 @@ export function migrateHintOnLegacyControls({
             );
             recorder.insertRight(templateOffset + loc.startOffset, replacement);
         } else {
-            for (const attrName of HINT_ATTR_NAMES) {
-                removeAttr(recorder, templateOffset, element, attrName, template);
-            }
+            extractHintToTooltipIcon({
+                element,
+                template,
+                recorder,
+                templateOffset,
+                resource,
+            });
 
             const insertOffset = loc.endTag?.startOffset;
 

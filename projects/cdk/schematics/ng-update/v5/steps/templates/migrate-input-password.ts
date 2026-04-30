@@ -11,6 +11,7 @@ import {
 import {type TemplateResource} from '../../../interfaces/template-resource';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
+import {extractHintToTooltipIcon} from './migrate-hint-on-legacy-controls';
 
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
@@ -33,6 +34,14 @@ export function migrateInputPassword({
 
     elements.forEach((element: Element) => {
         const sourceCodeLocation = element.sourceCodeLocation;
+
+        const tooltipIconStr = extractHintToTooltipIcon({
+            element,
+            template,
+            recorder,
+            templateOffset,
+            resource,
+        });
 
         replaceTag(
             recorder,
@@ -129,10 +138,12 @@ export function migrateInputPassword({
             return `${result} ${name}="${attr.value}"`;
         }, '');
 
+        const tooltipLine = tooltipIconStr ? `${tooltipIconStr}\n` : '';
+
         if (!inputs.length) {
             recorder.insertRight(
                 insertOffset,
-                `\n<input tuiInput type="password"${migrationAttrs}${placeholderAttr} />\n<tui-icon tuiPassword />\n`,
+                `\n<input tuiInput type="password"${migrationAttrs}${placeholderAttr} />\n${tooltipLine}<tui-icon tuiPassword />\n`,
             );
         }
 
@@ -160,7 +171,10 @@ export function migrateInputPassword({
                     const inputEndOffset =
                         (input.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
-                    recorder.insertRight(inputEndOffset, '\n<tui-icon tuiPassword />\n');
+                    recorder.insertRight(
+                        inputEndOffset,
+                        `\n${tooltipLine}<tui-icon tuiPassword />\n`,
+                    );
                 }
             });
         }

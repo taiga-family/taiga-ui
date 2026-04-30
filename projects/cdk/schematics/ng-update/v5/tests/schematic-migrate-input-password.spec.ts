@@ -147,5 +147,26 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'migrates tuiHintContent to tui-icon with tuiTooltip',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-password
+                    tuiHintContent="Only 3 digits are allowed"
+                    [style.max-width.rem]="20"
+                    [tuiTextfieldLabelOutside]="true"
+                    [(ngModel)]="value"
+                >
+                    Enter password
+                    <input
+                        tuiTextfieldLegacy
+                        type="password"
+                        [maskito]="maskitoOptions"
+                    />
+                </tui-input-password>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
