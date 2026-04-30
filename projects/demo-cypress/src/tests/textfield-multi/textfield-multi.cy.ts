@@ -43,6 +43,21 @@ import {TuiCard} from '@taiga-ui/layout';
             id="empty-textfield"
             tuiCardLarge
         >
+            <tui-textfield multi>
+                <label tuiLabel>Plain strings</label>
+                <input
+                    placeholder="Placeholder"
+                    tuiInputChip
+                    [(ngModel)]="emptyValue"
+                />
+                <tui-input-chip *tuiItem />
+            </tui-textfield>
+        </div>
+
+        <div
+            id="empty-textfield-nested"
+            tuiCardLarge
+        >
             <div>
                 <tui-textfield multi>
                     <label tuiLabel>Plain strings</label>
@@ -78,5 +93,11 @@ describe('Textfield Multi', () => {
 
     it('should render correctly in card-large', () => {
         cy.get('#empty-textfield').compareSnapshot('textfield-multi-card-large');
+    });
+
+    it('should render correctly in nested elements in card-large', () => {
+        cy.get('#empty-textfield-nested').compareSnapshot(
+            'textfield-multi-card-large-nested',
+        );
     });
 });
