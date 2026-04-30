@@ -547,8 +547,8 @@ function migrateInnerInput({
 
             return !!loc && loc.startOffset > innerStart;
         })
-        .map((c) => {
-            const loc = c.sourceCodeLocation;
+        .map((child) => {
+            const loc = child.sourceCodeLocation;
 
             return loc ? template.slice(loc.startOffset, loc.endOffset) : '';
         })
@@ -565,21 +565,21 @@ function buildLabelContent(parent: Element, inner: Element, template: string): s
     }
 
     return parent.childNodes
-        .filter((c) => {
-            if (c === inner || c.nodeName === '#comment') {
+        .filter((child) => {
+            if (child === inner || child.nodeName === '#comment') {
                 return false;
             }
 
-            const loc = c.sourceCodeLocation;
+            const loc = child.sourceCodeLocation;
 
             return !!loc && loc.startOffset < innerStart;
         })
-        .map((c) => {
-            if (c.nodeName === '#text') {
-                return (c as DefaultTreeAdapterTypes.TextNode).value;
+        .map((child) => {
+            if (child.nodeName === '#text') {
+                return (child as DefaultTreeAdapterTypes.TextNode).value;
             }
 
-            const loc = (c as Element).sourceCodeLocation;
+            const loc = (child as Element).sourceCodeLocation;
 
             return loc ? template.slice(loc.startOffset, loc.endOffset) : '';
         })
