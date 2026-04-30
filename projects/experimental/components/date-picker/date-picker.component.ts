@@ -8,7 +8,7 @@ import {
     viewChild,
 } from '@angular/core';
 import {type TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
-import {TuiMapperPipe} from '@taiga-ui/cdk/pipes';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiCarousel, TuiCarouselComponent} from '@taiga-ui/core/components/carousel';
@@ -42,10 +42,10 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export class TuiDatePicker {
     private readonly carousel = viewChild(TuiCarouselComponent);
-
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
     protected readonly months = inject(TUI_MONTHS);
+
     protected readonly button = computed(() =>
         this.view() === 'day'
             ? `${this.months()[this.current().month]} ${this.current().formattedYear}`
@@ -55,6 +55,7 @@ export class TuiDatePicker {
     public readonly view = model<'day' | 'month' | 'year'>('day');
     public readonly value = model<TuiDay | null>(null);
     public readonly current = model(TuiMonth.currentLocal());
+
     public readonly month = input<PolymorpheusContent<TuiContext<number>>>(
         ({$implicit}) => this.months()[$implicit],
     );
