@@ -27,6 +27,7 @@ interface ParsedContent {
 
 class MigrationGuideParser {
     private readonly projectRoot = process.cwd();
+
     private readonly migrationGuideBasePath = path.join(
         this.projectRoot,
         'projects/demo/src/pages/info/migration-guide',
