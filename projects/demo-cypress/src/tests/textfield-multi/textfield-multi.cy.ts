@@ -43,15 +43,17 @@ import {TuiCard} from '@taiga-ui/layout';
             id="empty-textfield"
             tuiCardLarge
         >
-            <tui-textfield multi>
-                <label tuiLabel>Plain strings</label>
-                <input
-                    placeholder="Placeholder"
-                    tuiInputChip
-                    [(ngModel)]="emptyValue"
-                />
-                <tui-input-chip *tuiItem />
-            </tui-textfield>
+            <div>
+                <tui-textfield multi>
+                    <label tuiLabel>Plain strings</label>
+                    <input
+                        placeholder="Placeholder"
+                        tuiInputChip
+                        [(ngModel)]="emptyValue"
+                    />
+                    <tui-input-chip *tuiItem />
+                </tui-textfield>
+            </div>
         </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
