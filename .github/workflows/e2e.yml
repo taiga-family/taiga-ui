@@ -252,9 +252,9 @@ jobs:
           channelId: pr${{ github.event.number }}-${{ github.head_ref }}-e2e
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-previews
+          projectId: taiga-preview-demo
           expires: 1d
-          target: taiga-previews-demo-e2e-report
+          target: taiga-preview-demo-e2e
           disableComment: 'true'
 
       - name: Create report comment
