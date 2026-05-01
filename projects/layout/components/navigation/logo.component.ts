@@ -1,3 +1,4 @@
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
@@ -7,5 +8,9 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     styleUrls: ['./logo.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        tuiNavigationLogo: '',
+        tuiNavigationLogoV: TUI_VERSION,
+    },
 })
 export class TuiLogoComponent {}

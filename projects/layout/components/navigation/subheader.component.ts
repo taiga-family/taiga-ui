@@ -1,3 +1,4 @@
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -36,6 +37,10 @@ const PROVIDERS = [
         PROVIDERS,
         tuiButtonOptionsProvider({appearance: 'secondary', size: 'xs'}),
     ],
+    host: {
+        tuiSubheader: '',
+        tuiSubheaderV: TUI_VERSION,
+    },
 })
 export class TuiSubheaderComponent {}
 
@@ -55,5 +60,9 @@ export class TuiSubheaderComponent {}
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
+    host: {
+        tuiSubheader: '',
+        tuiSubheaderV: TUI_VERSION,
+    },
 })
 export class TuiSubheaderCompactComponent {}

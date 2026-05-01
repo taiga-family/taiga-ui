@@ -1,3 +1,4 @@
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -27,6 +28,8 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
         tuiTextfieldOptionsProvider({size: signal('s')}),
     ],
     host: {
+        tuiNavigationHeader: '',
+        tuiNavigationHeaderV: TUI_VERSION,
         tuiTheme: 'dark',
     },
 })
