@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
-      - uses: taiga-family/ci/actions/setup/node@28450c90e7af4f43448909068d45becf06f64fe7 # v1.206.0
+      - uses: taiga-family/ci/actions/setup/variables@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/node@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
       - run: npm test
       - uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2 # v6.0.0
         env:
