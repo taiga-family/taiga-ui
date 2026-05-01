@@ -15,7 +15,7 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BUTTON_OPTIONS} from './button.options';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {tuiSetAttributes} from './set-attributes';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Component({
     standalone: true,
@@ -34,12 +34,15 @@ class TuiButtonStyles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         '[attr.data-size]': 'size',
+        '[attr.tuiButtonV]': "el.hasAttribute('tuibutton') ? version : null",
+        '[attr.tuiIconButtonV]': "el.hasAttribute('tuiiconbutton') ? version : null",
     },
 })
 export class TuiButton {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
     protected readonly nothing = tuiWithStyles(TuiButtonStyles);
-    protected readonly attrs = tuiSetAttributes(['tuiButton', 'tuiIconButton']);
+    protected readonly version = TUI_VERSION;
+    protected readonly el = tuiInjectElement();
 
     @Input()
     public size = this.options.size;
