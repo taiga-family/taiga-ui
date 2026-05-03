@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "5.0.0-rc.4",
+    "version": "5.0.0",
     "description": "Utils functions for testing Taiga UI packages",
     "repository": {
         "type": "git",
@@ -22,7 +22,7 @@
         }
     ],
     "peerDependencies": {
-        "@taiga-ui/cdk": "5.0.0-rc.4",
+        "@taiga-ui/cdk": "5.0.0",
         "resize-observer-polyfill": ">=1.5.1",
         "sharp": "^0.34.5",
         "tslib": ">=2.8.1"

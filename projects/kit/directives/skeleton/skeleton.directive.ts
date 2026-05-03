@@ -19,7 +19,11 @@ const FADE = [{opacity: 0.06}, {opacity: 1}];
 
 @Component({
     template: '',
-    styleUrl: './skeleton.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './skeleton.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-skeleton-${TUI_VERSION}`,
@@ -30,6 +34,7 @@ class Styles {}
     selector: '[tuiSkeleton]',
     host: {
         tuiSkeleton: '',
+        'data-tui-version': TUI_VERSION,
         '[attr.inert]': '!!tuiSkeleton() || null',
         '[class._skeleton]': 'tuiSkeleton()',
         '[attr.data-tui-skeleton]': 'placeholder()',

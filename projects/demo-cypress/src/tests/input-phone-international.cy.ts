@@ -45,7 +45,7 @@ import {createOutputSpy} from 'cypress/angular';
 export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
 
-    public readonly control = input(new FormControl<string>('', {nonNullable: true}));
+    public readonly control = input(new FormControl('', {nonNullable: true}));
 
     public readonly countryIsoCode = model<TuiCountryIsoCode>('RU');
 

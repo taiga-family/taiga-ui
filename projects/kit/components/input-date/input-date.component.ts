@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiDay} from '@taiga-ui/cdk/date-time';
 import {
     TuiTextfieldContent,
@@ -17,11 +18,16 @@ import {TuiInputDateDirective} from './input-date.directive';
     selector: 'input[tuiInputDate][type="date"]',
     imports: [TuiTextfieldContent],
     templateUrl: './input-date.template.html',
-    styleUrl: './input-date.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-date.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
     host: {
+        'data-tui-version': TUI_VERSION,
         ngSkipHydration: 'true',
         '[attr.list]': 'null',
     },

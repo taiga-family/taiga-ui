@@ -4,6 +4,7 @@
         "."
     ],
     "dest": "../../dist/addon-commerce",
+    "inlineStyleLanguage": "less",
     "lib": {
         "entryFile": "index.ts"
     }

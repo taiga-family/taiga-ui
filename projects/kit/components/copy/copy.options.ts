@@ -4,5 +4,6 @@ export interface TuiCopyOptions {
     readonly icon: string;
 }
 
-export const [TUI_COPY_OPTIONS, tuiCopyOptionsProvider] =
-    tuiCreateOptions<TuiCopyOptions>({icon: '@tui.copy'});
+export const [TUI_COPY_OPTIONS, tuiCopyOptionsProvider] = tuiCreateOptions({
+    icon: '@tui.copy',
+});

@@ -1,25 +1,25 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiChevron][tuiIcons]::after,
-tui-icon[tuiChevron]::before {
+[tuiChevron][tuiIcons]:where(*&)::after,
+tui-icon[tuiChevron]:where(*&)::before {
     .transition(~'transform, color');
 
     cursor: pointer;
     font-size: 1rem;
 }
 
-[tuiChevron][tuiIcons]::after {
+[tuiChevron][tuiIcons]:where(*&)::after {
     [tuiButton][data-size='m']& {
         margin-inline-end: -0.125rem;
     }
 }
 
-[tuiChevron][tuiIcons]._chevron-rotated::after,
-tui-icon[tuiChevron]._chevron-rotated::before {
+[tuiChevron][tuiIcons]:where(*&)._chevron-rotated::after,
+tui-icon[tuiChevron]:where(*&)._chevron-rotated::before {
     transform: rotate(180deg);
 }
 
-tui-textfield[tuiChevron][tuiIcons] {
+tui-textfield[tuiChevron][tuiIcons]:where(*&) {
     --t-stroke: var(--tui-stroke-width);
 
     &::after {

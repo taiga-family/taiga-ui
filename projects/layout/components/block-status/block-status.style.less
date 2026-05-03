@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-tui-block-status {
+tui-block-status:where(*&) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +66,7 @@ tui-block-status {
     }
 }
 
-[data-platform='web'] tui-block-status {
+[data-platform='web'] tui-block-status:where(*&) {
     &[data-size='m'] {
         h1,
         h2,

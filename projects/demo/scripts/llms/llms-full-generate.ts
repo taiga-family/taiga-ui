@@ -377,8 +377,7 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
         try {
             const content = await fs.readFile(headerPath, 'utf-8');
 
-            output.push(content);
-            output.push('\n---\n');
+            output.push(content, '\n---\n');
             console.info(`  ✓ Added header section: ${headerFile}`);
         } catch (error) {
             console.warn(`  ⚠ Could not load header section ${headerFile}: ${error}`);
@@ -390,6 +389,7 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
 
 async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]> {
     const output: string[] = [];
+    let hasMarkdownContent = false;
 
     const entries = Array.from(cliOptions.roots.entries());
 
@@ -411,8 +411,13 @@ async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]
 
             console.info(`Found .md files in examples: ${mdFiles.length}`);
 
+            if (mdFiles.length > 0 && !hasMarkdownContent) {
+                output.push('# Getting Started', '');
+                hasMarkdownContent = true;
+            }
+
             for (const mdFile of mdFiles) {
-                output.push(await processMarkdownFile(mdFile));
+                output.push(await processMarkdownFile(mdFile, 2));
             }
         } catch (error) {
             console.warn(
@@ -440,9 +445,11 @@ async function buildComponentBlock(
     const title = `${parentFolder}/${headerData.header}`;
     const block: string[] = [];
 
-    block.push(`# ${title}`);
-    block.push(`- **Package**: \`${headerData.package}\``);
-    block.push(`- **Type**: ${headerData.type}`);
+    block.push(
+        `# ${title}`,
+        `- **Package**: \`${headerData.package}\``,
+        `- **Type**: ${headerData.type}`,
+    );
 
     const description = getComponentDescription(content);
 

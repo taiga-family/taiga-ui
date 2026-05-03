@@ -39,7 +39,7 @@ export default class Example {
         },
     ];
 
-    protected readonly index$$ = new BehaviorSubject<number>(0);
+    protected readonly index$$ = new BehaviorSubject(0);
 
     protected readonly item$ = this.index$$.pipe(
         map((index) => this.items[index]),

@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-tui-segmented {
+tui-segmented:where(*&) {
     position: relative;
     display: flex;
     flex-shrink: 0;
@@ -139,7 +139,7 @@ tui-segmented {
     }
 }
 
-[tuiTheme='dark'] tui-segmented,
-tui-segmented[tuiTheme='dark'] {
+[tuiTheme='dark'] tui-segmented:where(*&),
+tui-segmented[tuiTheme='dark']:where(*&) {
     --tui-background-base: var(--tui-background-neutral-1-hover);
 }

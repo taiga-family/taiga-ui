@@ -5,6 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -26,13 +27,18 @@ import {TuiInputNumberStepService} from './input-number-step.service';
     selector: 'input[tuiInputNumber][step]',
     imports: [TuiButton, TuiTextfieldContent],
     templateUrl: './input-number-step.template.html',
-    styleUrl: './input-number-step.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-number-step.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiInputNumberStepService],
     hostDirectives: [TuiAppearanceProxy],
     host: {
         ngSkipHydration: 'true',
+        'data-tui-version': TUI_VERSION,
         '(keydown.arrowDown.prevent)': 'onStep(-step())',
         '(keydown.arrowUp.prevent)': 'onStep(step())',
         '[class._with-buttons]': 'step()',
@@ -52,11 +58,7 @@ export class TuiInputNumberStep {
         const value = this.input.parsed() || 0;
 
         this.input.setValue(
-            tuiClamp<bigint | number>(
-                /**
-                 * Without explicit conversion it throws
-                 * TS2365: Operator + cannot be applied to types `number | bigint` and `number | bigint`
-                 */
+            tuiClamp(
                 typeof value === 'bigint'
                     ? value + BigInt(step)
                     : tuiSum(value, Number(step)),

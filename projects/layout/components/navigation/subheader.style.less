@@ -1,4 +1,4 @@
-[tuiSubheader][compact] {
+[tuiSubheader][compact]:where(*&) {
     z-index: 1;
     inset-block-start: 3rem;
     block-size: var(--tui-height-m);
@@ -39,7 +39,7 @@
     }
 }
 
-[tuiSubheader]:not([compact]) {
+[tuiSubheader]:not([compact]):where(*&) {
     margin-block-start: 0.875rem;
 
     [tuiHeader] {

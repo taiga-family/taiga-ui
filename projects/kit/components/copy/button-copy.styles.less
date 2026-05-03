@@ -1,10 +1,10 @@
-tui-hint:has([tuiButtonCopy]) {
+tui-hint:has([tuiButtonCopy]):where(*&) {
     display: flex;
     padding: 0.375rem;
     max-inline-size: none;
 }
 
-[tuiButtonCopy]:not(:first-of-type) {
+[tuiButtonCopy]:where(*&):not(:first-of-type) {
     margin-inline-start: calc(0.75rem - 1px);
     border-image: linear-gradient(
             transparent 0.375rem,

@@ -20,7 +20,11 @@ export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
 
 @Component({
     template: '',
-    styleUrl: './list.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './list.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-list-${TUI_VERSION}`,
@@ -29,7 +33,7 @@ class Styles {}
 
 @Directive({
     selector: 'ul[tuiList], ol[tuiList]',
-    host: {'[attr.data-size]': 'size() || options.size'},
+    host: {'data-tui-version': TUI_VERSION, '[attr.data-size]': 'size() || options.size'},
 })
 export class TuiList {
     protected readonly nothing = tuiWithStyles(Styles);

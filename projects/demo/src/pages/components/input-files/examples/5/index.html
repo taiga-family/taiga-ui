@@ -5,30 +5,27 @@
     />
     <ng-template let-dragged>
         @if (dragged) {
-            <div class="content">
-                <div
-                    appearance="secondary"
-                    size="l"
-                    tuiAvatar="@tui.droplet"
-                ></div>
-                <div>
-                    Drop it like it's hot!
-                    <br />
-                    <br />
-                </div>
+            <div
+                appearance="secondary"
+                size="l"
+                tuiAvatar="@tui.droplet"
+            ></div>
+            <div>
+                Drop it like it's hot!
+                <br />
+                <br />
             </div>
         } @else {
-            <div class="content">
-                <div
-                    appearance="secondary"
-                    size="l"
-                    tuiAvatar="@tui.cloud-upload"
-                ></div>
-                <div>
-                    Drag and drop file here or
-                    <a tuiLink>click to upload</a>
-                </div>
+            <div
+                appearance="secondary"
+                size="l"
+                tuiAvatar="@tui.cloud-upload"
+            ></div>
+            <div>
+                Drag and drop file here or
+                <a tuiLink>click to upload</a>
             </div>
+            <div class="types">PNG, JPG, JPEG, PNG, etc</div>
         }
     </ng-template>
 </label>

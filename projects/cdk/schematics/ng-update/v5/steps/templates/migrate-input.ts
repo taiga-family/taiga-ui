@@ -4,6 +4,7 @@ import {type DefaultTreeAdapterTypes} from 'parse5';
 
 import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
+import {migrateAttrValue} from '../../../../utils/templates/migrate-attr-value';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -181,10 +182,18 @@ function buildReplacement(
 
         if (TEXTFIELD_WRAPPER_ATTRS.has(nameLower) || isDropdownAttr(nameLower)) {
             const original = getOriginalAttrText(template, element, nameLower);
+            const migratedValue = migrateAttrValue(nameLower, attr.value);
+            let attrText: string;
 
-            textfieldAttrs.push(
-                original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-            );
+            if (original) {
+                attrText = original.replace(`="${attr.value}"`, `="${migratedValue}"`);
+            } else if (attr.value) {
+                attrText = `${attr.name}="${migratedValue}"`;
+            } else {
+                attrText = attr.name;
+            }
+
+            textfieldAttrs.push(attrText);
             continue;
         }
 

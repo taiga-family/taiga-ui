@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update proprietary textfield icons changes medium icons to small when size is absent in proprietary project: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textfield
+                    iconEnd="@tui.foo.medium.settings"
+                    iconStart="@tui.pragmatic.medium.magnifier"
+                />
+            ",
+  "1. After": "
+                <tui-textfield
+                    iconEnd="@tui.foo.small.settings"
+                    iconStart="@tui.pragmatic.small.magnifier"
+                />
+            ",
+}
+`;
+
+exports[`ng-update proprietary textfield icons changes medium icons to small when tuiTextfieldSize is l in proprietary project: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textfield
+                    iconEnd="@tui.pragmatic.medium.settings"
+                    iconStart="@tui.foo.medium.magnifier"
+                    tuiTextfieldSize="l"
+                />
+            ",
+  "1. After": "
+                <tui-textfield
+                    iconEnd="@tui.pragmatic.small.settings"
+                    iconStart="@tui.foo.small.magnifier"
+                    tuiTextfieldSize="l"
+                />
+            ",
+}
+`;

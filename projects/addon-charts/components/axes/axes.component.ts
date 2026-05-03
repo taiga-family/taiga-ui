@@ -29,9 +29,9 @@ export class TuiAxes {
     public readonly axisYSecondaryName = input('');
     public readonly centeredXLabels = input(false);
     public readonly horizontalLines = input(1);
-    public readonly horizontalLinesHandler = input<TuiLineHandler>(TUI_ALWAYS_SOLID);
+    public readonly horizontalLinesHandler = input(TUI_ALWAYS_SOLID);
     public readonly verticalLines = input(1);
-    public readonly verticalLinesHandler = input<TuiLineHandler>(TUI_ALWAYS_DASHED);
+    public readonly verticalLinesHandler = input(TUI_ALWAYS_DASHED);
 
     public readonly fallbackLabel = CHAR_NO_BREAK_SPACE;
 

@@ -46,7 +46,7 @@ export class IconsGroup implements OnInit {
 
     protected readonly iconGroup = contentChild(IconsGroupTemplate);
     protected readonly matcher = TUI_DEFAULT_MATCHER;
-    protected readonly control = new FormControl<string>('');
+    protected readonly control = new FormControl('');
     protected readonly keys = computed(() => Object.keys(this.icons()));
     protected readonly search$: Observable<string> = this.route.queryParams.pipe(
         map((queryParams) => queryParams['search'] ?? ''),

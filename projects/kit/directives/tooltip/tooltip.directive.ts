@@ -33,7 +33,11 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
 
 @Component({
     template: '',
-    styleUrl: './tooltip.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './tooltip.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: `tui-tooltip-${TUI_VERSION}`,

@@ -15,6 +15,7 @@ import {
     maskitoRemoveOnBlurPlugin,
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -32,7 +33,11 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     selector: 'input[tuiInputColor]',
     imports: [FormsModule, TuiSlider, TuiTextfieldContent],
     templateUrl: './input-color.template.html',
-    styleUrl: './input-color.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-color.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiInputColorComponent), tuiFallbackValueProvider('')],

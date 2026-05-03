@@ -1,0 +1,177 @@
+<ng-content />
+<form
+    *tuiDropdown
+    tuiForm="s"
+    [formGroup]="form"
+>
+    <fieldset>
+        <legend>Theme</legend>
+        <div tuiGroup>
+            <label
+                appearance=""
+                iconStart="@tui.moon"
+                tuiBlock
+            >
+                Dark
+                <input
+                    formControlName="theme"
+                    tuiBlock
+                    type="radio"
+                    [value]="true"
+                />
+            </label>
+            <label
+                appearance=""
+                iconStart="@tui.sun"
+                tuiBlock
+            >
+                Light
+                <input
+                    formControlName="theme"
+                    tuiBlock
+                    type="radio"
+                    [value]="false"
+                />
+            </label>
+            <label
+                appearance=""
+                iconStart="@tui.sun-moon"
+                tuiBlock
+            >
+                Auto
+                <input
+                    formControlName="theme"
+                    tuiBlock
+                    type="radio"
+                    [value]="null"
+                />
+            </label>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Direction</legend>
+
+        <div tuiGroup>
+            <label
+                appearance=""
+                tuiBlock
+            >
+                <tui-icon
+                    badge="@tui.arrow-right"
+                    icon="@tui.case-upper"
+                />
+                LTR
+                <input
+                    formControlName="direction"
+                    tuiBlock
+                    type="radio"
+                    value="ltr"
+                />
+            </label>
+            <label
+                appearance=""
+                tuiBlock
+            >
+                <tui-icon
+                    badge="@tui.arrow-left"
+                    icon="@tui.case-upper"
+                />
+                RTL
+                <input
+                    formControlName="direction"
+                    tuiBlock
+                    type="radio"
+                    value="rtl"
+                />
+            </label>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend tuiTitle>
+            Language
+            <div tuiSubtitle>For the components with built-in texts</div>
+        </legend>
+        <button
+            appearance="outline-grayscale"
+            formControlName="language"
+            tuiButton
+            tuiButtonSelect
+            tuiChevron
+            tuiDropdownLimitWidth="fixed"
+            type="button"
+        >
+            <img
+                alt=""
+                size="s"
+                tuiBadge
+                [src]="flags.get(form.value.language ?? '') | tuiFlag"
+            />
+            {{ form.value.language | titlecase }}
+            <tui-data-list *tuiDropdown>
+                @for (name of names; track $index) {
+                    <button
+                        tuiOption
+                        [value]="name"
+                    >
+                        <img
+                            alt=""
+                            size="s"
+                            tuiBadge
+                            [src]="flags.get(name) | tuiFlag"
+                        />
+                        {{ name | titlecase }}
+                    </button>
+                }
+            </tui-data-list>
+        </button>
+    </fieldset>
+    <fieldset>
+        <legend tuiTitle>
+            Platform
+            <div tuiSubtitle>For optional mobile styles</div>
+        </legend>
+        <div tuiGroup>
+            <label
+                appearance=""
+                iconStart="@tui.monitor"
+                tuiBlock
+            >
+                Web
+                <input
+                    formControlName="platform"
+                    tuiBlock
+                    type="radio"
+                    value="web"
+                />
+            </label>
+            <label
+                appearance=""
+                iconStart="@tui.apple"
+                tuiBlock
+            >
+                iOS
+                <input
+                    formControlName="platform"
+                    tuiBlock
+                    type="radio"
+                    value="ios"
+                />
+            </label>
+            <label
+                appearance=""
+                iconStart="@tui.bot"
+                tuiBlock
+            >
+                Android
+                <input
+                    formControlName="platform"
+                    tuiBlock
+                    type="radio"
+                    value="android"
+                />
+            </label>
+        </div>
+    </fieldset>
+</form>
