@@ -21,10 +21,10 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
-      - uses: taiga-family/ci/actions/run/rebase@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: taiga-family/ci/actions/run/rebase@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
@@ -57,11 +57,11 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.base_ref }}
-      - uses: taiga-family/ci/actions/setup/variables@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
-      - uses: taiga-family/ci/actions/setup/node@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
         with:
           validate-peer-deps: false
-      - uses: taiga-family/ci/actions/setup/cypress@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/cypress@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - name: Run tests for baseline state
         run: npx nx component-test demo-cypress
@@ -76,9 +76,9 @@ jobs:
           retention-days: 1
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
-      - uses: taiga-family/ci/actions/setup/node@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
-      - uses: taiga-family/ci/actions/setup/cypress@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: taiga-family/ci/actions/setup/cypress@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - name: Download Cypress Baseline Snapshots
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
@@ -90,7 +90,7 @@ jobs:
       - name: Run tests for current state
         run: npx nx component-test demo-cypress
 
-      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - name: Debug output
         continue-on-error: true
@@ -137,14 +137,14 @@ jobs:
     runs-on: ${{ matrix.shard.os }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - name: Mac OS X building all dependencies
         if: ${{ contains( matrix.shard.os, 'macos') }}
         run: brew install pkg-config cairo pango libpng jpeg-turbo giflib librsvg --force || echo ''
 
-      - uses: taiga-family/ci/actions/setup/node@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
-      - uses: taiga-family/ci/actions/setup/playwright@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: taiga-family/ci/actions/setup/playwright@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
@@ -152,7 +152,7 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/run/serve@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -167,12 +167,12 @@ jobs:
       - run: tree ./projects/demo-playwright/snapshots
         continue-on-error: true
 
-      - uses: taiga-family/ci/actions/run/clone@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/run/clone@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/run/serve@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -189,7 +189,7 @@ jobs:
       - run: tree ./projects/demo-playwright/tests-results
         continue-on-error: true
 
-      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -232,8 +232,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
-      - uses: taiga-family/ci/actions/setup/node@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -288,7 +288,7 @@ jobs:
           report-file: ./all-blob-reports/results.json
           report-url: ${{ steps.e2e-report.outputs.details_url }}
 
-      - uses: taiga-family/ci/actions/setup/playwright-diff-check@e768d782c3d60b207662078743ee0f8d6d2c765f # v1.207.0
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
         with:
           pw-result: ./total
 
