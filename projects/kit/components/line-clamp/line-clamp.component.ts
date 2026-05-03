@@ -3,17 +3,22 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    DestroyRef,
     effect,
     ElementRef,
     inject,
     input,
-    output,
     signal,
     untracked,
     viewChild,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {
+    outputFromObservable,
+    takeUntilDestroyed,
+    toObservable,
+    toSignal,
+} from '@angular/core/rxjs-interop';
+import {WaIntersectionObserverService} from '@ng-web-apis/intersection-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -22,6 +27,7 @@ import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     debounceTime,
+    distinctUntilChanged,
     filter,
     fromEvent,
     map,
@@ -29,6 +35,7 @@ import {
     of,
     pairwise,
     startWith,
+    Subject,
     switchMap,
 } from 'rxjs';
 
@@ -42,27 +49,41 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     templateUrl: './line-clamp.template.html',
     styleUrl: './line-clamp.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox}],
+    providers: [
+        {provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox},
+        WaResizeObserverService,
+        WaIntersectionObserverService,
+    ],
     hostDirectives: [TuiTransitioned],
-    host: {'[style.line-height.px]': 'line()'},
+    host: {
+        '[style.line-height.px]': 'line()',
+        '(transitionend)': 'onTransitionEnd($event)',
+        '(mouseenter)': 'update()',
+    },
 })
 export class TuiLineClamp {
-    private readonly destroyRef = inject(DestroyRef);
-
     private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-
-    private readonly isOverflowing = signal(false);
+    private readonly isOverflown$ = new Subject<boolean>();
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
     private readonly rendered = signal(false);
+    private readonly isOverflowing = signal(false);
+    private readonly resize$ = inject(WaResizeObserverService);
+    private readonly intersection$ = inject(WaIntersectionObserverService).pipe(
+        map(([entry]) => entry?.isIntersecting ?? true),
+        distinctUntilChanged(),
+        filter(Boolean),
+    );
 
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
-    public readonly overflownChange = output<boolean>();
+    public readonly overflownChange = outputFromObservable(
+        this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
+    );
 
     protected readonly lineClamp = toSignal(
         toObservable(this.linesLimit).pipe(
@@ -85,53 +106,47 @@ export class TuiLineClamp {
             write: () => {
                 this.rendered.set(true);
                 this.update();
-                this.setupListeners();
             },
         });
 
         effect(() => {
             this.lineHeight();
             this.linesLimit();
-
-            untracked(() => {
-                this.el.style.maxHeight = tuiPx(this.maxHeight());
-
-                if (this.rendered()) {
-                    this.update();
-                }
-            });
+            untracked(() => this.update());
         });
-    }
 
-    protected get computedContent(): PolymorpheusContent {
-        return this.rendered() && this.options.showHint && this.isOverflowing()
-            ? this.content()
-            : '';
-    }
-
-    private setupListeners(): void {
-        merge(
-            fromEvent(this.el, 'mouseenter'),
-            fromEvent(window, 'resize').pipe(debounceTime(100)),
-            fromEvent(this.el, 'transitionend').pipe(
-                filter((e: Event) => e.target === e.currentTarget),
-            ),
-        )
-            .pipe(takeUntilDestroyed(this.destroyRef))
+        merge(this.resize$, this.intersection$)
+            .pipe(takeUntilDestroyed())
             .subscribe(() => this.update());
     }
 
-    private update(): void {
+    protected get computedContent(): PolymorpheusContent {
+        return this.options.showHint && this.isOverflowing() ? this.content() : '';
+    }
+
+    protected onTransitionEnd(e: TransitionEvent): void {
+        if (e.target === e.currentTarget) {
+            this.update();
+        }
+    }
+
+    protected update(): void {
+        if (!this.rendered()) {
+            return;
+        }
+
         const outlet = this.outlet().nativeElement;
         const {scrollHeight, scrollWidth} = outlet;
-        const overflowing =
-            scrollHeight > this.maxHeight() || scrollWidth > this.el.clientWidth;
+        const {clientWidth} = this.el;
+        const maxH = this.maxHeight();
+        const overflowing = scrollHeight > maxH || scrollWidth > clientWidth;
 
-        this.el.style.height = tuiPx(outlet.scrollHeight);
+        this.el.style.height = tuiPx(scrollHeight);
+        this.el.style.maxHeight = tuiPx(maxH);
         this.el.classList.toggle('_overflown', overflowing);
 
-        if (this.isOverflowing() !== overflowing) {
-            this.overflownChange.emit(overflowing);
+        if (overflowing !== this.isOverflowing()) {
+            this.isOverflown$.next(overflowing);
             this.isOverflowing.set(overflowing);
         }
     }
