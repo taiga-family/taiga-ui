@@ -6914,6 +6914,7 @@ const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',
     'var(--tui-status-info)',
 ];
+
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
@@ -7117,6 +7118,7 @@ const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',
     'var(--tui-status-info)',
 ];
+
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
@@ -7625,6 +7627,7 @@ const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',
     'var(--tui-status-info)',
 ];
+
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
@@ -11941,6 +11944,7 @@ export default class Example {
     protected calculate(event: MouseEvent): void {
         const rect =
             this.compass()?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
+
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
         const y = Math.ceil(event.clientY - (rect.top + rect.height / 2));
 
@@ -17689,6 +17693,7 @@ import {
 import {TuiButtonX, TuiInput} from '@taiga-ui/core';
 
 const postfix = ' rad';
+
 const numberOptions = maskitoNumberOptionsGenerator({
     postfix,
     decimalSeparator: ',',
@@ -27275,6 +27280,7 @@ export default class Example {
 
     protected readonly users = Array.from({length: 10_000}, (_, index) => {
         const firstName = this.names[Math.floor(Math.random() * this.names.length)] ?? '';
+
         const lastName =
             this.names[Math.floor((Math.random() * this.names.length) / 2)] ?? '';
 
@@ -37762,9 +37768,11 @@ export default class Page {
     constructor() {
         const scroller = inject(ViewportScroller);
         const router = inject(Router);
+
         const route = router.config.find(
             ({path}) => path === this.routes.Slides.replace('/', ''),
         );
+
         const length = route?.children?.length ?? 0;
 
         router.events
@@ -40738,6 +40746,7 @@ export default class Example {
 
         const start = page * size;
         const end = start + size;
+
         const result = [...DATA]
             .sort(sortBy(key, direction))
             .filter((user) => user.age >= minAge)
@@ -40819,6 +40828,7 @@ interface User {
 }
 
 const TODAY = TuiDay.currentLocal();
+
 const FIRST = [
     'John',
     'Jane',
@@ -49644,8 +49654,10 @@ export default class Example {
         const minutes = (integer - seconds) / SECONDS_IN_MINUTE;
         const secondsString = String(seconds);
         const minutesString = String(minutes);
+
         const paddedSeconds =
             secondsString.length === 1 ? `0${secondsString}` : secondsString;
+
         const paddedMinutes =
             minutesString.length === 1 ? `0${minutesString}` : minutesString;
 
