@@ -204,7 +204,6 @@ describe('TuiDayRange', () => {
             const y2000m0d1 = new TuiDay(2000, 0, 1);
             const y2001m0d1 = new TuiDay(2001, 0, 1);
             const y3000m0d1 = new TuiDay(3000, 0, 1);
-
             const range = new TuiDayRange(y2000m0d1, y3000m0d1);
             const limitedRange = range.dayLimit(y2001m0d1, null);
 
@@ -215,7 +214,6 @@ describe('TuiDayRange', () => {
             const y2000m0d1 = new TuiDay(2000, 0, 1);
             const y2999m0d1 = new TuiDay(2999, 0, 1);
             const y3000m0d1 = new TuiDay(3000, 0, 1);
-
             const range = new TuiDayRange(y2000m0d1, y3000m0d1);
             const limitedRange = range.dayLimit(null, y2999m0d1);
 

@@ -12,11 +12,13 @@ export function tuiWindowSize(window: Window): Signal<DOMRect> {
                     window.innerWidth || 0,
                     window.visualViewport?.width || 0,
                 );
+
                 const height = Math.max(
                     window.document.documentElement.clientHeight || 0,
                     window.innerHeight || 0,
                     window.visualViewport?.height || 0,
                 );
+
                 const rect = {
                     width,
                     height,

@@ -26,6 +26,7 @@ export const TUI_DAY_CAPS_MAPPER: TuiMapper<
 
     // TODO(v5): `value instanceof TuiDay` always `true`
     const from = value instanceof TuiDay ? value : value.from;
+
     const dateShift = from
         .append(backwards ? negativeMaxLength : maxLength)
         .append({day: backwards ? 1 : -1});

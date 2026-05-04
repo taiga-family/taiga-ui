@@ -8,13 +8,11 @@ import {isServiceMethodCall} from '../../../utils/is-service-method-call';
 
 const TAIGA_CORE = '@taiga-ui/core';
 const TAIGA_LEGACY = '@taiga-ui/legacy';
-
 const FACTORY_NAME = 'tuiDialog';
 const SERVICE_NAME = 'TuiDialogService';
 const METHOD_NAME = 'open';
 const PROVIDER_NAME = 'tuiDialogOptionsProvider';
 const MIGRATE_TOKENS = [FACTORY_NAME, SERVICE_NAME, PROVIDER_NAME];
-
 const LEGACY_SIZE_FULLSCREEN = 'fullscreen';
 const LEGACY_SIZES = ['auto', LEGACY_SIZE_FULLSCREEN, 'page'];
 const TODO_MESSAGE = `legacy dialog size detected (deprecated size: ${LEGACY_SIZES.map((size) => `'${size}'`).join(', ')}); migration only moved imports. Review this call.`;
@@ -27,7 +25,6 @@ export function migrateDialogLegacySizes(_tree: Tree, _options: TuiSchema): void
 
 function migrateSourceFile(sourceFile: SourceFile): void {
     const calls = sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression);
-
     let hasLegacySize = false;
 
     calls.forEach((call) => {

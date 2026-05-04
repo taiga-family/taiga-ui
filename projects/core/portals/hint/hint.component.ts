@@ -134,6 +134,7 @@ export class TuiHintComponent {
         }
 
         const viewport = this.viewport.getClientRect();
+
         const safeLeft = tuiClamp(
             Math.max(GAP, left),
             viewport.left + GAP,

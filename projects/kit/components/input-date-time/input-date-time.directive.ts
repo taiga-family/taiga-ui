@@ -164,10 +164,12 @@ export class TuiInputDateTimeDirective
         this.control?.control?.updateValueAndValidity({emitEvent: false});
 
         const [date = '', time = ''] = value.split(this.options.dateTimeSeparator);
+
         const parsedDate =
             date.length >= DATE_FILLER_LENGTH
                 ? TuiDay.normalizeParse(date, this.format().mode)
                 : null;
+
         const parsedTime =
             time.length === this.timeMode().length ? TuiTime.fromString(time) : null;
 
@@ -189,6 +191,7 @@ export class TuiInputDateTimeDirective
 
         const dateString =
             date?.toString(this.format().mode, this.format().separator) ?? '';
+
         const timeString = time?.toString(this.timeMode());
 
         return timeString
@@ -203,6 +206,7 @@ export class TuiInputDateTimeDirective
 
         if (timeValue && !this.value()) {
             const time = TuiTime.fromString(timeValue);
+
             const newValue = [
                 TuiDay.normalizeParse(date, this.format().mode),
                 time,
@@ -218,6 +222,7 @@ export class TuiInputDateTimeDirective
         const min = date.daySame(this.min())
             ? this.minTime().toAbsoluteMilliseconds()
             : -Infinity;
+
         const max = date.daySame(this.max())
             ? this.maxTime().toAbsoluteMilliseconds()
             : Infinity;
@@ -236,6 +241,7 @@ export class TuiInputDateTimeDirective
     ): MaskitoOptions {
         const options = maskitoDateTimeOptionsGenerator(params);
         const {timeMode, dateMode, dateTimeSeparator} = params;
+
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
                 element.selectionStart! >=

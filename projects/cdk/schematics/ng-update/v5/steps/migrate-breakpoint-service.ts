@@ -13,6 +13,7 @@ const BREAKPOINT_SERVICE = 'TuiBreakpointService';
 const BREAKPOINT_TOKEN = 'TUI_BREAKPOINT';
 const RXJS_INTEROP = '@angular/core/rxjs-interop';
 const TO_OBSERVABLE = 'toObservable';
+
 const BREAKPOINT_TODO_MESSAGE =
     'TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed';
 
@@ -49,6 +50,7 @@ function migrateSourceFile(sourceFile: SourceFile): boolean {
         firstArg.replaceWithText(BREAKPOINT_TOKEN);
 
         const parent = call.getParent();
+
         const isAlreadyWrapped =
             Node.isCallExpression(parent) &&
             parent.getExpression().getText() === TO_OBSERVABLE &&
@@ -78,6 +80,7 @@ function cleanupBreakpointServiceImport(sourceFile: SourceFile): void {
             }
 
             const nameNode = specifier.getNameNode();
+
             const refs = Node.isIdentifier(nameNode)
                 ? nameNode
                       .findReferencesAsNodes()
@@ -108,6 +111,7 @@ function addTodoForUnsupportedUsages(sourceFile: SourceFile): void {
             }
 
             const nameNode = specifier.getNameNode();
+
             const refs = Node.isIdentifier(nameNode)
                 ? nameNode
                       .findReferencesAsNodes()

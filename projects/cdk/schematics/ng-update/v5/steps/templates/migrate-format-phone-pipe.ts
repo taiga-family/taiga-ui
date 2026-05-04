@@ -9,7 +9,6 @@ import {
 import {type TemplateResource} from '../../../interfaces';
 
 const PIPE_RENAME_REGEX = /(\|\s*)tuiFormatPhone\b/g;
-
 const TODO_COMMENT_WITH_ARGS = `<!-- ${TODO_MARK} \`tuiFormatPhone\` pipe was replaced by \`maskito\` pipe. Replace its arguments with \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' (note: countryIsoCode is ISO format e.g. 'US', not '+1'). See: https://taiga-ui.dev/components/input-phone-international#phone-format-helpers -->`;
 const TODO_COMMENT_NO_ARGS = `<!-- ${TODO_MARK} \`tuiFormatPhone\` pipe was replaced by \`maskito\` pipe. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international#phone-format-helpers -->`;
 

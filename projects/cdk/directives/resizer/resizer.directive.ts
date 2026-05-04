@@ -67,6 +67,7 @@ export class TuiResizer {
         }
 
         const {style} = this.resizable.nativeElement;
+
         const size = [
             this.width + tuiResizer[0] * (x - this.x),
             this.height + tuiResizer[1] * (y - this.y),

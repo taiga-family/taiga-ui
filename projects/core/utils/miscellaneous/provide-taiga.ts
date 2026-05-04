@@ -37,6 +37,7 @@ export function provideTaiga(
     config: Partial<TuiOptions> = {},
 ): Array<EnvironmentProviders | Provider> {
     const options = {...DEFAULT, ...config};
+
     const providers: Array<EnvironmentProviders | Provider> = [
         {
             provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,

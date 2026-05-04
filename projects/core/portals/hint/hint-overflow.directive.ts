@@ -18,11 +18,11 @@ export class TuiHintOverflow {
     public readonly content = input<string | null>('', {alias: 'tuiHintOverflow'});
 
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {
+        const content = this.content();
+
         tuiSetSignal(
             this.hint.content,
-            scrollWidth > clientWidth && this.content() !== null
-                ? this.content() || textContent
-                : '',
+            scrollWidth > clientWidth && content !== null ? content || textContent : '',
         );
     }
 }

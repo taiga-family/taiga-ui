@@ -345,6 +345,7 @@ async function collectComponentFolders(
     const skipFolders = new Set<string>(
         (config.constants.skipFolders ?? []).map((f) => f.toLowerCase()),
     );
+
     const childFolders = config.constants.childFolders ?? [];
     const folders: string[] = [];
 
@@ -361,10 +362,12 @@ async function collectComponentFolders(
 
 async function collectHeaderSections(config: AppConfig): Promise<string[]> {
     const output: string[] = [];
+
     const headerSectionsPath = path.resolve(
         process.cwd(),
         config.constants.headerSectionsPath,
     );
+
     const headerFiles = config.constants.headerFiles ?? [];
 
     console.info('Adding header sections...');
@@ -388,7 +391,6 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
 async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]> {
     const output: string[] = [];
     let hasMarkdownContent = false;
-
     const entries = Array.from(cliOptions.roots.entries());
 
     for (const [idx, rootCandidate] of entries) {

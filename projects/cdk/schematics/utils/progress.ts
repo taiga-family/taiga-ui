@@ -20,6 +20,7 @@ export function setupProgressLogger({
         }
 
         const isLast = i === total;
+
         const progressLog = `(${i} / ${total}) ${prefix} ${
             isLast ? SUCCESS_SYMBOL : message
         }`;

@@ -24,6 +24,7 @@ export function tuiGetElementObscures(element: Element): readonly Element[] | nu
     const doc = tuiGetDocumentOrShadowRoot(element);
     const horizontalMiddle = Math.round(left + width / 2);
     const verticalMiddle = Math.round(top + height / 2);
+
     const elements = [
         doc.elementFromPoint(horizontalMiddle, Math.round(top) + 2),
         doc.elementFromPoint(horizontalMiddle, Math.round(bottom) - 2),

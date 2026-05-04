@@ -32,6 +32,7 @@ describe('InputInline', () => {
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
     let pageObject: TuiPageObject<Test>;
+
     const testContext = {
         get prefix() {
             return 'tui-input-inline__';

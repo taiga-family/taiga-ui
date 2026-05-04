@@ -66,6 +66,7 @@ function provideIcon(): FactoryProvider {
             }
 
             const {check, more} = inject(TUI_COMMON_ICONS);
+
             const active =
                 inject(TuiDataListComponent, {optional: true}) &&
                 inject(RouterLink, {self: true, optional: true})

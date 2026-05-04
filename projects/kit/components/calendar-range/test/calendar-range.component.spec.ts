@@ -166,6 +166,7 @@ describe('rangeCalendarComponent', () => {
                 new TuiDay(1944, 7, 1),
                 new TuiDay(1944, 7, 31),
             );
+
             const title = 'In August 44th';
 
             testComponent.items = [new TuiDayRangePeriod(august, title)];
@@ -182,7 +183,6 @@ describe('rangeCalendarComponent', () => {
             const today = TuiDay.currentLocal();
             const previousMonth = today.append({month: -1});
             const title = 'New interval';
-
             const item = component.items()[0];
 
             if (item) {
@@ -261,7 +261,6 @@ describe('rangeCalendarComponent', () => {
         it('should set item before updating value', () => {
             const itemChangeSpy = jest.spyOn(testComponent.component().item, 'set');
             const valueSetSpy = jest.spyOn(testComponent.component().value, 'set');
-
             const item = component.items()[1];
 
             if (item) {

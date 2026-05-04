@@ -96,6 +96,7 @@ export class TuiDropdownSelection
             const valid = contained && handler(this.range);
             const visible = valid || this.inDropdown(range);
             const active = tuiGetFocused(this.doc);
+
             const textfield =
                 active && tuiIsTextfield(active) && this.el.contains(active);
 
@@ -122,6 +123,7 @@ export class TuiDropdownSelection
         switch (this.tuiDropdownSelectionPosition()) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
+
                 const element = tuiIsElement(commonAncestorContainer)
                     ? commonAncestorContainer
                     : commonAncestorContainer.parentNode;
@@ -150,6 +152,7 @@ export class TuiDropdownSelection
     private getRange(): Range {
         const active = tuiGetFocused(this.doc);
         const selection = this.doc.getSelection();
+
         const range =
             active && tuiIsTextfield(active) && this.el.contains(active)
                 ? this.veryVerySadInputFix(active)
@@ -164,8 +167,10 @@ export class TuiDropdownSelection
     private inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
+
         const hostToDropdown =
             this.boxContains(endContainer) && this.el.contains(startContainer);
+
         const dropdownToHost =
             this.boxContains(startContainer) && this.el.contains(endContainer);
 
@@ -216,6 +221,7 @@ export class TuiDropdownSelection
         element: HTMLElement | HTMLInputElement | HTMLTextAreaElement,
     ): HTMLElement {
         const ghost = this.doc.createElement('div');
+
         const {font, letterSpacing, textTransform, padding, borderTop} =
             getComputedStyle(element);
 

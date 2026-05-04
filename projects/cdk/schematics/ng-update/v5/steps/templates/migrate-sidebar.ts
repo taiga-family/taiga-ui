@@ -13,10 +13,12 @@ import {type TemplateResource} from '../../../interfaces';
 type Element = DefaultTreeAdapterTypes.Element;
 
 const SIDEBAR_ATTR = `*${'tuiSidebar'.toLowerCase()}`;
+
 const SIDEBAR_DIRECTION_ATTRS = new Set([
     'tuiSidebarDirection'.toLowerCase(),
     `[${'tuiSidebarDirection'.toLowerCase()}]`,
 ]);
+
 const SIDEBAR_AUTO_WIDTH_ATTRS = new Set([
     'tuiSidebarAutoWidth'.toLowerCase(),
     `[${'tuiSidebarAutoWidth'.toLowerCase()}]`,
@@ -97,15 +99,15 @@ function buildReplacement(template: string, element: Element): Replacement | nul
         .map(({name, value}) => (value ? `${name}="${value}"` : name));
 
     const tuiPopupAttr = `*tuiPopup="${parsed.binding}"`;
+
     const newAttrs = [
         tuiPopupAttr,
         ...otherAttrs,
         ...(mappedDirection ? [mappedDirection.attr] : []),
     ];
+
     const attrsStr = newAttrs.length > 0 ? ` ${newAttrs.join(' ')}` : '';
-
     const comments = `${hasAutoWidth ? AUTO_WIDTH_MIGRATION_COMMENT : ''}${mappedDirection?.isDynamic ? DYNAMIC_DIRECTION_MIGRATION_COMMENT : ''}`;
-
     const endTag = loc?.endTag;
 
     if (!endTag) {

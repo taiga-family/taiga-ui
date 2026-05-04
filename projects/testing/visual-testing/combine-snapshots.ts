@@ -11,7 +11,6 @@ export async function tuiCombineSnapshots(
 
     const totalWidth = data.reduce((sum, metadata) => sum + (metadata.width || 0), 0);
     const maxHeight = Math.max(...data.map((metadata) => metadata.height || 0));
-
     let currentX = 0;
 
     const composites = inputs.map((img, i) => {

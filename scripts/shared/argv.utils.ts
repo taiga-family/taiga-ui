@@ -10,6 +10,7 @@ export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
     }
 
     const [parsedFlag, parsedValue] = process.argv[index]?.split('=') ?? [];
+
     const value =
         stringifier(parsedValue) ??
         (process.argv[index + 1]?.startsWith('-')

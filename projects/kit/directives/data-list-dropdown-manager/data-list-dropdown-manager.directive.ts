@@ -104,10 +104,12 @@ export class TuiDataListDropdownManager implements AfterViewInit {
                     }
 
                     const {nativeElement} = ref.location;
+
                     const mouseEnter$ = tuiTypedFromEvent(
                         nativeElement,
                         'mouseenter',
                     ).pipe(take(1));
+
                     const esc$ = merge(
                         tuiTypedFromEvent(element.nativeElement, 'keydown'),
                         tuiTypedFromEvent(nativeElement, 'keydown'),
@@ -142,6 +144,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
 
         // First item is focus trap
         const focusTrap = tuiGetClosestFocusable({initial: content, root: content});
+
         const item = tuiGetClosestFocusable({
             initial: focusTrap || content,
             root: content,

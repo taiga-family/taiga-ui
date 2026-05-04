@@ -93,11 +93,13 @@ export class TuiInputSearch implements OnChanges {
     }
 
     protected onFocus({target}: Event): void {
+        const container = this.container();
+
         if (
-            this.container() &&
+            container &&
             target !== this.el &&
             tuiIsElement(target) &&
-            !tuiContainsOrAfter(this.container()!.nativeElement, target)
+            !tuiContainsOrAfter(container.nativeElement, target)
         ) {
             this.close();
         }

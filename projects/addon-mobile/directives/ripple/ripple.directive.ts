@@ -54,6 +54,7 @@ export class TuiRipple {
         }
 
         const ripple = this.createRipple(x, y, element.getBoundingClientRect());
+
         const touchEnd$ = merge(
             fromEvent(element, 'pointerup'),
             fromEvent(element, 'pointercancel'),

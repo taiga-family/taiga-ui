@@ -64,6 +64,7 @@ test.describe('Deep / Select', () => {
                     await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
                     const example = api.demo;
+
                     const query = decodeURIComponent(
                         String(new URL(page.url()).searchParams),
                     );

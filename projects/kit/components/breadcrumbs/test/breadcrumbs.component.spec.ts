@@ -58,6 +58,7 @@ describe('Breadcrumbs Wrapper', () => {
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
     let pageObject: TuiPageObject<Test>;
+
     const testContext = {
         get prefix() {
             return 'tui-breadcrumbs-wrapper__';
@@ -96,6 +97,7 @@ describe('Breadcrumbs Wrapper', () => {
     describe('icon:', () => {
         it('the last element is missing', () => {
             const itemsArrayLength = ITEMS.length;
+
             const iconsArrayLength = fixture.debugElement.queryAll(
                 By.css('.t-icon'),
             ).length;

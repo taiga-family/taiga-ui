@@ -94,7 +94,6 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         const cycleHeight = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
         const remainder = offset % cycleHeight;
         const years = ((offset - remainder) / cycleHeight) * YEARLY_CYCLE;
-
         let accumulator = 0;
 
         for (let year = 0; year < cycle.length; year++) {
@@ -115,6 +114,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         const remainder = year % YEARLY_CYCLE;
         const remainderHeight = reduceCycle(cycle, remainder, month);
         const fullCycles = (year - remainder) / YEARLY_CYCLE;
+
         const fullCyclesHeight = this.isIOS
             ? fullCycles * IOS_CYCLE_HEIGHT
             : fullCycles * ANDROID_CYCLE_HEIGHT;

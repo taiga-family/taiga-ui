@@ -32,6 +32,7 @@ export class TuiInputNumberStep {
 
     public onStep(step: bigint | number): void {
         const current = this.input.parsed() || 0;
+
         const updated = tuiSum(
             current,
             typeof current === 'bigint' ? BigInt(step) : Number(step),

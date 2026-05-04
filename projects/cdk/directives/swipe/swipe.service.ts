@@ -33,7 +33,6 @@ export class TuiSwipeService extends Observable<TuiSwipeEvent> {
                         const startY = start.touches[0]?.clientY ?? 0;
                         const endX = end.changedTouches[0]?.clientX ?? 0;
                         const endY = end.changedTouches[0]?.clientY ?? 0;
-
                         const distanceX = startX - endX;
                         const distanceY = startY - endY;
                         const duration = end.timeStamp - start.timeStamp;

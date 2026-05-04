@@ -192,9 +192,11 @@ function buildReplacement(
     const textfieldAttrs: string[] = [];
     const inputAttrs = ['tuiInput'];
     const controlStateAttrs = getControlStateAttrs(element);
+
     const controlStateAttrsLower = new Set(
         controlStateAttrs.map((a) => a.name.toLowerCase()),
     );
+
     const ctx: MigrationContext = {
         placeholder: '',
         labelOutsideValue: null,
@@ -290,8 +292,10 @@ function buildReplacement(
 
         // Unrecognized attr — place on <tui-textfield> (the host replacement) with TODO
         const original = getOriginalAttrText(template, element, nameLower);
+
         const originalText =
             original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
+
         const originalName = original?.match(/^[\w[\]()]+/)?.[0] ?? attr.name;
 
         ctx.unknownAttrs.push(originalName);
@@ -308,6 +312,7 @@ function buildReplacement(
     const isLabelOutsideTrue =
         ctx.labelOutsideValue === 'true' ||
         (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
+
     const isLabelOutsideDynamic =
         ctx.labelOutsideValue !== null &&
         !isLabelOutsideTrue &&
@@ -315,6 +320,7 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
+
     const innerContent = buildInnerContent({
         element,
         template,
@@ -327,13 +333,13 @@ function buildReplacement(
         hintIconStr,
         customContentIconStr: buildCustomContentIconStr(ctx.customContent, indent),
     });
+
     const todoComment = buildTodoComment(ctx);
     // `indent` is added before <tui-textfield> only when there is a TODO — in that case
     // todoComment ends with `\n` so the tag would otherwise start at column 0.
     // Without a TODO the preserved whitespace before startOffset already provides the indent.
     const tagIndent = todoComment ? indent : '';
     const core = `${tagIndent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
-
     const replacement = `${todoComment}${core}`;
 
     return {
@@ -503,6 +509,7 @@ function migrateInnerInput({
     const legacyAttr = inner.attrs.find((a) =>
         LEGACY_INPUT_ATTRS.has(a.name.toLowerCase()),
     );
+
     const legacyAttrLoc = legacyAttr
         ? innerLoc.attrs?.[legacyAttr.name.toLowerCase()]
         : undefined;
@@ -528,11 +535,13 @@ function migrateInnerInput({
     startTag = `${startTag.slice(0, closePos).trimEnd()}${insertStr}${startTag.slice(closePos)}`;
 
     const labelContent = buildLabelContent(parent, inner, template);
+
     const labelHtml = labelContent
         ? `${indent}<label tuiLabel>${labelContent}</label>\n`
         : '';
 
     const innerStart = innerLoc.startOffset;
+
     const siblingsAfter = parent.childNodes
         .filter((child): child is Element => {
             if (

@@ -15,6 +15,7 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
     public toControlValue(textfieldValue: string | null): ControlValue {
         const params = this.mask.params();
         const {decimalSeparator} = params;
+
         const significand = maskitoParseNumber(
             textfieldValue?.replace(decimalSeparator, '') ?? '',
             {
@@ -45,10 +46,12 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
         }
 
         const params = this.mask.params();
+
         const integer = maskitoStringifyNumber(
             BigInt(String(significand).slice(0, exp || Infinity)),
             {...params, postfix: ''},
         );
+
         const decimal = exp ? String(significand).slice(exp) : '';
 
         return `${integer}${decimal && params.decimalSeparator + decimal}${params.postfix}`;

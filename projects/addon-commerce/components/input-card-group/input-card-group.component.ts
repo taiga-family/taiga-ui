@@ -256,6 +256,7 @@ export class TuiInputCardGroup
     public handleOption(option: Partial<TuiCard> | null): void {
         const {card = '', expire = '', cvc = ''} = option || {};
         const bin = this.bin();
+
         const element =
             (!card && this.inputCard()?.nativeElement) ||
             (!expire && this.inputExpire()?.nativeElement) ||
@@ -339,8 +340,10 @@ export class TuiInputCardGroup
     }
 
     private updateBin(oldBin: string | null): void {
-        if (this.bin() !== oldBin && !this.cardPrefilled()) {
-            this.binChange.emit(this.bin());
+        const bin = this.bin();
+
+        if (bin !== oldBin && !this.cardPrefilled()) {
+            this.binChange.emit(bin);
         }
     }
 

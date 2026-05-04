@@ -93,13 +93,16 @@ export class TuiTime implements TuiTimeLike {
             );
 
         const hours = Math.floor(milliseconds / MILLISECONDS_IN_HOUR);
+
         const minutes = Math.floor(
             (milliseconds % MILLISECONDS_IN_HOUR) / MILLISECONDS_IN_MINUTE,
         );
+
         const seconds =
             Math.floor(
                 ((milliseconds % MILLISECONDS_IN_HOUR) % MILLISECONDS_IN_MINUTE) / 1000,
             ) || 0;
+
         const ms =
             Math.floor(
                 ((milliseconds % MILLISECONDS_IN_HOUR) % MILLISECONDS_IN_MINUTE) % 1000,
@@ -166,6 +169,7 @@ export class TuiTime implements TuiTimeLike {
             minutes * MILLISECONDS_IN_MINUTE +
             seconds * MILLISECONDS_IN_SECOND +
             ms;
+
         const totalSeconds = Math.floor(totalMs / MILLISECONDS_IN_SECOND);
         const totalMinutes = Math.floor(totalSeconds / SECONDS_IN_MINUTE);
         const totalHours = Math.floor(totalMinutes / MINUTES_IN_HOUR);
@@ -196,11 +200,14 @@ export class TuiTime implements TuiTimeLike {
             | 'SS.MSS',
     ): string {
         const needAddMs = mode?.startsWith('HH:MM:SS.MSS') || (!mode && this.ms > 0);
+
         const needAddSeconds =
             needAddMs || mode?.startsWith('HH:MM:SS') || (!mode && this.seconds > 0);
+
         const {hours = this.hours, meridiem = ''} = mode?.includes('AA')
             ? this.toTwelveHour(this.hours)
             : {};
+
         const hhMm = `${this.formatTime(hours)}:${this.formatTime(this.minutes)}`;
         const ss = needAddSeconds ? `:${this.formatTime(this.seconds)}` : '';
         const mss = needAddMs ? `.${this.formatTime(this.ms, 3)}` : '';

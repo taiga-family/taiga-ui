@@ -41,7 +41,6 @@ export function migrateDocDocumentation({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
     const elements = findElementsByTagName(template, 'tui-doc-documentation');
-
     const replacements: Replacement[] = [];
 
     elements.forEach((element) => {
@@ -61,6 +60,7 @@ export function migrateDocDocumentation({
 
 function collectInnerTemplates(element: Element): Element[] {
     const found: Element[] = [];
+
     const visit = (nodes: ChildNode[] | undefined): void => {
         nodes?.forEach((node) => {
             const el = node as Element;
@@ -95,10 +95,8 @@ function buildOuterReplacement(template: string, element: Element): Replacement[
     const replacements: Replacement[] = [];
     const startTagStr = template.slice(startTag.startOffset, startTag.endOffset);
     const isSelfClosing = startTagStr.trimEnd().endsWith('/>');
-
     const headingAttr = element.attrs.find((attr) => attr.name === 'heading');
     const otherAttrs = element.attrs.filter((attr) => attr.name !== 'heading');
-
     const attrsStr = ['tuiDocAPI', ...otherAttrs.map(formatAttr)].join(' ');
     const close = isSelfClosing ? ' />' : '>';
     let newStartTag = `<table ${attrsStr}${close}`;
@@ -137,7 +135,6 @@ function buildInnerReplacement(template: string, element: Element): Replacement[
     const replacements: Replacement[] = [];
     const startTagStr = template.slice(startTag.startOffset, startTag.endOffset);
     const isSelfClosing = startTagStr.trimEnd().endsWith('/>');
-
     const mode = getAttrValue(element, 'documentationPropertyMode');
     const name = getAttrValue(element, 'documentationPropertyName') ?? '';
     const type = getAttrValue(element, 'documentationPropertyType');
@@ -149,8 +146,8 @@ function buildInnerReplacement(template: string, element: Element): Replacement[
     const refAttr = element.attrs.find(
         (attr) => attr.name.startsWith('#') && attr.value === 'documentationProperty',
     );
-    const wrappedName = wrapName(name, mode);
 
+    const wrappedName = wrapName(name, mode);
     const orderedAttrs: string[] = [];
 
     if (refAttr) {
@@ -187,7 +184,6 @@ function buildInnerReplacement(template: string, element: Element): Replacement[
     if (isMultiline) {
         const elementIndent = getLineIndent(template, startTag.startOffset);
         const attrIndent = getAttrIndent(template, element) ?? `${elementIndent}    `;
-
         const lines = ['<tr'];
 
         orderedAttrs.forEach((attr) => lines.push(`${attrIndent}${attr}`));

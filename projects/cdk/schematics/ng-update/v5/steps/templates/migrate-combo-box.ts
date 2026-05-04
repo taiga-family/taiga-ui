@@ -34,7 +34,6 @@ const CONTROL_ATTR_NAMES = [
 ] as const;
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
-
 const INPUT_ATTRS = new Set(['[strictMatcher]'.toLowerCase(), '[strict]']);
 
 const REMOVE_ATTRS = new Set([
@@ -140,6 +139,7 @@ export function migrateComboBox({
                 '     - [search] / (searchChange): use native (input) event on <input tuiComboBox>',
                 '-->\n',
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, searchTodo);
@@ -154,9 +154,11 @@ export function migrateComboBox({
         );
 
         const isBinding = labelOutsideAttr?.name.startsWith('[') ?? false;
+
         const isLabelOutsideTrue =
             labelOutsideAttr?.value === 'true' ||
             (!!labelOutsideAttr && !isBinding && labelOutsideAttr.value === '');
+
         const isLabelOutsideDynamic =
             !!labelOutsideAttr &&
             !isLabelOutsideTrue &&
@@ -248,6 +250,7 @@ function handleExistingInput({
 
         const insertOffset =
             (input.sourceCodeLocation?.startTag?.startOffset ?? 0) + '<input'.length;
+
         const formAttrs = formatControlAttrs(controlAttrs);
         const inputAttrStr = formatInputAttrs(inputAttrs);
         const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
@@ -284,7 +287,6 @@ function handleGeneratedInput({
     const formAttrs = formatControlAttrs(controlAttrs);
     const inputAttrStr = formatInputAttrs(inputAttrs);
     const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
-
     const labelNode = findTextNode(element);
 
     if (isLabelOutsideTrue && labelNode) {
@@ -369,6 +371,7 @@ function wrapTextInLabel(
 
     const labelTextStart =
         (labelNode.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
     const labelTextEnd = (labelNode.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
     recorder.insertRight(labelTextStart, '\n<label tuiLabel>');

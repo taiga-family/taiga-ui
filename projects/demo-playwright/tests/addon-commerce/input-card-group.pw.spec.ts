@@ -76,8 +76,10 @@ test.describe('InputCardGroup', () => {
 
         test('input card grouped with validation', async () => {
             const example = documentationPage.getExample('#with-validation');
+
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
                 new TuiInputCardGroupPO(example);
+
             const cardInfo = {
                 number: '5213 0000 4039 5834'.replaceAll(' ', CHAR_NO_BREAK_SPACE),
                 expiry: '02/38',
@@ -137,9 +139,11 @@ test.describe('InputCardGroup', () => {
 
         test('input card grouped with saved cards', async () => {
             const example = documentationPage.getExample('#with-saved-cards');
+
             const {numberTextfield, cvcTextfield, cleanerIcon} = new TuiInputCardGroupPO(
                 example,
             );
+
             const cvc = '123';
 
             await expect
@@ -173,8 +177,10 @@ test.describe('InputCardGroup', () => {
 
         test('expired field should be clickable after reset of prefilled value', async () => {
             const example = documentationPage.getExample('#custom-labels');
+
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
                 new TuiInputCardGroupPO(example);
+
             const cardInfo = {
                 number: '5586 2000 7149 2158'.replaceAll(' ', CHAR_NO_BREAK_SPACE),
                 expiry: '12/25',

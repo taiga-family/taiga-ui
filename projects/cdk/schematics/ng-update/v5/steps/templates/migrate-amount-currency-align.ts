@@ -20,7 +20,6 @@ export function migrateAmountCurrencyAlign({
 }: Input): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
-
     const re = /(\|\s*tuiAmount\s*:\s*["'][^"']*["']\s*:\s*)['"](right|left)['"]/g;
 
     [...template.matchAll(re)].forEach((match) => {

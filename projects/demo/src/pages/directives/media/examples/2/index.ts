@@ -26,8 +26,10 @@ export default class Example {
         const minutes = (integer - seconds) / SECONDS_IN_MINUTE;
         const secondsString = String(seconds);
         const minutesString = String(minutes);
+
         const paddedSeconds =
             secondsString.length === 1 ? `0${secondsString}` : secondsString;
+
         const paddedMinutes =
             minutesString.length === 1 ? `0${minutesString}` : minutesString;
 

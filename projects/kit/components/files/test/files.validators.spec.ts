@@ -9,6 +9,7 @@ describe('tuiCreateFileFormatValidator', () => {
     describe('empty accept', () => {
         it('accepts any file when accept is empty string', () => {
             const validator = tuiCreateFileFormatValidator('');
+
             const control = new FormControl([
                 makeFile('photo.exe', 'application/x-msdownload'),
             ]);

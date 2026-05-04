@@ -70,7 +70,6 @@ describe('TuiTime', () => {
                 tuiSwitchNgDevMode(true);
 
                 const assertSpy = jest.spyOn(console, 'assert');
-
                 const time = TuiTime.fromAbsoluteMilliseconds(90_000_000);
 
                 expect(time.toString()).toBe('25:00');
@@ -294,6 +293,7 @@ describe('TuiTime', () => {
 
         it('simple hours, minutes, seconds adding', () => {
             const time = new TuiTime(6, 36, 1);
+
             const increasedTime = time.shift({
                 hours: 1,
                 minutes: 1,
@@ -305,6 +305,7 @@ describe('TuiTime', () => {
 
         it('simple hours, minutes, seconds decreasing', () => {
             const time = new TuiTime(6, 36, 1);
+
             const increasedTime = time.shift({
                 hours: -1,
                 minutes: -1,
@@ -316,6 +317,7 @@ describe('TuiTime', () => {
 
         it('simple hours, minutes, seconds, ms adding', () => {
             const time = new TuiTime(6, 36, 1);
+
             const increasedTime = time.shift({
                 hours: 1,
                 minutes: 1,
@@ -328,6 +330,7 @@ describe('TuiTime', () => {
 
         it('simple hours, minutes, seconds, ms decreasing', () => {
             const time = new TuiTime(6, 36, 1, 20);
+
             const increasedTime = time.shift({
                 hours: -1,
                 minutes: -1,
@@ -340,6 +343,7 @@ describe('TuiTime', () => {
 
         it('with big ms number adding', () => {
             const time = new TuiTime(6, 36, 1);
+
             const increasedTime = time.shift({
                 ms: 1000 * 60 * 60 + 1000 * 60 + 1000 + 10,
             });
@@ -349,6 +353,7 @@ describe('TuiTime', () => {
 
         it('with big seconds and ms number adding', () => {
             const time = new TuiTime(6, 36, 1);
+
             const increasedTime = time.shift({
                 seconds: 60 * 10 + 5,
                 ms: 1000 * 60 * 60 + 1000 * 60 + 1000 + 10,
@@ -359,6 +364,7 @@ describe('TuiTime', () => {
 
         it('with big minutes, seconds and ms number adding', () => {
             const time = new TuiTime(6, 36, 1);
+
             const increasedTime = time.shift({
                 minutes: 60 * 2 + 2,
                 seconds: 60 * 10 + 5,
@@ -370,6 +376,7 @@ describe('TuiTime', () => {
 
         it('with big minutes, seconds and ms number decreasing', () => {
             const time = new TuiTime(6, 36, 1);
+
             const increasedTime = time.shift({
                 minutes: -60 * 2 - 2,
                 seconds: -60 * 10 - 5,

@@ -13,6 +13,7 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const NGFOR_REPEAT_TIMES_PATTERN =
     /let\s+(\w+)\s+of\s+([^\s|]+)\s*\|\s*tuiRepeatTimes\s*/;
+
 const FOR_BLOCK_PATTERN = /@for\s*\(/g;
 
 export function migrateRepeatTimes({
@@ -116,7 +117,6 @@ function replaceVariableInElement(
     const searchStart = loc.startOffset;
     const searchEnd = loc.endOffset;
     const content = template.slice(searchStart, searchEnd);
-
     const pattern = new RegExp(String.raw`\b${variable}\b`, 'g');
     let match;
 

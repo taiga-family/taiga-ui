@@ -199,8 +199,10 @@ function insertIconBeforeEndTag(
     }
 
     const lineStart = template.lastIndexOf('\n', endTag.startOffset) + 1;
+
     const indent =
         /^[ \t]*/.exec(template.slice(lineStart, endTag.startOffset))?.[0] ?? '';
+
     const iconStr = buildCustomContentIconStr(customContent, indent);
 
     recorder.insertRight(

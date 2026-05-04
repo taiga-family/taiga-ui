@@ -72,6 +72,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
 
         // Find existing performance comment
         const performanceCommentMarker = '## 📊 Performance Metrics Comparison';
+
         const existingComment = comments.find((comment: any) =>
             comment.body.includes(performanceCommentMarker),
         );
@@ -79,6 +80,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
         if (existingComment) {
             // Update existing comment
             const updateUrl = `https://api.github.com/repos/${owner}/${repo}/issues/comments/${existingComment.id}`;
+
             const updateResponse = await fetch(updateUrl, {
                 method: 'PATCH',
                 headers,

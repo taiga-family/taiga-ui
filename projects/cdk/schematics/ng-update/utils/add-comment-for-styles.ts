@@ -15,6 +15,7 @@ export function addCommentForStylesFiles(
             const pattern = file.getFilePath().endsWith('ts')
                 ? String.raw`((host:)(.|$|\n)*(^|\n))(?=[^\n]*${sourceText}\b)`
                 : String.raw`(^|\n)(?=[^\n]*${sourceText}\b)`;
+
             const wordRegex = new RegExp(pattern, 'g');
 
             text = text.replaceAll(wordRegex, `$1// ${comment}\n`);

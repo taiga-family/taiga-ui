@@ -31,18 +31,21 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
         const {direction, offset} = this.options;
         const adjusted = this.vertical.getAlign(this.options.align);
         const align = adjusted === 'center' ? 'left' : adjusted;
+
         const available = {
             top: hostRect.bottom - viewport.top,
             left: hostRect.left - offset - viewport.left,
             right: viewport.right - hostRect.right - offset,
             bottom: viewport.bottom - hostRect.top,
         } as const;
+
         const position = {
             top: hostRect.bottom - height + this.tuiDropdownSidedOffset() + 1, // 1 for border
             left: hostRect.left - width - offset,
             right: hostRect.right + offset,
             bottom: hostRect.top - this.tuiDropdownSidedOffset() - 1, // 1 for border
         } as const;
+
         const better = available.top > available.bottom ? 'top' : 'bottom';
         const maxLeft = available.left > available.right ? position.left : position.right;
         const left = available[align] > width ? position[align] : maxLeft;

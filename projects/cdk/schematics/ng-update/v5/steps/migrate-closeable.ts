@@ -12,12 +12,14 @@ import {type TuiSchema} from '../../../ng-add/schema';
 import {isServiceMethodCall} from '../../../utils/is-service-method-call';
 
 const FACTORY_NAME = 'tuiDialog';
+
 const SERVICE_NAMES = [
     'TuiDialogService',
     'TuiAlertService',
     'TuiNotificationService',
     'TuiSheetDialogService',
 ];
+
 const METHOD_NAME = 'open';
 
 export function migrateCloseable(_tree: Tree, _options: TuiSchema): void {

@@ -186,10 +186,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     protected onScroll(element: HTMLElement): void {
-        if (this.input()?.nativeElement === element) {
-            this.ghost()?.nativeElement.scrollTo({
-                left: this.input()?.nativeElement.scrollLeft,
-            });
+        const input = this.input();
+
+        if (input?.nativeElement === element) {
+            this.ghost()?.nativeElement.scrollTo({left: input?.nativeElement.scrollLeft});
         }
     }
 }

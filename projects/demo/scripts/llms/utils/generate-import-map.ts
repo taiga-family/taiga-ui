@@ -201,9 +201,11 @@ function parseSymbols(raw: string): ParsedSymbol[] {
         .map((segment) => {
             const trimmed = segment.trim();
             const hasTypeModifier = TYPE_MODIFIER_RE.test(trimmed);
+
             const nameWithAlias = hasTypeModifier
                 ? trimmed.replace(TYPE_MODIFIER_RE, '')
                 : trimmed;
+
             const name = nameWithAlias.split(/\s+as\s+/)[0]?.trim() ?? '';
 
             return {name, hasTypeModifier};
@@ -304,10 +306,8 @@ async function extractImportsFromDemoPages(
     packageName: string,
 ): Promise<EntityExports[]> {
     const tsFiles = await collectTsFiles(rootPath);
-
     const symbolMap = new Map<string, boolean>();
     const symbolFolderHint = new Map<string, SymbolCategory | undefined>();
-
     const escapedPkg = packageName.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
     const typeImportRe = buildImportRegex(escapedPkg, true);
     const valueImportRe = buildImportRegex(escapedPkg, false);
@@ -337,7 +337,6 @@ async function extractImportsFromDemoPages(
     }
 
     const byCategory = new Map<SymbolCategory, string[]>();
-
     const symbolEntries = Array.from(symbolMap.entries());
 
     for (const [name, isTypeOnly] of symbolEntries) {
@@ -403,7 +402,6 @@ function sortByCategory<T extends {category: string}>(items: T[]): T[] {
     return [...items].sort((a, b) => {
         const aIdx = CATEGORY_ORDER.indexOf(a.category as SymbolCategory);
         const bIdx = CATEGORY_ORDER.indexOf(b.category as SymbolCategory);
-
         const aOrder = aIdx === -1 ? Infinity : aIdx;
         const bOrder = bIdx === -1 ? Infinity : bIdx;
 
@@ -638,6 +636,7 @@ export async function generateImportMap(options?: ImportMapOptions): Promise<str
             extraRoot,
             options.extraPackageName,
         );
+
         const totalExports = entities.reduce((sum, e) => sum + e.exports.length, 0);
 
         if (totalExports > 0) {
@@ -662,6 +661,7 @@ export async function saveImportMap(
     options?: ImportMapOptions,
 ): Promise<void> {
     const importMap = await generateImportMap(options);
+
     const filePath =
         outputPath ||
         path.resolve(

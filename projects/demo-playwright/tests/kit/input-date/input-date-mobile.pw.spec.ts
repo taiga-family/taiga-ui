@@ -6,7 +6,6 @@ import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 
 test.describe('InputDate and mobile user agent', () => {
     const date = new Date(2023, 10, 1);
-
     let example: Locator;
     let inputDate: TuiInputDatePO;
 

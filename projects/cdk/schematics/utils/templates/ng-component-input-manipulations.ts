@@ -66,10 +66,12 @@ export function replaceInputProperty({
         ...findAttributeOnElementWithTag(template, from, selector, filterFn),
         ...findAttributeOnElementWithAttrs(template, from, selector, filterFn),
     ].map((offset) => templateOffset + offset);
+
     const propertyBindings = [
         ...findAttributeOnElementWithTag(template, `[${from}]`, selector, filterFn),
         ...findAttributeOnElementWithAttrs(template, `[${from}]`, selector, filterFn),
     ].map((offset) => templateOffset + offset);
+
     const propertyValues = newValue
         ? getInputPropertyValueOffsets(template, from, selector).map(([start, end]) => [
               templateOffset + start,
@@ -143,6 +145,7 @@ export function getInputPropertyValueOffsets(
         attrName,
         tags,
     ).map(([start, end]) => [start + attrName.length + '="'.length, end - 1]);
+
     const propertyBindings: Array<[number, number]> = getInputPropertyOffsets(
         template,
         `[${attrName}]`,
@@ -207,7 +210,6 @@ export function removeInputProperty({
 }): void {
     const template = getTemplateFromTemplateResource(templateResource, fileSystem);
     const templateOffset = getTemplateOffset(templateResource);
-
     const path = fileSystem.resolve(getPathFromTemplateResource(templateResource));
     const recorder = fileSystem.edit(path);
 

@@ -71,6 +71,7 @@ export class TuiNumberMask {
     public stringify(value: bigint | number | null | undefined): string {
         const params = this.params();
         const precision = params.maximumFractionDigits;
+
         const rounded =
             typeof value === 'number' &&
             Number.isFinite(precision) &&

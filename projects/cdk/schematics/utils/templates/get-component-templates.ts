@@ -19,6 +19,7 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
     const templateUrl = metadata?.getProperty('templateUrl') as
         | PropertyAssignment
         | undefined;
+
     const template = metadata?.getProperty('template') as PropertyAssignment | undefined;
     const componentPath = decorator.getSourceFile().getFilePath();
 

@@ -17,7 +17,6 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
     class Test {}
 
     const heading = 'Test';
-
     let fixture: ComponentFixture<Test>;
     let tuiPushService: TuiPushService;
     let pageObject: TuiPageObject<Test>;

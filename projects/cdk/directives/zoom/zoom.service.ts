@@ -45,6 +45,7 @@ export class TuiZoomService extends Observable<TuiZoomEvent> {
                                     ((event.touches[0]?.clientX ?? 0) +
                                         (event.touches[1]?.clientX ?? 0)) /
                                     2;
+
                                 const clientY =
                                     ((event.touches[0]?.clientY ?? 0) +
                                         (event.touches[1]?.clientY ?? 0)) /

@@ -15,6 +15,7 @@ export interface StressScenario {
 }
 
 const INTENSITY = Math.max(1, Number(process.env.STRESS_INTENSITY || '2'));
+
 export const LOOPS = 3;
 export const OPEN_CLOSE_R = 2 * INTENSITY;
 export const FILTER_R = INTENSITY;
@@ -264,6 +265,7 @@ export function formatLatencyTable(data: {
         ['Run', ...data.firstOptionSamples.map((_, i) => i + 1)],
         ['FirstOption', ...data.firstOptionSamples],
     ];
+
     const footer: Array<[string, number]> = [];
 
     if (typeof data.medianFirstOption === 'number') {
@@ -289,7 +291,9 @@ export function formatLatencyTable(data: {
 
     const pad = (val: unknown, i: number): string =>
         String(val).padStart(widths[i] ?? 0, ' ');
+
     const body = rows.map((r) => r.map(pad).join('  ')).join('\n');
+
     const footerStr = footer
         .map(([k, v]) => `${k.padEnd(13, ' ')}: ${v.toFixed(2)}`)
         .join('\n');

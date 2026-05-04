@@ -23,17 +23,11 @@ class ItemWithBadge {
 }
 
 const ARR_STRING = ['Clothes and footwear'];
-
 const ARR_OBJECT = [new ItemWithBadge('Focused Zone', BADGE_VALUE)];
-
 const ARR_OBJECT_WITH_ZERO_BADGE = [new ItemWithBadge('Focused Zone', 0)];
-
 const ARR_OBJECT_WITH_NULL_BADGE = [new ItemWithBadge('Focused Zone')];
-
 const ARR_OBJECT_WITH_EQ_VALUE_BADGE = [new ItemWithBadge('10', BADGE_VALUE)];
-
 const NUMBER = 4;
-
 const STRING_WITH_NUMBER = '9999';
 
 describe('Filter', () => {

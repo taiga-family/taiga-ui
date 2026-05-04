@@ -34,6 +34,7 @@ export function tuiCombineCypressFailedScreenshots(): void {
 
     for (const {baselinePath, diffPath, comparisonPath, name} of failedTestSnapshots) {
         const output = `${TEST_RESULTS_PATH}/${name}.diff.png`;
+
         const inputs = [comparisonPath, diffPath, baselinePath].map(
             (x) => `${ROOT_PATH}/${x}`,
         );

@@ -73,6 +73,7 @@ export class TuiDocToc implements OnInit {
 
 function getSeeAlso(): string[] {
     const current = inject(TuiDocPage).header() || '';
+
     const groups =
         inject(TUI_DOC_SEE_ALSO).filter((group) => group.includes(current)) || [];
 

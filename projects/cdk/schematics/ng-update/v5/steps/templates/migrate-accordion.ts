@@ -27,6 +27,7 @@ export function migrateAccordionItem({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
+
     const items = findElementsByTagName(template, 'tui-accordion-item').filter(
         (element) => !hasAncestor(element, 'tui-accordion-item'),
     );
@@ -69,6 +70,7 @@ function buildReplacement(
     const contentElements = findElementsByFn([element], (el) =>
         hasElementAttribute(el, 'tuiaccordionitemcontent'),
     );
+
     const contentElement = contentElements[contentElements.length - 1];
 
     if (!contentElement?.sourceCodeLocation?.startTag) {
@@ -79,6 +81,7 @@ function buildReplacement(
     const contentEnd = contentElement.sourceCodeLocation.endTag?.endOffset;
     const headerRaw = template.slice(startTag.endOffset, contentStart);
     const header = normalizePlainText(normalizeBlock(headerRaw));
+
     const contentRaw =
         contentEnd === undefined
             ? ''
@@ -86,10 +89,10 @@ function buildReplacement(
                   contentElement.sourceCodeLocation.startTag.endOffset,
                   contentElement.sourceCodeLocation.endTag?.startOffset ?? contentEnd,
               );
+
     const contentBlock = normalizeBlock(transformAccordionItems(contentRaw));
     const content = normalizePlainText(contentBlock);
     const forceBlock = contentBlock.includes('\n');
-
     const {indent, startOffset} = getLineIndent(template, startTag.startOffset);
     const buttonAttr = getButtonAttr(element);
     const isLazy = options.isStandalone && contentElement.tagName === 'ng-template';
@@ -120,7 +123,6 @@ function buildReplacement(
 
     const otherAttrs = attributes.length ? ` ${attributes.join(' ')}` : '';
     const classAttrStr = classAttr ? ` ${classAttr}` : '';
-
     const button = buildButton(header, `${buttonAttr}${otherAttrs}`, lineIndent);
     const expand = buildExpand(content, isLazy, lineIndent, forceBlock, classAttrStr);
 

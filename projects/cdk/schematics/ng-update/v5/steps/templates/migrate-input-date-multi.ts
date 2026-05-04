@@ -105,8 +105,10 @@ export function migrateInputDateMulti({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -140,6 +142,7 @@ export function migrateInputDateMulti({
 
         // Add `multi` (and textfield-level attrs) to the new tui-textfield opening tag
         const openTagEnd = sourceCodeLocation?.startTag?.endOffset ?? 0;
+
         const textfieldAttrStr = textfieldAttrs.reduce(
             (result, attr) =>
                 attr.value
@@ -190,8 +193,10 @@ export function migrateInputDateMulti({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -221,10 +226,12 @@ export function migrateInputDateMulti({
 
                 return `     - ${name}: ${hint}${isLast ? ' -->' : ''}`;
             });
+
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-date multiple migration (see ${DOCS_LINK}):`,
                 ...attrLines,
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);

@@ -126,6 +126,7 @@ export class TuiCalendarMonth {
 
         const selectedRange =
             value instanceof TuiMonth ? new TuiMonthRange(value, value) : value;
+
         const months = item.month + item.year * 12;
         const hovered = hoveredItem ? hoveredItem.month + hoveredItem.year * 12 : null;
         const from = selectedRange.from.month + selectedRange.from.year * 12;
@@ -191,6 +192,7 @@ export class TuiCalendarMonth {
     ): TuiBooleanHandler<TuiMonth> {
         return (item) => {
             const selectedMonth = value instanceof TuiMonthRange ? value.from : value;
+
             const delta =
                 isRangePicking && selectedMonth
                     ? Math.abs(

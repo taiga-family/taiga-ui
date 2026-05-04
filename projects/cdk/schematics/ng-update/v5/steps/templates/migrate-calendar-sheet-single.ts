@@ -45,6 +45,7 @@ export function migrateCalendarSheetSingle({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
+
     const elements = findElementsWithAttributeOnTag(
         template,
         [`[${INPUT}]`, INPUT],

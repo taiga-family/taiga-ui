@@ -101,6 +101,7 @@ export class TuiReorder<T> {
         }
 
         const newIndex = oldIndex + direction;
+
         const oldItem = Array.from(this.order.values()).findIndex(
             (item) => item === newIndex,
         );

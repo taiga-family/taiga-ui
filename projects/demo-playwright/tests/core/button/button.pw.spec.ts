@@ -38,6 +38,7 @@ test.describe('Button', () => {
 
         const {demo} = new TuiDocumentationPagePO(page);
         const button = demo.locator('[tuiButton]');
+
         const {x, y, width, height} = (await button.boundingBox()) ?? {
             x: 0,
             y: 0,

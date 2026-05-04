@@ -37,9 +37,9 @@ export function tuiValue(
 
     let element = isSignal(input) ? undefined : coerceElement(input);
     let cleanup = (): void => {};
-
     const options = {injector};
     const value = signal(element?.value || '');
+
     const process = (el: WithValue): (() => void) => {
         const update = (): void => untracked(() => value.set(el.value));
 

@@ -27,6 +27,7 @@ export function migrateFilterByInput(tree: Tree, _options: TuiSchema): void {
 
 function migrateResource(resource: TemplateResource, tree: Tree): void {
     const isExternal = 'templatePath' in resource;
+
     const templateText = isExternal
         ? (tree.read(resource.templatePath)?.toString() ?? '')
         : resource.template;
@@ -83,7 +84,6 @@ function collectMatcherUsages(templateText: string): Map<string, MatcherKind> {
         const name = match[1]!;
         const callSuffix = match[2];
         const args = match[3];
-
         let kind: MatcherKind = 'reference';
 
         if (callSuffix !== undefined) {

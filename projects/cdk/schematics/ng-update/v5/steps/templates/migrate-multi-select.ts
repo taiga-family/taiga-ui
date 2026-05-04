@@ -34,6 +34,7 @@ const TAG_VALIDATOR_BINDING_ATTR = '[tagValidator]';
 const SEARCH_CHANGE_OUTPUT = '(searchChange)';
 // [search] has no template-level v5 equivalent (requires viewChild + signal)
 const MANUAL_SEARCH_BINDING_ATTRS = new Set(['[(search)]', '[search]', 'search']);
+
 const CONTROL_ATTR_NAMES = [
     'formControlName',
     '[formControl]',
@@ -42,6 +43,7 @@ const CONTROL_ATTR_NAMES = [
     '[ngModel]',
     'ngModel',
 ] as const;
+
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
 export function migrateMultiSelect({
@@ -59,6 +61,7 @@ export function migrateMultiSelect({
 
     elements.forEach((element) => {
         const startOffset = element.sourceCodeLocation?.startOffset;
+
         const controlAttrs = element.attrs.filter((attr) =>
             CONTROL_ATTRS.has(attr.name.toLowerCase()),
         );
@@ -101,6 +104,7 @@ export function migrateMultiSelect({
 
         if (hasAutoColor && typeof startOffset === 'number') {
             const lineStart = template.lastIndexOf('\n', startOffset) + 1;
+
             const indent =
                 /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
 
@@ -227,26 +231,33 @@ export function migrateMultiSelect({
         // selectLike is a string when [editable]="someExpr" was dynamic
         const readonlyAttr =
             typeof selectLike === 'string' ? ` [readOnly]="!${selectLike}"` : '';
+
         const searchChangeAttr = searchChangeExpr
             ? ` (input)="${searchChangeExpr}(($event.target as HTMLInputElement).value)"`
             : '';
+
         const manualSearchTodo = hasManualSearchAttrs
             ? `<!-- ${TODO_MARK} [search] was removed. Use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes. See: ${DOCS_LINK} -->\n`
             : '';
+
         const searchChangeTodo = searchChangeExpr
             ? `<!-- ${TODO_MARK} (searchChange) was replaced by (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">. See: ${DOCS_LINK} -->\n`
             : '';
+
         const firstElementChildOffset = element.childNodes.find(
             (node): node is Element => node.nodeName !== '#text',
         )?.sourceCodeLocation?.startOffset;
+
         const insertOffset =
             firstElementChildOffset ??
             element.sourceCodeLocation?.endTag?.startOffset ??
             0;
+
         const chipItemTemplate =
             tagValidatorExpr === null
                 ? ''
                 : `<tui-input-chip *tuiItem="let ctx" [appearance]="${tagValidatorExpr}(ctx.item) ? '' : 'negative'" />\n`;
+
         const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
         const inputTemplate = `${manualSearchTodo}${searchChangeTodo}<input tuiInputChip${selectLikeAttr}${readonlyAttr}${placeholderAttr ? ` ${placeholderAttr}` : ''}${formAttrs ? ` ${formAttrs}` : ''}${searchChangeAttr}${controlStateStr} />\n${chipItemTemplate}`;
 

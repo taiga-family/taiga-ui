@@ -9,7 +9,5 @@ import {
 import {TuiDay} from './day';
 
 export const TUI_FIRST_DAY = new TuiDay(MIN_YEAR, MIN_MONTH, MIN_DAY);
-
 export const TUI_LAST_DAY = new TuiDay(MAX_YEAR, MAX_MONTH, 31);
-
 export const TUI_LAST_DISPLAYED_DAY = new TuiDay(MAX_DISPLAYED_YEAR, MAX_MONTH, 31);

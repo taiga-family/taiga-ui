@@ -208,6 +208,7 @@ export default class Example {
 
         const start = page * size;
         const end = start + size;
+
         const result = [...DATA]
             .sort(sortBy(key, direction))
             .filter((user) => user.age >= minAge)

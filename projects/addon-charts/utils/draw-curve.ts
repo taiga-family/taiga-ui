@@ -14,6 +14,7 @@ export function tuiDrawCurve(
         false,
         smoothing,
     );
+
     const [cpeX, cpeY] = tuiControlPoint(
         array[index],
         array[index - 1],

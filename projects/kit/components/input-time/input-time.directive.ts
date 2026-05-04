@@ -123,8 +123,10 @@ export class TuiInputTimeDirective
         const value = valueWithAffixes
             .replace(this.prefix(), '')
             .replace(this.postfix(), '');
+
         const time =
             value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
+
         const newValue =
             this.accept().length && time
                 ? this.findNearestTime(time, this.accept())
@@ -166,10 +168,12 @@ export class TuiInputTimeDirective
     private computeMask(params: Required<MaskitoTimeParams>): MaskitoOptions {
         const options = maskitoTimeOptionsGenerator(params);
         const {mode, prefix, postfix} = params;
+
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
                 element.selectionStart! >= mode.indexOf(' AA') ? 'text' : 'numeric';
         });
+
         const caretGuardPlugin = maskitoCaretGuard((value) => [
             prefix.length,
             value.length - postfix.length,

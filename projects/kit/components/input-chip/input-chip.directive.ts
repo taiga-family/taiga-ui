@@ -111,6 +111,7 @@ export class TuiInputChipDirective<T>
 
     protected onPaste(event: ClipboardEvent | DragEvent): void {
         const input = this.textfield.input();
+
         const value =
             'dataTransfer' in event
                 ? event.dataTransfer?.getData('text/plain') || ''
