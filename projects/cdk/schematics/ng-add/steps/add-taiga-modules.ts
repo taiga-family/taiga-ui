@@ -114,7 +114,6 @@ function addMainModuleToRootComponent({
     options: TuiSchema;
 }): void {
     const rootComponentPath = mainClass.getSourceFile().getFilePath();
-
     const modules = getModules();
 
     modules.forEach(({name, packageName}) => {

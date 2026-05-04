@@ -350,11 +350,13 @@ export class TuiMobileCalendar implements AfterViewInit {
             'touchstart',
             {passive: true},
         );
+
         const touchend$ = tuiTypedFromEvent(
             yearsScroll.elementRef.nativeElement,
             'touchend',
             {passive: true},
         );
+
         const click$ = tuiTypedFromEvent(yearsScroll.elementRef.nativeElement, 'click');
 
         // Refresh activeYear
@@ -415,6 +417,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             'touchstart',
             {passive: true},
         );
+
         const touchend$ = tuiTypedFromEvent(
             monthsScroll.elementRef.nativeElement,
             'touchend',

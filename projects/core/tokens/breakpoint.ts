@@ -13,6 +13,7 @@ export const TUI_BREAKPOINT = new InjectionToken<Signal<TuiBreakpointMediaKey>>(
             const size = tuiWindowSize(inject(WA_WINDOW));
             const media = inject(TUI_MEDIA);
             const sorted: number[] = Object.values(media).sort((a, b) => a - b);
+
             const invert: Record<number, TuiBreakpointMediaKey> = Object.keys(
                 media,
             ).reduce(

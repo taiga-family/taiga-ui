@@ -7,7 +7,6 @@
 export function tuiNumberToStringWithoutExp(value: number): string {
     const valueAsString = String(value);
     const [numberPart, expPart] = valueAsString.split('e-');
-
     let valueWithoutExp = valueAsString;
 
     if (expPart) {

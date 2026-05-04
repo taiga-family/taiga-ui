@@ -37,6 +37,7 @@ export class TuiConfirm {
 }
 
 export const TUI_CONFIRM = new PolymorpheusComponent(TuiConfirm);
+
 export const TUI_CONFIRM_DIALOG = new InjectionToken<
     PolymorpheusContent<TuiDialogContext<boolean, unknown>>
 >(ngDevMode ? 'TUI_CONFIRM_DIALOG' : '', {factory: () => TUI_CONFIRM});

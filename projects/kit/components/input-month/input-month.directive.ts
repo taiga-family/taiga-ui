@@ -44,6 +44,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
 
     protected readonly valueEffect = effect(() => {
         const value = this.value();
+
         const formatted = value
             ? `${this.months()[value.month] ?? ''} ${value.formattedYear}`
             : '';

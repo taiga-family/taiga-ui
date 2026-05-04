@@ -40,7 +40,6 @@ test.describe('InputDate', () => {
     test.describe('API', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
-
         let inputDate!: TuiInputDatePO;
 
         test.use({

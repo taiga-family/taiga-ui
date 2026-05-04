@@ -92,8 +92,10 @@ export function migrateInputTag({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -163,8 +165,10 @@ export function migrateInputTag({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -193,10 +197,12 @@ export function migrateInputTag({
 
                 return `     - ${attr.name}: ${hint}${isLast ? ' -->' : ''}`;
             });
+
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-tag migration (see ${DOCS_LINK}):`,
                 ...lines,
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);
@@ -210,6 +216,7 @@ export function migrateInputTag({
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
+
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
 
         recorder.insertRight(

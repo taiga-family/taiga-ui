@@ -444,6 +444,7 @@ describe('CalendarRange', () => {
                 await expect(calendarRange.host).toContainText('February 2026');
 
                 const pagePO = new TuiDocumentationPagePO(page);
+
                 const maxProperty = new TuiSelectPO(
                     (await pagePO.getSelect(pagePO.getRow('max')))!,
                 );

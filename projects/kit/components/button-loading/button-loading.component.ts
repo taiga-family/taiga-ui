@@ -36,9 +36,11 @@ export class TuiButtonLoading {
         tuiSizeBigger(this.size()) ? 'm' : 's',
     );
 
-    protected readonly label = computed(() =>
-        tuiIsString(this.loading()) ? this.loading() : '',
-    );
+    protected readonly label = computed(() => {
+        const loading = this.loading();
+
+        return tuiIsString(loading) ? loading : '';
+    });
 
     protected onClick(event: MouseEvent): void {
         if (this.loading()) {

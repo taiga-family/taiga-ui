@@ -15,7 +15,6 @@ test.describe('InputChip', () => {
         test('errors / overflow visual state (basic)', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.addChip('Very looooooooooooooooooooooooong Text');
@@ -31,7 +30,6 @@ test.describe('InputChip', () => {
         test('forbid leading/trailing spaces normalization', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.addChip(' taiga ui library ');
@@ -44,7 +42,6 @@ test.describe('InputChip', () => {
         }) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.cleaner.click();
@@ -56,7 +53,6 @@ test.describe('InputChip', () => {
         test('regex separator works when copying values with newline', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.cleaner.click();
@@ -68,7 +64,6 @@ test.describe('InputChip', () => {
         test('editing disabled chip', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#disabled-items');
-
             const chip = new TuiInputChipPO(example);
 
             await chip.chips.first().dblclick();
@@ -81,9 +76,11 @@ test.describe('InputChip', () => {
         }) => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#multi-select');
+
             const block = example.locator('[tuiLabel]', {
                 hasText: 'Conditional input in textfield',
             });
+
             const input = block.locator('tui-textfield input[tuiInputChip]');
             const toggle = example.locator('input[type="checkbox"]');
             const dropdown = page.locator('tui-dropdown');
@@ -109,7 +106,6 @@ test.describe('InputChip', () => {
         test('custom separator', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123-456-789');
@@ -124,7 +120,6 @@ test.describe('InputChip', () => {
         test('unique false', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=false`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,123,123');
@@ -139,7 +134,6 @@ test.describe('InputChip', () => {
         test('unique true', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=true`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,123,123');
@@ -171,7 +165,6 @@ test.describe('InputChip', () => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const apiPage = new TuiDocumentationApiPagePO(page);
             const example = apiPage.demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123');
@@ -189,7 +182,6 @@ test.describe('InputChip', () => {
         test('chip cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,456,789');
@@ -208,7 +200,6 @@ test.describe('InputChip', () => {
         test('textfield cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,456,789');
@@ -252,6 +243,7 @@ test.describe('InputChip', () => {
                     hasText:
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
@@ -269,6 +261,7 @@ test.describe('InputChip', () => {
                     hasText:
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
@@ -287,6 +280,7 @@ test.describe('InputChip', () => {
                     hasText:
                         'Using checkboxes in the dropdown and making the textfield non-writable',
                 });
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await block.locator('tui-textfield').click();
@@ -304,6 +298,7 @@ test.describe('InputChip', () => {
                 const block = example
                     .locator('label[tuiLabel]')
                     .filter({hasText: 'Working with objects'});
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await example.scrollIntoViewIfNeeded();

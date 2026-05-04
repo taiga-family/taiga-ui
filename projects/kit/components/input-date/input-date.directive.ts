@@ -99,8 +99,10 @@ export abstract class TuiInputDateBase<
     });
 
     protected readonly calendarIn = effect(() => {
-        if (this.calendar()) {
-            this.processCalendar(this.calendar()!);
+        const calendar = this.calendar();
+
+        if (calendar) {
+            this.processCalendar(calendar);
         }
     });
 

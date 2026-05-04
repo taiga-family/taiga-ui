@@ -16,6 +16,7 @@ interface User {
 }
 
 const TODAY = TuiDay.currentLocal();
+
 const FIRST = [
     'John',
     'Jane',

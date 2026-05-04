@@ -111,8 +111,10 @@ export class TuiRange extends TuiControl<[number, number]> {
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {
         const [startThumb, endThumb] = this.thumbs();
+
         const isEndThumb =
             target === this.el ? this.lastActiveThumb === 'end' : target === endThumb;
+
         const activeThumbElement = isEndThumb ? endThumb : startThumb;
         const newValue = this.takeStep(isEndThumb ? [0, coefficient] : [coefficient, 0]);
 

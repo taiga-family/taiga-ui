@@ -151,11 +151,14 @@ function buildReplacement(
     const textfieldAttrs: string[] = [];
     const textareaAttrs = ['tuiTextarea'];
     const controlStateAttrs = getControlStateAttrs(element);
+
     const controlStateAttrsLower = new Set(
         controlStateAttrs.map((a) => a.name.toLowerCase()),
     );
+
     let maxLengthAttrText: string | null = null;
     let maxLengthIsBinding = false;
+
     const ctx: MigrationContext = {
         expandableValue: null,
         rowsMigratedTo: null,
@@ -250,6 +253,7 @@ function buildReplacement(
         }
 
         const original = getOriginalAttrText(template, element, nameLower);
+
         const attrText =
             original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
 
@@ -273,6 +277,7 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
+
     const innerContent = buildInnerContent({
         element,
         template,
@@ -283,8 +288,8 @@ function buildReplacement(
         hintIconStr,
         customContentIconStr: buildCustomContentIconStr(ctx.customContent, indent),
     });
-    const todoComment = buildTodoComment(ctx);
 
+    const todoComment = buildTodoComment(ctx);
     const replacement = `${todoComment}${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
 
     return {
@@ -375,6 +380,7 @@ function buildInnerContent({
     textareaAttrs: string[];
 }): string {
     const {placeholder, labelOutside} = ctx;
+
     const childElements = element.childNodes.filter(
         (node: ChildNode): node is Element =>
             node.nodeName !== '#text' && node.nodeName !== '#comment',
@@ -462,6 +468,7 @@ function migrateInnerTextarea({
     const legacyAttr = inner.attrs.find((a) =>
         LEGACY_TEXTAREA_ATTRS.has(a.name.toLowerCase()),
     );
+
     const legacyAttrLoc = legacyAttr
         ? innerLoc.attrs?.[legacyAttr.name.toLowerCase()]
         : undefined;

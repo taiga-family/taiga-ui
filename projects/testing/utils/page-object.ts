@@ -33,6 +33,7 @@ export class TuiPageObject<T> {
         const debugEls = debugElement.queryAll(
             TuiPageObject.byAutomationId(automationId),
         );
+
         const domEls = Array.from(
             debugElement.nativeElement.querySelectorAll(
                 `[automation-id='${automationId}']`,

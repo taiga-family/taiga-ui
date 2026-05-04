@@ -19,7 +19,6 @@ import {expect, test} from '@playwright/test';
 
 test.describe('TuiScrollbar Stress Tests', () => {
     let documentationPage: TuiDocumentationPagePO;
-
     const STRESS_FACTOR = 3;
 
     const createPRNG = (seed = 42): (() => number) => {
@@ -118,6 +117,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
             await expect(scrollbar).toBeVisible();
 
             const iterationsContent = 30 * STRESS_FACTOR;
+
             const warmupIterations = Math.min(
                 5,
                 Math.max(3, Math.round(iterationsContent * 0.15)),
@@ -225,10 +225,12 @@ test.describe('TuiScrollbar Stress Tests', () => {
             await expect(scrollbar).toBeVisible();
 
             const iterationsMulti = 60 * STRESS_FACTOR;
+
             const warmupIterations = Math.min(
                 10,
                 Math.max(5, Math.round(iterationsMulti * 0.15)),
             );
+
             const rand = createPRNG(123);
 
             for (let i = 0; i < warmupIterations; i++) {
@@ -380,6 +382,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
         test('theme switching during scroll stress test', async ({page}) => {
             const lightScrollbarExample =
                 documentationPage.getExample('#light-scrollbar');
+
             const scrollbar = lightScrollbarExample.locator('tui-scrollbar');
 
             await scrollbar.scrollIntoViewIfNeeded();

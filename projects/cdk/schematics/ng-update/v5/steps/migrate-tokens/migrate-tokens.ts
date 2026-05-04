@@ -110,6 +110,7 @@ export function migrateTokens(tree: Tree, options: TuiSchema): void {
 
                         coreImports.push(decl);
                         const namedImports = decl.getNamedImports();
+
                         const tokenImport = namedImports.find(
                             (i) => i.getName() === INJECTION_TOKEN,
                         );
@@ -180,6 +181,7 @@ function createInjectionTokenExpression(
     tokenFunction: string,
 ): string {
     const typeArgs = callExpression.getTypeArguments();
+
     const typeArgsText = typeArgs.length
         ? `<${typeArgs.map((t) => t.getText()).join(', ')}>`
         : '';

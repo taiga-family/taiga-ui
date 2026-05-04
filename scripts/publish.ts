@@ -13,6 +13,7 @@ import {parseVersion} from './shared/parse-version';
 
 const isDryRun =
     getValueByFlag<'false' | 'true' | 'undefined'>('--dry-run', 'false') === 'true';
+
 const path = getValueByFlag('--path', '');
 
 (async function main(): Promise<void> {

@@ -96,7 +96,6 @@ test.describe('Input', () => {
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
             const textfield = example.locator('input[tuiInput]').first();
-
             const value = '123';
 
             await textfield.scrollIntoViewIfNeeded();
@@ -122,6 +121,7 @@ test.describe('Input', () => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
+
             const {textfield, dropdown} = new TuiTextfieldWithDataListPO(
                 example.locator('tui-textfield').first(),
             );

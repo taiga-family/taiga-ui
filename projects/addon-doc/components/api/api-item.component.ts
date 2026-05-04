@@ -98,6 +98,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     private parseParams(params: Params): void {
         const name = this.clearBrackets(this.name());
         const propertyValue: string | undefined = params[name];
+
         const propertyValueWithSuffix: number | string | undefined =
             params[`${name}${SERIALIZED_SUFFIX}`];
 
@@ -106,6 +107,7 @@ export class TuiDocAPIItem<T> implements OnInit {
         }
 
         const items = this.items();
+
         let value =
             !!propertyValueWithSuffix && items
                 ? items[propertyValueWithSuffix as number]
@@ -120,9 +122,9 @@ export class TuiDocAPIItem<T> implements OnInit {
 
     private setQueryParam(value: T | boolean | number | string | null): void {
         const tree = this.urlSerializer.parse(this.locationRef.path());
-
         const isValueAvailableByKey = value instanceof Object;
         const items = this.items();
+
         const computedValue =
             isValueAvailableByKey && items ? items.indexOf(value as T) : value;
 

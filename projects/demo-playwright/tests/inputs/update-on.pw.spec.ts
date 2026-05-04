@@ -11,7 +11,6 @@ test.describe('Inputs - updateOn', () => {
     for (const docPage of inputs) {
         const {title, route} = docPage;
         const placeholder = '01011970';
-
         let demo: Locator;
         let input: Locator;
         let select: Locator;

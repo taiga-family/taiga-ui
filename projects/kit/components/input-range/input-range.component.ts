@@ -184,6 +184,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
 
     private valueGuard(value: readonly [number, number]): readonly [number, number] {
         const [prevStart, prevEnd] = this.value();
+
         const [start, end] = value.map(
             (x) => this.quantumTransformer().toControlValue(x) ?? x,
         ) as unknown as readonly [number, number];

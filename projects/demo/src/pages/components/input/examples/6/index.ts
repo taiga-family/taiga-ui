@@ -13,6 +13,7 @@ import {
 import {TuiButtonX, TuiInput} from '@taiga-ui/core';
 
 const postfix = ' rad';
+
 const numberOptions = maskitoNumberOptionsGenerator({
     postfix,
     decimalSeparator: ',',

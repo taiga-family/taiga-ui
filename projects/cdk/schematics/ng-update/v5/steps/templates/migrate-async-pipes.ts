@@ -41,7 +41,6 @@ export function migrateAsyncPipes({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
-
     let match;
 
     while ((match = PIPE_ASYNC_REGEX.exec(template)) !== null) {

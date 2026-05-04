@@ -18,6 +18,7 @@ export default class Example {
     protected calculate(event: MouseEvent): void {
         const rect =
             this.compass()?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
+
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
         const y = Math.ceil(event.clientY - (rect.top + rect.height / 2));
 

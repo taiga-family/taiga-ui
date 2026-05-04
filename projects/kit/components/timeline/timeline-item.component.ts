@@ -45,6 +45,7 @@ export class TuiTimelineItem {
 
     protected update(input: HTMLInputElement): void {
         const length = this.value()[1] - this.value()[0];
+
         const [start, end] = this.timeline
             .gaps()
             .map(([start, end]): [number, number] => [

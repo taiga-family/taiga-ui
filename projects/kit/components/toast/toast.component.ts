@@ -52,8 +52,10 @@ export class TuiToastComponent<O, I> implements AfterViewInit {
         .subscribe(() => this.context.$implicit.complete());
 
     public ngAfterViewInit(): void {
-        if (this.close()) {
-            this.el.querySelector('[tuiToast]')?.appendChild(this.close()?.nativeElement);
+        const close = this.close();
+
+        if (close) {
+            this.el.querySelector('[tuiToast]')?.appendChild(close?.nativeElement);
         }
     }
 

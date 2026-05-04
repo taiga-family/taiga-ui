@@ -13,8 +13,10 @@ export const calculateDisabledItemHandler: (
     const negativeMinLength = Object.fromEntries(
         Object.entries(minLength).map(([key, value]) => [key, -value]),
     );
+
     const disabledBefore = value.append(negativeMinLength).append({day: 1});
     const disabledAfter = value.append(minLength).append({day: -1});
+
     const inDisabledRange =
         disabledBefore.dayBefore(item) && disabledAfter.dayAfter(item);
 

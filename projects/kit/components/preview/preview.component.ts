@@ -147,6 +147,7 @@ export class TuiPreviewComponent {
         const bigSize =
             contentHeight > boxHeight * this.initialScale() ||
             contentWidth > boxWidth * this.initialScale();
+
         const {clientHeight, clientWidth} = this.el;
 
         return bigSize

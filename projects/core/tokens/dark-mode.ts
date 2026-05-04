@@ -11,16 +11,17 @@ import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
 import {filter, fromEvent} from 'rxjs';
 
 export const TUI_DARK_MODE_DEFAULT_KEY = 'tuiDark';
+
 export const TUI_DARK_MODE_KEY = new InjectionToken(
     ngDevMode ? 'TUI_DARK_MODE_KEY' : '',
     {factory: () => TUI_DARK_MODE_DEFAULT_KEY},
 );
+
 export const TUI_DARK_MODE = new InjectionToken<
     WritableSignal<boolean> & {reset(): void}
 >(ngDevMode ? 'TUI_DARK_MODE' : '', {
     factory: () => {
         let automatic = true;
-
         const storage = inject(WA_LOCAL_STORAGE);
         const key = inject(TUI_DARK_MODE_KEY);
         const saved = storage?.getItem(key);

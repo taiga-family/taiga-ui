@@ -69,6 +69,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
         const current = this.charts()
             .map(({value}) => (day ? find(value(), day) : []))
             .filter(([_, value]) => !Number.isNaN(value));
+
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
         this.charts().forEach((chart, index) => {

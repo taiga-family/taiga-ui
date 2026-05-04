@@ -35,7 +35,6 @@ describe('Dialogs', () => {
     }
 
     const closable = false;
-
     let fixture: ComponentFixture<Test>;
     let service: TuiDialogService;
     let loader: HarnessLoader;

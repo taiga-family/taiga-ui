@@ -29,11 +29,13 @@ export class TuiTextfieldContent implements DoCheck, OnDestroy {
     private readonly content =
         inject(TUI_TEXTFIELD_CONTENT, {optional: true}) || inject(TemplateRef);
 
-    private readonly ref = computed(() =>
-        this.content instanceof TemplateRef
-            ? this.vcr()?.createEmbeddedView(this.content)
-            : this.vcr()?.createComponent(this.content, this.options).hostView,
-    );
+    private readonly ref = computed(() => {
+        const vcr = this.vcr();
+
+        return this.content instanceof TemplateRef
+            ? vcr?.createEmbeddedView(this.content)
+            : vcr?.createComponent(this.content, this.options).hostView;
+    });
 
     public ngDoCheck(): void {
         this.ref()?.detectChanges();

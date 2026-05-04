@@ -224,6 +224,7 @@ describe('InputSlider', () => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?disabled=true`);
 
             const example = new TuiDocumentationPagePO(page).demo;
+
             const inputSlider = new TuiInputSliderPO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
@@ -247,6 +248,7 @@ describe('InputSlider', () => {
             );
 
             const example = new TuiDocumentationPagePO(page).demo;
+
             const inputSlider = new TuiInputSliderPO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
@@ -274,6 +276,7 @@ describe('InputSlider', () => {
                 );
 
                 const {demo} = new TuiDocumentationPagePO(page);
+
                 const inputSlider = new TuiInputSliderPO(
                     demo.locator('tui-textfield:has([tuiInputSlider])'),
                 );

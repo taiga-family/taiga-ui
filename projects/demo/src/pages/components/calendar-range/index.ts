@@ -22,6 +22,7 @@ const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',
     'var(--tui-status-info)',
 ];
+
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({

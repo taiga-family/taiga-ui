@@ -24,7 +24,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-phone';
-
 const INPUT_ATTRS = new Set(['[allowText]'.toLowerCase(), 'allowText'.toLowerCase()]);
 
 const NO_EQUIVALENT_ATTRS = new Set([
@@ -63,8 +62,10 @@ export function migrateInputPhone({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -107,8 +108,10 @@ export function migrateInputPhone({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -142,10 +145,12 @@ export function migrateInputPhone({
 
             return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
         }, '');
+
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
 
         if (noEquivalentAttrs.length > 0) {
             const names = noEquivalentAttrs.map((a) => a.name).join(', ');
+
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-phone migration (see ${DOCS_LINK}):`,
                 `     - ${names} have no direct v5 equivalent.`,
@@ -153,6 +158,7 @@ export function migrateInputPhone({
                 '       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where',
                 "       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->",
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);

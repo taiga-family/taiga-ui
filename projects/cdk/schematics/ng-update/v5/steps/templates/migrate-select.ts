@@ -26,6 +26,7 @@ const SELECT_MIGRATION_TODO = `<!-- ${TODO_MARK} tui-select was partially migrat
 const VALUE_CONTENT_ATTR = 'valueContent';
 const CONTENT_ATTR = 'content';
 const TEXTFIELD_LABEL_OUTSIDE_ATTR = 'tuiTextfieldLabelOutside';
+
 const CONTROL_ATTR_NAMES = [
     'formControlName',
     '[formControl]',
@@ -34,6 +35,7 @@ const CONTROL_ATTR_NAMES = [
     '[ngModel]',
     'ngModel',
 ] as const;
+
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
 export function migrateSelect({
@@ -51,9 +53,11 @@ export function migrateSelect({
 
     elements.forEach((element) => {
         const startOffset = element.sourceCodeLocation?.startOffset;
+
         const controlAttrs = element.attrs.filter((attr) =>
             CONTROL_ATTRS.has(attr.name.toLowerCase()),
         );
+
         const controlStateAttrs = getControlStateAttrs(element);
 
         if (typeof startOffset === 'number') {
@@ -74,10 +78,13 @@ export function migrateSelect({
                     `[${TEXTFIELD_LABEL_OUTSIDE_ATTR}]`.toLowerCase() ||
                 attr.name.toLowerCase() === TEXTFIELD_LABEL_OUTSIDE_ATTR.toLowerCase(),
         );
+
         const isBinding = labelOutsideAttr?.name.startsWith('[') ?? false;
+
         const isLabelOutsideTrue =
             labelOutsideAttr?.value === 'true' ||
             (!!labelOutsideAttr && !isBinding && labelOutsideAttr.value === '');
+
         const isLabelOutsideDynamic =
             !!labelOutsideAttr &&
             !isLabelOutsideTrue &&
@@ -153,6 +160,7 @@ export function migrateSelect({
 
                 const formAttrs = formatControlAttrs(controlAttrs);
                 const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+
                 const placeholderAttr =
                     isLabelOutsideTrue && placeholder
                         ? ` placeholder="${placeholder}"`
@@ -172,15 +180,19 @@ export function migrateSelect({
         } else {
             const formAttrs = formatControlAttrs(controlAttrs);
             const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+
             const firstElementChildOffset = element.childNodes.find(
                 (node): node is Element => node.nodeName !== '#text',
             )?.sourceCodeLocation?.startOffset;
+
             const insertOffset =
                 firstElementChildOffset ??
                 element.sourceCodeLocation?.endTag?.startOffset ??
                 0;
+
             const placeholderAttr =
                 isLabelOutsideTrue && placeholder ? ` placeholder="${placeholder}"` : '';
+
             const inputTemplate = `\n<input${placeholderAttr} tuiSelect${formAttrs ? ` ${formAttrs}` : ''}${controlStateStr} />\n`;
 
             if (isLabelOutsideTrue) {
@@ -194,6 +206,7 @@ export function migrateSelect({
 
         if (isLabelOutsideDynamic && typeof startOffset === 'number') {
             const lineStart = template.lastIndexOf('\n', startOffset - 1) + 1;
+
             const indent =
                 /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
 

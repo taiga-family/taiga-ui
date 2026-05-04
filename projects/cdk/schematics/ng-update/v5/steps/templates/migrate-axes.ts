@@ -17,6 +17,7 @@ interface Input {
 const REMOVE_ATTRIBUTES = ['axisX', 'axisY', '[axisX]', '[axisY]'].map((attr) =>
     attr.toLowerCase(),
 );
+
 const PLUS_ONE_ATTRIBUTES = ['[verticalLines]', '[horizontalLines]'].map((attr) =>
     attr.toLowerCase(),
 );

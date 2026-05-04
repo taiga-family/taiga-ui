@@ -10,6 +10,7 @@ const rect = {
 } as const;
 
 export const EMPTY_FUNCTION: (...args: any[]) => void = () => {};
+
 export const EMPTY_CLIENT_RECT: DOMRect = {
     ...rect,
     toJSON: () => rect,

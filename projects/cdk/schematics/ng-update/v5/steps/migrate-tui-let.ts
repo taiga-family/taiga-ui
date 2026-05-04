@@ -44,7 +44,6 @@ function migrateTemplate(
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const recorder = fileSystem.edit(templatePath);
     const offset = getTemplateOffset(resource);
-
     const elements = findElementsWithAttribute(template, STRUCTURAL_ATTR);
 
     for (const element of elements) {

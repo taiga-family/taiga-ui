@@ -29,6 +29,7 @@ export function syncVersions(
             null,
             INDENTATION,
         );
+
         const packageJson = JSON.parse(originalJSON);
         const prevVersion = packageJson.version;
 

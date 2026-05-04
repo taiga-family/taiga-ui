@@ -25,7 +25,6 @@ function inspectObject(object: Record<string, unknown>, depth: number): string {
     }
 
     let result = '';
-
     let first = true;
 
     for (const key in object) {

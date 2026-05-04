@@ -19,6 +19,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
                 const exampleElements = Array.from(
                     host.querySelectorAll('tui-doc-example'),
                 );
+
                 const codeElements = Array.from(host.querySelectorAll('tui-doc-code'));
 
                 return (

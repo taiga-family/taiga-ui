@@ -309,6 +309,7 @@ test.describe('InputDateRange', () => {
         await tuiGoto(page, DemoRoute.InputDateRange);
 
         const example = documentationPage.getExample('#data-list');
+
         const inputDateRange = new TuiInputDateRangePO(
             example.locator('tui-textfield:has(input[tuiInputDateRange])'),
         );
@@ -349,6 +350,7 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
+
             const inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
@@ -382,6 +384,7 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
+
             const inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
@@ -402,6 +405,7 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
+
             const inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );

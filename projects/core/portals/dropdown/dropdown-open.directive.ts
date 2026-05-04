@@ -94,6 +94,7 @@ export class TuiDropdownOpen implements ElementRef<Element> {
 
     public get nativeElement(): HTMLElement {
         const initial = this.dropdownHost()?.nativeElement || this.el;
+
         const focusable = tuiIsFocusable(initial)
             ? initial
             : tuiGetClosestFocusable({initial, root: this.el});

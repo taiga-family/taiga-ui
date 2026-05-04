@@ -34,6 +34,7 @@ export function migrateAvatarToDirective({
     const templateOffset = getTemplateOffset(resource);
     const avatarElements = findElementsByTagName(template, 'tui-avatar');
     const elementsWithAvatarAttribute = findElementsWithAttribute(template, 'tuiAvatar');
+
     const elementsWithBoundAvatarAttribute = findElementsWithAttribute(
         template,
         '[tuiAvatar]',
@@ -49,6 +50,7 @@ export function migrateAvatarToDirective({
         const tuiAvatarAttr = element.attrs.find(
             (a) => a.name === '[tuiAvatar]'.toLowerCase(),
         );
+
         const fallbackBinding = getFallbackBinding(tuiAvatarAttr?.value);
 
         if (!tuiAvatarAttr || !fallbackBinding) {

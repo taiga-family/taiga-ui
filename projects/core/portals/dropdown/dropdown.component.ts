@@ -104,6 +104,7 @@ export class TuiDropdownComponent implements AfterViewInit {
         const above = rect.top - viewport.top - 2 * offset;
         const below = viewport.top + viewport.height - y - offset;
         const available = y > rect.bottom ? below : above;
+
         const height =
             this.el.getBoundingClientRect().right <= rect.left || x >= rect.right
                 ? maxHeight

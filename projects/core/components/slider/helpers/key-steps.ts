@@ -31,8 +31,8 @@ function tuiFindKeyStepsBoundariesByFn(
     fn: ([keyStepPercent, keyStepValue]: [number, number]) => boolean,
 ): [[number, number], [number, number]] {
     const keyStepUpperIndex = keySteps.findIndex((keyStep, i) => i && fn(keyStep));
-
     const lowerStep = keySteps[keyStepUpperIndex - 1] || keySteps[0];
+
     const upperStep = keySteps[keyStepUpperIndex] ||
         keySteps[keySteps.length - 1] || [0, 0];
 
@@ -48,8 +48,10 @@ export function tuiPercentageToKeyStepValue(
             keySteps,
             ([keyStepPercentage, _]) => valuePercentage <= keyStepPercentage,
         );
+
     const ratio =
         (valuePercentage - lowerStepPercent) / (upperStepPercent - lowerStepPercent);
+
     const controlValue = (upperStepValue - lowerStepValue) * ratio + lowerStepValue;
 
     return tuiRound(controlValue, TUI_FLOATING_PRECISION);
@@ -64,6 +66,7 @@ export function tuiKeyStepValueToPercentage(
             keySteps,
             ([_, keyStepValue]) => value <= keyStepValue,
         );
+
     const ratio = (value - lowerStepValue) / (upperStepValue - lowerStepValue) || 0;
 
     return (upperStepPercent - lowerStepPercent) * ratio + lowerStepPercent;

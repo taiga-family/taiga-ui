@@ -31,14 +31,17 @@ export class TuiAmountPipe implements PipeTransform {
     private readonly formatted = computed(() => {
         const format = this.format();
         const currencySymbol = tuiFormatCurrency(this.currency());
+
         const formatted = tuiFormatNumber(Math.abs(this.value()), {
             ...format,
             precision: Number.isNaN(format.precision)
                 ? DEFAULT_PRECISION
                 : format.precision,
         });
+
         const sign =
             formatted === '0' ? '' : tuiFormatSignSymbol(this.value(), this.sign());
+
         const space =
             currencySymbol &&
             (currencySymbol?.length > 1 || this.currencyAlign() === 'end')

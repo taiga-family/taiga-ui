@@ -90,6 +90,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
 
         const array = Array.isArray(direction) ? direction : [direction];
         const priority = array.map((direction) => adjust(direction, rtl));
+
         const updated =
             priority
                 .concat(TUI_HINT_DIRECTIONS)

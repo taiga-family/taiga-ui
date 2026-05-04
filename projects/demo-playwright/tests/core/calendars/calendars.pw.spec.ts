@@ -11,7 +11,6 @@ test.describe('Calendars', () => {
             `${DemoRoute.Calendar}/API?value$=2&maxViewedMonth$=1&max$=0`,
         );
         const {demo} = new TuiDocumentationPagePO(page);
-
         const calendar = demo.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
@@ -24,7 +23,6 @@ test.describe('Calendars', () => {
     test('Open calendar from start value', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Calendar}/API?value$=2`);
         const {demo} = new TuiDocumentationPagePO(page);
-
         const calendar = demo.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
@@ -37,7 +35,6 @@ test.describe('Calendars', () => {
     test('Set range between two days', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Calendar}/API?value$=1`);
         const {demo} = new TuiDocumentationPagePO(page);
-
         const calendar = demo.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
@@ -50,7 +47,6 @@ test.describe('Calendars', () => {
     test('Month', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.CalendarMonth}/API?year$=1&value$=2`);
         const {demo} = new TuiDocumentationPagePO(page);
-
         const calendar = demo.locator('tui-calendar-month').first();
 
         await expect(calendar).toBeVisible();
@@ -63,7 +59,6 @@ test.describe('Calendars', () => {
     test('Use initial year from value', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.CalendarMonth}/API?year=null&value$=2`);
         const {demo} = new TuiDocumentationPagePO(page);
-
         const calendar = demo.locator('tui-calendar-month').first();
 
         await expect(calendar).toBeVisible();

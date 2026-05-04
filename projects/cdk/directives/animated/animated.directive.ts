@@ -65,6 +65,7 @@ function wrap(renderer: Renderer2): void {
 
         const animations = el.getAnimations?.() ?? [];
         const last = animations[animations.length - 1];
+
         const finish = (): void => {
             if (!parent || parent.contains(el)) {
                 removeChild.call(renderer, parent, el, host);

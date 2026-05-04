@@ -5,6 +5,7 @@ import {join} from 'node:path';
     const path = join(process.cwd(), 'projects', 'demo', 'routes.txt');
     const demoRoutesFileContent = readFileSync(path, 'utf-8');
     const origin = 'https://taiga-ui.dev';
+
     const routesArray = demoRoutesFileContent
         .split(/\r?\n/)
         .filter((line) => line.trim() !== '');

@@ -4,6 +4,7 @@ import {tuiCombineSnapshots} from './combine-snapshots';
 
 const FAILED_SCREENSHOTS_PATH =
     process.env.FAILED_SCREENSHOTS_PATH ?? 'projects/demo-playwright/tests-results';
+
 const DIFF_IMAGE_POSTFIX = process.env.DIFF_IMAGE_POSTFIX ?? '-diff.png';
 const OUTPUT_DIFF_IMAGE_POSTFIX = process.env.OUTPUT_DIFF_IMAGE_POSTFIX ?? '.diff.png';
 const RETRY_COUNT = Number(process.env.RETRY_COUNT ?? 2);
@@ -31,11 +32,13 @@ export async function tuiCombinePlaywrightFailedScreenshots(
                 !x.name.endsWith(OUTPUT_DIFF_IMAGE_POSTFIX),
         )
         .map(({name}) => `${rootPath}/${name}`);
+
     const diffs = imagesPaths.filter((path) => path.endsWith(DIFF_IMAGE_POSTFIX));
 
     for (const diffImage of diffs) {
         const diffImageName = diffImage.split('/').pop()!.replace(DIFF_IMAGE_POSTFIX, '');
         const output = `${rootPath}/${diffImageName}${OUTPUT_DIFF_IMAGE_POSTFIX}`;
+
         const inputs = imagesPaths.filter((path) =>
             path.startsWith(diffImage.replace(DIFF_IMAGE_POSTFIX, '')),
         );

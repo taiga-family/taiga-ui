@@ -80,6 +80,7 @@ export function buildTuiIconStr(element: Element, template: string): string {
     }
 
     const isBinding = contentAttr.name.toLowerCase() === '[tuiHintContent]'.toLowerCase();
+
     const tooltipAttr = isBinding
         ? `[tuiTooltip]="${contentAttr.value}"`
         : `tuiTooltip="${contentAttr.value}"`;

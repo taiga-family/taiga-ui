@@ -11,6 +11,7 @@ import {basename, join} from 'node:path';
 
 function generateProjectsUsedIcons(): void {
     const rootDirectory = process.env.ROOT_FOLDER || './projects';
+
     const excludedFolders = [
         'demo',
         'demo-cypress',
@@ -23,6 +24,7 @@ function generateProjectsUsedIcons(): void {
         'icons',
         'schematics',
     ];
+
     const excludedFiles = ['deprecated-icons.ts', 'used-icons.ts'];
     const excludedNames = ['tuiIconButton'];
 
@@ -101,6 +103,7 @@ function findTuiIconNames(
                 }
 
                 const fileContents = readFileSync(filePath, 'utf-8');
+
                 const tuiIconMatches = fileContents.match(
                     /@(?:tui|img)\.[a-zA-Z0-9-]+(?=['"`&])/g,
                 );

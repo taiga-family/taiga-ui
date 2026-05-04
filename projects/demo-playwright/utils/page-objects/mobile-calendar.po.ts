@@ -1,5 +1,6 @@
-import {TuiCalendarSheetPO} from '@demo-playwright/utils';
 import {type Locator} from '@playwright/test';
+
+import {TuiCalendarSheetPO} from './calendar-sheet.po';
 
 export class TuiMobileCalendarPO {
     public cancelButton = this.host.getByTestId('tui-mobile-calendar__cancel');

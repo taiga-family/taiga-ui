@@ -56,7 +56,6 @@ test.describe('Table', () => {
     test('tuiSort directive', async ({page}) => {
         await tuiGoto(page, DemoRoute.Table);
         const example = new TuiDocumentationPagePO(page).getExample('#sorting');
-
         const name = example.locator('th').filter({hasText: 'Name'});
         const dateOfBirth = example.locator('th').filter({hasText: 'Date of Birth'});
         const age = example.locator('th').filter({hasText: 'Age'});
