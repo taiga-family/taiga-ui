@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.5.0](https://github.com/taiga-family/taiga-ui/compare/v5.4.0...v5.5.0) (2026-05-04)
+
+### 🚀 Features
+
+- **cdk:** `tuiSum` supports `bigint` ([#13982](https://github.com/taiga-family/taiga-ui/issues/13982))
+  ([bc50cf1](https://github.com/taiga-family/taiga-ui/commit/bc50cf1ef4ff98de3327b711bdd1ed90f657f33b))
+- **kit:** support disabled state for `tui-segmented` ([#13756](https://github.com/taiga-family/taiga-ui/issues/13756))
+  ([224f9c7](https://github.com/taiga-family/taiga-ui/commit/224f9c7413de09030f92dcacb0264cada05b0ab0))
+- **layout:** add appearance to default options ([#14003](https://github.com/taiga-family/taiga-ui/issues/14003))
+  ([fb8c19b](https://github.com/taiga-family/taiga-ui/commit/fb8c19bfd939aa27ef82e9cd56693bb6594f961d))
+
+### 🐞 Bug Fixes
+
+- **core:** `Icons` minimize specificity ([#13997](https://github.com/taiga-family/taiga-ui/issues/13997))
+  ([3f4d116](https://github.com/taiga-family/taiga-ui/commit/3f4d11615788a88cc2480db5ba0bf95991d0236b))
+- **core:** `Textfield` fix icons scaling ([#14001](https://github.com/taiga-family/taiga-ui/issues/14001))
+  ([8018c34](https://github.com/taiga-family/taiga-ui/commit/8018c340326bd30a0430470b8bad16af6c8f3c27))
+- **kit:** use background-color instead of background ([#14022](https://github.com/taiga-family/taiga-ui/issues/14022))
+  ([9ca1c27](https://github.com/taiga-family/taiga-ui/commit/9ca1c27c9372d5fece5d0d652a1d91fcd2ea1d8c))
+- **layout:** `CardLarge` fix nested cells selector ([#14006](https://github.com/taiga-family/taiga-ui/issues/14006))
+  ([331df9b](https://github.com/taiga-family/taiga-ui/commit/331df9b8a3de2bc401e92763fd1e62a75769e34d))
+- **schematics:** migrate `[disabled]`/`[readOnly]` from legacy controls to inner inputs
+  ([#14002](https://github.com/taiga-family/taiga-ui/issues/14002))
+  ([ea540d6](https://github.com/taiga-family/taiga-ui/commit/ea540d6e13615956892573d529c33604f9cad5e8))
+- **schematics:** migration for `FilterByInput` supports signal-based arguments
+  ([#13965](https://github.com/taiga-family/taiga-ui/issues/13965))
+  ([406c7ad](https://github.com/taiga-family/taiga-ui/commit/406c7adefa2587de694f6d1aafb03046f6009569))
+- **schematics:** migration for legacy `InputPassword` duplicates attribute `type="password"`
+  ([#13998](https://github.com/taiga-family/taiga-ui/issues/13998))
+  ([217eb00](https://github.com/taiga-family/taiga-ui/commit/217eb001227872e8c11c95ab5ac8ff490beebea6))
+- **schematics:** migration for legacy `InputPassword` fails to handle `tuiHintContent`
+  ([#14012](https://github.com/taiga-family/taiga-ui/issues/14012))
+  ([5480eaa](https://github.com/taiga-family/taiga-ui/commit/5480eaa1527733b1c4f5a2c2b95ed80004b14fa1))
+- **schematics:** migration leaves excessive comment `"class/style" is an unrecognized attribute`
+  ([#13964](https://github.com/taiga-family/taiga-ui/issues/13964))
+  ([7f10efe](https://github.com/taiga-family/taiga-ui/commit/7f10efeca2aee9c2d6262a257dac55ce11beb51a))
+- **schematics:** preserve label content when migrating legacy control with inner `<input>`
+  ([#14008](https://github.com/taiga-family/taiga-ui/issues/14008))
+  ([e77e2ae](https://github.com/taiga-family/taiga-ui/commit/e77e2aed92898b2810f5164c8e1650c5738e8a5a))
+
 ## [5.4.0](https://github.com/taiga-family/taiga-ui/compare/v5.3.0...v5.4.0) (2026-04-28)
 
 ### 🐞 Bug Fixes
