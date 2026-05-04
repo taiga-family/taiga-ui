@@ -21,7 +21,9 @@ export class TuiObscured {
         map(
             (by) =>
                 !!by?.every(
-                    (el) => el.closest('tui-dialogs') || !this.activeZone?.contains(el),
+                    (el) =>
+                        el.closest('tui-dialogs') ||
+                        (!this.activeZone?.contains(el) && !el.closest('tui-dropdown')),
                 ),
         ),
     );
