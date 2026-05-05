@@ -837,6 +837,21 @@
 ---
 ## @taiga-ui/experimental
 **Components:**
+### calendar
+
+```text
+  TuiCalendar
+```
+### data-grid
+
+```text
+  TuiDataGrid
+```
+### date-picker
+
+```text
+  TuiDatePicker
+```
 ### popout
 
 ```text
@@ -13285,6 +13300,55 @@ export default class Page {
         &#039;Group by labels&#039;,
     ];
 }
+```
+
+---
+# components/DatePicker
+- **Package**: `EXPERIMENTAL`
+- **Type**: components
+This is a work in progress, do not use!
+
+### Usage Examples
+
+#### Example 1
+
+**Template:**
+```html
+&lt;tui-date-picker [(value)]=&quot;value&quot; /&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiDatePicker} from &#039;@taiga-ui/experimental&#039;;
+
+@Component({
+    imports: [TuiDatePicker],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = signal(TuiDay.currentLocal());
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Example {}
 ```
 
 ---
