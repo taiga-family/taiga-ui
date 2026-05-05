@@ -5,3 +5,9 @@ export function overwriteVersion(file: string, version: string): void {
         encoding: 'utf-8',
     });
 }
+
+export function overwriteVersionLess(file: string, version: string): void {
+    writeFileSync(file, `@tui-version: '${version}';`, {
+        encoding: 'utf-8',
+    });
+}

@@ -9,6 +9,7 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiOrientation, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Component({
@@ -17,9 +18,7 @@ import {TUI_GROUP_OPTIONS} from './group.options';
     styleUrls: ['./group.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-group',
-    },
+    exportAs: `tui-group-${TUI_VERSION}`,
 })
 class TuiGroupStyles {}
 
@@ -28,6 +27,7 @@ class TuiGroupStyles {}
     selector: '[tuiGroup]:not(ng-container)',
     host: {
         tuiGroup: '',
+        tuiGroupV: TUI_VERSION,
         '[attr.data-orientation]': 'orientation',
         '[attr.data-size]': 'size',
         '[style.--t-group-radius]': 'rounded ? null : 0',

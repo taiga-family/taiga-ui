@@ -18,6 +18,7 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TuiIcons, TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
@@ -26,9 +27,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
     styles: ['@import "@taiga-ui/core/styles/components/notification.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-notification',
-    },
+    exportAs: `tui-notification-${TUI_VERSION}`,
 })
 class TuiNotificationStyles {}
 
@@ -48,6 +47,7 @@ class TuiNotificationStyles {}
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
     host: {
+        tuiNotificationV: TUI_VERSION,
         '[attr.data-size]': 'size',
     },
 })
