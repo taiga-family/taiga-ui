@@ -59,6 +59,8 @@ export class TuiRoot {
         inject(TUI_OPTIONS).scrollbars !== 'native';
 
     protected get parent(): boolean {
-        return this.doc.fullscreenElement === this.el || !this.child;
+        return this.doc.fullscreenElement
+            ? this.doc.fullscreenElement === this.el
+            : !this.child;
     }
 }
