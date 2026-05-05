@@ -73,10 +73,12 @@ export class TuiDatePicker {
     }
 
     protected onSpin(step: number): void {
+        const carousel = this.carousel();
+
         if (step > 0) {
-            this.carousel()?.next();
+            carousel?.next();
         } else {
-            this.carousel()?.prev();
+            carousel?.prev();
         }
 
         if (this.view() === 'month') {
