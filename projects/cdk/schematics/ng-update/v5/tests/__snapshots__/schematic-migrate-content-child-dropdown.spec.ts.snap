@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate @ContentChild decorator with TuiTextfieldDropdownDirective to TuiDropdownContent: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ContentChild, TemplateRef} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    @ContentChild(TuiTextfieldDropdownDirective, {
+                        read: TemplateRef,
+                    })
+                    protected readonly dropdownContent: TemplateRef<any>;
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {ContentChild, TemplateRef} from '@angular/core';
+
+                export class MyComponent {
+                    @ContentChild(TuiDropdownContent, {
+                        read: TemplateRef,
+                    })
+                    protected readonly dropdownContent: TemplateRef<any>;
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate @ContentChild decorator with TuiTextfieldDropdownDirective without options: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ContentChild} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    @ContentChild(TuiTextfieldDropdownDirective)
+                    protected readonly dropdownContent: any;
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {ContentChild} from '@angular/core';
+
+                export class MyComponent {
+                    @ContentChild(TuiDropdownContent)
+                    protected readonly dropdownContent: any;
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate @ContentChildren decorator with TuiTextfieldDropdownDirective to TuiDropdownContent: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ContentChildren, QueryList, TemplateRef} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    @ContentChildren(TuiTextfieldDropdownDirective, {
+                        read: TemplateRef,
+                    })
+                    protected readonly dropdownContents: QueryList<TemplateRef<any>>;
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {ContentChildren, QueryList, TemplateRef} from '@angular/core';
+
+                export class MyComponent {
+                    @ContentChildren(TuiDropdownContent, {
+                        read: TemplateRef,
+                    })
+                    protected readonly dropdownContents: QueryList<TemplateRef<any>>;
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate @ContentChildren decorator with TuiTextfieldDropdownDirective without options: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ContentChildren, QueryList} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    @ContentChildren(TuiTextfieldDropdownDirective)
+                    protected readonly dropdownContents: QueryList<any>;
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {ContentChildren, QueryList} from '@angular/core';
+
+                export class MyComponent {
+                    @ContentChildren(TuiDropdownContent)
+                    protected readonly dropdownContents: QueryList<any>;
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate contentChild with TuiTextfieldDropdownDirective to TuiDropdownContent: test.ts 1`] = `
+{
+  "0. Before": "
+                import {contentChild, TemplateRef} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    protected readonly dropdownContent = contentChild(
+                        TuiTextfieldDropdownDirective,
+                        {
+                            read: TemplateRef,
+                        },
+                    );
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {contentChild, TemplateRef} from '@angular/core';
+
+                export class MyComponent {
+                    protected readonly dropdownContent = contentChild(
+                        TuiDropdownContent,
+                        {
+                            read: TemplateRef,
+                        },
+                    );
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate contentChild with TuiTextfieldDropdownDirective without options to TuiDropdownContent: test.ts 1`] = `
+{
+  "0. Before": "
+                import {contentChild} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    protected readonly dropdownContent = contentChild(
+                        TuiTextfieldDropdownDirective,
+                    );
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {contentChild} from '@angular/core';
+
+                export class MyComponent {
+                    protected readonly dropdownContent = contentChild(
+                        TuiDropdownContent,
+                    );
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate contentChildren with TuiTextfieldDropdownDirective to TuiDropdownContent: test.ts 1`] = `
+{
+  "0. Before": "
+                import {contentChildren, TemplateRef} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    protected readonly dropdownContents = contentChildren(
+                        TuiTextfieldDropdownDirective,
+                        {
+                            read: TemplateRef,
+                        },
+                    );
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {contentChildren, TemplateRef} from '@angular/core';
+
+                export class MyComponent {
+                    protected readonly dropdownContents = contentChildren(
+                        TuiDropdownContent,
+                        {
+                            read: TemplateRef,
+                        },
+                    );
+                }
+            ",
+}
+`;
+
+exports[`ng-update migrate multiple contentChild, contentChildren and @ContentChild, @ContentChildren usages in same file: test.ts 1`] = `
+{
+  "0. Before": "
+                import {ContentChild, ContentChildren, contentChild, contentChildren, TemplateRef, QueryList} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    @ContentChild(TuiTextfieldDropdownDirective, {
+                        read: TemplateRef,
+                    })
+                    protected readonly decoratorDropdown: TemplateRef<any>;
+
+                    @ContentChildren(TuiTextfieldDropdownDirective, {
+                        read: TemplateRef,
+                    })
+                    protected readonly decoratorDropdowns: QueryList<TemplateRef<any>>;
+
+                    protected readonly functionDropdown = contentChild(
+                        TuiTextfieldDropdownDirective,
+                        {
+                            read: TemplateRef,
+                        },
+                    );
+
+                    protected readonly functionDropdowns = contentChildren(
+                        TuiTextfieldDropdownDirective,
+                    );
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {ContentChild, ContentChildren, contentChild, contentChildren, TemplateRef, QueryList} from '@angular/core';
+
+                export class MyComponent {
+                    @ContentChild(TuiDropdownContent, {
+                        read: TemplateRef,
+                    })
+                    protected readonly decoratorDropdown: TemplateRef<any>;
+
+                    @ContentChildren(TuiDropdownContent, {
+                        read: TemplateRef,
+                    })
+                    protected readonly decoratorDropdowns: QueryList<TemplateRef<any>>;
+
+                    protected readonly functionDropdown = contentChild(
+                        TuiDropdownContent,
+                        {
+                            read: TemplateRef,
+                        },
+                    );
+
+                    protected readonly functionDropdowns = contentChildren(
+                        TuiDropdownContent,
+                    );
+                }
+            ",
+}
+`;
