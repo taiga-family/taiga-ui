@@ -3,7 +3,7 @@
     [routerLink]="demoRoutes.GettingStarted"
 >
     <span tuiSlides>
-        @if (browser) {
+        @if (ready()) {
             <img
                 alt="Logo"
                 src="assets/images/taiga.svg"

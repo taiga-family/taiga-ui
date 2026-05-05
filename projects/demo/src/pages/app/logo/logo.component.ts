@@ -1,5 +1,4 @@
-import {isPlatformBrowser} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
+import {afterNextRender, ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiLoader} from '@taiga-ui/core';
@@ -15,8 +14,12 @@ import {VersionManager} from '../version-manager/version-manager.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Logo {
-    protected readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
+    protected readonly ready = signal(false);
     protected readonly demoRoutes = DemoRoute;
+
+    constructor() {
+        afterNextRender(() => this.ready.set(true));
+    }
 }
 
 export const LOGO_CONTENT = new PolymorpheusComponent(Logo);
