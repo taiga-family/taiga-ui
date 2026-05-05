@@ -34,8 +34,8 @@ class TuiButtonStyles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         '[attr.data-size]': 'size',
-        '[attr.tuiButtonV]': "el.hasAttribute('tuibutton') ? version : null",
-        '[attr.tuiIconButtonV]': "el.hasAttribute('tuiiconbutton') ? version : null",
+        '[attr.tuiButtonV]': "el.hasAttribute('tuiButton') ? version : null",
+        '[attr.tuiIconButtonV]': "el.hasAttribute('tuiIconButton') ? version : null",
     },
 })
 export class TuiButton {
