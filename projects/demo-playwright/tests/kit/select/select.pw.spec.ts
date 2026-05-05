@@ -18,6 +18,28 @@ describe('Select', () => {
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
+        test('dropdown works after exiting fullscreen', async ({page}) => {
+            const exampleContainer = page.locator('#textfield-customization');
+            const example = documentationPage.getExample('#textfield-customization');
+            const host = example.locator('tui-textfield').first();
+            const select = new TuiSelectPO(host);
+
+            await host.scrollIntoViewIfNeeded();
+
+            const fullscreenButton = exampleContainer.locator('button[tuiIconButton]', {
+                hasText: 'Fullscreen',
+            });
+
+            await fullscreenButton.click();
+            await page.waitForFunction(() => !!document.fullscreenElement);
+
+            await fullscreenButton.click();
+            await page.waitForFunction(() => !document.fullscreenElement);
+
+            await select.textfield.click();
+            await expect(select.dropdown).toBeVisible();
+        });
+
         test('checkmark size', async ({page}) => {
             const example = documentationPage.getExample('#customize-content');
             const host = example.locator('tui-textfield').first();

@@ -10,10 +10,18 @@ import {type TuiPortals} from './portals';
 
 @Injectable()
 export abstract class TuiPortalService {
-    protected host?: TuiPortals;
+    private readonly hosts: TuiPortals[] = [];
 
     public attach(host: TuiPortals): void {
-        this.host = host;
+        this.hosts.push(host);
+    }
+
+    public detach(host: TuiPortals): void {
+        const index = this.hosts.lastIndexOf(host);
+
+        if (index !== -1) {
+            this.hosts.splice(index, 1);
+        }
     }
 
     public add<C>(content: PolymorpheusComponent<C>): ComponentRef<C>;
@@ -29,6 +37,10 @@ export abstract class TuiPortalService {
         return content instanceof PolymorpheusComponent
             ? this.host.addComponent(content)
             : this.host.addTemplate(content, context);
+    }
+
+    protected get host(): TuiPortals | undefined {
+        return this.hosts[this.hosts.length - 1];
     }
 }
 

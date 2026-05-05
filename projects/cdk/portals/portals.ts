@@ -1,5 +1,6 @@
 import {
     type ComponentRef,
+    DestroyRef,
     Directive,
     type EmbeddedViewRef,
     inject,
@@ -18,7 +19,11 @@ export abstract class TuiPortals {
     private readonly anchor = viewChild.required(TuiVCR);
 
     constructor() {
-        inject(TuiPortalService).attach(this);
+        const service = inject(TuiPortalService);
+
+        service.attach(this);
+
+        inject(DestroyRef).onDestroy(() => service.detach(this));
     }
 
     public addComponent<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
