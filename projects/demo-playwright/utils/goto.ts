@@ -84,6 +84,8 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toBeAttached();
+    // Ensure hydration is finished
+    await expect(app.locator('[ngh]')).toHaveCount(0);
 
     await waitIcons({
         page,
