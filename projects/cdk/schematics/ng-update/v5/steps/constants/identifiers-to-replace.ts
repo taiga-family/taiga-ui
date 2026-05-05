@@ -1014,4 +1014,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
     },
+    {
+        from: {
+            name: 'TuiTextfieldDropdownDirective',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiDropdownContent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
