@@ -23,7 +23,7 @@ export default class Page {
     protected size = this.sizeVariants[0]!;
 
     protected readonly customList = {
-        'custom-list/index.ts': import('./examples/4/custom-list/index.ts?raw', {
+        'custom-list/index.ts': import('./examples/4/custom-list?raw', {
             with: {loader: 'text'},
         }),
         'custom-list/index.html': import('./examples/4/custom-list/index.html'),
