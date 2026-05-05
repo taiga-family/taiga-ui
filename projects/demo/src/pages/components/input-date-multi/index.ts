@@ -41,6 +41,7 @@ export default class Example {
         'Disabled items',
         'Format',
         'customization',
+        'Value transformer',
     ];
 
     protected readonly dates = [
