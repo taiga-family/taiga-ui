@@ -59,6 +59,7 @@ export const DemoRoute = {
     ComboBox: '/components/combo-box',
     DataList: '/components/data-list',
     DataListWrapper: '/components/data-list-wrapper',
+    DatePicker: '/components/date-picker',
     Dialog: '/components/dialog',
     Drawer: '/components/drawer',
     Error: '/components/error',

@@ -1,0 +1,16 @@
+@for (day of week(); track $index) {
+    <span>{{ day }}</span>
+}
+@for (week of month() | tuiCalendarSheet: true; track week) {
+    @for (day of week; track day) {
+        <button
+            type="button"
+            class="t-day"
+            [class.t-day_active]="value() && day.daySame(value()!)"
+            [class.t-day_adjacent]="day.month !== month().month"
+            (click)="pick.emit(day)"
+        >
+            {{ day.day }}
+        </button>
+    }
+}

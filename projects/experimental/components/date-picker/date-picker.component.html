@@ -1,0 +1,68 @@
+<header class="t-header">
+    @if (view() !== 'year') {
+        <button
+            appearance=""
+            tuiChevron
+            tuiLink
+            type="button"
+            class="t-button"
+            [textContent]="button()"
+            (click)="onView()"
+        ></button>
+    }
+    <button
+        tuiIconButton
+        type="button"
+        class="t-chevron"
+        [iconStart]="icons.decrement"
+        (click)="onSpin(-1)"
+    >
+        {{ texts()[0] }}
+    </button>
+    <button
+        tuiIconButton
+        type="button"
+        class="t-chevron"
+        [iconStart]="icons.increment"
+        (click)="onSpin(1)"
+    >
+        {{ texts()[1] }}
+    </button>
+</header>
+<section tuiSlides>
+    @switch (view()) {
+        @case ('day') {
+            <tui-carousel
+                [index]="current().year * 12 + current().month"
+                (indexChange)="current.set(getMonth($event))"
+            >
+                <tui-calendar
+                    *tuiItem="let index"
+                    [month]="index | tuiMapper: getMonth"
+                    [value]="value()"
+                    (pick)="onDay($event)"
+                />
+            </tui-carousel>
+        }
+
+        @case ('month') {
+            <tui-data-grid
+                [content]="month()"
+                [items]="0 | tuiMapper: getItems"
+                [value]="current().year === value()?.year ? current().month : []"
+                (pick)="onMonth($event)"
+            />
+        }
+
+        @case ('year') {
+            <tui-carousel>
+                <tui-data-grid
+                    *tuiItem="let offset"
+                    [items]="current().year + offset * 12 - 6 | tuiMapper: getItems"
+                    [value]="value()?.year || []"
+                    (pick)="onYear($event)"
+                />
+            </tui-carousel>
+        }
+    }
+</section>
