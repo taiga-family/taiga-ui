@@ -37,9 +37,9 @@ import {
     switchMap,
 } from 'rxjs';
 
+import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
-import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 
 @Component({
     selector: 'tui-line-clamp',
@@ -73,9 +73,6 @@ export class TuiLineClamp {
         distinctUntilChanged(),
         filter(Boolean),
     );
-    private readonly sub = merge(this.resize$, this.intersection$)
-        .pipe(takeUntilDestroyed())
-        .subscribe(() => this.update());
 
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
@@ -119,6 +116,10 @@ export class TuiLineClamp {
             this.linesLimit();
             untracked(() => this.update());
         });
+
+        merge(this.resize$, this.intersection$)
+            .pipe(takeUntilDestroyed())
+            .subscribe(() => this.update());
     }
 
     protected get computedContent(): PolymorpheusContent {
