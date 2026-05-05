@@ -54,9 +54,7 @@
         "Bellic",
         "haspopup",
         "multiselectable",
-        "longname",
-        "tuibutton",
-        "tuiiconbutton"
+        "longname"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
