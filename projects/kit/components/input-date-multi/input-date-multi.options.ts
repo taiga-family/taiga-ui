@@ -23,13 +23,12 @@ export function tuiInputDateMultiOptionsFactory(): TuiInputDateMultiOptions {
     return {
         ...options,
         valueTransformer: {
-            fromControlValue: (value: unknown): TuiDay[] => {
-                return Array.isArray(value)
+            fromControlValue: (value: unknown): TuiDay[] =>
+                Array.isArray(value)
                     ? value
                           .map((item) => options.valueTransformer.fromControlValue(item))
                           .filter((item): item is TuiDay => item !== null)
-                    : [];
-            },
+                    : [],
             toControlValue: (value: TuiDay[]): unknown =>
                 value.map((item) => options.valueTransformer.toControlValue(item)),
         },
