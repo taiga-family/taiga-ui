@@ -1,15 +1,18 @@
 <a
-    tuiLink
-    class="t-logo-link"
+    class="t-link"
     [routerLink]="demoRoutes.GettingStarted"
 >
-    <span class="t-logo-name">
-        <img
-            alt="Logo"
-            src="assets/images/taiga.svg"
-            class="t-logo"
-        />
-        Taiga UI
+    <span tuiSlides>
+        @if (browser) {
+            <img
+                alt="Logo"
+                src="assets/images/taiga.svg"
+                class="t-logo"
+            />
+        } @else {
+            <tui-loader />
+        }
     </span>
+    Taiga UI
 </a>
 <version-manager />
