@@ -94,6 +94,30 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('09-dropdown.png');
     });
 
+    test('keeps hosted dropdown open after nested select option click', async ({
+        page,
+    }) => {
+        await tuiGoto(page, DemoRoute.DropdownOpen);
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#tui-dropdown-host');
+        const dropdowns = page.locator('tui-dropdown');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button[tuiChevron]').click();
+
+        await expect(dropdowns).toHaveCount(1);
+        await expect(dropdowns.first()).toBeVisible();
+
+        await dropdowns.first().locator('input[tuiSelect]').click();
+        await expect(dropdowns).toHaveCount(2);
+
+        await page.getByRole('option', {name: 'Item 1'}).click();
+        await api.waitStableState();
+
+        await expect(dropdowns).toHaveCount(1);
+        await expect(dropdowns.first()).toBeVisible();
+    });
+
     test('Scrollbar dropdown in active zone', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Dropdown}/API?tuiDropdownMaxHeight=150`);
 
