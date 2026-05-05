@@ -1,4 +1,5 @@
-import {TuiMonth, TuiMonthNumber} from '@taiga-ui/cdk';
+import {TuiInvalidMonthException, TuiMonth, TuiMonthNumber} from '@taiga-ui/cdk';
+import {tuiSwitchNgDevMode} from '@taiga-ui/jest-config';
 
 import {tuiMockDateInside} from './helpers';
 
@@ -154,6 +155,103 @@ describe('TuiMonth', () => {
 
                     expect(currentDate.year).toBe(1999);
                     expect(currentDate.month).toBe(11);
+                });
+            });
+        });
+
+        describe('normalizeParse', () => {
+            describe('returns parsed month from a valid string', () => {
+                it("'10.2018' => {year: 2018, month: 9}", () => {
+                    const result = TuiMonth.normalizeParse('10.2018');
+
+                    expect(result.year).toBe(2018);
+                    expect(result.month).toBe(9);
+                });
+
+                it("'01.0000' => {year: 0, month: 0}", () => {
+                    const result = TuiMonth.normalizeParse('01.0000');
+
+                    expect(result.year).toBe(0);
+                    expect(result.month).toBe(0);
+                });
+
+                it("'12.9999' => {year: 9999, month: 11}", () => {
+                    const result = TuiMonth.normalizeParse('12.9999');
+
+                    expect(result.year).toBe(9999);
+                    expect(result.month).toBe(11);
+                });
+            });
+
+            describe('normalizes out-of-range values', () => {
+                it("clamps month '99' to 11", () => {
+                    const result = TuiMonth.normalizeParse('99.2018');
+
+                    expect(result.month).toBe(11);
+                });
+
+                it("clamps month 'aa' (NaN) to 0", () => {
+                    const result = TuiMonth.normalizeParse('aa.2018');
+
+                    expect(result.month).toBe(0);
+                });
+            });
+        });
+
+        describe('jsonParse', () => {
+            describe('returns parsed month from a valid string', () => {
+                it("'2018-10' => {year: 2018, month: 9}", () => {
+                    const result = TuiMonth.jsonParse('2018-10');
+
+                    expect(result.year).toBe(2018);
+                    expect(result.month).toBe(9);
+                });
+
+                it("'0000-01' => {year: 0, month: 0}", () => {
+                    const result = TuiMonth.jsonParse('0000-01');
+
+                    expect(result.year).toBe(0);
+                    expect(result.month).toBe(0);
+                });
+            });
+
+            describe('throws an exception', () => {
+                describe('dev mode', () => {
+                    beforeEach(() => tuiSwitchNgDevMode(true));
+
+                    it('2018-aa', () => {
+                        expect(() => TuiMonth.jsonParse('2018-aa')).toThrow(
+                            'Invalid month: 2018-NaN',
+                        );
+                    });
+
+                    it('2018-99', () => {
+                        expect(() => TuiMonth.jsonParse('2018-99')).toThrow(
+                            'Invalid month: 2018-98',
+                        );
+                    });
+
+                    it('invalid string', () => {
+                        expect(() => TuiMonth.jsonParse('test')).toThrow(
+                            'Invalid month: NaN-NaN',
+                        );
+                    });
+
+                    afterEach(() => tuiSwitchNgDevMode(false));
+                });
+
+                describe('production mode', () => {
+                    it('2018-aa', () => {
+                        expect(() => TuiMonth.jsonParse('2018-aa')).toThrow(
+                            new TuiInvalidMonthException(2018, Number.NaN),
+                        );
+                    });
+
+                    it('2018-99', () => {
+                        expect(() => TuiMonth.jsonParse('2018-99')).toThrow(
+                            new TuiInvalidMonthException(2018, 98),
+                        );
+                    });
                 });
             });
         });

@@ -1,5 +1,6 @@
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
+import {YEAR_FILLER_LENGTH} from './date-fillers';
 import {MAX_YEAR, MIN_YEAR} from './date-time';
 import {type TuiYearLike} from './types';
 
@@ -46,6 +47,38 @@ export class TuiYear implements TuiYearLike {
      */
     public static normalizeYearPart(year: number): number {
         return tuiNormalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
+    }
+
+    /**
+     * Parsing a string with year with normalization
+     *
+     * @param rawYear year string in format of YYYY
+     * @return normalized year
+     */
+    public static normalizeParse(rawYear: string): TuiYear {
+        ngDevMode &&
+            console.assert(
+                rawYear.length === YEAR_FILLER_LENGTH,
+                '[normalizeParse]: wrong year string length',
+            );
+
+        return new TuiYear(TuiYear.normalizeYearPart(Number.parseInt(rawYear, 10)));
+    }
+
+    /**
+     * Parsing a year stringified in a toJSON format
+     * @param yearString year string in format of YYYY
+     * @return year
+     * @throws exceptions if year is invalid
+     */
+    public static jsonParse(yearString: string): TuiYear {
+        const year = Number.parseInt(yearString, 10);
+
+        if (!TuiYear.isValidYear(year)) {
+            throw new TuiInvalidYearException(year);
+        }
+
+        return new TuiYear(year);
     }
 
     public get formattedYear(): string {
@@ -130,5 +163,11 @@ export class TuiYear implements TuiYearLike {
 
     public toJSON(): string {
         return this.formattedYear;
+    }
+}
+
+export class TuiInvalidYearException extends Error {
+    constructor(year: number) {
+        super(ngDevMode ? `Invalid year: ${year}` : '');
     }
 }
