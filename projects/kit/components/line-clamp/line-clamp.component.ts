@@ -68,6 +68,7 @@ export class TuiLineClamp {
     private readonly rendered = signal(false);
     private readonly isOverflowing = signal(false);
     private readonly resize$ = inject(WaResizeObserverService);
+
     private readonly intersection$ = inject(WaIntersectionObserverService).pipe(
         map(([entry]) => entry?.isIntersecting ?? true),
         distinctUntilChanged(),
@@ -101,7 +102,7 @@ export class TuiLineClamp {
 
     constructor() {
         afterNextRender({
-            write: () => {
+            mixedReadWrite: () => {
                 this.rendered.set(true);
                 this.update();
             },
@@ -112,8 +113,7 @@ export class TuiLineClamp {
                 return;
             }
 
-            this.lineHeight();
-            this.linesLimit();
+            this.maxHeight();
             untracked(() => this.update());
         });
 
@@ -127,6 +127,10 @@ export class TuiLineClamp {
     }
 
     protected update(): void {
+        if (!this.rendered()) {
+            return;
+        }
+
         const outlet = this.outlet().nativeElement;
         const {scrollHeight, scrollWidth} = outlet;
         const {clientWidth} = this.el;
