@@ -192,6 +192,8 @@ export const DemoRoute = {
     Mapper: '/pipes/mapper',
     Stringify: '/pipes/stringify',
     StringifyContent: '/pipes/stringify-content',
+    StringifyValues: '/pipes/stringify-values',
+    Values: '/pipes/values',
     KeyboardService: '/services/keyboard-service',
     ActionBar: '/components/actions-bar',
     TextfieldController: '/directives/textfield-controller',
