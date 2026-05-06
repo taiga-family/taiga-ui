@@ -27732,11 +27732,9 @@ export default class Example {
             );
         }
 
-        if (length > 14) {
-            return new TuiDayRange(mondayFrom, mondayTo);
-        }
-
-        return new TuiDayRange(from, to.append({day: length % 2}));
+        return length > 14
+            ? new TuiDayRange(mondayFrom, mondayTo)
+            : new TuiDayRange(from, to.append({day: length % 2}));
     });
 
     protected readonly labels = computed(() => {
@@ -27766,11 +27764,7 @@ export default class Example {
             return [...mondays, ''];
         }
 
-        if (length > 7) {
-            return [...even(days), ''];
-        }
-
-        return [...days, ''];
+        return length > 7 ? [...even(days), ''] : [...days, ''];
     });
 
     protected getWidth({from, to}: TuiDayRange): number {
@@ -29311,15 +29305,13 @@ export default class Example {
         tuiControlValue<readonly TuiDay[]>(this.control),
         this.months$,
     ]).pipe(
-        map(([value, months]) => {
-            if (!value?.length) {
-                return 'Choose dates';
-            }
-
-            return value
-                .map((day) => `${months[day.month]} ${day.day}, ${day.year}`)
-                .join('; ');
-        }),
+        map(([value, months]) =>
+            value?.length
+                ? value
+                      .map((day) => `${months[day.month]} ${day.day}, ${day.year}`)
+                      .join('; ')
+                : 'Choose dates',
+        ),
     );
 
     protected get empty(): boolean {
@@ -32864,11 +32856,7 @@ export default class Example {
                 return 'red';
             }
 
-            if (value < 66) {
-                return 'yellow';
-            }
-
-            return 'green';
+            return value < 66 ? 'yellow' : 'green';
         }),
     );
 }
@@ -41957,11 +41945,9 @@ export default class Example {
     protected activeElement = String(this.collaborators[0]);
 
     protected get activeItemIndex(): number {
-        if (this.collaborators.includes(this.activeElement)) {
-            return this.tabs.indexOf(this.collaborators);
-        }
-
-        return this.tabs.indexOf(this.activeElement);
+        return this.collaborators.includes(this.activeElement)
+            ? this.tabs.indexOf(this.collaborators)
+            : this.tabs.indexOf(this.activeElement);
     }
 
     protected stop(event: Event): void {
