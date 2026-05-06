@@ -7,6 +7,7 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiInputDateOptions {
     readonly icon: string;
+    readonly keepFocus: boolean;
     readonly max: TuiDay;
     readonly min: TuiDay;
     readonly valueTransformer: TuiValueTransformer<TuiDay | null, any>;
@@ -14,6 +15,7 @@ export interface TuiInputDateOptions {
 
 export const TUI_INPUT_DATE_DEFAULT_OPTIONS = {
     icon: '@tui.calendar',
+    keepFocus: false,
     min: TUI_FIRST_DAY,
     max: TUI_LAST_DAY,
     valueTransformer: TUI_IDENTITY_VALUE_TRANSFORMER,

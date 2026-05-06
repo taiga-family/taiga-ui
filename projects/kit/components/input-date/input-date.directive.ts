@@ -134,8 +134,10 @@ export abstract class TuiInputDateBase<
         this.onChange(value as T);
         this.open.set(false);
 
-        if (!this.el.closest('tui-dropdown')) {
+        if (!this.options.keepFocus && !this.el.closest('tui-dropdown')) {
             this.el.blur();
+        } else if (this.options.keepFocus) {
+            setTimeout(() => this.el.focus());
         }
     }
 
