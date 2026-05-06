@@ -4,29 +4,20 @@
     display: flex;
     align-items: center;
 
+    --tui-background-accent-1: var(--tui-background-accent-2);
+
     @media @tui-mobile {
         font-size: 0;
     }
 }
 
-.t-logo-link {
+.t-link {
     display: flex;
-}
-
-.t-logo-name {
-    display: flex;
+    gap: 0.5rem;
     color: var(--tui-text-primary);
+    text-decoration: none;
 }
 
 .t-logo {
     inline-size: 1.5rem;
-    margin-inline-end: 0.5rem;
-}
-
-.t-by {
-    margin-inline-start: 0.875rem;
-
-    @media @tui-mobile {
-        display: none;
-    }
 }
