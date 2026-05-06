@@ -27741,11 +27741,9 @@ export default class Example {
             );
         }
 
-        if (length &gt; 14) {
-            return new TuiDayRange(mondayFrom, mondayTo);
-        }
-
-        return new TuiDayRange(from, to.append({day: length % 2}));
+        return length &gt; 14
+            ? new TuiDayRange(mondayFrom, mondayTo)
+            : new TuiDayRange(from, to.append({day: length % 2}));
     });
 
     protected readonly labels = computed(() =&gt; {
@@ -27775,11 +27773,7 @@ export default class Example {
             return [...mondays, &#039;&#039;];
         }
 
-        if (length &gt; 7) {
-            return [...even(days), &#039;&#039;];
-        }
-
-        return [...days, &#039;&#039;];
+        return length &gt; 7 ? [...even(days), &#039;&#039;] : [...days, &#039;&#039;];
     });
 
     protected getWidth({from, to}: TuiDayRange): number {
@@ -29320,15 +29314,13 @@ export default class Example {
         tuiControlValue&lt;readonly TuiDay[]&gt;(this.control),
         this.months$,
     ]).pipe(
-        map(([value, months]) =&gt; {
-            if (!value?.length) {
-                return &#039;Choose dates&#039;;
-            }
-
-            return value
-                .map((day) =&gt; `${months[day.month]} ${day.day}, ${day.year}`)
-                .join(&#039;; &#039;);
-        }),
+        map(([value, months]) =&gt;
+            value?.length
+                ? value
+                      .map((day) =&gt; `${months[day.month]} ${day.day}, ${day.year}`)
+                      .join(&#039;; &#039;)
+                : &#039;Choose dates&#039;,
+        ),
     );
 
     protected get empty(): boolean {
@@ -32873,11 +32865,7 @@ export default class Example {
                 return &#039;red&#039;;
             }
 
-            if (value &lt; 66) {
-                return &#039;yellow&#039;;
-            }
-
-            return &#039;green&#039;;
+            return value &lt; 66 ? &#039;yellow&#039; : &#039;green&#039;;
         }),
     );
 }
@@ -41966,11 +41954,9 @@ export default class Example {
     protected activeElement = String(this.collaborators[0]);
 
     protected get activeItemIndex(): number {
-        if (this.collaborators.includes(this.activeElement)) {
-            return this.tabs.indexOf(this.collaborators);
-        }
-
-        return this.tabs.indexOf(this.activeElement);
+        return this.collaborators.includes(this.activeElement)
+            ? this.tabs.indexOf(this.collaborators)
+            : this.tabs.indexOf(this.activeElement);
     }
 
     protected stop(event: Event): void {
