@@ -34,6 +34,7 @@ export default class PageComponent {
         'With custom card template',
         'Custom form state',
         'Custom labels',
+        'Empty labels',
     ];
 
     protected readonly cards: Record<string, PolymorpheusContent | string> = {
