@@ -209,11 +209,9 @@ export class PerformanceComparison {
 
                         const mid = Math.floor(arr.length / 2);
 
-                        if (arr.length % 2 === 0) {
-                            return (arr[mid - 1]! + arr[mid]!) / 2;
-                        }
-
-                        return arr[mid]!;
+                        return arr.length % 2 === 0
+                            ? (arr[mid - 1]! + arr[mid]!) / 2
+                            : arr[mid]!;
                     })();
 
                     aggregatedExtras = {
@@ -763,18 +761,14 @@ export class PerformanceComparison {
      * Filters files to include only performance JSON files
      */
     private static filterPerformanceFiles(files: string[]): string[] {
-        return files.filter((file) => {
-            if (!file.endsWith('.json')) {
-                return false;
-            }
-
-            return (
-                file.startsWith('test-') ||
-                file.startsWith('trace-') ||
-                file.startsWith('performance-test-') ||
-                file.startsWith('performance-trace-')
-            );
-        });
+        return files.filter((file) =>
+            file.endsWith('.json')
+                ? file.startsWith('test-') ||
+                  file.startsWith('trace-') ||
+                  file.startsWith('performance-test-') ||
+                  file.startsWith('performance-trace-')
+                : false,
+        );
     }
 
     /**
@@ -859,11 +853,7 @@ export class PerformanceComparison {
      * Calculates percentage change between two values
      */
     private static calculatePercentageChange(baseline: number, current: number): number {
-        if (baseline === 0) {
-            return 0;
-        }
-
-        return ((current - baseline) / baseline) * 100;
+        return baseline === 0 ? 0 : ((current - baseline) / baseline) * 100;
     }
 
     /**
@@ -1108,15 +1098,11 @@ export class PerformanceComparison {
 
             // Otherwise require a minimum (lower) net percent plus absolute net ms guard
             if (netMs > 0) {
-                if (
+                return (
                     netPct >= componentMinNetPct &&
                     netMsAbs >= NET_ABS_MS_THRESHOLD &&
                     netMsAbs >= absMsFloor
-                ) {
-                    return true;
-                }
-
-                return false; // suppress partial component-only increase with weak net effect
+                ); // suppress partial component-only increase with weak net effect
             }
             // Net non-positive handled earlier (improvements path) so treat as noise
 
@@ -1129,16 +1115,12 @@ export class PerformanceComparison {
             netMsAbs >= absMsFloor;
 
         if (perOpTriggered) {
-            if (
+            return (
                 netPctAbs >= changeThreshold ||
                 (netMs > 0 &&
                     netPct >= componentMinNetPct &&
                     netMsAbs >= NET_ABS_MS_THRESHOLD)
-            ) {
-                return true;
-            }
-
-            return false;
+            );
         }
 
         // Pure net change path (no individual component signals)
@@ -1414,11 +1396,9 @@ export class PerformanceComparison {
             return `⚠️ Aggregate net rendering cost increased ${net > 0 ? '+' : ''}${net.toFixed(1)}% (distributed across many tests)`;
         }
 
-        if (net > 0) {
-            return `ℹ️ Small net rendering cost increase: +${net.toFixed(1)}% (below gating thresholds)`;
-        }
-
-        return '✅ No significant performance regressions detected!';
+        return net > 0
+            ? `ℹ️ Small net rendering cost increase: +${net.toFixed(1)}% (below gating thresholds)`
+            : '✅ No significant performance regressions detected!';
     }
 
     private static generateHeadlineOverallDelta(
@@ -1510,13 +1490,8 @@ export class PerformanceComparison {
         const {testName, baseline, current} = detail;
         const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
 
-        const fmt = (v: number, decimals = 1): string => {
-            if (Number.isInteger(v)) {
-                return String(v);
-            }
-
-            return trim(v.toFixed(decimals));
-        };
+        const fmt = (v: number, decimals = 1): string =>
+            Number.isInteger(v) ? String(v) : trim(v.toFixed(decimals));
 
         const currentLayoutAvg =
             current.layoutAvgPerOp ??
@@ -1572,11 +1547,9 @@ export class PerformanceComparison {
 
             const core = `${fmt(cur)}${unit} (${diffStr}${unit}, ${pctStr})`;
 
-            if (severe) {
-                return `**${core}**${emoji ? ` ${emoji}` : ''}`;
-            }
-
-            return `${core}${emoji ? ` ${emoji}` : ''}`;
+            return severe
+                ? `**${core}**${emoji ? ` ${emoji}` : ''}`
+                : `${core}${emoji ? ` ${emoji}` : ''}`;
         };
 
         const netMs =
@@ -1697,13 +1670,8 @@ export class PerformanceComparison {
         }
 
         // Compute CoV for variance gating
-        const mean = (arr: number[]): number => {
-            if (!arr.length) {
-                return 0;
-            }
-
-            return arr.reduce((a, b) => a + b, 0) / arr.length;
-        };
+        const mean = (arr: number[]): number =>
+            arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
 
         const sdev = (arr: number[]): number => {
             if (arr.length < 2) {
@@ -1729,11 +1697,7 @@ export class PerformanceComparison {
 
             const m = mean(arr);
 
-            if (m === 0) {
-                return 0;
-            }
-
-            return sdev(arr) / m;
+            return m === 0 ? 0 : sdev(arr) / m;
         };
 
         result.layoutCountCoV = coeffVar(values('layoutCount'));
@@ -1764,11 +1728,7 @@ export class PerformanceComparison {
      * Generates the footer section of the markdown report
      */
     private static generateFooter(totalTests: number): string {
-        if (totalTests === 0) {
-            return '_No performance metrics collected in this run._';
-        }
-
-        return '';
+        return totalTests === 0 ? '_No performance metrics collected in this run._' : '';
     }
 }
 
@@ -1980,11 +1940,9 @@ export class PerformanceReportAggregator {
             const componentA = this.getComponentFromRow(a).toLowerCase();
             const componentB = this.getComponentFromRow(b).toLowerCase();
 
-            if (componentA !== componentB) {
-                return componentA.localeCompare(componentB);
-            }
-
-            return a.localeCompare(b);
+            return componentA === componentB
+                ? a.localeCompare(b)
+                : componentA.localeCompare(componentB);
         });
 
         // Insert spacer rows between different components

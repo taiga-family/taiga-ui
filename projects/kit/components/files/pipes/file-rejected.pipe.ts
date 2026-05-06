@@ -42,15 +42,13 @@ export class TuiFileRejectedPipe implements PipeTransform {
                     };
                 }
 
-                if (file && sizeValidator(control)) {
-                    return {
-                        name: file.name,
-                        size: file.size,
-                        content: `${maxSizeRejectionReason}${CHAR_NO_BREAK_SPACE}${this.formatSize(units, maxFileSize, this.locale)}`,
-                    };
-                }
-
-                return null;
+                return file && sizeValidator(control)
+                    ? {
+                          name: file.name,
+                          size: file.size,
+                          content: `${maxSizeRejectionReason}${CHAR_NO_BREAK_SPACE}${this.formatSize(units, maxFileSize, this.locale)}`,
+                      }
+                    : null;
             }),
         );
     }

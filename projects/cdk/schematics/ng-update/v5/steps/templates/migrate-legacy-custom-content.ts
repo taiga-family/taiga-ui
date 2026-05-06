@@ -48,14 +48,12 @@ export function findCustomContentAttr(element: Element): CustomContent | null {
         CUSTOM_CONTENT_ATTRS.has(a.name.toLowerCase()),
     );
 
-    if (!attr) {
-        return null;
-    }
-
-    return {
-        value: attr.value,
-        isBinding: attr.name.toLowerCase().startsWith('['),
-    };
+    return attr
+        ? {
+              value: attr.value,
+              isBinding: attr.name.toLowerCase().startsWith('['),
+          }
+        : null;
 }
 
 export function findCustomContentAttrName(element: Element): string | null {
@@ -96,17 +94,15 @@ export function buildCustomContentIconStr(
         return '';
     }
 
-    if (customContent.isBinding) {
-        return [
-            '',
-            `${indent}<tui-icon`,
-            `${indent}    *polymorpheusOutlet="${customContent.value} as src"`,
-            `${indent}    [icon]="src"`,
-            `${indent}/>`,
-        ].join('\n');
-    }
-
-    return `\n${indent}<tui-icon icon="${customContent.value}" />`;
+    return customContent.isBinding
+        ? [
+              '',
+              `${indent}<tui-icon`,
+              `${indent}    *polymorpheusOutlet="${customContent.value} as src"`,
+              `${indent}    [icon]="src"`,
+              `${indent}/>`,
+          ].join('\n')
+        : `\n${indent}<tui-icon icon="${customContent.value}" />`;
 }
 
 export function migrateLegacyCustomContent({

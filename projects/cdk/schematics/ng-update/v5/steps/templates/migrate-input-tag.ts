@@ -245,11 +245,9 @@ function getHint(attrName: string): string {
         return `move to <tui-input-chip *tuiItem="let ctx" [editable]="..."> inside <tui-textfield multi>. See ${DOCS_LINK}.`;
     }
 
-    if ('[autoColor]'.toLowerCase() === lower || 'autoColor'.toLowerCase() === lower) {
-        return 'use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color';
-    }
-
-    return `no direct equivalent in v5. See ${DOCS_LINK}.`;
+    return '[autoColor]'.toLowerCase() === lower || 'autoColor'.toLowerCase() === lower
+        ? 'use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color'
+        : `no direct equivalent in v5. See ${DOCS_LINK}.`;
 }
 
 function normalizeAttrName(name: string): string {

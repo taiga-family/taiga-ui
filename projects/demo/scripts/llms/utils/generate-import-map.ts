@@ -238,11 +238,7 @@ function categorizeSymbol(
         return 'component';
     }
 
-    if (/^[a-z]/.test(name)) {
-        return 'utility';
-    }
-
-    return folderHint ?? 'class';
+    return /^[a-z]/.test(name) ? 'utility' : (folderHint ?? 'class');
 }
 
 function detectFolderCategory(
@@ -258,11 +254,9 @@ function detectFolderCategory(
 function buildImportRegex(escapedPkg: string, typeOnly: boolean): RegExp {
     const fromClause = String.raw`from\s*['"]${escapedPkg}(?:/[^'"]*)?['"]`;
 
-    if (typeOnly) {
-        return new RegExp(String.raw`import\s+type\s*\{([^}]+)\}\s*${fromClause}`, 'gs');
-    }
-
-    return new RegExp(String.raw`import\s+(?!type\s)\{([^}]+)\}\s*${fromClause}`, 'gs');
+    return typeOnly
+        ? new RegExp(String.raw`import\s+type\s*\{([^}]+)\}\s*${fromClause}`, 'gs')
+        : new RegExp(String.raw`import\s+(?!type\s)\{([^}]+)\}\s*${fromClause}`, 'gs');
 }
 
 function processTypeImports(
@@ -391,11 +385,7 @@ function formatExportsList(exports: string[], perLine = 10): string {
 function formatEntitySection(entity: EntityExports, perLine = 10): string {
     const exportsBlock = formatExportsList(entity.exports, perLine);
 
-    if (!exportsBlock) {
-        return '';
-    }
-
-    return `### ${entity.name}\n\n${exportsBlock}\n`;
+    return exportsBlock ? `### ${entity.name}\n\n${exportsBlock}\n` : '';
 }
 
 function sortByCategory<T extends {category: string}>(items: T[]): T[] {

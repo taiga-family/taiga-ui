@@ -268,11 +268,7 @@ function classifySkipReason(headerData: ComponentHeader): 'deprecated' | 'legacy
         return 'deprecated';
     }
 
-    if ((headerData.package ?? '').toUpperCase() === 'LEGACY') {
-        return 'legacy';
-    }
-
-    return null;
+    return (headerData.package ?? '').toUpperCase() === 'LEGACY' ? 'legacy' : null;
 }
 
 async function fileExists(filePath: string): Promise<boolean> {

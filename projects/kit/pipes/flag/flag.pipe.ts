@@ -12,10 +12,8 @@ export class TuiFlagPipe implements PipeTransform {
     public transform(countryIsoCode: IsoCode | undefined): string | null;
     public transform(countryIsoCode?: IsoCode | null): string | null;
     public transform(countryIsoCode?: IsoCode | null): string | null {
-        if (!countryIsoCode) {
-            return null;
-        }
-
-        return `${this.staticPath}/flags/${countryIsoCode.toLowerCase()}.svg`;
+        return countryIsoCode
+            ? `${this.staticPath}/flags/${countryIsoCode.toLowerCase()}.svg`
+            : null;
     }
 }

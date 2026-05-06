@@ -157,11 +157,7 @@ function getOriginalAttrText(
 ): string | null {
     const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
 
-    if (!attrLoc) {
-        return null;
-    }
-
-    return template.slice(attrLoc.startOffset, attrLoc.endOffset);
+    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
 }
 
 interface MigrationContext {
@@ -569,53 +565,45 @@ function migrateInnerInput({
 function buildLabelContent(parent: Element, inner: Element, template: string): string {
     const innerStart = inner.sourceCodeLocation?.startOffset;
 
-    if (innerStart === undefined) {
-        return '';
-    }
+    return innerStart === undefined
+        ? ''
+        : parent.childNodes
+              .filter((child) => {
+                  if (child === inner || child.nodeName === '#comment') {
+                      return false;
+                  }
 
-    return parent.childNodes
-        .filter((child) => {
-            if (child === inner || child.nodeName === '#comment') {
-                return false;
-            }
+                  const loc = child.sourceCodeLocation;
 
-            const loc = child.sourceCodeLocation;
+                  return !!loc && loc.startOffset < innerStart;
+              })
+              .map((child) => {
+                  if (child.nodeName === '#text') {
+                      return (child as DefaultTreeAdapterTypes.TextNode).value;
+                  }
 
-            return !!loc && loc.startOffset < innerStart;
-        })
-        .map((child) => {
-            if (child.nodeName === '#text') {
-                return (child as DefaultTreeAdapterTypes.TextNode).value;
-            }
+                  const loc = (child as Element).sourceCodeLocation;
 
-            const loc = (child as Element).sourceCodeLocation;
-
-            return loc ? template.slice(loc.startOffset, loc.endOffset) : '';
-        })
-        .join('')
-        .replaceAll(/\s+/g, ' ')
-        .trim();
+                  return loc ? template.slice(loc.startOffset, loc.endOffset) : '';
+              })
+              .join('')
+              .replaceAll(/\s+/g, ' ')
+              .trim();
 }
 
 /**
  * Returns the position just before the closing `>` or `/>` in a void element tag string.
  */
 function getVoidClosePos(tag: string): number {
-    if (tag.endsWith('/>')) {
-        return tag.length - 2;
-    }
-
-    return tag.lastIndexOf('>');
+    return tag.endsWith('/>') ? tag.length - 2 : tag.lastIndexOf('>');
 }
 
 function getPlaceholderText(element: Element): string {
-    const textNode = element.childNodes.find((node: ChildNode) => {
-        if (node.nodeName !== '#text') {
-            return false;
-        }
-
-        return !!(node as DefaultTreeAdapterTypes.TextNode).value.trim();
-    });
+    const textNode = element.childNodes.find((node: ChildNode) =>
+        node.nodeName === '#text'
+            ? !!(node as DefaultTreeAdapterTypes.TextNode).value.trim()
+            : false,
+    );
 
     return (textNode as DefaultTreeAdapterTypes.TextNode | undefined)?.value.trim() ?? '';
 }

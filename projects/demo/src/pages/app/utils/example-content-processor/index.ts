@@ -9,11 +9,7 @@ function getProcessor(fileName: string): (item: string) => string {
         return processTs;
     }
 
-    if (isLess(fileName)) {
-        return processLess;
-    }
-
-    return identity;
+    return isLess(fileName) ? processLess : identity;
 }
 
 export function exampleContentProcessor<T extends Record<string, any>>(content: T): T {

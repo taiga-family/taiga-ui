@@ -77,11 +77,7 @@ export class TuiCalendarMonth {
             return value;
         }
 
-        if (value instanceof TuiMonthRange) {
-            return value.from;
-        }
-
-        return TODAY;
+        return value instanceof TuiMonthRange ? value.from : TODAY;
     });
 
     public readonly value = input<TuiMonth | TuiMonthRange | null>(null);

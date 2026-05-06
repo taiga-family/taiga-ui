@@ -86,11 +86,7 @@ function getReplacementText(
                 return `...${name}`;
             }
 
-            if (callExpression) {
-                return `${name}()`;
-            }
-
-            return name;
+            return callExpression ? `${name}()` : name;
         })
         .join(', ');
 }

@@ -69,11 +69,7 @@ async function main(): Promise<void> {
             return -1;
         }
 
-        if (b === 'documentation') {
-            return 1;
-        }
-
-        return a.localeCompare(b);
+        return b === 'documentation' ? 1 : a.localeCompare(b);
     });
 
     const output: string[] = [];

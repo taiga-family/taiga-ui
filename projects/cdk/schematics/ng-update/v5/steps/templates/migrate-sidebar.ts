@@ -162,9 +162,7 @@ function mapDirection(direction: string | null): MappedDirection | null {
         return {attr: 'direction="start"', isDynamic: false};
     }
 
-    if (direction === "'right'" || direction === '"right"') {
-        return {attr: 'direction="end"', isDynamic: false};
-    }
-
-    return {attr: `[direction]="${direction}"`, isDynamic: true};
+    return direction === "'right'" || direction === '"right"'
+        ? {attr: 'direction="end"', isDynamic: false}
+        : {attr: `[direction]="${direction}"`, isDynamic: true};
 }

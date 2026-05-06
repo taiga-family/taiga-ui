@@ -5,9 +5,5 @@ export function tuiDateClamp<T extends TuiYear>(date: T, min?: T, max?: T): T {
         return max;
     }
 
-    if (min && min > date) {
-        return min;
-    }
-
-    return date;
+    return min && min > date ? min : date;
 }

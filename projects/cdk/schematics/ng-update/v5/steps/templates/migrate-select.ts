@@ -266,13 +266,9 @@ function removeAttr(
 }
 
 function getPlaceholderText(element: Element): string {
-    const textNode = element.childNodes.find((node): node is TextNode => {
-        if (!isTextNode(node)) {
-            return false;
-        }
-
-        return !!node.value.trim();
-    });
+    const textNode = element.childNodes.find((node): node is TextNode =>
+        isTextNode(node) ? !!node.value.trim() : false,
+    );
 
     return textNode?.value.trim() ?? '';
 }

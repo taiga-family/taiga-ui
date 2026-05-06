@@ -11,12 +11,10 @@ export function tuiCountFilledControls(control: AbstractControl): number {
         );
     }
 
-    if (control instanceof FormGroup) {
-        return Object.values(control.controls).reduce(
-            (acc, nestedControl) => acc + tuiCountFilledControls(nestedControl),
-            0,
-        );
-    }
-
-    return tuiToInt(!tuiIsControlEmpty(control));
+    return control instanceof FormGroup
+        ? Object.values(control.controls).reduce(
+              (acc, nestedControl) => acc + tuiCountFilledControls(nestedControl),
+              0,
+          )
+        : tuiToInt(!tuiIsControlEmpty(control));
 }

@@ -24,18 +24,16 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
             },
         );
 
-        if (significand === null) {
-            return null;
-        }
-
-        return {
-            significand,
-            exp: textfieldValue?.includes(decimalSeparator)
-                ? -Array.from(textfieldValue.replace(params.postfix, ''))
-                      .reverse()
-                      .indexOf(decimalSeparator)
-                : 0,
-        };
+        return significand === null
+            ? null
+            : {
+                  significand,
+                  exp: textfieldValue?.includes(decimalSeparator)
+                      ? -Array.from(textfieldValue.replace(params.postfix, ''))
+                            .reverse()
+                            .indexOf(decimalSeparator)
+                      : 0,
+              };
     }
 
     public fromControlValue(controlValue: ControlValue): string {

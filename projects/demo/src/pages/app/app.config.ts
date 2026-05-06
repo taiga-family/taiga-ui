@@ -107,13 +107,11 @@ export const config: ApplicationConfig = {
                     return null;
                 }
 
-                if (path) {
-                    return `${link}/${path}`;
-                }
-
-                return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
-                    (header[0]?.toLowerCase() ?? '') + header.slice(1)
-                ).replaceAll(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}`;
+                return path
+                    ? `${link}/${path}`
+                    : `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
+                          (header[0]?.toLowerCase() ?? '') + header.slice(1)
+                      ).replaceAll(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}`;
             },
         },
         {

@@ -10,9 +10,7 @@ export function tuiFormatSignSymbol(
         return '';
     }
 
-    if (sign === 'force-negative' || (value < 0 && sign !== 'force-positive')) {
-        return CHAR_MINUS;
-    }
-
-    return CHAR_PLUS;
+    return sign === 'force-negative' || (value < 0 && sign !== 'force-positive')
+        ? CHAR_MINUS
+        : CHAR_PLUS;
 }

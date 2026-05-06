@@ -248,11 +248,9 @@ export class TuiTime implements TuiTimeLike {
     private toTwelveHour(hours: number): {hours: number; meridiem: string} {
         const meridiem = hours >= 12 ? 'PM' : 'AM';
 
-        if (hours === 0 || hours === 12) {
-            return {meridiem, hours: 12};
-        }
-
-        return {meridiem, hours: hours % 12};
+        return hours === 0 || hours === 12
+            ? {meridiem, hours: 12}
+            : {meridiem, hours: hours % 12};
     }
 
     private normalizeToRange(value: number, modulus: number): number {

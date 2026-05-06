@@ -17,9 +17,5 @@ export function tuiNullableSame<T>(
         return b === null;
     }
 
-    if (b === null) {
-        return false;
-    }
-
-    return handler(a, b);
+    return b === null ? false : handler(a, b);
 }
