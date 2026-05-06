@@ -52,10 +52,22 @@ export class TuiDatePicker {
     protected readonly texts = inject(TUI_SPIN_TEXTS);
     protected readonly months = inject(TUI_MONTHS);
 
+    protected readonly month = computed<PolymorpheusContent<TuiContext<number>>>(
+        () => (c) => this.months()[c.$implicit],
+    );
+
     protected readonly button = computed(() =>
         this.view() === 'day'
             ? `${this.months()[this.current().month]} ${this.current().formattedYear}`
             : this.current().formattedYear,
+    );
+
+    protected readonly yearMin = computed(() =>
+        Math.ceil((this.min().year - this.current().year - 5) / 12),
+    );
+
+    protected readonly yearMax = computed(() =>
+        Math.floor((this.max().year - this.current().year + 6) / 12),
     );
 
     protected readonly disabledDay = computed(
@@ -73,21 +85,17 @@ export class TuiDatePicker {
         () => (year: number) => year < this.min().year || year > this.max().year,
     );
 
-    protected readonly start = computed(() => {
-        const carousel = this.carousel();
-
-        return this.view() === 'month'
+    protected readonly start = computed((carousel = this.carousel()) =>
+        this.view() === 'month'
             ? this.current().year === this.min().year
-            : carousel?.index() === carousel?.min();
-    });
+            : carousel?.index() === carousel?.min(),
+    );
 
-    protected readonly end = computed(() => {
-        const carousel = this.carousel();
-
-        return this.view() === 'month'
+    protected readonly end = computed((carousel = this.carousel()) =>
+        this.view() === 'month'
             ? this.current().year === this.max().year
-            : carousel?.index() === carousel?.max();
-    });
+            : carousel?.index() === carousel?.max(),
+    );
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
     public readonly value = model<TuiDay | null>(null);
@@ -101,12 +109,8 @@ export class TuiDatePicker {
     });
 
     public readonly max = input(TUI_LAST_DAY, {
-        transform: (min?: TuiDay | null) => min ?? TUI_LAST_DAY,
+        transform: (max?: TuiDay | null) => max ?? TUI_LAST_DAY,
     });
-
-    public readonly month = input<PolymorpheusContent<TuiContext<number>>>(
-        ({$implicit}) => this.months()[$implicit],
-    );
 
     protected getMonth(index: number): TuiMonth {
         return new TuiMonth(Math.floor(index / 12), index % 12);

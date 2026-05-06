@@ -62,8 +62,8 @@
 
         @case ('year') {
             <tui-carousel
-                [max]="(max().year - current().year) / 12"
-                [min]="(min().year - current().year) / 12"
+                [max]="yearMax()"
+                [min]="yearMin()"
             >
                 <tui-data-grid
                     *tuiItem="let offset"
