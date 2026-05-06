@@ -12,6 +12,7 @@ import {
     TuiCalendarSheetPipe,
 } from '@taiga-ui/core/components/calendar';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+import {TUI_FALSE_HANDLER, TuiBooleanHandler} from '@taiga-ui/cdk';
 
 /**
  * @deprecated: work in progress, do not use!
@@ -32,9 +33,11 @@ export class TuiCalendar {
         ...week.slice(0, this.options.weekStart()),
     ]);
 
+    public readonly pick = output<TuiDay>();
     public readonly month = input(TuiMonth.currentLocal());
     public readonly value = input<TuiDay | null>(null);
-    public readonly pick = output<TuiDay>();
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 }
 
 function convert(week: readonly string[]): readonly string[] {

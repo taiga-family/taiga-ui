@@ -8,6 +8,7 @@
             class="t-day"
             [class.t-day_active]="value() && day.daySame(value()!)"
             [class.t-day_adjacent]="day.month !== month().month"
+            [disabled]="disabledItemHandler()(day)"
             (click)="pick.emit(day)"
         >
             {{ day.day }}

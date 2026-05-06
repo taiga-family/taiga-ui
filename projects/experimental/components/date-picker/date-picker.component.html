@@ -7,13 +7,14 @@
             type="button"
             class="t-button"
             [textContent]="button()"
-            (click)="onView()"
+            (click)="view.set(view() === 'day' ? 'month' : 'year')"
         ></button>
     }
     <button
         tuiIconButton
         type="button"
         class="t-chevron"
+        [disabled]="start()"
         [iconStart]="icons.decrement"
         (click)="onSpin(-1)"
     >
@@ -23,6 +24,7 @@
         tuiIconButton
         type="button"
         class="t-chevron"
+        [disabled]="end()"
         [iconStart]="icons.increment"
         (click)="onSpin(1)"
     >
@@ -34,10 +36,13 @@
         @case ('day') {
             <tui-carousel
                 [index]="current().year * 12 + current().month"
+                [max]="max().year * 12 + max().month"
+                [min]="min().year * 12 + min().month"
                 (indexChange)="current.set(getMonth($event))"
             >
                 <tui-calendar
                     *tuiItem="let index"
+                    [disabledItemHandler]="disabledDay()"
                     [month]="index | tuiMapper: getMonth"
                     [value]="value()"
                     (pick)="onDay($event)"
@@ -48,6 +53,7 @@
         @case ('month') {
             <tui-data-grid
                 [content]="month()"
+                [disabledItemHandler]="disabledMonth()"
                 [items]="0 | tuiMapper: getItems"
                 [value]="current().year === value()?.year ? current().month : []"
                 (pick)="onMonth($event)"
@@ -55,9 +61,13 @@
         }
 
         @case ('year') {
-            <tui-carousel>
+            <tui-carousel
+                [max]="(max().year - current().year) / 12"
+                [min]="(min().year - current().year) / 12"
+            >
                 <tui-data-grid
                     *tuiItem="let offset"
+                    [disabledItemHandler]="disabledYear()"
                     [items]="current().year + offset * 12 - 6 | tuiMapper: getItems"
                     [value]="value()?.year || []"
                     (pick)="onYear($event)"

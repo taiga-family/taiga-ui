@@ -20,6 +20,11 @@
     font: var(--tui-typography-ui-s);
     cursor: pointer;
 
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
+
     @media @tui-mouse {
         &:hover {
             background: var(--tui-background-neutral-1-hover);
