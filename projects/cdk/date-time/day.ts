@@ -282,11 +282,7 @@ export class TuiDay extends TuiMonth {
             return min;
         }
 
-        if (max !== null && this.dayAfter(max)) {
-            return max;
-        }
-
-        return this;
+        return max !== null && this.dayAfter(max) ? max : this;
     }
 
     /**

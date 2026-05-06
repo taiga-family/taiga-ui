@@ -86,41 +86,51 @@ function buildTagMigration(template: string, element: Element): TagMigration | n
             0,
     );
 
-    if (element.tagName === 'tui-tag' && !loc?.endTag) {
-        return buildSelfClosingTagReplacement(element);
-    }
+    return element.tagName === 'tui-tag' && !loc?.endTag
+        ? buildSelfClosingTagReplacement(element)
+        : {
+              startOffset: startTag.startOffset,
+              apply(recorder, templateOffset) {
+                  const hasInteractiveAttrs = hasAnyAttr(element, INTERACTIVE_ATTR_SET);
 
-    return {
-        startOffset: startTag.startOffset,
-        apply(recorder, templateOffset) {
-            const hasInteractiveAttrs = hasAnyAttr(element, INTERACTIVE_ATTR_SET);
+                  if (hasInteractiveAttrs) {
+                      recorder.insertLeft(
+                          templateOffset + startTag.startOffset,
+                          INTERACTIVE_CHIP_COMMENT,
+                      );
+                  }
 
-            if (hasInteractiveAttrs) {
-                recorder.insertLeft(
-                    templateOffset + startTag.startOffset,
-                    INTERACTIVE_CHIP_COMMENT,
-                );
-            }
+                  if (element.tagName === 'tui-tag') {
+                      replaceTag(
+                          recorder,
+                          loc,
+                          'tui-tag',
+                          'span',
+                          template,
+                          templateOffset,
+                          ['tuiChip'],
+                      );
+                  }
 
-            if (element.tagName === 'tui-tag') {
-                replaceTag(recorder, loc, 'tui-tag', 'span', template, templateOffset, [
-                    'tuiChip',
-                ]);
-            }
+                  renameAttr(recorder, templateOffset, element, 'status', 'appearance');
+                  renameAttr(
+                      recorder,
+                      templateOffset,
+                      element,
+                      '[status]',
+                      '[appearance]',
+                  );
 
-            renameAttr(recorder, templateOffset, element, 'status', 'appearance');
-            renameAttr(recorder, templateOffset, element, '[status]', '[appearance]');
+                  removeAttrs(recorder, templateOffset, element, REMOVABLE_ATTRS);
 
-            removeAttrs(recorder, templateOffset, element, REMOVABLE_ATTRS);
-
-            if (valueContent && contentIsEmpty && loc?.endTag) {
-                recorder.insertLeft(
-                    templateOffset + loc.endTag.startOffset,
-                    valueContent,
-                );
-            }
-        },
-    };
+                  if (valueContent && contentIsEmpty && loc?.endTag) {
+                      recorder.insertLeft(
+                          templateOffset + loc.endTag.startOffset,
+                          valueContent,
+                      );
+                  }
+              },
+          };
 }
 
 function buildSelfClosingTagReplacement(element: Element): TagMigration | null {
@@ -180,11 +190,7 @@ function getValueContent(attr?: {name: string; value: string}): string | null {
         return null;
     }
 
-    if (attr.name === '[value]') {
-        return `{{${attr.value}}}`;
-    }
-
-    return attr.value;
+    return attr.name === '[value]' ? `{{${attr.value}}}` : attr.value;
 }
 
 function removeAttrs(
@@ -239,9 +245,5 @@ function renameStatusAttr(name: string): string {
         return 'appearance';
     }
 
-    if (name === STATUS_ATTRS[1]) {
-        return '[appearance]';
-    }
-
-    return name;
+    return name === STATUS_ATTRS[1] ? '[appearance]' : name;
 }

@@ -27,11 +27,7 @@ async function fileExists(filePath: string): Promise<boolean> {
 async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
-    if (!(await fileExists(indexPath))) {
-        return '';
-    }
-
-    return fs.readFile(indexPath, 'utf-8');
+    return (await fileExists(indexPath)) ? fs.readFile(indexPath, 'utf-8') : '';
 }
 
 // parse metadata from tui-doc-page
@@ -148,11 +144,9 @@ function getComponentApiFromTable(content: string): string {
         }
     }
 
-    if (rows.length === 0) {
-        return '';
-    }
-
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    return rows.length === 0
+        ? ''
+        : `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
 // parse API properties from tui-doc-documentation
@@ -195,11 +189,9 @@ function getComponentApiFromTemplates(content: string): string {
         }
     }
 
-    if (rows.length === 0) {
-        return '';
-    }
-
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    return rows.length === 0
+        ? ''
+        : `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
 // parse example index.ts and index.less files

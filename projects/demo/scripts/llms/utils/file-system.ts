@@ -23,11 +23,7 @@ export async function fileExists(filePath: string): Promise<boolean> {
 export async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
-    if (!(await fileExists(indexPath))) {
-        return '';
-    }
-
-    return fs.readFile(indexPath, 'utf-8');
+    return (await fileExists(indexPath)) ? fs.readFile(indexPath, 'utf-8') : '';
 }
 
 // parse metadata from tui-doc-page

@@ -42,14 +42,10 @@ export class TuiReorder<T> {
         computation: (items, previous) => {
             const previousUnsortedItems = previous?.value ?? [];
 
-            if (
-                items.length !== previousUnsortedItems.length ||
+            return items.length !== previousUnsortedItems.length ||
                 !items.every((item) => previousUnsortedItems.includes(item))
-            ) {
-                return items;
-            }
-
-            return previousUnsortedItems;
+                ? items
+                : previousUnsortedItems;
         },
     });
 

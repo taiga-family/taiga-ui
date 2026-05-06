@@ -300,11 +300,9 @@ function getHint(attrName: string): string {
         return 'use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? \'\' : \'negative\'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization';
     }
 
-    if (lower.includes('search')) {
-        return 'use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.';
-    }
-
-    return 'no direct equivalent in v5. Update component logic manually.';
+    return lower.includes('search')
+        ? 'use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.'
+        : 'no direct equivalent in v5. Update component logic manually.';
 }
 
 function normalizeAttrName(name: string): string {

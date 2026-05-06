@@ -71,9 +71,7 @@ export function tuiInspect<T>(data: T, depth: number): string {
         return String(data);
     }
 
-    if (Array.isArray(data)) {
-        return inspectArray(data, depth);
-    }
-
-    return inspectObject(data as unknown as Record<string, unknown>, depth);
+    return Array.isArray(data)
+        ? inspectArray(data, depth)
+        : inspectObject(data as unknown as Record<string, unknown>, depth);
 }

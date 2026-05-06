@@ -58,11 +58,7 @@ function getOriginalAttrText(
 ): string | null {
     const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
 
-    if (!attrLoc) {
-        return null;
-    }
-
-    return template.slice(attrLoc.startOffset, attrLoc.endOffset);
+    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
 }
 
 export function buildTuiIconStr(element: Element, template: string): string {

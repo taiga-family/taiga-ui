@@ -126,9 +126,7 @@ function adjust(direction: TuiHintDirection, rtl: boolean): TuiHintDirection {
         return direction.replace('left', 'right') as TuiHintDirection;
     }
 
-    if (rtl && direction.includes('right')) {
-        return direction.replace('right', 'left') as TuiHintDirection;
-    }
-
-    return direction;
+    return rtl && direction.includes('right')
+        ? (direction.replace('right', 'left') as TuiHintDirection)
+        : direction;
 }

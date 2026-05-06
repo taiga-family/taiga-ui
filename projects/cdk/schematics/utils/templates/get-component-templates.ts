@@ -34,15 +34,13 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
         };
     }
 
-    if (template) {
-        return {
-            componentPath,
-            template: template.getInitializer()?.getText() || '',
-            offset: template.getInitializer()?.getStart() || 0,
-        };
-    }
-
-    return null;
+    return template
+        ? {
+              componentPath,
+              template: template.getInitializer()?.getText() || '',
+              offset: template.getInitializer()?.getStart() || 0,
+          }
+        : null;
 }
 
 function getFullTemplatePath(

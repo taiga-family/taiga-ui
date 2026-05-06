@@ -118,11 +118,7 @@ function getOriginalAttrText(
 ): string | null {
     const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
 
-    if (!attrLoc) {
-        return null;
-    }
-
-    return template.slice(attrLoc.startOffset, attrLoc.endOffset);
+    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
 }
 
 interface MigrationContext {
@@ -513,13 +509,9 @@ function migrateInnerTextarea({
 }
 
 function getPlaceholderText(element: Element): string {
-    const textNode = element.childNodes.find((node: ChildNode): node is TextNode => {
-        if (node.nodeName !== '#text') {
-            return false;
-        }
-
-        return !!(node as TextNode).value.trim();
-    });
+    const textNode = element.childNodes.find((node: ChildNode): node is TextNode =>
+        node.nodeName === '#text' ? !!(node as TextNode).value.trim() : false,
+    );
 
     return textNode?.value.trim() ?? '';
 }

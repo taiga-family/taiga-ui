@@ -71,11 +71,9 @@ export default class Example {
             );
         }
 
-        if (length > 14) {
-            return new TuiDayRange(mondayFrom, mondayTo);
-        }
-
-        return new TuiDayRange(from, to.append({day: length % 2}));
+        return length > 14
+            ? new TuiDayRange(mondayFrom, mondayTo)
+            : new TuiDayRange(from, to.append({day: length % 2}));
     });
 
     protected readonly labels = computed(() => {
@@ -105,11 +103,7 @@ export default class Example {
             return [...mondays, ''];
         }
 
-        if (length > 7) {
-            return [...even(days), ''];
-        }
-
-        return [...days, ''];
+        return length > 7 ? [...even(days), ''] : [...days, ''];
     });
 
     protected getWidth({from, to}: TuiDayRange): number {

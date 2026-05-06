@@ -33,11 +33,7 @@ export class TuiResizer {
             return 'ew-resize';
         }
 
-        if (tuiResizer[0] * tuiResizer[1] > 0) {
-            return 'nwse-resize';
-        }
-
-        return 'nesw-resize';
+        return tuiResizer[0] * tuiResizer[1] > 0 ? 'nwse-resize' : 'nesw-resize';
     }
 
     protected onPointerDown(x: number, y: number): void {

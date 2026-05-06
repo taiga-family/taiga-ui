@@ -293,11 +293,7 @@ function extractSelectLike(element: Element): boolean | string {
         (attr) => attr.name.toLowerCase() === EDITABLE_ATTR,
     );
 
-    if (plainAttr) {
-        return plainAttr.value === 'false';
-    }
-
-    return false;
+    return plainAttr ? plainAttr.value === 'false' : false;
 }
 
 /**
@@ -350,19 +346,11 @@ function extractPlaceholder(element: Element): PlaceholderInfo | null {
         (attr) => attr.name.toLowerCase() === PLACEHOLDER_ATTR,
     );
 
-    if (plainAttr) {
-        return {attr: PLACEHOLDER_ATTR, value: plainAttr.value};
-    }
-
-    return null;
+    return plainAttr ? {attr: PLACEHOLDER_ATTR, value: plainAttr.value} : null;
 }
 
 function formatPlaceholderAttr(placeholder: PlaceholderInfo | null): string {
-    if (!placeholder) {
-        return '';
-    }
-
-    return `${placeholder.attr}="${placeholder.value}"`;
+    return placeholder ? `${placeholder.attr}="${placeholder.value}"` : '';
 }
 
 function renameAttr(

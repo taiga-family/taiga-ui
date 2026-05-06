@@ -207,11 +207,9 @@ function getLineIndent(
     const lineStart = lastLineBreak + 1;
     const indentation = template.slice(lineStart, offset);
 
-    if (indentation.trim()) {
-        return {indent: '', startOffset: offset};
-    }
-
-    return {indent: indentation, startOffset: lineStart};
+    return indentation.trim()
+        ? {indent: '', startOffset: offset}
+        : {indent: indentation, startOffset: lineStart};
 }
 
 function normalizeBlock(value: string): string {
@@ -246,23 +244,17 @@ function normalizePlainText(value: string): string {
     const trimmed = value.trim();
     const hasMarkup = /<[^>]+>/.test(trimmed) || /\{\{|\}\}/.test(trimmed);
 
-    if (hasMarkup) {
-        return value;
-    }
-
-    return trimmed.replaceAll(/\s+/g, ' ');
+    return hasMarkup ? value : trimmed.replaceAll(/\s+/g, ' ');
 }
 
 function buildButton(content: string, attr: string, indent: string): string {
-    if (!content.includes('\n')) {
-        return `${indent}<button ${attr}>${content}</button>`;
-    }
-
-    return [
-        `${indent}<button ${attr}>`,
-        ...indentLines(content, `${indent}    `),
-        `${indent}</button>`,
-    ].join('\n');
+    return content.includes('\n')
+        ? [
+              `${indent}<button ${attr}>`,
+              ...indentLines(content, `${indent}    `),
+              `${indent}</button>`,
+          ].join('\n')
+        : `${indent}<button ${attr}>${content}</button>`;
 }
 
 function buildExpand(
@@ -286,21 +278,19 @@ function buildExpand(
 
     const contentLines = indentLines(content, `${indent}    `);
 
-    if (!isLazy) {
-        return [
-            `${indent}<tui-expand${classAttr}>`,
-            ...contentLines,
-            `${indent}</tui-expand>`,
-        ].join('\n');
-    }
-
-    return [
-        `${indent}<tui-expand${classAttr}>`,
-        `${indent}    <ng-container *tuiItem>`,
-        ...indentLines(content, `${indent}        `),
-        `${indent}    </ng-container>`,
-        `${indent}</tui-expand>`,
-    ].join('\n');
+    return isLazy
+        ? [
+              `${indent}<tui-expand${classAttr}>`,
+              `${indent}    <ng-container *tuiItem>`,
+              ...indentLines(content, `${indent}        `),
+              `${indent}    </ng-container>`,
+              `${indent}</tui-expand>`,
+          ].join('\n')
+        : [
+              `${indent}<tui-expand${classAttr}>`,
+              ...contentLines,
+              `${indent}</tui-expand>`,
+          ].join('\n');
 }
 
 function indentLines(value: string, indent: string): string[] {

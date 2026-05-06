@@ -69,11 +69,9 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
             return typeof x === 'function' ? x({$implicit: value}) : x || value;
         });
 
-        if (this.interactive() || !this.isPrimitive(start) || !this.isPrimitive(end)) {
-            return this.content()[0];
-        }
-
-        return `${start}${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}${end}`;
+        return this.interactive() || !this.isPrimitive(start) || !this.isPrimitive(end)
+            ? this.content()[0]
+            : `${start}${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}${end}`;
     });
 
     protected readonly contentEnd = computed(() =>

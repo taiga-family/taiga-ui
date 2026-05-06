@@ -23,11 +23,7 @@ export function tuiSortPages<T extends TuiDocRoutePage | TuiDocRoutePageGroup>(
             return aSectionIndex - bSectionIndex;
         }
 
-        if (a.title > b.title) {
-            return 1;
-        }
-
-        return a.title.localeCompare(b.title);
+        return a.title > b.title ? 1 : a.title.localeCompare(b.title);
     });
 
     return sortedPages.map((page) =>

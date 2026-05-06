@@ -202,11 +202,7 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
                 return '1';
             }
 
-            if (value === "'desc'") {
-                return '-1';
-            }
-
-            return value;
+            return value === "'desc'" ? '-1' : value;
         },
     },
     {
