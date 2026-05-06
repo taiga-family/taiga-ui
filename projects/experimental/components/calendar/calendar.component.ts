@@ -6,13 +6,14 @@ import {
     input,
     output,
 } from '@angular/core';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {type TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
     TUI_CALENDAR_OPTIONS,
     TuiCalendarSheetPipe,
 } from '@taiga-ui/core/components/calendar';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
-import {TUI_FALSE_HANDLER, TuiBooleanHandler} from '@taiga-ui/cdk';
 
 /**
  * @deprecated: work in progress, do not use!
@@ -36,6 +37,7 @@ export class TuiCalendar {
     public readonly pick = output<TuiDay>();
     public readonly month = input(TuiMonth.currentLocal());
     public readonly value = input<TuiDay | null>(null);
+
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 }

@@ -51,6 +51,7 @@ export class TuiDatePicker {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
     protected readonly months = inject(TUI_MONTHS);
+
     protected readonly button = computed(() =>
         this.view() === 'day'
             ? `${this.months()[this.current().month]} ${this.current().formattedYear}`
@@ -72,21 +73,26 @@ export class TuiDatePicker {
         () => (year: number) => year < this.min().year || year > this.max().year,
     );
 
-    protected readonly start = computed(() =>
-        this.view() === 'month'
-            ? this.current().year === this.min().year
-            : this.carousel()?.index() === this.carousel()?.min(),
-    );
+    protected readonly start = computed(() => {
+        const carousel = this.carousel();
 
-    protected readonly end = computed(() =>
-        this.view() === 'month'
+        return this.view() === 'month'
+            ? this.current().year === this.min().year
+            : carousel?.index() === carousel?.min();
+    });
+
+    protected readonly end = computed(() => {
+        const carousel = this.carousel();
+
+        return this.view() === 'month'
             ? this.current().year === this.max().year
-            : this.carousel()?.index() === this.carousel()?.max(),
-    );
+            : carousel?.index() === carousel?.max();
+    });
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
     public readonly value = model<TuiDay | null>(null);
     public readonly current = model(TuiMonth.currentLocal());
+
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
