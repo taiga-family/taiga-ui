@@ -7,10 +7,13 @@ import {
     type Renderer2,
     ViewContainerRef,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
 export const TUI_ENTER = 'tui-enter';
 export const TUI_LEAVE = 'tui-leave';
+
+const TUI_LEAVE_KEY = `${TUI_LEAVE}_${TUI_VERSION.split('.')[0]}`;
 
 @Directive({
     selector: '[tuiAnimated]',
@@ -42,13 +45,13 @@ export class TuiAnimated {
 }
 
 function wrap(renderer: Renderer2): void {
-    if (renderer.data[TUI_LEAVE]) {
+    if (renderer.data[TUI_LEAVE_KEY]) {
         return;
     }
 
     const {removeChild} = renderer;
 
-    renderer.data[TUI_LEAVE] = true;
+    renderer.data[TUI_LEAVE_KEY] = true;
 
     renderer.removeChild = (parent: Node, el: Node, host?: boolean): void => {
         if (!tuiIsElement(el)) {
