@@ -6,6 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
@@ -33,6 +34,7 @@ class TuiCellStyles {}
     ],
     host: {
         tuiCell: '',
+        tuiCellV: TUI_VERSION,
         '[attr.data-size]': 'size || options.size',
         '[attr.data-height]': 'height',
     },

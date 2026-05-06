@@ -6,6 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -30,6 +31,7 @@ class TuiCardLargeStyles {}
     selector: '[tuiCardLarge]',
     host: {
         tuiCardLarge: '',
+        tuiCardLargeV: TUI_VERSION,
         '[attr.data-space]': 'space || this.options.space',
     },
 })

@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-app-bar {
+[tuiAppBarV='@{tui-version}'] {
     position: relative;
     display: flex;
     block-size: 2.75rem;
@@ -87,25 +87,25 @@ tui-app-bar {
     }
 }
 
-tui-dialog tui-app-bar[data-size='l'] {
+tui-dialog tui-app-bar[tuiAppBarV='@{tui-version}'][data-size='l'] {
     margin: -3rem 0 2rem;
 }
 
-tui-dialog tui-app-bar[data-size='m'] {
+tui-dialog tui-app-bar[tuiAppBarV='@{tui-version}'][data-size='m'] {
     margin: -1rem -1rem 0.75rem;
 }
 
-tui-sheet-dialog tui-app-bar {
+tui-sheet-dialog [tuiAppBarV='@{tui-version}'] {
     margin: -0.75rem -1rem;
     block-size: 3.5rem;
     background: none;
     backdrop-filter: none;
 }
 
-tui-sheet-dialog[data-appearance='fullscreen'] tui-app-bar {
+tui-sheet-dialog[data-appearance='fullscreen'] [tuiAppBarV='@{tui-version}'] {
     margin: 0 -1rem;
 }
 
-tui-dialog tui-app-bar {
+tui-dialog [tuiAppBarV='@{tui-version}'] {
     background: var(--tui-background-elevation-1);
 }
