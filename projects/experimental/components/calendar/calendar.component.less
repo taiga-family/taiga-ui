@@ -21,21 +21,9 @@
     background: transparent;
     font: var(--tui-typography-ui-m);
     color: var(--tui-text-primary);
-    cursor: pointer;
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
-        pointer-events: none;
-    }
-
-    @media @tui-mouse {
-        &:hover {
-            background: var(--tui-background-neutral-1-hover);
-        }
-
-        &_active:hover {
-            background: var(--tui-background-accent-2-hover);
-        }
     }
 
     &_adjacent {
@@ -45,5 +33,16 @@
     &_active {
         background: var(--tui-background-accent-2);
         color: var(--tui-text-primary-on-accent-2);
+    }
+
+    @media @tui-mouse {
+        &:not(:disabled):hover {
+            background: var(--tui-background-neutral-1-hover);
+            cursor: pointer;
+        }
+
+        &_active:not(:disabled):hover {
+            background: var(--tui-background-accent-2-hover);
+        }
     }
 }
