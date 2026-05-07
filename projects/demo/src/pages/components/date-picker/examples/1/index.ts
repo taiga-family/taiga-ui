@@ -16,8 +16,8 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         TuiChevron,
         TuiDataListWrapper,
         TuiDatePicker,
-        TuiSelect,
         TuiGroup,
+        TuiSelect,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -29,6 +29,7 @@ export default class Example {
     protected readonly mode = signal(this.modes[2]);
     protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
     protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
+
     protected readonly value = signal<any>(
         new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({day: 7})),
     );

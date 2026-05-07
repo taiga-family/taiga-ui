@@ -18,6 +18,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
+import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiCarousel, TuiCarouselComponent} from '@taiga-ui/core/components/carousel';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -27,7 +28,6 @@ import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {tuiArrayToggle} from '@taiga-ui/cdk';
 
 /**
  * @deprecated: work in progress, do not use!

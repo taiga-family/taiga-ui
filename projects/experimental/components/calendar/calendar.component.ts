@@ -31,9 +31,9 @@ import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 export class TuiCalendar {
     private readonly options = inject(TUI_CALENDAR_OPTIONS);
     private readonly days = inject(TUI_SHORT_WEEK_DAYS);
-
     protected readonly today = TuiDay.currentLocal();
     protected readonly hovered = signal<TuiDay | null>(null);
+
     protected readonly week = computed((week = convert(this.days())) => [
         ...week.slice(this.options.weekStart()),
         ...week.slice(0, this.options.weekStart()),
