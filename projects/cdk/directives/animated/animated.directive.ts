@@ -41,6 +41,7 @@ export class TuiAnimated {
                     this.destroyed = true;
                     animateRemoval(this.el);
                 });
+
                 return;
             }
 
@@ -67,9 +68,11 @@ function wrap(renderer: Renderer2): void {
     const {removeChild} = renderer;
 
     renderer.data[TUI_LEAVE_KEY] = true;
+
     renderer.removeChild = (parent: Node, el: Node, host?: boolean): void => {
         if (!tuiIsElement(el)) {
             removeChild.call(renderer, parent, el, host);
+
             return;
         }
 
