@@ -55,7 +55,7 @@
                 [content]="month()"
                 [disabledItemHandler]="disabledMonth()"
                 [items]="0 | tuiMapper: getItems"
-                [value]="current().year === value()?.year ? current().month : []"
+                [value]="months()"
                 (pick)="onMonth($event)"
             />
         }
@@ -69,7 +69,7 @@
                     *tuiItem="let offset"
                     [disabledItemHandler]="disabledYear()"
                     [items]="current().year + offset * 12 - 6 | tuiMapper: getItems"
-                    [value]="value()?.year || []"
+                    [value]="years()"
                     (pick)="onYear($event)"
                 />
             </tui-carousel>

@@ -26,6 +26,10 @@ export class TuiMonthRange {
         return this.from.monthSame(another.from) && this.to.monthSame(another.to);
     }
 
+    public monthInRange(month: TuiMonth): boolean {
+        return this.from.monthSameOrBefore(month) && this.to.monthSameOrAfter(month);
+    }
+
     public toString(): string {
         return `${this.from}${RANGE_SEPARATOR_CHAR}${this.to}`;
     }

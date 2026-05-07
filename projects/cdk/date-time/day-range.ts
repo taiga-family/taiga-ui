@@ -71,6 +71,10 @@ export class TuiDayRange extends TuiMonthRange {
         return this.from.daySame(another.from) && this.to.daySame(another.to);
     }
 
+    public dayInRange(day: TuiDay): boolean {
+        return this.from.daySameOrBefore(day) && this.to.daySameOrAfter(day);
+    }
+
     /**
      * Locks range between two days included, or limits from one side if the other is null
      *

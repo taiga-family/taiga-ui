@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -12,6 +13,7 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     type TuiDay,
+    TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
@@ -25,6 +27,7 @@ import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {tuiArrayToggle} from '@taiga-ui/cdk';
 
 /**
  * @deprecated: work in progress, do not use!
@@ -50,15 +53,34 @@ export class TuiDatePicker {
     protected readonly carousel = viewChild(TuiCarouselComponent);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
-    protected readonly months = inject(TUI_MONTHS);
+    protected readonly i18n = inject(TUI_MONTHS);
 
     protected readonly month = computed<PolymorpheusContent<TuiContext<number>>>(
-        () => (c) => this.months()[c.$implicit],
+        () => (c) => this.i18n()[c.$implicit],
+    );
+
+    protected readonly years = computed((value = this.value() || []) =>
+        value instanceof TuiDayRange
+            ? Array.from(
+                  {length: value.to.year - value.from.year + 1},
+                  (_, index) => value.from.year + index,
+              )
+            : coerceArray(value).map((day) => day.year),
+    );
+
+    protected readonly months = computed((value = this.value() || []) =>
+        Array.from({length: 12}, (_, index) => index).filter((index) =>
+            value instanceof TuiDayRange
+                ? value.monthInRange(new TuiMonth(this.current().year, index))
+                : coerceArray(value).some(
+                      ({month, year}) => this.current().year === year && index === month,
+                  ),
+        ),
     );
 
     protected readonly button = computed(() =>
         this.view() === 'day'
-            ? `${this.months()[this.current().month]} ${this.current().formattedYear}`
+            ? `${this.i18n()[this.current().month]} ${this.current().formattedYear}`
             : this.current().formattedYear,
     );
 
@@ -98,8 +120,9 @@ export class TuiDatePicker {
     );
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
-    public readonly value = model<TuiDay | null>(null);
+    public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
     public readonly current = model(TuiMonth.currentLocal());
+    public readonly mode = input<'multi' | 'range' | 'single'>('single');
 
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
@@ -139,12 +162,28 @@ export class TuiDatePicker {
     }
 
     protected onDay(day: TuiDay): void {
-        this.value.set(day);
-
         if (day.monthAfter(this.current())) {
             this.carousel()?.next();
         } else if (day.monthBefore(this.current())) {
             this.carousel()?.prev();
+        }
+
+        if (this.mode() === 'single') {
+            this.value.set(day);
+        } else if (this.mode() === 'multi') {
+            this.value.update((value) =>
+                value instanceof TuiDayRange
+                    ? [day]
+                    : tuiArrayToggle(coerceArray(value || []), day, (a, b) =>
+                          a.daySame(b),
+                      ),
+            );
+        } else {
+            this.value.update((value) =>
+                value instanceof TuiDayRange && value.isSingleDay
+                    ? TuiDayRange.sort(value.to, day)
+                    : new TuiDayRange(day, day),
+            );
         }
     }
 }
