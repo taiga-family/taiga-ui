@@ -1,6 +1,7 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
-import {type TuiContext} from '@taiga-ui/cdk/types';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 /**
@@ -18,4 +19,5 @@ export class TuiDataGrid<T> {
     public readonly items = input<readonly T[]>([]);
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly value = input([], {transform: coerceArray<T>});
+    public readonly disabledItemHandler = input<TuiBooleanHandler<T>>(TUI_FALSE_HANDLER);
 }

@@ -6,7 +6,9 @@ import {
     input,
     output,
 } from '@angular/core';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {type TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
     TUI_CALENDAR_OPTIONS,
     TuiCalendarSheetPipe,
@@ -32,9 +34,12 @@ export class TuiCalendar {
         ...week.slice(0, this.options.weekStart()),
     ]);
 
+    public readonly pick = output<TuiDay>();
     public readonly month = input(TuiMonth.currentLocal());
     public readonly value = input<TuiDay | null>(null);
-    public readonly pick = output<TuiDay>();
+
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 }
 
 function convert(week: readonly string[]): readonly string[] {

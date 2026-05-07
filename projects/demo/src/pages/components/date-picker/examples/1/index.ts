@@ -7,9 +7,13 @@ import {TuiDatePicker} from '@taiga-ui/experimental';
 @Component({
     imports: [TuiDatePicker],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value = signal(TuiDay.currentLocal());
+    protected readonly value = signal(TuiDay.currentLocal());
+    protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
+    protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
+    protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
 }
