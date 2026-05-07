@@ -1,9 +1,9 @@
 import {isPlatformBrowser} from '@angular/common';
 import {
     afterNextRender,
+    DestroyRef,
     Directive,
     inject,
-    type OnDestroy,
     PLATFORM_ID,
     type Renderer2,
     ViewContainerRef,
@@ -24,28 +24,28 @@ const TUI_LEAVE_KEY = `${TUI_LEAVE}_${TUI_VERSION.split('.')[0]}`;
         '(animationend.self)': 'remove()',
     },
 })
-export class TuiAnimated implements OnDestroy {
+export class TuiAnimated {
     // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
     private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
     private readonly el = tuiInjectElement();
+    private readonly destroyRef = inject(DestroyRef);
     private destroyed = false;
 
     constructor() {
         afterNextRender(() => this.remove());
 
         if (this.renderer && isPlatformBrowser(inject(PLATFORM_ID))) {
-            // AnimationRenderer doesn't delegate removeChild, so we rely on ngOnDestroy
+            // AnimationRenderer doesn't delegate removeChild, so we rely on onDestroy callback
             if ('engine' in this.renderer) {
+                this.destroyRef.onDestroy(() => {
+                    this.destroyed = true;
+                    animateRemoval(this.el);
+                });
                 return;
             }
 
             wrap(this.renderer.delegate || this.renderer);
         }
-    }
-
-    public ngOnDestroy(): void {
-        this.destroyed = true;
-        animateRemoval(this.el);
     }
 
     protected remove(): void {
@@ -67,11 +67,9 @@ function wrap(renderer: Renderer2): void {
     const {removeChild} = renderer;
 
     renderer.data[TUI_LEAVE_KEY] = true;
-
     renderer.removeChild = (parent: Node, el: Node, host?: boolean): void => {
         if (!tuiIsElement(el)) {
             removeChild.call(renderer, parent, el, host);
-
             return;
         }
 
