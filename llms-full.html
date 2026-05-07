@@ -13314,7 +13314,7 @@ This is a work in progress, do not use!
 
 **Template:**
 ```html
-&lt;tui-date-picker [(value)]=&quot;value&quot; /&gt;
+&lt;tui-date-picker [disabledItemHandler]=&quot;disabledItemHandler&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [(value)]=&quot;value&quot; /&gt;
 ```
 **TypeScript:**
 ```ts
@@ -13327,11 +13327,22 @@ import {TuiDatePicker} from &#039;@taiga-ui/experimental&#039;;
 @Component({
     imports: [TuiDatePicker],
     templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value = signal(TuiDay.currentLocal());
+    protected readonly value = signal(TuiDay.currentLocal());
+    protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
+    protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
+    protected readonly disabledItemHandler = (item: TuiDay): boolean =&gt; item.day === 13;
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    overflow: hidden;
 }
 ```
 
