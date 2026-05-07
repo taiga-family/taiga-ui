@@ -8,7 +8,7 @@ import {
     type SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core';
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
+import {CHAR_NO_BREAK_SPACE, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
@@ -33,6 +33,7 @@ class TuiSkeletonStyles {}
     selector: '[tuiSkeleton]',
     host: {
         tuiSkeleton: '',
+        tuiSkeletonV: TUI_VERSION,
         '[class._skeleton]': 'tuiSkeleton',
         '[attr.data-tui-skeleton]': 'getPlaceholder(tuiSkeleton)',
     },

@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_APPEARANCE_OPTIONS,
@@ -32,6 +33,9 @@ class TuiMessageStyles {}
         },
     ],
     hostDirectives: [TuiWithAppearance],
+    host: {
+        tuiMessageV: TUI_VERSION,
+    },
 })
 export class TuiMessage {
     protected readonly nothing = tuiWithStyles(TuiMessageStyles);

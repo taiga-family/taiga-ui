@@ -4,6 +4,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Component({
     standalone: true,
@@ -13,6 +14,7 @@ import {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiCompassV: TUI_VERSION,
         '[style.--t-degrees.deg]': 'degrees',
     },
 })

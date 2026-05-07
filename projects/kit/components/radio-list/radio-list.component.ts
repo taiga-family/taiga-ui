@@ -15,6 +15,7 @@ import {
     EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
+    TUI_VERSION,
 } from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {TuiIdService} from '@taiga-ui/cdk/services';
@@ -35,6 +36,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiRadioList)],
     host: {
+        tuiRadioListV: TUI_VERSION,
         '[attr.data-size]': 'size',
         '(focusout)': 'onFocusOut()',
     },

@@ -9,6 +9,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components';
@@ -58,6 +59,9 @@ class TuiToastStyles {}
             inputs: ['tuiShrinkWrap'],
         },
     ],
+    host: {
+        tuiToastV: TUI_VERSION,
+    },
 })
 export class TuiToastDirective {
     @Input()

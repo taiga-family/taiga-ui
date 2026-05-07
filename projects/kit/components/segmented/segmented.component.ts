@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
@@ -36,6 +37,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     ],
     hostDirectives: [TuiSegmentedDirective],
     host: {
+        tuiSegmentedV: TUI_VERSION,
         '[attr.data-size]': 'size',
     },
 })

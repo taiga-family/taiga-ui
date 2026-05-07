@@ -1,13 +1,13 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-[tuiChevron][tuiIcons]::after,
-tui-icon[tuiChevron]::after {
+[tuiChevronV='@{tui-version}'][tuiIcons]::after,
+tui-icon[tuiChevronV='@{tui-version}']::after {
     .transition(~'transform, color');
 
     cursor: pointer;
 }
 
-[tuiChevron][tuiIcons]::after {
+[tuiChevronV='@{tui-version}'][tuiIcons]::after {
     tui-textfield& {
         font-size: 1rem;
     }
@@ -25,16 +25,16 @@ tui-icon[tuiChevron]::after {
     }
 }
 
-[tuiChevron][tuiIcons]._chevron-rotated::after,
-tui-icon[tuiChevron]._chevron-rotated::after {
+[tuiChevronV='@{tui-version}'][tuiIcons]._chevron-rotated::after,
+tui-icon[tuiChevronV='@{tui-version}']._chevron-rotated::after {
     transform: rotate(180deg);
 }
 
-[tuiChevron]:has(input[tuiTextfield]:read-only)::after {
+[tuiChevronV='@{tui-version}']:has(input[tuiTextfield]:read-only)::after {
     cursor: default;
 }
 
-tui-textfield[tuiChevron][style*='--t-icon-end:'] {
+tui-textfield[tuiChevronV='@{tui-version}'][style*='--t-icon-end:'] {
     &[data-size='l'] {
         --t-end: 1.875rem;
     }
