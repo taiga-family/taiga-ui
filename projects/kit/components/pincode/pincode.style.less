@@ -1,0 +1,358 @@
+@import '@taiga-ui/styles/utils';
+
+input[tuiPincode] {
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    background: transparent;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+
+    &::selection {
+        background: transparent;
+    }
+
+    &::placeholder {
+        color: transparent !important;
+    }
+}
+
+input[tuiPincode] + .t-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    gap: 0 !important;
+
+    [tuiButtonX] {
+        display: none !important;
+    }
+
+    .t-wrapper {
+        .fullsize();
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.625rem;
+    }
+
+    .t-item {
+        position: relative;
+        flex: none;
+        inline-size: 1.25rem;
+        block-size: 2.25rem;
+        padding-inline: 0.125rem;
+        pointer-events: auto;
+        cursor: text;
+    }
+
+    .t-value,
+    .t-dot {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        translate: -50% -50%;
+        scale: 0;
+        transition:
+            translate var(--tui-duration-moderate, 300ms)
+                var(--tui-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1)),
+            color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9)),
+            background-color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+    }
+
+    .t-value,
+    .t-dot_value {
+        transition: scale 300ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1));
+    }
+
+    .t-value {
+        color: var(--tui-text-primary);
+        font-size: 1.75rem;
+        font-weight: bold;
+        line-height: 1;
+        letter-spacing: 0;
+    }
+
+    .t-dot {
+        inline-size: 1rem;
+        block-size: 1rem;
+        border-radius: 50%;
+    }
+
+    .t-dot_placeholder {
+        background: var(--tui-background-neutral-2);
+        transition: scale 200ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1));
+    }
+
+    .t-dot_value {
+        background: var(--tui-text-action);
+    }
+
+    .t-item:not(.t-item_filled) .t-dot_placeholder {
+        scale: 1;
+        transition: scale 150ms var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1)) 150ms;
+    }
+
+    tui-root:not(._mobile) & {
+        .t-value {
+            font-size: 2.25rem;
+            font-weight: 500;
+            line-height: 2.5rem;
+        }
+
+        .t-value,
+        .t-dot,
+        .t-item_filled .t-value,
+        .t-item_filled .t-dot_value,
+        .t-item:not(.t-item_filled) .t-dot_placeholder {
+            transition:
+                color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9)),
+                background-color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+        }
+
+        .t-item[data-focus='true']:not(.t-item_filled) {
+            &::before {
+                content: '';
+                position: absolute;
+                inset-block-start: 0;
+                inset-inline-start: 50%;
+                inline-size: 0.125rem;
+                block-size: 2.25rem;
+                border-radius: 0.0625rem;
+                background: var(--tui-text-primary);
+                translate: -50%;
+            }
+
+            .t-dot_placeholder,
+            .t-dot_value {
+                scale: 0;
+            }
+        }
+    }
+}
+
+input[tuiPincode][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
+    scale: 1;
+    transition: scale 300ms cubic-bezier(0.5, 2, 0.5, 1);
+}
+
+input[tuiPincode][data-appearance='dots'] + .t-content {
+    .t-dot_value {
+        scale: 1;
+        transition: background-color 150ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1));
+    }
+
+    .t-item:not(.t-item_filled) .t-dot_value {
+        background: var(--tui-background-neutral-2);
+    }
+
+    .t-item:not(.t-item_filled) .t-dot_placeholder {
+        scale: 0;
+        transition: none;
+    }
+}
+
+input[tuiPincode][data-mode='invalid'] + .t-content,
+input[tuiPincode][data-mode='dismissing'] + .t-content {
+    .t-value {
+        color: var(--tui-text-negative);
+    }
+
+    .t-dot_value {
+        background: var(--tui-text-negative);
+    }
+}
+
+input[tuiPincode][data-mode='success'] + .t-content .t-value,
+input[tuiPincode][data-mode='submitting'] + .t-content .t-value {
+    color: var(--tui-text-action);
+}
+
+input[tuiPincode][data-mode='invalid'] + .t-content .t-item {
+    animation: tuiPincodeShake 500ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+}
+
+input[tuiPincode][data-mode='dismissing'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
+input[tuiPincode][data-mode='dismissing'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
+    animation: tuiPincodeExitElement 400ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1)) forwards;
+}
+
+input[tuiPincode][data-mode='dismissing'] + .t-content .t-item_filled .t-dot_placeholder {
+    animation: tuiPincodeDotAppear 400ms var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1)) forwards;
+}
+
+input[tuiPincode][data-mode='pending'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
+input[tuiPincode][data-mode='pending'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
+    animation:
+        tuiPincodeWave var(--tui-animation-cycle, 1000ms) linear infinite,
+        tuiPincodeWavePos var(--tui-animation-cycle, 1000ms) linear infinite;
+    animation-delay: var(--tui-animation-delay, 0ms);
+}
+
+input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled {
+    animation: tuiPincodeItemSpread 700ms var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9)) forwards;
+}
+
+input[tuiPincode][data-mode='submitting'][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
+    animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1)) forwards;
+}
+
+input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled .t-dot_value {
+    animation:
+        tuiPincodeDotIn 300ms var(--tui-curve-productive-exit, cubic-bezier(0, 0, 0.58, 1)) forwards,
+        tuiPincodeDotCollapsePos 300ms 700ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1)) forwards,
+        tuiPincodeDotCollapseScale 300ms 700ms var(--tui-curve-productive-exit, cubic-bezier(0, 0, 0.58, 1)) forwards,
+        tuiPincodeDotFade 50ms 950ms linear forwards;
+}
+
+@keyframes tuiPincodeItemSpread {
+    from {
+        translate: 0;
+    }
+
+    to {
+        translate: var(--tui-spread-tx, 0) 0;
+    }
+}
+
+@keyframes tuiPincodeDotCollapsePos {
+    from {
+        translate: -50% -50%;
+    }
+
+    to {
+        translate: calc(-50% + var(--tui-collapse-tx, 0px)) -50%;
+    }
+}
+
+@keyframes tuiPincodeDotCollapseScale {
+    from {
+        scale: 1.1;
+    }
+
+    to {
+        scale: 0;
+    }
+}
+
+@keyframes tuiPincodeDotFade {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes tuiPincodeExitElement {
+    from {
+        scale: 1;
+        opacity: 1;
+    }
+
+    to {
+        scale: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes tuiPincodeDotIn {
+    to {
+        scale: 1.1;
+    }
+}
+
+@keyframes tuiPincodeDotAppear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes tuiPincodeShake {
+    0%,
+    100% {
+        translate: 0;
+    }
+
+    20% {
+        translate: -0.125rem 0;
+    }
+
+    40% {
+        translate: 0.125rem 0;
+    }
+
+    60% {
+        translate: -0.125rem 0;
+    }
+
+    80% {
+        translate: 0.125rem 0;
+    }
+}
+
+@keyframes tuiPincodeScale {
+    0% {
+        animation-timing-function: var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1));
+        scale: 1;
+    }
+
+    40% {
+        animation-timing-function: var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9));
+        scale: 1.2;
+    }
+
+    80%,
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes tuiPincodePos {
+    0%,
+    100% {
+        translate: -50% -50%;
+    }
+
+    50% {
+        translate: -50% calc(-50% - 0.25rem);
+    }
+}
+
+@keyframes tuiPincodeWave {
+    0% {
+        animation-timing-function: var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1));
+        scale: 1;
+    }
+
+    20% {
+        animation-timing-function: var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9));
+        scale: 1.2;
+    }
+
+    40%,
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes tuiPincodeWavePos {
+    0%,
+    40%,
+    100% {
+        translate: -50% -50%;
+    }
+
+    20% {
+        translate: -50% calc(-50% - 0.25rem);
+    }
+}

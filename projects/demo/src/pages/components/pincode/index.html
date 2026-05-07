@@ -1,0 +1,107 @@
+<tui-doc-page
+    header="Pincode"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Default with
+                        <code>[(ngModel)]</code>
+                        — works equivalently with
+                        <code>[formControl]</code>
+                    }
+                    @case (1) {
+                        Masked mode — entered digits render as filled dots
+                    }
+                    @case (2) {
+                        Switch
+                        <strong>Appearance</strong>
+                        between
+                        <code>numbers</code>
+                        and
+                        <code>dots</code>
+                        , and
+                        <strong>Request duration</strong>
+                        to see all animation states: fast (no spinner), slow (pending → submitting), error (shake →
+                        clear)
+                    }
+                    @case (3) {
+                        <strong>Mobile bottom sheet</strong>
+                        with a custom numeric pad and full verification flow —
+                        <code>inputmode="none"</code>
+                        suppresses the native keyboard. Enter
+                        <code>1234</code>
+                        for valid; wrong code triggers shake-clear-retry
+                    }
+                    @case (4) {
+                        <strong>Desktop dialog</strong>
+                        with auto-focused input and full verification flow. Same logic as Mobile, native keyboard input.
+                        Enter
+                        <code>1234</code>
+                        for valid
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-textfield>
+                <input
+                    tuiPincode
+                    [appearance]="appearance()"
+                    [formControl]="control"
+                    [maxlength]="length"
+                    [mode]="mode()"
+                />
+            </tui-textfield>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="TuiPincodeAppearance"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
+            >
+                Display mode:
+                <code>numbers</code>
+                shows entered digits,
+                <code>dots</code>
+                masks them as filled circles
+            </tr>
+            <tr
+                name="[mode]"
+                tuiDocAPIItem
+                type="TuiPincodeMode"
+                [items]="modeVariants"
+                [value]="mode()"
+                (valueChange)="mode.set($event ?? null)"
+            >
+                Visual state mode — set explicitly by the consumer to drive shake/pulse/bounce/exit animations. See PIN
+                setup demo for orchestration patterns
+            </tr>
+            <tr
+                name="maxlength"
+                tuiDocAPIItem
+                type="number"
+                [items]="lengths"
+                [(value)]="length"
+            >
+                Number of cells (use native
+                <code>maxlength</code>
+                attribute — 4, 5 or 6)
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>

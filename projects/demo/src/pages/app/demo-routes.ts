@@ -96,6 +96,7 @@ export const DemoRoute = {
     InputPin: '/components/input-pin',
     InputYear: '/components/input-year',
     File: '/components/file',
+    Pincode: '/components/pincode',
     ItemsWithMore: '/components/items-with-more',
     Label: '/components/label',
     LineClamp: '/components/line-clamp',
