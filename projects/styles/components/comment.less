@@ -46,18 +46,26 @@
     }
 
     &[data-direction='start'] {
+        border-start-start-radius: 1rem min(1rem, 31%);
+        border-end-start-radius: 1rem min(1rem, 31%);
+
         &::before {
             inset-block: 50% 100%;
             inset-inline: auto 100%;
-            transform: translate(calc(0.785rem * var(--tui-inline)), -50%) rotate(calc(-90deg * var(--tui-inline)));
+            transform: translate(calc(0.625rem * var(--tui-inline)), -50%) rotate(calc(-90deg * var(--tui-inline)));
+            clip-path: inset(0 0 0.125rem 0);
         }
     }
 
     &[data-direction='end'] {
+        border-start-end-radius: 1rem min(1rem, 31%);
+        border-end-end-radius: 1rem min(1rem, 31%);
+
         &::before {
             inset-block: 50% 100%;
             inset-inline: 100% auto;
-            transform: translate(calc(-0.785rem * var(--tui-inline)), -50%) rotate(calc(90deg * var(--tui-inline)));
+            transform: translate(calc(-0.625rem * var(--tui-inline)), -50%) rotate(calc(90deg * var(--tui-inline)));
+            clip-path: inset(0 0 0.125rem 0);
         }
     }
 }
