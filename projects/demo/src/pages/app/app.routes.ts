@@ -463,6 +463,11 @@ export const ROUTES: Routes = [
         title: 'InputPin',
     }),
     route({
+        path: DemoRoute.Pincode,
+        loadComponent: async () => import('../components/pincode'),
+        title: 'Pincode',
+    }),
+    route({
         path: DemoRoute.InputRange,
         loadComponent: async () => import('../components/input-range'),
         title: 'InputRange',

@@ -18,6 +18,8 @@
         "officedocument",
         "wordprocessingml",
         "longname",
-        "initialises"
+        "initialises",
+        "Pincode",
+        "pincode"
     ]
 }

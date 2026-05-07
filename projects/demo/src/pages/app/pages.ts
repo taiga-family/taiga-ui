@@ -868,6 +868,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Form',
+                title: 'Pincode',
+                keywords: 'поле, инпут, форма, ввод, input, pin, pincode, пин, код, otp',
+                route: DemoRoute.Pincode,
+            },
+            {
+                section: 'Form',
                 title: 'InputTime',
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',

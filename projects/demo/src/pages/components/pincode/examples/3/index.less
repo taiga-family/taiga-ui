@@ -1,0 +1,69 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.hint {
+    margin: 0;
+    color: var(--tui-text-secondary);
+    text-align: center;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+}
+
+tui-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tui-text-action);
+    scale: 0;
+    pointer-events: none;
+}
+
+.field_submitting tui-loader {
+    animation: loaderIn 500ms cubic-bezier(0, 0, 0.58, 1) 850ms forwards;
+}
+
+@keyframes loaderIn {
+    0% {
+        scale: 0;
+    }
+
+    30% {
+        scale: 1.2;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.label {
+    min-inline-size: 9rem;
+    text-align: end;
+    color: var(--tui-text-secondary);
+    white-space: nowrap;
+}

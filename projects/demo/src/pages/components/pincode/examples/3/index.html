@@ -1,0 +1,82 @@
+<div class="root">
+    <p class="hint">
+        Enter
+        <code>{{ correct[length] }}</code>
+        for success, any other code for error
+    </p>
+
+    <div
+        class="field"
+        [class.field_submitting]="mode() === 'submitting'"
+    >
+        <tui-loader
+            class="loader"
+            [inheritColor]="true"
+            [loading]="mode() === 'submitting'"
+        />
+        <tui-textfield>
+            <input
+                tuiPincode
+                [appearance]="appearance"
+                [formControl]="control"
+                [maxlength]="length"
+                [mode]="mode()"
+            />
+        </tui-textfield>
+    </div>
+
+    <div class="controls">
+        <div class="row">
+            <span class="label">Appearance</span>
+            <tui-segmented size="s">
+                @for (a of appearances; track a) {
+                    <label>
+                        <input
+                            name="appearance"
+                            type="radio"
+                            [value]="a"
+                            [(ngModel)]="appearance"
+                            (ngModelChange)="reset()"
+                        />
+                        {{ a }}
+                    </label>
+                }
+            </tui-segmented>
+        </div>
+
+        <div class="row">
+            <span class="label">Length</span>
+            <tui-segmented size="s">
+                @for (l of lengths; track l) {
+                    <label>
+                        <input
+                            name="length"
+                            type="radio"
+                            [value]="l"
+                            [(ngModel)]="length"
+                            (ngModelChange)="reset()"
+                        />
+                        {{ l }}
+                    </label>
+                }
+            </tui-segmented>
+        </div>
+
+        <div class="row">
+            <span class="label">Request duration</span>
+            <tui-segmented size="s">
+                @for (l of latencies; track l) {
+                    <label>
+                        <input
+                            name="latency"
+                            type="radio"
+                            [value]="l"
+                            [(ngModel)]="latency"
+                        />
+                        {{ l }}ms
+                    </label>
+                }
+            </tui-segmented>
+        </div>
+    </div>
+</div>
