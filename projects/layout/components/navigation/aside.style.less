@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-aside[tuiNavigationAside] {
+aside[tuiNavigationAsideV='@{tui-version}'] {
     .transition(width);
 
     position: sticky;
@@ -46,7 +46,7 @@ aside[tuiNavigationAside] {
     &._expanded {
         inline-size: 14.375rem;
 
-        + main[tuiNavigationMain] {
+        + main[tuiNavigationMainV='@{tui-version}'] {
             max-inline-size: calc(100% - 14.375rem);
         }
     }
@@ -63,7 +63,7 @@ aside[tuiNavigationAside] {
         overflow: auto;
     }
 
-    tui-expand [tuiAsideItem] {
+    tui-expand [tuiAsideItemV='@{tui-version}'] {
         padding-inline-start: 2rem;
     }
 
@@ -94,12 +94,12 @@ aside[tuiNavigationAside] {
         }
     }
 
-    + main[tuiNavigationMain] {
+    + main[tuiNavigationMainV='@{tui-version}'] {
         max-inline-size: calc(100% - 3rem);
     }
 }
 
-[tuiAsideItem][tuiAsideItem] {
+[tuiAsideItemV='@{tui-version}'][tuiAsideItemV='@{tui-version}'] {
     inline-size: 100%;
     justify-content: flex-start;
     gap: 0.625rem;
@@ -113,7 +113,7 @@ aside[tuiNavigationAside] {
 
     &.tui-dropdown-open,
     &._active:not(._chevron-rotated),
-    aside[tuiNavigationAside]:not(._expanded) &._active {
+    aside[tuiNavigationAsideV='@{tui-version}']:not(._expanded) &._active {
         background: var(--tui-background-neutral-1-hover);
     }
 }
@@ -123,7 +123,7 @@ tui-dropdown[data-appearance='dropdown-navigation'] {
     background: var(--tui-background-elevation-3);
     background: color-mix(in srgb, var(--tui-theme-color, #000) 80%, #fff);
 
-    [tuiAsideItem] {
+    [tuiAsideItemV='@{tui-version}'] {
         justify-content: flex-start;
         margin: 0;
         padding: 0 0.5rem;

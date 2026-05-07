@@ -19,6 +19,7 @@ import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TUI_CHEVRON, TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 import {TuiHintAsideDirective} from './hint-aside.directive';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Directive({
     standalone: true,
@@ -45,6 +46,7 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
         tuiButton: '',
         tuiOption: '',
         tuiAsideItem: '',
+        tuiAsideItemV: TUI_VERSION,
         '[class._link]': 'link',
         '[class._active]': 'active()',
         '[class._custom]': 'icon !== icons.iconEnd()',

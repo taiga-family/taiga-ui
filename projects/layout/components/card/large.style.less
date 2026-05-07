@@ -1,9 +1,11 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 // Don't increase specificity. Otherwise, not compatible with [tuiHeader]
-[tuiCardLarge] {
+[tuiCardLargeV='@{tui-version}'] {
     font: var(--tui-font-text-m);
 }
 
-[tuiCardLarge][data-space] {
+[tuiCardLargeV='@{tui-version}'][data-space] {
     --t-space: 0.75rem;
     --t-radius: var(--tui-radius-l);
     --t-comp: -0.25rem;
@@ -36,7 +38,7 @@
         }
     }
 
-    &[tuiHeader] {
+    &[tuiHeaderV='@{tui-version}'] {
         padding: var(--t-dim) var(--t-padding);
 
         [tuiButton]:last-child,
@@ -48,7 +50,7 @@
         }
     }
 
-    > [tuiHeader] {
+    > [tuiHeaderV='@{tui-version}'] {
         margin: var(--t-comp) 0 calc(2 * var(--t-comp));
 
         [tuiButton]:last-child,

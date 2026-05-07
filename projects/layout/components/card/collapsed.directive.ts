@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -24,6 +25,7 @@ class TuiCardCollapsedStyles {}
     selector: '[tuiCardCollapsed]',
     host: {
         tuiCardCollapsed: '',
+        tuiCardCollapsedV: TUI_VERSION,
         '[style.margin-block-end.rem]': 'collapsed ? 0.75 : 0',
         '[style.clip-path]': 'collapsed ? "inset(-0.75rem)" : "inset(0)"',
     },

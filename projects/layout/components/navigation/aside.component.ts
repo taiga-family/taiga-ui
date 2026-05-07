@@ -1,3 +1,4 @@
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -40,6 +41,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     ],
     host: {
         tuiNavigationAside: '',
+        tuiNavigationAsideV: TUI_VERSION,
         tuiTheme: 'dark',
         '[class._expanded]': 'expanded()',
     },

@@ -6,6 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {take, timer} from 'rxjs';
@@ -26,6 +27,8 @@ class TuiItemGroupStyles {}
     standalone: true,
     selector: '[tuiItemGroup]',
     host: {
+        tuiItemGroup: '',
+        tuiItemGroupV: TUI_VERSION,
         '(click)': 'onClick($event.target)',
         '[class._horizontal]': 'horizontal',
     },

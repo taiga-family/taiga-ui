@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_QUERY, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
@@ -31,6 +31,8 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_APP_BAR_PROVIDERS,
     host: {
+        tuiAppBar: '',
+        tuiAppBarV: TUI_VERSION,
         '[attr.data-size]': 'size',
     },
 })

@@ -1,3 +1,4 @@
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
@@ -9,6 +10,7 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         tuiNavigationMain: '',
+        tuiNavigationMainV: TUI_VERSION,
     },
 })
 export class TuiMainComponent {}

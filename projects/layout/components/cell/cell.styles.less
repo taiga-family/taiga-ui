@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-[tuiCell] {
+[tuiCellV='@{tui-version}'] {
     --t-padding: 0.125rem 1rem;
     --t-radius: var(--tui-radius-s);
 
@@ -239,16 +239,16 @@
 }
 
 @media @tui-mouse {
-    a[tuiCell]:not([tuiSurface]):hover,
-    button[tuiCell]:not([tuiSurface]):hover,
-    label[tuiCell]:not([tuiSurface]):hover {
+    a[tuiCellV='@{tui-version}']:not([tuiSurface]):hover,
+    button[tuiCellV='@{tui-version}']:not([tuiSurface]):hover,
+    label[tuiCellV='@{tui-version}']:not([tuiSurface]):hover {
         &:not(:disabled, [data-state='disabled']) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;
         }
     }
 
-    label[tuiCell]:not([tuiSurface]):hover {
+    label[tuiCellV='@{tui-version}']:not([tuiSurface]):hover {
         &:not(:has(input:disabled)) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;

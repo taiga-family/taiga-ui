@@ -1,3 +1,4 @@
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -22,5 +23,9 @@ import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
         tuiSwitchOptionsProvider({size: 's'}),
         tuiTextfieldOptionsProvider({size: signal('m')}),
     ],
+    host: {
+        tuiSearch: '',
+        tuiSearchV: TUI_VERSION,
+    },
 })
 export class TuiSearchComponent {}
