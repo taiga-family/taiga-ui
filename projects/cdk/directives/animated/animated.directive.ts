@@ -3,6 +3,7 @@ import {
     afterNextRender,
     Directive,
     inject,
+    type OnDestroy,
     PLATFORM_ID,
     type Renderer2,
     ViewContainerRef,
@@ -23,27 +24,41 @@ const TUI_LEAVE_KEY = `${TUI_LEAVE}_${TUI_VERSION.split('.')[0]}`;
         '(animationend.self)': 'remove()',
     },
 })
-export class TuiAnimated {
+export class TuiAnimated implements OnDestroy {
     // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
     private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
     private readonly el = tuiInjectElement();
+    private destroyed = false;
 
     constructor() {
         afterNextRender(() => this.remove());
 
         if (this.renderer && isPlatformBrowser(inject(PLATFORM_ID))) {
-            // delegate is used in Angular Animations renderer
+            // AnimationRenderer doesn't delegate removeChild, so we rely on ngOnDestroy
+            if ('engine' in this.renderer) {
+                return;
+            }
+
             wrap(this.renderer.delegate || this.renderer);
         }
     }
 
+    public ngOnDestroy(): void {
+        this.destroyed = true;
+        animateRemoval(this.el);
+    }
+
     protected remove(): void {
-        if (this.el.isConnected && !this.el.getAnimations?.().length) {
+        if (!this.destroyed && this.el.isConnected && !this.el.getAnimations?.().length) {
             this.el.classList.remove(TUI_ENTER);
         }
     }
 }
 
+/**
+ * Wraps renderer.removeChild to handle leave animation for elements
+ * Used when standard Renderer2 is active (no Angular Animations)
+ */
 function wrap(renderer: Renderer2): void {
     if (renderer.data[TUI_LEAVE_KEY]) {
         return;
@@ -60,26 +75,39 @@ function wrap(renderer: Renderer2): void {
             return;
         }
 
-        el.classList.remove(TUI_ENTER);
+        animateRemoval(el, () => {
+            if (!parent || parent.contains(el)) {
+                removeChild.call(renderer, parent, el, host);
+            }
+        });
+    };
+}
 
-        const {length} = el.getAnimations?.() || [];
+/**
+ * Handles the leave animation lifecycle:
+ * 1. Removes TUI_ENTER class
+ * 2. Adds TUI_LEAVE class
+ * 3. Waits for CSS animations to complete
+ * 4. Removes element from DOM
+ */
+function animateRemoval(el: Element, onComplete?: () => void): void {
+    el.classList.remove(TUI_ENTER);
+    el.classList.add(TUI_LEAVE);
 
-        el.classList.add(TUI_LEAVE);
-
+    requestAnimationFrame(() => {
         const animations = el.getAnimations?.() ?? [];
         const last = animations[animations.length - 1];
 
         const finish = (): void => {
-            if (!parent || parent.contains(el)) {
-                removeChild.call(renderer, parent, el, host);
-            }
+            el.remove();
+            onComplete?.();
         };
 
-        if (animations.length > length && last) {
+        if (animations.length && last) {
             last.onfinish = finish;
             last.oncancel = finish;
         } else {
             finish();
         }
-    };
+    });
 }

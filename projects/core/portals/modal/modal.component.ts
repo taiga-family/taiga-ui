@@ -43,7 +43,6 @@ import {
         role: 'dialog',
         class: 'tui-enter',
         '[attr.aria-labelledby]': 'context.id',
-        '(animationend.self)': '$event.target.classList.remove("tui-enter")',
     },
 })
 export class TuiModalComponent<T> implements OnDestroy, OnInit {
