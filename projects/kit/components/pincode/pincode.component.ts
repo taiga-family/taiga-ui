@@ -34,8 +34,8 @@ const PITCH = 1.875;
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective],
     host: {
-        ngSkipHydration: 'true',
         inputmode: 'numeric',
+        ngSkipHydration: 'true',
         spellcheck: 'false',
         '[attr.data-appearance]': 'appearance()',
         '[attr.data-mode]': 'mode()',
@@ -43,6 +43,7 @@ const PITCH = 1.875;
 })
 export class TuiPincodeComponent {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
+
     protected readonly maskito = tuiMaskito(
         computed(() => ({mask: this.mask(), overwriteMode: 'replace'})),
     );

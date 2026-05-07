@@ -45,7 +45,6 @@ const fakeApiVerify = async (pin: string): Promise<boolean> =>
 })
 export default class Example {
     protected open = false;
-
     protected readonly mode = signal<TuiPincodeMode | null>(null);
     protected readonly control = new FormControl('');
 

@@ -38,11 +38,9 @@ export default class Example {
     protected readonly latencies = [300, 1000, 2000] as const;
     protected readonly appearances: readonly TuiPincodeAppearance[] = ['numbers', 'dots'];
     protected readonly lengths = [4, 5, 6] as const;
-
     protected latency = 1000;
     protected appearance: TuiPincodeAppearance = 'numbers';
     protected length: 4 | 5 | 6 = 4;
-
     protected readonly mode = signal<TuiPincodeMode | null>(null);
     protected readonly control = new FormControl('');
 
@@ -64,6 +62,7 @@ export default class Example {
 
     private verify(value: string): Observable<TuiPincodeMode | null> {
         const start = Date.now();
+
         const result$ = from(
             new Promise<boolean>((resolve) =>
                 setTimeout(() => resolve(value === CORRECT[this.length]), this.latency),
@@ -76,22 +75,20 @@ export default class Example {
                 map(() => 'pending' as const),
             ),
             result$.pipe(
-                switchMap((ok) => {
-                    if (ok) {
-                        return of<TuiPincodeMode>(
-                            Date.now() - start > 700 ? 'submitting' : 'success',
-                        );
-                    }
-
-                    return concat(
-                        of<TuiPincodeMode>('invalid'),
-                        timer(1000).pipe(map(() => 'dismissing' as const)),
-                        timer(400).pipe(
-                            tap(() => this.control.setValue('')),
-                            map(() => null),
-                        ),
-                    );
-                }),
+                switchMap((ok) =>
+                    ok
+                        ? of<TuiPincodeMode>(
+                              Date.now() - start > 700 ? 'submitting' : 'success',
+                          )
+                        : concat(
+                              of<TuiPincodeMode>('invalid'),
+                              timer(1000).pipe(map(() => 'dismissing' as const)),
+                              timer(400).pipe(
+                                  tap(() => this.control.setValue('')),
+                                  map(() => null),
+                              ),
+                          ),
+                ),
             ),
         );
     }
