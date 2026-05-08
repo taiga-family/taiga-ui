@@ -53,8 +53,11 @@ export class TuiCalendar {
             return coerceArray(value).find((item) => day.daySame(item)) ? 'single' : null;
         }
 
-        const hov = this.hovered();
-        const range = value.isSingleDay && hov ? TuiDayRange.sort(hov, value.to) : value;
+        const hovered = this.hovered();
+        const range =
+            value.from === value.to && hovered
+                ? TuiDayRange.sort(hovered, value.to)
+                : value;
 
         if (range.isSingleDay && day.daySame(range.from)) {
             return 'single';

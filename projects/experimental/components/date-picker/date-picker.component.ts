@@ -65,7 +65,7 @@ export class TuiDatePicker {
                   {length: value.to.year - value.from.year + 1},
                   (_, index) => value.from.year + index,
               )
-            : coerceArray(value).map((day) => day.year),
+            : Array.from(new Set(coerceArray(value).map((day) => day.year))),
     );
 
     protected readonly months = computed((value = this.value() || []) =>
@@ -180,8 +180,8 @@ export class TuiDatePicker {
             );
         } else {
             this.value.update((value) =>
-                value instanceof TuiDayRange && value.isSingleDay
-                    ? TuiDayRange.sort(value.to, day)
+                value instanceof TuiDayRange && value.from === value.to
+                    ? TuiDayRange.sort(value.to, day.append({}))
                     : new TuiDayRange(day, day),
             );
         }
