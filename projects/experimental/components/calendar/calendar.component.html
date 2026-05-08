@@ -6,10 +6,12 @@
         <button
             type="button"
             class="t-day"
-            [class.t-day_active]="value() && day.daySame(value()!)"
+            [attr.data-range]="getRange(day)"
             [class.t-day_adjacent]="day.month !== month().month"
+            [class.t-day_today]="day.daySame(today)"
             [disabled]="disabledItemHandler()(day)"
             (click)="pick.emit(day)"
+            (mouseenter)="hovered.set(day)"
         >
             {{ day.day }}
         </button>

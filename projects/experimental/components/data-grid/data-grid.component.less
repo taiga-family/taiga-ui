@@ -21,6 +21,7 @@
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
     }
 
     &_active {
@@ -29,12 +30,12 @@
     }
 
     @media @tui-mouse {
-        &:not(:disabled):hover {
+        &:hover {
             background: var(--tui-background-neutral-1-hover);
             cursor: pointer;
         }
 
-        &_active:not(:disabled):hover {
+        &_active:hover {
             background: var(--tui-background-accent-2-hover);
         }
     }

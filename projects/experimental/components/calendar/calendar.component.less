@@ -6,42 +6,91 @@
     color: var(--tui-text-secondary);
     font: var(--tui-typography-ui-s);
     grid-template: 2rem / repeat(7, 1fr);
-    grid-auto-rows: 2.25rem;
+    gap: 0.25rem 0;
     place-items: center;
+    isolation: isolate;
 }
 
 .t-day {
-    .transition(background);
-
-    inline-size: 2rem;
+    position: relative;
+    inline-size: 100%;
     block-size: 2rem;
     padding: 0;
     border: 0;
-    border-radius: 100%;
     background: transparent;
     font: var(--tui-typography-ui-m);
     color: var(--tui-text-primary);
+    cursor: pointer;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 50%;
+        z-index: -1;
+        block-size: 2rem;
+        inline-size: 2rem;
+        border-radius: 100%;
+        transform: translate(calc(var(--tui-inline) * -50%), -50%);
+    }
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
     }
 
     &_adjacent {
         opacity: var(--tui-disabled-opacity);
     }
 
-    &_active {
+    &_today::after {
+        content: '';
+        position: absolute;
+        inset-block-end: 0.25rem;
+        inset-inline-start: 50%;
+        margin-inline-start: -0.125rem;
+        inline-size: 0.25rem;
+        block-size: 0.25rem;
+        border-radius: 100%;
         background: var(--tui-background-accent-2);
+    }
+
+    &[data-range='single'],
+    &[data-range='start'],
+    &[data-range='end'] {
         color: var(--tui-text-primary-on-accent-2);
+
+        &::before {
+            background: var(--tui-background-accent-2);
+        }
+
+        &::after {
+            background: currentColor;
+        }
+    }
+
+    &[data-range='start']::before {
+        box-shadow: calc(var(--tui-inline) * 11rem) 0 0 10rem var(--tui-background-neutral-1);
+    }
+
+    &[data-range='end']::before {
+        box-shadow: calc(var(--tui-inline) * -11rem) 0 0 10rem var(--tui-background-neutral-1);
+    }
+
+    &[data-range='middle']::before {
+        box-shadow:
+            0 0 0 10rem var(--tui-background-neutral-1),
+            inset 0 0 0 10rem var(--tui-background-neutral-1);
     }
 
     @media @tui-mouse {
-        &:not(:disabled):hover {
+        &:hover::before {
             background: var(--tui-background-neutral-1-hover);
-            cursor: pointer;
         }
 
-        &_active:not(:disabled):hover {
+        &[data-range='single']:hover::before,
+        &[data-range='start']:hover::before,
+        &[data-range='end']:hover::before {
             background: var(--tui-background-accent-2-hover);
         }
     }
