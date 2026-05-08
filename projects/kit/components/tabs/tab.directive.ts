@@ -2,6 +2,7 @@ import {Directive, inject, type OnDestroy} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
@@ -16,6 +17,7 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
         'a[tuiTab]:not([routerLink]), a[tuiTab][routerLink][routerLinkActive], button[tuiTab]',
     hostDirectives: [TuiWithIcons],
     host: {
+        tuiTabV: TUI_VERSION,
         type: 'button',
     },
 })

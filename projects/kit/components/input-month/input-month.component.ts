@@ -8,7 +8,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import {TUI_ALLOW_SIGNAL_WRITES, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {
     TuiTextfieldContent,
@@ -27,6 +27,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
     host: {
+        tuiInputMonthV: TUI_VERSION,
         ngSkipHydration: 'true',
     },
 })
