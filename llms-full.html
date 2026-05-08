@@ -13379,27 +13379,54 @@ This is a work in progress, do not use!
 
 **Template:**
 ```html
-&lt;tui-date-picker [disabledItemHandler]=&quot;disabledItemHandler&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [(value)]=&quot;value&quot; /&gt;
+&lt;div tuiGroup&gt;
+&lt;tui-textfield tuiChevron tuiTextfieldSize=&quot;s&quot; [tuiTextfieldCleaner]=&quot;false&quot; &gt;
+&lt;input tuiSelect [(ngModel)]=&quot;mode&quot; /&gt;
+&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;modes&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;button size=&quot;s&quot; tuiButton type=&quot;button&quot; (click)=&quot;value.set(null)&quot; &gt; Clear &lt;/button&gt;
+&lt;/div&gt;
+&lt;tui-date-picker [disabledItemHandler]=&quot;disabledItemHandler&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [mode]=&quot;mode()&quot; [(value)]=&quot;value&quot; /&gt;
+&lt;p&gt;{{ value() | json }}&lt;/p&gt;
 ```
 **TypeScript:**
 ```ts
+import {JsonPipe} from &#039;@angular/common&#039;;
 import {Component, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiDay, TuiDayRange} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiGroup} from &#039;@taiga-ui/core&#039;;
 import {TuiDatePicker} from &#039;@taiga-ui/experimental&#039;;
+import {TuiChevron, TuiDataListWrapper, TuiSelect} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiDatePicker],
+    imports: [
+        FormsModule,
+        JsonPipe,
+        TuiButton,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDatePicker,
+        TuiGroup,
+        TuiSelect,
+    ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly value = signal(TuiDay.currentLocal());
+    protected readonly modes = [&#039;single&#039;, &#039;multi&#039;, &#039;range&#039;] as const;
+    protected readonly mode = signal(this.modes[2]);
     protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
     protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
+
+    protected readonly value = signal&lt;any&gt;(
+        new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({day: 7})),
+    );
+
     protected readonly disabledItemHandler = (item: TuiDay): boolean =&gt; item.day === 13;
 }
 ```
