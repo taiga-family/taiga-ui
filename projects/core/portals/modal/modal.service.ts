@@ -30,7 +30,13 @@ export abstract class TuiModalService<T, K = void> extends TuiPortal<T, K> {
 
             Promise.allSettled(getAnimations(el))
                 .then(async () => Promise.allSettled(getAnimations(el.firstElementChild)))
-                .then(() => ref.destroy());
+                .then(() => {
+                    // Under zoneless + provideAnimations Angular's animation engine queues
+                    // the modal removal but engine.flush never runs from a microtask, so
+                    // the element stays in DOM with `tui-leave` class. Detach it manually.
+                    ref.destroy();
+                    el.remove();
+                });
         };
     }
 }
