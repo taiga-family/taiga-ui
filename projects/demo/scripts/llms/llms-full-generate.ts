@@ -405,6 +405,7 @@ async function collectMigrationGuide(config: AppConfig): Promise<string | null> 
         process.cwd(),
         config.constants.headerSectionsPath,
     );
+
     const migrationGuidePath = path.join(
         headerSectionsPath,
         'migration-guide-generated.md',

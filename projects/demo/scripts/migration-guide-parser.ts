@@ -135,6 +135,7 @@ class MigrationGuideParser {
 
             const propRegex =
                 /['"]([^'"]+)['"]\s*:\s*import\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
+
             let propMatch;
 
             while ((propMatch = propRegex.exec(objectBody)) !== null) {
@@ -176,6 +177,7 @@ class MigrationGuideParser {
 
         const importRegex =
             /(?:readonly|protected\s+readonly)\s+(\w+)\s*=\s*import\s*\(\s*['"]([^'"]+\.md)['"]\s*\)/g;
+
         let match;
 
         while ((match = importRegex.exec(content)) !== null) {
@@ -245,7 +247,6 @@ class MigrationGuideParser {
 
     private parsePrerequisites(html: string): string {
         const lines: string[] = [];
-
         const labelRegex = /<label[^>]*tuiLabel[^>]*>([\s\S]*?)<\/label>/g;
         let match;
 
@@ -273,6 +274,7 @@ class MigrationGuideParser {
 
         const labelExampleRegex =
             /<label[^>]*tuiLabel[^>]*>([\s\S]*?)<\/label>\s*<tui-doc-example\s+\[content\]="(\w+)"/g;
+
         let match;
 
         while ((match = labelExampleRegex.exec(html)) !== null) {
@@ -363,6 +365,7 @@ class MigrationGuideParser {
 
             const itemRegex =
                 /<button[^>]*tuiAccordion[^>]*>([\s\S]*?)<\/button>\s*<tui-expand[^>]*>([\s\S]*?)<\/tui-expand>/g;
+
             let itemMatch;
 
             while ((itemMatch = itemRegex.exec(accordionContent)) !== null) {
@@ -387,6 +390,7 @@ class MigrationGuideParser {
         lines: string[],
     ): void {
         const problemText = this.cleanText(problemHtml);
+
         const solutionMatch = /<div[^>]*tuiNotification[^>]*>([\s\S]*?)<\/div>/.exec(
             solutionHtml,
         );
@@ -452,11 +456,13 @@ class MigrationGuideParser {
             const codeKeyMatch = /<tui-doc-code[^>]*\[code\]="(\w+)"[^>]*\/>/.exec(
                 itemHtml,
             );
+
             const codeLiteralMatch = /<tui-doc-code[^>]*code="([^"]*)"[^>]*\/>/.exec(
                 itemHtml,
             );
 
             const codeKey = codeKeyMatch?.[1];
+
             const code = codeKey
                 ? metadata.codeExamples[codeKey]?.trim()
                 : codeLiteralMatch?.[1];
@@ -482,11 +488,9 @@ class MigrationGuideParser {
                 return '{CURRENT_MAJOR}';
             }
 
-            if (normalized === 'tuiMajor' || normalized === 'tuiMajor + 1') {
-                return '{NEXT_MAJOR}';
-            }
-
-            return `{{${expr}}}`;
+            return normalized === 'tuiMajor' || normalized === 'tuiMajor + 1'
+                ? '{NEXT_MAJOR}'
+                : `{{${expr}}}`;
         });
     }
 

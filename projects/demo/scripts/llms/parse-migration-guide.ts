@@ -115,10 +115,12 @@ function extractExampleImports(tsContent: string): string[] {
 
 async function buildParsedMarkdown(): Promise<string> {
     const indexHtml = await readSafe(path.join(pagesDir, 'index.html'));
+
     const headings = Array.from(
         indexHtml.matchAll(/<tui-doc-example[^>]*heading="([^"]+)"/gi),
         (match) => match[1],
     );
+
     const sections = [
         {dir: 'prerequisites', title: headings[0] ?? titleFromDir('prerequisites')},
         {dir: 'actions', title: headings[1] ?? titleFromDir('actions')},
@@ -133,12 +135,14 @@ async function buildParsedMarkdown(): Promise<string> {
         const sectionHtml = await readSafe(
             path.join(pagesDir, section.dir, 'index.html'),
         );
+
         const markdown = htmlToMarkdown(sectionHtml);
 
         output += `### ${section.title}\n\n`;
         output += markdown || '*No content found.*\n\n';
 
         const sectionTs = await readSafe(path.join(pagesDir, section.dir, 'index.ts'));
+
         const exampleFiles = extractExampleImports(sectionTs).map((filePath) =>
             path.resolve(pagesDir, section.dir, filePath),
         );
