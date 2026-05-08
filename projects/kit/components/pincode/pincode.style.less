@@ -57,15 +57,14 @@ input[tuiPincode] + .t-content {
         translate: -50% -50%;
         scale: 0;
         transition:
-            translate var(--tui-duration-moderate, 300ms)
-                var(--tui-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1)),
-            color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9)),
-            background-color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+            translate var(--tui-duration-moderate, 300ms) var(--tui-curve-expressive-entrance),
+            color 150ms var(--tui-curve-productive-standard),
+            background-color 150ms var(--tui-curve-productive-standard);
     }
 
     .t-value,
     .t-dot_value {
-        transition: scale 300ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1));
+        transition: scale 300ms var(--tui-curve-expressive-exit);
     }
 
     .t-value {
@@ -84,7 +83,7 @@ input[tuiPincode] + .t-content {
 
     .t-dot_placeholder {
         background: var(--tui-background-neutral-2);
-        transition: scale 200ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1));
+        transition: scale 200ms var(--tui-curve-expressive-exit);
     }
 
     .t-dot_value {
@@ -93,7 +92,7 @@ input[tuiPincode] + .t-content {
 
     .t-item:not(.t-item_filled) .t-dot_placeholder {
         scale: 1;
-        transition: scale 150ms var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1)) 150ms;
+        transition: scale 150ms var(--tui-curve-expressive-standard) 150ms;
     }
 
     tui-root:not(._mobile) & {
@@ -109,8 +108,8 @@ input[tuiPincode] + .t-content {
         .t-item_filled .t-dot_value,
         .t-item:not(.t-item_filled) .t-dot_placeholder {
             transition:
-                color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9)),
-                background-color 150ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+                color 150ms var(--tui-curve-productive-standard),
+                background-color 150ms var(--tui-curve-productive-standard);
         }
 
         .t-item[data-focus='true']:not(.t-item_filled) {
@@ -142,7 +141,7 @@ input[tuiPincode][data-appearance='numbers'] + .t-content .t-item_filled .t-valu
 input[tuiPincode][data-appearance='dots'] + .t-content {
     .t-dot_value {
         scale: 1;
-        transition: background-color 150ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1));
+        transition: background-color 150ms var(--tui-curve-expressive-exit);
     }
 
     .t-item:not(.t-item_filled) .t-dot_value {
@@ -172,16 +171,16 @@ input[tuiPincode][data-mode='submitting'] + .t-content .t-value {
 }
 
 input[tuiPincode][data-mode='invalid'] + .t-content .t-item {
-    animation: tuiPincodeShake 500ms var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+    animation: tuiPincodeShake 500ms var(--tui-curve-productive-standard);
 }
 
 input[tuiPincode][data-mode='dismissing'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
 input[tuiPincode][data-mode='dismissing'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
-    animation: tuiPincodeExitElement 400ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1)) forwards;
+    animation: tuiPincodeExitElement 400ms var(--tui-curve-expressive-exit) forwards;
 }
 
 input[tuiPincode][data-mode='dismissing'] + .t-content .t-item_filled .t-dot_placeholder {
-    animation: tuiPincodeDotAppear 400ms var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1)) forwards;
+    animation: tuiPincodeDotAppear 400ms var(--tui-curve-expressive-standard) forwards;
 }
 
 input[tuiPincode][data-mode='pending'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
@@ -193,18 +192,18 @@ input[tuiPincode][data-mode='pending'][data-appearance='dots'] + .t-content .t-i
 }
 
 input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled {
-    animation: tuiPincodeItemSpread 700ms var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9)) forwards;
+    animation: tuiPincodeItemSpread 700ms var(--tui-curve-productive-entrance) forwards;
 }
 
 input[tuiPincode][data-mode='submitting'][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
-    animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1)) forwards;
+    animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit) forwards;
 }
 
 input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled .t-dot_value {
     animation:
-        tuiPincodeDotIn 300ms var(--tui-curve-productive-exit, cubic-bezier(0, 0, 0.58, 1)) forwards,
-        tuiPincodeDotCollapsePos 300ms 700ms var(--tui-curve-expressive-exit, cubic-bezier(0.4, 0, 1, 1)) forwards,
-        tuiPincodeDotCollapseScale 300ms 700ms var(--tui-curve-productive-exit, cubic-bezier(0, 0, 0.58, 1)) forwards,
+        tuiPincodeDotIn 300ms var(--tui-curve-productive-exit) forwards,
+        tuiPincodeDotCollapsePos 300ms 700ms var(--tui-curve-expressive-exit) forwards,
+        tuiPincodeDotCollapseScale 300ms 700ms var(--tui-curve-productive-exit) forwards,
         tuiPincodeDotFade 50ms 950ms linear forwards;
 }
 
@@ -302,12 +301,12 @@ input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled .t-dot_val
 
 @keyframes tuiPincodeScale {
     0% {
-        animation-timing-function: var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1));
+        animation-timing-function: var(--tui-curve-expressive-standard);
         scale: 1;
     }
 
     40% {
-        animation-timing-function: var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9));
+        animation-timing-function: var(--tui-curve-productive-entrance);
         scale: 1.2;
     }
 
@@ -330,12 +329,12 @@ input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled .t-dot_val
 
 @keyframes tuiPincodeWave {
     0% {
-        animation-timing-function: var(--tui-curve-expressive-standard, cubic-bezier(0.4, 0.1, 0.2, 1));
+        animation-timing-function: var(--tui-curve-expressive-standard);
         scale: 1;
     }
 
     20% {
-        animation-timing-function: var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9));
+        animation-timing-function: var(--tui-curve-productive-entrance);
         scale: 1.2;
     }
 
