@@ -54,6 +54,7 @@ export class TuiCalendar {
         }
 
         const hovered = this.hovered();
+
         const range =
             value.from === value.to && hovered
                 ? TuiDayRange.sort(hovered, value.to)
