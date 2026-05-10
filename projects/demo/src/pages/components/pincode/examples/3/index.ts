@@ -9,7 +9,7 @@ import {
     type TuiPincodeMode,
     TuiSegmented,
 } from '@taiga-ui/kit';
-import {from, map, type Observable, of, shareReplay, switchMap, tap} from 'rxjs';
+import {from, map, type Observable, of, shareReplay, switchMap} from 'rxjs';
 
 const CORRECT: Record<4 | 5 | 6, string> = {4: '1234', 5: '12345', 6: '123456'};
 

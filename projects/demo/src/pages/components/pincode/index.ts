@@ -18,6 +18,7 @@ export default class PageComponent {
         'Desktop',
         'Mobile',
     ];
+
     protected readonly lengths = [4, 5, 6] as const;
     protected length = this.lengths[0];
 
