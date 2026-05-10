@@ -10,7 +10,14 @@ import {TuiPincode, type TuiPincodeAppearance, type TuiPincodeMode} from '@taiga
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly examples = ['Basic', 'Dots', 'Interactive', 'Mobile', 'Desktop'];
+    protected readonly examples = [
+        'Basic',
+        'Dots',
+        'Fast loading',
+        'Long loading',
+        'Desktop',
+        'Mobile',
+    ];
     protected readonly lengths = [4, 5, 6] as const;
     protected length = this.lengths[0];
 

@@ -1,10 +1,13 @@
 import {Component, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLoader} from '@taiga-ui/core';
+import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
+import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+import {TuiButton, TuiIcon, TuiLink} from '@taiga-ui/core';
 import {TuiPincode, type TuiPincodeMode} from '@taiga-ui/kit';
+import {TuiAppBar} from '@taiga-ui/layout';
 import {
     concat,
     from,
@@ -25,15 +28,46 @@ const fakeApiVerify = async (pin: string): Promise<boolean> =>
     new Promise<boolean>((resolve) => setTimeout(() => resolve(pin === CORRECT), 1000));
 
 @Component({
-    imports: [FormsModule, ReactiveFormsModule, TuiLoader, TuiPincode],
+    imports: [
+        ReactiveFormsModule,
+        TuiAppBar,
+        TuiButton,
+        TuiIcon,
+        TuiLink,
+        TuiPincode,
+        TuiSheetDialog,
+        TuiThumbnailCard,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
+    protected open = false;
     protected readonly mode = signal<TuiPincodeMode | null>(null);
     protected readonly control = new FormControl('');
+
+    protected readonly keys = [
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '',
+        '0',
+        'backspace',
+    ] as const;
+
+    protected readonly options: Partial<TuiSheetDialogOptions> = {
+        closable: false,
+        bar: false,
+        appearance: 'fullscreen',
+    };
 
     constructor() {
         this.control.valueChanges
@@ -42,6 +76,26 @@ export default class Example {
                 takeUntilDestroyed(),
             )
             .subscribe((mode) => this.mode.set(mode));
+    }
+
+    protected onKey(key: string): void {
+        if (this.mode() !== null) {
+            return;
+        }
+
+        const value = this.control.value ?? '';
+
+        if (key === 'backspace') {
+            this.control.setValue(value.slice(0, -1));
+
+            return;
+        }
+
+        if (value.length >= 4) {
+            return;
+        }
+
+        this.control.setValue(`${value}${key}`);
     }
 
     private processValue(value: string | null): Observable<TuiPincodeMode | null> {
@@ -59,7 +113,7 @@ export default class Example {
             result$.pipe(
                 switchMap((ok) =>
                     ok
-                        ? of<TuiPincodeMode>('submitting')
+                        ? of<TuiPincodeMode>('success')
                         : concat(
                               of<TuiPincodeMode>('invalid'),
                               timer(1000).pipe(map(() => 'dismissing' as const)),

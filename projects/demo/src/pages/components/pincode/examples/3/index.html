@@ -5,25 +5,15 @@
         for success, any other code for error
     </p>
 
-    <div
-        class="field"
-        [class.field_submitting]="mode() === 'submitting'"
-    >
-        <tui-loader
-            class="loader"
-            [inheritColor]="true"
-            [loading]="mode() === 'submitting'"
+    <tui-textfield>
+        <input
+            tuiPincode
+            [appearance]="appearance"
+            [formControl]="control"
+            [maxlength]="length"
+            [mode]="mode()"
         />
-        <tui-textfield>
-            <input
-                tuiPincode
-                [appearance]="appearance"
-                [formControl]="control"
-                [maxlength]="length"
-                [mode]="mode()"
-            />
-        </tui-textfield>
-    </div>
+    </tui-textfield>
 
     <div class="controls">
         <div class="row">
@@ -57,23 +47,6 @@
                             (ngModelChange)="reset()"
                         />
                         {{ l }}
-                    </label>
-                }
-            </tui-segmented>
-        </div>
-
-        <div class="row">
-            <span class="label">Request duration</span>
-            <tui-segmented size="s">
-                @for (l of latencies; track l) {
-                    <label>
-                        <input
-                            name="latency"
-                            type="radio"
-                            [value]="l"
-                            [(ngModel)]="latency"
-                        />
-                        {{ l }}ms
                     </label>
                 }
             </tui-segmented>

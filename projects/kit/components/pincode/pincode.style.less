@@ -1,5 +1,9 @@
 @import '@taiga-ui/styles/utils';
 
+tui-textfield:has(input[tuiPincode]) {
+    inline-size: max-content;
+}
+
 input[tuiPincode] {
     position: absolute;
     inset: 0;
@@ -8,6 +12,7 @@ input[tuiPincode] {
     border: none;
     outline: none;
     caret-color: transparent;
+    cursor: text;
 
     &::selection {
         background: transparent;
@@ -25,18 +30,19 @@ input[tuiPincode] + .t-content {
     outline: none !important;
     padding: 0 !important;
     gap: 0 !important;
+    margin-inline: auto !important;
+    cursor: text;
 
     [tuiButtonX] {
         display: none !important;
     }
 
     .t-wrapper {
-        .fullsize();
-
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.625rem;
+        block-size: 100%;
     }
 
     .t-item {
@@ -45,7 +51,6 @@ input[tuiPincode] + .t-content {
         inline-size: 1.25rem;
         block-size: 2.25rem;
         padding-inline: 0.125rem;
-        pointer-events: auto;
         cursor: text;
     }
 
@@ -87,7 +92,7 @@ input[tuiPincode] + .t-content {
     }
 
     .t-dot_value {
-        background: var(--tui-text-action);
+        background: var(--tui-background-neutral-2);
     }
 
     .t-item:not(.t-item_filled) .t-dot_placeholder {
@@ -104,6 +109,8 @@ input[tuiPincode] + .t-content {
 
         .t-value,
         .t-dot,
+        .t-dot_value,
+        .t-dot_placeholder,
         .t-item_filled .t-value,
         .t-item_filled .t-dot_value,
         .t-item:not(.t-item_filled) .t-dot_placeholder {
@@ -123,6 +130,7 @@ input[tuiPincode] + .t-content {
                 border-radius: 0.0625rem;
                 background: var(--tui-text-primary);
                 translate: -50%;
+                animation: tuiPincodeCaretBlink 1s steps(1) infinite;
             }
 
             .t-dot_placeholder,
@@ -141,11 +149,14 @@ input[tuiPincode][data-appearance='numbers'] + .t-content .t-item_filled .t-valu
 input[tuiPincode][data-appearance='dots'] + .t-content {
     .t-dot_value {
         scale: 1;
-        transition: background-color 150ms var(--tui-curve-expressive-exit);
+    }
+
+    .t-item_filled .t-dot_value {
+        background: var(--tui-text-action);
     }
 
     .t-item:not(.t-item_filled) .t-dot_value {
-        background: var(--tui-background-neutral-2);
+        transition: background-color 150ms var(--tui-curve-expressive-exit);
     }
 
     .t-item:not(.t-item_filled) .t-dot_placeholder {
@@ -154,13 +165,34 @@ input[tuiPincode][data-appearance='dots'] + .t-content {
     }
 }
 
+input[tuiPincode][data-appearance='dots']:not([data-mode]) + .t-content .t-item_filled .t-dot_value {
+    animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
+    transition: background-color 200ms var(--tui-curve-expressive-standard);
+}
+
+tui-root:not(._mobile)
+    input[tuiPincode][data-appearance='numbers']:not([data-mode]) + .t-content
+    .t-item_filled
+    .t-value,
+tui-root:not(._mobile)
+    input[tuiPincode][data-appearance='dots']:not([data-mode]) + .t-content
+    .t-item_filled
+    .t-dot_value,
+tui-root:not(._mobile)
+    input[tuiPincode][data-appearance='dots']:not([data-mode]) + .t-content
+    .t-item:not(.t-item_filled)
+    .t-dot_value {
+    animation: none;
+    transition: none;
+}
+
 input[tuiPincode][data-mode='invalid'] + .t-content,
 input[tuiPincode][data-mode='dismissing'] + .t-content {
     .t-value {
         color: var(--tui-text-negative);
     }
 
-    .t-dot_value {
+    .t-item .t-dot_value {
         background: var(--tui-text-negative);
     }
 }
@@ -195,16 +227,17 @@ input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled {
     animation: tuiPincodeItemSpread 700ms var(--tui-curve-productive-entrance) forwards;
 }
 
-input[tuiPincode][data-mode='submitting'][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
-    animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit) forwards;
-}
-
 input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled .t-dot_value {
+    background: var(--tui-text-action);
     animation:
         tuiPincodeDotIn 300ms var(--tui-curve-productive-exit) forwards,
         tuiPincodeDotCollapsePos 300ms 700ms var(--tui-curve-expressive-exit) forwards,
         tuiPincodeDotCollapseScale 300ms 700ms var(--tui-curve-productive-exit) forwards,
         tuiPincodeDotFade 50ms 950ms linear forwards;
+}
+
+input[tuiPincode][data-mode='submitting'][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
+    animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit) forwards;
 }
 
 @keyframes tuiPincodeItemSpread {
@@ -273,6 +306,27 @@ input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled .t-dot_val
     to {
         scale: 1;
         opacity: 1;
+    }
+}
+
+@keyframes tuiPincodeDotsInput {
+    0% {
+        scale: 0;
+    }
+
+    66.67% {
+        scale: 1.2;
+        animation-timing-function: linear;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes tuiPincodeCaretBlink {
+    50% {
+        opacity: 0;
     }
 }
 

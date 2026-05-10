@@ -39,6 +39,7 @@ const PITCH = 1.875;
         spellcheck: 'false',
         '[attr.data-appearance]': 'appearance()',
         '[attr.data-mode]': 'mode()',
+        '(selectionchange)': 'onSelection()',
     },
 })
 export class TuiPincodeComponent {
@@ -70,9 +71,11 @@ export class TuiPincodeComponent {
         };
     }
 
-    protected onClick(index: number): void {
-        this.el.focus();
-        this.el.setSelectionRange(index, index + 1);
+    protected isFocused(index: number): boolean {
+        return (
+            tuiIsFocused(this.el) &&
+            index === Math.min(this.el.value.length, this.el.maxLength - 1)
+        );
     }
 
     protected onSelection(): void {
@@ -81,12 +84,5 @@ export class TuiPincodeComponent {
         if (this.el.selectionStart !== pos) {
             this.el.setSelectionRange(pos, pos);
         }
-    }
-
-    protected isFocused(index: number): boolean {
-        return (
-            tuiIsFocused(this.el) &&
-            index === Math.min(this.el.value.length, this.el.maxLength - 1)
-        );
     }
 }
