@@ -23,24 +23,19 @@
                         Masked mode — entered digits render as filled dots
                     }
                     @case (2) {
-                        Switch
+                        <strong>Fast loading</strong>
+                        — response under 500ms, no pending state shown. Switch
                         <strong>Appearance</strong>
                         between
                         <code>numbers</code>
                         and
                         <code>dots</code>
-                        , and
-                        <strong>Request duration</strong>
-                        to see all animation states: fast (no spinner), slow (pending → submitting), error (shake →
-                        clear)
                     }
                     @case (3) {
-                        <strong>Mobile bottom sheet</strong>
-                        with a custom numeric pad and full verification flow —
-                        <code>inputmode="none"</code>
-                        suppresses the native keyboard. Enter
+                        <strong>Long loading</strong>
+                        — response over 700ms, pending → submitting states shown with loader. Enter
                         <code>1234</code>
-                        for valid; wrong code triggers shake-clear-retry
+                        for success (submitting), any other code for error
                     }
                     @case (4) {
                         <strong>Desktop dialog</strong>
@@ -48,6 +43,14 @@
                         Enter
                         <code>1234</code>
                         for valid
+                    }
+                    @case (5) {
+                        <strong>Mobile bottom sheet</strong>
+                        with a custom numeric pad and full verification flow —
+                        <code>inputmode="none"</code>
+                        suppresses the native keyboard. Enter
+                        <code>1234</code>
+                        for valid; wrong code triggers shake-clear-retry
                     }
                 }
             </ng-template>

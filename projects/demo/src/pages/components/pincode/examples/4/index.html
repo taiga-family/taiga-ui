@@ -1,85 +1,28 @@
-<button
-    tuiButton
-    type="button"
-    (click)="open = true"
->
-    Open sheet
-</button>
+<div class="root">
+    <p class="hint">
+        Long loading example with loader.
+        <br />
+        Enter
+        <code>1234</code>
+        for success (submitting state), any other code for error
+    </p>
 
-<ng-template
-    let-observer
-    [tuiSheetDialogOptions]="options"
-    [(tuiSheetDialog)]="open"
->
-    <header class="header">
-        <tui-app-bar>
-            <button
-                tuiButton
-                tuiSlot="start"
-                type="button"
-                (click)="observer.complete()"
-            >
-                Close
-            </button>
-        </tui-app-bar>
-    </header>
-
-    <div class="content">
-        <tui-thumbnail-card
-            paymentSystem="mir"
-            size="m"
-        >
-            2206
-        </tui-thumbnail-card>
-
-        <header tuiHeader="h5">
-            <h2 tuiTitle>Create a PIN</h2>
-        </header>
-
-        <div class="container">
-            <tui-textfield>
-                <input
-                    inputmode="none"
-                    maxlength="4"
-                    tuiPincode
-                    [formControl]="control"
-                    [mode]="mode()"
-                />
-            </tui-textfield>
-        </div>
-
-        <div class="pad">
-            @for (key of keys; track key) {
-                @if (key === '') {
-                    <span></span>
-                } @else if (key === 'backspace') {
-                    <button
-                        type="button"
-                        class="key"
-                        [disabled]="mode() !== null"
-                        (click)="onKey(key)"
-                    >
-                        <tui-icon icon="@tui.delete" />
-                    </button>
-                } @else {
-                    <button
-                        type="button"
-                        class="key"
-                        [disabled]="mode() !== null"
-                        (click)="onKey(key)"
-                    >
-                        {{ key }}
-                    </button>
-                }
-            }
-        </div>
-
-        <button
-            tuiLink
-            type="button"
-            (click)="observer.complete()"
-        >
-            Skip
-        </button>
+    <div
+        class="field"
+        [class.field_submitting]="mode() === 'submitting'"
+    >
+        <tui-loader
+            class="loader"
+            [inheritColor]="true"
+            [loading]="mode() === 'submitting'"
+        />
+        <tui-textfield>
+            <input
+                tuiPincode
+                [formControl]="control"
+                [maxlength]="4"
+                [mode]="mode()"
+            />
+        </tui-textfield>
     </div>
-</ng-template>
+</div>

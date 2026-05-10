@@ -8,7 +8,6 @@
             [attr.data-focus]="isFocused($index) || null"
             [class.t-item_filled]="!!el.value[$index]"
             [style]="getStyle($index)"
-            (pointerdown.prevent)="onClick($index)"
         >
             <span class="t-dot t-dot_placeholder"></span>
             <span class="t-dot t-dot_value"></span>
