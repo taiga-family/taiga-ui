@@ -10,7 +10,8 @@
         #content
         let-value
     >
-        {{ value === 's' ? 'Small' : value === 'm' ? 'Medium' : 'Large' }}
+        @let text = value === 'm' ? 'Medium' : 'Large';
+        {{ value === 's' ? 'Small' : text }}
     </ng-template>
 </div>
 
