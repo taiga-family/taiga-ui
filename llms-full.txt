@@ -40209,7 +40209,7 @@ export default class Example {
 ```html
 <div [style.margin-block-end.rem]="2">
 <tui-radio-list [itemContent]="content" [items]="sizes" [style.flex-direction]="'row'" [style.width]="'max-content'" [(ngModel)]="size" />
-<ng-template #content let-value > {{ value === 's' ? 'Small' : value === 'm' ? 'Medium' : 'Large' }} </ng-template>
+<ng-template #content let-value > @let text = value === 'm' ? 'Medium' : 'Large'; {{ value === 's' ? 'Small' : text }} </ng-template>
 </div>
 <table tuiTable [size]="size" [style.width.rem]="58" [(ngModel)]="selected" >
 <thead>

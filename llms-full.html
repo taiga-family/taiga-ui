@@ -40218,7 +40218,7 @@ export default class Example {
 ```html
 &lt;div [style.margin-block-end.rem]=&quot;2&quot;&gt;
 &lt;tui-radio-list [itemContent]=&quot;content&quot; [items]=&quot;sizes&quot; [style.flex-direction]=&quot;&#039;row&#039;&quot; [style.width]=&quot;&#039;max-content&#039;&quot; [(ngModel)]=&quot;size&quot; /&gt;
-&lt;ng-template #content let-value &gt; {{ value === &#039;s&#039; ? &#039;Small&#039; : value === &#039;m&#039; ? &#039;Medium&#039; : &#039;Large&#039; }} &lt;/ng-template&gt;
+&lt;ng-template #content let-value &gt; @let text = value === &#039;m&#039; ? &#039;Medium&#039; : &#039;Large&#039;; {{ value === &#039;s&#039; ? &#039;Small&#039; : text }} &lt;/ng-template&gt;
 &lt;/div&gt;
 &lt;table tuiTable [size]=&quot;size&quot; [style.width.rem]=&quot;58&quot; [(ngModel)]=&quot;selected&quot; &gt;
 &lt;thead&gt;
