@@ -32,4 +32,10 @@ export default [
             'projects/demo/src/pages/markup/breakpoints/index.ts',
         ],
     },
+    {
+        files: ['**/*.html'],
+        rules: {
+            '@taiga-ui/experience-next/no-nested-interactive': 'off', // TODO: fix later
+        },
+    },
 ];
