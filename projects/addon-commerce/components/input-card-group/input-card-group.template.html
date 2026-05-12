@@ -78,7 +78,7 @@
             [maskito]="maskExpire"
             [ngModel]="expire()"
             [ngModelOptions]="{standalone: true}"
-            [placeholder]="inputs().expire ? '00/00' : '••/••'"
+            [placeholder]="inputs().expire ? expirePlaceholder() : '••/••'"
             [readOnly]="readOnly() || !inputs().expire"
             [tabIndex]="expireFocusable() || (isMobile && isWebkit) ? 0 : -1"
             (focus)="(0)"
