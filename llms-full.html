@@ -51318,6 +51318,12 @@ footer {
 &lt;span size=&quot;l&quot; tuiAvatar=&quot;❤️&quot; [tuiSkeleton]=&quot;skeleton&quot; &gt;&lt;/span&gt;
 &lt;span appearance=&quot;primary&quot; size=&quot;l&quot; tuiAvatar=&quot;$&quot; [tuiSkeleton]=&quot;skeleton&quot; &gt;&lt;/span&gt;
 &lt;/p&gt;
+&lt;p&gt;
+&lt;tui-textfield [tuiSkeleton]=&quot;skeleton&quot;&gt;
+&lt;label tuiLabel&gt;Input&lt;/label&gt;
+&lt;input tuiInput value=&quot;Some value&quot; [readOnly]=&quot;skeleton&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/p&gt;
 &lt;section appearance=&quot;neutral&quot; tuiCardLarge [tuiSkeleton]=&quot;skeleton&quot; &gt;
 &lt;h2 tuiHeader&gt;
 &lt;span tuiTitle&gt; Card &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
@@ -51349,7 +51355,7 @@ import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiButton, TuiLabel, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiInput, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {
     TuiAvatar,
     TuiAvatarStack,
@@ -51371,7 +51377,7 @@ import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
         TuiCardLarge,
         TuiChip,
         TuiHeader,
-        TuiLabel,
+        TuiInput,
         TuiProgressCircle,
         TuiSkeleton,
         TuiSwitch,
@@ -51393,6 +51399,10 @@ p {
     gap: 1rem;
     align-items: center;
     justify-content: center;
+}
+
+tui-textfield {
+    inline-size: 100%;
 }
 ```
 
