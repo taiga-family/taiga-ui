@@ -55,7 +55,7 @@ export class TuiToastComponent<O, I> implements AfterViewInit {
         const close = this.close();
 
         if (close) {
-            this.el.querySelector('[tuiToast]')?.appendChild(close?.nativeElement);
+            this.el.querySelector('[tuiToast]')?.appendChild(close.nativeElement);
         }
     }
 
