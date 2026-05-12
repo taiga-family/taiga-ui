@@ -41345,6 +41345,50 @@ hr {
 }
 ```
 
+#### Disabled
+
+**Template:**
+```html
+<tui-segmented [disabled]="true">
+<button type="button">Label</button>
+<button type="button">Label</button>
+<button type="button">Label</button>
+<button type="button">Label</button>
+</tui-segmented>
+<tui-segmented>
+<button type="button" [disabled]="true" > Label </button>
+<button type="button">Label</button>
+<button type="button" [disabled]="true" > Label </button>
+<button type="button">Label</button>
+</tui-segmented>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSegmented} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [TuiSegmented],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -41360,7 +41404,13 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Sizes', 'Width', 'Customization', 'Content'];
+    protected readonly examples = [
+        'Sizes',
+        'Width',
+        'Customization',
+        'Content',
+        'Disabled',
+    ];
 }
 ```
 
