@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.0](https://github.com/taiga-family/taiga-ui/compare/v5.5.0...v5.6.0) (2026-05-12)
+
+### 🚀 Features
+
+- **kit:** `InputDateMulti` add ability to use valueTransformer
+  ([#14039](https://github.com/taiga-family/taiga-ui/issues/14039))
+  ([5536ddd](https://github.com/taiga-family/taiga-ui/commit/5536dddc2e16d0aa4dafe3bfeaacc3101b0dc6e7))
+- **kit:** remove empty labels with css ([#14000](https://github.com/taiga-family/taiga-ui/issues/14000))
+  ([093c68b](https://github.com/taiga-family/taiga-ui/commit/093c68b3e95be80d40f275f8ea4893317bd80b88))
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** fix hint type in line chart ([#13565](https://github.com/taiga-family/taiga-ui/issues/13565))
+  ([187373b](https://github.com/taiga-family/taiga-ui/commit/187373bfaec4cf571d00a3fde60c1337552f85f7))
+- **addon-mobile:** `Header` fix description font size according to specs
+  ([#14048](https://github.com/taiga-family/taiga-ui/issues/14048))
+  ([b492efa](https://github.com/taiga-family/taiga-ui/commit/b492efae74750e5776680d6478c97e21e16c0da7))
+- **cdk:** use unique version key for leave animation ([#14050](https://github.com/taiga-family/taiga-ui/issues/14050))
+  ([753671f](https://github.com/taiga-family/taiga-ui/commit/753671fe3219225ddf612dfdcd3e2382c71d9195))
+- **core:** `Dialog` fix mobile fullscreen button size ([#14080](https://github.com/taiga-family/taiga-ui/issues/14080))
+  ([ad18d2e](https://github.com/taiga-family/taiga-ui/commit/ad18d2eac51b3add7f8c16cf52f5b7c7f3049299))
+- **core:** `Icons` fix mask for older browsers ([#14086](https://github.com/taiga-family/taiga-ui/issues/14086))
+  ([6f520f1](https://github.com/taiga-family/taiga-ui/commit/6f520f16f08558a1f35ebdcec004e61045a75e11))
+- **core:** `ModalService` destroying in zoneless with AngularAnimation engine
+  ([#14065](https://github.com/taiga-family/taiga-ui/issues/14065))
+  ([5aeb842](https://github.com/taiga-family/taiga-ui/commit/5aeb84227b84ce35787eb9293f1c38161c6a3409))
+- **core:** correctly detect top root in fullscreen mode
+  ([#14043](https://github.com/taiga-family/taiga-ui/issues/14043))
+  ([e848761](https://github.com/taiga-family/taiga-ui/commit/e848761ae38b848470d7c910ab1de3045a0860cc))
+- **kit:** `Skeleton` bump style specificity to accommodate `Textfield`
+  ([#14082](https://github.com/taiga-family/taiga-ui/issues/14082))
+  ([5de15bc](https://github.com/taiga-family/taiga-ui/commit/5de15bcaba6ef79da2d20494cc00ee281dedc73c))
+- **kit:** `tuiComment` fix arrow color overlapping ([#13099](https://github.com/taiga-family/taiga-ui/issues/13099))
+  ([#14064](https://github.com/taiga-family/taiga-ui/issues/14064))
+  ([d14ae7a](https://github.com/taiga-family/taiga-ui/commit/d14ae7a5ff0c90d921d057bbc5a46e0272618fc8))
+- **layout:** fix mobile styles for block-details ([#14069](https://github.com/taiga-family/taiga-ui/issues/14069))
+  ([6fe1b34](https://github.com/taiga-family/taiga-ui/commit/6fe1b3479e9337dac59a1d0b173b7e0f4b87d1e9))
+- **schematics:** add migration for `TuiTextfieldDropdownDirective`
+  ([#14036](https://github.com/taiga-family/taiga-ui/issues/14036))
+  ([e09ad91](https://github.com/taiga-family/taiga-ui/commit/e09ad91a7e31a86c9d7ccc996fa625db085c2aed))
+
 ## [5.5.0](https://github.com/taiga-family/taiga-ui/compare/v5.4.0...v5.5.0) (2026-05-04)
 
 ### 🚀 Features
