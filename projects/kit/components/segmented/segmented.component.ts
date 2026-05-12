@@ -37,6 +37,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     hostDirectives: [TuiSegmentedDirective],
     host: {
         '[attr.data-size]': 'size',
+        '[attr.inert]': 'disabled ? "" : null',
     },
 })
 export class TuiSegmented implements OnChanges {
@@ -51,6 +52,9 @@ export class TuiSegmented implements OnChanges {
 
     @Input()
     public activeItemIndex = 0;
+
+    @Input()
+    public disabled = false;
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
