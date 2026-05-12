@@ -1,0 +1,41 @@
+<p>
+    <b>Material Symbols Outlined</b>
+    has user friendly naming, the actual word
+    <code>home</code>
+    gets turned into a house icon:
+</p>
+<tui-icon
+    icon="@font.home"
+    class="material"
+/>
+<p>
+    <b>FontAwesome</b>
+    uses Private Use Area of Unicode to turn
+    <code>\f004</code>
+    into a heart icon, which you can pass as the icon name:
+</p>
+<tui-icon
+    icon="@font.\f004"
+    class="awesome"
+/>
+<p>
+    Alternatively, you can pass empty icon name and use
+    <b>FontAwesome</b>
+    classes to get the same result for the basic case, because it also uses
+    <code>::before</code>
+    pseudo-element:
+</p>
+<tui-icon
+    icon="@font."
+    class="awesome fa-heart"
+/>
+<p>
+    Ultimately, what you put after
+    <code>&commat;font.</code>
+    goes into CSS
+    <code>content</code>
+    and gets displayed using font defined via
+    <code>--tui-font-icon</code>
+    variable.
+</p>
+<p>The rest is determined by the font you use and you should consult its documentation.</p>
