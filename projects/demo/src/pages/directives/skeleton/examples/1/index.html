@@ -34,6 +34,16 @@
         [tuiSkeleton]="skeleton"
     ></span>
 </p>
+<p>
+    <tui-textfield [tuiSkeleton]="skeleton">
+        <label tuiLabel>Input</label>
+        <input
+            tuiInput
+            value="Some value"
+            [readOnly]="skeleton"
+        />
+    </tui-textfield>
+</p>
 <section
     appearance="neutral"
     tuiCardLarge
