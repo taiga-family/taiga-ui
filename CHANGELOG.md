@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.82.0](https://github.com/taiga-family/taiga-ui/compare/v4.81.0...v4.82.0) (2026-05-12)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `Header` fix description font size according to specs
+  ([#14049](https://github.com/taiga-family/taiga-ui/issues/14049))
+  ([a86ad69](https://github.com/taiga-family/taiga-ui/commit/a86ad6950acb4967f8c42a082f412cc6ec382707))
+- **core:** `Dialog` fix mobile fullscreen button size ([#14081](https://github.com/taiga-family/taiga-ui/issues/14081))
+  ([d4f0fba](https://github.com/taiga-family/taiga-ui/commit/d4f0fba6936d6a89862aad19f98ff7647709cb5d))
+- **layout:** fix mobile styles for block-details ([#14068](https://github.com/taiga-family/taiga-ui/issues/14068))
+  ([29e3761](https://github.com/taiga-family/taiga-ui/commit/29e3761e04c660fdd38d21654c1cf682cc7cf915))
+
+### 🚀 Features
+
+- add version encapsulation to `cdk` and `core` ([#13634](https://github.com/taiga-family/taiga-ui/issues/13634))
+  ([3099b28](https://github.com/taiga-family/taiga-ui/commit/3099b2884d54dd471e84e673427eae495a07f82d))
+- add version encapsulation to layout ([#14016](https://github.com/taiga-family/taiga-ui/issues/14016))
+  ([36c0fb3](https://github.com/taiga-family/taiga-ui/commit/36c0fb3e8732a027a8021af42b18bf3f807866ad))
+- **kit:** support disabled state for `tui-segmented` ([#14091](https://github.com/taiga-family/taiga-ui/issues/14091))
+  ([22062e8](https://github.com/taiga-family/taiga-ui/commit/22062e8c9ec4bf35f63ed4c1000226bbf6ccbbdd))
+
 ## [4.81.0](https://github.com/taiga-family/taiga-ui/compare/v4.80.1...v4.81.0) (2026-04-27)
 
 ### 🐞 Bug Fixes
