@@ -1,0 +1,24 @@
+import"./chunk-HU6DUUP4.js";var e=`@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    align-items: center;
+
+    --tui-background-accent-1: var(--tui-background-accent-2);
+
+    @media @tui-mobile {
+        font-size: 0;
+    }
+}
+
+.t-link {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--tui-text-primary);
+    text-decoration: none;
+}
+
+.t-logo {
+    inline-size: 1.5rem;
+}
+`;export{e as default};

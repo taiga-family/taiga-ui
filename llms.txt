@@ -73,6 +73,7 @@
 - [Counter](https://taiga-ui.dev/components/counter)
 - [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
 - [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
+- [Date Picker](https://taiga-ui.dev/components/date-picker) — This is a work in progress, do not use!
 - [Dialog](https://taiga-ui.dev/components/dialog) — Customizable modal dialogs
 - [Drawer](https://taiga-ui.dev/components/drawer)
 - [Elastic Container](https://taiga-ui.dev/components/elastic-container) — A wrapper component that changes its height with transition, depending on the content
