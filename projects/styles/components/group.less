@@ -26,7 +26,13 @@
 
     --t-group-radius: var(--tui-radius-l);
     --t-group-margin: -1px;
-    --t-group-mask: linear-gradient(to right, rgba(0, 0, 0, 0.5) 1px, #000 2px, #000 calc(100% - 2px), rgba(0, 0, 0, 0.5));
+    --t-group-mask: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5) 1px,
+        #000 2px,
+        #000 calc(100% - 2px),
+        rgba(0, 0, 0, 0.5)
+    );
     --t-group-mask-end: linear-gradient(to right, rgba(0, 0, 0, 0.5) 1px, #000 2px);
     --t-group-mask-start: linear-gradient(to right, #000 calc(100% - 2px), rgba(0, 0, 0, 0.5) calc(100% - 1px));
 
@@ -34,7 +40,7 @@
         z-index: 1;
         flex: 1 1 0;
         min-inline-size: 0;
-        mask: var(--t-group-mask);
+        mask-image: var(--t-group-mask);
         mask-clip: no-clip;
 
         &:disabled,
@@ -113,7 +119,7 @@
 
         &:only-child {
             border-radius: var(--t-group-radius);
-            mask: none;
+            mask-image: none;
         }
     }
 
@@ -130,7 +136,7 @@
 
         &:only-child {
             border-radius: var(--t-group-radius);
-            mask: none;
+            mask-image: none;
         }
     }
 
@@ -143,7 +149,13 @@
         display: inline-flex;
         flex-direction: column;
 
-        --t-group-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 1px, #000 2px, #000 calc(100% - 2px), rgba(0, 0, 0, 0.5));
+        --t-group-mask: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.5) 1px,
+            #000 2px,
+            #000 calc(100% - 2px),
+            rgba(0, 0, 0, 0.5)
+        );
         --t-group-mask-start: linear-gradient(to bottom, #000 calc(100% - 2px), rgba(0, 0, 0, 0.5) calc(100% - 1px));
         --t-group-mask-end: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 1px, #000 2px);
 

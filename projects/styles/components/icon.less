@@ -30,7 +30,10 @@ tui-icon:where(*&) {
     border: 0 solid transparent;
     vertical-align: middle;
     box-sizing: border-box;
-    mask: var(--t-icon-bg) no-repeat center / calc(100% + 10 * var(--tui-stroke-width)) 100%;
+    mask-image: var(--t-icon-bg);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: calc(100% + 10 * var(--tui-stroke-width)) 100%;
     zoom: ~'calc(100% * (clamp(0px, var(--tui-font-offset) - 10px, 1px) / 0.8px))';
 
     @media @tui-mouse {
@@ -55,7 +58,11 @@ tui-icon:where(*&) {
         &[data-icon-start='img'],
         &[data-icon-start='font'] {
             &::before {
-                mask: radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
+                mask-image: radial-gradient(
+                    circle at bottom 0.1em right 0.1em,
+                    transparent calc(0.4em - 0.5px),
+                    #000 0.4em
+                );
             }
         }
 

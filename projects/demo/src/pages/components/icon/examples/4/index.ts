@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, tuiIconsProvider} from '@taiga-ui/core';
 import heart from '@taiga-ui/icons/src/heart.svg';
-import search from '@taiga-ui/icons/src/search.svg';
+import mastercard from '@taiga-ui/icons/src/mastercard.svg';
 
 @Component({
     imports: [TuiIcon],
@@ -14,7 +14,7 @@ import search from '@taiga-ui/icons/src/search.svg';
     providers: [
         tuiIconsProvider({
             '@tui.heart': heart,
-            '@tui.search': search,
+            '@img.mastercard': mastercard,
         }),
     ],
 })

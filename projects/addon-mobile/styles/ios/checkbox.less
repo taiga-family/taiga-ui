@@ -23,7 +23,8 @@ input[tuiRadio] {
         &::before {
             display: block;
             transform: none;
-            mask: var(--t-icon) no-repeat center / 1rem;
+            mask-image: var(--t-icon);
+            mask-size: 1rem;
         }
 
         &:invalid {

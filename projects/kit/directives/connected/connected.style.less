@@ -50,7 +50,7 @@
             block-size: 100%;
             margin: 0;
             background: var(--tui-border-normal);
-            mask: linear-gradient(
+            mask-image: linear-gradient(
                 to top,
                 black calc(50% - var(--t-image-size) / 2),
                 transparent calc(50% - var(--t-image-size) / 2),
@@ -60,7 +60,7 @@
         }
 
         &:first-of-type::before {
-            mask: linear-gradient(
+            mask-image: linear-gradient(
                 to top,
                 black calc(50% - var(--t-image-size) / 2),
                 transparent calc(50% - var(--t-image-size) / 2)
@@ -68,7 +68,7 @@
         }
 
         &:last-of-type::before {
-            mask: linear-gradient(
+            mask-image: linear-gradient(
                 to bottom,
                 black calc(50% - var(--t-image-size) / 2),
                 transparent calc(50% - var(--t-image-size) / 2)
