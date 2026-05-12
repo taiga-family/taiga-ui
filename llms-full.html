@@ -17363,7 +17363,7 @@ img {
 **Template:**
 ```html
 &lt;tui-icon icon=&quot;@tui.heart&quot; /&gt;
-&lt;tui-icon icon=&quot;@tui.search&quot; /&gt;
+&lt;tui-icon icon=&quot;@img.mastercard&quot; /&gt;
 ```
 **TypeScript:**
 ```ts
@@ -17372,7 +17372,7 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiIcon, tuiIconsProvider} from &#039;@taiga-ui/core&#039;;
 import heart from &#039;@taiga-ui/icons/src/heart.svg&#039;;
-import search from &#039;@taiga-ui/icons/src/search.svg&#039;;
+import mastercard from &#039;@taiga-ui/icons/src/mastercard.svg&#039;;
 
 @Component({
     imports: [TuiIcon],
@@ -17383,7 +17383,7 @@ import search from &#039;@taiga-ui/icons/src/search.svg&#039;;
     providers: [
         tuiIconsProvider({
             &#039;@tui.heart&#039;: heart,
-            &#039;@tui.search&#039;: search,
+            &#039;@img.mastercard&#039;: mastercard,
         }),
     ],
 })
@@ -17527,6 +17527,48 @@ tui-icon {
 }
 ```
 
+#### Icon fonts
+
+**Template:**
+```html
+&lt;p&gt;
+&lt;b&gt;Material Symbols Outlined&lt;/b&gt; has user friendly naming, the actual word &lt;code&gt;home&lt;/code&gt; gets turned into a house icon: &lt;/p&gt;
+&lt;tui-icon icon=&quot;@font.home&quot; class=&quot;material&quot; /&gt;
+&lt;p&gt;
+&lt;b&gt;FontAwesome&lt;/b&gt; uses Private Use Area of Unicode to turn &lt;code&gt;\f004&lt;/code&gt; into a heart icon, which you can pass as the icon name: &lt;/p&gt;
+&lt;tui-icon icon=&quot;@font.\f004&quot; class=&quot;awesome&quot; /&gt;
+&lt;p&gt; Alternatively, you can pass empty icon name and use &lt;b&gt;FontAwesome&lt;/b&gt; classes to get the same result for the basic case, because it also uses &lt;code&gt;::before&lt;/code&gt; pseudo-element: &lt;/p&gt;
+&lt;tui-icon icon=&quot;@font.&quot; class=&quot;awesome fa-heart&quot; /&gt;
+&lt;p&gt; Ultimately, what you put after &lt;code&gt;&amp;commat;font.&lt;/code&gt; goes into CSS &lt;code&gt;content&lt;/code&gt; and gets displayed using font defined via &lt;code&gt;--tui-font-icon&lt;/code&gt; variable. &lt;/p&gt;
+&lt;p&gt;The rest is determined by the font you use and you should consult its documentation.&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiIcon],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+.material {
+    --tui-font-icon: &#039;Material Symbols Outlined&#039;;
+}
+
+.awesome {
+    --tui-font-icon: &#039;Font Awesome 6 Free&#039;;
+}
+```
+
 
 ### TypeScript
 
@@ -17572,6 +17614,7 @@ export default class Page {
         &#039;Resolver&#039;,
         &#039;External&#039;,
         &#039;Background&#039;,
+        &#039;Icon fonts&#039;,
     ];
 
     protected icon = &#039;@tui.heart&#039;;
