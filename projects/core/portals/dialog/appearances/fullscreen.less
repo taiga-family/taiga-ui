@@ -24,7 +24,7 @@
         align-self: flex-end;
         margin-block-end: 2rem;
         border-radius: 0 !important;
-        font: var(--tui-typography-body-m) !important;
+        font: var(--tui-typography-body-l) !important;
         border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0 / 0 / env(safe-area-inset-top) 100vw 0;
 
         &::before {
@@ -123,5 +123,9 @@
             padding: 0 1rem ~'max(1rem, env(safe-area-inset-bottom))';
             margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
         }
+    }
+
+    [data-platform='ios'] & > [tuiButtonX][tuiButtonX] {
+        block-size: 2.75rem;
     }
 }
