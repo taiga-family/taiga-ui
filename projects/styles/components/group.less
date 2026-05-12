@@ -34,7 +34,7 @@
         z-index: 1;
         flex: 1 1 0;
         min-inline-size: 0;
-        mask: var(--t-group-mask);
+        mask-image: var(--t-group-mask);
         mask-clip: no-clip;
 
         &:disabled,
@@ -113,7 +113,7 @@
 
         &:only-child {
             border-radius: var(--t-group-radius);
-            mask: none;
+            mask-image: none;
         }
     }
 
@@ -130,7 +130,7 @@
 
         &:only-child {
             border-radius: var(--t-group-radius);
-            mask: none;
+            mask-image: none;
         }
     }
 

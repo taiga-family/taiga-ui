@@ -139,14 +139,14 @@
     &._initials {
         &::before {
             content: attr(data-icon-start);
-            mask: none;
+            mask-image: none;
             background: none;
             font: var(--tui-typography-heading-h6);
         }
     }
 
     &._badge {
-        mask: radial-gradient(
+        mask-image: radial-gradient(
             circle at ~'calc(max(var(--tui-inline), 0) * 100% - var(--tui-inline) * var(--t-corner-offset))'
                 calc(100% - var(--t-corner-offset)),
             black 0.23rem,

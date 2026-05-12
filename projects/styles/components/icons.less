@@ -25,6 +25,7 @@
     &::before,
     &::after {
         content: '';
+        display: var(--t-icon-start);
         inline-size: 1em;
         block-size: 1em;
         line-height: 1em;
@@ -33,36 +34,34 @@
         box-sizing: content-box;
         background: currentColor;
         zoom: calc(100% + 25% * var(--t-zoom));
-    }
-
-    &::before {
-        display: var(--t-icon-start);
-        mask:
-            var(--t-icon-start) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width))
-                ~'min(1em, 100%)',
-            100% padding-box;
+        mask-image: var(--t-icon-start);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size:
+            calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width)) ~'min(1em, 100%)',
+            100%;
+        mask-clip: padding-box;
     }
 
     &::after {
         display: var(--t-icon-end);
-        mask: var(--t-icon-end) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width))
-            ~'min(1em, 100%)' padding-box;
+        mask-image: var(--t-icon-end);
     }
 
     &:where([data-icon-start='img'])::before {
-        mask: none;
+        mask-image: none;
         background: var(--t-icon-start) no-repeat center / 1em padding-box;
     }
 
     &:where([data-icon-end='img'])::after {
-        mask: none;
+        mask-image: none;
         background: var(--t-icon-end) no-repeat center / 1em padding-box;
     }
 
     &:where([data-icon-start='font'])::before,
     &:where([data-icon-end='font'])::after {
         display: grid;
-        mask: none;
+        mask-image: none;
         background: none;
         font: 1.5em / 1 var(--tui-font-icon, inherit);
         text-align: center;

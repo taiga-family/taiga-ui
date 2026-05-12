@@ -10,7 +10,7 @@ import {TuiLink, TuiNotification, TuiTitle} from '@taiga-ui/core';
             tuiNotification
         >
             <div tuiTitle>
-                Taiga UI 5.0 is out!
+                Taiga UI 5 is out!
                 <div tuiSubtitle>
                     See
                     <a
