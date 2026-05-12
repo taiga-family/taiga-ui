@@ -11,7 +11,7 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Button', 'ButtonGroup', 'Link'],
     ['Checkbox', 'Radio', 'Switch', 'Block', 'Label'],
     ['Accordion', 'Expand'],
-    ['ComboBox', 'MultiSelect', 'Select', 'ButtonSelect'],
+    ['ComboBox', 'InputChip', 'Select', 'ButtonSelect'],
     ['Badge', 'BadgedContent', 'Tag'],
     ['Dropdown', 'DropdownSelection', 'DropdownHover', 'DropdownContext', 'DropdownOpen'],
     ['ProgressBar', 'ProgressCircle', 'ProgressSegmented', 'Loader'],
