@@ -1,0 +1,15 @@
+import"./chunk-HU6DUUP4.js";var o=`<label
+    tuiLabel
+    class="tui-space_bottom-4"
+>
+    <input
+        tuiSwitch
+        type="checkbox"
+        [ngModel]="showLabels()"
+        (ngModelChange)="showLabels.set($event)"
+    />
+    {{ showLabels() ? 'Hide labels' : 'Show labels' }}
+</label>
+
+<tui-input-card-group [formControl]="control" />
+`;export{o as default};
