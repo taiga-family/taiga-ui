@@ -47,6 +47,11 @@ tui-segmented {
         }
     }
 
+    &[inert] {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
+
     & > a,
     & > button,
     & > label,
