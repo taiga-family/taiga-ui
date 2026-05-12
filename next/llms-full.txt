@@ -51309,6 +51309,12 @@ footer {
 <span size="l" tuiAvatar="❤️" [tuiSkeleton]="skeleton" ></span>
 <span appearance="primary" size="l" tuiAvatar="$" [tuiSkeleton]="skeleton" ></span>
 </p>
+<p>
+<tui-textfield [tuiSkeleton]="skeleton">
+<label tuiLabel>Input</label>
+<input tuiInput value="Some value" [readOnly]="skeleton" />
+</tui-textfield>
+</p>
 <section appearance="neutral" tuiCardLarge [tuiSkeleton]="skeleton" >
 <h2 tuiHeader>
 <span tuiTitle> Card <span tuiSubtitle>Subtitle</span>
@@ -51340,7 +51346,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiInput, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiAvatarStack,
@@ -51362,7 +51368,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiCardLarge,
         TuiChip,
         TuiHeader,
-        TuiLabel,
+        TuiInput,
         TuiProgressCircle,
         TuiSkeleton,
         TuiSwitch,
@@ -51384,6 +51390,10 @@ p {
     gap: 1rem;
     align-items: center;
     justify-content: center;
+}
+
+tui-textfield {
+    inline-size: 100%;
 }
 ```
 
