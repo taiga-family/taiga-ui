@@ -29,6 +29,7 @@ const texts = computed(() =>
     ],
 })
 export default class Example {
+    // eslint-disable-next-line @taiga-ui/experience-next/no-signal-outside-class
     protected readonly showLabels = showLabels;
 
     protected readonly control = new FormControl<Partial<TuiCard>>({
