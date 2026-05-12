@@ -18451,6 +18451,56 @@ export default class Example {
 }
 ```
 
+#### Empty labels
+
+**Template:**
+```html
+&lt;label tuiLabel class=&quot;tui-space_bottom-4&quot; &gt;
+&lt;input tuiSwitch type=&quot;checkbox&quot; [ngModel]=&quot;showLabels()&quot; (ngModelChange)=&quot;showLabels.set($event)&quot; /&gt; {{ showLabels() ? &#039;Hide labels&#039; : &#039;Show labels&#039; }} &lt;/label&gt;
+&lt;tui-input-card-group [formControl]=&quot;control&quot; /&gt;
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal} from &#039;@angular/core&#039;;
+import {FormControl, FormsModule, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {
+    TUI_INPUT_CARD_GROUP_TEXTS,
+    type TuiCard,
+    TuiInputCardGroup,
+} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiLabel} from &#039;@taiga-ui/core&#039;;
+import {TuiSwitch} from &#039;@taiga-ui/kit&#039;;
+
+const showLabels = signal(true);
+
+const texts = computed(() =&gt;
+    showLabels()
+        ? {cardNumberText: &#039;Card number&#039;, expiryText: &#039;MM/YY&#039;, cvcText: &#039;CVV&#039;}
+        : {cardNumberText: &#039;&#039;, expiryText: &#039;&#039;, cvcText: &#039;&#039;},
+);
+
+@Component({
+    imports: [FormsModule, ReactiveFormsModule, TuiInputCardGroup, TuiLabel, TuiSwitch],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+    providers: [
+        {
+            provide: TUI_INPUT_CARD_GROUP_TEXTS,
+            useValue: texts,
+        },
+    ],
+})
+export default class Example {
+    protected readonly showLabels = showLabels;
+
+    protected readonly control = new FormControl&lt;Partial&lt;TuiCard&gt;&gt;({
+        card: &#039;558620******2158&#039;,
+        expire: &#039;12/25&#039;,
+    });
+}
+```
+
 
 ### TypeScript
 
@@ -18491,6 +18541,7 @@ export default class PageComponent {
         &#039;With custom card template&#039;,
         &#039;Custom form state&#039;,
         &#039;Custom labels&#039;,
+        &#039;Empty labels&#039;,
     ];
 
     protected readonly cards: Record&lt;string, PolymorpheusContent | string&gt; = {
