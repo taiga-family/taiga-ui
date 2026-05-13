@@ -21,7 +21,10 @@ import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {
+    TUI_BUTTON_OPTIONS,
+    tuiButtonOptionsProvider,
+} from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
 import {
     tuiAsDataListHost,
@@ -30,7 +33,7 @@ import {
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
+import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
@@ -59,6 +62,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
+        tuiButtonXOptionsProvider(() => inject(TUI_BUTTON_OPTIONS)),
         tuiAsDataListHost(TuiTextfieldComponent),
         {
             provide: TUI_TEXTFIELD_VALUE,
