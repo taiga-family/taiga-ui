@@ -12,7 +12,14 @@ import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly options = inject(TUI_TOAST_OPTIONS);
-    protected readonly examples = ['Basic', 'Customization', 'Service'];
+
+    protected readonly examples = [
+        'Basic',
+        'Customization',
+        'Service',
+        'Custom appearance',
+    ];
+
     protected readonly toast = signal(false);
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
     protected autoClose = this.options.autoClose;
