@@ -54,6 +54,7 @@ import {
 } from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TUI_DATE_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, Subject, switchMap, timer} from 'rxjs';
 
@@ -126,6 +127,11 @@ export class TuiInputCardGroup
     private readonly focusedIn = tuiFocusedIn(this.el);
     protected readonly cvcMask = computed(() => TUI_MASK_CVC(this.codeLength() ?? 3));
     protected readonly cvcHidden = this.options.cvcHidden;
+    protected readonly dateTexts = inject(TUI_DATE_TEXTS);
+
+    protected readonly expirePlaceholder = computed(
+        () => this.dateTexts()['dd/mm/yyyy']?.slice(3, 8).replaceAll('.', '/') ?? '00/00',
+    );
 
     protected readonly cvcPlaceholder = computed((length = this.codeLength()) =>
         length ? '0'.repeat(length) : this.options.cvcPlaceholder,
