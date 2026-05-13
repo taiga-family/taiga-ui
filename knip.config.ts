@@ -7,7 +7,6 @@ const config: KnipConfig = {
         '@taiga-ui/.+',
         '@ng-web-apis/.+',
         '@maskito/.+',
-        'libphonenumber-js',
         'ts-morph',
         'jest',
     ],
