@@ -3,7 +3,6 @@ export const IGNORABLE_TAIGA_PACKAGES = [
     '@taiga-ui/commitlint-config',
     '@taiga-ui/cspell-config',
     '@taiga-ui/design-tokens',
-    '@taiga-ui/dompurify',
     '@taiga-ui/editor',
     '@taiga-ui/eslint-plugin-experience',
     '@taiga-ui/eslint-plugin-experience-next',
@@ -13,4 +12,8 @@ export const IGNORABLE_TAIGA_PACKAGES = [
     '@taiga-ui/prettier-config',
     '@taiga-ui/stylelint-config',
     '@taiga-ui/tsconfig',
+    '@taiga-ui/dompurify',
+    '@taiga-ui/tds-icons',
+    '@taiga-ui/tds-fonts',
+    '@taiga-ui/configs',
 ] as const;
