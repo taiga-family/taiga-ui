@@ -1,0 +1,14 @@
+<label tuiLabel>
+    <tui-textfield
+        iconStart="@tui.calendar"
+        tuiTextfieldSize="m"
+    >
+        <input
+            placeholder="DD.MM.YYYY"
+            tuiInputDate
+            [(ngModel)]="value"
+        />
+    </tui-textfield>
+
+    <tui-calendar [(value)]="value" />
+</label>

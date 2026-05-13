@@ -40,6 +40,7 @@ export default class Example {
         'Mobile',
         'Limits',
         'Datalist',
+        'Outside',
     ];
 
     protected readonly control = new FormControl();
