@@ -17851,7 +17851,7 @@ export default class Example {
 **Template:**
 ```html
 <tui-textfield [tuiTextfieldCleaner]="false">
-<input #input placeholder="Input value" tuiInput [(ngModel)]="value" /> @if (value) { <button tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
+<input #input placeholder="Input value" tuiInput [(ngModel)]="value" /> @if (value) { <button tabindex="-1" tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -17884,7 +17884,7 @@ export default class Example {
 ```html
 <tui-textfield [tuiTextfieldCleaner]="false">
 <label tuiLabel>Flat angle</label>
-<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
+<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button tabindex="-1" tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -18917,7 +18917,7 @@ export default class Example {
 **Template:**
 ```html
 <tui-textfield multi [disabledItemHandler]="handler" [style.width.rem]="19" [tuiTextfieldCleaner]="false" >
-<input tuiInputChip [formControl]="control" /> @if (control.value.length > 2) { <button tuiButtonX (click)="control.setValue(this.required)" > Clear </button> } <tui-input-chip *tuiItem />
+<input tuiInputChip [formControl]="control" /> @if (control.value.length > 2) { <button tabindex="-1" tuiButtonX (click)="control.setValue(this.required)" > Clear </button> } <tui-input-chip *tuiItem />
 </tui-textfield>
 ```
 **TypeScript:**

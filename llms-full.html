@@ -17860,7 +17860,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;tui-textfield [tuiTextfieldCleaner]=&quot;false&quot;&gt;
-&lt;input #input placeholder=&quot;Input value&quot; tuiInput [(ngModel)]=&quot;value&quot; /&gt; @if (value) { &lt;button tuiButtonX (click)=&quot;clear()&quot; &gt; Clear &lt;/button&gt; } &lt;/tui-textfield&gt;
+&lt;input #input placeholder=&quot;Input value&quot; tuiInput [(ngModel)]=&quot;value&quot; /&gt; @if (value) { &lt;button tabindex=&quot;-1&quot; tuiButtonX (click)=&quot;clear()&quot; &gt; Clear &lt;/button&gt; } &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
@@ -17893,7 +17893,7 @@ export default class Example {
 ```html
 &lt;tui-textfield [tuiTextfieldCleaner]=&quot;false&quot;&gt;
 &lt;label tuiLabel&gt;Flat angle&lt;/label&gt;
-&lt;input #input placeholder=&quot;3,14&quot; tuiInput [maskito]=&quot;options&quot; [(ngModel)]=&quot;value&quot; /&gt; @if (value) { &lt;button tuiButtonX (click)=&quot;clear()&quot; &gt; Clear &lt;/button&gt; } &lt;/tui-textfield&gt;
+&lt;input #input placeholder=&quot;3,14&quot; tuiInput [maskito]=&quot;options&quot; [(ngModel)]=&quot;value&quot; /&gt; @if (value) { &lt;button tabindex=&quot;-1&quot; tuiButtonX (click)=&quot;clear()&quot; &gt; Clear &lt;/button&gt; } &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
@@ -18926,7 +18926,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;tui-textfield multi [disabledItemHandler]=&quot;handler&quot; [style.width.rem]=&quot;19&quot; [tuiTextfieldCleaner]=&quot;false&quot; &gt;
-&lt;input tuiInputChip [formControl]=&quot;control&quot; /&gt; @if (control.value.length &gt; 2) { &lt;button tuiButtonX (click)=&quot;control.setValue(this.required)&quot; &gt; Clear &lt;/button&gt; } &lt;tui-input-chip *tuiItem /&gt;
+&lt;input tuiInputChip [formControl]=&quot;control&quot; /&gt; @if (control.value.length &gt; 2) { &lt;button tabindex=&quot;-1&quot; tuiButtonX (click)=&quot;control.setValue(this.required)&quot; &gt; Clear &lt;/button&gt; } &lt;tui-input-chip *tuiItem /&gt;
 &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
