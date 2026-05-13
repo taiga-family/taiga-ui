@@ -1,5 +1,5 @@
 import {inject, Injectable, type Type} from '@angular/core';
-import {TUI_LEAVE} from '@taiga-ui/cdk/directives/animated';
+import {TUI_ENTER, TUI_LEAVE} from '@taiga-ui/cdk/directives/animated';
 import {TuiPortal} from '@taiga-ui/cdk/portals';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -24,11 +24,16 @@ export abstract class TuiModalService<T, K = void> extends TuiPortal<T, K> {
         ref.instance.component.set(new PolymorpheusComponent(this.content));
 
         return () => {
-            ref.instance.component.set(null);
-            ref.changeDetectorRef.detectChanges();
+            const dialogEl = el.firstElementChild?.firstElementChild ?? null;
+
+            if (dialogEl) {
+                dialogEl.classList.remove(TUI_ENTER);
+                dialogEl.classList.add(TUI_LEAVE);
+            }
+
             el.classList.add(TUI_LEAVE);
 
-            Promise.allSettled(getAnimations(el))
+            Promise.allSettled([...getAnimations(el), ...getAnimations(dialogEl)])
                 .then(async () => Promise.allSettled(getAnimations(el.firstElementChild)))
                 .then(() => {
                     // Under zoneless + provideAnimations Angular's animation engine queues
