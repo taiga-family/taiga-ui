@@ -45,6 +45,11 @@
         --t-height: var(--tui-height-s);
         --t-radius: var(--tui-radius-m);
 
+        &::before,
+        &::after {
+            font-size: 1rem;
+        }
+
         [tuiSubtitle] {
             font: var(--tui-typography-ui-2xs);
         }
@@ -61,6 +66,11 @@
 
         --t-height: var(--tui-height-m);
         --t-radius: var(--tui-radius-m);
+
+        &::before,
+        &::after {
+            margin: -0.125rem;
+        }
 
         input:not([tuiBlock]) {
             margin: 0.125rem;
@@ -92,6 +102,10 @@
         pointer-events: none;
         border-radius: inherit;
         padding: 0;
+
+        &[type='file'] {
+            opacity: 0;
+        }
     }
 
     [tuiAvatar] {
