@@ -10,6 +10,7 @@
     />
     @if (control.value.length > 2) {
         <button
+            tabindex="-1"
             tuiButtonX
             (click)="control.setValue(this.required)"
         >

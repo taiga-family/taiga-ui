@@ -12,6 +12,7 @@
     <ng-container #vcr />
     @if (options.cleaner()) {
         <button
+            tabindex="-1"
             tuiButtonX
             (click)="accessor()?.setValue(null)"
         >
