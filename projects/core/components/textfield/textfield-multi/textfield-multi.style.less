@@ -94,7 +94,6 @@ tui-textfield[multi][multi]:where(*&) {
     &._with-label {
         &[data-size='l'] {
             --t-vertical: 0.5625rem;
-            --t-label-margin: 0.625rem;
 
             tui-textfield-item:first-of-type {
                 margin-block-start: 1.125rem;
@@ -103,7 +102,6 @@ tui-textfield[multi][multi]:where(*&) {
 
         &[data-size='m'] {
             --t-vertical: 0.4375rem;
-            --t-label-margin: 0.4375rem;
 
             tui-textfield-item:first-of-type {
                 margin-block-start: 0.875rem;
@@ -115,12 +113,9 @@ tui-textfield[multi][multi]:where(*&) {
 
             > label[tuiLabel] {
                 min-inline-size: 100%;
+                margin: calc(var(--t-height) / 2 - var(--t-vertical) - 0.625em) 0;
                 margin-inline-end: -100%;
-                padding: calc(var(--tui-font-offset) / 2) 0 0;
-
-                &:nth-last-child(2) {
-                    align-self: center;
-                }
+                padding: 0;
             }
         }
     }
