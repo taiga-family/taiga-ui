@@ -7,6 +7,13 @@
     "sourceRoot": "projects/{projectName}",
     "targets": {
         "component-test": {
+            "dependsOn": [
+                {
+                    "params": "ignore",
+                    "projects": "icons",
+                    "target": "prepare-icons"
+                }
+            ],
             "executor": "@nx/cypress:cypress",
             "options": {
                 "browser": "chrome",

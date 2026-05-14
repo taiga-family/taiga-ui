@@ -60,7 +60,6 @@ export const TUI_USED_ICONS = [
     '@tui.frown',
     '@tui.gift',
     '@tui.github',
-    '@tui.gitlab',
     '@tui.grip-vertical',
     '@tui.hammer',
     '@tui.headset',

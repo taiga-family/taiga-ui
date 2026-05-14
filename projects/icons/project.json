@@ -7,6 +7,13 @@
     "sourceRoot": "projects/{projectName}",
     "targets": {
         "build": {
+            "dependsOn": [
+                {
+                    "dependencies": false,
+                    "params": "ignore",
+                    "target": "prepare-icons"
+                }
+            ],
             "executor": "@angular/build:ng-packagr",
             "options": {
                 "project": "{projectRoot}/ng-package.json",
@@ -14,11 +21,10 @@
             },
             "outputs": ["{workspaceRoot}/dist/{projectName}"]
         },
-        "prebuild": {
+        "prepare-icons": {
             "executor": "nx:run-commands",
             "options": {
-                "commands": ["ts-node ./{projectRoot}/scripts/prepare-icons.ts", "prettier ./{projectRoot}/src/* --write --log-level silent"],
-                "parallel": false
+                "command": "ts-node ./{projectRoot}/scripts/prepare-icons.ts"
             }
         },
         "publish": {
