@@ -4,24 +4,25 @@
         formControlName="control"
         tuiButton
         tuiButtonSelect
+        tuiChevron
         type="button"
         [tuiAppearanceMode]="length ? 'checked' : null"
         [(open)]="open"
         (keydown.delete)="form.reset()"
     >
         {{ text }}
-        <button
-            appearance="icon"
-            size="xs"
-            tabindex="-1"
-            tuiChevron
-            tuiIconButton
-            type="reset"
-            [iconStart]="length ? '@tui.x' : ''"
-            (mousedown.zoneless.prevent)="(0)"
-        >
-            Reset
-        </button>
+
+        @if (length) {
+            <tui-icon
+                aria-label="reset"
+                icon="@tui.x"
+                role="button"
+                tabindex="-1"
+                [style.color]="'var(--tui-text-tertiary)'"
+                [style.font-size.rem]="1"
+                (click.stop)="form.reset()"
+            />
+        }
 
         <tui-data-list
             *tuiDropdown
