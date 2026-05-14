@@ -52,6 +52,11 @@
                 {
                     "params": "ignore",
                     "target": "generate-llms"
+                },
+                {
+                    "params": "ignore",
+                    "projects": "icons",
+                    "target": "prepare-icons"
                 }
             ],
             "executor": "@nx/angular:application",
@@ -174,6 +179,13 @@
             },
             "continuous": true,
             "defaultConfiguration": "development",
+            "dependsOn": [
+                {
+                    "params": "ignore",
+                    "projects": "icons",
+                    "target": "prepare-icons"
+                }
+            ],
             "executor": "@nx/angular:dev-server",
             "options": {
                 "port": 3333,
