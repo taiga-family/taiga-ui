@@ -30019,7 +30019,7 @@ export default class Example {
 &lt;h2 tuiHeader&gt;
 &lt;div tuiTitle&gt;
 &lt;div tuiNavigationLogo&gt;
-&lt;tui-icon icon=&quot;@tui.gitlab&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.github&quot; /&gt;
 &lt;span tuiFade&gt;Research and Development Platform&lt;/span&gt;
 &lt;tui-icon iconStart=&quot;@tui.heart&quot; tuiBadge /&gt;
 &lt;/div&gt;
@@ -44062,6 +44062,70 @@ export default class Example {
 }
 ```
 
+#### Custom appearance
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;component()&quot; &gt; Component &lt;/button&gt;
+```
+**TypeScript:**
+```ts
+import {ChangeDetectionStrategy, Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {type TuiPortalContext} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiIcon} from &#039;@taiga-ui/core&#039;;
+import {TuiToast, type TuiToastOptions, TuiToastService} from &#039;@taiga-ui/kit&#039;;
+import {injectContext, PolymorpheusComponent} from &#039;@taiga-ui/polymorpheus&#039;;
+
+@Component({
+    imports: [TuiIcon, TuiToast],
+    template: `
+        &lt;div
+            tuiToast
+            [attr.data-appearance]=&quot;appearance&quot;
+        &gt;
+            &lt;tui-icon
+                icon=&quot;@tui.triangle-alert&quot;
+                [style.color]=&quot;&#039;var(--tui-status-negative)&#039;&quot;
+            /&gt;
+            Lost connection.
+            &lt;br /&gt;
+            Restore your internet to continue
+        &lt;/div&gt;
+    `,
+    styles: `
+        [data-appearance=&#039;custom-warning&#039;] {
+            background: var(--tui-service-autofill-background);
+        }
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class Toast {
+    protected readonly appearance =
+        injectContext&lt;TuiPortalContext&lt;TuiToastOptions&lt;void&gt;&gt;&gt;().appearance;
+}
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly toast = inject(TuiToastService);
+
+    protected component(): void {
+        this.toast
+            .open(new PolymorpheusComponent(Toast), {
+                closable: false,
+                appearance: &#039;custom-warning&#039;,
+            })
+            .subscribe();
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -44080,7 +44144,14 @@ import {TUI_TOAST_OPTIONS, TuiToast} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly options = inject(TUI_TOAST_OPTIONS);
-    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;, &#039;Service&#039;];
+
+    protected readonly examples = [
+        &#039;Basic&#039;,
+        &#039;Customization&#039;,
+        &#039;Service&#039;,
+        &#039;Custom appearance&#039;,
+    ];
+
     protected readonly toast = signal(false);
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
     protected autoClose = this.options.autoClose;
