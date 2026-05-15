@@ -10,19 +10,23 @@ import {
     untracked,
     viewChild,
 } from '@angular/core';
+import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
 @Component({
     selector: '[tuiFullscreen]',
     imports: [TuiRoot],
-    template: '<tui-root><ng-content /></tui-root>',
+    template:
+        '<tui-root [tuiPlatform]="platform.tuiPlatform()"><ng-content /></tui-root>',
     styleUrl: './fullscreen.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [{directive: TuiPlatform, inputs: ['tuiPlatform']}],
     host: {'(document:fullscreenchange)': 'closedByEscape($event)'},
 })
 export class TuiFullscreen {
     private readonly root = viewChild(TuiRoot, {read: ElementRef});
     private readonly doc = inject(DOCUMENT);
+    protected readonly platform = inject(TuiPlatform);
     public readonly tuiFullscreen = model(false);
 
     public readonly options = input<FullscreenOptions>(

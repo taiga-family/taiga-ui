@@ -32,7 +32,11 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
+    hostDirectives: [
+        {directive: TuiPlatform, inputs: ['tuiPlatform']},
+        TuiVisualViewport,
+        TuiFontSize,
+    ],
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'breakpoint() === "mobile"',

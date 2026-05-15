@@ -1,5 +1,11 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
+import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
 import {TuiDocHeader} from '../internal/header';
@@ -14,5 +20,8 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
     // @note: This one was default on purpose, so we can test demo in default mode.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
+    hostDirectives: [{directive: TuiPlatform, inputs: ['tuiPlatform']}],
 })
-export class TuiDocMain {}
+export class TuiDocMain {
+    protected readonly platform = inject(TuiPlatform);
+}

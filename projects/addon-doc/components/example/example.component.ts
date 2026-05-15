@@ -24,6 +24,7 @@ import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_ICONS,
+    TUI_DOC_PLATFORM,
     TUI_DOC_PREVIEW_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
@@ -100,6 +101,7 @@ export class TuiDocExample implements OnChanges {
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
     protected readonly defaultTab = inject(TUI_DOC_PREVIEW_TEXT);
     protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
+    protected readonly defaultPlatform = inject(TUI_DOC_PLATFORM);
 
     protected readonly codeActions =
         inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(

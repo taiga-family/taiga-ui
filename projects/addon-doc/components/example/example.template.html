@@ -29,6 +29,7 @@
 }
 <div
     class="t-example"
+    [tuiPlatform]="defaultPlatform()"
     [(tuiFullscreen)]="fullscreen"
 >
     @if (processor() | tuiDocExampleGetTabs: defaultTab(); as all) {

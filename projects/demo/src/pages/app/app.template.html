@@ -1,7 +1,7 @@
 @if (isLanding()) {
     <router-outlet />
 } @else {
-    <tui-doc-main>
+    <tui-doc-main [tuiPlatform]="defaultPlatform()">
         <news
             ngProjectAs="tuiDocNavigation"
             class="news"
