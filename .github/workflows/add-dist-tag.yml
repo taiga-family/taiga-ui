@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/node@16a91c73cbbbf991bf840bcf53e0cb902c164d80 # v1.213.0
-      - uses: taiga-family/ci/actions/setup/config/npm@16a91c73cbbbf991bf840bcf53e0cb902c164d80 # v1.213.0
+      - uses: taiga-family/ci/actions/setup/node@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/setup/config/npm@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
