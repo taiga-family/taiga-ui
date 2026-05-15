@@ -46,6 +46,7 @@ import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {tuiLetMigration} from './steps/migrate-tui-let';
 import {migrateStyles} from './steps/styles';
+import {updatePackages} from './steps/update-packages';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -122,6 +123,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateI18nLanguageSignal',
                     step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'updatePackages',
+                    step: () => updatePackages(fileSystem),
                 },
                 {
                     name: 'showWarnings',
