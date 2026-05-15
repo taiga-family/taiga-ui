@@ -18980,7 +18980,8 @@ export default class Example {
 &lt;/tui-textfield&gt;
 &lt;/label&gt;
 &lt;label tuiLabel&gt; Conditional input in textfield &lt;tui-textfield multi tuiChevron &gt;
-&lt;label tuiLabel&gt;Multi Select with if/else&lt;/label&gt; @if (filter) { &lt;input tuiInputChip [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;conditionalMulti&quot; /&gt; } @else { &lt;input tuiInputChip tuiSelectLike [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;conditionalMulti&quot; /&gt; } &lt;tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
+&lt;label tuiLabel&gt;Multi Select with if/else&lt;/label&gt; @if (filter) { &lt;input tuiInputChip [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;conditionalMulti&quot; /&gt; } @else { &lt;input tuiInputChip tuiSelectLike [placeholder]=&quot;conditionalMulti.length ? &#039;&#039; : &#039;Pick from the list&#039;&quot; [(ngModel)]=&quot;conditionalMulti&quot; /&gt; } &lt;tui-input-chip *tuiItem /&gt;
+&lt;tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
 &lt;/tui-textfield&gt;
 &lt;/label&gt;
 &lt;label tuiLabel&gt;

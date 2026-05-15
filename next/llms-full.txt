@@ -18971,7 +18971,8 @@ export default class Example {
 </tui-textfield>
 </label>
 <label tuiLabel> Conditional input in textfield <tui-textfield multi tuiChevron >
-<label tuiLabel>Multi Select with if/else</label> @if (filter) { <input tuiInputChip [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } @else { <input tuiInputChip tuiSelectLike [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } <tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
+<label tuiLabel>Multi Select with if/else</label> @if (filter) { <input tuiInputChip [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } @else { <input tuiInputChip tuiSelectLike [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } <tui-input-chip *tuiItem />
+<tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 </tui-textfield>
 </label>
 <label tuiLabel>
