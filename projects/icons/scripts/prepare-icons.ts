@@ -4,12 +4,12 @@ import path from 'node:path';
 import {prepareSvg} from '../../../scripts/prepare-svg';
 
 const verbose = !process.env.CI;
-const cwd = process.cwd();
-const projectRoot = path.join(cwd, 'projects', 'icons');
-const lucideSrc = path.join(cwd, 'node_modules', 'lucide-static', 'icons');
+const workspaceRoot = process.cwd();
+const projectRoot = path.resolve(__dirname, '..');
+const lucideSrc = path.join(workspaceRoot, 'node_modules', 'lucide-static', 'icons');
 
 const flagsSrc = path.join(
-    cwd,
+    workspaceRoot,
     'node_modules',
     '@taiga-ui',
     'design-tokens',
@@ -18,7 +18,10 @@ const flagsSrc = path.join(
 );
 
 const assetsSrc = path.join(projectRoot, 'assets');
-const dest = process.argv[2] || path.join(projectRoot, 'src');
+
+const dest = process.argv[2]
+    ? path.resolve(process.argv[2])
+    : path.join(projectRoot, 'src');
 
 prepareDest(dest);
 copyLucideIcons({src: lucideSrc, dest});
