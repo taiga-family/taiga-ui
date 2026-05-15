@@ -53,10 +53,6 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
 
         runSteps(
             [
-                {
-                    name: 'updatePackages',
-                    step: () => updatePackages(fileSystem),
-                },
                 {name: 'tuiLetMigration', step: () => tuiLetMigration(tree, options)},
                 {name: 'migrateTokens', step: () => migrateTokens(tree, options)},
                 {name: 'updateTsConfig', step: () => updateTsConfig(tree, options)},
@@ -127,6 +123,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateI18nLanguageSignal',
                     step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'updatePackages',
+                    step: () => updatePackages(fileSystem),
                 },
                 {
                     name: 'showWarnings',

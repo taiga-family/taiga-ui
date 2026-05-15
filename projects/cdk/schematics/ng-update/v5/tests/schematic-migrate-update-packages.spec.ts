@@ -1,6 +1,5 @@
 import {join} from 'node:path';
 
-import {TUI_VERSION} from '@taiga-ui/cdk';
 import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
@@ -31,16 +30,16 @@ describe('ng-update migrate packages', () => {
                     "@ng-web-apis/screen-orientation": "4.0.0",
                     "@ng-web-apis/resize-observer": "4.0.0",
                     "@ng-web-apis/universal": "4.0.0",
-                    "@taiga-ui/cdk": "${TUI_VERSION}",
-                    "@taiga-ui/core": "${TUI_VERSION}",
-                    "@taiga-ui/icons": "${TUI_VERSION}",
+                    "@taiga-ui/cdk": "5.0.1",
+                    "@taiga-ui/core": "5.0.1",
+                    "@taiga-ui/icons": "5.0.1",
                     "@taiga-ui/dompurify": "4.0.0",
                     "@taiga-ui/event-plugins": "4.0.0",
-                    "@taiga-ui/i18n": "${TUI_VERSION}",
-                    "@taiga-ui/addon-table": "${TUI_VERSION}",
-                    "@taiga-ui/addon-mobile": "${TUI_VERSION}",
+                    "@taiga-ui/i18n": "5.0.1",
+                    "@taiga-ui/addon-table": "5.0.1",
+                    "@taiga-ui/addon-mobile": "5.0.1",
                     "@taiga-ui/polymorpheus": "4.0.0",
-                    "@taiga-ui/proprietary": "${TUI_VERSION}"
+                    "@taiga-ui/proprietary": "5.0.1"
                  }
              }
             `,
@@ -61,16 +60,32 @@ describe('ng-update migrate packages', () => {
                     "@ng-web-apis/intersection-observer": "${NG_WEB_APIS}",
                     "@ng-web-apis/mutation-observer": "${NG_WEB_APIS}",
                     "@ng-web-apis/universal": "${NG_WEB_APIS}",
-                    "@taiga-ui/cdk": "${TUI_VERSION}",
-                    "@taiga-ui/core": "${TUI_VERSION}",
-                    "@taiga-ui/icons": "${TUI_VERSION}",
+                    "@taiga-ui/cdk": "5.0.1",
+                    "@taiga-ui/core": "5.0.1",
+                    "@taiga-ui/icons": "5.0.1",
                     "@taiga-ui/dompurify": "${TUI_DOMPURIFY_VERSION}",
-                    "@taiga-ui/i18n": "${TUI_VERSION}",
+                    "@taiga-ui/i18n": "5.0.1",
                     "@taiga-ui/event-plugins": "${TUI_EVENT_PLUGINS_VERSION}",
-                    "@taiga-ui/addon-table": "${TUI_VERSION}",
-                    "@taiga-ui/addon-mobile": "${TUI_VERSION}",
+                    "@taiga-ui/addon-table": "5.0.1",
+                    "@taiga-ui/addon-mobile": "5.0.1",
                     "@taiga-ui/polymorpheus": "${TUI_POLYMORPHEUS_VERSION}",
-                    "@taiga-ui/proprietary": "${TUI_VERSION}"
+                    "@taiga-ui/proprietary": "5.0.1"
+                 }
+             }
+            `,
+        }),
+    );
+
+    it(
+        'only taiga-ui packages',
+        migrate({
+            packageJson: `
+             {
+                 "dependencies": {
+                    "@taiga-ui/cdk": "5.0.0",
+                    "@taiga-ui/core": "5.0.0",
+                    "@taiga-ui/kit": "5.0.0",
+                    "@taiga-ui/styles": "5.0.0"
                  }
              }
             `,
