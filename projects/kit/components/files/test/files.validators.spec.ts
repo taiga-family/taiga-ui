@@ -193,5 +193,21 @@ describe('tuiCreateFileFormatValidator', () => {
 
             expect(validator(control)).toBeNull();
         });
+
+        it('rejects file with missing type and non-matching extension', () => {
+            const validator = tuiCreateFileFormatValidator('.jpg');
+            const file = {name: 'photo.png'} as unknown as File;
+            const control = new FormControl([file]);
+
+            expect(validator(control)?.[TUI_FORMAT_ERROR].$implicit).toEqual([file]);
+        });
+
+        it('falls back to extension when MIME type is missing', () => {
+            const validator = tuiCreateFileFormatValidator('.jpg');
+            const file = {name: 'photo.jpg'} as unknown as File;
+            const control = new FormControl([file]);
+
+            expect(validator(control)).toBeNull();
+        });
     });
 });
