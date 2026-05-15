@@ -9,7 +9,7 @@ input {
     margin: 0; // lowest possible specificity CSS reset for default margins
 }
 
-tui-root {
+[tuiRootV='@{tui-version}'] {
     position: relative;
     display: block;
     font: var(--tui-font-text-s);
@@ -38,7 +38,7 @@ tui-root {
     --tui-inline: -1;
 }
 
-tui-root > .t-root-scrollbar {
+[tuiRootV='@{tui-version}'] > .t-root-scrollbar {
     .fullsize(fixed, inset);
 
     z-index: 0;
@@ -46,7 +46,7 @@ tui-root > .t-root-scrollbar {
     margin: 0;
 }
 
-[data-tui-theme] tui-root > .t-root-scrollbar {
+[data-tui-theme] [tuiRootV='@{tui-version}'] > .t-root-scrollbar {
     display: block;
 }
 
