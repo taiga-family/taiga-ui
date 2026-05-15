@@ -1,0 +1,79 @@
+<tui-doc-page
+    header="Keypad"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [fullsize]="$index === 2"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-keypad
+                [disabled]="disabled"
+                [keys]="keys"
+                [size]="size"
+                [(value)]="value"
+                (key)="onKey($event)"
+            />
+
+            <p>Value: {{ value() || '—' }}</p>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="'fluid' | 'l' | 'm' | 's'"
+                [items]="sizes"
+                [(value)]="size"
+            >
+                Size of the pad
+            </tr>
+            <tr
+                name="[keys]"
+                tuiDocAPIItem
+                type="ReadonlyArray<readonly TuiPadCell[]>"
+                [items]="keysVariants"
+                [(value)]="keys"
+            >
+                Grid layout of the pad keys
+            </tr>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [items]="disabledVariants"
+                [(value)]="disabled"
+            >
+                Disable all keys
+            </tr>
+            <tr
+                name="[(value)]"
+                tuiDocAPIItem
+                type="string"
+            >
+                Current value managed by the keypad. Updates automatically:
+                <code>backspace</code>
+                removes the last character,
+                <code>clear</code>
+                resets to empty,
+                <code>enter</code>
+                emits event without modifying value, any other key is appended.
+            </tr>
+            <tr
+                name="(key)"
+                tuiDocAPIItem
+                type="TuiKeypadKey"
+            >
+                Event emitted when a key is clicked
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>

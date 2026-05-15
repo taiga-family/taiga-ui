@@ -34,6 +34,7 @@ export const TUI_USED_ICONS = [
     '@tui.copy',
     '@tui.electron',
     '@tui.ellipsis',
+    '@tui.equal',
     '@tui.expand',
     '@tui.eye',
     '@tui.eye-off',

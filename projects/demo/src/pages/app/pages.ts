@@ -1091,6 +1091,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Keypad',
+        keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
+        route: DemoRoute.Keypad,
+        meta: {name: 'tui-keypad'},
+    },
+    {
+        section: 'Components',
         title: 'Icon',
         keywords: 'icons, image, картинка, свг, svg, графика, иконка',
         route: DemoRoute.Icon,

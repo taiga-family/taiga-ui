@@ -363,6 +363,11 @@ export const ROUTES: Routes = [
         title: 'Form',
     }),
     route({
+        path: DemoRoute.Keypad,
+        loadComponent: async () => import('../components/keypad'),
+        title: 'Keypad',
+    }),
+    route({
         path: DemoRoute.Group,
         loadComponent: async () => import('../components/group'),
         title: 'Group',

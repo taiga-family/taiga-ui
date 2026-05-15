@@ -1,0 +1,32 @@
+<button
+    iconStart="@tui.calculator"
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Open Calculator
+</button>
+
+<ng-template
+    [tuiPopout]="open()"
+    [tuiPopoutOptions]="{pip: true, features: {width: 300, height: 450}}"
+    (tuiPopoutChange)="open.set($event)"
+>
+    <main class="calculator">
+        <input
+            #input
+            inputmode="none"
+            readonly
+            tuiAutoFocus
+            class="input"
+            [value]="displayValue()"
+            (keydown)="onKeydown($event)"
+        />
+
+        <tui-keypad
+            size="fluid"
+            [keys]="keys"
+            (key)="onKey($event)"
+        />
+    </main>
+</ng-template>

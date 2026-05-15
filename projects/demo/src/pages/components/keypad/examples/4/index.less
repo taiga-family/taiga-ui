@@ -1,0 +1,27 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    position: relative;
+    display: block;
+    block-size: 26.25rem;
+}
+
+.container {
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    min-inline-size: 15rem;
+}
+
+.handle {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inline-size: 1rem;
+    block-size: 1rem;
+    background: linear-gradient(135deg, transparent 50%, var(--tui-text-secondary) 50%);
+
+    &:hover {
+        background: linear-gradient(135deg, transparent 50%, var(--tui-text-primary) 50%);
+    }
+}

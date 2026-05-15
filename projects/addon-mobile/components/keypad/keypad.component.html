@@ -1,0 +1,34 @@
+@for (row of keys(); track $index) {
+    <div
+        class="t-row"
+        [style.--i]="$index"
+    >
+        @for (key of row; track $index) {
+            @if (key === null) {
+                <div class="t-key t-key_spacer"></div>
+            } @else {
+                <button
+                    type="button"
+                    class="t-key"
+                    [attr.data-key]="key"
+                    [class.t-key_active]="activeKey() === key"
+                    [disabled]="isKeyDisabled(key)"
+                    (click)="onKeyClick(key)"
+                    (pointerdown.zoneless.prevent)="(0)"
+                >
+                    @if (templateMap().get(key); as tpl) {
+                        <ng-container *ngTemplateOutlet="tpl; context: {$implicit: key, key: key}" />
+                    } @else if (key === 'backspace') {
+                        <tui-icon [icon]="'@tui.chevron-left'" />
+                    } @else if (key === 'clear') {
+                        <span>AC</span>
+                    } @else if (key === 'enter') {
+                        <tui-icon [icon]="'@tui.equal'" />
+                    } @else {
+                        {{ key }}
+                    }
+                </button>
+            }
+        }
+    </div>
+}
