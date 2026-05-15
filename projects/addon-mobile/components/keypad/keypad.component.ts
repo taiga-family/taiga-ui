@@ -13,7 +13,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {filter, fromEvent, race, switchMap, take, timer} from 'rxjs';
 
