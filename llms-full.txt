@@ -1728,7 +1728,7 @@ export default class Example {
     [tuiAccordion] {
         border-block-start: 1px solid var(--tui-border-normal);
         background: transparent !important;
-        mask: none;
+        mask-image: none;
     }
 
     tui-expand,
@@ -46649,12 +46649,17 @@ export default class Example {}
 
         content: '';
         background: currentColor;
-        mask: url('/assets/taiga-ui/icons/heart.svg') no-repeat center / 3em 1.5em;
+        mask-image: url('/assets/taiga-ui/icons/heart.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: 3em 1.5em;
     }
 
     &:checked::before {
         color: var(--tui-text-negative);
-        mask: url('/assets/taiga-ui/icons/heart-filled.svg') no-repeat center;
+        mask-image: url('/assets/taiga-ui/icons/heart-filled.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
     }
 }
 ```
