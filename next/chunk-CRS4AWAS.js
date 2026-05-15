@@ -1,0 +1,27 @@
+import"./chunk-HU6DUUP4.js";var t=`@import '@taiga-ui/styles/utils';
+
+.like {
+    inline-size: var(--tui-height-m);
+    block-size: var(--tui-height-m);
+    border-radius: 100%;
+    cursor: pointer;
+
+    &::before {
+        .fullsize();
+
+        content: '';
+        background: currentColor;
+        mask-image: url('/assets/taiga-ui/icons/heart.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: 3em 1.5em;
+    }
+
+    &:checked::before {
+        color: var(--tui-text-negative);
+        mask-image: url('/assets/taiga-ui/icons/heart-filled.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
+    }
+}
+`;export{t as default};
