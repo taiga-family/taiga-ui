@@ -21,81 +21,81 @@ input[tuiPincode] {
     &::placeholder {
         color: transparent !important;
     }
-}
 
-input[tuiPincode] + .t-content {
-    gap: 0;
-    margin-inline: auto;
-    cursor: text;
-
-    [tuiButtonX] {
-        display: none;
-    }
-
-    .t-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.625rem;
-        block-size: 100%;
-    }
-
-    .t-item {
-        position: relative;
-        flex: none;
-        inline-size: 1.25rem;
-        block-size: 2.25rem;
-        padding-inline: 0.125rem;
+    & + .t-content {
+        gap: 0;
+        margin-inline: auto;
         cursor: text;
+
+        [tuiButtonX] {
+            display: none;
+        }
+
+        .t-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            block-size: 100%;
+        }
+
+        .t-item {
+            position: relative;
+            flex: none;
+            inline-size: 1.25rem;
+            block-size: 2.25rem;
+            padding-inline: 0.125rem;
+            cursor: text;
+        }
+
+        .t-value,
+        .t-dot {
+            position: absolute;
+            inset-block-start: 50%;
+            inset-inline-start: 50%;
+            translate: -50% -50%;
+            scale: 0;
+            transition:
+                translate var(--tui-duration-moderate, 300ms) var(--tui-curve-expressive-entrance),
+                color 150ms var(--tui-curve-productive-standard),
+                background-color 150ms var(--tui-curve-productive-standard);
+        }
+
+        .t-value,
+        .t-dot_value {
+            transition: scale 300ms var(--tui-curve-expressive-exit);
+        }
+
+        .t-value {
+            color: var(--tui-text-primary);
+            font-size: 1.75rem;
+            font-weight: bold;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .t-dot {
+            inline-size: 1rem;
+            block-size: 1rem;
+            border-radius: 50%;
+        }
+
+        .t-dot_placeholder {
+            background: var(--tui-background-neutral-2);
+            transition: scale 200ms var(--tui-curve-expressive-exit);
+        }
+
+        .t-dot_value {
+            background: var(--tui-background-neutral-2);
+        }
+
+        .t-item:not(.t-item_filled) .t-dot_placeholder {
+            scale: 1;
+            transition: scale 150ms var(--tui-curve-expressive-standard) 150ms;
+        }
     }
 
-    .t-value,
-    .t-dot {
-        position: absolute;
-        inset-block-start: 50%;
-        inset-inline-start: 50%;
-        translate: -50% -50%;
-        scale: 0;
-        transition:
-            translate var(--tui-duration-moderate, 300ms) var(--tui-curve-expressive-entrance),
-            color 150ms var(--tui-curve-productive-standard),
-            background-color 150ms var(--tui-curve-productive-standard);
-    }
-
-    .t-value,
-    .t-dot_value {
-        transition: scale 300ms var(--tui-curve-expressive-exit);
-    }
-
-    .t-value {
-        color: var(--tui-text-primary);
-        font-size: 1.75rem;
-        font-weight: bold;
-        line-height: 1;
-        letter-spacing: 0;
-    }
-
-    .t-dot {
-        inline-size: 1rem;
-        block-size: 1rem;
-        border-radius: 50%;
-    }
-
-    .t-dot_placeholder {
-        background: var(--tui-background-neutral-2);
-        transition: scale 200ms var(--tui-curve-expressive-exit);
-    }
-
-    .t-dot_value {
-        background: var(--tui-background-neutral-2);
-    }
-
-    .t-item:not(.t-item_filled) .t-dot_placeholder {
-        scale: 1;
-        transition: scale 150ms var(--tui-curve-expressive-standard) 150ms;
-    }
-
-    tui-root:not(._mobile) & {
+    tui-root:not(._mobile) & + .t-content {
         .t-value {
             font-size: 2.25rem;
             font-weight: 500;
@@ -134,108 +134,101 @@ input[tuiPincode] + .t-content {
             }
         }
     }
-}
 
-input[tuiPincode][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
-    scale: 1;
-    transition: scale 300ms cubic-bezier(0.5, 2, 0.5, 1);
-}
-
-input[tuiPincode][data-appearance='dots'] + .t-content {
-    .t-dot_value {
+    &[data-appearance='numbers'] + .t-content .t-item_filled .t-value {
         scale: 1;
+        transition: scale 300ms cubic-bezier(0.5, 2, 0.5, 1);
     }
 
-    .t-item_filled .t-dot_value {
-        background: var(--tui-text-action);
+    &[data-appearance='dots'] + .t-content {
+        .t-dot_value {
+            scale: 1;
+        }
+
+        .t-item_filled .t-dot_value {
+            background: var(--tui-text-action);
+        }
+
+        .t-item:not(.t-item_filled) {
+            .t-dot_value {
+                transition: background-color 150ms var(--tui-curve-expressive-exit);
+            }
+
+            .t-dot_placeholder {
+                scale: 0;
+                transition: none;
+            }
+        }
     }
 
-    .t-item:not(.t-item_filled) .t-dot_value {
-        transition: background-color 150ms var(--tui-curve-expressive-exit);
+    &[data-appearance='dots']:not([data-mode]) + .t-content .t-item_filled .t-dot_value {
+        animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
+        transition: background-color 200ms var(--tui-curve-expressive-standard);
     }
 
-    .t-item:not(.t-item_filled) .t-dot_placeholder {
-        scale: 0;
+    tui-root:not(._mobile) &[data-appearance='numbers']:not([data-mode]) + .t-content .t-item_filled .t-value,
+    tui-root:not(._mobile) &[data-appearance='dots']:not([data-mode]) + .t-content .t-item_filled .t-dot_value,
+    tui-root:not(._mobile)
+        &[data-appearance='dots']:not([data-mode]) + .t-content
+        .t-item:not(.t-item_filled)
+        .t-dot_value {
+        animation: none;
         transition: none;
     }
-}
 
-input[tuiPincode][data-appearance='dots']:not([data-mode]) + .t-content .t-item_filled .t-dot_value {
-    animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
-    transition: background-color 200ms var(--tui-curve-expressive-standard);
-}
+    &[data-mode='invalid'] + .t-content,
+    &[data-mode='dismissing'] + .t-content {
+        .t-value {
+            color: var(--tui-text-negative);
+        }
 
-tui-root:not(._mobile)
-    input[tuiPincode][data-appearance='numbers']:not([data-mode])
-    + .t-content
-    .t-item_filled
-    .t-value,
-tui-root:not(._mobile)
-    input[tuiPincode][data-appearance='dots']:not([data-mode])
-    + .t-content
-    .t-item_filled
-    .t-dot_value,
-tui-root:not(._mobile)
-    input[tuiPincode][data-appearance='dots']:not([data-mode])
-    + .t-content
-    .t-item:not(.t-item_filled)
-    .t-dot_value {
-    animation: none;
-    transition: none;
-}
-
-input[tuiPincode][data-mode='invalid'] + .t-content,
-input[tuiPincode][data-mode='dismissing'] + .t-content {
-    .t-value {
-        color: var(--tui-text-negative);
+        .t-item .t-dot_value {
+            background: var(--tui-text-negative);
+        }
     }
 
-    .t-item .t-dot_value {
-        background: var(--tui-text-negative);
+    &[data-mode='success'] + .t-content .t-value,
+    &[data-mode='submitting'] + .t-content .t-value {
+        color: var(--tui-text-action);
     }
-}
 
-input[tuiPincode][data-mode='success'] + .t-content .t-value,
-input[tuiPincode][data-mode='submitting'] + .t-content .t-value {
-    color: var(--tui-text-action);
-}
+    &[data-mode='invalid'] + .t-content .t-item {
+        animation: tuiPincodeShake 500ms var(--tui-curve-productive-standard);
+    }
 
-input[tuiPincode][data-mode='invalid'] + .t-content .t-item {
-    animation: tuiPincodeShake 500ms var(--tui-curve-productive-standard);
-}
+    &[data-mode='dismissing'] + .t-content .t-item_filled .t-dot_placeholder {
+        animation: tuiPincodeDotAppear 400ms var(--tui-curve-expressive-standard) forwards;
+    }
 
-input[tuiPincode][data-mode='dismissing'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
-input[tuiPincode][data-mode='dismissing'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
-    animation: tuiPincodeExitElement 400ms var(--tui-curve-expressive-exit) forwards;
-}
+    &[data-mode='dismissing'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
+    &[data-mode='dismissing'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
+        animation: tuiPincodeExitElement 400ms var(--tui-curve-expressive-exit) forwards;
+    }
 
-input[tuiPincode][data-mode='dismissing'] + .t-content .t-item_filled .t-dot_placeholder {
-    animation: tuiPincodeDotAppear 400ms var(--tui-curve-expressive-standard) forwards;
-}
+    &[data-mode='pending'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
+    &[data-mode='pending'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
+        animation:
+            tuiPincodeWave var(--tui-animation-cycle, 1000ms) linear infinite,
+            tuiPincodeWavePos var(--tui-animation-cycle, 1000ms) linear infinite;
+        animation-delay: var(--tui-animation-delay, 0ms);
+    }
 
-input[tuiPincode][data-mode='pending'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
-input[tuiPincode][data-mode='pending'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
-    animation:
-        tuiPincodeWave var(--tui-animation-cycle, 1000ms) linear infinite,
-        tuiPincodeWavePos var(--tui-animation-cycle, 1000ms) linear infinite;
-    animation-delay: var(--tui-animation-delay, 0ms);
-}
+    &[data-mode='submitting'] + .t-content .t-item_filled {
+        animation: tuiPincodeItemSpread 700ms var(--tui-curve-productive-entrance) forwards;
 
-input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled {
-    animation: tuiPincodeItemSpread 700ms var(--tui-curve-productive-entrance) forwards;
-}
+        .t-dot_value {
+            background: var(--tui-text-action);
+            animation:
+                tuiPincodeDotIn 300ms var(--tui-curve-productive-exit) forwards,
+                tuiPincodeDotCollapsePos 300ms 700ms var(--tui-curve-expressive-exit) forwards,
+                tuiPincodeDotCollapseScale 300ms 700ms var(--tui-curve-productive-exit) forwards,
+                tuiPincodeDotFade 50ms 950ms linear forwards;
+        }
+    }
 
-input[tuiPincode][data-mode='submitting'] + .t-content .t-item_filled .t-dot_value {
-    background: var(--tui-text-action);
-    animation:
-        tuiPincodeDotIn 300ms var(--tui-curve-productive-exit) forwards,
-        tuiPincodeDotCollapsePos 300ms 700ms var(--tui-curve-expressive-exit) forwards,
-        tuiPincodeDotCollapseScale 300ms 700ms var(--tui-curve-productive-exit) forwards,
-        tuiPincodeDotFade 50ms 950ms linear forwards;
-}
-
-input[tuiPincode][data-mode='submitting'][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
-    animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit) forwards;
+    &[data-mode='submitting'][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
+        animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit) forwards;
+    }
 }
 
 @keyframes tuiPincodeItemSpread {
@@ -348,34 +341,6 @@ input[tuiPincode][data-mode='submitting'][data-appearance='numbers'] + .t-conten
 
     80% {
         translate: 0.125rem 0;
-    }
-}
-
-@keyframes tuiPincodeScale {
-    0% {
-        animation-timing-function: var(--tui-curve-expressive-standard);
-        scale: 1;
-    }
-
-    40% {
-        animation-timing-function: var(--tui-curve-productive-entrance);
-        scale: 1.2;
-    }
-
-    80%,
-    100% {
-        scale: 1;
-    }
-}
-
-@keyframes tuiPincodePos {
-    0%,
-    100% {
-        translate: -50% -50%;
-    }
-
-    50% {
-        translate: -50% calc(-50% - 0.25rem);
     }
 }
 
