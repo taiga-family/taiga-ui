@@ -37,16 +37,16 @@
         <div class="row">
             <span class="label">Length</span>
             <tui-segmented size="s">
-                @for (l of lengths; track l) {
+                @for (len of lengths; track len) {
                     <label>
                         <input
                             name="length"
                             type="radio"
-                            [value]="l"
+                            [value]="len"
                             [(ngModel)]="length"
                             (ngModelChange)="reset()"
                         />
-                        {{ l }}
+                        {{ len }}
                     </label>
                 }
             </tui-segmented>
