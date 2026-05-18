@@ -31,7 +31,6 @@ export default class PageComponent {
     ];
 
     protected readonly typeVariants = ['text', 'password'] as const;
-
     protected readonly mode = signal<TuiPincodeMode | null>(null);
     protected readonly type = signal<'password' | 'text'>('text');
     protected readonly control = new FormControl('');

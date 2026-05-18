@@ -3,7 +3,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiPincodeMode, TuiPincode, TuiSegmented} from '@taiga-ui/kit';
+import {TuiPincode, type TuiPincodeMode, TuiSegmented} from '@taiga-ui/kit';
 import {from, map, type Observable, of, shareReplay, switchMap} from 'rxjs';
 
 const CORRECT: Record<4 | 5 | 6, string> = {4: '1234', 5: '12345', 6: '123456'};
