@@ -194,16 +194,19 @@ input[tuiPincode] {
     }
 
     &[data-mode='dismissing'] + .t-content .t-item_filled .t-dot_placeholder {
-        animation: tuiPincodeDotAppear 400ms var(--tui-curve-expressive-standard) forwards;
+        scale: 1;
+        animation: tuiFade 400ms var(--tui-curve-expressive-standard) forwards;
     }
 
-    &[data-mode='dismissing'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
-    &[data-mode='dismissing'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
-        animation: tuiPincodeExitElement 400ms var(--tui-curve-expressive-exit) forwards;
+    &[data-mode='dismissing']:not([type='password']) + .t-content .t-item_filled .t-value,
+    &[data-mode='dismissing'][type='password'] + .t-content .t-item_filled .t-dot_value {
+        animation:
+            tuiFade 400ms var(--tui-curve-expressive-exit) reverse forwards,
+            tuiScale 400ms var(--tui-curve-expressive-exit) reverse forwards;
     }
 
-    &[data-mode='pending'][data-appearance='numbers'] + .t-content .t-item_filled .t-value,
-    &[data-mode='pending'][data-appearance='dots'] + .t-content .t-item_filled .t-dot_value {
+    &[data-mode='pending']:not([type='password']) + .t-content .t-item_filled .t-value,
+    &[data-mode='pending'][type='password'] + .t-content .t-item_filled .t-dot_value {
         animation:
             tuiPincodeWave var(--tui-animation-cycle, 1000ms) linear infinite,
             tuiPincodeWavePos var(--tui-animation-cycle, 1000ms) linear infinite;
@@ -219,12 +222,14 @@ input[tuiPincode] {
                 tuiPincodeDotIn 300ms var(--tui-curve-productive-exit) forwards,
                 tuiPincodeDotCollapsePos 300ms 700ms var(--tui-curve-expressive-exit) forwards,
                 tuiPincodeDotCollapseScale 300ms 700ms var(--tui-curve-productive-exit) forwards,
-                tuiPincodeDotFade 50ms 950ms linear forwards;
+                tuiFade 50ms linear 950ms reverse forwards;
         }
     }
 
-    &[data-mode='submitting'][data-appearance='numbers'] + .t-content .t-item_filled .t-value {
-        animation: tuiPincodeExitElement 200ms var(--tui-curve-expressive-exit) forwards;
+    &[data-mode='submitting']:not([type='password']) + .t-content .t-item_filled .t-value {
+        animation:
+            tuiFade 200ms var(--tui-curve-expressive-exit) reverse forwards,
+            tuiScale 200ms var(--tui-curve-expressive-exit) reverse forwards;
     }
 }
 
@@ -258,42 +263,9 @@ input[tuiPincode] {
     }
 }
 
-@keyframes tuiPincodeDotFade {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes tuiPincodeExitElement {
-    from {
-        scale: 1;
-        opacity: 1;
-    }
-
-    to {
-        scale: 0;
-        opacity: 0;
-    }
-}
-
 @keyframes tuiPincodeDotIn {
     to {
         scale: 1.1;
-    }
-}
-
-@keyframes tuiPincodeDotAppear {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        scale: 1;
-        opacity: 1;
     }
 }
 
