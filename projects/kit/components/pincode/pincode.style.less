@@ -125,7 +125,7 @@ input[tuiPincode] {
                 border-radius: 0.0625rem;
                 background: var(--tui-text-primary);
                 translate: -50%;
-                animation: tuiPincodeCaretBlink 1s steps(1) infinite;
+                animation: tuiFade 0.5s ease-in-out alternate infinite;
             }
 
             .t-dot_placeholder,
@@ -281,12 +281,6 @@ input[tuiPincode] {
 
     100% {
         scale: 1;
-    }
-}
-
-@keyframes tuiPincodeCaretBlink {
-    50% {
-        opacity: 0;
     }
 }
 
