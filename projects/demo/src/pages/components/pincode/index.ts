@@ -36,14 +36,17 @@ export default class PageComponent {
     protected readonly control = new FormControl('');
 
     constructor() {
-        effect(() => {
+        effect((onCleanup) => {
             const mode = this.mode();
+            const delay = mode === 'dismissing' ? 800 : mode === 'submitting' ? 1900 : 0;
 
-            if (mode === 'dismissing') {
-                setTimeout(() => this.mode.set(null), 800);
-            } else if (mode === 'submitting') {
-                setTimeout(() => this.mode.set(null), 1900);
+            if (!delay) {
+                return;
             }
+
+            const id = setTimeout(() => this.mode.set(null), delay);
+
+            onCleanup(() => clearTimeout(id));
         });
     }
 }

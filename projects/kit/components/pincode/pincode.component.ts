@@ -64,7 +64,7 @@ export class TuiPincodeComponent {
     }
 
     protected onSelection(): void {
-        const pos = this.el.value.length;
+        const pos = Math.min(this.el.value.length, this.el.maxLength - 1);
 
         if (this.el.selectionStart !== pos) {
             this.el.setSelectionRange(pos, pos);
