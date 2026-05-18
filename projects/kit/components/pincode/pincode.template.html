@@ -2,7 +2,7 @@
     *tuiTextfieldContent
     class="t-wrapper"
 >
-    @for (_ of '-'.repeat(el.maxLength); track $index) {
+    @for (_ of '-'.repeat(length); track $index) {
         <label
             class="t-item"
             [class.t-item_filled]="!!el.value[$index]"
