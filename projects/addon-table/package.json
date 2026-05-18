@@ -32,7 +32,7 @@
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
-        "@ng-web-apis/intersection-observer": "^5.2.0",
+        "@ng-web-apis/intersection-observer": "^5.3.0",
         "@taiga-ui/cdk": "5.6.0",
         "@taiga-ui/core": "5.6.0",
         "@taiga-ui/i18n": "5.6.0",
