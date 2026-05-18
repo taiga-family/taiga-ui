@@ -8,27 +8,27 @@
     <tui-textfield>
         <input
             tuiPincode
-            [appearance]="appearance"
             [formControl]="control"
             [maxlength]="length"
             [mode]="mode()"
+            [type]="type"
         />
     </tui-textfield>
 
     <div class="controls">
         <div class="row">
-            <span class="label">Appearance</span>
+            <span class="label">Type</span>
             <tui-segmented size="s">
-                @for (a of appearances; track a) {
+                @for (t of types; track t) {
                     <label>
                         <input
-                            name="appearance"
+                            name="type"
                             type="radio"
-                            [value]="a"
-                            [(ngModel)]="appearance"
+                            [value]="t"
+                            [(ngModel)]="type"
                             (ngModelChange)="reset()"
                         />
-                        {{ a }}
+                        {{ t }}
                     </label>
                 }
             </tui-segmented>

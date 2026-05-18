@@ -3,12 +3,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiPincode,
-    type TuiPincodeAppearance,
-    type TuiPincodeMode,
-    TuiSegmented,
-} from '@taiga-ui/kit';
+import {type TuiPincodeMode, TuiPincode, TuiSegmented} from '@taiga-ui/kit';
 import {from, map, type Observable, of, shareReplay, switchMap} from 'rxjs';
 
 const CORRECT: Record<4 | 5 | 6, string> = {4: '1234', 5: '12345', 6: '123456'};
@@ -25,9 +20,9 @@ const FAST_LATENCY = 300;
 })
 export default class Example {
     protected readonly correct = CORRECT;
-    protected readonly appearances: readonly TuiPincodeAppearance[] = ['numbers', 'dots'];
+    protected readonly types = ['text', 'password'] as const;
     protected readonly lengths = [4, 5, 6] as const;
-    protected appearance: TuiPincodeAppearance = 'numbers';
+    protected type: 'password' | 'text' = 'text';
     protected length: 4 | 5 | 6 = 4;
     protected readonly mode = signal<TuiPincodeMode | null>(null);
     protected readonly control = new FormControl('');

@@ -62,26 +62,29 @@
             <tui-textfield>
                 <input
                     tuiPincode
-                    [appearance]="appearance()"
                     [formControl]="control"
                     [maxlength]="length"
                     [mode]="mode()"
+                    [type]="type()"
                 />
             </tui-textfield>
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[appearance]"
+                name="type"
                 tuiDocAPIItem
-                type="TuiPincodeAppearance"
-                [items]="appearanceVariants"
-                [(value)]="appearance"
+                type="string"
+                [items]="typeVariants"
+                [value]="type()"
+                (valueChange)="type.set($event ?? 'text')"
             >
-                Display mode:
-                <code>numbers</code>
-                shows entered digits,
-                <code>dots</code>
-                masks them as filled circles
+                Native
+                <code>type</code>
+                attribute:
+                <code>password</code>
+                masks digits as filled dots, default (
+                <code>text</code>
+                ) shows entered digits
             </tr>
             <tr
                 name="[mode]"

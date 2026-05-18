@@ -1,19 +1,14 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    computed,
     input,
     ViewEncapsulation,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {type MaskitoMask} from '@maskito/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
-
-export type TuiPincodeAppearance = 'dots' | 'numbers';
 
 export type TuiPincodeMode =
     | 'dismissing'
@@ -37,25 +32,14 @@ const PITCH = 1.875;
         inputmode: 'numeric',
         ngSkipHydration: 'true',
         spellcheck: 'false',
-        '[attr.data-appearance]': 'appearance()',
         '[attr.data-mode]': 'mode()',
         '(selectionchange)': 'onSelection()',
     },
 })
 export class TuiPincodeComponent {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-
-    protected readonly maskito = tuiMaskito(
-        computed(() => ({mask: this.mask(), overwriteMode: 'replace'})),
-    );
-
-    public readonly appearance = input<TuiPincodeAppearance>('numbers');
+    protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
     public readonly mode = input<TuiPincodeMode | null>(null);
-
-    public readonly mask = input(/^\d+$/, {
-        transform: (mask: MaskitoMask | string): MaskitoMask =>
-            tuiIsString(mask) ? new RegExp(mask) : mask,
-    });
 
     protected getStyle(index: number): Record<string, string> {
         const n = this.el.maxLength;
