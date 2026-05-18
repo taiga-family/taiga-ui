@@ -93,7 +93,8 @@ export class TuiDocumentationApiPagePO {
 
     public async getSelect(row: Locator): Promise<Locator | null> {
         return (
-            ((await row.locator('[tuiSelect], [tuiSelectLike]').all()) ?? [])?.[0] ?? null
+            ((await row.locator('[tuiSelect], [tuiSelectLike]').all()) ?? [])?.at(0) ??
+            null
         );
     }
 
@@ -111,14 +112,16 @@ export class TuiDocumentationApiPagePO {
 
     public async getCleaner(select: Locator): Promise<Locator | null> {
         return (
-            ((await select
-                .locator('[automation-id="tui-primitive-textfield__cleaner"]')
-                .all()) ?? [])?.[0] ?? null
+            (
+                (await select
+                    .locator('[automation-id="tui-primitive-textfield__cleaner"]')
+                    .all()) ?? []
+            )?.at(0) ?? null
         );
     }
 
     public async getToggle(row: Locator): Promise<Locator | null> {
-        return ((await row.locator('input[tuiSwitch]').all()) ?? [])?.[0] ?? null;
+        return ((await row.locator('input[tuiSwitch]').all()) ?? [])?.at(0) ?? null;
     }
 
     public async waitTuiIcons(): Promise<void> {
