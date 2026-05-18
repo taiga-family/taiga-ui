@@ -13,6 +13,7 @@ import {
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -45,6 +46,7 @@ class TuiFadeStyles {}
         },
     ],
     host: {
+        tuiFadeV: TUI_VERSION,
         '[style.line-height]': 'lineHeight',
         '[style.--t-line-height]': 'lineHeight',
         '[style.--t-fade-size]': 'size',

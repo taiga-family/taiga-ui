@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 // TODO: replace with `tui-textfield:has([tuiInputDateTime]) input[type='datetime-local']` (when all browsers supports :has())
-tui-textfield input[tuiInputDateTime] ~ .t-content input[type='datetime-local'] {
+tui-textfield input[tuiInputDateTimeV='@{tui-version}'] ~ .t-content input[type='datetime-local'] {
     position: absolute;
     top: 0;
     left: auto;

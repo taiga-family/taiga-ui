@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-[tuiTooltip] {
+[tuiTooltipV='@{tui-version}'] {
     border-width: 0.125rem;
     border-radius: 100%;
     cursor: pointer;
@@ -28,10 +28,10 @@
 }
 
 @media @tui-mouse {
-    tui-textfield:hover [tuiTooltip][data-appearance='icon']::after,
-    tui-textarea:hover [tuiTooltip][data-appearance='icon']::after,
-    tui-primitive-textfield:hover [tuiTooltip][data-appearance='icon']::after,
-    tui-input-tag:hover [tuiTooltip][data-appearance='icon']::after {
+    tui-textfield:hover [tuiTooltipV='@{tui-version}'][data-appearance='icon']::after,
+    tui-textarea:hover [tuiTooltipV='@{tui-version}'][data-appearance='icon']::after,
+    tui-primitive-textfield:hover [tuiTooltipV='@{tui-version}'][data-appearance='icon']::after,
+    tui-input-tag:hover [tuiTooltipV='@{tui-version}'][data-appearance='icon']::after {
         color: var(--tui-text-secondary);
     }
 }

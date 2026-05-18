@@ -6,6 +6,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {defer} from 'rxjs';
@@ -18,6 +19,9 @@ import {defer} from 'rxjs';
     styleUrls: ['./input-inline.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        tuiInputInlineV: TUI_VERSION,
+    },
 })
 export class TuiInputInline {
     @ContentChild(NgControl)

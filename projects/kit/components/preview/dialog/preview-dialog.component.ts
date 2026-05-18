@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -17,6 +18,7 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {
+        tuiPreviewDialogV: TUI_VERSION,
         '(document:keydown.esc.prevent)': 'context.$implicit.complete()',
     },
 })

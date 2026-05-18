@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     type TuiHorizontalDirection,
@@ -27,6 +28,7 @@ class TuiCommentStyles {}
     standalone: true,
     selector: '[tuiComment]',
     host: {
+        tuiCommentV: TUI_VERSION,
         '[attr.data-direction]': 'tuiComment',
     },
 })

@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Component({
     standalone: true,
@@ -7,5 +8,8 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     styleUrls: ['./shrink-wrap.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        tuiShrinkWrapV: TUI_VERSION,
+    },
 })
 export class TuiShrinkWrapComponent {}

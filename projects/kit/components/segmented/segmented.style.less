@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-segmented {
+[tuiSegmentedV='@{tui-version}'] {
     position: relative;
     display: flex;
     color: var(--tui-background-base);
@@ -144,7 +144,7 @@ tui-segmented {
 }
 
 // TODO(v5): change color of var elevation-3 and change color of active item to elevation-3
-[tuiTheme='dark'] tui-segmented,
-tui-segmented[tuiTheme='dark'] {
+[tuiTheme='dark'] [tuiSegmentedV='@{tui-version}'],
+[tuiSegmentedV='@{tui-version}'][tuiTheme='dark'] {
     --tui-background-base: var(--tui-background-neutral-1-hover);
 }

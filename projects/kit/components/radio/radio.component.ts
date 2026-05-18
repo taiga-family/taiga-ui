@@ -15,6 +15,7 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 
@@ -35,6 +36,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
         TuiNativeValidator,
     ],
     host: {
+        tuiRadioV: TUI_VERSION,
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
         '[class._readonly]': '!control',

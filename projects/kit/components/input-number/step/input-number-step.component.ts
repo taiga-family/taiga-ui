@@ -8,6 +8,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -34,6 +35,7 @@ import {TuiInputNumberStepService} from './input-number-step.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiInputNumberStepService],
     host: {
+        tuiInputNumberV: TUI_VERSION,
         ngSkipHydration: 'true',
         '(keydown.arrowDown.prevent)': 'onStep(-step())',
         '(keydown.arrowUp.prevent)': 'onStep(step())',

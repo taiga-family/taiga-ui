@@ -1,3 +1,4 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
 /*
 TODO: if :has() is supported by all browsers
  - use tui-textfield:has([tuiInputNumber]) .t-input-number {...}
@@ -62,7 +63,7 @@ TODO: if :has() is supported by all browsers
     }
 }
 
-[tuiInputNumber]._with-buttons {
+[tuiInputNumberV='@{tui-version}']._with-buttons {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -95,12 +96,12 @@ tui-textfield {
     }
 }
 
-[tuiInputNumber]._with-buttons,
-[tuiInputNumber]._with-buttons ~ .t-template {
+[tuiInputNumberV='@{tui-version}']._with-buttons,
+[tuiInputNumberV='@{tui-version}']._with-buttons ~ .t-template {
     inline-size: calc(100% - var(--t-input-number-offset-end));
     margin-inline-end: var(--t-input-number-offset-end);
 }
 
-[tuiInputNumber]._with-buttons ~ .t-content {
+[tuiInputNumberV='@{tui-version}']._with-buttons ~ .t-content {
     margin-inline-end: var(--t-input-number-offset-end);
 }

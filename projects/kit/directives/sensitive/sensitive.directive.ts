@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map} from 'rxjs';
@@ -31,6 +32,7 @@ class TuiSensitiveStyles {}
     selector: '[tuiSensitive]',
     providers: [WaResizeObserverService],
     host: {
+        tuiSensitiveV: TUI_VERSION,
         '[style.--t-offset.px]': 'offset',
         '[style.--t-mask-height.px]': 'height()',
         '[class.tui-sensitive]': 'tuiSensitive',

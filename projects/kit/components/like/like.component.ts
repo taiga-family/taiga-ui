@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -27,6 +28,7 @@ import {TUI_LIKE_OPTIONS, type TuiLikeOptions} from './like.options';
     hostDirectives: [TuiWithAppearance],
     host: {
         tuiLike: '',
+        tuiLikeV: TUI_VERSION,
         '[attr.data-size]': 'size',
         '[attr.data-mode]': '""',
         '[style.--t-icon-color]': 'color',

@@ -12,6 +12,7 @@ import {
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
@@ -33,6 +34,7 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
         },
     ],
     host: {
+        tuiTilesV: TUI_VERSION,
         '(pointerleave.zoneless)': 'rearrange()',
     },
 })

@@ -18,6 +18,7 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_CHIP_OPTIONS} from './chip.options';
 
 @Component({
@@ -46,7 +47,10 @@ class TuiChipStyles {}
         }),
     ],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
-    host: {'[attr.data-size]': 'size'},
+    host: {
+        tuiChipV: TUI_VERSION,
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiChip {
     private readonly options = inject(TUI_CHIP_OPTIONS);

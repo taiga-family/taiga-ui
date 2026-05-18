@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -23,6 +24,7 @@ class TuiConnectedStyles {}
     selector: '[tuiConnected]',
     host: {
         tuiConnected: '',
+        tuiConnectedV: TUI_VERSION,
     },
 })
 export class TuiConnected {
