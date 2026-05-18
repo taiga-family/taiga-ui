@@ -38,6 +38,7 @@
         "@angular/platform-browser": ">=19.0.0",
         "@angular/router": ">=19.0.0",
         "@ng-web-apis/common": "^5.2.0",
+        "@ng-web-apis/intersection-observer": "^5.2.0",
         "@ng-web-apis/mutation-observer": "^5.2.0",
         "@ng-web-apis/platform": "^5.2.0",
         "@taiga-ui/cdk": "5.6.0",
