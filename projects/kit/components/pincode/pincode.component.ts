@@ -29,8 +29,8 @@ const PITCH = 1.875;
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective],
     host: {
-        maxlength: '4',
         inputmode: 'numeric',
+        maxlength: '4',
         ngSkipHydration: 'true',
         spellcheck: 'false',
         '[attr.data-mode]': 'mode()',
