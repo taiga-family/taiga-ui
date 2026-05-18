@@ -135,12 +135,12 @@ input[tuiPincode] {
         }
     }
 
-    &[data-appearance='numbers'] + .t-content .t-item_filled .t-value {
+    &:not([type='password']) + .t-content .t-item_filled .t-value {
         scale: 1;
         transition: scale 300ms cubic-bezier(0.5, 2, 0.5, 1);
     }
 
-    &[data-appearance='dots'] + .t-content {
+    &[type='password'] + .t-content {
         .t-dot_value {
             scale: 1;
         }
@@ -161,18 +161,14 @@ input[tuiPincode] {
         }
     }
 
-    &[data-appearance='dots']:not([data-mode]) + .t-content .t-item_filled .t-dot_value {
+    &[type='password']:not([data-mode]) + .t-content .t-item_filled .t-dot_value {
         animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
         transition: background-color 200ms var(--tui-curve-expressive-standard);
     }
 
-    tui-root:not(._mobile) &[data-appearance='numbers']:not([data-mode]) + .t-content .t-item_filled .t-value,
-    tui-root:not(._mobile) &[data-appearance='dots']:not([data-mode]) + .t-content .t-item_filled .t-dot_value,
-    tui-root:not(._mobile)
-        &[data-appearance='dots']:not([data-mode])
-        + .t-content
-        .t-item:not(.t-item_filled)
-        .t-dot_value {
+    tui-root:not(._mobile) &:not([type='password']):not([data-mode]) + .t-content .t-item_filled .t-value,
+    tui-root:not(._mobile) &[type='password']:not([data-mode]) + .t-content .t-item_filled .t-dot_value,
+    tui-root:not(._mobile) &[type='password']:not([data-mode]) + .t-content .t-item:not(.t-item_filled) .t-dot_value {
         animation: none;
         transition: none;
     }

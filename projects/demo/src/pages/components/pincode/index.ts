@@ -2,7 +2,7 @@ import {Component, effect, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiPincode, type TuiPincodeAppearance, type TuiPincodeMode} from '@taiga-ui/kit';
+import {TuiPincode, type TuiPincodeMode} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiPincode],
@@ -30,13 +30,10 @@ export default class PageComponent {
         'success',
     ];
 
-    protected readonly appearanceVariants: readonly TuiPincodeAppearance[] = [
-        'numbers',
-        'dots',
-    ];
+    protected readonly typeVariants = ['text', 'password'] as const;
 
     protected readonly mode = signal<TuiPincodeMode | null>(null);
-    protected readonly appearance = signal<TuiPincodeAppearance>('numbers');
+    protected readonly type = signal<'password' | 'text'>('text');
     protected readonly control = new FormControl('');
 
     constructor() {
