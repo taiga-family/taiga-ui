@@ -3,15 +3,16 @@
     class="t-wrapper"
 >
     @for (_ of '-'.repeat(length); track $index) {
-        <label
+        <span
             class="t-item"
             [class.t-item_filled]="!!el.value[$index]"
             [class.t-item_focus]="isFocused($index)"
             [style]="getStyle($index)"
+            (pointerdown.prevent)="el.focus()"
         >
             <span class="t-dot t-dot_placeholder"></span>
             <span class="t-dot t-dot_value"></span>
             <span class="t-value">{{ el.value[$index] }}</span>
-        </label>
+        </span>
     }
 </div>
