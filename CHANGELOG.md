@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.7.0](https://github.com/taiga-family/taiga-ui/compare/v5.6.0...v5.7.0) (2026-05-18)
+
+### 🐞 Bug Fixes
+
+- change detection strategy to Default for modal and popups compon…
+  ([#14098](https://github.com/taiga-family/taiga-ui/issues/14098))
+  ([b9c4a25](https://github.com/taiga-family/taiga-ui/commit/b9c4a2570771ce2903c664129c6f890b5d1c5ba5))
+- **core:** `TextfieldMulti` fix height growth in Firefox
+  ([#14106](https://github.com/taiga-family/taiga-ui/issues/14106))
+  ([46b360b](https://github.com/taiga-family/taiga-ui/commit/46b360be4b4e0ab2ebbbf55ebe58afc88b74611d))
+- **kit:** `Block` fix icon size ([#14095](https://github.com/taiga-family/taiga-ui/issues/14095))
+  ([aa2a7bc](https://github.com/taiga-family/taiga-ui/commit/aa2a7bc4b1abe93e085715f6be19ac81237310bc))
+- **kit:** `InputFiles` fix mime type normalize ([#14119](https://github.com/taiga-family/taiga-ui/issues/14119))
+  ([ab29e64](https://github.com/taiga-family/taiga-ui/commit/ab29e6477ce2e577d1d2944249c8e90a3ac0dd8e))
+- **kit:** add missing empty metadata fields ([#14107](https://github.com/taiga-family/taiga-ui/issues/14107))
+  ([6156b6e](https://github.com/taiga-family/taiga-ui/commit/6156b6ed7c822b1faeb22188ae833c4c107182e0))
+
+### 🚀 Features
+
+- **addon-commerce:** add new placeholder for expire field in `InputCardGroup`
+  ([#14083](https://github.com/taiga-family/taiga-ui/issues/14083))
+  ([a33170d](https://github.com/taiga-family/taiga-ui/commit/a33170dfb632cfca233c4e17592c45e8ff1eaeac))
+- **core:** `ButtonX` add DI options ([#14101](https://github.com/taiga-family/taiga-ui/issues/14101))
+  ([97d7337](https://github.com/taiga-family/taiga-ui/commit/97d73370f3fed34c429928850173c9a8b2315ce9))
+- **kit:** support RTL for `tui-segmented` ([#14085](https://github.com/taiga-family/taiga-ui/issues/14085))
+  ([a6f27ef](https://github.com/taiga-family/taiga-ui/commit/a6f27efee4c814fdb57ded73af00dd0fe799a756))
+
 ## [5.6.0](https://github.com/taiga-family/taiga-ui/compare/v5.5.0...v5.6.0) (2026-05-12)
 
 ### 🚀 Features
