@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.83.0](https://github.com/taiga-family/taiga-ui/compare/v4.82.0...v4.83.0) (2026-05-18)
+
+### 🐞 Bug Fixes
+
+- **core:** `Root` add `--tui-lh` so it's always defined
+  ([#14102](https://github.com/taiga-family/taiga-ui/issues/14102))
+  ([6df677d](https://github.com/taiga-family/taiga-ui/commit/6df677da5f253379597aed2ef2199a15d5c8fad0))
+- **kit:** `InputFiles` fix mime type normalize ([#14121](https://github.com/taiga-family/taiga-ui/issues/14121))
+  ([4d3f97b](https://github.com/taiga-family/taiga-ui/commit/4d3f97b1e037ef2ec7c0907cbf10870b517c7ac9))
+
+### 🚀 Features
+
+- add version encapsulation to addon-table ([#14070](https://github.com/taiga-family/taiga-ui/issues/14070))
+  ([b3938b3](https://github.com/taiga-family/taiga-ui/commit/b3938b3888906be13c5700f081bf0f43631b010f))
+- add version encapsulation to kit ([#14055](https://github.com/taiga-family/taiga-ui/issues/14055))
+  ([a209625](https://github.com/taiga-family/taiga-ui/commit/a209625739273ddd21e6cb1e42e69b6cfc5a8bcf))
+
 ## [4.82.0](https://github.com/taiga-family/taiga-ui/compare/v4.81.0...v4.82.0) (2026-05-12)
 
 ### 🐞 Bug Fixes
