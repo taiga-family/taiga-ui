@@ -11329,7 +11329,8 @@ export default class Example {
         query,
     ) =&gt; {
         const filtered = items.filter((item) =&gt; {
-            const romanNumeral = item.split(&#039; &#039;).at(-1)!;
+            const itemList = item.split(&#039; &#039;);
+            const romanNumeral = itemList[itemList.length - 1]!;
 
             return (
                 query === ROMAN_TO_LATIN[romanNumeral] || TUI_DEFAULT_MATCHER(item, query)
@@ -21203,8 +21204,10 @@ export default class Example {
         &#039;4.0.0 release&#039;: [new TuiDay(2024, 7, 9), new TuiTime(12, 17)],
     };
 
+    protected readonly datesValues = Object.values(this.dates);
+
     protected value: [TuiDay, TuiTime | null] | null =
-        Object.values(this.dates).at(-1) ?? null;
+        this.datesValues[this.datesValues.length - 1] ?? null;
 
     protected toISOString([day, time]: readonly [TuiDay, TuiTime]): string {
         return `${day.toString(&#039;yyyy/mm/dd&#039;, &#039;-&#039;)}T${time.toString()}`;
@@ -21298,7 +21301,7 @@ export default class Example {
     ] as const satisfies readonly MaskitoTimeMode[];
 
     protected min: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates[0];
-    protected max: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates.at(-1) ?? null;
+    protected max = this.dates[this.dates.length - 1] ?? null;
     protected timeMode: MaskitoTimeMode = this.timeModeVariants[0];
 }
 ```
