@@ -14,7 +14,7 @@ function resolveUrls(cssText: string, cssUrl: string): string[] {
     const baseUrl = cssUrl.slice(0, cssUrl.lastIndexOf('/') + 1);
 
     return [...cssText.matchAll(/url\(['"]?([^'")]+)['"]?\)/g)].map((m) => {
-        const raw = m[1]!;
+        const raw = m.at(1)!;
 
         return raw.startsWith('http') ? raw : new URL(raw, baseUrl).href;
     });
@@ -41,7 +41,7 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
         }),
     );
 
-    fs.writeFileSync(path.join(STUBS_DIR, 'fonts.css'), cssTexts[0]!);
+    fs.writeFileSync(path.join(STUBS_DIR, 'fonts.css'), cssTexts.at(0)!);
 }
 
 interface FetchWithRetryOptions {

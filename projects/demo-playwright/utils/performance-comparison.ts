@@ -145,7 +145,7 @@ export class PerformanceComparison {
                 }
 
                 if (rs.length === 1) {
-                    metrics.set(testName, rs[0]!);
+                    metrics.set(testName, rs.at(0)!);
                     continue;
                 }
 
@@ -204,7 +204,7 @@ export class PerformanceComparison {
                         const arr = samples.slice().sort((a, b) => a - b);
 
                         if (!arr.length) {
-                            return mobileRuns[0]?.medianFirstOption;
+                            return mobileRuns.at(0)?.medianFirstOption;
                         }
 
                         const mid = Math.floor(arr.length / 2);
@@ -230,7 +230,7 @@ export class PerformanceComparison {
                     testDuration: last.testDuration,
                     url: last.url,
                     testName: last.testName,
-                    source: usable[0]!.source,
+                    source: usable.at(0)!.source,
                     metrics: agg,
                     customExtras: aggregatedExtras,
                 });
@@ -740,10 +740,10 @@ export class PerformanceComparison {
         rows.sort((a, b) => {
             const extract = (line: string): number => {
                 const parts = line.split('|').map((p) => p.trim());
-                const curCol = parts[3];
+                const curCol = parts.at(3);
                 const match = /\d+(?:\.\d+)?/.exec(curCol || '');
 
-                return match ? Number.parseFloat(match[0]) : Number.POSITIVE_INFINITY;
+                return match ? Number.parseFloat(match.at(0)!) : Number.POSITIVE_INFINITY;
             };
 
             return extract(a) - extract(b);
@@ -783,15 +783,15 @@ export class PerformanceComparison {
         // Extract from test file path: "tests/core/scrollbar/file.spec.ts" → "scrollbar"
         const testFolderMatch = /\/([^/]+)\/[^/]*\.spec\.ts$/.exec(source);
 
-        if (testFolderMatch?.[1]) {
-            return testFolderMatch[1];
+        if (testFolderMatch?.at(1)) {
+            return testFolderMatch.at(1)!;
         }
 
         // Extract from component path: ".../components/mobile-dialog/..." → "mobile-dialog"
         const componentMatch = /components\/(.+?)\//.exec(source);
 
-        if (componentMatch?.[1]) {
-            return componentMatch[1];
+        if (componentMatch?.at(1)) {
+            return componentMatch.at(1)!;
         }
 
         // Fallback: use filename without extension
@@ -846,7 +846,7 @@ export class PerformanceComparison {
                 ].includes(word),
         );
 
-        return meaningfulWords[0] || 'unknown';
+        return meaningfulWords.at(0) || 'unknown';
     }
 
     /**
@@ -1929,7 +1929,7 @@ export class PerformanceReportAggregator {
     private static getComponentFromRow(row: string): string {
         const parts = row.split('|');
 
-        return parts[1]?.trim() || '';
+        return parts.at(1)?.trim() || '';
     }
 
     /**

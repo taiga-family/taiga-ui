@@ -51,8 +51,8 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             const options = await inputPhoneInternational.getOptions();
 
             expect(options).toHaveLength(2);
-            await expect(options[0]!).toContainText('Australia');
-            await expect(options[1]!).toContainText('Austria');
+            await expect(options.at(0)!).toContainText('Australia');
+            await expect(options.at(1)!).toContainText('Austria');
         });
     });
 
