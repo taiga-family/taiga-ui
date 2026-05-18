@@ -42,12 +42,8 @@ export class TuiPincodeComponent {
     protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
     public readonly mode = input<TuiPincodeMode | null>(null);
 
-    protected get length(): 4 | 5 | 6 {
-        return this.el.maxLength === 5 || this.el.maxLength === 6 ? this.el.maxLength : 4;
-    }
-
     protected getStyle(index: number): Record<string, string> {
-        const n = this.length;
+        const n = this.el.maxLength;
         const offset = index - (n - 1) / 2;
         // spec: 400ms anim + (n-1)*100ms stagger + 300ms pause
         const cycle = 400 + (n - 1) * 100 + 300;
@@ -63,7 +59,7 @@ export class TuiPincodeComponent {
     protected isFocused(index: number): boolean {
         return (
             tuiIsFocused(this.el) &&
-            index === Math.min(this.el.value.length, this.length - 1)
+            index === Math.min(this.el.value.length, this.el.maxLength - 1)
         );
     }
 
