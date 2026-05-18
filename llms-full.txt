@@ -1728,7 +1728,7 @@ export default class Example {
     [tuiAccordion] {
         border-block-start: 1px solid var(--tui-border-normal);
         background: transparent !important;
-        mask: none;
+        mask-image: none;
     }
 
     tui-expand,
@@ -11320,7 +11320,8 @@ export default class Example {
         query,
     ) => {
         const filtered = items.filter((item) => {
-            const romanNumeral = item.split(' ').at(-1)!;
+            const itemList = item.split(' ');
+            const romanNumeral = itemList[itemList.length - 1]!;
 
             return (
                 query === ROMAN_TO_LATIN[romanNumeral] || TUI_DEFAULT_MATCHER(item, query)
@@ -17851,7 +17852,7 @@ export default class Example {
 **Template:**
 ```html
 <tui-textfield [tuiTextfieldCleaner]="false">
-<input #input placeholder="Input value" tuiInput [(ngModel)]="value" /> @if (value) { <button tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
+<input #input placeholder="Input value" tuiInput [(ngModel)]="value" /> @if (value) { <button tabindex="-1" tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -17884,7 +17885,7 @@ export default class Example {
 ```html
 <tui-textfield [tuiTextfieldCleaner]="false">
 <label tuiLabel>Flat angle</label>
-<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
+<input #input placeholder="3,14" tuiInput [maskito]="options" [(ngModel)]="value" /> @if (value) { <button tabindex="-1" tuiButtonX (click)="clear()" > Clear </button> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -18526,7 +18527,6 @@ const texts = computed(() =>
     ],
 })
 export default class Example {
-    // eslint-disable-next-line @taiga-ui/experience-next/no-signal-outside-class
     protected readonly showLabels = showLabels;
 
     protected readonly control = new FormControl<Partial<TuiCard>>({
@@ -18918,7 +18918,7 @@ export default class Example {
 **Template:**
 ```html
 <tui-textfield multi [disabledItemHandler]="handler" [style.width.rem]="19" [tuiTextfieldCleaner]="false" >
-<input tuiInputChip [formControl]="control" /> @if (control.value.length > 2) { <button tuiButtonX (click)="control.setValue(this.required)" > Clear </button> } <tui-input-chip *tuiItem />
+<input tuiInputChip [formControl]="control" /> @if (control.value.length > 2) { <button tabindex="-1" tuiButtonX (click)="control.setValue(this.required)" > Clear </button> } <tui-input-chip *tuiItem />
 </tui-textfield>
 ```
 **TypeScript:**
@@ -18972,7 +18972,8 @@ export default class Example {
 </tui-textfield>
 </label>
 <label tuiLabel> Conditional input in textfield <tui-textfield multi tuiChevron >
-<label tuiLabel>Multi Select with if/else</label> @if (filter) { <input tuiInputChip [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } @else { <input tuiInputChip tuiSelectLike [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } <tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
+<label tuiLabel>Multi Select with if/else</label> @if (filter) { <input tuiInputChip [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } @else { <input tuiInputChip tuiSelectLike [placeholder]="conditionalMulti.length ? '' : 'Pick from the list'" [(ngModel)]="conditionalMulti" /> } <tui-input-chip *tuiItem />
+<tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 </tui-textfield>
 </label>
 <label tuiLabel>
@@ -21194,8 +21195,10 @@ export default class Example {
         '4.0.0 release': [new TuiDay(2024, 7, 9), new TuiTime(12, 17)],
     };
 
+    protected readonly datesValues = Object.values(this.dates);
+
     protected value: [TuiDay, TuiTime | null] | null =
-        Object.values(this.dates).at(-1) ?? null;
+        this.datesValues[this.datesValues.length - 1] ?? null;
 
     protected toISOString([day, time]: readonly [TuiDay, TuiTime]): string {
         return `${day.toString('yyyy/mm/dd', '-')}T${time.toString()}`;
@@ -21289,7 +21292,7 @@ export default class Example {
     ] as const satisfies readonly MaskitoTimeMode[];
 
     protected min: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates[0];
-    protected max: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates.at(-1) ?? null;
+    protected max = this.dates[this.dates.length - 1] ?? null;
     protected timeMode: MaskitoTimeMode = this.timeModeVariants[0];
 }
 ```
@@ -30011,7 +30014,7 @@ export default class Example {
 <h2 tuiHeader>
 <div tuiTitle>
 <div tuiNavigationLogo>
-<tui-icon icon="@tui.gitlab" />
+<tui-icon icon="@tui.github" />
 <span tuiFade>Research and Development Platform</span>
 <tui-icon iconStart="@tui.heart" tuiBadge />
 </div>
@@ -44054,6 +44057,70 @@ export default class Example {
 }
 ```
 
+#### Custom appearance
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="component()" > Component </button>
+```
+**TypeScript:**
+```ts
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiPortalContext} from '@taiga-ui/cdk';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
+import {TuiToast, type TuiToastOptions, TuiToastService} from '@taiga-ui/kit';
+import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+
+@Component({
+    imports: [TuiIcon, TuiToast],
+    template: `
+        <div
+            tuiToast
+            [attr.data-appearance]="appearance"
+        >
+            <tui-icon
+                icon="@tui.triangle-alert"
+                [style.color]="'var(--tui-status-negative)'"
+            />
+            Lost connection.
+            <br />
+            Restore your internet to continue
+        </div>
+    `,
+    styles: `
+        [data-appearance='custom-warning'] {
+            background: var(--tui-service-autofill-background);
+        }
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class Toast {
+    protected readonly appearance =
+        injectContext<TuiPortalContext<TuiToastOptions<void>>>().appearance;
+}
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly toast = inject(TuiToastService);
+
+    protected component(): void {
+        this.toast
+            .open(new PolymorpheusComponent(Toast), {
+                closable: false,
+                appearance: 'custom-warning',
+            })
+            .subscribe();
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -44072,7 +44139,14 @@ import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly options = inject(TUI_TOAST_OPTIONS);
-    protected readonly examples = ['Basic', 'Customization', 'Service'];
+
+    protected readonly examples = [
+        'Basic',
+        'Customization',
+        'Service',
+        'Custom appearance',
+    ];
+
     protected readonly toast = signal(false);
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
     protected autoClose = this.options.autoClose;
@@ -46578,12 +46652,17 @@ export default class Example {}
 
         content: '';
         background: currentColor;
-        mask: url('/assets/taiga-ui/icons/heart.svg') no-repeat center / 3em 1.5em;
+        mask-image: url('/assets/taiga-ui/icons/heart.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: 3em 1.5em;
     }
 
     &:checked::before {
         color: var(--tui-text-negative);
-        mask: url('/assets/taiga-ui/icons/heart-filled.svg') no-repeat center;
+        mask-image: url('/assets/taiga-ui/icons/heart-filled.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
     }
 }
 ```
@@ -48049,8 +48128,7 @@ export default class Example {
 **Template:**
 ```html
 <form [formGroup]="form">
-<button appearance="outline-grayscale" formControlName="control" tuiButton tuiButtonSelect type="button" [tuiAppearanceMode]="length ? 'checked' : null" [(open)]="open" (keydown.delete)="form.reset()" > {{ text }} <button appearance="icon" size="xs" tabindex="-1" tuiChevron tuiIconButton type="reset" [iconStart]="length ? '@tui.x' : ''" (mousedown.zoneless.prevent)="(0)" > Reset </button>
-<tui-data-list *tuiDropdown tuiMultiSelectGroup > @for (item of items; track item) { <button tuiOption [value]="item" > {{ item }} </button> } </tui-data-list>
+<button appearance="outline-grayscale" formControlName="control" tuiButton tuiButtonSelect tuiChevron type="button" [tuiAppearanceMode]="length ? 'checked' : null" [(open)]="open" (keydown.delete)="form.reset()" > {{ text }} @if (length) { <tui-icon aria-label="reset" icon="@tui.x" role="button" tabindex="-1" [style.color]="'var(--tui-text-tertiary)'" [style.font-size.rem]="1" (click.stop)="form.reset()" /> } <tui-data-list *tuiDropdown tuiMultiSelectGroup > @for (item of items; track item) { <button tuiOption [value]="item" > {{ item }} </button> } </tui-data-list>
 </button>
 </form>
 ```
@@ -48060,7 +48138,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiButtonSelect, TuiChevron, TuiMultiSelect} from '@taiga-ui/kit';
 
 @Component({
@@ -48071,6 +48149,7 @@ import {TuiButtonSelect, TuiChevron, TuiMultiSelect} from '@taiga-ui/kit';
         TuiChevron,
         TuiDataList,
         TuiDropdown,
+        TuiIcon,
         TuiMultiSelect,
     ],
     templateUrl: './index.html',
