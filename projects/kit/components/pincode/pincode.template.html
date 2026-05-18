@@ -5,8 +5,8 @@
     @for (_ of '-'.repeat(el.maxLength); track $index) {
         <label
             class="t-item"
-            [attr.data-focus]="isFocused($index) || null"
             [class.t-item_filled]="!!el.value[$index]"
+            [class.t-item_focus]="isFocused($index)"
             [style]="getStyle($index)"
         >
             <span class="t-dot t-dot_placeholder"></span>
