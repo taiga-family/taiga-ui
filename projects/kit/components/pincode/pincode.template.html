@@ -3,7 +3,7 @@
     aria-hidden="true"
     class="t-wrapper"
 >
-    @for (_ of '-'.repeat(length); track $index) {
+    @for (_ of '-'.repeat(el.maxLength); track $index) {
         <span
             class="t-item"
             [class.t-item_filled]="!!el.value[$index]"

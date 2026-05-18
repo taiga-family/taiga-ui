@@ -38,7 +38,13 @@ export default class PageComponent {
     constructor() {
         effect((onCleanup) => {
             const mode = this.mode();
-            const delay = mode === 'dismissing' ? 800 : mode === 'submitting' ? 1900 : 0;
+
+            const delays: Partial<Record<string, number>> = {
+                dismissing: 800,
+                submitting: 1900,
+            };
+
+            const delay = (mode && delays[mode]) || 0;
 
             if (!delay) {
                 return;
