@@ -20,16 +20,15 @@
                         <code>[formControl]</code>
                     }
                     @case (1) {
-                        Masked mode — entered digits render as filled dots
+                        Masked mode via
+                        <code>type="password"</code>
+                        — entered digits render as filled dots
                     }
                     @case (2) {
                         <strong>Fast loading</strong>
-                        — response under 500ms, no pending state shown. Switch
-                        <strong>Appearance</strong>
-                        between
-                        <code>numbers</code>
-                        and
-                        <code>dots</code>
+                        — response under 500ms, no pending state shown. Enter
+                        <code>1234</code>
+                        for success, any other code for error
                     }
                     @case (3) {
                         <strong>Long loading</strong>
@@ -78,13 +77,9 @@
                 [value]="type()"
                 (valueChange)="type.set($event ?? 'text')"
             >
-                Native
-                <code>type</code>
-                attribute:
-                <code>password</code>
-                masks digits as filled dots, default (
-                <code>text</code>
-                ) shows entered digits
+                Use
+                <code>type="password"</code>
+                to mask entered digits as filled dots
             </tr>
             <tr
                 name="[mode]"
@@ -94,8 +89,17 @@
                 [value]="mode()"
                 (valueChange)="mode.set($event ?? null)"
             >
-                Visual state mode — set explicitly by the consumer to drive shake/pulse/bounce/exit animations. See PIN
-                setup demo for orchestration patterns
+                Visual state:
+                <code>invalid</code>
+                shakes,
+                <code>pending</code>
+                pulses,
+                <code>submitting</code>
+                animates out,
+                <code>success</code>
+                /
+                <code>dismissing</code>
+                restore the field
             </tr>
             <tr
                 name="maxlength"
@@ -104,9 +108,14 @@
                 [items]="lengths"
                 [(value)]="length"
             >
-                Number of cells (use native
+                Number of cells — native
                 <code>maxlength</code>
-                attribute — 4, 5 or 6)
+                attribute, supported values:
+                <code>4</code>
+                ,
+                <code>5</code>
+                ,
+                <code>6</code>
             </tr>
         </table>
     </ng-template>

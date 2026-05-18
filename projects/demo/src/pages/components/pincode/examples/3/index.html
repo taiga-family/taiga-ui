@@ -1,7 +1,7 @@
 <div class="root">
     <p class="hint">
         Enter
-        <code>{{ correct[length] }}</code>
+        <code>1234</code>
         for success, any other code for error
     </p>
 
@@ -9,47 +9,7 @@
         <input
             tuiPincode
             [formControl]="control"
-            [maxlength]="length"
             [mode]="mode()"
-            [type]="type"
         />
     </tui-textfield>
-
-    <div class="controls">
-        <div class="row">
-            <span class="label">Type</span>
-            <tui-segmented size="s">
-                @for (t of types; track t) {
-                    <label>
-                        <input
-                            name="type"
-                            type="radio"
-                            [value]="t"
-                            [(ngModel)]="type"
-                            (ngModelChange)="reset()"
-                        />
-                        {{ t }}
-                    </label>
-                }
-            </tui-segmented>
-        </div>
-
-        <div class="row">
-            <span class="label">Length</span>
-            <tui-segmented size="s">
-                @for (len of lengths; track len) {
-                    <label>
-                        <input
-                            name="length"
-                            type="radio"
-                            [value]="len"
-                            [(ngModel)]="length"
-                            (ngModelChange)="reset()"
-                        />
-                        {{ len }}
-                    </label>
-                }
-            </tui-segmented>
-        </div>
-    </div>
 </div>
