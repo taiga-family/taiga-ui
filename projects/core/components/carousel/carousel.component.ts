@@ -27,16 +27,13 @@ import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
     `,
     styleUrl: './carousel.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '(scroll.zoneless)': 'onScroll()',
-        '(animationcancel.self)': 'onScroll()',
-    },
+    host: {'(animationcancel.self)': 'onScroll()', '(scroll.zoneless)': 'onScroll()'},
 })
 export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly behavior = inject(TUI_REDUCED_MOTION) ? 'auto' : 'smooth';
-
     protected readonly template = contentChild.required(TuiItem, {read: TemplateRef});
+
     protected readonly items = computed(
         () =>
             new Set(
@@ -68,6 +65,7 @@ export class TuiCarouselComponent implements AfterViewInit {
         const {scrollLeft, scrollWidth, clientWidth} = this.el;
         const step = scrollLeft ? 1 : -1;
         const index = tuiClamp(this.index() + step, this.min(), this.max());
+
         const scrolling =
             Math.round(scrollWidth - Math.abs(scrollLeft)) !== clientWidth && scrollLeft;
 
