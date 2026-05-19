@@ -3,41 +3,49 @@ import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    computed,
     contentChild,
-    ElementRef,
     inject,
     input,
     model,
     TemplateRef,
 } from '@angular/core';
-import {
-    WA_INTERSECTION_ROOT,
-    WaIntersectionObserver,
-    WaIntersectionObserverDirective,
-} from '@ng-web-apis/intersection-observer';
-import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-carousel',
-    imports: [NgTemplateOutlet, WaIntersectionObserver],
-    templateUrl: './carousel.component.html',
+    imports: [NgTemplateOutlet],
+    template: `
+        @for ($implicit of items(); track $index) {
+            <span class="t-item">
+                <ng-container *ngTemplateOutlet="template(); context: {$implicit}" />
+            </span>
+        }
+    `,
     styleUrl: './carousel.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiProvide(WA_INTERSECTION_ROOT, ElementRef)],
-    hostDirectives: [WaIntersectionObserverDirective],
-    host: {waIntersectionThreshold: '1'},
+    host: {
+        '(scroll.zoneless)': 'onScroll()',
+        '(animationcancel.self)': 'onScroll()',
+    },
 })
 export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
-    private readonly ios = inject(WA_IS_IOS);
     private readonly behavior = inject(TUI_REDUCED_MOTION) ? 'auto' : 'smooth';
-    protected readonly math = Math;
+
     protected readonly template = contentChild.required(TuiItem, {read: TemplateRef});
+    protected readonly items = computed(
+        () =>
+            new Set(
+                Array.from({length: 3}, (_, i) =>
+                    tuiClamp(this.index() + i - 1, this.min(), this.max()),
+                ),
+            ),
+    );
+
     public readonly index = model(0);
     public readonly min = input(-Infinity);
     public readonly max = input(Infinity);
@@ -56,23 +64,26 @@ export class TuiCarouselComponent implements AfterViewInit {
         this.el.scrollTo({left: 0, behavior: this.behavior});
     }
 
-    protected onIntersection(isIntersecting: boolean, step: number): void {
+    protected onScroll(): void {
+        const {scrollLeft, scrollWidth, clientWidth} = this.el;
+        const step = scrollLeft ? 1 : -1;
         const index = tuiClamp(this.index() + step, this.min(), this.max());
+        const scrolling =
+            Math.round(scrollWidth - Math.abs(scrollLeft)) !== clientWidth && scrollLeft;
 
-        if (isIntersecting) {
-            if (this.ios && index !== this.index()) {
-                this.el.style.overflow = 'hidden';
-            }
-
-            this.index.set(index);
-            requestAnimationFrame(() => {
-                this.el.style.overflow = '';
-
-                if (this.index() > this.min() && this.index() < this.max()) {
-                    this.el.scrollLeft = this.d * this.el.clientWidth;
-                }
-            });
+        if (this.el.matches(':active') || scrolling) {
+            return;
         }
+
+        this.el.style.overflow = 'hidden';
+        this.index.set(index);
+        requestAnimationFrame(() => {
+            this.el.style.overflow = '';
+
+            if (this.index() > this.min() && this.index() < this.max()) {
+                this.el.scrollLeft = this.d * this.el.clientWidth;
+            }
+        });
     }
 
     private get d(): number {
