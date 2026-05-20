@@ -56,7 +56,7 @@ describe('InputNumber | [bigintWithDecimal]', () => {
             mount({precision: 10, decimalMode: 'always'});
         });
 
-        it('Type 1 -> Control contains {significand: "10000000000n", exp: -10} -> Textfield becomes $1.0000000000', () => {
+        it('Type 1 -> Control contains {significand: 10000000000n, exp: -10} -> Textfield becomes $1.0000000000', () => {
             cy.get('input')
                 .should('have.value', '')
                 .type('1')
@@ -69,7 +69,7 @@ describe('InputNumber | [bigintWithDecimal]', () => {
                 });
         });
 
-        it('Type 1 + blur -> Control still contains {significand: "10000000000n", exp: -10} -> Textfield still has $1.0000000000', () => {
+        it('Type 1 + blur -> Control still contains {significand: 10000000000n, exp: -10} -> Textfield still has $1.0000000000', () => {
             cy.get('input')
                 .type('1')
                 .blur()
@@ -78,6 +78,18 @@ describe('InputNumber | [bigintWithDecimal]', () => {
                 .then(() => {
                     expect(control.value).to.deep.equal({
                         significand: 10000000000n,
+                        exp: -10,
+                    });
+                });
+        });
+
+        it('Type 123.456 -> Control contains {significand: 12345600000n, exp: -5} -> Textfield has $123.4560000000', () => {
+            cy.get('input')
+                .type('123.456')
+                .should('have.value', '$123.4560000000')
+                .then(() => {
+                    expect(control.value).to.deep.equal({
+                        significand: 1234560000000n,
                         exp: -10,
                     });
                 });
