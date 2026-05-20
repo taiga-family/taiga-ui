@@ -19,8 +19,8 @@ jobs:
     name: Run the latest migration
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/node@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
-      - uses: taiga-family/ci/actions/run/node-info@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/setup/node@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
+      - uses: taiga-family/ci/actions/run/node-info@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
         id: info
       - run: npx nx run cdk:schematics --v=${{ steps.info.outputs.root-package-major-version }}
 
