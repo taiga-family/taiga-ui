@@ -252,7 +252,7 @@ describe('InputNumber | BigInt', () => {
                 await expectControlValue({significand: '1500n', exp: -3});
             });
 
-            test('keeps trailing decimal zeros in decimal part', async ({page}) => {
+            test('keeps leading decimal zeros in decimal part', async ({page}) => {
                 await inputNumber.textfield.focus();
                 await inputNumber.textfield.clear();
                 await inputNumber.textfield.pressSequentially('.050');

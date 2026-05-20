@@ -50,7 +50,9 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
             {...params, postfix: '', maximumFractionDigits: 0},
         );
 
-        const decimal = exp ? String(significand).slice(exp) : '';
+        const decimal = exp
+            ? String(significand).padStart(Math.abs(exp), '0').slice(exp)
+            : '';
 
         return `${integer}${decimal && params.decimalSeparator + decimal}${params.postfix}`;
     }
