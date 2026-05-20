@@ -26,19 +26,14 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {tuiTextareaOptionsProvider} from './textarea.options';
 import {NgIf} from '@angular/common';
 
-@Component({
-    standalone: true,
-    template: `
+@Component({standalone: true,imports: [NgIf],template: `
         <ng-container>{{ context.$implicit.slice(0, limit()) }}</ng-container>
         <span
             *ngIf="context.$implicit.length > limit()"
             style="background: linear-gradient(transparent 0.25rem, var(--tui-status-negative-pale) 0.25rem, var(--tui-status-negative-pale) 100%)"
             [innerHtml]="context.$implicit.slice(limit())"
         ></span>
-    `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf],
-})
+    `,changeDetection: ChangeDetectionStrategy.OnPush})
 export class TuiTextareaLimitComponent {
     protected readonly limit = inject(TuiTextareaLimit).limit;
     protected readonly context = injectContext<TuiContext<string>>();
