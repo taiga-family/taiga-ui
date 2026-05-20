@@ -218,7 +218,6 @@ tui-textfield:where(*&) {
         box-sizing: border-box;
         border-radius: inherit;
         border-width: 0;
-        overscroll-behavior: none;
         padding-inline-start: calc(var(--t-start) + var(--t-padding));
         padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding) + var(--t-space));
         white-space: nowrap;
@@ -240,12 +239,6 @@ tui-textfield:where(*&) {
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {
             appearance: none;
-        }
-    }
-
-    &:has(textarea):not(:has(.t-ghost > *)) {
-        [tuiInput] {
-            overscroll-behavior: auto;
         }
     }
 

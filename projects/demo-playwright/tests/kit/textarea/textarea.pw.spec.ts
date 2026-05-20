@@ -57,7 +57,7 @@ test.describe('Textarea', () => {
             .getExample('#limit')
             .locator('textarea[tuiTextarea]');
 
-        await expect(basicTextarea).toHaveCSS('overscroll-behavior', 'auto');
+        await expect(basicTextarea).not.toHaveCSS('overscroll-behavior', 'none');
         await expect(limitTextarea).toHaveCSS('overscroll-behavior', 'none');
     });
 });

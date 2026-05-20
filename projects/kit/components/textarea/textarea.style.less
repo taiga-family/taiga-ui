@@ -25,6 +25,10 @@
     padding-block: 1.125rem 0.375rem;
 }
 
+:host-context(tui-textfield:has(.t-ghost > *)) {
+    overscroll-behavior: none;
+}
+
 :host:host {
     block-size: 100%;
     white-space: pre-wrap;
