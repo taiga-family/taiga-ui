@@ -47,7 +47,7 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
 
         const integer = maskitoStringifyNumber(
             BigInt(String(significand).slice(0, exp || Infinity)),
-            {...params, postfix: ''},
+            {...params, postfix: '', maximumFractionDigits: 0},
         );
 
         const decimal = exp ? String(significand).slice(exp) : '';
