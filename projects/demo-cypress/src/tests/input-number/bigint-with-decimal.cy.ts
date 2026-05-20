@@ -97,5 +97,31 @@ describe('InputNumber | [bigintWithDecimal]', () => {
                     });
                 });
         });
+
+        it('Type .05 -> Control contains {significand: 500000000n, exp: -10} -> Textfield has $0.0500000000', () => {
+            cy.get('input')
+                .type('.05')
+                .should('have.value', '$0.0500000000')
+                .then(() => {
+                    expect(control.value).to.deep.equal({
+                        significand: 500000000n,
+                        exp: -10,
+                    });
+                });
+        });
+
+        it('Type .05 + blur -> Control still contains {significand: 500000000n, exp: -10} -> Textfield still has $0.0500000000', () => {
+            cy.get('input')
+                .type('.05')
+                .blur()
+                .wait(100) // ensure all async actions are finished
+                .should('have.value', '$0.0500000000')
+                .then(() => {
+                    expect(control.value).to.deep.equal({
+                        significand: 500000000n,
+                        exp: -10,
+                    });
+                });
+        });
     });
 });
