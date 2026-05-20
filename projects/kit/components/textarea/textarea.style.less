@@ -25,7 +25,7 @@
     padding-block: 1.125rem 0.375rem;
 }
 
-:host-context(tui-textfield:has(.t-ghost > *)) {
+:host-context(tui-textfield:has(.t-ghost > * > span)) {
     overscroll-behavior: none;
 }
 
@@ -64,7 +64,7 @@
     word-break: break-word;
     overflow-wrap: break-word;
     padding-inline-start: var(--t-start);
-    padding-inline-end: calc(var(--t-end) + var(--t-side));
+    padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-space));
     pointer-events: none;
     box-sizing: content-box;
     overflow: hidden;
