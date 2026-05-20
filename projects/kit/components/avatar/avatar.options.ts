@@ -5,6 +5,7 @@ import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core/types';
 export interface TuiAvatarOptions extends TuiAppearanceOptions {
     readonly appearance: string;
     readonly round: boolean;
+    // TODO: add TuiSizeXXS in v6 and move all sizes down a step to sync with Figma
     readonly size: TuiSizeXS | TuiSizeXXL;
 }
 
