@@ -67,9 +67,9 @@ export class TuiCarouselComponent implements AfterViewInit {
         const index = tuiClamp(this.index() + step, this.min(), this.max());
 
         const scrolling =
-            Math.round(scrollWidth - Math.abs(scrollLeft)) !== clientWidth && scrollLeft;
+            Math.abs(scrollWidth - clientWidth - Math.abs(scrollLeft)) >= 1 && scrollLeft;
 
-        if (this.el.matches(':active') || scrolling) {
+        if (this.el.matches(':active') || scrolling || index === this.index()) {
             return;
         }
 
