@@ -17,7 +17,7 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
         const {decimalSeparator} = params;
 
         const significand = maskitoParseNumber(
-            textfieldValue?.replace(decimalSeparator, '') ?? '',
+            textfieldValue?.replaceAll(decimalSeparator, '') ?? '',
             {
                 ...params,
                 bigint: true,
