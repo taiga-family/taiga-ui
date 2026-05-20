@@ -44,4 +44,20 @@ test.describe('Textarea', () => {
                 .toHaveScreenshot(`textarea-tuiTextfieldSize-${size}.png`);
         });
     });
+
+    test('overscroll-behavior', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+
+        const basicTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#basic')
+            .locator('textarea[tuiTextarea]')
+            .first();
+
+        const limitTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#limit')
+            .locator('textarea[tuiTextarea]');
+
+        await expect(basicTextarea).toHaveCSS('overscroll-behavior', 'auto');
+        await expect(limitTextarea).toHaveCSS('overscroll-behavior', 'none');
+    });
 });

@@ -243,6 +243,12 @@ tui-textfield:where(*&) {
         }
     }
 
+    &:has(textarea):not(:has(.t-ghost > *)) {
+        [tuiInput] {
+            overscroll-behavior: auto;
+        }
+    }
+
     &._with-template [tuiInput]:first-of-type {
         color: transparent !important;
     }
