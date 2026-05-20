@@ -4,7 +4,10 @@ import {type TuiDecimalMode, TuiNumberFormat, TuiRoot} from '@taiga-ui/core';
 import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 import {type MountConfig} from 'cypress/angular';
 
-import {BigIntWithDecimal} from '../../../../demo/src/pages/components/input-number/examples/11/transformer';
+import {
+    BigIntWithDecimal,
+    type ControlValue,
+} from '../../../../demo/src/pages/components/input-number/examples/11/transformer';
 
 @Component({
     imports: [
@@ -35,13 +38,13 @@ import {BigIntWithDecimal} from '../../../../demo/src/pages/components/input-num
     providers: [tuiInputNumberOptionsProvider({max: Infinity})],
 })
 class SandBox {
-    public readonly control = new FormControl<bigint | null>(null);
+    public readonly control = new FormControl<ControlValue>(null);
     public readonly precision = input(2);
     public readonly decimalMode = input<TuiDecimalMode>('not-zero');
 }
 
 describe('InputNumber | [bigintWithDecimal]', () => {
-    let control: FormControl<bigint | null>;
+    let control: FormControl<ControlValue>;
 
     function mount(
         componentProperties?: MountConfig<SandBox>['componentProperties'],
@@ -83,7 +86,7 @@ describe('InputNumber | [bigintWithDecimal]', () => {
                 });
         });
 
-        it('Type 123.456 -> Control contains {significand: 12345600000n, exp: -5} -> Textfield has $123.4560000000', () => {
+        it('Type 123.456 -> Control contains {significand: 1234560000000n, exp: -10} -> Textfield has $123.4560000000', () => {
             cy.get('input')
                 .type('123.456')
                 .should('have.value', '$123.4560000000')
