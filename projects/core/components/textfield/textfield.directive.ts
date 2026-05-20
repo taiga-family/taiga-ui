@@ -1,4 +1,12 @@
-import {computed, Directive, inject, Input, type OnChanges, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    ElementRef,
+    inject,
+    Input,
+    type OnChanges,
+    signal,
+} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
@@ -24,7 +32,10 @@ import {tuiAsTextfieldAccessor, type TuiTextfieldAccessor} from './textfield-acc
 // TODO: Drop in v5 after updated Angular and hostDirectives inherit
 @Directive({
     standalone: true,
-    providers: [tuiAsTextfieldAccessor(TuiTextfieldBase)],
+    providers: [
+        tuiAsTextfieldAccessor(TuiTextfieldBase),
+        tuiProvide('tuiDropdownHost' as any, ElementRef),
+    ],
     hostDirectives: [TuiDropdownA11y],
     host: {
         tuiTextfield: '',
