@@ -1,6 +1,8 @@
 import {CdkVirtualForOf} from '@angular/cdk/scrolling';
-import {contentChild, Directive, effect, signal} from '@angular/core';
+import {contentChild, Directive} from '@angular/core';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsAuxiliary, type TuiDataListAccessor} from '@taiga-ui/core';
+import {switchMap} from 'rxjs';
 
 @Directive({
     selector: '[withVirtualScroll]',
@@ -9,13 +11,8 @@ import {tuiAsAuxiliary, type TuiDataListAccessor} from '@taiga-ui/core';
 export class WithVirtualScroll<T> implements TuiDataListAccessor<T> {
     private readonly virtualScroll = contentChild.required(CdkVirtualForOf);
 
-    protected readonly $ = effect((onCleanup) => {
-        const subscription = this.virtualScroll().dataStream.subscribe((items) =>
-            this.options.set(items),
-        );
-
-        onCleanup(() => subscription.unsubscribe());
-    });
-
-    public readonly options = signal<readonly T[]>([]);
+    public readonly options = toSignal(
+        toObservable(this.virtualScroll).pipe(switchMap((x) => x.dataStream)),
+        {initialValue: [] as readonly T[]},
+    );
 }
