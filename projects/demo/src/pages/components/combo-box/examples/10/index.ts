@@ -6,6 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList, TuiFilterByInputPipe, TuiScrollable} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 
+import {WithVirtualScroll} from './with-virtual-scroll';
+
 @Component({
     imports: [
         FormsModule,
@@ -15,6 +17,7 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from '@taiga-ui/kit';
         TuiDataList,
         TuiFilterByInputPipe,
         TuiScrollable,
+        WithVirtualScroll,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

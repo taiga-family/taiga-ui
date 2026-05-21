@@ -18,7 +18,7 @@
             [minBufferPx]="44 * 5"
             [style.height.px]="(items?.length || 1) * (44 + 4) + 8"
         >
-            <tui-data-list>
+            <tui-data-list withVirtualScroll>
                 <button
                     *cdkVirtualFor="let item of items"
                     tuiOption
