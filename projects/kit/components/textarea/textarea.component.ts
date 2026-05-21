@@ -30,9 +30,9 @@ import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
     host: {
         ngSkipHydration: 'true',
         '[class._mobile]': 'isMobile',
-        '(scroll.zoneless)': 'onScroll()',
         // To trigger CD for #text
         '(scroll.once)': 'onScroll()',
+        '(scroll.zoneless)': 'onScroll()',
     },
 })
 export class TuiTextareaComponent implements AfterViewInit {
@@ -52,7 +52,8 @@ export class TuiTextareaComponent implements AfterViewInit {
     }
 
     protected onScroll(): void {
-        console.log('scroll');
-        setTimeout(() => this.text()?.nativeElement.scrollTo({top: this.el.scrollTop}));
+        requestAnimationFrame(() => {
+            this.text()?.nativeElement.scrollTo({top: this.el.scrollTop});
+        });
     }
 }
