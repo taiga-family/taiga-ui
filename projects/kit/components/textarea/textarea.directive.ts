@@ -47,7 +47,7 @@ class TuiTextareaCounter {
 @Component({
     template: `
         <ng-container>{{ context.$implicit.slice(0, limit()) }}</ng-container>
-        @if (limit() < context.$implicit.length) {
+        @if (limit() <= context.$implicit.length) {
             <span [textContent]="context.$implicit.slice(limit())"></span>
         }
     `,
