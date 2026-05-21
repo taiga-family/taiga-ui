@@ -24,7 +24,7 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {tuiTextareaOptionsProvider} from './textarea.options';
 
 @Component({
-    template: '{{ length() }} / {{ limit() }}',
+    template: '@if (limit()) { {{ length() }} / {{ limit() }} } ',
     styles: `
         :host {
             z-index: 1;
