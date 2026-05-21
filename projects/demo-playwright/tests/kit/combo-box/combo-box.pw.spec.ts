@@ -380,6 +380,22 @@ describe('ComboBox', () => {
 
                 await expect(comboBox.textfield).toHaveValue('Afghanistan');
             });
+
+            test('paste of exact value', async ({page}) => {
+                // Fill with value that is not in first 20 options
+                await comboBox.textfield.fill('Russia');
+
+                await expect(comboBox.textfield).toHaveValue('Russia');
+
+                await expect(
+                    comboBox.dropdown.locator('[tuiOption]', {hasText: 'Russia'}),
+                ).not.toBeAttached();
+
+                await comboBox.textfield.blur();
+                await page.waitForTimeout(100);
+
+                await expect(comboBox.textfield).toHaveValue('Russia');
+            });
         });
     });
 });

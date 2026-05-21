@@ -58,11 +58,17 @@ export default class PageComponent extends Array {
         'Override option component',
     ];
 
-    protected readonly [4] = {
+    protected readonly [5] = {
         'database.ts': import('./examples/5/database.ts?raw', {with: {loader: 'text'}}),
     };
 
-    protected readonly [11] = {
+    protected readonly [10] = {
+        'with-virtual-scroll.ts': import('./examples/10/with-virtual-scroll.ts?raw', {
+            with: {loader: 'text'},
+        }),
+    };
+
+    protected readonly [12] = {
         'option.ts': import('./examples/12/option.ts?raw', {with: {loader: 'text'}}),
     };
 
