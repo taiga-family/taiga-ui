@@ -28,8 +28,6 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
                 class="t-check"
                 [size]="datalist.size() === 'l' ? 'm' : 's'"
             />
-        } @else {
-            <span class="t-dummy"></span>
         }
     `,
     styleUrl: './select-option.style.less',
