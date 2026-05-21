@@ -34,7 +34,7 @@ import {NgIf} from '@angular/common';
         <span
             *ngIf="context.$implicit.length >= limit()"
             style="background: linear-gradient(transparent 0.25rem, var(--tui-status-negative-pale) 0.25rem, var(--tui-status-negative-pale) 100%)"
-            [innerHtml]="context.$implicit.slice(limit())"
+            [textContent]="context.$implicit.slice(limit())"
         ></span>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
