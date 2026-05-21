@@ -52,6 +52,8 @@ export class TuiTextareaComponent implements AfterViewInit {
     }
 
     protected onScroll(): void {
-        this.text()?.nativeElement.scrollTo({top: this.el.scrollTop});
+        requestAnimationFrame(() => {
+            this.text()?.nativeElement.scrollTo({top: this.el.scrollTop});
+        });
     }
 }
