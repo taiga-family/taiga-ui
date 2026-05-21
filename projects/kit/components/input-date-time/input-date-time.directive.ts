@@ -4,6 +4,7 @@ import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
     type MaskitoDateTimeParams,
+    maskitoParseTime,
     maskitoSelectionChangeHandler,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
@@ -171,7 +172,7 @@ export class TuiInputDateTimeDirective
                 : null;
 
         const parsedTime =
-            time.length === this.timeMode().length ? TuiTime.fromString(time) : null;
+            time.length === this.timeMode().length ? this.parseTime(time) : null;
 
         if (!parsedDate || (time && !parsedTime)) {
             return this.onChange(null);
@@ -199,13 +200,11 @@ export class TuiInputDateTimeDirective
             : dateString;
     }
 
-    protected onBlur(valueWithAffixes: string): void {
-        const [date = '', timeValue = ''] = valueWithAffixes.split(
-            this.options.dateTimeSeparator,
-        );
+    protected onBlur(value: string): void {
+        const [date = '', timeValue = ''] = value.split(this.options.dateTimeSeparator);
 
         if (timeValue && !this.value()) {
-            const time = TuiTime.fromString(timeValue);
+            const time = this.parseTime(timeValue);
 
             const newValue = [
                 TuiDay.normalizeParse(date, this.format().mode),
@@ -263,5 +262,11 @@ export class TuiInputDateTimeDirective
         TuiTime,
     ]): Date {
         return new Date(year, month, day, hours, minutes, seconds, ms);
+    }
+
+    private parseTime(time: string): TuiTime {
+        return TuiTime.fromAbsoluteMilliseconds(
+            maskitoParseTime(time, {mode: this.timeMode()}),
+        );
     }
 }
