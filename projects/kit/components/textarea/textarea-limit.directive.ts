@@ -32,7 +32,7 @@ import {NgIf} from '@angular/common';
     template: `
         <ng-container>{{ context.$implicit.slice(0, limit()) }}</ng-container>
         <span
-            *ngIf="context.$implicit.length > limit()"
+            *ngIf="context.$implicit.length >= limit()"
             style="background: linear-gradient(transparent 0.25rem, var(--tui-status-negative-pale) 0.25rem, var(--tui-status-negative-pale) 100%)"
             [innerHtml]="context.$implicit.slice(limit())"
         ></span>
