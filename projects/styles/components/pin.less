@@ -20,19 +20,21 @@
     @bubble-shift: translate(calc(var(--tui-inline) * -@bubble-width), -@bubble-width);
     @ground-shift: translate(calc(var(--tui-inline) * -50%), -50%);
 
-    .transition(~'inline-size, block-size, border, margin');
+    .transition(~'min-inline-size, grid-template-columns, block-size, border, margin, font');
     .button-clear();
 
     position: relative;
-    display: flex;
-    inline-size: var(--t-size);
+    display: grid;
+    isolation: isolate;
+    align-items: center;
+    grid-template-rows: 100%;
+    grid-template-columns: var(--t-size) 1fr;
+    min-inline-size: var(--t-size);
+    max-inline-size: 11.25rem;
     block-size: var(--t-size);
-    align-items: stretch;
-    flex-direction: column;
-    justify-content: center;
     text-align: center;
-    border-radius: 100%;
-    font: var(--tui-typography-body-s);
+    border-radius: 100rem;
+    font: var(--tui-typography-ui-xs);
     font-weight: bold;
     box-sizing: border-box;
     color: var(--tui-text-primary-on-accent-2);
@@ -40,6 +42,7 @@
     box-shadow: 0 0 0 0.125rem var(--tui-background-elevation-2);
     border: 0 solid var(--tui-background-accent-2);
     transform: @ground-shift;
+    transition-duration: @tui-duration-fast;
 
     .interactive({
         cursor: pointer;
@@ -51,6 +54,20 @@
         &::before {
             display: none;
         }
+    }
+
+    &:not(:has([tuiTitle])) {
+        grid-template-columns: 100% 0fr;
+
+        &:has(:checked),
+        &._open {
+            grid-template-columns: 100% 0fr;
+        }
+    }
+
+    &:has([tuiBadge]) {
+        border-color: currentColor;
+        background: var(--tui-background-elevation-2);
     }
 
     > input {
@@ -67,19 +84,83 @@
         background: var(--tui-background-base);
     }
 
-    > tui-icon {
-        .transition(~'inline-size, block-size');
+    > tui-icon,
+    > [tuiBadge] {
+        .transition(~'inline-size, font-size, box-shadow');
 
         font-size: 1.25rem;
-        align-self: center;
+        block-size: 100%;
+        inline-size: 100%;
+        border-radius: 100%;
+        transition-duration: @tui-duration-fast;
+
+        &::before {
+            .transition(font-size);
+
+            transition-duration: @tui-duration-fast;
+        }
+    }
+
+    > [tuiBadge] {
+        box-shadow: inset 0 0 0 0.125rem;
+        background: var(--tui-background-elevation-2);
+        color: inherit;
+        font: inherit;
+
+        --t-icon-size: 1.25rem;
+    }
+
+    > [tuiTitle] {
+        .transition(~'opacity, margin');
+
+        position: static;
+        font: var(--tui-typography-ui-xs);
+        font-weight: bold;
+        color: var(--tui-text-primary);
+        margin-inline: 0.5rem 0.75rem;
+        gap: 0.125rem;
+        white-space: nowrap;
+        transition-duration: @tui-duration-fast;
+
+        &::before {
+            .transition(mask-position);
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            inset-inline-end: -1px;
+            background: var(--tui-background-elevation-2);
+            border-radius: 100rem;
+            mask-image: radial-gradient(
+                circle closest-corner at left center,
+                transparent calc(100% - 0.5px),
+                black calc(100%)
+            );
+            mask-position: calc(var(--t-size) / 2);
+            mask-repeat: no-repeat;
+            transition-duration: @tui-duration-fast;
+        }
+
+        [tuiSubtitle] {
+            display: flex;
+            gap: 0.125rem;
+            font: var(--tui-typography-ui-2xs);
+            color: var(--tui-text-secondary);
+        }
+
+        tui-icon {
+            font-size: 0.75rem;
+        }
     }
 
     &:has(:checked) {
         --t-size: 3.5rem;
 
-        font: var(--tui-typography-body-m);
+        font: var(--tui-typography-body-l);
         font-weight: bold;
-        border-width: 0;
+        grid-template-columns: var(--t-size) 0fr;
+        border-width: 0 !important;
         margin-block-start: -2.75rem;
 
         > img {
@@ -88,6 +169,18 @@
 
         > tui-icon {
             font-size: 2.125rem;
+        }
+
+        > [tuiBadge] {
+            box-shadow: none;
+
+            --t-icon-size: 2.125rem;
+        }
+
+        > [tuiTitle] {
+            pointer-events: none;
+            opacity: 0;
+            margin: 0;
         }
 
         &::before {
@@ -105,9 +198,10 @@
     &._open {
         --t-size: 3.5rem;
 
-        font: var(--tui-typography-body-m);
+        font: var(--tui-typography-body-l);
         font-weight: bold;
-        border-width: 0;
+        grid-template-columns: var(--t-size) 0fr;
+        border-width: 0 !important;
         margin-block-start: -2.75rem;
 
         > img {
@@ -116,6 +210,18 @@
 
         > tui-icon {
             font-size: 2.125rem;
+        }
+
+        > [tuiBadge] {
+            box-shadow: none;
+
+            --t-icon-size: 2.125rem;
+        }
+
+        > [tuiTitle] {
+            pointer-events: none;
+            opacity: 0;
+            margin: 0;
         }
 
         &::before {
@@ -134,6 +240,7 @@
 
         content: '';
         position: absolute;
+        z-index: -1;
         inset-block: 50% -0.625rem;
         inset-inline: 50% -0.25rem;
         box-sizing: border-box;
@@ -146,6 +253,7 @@
         pointer-events: none;
         mask-image: url('data:image/svg+xml,<svg width="60" height="66" viewBox="0 0 60 66" xmlns="http://www.w3.org/2000/svg"><path d="M0 30.0917C0 13.4726 13.4313 0 30.0002 0C46.5687 0 60 13.4726 60 30.0917C60 44.2105 50.4927 56.0529 37.4162 59.2986C32.5552 60.5551 31.0408 65.275 31.0408 65.275C30.8892 65.697 30.4909 66 30.0183 66C29.5453 66 29.147 65.697 28.9938 65.275C28.9938 65.275 27.481 60.5551 22.6199 59.2986C9.46433 56.0206 0 43.5901 0 30.0917ZM30 57.75C45.3259 57.75 57.75 45.3259 57.75 30C57.75 14.6741 45.3259 2.25 30 2.25C14.6741 2.25 2.25 14.6741 2.25 30C2.25 45.3259 14.6741 57.75 30 57.75Z" /></svg>');
         mask-repeat: no-repeat;
+        transition-duration: @tui-duration-fast;
     }
 
     &::after {
@@ -162,5 +270,6 @@
         box-shadow: inherit;
         transform: @ground-shift;
         opacity: 0;
+        transition-duration: @tui-duration-fast;
     }
 }
