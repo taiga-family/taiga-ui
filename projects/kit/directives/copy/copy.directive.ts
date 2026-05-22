@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {Clipboard} from '@angular/cdk/clipboard';
 import {computed, Directive, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -41,7 +41,7 @@ import {TUI_COPY_OPTIONS} from './copy.options';
 export class TuiCopyDirective {
     private readonly options = inject(TUI_COPY_OPTIONS);
     private readonly copied$ = new Subject<void>();
-    private readonly doc = inject(DOCUMENT);
+    private readonly clipboard = inject(Clipboard);
 
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly hint = tuiDirectiveBinding(
@@ -81,8 +81,9 @@ export class TuiCopyDirective {
     }
 
     protected copy(): void {
-        this.textfield.input?.nativeElement.select();
-        this.doc.execCommand('copy');
+        this.clipboard.copy(
+            this.tuiCopy || this.textfield.input?.nativeElement.value || '',
+        );
         this.copied$.next();
     }
 }
