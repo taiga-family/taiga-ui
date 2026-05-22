@@ -212,9 +212,9 @@ input[tuiPincode] {
     &[data-mode='pending']:not([type='password']) + .t-content .t-item_filled .t-value,
     &[data-mode='pending'][type='password'] + .t-content .t-item_filled .t-dot_value {
         animation:
-            tuiPincodeWave var(--tui-animation-cycle, 1000ms) linear infinite,
-            tuiPincodeWavePos var(--tui-animation-cycle, 1000ms) linear infinite;
-        animation-delay: var(--tui-animation-delay, 0ms);
+            tuiPincodeWave var(--t-animation-cycle, 1000ms) linear infinite,
+            tuiPincodeWavePos var(--t-animation-cycle, 1000ms) linear infinite;
+        animation-delay: var(--t-animation-delay, 0ms);
     }
 
     &[data-mode='submitting'] + .t-content .t-item_filled {
@@ -243,7 +243,7 @@ input[tuiPincode] {
     }
 
     to {
-        translate: var(--tui-spread-tx, 0) 0;
+        translate: var(--t-spread-tx, 0) 0;
     }
 }
 
@@ -253,7 +253,7 @@ input[tuiPincode] {
     }
 
     to {
-        translate: calc(-50% + var(--tui-collapse-tx, 0px)) -50%;
+        translate: calc(-50% + var(--t-collapse-tx, 0px)) -50%;
     }
 }
 

@@ -50,10 +50,10 @@ export class TuiPincodeComponent {
         const cycle = 400 + (n - 1) * 100 + 300;
 
         return {
-            '--tui-animation-delay': `${index * 100}ms`,
-            '--tui-animation-cycle': `${cycle}ms`,
-            '--tui-spread-tx': `${offset * (PITCH / 3)}rem`,
-            '--tui-collapse-tx': `${-offset * PITCH}rem`,
+            '--t-animation-delay': `${index * 100}ms`,
+            '--t-animation-cycle': `${cycle}ms`,
+            '--t-spread-tx': `${offset * (PITCH / 3)}rem`,
+            '--t-collapse-tx': `${-offset * PITCH}rem`,
         };
     }
 
@@ -65,10 +65,12 @@ export class TuiPincodeComponent {
     }
 
     protected onSelection(): void {
-        const pos = this.el.value.length;
+        const {value, maxLength} = this.el;
+        const end = value.length;
+        const start = end === maxLength ? end - 1 : end;
 
-        if (this.el.selectionStart !== pos) {
-            this.el.setSelectionRange(pos, pos);
+        if (this.el.selectionStart !== start || this.el.selectionEnd !== end) {
+            this.el.setSelectionRange(start, end);
         }
     }
 }

@@ -1,27 +1,17 @@
-<div class="root">
-    <p class="hint">
-        Long loading example with loader.
-        <br />
-        Enter
-        <code>1234</code>
-        for success (submitting state), any other code for error
-    </p>
-
-    <div
-        class="field"
-        [class.field_submitting]="mode() === 'submitting'"
-    >
-        <tui-loader
-            class="loader"
-            [inheritColor]="true"
-            [loading]="mode() === 'submitting'"
+<div
+    class="field"
+    [class.field_submitting]="mode() === 'submitting'"
+>
+    <tui-loader
+        class="loader"
+        [inheritColor]="true"
+        [loading]="mode() === 'submitting'"
+    />
+    <tui-textfield>
+        <input
+            tuiPincode
+            [formControl]="control"
+            [mode]="mode()"
         />
-        <tui-textfield>
-            <input
-                tuiPincode
-                [formControl]="control"
-                [mode]="mode()"
-            />
-        </tui-textfield>
-    </div>
+    </tui-textfield>
 </div>
