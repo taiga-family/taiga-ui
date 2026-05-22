@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components';
+import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 
 @Component({
     template: '',
@@ -29,6 +29,5 @@ class Styles {}
 })
 export class TuiPin {
     protected readonly nothing = tuiWithStyles(Styles);
-
     public readonly open = input<boolean | ''>('', {alias: 'tuiPin'});
 }
