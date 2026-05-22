@@ -56,15 +56,6 @@
         }
     }
 
-    &:not(:has([tuiTitle])) {
-        grid-template-columns: 100% 0fr;
-
-        &:has(:checked),
-        &._open {
-            grid-template-columns: 100% 0fr;
-        }
-    }
-
     &:has([tuiPin]) {
         border-color: currentColor;
         background: var(--tui-background-elevation-1);
@@ -87,7 +78,7 @@
         max-block-size: 100%;
         box-sizing: border-box;
         border-radius: 100%;
-        background: var(--tui-background-base);
+        background: var(--tui-background-elevation-1);
     }
 
     > tui-icon:not([tuiBadge]) {
@@ -112,6 +103,7 @@
         background: none;
         transform: none;
         box-shadow: none;
+        grid-template-columns: 100% 0fr;
     }
 
     > [tuiBadge] {
