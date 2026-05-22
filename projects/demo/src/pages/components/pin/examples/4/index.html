@@ -28,16 +28,19 @@
     [tuiPin]="c"
     (click)="c = !c"
 >
-    <tui-icon
-        iconStart="@tui.dollar-sign"
-        tuiBadge
-    />
+    <span tuiPin>
+        <tui-icon icon="@tui.dollar-sign" />
+    </span>
     <span
         tuiFade
         tuiTitle
     >
         Very very long title that gets cut
     </span>
+    <tui-icon
+        iconStart="@tui.heart"
+        tuiBadge
+    />
 </button>
 
 <button
@@ -46,7 +49,7 @@
     [tuiPin]="d"
     (click)="d = !d"
 >
-    <span tuiBadge>4.5</span>
+    <span tuiPin>4.5</span>
     <span tuiTitle>
         Title
         <span tuiSubtitle>
