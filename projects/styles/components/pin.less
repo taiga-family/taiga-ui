@@ -20,7 +20,7 @@
     @bubble-shift: translate(calc(var(--tui-inline) * -@bubble-width), -@bubble-width);
     @ground-shift: translate(calc(var(--tui-inline) * -50%), -50%);
 
-    .transition(~'min-inline-size, grid-template-columns, block-size, border, margin, font');
+    .transition(~'min-inline-size, grid-template-columns, block-size, border, margin, font', @tui-duration-fast);
     .button-clear();
 
     position: relative;
@@ -42,7 +42,6 @@
     box-shadow: 0 0 0 0.125rem var(--tui-background-elevation-1);
     border: 0 solid var(--tui-background-accent-2);
     transform: @ground-shift;
-    transition-duration: @tui-duration-fast;
 
     .interactive({
         cursor: pointer;
@@ -82,7 +81,7 @@
     }
 
     > tui-icon:not([tuiBadge]) {
-        .transition(~'inline-size, font-size, box-shadow');
+        .transition(~'inline-size, font-size');
 
         font-size: 1.25rem;
         block-size: 100%;
@@ -90,9 +89,7 @@
         border-radius: 100%;
 
         &::before {
-            .transition(font-size);
-
-            transition-duration: inherit;
+            .transition(font-size, inherit);
         }
     }
 
@@ -126,7 +123,7 @@
         white-space: nowrap;
 
         &::before {
-            .transition(mask-position);
+            .transition(mask-position, inherit);
 
             content: '';
             position: absolute;
@@ -142,7 +139,6 @@
             );
             mask-position: calc(var(--t-size) / 2);
             mask-repeat: no-repeat;
-            transition-duration: inherit;
         }
 
         [tuiSubtitle] {
