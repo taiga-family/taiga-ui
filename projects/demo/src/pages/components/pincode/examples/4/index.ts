@@ -5,19 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLoader} from '@taiga-ui/core';
 import {TuiPincode, type TuiPincodeMode} from '@taiga-ui/kit';
-import {
-    concat,
-    from,
-    map,
-    merge,
-    type Observable,
-    of,
-    shareReplay,
-    switchMap,
-    takeUntil,
-    tap,
-    timer,
-} from 'rxjs';
+import {concat, from, map, type Observable, of, switchMap, tap, timer} from 'rxjs';
 
 const CORRECT = '1234';
 
@@ -49,26 +37,17 @@ export default class Example {
     }
 
     private verify(value: string): Observable<TuiPincodeMode | null> {
-        const result$ = from(fakeApiVerify(value)).pipe(shareReplay(1));
-
-        return merge(
-            timer(500).pipe(
-                takeUntil(result$),
-                map(() => 'pending' as const),
-            ),
-            result$.pipe(
-                switchMap((ok) =>
-                    ok
-                        ? of<TuiPincodeMode>('submitting')
-                        : concat(
-                              of<TuiPincodeMode>('invalid'),
-                              timer(1000).pipe(map(() => 'dismissing' as const)),
-                              timer(400).pipe(
-                                  tap(() => this.control.setValue('')),
-                                  map(() => null),
-                              ),
+        return from(fakeApiVerify(value)).pipe(
+            switchMap((ok) =>
+                ok
+                    ? of<TuiPincodeMode>('submitting')
+                    : concat(
+                          of<TuiPincodeMode>('invalid'),
+                          timer(1400).pipe(
+                              tap(() => this.control.setValue('')),
+                              map(() => null),
                           ),
-                ),
+                      ),
             ),
         );
     }

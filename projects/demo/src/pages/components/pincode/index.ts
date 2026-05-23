@@ -23,9 +23,7 @@ export default class PageComponent {
     protected length = this.lengths[0];
 
     protected readonly modeVariants: readonly TuiPincodeMode[] = [
-        'dismissing',
         'invalid',
-        'pending',
         'submitting',
         'success',
     ];
@@ -40,7 +38,7 @@ export default class PageComponent {
             const mode = this.mode();
 
             const delays: Partial<Record<string, number>> = {
-                dismissing: 800,
+                invalid: 1900,
                 submitting: 1900,
             };
 
