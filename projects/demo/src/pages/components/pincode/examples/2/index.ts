@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -11,5 +11,5 @@ import {TuiPincode} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value = '';
+    protected readonly value = signal('');
 }

@@ -1,53 +1,58 @@
-import {Component, signal} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Component, computed, effect, resource, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPincode, type TuiPincodeMode} from '@taiga-ui/kit';
-import {concat, from, map, type Observable, of, switchMap, tap, timer} from 'rxjs';
 
 const CORRECT = '1234';
 const FAST_LATENCY = 300;
 
+async function fakeApiVerify(pin: string, abort: AbortSignal): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+        const id = setTimeout(() => resolve(pin === CORRECT), FAST_LATENCY);
+
+        abort.addEventListener('abort', () => {
+            clearTimeout(id);
+            reject(new DOMException('Aborted', 'AbortError'));
+        });
+    });
+}
+
 @Component({
-    imports: [ReactiveFormsModule, TuiPincode],
+    imports: [FormsModule, TuiPincode],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly mode = signal<TuiPincodeMode | null>(null);
-    protected readonly control = new FormControl('');
+    private readonly verification = resource({
+        request: () => this.pin(),
+        loader: async ({request, abortSignal}) =>
+            request.length === 4 ? fakeApiVerify(request, abortSignal) : null,
+    });
+
+    protected readonly pin = signal('');
+
+    protected readonly mode = computed<TuiPincodeMode | null>(() => {
+        const result = this.verification.value();
+
+        if (result === true) {
+            return 'success';
+        }
+
+        return result === false ? 'invalid' : null;
+    });
 
     constructor() {
-        this.control.valueChanges
-            .pipe(
-                switchMap((value) =>
-                    value?.length === 4 ? this.verify(value) : of(null),
-                ),
-                takeUntilDestroyed(),
-            )
-            .subscribe((mode) => this.mode.set(mode));
-    }
+        effect((onCleanup) => {
+            if (this.mode() !== 'invalid') {
+                return;
+            }
 
-    private verify(value: string): Observable<TuiPincodeMode | null> {
-        return from(
-            new Promise<boolean>((resolve) =>
-                setTimeout(() => resolve(value === CORRECT), FAST_LATENCY),
-            ),
-        ).pipe(
-            switchMap((ok) =>
-                ok
-                    ? of<TuiPincodeMode>('success')
-                    : concat(
-                          of<TuiPincodeMode>('invalid'),
-                          timer(1400).pipe(
-                              tap(() => this.control.setValue('')),
-                              map(() => null),
-                          ),
-                      ),
-            ),
-        );
+            const id = setTimeout(() => this.pin.set(''), 1400);
+
+            onCleanup(() => clearTimeout(id));
+        });
     }
 }

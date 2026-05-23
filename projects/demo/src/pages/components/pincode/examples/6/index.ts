@@ -1,6 +1,5 @@
-import {Component, signal} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Component, computed, effect, resource, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
@@ -8,16 +7,23 @@ import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile
 import {TuiButton, TuiIcon, TuiLink} from '@taiga-ui/core';
 import {TuiPincode, type TuiPincodeMode} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
-import {concat, from, map, type Observable, of, switchMap, tap, timer} from 'rxjs';
 
 const CORRECT = '1234';
 
-const fakeApiVerify = async (pin: string): Promise<boolean> =>
-    new Promise<boolean>((resolve) => setTimeout(() => resolve(pin === CORRECT), 1000));
+async function fakeApiVerify(pin: string, abort: AbortSignal): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+        const id = setTimeout(() => resolve(pin === CORRECT), 1000);
+
+        abort.addEventListener('abort', () => {
+            clearTimeout(id);
+            reject(new DOMException('Aborted', 'AbortError'));
+        });
+    });
+}
 
 @Component({
     imports: [
-        ReactiveFormsModule,
+        FormsModule,
         TuiAppBar,
         TuiButton,
         TuiIcon,
@@ -32,9 +38,14 @@ const fakeApiVerify = async (pin: string): Promise<boolean> =>
     changeDetection,
 })
 export default class Example {
+    private readonly verification = resource({
+        request: () => this.pin(),
+        loader: async ({request, abortSignal}) =>
+            request.length === 4 ? fakeApiVerify(request, abortSignal) : null,
+    });
+
     protected open = false;
-    protected readonly mode = signal<TuiPincodeMode | null>(null);
-    protected readonly control = new FormControl('');
+    protected readonly pin = signal('');
 
     protected readonly keys = [
         '1',
@@ -57,13 +68,26 @@ export default class Example {
         appearance: 'fullscreen',
     };
 
+    protected readonly mode = computed<TuiPincodeMode | null>(() => {
+        const result = this.verification.value();
+
+        if (result === true) {
+            return 'success';
+        }
+
+        return result === false ? 'invalid' : null;
+    });
+
     constructor() {
-        this.control.valueChanges
-            .pipe(
-                switchMap((value) => this.processValue(value)),
-                takeUntilDestroyed(),
-            )
-            .subscribe((mode) => this.mode.set(mode));
+        effect((onCleanup) => {
+            if (this.mode() !== 'invalid') {
+                return;
+            }
+
+            const id = setTimeout(() => this.pin.set(''), 1400);
+
+            onCleanup(() => clearTimeout(id));
+        });
     }
 
     protected onKey(key: string): void {
@@ -71,10 +95,10 @@ export default class Example {
             return;
         }
 
-        const value = this.control.value ?? '';
+        const value = this.pin();
 
         if (key === 'backspace') {
-            this.control.setValue(value.slice(0, -1));
+            this.pin.set(value.slice(0, -1));
 
             return;
         }
@@ -83,26 +107,6 @@ export default class Example {
             return;
         }
 
-        this.control.setValue(`${value}${key}`);
-    }
-
-    private processValue(value: string | null): Observable<TuiPincodeMode | null> {
-        return value?.length === 4 ? this.verify(value) : of(null);
-    }
-
-    private verify(value: string): Observable<TuiPincodeMode | null> {
-        return from(fakeApiVerify(value)).pipe(
-            switchMap((ok) =>
-                ok
-                    ? of<TuiPincodeMode>('success')
-                    : concat(
-                          of<TuiPincodeMode>('invalid'),
-                          timer(1400).pipe(
-                              tap(() => this.control.setValue('')),
-                              map(() => null),
-                          ),
-                      ),
-            ),
-        );
+        this.pin.set(`${value}${key}`);
     }
 }
