@@ -10,12 +10,7 @@ import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
-export type TuiPincodeMode =
-    | 'dismissing'
-    | 'invalid'
-    | 'pending'
-    | 'submitting'
-    | 'success';
+export type TuiPincodeMode = 'invalid' | 'submitting' | 'success';
 
 // item width (1.25rem) + gap (0.625rem)
 const PITCH = 1.875;
@@ -34,7 +29,7 @@ const PITCH = 1.875;
         maxlength: '4',
         ngSkipHydration: 'true',
         spellcheck: 'false',
-        '[attr.data-mode]': 'mode()',
+        '[attr.data-mode]': 'effectiveMode',
         '(selectionchange)': 'onSelection()',
     },
 })
@@ -42,6 +37,18 @@ export class TuiPincodeComponent {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
     public readonly mode = input<TuiPincodeMode | null>(null);
+
+    protected get effectiveMode(): TuiPincodeMode | 'pending' | null {
+        const mode = this.mode();
+
+        if (mode !== null) {
+            return mode;
+        }
+
+        const {maxLength, value} = this.el;
+
+        return maxLength > 0 && value.length === maxLength ? 'pending' : null;
+    }
 
     protected getStyle(index: number): Record<string, string> {
         const n = this.el.maxLength;

@@ -24,13 +24,13 @@
                     }
                     @case (2) {
                         <strong>Fast loading</strong>
-                        — response under 500ms, no pending state shown. Enter
+                        — response under 500ms. Enter
                         <code>1234</code>
                         for success, any other code for error
                     }
                     @case (3) {
                         <strong>Long loading</strong>
-                        — response over 700ms, pending → submitting states shown with loader. Enter
+                        — response over 700ms, auto-bounce while waiting then submitting transition with loader. Enter
                         <code>1234</code>
                         for success (submitting), any other code for error
                     }
@@ -87,17 +87,13 @@
                 [value]="mode()"
                 (valueChange)="mode.set($event ?? null)"
             >
-                Visual state:
+                Verification result:
                 <code>invalid</code>
-                shakes,
-                <code>pending</code>
-                pulses,
-                <code>submitting</code>
-                animates out,
+                shakes red then auto-erases,
                 <code>success</code>
-                /
-                <code>dismissing</code>
-                restore the field
+                continues bouncing in blue (fast exit),
+                <code>submitting</code>
+                spreads into loader (long exit). Pulse animation triggers automatically when the code is fully entered
             </tr>
             <tr
                 name="maxlength"

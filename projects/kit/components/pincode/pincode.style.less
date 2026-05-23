@@ -177,8 +177,7 @@ input[tuiPincode] {
         transition: none;
     }
 
-    &[data-mode='invalid'] + .t-content,
-    &[data-mode='dismissing'] + .t-content {
+    &[data-mode='invalid'] + .t-content {
         .t-value {
             color: var(--tui-text-negative);
         }
@@ -197,16 +196,16 @@ input[tuiPincode] {
         animation: tuiPincodeShake 500ms var(--tui-curve-productive-standard);
     }
 
-    &[data-mode='dismissing'] + .t-content .t-item_filled .t-dot_placeholder {
-        scale: 1;
-        animation: tuiFade 400ms var(--tui-curve-expressive-standard) forwards;
+    &[data-mode='invalid']:not([type='password']) + .t-content .t-item_filled .t-value,
+    &[data-mode='invalid'][type='password'] + .t-content .t-item_filled .t-dot_value {
+        animation:
+            tuiFade 400ms var(--tui-curve-expressive-exit) 1000ms reverse forwards,
+            tuiScale 400ms var(--tui-curve-expressive-exit) 1000ms reverse forwards;
     }
 
-    &[data-mode='dismissing']:not([type='password']) + .t-content .t-item_filled .t-value,
-    &[data-mode='dismissing'][type='password'] + .t-content .t-item_filled .t-dot_value {
-        animation:
-            tuiFade 400ms var(--tui-curve-expressive-exit) reverse forwards,
-            tuiScale 400ms var(--tui-curve-expressive-exit) reverse forwards;
+    &[data-mode='invalid'] + .t-content .t-item_filled .t-dot_placeholder {
+        scale: 1;
+        animation: tuiFade 400ms var(--tui-curve-expressive-standard) 1000ms both;
     }
 
     &[data-mode='pending']:not([type='password']) + .t-content .t-item_filled .t-value,
@@ -214,7 +213,15 @@ input[tuiPincode] {
         animation:
             tuiPincodeWave var(--t-animation-cycle, 1000ms) linear infinite,
             tuiPincodeWavePos var(--t-animation-cycle, 1000ms) linear infinite;
-        animation-delay: var(--t-animation-delay, 0ms);
+        animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
+    }
+
+    &[data-mode='success']:not([type='password']) + .t-content .t-item_filled .t-value,
+    &[data-mode='success'][type='password'] + .t-content .t-item_filled .t-dot_value {
+        animation:
+            tuiPincodeWave var(--t-animation-cycle, 1000ms) linear infinite,
+            tuiPincodeWavePos var(--t-animation-cycle, 1000ms) linear infinite;
+        animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
     }
 
     &[data-mode='submitting'] + .t-content .t-item_filled {
