@@ -20,24 +20,26 @@
     @bubble-shift: translate(calc(var(--tui-inline) * -@bubble-width), -@bubble-width);
     @ground-shift: translate(calc(var(--tui-inline) * -50%), -50%);
 
-    .transition(~'inline-size, block-size, border, margin');
+    .transition(~'min-inline-size, grid-template-columns, block-size, border, margin, font', @tui-duration-fast);
     .button-clear();
 
     position: relative;
-    display: flex;
-    inline-size: var(--t-size);
+    display: grid;
+    isolation: isolate;
+    align-items: center;
+    grid-template-rows: 100%;
+    grid-template-columns: var(--t-size) 1fr;
+    min-inline-size: var(--t-size);
+    max-inline-size: 11.25rem;
     block-size: var(--t-size);
-    align-items: stretch;
-    flex-direction: column;
-    justify-content: center;
     text-align: center;
-    border-radius: 100%;
-    font: var(--tui-typography-body-s);
+    border-radius: 100rem;
+    font: var(--tui-typography-ui-xs);
     font-weight: bold;
     box-sizing: border-box;
     color: var(--tui-text-primary-on-accent-2);
     background: var(--tui-background-accent-2);
-    box-shadow: 0 0 0 0.125rem var(--tui-background-elevation-2);
+    box-shadow: 0 0 0 0.125rem var(--tui-background-elevation-1);
     border: 0 solid var(--tui-background-accent-2);
     transform: @ground-shift;
 
@@ -53,6 +55,17 @@
         }
     }
 
+    &:has([tuiPin]) {
+        border-color: currentColor;
+        background: var(--tui-background-elevation-1);
+    }
+
+    > *,
+    &::before,
+    &::after {
+        transition-duration: inherit !important;
+    }
+
     > input {
         .fullsize();
 
@@ -64,30 +77,111 @@
         max-block-size: 100%;
         box-sizing: border-box;
         border-radius: 100%;
-        background: var(--tui-background-base);
+        background: var(--tui-background-elevation-1);
     }
 
-    > tui-icon {
-        .transition(~'inline-size, block-size');
+    > tui-icon:not([tuiBadge]) {
+        .transition(~'inline-size, font-size');
 
         font-size: 1.25rem;
-        align-self: center;
+        block-size: 100%;
+        inline-size: 100%;
+        border-radius: 100%;
+
+        &::before {
+            .transition(font-size, inherit);
+        }
+    }
+
+    > [tuiPin] {
+        color: inherit;
+        border: 0.125rem solid;
+        font: inherit;
+        background: none;
+        transform: none;
+        box-shadow: none;
+        grid-template-columns: 100% 0fr;
+    }
+
+    > [tuiBadge] {
+        .transition(inset);
+
+        position: absolute;
+        inset-block-start: -0.25rem;
+        inset-inline-end: -0.25rem;
+    }
+
+    > [tuiTitle] {
+        .transition(~'opacity, margin');
+
+        position: static;
+        font: var(--tui-typography-ui-xs);
+        font-weight: bold;
+        color: var(--tui-text-primary);
+        margin-inline: 0.5rem 0.75rem;
+        gap: 0.125rem;
+        white-space: nowrap;
+
+        &::before {
+            .transition(mask-position, inherit);
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            inset-inline-end: -1px;
+            background: var(--tui-background-elevation-1);
+            border-radius: 100rem;
+            mask-image: radial-gradient(
+                circle closest-corner at left center,
+                transparent calc(100% - 0.5px),
+                black calc(100%)
+            );
+            mask-position: calc(var(--t-size) / 2);
+            mask-repeat: no-repeat;
+        }
+
+        [tuiSubtitle] {
+            display: flex;
+            gap: 0.125rem;
+            font: var(--tui-typography-ui-2xs);
+            color: var(--tui-text-secondary);
+
+            tui-icon:not([tuiBadge]) {
+                font-size: 0.75rem;
+            }
+        }
     }
 
     &:has(:checked) {
         --t-size: 3.5rem;
 
-        font: var(--tui-typography-body-m);
+        font: var(--tui-typography-body-l);
         font-weight: bold;
-        border-width: 0;
+        grid-template-columns: var(--t-size) 0fr;
         margin-block-start: -2.75rem;
 
         > img {
             padding: 0.125rem;
         }
 
-        > tui-icon {
+        tui-icon:not([tuiBadge]) {
             font-size: 2.125rem;
+        }
+
+        > [tuiPin] {
+            border-color: transparent;
+        }
+
+        > [tuiBadge] {
+            inset-block-start: 0;
+            inset-inline-end: 0;
+        }
+
+        > [tuiTitle] {
+            pointer-events: none;
+            opacity: 0;
+            margin: 0;
         }
 
         &::before {
@@ -105,17 +199,32 @@
     &._open {
         --t-size: 3.5rem;
 
-        font: var(--tui-typography-body-m);
+        font: var(--tui-typography-body-l);
         font-weight: bold;
-        border-width: 0;
+        grid-template-columns: var(--t-size) 0fr;
         margin-block-start: -2.75rem;
 
         > img {
             padding: 0.125rem;
         }
 
-        > tui-icon {
+        tui-icon:not([tuiBadge]) {
             font-size: 2.125rem;
+        }
+
+        > [tuiPin] {
+            border-color: transparent;
+        }
+
+        > [tuiBadge] {
+            inset-block-start: 0;
+            inset-inline-end: 0;
+        }
+
+        > [tuiTitle] {
+            pointer-events: none;
+            opacity: 0;
+            margin: 0;
         }
 
         &::before {
@@ -134,6 +243,7 @@
 
         content: '';
         position: absolute;
+        z-index: -1;
         inset-block: 50% -0.625rem;
         inset-inline: 50% -0.25rem;
         box-sizing: border-box;
