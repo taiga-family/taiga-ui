@@ -1,16 +1,27 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiInputTimePO} from '@demo-playwright/utils';
+import {
+    TuiDocumentationPagePO,
+    tuiGoto,
+    TuiInputTimePO,
+    type TuiTimeLike,
+} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+
+const {describe, beforeEach} = test;
 
 test.describe('InputTime', () => {
     test.describe('API', () => {
         let example: Locator;
         let inputTime: TuiInputTimePO;
+        let controlValue: Locator;
 
         test.beforeEach(({page}) => {
-            example = new TuiDocumentationPagePO(page).demo;
+            const documentation = new TuiDocumentationPagePO(page);
+
+            example = documentation.demo;
+            controlValue = documentation.value;
             inputTime = new TuiInputTimePO(
                 example.locator('tui-textfield:has([tuiInputTime])'),
             );
@@ -226,6 +237,123 @@ test.describe('InputTime', () => {
                 check('12:34:56.7', '12:34:56.007');
                 check('12:34:56.78', '12:34:56.078');
                 check('12:34:56.789', '12:34:56.789');
+            });
+        });
+
+        describe('control value contains TuiTime', () => {
+            function stringify(value: TuiTimeLike): string {
+                return JSON.stringify({value}, null, 2);
+            }
+
+            describe('mode=MM:SS', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputTime}/API?mode=MM:SS&sandboxExpanded=true`,
+                    );
+                });
+
+                test('Type 99 => new TuiTime(0, 9, 9)', async () => {
+                    await inputTime.textfield.pressSequentially('99');
+
+                    await expect(inputTime.textfield).toHaveValue('09:09');
+                    await expect(controlValue).toContainText(
+                        stringify({
+                            hours: 0,
+                            minutes: 9,
+                            seconds: 9,
+                            ms: 0,
+                        }),
+                    );
+                });
+
+                test('Type 5959 => new TuiTime(0, 59, 59)', async () => {
+                    await inputTime.textfield.pressSequentially('5959');
+
+                    await expect(inputTime.textfield).toHaveValue('59:59');
+                    await expect(controlValue).toContainText(
+                        stringify({
+                            hours: 0,
+                            minutes: 59,
+                            seconds: 59,
+                            ms: 0,
+                        }),
+                    );
+                });
+            });
+
+            describe('mode=MM:SS.MSS', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputTime}/API?mode=MM:SS.MSS&sandboxExpanded=true`,
+                    );
+                });
+
+                test('Type 99123 => new TuiTime(0, 9, 9, 123)', async () => {
+                    await inputTime.textfield.pressSequentially('99123');
+
+                    await expect(inputTime.textfield).toHaveValue('09:09.123');
+                    await expect(controlValue).toContainText(
+                        stringify({
+                            hours: 0,
+                            minutes: 9,
+                            seconds: 9,
+                            ms: 123,
+                        }),
+                    );
+                });
+
+                test('Type 5959999 => new TuiTime(0, 59, 59, 999)', async () => {
+                    await inputTime.textfield.pressSequentially('5959999');
+
+                    await expect(inputTime.textfield).toHaveValue('59:59.999');
+                    await expect(controlValue).toContainText(
+                        stringify({
+                            hours: 0,
+                            minutes: 59,
+                            seconds: 59,
+                            ms: 999,
+                        }),
+                    );
+                });
+            });
+
+            describe('mode=SS.MSS', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputTime}/API?mode=SS.MSS&sandboxExpanded=true`,
+                    );
+                });
+
+                test('Type 9999 => new TuiTime(0, 0, 9, 999)', async () => {
+                    await inputTime.textfield.pressSequentially('9999');
+
+                    await expect(inputTime.textfield).toHaveValue('09.999');
+                    await expect(controlValue).toContainText(
+                        stringify({
+                            hours: 0,
+                            minutes: 0,
+                            seconds: 9,
+                            ms: 999,
+                        }),
+                    );
+                });
+
+                test('Type 59999 => new TuiTime(0, 0, 59, 999)', async () => {
+                    await inputTime.textfield.pressSequentially('59999');
+
+                    await expect(inputTime.textfield).toHaveValue('59.999');
+                    await expect(controlValue).toContainText(
+                        stringify({
+                            hours: 0,
+                            minutes: 0,
+                            seconds: 59,
+                            ms: 999,
+                        }),
+                    );
+                });
             });
         });
     });
