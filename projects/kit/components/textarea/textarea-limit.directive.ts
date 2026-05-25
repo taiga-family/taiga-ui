@@ -24,12 +24,15 @@ import {
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {tuiTextareaOptionsProvider} from './textarea.options';
+import {NgIf} from '@angular/common';
 
 @Component({
     standalone: true,
+    imports: [NgIf],
     template: `
-        <span [textContent]="context.$implicit.slice(0, limit())"></span>
+        <ng-container>{{ context.$implicit.slice(0, limit()) }}</ng-container>
         <span
+            *ngIf="context.$implicit.length >= limit()"
             style="background: linear-gradient(transparent 0.25rem, var(--tui-status-negative-pale) 0.25rem, var(--tui-status-negative-pale) 100%)"
             [textContent]="context.$implicit.slice(limit())"
         ></span>
