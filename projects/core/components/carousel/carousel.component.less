@@ -5,7 +5,7 @@
 
     display: flex;
     max-inline-size: 100%;
-    overscroll-behavior: none;
+    overscroll-behavior-x: none;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -26,4 +26,20 @@
     justify-content: center;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+
+    &:first-child .t-bumper {
+        inset-inline-start: 0;
+    }
+
+    &:last-child .t-bumper {
+        inset-inline-end: 0.5px;
+    }
+}
+
+.t-bumper {
+    position: absolute;
+    inset-block-start: 50%;
+    block-size: 25%;
+    inline-size: 25%;
+    pointer-events: none;
 }
