@@ -1,0 +1,31 @@
+import"./chunk-HU6DUUP4.js";var a=`<div tuiPin>
+    <img
+        alt="avatar"
+        src="assets/images/avatar.jpg"
+    />
+</div>
+
+<div tuiPin>
+    <tui-icon icon="@tui.dollar-sign" />
+</div>
+
+<div
+    tuiPin
+    class="white"
+>
+    <span tuiPin>
+        <tui-icon icon="@tui.dollar-sign" />
+    </span>
+</div>
+
+<div
+    tuiPin
+    class="white"
+>
+    <span tuiPin>4.5</span>
+    <tui-icon
+        iconStart="@tui.heart"
+        tuiBadge
+    />
+</div>
+`;export{a as default};
