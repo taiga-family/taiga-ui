@@ -1,0 +1,14 @@
+import"./chunk-HU6DUUP4.js";var o=`:host {
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 2rem;
+    place-items: start;
+    padding: 3rem 6rem 0;
+    background-color: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
+}
+
+.link {
+    color: var(--tui-text-action);
+}
+`;export{o as default};
