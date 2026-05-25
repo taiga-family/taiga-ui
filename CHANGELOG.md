@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.8.0](https://github.com/taiga-family/taiga-ui/compare/v5.7.0...v5.8.0) (2026-05-25)
+
+### 🚀 Features
+
+- **kit:** `Pin` add labeled mode ([#14152](https://github.com/taiga-family/taiga-ui/issues/14152))
+  ([e0969f4](https://github.com/taiga-family/taiga-ui/commit/e0969f4365b835f9ce9705c0a95867941767a2d5))
+- **kit:** `Select`, `SelectOption` remove stub from not selected option
+  ([#13960](https://github.com/taiga-family/taiga-ui/issues/13960))
+  ([#14147](https://github.com/taiga-family/taiga-ui/issues/14147))
+  ([29abb72](https://github.com/taiga-family/taiga-ui/commit/29abb726dd7facbcedef9b9e64e96826d14e2d31))
+
+### 🐞 Bug Fixes
+
+- **core:** `Carousel` fix for zooms outside 100% ([#14145](https://github.com/taiga-family/taiga-ui/issues/14145))
+  ([0581af3](https://github.com/taiga-family/taiga-ui/commit/0581af395c77877cb521c4b4f9e02c56dc86d9c9))
+- **core:** `Notification` fix label overlapping close button on long text
+  ([#14114](https://github.com/taiga-family/taiga-ui/issues/14114))
+  ([#14137](https://github.com/taiga-family/taiga-ui/issues/14137))
+  ([8feb493](https://github.com/taiga-family/taiga-ui/commit/8feb493ad09a12c6f9adcfd18a85fa2e5287e510))
+- **kit:** `InputTime` incorrectly parses control value for `mode` without leading hours segment
+  ([#14154](https://github.com/taiga-family/taiga-ui/issues/14154))
+  ([765398f](https://github.com/taiga-family/taiga-ui/commit/765398f2ef7d4c57a2e7181e7f2a61579cc71681))
+- **kit:** `Sensitive` fix mask-repeat ([#14149](https://github.com/taiga-family/taiga-ui/issues/14149))
+  ([543bf95](https://github.com/taiga-family/taiga-ui/commit/543bf95bc501cbb174db88bf55b287f9bd2dbb7c))
+- **kit:** `Textarea` fix font scaling ([#14155](https://github.com/taiga-family/taiga-ui/issues/14155))
+  ([094480e](https://github.com/taiga-family/taiga-ui/commit/094480ea5597ee59972451807e5115ea1506f0bf))
+- **kit:** apply overscroll-behavior only when there is an extra element inside the t-ghost
+  ([#14142](https://github.com/taiga-family/taiga-ui/issues/14142))
+  ([6a11e91](https://github.com/taiga-family/taiga-ui/commit/6a11e91aa875cd30007a456b225da5fd7434c96d))
+- **kit:** improve example `Virtual scroll` for `ComboBox` to support paste of exact value
+  ([#14148](https://github.com/taiga-family/taiga-ui/issues/14148))
+  ([9ebd029](https://github.com/taiga-family/taiga-ui/commit/9ebd0292258890f7543be0d4bd516d995f845b7f))
+
 ## [5.7.0](https://github.com/taiga-family/taiga-ui/compare/v5.6.0...v5.7.0) (2026-05-18)
 
 ### 🐞 Bug Fixes
