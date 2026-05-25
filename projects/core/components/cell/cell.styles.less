@@ -132,14 +132,13 @@
             font: var(--tui-typography-ui-2xs);
         }
 
-        & > [tuiAvatar],
-        & > tui-avatar-stack [tuiAvatar],
-        & > [tuiAccessories] [tuiAvatar],
-        & > [tuiAccessories] tui-avatar-stack [tuiAvatar] {
+        [tuiAvatar] {
             --t-size: 1.5rem;
 
             font: var(--tui-typography-body-m);
             font-size: 0.5625rem;
+            margin: 0.1875rem 0;
+            border-radius: var(--tui-radius-m);
         }
     }
 
@@ -167,13 +166,11 @@
             font: var(--tui-typography-ui-2xs);
         }
 
-        & > [tuiAvatar],
-        & > tui-avatar-stack [tuiAvatar],
-        & > [tuiAccessories] [tuiAvatar],
-        & > [tuiAccessories] tui-avatar-stack [tuiAvatar] {
+        [tuiAvatar] {
             --t-size: 2rem;
 
             align-self: flex-start;
+            border-radius: var(--tui-radius-m);
         }
     }
 
@@ -193,10 +190,7 @@
             --t-pad: 0 1rem;
         }
 
-        & > [tuiAvatar],
-        & > tui-avatar-stack [tuiAvatar],
-        & > [tuiAccessories] [tuiAvatar],
-        & > [tuiAccessories] tui-avatar-stack [tuiAvatar] {
+        [tuiAvatar] {
             --t-size: 2.5rem;
 
             font: var(--tui-typography-body-m);
