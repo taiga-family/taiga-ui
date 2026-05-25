@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
+      - uses: taiga-family/ci/actions/setup/variables@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
 
       - name: Prepare demo before deploy from snapshots
         run: |
