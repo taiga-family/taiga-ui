@@ -24986,6 +24986,7 @@ import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {maskitoParseTime} from &#039;@maskito/kit&#039;;
 import {TuiTime} from &#039;@taiga-ui/cdk&#039;;
 import {TuiInputTime, tuiInputTimeOptionsProvider} from &#039;@taiga-ui/kit&#039;;
 
@@ -24998,7 +24999,11 @@ import {TuiInputTime, tuiInputTimeOptionsProvider} from &#039;@taiga-ui/kit&#039
         tuiInputTimeOptionsProvider({
             valueTransformer: {
                 fromControlValue(controlValue: string): TuiTime | null {
-                    return controlValue ? TuiTime.fromString(controlValue) : null;
+                    return controlValue
+                        ? TuiTime.fromAbsoluteMilliseconds(
+                              maskitoParseTime(controlValue, {mode: &#039;HH:MM&#039;}),
+                          )
+                        : null;
                 },
                 toControlValue(time: TuiTime | null): string {
                     return time ? time.toString() : &#039;&#039;;
@@ -25115,6 +25120,8 @@ export default class PageComponent {
         &#039;HH:MM:SS.MSS&#039;,
         &#039;HH:MM:SS.MSS AA&#039;,
         &#039;MM:SS&#039;,
+        &#039;MM:SS.MSS&#039;,
+        &#039;SS.MSS&#039;,
     ] as const satisfies readonly MaskitoTimeMode[];
 
     protected readonly acceptVariants = [
